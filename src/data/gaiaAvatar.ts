@@ -1,17 +1,17 @@
 /**
- * GIAI visual identity — expression states and metadata.
+ * GAIA visual identity — expression states and metadata.
  * All avatar presentation is emoji-based; no image assets required.
  */
 
-export interface GiaiExpression {
+export interface GaiaExpression {
   id: string
   /** Primary emoji used to represent this expression */
   emoji: string
   label: string
 }
 
-/** All available GIAI expression states */
-export const GIAI_EXPRESSIONS: Record<string, GiaiExpression> = {
+/** All available GAIA expression states */
+export const GAIA_EXPRESSIONS: Record<string, GaiaExpression> = {
   neutral:   { id: 'neutral',   emoji: '🤖', label: 'Neutral' },
   happy:     { id: 'happy',     emoji: '😊', label: 'Happy' },
   excited:   { id: 'excited',   emoji: '🤩', label: 'Excited' },
@@ -51,13 +51,13 @@ const EXPRESSION_MAP: Record<string, string> = {
 }
 
 /**
- * Resolve the GIAI expression for a given trigger and current mood.
+ * Resolve the GAIA expression for a given trigger and current mood.
  * Falls back to `neutral` for unknown triggers.
  *
  * @param trigger - Event/trigger name (camelCase or snake_case both work)
- * @param mood    - Current player-selected GIAI mood
+ * @param mood    - Current player-selected GAIA mood
  */
-export function getGiaiExpression(trigger: string, mood: string): GiaiExpression {
+export function getGaiaExpression(trigger: string, mood: string): GaiaExpression {
   let exprId = EXPRESSION_MAP[trigger] ?? 'neutral'
 
   // Mood-based overrides for neutral/ambiguous triggers
@@ -65,14 +65,14 @@ export function getGiaiExpression(trigger: string, mood: string): GiaiExpression
     exprId = 'snarky'
   }
 
-  return GIAI_EXPRESSIONS[exprId] ?? GIAI_EXPRESSIONS.neutral
+  return GAIA_EXPRESSIONS[exprId] ?? GAIA_EXPRESSIONS.neutral
 }
 
 /** Short display name shown in UI headers */
-export const GIAI_NAME = 'G.I.A.I.'
+export const GAIA_NAME = 'G.A.I.A.'
 
 /** Full expanded name shown in tooltip / About section */
-export const GIAI_FULL_NAME = 'Geological Intelligence & Analytical Interface'
+export const GAIA_FULL_NAME = 'Geological Analytical Intelligence Assistant'
 
 /** One-line tagline shown below the full name */
-export const GIAI_TAGLINE = 'Your AI companion, since the crash...'
+export const GAIA_TAGLINE = 'Your AI companion, since the crash...'

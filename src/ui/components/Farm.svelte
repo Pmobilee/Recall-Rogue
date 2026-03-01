@@ -99,7 +99,7 @@
     if (!result || result.amount <= 0) return
     audioManager.playSound('button_click')
     // Collect only this one slot by temporarily zeroing others to avoid double-counting
-    // Instead, collect all (simpler, correct) — the GIAI toast in App handles messaging
+    // Instead, collect all (simpler, correct) — the GAIA toast in App handles messaging
     const { updatedSave } = collectFarmResources(save)
     playerSave.set(updatedSave)
   }

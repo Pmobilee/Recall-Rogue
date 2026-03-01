@@ -23,16 +23,16 @@
 - [x] Completion percentages per branch (shows learned/total per category)
 - [x] Branch thickness grows with category completion (stroke-width scales 2-8px, color shifts brown→green by ratio)
 
-### 2.3 GIAI Personality — IN PROGRESS
+### 2.3 GAIA Personality — IN PROGRESS
 - [ ] Avatar sprite generation
 - [ ] Dialogue system design
-- [x] Pre-generate giaiComment for facts (all 122 general facts have giaiComment)
-- [x] Contextual comments during gameplay (GiaiToast + GameManager triggers)
+- [x] Pre-generate gaiaComment for facts (all 122 general facts have gaiaComment)
+- [x] Contextual comments during gameplay (GaiaToast + GameManager triggers)
 - [ ] Mnemonic suggestions for struggling facts
 
 ### 2.4 Pixel Art Per Fact — DEFERRED (moved to post-launch polish)
 Deprioritized in favor of structural gameplay features. See Phase 11 in PROGRESS.md.
 
 ## Dependencies
-- 2.3 partially depends on 2.1 (need facts for giaiComment)
+- 2.3 partially depends on 2.1 (need facts for gaiaComment)
 - 2.2 is independent (works with existing fact data structure)

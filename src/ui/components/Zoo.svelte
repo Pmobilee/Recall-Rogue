@@ -74,6 +74,13 @@
 
   const collectorBadge = $derived(getCollectorBadge(revivedCount))
 
+  const MILESTONES: { count: number; badge: CollectorBadge; icon: string; label: string }[] = [
+    { count: 3, badge: 'bronze', icon: '🥉', label: 'Bronze' },
+    { count: 5, badge: 'silver', icon: '🥈', label: 'Silver' },
+    { count: 7, badge: 'gold', icon: '🥇', label: 'Gold' },
+    { count: 10, badge: 'platinum', icon: '🏆', label: 'Platinum' },
+  ]
+
   const badgeLabel: Record<CollectorBadge, string> = {
     none: '',
     bronze: 'Bronze Collector',
@@ -101,6 +108,10 @@
   /** All unique eras present among revived species */
   const revivedEras = $derived(
     [...new Set(revivedSpecies.map(s => s.era))]
+  )
+
+  const unrevidedSpecies = $derived(
+    FOSSIL_SPECIES.filter(s => !fossils[s.id]?.revived)
   )
 
   function handleBack(): void {
@@ -206,7 +217,6 @@
     {/if}
 
     <!-- Unrevived / mystery species section -->
-    {@const unrevidedSpecies = FOSSIL_SPECIES.filter(s => !fossils[s.id]?.revived)}
     {#if unrevidedSpecies.length > 0}
       <div class="era-section unrevealed-section" aria-label="Undiscovered species">
         <div class="era-header">
@@ -265,12 +275,7 @@
 
       <!-- Milestone track -->
       <div class="milestones" aria-label="Collection milestones">
-        {#each ([
-          { count: 3, badge: 'bronze' as CollectorBadge, icon: '🥉', label: 'Bronze' },
-          { count: 5, badge: 'silver' as CollectorBadge, icon: '🥈', label: 'Silver' },
-          { count: 7, badge: 'gold' as CollectorBadge, icon: '🥇', label: 'Gold' },
-          { count: 10, badge: 'platinum' as CollectorBadge, icon: '🏆', label: 'Platinum' },
-        ] as milestone)}
+        {#each MILESTONES as milestone}
           {@const reached = revivedCount >= milestone.count}
           <div
             class="milestone-item"

@@ -15,8 +15,8 @@
 - **Total: 522 facts** in the database (122 general facts + 400 vocab)
 - All facts have 24-25 distractors
 - `wowFactor` and `sourceName` populated for all facts
-- `giaiComment` populated for all 122 general facts
-- Fact interface supports all needed fields (`wowFactor`, `explanation`, `giaiComment`, `sourceName`)
+- `gaiaComment` populated for all 122 general facts
+- Fact interface supports all needed fields (`wowFactor`, `explanation`, `gaiaComment`, `sourceName`)
 - Quiz system works with any Fact objects
 - SM-2 spaced repetition fully functional
 

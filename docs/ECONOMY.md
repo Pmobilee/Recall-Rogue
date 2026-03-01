@@ -140,7 +140,7 @@ The dome is the player's **hub between dives**. It's where all non-mining activi
 
 ### Areas
 - **Materializer Room**: Crafting station + Premium Materializer
-- **GIAI Terminal**: Artifact ingestion, fact review, study sessions
+- **GAIA Terminal**: Artifact ingestion, fact review, study sessions
 - **Knowledge Tree**: Central display, visual centerpiece
 - **Farm**: Animal placement, passive resource generation
 - **Zoo**: Display area for revived creatures

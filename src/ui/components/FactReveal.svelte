@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { Fact, Rarity } from '../../data/types'
-  import { GIAI_EXPRESSIONS, GIAI_NAME, getGiaiExpression } from '../../data/giaiAvatar'
-  import { giaiMood } from '../stores/settings'
+  import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
+  import { gaiaMood } from '../stores/settings'
 
   type Props = {
     fact: Fact
@@ -37,15 +37,15 @@
   const rarityColor = $derived(rarityColors[fact.rarity])
   const sellHint = $derived(`Sell for ${sellDustValues[fact.rarity]} Dust`)
 
-  /** Map rarity to the trigger used for GIAI expression selection */
+  /** Map rarity to the trigger used for GAIA expression selection */
   const rarityTrigger = $derived.by(() => {
     if (fact.rarity === 'legendary' || fact.rarity === 'mythic') return 'relic_found'
     if (fact.rarity === 'rare' || fact.rarity === 'epic') return 'artifact_found'
     return 'quiz_correct'
   })
 
-  const giaiCommentEmoji = $derived(
-    getGiaiExpression(rarityTrigger, $giaiMood).emoji
+  const gaiaCommentEmoji = $derived(
+    getGaiaExpression(rarityTrigger, $gaiaMood).emoji
   )
 
   onMount(() => {
@@ -88,13 +88,13 @@
         </div>
       {/if}
 
-      {#if fact.giaiComment}
-        <div class="giai-section">
-          <div class="giai-section-header">
-            <span class="giai-section-emoji" aria-hidden="true">{giaiCommentEmoji}</span>
-            <span class="giai-label">{GIAI_NAME}</span>
+      {#if fact.gaiaComment}
+        <div class="gaia-section">
+          <div class="gaia-section-header">
+            <span class="gaia-section-emoji" aria-hidden="true">{gaiaCommentEmoji}</span>
+            <span class="gaia-label">{GAIA_NAME}</span>
           </div>
-          <p class="giai-text">"{fact.giaiComment}"</p>
+          <p class="gaia-text">"{fact.gaiaComment}"</p>
         </div>
       {/if}
 
@@ -251,7 +251,7 @@
     margin: 0;
   }
 
-  .giai-section {
+  .gaia-section {
     margin-top: 10px;
     padding: 10px 12px;
     background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface) 88%);
@@ -259,19 +259,19 @@
     border-left: 3px solid var(--color-accent);
   }
 
-  .giai-section-header {
+  .gaia-section-header {
     display: flex;
     align-items: center;
     gap: 6px;
     margin-bottom: 4px;
   }
 
-  .giai-section-emoji {
+  .gaia-section-emoji {
     font-size: 1.15rem;
     line-height: 1;
   }
 
-  .giai-label {
+  .gaia-label {
     text-transform: uppercase;
     font-size: 0.68rem;
     color: var(--color-accent);
@@ -279,7 +279,7 @@
     letter-spacing: 1.5px;
   }
 
-  .giai-text {
+  .gaia-text {
     color: var(--color-text-dim);
     font-size: 0.82rem;
     line-height: 1.4;

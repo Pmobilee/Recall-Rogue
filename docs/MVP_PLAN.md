@@ -99,7 +99,7 @@ export interface Fact {
   statement: string           // Clear, concise (Anki-optimized)
   wowFactor?: string          // Mind-blowing framing (shown on reveal)
   explanation: string         // Why it's true / context
-  giaiComment?: string        // GIAI's snarky ingestion comment
+  gaiaComment?: string        // GAIA's snarky ingestion comment
 
   // Quiz
   quizQuestion: string
@@ -750,7 +750,7 @@ Execute in this exact order. Each step should be a single commit.
 - Darkest Dungeon stacking (using simple slots)
 - Send-up slots
 - Layer transitions / descent shafts
-- GIAI personality / comments
+- GAIA personality / comments
 - Gacha animations
 - Knowledge Tree visualization (list view instead)
 - Pets / farm / zoo

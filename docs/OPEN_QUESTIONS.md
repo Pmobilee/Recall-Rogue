@@ -120,9 +120,9 @@ MVP uses simple versions of each system:
 
 **Test content**: Japanese JLPT N3 vocabulary (~50-100 words). Distractors auto-generated from similar words. No images. Language learning exercises the schema and is fastest to produce.
 
-**What to cut for MVP**: Multiple biomes, stacking/Tetris inventory, gacha animations, multiple mineral tiers, pets/farm/zoo, premium materializer, social features, hazards, data discs, streaks, notifications, combat, synergies, ambient text, GIAI personality, cutscenes, tree visualization, pixel art per fact.
+**What to cut for MVP**: Multiple biomes, stacking/Tetris inventory, gacha animations, multiple mineral tiers, pets/farm/zoo, premium materializer, social features, hazards, data discs, streaks, notifications, combat, synergies, ambient text, GAIA personality, cutscenes, tree visualization, pixel art per fact.
 
-**What to add post-MVP (v1.1+)**: Darkest Dungeon backpack, send-up slots, multiple biomes + shuffling, GIAI personality, gacha animations, real fact content (500+ with wow_factor), pixel art per fact, Knowledge Tree visualization, fossil/pet system, slow dome unlocks.
+**What to add post-MVP (v1.1+)**: Darkest Dungeon backpack, send-up slots, multiple biomes + shuffling, GAIA personality, gacha animations, real fact content (500+ with wow_factor), pixel art per fact, Knowledge Tree visualization, fossil/pet system, slow dome unlocks.
 
 ### Content Pipeline
 

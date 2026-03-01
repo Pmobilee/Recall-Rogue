@@ -25,6 +25,7 @@ export type Screen =
   | 'zoo'
   | 'farm'
   | 'streakPanel'
+  | 'settings'
 
 export const currentScreen = writable<Screen>('mainMenu')
 
@@ -79,15 +80,15 @@ export const pickaxeTier = writable<number>(0)
 // Live blocks-mined counter for current run (reset each dive)
 export const blocksMinedLive = writable<number>(0)
 
-// GIAI commentary toast — set to a string to display, null to hide
-export const giaiMessage = writable<string | null>(null)
+// GAIA commentary toast — set to a string to display, null to hide
+export const gaiaMessage = writable<string | null>(null)
 
 /**
- * Current GIAI expression id (matches a key in GIAI_EXPRESSIONS from giaiAvatar.ts).
- * Updated alongside giaiMessage whenever a new in-mine message is emitted.
+ * Current GAIA expression id (matches a key in GAIA_EXPRESSIONS from gaiaAvatar.ts).
+ * Updated alongside gaiaMessage whenever a new in-mine message is emitted.
  * Consumers can import this to render the contextual avatar emoji.
  */
-export const giaiExpression = writable<string>('neutral')
+export const gaiaExpression = writable<string>('neutral')
 
 // Study session facts and review states passed to StudySession component
 export const studyFacts = writable<Fact[]>([])

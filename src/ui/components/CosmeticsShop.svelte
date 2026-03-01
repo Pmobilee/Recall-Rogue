@@ -175,6 +175,7 @@
   .shop-overlay {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     z-index: 40;
     background: var(--color-bg);
     display: flex;

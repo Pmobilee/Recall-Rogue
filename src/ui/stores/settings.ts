@@ -40,45 +40,45 @@ export function setSpriteResolution(res: SpriteResolution): void {
 export const spriteResolution = writable<SpriteResolution>(getSpriteResolution())
 
 // =========================================================
-// GIAI Personality Settings
+// GAIA Personality Settings
 // =========================================================
 
-/** GIAI companion personality mode. */
-export type GiaiMood = 'snarky' | 'enthusiastic' | 'calm'
+/** GAIA companion personality mode. */
+export type GaiaMood = 'snarky' | 'enthusiastic' | 'calm'
 
-const VALID_MOODS: GiaiMood[] = ['snarky', 'enthusiastic', 'calm']
+const VALID_MOODS: GaiaMood[] = ['snarky', 'enthusiastic', 'calm']
 
-function readGiaiMood(): GiaiMood {
+function readGaiaMood(): GaiaMood {
   if (typeof window === 'undefined') return 'enthusiastic'
-  const stored = window.localStorage.getItem('giai-mood') as GiaiMood
+  const stored = window.localStorage.getItem('gaia-mood') as GaiaMood
   return VALID_MOODS.includes(stored) ? stored : 'enthusiastic'
 }
 
 /**
- * Reactive Svelte store for GIAI's current mood/personality.
+ * Reactive Svelte store for GAIA's current mood/personality.
  * Persisted to localStorage automatically.
  */
-export const giaiMood = writable<GiaiMood>(readGiaiMood())
-giaiMood.subscribe(v => {
+export const gaiaMood = writable<GaiaMood>(readGaiaMood())
+gaiaMood.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('giai-mood', v)
+    window.localStorage.setItem('gaia-mood', v)
   }
 })
 
-function readGiaiChattiness(): number {
+function readGaiaChattiness(): number {
   if (typeof window === 'undefined') return 5
-  const raw = window.localStorage.getItem('giai-chattiness')
+  const raw = window.localStorage.getItem('gaia-chattiness')
   const parsed = raw !== null ? parseInt(raw, 10) : NaN
   return isNaN(parsed) ? 5 : Math.max(0, Math.min(10, parsed))
 }
 
 /**
- * Reactive Svelte store for GIAI chattiness level (0–10).
+ * Reactive Svelte store for GAIA chattiness level (0–10).
  * 0 = silent, 10 = always speaks. Persisted to localStorage automatically.
  */
-export const giaiChattiness = writable<number>(readGiaiChattiness())
-giaiChattiness.subscribe(v => {
+export const gaiaChattiness = writable<number>(readGaiaChattiness())
+gaiaChattiness.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('giai-chattiness', String(v))
+    window.localStorage.setItem('gaia-chattiness', String(v))
   }
 })

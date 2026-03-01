@@ -1,7 +1,7 @@
 <script lang="ts">
   import { activeRelics, activeSynergies, activeUpgrades, pickaxeTier, scannerTier, currentBiome, currentDepth, currentLayer, inventory, oxygenCurrent, oxygenMax, pastPointOfNoReturn, activeCompanion, companionBadgeFlash } from '../stores/gameState'
   import { BALANCE } from '../../data/balance'
-  import GiaiToast from './GiaiToast.svelte'
+  import GaiaToast from './GaiaToast.svelte'
 
   interface Props {
     onSurface?: () => void
@@ -209,7 +209,7 @@
     </div>
   {/if}
 
-  <GiaiToast />
+  <GaiaToast />
 </div>
 
 <style>

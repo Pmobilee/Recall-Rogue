@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { giaiMessage, giaiExpression } from '../stores/gameState'
-  import { GIAI_EXPRESSIONS, GIAI_NAME } from '../../data/giaiAvatar'
+  import { gaiaMessage, gaiaExpression } from '../stores/gameState'
+  import { GAIA_EXPRESSIONS, GAIA_NAME } from '../../data/gaiaAvatar'
 
   /** Auto-dismiss duration in milliseconds */
   const DISMISS_DELAY = 4000
@@ -11,36 +11,36 @@
   let dismissTimer: ReturnType<typeof setTimeout> | null = null
 
   $effect(() => {
-    const msg = $giaiMessage
+    const msg = $gaiaMessage
     if (msg) {
       currentMessage = msg
-      currentExpressionId = $giaiExpression
+      currentExpressionId = $gaiaExpression
       visible = true
       if (dismissTimer) clearTimeout(dismissTimer)
       dismissTimer = setTimeout(() => {
         visible = false
-        giaiMessage.set(null)
+        gaiaMessage.set(null)
       }, DISMISS_DELAY)
     }
   })
 
   const expressionEmoji = $derived(
-    (GIAI_EXPRESSIONS[currentExpressionId] ?? GIAI_EXPRESSIONS.neutral).emoji
+    (GAIA_EXPRESSIONS[currentExpressionId] ?? GAIA_EXPRESSIONS.neutral).emoji
   )
 </script>
 
 {#if visible}
-  <div class="giai-toast" class:visible>
-    <span class="giai-avatar" aria-hidden="true">{expressionEmoji}</span>
-    <div class="giai-body">
-      <span class="giai-prefix">{GIAI_NAME}:</span>
-      <span class="giai-text">{currentMessage}</span>
+  <div class="gaia-toast" class:visible>
+    <span class="gaia-avatar" aria-hidden="true">{expressionEmoji}</span>
+    <div class="gaia-body">
+      <span class="gaia-prefix">{GAIA_NAME}:</span>
+      <span class="gaia-text">{currentMessage}</span>
     </div>
   </div>
 {/if}
 
 <style>
-  .giai-toast {
+  .gaia-toast {
     position: fixed;
     bottom: 80px;
     left: 50%;
@@ -63,18 +63,18 @@
     align-items: flex-start;
     gap: 8px;
     animation:
-      giai-slide-in 0.3s ease-out forwards,
-      giai-fade-out 0.35s ease-in forwards var(--dismiss-delay, 3.65s);
+      gaia-slide-in 0.3s ease-out forwards,
+      gaia-fade-out 0.35s ease-in forwards var(--dismiss-delay, 3.65s);
   }
 
-  .giai-avatar {
+  .gaia-avatar {
     font-size: 1.25rem;
     line-height: 1;
     flex-shrink: 0;
     margin-top: 1px;
   }
 
-  .giai-body {
+  .gaia-body {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -82,17 +82,17 @@
     min-width: 0;
   }
 
-  .giai-prefix {
+  .gaia-prefix {
     font-weight: 700;
     color: var(--color-warning, #f4c430);
     flex-shrink: 0;
   }
 
-  .giai-text {
+  .gaia-text {
     color: var(--color-text, #e8e8f0);
   }
 
-  @keyframes giai-slide-in {
+  @keyframes gaia-slide-in {
     from {
       opacity: 0;
       transform: translateX(-50%) translateY(16px);
@@ -103,7 +103,7 @@
     }
   }
 
-  @keyframes giai-fade-out {
+  @keyframes gaia-fade-out {
     from {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
@@ -115,12 +115,12 @@
   }
 
   @media (max-width: 480px) {
-    .giai-toast {
+    .gaia-toast {
       bottom: 72px;
       font-size: 0.78rem;
     }
 
-    .giai-avatar {
+    .gaia-avatar {
       font-size: 1.1rem;
     }
   }

@@ -1,19 +1,19 @@
-import type { GiaiMood } from '../ui/stores/settings'
+import type { GaiaMood } from '../ui/stores/settings'
 
 /**
- * A single GIAI dialogue line tagged with its mood context.
+ * A single GAIA dialogue line tagged with its mood context.
  * Lines tagged 'any' are eligible regardless of the current mood.
  */
-export interface GiaiLine {
+export interface GaiaLine {
   text: string
-  mood: GiaiMood | 'any'
+  mood: GaiaMood | 'any'
 }
 
 /**
  * Mood-specific (and mood-agnostic) dialogue pools for key in-game triggers.
  * Add more entries freely — the helper always picks a random eligible line.
  */
-export const GIAI_TRIGGERS = {
+export const GAIA_TRIGGERS = {
   mineEntry: [
     { text: "Let's get digging, pilot!", mood: 'enthusiastic' },
     { text: "Systems primed. I love the start of a new dive!", mood: 'enthusiastic' },
@@ -29,7 +29,7 @@ export const GIAI_TRIGGERS = {
     { text: "Stay centered. The rocks will reveal what they hold.", mood: 'calm' },
     { text: "The rocks aren't going to mine themselves.", mood: 'any' },
     { text: "Sensors online. Watch your oxygen.", mood: 'any' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   depthMilestone25: [
     { text: "Quarter way! Keep that momentum!", mood: 'enthusiastic' },
@@ -44,7 +44,7 @@ export const GIAI_TRIGGERS = {
     { text: "One quarter complete. Conserve your resources.", mood: 'calm' },
     { text: "Steady progress. Note your surroundings.", mood: 'calm' },
     { text: "Quarter depth reached. Adjust your path if needed.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   depthMilestone50: [
     { text: "Halfway! The good stuff is deeper!", mood: 'enthusiastic' },
@@ -59,7 +59,7 @@ export const GIAI_TRIGGERS = {
     { text: "Halfway down. Reassess your inventory.", mood: 'calm' },
     { text: "50% depth. The geology shifts from here.", mood: 'calm' },
     { text: "Well into the mine now. Choose your path deliberately.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   depthMilestone75: [
     { text: "Almost there! I can feel the artifacts!", mood: 'enthusiastic' },
@@ -74,7 +74,7 @@ export const GIAI_TRIGGERS = {
     { text: "75% depth. Oxygen management is critical from here.", mood: 'calm' },
     { text: "Near the deep zone. Stay methodical.", mood: 'calm' },
     { text: "Three quarters complete. The hardest section remains.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   lowOxygen: [
     { text: "O2 getting low — find air or surface!", mood: 'enthusiastic' },
@@ -89,7 +89,7 @@ export const GIAI_TRIGGERS = {
     { text: "Low oxygen. Surface or cache — decide now.", mood: 'calm' },
     { text: "Breathe slowly. Find air. Stay calm.", mood: 'calm' },
     { text: "Oxygen reserves depleting. Prioritise escape.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   artifactFound: [
     { text: "What a find! This could teach us something amazing!", mood: 'enthusiastic' },
@@ -104,7 +104,7 @@ export const GIAI_TRIGGERS = {
     { text: "Something old surfaces. Study it well.", mood: 'calm' },
     { text: "A relic of the past. Treat it gently.", mood: 'calm' },
     { text: "History, preserved in stone. Worth keeping.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   exitReached: [
     { text: "The exit! What a successful dive!", mood: 'enthusiastic' },
@@ -119,7 +119,7 @@ export const GIAI_TRIGGERS = {
     { text: "Surface awaits. A clean run.", mood: 'calm' },
     { text: "The exit. You navigated well.", mood: 'calm' },
     { text: "Ascent begins. Reflect on what you found.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   caveIn: [
     { text: "Cave-in! Quick, get clear!", mood: 'enthusiastic' },
@@ -134,7 +134,7 @@ export const GIAI_TRIGGERS = {
     { text: "Cave-in detected. Locate a safe corridor.", mood: 'calm' },
     { text: "The rock shifted. Adapt your route.", mood: 'calm' },
     { text: "Collapse zone. Move deliberately.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 
   earthquake: [
     { text: "EARTHQUAKE! Hold on!", mood: 'enthusiastic' },
@@ -149,14 +149,14 @@ export const GIAI_TRIGGERS = {
     { text: "Earthquake detected. Wait for stillness before proceeding.", mood: 'calm' },
     { text: "Ground shifting. Observe new openings.", mood: 'calm' },
     { text: "Tectonic movement. Adjust your bearings.", mood: 'calm' },
-  ] satisfies GiaiLine[],
+  ] satisfies GaiaLine[],
 } as const
 
 /**
- * Mood-keyed idle quip pools for the BaseView GIAI panel.
+ * Mood-keyed idle quip pools for the BaseView GAIA panel.
  * Shown when the player is at base, cycling every 12 seconds.
  */
-export const GIAI_IDLE_QUIPS: Record<GiaiMood, string[]> = {
+export const GAIA_IDLE_QUIPS: Record<GaiaMood, string[]> = {
   enthusiastic: [
     "Did you know this planet used to have over 8 billion inhabitants? Wild times.",
     "I've been cataloguing the mineral deposits. The diversity is AMAZING!",
@@ -196,16 +196,16 @@ export const GIAI_IDLE_QUIPS: Record<GiaiMood, string[]> = {
 }
 
 /**
- * Pick a random GIAI line for the given trigger matching the current mood.
+ * Pick a random GAIA line for the given trigger matching the current mood.
  * Falls back to 'any'-tagged lines if no mood-specific lines exist,
  * or to the full pool as a last resort.
  *
- * @param trigger - Key into GIAI_TRIGGERS
- * @param mood    - Current player-selected GIAI mood
+ * @param trigger - Key into GAIA_TRIGGERS
+ * @param mood    - Current player-selected GAIA mood
  * @returns The text of the selected line
  */
-export function getGiaiLine(trigger: keyof typeof GIAI_TRIGGERS, mood: GiaiMood): string {
-  const lines = GIAI_TRIGGERS[trigger] as readonly GiaiLine[]
+export function getGaiaLine(trigger: keyof typeof GAIA_TRIGGERS, mood: GaiaMood): string {
+  const lines = GAIA_TRIGGERS[trigger] as readonly GaiaLine[]
   const moodLines = lines.filter(l => l.mood === mood || l.mood === 'any')
   const pool = moodLines.length > 0 ? moodLines : lines
   return pool[Math.floor(Math.random() * pool.length)].text

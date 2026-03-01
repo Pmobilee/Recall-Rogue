@@ -1,18 +1,15 @@
 <script lang="ts">
+  import { untrack } from 'svelte'
   import { getMasteryLevel } from '../../services/sm2'
   import { pendingArtifacts } from '../stores/gameState'
   import { getDueReviews, playerSave, persistPlayer } from '../stores/playerData'
   import { audioManager } from '../../services/audioService'
   import {
-    spriteResolution,
-    setSpriteResolution,
-    type SpriteResolution,
-    giaiMood,
-    giaiChattiness,
-    type GiaiMood,
+    gaiaMood,
+    type GaiaMood,
   } from '../stores/settings'
-  import { GIAI_IDLE_QUIPS } from '../../data/giaiDialogue'
-  import { GIAI_EXPRESSIONS, GIAI_NAME, GIAI_FULL_NAME, GIAI_TAGLINE, getGiaiExpression } from '../../data/giaiAvatar'
+  import { GAIA_IDLE_QUIPS } from '../../data/gaiaDialogue'
+  import { GAIA_EXPRESSIONS, GAIA_NAME, GAIA_FULL_NAME, GAIA_TAGLINE, getGaiaExpression } from '../../data/gaiaAvatar'
   import { BALANCE } from '../../data/balance'
   import type { Fact } from '../../data/types'
   import MineralConverter from './MineralConverter.svelte'
@@ -24,30 +21,30 @@
   import type { FarmSlot } from '../../data/types'
 
   /** Pick a random idle quip from the pool matching the current mood. */
-  function randomIdleQuip(mood: GiaiMood): string {
-    const pool = GIAI_IDLE_QUIPS[mood]
+  function randomIdleQuip(mood: GaiaMood): string {
+    const pool = GAIA_IDLE_QUIPS[mood]
     return pool[Math.floor(Math.random() * pool.length)]
   }
 
-  let giaiComment = $state(randomIdleQuip($giaiMood))
-  let giaiVisible = $state(true)
+  let gaiaComment = $state(randomIdleQuip($gaiaMood))
+  let gaiaVisible = $state(true)
   /** Expression id for the currently shown idle quip */
-  let idleExpressionId = $state(getGiaiExpression('idle', $giaiMood).id)
+  let idleExpressionId = $state(getGaiaExpression('idle', $gaiaMood).id)
 
   $effect(() => {
-    // Re-pick immediately when the mood changes (reactive on $giaiMood)
-    giaiComment = randomIdleQuip($giaiMood)
-    idleExpressionId = getGiaiExpression('idle', $giaiMood).id
-    giaiVisible = true
+    // Re-pick immediately when the mood changes (reactive on $gaiaMood)
+    gaiaComment = randomIdleQuip($gaiaMood)
+    idleExpressionId = getGaiaExpression('idle', $gaiaMood).id
+    gaiaVisible = true
   })
 
   $effect(() => {
     const interval = setInterval(() => {
-      giaiVisible = false
+      gaiaVisible = false
       setTimeout(() => {
-        giaiComment = randomIdleQuip($giaiMood)
-        idleExpressionId = getGiaiExpression('idle', $giaiMood).id
-        giaiVisible = true
+        gaiaComment = randomIdleQuip($gaiaMood)
+        idleExpressionId = getGaiaExpression('idle', $gaiaMood).id
+        gaiaVisible = true
       }, 400)
     }, 12000)
 
@@ -57,7 +54,7 @@
   })
 
   const idleEmoji = $derived(
-    (GIAI_EXPRESSIONS[idleExpressionId] ?? GIAI_EXPRESSIONS.neutral).emoji
+    (GAIA_EXPRESSIONS[idleExpressionId] ?? GAIA_EXPRESSIONS.neutral).emoji
   )
 
   interface Props {
@@ -73,10 +70,11 @@
     onZoo?: () => void
     onStreakPanel?: () => void
     onFarm?: () => void
+    onSettings?: () => void
     facts?: Fact[]
   }
 
-  let { onDive, onStudy, onReviewArtifact, onViewTree, onMaterializer, onPremiumMaterializer, onCosmetics, onKnowledgeStore, onFossils, onZoo, onStreakPanel, onFarm, facts }: Props = $props()
+  let { onDive, onStudy, onReviewArtifact, onViewTree, onMaterializer, onPremiumMaterializer, onCosmetics, onKnowledgeStore, onFossils, onZoo, onStreakPanel, onFarm, onSettings, facts }: Props = $props()
 
   const dueReviews = $derived.by(() => {
     $playerSave
@@ -251,21 +249,6 @@
   const discoveredFossilCount = $derived(Object.keys(fossilsRecord).length)
   const revivedFossilCount = $derived(Object.values(fossilsRecord).filter(f => f.revived).length)
 
-  function handleSpriteQuality(): void {
-    const next: SpriteResolution = $spriteResolution === 'low' ? 'high' : 'low'
-    setSpriteResolution(next)
-  }
-
-  function handleMoodSelect(mood: GiaiMood): void {
-    audioManager.playSound('button_click')
-    giaiMood.set(mood)
-  }
-
-  function handleChattinessChange(e: Event): void {
-    const val = parseInt((e.target as HTMLInputElement).value, 10)
-    giaiChattiness.set(isNaN(val) ? 5 : Math.max(0, Math.min(10, val)))
-  }
-
   let showConverter = $state(false)
 
   function handleOpenConverter(): void {
@@ -329,12 +312,13 @@
 
   $effect(() => {
     const rooms = $playerSave?.unlockedRooms ?? ['command']
-    const newOnes = rooms.filter(r => !_prevUnlockedRooms.includes(r) && r !== 'command')
+    const prev = untrack(() => _prevUnlockedRooms)
+    const newOnes = rooms.filter(r => !prev.includes(r) && r !== 'command')
     if (newOnes.length > 0) {
-      recentlyUnlockedSet = [...recentlyUnlockedSet, ...newOnes]
+      recentlyUnlockedSet = [...untrack(() => recentlyUnlockedSet), ...newOnes]
       for (const r of newOnes) {
         setTimeout(() => {
-          recentlyUnlockedSet = recentlyUnlockedSet.filter(x => x !== r)
+          recentlyUnlockedSet = untrack(() => recentlyUnlockedSet).filter(x => x !== r)
         }, 4000)
       }
     }
@@ -406,403 +390,527 @@
 </script>
 
 <section class="base-view" aria-label="Terra Base hub">
-  <div class="card title-card">
-    <h1>Terra Base</h1>
-    <p class="subtitle">
-      Pilot {$playerSave?.playerId ?? 'Unknown'} | Dives: {stats.totalDivesCompleted} | Facts:
-      {$playerSave?.learnedFacts.length ?? 0}
-    </p>
-    {#if activeTitle}
-      <p class="active-title-display" aria-label="Active title: {activeTitle}">{activeTitle}</p>
-    {/if}
-    {#if stats.currentStreak > 0}
+  <!-- === ROOM TAB BAR === -->
+  <nav class="room-tab-bar" aria-label="Dome rooms">
+    {#each BALANCE.DOME_ROOMS as room}
+      {@const unlocked = isRoomUnlocked(room.id)}
+      {@const active = currentRoom === room.id}
+      {@const isNew = recentlyUnlockedSet.includes(room.id)}
       <button
-        class="streak-display streak-clickable"
+        class="room-tab"
+        class:room-tab-active={active}
+        class:room-tab-locked={!unlocked}
+        class:room-tab-new={isNew}
         type="button"
-        onclick={handleStreakPanel}
-        aria-label="View streak details — {stats.currentStreak} day streak"
+        onclick={() => handleRoomSelect(room.id)}
+        disabled={!unlocked}
+        aria-pressed={active}
+        aria-label={unlocked ? room.name : room.name + ' — unlocks at ' + room.unlockDives + ' dives'}
+        title={unlocked ? room.description : 'Unlocks after ' + room.unlockDives + ' dives (you have ' + totalDives + ')'}
       >
-        <span class="streak-flame">FIRE</span>
-        <span class="streak-count">{stats.currentStreak} day streak</span>
-        {#if stats.currentStreak >= stats.bestStreak && stats.currentStreak > 1}
-          <span class="streak-best">BEST!</span>
-        {/if}
-        {#if hasNewMilestone}
-          <span class="milestone-badge" aria-label="New milestone available">Milestone!</span>
+        <span class="room-tab-icon" aria-hidden="true">{unlocked ? room.icon : '🔒'}</span>
+        <span class="room-tab-name">{room.name.split(' ')[0]}</span>
+        {#if !unlocked}
+          <span class="room-tab-unlock-hint">{room.unlockDives - totalDives}d</span>
         {/if}
       </button>
-    {/if}
-    {#if streakAtRisk}
-      <p class="streak-at-risk" aria-live="polite">Streak at risk! Dive today to keep it!</p>
-    {/if}
-  </div>
+    {/each}
+  </nav>
 
-  <div class="giai-card" class:giai-visible={giaiVisible} aria-label="GIAI comment" aria-live="polite">
-    <div class="giai-avatar-col">
-      <span class="giai-avatar-emoji" aria-hidden="true">{idleEmoji}</span>
-      <span class="giai-name">{GIAI_NAME}</span>
-    </div>
-    <div class="giai-body">
-      <span class="giai-text">{giaiComment}</span>
-      <details class="giai-about">
-        <summary class="giai-about-toggle">About</summary>
-        <div class="giai-about-content">
-          <strong>{GIAI_FULL_NAME}</strong>
-          <span class="giai-tagline">{GIAI_TAGLINE}</span>
-        </div>
-      </details>
-    </div>
-  </div>
+  <!-- === SCROLLABLE ROOM CONTENT === -->
+  <div class="room-content">
 
-  {#if revivedFossilCount > 0}
-    <div class="card companion-card">
-      <CompanionBadge />
-    </div>
-  {/if}
-
-  <div class="card resources-card" aria-label="Resources">
-    <div class="resource-item">
-      <span class="resource-dot oxygen-dot" aria-hidden="true"></span>
-      <span class="resource-label">Oxygen Tanks</span>
-      <span class="resource-value">{oxygen}</span>
-    </div>
-    <div class="resource-item">
-      <span class="resource-dot dust-dot" aria-hidden="true"></span>
-      <span class="resource-label">Dust</span>
-      <span class="resource-value">{dust}</span>
-    </div>
-    <div class="resource-item">
-      <span class="resource-dot shard-dot" aria-hidden="true"></span>
-      <span class="resource-label">Shard</span>
-      <span class="resource-value">{shard}</span>
-    </div>
-    <div class="resource-item">
-      <span class="resource-dot crystal-dot" aria-hidden="true"></span>
-      <span class="resource-label">Crystal</span>
-      <span class="resource-value">{crystal}</span>
-    </div>
-    <div class="resource-item">
-      <span class="resource-dot geode-dot" aria-hidden="true"></span>
-      <span class="resource-label">Geode</span>
-      <span class="resource-value">{geode}</span>
-    </div>
-    <div class="resource-item">
-      <span class="resource-dot essence-dot" aria-hidden="true"></span>
-      <span class="resource-label">Essence</span>
-      <span class="resource-value">{essence}</span>
-    </div>
-    <div class="convert-row">
-      <button class="convert-minerals-btn" type="button" onclick={handleOpenConverter}>
-        Convert Minerals
-      </button>
-    </div>
-  </div>
-
-  {#if showConverter}
-    <MineralConverter onClose={() => { showConverter = false }} />
-  {/if}
-
-  <!-- Daily Deals -->
-  <div class="card deals-card" aria-label="Daily Deals">
-    <div class="deals-header">
-      <h2 class="deals-title">Daily Deals</h2>
-      <span class="deals-timer" aria-label="Time until reset">
-        Resets in {resetTimer.hours}h {resetTimer.minutes}m
-      </span>
-    </div>
-    <div class="deals-grid">
-      {#each todaysDeals as deal (deal.id)}
-        {@const purchased = isDealPurchased(deal)}
-        {@const affordable = canAffordDeal(deal)}
-        <div
-          class="deal-card"
-          class:deal-purchased={purchased}
-          class:deal-unaffordable={!affordable && !purchased}
-          aria-label="{deal.name} deal"
-        >
-          <div class="deal-icon" aria-hidden="true">{deal.icon}</div>
-          <div class="deal-name">{deal.name}</div>
-          <div class="deal-desc">{deal.description}</div>
-          <div class="deal-cost" aria-label="Cost: {formatDealCost(deal)}">
-            {formatDealCost(deal)}
-          </div>
-          <button
-            class="deal-buy-btn"
-            class:deal-btn-sold={purchased}
-            type="button"
-            disabled={purchased || !affordable}
-            onclick={() => handleBuyDeal(deal)}
-            aria-label={purchased ? 'Already purchased' : 'Buy ' + deal.name}
-          >
-            {purchased ? 'Sold Out' : 'Buy'}
-          </button>
-        </div>
-      {/each}
-    </div>
-  </div>
-
-  <!-- Review Ritual Banner -->
-  {#if ritualState.active}
-    <div
-      class="ritual-banner"
-      class:ritual-completed={ritualState.completed}
-      aria-label={ritualState.type === 'morning' ? 'Morning review ritual' : 'Evening review ritual'}
-    >
-      {#if ritualState.completed}
-        <span class="ritual-check">&#10003;</span>
-        <span class="ritual-complete-text">
-          {ritualState.type === 'morning' ? 'Morning' : 'Evening'} ritual complete!
-        </span>
-      {:else}
-        <div class="ritual-info">
-          <span class="ritual-icon">{ritualState.type === 'morning' ? '&#9728;' : '&#127769;'}</span>
-          <div class="ritual-text">
-            {#if ritualState.type === 'morning'}
-              <span class="ritual-title">Morning Review</span>
-              <span class="ritual-desc">Start your day with {BALANCE.RITUAL_CARD_COUNT} cards (+{BALANCE.RITUAL_BONUS_DUST} dust bonus!)</span>
-            {:else}
-              <span class="ritual-title">Evening Review</span>
-              <span class="ritual-desc">End your day right (+{BALANCE.RITUAL_BONUS_DUST} dust bonus!)</span>
-            {/if}
-          </div>
-        </div>
-        {#if hasDueReviews}
-          <button class="ritual-start-btn" type="button" onclick={handleStartRitual}>
-            Start Ritual
-          </button>
-        {:else}
-          <span class="ritual-no-cards">No cards due</span>
-        {/if}
-      {/if}
-    </div>
-  {/if}
-
-  <div class="card actions-card" aria-label="Base actions">
-    <button class="action-button dive-button" type="button" onclick={handleDive}>Dive</button>
-
-    <!-- Dive insurance toggle -->
-    <div class="insurance-row" aria-label="Dive insurance options">
-      <button
-        class="insurance-toggle"
-        class:insurance-active={insuredDive}
-        class:insurance-disabled={!canAffordInsurance && !insuredDive}
-        type="button"
-        onclick={handleToggleInsurance}
-        disabled={!canAffordInsurance && !insuredDive}
-        aria-pressed={insuredDive}
-        title={insuredDive
-          ? 'Click to cancel dive insurance'
-          : canAffordInsurance
-            ? 'Click to insure this dive — costs ' + insuranceCost + ' dust, prevents item loss if O2 runs out'
-            : 'Not enough dust to insure (need ' + insuranceCost + ')'}
-      >
-        <span class="insurance-icon">{insuredDive ? '[INSURED]' : '[Insure Dive]'}</span>
-        <span class="insurance-cost">
-          {#if insuranceCost > 0}
-            {insuranceCost} dust
-          {:else}
-            No dust
+    {#if currentRoom === 'command'}
+      <!-- ========== COMMAND CENTER ========== -->
+      <div class="card title-card">
+        <div class="title-header-row">
+          <h1>Terra Base</h1>
+          {#if onSettings}
+            <button
+              class="gear-btn"
+              type="button"
+              onclick={onSettings}
+              aria-label="Open settings"
+              title="Settings"
+            >&#9881;</button>
           {/if}
-        </span>
-      </button>
-      {#if insuredDive}
-        <span class="insurance-note">Insured: no item loss if O2 depletes</span>
-      {:else}
-        <span class="insurance-note dim">Uninsured: lose 30% of items on O2 depletion</span>
-      {/if}
-    </div>
-
-    <button
-      class="action-button study-button"
-      class:dimmed={!hasDueReviews}
-      type="button"
-      onclick={handleStudy}
-      aria-label="Start study session"
-    >
-      <span>Study</span>
-      {#if hasDueReviews}
-        <span class="count-badge">{dueReviewCount}</span>
-      {:else}
-        <span class="empty-note">No reviews due</span>
-      {/if}
-    </button>
-
-    {#if hasArtifacts}
-      <button class="action-button artifact-button" type="button" onclick={handleReviewArtifact}>
-        <span>Artifacts</span>
-        <span class="count-badge">{artifactCount}</span>
-      </button>
-    {/if}
-
-    <button class="action-button materializer-button" type="button" onclick={handleMaterializer}>
-      Materializer
-    </button>
-
-    <button class="action-button premium-materializer-button" type="button" onclick={handlePremiumMaterializer}>
-      <span>Premium Workshop</span>
-      <span class="premium-badges" aria-label="Premium material counts">
-        {#if ($playerSave?.premiumMaterials?.['star_dust'] ?? 0) > 0}
-          <span class="pm-badge pm-star">✨{$playerSave!.premiumMaterials['star_dust']}</span>
+        </div>
+        <p class="subtitle">
+          Pilot {$playerSave?.playerId ?? 'Unknown'} | Dives: {stats.totalDivesCompleted} | Facts:
+          {$playerSave?.learnedFacts.length ?? 0}
+        </p>
+        {#if activeTitle}
+          <p class="active-title-display" aria-label="Active title: {activeTitle}">{activeTitle}</p>
         {/if}
-        {#if ($playerSave?.premiumMaterials?.['void_crystal'] ?? 0) > 0}
-          <span class="pm-badge pm-void">💎{$playerSave!.premiumMaterials['void_crystal']}</span>
+        {#if stats.currentStreak > 0}
+          <button
+            class="streak-display streak-clickable"
+            type="button"
+            onclick={handleStreakPanel}
+            aria-label="View streak details — {stats.currentStreak} day streak"
+          >
+            <span class="streak-flame">FIRE</span>
+            <span class="streak-count">{stats.currentStreak} day streak</span>
+            {#if stats.currentStreak >= stats.bestStreak && stats.currentStreak > 1}
+              <span class="streak-best">BEST!</span>
+            {/if}
+            {#if hasNewMilestone}
+              <span class="milestone-badge" aria-label="New milestone available">Milestone!</span>
+            {/if}
+          </button>
         {/if}
-        {#if ($playerSave?.premiumMaterials?.['ancient_essence'] ?? 0) > 0}
-          <span class="pm-badge pm-essence">🌀{$playerSave!.premiumMaterials['ancient_essence']}</span>
+        {#if streakAtRisk}
+          <p class="streak-at-risk" aria-live="polite">Streak at risk! Dive today to keep it!</p>
         {/if}
-      </span>
-    </button>
+      </div>
 
-    <button class="action-button cosmetics-button" type="button" onclick={handleCosmetics}>
-      Cosmetics Shop
-    </button>
+      <div class="gaia-card" class:gaia-visible={gaiaVisible} aria-label="GAIA comment" aria-live="polite">
+        <div class="gaia-avatar-col">
+          <span class="gaia-avatar-emoji" aria-hidden="true">{idleEmoji}</span>
+          <span class="gaia-name">{GAIA_NAME}</span>
+        </div>
+        <div class="gaia-body">
+          <span class="gaia-text">{gaiaComment}</span>
+          <details class="gaia-about">
+            <summary class="gaia-about-toggle">About</summary>
+            <div class="gaia-about-content">
+              <strong>{GAIA_FULL_NAME}</strong>
+              <span class="gaia-tagline">{GAIA_TAGLINE}</span>
+            </div>
+          </details>
+        </div>
+      </div>
 
-    <button class="action-button tree-button" type="button" onclick={handleViewTree}>
-      Knowledge Tree
-    </button>
-
-    <button class="action-button fossil-button" type="button" onclick={handleFossils}>
-      <span>Fossil Gallery</span>
-      {#if discoveredFossilCount > 0}
-        <span class="fossil-count">{revivedFossilCount}/{discoveredFossilCount}</span>
-      {:else}
-        <span class="empty-note">No fossils yet</span>
-      {/if}
-    </button>
-
-    <button class="action-button knowledge-store-button" type="button" onclick={handleKnowledgeStore}>
-      <span>Knowledge Store</span>
-      <span class="kp-badge">{kp} KP</span>
-    </button>
-
-    <button class="action-button zoo-button" type="button" onclick={handleZoo} aria-label="Visit The Zoo">
-      <span>The Zoo</span>
       {#if revivedFossilCount > 0}
-        <span class="zoo-count">{revivedFossilCount}/10</span>
-      {:else}
-        <span class="empty-note">No companions yet</span>
+        <div class="card companion-card">
+          <CompanionBadge />
+        </div>
       {/if}
-    </button>
 
-    <button class="action-button farm-button" type="button" onclick={handleFarm} aria-label="Visit The Farm">
-      <span>The Farm</span>
-      {#if hasFarmResources}
-        <span class="farm-badge">Resources ready!</span>
-      {:else}
-        <span class="empty-note">Passive production</span>
-      {/if}
-    </button>
-  </div>
-
-  <div class="card knowledge-card" aria-label="Learned facts">
-    <div class="knowledge-header">
-      <h2>Knowledge</h2>
-      <span class="disc-counter" aria-label="Data Discs collected">
-        Data Discs: {discCount}/{totalDiscs}
-      </span>
-    </div>
-    {#if discCount > 0}
-      <div class="disc-badges" aria-label="Unlocked data discs">
-        {#each unlockedDiscObjects as disc}
-          <span class="disc-badge" title="{disc.name}: {disc.description}">
-            {disc.icon}
-          </span>
-        {/each}
+      <div class="card resources-card" aria-label="Resources">
+        <div class="resource-item">
+          <span class="resource-dot oxygen-dot" aria-hidden="true"></span>
+          <span class="resource-label">Oxygen Tanks</span>
+          <span class="resource-value">{oxygen}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot dust-dot" aria-hidden="true"></span>
+          <span class="resource-label">Dust</span>
+          <span class="resource-value">{dust}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot shard-dot" aria-hidden="true"></span>
+          <span class="resource-label">Shard</span>
+          <span class="resource-value">{shard}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot crystal-dot" aria-hidden="true"></span>
+          <span class="resource-label">Crystal</span>
+          <span class="resource-value">{crystal}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot geode-dot" aria-hidden="true"></span>
+          <span class="resource-label">Geode</span>
+          <span class="resource-value">{geode}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot essence-dot" aria-hidden="true"></span>
+          <span class="resource-label">Essence</span>
+          <span class="resource-value">{essence}</span>
+        </div>
       </div>
-    {/if}
-    {#if learnedFactsWithMastery.length === 0}
-      <p class="empty-note">No learned facts yet. Start a dive to discover artifacts.</p>
-    {:else}
-      <div class="facts-list">
-        {#each learnedFactsWithMastery as entry}
-          <div class="fact-row">
-            <span class="fact-id">{entry.statement}</span>
-            <span class={`mastery-badge mastery-${entry.mastery}`}>{formatMasteryLabel(entry.mastery)}</span>
+
+      <div class="card dive-card" aria-label="Dive actions">
+        <button class="action-button dive-button" type="button" onclick={handleDive}>
+          <span>Dive</span>
+          <span class="dive-arrow" aria-hidden="true">&#8595;</span>
+        </button>
+
+        <!-- Dive insurance toggle -->
+        <div class="insurance-row" aria-label="Dive insurance options">
+          <button
+            class="insurance-toggle"
+            class:insurance-active={insuredDive}
+            class:insurance-disabled={!canAffordInsurance && !insuredDive}
+            type="button"
+            onclick={handleToggleInsurance}
+            disabled={!canAffordInsurance && !insuredDive}
+            aria-pressed={insuredDive}
+            title={insuredDive
+              ? 'Click to cancel dive insurance'
+              : canAffordInsurance
+                ? 'Click to insure this dive — costs ' + insuranceCost + ' dust, prevents item loss if O2 runs out'
+                : 'Not enough dust to insure (need ' + insuranceCost + ')'}
+          >
+            <span class="insurance-icon">{insuredDive ? '[INSURED]' : '[Insure Dive]'}</span>
+            <span class="insurance-cost">
+              {#if insuranceCost > 0}
+                {insuranceCost} dust
+              {:else}
+                No dust
+              {/if}
+            </span>
+          </button>
+          {#if insuredDive}
+            <span class="insurance-note">Insured: no item loss if O2 depletes</span>
+          {:else}
+            <span class="insurance-note dim">Uninsured: lose 30% of items on O2 depletion</span>
+          {/if}
+        </div>
+
+        {#if hasArtifacts}
+          <button class="action-button artifact-button" type="button" onclick={handleReviewArtifact}>
+            <span>Artifacts to Review</span>
+            <span class="count-badge">{artifactCount}</span>
+          </button>
+        {/if}
+      </div>
+
+      <div class="card stats-card" aria-label="Player statistics">
+        <h2>Stats</h2>
+        <div class="stats-grid">
+          <span>Total dives: {stats.totalDivesCompleted}</span>
+          <span>Blocks mined: {stats.totalBlocksMined}</span>
+          <span>Facts learned: {stats.totalFactsLearned}</span>
+          <span>Deepest layer: {stats.deepestLayerReached}</span>
+          <span>Current streak: {stats.currentStreak}</span>
+          <span>Best streak: {stats.bestStreak}</span>
+        </div>
+      </div>
+
+    {:else if currentRoom === 'lab'}
+      <!-- ========== RESEARCH LAB ========== -->
+      <div class="card room-header-card">
+        <div class="room-header-info">
+          <span class="room-header-icon" aria-hidden="true">🔬</span>
+          <div>
+            <h2 class="room-header-title">Research Lab</h2>
+            <p class="room-header-desc">Study, review, and expand your knowledge</p>
           </div>
-        {/each}
+        </div>
+      </div>
+
+      <div class="gaia-card" class:gaia-visible={gaiaVisible} aria-label="GAIA comment" aria-live="polite">
+        <div class="gaia-avatar-col">
+          <span class="gaia-avatar-emoji" aria-hidden="true">{idleEmoji}</span>
+          <span class="gaia-name">{GAIA_NAME}</span>
+        </div>
+        <div class="gaia-body">
+          <span class="gaia-text">{gaiaComment}</span>
+        </div>
+      </div>
+
+      <!-- Review Ritual Banner -->
+      {#if ritualState.active}
+        <div
+          class="ritual-banner"
+          class:ritual-completed={ritualState.completed}
+          aria-label={ritualState.type === 'morning' ? 'Morning review ritual' : 'Evening review ritual'}
+        >
+          {#if ritualState.completed}
+            <span class="ritual-check">&#10003;</span>
+            <span class="ritual-complete-text">
+              {ritualState.type === 'morning' ? 'Morning' : 'Evening'} ritual complete!
+            </span>
+          {:else}
+            <div class="ritual-info">
+              <span class="ritual-icon">{ritualState.type === 'morning' ? '&#9728;' : '&#127769;'}</span>
+              <div class="ritual-text">
+                {#if ritualState.type === 'morning'}
+                  <span class="ritual-title">Morning Review</span>
+                  <span class="ritual-desc">Start your day with {BALANCE.RITUAL_CARD_COUNT} cards (+{BALANCE.RITUAL_BONUS_DUST} dust bonus!)</span>
+                {:else}
+                  <span class="ritual-title">Evening Review</span>
+                  <span class="ritual-desc">End your day right (+{BALANCE.RITUAL_BONUS_DUST} dust bonus!)</span>
+                {/if}
+              </div>
+            </div>
+            {#if hasDueReviews}
+              <button class="ritual-start-btn" type="button" onclick={handleStartRitual}>
+                Start Ritual
+              </button>
+            {:else}
+              <span class="ritual-no-cards">No cards due</span>
+            {/if}
+          {/if}
+        </div>
+      {/if}
+
+      <div class="card actions-card" aria-label="Lab actions">
+        <button
+          class="action-button study-button"
+          class:dimmed={!hasDueReviews}
+          type="button"
+          onclick={handleStudy}
+          aria-label="Start study session"
+        >
+          <span>Study Session</span>
+          {#if hasDueReviews}
+            <span class="count-badge">{dueReviewCount} due</span>
+          {:else}
+            <span class="empty-note">No reviews due</span>
+          {/if}
+        </button>
+
+        <button class="action-button knowledge-store-button" type="button" onclick={handleKnowledgeStore}>
+          <span>Knowledge Store</span>
+          <span class="kp-badge">{kp} KP</span>
+        </button>
+      </div>
+
+      <div class="card lab-tip-card" aria-label="Lab tip">
+        <p class="lab-tip-text">Tip: Correct answers during dives earn dust. Wrong answers drain oxygen — but you'll remember them better!</p>
+      </div>
+
+    {:else if currentRoom === 'workshop'}
+      <!-- ========== WORKSHOP ========== -->
+      <div class="card room-header-card">
+        <div class="room-header-info">
+          <span class="room-header-icon" aria-hidden="true">⚒️</span>
+          <div>
+            <h2 class="room-header-title">Workshop</h2>
+            <p class="room-header-desc">Craft equipment and convert minerals</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card resources-card" aria-label="Mineral resources">
+        <div class="resource-item">
+          <span class="resource-dot dust-dot" aria-hidden="true"></span>
+          <span class="resource-label">Dust</span>
+          <span class="resource-value">{dust}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot shard-dot" aria-hidden="true"></span>
+          <span class="resource-label">Shard</span>
+          <span class="resource-value">{shard}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot crystal-dot" aria-hidden="true"></span>
+          <span class="resource-label">Crystal</span>
+          <span class="resource-value">{crystal}</span>
+        </div>
+        <div class="resource-item">
+          <span class="resource-dot geode-dot" aria-hidden="true"></span>
+          <span class="resource-label">Geode</span>
+          <span class="resource-value">{geode}</span>
+        </div>
+      </div>
+
+      <div class="card actions-card" aria-label="Workshop actions">
+        <button class="action-button materializer-button" type="button" onclick={handleMaterializer}>
+          <span>Materializer</span>
+          <span class="action-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+
+        <button class="action-button convert-btn" type="button" onclick={handleOpenConverter}>
+          <span>Convert Minerals</span>
+          <span class="action-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+
+      <div class="card workshop-info-card" aria-label="Workshop tip">
+        <p class="workshop-tip">Craft permanent upgrades and consumables in the Materializer. Convert lower-tier minerals to higher tiers using a 110:1 ratio.</p>
+      </div>
+
+      {#if showConverter}
+        <MineralConverter onClose={() => { showConverter = false }} />
+      {/if}
+
+    {:else if currentRoom === 'museum'}
+      <!-- ========== MUSEUM ========== -->
+      <div class="card room-header-card">
+        <div class="room-header-info">
+          <span class="room-header-icon" aria-hidden="true">🏛️</span>
+          <div>
+            <h2 class="room-header-title">Museum</h2>
+            <p class="room-header-desc">Your fossil discoveries and companions</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card museum-progress-card" aria-label="Fossil collection progress">
+        <div class="museum-progress-header">
+          <h2>Fossil Collection</h2>
+          <span class="museum-progress-count">{discoveredFossilCount} species found</span>
+        </div>
+        {#if discoveredFossilCount === 0}
+          <p class="empty-note">No fossils discovered yet. Dig deep — fossils appear below 35% depth.</p>
+        {:else}
+          <p class="museum-revived-summary">Revived: {revivedFossilCount} / {discoveredFossilCount}</p>
+        {/if}
+      </div>
+
+      <div class="card actions-card" aria-label="Museum actions">
+        <button class="action-button fossil-button" type="button" onclick={handleFossils}>
+          <span>Fossil Gallery</span>
+          {#if discoveredFossilCount > 0}
+            <span class="fossil-count">{revivedFossilCount}/{discoveredFossilCount}</span>
+          {:else}
+            <span class="empty-note">No fossils yet</span>
+          {/if}
+        </button>
+
+        <button class="action-button zoo-button" type="button" onclick={handleZoo} aria-label="Visit The Zoo">
+          <span>The Zoo</span>
+          {#if revivedFossilCount > 0}
+            <span class="zoo-count">{revivedFossilCount}/10</span>
+          {:else}
+            <span class="empty-note">No companions yet</span>
+          {/if}
+        </button>
+      </div>
+
+      <div class="card museum-zoo-card" aria-label="Companion Zoo">
+        <h2>Companion Zoo</h2>
+        <p class="empty-note museum-zoo-placeholder">Revive fossils in the gallery to add companions to your zoo.</p>
+      </div>
+
+    {:else if currentRoom === 'market'}
+      <!-- ========== MARKET ========== -->
+      <div class="card room-header-card">
+        <div class="room-header-info">
+          <span class="room-header-icon" aria-hidden="true">🏪</span>
+          <div>
+            <h2 class="room-header-title">Market</h2>
+            <p class="room-header-desc">Cosmetics, daily deals and special offers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card actions-card" aria-label="Market actions">
+        <button class="action-button cosmetics-button" type="button" onclick={handleCosmetics}>
+          <span>Cosmetics Shop</span>
+          <span class="action-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+
+        <button class="action-button farm-button" type="button" onclick={handleFarm} aria-label="Visit The Farm">
+          <span>The Farm</span>
+          {#if hasFarmResources}
+            <span class="farm-badge">Resources ready!</span>
+          {:else}
+            <span class="empty-note">Passive production</span>
+          {/if}
+        </button>
+      </div>
+
+      <!-- Daily Deals -->
+      <div class="card deals-card" aria-label="Daily Deals">
+        <div class="deals-header">
+          <h2 class="deals-title">Daily Deals</h2>
+          <span class="deals-timer" aria-label="Time until reset">
+            Resets in {resetTimer.hours}h {resetTimer.minutes}m
+          </span>
+        </div>
+        <div class="deals-grid">
+          {#each todaysDeals as deal (deal.id)}
+            {@const purchased = isDealPurchased(deal)}
+            {@const affordable = canAffordDeal(deal)}
+            <div
+              class="deal-card"
+              class:deal-purchased={purchased}
+              class:deal-unaffordable={!affordable && !purchased}
+              aria-label="{deal.name} deal"
+            >
+              <div class="deal-icon" aria-hidden="true">{deal.icon}</div>
+              <div class="deal-name">{deal.name}</div>
+              <div class="deal-desc">{deal.description}</div>
+              <div class="deal-cost" aria-label="Cost: {formatDealCost(deal)}">
+                {formatDealCost(deal)}
+              </div>
+              <button
+                class="deal-buy-btn"
+                class:deal-btn-sold={purchased}
+                type="button"
+                disabled={purchased || !affordable}
+                onclick={() => handleBuyDeal(deal)}
+                aria-label={purchased ? 'Already purchased' : 'Buy ' + deal.name}
+              >
+                {purchased ? 'Sold Out' : 'Buy'}
+              </button>
+            </div>
+          {/each}
+        </div>
+      </div>
+
+    {:else if currentRoom === 'archive'}
+      <!-- ========== ARCHIVE ========== -->
+      <div class="card room-header-card">
+        <div class="room-header-info">
+          <span class="room-header-icon" aria-hidden="true">📚</span>
+          <div>
+            <h2 class="room-header-title">Archive</h2>
+            <p class="room-header-desc">Knowledge tree, data discs and mastery records</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card actions-card" aria-label="Archive actions">
+        <button class="action-button tree-button" type="button" onclick={handleViewTree}>
+          <span>Knowledge Tree</span>
+          <span class="action-arrow" aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+
+      <div class="card knowledge-card" aria-label="Knowledge overview">
+        <div class="knowledge-header">
+          <h2>Knowledge</h2>
+          <span class="disc-counter" aria-label="Data Discs collected">
+            Data Discs: {discCount}/{totalDiscs}
+          </span>
+        </div>
+        {#if discCount > 0}
+          <div class="disc-badges" aria-label="Unlocked data discs">
+            {#each unlockedDiscObjects as disc}
+              <span class="disc-badge" title="{disc.name}: {disc.description}">
+                {disc.icon}
+              </span>
+            {/each}
+          </div>
+        {/if}
+
+        <div class="mastery-summary" aria-label="Mastery breakdown">
+          <div class="mastery-row">
+            <span class="mastery-badge mastery-new">New</span>
+            <span class="mastery-summary-count">{masteryBreakdown.new}</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-badge mastery-learning">Learning</span>
+            <span class="mastery-summary-count">{masteryBreakdown.learning}</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-badge mastery-familiar">Familiar</span>
+            <span class="mastery-summary-count">{masteryBreakdown.familiar}</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-badge mastery-known">Known</span>
+            <span class="mastery-summary-count">{masteryBreakdown.known}</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-badge mastery-mastered">Mastered</span>
+            <span class="mastery-summary-count">{masteryBreakdown.mastered}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card knowledge-card" aria-label="Learned facts">
+        <h2>Learned Facts ({learnedFactsWithMastery.length})</h2>
+        {#if learnedFactsWithMastery.length === 0}
+          <p class="empty-note">No learned facts yet. Start a dive to discover artifacts.</p>
+        {:else}
+          <div class="facts-list">
+            {#each learnedFactsWithMastery as entry}
+              <div class="fact-row">
+                <span class="fact-id">{entry.statement}</span>
+                <span class={`mastery-badge mastery-${entry.mastery}`}>{formatMasteryLabel(entry.mastery)}</span>
+              </div>
+            {/each}
+          </div>
+        {/if}
       </div>
     {/if}
-  </div>
 
-  <div class="card stats-card" aria-label="Player statistics">
-    <h2>Stats</h2>
-    <div class="stats-grid">
-      <span>Total dives: {stats.totalDivesCompleted}</span>
-      <span>Blocks mined: {stats.totalBlocksMined}</span>
-      <span>Facts learned: {stats.totalFactsLearned}</span>
-      <span>Deepest layer: {stats.deepestLayerReached}</span>
-      <span>Current streak: {stats.currentStreak}</span>
-      <span>Best streak: {stats.bestStreak}</span>
-    </div>
-  </div>
-
-  <div class="card settings-card" aria-label="Settings">
-    <h2>Settings</h2>
-    <div class="setting-row">
-      <div class="setting-info">
-        <span class="setting-label">Sprite Quality</span>
-        <span class="setting-desc">
-          {$spriteResolution === 'low' ? 'Low (32px)' : 'High (256px)'}
-        </span>
-      </div>
-      <button class="setting-toggle" type="button" onclick={handleSpriteQuality}>
-        {$spriteResolution === 'low' ? 'Switch to High' : 'Switch to Low'}
-      </button>
-    </div>
-    <p class="setting-note">Changing sprite quality reloads the page.</p>
-
-    <div class="setting-row setting-row-col" aria-label="GIAI Mood">
-      <div class="setting-info">
-        <span class="setting-label">GIAI Mood</span>
-        <span class="setting-desc">
-          {$giaiMood === 'enthusiastic' ? 'Upbeat and encouraging' : $giaiMood === 'snarky' ? 'Dry wit and sarcasm' : 'Measured and mindful'}
-        </span>
-      </div>
-      <div class="mood-buttons" role="group" aria-label="Choose GIAI mood">
-        <button
-          class="mood-btn"
-          class:mood-active={$giaiMood === 'snarky'}
-          type="button"
-          onclick={() => handleMoodSelect('snarky')}
-          aria-pressed={$giaiMood === 'snarky'}
-        >Snarky</button>
-        <button
-          class="mood-btn"
-          class:mood-active={$giaiMood === 'enthusiastic'}
-          type="button"
-          onclick={() => handleMoodSelect('enthusiastic')}
-          aria-pressed={$giaiMood === 'enthusiastic'}
-        >Enthusiastic</button>
-        <button
-          class="mood-btn"
-          class:mood-active={$giaiMood === 'calm'}
-          type="button"
-          onclick={() => handleMoodSelect('calm')}
-          aria-pressed={$giaiMood === 'calm'}
-        >Calm</button>
-      </div>
-    </div>
-
-    <div class="setting-row setting-row-col" aria-label="GIAI Chattiness">
-      <div class="setting-info">
-        <span class="setting-label">Chattiness</span>
-        <span class="setting-desc">
-          {$giaiChattiness === 0 ? 'Silent' : $giaiChattiness <= 3 ? 'Quiet' : $giaiChattiness <= 6 ? 'Moderate' : $giaiChattiness <= 9 ? 'Talkative' : 'Non-stop'}
-          ({$giaiChattiness}/10)
-        </span>
-      </div>
-      <input
-        class="chattiness-slider"
-        type="range"
-        min="0"
-        max="10"
-        step="1"
-        value={$giaiChattiness}
-        oninput={handleChattinessChange}
-        aria-label="GIAI chattiness level, 0 to 10"
-      />
-    </div>
-  </div>
+  </div><!-- end .room-content -->
 </section>
 
 <style>
@@ -811,11 +919,135 @@
     inset: 0;
     pointer-events: auto;
     z-index: 30;
-    overflow-y: auto;
+    overflow: hidden;
     background: var(--color-bg);
-    padding: 8px;
+    padding: 0;
     font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- Room Tab Bar ---- */
+  .room-tab-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    background: color-mix(in srgb, var(--color-bg) 60%, #000 40%);
+    border-bottom: 2px solid rgba(78, 204, 163, 0.2);
+    padding: 6px 6px 0;
+    flex-shrink: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .room-tab-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .room-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 10px 6px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    min-width: 58px;
+    position: relative;
+  }
+
+  .room-tab:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .room-tab-active {
+    color: #4ecca3;
+    border-bottom-color: #4ecca3;
+    background: color-mix(in srgb, #4ecca3 10%, transparent 90%);
+  }
+
+  .room-tab-locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @keyframes room-unlock-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+    50% { box-shadow: 0 0 0 6px rgba(255, 215, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+  }
+
+  .room-tab-new {
+    animation: room-unlock-pulse 0.8s ease-out 3;
+    color: #ffd700;
+    border-bottom-color: #ffd700;
+  }
+
+  .room-tab-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .room-tab-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  .room-tab-unlock-hint {
+    font-size: 0.55rem;
+    color: var(--color-text-dim);
+    opacity: 0.8;
+    line-height: 1;
+  }
+
+  /* ---- Scrollable room content ---- */
+  .room-content {
+    flex: 1;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 0 0 8px;
+  }
+
+  /* ---- Room header cards ---- */
+  .room-header-card {
+    margin: 8px 8px 4px;
+    padding: 12px 16px;
+  }
+
+  .room-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .room-header-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .room-header-title {
+    color: var(--color-warning);
+    font-size: 1.1rem;
+    margin: 0 0 2px;
+  }
+
+  .room-header-desc {
+    color: var(--color-text-dim);
+    font-size: 0.78rem;
+    margin: 0;
+    line-height: 1.3;
   }
 
   .card {
@@ -846,6 +1078,38 @@
     color: var(--color-text);
     font-size: 1rem;
     margin-bottom: 10px;
+  }
+
+  /* Title card header row — h1 + gear button side by side */
+  .title-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .gear-btn {
+    flex-shrink: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 4px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.12s, background 0.12s;
+    margin-top: 4px;
+  }
+
+  .gear-btn:hover,
+  .gear-btn:focus-visible {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-primary) 20%, transparent 80%);
+  }
+
+  .gear-btn:active {
+    transform: scale(0.93);
   }
 
   .subtitle {
@@ -1499,7 +1763,7 @@
     }
   }
 
-  .giai-card {
+  .gaia-card {
     margin: 8px;
     padding: 10px 14px;
     background: rgba(20, 20, 40, 0.6);
@@ -1513,11 +1777,11 @@
     transition: opacity 0.4s ease;
   }
 
-  .giai-visible {
+  .gaia-visible {
     opacity: 1;
   }
 
-  .giai-avatar-col {
+  .gaia-avatar-col {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1525,12 +1789,12 @@
     flex-shrink: 0;
   }
 
-  .giai-avatar-emoji {
+  .gaia-avatar-emoji {
     font-size: 2rem;
     line-height: 1;
   }
 
-  .giai-name {
+  .gaia-name {
     color: #22d9d9;
     font-size: 0.6rem;
     font-weight: 700;
@@ -1538,7 +1802,7 @@
     white-space: nowrap;
   }
 
-  .giai-body {
+  .gaia-body {
     flex: 1;
     min-width: 0;
     display: flex;
@@ -1546,17 +1810,17 @@
     gap: 4px;
   }
 
-  .giai-text {
+  .gaia-text {
     color: #b0b0c8;
     font-style: italic;
     line-height: 1.4;
   }
 
-  .giai-about {
+  .gaia-about {
     font-size: 0.7rem;
   }
 
-  .giai-about-toggle {
+  .gaia-about-toggle {
     color: #ffd369;
     cursor: pointer;
     list-style: none;
@@ -1566,19 +1830,19 @@
     user-select: none;
   }
 
-  .giai-about-toggle::-webkit-details-marker {
+  .gaia-about-toggle::-webkit-details-marker {
     display: none;
   }
 
-  .giai-about-toggle::before {
+  .gaia-about-toggle::before {
     content: '+ ';
   }
 
-  details[open] .giai-about-toggle::before {
+  details[open] .gaia-about-toggle::before {
     content: '- ';
   }
 
-  .giai-about-content {
+  .gaia-about-content {
     margin-top: 4px;
     padding: 6px 8px;
     background: rgba(255, 211, 105, 0.07);
@@ -1588,13 +1852,13 @@
     gap: 2px;
   }
 
-  .giai-about-content strong {
+  .gaia-about-content strong {
     color: #e0e0f0;
     font-size: 0.72rem;
     font-weight: 700;
   }
 
-  .giai-tagline {
+  .gaia-tagline {
     color: #80809a;
     font-style: italic;
     font-size: 0.68rem;
@@ -1835,4 +2099,127 @@
     font-weight: 700;
     flex: 1;
   }
+
+  /* ---- Dive card ---- */
+  .dive-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dive-arrow {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgba(11, 35, 26, 0.7);
+  }
+
+  .action-arrow {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+  }
+
+  .convert-btn {
+    background: color-mix(in srgb, var(--color-warning) 24%, var(--color-surface) 76%);
+    color: var(--color-warning);
+  }
+
+  /* ---- Mastery summary in Archive ---- */
+  .mastery-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .mastery-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px 4px 4px;
+    background: color-mix(in srgb, var(--color-bg) 45%, var(--color-surface) 55%);
+    border-radius: 8px;
+  }
+
+  .mastery-summary-count {
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  /* ---- Lab room ---- */
+  .lab-tip-card {
+    border-left: 3px solid var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface) 92%);
+    margin-bottom: 20px;
+  }
+
+  .lab-tip-text {
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ---- Workshop room ---- */
+  .workshop-info-card {
+    border-left: 3px solid #a78bfa;
+    background: color-mix(in srgb, #a78bfa 8%, var(--color-surface) 92%);
+    margin-bottom: 20px;
+  }
+
+  .workshop-tip {
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ---- Museum room ---- */
+  .museum-progress-card {
+    min-height: 80px;
+  }
+
+  .museum-progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .museum-progress-header h2 {
+    margin-bottom: 0;
+  }
+
+  .museum-progress-count {
+    color: #d4a574;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .museum-revived-summary {
+    color: var(--color-text-dim);
+    font-size: 0.78rem;
+    margin-top: 4px;
+  }
+
+  .museum-zoo-card {
+    margin-bottom: 20px;
+  }
+
+  .museum-zoo-placeholder {
+    margin-top: 4px;
+  }
+
+  /* ---- Market: move deals-card bottom margin ---- */
+  .deals-card {
+    margin-bottom: 20px;
+  }
+
+  /* ---- Archive knowledge card ---- */
+  .knowledge-card {
+    max-height: 42dvh;
+  }
+
 </style>

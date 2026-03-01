@@ -254,7 +254,7 @@ class FactsDB {
       statement:       String(row['statement']),
       wowFactor:       optStr('wow_factor'),
       explanation:     String(row['explanation']),
-      giaiComment:     optStr('giai_comment'),
+      gaiaComment:     optStr('gaia_comment'),
       quizQuestion:    String(row['quiz_question']),
       correctAnswer:   String(row['correct_answer']),
       distractors:     JSON.parse(String(row['distractors'])) as string[],

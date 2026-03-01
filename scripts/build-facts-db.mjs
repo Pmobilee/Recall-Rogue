@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS facts (
   statement        TEXT    NOT NULL,
   wow_factor       TEXT,
   explanation      TEXT    NOT NULL,
-  giai_comment     TEXT,
+  gaia_comment     TEXT,
   quiz_question    TEXT    NOT NULL,
   correct_answer   TEXT    NOT NULL,
   distractors      TEXT    NOT NULL,
@@ -82,7 +82,7 @@ function factToRow(fact) {
     fact.statement        ?? null,
     fact.wowFactor        ?? null,
     fact.explanation      ?? null,
-    fact.giaiComment      ?? null,
+    fact.gaiaComment      ?? null,
     fact.quizQuestion     ?? null,
     fact.correctAnswer    ?? null,
     JSON.stringify(fact.distractors ?? []),
@@ -139,7 +139,7 @@ async function main() {
   // -- Prepare INSERT statement --
   const INSERT = db.prepare(`
     INSERT OR REPLACE INTO facts (
-      id, type, statement, wow_factor, explanation, giai_comment,
+      id, type, statement, wow_factor, explanation, gaia_comment,
       quiz_question, correct_answer, distractors, category,
       rarity, difficulty, fun_score, age_rating,
       source_name, language, pronunciation, example_sentence,

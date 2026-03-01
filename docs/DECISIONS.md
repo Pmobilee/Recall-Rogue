@@ -48,10 +48,10 @@ Log of key technical and design decisions with context and rationale. Newest fir
 - **Decision**: Oxygen exclusively buys dive access. All upgrades, crafting, pets, cosmetics, and base building require minerals. Mastery players have unlimited playtime but still need to engage with mining/economy for progression.
 - **Rationale**: Prevents mastery from trivializing the entire game. Unlimited play ≠ unlimited power. Maintains the economic loop for all player types.
 
-### DD-028: GIAI (Giant ArtiFact Intelligence Assistant) as AI Companion
+### DD-028: GAIA (Geological Analytical Intelligence Assistant) as AI Companion
 - **Date**: 2026-02-27
 - **Context**: Should the codex have personality? What should it be called?
-- **Decision**: Named GIAI ("guy-ah"). Quirky, knowledge-hungry AI companion with cutesy pixel art avatar. Comments on artifacts, connections between facts, tree growth. Has a pre-generated snarky comment for every single fact. Random quips when idle. Personality: enthusiastic, nerdy, slightly obsessive. Chattiness: 4-5/10. Never annoying.
+- **Decision**: Named GAIA ("guy-ah"). Quirky, knowledge-hungry AI companion with cutesy pixel art avatar. Comments on artifacts, connections between facts, tree growth. Has a pre-generated snarky comment for every single fact. Random quips when idle. Personality: enthusiastic, nerdy, slightly obsessive. Chattiness: 4-5/10. Never annoying.
 - **Rationale**: Adds character and warmth to the game. Makes the codex feel alive, not just a database. Creates moments of delight. Reinforces the "rediscovering knowledge" theme with genuine enthusiasm.
 
 ### DD-029: Ambient Environmental Storytelling in the Mine
@@ -114,17 +114,17 @@ Log of key technical and design decisions with context and rationale. Newest fir
 - **Decision**: At each Descent Shaft (before descending), player can "send up" items to surface for safekeeping. Slots scale with depth: Layer 1→2 gets 1 slot, Layer 2→3 gets 2, etc. Sent items are guaranteed safe even if oxygen runs out later.
 - **Rationale**: Brilliant strategic layer. "Do I send up this Rare artifact now (safe) or gamble deeper?" Reduces sting of oxygen depletion. Creates compound decisions at every layer boundary. Rewards careful players.
 
-### DD-040: GIAI Named "Giant ArtiFact Intelligence Assistant"
+### DD-040: GAIA Named "Geological Analytical Intelligence Assistant"
 - **Date**: 2026-02-28
 - **Context**: The computer companion needs a name and identity.
-- **Decision**: GIAI ("guy-ah"), cutesy pixel art avatar with expressive face. Every fact has a pre-generated snarky GIAI comment. Visual mnemonics offered when player struggles.
+- **Decision**: GAIA ("guy-ah"), cutesy pixel art avatar with expressive face. Every fact has a pre-generated snarky GAIA comment. Visual mnemonics offered when player struggles.
 - **Rationale**: A named, visible companion creates emotional attachment. Pre-generated comments ensure personality without runtime AI cost. Mnemonics directly support the learning mission.
 
-### DD-041: Snarky GIAI Comment Per Fact + Visual Mnemonics
+### DD-041: Snarky GAIA Comment Per Fact + Visual Mnemonics
 - **Date**: 2026-02-28
 - **Context**: How to make artifact ingestion feel personal?
-- **Decision**: Every fact has a `giai_comment` field generated during the content pipeline. Shown during gacha reveal. Also: `mnemonic` field with visual/verbal memory aids, offered by GIAI when player struggles.
-- **Rationale**: Personality is content. Each fact feels like a conversation with GIAI, not just a database entry. Mnemonics are proven to dramatically improve retention.
+- **Decision**: Every fact has a `gaia_comment` field generated during the content pipeline. Shown during gacha reveal. Also: `mnemonic` field with visual/verbal memory aids, offered by GAIA when player struggles.
+- **Rationale**: Personality is content. Each fact feels like a conversation with GAIA, not just a database entry. Mnemonics are proven to dramatically improve retention.
 
 ### DD-042: Age Rating System (KID/TEEN/ADULT)
 - **Date**: 2026-02-28
@@ -135,7 +135,7 @@ Log of key technical and design decisions with context and rationale. Newest fir
 ### DD-043: Handcrafted First Mine + Slow Progressive Dome Unlocks
 - **Date**: 2026-02-28
 - **Context**: How to handle onboarding and base progression?
-- **Decision**: First mine is handcrafted (guaranteed layout, teaching moments). Dome unlocks progressively: Dive 1 = artifact + fossil. Dive 2 = Knowledge Tree seed. Dive 3 = GIAI codex. Dive 4+ = Materializer, more areas. Always something new.
+- **Decision**: First mine is handcrafted (guaranteed layout, teaching moments). Dome unlocks progressively: Dive 1 = artifact + fossil. Dive 2 = Knowledge Tree seed. Dive 3 = GAIA codex. Dive 4+ = Materializer, more areas. Always something new.
 - **Rationale**: Handcrafted first experience ensures quality first impression. Slow unlocks create anticipation and reward repeated play. Each dive has a "new thing to discover at base."
 
 ### DD-044: Fact Voice — Concise Statement + Separate Wow Factor

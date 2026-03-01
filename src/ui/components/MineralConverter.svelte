@@ -113,6 +113,7 @@
   .converter-backdrop {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     background: rgba(0, 0, 0, 0.72);
     z-index: 100;
   }
@@ -122,6 +123,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: auto;
     z-index: 101;
     background: var(--color-surface);
     border-radius: 16px;

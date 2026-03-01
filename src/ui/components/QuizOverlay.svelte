@@ -4,8 +4,8 @@
   import { BALANCE } from '../../data/balance'
   import { audioManager } from '../../services/audioService'
   import { playerSave } from '../stores/playerData'
-  import { giaiMood } from '../stores/settings'
-  import { GIAI_EXPRESSIONS, GIAI_NAME, getGiaiExpression } from '../../data/giaiAvatar'
+  import { gaiaMood } from '../stores/settings'
+  import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
 
   interface Props {
     fact: Fact
@@ -82,11 +82,11 @@
     attemptsRemaining = totalAttempts
   })
 
-  /** Emoji and name shown in the GIAI reaction bubble after answering */
-  const giaiReactionEmoji = $derived.by(() => {
-    if (!showResult || isCorrect === null) return GIAI_EXPRESSIONS.neutral.emoji
+  /** Emoji and name shown in the GAIA reaction bubble after answering */
+  const gaiaReactionEmoji = $derived.by(() => {
+    if (!showResult || isCorrect === null) return GAIA_EXPRESSIONS.neutral.emoji
     const trigger = isCorrect ? 'quiz_correct' : 'quiz_wrong'
-    return getGiaiExpression(trigger, $giaiMood).emoji
+    return getGaiaExpression(trigger, $gaiaMood).emoji
   })
 
   async function handleAnswer(answer: string): Promise<void> {
@@ -202,10 +202,10 @@
     {/if}
 
     {#if showResult && isCorrect !== null}
-      <div class="giai-reaction" class:giai-reaction-correct={isCorrect} class:giai-reaction-wrong={!isCorrect} role="note" aria-label="GIAI reaction">
-        <span class="giai-reaction-emoji" aria-hidden="true">{giaiReactionEmoji}</span>
-        <span class="giai-reaction-name">{GIAI_NAME}</span>
-        <span class="giai-reaction-text">
+      <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
+        <span class="gaia-reaction-emoji" aria-hidden="true">{gaiaReactionEmoji}</span>
+        <span class="gaia-reaction-name">{GAIA_NAME}</span>
+        <span class="gaia-reaction-text">
           {#if isCorrect}
             {['Great work!', 'Correct!', 'Excellent!', 'Well done!'][Math.floor(Math.random() * 4)]}
           {:else}
@@ -478,8 +478,8 @@
     margin-top: -4px;
   }
 
-  /* GIAI reaction bubble shown after answering */
-  .giai-reaction {
+  /* GAIA reaction bubble shown after answering */
+  .gaia-reaction {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -492,23 +492,23 @@
     font-family: 'Courier New', monospace;
   }
 
-  .giai-reaction-correct {
+  .gaia-reaction-correct {
     border-left-color: var(--color-success);
     background: rgba(78, 205, 163, 0.1);
   }
 
-  .giai-reaction-wrong {
+  .gaia-reaction-wrong {
     border-left-color: var(--color-accent);
     background: rgba(233, 69, 96, 0.08);
   }
 
-  .giai-reaction-emoji {
+  .gaia-reaction-emoji {
     font-size: 1.3rem;
     line-height: 1;
     flex-shrink: 0;
   }
 
-  .giai-reaction-name {
+  .gaia-reaction-name {
     color: #22d9d9;
     font-size: 0.68rem;
     font-weight: 700;
@@ -516,7 +516,7 @@
     flex-shrink: 0;
   }
 
-  .giai-reaction-text {
+  .gaia-reaction-text {
     color: var(--color-text-dim);
     font-style: italic;
   }

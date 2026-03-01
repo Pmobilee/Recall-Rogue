@@ -48,7 +48,7 @@ Each gacha moment should have **escalating visual and audio spectacle by rarity*
 - Mythic: unique animation, unforgettable moment
 
 ### At Base: Ingestion
-- Back at the dome, player feeds artifacts into **GIAI** (the ship's AI codex)
+- Back at the dome, player feeds artifacts into **GAIA** (the ship's AI codex)
 - The fact is revealed with a gacha-tier animation (see above)
 - Player then chooses:
   - **Keep for study rotation**: Fact enters the Anki-style review system
@@ -128,7 +128,7 @@ Each fact in the database contains:
   statement: string,           // Clear, concise, memorizable (1-2 sentences)
   wow_factor: string,          // Mind-blowing framing shown during ingestion
   explanation: string,         // Why it's true / deeper context (2-3 sentences)
-  giai_comment: string,        // GIAI's snarky/enthusiastic comment for ingestion popup
+  gaia_comment: string,        // GAIA's snarky/enthusiastic comment for ingestion popup
 
   // Quiz
   quiz_question: string,       // The question asked during review
@@ -184,20 +184,20 @@ Each fact in the database contains:
 - Creates a visual incentive: players want to see their facts "come alive" with color
 - Image generation pipeline: auto-generated from `image_prompt` field via ComfyUI, reviewed for quality
 
-### GIAI Comments (Snarky Ingestion Notes)
-Every fact has a pre-generated `giai_comment` — a short, personality-driven remark from GIAI that plays during artifact ingestion:
+### GAIA Comments (Snarky Ingestion Notes)
+Every fact has a pre-generated `gaia_comment` — a short, personality-driven remark from GAIA that plays during artifact ingestion:
 - "Octopuses have three hearts? I can barely keep ONE processing unit running!"
 - "Cleopatra and the Moon landing... time is WEIRD, right?!"
 - "Blue whale hearts are the size of a car. I... I need a moment."
 - Comments should be: snarky, enthusiastic, occasionally self-deprecating, always brief
 - Generated during the fact creation pipeline (not at runtime)
-- Shown as a speech bubble from GIAI's avatar during the gacha reveal moment
+- Shown as a speech bubble from GAIA's avatar during the gacha reveal moment
 
 ### Visual Mnemonics
 Facts can include a `mnemonic` field — a memory aid to help retention:
 - **Visual mnemonics** are the highest priority (images or described scenes that encode the answer)
 - Example: "Octopus + 3 hearts → picture an octopus juggling 3 hearts"
-- GIAI offers mnemonics when a player struggles with a fact (gets it wrong multiple times)
+- GAIA offers mnemonics when a player struggles with a fact (gets it wrong multiple times)
 - "Having trouble? Here's a trick: think of octopuses as the 'three-hearted aliens of the sea'..."
 - Mnemonics are generated during fact creation, not at runtime
 - Not every fact needs one — prioritize facts that players commonly get wrong (tracked via analytics)

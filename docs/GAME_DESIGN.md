@@ -37,7 +37,7 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 
 [Back at Base — The Dome]
     → Deposit minerals → spend at Materializer (crafting station)
-    → Ingest artifacts into GIAI → reveal facts
+    → Ingest artifacts into GAIA → reveal facts
     → Choose: keep facts for study rotation OR sell for minerals
     → Review due facts (Anki-style spaced repetition)
     → Manage Knowledge Tree (watch it grow, see categories fill)
@@ -63,9 +63,9 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 - Particle effects for mining, discovery, and gacha reveals
 - Achievement paintings: pixel art versions of real paintings/posters related to knowledge categories
 
-## GIAI — Giant ArtiFact Intelligence Assistant
+## GAIA — Geological Analytical Intelligence Assistant
 
-GIAI (pronounced "guy-ah") is the ship's onboard AI — the miner's companion, codex, and knowledge-hungry best friend. GIAI has a **distinct personality**: enthusiastic, snarky, slightly obsessive about facts, and endearingly nerdy.
+GAIA (pronounced "guy-ah") is the ship's onboard AI — the miner's companion, codex, and knowledge-hungry best friend. GAIA has a **distinct personality**: enthusiastic, snarky, slightly obsessive about facts, and endearingly nerdy.
 
 **Personality traits:**
 - Excited when you bring back artifacts ("Finally! Feed me more data!")
@@ -90,7 +90,7 @@ GIAI (pronounced "guy-ah") is the ship's onboard AI — the miner's companion, c
 - Contextual: responds to what you're doing (returning from dive, studying, walking past)
 - Random idle comments when in the dome
 - Never blocks gameplay — popups are brief and dismissable
-- Every fact has a pre-generated `giai_comment` in the database
+- Every fact has a pre-generated `gaia_comment` in the database
 
 ## Ambient Storytelling in the Mine
 
@@ -116,7 +116,7 @@ Examples:
 - Gacha reveal fanfares (escalating by rarity)
 - Quiz feedback sounds (correct/wrong)
 - Ambient underground atmosphere
-- GIAI voice/sound effects for personality moments
+- GAIA voice/sound effects for personality moments
 
 ## Monetization
 
@@ -141,23 +141,23 @@ The crash-landing is the perfect tutorial. Here's the flow:
 ### First Launch
 1. **Age selection**: KID / TEEN / ADULT (affects which facts appear)
 2. **Crash cutscene** — 3 pixel art comic panels, ~15 seconds. Ship plummets, screen shakes, dust settles. Skip button available from second 1.
-3. **GIAI introduces itself** — "Oh! You survived! I'm GIAI, your ship's knowledge database. My data banks are nearly empty after the crash... Let's see what we can find down here."
+3. **GAIA introduces itself** — "Oh! You survived! I'm GAIA, your ship's knowledge database. My data banks are nearly empty after the crash... Let's see what we can find down here."
 
 ### First Dive (Handcrafted Tutorial Mine)
 4. **Crawl out of wreckage** — find basic pickaxe in the debris
 5. **Mine first few blocks** — teach tap/swipe controls naturally (soft blocks, instant break)
-6. **Find first artifact** — teach the backpack system, GIAI reacts excitedly
+6. **Find first artifact** — teach the backpack system, GAIA reacts excitedly
 7. **Find a fossil** — the hook moment. Player sees 3 options: "Looks like some sort of feline type?" / "Seems canine..." / "Could be... avian?" Player chooses.
 8. **Surface with loot** — see the empty, damaged dome
 
 ### Back at Base (Slow Unlocks Begin)
-9. **First artifact ingestion** — GIAI's first gacha reveal, guaranteed Rare+ fact with snarky comment. Player learns their first fact.
+9. **First artifact ingestion** — GAIA's first gacha reveal, guaranteed Rare+ fact with snarky comment. Player learns their first fact.
 10. **See the fossil unlock path** — "Learn 10 facts about [chosen animal type] to revive this creature!"
-11. **End of first session** — dome is mostly locked. GIAI hints at what's to come.
+11. **End of first session** — dome is mostly locked. GAIA hints at what's to come.
 
 ### Second Dive & Beyond (Progressive Unlocks)
 - **Dive 2**: Guaranteed to find a **Knowledge Tree seed**. Plant it at base. "This will grow with everything you learn."
-- **Dive 3**: GIAI's full codex functionality unlocks (study sessions available)
+- **Dive 3**: GAIA's full codex functionality unlocks (study sessions available)
 - **Dive 4+**: Materializer unlocks, more dome areas progressively open
 - Each unlock feels like a reward, not a gate
 
@@ -167,7 +167,7 @@ The crash-landing is the perfect tutorial. Here's the flow:
 - Unlocks are spread across first several dives — always something new to discover at base
 - Tutorial mine is **handcrafted** — guaranteed layout with specific teaching moments
 - Tutorial should feel like gameplay, not instructions
-- GIAI guides without being overbearing
+- GAIA guides without being overbearing
 
 ## System References
 

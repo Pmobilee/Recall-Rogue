@@ -1427,7 +1427,7 @@ export class MineScene extends Phaser.Scene {
           if (this.activeUpgrades.has('scanner_boost')) {
             this.revealSpecialBlocks()
           }
-          // Emit event so GameManager can show a GIAI quip
+          // Emit event so GameManager can show a GAIA quip
           this.game.events.emit('cave-in', { affectedCount })
           // Screen shake: jitter camera for ~300ms then re-center on player
           const shakeCamera = (): void => {
@@ -2125,7 +2125,7 @@ export class MineScene extends Phaser.Scene {
       this.revealSpecialBlocks()
     }
 
-    // Emit event for GameManager to display a GIAI quip
+    // Emit event for GameManager to display a GAIA quip
     this.game.events.emit('earthquake', {
       collapsed: collapsedPositions.length,
       revealed: revealTargets.length,

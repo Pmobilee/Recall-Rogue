@@ -45,7 +45,7 @@ The backpack might be the most interaction-heavy UI in the game.
 
 ---
 
-## Batch 27: The Miner's Computer → GIAI [ANSWERED — Named GIAI]
+## Batch 27: The Miner's Computer → GAIA [ANSWERED — Named GAIA]
 
 **112.** What's the Computer's **name**? "The Miner's Computer" is functional but not lovable. Options:
    - ARIA (Artifact Research & Intelligence Assistant)

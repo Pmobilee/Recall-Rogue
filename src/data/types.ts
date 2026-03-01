@@ -31,7 +31,7 @@ export interface Fact {
   statement: string           // Clear, concise (Anki-optimized)
   wowFactor?: string          // Mind-blowing framing (shown on reveal)
   explanation: string         // Why it's true / context
-  giaiComment?: string        // GIAI's snarky ingestion comment
+  gaiaComment?: string        // GAIA's snarky ingestion comment
 
   // Quiz
   quizQuestion: string

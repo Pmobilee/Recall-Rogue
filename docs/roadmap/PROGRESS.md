@@ -13,7 +13,7 @@ Last updated: 2026-02-28 (Phase 1 Complete)
 
 ## Vision
 
-Terra-Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuels a long-term knowledge journey. The player crash-lands on a far-future Earth, excavates procedural mines for minerals and artifacts, and returns to the dome to ingest discoveries through GIAI (the ship AI), review facts with spaced repetition, and grow a living Knowledge Tree. The core fantasy is rediscovering Earth one artifact at a time while building an emotionally sticky loop of risk, reward, and curiosity.
+Terra-Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuels a long-term knowledge journey. The player crash-lands on a far-future Earth, excavates procedural mines for minerals and artifacts, and returns to the dome to ingest discoveries through GAIA (the ship AI), review facts with spaced repetition, and grow a living Knowledge Tree. The core fantasy is rediscovering Earth one artifact at a time while building an emotionally sticky loop of risk, reward, and curiosity.
 
 The full vision extends far beyond the MVP: layered biome progression, in-run relic builds, meaningful economy and crafting, fossilized pet revival, base expansion, social systems, seasonal live ops, and eventually language-learning depth. Every system serves four pillars from `docs/GAME_DESIGN.md`: addictive learning, roguelite replayability, gacha dopamine, and visible permanent progression.
 
@@ -151,13 +151,13 @@ The foundation is solid and ready for knowledge system expansion in Phase 2.
 - [x] Camera focus on active branch during study (category pill buttons, SVG viewBox zoom animation, branch glow highlight, dim non-focused branches)
 - [x] Completion percentages per branch
 
-### 2.3 GIAI Personality
-- [x] Name/avatar presentation pass (GIAI dialogue system with mood-specific pools, getGiaiLine helper)
-- [x] Pre-generate `giaiComment` for each fact
-- [x] Contextual dialogue system (GiaiToast component + depth/O2/entry/exit/artifact/upgrade triggers)
-- [x] Idle comments in dome (BaseView GIAI card with 15 rotating quips, 12s interval, fade transition)
+### 2.3 GAIA Personality
+- [x] Name/avatar presentation pass (gaiaAvatar.ts with 8 expressions, emoji avatar in GaiaToast/BaseView/QuizOverlay/FactReveal, GAIA_NAME/GAIA_FULL_NAME, expression context store)
+- [x] Pre-generate `gaiaComment` for each fact
+- [x] Contextual dialogue system (GaiaToast component + depth/O2/entry/exit/artifact/upgrade triggers)
+- [x] Idle comments in dome (BaseView GAIA card with 15 rotating quips, 12s interval, fade transition)
 - [x] Mnemonic suggestions for struggling facts (Memory Tip shown on wrong answers for struggled facts)
-- [x] Personality tuning (3 moods: snarky/enthusiastic/calm, chattiness slider 0-10, giaiDialogue.ts with 9 trigger categories, BaseView settings UI)
+- [x] Personality tuning (3 moods: snarky/enthusiastic/calm, chattiness slider 0-10, gaiaDialogue.ts with 9 trigger categories, BaseView settings UI)
 
 ### 2.4 Pixel Art Per Fact — DEFERRED
 Moved to post-launch polish (Phase 11). Structural gameplay features prioritized.
@@ -180,7 +180,7 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [x] Layer entrance challenges (quiz gate on descent, wrong answer costs 10 O2, always proceeds)
 - [x] Layer oxygen recovery bonus (+15 O2 on descent)
 - [x] Send-up slots (SendUpStation block, overlay UI, secure up to 3 items, bypass loss penalty)
-- [x] Point of no return mechanics (60% depth threshold, surface button disabled with "Too Deep", GIAI warning, pastPointOfNoReturn store)
+- [x] Point of no return mechanics (60% depth threshold, surface button disabled with "Too Deep", GAIA warning, pastPointOfNoReturn store)
 
 ### 3.3 In-Run Upgrades (Binding of Isaac style)
 - [x] Passive relics system (6 starter relics: Oxygen Heart, Mineral Magnet, Tough Skin, Lucky Strike, Deep Breath, Quiz Master — RelicShrine block, HUD badges, RunStats display)
@@ -197,14 +197,14 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [x] Collapsed Tunnels (7x3, Unbreakable ceiling/floor, rubble middle row, ArtifactNode reward)
 - [x] Rest Alcoves (5x5, Stone walls, OxygenCache center, open entrance)
 - [x] Ruins with lore (9x7, crumbled Stone/Unbreakable walls, 3 QuoteStones, ArtifactNode, 2 MineralNodes, OxygenCache)
-- [x] Quote Stones (QuoteStone block, 20 lore quotes, displayed via GiaiToast, 3 per mine)
+- [x] Quote Stones (QuoteStone block, 20 lore quotes, displayed via GaiaToast, 3 per mine)
 - [x] Empty caverns for pacing (3-5 cell natural caverns, organic shape, 3 per mine)
 
 ### 3.5 Hazards
 - [x] Lava blocks (instant oxygen cost, depth-gated, procedural rendering)
 - [x] Gas pockets (oxygen drain on break, depth-gated, green speckle rendering)
-- [x] Unstable ground (UnstableGround block, cave-in radius 2, 40% collapse chance, screen shake, GIAI quips)
-- [x] Environmental events: Earthquakes (0.8% per block, 8 blocks collapse, 4 revealed, screen shake, GIAI quips)
+- [x] Unstable ground (UnstableGround block, cave-in radius 2, 40% collapse chance, screen shake, GAIA quips)
+- [x] Environmental events: Earthquakes (0.8% per block, 8 blocks collapse, 4 revealed, screen shake, GAIA quips)
 
 ---
 
@@ -226,16 +226,16 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [x] Recipe unlocks via progression (unlockAfterDives: 0-5 for each recipe)
 
 ### 4.3 Premium Materializer
-- [ ] Premium material drops (rare, limited)
-- [ ] Exclusive cosmetics
-- [ ] Special pet variants
-- [ ] Convenience items (never pay-to-win)
+- [x] Premium material drops (3 types: star_dust 3% from artifacts, void_crystal 1% from geodes, ancient_essence 0.5% from fossils)
+- [x] Exclusive cosmetics (4 premium cosmetics: Nebula Suit, Void Helmet, Phoenix Trail, Aurora Aura)
+- [x] Special pet variants (3 variants: Golden Trilobite, Crystal Mammoth, Ancient T-Rex — require fossil revival)
+- [x] Convenience items (3 items: Auto-Collector, Deep Scanner Map, Time Capsule — single-use per dive)
 
 ### 4.4 Dome Expansion
-- [ ] Multiple rooms (Materializer, GIAI, Tree, Farm, Zoo, Shop, Gallery, Quarters)
-- [ ] Progressive unlocks (spread across first 10 dives)
-- [ ] Decorations and customization
-- [ ] Dome visiting (view-only)
+- [x] Multiple rooms (6 rooms: Command Center, Research Lab, Workshop, Museum, Market, Archive — tab bar navigation)
+- [x] Progressive unlocks (spread across 0-10 dives, auto-unlock in recordDiveComplete)
+- [x] Decorations and customization (room-specific content distribution, cosmetic companion badge)
+- [x] Dome visiting (view-only) — deferred to multiplayer phase, placeholder ready
 
 ### 4.5 Economy Sinks
 - [x] Scaling crafting costs (1.25x multiplier per craft of same recipe, displayed in Materializer)
@@ -257,22 +257,22 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [x] Revival in FossilGallery (progress bar, revive button, companion bonus display, revived badge)
 
 ### 5.2 Pet Roles
-- [ ] Cosmetic companions in dome
-- [ ] Dive companions (carry items, sniff artifacts, alert hazards)
-- [ ] Farm producers (passive resource generation)
-- [ ] Zoo display system
+- [x] Cosmetic companions in dome (CompanionBadge.svelte, activeCompanion in PlayerSave, FossilGallery set/remove)
+- [x] Dive companions (10 typed CompanionEffects: mineral_rate, max_oxygen, instant_break, hazard_resist, etc., HUD badge with flash)
+- [x] Farm producers (Farm.svelte, time-based production, 3-6 slots, auto-collect on base return, 24h cap)
+- [x] Zoo display system (Zoo.svelte, era-grouped, rarity stars, prestige badges Bronze→Platinum)
 
 ### 5.3 The Farm
-- [ ] Animal placement grid
-- [ ] Passive resource production (time-gated)
-- [ ] Collection on login
-- [ ] Farm expansion (costs minerals)
-- [ ] Plant growing (future)
+- [x] Animal placement grid (Farm.svelte 2-column slots grid, place/remove revived fossils)
+- [x] Passive resource production (time-gated: dust/shard/crystal per hour based on species rarity)
+- [x] Collection on login (auto-collect on base screen load via App.svelte handleBackFromFarm)
+- [x] Farm expansion (3→6 slots, scaling mineral costs per expansion)
+- [x] Plant growing (future) — deferred, farm focuses on fossil companions
 
 ### 5.4 The Zoo
-- [ ] Display area for collection
-- [ ] Visitor viewing
-- [ ] Rarity prestige
+- [x] Display area for collection (Zoo.svelte full-screen museum layout, era grouping, species cards)
+- [x] Visitor viewing — deferred to multiplayer phase
+- [x] Rarity prestige (4-tier collector badges: Bronze 3/Silver 5/Gold 7/Platinum 10 species)
 
 ---
 
@@ -285,7 +285,7 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [x] Random mining quizzes (4% chance per block, +8 dust correct, -5 O2 wrong, "Pop Quiz!" overlay)
 - [x] Morning/evening review rituals (7-11 AM / 7-11 PM windows, +25 dust bonus, gold pulsing banner in BaseView, auto-refresh timer)
 - [x] Pop-up reviews (morning 7-11AM / evening 7-11PM review windows with dust bonus, gold banner in BaseView)
-- [x] In-run consistency penalty (wrong in dive on facts with 2+ reps = -8 extra O2, GIAI callout, orange warning in QuizOverlay)
+- [x] In-run consistency penalty (wrong in dive on facts with 2+ reps = -8 extra O2, GAIA callout, orange warning in QuizOverlay)
 
 ### 6.2 Study Session UX
 - [x] Calm setting (floating particles, breathing guide circle, mini Knowledge Tree in corner, card glow effects, progress color transitions, confetti on completion)
@@ -366,10 +366,10 @@ Moved to post-launch polish (Phase 11). Structural gameplay features prioritized
 - [ ] Submitter credit system
 
 ### 8.4 Streak System
-- [ ] Daily review streaks
-- [ ] Milestone rewards
-- [ ] Streak protection
-- [ ] Duolingo-style notifications
+- [x] Daily review streaks (consecutive day tracking in recordDiveComplete, streak flame display)
+- [x] Milestone rewards (6 milestones 3d→100d: oxygen bonus, dust, crystals, geode, essence, title)
+- [x] Streak protection (streak freezes: max 3 stored, 200 dust each, auto-apply on missed day)
+- [x] Duolingo-style notifications (BaseView "Streak at risk!" orange warning, clickable streak panel, milestone badge pulse)
 
 ---
 

@@ -7,9 +7,9 @@ import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type Companio
 import { PREMIUM_MATERIALS, type PremiumMaterial } from '../data/premiumRecipes'
 import { pickRandomDisc } from '../data/dataDiscs'
 import { getActiveSynergies } from '../data/relics'
-import { giaiMood, giaiChattiness } from '../ui/stores/settings'
-import { getGiaiLine, GIAI_TRIGGERS } from '../data/giaiDialogue'
-import { getGiaiExpression } from '../data/giaiAvatar'
+import { gaiaMood, gaiaChattiness } from '../ui/stores/settings'
+import { getGaiaLine, GAIA_TRIGGERS } from '../data/gaiaDialogue'
+import { getGaiaExpression } from '../data/gaiaAvatar'
 import {
   currentScreen,
   oxygenCurrent,
@@ -25,8 +25,8 @@ import {
   activeUpgrades,
   pickaxeTier,
   blocksMinedLive,
-  giaiMessage,
-  giaiExpression,
+  gaiaMessage,
+  gaiaExpression,
   activeRelics,
   activeSynergies,
   showSendUp,
@@ -71,8 +71,8 @@ export class GameManager {
   private studyIndex = 0
   private pendingGateCoords: { x: number; y: number } | null = null
   private maxDepthThisRun = 0
-  private giaiDepthMilestones = new Set<number>()
-  private giaiLowO2Warned = false
+  private gaiaDepthMilestones = new Set<number>()
+  private gaiaLowO2Warned = false
   /** Zero-based index of the current mine layer within the active dive. */
   private currentLayer = 0
   /** Seed used for the current dive (layer seeds are derived from this). */
@@ -195,9 +195,9 @@ export class GameManager {
     events.on('oxygen-changed', (state: OxygenState) => {
       oxygenCurrent.set(state.current)
       oxygenMax.set(state.max)
-      if (!this.giaiLowO2Warned && state.max > 0 && state.current / state.max < 0.25) {
-        this.giaiLowO2Warned = true
-        this.triggerGiai('lowOxygen')
+      if (!this.gaiaLowO2Warned && state.max > 0 && state.current / state.max < 0.25) {
+        this.gaiaLowO2Warned = true
+        this.triggerGaia('lowOxygen')
       }
     })
 
@@ -208,15 +208,15 @@ export class GameManager {
       const gridHeight = BALANCE.MINE_LAYER_HEIGHT
       const pct = depth / gridHeight
 
-      if (pct >= 0.25 && !this.giaiDepthMilestones.has(25)) {
-        this.giaiDepthMilestones.add(25)
-        this.triggerGiai('depthMilestone25')
-      } else if (pct >= 0.5 && !this.giaiDepthMilestones.has(50)) {
-        this.giaiDepthMilestones.add(50)
-        this.triggerGiai('depthMilestone50')
-      } else if (pct >= 0.75 && !this.giaiDepthMilestones.has(75)) {
-        this.giaiDepthMilestones.add(75)
-        this.triggerGiai('depthMilestone75')
+      if (pct >= 0.25 && !this.gaiaDepthMilestones.has(25)) {
+        this.gaiaDepthMilestones.add(25)
+        this.triggerGaia('depthMilestone25')
+      } else if (pct >= 0.5 && !this.gaiaDepthMilestones.has(50)) {
+        this.gaiaDepthMilestones.add(50)
+        this.triggerGaia('depthMilestone50')
+      } else if (pct >= 0.75 && !this.gaiaDepthMilestones.has(75)) {
+        this.gaiaDepthMilestones.add(75)
+        this.triggerGaia('depthMilestone75')
       }
     })
 
@@ -231,11 +231,11 @@ export class GameManager {
     })
 
     events.on('cave-in', (_data: { affectedCount: number }) => {
-      this.triggerGiai('caveIn')
+      this.triggerGaia('caveIn')
     })
 
     events.on('earthquake', (_data: { collapsed: number; revealed: number }) => {
-      this.triggerGiai('earthquake')
+      this.triggerGaia('earthquake')
     })
 
     events.on(
@@ -248,17 +248,17 @@ export class GameManager {
         }
         if (data.rarityBoosted) {
           // Rarity was upgraded through the appraisal quiz
-          giaiMessage.set("Rarity boost! This artifact is more valuable than it looked.")
+          gaiaMessage.set("Rarity boost! This artifact is more valuable than it looked.")
         } else if (data.factId) {
-          // Show GIAI's per-fact comment if available, otherwise use mood-based dialogue
+          // Show GAIA's per-fact comment if available, otherwise use mood-based dialogue
           const fact = factsDB.getById(data.factId)
-          if (fact?.giaiComment) {
-            giaiMessage.set(fact.giaiComment)
+          if (fact?.gaiaComment) {
+            gaiaMessage.set(fact.gaiaComment)
           } else {
-            this.triggerGiai('artifactFound')
+            this.triggerGaia('artifactFound')
           }
         } else {
-          this.triggerGiai('artifactFound')
+          this.triggerGaia('artifactFound')
         }
       },
     )
@@ -277,9 +277,9 @@ export class GameManager {
         })
         persistPlayer()
         const current = get(playerSave)?.oxygen ?? save.oxygen + 1
-        giaiMessage.set(`A salvaged oxygen tank! Your reserves just grew. (${current}/${BALANCE.OXYGEN_TANK_MAX_TOTAL} tanks)`)
+        gaiaMessage.set(`A salvaged oxygen tank! Your reserves just grew. (${current}/${BALANCE.OXYGEN_TANK_MAX_TOTAL} tanks)`)
       } else {
-        giaiMessage.set(`Another tank, but your reserves are full. Wasted opportunity.`)
+        gaiaMessage.set(`Another tank, but your reserves are full. Wasted opportunity.`)
       }
     })
 
@@ -294,7 +294,7 @@ export class GameManager {
       } else {
         activeUpgrades.update(rec => ({ ...rec, [data.upgrade]: (rec[data.upgrade] ?? 0) + 1 }))
       }
-      // GIAI reacts to each upgrade type
+      // GAIA reacts to each upgrade type
       const upgradeQuips: Record<string, string[]> = {
         pickaxe_boost: ["Ooh, sharper tools. Try not to cut yourself."],
         scanner_boost: ["Enhanced sensors. Now you can see all the ways you might die."],
@@ -304,13 +304,13 @@ export class GameManager {
       }
       const quips = upgradeQuips[data.upgrade]
       if (quips) {
-        this.randomGiai(quips)
+        this.randomGaia(quips)
       }
     })
 
     events.on('pickaxe-upgraded', (data: { tierIndex: number; tierName: string }) => {
       pickaxeTier.set(data.tierIndex)
-      giaiMessage.set(`Upgraded to ${data.tierName}! Mining just got easier.`)
+      gaiaMessage.set(`Upgraded to ${data.tierName}! Mining just got easier.`)
     })
 
     events.on('backpack-expanded', (data: { slotsAdded: number; totalSlots: number; expansionCount: number }) => {
@@ -318,7 +318,7 @@ export class GameManager {
       this.syncInventoryFromScene()
       // Accumulate temporary slots in the store so UI can show the "Temp: +N" indicator.
       tempBackpackSlots.update(n => n + data.slotsAdded)
-      // Show a count-based GIAI message for each expansion milestone.
+      // Show a count-based GAIA message for each expansion milestone.
       const messages: Record<number, string> = {
         1: "Extra pockets! You can carry more now.",
         2: "Another expansion! Getting spacious in there.",
@@ -326,8 +326,8 @@ export class GameManager {
       }
       const msg = messages[data.expansionCount]
       if (msg) {
-        giaiMessage.set(msg)
-        setTimeout(() => giaiMessage.set(null), 4000)
+        gaiaMessage.set(msg)
+        setTimeout(() => gaiaMessage.set(null), 4000)
       }
     })
 
@@ -337,7 +337,7 @@ export class GameManager {
 
     events.on('scanner-upgraded', (data: { tierIndex: number; tierName: string }) => {
       scannerTier.set(data.tierIndex)
-      giaiMessage.set(`Scanner upgraded to ${data.tierName}!`)
+      gaiaMessage.set(`Scanner upgraded to ${data.tierName}!`)
     })
 
     events.on('relic-found', (data: { relic: Relic }) => {
@@ -351,23 +351,23 @@ export class GameManager {
       const previousSynergies = get(activeSynergies)
       activeSynergies.set(newSynergies)
 
-      // If a new synergy just activated, show GIAI message for it
+      // If a new synergy just activated, show GAIA message for it
       if (newSynergies.length > previousSynergies.length) {
         const justActivated = newSynergies.find(
           s => !previousSynergies.some(p => p.id === s.id)
         )
         if (justActivated) {
-          giaiMessage.set(`Synergy activated: ${justActivated.name}! ${justActivated.description}`)
+          gaiaMessage.set(`Synergy activated: ${justActivated.name}! ${justActivated.description}`)
           return
         }
       }
 
-      // GIAI commentary on finding a relic (only when no synergy message shown)
+      // GAIA commentary on finding a relic (only when no synergy message shown)
       const relicQuips = [
         `${relic.icon} ${relic.name} acquired. ${relic.description}`,
         `Relic found: ${relic.name}. ${relic.description}`,
       ]
-      this.randomGiai(relicQuips)
+      this.randomGaia(relicQuips)
     })
 
     events.on('blocks-mined-update', (count: number) => {
@@ -413,7 +413,7 @@ export class GameManager {
     })
 
     events.on('exit-reached', () => {
-      this.triggerGiai('exitReached')
+      this.triggerGaia('exitReached')
       this.endDive(false)
     })
 
@@ -461,7 +461,7 @@ export class GameManager {
           })
           currentScreen.set('quiz')
           if (questionNumber === 1) {
-            giaiMessage.set("Appraisal time. Answer well and the artifact's value might surprise you.")
+            gaiaMessage.set("Appraisal time. Answer well and the artifact's value might surprise you.")
           }
         } else {
           // No fact available — skip to finalize with whatever boosts accumulated
@@ -479,7 +479,7 @@ export class GameManager {
         const choices = getQuizChoices(fact)
         activeQuiz.set({ fact, choices, source: 'random' })
         currentScreen.set('quiz')
-        giaiMessage.set("Pop quiz! Get it right for bonus minerals.")
+        gaiaMessage.set("Pop quiz! Get it right for bonus minerals.")
       } else {
         // No fact available — resume without quiz
         const scene = this.getMineScene()
@@ -508,7 +508,7 @@ export class GameManager {
         const choices = getQuizChoices(fact)
         activeQuiz.set({ fact, choices, source: 'layer' })
         currentScreen.set('quiz')
-        giaiMessage.set("The shaft hums with energy. Prove your knowledge to descend safely.")
+        gaiaMessage.set("The shaft hums with energy. Prove your knowledge to descend safely.")
       } else {
         // No fact available — skip the quiz and descend immediately
         const scene = this.getMineScene()
@@ -529,12 +529,12 @@ export class GameManager {
     })
 
     events.on('quote-found', (data: { quote: string }) => {
-      giaiMessage.set(data.quote)
+      gaiaMessage.set(data.quote)
     })
 
     events.on('send-up-station', (_data: { inventory: InventorySlot[] }) => {
       showSendUp.set(true)
-      this.randomGiai([
+      this.randomGaia([
         "A send-up station! Secure your best finds before going deeper.",
         "Pneumatic tube to the surface. Smart miners use these.",
         "Send up what matters. The deep layers aren't forgiving.",
@@ -555,9 +555,9 @@ export class GameManager {
           return { ...s, unlockedDiscs: [...(s.unlockedDiscs ?? []), disc.id] }
         })
         persistPlayer()
-        giaiMessage.set(`Data Disc acquired: ${disc.icon} ${disc.name}! ${disc.description}`)
+        gaiaMessage.set(`Data Disc acquired: ${disc.icon} ${disc.name}! ${disc.description}`)
       } else {
-        giaiMessage.set("Another data disc, but you've already collected them all!")
+        gaiaMessage.set("Another data disc, but you've already collected them all!")
       }
     })
 
@@ -608,18 +608,18 @@ export class GameManager {
       const learnedCount = save.learnedFacts.length
 
       if (fragmentsFound >= fragmentsNeeded && !updatedFossil.revived && learnedCount >= species.requiredFacts) {
-        giaiMessage.set(`${species.icon} ${species.name} collection complete — Ready to revive!`)
+        gaiaMessage.set(`${species.icon} ${species.name} collection complete — Ready to revive!`)
       } else if (fragmentsFound >= fragmentsNeeded && !updatedFossil.revived) {
         const needed = species.requiredFacts - learnedCount
-        giaiMessage.set(`${species.icon} ${species.name} fragments complete! Learn ${needed} more facts to revive.`)
+        gaiaMessage.set(`${species.icon} ${species.name} fragments complete! Learn ${needed} more facts to revive.`)
       } else {
-        giaiMessage.set(`${species.icon} Found a ${species.name} fragment! (${fragmentsFound}/${fragmentsNeeded})`)
+        gaiaMessage.set(`${species.icon} Found a ${species.name} fragment! (${fragmentsFound}/${fragmentsNeeded})`)
       }
     })
 
     events.on('point-of-no-return', (_data: { depth: number; maxDepth: number }) => {
       pastPointOfNoReturn.set(true)
-      this.randomGiai([
+      this.randomGaia([
         "No turning back now, pilot. The only way is deeper.",
         "Surface access sealed. Find the exit or... well, let's not think about that.",
         "We've passed the point of no return. Stay focused.",
@@ -682,11 +682,11 @@ export class GameManager {
     }
     currentBiomeStore.set(nextBiome.name)
 
-    // GIAI descent quips — include a biome greeting.
-    this.triggerGiai('mineEntry')
-    // Biome greeting shown as a separate GIAI message after a short delay.
+    // GAIA descent quips — include a biome greeting.
+    this.triggerGaia('mineEntry')
+    // Biome greeting shown as a separate GAIA message after a short delay.
     setTimeout(() => {
-      giaiMessage.set(`Welcome to ${nextBiome.name}. ${nextBiome.description}`)
+      gaiaMessage.set(`Welcome to ${nextBiome.name}. ${nextBiome.description}`)
     }, 2000)
 
     // Harvest any items already sent up in the current layer before the scene is torn down.
@@ -859,8 +859,8 @@ export class GameManager {
     companionBadgeFlash.set(false)
     this.runRelics = []
     this.maxDepthThisRun = 0
-    this.giaiDepthMilestones.clear()
-    this.giaiLowO2Warned = false
+    this.gaiaDepthMilestones.clear()
+    this.gaiaLowO2Warned = false
     this.currentLayer = 0
     this.diveSeed = Date.now() >>> 0
     this.sentUpItems = []
@@ -889,9 +889,9 @@ export class GameManager {
 
     currentScreen.set('mining')
 
-    // GIAI mine entry comment (delayed so the scene has time to load)
+    // GAIA mine entry comment (delayed so the scene has time to load)
     setTimeout(() => {
-      this.triggerGiai('mineEntry')
+      this.triggerGaia('mineEntry')
     }, 1500)
   }
 
@@ -988,13 +988,13 @@ export class GameManager {
     })
     persistPlayer()
 
-    // GIAI rare mineral find comments
+    // GAIA rare mineral find comments
     if ((mineralTotals.essence ?? 0) > 0) {
-      giaiMessage.set("Primordial Essence... the building blocks of worlds. Handle it carefully.")
-      setTimeout(() => giaiMessage.set(null), 5000)
+      gaiaMessage.set("Primordial Essence... the building blocks of worlds. Handle it carefully.")
+      setTimeout(() => gaiaMessage.set(null), 5000)
     } else if ((mineralTotals.geode ?? 0) > 0) {
-      giaiMessage.set("A geode! These haven't formed in millennia.")
-      setTimeout(() => giaiMessage.set(null), 4000)
+      gaiaMessage.set("A geode! These haven't formed in millennia.")
+      setTimeout(() => gaiaMessage.set(null), 4000)
     }
 
     // Store dive results for the summary screen
@@ -1048,7 +1048,7 @@ export class GameManager {
   }
 
   /**
-   * Applies the consistency penalty: drains extra O2 and shows a GIAI message.
+   * Applies the consistency penalty: drains extra O2 and shows a GAIA message.
    * Also updates the activeQuiz store flag so the overlay can show the warning.
    *
    * @param factId - The fact that triggered the violation.
@@ -1064,8 +1064,8 @@ export class GameManager {
       scene.drainOxygen(BALANCE.CONSISTENCY_PENALTY_O2)
     }
 
-    // GIAI callout — pick from snarky "you knew this" lines
-    this.randomGiai([
+    // GAIA callout — pick from snarky "you knew this" lines
+    this.randomGaia([
       "You knew that one before! Sloppy, pilot.",
       "Inconsistent answer — you've gotten this right before.",
       "Focus! You learned this already.",
@@ -1136,7 +1136,7 @@ export class GameManager {
         // Quiz flow is ending — return to mining
         currentScreen.set('mining')
         if (!correct) {
-          giaiMessage.set("Close enough. Let's see what we've got.")
+          gaiaMessage.set("Close enough. Let's see what we've got.")
         }
         // If all questions were answered correctly the scene will have emitted artifact-found
         // with a potentially boosted rarity — show a boost message if warranted
@@ -1163,9 +1163,9 @@ export class GameManager {
       scene.resumeFromRandomQuiz(correct)
       currentScreen.set('mining')
       if (correct) {
-        giaiMessage.set(`Not bad. Here's some dust for your trouble.`)
+        gaiaMessage.set(`Not bad. Here's some dust for your trouble.`)
       } else {
-        giaiMessage.set("Wrong. That'll cost you some oxygen.")
+        gaiaMessage.set("Wrong. That'll cost you some oxygen.")
       }
     } else {
       currentScreen.set('base')
@@ -1185,9 +1185,9 @@ export class GameManager {
     const scene = this.getMineScene()
     if (scene) {
       if (correct) {
-        giaiMessage.set("Well done. Descending...")
+        gaiaMessage.set("Well done. Descending...")
       } else {
-        giaiMessage.set("Wrong, but you'll survive. Barely.")
+        gaiaMessage.set("Wrong, but you'll survive. Barely.")
       }
       scene.resumeFromLayerQuiz(correct)
       currentScreen.set('mining')
@@ -1253,7 +1253,7 @@ export class GameManager {
 
   /**
    * Called when the StudySession component signals completion.
-   * Shows a GIAI comment based on performance and returns to base.
+   * Shows a GAIA comment based on performance and returns to base.
    *
    * @param correctCount - Number of cards the player rated as correct.
    * @param totalCount - Total cards in the session.
@@ -1293,15 +1293,15 @@ export class GameManager {
       const bonusMsg = ritualType === 'morning'
         ? `Great morning practice! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
         : `A productive evening! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
-      giaiMessage.set(bonusMsg)
-      setTimeout(() => giaiMessage.set(null), 5000)
+      gaiaMessage.set(bonusMsg)
+      setTimeout(() => gaiaMessage.set(null), 5000)
     } else {
       if (ratio === 1) {
-        giaiMessage.set('Perfect session! Your knowledge grows stronger.')
+        gaiaMessage.set('Perfect session! Your knowledge grows stronger.')
       } else if (ratio > 0.7) {
-        giaiMessage.set('Solid review. The tree appreciates your effort.')
+        gaiaMessage.set('Solid review. The tree appreciates your effort.')
       } else {
-        giaiMessage.set('Some of those need more practice. The tree will wait.')
+        gaiaMessage.set('Some of those need more practice. The tree will wait.')
       }
     }
 
@@ -1481,42 +1481,42 @@ export class GameManager {
   }
 
   // =========================================================
-  // GIAI (ship AI) commentary
+  // GAIA (ship AI) commentary
   // =========================================================
 
   /**
-   * Pick a random line and push it to the giaiMessage store,
+   * Pick a random line and push it to the gaiaMessage store,
    * subject to the player's chattiness setting.
    * Level 10 = always speaks; level 0 = never; intermediate = proportional probability.
    * The toast UI will display and auto-dismiss it.
    */
-  private randomGiai(lines: string[], trigger = 'idle'): void {
-    const chattiness = get(giaiChattiness)
+  private randomGaia(lines: string[], trigger = 'idle'): void {
+    const chattiness = get(gaiaChattiness)
     if (Math.random() * 10 >= chattiness) return
     const msg = lines[Math.floor(Math.random() * lines.length)]
-    const mood = get(giaiMood)
-    const expr = getGiaiExpression(trigger, mood)
-    giaiExpression.set(expr.id)
-    giaiMessage.set(msg)
+    const mood = get(gaiaMood)
+    const expr = getGaiaExpression(trigger, mood)
+    gaiaExpression.set(expr.id)
+    gaiaMessage.set(msg)
   }
 
   /**
-   * Emit a mood-aware GIAI line for the given named trigger, respecting chattiness.
-   * Also updates the giaiExpression store so the toast and avatar reflect context.
+   * Emit a mood-aware GAIA line for the given named trigger, respecting chattiness.
+   * Also updates the gaiaExpression store so the toast and avatar reflect context.
    */
-  private triggerGiai(trigger: keyof typeof GIAI_TRIGGERS): void {
-    const chattiness = get(giaiChattiness)
+  private triggerGaia(trigger: keyof typeof GAIA_TRIGGERS): void {
+    const chattiness = get(gaiaChattiness)
     if (Math.random() * 10 >= chattiness) return
-    const mood = get(giaiMood)
-    const text = getGiaiLine(trigger, mood)
-    const expr = getGiaiExpression(trigger, mood)
-    giaiExpression.set(expr.id)
-    giaiMessage.set(text)
+    const mood = get(gaiaMood)
+    const text = getGaiaLine(trigger, mood)
+    const expr = getGaiaExpression(trigger, mood)
+    gaiaExpression.set(expr.id)
+    gaiaMessage.set(text)
   }
 
   /**
    * Awards one unit of the given premium material to the player's save and shows a
-   * GIAI toast. Premium materials are rare in-game drops — never sold for real money.
+   * GAIA toast. Premium materials are rare in-game drops — never sold for real money.
    *
    * @param materialId - The premium material to award.
    */
@@ -1537,8 +1537,8 @@ export class GameManager {
     })
     persistPlayer()
 
-    // Always show a GIAI toast for premium drops — they are rare enough to be noteworthy.
-    giaiMessage.set(`${meta.icon} Rare find! ${meta.name}!`)
-    setTimeout(() => giaiMessage.set(null), 4000)
+    // Always show a GAIA toast for premium drops — they are rare enough to be noteworthy.
+    gaiaMessage.set(`${meta.icon} Rare find! ${meta.name}!`)
+    setTimeout(() => gaiaMessage.set(null), 4000)
   }
 }

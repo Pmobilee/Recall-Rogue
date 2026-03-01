@@ -161,7 +161,7 @@
       &larr; Back
     </button>
     <div class="title-block">
-      <h1>\u2B50 Premium Workshop</h1>
+      <h1>&#x2B50; Premium Workshop</h1>
       <p class="subtitle">Craft rare items with precious in-game drops</p>
     </div>
   </div>
@@ -199,7 +199,7 @@
       type="button"
       onclick={() => { activeTab = 'cosmetic' }}
     >
-      \u{1F457} Cosmetics
+      👗 Cosmetics
     </button>
     <button
       class="tab-btn"
@@ -209,7 +209,7 @@
       type="button"
       onclick={() => { activeTab = 'convenience' }}
     >
-      \u{1F6E0}\uFE0F Convenience
+      🛠️ Convenience
     </button>
     <button
       class="tab-btn"
@@ -219,7 +219,7 @@
       type="button"
       onclick={() => { activeTab = 'pet_variant' }}
     >
-      \u{1F43E} Pet Variants
+      🐾 Pet Variants
     </button>
   </div>
 
@@ -273,7 +273,7 @@
             </div>
 
             {#if petLocked && recipe.unlockCondition}
-              <span class="unlock-cond">\u{1F512} Requires: {recipe.unlockCondition}</span>
+              <span class="unlock-cond">🔒 Requires: {recipe.unlockCondition}</span>
             {/if}
           </div>
 
@@ -281,7 +281,7 @@
           <div class="recipe-actions">
             {#if petLocked}
               <div class="lock-badge" title={recipe.unlockCondition ?? 'Locked'}>
-                <span class="lock-icon">\u{1F512}</span>
+                <span class="lock-icon">🔒</span>
                 <span class="lock-text">Locked</span>
               </div>
             {:else if maxed || (recipe.category === 'cosmetic' && owned)}

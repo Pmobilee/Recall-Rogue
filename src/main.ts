@@ -27,24 +27,12 @@ playerSave.update(s => {
 })
 
 async function bootGame(): Promise<void> {
-  // Initialize facts database (fetches WASM + .db file)
-  try {
-    await factsDB.init()
-  } catch (err) {
+  // Start DB init in background — don't block Phaser boot
+  const dbPromise = factsDB.init().catch(err => {
     console.warn('FactsDB init failed, continuing without database:', err)
-  }
+  })
 
-  // Seed starter facts if DB is available and player has none learned yet
-  if (factsDB.isReady() && save.learnedFacts.length === 0) {
-    const starterVocab = factsDB.getByType('vocabulary').slice(0, 3)
-    const starterFacts = factsDB.getByType('fact').slice(0, 3)
-    for (const fact of [...starterVocab, ...starterFacts]) {
-      addLearnedFact(fact.id)
-    }
-    persistPlayer()
-  }
-
-  // Boot Phaser engine
+  // Boot Phaser engine immediately (parallel with DB load)
   const gameManager = GameManager.getInstance()
   gameManager.boot()
 
@@ -54,6 +42,19 @@ async function bootGame(): Promise<void> {
     game.events.on('boot-complete', () => {
       currentScreen.set('base')
     })
+  }
+
+  // Wait for DB to finish loading before seeding starter facts
+  await dbPromise
+
+  // Seed starter facts if DB is available and player has none learned yet
+  if (factsDB.isReady() && save.learnedFacts.length === 0) {
+    const starterVocab = factsDB.getByType('vocabulary').slice(0, 3)
+    const starterFacts = factsDB.getByType('fact').slice(0, 3)
+    for (const fact of [...starterVocab, ...starterFacts]) {
+      addLearnedFact(fact.id)
+    }
+    persistPlayer()
   }
 }
 

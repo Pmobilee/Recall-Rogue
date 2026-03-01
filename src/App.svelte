@@ -1,5 +1,6 @@
 <script lang="ts">
   import { get } from 'svelte/store'
+  import { untrack } from 'svelte'
   import { GameManager } from './game/GameManager'
   import {
     currentScreen,
@@ -14,6 +15,7 @@
     showSendUp,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
+  import type { Fact } from './data/types'
 
   // Components
   import HUD from './ui/components/HUD.svelte'
@@ -36,11 +38,23 @@
   import Zoo from './ui/components/Zoo.svelte'
   import StreakPanel from './ui/components/StreakPanel.svelte'
   import Farm from './ui/components/Farm.svelte'
+  import Settings from './ui/components/Settings.svelte'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
-  import { giaiMessage } from './ui/stores/gameState'
+  import { gaiaMessage } from './ui/stores/gameState'
 
   const gm = GameManager.getInstance()
+
+  // Cache getFacts() — avoids full SQL scan on every re-render
+  let cachedFacts = $state<Fact[]>([])
+
+  $effect(() => {
+    if (untrack(() => cachedFacts.length) === 0) {
+      try {
+        cachedFacts = gm.getFacts()
+      } catch { /* DB not ready yet */ }
+    }
+  })
 
   // Quiz mode tracking
   let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'>('gate')
@@ -148,6 +162,41 @@
   }
 
   function handleBackFromStreakPanel(): void {
+    currentScreen.set('base')
+  }
+
+  function handleViewFarm(): void {
+    currentScreen.set('farm')
+  }
+
+  function handleBackFromFarm(): void {
+    // Auto-collect any remaining farm resources on returning to base and show a GAIA toast
+    const save = $playerSave
+    if (save) {
+      const pending = calculateTotalPending(save.farm.slots)
+      const anyPending = pending.dust > 0 || pending.shard > 0 || pending.crystal > 0
+      if (anyPending) {
+        const { updatedSave, collected } = collectFarmResources(save)
+        playerSave.set(updatedSave)
+        const parts: string[] = []
+        if (collected.dust > 0) parts.push(`${collected.dust} dust`)
+        if (collected.shard > 0) parts.push(`${collected.shard} shards`)
+        if (collected.crystal > 0) parts.push(`${collected.crystal} crystal`)
+        if (parts.length > 0) {
+          gaiaMessage.set(`Your farm produced ${parts.join(', ')}!`)
+          setTimeout(() => gaiaMessage.set(null), 4000)
+        }
+      }
+    }
+    currentScreen.set('base')
+  }
+
+  // Settings handlers
+  function handleViewSettings(): void {
+    currentScreen.set('settings')
+  }
+
+  function handleBackFromSettings(): void {
     currentScreen.set('base')
   }
 
@@ -285,7 +334,9 @@
       onFossils={handleViewFossils}
       onZoo={handleViewZoo}
       onStreakPanel={handleViewStreakPanel}
-      facts={gm.getFacts()}
+      onFarm={handleViewFarm}
+      onSettings={handleViewSettings}
+      facts={cachedFacts}
     />
 
   {:else if $currentScreen === 'divePrepScreen'}
@@ -356,7 +407,7 @@
 
   {:else if $currentScreen === 'knowledgeTree'}
     <KnowledgeTreeView
-      facts={gm.getFacts()}
+      facts={cachedFacts}
       onBack={handleBackFromTree}
     />
 
@@ -391,6 +442,12 @@
 
   {:else if $currentScreen === 'streakPanel'}
     <StreakPanel onBack={handleBackFromStreakPanel} />
+
+  {:else if $currentScreen === 'farm'}
+    <Farm onBack={handleBackFromFarm} />
+
+  {:else if $currentScreen === 'settings'}
+    <Settings onBack={handleBackFromSettings} />
 
   {:else if $currentScreen === 'sacrifice'}
     <!-- MVP: sacrifice screen is just a redirect back to base -->
