@@ -225,6 +225,13 @@
     {/if}
   </div>
 
+  <!-- Empty state banner: shown when no companions have been placed yet -->
+  {#if farm.slots.every(s => s === null)}
+    <div class="farm-empty-state" aria-label="Farm is empty">
+      <p class="farm-empty-text">Your farm is empty. Revive fossils and assign them here to produce resources over time.</p>
+    </div>
+  {/if}
+
   <!-- Farm slots grid -->
   <div class="slots-grid" aria-label="Farm slots">
     {#each { length: farm.maxSlots } as _, i}
@@ -790,6 +797,24 @@
     color: var(--color-success);
     font-size: 0.85rem;
     font-weight: 600;
+  }
+
+  /* ---- Empty state ---- */
+  .farm-empty-state {
+    margin: 4px 8px 0;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .farm-empty-text {
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
   }
 
   /* ---- Help ---- */

@@ -5,9 +5,11 @@
     availableTanks: number
     onStartDive: (tanks: number) => void
     onBack: () => void
+    nextBiomeName?: string
+    nextBiomeDesc?: string
   }
 
-  let { availableTanks, onStartDive, onBack }: Props = $props()
+  let { availableTanks, onStartDive, onBack, nextBiomeName, nextBiomeDesc }: Props = $props()
 
   let selectedTanks = $state<number>(1)
 
@@ -90,6 +92,16 @@
 
     <p class="oxygen-estimate">Estimated Oxygen: {estimatedOxygen} O2</p>
     <p class={`dive-estimate ${diveTone}`}>{diveLabel}</p>
+
+    {#if nextBiomeName}
+      <div class="biome-preview">
+        <span class="biome-label">Biome:</span>
+        <span class="biome-name">{nextBiomeName}</span>
+        {#if nextBiomeDesc}
+          <p class="biome-desc">{nextBiomeDesc}</p>
+        {/if}
+      </div>
+    {/if}
 
     <button class="enter-btn" type="button" onclick={startDive} disabled={!hasTanks}>
       Enter Mine
@@ -217,6 +229,33 @@
     background: transparent;
     color: var(--color-text-dim);
     font-size: 0.95rem;
+  }
+
+  .biome-preview {
+    border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent 50%);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent 88%);
+    text-align: center;
+  }
+
+  .biome-label {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    margin-right: 0.3rem;
+  }
+
+  .biome-name {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .biome-desc {
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    line-height: 1.3;
   }
 
   button:disabled {

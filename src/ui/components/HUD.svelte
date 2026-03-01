@@ -407,7 +407,7 @@
 
   .surface-btn--disabled,
   .surface-btn:disabled {
-    opacity: 0.3;
+    opacity: 0.55;
     cursor: not-allowed;
     background: color-mix(in srgb, var(--color-surface) 80%, var(--color-accent) 20%);
   }

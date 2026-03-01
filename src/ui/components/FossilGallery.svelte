@@ -109,6 +109,12 @@
     </div>
   </div>
 
+  {#if discoveredCount === 0}
+    <div class="gallery-empty-state" aria-label="No fossils discovered yet">
+      <p class="gallery-empty-text">No fossils collected yet. Mine below 35% depth to discover fossil nodes!</p>
+    </div>
+  {/if}
+
   <div class="species-grid">
     {#each speciesWithState as { species, state }}
       {@const discovered = state !== null}
@@ -289,6 +295,20 @@
   .summary-note {
     color: var(--color-text-dim);
     font-size: 0.8rem;
+  }
+
+  .gallery-empty-state {
+    padding: 2rem 1rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .gallery-empty-text {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
   }
 
   .species-grid {

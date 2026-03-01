@@ -36,11 +36,13 @@ async function bootGame(): Promise<void> {
   const gameManager = GameManager.getInstance()
   gameManager.boot()
 
-  // When Phaser finishes booting, navigate to base screen
+  // When Phaser finishes booting, navigate to appropriate screen
   const game = gameManager.getGame()
   if (game) {
     game.events.on('boot-complete', () => {
-      currentScreen.set('base')
+      // Show main menu for first-time players, skip to base for returning players
+      const isNewPlayer = save.stats.totalDivesCompleted === 0 && save.learnedFacts.length <= 6
+      currentScreen.set(isNewPlayer ? 'mainMenu' : 'base')
     })
   }
 

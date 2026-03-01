@@ -187,7 +187,7 @@
           </div>
           <input class="chattiness-slider" type="range" min="0" max="10" value="10" disabled aria-label="SFX volume" />
         </div>
-        <p class="setting-note coming-soon">Full audio controls — coming soon.</p>
+        <p class="setting-note coming-soon">Volume controls — available in a future update.</p>
       </div>
     </section>
 

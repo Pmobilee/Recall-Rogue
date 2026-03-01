@@ -42,6 +42,8 @@
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
   import { gaiaMessage } from './ui/stores/gameState'
+  import { generateBiomeSequence } from './data/biomes'
+  import { seededRandom } from './game/systems/MineGenerator'
 
   const gm = GameManager.getInstance()
 
@@ -54,6 +56,14 @@
         cachedFacts = gm.getFacts()
       } catch { /* DB not ready yet */ }
     }
+  })
+
+  // Preview biome for DivePrepScreen — seed changes every minute so it varies without being random
+  const previewBiome = $derived.by(() => {
+    const previewSeed = Math.floor(Date.now() / 60000)
+    const rng = seededRandom(previewSeed ^ 0xb10e5)
+    const seq = generateBiomeSequence(rng, 1)
+    return seq[0] ?? null
   })
 
   // Quiz mode tracking
@@ -344,6 +354,8 @@
       availableTanks={$playerSave?.oxygen ?? 0}
       onStartDive={handleStartDive}
       onBack={handleBackFromDivePrep}
+      nextBiomeName={previewBiome?.name}
+      nextBiomeDesc={previewBiome?.description}
     />
 
   {:else if $currentScreen === 'mining'}
@@ -450,11 +462,48 @@
     <Settings onBack={handleBackFromSettings} />
 
   {:else if $currentScreen === 'sacrifice'}
-    <!-- MVP: sacrifice screen is just a redirect back to base -->
     <div class="sacrifice-screen">
-      <h2>Oxygen Depleted!</h2>
-      <p>You lost 30% of your inventory...</p>
-      <button type="button" onclick={() => currentScreen.set('base')}>Return to Base</button>
+      <h2 class="sacrifice-title">Oxygen Depleted!</h2>
+      <p class="sacrifice-subtitle">You've been rescued, but at a cost...</p>
+
+      {#if $diveResults}
+        <div class="sacrifice-summary">
+          {#if $diveResults.forced}
+            <p class="loss-notice">30% of in-pack items lost</p>
+          {:else}
+            <p class="insured-notice">Insured — no loss!</p>
+          {/if}
+          <div class="sacrifice-loot">
+            {#if $diveResults.dustCollected > 0}
+              <span class="loot-item">Dust: {$diveResults.dustCollected}</span>
+            {/if}
+            {#if $diveResults.shardsCollected > 0}
+              <span class="loot-item">Shards: {$diveResults.shardsCollected}</span>
+            {/if}
+            {#if $diveResults.crystalsCollected > 0}
+              <span class="loot-item">Crystals: {$diveResults.crystalsCollected}</span>
+            {/if}
+            {#if $diveResults.geodesCollected > 0}
+              <span class="loot-item geode">Geodes: {$diveResults.geodesCollected}</span>
+            {/if}
+            {#if $diveResults.essenceCollected > 0}
+              <span class="loot-item essence">Essence: {$diveResults.essenceCollected}</span>
+            {/if}
+            {#if $diveResults.dustCollected + $diveResults.shardsCollected + $diveResults.crystalsCollected + $diveResults.geodesCollected + $diveResults.essenceCollected === 0}
+              <span class="loot-item dim">Nothing recovered...</span>
+            {/if}
+          </div>
+          {#if $diveResults.blocksMined > 0}
+            <p class="blocks-stat">Blocks mined: {$diveResults.blocksMined}</p>
+          {/if}
+        </div>
+      {:else}
+        <p class="sacrifice-fallback">Your items have been salvaged with losses.</p>
+      {/if}
+
+      <button class="sacrifice-btn" type="button" onclick={() => currentScreen.set('base')}>
+        Return to Base
+      </button>
     </div>
   {/if}
 
@@ -528,26 +577,94 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 50;
+    background: var(--color-bg);
+    z-index: 30;
     font-family: 'Courier New', monospace;
-    color: var(--color-accent);
+    padding: 1.5rem;
   }
 
-  .sacrifice-screen p {
+  .sacrifice-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    color: #ff6b6b;
+  }
+
+  .sacrifice-subtitle {
+    color: var(--color-text-dim);
+    font-size: 1rem;
+  }
+
+  .sacrifice-summary {
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 107, 107, 0.06);
+    width: min(100%, 22rem);
+    text-align: center;
+  }
+
+  .loss-notice {
+    color: #ff6b6b;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .insured-notice {
+    color: var(--color-success);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sacrifice-loot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .loot-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  .loot-item.dim {
+    color: var(--color-text-dim);
+    font-style: italic;
+  }
+
+  .loot-item.geode {
+    color: #b388ff;
+  }
+
+  .loot-item.essence {
+    color: #ffd700;
+  }
+
+  .blocks-stat {
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .sacrifice-fallback {
     color: var(--color-text-dim);
   }
 
-  .sacrifice-screen button {
-    margin-top: 1rem;
+  .sacrifice-btn {
     min-height: 48px;
-    padding: 0.8rem 2rem;
-    border: 1px solid var(--color-text-dim);
-    border-radius: 12px;
-    background: var(--color-surface);
+    border: 2px solid color-mix(in srgb, var(--color-primary) 75%, white 25%);
+    border-radius: 14px;
+    padding: 0.85rem 2rem;
+    background: color-mix(in srgb, var(--color-primary) 40%, var(--color-bg) 60%);
     color: var(--color-text);
-    font-family: inherit;
-    font-size: 1rem;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
     cursor: pointer;
+    margin-top: 0.5rem;
   }
 </style>
