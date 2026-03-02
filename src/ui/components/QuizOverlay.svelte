@@ -7,6 +7,27 @@
   import { gaiaMood } from '../stores/settings'
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
 
+  // GAIA sprite imports for reaction bubble
+  import gaiaNeutralImg from '../../assets/sprites/dome/gaia_neutral.png'
+  import gaiaHappyImg from '../../assets/sprites/dome/gaia_happy.png'
+  import gaiaThinkingImg from '../../assets/sprites/dome/gaia_thinking.png'
+  import gaiaSnarkyImg from '../../assets/sprites/dome/gaia_snarky.png'
+  import gaiaSurprisedImg from '../../assets/sprites/dome/gaia_surprised.png'
+  import gaiaCalmImg from '../../assets/sprites/dome/gaia_calm.png'
+
+  /** Map expression IDs to sprite image URLs */
+  const GAIA_SPRITE_MAP: Record<string, string> = {
+    neutral:   gaiaNeutralImg,
+    happy:     gaiaHappyImg,
+    excited:   gaiaHappyImg,
+    thinking:  gaiaThinkingImg,
+    worried:   gaiaThinkingImg,
+    proud:     gaiaHappyImg,
+    snarky:    gaiaSnarkyImg,
+    surprised: gaiaSurprisedImg,
+    calm:      gaiaCalmImg,
+  }
+
   interface Props {
     fact: Fact
     choices: string[]
@@ -82,12 +103,17 @@
     attemptsRemaining = totalAttempts
   })
 
-  /** Emoji and name shown in the GAIA reaction bubble after answering */
-  const gaiaReactionEmoji = $derived.by(() => {
-    if (!showResult || isCorrect === null) return GAIA_EXPRESSIONS.neutral.emoji
+  /** Expression id for the GAIA reaction bubble after answering */
+  const gaiaReactionExpressionId = $derived.by(() => {
+    if (!showResult || isCorrect === null) return 'neutral'
     const trigger = isCorrect ? 'quiz_correct' : 'quiz_wrong'
-    return getGaiaExpression(trigger, $gaiaMood).emoji
+    return getGaiaExpression(trigger, $gaiaMood).id
   })
+
+  /** Sprite URL for the GAIA reaction bubble */
+  const gaiaReactionSpriteUrl = $derived(
+    GAIA_SPRITE_MAP[gaiaReactionExpressionId] ?? gaiaNeutralImg
+  )
 
   async function handleAnswer(answer: string): Promise<void> {
     if (showResult) return
@@ -138,6 +164,15 @@
     return isCorrect ? 'choice-correct' : 'choice-wrong'
   }
 
+  /** Delay (ms) for each choice button stagger animation */
+  const STAGGER_DELAYS = [200, 250, 300, 350]
+
+  /** CSS class for result animation on the selected choice button */
+  function getResultAnimClass(choice: string): string {
+    if (!showResult || selectedAnswer !== choice || isCorrect === null) return ''
+    return isCorrect ? 'anim-correct-pulse' : 'anim-wrong-shake'
+  }
+
   onMount(() => {
     function handleKeyDown(e: KeyboardEvent): void {
       if (showResult) return
@@ -152,8 +187,8 @@
   })
 </script>
 
-<div class="quiz-overlay" role="dialog" aria-modal="true" aria-label="Quiz">
-  <div class="quiz-card">
+<div class="quiz-overlay quiz-overlay-enter" role="dialog" aria-modal="true" aria-label="Quiz">
+  <div class="quiz-card quiz-card-enter">
     <button class="close-button" type="button" onclick={onClose} aria-label="Close quiz">
       x
     </button>
@@ -186,12 +221,13 @@
     <div class="choices">
       {#each choices as choice, i}
         <button
-          class={`choice-button ${getChoiceClass(choice)}`}
+          class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
+          style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
           type="button"
           disabled={showResult}
           onclick={() => void handleAnswer(choice)}
         >
-          <span class="choice-number">{i + 1}</span>
+          <span class="key-badge" aria-hidden="true">{i + 1}</span>
           <span class="choice-text">{choice}</span>
         </button>
       {/each}
@@ -203,7 +239,7 @@
 
     {#if showResult && isCorrect !== null}
       <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
-        <span class="gaia-reaction-emoji" aria-hidden="true">{gaiaReactionEmoji}</span>
+        <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
         <span class="gaia-reaction-name">{GAIA_NAME}</span>
         <span class="gaia-reaction-text">
           {#if isCorrect}
@@ -229,6 +265,49 @@
 </div>
 
 <style>
+  /* ── Entry animations ─────────────────────────────────────────────────── */
+  @keyframes overlay-fade-in {
+    from { background: rgba(0, 0, 0, 0); }
+    to   { background: rgba(0, 0, 0, 0.85); }
+  }
+
+  @keyframes card-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes choice-appear {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Result animations ────────────────────────────────────────────────── */
+  @keyframes correct-pulse {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes wrong-shake {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(-4px); }
+    40%  { transform: translateX(4px); }
+    70%  { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+  }
+
   .quiz-overlay {
     position: fixed;
     inset: 0;
@@ -242,6 +321,10 @@
     font-family: 'Courier New', monospace;
   }
 
+  .quiz-overlay-enter {
+    animation: overlay-fade-in 300ms ease-out both;
+  }
+
   .quiz-card {
     position: relative;
     width: min(100%, 36rem);
@@ -253,6 +336,10 @@
     padding: 1.25rem;
     background: var(--color-surface);
     color: var(--color-text);
+  }
+
+  .quiz-card-enter {
+    animation: card-slide-up 400ms cubic-bezier(0.22, 0.61, 0.36, 1) 100ms both;
   }
 
   .close-button {
@@ -369,6 +456,10 @@
     text-align: center;
     cursor: pointer;
     transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    /* Always flex so key-badge is visible */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .choice-button:active:not(:disabled) {
@@ -378,6 +469,19 @@
   .choice-button:disabled {
     opacity: 0.95;
     cursor: default;
+  }
+
+  .choice-stagger {
+    opacity: 0;
+    animation: choice-appear 280ms ease-out both;
+  }
+
+  .anim-correct-pulse {
+    animation: correct-pulse 400ms ease-out both !important;
+  }
+
+  .anim-wrong-shake {
+    animation: wrong-shake 380ms ease-out both !important;
   }
 
   .choice-correct {
@@ -392,35 +496,21 @@
     color: #fff;
   }
 
-  .choice-number {
-    display: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    background: color-mix(in srgb, var(--color-primary) 25%, var(--color-surface) 75%);
-    color: var(--color-text-dim);
-    font-size: 0.8rem;
-    font-weight: 700;
+  .key-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+    margin-right: 8px;
     flex-shrink: 0;
-    place-items: center;
   }
 
   .choice-text {
     flex: 1;
-  }
-
-  /* Show number labels only on desktop (devices with fine pointer / mouse) */
-  @media (pointer: fine) {
-    .choice-number {
-      display: grid;
-    }
-
-    .choice-button {
-      /* override text-align: center to use flexbox layout */
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
   }
 
   .result-text {
@@ -502,10 +592,13 @@
     background: rgba(233, 69, 96, 0.08);
   }
 
-  .gaia-reaction-emoji {
-    font-size: 1.3rem;
-    line-height: 1;
+  .gaia-reaction-sprite {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
     flex-shrink: 0;
+    border-radius: 4px;
   }
 
   .gaia-reaction-name {

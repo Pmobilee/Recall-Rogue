@@ -340,41 +340,19 @@ export class MineScene extends Phaser.Scene {
         this.getPooledSprite('block_exit_ladder', cx, cy)
         break
       case BlockType.DescentShaft: {
-        // Deep purple block with a downward chevron arrow drawn procedurally.
-        // Base color (0x6633cc) is rendered as the background rect in drawTiles.
-        // Draw a lighter inner border to give it a "portal" look.
-        this.overlayGraphics.lineStyle(2, 0x9966ff, 0.9)
-        const inset = 4
-        this.overlayGraphics.strokeRect(px + inset, py + inset, TILE_SIZE - inset * 2, TILE_SIZE - inset * 2)
-        // Draw a downward-pointing chevron arrow in the center.
-        const midX = px + TILE_SIZE * 0.5
-        const arrowTop = py + 8
-        const arrowMid = py + TILE_SIZE * 0.55
-        const arrowBot = py + TILE_SIZE - 8
-        const arrowHalf = TILE_SIZE * 0.3
-        this.overlayGraphics.lineStyle(2, 0xddaaff, 0.95)
-        // Top-left to midpoint
-        this.overlayGraphics.lineBetween(midX - arrowHalf, arrowTop, midX, arrowMid)
-        // Top-right to midpoint
-        this.overlayGraphics.lineBetween(midX + arrowHalf, arrowTop, midX, arrowMid)
-        // Bottom tip
-        this.overlayGraphics.lineBetween(midX, arrowMid, midX, arrowBot)
+        this.getPooledSprite('block_descent_shaft', cx, cy)
         break
       }
       case BlockType.MineralNode: {
         const tier = cell.content?.mineralType ?? 'dust'
-        if (tier === 'geode') {
-          // Geode: purple-tinted sprite with bright crystalline inner dot and outline
-          const sprite = this.getPooledSprite('mineral_red', cx, cy)
-          sprite.setTint(0x9b59b6)
-          this.overlayGraphics.fillStyle(0xda70d6, 0.85)
-          this.overlayGraphics.fillCircle(cx, cy, 5)
-          this.overlayGraphics.lineStyle(1, 0xffffff, 0.6)
-          this.overlayGraphics.strokeCircle(cx, cy, 8)
-        } else if (tier === 'essence') {
-          // Primordial Essence: white/gold tinted relic sprite with radiating gold star rays
-          const sprite = this.getPooledSprite('relic_gold', cx, cy)
-          sprite.setTint(0xfffde7)
+        const mineralKey = tier === 'essence' ? 'block_mineral_essence'
+          : tier === 'geode' ? 'block_mineral_geode'
+          : tier === 'crystal' ? 'block_mineral_crystal'
+          : tier === 'shard' ? 'block_mineral_shard'
+          : 'block_mineral_dust'
+        this.getPooledSprite(mineralKey, cx, cy)
+        // Essence overlay: radiating gold star rays on top of sprite
+        if (tier === 'essence') {
           const r = TILE_SIZE * 0.38
           this.overlayGraphics.lineStyle(2, 0xffd700, 0.9)
           this.overlayGraphics.lineBetween(cx, cy - r, cx, cy + r)
@@ -385,33 +363,16 @@ export class MineScene extends Phaser.Scene {
           this.overlayGraphics.lineBetween(cx + rd, cy - rd, cx - rd, cy + rd)
           this.overlayGraphics.fillStyle(0xffffff, 1)
           this.overlayGraphics.fillCircle(cx, cy, 3)
-        } else {
-          const key = tier === 'crystal' ? 'mineral_red'
-            : tier === 'shard' ? 'mineral_green'
-            : 'mineral_blue'
-          this.getPooledSprite(key, cx, cy)
         }
         break
       }
       case BlockType.ArtifactNode: {
-        const key = cell.content?.factId ? 'relic_tablet' : 'relic_gold'
-        this.getPooledSprite(key, cx, cy)
+        this.getPooledSprite('block_artifact', cx, cy)
         break
       }
       case BlockType.LavaBlock: {
-        // Base color (0xcc3300) is already drawn as the background rect in drawTiles.
-        // Draw bright lava highlight lines to suggest flowing lava.
-        this.overlayGraphics.lineStyle(2, 0xff6600, 0.75)
-        // Three wavy horizontal stripes at different y offsets
-        const stripeOffsets = [6, 14, 22]
-        for (const offset of stripeOffsets) {
-          const waveAmp = this.seededModulo(tileX, tileY, offset, 3) - 1  // -1, 0, or 1
-          this.overlayGraphics.lineBetween(
-            px + 2, py + offset + waveAmp,
-            px + TILE_SIZE - 2, py + offset - waveAmp,
-          )
-        }
-        // A few bright highlight dots
+        this.getPooledSprite('block_lava', cx, cy)
+        // Lava glow overlay: bright highlight dot on top of sprite
         this.overlayGraphics.fillStyle(0xff8800, 0.6)
         const dotX = px + 4 + this.seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
         const dotY = py + 4 + this.seededModulo(tileX, tileY, 11, TILE_SIZE - 8)
@@ -419,186 +380,112 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.GasPocket: {
-        // Base color (0x446633) is already drawn in drawTiles.
-        // Draw lighter speckles to suggest rising gas bubbles.
-        this.overlayGraphics.fillStyle(0x88aa55, 0.65)
-        const bubbleCount = 4
-        for (let i = 0; i < bubbleCount; i++) {
-          const bx = px + 3 + this.seededModulo(tileX, tileY, i * 5, TILE_SIZE - 6)
-          const by = py + 3 + this.seededModulo(tileX, tileY, i * 7 + 3, TILE_SIZE - 6)
-          const radius = 1 + this.seededModulo(tileX, tileY, i * 3 + 1, 2)
-          this.overlayGraphics.fillCircle(bx, by, radius)
-        }
+        this.getPooledSprite('block_gas', cx, cy)
         break
       }
       case BlockType.UnstableGround: {
-        // Base color (0x8B7355) is already drawn in drawTiles.
-        // Draw darker brown crack lines to suggest cracked, unstable earth.
-        this.overlayGraphics.lineStyle(1, 0x5a4020, 0.85)
-        // Crack 1: diagonal from upper-left area to lower-right area
-        const c1x1 = px + 4 + this.seededModulo(tileX, tileY, 3, 6)
-        const c1y1 = py + 3
-        const c1x2 = px + TILE_SIZE - 5 - this.seededModulo(tileX, tileY, 7, 4)
-        const c1y2 = py + TILE_SIZE - 4
-        this.overlayGraphics.lineBetween(c1x1, c1y1, c1x2, c1y2)
-        // Crack 2: shorter diagonal in opposite direction (upper-right to mid-left)
-        const c2x1 = px + TILE_SIZE - 6
-        const c2y1 = py + 5 + this.seededModulo(tileX, tileY, 11, 5)
-        const c2x2 = px + 8 + this.seededModulo(tileX, tileY, 13, 4)
-        const c2y2 = py + TILE_SIZE * 0.6
-        this.overlayGraphics.lineBetween(c2x1, c2y1, c2x2, c2y2)
-        // Crack 3: small branch off crack 1 midpoint
-        const midX = Math.floor((c1x1 + c1x2) / 2)
-        const midY = Math.floor((c1y1 + c1y2) / 2)
-        this.overlayGraphics.lineBetween(midX, midY, midX + 5, midY - 4)
+        this.getPooledSprite('block_unstable', cx, cy)
         break
       }
       case BlockType.QuoteStone: {
-        // Blue-grey stone tablet with 3 carved horizontal text lines.
-        // Base color (0x7788aa) is drawn as background rect in drawTiles.
-        // Draw a slightly lighter inner border to frame the tablet face.
-        const tabletInset = 4
-        this.overlayGraphics.lineStyle(1, 0x99aacc, 0.8)
-        this.overlayGraphics.strokeRect(
-          px + tabletInset,
-          py + tabletInset,
-          TILE_SIZE - tabletInset * 2,
-          TILE_SIZE - tabletInset * 2,
-        )
-        // Three horizontal carved-text lines across the stone face
-        const lineMargin = 7
-        const lineOffsets = [10, 16, 22]
-        for (const lineOffset of lineOffsets) {
-          this.overlayGraphics.lineStyle(1, 0x99aacc, 0.7)
-          this.overlayGraphics.lineBetween(
-            px + lineMargin,
-            py + lineOffset,
-            px + TILE_SIZE - lineMargin,
-            py + lineOffset,
-          )
-        }
+        this.getPooledSprite('block_quote_stone', cx, cy)
         break
       }
       case BlockType.RelicShrine: {
-        // Base color (0xd4af37 gold) already drawn in drawTiles.
-        // Golden pedestal base with a bright 4-pointed diamond star on top.
-        const pedestalH = Math.round(TILE_SIZE * 0.35)
-        const pedestalW = Math.round(TILE_SIZE * 0.6)
-        const pedestalX = px + (TILE_SIZE - pedestalW) / 2
-        const pedestalY = py + TILE_SIZE - pedestalH - 3
-        this.overlayGraphics.fillStyle(0xffcc00, 0.9)
-        this.overlayGraphics.fillRect(pedestalX, pedestalY, pedestalW, pedestalH)
-        this.overlayGraphics.lineStyle(1, 0xffeebb, 0.95)
-        this.overlayGraphics.lineBetween(pedestalX, pedestalY, pedestalX + pedestalW, pedestalY)
-        const starCx = px + TILE_SIZE * 0.5
-        const starCy = py + TILE_SIZE * 0.35
-        const outerR = TILE_SIZE * 0.22
-        const innerR = TILE_SIZE * 0.10
-        this.overlayGraphics.fillStyle(0xffffff, 0.95)
-        const starPoints: { x: number; y: number }[] = []
-        for (let i = 0; i < 8; i++) {
-          const angle = (i * Math.PI) / 4 - Math.PI / 4
-          const r = i % 2 === 0 ? outerR : innerR
-          starPoints.push({ x: starCx + Math.cos(angle) * r, y: starCy + Math.sin(angle) * r })
-        }
-        this.overlayGraphics.fillPoints(starPoints, true)
-        this.overlayGraphics.lineStyle(1, 0xffee44, 0.7)
-        this.overlayGraphics.strokeCircle(starCx, starCy, outerR + 2)
+        this.getPooledSprite('block_relic_shrine', cx, cy)
         break
       }
       case BlockType.SendUpStation: {
-        // Bright blue teleporter pad. Base color (0x44aadd) is drawn in drawTiles.
-        // Draw inner border to give it a "pad" look.
-        this.overlayGraphics.lineStyle(2, 0x88ddff, 0.9)
-        const suInset = 3
-        this.overlayGraphics.strokeRect(px + suInset, py + suInset, TILE_SIZE - suInset * 2, TILE_SIZE - suInset * 2)
-        // Draw an upward-pointing arrow in white/cyan.
-        const suMidX = px + TILE_SIZE * 0.5
-        const suArrowBot = py + TILE_SIZE - 7
-        const suArrowMid = py + TILE_SIZE * 0.45
-        const suArrowTop = py + 7
-        const suArrowHalf = TILE_SIZE * 0.28
-        this.overlayGraphics.lineStyle(2, 0xffffff, 0.95)
-        this.overlayGraphics.lineBetween(suMidX, suArrowBot, suMidX, suArrowMid)
-        this.overlayGraphics.lineBetween(suMidX, suArrowTop, suMidX - suArrowHalf, suArrowMid)
-        this.overlayGraphics.lineBetween(suMidX, suArrowTop, suMidX + suArrowHalf, suArrowMid)
-        this.overlayGraphics.fillStyle(0x88ffff, 0.7)
-        this.overlayGraphics.fillCircle(px + 5, py + 5, 2)
-        this.overlayGraphics.fillCircle(px + TILE_SIZE - 5, py + 5, 2)
-        this.overlayGraphics.fillCircle(px + 5, py + TILE_SIZE - 5, 2)
-        this.overlayGraphics.fillCircle(px + TILE_SIZE - 5, py + TILE_SIZE - 5, 2)
+        this.getPooledSprite('block_send_up', cx, cy)
         break
       }
       case BlockType.OxygenTank: {
-        // Bright teal permanent-upgrade tank. Base color (0x00ccaa) drawn in drawTiles.
-        // Tank body: teal rectangle with a white valve circle on top and a "+" pickup indicator.
-        const tankBodyW = Math.round(TILE_SIZE * 0.45)
-        const tankBodyH = Math.round(TILE_SIZE * 0.6)
-        const tankBodyX = px + (TILE_SIZE - tankBodyW) / 2
-        const tankBodyY = py + TILE_SIZE - tankBodyH - 4
-        this.overlayGraphics.fillStyle(0x00ffcc, 0.85)
-        this.overlayGraphics.fillRect(tankBodyX, tankBodyY, tankBodyW, tankBodyH)
-        // Valve cap: white circle at the top center of the tank body
-        const valveX = px + TILE_SIZE * 0.5
-        const valveY = tankBodyY - 3
-        this.overlayGraphics.fillStyle(0xffffff, 1)
-        this.overlayGraphics.fillCircle(valveX, valveY, 4)
-        // Inner shine stripe on tank body
-        this.overlayGraphics.fillStyle(0xaaffee, 0.55)
-        this.overlayGraphics.fillRect(tankBodyX + 3, tankBodyY + 4, 3, tankBodyH - 8)
-        // "+" symbol in white on tank body to indicate it's a bonus/pickup
-        const plusCx = px + TILE_SIZE * 0.5
-        const plusCy = tankBodyY + tankBodyH * 0.5
-        this.overlayGraphics.lineStyle(2, 0xffffff, 0.95)
-        this.overlayGraphics.lineBetween(plusCx - 5, plusCy, plusCx + 5, plusCy)
-        this.overlayGraphics.lineBetween(plusCx, plusCy - 5, plusCx, plusCy + 5)
+        this.getPooledSprite('block_oxygen_tank', cx, cy)
         break
       }
       case BlockType.DataDisc: {
-        // Data Disc — glowing cyan CD/disc shape with a white horizontal stripe and center dot.
-        // Base color (0x22aacc) drawn as background in drawTiles.
-        const discRadius = Math.round(TILE_SIZE * 0.35)
-        // Outer disc: bright cyan circle
-        this.overlayGraphics.fillStyle(0x44ddff, 0.90)
-        this.overlayGraphics.fillCircle(cx, cy, discRadius)
-        // Inner ring gap: dark circle to create the disc ring look
-        this.overlayGraphics.fillStyle(0x112233, 0.85)
-        this.overlayGraphics.fillCircle(cx, cy, Math.round(discRadius * 0.55))
-        // Center hole: tiny bright dot
-        this.overlayGraphics.fillStyle(0xffffff, 1)
-        this.overlayGraphics.fillCircle(cx, cy, 3)
-        // Horizontal data stripe across the middle
-        this.overlayGraphics.fillStyle(0xffffff, 0.75)
-        this.overlayGraphics.fillRect(cx - discRadius + 3, cy - 2, (discRadius - 3) * 2, 3)
-        // Glow effect: subtle outer ring
-        this.overlayGraphics.lineStyle(1, 0x88eeff, 0.50)
-        this.overlayGraphics.strokeCircle(cx, cy, discRadius + 2)
+        this.getPooledSprite('block_data_disc', cx, cy)
         break
       }
       case BlockType.FossilNode: {
-        // Fossil Node — amber/brown base (0xd4a574) drawn in drawTiles.
-        // Draw a bone-like pattern: two oval ends connected by a narrow shaft.
-        const boneW = Math.round(TILE_SIZE * 0.55)
-        const boneH = Math.round(TILE_SIZE * 0.18)
-        const knobR = Math.round(TILE_SIZE * 0.14)
-        // Central shaft in off-white/cream
-        this.overlayGraphics.fillStyle(0xf5e6c8, 0.90)
-        this.overlayGraphics.fillRect(cx - boneW / 2, cy - boneH / 2, boneW, boneH)
-        // Left knob
-        this.overlayGraphics.fillStyle(0xfff4e0, 0.95)
-        this.overlayGraphics.fillCircle(cx - boneW / 2 + knobR, cy, knobR + 2)
-        // Right knob
-        this.overlayGraphics.fillCircle(cx + boneW / 2 - knobR, cy, knobR + 2)
-        // Subtle amber highlight across shaft
-        this.overlayGraphics.fillStyle(0xc8844a, 0.35)
-        this.overlayGraphics.fillRect(cx - boneW / 2 + knobR, cy - 1, boneW - knobR * 2, 2)
-        // Faint border
-        this.overlayGraphics.lineStyle(1, 0x8b5e3c, 0.60)
-        this.overlayGraphics.strokeRect(cx - boneW / 2, cy - boneH / 2, boneW, boneH)
+        this.getPooledSprite('block_fossil', cx, cy)
         break
       }
       default:
         break
+    }
+  }
+
+  /**
+   * Draws procedural crack lines on the overlayGraphics for a partially mined block.
+   * Uses a position-seeded pattern so cracks are visually consistent across redraws.
+   *
+   * @param px - Pixel x of the tile top-left corner
+   * @param py - Pixel y of the tile top-left corner
+   * @param tileX - Grid column (used for seeded offsets)
+   * @param tileY - Grid row (used for seeded offsets)
+   * @param damagePercent - Value from 0 to 1 (0 = undamaged, 1 = about to break)
+   */
+  private drawCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
+    // 0-33% damage: no overlay
+    if (damagePercent <= 0.33) return
+
+    const s = TILE_SIZE
+    const cx = px + s * 0.5
+    const cy = py + s * 0.5
+
+    // Seeded sub-pixel offsets so each tile's cracks look unique but are stable
+    const ox1 = this.seededModulo(tileX, tileY, 5, s * 0.15)
+    const oy1 = this.seededModulo(tileX + 1, tileY, 7, s * 0.15)
+    const ox2 = this.seededModulo(tileX, tileY + 1, 11, s * 0.15)
+    const oy2 = this.seededModulo(tileX + 2, tileY, 13, s * 0.15)
+
+    if (damagePercent <= 0.66) {
+      // 34-66% damage: 2-3 thin cracks
+      this.overlayGraphics.lineStyle(1, 0x1a1a1a, 0.6)
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(px + s * 0.2 + ox1, py + s * 0.1 + oy1)
+      this.overlayGraphics.lineTo(cx, cy)
+      this.overlayGraphics.lineTo(px + s * 0.8 + ox2, py + s * 0.9 + oy2)
+      this.overlayGraphics.strokePath()
+
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(px + s * 0.6 + ox2, py + s * 0.05 + oy1)
+      this.overlayGraphics.lineTo(cx - ox1 * 0.5, cy - oy1 * 0.5)
+      this.overlayGraphics.strokePath()
+    } else {
+      // 67-99% damage: 4-6 thick cracks with extra branch lines
+      this.overlayGraphics.lineStyle(2, 0x1a1a1a, 0.65)
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(px + s * 0.2 + ox1, py + s * 0.1 + oy1)
+      this.overlayGraphics.lineTo(cx, cy)
+      this.overlayGraphics.lineTo(px + s * 0.8 + ox2, py + s * 0.9 + oy2)
+      this.overlayGraphics.strokePath()
+
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(px + s * 0.1 + ox2, py + s * 0.7 + oy2)
+      this.overlayGraphics.lineTo(cx + ox1 * 0.3, cy - oy1 * 0.3)
+      this.overlayGraphics.lineTo(px + s * 0.9 - ox1, py + s * 0.3 - oy2)
+      this.overlayGraphics.strokePath()
+
+      this.overlayGraphics.lineStyle(1, 0x1a1a1a, 0.5)
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(cx, cy)
+      this.overlayGraphics.lineTo(px + s * 0.55 + ox2, py + s * 0.05 + oy1)
+      this.overlayGraphics.strokePath()
+
+      this.overlayGraphics.beginPath()
+      this.overlayGraphics.moveTo(cx, cy)
+      this.overlayGraphics.lineTo(px + s * 0.05 + ox1, py + s * 0.45 + oy2)
+      this.overlayGraphics.strokePath()
+
+      // Small fragment chip near top-left
+      this.overlayGraphics.fillStyle(0x000000, 0.30)
+      this.overlayGraphics.fillTriangle(
+        px + 3 + ox1, py + 3 + oy1,
+        px + 3 + ox1 + 5, py + 3 + oy1,
+        px + 3 + ox1, py + 3 + oy1 + 5,
+      )
     }
   }
 
@@ -658,39 +545,73 @@ export class MineScene extends Phaser.Scene {
             const dimAmount = 1.0 - borderBrightness
             this.overlayGraphics.fillStyle(0x000000, dimAmount)
             this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            // Rarity hint: gold shimmer for artifacts, colored dot for minerals (Advanced+ scanner)
+            // Rarity hint: full-tile shimmer overlays for valuable blocks (Advanced+ scanner)
             if (tierInfo.showsRarity) {
+              const shimmerBase = 0.5 + 0.5 * Math.sin(this.time.now / 1000)
               if (cell.type === BlockType.ArtifactNode) {
-                this.overlayGraphics.lineStyle(2, 0xffd700, 0.75)
+                // Golden glow — pulsing full-tile overlay + bright center spot
+                const artifactAlpha = 0.10 + 0.05 * shimmerBase
+                this.overlayGraphics.fillStyle(0xffc832, artifactAlpha)
+                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+                this.overlayGraphics.fillStyle(0xffd700, artifactAlpha + 0.08)
+                const cw = TILE_SIZE * 0.5
+                this.overlayGraphics.fillRect(px + cw * 0.5, py + cw * 0.5, cw, cw)
+                // Bright corner-to-corner border so it reads clearly at a glance
+                this.overlayGraphics.lineStyle(2, 0xffd700, 0.55 + 0.25 * shimmerBase)
                 this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-                this.overlayGraphics.fillStyle(0xffd700, 0.35)
-                this.overlayGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
               } else if (cell.type === BlockType.MineralNode) {
+                // Per-tier colored shimmer across the whole tile
                 const tier = cell.content?.mineralType ?? 'dust'
-                const dotColor = tier === 'essence' ? 0xffffff
+                const glowColor = tier === 'essence' ? 0xffd700
                   : tier === 'geode' ? 0xda70d6
                   : tier === 'crystal' ? 0xff4444
                   : tier === 'shard' ? 0x44ff88
                   : 0x4ecca3
-                this.overlayGraphics.fillStyle(dotColor, 0.85)
-                this.overlayGraphics.fillCircle(px + TILE_SIZE - 6, py + 6, 4)
-                this.overlayGraphics.lineStyle(1, dotColor, 0.5)
-                this.overlayGraphics.strokeCircle(px + TILE_SIZE - 6, py + 6, 5)
+                const mineralAlpha = 0.08 + 0.04 * shimmerBase
+                this.overlayGraphics.fillStyle(glowColor, mineralAlpha)
+                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+                // Bright corner dot for quick identification
+                this.overlayGraphics.fillStyle(glowColor, 0.80 + 0.15 * shimmerBase)
+                this.overlayGraphics.fillCircle(px + TILE_SIZE - 7, py + 7, 5)
+                this.overlayGraphics.lineStyle(1, glowColor, 0.45)
+                this.overlayGraphics.strokeCircle(px + TILE_SIZE - 7, py + 7, 7)
+              } else if (cell.type === BlockType.DataDisc) {
+                // Cyan glow
+                const discAlpha = 0.10 + 0.05 * shimmerBase
+                this.overlayGraphics.fillStyle(0x00c8ff, discAlpha)
+                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+                this.overlayGraphics.lineStyle(2, 0x00c8ff, 0.45 + 0.20 * shimmerBase)
+                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+              } else if (cell.type === BlockType.FossilNode) {
+                // Warm brown glow
+                const fossilAlpha = 0.08 + 0.04 * shimmerBase
+                this.overlayGraphics.fillStyle(0xb48c50, fossilAlpha)
+                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+                this.overlayGraphics.lineStyle(2, 0xd4a574, 0.40 + 0.20 * shimmerBase)
+                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
               }
             }
-            // Hazard hint: small red warning indicator for hazardous blocks (Enhanced+ scanner)
+            // Hazard hint: pulsing red border outline around the tile (Enhanced+ scanner)
             if (tierInfo.showsHazards) {
               if (
                 cell.type === BlockType.LavaBlock ||
                 cell.type === BlockType.GasPocket ||
                 cell.type === BlockType.UnstableGround
               ) {
+                const hazardPulse = 0.5 + 0.5 * Math.sin(this.time.now / 400)
+                // Thick red border outline — highly visible on mobile
+                this.overlayGraphics.lineStyle(3, 0xff3333, 0.25 + 0.15 * hazardPulse)
+                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+                // Faint red fill to reinforce the warning
+                this.overlayGraphics.fillStyle(0xff3333, 0.06 + 0.04 * hazardPulse)
+                this.overlayGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+                // Small warning triangle in the top-left corner for quick scanning
                 const tx = px + 4
                 const ty = py + 4
-                const ts = 8
-                this.overlayGraphics.fillStyle(0xff2200, 0.90)
+                const ts = 9
+                this.overlayGraphics.fillStyle(0xff2200, 0.85 + 0.10 * hazardPulse)
                 this.overlayGraphics.fillTriangle(tx, ty + ts, tx + ts * 0.5, ty, tx + ts, ty + ts)
-                this.overlayGraphics.lineStyle(1, 0xffffff, 0.80)
+                this.overlayGraphics.lineStyle(1, 0xffffff, 0.70)
                 this.overlayGraphics.strokeTriangle(tx, ty + ts, tx + ts * 0.5, ty, tx + ts, ty + ts)
               }
             }
@@ -739,61 +660,45 @@ export class MineScene extends Phaser.Scene {
           this.tileGraphics.fillStyle(color, 1)
           this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
           this.drawBlockPattern(cell, x, y, px, py)
+          // Biome tint overlay: apply semi-transparent color on top of geology sprites
+          if (
+            cell.type === BlockType.Dirt ||
+            cell.type === BlockType.SoftRock ||
+            cell.type === BlockType.Stone ||
+            cell.type === BlockType.HardRock
+          ) {
+            const biomeId = this.currentBiome.id
+            if (biomeId === 'volcanic') {
+              this.overlayGraphics.fillStyle(0xb43c1e, 0.15)
+              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+            } else if (biomeId === 'crystalline') {
+              this.overlayGraphics.fillStyle(0x5078c8, 0.15)
+              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+            } else {
+              // Sedimentary: very faint warm brown
+              this.overlayGraphics.fillStyle(0x8b7765, 0.08)
+              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+            }
+          }
+          // Hazard idle animations: subtle pulsing overlay on revealed hazard blocks
+          if (cell.type === BlockType.LavaBlock) {
+            const pulse = 0.15 + 0.10 * Math.sin(this.time.now / 500)
+            this.overlayGraphics.fillStyle(0xff6600, pulse)
+            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+          } else if (cell.type === BlockType.GasPocket) {
+            const pulse = 0.10 + 0.06 * Math.sin(this.time.now / 700)
+            this.overlayGraphics.fillStyle(0x33ff33, pulse)
+            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+          } else if (cell.type === BlockType.UnstableGround) {
+            const pulse = 0.05 + 0.03 * Math.sin(this.time.now / 1200)
+            this.overlayGraphics.fillStyle(0x8b7355, pulse)
+            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+          }
         }
 
         if (cell.maxHardness > 0 && cell.hardness > 0 && cell.hardness < cell.maxHardness) {
           const damagePercent = 1 - cell.hardness / cell.maxHardness
-          const crackPadding = 4
-
-          if (damagePercent <= 0.33) {
-            this.overlayGraphics.lineStyle(1, 0x000000, 0.3)
-            this.overlayGraphics.lineBetween(
-              px + crackPadding,
-              py + crackPadding,
-              px + TILE_SIZE - crackPadding,
-              py + TILE_SIZE - crackPadding,
-            )
-          } else if (damagePercent <= 0.66) {
-            this.overlayGraphics.lineStyle(1.5, 0x000000, 0.5)
-            this.overlayGraphics.lineBetween(
-              px + crackPadding,
-              py + crackPadding,
-              px + TILE_SIZE - crackPadding,
-              py + TILE_SIZE - crackPadding,
-            )
-            this.overlayGraphics.lineBetween(
-              px + TILE_SIZE - crackPadding,
-              py + crackPadding,
-              px + crackPadding,
-              py + TILE_SIZE - crackPadding,
-            )
-          } else {
-            this.overlayGraphics.lineStyle(2, 0x662222, 0.7)
-            this.overlayGraphics.lineBetween(
-              px + crackPadding,
-              py + crackPadding,
-              px + TILE_SIZE - crackPadding,
-              py + TILE_SIZE - crackPadding,
-            )
-            this.overlayGraphics.lineBetween(
-              px + TILE_SIZE - crackPadding,
-              py + crackPadding,
-              px + crackPadding,
-              py + TILE_SIZE - crackPadding,
-            )
-            this.overlayGraphics.lineBetween(
-              px + TILE_SIZE * 0.5,
-              py + crackPadding,
-              px + TILE_SIZE * 0.45,
-              py + TILE_SIZE - crackPadding,
-            )
-            this.overlayGraphics.lineBetween(
-              px + crackPadding + 1,
-              py + TILE_SIZE * 0.7,
-              px + TILE_SIZE - crackPadding - 1,
-              py + TILE_SIZE * 0.35,
-            )
-          }
+          this.drawCracks(px, py, x, y, damagePercent)
         }
 
         const flashKey = `${x},${y}`

@@ -47,6 +47,23 @@ The foundation is solid and ready for knowledge system expansion in Phase 2.
 
 ---
 
+## NEXT UP: Visual & UX Overhaul (In Progress — Planning)
+
+**Goal**: Comprehensive visual and architectural improvements to polish game appearance, fix known issues, and refactor backend systems for maintainability
+
+**Status**: Comprehensive plan created and available at `docs/roadmap/in-progress/VISUAL-OVERHAUL-PLAN.md`
+
+### Sub-phases Overview
+- [ ] **Phase A: Sprite Quality & Dome System** — Regenerate dome sprites (DomeCanvas/DomeView), fix dome room routing logic, address GAIA redundancy (DomeView vs BaseView), implement sprite fallbacks
+- [ ] **Phase B: Mining Visual System** — Regenerate 16 essential mining block sprites (Dirt, Stone, HardRock, key hazards, relics), apply biome color tinting, implement damage/progression states for multi-hit blocks
+- [ ] **Phase C: UI Polish** — Quiz animation pass (slide-in, fade effects), generate GAIA sprite variants (8 expressions × 3 moods), resource icon sprite set for HUD, button state feedback
+- [ ] **Phase D: Canvas & Scaling Issues** — Fix canvas scaling on mobile (pixel-perfect 2x/3x upscaling), implement responsive viewport sizing, audit pointer-events issues
+- [ ] **Phase E: Architecture Refactoring** — Decompose BaseView into smaller components (Navigation, BaseContent, SettingsPanel), split GameManager into narrower systems (MineSceneManager, QuizManager, ResourceManager)
+
+### Detailed plan with file paths and agent-executable steps available in `docs/roadmap/in-progress/VISUAL-OVERHAUL-PLAN.md`
+
+---
+
 ## PHASE 0: MVP Core Loop ✅ COMPLETE
 
 **Goal**: Test core hypothesis - "mining + artifacts + learning is fun"

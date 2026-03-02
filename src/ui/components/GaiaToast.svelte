@@ -2,6 +2,27 @@
   import { gaiaMessage, gaiaExpression } from '../stores/gameState'
   import { GAIA_EXPRESSIONS, GAIA_NAME } from '../../data/gaiaAvatar'
 
+  // Import all GAIA sprite images for the expression set
+  import gaiaNeutral from '../../assets/sprites/dome/gaia_neutral.png'
+  import gaiaHappy from '../../assets/sprites/dome/gaia_happy.png'
+  import gaiaThinking from '../../assets/sprites/dome/gaia_thinking.png'
+  import gaiaSnarky from '../../assets/sprites/dome/gaia_snarky.png'
+  import gaiaSurprised from '../../assets/sprites/dome/gaia_surprised.png'
+  import gaiaCalm from '../../assets/sprites/dome/gaia_calm.png'
+
+  /** Map expression IDs to sprite image URLs */
+  const GAIA_SPRITE_MAP: Record<string, string> = {
+    neutral:   gaiaNeutral,
+    happy:     gaiaHappy,
+    excited:   gaiaHappy,
+    thinking:  gaiaThinking,
+    worried:   gaiaThinking,
+    proud:     gaiaHappy,
+    snarky:    gaiaSnarky,
+    surprised: gaiaSurprised,
+    calm:      gaiaCalm,
+  }
+
   /** Auto-dismiss duration in milliseconds */
   const DISMISS_DELAY = 4000
 
@@ -27,11 +48,15 @@
   const expressionEmoji = $derived(
     (GAIA_EXPRESSIONS[currentExpressionId] ?? GAIA_EXPRESSIONS.neutral).emoji
   )
+
+  const gaiaSpriteUrl = $derived(
+    GAIA_SPRITE_MAP[currentExpressionId] ?? gaiaNeutral
+  )
 </script>
 
 {#if visible}
   <div class="gaia-toast" class:visible>
-    <span class="gaia-avatar" aria-hidden="true">{expressionEmoji}</span>
+    <img class="gaia-avatar" src={gaiaSpriteUrl} alt={`G.A.I.A. ${currentExpressionId}`} width="28" height="28" />
     <div class="gaia-body">
       <span class="gaia-prefix">{GAIA_NAME}:</span>
       <span class="gaia-text">{currentMessage}</span>
@@ -68,10 +93,13 @@
   }
 
   .gaia-avatar {
-    font-size: 1.25rem;
-    line-height: 1;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
     flex-shrink: 0;
     margin-top: 1px;
+    border-radius: 4px;
   }
 
   .gaia-body {

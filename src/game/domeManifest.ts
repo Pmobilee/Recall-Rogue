@@ -6,10 +6,12 @@ export const DOME_SPRITE_KEYS = [
   // objects
   'obj_gaia_terminal', 'obj_workbench', 'obj_bookshelf', 'obj_display_case',
   'obj_market_stall', 'obj_dive_hatch', 'obj_farm_plot', 'obj_knowledge_tree',
+  'obj_streak_board', 'obj_locked_silhouette',
   // decorations
   'deco_ceiling_light', 'deco_plant_pot', 'deco_wall_monitor',
   // gaia
   'gaia_neutral', 'gaia_happy', 'gaia_thinking',
+  'gaia_snarky', 'gaia_surprised', 'gaia_calm',
   // backgrounds
   'sky_stars', 'surface_ground',
 ] as const

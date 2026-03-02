@@ -164,6 +164,7 @@
           {onFarm}
           {onSettings}
           {facts}
+          initialRoom={activeRoom ?? undefined}
         />
       {/if}
     </div>
