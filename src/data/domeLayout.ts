@@ -172,12 +172,12 @@ export function createEmptyGrid<T>(w: number, h: number, fill: T): T[][] {
  * Returns the canonical starting dome layout.
  *
  * Dome cross-section (192 cols × 128 rows, TILE_SIZE = 4):
- * Canvas is still 768×512 pixels — just with 8× finer tile resolution.
+ * Canvas is 768×512 pixels — tile resolution is 4px per tile.
  *
  * Elliptical arch math:
  *   - Center X:     col 96
- *   - Left base:    col 24
- *   - Right base:   col 167
+ *   - Left base:    col 24  (DOME_LEFT = CX - A)
+ *   - Right base:   col 168 (DOME_RIGHT = CX + A, exclusive)
  *   - Half-width a: 72 tiles
  *   - Apex row:     row 12
  *   - Base row:     row 80
@@ -186,66 +186,95 @@ export function createEmptyGrid<T>(w: number, h: number, fill: T): T[][] {
  * For each column x, dome glass top edge:
  *   y_top = 80 - 68 * sqrt(1 - ((x - 96) / 72)²)
  *
- * Layer regions:
- *   Rows   0-7:   pure sky (above dome)
- *   Rows   8-79:  dome arch area — sky outside ellipse, glass+frame+interior inside
- *   Rows  80-83:  stone floor (inside dome, cols 25-166)
- *   Rows  84-91:  metal platform (sub-floor, cols 25-166)
- *   Rows  92-103: sky outside dome legs, transitioning to dirt
- *   Rows 104-127: dirt ground (underground foundation)
+ * Three-level interior layout:
+ *   Upper catwalks:  rows 52-55 (MetalPlatform) — left wing cols 32-82, right wing cols 110-160
+ *   Main floor:      rows 76-79 (StoneFloor)    — cols 25-167
+ *   Basement:        rows 84-87 (MetalPlatform) — cols 25-167
+ *
+ * Background regions:
+ *   Rows   0-7:   Sky everywhere (above dome)
+ *   Rows   8-79:  Sky outside ellipse, InteriorWall inside
+ *   Rows  80-89:  InteriorWall inside dome frame legs, Sky outside
+ *   Rows  90-127: DirtGround everywhere — dome embedded in ground
+ *
+ * Frame legs run continuously col 24 and col 167 from row 76 down to 127,
+ * passing through the dirt (the dome structure is embedded in the earth).
  */
 export function getDefaultDomeLayout(): DomeLayout {
   const W = DOME_WIDTH   // 192
   const H = DOME_HEIGHT  // 128
 
   // Ellipse parameters
-  const CX = 96       // dome centre column
-  const APEX = 12     // dome apex row
-  const BASE = 80     // dome base (floor level) row
-  const A = 72        // half-width in tiles
+  const CX = 96        // dome centre column
+  const APEX = 12      // dome apex row
+  const BASE = 80      // dome base row (main floor top)
+  const A = 72         // half-width in tiles
   const B = BASE - APEX  // half-height in tiles (68)
 
   // Dome left/right column extents
   const DOME_LEFT = CX - A    // 24
   const DOME_RIGHT = CX + A   // 168 (exclusive right edge)
 
+  // Platform row ranges
+  const UPPER_CATWALK_TOP = 52
+  const UPPER_CATWALK_BOT = 55
+  const MAIN_FLOOR_TOP = 76
+  const MAIN_FLOOR_BOT = 79
+  const BASEMENT_TOP = 84
+  const BASEMENT_BOT = 87
+  const DIRT_START = 90
+
+  // Upper catwalk column spans
+  const LEFT_WING_START = 32
+  const LEFT_WING_END = 82   // inclusive
+  const RIGHT_WING_START = 110
+  const RIGHT_WING_END = 160  // inclusive
+
+  // Support column column spans (3 tiles wide each)
+  const COL_LEFT_START = 46
+  const COL_LEFT_END = 48
+  const COL_CENTER_START = 95
+  const COL_CENTER_END = 97
+  const COL_RIGHT_START = 144
+  const COL_RIGHT_END = 146
+
+  // Main floor / basement interior span
+  const FLOOR_LEFT = DOME_LEFT + 1   // 25
+  const FLOOR_RIGHT = DOME_RIGHT - 1  // 167 (inclusive)
+
   // --- Background layer ---------------------------------------------------
   const bg = createEmptyGrid<BgTile>(W, H, BgTile.Empty)
 
-  // Rows 0-7: sky above the dome
+  // Rows 0-7: pure sky above dome
   for (let row = 0; row <= 7; row++) {
     for (let col = 0; col < W; col++) {
       bg[row][col] = BgTile.Sky
     }
   }
 
-  // Rows 8-79: dome arch area — fill by column using ellipse formula
+  // Rows 8-79: ellipse-based fill — sky outside dome curve, InteriorWall inside
   for (let col = 0; col < W; col++) {
     const dx = col - CX
     let yTop: number
 
     if (Math.abs(dx) < A) {
-      // Inside the ellipse horizontal extent — compute dome glass top edge
       const ratio = dx / A
       yTop = Math.round(BASE - B * Math.sqrt(1 - ratio * ratio))
     } else {
-      // Outside the ellipse — pure sky
-      yTop = H // below visible rows, means no interior here
+      yTop = H  // beyond ellipse extent — treat as fully sky
     }
 
     for (let row = 8; row <= 79; row++) {
       if (row < yTop || col < DOME_LEFT || col >= DOME_RIGHT) {
-        // Above or outside the dome — sky
         bg[row][col] = BgTile.Sky
       } else {
-        // Below glass curve, inside dome — interior wall
         bg[row][col] = BgTile.InteriorWall
       }
     }
   }
 
-  // Rows 80-83: stone floor inside dome
-  for (let row = 80; row <= 83; row++) {
+  // Rows 80-89: InteriorWall inside dome legs, Sky outside
+  for (let row = 80; row <= 89; row++) {
     for (let col = 0; col < W; col++) {
       if (col >= DOME_LEFT + 1 && col < DOME_RIGHT - 1) {
         bg[row][col] = BgTile.InteriorWall
@@ -255,26 +284,8 @@ export function getDefaultDomeLayout(): DomeLayout {
     }
   }
 
-  // Rows 84-91: metal platform / sub-floor
-  for (let row = 84; row <= 91; row++) {
-    for (let col = 0; col < W; col++) {
-      if (col >= DOME_LEFT + 1 && col < DOME_RIGHT - 1) {
-        bg[row][col] = BgTile.InteriorWall
-      } else {
-        bg[row][col] = BgTile.Sky
-      }
-    }
-  }
-
-  // Rows 92-103: sky outside dome legs, transitioning to surface
-  for (let row = 92; row <= 103; row++) {
-    for (let col = 0; col < W; col++) {
-      bg[row][col] = BgTile.Sky
-    }
-  }
-
-  // Rows 104-127: dirt ground (underground foundation)
-  for (let row = 104; row <= 127; row++) {
+  // Rows 90-127: dirt ground everywhere — dome is embedded in the earth
+  for (let row = DIRT_START; row < H; row++) {
     for (let col = 0; col < W; col++) {
       bg[row][col] = BgTile.DirtGround
     }
@@ -283,9 +294,7 @@ export function getDefaultDomeLayout(): DomeLayout {
   // --- Foreground / structure layer ----------------------------------------
   const fg = createEmptyGrid<FgTile>(W, H, FgTile.Empty)
 
-  // Paint the dome glass curve column by column
-  // For each column within the ellipse horizontal extent, calculate the y_top
-  // and paint: 2 tiles of DomeFrame at the outer edge, then DomeGlass/DomeGlassCurved inside
+  // Dome glass arch — paint column by column using ellipse formula
   for (let col = DOME_LEFT; col < DOME_RIGHT; col++) {
     const dx = col - CX
     const ratio = dx / A
@@ -294,11 +303,8 @@ export function getDefaultDomeLayout(): DomeLayout {
     if (absRatio >= 1) continue
 
     const yTop = Math.round(BASE - B * Math.sqrt(1 - ratio * ratio))
-
-    // Determine if we're near the apex for curved tile variant
     const isApex = yTop <= APEX + 8
 
-    // Paint outer frame (2 tiles thick at the top of the dome at this column)
     fg[yTop][col] = FgTile.DomeFrame
     if (yTop + 1 < BASE) {
       fg[yTop + 1][col] = isApex ? FgTile.DomeGlassCurved : FgTile.DomeGlass
@@ -308,85 +314,109 @@ export function getDefaultDomeLayout(): DomeLayout {
     }
   }
 
-  // Also add DomeFrame at the very outer left and right edges (vertical legs)
-  // Left leg: col DOME_LEFT, from where it meets the ground down to dirt
-  for (let row = BASE; row <= 127; row++) {
-    fg[row][DOME_LEFT] = FgTile.DomeFrame
-    fg[row][DOME_RIGHT - 1] = FgTile.DomeFrame
+  // Upper catwalks (rows 52-55, MetalPlatform)
+  // Left wing: cols 32-82; right wing: cols 110-160; center gap 83-109 is open atrium
+  for (let row = UPPER_CATWALK_TOP; row <= UPPER_CATWALK_BOT; row++) {
+    // Left wing
+    for (let col = LEFT_WING_START; col <= LEFT_WING_END; col++) {
+      fg[row][col] = FgTile.MetalPlatform
+    }
+    // Right wing
+    for (let col = RIGHT_WING_START; col <= RIGHT_WING_END; col++) {
+      fg[row][col] = FgTile.MetalPlatform
+    }
+    // DomeFrame at catwalk outer edges
+    fg[row][LEFT_WING_START] = FgTile.DomeFrame
+    fg[row][LEFT_WING_END] = FgTile.DomeFrame
+    fg[row][RIGHT_WING_START] = FgTile.DomeFrame
+    fg[row][RIGHT_WING_END] = FgTile.DomeFrame
   }
 
-  // Stone floor at rows 80-83 inside dome
-  for (let row = 80; row <= 83; row++) {
-    for (let col = DOME_LEFT + 1; col < DOME_RIGHT - 1; col++) {
+  // Internal support columns (DomeFrame, 3 tiles wide each)
+  // Left column: cols 46-48, rows 56-75 (connects upper left catwalk to main floor)
+  for (let row = UPPER_CATWALK_BOT + 1; row < MAIN_FLOOR_TOP; row++) {
+    for (let col = COL_LEFT_START; col <= COL_LEFT_END; col++) {
+      fg[row][col] = FgTile.DomeFrame
+    }
+  }
+  // Center column: cols 95-97, rows 20-75 (tall central pillar from near apex to main floor)
+  for (let row = 20; row < MAIN_FLOOR_TOP; row++) {
+    for (let col = COL_CENTER_START; col <= COL_CENTER_END; col++) {
+      fg[row][col] = FgTile.DomeFrame
+    }
+  }
+  // Right column: cols 144-146, rows 56-75 (connects upper right catwalk to main floor)
+  for (let row = UPPER_CATWALK_BOT + 1; row < MAIN_FLOOR_TOP; row++) {
+    for (let col = COL_RIGHT_START; col <= COL_RIGHT_END; col++) {
+      fg[row][col] = FgTile.DomeFrame
+    }
+  }
+
+  // Main floor (rows 76-79, StoneFloor) — full interior width
+  for (let row = MAIN_FLOOR_TOP; row <= MAIN_FLOOR_BOT; row++) {
+    for (let col = FLOOR_LEFT; col <= FLOOR_RIGHT; col++) {
       fg[row][col] = FgTile.StoneFloor
     }
-    // Frame at edges of floor row
+    // DomeFrame at left/right edges of floor
     fg[row][DOME_LEFT] = FgTile.DomeFrame
     fg[row][DOME_RIGHT - 1] = FgTile.DomeFrame
   }
 
-  // Metal platform at rows 84-91 inside dome
-  for (let row = 84; row <= 91; row++) {
-    for (let col = DOME_LEFT + 1; col < DOME_RIGHT - 1; col++) {
+  // Basement (rows 84-87, MetalPlatform) — full interior width
+  for (let row = BASEMENT_TOP; row <= BASEMENT_BOT; row++) {
+    for (let col = FLOOR_LEFT; col <= FLOOR_RIGHT; col++) {
       fg[row][col] = FgTile.MetalPlatform
     }
     fg[row][DOME_LEFT] = FgTile.DomeFrame
     fg[row][DOME_RIGHT - 1] = FgTile.DomeFrame
   }
 
-  // Frame legs from sub-floor down to dirt
-  for (let row = 92; row <= 127; row++) {
+  // Frame legs — left col 24, right col 167 — run from main floor (row 76) to bottom (row 127)
+  // These pass through dirt; the dome structure is embedded in the ground
+  for (let row = MAIN_FLOOR_TOP; row < H; row++) {
     fg[row][DOME_LEFT] = FgTile.DomeFrame
     fg[row][DOME_RIGHT - 1] = FgTile.DomeFrame
   }
 
   // --- Objects layer -------------------------------------------------------
-  // All positions multiplied by 8 from the original 24×16 layout
   const objects: DomeObject[] = [
-    // ---- Functional objects ----
 
-    {
-      id: 'gaia_terminal',
-      spriteKey: 'obj_gaia_terminal',
-      label: 'G.A.I.A. Terminal',
-      room: 'command',
-      gridX: 32,
-      gridY: 64,
-      gridW: 16,
-      gridH: 16,
-      interactive: true,
-    },
+    // ---- Upper left catwalk — research / lab zone ----
+
     {
       id: 'knowledge_tree',
       spriteKey: 'obj_knowledge_tree',
       label: 'Knowledge Tree',
       room: 'lab',
-      gridX: 56,
-      gridY: 56,
-      gridW: 16,
-      gridH: 24,
+      gridX: 38,
+      gridY: 32,
+      gridW: 20,
+      gridH: 20,
       interactive: true,
     },
     {
-      id: 'streak_board',
-      spriteKey: 'obj_streak_board',
-      label: 'Streak Board',
-      room: 'command',
-      gridX: 72,
-      gridY: 72,
-      gridW: 8,
+      id: 'wall_monitor_1',
+      spriteKey: 'deco_wall_monitor',
+      label: 'Wall Monitor',
+      room: 'none',
+      gridX: 60,
+      gridY: 44,
+      gridW: 10,
       gridH: 8,
-      interactive: true,
+      interactive: false,
     },
+
+    // ---- Upper right catwalk — archive zone ----
+
     {
-      id: 'dive_hatch',
-      spriteKey: 'obj_dive_hatch',
-      label: 'Mine Entrance',
-      room: 'dive',
-      gridX: 88,
-      gridY: 80,
-      gridW: 16,
-      gridH: 8,
+      id: 'bookshelf',
+      spriteKey: 'obj_bookshelf',
+      label: 'Archive Shelf',
+      room: 'archive',
+      gridX: 130,
+      gridY: 32,
+      gridW: 20,
+      gridH: 20,
       interactive: true,
     },
     {
@@ -394,19 +424,55 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'obj_locked_silhouette',
       label: 'Locked Room',
       room: 'none',
-      gridX: 104,
-      gridY: 56,
-      gridW: 16,
+      gridX: 114,
+      gridY: 36,
+      gridW: 14,
       gridH: 16,
       interactive: false,
+    },
+    {
+      id: 'wall_monitor_2',
+      spriteKey: 'deco_wall_monitor',
+      label: 'Wall Monitor',
+      room: 'none',
+      gridX: 152,
+      gridY: 44,
+      gridW: 10,
+      gridH: 8,
+      interactive: false,
+    },
+
+    // ---- Main floor — command / workshop / market zone ----
+
+    {
+      id: 'gaia_terminal',
+      spriteKey: 'obj_gaia_terminal',
+      label: 'G.A.I.A. Terminal',
+      room: 'command',
+      gridX: 30,
+      gridY: 60,
+      gridW: 16,
+      gridH: 16,
+      interactive: true,
+    },
+    {
+      id: 'streak_board',
+      spriteKey: 'obj_streak_board',
+      label: 'Streak Board',
+      room: 'command',
+      gridX: 50,
+      gridY: 66,
+      gridW: 10,
+      gridH: 10,
+      interactive: true,
     },
     {
       id: 'display_case',
       spriteKey: 'obj_display_case',
       label: 'Display Case',
       room: 'museum',
-      gridX: 80,
-      gridY: 64,
+      gridX: 74,
+      gridY: 60,
       gridW: 16,
       gridH: 16,
       interactive: true,
@@ -416,9 +482,9 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'obj_workbench',
       label: 'Materializer',
       room: 'workshop',
-      gridX: 112,
-      gridY: 64,
-      gridW: 24,
+      gridX: 108,
+      gridY: 60,
+      gridW: 22,
       gridH: 16,
       interactive: true,
     },
@@ -427,36 +493,39 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'obj_market_stall',
       label: 'Market Stall',
       room: 'market',
-      gridX: 128,
-      gridY: 64,
-      gridW: 24,
+      gridX: 136,
+      gridY: 60,
+      gridW: 22,
       gridH: 16,
       interactive: true,
     },
-    {
-      id: 'bookshelf',
-      spriteKey: 'obj_bookshelf',
-      label: 'Archive Shelf',
-      room: 'archive',
-      gridX: 144,
-      gridY: 56,
-      gridW: 16,
-      gridH: 24,
-      interactive: true,
-    },
+
+    // ---- Basement — farm and dive hatch ----
+
     {
       id: 'farm_plot',
       spriteKey: 'obj_farm_plot',
       label: 'Hydroponic Farm',
       room: 'market',
-      gridX: 16,
-      gridY: 72,
-      gridW: 24,
-      gridH: 8,
+      gridX: 32,
+      gridY: 80,
+      gridW: 28,
+      gridH: 4,
+      interactive: true,
+    },
+    {
+      id: 'dive_hatch',
+      spriteKey: 'obj_dive_hatch',
+      label: 'Mine Entrance',
+      room: 'dive',
+      gridX: 86,
+      gridY: 84,
+      gridW: 20,
+      gridH: 4,
       interactive: true,
     },
 
-    // ---- Decorations (non-interactive) ----
+    // ---- Decorations — ceiling lights (10×6 each, clearly visible) ----
 
     {
       id: 'ceiling_light_1',
@@ -464,9 +533,9 @@ export function getDefaultDomeLayout(): DomeLayout {
       label: 'Ceiling Light',
       room: 'none',
       gridX: 40,
-      gridY: 40,
-      gridW: 8,
-      gridH: 8,
+      gridY: 24,
+      gridW: 10,
+      gridH: 6,
       interactive: false,
     },
     {
@@ -474,10 +543,10 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'deco_ceiling_light',
       label: 'Ceiling Light',
       room: 'none',
-      gridX: 80,
-      gridY: 40,
-      gridW: 8,
-      gridH: 8,
+      gridX: 84,
+      gridY: 18,
+      gridW: 10,
+      gridH: 6,
       interactive: false,
     },
     {
@@ -485,10 +554,10 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'deco_ceiling_light',
       label: 'Ceiling Light',
       room: 'none',
-      gridX: 120,
-      gridY: 40,
-      gridW: 8,
-      gridH: 8,
+      gridX: 100,
+      gridY: 18,
+      gridW: 10,
+      gridH: 6,
       interactive: false,
     },
     {
@@ -496,43 +565,24 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'deco_ceiling_light',
       label: 'Ceiling Light',
       room: 'none',
-      gridX: 152,
-      gridY: 40,
-      gridW: 8,
-      gridH: 8,
+      gridX: 150,
+      gridY: 24,
+      gridW: 10,
+      gridH: 6,
       interactive: false,
     },
-    {
-      id: 'wall_monitor_1',
-      spriteKey: 'deco_wall_monitor',
-      label: 'Wall Monitor',
-      room: 'none',
-      gridX: 40,
-      gridY: 48,
-      gridW: 8,
-      gridH: 8,
-      interactive: false,
-    },
-    {
-      id: 'wall_monitor_2',
-      spriteKey: 'deco_wall_monitor',
-      label: 'Wall Monitor',
-      room: 'none',
-      gridX: 136,
-      gridY: 48,
-      gridW: 8,
-      gridH: 8,
-      interactive: false,
-    },
+
+    // ---- Decorations — plant pots on main floor (8×6 each) ----
+
     {
       id: 'plant_pot_1',
       spriteKey: 'deco_plant_pot',
       label: 'Plant Pot',
       room: 'none',
-      gridX: 48,
-      gridY: 80,
+      gridX: 66,
+      gridY: 70,
       gridW: 8,
-      gridH: 8,
+      gridH: 6,
       interactive: false,
     },
     {
@@ -540,10 +590,10 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'deco_plant_pot',
       label: 'Plant Pot',
       room: 'none',
-      gridX: 104,
-      gridY: 80,
+      gridX: 98,
+      gridY: 70,
       gridW: 8,
-      gridH: 8,
+      gridH: 6,
       interactive: false,
     },
     {
@@ -551,10 +601,10 @@ export function getDefaultDomeLayout(): DomeLayout {
       spriteKey: 'deco_plant_pot',
       label: 'Plant Pot',
       room: 'none',
-      gridX: 152,
-      gridY: 80,
+      gridX: 160,
+      gridY: 70,
       gridW: 8,
-      gridH: 8,
+      gridH: 6,
       interactive: false,
     },
   ]
