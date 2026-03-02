@@ -363,7 +363,7 @@
   .pop-quiz-header {
     text-align: center;
     color: #4ecca3;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -374,7 +374,7 @@
   .pop-quiz-reward {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
     margin-top: -0.4rem;
   }
@@ -382,7 +382,7 @@
   .gate-progress {
     text-align: center;
     color: var(--color-warning);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 1px;
     margin-top: 0.25rem;
@@ -400,7 +400,7 @@
   .artifact-appraisal-hint {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
     margin-top: -0.4rem;
     font-style: italic;
@@ -418,7 +418,7 @@
   .layer-entrance-hint {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
     margin-top: -0.4rem;
     font-style: italic;
@@ -511,6 +511,8 @@
 
   .choice-text {
     flex: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .result-text {

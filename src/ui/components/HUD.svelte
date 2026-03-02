@@ -219,6 +219,7 @@
     z-index: 20;
     pointer-events: none;
     font-family: 'Courier New', monospace;
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
 
   .top-row {
@@ -583,8 +584,8 @@
     .bomb-btn {
       right: 0.55rem;
       bottom: 7.5rem;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
     }
 
     .surface-confirm {

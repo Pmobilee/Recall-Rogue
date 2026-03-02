@@ -5,6 +5,15 @@
   import DomeCanvas from './DomeCanvas.svelte'
   import type { Fact } from '../../data/types'
 
+  // Resource icon sprites
+  import iconOxygen from '../../assets/sprites/icons/icon_oxygen.png'
+  import iconDust from '../../assets/sprites/icons/icon_dust.png'
+  import iconShard from '../../assets/sprites/icons/icon_shard.png'
+  import iconCrystal from '../../assets/sprites/icons/icon_crystal.png'
+  import iconGeode from '../../assets/sprites/icons/icon_geode.png'
+  import iconEssence from '../../assets/sprites/icons/icon_essence.png'
+  import iconFlame from '../../assets/sprites/icons/icon_flame.png'
+
   interface Props {
     onDive: () => void
     onStudy: () => void
@@ -84,24 +93,24 @@
   <div class="resource-bar">
     <div class="resource-bar-left">
       <span class="res-item" title="Oxygen tanks">
-        <span class="res-icon">O2</span>
+        <img class="res-icon-img" src={iconOxygen} alt="O2" />
         <span class="res-val">{oxygen}</span>
       </span>
       <span class="res-item" title="Dust">
-        <span class="res-icon dust-icon">◆</span>
+        <img class="res-icon-img" src={iconDust} alt="Dust" />
         <span class="res-val">{fmt(dust)}</span>
       </span>
       <span class="res-item" title="Shards">
-        <span class="res-icon shard-icon">◇</span>
+        <img class="res-icon-img" src={iconShard} alt="Shard" />
         <span class="res-val">{fmt(shard)}</span>
       </span>
       <span class="res-item" title="Crystals">
-        <span class="res-icon crystal-icon">✦</span>
+        <img class="res-icon-img" src={iconCrystal} alt="Crystal" />
         <span class="res-val">{fmt(crystal)}</span>
       </span>
       {#if streak > 0}
         <span class="res-item streak-item" title="Current dive streak">
-          <span class="res-icon">🔥</span>
+          <img class="res-icon-img" src={iconFlame} alt="Streak" />
           <span class="res-val">{streak}d</span>
         </span>
       {/if}
@@ -228,38 +237,23 @@
     display: flex;
     align-items: center;
     gap: 3px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--color-text, #e0e0e0);
   }
 
-  .res-icon {
-    font-size: 0.7rem;
-    color: var(--color-text-dim, #888);
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-
-  .dust-icon {
-    color: #b5a67a;
-  }
-
-  .shard-icon {
-    color: #7ab5c8;
-  }
-
-  .crystal-icon {
-    color: #4ecca3;
+  .res-icon-img {
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    vertical-align: middle;
+    flex-shrink: 0;
   }
 
   .res-val {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--color-text, #e0e0e0);
     font-family: 'Courier New', monospace;
-  }
-
-  .streak-item .res-icon {
-    color: #ff9944;
   }
 
   .streak-item .res-val {
@@ -271,9 +265,9 @@
     border: 1px solid rgba(78, 204, 163, 0.3);
     border-radius: 6px;
     color: var(--color-text-dim, #888);
-    font-size: 1rem;
-    width: 30px;
-    height: 30px;
+    font-size: 1.2rem;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -343,9 +337,9 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 6px;
     color: var(--color-text-dim, #888);
-    font-size: 0.85rem;
-    width: 28px;
-    height: 28px;
+    font-size: 1rem;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -368,6 +362,7 @@
     flex: 1;
     min-height: 0;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .panel-content :global(.base-view) {

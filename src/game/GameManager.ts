@@ -59,30 +59,29 @@ import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
 import { seededRandom } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
+import { GaiaManager } from './managers/GaiaManager'
+import { QuizManager } from './managers/QuizManager'
+import { StudyManager } from './managers/StudyManager'
+import { InventoryManager } from './managers/InventoryManager'
 
 /**
  * Singleton manager for the Phaser game instance.
  * Bridges Phaser events to Svelte stores and provides game lifecycle methods.
+ *
+ * Internal quiz, study, GAIA, and inventory logic is delegated to focused sub-managers.
+ * All public method signatures remain unchanged for compatibility with existing callers.
  */
 export class GameManager {
   private static instance: GameManager
   private game: Phaser.Game | null = null
-  private studyQueue: Fact[] = []
-  private studyIndex = 0
-  private pendingGateCoords: { x: number; y: number } | null = null
   private maxDepthThisRun = 0
   private gaiaDepthMilestones = new Set<number>()
-  private gaiaLowO2Warned = false
   /** Zero-based index of the current mine layer within the active dive. */
   private currentLayer = 0
   /** Seed used for the current dive (layer seeds are derived from this). */
   private diveSeed = 0
   /** Relics collected during the current dive run. */
   private runRelics: Relic[] = []
-  /** Fact IDs already used in the current artifact appraisal flow (to avoid repeats). */
-  private artifactQuizUsedFactIds = new Set<string>()
-  /** Items secured at a send-up station — preserved across layers and exempt from forced-surface loss. */
-  private sentUpItems: InventorySlot[] = []
   /** Pre-dive oxygen tank count (includes permanent upgrades). Used to restore the correct amount on dive end. */
   private preDiveOxygenTanks: number = BALANCE.STARTING_OXYGEN_TANKS
   /** Whether the current dive is insured (no forced-surface item loss if true). */
@@ -93,6 +92,12 @@ export class GameManager {
   private fossilRng: () => number = Math.random
   /** Companion effect active for the current dive (null if no companion equipped). */
   private companionEffect: CompanionEffect | null = null
+
+  // ---- Sub-managers (initialized lazily in boot()) ----
+  private gaiaManager!: GaiaManager
+  private quizManager!: QuizManager
+  private studyManager!: StudyManager
+  private inventoryManager!: InventoryManager
 
   private constructor() {}
 
@@ -115,6 +120,19 @@ export class GameManager {
       console.warn('GameManager: game already booted')
       return
     }
+
+    // Initialise sub-managers now that we have a stable `this` reference.
+    this.gaiaManager = new GaiaManager()
+    this.quizManager = new QuizManager(
+      () => this.getMineScene(),
+      (lines, trigger) => this.randomGaia(lines, trigger),
+    )
+    this.studyManager = new StudyManager(
+      (msg) => gaiaMessage.set(msg),
+    )
+    this.inventoryManager = new InventoryManager(
+      () => this.getMineScene(),
+    )
 
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
@@ -195,8 +213,8 @@ export class GameManager {
     events.on('oxygen-changed', (state: OxygenState) => {
       oxygenCurrent.set(state.current)
       oxygenMax.set(state.max)
-      if (!this.gaiaLowO2Warned && state.max > 0 && state.current / state.max < 0.25) {
-        this.gaiaLowO2Warned = true
+      if (!this.gaiaManager.gaiaLowO2Warned && state.max > 0 && state.current / state.max < 0.25) {
+        this.gaiaManager.gaiaLowO2Warned = true
         this.triggerGaia('lowOxygen')
       }
     })
@@ -222,11 +240,11 @@ export class GameManager {
 
     events.on('mineral-collected', (data: { mineralType?: string; mineralAmount?: number; addedToInventory: boolean }) => {
       // Update inventory display
-      this.syncInventoryFromScene()
+      this.inventoryManager.syncInventoryFromScene()
       // 1% chance to drop a void_crystal when collecting a geode or essence mineral
       const tier = data.mineralType as MineralTier | undefined
       if ((tier === 'geode' || tier === 'essence') && Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'void_crystal')!.dropChance) {
-        this.awardPremiumMaterial('void_crystal')
+        this.gaiaManager.awardPremiumMaterial('void_crystal')
       }
     })
 
@@ -241,10 +259,10 @@ export class GameManager {
     events.on(
       'artifact-found',
       (data: { factId?: string; rarity?: string; addedToInventory: boolean; rarityBoosted?: boolean }) => {
-        this.syncInventoryFromScene()
+        this.inventoryManager.syncInventoryFromScene()
         // 3% chance to drop star_dust when collecting any artifact
         if (Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'star_dust')!.dropChance) {
-          this.awardPremiumMaterial('star_dust')
+          this.gaiaManager.awardPremiumMaterial('star_dust')
         }
         if (data.rarityBoosted) {
           // Rarity was upgraded through the appraisal quiz
@@ -284,7 +302,7 @@ export class GameManager {
     })
 
     events.on('upgrade-found', (data: { upgrade: string }) => {
-      this.syncInventoryFromScene()
+      this.inventoryManager.syncInventoryFromScene()
       if (data.upgrade === 'bomb') {
         // Bomb is capped at BOMB_MAX_STACK in MineScene; mirror the cap here
         activeUpgrades.update(rec => ({
@@ -315,7 +333,7 @@ export class GameManager {
 
     events.on('backpack-expanded', (data: { slotsAdded: number; totalSlots: number; expansionCount: number }) => {
       // Sync inventory now that new slots have been added.
-      this.syncInventoryFromScene()
+      this.inventoryManager.syncInventoryFromScene()
       // Accumulate temporary slots in the store so UI can show the "Temp: +N" indicator.
       tempBackpackSlots.update(n => n + data.slotsAdded)
       // Show a count-based GAIA message for each expansion milestone.
@@ -375,7 +393,7 @@ export class GameManager {
     })
 
     events.on('quiz-gate', (data: { factId?: string; gateX?: number; gateY?: number; gateRemaining?: number; gateTotal?: number }) => {
-      this.pendingGateCoords = (data.gateX !== undefined && data.gateY !== undefined)
+      this.quizManager.pendingGateCoords = (data.gateX !== undefined && data.gateY !== undefined)
         ? { x: data.gateX, y: data.gateY }
         : null
       // Pick a random fact for each gate question (not the same stored factId every time)
@@ -432,18 +450,18 @@ export class GameManager {
 
         // If this is the first question in a new artifact flow, clear the used-fact set
         if (remaining === total) {
-          this.artifactQuizUsedFactIds.clear()
+          this.quizManager.artifactQuizUsedFactIds.clear()
         }
 
         // Pick a fact we haven't used yet in this artifact flow
         let fact: ReturnType<typeof factsDB.getById> = null
-        if (data.factId && !this.artifactQuizUsedFactIds.has(data.factId)) {
+        if (data.factId && !this.quizManager.artifactQuizUsedFactIds.has(data.factId)) {
           fact = factsDB.getById(data.factId)
         }
         if (!fact) {
           // Find a random unused fact
           const allIds = factsDB.getAllIds()
-          const unusedIds = allIds.filter((id) => !this.artifactQuizUsedFactIds.has(id))
+          const unusedIds = allIds.filter((id) => !this.quizManager.artifactQuizUsedFactIds.has(id))
           if (unusedIds.length > 0) {
             const randomId = unusedIds[Math.floor(Math.random() * unusedIds.length)]
             fact = factsDB.getById(randomId)
@@ -451,7 +469,7 @@ export class GameManager {
         }
 
         if (fact) {
-          this.artifactQuizUsedFactIds.add(fact.id)
+          this.quizManager.artifactQuizUsedFactIds.add(fact.id)
           const choices = getQuizChoices(fact)
           activeQuiz.set({
             fact,
@@ -494,7 +512,7 @@ export class GameManager {
     })
 
     events.on('open-backpack', () => {
-      this.syncInventoryFromScene()
+      this.inventoryManager.syncInventoryFromScene()
       currentScreen.set('backpack')
     })
 
@@ -567,7 +585,7 @@ export class GameManager {
 
       // 0.5% chance to drop ancient_essence from any fossil fragment
       if (Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'ancient_essence')!.dropChance) {
-        this.awardPremiumMaterial('ancient_essence')
+        this.gaiaManager.awardPremiumMaterial('ancient_essence')
       }
 
       // Pick species using seeded RNG for this dive (deterministic per seed).
@@ -692,7 +710,7 @@ export class GameManager {
     // Harvest any items already sent up in the current layer before the scene is torn down.
     const currentScene = this.getMineScene()
     if (currentScene) {
-      this.sentUpItems.push(...currentScene.sentUpItems)
+      this.inventoryManager.sentUpItems.push(...currentScene.sentUpItems)
     }
 
     // Stop current scene and start fresh for the new layer, carrying over run data.
@@ -711,18 +729,6 @@ export class GameManager {
     })
 
     currentScreen.set('mining')
-  }
-
-  /** Sync inventory from MineScene to Svelte store */
-  private syncInventoryFromScene(): void {
-    const scene = this.getMineScene()
-    if (!scene) return
-    // Access the inventory from surfaceRun (peek without ending)
-    // We'll use a direct access approach
-    const sceneAny = scene as unknown as { inventory: InventorySlot[] }
-    if (sceneAny.inventory) {
-      inventory.set([...sceneAny.inventory])
-    }
   }
 
   /** Get active MineScene if running */
@@ -860,10 +866,10 @@ export class GameManager {
     this.runRelics = []
     this.maxDepthThisRun = 0
     this.gaiaDepthMilestones.clear()
-    this.gaiaLowO2Warned = false
+    this.gaiaManager.gaiaLowO2Warned = false
     this.currentLayer = 0
     this.diveSeed = Date.now() >>> 0
-    this.sentUpItems = []
+    this.inventoryManager.sentUpItems = []
     this.fossilRng = seededRandom(this.diveSeed ^ 0xf055111)
     currentLayerStore.set(0)
 
@@ -905,10 +911,10 @@ export class GameManager {
 
     const results = scene.surfaceRun()
 
-    // Merge scene-tracked sentUpItems with any accumulated on the GameManager
-    // (scene resets on layer transitions, so GameManager accumulates across layers).
+    // Merge scene-tracked sentUpItems with any accumulated on the InventoryManager
+    // (scene resets on layer transitions, so InventoryManager accumulates across layers).
     const allSentUp = [
-      ...this.sentUpItems,
+      ...this.inventoryManager.sentUpItems,
       ...(results.sentUpItems ?? []),
     ]
 
@@ -954,7 +960,7 @@ export class GameManager {
     }
 
     // Reset accumulator now that we've consumed it.
-    this.sentUpItems = []
+    this.inventoryManager.sentUpItems = []
     // Reset dive insurance flag for the next dive.
     this.currentDiveInsured = false
 
@@ -1026,413 +1032,118 @@ export class GameManager {
   }
 
   // =========================================================
-  // Quiz handling
+  // Quiz handling — delegated to QuizManager
   // =========================================================
-
-  /**
-   * Checks if a wrong answer constitutes a consistency violation —
-   * the player has demonstrably learned this fact (repetitions >= CONSISTENCY_MIN_REPS)
-   * but answered it incorrectly during a dive.
-   *
-   * @param factId - The fact that was answered.
-   * @param wasCorrect - Whether the player got it right (always false for a penalty check).
-   */
-  private isConsistencyViolation(factId: string, wasCorrect: boolean): boolean {
-    if (wasCorrect) return false // only penalize wrong answers
-    const save = get(playerSave)
-    if (!save) return false
-    const reviewState = save.reviewStates.find(rs => rs.factId === factId)
-    if (!reviewState) return false
-    // Penalize if player has answered this correctly at least CONSISTENCY_MIN_REPS times before
-    return reviewState.repetitions >= BALANCE.CONSISTENCY_MIN_REPS
-  }
-
-  /**
-   * Applies the consistency penalty: drains extra O2 and shows a GAIA message.
-   * Also updates the activeQuiz store flag so the overlay can show the warning.
-   *
-   * @param factId - The fact that triggered the violation.
-   */
-  private applyConsistencyPenalty(factId: string): void {
-    // Mark the active quiz with the consistency penalty flag before the overlay
-    // transitions away, so it can display the warning line while showing results.
-    activeQuiz.update(q => q ? { ...q, isConsistencyPenalty: true } : q)
-
-    // Drain extra O2 in the MineScene
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.drainOxygen(BALANCE.CONSISTENCY_PENALTY_O2)
-    }
-
-    // GAIA callout — pick from snarky "you knew this" lines
-    this.randomGaia([
-      "You knew that one before! Sloppy, pilot.",
-      "Inconsistent answer — you've gotten this right before.",
-      "Focus! You learned this already.",
-    ])
-  }
 
   /** Resume mining after a quiz gate answer */
   resumeQuiz(passed: boolean): void {
-    activeQuiz.set(null)
-
-    const scene = this.getMineScene()
-    if (scene) {
-      const coords = this.pendingGateCoords
-      this.pendingGateCoords = null
-      scene.resumeFromQuiz(passed, coords?.x, coords?.y)
-      currentScreen.set('mining')
-    } else {
-      this.pendingGateCoords = null
-      currentScreen.set('base')
-    }
+    this.quizManager.resumeQuiz(passed)
   }
 
   /** Handle a quiz answer during mining (gate mode) */
   handleQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
-      }
-    }
-    this.resumeQuiz(correct)
+    this.quizManager.handleQuizAnswer(correct)
   }
 
   /** Handle an oxygen quiz answer */
   handleOxygenQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
-      }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromOxygenQuiz(correct)
-      currentScreen.set('mining')
-    } else {
-      currentScreen.set('base')
-    }
+    this.quizManager.handleOxygenQuizAnswer(correct)
   }
 
   /** Handle an artifact quiz answer */
   handleArtifactQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-    }
-    // Check if more questions remain by inspecting gateProgress
-    const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      // resumeFromArtifactQuiz will emit another 'artifact-quiz' event if questions remain
-      scene.resumeFromArtifactQuiz(correct)
-      if (!moreQuestionsRemain || !correct) {
-        // Quiz flow is ending — return to mining
-        currentScreen.set('mining')
-        if (!correct) {
-          gaiaMessage.set("Close enough. Let's see what we've got.")
-        }
-        // If all questions were answered correctly the scene will have emitted artifact-found
-        // with a potentially boosted rarity — show a boost message if warranted
-      }
-      // If moreQuestionsRemain && correct: the scene emitted another 'artifact-quiz',
-      // which updates activeQuiz and keeps currentScreen on 'quiz' via that listener
-    } else {
-      currentScreen.set('base')
-    }
+    this.quizManager.handleArtifactQuizAnswer(correct)
   }
 
   /** Handle a random (pop quiz) answer while mining */
   handleRandomQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
-      }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromRandomQuiz(correct)
-      currentScreen.set('mining')
-      if (correct) {
-        gaiaMessage.set(`Not bad. Here's some dust for your trouble.`)
-      } else {
-        gaiaMessage.set("Wrong. That'll cost you some oxygen.")
-      }
-    } else {
-      currentScreen.set('base')
-    }
+    this.quizManager.handleRandomQuizAnswer(correct)
   }
 
   /** Handle a layer entrance quiz answer */
   handleLayerQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
-      }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      if (correct) {
-        gaiaMessage.set("Well done. Descending...")
-      } else {
-        gaiaMessage.set("Wrong, but you'll survive. Barely.")
-      }
-      scene.resumeFromLayerQuiz(correct)
-      currentScreen.set('mining')
-    } else {
-      currentScreen.set('base')
-    }
+    this.quizManager.handleLayerQuizAnswer(correct)
   }
 
   // =========================================================
-  // Study session
+  // Study session — delegated to StudyManager
   // =========================================================
 
   /**
    * Start a dedicated card-flip study session at base.
-   * Gathers due-review facts (or random learned facts as fallback),
-   * populates the studyFacts/studyReviewStates stores, and navigates
-   * to the 'studySession' screen — handled by StudySession.svelte.
    */
   startStudySession(): void {
-    const save = get(playerSave)
-    if (!save) return
-
-    // Gather due reviews
-    const dueReviews = getDueReviews()
-
-    const facts: import('../data/types').Fact[] = []
-    for (const review of dueReviews) {
-      const fact = factsDB.getById(review.factId)
-      if (fact) facts.push(fact)
-    }
-
-    // Fallback: pick random learned facts when nothing is due
-    if (facts.length === 0 && save.learnedFacts.length > 0) {
-      const shuffled = [...save.learnedFacts].sort(() => Math.random() - 0.5)
-      for (const id of shuffled) {
-        const fact = factsDB.getById(id)
-        if (fact) facts.push(fact)
-      }
-    }
-
-    if (facts.length === 0) return
-
-    // Collect matching review states
-    const reviewStates = save.reviewStates.filter(rs =>
-      facts.some(f => f.id === rs.factId)
-    )
-
-    studyFacts.set(facts)
-    studyReviewStates.set(reviewStates)
-    currentScreen.set('studySession')
+    this.studyManager.startStudySession()
   }
 
   /**
    * Handle a single card answer from the StudySession component.
-   * Updates SM-2 review state with quality 4 (correct) or 1 (incorrect).
-   *
-   * @param factId - The fact that was answered.
-   * @param correct - Whether the player self-rated as correct.
    */
   handleStudyCardAnswer(factId: string, correct: boolean): void {
-    updateReviewState(factId, correct)
+    this.studyManager.handleStudyCardAnswer(factId, correct)
   }
 
   /**
    * Called when the StudySession component signals completion.
-   * Shows a GAIA comment based on performance and returns to base.
-   *
-   * @param correctCount - Number of cards the player rated as correct.
-   * @param totalCount - Total cards in the session.
    */
   completeStudySession(correctCount: number, totalCount: number): void {
-    studyFacts.set([])
-    studyReviewStates.set([])
-
-    const ratio = totalCount > 0 ? correctCount / totalCount : 0
-
-    // Check for active review ritual and award bonus if not yet completed today
-    const hour = new Date().getHours()
-    const today = new Date().toISOString().split('T')[0]
-    const save = get(playerSave)
-
-    let ritualType: 'morning' | 'evening' | null = null
-    if (hour >= BALANCE.MORNING_REVIEW_HOUR && hour < BALANCE.MORNING_REVIEW_END) {
-      ritualType = 'morning'
-    } else if (hour >= BALANCE.EVENING_REVIEW_HOUR && hour < BALANCE.EVENING_REVIEW_END) {
-      ritualType = 'evening'
-    }
-
-    const alreadyCompleted = ritualType === 'morning'
-      ? save?.lastMorningReview === today
-      : ritualType === 'evening'
-        ? save?.lastEveningReview === today
-        : true
-
-    if (ritualType !== null && !alreadyCompleted && save) {
-      // Mark ritual completed and award bonus dust
-      const updatedField = ritualType === 'morning'
-        ? { lastMorningReview: today }
-        : { lastEveningReview: today }
-      playerSave.update(s => s ? { ...s, ...updatedField } : s)
-      addMinerals('dust', BALANCE.RITUAL_BONUS_DUST)
-
-      const bonusMsg = ritualType === 'morning'
-        ? `Great morning practice! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
-        : `A productive evening! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
-      gaiaMessage.set(bonusMsg)
-      setTimeout(() => gaiaMessage.set(null), 5000)
-    } else {
-      if (ratio === 1) {
-        gaiaMessage.set('Perfect session! Your knowledge grows stronger.')
-      } else if (ratio > 0.7) {
-        gaiaMessage.set('Solid review. The tree appreciates your effort.')
-      } else {
-        gaiaMessage.set('Some of those need more practice. The tree will wait.')
-      }
-    }
-
-    // Persist after potential ritual field update
-    persistPlayer()
-
-    // Recalculate and sync knowledge points from updated stats/mastery
-    syncKnowledgePoints()
-
-    currentScreen.set('base')
+    this.studyManager.completeStudySession(correctCount, totalCount)
   }
 
   /** Handle a study mode quiz answer (legacy, kept for backward compatibility) */
   handleStudyAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
-    }
-    this.studyIndex++
-    // Legacy path — just return to base if somehow called
-    if (this.studyIndex >= this.studyQueue.length) {
-      activeQuiz.set(null)
-      currentScreen.set('base')
-    }
+    this.studyManager.handleStudyAnswer(correct)
   }
 
   // =========================================================
-  // Artifact review
+  // Artifact review — delegated to StudyManager
   // =========================================================
 
   /** Start reviewing pending artifacts from last dive */
   reviewNextArtifact(): void {
-    const pending = get(pendingArtifacts)
-    if (pending.length === 0) {
-      activeFact.set(null)
-      currentScreen.set('base')
-      return
-    }
-
-    const factId = pending[0]
-    const fact = factsDB.getById(factId)
-    if (fact) {
-      activeFact.set(fact)
-      currentScreen.set('factReveal')
-    } else {
-      // Skip unknown fact
-      pendingArtifacts.update(arr => arr.slice(1))
-      this.reviewNextArtifact()
-    }
+    this.studyManager.reviewNextArtifact()
   }
 
   /** Player chose to learn the current artifact fact */
   learnArtifact(): void {
-    const fact = get(activeFact)
-    if (fact) {
-      addLearnedFact(fact.id)
-      pendingArtifacts.update(arr => arr.filter(id => id !== fact.id))
-    }
-    activeFact.set(null)
-    this.reviewNextArtifact()
+    this.studyManager.learnArtifact()
   }
 
   /** Player chose to sell the current artifact fact */
   sellArtifact(): void {
-    const fact = get(activeFact)
-    if (fact) {
-      // Sell value based on rarity
-      const sellValues: Record<string, number> = {
-        common: 5, uncommon: 10, rare: 20, epic: 40, legendary: 80, mythic: 150,
-      }
-      const reward = sellValues[fact.rarity] ?? 5
-      addMinerals('dust', reward)
-      pendingArtifacts.update(arr => arr.filter(id => id !== fact.id))
-    }
-    activeFact.set(null)
-    this.reviewNextArtifact()
+    this.studyManager.sellArtifact()
   }
 
   // =========================================================
-  // Backpack handling
+  // Backpack handling — delegated to InventoryManager
   // =========================================================
 
   /** Close backpack overlay and return to mining */
   closeBackpack(): void {
-    currentScreen.set('mining')
+    this.inventoryManager.closeBackpack()
   }
 
   /** Drop an item from the backpack during a dive */
   dropItem(index: number): void {
-    const scene = this.getMineScene()
-    if (!scene) return
-
-    const sceneAny = scene as unknown as { inventory: InventorySlot[] }
-    if (sceneAny.inventory && sceneAny.inventory[index]) {
-      sceneAny.inventory[index] = { type: 'empty' }
-      inventory.set([...sceneAny.inventory])
-    }
+    this.inventoryManager.dropItem(index)
   }
 
   // =========================================================
-  // Send-up station
+  // Send-up station — delegated to InventoryManager
   // =========================================================
 
   /**
    * Called by SendUpOverlay when the player confirms their item selection.
-   * Passes selected items to MineScene (which removes them from in-run inventory),
-   * caches them on the GameManager so they survive layer transitions, and
-   * hides the overlay.
    */
   confirmSendUp(selectedItems: InventorySlot[]): void {
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromSendUp(selectedItems)
-      // Merge newly sent-up items into our accumulator.
-      this.sentUpItems.push(...selectedItems)
-    }
-    showSendUp.set(false)
-    currentScreen.set('mining')
+    this.inventoryManager.confirmSendUp(selectedItems)
   }
 
   /**
    * Called by SendUpOverlay when the player skips without sending anything.
-   * Simply resumes mining.
    */
   skipSendUp(): void {
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromSendUp([])
-    }
-    showSendUp.set(false)
-    currentScreen.set('mining')
+    this.inventoryManager.skipSendUp()
   }
 
   // =========================================================
@@ -1469,76 +1180,38 @@ export class GameManager {
   }
 
   // =========================================================
-  // Bomb
+  // Bomb — delegated to InventoryManager
   // =========================================================
 
   /** Trigger bomb detonation in the active MineScene. */
   useBomb(): void {
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.useBomb()
-    }
+    this.inventoryManager.useBomb()
   }
 
   // =========================================================
-  // GAIA (ship AI) commentary
+  // GAIA (ship AI) commentary — delegated to GaiaManager
   // =========================================================
 
   /**
    * Pick a random line and push it to the gaiaMessage store,
    * subject to the player's chattiness setting.
-   * Level 10 = always speaks; level 0 = never; intermediate = proportional probability.
-   * The toast UI will display and auto-dismiss it.
    */
   private randomGaia(lines: string[], trigger = 'idle'): void {
-    const chattiness = get(gaiaChattiness)
-    if (Math.random() * 10 >= chattiness) return
-    const msg = lines[Math.floor(Math.random() * lines.length)]
-    const mood = get(gaiaMood)
-    const expr = getGaiaExpression(trigger, mood)
-    gaiaExpression.set(expr.id)
-    gaiaMessage.set(msg)
+    this.gaiaManager.randomGaia(lines, trigger)
   }
 
   /**
    * Emit a mood-aware GAIA line for the given named trigger, respecting chattiness.
-   * Also updates the gaiaExpression store so the toast and avatar reflect context.
    */
   private triggerGaia(trigger: keyof typeof GAIA_TRIGGERS): void {
-    const chattiness = get(gaiaChattiness)
-    if (Math.random() * 10 >= chattiness) return
-    const mood = get(gaiaMood)
-    const text = getGaiaLine(trigger, mood)
-    const expr = getGaiaExpression(trigger, mood)
-    gaiaExpression.set(expr.id)
-    gaiaMessage.set(text)
+    this.gaiaManager.triggerGaia(trigger)
   }
 
   /**
    * Awards one unit of the given premium material to the player's save and shows a
    * GAIA toast. Premium materials are rare in-game drops — never sold for real money.
-   *
-   * @param materialId - The premium material to award.
    */
   private awardPremiumMaterial(materialId: PremiumMaterial): void {
-    const meta = PREMIUM_MATERIALS.find(m => m.id === materialId)
-    if (!meta) return
-
-    playerSave.update(s => {
-      if (!s) return s
-      const current = (s.premiumMaterials ?? {})[materialId] ?? 0
-      return {
-        ...s,
-        premiumMaterials: {
-          ...(s.premiumMaterials ?? {}),
-          [materialId]: current + 1,
-        },
-      }
-    })
-    persistPlayer()
-
-    // Always show a GAIA toast for premium drops — they are rare enough to be noteworthy.
-    gaiaMessage.set(`${meta.icon} Rare find! ${meta.name}!`)
-    setTimeout(() => gaiaMessage.set(null), 4000)
+    this.gaiaManager.awardPremiumMaterial(materialId)
   }
 }

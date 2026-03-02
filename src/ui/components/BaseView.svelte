@@ -267,7 +267,7 @@
     background: transparent;
     color: var(--color-text-dim);
     font-family: inherit;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
@@ -309,13 +309,13 @@
   }
 
   .room-tab-name {
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     letter-spacing: 0.01em;
     line-height: 1;
   }
 
   .room-tab-unlock-hint {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: var(--color-text-dim);
     opacity: 0.8;
     line-height: 1;
@@ -327,5 +327,6 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: 0 0 8px;
+    padding-bottom: env(safe-area-inset-bottom, 8px);
   }
 </style>

@@ -202,7 +202,7 @@
 
   .room-header-desc {
     color: var(--color-text-dim);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     margin: 0;
     line-height: 1.3;
   }
@@ -243,7 +243,7 @@
 
   .gaia-name {
     color: #22d9d9;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     white-space: nowrap;
@@ -382,7 +382,7 @@
 
   .ritual-desc {
     color: #c89000;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1.3;
   }
 
@@ -409,7 +409,7 @@
   .ritual-no-cards {
     flex-shrink: 0;
     color: #c89000;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-style: italic;
   }
 

@@ -208,7 +208,9 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     padding: 16px;
+    padding-bottom: env(safe-area-inset-bottom, 8px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .slot {

@@ -1,5 +1,13 @@
 <script lang="ts">
   import { playerSave, persistPlayer } from '../../stores/playerData'
+
+  // Resource icon sprites
+  import iconOxygen from '../../../assets/sprites/icons/icon_oxygen.png'
+  import iconDust from '../../../assets/sprites/icons/icon_dust.png'
+  import iconShard from '../../../assets/sprites/icons/icon_shard.png'
+  import iconCrystal from '../../../assets/sprites/icons/icon_crystal.png'
+  import iconGeode from '../../../assets/sprites/icons/icon_geode.png'
+  import iconEssence from '../../../assets/sprites/icons/icon_essence.png'
   import { pendingArtifacts } from '../../stores/gameState'
   import { audioManager } from '../../../services/audioService'
   import { BALANCE } from '../../../data/balance'
@@ -182,32 +190,32 @@
 
 <div class="card resources-card" aria-label="Resources">
   <div class="resource-item">
-    <span class="resource-dot oxygen-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconOxygen} alt="O2" />
     <span class="resource-label">Oxygen Tanks</span>
     <span class="resource-value">{oxygen}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot dust-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconDust} alt="Dust" />
     <span class="resource-label">Dust</span>
     <span class="resource-value">{dust}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot shard-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconShard} alt="Shard" />
     <span class="resource-label">Shard</span>
     <span class="resource-value">{shard}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot crystal-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconCrystal} alt="Crystal" />
     <span class="resource-label">Crystal</span>
     <span class="resource-value">{crystal}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot geode-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconGeode} alt="Geode" />
     <span class="resource-label">Geode</span>
     <span class="resource-value">{geode}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot essence-dot" aria-hidden="true"></span>
+    <img class="resource-dot-img" src={iconEssence} alt="Essence" />
     <span class="resource-label">Essence</span>
     <span class="resource-value">{essence}</span>
   </div>
@@ -376,7 +384,7 @@
 
   .streak-flame {
     color: var(--color-warning);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -390,7 +398,7 @@
 
   .streak-best {
     color: var(--color-accent);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 1px;
   }
@@ -398,7 +406,7 @@
   .milestone-badge {
     background: var(--color-warning);
     color: #1a0e00;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     font-weight: 900;
     border-radius: 999px;
     padding: 2px 8px;
@@ -414,7 +422,7 @@
   .streak-at-risk {
     margin: 4px 0 0;
     color: #f97316;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
     font-style: italic;
   }
@@ -435,21 +443,11 @@
     padding: 8px 10px;
   }
 
-  .resource-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+  .resource-dot-img {
+    width: 14px;
+    height: 14px;
+    image-rendering: pixelated;
     flex-shrink: 0;
-  }
-
-  .oxygen-dot { background: #45b3ff; }
-  .dust-dot { background: #4ecca3; }
-  .shard-dot { background: #ffd369; }
-  .crystal-dot { background: #e94560; }
-  .geode-dot { background: #9b59b6; }
-  .essence-dot {
-    background: linear-gradient(135deg, #ffd700 0%, #fffde7 50%, #ffd700 100%);
-    box-shadow: 0 0 4px rgba(255, 215, 0, 0.6);
   }
 
   .resource-label {
@@ -566,7 +564,7 @@
   }
 
   .insurance-note {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: var(--color-success);
     font-style: italic;
   }
@@ -628,7 +626,7 @@
 
   .gaia-name {
     color: #22d9d9;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     white-space: nowrap;
@@ -649,14 +647,14 @@
   }
 
   .gaia-about {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .gaia-about-toggle {
     color: #ffd369;
     cursor: pointer;
     list-style: none;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     opacity: 0.75;
     padding: 0;
     user-select: none;
@@ -686,14 +684,14 @@
 
   .gaia-about-content strong {
     color: #e0e0f0;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
 
   .gaia-tagline {
     color: #80809a;
     font-style: italic;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
   }
 
   @media (max-width: 520px) {
