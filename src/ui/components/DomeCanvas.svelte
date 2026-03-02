@@ -70,6 +70,14 @@
   let dragging = $state(false)
   let dragOffsetX = $state(0)
   let dragOffsetY = $state(0)
+  let showPalette = $state(false)
+
+  /** Decoration items available to place from the palette. */
+  const PALETTE_ITEMS: Array<{ spriteKey: string; label: string; gridW: number; gridH: number }> = [
+    { spriteKey: 'deco_ceiling_light', label: 'Ceiling Light', gridW: 6, gridH: 4 },
+    { spriteKey: 'deco_plant_pot', label: 'Plant Pot', gridW: 5, gridH: 4 },
+    { spriteKey: 'deco_wall_monitor', label: 'Wall Monitor', gridW: 6, gridH: 5 },
+  ]
 
   /** CSS scale factor applied to the canvas element so it fills the container. */
   let cssScale = $state(1)
@@ -459,6 +467,108 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Dome boundary & placement helpers
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Returns true if an object with the given grid position and size fits entirely
+   * inside the dome interior (above the ellipse walls or between the legs below DOME_BASE).
+   */
+  function isInsideDome(gx: number, gy: number, gw: number, gh: number): boolean {
+    const corners = [
+      [gx, gy],
+      [gx + gw - 1, gy],
+      [gx, gy + gh - 1],
+      [gx + gw - 1, gy + gh - 1],
+    ]
+    for (const [cx, cy] of corners) {
+      if (cy < DOME_APEX || cy > BASEMENT_BOT) return false
+      if (cy <= DOME_BASE) {
+        // Above the base: must be inside ellipse
+        const dx = (cx - DOME_CX) / DOME_A
+        const dy = (cy - DOME_BASE) / DOME_B
+        if (dx * dx + dy * dy > 1) return false
+      } else {
+        // Below base: must be between legs
+        if (cx < DOME_LEFT + 1 || cx > DOME_RIGHT - 2) return false
+      }
+    }
+    return true
+  }
+
+  /**
+   * Returns true if placing obj at its current grid position overlaps any other
+   * object of the same category (interactive vs. non-interactive).
+   * Cross-category overlap is allowed so decorations can sit behind usable items.
+   * @param obj The object to check
+   * @param excludeId ID of an object to skip (the object being moved itself)
+   */
+  function hasOverlap(obj: DomeObject, excludeId: string | null): boolean {
+    for (const other of layout.objects) {
+      if (other.id === excludeId) continue
+      if (other.interactive !== obj.interactive) continue
+      if (
+        obj.gridX < other.gridX + other.gridW &&
+        obj.gridX + obj.gridW > other.gridX &&
+        obj.gridY < other.gridY + other.gridH &&
+        obj.gridY + obj.gridH > other.gridY
+      ) {
+        return true
+      }
+    }
+    return false
+  }
+
+  /**
+   * Load a single sprite by key into the imageMap if not already cached.
+   * Marks the canvas dirty once the image loads so it appears immediately.
+   */
+  function loadSingleSprite(key: string): void {
+    if (imageMap.has(key)) return
+    const res = get(spriteResolution)
+    const urls = getDomeSpriteUrls(res)
+    const url = urls[key]
+    if (!url) return
+    const img = new Image()
+    img.onload = () => { dirty = true }
+    img.src = url
+    imageMap.set(key, img)
+  }
+
+  /**
+   * Place a decoration item from the palette at dome centre (main floor level).
+   * Validates that the position is inside the dome and does not overlap existing
+   * decorations before adding it to the layout.
+   */
+  function placeDecoration(item: typeof PALETTE_ITEMS[number]): void {
+    const gx = Math.round(DOME_CX - item.gridW / 2)
+    const gy = MAIN_FLOOR_TOP - item.gridH
+
+    const existingCount = layout.objects.filter((o) => o.spriteKey === item.spriteKey).length
+    const newId = `${item.spriteKey.replace('deco_', '')}_${existingCount + 1}`
+
+    const newObj: DomeObject = {
+      id: newId,
+      spriteKey: item.spriteKey,
+      label: item.label,
+      room: 'none',
+      gridX: gx,
+      gridY: gy,
+      gridW: item.gridW,
+      gridH: item.gridH,
+      interactive: false,
+    }
+
+    if (!isInsideDome(gx, gy, item.gridW, item.gridH)) return
+    if (hasOverlap(newObj, null)) return
+
+    layout.objects.push(newObj)
+    loadSingleSprite(newObj.spriteKey)
+    selectedObject = newObj
+    dirty = true
+  }
+
+  // ---------------------------------------------------------------------------
   // Object rendering helpers
   // ---------------------------------------------------------------------------
 
@@ -495,7 +605,13 @@
    * A tapped object gets a white semi-transparent highlight and a 10% scale-up.
    */
   function drawObjects(ctx: CanvasRenderingContext2D, hovered: DomeObject | null, tappedId: string | null): void {
-    for (const obj of layout.objects) {
+    // Sort: decorations (interactive=false) drawn first (behind), then interactive items (on top)
+    const sorted = [...layout.objects].sort((a, b) => {
+      if (a.interactive === b.interactive) return 0
+      return a.interactive ? 1 : -1
+    })
+
+    for (const obj of sorted) {
       if (hovered && hovered.id === obj.id && obj.interactive) {
         drawHoverGlow(ctx, obj)
       }
@@ -608,7 +724,7 @@
     ctx.fillStyle = '#00ddff'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.fillText('EDIT MODE — Drag objects | E exit | C copy | Arrow nudge', CANVAS_W / 2, bannerH / 2)
+    ctx.fillText('EDIT MODE — Drag | Arrow nudge | Del remove deco | C copy | E exit', CANVAS_W / 2, bannerH / 2)
 
     // Selected object highlight and coordinate label
     const sel = selectedObject
@@ -956,6 +1072,19 @@
       const newX = Math.max(0, Math.min(DOME_WIDTH - selectedObject.gridW, gridX - dragOffsetX))
       const newY = Math.max(0, Math.min(DOME_HEIGHT - selectedObject.gridH, gridY - dragOffsetY))
 
+      // Dome boundary constraint — block move if any corner leaves the dome interior
+      if (!isInsideDome(newX, newY, selectedObject.gridW, selectedObject.gridH)) {
+        dirty = true
+        return
+      }
+
+      // Overlap prevention — block if same-category object would overlap
+      const tempObj = { ...selectedObject, gridX: newX, gridY: newY }
+      if (hasOverlap(tempObj as DomeObject, selectedObject.id)) {
+        dirty = true
+        return
+      }
+
       // Find and mutate the object in the layout array directly
       const idx = layout.objects.findIndex((o) => o.id === selectedObject!.id)
       if (idx !== -1) {
@@ -1113,6 +1242,18 @@
         return
       }
 
+      // Delete/Backspace — remove a selected non-interactive (decoration) object
+      if ((key === 'Delete' || key === 'Backspace') && editMode && selectedObject && !selectedObject.interactive) {
+        e.preventDefault()
+        const idx = layout.objects.findIndex((o) => o.id === selectedObject!.id)
+        if (idx !== -1) {
+          layout.objects.splice(idx, 1)
+          selectedObject = null
+          dirty = true
+        }
+        return
+      }
+
       // Arrow key nudging when an object is selected in edit mode
       if (editMode && selectedObject) {
         let dx = 0
@@ -1128,8 +1269,24 @@
           e.preventDefault()
           const idx = layout.objects.findIndex((o) => o.id === selectedObject!.id)
           if (idx !== -1) {
-            layout.objects[idx].gridX = Math.max(0, Math.min(DOME_WIDTH - layout.objects[idx].gridW, layout.objects[idx].gridX + dx))
-            layout.objects[idx].gridY = Math.max(0, Math.min(DOME_HEIGHT - layout.objects[idx].gridH, layout.objects[idx].gridY + dy))
+            const newX = Math.max(0, Math.min(DOME_WIDTH - layout.objects[idx].gridW, layout.objects[idx].gridX + dx))
+            const newY = Math.max(0, Math.min(DOME_HEIGHT - layout.objects[idx].gridH, layout.objects[idx].gridY + dy))
+
+            // Dome boundary constraint
+            if (!isInsideDome(newX, newY, layout.objects[idx].gridW, layout.objects[idx].gridH)) {
+              dirty = true
+              return
+            }
+
+            // Overlap prevention
+            const tempObj = { ...layout.objects[idx], gridX: newX, gridY: newY }
+            if (hasOverlap(tempObj as DomeObject, selectedObject!.id)) {
+              dirty = true
+              return
+            }
+
+            layout.objects[idx].gridX = newX
+            layout.objects[idx].gridY = newY
             selectedObject = layout.objects[idx]
           }
           dirty = true
@@ -1236,11 +1393,26 @@
     <div class="dome-toolbar">
       <button class="dome-tool-btn" class:active={showDevGrid} onclick={toggleDevGrid}>Grid</button>
       <button class="dome-tool-btn" class:active={editMode} onclick={toggleEditMode}>Edit</button>
+      {#if editMode}
+        <button class="dome-tool-btn" class:active={showPalette} onclick={() => { showPalette = !showPalette }}>Palette</button>
+      {/if}
       {#if editMode && selectedObject}
         <span class="dome-tool-info">
-          {selectedObject.id}: ({selectedObject.gridX}, {selectedObject.gridY}) {selectedObject.gridW}&times;{selectedObject.gridH}
+          {selectedObject.id} ({selectedObject.interactive ? 'usable' : 'deco'}): ({selectedObject.gridX}, {selectedObject.gridY}) {selectedObject.gridW}&times;{selectedObject.gridH}
         </span>
       {/if}
+    </div>
+  {/if}
+
+  {#if editMode && showPalette}
+    <div class="dome-palette">
+      <div class="dome-palette-title">Decorations</div>
+      {#each PALETTE_ITEMS as item}
+        <button class="dome-palette-item" onclick={() => placeDecoration(item)}>
+          + {item.label}
+        </button>
+      {/each}
+      <div class="dome-palette-hint">Select &amp; press Del to remove</div>
     </div>
   {/if}
 
@@ -1342,5 +1514,58 @@
   .dome-hint-btn:hover {
     background: rgba(30, 40, 60, 0.8);
     color: #aabbcc;
+  }
+
+  .dome-palette {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 60px;
+    width: 140px;
+    z-index: 11;
+    pointer-events: auto;
+    background: rgba(12, 16, 28, 0.92);
+    border-left: 1px solid rgba(100, 150, 200, 0.25);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+  }
+
+  .dome-palette-title {
+    color: #88ccff;
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(100, 150, 200, 0.2);
+    margin-bottom: 4px;
+  }
+
+  .dome-palette-item {
+    background: rgba(30, 40, 60, 0.8);
+    color: #aabbcc;
+    border: 1px solid rgba(100, 150, 200, 0.2);
+    border-radius: 3px;
+    padding: 6px 8px;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .dome-palette-item:hover {
+    background: rgba(40, 60, 90, 0.9);
+    color: #ccddff;
+    border-color: rgba(100, 180, 255, 0.4);
+  }
+
+  .dome-palette-hint {
+    color: rgba(150, 170, 200, 0.5);
+    font-size: 9px;
+    font-family: 'Courier New', monospace;
+    margin-top: auto;
+    padding-top: 4px;
   }
 </style>
