@@ -62,6 +62,7 @@
   let hoveredObject = $state<DomeObject | null>(null)
   let dirty = $state(true)
   let tappedObjectId = $state<string | null>(null)
+  let showDevGrid = $state(false)
 
   /** CSS scale factor applied to the canvas element so it fills the container. */
   let cssScale = $state(1)
@@ -76,6 +77,9 @@
   /** Internal canvas pixel width — the full grid width at TILE_SIZE per cell. */
   const CANVAS_W = DOME_WIDTH * TILE_SIZE   // 192 * 4 = 768
   const CANVAS_H = DOME_HEIGHT * TILE_SIZE  // 128 * 4 = 512
+
+  /** Pixel density multiplier — doubles the canvas resolution for sharper rendering. */
+  const RENDER_SCALE = 2
 
   /** Cached HTMLImageElement instances, keyed by sprite key. */
   const imageMap = new Map<string, HTMLImageElement>()
@@ -277,14 +281,14 @@
     fgCtx.beginPath()
     fgCtx.ellipse(domeCX, domeCY, domeRX, domeRY, 0, Math.PI, 0)
     fgCtx.strokeStyle = 'rgba(80, 180, 210, 0.3)'
-    fgCtx.lineWidth = 12
+    fgCtx.lineWidth = 20
     fgCtx.stroke()
 
     // Outer structural frame ring
     fgCtx.beginPath()
     fgCtx.ellipse(domeCX, domeCY, domeRX + 2, domeRY + 2, 0, Math.PI, 0)
     fgCtx.strokeStyle = '#2a3040'
-    fgCtx.lineWidth = 3
+    fgCtx.lineWidth = 4
     fgCtx.stroke()
 
     // Inner glow highlight
@@ -293,6 +297,15 @@
     fgCtx.strokeStyle = 'rgba(120, 220, 255, 0.08)'
     fgCtx.lineWidth = 2
     fgCtx.stroke()
+
+    // Subtle teal tint inside the dome
+    fgCtx.save()
+    fgCtx.beginPath()
+    fgCtx.ellipse(domeCX, domeCY, domeRX - 10, domeRY - 10, 0, Math.PI, 0)
+    fgCtx.closePath()
+    fgCtx.fillStyle = 'rgba(60, 160, 190, 0.04)'
+    fgCtx.fill()
+    fgCtx.restore()
 
     // --- Frame legs (left and right, from MAIN_FLOOR_TOP down to bottom) ---
     const legW = 3 * TS   // 12px wide
@@ -316,12 +329,16 @@
       const colTopY = colTopRow * TS
       const colBotY = MAIN_FLOOR_TOP * TS
 
-      fgCtx.fillStyle = '#2a3040'
+      fgCtx.fillStyle = '#363c4e'
       fgCtx.fillRect(colX, colTopY, colW, colBotY - colTopY)
 
       // Left-edge highlight
-      fgCtx.fillStyle = 'rgba(100, 130, 160, 0.25)'
+      fgCtx.fillStyle = 'rgba(130, 160, 190, 0.2)'
       fgCtx.fillRect(colX, colTopY, 1, colBotY - colTopY)
+
+      // Right-edge shadow
+      fgCtx.fillStyle = 'rgba(0, 0, 0, 0.2)'
+      fgCtx.fillRect(colX + colW - 1, colTopY, 1, colBotY - colTopY)
     }
 
     // Helper: draw a platform slab with top highlight and drop shadow
@@ -335,6 +352,12 @@
       // Body
       fgCtx.fillStyle = color
       fgCtx.fillRect(x, y, w, h)
+
+      // Subtle panel seam lines across the platform
+      for (let lx = x + TS * 8; lx < x + w; lx += TS * 12) {
+        fgCtx.fillStyle = 'rgba(0, 0, 0, 0.12)'
+        fgCtx.fillRect(lx, y, 1, h)
+      }
 
       // Top highlight
       fgCtx.fillStyle = 'rgba(140, 170, 200, 0.3)'
@@ -386,6 +409,18 @@
       (BASEMENT_BOT - BASEMENT_TOP + 1) * TS,
       '#33384a',
     )
+
+    // --- Foundation base ring at dome base level ---
+    const foundationY = DOME_BASE * TS
+    const foundationH = 3 * TS  // 3 tiles tall
+    fgCtx.fillStyle = '#3a3e48'
+    fgCtx.fillRect(DOME_LEFT * TS, foundationY, (DOME_RIGHT - DOME_LEFT) * TS, foundationH)
+    // Top highlight
+    fgCtx.fillStyle = 'rgba(160, 180, 200, 0.3)'
+    fgCtx.fillRect(DOME_LEFT * TS, foundationY, (DOME_RIGHT - DOME_LEFT) * TS, 1)
+    // Bottom edge
+    fgCtx.fillStyle = 'rgba(0, 0, 0, 0.3)'
+    fgCtx.fillRect(DOME_LEFT * TS, foundationY + foundationH - 1, (DOME_RIGHT - DOME_LEFT) * TS, 1)
   }
 
   /**
@@ -395,20 +430,22 @@
   function renderStaticLayers(): void {
     // --- bg offscreen ---
     const bgCanvas = document.createElement('canvas')
-    bgCanvas.width = CANVAS_W
-    bgCanvas.height = CANVAS_H
+    bgCanvas.width = CANVAS_W * RENDER_SCALE
+    bgCanvas.height = CANVAS_H * RENDER_SCALE
     const bgCtx = bgCanvas.getContext('2d')
     if (bgCtx) {
+      bgCtx.scale(RENDER_SCALE, RENDER_SCALE)
       drawProceduralBg(bgCtx)
     }
     bgLayerCanvas = bgCanvas
 
     // --- fg offscreen ---
     const fgCanvas = document.createElement('canvas')
-    fgCanvas.width = CANVAS_W
-    fgCanvas.height = CANVAS_H
+    fgCanvas.width = CANVAS_W * RENDER_SCALE
+    fgCanvas.height = CANVAS_H * RENDER_SCALE
     const fgCtx = fgCanvas.getContext('2d')
     if (fgCtx) {
+      fgCtx.scale(RENDER_SCALE, RENDER_SCALE)
       drawProceduralFg(fgCtx)
     }
     fgLayerCanvas = fgCanvas
@@ -463,6 +500,21 @@
       const py = obj.gridY * TILE_SIZE
       const pw = obj.gridW * TILE_SIZE
       const ph = obj.gridH * TILE_SIZE
+
+      // Shadow beneath object (visual grounding) — skip for dive_hatch which is flush with the floor
+      if (obj.id !== 'dive_hatch') {
+        const shadowW = pw * 0.7
+        const shadowH = ph * 0.15
+        const shadowX = px + (pw - shadowW) / 2
+        const shadowY = py + ph - shadowH * 0.5  // sits at the bottom of the object
+
+        ctx.save()
+        ctx.beginPath()
+        ctx.ellipse(shadowX + shadowW / 2, shadowY + shadowH / 2, shadowW / 2, shadowH / 2, 0, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)'
+        ctx.fill()
+        ctx.restore()
+      }
 
       const isTapped = tappedId === obj.id
 
@@ -558,10 +610,13 @@
 
     dirty = false
 
+    // Reset and apply render scale each frame so all coordinate math stays in 768×512 space
+    ctx.setTransform(RENDER_SCALE, 0, 0, RENDER_SCALE, 0, 0)
+
     if (bgLayerCanvas && fgLayerCanvas) {
       // Fast path: composite pre-rendered static layers
-      ctx.drawImage(bgLayerCanvas, 0, 0)
-      ctx.drawImage(fgLayerCanvas, 0, 0)
+      ctx.drawImage(bgLayerCanvas, 0, 0, CANVAS_W, CANVAS_H)
+      ctx.drawImage(fgLayerCanvas, 0, 0, CANVAS_W, CANVAS_H)
     } else {
       // Fallback before offscreen canvases are ready
       ctx.fillStyle = '#0b0b1e'
@@ -570,10 +625,10 @@
 
     // Ambient light pools under ceiling lights
     const lightPositions = [
-      { x: 45, y: 27 },
-      { x: 89, y: 21 },
-      { x: 105, y: 21 },
-      { x: 155, y: 27 },
+      { x: 45, y: 26 },
+      { x: 88, y: 20 },
+      { x: 105, y: 20 },
+      { x: 155, y: 26 },
     ]
     for (const light of lightPositions) {
       const px = light.x * TILE_SIZE
@@ -602,6 +657,11 @@
     vigGrad.addColorStop(1, 'rgba(0,0,0,0.2)')
     ctx.fillStyle = vigGrad
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
+
+    // Dev grid overlay — drawn last so it sits on top of everything
+    if (showDevGrid) {
+      drawDevGrid(ctx)
+    }
   }
 
   /**
@@ -610,6 +670,114 @@
   function loop(): void {
     render()
     rafId = requestAnimationFrame(loop)
+  }
+
+  // ---------------------------------------------------------------------------
+  // Dev grid overlay
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Toggle the developer grid overlay on/off and mark the canvas dirty so it
+   * re-renders immediately.
+   */
+  function toggleDevGrid(): void {
+    showDevGrid = !showDevGrid
+    dirty = true
+  }
+
+  /**
+   * Draw a diagnostic overlay onto the canvas that shows:
+   *  - Major grid lines every 8 tiles (32px logical)
+   *  - Platform edge highlights at key structural rows
+   *  - Bounding boxes around all interactive objects
+   *  - Grid coordinate labels every 16 tiles
+   *  - The mathematical dome ellipse boundary
+   *
+   * Coordinates are in the 768×512 logical pixel space (TILE_SIZE = 4px per tile).
+   */
+  function drawDevGrid(ctx: CanvasRenderingContext2D): void {
+    // --- Major grid lines every 8 tiles (32px) ---
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)'
+    ctx.lineWidth = 0.5
+
+    // Vertical lines
+    for (let col = 0; col <= DOME_WIDTH; col += 8) {
+      const x = col * TILE_SIZE
+      ctx.beginPath()
+      ctx.moveTo(x, 0)
+      ctx.lineTo(x, CANVAS_H)
+      ctx.stroke()
+    }
+
+    // Horizontal lines
+    for (let row = 0; row <= DOME_HEIGHT; row += 8) {
+      const y = row * TILE_SIZE
+      ctx.beginPath()
+      ctx.moveTo(0, y)
+      ctx.lineTo(CANVAS_W, y)
+      ctx.stroke()
+    }
+
+    // --- Platform edge highlights ---
+    // Upper catwalks top row
+    ctx.strokeStyle = 'rgba(0, 200, 255, 0.4)'
+    ctx.lineWidth = 1
+    ctx.beginPath()
+    ctx.moveTo(0, UPPER_CATWALK_TOP * TILE_SIZE)
+    ctx.lineTo(CANVAS_W, UPPER_CATWALK_TOP * TILE_SIZE)
+    ctx.stroke()
+
+    // Main floor top row
+    ctx.strokeStyle = 'rgba(0, 255, 100, 0.4)'
+    ctx.beginPath()
+    ctx.moveTo(0, MAIN_FLOOR_TOP * TILE_SIZE)
+    ctx.lineTo(CANVAS_W, MAIN_FLOOR_TOP * TILE_SIZE)
+    ctx.stroke()
+
+    // Basement top row
+    ctx.strokeStyle = 'rgba(255, 200, 0, 0.4)'
+    ctx.beginPath()
+    ctx.moveTo(0, BASEMENT_TOP * TILE_SIZE)
+    ctx.lineTo(CANVAS_W, BASEMENT_TOP * TILE_SIZE)
+    ctx.stroke()
+
+    // --- Object bounding boxes ---
+    ctx.strokeStyle = 'rgba(255, 100, 100, 0.5)'
+    ctx.lineWidth = 1
+    for (const obj of layout.objects) {
+      ctx.strokeRect(
+        obj.gridX * TILE_SIZE,
+        obj.gridY * TILE_SIZE,
+        obj.gridW * TILE_SIZE,
+        obj.gridH * TILE_SIZE,
+      )
+    }
+
+    // --- Grid coordinate labels every 16 tiles ---
+    ctx.font = '6px monospace'
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
+    ctx.textAlign = 'left'
+    ctx.textBaseline = 'top'
+    for (let col = 0; col <= DOME_WIDTH; col += 16) {
+      for (let row = 0; row <= DOME_HEIGHT; row += 16) {
+        ctx.fillText(`${col},${row}`, col * TILE_SIZE + 1, row * TILE_SIZE + 7)
+      }
+    }
+
+    // --- Dome ellipse outline (mathematical boundary) ---
+    ctx.beginPath()
+    ctx.ellipse(
+      DOME_CX * TILE_SIZE,
+      DOME_BASE * TILE_SIZE,
+      DOME_A * TILE_SIZE,
+      DOME_B * TILE_SIZE,
+      0,
+      Math.PI,
+      0,
+    )
+    ctx.strokeStyle = 'rgba(255, 0, 255, 0.3)'
+    ctx.lineWidth = 1
+    ctx.stroke()
   }
 
   // ---------------------------------------------------------------------------
@@ -625,16 +793,17 @@
     if (!canvas) return { gridX: -1, gridY: -1 }
 
     const rect = canvas.getBoundingClientRect()
-    // canvas.width / rect.width gives the CSS-to-internal-pixel scale
+    // canvas.width / rect.width gives the CSS-to-internal-pixel scale (includes RENDER_SCALE)
     const scaleX = canvas.width / rect.width
     const scaleY = canvas.height / rect.height
 
+    // canvasPx is in the 1536-pixel space; divide by RENDER_SCALE to get logical 768-space coords
     const canvasPx = (clientX - rect.left) * scaleX
     const canvasPy = (clientY - rect.top) * scaleY
 
     return {
-      gridX: Math.floor(canvasPx / TILE_SIZE),
-      gridY: Math.floor(canvasPy / TILE_SIZE),
+      gridX: Math.floor(canvasPx / (TILE_SIZE * RENDER_SCALE)),
+      gridY: Math.floor(canvasPy / (TILE_SIZE * RENDER_SCALE)),
     }
   }
 
@@ -723,9 +892,17 @@
     const canvas = canvasEl
     if (!canvas) return
 
-    // Set internal canvas resolution to the full grid pixel size (1:1 pixel art)
-    canvas.width = CANVAS_W
-    canvas.height = CANVAS_H
+    // Set internal canvas resolution to 2× the logical grid size for sharper rendering
+    canvas.width = CANVAS_W * RENDER_SCALE   // 1536
+    canvas.height = CANVAS_H * RENDER_SCALE  // 1024
+
+    // Keyboard shortcut: press 'G' to toggle the dev grid overlay
+    function handleKeyDown(e: KeyboardEvent): void {
+      if (e.key === 'g' || e.key === 'G') {
+        toggleDevGrid()
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
 
     // Attach event listeners
     canvas.addEventListener('pointermove', handlePointerMove)
@@ -753,6 +930,7 @@
         cancelAnimationFrame(rafId)
         rafId = null
       }
+      document.removeEventListener('keydown', handleKeyDown)
       canvas.removeEventListener('pointermove', handlePointerMove)
       canvas.removeEventListener('pointerleave', handlePointerLeave)
       canvas.removeEventListener('click', handleClick)
@@ -804,7 +982,7 @@
 <div class="dome-canvas-container" bind:this={containerEl}>
   <canvas
     bind:this={canvasEl}
-    style="transform: translate(-50%, -50%) scale({cssScale});"
+    style="width: {CANVAS_W}px; height: {CANVAS_H}px; transform: translate(-50%, -50%) scale({cssScale});"
     aria-label="Dome hub — tap an object to explore a room"
   ></canvas>
 </div>
@@ -827,7 +1005,6 @@
     /* transform is set inline: translate(-50%, -50%) scale(cssScale) */
     transform-origin: center center;
     pointer-events: auto;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+    image-rendering: auto;
   }
 </style>
