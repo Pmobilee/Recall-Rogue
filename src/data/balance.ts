@@ -277,6 +277,9 @@ export function getLayerGridSize(layer: number): [number, number] {
   return [40, 40];
 }
 
+// ---- Consumable Drop Chance (DD-V2-064) ----
+export const CONSUMABLE_DROP_CHANCE = 0.04  // 4% chance per block broken
+
 // ---- Hazard Damage Constants (DD-V2-060/062) ----
 export const BASE_LAVA_HAZARD_DAMAGE = 20
 export const BASE_GAS_HAZARD_DAMAGE = 5

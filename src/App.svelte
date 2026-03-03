@@ -236,6 +236,10 @@
     gm.useBomb()
   }
 
+  function handleUseConsumable(id: import('./data/consumables').ConsumableId): void {
+    gm.applyConsumable(id)
+  }
+
   // Quiz actions
   function handleQuizAnswer(correct: boolean): void {
     if (quizMode === 'gate') {
@@ -366,6 +370,7 @@
       onOpenBackpack={handleOpenBackpack}
       onOpenRunStats={handleOpenRunStats}
       onUseBomb={handleUseBomb}
+      onUseConsumable={handleUseConsumable}
     />
     <MiniMap />
 
@@ -376,6 +381,7 @@
         onOpenBackpack={handleOpenBackpack}
         onOpenRunStats={handleOpenRunStats}
         onUseBomb={handleUseBomb}
+        onUseConsumable={handleUseConsumable}
       />
     {/if}
     <QuizOverlay
@@ -394,6 +400,7 @@
       onOpenBackpack={handleOpenBackpack}
       onOpenRunStats={handleOpenRunStats}
       onUseBomb={handleUseBomb}
+      onUseConsumable={handleUseConsumable}
     />
     <BackpackOverlay
       slots={$inventory}
@@ -407,6 +414,7 @@
       onOpenBackpack={handleOpenBackpack}
       onOpenRunStats={handleOpenRunStats}
       onUseBomb={handleUseBomb}
+      onUseConsumable={handleUseConsumable}
     />
     <RunStatsOverlay
       blocksMined={$blocksMinedLive}

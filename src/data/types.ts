@@ -100,6 +100,8 @@ export enum BlockType {
   OxygenTank = 23,
   DataDisc = 24,
   FossilNode = 25,
+  Chest = 26,
+  Tablet = 27,
   Unbreakable = 99,
 }
 

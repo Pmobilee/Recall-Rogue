@@ -3,6 +3,59 @@ import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
+import type { ConsumableId } from '../../data/consumables'
+
+export interface ConsumableSlot {
+  id: ConsumableId
+  count: number
+}
+
+/** Active consumables carried during current dive */
+export const activeConsumables = writable<ConsumableSlot[]>([])
+
+/** Shield charge active flag — absorbs next hazard hit */
+export const shieldActive = writable<boolean>(false)
+
+/** Pending consumables for pre-dive loadout (stub for Phase 8.11) */
+export const pendingConsumables = writable<ConsumableSlot[]>([])
+
+/**
+ * Add a consumable to the active dive inventory.
+ * Returns true if added, false if carry limit reached.
+ */
+export function addConsumableToDive(id: ConsumableId): boolean {
+  let added = false
+  activeConsumables.update(slots => {
+    const total = slots.reduce((sum, s) => sum + s.count, 0)
+    if (total >= 5) return slots // CONSUMABLE_CARRY_LIMIT
+    const existing = slots.find(s => s.id === id)
+    if (existing) {
+      added = true
+      return slots.map(s => s.id === id ? { ...s, count: s.count + 1 } : s)
+    }
+    added = true
+    return [...slots, { id, count: 1 }]
+  })
+  return added
+}
+
+/**
+ * Use a consumable from the active dive inventory.
+ * Returns true if used, false if not in inventory.
+ */
+export function useConsumableFromDive(id: ConsumableId): boolean {
+  let used = false
+  activeConsumables.update(slots => {
+    const slot = slots.find(s => s.id === id)
+    if (!slot || slot.count <= 0) return slots
+    used = true
+    if (slot.count === 1) {
+      return slots.filter(s => s.id !== id)
+    }
+    return slots.map(s => s.id === id ? { ...s, count: s.count - 1 } : s)
+  })
+  return used
+}
 
 /** All top-level UI screens used by routing state. */
 export type Screen =

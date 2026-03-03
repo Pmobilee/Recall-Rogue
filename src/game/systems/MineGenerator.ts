@@ -1,6 +1,7 @@
 import { BALANCE, getLayerGridSize } from '../../data/balance'
 import { BlockType, type MineCell, type Rarity } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
+import { LANDMARK_LAYERS, LANDMARK_TEMPLATES, getLandmarkIdForLayer, type LandmarkTemplate } from '../../data/landmarks'
 
 /**
  * Creates a deterministic pseudo-random number generator from a numeric seed.
@@ -44,6 +45,61 @@ function getBlockWeightsForLayer(layer: number): {
     artifactNode: lerp(0.01, 0.06, depth),
     fossilNode:  lerp(0.01, 0.03, depth),
   };
+}
+
+/**
+ * Stamps a landmark template into the center of the mine grid.
+ * Returns the resolved spawn (S) position.
+ * All ASCII characters map to BlockType values; 'S' becomes Empty and records spawn coords.
+ * (DD-V2-055)
+ */
+function stampLandmark(
+  template: LandmarkTemplate,
+  grid: MineCell[][],
+  width: number,
+  height: number
+): { spawnX: number; spawnY: number } {
+  const tRows = template.grid
+  const tH = tRows.length
+  const tW = Math.max(...tRows.map(r => r.length))
+  const offsetX = Math.floor((width - tW) / 2)
+  const offsetY = Math.floor((height - tH) / 2)
+
+  let spawnX = offsetX + 1
+  let spawnY = offsetY + 1
+
+  const ASCII_MAP: Record<string, BlockType> = {
+    ' ': BlockType.Empty,
+    '#': BlockType.HardRock,
+    'L': BlockType.LavaBlock,
+    'G': BlockType.GasPocket,
+    'C': BlockType.Chest,
+    'T': BlockType.Tablet,
+    'M': BlockType.MineralNode,
+    'E': BlockType.Empty,
+    'S': BlockType.Empty,
+    'D': BlockType.DescentShaft,
+  }
+
+  for (let row = 0; row < tH; row++) {
+    for (let col = 0; col < tRows[row].length; col++) {
+      const ch = tRows[row][col]
+      const gx = offsetX + col
+      const gy = offsetY + row
+      if (gx < 0 || gx >= width || gy < 0 || gy >= height) continue
+      if (ch === 'S') { spawnX = gx; spawnY = gy }
+      const blockType = ASCII_MAP[ch] ?? BlockType.Empty
+      const hardness = getHardness(blockType)
+      grid[gy][gx] = {
+        type: blockType,
+        hardness,
+        maxHardness: hardness,
+        revealed: false,
+      }
+    }
+  }
+
+  return { spawnX, spawnY }
 }
 
 /**
@@ -94,6 +150,24 @@ export function generateMine(
     }
 
     grid.push(row)
+  }
+
+  // Landmark layer check — stamps a pre-designed template instead of procedural generation (DD-V2-055)
+  const landmarkId = getLandmarkIdForLayer(oneIndexedLayer)
+  if (landmarkId) {
+    const template = LANDMARK_TEMPLATES[landmarkId]
+    const { spawnX: lSpawnX, spawnY: lSpawnY } = stampLandmark(template, grid, width, height)
+    // Reveal spawn area
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const cx = lSpawnX + dx
+        const cy = lSpawnY + dy
+        if (cx >= 0 && cx < width && cy >= 0 && cy < height) {
+          grid[cy][cx].revealed = true
+        }
+      }
+    }
+    return { grid, spawnX: lSpawnX, spawnY: lSpawnY, biome }
   }
 
   // Layer 1 spawn (layer === 0): top-center, 3x3 clear area.
@@ -455,6 +529,10 @@ function getHardness(type: BlockType): number {
       return 0
     case BlockType.DescentShaft:
       return 1
+    case BlockType.Chest:
+      return 3
+    case BlockType.Tablet:
+      return 2
     case BlockType.Unbreakable:
       return 999
     default:

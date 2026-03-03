@@ -27,7 +27,10 @@ import { ImpactSystem } from '../systems/ImpactSystem'
 import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 import { TickSystem } from '../systems/TickSystem'
 import { HazardSystem } from '../systems/HazardSystem'
-import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier } from '../../data/balance'
+import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, CONSUMABLE_DROP_CHANCE } from '../../data/balance'
+import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
+import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive } from '../../ui/stores/gameState'
+import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -53,6 +56,8 @@ const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.OxygenTank]: 0x00ccaa,
   [BlockType.DataDisc]: 0x22aacc,
   [BlockType.FossilNode]: 0xd4a574,
+  [BlockType.Chest]: 0xffd700,        // gold
+  [BlockType.Tablet]: 0x8888cc,       // blue-purple
   [BlockType.Unbreakable]: 0x2c2c2c,
 }
 
@@ -132,6 +137,8 @@ export class MineScene extends Phaser.Scene {
   public companionFlash: boolean = false
   /** Active hazard manager — lava flows and gas clouds. Initialized in create(). */
   private hazardSystem: HazardSystem | null = null
+  /** Tracks the last direction the player moved/mined, used for Drill Charge. */
+  private playerFacing: 'up' | 'down' | 'left' | 'right' = 'down'
 
   constructor() {
     super({ key: 'MineScene' })
@@ -319,6 +326,9 @@ export class MineScene extends Phaser.Scene {
       inventorySlots: this.inventorySlots,
       layer: this.currentLayer,
     })
+
+    // Handle landmark-specific entry effects (toasts, hazard activation). (DD-V2-055)
+    this.handleLandmarkEntry()
   }
 
   /**
@@ -496,6 +506,26 @@ export class MineScene extends Phaser.Scene {
       case BlockType.FossilNode: {
         const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, this.time.now, this.textures)
         this.getPooledSprite(animKey ?? 'block_fossil', cx, cy)
+        break
+      }
+      case BlockType.Chest: {
+        const g = this.tileGraphics
+        g.fillStyle(0xffd700)
+        g.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+        // Inner detail — darker gold band across center
+        g.fillStyle(0xcc9900)
+        g.fillRect(px + 4, py + TILE_SIZE / 2 - 1, TILE_SIZE - 8, 2)
+        break
+      }
+      case BlockType.Tablet: {
+        const g = this.tileGraphics
+        g.fillStyle(0x8888cc)
+        g.fillRect(px + 3, py + 1, TILE_SIZE - 6, TILE_SIZE - 2)
+        // Inscription lines
+        g.fillStyle(0xaaaaee)
+        g.fillRect(px + 5, py + 3, TILE_SIZE - 10, 1)
+        g.fillRect(px + 5, py + 6, TILE_SIZE - 10, 1)
+        g.fillRect(px + 5, py + 9, TILE_SIZE - 12, 1)
         break
       }
       default:
@@ -1113,6 +1143,14 @@ export class MineScene extends Phaser.Scene {
     const playerY = this.player.gridY
     const targetCell = this.grid[targetY][targetX]
 
+    // Track facing direction for Drill Charge
+    const dx = targetX - playerX
+    const dy = targetY - playerY
+    if (dx > 0) this.playerFacing = 'right'
+    else if (dx < 0) this.playerFacing = 'left'
+    else if (dy > 0) this.playerFacing = 'down'
+    else if (dy < 0) this.playerFacing = 'up'
+
     if (targetCell.type === BlockType.Empty || targetCell.type === BlockType.ExitLadder) {
       const isExitLadder = targetCell.type === BlockType.ExitLadder
       const moved = this.player.moveToEmpty(targetX, targetY, this.grid)
@@ -1290,6 +1328,15 @@ export class MineScene extends Phaser.Scene {
     if (mineResult.destroyed) {
       this.spawnBreakParticles(targetX * TILE_SIZE, targetY * TILE_SIZE, blockType)
       audioManager.playSound('mine_break')
+
+      // Consumable drop chance (DD-V2-064)
+      if (Math.random() < CONSUMABLE_DROP_CHANCE) {
+        const dropped = ALL_CONSUMABLE_IDS[Math.floor(Math.random() * ALL_CONSUMABLE_IDS.length)]
+        const added = addConsumableToDive(dropped)
+        if (added) {
+          this.game.events.emit('gaia-toast', `Found: ${CONSUMABLE_DEFS[dropped].label}`)
+        }
+      }
 
       // Random quiz: only on plain terrain blocks, after at least RANDOM_QUIZ_MIN_BLOCKS mined,
       // and only when not already paused (no nested quizzes).
@@ -1558,6 +1605,8 @@ export class MineScene extends Phaser.Scene {
             BlockType.UnstableGround,
             BlockType.OxygenTank,
             BlockType.FossilNode,
+            BlockType.Chest,
+            BlockType.Tablet,
             BlockType.Unbreakable,
           ])
           const terrainTypes = new Set<BlockType>([
@@ -1630,6 +1679,18 @@ export class MineScene extends Phaser.Scene {
           })
           // Early return: do NOT move the player or proceed with normal mine logic.
           return
+        }
+        case BlockType.Chest: {
+          // Treasure chest opened — award bonus minerals based on current layer. (DD-V2-055)
+          this.game.events.emit('chest-opened', { layer: this.currentLayer })
+          audioManager.playSound('collect')
+          break
+        }
+        case BlockType.Tablet: {
+          // Stone tablet found — trigger a discovery quiz. (DD-V2-055)
+          this.isPaused = true
+          this.game.events.emit('random-quiz')
+          break
         }
         default:
           break
@@ -2589,6 +2650,181 @@ export class MineScene extends Phaser.Scene {
         hardness: 0,
         maxHardness: 0,
         revealed: true,
+      }
+    }
+  }
+
+  /**
+   * Apply a consumable tool effect. (DD-V2-064)
+   */
+  public applyConsumable(id: ConsumableId): void {
+    const used = useConsumableFromDive(id)
+    if (!used) return
+
+    switch (id) {
+      case 'bomb':
+        this.applyBomb()
+        break
+      case 'flare':
+        this.applyFlare()
+        break
+      case 'shield_charge':
+        shieldActive.set(true)
+        this.game.events.emit('gaia-toast', 'Shield active — next hazard blocked.')
+        break
+      case 'drill_charge':
+        this.applyDrillCharge()
+        break
+      case 'sonar_pulse':
+        this.applySonarPulse()
+        break
+    }
+  }
+
+  /** Bomb: clear 3x3 area around player */
+  private applyBomb(): void {
+    const cx = this.player.gridX
+    const cy = this.player.gridY
+    let cleared = 0
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const nx = cx + dx
+        const ny = cy + dy
+        if (nx < 0 || ny < 0 || nx >= this.grid[0].length || ny >= this.grid.length) continue
+        const cell = this.grid[ny][nx]
+        if (cell.type !== BlockType.Empty && cell.type !== BlockType.Unbreakable &&
+            cell.type !== BlockType.ExitLadder && cell.type !== BlockType.DescentShaft) {
+          this.grid[ny][nx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
+          cleared++
+        }
+      }
+    }
+    revealAround(this.grid, cx, cy, BALANCE.FOG_REVEAL_RADIUS)
+    TickSystem.getInstance().advance()
+    tickCount.set(TickSystem.getInstance().getTick())
+    layerTickCount.set(TickSystem.getInstance().getLayerTick())
+    this.redrawAll()
+    this.game.events.emit('gaia-toast', `Bomb detonated — ${cleared} blocks cleared.`)
+  }
+
+  /** Flare: reveal 7x7 area */
+  private applyFlare(): void {
+    const cx = this.player.gridX
+    const cy = this.player.gridY
+    const width = this.grid[0].length
+    const height = this.grid.length
+    for (let dy = -3; dy <= 3; dy++) {
+      for (let dx = -3; dx <= 3; dx++) {
+        const nx = cx + dx
+        const ny = cy + dy
+        if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+          this.grid[ny][nx].revealed = true
+        }
+      }
+    }
+    TickSystem.getInstance().advance()
+    tickCount.set(TickSystem.getInstance().getTick())
+    layerTickCount.set(TickSystem.getInstance().getLayerTick())
+    this.redrawAll()
+    this.game.events.emit('gaia-toast', 'Flare deployed — 7×7 area revealed.')
+  }
+
+  /** Drill Charge: mine 5 blocks in facing direction */
+  private applyDrillCharge(): void {
+    const dirMap: Record<string, [number, number]> = {
+      up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0],
+    }
+    const [ddx, ddy] = dirMap[this.playerFacing]
+    let mined = 0
+    let cx = this.player.gridX
+    let cy = this.player.gridY
+    const width = this.grid[0].length
+    const height = this.grid.length
+    while (mined < 5) {
+      cx += ddx
+      cy += ddy
+      if (cx < 0 || cy < 0 || cx >= width || cy >= height) break
+      const cell = this.grid[cy][cx]
+      if (cell.type === BlockType.Unbreakable) break
+      if (cell.type !== BlockType.Empty) {
+        this.grid[cy][cx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
+        mined++
+      }
+    }
+    revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
+    TickSystem.getInstance().advance()
+    tickCount.set(TickSystem.getInstance().getTick())
+    layerTickCount.set(TickSystem.getInstance().getLayerTick())
+    this.redrawAll()
+    this.game.events.emit('gaia-toast', `Drill Charge — ${mined} blocks bored through.`)
+  }
+
+  /** Sonar Pulse: highlight minerals within 10 Manhattan distance */
+  private applySonarPulse(): void {
+    const cx = this.player.gridX
+    const cy = this.player.gridY
+    const width = this.grid[0].length
+    const height = this.grid.length
+    let revealed = 0
+    for (let dy = -10; dy <= 10; dy++) {
+      for (let dx = -10; dx <= 10; dx++) {
+        if (Math.abs(dx) + Math.abs(dy) > 10) continue
+        const nx = cx + dx
+        const ny = cy + dy
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue
+        const cell = this.grid[ny][nx]
+        if (cell.type === BlockType.MineralNode || cell.type === BlockType.ArtifactNode ||
+            cell.type === BlockType.FossilNode) {
+          cell.revealed = true
+          revealed++
+        }
+      }
+    }
+    TickSystem.getInstance().advance()
+    tickCount.set(TickSystem.getInstance().getTick())
+    layerTickCount.set(TickSystem.getInstance().getLayerTick())
+    this.redrawAll()
+    this.game.events.emit('gaia-toast', `Sonar Pulse — ${revealed} nodes detected.`)
+  }
+
+  /**
+   * Called after mine generation to handle landmark-specific entry effects. (DD-V2-055)
+   * Emits GAIA toast messages and activates hazards present in the landmark template.
+   */
+  private handleLandmarkEntry(): void {
+    const oneIndexedLayer = this.currentLayer + 1
+    const landmarkId = getLandmarkIdForLayer(oneIndexedLayer)
+    if (!landmarkId) return
+
+    switch (landmarkId) {
+      case 'gauntlet':
+        this.game.events.emit('gaia-toast', 'GAUNTLET — Multiple active hazards detected. Survive.')
+        // Activate all lava and gas cells in the stamped grid
+        for (let y = 0; y < this.grid.length; y++) {
+          for (let x = 0; x < this.grid[0].length; x++) {
+            if (this.grid[y][x].type === BlockType.LavaBlock) {
+              this.hazardSystem?.spawnLava(x, y)
+            }
+            if (this.grid[y][x].type === BlockType.GasPocket) {
+              this.hazardSystem?.spawnGas(x, y)
+            }
+          }
+        }
+        break
+      case 'treasure_vault':
+        this.game.events.emit('gaia-toast', 'Treasure Vault — Elevated mineral density detected. A chest lies within.')
+        break
+      case 'ancient_archive':
+        this.game.events.emit('gaia-toast', 'Ancient Archive — Stone tablets detected. Approach to learn.')
+        break
+      case 'completion_event': {
+        const event = COMPLETION_EVENTS[Math.floor(Math.random() * COMPLETION_EVENTS.length)]
+        this.game.events.emit('gaia-toast', `DEPTH RECORD — ${event.title}`)
+        // Show monologue after a delay
+        setTimeout(() => {
+          this.game.events.emit('gaia-toast', event.gaiaMonologue)
+        }, 3000)
+        break
       }
     }
   }

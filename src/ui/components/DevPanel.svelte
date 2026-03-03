@@ -5,7 +5,7 @@
   import { deleteSave } from '../../services/saveService'
   import { factsDB } from '../../services/factsDB'
   import { GameManager } from '../../game/GameManager'
-  import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen } from '../stores/gameState'
+  import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen, addConsumableToDive } from '../stores/gameState'
   import {
     addLearnedFact,
     addMinerals,
@@ -242,6 +242,32 @@
 
   // ─── Section 5: Navigation ────────────────────────────────────
 
+  function jumpToLayer(targetLayer1Indexed: number): void {
+    // Ensure at least 1 O2 tank exists for the dive
+    const save = get(playerSave)
+    if (save && save.oxygen < 1) {
+      playerSave.update(s => s ? { ...s, oxygen: 1 } : s)
+      persistPlayer()
+    }
+    // Start MineScene at the target layer (0-indexed)
+    const g = gm.getGame()
+    if (g) {
+      g.scene.stop('MineScene')
+      g.scene.start('MineScene', {
+        seed: Date.now(),
+        oxygenTanks: 3,
+        inventorySlots: 6,
+        facts: [],
+        layer: targetLayer1Indexed - 1,
+        inventory: [],
+        blocksMinedThisRun: 0,
+        artifactsFound: [],
+      })
+      currentScreen.set('mining')
+    }
+    open = false
+  }
+
   function quickDive(): void {
     // Ensure at least 1 O2 tank exists
     const save = get(playerSave)
@@ -358,6 +384,17 @@
             />
             <button class="btn-give" type="button" onclick={giveCustomAmount}>Give</button>
           </div>
+          <!-- Consumables (Phase 8.6) -->
+          <div style="margin-top:6px">
+            <span style="font-size:0.72rem;opacity:0.65">Consumables (dive only):</span>
+            <div class="btn-grid" style="margin-top:4px">
+              <button class="btn-give" data-testid="dev-add-consumable-bomb" type="button" onclick={() => { addConsumableToDive('bomb') }}>+Bomb</button>
+              <button class="btn-give" data-testid="dev-add-consumable-flare" type="button" onclick={() => { addConsumableToDive('flare') }}>+Flare</button>
+              <button class="btn-give" data-testid="dev-add-consumable-shield" type="button" onclick={() => { addConsumableToDive('shield_charge') }}>+Shield</button>
+              <button class="btn-give" data-testid="dev-add-consumable-drill" type="button" onclick={() => { addConsumableToDive('drill_charge') }}>+Drill</button>
+              <button class="btn-give" data-testid="dev-add-consumable-sonar" type="button" onclick={() => { addConsumableToDive('sonar_pulse') }}>+Sonar</button>
+            </div>
+          </div>
         </div>
       {/if}
     </section>
@@ -456,6 +493,22 @@
       {#if sectionsOpen.navigation}
         <div class="section-body">
           <button class="btn-nav btn-wide" type="button" onclick={quickDive}>Quick Dive (with O2)</button>
+          <div>
+            <label style="font-size:11px;color:#aaa;">Jump to Layer:
+              <input
+                type="number"
+                min="1"
+                max="20"
+                value="5"
+                data-testid="dev-set-layer"
+                style="width:50px;margin-left:6px;"
+                onchange={(e) => {
+                  const val = parseInt((e.currentTarget as HTMLInputElement).value)
+                  if (val >= 1 && val <= 20) jumpToLayer(val)
+                }}
+              />
+            </label>
+          </div>
           <div class="btn-grid">
             {#each NAV_SCREENS as nav (nav.screen)}
               <button class="btn-nav" type="button" onclick={() => goTo(nav.screen)}>

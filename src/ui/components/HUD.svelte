@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { activeRelics, activeSynergies, activeUpgrades, pickaxeTier, scannerTier, currentBiome, currentDepth, currentLayer, inventory, oxygenCurrent, oxygenMax, pastPointOfNoReturn, activeCompanion, companionBadgeFlash, o2DepthMultiplier } from '../stores/gameState'
+  import { activeRelics, activeSynergies, activeUpgrades, pickaxeTier, scannerTier, currentBiome, currentDepth, currentLayer, inventory, oxygenCurrent, oxygenMax, pastPointOfNoReturn, activeCompanion, companionBadgeFlash, o2DepthMultiplier, activeConsumables } from '../stores/gameState'
   import { BALANCE } from '../../data/balance'
+  import { CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
   import GaiaToast from './GaiaToast.svelte'
 
   interface Props {
@@ -8,9 +9,21 @@
     onOpenBackpack?: () => void
     onOpenRunStats?: () => void
     onUseBomb?: () => void
+    onUseConsumable?: (id: ConsumableId) => void
   }
 
-  let { onSurface, onOpenBackpack, onOpenRunStats, onUseBomb }: Props = $props()
+  let { onSurface, onOpenBackpack, onOpenRunStats, onUseBomb, onUseConsumable }: Props = $props()
+
+  function getConsumableEmoji(id: ConsumableId): string {
+    switch (id) {
+      case 'bomb': return '💣'
+      case 'flare': return '🔦'
+      case 'shield_charge': return '🛡️'
+      case 'drill_charge': return '⛏️'
+      case 'sonar_pulse': return '📡'
+      default: return '?'
+    }
+  }
 
   let showSurfaceConfirm = $state(false)
 
@@ -208,6 +221,24 @@
       <span class="bomb-icon">B</span>
       <span class="bomb-count">{bombCount}</span>
     </button>
+  {/if}
+
+  {#if $activeConsumables.length > 0}
+    <div class="consumable-bar" data-testid="consumable-bar">
+      {#each $activeConsumables as slot}
+        <button
+          class="consumable-slot"
+          title={CONSUMABLE_DEFS[slot.id].description}
+          type="button"
+          onclick={() => onUseConsumable?.(slot.id)}
+        >
+          <span class="consumable-icon">{getConsumableEmoji(slot.id)}</span>
+          {#if slot.count > 1}
+            <span class="consumable-count">×{slot.count}</span>
+          {/if}
+        </button>
+      {/each}
+    </div>
   {/if}
 
   {#if upgradeToast}
@@ -667,5 +698,48 @@
     max-width: 10rem;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .consumable-bar {
+    display: flex;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
+  }
+
+  .consumable-slot {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    touch-action: manipulation;
+    min-height: 44px;
+  }
+
+  .consumable-slot:active {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .consumable-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .consumable-count {
+    font-size: 11px;
+    opacity: 0.8;
   }
 </style>

@@ -37,6 +37,8 @@ import {
   scannerTier,
   activeCompanion,
   companionBadgeFlash,
+  activeConsumables,
+  shieldActive,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -645,6 +647,12 @@ export class GameManager {
 
     // ---- Hazard contact events (Phase 8.3) ----
     events.on('hazard-lava-contact', () => {
+      // Shield charge interception: absorb the hit if shield is active (DD-V2-064)
+      if (get(shieldActive)) {
+        shieldActive.set(false)
+        gaiaMessage.set('Shield absorbed the hit — charge depleted.')
+        return
+      }
       // Apply lava damage — drain O2 and trigger GAIA commentary (DD-V2-060)
       const damage = BASE_LAVA_HAZARD_DAMAGE
       oxygenCurrent.update(o => Math.max(0, o - damage))
@@ -652,9 +660,29 @@ export class GameManager {
     })
 
     events.on('hazard-gas-contact', () => {
+      // Shield charge interception: absorb the hit if shield is active (DD-V2-064)
+      if (get(shieldActive)) {
+        shieldActive.set(false)
+        gaiaMessage.set('Shield absorbed the hit — charge depleted.')
+        return
+      }
       // Apply gas damage per tick while player stands in cloud (DD-V2-062)
       const damage = BASE_GAS_HAZARD_DAMAGE
       oxygenCurrent.update(o => Math.max(0, o - damage))
+    })
+
+    // ---- Consumable toast (Phase 8.6) ----
+    events.on('gaia-toast', (msg: string) => {
+      gaiaMessage.set(msg)
+    })
+
+    // ---- Landmark: Chest opened (DD-V2-055) ----
+    events.on('chest-opened', (data: { layer: number }) => {
+      // Award bonus minerals based on current layer depth.
+      const bonusTier = data.layer >= 14 ? 'geode' : data.layer >= 9 ? 'crystal' : 'shard'
+      const bonusAmount = 5 + Math.floor(data.layer / 2)
+      addMinerals(bonusTier as MineralTier, bonusAmount)
+      gaiaMessage.set('You opened a treasure chest! Rare minerals secured.')
     })
   }
 
@@ -870,6 +898,8 @@ export class GameManager {
     tempBackpackSlots.set(0)
     activeCompanion.set(null)
     companionBadgeFlash.set(false)
+    activeConsumables.set([])
+    shieldActive.set(false)
     this.runRelics = []
     this.maxDepthThisRun = 0
     this.gaiaDepthMilestones.clear()
@@ -1193,6 +1223,15 @@ export class GameManager {
   /** Trigger bomb detonation in the active MineScene. */
   useBomb(): void {
     this.inventoryManager.useBomb()
+  }
+
+  /**
+   * Apply a consumable tool from the active dive inventory. (DD-V2-064)
+   * Delegates to MineScene which handles the actual effect and inventory deduction.
+   */
+  applyConsumable(id: import('../data/consumables').ConsumableId): void {
+    const scene = this.getMineScene()
+    scene?.applyConsumable(id)
   }
 
   // =========================================================
