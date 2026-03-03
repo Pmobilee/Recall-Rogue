@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-6 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 7-25) fully specified with detailed phase documents. Batch 5 (Visuals & Art) Q&A complete — DD-V2-232 through DD-V2-281. All 5 Q&A batches complete (281 design decisions total).
+Phases 0-7 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 7 implemented 16 sub-phases: autotiling, character animation, camera/zoom, particles, loot physics, impact system, block animations, event bus, overlay styles, hybrid fonts, biome glow, input buffering.
 
 ---
 
@@ -39,7 +39,7 @@ Phases 0-6 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend
 Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
 
 ### Core Gameplay (Phases 7-9)
-- [ ] **Phase 7: Visual Engine Overhaul** — Autotiling, character animation, camera/zoom, particles, loot physics, mining feel → [`phases/PHASE-07-VISUAL-ENGINE.md`](phases/PHASE-07-VISUAL-ENGINE.md)
+- [x] **Phase 7: Visual Engine Overhaul** — Autotiling, character animation, camera/zoom, particles, loot physics, mining feel → [`completed/PHASE-07-VISUAL-ENGINE.md`](completed/PHASE-07-VISUAL-ENGINE.md)
 - [ ] **Phase 8: Mine Gameplay Overhaul** — 20 layers, tick system, active hazards, O2 decay, landmarks, consumables, quiz overhaul, SM-2 tuning → [`phases/PHASE-08-MINE-GAMEPLAY.md`](phases/PHASE-08-MINE-GAMEPLAY.md)
 - [ ] **Phase 9: Biome Expansion** — 25 unique biomes, per-biome tiles, structural generation, ambient particles → [`phases/PHASE-09-BIOME-EXPANSION.md`](phases/PHASE-09-BIOME-EXPANSION.md)
 
