@@ -135,12 +135,13 @@ export class GameManager {
     )
 
     const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.AUTO,
+      type: Phaser.WEBGL,   // Force WebGL (DD-V2-190)
       parent: 'game-container',
       width: window.innerWidth,
       height: window.innerHeight,
       pixelArt: true,
       roundPixels: true,
+      autoRound: true,       // Prevent sub-pixel sprite positions (DD-V2-276)
       antialias: false,
       backgroundColor: '#1a1a2e',
       scale: {

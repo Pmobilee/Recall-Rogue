@@ -259,3 +259,11 @@ export const BALANCE = {
     { id: 'archive', name: 'Archive', icon: '📚', unlockDives: 10, description: 'Knowledge tree and data discs' },
   ] as const,
 } as const
+
+/** Pickaxe tier impact profiles — each tier adds unique visual signature to mining feedback. */
+export const PICKAXE_TIER_VISUALS = [
+  { name: 'Stone Pick',    shakeMultiplier: 1.0, flashIntensity: 0.2, particleBonus: 0  },
+  { name: 'Iron Pick',     shakeMultiplier: 1.2, flashIntensity: 0.3, particleBonus: 3  },
+  { name: 'Diamond Pick',  shakeMultiplier: 1.5, flashIntensity: 0.5, particleBonus: 6  },
+  { name: 'Quantum Pick',  shakeMultiplier: 2.0, flashIntensity: 0.8, particleBonus: 10 },
+] as const

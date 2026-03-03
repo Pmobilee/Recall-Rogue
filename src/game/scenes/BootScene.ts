@@ -47,6 +47,17 @@ export class BootScene extends Phaser.Scene {
     for (const [key, url] of Object.entries(spriteUrls)) {
       this.load.image(key, url)
     }
+
+    // Load miner sprite sheet separately as a spritesheet (not a single image)
+    // Remove the image-loaded version and re-load as spritesheet with frame config
+    const minerSheetKey = 'miner_sheet'
+    if (spriteUrls[minerSheetKey]) {
+      // Phaser allows overriding — loading as spritesheet will replace the image entry
+      this.load.spritesheet(minerSheetKey, spriteUrls[minerSheetKey], {
+        frameWidth: resolution === 'high' ? 256 : 32,
+        frameHeight: resolution === 'high' ? 256 : 32,
+      })
+    }
   }
 
   create(): void {

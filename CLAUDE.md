@@ -92,10 +92,38 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ## Roadmap Workflow — MANDATORY
-- `docs/roadmap/PROGRESS.md` is the master index and must be consulted first for next work
-- Active work must have a corresponding detailed task doc in `docs/roadmap/in-progress/`
-- When starting a new phase/sub-phase, create or expand the in-progress doc with sub-agent-executable steps (file paths, verification commands)
-- After completing a sub-phase, update its status in `docs/roadmap/in-progress/PHASE-1.0-OVERVIEW.md` (or the relevant overview doc) and move the completed doc to `docs/roadmap/completed/`
+
+### PROGRESS.md = Lightweight Oversight Index
+- `docs/roadmap/PROGRESS.md` is the master checklist — consult it first for next work
+- PROGRESS.md contains ONLY: phase name, status (checkbox), one-line summary, and a link to the detailed phase document
+- It is an oversight file for tracking completion, NOT a detailed specification
+
+### Detailed Phase Documents = Source of Truth for Implementation
+- Every uncompleted phase has a dedicated detailed document in `docs/roadmap/phases/`
+- Naming: `PHASE-07-VISUAL-ENGINE.md`, `PHASE-08-MINE-GAMEPLAY.md`, etc.
+- These documents are the SOLE specification that coding workers (Sonnet/Haiku) execute against
+- Each phase document MUST contain:
+  1. **Overview**: Goal, dependencies on prior phases, estimated complexity
+  2. **Sub-steps**: Numbered, granular, unambiguous tasks with exact file paths, function names, and expected behavior
+  3. **Acceptance Criteria**: Per sub-step — what must be true for the step to be considered done
+  4. **Playwright Test Scripts**: Concrete test code (Node.js scripts) that visually and functionally verify each feature
+  5. **Verification Gate**: A final checklist that MUST pass before the phase is marked complete (typecheck, build, screenshots, specific behavioral tests)
+  6. **Files Affected**: Explicit list of files that will be created or modified
+- Workers receiving a phase document should be able to implement it WITHOUT reading any other documentation
+- Phase documents reference design decisions by ID (e.g., DD-V2-087) for traceability
+
+### Workflow for Executing a Phase
+1. Orchestrator consults PROGRESS.md → identifies next uncompleted phase
+2. Orchestrator reads the detailed phase doc from `docs/roadmap/phases/`
+3. Orchestrator spawns coding workers with the phase doc content as their spec
+4. Workers implement, orchestrator verifies (typecheck, build, Playwright screenshots, acceptance criteria)
+5. On completion: orchestrator checks off the phase in PROGRESS.md, moves the phase doc to `docs/roadmap/completed/`
+6. Push to remote after every completed phase
+
+### Active Work Tracking
+- `docs/roadmap/in-progress/` contains docs for phases currently being actively worked on (moved from `phases/` when work begins)
+- `docs/roadmap/completed/` contains docs for finished phases
+- `docs/roadmap/phases/` contains docs for phases not yet started
 - Keep the roadmap current on every meaningful change; if the session resets, this is the source of truth
 
 ## Sub-Agent Rules (Agent Tool)

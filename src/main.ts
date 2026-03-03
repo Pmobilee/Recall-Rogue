@@ -1,5 +1,7 @@
 import './app.css'
+import './ui/styles/overlay.css'
 import App from './App.svelte'
+import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
 import { GameManager } from './game/GameManager'
 import { addLearnedFact, initPlayer, persistPlayer, playerSave } from './ui/stores/playerData'
@@ -8,8 +10,30 @@ import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
 import { factsDB } from './services/factsDB'
 
+/**
+ * Checks whether the current browser supports WebGL rendering.
+ * @returns true if WebGL is available, false otherwise
+ */
+function isWebGLSupported(): boolean {
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    )
+  } catch {
+    return false
+  }
+}
+
 // Prevent long-press context menu on mobile
 document.addEventListener('contextmenu', (e) => e.preventDefault())
+
+// Show fallback if WebGL is unavailable — game requires it (DD-V2-190)
+if (!isWebGLSupported()) {
+  mount(WebGLFallback, { target: document.getElementById('app')! })
+  throw new Error('WebGL not supported — halting boot')
+}
 
 // Mount Svelte UI overlay
 const app = mount(App, {

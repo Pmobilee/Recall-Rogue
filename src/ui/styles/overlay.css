@@ -1,0 +1,69 @@
+/* Self-hosted pixel font for offline support (DD-V2-268) */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/src/assets/fonts/PressStart2P-Regular.woff2') format('woff2');
+}
+
+/* Unified Overlay Style Guide (DD-V2-264) */
+
+:root {
+  /* Overlay backdrop */
+  --overlay-backdrop: rgba(10, 10, 10, 0.70);
+  --overlay-blur: blur(4px);
+
+  /* Panel chrome */
+  --panel-bg: #12151E;
+  --panel-border-outer: #2A2E38;
+  --panel-border-inner: #4A5068;
+
+  /* Semantic colors */
+  --color-gold: #FFD700;
+  --color-teal: #20B2AA;
+  --color-danger: #CC3333;
+  --color-success-overlay: #44AA44;
+
+  /* Hybrid Font System (DD-V2-268) */
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+/* Shared overlay backdrop class */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-backdrop);
+  backdrop-filter: var(--overlay-blur);
+  -webkit-backdrop-filter: var(--overlay-blur);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Shared panel class */
+.overlay-panel {
+  background: var(--panel-bg);
+  border: 2px solid var(--panel-border-outer);
+  outline: 1px solid var(--panel-border-inner);
+  border-radius: 0;
+  padding: 16px;
+  color: #eee;
+}
+
+/* Body text in overlays - system sans-serif for readability */
+.overlay-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Pixel font for titles and labels */
+.overlay-title {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}

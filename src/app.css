@@ -7,6 +7,8 @@
   --color-text-dim: #999;
   --color-success: #4ecca3;
   --color-warning: #ffd369;
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
 }
 
 * {
@@ -45,6 +47,12 @@ html, body {
   left: 0;
 }
 
+/* Pixel art rendering — nearest-neighbor upscaling for crisp sprites (DD-V2-276) */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* UI overlay container (Svelte components render here) */
 #ui-overlay {
   width: 100%;
@@ -57,3 +65,10 @@ html, body {
 }
 
 /* Each component manages its own pointer-events individually */
+
+/* Pixel font for all buttons (DD-V2-268) */
+button {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  line-height: 1.4;
+}

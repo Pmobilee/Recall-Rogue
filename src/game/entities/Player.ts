@@ -3,6 +3,12 @@ import { BlockType, type MineCell } from '../../data/types'
 export class Player {
   public gridX: number
   public gridY: number
+  public facing: 'left' | 'right' | 'up' | 'down' = 'down'
+  public lastMoveDx: number = 0
+  public lastMoveDy: number = 0
+
+  /** Track how many times each block has been hit this attempt (for impact escalation). */
+  private blockHitCounts: Map<string, number> = new Map()
 
   constructor(startX: number, startY: number) {
     this.gridX = startX
@@ -35,6 +41,16 @@ export class Player {
       return false
     }
 
+    const dx = x - this.gridX
+    const dy = y - this.gridY
+    this.lastMoveDx = dx
+    this.lastMoveDy = dy
+    if (Math.abs(dx) > Math.abs(dy)) {
+      this.facing = dx < 0 ? 'left' : 'right'
+    } else {
+      this.facing = dy < 0 ? 'up' : 'down'
+    }
+
     this.gridX = x
     this.gridY = y
 
@@ -62,5 +78,30 @@ export class Player {
    */
   public isAdjacentTo(x: number, y: number): boolean {
     return Math.abs(x - this.gridX) + Math.abs(y - this.gridY) === 1
+  }
+
+  /**
+   * Records a hit on a block and returns the cumulative hit count.
+   * Used by ImpactSystem for progressive hit escalation.
+   */
+  public recordHit(x: number, y: number): number {
+    const key = `${x},${y}`
+    const count = (this.blockHitCounts.get(key) ?? 0) + 1
+    this.blockHitCounts.set(key, count)
+    return count
+  }
+
+  /**
+   * Clears the hit count for a specific block (call when block is destroyed).
+   */
+  public clearHitCount(x: number, y: number): void {
+    this.blockHitCounts.delete(`${x},${y}`)
+  }
+
+  /**
+   * Clears all hit counts (call on layer transition).
+   */
+  public clearAllHitCounts(): void {
+    this.blockHitCounts.clear()
   }
 }

@@ -6,6 +6,8 @@ import { getActiveSynergies, pickRandomRelic, type SynergyEffect } from '../../d
 import { type CompanionEffect } from '../../data/fossils'
 import { Player } from '../entities/Player'
 import { canMine, mineBlock } from '../systems/MiningSystem'
+import { MinerAnimController } from '../systems/AnimationSystem'
+import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
 import { generateMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
   addOxygen,
@@ -16,6 +18,12 @@ import {
 } from '../systems/OxygenSystem'
 import { audioManager } from '../../services/audioService'
 import { pickQuote } from '../../data/quotes'
+import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
+import { ParticleSystem } from '../systems/ParticleSystem'
+import { miniMapData } from '../../ui/stores/miniMap'
+import { LootPopSystem } from '../systems/LootPopSystem'
+import { ImpactSystem } from '../systems/ImpactSystem'
+import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -70,12 +78,19 @@ export class MineScene extends Phaser.Scene {
   private inventorySlots: number = BALANCE.STARTING_INVENTORY_SLOTS
   private tileGraphics!: Phaser.GameObjects.Graphics
   private overlayGraphics!: Phaser.GameObjects.Graphics
-  private playerSprite!: Phaser.GameObjects.Image
-  private breakEmitter!: Phaser.GameObjects.Particles.ParticleEmitter
+  private playerSprite!: Phaser.GameObjects.Sprite
+  private animController!: MinerAnimController
+  private playerVisualX: number = 0
+  private playerVisualY: number = 0
+  private readonly MOVE_LERP = 0.25
+  private particles!: ParticleSystem
+  private pinchZoom!: PinchZoomController
   private itemSpritePool: Phaser.GameObjects.Image[] = []
   private itemSpritePoolIndex = 0
-  private cameraTarget!: Phaser.GameObjects.Zone
   private flashTiles = new Map<string, number>()
+  private lootPop!: LootPopSystem
+  private impactSystem!: ImpactSystem
+  private bufferedInput: { x: number; y: number } | null = null
   private facts: string[] = []
   private blocksMinedThisRun = 0
   private artifactsFound: string[] = []
@@ -165,6 +180,8 @@ export class MineScene extends Phaser.Scene {
     audioManager.unlock()
     const mineResult = generateMine(this.seed, BALANCE.MINE_WIDTH, BALANCE.MINE_LAYER_HEIGHT, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
+    // Compute initial autotile variants for all terrain blocks
+    computeAllVariants(this.grid)
     this.currentBiome = mineResult.biome
     this.gridHeight = this.grid.length
     this.gridWidth = this.gridHeight > 0 ? this.grid[0].length : 0
@@ -202,42 +219,42 @@ export class MineScene extends Phaser.Scene {
     this.overlayGraphics = this.add.graphics()
     this.overlayGraphics.setDepth(7)
 
-    this.playerSprite = this.add.image(
-      startX * TILE_SIZE + TILE_SIZE * 0.5,
-      startY * TILE_SIZE + TILE_SIZE * 0.5,
-      'miner_idle'
-    )
+    const startPx = startX * TILE_SIZE + TILE_SIZE * 0.5
+    const startPy = startY * TILE_SIZE + TILE_SIZE * 0.5
+    // Use sprite sheet if available, otherwise fall back to static image
+    if (this.textures.exists('miner_sheet')) {
+      this.playerSprite = this.add.sprite(startPx, startPy, 'miner_sheet', 0)
+    } else {
+      this.playerSprite = this.add.sprite(startPx, startPy, 'miner_idle')
+    }
     this.playerSprite.setDisplaySize(TILE_SIZE, TILE_SIZE)
     this.playerSprite.setDepth(10)
+    this.playerVisualX = startPx
+    this.playerVisualY = startPy
 
-    const particleTextureKey = 'break-particle'
-    if (!this.textures.exists(particleTextureKey)) {
-      const particleGraphics = this.make.graphics({ x: 0, y: 0 })
-      particleGraphics.fillStyle(0xffffff, 1)
-      particleGraphics.fillRect(0, 0, 4, 4)
-      particleGraphics.generateTexture(particleTextureKey, 4, 4)
-      particleGraphics.destroy()
+    // Set up animation controller
+    this.animController = new MinerAnimController(this.playerSprite)
+    if (this.textures.exists('miner_sheet')) {
+      this.animController.registerAnims(this)
+      this.animController.setIdle()
     }
 
-    this.breakEmitter = this.add.particles(0, 0, particleTextureKey, {
-      speed: { min: 30, max: 80 },
-      angle: { min: 0, max: 360 },
-      scale: { start: 0.8, end: 0 },
-      lifespan: 400,
-      quantity: 6,
-      emitting: false,
-    })
+    // Initialize particle system with per-block-type emitters
+    this.particles = new ParticleSystem(this)
+    this.particles.init()
 
-    this.cameraTarget = this.add.zone(
-      startX * TILE_SIZE + TILE_SIZE * 0.5,
-      startY * TILE_SIZE + TILE_SIZE * 0.5,
-      1,
-      1,
-    )
+    // Initialize loot pop and impact feedback systems
+    this.lootPop = new LootPopSystem(this)
+    this.impactSystem = new ImpactSystem(this)
 
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
-    this.cameras.main.setBounds(0, 0, worldWidth, worldHeight)
+    setupCamera(this.cameras.main, worldWidth, worldHeight, TILE_SIZE)
+    this.cameras.main.startFollow(this.playerSprite, true, 0.12, 0.12)
+    this.pinchZoom = new PinchZoomController(this.cameras.main, this.input)
+
+    // Start biome-specific ambient particles
+    this.particles.startAmbientEmitters(this.currentBiome, worldWidth, worldHeight)
 
     this.redrawAll()
     revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
@@ -271,6 +288,17 @@ export class MineScene extends Phaser.Scene {
    * Phaser update loop — redraws the visible mine each frame.
    */
   update(): void {
+    this.pinchZoom?.update()
+    // O2 warning particles when below 30%
+    if (this.particles && this.oxygenState) {
+      const oxygenPct = this.oxygenState.current / this.oxygenState.max
+      const cam = this.cameras.main
+      this.particles.setO2Warning(
+        oxygenPct < 0.3,
+        cam.scrollX, cam.scrollY,
+        cam.width, cam.height
+      )
+    }
     this.redrawAll()
   }
 
@@ -278,21 +306,18 @@ export class MineScene extends Phaser.Scene {
     this.updateCameraTarget()
     this.drawTiles()
     this.drawPlayer()
+    // Update mini-map store
+    miniMapData.set({
+      grid: this.grid,
+      playerX: this.player.gridX,
+      playerY: this.player.gridY,
+    })
   }
 
+  /** Camera follow is now handled by Phaser's startFollow(). */
   private updateCameraTarget(): void {
-    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
-
-    this.cameraTarget.setPosition(targetX, targetY)
-
-    const cam = this.cameras.main
-    const desiredX = targetX - cam.width / 2
-    const desiredY = targetY - cam.height / 2
-    const lerp = 0.15
-
-    cam.scrollX += (desiredX - cam.scrollX) * lerp
-    cam.scrollY += (desiredY - cam.scrollY) * lerp
+    // No-op — Phaser's built-in camera follow handles position tracking.
+    // Kept as a method stub since redrawAll() calls it.
   }
 
   private shiftColor(color: number, amount: number): number {
@@ -313,34 +338,47 @@ export class MineScene extends Phaser.Scene {
     const cy = py + TILE_SIZE * 0.5
     switch (cell.type) {
       case BlockType.Dirt:
-        this.getPooledSprite('tile_dirt', cx, cy)
+      case BlockType.SoftRock: {
+        const mask = cell.tileVariant ?? 0
+        const key = bitmaskToSpriteKey('soil', mask)
+        const fallback = cell.type === BlockType.Dirt ? 'tile_dirt' : 'tile_soft_rock'
+        const spriteKey = this.textures.exists(key) ? key : fallback
+        this.getPooledSprite(spriteKey, cx, cy)
         break
-      case BlockType.SoftRock:
-        this.getPooledSprite('tile_soft_rock', cx, cy)
-        break
+      }
       case BlockType.Stone:
-        this.getPooledSprite('tile_stone', cx, cy)
-        break
       case BlockType.HardRock:
-        this.getPooledSprite('tile_hard_rock', cx, cy)
+      case BlockType.Unbreakable: {
+        const mask = cell.tileVariant ?? 0
+        const key = bitmaskToSpriteKey('rock', mask)
+        const fallback = cell.type === BlockType.Stone ? 'tile_stone'
+          : cell.type === BlockType.HardRock ? 'tile_hard_rock'
+          : 'tile_unbreakable'
+        const spriteKey = this.textures.exists(key) ? key : fallback
+        this.getPooledSprite(spriteKey, cx, cy)
         break
-      case BlockType.Unbreakable:
-        this.getPooledSprite('tile_unbreakable', cx, cy)
+      }
+      case BlockType.OxygenCache: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.OxygenCache, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_oxygen_cache', cx, cy)
         break
-      case BlockType.OxygenCache:
-        this.getPooledSprite('block_oxygen_cache', cx, cy)
+      }
+      case BlockType.UpgradeCrate: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.UpgradeCrate, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_upgrade_crate', cx, cy)
         break
-      case BlockType.UpgradeCrate:
-        this.getPooledSprite('block_upgrade_crate', cx, cy)
+      }
+      case BlockType.QuizGate: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.QuizGate, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_quiz_gate', cx, cy)
         break
-      case BlockType.QuizGate:
-        this.getPooledSprite('block_quiz_gate', cx, cy)
-        break
+      }
       case BlockType.ExitLadder:
         this.getPooledSprite('block_exit_ladder', cx, cy)
         break
       case BlockType.DescentShaft: {
-        this.getPooledSprite('block_descent_shaft', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.DescentShaft, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_descent_shaft', cx, cy)
         break
       }
       case BlockType.MineralNode: {
@@ -351,6 +389,13 @@ export class MineScene extends Phaser.Scene {
           : tier === 'shard' ? 'block_mineral_shard'
           : 'block_mineral_dust'
         this.getPooledSprite(mineralKey, cx, cy)
+        // Shimmer overlay animation
+        const shimmerKey = BlockAnimSystem.getFrameKey(BlockType.MineralNode, this.time.now, this.textures)
+        if (shimmerKey) {
+          const shimmer = this.getPooledSprite(shimmerKey, cx, cy)
+          shimmer.setAlpha(0.3)
+          shimmer.setDepth(6)
+        }
         // Essence overlay: radiating gold star rays on top of sprite
         if (tier === 'essence') {
           const r = TILE_SIZE * 0.38
@@ -367,11 +412,13 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.ArtifactNode: {
-        this.getPooledSprite('block_artifact', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.ArtifactNode, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_artifact', cx, cy)
         break
       }
       case BlockType.LavaBlock: {
-        this.getPooledSprite('block_lava', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.LavaBlock, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_lava', cx, cy)
         // Lava glow overlay: bright highlight dot on top of sprite
         this.overlayGraphics.fillStyle(0xff8800, 0.6)
         const dotX = px + 4 + this.seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
@@ -380,7 +427,8 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.GasPocket: {
-        this.getPooledSprite('block_gas', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.GasPocket, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_gas', cx, cy)
         break
       }
       case BlockType.UnstableGround: {
@@ -392,7 +440,8 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.RelicShrine: {
-        this.getPooledSprite('block_relic_shrine', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.RelicShrine, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_relic_shrine', cx, cy)
         break
       }
       case BlockType.SendUpStation: {
@@ -408,11 +457,59 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.FossilNode: {
-        this.getPooledSprite('block_fossil', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_fossil', cx, cy)
         break
       }
       default:
         break
+    }
+  }
+
+  /**
+   * Renders a sprite-based crack overlay on a damaged block.
+   * Replaces the old procedural crack drawing with 4 damage stages.
+   */
+  private drawCrackOverlay(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
+    if (cell.maxHardness <= 0 || cell.hardness <= 0 || cell.hardness >= cell.maxHardness) return
+
+    const damagePercent = 1 - cell.hardness / cell.maxHardness
+    if (damagePercent < 0.25) return  // Stage 0: pristine
+
+    const cx = px + TILE_SIZE * 0.5
+    const cy = py + TILE_SIZE * 0.5
+
+    // Select crack sprite key based on damage stage
+    let crackKey: string
+    if (damagePercent < 0.50) {
+      crackKey = 'crack_stage1'  // hairline
+    } else if (damagePercent < 0.75) {
+      crackKey = 'crack_stage2'  // medium fractures
+    } else if (damagePercent < 0.90) {
+      crackKey = 'crack_stage3'  // severe breaks
+    } else {
+      crackKey = 'crack_stage4'  // crumbling
+    }
+
+    // Graceful fallback to legacy procedural cracks
+    if (!this.textures.exists(crackKey)) {
+      this.drawLegacyCracks(px, py, tileX, tileY, damagePercent)
+      return
+    }
+
+    const crackSprite = this.getPooledSprite(crackKey, cx, cy)
+    crackSprite.setDepth(6)  // Above tile (5), below overlay graphics (7)
+    crackSprite.setAlpha(0.7 + damagePercent * 0.3)
+
+    // Per-block-type crack tinting
+    if (cell.type === BlockType.Dirt || cell.type === BlockType.SoftRock) {
+      crackSprite.setTint(0x6b3a2a)
+    } else if (cell.type === BlockType.LavaBlock) {
+      crackSprite.setTint(0xcc2200)
+    } else if (cell.type === BlockType.GasPocket) {
+      crackSprite.setTint(0x224422)
+    } else {
+      crackSprite.setTint(0x2a2a2a)  // dark gray for rock types
     }
   }
 
@@ -426,7 +523,7 @@ export class MineScene extends Phaser.Scene {
    * @param tileY - Grid row (used for seeded offsets)
    * @param damagePercent - Value from 0 to 1 (0 = undamaged, 1 = about to break)
    */
-  private drawCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
+  private drawLegacyCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
     // 0-33% damage: no overlay
     if (damagePercent <= 0.33) return
 
@@ -490,7 +587,9 @@ export class MineScene extends Phaser.Scene {
   }
 
   private getPooledSprite(key: string, x: number, y: number): Phaser.GameObjects.Image {
-    let sprite = this.itemSpritePool[this.itemSpritePoolIndex]
+    const POOL_CEILING = 500
+    const idx = this.itemSpritePoolIndex >= POOL_CEILING ? POOL_CEILING - 1 : this.itemSpritePoolIndex
+    let sprite = this.itemSpritePool[idx]
     if (!sprite) {
       sprite = this.add.image(x, y, key)
       this.itemSpritePool.push(sprite)
@@ -697,8 +796,7 @@ export class MineScene extends Phaser.Scene {
         }
 
         if (cell.maxHardness > 0 && cell.hardness > 0 && cell.hardness < cell.maxHardness) {
-          const damagePercent = 1 - cell.hardness / cell.maxHardness
-          this.drawCracks(px, py, x, y, damagePercent)
+          this.drawCrackOverlay(cell, x, y, px, py)
         }
 
         const flashKey = `${x},${y}`
@@ -715,20 +813,58 @@ export class MineScene extends Phaser.Scene {
         }
       }
     }
+
+    // Biome glow pass: emitting blocks bleed color into adjacent unexplored fog
+    for (let y = startY; y <= endY; y += 1) {
+      for (let x = startX; x <= endX; x += 1) {
+        const cell = this.grid[y][x]
+        if (!cell.revealed && (cell.visibilityLevel ?? 0) < 1) continue
+
+        let glowColor: number | null = null
+        if (cell.type === BlockType.LavaBlock) {
+          glowColor = 0xff6600
+        } else if (cell.type === BlockType.MineralNode) {
+          const tier = cell.content?.mineralType
+          if (tier === 'crystal') glowColor = 0x44aaff
+          else if (tier === 'essence') glowColor = 0x9944cc
+        }
+        if (glowColor === null) continue
+
+        // Bleed glow into cardinal neighbors that are in full fog
+        const neighbors = [
+          { nx: x, ny: y - 1 },
+          { nx: x, ny: y + 1 },
+          { nx: x - 1, ny: y },
+          { nx: x + 1, ny: y },
+        ]
+        for (const { nx, ny } of neighbors) {
+          if (ny < 0 || ny >= this.gridHeight || nx < 0 || nx >= this.gridWidth) continue
+          const neighbor = this.grid[ny][nx]
+          // Only glow into fully dark unrevealed tiles
+          if (neighbor.revealed || (neighbor.visibilityLevel ?? 0) >= 1) continue
+          const npx = nx * TILE_SIZE
+          const npy = ny * TILE_SIZE
+          this.overlayGraphics.fillStyle(glowColor, 0.10)
+          this.overlayGraphics.fillRect(npx, npy, TILE_SIZE, TILE_SIZE)
+        }
+      }
+    }
   }
 
   private drawPlayer(): void {
-    const px = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const py = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
-    this.playerSprite.setPosition(px, py)
+    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
+    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
+    // Lerp visual position toward logical position for smooth movement
+    this.playerVisualX += (targetX - this.playerVisualX) * this.MOVE_LERP
+    this.playerVisualY += (targetY - this.playerVisualY) * this.MOVE_LERP
+    // Snap if within 1px to avoid floating-point drift
+    if (Math.abs(this.playerVisualX - targetX) < 1) this.playerVisualX = targetX
+    if (Math.abs(this.playerVisualY - targetY) < 1) this.playerVisualY = targetY
+    this.playerSprite.setPosition(this.playerVisualX, this.playerVisualY)
   }
 
   private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
-    // Use biome color override if present, otherwise fall back to default BLOCK_COLORS
-    const particleColor = (this.currentBiome.blockColorOverrides[blockType] ?? BLOCK_COLORS[blockType]) ?? 0x888888
-    this.breakEmitter.setParticleTint(particleColor)
-    this.breakEmitter.setPosition(px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
-    this.breakEmitter.explode(6)
+    this.particles.emitBreak(blockType, px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
   }
 
   /**
@@ -861,6 +997,12 @@ export class MineScene extends Phaser.Scene {
       }
     }
 
+    // Buffer input if mine animation is playing (rhythm mining support)
+    if (this.animController?.isPlayingMineAnim) {
+      this.bufferedInput = { x: finalX, y: finalY }
+      return
+    }
+
     this.handleMoveOrMine(finalX, finalY)
   }
 
@@ -912,6 +1054,12 @@ export class MineScene extends Phaser.Scene {
       return
     }
 
+    // Buffer input if mine animation is playing (rhythm mining support)
+    if (this.animController?.isPlayingMineAnim) {
+      this.bufferedInput = { x: targetX, y: targetY }
+      return
+    }
+
     this.handleMoveOrMine(targetX, targetY)
   }
 
@@ -934,6 +1082,14 @@ export class MineScene extends Phaser.Scene {
       if (!moved) {
         return
       }
+
+      // Trigger walk animation
+      this.animController.setWalk(targetX - playerX, targetY - playerY)
+      this.time.delayedCall(200, () => {
+        if (!this.animController.isPlayingMineAnim) {
+          this.animController.setIdle()
+        }
+      })
 
       revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
       if (this.activeUpgrades.has('scanner_boost')) {
@@ -1006,8 +1162,45 @@ export class MineScene extends Phaser.Scene {
       targetCell.hardness = Math.max(1, targetCell.hardness - (tierDamage - 1))
     }
 
+    // Track per-block hit count for impact escalation
+    const hitCount = this.player.recordHit(targetX, targetY)
+    const targetCellBefore = this.grid[targetY][targetX]
+    const isFinalHit = targetCellBefore.hardness === 1
+
+    // Trigger mine animation with input buffering support
+    const mineDx = targetX - playerX
+    const mineDy = targetY - playerY
+    this.animController.setMine(mineDx, mineDy, () => {
+      this.animController.setIdle()
+      // Process buffered input for rhythm mining
+      if (this.bufferedInput) {
+        const buf = this.bufferedInput
+        this.bufferedInput = null
+        this.handleMoveOrMine(buf.x, buf.y)
+      }
+    })
+
     const mineResult = mineBlock(this.grid, targetX, targetY)
+    if (mineResult.destroyed) {
+      invalidateNeighborVariants(this.grid, targetX, targetY)
+    }
     if (mineResult.success) {
+      const blockWorldX = targetX * TILE_SIZE + TILE_SIZE * 0.5
+      const blockWorldY = targetY * TILE_SIZE + TILE_SIZE * 0.5
+
+      // Trigger impact feedback (shake, flash, haptic)
+      this.impactSystem.triggerHit(
+        blockType,
+        hitCount,
+        isFinalHit,
+        blockWorldX,
+        blockWorldY,
+        targetX,
+        targetY,
+        this.pickaxeTierIndex,
+        this.flashTiles
+      )
+
       this.blocksMinedThisRun += 1
       this.blocksSinceLastQuake += 1
       this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
@@ -1024,7 +1217,7 @@ export class MineScene extends Phaser.Scene {
         }
       }
       if (!mineResult.destroyed) {
-        this.flashTiles.set(`${targetX},${targetY}`, this.time.now)
+        // Sound feedback for non-destroying hits (impact system handles flash)
         if (blockType === BlockType.Dirt || blockType === BlockType.SoftRock || blockType === BlockType.GasPocket) {
           audioManager.playSound('mine_dirt')
         } else if (blockType === BlockType.Stone || blockType === BlockType.HardRock || blockType === BlockType.Unbreakable || blockType === BlockType.LavaBlock) {
@@ -1034,6 +1227,11 @@ export class MineScene extends Phaser.Scene {
         } else {
           audioManager.playSound('mine_dirt')
         }
+      }
+
+      // Clear hit count when block is destroyed
+      if (mineResult.destroyed) {
+        this.player.clearHitCount(targetX, targetY)
       }
     }
 
@@ -1112,6 +1310,14 @@ export class MineScene extends Phaser.Scene {
             addedToInventory: added,
           })
           audioManager.playSound('collect')
+          // Pop loot toward player with physics arc
+          this.lootPop.popLoot({
+            spriteKey: `block_mineral_${mineResult.content?.mineralType ?? 'dust'}`,
+            worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
+            worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
+            targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+            targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+          })
           // mineral_magnet: auto-collect minerals within radius
           this.applyMineralMagnet(targetX, targetY)
           break
@@ -1152,6 +1358,15 @@ export class MineScene extends Phaser.Scene {
               addedToInventory: added,
             })
             audioManager.playSound('collect')
+            // Pop artifact toward player with rarity-based effects
+            this.lootPop.popLoot({
+              spriteKey: 'block_artifact',
+              worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
+              worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
+              targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+              targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+              rarity: mineResult.content?.artifactRarity,
+            })
           }
           break
         }
@@ -2280,5 +2495,13 @@ export class MineScene extends Phaser.Scene {
     for (let i = 0; i < revealCount; i++) {
       this.grid[candidates[i].y][candidates[i].x].visibilityLevel = 1
     }
+  }
+
+  /**
+   * Scene shutdown — clean up systems that hold references to Phaser objects.
+   */
+  override shutdown(): void {
+    this.lootPop?.destroy()
+    super.shutdown()
   }
 }

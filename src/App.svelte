@@ -40,6 +40,7 @@
   import StreakPanel from './ui/components/StreakPanel.svelte'
   import Farm from './ui/components/Farm.svelte'
   import Settings from './ui/components/Settings.svelte'
+  import MiniMap from './ui/components/MiniMap.svelte'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
   import { gaiaMessage } from './ui/stores/gameState'
@@ -366,6 +367,7 @@
       onOpenRunStats={handleOpenRunStats}
       onUseBomb={handleUseBomb}
     />
+    <MiniMap />
 
   {:else if $currentScreen === 'quiz' && $activeQuiz}
     {#if quizMode === 'gate'}
