@@ -23,6 +23,7 @@ import { ParticleSystem } from '../systems/ParticleSystem'
 import { miniMapData } from '../../ui/stores/miniMap'
 import { LootPopSystem } from '../systems/LootPopSystem'
 import { ImpactSystem } from '../systems/ImpactSystem'
+import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -357,20 +358,27 @@ export class MineScene extends Phaser.Scene {
         this.getPooledSprite(spriteKey, cx, cy)
         break
       }
-      case BlockType.OxygenCache:
-        this.getPooledSprite('block_oxygen_cache', cx, cy)
+      case BlockType.OxygenCache: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.OxygenCache, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_oxygen_cache', cx, cy)
         break
-      case BlockType.UpgradeCrate:
-        this.getPooledSprite('block_upgrade_crate', cx, cy)
+      }
+      case BlockType.UpgradeCrate: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.UpgradeCrate, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_upgrade_crate', cx, cy)
         break
-      case BlockType.QuizGate:
-        this.getPooledSprite('block_quiz_gate', cx, cy)
+      }
+      case BlockType.QuizGate: {
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.QuizGate, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_quiz_gate', cx, cy)
         break
+      }
       case BlockType.ExitLadder:
         this.getPooledSprite('block_exit_ladder', cx, cy)
         break
       case BlockType.DescentShaft: {
-        this.getPooledSprite('block_descent_shaft', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.DescentShaft, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_descent_shaft', cx, cy)
         break
       }
       case BlockType.MineralNode: {
@@ -381,6 +389,13 @@ export class MineScene extends Phaser.Scene {
           : tier === 'shard' ? 'block_mineral_shard'
           : 'block_mineral_dust'
         this.getPooledSprite(mineralKey, cx, cy)
+        // Shimmer overlay animation
+        const shimmerKey = BlockAnimSystem.getFrameKey(BlockType.MineralNode, this.time.now, this.textures)
+        if (shimmerKey) {
+          const shimmer = this.getPooledSprite(shimmerKey, cx, cy)
+          shimmer.setAlpha(0.3)
+          shimmer.setDepth(6)
+        }
         // Essence overlay: radiating gold star rays on top of sprite
         if (tier === 'essence') {
           const r = TILE_SIZE * 0.38
@@ -397,11 +412,13 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.ArtifactNode: {
-        this.getPooledSprite('block_artifact', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.ArtifactNode, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_artifact', cx, cy)
         break
       }
       case BlockType.LavaBlock: {
-        this.getPooledSprite('block_lava', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.LavaBlock, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_lava', cx, cy)
         // Lava glow overlay: bright highlight dot on top of sprite
         this.overlayGraphics.fillStyle(0xff8800, 0.6)
         const dotX = px + 4 + this.seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
@@ -410,7 +427,8 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.GasPocket: {
-        this.getPooledSprite('block_gas', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.GasPocket, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_gas', cx, cy)
         break
       }
       case BlockType.UnstableGround: {
@@ -422,7 +440,8 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.RelicShrine: {
-        this.getPooledSprite('block_relic_shrine', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.RelicShrine, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_relic_shrine', cx, cy)
         break
       }
       case BlockType.SendUpStation: {
@@ -438,7 +457,8 @@ export class MineScene extends Phaser.Scene {
         break
       }
       case BlockType.FossilNode: {
-        this.getPooledSprite('block_fossil', cx, cy)
+        const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, this.time.now, this.textures)
+        this.getPooledSprite(animKey ?? 'block_fossil', cx, cy)
         break
       }
       default:
@@ -567,7 +587,9 @@ export class MineScene extends Phaser.Scene {
   }
 
   private getPooledSprite(key: string, x: number, y: number): Phaser.GameObjects.Image {
-    let sprite = this.itemSpritePool[this.itemSpritePoolIndex]
+    const POOL_CEILING = 500
+    const idx = this.itemSpritePoolIndex >= POOL_CEILING ? POOL_CEILING - 1 : this.itemSpritePoolIndex
+    let sprite = this.itemSpritePool[idx]
     if (!sprite) {
       sprite = this.add.image(x, y, key)
       this.itemSpritePool.push(sprite)
