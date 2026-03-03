@@ -6,6 +6,7 @@ import { getActiveSynergies, pickRandomRelic, type SynergyEffect } from '../../d
 import { type CompanionEffect } from '../../data/fossils'
 import { Player } from '../entities/Player'
 import { canMine, mineBlock } from '../systems/MiningSystem'
+import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
 import { generateMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
   addOxygen,
@@ -165,6 +166,8 @@ export class MineScene extends Phaser.Scene {
     audioManager.unlock()
     const mineResult = generateMine(this.seed, BALANCE.MINE_WIDTH, BALANCE.MINE_LAYER_HEIGHT, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
+    // Compute initial autotile variants for all terrain blocks
+    computeAllVariants(this.grid)
     this.currentBiome = mineResult.biome
     this.gridHeight = this.grid.length
     this.gridWidth = this.gridHeight > 0 ? this.grid[0].length : 0
@@ -313,20 +316,26 @@ export class MineScene extends Phaser.Scene {
     const cy = py + TILE_SIZE * 0.5
     switch (cell.type) {
       case BlockType.Dirt:
-        this.getPooledSprite('tile_dirt', cx, cy)
+      case BlockType.SoftRock: {
+        const mask = cell.tileVariant ?? 0
+        const key = bitmaskToSpriteKey('soil', mask)
+        const fallback = cell.type === BlockType.Dirt ? 'tile_dirt' : 'tile_soft_rock'
+        const spriteKey = this.textures.exists(key) ? key : fallback
+        this.getPooledSprite(spriteKey, cx, cy)
         break
-      case BlockType.SoftRock:
-        this.getPooledSprite('tile_soft_rock', cx, cy)
-        break
+      }
       case BlockType.Stone:
-        this.getPooledSprite('tile_stone', cx, cy)
-        break
       case BlockType.HardRock:
-        this.getPooledSprite('tile_hard_rock', cx, cy)
+      case BlockType.Unbreakable: {
+        const mask = cell.tileVariant ?? 0
+        const key = bitmaskToSpriteKey('rock', mask)
+        const fallback = cell.type === BlockType.Stone ? 'tile_stone'
+          : cell.type === BlockType.HardRock ? 'tile_hard_rock'
+          : 'tile_unbreakable'
+        const spriteKey = this.textures.exists(key) ? key : fallback
+        this.getPooledSprite(spriteKey, cx, cy)
         break
-      case BlockType.Unbreakable:
-        this.getPooledSprite('tile_unbreakable', cx, cy)
-        break
+      }
       case BlockType.OxygenCache:
         this.getPooledSprite('block_oxygen_cache', cx, cy)
         break
@@ -1007,6 +1016,9 @@ export class MineScene extends Phaser.Scene {
     }
 
     const mineResult = mineBlock(this.grid, targetX, targetY)
+    if (mineResult.destroyed) {
+      invalidateNeighborVariants(this.grid, targetX, targetY)
+    }
     if (mineResult.success) {
       this.blocksMinedThisRun += 1
       this.blocksSinceLastQuake += 1

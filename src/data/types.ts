@@ -133,6 +133,8 @@ export interface MineCell {
   revealed: boolean           // Visible to player?
   visibilityLevel?: number    // 0=hidden, 1=silhouette, 2=dim, 3=faint — controlled by scanner
   content?: MineCellContent   // What's inside (if special block)
+  /** 4-bit autotile bitmask index (0-15). Computed on generation and on neighbor change. */
+  tileVariant?: number
 }
 
 /** Content inside a special block */

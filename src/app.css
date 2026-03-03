@@ -45,6 +45,12 @@ html, body {
   left: 0;
 }
 
+/* Pixel art rendering — nearest-neighbor upscaling for crisp sprites (DD-V2-276) */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* UI overlay container (Svelte components render here) */
 #ui-overlay {
   width: 100%;
