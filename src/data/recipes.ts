@@ -65,8 +65,8 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 'quiz_lens',
-    name: 'Quiz Lens',
-    description: 'Eliminate 1 wrong answer in quizzes',
+    name: 'Scan Lens',
+    description: 'Eliminate 1 unlikely choice during field scans',
     icon: '🔍',
     category: 'permanent',
     cost: { dust: 500, crystal: 5, geode: 1 },

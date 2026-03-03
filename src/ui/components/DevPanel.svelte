@@ -2,7 +2,9 @@
   import { get } from 'svelte/store'
   import { BALANCE } from '../../data/balance'
   import { FOSSIL_SPECIES } from '../../data/fossils'
-  import { deleteSave } from '../../services/saveService'
+  import { deleteSave, save } from '../../services/saveService'
+  import { SCENARIO_PRESETS, type ScenarioPreset } from '../../dev/presets'
+  import { listSnapshots, storeSnapshot, deleteSnapshot, exportSnapshotBlob, parseSnapshotFile, type SaveSnapshot } from '../../dev/snapshotStore'
   import { factsDB } from '../../services/factsDB'
   import { GameManager } from '../../game/GameManager'
   import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen, addConsumableToDive } from '../stores/gameState'
@@ -28,6 +30,8 @@
 
   // ─── collapsible section state ───────────────────────────────
   let sectionsOpen = $state<Record<string, boolean>>({
+    presets: false,
+    snapshots: false,
     resources: true,
     progression: false,
     fossils: false,
@@ -50,6 +54,90 @@
   let streakInput = $state<number>(7)
 
   const gm = GameManager.getInstance()
+
+  // ─── Presets ─────────────────────────────────────────────────
+  function loadPreset(preset: ScenarioPreset): void {
+    const builtSave = preset.buildSave(Date.now())
+    deleteSave()
+    save(builtSave)
+    playerSave.set(builtSave)
+    currentScreen.set('base')
+    open = false
+  }
+
+  // ─── Snapshots ──────────────────────────────────────────────
+  let snapshots = $state<SaveSnapshot[]>([])
+  let snapshotLabel = $state<string>('')
+  let snapshotError = $state<string>('')
+  let fileInputRef = $state<HTMLInputElement | null>(null)
+
+  $effect(() => {
+    if (open && sectionsOpen.snapshots) {
+      snapshots = listSnapshots()
+    }
+  })
+
+  function saveCurrentSnapshot(): void {
+    const current = get(playerSave)
+    if (!current) return
+    const label = snapshotLabel.trim() || undefined
+    storeSnapshot(current, label)
+    snapshotLabel = ''
+    snapshots = listSnapshots()
+  }
+
+  function exportSnapshot(snap: SaveSnapshot): void {
+    const blob = exportSnapshotBlob(snap)
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `terra-gacha-snapshot-${snap.snapshotId}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  function loadSnapshot(snap: SaveSnapshot): void {
+    if (!confirm(`Load snapshot "${snap.label}"? Current save will be overwritten.`)) return
+    save(snap.save)
+    playerSave.set(snap.save)
+    currentScreen.set('base')
+    open = false
+  }
+
+  function removeSnapshot(snap: SaveSnapshot): void {
+    deleteSnapshot(snap.snapshotId)
+    snapshots = listSnapshots()
+  }
+
+  function importSnapshot(): void {
+    fileInputRef?.click()
+  }
+
+  function handleFileImport(e: Event): void {
+    snapshotError = ''
+    const input = e.currentTarget as HTMLInputElement
+    const file = input.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => {
+      const text = reader.result as string
+      const parsed = parseSnapshotFile(text)
+      if (!parsed) {
+        snapshotError = 'Invalid snapshot file'
+        return
+      }
+      save(parsed.save)
+      playerSave.set(parsed.save)
+      currentScreen.set('base')
+      open = false
+    }
+    reader.readAsText(file)
+    input.value = ''
+  }
+
+  function formatDate(ms: number): string {
+    return new Date(ms).toISOString().replace('T', ' ').slice(0, 16)
+  }
 
   // ─── Section 1: Resources ─────────────────────────────────────
 
@@ -348,6 +436,91 @@
       <button class="close-btn" type="button" onclick={toggle} aria-label="Close dev panel">✕</button>
     </div>
 
+    <!-- ── Section: Presets ── -->
+    <section class="dev-section">
+      <button
+        class="section-toggle"
+        type="button"
+        onclick={() => toggleSection('presets')}
+        aria-expanded={sectionsOpen.presets}
+      >
+        <span class="chevron" class:open={sectionsOpen.presets}>▶</span>
+        Presets
+      </button>
+      {#if sectionsOpen.presets}
+        <div class="section-body">
+          {#each SCENARIO_PRESETS as preset (preset.id)}
+            <button
+              class="btn-preset btn-wide"
+              type="button"
+              title={preset.description}
+              onclick={() => loadPreset(preset)}
+            >
+              {preset.label}
+            </button>
+          {/each}
+        </div>
+      {/if}
+    </section>
+
+    <!-- ── Section: Snapshots ── -->
+    <section class="dev-section">
+      <button
+        class="section-toggle"
+        type="button"
+        onclick={() => toggleSection('snapshots')}
+        aria-expanded={sectionsOpen.snapshots}
+      >
+        <span class="chevron" class:open={sectionsOpen.snapshots}>▶</span>
+        Snapshots
+      </button>
+      {#if sectionsOpen.snapshots}
+        <div class="section-body">
+          <div class="custom-row">
+            <input
+              type="text"
+              bind:value={snapshotLabel}
+              placeholder="Snapshot label"
+              class="custom-input"
+              style="flex:3"
+              aria-label="Snapshot label"
+            />
+            <button class="btn-give" type="button" onclick={saveCurrentSnapshot}>Save Snapshot</button>
+          </div>
+          <div class="custom-row">
+            <button class="btn-nav btn-wide" type="button" onclick={importSnapshot}>Import JSON</button>
+            <input
+              type="file"
+              accept=".json"
+              bind:this={fileInputRef}
+              style="display:none"
+              onchange={handleFileImport}
+            />
+          </div>
+          {#if snapshotError}
+            <div class="snapshot-error">{snapshotError}</div>
+          {/if}
+          {#if snapshots.length > 0}
+            <div class="snapshot-list">
+              {#each snapshots as snap (snap.snapshotId)}
+                <div class="snapshot-row">
+                  <div class="snapshot-info">
+                    <span class="snapshot-label">{snap.label}</span>
+                    <span class="snapshot-meta">v{snap.gameVersion} · {formatDate(snap.createdAt)}</span>
+                  </div>
+                  <div class="snapshot-actions">
+                    <button class="btn-snap" type="button" title="Load" onclick={() => loadSnapshot(snap)}>↩</button>
+                    <button class="btn-snap" type="button" title="Export" onclick={() => exportSnapshot(snap)}>↓</button>
+                    <button class="btn-snap btn-snap-del" type="button" title="Delete" onclick={() => removeSnapshot(snap)}>✕</button>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          {/if}
+        </div>
+      {/if}
+    </section>
+
     <!-- ── Section 1: Resources ── -->
     <section class="dev-section">
       <button
@@ -623,6 +796,10 @@
             <span class="debug-key">O2 Mult:</span>
             <span class="debug-val">x{$o2DepthMultiplier.toFixed(2)}</span>
           </div>
+          <div class="debug-row">
+            <span class="debug-key">Zero-dive %:</span>
+            <span class="debug-val">{$playerSave?.stats.totalSessions ? Math.round(($playerSave.stats.zeroDiveSessions / $playerSave.stats.totalSessions) * 100) : 0}%</span>
+          </div>
         </div>
       {/if}
     </section>
@@ -895,5 +1072,89 @@
     font-weight: 600;
     text-align: right;
     word-break: break-all;
+  }
+
+  /* Purple: preset */
+  .btn-preset {
+    border: 1px solid #4a1a7e;
+    background: #1e0a3a;
+    color: #c090ff;
+    text-align: left;
+    font-size: 9px;
+  }
+
+  /* Snapshot section */
+  .snapshot-error {
+    color: #e94560;
+    font-size: 9px;
+    padding: 4px 0;
+  }
+
+  .snapshot-list {
+    max-height: 240px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .snapshot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 6px;
+    background: #1a1a2e;
+    border-radius: 4px;
+    border: 1px solid #2a2a40;
+  }
+
+  .snapshot-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .snapshot-label {
+    color: #c090ff;
+    font-size: 9px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .snapshot-meta {
+    color: #666;
+    font-size: 8px;
+  }
+
+  .snapshot-actions {
+    display: flex;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
+  .btn-snap {
+    padding: 2px 6px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #1a1a2e;
+    color: #888;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .btn-snap:hover {
+    background: #2a2a4e;
+    color: #ccc;
+  }
+
+  .btn-snap-del:hover {
+    background: #3a1020;
+    color: #e94560;
+    border-color: #7a2030;
   }
 </style>

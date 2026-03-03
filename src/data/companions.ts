@@ -100,11 +100,11 @@ export const COMPANION_CATALOGUE: CompanionDefinition[] = [
     description: 'A ghostly archive fragment. Rewards knowledge with oxygen.',
     affinity: 'learning',
     effectId: 'quizO2Reward',
-    lore: 'Technically a corrupted museum AI. It considers your quizzes "field research."',
+    lore: 'Technically a corrupted museum AI. It considers your field scans "primary research."',
     evolutionPath: [
       { stage: 0, stageName: 'Fragment', shardsRequired: 0, masteredFactsRequired: 0, affinityMagnitude: 3, spriteKey: 'comp_archivist_0' },
-      { stage: 1, stageName: 'Restored', shardsRequired: 45, masteredFactsRequired: 35, affinityMagnitude: 8, secondaryEffect: { effectId: 'quizCooldownReduction', magnitude: -0.15, description: '-15% quiz cooldown' }, spriteKey: 'comp_archivist_1' },
-      { stage: 2, stageName: 'Omniscient', shardsRequired: 140, masteredFactsRequired: 150, affinityMagnitude: 15, secondaryEffect: { effectId: 'suppressQuizO2Penalty', magnitude: 1, description: 'Wrong answers cost no extra O2' }, spriteKey: 'comp_archivist_2' },
+      { stage: 1, stageName: 'Restored', shardsRequired: 45, masteredFactsRequired: 35, affinityMagnitude: 8, secondaryEffect: { effectId: 'quizCooldownReduction', magnitude: -0.15, description: '-15% scan cooldown' }, spriteKey: 'comp_archivist_1' },
+      { stage: 2, stageName: 'Omniscient', shardsRequired: 140, masteredFactsRequired: 150, affinityMagnitude: 15, secondaryEffect: { effectId: 'suppressQuizO2Penalty', magnitude: 1, description: 'Missed scans cost no extra O2' }, spriteKey: 'comp_archivist_2' },
     ],
   },
   {

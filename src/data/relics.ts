@@ -48,21 +48,21 @@ export const RELIC_CATALOGUE: RelicDefinition[] = [
   // --- Common ---
   { id: 'rc_pathfinder_boots', name: "Pathfinder's Boots", description: 'Movement costs 10% less O2.', lore: 'Worn smooth by a thousand forgotten expeditions.', tier: 'common', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '-10% O2 per move', magnitude: -0.10 }], icon: '👢', dropWeight: 30 },
   { id: 'rc_tungsten_pick', name: 'Tungsten Pick Fragment', description: 'Block damage +15%.', lore: 'A shard from a legendary drill, still humming faintly.', tier: 'common', archetype: 'miner', effects: [{ effectId: 'blockDamage', description: '+15% block damage', magnitude: 0.15 }], icon: '⛏️', dropWeight: 30 },
-  { id: 'rc_focus_crystal', name: 'Focus Crystal', description: 'Correct quiz answers restore +5 O2.', lore: 'Resonates with concentrated knowledge.', tier: 'common', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+5 O2 on correct answer', magnitude: 5 }], icon: '🔮', dropWeight: 30 },
+  { id: 'rc_focus_crystal', name: 'Focus Crystal', description: 'Nailing a field scan restores +5 O2.', lore: 'Resonates with concentrated knowledge.', tier: 'common', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+5 O2 on correct answer', magnitude: 5 }], icon: '🔮', dropWeight: 30 },
   { id: 'rc_carbon_weave', name: 'Carbon Weave Patch', description: 'Damage taken reduced by 10%.', lore: 'Harvested from a pre-collapse pressure suit.', tier: 'common', archetype: 'survivor', effects: [{ effectId: 'damageReduction', description: '-10% damage taken', magnitude: 0.10 }], icon: '🧥', dropWeight: 30 },
   { id: 'rc_sonar_lens', name: 'Sonar Lens', description: 'Reveal radius +1 cell.', lore: 'Pings the darkness before you even ask it to.', tier: 'common', archetype: 'explorer', effects: [{ effectId: 'revealRadius', description: '+1 reveal radius', magnitude: 1 }], icon: '🔍', dropWeight: 25 },
   { id: 'rc_miners_rhythm', name: "Miner's Rhythm", description: 'Mining speed +10%.', lore: 'A cadence carved into muscle memory.', tier: 'common', archetype: 'miner', effects: [{ effectId: 'miningSpeed', description: '+10% mining speed', magnitude: 0.10 }], icon: '🎵', dropWeight: 25 },
   // --- Rare ---
   { id: 'rr_cartographers_compass', name: "Cartographer's Compass", description: 'Reveal radius +3 cells. Descent shaft always revealed.', lore: 'Belonged to the last surviving surveyor of the Third Expedition.', tier: 'rare', archetype: 'explorer', effects: [{ effectId: 'revealRadius', description: '+3 reveal radius', magnitude: 3 }, { effectId: 'revealShaftOnEntry', description: 'Shaft visible on entry', magnitude: 1 }], icon: '🧭', dropWeight: 15 },
   { id: 'rr_seismic_gauntlet', name: 'Seismic Gauntlet', description: 'Block damage +30%. Shockwave every 10 blocks.', lore: 'The resonance frequency was calibrated for Earth rock.', tier: 'rare', archetype: 'miner', effects: [{ effectId: 'blockDamage', description: '+30% block damage', magnitude: 0.30 }, { effectId: 'shockwavePeriod', description: 'Shockwave every 10 blocks', magnitude: 10 }], icon: '🥊', dropWeight: 15 },
-  { id: 'rr_mnemonics_codex', name: "Mnemonist's Codex", description: 'O2 cost -20%. Wrong quiz = no extra O2.', lore: 'Its owner never forgot anything. Not even pain.', tier: 'rare', archetype: 'scholar', effects: [{ effectId: 'o2CostAll', description: '-20% all O2 costs', magnitude: -0.20 }, { effectId: 'suppressQuizO2Penalty', description: 'No quiz O2 penalty', magnitude: 1 }], icon: '📖', dropWeight: 15 },
+  { id: 'rr_mnemonics_codex', name: "Mnemonist's Codex", description: 'O2 cost -20%. Missed scans cost no extra O2.', lore: 'Its owner never forgot anything. Not even pain.', tier: 'rare', archetype: 'scholar', effects: [{ effectId: 'o2CostAll', description: '-20% all O2 costs', magnitude: -0.20 }, { effectId: 'suppressQuizO2Penalty', description: 'No scan O2 penalty', magnitude: 1 }], icon: '📖', dropWeight: 15 },
   { id: 'rr_aegis_shard', name: 'Aegis Shard', description: 'Damage -25%. Auto-absorbs one lethal hit per layer.', lore: 'Still radiates the warmth of whoever it saved last.', tier: 'rare', archetype: 'survivor', effects: [{ effectId: 'damageReduction', description: '-25% damage taken', magnitude: 0.25 }, { effectId: 'lethalAbsorb', description: 'Absorb 1 lethal/layer', magnitude: 1 }], icon: '🔰', dropWeight: 15 },
   { id: 'rr_quantum_pickaxe', name: 'Quantum Pickaxe Core', description: '20% chance to mine two blocks at once.', lore: 'Exists in two states: hitting and having already hit.', tier: 'rare', archetype: 'miner', effects: [{ effectId: 'doubleMineProbability', description: '20% double-mine', magnitude: 0.20 }], icon: '⚛️', dropWeight: 12 },
   { id: 'rr_leyline_tap', name: 'Leyline Tap', description: 'Passive O2 regen: +1 O2 every 5 ticks.', lore: 'Draws from something older than the mine.', tier: 'rare', archetype: 'survivor', effects: [{ effectId: 'o2RegenPerTicks', description: '+1 O2/5 ticks', magnitude: 5 }], icon: '💧', dropWeight: 12 },
   // --- Legendary ---
   { id: 'rl_atlas_heart', name: 'Heart of Atlas', description: 'All movement 0 O2. Reveal +5.', lore: 'A planet compressed into something small enough to carry.', tier: 'legendary', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '0 O2 per move', magnitude: -1.0 }, { effectId: 'revealRadius', description: '+5 reveal radius', magnitude: 5 }], icon: '🌍', dropWeight: 3 },
   { id: 'rl_world_ender', name: 'World-Ender Drill Bit', description: 'Block damage +100%. Hard rock in 1 hit.', lore: 'Built for a planet that no longer needs to be mined.', tier: 'legendary', archetype: 'miner', effects: [{ effectId: 'blockDamage', description: '+100% block damage', magnitude: 1.0 }, { effectId: 'hardRockOneHit', description: 'Hard rock 1-hit', magnitude: 1 }], icon: '💎', dropWeight: 3 },
-  { id: 'rl_akashic_record', name: 'Akashic Record', description: 'Correct quiz +20 O2. All O2 costs -40%.', lore: 'Contains everything known. Reading it is the hard part.', tier: 'legendary', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+20 O2 on correct', magnitude: 20 }, { effectId: 'o2CostAll', description: '-40% all O2', magnitude: -0.40 }], icon: '📜', dropWeight: 3 },
+  { id: 'rl_akashic_record', name: 'Akashic Record', description: 'Nailed scan +20 O2. All O2 costs -40%.', lore: 'Contains everything known. Reading it is the hard part.', tier: 'legendary', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+20 O2 on correct', magnitude: 20 }, { effectId: 'o2CostAll', description: '-40% all O2', magnitude: -0.40 }], icon: '📜', dropWeight: 3 },
   { id: 'rl_phoenix_core', name: 'Phoenix Core', description: 'Resurrect once at 30% O2. Damage -40%.', lore: 'The last backup of something that refused to end.', tier: 'legendary', archetype: 'survivor', effects: [{ effectId: 'resurrection', description: 'Resurrect once/run', magnitude: 1 }, { effectId: 'damageReduction', description: '-40% damage', magnitude: 0.40 }], icon: '🔥', dropWeight: 3 },
   { id: 'rl_gravity_lens', name: 'Gravity Lens', description: 'Free movement. Shaft moves toward you.', lore: 'Space bends around certainty of purpose.', tier: 'legendary', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '0 O2 per move', magnitude: -1.0 }, { effectId: 'shaftAttraction', description: 'Shaft approach/10 ticks', magnitude: 10 }], icon: '🌀', dropWeight: 2 },
   { id: 'rl_epoch_hammer', name: 'Epoch Hammer', description: '3×3 AoE every 5 blocks. +80% damage.', lore: 'Five million years of geology. Five swings.', tier: 'legendary', archetype: 'miner', effects: [{ effectId: 'aoeMinePeriod', description: '3×3 AoE/5 blocks', magnitude: 5 }, { effectId: 'blockDamage', description: '+80% damage', magnitude: 0.80 }], icon: '🔨', dropWeight: 2 },
@@ -72,7 +72,7 @@ export const RELIC_CATALOGUE: RelicDefinition[] = [
 export const ARCHETYPE_SYNERGY_BONUSES: ArchetypeSynergyBonus[] = [
   { archetype: 'explorer', threshold: 2, effects: [{ effectId: 'revealRadius', description: '+2 reveal (Explorer synergy)', magnitude: 2 }, { effectId: 'o2CostMove', description: '-5% O2/move (Explorer)', magnitude: -0.05 }], description: 'Explorer Synergy (2+): +2 reveal radius, -5% move O2.' },
   { archetype: 'miner', threshold: 2, effects: [{ effectId: 'blockDamage', description: '+20% damage (Miner synergy)', magnitude: 0.20 }, { effectId: 'critChance', description: '+10% crit (Miner)', magnitude: 0.10 }], description: 'Miner Synergy (2+): +20% damage, +10% crit.' },
-  { archetype: 'scholar', threshold: 2, effects: [{ effectId: 'quizO2Reward', description: '+10 O2/quiz (Scholar synergy)', magnitude: 10 }, { effectId: 'quizCooldownReduction', description: '-25% cooldown (Scholar)', magnitude: -0.25 }], description: 'Scholar Synergy (2+): +10 O2/quiz, -25% cooldown.' },
+  { archetype: 'scholar', threshold: 2, effects: [{ effectId: 'quizO2Reward', description: '+10 O2/scan (Scholar synergy)', magnitude: 10 }, { effectId: 'quizCooldownReduction', description: '-25% cooldown (Scholar)', magnitude: -0.25 }], description: 'Scholar Synergy (2+): +10 O2/scan, -25% cooldown.' },
   { archetype: 'survivor', threshold: 2, effects: [{ effectId: 'damageReduction', description: '+15% DR (Survivor synergy)', magnitude: 0.15 }, { effectId: 'o2RegenPerTicks', description: '+1 O2/8 ticks (Survivor)', magnitude: 8 }], description: 'Survivor Synergy (2+): +15% DR, +1 O2/8 ticks.' },
 ]
 
@@ -126,7 +126,7 @@ export const SYNERGIES: RelicSynergy[] = [
   {
     id: 'scholars_blessing',
     name: "Scholar's Blessing",
-    description: 'Quiz Master + Lucky Strike = Double artifact chances',
+    description: 'Scan Expert + Lucky Strike = Double artifact chances',
     icon: '📚',
     requiredRelics: ['quiz_master', 'lucky_strike'],
     effect: { type: 'double_artifact_chance' },
@@ -187,8 +187,8 @@ export const RELICS: Relic[] = [
   },
   {
     id: 'quiz_master',
-    name: 'Quiz Master',
-    description: '+5 bonus dust on correct quiz answers',
+    name: 'Scan Expert',
+    description: '+5 bonus dust on nailed field scans',
     icon: '🎓',
     effect: { type: 'quiz_master', bonus: 5 },
   },

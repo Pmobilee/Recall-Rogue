@@ -1,6 +1,6 @@
 <script lang="ts">
   import { untrack } from 'svelte'
-  import { playerSave } from '../stores/playerData'
+  import { playerSave, getDueReviews } from '../stores/playerData'
   import { audioManager } from '../../services/audioService'
   import {
     gaiaMood,
@@ -52,6 +52,13 @@
   /** Expression id for the currently shown idle quip */
   let idleExpressionId = $state(getGaiaExpression('idle', $gaiaMood).id)
 
+  /**
+   * Soft GAIA study prompt — shown when 5 or more facts are due for review (DD-V2-142).
+   * Dismissed after the player clicks it or after 15 seconds.
+   */
+  let studyPromptVisible = $state(false)
+  let studyPromptCount = $state(0)
+
   $effect(() => {
     // Re-pick immediately when the mood changes (reactive on $gaiaMood)
     gaiaComment = randomIdleQuip($gaiaMood)
@@ -72,6 +79,21 @@
     return () => {
       clearInterval(interval)
     }
+  })
+
+  // Check for due reviews on dome load. If 5+ are waiting, show a soft GAIA nudge
+  // after a short delay so it feels natural — not an alert (DD-V2-142).
+  $effect(() => {
+    const timer = setTimeout(() => {
+      const due = getDueReviews()
+      if (due.length >= 5) {
+        studyPromptCount = due.length
+        studyPromptVisible = true
+        // Auto-dismiss after 15 seconds if the player ignores it
+        setTimeout(() => { studyPromptVisible = false }, 15000)
+      }
+    }, 1800)
+    return () => clearTimeout(timer)
   })
 
   const idleSpriteUrl = $derived(
@@ -221,6 +243,34 @@
     {/if}
 
   </div><!-- end .room-content -->
+
+  <!-- === GAIA STUDY PROMPT (DD-V2-142) ===
+       Soft nudge shown when 5+ facts are due for review. Warm, not urgent. -->
+  {#if studyPromptVisible}
+    <div class="study-prompt" role="status" aria-live="polite">
+      <span class="study-prompt-avatar" aria-hidden="true">
+        <img src={gaiaNeutralImg} alt="GAIA" class="study-prompt-avatar-img" />
+      </span>
+      <span class="study-prompt-text">
+        Ready for a quick study? {studyPromptCount} facts are ready to strengthen!
+      </span>
+      <button
+        class="study-prompt-cta"
+        type="button"
+        onclick={() => { studyPromptVisible = false; onStudy() }}
+      >
+        Study
+      </button>
+      <button
+        class="study-prompt-dismiss"
+        type="button"
+        aria-label="Dismiss"
+        onclick={() => { studyPromptVisible = false }}
+      >
+        ×
+      </button>
+    </div>
+  {/if}
 </section>
 
 <style>
@@ -342,5 +392,95 @@
     -webkit-overflow-scrolling: touch;
     padding: 0 0 8px;
     padding-bottom: env(safe-area-inset-bottom, 8px);
+  }
+
+  /* ---- Soft GAIA study prompt (DD-V2-142) ---- */
+  .study-prompt {
+    position: absolute;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    left: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--color-primary) 18%, var(--color-surface) 82%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent 50%);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--color-text);
+    z-index: 40;
+    animation: study-prompt-slide-in 0.35s ease-out;
+  }
+
+  @keyframes study-prompt-slide-in {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+
+  .study-prompt-avatar {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--color-primary) 20%, var(--color-surface) 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .study-prompt-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+  }
+
+  .study-prompt-text {
+    flex: 1;
+    line-height: 1.35;
+    color: var(--color-text);
+  }
+
+  .study-prompt-cta {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-primary) 30%, var(--color-surface) 70%);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .study-prompt-cta:active {
+    background: color-mix(in srgb, var(--color-primary) 50%, var(--color-surface) 50%);
+  }
+
+  .study-prompt-dismiss {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+  }
+
+  .study-prompt-dismiss:hover {
+    background: color-mix(in srgb, var(--color-text) 10%, transparent 90%);
   }
 </style>

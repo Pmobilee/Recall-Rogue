@@ -38,6 +38,8 @@ const EMPTY_STATS: PlayerStats = {
   totalQuizWrong: 0,
   currentStreak: 0,
   bestStreak: 0,
+  totalSessions: 0,
+  zeroDiveSessions: 0,
 }
 
 /**
@@ -176,6 +178,9 @@ export function load(): PlayerSave | null {
       parsedAny['purchasedDeals'] = []
       parsedAny['lastDealDate'] = undefined
     }
+    // Backward compatibility: ensure session tracking stats fields exist
+    if (parsed.stats.totalSessions === undefined) parsed.stats.totalSessions = 0
+    if (parsed.stats.zeroDiveSessions === undefined) parsed.stats.zeroDiveSessions = 0
     return parsed as PlayerSave
   } catch {
     return null
@@ -191,6 +196,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
 
   return {
     version: SAVE_VERSION,
+    factDbVersion: 0,
     playerId: typeof crypto.randomUUID === 'function'
       ? crypto.randomUUID()
       : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`,

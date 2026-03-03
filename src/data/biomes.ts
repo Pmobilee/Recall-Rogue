@@ -1,4 +1,6 @@
 import { BlockType } from './types'
+import type { BiomePalette } from './palette'
+import { BIOME_STRUCTURAL_FEATURES } from './biomeStructures'
 
 // ─── Tier and ID types ────────────────────────────────────────────────────────
 
@@ -88,6 +90,23 @@ export interface Biome {
   fogTint: number
   /** Tile theme key for Phase 9 per-biome tile sets */
   tileTheme: string
+  /** Biome-specific structural features for procedural generation (Phase 9.4) */
+  structuralFeatures: string[]
+  /** Per-biome palette for visual consistency (Phase 9.9) */
+  palette: BiomePalette
+  /** Visual production tier: 1=hero, 2=distinct, 3=palette-swap (Phase 9.8) */
+  visualTier: 1 | 2 | 3
+  /** Sprite prefix for per-biome tile loading (Phase 9.3) */
+  spritePrefix: string
+  /** Whether this biome is an anomaly that can override any depth tier (Phase 9.7) */
+  isAnomaly: boolean
+  /** Depth aesthetic metadata for ComfyUI prompt generation (Phase 9.11) */
+  depthAesthetic: {
+    colorTemperature: 'warm' | 'neutral' | 'cool' | 'cold' | 'void'
+    shapeLanguage: 'organic' | 'structured' | 'jagged' | 'alien'
+    brightnessRange: [number, number]
+    glowLevel: 'none' | 'subtle' | 'moderate' | 'heavy'
+  }
 }
 
 /** Alias for Biome — used in phase doc spec references. */
@@ -106,6 +125,59 @@ function blockWeightsForTier(tier: BiomeTier): Biome['blockWeights'] {
     case 'deep':     return { dirt: 0.4, softRock: 0.8, stone: 1.3, hardRock: 1.0 }
     case 'extreme':  return { dirt: 0.1, softRock: 0.4, stone: 1.1, hardRock: 1.8 }
     case 'anomaly':  return { dirt: 0.8, softRock: 0.8, stone: 1.0, hardRock: 1.0 }
+  }
+}
+
+/**
+ * Lightens a hex color by a given factor (0.0 = original, 1.0 = white).
+ * Used for deriving accent and highlight from the dominant color.
+ */
+function lightenColor(color: number, factor: number): number {
+  const r = (color >> 16) & 0xff
+  const g = (color >> 8) & 0xff
+  const b = color & 0xff
+  const lr = Math.min(255, Math.round(r + (255 - r) * factor))
+  const lg = Math.min(255, Math.round(g + (255 - g) * factor))
+  const lb = Math.min(255, Math.round(b + (255 - b) * factor))
+  return (lr << 16) | (lg << 8) | lb
+}
+
+/**
+ * Derives a BiomePalette from the ambient color.
+ * dominant = ambientColor, accent = lighten 30%, highlight = lighten 60%.
+ */
+function paletteFromColor(ambientColor: number): BiomePalette {
+  return {
+    dominant: ambientColor,
+    accent: lightenColor(ambientColor, 0.3),
+    highlight: lightenColor(ambientColor, 0.6),
+  }
+}
+
+/** Returns the default visual tier for a given biome tier. */
+function visualTierForBiomeTier(tier: BiomeTier): 1 | 2 | 3 {
+  switch (tier) {
+    case 'shallow':  return 1
+    case 'mid':      return 2
+    case 'deep':     return 2
+    case 'extreme':  return 3
+    case 'anomaly':  return 3
+  }
+}
+
+/** Returns depth aesthetic metadata derived from the biome tier. */
+function depthAestheticForTier(tier: BiomeTier): Biome['depthAesthetic'] {
+  switch (tier) {
+    case 'shallow':
+      return { colorTemperature: 'neutral', shapeLanguage: 'organic', brightnessRange: [0.5, 0.8], glowLevel: 'none' }
+    case 'mid':
+      return { colorTemperature: 'cool', shapeLanguage: 'structured', brightnessRange: [0.3, 0.6], glowLevel: 'subtle' }
+    case 'deep':
+      return { colorTemperature: 'cold', shapeLanguage: 'jagged', brightnessRange: [0.2, 0.5], glowLevel: 'moderate' }
+    case 'extreme':
+      return { colorTemperature: 'warm', shapeLanguage: 'jagged', brightnessRange: [0.1, 0.4], glowLevel: 'heavy' }
+    case 'anomaly':
+      return { colorTemperature: 'void', shapeLanguage: 'alien', brightnessRange: [0.1, 0.7], glowLevel: 'heavy' }
   }
 }
 
@@ -132,6 +204,10 @@ interface BiomeInput {
   blockColorOverrides?: Partial<Record<BlockType, number>>
   /** Override blockWeights — defaults to tier-derived weights */
   blockWeights?: Biome['blockWeights']
+  structuralFeatures?: string[]
+  palette?: BiomePalette
+  visualTier?: 1 | 2 | 3
+  spritePrefix?: string
 }
 
 /**
@@ -173,6 +249,12 @@ function makeBiome(input: BiomeInput): Biome {
     mineralWeights,
     fogTint: darkenColor(ambientColor) || 0x0a0a14,
     tileTheme: input.tileTheme,
+    structuralFeatures: input.structuralFeatures ?? BIOME_STRUCTURAL_FEATURES[input.id] ?? [],
+    palette: input.palette ?? paletteFromColor(ambientColor),
+    visualTier: input.visualTier ?? visualTierForBiomeTier(input.tier),
+    spritePrefix: input.spritePrefix ?? ('biome_' + input.id),
+    isAnomaly: input.tier === 'anomaly',
+    depthAesthetic: depthAestheticForTier(input.tier),
   }
 }
 

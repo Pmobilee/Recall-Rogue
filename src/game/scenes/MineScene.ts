@@ -31,6 +31,10 @@ import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, 
 import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
 import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive } from '../../ui/stores/gameState'
 import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
+import { BiomeParticleManager } from '../managers/BiomeParticleManager'
+import { AudioManager } from '../managers/AudioManager'
+import { BiomeGlowSystem } from '../systems/BiomeGlowSystem'
+import { ALL_BIOMES } from '../../data/biomes'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -139,6 +143,12 @@ export class MineScene extends Phaser.Scene {
   private hazardSystem: HazardSystem | null = null
   /** Tracks the last direction the player moved/mined, used for Drill Charge. */
   private playerFacing: 'up' | 'down' | 'left' | 'right' = 'down'
+  /** Phase 9: Per-biome ambient particle manager. */
+  private biomeParticles: BiomeParticleManager | null = null
+  /** Phase 9: Biome audio crossfading manager. */
+  private audioManager: AudioManager | null = null
+  /** Phase 9: Fog glow system for luminous blocks. */
+  private glowSystem: BiomeGlowSystem | null = null
 
   constructor() {
     super({ key: 'MineScene' })
@@ -180,6 +190,16 @@ export class MineScene extends Phaser.Scene {
     // Store biome passed from GameManager (if any); create() will pick one if absent.
     if (data.biome) {
       this.currentBiome = data.biome
+    }
+    // Phase 9.3: Developer biome override via URL parameter
+    const urlParams = new URLSearchParams(window.location.search)
+    const biomeOverride = urlParams.get('biome')
+    if (biomeOverride) {
+      const found = ALL_BIOMES.find(b => b.id === biomeOverride)
+      if (found) {
+        this.currentBiome = found
+        console.info(`[MineScene] Biome override active: ${found.name}`)
+      }
     }
     // Capture companion effect for this layer.
     this.companionEffect = data.companionEffect ?? null
@@ -288,8 +308,24 @@ export class MineScene extends Phaser.Scene {
     // Start biome-specific ambient particles
     this.particles.startAmbientEmitters(this.currentBiome, worldWidth, worldHeight)
 
+    // Phase 9: Per-biome particle manager
+    this.biomeParticles = new BiomeParticleManager(this)
+    this.biomeParticles.activateBiome(this.currentBiome.id)
+
+    // Phase 9: Audio manager for biome crossfading
+    this.audioManager = new AudioManager(this)
+    this.audioManager.transitionToBiome(this.currentBiome.id)
+
+    // Phase 9: Fog glow system for luminous blocks
+    this.glowSystem = new BiomeGlowSystem(this, 32) // 32px tile size
+    this.glowSystem.init()
+
     this.redrawAll()
     revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
+    // Update fog glow after initial block reveals
+    if (this.glowSystem) {
+      this.glowSystem.update(this.grid)
+    }
 
     // Apply companion create() effects
     if (this.companionEffect) {
@@ -383,6 +419,15 @@ export class MineScene extends Phaser.Scene {
     const rawSeed = tileX * 31 + tileY * 17 + salt * 13
     const positiveSeed = ((rawSeed % 7919) + 7919) % 7919
     return positiveSeed % modulo
+  }
+
+  /**
+   * Returns the biome accent tint color for critical special blocks (DD-V2-241).
+   * Critical blocks (QuizGate, DescentShaft, ExitLadder) use a universal shape
+   * with biome-specific accent coloring for visual integration.
+   */
+  private getBiomeAccentTint(): number {
+    return this.currentBiome.palette?.accent ?? this.currentBiome.ambientColor
   }
 
   private drawBlockPattern(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
@@ -838,21 +883,31 @@ export class MineScene extends Phaser.Scene {
             cell.type === BlockType.Stone ||
             cell.type === BlockType.HardRock
           ) {
-            // Derive tint color from biome properties for a subtle overlay.
-            // Lava-heavy biomes get warm red; crystal biomes get cool blue; others get ambient wash.
+            // NOTE: Per-biome color tint reduced (DD-V2-240).
+            // Each biome now uses its own palette-accurate sprites — strong uniform tint
+            // creates "double-tint" muddiness. 0.05 alpha atmospheric wash retained
+            // for layer-depth cohesion only.
             const hw = this.currentBiome.hazardWeights
             const mw = this.currentBiome.mineralWeights
             if (hw.lavaBlockDensity > 0.3) {
-              this.overlayGraphics.fillStyle(0xb43c1e, 0.15)
+              this.overlayGraphics.fillStyle(0xb43c1e, 0.05)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             } else if (mw.crystalMultiplier >= 1.5 || mw.geodeMultiplier >= 1.5) {
-              this.overlayGraphics.fillStyle(0x5078c8, 0.15)
+              this.overlayGraphics.fillStyle(0x5078c8, 0.05)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             } else {
-              // Faint ambient wash based on biome ambientColor
-              this.overlayGraphics.fillStyle(this.currentBiome.ambientColor, 0.08)
+              this.overlayGraphics.fillStyle(this.currentBiome.ambientColor, 0.04)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             }
+          }
+          // DD-V2-241: Biome accent tint for critical special blocks
+          if (
+            cell.type === BlockType.QuizGate ||
+            cell.type === BlockType.DescentShaft ||
+            cell.type === BlockType.ExitLadder
+          ) {
+            this.overlayGraphics.fillStyle(this.getBiomeAccentTint(), 0.12)
+            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
           }
           // Hazard idle animations: subtle pulsing overlay on revealed hazard blocks
           if (cell.type === BlockType.LavaBlock) {
@@ -1177,6 +1232,10 @@ export class MineScene extends Phaser.Scene {
       revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
       if (this.activeUpgrades.has('scanner_boost')) {
         this.revealSpecialBlocks()
+      }
+      // Update fog glow after block reveals
+      if (this.glowSystem) {
+        this.glowSystem.update(this.grid)
       }
 
       // Advance tick on every successful player move
@@ -2849,5 +2908,11 @@ export class MineScene extends Phaser.Scene {
     this.hazardSystem?.clearAll()
     TickSystem.getInstance().unregister('hazard-system')
     this.lootPop?.destroy()
+    this.biomeParticles?.destroyAll()
+    this.biomeParticles = null
+    this.audioManager?.stopAll()
+    this.audioManager = null
+    this.glowSystem?.destroy()
+    this.glowSystem = null
   }
 }

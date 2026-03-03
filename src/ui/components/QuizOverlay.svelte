@@ -6,6 +6,7 @@
   import { playerSave } from '../stores/playerData'
   import { gaiaMood } from '../stores/settings'
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
+  import ReportModal from './ReportModal.svelte'
 
   // GAIA sprite imports for reaction bubble
   import gaiaNeutralImg from '../../assets/sprites/dome/gaia_neutral.png'
@@ -51,17 +52,27 @@
   let isCorrect = $state<boolean | null>(null)
   let attemptsRemaining = $state<number>(totalAttempts)
   let showResult = $state<boolean>(false)
+  let showReportModal = $state(false)
+
+  const CORRECT_PHRASES = ["That's it!", "Nailed it!", "Locked in!"] as const
+  const WRONG_PHRASES = ["Not quite!", "Hmm, let me remind you..."] as const
 
   const resultText = $derived(() => {
     if (!showResult || isCorrect === null) return ''
-    if (isCorrect) return 'Correct!'
-    if (mode === 'layer') return `Wrong! -${BALANCE.LAYER_ENTRANCE_WRONG_O2_COST} O2`
-    return 'Wrong!'
+    if (isCorrect) return CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)]
+    if (mode === 'layer') return `Not quite! -${BALANCE.LAYER_ENTRANCE_WRONG_O2_COST} O2`
+    return WRONG_PHRASES[Math.floor(Math.random() * WRONG_PHRASES.length)]
   })
 
   const resultClass = $derived(() => {
     if (!showResult || isCorrect === null) return ''
     return isCorrect ? 'result-correct' : 'result-wrong'
+  })
+
+  /** CSS class applied to the quiz card for outcome animation */
+  const cardOutcomeClass = $derived(() => {
+    if (!showResult || isCorrect === null) return ''
+    return isCorrect ? 'correct-animation' : 'wrong-animation'
   })
 
   /**
@@ -191,29 +202,30 @@
   })
 </script>
 
-<div class="quiz-overlay quiz-overlay-enter" role="dialog" aria-modal="true" aria-label="Quiz">
-  <div class="quiz-card quiz-card-enter">
-    <button class="close-button" type="button" onclick={onClose} aria-label="Close quiz">
+<div class="quiz-overlay quiz-overlay-enter" role="dialog" aria-modal="true" aria-label="GAIA Field Scan">
+  <div class={`quiz-card quiz-card-enter ${cardOutcomeClass()}`}>
+    <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">
       x
     </button>
 
     {#if mode === 'random'}
-      <p class="pop-quiz-header">Pop Quiz!</p>
-      <p class="pop-quiz-reward">Correct: +{BALANCE.RANDOM_QUIZ_REWARD_DUST} dust &nbsp;|&nbsp; Wrong: -{BALANCE.RANDOM_QUIZ_WRONG_O2_COST} O2</p>
+      <p class="pop-quiz-header">Scanner ping!</p>
+      <p class="pop-quiz-sub">Residual data detected...</p>
+      <p class="pop-quiz-reward">Nailed it: +{BALANCE.RANDOM_QUIZ_REWARD_DUST} dust &nbsp;|&nbsp; Not quite: -{BALANCE.RANDOM_QUIZ_WRONG_O2_COST} O2</p>
     {/if}
 
     {#if mode === 'gate' && gateProgress}
-      <p class="gate-progress">Gate: {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+      <p class="gate-progress">Knowledge Gate: {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
     {/if}
 
     {#if mode === 'artifact' && gateProgress}
-      <p class="artifact-appraisal-header">Artifact Appraisal — Question {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
-      <p class="artifact-appraisal-hint">Each correct answer may boost the artifact's rarity!</p>
+      <p class="artifact-appraisal-header">Artifact Analysis {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+      <p class="artifact-appraisal-hint">Artifact uplink — your knowledge calibrates the analysis.</p>
     {/if}
 
     {#if mode === 'layer'}
-      <p class="layer-entrance-header">Layer Descent — Knowledge Check</p>
-      <p class="layer-entrance-hint">Answer correctly to descend without penalty!</p>
+      <p class="layer-entrance-header">Depth Calibration</p>
+      <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
     {/if}
 
     <p class="question">{fact.quizQuestion}</p>
@@ -247,9 +259,9 @@
         <span class="gaia-reaction-name">{GAIA_NAME}</span>
         <span class="gaia-reaction-text">
           {#if isCorrect}
-            {['Great work!', 'Correct!', 'Excellent!', 'Well done!'][Math.floor(Math.random() * 4)]}
+            {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}
           {:else}
-            {['Keep trying.', 'Almost!', 'Study up.', 'Not quite.'][Math.floor(Math.random() * 4)]}
+            {["Keep at it.", "Almost!", "Not quite.", "Hmm, let me remind you..."][Math.floor(Math.random() * 4)]}
           {/if}
         </span>
       </div>
@@ -279,10 +291,41 @@
         </button>
       </div>
     {/if}
+
+    {#if showResult && isCorrect === false}
+      <button class="report-fact-btn" type="button" onclick={() => (showReportModal = true)}>
+        Report this fact
+      </button>
+    {/if}
   </div>
 </div>
 
+{#if showReportModal}
+  <ReportModal factId={fact.id} onClose={() => (showReportModal = false)} />
+{/if}
+
 <style>
+  /* ── Outcome animations (dust-burst for correct, border-ripple for wrong) ── */
+  @keyframes dust-burst {
+    0%   { transform: scale(1); opacity: 1; }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes border-ripple {
+    0%   { box-shadow: inset 0 0 0 0 rgba(160, 144, 96, 0.5); }
+    50%  { box-shadow: inset 0 0 8px 2px rgba(160, 144, 96, 0.3); }
+    100% { box-shadow: inset 0 0 0 0 rgba(160, 144, 96, 0); }
+  }
+
+  .correct-animation {
+    animation: dust-burst 800ms ease-out;
+  }
+
+  .wrong-animation {
+    animation: border-ripple 1200ms ease-out;
+  }
+
   /* ── Entry animations ─────────────────────────────────────────────────── */
   @keyframes overlay-fade-in {
     from { background: rgba(0, 0, 0, 0); }
@@ -387,6 +430,16 @@
     text-transform: uppercase;
     margin-top: 0.25rem;
     opacity: 0.85;
+  }
+
+  .pop-quiz-sub {
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    margin-top: -0.5rem;
+    opacity: 0.8;
   }
 
   .pop-quiz-reward {
@@ -654,5 +707,24 @@
   .gaia-reaction-text {
     color: var(--color-text-dim);
     font-style: italic;
+  }
+
+  .report-fact-btn {
+    align-self: center;
+    background: transparent;
+    border: none;
+    color: var(--color-text-dim);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    min-height: 44px;
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+
+  .report-fact-btn:hover {
+    opacity: 1;
+    color: var(--color-text);
   }
 </style>

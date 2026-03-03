@@ -1,7 +1,8 @@
-import { BALANCE, getLayerGridSize } from '../../data/balance'
+import { BALANCE, getLayerGridSize, HAZARD_DENSITY_BY_LAYER } from '../../data/balance'
 import { BlockType, type MineCell, type Rarity } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
 import { LANDMARK_LAYERS, LANDMARK_TEMPLATES, getLandmarkIdForLayer, type LandmarkTemplate } from '../../data/landmarks'
+import { BIOME_STRUCTURAL_FEATURES, STRUCTURAL_FEATURE_CONFIGS, type StructuralFeatureId } from '../../data/biomeStructures'
 
 /**
  * Creates a deterministic pseudo-random number generator from a numeric seed.
@@ -103,6 +104,75 @@ function stampLandmark(
 }
 
 /**
+ * Places biome-specific structural features on the grid after base generation.
+ * Features are non-overlapping rectangular regions filled with the feature's block type.
+ * Phase 9.4
+ */
+function placeStructuralFeatures(
+  grid: MineCell[][],
+  biomeId: string,
+  rng: () => number,
+  height: number,
+  width: number,
+): void {
+  const featureIds = BIOME_STRUCTURAL_FEATURES[biomeId]
+  if (!featureIds || featureIds.length === 0) return
+
+  // Track placed feature bounding boxes to prevent overlap
+  const placed: Array<{ x: number; y: number; w: number; h: number }> = []
+
+  for (const featureId of featureIds) {
+    const config = STRUCTURAL_FEATURE_CONFIGS[featureId]
+    if (!config) continue
+
+    // Attempt to place the feature a few times
+    const maxAttempts = 8
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      // Skip this placement with probability (1 - frequency)
+      if (rng() > config.frequency) continue
+
+      // Randomize size within bounds
+      const fw = config.minSize.width + Math.floor(rng() * (config.maxSize.width - config.minSize.width + 1))
+      const fh = config.minSize.height + Math.floor(rng() * (config.maxSize.height - config.minSize.height + 1))
+
+      // Random position (leave 2-cell border)
+      const margin = 2
+      if (width <= fw + margin * 2 || height <= fh + margin * 2) continue
+      const fx = margin + Math.floor(rng() * (width - fw - margin * 2))
+      const fy = margin + Math.floor(rng() * (height - fh - margin * 2))
+
+      // Check overlap with previously placed features
+      const overlaps = placed.some(p =>
+        fx < p.x + p.w && fx + fw > p.x &&
+        fy < p.y + p.h && fy + fh > p.y
+      )
+      if (overlaps) continue
+
+      // Place the feature by filling the bounding box with the fill block
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          const gx = fx + dx
+          const gy = fy + dy
+          if (gy >= 0 && gy < height && gx >= 0 && gx < width) {
+            const cell = grid[gy][gx]
+            // Don't overwrite special blocks (exit, spawn, descent shaft)
+            if (cell.type === BlockType.ExitLadder ||
+                cell.type === BlockType.DescentShaft ||
+                cell.type === BlockType.QuizGate) continue
+            cell.type = config.fillBlock
+            cell.hardness = getHardness(config.fillBlock)
+            cell.maxHardness = cell.hardness
+          }
+        }
+      }
+
+      placed.push({ x: fx, y: fy, w: fw, h: fh })
+      break // Successfully placed this feature
+    }
+  }
+}
+
+/**
  * Generates a mine grid using deterministic procedural rules.
  * @param seed - Deterministic seed for this layer.
  * @param facts - Fact IDs to assign to quiz/artifact blocks.
@@ -193,6 +263,9 @@ export function generateMine(
     spawnX = 2 + Math.floor(rng() * (width - 4))
     spawnY = 2 + Math.floor(rng() * (height - 8))
   }
+
+  // Phase 9.4: Place biome-specific structural features
+  placeStructuralFeatures(grid, biome.id, rng, height, width)
 
   const positions = buildSpecialPositionPool(width, height)
   let factCursor = 0
@@ -322,7 +395,7 @@ export function generateMine(
 
   placeExitRoom(grid, width, height, rng, nextFactId, spawnX, spawnY)
 
-  placeHazards(grid, rng, height, biome)
+  placeHazards(grid, rng, height, biome, layer)
 
   placeOxygenTanks(grid, positions, rng, height)
 
@@ -340,7 +413,21 @@ export function generateMine(
     placeSendUpStation(grid, rng, width, height, spawnX, spawnY)
   }
 
+  flagTransitionZones(grid)
+
   return { grid, spawnX, spawnY, biome }
+}
+
+/**
+ * Flags cells near biome boundaries as transition zones.
+ * Currently a no-op since each layer uses a single biome.
+ * Will be activated when multi-biome layers are introduced (Phase 17+).
+ * (DD-V2-235)
+ */
+function flagTransitionZones(grid: MineCell[][]): void {
+  // No-op: single-biome-per-layer means no boundaries to flag.
+  // When multi-biome layers are introduced, iterate grid cells and mark
+  // any cell within 2-3 tiles of a biome boundary with isTransitionZone = true.
 }
 
 /**
@@ -1807,7 +1894,7 @@ function placeFossilNodes(
  * Called after all special block and room placement so hazards don't overwrite exits or items.
  * Biome hazardMultipliers scale each hazard's density independently.
  */
-function placeHazards(grid: MineCell[][], rng: () => number, height: number, biome: Biome): void {
+function placeHazards(grid: MineCell[][], rng: () => number, height: number, biome: Biome, layer = 0, hazardScalar = 1.0): void {
   const eligibleBaseTypes = new Set<BlockType>([
     BlockType.Dirt,
     BlockType.SoftRock,
@@ -1815,10 +1902,11 @@ function placeHazards(grid: MineCell[][], rng: () => number, height: number, bio
     BlockType.HardRock,
   ])
 
-  // Apply biome multipliers to the base hazard densities.
-  const lavaDensity = BALANCE.LAVA_DENSITY * biome.hazardMultipliers.lava
-  const gasDensity = BALANCE.GAS_POCKET_DENSITY * biome.hazardMultipliers.gas
-  const unstableDensity = BALANCE.UNSTABLE_GROUND_DENSITY * biome.hazardMultipliers.unstable
+  // Apply biome multipliers, per-layer density scaling, and optional auto-balance scalar.
+  const layerHazardMultiplier = HAZARD_DENSITY_BY_LAYER[(layer + 1)] ?? 1.0  // layer is 0-based, map is 1-based
+  const lavaDensity = BALANCE.LAVA_DENSITY * biome.hazardMultipliers.lava * layerHazardMultiplier * hazardScalar
+  const gasDensity = BALANCE.GAS_POCKET_DENSITY * biome.hazardMultipliers.gas * layerHazardMultiplier * hazardScalar
+  const unstableDensity = BALANCE.UNSTABLE_GROUND_DENSITY * biome.hazardMultipliers.unstable * layerHazardMultiplier * hazardScalar
 
   for (let y = 0; y < height; y++) {
     const depthRatio = y / height

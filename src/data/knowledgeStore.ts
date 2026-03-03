@@ -6,9 +6,9 @@ import type { PlayerStats } from './types'
 
 /** The effect applied when a Knowledge Store item is active */
 export type KnowledgeEffect =
-  | { type: 'quiz_hint'; value: number }               // Eliminate N wrong quiz answers
+  | { type: 'quiz_hint'; value: number }               // Eliminate N unlikely choices in field scans
   | { type: 'xp_multiplier'; value: number }           // Multiply learning speed
-  | { type: 'dust_per_correct'; value: number }        // Bonus dust per correct quiz
+  | { type: 'dust_per_correct'; value: number }        // Bonus dust per nailed field scan
   | { type: 'review_extension'; days: number }         // Extend review intervals by N days
   | { type: 'category_boost'; category: string; value: number } // Boost specific category mastery speed
 
@@ -41,7 +41,7 @@ export const KNOWLEDGE_ITEMS: KnowledgeItem[] = [
   {
     id: 'quiz_hint_1',
     name: 'Study Notes',
-    description: 'Eliminate 1 wrong quiz answer permanently',
+    description: 'Eliminate 1 unlikely choice in field scans permanently',
     icon: '📝',
     category: 'powerup',
     cost: 50,
@@ -62,7 +62,7 @@ export const KNOWLEDGE_ITEMS: KnowledgeItem[] = [
   {
     id: 'dust_scholar',
     name: 'Dust Scholar',
-    description: '+3 dust for every correct quiz answer',
+    description: '+3 dust for every nailed field scan',
     icon: '💰',
     category: 'powerup',
     cost: 75,

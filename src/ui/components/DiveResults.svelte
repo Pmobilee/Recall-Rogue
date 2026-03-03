@@ -1,11 +1,45 @@
 <script lang="ts">
   import { diveResults } from '../stores/gameState'
+  import { playerSave } from '../stores/playerData'
+  import { BALANCE } from '../../data/balance'
 
   interface Props {
     onContinue: () => void
   }
 
   let { onContinue }: Props = $props()
+
+  /**
+   * Derive an informational GAIA hook line to show at the bottom of the results
+   * screen (DD-V2-137). Uses warm, progress-oriented language — no urgency.
+   */
+  const gaiaHook = $derived((): string => {
+    const save = $playerSave
+    if (!save) return ''
+
+    const learned = save.learnedFacts.length
+    const dives = save.stats.totalDivesCompleted
+
+    // Find the next dome room the player hasn't unlocked yet
+    const unlockedRooms = save.unlockedRooms ?? ['command']
+    const nextRoom = BALANCE.DOME_ROOMS.find(
+      r => r.unlockDives > 0 && !unlockedRooms.includes(r.id),
+    )
+
+    if (nextRoom) {
+      const divesLeft = nextRoom.unlockDives - dives
+      if (divesLeft <= 0) {
+        return `The ${nextRoom.name} just unlocked — check it out!`
+      }
+      return `${divesLeft} more dive${divesLeft === 1 ? '' : 's'} until the ${nextRoom.name} opens up.`
+    }
+
+    // All rooms unlocked — show a warm fact-count message
+    if (learned === 0) {
+      return 'Every block you mine is a story waiting to be told.'
+    }
+    return `You carry ${learned} piece${learned === 1 ? '' : 's'} of rediscovered knowledge. Keep digging.`
+  })
 </script>
 
 <div class="results-overlay">
@@ -71,6 +105,12 @@
         </div>
       {/if}
     </div>
+
+    {#if gaiaHook()}
+      <p class="gaia-hook" aria-live="polite">
+        {gaiaHook()}
+      </p>
+    {/if}
 
     <button class="continue-btn" type="button" onclick={onContinue}>
       Continue
@@ -184,5 +224,18 @@
 
   .continue-btn:active {
     transform: scale(0.98);
+  }
+
+  .gaia-hook {
+    margin: 0;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface) 88%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent 70%);
+    font-size: 0.88rem;
+    color: var(--color-text-dim);
+    line-height: 1.45;
+    font-style: italic;
+    text-align: center;
   }
 </style>

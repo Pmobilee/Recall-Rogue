@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
-import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE } from '../data/balance'
+import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, AUTO_BALANCE_DEATH_THRESHOLD } from '../data/balance'
 import { audioManager } from '../services/audioService'
 import type { Fact, FossilState, InventorySlot, MineralTier, Relic } from '../data/types'
 import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type CompanionEffect } from '../data/fossils'
@@ -97,6 +97,14 @@ export class GameManager {
   private companionEffect: CompanionEffect | null = null
   /** Whether O2 drain is paused (during quiz overlays). (DD-V2-085) */
   private o2Paused = false
+  /** Number of completed dives at the start of this session — used to detect zero-dive sessions. */
+  private _divesAtSessionStart = 0
+  /** Consecutive deaths on the same layer — used for auto-balance easing. (DD-V2-053) */
+  private sameLayerDeathCount = 0
+  /** Layer index of the last recorded death — resets the counter when the layer changes. */
+  private lastDeathLayer = -1
+  /** Whether auto-balance easing is currently active (hazards reduced, O2 bonus applied). */
+  private autoBalanceActive = false
 
   // ---- Sub-managers (initialized lazily in boot()) ----
   private gaiaManager!: GaiaManager
@@ -180,6 +188,34 @@ export class GameManager {
     }
     document.addEventListener('pointerdown', unlockAudio, { once: true })
     document.addEventListener('touchstart', unlockAudio, { once: true })
+
+    // --- Session tracking (DD-V2, Phase 18.5) ---
+    // Snapshot dives completed at boot so we can detect zero-dive sessions on close.
+    const currentSave = get(playerSave)
+    this._divesAtSessionStart = currentSave?.stats.totalDivesCompleted ?? 0
+
+    // Increment totalSessions on each app boot.
+    playerSave.update(s => {
+      if (!s) return s
+      return { ...s, stats: { ...s.stats, totalSessions: (s.stats.totalSessions ?? 0) + 1 } }
+    })
+    persistPlayer()
+
+    // On page hide / tab switch, check if the player dived at all this session.
+    // If not, increment zeroDiveSessions as a cozy-session signal.
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'hidden') return
+      const save = get(playerSave)
+      if (!save) return
+      const divesNow = save.stats.totalDivesCompleted ?? 0
+      if (divesNow <= this._divesAtSessionStart) {
+        playerSave.update(s => {
+          if (!s) return s
+          return { ...s, stats: { ...s.stats, zeroDiveSessions: (s.stats.zeroDiveSessions ?? 0) + 1 } }
+        })
+        persistPlayer()
+      }
+    })
   }
 
   /** Get the Phaser game instance */
@@ -507,7 +543,7 @@ export class GameManager {
         const choices = getQuizChoices(fact)
         activeQuiz.set({ fact, choices, source: 'random' })
         currentScreen.set('quiz')
-        gaiaMessage.set("Pop quiz! Get it right for bonus minerals.")
+        gaiaMessage.set("Scanner ping! Residual data detected — answer to earn bonus minerals.")
       } else {
         // No fact available — resume without quiz
         const scene = this.getMineScene()
@@ -714,6 +750,7 @@ export class GameManager {
 
     this.currentLayer = nextLayer
     currentLayerStore.set(nextLayer)
+    this.onLayerAdvance()
 
     // Derive a deterministic seed for this layer.
     const layerSeed = (this.diveSeed + nextLayer * 1000) >>> 0
@@ -1075,8 +1112,30 @@ export class GameManager {
 
   /** Handle oxygen depletion — forced surface */
   private handleOxygenDepleted(): void {
+    this.onPlayerDeath()
     this.endDive(true)
   }
+
+  /** Track player death for auto-balance easing. Called when O2 reaches 0. */
+  onPlayerDeath(): void {
+    const layer = get(currentLayerStore)
+    if (layer === this.lastDeathLayer) {
+      this.sameLayerDeathCount++
+    } else {
+      this.sameLayerDeathCount = 1
+      this.lastDeathLayer = layer
+    }
+    this.autoBalanceActive = this.sameLayerDeathCount >= AUTO_BALANCE_DEATH_THRESHOLD
+  }
+
+  /** Reset auto-balance when advancing to a new layer. */
+  onLayerAdvance(): void {
+    this.sameLayerDeathCount = 0
+    this.autoBalanceActive = false
+  }
+
+  /** Whether auto-balance easing is currently active. */
+  isAutoBalanceActive(): boolean { return this.autoBalanceActive }
 
   // =========================================================
   // Quiz handling — delegated to QuizManager

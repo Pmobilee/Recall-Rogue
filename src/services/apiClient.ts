@@ -243,6 +243,50 @@ export class ApiClient {
   }
 
   // ----------------------------------------------------------
+  // FACTS
+  // ----------------------------------------------------------
+
+  /**
+   * Submit a player report for a fact (DD-V2-089).
+   * This is a public endpoint — no auth required.
+   */
+  async reportFact(factId: string, reportText: string, playerId?: string): Promise<void> {
+    const res = await fetch(`${this.baseUrl}/facts/${factId}/report`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerId, reportText }),
+    })
+    if (!res.ok) throw new ApiError(`Report failed`, res.status)
+  }
+
+  /**
+   * Fetch full metadata for a single fact from the server.
+   * Used for lazy-loading fact details at quiz time.
+   */
+  async getFact(factId: string): Promise<Record<string, unknown>> {
+    const res = await fetch(`${this.baseUrl}/facts/${factId}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+    if (!res.ok) throw new ApiError(`Failed to fetch fact`, res.status)
+    const data = await res.json()
+    return data as Record<string, unknown>
+  }
+
+  /**
+   * Fetch fact deltas from the server since a given version.
+   * Used for incremental fact sync (DD-V2-198).
+   */
+  async getFactsDelta(since: number): Promise<{ version: number; facts: Record<string, unknown>[]; deletedIds: string[] }> {
+    const res = await fetch(`${this.baseUrl}/facts/delta?since=${since}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+    if (!res.ok) throw new ApiError(`Delta sync failed`, res.status)
+    return (await res.json()) as { version: number; facts: Record<string, unknown>[]; deletedIds: string[] }
+  }
+
+  // ----------------------------------------------------------
   // INTERNALS
   // ----------------------------------------------------------
 

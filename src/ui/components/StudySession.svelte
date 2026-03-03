@@ -2,6 +2,10 @@
   import type { Fact, ReviewState } from '../../data/types'
   import { audioManager } from '../../services/audioService'
   import KnowledgeTree from './KnowledgeTree.svelte'
+  import { initialLOD } from './tree/TreeLOD'
+
+  // Stable no-op LOD state for decorative tree previews in StudySession
+  const _previewLOD = initialLOD()
 
   interface Props {
     facts: Fact[]
@@ -123,7 +127,7 @@
   }
 </script>
 
-<div class="study-session" role="main" aria-label="Study session">
+<div class="study-session" role="main" aria-label="Memory strengthening session">
 
   <!-- ── AMBIENT PARTICLES ─────────────────────────────────────── -->
   <div class="particles" aria-hidden="true">
@@ -147,18 +151,28 @@
     <div class="selector-screen">
       <!-- Tree preview decoration in corner -->
       <div class="tree-preview" aria-hidden="true">
-        <KnowledgeTree {facts} />
+        <KnowledgeTree
+          {facts}
+          lod={_previewLOD}
+          showMode="learned"
+          onMainBranchTap={() => {}}
+          onSubBranchTap={() => {}}
+          onLeafTap={() => {}}
+          onLeafLongPress={() => {}}
+          onPinchIn={() => {}}
+          onPinchOut={() => {}}
+        />
       </div>
 
       <h1 class="selector-title">
         <span class="tree-icon" aria-hidden="true">🌿</span>
-        Study Session
+        Memory Strengthening
       </h1>
       <p class="selector-sub">
         Choose your session
       </p>
       <p class="selector-card-count">
-        {facts.length} card{facts.length === 1 ? '' : 's'} ready for review
+        {facts.length} fact{facts.length === 1 ? '' : 's'} ready to strengthen
       </p>
       <div class="selector-buttons">
         <button
@@ -215,13 +229,13 @@
           <span class="confetti c8"></span>
         </div>
       {/if}
-      <h1 class="complete-title">Session Complete!</h1>
+      <h1 class="complete-title">Memory Strengthened!</h1>
       <div class="score-display">
         <span class="score-correct">{correctCount}</span>
         <span class="score-sep">/</span>
         <span class="score-total">{totalCards}</span>
       </div>
-      <p class="score-label">correct</p>
+      <p class="score-label">locked in</p>
       <p class="summary-message">{summaryMessage}</p>
       <button class="return-btn" type="button" onclick={handleComplete}>
         Return to Base
@@ -232,7 +246,17 @@
   {:else if currentFact}
     <!-- Tree preview in corner for card phase -->
     <div class="tree-preview tree-preview--card" aria-hidden="true">
-      <KnowledgeTree {facts} />
+      <KnowledgeTree
+        {facts}
+        lod={_previewLOD}
+        showMode="learned"
+        onMainBranchTap={() => {}}
+        onSubBranchTap={() => {}}
+        onLeafTap={() => {}}
+        onLeafLongPress={() => {}}
+        onPinchIn={() => {}}
+        onPinchOut={() => {}}
+      />
     </div>
 
     <!-- Progress bar -->

@@ -24,6 +24,18 @@ import type { MineScene } from '../scenes/MineScene'
  * Extracted from GameManager to keep quiz logic self-contained.
  */
 export class QuizManager {
+  /**
+   * Narrative framing strings shown per quiz type (DD-V2-173).
+   * These use adventure/discovery language — no "quiz", "test", "exam", or "grade".
+   */
+  static readonly NARRATIVE_FRAMES = {
+    popQuiz:   "Scanner ping! Residual data detected...",
+    gate:      "Knowledge Gate engaged. Authenticate to proceed.",
+    artifact:  "Artifact uplink — your knowledge calibrates the analysis.",
+    hazard:    "Rapid field assessment! Your knowledge reduces the damage!",
+    layer:     "Depth calibration sequence — what do you recall?",
+    oxygen:    "Field scan detected — answer to unlock the cache.",
+  } as const
   private getMineScene: () => MineScene | null
   private randomGaia: (lines: string[], trigger?: string) => void
 
@@ -105,12 +117,12 @@ export class QuizManager {
       ], 'quiz_failure_mild')
     } else if (count <= 4) {
       this.randomGaia([
-        "This one keeps tripping you up. Try a different angle.",
+        "This one keeps surfacing for you. Try a different angle.",
         "Alternate perspective might help here.",
       ], 'quiz_failure_moderate')
     } else {
       this.randomGaia([
-        "This one is proving difficult. Consider a study session in the Dome — I will focus on it with you.",
+        "This one is proving difficult. Consider a Memory Strengthening session in the Dome — I will focus on it with you.",
       ], 'quiz_failure_severe')
     }
   }
@@ -156,11 +168,11 @@ export class QuizManager {
       scene.drainOxygen(BALANCE.CONSISTENCY_PENALTY_O2)
     }
 
-    // GAIA callout — pick from snarky "you knew this" lines
+    // GAIA callout — pick from encouraging consistency reminder lines
     this.randomGaia([
-      "You knew that one before! Sloppy, pilot.",
-      "Inconsistent answer — you've gotten this right before.",
-      "Focus! You learned this already.",
+      "You've recalled this before — stay consistent, pilot.",
+      "Inconsistent answer — you've gotten this right before. Keep it locked in.",
+      "You learned this one. Let's make sure it sticks.",
     ])
   }
 
@@ -263,9 +275,9 @@ export class QuizManager {
       scene.resumeFromRandomQuiz(correct)
       currentScreen.set('mining')
       if (correct) {
-        gaiaMessage.set(`Not bad. Here's some dust for your trouble.`)
+        gaiaMessage.set(`Nailed it! Dust deposit unlocked.`)
       } else {
-        gaiaMessage.set("Wrong. That'll cost you some oxygen.")
+        gaiaMessage.set("Not quite. Some O2 vented in the confusion.")
       }
     } else {
       currentScreen.set('base')
@@ -285,9 +297,9 @@ export class QuizManager {
     const scene = this.getMineScene()
     if (scene) {
       if (correct) {
-        gaiaMessage.set("Well done. Descending...")
+        gaiaMessage.set("Locked in. Descending...")
       } else {
-        gaiaMessage.set("Wrong, but you'll survive. Barely.")
+        gaiaMessage.set("Not quite, but you'll manage. Descending...")
       }
       scene.resumeFromLayerQuiz(correct)
       currentScreen.set('mining')

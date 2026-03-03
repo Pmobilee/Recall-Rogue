@@ -311,6 +311,45 @@ export const TICK_INSTABILITY_COLLAPSE = 1.0;        // 100% = evacuation countd
 export const UNSTABLE_GROUND_TICK_THRESHOLD = 3;     // ticks adjacent before collapse
 export const TICK_INSTABILITY_PER_ACTION = 0.001;    // instability gained per player action
 
+// ---- Per-Layer Difficulty Curve (DD-V2-053) ----
+
+/** Hazard density multiplier per layer. Applied to lava/gas/unstable densities at generation time. */
+export const HAZARD_DENSITY_BY_LAYER: Record<number, number> = {
+  1: 0.0, 2: 0.2, 3: 0.4, 4: 0.6, 5: 0.8,
+  6: 1.0, 7: 1.1, 8: 1.2, 9: 1.3, 10: 1.4,
+  11: 1.6, 12: 1.8, 13: 2.0, 14: 2.2, 15: 2.5,
+  16: 2.8, 17: 3.2, 18: 3.6, 19: 4.0, 20: 4.5,
+}
+
+/** O2 tank size per layer. Deep layers have larger tanks. */
+export const O2_TANK_SIZE_BY_LAYER: Record<number, number> = {
+  1: 100, 2: 100, 3: 100, 4: 100, 5: 100,
+  6: 110, 7: 115, 8: 120, 9: 125, 10: 130,
+  11: 140, 12: 145, 13: 150, 14: 155, 15: 160,
+  16: 175, 17: 185, 18: 195, 19: 205, 20: 220,
+}
+
+/** Mineral rarity tier minimum per layer. 0=dust, 1=shards+, 2=crystals+, 3=geodes. */
+export const MINERAL_TIER_MINIMUM_BY_LAYER: Record<number, number> = {
+  1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
+  6: 1, 7: 1, 8: 1, 9: 1, 10: 1,
+  11: 2, 12: 2, 13: 2, 14: 2, 15: 2,
+  16: 3, 17: 3, 18: 3, 19: 3, 20: 3,
+}
+
+/** Biome danger rating for difficulty estimate in PreDiveScreen. 1=safe, 5=extreme. */
+export const BIOME_DANGER_RATING: Partial<Record<string, number>> = {
+  limestone_caves: 1, mudstone_tunnels: 1, sandstone_corridors: 1,
+  clay_hollows: 1, chalk_beds: 1,
+  granite_press: 2, basalt_flow: 3, obsidian_vent: 4,
+  magma_shelf: 5, void_pocket: 5,
+}
+
+// ---- Auto-Balance Easing (DD-V2-053) ----
+export const AUTO_BALANCE_DEATH_THRESHOLD = 3
+export const AUTO_BALANCE_HAZARD_SCALAR = 0.75
+export const AUTO_BALANCE_O2_BONUS = 10
+
 /** Pickaxe tier impact profiles — each tier adds unique visual signature to mining feedback. */
 export const PICKAXE_TIER_VISUALS = [
   { name: 'Stone Pick',    shakeMultiplier: 1.0, flashIntensity: 0.2, particleBonus: 0  },

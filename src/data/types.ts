@@ -5,6 +5,42 @@
 /** Content type - extensible for language learning */
 export type ContentType = 'fact' | 'vocabulary' | 'grammar' | 'phrase'
 
+/** Distractor with confidence score and difficulty tier (DD-V2-086, DD-V2-087) */
+export interface Distractor {
+  text: string
+  difficultyTier: 'easy' | 'medium' | 'hard'
+  distractorConfidence: number
+}
+
+/** Content volatility enum (DD-V2-092) */
+export type ContentVolatility = 'timeless' | 'slow_change' | 'current_events'
+
+/** Pixel art generation status */
+export type PixelArtStatus = 'none' | 'generating' | 'review' | 'approved' | 'rejected'
+
+/** Pipeline review state (DD-V2-088) */
+export type FactStatus = 'draft' | 'approved' | 'archived'
+
+/** GAIA wrong-answer comments per mood (DD-V2-105) */
+export interface GaiaWrongComments {
+  snarky: string
+  enthusiastic: string
+  calm: string
+}
+
+/** Core fact subset for boot-time loading — only essential quiz fields */
+export interface CoreFact {
+  id: string
+  statement: string
+  correctAnswer: string
+  category: string[]
+  categoryL1?: string
+  categoryL2?: string
+  contentVolatility?: ContentVolatility
+  distractorCount?: number
+  status?: FactStatus
+}
+
 /** Age rating for content filtering */
 export type AgeRating = 'kid' | 'teen' | 'adult'
 
@@ -56,6 +92,30 @@ export interface Fact {
   // Media (future)
   imageUrl?: string
   mnemonic?: string
+
+  // Phase 11 extended fields
+  status?: FactStatus                         // DD-V2-088
+  alternateExplanations?: string[]            // DD-V2-112
+  gaiaComments?: string[]                     // DD-V2-114 (3-5 entries, replaces gaiaComment)
+  gaiaWrongComments?: GaiaWrongComments       // DD-V2-105
+  acceptableAnswers?: string[]                // DD-V2-104
+  distractorObjects?: Distractor[]            // Full structured distractors from server
+  distractorCount?: number                    // DD-V2-090
+  categoryL1?: string                         // DD-V2 hierarchical decomposition
+  categoryL2?: string
+  categoryL3?: string
+  noveltyScore?: number                       // 1-10
+  sensitivityLevel?: number                   // 0-5
+  sensitivityNote?: string
+  contentVolatility?: ContentVolatility       // DD-V2-092
+  sourceUrl?: string                          // DD-V2-089
+  inGameReports?: number                      // DD-V2-089
+  relatedFacts?: string[]                     // DD-V2-121
+  tags?: string[]
+  imagePrompt?: string
+  visualDescription?: string
+  hasPixelArt?: boolean
+  pixelArtStatus?: PixelArtStatus
 }
 
 // ============================================================
@@ -139,6 +199,8 @@ export interface MineCell {
   content?: MineCellContent   // What's inside (if special block)
   /** 4-bit autotile bitmask index (0-15). Computed on generation and on neighbor change. */
   tileVariant?: number
+  /** True if this cell sits within 2-3 tiles of a biome boundary. (DD-V2-235) */
+  isTransitionZone?: boolean
 }
 
 /** Content inside a special block */
@@ -203,6 +265,7 @@ export interface FarmState {
 /** Full player save data */
 export interface PlayerSave {
   version: number             // Save format version (for migrations)
+  factDbVersion: number       // Tracks last synced facts DB version for delta sync
   playerId: string
   ageRating: AgeRating
   createdAt: number
@@ -287,6 +350,8 @@ export interface PlayerStats {
   totalQuizWrong: number
   currentStreak: number       // Daily review streak
   bestStreak: number
+  totalSessions: number         // incremented on app open
+  zeroDiveSessions: number      // incremented when session ends with 0 dives completed
 }
 
 /** Temporary in-run upgrade types */

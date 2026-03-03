@@ -143,9 +143,9 @@
     class:dimmed={!hasDueReviews}
     type="button"
     onclick={handleStudy}
-    aria-label="Start study session"
+    aria-label="Start memory strengthening session"
   >
-    <span>Study Session</span>
+    <span>Memory Strengthening</span>
     {#if hasDueReviews}
       <span class="count-badge">{dueReviewCount} due</span>
     {:else}
@@ -160,7 +160,7 @@
 </div>
 
 <div class="card lab-tip-card" aria-label="Lab tip">
-  <p class="lab-tip-text">Tip: Correct answers during dives earn dust. Wrong answers drain oxygen — but you'll remember them better!</p>
+  <p class="lab-tip-text">Tip: Nailing a field scan earns dust. Missing one vents a little O2 — but you'll remember it better!</p>
 </div>
 
 <style>
