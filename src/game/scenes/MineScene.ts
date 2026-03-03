@@ -378,6 +378,21 @@ export class MineScene extends Phaser.Scene {
     this.handleLandmarkEntry()
   }
 
+  // =========================================================
+  // Phase 10.15 — Entry transition
+  // =========================================================
+
+  /**
+   * Play a fade-in entry transition when entering the mine from the dome.
+   * Call this immediately after the scene becomes active.
+   */
+  async playEntryTransition(): Promise<void> {
+    this.cameras.main.fadeIn(400, 0, 0, 0)
+    await new Promise<void>(resolve => {
+      this.cameras.main.once('camerafadeincomplete', () => resolve())
+    })
+  }
+
   /**
    * Phaser update loop — redraws the visible mine each frame.
    */

@@ -1019,11 +1019,12 @@ export class GameManager {
     currentBiomeStore.set(layer0Biome.name)
     currentBiomeId.set(layer0Biome.id)
 
-    // Stop DomeScene before starting MineScene
-    this.stopDome()
-
-    // Start the MineScene (pass crafted bonuses so MineScene can apply them)
-    this.game.scene.start('MineScene', {
+    // Phase 10.15 — Cinematic dive transition.
+    // Build the mine-start payload now (before any async gap), then fire the
+    // DomeScene zoom-to-hatch animation.  When it completes, stop the dome and
+    // launch the MineScene.  startDive() remains synchronous from the caller's
+    // perspective; the scene swap happens ~800 ms later after the fade-out.
+    const mineStartData = {
       seed: this.diveSeed,
       oxygenTanks: actualTanks,
       inventorySlots: BALANCE.STARTING_INVENTORY_SLOTS + inventoryBonusFromCrafts,
@@ -1034,7 +1035,22 @@ export class GameManager {
       craftedStartingBombs: startingBombsFromCrafts,
       activeConsumables: activeConsumablesSnapshot,
       companionEffect: this.companionEffect,
-    })
+    }
+
+    const domeScene = this.getDomeScene()
+    const launchMine = () => {
+      // Stop DomeScene before starting MineScene
+      this.stopDome()
+      // Start the MineScene (pass crafted bonuses so MineScene can apply them)
+      this.game!.scene.start('MineScene', mineStartData)
+    }
+
+    if (domeScene) {
+      // Fire transition, then launch mine when it resolves
+      void domeScene.playDiveTransition().then(launchMine)
+    } else {
+      launchMine()
+    }
 
     currentScreen.set('mining')
 
