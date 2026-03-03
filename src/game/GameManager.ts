@@ -40,6 +40,7 @@ import {
   activeConsumables,
   shieldActive,
   currentBiomeId,
+  equippedRelicsV2,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -66,6 +67,11 @@ import { GaiaManager } from './managers/GaiaManager'
 import { QuizManager } from './managers/QuizManager'
 import { StudyManager } from './managers/StudyManager'
 import { InventoryManager } from './managers/InventoryManager'
+import { SaveManager, AUTO_SAVE_TICK_INTERVAL } from './managers/SaveManager'
+import type { DiveSaveState } from '../data/saveState'
+import { DIVE_SAVE_VERSION } from '../data/saveState'
+import { LOOT_LOSS_RATE_SHALLOW, LOOT_LOSS_RATE_MID, LOOT_LOSS_RATE_DEEP, SEND_UP_TICK_COST } from '../data/balance'
+import { TickSystem } from './systems/TickSystem'
 
 /**
  * Singleton manager for the Phaser game instance.
@@ -105,6 +111,8 @@ export class GameManager {
   private lastDeathLayer = -1
   /** Whether auto-balance easing is currently active (hazards reduced, O2 bonus applied). */
   private autoBalanceActive = false
+  /** Minerals banked via send-up pod this run. Exempt from loot loss. (DD-V2-053) */
+  private bankedMinerals: Record<string, number> = {}
 
   // ---- Sub-managers (initialized lazily in boot()) ----
   private gaiaManager!: GaiaManager
@@ -952,6 +960,7 @@ export class GameManager {
     this.gaiaManager.gaiaLowO2Warned = false
     this.currentLayer = 0
     this.diveSeed = Date.now() >>> 0
+    this.bankedMinerals = {}
     this.inventoryManager.sentUpItems = []
     this.fossilRng = seededRandom(this.diveSeed ^ 0xf055111)
     currentLayerStore.set(0)
@@ -979,6 +988,14 @@ export class GameManager {
 
     currentScreen.set('mining')
 
+    // Register auto-save listener (DD-V2-053)
+    TickSystem.getInstance().register('autoSave', (tick) => {
+      if (tick % AUTO_SAVE_TICK_INTERVAL === 0 && tick > 0) {
+        const snapshot = this.buildDiveSaveState()
+        if (snapshot) SaveManager.save(snapshot)
+      }
+    })
+
     // GAIA mine entry comment (delayed so the scene has time to load)
     setTimeout(() => {
       this.triggerGaia('mineEntry')
@@ -987,6 +1004,9 @@ export class GameManager {
 
   /** End the current dive and process results */
   endDive(forced: boolean = false): void {
+    // Clear mid-dive auto-save on dive end (DD-V2-053)
+    SaveManager.clear()
+
     const scene = this.getMineScene()
     if (!scene) {
       currentScreen.set('base')
@@ -1113,6 +1133,7 @@ export class GameManager {
   /** Handle oxygen depletion — forced surface */
   private handleOxygenDepleted(): void {
     this.onPlayerDeath()
+    this.applyLootLoss(this.currentLayer)
     this.endDive(true)
   }
 
@@ -1136,6 +1157,104 @@ export class GameManager {
 
   /** Whether auto-balance easing is currently active. */
   isAutoBalanceActive(): boolean { return this.autoBalanceActive }
+
+  // =========================================================
+  // Save / loot-loss / send-up (DD-V2-053, DD-V2-181)
+  // =========================================================
+
+  /**
+   * Build a DiveSaveState snapshot from current game state.
+   * Returns null if no mine scene is active. (DD-V2-053)
+   */
+  buildDiveSaveState(): DiveSaveState | null {
+    const scene = this.getMineScene()
+    if (!scene) return null
+
+    const playerPos = scene.getPlayerGridPos()
+
+    return {
+      version: DIVE_SAVE_VERSION,
+      savedAt: new Date().toISOString(),
+      mineGrid: scene.getGrid().map(row => row.map(cell => cell.type)),
+      playerPos,
+      inventorySnapshot: get(inventory).map(slot => ({ type: slot.type, count: slot.mineralAmount ?? 1 })),
+      ticks: TickSystem.getInstance().getTick(),
+      layer: this.currentLayer,
+      biomeId: get(currentBiomeId) ?? 'limestone_caves',
+      o2: get(oxygenCurrent),
+      diveSeed: this.diveSeed,
+      relicIds: get(equippedRelicsV2).map(r => r.id),
+      consumables: get(activeConsumables),
+      bankedMinerals: { ...this.bankedMinerals },
+      sameLayerDeathCount: this.sameLayerDeathCount,
+      lastDeathLayer: this.lastDeathLayer,
+    }
+  }
+
+  /**
+   * Apply graduated loot loss on forced surface / abandoned run.
+   * Banked minerals are always exempt. (DD-V2-181)
+   * Layer 0-4 (L1-5): 0% loss. Layer 5-9 (L6-10): 15% loss. Layer 10-19 (L11-20): 30% loss.
+   */
+  applyLootLoss(layer: number): void {
+    let lossRate = LOOT_LOSS_RATE_SHALLOW
+    if (layer >= 5 && layer <= 9) lossRate = LOOT_LOSS_RATE_MID
+    else if (layer >= 10) lossRate = LOOT_LOSS_RATE_DEEP
+
+    if (lossRate === 0) return
+
+    playerSave.update(s => {
+      if (!s) return s
+      const minerals = { ...s.minerals }
+      for (const key of Object.keys(minerals) as Array<keyof typeof minerals>) {
+        const banked = this.bankedMinerals[key] ?? 0
+        const current = minerals[key] ?? 0
+        const atRisk = Math.max(0, current - banked)
+        const lost = Math.floor(atRisk * lossRate)
+        minerals[key] = Math.max(0, current - lost)
+      }
+      return { ...s, minerals }
+    })
+    persistPlayer()
+  }
+
+  /**
+   * Execute send-up: bank all portable minerals at a tick cost.
+   * Banked minerals are safe from death loot loss. (DD-V2-053)
+   */
+  executeSendUp(): void {
+    const inv = get(inventory)
+    // Track banked minerals for loot-loss exemption
+    for (const slot of inv) {
+      this.bankedMinerals[slot.type] = (this.bankedMinerals[slot.type] ?? 0) + (slot.mineralAmount ?? 1)
+    }
+
+    // Transfer minerals to player save (persist immediately)
+    playerSave.update(s => {
+      if (!s) return s
+      const minerals = { ...s.minerals }
+      for (const slot of inv) {
+        if (slot.type === 'mineral' && slot.mineralTier) {
+          const tier = slot.mineralTier
+          minerals[tier] = (minerals[tier] ?? 0) + (slot.mineralAmount ?? 1)
+        }
+      }
+      return { ...s, minerals }
+    })
+    persistPlayer()
+
+    // Clear portable inventory
+    inventory.set([])
+
+    // Advance ticks for pod deployment
+    const ts = TickSystem.getInstance()
+    for (let i = 0; i < SEND_UP_TICK_COST; i++) {
+      ts.advance()
+    }
+
+    gaiaMessage.set('Send-up pod deployed. Minerals safe in dome storage.')
+    setTimeout(() => gaiaMessage.set(null), 4000)
+  }
 
   // =========================================================
   // Quiz handling — delegated to QuizManager

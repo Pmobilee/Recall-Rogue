@@ -44,6 +44,8 @@
   import Settings from './ui/components/Settings.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
+  import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
+  import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
   import { gaiaMessage } from './ui/stores/gameState'
@@ -73,6 +75,9 @@
 
   // Quiz mode tracking
   let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'>('gate')
+
+  // Resume modal state — shown when a mid-dive save is detected on app start (DD-V2-053)
+  let showResumeModal = $state(false)
 
   // Main menu start handler
   function handleStart(): void {
@@ -329,10 +334,41 @@
       quizMode = $activeQuiz.source ?? 'gate'
     }
   })
+
+  // Check for mid-dive save on app start (DD-V2-053)
+  $effect(() => {
+    if ($currentScreen === 'base' && SaveManager.hasSave()) {
+      showResumeModal = true
+    }
+  })
+
+  function handleResumeDive(): void {
+    showResumeModal = false
+    // Full restore-from-save requires MineScene hydration (future enhancement).
+    // For now, clear the save and let the player start a fresh dive.
+    SaveManager.clear()
+    gaiaMessage.set('Welcome back! Your previous dive data has been recovered.')
+    setTimeout(() => gaiaMessage.set(null), 4000)
+  }
+
+  function handleAbandonDive(): void {
+    showResumeModal = false
+    const save = SaveManager.load()
+    if (save) {
+      gm.applyLootLoss(save.layer)
+    }
+    SaveManager.clear()
+    gaiaMessage.set('Run abandoned. Some minerals were lost in the extraction.')
+    setTimeout(() => gaiaMessage.set(null), 4000)
+  }
 </script>
 
 <div id="game-container"></div>
 <div id="ui-overlay">
+  {#if showResumeModal}
+    <ResumeDiveModal onResume={handleResumeDive} onAbandon={handleAbandonDive} />
+  {/if}
+
   {#if $currentScreen === 'mainMenu'}
     <div class="main-menu">
       <h1 class="game-title">Terra Gacha</h1>
