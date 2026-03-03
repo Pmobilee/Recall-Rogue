@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-9 complete. Phase 11, 13, 18 complete. Phase 8 (Mine Gameplay Overhaul) fully implemented: 20-layer system, tick-based hazards, O2 depth decay, landmarks, consumables, quiz overhaul, SM-2 tuning, relic expansion, pre-dive prep, companions, difficulty scaling, auto-save/loot loss. Visual Overhaul (A-I) complete. V2 roadmap (Phases 10, 12, 14-17, 19-25) remaining.
+Phases 0-11, 13, 18 complete. Phase 10 (Dome Hub Redesign) fully implemented: multi-floor hub, DomeScene Phaser migration, cutaway layout, ambient particles, 27 sprites, daily briefing, GAIA report, knowledge tree growth, transitions, thought bubbles. Phase 8 (Mine Gameplay Overhaul) and Phase 9 (Biome Expansion) complete. V2 roadmap (Phases 12, 14-17, 19-25) remaining.
 
 ---
 
@@ -44,7 +44,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 9: Biome Expansion** — 25 unique biomes, per-biome tiles, structural generation, ambient particles → [`completed/PHASE-09-BIOME-EXPANSION.md`](completed/PHASE-09-BIOME-EXPANSION.md)
 
 ### Hub & Content (Phases 10-11)
-- [ ] **Phase 10: Dome Hub Redesign** — Multi-floor hub, navigation, upgrades, animated pets, Knowledge Tree growth, daily briefing → [`phases/PHASE-10-DOME-HUB-REDESIGN.md`](phases/PHASE-10-DOME-HUB-REDESIGN.md)
+- [x] **Phase 10: Dome Hub Redesign** — Multi-floor hub, navigation, upgrades, animated pets, Knowledge Tree growth, daily briefing → [`completed/PHASE-10-DOME-HUB-REDESIGN.md`](completed/PHASE-10-DOME-HUB-REDESIGN.md)
 - [x] **Phase 11: Fact Content Engine** — Ingestion API, LLM pipeline, dashboard, pixel art generation, schema updates → [`completed/PHASE-11-FACT-CONTENT-ENGINE.md`](completed/PHASE-11-FACT-CONTENT-ENGINE.md)
 
 ### Personalization & Learning (Phases 12-13)
