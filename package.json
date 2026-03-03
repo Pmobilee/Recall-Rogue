@@ -12,6 +12,8 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.app.json",
     "lint": "eslint src/ --ext .ts,.svelte",
     "audit": "npm audit --audit-level=moderate",
+    "audit:assets": "node scripts/audit-assets.mjs",
+    "audit:assets:strict": "node scripts/audit-assets.mjs --strict",
     "simulate": "node scripts/simulate-balance.mjs",
     "test": "vitest run",
     "test:watch": "vitest",

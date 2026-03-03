@@ -2121,6 +2121,22 @@ export class MineScene extends Phaser.Scene {
    * Ends the active run and returns run results for processing.
    * sentUpItems are included separately and must bypass the forced-surface loss penalty.
    */
+  /**
+   * Returns the current mine grid (read-only reference for save state serialisation).
+   * Used by GameManager.buildDiveSaveState(). (DD-V2-053)
+   */
+  public getGrid(): MineCell[][] {
+    return this.grid
+  }
+
+  /**
+   * Returns the player's current grid position.
+   * Used by GameManager.buildDiveSaveState(). (DD-V2-053)
+   */
+  public getPlayerGridPos(): { x: number; y: number } {
+    return { x: this.player.gridX, y: this.player.gridY }
+  }
+
   public surfaceRun(): { inventory: InventorySlot[]; sentUpItems: InventorySlot[]; blocksMinedThisRun: number; artifactsFound: string[]; collectedRelics: Relic[] } {
     const runResults = {
       inventory: this.inventory.map((slot) => ({ ...slot })),
