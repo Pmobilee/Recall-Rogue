@@ -45,6 +45,7 @@ export class BootScene extends Phaser.Scene {
     const resolution = getSpriteResolution()
     const spriteUrls = getSpriteUrls(resolution)
     for (const [key, url] of Object.entries(spriteUrls)) {
+      if (key === 'miner_sheet') continue
       this.load.image(key, url)
     }
 
