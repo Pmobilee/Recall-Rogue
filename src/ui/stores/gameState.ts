@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store'
+import { writable, derived } from 'svelte/store'
 import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
@@ -51,6 +51,19 @@ export const oxygenCurrent = writable<number>(0)
 export const oxygenMax = writable<number>(0)
 export const currentDepth = writable<number>(0)
 export const currentLayer = writable<number>(0)
+
+/**
+ * Tier label derived from the current layer (0-based → 1-based display).
+ * Shallow = L1-5, Mid = L6-10, Deep = L11-15, Extreme = L16-20.
+ */
+export const layerTierLabel = derived(currentLayer, (layer): string => {
+  const l = layer + 1  // convert from 0-based to 1-based for display
+  if (l <= 5)  return 'Shallow'
+  if (l <= 10) return 'Mid'
+  if (l <= 15) return 'Deep'
+  return 'Extreme'
+})
+
 /** Display name of the active biome for the current mine layer (empty string while at base). */
 export const currentBiome = writable<string>('')
 export const inventory = writable<InventorySlot[]>([])
@@ -103,7 +116,7 @@ export const activeRelics = writable<Relic[]>([])
 // Active relic synergies for the current dive run
 export const activeSynergies = writable<RelicSynergy[]>([])
 
-// True once the player descends past BALANCE.POINT_OF_NO_RETURN_PERCENT depth — surfaces disabled
+// Retained for compatibility; PONR mechanic removed in Phase 8.2 — always stays false
 export const pastPointOfNoReturn = writable<boolean>(false)
 
 // Current scanner tier index (0 = Basic, 1 = Enhanced, 2 = Advanced, 3 = Deep)

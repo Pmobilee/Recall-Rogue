@@ -1,4 +1,4 @@
-import { BALANCE } from '../../data/balance'
+import { BALANCE, getLayerGridSize } from '../../data/balance'
 import { BlockType, type MineCell, type Rarity } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
 
@@ -18,31 +18,63 @@ export function seededRandom(seed: number): () => number {
 }
 
 /**
+ * Linear interpolation clamped to [0, 1].
+ */
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * Math.max(0, Math.min(1, t));
+}
+
+/**
+ * Returns depth-based block weight overrides for each layer (0-indexed, 0-19).
+ * Used to add HardRock, MineralNode, ArtifactNode, and FossilNode into the distribution
+ * as the player descends — replacing the fixed density-only approach for base blocks.
+ * (DD-V2-054)
+ */
+function getBlockWeightsForLayer(layer: number): {
+  dirt: number; softRock: number; stone: number; hardRock: number;
+  mineralNode: number; artifactNode: number; fossilNode: number;
+} {
+  const depth = layer / 19  // 0.0 at layer 0, 1.0 at layer 19
+  return {
+    dirt:        lerp(0.35, 0.02, depth),
+    softRock:    lerp(0.20, 0.08, depth),
+    stone:       lerp(0.25, 0.20, depth),
+    hardRock:    lerp(0.00, 0.35, depth),
+    mineralNode: layer <= 12 ? lerp(0.05, 0.08, depth) : lerp(0.08, 0.04, (layer - 12) / 7),
+    artifactNode: lerp(0.01, 0.06, depth),
+    fossilNode:  lerp(0.01, 0.03, depth),
+  };
+}
+
+/**
  * Generates a mine grid using deterministic procedural rules.
- * @param layer - Zero-based layer index. Scales block hardness by LAYER_HARDNESS_SCALE^layer.
- *                On non-final layers (layer < MAX_LAYERS - 1), places a DescentShaft in the lower half.
+ * @param seed - Deterministic seed for this layer.
+ * @param facts - Fact IDs to assign to quiz/artifact blocks.
+ * @param layer - Zero-based layer index (0-19). Grid size is derived from this.
+ *                On non-final layers (layer < MAX_LAYERS - 1), places a DescentShaft.
  * @param biome - Optional biome definition that overrides block weights, hazard densities, and visuals.
  *                Defaults to the sedimentary biome if not provided.
  */
 export function generateMine(
   seed: number,
-  width: number,
-  height: number,
   facts: string[],
   layer = 0,
   biome: Biome = DEFAULT_BIOME,
 ): { grid: MineCell[][], spawnX: number, spawnY: number, biome: Biome } {
+  const oneIndexedLayer = layer + 1  // layer is 0-based internally, convert to 1-based for getLayerGridSize
+  const [width, height] = getLayerGridSize(oneIndexedLayer)
   const rng = seededRandom(seed)
-  const spawnX = 2 + Math.floor(rng() * (width - 4))
-  const spawnY = 2 + Math.floor(rng() * (height - 8))
   const grid: MineCell[][] = []
 
   // Per-layer hardness multiplier: each layer is LAYER_HARDNESS_SCALE^layer harder.
   const hardnessScale = Math.pow(BALANCE.LAYER_HARDNESS_SCALE, layer)
 
+  // Depth-based block weights for this layer (used to inject HardRock into base block distribution).
+  const layerWeights = getBlockWeightsForLayer(layer)
+
   for (let y = 0; y < height; y++) {
     const row: MineCell[] = []
-    const depthWeights = getDepthWeights(y, height, biome)
+    const depthWeights = getDepthWeights(y, height, biome, layerWeights)
     const depthWeightTotal = depthWeights.reduce((sum, entry) => sum + entry.weight, 0)
 
     for (let x = 0; x < width; x++) {
@@ -62,6 +94,30 @@ export function generateMine(
     }
 
     grid.push(row)
+  }
+
+  // Layer 1 spawn (layer === 0): top-center, 3x3 clear area.
+  // Layer 2+ (layer >= 1): random position inside the grid (spawn area cleared below).
+  let spawnX: number
+  let spawnY: number
+  if (layer === 0) {
+    spawnX = Math.floor(width / 2)
+    spawnY = 1
+    // Clear 3x3 around spawn
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const cx = spawnX + dx
+        const cy = spawnY + dy
+        if (cx >= 0 && cx < width && cy >= 0 && cy < height) {
+          grid[cy][cx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+        }
+      }
+    }
+  } else {
+    // For layers 2+: pick a random empty cell far from the descent shaft position.
+    // Since shaft is placed later, pick a random position inside the grid avoiding edges.
+    spawnX = 2 + Math.floor(rng() * (width - 4))
+    spawnY = 2 + Math.floor(rng() * (height - 8))
   }
 
   const positions = buildSpecialPositionPool(width, height)
@@ -319,27 +375,41 @@ export function pickRarity(rng: () => number): Rarity {
 }
 
 /**
- * Returns depth-scaled block weights for a given row, modified by the active biome.
+ * Returns depth-scaled block weights for a given row, modified by the active biome and layer weights.
  * Shallow rows favour dirt; deep rows shift weight toward stone and hard rock.
+ * Layer weights (from getBlockWeightsForLayer) scale the base per-row weights to reflect
+ * depth progression across the full 20-layer mine, not just within a single layer.
  *
  * @param y - Current row index (0 = top of mine)
  * @param height - Total mine height in rows
  * @param biome - Active biome whose blockWeights multiply the base weights
+ * @param layerWeights - Optional layer-level depth weights from getBlockWeightsForLayer
  */
-function getDepthWeights(y: number, height: number, biome: Biome): Array<{ type: BlockType; weight: number }> {
+function getDepthWeights(
+  y: number,
+  height: number,
+  biome: Biome,
+  layerWeights?: ReturnType<typeof getBlockWeightsForLayer>
+): Array<{ type: BlockType; weight: number }> {
   const depthRatio = y / height  // 0.0 at top, ~1.0 at bottom
 
-  // Dirt decreases with depth, hard rock increases
+  // Dirt decreases with depth, hard rock increases (within-layer variation)
   const dirtWeight = Math.max(10, 55 - depthRatio * 50)
   const softRockWeight = 20
   const stoneWeight = 10 + depthRatio * 20
   const hardRockWeight = 5 + depthRatio * 25
 
+  // Apply layer-level multipliers when provided (blend within-layer weights with cross-layer weights)
+  const dirtFinal = layerWeights ? dirtWeight * (layerWeights.dirt / 0.35) : dirtWeight
+  const softRockFinal = layerWeights ? softRockWeight * (layerWeights.softRock / 0.20) : softRockWeight
+  const stoneFinal = layerWeights ? stoneWeight * (layerWeights.stone / 0.25) : stoneWeight
+  const hardRockFinal = layerWeights ? hardRockWeight * Math.max(0.01, layerWeights.hardRock / 0.35) : hardRockWeight
+
   return [
-    { type: BlockType.Dirt, weight: dirtWeight * biome.blockWeights.dirt },
-    { type: BlockType.SoftRock, weight: softRockWeight * biome.blockWeights.softRock },
-    { type: BlockType.Stone, weight: stoneWeight * biome.blockWeights.stone },
-    { type: BlockType.HardRock, weight: hardRockWeight * biome.blockWeights.hardRock },
+    { type: BlockType.Dirt, weight: dirtFinal * biome.blockWeights.dirt },
+    { type: BlockType.SoftRock, weight: softRockFinal * biome.blockWeights.softRock },
+    { type: BlockType.Stone, weight: stoneFinal * biome.blockWeights.stone },
+    { type: BlockType.HardRock, weight: hardRockFinal * biome.blockWeights.hardRock },
   ]
 }
 
@@ -1712,9 +1782,8 @@ function placeHazards(grid: MineCell[][], rng: () => number, height: number, bio
 }
 
 /**
- * Places a single DescentShaft block in the lower portion of the mine grid.
- * The shaft is placed in the bottom DESCENT_SHAFT_MIN_DEPTH_PERCENT to 95% of the grid
- * at a random position that does not overlap special blocks or the spawn area.
+ * Places a single DescentShaft block anywhere in the mine grid (not restricted to bottom half).
+ * The shaft is placed at a random position that does not overlap special blocks or the spawn area.
  * Falls back gracefully if no valid position can be found after multiple attempts.
  */
 function placeDescentShaft(
@@ -1725,7 +1794,7 @@ function placeDescentShaft(
   spawnX: number,
   spawnY: number,
 ): void {
-  const minY = Math.floor(height * BALANCE.DESCENT_SHAFT_MIN_DEPTH_PERCENT)
+  const minY = 3  // Avoid the very top rows (spawn area)
   const maxY = Math.floor(height * 0.95)
   const minX = 1
   const maxX = width - 2

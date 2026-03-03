@@ -13,15 +13,11 @@ export const BALANCE = {
   OXYGEN_CACHE_QUIZ_CHANCE: 0.4,    // 40% chance oxygen cache triggers a quiz
   OXYGEN_LAYER_BONUS: 15,             // Oxygen recovered on layer descent
 
-  POINT_OF_NO_RETURN_PERCENT: 0.6,    // After 60% depth, can't surface voluntarily
-
   // === MINE GRID ===
-  MINE_WIDTH: 20,                     // Blocks wide per layer
-  MINE_LAYER_HEIGHT: 40,              // Blocks tall per layer
-  MINE_TOTAL_LAYERS: 1,              // MVP: single layer
-  MAX_LAYERS: 3,                      // Total layers per dive
+  MINE_WIDTH: 20,                     // Blocks wide per layer (default/L1-5; actual size via getLayerGridSize)
+  MINE_LAYER_HEIGHT: 40,              // Blocks tall per layer (legacy; actual size via getLayerGridSize)
+  MAX_LAYERS: 20,                     // Total layers per dive
   DESCENT_SHAFT_COUNT: 1,             // One shaft per layer (except last)
-  DESCENT_SHAFT_MIN_DEPTH_PERCENT: 0.5, // Only in bottom half of the layer
   LAYER_OXYGEN_BONUS: 15,             // O2 restored on layer transition
   LAYER_HARDNESS_SCALE: 1.3,          // Each layer is 30% harder
   VIEWPORT_TILES_X: 11,              // Visible tiles horizontally (odd = centered)
@@ -259,6 +255,18 @@ export const BALANCE = {
     { id: 'archive', name: 'Archive', icon: '📚', unlockDives: 10, description: 'Knowledge tree and data discs' },
   ] as const,
 } as const
+
+/**
+ * Returns the [width, height] grid dimensions for the given layer (1-indexed).
+ * Tier boundaries: L1-5 = 20x20, L6-10 = 25x25, L11-15 = 30x30, L16-20 = 40x40.
+ * (DD-V2-054)
+ */
+export function getLayerGridSize(layer: number): [number, number] {
+  if (layer <= 5)  return [20, 20];
+  if (layer <= 10) return [25, 25];
+  if (layer <= 15) return [30, 30];
+  return [40, 40];
+}
 
 // ---- Tick-Based Timing Constants (DD-V2-051) ----
 export const TICK_LAVA_SPREAD_INTERVAL = 1;          // lava expands every N ticks

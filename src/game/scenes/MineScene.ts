@@ -194,7 +194,7 @@ export class MineScene extends Phaser.Scene {
       layerTickCount.set(0)
     }
 
-    const mineResult = generateMine(this.seed, BALANCE.MINE_WIDTH, BALANCE.MINE_LAYER_HEIGHT, this.facts, this.currentLayer, this.currentBiome)
+    const mineResult = generateMine(this.seed, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
     // Compute initial autotile variants for all terrain blocks
     computeAllVariants(this.grid)
@@ -1638,18 +1638,11 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
-   * Emits the 'point-of-no-return' event once per run when the player descends past
-   * BALANCE.POINT_OF_NO_RETURN_PERCENT of the mine depth.
+   * Point-of-no-return check removed (Phase 8.2 — PONR mechanic retired).
+   * Stub retained to avoid touching call sites; becomes a no-op.
    */
   private checkPointOfNoReturn(): void {
-    if (this.passedPointOfNoReturn) return
-    if (this.player.gridY / this.gridHeight >= BALANCE.POINT_OF_NO_RETURN_PERCENT) {
-      this.passedPointOfNoReturn = true
-      this.game.events.emit('point-of-no-return', {
-        depth: this.player.gridY,
-        maxDepth: this.gridHeight,
-      })
-    }
+    // no-op: PONR mechanic removed in Phase 8.2
   }
 
   /**

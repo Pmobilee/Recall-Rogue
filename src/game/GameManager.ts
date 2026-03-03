@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
-import { BALANCE } from '../data/balance'
+import { BALANCE, getLayerGridSize } from '../data/balance'
 import { audioManager } from '../services/audioService'
 import type { Fact, FossilState, InventorySlot, MineralTier, Relic } from '../data/types'
 import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type CompanionEffect } from '../data/fossils'
@@ -224,7 +224,8 @@ export class GameManager {
       currentDepth.set(depth)
       if (depth > this.maxDepthThisRun) this.maxDepthThisRun = depth
 
-      const gridHeight = BALANCE.MINE_LAYER_HEIGHT
+      // Derive grid height from current layer so depth milestones scale correctly.
+      const [, gridHeight] = getLayerGridSize(this.currentLayer + 1)
       const pct = depth / gridHeight
 
       if (pct >= 0.25 && !this.gaiaDepthMilestones.has(25)) {
@@ -634,15 +635,6 @@ export class GameManager {
       } else {
         gaiaMessage.set(`${species.icon} Found a ${species.name} fragment! (${fragmentsFound}/${fragmentsNeeded})`)
       }
-    })
-
-    events.on('point-of-no-return', (_data: { depth: number; maxDepth: number }) => {
-      pastPointOfNoReturn.set(true)
-      this.randomGaia([
-        "No turning back now, pilot. The only way is deeper.",
-        "Surface access sealed. Find the exit or... well, let's not think about that.",
-        "We've passed the point of no return. Stay focused.",
-      ])
     })
 
     events.on('companion-triggered', (_data: { effect: string }) => {
