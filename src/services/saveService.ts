@@ -284,6 +284,13 @@ export function load(): PlayerSave | null {
     if (!parsedAny['consumables'] || typeof parsedAny['consumables'] !== 'object') {
       parsedAny['consumables'] = {}
     }
+    // Phase 21: Oxygen regen migration
+    if (parsedAny['lastRegenAt'] === undefined) {
+      parsedAny['lastRegenAt'] = Date.now()
+    }
+    if (parsedAny['tankBank'] === undefined) {
+      parsedAny['tankBank'] = BALANCE.OXYGEN_MAX_BANK_FREE
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -483,36 +490,73 @@ export function convertMineral(
 }
 
 /**
- * Applies mineral decay to the player's dust holdings.
- *
- * If the player's dust exceeds `BALANCE.MINERAL_DECAY_THRESHOLD`, a percentage
- * of the dust above the threshold decays (represents oxidation). This is called
- * at the start of each dive to create a soft cap on dust hoarding.
- *
- * @param currentSave - The current player save to read from and update.
- * @returns The updated save. If no decay occurred the original save is returned unchanged.
+ * Apply weekly dome maintenance cost (DD-V2-151).
+ * Charges dust based on number of active rooms above the free threshold.
+ * First 2 rooms (Command, Lab) are maintenance-free.
+ * Consequence of not paying: cosmetic only (flickering, dust motes).
  */
-export function applyMineralDecay(currentSave: PlayerSave): PlayerSave {
-  const currentDust = currentSave.minerals.dust
-  if (currentDust <= BALANCE.MINERAL_DECAY_THRESHOLD) {
-    return currentSave
-  }
+export function applyWeeklyMaintenance(currentSave: PlayerSave): PlayerSave {
+  const now = new Date()
+  const lastMaintenance = currentSave.lastMaintenanceDate
+    ? new Date(currentSave.lastMaintenanceDate)
+    : now
 
-  const decayAmount = Math.floor(currentDust * BALANCE.MINERAL_DECAY_RATE)
-  if (decayAmount <= 0) {
-    return currentSave
+  // Check if 7 days have passed since last maintenance
+  const daysSinceLast = (now.getTime() - lastMaintenance.getTime()) / (1000 * 60 * 60 * 24)
+  if (daysSinceLast < 7) return currentSave
+
+  const roomCount = (currentSave.unlockedRooms?.length ?? 0)
+  const billableRooms = Math.max(0, roomCount - BALANCE.DOME_MAINTENANCE_FREE_ROOMS)
+  const maintenanceCost = billableRooms * BALANCE.DOME_MAINTENANCE_BASE_DUST
+
+  if (maintenanceCost <= 0) {
+    return { ...currentSave, lastMaintenanceDate: now.toISOString().split('T')[0] }
   }
 
   const updatedSave: PlayerSave = {
     ...currentSave,
     minerals: {
       ...currentSave.minerals,
-      dust: currentDust - decayAmount,
+      dust: Math.max(0, currentSave.minerals.dust - maintenanceCost),
     },
+    lastMaintenanceDate: now.toISOString().split('T')[0],
   }
 
   save(updatedSave)
   return updatedSave
+}
+
+/**
+ * Check and apply spending bonus (DD-V2-151).
+ * First 500 dust spent per calendar week activates +10% mineral yield.
+ * Resets Monday 00:00 UTC.
+ */
+export function checkSpendingBonus(currentSave: PlayerSave): PlayerSave {
+  const now = new Date()
+  const currentDay = now.getUTCDay()
+  const isMonday = currentDay === BALANCE.SPENDING_BONUS_RESET_DAY
+
+  // Reset weekly spending on Monday
+  if (isMonday && (currentSave.weeklyDustSpent ?? 0) > 0) {
+    const weekStart = now.toISOString().split('T')[0]
+    if (currentSave.lastMaintenanceDate !== weekStart) {
+      return {
+        ...currentSave,
+        weeklyDustSpent: 0,
+        spendingBonusActive: false,
+      }
+    }
+  }
+
+  // Check if spending threshold is met
+  const weeklySpent = currentSave.weeklyDustSpent ?? 0
+  const bonusActive = weeklySpent >= BALANCE.SPENDING_BONUS_THRESHOLD
+
+  if (bonusActive !== (currentSave.spendingBonusActive ?? false)) {
+    return { ...currentSave, spendingBonusActive: bonusActive }
+  }
+
+  return currentSave
 }
 
 /**

@@ -17,6 +17,10 @@ import { factsRoutes } from "./routes/facts.js";
 import { factPackRoutes } from "./routes/factPacks.js";
 import { analyticsRoutes } from "./routes/analytics.js";
 import { adminRoutes } from "./routes/admin.js";
+import { seasonRoutes } from "./routes/seasons.js";
+import { notificationRoutes } from "./routes/notifications.js";
+import { ugcRoutes } from "./routes/ugc.js";
+import { emailRoutes } from "./routes/email.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -150,6 +154,23 @@ export async function buildApp() {
   await fastify.register(factPackRoutes, { prefix: "/api/facts/packs" });
   await fastify.register(analyticsRoutes, { prefix: "/api/analytics" });
   await fastify.register(adminRoutes, { prefix: "/api/admin" });
+
+  // Phase 23: Live Ops routes
+  await fastify.register(async (scoped) => {
+    await scoped.register(seasonRoutes, { prefix: "/api/seasons" });
+  }, {});
+
+  await fastify.register(async (scoped) => {
+    await scoped.register(notificationRoutes, { prefix: "/api/notifications" });
+  }, {});
+
+  await fastify.register(async (scoped) => {
+    await scoped.register(ugcRoutes, { prefix: "/api/ugc" });
+  }, {});
+
+  await fastify.register(async (scoped) => {
+    await scoped.register(emailRoutes, { prefix: "/api/email" });
+  }, {});
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {

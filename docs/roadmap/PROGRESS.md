@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-22 complete. Phase 22 (Social & Multiplayer) fully implemented: hub visiting with guestbook and gifts, 6-category leaderboards with daily refresh and anti-cheat plausibility checks, async knowledge duels with speed scoring and wagers, artifact card marketplace with trading and duplicate mixing, guild system with weekly challenges and GKP progression, referral system with fossil egg rewards and anti-abuse, admin social health dashboard, privacy settings (hub private, leaderboard opt-out). V2 roadmap Phases 23-25 remaining.
+Phases 0-25 complete. All V2 roadmap phases implemented. Phase 23 (Live Ops & Seasons): seasonal events with 4 hardcoded seasons, UGC fact submission pipeline, push notification scheduling with DD-V2-159 auto-stop, welcome back flow with DD-V2-157 positive framing, win-back email strategy, completionist endgame (Omniscient title at 95% mastery). Phase 24 (Language Learning): multi-language support (Japanese N5/N4/N3, Spanish A1/A2), three SM-2 tracks per vocabulary word (recognition/recall/usage), TTS pronunciation stubs, language-specific knowledge tree rendering. Phase 25 (Advanced Features): turn-based combat system with 3 bosses, co-op lobby via WebSocket, 19 achievement paintings gallery, pet personalities and synergies, gacha ethics compliance (displayed rates, pity system, DD-V2-174), parental controls with Kid Wow Score (DD-V2-175), learning effectiveness metrics, educational partnership APIs (classroom, research), full accessibility pass. V2 roadmap complete.
 
 ---
 
@@ -69,9 +69,9 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 22: Social & Multiplayer** — Hub visiting, leaderboards, duels, trading, guilds, referrals → [`completed/PHASE-22-SOCIAL-MULTIPLAYER.md`](completed/PHASE-22-SOCIAL-MULTIPLAYER.md)
 
 ### Post-Launch (Phases 23-25)
-- [ ] **Phase 23: Live Ops & Seasons** — Seasonal events, content cadence, UGC, push notifications, completionist endgame → [`phases/PHASE-23-LIVE-OPS-SEASONS.md`](phases/PHASE-23-LIVE-OPS-SEASONS.md)
-- [ ] **Phase 24: Language Learning** — Multi-language, 3 SM-2 tracks, TTS pronunciation, language-specific tree → [`phases/PHASE-24-LANGUAGE-LEARNING.md`](phases/PHASE-24-LANGUAGE-LEARNING.md)
-- [ ] **Phase 25: Advanced Features** — Combat, co-op, achievements, advanced pets, accessibility, educational partnerships → [`phases/PHASE-25-ADVANCED-FEATURES.md`](phases/PHASE-25-ADVANCED-FEATURES.md)
+- [x] **Phase 23: Live Ops & Seasons** — Seasonal events, content cadence, UGC, push notifications, completionist endgame → [`completed/PHASE-23-LIVE-OPS-SEASONS.md`](completed/PHASE-23-LIVE-OPS-SEASONS.md)
+- [x] **Phase 24: Language Learning** — Multi-language, 3 SM-2 tracks, TTS pronunciation, language-specific tree → [`completed/PHASE-24-LANGUAGE-LEARNING.md`](completed/PHASE-24-LANGUAGE-LEARNING.md)
+- [x] **Phase 25: Advanced Features** — Combat, co-op, achievements, advanced pets, accessibility, educational partnerships → [`completed/PHASE-25-ADVANCED-FEATURES.md`](completed/PHASE-25-ADVANCED-FEATURES.md)
 
 ---
 

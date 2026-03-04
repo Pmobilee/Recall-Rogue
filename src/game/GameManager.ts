@@ -57,7 +57,7 @@ import {
 import { getQuizChoices, selectQuestion } from '../services/quizService'
 import { factsDB } from '../services/factsDB'
 import { RECIPES } from '../data/recipes'
-import { save as savePlayer, applyMineralDecay } from '../services/saveService'
+import { save as savePlayer } from '../services/saveService'
 import type { OxygenState } from './systems/OxygenSystem'
 import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
 import { generateInterestBiasedBiomeSequence, selectWeightedFact } from '../services/interestSpawner'
@@ -907,17 +907,12 @@ export class GameManager {
     const save = get(playerSave)
     if (!save) return
 
-    // ---- Apply mineral decay (oxidation of hoarded dust) ----
-    const decayedSave = applyMineralDecay(save)
-    if (decayedSave !== save) {
-      playerSave.set(decayedSave)
-    }
 
     // ---- Deduct dive insurance cost if insured ----
-    const isInsured = decayedSave.insuredDive
+    const isInsured = save.insuredDive
     if (isInsured) {
-      const insuranceCost = Math.floor(decayedSave.minerals.dust * BALANCE.INSURANCE_COST_PERCENT)
-      if (insuranceCost > 0 && decayedSave.minerals.dust >= insuranceCost) {
+      const insuranceCost = Math.floor(save.minerals.dust * BALANCE.INSURANCE_COST_PERCENT)
+      if (insuranceCost > 0 && save.minerals.dust >= insuranceCost) {
         playerSave.update(s => {
           if (!s) return s
           return {
@@ -933,10 +928,10 @@ export class GameManager {
       }
     }
     // Track whether this dive is actually insured (after affordability check)
-    this.currentDiveInsured = isInsured && (decayedSave.minerals.dust >= Math.floor(decayedSave.minerals.dust * BALANCE.INSURANCE_COST_PERCENT))
+    this.currentDiveInsured = isInsured && (save.minerals.dust >= Math.floor(save.minerals.dust * BALANCE.INSURANCE_COST_PERCENT))
 
     // Record pre-dive tank count (includes permanent upgrades) for restoration on dive end.
-    const currentSave = get(playerSave) ?? decayedSave
+    const currentSave = get(playerSave) ?? save
     this.preDiveOxygenTanks = currentSave.oxygen
 
     // Deduct oxygen tanks from save

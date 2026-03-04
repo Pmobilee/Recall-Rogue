@@ -6,6 +6,7 @@
  */
 
 import { generateUUID } from '../utils/uuid'
+import { assignExperiment, type MonetizationEvent } from '../data/analyticsEvents'
 
 // ── Event type definitions ────────────────────────────────────────────────────
 
@@ -138,6 +139,7 @@ export type AnalyticsEvent =
   | PurchaseInitiatedEvent
   | ChurnSignalEvent
   | EngagementScoreChangeEvent
+  | MonetizationEvent
 
 // Re-export specific types used externally
 export type {
@@ -319,6 +321,100 @@ export class AnalyticsService {
   /** Increment the facts-learned counter for the current session. */
   trackFactLearned(): void {
     this.factsLearned++
+  }
+
+  // ── Monetization tracking (Phase 21.3 / DD-V2-181) ──────────────────────────
+
+  /**
+   * Track a Terra Pass modal view.
+   *
+   * @param source - Where the modal was triggered from.
+   */
+  trackTerraPassViewed(source: 'dome' | 'pre_dive' | 'oxygen_empty'): void {
+    this.track({ name: 'terra_pass_viewed', properties: { source } })
+  }
+
+  /**
+   * Track the start of an IAP purchase flow.
+   *
+   * @param productId - The store product identifier (e.g. "terra_pass_monthly").
+   */
+  trackIAPPurchaseStarted(productId: string): void {
+    this.track({ name: 'iap_purchase_started', properties: { productId } })
+  }
+
+  /**
+   * Track a completed IAP purchase.
+   *
+   * @param productId - The store product identifier.
+   * @param priceUSD  - Converted USD price for normalization across stores.
+   */
+  trackIAPPurchaseCompleted(productId: string, priceUSD: number): void {
+    this.track({ name: 'iap_purchase_completed', properties: { productId, priceUSD } })
+  }
+
+  /**
+   * Track a failed IAP purchase attempt.
+   *
+   * @param productId - The store product identifier.
+   * @param error     - Short error description (no user PII).
+   */
+  trackIAPPurchaseFailed(productId: string, error: string): void {
+    this.track({ name: 'iap_purchase_failed', properties: { productId, error } })
+  }
+
+  /**
+   * Track when the player's oxygen runs out in the mine.
+   *
+   * @param lootLostPercent - Percentage of session loot lost (0-100).
+   * @param layer           - Mine layer the player was on when O2 hit zero.
+   */
+  trackOxygenDepleted(lootLostPercent: number, layer: number): void {
+    this.track({ name: 'oxygen_depleted', properties: { lootLostPercent, layer } })
+  }
+
+  /**
+   * Track a daily economy wealth snapshot for balance monitoring.
+   * Should be called once per day on session open when a save is loaded.
+   *
+   * @param dustHeld    - Current dust currency balance.
+   * @param shardHeld   - Current shard currency balance.
+   * @param crystalHeld - Current crystal (premium) currency balance.
+   */
+  trackEconomySnapshot(dustHeld: number, shardHeld: number, crystalHeld: number): void {
+    // Compute a rough unified equivalent (shards = 10× dust, crystals = 100× dust)
+    const totalDustEquivalent = dustHeld + shardHeld * 10 + crystalHeld * 100
+    this.track({
+      name: 'economy_wealth_snapshot',
+      properties: { dustHeld, shardHeld, crystalHeld, totalDustEquivalent },
+    })
+  }
+
+  // ── A/B experiment assignment ────────────────────────────────────────────────
+
+  /**
+   * Return the current session ID so module-level helpers can use it.
+   * The session ID is stable for the lifetime of the browser tab.
+   */
+  getSessionId(): string {
+    return this.sessionId
+  }
+
+  /**
+   * Get or assign a deterministic A/B experiment group for the current player.
+   * The assignment is persisted in localStorage so it remains stable across
+   * sessions as long as the same browser is used.
+   *
+   * @param experimentName - Unique name for the experiment (e.g. "pioneer_pack_cta_v2").
+   * @returns 'A' or 'B' group assignment.
+   */
+  getExperimentGroup(experimentName: string): 'A' | 'B' {
+    const key = `experiment_${experimentName}`
+    const stored = localStorage.getItem(key)
+    if (stored === 'A' || stored === 'B') return stored
+    const group = assignExperiment(this.sessionId, experimentName)
+    localStorage.setItem(key, group)
+    return group
   }
 }
 

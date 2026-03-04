@@ -1,10 +1,35 @@
 import { writable, derived } from 'svelte/store'
+import type { Writable, Readable } from 'svelte/store'
 import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy, RelicDefinition } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
 import type { ConsumableId } from '../../data/consumables'
 import type { BiomeId } from '../../data/biomes'
+
+// =========================================================
+// Singleton helpers — survive module re-evaluation from
+// Rollup code-split chunks (gameState may be bundled into
+// multiple chunks; globalThis ensures one store instance).
+// =========================================================
+
+/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
+function singletonWritable<T>(key: string, initial: T): Writable<T> {
+  const sym = Symbol.for('terra:' + key)
+  if (!(globalThis as any)[sym]) {
+    (globalThis as any)[sym] = writable<T>(initial)
+  }
+  return (globalThis as any)[sym] as Writable<T>
+}
+
+/** Ensure derived store singletons survive module re-evaluation from code-split chunks. */
+function singletonDerived<T>(key: string, deps: any, fn: any): Readable<T> {
+  const sym = Symbol.for('terra:' + key)
+  if (!(globalThis as any)[sym]) {
+    (globalThis as any)[sym] = derived<any, T>(deps, fn)
+  }
+  return (globalThis as any)[sym] as Readable<T>
+}
 
 // =========================================================
 // Phase 8.11 — Dive Loadout
@@ -21,7 +46,7 @@ export interface DiveLoadout {
 }
 
 /** Currently selected dive loadout (persists within a session). */
-export const selectedLoadout = writable<DiveLoadout>({
+export const selectedLoadout = singletonWritable<DiveLoadout>('selectedLoadout', {
   pickaxeId: null,
   companionId: null,
   consumableSlots: [null, null, null],
@@ -32,12 +57,12 @@ export const selectedLoadout = writable<DiveLoadout>({
  * True when the minimum viable loadout is filled (pickaxe selected).
  * Used to gate the "Enter Mine" button on the DivePrepScreen.
  */
-export const loadoutReady = derived(selectedLoadout, (loadout): boolean => {
+export const loadoutReady = singletonDerived<boolean>('loadoutReady', selectedLoadout, (loadout: DiveLoadout): boolean => {
   return loadout.pickaxeId !== null
 })
 
 /** Player's relic vault — all relics collected across runs, available for pre-dive equipping. */
-export const relicVault = writable<RelicDefinition[]>([])
+export const relicVault = singletonWritable<RelicDefinition[]>('relicVault', [])
 
 export interface ConsumableSlot {
   id: ConsumableId
@@ -45,13 +70,13 @@ export interface ConsumableSlot {
 }
 
 /** Active consumables carried during current dive */
-export const activeConsumables = writable<ConsumableSlot[]>([])
+export const activeConsumables = singletonWritable<ConsumableSlot[]>('activeConsumables', [])
 
 /** Shield charge active flag — absorbs next hazard hit */
-export const shieldActive = writable<boolean>(false)
+export const shieldActive = singletonWritable<boolean>('shieldActive', false)
 
 /** Pending consumables for pre-dive loadout (stub for Phase 8.11) */
-export const pendingConsumables = writable<ConsumableSlot[]>([])
+export const pendingConsumables = singletonWritable<ConsumableSlot[]>('pendingConsumables', [])
 
 /**
  * Add a consumable to the active dive inventory.
@@ -122,10 +147,10 @@ export type Screen =
   | 'ageSelection'
   | 'tutorialMine'
 
-export const currentScreen = writable<Screen>('mainMenu')
+export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
 
 /** Index of the currently displayed hub floor (0 = Starter Hub). */
-export const currentFloorIndex = writable<number>(0)
+export const currentFloorIndex = singletonWritable<number>('currentFloorIndex', 0)
 
 /** Summary data shown on the dive results screen. */
 export interface DiveResults {
@@ -142,19 +167,19 @@ export interface DiveResults {
   streakBonus?: boolean  // Whether a bonus oxygen tank was awarded
   relicsCollected?: Relic[]  // Relics picked up during this dive
 }
-export const diveResults = writable<DiveResults | null>(null)
+export const diveResults = singletonWritable<DiveResults | null>('diveResults', null)
 
 // In-mine state (updated by Phaser events)
-export const oxygenCurrent = writable<number>(0)
-export const oxygenMax = writable<number>(0)
-export const currentDepth = writable<number>(0)
-export const currentLayer = writable<number>(0)
+export const oxygenCurrent = singletonWritable<number>('oxygenCurrent', 0)
+export const oxygenMax = singletonWritable<number>('oxygenMax', 0)
+export const currentDepth = singletonWritable<number>('currentDepth', 0)
+export const currentLayer = singletonWritable<number>('currentLayer', 0)
 
 /**
  * Tier label derived from the current layer (0-based → 1-based display).
  * Shallow = L1-5, Mid = L6-10, Deep = L11-15, Extreme = L16-20.
  */
-export const layerTierLabel = derived(currentLayer, (layer): string => {
+export const layerTierLabel = singletonDerived<string>('layerTierLabel', currentLayer, (layer: number): string => {
   const l = layer + 1  // convert from 0-based to 1-based for display
   if (l <= 5)  return 'Shallow'
   if (l <= 10) return 'Mid'
@@ -166,98 +191,98 @@ export const layerTierLabel = derived(currentLayer, (layer): string => {
  * O2 cost multiplier derived from the current layer (0-based).
  * Layer 0 = 1.0×, Layer 9 ≈ 1.5×, Layer 19 = 2.5×. (DD-V2-061)
  */
-export const o2DepthMultiplier = derived(currentLayer, (layer) =>
+export const o2DepthMultiplier = singletonDerived<number>('o2DepthMultiplier', currentLayer, (layer: number) =>
   getO2DepthMultiplier(layer)
 )
 
 /** Display name of the active biome for the current mine layer (empty string while at base). */
-export const currentBiome = writable<string>('')
+export const currentBiome = singletonWritable<string>('currentBiome', '')
 
 /** Biome ID of the active biome for the current mine layer (null while at base). */
-export const currentBiomeId = writable<BiomeId | null>(null)
-export const inventory = writable<InventorySlot[]>([])
+export const currentBiomeId = singletonWritable<BiomeId | null>('currentBiomeId', null)
+export const inventory = singletonWritable<InventorySlot[]>('inventory', [])
 
 // Quiz overlay state
-export const activeQuiz = writable<{
+export const activeQuiz = singletonWritable<{
   fact: Fact
   choices: string[]
   source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'
   gateProgress?: { remaining: number; total: number }
   /** True when the player has demonstrably learned this fact (repetitions >= CONSISTENCY_MIN_REPS) but answered wrong in-dive. */
   isConsistencyPenalty?: boolean
-} | null>(null)
+} | null>('activeQuiz', null)
 
 // Fact reveal state
-export const activeFact = writable<Fact | null>(null)
+export const activeFact = singletonWritable<Fact | null>('activeFact', null)
 
 // Pending artifacts to review at base (accumulated during dive)
-export const pendingArtifacts = writable<string[]>([])
+export const pendingArtifacts = singletonWritable<string[]>('pendingArtifacts', [])
 
 // Active in-run upgrades collected from upgrade crates
-export const activeUpgrades = writable<Record<string, number>>({})
+export const activeUpgrades = singletonWritable<Record<string, number>>('activeUpgrades', {})
 
 // Current pickaxe tier index (into BALANCE.PICKAXE_TIERS), reset each dive
-export const pickaxeTier = writable<number>(0)
+export const pickaxeTier = singletonWritable<number>('pickaxeTier', 0)
 
 // Live blocks-mined counter for current run (reset each dive)
-export const blocksMinedLive = writable<number>(0)
+export const blocksMinedLive = singletonWritable<number>('blocksMinedLive', 0)
 
 // GAIA commentary toast — set to a string to display, null to hide
-export const gaiaMessage = writable<string | null>(null)
+export const gaiaMessage = singletonWritable<string | null>('gaiaMessage', null)
 
 /**
  * Current GAIA expression id (matches a key in GAIA_EXPRESSIONS from gaiaAvatar.ts).
  * Updated alongside gaiaMessage whenever a new in-mine message is emitted.
  * Consumers can import this to render the contextual avatar emoji.
  */
-export const gaiaExpression = writable<string>('neutral')
+export const gaiaExpression = singletonWritable<string>('gaiaExpression', 'neutral')
 
 // Study session facts and review states passed to StudySession component
-export const studyFacts = writable<Fact[]>([])
-export const studyReviewStates = writable<ReviewState[]>([])
+export const studyFacts = singletonWritable<Fact[]>('studyFacts', [])
+export const studyReviewStates = singletonWritable<ReviewState[]>('studyReviewStates', [])
 
 // Send-up station overlay — true while the player is selecting items to send up
-export const showSendUp = writable<boolean>(false)
+export const showSendUp = singletonWritable<boolean>('showSendUp', false)
 
 // Relics active during the current dive run
-export const activeRelics = writable<Relic[]>([])
+export const activeRelics = singletonWritable<Relic[]>('activeRelics', [])
 
 // Active relic synergies for the current dive run
-export const activeSynergies = writable<RelicSynergy[]>([])
+export const activeSynergies = singletonWritable<RelicSynergy[]>('activeSynergies', [])
 
 /** V2 equipped relics for the current run (max 3). */
-export const equippedRelicsV2 = writable<RelicDefinition[]>([])
+export const equippedRelicsV2 = singletonWritable<RelicDefinition[]>('equippedRelicsV2', [])
 
 /** Pending relic pickup (shown in RelicPickupOverlay). */
-export const pendingRelicPickup = writable<RelicDefinition | null>(null)
+export const pendingRelicPickup = singletonWritable<RelicDefinition | null>('pendingRelicPickup', null)
 
 // Retained for compatibility; PONR mechanic removed in Phase 8.2 — always stays false
-export const pastPointOfNoReturn = writable<boolean>(false)
+export const pastPointOfNoReturn = singletonWritable<boolean>('pastPointOfNoReturn', false)
 
 // Current scanner tier index (0 = Basic, 1 = Enhanced, 2 = Advanced, 3 = Deep)
-export const scannerTier = writable<number>(0)
+export const scannerTier = singletonWritable<number>('scannerTier', 0)
 
 // Temporary backpack slots added by in-run expansions (resets to 0 on dive start)
-export const tempBackpackSlots = writable<number>(0)
+export const tempBackpackSlots = singletonWritable<number>('tempBackpackSlots', 0)
 
 /**
  * Active fossil companion for the current dive.
  * Set by GameManager at dive start (null if no companion).
  * Used by HUD to show the companion badge and flash it on effect triggers.
  */
-export const activeCompanion = writable<{
+export const activeCompanion = singletonWritable<{
   icon: string
   name: string
   effect: CompanionEffect
-} | null>(null)
+} | null>('activeCompanion', null)
 
 /** Whether the companion badge should flash (triggered effect pulse). Reset after each flash. */
-export const companionBadgeFlash = writable<boolean>(false)
+export const companionBadgeFlash = singletonWritable<boolean>('companionBadgeFlash', false)
 
 /** Cumulative ticks this dive — increments on every player movement or block hit */
-export const tickCount = writable(0)
+export const tickCount = singletonWritable<number>('tickCount', 0)
 /** Ticks since last layer entry — reset on layer change */
-export const layerTickCount = writable(0)
+export const layerTickCount = singletonWritable<number>('layerTickCount', 0)
 
 // =========================================================
 // Phase 15.2 — GAIA Idle Thought Bubbles
@@ -279,4 +304,4 @@ export interface GaiaThoughtBubble {
 }
 
 /** Active GAIA thought bubble for the dome/base view. Null means no bubble is shown. */
-export const gaiaThoughtBubble = writable<GaiaThoughtBubble | null>(null)
+export const gaiaThoughtBubble = singletonWritable<GaiaThoughtBubble | null>('gaiaThoughtBubble', null)

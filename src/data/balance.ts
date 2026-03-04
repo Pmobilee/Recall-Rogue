@@ -12,6 +12,8 @@ export const BALANCE = {
   OXYGEN_CACHE_RESTORE: 30,           // Oxygen from mining an oxygen cache
   OXYGEN_CACHE_QUIZ_CHANCE: 0.4,    // 40% chance oxygen cache triggers a quiz
   OXYGEN_LAYER_BONUS: 15,             // Oxygen recovered on layer descent
+  OXYGEN_REGEN_MS: 5_400_000,            // 90 minutes per tank regen (DD-V2-138)
+  OXYGEN_MAX_BANK_FREE: 3,               // Max tanks banked for free players
 
   // === MINE GRID ===
   MINE_WIDTH: 20,                     // Blocks wide per layer (default/L1-5; actual size via getLayerGridSize)
@@ -200,8 +202,6 @@ export const BALANCE = {
   RESCUE_BEACON_COST: { dust: 500, shard: 20 } as Record<string, number>,
   OXYGEN_REFILL_COST: { dust: 50 } as Record<string, number>,
   SCALING_CRAFT_MULTIPLIER: 1.25,    // Each craft of same recipe costs 25% more
-  MINERAL_DECAY_RATE: 0.02,          // 2% of dust decays per dive (represents "oxidation")
-  MINERAL_DECAY_THRESHOLD: 500,      // Only decay kicks in above this dust amount
   INSURANCE_COST_PERCENT: 0.15,      // 15% of dust holdings to insure a dive
 
   // === EARTHQUAKES ===
@@ -338,6 +338,13 @@ export const BALANCE = {
     { id: 'market', name: 'Market', icon: '🏪', unlockDives: 7, description: 'Buy cosmetics and deals' },
     { id: 'archive', name: 'Archive', icon: '📚', unlockDives: 10, description: 'Knowledge tree and data discs' },
   ] as const,
+
+  // === ECONOMY REBALANCE (Phase 21, DD-V2-151) ===
+  DOME_MAINTENANCE_BASE_DUST: 50,       // Dust per room per week (first 2 rooms free)
+  DOME_MAINTENANCE_FREE_ROOMS: 2,       // Command + Lab are free
+  SPENDING_BONUS_THRESHOLD: 500,        // Dust spent per week to activate bonus
+  SPENDING_BONUS_YIELD_MULTIPLIER: 1.1, // +10% mineral yield when bonus active
+  SPENDING_BONUS_RESET_DAY: 1,          // Monday (ISO day of week)
 } as const
 
 /**

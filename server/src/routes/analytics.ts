@@ -16,6 +16,7 @@ import { analyticsEvents } from "../db/schema.js";
 
 /** Event names that the server will accept. Any other name is rejected. */
 const ALLOWED_EVENTS = new Set([
+  // Core gameplay events (Phase 19)
   "app_open",
   "tutorial_step_complete",
   "first_dive_complete",
@@ -26,6 +27,26 @@ const ALLOWED_EVENTS = new Set([
   "purchase_initiated",
   "churn_signal",
   "engagement_score_change",
+  // Monetization events (Phase 21.3 / DD-V2-181)
+  "terra_pass_viewed",
+  "iap_purchase_started",
+  "iap_purchase_completed",
+  "iap_purchase_failed",
+  "pioneer_pack_shown",
+  "pioneer_pack_purchased",
+  "pioneer_pack_dismissed",
+  "oxygen_depleted",
+  "subscription_started",
+  "subscription_cancelled",
+  "season_pass_milestone_claimed",
+  "economy_dust_spent",
+  "economy_wealth_snapshot",
+  // Learning effectiveness metrics (DD-V2-134)
+  "learning_retention_rate",
+  "learning_lapse_rate",
+  "learning_daily_study_rate",
+  "learning_facts_per_player",
+  "learning_time_to_mastery",
 ]);
 
 /** Property keys that must never appear in analytics payloads (PII). */
@@ -155,4 +176,138 @@ export async function analyticsRoutes(
       return reply.status(200).send({ accepted: events.length });
     }
   );
+
+  /**
+   * GET /api/analytics/retention
+   *
+   * Returns D1/D7/D30 retention figures for a given cohort date.
+   * In production these are computed from SQL queries over analytics_events.
+   * In development / when there is insufficient data, returns target benchmarks
+   * with an `insufficient_data` status so the dashboard renders gracefully.
+   *
+   * Query params:
+   *   - cohortDate: ISO 8601 date string (e.g. "2026-01-01") — defaults to 30 days ago
+   */
+  fastify.get(
+    "/retention",
+    async (
+      request: FastifyRequest<{ Querystring: { cohortDate?: string } }>,
+      reply: FastifyReply
+    ) => {
+      const { cohortDate } = (request.query as { cohortDate?: string }) ?? {};
+      const parsed = cohortDate ? new Date(cohortDate) : (() => {
+        const d = new Date();
+        d.setDate(d.getDate() - 30);
+        return d;
+      })();
+
+      if (isNaN(parsed.getTime())) {
+        return reply.status(400).send({ error: "Invalid cohortDate — must be ISO 8601" });
+      }
+
+      const result = computeRetention(parsed);
+      return reply.status(200).send(result);
+    }
+  );
+}
+
+// ── Retention computation (DD-V2-155) ──────────────────────────────────────────
+
+/** Shape of a single retention window result. */
+interface RetentionWindow {
+  target: number;
+  actual: number | null;
+  status: "ok" | "below_target" | "insufficient_data";
+  isPrimaryMetric?: true;
+}
+
+/** Full retention report for a cohort. */
+export interface RetentionReport {
+  cohortDate: string;
+  d1: RetentionWindow;
+  d7: RetentionWindow;
+  d30: RetentionWindow;
+}
+
+/**
+ * D1/D7/D30 retention computation (DD-V2-155).
+ *
+ * In production this function would execute SQL queries against the
+ * analytics_events table comparing cohort day-0 `app_open` counts against
+ * return `app_open` counts on day+1, day+7, and day+30.
+ *
+ * For now it returns the benchmark targets with `insufficient_data` status
+ * until enough cohort data accumulates. Pass an `events` array from a
+ * pre-query to compute actual values when available.
+ *
+ * Target benchmarks (DD-V2-155):
+ *   D1  ≥ 45 %   (industry median for educational games)
+ *   D7  ≥ 20 %   (primary business metric)
+ *   D30 ≥ 10 %
+ *
+ * @param cohortDate - The calendar day whose new users form this cohort.
+ * @param events     - Optional pre-fetched event rows for actual computation.
+ */
+export function computeRetention(
+  cohortDate: Date,
+  events: Array<{ sessionId: string; eventName: string; createdAt: number }> = []
+): RetentionReport {
+  const cohortMs = cohortDate.getTime();
+  const dayMs = 86_400_000;
+
+  // Identify cohort sessions: app_open events on the cohort day.
+  const cohortSessions = new Set(
+    events
+      .filter(
+        (e) =>
+          e.eventName === "app_open" &&
+          e.createdAt >= cohortMs &&
+          e.createdAt < cohortMs + dayMs
+      )
+      .map((e) => e.sessionId)
+  );
+
+  const cohortSize = cohortSessions.size;
+
+  function windowStatus(
+    actual: number | null,
+    target: number
+  ): RetentionWindow["status"] {
+    if (actual === null) return "insufficient_data";
+    return actual >= target ? "ok" : "below_target";
+  }
+
+  function computeWindow(
+    offsetDays: number,
+    target: number
+  ): RetentionWindow & { isPrimaryMetric?: true } {
+    if (cohortSize === 0) {
+      return { target, actual: null, status: "insufficient_data" };
+    }
+    const windowStart = cohortMs + offsetDays * dayMs;
+    const windowEnd = windowStart + dayMs;
+    const returning = new Set(
+      events
+        .filter(
+          (e) =>
+            e.eventName === "app_open" &&
+            e.createdAt >= windowStart &&
+            e.createdAt < windowEnd &&
+            cohortSessions.has(e.sessionId)
+        )
+        .map((e) => e.sessionId)
+    ).size;
+
+    const rate = returning / cohortSize;
+    return { target, actual: rate, status: windowStatus(rate, target) };
+  }
+
+  const d7Window = computeWindow(7, 0.2);
+
+  return {
+    cohortDate: cohortDate.toISOString().slice(0, 10),
+    d1: computeWindow(1, 0.45),
+    d7: { ...d7Window, isPrimaryMetric: true },
+    d30: computeWindow(30, 0.1),
+  };
 }

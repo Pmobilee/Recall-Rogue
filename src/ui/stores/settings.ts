@@ -1,4 +1,14 @@
 import { writable } from 'svelte/store'
+import type { Writable } from 'svelte/store'
+
+/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
+function singletonWritable<T>(key: string, initial: T): Writable<T> {
+  const sym = Symbol.for('terra:' + key)
+  if (!(globalThis as any)[sym]) {
+    (globalThis as any)[sym] = writable<T>(initial)
+  }
+  return (globalThis as any)[sym] as Writable<T>
+}
 
 /** Sprite resolution setting: 'low' for 32px, 'high' for 256px. */
 export type SpriteResolution = 'low' | 'high'
@@ -37,7 +47,7 @@ export function setSpriteResolution(res: SpriteResolution): void {
 /**
  * Reactive Svelte store for sprite resolution, initialized from localStorage.
  */
-export const spriteResolution = writable<SpriteResolution>(getSpriteResolution())
+export const spriteResolution = singletonWritable<SpriteResolution>('spriteResolution', getSpriteResolution())
 
 // =========================================================
 // GAIA Personality Settings
@@ -58,7 +68,7 @@ function readGaiaMood(): GaiaMood {
  * Reactive Svelte store for GAIA's current mood/personality.
  * Persisted to localStorage automatically.
  */
-export const gaiaMood = writable<GaiaMood>(readGaiaMood())
+export const gaiaMood = singletonWritable<GaiaMood>('gaiaMood', readGaiaMood())
 gaiaMood.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('gaia-mood', v)
@@ -76,7 +86,7 @@ function readGaiaChattiness(): number {
  * Reactive Svelte store for GAIA chattiness level (0–10).
  * 0 = silent, 10 = always speaks. Persisted to localStorage automatically.
  */
-export const gaiaChattiness = writable<number>(readGaiaChattiness())
+export const gaiaChattiness = singletonWritable<number>('gaiaChattiness', readGaiaChattiness())
 gaiaChattiness.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('gaia-chattiness', String(v))
@@ -97,7 +107,7 @@ function readShowExplanations(): boolean {
  * Reactive Svelte store controlling whether GAIA shows explanations after quiz failures.
  * Defaults to true. Persisted to localStorage automatically.
  */
-export const showExplanations = writable<boolean>(readShowExplanations())
+export const showExplanations = singletonWritable<boolean>('showExplanations', readShowExplanations())
 showExplanations.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('show-explanations', String(v))
@@ -116,7 +126,7 @@ function readMusicVolume(): number {
 }
 
 /** Reactive store for music volume (0-1). Persisted to localStorage. */
-export const musicVolume = writable<number>(readMusicVolume())
+export const musicVolume = singletonWritable<number>('musicVolume', readMusicVolume())
 musicVolume.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_musicVolume', String(v))
@@ -131,7 +141,7 @@ function readSfxVolume(): number {
 }
 
 /** Reactive store for SFX volume (0-1). Persisted to localStorage. */
-export const sfxVolume = writable<number>(readSfxVolume())
+export const sfxVolume = singletonWritable<number>('sfxVolume', readSfxVolume())
 sfxVolume.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_sfxVolume', String(v))
@@ -145,7 +155,7 @@ function readMusicEnabled(): boolean {
 }
 
 /** Reactive store for music enabled toggle. */
-export const musicEnabled = writable<boolean>(readMusicEnabled())
+export const musicEnabled = singletonWritable<boolean>('musicEnabled', readMusicEnabled())
 musicEnabled.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_musicEnabled', String(v))
@@ -159,7 +169,7 @@ function readSfxEnabled(): boolean {
 }
 
 /** Reactive store for SFX enabled toggle. */
-export const sfxEnabled = writable<boolean>(readSfxEnabled())
+export const sfxEnabled = singletonWritable<boolean>('sfxEnabled', readSfxEnabled())
 sfxEnabled.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_sfxEnabled', String(v))
@@ -177,7 +187,7 @@ function readHighContrastQuiz(): boolean {
 }
 
 /** High-contrast quiz mode for accessibility (DD-V2-178) */
-export const highContrastQuiz = writable<boolean>(readHighContrastQuiz())
+export const highContrastQuiz = singletonWritable<boolean>('highContrastQuiz', readHighContrastQuiz())
 highContrastQuiz.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_highContrastQuiz', String(v))
@@ -191,7 +201,7 @@ function readReducedMotion(): boolean {
 }
 
 /** Reduced motion mode — disables animations (DD-V2-178) */
-export const reducedMotion = writable<boolean>(readReducedMotion())
+export const reducedMotion = singletonWritable<boolean>('reducedMotion', readReducedMotion())
 reducedMotion.subscribe(v => {
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('setting_reducedMotion', String(v))
@@ -210,7 +220,7 @@ import { playerSave, persistPlayer } from './playerData'
  * Reactive Svelte store for the player's interest configuration.
  * Derives its initial value from playerSave and persists changes back through it.
  */
-export const interestConfig = writable<InterestConfig>(createDefaultInterestConfig())
+export const interestConfig = singletonWritable<InterestConfig>('interestConfig', createDefaultInterestConfig())
 
 // Sync interestConfig from playerSave whenever playerSave changes.
 playerSave.subscribe(ps => {

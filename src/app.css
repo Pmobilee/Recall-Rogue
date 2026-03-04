@@ -73,6 +73,11 @@ canvas {
   pointer-events: auto;
 }
 
+/* HubView needs canvas passthrough — DomeScene handles object taps via Phaser input */
+#ui-overlay > .hub-view {
+  pointer-events: none;
+}
+
 /* Each component manages its own pointer-events individually */
 
 /* Pixel font for all buttons (DD-V2-268) */

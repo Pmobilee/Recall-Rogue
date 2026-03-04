@@ -1,4 +1,14 @@
 import { get, writable } from 'svelte/store'
+import type { Writable } from 'svelte/store'
+
+/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
+function singletonWritable<T>(key: string, initial: T): Writable<T> {
+  const sym = Symbol.for('terra:' + key)
+  if (!(globalThis as any)[sym]) {
+    (globalThis as any)[sym] = writable<T>(initial)
+  }
+  return (globalThis as any)[sym] as Writable<T>
+}
 import type { AgeRating, MineralTier, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
@@ -12,7 +22,7 @@ import { gaiaMessage } from '../stores/gameState'
 import { recordFastMastery } from '../../services/behavioralLearner'
 
 /** The active player save data. */
-export const playerSave = writable<PlayerSave | null>(null)
+export const playerSave = singletonWritable<PlayerSave | null>('playerSave', null)
 
 /**
  * Reads the age bracket stored by the AgeGate and maps it to an AgeRating.
@@ -629,7 +639,8 @@ import type { CompanionState } from '../../data/companions'
 import { COMPANION_CATALOGUE } from '../../data/companions'
 
 /** Persistent companion states for all companions (unlocked or not). */
-export const playerCompanionStates = writable<CompanionState[]>(
+export const playerCompanionStates = singletonWritable<CompanionState[]>(
+  'playerCompanionStates',
   COMPANION_CATALOGUE.map(c => ({
     companionId: c.id,
     currentStage: 0,

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A message from GAIA</title>
+  <style>
+    body { font-family: 'Courier New', monospace; background: #1a1a2e; color: #e0e0e0; margin: 0; padding: 20px; }
+    .container { max-width: 500px; margin: 0 auto; background: #16213e; border-radius: 8px; padding: 30px; border: 1px solid #0f3460; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .header h1 { color: #e94560; font-size: 18px; margin: 0; }
+    .header p { color: #a0a0a0; font-size: 12px; }
+    .gaia-message { background: #0f3460; border-radius: 6px; padding: 20px; margin: 20px 0; border-left: 3px solid #e94560; }
+    .gaia-message p { line-height: 1.6; margin: 0; }
+    .gaia-avatar { display: inline-block; width: 40px; height: 40px; background: #e94560; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; margin-right: 10px; }
+    .stats { display: flex; justify-content: space-around; margin: 20px 0; }
+    .stat { text-align: center; }
+    .stat .number { font-size: 24px; color: #e94560; font-weight: bold; }
+    .stat .label { font-size: 11px; color: #a0a0a0; }
+    .cta { display: block; text-align: center; background: #e94560; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; margin: 20px auto; font-weight: bold; font-size: 14px; }
+    .footer { text-align: center; font-size: 10px; color: #666; margin-top: 20px; }
+    .footer a { color: #e94560; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Terra Gacha</h1>
+      <p>A message from GAIA</p>
+    </div>
+    <div class="gaia-message">
+      <p><span class="gaia-avatar">G</span></p>
+      <p>{{gaiaMessage}}</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="number">{{factsCount}}</div><div class="label">Facts Learned</div></div>
+      <div class="stat"><div class="number">{{treeGrowth}}</div><div class="label">Tree Growth</div></div>
+    </div>
+    <a href="https://terra-gacha.app/play" class="cta">Return to the Dome</a>
+    <div class="footer">
+      <p>You received this because GAIA thought you'd want to know.</p>
+      <p><a href="{{unsubscribeUrl}}">Unsubscribe</a> — we'll miss you, but we understand.</p>
+    </div>
+  </div>
+</body>
+</html>

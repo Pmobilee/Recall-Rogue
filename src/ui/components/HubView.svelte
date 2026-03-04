@@ -108,28 +108,6 @@
     }
   }
 
-  function handleClick(e: MouseEvent): void {
-    // If the click target is the hub-view itself (not a child button/element),
-    // forward it to the Phaser canvas so DomeScene objects can receive it.
-    const target = e.target as HTMLElement
-    if (target.closest('button') || target.closest('[data-interactive]')) return
-
-    const canvas = document.querySelector('#game-container canvas') as HTMLCanvasElement | null
-    if (!canvas) return
-
-    // Re-dispatch the click as pointer events on the canvas
-    const opts = {
-      clientX: e.clientX,
-      clientY: e.clientY,
-      screenX: e.screenX,
-      screenY: e.screenY,
-      bubbles: true,
-      cancelable: true,
-    }
-    canvas.dispatchEvent(new PointerEvent('pointerdown', { ...opts, pointerId: 1 }))
-    canvas.dispatchEvent(new PointerEvent('pointerup', { ...opts, pointerId: 1 }))
-  }
-
   function handleFloorSelect(index: number): void {
     if (index >= 0 && index < unlockedFloors.length) {
       floorIndex = index
@@ -201,9 +179,18 @@
 
       unsub()
     })
+
+    // Floor navigation listeners — attached to document since hub-view
+    // has pointer-events:none for Phaser canvas passthrough
+    document.addEventListener('touchstart', handleTouchStart as unknown as EventListener)
+    document.addEventListener('touchend', handleTouchEnd as unknown as EventListener)
+    document.addEventListener('wheel', handleWheel as unknown as EventListener, { passive: false })
   })
 
   onDestroy(() => {
+    document.removeEventListener('touchstart', handleTouchStart as unknown as EventListener)
+    document.removeEventListener('touchend', handleTouchEnd as unknown as EventListener)
+    document.removeEventListener('wheel', handleWheel as unknown as EventListener)
     hubEvents.off('objectTap', handleObjectTap)
     // Stop GAIA thought bubble timer on cleanup (Phase 15.2)
     const gm = getGM()
@@ -213,15 +200,7 @@
   })
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<div
-  class="hub-view"
-  ontouchstart={handleTouchStart}
-  ontouchend={handleTouchEnd}
-  onwheel={handleWheel}
-  onclick={handleClick}
->
+<div class="hub-view">
   <!-- Resource bar at top -->
   <div class="hub-resource-bar">
     {#if $playerSave}
@@ -259,9 +238,9 @@
     width: 100%;
     height: 100vh;
     position: relative;
-    touch-action: none;
-    /* Captures clicks to forward to Phaser canvas; child buttons handle their own events */
-    pointer-events: auto;
+    /* Canvas passthrough — DomeScene handles clicks via Phaser input.
+       Interactive children (resource bar, floor indicator) opt in individually. */
+    pointer-events: none;
   }
 
   .hub-resource-bar {

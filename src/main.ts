@@ -8,6 +8,9 @@ import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
 import { analyticsService } from './services/analyticsService'
+import { GameManager } from './game/GameManager'
+import { factsDB } from './services/factsDB'
+import { gameManagerStore } from './game/gameManagerRef'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -93,14 +96,6 @@ playerSave.update(s => {
 })
 
 async function bootGame(): Promise<void> {
-  // Lazy-load game engine (Phaser) and facts DB in parallel — keeps them
-  // out of the critical render path so the Svelte UI appears instantly.
-  const [{ GameManager }, { factsDB }, { gameManagerStore }] = await Promise.all([
-    import('./game/GameManager'),
-    import('./services/factsDB'),
-    import('./game/gameManagerRef'),
-  ])
-
   // Start DB init in background — don't block Phaser boot
   const dbPromise = factsDB.init().catch(err => {
     console.warn('FactsDB init failed, continuing without database:', err)

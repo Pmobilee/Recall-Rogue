@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Season: {{seasonName}}</title>
+  <style>
+    body { font-family: 'Courier New', monospace; background: #1a1a2e; color: #e0e0e0; margin: 0; padding: 20px; }
+    .container { max-width: 500px; margin: 0 auto; background: #16213e; border-radius: 8px; padding: 30px; border: 1px solid #0f3460; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .season-title { color: #e94560; font-size: 22px; margin: 10px 0 5px; }
+    .tagline { color: #a0a0a0; font-style: italic; font-size: 14px; }
+    .content { line-height: 1.6; margin: 20px 0; }
+    .rewards { background: #0f3460; border-radius: 6px; padding: 15px; margin: 15px 0; }
+    .reward-item { padding: 8px 0; border-bottom: 1px solid #1a1a2e; }
+    .reward-item:last-child { border-bottom: none; }
+    .cta { display: block; text-align: center; background: #e94560; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; margin: 20px auto; font-weight: bold; }
+    .footer { text-align: center; font-size: 10px; color: #666; margin-top: 20px; }
+    .footer a { color: #e94560; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <p style="font-size: 12px; color: #a0a0a0;">Terra Gacha</p>
+      <h1 class="season-title">{{seasonName}}</h1>
+      <p class="tagline">{{tagline}}</p>
+    </div>
+    <div class="content">
+      <p>A new season begins on <strong>{{startDate}}</strong>. New facts, new mysteries, new rewards await in the mines.</p>
+    </div>
+    <div class="rewards">
+      <p style="color: #e94560; font-weight: bold; margin: 0 0 10px;">Season Rewards</p>
+      <div class="reward-item">Exclusive cosmetics earned through discovery</div>
+      <div class="reward-item">Seasonal facts — permanent additions to your tree</div>
+      <div class="reward-item">Special GAIA commentary and themed dome decorations</div>
+    </div>
+    <a href="https://terra-gacha.app/play" class="cta">Start the Season</a>
+    <div class="footer">
+      <p><a href="{{unsubscribeUrl}}">Unsubscribe</a></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { get } from 'svelte/store'
-  import { untrack } from 'svelte'
+  import { untrack, onDestroy } from 'svelte'
   import { getGM } from './game/gameManagerRef'
   import {
     currentScreen,

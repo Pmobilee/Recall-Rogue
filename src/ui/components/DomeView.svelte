@@ -3,6 +3,7 @@
   import { gaiaExpression } from '../stores/gameState'
   import BaseView from './BaseView.svelte'
   import DomeCanvas from './DomeCanvas.svelte'
+  import OxygenTankDisplay from './OxygenTankDisplay.svelte'
   import type { Fact } from '../../data/types'
 
   // Resource icon sprites
@@ -97,6 +98,7 @@
         <img class="res-icon-img" src={iconOxygen} alt="O2" />
         <span class="res-val">{oxygen}</span>
       </span>
+      <OxygenTankDisplay />
       <span class="res-item" title="Dust">
         <img class="res-icon-img" src={iconDust} alt="Dust" />
         <span class="res-val">{fmt(dust)}</span>
