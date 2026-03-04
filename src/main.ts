@@ -3,12 +3,10 @@ import './ui/styles/overlay.css'
 import App from './App.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
-import { GameManager } from './game/GameManager'
-import { addLearnedFact, initPlayer, persistPlayer, playerSave } from './ui/stores/playerData'
+import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
-import { factsDB } from './services/factsDB'
 
 /**
  * Checks whether the current browser supports WebGL rendering.
@@ -51,6 +49,14 @@ playerSave.update(s => {
 })
 
 async function bootGame(): Promise<void> {
+  // Lazy-load game engine (Phaser) and facts DB in parallel — keeps them
+  // out of the critical render path so the Svelte UI appears instantly.
+  const [{ GameManager }, { factsDB }, { gameManagerStore }] = await Promise.all([
+    import('./game/GameManager'),
+    import('./services/factsDB'),
+    import('./game/gameManagerRef'),
+  ])
+
   // Start DB init in background — don't block Phaser boot
   const dbPromise = factsDB.init().catch(err => {
     console.warn('FactsDB init failed, continuing without database:', err)
@@ -58,33 +64,21 @@ async function bootGame(): Promise<void> {
 
   // Boot Phaser engine immediately (parallel with DB load)
   const gameManager = GameManager.getInstance()
+  gameManagerStore.set(gameManager)
   gameManager.boot()
 
   // BootScene has no preload, so boot completes synchronously.
   // Navigate to appropriate screen immediately.
-  const isNewPlayer = save.stats.totalDivesCompleted === 0 && save.learnedFacts.length <= 6
-  // Phase 12: Route truly new players to interest assessment first
-  const hasConfiguredInterests = save.interestConfig?.categories?.some(c => c.weight > 0) ?? false
-  if (isNewPlayer && !hasConfiguredInterests) {
-    currentScreen.set('interestAssessment')
-  } else if (isNewPlayer) {
-    currentScreen.set('mainMenu')
+  // Phase 14: Route through tutorial flow for new players
+  if (!save.tutorialComplete) {
+    // Brand new player — start the onboarding cutscene
+    currentScreen.set('cutscene')
   } else {
     currentScreen.set('base')
   }
 
-  // Wait for DB to finish loading before seeding starter facts
+  // Wait for DB to finish loading
   await dbPromise
-
-  // Seed starter facts if DB is available and player has none learned yet
-  if (factsDB.isReady() && save.learnedFacts.length === 0) {
-    const starterVocab = factsDB.getByType('vocabulary').slice(0, 3)
-    const starterFacts = factsDB.getByType('fact').slice(0, 3)
-    for (const fact of [...starterVocab, ...starterFacts]) {
-      addLearnedFact(fact.id)
-    }
-    persistPlayer()
-  }
 }
 
 bootGame()

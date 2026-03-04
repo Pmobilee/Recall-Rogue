@@ -116,6 +116,10 @@ export class GameManager {
   private autoBalanceActive = false
   /** Minerals banked via send-up pod this run. Exempt from loot loss. (DD-V2-053) */
   private bankedMinerals: Record<string, number> = {}
+  /** Whether the current dive is a tutorial dive (Phase 14). Set before starting the mine scene. */
+  isTutorialDive = false
+  /** Whether the earthquake tutorial has been shown this dive (local to tutorial mine session). */
+  private tutorialEarthquakeShown = false
 
   // ---- Sub-managers (initialized lazily in boot()) ----
   private gaiaManager!: GaiaManager
@@ -1042,6 +1046,11 @@ export class GameManager {
     currentBiomeStore.set(layer0Biome.name)
     currentBiomeId.set(layer0Biome.id)
 
+    // Phase 14: Determine if this is a tutorial dive (first-time player, diveCount === 0).
+    // MineScene reads GameManager.getInstance().isTutorialDive to call generateTutorialMine().
+    this.isTutorialDive = !currentSave.tutorialComplete && currentSave.diveCount === 0
+    this.tutorialEarthquakeShown = false
+
     // Phase 10.15 — Cinematic dive transition.
     // Build the mine-start payload now (before any async gap), then fire the
     // DomeScene zoom-to-hatch animation.  When it completes, stop the dome and
@@ -1127,8 +1136,11 @@ export class GameManager {
 
     // If forced (oxygen depleted), lose 30% of in-pack inventory.
     // Exception: if the dive was insured, skip the penalty entirely.
+    // Phase 14: 0% loot loss for first oxygen depletion (tutorial rescue).
     // Items secured at a send-up station are NOT subject to this penalty regardless.
-    if (forced && !this.currentDiveInsured) {
+    const saveForLoss = get(playerSave)
+    const isTutorialFirstDepletion = saveForLoss && !saveForLoss.tutorialComplete && saveForLoss.diveCount === 0
+    if (forced && !this.currentDiveInsured && !isTutorialFirstDepletion) {
       const lossRatio = 0.3
       for (const tier of Object.keys(mineralTotals)) {
         mineralTotals[tier] = Math.floor(mineralTotals[tier] * (1 - lossRatio))
@@ -1139,6 +1151,10 @@ export class GameManager {
         const idx = Math.floor(Math.random() * artifactFactIds.length)
         artifactFactIds.splice(idx, 1)
       }
+    }
+    // Phase 14: Show GAIA rescue message for tutorial first depletion
+    if (forced && isTutorialFirstDepletion) {
+      this.gaiaManager.tutorialGaiaLine('first_depletion_rescue')
     }
 
     // Process secured (sent-up) items — always at full value, no loss.
@@ -1171,6 +1187,38 @@ export class GameManager {
 
     // Record dive stats
     recordDiveComplete(0, results.blocksMinedThisRun)
+
+    // Phase 14: Increment diveCount and handle tutorial completion
+    const currentSave = get(playerSave)
+    if (currentSave) {
+      const newDiveCount = currentSave.diveCount + 1
+      playerSave.update(s => {
+        if (!s) return s
+        const updates: Partial<typeof s> = { diveCount: newDiveCount }
+        // Mark tutorial complete after first dive
+        if (!s.tutorialComplete && s.diveCount === 0) {
+          updates.tutorialComplete = true
+          updates.tutorialStep = 1
+        }
+        return { ...s, ...updates }
+      })
+      persistPlayer()
+
+      // Fire progressive unlock GAIA message for dives 2-4
+      const unlock = this.gaiaManager.postDiveProgressiveUnlock(newDiveCount)
+      if (unlock) {
+        // Delay slightly so it appears after dive results are dismissed
+        setTimeout(() => {
+          gaiaMessage.set(unlock.message)
+          setTimeout(() => gaiaMessage.set(null), 8000)
+        }, 1000)
+      }
+
+      // Tutorial dive complete GAIA line
+      if (newDiveCount === 1) {
+        this.gaiaManager.tutorialGaiaLine('tutorial_dive_complete')
+      }
+    }
 
     // Replenish oxygen tanks for next dive.
     // Restore to the pre-dive count (which includes permanent tank upgrades),

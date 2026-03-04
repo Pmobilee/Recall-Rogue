@@ -10,6 +10,20 @@ import { PREMIUM_MATERIALS, type PremiumMaterial } from '../../data/premiumRecip
 import { getEffectiveArchetype, ARCHETYPE_GAIA_EMPHASIS } from '../../services/archetypeDetector'
 import { deriveJourneyMemoryVars } from '../../services/journeyMemory'
 
+/** Tutorial-specific GAIA dialogue lines (Phase 14). Verbatim — do not paraphrase. */
+const TUTORIAL_GAIA_LINES: Record<string, string> = {
+  artifact_found: "An artifact! Quick — bring it back to my terminal at the dome. I need to analyze it.",
+  fossil_found: "Wait. That's a fossil node. Something is preserved in there. Intact. This is... this is significant. Collect it. Carefully.",
+  quiz_gate_first: "A Quiz Gate. I've locked this area with a knowledge challenge. Answer correctly to pass. Wrong answers cost oxygen — so think before you tap.",
+  earthquake_warning: "WARNING — ground instability detected. This is an EARTHQUAKE ZONE. When you feel the screen shake — that's your warning. Move away before the collapse. You have moves to react. Use them.",
+  earthquake_after_safe: "Good instincts. Earthquakes always give you warning moves. Remember: count your steps, don't panic.",
+  earthquake_after_hurt: "Earthquakes give you warning moves to escape. You'll need to use them next time. The deeper you go, the more frequent they become.",
+  oxygen_low_first: "Oxygen at 30%. Time to consider heading back. The exit ladder is always available — surface before you're forced to.",
+  first_depletion_rescue: "Emergency oxygen protocol activated. You won't lose anything this time. Learn the Send-Up Stations for next time.",
+  tutorial_dive_complete: "That was your first dive. Bring those artifacts to my terminal — let's see what we've got.",
+  fossil_first_reveal: "Wait. I'm analyzing the fossil fragment you brought back. This is... a trilobite. Arthropod. 520 million years old. They dominated the seas for 270 million years before the extinction event. We have enough genetic data to start reconstruction. Learn 10 facts about the Cambrian period and I can bring it back to life.",
+}
+
 /**
  * Manages GAIA (ship AI) commentary and premium material awards.
  * Extracted from GameManager to keep GAIA logic self-contained.
@@ -673,5 +687,48 @@ export class GaiaManager {
     const expr = getGaiaExpression('memory', mood)
     gaiaExpression.set(expr.id)
     gaiaMessage.set(text)
+  }
+
+  // =========================================================
+  // Phase 14 — Tutorial Dialogue & Progressive Unlocks
+  // =========================================================
+
+  /**
+   * Returns a tutorial-specific GAIA line by key.
+   * Shows the line as a GAIA toast message.
+   */
+  tutorialGaiaLine(key: string): void {
+    const line = TUTORIAL_GAIA_LINES[key]
+    if (line) {
+      gaiaMessage.set(line)
+      // Tutorial messages stay longer (8s)
+      setTimeout(() => gaiaMessage.set(null), 8000)
+    }
+  }
+
+  /**
+   * Returns a GAIA narration line for progressive system unlocks, or null if no unlock fires.
+   * Called once per dive completion, keyed on diveCount (the count AFTER the completed dive).
+   */
+  postDiveProgressiveUnlock(diveCount: number): { message: string; highlightTarget: string } | null {
+    switch (diveCount) {
+      case 2:
+        return {
+          message: "Your first fact is in my database now. Come — I want to show you the Knowledge Tree. It grows every time you learn something new.",
+          highlightTarget: 'knowledgeTree',
+        }
+      case 3:
+        return {
+          message: "You have facts in rotation now. Some are due for review. The study session will help you lock them in — and every review earns you bonus oxygen.",
+          highlightTarget: 'studySession',
+        }
+      case 4:
+        return {
+          message: "I found a recipe fragment in your last dive. The Materializer can combine your minerals into something more powerful. Let me show you.",
+          highlightTarget: 'materializer',
+        }
+      default:
+        return null
+    }
   }
 }

@@ -8,7 +8,7 @@
   import FloorUpgradePanel from './FloorUpgradePanel.svelte'
   import { upgradeFloor } from '../stores/playerData'
   import type { Fact } from '../../data/types'
-  import { GameManager } from '../../game/GameManager'
+  import { gameManagerStore, getGM } from '../../game/gameManagerRef'
   import { hubEvents } from '../../game/hubEvents'
   import GaiaThoughtBubble from './GaiaThoughtBubble.svelte'
 
@@ -37,7 +37,6 @@
   }: Props = $props()
 
   const hubStack = getDefaultHubStack()
-  const gm = GameManager.getInstance()
 
   // Derive hub state from playerSave
   const unlockedIds   = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
@@ -67,14 +66,16 @@
 
   // Keep DomeScene in sync when player save or floor index changes
   $effect(() => {
-    const dome = gm.getDomeScene()
+    const gm = getGM()
+    const dome = gm?.getDomeScene()
     if (dome) {
       dome.setHubState(unlockedIds, floorTiers, masteredCount)
     }
   })
 
   $effect(() => {
-    const dome = gm.getDomeScene()
+    const gm = getGM()
+    const dome = gm?.getDomeScene()
     if (dome) {
       dome.goToFloor(floorIndex)
     }
@@ -144,37 +145,47 @@
 
   // ---- Lifecycle ----
 
+  let hubEventsConnected = false
+
   onMount(() => {
-    // Start DomeScene, passing current hub state
-    gm.startDome({
-      unlockedIds,
-      floorTiers,
-      masteredCount,
-      floorIndex,
+    const unsub = gameManagerStore.subscribe(gm => {
+      if (!gm || hubEventsConnected) return
+      hubEventsConnected = true
+
+      // Start DomeScene, passing current hub state
+      gm.startDome({
+        unlockedIds,
+        floorTiers,
+        masteredCount,
+        floorIndex,
+      })
+
+      // Listen for object taps emitted by DomeScene
+      hubEvents.on('objectTap', handleObjectTap)
+
+      // Phase 15.5: Fire return engagement greeting before idle bubbles start.
+      // This takes priority over the idle bubble timer so the welcome message
+      // is the first thing the player sees when they open or return to the app.
+      gm.getGaiaManager().fireReturnEngagement()
+
+      // Start GAIA idle thought bubble timer (Phase 15.2)
+      gm.getGaiaManager().startIdleBubbleTimer()
+
+      // Phase 15.4: Fire a journey memory comment after a short delay so the
+      // player has time to see the dome before GAIA references their history.
+      setTimeout(() => {
+        gm.getGaiaManager().fireJourneyMemory()
+      }, 2000)
+
+      unsub()
     })
-
-    // Listen for object taps emitted by DomeScene
-    hubEvents.on('objectTap', handleObjectTap)
-
-    // Phase 15.5: Fire return engagement greeting before idle bubbles start.
-    // This takes priority over the idle bubble timer so the welcome message
-    // is the first thing the player sees when they open or return to the app.
-    gm.getGaiaManager().fireReturnEngagement()
-
-    // Start GAIA idle thought bubble timer (Phase 15.2)
-    gm.getGaiaManager().startIdleBubbleTimer()
-
-    // Phase 15.4: Fire a journey memory comment after a short delay so the
-    // player has time to see the dome before GAIA references their history.
-    setTimeout(() => {
-      gm.getGaiaManager().fireJourneyMemory()
-    }, 2000)
   })
 
   onDestroy(() => {
     hubEvents.off('objectTap', handleObjectTap)
     // Stop GAIA thought bubble timer on cleanup (Phase 15.2)
-    gm.getGaiaManager().stopIdleBubbleTimer()
+    const gm = getGM()
+    gm?.getGaiaManager().stopIdleBubbleTimer()
     // Do NOT stop DomeScene here — GameManager.startDive() / stopDome() handles that
     // so we don't flicker when navigating to other hub sub-screens.
   })

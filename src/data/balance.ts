@@ -235,15 +235,99 @@ export const BALANCE = {
 
   // === STREAK SYSTEM ===
   STREAK_MILESTONES: [
-    { days: 3, reward: 'oxygen_bonus', value: 1, name: '3-Day Explorer', description: '+1 oxygen tank on dives' },
-    { days: 7, reward: 'dust_bonus', value: 50, name: 'Weekly Miner', description: '+50 bonus dust' },
-    { days: 14, reward: 'crystal_bonus', value: 3, name: 'Dedicated Scholar', description: '+3 crystals' },
-    { days: 30, reward: 'geode_bonus', value: 1, name: 'Monthly Master', description: '+1 geode' },
-    { days: 60, reward: 'essence_bonus', value: 1, name: 'Legendary Streak', description: '+1 essence' },
-    { days: 100, reward: 'title', value: 0, name: 'Centurion', description: 'Exclusive "Centurion" title' },
+    { days: 3,   reward: 'oxygen_bonus',  value: 1,    name: '3-Day Explorer',    description: '+1 oxygen tank on all future dives', title: undefined },
+    { days: 7,   reward: 'dust_bonus',    value: 100,  name: 'Weekly Miner',      description: '+100 bonus dust + title unlocked', title: 'Explorer' },
+    { days: 14,  reward: 'crystal_bonus', value: 3,    name: 'Dedicated Scholar', description: '+3 crystals', title: undefined },
+    { days: 21,  reward: 'dust_bonus',    value: 200,  name: 'Three Weeks Deep',  description: '+200 dust', title: undefined },
+    { days: 30,  reward: 'geode_bonus',   value: 2,    name: 'Monthly Master',    description: '+2 geodes + title unlocked', title: 'Miner' },
+    { days: 45,  reward: 'shard_bonus',   value: 10,   name: 'Forty-Five',        description: '+10 shards', title: undefined },
+    { days: 60,  reward: 'essence_bonus', value: 1,    name: 'Legendary Streak',  description: '+1 primordial essence + title unlocked', title: 'Scholar' },
+    { days: 75,  reward: 'dust_bonus',    value: 500,  name: 'Seventy-Five Days', description: '+500 dust', title: undefined },
+    { days: 90,  reward: 'geode_bonus',   value: 5,    name: 'Quarter Year',      description: '+5 geodes + exclusive cosmetic badge', title: undefined },
+    { days: 100, reward: 'title',         value: 0,    name: 'Centurion',         description: 'Exclusive "Centurion" title', title: 'Centurion' },
+    { days: 120, reward: 'essence_bonus', value: 3,    name: 'Four Months',       description: '+3 essence', title: undefined },
+    { days: 150, reward: 'dust_bonus',    value: 1000, name: 'Five Months',       description: '+1000 dust', title: undefined },
+    { days: 180, reward: 'crystal_bonus', value: 20,   name: 'Half Year',         description: '+20 crystals + title unlocked', title: 'Researcher' },
+    { days: 210, reward: 'geode_bonus',   value: 10,   name: 'Seven Months',      description: '+10 geodes', title: undefined },
+    { days: 240, reward: 'essence_bonus', value: 5,    name: 'Eight Months',      description: '+5 essence', title: undefined },
+    { days: 270, reward: 'dust_bonus',    value: 2000, name: 'Nine Months',       description: '+2000 dust', title: undefined },
+    { days: 300, reward: 'crystal_bonus', value: 50,   name: 'Ten Months',        description: '+50 crystals', title: undefined },
+    { days: 330, reward: 'essence_bonus', value: 10,   name: 'Eleven Months',     description: '+10 essence', title: undefined },
+    { days: 365, reward: 'title',         value: 0,    name: 'Cartographer',      description: '"Cartographer" title + unique golden dome cosmetic', title: 'Cartographer' },
   ] as const,
   STREAK_PROTECTION_COST: { dust: 200 } as Record<string, number>,
-  STREAK_FREEZE_MAX: 3, // max freeze days available
+  STREAK_FREEZE_MAX: 3,
+
+  // === GRACE PERIOD (DD-V2-158) ===
+  GRACE_PERIOD_WINDOW_DAYS: 30,
+  GRACE_PERIOD_MAX_PER_WINDOW: 1,
+
+  // === GACHA ANIMATION TIERS (Phase 17.1) ===
+  GACHA_TIERS: {
+    common:   { durationMs: 400,  particleCount: 0,   screenFlash: false, screenShake: false, soundKey: 'reveal_common',    bgColor: '#1a1a2e', glowColor: '#888888', labelText: 'Common Find' },
+    uncommon: { durationMs: 600,  particleCount: 8,   screenFlash: false, screenShake: false, soundKey: 'reveal_uncommon',  bgColor: '#1a2e1a', glowColor: '#4ec9a0', labelText: 'Uncommon Discovery' },
+    rare:     { durationMs: 900,  particleCount: 20,  screenFlash: true,  screenShake: false, soundKey: 'reveal_rare',      bgColor: '#1a1a3e', glowColor: '#4a9eff', labelText: 'Rare Artifact!' },
+    epic:     { durationMs: 1400, particleCount: 40,  screenFlash: true,  screenShake: false, soundKey: 'reveal_epic',      bgColor: '#2a1a3e', glowColor: '#cc44ff', labelText: 'EPIC ARTIFACT!!' },
+    legendary:{ durationMs: 2200, particleCount: 80,  screenFlash: true,  screenShake: true,  soundKey: 'reveal_legendary', bgColor: '#2a1a00', glowColor: '#ffd700', labelText: 'LEGENDARY!!!' },
+    mythic:   { durationMs: 3500, particleCount: 150, screenFlash: true,  screenShake: true,  soundKey: 'reveal_mythic',    bgColor: '#1a0a2e', glowColor: '#ff44aa', labelText: 'MYTHIC' },
+  } as const,
+
+  // === MASTERY CELEBRATIONS (DD-V2-108, DD-V2-119) ===
+  MASTERY_CELEBRATION_THRESHOLDS: [
+    { count: 1,   tier: 'fullscreen', dustBonus: 0,    title: null,            gaiaKey: 'firstMastery' },
+    { count: 5,   tier: 'mini',       dustBonus: 15,   title: null,            gaiaKey: 'mastery5' },
+    { count: 10,  tier: 'banner',     dustBonus: 50,   title: null,            gaiaKey: 'mastery10' },
+    { count: 25,  tier: 'medium',     dustBonus: 100,  title: 'Scholar',       gaiaKey: 'mastery25' },
+    { count: 50,  tier: 'medium',     dustBonus: 200,  title: 'Researcher',    gaiaKey: 'mastery50' },
+    { count: 100, tier: 'major',      dustBonus: 500,  title: 'Archivist',     gaiaKey: 'mastery100' },
+    { count: 250, tier: 'major',      dustBonus: 1000, title: 'Encyclopedist', gaiaKey: 'mastery250' },
+    { count: 500, tier: 'fullscreen', dustBonus: 2500, title: 'Omniscient',    gaiaKey: 'mastery500' },
+  ] as const,
+
+  // === NEAR-MISS MESSAGES (Phase 17.1) ===
+  NEAR_MISS_MESSAGES: {
+    epic_nearLegendary: [
+      'Almost Legendary! Epic is still incredible.',
+      'So close to Legendary! An Epic find is a win.',
+      'Just one tier away from Legendary. Epic it is!',
+    ],
+    legendary_nearMythic: [
+      'Legendary! Mythic is rarer than this world deserves.',
+      'Legendary -- you were this close to Mythic.',
+      'A Legendary find. Mythic is out there somewhere...',
+    ],
+  } as const,
+
+  // === SESSION DESIGN (Phase 17.3, DD-V2-135/137/141) ===
+  SESSION_QUICK_TARGET_MS: 5 * 60 * 1000,
+  SESSION_DEEP_TARGET_MS: 15 * 60 * 1000,
+  SESSION_COZY_TARGET_MS: 3 * 60 * 1000,
+
+  // === ANTI-BINGE DIMINISHING RETURNS ===
+  ANTI_BINGE_DIVE_THRESHOLD: 3,
+  ANTI_BINGE_MINERAL_MULT: 0.65,
+  ANTI_BINGE_DISABLE_QUIZ_BONUS: true,
+  ANTI_BINGE_GAIA_MESSAGES: [
+    "You've been at this a while. Your brain learns better with rest -- even a 10-minute break helps.",
+    "Three dives! That's impressive dedication. A short break now will make the next dive more fun.",
+    "G.A.I.A. recommends: rest. The minerals will still be here.",
+  ] as const,
+
+  // === LOGIN CALENDAR (Phase 17.4, DD-V2-144) ===
+  LOGIN_CALENDAR_REWARDS: [
+    { day: 1, type: 'dust',                amount: 50,  icon: 'icon_dust',     label: '50 Dust',              description: 'A small stash to get you going.' },
+    { day: 2, type: 'bomb',                amount: 1,   icon: 'icon_bomb',     label: '1 Bomb',               description: 'Clears a 3x3 area underground.' },
+    { day: 3, type: 'dust',                amount: 100, icon: 'icon_dust',     label: '100 Dust',             description: 'Double the haul.' },
+    { day: 4, type: 'streak_freeze',       amount: 1,   icon: 'icon_freeze',   label: 'Streak Freeze',        description: 'Protect your streak from one missed day.' },
+    { day: 5, type: 'shard',               amount: 1,   icon: 'icon_shard',    label: '1 Shard',              description: 'A mineral fragment from deeper layers.' },
+    { day: 6, type: 'data_disc_random',    amount: 1,   icon: 'icon_disc',     label: 'Random Data Disc',     description: 'Unlocks a collection of facts.' },
+    { day: 7, type: 'artifact_uncommon_plus', amount: 1, icon: 'icon_artifact', label: 'Uncommon+ Artifact',  description: "The week's prize. Uncommon or better." },
+  ] as const,
+
+  // === COMEBACK BONUS (Phase 17.4) ===
+  COMEBACK_BONUS_THRESHOLD_DAYS: 3,
+  COMEBACK_OXYGEN_BONUS: 1,
+  COMEBACK_ARTIFACT_RARITY_FLOOR: 'uncommon' as const,
 
   // === DOME ROOMS ===
   DOME_ROOMS: [

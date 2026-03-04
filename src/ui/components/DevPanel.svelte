@@ -6,7 +6,7 @@
   import { SCENARIO_PRESETS, type ScenarioPreset } from '../../dev/presets'
   import { listSnapshots, storeSnapshot, deleteSnapshot, exportSnapshotBlob, parseSnapshotFile, type SaveSnapshot } from '../../dev/snapshotStore'
   import { factsDB } from '../../services/factsDB'
-  import { GameManager } from '../../game/GameManager'
+  import { getGM } from '../../game/gameManagerRef'
   import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen, addConsumableToDive } from '../stores/gameState'
   import {
     addLearnedFact,
@@ -55,8 +55,6 @@
 
   // ─── dev quiz every block toggle ─────────────────────────────
   let quizEveryBlock = $state<boolean>(false)
-
-  const gm = GameManager.getInstance()
 
   // ─── Presets ─────────────────────────────────────────────────
   function loadPreset(preset: ScenarioPreset): void {
@@ -217,7 +215,7 @@
   }
 
   function learn20Facts(): void {
-    const facts = gm.getFacts()
+    const facts = getGM()?.getFacts() ?? []
     const save = get(playerSave)
     if (!save) return
     const unlearned = facts.filter(f => !save.learnedFacts.includes(f.id))
@@ -345,7 +343,7 @@
       persistPlayer()
     }
     // Start MineScene at the target layer (0-indexed), optionally with a forced biome
-    const g = gm.getGame()
+    const g = getGM()?.getGame()
     if (g) {
       const biomeOverride = forcedBiomeId ? ALL_BIOMES.find(b => b.id === forcedBiomeId) : undefined
       g.scene.stop('MineScene')
@@ -372,7 +370,7 @@
       playerSave.update(s => s ? { ...s, oxygen: 1 } : s)
       persistPlayer()
     }
-    gm.startDive(1)
+    getGM()?.startDive(1)
   }
 
   const NAV_SCREENS: { label: string; screen: Screen }[] = [
@@ -567,7 +565,7 @@
             <button class="btn-give" type="button" onclick={giveCustomAmount}>Give</button>
           </div>
           <!-- Force Quiz (Phase 8.8) -->
-          <button class="btn-give btn-wide" data-testid="dev-force-quiz" type="button" onclick={() => { gm.forceQuiz?.() }}>Force Quiz</button>
+          <button class="btn-give btn-wide" data-testid="dev-force-quiz" type="button" onclick={() => { getGM()?.forceQuiz?.() }}>Force Quiz</button>
           <!-- Quiz Every Block toggle -->
           <button
             class="btn-give btn-wide"
@@ -576,7 +574,7 @@
             type="button"
             onclick={() => {
               quizEveryBlock = !quizEveryBlock
-              const qm = gm.getQuizManager?.()
+              const qm = getGM()?.getQuizManager?.()
               if (qm) qm.devForceQuizEveryBlock = quizEveryBlock
             }}
           >Quiz Every Block: {quizEveryBlock ? 'ON' : 'OFF'}</button>

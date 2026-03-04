@@ -105,6 +105,68 @@ showExplanations.subscribe(v => {
 })
 
 // =========================================================
+// Audio Settings (Phase 17.2)
+// =========================================================
+
+function readMusicVolume(): number {
+  if (typeof window === 'undefined') return 0.6
+  const raw = window.localStorage.getItem('setting_musicVolume')
+  const parsed = raw !== null ? parseFloat(raw) : NaN
+  return isNaN(parsed) ? 0.6 : Math.max(0, Math.min(1, parsed))
+}
+
+/** Reactive store for music volume (0-1). Persisted to localStorage. */
+export const musicVolume = writable<number>(readMusicVolume())
+musicVolume.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_musicVolume', String(v))
+  }
+})
+
+function readSfxVolume(): number {
+  if (typeof window === 'undefined') return 0.8
+  const raw = window.localStorage.getItem('setting_sfxVolume')
+  const parsed = raw !== null ? parseFloat(raw) : NaN
+  return isNaN(parsed) ? 0.8 : Math.max(0, Math.min(1, parsed))
+}
+
+/** Reactive store for SFX volume (0-1). Persisted to localStorage. */
+export const sfxVolume = writable<number>(readSfxVolume())
+sfxVolume.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_sfxVolume', String(v))
+  }
+})
+
+function readMusicEnabled(): boolean {
+  if (typeof window === 'undefined') return true
+  const stored = window.localStorage.getItem('setting_musicEnabled')
+  return stored !== 'false'
+}
+
+/** Reactive store for music enabled toggle. */
+export const musicEnabled = writable<boolean>(readMusicEnabled())
+musicEnabled.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_musicEnabled', String(v))
+  }
+})
+
+function readSfxEnabled(): boolean {
+  if (typeof window === 'undefined') return true
+  const stored = window.localStorage.getItem('setting_sfxEnabled')
+  return stored !== 'false'
+}
+
+/** Reactive store for SFX enabled toggle. */
+export const sfxEnabled = writable<boolean>(readSfxEnabled())
+sfxEnabled.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_sfxEnabled', String(v))
+  }
+})
+
+// =========================================================
 // Interest Configuration (Phase 12)
 // =========================================================
 

@@ -7,9 +7,14 @@
     gaiaMood,
     gaiaChattiness,
     showExplanations,
+    musicVolume,
+    sfxVolume,
+    musicEnabled,
+    sfxEnabled,
     type GaiaMood,
     type SpriteResolution,
   } from '../stores/settings'
+  import { audioManager } from '../../services/audioService'
   import { GAIA_IDLE_QUIPS } from '../../data/gaiaDialogue'
   import { GAIA_NAME } from '../../data/gaiaAvatar'
   import { currentScreen } from '../stores/gameState'
@@ -39,6 +44,17 @@
 
   function handleMoodSelect(mood: GaiaMood): void {
     gaiaMood.set(mood)
+  }
+
+  function handleMusicVolumeChange(e: Event): void {
+    const val = parseFloat((e.target as HTMLInputElement).value)
+    musicVolume.set(isNaN(val) ? 0.6 : Math.max(0, Math.min(1, val)))
+  }
+
+  function handleSfxVolumeChange(e: Event): void {
+    const val = parseFloat((e.target as HTMLInputElement).value)
+    sfxVolume.set(isNaN(val) ? 0.8 : Math.max(0, Math.min(1, val)))
+    audioManager.setVolume(isNaN(val) ? 0.8 : Math.max(0, Math.min(1, val)))
   }
 
   function handleChattinessChange(e: Event): void {
@@ -203,26 +219,49 @@
       </div>
     </section>
 
-    <!-- ===== AUDIO SETTINGS (placeholder) ===== -->
+    <!-- ===== AUDIO SETTINGS (Phase 17.2) ===== -->
     <section class="settings-section" aria-labelledby="audio-heading">
       <h2 id="audio-heading" class="section-heading">Audio</h2>
 
       <div class="settings-card">
-        <div class="setting-block setting-disabled" aria-label="Music Volume">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Music</span>
+            <span class="setting-desc">{$musicEnabled ? 'On' : 'Off'}</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            bind:checked={$musicEnabled}
+            aria-label="Music enabled"
+          />
+        </div>
+        <div class="setting-block" aria-label="Music Volume">
           <div class="setting-info">
             <span class="setting-label">Music Volume</span>
-            <span class="setting-desc">100%</span>
+            <span class="setting-desc">{Math.round($musicVolume * 100)}%</span>
           </div>
-          <input class="chattiness-slider" type="range" min="0" max="10" value="10" disabled aria-label="Music volume" />
+          <input class="chattiness-slider" type="range" min="0" max="1" step="0.05" value={$musicVolume} oninput={handleMusicVolumeChange} aria-label="Music volume" />
         </div>
-        <div class="setting-block setting-disabled" aria-label="SFX Volume">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Sound Effects</span>
+            <span class="setting-desc">{$sfxEnabled ? 'On' : 'Off'}</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            bind:checked={$sfxEnabled}
+            aria-label="Sound effects enabled"
+          />
+        </div>
+        <div class="setting-block" aria-label="SFX Volume">
           <div class="setting-info">
             <span class="setting-label">SFX Volume</span>
-            <span class="setting-desc">100%</span>
+            <span class="setting-desc">{Math.round($sfxVolume * 100)}%</span>
           </div>
-          <input class="chattiness-slider" type="range" min="0" max="10" value="10" disabled aria-label="SFX volume" />
+          <input class="chattiness-slider" type="range" min="0" max="1" step="0.05" value={$sfxVolume} oninput={handleSfxVolumeChange} aria-label="SFX volume" />
         </div>
-        <p class="setting-note coming-soon">Volume controls — available in a future update.</p>
       </div>
     </section>
 
@@ -404,11 +443,6 @@
     gap: 10px;
   }
 
-  .setting-disabled {
-    opacity: 0.45;
-    pointer-events: none;
-  }
-
   .setting-info {
     display: flex;
     flex-direction: column;
@@ -466,10 +500,6 @@
     color: var(--color-text-dim);
     font-size: 0.75rem;
     font-style: italic;
-  }
-
-  .coming-soon {
-    color: color-mix(in srgb, var(--color-warning) 60%, var(--color-text-dim) 40%);
   }
 
   /* ---- Mood selector ---- */

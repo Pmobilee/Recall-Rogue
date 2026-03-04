@@ -159,12 +159,13 @@ export class DomeScene extends Phaser.Scene {
     this.initAllParticles()
     this.created = true
 
-    // Defer camera centering to next frame so Phaser RESIZE has resolved actual canvas size
+    // Defer camera centering to ensure Phaser RESIZE has resolved actual canvas size.
+    // Multiple retries handle Safari's lazy layout timing.
     this.time.delayedCall(0, () => this.centerCamera())
+    this.time.delayedCall(100, () => this.centerCamera())
 
     // Recalculate camera zoom and centering whenever the canvas is resized
-    this.scale.on('resize', (gameSize: Phaser.Structs.Size) => {
-      this.cameras.main.setSize(gameSize.width, gameSize.height)
+    this.scale.on('resize', () => {
       this.centerCamera()
     })
   }
@@ -208,12 +209,16 @@ export class DomeScene extends Phaser.Scene {
     const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
     if (zoom <= 0) return
     cam.setZoom(zoom)
-    const targetY = index * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
-    const targetX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
+    // Tween to the center of the target floor
+    const targetCenterX = FLOOR_CANVAS_W / 2
+    const targetCenterY = index * FLOOR_CANVAS_H + FLOOR_CANVAS_H / 2
+    // Compute the scroll values that centerOn would produce
+    const targetScrollX = targetCenterX - cam.width / (2 * zoom)
+    const targetScrollY = targetCenterY - cam.height / (2 * zoom)
     this.tweens.add({
       targets: cam,
-      scrollX: targetX,
-      scrollY: targetY,
+      scrollX: targetScrollX,
+      scrollY: targetScrollY,
       duration: 400,
       ease: 'Cubic.Out',
     })
@@ -385,9 +390,10 @@ export class DomeScene extends Phaser.Scene {
     const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
     if (zoom <= 0) return
     cam.setZoom(zoom)
-    const scrollX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
-    const scrollY = this.floorIndex * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
-    cam.setScroll(scrollX, scrollY)
+    // Center on the middle of the current floor
+    const centerX = FLOOR_CANVAS_W / 2
+    const centerY = this.floorIndex * FLOOR_CANVAS_H + FLOOR_CANVAS_H / 2
+    cam.centerOn(centerX, centerY)
   }
 
   /**
@@ -669,16 +675,15 @@ export class DomeScene extends Phaser.Scene {
     this.input.on(
       'wheel',
       (_ptr: unknown, _objs: unknown[], _dx: number, dy: number) => {
-        const maxScrollY = (this.getUnlockedFloors().length - 1) * FLOOR_CANVAS_H
-        this.cameras.main.scrollY = Phaser.Math.Clamp(
-          this.cameras.main.scrollY + dy * 0.5,
-          0,
-          maxScrollY,
-        )
-        // Snap floorIndex to nearest floor boundary
-        const newIndex = Math.round(this.cameras.main.scrollY / FLOOR_CANVAS_H)
-        if (newIndex !== this.floorIndex) {
-          this.floorIndex = newIndex
+        const unlocked = this.getUnlockedFloors()
+        if (unlocked.length <= 1) return
+        if (dy > 0 && this.floorIndex < unlocked.length - 1) {
+          this.floorIndex++
+          this.centerCamera()
+          hubEvents.emit('floorChanged', this.floorIndex)
+        } else if (dy < 0 && this.floorIndex > 0) {
+          this.floorIndex--
+          this.centerCamera()
           hubEvents.emit('floorChanged', this.floorIndex)
         }
       },

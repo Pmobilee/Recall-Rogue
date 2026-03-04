@@ -1,5 +1,5 @@
 import { BALANCE, getLayerGridSize, HAZARD_DENSITY_BY_LAYER } from '../../data/balance'
-import { BlockType, type MineCell, type Rarity } from '../../data/types'
+import { BlockType, type MineCell, type MineCellContent, type Rarity } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
 import { LANDMARK_LAYERS, LANDMARK_TEMPLATES, getLandmarkIdForLayer, type LandmarkTemplate } from '../../data/landmarks'
 import { BIOME_STRUCTURAL_FEATURES, STRUCTURAL_FEATURE_CONFIGS, type StructuralFeatureId } from '../../data/biomeStructures'
@@ -2054,4 +2054,85 @@ function placeSendUpStation(
 
 function randomIntInclusive(rng: () => number, min: number, max: number): number {
   return Math.floor(rng() * (max - min + 1)) + min
+}
+
+/**
+ * Returns a fully hand-authored tutorial mine grid.
+ * The layout is deterministic — no seeded RNG is used.
+ * All special block positions are exact and documented in PHASE-14-ONBOARDING-TUTORIAL.md.
+ */
+export function generateTutorialMine(): { grid: MineCell[][], spawnX: number, spawnY: number, biome: Biome } {
+  const WIDTH = 20
+  const HEIGHT = 20
+  // Build a 20×20 grid of Dirt by default
+  const grid: MineCell[][] = Array.from({ length: HEIGHT }, () =>
+    Array.from({ length: WIDTH }, () => ({
+      type: BlockType.Dirt,
+      hardness: BALANCE.HARDNESS_DIRT,
+      maxHardness: BALANCE.HARDNESS_DIRT,
+      revealed: false,
+    }))
+  )
+
+  // Helper: set a specific cell
+  function set(x: number, y: number, type: BlockType, hardness: number, content?: MineCellContent) {
+    grid[y][x] = { type, hardness, maxHardness: hardness, revealed: false, content } as MineCell
+  }
+
+  // Border: Unbreakable
+  for (let x = 0; x < WIDTH; x++) {
+    set(x, 0, BlockType.Unbreakable, 999)
+    set(x, HEIGHT - 1, BlockType.Unbreakable, 999)
+  }
+  for (let y = 0; y < HEIGHT; y++) {
+    set(0, y, BlockType.Unbreakable, 999)
+    set(WIDTH - 1, y, BlockType.Unbreakable, 999)
+  }
+
+  // Spawn area (y=1–2): Empty
+  for (let x = 1; x < WIDTH - 1; x++) {
+    set(x, 1, BlockType.Empty, 0)
+    set(x, 2, BlockType.Empty, 0)
+  }
+
+  // Rows y=10–16: SoftRock base
+  for (let y = 10; y <= 16; y++) {
+    for (let x = 1; x < WIDTH - 1; x++) {
+      set(x, y, BlockType.SoftRock, BALANCE.HARDNESS_SOFT_ROCK)
+    }
+  }
+
+  // Rows y=17–18: Stone
+  for (let y = 17; y <= 18; y++) {
+    for (let x = 1; x < WIDTH - 1; x++) {
+      set(x, y, BlockType.Stone, BALANCE.HARDNESS_STONE)
+    }
+  }
+
+  // Special blocks (dirt zone)
+  set(3, 5, BlockType.MineralNode, BALANCE.HARDNESS_MINERAL_NODE)
+  set(17, 5, BlockType.MineralNode, BALANCE.HARDNESS_MINERAL_NODE)
+  set(9, 6, BlockType.ArtifactNode, 2) // Tutorial artifact — low hardness for quick access
+  set(6, 8, BlockType.OxygenCache, 2)
+
+  // Special blocks (soft rock zone)
+  set(3, 12, BlockType.MineralNode, BALANCE.HARDNESS_MINERAL_NODE)
+  set(12, 13, BlockType.QuizGate, BALANCE.HARDNESS_QUIZ_GATE)
+
+  // Earthquake tutorial zone: 3×3 UnstableGround at (3–5, 14–16)
+  for (let dy = 0; dy < 3; dy++) {
+    for (let dx = 0; dx < 3; dx++) {
+      set(3 + dx, 14 + dy, BlockType.UnstableGround, 1)
+    }
+  }
+  // Pre-cleared cell inside (draws player in)
+  set(4, 15, BlockType.Empty, 0)
+
+  // Fossil node (accessible without touching UnstableGround)
+  set(7, 15, BlockType.FossilNode, 2)
+
+  // Upgrade crate
+  set(16, 15, BlockType.UpgradeCrate, 2)
+
+  return { grid, spawnX: 10, spawnY: 1, biome: DEFAULT_BIOME }
 }

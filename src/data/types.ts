@@ -360,6 +360,38 @@ export interface PlayerSave {
   // Phase 15.1: Post-Dive Reactions
   /** Biome ID of the most recently completed dive, used for post-dive GAIA commentary. */
   lastDiveBiome?: string
+
+  // Phase 14: Onboarding & Tutorial
+  /** Whether the player has completed the tutorial flow. */
+  tutorialComplete: boolean
+  /** Which interests the player selected during onboarding (e.g. ['Historian', 'Linguist']). */
+  selectedInterests: string[]
+  /** Category weighting from interest selection (category → multiplier). */
+  interestWeights: Record<string, number>
+  /** Total dives completed (includes tutorial dive). Used for progressive unlock gates. */
+  diveCount: number
+  /** Current tutorial step (0 = not started). */
+  tutorialStep: number
+  /** Active fossil creature name from first fossil identification. */
+  activeFossil: string | null
+  /** Number of study sessions completed (for first-session bonus oxygen). */
+  studySessionsCompleted: number
+
+  // Phase 17: Addictiveness Pass
+  /** Current login calendar day (1-7), wraps after Day 7 is claimed. */
+  loginCalendarDay?: number
+  /** Timestamp of last login calendar claim. */
+  loginCalendarLastClaimed?: number
+  /** Timestamp of last login to the app. */
+  lastLoginDate?: number
+  /** Longest ever streak (never decrements). */
+  longestStreak?: number
+  /** Timestamp when grace period was last used. */
+  gracePeriodUsedAt?: number
+  /** Weekly challenge tracking state. */
+  weeklyChallenge?: { weekStartIso: string; stats: Record<string, number> }
+  /** Consumable items (bomb, flare, shield, etc.) */
+  consumables?: Record<string, number>
 }
 
 /** Player statistics */

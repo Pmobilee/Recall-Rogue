@@ -8,7 +8,7 @@ import { Player } from '../entities/Player'
 import { canMine, mineBlock } from '../systems/MiningSystem'
 import { MinerAnimController } from '../systems/AnimationSystem'
 import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
-import { generateMine, revealAround, seededRandom } from '../systems/MineGenerator'
+import { generateMine, generateTutorialMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
   addOxygen,
   consumeOxygen,
@@ -38,6 +38,7 @@ import { AnimatedTileSystem } from '../systems/AnimatedTileSystem'
 import { ALL_BIOMES } from '../../data/biomes'
 import { getSpriteUrls } from '../spriteManifest'
 import { getSpriteResolution } from '../../ui/stores/settings'
+import { GameManager } from '../GameManager'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -295,7 +296,11 @@ export class MineScene extends Phaser.Scene {
       layerTickCount.set(0)
     }
 
-    const mineResult = generateMine(this.seed, this.facts, this.currentLayer, this.currentBiome)
+    // Phase 14: Use tutorial mine for first-time players
+    const isTutorial = GameManager.getInstance().isTutorialDive
+    const mineResult = isTutorial
+      ? generateTutorialMine()
+      : generateMine(this.seed, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
     // Compute initial autotile variants for all terrain blocks
     computeAllVariants(this.grid)

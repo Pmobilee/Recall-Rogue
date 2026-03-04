@@ -202,6 +202,51 @@ export function load(): PlayerSave | null {
     if (!parsedAny['engagementData'] || typeof parsedAny['engagementData'] !== 'object') {
       parsedAny['engagementData'] = { ...DEFAULT_ENGAGEMENT_DATA }
     }
+    // Backward compatibility: Phase 14 tutorial fields
+    if (!('tutorialComplete' in parsedAny)) {
+      // Existing players who already have dives are past the tutorial
+      parsedAny['tutorialComplete'] = parsed.stats.totalDivesCompleted > 0
+    }
+    if (!Array.isArray(parsedAny['selectedInterests'])) {
+      parsedAny['selectedInterests'] = []
+    }
+    if (!parsedAny['interestWeights'] || typeof parsedAny['interestWeights'] !== 'object') {
+      parsedAny['interestWeights'] = {}
+    }
+    if (typeof parsedAny['diveCount'] !== 'number') {
+      parsedAny['diveCount'] = parsed.stats.totalDivesCompleted ?? 0
+    }
+    if (typeof parsedAny['tutorialStep'] !== 'number') {
+      parsedAny['tutorialStep'] = 0
+    }
+    if (!('activeFossil' in parsedAny)) {
+      parsedAny['activeFossil'] = null
+    }
+    if (typeof parsedAny['studySessionsCompleted'] !== 'number') {
+      parsedAny['studySessionsCompleted'] = 0
+    }
+    // Backward compatibility: Phase 17 — Addictiveness Pass fields
+    if (typeof parsedAny['loginCalendarDay'] !== 'number') {
+      parsedAny['loginCalendarDay'] = 1
+    }
+    if (typeof parsedAny['loginCalendarLastClaimed'] !== 'number') {
+      parsedAny['loginCalendarLastClaimed'] = 0
+    }
+    if (typeof parsedAny['lastLoginDate'] !== 'number') {
+      parsedAny['lastLoginDate'] = 0
+    }
+    if (typeof parsedAny['longestStreak'] !== 'number') {
+      parsedAny['longestStreak'] = parsed.stats?.bestStreak ?? 0
+    }
+    if (typeof parsedAny['gracePeriodUsedAt'] !== 'number') {
+      parsedAny['gracePeriodUsedAt'] = 0
+    }
+    if (!parsedAny['weeklyChallenge'] || typeof parsedAny['weeklyChallenge'] !== 'object') {
+      parsedAny['weeklyChallenge'] = undefined
+    }
+    if (!parsedAny['consumables'] || typeof parsedAny['consumables'] !== 'object') {
+      parsedAny['consumables'] = {}
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -259,6 +304,22 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     behavioralSignals: { perCategory: {}, lastRecalcDives: 0 },
     archetypeData: { ...DEFAULT_ARCHETYPE_DATA },
     engagementData: { ...DEFAULT_ENGAGEMENT_DATA },
+    // Phase 14: Onboarding & Tutorial
+    tutorialComplete: false,
+    selectedInterests: [],
+    interestWeights: {},
+    diveCount: 0,
+    tutorialStep: 0,
+    activeFossil: null,
+    studySessionsCompleted: 0,
+    // Phase 17: Addictiveness Pass
+    loginCalendarDay: 1,
+    loginCalendarLastClaimed: 0,
+    lastLoginDate: 0,
+    longestStreak: 0,
+    gracePeriodUsedAt: 0,
+    weeklyChallenge: undefined,
+    consumables: {},
   }
 }
 
@@ -771,4 +832,67 @@ export function craftPremiumRecipe(
 
   save(updatedSave)
   return { success: true, updatedSave }
+}
+
+/**
+ * Updates streak on daily login. Handles:
+ * - Consecutive days: increment streak
+ * - Missed 1 day with grace available: preserve streak, spend grace
+ * - Missed 1 day without grace: reset streak (positive reframing applied in UI)
+ * - Missed 2+ days: reset streak regardless of grace
+ */
+export function updateStreakOnLogin(s: PlayerSave): {
+  streakKept: boolean
+  graceUsed: boolean
+  previousStreak: number
+} {
+  const now = new Date()
+  const prev = s.lastDiveDate ? new Date(s.lastDiveDate) : null
+  const previousStreak = s.stats.currentStreak
+
+  if (!prev) {
+    s.stats.currentStreak = 1
+    return { streakKept: true, graceUsed: false, previousStreak: 0 }
+  }
+
+  const daysDiff = Math.floor((now.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24))
+
+  if (daysDiff <= 1) {
+    if (daysDiff === 1) {
+      s.stats.currentStreak++
+      if (s.stats.currentStreak > s.stats.bestStreak) {
+        s.stats.bestStreak = s.stats.currentStreak
+      }
+      const longest = s.longestStreak ?? 0
+      if (s.stats.currentStreak > longest) {
+        s.longestStreak = s.stats.currentStreak
+      }
+    }
+    return { streakKept: true, graceUsed: false, previousStreak }
+  }
+
+  if (daysDiff === 2) {
+    // Missed exactly 1 day — check grace
+    const windowStart = now.getTime() - (30 * 24 * 60 * 60 * 1000)
+    const graceUsedAt = s.gracePeriodUsedAt ?? 0
+    const graceAvailable = graceUsedAt < windowStart
+
+    if (graceAvailable && (s.streakFreezes ?? 0) === 0) {
+      s.gracePeriodUsedAt = now.getTime()
+      s.stats.currentStreak++
+      const longest = s.longestStreak ?? 0
+      if (s.stats.currentStreak > longest) {
+        s.longestStreak = s.stats.currentStreak
+      }
+      return { streakKept: true, graceUsed: true, previousStreak }
+    }
+  }
+
+  // Streak broken — positive reframing in UI layer
+  const longest = s.longestStreak ?? 0
+  if (s.stats.currentStreak > longest) {
+    s.longestStreak = s.stats.currentStreak
+  }
+  s.stats.currentStreak = 1
+  return { streakKept: false, graceUsed: false, previousStreak }
 }

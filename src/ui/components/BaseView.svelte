@@ -33,6 +33,8 @@
 
   import type { Fact } from '../../data/types'
 
+  import ProgressBars from './ProgressBars.svelte'
+
   // Room sub-components
   import CommandRoom from './rooms/CommandRoom.svelte'
   import LabRoom from './rooms/LabRoom.svelte'
@@ -166,6 +168,9 @@
 </script>
 
 <section class="base-view" aria-label="Terra Base hub">
+  <!-- === PROGRESS BARS (Phase 17) === -->
+  <ProgressBars />
+
   <!-- === ROOM TAB BAR === -->
   <nav class="room-tab-bar" aria-label="Dome rooms">
     {#each BALANCE.DOME_ROOMS as room}

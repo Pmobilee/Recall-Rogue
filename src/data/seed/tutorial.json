@@ -1,0 +1,23 @@
+[
+  {
+    "id": "TUTORIAL_ARTIFACT_001",
+    "type": "fact",
+    "statement": "Cleopatra lived closer in time to the Moon landing than to the construction of the Great Pyramid.",
+    "wowFactor": "The ancient world wasn't one era — it spans 2,500 years. Cleopatra (69 BC) was 2,500 years after the pyramids (2560 BC) but only 2,000 years before 1969.",
+    "explanation": "The Great Pyramid was completed around 2560 BC. Cleopatra ruled Egypt around 51–30 BC. The Moon landing was 1969 AD. Cleopatra is ~2,500 years from the pyramids but only ~2,000 years from the Moon landing.",
+    "gaiaComment": "I've run this calculation 847 times and it still breaks my probability estimates. Time is deeply unintuitive. Even for an AI.",
+    "quizQuestion": "Which is true about the timeline of ancient history?",
+    "correctAnswer": "Cleopatra lived closer in time to the Moon landing than to the pyramids",
+    "distractors": [
+      "The pyramids were built during Cleopatra's reign",
+      "Cleopatra lived before most ancient Greek philosophers",
+      "The pyramids are the oldest human structures by 10,000 years"
+    ],
+    "category": ["History"],
+    "rarity": "rare",
+    "difficulty": 2,
+    "funScore": 10,
+    "ageRating": "kid",
+    "sourceName": "Standard historical timeline"
+  }
+]

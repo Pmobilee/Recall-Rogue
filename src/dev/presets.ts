@@ -134,6 +134,15 @@ export function BASE_SAVE(now: number): PlayerSave {
     behavioralSignals: { perCategory: {}, lastRecalcDives: 0 },
     archetypeData: { detected: 'undetected', manualOverride: null, lastEvaluatedDate: null, detectedOnDay: null },
     engagementData: { dailySnapshots: [], currentScore: 50, mode: 'normal' },
+
+    // Phase 14: Onboarding & Tutorial
+    tutorialComplete: false,
+    selectedInterests: [],
+    interestWeights: {},
+    diveCount: 0,
+    tutorialStep: 0,
+    activeFossil: null,
+    studySessionsCompleted: 0,
   }
 }
 

@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-13, 15, 16, 18 complete. Phase 15 (GAIA Personality 2.0) fully implemented: post-dive reactions referencing specific dive data, clickable thought bubbles seeded by SM-2 schedule and interests, per-pet commentary system, journey memory tracking, return engagement hooks, and intelligent quiz teaching escalation. Phase 16 (Fossil & Farming Expansion) fully implemented: crop fossil system, knowledge-gated revival mechanics, farm planting UI, fossil discovery events. V2 roadmap (Phases 14, 17, 19-25) remaining.
+Phases 0-16, 18 complete. Phase 14 (Onboarding & Tutorial) fully implemented: 5-panel crash cutscene, GAIA personality introduction with interest profiling, age selection, tutorial mine generation, progressive system unlocks across first 5 dives, and 0% loot loss for first dive. Phase 15 (GAIA Personality 2.0) fully implemented: post-dive reactions referencing specific dive data, clickable thought bubbles seeded by SM-2 schedule and interests, per-pet commentary system, journey memory tracking, return engagement hooks, and intelligent quiz teaching escalation. Phase 16 (Fossil & Farming Expansion) fully implemented: crop fossil system, knowledge-gated revival mechanics, farm planting UI, fossil discovery events. V2 roadmap (Phases 17, 19-25) remaining.
 
 ---
 
@@ -52,7 +52,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 13: Knowledge Tree 2.0** — Radial tree, 3-level LOD, sub-branches, tap-to-view, mastery coloring → [`completed/PHASE-13-KNOWLEDGE-TREE-V2.md`](completed/PHASE-13-KNOWLEDGE-TREE-V2.md)
 
 ### Onboarding & Personality (Phases 14-16)
-- [ ] **Phase 14: Onboarding & Tutorial** — Backstory, GAIA intro, tutorial mine, progressive unlocks, reward front-loading → [`phases/PHASE-14-ONBOARDING-TUTORIAL.md`](phases/PHASE-14-ONBOARDING-TUTORIAL.md)
+- [x] **Phase 14: Onboarding & Tutorial** — Backstory, GAIA intro, tutorial mine, progressive unlocks, reward front-loading → [`completed/PHASE-14-ONBOARDING-TUTORIAL.md`](completed/PHASE-14-ONBOARDING-TUTORIAL.md)
 - [x] **Phase 15: GAIA Personality 2.0** — Post-dive reactions, idle popups, pet commentary, journey memory, mastery celebrations → [`completed/PHASE-15-GAIA-PERSONALITY-V2.md`](completed/PHASE-15-GAIA-PERSONALITY-V2.md)
 - [x] **Phase 16: Fossil & Farming Expansion** — Crop fossils, knowledge-gated revival, farm planting → [`completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md`](completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md)
 

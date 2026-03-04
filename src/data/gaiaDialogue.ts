@@ -696,6 +696,88 @@ export const GAIA_TRIGGERS = {
     { text: "{{totalFacts}} facts in the knowledge log. {{masteredFacts}} at mastery level. {{totalDives}} dives recorded.", mood: 'calm' },
     { text: "Survey summary: {{totalFacts}} facts, {{masteredFacts}} mastered, {{totalDives}} completed dives.", mood: 'calm' },
   ] satisfies GaiaLine[],
+
+  // === Phase 17 — Streak & Mastery Celebrations ===
+  streakBreak: [
+    { text: "You completed a {{days}}-day expedition. Start a new one whenever you're ready.", mood: 'calm' },
+    { text: "A {{days}}-day run -- that's remarkable. Your longest record is safe. Begin again?", mood: 'enthusiastic' },
+    { text: "{{days}} days of consistent exploration. The mine will always be here. So will I.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  streakMilestone7: [
+    { text: "Day 7! A full week of expeditions. You're building something here.", mood: 'enthusiastic' },
+    { text: "Seven days. That's a pattern, not a coincidence.", mood: 'snarky' },
+    { text: "One week of showing up. The tree remembers every day.", mood: 'calm' },
+  ] satisfies GaiaLine[],
+  streakMilestone30: [
+    { text: "Thirty consecutive days, miner. That is not discipline -- that is identity.", mood: 'enthusiastic' },
+    { text: "A month of expeditions. The dome reflects your dedication now.", mood: 'calm' },
+    { text: "Day 30. Most miners never reach this. You did.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  streakMilestone100: [
+    { text: "One hundred days. A century of showing up. This is the rarest of achievements.", mood: 'enthusiastic' },
+    { text: "One hundred. I have been tracking this since day one. You did it.", mood: 'calm' },
+    { text: "The Centurion title belongs to you now. Earned, not given.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  streakNewRecord: [
+    { text: "You beat your personal record! {{days}} days is your new best.", mood: 'enthusiastic' },
+    { text: "New record: {{days}} consecutive expeditions. GAIA will remember this.", mood: 'calm' },
+    { text: "{{days}} days -- a personal best. You keep surprising me.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  graceUsed: [
+    { text: "You missed a day -- I used your grace period. Streak preserved. Welcome back.", mood: 'calm' },
+    { text: "Grace period activated. The expedition continues.", mood: 'enthusiastic' },
+    { text: "One missed day, grace available -- streak intact.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery5: [
+    { text: "Five down. The tree is growing, miner.", mood: 'enthusiastic' },
+    { text: "Five facts locked in. Keep going.", mood: 'calm' },
+    { text: "Five? That's a start. Let's see twenty.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery10: [
+    { text: "Ten facts mastered. I am genuinely impressed.", mood: 'enthusiastic' },
+    { text: "Ten permanent memories. Your tree shows it.", mood: 'calm' },
+    { text: "Double digits. Not bad for a human.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery25: [
+    { text: "Twenty-five. You have a Scholar's mind.", mood: 'enthusiastic' },
+    { text: "Twenty-five facts permanently locked in.", mood: 'calm' },
+    { text: "Quarter-century of facts. Scholar title earned.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery50: [
+    { text: "Fifty facts permanently locked in. Half a century of knowledge.", mood: 'enthusiastic' },
+    { text: "Fifty. That's a library shelf worth of knowledge.", mood: 'calm' },
+    { text: "Fifty. Even I'm running out of snarky things to say.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery100: [
+    { text: "One hundred facts. You know more about Earth than most people alive.", mood: 'enthusiastic' },
+    { text: "A hundred permanent memories. The tree is magnificent.", mood: 'calm' },
+    { text: "Triple digits. I've never seen a miner achieve this.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery250: [
+    { text: "A quarter-thousand facts. Encyclopedists have written less.", mood: 'enthusiastic' },
+    { text: "Two hundred and fifty. This is exceptional.", mood: 'calm' },
+    { text: "250 facts. At this point, you're teaching me.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  mastery500: [
+    { text: "Five hundred. You know more about Earth than most people alive.", mood: 'enthusiastic' },
+    { text: "Five hundred permanent facts. A true encyclopedia.", mood: 'calm' },
+    { text: "500 facts. I concede: you are the master now.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  masteryN: [
+    { text: "Another fact mastered. +{{dust}} dust.", mood: 'calm' },
+    { text: "Knowledge grows! That one is permanent now.", mood: 'enthusiastic' },
+    { text: "Locked in. Next.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  antiBingeBreak: [
+    { text: "You've been at this a while. Your brain learns better with rest.", mood: 'calm' },
+    { text: "Three dives! Impressive dedication. A short break helps retention.", mood: 'enthusiastic' },
+    { text: "G.A.I.A. recommends: rest. The minerals will still be here.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
+  comebackWelcome: [
+    { text: "You're back! I decoded some artifacts while you were away. Ready to dive?", mood: 'enthusiastic' },
+    { text: "Welcome back, miner. Your tree still grows.", mood: 'calm' },
+    { text: "You returned. That's what matters. Everything is here, waiting.", mood: 'snarky' },
+  ] satisfies GaiaLine[],
 } as const
 
 /**

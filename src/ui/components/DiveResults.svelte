@@ -2,6 +2,7 @@
   import { diveResults } from '../stores/gameState'
   import { playerSave } from '../stores/playerData'
   import { BALANCE } from '../../data/balance'
+  import PostDiveHooks from './PostDiveHooks.svelte'
 
   interface Props {
     onContinue: () => void
@@ -111,6 +112,8 @@
         {gaiaHook()}
       </p>
     {/if}
+
+    <PostDiveHooks />
 
     <button class="continue-btn" type="button" onclick={onContinue}>
       Continue

@@ -117,6 +117,10 @@ export type Screen =
   | 'gaiaReport'
   | 'interestSettings'
   | 'interestAssessment'
+  | 'cutscene'
+  | 'onboarding'
+  | 'ageSelection'
+  | 'tutorialMine'
 
 export const currentScreen = writable<Screen>('mainMenu')
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { get } from 'svelte/store'
   import { untrack } from 'svelte'
-  import { GameManager } from './game/GameManager'
+  import { getGM } from './game/gameManagerRef'
   import {
     currentScreen,
     activeQuiz,
@@ -45,6 +45,9 @@
   import GaiaReport from './ui/components/GaiaReport.svelte'
   import InterestSettings from './ui/components/InterestSettings.svelte'
   import InterestAssessment from './ui/components/InterestAssessment.svelte'
+  import OnboardingCutscene from './ui/components/OnboardingCutscene.svelte'
+  import GaiaIntro from './ui/components/GaiaIntro.svelte'
+  import AgeSelection from './ui/components/AgeSelection.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
@@ -56,15 +59,14 @@
   import { generateBiomeSequence } from './data/biomes'
   import { seededRandom } from './game/systems/MineGenerator'
 
-  const gm = GameManager.getInstance()
-
   // Cache getFacts() — avoids full SQL scan on every re-render
   let cachedFacts = $state<Fact[]>([])
 
   $effect(() => {
     if (untrack(() => cachedFacts.length) === 0) {
       try {
-        cachedFacts = gm.getFacts()
+        const gm = getGM()
+        if (gm) cachedFacts = gm.getFacts()
       } catch { /* DB not ready yet */ }
     }
   })
@@ -88,13 +90,37 @@
     currentScreen.set('base')
   }
 
+  // Phase 14: Onboarding flow handlers
+  function handleCutsceneComplete(): void {
+    currentScreen.set('onboarding')
+  }
+
+  function handleGaiaIntroComplete(interests: string[], weights: Record<string, number>): void {
+    playerSave.update(s => {
+      if (!s) return s
+      return { ...s, selectedInterests: interests, interestWeights: weights }
+    })
+    import('./ui/stores/playerData').then(m => m.persistPlayer())
+    currentScreen.set('ageSelection')
+  }
+
+  function handleAgeSelected(ageRating: import('./data/types').AgeRating): void {
+    playerSave.update(s => {
+      if (!s) return s
+      return { ...s, ageRating }
+    })
+    import('./ui/stores/playerData').then(m => m.persistPlayer())
+    // After age selection, go to main menu which starts the dive prep
+    currentScreen.set('mainMenu')
+  }
+
   // Base actions
   function handleDive(): void {
-    gm.goToDivePrep()
+    getGM()?.goToDivePrep()
   }
 
   function handleStudy(): void {
-    gm.startStudySession()
+    getGM()?.startStudySession()
   }
 
   // Study session (card-flip mode) handlers
@@ -104,11 +130,11 @@
   function handleStudyCardAnswer(factId: string, correct: boolean): void {
     if (correct) studySessionCorrectCount++
     studySessionTotal++
-    gm.handleStudyCardAnswer(factId, correct)
+    getGM()?.handleStudyCardAnswer(factId, correct)
   }
 
   function handleStudyComplete(): void {
-    gm.completeStudySession(studySessionCorrectCount, studySessionTotal)
+    getGM()?.completeStudySession(studySessionCorrectCount, studySessionTotal)
     studySessionCorrectCount = 0
     studySessionTotal = 0
   }
@@ -122,7 +148,7 @@
   })
 
   function handleReviewArtifact(): void {
-    gm.reviewNextArtifact()
+    getGM()?.reviewNextArtifact()
   }
 
   function handleViewKnowledgeTree(): void {
@@ -226,16 +252,16 @@
 
   // Dive prep actions
   function handleStartDive(tanks: number): void {
-    gm.startDive(tanks)
+    getGM()?.startDive(tanks)
   }
 
   function handleBackFromDivePrep(): void {
-    gm.goToBase()
+    getGM()?.goToBase()
   }
 
   // Mining HUD actions
   function handleSurface(): void {
-    gm.endDive(false)
+    getGM()?.endDive(false)
   }
 
   function handleOpenBackpack(): void {
@@ -245,41 +271,41 @@
   }
 
   function handleUseBomb(): void {
-    gm.useBomb()
+    getGM()?.useBomb()
   }
 
   function handleUseConsumable(id: import('./data/consumables').ConsumableId): void {
-    gm.applyConsumable(id)
+    getGM()?.applyConsumable(id)
   }
 
   // Quiz actions
   function handleQuizAnswer(correct: boolean): void {
     if (quizMode === 'gate') {
-      gm.handleQuizAnswer(correct)
+      getGM()?.handleQuizAnswer(correct)
     } else if (quizMode === 'oxygen') {
-      gm.handleOxygenQuizAnswer(correct)
+      getGM()?.handleOxygenQuizAnswer(correct)
     } else if (quizMode === 'artifact') {
-      gm.handleArtifactQuizAnswer(correct)
+      getGM()?.handleArtifactQuizAnswer(correct)
     } else if (quizMode === 'random') {
-      gm.handleRandomQuizAnswer(correct)
+      getGM()?.handleRandomQuizAnswer(correct)
     } else if (quizMode === 'layer') {
-      gm.handleLayerQuizAnswer(correct)
+      getGM()?.handleLayerQuizAnswer(correct)
     } else {
-      gm.handleStudyAnswer(correct)
+      getGM()?.handleStudyAnswer(correct)
     }
   }
 
   function handleQuizClose(): void {
     if (quizMode === 'gate') {
-      gm.resumeQuiz(false)
+      getGM()?.resumeQuiz(false)
     } else if (quizMode === 'oxygen') {
-      gm.handleOxygenQuizAnswer(false)
+      getGM()?.handleOxygenQuizAnswer(false)
     } else if (quizMode === 'artifact') {
-      gm.handleArtifactQuizAnswer(false)
+      getGM()?.handleArtifactQuizAnswer(false)
     } else if (quizMode === 'random') {
-      gm.handleRandomQuizAnswer(false)
+      getGM()?.handleRandomQuizAnswer(false)
     } else if (quizMode === 'layer') {
-      gm.handleLayerQuizAnswer(false)
+      getGM()?.handleLayerQuizAnswer(false)
     } else {
       currentScreen.set('base')
     }
@@ -287,38 +313,38 @@
 
   // Backpack actions
   function handleCloseBackpack(): void {
-    gm.closeBackpack()
+    getGM()?.closeBackpack()
   }
 
   function handleDropItem(index: number): void {
-    gm.dropItem(index)
+    getGM()?.dropItem(index)
   }
 
   // Run stats actions
   function handleOpenRunStats(): void {
-    gm.openRunStats()
+    getGM()?.openRunStats()
   }
 
   function handleCloseRunStats(): void {
-    gm.closeRunStats()
+    getGM()?.closeRunStats()
   }
 
   // Send-up station actions
   function handleSendUpConfirm(selectedItems: import('./data/types').InventorySlot[]): void {
-    gm.confirmSendUp(selectedItems)
+    getGM()?.confirmSendUp(selectedItems)
   }
 
   function handleSendUpSkip(): void {
-    gm.skipSendUp()
+    getGM()?.skipSendUp()
   }
 
   // Fact reveal actions
   function handleLearnFact(): void {
-    gm.learnArtifact()
+    getGM()?.learnArtifact()
   }
 
   function handleSellFact(): void {
-    gm.sellArtifact()
+    getGM()?.sellArtifact()
   }
 
   // Dive results actions
@@ -326,9 +352,9 @@
     diveResults.set(null)
     const pending = get(pendingArtifacts)
     if (pending.length > 0) {
-      gm.reviewNextArtifact()
+      getGM()?.reviewNextArtifact()
     } else {
-      gm.goToBase()
+      getGM()?.goToBase()
     }
   }
 
@@ -359,7 +385,7 @@
     showResumeModal = false
     const save = SaveManager.load()
     if (save) {
-      gm.applyLootLoss(save.layer)
+      getGM()?.applyLootLoss(save.layer)
     }
     SaveManager.clear()
     gaiaMessage.set('Run abandoned. Some minerals were lost in the extraction.')
@@ -373,7 +399,16 @@
     <ResumeDiveModal onResume={handleResumeDive} onAbandon={handleAbandonDive} />
   {/if}
 
-  {#if $currentScreen === 'mainMenu'}
+  {#if $currentScreen === 'cutscene'}
+    <OnboardingCutscene onComplete={handleCutsceneComplete} />
+
+  {:else if $currentScreen === 'onboarding'}
+    <GaiaIntro onComplete={handleGaiaIntroComplete} />
+
+  {:else if $currentScreen === 'ageSelection'}
+    <AgeSelection onComplete={handleAgeSelected} />
+
+  {:else if $currentScreen === 'mainMenu'}
     <div class="main-menu">
       <h1 class="game-title">Terra Gacha</h1>
       <p class="tagline">Mine. Discover. Learn.</p>

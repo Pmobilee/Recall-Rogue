@@ -21,6 +21,21 @@ export type SoundName =
   | 'quiz_wrong'
   | 'button_click'
   | 'oxygen_warning'
+  | 'reveal_common'
+  | 'reveal_uncommon'
+  | 'reveal_rare'
+  | 'reveal_epic'
+  | 'reveal_legendary'
+  | 'reveal_mythic'
+  | 'mastery_glow'
+  | 'mastery_fullscreen'
+  | 'streak_milestone'
+  | 'gaia_quip'
+  | 'lava_sizzle'
+  | 'gas_pocket'
+  | 'item_pickup'
+  | 'oxygen_low'
+  | 'oxygen_critical'
 
 // Webkit-prefixed AudioContext fallback for older iOS Safari.
 type AnyAudioContext = AudioContext
@@ -216,6 +231,91 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   quiz_wrong: playQuizWrong,
   button_click: playButtonClick,
   oxygen_warning: playOxygenWarning,
+  reveal_common: (ctx, m) => {
+    scheduleOscillator(ctx, m, 523, 'square', 0.15, 0.15, 0)
+    scheduleOscillator(ctx, m, 659, 'square', 0.15, 0.15, 0.12)
+    scheduleOscillator(ctx, m, 784, 'square', 0.12, 0.2, 0.24)
+  },
+  reveal_uncommon: (ctx, m) => {
+    scheduleOscillator(ctx, m, 523, 'sawtooth', 0.12, 0.12, 0)
+    scheduleOscillator(ctx, m, 659, 'sawtooth', 0.12, 0.12, 0.1)
+    scheduleOscillator(ctx, m, 784, 'sawtooth', 0.12, 0.15, 0.2)
+    scheduleOscillator(ctx, m, 1047, 'sawtooth', 0.1, 0.25, 0.3)
+  },
+  reveal_rare: (ctx, m) => {
+    scheduleOscillator(ctx, m, 440, 'square', 0.15, 0.1, 0)
+    scheduleOscillator(ctx, m, 554, 'square', 0.15, 0.1, 0.08)
+    scheduleOscillator(ctx, m, 659, 'square', 0.15, 0.1, 0.16)
+    scheduleOscillator(ctx, m, 880, 'triangle', 0.12, 0.3, 0.24)
+    scheduleOscillator(ctx, m, 1047, 'triangle', 0.1, 0.4, 0.4)
+  },
+  reveal_epic: (ctx, m) => {
+    for (let i = 0; i < 8; i++) {
+      const freq = 262 + i * 66
+      scheduleOscillator(ctx, m, freq, 'square', 0.12, 0.1, i * 0.08)
+    }
+    scheduleOscillator(ctx, m, 1047, 'triangle', 0.15, 0.5, 0.7)
+    scheduleNoiseBurst(ctx, m, 0.06, 0.2, 0.9)
+  },
+  reveal_legendary: (ctx, m) => {
+    scheduleOscillator(ctx, m, 220, 'sawtooth', 0.08, 0.3, 0)
+    for (let i = 0; i < 6; i++) {
+      scheduleOscillator(ctx, m, 330 + i * 110, 'square', 0.12, 0.12, 0.3 + i * 0.1)
+    }
+    scheduleOscillator(ctx, m, 1320, 'triangle', 0.15, 0.8, 0.9)
+    scheduleNoiseBurst(ctx, m, 0.08, 0.3, 1.2)
+  },
+  reveal_mythic: (ctx, m) => {
+    scheduleOscillator(ctx, m, 110, 'sawtooth', 0.05, 0.5, 0.3)
+    for (let i = 0; i < 10; i++) {
+      const freq = 220 + i * 88
+      scheduleOscillator(ctx, m, freq, 'square', 0.1, 0.08, 0.8 + i * 0.08)
+    }
+    scheduleOscillator(ctx, m, 1760, 'triangle', 0.15, 1.0, 1.6)
+    scheduleNoiseBurst(ctx, m, 0.1, 0.4, 2.0)
+    scheduleOscillator(ctx, m, 880, 'sine', 0.08, 1.5, 2.2)
+  },
+  mastery_glow: (ctx, m) => {
+    scheduleOscillator(ctx, m, 880, 'sine', 0.08, 0.3, 0)
+    scheduleOscillator(ctx, m, 1320, 'sine', 0.06, 0.4, 0.1)
+  },
+  mastery_fullscreen: (ctx, m) => {
+    for (let i = 0; i < 6; i++) {
+      scheduleOscillator(ctx, m, 440 + i * 73, 'square', 0.1, 0.15, i * 0.12)
+    }
+    scheduleOscillator(ctx, m, 1047, 'triangle', 0.15, 0.8, 0.8)
+    scheduleNoiseBurst(ctx, m, 0.06, 0.2, 1.2)
+  },
+  streak_milestone: (ctx, m) => {
+    scheduleOscillator(ctx, m, 523, 'square', 0.12, 0.12, 0)
+    scheduleOscillator(ctx, m, 659, 'square', 0.12, 0.12, 0.1)
+    scheduleOscillator(ctx, m, 784, 'triangle', 0.1, 0.3, 0.2)
+  },
+  gaia_quip: (ctx, m) => {
+    scheduleOscillator(ctx, m, 660, 'sine', 0.06, 0.15, 0)
+    scheduleOscillator(ctx, m, 880, 'sine', 0.04, 0.2, 0.08)
+  },
+  lava_sizzle: (ctx, m) => {
+    scheduleNoiseBurst(ctx, m, 0.15, 0.4, 0)
+    scheduleOscillator(ctx, m, 150, 'sawtooth', 0.06, 0.3, 0.1)
+  },
+  gas_pocket: (ctx, m) => {
+    scheduleNoiseBurst(ctx, m, 0.12, 0.3, 0)
+    scheduleOscillator(ctx, m, 200, 'sine', 0.05, 0.4, 0.1)
+  },
+  item_pickup: (ctx, m) => {
+    scheduleOscillator(ctx, m, 880, 'square', 0.08, 0.08, 0)
+    scheduleOscillator(ctx, m, 1320, 'square', 0.06, 0.12, 0.06)
+  },
+  oxygen_low: (ctx, m) => {
+    scheduleOscillator(ctx, m, 220, 'square', 0.1, 0.2, 0)
+    scheduleOscillator(ctx, m, 220, 'square', 0.1, 0.2, 0.4)
+  },
+  oxygen_critical: (ctx, m) => {
+    scheduleOscillator(ctx, m, 330, 'square', 0.12, 0.15, 0)
+    scheduleOscillator(ctx, m, 330, 'square', 0.12, 0.15, 0.2)
+    scheduleOscillator(ctx, m, 330, 'square', 0.12, 0.15, 0.4)
+  },
 }
 
 // ---------------------------------------------------------------------------
