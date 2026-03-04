@@ -32,6 +32,22 @@ export interface Config {
   comfyuiUrl: string;
   /** Minimum confidence score for a distractor to be served (default 0.7). */
   distractorConfidenceThreshold: number;
+  /** Maximum number of requests per rate-limit window (default 20). */
+  rateLimitMax: number;
+  /** Rate-limit window duration in milliseconds (default 60000). */
+  rateLimitWindow: number;
+  /** SMTP host for sending password reset emails (optional). */
+  smtpHost?: string;
+  /** SMTP port for sending password reset emails (optional). */
+  smtpPort?: number;
+  /** SMTP username / API key (optional). */
+  smtpUser?: string;
+  /** SMTP password / API secret (optional). */
+  smtpPass?: string;
+  /** From email address for outbound mail (optional). */
+  fromEmail?: string;
+  /** Base URL used when constructing password reset links (default: localhost). */
+  passwordResetBaseUrl: string;
 }
 
 /**
@@ -61,6 +77,17 @@ function envOptional(key: string, fallback: string): string {
   return process.env[key] ?? fallback;
 }
 
+/**
+ * Read an optional environment variable, returning undefined if not set or empty.
+ *
+ * @param key - The environment variable name.
+ * @returns The value string, or undefined if absent/empty.
+ */
+function envMaybe(key: string): string | undefined {
+  const value = process.env[key];
+  return value !== undefined && value !== "" ? value : undefined;
+}
+
 const rawCors = env("CORS_ORIGIN", "http://localhost:5173");
 
 /** Singleton configuration object populated from environment variables. */
@@ -80,5 +107,18 @@ export const config: Config = {
   comfyuiUrl: env("COMFYUI_URL", "http://localhost:8188"),
   distractorConfidenceThreshold: parseFloat(
     env("DISTRACTOR_CONFIDENCE_THRESHOLD", "0.7")
+  ),
+  rateLimitMax: parseInt(env("RATE_LIMIT_MAX", "20"), 10),
+  rateLimitWindow: parseInt(env("RATE_LIMIT_WINDOW_MS", "60000"), 10),
+  smtpHost: envMaybe("SMTP_HOST"),
+  smtpPort: envMaybe("SMTP_PORT") !== undefined
+    ? parseInt(process.env["SMTP_PORT"]!, 10)
+    : undefined,
+  smtpUser: envMaybe("SMTP_USER"),
+  smtpPass: envMaybe("SMTP_PASS"),
+  fromEmail: envMaybe("FROM_EMAIL"),
+  passwordResetBaseUrl: env(
+    "PASSWORD_RESET_BASE_URL",
+    "http://localhost:5173/reset-password"
   ),
 };

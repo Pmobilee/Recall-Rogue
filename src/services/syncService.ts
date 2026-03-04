@@ -7,13 +7,18 @@
  * - Silent failures: network/auth errors are logged to the console only — they
  *   must never interrupt gameplay.
  * - Debounced uploads: no more than one upload per `SYNC_DEBOUNCE_MS` window.
- * - Conflict resolution: the save with the higher `lastPlayedAt` timestamp wins.
+ * - Conflict resolution: the save with the higher `lastPlayedAt` timestamp wins;
+ *   ties within 60 s are broken by `totalBlocksMined` (more progress preferred).
  * - Leaderboard submissions: derived automatically from a PlayerSave on every
- *   successful push to the cloud.
+ *   successful push to the cloud, using category names that match the server.
+ * - Offline queue: operations attempted while offline are persisted and replayed
+ *   automatically when connectivity is restored.
  */
 
 import { apiClient } from './apiClient'
 import { load as loadLocalSave } from './saveService'
+import { offlineQueue } from './offlineQueue'
+import { syncStatus } from '../ui/stores/syncStore'
 import type { PlayerSave } from '../data/types'
 
 // ============================================================
@@ -26,20 +31,28 @@ const SYNC_DEBOUNCE_MS = 30_000
 /** localStorage key used to persist the last-successful-sync timestamp. */
 const LAST_SYNC_KEY = 'terra_last_sync_time'
 
+/**
+ * Within this window (ms) two competing saves are considered "tied" on time
+ * and the tiebreaker (`totalBlocksMined`) is applied instead.
+ */
+const CONFLICT_TIE_WINDOW_MS = 60_000
+
 // ============================================================
 // LEADERBOARD CATEGORY EXTRACTORS
 // ============================================================
 
 /**
- * Maps a leaderboard category identifier to the corresponding numeric value
- * extracted from a `PlayerSave`.
+ * Maps server leaderboard category identifiers to the corresponding numeric
+ * value extracted from a `PlayerSave`.
+ *
+ * Category names MUST match the server's `VALID_CATEGORIES` set defined in
+ * `server/src/routes/leaderboards.ts`.
  */
 const LEADERBOARD_EXTRACTORS: Record<string, (s: PlayerSave) => number> = {
-  deepest_layer: (s) => s.stats.deepestLayerReached,
-  total_dives: (s) => s.stats.totalDivesCompleted,
-  total_facts: (s) => s.stats.totalFactsLearned,
-  total_blocks_mined: (s) => s.stats.totalBlocksMined,
-  best_streak: (s) => s.stats.bestStreak,
+  deepest_dive: (s) => s.stats.deepestLayerReached,
+  facts_mastered: (s) => s.stats.totalFactsLearned,
+  longest_streak: (s) => s.stats.bestStreak,
+  total_dust: (s) => s.minerals?.dust ?? 0,
 }
 
 // ============================================================
@@ -71,6 +84,7 @@ export class SyncService {
 
   constructor() {
     this._lastSyncTime = this.readLastSyncTime()
+    this.registerConnectivityListener()
   }
 
   // ----------------------------------------------------------
@@ -108,14 +122,20 @@ export class SyncService {
   /**
    * Schedules a cloud upload after a local save, honouring the debounce window.
    *
-   * Call this immediately after every `save()` from `saveService`. If the user
-   * is not logged in or is offline the call is a no-op. Errors are swallowed
-   * so gameplay is never interrupted.
+   * If the device is offline the operation is enqueued for later replay rather
+   * than silently dropped. If the user is not logged in the call is a no-op.
+   * Errors are swallowed so gameplay is never interrupted.
    *
    * @param localSave - The just-persisted `PlayerSave` object.
    */
   async syncAfterSave(localSave: PlayerSave): Promise<void> {
-    if (!apiClient.isLoggedIn() || !this.isOnline) return
+    if (!apiClient.isLoggedIn()) return
+
+    // If offline, persist the operation for later replay and return early.
+    if (!this.isOnline) {
+      offlineQueue.enqueue({ type: 'save', payload: null })
+      return
+    }
 
     const now = Date.now()
     const msSinceLastAttempt = now - this._lastUploadAttempt
@@ -155,11 +175,14 @@ export class SyncService {
     if (!this.isOnline) return null
 
     this._isSyncing = true
+    syncStatus.set('syncing')
     try {
       const remote = await apiClient.downloadSave()
+      syncStatus.set('idle')
       return remote
     } catch (err) {
       console.warn('[SyncService] pullFromCloud failed:', err)
+      syncStatus.set('error')
       return null
     } finally {
       this._isSyncing = false
@@ -188,14 +211,31 @@ export class SyncService {
   /**
    * Chooses the authoritative save when local and remote copies differ.
    *
-   * **Rule**: whichever save has the higher `lastPlayedAt` value wins. In the
-   * case of a tie the local save is preferred to avoid unnecessary writes.
+   * **Primary rule**: whichever save has the higher `lastPlayedAt` value wins.
+   * **Tiebreaker**: if the two timestamps are within 60 seconds of each other,
+   * the save with more `totalBlocksMined` is preferred — it reflects more
+   * in-session progress that may not yet have updated `lastPlayedAt`. In a
+   * true tie on both dimensions the local save is returned to avoid
+   * unnecessary writes.
    *
    * @param local - The save currently stored in localStorage.
    * @param remote - The save downloaded from the cloud.
    * @returns The save that should be treated as the source of truth.
    */
   async resolveConflict(local: PlayerSave, remote: PlayerSave): Promise<PlayerSave> {
+    const timeDiff = Math.abs(remote.lastPlayedAt - local.lastPlayedAt)
+
+    if (timeDiff <= CONFLICT_TIE_WINDOW_MS) {
+      // Timestamps are close enough to be considered a tie; use progress as
+      // tiebreaker so we don't discard a session that was active very recently.
+      const remoteBlocks = remote.stats.totalBlocksMined
+      const localBlocks = local.stats.totalBlocksMined
+      if (remoteBlocks > localBlocks) {
+        return remote
+      }
+      return local
+    }
+
     if (remote.lastPlayedAt > local.lastPlayedAt) {
       return remote
     }
@@ -209,21 +249,25 @@ export class SyncService {
   /**
    * Uploads `saveData` to the cloud and submits derived leaderboard scores.
    * Sets `_lastUploadAttempt` before the network call so the debounce window
-   * is respected even when the request fails.
+   * is respected even when the request fails. Updates `syncStatus` store to
+   * reflect the operation state.
    *
    * @param saveData - The `PlayerSave` to upload.
    */
   private async performUpload(saveData: PlayerSave): Promise<void> {
     this._lastUploadAttempt = Date.now()
     this._isSyncing = true
+    syncStatus.set('syncing')
 
     try {
       await apiClient.uploadSave(saveData)
       this._lastSyncTime = Date.now()
       this.writeLastSyncTime(this._lastSyncTime)
       await this.submitLeaderboardScores(saveData)
+      syncStatus.set('idle')
     } catch (err) {
       console.warn('[SyncService] performUpload failed:', err)
+      syncStatus.set('error')
     } finally {
       this._isSyncing = false
     }
@@ -246,6 +290,42 @@ export class SyncService {
         console.warn(`[SyncService] submitScore(${category}) failed:`, err)
       }
     }
+  }
+
+  /**
+   * Registers a `window.online` listener that flushes the offline queue when
+   * network connectivity is restored. Safe to call in SSR environments where
+   * `window` is unavailable.
+   */
+  private registerConnectivityListener(): void {
+    if (typeof window === 'undefined') return
+    window.addEventListener('online', () => {
+      void this.onConnectivityRestored()
+    })
+  }
+
+  /**
+   * Invoked when the `online` event fires. Flushes any operations that were
+   * queued while the device was offline.
+   */
+  private async onConnectivityRestored(): Promise<void> {
+    console.info('[SyncService] Connectivity restored — flushing offline queue')
+    await offlineQueue.flush(async (op) => {
+      if (op.type === 'save') {
+        // Re-push the current local save (the queued payload may be stale).
+        await this.pushToCloud()
+        return true
+      }
+      if (op.type === 'leaderboard') {
+        // Re-derive leaderboard scores from the current local save.
+        const localSave = loadLocalSave()
+        if (localSave !== null) {
+          await this.submitLeaderboardScores(localSave)
+        }
+        return true
+      }
+      return false
+    })
   }
 
   /**

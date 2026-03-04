@@ -1,6 +1,6 @@
 # Terra Gacha — Progress Tracker & Roadmap
 
-Last updated: 2026-03-03
+Last updated: 2026-03-04
 
 ## How This Roadmap Works
 
@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-18 complete. Phase 17 (Addictiveness Pass) fully implemented: gacha reveal animations with rarity-tiered effects, 15 new synthesized sounds (reveal tiers, mastery celebrations, streak milestones), session flow optimization with anti-binge system, login calendar with 7-day rewards, comeback bonuses, weekly challenges (30 definitions across 3 pillars), streak milestones (19 tiers up to 365 days), progress bars in dome HUD, functional audio controls in Settings, and Capacitor-aware notification service. V2 roadmap (Phases 19-25) remaining.
+Phases 0-20 complete. Phase 19 (Auth & Cloud) implemented: login/register UI, JWT auth with refresh tokens, cloud save sync, offline queue, service worker, sync indicator, error boundary. Phase 20 (Mobile Launch) implemented: Capacitor back button handler, splash screen manual hide, PWA manifest, desktop/tablet responsive CSS, keyboard shortcuts (Escape, 1-4 for quiz, F for flare), RarityBadge with colorblind-safe shapes, accessibility CSS (high-contrast quiz, reduced motion, scalable text, focus indicators), accessibility settings, ARIA labels on quiz/HUD, PwaInstallPrompt component, store listing text, Docker multi-stage build, bundle code splitting, error reporting service, offline feature tiers, CDN strategy, soft-launch tracker. V2 roadmap Phases 21-25 remaining.
 
 ---
 
@@ -61,8 +61,8 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 18: Dev Tooling** — Scenario presets, save snapshots, session profiles, review pressure audit, quiz anti-homework → [`completed/PHASE-18-DEV-TOOLING.md`](completed/PHASE-18-DEV-TOOLING.md)
 
 ### Infrastructure & Launch (Phases 19-20)
-- [ ] **Phase 19: Auth & Cloud** — Auth UI, cloud sync, PostgreSQL, Docker, offline mode, legal, profiles, analytics → [`phases/PHASE-19-AUTH-CLOUD.md`](phases/PHASE-19-AUTH-CLOUD.md)
-- [ ] **Phase 20: Mobile Launch** — Capacitor builds, store submission, ASO, soft launch, accessibility, web platform → [`phases/PHASE-20-MOBILE-LAUNCH.md`](phases/PHASE-20-MOBILE-LAUNCH.md)
+- [x] **Phase 19: Auth & Cloud** — Auth UI, cloud sync, PostgreSQL, Docker, offline mode, legal, profiles, analytics → [`completed/PHASE-19-AUTH-CLOUD.md`](completed/PHASE-19-AUTH-CLOUD.md)
+- [x] **Phase 20: Mobile Launch** — Capacitor builds, store submission, ASO, soft launch, accessibility, web platform → [`completed/PHASE-20-MOBILE-LAUNCH.md`](completed/PHASE-20-MOBILE-LAUNCH.md)
 
 ### Monetization & Social (Phases 21-22)
 - [ ] **Phase 21: Monetization** — Terra Pass, IAP, O2 regen, season pass, Pioneer Pack, economy rebalance → [`phases/PHASE-21-MONETIZATION.md`](phases/PHASE-21-MONETIZATION.md)

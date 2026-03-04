@@ -1,0 +1,62 @@
+/* Desktop & tablet responsive layout — Phase 20.6 (DD-V2-171) */
+
+/* ── Tablet (768px) ──────────────────────────────────────────── */
+@media (min-width: 768px) {
+  #phaser-canvas-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hud-container {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .quiz-overlay {
+    max-width: 560px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+
+  .panel-content {
+    max-height: 70vh;
+  }
+}
+
+/* ── Desktop (1200px) ────────────────────────────────────────── */
+@media (min-width: 1200px) {
+  .app-layout {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    grid-template-rows: 100vh;
+    gap: 0;
+  }
+
+  #phaser-canvas-container {
+    grid-column: 1;
+    height: 100vh;
+    max-width: 480px;
+  }
+
+  .side-panel {
+    grid-column: 2;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: #111827;
+    border-left: 1px solid #1f2937;
+  }
+
+  .quiz-overlay {
+    position: static;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .hud-container {
+    flex-direction: column;
+    position: static;
+    background: transparent;
+  }
+}

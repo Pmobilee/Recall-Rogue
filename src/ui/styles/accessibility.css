@@ -1,0 +1,61 @@
+/* Accessibility overrides — Phase 20.5 (DD-V2-178) */
+
+/* ── Scalable text ─────────────────────────────────────── */
+:root {
+  /* Base scales with system font-size settings */
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+body, input, button, select, textarea {
+  font-size: max(0.75rem, 12px);
+}
+
+/* ── High-contrast quiz mode ───────────────────────────── */
+.high-contrast-quiz .quiz-choice {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 3px solid #ffffff !important;
+}
+.high-contrast-quiz .quiz-choice:hover,
+.high-contrast-quiz .quiz-choice:focus {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+.high-contrast-quiz .quiz-choice.correct {
+  background: #00cc00 !important;
+  color: #000000 !important;
+  border-color: #00cc00 !important;
+}
+.high-contrast-quiz .quiz-choice.wrong {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border-color: #cc0000 !important;
+}
+
+/* ── Reduced motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reduced-motion *, .reduced-motion *::before, .reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* ── Minimum touch targets ─────────────────────────────── */
+button, [role="button"], a[href] {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ── Focus indicators ──────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid #4fc3f7;
+  outline-offset: 2px;
+}

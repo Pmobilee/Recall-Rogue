@@ -1,6 +1,7 @@
 /**
  * Authentication routes for the Terra Gacha server.
- * Handles user registration, login, and JWT token refresh.
+ * Handles user registration, login, JWT token refresh, account deletion,
+ * and password reset (request + confirm).
  * Passwords are hashed with Node.js built-in crypto (PBKDF2).
  */
 
@@ -8,8 +9,9 @@ import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import * as crypto from "crypto";
 import { eq } from "drizzle-orm";
 import { db } from "../db/index.js";
-import { users, refreshTokens } from "../db/schema.js";
+import { users, refreshTokens, passwordResetTokens } from "../db/schema.js";
 import { config } from "../config.js";
+import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type { AuthResponse, PublicUser } from "../types/index.js";
 
 // ── Password helpers ──────────────────────────────────────────────────────────
@@ -261,6 +263,13 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
           .send({ error: "Invalid email or password", statusCode: 401 });
       }
 
+      // Reject soft-deleted accounts
+      if (user.isDeleted === 1) {
+        return reply
+          .status(401)
+          .send({ error: "Invalid email or password", statusCode: 401 });
+      }
+
       const { token, refreshToken } = await issueTokens(
         fastify,
         user.id,
@@ -337,6 +346,157 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
 
       const tokens = await issueTokens(fastify, user.id, user.email);
       return tokens;
+    }
+  );
+
+  // ── DELETE /account ─────────────────────────────────────────────────────────
+
+  /**
+   * DELETE /api/auth/account
+   * Soft-deletes the authenticated user's account.
+   * Sets isDeleted=1 and deletedAt to current timestamp.
+   * Deletes all refresh tokens for the user (forcing re-login on all devices).
+   * Returns: 204 No Content.
+   */
+  fastify.delete(
+    "/account",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+      const { sub: userId } = getAuthUser(request);
+      const now = Date.now();
+
+      // Soft-delete the user account
+      await db
+        .update(users)
+        .set({ isDeleted: 1, deletedAt: now, updatedAt: now })
+        .where(eq(users.id, userId));
+
+      // Invalidate all refresh tokens so no device can re-authenticate
+      await db
+        .delete(refreshTokens)
+        .where(eq(refreshTokens.userId, userId));
+
+      return reply.status(204).send();
+    }
+  );
+
+  // ── POST /password-reset-request ────────────────────────────────────────────
+
+  /**
+   * POST /api/auth/password-reset-request
+   * Initiates a password reset for the given email address.
+   * Always returns 202 regardless of whether the email exists, to prevent
+   * user enumeration attacks.
+   * Body: { email: string }
+   * Returns: 202 Accepted.
+   */
+  fastify.post(
+    "/password-reset-request",
+    async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const email = body?.email;
+
+      // Validate email format before touching the DB
+      if (typeof email !== "string" || !isValidEmail(email)) {
+        // Return 202 even on bad input to prevent enumeration
+        return reply.status(202).send();
+      }
+
+      // Look up the user (silently ignore if not found)
+      const user = await db
+        .select({ id: users.id, email: users.email, isDeleted: users.isDeleted })
+        .from(users)
+        .where(eq(users.email, email.toLowerCase()))
+        .get();
+
+      if (user && user.isDeleted === 0) {
+        const token = crypto.randomUUID();
+        const now = Date.now();
+        const expiresAt = now + 60 * 60 * 1_000; // 1 hour
+
+        await db.insert(passwordResetTokens).values({
+          token,
+          userId: user.id,
+          expiresAt,
+          used: 0,
+          createdAt: now,
+        });
+
+        const resetUrl = `${config.passwordResetBaseUrl}?token=${token}`;
+
+        if (!config.isProduction) {
+          // In development, log the reset URL instead of sending email
+          console.log(`[auth] Password reset URL for ${user.email}: ${resetUrl}`);
+        }
+        // In production a real email would be dispatched here using
+        // config.smtpHost / smtpUser / smtpPass / fromEmail.
+      }
+
+      // Always 202 — never reveal whether the email exists
+      return reply.status(202).send();
+    }
+  );
+
+  // ── POST /password-reset-confirm ────────────────────────────────────────────
+
+  /**
+   * POST /api/auth/password-reset-confirm
+   * Completes a password reset using a previously issued reset token.
+   * Body: { token: string, newPassword: string }
+   * Returns: 200 OK on success, 400 on invalid/expired token.
+   */
+  fastify.post(
+    "/password-reset-confirm",
+    async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const token = body?.token;
+      const newPassword = body?.newPassword;
+
+      if (typeof token !== "string" || token.length === 0) {
+        return reply
+          .status(400)
+          .send({ error: "token is required", statusCode: 400 });
+      }
+      if (typeof newPassword !== "string" || !isValidPassword(newPassword)) {
+        return reply.status(400).send({
+          error: "newPassword must be at least 8 characters",
+          statusCode: 400,
+        });
+      }
+
+      const resetToken = await db
+        .select()
+        .from(passwordResetTokens)
+        .where(eq(passwordResetTokens.token, token))
+        .get();
+
+      if (
+        !resetToken ||
+        resetToken.used === 1 ||
+        resetToken.expiresAt < Date.now()
+      ) {
+        return reply.status(400).send({
+          error: "Invalid or expired reset token",
+          statusCode: 400,
+        });
+      }
+
+      const now = Date.now();
+      const newHash = hashPassword(newPassword);
+
+      // Update the user's password
+      await db
+        .update(users)
+        .set({ passwordHash: newHash, updatedAt: now })
+        .where(eq(users.id, resetToken.userId));
+
+      // Mark the reset token as used
+      await db
+        .update(passwordResetTokens)
+        .set({ used: 1 })
+        .where(eq(passwordResetTokens.token, token));
+
+      return reply.status(200).send({ message: "Password updated successfully" });
     }
   );
 }

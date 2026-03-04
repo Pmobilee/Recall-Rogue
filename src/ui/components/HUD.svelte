@@ -101,7 +101,12 @@
 <div class="hud">
   <div class="top-row">
     <div class="oxygen-panel">
-      <div class="oxygen-label">
+      <div
+        class="oxygen-label"
+        role="status"
+        aria-live="polite"
+        aria-label="Oxygen: {oxygenPercent} percent"
+      >
         {oxygenText}
         {#if $o2DepthMultiplier > 1.05}
           <span class="o2-multiplier" class:amber={$o2DepthMultiplier >= 1.5 && $o2DepthMultiplier < 2.0} class:red={$o2DepthMultiplier >= 2.0}>

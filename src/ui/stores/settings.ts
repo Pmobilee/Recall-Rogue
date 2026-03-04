@@ -167,6 +167,38 @@ sfxEnabled.subscribe(v => {
 })
 
 // =========================================================
+// Accessibility Settings (Phase 20.5)
+// =========================================================
+
+function readHighContrastQuiz(): boolean {
+  if (typeof window === 'undefined') return false
+  const stored = window.localStorage.getItem('setting_highContrastQuiz')
+  return stored === 'true'
+}
+
+/** High-contrast quiz mode for accessibility (DD-V2-178) */
+export const highContrastQuiz = writable<boolean>(readHighContrastQuiz())
+highContrastQuiz.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_highContrastQuiz', String(v))
+  }
+})
+
+function readReducedMotion(): boolean {
+  if (typeof window === 'undefined') return false
+  const stored = window.localStorage.getItem('setting_reducedMotion')
+  return stored === 'true'
+}
+
+/** Reduced motion mode — disables animations (DD-V2-178) */
+export const reducedMotion = writable<boolean>(readReducedMotion())
+reducedMotion.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_reducedMotion', String(v))
+  }
+})
+
+// =========================================================
 // Interest Configuration (Phase 12)
 // =========================================================
 

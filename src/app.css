@@ -1,3 +1,6 @@
+@import './ui/styles/desktop.css';
+@import './ui/styles/accessibility.css';
+
 :root {
   --color-bg: #1a1a2e;
   --color-surface: #16213e;

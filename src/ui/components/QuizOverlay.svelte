@@ -4,7 +4,7 @@
   import { BALANCE } from '../../data/balance'
   import { audioManager } from '../../services/audioService'
   import { playerSave } from '../stores/playerData'
-  import { gaiaMood } from '../stores/settings'
+  import { gaiaMood, highContrastQuiz } from '../stores/settings'
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
   import ReportModal from './ReportModal.svelte'
 
@@ -202,7 +202,7 @@
   })
 </script>
 
-<div class="quiz-overlay quiz-overlay-enter" role="dialog" aria-modal="true" aria-label="GAIA Field Scan">
+<div class="quiz-overlay quiz-overlay-enter" class:high-contrast-quiz={$highContrastQuiz} role="dialog" aria-modal="true" aria-label="Quiz Question">
   <div class={`quiz-card quiz-card-enter ${cardOutcomeClass()}`}>
     <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">
       x
@@ -241,6 +241,7 @@
           style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
           type="button"
           disabled={showResult}
+          aria-label="Choice {i + 1}: {choice}"
           onclick={() => void handleAnswer(choice)}
         >
           <span class="key-badge" aria-hidden="true">{i + 1}</span>

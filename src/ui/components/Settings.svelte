@@ -11,6 +11,8 @@
     sfxVolume,
     musicEnabled,
     sfxEnabled,
+    highContrastQuiz,
+    reducedMotion,
     type GaiaMood,
     type SpriteResolution,
   } from '../stores/settings'
@@ -19,12 +21,19 @@
   import { GAIA_NAME } from '../../data/gaiaAvatar'
   import { currentScreen } from '../stores/gameState'
 
+  import { authStore } from '../stores/authStore'
+
   interface Props {
     /** Called when the user taps the Back button. */
     onBack: () => void
+    /** Optional — called when user taps "Account / Profile". Opens the auth profile screen. */
+    onViewProfile?: () => void
   }
 
-  let { onBack }: Props = $props()
+  let { onBack, onViewProfile }: Props = $props()
+
+  /** True when the user is logged in (shows "Account" option). */
+  const loggedIn = $derived($authStore.isLoggedIn)
 
   // Delete-save confirmation state
   let showDeleteConfirm = $state(false)
@@ -265,6 +274,38 @@
       </div>
     </section>
 
+    <!-- ===== ACCESSIBILITY SETTINGS (Phase 20.5) ===== -->
+    <section class="settings-section" aria-labelledby="accessibility-heading">
+      <h2 id="accessibility-heading" class="section-heading">Accessibility</h2>
+
+      <div class="settings-card">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">High contrast quiz</span>
+            <span class="setting-desc">Stronger contrast for quiz answer choices</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            bind:checked={$highContrastQuiz}
+            aria-label="High contrast quiz mode"
+          />
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Reduced motion</span>
+            <span class="setting-desc">Disables animations throughout the game</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            bind:checked={$reducedMotion}
+            aria-label="Reduced motion mode"
+          />
+        </div>
+      </div>
+    </section>
+
     <!-- ===== ACCOUNT ===== -->
     <section class="settings-section" aria-labelledby="account-heading">
       <h2 id="account-heading" class="section-heading">Account</h2>
@@ -282,6 +323,20 @@
             <span class="setting-desc mono">{truncateId($playerSave?.playerId)}</span>
           </div>
         </div>
+
+        {#if onViewProfile}
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Online Account</span>
+              <span class="setting-desc">
+                {loggedIn ? $authStore.email ?? 'Logged in' : 'Guest mode'}
+              </span>
+            </div>
+            <button class="setting-toggle" type="button" onclick={onViewProfile}>
+              {loggedIn ? 'Manage' : 'Sign In'}
+            </button>
+          </div>
+        {/if}
 
         {#if !showDeleteConfirm}
           <button

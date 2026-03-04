@@ -9,6 +9,49 @@ import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
 
 /**
+ * Sets up Capacitor-specific integrations: Android hardware back button handling
+ * and splash screen management. Uses dynamic imports so the app never crashes on web.
+ * Only @capacitor/core and @capacitor/splash-screen are imported (both installed).
+ * The App plugin (back button) is accessed via Capacitor's registerPlugin to avoid
+ * importing the uninstalled @capacitor/app package.
+ *
+ * @returns The SplashScreen plugin instance if running natively, otherwise null.
+ */
+const setupCapacitor = async (): Promise<{ hide: () => Promise<void> } | null> => {
+  try {
+    const { Capacitor, registerPlugin } = await import('@capacitor/core')
+    if (!Capacitor.isNativePlatform()) return null
+
+    const { SplashScreen } = await import('@capacitor/splash-screen')
+
+    // Register the App plugin via Capacitor's bridge (avoids needing @capacitor/app installed)
+    const CapApp = registerPlugin<{
+      addListener(event: string, cb: (data: { canGoBack: boolean }) => void): void
+      exitApp(): void
+    }>('App')
+
+    // Handle Android hardware back button
+    CapApp.addListener('backButton', ({ canGoBack }) => {
+      const screen = document.querySelector('[data-screen]')?.getAttribute('data-screen') ?? ''
+      if (screen === 'mining') {
+        document.dispatchEvent(new CustomEvent('game:back-pressed'))
+        return
+      }
+      if (screen === 'quiz') {
+        return  // Ignore back during quiz
+      }
+      if (!canGoBack) {
+        CapApp.exitApp()
+      }
+    })
+
+    return SplashScreen
+  } catch {
+    return null
+  }
+}
+
+/**
  * Checks whether the current browser supports WebGL rendering.
  * @returns true if WebGL is available, false otherwise
  */
@@ -79,8 +122,21 @@ async function bootGame(): Promise<void> {
 
   // Wait for DB to finish loading
   await dbPromise
+
+  // Hide splash screen now that the game is fully initialized (DD-V2 Sub-Phase 20.1)
+  const splashScreen = await setupCapacitor()
+  if (splashScreen) await splashScreen.hide()
 }
 
 bootGame()
+
+// Register the Service Worker for offline asset caching.
+// This is an optional progressive enhancement — failure is silent so the game
+// continues to work in environments where SW is not supported or blocked.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {
+    // Silent failure — SW is an optional enhancement, not a hard requirement.
+  })
+}
 
 export default app

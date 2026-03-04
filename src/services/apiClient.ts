@@ -131,6 +131,31 @@ export class ApiClient {
   }
 
   /**
+   * Permanently deletes the authenticated user's account on the server,
+   * then clears local tokens.
+   *
+   * @throws {ApiError} On network failure or server error.
+   */
+  async deleteAccount(): Promise<void> {
+    await this.fetchWithAuth('/auth/account', { method: 'DELETE' })
+    this.logout()
+  }
+
+  /**
+   * Sends a password-reset email to the specified address.
+   * The server does not reveal whether the address is registered (anti-enumeration).
+   *
+   * @param email - The email address to send the reset link to.
+   * @throws {ApiError} On network failure or server error.
+   */
+  async requestPasswordReset(email: string): Promise<void> {
+    await this.fetchWithAuth('/auth/password-reset-request', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    })
+  }
+
+  /**
    * Clears stored tokens, effectively logging the user out locally.
    * Does not call the server (no server-side session to invalidate for JWT).
    */

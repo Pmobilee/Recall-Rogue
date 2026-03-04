@@ -1,6 +1,7 @@
 import initSqlJs, { type Database } from 'sql.js'
 import type { Fact, ContentType, Rarity, AgeRating } from '../data/types'
 import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url'
+import { factPackService } from './factPackService'
 
 /**
  * Singleton service that loads a SQLite database via sql.js (WASM) in the browser
@@ -32,9 +33,22 @@ class FactsDB {
    * Initialize the database. Loads the sql.js WASM binary and fetches `/facts.db`
    * from the server. Must be called once before any query methods are used.
    * Subsequent calls are no-ops.
+   *
+   * Also initialises the FactPackService cache and kicks off a background sync
+   * so the offline JSON pack stays fresh without blocking the SQL load.
    */
   async init(): Promise<void> {
     if (this.initialized) return
+
+    // Initialise the offline fact pack cache from localStorage (synchronous).
+    factPackService.init()
+
+    // Kick off a background sync — fire-and-forget, never blocks DB init.
+    // The sync only runs if the cached pack is stale (>7 days old).
+    factPackService.syncPacks().catch(() => {
+      // Silent failure is intentional — offline players must not be affected.
+    })
+
     const [SQL, buffer] = await Promise.all([
       initSqlJs({ locateFile: () => sqlWasmUrl }),
       fetch('/facts.db').then(response => {

@@ -1267,6 +1267,19 @@ export class MineScene extends Phaser.Scene {
       case 'B':
         this.useBomb()
         return
+      case 'f':
+      case 'F':
+        this.applyConsumable('flare')
+        return
+      case 'Escape':
+        document.dispatchEvent(new CustomEvent('game:back-pressed'))
+        return
+      case '1': case '2': case '3': case '4':
+        document.dispatchEvent(new CustomEvent('quiz:keyboard-answer', { detail: { choice: parseInt(event.key) - 1 } }))
+        return
+      case ' ':
+        // Space = interact (no-op for now, reserved for future use)
+        return
       default:
         return
     }

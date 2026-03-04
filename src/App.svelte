@@ -49,6 +49,7 @@
   import GaiaIntro from './ui/components/GaiaIntro.svelte'
   import AgeSelection from './ui/components/AgeSelection.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
+  import PwaInstallPrompt from './ui/components/PwaInstallPrompt.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
   import GaiaToast from './ui/components/GaiaToast.svelte'
@@ -58,6 +59,76 @@
   import { gaiaMessage } from './ui/stores/gameState'
   import { generateBiomeSequence } from './data/biomes'
   import { seededRandom } from './game/systems/MineGenerator'
+  import { authStore } from './ui/stores/authStore'
+  import LoginView from './ui/components/auth/LoginView.svelte'
+  import RegisterView from './ui/components/auth/RegisterView.svelte'
+  import ForgotPasswordView from './ui/components/auth/ForgotPasswordView.svelte'
+  import ProfileView from './ui/components/auth/ProfileView.svelte'
+  import OfflineToast from './ui/components/OfflineToast.svelte'
+
+  // ============================================================
+  // AUTH ROUTING LAYER
+  // ============================================================
+
+  /** Which auth sub-screen is visible (null = game is shown). */
+  type AuthScreen = 'login' | 'register' | 'forgot' | 'profile' | null
+
+  let authScreen = $state<AuthScreen>(null)
+
+  /**
+   * Determines whether the game should be visible.
+   * True when the user is authenticated OR has chosen guest mode.
+   */
+  const gameVisible = $derived.by(() => {
+    if ($authStore.isLoggedIn) return true
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('terra_guest_mode') === 'true') return true
+    return false
+  })
+
+  // Show login gate on first render if not authenticated and not in guest mode
+  $effect(() => {
+    if (!gameVisible && authScreen === null) {
+      authScreen = 'login'
+    }
+  })
+
+  /** Handle successful login — dismiss auth screens and enter the game. */
+  function handleAuthLogin(user: { id: string; email: string; displayName: string | null }): void {
+    authStore.setUser(user)
+    authScreen = null
+  }
+
+  /** Navigates from login to register. */
+  function handleAuthGoRegister(): void {
+    authScreen = 'register'
+  }
+
+  /** Navigates from login to forgot password. */
+  function handleAuthGoForgot(): void {
+    authScreen = 'forgot'
+  }
+
+  /** Handles "Continue as Guest" — sets the guest flag and dismisses auth. */
+  function handleAuthGuest(): void {
+    localStorage.setItem('terra_guest_mode', 'true')
+    authScreen = null
+  }
+
+  /** Navigates back from register or forgot to login. */
+  function handleAuthBack(): void {
+    authScreen = 'login'
+  }
+
+  /** Profile view: logout handler. */
+  function handleProfileLogout(): void {
+    localStorage.removeItem('terra_guest_mode')
+    authScreen = 'login'
+  }
+
+  /** Opens the profile screen from Settings. */
+  function handleViewProfile(): void {
+    authScreen = 'profile'
+  }
 
   // Cache getFacts() — avoids full SQL scan on every re-render
   let cachedFacts = $state<Fact[]>([])
@@ -394,7 +465,34 @@
 </script>
 
 <div id="game-container"></div>
-<div id="ui-overlay">
+<div id="ui-overlay" data-screen={$currentScreen}>
+  <!-- ============================================================
+       AUTH ROUTING LAYER — overlays the entire game when visible
+       ============================================================ -->
+  {#if authScreen === 'login'}
+    <LoginView
+      onLogin={handleAuthLogin}
+      onRegister={handleAuthGoRegister}
+      onForgotPassword={handleAuthGoForgot}
+      onGuest={handleAuthGuest}
+    />
+  {:else if authScreen === 'register'}
+    <RegisterView
+      onRegisterSuccess={handleAuthLogin}
+      onBack={handleAuthBack}
+    />
+  {:else if authScreen === 'forgot'}
+    <ForgotPasswordView
+      onBack={handleAuthBack}
+    />
+  {:else if authScreen === 'profile'}
+    <ProfileView
+      onLogout={handleProfileLogout}
+      onBack={() => { authScreen = null }}
+    />
+  {:else}
+    <!-- Game is visible — normal screen routing below -->
+
   {#if showResumeModal}
     <ResumeDiveModal onResume={handleResumeDive} onAbandon={handleAbandonDive} />
   {/if}
@@ -549,7 +647,7 @@
     <Farm onBack={handleBackFromFarm} />
 
   {:else if $currentScreen === 'settings'}
-    <Settings onBack={handleBackFromSettings} />
+    <Settings onBack={handleBackFromSettings} onViewProfile={handleViewProfile} />
 
   {:else if $currentScreen === 'gaiaReport'}
     <GaiaReport onBack={() => currentScreen.set('base')} />
@@ -629,7 +727,12 @@
   {/if}
 
   <DevPanel />
+  <PwaInstallPrompt />
+
+  {/if}
+  <!-- /AUTH ROUTING LAYER -->
 </div>
+<OfflineToast />
 
 <style>
   .main-menu {

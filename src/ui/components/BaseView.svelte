@@ -34,6 +34,7 @@
   import type { Fact } from '../../data/types'
 
   import ProgressBars from './ProgressBars.svelte'
+  import SyncIndicator from './SyncIndicator.svelte'
 
   // Room sub-components
   import CommandRoom from './rooms/CommandRoom.svelte'
@@ -168,6 +169,9 @@
 </script>
 
 <section class="base-view" aria-label="Terra Base hub">
+  <!-- === SYNC STATUS INDICATOR (Phase 19.2) === -->
+  <SyncIndicator />
+
   <!-- === PROGRESS BARS (Phase 17) === -->
   <ProgressBars />
 

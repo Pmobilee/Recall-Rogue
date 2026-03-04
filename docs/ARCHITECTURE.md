@@ -70,3 +70,22 @@ See `docs/SECURITY.md` for full details.
 - All API communication over HTTPS
 - Input validation on both client and server
 - No dynamic code execution (eval, Function, innerHTML)
+
+## Capacitor Plugin Matrix
+
+| Plugin | Package | Min Version | Used In |
+|--------|---------|-------------|---------|
+| Core | `@capacitor/core` | 8.1.0 | All native features |
+| Android | `@capacitor/android` | 8.1.0 | Android platform |
+| iOS | `@capacitor/ios` | 8.1.0 | iOS platform |
+| Splash Screen | `@capacitor/splash-screen` | 8.0.0 | Boot sequence |
+| Status Bar | `@capacitor/status-bar` | 8.0.0 | Dark status bar |
+| App | `@capacitor/app` | 6.0.0 | Back button (Android) |
+| Haptics | `@capacitor/haptics` | 6.0.0 | Mining feedback (Phase 7) |
+| Local Notifications | `@capacitor/local-notifications` | 6.0.0 | Re-engagement (Phase 17) |
+
+### Capacitor Version Requirements
+- Capacitor Core: 8.1.0+
+- Android: API 24+ (Android 7.0)
+- iOS: 14.0+
+- Xcode: 15+

@@ -9,16 +9,20 @@ const config: CapacitorConfig = {
   },
   plugins: {
     SplashScreen: {
-      launchAutoHide: true,
-      launchShowDuration: 2000,
-      backgroundColor: '#0a0e1a',
+      launchAutoHide: false,          // manual hide after game loads
+      launchShowDuration: 0,          // no auto-hide timer
+      backgroundColor: '#0a0e1a',     // dark space blue (existing)
       androidScaleType: 'CENTER_CROP',
-      showSpinner: false
+      showSpinner: false,
     },
     StatusBar: {
       style: 'DARK',
       backgroundColor: '#0a0e1a'
-    }
+    },
+    Keyboard: {
+      resize: 'body',
+      style: 'dark',
+    },
   }
 };
 

@@ -14,6 +14,7 @@ import { authRoutes } from "./routes/auth.js";
 import { savesRoutes } from "./routes/saves.js";
 import { leaderboardRoutes } from "./routes/leaderboards.js";
 import { factsRoutes } from "./routes/facts.js";
+import { factPackRoutes } from "./routes/factPacks.js";
 
 /**
  * Build the Fastify application instance with all plugins and routes.
@@ -60,6 +61,7 @@ export async function buildApp() {
   await fastify.register(savesRoutes, { prefix: "/api/saves" });
   await fastify.register(leaderboardRoutes, { prefix: "/api/leaderboards" });
   await fastify.register(factsRoutes, { prefix: "/api/facts" });
+  await fastify.register(factPackRoutes, { prefix: "/api/facts/packs" });
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
