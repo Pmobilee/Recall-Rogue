@@ -457,19 +457,26 @@
 
   // Quiz actions
   function handleQuizAnswer(correct: boolean): void {
-    if (quizMode === 'gate') {
-      getGM()?.handleQuizAnswer(correct)
-    } else if (quizMode === 'oxygen') {
-      getGM()?.handleOxygenQuizAnswer(correct)
-    } else if (quizMode === 'artifact') {
-      getGM()?.handleArtifactQuizAnswer(correct)
-    } else if (quizMode === 'random') {
-      getGM()?.handleRandomQuizAnswer(correct)
-    } else if (quizMode === 'layer') {
-      getGM()?.handleLayerQuizAnswer(correct)
-    } else {
-      getGM()?.handleStudyAnswer(correct)
+    const gm = getGM()
+    console.warn('[App] handleQuizAnswer called, correct:', correct, 'quizMode:', quizMode, 'gm:', gm ? 'exists' : 'NULL')
+    if (!gm) {
+      console.error('[App] getGM() returned null! Quiz answer will be silently dropped.')
+      return
     }
+    if (quizMode === 'gate') {
+      gm.handleQuizAnswer(correct)
+    } else if (quizMode === 'oxygen') {
+      gm.handleOxygenQuizAnswer(correct)
+    } else if (quizMode === 'artifact') {
+      gm.handleArtifactQuizAnswer(correct)
+    } else if (quizMode === 'random') {
+      gm.handleRandomQuizAnswer(correct)
+    } else if (quizMode === 'layer') {
+      gm.handleLayerQuizAnswer(correct)
+    } else {
+      gm.handleStudyAnswer(correct)
+    }
+    console.warn('[App] handleQuizAnswer complete')
   }
 
   function handleQuizClose(): void {

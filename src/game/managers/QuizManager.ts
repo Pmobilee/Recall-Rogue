@@ -231,17 +231,34 @@ export class QuizManager {
 
   /** Resume mining after a quiz gate answer */
   resumeQuiz(passed: boolean): void {
-    activeQuiz.set(null)
+    console.warn('[QM] resumeQuiz called, passed:', passed)
+    try {
+      activeQuiz.set(null)
+      console.warn('[QM] activeQuiz cleared')
 
-    const scene = this.getMineScene()
-    if (scene) {
-      const coords = this.pendingGateCoords
-      this.pendingGateCoords = null
-      scene.resumeFromQuiz(passed, coords?.x, coords?.y)
-      currentScreen.set('mining')
-    } else {
-      this.pendingGateCoords = null
-      currentScreen.set('base')
+      const scene = this.getMineScene()
+      console.warn('[QM] getMineScene result:', scene ? 'exists' : 'NULL')
+      if (scene) {
+        const coords = this.pendingGateCoords
+        this.pendingGateCoords = null
+        console.warn('[QM] calling resumeFromQuiz...')
+        scene.resumeFromQuiz(passed, coords?.x, coords?.y)
+        console.warn('[QM] resume complete, currentScreen check:', get(currentScreen))
+        // Only navigate back to mining if the dive hasn't ended during resume
+        // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
+        if (get(currentScreen) !== 'diveResults') {
+          console.warn('[QM] setting currentScreen to mining')
+          currentScreen.set('mining')
+        } else {
+          console.warn('[QM] NOT setting mining — dive ended during resume')
+        }
+      } else {
+        this.pendingGateCoords = null
+        console.warn('[QM] scene is null, setting base')
+        currentScreen.set('base')
+      }
+    } catch (error) {
+      console.error('[QM] ERROR in resumeQuiz:', error)
     }
   }
 
@@ -251,114 +268,191 @@ export class QuizManager {
 
   /** Handle a quiz answer during mining (gate mode) */
   handleQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      this.trackQuizAnswered(quiz, correct)
-      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
+    console.warn('[QM] handleQuizAnswer called, correct:', correct)
+    try {
+      const quiz = get(activeQuiz)
+      console.warn('[QM] activeQuiz exists:', !!quiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
+          this.applyConsistencyPenalty(quiz.fact.id)
+        }
       }
+      this.resumeQuiz(correct)
+    } catch (error) {
+      console.error('[QM] ERROR in handleQuizAnswer:', error)
     }
-    this.resumeQuiz(correct)
   }
 
   /** Handle an oxygen quiz answer */
   handleOxygenQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      this.trackQuizAnswered(quiz, correct)
-      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
+    console.warn('[QM] handleOxygenQuizAnswer called, correct:', correct)
+    try {
+      const quiz = get(activeQuiz)
+      console.warn('[QM] activeQuiz exists:', !!quiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
+          this.applyConsistencyPenalty(quiz.fact.id)
+        }
       }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromOxygenQuiz(correct)
-      currentScreen.set('mining')
-    } else {
-      currentScreen.set('base')
+      activeQuiz.set(null)
+      console.warn('[QM] activeQuiz cleared')
+      const scene = this.getMineScene()
+      console.warn('[QM] getMineScene result:', scene ? 'exists' : 'NULL')
+      if (scene) {
+        console.warn('[QM] calling resumeFromOxygenQuiz...')
+        scene.resumeFromOxygenQuiz(correct)
+        console.warn('[QM] resume complete, currentScreen check:', get(currentScreen))
+        // Only navigate back to mining if the dive hasn't ended during resume
+        // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
+        if (get(currentScreen) !== 'diveResults') {
+          console.warn('[QM] setting currentScreen to mining')
+          currentScreen.set('mining')
+        } else {
+          console.warn('[QM] NOT setting mining — dive ended during resume')
+        }
+      } else {
+        console.warn('[QM] scene is null, setting base')
+        currentScreen.set('base')
+      }
+    } catch (error) {
+      console.error('[QM] ERROR in handleOxygenQuizAnswer:', error)
     }
   }
 
   /** Handle an artifact quiz answer */
   handleArtifactQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      this.trackQuizAnswered(quiz, correct)
-      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
-    }
-    // Check if more questions remain by inspecting gateProgress
-    const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      // resumeFromArtifactQuiz will emit another 'artifact-quiz' event if questions remain
-      scene.resumeFromArtifactQuiz(correct)
-      if (!moreQuestionsRemain || !correct) {
-        // Quiz flow is ending — return to mining
-        currentScreen.set('mining')
-        if (!correct) {
-          gaiaMessage.set("Close enough. Let's see what we've got.")
-        }
-        // If all questions were answered correctly the scene will have emitted artifact-found
-        // with a potentially boosted rarity — show a boost message if warranted
+    console.warn('[QM] handleArtifactQuizAnswer called, correct:', correct)
+    try {
+      const quiz = get(activeQuiz)
+      console.warn('[QM] activeQuiz exists:', !!quiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       }
-      // If moreQuestionsRemain && correct: the scene emitted another 'artifact-quiz',
-      // which updates activeQuiz and keeps currentScreen on 'quiz' via that listener
-    } else {
-      currentScreen.set('base')
+      // Check if more questions remain by inspecting gateProgress
+      const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
+      activeQuiz.set(null)
+      console.warn('[QM] activeQuiz cleared')
+      const scene = this.getMineScene()
+      console.warn('[QM] getMineScene result:', scene ? 'exists' : 'NULL')
+      if (scene) {
+        // resumeFromArtifactQuiz will emit another 'artifact-quiz' event if questions remain
+        console.warn('[QM] calling resumeFromArtifactQuiz...')
+        scene.resumeFromArtifactQuiz(correct)
+        console.warn('[QM] resume complete, currentScreen check:', get(currentScreen))
+        if (!moreQuestionsRemain || !correct) {
+          // Quiz flow is ending — return to mining if the dive hasn't ended during resume
+          // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
+          if (get(currentScreen) !== 'diveResults') {
+            console.warn('[QM] setting currentScreen to mining')
+            currentScreen.set('mining')
+            if (!correct) {
+              gaiaMessage.set("Close enough. Let's see what we've got.")
+            }
+          } else {
+            console.warn('[QM] NOT setting mining — dive ended during resume')
+          }
+          // If all questions were answered correctly the scene will have emitted artifact-found
+          // with a potentially boosted rarity — show a boost message if warranted
+        }
+        // If moreQuestionsRemain && correct: the scene emitted another 'artifact-quiz',
+        // which updates activeQuiz and keeps currentScreen on 'quiz' via that listener
+      } else {
+        console.warn('[QM] scene is null, setting base')
+        currentScreen.set('base')
+      }
+    } catch (error) {
+      console.error('[QM] ERROR in handleArtifactQuizAnswer:', error)
     }
   }
 
   /** Handle a random (pop quiz) answer while mining */
   handleRandomQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      this.trackQuizAnswered(quiz, correct)
-      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
+    console.warn('[QM] handleRandomQuizAnswer called, correct:', correct)
+    try {
+      const quiz = get(activeQuiz)
+      console.warn('[QM] activeQuiz exists:', !!quiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
+          this.applyConsistencyPenalty(quiz.fact.id)
+        }
       }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      scene.resumeFromRandomQuiz(correct)
-      currentScreen.set('mining')
-      if (correct) {
-        gaiaMessage.set(`Nailed it! Dust deposit unlocked.`)
+      activeQuiz.set(null)
+      console.warn('[QM] activeQuiz cleared')
+      const scene = this.getMineScene()
+      console.warn('[QM] getMineScene result:', scene ? 'exists' : 'NULL')
+      if (scene) {
+        console.warn('[QM] calling resumeFromRandomQuiz...')
+        scene.resumeFromRandomQuiz(correct)
+        console.warn('[QM] resume complete, currentScreen check:', get(currentScreen))
+        // Only navigate back to mining if the dive hasn't ended during resume
+        // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
+        if (get(currentScreen) !== 'diveResults') {
+          console.warn('[QM] setting currentScreen to mining')
+          currentScreen.set('mining')
+          if (correct) {
+            gaiaMessage.set(`Nailed it! Dust deposit unlocked.`)
+          } else {
+            gaiaMessage.set("Not quite. Some O2 vented in the confusion.")
+          }
+        } else {
+          console.warn('[QM] NOT setting mining — dive ended during resume')
+        }
       } else {
-        gaiaMessage.set("Not quite. Some O2 vented in the confusion.")
+        console.warn('[QM] scene is null, setting base')
+        currentScreen.set('base')
       }
-    } else {
-      currentScreen.set('base')
+    } catch (error) {
+      console.error('[QM] ERROR in handleRandomQuizAnswer:', error)
     }
   }
 
   /** Handle a layer entrance quiz answer */
   handleLayerQuizAnswer(correct: boolean): void {
-    const quiz = get(activeQuiz)
-    if (quiz) {
-      this.trackQuizAnswered(quiz, correct)
-      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
-      if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
-        this.applyConsistencyPenalty(quiz.fact.id)
+    console.warn('[QM] handleLayerQuizAnswer called, correct:', correct)
+    try {
+      const quiz = get(activeQuiz)
+      console.warn('[QM] activeQuiz exists:', !!quiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
+          this.applyConsistencyPenalty(quiz.fact.id)
+        }
       }
-    }
-    activeQuiz.set(null)
-    const scene = this.getMineScene()
-    if (scene) {
-      if (correct) {
-        gaiaMessage.set("Locked in. Descending...")
+      activeQuiz.set(null)
+      console.warn('[QM] activeQuiz cleared')
+      const scene = this.getMineScene()
+      console.warn('[QM] getMineScene result:', scene ? 'exists' : 'NULL')
+      if (scene) {
+        console.warn('[QM] calling resumeFromLayerQuiz...')
+        scene.resumeFromLayerQuiz(correct)
+        console.warn('[QM] resume complete, currentScreen check:', get(currentScreen))
+        // Only navigate back to mining if the dive hasn't ended during resume
+        // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
+        if (get(currentScreen) !== 'diveResults') {
+          if (correct) {
+            gaiaMessage.set("Locked in. Descending...")
+          } else {
+            gaiaMessage.set("Not quite, but you'll manage. Descending...")
+          }
+          console.warn('[QM] setting currentScreen to mining')
+          currentScreen.set('mining')
+        } else {
+          console.warn('[QM] NOT setting mining — dive ended during resume')
+        }
       } else {
-        gaiaMessage.set("Not quite, but you'll manage. Descending...")
+        console.warn('[QM] scene is null, setting base')
+        currentScreen.set('base')
       }
-      scene.resumeFromLayerQuiz(correct)
-      currentScreen.set('mining')
-    } else {
-      currentScreen.set('base')
+    } catch (error) {
+      console.error('[QM] ERROR in handleLayerQuizAnswer:', error)
     }
   }
 }
