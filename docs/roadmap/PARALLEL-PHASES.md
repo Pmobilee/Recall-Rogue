@@ -302,3 +302,52 @@ Given the current state (all V2 phases complete, no V3 phases started):
 - Phase 48 → needs 36 + 47
 - Phase 49 → needs 35
 - Phase 50 → needs 32 + 41 + 44
+
+---
+
+## Execution Checklist — STRICTLY SEQUENTIAL
+
+### CRITICAL RULE: ONE PHASE AT A TIME
+
+**NEVER launch parallel agents for different phases.** Token budget resets every 4 hours.
+Parallel agents burn through the budget in minutes and halt all progress.
+
+**Workflow for each phase:**
+1. Read the phase doc from `docs/roadmap/phases/`
+2. Launch ONE Sonnet agent to implement it (foreground, not background)
+3. Verify: `npm run typecheck` and/or `npm run build`
+4. Commit and push
+5. Check off below and in PROGRESS.md, move doc to `completed/`
+6. ONLY THEN proceed to the next phase
+
+**After every compaction**: Read this checklist to find the next unchecked phase. Do NOT skip ahead or parallelize.
+
+### Numbered execution order (1-25)
+
+| # | Wave | Phase | Name | Status |
+|---|------|-------|------|--------|
+| 1 | W1 | **26** | Production Backend Integration | [ ] |
+| 2 | W1 | **27** | Test Suite & CI/CD | [ ] |
+| 3 | W1 | **32** | Fact Content Scaling | [ ] |
+| 4 | W1 | **39** | Web Platform Excellence | [ ] |
+| 5 | W1 | **40** | Internationalization | [ ] |
+| 6 | W1 | **47** | Achievement Gallery | [ ] |
+| 7 | W2 | **38** | iOS Launch | [ ] |
+| 8 | W2 | **31** | Gacha & Reveal Polish | [ ] |
+| 9 | W2 | **29** | Character Animation | [ ] |
+| 10 | W2 | **33** | Biome Visual Diversity | [ ] |
+| 11 | W2 | **37** | Advanced Pet System | [ ] |
+| 12 | W3 | **41** | Analytics & Experiments | [ ] |
+| 13 | W3 | **45** | Kid Mode & Parental Controls | [ ] |
+| 14 | W3 | **34** | Pixel Art Per Fact | [ ] |
+| 15 | W3 | **43** | Cooperative Dives | [ ] |
+| 16 | W3 | **30** | Mining Juice | [ ] |
+| 17 | W3 | **35** | Mine Mechanics | [ ] |
+| 18 | W4 | **42** | Viral Growth | [ ] |
+| 19 | W4 | **49** | Advanced Mine Gen | [ ] |
+| 20 | W4 | **36** | Combat System | [ ] |
+| 21 | W5 | **44** | Teacher Dashboard | [ ] |
+| 22 | W5 | **48** | Prestige & Endgame | [ ] |
+| 23 | W5 | **28** | Performance & Optimization | [ ] |
+| 24 | W6 | **46** | Learning Effectiveness Research | [ ] |
+| 25 | W6 | **50** | Open Content Ecosystem | [ ] |
