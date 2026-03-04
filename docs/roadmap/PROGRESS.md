@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-20 complete. Phase 19 (Auth & Cloud) implemented: login/register UI, JWT auth with refresh tokens, cloud save sync, offline queue, service worker, sync indicator, error boundary. Phase 20 (Mobile Launch) implemented: Capacitor back button handler, splash screen manual hide, PWA manifest, desktop/tablet responsive CSS, keyboard shortcuts (Escape, 1-4 for quiz, F for flare), RarityBadge with colorblind-safe shapes, accessibility CSS (high-contrast quiz, reduced motion, scalable text, focus indicators), accessibility settings, ARIA labels on quiz/HUD, PwaInstallPrompt component, store listing text, Docker multi-stage build, bundle code splitting, error reporting service, offline feature tiers, CDN strategy, soft-launch tracker. V2 roadmap Phases 21-25 remaining.
+Phases 0-19 complete. Phase 19 (Auth & Cloud) fully implemented: auth UI (login/register/forgot/profile), age gate, cloud sync with offline queue and leaderboard category fix, production infrastructure (Docker Compose, PostgreSQL readiness, rate limiting, password reset), offline-first fact packs with service worker, legal compliance (privacy policy, terms of service, COPPA age gate, GDPR deletion), multiple player profiles (up to 4), analytics infrastructure (10 events, batched queue, server ingestion), plus advanced sub-phases (save sub-documents, IndexedDB stub, field-level sync merge, token security, save durability, anti-cheat, CSP, ES256 JWT stub, GDPR erasure service). V2 roadmap (Phases 20-25) remaining.
 
 ---
 
@@ -62,7 +62,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Infrastructure & Launch (Phases 19-20)
 - [x] **Phase 19: Auth & Cloud** — Auth UI, cloud sync, PostgreSQL, Docker, offline mode, legal, profiles, analytics → [`completed/PHASE-19-AUTH-CLOUD.md`](completed/PHASE-19-AUTH-CLOUD.md)
-- [x] **Phase 20: Mobile Launch** — Capacitor builds, store submission, ASO, soft launch, accessibility, web platform → [`completed/PHASE-20-MOBILE-LAUNCH.md`](completed/PHASE-20-MOBILE-LAUNCH.md)
+- [ ] **Phase 20: Mobile Launch** — Capacitor builds, store submission, ASO, soft launch, accessibility, web platform → [`phases/PHASE-20-MOBILE-LAUNCH.md`](phases/PHASE-20-MOBILE-LAUNCH.md)
 
 ### Monetization & Social (Phases 21-22)
 - [ ] **Phase 21: Monetization** — Terra Pass, IAP, O2 regen, season pass, Pioneer Pack, economy rebalance → [`phases/PHASE-21-MONETIZATION.md`](phases/PHASE-21-MONETIZATION.md)
