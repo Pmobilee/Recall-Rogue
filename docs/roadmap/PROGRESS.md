@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-21 complete. Phase 21 (Monetization) fully implemented: oxygen regen service (90min/tank, max 3 free, unlimited subscriber), IAP catalog (3 subscriptions, 2 one-time, 8 cosmetics), Pioneer Pack (7-day limited $4.99), Terra Pass modal with content volume gate (522/3000 facts), Season Pass system (8 free + 8 premium milestones), ad-free policy with feature flags, milestone cosmetics (4 free), economy rebalance (removed mineral decay, added dome maintenance + spending bonus), analytics events (13 monetization + 5 learning metrics), A/B testing framework, mastery-free monitoring, retention dashboard (D1/D7/D30), patron tiers (Expedition + Grand), server routes (subscriptions, IAP, season pass, patrons, admin). V2 roadmap Phases 22-25 remaining.
+Phases 0-22 complete. Phase 22 (Social & Multiplayer) fully implemented: hub visiting with guestbook and gifts, 6-category leaderboards with daily refresh and anti-cheat plausibility checks, async knowledge duels with speed scoring and wagers, artifact card marketplace with trading and duplicate mixing, guild system with weekly challenges and GKP progression, referral system with fossil egg rewards and anti-abuse, admin social health dashboard, privacy settings (hub private, leaderboard opt-out). V2 roadmap Phases 23-25 remaining.
 
 ---
 
@@ -66,7 +66,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Monetization & Social (Phases 21-22)
 - [x] **Phase 21: Monetization** — Terra Pass, IAP, O2 regen, season pass, Pioneer Pack, economy rebalance → [`completed/PHASE-21-MONETIZATION.md`](completed/PHASE-21-MONETIZATION.md)
-- [ ] **Phase 22: Social & Multiplayer** — Hub visiting, leaderboards, duels, trading, guilds, referrals → [`phases/PHASE-22-SOCIAL-MULTIPLAYER.md`](phases/PHASE-22-SOCIAL-MULTIPLAYER.md)
+- [x] **Phase 22: Social & Multiplayer** — Hub visiting, leaderboards, duels, trading, guilds, referrals → [`completed/PHASE-22-SOCIAL-MULTIPLAYER.md`](completed/PHASE-22-SOCIAL-MULTIPLAYER.md)
 
 ### Post-Launch (Phases 23-25)
 - [ ] **Phase 23: Live Ops & Seasons** — Seasonal events, content cadence, UGC, push notifications, completionist endgame → [`phases/PHASE-23-LIVE-OPS-SEASONS.md`](phases/PHASE-23-LIVE-OPS-SEASONS.md)

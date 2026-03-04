@@ -265,6 +265,138 @@ export interface FarmState {
 }
 
 // ============================================================
+// SOCIAL TYPES — Phase 22
+// ============================================================
+
+/** Hub snapshot for visiting another player's dome */
+export interface HubSnapshot {
+  playerId: string;
+  displayName: string;
+  playerLevel: number;
+  patronBadge: string | null;
+  pioneerBadge: boolean;
+  joinDate: string;
+  dome: {
+    wallpaper: string;
+    unlockedRooms: string[];
+    decorations: { objectKey: string; x: number; y: number }[];
+    petDisplayed: { species: string; stage: number } | null;
+  };
+  knowledgeTree: {
+    totalFacts: number;
+    masteredFacts: number;
+    categoryBreakdown: Record<string, { total: number; mastered: number }>;
+    topBranch: string;
+    completionPercent: number;
+  };
+  zoo: { revived: string[]; totalCount: number; rarest: string };
+  farm: { animalCount: number; activeSpecies: string[] };
+  gallery: { achievements: string[] };
+  guestbook: GuestbookEntry[];
+  visitCount: number;
+  lastActive: string;
+}
+
+/** A single entry in a player's dome guestbook */
+export interface GuestbookEntry {
+  id: string;
+  authorId: string;
+  authorDisplayName: string;
+  message: string;
+  createdAt: number;
+}
+
+/** Record of a gift sent between players */
+export interface GiftRecord {
+  id: string;
+  senderId: string;
+  senderName: string;
+  giftType: 'minerals' | 'fact_link';
+  payload: { amount?: number; factId?: string; factPreview?: string };
+  sentAt: number;
+  claimed: boolean;
+}
+
+/** Aggregate duel performance stats for a player */
+export interface DuelStats {
+  wins: number;
+  losses: number;
+  ties: number;
+  totalDuels: number;
+  totalDustWon: number;
+  totalDustLost: number;
+  currentWinStreak: number;
+  longestWinStreak: number;
+}
+
+/** A single asynchronous knowledge duel record */
+export interface DuelRecord {
+  id: string;
+  opponentId: string;
+  opponentName: string;
+  status: 'pending' | 'challenger_done' | 'opponent_done' | 'completed' | 'timed_out' | 'declined';
+  wagerDust: number;
+  myScore?: number;
+  opponentScore?: number;
+  createdAt: number;
+  expiresAt: number;
+}
+
+/** A tradeable artifact card instance in a player's inventory */
+export interface ArtifactCard {
+  instanceId: string;
+  factId: string;
+  rarity: string;
+  discoveredAt: number;
+  isSoulbound: boolean;
+  isListed: boolean;
+  listPrice?: number;
+}
+
+/** A peer-to-peer artifact card trade offer */
+export interface TradeOffer {
+  id: string;
+  offererId: string;
+  receiverId: string;
+  offeredCardInstanceId: string;
+  requestedCardInstanceId: string;
+  additionalDust: number;
+  status: 'pending' | 'accepted' | 'declined' | 'expired';
+  expiresAt: number;
+}
+
+/** Summarised guild membership info stored in a player's save */
+export interface GuildInfo {
+  id: string;
+  name: string;
+  tag: string;
+  emblemId: number;
+  rank: number;
+  gkp: number;
+  memberCount: number;
+  isOpen: boolean;
+  description: string;
+}
+
+/** A guild's weekly collaborative challenge */
+export interface GuildChallenge {
+  id: string;
+  challengeType: string;
+  target: number;
+  progress: number;
+  isCompleted: boolean;
+  weekStart: number;
+}
+
+/** Record of a referral invitation and its reward status */
+export interface ReferralRecord {
+  inviteeId: string;
+  inviteeName: string;
+  status: 'pending' | 'dive_reward_sent' | 'streak_reward_sent' | 'completed' | 'flagged';
+  createdAt: number;
+}
+
+// ============================================================
 // PLAYER / SAVE STATE
 // ============================================================
 
@@ -392,6 +524,65 @@ export interface PlayerSave {
   weeklyChallenge?: { weekStartIso: string; stats: Record<string, number> }
   /** Consumable items (bomb, flare, shield, etc.) */
   consumables?: Record<string, number>
+  // Phase 21: Monetization
+  /** Unix timestamp of last oxygen regen calculation */
+  lastRegenAt?: number
+  /** Current number of oxygen tanks banked */
+  tankBank?: number
+  /** Fractional tank credit from mastery bonuses */
+  tankCredit?: number
+  /** Unix timestamp of account creation (for Pioneer Pack 7-day window) */
+  installDate?: number
+  /** Whether player has purchased the Pioneer Pack */
+  hasPioneerPack?: boolean
+  /** Whether Pioneer Pack modal was dismissed */
+  pioneerPackDismissed?: boolean
+  /** List of IAP product IDs the player has purchased */
+  purchasedProducts?: string[]
+  /** Active subscription record */
+  subscription?: { type: string; expiresAt: string; source: 'apple' | 'google' | 'web' }
+  /** Season pass progress */
+  seasonPassProgress?: { seasonId: string; points: number; claimedFree: number[]; claimedPremium: number[]; hasPremium: boolean }
+  /** Dust spent this calendar week (resets Monday 00:00 UTC) */
+  weeklyDustSpent?: number
+  /** ISO date of last weekly maintenance charge */
+  lastMaintenanceDate?: string
+  /** Whether spending bonus (+10% yield) is active this week */
+  spendingBonusActive?: boolean
+  /** Patron tier level */
+  patronTier?: 'expedition' | 'grand'
+  /** Patron badge text for leaderboards */
+  patronBadge?: string | null
+  /** Data Disc Radar remaining charges */
+  dataDiscRadarCharges?: number
+
+  // Social — Phase 22
+  /** Whether the player's dome hub is hidden from public visits. */
+  hubPrivate?: boolean
+  /** Messages left by visitors in this player's dome guestbook. */
+  guestbook?: GuestbookEntry[]
+  /** Gifts received from other players, pending or already claimed. */
+  receivedGifts?: GiftRecord[]
+  /** Total number of times other players have visited this dome. */
+  visitCount?: number
+  /** Whether the player has opted out of all leaderboard appearances. */
+  leaderboardOptOut?: boolean
+  /** ID of the guild the player currently belongs to. */
+  guildId?: string
+  /** Player's role within their guild. */
+  guildRole?: 'leader' | 'officer' | 'member'
+  /** Aggregate knowledge-duel win/loss statistics. */
+  duelStats?: DuelStats
+  /** Active or recently resolved duel records. */
+  pendingDuels?: DuelRecord[]
+  /** Artifact card instances in the player's social inventory. */
+  inventoryArtifacts?: ArtifactCard[]
+  /** Unique referral code this player can share with friends. */
+  referralCode?: string
+  /** Referral code used when this player registered, if any. */
+  referredBy?: string
+  /** Total number of referral reward grants this player has received. */
+  referralRewardsEarned?: number
 }
 
 /** Player statistics */

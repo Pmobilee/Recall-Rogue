@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { playerSave } from '../stores/playerData'
+  import { playerSave, persistPlayer } from '../stores/playerData'
   import { deleteSave } from '../../services/saveService'
   import {
     spriteResolution,
@@ -92,6 +92,22 @@
             ? 'Talkative'
             : 'Non-stop',
   )
+
+  // Privacy settings derived values
+  const hubPrivate = $derived($playerSave?.hubPrivate ?? false)
+  const leaderboardOptOut = $derived($playerSave?.leaderboardOptOut ?? false)
+
+  /** Toggle whether the player's hub is private. */
+  function handleHubPrivateToggle(): void {
+    playerSave.update(s => s ? { ...s, hubPrivate: !s.hubPrivate } : s)
+    persistPlayer()
+  }
+
+  /** Toggle whether the player is hidden from leaderboards. */
+  function handleLeaderboardOptOutToggle(): void {
+    playerSave.update(s => s ? { ...s, leaderboardOptOut: !s.leaderboardOptOut } : s)
+    persistPlayer()
+  }
 </script>
 
 <div class="settings-page" aria-label="Settings">
@@ -301,6 +317,40 @@
             class="setting-checkbox"
             bind:checked={$reducedMotion}
             aria-label="Reduced motion mode"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRIVACY SETTINGS ===== -->
+    <section class="settings-section" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading" class="section-heading">Privacy</h2>
+
+      <div class="settings-card">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Hub Private</span>
+            <span class="setting-desc">Hide your dome from other players' visits</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            checked={hubPrivate}
+            onchange={handleHubPrivateToggle}
+            aria-label="Hub private — hide dome from visitors"
+          />
+        </div>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Hide from Leaderboards</span>
+            <span class="setting-desc">Your scores won't appear in public rankings</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            checked={leaderboardOptOut}
+            onchange={handleLeaderboardOptOutToggle}
+            aria-label="Hide from leaderboards"
           />
         </div>
       </div>

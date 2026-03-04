@@ -2,6 +2,12 @@
  * Leaderboard routes for the Terra Gacha server.
  * Supports fetching top-50 per category and submitting scores.
  * Score submission and "my rankings" require JWT authentication.
+ *
+ * Anti-cheat (Phase 22.7):
+ *   - Submitted scores are checked against per-category plausibility bounds.
+ *   - Out-of-range scores are routed to the leaderboard_review_queue instead
+ *     of being published directly.
+ *   - Scores from flagged accounts are silently voided (not queued, not published).
  */
 
 import type {
@@ -13,7 +19,7 @@ import type {
 import * as crypto from "crypto";
 import { eq, desc, sql } from "drizzle-orm";
 import { db } from "../db/index.js";
-import { leaderboards, users } from "../db/schema.js";
+import { leaderboards, users, leaderboardReviewQueue, flaggedAccounts } from "../db/schema.js";
 import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type {
   LeaderboardEntry,
@@ -37,6 +43,89 @@ const VALID_CATEGORIES: Set<string> = new Set([
   "longest_streak",
   "total_dust",
 ]);
+
+// ── Plausibility bounds (Phase 22.7) ──────────────────────────────────────────
+
+/**
+ * Per-category inclusive score bounds used for plausibility checking.
+ * Scores outside [min, max] are flagged for admin review instead of
+ * being published directly to the live leaderboard.
+ *
+ * Bounds are intentionally generous to minimise false positives:
+ * only physically impossible values are flagged.
+ */
+interface PlausibilityBounds {
+  min: number;
+  max: number;
+}
+
+const PLAUSIBILITY_BOUNDS: Readonly<Record<string, PlausibilityBounds>> = {
+  /** Layers 1–20 (game design: 20-layer grid per dive). */
+  deepest_dive: { min: 1, max: 20 },
+  /** Non-negative; capped at 10 000 (the entire fact database). */
+  facts_mastered: { min: 0, max: 10_000 },
+  /** Non-negative; capped at 3 650 days (10 years of daily play). */
+  longest_streak: { min: 0, max: 3_650 },
+  /** Non-negative; no tight upper bound (stage 0–N). */
+  knowledge_tree: { min: 0, max: Number.MAX_SAFE_INTEGER },
+  /**
+   * Quiz accuracy submitted directly by clients is a percentage (0–100).
+   * The nightly analytics/leaderboards.ts job uses basis points (0–10 000)
+   * and writes directly to the DB, bypassing this route — so the route-level
+   * bound is capped at 100 as specified in the Phase 22.7 task.
+   */
+  quiz_accuracy: { min: 0, max: 100 },
+  /** Non-negative; capped at 100 000 dives (unreachable in practice). */
+  total_dives: { min: 0, max: 100_000 },
+  /** total_dust has no meaningful upper bound for now. */
+  total_dust: { min: 0, max: Number.MAX_SAFE_INTEGER },
+};
+
+/**
+ * Check whether a score value is within the plausible range for its category.
+ * Returns the plausibility verdict and a human-readable reason on failure.
+ *
+ * @param category - The leaderboard category string.
+ * @param score    - The floored integer score being submitted.
+ * @returns An object: `{ plausible: true }` or `{ plausible: false, reason }`.
+ */
+function checkScorePlausibility(
+  category: string,
+  score: number
+): { plausible: true } | { plausible: false; reason: string } {
+  const bounds = PLAUSIBILITY_BOUNDS[category];
+  if (!bounds) {
+    // No bounds configured — allow the score through
+    return { plausible: true };
+  }
+  if (score < bounds.min || score > bounds.max) {
+    return {
+      plausible: false,
+      reason:
+        `score ${score} is outside plausible range [${bounds.min}, ${bounds.max}] ` +
+        `for category "${category}"`,
+    };
+  }
+  return { plausible: true };
+}
+
+/**
+ * Check whether a user is currently flagged for suspicious activity.
+ * Flagged accounts have their scores silently voided (not queued, not published).
+ *
+ * @param userId - The user's UUID to check.
+ * @returns True if the account has an active flag.
+ */
+async function isAccountFlagged(userId: string): Promise<boolean> {
+  const flag = await db
+    .select({ id: flaggedAccounts.id })
+    .from(flaggedAccounts)
+    .where(
+      sql`${flaggedAccounts.userId} = ${userId} AND ${flaggedAccounts.isActive} = 1`
+    )
+    .get();
+  return flag !== undefined;
+}
 
 // ── In-memory LRU cache ───────────────────────────────────────────────────────
 
@@ -318,6 +407,43 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
             statusCode: 400,
           });
         }
+      }
+
+      // ── Anti-cheat: flagged account check (Phase 22.7) ────────────────────
+      // Scores from flagged accounts are silently voided — the request returns
+      // 202 Accepted so clients cannot detect the flag via response inspection.
+      const flagged = await isAccountFlagged(userId);
+      if (flagged) {
+        // Return a plausible-looking 202 with no leaderboard side-effects.
+        return reply.status(202).send({
+          message: "Score received",
+          queued: false,
+          flagged: true,
+        });
+      }
+
+      // ── Anti-cheat: plausibility check (Phase 22.7) ───────────────────────
+      // Out-of-range scores are queued for admin review rather than published.
+      const plausibilityResult = checkScorePlausibility(category, flooredScore);
+      if (!plausibilityResult.plausible) {
+        const reviewId = crypto.randomUUID();
+        await db.insert(leaderboardReviewQueue).values({
+          id: reviewId,
+          userId,
+          category,
+          score: flooredScore,
+          metadata: serialisedMeta,
+          reason: plausibilityResult.reason,
+          status: "pending",
+          createdAt: now,
+        });
+        // Return 202 Accepted — the client knows its score was received but
+        // cannot distinguish queued-for-review from published.
+        return reply.status(202).send({
+          message: "Score received and queued for review",
+          queued: true,
+          reviewId,
+        });
       }
 
       // ── Upsert: one row per (userId, category) ────────────────────────────

@@ -4,6 +4,11 @@
   import { audioManager } from '../../../services/audioService'
   import { DATA_DISCS } from '../../../data/dataDiscs'
   import type { Fact } from '../../../data/types'
+  import LeaderboardView from '../LeaderboardView.svelte'
+  import DuelView from '../DuelView.svelte'
+  import TradeMarketView from '../TradeMarketView.svelte'
+  import GuildView from '../GuildView.svelte'
+  import HubVisitorView from '../HubVisitorView.svelte'
 
   interface Props {
     onViewTree?: () => void
@@ -53,6 +58,58 @@
   function handleViewTree(): void {
     audioManager.playSound('button_click')
     onViewTree?.()
+  }
+
+  import { socialService } from '../../../services/socialService'
+  import type { PlayerSearchResult } from '../../../services/socialService'
+
+  // Social overlay state
+  let showVisitFriend = $state(false)
+  let showLeaderboard = $state(false)
+  let showDuels = $state(false)
+  let showMarketplace = $state(false)
+  let showGuilds = $state(false)
+
+  // Friend search state
+  let friendSearchQuery = $state('')
+  let friendSearchResults = $state<PlayerSearchResult[]>([])
+  let friendSearchLoading = $state(false)
+  let friendSearchError = $state('')
+  let selectedFriendId = $state<string | null>(null)
+
+  function handleSocialButton(setter: () => void): void {
+    audioManager.playSound('button_click')
+    setter()
+  }
+
+  async function handleFriendSearch(): Promise<void> {
+    const q = friendSearchQuery.trim()
+    if (q.length < 2) return
+    friendSearchLoading = true
+    friendSearchError = ''
+    friendSearchResults = []
+    try {
+      friendSearchResults = await socialService.searchPlayers(q)
+      if (friendSearchResults.length === 0) {
+        friendSearchError = 'No players found.'
+      }
+    } catch {
+      friendSearchError = 'Search failed. Please try again.'
+    } finally {
+      friendSearchLoading = false
+    }
+  }
+
+  function handleFriendSearchKey(e: KeyboardEvent): void {
+    if (e.key === 'Enter') handleFriendSearch()
+  }
+
+  function closeFriendSearch(): void {
+    showVisitFriend = false
+    friendSearchQuery = ''
+    friendSearchResults = []
+    friendSearchError = ''
+    selectedFriendId = null
   }
 </script>
 
@@ -130,6 +187,137 @@
     </div>
   {/if}
 </div>
+
+<!-- ========== SOCIAL SECTION ========== -->
+<div class="card social-card" aria-label="Social features">
+  <h3 class="social-heading">Social</h3>
+  <div class="social-buttons">
+    <button
+      class="social-btn"
+      data-testid="visit-friend-btn"
+      type="button"
+      onclick={() => handleSocialButton(() => { showVisitFriend = true })}
+    >
+      <span class="social-btn-icon" aria-hidden="true">👥</span>
+      <span class="social-btn-label">Visit a Friend</span>
+      <span class="social-btn-arrow" aria-hidden="true">&#8594;</span>
+    </button>
+    <button
+      class="social-btn"
+      data-testid="leaderboard-open"
+      type="button"
+      onclick={() => handleSocialButton(() => { showLeaderboard = true })}
+    >
+      <span class="social-btn-icon" aria-hidden="true">🏆</span>
+      <span class="social-btn-label">Leaderboards</span>
+      <span class="social-btn-arrow" aria-hidden="true">&#8594;</span>
+    </button>
+    <button
+      class="social-btn"
+      data-testid="duels-open"
+      type="button"
+      onclick={() => handleSocialButton(() => { showDuels = true })}
+    >
+      <span class="social-btn-icon" aria-hidden="true">⚔️</span>
+      <span class="social-btn-label">Knowledge Duels</span>
+      <span class="social-btn-arrow" aria-hidden="true">&#8594;</span>
+    </button>
+    <button
+      class="social-btn"
+      data-testid="marketplace-open"
+      type="button"
+      onclick={() => handleSocialButton(() => { showMarketplace = true })}
+    >
+      <span class="social-btn-icon" aria-hidden="true">🏪</span>
+      <span class="social-btn-label">Fact Trading</span>
+      <span class="social-btn-arrow" aria-hidden="true">&#8594;</span>
+    </button>
+    <button
+      class="social-btn"
+      data-testid="guilds-open"
+      type="button"
+      onclick={() => handleSocialButton(() => { showGuilds = true })}
+    >
+      <span class="social-btn-icon" aria-hidden="true">🛡️</span>
+      <span class="social-btn-label">Guilds</span>
+      <span class="social-btn-arrow" aria-hidden="true">&#8594;</span>
+    </button>
+  </div>
+</div>
+
+<!-- ========== SOCIAL OVERLAYS ========== -->
+
+{#if showLeaderboard}
+  <LeaderboardView onClose={() => { showLeaderboard = false }} />
+{/if}
+
+{#if showDuels}
+  <DuelView onClose={() => { showDuels = false }} />
+{/if}
+
+{#if showMarketplace}
+  <TradeMarketView onClose={() => { showMarketplace = false }} />
+{/if}
+
+{#if showGuilds}
+  <GuildView onClose={() => { showGuilds = false }} />
+{/if}
+
+{#if selectedFriendId}
+  <HubVisitorView playerId={selectedFriendId} onClose={closeFriendSearch} />
+{:else if showVisitFriend}
+  <div class="friend-search-overlay" role="dialog" aria-modal="true" aria-label="Visit a Friend">
+    <div class="friend-search-panel">
+      <div class="friend-search-header">
+        <h3 class="friend-search-title">Visit a Friend</h3>
+        <button
+          class="friend-search-close"
+          type="button"
+          onclick={closeFriendSearch}
+          aria-label="Close"
+        >✕</button>
+      </div>
+      <p class="friend-search-desc">Enter a player's display name to visit their dome.</p>
+      <div class="friend-search-row">
+        <input
+          class="friend-search-input"
+          type="text"
+          placeholder="Player display name…"
+          bind:value={friendSearchQuery}
+          onkeydown={handleFriendSearchKey}
+          aria-label="Friend display name search"
+        />
+        <button
+          class="friend-search-btn"
+          type="button"
+          onclick={handleFriendSearch}
+          disabled={friendSearchLoading || friendSearchQuery.trim().length < 2}
+        >
+          {friendSearchLoading ? '…' : 'Search'}
+        </button>
+      </div>
+      {#if friendSearchError}
+        <p class="friend-search-error">{friendSearchError}</p>
+      {/if}
+      {#if friendSearchResults.length > 0}
+        <ul class="friend-results-list" aria-label="Search results">
+          {#each friendSearchResults as result}
+            <li>
+              <button
+                class="friend-result-btn"
+                type="button"
+                onclick={() => { selectedFriendId = result.id }}
+              >
+                <span class="friend-result-name">{result.displayName}</span>
+                <span class="friend-result-visit" aria-hidden="true">&#8594;</span>
+              </button>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
+  </div>
+{/if}
 
 <style>
   .card {
@@ -346,6 +534,245 @@
   /* Archive knowledge card max-height override */
   :global(.knowledge-card) {
     max-height: 42dvh;
+  }
+
+  /* ---- Social section ---- */
+  .social-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .social-heading {
+    color: #f59e0b;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 4px;
+  }
+
+  .social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    border: 0;
+    border-radius: 10px;
+    background: color-mix(in srgb, #f59e0b 14%, var(--color-surface) 86%);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 0 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+
+  .social-btn:hover {
+    background: color-mix(in srgb, #f59e0b 24%, var(--color-surface) 76%);
+  }
+
+  .social-btn:active {
+    transform: translateY(1px);
+  }
+
+  .social-btn-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .social-btn-label {
+    flex: 1;
+  }
+
+  .social-btn-arrow {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ---- Friend search overlay ---- */
+  .friend-search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .friend-search-panel {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 80dvh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .friend-search-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .friend-search-title {
+    color: #f59e0b;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .friend-search-close {
+    border: 0;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color 0.12s, background 0.12s;
+  }
+
+  .friend-search-close:hover {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-text-dim) 15%, transparent 85%);
+  }
+
+  .friend-search-close:active {
+    transform: scale(0.93);
+  }
+
+  .friend-search-desc {
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .friend-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 35%, transparent 65%);
+    background: color-mix(in srgb, var(--color-bg) 60%, var(--color-surface) 40%);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .friend-search-input:focus {
+    border-color: #f59e0b;
+  }
+
+  .friend-search-input::placeholder {
+    color: var(--color-text-dim);
+    opacity: 0.6;
+  }
+
+  .friend-search-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .friend-search-row .friend-search-input {
+    flex: 1;
+    width: auto;
+  }
+
+  .friend-search-btn {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #f59e0b;
+    color: #1a0e00;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .friend-search-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .friend-search-btn:not(:disabled):active {
+    transform: translateY(1px);
+  }
+
+  .friend-search-error {
+    margin: 0;
+    color: var(--color-accent, #e05);
+    font-size: 0.82rem;
+  }
+
+  .friend-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .friend-result-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: color-mix(in srgb, #f59e0b 12%, var(--color-surface) 88%);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+
+  .friend-result-btn:hover {
+    background: color-mix(in srgb, #f59e0b 22%, var(--color-surface) 78%);
+  }
+
+  .friend-result-btn:active {
+    transform: translateY(1px);
+  }
+
+  .friend-result-name {
+    flex: 1;
+  }
+
+  .friend-result-visit {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
   }
 
   @media (max-width: 520px) {

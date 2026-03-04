@@ -1,5 +1,6 @@
 <script lang="ts">
   import { playerSave, persistPlayer } from '../../stores/playerData'
+  import ReferralModal from '../ReferralModal.svelte'
 
   // Resource icon sprites
   import iconOxygen from '../../../assets/sprites/icons/icon_oxygen.png'
@@ -96,6 +97,13 @@
 
   const fossilsRecord = $derived($playerSave?.fossils ?? {})
   const revivedFossilCount = $derived(Object.values(fossilsRecord).filter(f => f.revived).length)
+
+  // Social — visitor counter and guestbook unread count
+  const visitCount = $derived($playerSave?.visitCount ?? 0)
+  const guestbookEntries = $derived($playerSave?.guestbook ?? [])
+  const unreadGuestbookCount = $derived(guestbookEntries.length)
+
+  let showReferral = $state(false)
 
   function handleToggleInsurance(): void {
     const save = $playerSave
@@ -268,7 +276,21 @@
 </div>
 
 <div class="card stats-card" aria-label="Player statistics">
-  <h2>Stats</h2>
+  <div class="stats-header-row">
+    <h2>Stats</h2>
+    <div class="stats-social-badges" aria-label="Social notifications">
+      {#if visitCount > 0}
+        <span class="visitor-badge" aria-label="{visitCount} visitor{visitCount === 1 ? '' : 's'}">
+          👥 {visitCount} visitor{visitCount === 1 ? '' : 's'}
+        </span>
+      {/if}
+      {#if unreadGuestbookCount > 0}
+        <span class="guestbook-badge" aria-label="{unreadGuestbookCount} guestbook entr{unreadGuestbookCount === 1 ? 'y' : 'ies'}">
+          📖 {unreadGuestbookCount}
+        </span>
+      {/if}
+    </div>
+  </div>
   <div class="stats-grid">
     <span>Total dives: {stats.totalDivesCompleted}</span>
     <span>Blocks mined: {stats.totalBlocksMined}</span>
@@ -278,6 +300,22 @@
     <span>Best streak: {stats.bestStreak}</span>
   </div>
 </div>
+
+<div class="card social-card" aria-label="Social actions">
+  <button
+    class="action-button invite-button"
+    type="button"
+    data-testid="invite-friends-btn"
+    onclick={() => { showReferral = true }}
+  >
+    <span>Invite Friends</span>
+    <span class="invite-icon" aria-hidden="true">👥</span>
+  </button>
+</div>
+
+{#if showReferral}
+  <ReferralModal onClose={() => { showReferral = false }} />
+{/if}
 
 <style>
   .card {
@@ -579,6 +617,74 @@
 
   .insurance-disabled {
     opacity: 0.5;
+  }
+
+  .stats-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .stats-header-row h2 {
+    margin-bottom: 0;
+  }
+
+  .stats-social-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .visitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: color-mix(in srgb, #22aacc 20%, var(--color-surface) 80%);
+    color: #22aacc;
+    border: 1px solid #22aacc44;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .guestbook-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: color-mix(in srgb, #f59e0b 20%, var(--color-surface) 80%);
+    color: #f59e0b;
+    border: 1px solid #f59e0b44;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: guestbook-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes guestbook-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+  }
+
+  .social-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .invite-button {
+    background: color-mix(in srgb, #f59e0b 22%, var(--color-surface) 78%);
+  }
+
+  .invite-icon {
+    font-size: 1.1rem;
   }
 
   .stats-grid {

@@ -16,6 +16,7 @@ import { leaderboardRoutes } from "./routes/leaderboards.js";
 import { factsRoutes } from "./routes/facts.js";
 import { factPackRoutes } from "./routes/factPacks.js";
 import { analyticsRoutes } from "./routes/analytics.js";
+import { adminRoutes } from "./routes/admin.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -148,6 +149,7 @@ export async function buildApp() {
   await fastify.register(factsRoutes, { prefix: "/api/facts" });
   await fastify.register(factPackRoutes, { prefix: "/api/facts/packs" });
   await fastify.register(analyticsRoutes, { prefix: "/api/analytics" });
+  await fastify.register(adminRoutes, { prefix: "/api/admin" });
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {

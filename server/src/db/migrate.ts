@@ -98,6 +98,33 @@ export function initSchema(): void {
     CREATE INDEX IF NOT EXISTS idx_analytics_events_event_name ON analytics_events(event_name);
     CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_user_id ON password_reset_tokens(user_id);
     CREATE INDEX IF NOT EXISTS idx_fact_packs_category ON fact_packs(category);
+
+    CREATE TABLE IF NOT EXISTS leaderboard_review_queue (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      category TEXT NOT NULL,
+      score INTEGER NOT NULL,
+      metadata TEXT,
+      reason TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'pending',
+      created_at INTEGER NOT NULL,
+      reviewed_at INTEGER,
+      review_note TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS flagged_accounts (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
+      reason TEXT NOT NULL,
+      is_active INTEGER NOT NULL DEFAULT 1,
+      created_at INTEGER NOT NULL,
+      cleared_at INTEGER
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_review_queue_status ON leaderboard_review_queue(status);
+    CREATE INDEX IF NOT EXISTS idx_review_queue_user_id ON leaderboard_review_queue(user_id);
+    CREATE INDEX IF NOT EXISTS idx_flagged_accounts_user_id ON flagged_accounts(user_id);
+    CREATE INDEX IF NOT EXISTS idx_flagged_accounts_is_active ON flagged_accounts(is_active);
   `);
   console.log("[db] Schema initialised.");
 }
