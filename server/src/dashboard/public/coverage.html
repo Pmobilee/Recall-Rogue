@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terra Gacha — Fact Coverage Dashboard</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #ccc; padding: 20px; }
+    h1 { color: #0cf; }
+    h2 { color: #fc0; border-bottom: 1px solid #333; padding-bottom: 4px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 24px; }
+    th, td { border: 1px solid #333; padding: 6px 10px; text-align: left; }
+    th { background: #222; color: #0cf; }
+    .pass  { color: #0f0; }
+    .warn  { color: #fc0; }
+    .fail  { color: #f44; }
+    .bar   { display: inline-block; background: #0cf; height: 12px; }
+    .bar-r { display: inline-block; background: #f44; height: 12px; }
+    #progress { font-size: 1.4em; color: #0f0; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Terra Gacha — Fact Coverage Dashboard</h1>
+  <div id="progress">Loading…</div>
+  <div id="content"></div>
+  <script src="coverage.js"></script>
+</body>
+</html>

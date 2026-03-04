@@ -106,6 +106,67 @@ Required output shape:
 Return ONLY the JSON object, no markdown fences, no preamble.`;
 }
 
+/** Input for the 3rd-stage quality gate prompt. */
+export interface QualityGateInput {
+  statement: string;
+  quizQuestion: string;
+  correctAnswer: string;
+  explanation: string;
+  mnemonic: string;
+  ageRating: string;
+  distractors: Array<{ text: string; tier: string }>;
+}
+
+/**
+ * Build the 3rd-stage quality gate prompt.
+ * Uses a cheaper model (claude-haiku) for cost efficiency.
+ *
+ * @param input - Fact fields to evaluate.
+ * @returns A formatted prompt string for the quality gate.
+ */
+export function buildQualityGatePrompt(input: QualityGateInput): string {
+  const distractorList = input.distractors
+    .map((d, i) => `  [${i}] (${d.tier}) ${d.text}`)
+    .join("\n");
+
+  return `You are a quality reviewer for an educational quiz game targeting ages 10+.
+
+Evaluate the following fact entry:
+
+STATEMENT: "${input.statement}"
+QUIZ QUESTION: "${input.quizQuestion}"
+CORRECT ANSWER: "${input.correctAnswer}"
+EXPLANATION: "${input.explanation}"
+MNEMONIC: "${input.mnemonic}"
+AGE RATING: ${input.ageRating}
+
+DISTRACTORS:
+${distractorList}
+
+Score each of the following checks as PASS or FAIL, with a brief reason on failure:
+
+1. FACTUAL_PLAUSIBILITY: Is the statement plausible for a real-world fact? (You are not expected to verify — flag obvious inventions or impossible claims.)
+2. DISTRACTOR_ADEQUACY: Are there at least 3 distractors with confidence > 0.7? Do distractors span all three tiers (easy/medium/hard)?
+3. READABILITY: Is the quiz question grammatically correct and unambiguous for the stated age rating?
+4. ANSWER_CLARITY: Is the correct answer a clean, unambiguous response to the quiz question?
+5. NO_OVERLAP: Does the correct answer appear (verbatim or near-verbatim) in any distractor?
+
+Return ONLY a JSON object:
+{
+  "checks": {
+    "factual_plausibility": { "result": "PASS" | "FAIL", "reason": "<null or brief reason>" },
+    "distractor_adequacy":  { "result": "PASS" | "FAIL", "reason": "<null or brief reason>" },
+    "readability":          { "result": "PASS" | "FAIL", "reason": "<null or brief reason>" },
+    "answer_clarity":       { "result": "PASS" | "FAIL", "reason": "<null or brief reason>" },
+    "no_overlap":           { "result": "PASS" | "FAIL", "reason": "<null or brief reason>" }
+  },
+  "overall": "pass" | "fail" | "needs_edit",
+  "failure_summary": "<null if overall=pass, otherwise 1-2 sentence summary of what needs fixing>"
+}
+
+Return ONLY the JSON, no markdown fences.`;
+}
+
 /**
  * Build a validation prompt that scores each proposed distractor for quality.
  * Used in the second-pass validation step of content generation.

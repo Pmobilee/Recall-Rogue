@@ -10,6 +10,7 @@
 import { factsDb } from "../db/facts-db.js";
 import { initFactsSchema } from "../db/facts-migrate.js";
 import { generateFactContent, persistGeneratedContent } from "../services/contentGen.js";
+import { runQualityGate } from "../services/qualityGate.js";
 import { config } from "../config.js";
 
 const BATCH_SIZE = 50;
@@ -46,10 +47,11 @@ function sleep(ms: number): Promise<void> {
  * Process a batch of pending queue entries.
  * Marks entries as 'processing' before starting, then 'done' or 'failed'
  * after each attempt. Stores raw LLM responses for debugging.
+ * Phase 32.3: runs the 3-stage quality gate after content generation.
  *
  * @returns Number of entries successfully processed.
  */
-async function processBatch(): Promise<number> {
+export async function processBatch(): Promise<number> {
   // Claim up to BATCH_SIZE pending entries
   const entries = factsDb
     .prepare(
@@ -110,6 +112,13 @@ async function processBatch(): Promise<number> {
 
       // Persist the generated content
       persistGeneratedContent(fact.id, content);
+
+      // Pass 3: quality gate (auto-approves on full pass)
+      try {
+        await runQualityGate(fact.id);
+      } catch (err) {
+        console.warn(`[pipeline] Quality gate skipped for ${fact.id}:`, err);
+      }
 
       // Mark queue entry done, store a summary as the raw_llm_response
       const summary = JSON.stringify({

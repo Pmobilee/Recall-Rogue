@@ -202,5 +202,76 @@ export function initFactsSchema(): void {
       ON facts_processing_queue (fact_id);
   `);
 
+  // ── Phase 32.1: New columns on facts ────────────────────────────────────────
+  const newFactColumns: Array<[string, string]> = [
+    // Difficulty tier enum — coarser than difficulty (1-5); used for biome gating
+    // 'novice' | 'explorer' | 'scholar' | 'expert'
+    ["difficulty_tier", "TEXT NOT NULL DEFAULT 'explorer'"],
+
+    // Source quality enum — drives weighting in gap analysis
+    // 'primary' | 'secondary' | 'generated' | 'community'
+    ["source_quality", "TEXT NOT NULL DEFAULT 'generated'"],
+
+    // Source attribution detail — URL may be long, store separately from source_url
+    ["source_doi", "TEXT"],
+
+    // Third-stage review gate result (null = not yet run)
+    // 'pass' | 'fail' | 'needs_edit'
+    ["quality_gate_status", "TEXT"],
+
+    // Composite quality score (0-100) computed after all 3 gate passes
+    ["quality_score", "REAL"],
+
+    // Gate run timestamp (epoch ms) — avoid re-running unnecessarily
+    ["quality_gate_ran_at", "INTEGER"],
+
+    // Gate failure reason — short string for dashboard display
+    ["quality_gate_failure_reason", "TEXT"],
+
+    // Weekly bundle tag — which release bundle this fact belongs to
+    // e.g. '2026-W10', null = not yet bundled
+    ["bundle_tag", "TEXT"],
+
+    // Whether this fact was sourced from a specific seed topic batch
+    ["seed_topic", "TEXT"],
+  ];
+
+  for (const [column, definition] of newFactColumns) {
+    try {
+      factsDb.exec(`ALTER TABLE facts ADD COLUMN ${column} ${definition}`);
+    } catch {
+      // Column already exists — safe to ignore
+    }
+  }
+
+  // ── Phase 32.1: New columns on distractors ───────────────────────────────────
+  const newDistractorColumns: Array<[string, string]> = [
+    // Cosine similarity to the correct answer (0-1); high similarity = bad distractor
+    ["similarity_to_answer", "REAL"],
+
+    // Whether this distractor passed the 3rd-stage gate
+    ["gate_approved", "INTEGER NOT NULL DEFAULT 1"],
+  ];
+
+  for (const [column, definition] of newDistractorColumns) {
+    try {
+      factsDb.exec(`ALTER TABLE distractors ADD COLUMN ${column} ${definition}`);
+    } catch {
+      // Column already exists — safe to ignore
+    }
+  }
+
+  // ── Phase 32.1: Composite indexes for quality gate queries ──────────────────
+  factsDb.exec(`
+    CREATE INDEX IF NOT EXISTS idx_facts_quality_gate
+      ON facts (quality_gate_status, status);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_bundle_tag
+      ON facts (bundle_tag);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_difficulty_tier
+      ON facts (difficulty_tier, status);
+  `);
+
   console.log("[facts-db] Facts schema initialised.");
 }

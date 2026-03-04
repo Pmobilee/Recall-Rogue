@@ -26,6 +26,8 @@ import { iapRoutes } from "./routes/iap.js";
 import { patronRoutes } from "./routes/patrons.js";
 import { seasonPassRoutes } from "./routes/seasonPass.js";
 import { subscriptionRoutes } from "./routes/subscriptions.js";
+import { factBundleRoutes } from "./routes/factBundles.js";
+import { startBundleScheduler } from "./jobs/bundleScheduler.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -184,6 +186,9 @@ export async function buildApp() {
   await fastify.register(seasonPassRoutes,   { prefix: "/api/season-pass" });
   await fastify.register(subscriptionRoutes, { prefix: "/api/subscriptions" });
 
+  // Phase 32: Content Scaling routes
+  await fastify.register(factBundleRoutes, { prefix: "/api/fact-bundles" });
+
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
     reply.status(404).send({ error: "Route not found", statusCode: 404 });
@@ -223,6 +228,9 @@ async function start(): Promise<void> {
     app.log.error(err);
     process.exit(1);
   }
+
+  // Phase 32.6: Start weekly bundle release scheduler
+  startBundleScheduler();
 }
 
 start();

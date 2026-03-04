@@ -447,6 +447,15 @@ async function startDashboard(): Promise<void> {
     reply.send({ counts, recentErrors });
   });
 
+  // ── Phase 32.7: Coverage dashboard page ──────────────────────────────────────
+  fastify.get("/coverage", (_request, reply) => {
+    const coveragePath = path.join(PUBLIC_DIR, "coverage.html");
+    if (!fs.existsSync(coveragePath)) {
+      return reply.status(404).send("Coverage dashboard not found");
+    }
+    return reply.type("text/html").send(fs.readFileSync(coveragePath, "utf8"));
+  });
+
   // ── Start server ─────────────────────────────────────────────────────────────
   try {
     await fastify.listen({ port: DASHBOARD_PORT, host: "127.0.0.1" });

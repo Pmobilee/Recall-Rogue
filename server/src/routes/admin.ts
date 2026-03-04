@@ -35,6 +35,7 @@ import { computeAllLeaderboardScores } from "../analytics/leaderboards.js";
 import { computePlayerSegments } from "../analytics/playerSegments.js";
 import { computeRetention } from "../analytics/retention.js";
 import type { ComputationSummary } from "../analytics/leaderboards.js";
+import { factsDb } from "../db/facts-db.js";
 
 // ── Response types ─────────────────────────────────────────────────────────────
 
@@ -400,6 +401,120 @@ export async function adminRoutes(fastify: FastifyInstance): Promise<void> {
       const cohortDate = new Date();
       const report = computeRetention(cohortDate);
       return report;
+    }
+  );
+
+  // ── Phase 32.7: Fact coverage statistics ──────────────────────────────────────
+
+  /**
+   * GET /api/admin/coverage
+   * Fact coverage statistics for the content scaling dashboard.
+   * Returns category distribution, difficulty tiers, quality scores,
+   * weekly velocity, and distractor depth.
+   */
+  fastify.get(
+    "/coverage",
+    { preHandler: requireAdmin },
+    async (_req: FastifyRequest, reply: FastifyReply) => {
+      // Category distribution
+      interface CategoryRow {
+        category_l1: string;
+        status: string;
+        count: number;
+      }
+      const byCategory = factsDb
+        .prepare(
+          `SELECT category_l1, status, COUNT(*) as count
+           FROM facts
+           GROUP BY category_l1, status
+           ORDER BY category_l1, status`
+        )
+        .all() as CategoryRow[];
+
+      // Difficulty tier distribution (approved only)
+      interface TierRow {
+        difficulty_tier: string;
+        count: number;
+      }
+      const byTier = factsDb
+        .prepare(
+          `SELECT difficulty_tier, COUNT(*) as count
+           FROM facts WHERE status = 'approved'
+           GROUP BY difficulty_tier`
+        )
+        .all() as TierRow[];
+
+      // Quality score histogram (10 buckets: 0-9, 10-19, ..., 90-100)
+      interface QualityBucket {
+        bucket: number;
+        count: number;
+      }
+      const qualityBuckets = factsDb
+        .prepare(
+          `SELECT CAST(quality_score / 10 AS INTEGER) * 10 as bucket, COUNT(*) as count
+           FROM facts
+           WHERE quality_score IS NOT NULL
+           GROUP BY bucket
+           ORDER BY bucket`
+        )
+        .all() as QualityBucket[];
+
+      // Weekly approval velocity (last 12 weeks)
+      interface VelocityRow {
+        week: string;
+        count: number;
+      }
+      const velocity = factsDb
+        .prepare(
+          `SELECT strftime('%Y-W%W', datetime(updated_at / 1000, 'unixepoch')) as week,
+                  COUNT(*) as count
+           FROM facts
+           WHERE status = 'approved'
+             AND updated_at > (unixepoch() - 84 * 86400) * 1000
+           GROUP BY week
+           ORDER BY week`
+        )
+        .all() as VelocityRow[];
+
+      // Distractor depth per category
+      interface DistractorDepthRow {
+        category_l1: string;
+        avg_distractors: number;
+        min_distractors: number;
+        facts_below_threshold: number;
+      }
+      const distractorDepth = factsDb
+        .prepare(
+          `SELECT f.category_l1,
+                  AVG(f.distractor_count) as avg_distractors,
+                  MIN(f.distractor_count) as min_distractors,
+                  SUM(CASE WHEN f.distractor_count < 8 THEN 1 ELSE 0 END) as facts_below_threshold
+           FROM facts f
+           WHERE f.status = 'approved'
+           GROUP BY f.category_l1
+           ORDER BY facts_below_threshold DESC`
+        )
+        .all() as DistractorDepthRow[];
+
+      // Totals
+      interface TotalRow {
+        status: string;
+        count: number;
+      }
+      const totals = factsDb
+        .prepare(`SELECT status, COUNT(*) as count FROM facts GROUP BY status`)
+        .all() as TotalRow[];
+
+      return reply.send({
+        byCategory,
+        byTier,
+        qualityBuckets,
+        velocity,
+        distractorDepth,
+        totals,
+        categoryThreshold: 200,
+        totalTarget: 3000,
+      });
     }
   );
 }

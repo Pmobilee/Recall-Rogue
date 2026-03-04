@@ -11,6 +11,7 @@ import { analyticsService } from './services/analyticsService'
 import { GameManager } from './game/GameManager'
 import { factsDB } from './services/factsDB'
 import { gameManagerStore } from './game/gameManagerRef'
+import { getSyncVersion, setSyncVersion } from './services/deltaSync'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -118,6 +119,31 @@ async function bootGame(): Promise<void> {
 
   // Wait for DB to finish loading
   await dbPromise
+
+  // Phase 32.5: Background delta sync — fetch new/updated facts from server
+  // This is fire-and-forget; the local cache remains valid even if offline.
+  try {
+    const since = getSyncVersion()
+    const resp = await fetch(`/api/facts/delta?since=${since}&limit=500`, {
+      headers: { Accept: 'application/json' },
+    })
+    if (resp.ok) {
+      const delta = await resp.json() as {
+        facts: unknown[]
+        deletedIds: string[]
+        latestVersion: number
+        hasMore: boolean
+      }
+      if (delta.latestVersion > since) {
+        setSyncVersion(delta.latestVersion)
+        if (delta.facts.length > 0) {
+          console.log(`[deltaSync] ${delta.facts.length} new facts synced (version ${delta.latestVersion})`)
+        }
+      }
+    }
+  } catch {
+    // Offline — continue with cached facts
+  }
 
   // Hide splash screen now that the game is fully initialized (DD-V2 Sub-Phase 20.1)
   const splashScreen = await setupCapacitor()

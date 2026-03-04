@@ -15,6 +15,7 @@ import {
   extractFactsFromPassage,
   persistGeneratedContent,
 } from "../services/contentGen.js";
+import { runQualityGate } from "../services/qualityGate.js";
 
 // ── Allowed field whitelist for PATCH ────────────────────────────────────────
 
@@ -42,6 +43,13 @@ const PATCHABLE_FIELDS = new Set([
   "visual_description",
   "status",
   "type",
+  // Phase 32.1: new patchable fields
+  "difficulty_tier",
+  "source_quality",
+  "source_doi",
+  "quality_gate_status",
+  "bundle_tag",
+  "seed_topic",
 ]);
 
 // ── Row types ────────────────────────────────────────────────────────────────
@@ -637,29 +645,34 @@ export async function factsRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
-  // ── GET /delta — delta sync for game clients (public) ────────────────────────
+  // ── GET /delta — delta sync for game clients (public, Phase 32.5 hardened) ───
   fastify.get(
     "/delta",
     async (request: FastifyRequest, reply: FastifyReply) => {
       const qs = request.query as Record<string, string>;
       const since = parseInt(qs["since"] ?? "0", 10);
       const limit = Math.min(parseInt(qs["limit"] ?? "500", 10), 1000);
+      const category = qs["category"]; // optional filter
 
-      // Facts modified since the given db_version
-      const facts = factsDb
-        .prepare(
-          `SELECT
-            id, statement, quiz_question, correct_answer, acceptable_answers,
-            gaia_comments, gaia_wrong_comments, category_l1, category_l2,
-            rarity, difficulty, fun_score, novelty_score,
-            age_rating, sensitivity_level, has_pixel_art, image_url,
-            language, db_version, status, updated_at
-          FROM facts
-          WHERE db_version > ? AND status IN ('approved', 'archived')
-          ORDER BY db_version ASC
-          LIMIT ?`
-        )
-        .all(since, limit) as FactRow[];
+      let query = `SELECT
+          id, statement, quiz_question, correct_answer, acceptable_answers,
+          gaia_comments, gaia_wrong_comments, category_l1, category_l2,
+          rarity, difficulty, difficulty_tier, fun_score, novelty_score,
+          age_rating, sensitivity_level, has_pixel_art, image_url,
+          language, db_version, status, updated_at
+        FROM facts
+        WHERE db_version > ? AND status IN ('approved', 'archived')`;
+      const params: (string | number)[] = [since];
+
+      if (category) {
+        query += " AND category_l1 = ?";
+        params.push(category);
+      }
+
+      query += " ORDER BY db_version ASC LIMIT ?";
+      params.push(limit);
+
+      const facts = factsDb.prepare(query).all(...params) as FactRow[];
 
       // IDs of archived facts (soft-deleted)
       const deletedIds = facts
@@ -675,12 +688,59 @@ export async function factsRoutes(fastify: FastifyInstance): Promise<void> {
           ? Math.max(...facts.map((f) => f.db_version as number))
           : since;
 
+      // ETag for conditional requests
+      const etag = `"delta-${maxVersion}"`;
+      if (request.headers["if-none-match"] === etag) {
+        return reply.status(304).send();
+      }
+
+      reply.header("ETag", etag);
+      reply.header("Cache-Control", "private, max-age=300");
+
       return reply.send({
         facts: activeFacts,
         deletedIds,
         latestVersion: maxVersion,
         hasMore: facts.length === limit,
+        nextCursor: facts.length === limit ? maxVersion : null,
       });
+    }
+  );
+
+  // ── POST /:id/quality-gate — run 3rd-stage quality gate (admin, Phase 32.3) ──
+  fastify.post(
+    "/:id/quality-gate",
+    { preHandler: requireAdmin },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { id } = request.params as { id: string };
+      const fact = factsDb
+        .prepare("SELECT id FROM facts WHERE id = ?")
+        .get(id) as { id: string } | undefined;
+      if (!fact) {
+        return reply.status(404).send({ error: "Fact not found", statusCode: 404 });
+      }
+
+      const result = await runQualityGate(id);
+      return reply.send({ result });
+    }
+  );
+
+  // ── POST /:id/expand-distractors — expand thin distractor sets (admin, Phase 32.4) ──
+  fastify.post(
+    "/:id/expand-distractors",
+    { preHandler: requireAdmin },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { id } = request.params as { id: string };
+      const fact = factsDb
+        .prepare("SELECT id FROM facts WHERE id = ?")
+        .get(id) as { id: string } | undefined;
+      if (!fact) {
+        return reply.status(404).send({ error: "Fact not found", statusCode: 404 });
+      }
+
+      const { expandDistractors } = await import("../services/distractorExpander.js");
+      const added = await expandDistractors(id);
+      return reply.send({ added });
     }
   );
 }

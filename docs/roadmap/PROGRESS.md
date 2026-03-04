@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes & UX Overhaul. All critical bugs resolved: mine freeze crash (camera null guards), dome camera errors, quiz display ($derived.by), wrong-answer tap-to-continue, triple age gate removed, language selection via GAIA intro, fact pacing (getPacedFact with review-due priority + new fact cap), settings gear icon. V3 Phase 32 (Content Scaling) is next. V2 Phases 23-25 complete. V3 Phases 26-27 done, Critical Fixes done.
+Phases 0-27 complete plus Critical Fixes & Phase 32 (Content Scaling). Fact content pipeline hardened: schema expansion (9 new fact columns, 2 distractor columns, 3 indexes), Claude API batch generation with rate limiting, 3-stage LLM quality gate (factual plausibility, distractor adequacy, readability, answer clarity, overlap check), distractor expansion system (8+ per fact, 3 tiers), delta sync protocol (cursor-based, ETag, paged), weekly bundle release scheduler, coverage dashboard. V3 Phase 39 (Web Platform) is next.
 
 ---
 
@@ -93,7 +93,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [ ] **Phase 31: Gacha & Reveal Polish** — Rarity-tiered reveal timing, artifact reveal sequences, block rarity previews, celebration particles, layer descent animation → [`phases/PHASE-31-GACHA-REVEAL-POLISH.md`](phases/PHASE-31-GACHA-REVEAL-POLISH.md)
 
 ### Content Factory (Phases 32-34)
-- [ ] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`phases/PHASE-32-CONTENT-SCALING.md`](phases/PHASE-32-CONTENT-SCALING.md)
+- [x] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`completed/PHASE-32-CONTENT-SCALING.md`](completed/PHASE-32-CONTENT-SCALING.md)
 - [ ] **Phase 33: Biome Visual Diversity** — 25 unique tile sprite sets, 8-bit hero biome autotiling, per-biome fog colors, depth visual gradient, transition tilesets → [`phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md`](phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md)
 - [ ] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`phases/PHASE-34-PIXEL-ART-PER-FACT.md`](phases/PHASE-34-PIXEL-ART-PER-FACT.md)
 
