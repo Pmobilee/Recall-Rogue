@@ -328,11 +328,11 @@ Parallel agents burn through the budget in minutes and halt all progress.
 |---|------|-------|------|--------|
 | 1 | W1 | **26** | Production Backend Integration | [x] |
 | 2 | W1 | **27** | Test Suite & CI/CD | [x] |
-| 3 | W1 | **32** | Fact Content Scaling | [ ] |
-| 4 | W1 | **39** | Web Platform Excellence | [ ] |
-| 5 | W1 | **40** | Internationalization | [ ] |
-| 6 | W1 | **47** | Achievement Gallery | [ ] |
-| 7 | W2 | **38** | iOS Launch | [ ] |
+| 3 | W1 | **32** | Fact Content Scaling | [x] |
+| 4 | W1 | **39** | Web Platform Excellence | [x] |
+| 5 | W1 | **40** | Internationalization | [x] |
+| 6 | W1 | **47** | Achievement Gallery | [x] |
+| 7 | W2 | **38** | iOS Launch | [x] |
 | 8 | W2 | **31** | Gacha & Reveal Polish | [ ] |
 | 9 | W2 | **29** | Character Animation | [ ] |
 | 10 | W2 | **33** | Biome Visual Diversity | [ ] |
