@@ -3,12 +3,31 @@
   import { playerSave } from '../stores/playerData'
   import { BALANCE } from '../../data/balance'
   import PostDiveHooks from './PostDiveHooks.svelte'
+  import ShareCardModal from './ShareCardModal.svelte'
 
   interface Props {
     onContinue: () => void
   }
 
   let { onContinue }: Props = $props()
+
+  /** Whether the share card modal is open. */
+  let showShareCard = $state(false)
+
+  /**
+   * True when the current dive's depth is a new personal best.
+   * Compares diveResults.maxDepth against deepestLayerReached in the player save.
+   * Note: deepestLayerReached is updated AFTER the dive results screen shows, so we
+   * compare to the value BEFORE the save was updated (i.e. the previous record).
+   */
+  const isPersonalBest = $derived((): boolean => {
+    const results = $diveResults
+    const save = $playerSave
+    if (!results || !save) return false
+    // deepestLayerReached stores the all-time best; compare the fresh dive depth
+    const previous = save.stats?.deepestLayerReached ?? 0
+    return results.maxDepth > previous
+  })
 
   /**
    * Derive an informational GAIA hook line to show at the bottom of the results
@@ -115,11 +134,31 @@
 
     <PostDiveHooks />
 
+    {#if isPersonalBest() && ($diveResults?.maxDepth ?? 0) > 0}
+      <button
+        class="share-btn"
+        type="button"
+        onclick={() => { showShareCard = true }}
+        aria-label="Share your personal best dive"
+      >
+        Share Personal Best
+      </button>
+    {/if}
+
     <button class="continue-btn" type="button" onclick={onContinue}>
       Continue
     </button>
   </div>
 </div>
+
+{#if showShareCard}
+  <ShareCardModal
+    template="dive_record"
+    primaryMetric={$diveResults?.maxDepth ?? 0}
+    secondaryLabel="layers deep"
+    onClose={() => { showShareCard = false }}
+  />
+{/if}
 
 <style>
   .results-overlay {
@@ -240,5 +279,28 @@
     line-height: 1.45;
     font-style: italic;
     text-align: center;
+  }
+
+  .share-btn {
+    min-height: 44px;
+    border: 2px solid #f59e0b;
+    border-radius: 999px;
+    padding: 0.6rem 1.2rem;
+    background: color-mix(in srgb, #f59e0b 15%, var(--color-surface) 85%);
+    color: #f59e0b;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 120ms ease, transform 120ms ease;
+  }
+
+  .share-btn:hover {
+    background: color-mix(in srgb, #f59e0b 25%, var(--color-surface) 75%);
+  }
+
+  .share-btn:active {
+    transform: scale(0.98);
   }
 </style>

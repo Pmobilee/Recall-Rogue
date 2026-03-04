@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 43, 45, 47. Phase 35 (Mine Mechanics Completion): Quiz gates, QuizStreakSystem (×1→×3 multiplier), OfferingAltar (4 sacrifice tiers), InstabilitySystem (collapse countdown, lava flood), RecipeFragmentNode (5 fragment recipes), LockedBlock (tier-locked HardRock), MineEventSystem (5 random events: tremor/gas_leak/relic_signal/crystal_vein/pressure_surge). New HUD components: QuizStreakBadge, InstabilityMeter, MineEventOverlay, AltarSacrificeOverlay. All wired through GameManager event bridge. Next: Phase 28 (Performance Optimization) or Phase 36.
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47. Phase 42 (Viral Growth Engine): Canvas-based share card generator (1200×630 PNG, 3 templates), referral tier progress bar in ReferralModal (4 reward tiers), social proof badges (5 types) with OG page server routes, iOS Universal Links + Android App Links + Capacitor deep link listener, in-app review prompt with eligibility gating, K-factor viral analytics endpoint. New files: shareCardService.ts, ShareCardModal.svelte, badgeService.ts, BadgeDisplay.svelte, deepLinkService.ts, reviewPromptService.ts, ReviewPromptTrigger.svelte, server referralService.ts, badges/deepLinks/aso server routes, asoKeywordTracker job, viralMetrics analytics. 0 typecheck errors, build succeeds. Next: Phase 28 (Performance Optimization) or Phase 44.
 
 ---
 
@@ -109,7 +109,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Growth & Analytics (Phases 41-43)
 - [x] **Phase 41: Advanced Analytics & Experiments** — Feature flag system, A/B testing framework, funnel analysis, cohort dashboards, retention optimization → [`completed/PHASE-41-ANALYTICS-EXPERIMENTS.md`](completed/PHASE-41-ANALYTICS-EXPERIMENTS.md)
-- [ ] **Phase 42: Viral Growth Engine** — Share paintings, referral optimization, social proof badges, invite deep links, ASO iteration → [`phases/PHASE-42-VIRAL-GROWTH.md`](phases/PHASE-42-VIRAL-GROWTH.md)
+- [x] **Phase 42: Viral Growth Engine** — Share card generator (canvas 1200×630), referral tier progress bar, social proof badges, iOS/Android deep links, ASO review prompt, K-factor analytics → [`completed/PHASE-42-VIRAL-GROWTH.md`](completed/PHASE-42-VIRAL-GROWTH.md)
 - [x] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`completed/PHASE-43-COOPERATIVE-DIVES.md`](completed/PHASE-43-COOPERATIVE-DIVES.md)
 
 ### Education (Phases 44-46)

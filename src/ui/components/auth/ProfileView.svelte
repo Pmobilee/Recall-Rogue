@@ -1,6 +1,10 @@
 <script lang="ts">
   import { authStore } from '../../stores/authStore'
   import { apiClient } from '../../../services/apiClient'
+  import { playerSave } from '../../stores/playerData'
+  import BadgeDisplay from '../BadgeDisplay.svelte'
+  import { evaluateNewBadges } from '../../../services/badgeService'
+  import type { EarnedBadge } from '../../../data/types'
 
   interface Props {
     /** Called after the user logs out. */
@@ -13,6 +17,23 @@
 
   // Derive current auth state from the store
   let authState = $state({ isLoggedIn: false, userId: null as string | null, email: null as string | null, displayName: null as string | null })
+
+  /** Earned badges computed from the player's save, evaluated once on mount. */
+  let earnedBadges = $state<EarnedBadge[]>([])
+
+  $effect(() => {
+    const save = $playerSave
+    if (!save) return
+    // Load badges from save, then evaluate for any newly earned ones
+    const existing: EarnedBadge[] = save.earnedBadges ?? []
+    const existingIds = new Set(existing.map(b => b.id))
+    const newBadgeIds = evaluateNewBadges(save, existingIds)
+    const newBadges: EarnedBadge[] = newBadgeIds.map(id => ({ id, earnedAt: new Date().toISOString() }))
+    earnedBadges = [...existing, ...newBadges]
+    if (newBadges.length > 0) {
+      playerSave.update(s => s ? { ...s, earnedBadges: earnedBadges } : s)
+    }
+  })
 
   $effect(() => {
     const unsub = authStore.subscribe((s) => {
@@ -110,6 +131,12 @@
           </dd>
         </div>
       </dl>
+    </section>
+
+    <!-- Badges -->
+    <section class="badges-section">
+      <h2 class="badges-heading">Badges</h2>
+      <BadgeDisplay {earnedBadges} />
     </section>
 
     <!-- Actions -->
@@ -338,6 +365,22 @@
   .detail-value.mono {
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
+  }
+
+  /* Badges section */
+  .badges-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .badges-heading {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(238, 238, 238, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin: 0;
   }
 
   /* Actions section */

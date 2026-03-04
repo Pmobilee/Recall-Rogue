@@ -343,7 +343,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 15 | W3 | **43** | Cooperative Dives | [x] |
 | 16 | W3 | **30** | Mining Juice | [x] |
 | 17 | W3 | **35** | Mine Mechanics | [ ] |
-| 18 | W4 | **42** | Viral Growth | [ ] |
+| 18 | W4 | **42** | Viral Growth | [x] |
 | 19 | W4 | **49** | Advanced Mine Gen | [ ] |
 | 20 | W4 | **36** | Combat System | [ ] |
 | 21 | W5 | **44** | Teacher Dashboard | [ ] |

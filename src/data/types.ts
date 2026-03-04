@@ -401,12 +401,25 @@ export interface GuildChallenge {
   weekStart: number;
 }
 
-/** Record of a referral invitation and its reward status */
+/** Record of a referral invitation and its reward status (Phase 22 base + Phase 42.2 extension) */
 export interface ReferralRecord {
   inviteeId: string;
   inviteeName: string;
   status: 'pending' | 'dive_reward_sent' | 'streak_reward_sent' | 'completed' | 'flagged';
   createdAt: number;
+  // Phase 42.2 extended fields
+  referredPlayerId?: string;
+  linkClickedAt?: string;       // ISO timestamp
+  appInstalledAt?: string | null;
+  firstDiveAt?: string | null;
+  qualified?: boolean;          // true once first dive complete within attribution window
+  rewardClaimed?: boolean;
+}
+
+/** Phase 42.3: An earned social proof badge. */
+export interface EarnedBadge {
+  id:       string;
+  earnedAt: string;  // ISO timestamp
 }
 
 // ============================================================
@@ -636,6 +649,23 @@ export interface PlayerSave {
   dustCatLastFed?: number
   /** Unix timestamp of last grooming mini-game (90-minute cooldown). */
   dustCatLastGroomed?: number
+
+  // Phase 42: Viral Growth
+  /** Phase 42.2: Extended referral statistics with tier progress and yearly cap. */
+  referralStats?: {
+    code:                string             // permanent per-player code
+    qualifiedCount:      number             // total qualifying referrals all-time
+    yearlyCount:         number             // qualifying referrals this calendar year
+    yearlyResetDate:     string             // ISO date of next yearly reset
+    pendingRewardTiers:  number[]           // threshold values of unclaimed rewards
+    claimedRewardKeys:   string[]           // reward keys already credited
+  }
+  /** Phase 42.3: Earned social proof badges. */
+  earnedBadges?: EarnedBadge[]
+  /** Phase 42.3: Count of guild challenge wins (used for guild_champion badge). */
+  guildChampionWins?: number
+  /** Phase 42.3: Whether the player has the Pioneer Pack (used for pioneer badge). */
+  isPioneer?: boolean
 }
 
 /** Player statistics */

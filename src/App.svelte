@@ -90,6 +90,9 @@
   import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
   import { activeAltar } from './ui/stores/gameState'
 
+  // Phase 42: Deep link listener
+  import { registerDeepLinkListener, type DeepLinkRoute } from './services/deepLinkService'
+
   // Phase 45: Kid Mode
   import { sessionTimer, type SessionTimerState } from './services/sessionTimer'
   import { parentalStore } from './ui/stores/parentalStore'
@@ -620,6 +623,36 @@
 
     for (const [id, fn] of handlers) shortcutService.on(id, fn)
     return () => { for (const [id, fn] of handlers) shortcutService.off(id, fn) }
+  })
+
+  // ============================================================
+  // PHASE 42: DEEP LINK LISTENER — handle incoming universal links
+  // ============================================================
+
+  $effect(() => {
+    // Register once on mount; the listener handles Capacitor appUrlOpen events
+    // and the initial page URL so invite/badge/fact links route correctly.
+    // registerDeepLinkListener() has no return value — it sets up a persistent listener.
+    registerDeepLinkListener()
+
+    /** Handle terra:deeplink CustomEvents dispatched by deepLinkService. */
+    function handleDeepLink(e: Event): void {
+      const { route } = (e as CustomEvent<{ route: DeepLinkRoute }>).detail
+      if (route.type === 'invite') {
+        // Navigate to the referral screen with the incoming code pre-filled.
+        // The referral service will attribute the install on the server side.
+        currentScreen.set('base')
+      } else if (route.type === 'fact') {
+        // Future: open the fact reveal for the given factId
+        currentScreen.set('base')
+      }
+      // badge routes are handled on the web (server-rendered OG page) only
+    }
+
+    window.addEventListener('terra:deeplink', handleDeepLink)
+    return () => {
+      window.removeEventListener('terra:deeplink', handleDeepLink)
+    }
   })
 
   // ============================================================

@@ -17,6 +17,8 @@ import { EXPERIMENTS } from "../data/experiments.js";
 import { computeExperimentResult } from "../analytics/experiments.js";
 import { FUNNELS, computeFunnel } from "../analytics/funnels.js";
 import { computeMasteryCurve, computeIntervalHistogram } from "../analytics/learningCurves.js";
+import { computeViralMetrics } from "../analytics/viralMetrics.js";
+import { sqliteDb } from "../db/index.js";
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -55,6 +57,11 @@ const ALLOWED_EVENTS = new Set([
   "learning_time_to_mastery",
   // A/B experiment tracking (Phase 41.2)
   "experiment_assigned",
+  // Viral Growth events (Phase 42.6)
+  "share_card_generated",
+  "referral_link_shared",
+  "referral_converted",
+  "badge_shared",
 ]);
 
 /** Property keys that must never appear in analytics payloads (PII). */
@@ -326,6 +333,42 @@ export async function analyticsRoutes(
       intervalHistogram,
     })
   })
+
+  /**
+   * GET /api/analytics/viral
+   * Returns a K-factor report and viral loop metrics for the last N days.
+   * Query params:
+   *   - days: number of days to look back (default: 30, max: 90)
+   * Admin-only (X-Admin-Key required).
+   */
+  fastify.get(
+    '/viral',
+    async (
+      request: FastifyRequest<{ Querystring: { days?: string } }>,
+      reply: FastifyReply
+    ) => {
+      if (request.headers['x-admin-key'] !== config.adminApiKey) {
+        return reply.status(403).send({ error: 'Forbidden' })
+      }
+
+      const rawDays = parseInt((request.query as { days?: string }).days ?? '30', 10)
+      const windowDays = Math.min(Math.max(1, isNaN(rawDays) ? 30 : rawDays), 90)
+
+      // Build a DbLike adapter from the underlying better-sqlite3 connection.
+      // viralMetrics uses a generic async query interface; better-sqlite3 is
+      // synchronous so we wrap it in a resolved Promise.
+      const dbAdapter = {
+        query: async <T>(sqlStr: string, params: unknown[] = []): Promise<{ rows: T[] }> => {
+          const stmt = sqliteDb.prepare(sqlStr)
+          const rows = stmt.all(...(params as Parameters<typeof stmt.all>)) as T[]
+          return { rows }
+        },
+      }
+
+      const report = await computeViralMetrics(dbAdapter, windowDays)
+      return reply.send(report)
+    }
+  )
 
   /**
    * GET /api/analytics/export/:userId

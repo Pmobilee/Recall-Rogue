@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { ReferralRecord } from '../../data/types'
+  import { REFERRAL_REWARD_TIERS, REFERRAL_MAX_PER_YEAR } from '../../data/balance'
+  import { analyticsService } from '../../services/analyticsService'
 
   interface Props {
     onClose: () => void
@@ -7,7 +9,8 @@
 
   let { onClose }: Props = $props()
 
-  const MAX_REFERRALS_PER_YEAR = 10
+  /** Use the balance constant so the cap stays in sync automatically. */
+  const MAX_REFERRALS_PER_YEAR = REFERRAL_MAX_PER_YEAR
 
   let referralCode = $state<string | null>(null)
   let referralHistory = $state<ReferralRecord[]>([])
@@ -20,6 +23,29 @@
   )
 
   const usedCount = $derived(referralHistory.length)
+
+  /**
+   * The next reward tier the player is working toward, or null if all tiers
+   * have been reached.
+   */
+  const nextTier = $derived(
+    REFERRAL_REWARD_TIERS.find(t => t.threshold > usedCount) ?? null
+  )
+
+  /**
+   * Progress percentage (0–100) toward the next tier threshold.
+   * When all tiers are completed, this is 100.
+   */
+  const tierProgressPct = $derived((): number => {
+    if (!nextTier) return 100
+    const prevThreshold = REFERRAL_REWARD_TIERS
+      .slice()
+      .reverse()
+      .find(t => t.threshold <= usedCount)?.threshold ?? 0
+    const span = nextTier.threshold - prevThreshold
+    const done = usedCount - prevThreshold
+    return Math.min(100, Math.round((done / span) * 100))
+  })
 
   async function loadReferralData(): Promise<void> {
     loading = true
@@ -50,6 +76,14 @@
       await navigator.clipboard.writeText(referralLink)
       copyFeedback = true
       setTimeout(() => { copyFeedback = false }, 2000)
+      analyticsService.track({
+        name: 'referral_link_shared',
+        properties: {
+          channel: 'copy',
+          qualified_referrals_so_far: usedCount,
+          current_tier_threshold: nextTier?.threshold ?? MAX_REFERRALS_PER_YEAR,
+        },
+      })
     } catch {
       // Fallback: select the input text
       const input = document.getElementById('referral-link-input') as HTMLInputElement | null
@@ -65,6 +99,14 @@
           title: 'Join me on Terra Gacha!',
           text: 'Mine for knowledge with me on Terra Gacha. You and I both get a fossil egg!',
           url: referralLink,
+        })
+        analyticsService.track({
+          name: 'referral_link_shared',
+          properties: {
+            channel: 'native_share',
+            qualified_referrals_so_far: usedCount,
+            current_tier_threshold: nextTier?.threshold ?? MAX_REFERRALS_PER_YEAR,
+          },
         })
       } catch {
         // User cancelled or share failed — fall back to copy
@@ -185,6 +227,34 @@
           <span class="counter-value" aria-label="{usedCount} of {MAX_REFERRALS_PER_YEAR}">
             {usedCount} / {MAX_REFERRALS_PER_YEAR}
           </span>
+        </div>
+
+        <!-- Tier progress bar -->
+        <div class="tier-progress-section" aria-label="Referral reward progress">
+          <div class="tier-progress-header">
+            <span class="tier-progress-label">Reward Progress</span>
+            {#if nextTier}
+              <span class="tier-next-label">Next: {nextTier.label} at {nextTier.threshold}</span>
+            {:else}
+              <span class="tier-next-label tier-complete">All rewards unlocked!</span>
+            {/if}
+          </div>
+          <div class="tier-bar-track" role="progressbar" aria-valuenow={usedCount} aria-valuemin={0} aria-valuemax={nextTier?.threshold ?? MAX_REFERRALS_PER_YEAR} aria-label="Referral tier progress">
+            <div class="tier-bar-fill" style="width: {tierProgressPct()}%"></div>
+          </div>
+          <div class="tier-milestones" aria-hidden="true">
+            {#each REFERRAL_REWARD_TIERS as tier}
+              <div
+                class="tier-milestone"
+                class:tier-milestone-reached={usedCount >= tier.threshold}
+                style="left: {Math.round((tier.threshold / MAX_REFERRALS_PER_YEAR) * 100)}%"
+                title="{tier.label} (at {tier.threshold} referrals)"
+              >
+                <span class="tier-dot"></span>
+                <span class="tier-dot-label">{tier.threshold}</span>
+              </div>
+            {/each}
+          </div>
         </div>
 
         <!-- History -->
@@ -510,5 +580,92 @@
     color: #64748b;
     font-size: 0.82rem;
     padding: 16px 0;
+  }
+
+  /* Tier progress bar */
+  .tier-progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tier-progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .tier-progress-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .tier-next-label {
+    font-size: 0.68rem;
+    color: #f59e0b;
+  }
+
+  .tier-next-label.tier-complete {
+    color: #4ade80;
+  }
+
+  .tier-bar-track {
+    width: 100%;
+    height: 8px;
+    background: #0f172a;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    position: relative;
+  }
+
+  .tier-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+
+  .tier-milestones {
+    position: relative;
+    height: 20px;
+    margin-top: 2px;
+  }
+
+  .tier-milestone {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .tier-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #334155;
+    border: 1px solid #475569;
+    transition: background 0.2s;
+  }
+
+  .tier-milestone-reached .tier-dot {
+    background: #f59e0b;
+    border-color: #fbbf24;
+  }
+
+  .tier-dot-label {
+    font-size: 0.58rem;
+    color: #64748b;
+    line-height: 1;
+  }
+
+  .tier-milestone-reached .tier-dot-label {
+    color: #f59e0b;
   }
 </style>

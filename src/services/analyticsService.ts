@@ -150,6 +150,47 @@ interface ExperimentAssignedEvent {
   properties: { experiment_key: string; variant: string; session_id: string }
 }
 
+/** Fired when a share card is generated and the player confirms sharing. */
+interface ShareCardGeneratedEvent {
+  name: 'share_card_generated'
+  properties: {
+    template: 'fact_mastery' | 'dive_record' | 'guild_win'
+    platform: 'web_share' | 'download' | 'clipboard'
+    facts_mastered: number
+    tree_completion_pct: number
+  }
+}
+
+/** Fired when the player shares their referral link from the ReferralModal. */
+interface ReferralLinkSharedEvent {
+  name: 'referral_link_shared'
+  properties: {
+    channel: 'copy' | 'native_share' | 'direct'
+    qualified_referrals_so_far: number
+    current_tier_threshold: number
+  }
+}
+
+/** Fired on the NEW player's device when they complete their first dive
+ *  and a referral code was present in their onboarding session. */
+interface ReferralConvertedEvent {
+  name: 'referral_converted'
+  properties: {
+    days_since_click:  number   // float
+    referrer_tier:     string   // 'none' | 'patron' | 'pioneer'
+    onboarding_source: 'invite_link' | 'badge_link' | 'organic'
+  }
+}
+
+/** Fired when a player shares a social proof badge. */
+interface BadgeSharedEvent {
+  name: 'badge_shared'
+  properties: {
+    badge_id:     string
+    share_method: 'clipboard' | 'native_share' | 'direct_link'
+  }
+}
+
 /** Union of all supported analytics events. */
 export type AnalyticsEvent =
   | AppOpenEvent
@@ -166,6 +207,10 @@ export type AnalyticsEvent =
   | PwaInstallEvent
   | WebVitalsEvent
   | ExperimentAssignedEvent
+  | ShareCardGeneratedEvent
+  | ReferralLinkSharedEvent
+  | ReferralConvertedEvent
+  | BadgeSharedEvent
 
 // Re-export specific types used externally
 export type {

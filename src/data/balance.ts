@@ -576,3 +576,36 @@ export const STREAK_VISUAL = {
   TIER_3_COUNT: 7,   multiplier_3: 1.50,  // 7 correct in a row → +50% dust
   RESET_ON_WRONG: true,
 } as const
+
+// === PHASE 42: VIRAL GROWTH — REFERRAL REWARD TIERS ===
+
+/** Referral reward tiers. Index = number of qualifying referrals. */
+export const REFERRAL_REWARD_TIERS: {
+  threshold: number
+  rewardType: 'fossil_egg' | 'cosmetic_frame' | 'companion_skin' | 'nameplate'
+  rewardKey: string
+  label: string
+}[] = [
+  { threshold: 1,  rewardType: 'fossil_egg',      rewardKey: 'egg_referral_common',   label: 'Fossil Egg' },
+  { threshold: 3,  rewardType: 'cosmetic_frame',   rewardKey: 'frame_explorer_invite', label: 'Explorer Frame' },
+  { threshold: 5,  rewardType: 'companion_skin',   rewardKey: 'skin_miner_envoy',      label: 'Envoy Miner Skin' },
+  { threshold: 10, rewardType: 'nameplate',        rewardKey: 'nameplate_connector',   label: 'Connector Nameplate' },
+]
+
+/** Number of days after a link click within which an install can be attributed. */
+export const REFERRAL_ATTRIBUTION_DAYS = 30
+
+/** Maximum qualifying referrals per player per calendar year (anti-fraud cap). */
+export const REFERRAL_MAX_PER_YEAR = 10
+
+// === PHASE 42: ASO — REVIEW PROMPT TRIGGERS ===
+
+/** Review prompt trigger thresholds. All must be met before the prompt fires. */
+export const REVIEW_PROMPT_TRIGGERS = {
+  /** Minimum dives completed before the review prompt is eligible. */
+  minDives: 5,
+  /** Minimum facts mastered before the review prompt is eligible. */
+  minFactsMastered: 10,
+  /** Cooldown in days between prompt appearances. */
+  cooldownDays: 90,
+} as const
