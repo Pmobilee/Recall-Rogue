@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-20 complete. Phase 20 (Mobile Launch) fully implemented: Capacitor back button handler, splash screen management, PWA manifest with install prompt, responsive CSS (768px/1200px breakpoints), keyboard shortcuts (Escape/1-4/F), RarityBadge with colorblind-safe shapes, accessibility (high-contrast quiz, reduced motion, ARIA labels), PwaInstallPrompt for web platform, store listing text (Google Play + App Store), Docker multi-stage build with non-root runtime, bundle code splitting, error reporting service, offline feature tiers (3-tier model). V2 roadmap (Phases 21-25) remaining.
+Phases 0-21 complete. Phase 21 (Monetization) fully implemented: oxygen regen service (90min/tank, max 3 free, unlimited subscriber), IAP catalog (3 subscriptions, 2 one-time, 8 cosmetics), Pioneer Pack (7-day limited $4.99), Terra Pass modal with content volume gate (522/3000 facts), Season Pass system (8 free + 8 premium milestones), ad-free policy with feature flags, milestone cosmetics (4 free), economy rebalance (removed mineral decay, added dome maintenance + spending bonus), analytics events (13 monetization + 5 learning metrics), A/B testing framework, mastery-free monitoring, retention dashboard (D1/D7/D30), patron tiers (Expedition + Grand), server routes (subscriptions, IAP, season pass, patrons, admin). V2 roadmap Phases 22-25 remaining.
 
 ---
 
@@ -65,7 +65,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 20: Mobile Launch** — Capacitor builds, store submission, ASO, soft launch, accessibility, web platform → [`completed/PHASE-20-MOBILE-LAUNCH.md`](completed/PHASE-20-MOBILE-LAUNCH.md)
 
 ### Monetization & Social (Phases 21-22)
-- [ ] **Phase 21: Monetization** — Terra Pass, IAP, O2 regen, season pass, Pioneer Pack, economy rebalance → [`phases/PHASE-21-MONETIZATION.md`](phases/PHASE-21-MONETIZATION.md)
+- [x] **Phase 21: Monetization** — Terra Pass, IAP, O2 regen, season pass, Pioneer Pack, economy rebalance → [`completed/PHASE-21-MONETIZATION.md`](completed/PHASE-21-MONETIZATION.md)
 - [ ] **Phase 22: Social & Multiplayer** — Hub visiting, leaderboards, duels, trading, guilds, referrals → [`phases/PHASE-22-SOCIAL-MULTIPLAYER.md`](phases/PHASE-22-SOCIAL-MULTIPLAYER.md)
 
 ### Post-Launch (Phases 23-25)
