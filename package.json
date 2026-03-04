@@ -17,18 +17,23 @@
     "simulate": "node scripts/simulate-balance.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@testing-library/jest-dom": "^6.9.1",
     "@tsconfig/svelte": "^5.0.6",
     "@types/node": "^24.10.1",
     "@types/sql.js": "^1.4.9",
+    "@vitest/coverage-v8": "^2.1.9",
+    "happy-dom": "^14.12.3",
     "playwright-core": "^1.58.2",
     "svelte": "^5.45.2",
     "svelte-check": "^4.3.4",
     "typescript": "~5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "@capacitor/android": "^8.1.0",

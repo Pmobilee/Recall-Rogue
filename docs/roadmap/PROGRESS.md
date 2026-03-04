@@ -1,6 +1,6 @@
 # Terra Gacha — Progress Tracker & Roadmap
 
-Last updated: 2026-03-04
+Last updated: 2026-03-05
 
 ## How This Roadmap Works
 
@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-22 complete. Phase 22 (Social & Multiplayer) fully implemented: hub visiting with guestbook and gifts, 6-category leaderboards with daily refresh and anti-cheat plausibility checks, async knowledge duels with speed scoring and wagers, artifact card marketplace with trading and duplicate mixing, guild system with weekly challenges and GKP progression, referral system with fossil egg rewards and anti-abuse, admin social health dashboard, privacy settings (hub private, leaderboard opt-out). V2 roadmap Phases 23-25 remaining. V3 roadmap Phases 26-50 planned.
+Phases 0-27 complete. **PRIORITY: Critical Fixes & UX Overhaul phase must be completed next** — fixes mine freeze crash, dome camera errors, layer transitions, quiz display bugs, onboarding flow, language selection, fact pacing, and settings. Phase 27 (Test Suite & CI/CD) fully implemented: 215 unit tests across 13 files (sm2, balance, seededRandom, MineGenerator determinism, TickSystem, SaveManager, CompanionManager, QuizManager, interestConfig, interestSpawner, seed-determinism, dev snapshots/presets), 8 server integration tests (health route, facts route), 3 E2E Playwright scripts, GitHub Actions CI pipeline (5 jobs: lint-typecheck → unit-tests/server-tests → build/server-build), Dependabot config. Coverage: 82% statements, 89% branches, 86% functions. V2 roadmap Phases 23-25 remaining. V3 roadmap Phases 26-50 planned (Phases 26-27 done).
 
 ---
 
@@ -79,9 +79,12 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
 
+### PRIORITY: Critical Fixes (Execute First)
+- [ ] **Critical Fixes & UX Overhaul** — Mine freeze crash, dome camera crash, layer transitions, quiz display bugs, onboarding triple-age-gate, language selection, fact pacing, settings menu → [`phases/PHASE-CRITICAL-FIXES.md`](phases/PHASE-CRITICAL-FIXES.md)
+
 ### Production Readiness (Phases 26-28)
 - [x] **Phase 26: Production Backend Integration** — RevenueCat IAP, email provider (Resend), FCM/APNs push, Azure TTS, mount all server routes → [`completed/PHASE-26-PRODUCTION-BACKEND.md`](completed/PHASE-26-PRODUCTION-BACKEND.md)
-- [ ] **Phase 27: Test Suite & CI/CD** — Unit tests (Vitest), integration tests, E2E (Playwright), GitHub Actions, seed determinism, code coverage → [`phases/PHASE-27-TEST-SUITE-CICD.md`](phases/PHASE-27-TEST-SUITE-CICD.md)
+- [x] **Phase 27: Test Suite & CI/CD** — Unit tests (Vitest), integration tests, E2E (Playwright), GitHub Actions, seed determinism, code coverage → [`completed/PHASE-27-TEST-SUITE-CICD.md`](completed/PHASE-27-TEST-SUITE-CICD.md)
 - [ ] **Phase 28: Performance & Optimization** — Device tier profiling, bundle analysis, GPU budget enforcement, dirty-rect rendering, memory management → [`phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md`](phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md)
 
 ### Visual & Game Feel (Phases 29-31)

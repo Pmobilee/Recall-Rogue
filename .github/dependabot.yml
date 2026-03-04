@@ -1,12 +1,28 @@
 version: 2
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
+      interval: "weekly"
+    open-pull-requests-limit: 5
     labels:
       - dependencies
+    groups:
+      dev-dependencies:
+        patterns: ["@types/*", "vitest", "@vitest/*", "@testing-library/*", "happy-dom"]
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
+  - package-ecosystem: "npm"
+    directory: "/server"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - server
     ignore:
       - dependency-name: "*"
         update-types:
