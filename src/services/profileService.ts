@@ -1,4 +1,5 @@
 import type { PlayerProfile, ProfilesStore } from '../data/profileTypes'
+import { generateUUID } from '../utils/uuid'
 
 const PROFILES_KEY = 'terra_profiles'
 const SAVE_KEY_PREFIX = 'terra_save_'
@@ -80,7 +81,7 @@ export class ProfileService {
       throw new Error('Name must be 20 characters or less')
     }
     const profile: PlayerProfile = {
-      id: crypto.randomUUID(),
+      id: generateUUID(),
       name: data.name,
       ageBracket: data.ageBracket,
       interests: data.interests ?? [],

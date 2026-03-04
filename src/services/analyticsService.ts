@@ -5,6 +5,8 @@
  * Events are persisted to localStorage so they survive page reloads.
  */
 
+import { generateUUID } from '../utils/uuid'
+
 // ── Event type definitions ────────────────────────────────────────────────────
 
 /** Fired once on cold/warm app launch. */
@@ -185,7 +187,7 @@ export class AnalyticsService {
   private getOrCreateSessionId(): string {
     let id = sessionStorage.getItem(SESSION_KEY)
     if (!id) {
-      id = crypto.randomUUID()
+      id = generateUUID()
       sessionStorage.setItem(SESSION_KEY, id)
     }
     return id

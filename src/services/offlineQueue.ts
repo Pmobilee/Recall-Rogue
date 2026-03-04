@@ -4,6 +4,8 @@
  * offline and replays them when connectivity is restored.
  */
 
+import { generateUUID } from '../utils/uuid'
+
 // ============================================================
 // TYPES
 // ============================================================
@@ -76,7 +78,7 @@ export class OfflineQueue {
   enqueue(op: Omit<QueuedOperation, 'id' | 'attemptCount' | 'enqueuedAt'>): void {
     this.queue.push({
       ...op,
-      id: crypto.randomUUID(),
+      id: generateUUID(),
       attemptCount: 0,
       enqueuedAt: Date.now(),
     })

@@ -1,4 +1,5 @@
 import { BALANCE } from '../data/balance'
+import { generateUUID } from '../utils/uuid'
 import { defaultHubSaveState } from '../data/hubLayout'
 import type {
   AgeRating,
@@ -299,9 +300,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
   return {
     version: SAVE_VERSION,
     factDbVersion: 0,
-    playerId: typeof crypto.randomUUID === 'function'
-      ? crypto.randomUUID()
-      : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`,
+    playerId: generateUUID(),
     ageRating,
     createdAt: now,
     lastPlayedAt: now,
