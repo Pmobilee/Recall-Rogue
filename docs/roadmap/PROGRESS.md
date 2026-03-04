@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-16, 18 complete. Phase 14 (Onboarding & Tutorial) fully implemented: 5-panel crash cutscene, GAIA personality introduction with interest profiling, age selection, tutorial mine generation, progressive system unlocks across first 5 dives, and 0% loot loss for first dive. Phase 15 (GAIA Personality 2.0) fully implemented: post-dive reactions referencing specific dive data, clickable thought bubbles seeded by SM-2 schedule and interests, per-pet commentary system, journey memory tracking, return engagement hooks, and intelligent quiz teaching escalation. Phase 16 (Fossil & Farming Expansion) fully implemented: crop fossil system, knowledge-gated revival mechanics, farm planting UI, fossil discovery events. V2 roadmap (Phases 17, 19-25) remaining.
+Phases 0-18 complete. Phase 17 (Addictiveness Pass) fully implemented: gacha reveal animations with rarity-tiered effects, 15 new synthesized sounds (reveal tiers, mastery celebrations, streak milestones), session flow optimization with anti-binge system, login calendar with 7-day rewards, comeback bonuses, weekly challenges (30 definitions across 3 pillars), streak milestones (19 tiers up to 365 days), progress bars in dome HUD, functional audio controls in Settings, and Capacitor-aware notification service. V2 roadmap (Phases 19-25) remaining.
 
 ---
 
@@ -57,7 +57,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 16: Fossil & Farming Expansion** — Crop fossils, knowledge-gated revival, farm planting → [`completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md`](completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md)
 
 ### Engagement & Tooling (Phases 17-18)
-- [ ] **Phase 17: Addictiveness Pass** — Gacha animations, sound design, session flow, streaks, weekly challenges, login calendar → [`phases/PHASE-17-ADDICTIVENESS-PASS.md`](phases/PHASE-17-ADDICTIVENESS-PASS.md)
+- [x] **Phase 17: Addictiveness Pass** — Gacha animations, sound design, session flow, streaks, weekly challenges, login calendar → [`completed/PHASE-17-ADDICTIVENESS-PASS.md`](completed/PHASE-17-ADDICTIVENESS-PASS.md)
 - [x] **Phase 18: Dev Tooling** — Scenario presets, save snapshots, session profiles, review pressure audit, quiz anti-homework → [`completed/PHASE-18-DEV-TOOLING.md`](completed/PHASE-18-DEV-TOOLING.md)
 
 ### Infrastructure & Launch (Phases 19-20)
