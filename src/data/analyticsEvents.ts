@@ -34,6 +34,13 @@ export type SocialEvent =
   | { name: 'guild_challenge_contributed'; properties: { challengeType: string; contribution: number } }
   | { name: 'referral_link_shared'; properties: { platform: 'copy' | 'native_share' } }
 
+/** Co-op analytics events — Phase 43 */
+export type CoopEvent =
+  | { name: 'coop_dive_started'; properties: { role: 'miner' | 'scholar'; matchType: 'friend' | 'code' | 'quickmatch' } }
+  | { name: 'coop_dive_completed'; properties: { bothActive: boolean; cooperationBonusEarned: boolean; totalLoot: number } }
+  | { name: 'coop_scholar_disconnect'; properties: { tick: number; reconnected: boolean } }
+  | { name: 'coop_emote_sent'; properties: { emote: string } }
+
 /** Learning effectiveness metrics (DD-V2-134) */
 export type LearningMetricEvent =
   | { name: 'learning_retention_rate'; properties: { rate: number; totalReviews: number } }

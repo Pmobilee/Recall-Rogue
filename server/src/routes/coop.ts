@@ -1,6 +1,20 @@
-import { FastifyInstance } from 'fastify'
+/**
+ * Co-op REST Routes — lobby management and matchmaking endpoints.
+ *
+ * Provides REST endpoints for lobby creation, joining, code lookup, and
+ * quickmatch queue management. The live WebSocket session is handled by
+ * coopWs.ts.
+ */
 
-/** Co-op lobby state */
+import { FastifyInstance } from 'fastify'
+import {
+  createRoom,
+  joinRoom,
+  findRoomByCode,
+  getRoom,
+} from '../services/coopRoomService.js'
+
+/** Legacy in-memory lobby state (kept for backwards compatibility). */
 export interface CoopLobby {
   id: string
   hostId: string
@@ -12,42 +26,96 @@ export interface CoopLobby {
   createdAt: string
 }
 
-/** Active lobbies (in-memory for V1) */
+/** Active legacy lobbies (in-memory for V1) */
 const lobbies = new Map<string, CoopLobby>()
 
+/** Quickmatch queue. */
+const quickmatchQueue: { playerId: string; playerName: string; enqueuedAt: number }[] = []
+
 export async function coopRoutes(app: FastifyInstance): Promise<void> {
-  // Create a lobby
+  // ── Phase 43: Room Service Endpoints ───────────────────────────────────────
+
+  // Create a Phase 43 room (Miner/Scholar co-op).
   app.post('/lobby/create', async (req, reply) => {
-    const { hostId, hostName, maxPlayers } = req.body as { hostId: string; hostName: string; maxPlayers?: number }
+    const { hostId, hostName } = req.body as { hostId: string; hostName: string; maxPlayers?: number }
     if (!hostId || !hostName) return reply.status(400).send({ error: 'hostId and hostName required' })
 
-    const lobby: CoopLobby = {
-      id: `lobby-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-      hostId,
-      players: [{ id: hostId, name: hostName, ready: true }],
-      maxPlayers: Math.min(maxPlayers ?? 4, 4),
-      status: 'waiting',
-      createdAt: new Date().toISOString()
-    }
-    lobbies.set(lobby.id, lobby)
-    return reply.status(201).send({ lobby })
+    const room = createRoom(hostId, hostName)
+    return reply.status(201).send({ lobby: { id: room.id, code: room.code, hostId: room.hostId, status: room.status, createdAt: new Date(room.createdAt).toISOString() } })
   })
 
-  // Join a lobby
+  // Join a room by ID.
   app.post('/lobby/:lobbyId/join', async (req, reply) => {
     const { lobbyId } = req.params as { lobbyId: string }
     const { playerId, playerName } = req.body as { playerId: string; playerName: string }
-    const lobby = lobbies.get(lobbyId)
-    if (!lobby) return reply.status(404).send({ error: 'Lobby not found' })
-    if (lobby.status !== 'waiting') return reply.status(400).send({ error: 'Lobby not accepting players' })
-    if (lobby.players.length >= lobby.maxPlayers) return reply.status(400).send({ error: 'Lobby full' })
-    if (lobby.players.some(p => p.id === playerId)) return reply.status(400).send({ error: 'Already in lobby' })
+    if (!playerId || !playerName) return reply.status(400).send({ error: 'playerId and playerName required' })
 
-    lobby.players.push({ id: playerId, name: playerName, ready: false })
-    return reply.send({ lobby })
+    const room = joinRoom(lobbyId, playerId, playerName)
+    if (!room) return reply.status(404).send({ error: 'Room not found or no longer accepting players' })
+    return reply.send({ roomId: room.id, role: 'scholar', code: room.code })
   })
 
-  // Leave a lobby
+  // Find a room by 6-character invite code (for sharing).
+  app.get('/lobby/code/:code', async (req, reply) => {
+    const { code } = req.params as { code: string }
+    const room = findRoomByCode(code)
+    if (!room) return reply.status(404).send({ error: 'Code not found or lobby no longer open' })
+    return reply.send({ roomId: room.id, code: room.code, hostName: room.slots[0]?.displayName ?? '' })
+  })
+
+  // Get room status by ID.
+  app.get('/lobby/:lobbyId', async (req, reply) => {
+    const { lobbyId } = req.params as { lobbyId: string }
+    const room = getRoom(lobbyId)
+    if (!room) return reply.status(404).send({ error: 'Room not found' })
+    return reply.send({
+      roomId: room.id,
+      code: room.code,
+      status: room.status,
+      slots: room.slots.map(s => s ? { playerId: s.playerId, displayName: s.displayName, role: s.role, connected: s.connected } : null),
+    })
+  })
+
+  // ── Phase 43: Quickmatch Queue ─────────────────────────────────────────────
+
+  // Quickmatch queue: add self, return matched roomId or 'queued'.
+  app.post('/quickmatch/join', async (req, reply) => {
+    const { playerId, playerName } = req.body as { playerId: string; playerName: string }
+    if (!playerId || !playerName) return reply.status(400).send({ error: 'playerId and playerName required' })
+
+    // Check if there is already someone waiting.
+    const waiting = quickmatchQueue.find(e => e.playerId !== playerId)
+    if (waiting) {
+      // Match found: create a room, remove waiter from queue.
+      quickmatchQueue.splice(quickmatchQueue.indexOf(waiting), 1)
+      const room = createRoom(waiting.playerId, waiting.playerName)
+      joinRoom(room.id, playerId, playerName)
+      return reply.send({ matched: true, roomId: room.id })
+    }
+
+    // No match — add to queue (replace existing entry for this player).
+    const existingIdx = quickmatchQueue.findIndex(e => e.playerId === playerId)
+    if (existingIdx >= 0) quickmatchQueue.splice(existingIdx, 1)
+    quickmatchQueue.push({ playerId, playerName, enqueuedAt: Date.now() })
+
+    // Expire queue entries older than 60 s.
+    const cutoff = Date.now() - 60_000
+    quickmatchQueue.splice(0, quickmatchQueue.length, ...quickmatchQueue.filter(e => e.enqueuedAt > cutoff))
+
+    return reply.send({ matched: false, queueLength: quickmatchQueue.length })
+  })
+
+  // Leave the quickmatch queue.
+  app.post('/quickmatch/leave', async (req, reply) => {
+    const { playerId } = req.body as { playerId: string }
+    const idx = quickmatchQueue.findIndex(e => e.playerId === playerId)
+    if (idx >= 0) quickmatchQueue.splice(idx, 1)
+    return reply.send({ ok: true })
+  })
+
+  // ── Legacy Lobby Endpoints (kept for backwards compatibility) ──────────────
+
+  // Leave a lobby.
   app.post('/lobby/:lobbyId/leave', async (req, reply) => {
     const { lobbyId } = req.params as { lobbyId: string }
     const { playerId } = req.body as { playerId: string }
@@ -65,7 +133,7 @@ export async function coopRoutes(app: FastifyInstance): Promise<void> {
     return reply.send({ lobby })
   })
 
-  // Set ready
+  // Set ready.
   app.post('/lobby/:lobbyId/ready', async (req, reply) => {
     const { lobbyId } = req.params as { lobbyId: string }
     const { playerId, ready } = req.body as { playerId: string; ready: boolean }
@@ -78,17 +146,9 @@ export async function coopRoutes(app: FastifyInstance): Promise<void> {
     return reply.send({ lobby })
   })
 
-  // List open lobbies
+  // List open lobbies.
   app.get('/lobbies', async (_req, reply) => {
     const openLobbies = [...lobbies.values()].filter(l => l.status === 'waiting' && l.players.length < l.maxPlayers)
     return reply.send({ lobbies: openLobbies })
-  })
-
-  // Get lobby
-  app.get('/lobby/:lobbyId', async (req, reply) => {
-    const { lobbyId } = req.params as { lobbyId: string }
-    const lobby = lobbies.get(lobbyId)
-    if (!lobby) return reply.status(404).send({ error: 'Lobby not found' })
-    return reply.send({ lobby })
   })
 }

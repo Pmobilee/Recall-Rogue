@@ -340,7 +340,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 12 | W3 | **41** | Analytics & Experiments | [x] |
 | 13 | W3 | **45** | Kid Mode & Parental Controls | [x] |
 | 14 | W3 | **34** | Pixel Art Per Fact | [x] |
-| 15 | W3 | **43** | Cooperative Dives | [ ] |
+| 15 | W3 | **43** | Cooperative Dives | [x] |
 | 16 | W3 | **30** | Mining Juice | [ ] |
 | 17 | W3 | **35** | Mine Mechanics | [ ] |
 | 18 | W4 | **42** | Viral Growth | [ ] |

@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 34, 37, 38, 39, 40, 41, 45, 47. Phase 34 (Pixel Art Per Fact): ComfyUI SDXL batch pipeline (fact_prompt_generator.py calling Claude API for FactImageSpec JSON, fact_batch_generate.py for sequential generation with resumable checkpoint), 3-gate sprite QC (dimension check, transparency gate, perceptual hash dedup), greyscale-to-color mastery progression (CSS filter mapping SM-2 repetitions 0-5+ to 5 visual stages), FactArtwork.svelte component with lazy loading and golden shimmer for mastery stage 4, factSpriteManifest.ts in-memory cache, FactSpriteLoader.ts Phaser preloader, build-time audit script (audit-fact-sprites.mjs) with PNG header dimension check and CI --fail-below flag, @fastify/static serving with 30-day Cache-Control for fact sprites, Vite assetFileNames config for stable sprite URLs. Next: Phase 43 (Cooperative Dives) or Phase 30 (Mining Juice) or Phase 35 (Mine Mechanics Completion).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 34, 37, 38, 39, 40, 41, 43, 45, 47. Phase 43 (Cooperative Dives): WebSocket 2-player co-op with @fastify/websocket plugin, CoopRoom in-memory state management, authoritative server-side mine grid, Miner/Scholar role system with buffs (o2_restore, loot_boost, hardness_cut, speed_surge), co-op loot ledger with 20% cooperation pool, disconnect recovery with 60-second reconnect window and AI Scholar takeover. Client-side: coopService.ts (REST + WebSocket facade, optimistic prediction, reconciliation), coopState.ts (Svelte stores), CoopMatchmaker.svelte (Host/Code/Quickmatch tabs), ScholarQuizPanel.svelte, CoopHUD.svelte, CoopEmoteToast.svelte, CoopRecoveryBanner.svelte, CoopLootSummary.svelte. Next: Phase 30 (Mining Juice) or Phase 35 (Mine Mechanics Completion).
 
 ---
 
@@ -110,7 +110,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Growth & Analytics (Phases 41-43)
 - [x] **Phase 41: Advanced Analytics & Experiments** — Feature flag system, A/B testing framework, funnel analysis, cohort dashboards, retention optimization → [`completed/PHASE-41-ANALYTICS-EXPERIMENTS.md`](completed/PHASE-41-ANALYTICS-EXPERIMENTS.md)
 - [ ] **Phase 42: Viral Growth Engine** — Share paintings, referral optimization, social proof badges, invite deep links, ASO iteration → [`phases/PHASE-42-VIRAL-GROWTH.md`](phases/PHASE-42-VIRAL-GROWTH.md)
-- [ ] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`phases/PHASE-43-COOPERATIVE-DIVES.md`](phases/PHASE-43-COOPERATIVE-DIVES.md)
+- [x] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`completed/PHASE-43-COOPERATIVE-DIVES.md`](completed/PHASE-43-COOPERATIVE-DIVES.md)
 
 ### Education (Phases 44-46)
 - [ ] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`phases/PHASE-44-TEACHER-DASHBOARD.md`](phases/PHASE-44-TEACHER-DASHBOARD.md)

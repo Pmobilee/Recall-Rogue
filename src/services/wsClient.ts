@@ -2,8 +2,17 @@
 export type WSMessageType =
   | 'lobby:join' | 'lobby:leave' | 'lobby:ready' | 'lobby:start'
   | 'dive:move' | 'dive:mine' | 'dive:quiz_answer' | 'dive:use_item'
-  | 'dive:sync' | 'dive:end'
+  | 'dive:sync' | 'dive:end' | 'dive:ended' | 'dive:loot_summary'
   | 'chat:message'
+  | 'player:connected'
+  | 'miner:moved'
+  | 'block:mined'
+  | 'scholar:buff' | 'scholar:buff_applied' | 'scholar:buff_failed'
+  | 'scholar:disconnected' | 'scholar:reconnected'
+  | 'scholar:quiz_prompt'
+  | 'ai_scholar:activated' | 'ai_scholar:action'
+  | 'ping' | 'pong'
+  | 'error'
 
 export interface WSMessage {
   type: WSMessageType

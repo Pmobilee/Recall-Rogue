@@ -33,6 +33,10 @@ import { factBundleRoutes } from "./routes/factBundles.js";
 import { startBundleScheduler } from "./jobs/bundleScheduler.js";
 import { featureFlagRoutes } from "./routes/featureFlags.js";
 import { parentalRoutes } from "./routes/parental.js";
+import websocket from "@fastify/websocket";
+import { coopWsRoutes } from "./routes/coopWs.js";
+import { coopRoutes } from "./routes/coop.js";
+import { pruneStaleRooms } from "./services/coopRoomService.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -214,6 +218,14 @@ export async function buildApp() {
 
   // Phase 45: Parental controls routes
   await fastify.register(parentalRoutes, { prefix: "/parental" });
+
+  // Phase 43: Co-op WebSocket + REST routes
+  await fastify.register(websocket);
+  await fastify.register(coopRoutes, { prefix: "/api/coop" });
+  await fastify.register(coopWsRoutes);   // WebSocket routes registered at root level
+
+  // Prune stale co-op rooms every 30 minutes.
+  setInterval(pruneStaleRooms, 30 * 60 * 1000);
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {

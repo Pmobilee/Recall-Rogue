@@ -3,6 +3,10 @@
   import { BALANCE } from '../../data/balance'
   import { CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
   import GaiaToast from './GaiaToast.svelte'
+  import CoopHUD from './CoopHUD.svelte'
+  import CoopEmoteToast from './CoopEmoteToast.svelte'
+  import CoopRecoveryBanner from './CoopRecoveryBanner.svelte'
+  import { coopRole } from '../stores/coopState'
 
   interface Props {
     onSurface?: () => void
@@ -253,6 +257,12 @@
   {/if}
 
   <GaiaToast />
+
+  {#if $coopRole !== null}
+    <CoopHUD />
+    <CoopEmoteToast />
+    <CoopRecoveryBanner />
+  {/if}
 </div>
 
 <style>
