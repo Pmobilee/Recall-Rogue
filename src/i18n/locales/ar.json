@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "language": "Arabic",
+    "locale": "ar",
+    "last_updated": "2026-03-04",
+    "translator": "placeholder — replace with human translator name",
+    "instructions": "Do NOT translate text in {curly_braces}. These are variable placeholders. Keep all JSON key names in English. Preserve punctuation style of the original. This is an RTL language."
+  },
+
+  "common": {
+    "ok": "موافق",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "back": "رجوع",
+    "confirm": "تأكيد",
+    "delete": "حذف",
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ ما.",
+    "retry": "إعادة المحاولة",
+    "or": "أو",
+    "of": "من",
+    "days": {
+      "one": "{count} يوم",
+      "other": "{count} أيام"
+    },
+    "hours": {
+      "one": "{count} ساعة",
+      "other": "{count} ساعات"
+    },
+    "minutes": {
+      "one": "{count} دقيقة",
+      "other": "{count} دقائق"
+    }
+  },
+
+  "hub": {
+    "dive_button": "الغوص",
+    "enter_mine": "دخول المنجم",
+    "title": "تيرا غاتشا",
+    "rooms": {
+      "command": "القيادة",
+      "workshop": "ورشة العمل",
+      "lab": "المختبر",
+      "archive": "الأرشيف",
+      "market": "السوق",
+      "museum": "المتحف"
+    },
+    "floor_locked": "الطابق مقفل",
+    "unlock_for": "فتح مقابل {cost} غبار",
+    "daily_briefing": "الإحاطة اليومية",
+    "gaia_report": "تقرير GAIA"
+  },
+
+  "settings": {
+    "title": "الإعدادات",
+    "display": "العرض",
+    "sprite_quality": "جودة الصور",
+    "sprite_quality_low": "منخفضة (32px)",
+    "sprite_quality_high": "عالية (256px)",
+    "sprite_quality_note": "سيؤدي تغيير جودة الصور إلى إعادة تحميل الصفحة.",
+    "switch_to_high": "التبديل إلى عالية",
+    "switch_to_low": "التبديل إلى منخفضة",
+    "audio": {
+      "title": "الصوت",
+      "music": "الموسيقى",
+      "sfx": "المؤثرات الصوتية",
+      "music_volume": "مستوى صوت الموسيقى",
+      "sfx_volume": "مستوى صوت المؤثرات",
+      "on": "تشغيل",
+      "off": "إيقاف"
+    },
+    "gaia": {
+      "title": "شخصية GAIA",
+      "mood": "المزاج",
+      "mood_snarky": "ساخر",
+      "mood_enthusiastic": "متحمس",
+      "mood_calm": "هادئ",
+      "mood_desc_snarky": "ذكاء جاف وسخرية",
+      "mood_desc_enthusiastic": "مبهج ومشجع",
+      "mood_desc_calm": "متأنٍ ومتأمل",
+      "chattiness": "الثرثرة",
+      "explanations": "عرض التفسيرات بعد الإجابات الخاطئة",
+      "explanations_desc": "تشرح GAIA الإجابات الخاطئة لتحسين التذكر",
+      "chattiness_silent": "صامت",
+      "chattiness_quiet": "هادئ",
+      "chattiness_moderate": "معتدل",
+      "chattiness_talkative": "ثرثار",
+      "chattiness_nonstop": "بلا توقف"
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "high_contrast_quiz": "اختبار عالي التباين",
+      "high_contrast_quiz_desc": "تباين أقوى لخيارات إجابات الاختبار",
+      "reduced_motion": "تقليل الحركة",
+      "reduced_motion_desc": "تعطيل الرسوم المتحركة في جميع أنحاء اللعبة"
+    },
+    "learning": {
+      "title": "التعلم",
+      "interest_settings": "إعدادات الاهتمامات",
+      "interest_settings_desc": "اختر المواضيع التي تظهر في منجمك",
+      "language_mode": "تعلم اللغات",
+      "language_mode_desc": "تغيير أو تعطيل اللغة المستهدفة",
+      "fact_learning": "تعلم الحقائق",
+      "fact_learning_desc": "تشغيل/إيقاف اختبارات الحقائق",
+      "coming_soon": "قريباً"
+    },
+    "language": {
+      "title": "اللغة",
+      "ui_language": "لغة الواجهة",
+      "auto_detected": "مكتشفة تلقائياً"
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "review_reminders": "تذكيرات المراجعة",
+      "review_reminders_desc": "إشعارات يومية عندما تكون الحقائق جاهزة للمراجعة",
+      "dive_reminders": "تذكيرات الغوص",
+      "dive_reminders_desc": "تذكير بالغوص كل يوم"
+    },
+    "privacy": {
+      "title": "الخصوصية",
+      "hub_private": "المحور الخاص",
+      "hub_private_desc": "إخفاء قبتك من زيارات اللاعبين الآخرين",
+      "hide_leaderboard": "الإخفاء من لوحات المتصدرين",
+      "hide_leaderboard_desc": "لن تظهر نقاطك في التصنيفات العامة"
+    },
+    "account": {
+      "title": "الحساب",
+      "profile": "الملف الشخصي",
+      "login": "تسجيل الدخول",
+      "logout": "تسجيل الخروج",
+      "age_rating": "تصنيف العمر",
+      "player_id": "معرف اللاعب",
+      "online_account": "الحساب الإلكتروني",
+      "guest_mode": "وضع الزائر",
+      "logged_in": "مسجل الدخول",
+      "manage": "إدارة",
+      "sign_in": "تسجيل الدخول"
+    },
+    "danger": {
+      "title": "منطقة الخطر",
+      "delete_save": "حذف بيانات الحفظ",
+      "delete_confirm": "سيتم مسح كل التقدم بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+      "delete_yes": "نعم، احذف كل شيء"
+    },
+    "about": {
+      "title": "حول",
+      "version": "الإصدار",
+      "build": "البنية",
+      "engine": "المحرك"
+    }
+  },
+
+  "quiz": {
+    "correct": "صحيح!",
+    "wrong": "خطأ",
+    "question_of": "السؤال {current} من {total}",
+    "skip": "تخطي",
+    "explanation": "شرح",
+    "streak": {
+      "one": "{count} سلسلة",
+      "other": "{count} سلاسل"
+    },
+    "facts_count": {
+      "one": "{count} حقيقة",
+      "other": "{count} حقائق"
+    }
+  },
+
+  "hud": {
+    "oxygen": "O₂",
+    "depth": "الطبقة {layer}",
+    "inventory": "المخزون",
+    "send_up": "إرسال للأعلى",
+    "return": "العودة إلى القبة"
+  },
+
+  "dive": {
+    "prep_title": "التحضير للغوص",
+    "pickaxe": "فأس",
+    "consumables": "المواد الاستهلاكية",
+    "companion": "الرفيق",
+    "relics": "الآثار",
+    "start_dive": "بدء الغوص",
+    "resume_title": "استئناف الغوص؟",
+    "resume_desc": "لديك غوص غير مكتمل في الطبقة {layer}. هل تريد المتابعة أم البدء من جديد؟",
+    "resume_continue": "متابعة الغوص",
+    "resume_fresh": "البدء من جديد",
+    "results_title": "نتائج الغوص",
+    "results_depth": "أعمق طبقة",
+    "results_blocks": "الكتل المُعدَّنة",
+    "results_facts": "الحقائق المتعلمة",
+    "results_minerals": "المعادن المجمعة",
+    "return_dome": "العودة إلى القبة"
+  },
+
+  "auth": {
+    "login_title": "تسجيل الدخول",
+    "register_title": "إنشاء حساب",
+    "forgot_title": "إعادة تعيين كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "username": "اسم المستخدم",
+    "login_button": "تسجيل الدخول",
+    "register_button": "إنشاء حساب",
+    "forgot_button": "إرسال رابط إعادة التعيين",
+    "no_account": "لا يوجد حساب؟",
+    "have_account": "هل لديك حساب بالفعل؟",
+    "play_as_guest": "اللعب كزائر",
+    "forgot_password": "هل نسيت كلمة المرور؟",
+    "reset_sent": "تم إرسال رابط إعادة التعيين إلى {email}",
+    "logout": "تسجيل الخروج",
+    "account_deleted": "تم حذف الحساب."
+  },
+
+  "legal": {
+    "age_gate_title": "كم عمرك؟",
+    "age_gate_under_13": "أقل من 13",
+    "age_gate_13_17": "13–17",
+    "age_gate_18_plus": "18+",
+    "age_gate_continue": "متابعة",
+    "privacy_title": "سياسة الخصوصية",
+    "terms_title": "شروط الخدمة",
+    "accept": "أوافق"
+  },
+
+  "profiles": {
+    "select_title": "من يلعب؟",
+    "create_title": "ملف شخصي جديد",
+    "name_placeholder": "أدخل الاسم",
+    "create_button": "إنشاء ملف شخصي",
+    "manage_title": "إدارة الملفات الشخصية",
+    "delete_profile": "حذف الملف الشخصي"
+  },
+
+  "onboarding": {
+    "next": "التالي",
+    "skip": "تخطي",
+    "start": "ابدأ",
+    "gaia_intro_1": "GAIA متصلة. مرحباً، أيها الطيار.",
+    "age_selection_title": "أولاً، أخبرنا بعمرك حتى نتمكن من تخصيص المحتوى لك."
+  },
+
+  "social": {
+    "leaderboard_title": "لوحة المتصدرين",
+    "duel_title": "مبارزة المعرفة",
+    "trade_title": "سوق الآثار",
+    "guild_title": "النقابة",
+    "referral_title": "دعوة صديق",
+    "duel_challenge": "تحدٍّ",
+    "duel_accept": "قبول",
+    "duel_decline": "رفض",
+    "guild_create": "إنشاء نقابة",
+    "guild_join": "الانضمام إلى نقابة"
+  },
+
+  "season": {
+    "title": "تذكرة الموسم",
+    "free_track": "المسار المجاني",
+    "premium_track": "تيرا باس",
+    "milestone": "المعلم {n}",
+    "claim": "استلام",
+    "locked": "مقفل"
+  },
+
+  "monetization": {
+    "terra_pass_title": "تيرا باس",
+    "terra_pass_price": "4.99$ / شهر",
+    "pioneer_pack_title": "حزمة الرائد",
+    "unlock_button": "فتح",
+    "restore_purchases": "استعادة المشتريات",
+    "content_gate_desc": "افتح حقائق غير محدودة واحصل على تجربة خالية من الإعلانات.",
+    "facts_progress": "{current} من {target} حقيقة متاحة"
+  },
+
+  "errors": {
+    "offline": "أنت غير متصل بالإنترنت. بعض الميزات غير متوفرة.",
+    "sync_failed": "فشل المزامنة. ستتم مزامنة التغييرات عند إعادة الاتصال.",
+    "webgl_unsupported": "جهازك لا يدعم WebGL. يرجى استخدام متصفح حديث.",
+    "generic": "حدث خطأ. يرجى المحاولة مرة أخرى."
+  }
+}

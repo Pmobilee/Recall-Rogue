@@ -14,6 +14,7 @@ import { gameManagerStore, getGM } from './game/gameManagerRef'
 import { getSyncVersion, setSyncVersion } from './services/deltaSync'
 import { checkBrowserCompat, applyCompatPatches } from './services/browserCompat'
 import { perfService } from './services/perfService'
+import { initI18n } from './i18n/index'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -109,6 +110,9 @@ playerSave.update(s => {
 })
 
 async function bootGame(): Promise<void> {
+  // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
+  await initI18n()
+
   // Start DB init in background — don't block Phaser boot
   const dbPromise = factsDB.init().catch(err => {
     console.warn('FactsDB init failed, continuing without database:', err)

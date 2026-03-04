@@ -1,0 +1,267 @@
+{
+  "_meta": {
+    "language": "German",
+    "locale": "de",
+    "last_updated": "2026-03-04",
+    "translator": "placeholder — replace with human translator name",
+    "instructions": "Do NOT translate text in {curly_braces}. These are variable placeholders. Keep all JSON key names in English. Preserve punctuation style of the original."
+  },
+
+  "common": {
+    "ok": "OK",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "back": "Zurück",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "loading": "Laden...",
+    "error": "Etwas ist schiefgelaufen.",
+    "retry": "Erneut versuchen",
+    "or": "oder",
+    "of": "von",
+    "days": { "one": "{count} Tag", "other": "{count} Tage" },
+    "hours": { "one": "{count} Stunde", "other": "{count} Stunden" },
+    "minutes": { "one": "{count} Minute", "other": "{count} Minuten" }
+  },
+
+  "hub": {
+    "dive_button": "Tauchen",
+    "enter_mine": "Mine Betreten",
+    "title": "Terra Gacha",
+    "rooms": {
+      "command": "Kommando",
+      "workshop": "Werkstatt",
+      "lab": "Labor",
+      "archive": "Archiv",
+      "market": "Markt",
+      "museum": "Museum"
+    },
+    "floor_locked": "Etage Gesperrt",
+    "unlock_for": "Für {cost} Staub freischalten",
+    "daily_briefing": "Tagesbriefing",
+    "gaia_report": "GAIA-Bericht"
+  },
+
+  "settings": {
+    "title": "Einstellungen",
+    "display": "Anzeige",
+    "sprite_quality": "Sprite-Qualität",
+    "sprite_quality_low": "Niedrig (32px)",
+    "sprite_quality_high": "Hoch (256px)",
+    "sprite_quality_note": "Das Ändern der Sprite-Qualität lädt die Seite neu.",
+    "switch_to_high": "Zu Hoch wechseln",
+    "switch_to_low": "Zu Niedrig wechseln",
+    "audio": {
+      "title": "Audio",
+      "music": "Musik",
+      "sfx": "Soundeffekte",
+      "music_volume": "Musiklautstärke",
+      "sfx_volume": "Effektlautstärke",
+      "on": "An",
+      "off": "Aus"
+    },
+    "gaia": {
+      "title": "GAIA-Persönlichkeit",
+      "mood": "Stimmung",
+      "mood_snarky": "Sarkastisch",
+      "mood_enthusiastic": "Enthusiastisch",
+      "mood_calm": "Ruhig",
+      "mood_desc_snarky": "Trockener Witz und Sarkasmus",
+      "mood_desc_enthusiastic": "Lebhaft und ermutigend",
+      "mood_desc_calm": "Besonnen und achtsam",
+      "chattiness": "Gesprächigkeit",
+      "explanations": "Erklärungen nach falschen Antworten anzeigen",
+      "explanations_desc": "GAIA erklärt falsche Antworten zur Verbesserung der Merkfähigkeit",
+      "chattiness_silent": "Still",
+      "chattiness_quiet": "Leise",
+      "chattiness_moderate": "Moderat",
+      "chattiness_talkative": "Gesprächig",
+      "chattiness_nonstop": "Ununterbrochen"
+    },
+    "accessibility": {
+      "title": "Barrierefreiheit",
+      "high_contrast_quiz": "Hochkontrast-Quiz",
+      "high_contrast_quiz_desc": "Stärkerer Kontrast für Quiz-Antwortoptionen",
+      "reduced_motion": "Reduzierte Bewegung",
+      "reduced_motion_desc": "Deaktiviert Animationen im gesamten Spiel"
+    },
+    "learning": {
+      "title": "Lernen",
+      "interest_settings": "Interesseneinstellungen",
+      "interest_settings_desc": "Wähle, welche Themen in deiner Mine erscheinen",
+      "language_mode": "Sprachlernen",
+      "language_mode_desc": "Zielsprache ändern oder deaktivieren",
+      "fact_learning": "Faktenlernen",
+      "fact_learning_desc": "Fakten-Quiz ein-/ausschalten",
+      "coming_soon": "Demnächst verfügbar"
+    },
+    "language": {
+      "title": "Sprache",
+      "ui_language": "Oberflächensprache",
+      "auto_detected": "Automatisch erkannt"
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "review_reminders": "Wiederholungserinnerungen",
+      "review_reminders_desc": "Tägliche Benachrichtigungen, wenn Fakten fällig sind",
+      "dive_reminders": "Taucherinnerungen",
+      "dive_reminders_desc": "Erinnerung, jeden Tag zu tauchen"
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "hub_private": "Hub Privat",
+      "hub_private_desc": "Deine Kuppel vor Besuchen anderer Spieler verbergen",
+      "hide_leaderboard": "Aus Ranglisten ausblenden",
+      "hide_leaderboard_desc": "Deine Punkte werden nicht in öffentlichen Ranglisten angezeigt"
+    },
+    "account": {
+      "title": "Konto",
+      "profile": "Profil",
+      "login": "Anmelden",
+      "logout": "Abmelden",
+      "age_rating": "Altersfreigabe",
+      "player_id": "Spieler-ID",
+      "online_account": "Online-Konto",
+      "guest_mode": "Gastmodus",
+      "logged_in": "Angemeldet",
+      "manage": "Verwalten",
+      "sign_in": "Anmelden"
+    },
+    "danger": {
+      "title": "Gefahrenzone",
+      "delete_save": "Speicherdaten Löschen",
+      "delete_confirm": "Alle Fortschritte werden dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.",
+      "delete_yes": "Ja, alles löschen"
+    },
+    "about": {
+      "title": "Über",
+      "version": "Version",
+      "build": "Build",
+      "engine": "Engine"
+    }
+  },
+
+  "quiz": {
+    "correct": "Richtig!",
+    "wrong": "Falsch",
+    "question_of": "Frage {current} von {total}",
+    "skip": "Überspringen",
+    "explanation": "Erklärung",
+    "streak": { "one": "{count} Serie", "other": "{count} Serie" },
+    "facts_count": { "one": "{count} Fakt", "other": "{count} Fakten" }
+  },
+
+  "hud": {
+    "oxygen": "O₂",
+    "depth": "Ebene {layer}",
+    "inventory": "Inventar",
+    "send_up": "Nach Oben Schicken",
+    "return": "Zur Kuppel Zurück"
+  },
+
+  "dive": {
+    "prep_title": "Tauchvorbereitung",
+    "pickaxe": "Spitzhacke",
+    "consumables": "Verbrauchsgüter",
+    "companion": "Begleiter",
+    "relics": "Relikte",
+    "start_dive": "Tauchen Starten",
+    "resume_title": "Tauchen Fortsetzen?",
+    "resume_desc": "Du hast einen unvollendeten Tauchgang auf Ebene {layer}. Fortsetzen oder neu starten?",
+    "resume_continue": "Tauchen Fortsetzen",
+    "resume_fresh": "Neu Starten",
+    "results_title": "Tauchergebnisse",
+    "results_depth": "Tiefste Ebene",
+    "results_blocks": "Abgebaute Blöcke",
+    "results_facts": "Gelernte Fakten",
+    "results_minerals": "Gesammelte Mineralien",
+    "return_dome": "Zur Kuppel Zurück"
+  },
+
+  "auth": {
+    "login_title": "Anmelden",
+    "register_title": "Konto Erstellen",
+    "forgot_title": "Passwort Zurücksetzen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "username": "Benutzername",
+    "login_button": "Anmelden",
+    "register_button": "Konto Erstellen",
+    "forgot_button": "Zurücksetz-Link Senden",
+    "no_account": "Kein Konto?",
+    "have_account": "Bereits ein Konto?",
+    "play_as_guest": "Als Gast Spielen",
+    "forgot_password": "Passwort vergessen?",
+    "reset_sent": "Zurücksetz-Link gesendet an {email}",
+    "logout": "Abmelden",
+    "account_deleted": "Konto gelöscht."
+  },
+
+  "legal": {
+    "age_gate_title": "Wie alt bist du?",
+    "age_gate_under_13": "Unter 13",
+    "age_gate_13_17": "13–17",
+    "age_gate_18_plus": "18+",
+    "age_gate_continue": "Weiter",
+    "privacy_title": "Datenschutzrichtlinie",
+    "terms_title": "Nutzungsbedingungen",
+    "accept": "Ich stimme zu"
+  },
+
+  "profiles": {
+    "select_title": "Wer spielt?",
+    "create_title": "Neues Profil",
+    "name_placeholder": "Name eingeben",
+    "create_button": "Profil Erstellen",
+    "manage_title": "Profile Verwalten",
+    "delete_profile": "Profil Löschen"
+  },
+
+  "onboarding": {
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "start": "Beginnen",
+    "gaia_intro_1": "GAIA online. Willkommen, Pilot.",
+    "age_selection_title": "Zunächst teile uns dein Alter mit, damit wir Inhalte anpassen können."
+  },
+
+  "social": {
+    "leaderboard_title": "Rangliste",
+    "duel_title": "Wissensduel",
+    "trade_title": "Artefaktmarkt",
+    "guild_title": "Gilde",
+    "referral_title": "Freund Einladen",
+    "duel_challenge": "Herausfordern",
+    "duel_accept": "Akzeptieren",
+    "duel_decline": "Ablehnen",
+    "guild_create": "Gilde Erstellen",
+    "guild_join": "Gilde Beitreten"
+  },
+
+  "season": {
+    "title": "Saisonpass",
+    "free_track": "Kostenloser Pfad",
+    "premium_track": "Terra Pass",
+    "milestone": "Meilenstein {n}",
+    "claim": "Beanspruchen",
+    "locked": "Gesperrt"
+  },
+
+  "monetization": {
+    "terra_pass_title": "Terra Pass",
+    "terra_pass_price": "4,99 $ / Monat",
+    "pioneer_pack_title": "Pionier-Paket",
+    "unlock_button": "Freischalten",
+    "restore_purchases": "Käufe Wiederherstellen",
+    "content_gate_desc": "Schalte unbegrenzte Fakten frei und entferne Werbung.",
+    "facts_progress": "{current} von {target} Fakten verfügbar"
+  },
+
+  "errors": {
+    "offline": "Du bist offline. Einige Funktionen sind nicht verfügbar.",
+    "sync_failed": "Synchronisierung fehlgeschlagen. Änderungen werden synchronisiert, wenn du dich wieder verbindest.",
+    "webgl_unsupported": "Dein Gerät unterstützt kein WebGL. Bitte verwende einen modernen Browser.",
+    "generic": "Ein Fehler ist aufgetreten. Bitte versuche es erneut."
+  }
+}

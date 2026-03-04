@@ -1,5 +1,6 @@
 @import './ui/styles/desktop.css';
 @import './ui/styles/accessibility.css';
+@import './ui/styles/rtl.css';
 
 :root {
   --color-bg: #1a1a2e;

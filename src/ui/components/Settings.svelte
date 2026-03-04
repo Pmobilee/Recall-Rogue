@@ -22,6 +22,9 @@
   import { currentScreen } from '../stores/gameState'
 
   import { authStore } from '../stores/authStore'
+  import LanguageSelector from './LanguageSelector.svelte'
+  import { locale, LOCALE_META } from '../../i18n'
+  import { t } from '../../i18n'
 
   interface Props {
     /** Called when the user taps the Back button. */
@@ -37,6 +40,9 @@
 
   // Delete-save confirmation state
   let showDeleteConfirm = $state(false)
+
+  // Language selector state
+  let showLanguageSelector = $state(false)
 
   /** Returns a sample idle quip for the given mood. */
   function getSampleQuip(mood: GaiaMood): string {
@@ -361,6 +367,27 @@
       </div>
     </section>
 
+    <!-- ===== LANGUAGE SETTINGS ===== -->
+    <section class="settings-section" aria-labelledby="language-heading">
+      <h2 id="language-heading" class="section-heading">{$t('settings.language.title')}</h2>
+
+      <div class="settings-card">
+        <button
+          class="setting-row language-row"
+          type="button"
+          onclick={() => { showLanguageSelector = true }}
+          aria-label={$t('settings.language.ui_language')}
+        >
+          <div class="setting-info">
+            <span class="setting-label">{$t('settings.language.ui_language')}</span>
+          </div>
+          <span class="row-value">
+            {LOCALE_META[$locale].flag} {LOCALE_META[$locale].nativeName}
+          </span>
+        </button>
+      </div>
+    </section>
+
     <!-- ===== PRIVACY SETTINGS ===== -->
     <section class="settings-section" aria-labelledby="privacy-heading">
       <h2 id="privacy-heading" class="section-heading">Privacy</h2>
@@ -475,6 +502,10 @@
 
   </div>
 </div>
+
+{#if showLanguageSelector}
+  <LanguageSelector onClose={() => { showLanguageSelector = false }} />
+{/if}
 
 <style>
   .settings-page {
@@ -842,6 +873,31 @@
     padding: 2px 6px;
     border-radius: 4px;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ---- Language row ---- */
+  .language-row {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    color: var(--color-text);
+    text-align: left;
+  }
+
+  .language-row:hover {
+    background: color-mix(in srgb, var(--color-primary) 20%, transparent 80%);
+  }
+
+  .row-value {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
     flex-shrink: 0;
   }
 

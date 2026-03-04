@@ -1,0 +1,98 @@
+/* src/ui/styles/rtl.css
+ * RTL layout overrides for Arabic and Hebrew support.
+ * All rules are scoped to [dir=rtl] so they are inert for LTR locales.
+ * Prefer CSS logical properties (margin-inline-start, etc.) in new code
+ * to avoid adding overrides here.
+ */
+
+/* Flip flex row directions */
+[dir=rtl] .flex-row-ltr {
+  flex-direction: row-reverse;
+}
+
+/* Reverse icon-label pairs (e.g., flag + language name buttons) */
+[dir=rtl] .lang-option,
+[dir=rtl] .level-option {
+  flex-direction: row-reverse;
+}
+
+/* HUD element positions */
+[dir=rtl] .hud-left {
+  left: auto;
+  right: 16px;
+}
+[dir=rtl] .hud-right {
+  right: auto;
+  left: 16px;
+}
+
+/* Text alignment on labels */
+[dir=rtl] .field-label,
+[dir=rtl] .track-label {
+  text-align: right;
+}
+
+/* Progress bar fill — stays left-to-right regardless of dir,
+   because progress direction is universally LTR by convention */
+[dir=rtl] .track-fill,
+[dir=rtl] .milestone-fill {
+  margin-left: 0;
+  /* Override any forced right-origin from browser RTL mirroring */
+}
+
+/* Settings sections — icon + label rows */
+[dir=rtl] .settings-row {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Close button position (top-right in LTR = top-left in RTL) */
+[dir=rtl] .close-x {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Modal panels — padding side */
+[dir=rtl] .lang-panel,
+[dir=rtl] .settings-panel {
+  text-align: right;
+}
+
+/* Input fields — text aligns right in RTL */
+[dir=rtl] input[type=text],
+[dir=rtl] input[type=email],
+[dir=rtl] input[type=password] {
+  text-align: right;
+}
+
+/* Locale row in language selector — reverse for RTL */
+[dir=rtl] .locale-row {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Locale labels in RTL — align text properly */
+[dir=rtl] .locale-labels {
+  align-items: flex-end;
+}
+
+/* Settings card rows in RTL */
+[dir=rtl] .setting-row,
+[dir=rtl] .setting-block {
+  flex-direction: row-reverse;
+}
+
+/* Setting info in RTL */
+[dir=rtl] .setting-info {
+  text-align: right;
+}
+
+/* Mood buttons row in RTL */
+[dir=rtl] .mood-buttons {
+  flex-direction: row-reverse;
+}
+
+/* Back button arrow flip */
+[dir=rtl] .back-btn {
+  transform: scaleX(-1);
+}

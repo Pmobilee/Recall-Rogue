@@ -1,0 +1,267 @@
+{
+  "_meta": {
+    "language": "Hebrew",
+    "locale": "he",
+    "last_updated": "2026-03-04",
+    "translator": "placeholder — replace with human translator name",
+    "instructions": "Do NOT translate text in {curly_braces}. These are variable placeholders. Keep all JSON key names in English. Preserve punctuation style of the original. This is an RTL language."
+  },
+
+  "common": {
+    "ok": "אישור",
+    "cancel": "ביטול",
+    "close": "סגור",
+    "save": "שמור",
+    "back": "חזרה",
+    "confirm": "אישור",
+    "delete": "מחק",
+    "loading": "טוען...",
+    "error": "משהו השתבש.",
+    "retry": "נסה שוב",
+    "or": "או",
+    "of": "מתוך",
+    "days": { "one": "יום {count}", "other": "{count} ימים" },
+    "hours": { "one": "שעה {count}", "other": "{count} שעות" },
+    "minutes": { "one": "דקה {count}", "other": "{count} דקות" }
+  },
+
+  "hub": {
+    "dive_button": "צלול",
+    "enter_mine": "כנס למכרה",
+    "title": "Terra Gacha",
+    "rooms": {
+      "command": "מפקדה",
+      "workshop": "סדנה",
+      "lab": "מעבדה",
+      "archive": "ארכיון",
+      "market": "שוק",
+      "museum": "מוזיאון"
+    },
+    "floor_locked": "קומה נעולה",
+    "unlock_for": "פתח תמורת {cost} אבק",
+    "daily_briefing": "תדרוך יומי",
+    "gaia_report": "דוח GAIA"
+  },
+
+  "settings": {
+    "title": "הגדרות",
+    "display": "תצוגה",
+    "sprite_quality": "איכות ספרייטים",
+    "sprite_quality_low": "נמוכה (32px)",
+    "sprite_quality_high": "גבוהה (256px)",
+    "sprite_quality_note": "שינוי איכות הספרייטים יטען מחדש את הדף.",
+    "switch_to_high": "עבור לגבוהה",
+    "switch_to_low": "עבור לנמוכה",
+    "audio": {
+      "title": "שמע",
+      "music": "מוזיקה",
+      "sfx": "אפקטים קוליים",
+      "music_volume": "עוצמת מוזיקה",
+      "sfx_volume": "עוצמת אפקטים",
+      "on": "פעיל",
+      "off": "כבוי"
+    },
+    "gaia": {
+      "title": "אישיות GAIA",
+      "mood": "מצב רוח",
+      "mood_snarky": "ציני",
+      "mood_enthusiastic": "נלהב",
+      "mood_calm": "רגוע",
+      "mood_desc_snarky": "הומור יבש וציניות",
+      "mood_desc_enthusiastic": "עליז ומעודד",
+      "mood_desc_calm": "מדוד וקשוב",
+      "chattiness": "פטפטנות",
+      "explanations": "הצג הסברים לאחר תשובות שגויות",
+      "explanations_desc": "GAIA מסבירה תשובות שגויות לשיפור הזכירה",
+      "chattiness_silent": "שקט",
+      "chattiness_quiet": "שקטן",
+      "chattiness_moderate": "מתון",
+      "chattiness_talkative": "פטפטן",
+      "chattiness_nonstop": "ללא הפסקה"
+    },
+    "accessibility": {
+      "title": "נגישות",
+      "high_contrast_quiz": "חידון בניגודיות גבוהה",
+      "high_contrast_quiz_desc": "ניגודיות חזקה יותר עבור אפשרויות התשובות בחידון",
+      "reduced_motion": "תנועה מופחתת",
+      "reduced_motion_desc": "מבטל אנימציות בכל המשחק"
+    },
+    "learning": {
+      "title": "למידה",
+      "interest_settings": "הגדרות עניין",
+      "interest_settings_desc": "בחר אילו נושאים יופיעו במכרה שלך",
+      "language_mode": "לימוד שפות",
+      "language_mode_desc": "שנה או השבת את שפת היעד",
+      "fact_learning": "לימוד עובדות",
+      "fact_learning_desc": "הפעל/כבה חידוני עובדות",
+      "coming_soon": "בקרוב"
+    },
+    "language": {
+      "title": "שפה",
+      "ui_language": "שפת ממשק",
+      "auto_detected": "זוהה אוטומטית"
+    },
+    "notifications": {
+      "title": "התראות",
+      "review_reminders": "תזכורות חזרה",
+      "review_reminders_desc": "התראות יומיות כשעובדות מוכנות לחזרה",
+      "dive_reminders": "תזכורות צלילה",
+      "dive_reminders_desc": "תזכורת לצלול כל יום"
+    },
+    "privacy": {
+      "title": "פרטיות",
+      "hub_private": "מרכז פרטי",
+      "hub_private_desc": "הסתר את הכיפה שלך מביקורי שחקנים אחרים",
+      "hide_leaderboard": "הסתר מלוחות הדירוג",
+      "hide_leaderboard_desc": "הניקוד שלך לא יופיע בדירוגים ציבוריים"
+    },
+    "account": {
+      "title": "חשבון",
+      "profile": "פרופיל",
+      "login": "התחבר",
+      "logout": "התנתק",
+      "age_rating": "דירוג גיל",
+      "player_id": "מזהה שחקן",
+      "online_account": "חשבון מקוון",
+      "guest_mode": "מצב אורח",
+      "logged_in": "מחובר",
+      "manage": "נהל",
+      "sign_in": "כניסה"
+    },
+    "danger": {
+      "title": "אזור מסוכן",
+      "delete_save": "מחק נתוני שמירה",
+      "delete_confirm": "כל ההתקדמות תימחק לצמיתות. לא ניתן לבטל פעולה זו.",
+      "delete_yes": "כן, מחק הכל"
+    },
+    "about": {
+      "title": "אודות",
+      "version": "גרסה",
+      "build": "בנייה",
+      "engine": "מנוע"
+    }
+  },
+
+  "quiz": {
+    "correct": "נכון!",
+    "wrong": "שגוי",
+    "question_of": "שאלה {current} מתוך {total}",
+    "skip": "דלג",
+    "explanation": "הסבר",
+    "streak": { "one": "סדרה של {count}", "other": "סדרה של {count}" },
+    "facts_count": { "one": "עובדה {count}", "other": "{count} עובדות" }
+  },
+
+  "hud": {
+    "oxygen": "O₂",
+    "depth": "שכבה {layer}",
+    "inventory": "מלאי",
+    "send_up": "שלח למעלה",
+    "return": "חזור לכיפה"
+  },
+
+  "dive": {
+    "prep_title": "הכנה לצלילה",
+    "pickaxe": "מקוש",
+    "consumables": "חומרים מתכלים",
+    "companion": "חבר",
+    "relics": "שרידים",
+    "start_dive": "התחל צלילה",
+    "resume_title": "האם להמשיך את הצלילה?",
+    "resume_desc": "יש לך צלילה לא גמורה בשכבה {layer}. להמשיך או להתחיל מחדש?",
+    "resume_continue": "המשך צלילה",
+    "resume_fresh": "התחל מחדש",
+    "results_title": "תוצאות הצלילה",
+    "results_depth": "השכבה העמוקה ביותר",
+    "results_blocks": "בלוקים שנכרו",
+    "results_facts": "עובדות שנלמדו",
+    "results_minerals": "מינרלים שנאספו",
+    "return_dome": "חזור לכיפה"
+  },
+
+  "auth": {
+    "login_title": "התחבר",
+    "register_title": "צור חשבון",
+    "forgot_title": "איפוס סיסמה",
+    "email": "דואר אלקטרוני",
+    "password": "סיסמה",
+    "username": "שם משתמש",
+    "login_button": "התחבר",
+    "register_button": "צור חשבון",
+    "forgot_button": "שלח קישור לאיפוס",
+    "no_account": "אין חשבון?",
+    "have_account": "כבר יש לך חשבון?",
+    "play_as_guest": "שחק כאורח",
+    "forgot_password": "שכחת סיסמה?",
+    "reset_sent": "קישור לאיפוס נשלח אל {email}",
+    "logout": "התנתק",
+    "account_deleted": "החשבון נמחק."
+  },
+
+  "legal": {
+    "age_gate_title": "בן כמה אתה?",
+    "age_gate_under_13": "מתחת ל-13",
+    "age_gate_13_17": "13–17",
+    "age_gate_18_plus": "18+",
+    "age_gate_continue": "המשך",
+    "privacy_title": "מדיניות הפרטיות",
+    "terms_title": "תנאי השירות",
+    "accept": "אני מסכים"
+  },
+
+  "profiles": {
+    "select_title": "מי משחק?",
+    "create_title": "פרופיל חדש",
+    "name_placeholder": "הכנס שם",
+    "create_button": "צור פרופיל",
+    "manage_title": "נהל פרופילים",
+    "delete_profile": "מחק פרופיל"
+  },
+
+  "onboarding": {
+    "next": "הבא",
+    "skip": "דלג",
+    "start": "התחל",
+    "gaia_intro_1": "GAIA מקוון. ברוך הבא, טייס.",
+    "age_selection_title": "ראשית, ספר לנו את גילך כדי שנוכל להתאים תוכן עבורך."
+  },
+
+  "social": {
+    "leaderboard_title": "לוח דירוג",
+    "duel_title": "דו-קרב ידע",
+    "trade_title": "שוק חפצי עתיקות",
+    "guild_title": "גילדה",
+    "referral_title": "הזמן חבר",
+    "duel_challenge": "אתגר",
+    "duel_accept": "קבל",
+    "duel_decline": "דחה",
+    "guild_create": "צור גילדה",
+    "guild_join": "הצטרף לגילדה"
+  },
+
+  "season": {
+    "title": "מנוי עונה",
+    "free_track": "מסלול חינמי",
+    "premium_track": "Terra Pass",
+    "milestone": "אבן דרך {n}",
+    "claim": "קבל",
+    "locked": "נעול"
+  },
+
+  "monetization": {
+    "terra_pass_title": "Terra Pass",
+    "terra_pass_price": "‏4.99$ / חודש",
+    "pioneer_pack_title": "חבילת חלוץ",
+    "unlock_button": "פתח",
+    "restore_purchases": "שחזר רכישות",
+    "content_gate_desc": "פתח עובדות ללא הגבלה וגלוש ללא פרסומות.",
+    "facts_progress": "{current} מתוך {target} עובדות זמינות"
+  },
+
+  "errors": {
+    "offline": "אתה לא מחובר לאינטרנט. חלק מהתכונות אינן זמינות.",
+    "sync_failed": "הסנכרון נכשל. שינויים יסונכרנו כשתתחבר שוב.",
+    "webgl_unsupported": "המכשיר שלך אינו תומך ב-WebGL. אנא השתמש בדפדפן מודרני.",
+    "generic": "אירעה שגיאה. אנא נסה שוב."
+  }
+}

@@ -340,6 +340,61 @@ class FactsDB {
   }
 
   // ──────────────────────────────────────────────
+  // Localization (Phase 40)
+  // ──────────────────────────────────────────────
+
+  /**
+   * Returns a fact's content in the player's locale if a translation exists.
+   * Falls back to the English content if no translation is available.
+   *
+   * Note: The `fact_translations` table is defined in Phase 40 but the actual
+   * database migration is gated on explicit user approval (CLAUDE.md rule).
+   * This method gracefully falls back to English when the table doesn't exist.
+   *
+   * @param factId - The fact ID to look up.
+   * @param locale - The target locale code (e.g., 'es', 'fr').
+   * @returns The fact with localized text fields, or null if not found.
+   */
+  async getLocalizedFact(factId: string, locale: string): Promise<Fact | null> {
+    if (!this.db) await this.init()
+
+    // Try localized version first (only if not English and table exists)
+    if (locale !== 'en') {
+      try {
+        const result = this.db!.exec(
+          `SELECT f.id, f.type,
+                  COALESCE(ft.statement, f.statement) AS statement,
+                  COALESCE(ft.wow_factor, f.wow_factor) AS wow_factor,
+                  COALESCE(ft.explanation, f.explanation) AS explanation,
+                  f.gaia_comment,
+                  COALESCE(ft.quiz_question, f.quiz_question) AS quiz_question,
+                  COALESCE(ft.correct_answer, f.correct_answer) AS correct_answer,
+                  COALESCE(ft.distractors, f.distractors) AS distractors,
+                  f.category, f.rarity, f.difficulty, f.fun_score, f.age_rating,
+                  f.source_name, f.language, f.pronunciation, f.example_sentence,
+                  f.image_url, f.mnemonic
+           FROM facts f
+           LEFT JOIN fact_translations ft ON ft.id = f.id AND ft.locale = ?
+           WHERE f.id = ?`,
+          [locale, factId]
+        )
+        if (result[0]?.values?.length > 0) {
+          const row: Record<string, unknown> = {}
+          const cols = result[0].columns
+          const vals = result[0].values[0]
+          cols.forEach((col, i) => { row[col] = vals[i] })
+          return this.rowToFact(row)
+        }
+      } catch {
+        // fact_translations table doesn't exist yet — fall through to English
+      }
+    }
+
+    // Fall back to English
+    return this.getById(factId)
+  }
+
+  // ──────────────────────────────────────────────
   // Private helpers
   // ──────────────────────────────────────────────
 

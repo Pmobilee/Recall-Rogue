@@ -21,7 +21,9 @@
     "test:ui": "vitest --ui",
     "build:check": "npm run build && node scripts/check-bundle-size.mjs",
     "deploy:preview": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch preview",
-    "deploy:production": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch main"
+    "deploy:production": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch main",
+    "i18n:validate": "node src/i18n/scripts/validate-locale.mjs",
+    "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",

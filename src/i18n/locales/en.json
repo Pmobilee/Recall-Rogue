@@ -1,0 +1,293 @@
+{
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "back": "Back",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "retry": "Retry",
+    "or": "or",
+    "of": "of",
+    "days": { "one": "{count} day", "other": "{count} days" },
+    "hours": { "one": "{count} hour", "other": "{count} hours" },
+    "minutes": { "one": "{count} minute", "other": "{count} minutes" }
+  },
+
+  "hub": {
+    "dive_button": "Dive",
+    "enter_mine": "Enter Mine",
+    "title": "Terra Gacha",
+    "rooms": {
+      "command": "Command",
+      "workshop": "Workshop",
+      "lab": "Lab",
+      "archive": "Archive",
+      "market": "Market",
+      "museum": "Museum"
+    },
+    "floor_locked": "Floor Locked",
+    "unlock_for": "Unlock for {cost} dust",
+    "daily_briefing": "Daily Briefing",
+    "gaia_report": "GAIA Report"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "display": "Display",
+    "sprite_quality": "Sprite Quality",
+    "sprite_quality_low": "Low (32px)",
+    "sprite_quality_high": "High (256px)",
+    "sprite_quality_note": "Changing sprite quality reloads the page.",
+    "switch_to_high": "Switch to High",
+    "switch_to_low": "Switch to Low",
+    "audio": {
+      "title": "Audio",
+      "music": "Music",
+      "sfx": "Sound Effects",
+      "music_volume": "Music Volume",
+      "sfx_volume": "SFX Volume",
+      "on": "On",
+      "off": "Off"
+    },
+    "gaia": {
+      "title": "GAIA Personality",
+      "mood": "Mood",
+      "mood_snarky": "Snarky",
+      "mood_enthusiastic": "Enthusiastic",
+      "mood_calm": "Calm",
+      "mood_desc_snarky": "Dry wit and sarcasm",
+      "mood_desc_enthusiastic": "Upbeat and encouraging",
+      "mood_desc_calm": "Measured and mindful",
+      "chattiness": "Chattiness",
+      "explanations": "Show explanations after wrong answers",
+      "explanations_desc": "GAIA explains wrong answers to help retention",
+      "chattiness_silent": "Silent",
+      "chattiness_quiet": "Quiet",
+      "chattiness_moderate": "Moderate",
+      "chattiness_talkative": "Talkative",
+      "chattiness_nonstop": "Non-stop"
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "high_contrast_quiz": "High contrast quiz",
+      "high_contrast_quiz_desc": "Stronger contrast for quiz answer choices",
+      "reduced_motion": "Reduced motion",
+      "reduced_motion_desc": "Disables animations throughout the game"
+    },
+    "learning": {
+      "title": "Learning",
+      "interest_settings": "Interest Settings",
+      "interest_settings_desc": "Choose what topics appear in your mine",
+      "language_mode": "Language Learning",
+      "language_mode_desc": "Change or disable target language",
+      "fact_learning": "Fact Learning",
+      "fact_learning_desc": "Toggle fact quizzes on/off",
+      "coming_soon": "Coming Soon"
+    },
+    "language": {
+      "title": "Language",
+      "ui_language": "Interface Language",
+      "auto_detected": "Auto-detected"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "review_reminders": "Review Reminders",
+      "review_reminders_desc": "Daily notifications when facts are due",
+      "dive_reminders": "Dive Reminders",
+      "dive_reminders_desc": "Reminder to dive each day"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "hub_private": "Hub Private",
+      "hub_private_desc": "Hide your dome from other players' visits",
+      "hide_leaderboard": "Hide from Leaderboards",
+      "hide_leaderboard_desc": "Your scores won't appear in public rankings"
+    },
+    "account": {
+      "title": "Account",
+      "profile": "Profile",
+      "login": "Log In",
+      "logout": "Log Out",
+      "age_rating": "Age Rating",
+      "player_id": "Player ID",
+      "online_account": "Online Account",
+      "guest_mode": "Guest mode",
+      "logged_in": "Logged in",
+      "manage": "Manage",
+      "sign_in": "Sign In"
+    },
+    "danger": {
+      "title": "Danger Zone",
+      "delete_save": "Delete Save Data",
+      "delete_confirm": "All progress will be permanently erased. This cannot be undone.",
+      "delete_yes": "Yes, Delete Everything"
+    },
+    "about": {
+      "title": "About",
+      "version": "Version",
+      "build": "Build",
+      "engine": "Engine"
+    }
+  },
+
+  "quiz": {
+    "correct": "Correct!",
+    "wrong": "Wrong",
+    "question_of": "Question {current} of {total}",
+    "skip": "Skip",
+    "explanation": "Explanation",
+    "streak": { "one": "{count} streak", "other": "{count} streak" },
+    "facts_count": { "one": "{count} fact", "other": "{count} facts" }
+  },
+
+  "hud": {
+    "oxygen": "O₂",
+    "depth": "Layer {layer}",
+    "inventory": "Inventory",
+    "send_up": "Send Up",
+    "return": "Return to Dome"
+  },
+
+  "dive": {
+    "prep_title": "Pre-Dive Prep",
+    "pickaxe": "Pickaxe",
+    "consumables": "Consumables",
+    "companion": "Companion",
+    "relics": "Relics",
+    "start_dive": "Start Dive",
+    "resume_title": "Resume Dive?",
+    "resume_desc": "You have an unfinished dive at layer {layer}. Continue or start fresh?",
+    "resume_continue": "Continue Dive",
+    "resume_fresh": "Start Fresh",
+    "results_title": "Dive Results",
+    "results_depth": "Deepest Layer",
+    "results_blocks": "Blocks Mined",
+    "results_facts": "Facts Learned",
+    "results_minerals": "Minerals Collected",
+    "return_dome": "Return to Dome"
+  },
+
+  "inventory": {
+    "title": "Backpack",
+    "send_up": "Send Up",
+    "empty": "Empty",
+    "minerals": "Minerals",
+    "relics": "Relics",
+    "consumables": "Consumables"
+  },
+
+  "auth": {
+    "login_title": "Log In",
+    "register_title": "Create Account",
+    "forgot_title": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "login_button": "Log In",
+    "register_button": "Create Account",
+    "forgot_button": "Send Reset Link",
+    "no_account": "No account?",
+    "have_account": "Already have an account?",
+    "play_as_guest": "Play as Guest",
+    "forgot_password": "Forgot password?",
+    "reset_sent": "Reset link sent to {email}",
+    "logout": "Log Out",
+    "account_deleted": "Account deleted."
+  },
+
+  "legal": {
+    "age_gate_title": "How old are you?",
+    "age_gate_under_13": "Under 13",
+    "age_gate_13_17": "13–17",
+    "age_gate_18_plus": "18+",
+    "age_gate_continue": "Continue",
+    "privacy_title": "Privacy Policy",
+    "terms_title": "Terms of Service",
+    "accept": "I Accept"
+  },
+
+  "profiles": {
+    "select_title": "Who's playing?",
+    "create_title": "New Profile",
+    "name_placeholder": "Enter name",
+    "create_button": "Create Profile",
+    "manage_title": "Manage Profiles",
+    "delete_profile": "Delete Profile"
+  },
+
+  "onboarding": {
+    "next": "Next",
+    "skip": "Skip",
+    "start": "Begin",
+    "gaia_intro_1": "GAIA online. Welcome, pilot.",
+    "age_selection_title": "First, tell us your age so we can tailor content for you."
+  },
+
+  "study": {
+    "title": "Study Session",
+    "facts_due": { "one": "{count} fact due", "other": "{count} facts due" },
+    "complete": "Session complete!",
+    "next_review": "Next review in {time}"
+  },
+
+  "gaia": {
+    "report_title": "GAIA Report",
+    "thought_bubble": "...",
+    "daily_briefing": "Daily Briefing"
+  },
+
+  "social": {
+    "leaderboard_title": "Leaderboard",
+    "duel_title": "Knowledge Duel",
+    "trade_title": "Artifact Market",
+    "guild_title": "Guild",
+    "referral_title": "Invite a Friend",
+    "duel_challenge": "Challenge",
+    "duel_accept": "Accept",
+    "duel_decline": "Decline",
+    "guild_create": "Create Guild",
+    "guild_join": "Join Guild"
+  },
+
+  "season": {
+    "title": "Season Pass",
+    "free_track": "Free Track",
+    "premium_track": "Terra Pass",
+    "milestone": "Milestone {n}",
+    "claim": "Claim",
+    "locked": "Locked"
+  },
+
+  "monetization": {
+    "terra_pass_title": "Terra Pass",
+    "terra_pass_price": "$4.99 / month",
+    "pioneer_pack_title": "Pioneer Pack",
+    "unlock_button": "Unlock",
+    "restore_purchases": "Restore Purchases",
+    "content_gate_desc": "Unlock unlimited facts and go ad-free.",
+    "facts_progress": "{current} of {target} facts available"
+  },
+
+  "notifications": {
+    "permission_title": "Stay in the loop",
+    "permission_desc": "Get notified when your facts are ready for review.",
+    "allow": "Allow Notifications",
+    "later": "Maybe Later"
+  },
+
+  "errors": {
+    "offline": "You are offline. Some features are unavailable.",
+    "sync_failed": "Sync failed. Changes will sync when you reconnect.",
+    "webgl_unsupported": "Your device does not support WebGL. Please use a modern browser.",
+    "generic": "An error occurred. Please try again."
+  },
+
+  "format": {
+    "date_short": "{month}/{day}/{year}",
+    "number_separator": ","
+  }
+}

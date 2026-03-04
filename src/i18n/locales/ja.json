@@ -1,0 +1,267 @@
+{
+  "_meta": {
+    "language": "Japanese",
+    "locale": "ja",
+    "last_updated": "2026-03-04",
+    "translator": "placeholder — replace with human translator name",
+    "instructions": "Do NOT translate text in {curly_braces}. These are variable placeholders. Keep all JSON key names in English. Preserve punctuation style of the original."
+  },
+
+  "common": {
+    "ok": "OK",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "save": "保存",
+    "back": "戻る",
+    "confirm": "確認",
+    "delete": "削除",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました。",
+    "retry": "再試行",
+    "or": "または",
+    "of": "/",
+    "days": { "other": "{count}日" },
+    "hours": { "other": "{count}時間" },
+    "minutes": { "other": "{count}分" }
+  },
+
+  "hub": {
+    "dive_button": "潜る",
+    "enter_mine": "鉱山に入る",
+    "title": "テラガチャ",
+    "rooms": {
+      "command": "指令室",
+      "workshop": "工房",
+      "lab": "実験室",
+      "archive": "アーカイブ",
+      "market": "市場",
+      "museum": "博物館"
+    },
+    "floor_locked": "フロアがロック中",
+    "unlock_for": "{cost}ダストでロック解除",
+    "daily_briefing": "日次ブリーフィング",
+    "gaia_report": "GAIAレポート"
+  },
+
+  "settings": {
+    "title": "設定",
+    "display": "表示",
+    "sprite_quality": "スプライト品質",
+    "sprite_quality_low": "低 (32px)",
+    "sprite_quality_high": "高 (256px)",
+    "sprite_quality_note": "スプライト品質を変更するとページがリロードされます。",
+    "switch_to_high": "高品質に切り替え",
+    "switch_to_low": "低品質に切り替え",
+    "audio": {
+      "title": "オーディオ",
+      "music": "音楽",
+      "sfx": "効果音",
+      "music_volume": "音楽ボリューム",
+      "sfx_volume": "効果音ボリューム",
+      "on": "オン",
+      "off": "オフ"
+    },
+    "gaia": {
+      "title": "GAIAのキャラクター",
+      "mood": "気分",
+      "mood_snarky": "皮肉屋",
+      "mood_enthusiastic": "情熱的",
+      "mood_calm": "穏やか",
+      "mood_desc_snarky": "乾いたユーモアと皮肉",
+      "mood_desc_enthusiastic": "明るく励ましてくれる",
+      "mood_desc_calm": "落ち着いて思慮深い",
+      "chattiness": "おしゃべり度",
+      "explanations": "不正解後に解説を表示",
+      "explanations_desc": "GAIAが不正解を説明して記憶定着をサポート",
+      "chattiness_silent": "無口",
+      "chattiness_quiet": "静か",
+      "chattiness_moderate": "普通",
+      "chattiness_talkative": "おしゃべり",
+      "chattiness_nonstop": "止まらない"
+    },
+    "accessibility": {
+      "title": "アクセシビリティ",
+      "high_contrast_quiz": "ハイコントラストクイズ",
+      "high_contrast_quiz_desc": "クイズの選択肢のコントラストを強化",
+      "reduced_motion": "アニメーション軽減",
+      "reduced_motion_desc": "ゲーム全体のアニメーションを無効化"
+    },
+    "learning": {
+      "title": "学習",
+      "interest_settings": "興味設定",
+      "interest_settings_desc": "鉱山に表示するトピックを選択",
+      "language_mode": "言語学習",
+      "language_mode_desc": "対象言語を変更または無効化",
+      "fact_learning": "事実学習",
+      "fact_learning_desc": "事実クイズのオン/オフ",
+      "coming_soon": "近日公開"
+    },
+    "language": {
+      "title": "言語",
+      "ui_language": "インターフェース言語",
+      "auto_detected": "自動検出"
+    },
+    "notifications": {
+      "title": "通知",
+      "review_reminders": "復習リマインダー",
+      "review_reminders_desc": "事実の復習時期に毎日通知",
+      "dive_reminders": "潜水リマインダー",
+      "dive_reminders_desc": "毎日潜水するためのリマインダー"
+    },
+    "privacy": {
+      "title": "プライバシー",
+      "hub_private": "ハブをプライベートに",
+      "hub_private_desc": "他のプレイヤーの訪問からドームを非表示",
+      "hide_leaderboard": "ランキングから非表示",
+      "hide_leaderboard_desc": "スコアが公開ランキングに表示されません"
+    },
+    "account": {
+      "title": "アカウント",
+      "profile": "プロフィール",
+      "login": "ログイン",
+      "logout": "ログアウト",
+      "age_rating": "年齢評価",
+      "player_id": "プレイヤーID",
+      "online_account": "オンラインアカウント",
+      "guest_mode": "ゲストモード",
+      "logged_in": "ログイン中",
+      "manage": "管理",
+      "sign_in": "サインイン"
+    },
+    "danger": {
+      "title": "危険ゾーン",
+      "delete_save": "セーブデータを削除",
+      "delete_confirm": "すべての進行状況が永久に削除されます。元に戻すことはできません。",
+      "delete_yes": "はい、すべて削除"
+    },
+    "about": {
+      "title": "について",
+      "version": "バージョン",
+      "build": "ビルド",
+      "engine": "エンジン"
+    }
+  },
+
+  "quiz": {
+    "correct": "正解！",
+    "wrong": "不正解",
+    "question_of": "問題 {current} / {total}",
+    "skip": "スキップ",
+    "explanation": "解説",
+    "streak": { "other": "{count}連続" },
+    "facts_count": { "other": "{count}件の事実" }
+  },
+
+  "hud": {
+    "oxygen": "O₂",
+    "depth": "レイヤー {layer}",
+    "inventory": "インベントリ",
+    "send_up": "上へ送る",
+    "return": "ドームに戻る"
+  },
+
+  "dive": {
+    "prep_title": "潜水前準備",
+    "pickaxe": "つるはし",
+    "consumables": "消耗品",
+    "companion": "仲間",
+    "relics": "遺物",
+    "start_dive": "潜水開始",
+    "resume_title": "潜水を再開しますか？",
+    "resume_desc": "レイヤー{layer}で未完了の潜水があります。継続しますか、それとも最初からやり直しますか？",
+    "resume_continue": "潜水を継続",
+    "resume_fresh": "最初からやり直す",
+    "results_title": "潜水結果",
+    "results_depth": "最深レイヤー",
+    "results_blocks": "採掘ブロック数",
+    "results_facts": "学習した事実",
+    "results_minerals": "収集した鉱石",
+    "return_dome": "ドームに戻る"
+  },
+
+  "auth": {
+    "login_title": "ログイン",
+    "register_title": "アカウント作成",
+    "forgot_title": "パスワードリセット",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "username": "ユーザー名",
+    "login_button": "ログイン",
+    "register_button": "アカウント作成",
+    "forgot_button": "リセットリンクを送信",
+    "no_account": "アカウントをお持ちでない方",
+    "have_account": "すでにアカウントをお持ちですか？",
+    "play_as_guest": "ゲストとしてプレイ",
+    "forgot_password": "パスワードを忘れた方",
+    "reset_sent": "{email}にリセットリンクを送信しました",
+    "logout": "ログアウト",
+    "account_deleted": "アカウントを削除しました。"
+  },
+
+  "legal": {
+    "age_gate_title": "何歳ですか？",
+    "age_gate_under_13": "13歳未満",
+    "age_gate_13_17": "13〜17歳",
+    "age_gate_18_plus": "18歳以上",
+    "age_gate_continue": "続ける",
+    "privacy_title": "プライバシーポリシー",
+    "terms_title": "利用規約",
+    "accept": "同意する"
+  },
+
+  "profiles": {
+    "select_title": "誰がプレイしますか？",
+    "create_title": "新しいプロフィール",
+    "name_placeholder": "名前を入力",
+    "create_button": "プロフィールを作成",
+    "manage_title": "プロフィール管理",
+    "delete_profile": "プロフィールを削除"
+  },
+
+  "onboarding": {
+    "next": "次へ",
+    "skip": "スキップ",
+    "start": "開始",
+    "gaia_intro_1": "GAIAオンライン。ようこそ、パイロット。",
+    "age_selection_title": "まず、コンテンツをカスタマイズするために年齢をお教えください。"
+  },
+
+  "social": {
+    "leaderboard_title": "ランキング",
+    "duel_title": "知識デュエル",
+    "trade_title": "アーティファクト市場",
+    "guild_title": "ギルド",
+    "referral_title": "友達を招待",
+    "duel_challenge": "挑戦する",
+    "duel_accept": "受ける",
+    "duel_decline": "断る",
+    "guild_create": "ギルドを作成",
+    "guild_join": "ギルドに参加"
+  },
+
+  "season": {
+    "title": "シーズンパス",
+    "free_track": "無料トラック",
+    "premium_track": "テラパス",
+    "milestone": "マイルストーン {n}",
+    "claim": "受け取る",
+    "locked": "ロック中"
+  },
+
+  "monetization": {
+    "terra_pass_title": "テラパス",
+    "terra_pass_price": "$4.99 / 月",
+    "pioneer_pack_title": "パイオニアパック",
+    "unlock_button": "解除",
+    "restore_purchases": "購入を復元",
+    "content_gate_desc": "無制限の事実をアンロックして広告なしでプレイ。",
+    "facts_progress": "{target}件中{current}件の事実が利用可能"
+  },
+
+  "errors": {
+    "offline": "オフラインです。一部の機能は利用できません。",
+    "sync_failed": "同期に失敗しました。再接続時に変更が同期されます。",
+    "webgl_unsupported": "お使いのデバイスはWebGLに対応していません。最新のブラウザをご利用ください。",
+    "generic": "エラーが発生しました。もう一度お試しください。"
+  }
+}
