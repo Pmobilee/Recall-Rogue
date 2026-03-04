@@ -2,6 +2,7 @@
 
 import Phaser from 'phaser'
 import { BlockType } from '../../data/types'
+import type { Rarity } from '../../data/types'
 import type { Biome } from '../../data/biomes'
 
 // ============================================================
@@ -475,6 +476,91 @@ export class ParticleSystem {
       })
       emitter.setDepth(300)
       this.o2Emitters.push(emitter)
+    }
+  }
+
+  // ----------------------------------------------------------
+  // ARTIFACT REVEAL BURSTS (Phase 31.4)
+  // ----------------------------------------------------------
+
+  /**
+   * Fires a multi-stage particle burst at the given world coordinates for artifact reveals.
+   * Each rarity tier has a distinct number of waves and particle counts.
+   *
+   * @param rarity - The rarity of the artifact being revealed
+   * @param worldX - World X position of the tile centre
+   * @param worldY - World Y position of the tile centre
+   */
+  emitArtifactReveal(rarity: Rarity, worldX: number, worldY: number): void {
+    const RARITY_CONFIGS: Record<string, Array<{
+      delay: number
+      count: number
+      tint: number
+      lifespan: number
+      speed: { min: number; max: number }
+      scale: { start: number; end: number }
+    }>> = {
+      common:    [{ delay: 0,   count: 6,   tint: 0x888888, lifespan: 300,  speed: { min: 20, max: 60  }, scale: { start: 0.6, end: 0 } }],
+      uncommon:  [{ delay: 0,   count: 12,  tint: 0x4ec9a0, lifespan: 400,  speed: { min: 30, max: 80  }, scale: { start: 0.8, end: 0 } }],
+      rare:      [{ delay: 0,   count: 20,  tint: 0x4a9eff, lifespan: 600,  speed: { min: 40, max: 100 }, scale: { start: 1.0, end: 0 } },
+                  { delay: 80,  count: 10,  tint: 0xffffff, lifespan: 200,  speed: { min: 80, max: 150 }, scale: { start: 1.2, end: 0 } }],
+      epic:      [{ delay: 0,   count: 40,  tint: 0xcc44ff, lifespan: 800,  speed: { min: 50, max: 120 }, scale: { start: 1.0, end: 0 } },
+                  { delay: 80,  count: 20,  tint: 0xffffff, lifespan: 300,  speed: { min: 100, max: 180 }, scale: { start: 1.5, end: 0 } },
+                  { delay: 160, count: 8,   tint: 0xaa44cc, lifespan: 1200, speed: { min: 5,  max: 20  }, scale: { start: 0.8, end: 0 } }],
+      legendary: [{ delay: 0,   count: 60,  tint: 0xffd700, lifespan: 1000, speed: { min: 60, max: 140 }, scale: { start: 1.2, end: 0 } },
+                  { delay: 80,  count: 30,  tint: 0xffffff, lifespan: 400,  speed: { min: 120, max: 220 }, scale: { start: 1.8, end: 0 } },
+                  { delay: 160, count: 15,  tint: 0xffaa00, lifespan: 600,  speed: { min: 10, max: 30  }, scale: { start: 1.0, end: 0 } }],
+      mythic:    [{ delay: 0,   count: 100, tint: 0xff44aa, lifespan: 1200, speed: { min: 80, max: 180 }, scale: { start: 1.4, end: 0 } },
+                  { delay: 80,  count: 50,  tint: 0xffffff, lifespan: 500,  speed: { min: 150, max: 280 }, scale: { start: 2.0, end: 0 } },
+                  { delay: 160, count: 25,  tint: 0xff88cc, lifespan: 1500, speed: { min: 5,  max: 25  }, scale: { start: 1.2, end: 0 } }],
+    }
+
+    const waves = RARITY_CONFIGS[rarity] ?? RARITY_CONFIGS['common']
+    const texKey = PARTICLE_TEX_PREFIX + '4'
+    this.ensureTexture(texKey, 4)
+
+    for (const wave of waves) {
+      const fireWave = (): void => {
+        const emitter = this.scene.add.particles(worldX, worldY, texKey, {
+          color: [wave.tint],
+          lifespan: wave.lifespan,
+          speed: wave.speed,
+          scale: wave.scale,
+          gravityY: 40,
+          alpha: { start: 1, end: 0 },
+          quantity: 1,
+          frequency: -1,
+          emitting: false,
+        })
+        emitter.setDepth(202)
+        emitter.explode(wave.count)
+        // Auto-destroy after lifespan completes
+        this.scene.time.delayedCall(wave.lifespan + 200, () => {
+          emitter.destroy()
+        })
+      }
+
+      if (wave.delay === 0) {
+        fireWave()
+      } else {
+        this.scene.time.delayedCall(wave.delay, fireWave)
+      }
+    }
+
+    // Mythic: ring-expand effect
+    if (rarity === 'mythic') {
+      const TILE_SIZE = 32
+      const ring = this.scene.add.arc(worldX, worldY, 0, 0, 360, false, 0xff44aa, 0.4)
+      ring.setDepth(202)
+      ring.setFillStyle(0xff44aa, 0.4)
+      this.scene.tweens.add({
+        targets: ring,
+        radius: TILE_SIZE * 4,
+        alpha: 0,
+        duration: 400,
+        ease: 'Quad.Out',
+        onComplete: () => ring.destroy(),
+      })
     }
   }
 

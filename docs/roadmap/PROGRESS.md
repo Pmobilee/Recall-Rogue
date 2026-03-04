@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 32, 38, 39, 40, 47. Phase 38 (iOS App Store Launch): iOS Capacitor config with safe area insets, haptic feedback service, ATT consent gate, Sign in with Apple button and server endpoint, TerraPassModal iOS subscription terms, crashAlerts job, Xcode config files (Info.plist, App.entitlements, ExportOptions.plist), App Store review compliance audit and privacy nutrition label. Next: Phase 23 (Live Ops & Seasons) or Phase 35 (Mine Mechanics).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 31, 32, 38, 39, 40, 47. Phase 31 (Gacha & Reveal Polish): REVEAL_TIMING/BLOCK_SHIMMER_TIERS/DESCENT_ANIM/STREAK_VISUAL constants, CameraSequencer (zoom-to-artifact), BlockShimmerSystem (ambient rarity shimmer), DescentOverlay (depth counter + biome name card), StreakFeedback (streak multiplier HUD strip), GachaReveal upgraded with per-rarity timing + flash phase + rarity gradients + collect pull-in animation, NearMissBanner upgraded with ring-expand animation + near-miss count, ParticleSystem.emitArtifactReveal() multi-wave bursts, GaiaManager.getArtifactRevealLine() reveal commentary, QuizManager streak tracking with dust multiplier, MineScene triggerArtifactRevealSequence() + triggerDescentAnimation(). Next: Phase 23 (Live Ops & Seasons) or Phase 35 (Mine Mechanics).
 
 ---
 
@@ -90,7 +90,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Visual & Game Feel (Phases 29-31)
 - [ ] **Phase 29: Character Animation System** — 48-frame miner sprite sheets, directional walk/mine, idle states, gear overlays, animation state machine → [`phases/PHASE-29-CHARACTER-ANIMATION.md`](phases/PHASE-29-CHARACTER-ANIMATION.md)
 - [ ] **Phase 30: Mining Juice & Game Feel** — Loot pop physics, block break sequences, screen shake, crack overlays, per-block impact profiles → [`phases/PHASE-30-MINING-JUICE.md`](phases/PHASE-30-MINING-JUICE.md)
-- [ ] **Phase 31: Gacha & Reveal Polish** — Rarity-tiered reveal timing, artifact reveal sequences, block rarity previews, celebration particles, layer descent animation → [`phases/PHASE-31-GACHA-REVEAL-POLISH.md`](phases/PHASE-31-GACHA-REVEAL-POLISH.md)
+- [x] **Phase 31: Gacha & Reveal Polish** — Rarity-tiered reveal timing, artifact reveal sequences, block rarity previews, celebration particles, layer descent animation → [`completed/PHASE-31-GACHA-REVEAL-POLISH.md`](completed/PHASE-31-GACHA-REVEAL-POLISH.md)
 
 ### Content Factory (Phases 32-34)
 - [x] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`completed/PHASE-32-CONTENT-SCALING.md`](completed/PHASE-32-CONTENT-SCALING.md)

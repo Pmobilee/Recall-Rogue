@@ -19,6 +19,8 @@ import {
 import { audioManager } from '../../services/audioService'
 import { pickQuote } from '../../data/quotes'
 import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
+import { CameraSequencer } from '../systems/CameraSequencer'
+import { BlockShimmerSystem } from '../systems/BlockShimmerSystem'
 import { ParticleSystem } from '../systems/ParticleSystem'
 import { miniMapData } from '../../ui/stores/miniMap'
 import { tickCount, layerTickCount } from '../../ui/stores/gameState'
@@ -27,7 +29,7 @@ import { ImpactSystem } from '../systems/ImpactSystem'
 import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 import { TickSystem } from '../systems/TickSystem'
 import { HazardSystem } from '../systems/HazardSystem'
-import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, CONSUMABLE_DROP_CHANCE } from '../../data/balance'
+import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, CONSUMABLE_DROP_CHANCE, REVEAL_TIMING, DESCENT_ANIM } from '../../data/balance'
 import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
 import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive } from '../../ui/stores/gameState'
 import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
@@ -101,6 +103,8 @@ export class MineScene extends Phaser.Scene {
   private playerVisualY: number = 0
   private readonly MOVE_LERP = 0.25
   private particles!: ParticleSystem
+  private cameraSequencer: CameraSequencer | null = null
+  private blockShimmer: BlockShimmerSystem | null = null
   private pinchZoom!: PinchZoomController
   private itemSpritePool: Phaser.GameObjects.Image[] = []
   private itemSpritePoolIndex = 0
@@ -371,6 +375,10 @@ export class MineScene extends Phaser.Scene {
     this.particles = new ParticleSystem(this)
     this.particles.init()
 
+    // Phase 31: Initialize shimmer system for high-rarity ArtifactNode tiles
+    this.blockShimmer = new BlockShimmerSystem(this, TILE_SIZE)
+    this.blockShimmer.init()
+
     // Initialize loot pop and impact feedback systems
     this.lootPop = new LootPopSystem(this)
     this.impactSystem = new ImpactSystem(this)
@@ -380,6 +388,9 @@ export class MineScene extends Phaser.Scene {
     setupCamera(this.cameras.main, worldWidth, worldHeight, TILE_SIZE)
     this.cameras.main.startFollow(this.playerSprite, true, 0.12, 0.12)
     this.pinchZoom = new PinchZoomController(this.cameras.main, this.input)
+
+    // Phase 31: Initialize camera sequencer for artifact reveals and descent
+    this.cameraSequencer = new CameraSequencer(this)
 
     // Start biome-specific ambient particles
     this.particles.startAmbientEmitters(this.currentBiome, worldWidth, worldHeight)
@@ -420,6 +431,19 @@ export class MineScene extends Phaser.Scene {
 
     this.redrawAll()
 
+    // Phase 31: Register ArtifactNode tiles for shimmer rendering
+    if (this.blockShimmer) {
+      this.blockShimmer.clear()
+      for (let row = 0; row < this.gridHeight; row++) {
+        for (let col = 0; col < this.gridWidth; col++) {
+          const cell = this.grid[row][col]
+          if (cell && cell.type === BlockType.ArtifactNode && cell.content?.artifactRarity) {
+            this.blockShimmer.registerNode(col, row, col * TILE_SIZE, row * TILE_SIZE, cell.content.artifactRarity as Rarity)
+          }
+        }
+      }
+    }
+
     // Initialize HazardSystem — active lava flows and gas clouds. (Phase 8.3)
     this.hazardSystem = new HazardSystem(
       this.gridWidth,
@@ -458,9 +482,10 @@ export class MineScene extends Phaser.Scene {
   /**
    * Play a fade-in entry transition when entering the mine from the dome.
    * Call this immediately after the scene becomes active.
+   * Phase 31.5: uses DESCENT_ANIM.fadeInDurationMs for layer-descent continuity.
    */
   async playEntryTransition(): Promise<void> {
-    this.cameras.main.fadeIn(400, 0, 0, 0)
+    this.cameras.main.fadeIn(DESCENT_ANIM.fadeInDurationMs, 0, 0, 0)
     await new Promise<void>(resolve => {
       this.cameras.main.once('camerafadeincomplete', () => resolve())
     })
@@ -482,6 +507,8 @@ export class MineScene extends Phaser.Scene {
         cam.width, cam.height
       )
     }
+    // Phase 31: Update shimmer overlays for high-rarity ArtifactNode tiles
+    this.blockShimmer?.update(this.time.now)
     this.redrawAll()
   }
 
@@ -1604,6 +1631,8 @@ export class MineScene extends Phaser.Scene {
           break
         }
         case BlockType.ArtifactNode: {
+          // Phase 31.3: Remove shimmer when ArtifactNode is broken
+          this.blockShimmer?.unregisterNode(targetX, targetY)
           const artifactSlot: InventorySlot = {
             type: 'artifact',
             artifactRarity: mineResult.content?.artifactRarity,
@@ -1629,25 +1658,16 @@ export class MineScene extends Phaser.Scene {
               questionsTotal: BALANCE.ARTIFACT_QUIZ_QUESTIONS,
             })
           } else {
-            const added = this.addToInventory(artifactSlot)
-            if (mineResult.content?.factId) {
-              this.artifactsFound.push(mineResult.content.factId)
-            }
-            this.game.events.emit('artifact-found', {
-              factId: mineResult.content?.factId,
-              rarity: mineResult.content?.artifactRarity,
-              addedToInventory: added,
-            })
-            audioManager.playSound('collect')
-            // Pop artifact toward player with rarity-based effects
-            this.lootPop.popLoot({
-              spriteKey: 'block_artifact',
-              worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
-              worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
-              targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
-              targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
-              rarity: mineResult.content?.artifactRarity,
-            })
+            // Phase 31.2: trigger camera zoom + GAIA commentary before collecting
+            const revealRarity = (mineResult.content?.artifactRarity ?? 'common') as Rarity
+            this.triggerArtifactRevealSequence(
+              artifactSlot,
+              targetX * TILE_SIZE + TILE_SIZE * 0.5,
+              targetY * TILE_SIZE + TILE_SIZE * 0.5,
+              revealRarity,
+              targetX,
+              targetY,
+            )
           }
           break
         }
@@ -1755,10 +1775,12 @@ export class MineScene extends Phaser.Scene {
           break
         }
         case BlockType.DescentShaft: {
-          // Pause and show a layer entrance quiz before descending.
-          // The actual descent is triggered after the quiz via resumeFromLayerQuiz().
+          // Phase 31.5: Animate descent before showing the layer entrance quiz.
           this.isPaused = true
-          this.game.events.emit('layer-entrance-quiz', { layer: this.currentLayer })
+          this.triggerDescentAnimation(() => {
+            // After animation completes, emit the layer-entrance-quiz event.
+            this.game.events.emit('layer-entrance-quiz', { layer: this.currentLayer })
+          })
           // Don't destroy or move — GameManager will handle the quiz then call resumeFromLayerQuiz().
           return
         }
@@ -2046,6 +2068,129 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
+   * Phase 31.2: Choreographed artifact reveal sequence.
+   * Zooms camera into the artifact tile, emits a GAIA reveal line, then
+   * collects the artifact and emits the artifact-found event.
+   *
+   * Replaces the direct artifact collection for non-quiz artifact breaks.
+   */
+  private triggerArtifactRevealSequence(
+    artifactSlot: InventorySlot,
+    tileWorldX: number,
+    tileWorldY: number,
+    rarity: Rarity,
+    tileGridX: number,
+    tileGridY: number,
+  ): void {
+    if (!this.cameraSequencer) {
+      // Fallback: collect directly without camera sequence
+      const added = this.addToInventory(artifactSlot)
+      if (artifactSlot.factId) {
+        this.artifactsFound.push(artifactSlot.factId)
+      }
+      this.game.events.emit('artifact-found', {
+        factId: artifactSlot.factId,
+        rarity: artifactSlot.artifactRarity,
+        addedToInventory: added,
+      })
+      audioManager.playSound('collect')
+      this.lootPop.popLoot({
+        spriteKey: 'block_artifact',
+        worldX: tileWorldX,
+        worldY: tileWorldY,
+        targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+        targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+        rarity: artifactSlot.artifactRarity,
+      })
+      return
+    }
+
+    // Pause input during the sequence
+    this.isPaused = true
+
+    // Fire particle reveal at the tile immediately
+    this.particles.emitArtifactReveal(rarity, tileWorldX, tileWorldY)
+
+    const timing = REVEAL_TIMING[rarity] ?? REVEAL_TIMING['common']
+
+    // Zoom into the artifact tile
+    this.cameraSequencer.zoomToPoint({
+      worldX: tileWorldX,
+      worldY: tileWorldY,
+      targetZoomMultiplier: 2.0,
+      zoomInMs: 350,
+      holdMs: timing.anticipationMs,
+      zoomOutMs: 250,
+      onHoldStart: () => {
+        // Emit GAIA line during the hold phase
+        const gaiaManager = GameManager.getInstance().getGaiaManager()
+        const line = gaiaManager.getArtifactRevealLine(rarity)
+        this.game.events.emit('gaia-toast', line)
+      },
+      onComplete: () => {
+        // Re-enable input and collect the artifact
+        this.isPaused = false
+        this.cameraSequencer?.updateBaseZoom()
+
+        const added = this.addToInventory(artifactSlot)
+        if (artifactSlot.factId) {
+          this.artifactsFound.push(artifactSlot.factId)
+        }
+        this.game.events.emit('artifact-found', {
+          factId: artifactSlot.factId,
+          rarity: artifactSlot.artifactRarity,
+          addedToInventory: added,
+        })
+        audioManager.playSound('collect')
+        this.lootPop.popLoot({
+          spriteKey: 'block_artifact',
+          worldX: tileWorldX,
+          worldY: tileWorldY,
+          targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+          targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+          rarity: artifactSlot.artifactRarity,
+        })
+      },
+    })
+  }
+
+  /**
+   * Phase 31.5: Plays the descent animation (camera pan-down + zoom + fade to black)
+   * when the player steps on a DescentShaft. Calls `onComplete` after the pan and fade.
+   *
+   * @param onComplete - Callback invoked after the animation completes
+   */
+  private triggerDescentAnimation(onComplete: () => void): void {
+    const cam = this.cameras.main
+
+    // Emit descent overlay event so Svelte DescentOverlay component can animate
+    this.game.events.emit('descent-animation-start', {
+      fromLayer: this.currentLayer + 1,  // 1-based layer leaving
+      toLayer: this.currentLayer + 2,    // 1-based layer entering
+      biomeName: null,                   // biome name determined by GameManager on next scene start
+    })
+
+    // Pan camera down slightly while zooming in
+    const panOffsetY = TILE_SIZE * 3
+    this.tweens.add({
+      targets: cam,
+      scrollY: cam.scrollY + panOffsetY,
+      zoom: cam.zoom * DESCENT_ANIM.zoomDuringDescent,
+      duration: DESCENT_ANIM.panDurationMs,
+      ease: 'Cubic.In',
+      onComplete: () => {
+        // Fade to black
+        cam.fadeOut(DESCENT_ANIM.fadeDurationMs, 0, 0, 0)
+        cam.once('camerafadeoutcomplete', () => {
+          // Clear shimmer nodes before layer transition
+          this.blockShimmer?.clear()
+          onComplete()
+        })
+      },
+    })
+  }
+
+  /**
    * Resumes the multi-question artifact appraisal quiz after each answer.
    * On correct answers: rolls for a rarity boost and continues to the next question
    * (or finalizes if no questions remain).
@@ -2093,7 +2238,7 @@ export class MineScene extends Phaser.Scene {
    * Resumes mining input after a random (in-mine pop quiz) result.
    * Grants a small dust reward on correct answer; deducts a small oxygen cost on wrong.
    */
-  public resumeFromRandomQuiz(correct: boolean): void {
+  public resumeFromRandomQuiz(correct: boolean, streakMultiplier = 1.0): void {
     this.isPaused = false
     if (correct) {
       // quiz_master relic: bonus dust on correct answer
@@ -2101,7 +2246,7 @@ export class MineScene extends Phaser.Scene {
       const bonusDust = (quizMasterRelic && quizMasterRelic.effect.type === 'quiz_master')
         ? quizMasterRelic.effect.bonus
         : 0
-      const totalDust = BALANCE.RANDOM_QUIZ_REWARD_DUST + bonusDust
+      const totalDust = Math.round((BALANCE.RANDOM_QUIZ_REWARD_DUST + bonusDust) * streakMultiplier)
       const rewardSlot: InventorySlot = {
         type: 'mineral',
         mineralTier: 'dust',

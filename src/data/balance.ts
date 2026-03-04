@@ -456,3 +456,73 @@ export const PICKAXE_TIER_VISUALS = [
   { name: 'Diamond Pick',  shakeMultiplier: 1.5, flashIntensity: 0.5, particleBonus: 6  },
   { name: 'Quantum Pick',  shakeMultiplier: 2.0, flashIntensity: 0.8, particleBonus: 10 },
 ] as const
+
+// === REVEAL TIMING (Phase 31.1) ===
+// All values in milliseconds.
+// anticipationMs : time the '?' box is shown before suspense begins
+// suspenseMs     : pulse duration before reveal flash
+// flashMs        : hold on the bright reveal frame (screenFlash tiers only)
+// payoffMs       : artifact + fact text shown before Collect button appears
+// collectMs      : time Collect button is visible before auto-advance
+export const REVEAL_TIMING: Record<string, {
+  anticipationMs: number
+  suspenseMs: number
+  flashMs: number
+  payoffMs: number
+  collectMs: number
+  suspensePulseHz: number   // Pulse frequency during suspense (higher = faster pulse)
+  particleWaveCount: number // How many burst waves fire in sequence
+}> = {
+  common:    { anticipationMs: 300,  suspenseMs: 400,  flashMs: 0,    payoffMs: 400,   collectMs: 1500, suspensePulseHz: 1.0, particleWaveCount: 1 },
+  uncommon:  { anticipationMs: 400,  suspenseMs: 600,  flashMs: 0,    payoffMs: 600,   collectMs: 2000, suspensePulseHz: 1.2, particleWaveCount: 1 },
+  rare:      { anticipationMs: 600,  suspenseMs: 900,  flashMs: 80,   payoffMs: 900,   collectMs: 2500, suspensePulseHz: 1.5, particleWaveCount: 2 },
+  epic:      { anticipationMs: 900,  suspenseMs: 1400, flashMs: 120,  payoffMs: 1400,  collectMs: 3000, suspensePulseHz: 2.0, particleWaveCount: 3 },
+  legendary: { anticipationMs: 1400, suspenseMs: 2200, flashMs: 180,  payoffMs: 2200,  collectMs: 4000, suspensePulseHz: 2.5, particleWaveCount: 4 },
+  mythic:    { anticipationMs: 2000, suspenseMs: 3500, flashMs: 250,  payoffMs: 3500,  collectMs: 5000, suspensePulseHz: 3.0, particleWaveCount: 6 },
+} as const
+
+// === BLOCK SHIMMER TIERS (Phase 31.3) ===
+// Controls the ambient shimmer overlay on ArtifactNode tiles by rarity.
+// shimmerAlpha     : peak opacity of the shimmer overlay (0-1)
+// shimmerColor     : hex tint of the shimmer overlay
+// shimmerPeriodMs  : full cycle duration in ms
+// shimmerRadiusTiles : how many adjacent tiles the shimmer glow bleeds into (0 = tile only)
+export const BLOCK_SHIMMER_TIERS: Record<string, {
+  shimmerAlpha: number
+  shimmerColor: number
+  shimmerPeriodMs: number
+  shimmerRadiusTiles: number
+}> = {
+  common:    { shimmerAlpha: 0.00, shimmerColor: 0x888888, shimmerPeriodMs: 0,    shimmerRadiusTiles: 0 },
+  uncommon:  { shimmerAlpha: 0.00, shimmerColor: 0x4ec9a0, shimmerPeriodMs: 0,    shimmerRadiusTiles: 0 },
+  rare:      { shimmerAlpha: 0.20, shimmerColor: 0x4a9eff, shimmerPeriodMs: 1800, shimmerRadiusTiles: 0 },
+  epic:      { shimmerAlpha: 0.30, shimmerColor: 0xcc44ff, shimmerPeriodMs: 1400, shimmerRadiusTiles: 1 },
+  legendary: { shimmerAlpha: 0.45, shimmerColor: 0xffd700, shimmerPeriodMs: 1000, shimmerRadiusTiles: 1 },
+  mythic:    { shimmerAlpha: 0.60, shimmerColor: 0xff44aa, shimmerPeriodMs: 700,  shimmerRadiusTiles: 2 },
+} as const
+
+// === DESCENT ANIMATION (Phase 31.5) ===
+export const DESCENT_ANIM = {
+  /** Duration of camera pan down before fade, in ms */
+  panDurationMs: 400,
+  /** Camera zoom multiplier during descent (>1 = zoom in slightly) */
+  zoomDuringDescent: 1.15,
+  /** Duration of screen fade-to-black, in ms */
+  fadeDurationMs: 350,
+  /** Duration of new-layer fade-in, in ms */
+  fadeInDurationMs: 400,
+  /** How long the depth counter card is held visible, in ms */
+  depthCounterHoldMs: 900,
+  /** How long a biome-change name card is shown, in ms (0 if biome unchanged) */
+  biomeCardHoldMs: 1200,
+  /** Oxygen restore flash duration (already in BALANCE, but gated here for the visual) */
+  oxygenFlashMs: 600,
+} as const
+
+// === STREAK VISUAL THRESHOLDS (Phase 31.6) ===
+export const STREAK_VISUAL = {
+  TIER_1_COUNT: 3,   multiplier_1: 1.20,  // 3 correct in a row → +20% dust
+  TIER_2_COUNT: 5,   multiplier_2: 1.35,  // 5 correct in a row → +35% dust
+  TIER_3_COUNT: 7,   multiplier_3: 1.50,  // 7 correct in a row → +50% dust
+  RESET_ON_WRONG: true,
+} as const

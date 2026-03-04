@@ -305,3 +305,36 @@ export interface GaiaThoughtBubble {
 
 /** Active GAIA thought bubble for the dome/base view. Null means no bubble is shown. */
 export const gaiaThoughtBubble = singletonWritable<GaiaThoughtBubble | null>('gaiaThoughtBubble', null)
+
+// =========================================================
+// Phase 31.6 — Streak Visual Feedback
+// =========================================================
+
+/**
+ * Current quiz answer streak state during a dive.
+ * count = consecutive correct answers; multiplier = active dust reward multiplier.
+ * Reset to { count: 0, multiplier: 1.0 } on wrong answer or dive end.
+ */
+export const quizStreak = singletonWritable<{ count: number; multiplier: number }>('quizStreak', { count: 0, multiplier: 1.0 })
+
+// =========================================================
+// Phase 31.5 — Descent Overlay State
+// =========================================================
+
+/**
+ * State for the DescentOverlay component shown during layer transitions.
+ * visible=true triggers the animation.
+ */
+export interface DescentOverlayState {
+  visible: boolean
+  fromLayer: number
+  toLayer: number
+  biomeName: string | null
+}
+
+export const descentOverlayState = singletonWritable<DescentOverlayState>('descentOverlayState', {
+  visible: false,
+  fromLayer: 1,
+  toLayer: 2,
+  biomeName: null,
+})

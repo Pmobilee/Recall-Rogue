@@ -333,7 +333,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 5 | W1 | **40** | Internationalization | [x] |
 | 6 | W1 | **47** | Achievement Gallery | [x] |
 | 7 | W2 | **38** | iOS Launch | [x] |
-| 8 | W2 | **31** | Gacha & Reveal Polish | [ ] |
+| 8 | W2 | **31** | Gacha & Reveal Polish | [x] |
 | 9 | W2 | **29** | Character Animation | [ ] |
 | 10 | W2 | **33** | Biome Visual Diversity | [ ] |
 | 11 | W2 | **37** | Advanced Pet System | [ ] |

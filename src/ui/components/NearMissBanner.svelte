@@ -4,9 +4,10 @@
 
   interface Props {
     rarity: Rarity
+    nearMissCount?: number | undefined
   }
 
-  let { rarity }: Props = $props()
+  let { rarity, nearMissCount = undefined }: Props = $props()
 
   const nearMissKey = $derived.by((): string | null => {
     if (rarity === 'epic') return 'epic_nearLegendary'
@@ -32,7 +33,11 @@
 
 {#if message && visible}
   <div class="near-miss-banner" role="status" aria-live="polite">
+    <div class="near-miss-ring" aria-hidden="true"></div>
     {message}
+    {#if nearMissCount !== undefined && nearMissCount >= 3}
+      <div class="near-miss-subline">{nearMissCount} near-misses this dive — your luck is shifting</div>
+    {/if}
   </div>
 {/if}
 
@@ -54,6 +59,32 @@
     z-index: 300;
     animation: bannerPop 0.25s ease-out, bannerFade 0.4s 2.1s ease-in forwards;
     pointer-events: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .near-miss-ring {
+    position: absolute;
+    inset: -4px;
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    border-radius: 999px;
+    animation: ringExpand 600ms ease-out 2 forwards;
+    pointer-events: none;
+  }
+
+  @keyframes ringExpand {
+    from { transform: scale(1);    opacity: 0.8; }
+    to   { transform: scale(1.6);  opacity: 0; }
+  }
+
+  .near-miss-subline {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 215, 0, 0.75);
+    white-space: nowrap;
   }
 
   @keyframes bannerPop {

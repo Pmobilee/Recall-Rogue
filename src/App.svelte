@@ -15,6 +15,8 @@
     showSendUp,
     pendingRelicPickup,
     equippedRelicsV2,
+    quizStreak,
+    descentOverlayState,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
   import type { Fact } from './data/types'
@@ -56,6 +58,8 @@
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
   import GaiaToast from './ui/components/GaiaToast.svelte'
   import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
+  import DescentOverlay from './ui/components/DescentOverlay.svelte'
+  import StreakFeedback from './ui/components/StreakFeedback.svelte'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources } from './services/saveService'
@@ -726,6 +730,18 @@
       onUseConsumable={handleUseConsumable}
     />
     <MiniMap />
+    <DescentOverlay
+      visible={$descentOverlayState.visible}
+      fromLayer={$descentOverlayState.fromLayer}
+      toLayer={$descentOverlayState.toLayer}
+      biomeName={$descentOverlayState.biomeName}
+      onAnimComplete={() => descentOverlayState.update(s => ({ ...s, visible: false }))}
+    />
+    {#if $quizStreak.count >= 3}
+      <div style="position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 120; pointer-events: none;">
+        <StreakFeedback streakCount={$quizStreak.count} multiplier={$quizStreak.multiplier} />
+      </div>
+    {/if}
 
   {:else if $currentScreen === 'quiz' && $activeQuiz}
     {#if quizMode === 'gate'}

@@ -4,6 +4,7 @@ import {
   activeQuiz,
   gaiaMessage,
   currentLayer,
+  quizStreak,
 } from '../../ui/stores/gameState'
 import { playerSave, updateReviewState } from '../../ui/stores/playerData'
 import {
@@ -14,6 +15,7 @@ import {
   QUIZ_FATIGUE_PENALTY_PER_QUIZ,
   QUIZ_FATIGUE_THRESHOLD,
   QUIZ_MIN_RATE,
+  STREAK_VISUAL,
 } from '../../data/balance'
 import type { MineScene } from '../scenes/MineScene'
 import type { Fact } from '../../data/types'
@@ -69,6 +71,11 @@ export class QuizManager {
   private quizzesThisDive = 0
   private failureCounts: Map<string, number> = new Map()
 
+  // =========================================================
+  // Phase 31.6 — Streak tracking
+  // =========================================================
+  private consecutiveCorrect = 0
+
   constructor(
     getMineScene: () => MineScene | null,
     randomGaia: (lines: string[], trigger?: string) => void,
@@ -118,6 +125,9 @@ export class QuizManager {
     this.totalBlocksThisDive = 0
     this.quizzesThisDive = 0
     this.failureCounts.clear()
+    // Phase 31.6: reset streak on new dive
+    this.consecutiveCorrect = 0
+    quizStreak.set({ count: 0, multiplier: 1.0 })
   }
 
   /**
@@ -350,10 +360,32 @@ export class QuizManager {
           this.applyConsistencyPenalty(quiz.fact.id)
         }
       }
+
+      // Phase 31.6: streak tracking
+      let dustMultiplier = 1.0
+      if (correct) {
+        this.consecutiveCorrect++
+        if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_3_COUNT) {
+          dustMultiplier = STREAK_VISUAL.multiplier_3
+          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
+        } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_2_COUNT) {
+          dustMultiplier = STREAK_VISUAL.multiplier_2
+          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
+        } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_1_COUNT) {
+          dustMultiplier = STREAK_VISUAL.multiplier_1
+          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
+        } else {
+          quizStreak.set({ count: this.consecutiveCorrect, multiplier: 1.0 })
+        }
+      } else {
+        this.consecutiveCorrect = 0
+        quizStreak.set({ count: 0, multiplier: 1.0 })
+      }
+
       activeQuiz.set(null)
       const scene = this.getMineScene()
       if (scene) {
-        scene.resumeFromRandomQuiz(correct)
+        scene.resumeFromRandomQuiz(correct, dustMultiplier)
         // Only navigate back to mining if the dive hasn't ended during resume
         // (O2 depletion triggers endDive synchronously, which sets 'diveResults')
         if (get(currentScreen) !== 'diveResults') {

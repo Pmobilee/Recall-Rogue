@@ -41,6 +41,7 @@ import {
   shieldActive,
   currentBiomeId,
   equippedRelicsV2,
+  descentOverlayState,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -733,6 +734,11 @@ export class GameManager {
     // ---- Consumable toast (Phase 8.6) ----
     events.on('gaia-toast', (msg: string) => {
       gaiaMessage.set(msg)
+    })
+
+    // ---- Phase 31.5: Descent animation overlay ----
+    events.on('descent-animation-start', (data: { fromLayer: number; toLayer: number; biomeName: string | null }) => {
+      descentOverlayState.set({ visible: true, fromLayer: data.fromLayer, toLayer: data.toLayer, biomeName: data.biomeName })
     })
 
     // ---- Landmark: Chest opened (DD-V2-055) ----

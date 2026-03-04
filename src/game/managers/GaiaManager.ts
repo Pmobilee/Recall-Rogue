@@ -54,6 +54,66 @@ export class GaiaManager {
   }
 
   // =========================================================
+  // Phase 31.2 — Artifact Reveal Commentary
+  // =========================================================
+
+  private static readonly ARTIFACT_REVEAL_LINES: Record<string, readonly string[]> = {
+    common: [
+      'Something is there.',
+      'A faint signal.',
+      'Worth cataloguing.',
+      'I am detecting a residual signature.',
+      'Small, but real.',
+    ],
+    uncommon: [
+      'Interesting. This has age.',
+      'Not nothing. Look closer.',
+      'Preserved. Unusual for this depth.',
+      'My sensors are responding.',
+      'This layer hid something.',
+    ],
+    rare: [
+      'This is significant.',
+      'Rare emission detected. Take care.',
+      'Pre-collapse origin. Remarkable.',
+      'I do not see these often.',
+      'Document everything.',
+    ],
+    epic: [
+      'GAIA is processing. Stand by.',
+      'An artifact of considerable age.',
+      'This predates the Collapse.',
+      'I am cross-referencing now.',
+      'Extraordinary. Simply extraordinary.',
+    ],
+    legendary: [
+      'I was not sure one of these still existed.',
+      'Legendary classification confirmed.',
+      'The archive will remember this moment.',
+      'You found it. Against all probability.',
+      'I need a moment.',
+    ],
+    mythic: [
+      'Mythic. I have no further words.',
+      'In ten thousand dives I have seen two of these.',
+      'This changes what I thought I knew.',
+      'Do not move. Do not speak. Just look at it.',
+      'Record this. The archive must know.',
+    ],
+  }
+
+  /**
+   * Returns a rarity-appropriate GAIA teaser line for the artifact reveal sequence.
+   * Lines are brief (under 12 words) and delivered before the overlay fully opens.
+   *
+   * @param rarity - The rarity of the artifact being revealed
+   */
+  getArtifactRevealLine(rarity: string): string {
+    const pool = GaiaManager.ARTIFACT_REVEAL_LINES[rarity] ?? GaiaManager.ARTIFACT_REVEAL_LINES['common']
+    return pool[Math.floor(Math.random() * pool.length)]
+  }
+
+  // =========================================================
   // Phase 15.5 — Return Engagement Hooks
   // =========================================================
 
