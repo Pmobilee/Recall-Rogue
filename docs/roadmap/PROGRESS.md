@@ -80,7 +80,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
 
 ### Production Readiness (Phases 26-28)
-- [ ] **Phase 26: Production Backend Integration** — RevenueCat IAP, email provider (Resend), FCM/APNs push, Azure TTS, mount all server routes → [`phases/PHASE-26-PRODUCTION-BACKEND.md`](phases/PHASE-26-PRODUCTION-BACKEND.md)
+- [x] **Phase 26: Production Backend Integration** — RevenueCat IAP, email provider (Resend), FCM/APNs push, Azure TTS, mount all server routes → [`completed/PHASE-26-PRODUCTION-BACKEND.md`](completed/PHASE-26-PRODUCTION-BACKEND.md)
 - [ ] **Phase 27: Test Suite & CI/CD** — Unit tests (Vitest), integration tests, E2E (Playwright), GitHub Actions, seed determinism, code coverage → [`phases/PHASE-27-TEST-SUITE-CICD.md`](phases/PHASE-27-TEST-SUITE-CICD.md)
 - [ ] **Phase 28: Performance & Optimization** — Device tier profiling, bundle analysis, GPU budget enforcement, dirty-rect rendering, memory management → [`phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md`](phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md)
 
