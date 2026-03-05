@@ -1,47 +1,39 @@
-/** SIZE BUDGET: MineScene orchestrator — 3,693 lines. Target: split to <800 lines. Extract MineTileRenderer, MineInputController, MineBlockInteractor. */
+/** SIZE BUDGET: MineScene orchestrator — 1,506 lines. Target: <800 lines. Extracted: MineTileRenderer (662L), MineInputController (226L), MineBlockInteractor (1,505L). */
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
 import { BALANCE } from '../../data/balance'
 import { BlockType, type InventorySlot, type MineCell, type MineralTier, type Rarity, type Relic, type RunUpgrade } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
-import { getActiveSynergies, pickRandomRelic, type SynergyEffect } from '../../data/relics'
+import { getActiveSynergies, type SynergyEffect } from '../../data/relics'
 import { type CompanionEffect } from '../../data/fossils'
 import { Player } from '../entities/Player'
-import { canMine, mineBlock } from '../systems/MiningSystem'
+import { mineBlock } from '../systems/MiningSystem'
 import { MinerAnimController } from '../systems/AnimationSystem'
 import { GearOverlaySystem } from '../systems/GearOverlaySystem'
-import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
-import { resolveTileSpriteKey } from '../../data/biomeTileSpec'
-import { transitionTileSpriteKey } from '../../data/biomeTileSpec'
-import type { TileCategory } from '../../data/biomeTileSpec'
-import { applyDepthBackground, computeDepthModifiers } from '../systems/DepthGradientSystem'
+import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants } from '../systems/AutotileSystem'
+import { applyDepthBackground } from '../systems/DepthGradientSystem'
 import { generateMine, generateTutorialMine, revealAround, seededRandom, type DifficultyProfile } from '../systems/MineGenerator'
 import {
   addOxygen,
   consumeOxygen,
   createOxygenState,
-  getOxygenCostForBlock,
   type OxygenState,
 } from '../systems/OxygenSystem'
 import { audioManager } from '../../services/audioService'
-import { pickQuote } from '../../data/quotes'
 import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
 import { CameraSequencer } from '../systems/CameraSequencer'
 import { BlockShimmerSystem } from '../systems/BlockShimmerSystem'
 import { ParticleSystem } from '../systems/ParticleSystem'
-import { miniMapData } from '../../ui/stores/miniMap'
 import { tickCount, layerTickCount } from '../../ui/stores/gameState'
 import { LootPopSystem } from '../systems/LootPopSystem'
 import { ImpactSystem } from '../systems/ImpactSystem'
-import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 import { TickSystem } from '../systems/TickSystem'
 import { HazardSystem } from '../systems/HazardSystem'
 import { InstabilitySystem } from '../systems/InstabilitySystem'
 import { MineEventSystem } from '../systems/MineEventSystem'
-import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, CONSUMABLE_DROP_CHANCE, REVEAL_TIMING, DESCENT_ANIM } from '../../data/balance'
-import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
-import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive, instabilityLevel, instabilityCollapsing, instabilityCountdown, activeAltar, activeMineEvent, gaiaMessage } from '../../ui/stores/gameState'
-import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
+import { REVEAL_TIMING, DESCENT_ANIM } from '../../data/balance'
+import { type ConsumableId } from '../../data/consumables'
+import { instabilityLevel, instabilityCollapsing, instabilityCountdown, gaiaMessage } from '../../ui/stores/gameState'
 import { BiomeParticleManager } from '../managers/BiomeParticleManager'
 import { AudioManager } from '../managers/AudioManager'
 import { BiomeGlowSystem } from '../systems/BiomeGlowSystem'
@@ -50,43 +42,53 @@ import { ALL_BIOMES } from '../../data/biomes'
 import { getSpriteUrls, getSpriteUrlsForBiome } from '../spriteManifest'
 import { getSpriteResolution } from '../../ui/stores/settings'
 import { GameManager } from '../GameManager'
-import { BOSS_LAYER_MAP, createBoss } from '../entities/Boss'
 import { CreatureSpawner } from '../systems/CreatureSpawner'
 import { playerSave } from '../../ui/stores/playerData'
-import { encounterManager } from '../managers/EncounterManager'
+import {
+  redrawAll as redrawAllImpl,
+  drawDepthOverlay as drawDepthOverlayImpl,
+  drawTiles as drawTilesImpl,
+  drawPlayer as drawPlayerImpl,
+  drawBlockPattern as drawBlockPatternImpl,
+  drawCrackOverlay as drawCrackOverlayImpl,
+  drawLegacyCracks as drawLegacyCracksImpl,
+  getPooledSprite as getPooledSpriteImpl,
+  getBiomeAccentTint as getBiomeAccentTintImpl,
+  getTransitionEdge as getTransitionEdgeImpl,
+  spawnBreakParticles as spawnBreakParticlesImpl,
+  BLOCK_COLORS,
+} from './MineTileRenderer'
+import {
+  handlePointerDown as handlePointerDownImpl,
+  handleKeyDown as handleKeyDownImpl,
+  findPath as findPathImpl,
+} from './MineInputController'
+import {
+  handleMoveOrMine as handleMoveOrMineImpl,
+  checkPointOfNoReturn as checkPointOfNoReturnImpl,
+  addToInventory as addToInventoryImpl,
+  getMaxStackSize as getMaxStackSizeImpl,
+  applyMineralMagnet as applyMineralMagnetImpl,
+  rollUpgrade as rollUpgradeImpl,
+  applyUpgrade as applyUpgradeImpl,
+  revealSpecialBlocks as revealSpecialBlocksImpl,
+  triggerEarthquake as triggerEarthquakeImpl,
+  useBomb as useBombImpl,
+  handleLavaContact as handleLavaContactImpl,
+  handleGasContact as handleGasContactImpl,
+  markCellAsLava as markCellAsLavaImpl,
+  applyConsumable as applyConsumableImpl,
+  applyBomb as applyBombImpl,
+  applyFlare as applyFlareImpl,
+  applyDrillCharge as applyDrillChargeImpl,
+  applySonarPulse as applySonarPulseImpl,
+  handleLandmarkEntry as handleLandmarkEntryImpl,
+  triggerInstabilityCollapse as triggerInstabilityCollapseImpl,
+  isPlayerAt as isPlayerAtImpl,
+  forceLayerFail as forceLayerFailImpl,
+} from './MineBlockInteractor'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
-
-const BLOCK_COLORS: Record<BlockType, number> = {
-  [BlockType.Empty]: 0x3a3550,
-  [BlockType.Dirt]: 0x5c4033,
-  [BlockType.SoftRock]: 0x7a6652,
-  [BlockType.Stone]: 0x6b6b6b,
-  [BlockType.HardRock]: 0x4a4a4a,
-  [BlockType.MineralNode]: 0x4ecca3,
-  [BlockType.ArtifactNode]: 0xe94560,
-  [BlockType.OxygenCache]: 0x5dade2,
-  [BlockType.QuizGate]: 0xffd369,
-  [BlockType.UpgradeCrate]: 0xc49b1a,
-  [BlockType.ExitLadder]: 0x00ff88,
-  [BlockType.DescentShaft]: 0x6633cc,
-  [BlockType.RelicShrine]: 0xd4af37,
-  [BlockType.QuoteStone]: 0x7788aa,
-  [BlockType.LavaBlock]: 0xcc3300,
-  [BlockType.GasPocket]: 0x446633,
-  [BlockType.UnstableGround]: 0x8B7355,
-  [BlockType.SendUpStation]: 0x44aadd,
-  [BlockType.OxygenTank]: 0x00ccaa,
-  [BlockType.DataDisc]: 0x22aacc,
-  [BlockType.FossilNode]: 0xd4a574,
-  [BlockType.Chest]: 0xffd700,             // gold
-  [BlockType.Tablet]: 0x8888cc,            // blue-purple
-  [BlockType.OfferingAltar]: 0x9944cc,     // purple — Phase 35.3
-  [BlockType.LockedBlock]: 0x4a4a4a,       // same base as HardRock — Phase 35.6
-  [BlockType.RecipeFragmentNode]: 0x44ccaa, // teal/cyan — Phase 35.5
-  [BlockType.ChallengeGate]: 0xff6600,      // orange — Phase 48.4
-  [BlockType.Unbreakable]: 0x2c2c2c,
-}
 
 export interface MineSceneData {
   seed: number
@@ -109,96 +111,96 @@ export interface MineSceneData {
 }
 
 export class MineScene extends Phaser.Scene {
-  private seed = 0
-  private oxygenTanks: number = BALANCE.STARTING_OXYGEN_TANKS
-  private grid: MineCell[][] = []
-  private player!: Player
-  private oxygenState!: OxygenState
-  private inventory: InventorySlot[] = []
-  private inventorySlots: number = BALANCE.STARTING_INVENTORY_SLOTS
-  private tileGraphics!: Phaser.GameObjects.Graphics
-  private overlayGraphics!: Phaser.GameObjects.Graphics
-  private playerSprite!: Phaser.GameObjects.Sprite
-  private animController!: MinerAnimController
-  private gearOverlay: GearOverlaySystem | null = null
-  private playerVisualX: number = 0
-  private playerVisualY: number = 0
-  private readonly MOVE_LERP = 0.25
-  private particles!: ParticleSystem
+  /** @internal */ public seed = 0
+  /** @internal */ public oxygenTanks: number = BALANCE.STARTING_OXYGEN_TANKS
+  /** @internal */ public grid: MineCell[][] = []
+  /** @internal */ public player!: Player
+  /** @internal */ public oxygenState!: OxygenState
+  /** @internal */ public inventory: InventorySlot[] = []
+  /** @internal */ public inventorySlots: number = BALANCE.STARTING_INVENTORY_SLOTS
+  /** @internal */ public tileGraphics!: Phaser.GameObjects.Graphics
+  /** @internal */ public overlayGraphics!: Phaser.GameObjects.Graphics
+  /** @internal */ public playerSprite!: Phaser.GameObjects.Sprite
+  /** @internal */ public animController!: MinerAnimController
+  /** @internal */ public gearOverlay: GearOverlaySystem | null = null
+  /** @internal */ public playerVisualX: number = 0
+  /** @internal */ public playerVisualY: number = 0
+  /** @internal */ public readonly MOVE_LERP = 0.25
+  /** @internal */ public particles!: ParticleSystem
   private cameraSequencer: CameraSequencer | null = null
-  private blockShimmer: BlockShimmerSystem | null = null
+  /** @internal */ public blockShimmer: BlockShimmerSystem | null = null
   private pinchZoom!: PinchZoomController
-  private itemSpritePool: Phaser.GameObjects.Image[] = []
-  private itemSpritePoolIndex = 0
-  private flashTiles = new Map<string, number>()
-  private lootPop!: LootPopSystem
-  private impactSystem!: ImpactSystem
-  private bufferedInput: { x: number; y: number } | null = null
-  private facts: string[] = []
-  private blocksMinedThisRun = 0
-  private artifactsFound: string[] = []
-  private gridWidth = 0
-  private gridHeight = 0
-  private isPaused = false
-  private oxygenWarningPlayed = false
-  private passedPointOfNoReturn = false
-  private pendingOxygenReward = 0
-  private pendingArtifactSlot: InventorySlot | null = null
-  private pendingArtifactQuestions: number = 0
-  private pendingArtifactBoosts: number = 0
-  private activeUpgrades: Map<RunUpgrade, number> = new Map()
-  /** Relics collected this run — provides persistent passive bonuses. */
-  private collectedRelics: Relic[] = []
-  /** Seeded RNG for relic selection (deterministic per seed). */
-  private rng: () => number = Math.random
-  /** Zero-based layer index for this dive session. */
-  private currentLayer = 0
+  /** @internal */ public itemSpritePool: Phaser.GameObjects.Image[] = []
+  /** @internal */ public itemSpritePoolIndex = 0
+  /** @internal */ public flashTiles = new Map<string, number>()
+  /** @internal */ public lootPop!: LootPopSystem
+  /** @internal */ public impactSystem!: ImpactSystem
+  /** @internal */ public bufferedInput: { x: number; y: number } | null = null
+  /** @internal */ public facts: string[] = []
+  /** @internal */ public blocksMinedThisRun = 0
+  /** @internal */ public artifactsFound: string[] = []
+  /** @internal */ public gridWidth = 0
+  /** @internal */ public gridHeight = 0
+  /** @internal */ public isPaused = false
+  /** @internal */ public oxygenWarningPlayed = false
+  /** @internal */ public passedPointOfNoReturn = false
+  /** @internal */ public pendingOxygenReward = 0
+  /** @internal */ public pendingArtifactSlot: InventorySlot | null = null
+  /** @internal */ public pendingArtifactQuestions: number = 0
+  /** @internal */ public pendingArtifactBoosts: number = 0
+  /** @internal */ public activeUpgrades: Map<RunUpgrade, number> = new Map()
+  /** @internal Relics collected this run — provides persistent passive bonuses. */
+  public collectedRelics: Relic[] = []
+  /** @internal Seeded RNG for relic selection (deterministic per seed). */
+  public rng: () => number = Math.random
+  /** @internal Zero-based layer index for this dive session. */
+  public currentLayer = 0
   /** Items secured via send-up station — preserved across layers and never lost on forced surface. */
   public sentUpItems: InventorySlot[] = []
-  /** The active biome for this mine layer — controls visual palette and generation weights. */
-  private currentBiome: Biome = DEFAULT_BIOME
-  /** Number of blocks mined since the last earthquake (for cooldown tracking). */
-  private blocksSinceLastQuake: number = 0
-  /** Current pickaxe tier index (into BALANCE.PICKAXE_TIERS). 0 = Stone Pick. */
-  private pickaxeTierIndex: number = 0
-  /** Current scanner tier index (into BALANCE.SCANNER_TIERS). 0 = Basic Scanner. */
-  private scannerTierIndex: number = 0
-  /** How many temporary backpack expansions have been collected this run (resets each dive). */
-  private backpackExpansionCount: number = 0
-  /** Active fossil companion effect for this dive. Null if no companion is equipped. */
-  private companionEffect: CompanionEffect | null = null
+  /** @internal The active biome for this mine layer — controls visual palette and generation weights. */
+  public currentBiome: Biome = DEFAULT_BIOME
+  /** @internal Number of blocks mined since the last earthquake (for cooldown tracking). */
+  public blocksSinceLastQuake: number = 0
+  /** @internal Current pickaxe tier index (into BALANCE.PICKAXE_TIERS). 0 = Stone Pick. */
+  public pickaxeTierIndex: number = 0
+  /** @internal Current scanner tier index (into BALANCE.SCANNER_TIERS). 0 = Basic Scanner. */
+  public scannerTierIndex: number = 0
+  /** @internal How many temporary backpack expansions have been collected this run (resets each dive). */
+  public backpackExpansionCount: number = 0
+  /** @internal Active fossil companion effect for this dive. Null if no companion is equipped. */
+  public companionEffect: CompanionEffect | null = null
   /** Tracks whether the companion effect triggered on the last mining action (for badge flash). */
   public companionFlash: boolean = false
-  /** Active hazard manager — lava flows and gas clouds. Initialized in create(). */
-  private hazardSystem: HazardSystem | null = null
-  /** Layer instability meter — rises from hazards, collapses at 100%. (Phase 35.4) */
-  private instabilitySystem: InstabilitySystem | null = null
-  /** Random mine event dispatcher. (Phase 35.7) */
-  private mineEventSystem: MineEventSystem | null = null
-  /** Tracks which locked blocks have already shown a denial GAIA message this layer (prevent spam). */
-  private lockedBlockDeniedSet: Set<string> = new Set()
-  /** Tracks the last direction the player moved/mined, used for Drill Charge. */
-  private playerFacing: 'up' | 'down' | 'left' | 'right' = 'down'
-  /** Phase 9: Per-biome ambient particle manager. */
-  private biomeParticles: BiomeParticleManager | null = null
-  /** Phase 9: Biome audio crossfading manager. */
-  private audioManager: AudioManager | null = null
-  /** Phase 9: Fog glow system for luminous blocks. */
-  private glowSystem: BiomeGlowSystem | null = null
-  /** Phase 9: Animated tile frame cycling system. */
-  private animatedTileSystem: AnimatedTileSystem | null = null
-  /** Tracks whether LINEAR texture filters have been applied after the first sprite load. */
-  private _filtersApplied = false
-  /** Phase 33.5: Depth gradient overlay graphics layer (darkens viewport at deeper layers). */
-  private depthOverlayGraphics!: Phaser.GameObjects.Graphics
-  /** Phase 33.6: Biome ID of the adjacent layer (used for transition tile rendering). */
-  private transitionBiomeId: import('../../data/biomes').BiomeId | null = null
-  /** Phase 49.2: Optional secondary biome for dual-biome blended layers. */
-  private secondaryBiome: Biome | undefined = undefined
-  /** Phase 49.7: Optional dynamic difficulty profile. */
-  private difficultyProfile: DifficultyProfile | undefined = undefined
-  /** Phase 36: Creature spawner — manages random encounter timing and selection. */
-  private creatureSpawner = new CreatureSpawner()
+  /** @internal Active hazard manager — lava flows and gas clouds. Initialized in create(). */
+  public hazardSystem: HazardSystem | null = null
+  /** @internal Layer instability meter — rises from hazards, collapses at 100%. (Phase 35.4) */
+  public instabilitySystem: InstabilitySystem | null = null
+  /** @internal Random mine event dispatcher. (Phase 35.7) */
+  public mineEventSystem: MineEventSystem | null = null
+  /** @internal Tracks which locked blocks have already shown a denial GAIA message this layer (prevent spam). */
+  public lockedBlockDeniedSet: Set<string> = new Set()
+  /** @internal Tracks the last direction the player moved/mined, used for Drill Charge. */
+  public playerFacing: 'up' | 'down' | 'left' | 'right' = 'down'
+  /** @internal Phase 9: Per-biome ambient particle manager. */
+  public biomeParticles: BiomeParticleManager | null = null
+  /** @internal Phase 9: Biome audio crossfading manager. */
+  public audioManager: AudioManager | null = null
+  /** @internal Phase 9: Fog glow system for luminous blocks. */
+  public glowSystem: BiomeGlowSystem | null = null
+  /** @internal Phase 9: Animated tile frame cycling system. */
+  public animatedTileSystem: AnimatedTileSystem | null = null
+  /** @internal Tracks whether LINEAR texture filters have been applied after the first sprite load. */
+  public _filtersApplied = false
+  /** @internal Phase 33.5: Depth gradient overlay graphics layer (darkens viewport at deeper layers). */
+  public depthOverlayGraphics!: Phaser.GameObjects.Graphics
+  /** @internal Phase 33.6: Biome ID of the adjacent layer (used for transition tile rendering). */
+  public transitionBiomeId: import('../../data/biomes').BiomeId | null = null
+  /** @internal Phase 49.2: Optional secondary biome for dual-biome blended layers. */
+  public secondaryBiome: Biome | undefined = undefined
+  /** @internal Phase 49.7: Optional dynamic difficulty profile. */
+  public difficultyProfile: DifficultyProfile | undefined = undefined
+  /** @internal Phase 36: Creature spawner — manages random encounter timing and selection. */
+  public creatureSpawner = new CreatureSpawner()
 
   constructor() {
     super({ key: 'MineScene' })
@@ -637,879 +639,56 @@ export class MineScene extends Phaser.Scene {
     this.redrawAll()
   }
 
-  private redrawAll(): void {
-    this.updateCameraTarget()
-    this.drawDepthOverlay()
-    this.drawTiles()
-    this.drawPlayer()
-    // Update mini-map store
-    miniMapData.set({
-      grid: this.grid,
-      playerX: this.player.gridX,
-      playerY: this.player.gridY,
-    })
-  }
+  /** @internal */ public redrawAll(): void { redrawAllImpl(this) }
 
-  /** Camera follow is now handled by Phaser's startFollow(). */
-  private updateCameraTarget(): void {
+  /** @internal Camera follow is now handled by Phaser's startFollow(). */
+  public updateCameraTarget(): void {
     // No-op — Phaser's built-in camera follow handles position tracking.
     // Kept as a method stub since redrawAll() calls it.
   }
 
-  /**
-   * Phase 33.5: Draws a semi-transparent dark overlay over the entire viewport.
-   * Overlay alpha scales with depth: 0 at layer 0, ~0.30 at layer 19.
-   */
-  private drawDepthOverlay(): void {
-    if (!this.depthOverlayGraphics) return
-    const { viewportDarkAlpha } = computeDepthModifiers(this.currentLayer, this.currentBiome)
-    this.depthOverlayGraphics.clear()
-    if (viewportDarkAlpha > 0) {
-      const cam = this.cameras.main
-      this.depthOverlayGraphics.fillStyle(0x000000, viewportDarkAlpha)
-      this.depthOverlayGraphics.fillRect(0, 0, cam.width, cam.height)
-    }
-  }
+  private drawDepthOverlay(): void { drawDepthOverlayImpl(this) }
 
-  /**
-   * Phase 33.6: Returns the transition edge direction for a cell based on its grid position.
-   * Top rows return 'n', bottom rows return 's'.
-   */
   private getTransitionEdge(tileX: number, tileY: number): 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw' {
-    if (tileY < 3) return 'n'
-    if (tileY >= this.gridHeight - 3) return 's'
-    if (tileX < 3) return 'w'
-    if (tileX >= this.gridWidth - 3) return 'e'
-    return 'n'
+    return getTransitionEdgeImpl(this, tileX, tileY)
   }
 
-  private shiftColor(color: number, amount: number): number {
-    const r = Phaser.Math.Clamp(((color >> 16) & 0xff) + amount, 0, 255)
-    const g = Phaser.Math.Clamp(((color >> 8) & 0xff) + amount, 0, 255)
-    const b = Phaser.Math.Clamp((color & 0xff) + amount, 0, 255)
-    return (r << 16) | (g << 8) | b
-  }
-
-  private seededModulo(tileX: number, tileY: number, salt: number, modulo: number): number {
-    const rawSeed = tileX * 31 + tileY * 17 + salt * 13
-    const positiveSeed = ((rawSeed % 7919) + 7919) % 7919
-    return positiveSeed % modulo
-  }
-
-  /**
-   * Returns the biome accent tint color for critical special blocks (DD-V2-241).
-   * Critical blocks (QuizGate, DescentShaft, ExitLadder) use a universal shape
-   * with biome-specific accent coloring for visual integration.
-   */
-  private getBiomeAccentTint(): number {
-    return this.currentBiome.palette?.accent ?? this.currentBiome.ambientColor
-  }
+  private getBiomeAccentTint(): number { return getBiomeAccentTintImpl(this) }
 
   private drawBlockPattern(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
-    const cx = px + TILE_SIZE * 0.5
-    const cy = py + TILE_SIZE * 0.5
-    switch (cell.type) {
-      case BlockType.Dirt:
-      case BlockType.SoftRock: {
-        const mask = cell.tileVariant ?? 0
-        const category: TileCategory = 'soil'
-        // Phase 33.3: Try biome-specific tile first, fall back to universal autotile
-        const biomeSpriteKey = resolveTileSpriteKey(this.currentBiome.id, category, mask, this.textures)
-        // Phase 33.6: Use transition tile if cell is in a transition zone
-        if (cell.isTransitionZone && this.transitionBiomeId) {
-          const edgeDir = this.getTransitionEdge(tileX, tileY)
-          const transKey = transitionTileSpriteKey(this.currentBiome.id, this.transitionBiomeId, category, edgeDir)
-          if (this.textures.exists(transKey)) {
-            this.getPooledSprite(transKey, cx, cy)
-            break
-          }
-        }
-        this.getPooledSprite(biomeSpriteKey, cx, cy)
-        break
-      }
-      case BlockType.Stone:
-      case BlockType.HardRock:
-      case BlockType.Unbreakable: {
-        const mask = cell.tileVariant ?? 0
-        const category: TileCategory = 'rock'
-        // Phase 33.3: Try biome-specific tile first, fall back to universal autotile
-        const biomeSpriteKey = resolveTileSpriteKey(this.currentBiome.id, category, mask, this.textures)
-        // Phase 33.6: Use transition tile if cell is in a transition zone
-        if (cell.isTransitionZone && this.transitionBiomeId) {
-          const edgeDir = this.getTransitionEdge(tileX, tileY)
-          const transKey = transitionTileSpriteKey(this.currentBiome.id, this.transitionBiomeId, category, edgeDir)
-          if (this.textures.exists(transKey)) {
-            this.getPooledSprite(transKey, cx, cy)
-            break
-          }
-        }
-        this.getPooledSprite(biomeSpriteKey, cx, cy)
-        break
-      }
-      case BlockType.OxygenCache: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.OxygenCache, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_oxygen_cache', cx, cy)
-        break
-      }
-      case BlockType.UpgradeCrate: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.UpgradeCrate, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_upgrade_crate', cx, cy)
-        break
-      }
-      case BlockType.QuizGate: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.QuizGate, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_quiz_gate', cx, cy)
-        break
-      }
-      case BlockType.ExitLadder:
-        this.getPooledSprite('block_exit_ladder', cx, cy)
-        break
-      case BlockType.DescentShaft: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.DescentShaft, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_descent_shaft', cx, cy)
-        break
-      }
-      case BlockType.MineralNode: {
-        const tier = cell.content?.mineralType ?? 'dust'
-        const mineralKey = tier === 'essence' ? 'block_mineral_essence'
-          : tier === 'geode' ? 'block_mineral_geode'
-          : tier === 'crystal' ? 'block_mineral_crystal'
-          : tier === 'shard' ? 'block_mineral_shard'
-          : 'block_mineral_dust'
-        this.getPooledSprite(mineralKey, cx, cy)
-        // Shimmer overlay animation
-        const shimmerKey = BlockAnimSystem.getFrameKey(BlockType.MineralNode, this.time.now, this.textures)
-        if (shimmerKey) {
-          const shimmer = this.getPooledSprite(shimmerKey, cx, cy)
-          shimmer.setAlpha(0.3)
-          shimmer.setDepth(6)
-        }
-        // Essence overlay: radiating gold star rays on top of sprite
-        if (tier === 'essence') {
-          const r = TILE_SIZE * 0.38
-          this.overlayGraphics.lineStyle(2, 0xffd700, 0.9)
-          this.overlayGraphics.lineBetween(cx, cy - r, cx, cy + r)
-          this.overlayGraphics.lineBetween(cx - r, cy, cx + r, cy)
-          const rd = r * 0.65
-          this.overlayGraphics.lineStyle(1, 0xffd700, 0.55)
-          this.overlayGraphics.lineBetween(cx - rd, cy - rd, cx + rd, cy + rd)
-          this.overlayGraphics.lineBetween(cx + rd, cy - rd, cx - rd, cy + rd)
-          this.overlayGraphics.fillStyle(0xffffff, 1)
-          this.overlayGraphics.fillCircle(cx, cy, 3)
-        }
-        break
-      }
-      case BlockType.ArtifactNode: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.ArtifactNode, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_artifact', cx, cy)
-        break
-      }
-      case BlockType.LavaBlock: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.LavaBlock, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_lava', cx, cy)
-        // Lava glow overlay: bright highlight dot on top of sprite
-        this.overlayGraphics.fillStyle(0xff8800, 0.6)
-        const dotX = px + 4 + this.seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
-        const dotY = py + 4 + this.seededModulo(tileX, tileY, 11, TILE_SIZE - 8)
-        this.overlayGraphics.fillCircle(dotX, dotY, 2)
-        break
-      }
-      case BlockType.GasPocket: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.GasPocket, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_gas', cx, cy)
-        break
-      }
-      case BlockType.UnstableGround: {
-        this.getPooledSprite('block_unstable', cx, cy)
-        break
-      }
-      case BlockType.QuoteStone: {
-        this.getPooledSprite('block_quote_stone', cx, cy)
-        break
-      }
-      case BlockType.RelicShrine: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.RelicShrine, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_relic_shrine', cx, cy)
-        break
-      }
-      case BlockType.SendUpStation: {
-        this.getPooledSprite('block_send_up', cx, cy)
-        break
-      }
-      case BlockType.OxygenTank: {
-        this.getPooledSprite('block_oxygen_tank', cx, cy)
-        break
-      }
-      case BlockType.DataDisc: {
-        this.getPooledSprite('block_data_disc', cx, cy)
-        break
-      }
-      case BlockType.FossilNode: {
-        const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, this.time.now, this.textures)
-        this.getPooledSprite(animKey ?? 'block_fossil', cx, cy)
-        break
-      }
-      case BlockType.Chest: {
-        const g = this.tileGraphics
-        g.fillStyle(0xffd700)
-        g.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-        // Inner detail — darker gold band across center
-        g.fillStyle(0xcc9900)
-        g.fillRect(px + 4, py + TILE_SIZE / 2 - 1, TILE_SIZE - 8, 2)
-        break
-      }
-      case BlockType.Tablet: {
-        const g = this.tileGraphics
-        g.fillStyle(0x8888cc)
-        g.fillRect(px + 3, py + 1, TILE_SIZE - 6, TILE_SIZE - 2)
-        // Inscription lines
-        g.fillStyle(0xaaaaee)
-        g.fillRect(px + 5, py + 3, TILE_SIZE - 10, 1)
-        g.fillRect(px + 5, py + 6, TILE_SIZE - 10, 1)
-        g.fillRect(px + 5, py + 9, TILE_SIZE - 12, 1)
-        break
-      }
-      default:
-        break
-    }
+    drawBlockPatternImpl(this, cell, tileX, tileY, px, py)
   }
 
-  /**
-   * Renders a sprite-based crack overlay on a damaged block.
-   * Replaces the old procedural crack drawing with 4 damage stages.
-   */
   private drawCrackOverlay(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
-    if (cell.maxHardness <= 0 || cell.hardness <= 0 || cell.hardness >= cell.maxHardness) return
-
-    const damagePercent = 1 - cell.hardness / cell.maxHardness
-    if (damagePercent < 0.25) return  // Stage 0: pristine
-
-    const cx = px + TILE_SIZE * 0.5
-    const cy = py + TILE_SIZE * 0.5
-
-    // Select crack sprite key based on damage stage
-    let crackKey: string
-    if (damagePercent < 0.50) {
-      crackKey = 'crack_stage1'  // hairline
-    } else if (damagePercent < 0.75) {
-      crackKey = 'crack_stage2'  // medium fractures
-    } else if (damagePercent < 0.90) {
-      crackKey = 'crack_stage3'  // severe breaks
-    } else {
-      crackKey = 'crack_stage4'  // crumbling
-    }
-
-    // Graceful fallback to legacy procedural cracks
-    if (!this.textures.exists(crackKey)) {
-      this.drawLegacyCracks(px, py, tileX, tileY, damagePercent)
-      return
-    }
-
-    const crackSprite = this.getPooledSprite(crackKey, cx, cy)
-    crackSprite.setDepth(6)  // Above tile (5), below overlay graphics (7)
-    crackSprite.setAlpha(0.7 + damagePercent * 0.3)
-
-    // Per-block-type crack tinting
-    if (cell.type === BlockType.Dirt || cell.type === BlockType.SoftRock) {
-      crackSprite.setTint(0x6b3a2a)
-    } else if (cell.type === BlockType.LavaBlock) {
-      crackSprite.setTint(0xcc2200)
-    } else if (cell.type === BlockType.GasPocket) {
-      crackSprite.setTint(0x224422)
-    } else {
-      crackSprite.setTint(0x2a2a2a)  // dark gray for rock types
-    }
+    drawCrackOverlayImpl(this, cell, tileX, tileY, px, py)
   }
 
-  /**
-   * Draws procedural crack lines on the overlayGraphics for a partially mined block.
-   * Uses a position-seeded pattern so cracks are visually consistent across redraws.
-   *
-   * @param px - Pixel x of the tile top-left corner
-   * @param py - Pixel y of the tile top-left corner
-   * @param tileX - Grid column (used for seeded offsets)
-   * @param tileY - Grid row (used for seeded offsets)
-   * @param damagePercent - Value from 0 to 1 (0 = undamaged, 1 = about to break)
-   */
   private drawLegacyCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
-    // 0-33% damage: no overlay
-    if (damagePercent <= 0.33) return
-
-    const s = TILE_SIZE
-    const cx = px + s * 0.5
-    const cy = py + s * 0.5
-
-    // Seeded sub-pixel offsets so each tile's cracks look unique but are stable
-    const ox1 = this.seededModulo(tileX, tileY, 5, s * 0.15)
-    const oy1 = this.seededModulo(tileX + 1, tileY, 7, s * 0.15)
-    const ox2 = this.seededModulo(tileX, tileY + 1, 11, s * 0.15)
-    const oy2 = this.seededModulo(tileX + 2, tileY, 13, s * 0.15)
-
-    if (damagePercent <= 0.66) {
-      // 34-66% damage: 2-3 thin cracks
-      this.overlayGraphics.lineStyle(1, 0x1a1a1a, 0.6)
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(px + s * 0.2 + ox1, py + s * 0.1 + oy1)
-      this.overlayGraphics.lineTo(cx, cy)
-      this.overlayGraphics.lineTo(px + s * 0.8 + ox2, py + s * 0.9 + oy2)
-      this.overlayGraphics.strokePath()
-
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(px + s * 0.6 + ox2, py + s * 0.05 + oy1)
-      this.overlayGraphics.lineTo(cx - ox1 * 0.5, cy - oy1 * 0.5)
-      this.overlayGraphics.strokePath()
-    } else {
-      // 67-99% damage: 4-6 thick cracks with extra branch lines
-      this.overlayGraphics.lineStyle(2, 0x1a1a1a, 0.65)
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(px + s * 0.2 + ox1, py + s * 0.1 + oy1)
-      this.overlayGraphics.lineTo(cx, cy)
-      this.overlayGraphics.lineTo(px + s * 0.8 + ox2, py + s * 0.9 + oy2)
-      this.overlayGraphics.strokePath()
-
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(px + s * 0.1 + ox2, py + s * 0.7 + oy2)
-      this.overlayGraphics.lineTo(cx + ox1 * 0.3, cy - oy1 * 0.3)
-      this.overlayGraphics.lineTo(px + s * 0.9 - ox1, py + s * 0.3 - oy2)
-      this.overlayGraphics.strokePath()
-
-      this.overlayGraphics.lineStyle(1, 0x1a1a1a, 0.5)
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(cx, cy)
-      this.overlayGraphics.lineTo(px + s * 0.55 + ox2, py + s * 0.05 + oy1)
-      this.overlayGraphics.strokePath()
-
-      this.overlayGraphics.beginPath()
-      this.overlayGraphics.moveTo(cx, cy)
-      this.overlayGraphics.lineTo(px + s * 0.05 + ox1, py + s * 0.45 + oy2)
-      this.overlayGraphics.strokePath()
-
-      // Small fragment chip near top-left
-      this.overlayGraphics.fillStyle(0x000000, 0.30)
-      this.overlayGraphics.fillTriangle(
-        px + 3 + ox1, py + 3 + oy1,
-        px + 3 + ox1 + 5, py + 3 + oy1,
-        px + 3 + ox1, py + 3 + oy1 + 5,
-      )
-    }
+    drawLegacyCracksImpl(this, px, py, tileX, tileY, damagePercent)
   }
 
   private getPooledSprite(key: string, x: number, y: number): Phaser.GameObjects.Image {
-    const POOL_CEILING = 500
-    const idx = this.itemSpritePoolIndex >= POOL_CEILING ? POOL_CEILING - 1 : this.itemSpritePoolIndex
-    let sprite = this.itemSpritePool[idx]
-    if (!sprite) {
-      sprite = this.add.image(x, y, key)
-      this.itemSpritePool.push(sprite)
-    } else {
-      sprite.setTexture(key)
-      sprite.setPosition(x, y)
-      sprite.setVisible(true)
-    }
-    sprite.setDisplaySize(TILE_SIZE, TILE_SIZE)
-    sprite.setDepth(5)
-    this.itemSpritePoolIndex++
-    return sprite
+    return getPooledSpriteImpl(this, key, x, y)
   }
 
-  private drawTiles(): void {
-    const camera = this.cameras.main
-    if (!camera || !camera.worldView) return  // guard: camera not ready (scene transition)
+  private drawTiles(): void { drawTilesImpl(this) }
 
-    this.itemSpritePoolIndex = 0
-    this.itemSpritePool.forEach(s => s.setVisible(false))
-    this.tileGraphics.clear()
-    this.overlayGraphics.clear()
+  private drawPlayer(): void { drawPlayerImpl(this) }
 
-    const viewWidth = camera.worldView.width > 0 ? camera.worldView.width : camera.width
-    const viewHeight = camera.worldView.height > 0 ? camera.worldView.height : camera.height
-    const viewX = camera.worldView.width > 0 ? camera.worldView.x : camera.scrollX
-    const viewY = camera.worldView.height > 0 ? camera.worldView.y : camera.scrollY
-
-    const startX = Math.max(0, Math.floor(viewX / TILE_SIZE) - 1)
-    const endX = Math.min(this.gridWidth - 1, Math.ceil((viewX + viewWidth) / TILE_SIZE) + 1)
-    const startY = Math.max(0, Math.floor(viewY / TILE_SIZE) - 1)
-    const endY = Math.min(this.gridHeight - 1, Math.ceil((viewY + viewHeight) / TILE_SIZE) + 1)
-
-    for (let y = startY; y <= endY; y += 1) {
-      for (let x = startX; x <= endX; x += 1) {
-        const cell = this.grid[y][x]
-        const px = x * TILE_SIZE
-        const py = y * TILE_SIZE
-
-        if (!cell.revealed) {
-          const scannerCount = this.activeUpgrades.get('scanner_boost') ?? 0
-          const tierInfo = BALANCE.SCANNER_TIERS[this.scannerTierIndex]
-          const visLevel = cell.visibilityLevel ?? 0
-
-          // Phase 33.4: Use per-biome fog palette for distinct colored fog
-          const fp = this.currentBiome.fogPalette
-          if (visLevel === 1) {
-            // Ring 1: render actual tile sprite, dimmed by biome ring1 tint
-            const borderBrightness = Math.min(0.90, 0.80 + scannerCount * 0.05)
-            // Biome fog palette ring1 background in case sprite has transparency
-            this.tileGraphics.fillStyle(fp.ring1, 1)
-            this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            // Render the tile sprite (depth 5)
-            this.drawBlockPattern(cell, x, y, px, py)
-            // Dim overlay using fog palette ring1DimAlpha
-            const dimAmount = Math.max(1.0 - borderBrightness, fp.ring1DimAlpha * 0.5)
-            this.overlayGraphics.fillStyle(0x000000, dimAmount)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            // Rarity hint: full-tile shimmer overlays for valuable blocks (Advanced+ scanner)
-            if (tierInfo.showsRarity) {
-              const shimmerBase = 0.5 + 0.5 * Math.sin(this.time.now / 1000)
-              if (cell.type === BlockType.ArtifactNode) {
-                // Golden glow — pulsing full-tile overlay + bright center spot
-                const artifactAlpha = 0.10 + 0.05 * shimmerBase
-                this.overlayGraphics.fillStyle(0xffc832, artifactAlpha)
-                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-                this.overlayGraphics.fillStyle(0xffd700, artifactAlpha + 0.08)
-                const cw = TILE_SIZE * 0.5
-                this.overlayGraphics.fillRect(px + cw * 0.5, py + cw * 0.5, cw, cw)
-                // Bright corner-to-corner border so it reads clearly at a glance
-                this.overlayGraphics.lineStyle(2, 0xffd700, 0.55 + 0.25 * shimmerBase)
-                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-              } else if (cell.type === BlockType.MineralNode) {
-                // Per-tier colored shimmer across the whole tile
-                const tier = cell.content?.mineralType ?? 'dust'
-                const glowColor = tier === 'essence' ? 0xffd700
-                  : tier === 'geode' ? 0xda70d6
-                  : tier === 'crystal' ? 0xff4444
-                  : tier === 'shard' ? 0x44ff88
-                  : 0x4ecca3
-                const mineralAlpha = 0.08 + 0.04 * shimmerBase
-                this.overlayGraphics.fillStyle(glowColor, mineralAlpha)
-                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-                // Bright corner dot for quick identification
-                this.overlayGraphics.fillStyle(glowColor, 0.80 + 0.15 * shimmerBase)
-                this.overlayGraphics.fillCircle(px + TILE_SIZE - 7, py + 7, 5)
-                this.overlayGraphics.lineStyle(1, glowColor, 0.45)
-                this.overlayGraphics.strokeCircle(px + TILE_SIZE - 7, py + 7, 7)
-              } else if (cell.type === BlockType.DataDisc) {
-                // Cyan glow
-                const discAlpha = 0.10 + 0.05 * shimmerBase
-                this.overlayGraphics.fillStyle(0x00c8ff, discAlpha)
-                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-                this.overlayGraphics.lineStyle(2, 0x00c8ff, 0.45 + 0.20 * shimmerBase)
-                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-              } else if (cell.type === BlockType.FossilNode) {
-                // Warm brown glow
-                const fossilAlpha = 0.08 + 0.04 * shimmerBase
-                this.overlayGraphics.fillStyle(0xb48c50, fossilAlpha)
-                this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-                this.overlayGraphics.lineStyle(2, 0xd4a574, 0.40 + 0.20 * shimmerBase)
-                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-              }
-            }
-            // Hazard hint: pulsing red border outline around the tile (Enhanced+ scanner)
-            if (tierInfo.showsHazards) {
-              if (
-                cell.type === BlockType.LavaBlock ||
-                cell.type === BlockType.GasPocket ||
-                cell.type === BlockType.UnstableGround
-              ) {
-                const hazardPulse = 0.5 + 0.5 * Math.sin(this.time.now / 400)
-                // Thick red border outline — highly visible on mobile
-                this.overlayGraphics.lineStyle(3, 0xff3333, 0.25 + 0.15 * hazardPulse)
-                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-                // Faint red fill to reinforce the warning
-                this.overlayGraphics.fillStyle(0xff3333, 0.06 + 0.04 * hazardPulse)
-                this.overlayGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-                // Small warning triangle in the top-left corner for quick scanning
-                const tx = px + 4
-                const ty = py + 4
-                const ts = 9
-                this.overlayGraphics.fillStyle(0xff2200, 0.85 + 0.10 * hazardPulse)
-                this.overlayGraphics.fillTriangle(tx, ty + ts, tx + ts * 0.5, ty, tx + ts, ty + ts)
-                this.overlayGraphics.lineStyle(1, 0xffffff, 0.70)
-                this.overlayGraphics.strokeTriangle(tx, ty + ts, tx + ts * 0.5, ty, tx + ts, ty + ts)
-              }
-            }
-            // hazard_alert companion: show pulsing amber warning on hazards within companion range
-            if (this.companionEffect?.type === 'hazard_alert') {
-              const alertRadius = this.companionEffect.value
-              const distX = Math.abs(x - this.player.gridX)
-              const distY = Math.abs(y - this.player.gridY)
-              const withinRange = distX <= alertRadius && distY <= alertRadius
-              if (withinRange && (
-                cell.type === BlockType.LavaBlock ||
-                cell.type === BlockType.GasPocket ||
-                cell.type === BlockType.UnstableGround
-              )) {
-                // Amber pulsing border — distinct from scanner red triangle
-                this.overlayGraphics.lineStyle(2, 0xffaa00, 0.85)
-                this.overlayGraphics.strokeRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-                this.overlayGraphics.fillStyle(0xffaa00, 0.25)
-                this.overlayGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
-              }
-            }
-          } else if (visLevel === 2 && scannerCount >= 1) {
-            // Ring 2: only visible with scanner; render sprite with lighter dim
-            const dimBrightness = Math.min(0.30, 0.10 + (scannerCount - 1) * 0.10)
-            // Phase 33.4: Use fog palette ring2 color
-            this.tileGraphics.fillStyle(fp.ring2, 1)
-            this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            this.drawBlockPattern(cell, x, y, px, py)
-            const dimAmount = Math.max(1.0 - dimBrightness, fp.ring2DimAlpha)
-            this.overlayGraphics.fillStyle(0x000000, dimAmount)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          } else {
-            // Hidden: use biome fog palette hidden color (distinct per biome)
-            this.tileGraphics.fillStyle(fp.hidden, 1)
-            this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          }
-          continue
-        }
-
-        if (cell.type === BlockType.Empty) {
-          // Use biome background color for empty (open) cells
-          this.tileGraphics.fillStyle(this.currentBiome.bgColor, 1)
-          this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-        } else {
-          // Dark base behind tile sprite: prefer biome color override, then default BLOCK_COLORS
-          const color = (this.currentBiome.blockColorOverrides[cell.type] ?? BLOCK_COLORS[cell.type]) ?? this.currentBiome.fogTint
-          this.tileGraphics.fillStyle(color, 1)
-          this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          this.drawBlockPattern(cell, x, y, px, py)
-          // Biome tint overlay: apply semi-transparent color on top of geology sprites
-          if (
-            cell.type === BlockType.Dirt ||
-            cell.type === BlockType.SoftRock ||
-            cell.type === BlockType.Stone ||
-            cell.type === BlockType.HardRock
-          ) {
-            // NOTE: Per-biome color tint reduced (DD-V2-240).
-            // Each biome now uses its own palette-accurate sprites — strong uniform tint
-            // creates "double-tint" muddiness. 0.05 alpha atmospheric wash retained
-            // for layer-depth cohesion only.
-            const hw = this.currentBiome.hazardWeights
-            const mw = this.currentBiome.mineralWeights
-            if (hw.lavaBlockDensity > 0.3) {
-              this.overlayGraphics.fillStyle(0xb43c1e, 0.05)
-              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            } else if (mw.crystalMultiplier >= 1.5 || mw.geodeMultiplier >= 1.5) {
-              this.overlayGraphics.fillStyle(0x5078c8, 0.05)
-              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            } else {
-              this.overlayGraphics.fillStyle(this.currentBiome.ambientColor, 0.04)
-              this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            }
-          }
-          // DD-V2-241: Biome accent tint for critical special blocks
-          if (
-            cell.type === BlockType.QuizGate ||
-            cell.type === BlockType.DescentShaft ||
-            cell.type === BlockType.ExitLadder
-          ) {
-            this.overlayGraphics.fillStyle(this.getBiomeAccentTint(), 0.12)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          }
-          // Hazard idle animations: subtle pulsing overlay on revealed hazard blocks
-          if (cell.type === BlockType.LavaBlock) {
-            const pulse = 0.15 + 0.10 * Math.sin(this.time.now / 500)
-            this.overlayGraphics.fillStyle(0xff6600, pulse)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          } else if (cell.type === BlockType.GasPocket) {
-            const pulse = 0.10 + 0.06 * Math.sin(this.time.now / 700)
-            this.overlayGraphics.fillStyle(0x33ff33, pulse)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          } else if (cell.type === BlockType.UnstableGround) {
-            const pulse = 0.05 + 0.03 * Math.sin(this.time.now / 1200)
-            this.overlayGraphics.fillStyle(0x8b7355, pulse)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          }
-        }
-
-        if (cell.maxHardness > 0 && cell.hardness > 0 && cell.hardness < cell.maxHardness) {
-          this.drawCrackOverlay(cell, x, y, px, py)
-        }
-
-        const flashKey = `${x},${y}`
-        const flashStart = this.flashTiles.get(flashKey)
-        if (flashStart !== undefined) {
-          const elapsed = this.time.now - flashStart
-          if (elapsed < 150) {
-            const alpha = 0.45 * (1 - elapsed / 150)
-            this.overlayGraphics.fillStyle(0xffffff, alpha)
-            this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-          } else {
-            this.flashTiles.delete(flashKey)
-          }
-        }
-      }
-    }
-
-    // Biome glow pass: emitting blocks bleed color into adjacent unexplored fog
-    for (let y = startY; y <= endY; y += 1) {
-      for (let x = startX; x <= endX; x += 1) {
-        const cell = this.grid[y][x]
-        if (!cell.revealed && (cell.visibilityLevel ?? 0) < 1) continue
-
-        let glowColor: number | null = null
-        if (cell.type === BlockType.LavaBlock) {
-          glowColor = 0xff6600
-        } else if (cell.type === BlockType.MineralNode) {
-          const tier = cell.content?.mineralType
-          if (tier === 'crystal') glowColor = 0x44aaff
-          else if (tier === 'essence') glowColor = 0x9944cc
-        }
-        if (glowColor === null) continue
-
-        // Bleed glow into cardinal neighbors that are in full fog
-        const neighbors = [
-          { nx: x, ny: y - 1 },
-          { nx: x, ny: y + 1 },
-          { nx: x - 1, ny: y },
-          { nx: x + 1, ny: y },
-        ]
-        for (const { nx, ny } of neighbors) {
-          if (ny < 0 || ny >= this.gridHeight || nx < 0 || nx >= this.gridWidth) continue
-          const neighbor = this.grid[ny][nx]
-          // Only glow into fully dark unrevealed tiles
-          if (neighbor.revealed || (neighbor.visibilityLevel ?? 0) >= 1) continue
-          const npx = nx * TILE_SIZE
-          const npy = ny * TILE_SIZE
-          this.overlayGraphics.fillStyle(glowColor, 0.10)
-          this.overlayGraphics.fillRect(npx, npy, TILE_SIZE, TILE_SIZE)
-        }
-      }
-    }
+  /** @internal */ public spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
+    spawnBreakParticlesImpl(this, px, py, blockType)
   }
 
-  private drawPlayer(): void {
-    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE   // bottom of target tile
-
-    // Lerp visual position toward logical position for smooth movement
-    this.playerVisualX += (targetX - this.playerVisualX) * this.MOVE_LERP
-    this.playerVisualY += (targetY - this.playerVisualY) * this.MOVE_LERP
-
-    // Snap if within 1px to avoid floating-point drift
-    if (Math.abs(this.playerVisualX - targetX) < 1) this.playerVisualX = targetX
-    if (Math.abs(this.playerVisualY - targetY) < 1) this.playerVisualY = targetY
-
-    this.playerSprite.setPosition(this.playerVisualX, this.playerVisualY)
-
-    // If visual position has snapped to logical position (movement is done), return to idle
-    const atTarget = this.playerVisualX === targetX && this.playerVisualY === targetY
-    if (atTarget && !this.animController?.isPlayingMineAnim) {
-      this.animController?.setIdle()
-    }
-  }
-
-  private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
-    this.particles.emitBreak(blockType, px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
-  }
-
-  /**
-   * Find shortest path through empty tiles using BFS.
-   * Returns positions from start to end (excluding start, including end).
-   */
-  private findPath(
-    startX: number,
-    startY: number,
-    endX: number,
-    endY: number,
-  ): { x: number; y: number }[] | null {
-    if (startX === endX && startY === endY) {
-      return []
-    }
-
-    const visited = new Set<string>()
-    const queue: { x: number; y: number; path: { x: number; y: number }[] }[] = []
-
-    queue.push({ x: startX, y: startY, path: [] })
-    visited.add(`${startX},${startY}`)
-
-    while (queue.length > 0) {
-      const current = queue.shift()
-      if (!current) {
-        break
-      }
-
-      const neighbors = [
-        { x: current.x + 1, y: current.y },
-        { x: current.x - 1, y: current.y },
-        { x: current.x, y: current.y + 1 },
-        { x: current.x, y: current.y - 1 },
-      ]
-
-      for (const next of neighbors) {
-        if (next.x < 0 || next.y < 0 || next.x >= this.gridWidth || next.y >= this.gridHeight) {
-          continue
-        }
-
-        const key = `${next.x},${next.y}`
-        if (visited.has(key)) {
-          continue
-        }
-
-        const cell = this.grid[next.y][next.x]
-        if (cell.type !== BlockType.Empty && cell.type !== BlockType.ExitLadder) {
-          continue
-        }
-
-        const newPath = [...current.path, next]
-
-        if (next.x === endX && next.y === endY) {
-          return newPath
-        }
-
-        queue.push({ x: next.x, y: next.y, path: newPath })
-        visited.add(key)
-      }
-    }
-
-    return null
+  private findPath(startX: number, startY: number, endX: number, endY: number): { x: number; y: number }[] | null {
+    return findPathImpl(this, startX, startY, endX, endY)
   }
 
   private handlePointerDown(pointer: Phaser.Input.Pointer): void {
-    if (this.isPaused) {
-      return
-    }
-
-    const camera = this.cameras.main
-    if (!camera) return  // guard: camera not ready (scene transition)
-    const worldX = pointer.x + camera.scrollX
-    const worldY = pointer.y + camera.scrollY
-    const targetX = Math.floor(worldX / TILE_SIZE)
-    const targetY = Math.floor(worldY / TILE_SIZE)
-
-    if (targetX < 0 || targetY < 0 || targetX >= this.gridWidth || targetY >= this.gridHeight) {
-      return
-    }
-
-    const playerX = this.player.gridX
-    const playerY = this.player.gridY
-
-    if (targetX === playerX && targetY === playerY) {
-      return
-    }
-
-    // Check if clicked target is empty and reachable via pathfinding.
-    const clickedCell = this.grid[targetY][targetX]
-    if ((clickedCell.type === BlockType.Empty || clickedCell.type === BlockType.ExitLadder) && clickedCell.revealed) {
-      const path = this.findPath(playerX, playerY, targetX, targetY)
-      if (path && path.length > 0) {
-        const nextStep = path[0]
-        const moved = this.player.moveToEmpty(nextStep.x, nextStep.y, this.grid)
-        if (moved) {
-          revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-          if (this.activeUpgrades.has('scanner_boost')) {
-            this.revealSpecialBlocks()
-          }
-          this.game.events.emit('oxygen-changed', this.oxygenState)
-          this.game.events.emit('depth-changed', this.player.gridY)
-          this.checkPointOfNoReturn()
-          this.redrawAll()
-        }
-        return
-      }
-    }
-
-    let finalX = targetX
-    let finalY = targetY
-
-    // If not adjacent, move in the direction of the click
-    if (Math.abs(targetX - playerX) + Math.abs(targetY - playerY) !== 1) {
-      const dx = targetX - playerX
-      const dy = targetY - playerY
-
-      // Determine primary direction (prefer vertical over horizontal for ties)
-      if (Math.abs(dy) >= Math.abs(dx)) {
-        // Move vertically
-        finalX = playerX
-        finalY = playerY + (dy > 0 ? 1 : -1)
-      } else {
-        // Move horizontally
-        finalX = playerX + (dx > 0 ? 1 : -1)
-        finalY = playerY
-      }
-
-      // Bounds check
-      if (finalX < 0 || finalY < 0 || finalX >= this.gridWidth || finalY >= this.gridHeight) {
-        return
-      }
-    }
-
-    // Buffer input if mine animation is playing (rhythm mining support)
-    if (this.animController?.isPlayingMineAnim) {
-      this.bufferedInput = { x: finalX, y: finalY }
-      return
-    }
-
-    this.handleMoveOrMine(finalX, finalY)
+    handlePointerDownImpl(this, pointer)
   }
 
-  /**
-   * Handles keyboard input for arrow keys and WASD movement.
-   * Maps each key to a directional delta and delegates to handleMoveOrMine.
-   */
   private handleKeyDown(event: KeyboardEvent): void {
-    if (this.isPaused) {
-      return
-    }
-
-    let dx = 0
-    let dy = 0
-
-    switch (event.key) {
-      case 'ArrowUp':
-      case 'w':
-      case 'W':
-        dy = -1
-        break
-      case 'ArrowDown':
-      case 's':
-      case 'S':
-        dy = 1
-        break
-      case 'ArrowLeft':
-      case 'a':
-      case 'A':
-        dx = -1
-        break
-      case 'ArrowRight':
-      case 'd':
-      case 'D':
-        dx = 1
-        break
-      case 'b':
-      case 'B':
-        this.useBomb()
-        return
-      case 'f':
-      case 'F':
-        this.applyConsumable('flare')
-        return
-      case 'Escape':
-        document.dispatchEvent(new CustomEvent('game:back-pressed'))
-        return
-      case '1': case '2': case '3': case '4':
-        document.dispatchEvent(new CustomEvent('quiz:keyboard-answer', { detail: { choice: parseInt(event.key) - 1 } }))
-        return
-      case ' ':
-        // Space = interact (no-op for now, reserved for future use)
-        return
-      default:
-        return
-    }
-
-    const targetX = this.player.gridX + dx
-    const targetY = this.player.gridY + dy
-
-    if (targetX < 0 || targetY < 0 || targetX >= this.gridWidth || targetY >= this.gridHeight) {
-      return
-    }
-
-    // Buffer input if mine animation is playing (rhythm mining support)
-    if (this.animController?.isPlayingMineAnim) {
-      this.bufferedInput = { x: targetX, y: targetY }
-      return
-    }
-
-    this.handleMoveOrMine(targetX, targetY)
+    handleKeyDownImpl(this, event)
   }
 
   /**
@@ -1520,735 +699,16 @@ export class MineScene extends Phaser.Scene {
    * @param targetX - The grid x-coordinate of the target tile.
    * @param targetY - The grid y-coordinate of the target tile.
    */
-  private handleMoveOrMine(targetX: number, targetY: number): void {
-    const playerX = this.player.gridX
-    const playerY = this.player.gridY
-    const targetCell = this.grid[targetY][targetX]
-
-    // Track facing direction for Drill Charge
-    const dx = targetX - playerX
-    const dy = targetY - playerY
-    if (dx > 0) this.playerFacing = 'right'
-    else if (dx < 0) this.playerFacing = 'left'
-    else if (dy > 0) this.playerFacing = 'down'
-    else if (dy < 0) this.playerFacing = 'up'
-
-    if (targetCell.type === BlockType.Empty || targetCell.type === BlockType.ExitLadder) {
-      const isExitLadder = targetCell.type === BlockType.ExitLadder
-      const moved = this.player.moveToEmpty(targetX, targetY, this.grid)
-      if (!moved) {
-        return
-      }
-
-      // Trigger walk animation
-      this.animController.setWalk(targetX - playerX, targetY - playerY)
-      this.time.delayedCall(200, () => {
-        if (!this.animController.isPlayingMineAnim) {
-          this.animController.setIdle()
-        }
-      })
-
-      revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-      if (this.activeUpgrades.has('scanner_boost')) {
-        this.revealSpecialBlocks()
-      }
-      // Update fog glow after block reveals
-      if (this.glowSystem) {
-        this.glowSystem.update(this.grid)
-      }
-
-      // Phase 35.3: Check adjacent cells for offering altar after each move
-      {
-        const newX = this.player.gridX
-        const newY = this.player.gridY
-        for (const [adx, ady] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
-          const ax = newX + adx, ay = newY + ady
-          if (ax >= 0 && ax < this.gridWidth && ay >= 0 && ay < this.gridHeight) {
-            const aCell = this.grid[ay][ax]
-            if (aCell?.type === BlockType.OfferingAltar && !aCell.altarUsed) {
-              this.game.events.emit('altar-adjacent', { x: ax, y: ay })
-              break
-            }
-          }
-        }
-      }
-
-      // Advance tick on every successful player move
-      const tsMove = TickSystem.getInstance()
-      tsMove.advance()
-      tickCount.set(tsMove.getTick())
-      layerTickCount.set(tsMove.getLayerTick())
-
-      this.game.events.emit('oxygen-changed', this.oxygenState)
-      this.game.events.emit('depth-changed', this.player.gridY)
-      this.checkPointOfNoReturn()
-
-      if (isExitLadder) {
-        this.game.events.emit('exit-reached')
-      }
-
-      this.redrawAll()
-      return
-    }
-
-    if (!canMine(this.grid, targetX, targetY, playerX, playerY)) {
-      return
-    }
-
-    const blockType = targetCell.type
-
-    if (blockType !== BlockType.QuizGate) {
-      let oxygenCost = getOxygenCostForBlock(blockType)
-      if (this.activeUpgrades.has('oxygen_efficiency')) {
-        const o2Count = this.activeUpgrades.get('oxygen_efficiency') ?? 0
-        oxygenCost = Math.max(1, Math.ceil(oxygenCost * Math.pow(BALANCE.UPGRADE_OXYGEN_EFFICIENCY, o2Count)))
-      }
-      // Apply depth multiplier: O2 costs scale linearly with layer (DD-V2-061)
-      const depthMult = getO2DepthMultiplier(this.currentLayer)
-      oxygenCost = Math.ceil(oxygenCost * depthMult)
-      const oxygenResult = consumeOxygen(this.oxygenState, oxygenCost)
-      this.oxygenState = oxygenResult.state
-
-      if (oxygenResult.depleted) {
-        this.game.events.emit('oxygen-changed', this.oxygenState)
-        this.game.events.emit('oxygen-depleted')
-        this.redrawAll()
-        return
-      }
-    }
-
-    // QuizGate: trigger quiz before mining — each correct answer removes 1 hardness
-    if (blockType === BlockType.QuizGate) {
-      this.isPaused = true
-      this.game.events.emit('quiz-gate', {
-        factId: targetCell.content?.factId,
-        gateX: targetX,
-        gateY: targetY,
-        gateRemaining: targetCell.hardness,
-        gateTotal: targetCell.maxHardness,
-      })
-      return
-    }
-
-    // LockedBlock guard (Phase 35.6): check if player can break this block
-    if (blockType === BlockType.LockedBlock && targetCell.requiredTier !== undefined) {
-      const hasPickaxe = this.pickaxeTierIndex >= targetCell.requiredTier
-      const consumableSlots = get(activeConsumables)
-      const hasDrill = consumableSlots.some(s => s.id === 'drill_charge' && s.count > 0)
-      const hasBomb = consumableSlots.some(s => s.id === 'bomb' && s.count > 0)
-      if (!hasPickaxe && !hasDrill && !hasBomb) {
-        // Only show the GAIA denial message once per unique block position per layer
-        const blockKey = `${targetX},${targetY}`
-        if (!this.lockedBlockDeniedSet.has(blockKey)) {
-          this.lockedBlockDeniedSet.add(blockKey)
-          this.game.events.emit('locked-block-denied', { x: targetX, y: targetY, requiredTier: targetCell.requiredTier })
-        }
-        return  // No O2 cost, no block damage
-      }
-    }
-
-    // OfferingAltar guard (Phase 35.3): can't be mined — tap does nothing
-    if (blockType === BlockType.OfferingAltar) {
-      return
-    }
-
-    // ChallengeGate guard (Phase 48.4): tap opens Challenge Quiz overlay
-    if (blockType === BlockType.ChallengeGate) {
-      this.game.events.emit('challenge-gate-tapped', { x: targetX, y: targetY })
-      return
-    }
-
-    // Companion instant_break: N% chance to destroy any block in one hit
-    if (
-      this.companionEffect?.type === 'instant_break' &&
-      this.rng() < this.companionEffect.value &&
-      targetCell.hardness > 1
-    ) {
-      targetCell.hardness = 1
-      this.companionFlash = true
-      this.gearOverlay?.flashCompanionBadge()   // Phase 29: flash badge on companion trigger
-      this.game.events.emit('companion-triggered', { effect: 'instant_break' })
-    }
-
-    // Pickaxe tier damage: apply tier-based extra damage before mining
-    // Tier 0 (Stone Pick) does 1 damage (default mineBlock), higher tiers do bonus damage
-    const tierDamage = BALANCE.PICKAXE_TIERS[this.pickaxeTierIndex].damage
-    if (tierDamage > 1 && targetCell.hardness > 1) {
-      targetCell.hardness = Math.max(1, targetCell.hardness - (tierDamage - 1))
-    }
-
-    // Track per-block hit count for impact escalation
-    const hitCount = this.player.recordHit(targetX, targetY)
-    const targetCellBefore = this.grid[targetY][targetX]
-    const isFinalHit = targetCellBefore.hardness === 1
-
-    // Trigger mine animation with input buffering support
-    const mineDx = targetX - playerX
-    const mineDy = targetY - playerY
-    this.animController.setMine(mineDx, mineDy, () => {
-      this.animController.setIdle()
-      // Process buffered input for rhythm mining
-      if (this.bufferedInput) {
-        const buf = this.bufferedInput
-        this.bufferedInput = null
-        this.handleMoveOrMine(buf.x, buf.y)
-      }
-    })
-
-    const mineResult = mineBlock(this.grid, targetX, targetY)
-    if (mineResult.destroyed) {
-      invalidateNeighborVariants(this.grid, targetX, targetY, this.currentBiome.id)
-    }
-    if (mineResult.success) {
-      const blockWorldX = targetX * TILE_SIZE + TILE_SIZE * 0.5
-      const blockWorldY = targetY * TILE_SIZE + TILE_SIZE * 0.5
-
-      // Trigger impact feedback (shake, flash, haptic)
-      this.impactSystem.triggerHit(
-        blockType,
-        hitCount,
-        isFinalHit,
-        blockWorldX,
-        blockWorldY,
-        targetX,
-        targetY,
-        this.pickaxeTierIndex,
-        this.flashTiles
-      )
-
-      this.blocksMinedThisRun += 1
-      this.blocksSinceLastQuake += 1
-      this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
-
-      // Phase 36: Creature spawn check after each block mined
-      if (mineResult.destroyed) {
-        const spawnedCreature = this.creatureSpawner.checkSpawn(
-          this.currentLayer,
-          (this.currentBiome?.id as import('../../data/biomes').BiomeId) ?? null
-        )
-        if (spawnedCreature) {
-          this.game.events.emit('creature-encounter', spawnedCreature)
-        }
-      }
-
-      // Advance tick on every successful block hit
-      const tsMine = TickSystem.getInstance()
-      tsMine.advance()
-      tickCount.set(tsMine.getTick())
-      layerTickCount.set(tsMine.getLayerTick())
-      // oxygen_regen relic: restore O2 every 10 blocks mined
-      if (this.blocksMinedThisRun % 10 === 0) {
-        const regenRelic = this.collectedRelics.find(r => r.effect.type === 'oxygen_regen')
-        if (regenRelic && regenRelic.effect.type === 'oxygen_regen') {
-          // oxygen_regen_boost synergy: add extra O2 on top of base regen
-          const synergyEffects = this.getActiveSynergyEffects()
-          const boostEffect = synergyEffects.find(e => e.type === 'oxygen_regen_boost')
-          const bonusAmount = (boostEffect && boostEffect.type === 'oxygen_regen_boost') ? boostEffect.amount : 0
-          this.oxygenState = addOxygen(this.oxygenState, regenRelic.effect.amount + bonusAmount)
-          this.game.events.emit('oxygen-changed', this.oxygenState)
-        }
-      }
-      if (!mineResult.destroyed) {
-        // Sound feedback for non-destroying hits (impact system handles flash)
-        if (blockType === BlockType.Dirt || blockType === BlockType.SoftRock || blockType === BlockType.GasPocket) {
-          audioManager.playSound('mine_dirt')
-        } else if (blockType === BlockType.Stone || blockType === BlockType.HardRock || blockType === BlockType.Unbreakable || blockType === BlockType.LavaBlock) {
-          audioManager.playSound('mine_rock')
-        } else if (blockType === BlockType.MineralNode) {
-          audioManager.playSound('mine_crystal')
-        } else {
-          audioManager.playSound('mine_dirt')
-        }
-      }
-
-      // Clear hit count when block is destroyed
-      if (mineResult.destroyed) {
-        this.player.clearHitCount(targetX, targetY)
-      }
-    }
-
-    if (mineResult.destroyed) {
-      this.spawnBreakParticles(targetX * TILE_SIZE, targetY * TILE_SIZE, blockType)
-      audioManager.playSound('mine_break')
-
-      // Consumable drop chance (DD-V2-064)
-      if (Math.random() < CONSUMABLE_DROP_CHANCE) {
-        const dropped = ALL_CONSUMABLE_IDS[Math.floor(Math.random() * ALL_CONSUMABLE_IDS.length)]
-        const added = addConsumableToDive(dropped)
-        if (added) {
-          this.game.events.emit('gaia-toast', `Found: ${CONSUMABLE_DEFS[dropped].label}`)
-        }
-      }
-
-      // Random quiz: only on plain terrain blocks, not when already paused.
-      // The adaptive rate check (cooldown, fatigue, first-trigger-after-N) is
-      // delegated to QuizManager via the game registry. (DD-V2-060)
-      const randomQuizEligibleTypes = new Set<BlockType>([
-        BlockType.Dirt,
-        BlockType.SoftRock,
-        BlockType.Stone,
-        BlockType.HardRock,
-        BlockType.LavaBlock,
-        BlockType.GasPocket,
-      ])
-      const adaptiveQuizCheck = this.game.registry.get('shouldTriggerRandomQuiz') as (() => boolean) | undefined
-      const shouldTriggerQuiz = adaptiveQuizCheck
-        ? adaptiveQuizCheck()
-        : (this.blocksMinedThisRun >= BALANCE.RANDOM_QUIZ_MIN_BLOCKS && Math.random() < BALANCE.RANDOM_QUIZ_CHANCE)
-      if (
-        randomQuizEligibleTypes.has(blockType) &&
-        !this.isPaused &&
-        shouldTriggerQuiz
-      ) {
-        this.isPaused = true
-        this.game.events.emit('random-quiz')
-        // Flush state updates so the UI is current when the quiz overlay appears
-        revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-        if (this.activeUpgrades.has('scanner_boost')) {
-          this.revealSpecialBlocks()
-        }
-        this.game.events.emit('oxygen-changed', this.oxygenState)
-        this.redrawAll()
-        return
-      }
-
-      // Earthquake trigger: after cooldown and minimum blocks, random chance per destroyed block
-      if (
-        this.blocksSinceLastQuake >= BALANCE.EARTHQUAKE_COOLDOWN &&
-        this.blocksMinedThisRun >= BALANCE.EARTHQUAKE_MIN_BLOCKS &&
-        !this.isPaused &&
-        Math.random() < BALANCE.EARTHQUAKE_CHANCE_PER_BLOCK
-      ) {
-        this.triggerEarthquake()
-      }
-
-      switch (blockType) {
-        case BlockType.MineralNode: {
-          let mineralAmount = mineResult.content?.mineralAmount ?? 0
-          // lucky_strike relic: chance to double mineral drops
-          const luckyRelic = this.collectedRelics.find(r => r.effect.type === 'lucky_strike')
-          if (luckyRelic && luckyRelic.effect.type === 'lucky_strike' && this.rng() < luckyRelic.effect.chance) {
-            mineralAmount = mineralAmount * 2
-          }
-          // mineral_multiplier synergy (Treasure Hunter): multiply mineral drops
-          const mineralSynergyEffects = this.getActiveSynergyEffects()
-          const multiplierEffect = mineralSynergyEffects.find(e => e.type === 'mineral_multiplier')
-          if (multiplierEffect && multiplierEffect.type === 'mineral_multiplier') {
-            mineralAmount = Math.round(mineralAmount * multiplierEffect.multiplier)
-          }
-          // mineral_rate companion: N% chance to add +1 to mineral yield
-          if (this.companionEffect?.type === 'mineral_rate' && this.rng() < this.companionEffect.value) {
-            mineralAmount += 1
-            this.companionFlash = true
-            this.gearOverlay?.flashCompanionBadge()   // Phase 29: flash badge on companion trigger
-            this.game.events.emit('companion-triggered', { effect: 'mineral_rate' })
-          }
-          // mineral_magnet relic: after collecting, auto-collect adjacent MineralNodes
-          const mineralSlot: InventorySlot = {
-            type: 'mineral',
-            mineralTier: mineResult.content?.mineralType,
-            mineralAmount,
-          }
-          const added = this.addToInventory(mineralSlot)
-          this.game.events.emit('mineral-collected', {
-            ...mineResult.content,
-            mineralAmount,
-            addedToInventory: added,
-          })
-          audioManager.playSound('collect')
-          // Pop loot toward player with physics arc
-          this.lootPop.popLoot({
-            spriteKey: `block_mineral_${mineResult.content?.mineralType ?? 'dust'}`,
-            worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
-            worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
-            targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
-            targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
-          })
-          // mineral_magnet: auto-collect minerals within radius
-          this.applyMineralMagnet(targetX, targetY)
-          break
-        }
-        case BlockType.ArtifactNode: {
-          // Phase 31.3: Remove shimmer when ArtifactNode is broken
-          this.blockShimmer?.unregisterNode(targetX, targetY)
-          const artifactSlot: InventorySlot = {
-            type: 'artifact',
-            artifactRarity: mineResult.content?.artifactRarity,
-            factId: mineResult.content?.factId,
-          }
-          // double_artifact_chance synergy (Scholar's Blessing): 2x the rarity-boost quiz trigger chance
-          const artifactSynergyEffects = this.getActiveSynergyEffects()
-          const doubleArtifactChance = artifactSynergyEffects.some(e => e.type === 'double_artifact_chance')
-          const effectiveArtifactQuizChance = doubleArtifactChance
-            ? Math.min(1, BALANCE.ARTIFACT_QUIZ_CHANCE * 2)
-            : BALANCE.ARTIFACT_QUIZ_CHANCE
-          if (Math.random() < effectiveArtifactQuizChance && this.facts.length > 0) {
-            // Artifact triggers a multi-question appraisal quiz — store the slot pending quiz result
-            this.pendingArtifactSlot = artifactSlot
-            this.pendingArtifactQuestions = BALANCE.ARTIFACT_QUIZ_QUESTIONS
-            this.pendingArtifactBoosts = 0
-            this.isPaused = true
-            const factId = this.facts[Math.floor(Math.random() * this.facts.length)]
-            this.game.events.emit('artifact-quiz', {
-              factId,
-              artifactRarity: mineResult.content?.artifactRarity,
-              questionsRemaining: BALANCE.ARTIFACT_QUIZ_QUESTIONS,
-              questionsTotal: BALANCE.ARTIFACT_QUIZ_QUESTIONS,
-            })
-          } else {
-            // Phase 31.2: trigger camera zoom + GAIA commentary before collecting
-            const revealRarity = (mineResult.content?.artifactRarity ?? 'common') as Rarity
-            this.triggerArtifactRevealSequence(
-              artifactSlot,
-              targetX * TILE_SIZE + TILE_SIZE * 0.5,
-              targetY * TILE_SIZE + TILE_SIZE * 0.5,
-              revealRarity,
-              targetX,
-              targetY,
-            )
-          }
-          break
-        }
-        case BlockType.OxygenCache: {
-          const oxygenAmount = mineResult.content?.oxygenAmount ?? BALANCE.OXYGEN_CACHE_RESTORE
-          if (Math.random() < BALANCE.OXYGEN_CACHE_QUIZ_CHANCE && this.facts.length > 0) {
-            // Store the pending oxygen amount so we can grant it after quiz
-            this.pendingOxygenReward = oxygenAmount
-            this.isPaused = true
-            // Pick a random fact ID for the quiz
-            const factId = this.facts[Math.floor(Math.random() * this.facts.length)]
-            this.game.events.emit('oxygen-quiz', { factId, oxygenAmount })
-          } else {
-            this.oxygenState = addOxygen(this.oxygenState, oxygenAmount)
-            this.game.events.emit('oxygen-restored', {
-              amount: oxygenAmount,
-              state: this.oxygenState,
-            })
-            audioManager.playSound('collect')
-          }
-          break
-        }
-        case BlockType.UpgradeCrate: {
-          const upgrade = this.rollUpgrade()
-          this.applyUpgrade(upgrade)
-          this.game.events.emit('upgrade-found', { upgrade })
-          audioManager.playSound('collect')
-          break
-        }
-        case BlockType.OxygenTank: {
-          // Permanent progression reward — emits event for GameManager to handle save update.
-          this.game.events.emit('oxygen-tank-found')
-          audioManager.playSound('collect')
-          break
-        }
-        case BlockType.DataDisc: {
-          // Collectible that unlocks a themed fact pack — emits event for GameManager to handle.
-          this.game.events.emit('data-disc-found')
-          audioManager.playSound('collect')
-          break
-        }
-        case BlockType.FossilNode: {
-          // Fossil fragment found — GameManager picks species from run RNG and updates save.
-          this.game.events.emit('fossil-found', { x: targetX, y: targetY })
-          audioManager.playSound('collect')
-          break
-        }
-        case BlockType.LavaBlock: {
-          // Lava costs extra oxygen when broken through
-          // hazard_immunity synergy (Deep Diver): skip all O2 cost for hazards
-          const lavaHazardImmune = this.getActiveSynergyEffects().some(e => e.type === 'hazard_immunity')
-          if (!lavaHazardImmune) {
-            const toughSkinLava = this.collectedRelics.find(r => r.effect.type === 'tough_skin')
-            const relicReduction = (toughSkinLava && toughSkinLava.effect.type === 'tough_skin') ? toughSkinLava.effect.reduction : 0
-            const companionReduction = this.companionEffect?.type === 'hazard_resist' ? this.companionEffect.value : 0
-            const lavaCost = Math.max(1, BALANCE.LAVA_OXYGEN_COST - relicReduction - companionReduction)
-            const lavaResult = consumeOxygen(this.oxygenState, lavaCost)
-            this.oxygenState = lavaResult.state
-            if (lavaResult.depleted) {
-              this.game.events.emit('oxygen-changed', this.oxygenState)
-              this.game.events.emit('oxygen-depleted')
-              this.redrawAll()
-              return
-            }
-          }
-          break
-        }
-        case BlockType.GasPocket: {
-          // Gas pocket drains oxygen when the player steps into it
-          // hazard_immunity synergy (Deep Diver): skip all O2 cost for hazards
-          const gasHazardImmune = this.getActiveSynergyEffects().some(e => e.type === 'hazard_immunity')
-          if (!gasHazardImmune) {
-            const toughSkinGas = this.collectedRelics.find(r => r.effect.type === 'tough_skin')
-            const relicReductionGas = (toughSkinGas && toughSkinGas.effect.type === 'tough_skin') ? toughSkinGas.effect.reduction : 0
-            const companionReductionGas = this.companionEffect?.type === 'hazard_resist' ? this.companionEffect.value : 0
-            const gasCost = Math.max(1, BALANCE.GAS_POCKET_OXYGEN_DRAIN - relicReductionGas - companionReductionGas)
-            const gasResult = consumeOxygen(this.oxygenState, gasCost)
-            this.oxygenState = gasResult.state
-            if (gasResult.depleted) {
-              this.game.events.emit('oxygen-changed', this.oxygenState)
-              this.game.events.emit('oxygen-depleted')
-              this.redrawAll()
-              return
-            }
-          }
-          break
-        }
-        case BlockType.RelicShrine: {
-          // Relic shrine: pick a random relic not already owned this run.
-          const relic = pickRandomRelic(this.collectedRelics.map(r => r.id), this.rng)
-          if (relic) {
-            this.collectedRelics.push(relic)
-            // Apply immediate effects
-            if (relic.effect.type === 'deep_breath') {
-              this.oxygenState = {
-                ...this.oxygenState,
-                max: this.oxygenState.max + relic.effect.bonus,
-                current: Math.min(this.oxygenState.current + relic.effect.bonus, this.oxygenState.max + relic.effect.bonus),
-              }
-              this.game.events.emit('oxygen-changed', this.oxygenState)
-            }
-            this.game.events.emit('relic-found', { relic })
-            audioManager.playSound('collect')
-            // Phase 29: Update relic glow overlay when a new relic is collected
-            if (this.gearOverlay) {
-              // Show glow when any relic is equipped (tier info not on Relic type)
-              this.gearOverlay.setRelicGlow('common')
-            }
-          }
-          break
-        }
-        case BlockType.DescentShaft: {
-          // Phase 36: Boss gate check — block descent at landmark layers until boss is defeated
-          const bossTemplateId = BOSS_LAYER_MAP[this.currentLayer]
-          if (bossTemplateId !== undefined) {
-            const save = get(playerSave)
-            const defeatedThisRun: string[] = save?.defeatedBossesThisRun ?? []
-            if (!defeatedThisRun.includes(bossTemplateId)) {
-              const boss = createBoss(bossTemplateId, this.currentLayer + 1)
-              if (boss) {
-                this.game.events.emit('boss-encounter', boss)
-                return  // Halt descent until boss is defeated
-              }
-            }
-          }
-          // Phase 36: The Deep unlock check at layer index 19
-          if (this.currentLayer === 19 && encounterManager.isTheDeepUnlocked()) {
-            this.game.events.emit('the-deep-unlocked')
-            return
-          }
-          // Phase 29: Start fall animation before descent
-          this.animController?.startFall()
-          // Phase 31.5: Animate descent before showing the layer entrance quiz.
-          this.isPaused = true
-          this.triggerDescentAnimation(() => {
-            // After animation completes, emit the layer-entrance-quiz event.
-            this.game.events.emit('layer-entrance-quiz', { layer: this.currentLayer })
-          })
-          // Don't destroy or move — GameManager will handle the quiz then call resumeFromLayerQuiz().
-          return
-        }
-        case BlockType.QuoteStone: {
-          // Quote stone broken — pick a random lore quote and emit it as a toast message.
-          const quote = pickQuote(this.rng)
-          this.game.events.emit('quote-found', { quote })
-          break
-        }
-        case BlockType.UnstableGround: {
-          // Cave-in: collapse nearby terrain when this block is broken.
-          const caveInRadius = BALANCE.CAVE_IN_RADIUS
-          const playerPosKey = `${this.player.gridX},${this.player.gridY}`
-          const specialTypes = new Set<BlockType>([
-            BlockType.MineralNode,
-            BlockType.ArtifactNode,
-            BlockType.OxygenCache,
-            BlockType.UpgradeCrate,
-            BlockType.QuizGate,
-            BlockType.ExitLadder,
-            BlockType.DescentShaft,
-            BlockType.RelicShrine,
-            BlockType.QuoteStone,
-            BlockType.LavaBlock,
-            BlockType.GasPocket,
-            BlockType.UnstableGround,
-            BlockType.OxygenTank,
-            BlockType.FossilNode,
-            BlockType.Chest,
-            BlockType.Tablet,
-            BlockType.Unbreakable,
-          ])
-          const terrainTypes = new Set<BlockType>([
-            BlockType.Dirt,
-            BlockType.SoftRock,
-            BlockType.Stone,
-            BlockType.HardRock,
-          ])
-          let affectedCount = 0
-          for (let dy = -caveInRadius; dy <= caveInRadius; dy++) {
-            for (let dx = -caveInRadius; dx <= caveInRadius; dx++) {
-              if (dx === 0 && dy === 0) continue
-              const nx = targetX + dx
-              const ny = targetY + dy
-              if (nx < 0 || ny < 0 || ny >= this.gridHeight || nx >= this.gridWidth) continue
-              // Never affect the player's current position
-              if (`${nx},${ny}` === playerPosKey) continue
-              const nCell = this.grid[ny][nx]
-              // Only affect revealed cells (don't reshape unexplored territory)
-              if (!nCell.revealed) continue
-              // Skip special/protected block types
-              if (specialTypes.has(nCell.type)) continue
-              // Roll for collapse
-              if (Math.random() < BALANCE.CAVE_IN_COLLAPSE_CHANCE) {
-                if (nCell.type === BlockType.Empty) {
-                  // Empty space: rubble falls in
-                  this.grid[ny][nx] = { type: BlockType.Dirt, hardness: 1, maxHardness: 1, revealed: true }
-                  affectedCount++
-                } else if (terrainTypes.has(nCell.type)) {
-                  // Terrain crumbles away
-                  this.grid[ny][nx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-                  affectedCount++
-                }
-              }
-            }
-          }
-          // Update fog of war from player position after cave-in reshapes terrain
-          revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-          if (this.activeUpgrades.has('scanner_boost')) {
-            this.revealSpecialBlocks()
-          }
-          // Emit event so GameManager can show a GAIA quip
-          this.game.events.emit('cave-in', { affectedCount })
-          // Phase 35.4: Cave-in contributes to instability
-          this.instabilitySystem?.addInstability('cave_in')
-          // Screen shake: jitter camera for ~300ms then re-center on player
-          const shakeCamera = (): void => {
-            const offsetX = (Math.random() - 0.5) * 6
-            const offsetY = (Math.random() - 0.5) * 6
-            this.cameras.main.setScroll(
-              this.cameras.main.scrollX + offsetX,
-              this.cameras.main.scrollY + offsetY,
-            )
-          }
-          shakeCamera()
-          setTimeout(() => { shakeCamera() }, 80)
-          setTimeout(() => { shakeCamera() }, 160)
-          setTimeout(() => { shakeCamera() }, 240)
-          setTimeout(() => {
-            const centerX = this.player.gridX * TILE_SIZE + TILE_SIZE / 2
-            const centerY = this.player.gridY * TILE_SIZE + TILE_SIZE / 2
-            this.cameras.main.centerOn(centerX, centerY)
-          }, 320)
-          break
-        }
-        case BlockType.SendUpStation: {
-          // Send-up station reached — emit event and pause; don't destroy the block.
-          // GameManager will show the SendUpOverlay; resumeFromSendUp() will unpause.
-          this.isPaused = true
-          this.game.events.emit('send-up-station', {
-            inventory: this.inventory.map(s => ({ ...s })),
-          })
-          // Early return: do NOT move the player or proceed with normal mine logic.
-          return
-        }
-        case BlockType.Chest: {
-          // Treasure chest opened — award bonus minerals based on current layer. (DD-V2-055)
-          this.game.events.emit('chest-opened', { layer: this.currentLayer })
-          audioManager.playSound('collect')
-          break
-        }
-        case BlockType.Tablet: {
-          // Stone tablet found — trigger a discovery quiz. (DD-V2-055)
-          this.isPaused = true
-          this.game.events.emit('random-quiz')
-          break
-        }
-        case BlockType.RecipeFragmentNode: {
-          // Phase 35.5: Recipe fragment node — collect and notify GameManager
-          const fragId = targetCell.fragmentId
-          if (fragId) {
-            this.game.events.emit('fragment-collected', { fragmentId: fragId })
-          }
-          audioManager.playSound('collect')
-          break
-        }
-        default:
-          break
-      }
-
-      // ---- Phase 35.4: Instability triggers based on what was mined ----
-      if (this.instabilitySystem) {
-        // Lava adjacent trigger: was this block next to any lava?
-        let adjacentToLava = false
-        for (const [adx, ady] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
-          const anx = targetX + adx, any = targetY + ady
-          if (any >= 0 && any < this.gridHeight && anx >= 0 && anx < this.gridWidth) {
-            if (this.grid[any][anx]?.type === BlockType.LavaBlock) {
-              adjacentToLava = true
-              break
-            }
-          }
-        }
-        if (adjacentToLava) {
-          this.instabilitySystem.addInstability('lava_adjacent')
-        }
-        // UnstableGround trigger
-        if (blockType === BlockType.UnstableGround) {
-          this.instabilitySystem.addInstability('unstable_broke')
-        }
-        // HardRock in extreme layer tier (layer index 15+ = layers 16-20)
-        if (blockType === BlockType.HardRock && this.currentLayer >= 15) {
-          this.instabilitySystem.addInstability('hard_rock_deep')
-        }
-      }
-
-      // Check adjacent cells for lava blocks — if a lava block is now exposed, spawn a flow. (Phase 8.3)
-      if (this.hazardSystem) {
-        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
-          const nx = targetX + dx, ny = targetY + dy
-          if (ny >= 0 && ny < this.gridHeight && nx >= 0 && nx < this.gridWidth) {
-            if (this.grid[ny][nx]?.type === BlockType.LavaBlock) {
-              this.hazardSystem.spawnLava(nx, ny)
-            }
-          }
-        }
-      }
-
-      // Spawn a gas cloud when a GasPocket block is broken. (Phase 8.3)
-      if (blockType === BlockType.GasPocket && this.hazardSystem) {
-        this.hazardSystem.spawnGas(targetX, targetY)
-      }
-
-      const moved = this.player.moveToEmpty(targetX, targetY, this.grid)
-      if (moved) {
-        revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-        if (this.activeUpgrades.has('scanner_boost')) {
-          this.revealSpecialBlocks()
-        }
-        this.game.events.emit('depth-changed', this.player.gridY)
-        this.checkPointOfNoReturn()
-      }
-    }
-
-    revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-    if (this.activeUpgrades.has('scanner_boost')) {
-      this.revealSpecialBlocks()
-    }
-    this.game.events.emit('oxygen-changed', this.oxygenState)
-    if (this.oxygenState.current / this.oxygenState.max < 0.2 && !this.oxygenWarningPlayed) {
-      this.oxygenWarningPlayed = true
-      audioManager.playSound('oxygen_warning')
-    }
-    this.game.events.emit('depth-changed', this.player.gridY)
-    this.checkPointOfNoReturn()
-    this.redrawAll()
+  /** @internal */ public handleMoveOrMine(targetX: number, targetY: number): void {
+    handleMoveOrMineImpl(this, targetX, targetY)
   }
+
 
   /**
    * Point-of-no-return check removed (Phase 8.2 — PONR mechanic retired).
    * Stub retained to avoid touching call sites; becomes a no-op.
    */
-  private checkPointOfNoReturn(): void {
-    // no-op: PONR mechanic removed in Phase 8.2
-  }
+  /** @internal */ public checkPointOfNoReturn(): void { checkPointOfNoReturnImpl(this) }
 
   /**
    * Resumes mining input after a quiz gate result.
@@ -2374,7 +834,7 @@ export class MineScene extends Phaser.Scene {
    *
    * Replaces the direct artifact collection for non-quiz artifact breaks.
    */
-  private triggerArtifactRevealSequence(
+  /** @internal */ public triggerArtifactRevealSequence(
     artifactSlot: InventorySlot,
     tileWorldX: number,
     tileWorldY: number,
@@ -2460,7 +920,7 @@ export class MineScene extends Phaser.Scene {
    *
    * @param onComplete - Callback invoked after the animation completes
    */
-  private triggerDescentAnimation(onComplete: () => void): void {
+  /** @internal */ public triggerDescentAnimation(onComplete: () => void): void {
     const cam = this.cameras.main
 
     // Emit descent overlay event so Svelte DescentOverlay component can animate
@@ -2704,152 +1164,24 @@ export class MineScene extends Phaser.Scene {
    * The companion magnet_range effect adds extra tiles to the base relic radius.
    * Called after manually mining a MineralNode.
    */
-  private applyMineralMagnet(originX: number, originY: number): void {
-    const magnetRelic = this.collectedRelics.find(r => r.effect.type === 'mineral_magnet')
-    // magnet_range companion: also activate even without the relic (using companion value as base radius)
-    const companionRange = this.companionEffect?.type === 'magnet_range' ? this.companionEffect.value : 0
-    if (!magnetRelic && companionRange === 0) return
-    const relicRadius = (magnetRelic && magnetRelic.effect.type === 'mineral_magnet') ? magnetRelic.effect.radius : 0
-    const radius = relicRadius + companionRange
-    for (let dy = -radius; dy <= radius; dy++) {
-      for (let dx = -radius; dx <= radius; dx++) {
-        if (dx === 0 && dy === 0) continue
-        const nx = originX + dx
-        const ny = originY + dy
-        if (nx < 0 || ny < 0 || nx >= this.gridWidth || ny >= this.gridHeight) continue
-        const cell = this.grid[ny][nx]
-        if (cell.type === BlockType.MineralNode) {
-          // Collect the mineral node without mining cost
-          const slot: InventorySlot = {
-            type: 'mineral',
-            mineralTier: cell.content?.mineralType,
-            mineralAmount: cell.content?.mineralAmount,
-          }
-          const added = this.addToInventory(slot)
-          // Clear the block
-          this.grid[ny][nx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-          this.blocksMinedThisRun += 1
-          this.spawnBreakParticles(nx * TILE_SIZE, ny * TILE_SIZE, BlockType.MineralNode)
-          this.game.events.emit('mineral-collected', { ...cell.content, addedToInventory: added })
-        }
-      }
-    }
-    this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
-  }
+  private applyMineralMagnet(originX: number, originY: number): void { applyMineralMagnetImpl(this, originX, originY) }
 
   /**
    * Roll a random upgrade from the full options pool using weighted random selection.
    * Bomb has a lower weight than the other upgrades to keep it feeling special.
    */
-  private rollUpgrade(): RunUpgrade {
-    let weightedOptions: { upgrade: RunUpgrade; weight: number }[] = [
-      { upgrade: 'pickaxe_boost', weight: 25 },
-      { upgrade: 'scanner_boost', weight: 25 },
-      { upgrade: 'backpack_expand', weight: 25 },
-      { upgrade: 'oxygen_efficiency', weight: 25 },
-      { upgrade: 'bomb', weight: BALANCE.BOMB_DROP_WEIGHT },
-    ]
-    // Exclude backpack_expand when the temporary expansion cap has been reached.
-    if (this.backpackExpansionCount >= BALANCE.BACKPACK_MAX_TEMP_EXPANSIONS) {
-      weightedOptions = weightedOptions.filter(o => o.upgrade !== 'backpack_expand')
-    }
-    const totalWeight = weightedOptions.reduce((sum, o) => sum + o.weight, 0)
-    let roll = Math.random() * totalWeight
-    for (const option of weightedOptions) {
-      roll -= option.weight
-      if (roll <= 0) return option.upgrade
-    }
-    return weightedOptions[0].upgrade
-  }
+  private rollUpgrade(): RunUpgrade { return rollUpgradeImpl(this) }
 
   /**
    * Apply an upgrade for the current run, recording it in activeUpgrades.
    */
-  private applyUpgrade(upgrade: RunUpgrade): void {
-    const currentCount = this.activeUpgrades.get(upgrade) ?? 0
-    switch (upgrade) {
-      case 'bomb': {
-        const newCount = Math.min(currentCount + 1, BALANCE.BOMB_MAX_STACK)
-        this.activeUpgrades.set(upgrade, newCount)
-        break
-      }
-      case 'pickaxe_boost': {
-        // Advance tier index up to the maximum tier
-        const maxTier = BALANCE.PICKAXE_TIERS.length - 1
-        this.pickaxeTierIndex = Math.min(this.pickaxeTierIndex + 1, maxTier)
-        // Keep count in activeUpgrades for display purposes
-        this.activeUpgrades.set(upgrade, this.pickaxeTierIndex)
-        const tier = BALANCE.PICKAXE_TIERS[this.pickaxeTierIndex]
-        // Phase 29: Update gear overlay when pickaxe tier changes
-        this.gearOverlay?.setPickaxeTier(this.pickaxeTierIndex)
-        this.game.events.emit('pickaxe-upgraded', {
-          tierIndex: this.pickaxeTierIndex,
-          tierName: tier.name,
-        })
-        break
-      }
-      case 'backpack_expand': {
-        if (this.backpackExpansionCount < BALANCE.BACKPACK_MAX_TEMP_EXPANSIONS) {
-          const bonus = BALANCE.BACKPACK_EXPANSION_SIZES[this.backpackExpansionCount]
-          this.backpackExpansionCount++
-          for (let i = 0; i < bonus; i++) {
-            this.inventory.push({ type: 'empty' as const })
-          }
-          this.inventorySlots += bonus
-          this.activeUpgrades.set(upgrade, currentCount + 1)
-          this.game.events.emit('backpack-expanded', {
-            slotsAdded: bonus,
-            totalSlots: this.inventory.length,
-            expansionCount: this.backpackExpansionCount,
-          })
-        }
-        // If at max expansions, the caller should have re-rolled; applyUpgrade is a no-op here.
-        break
-      }
-      case 'scanner_boost': {
-        this.activeUpgrades.set(upgrade, currentCount + 1)
-        // Advance scanner tier (capped at max tier index)
-        const maxTierIndex = BALANCE.SCANNER_TIERS.length - 1
-        this.scannerTierIndex = Math.min(this.scannerTierIndex + 1, maxTierIndex)
-        const tierName = BALANCE.SCANNER_TIERS[this.scannerTierIndex].name
-        this.game.events.emit('scanner-upgraded', { tierIndex: this.scannerTierIndex, tierName })
-        this.revealSpecialBlocks()
-        break
-      }
-      default:
-        this.activeUpgrades.set(upgrade, currentCount + 1)
-        break
-    }
-  }
+  private applyUpgrade(upgrade: RunUpgrade): void { applyUpgradeImpl(this, upgrade) }
 
   /**
    * Reveal special blocks within scanner range around the player.
    * Range is determined by the current scanner tier's revealRadius.
    */
-  private revealSpecialBlocks(): void {
-    const scanRadius = BALANCE.SCANNER_TIERS[this.scannerTierIndex].revealRadius
-    const px = this.player.gridX
-    const py = this.player.gridY
-    for (let dy = -scanRadius; dy <= scanRadius; dy++) {
-      for (let dx = -scanRadius; dx <= scanRadius; dx++) {
-        const x = px + dx
-        const y = py + dy
-        if (x < 0 || y < 0 || x >= this.gridWidth || y >= this.gridHeight) continue
-        if (Math.abs(dx) + Math.abs(dy) > scanRadius) continue
-        const cell = this.grid[y][x]
-        if (
-          cell.type === BlockType.MineralNode ||
-          cell.type === BlockType.ArtifactNode ||
-          cell.type === BlockType.OxygenCache ||
-          cell.type === BlockType.UpgradeCrate ||
-          cell.type === BlockType.ExitLadder ||
-          cell.type === BlockType.DescentShaft
-        ) {
-          cell.revealed = true
-        }
-      }
-    }
-  }
+  /** @internal */ public revealSpecialBlocks(): void { revealSpecialBlocksImpl(this) }
 
   /**
    * Triggers a random earthquake event that reshapes a portion of the mine.
@@ -2866,161 +1198,7 @@ export class MineScene extends Phaser.Scene {
    * fog-of-war consistent.  An 'earthquake' event is emitted for GameManager commentary.
    * Never affects: player cell, special blocks, Unbreakable blocks.
    */
-  private triggerEarthquake(): void {
-    this.blocksSinceLastQuake = 0
-
-    const playerPosKey = `${this.player.gridX},${this.player.gridY}`
-
-    // Block types that are safe to collapse (plain terrain only)
-    const terrainTypes = new Set<BlockType>([
-      BlockType.Dirt,
-      BlockType.SoftRock,
-      BlockType.Stone,
-      BlockType.HardRock,
-    ])
-
-    // Block types that must never be altered by an earthquake
-    const protectedTypes = new Set<BlockType>([
-      BlockType.Unbreakable,
-      BlockType.MineralNode,
-      BlockType.ArtifactNode,
-      BlockType.OxygenCache,
-      BlockType.QuizGate,
-      BlockType.UpgradeCrate,
-      BlockType.ExitLadder,
-      BlockType.DescentShaft,
-      BlockType.RelicShrine,
-      BlockType.QuoteStone,
-      BlockType.LavaBlock,
-      BlockType.GasPocket,
-      BlockType.UnstableGround,
-      BlockType.SendUpStation,
-    ])
-
-    // === Phase 1: Screen shake (stronger than cave-in) ===
-    const shakeStep = (): void => {
-      const offsetX = (Math.random() - 0.5) * 12
-      const offsetY = (Math.random() - 0.5) * 12
-      this.cameras.main.setScroll(
-        this.cameras.main.scrollX + offsetX,
-        this.cameras.main.scrollY + offsetY,
-      )
-    }
-    shakeStep()
-    setTimeout(() => { shakeStep() }, 100)
-    setTimeout(() => { shakeStep() }, 200)
-    setTimeout(() => { shakeStep() }, 320)
-    setTimeout(() => { shakeStep() }, 440)
-    // Re-center after shake
-    setTimeout(() => {
-      const centerX = this.player.gridX * TILE_SIZE + TILE_SIZE / 2
-      const centerY = this.player.gridY * TILE_SIZE + TILE_SIZE / 2
-      this.cameras.main.centerOn(centerX, centerY)
-    }, 600)
-
-    // === Phase 2: Collapse — destroy revealed terrain blocks to create new passages ===
-    // Gather all candidate revealed terrain blocks
-    const terrainCandidates: { x: number; y: number }[] = []
-    for (let row = 0; row < this.gridHeight; row++) {
-      for (let col = 0; col < this.gridWidth; col++) {
-        if (`${col},${row}` === playerPosKey) continue
-        const cell = this.grid[row][col]
-        if (!cell.revealed) continue
-        if (!terrainTypes.has(cell.type)) continue
-        terrainCandidates.push({ x: col, y: row })
-      }
-    }
-
-    // Shuffle and take up to EARTHQUAKE_COLLAPSE_COUNT
-    for (let i = terrainCandidates.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [terrainCandidates[i], terrainCandidates[j]] = [terrainCandidates[j], terrainCandidates[i]]
-    }
-
-    const collapseTargets = terrainCandidates.slice(0, BALANCE.EARTHQUAKE_COLLAPSE_COUNT)
-    const collapsedPositions: { x: number; y: number }[] = []
-
-    for (const pos of collapseTargets) {
-      this.grid[pos.y][pos.x] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-      collapsedPositions.push(pos)
-      this.spawnBreakParticles(pos.x * TILE_SIZE, pos.y * TILE_SIZE, BlockType.Dirt)
-    }
-
-    // === Phase 3: Rubble — fill some Empty cells near collapsed blocks with Dirt ===
-    // For each collapsed block, check its neighbours for empty revealed cells
-    const rubbleCandidates = new Set<string>()
-    for (const pos of collapsedPositions) {
-      for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
-        const nx = pos.x + dx
-        const ny = pos.y + dy
-        if (nx < 0 || ny < 0 || nx >= this.gridWidth || ny >= this.gridHeight) continue
-        if (`${nx},${ny}` === playerPosKey) continue
-        const nCell = this.grid[ny][nx]
-        if (nCell.type !== BlockType.Empty) continue
-        if (!nCell.revealed) continue
-        // 50% chance to become rubble
-        if (Math.random() < 0.5) {
-          rubbleCandidates.add(`${nx},${ny}`)
-        }
-      }
-    }
-
-    for (const key of rubbleCandidates) {
-      const [rx, ry] = key.split(',').map(Number)
-      if (`${rx},${ry}` === playerPosKey) continue
-      this.grid[ry][rx] = { type: BlockType.Dirt, hardness: 1, maxHardness: 1, revealed: true }
-    }
-
-    // === Phase 4: Reveal — crack open fog near revealed space ===
-    // Find unrevealed blocks that are directly adjacent to a revealed cell
-    const revealCandidates: { x: number; y: number }[] = []
-    for (let row = 0; row < this.gridHeight; row++) {
-      for (let col = 0; col < this.gridWidth; col++) {
-        const cell = this.grid[row][col]
-        if (cell.revealed || cell.visibilityLevel !== undefined) continue
-        if (protectedTypes.has(cell.type)) continue
-        // Check if any orthogonal neighbour is revealed
-        let hasRevealedNeighbour = false
-        for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
-          const nx = col + dx
-          const ny = row + dy
-          if (nx < 0 || ny < 0 || nx >= this.gridWidth || ny >= this.gridHeight) continue
-          if (this.grid[ny][nx].revealed) {
-            hasRevealedNeighbour = true
-            break
-          }
-        }
-        if (hasRevealedNeighbour) {
-          revealCandidates.push({ x: col, y: row })
-        }
-      }
-    }
-
-    // Shuffle and take up to EARTHQUAKE_REVEAL_COUNT
-    for (let i = revealCandidates.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [revealCandidates[i], revealCandidates[j]] = [revealCandidates[j], revealCandidates[i]]
-    }
-
-    const revealTargets = revealCandidates.slice(0, BALANCE.EARTHQUAKE_REVEAL_COUNT)
-    for (const pos of revealTargets) {
-      this.grid[pos.y][pos.x].visibilityLevel = 1
-    }
-
-    // === Update fog of war from player position after all grid changes ===
-    revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-    if (this.activeUpgrades.has('scanner_boost')) {
-      this.revealSpecialBlocks()
-    }
-
-    // Emit event for GameManager to display a GAIA quip
-    this.game.events.emit('earthquake', {
-      collapsed: collapsedPositions.length,
-      revealed: revealTargets.length,
-    })
-
-    this.redrawAll()
-  }
+  private triggerEarthquake(): void { triggerEarthquakeImpl(this) }
 
   /**
    * Detonates a bomb centered on the player, clearing a 3x3 area of blocks.
@@ -3029,183 +1207,14 @@ export class MineScene extends Phaser.Scene {
    * LavaBlock and GasPocket are destroyed without applying their hazard effects.
    * Costs BOMB_OXYGEN_COST oxygen and decrements the bomb count by 1.
    */
-  public useBomb(): void {
-    const bombCount = this.activeUpgrades.get('bomb') ?? 0
-    if (bombCount <= 0) return
-
-    // Deduct one bomb
-    this.activeUpgrades.set('bomb', bombCount - 1)
-
-    // Deduct oxygen cost
-    const oxygenResult = consumeOxygen(this.oxygenState, BALANCE.BOMB_OXYGEN_COST)
-    this.oxygenState = oxygenResult.state
-    this.game.events.emit('oxygen-changed', this.oxygenState)
-
-    const cx = this.player.gridX
-    const cy = this.player.gridY
-    const radius = BALANCE.BOMB_RADIUS
-
-    for (let dy = -radius; dy <= radius; dy++) {
-      for (let dx = -radius; dx <= radius; dx++) {
-        const x = cx + dx
-        const y = cy + dy
-        if (x < 0 || y < 0 || x >= this.gridWidth || y >= this.gridHeight) continue
-
-        const cell = this.grid[y][x]
-
-        // Skip the player's own cell (already empty), unbreakable, exit ladder, and quiz gates
-        if (
-          cell.type === BlockType.Empty ||
-          cell.type === BlockType.Unbreakable ||
-          cell.type === BlockType.ExitLadder ||
-          cell.type === BlockType.QuizGate
-        ) continue
-
-        const blockType = cell.type
-        const content = cell.content
-
-        // Destroy the block instantly
-        this.spawnBreakParticles(x * TILE_SIZE, y * TILE_SIZE, blockType)
-        this.grid[y][x] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-        this.blocksMinedThisRun += 1
-
-        // Flash the destroyed tile with yellow tint
-        this.flashTiles.set(`${x},${y}`, this.time.now)
-
-        // Handle special block content (no hazard effects for lava/gas)
-        switch (blockType) {
-          case BlockType.MineralNode: {
-            const mineralSlot: InventorySlot = {
-              type: 'mineral',
-              mineralTier: content?.mineralType,
-              mineralAmount: content?.mineralAmount,
-            }
-            const added = this.addToInventory(mineralSlot)
-            this.game.events.emit('mineral-collected', { ...content, addedToInventory: added })
-            break
-          }
-          case BlockType.ArtifactNode: {
-            const artifactSlot: InventorySlot = {
-              type: 'artifact',
-              artifactRarity: content?.artifactRarity,
-              factId: content?.factId,
-            }
-            const added = this.addToInventory(artifactSlot)
-            if (content?.factId) {
-              this.artifactsFound.push(content.factId)
-            }
-            this.game.events.emit('artifact-found', {
-              factId: content?.factId,
-              rarity: content?.artifactRarity,
-              addedToInventory: added,
-            })
-            break
-          }
-          case BlockType.OxygenCache: {
-            const oxygenAmount = content?.oxygenAmount ?? BALANCE.OXYGEN_CACHE_RESTORE
-            this.oxygenState = addOxygen(this.oxygenState, oxygenAmount)
-            this.game.events.emit('oxygen-restored', { amount: oxygenAmount, state: this.oxygenState })
-            this.game.events.emit('oxygen-changed', this.oxygenState)
-            break
-          }
-          case BlockType.UpgradeCrate: {
-            const upgrade = this.rollUpgrade()
-            this.applyUpgrade(upgrade)
-            this.game.events.emit('upgrade-found', { upgrade })
-            break
-          }
-          default:
-            // LavaBlock and GasPocket are destroyed without hazard effects
-            break
-        }
-      }
-    }
-
-    this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
-    audioManager.playSound('mine_break')
-
-    // Update fog of war after blast
-    revealAround(this.grid, cx, cy, BALANCE.FOG_REVEAL_RADIUS)
-    if (this.activeUpgrades.has('scanner_boost')) {
-      this.revealSpecialBlocks()
-    }
-
-    // Update the bomb count in the Svelte store
-    this.game.events.emit('bomb-used', { remaining: this.activeUpgrades.get('bomb') ?? 0 })
-
-    if (oxygenResult.depleted) {
-      this.game.events.emit('oxygen-depleted')
-    }
-
-    this.redrawAll()
-  }
+  public useBomb(): void { useBombImpl(this) }
 
   /**
    * Gets the max stack size for a mineral tier.
    */
-  private getMaxStackSize(tier: MineralTier): number {
-    switch (tier) {
-      case 'dust': return BALANCE.DUST_STACK_SIZE
-      case 'shard': return BALANCE.SHARD_STACK_SIZE
-      case 'crystal': return BALANCE.CRYSTAL_STACK_SIZE
-      case 'geode': return BALANCE.GEODE_STACK_SIZE
-      case 'essence': return BALANCE.ESSENCE_STACK_SIZE
-      default: return 1
-    }
-  }
+  private getMaxStackSize(tier: MineralTier): number { return getMaxStackSizeImpl(tier) }
 
-  /**
-   * Adds an item to inventory with auto-stacking for minerals.
-   * Minerals stack up to their max stack size before using a new slot.
-   * Returns true if at least some of the item was added.
-   */
-  private addToInventory(slot: InventorySlot): boolean {
-    // Non-minerals go to first empty slot (no stacking)
-    if (slot.type !== 'mineral' || !slot.mineralTier) {
-      const emptyIndex = this.inventory.findIndex((s) => s.type === 'empty')
-      if (emptyIndex === -1) return false
-      this.inventory[emptyIndex] = slot
-      return true
-    }
-
-    const tier = slot.mineralTier
-    const maxStack = this.getMaxStackSize(tier)
-    let remaining = slot.mineralAmount ?? 1
-
-    // First: try to add to existing stacks of the same mineral tier
-    for (let i = 0; i < this.inventory.length && remaining > 0; i++) {
-      const existing = this.inventory[i]
-      if (existing.type === 'mineral' && existing.mineralTier === tier) {
-        const currentAmount = existing.mineralAmount ?? 0
-        const space = maxStack - currentAmount
-        if (space > 0) {
-          const toAdd = Math.min(remaining, space)
-          this.inventory[i] = {
-            ...existing,
-            mineralAmount: currentAmount + toAdd,
-          }
-          remaining -= toAdd
-        }
-      }
-    }
-
-    // Second: overflow into empty slots as new stacks
-    while (remaining > 0) {
-      const emptyIndex = this.inventory.findIndex((s) => s.type === 'empty')
-      if (emptyIndex === -1) break  // Inventory full
-
-      const toAdd = Math.min(remaining, maxStack)
-      this.inventory[emptyIndex] = {
-        type: 'mineral',
-        mineralTier: tier,
-        mineralAmount: toAdd,
-      }
-      remaining -= toAdd
-    }
-
-    // Return true if we managed to store at least some
-    return remaining < (slot.mineralAmount ?? 1)
-  }
+  /** @internal */ public addToInventory(slot: InventorySlot): boolean { return addToInventoryImpl(this, slot) }
 
   /**
    * reveal_exit companion effect: scans the entire grid for the ExitLadder block and
@@ -3269,19 +1278,13 @@ export class MineScene extends Phaser.Scene {
    * Called by HazardSystem when the player occupies a lava cell.
    * Emits a game event so GameManager can drain O2 and trigger GAIA commentary. (Phase 8.3)
    */
-  private handleLavaContact(): void {
-    this.animController?.setHurt()    // Phase 29: trigger hurt flash animation
-    this.game.events.emit('hazard-lava-contact')
-  }
+  private handleLavaContact(): void { handleLavaContactImpl(this) }
 
   /**
    * Called by HazardSystem when the player occupies a gas cloud cell.
    * Emits a game event so GameManager can drain O2 per tick. (Phase 8.3)
    */
-  private handleGasContact(): void {
-    this.animController?.setHurt()    // Phase 29: trigger hurt flash animation
-    this.game.events.emit('hazard-gas-contact')
-  }
+  private handleGasContact(): void { handleGasContactImpl(this) }
 
   /**
    * Called by HazardSystem when lava spreads into a new empty cell.
@@ -3290,191 +1293,30 @@ export class MineScene extends Phaser.Scene {
    * @param x - Grid column of the newly lava-filled cell.
    * @param y - Grid row of the newly lava-filled cell.
    */
-  private markCellAsLava(x: number, y: number): void {
-    if (this.grid[y]?.[x]) {
-      this.grid[y][x] = {
-        type: BlockType.LavaBlock,
-        hardness: 0,
-        maxHardness: 0,
-        revealed: true,
-      }
-    }
-  }
+  private markCellAsLava(x: number, y: number): void { markCellAsLavaImpl(this, x, y) }
 
   /**
    * Apply a consumable tool effect. (DD-V2-064)
    */
-  public applyConsumable(id: ConsumableId): void {
-    const used = useConsumableFromDive(id)
-    if (!used) return
-
-    switch (id) {
-      case 'bomb':
-        this.applyBomb()
-        break
-      case 'flare':
-        this.applyFlare()
-        break
-      case 'shield_charge':
-        shieldActive.set(true)
-        this.game.events.emit('gaia-toast', 'Shield active — next hazard blocked.')
-        break
-      case 'drill_charge':
-        this.applyDrillCharge()
-        break
-      case 'sonar_pulse':
-        this.applySonarPulse()
-        break
-    }
-  }
+  public applyConsumable(id: ConsumableId): void { applyConsumableImpl(this, id) }
 
   /** Bomb: clear 3x3 area around player */
-  private applyBomb(): void {
-    const cx = this.player.gridX
-    const cy = this.player.gridY
-    let cleared = 0
-    for (let dy = -1; dy <= 1; dy++) {
-      for (let dx = -1; dx <= 1; dx++) {
-        const nx = cx + dx
-        const ny = cy + dy
-        if (nx < 0 || ny < 0 || nx >= this.grid[0].length || ny >= this.grid.length) continue
-        const cell = this.grid[ny][nx]
-        if (cell.type !== BlockType.Empty && cell.type !== BlockType.Unbreakable &&
-            cell.type !== BlockType.ExitLadder && cell.type !== BlockType.DescentShaft) {
-          this.grid[ny][nx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-          cleared++
-        }
-      }
-    }
-    revealAround(this.grid, cx, cy, BALANCE.FOG_REVEAL_RADIUS)
-    TickSystem.getInstance().advance()
-    tickCount.set(TickSystem.getInstance().getTick())
-    layerTickCount.set(TickSystem.getInstance().getLayerTick())
-    this.redrawAll()
-    this.game.events.emit('gaia-toast', `Bomb detonated — ${cleared} blocks cleared.`)
-  }
+  private applyBomb(): void { applyBombImpl(this) }
 
   /** Flare: reveal 7x7 area */
-  private applyFlare(): void {
-    const cx = this.player.gridX
-    const cy = this.player.gridY
-    const width = this.grid[0].length
-    const height = this.grid.length
-    for (let dy = -3; dy <= 3; dy++) {
-      for (let dx = -3; dx <= 3; dx++) {
-        const nx = cx + dx
-        const ny = cy + dy
-        if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
-          this.grid[ny][nx].revealed = true
-        }
-      }
-    }
-    TickSystem.getInstance().advance()
-    tickCount.set(TickSystem.getInstance().getTick())
-    layerTickCount.set(TickSystem.getInstance().getLayerTick())
-    this.redrawAll()
-    this.game.events.emit('gaia-toast', 'Flare deployed — 7×7 area revealed.')
-  }
+  private applyFlare(): void { applyFlareImpl(this) }
 
   /** Drill Charge: mine 5 blocks in facing direction */
-  private applyDrillCharge(): void {
-    const dirMap: Record<string, [number, number]> = {
-      up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0],
-    }
-    const [ddx, ddy] = dirMap[this.playerFacing]
-    let mined = 0
-    let cx = this.player.gridX
-    let cy = this.player.gridY
-    const width = this.grid[0].length
-    const height = this.grid.length
-    while (mined < 5) {
-      cx += ddx
-      cy += ddy
-      if (cx < 0 || cy < 0 || cx >= width || cy >= height) break
-      const cell = this.grid[cy][cx]
-      if (cell.type === BlockType.Unbreakable) break
-      if (cell.type !== BlockType.Empty) {
-        this.grid[cy][cx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
-        mined++
-      }
-    }
-    revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
-    TickSystem.getInstance().advance()
-    tickCount.set(TickSystem.getInstance().getTick())
-    layerTickCount.set(TickSystem.getInstance().getLayerTick())
-    this.redrawAll()
-    this.game.events.emit('gaia-toast', `Drill Charge — ${mined} blocks bored through.`)
-  }
+  private applyDrillCharge(): void { applyDrillChargeImpl(this) }
 
   /** Sonar Pulse: highlight minerals within 10 Manhattan distance */
-  private applySonarPulse(): void {
-    const cx = this.player.gridX
-    const cy = this.player.gridY
-    const width = this.grid[0].length
-    const height = this.grid.length
-    let revealed = 0
-    for (let dy = -10; dy <= 10; dy++) {
-      for (let dx = -10; dx <= 10; dx++) {
-        if (Math.abs(dx) + Math.abs(dy) > 10) continue
-        const nx = cx + dx
-        const ny = cy + dy
-        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue
-        const cell = this.grid[ny][nx]
-        if (cell.type === BlockType.MineralNode || cell.type === BlockType.ArtifactNode ||
-            cell.type === BlockType.FossilNode) {
-          cell.revealed = true
-          revealed++
-        }
-      }
-    }
-    TickSystem.getInstance().advance()
-    tickCount.set(TickSystem.getInstance().getTick())
-    layerTickCount.set(TickSystem.getInstance().getLayerTick())
-    this.redrawAll()
-    this.game.events.emit('gaia-toast', `Sonar Pulse — ${revealed} nodes detected.`)
-  }
+  private applySonarPulse(): void { applySonarPulseImpl(this) }
 
   /**
    * Called after mine generation to handle landmark-specific entry effects. (DD-V2-055)
    * Emits GAIA toast messages and activates hazards present in the landmark template.
    */
-  private handleLandmarkEntry(): void {
-    const oneIndexedLayer = this.currentLayer + 1
-    const landmarkId = getLandmarkIdForLayer(oneIndexedLayer)
-    if (!landmarkId) return
-
-    switch (landmarkId) {
-      case 'gauntlet':
-        this.game.events.emit('gaia-toast', 'GAUNTLET — Multiple active hazards detected. Survive.')
-        // Activate all lava and gas cells in the stamped grid
-        for (let y = 0; y < this.grid.length; y++) {
-          for (let x = 0; x < this.grid[0].length; x++) {
-            if (this.grid[y][x].type === BlockType.LavaBlock) {
-              this.hazardSystem?.spawnLava(x, y)
-            }
-            if (this.grid[y][x].type === BlockType.GasPocket) {
-              this.hazardSystem?.spawnGas(x, y)
-            }
-          }
-        }
-        break
-      case 'treasure_vault':
-        this.game.events.emit('gaia-toast', 'Treasure Vault — Elevated mineral density detected. A chest lies within.')
-        break
-      case 'ancient_archive':
-        this.game.events.emit('gaia-toast', 'Ancient Archive — Stone tablets detected. Approach to learn.')
-        break
-      case 'completion_event': {
-        const event = COMPLETION_EVENTS[Math.floor(Math.random() * COMPLETION_EVENTS.length)]
-        this.game.events.emit('gaia-toast', `DEPTH RECORD — ${event.title}`)
-        // Show monologue after a delay
-        setTimeout(() => {
-          this.game.events.emit('gaia-toast', event.gaiaMonologue)
-        }, 3000)
-        break
-      }
-    }
-  }
+  private handleLandmarkEntry(): void { handleLandmarkEntryImpl(this) }
 
   /**
    * Registers per-frame animation listeners that emit 'mineSwingFrame' at peak impact.
@@ -3632,43 +1474,13 @@ export class MineScene extends Phaser.Scene {
    * Trigger the instability collapse event: fills random cells with HardRock
    * and spawns lava near the center. Called by InstabilitySystem on full collapse. (Phase 35.4)
    */
-  private triggerInstabilityCollapse(): void {
-    const count = BALANCE.INSTABILITY_COLLAPSE_BLOCK_COUNT
-    let placed = 0
-    const minY = Math.floor(this.gridHeight * 0.4)
-    for (let attempts = 0; attempts < count * 4 && placed < count; attempts++) {
-      const rx = Math.floor(Math.random() * this.gridWidth)
-      const ry = Math.floor(minY + Math.random() * (this.gridHeight - minY))
-      const cell = this.grid[ry]?.[rx]
-      if (!cell) continue
-      if (cell.type === BlockType.Empty && cell.revealed && !this.isPlayerAt(rx, ry)) {
-        this.grid[ry][rx] = { type: BlockType.HardRock, hardness: BALANCE.HARDNESS_HARD_ROCK, maxHardness: BALANCE.HARDNESS_HARD_ROCK, revealed: true }
-        placed++
-      }
-    }
-    // Spawn lava near grid center
-    if (this.hazardSystem) {
-      const cx = Math.floor(this.gridWidth / 2)
-      const cy = Math.floor(this.gridHeight * 0.6)
-      this.hazardSystem.spawnLava(cx, cy)
-    }
-    this.redrawAll()
-    gaiaMessage.set("The layer is collapsing! Find the shaft — NOW.")
-    this.game.events.emit('earthquake', { collapsed: placed, revealed: 0 })
-  }
+  private triggerInstabilityCollapse(): void { triggerInstabilityCollapseImpl(this) }
 
   /** Returns true if the player is at grid cell (x, y). */
-  private isPlayerAt(x: number, y: number): boolean {
-    return this.player.gridX === x && this.player.gridY === y
-  }
+  private isPlayerAt(x: number, y: number): boolean { return isPlayerAtImpl(this, x, y) }
 
-  /**
-   * Force a layer failure (triggered when instability countdown reaches 0).
-   * Behaves like oxygen depletion — forced surface with loot loss. (Phase 35.4)
-   */
-  private forceLayerFail(): void {
-    this.game.events.emit('oxygen-depleted')
-  }
+  /** Force a layer failure (triggered when instability countdown reaches 0). (Phase 35.4) */
+  private forceLayerFail(): void { forceLayerFailImpl(this) }
 
   /**
    * Scene shutdown — clean up systems that hold references to Phaser objects.
