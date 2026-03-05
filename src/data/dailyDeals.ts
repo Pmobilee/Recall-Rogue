@@ -8,6 +8,12 @@ export interface DailyDeal {
   category: 'mineral_pack' | 'oxygen_boost' | 'recipe_discount' | 'cosmetic_discount' | 'mystery_box'
   cost: Partial<Record<MineralTier, number>>
   reward: DealReward
+  /** Which market slot this deal occupies (1 = Consumable, 2 = Special, 3 = Featured). */
+  slot: 1 | 2 | 3
+  /** Discount percentage applied to this deal (0 = no discount). */
+  discountPercent: number
+  /** For slot 3: which day in the 7-day rotation (1-7). Day 7 = pity (rare+ guaranteed). */
+  featuredDay?: number
 }
 
 export type DealReward =
@@ -17,17 +23,57 @@ export type DealReward =
   | { type: 'random_minerals'; minDust: number; maxDust: number }
   | { type: 'cosmetic_unlock'; cosmeticId: string }
 
-/** All possible deals that can rotate in */
-const DEAL_POOL: DailyDeal[] = [
+// === Slot 1: Consumable pool (20% discount) ===
+const CONSUMABLE_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
     id: 'shard_bundle',
     name: 'Shard Bundle',
     description: '5 shards at a discount',
     icon: '💎',
     category: 'mineral_pack',
-    cost: { dust: 150 },
+    cost: { dust: 120 }, // 20% off normal 150
     reward: { type: 'minerals', tier: 'shard', amount: 5 },
   },
+  {
+    id: 'oxygen_surplus',
+    name: 'Oxygen Surplus',
+    description: '+1 oxygen tank',
+    icon: '🫧',
+    category: 'oxygen_boost',
+    cost: { dust: 240, shard: 4 }, // 20% off
+    reward: { type: 'oxygen_tanks', amount: 1 },
+  },
+  {
+    id: 'dust_sale',
+    name: 'Dust Clearance',
+    description: 'Bulk dust cheap',
+    icon: '✨',
+    category: 'mineral_pack',
+    cost: { shard: 2 }, // 20% off 3
+    reward: { type: 'minerals', tier: 'dust', amount: 200 },
+  },
+  {
+    id: 'bomb_discount',
+    name: 'Bomb Kit Sale',
+    description: 'Bomb kit at 50% off',
+    icon: '💣',
+    category: 'recipe_discount',
+    cost: { dust: 120, shard: 4 }, // 20% off
+    reward: { type: 'recipe_discount', recipeId: 'bomb_kit', discountPercent: 50 },
+  },
+  {
+    id: 'tank_deal',
+    name: 'Tank Upgrade Sale',
+    description: 'Reinforced tank at 40% off',
+    icon: '🫧',
+    category: 'recipe_discount',
+    cost: { dust: 96, shard: 2 }, // 20% off
+    reward: { type: 'recipe_discount', recipeId: 'reinforced_tank', discountPercent: 40 },
+  },
+]
+
+// === Slot 2: Special/Cosmetic pool (no discount) ===
+const SPECIAL_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
     id: 'crystal_special',
     name: 'Crystal Special',
@@ -36,15 +82,6 @@ const DEAL_POOL: DailyDeal[] = [
     category: 'mineral_pack',
     cost: { shard: 15 },
     reward: { type: 'minerals', tier: 'crystal', amount: 2 },
-  },
-  {
-    id: 'oxygen_surplus',
-    name: 'Oxygen Surplus',
-    description: '+1 oxygen tank',
-    icon: '🫧',
-    category: 'oxygen_boost',
-    cost: { dust: 300, shard: 5 },
-    reward: { type: 'oxygen_tanks', amount: 1 },
   },
   {
     id: 'mystery_minerals',
@@ -64,55 +101,133 @@ const DEAL_POOL: DailyDeal[] = [
     cost: { crystal: 8 },
     reward: { type: 'minerals', tier: 'geode', amount: 1 },
   },
+]
+
+// === Slot 3: Featured pool (7-day rotation; day 7 = rare+ pity) ===
+const FEATURED_UNCOMMON: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
-    id: 'dust_sale',
-    name: 'Dust Clearance',
-    description: 'Bulk dust cheap',
-    icon: '✨',
+    id: 'feat_shard_pack',
+    name: 'Shard Mega-Pack',
+    description: '10 shards',
+    icon: '💎',
     category: 'mineral_pack',
-    cost: { shard: 3 },
-    reward: { type: 'minerals', tier: 'dust', amount: 200 },
+    cost: { dust: 350 },
+    reward: { type: 'minerals', tier: 'shard', amount: 10 },
   },
   {
-    id: 'bomb_discount',
-    name: 'Bomb Kit Sale',
-    description: 'Bomb kit at 50% off',
-    icon: '💣',
-    category: 'recipe_discount',
-    cost: { dust: 150, shard: 5 },
-    reward: { type: 'recipe_discount', recipeId: 'bomb_kit', discountPercent: 50 },
+    id: 'feat_crystal_2',
+    name: 'Crystal Duo',
+    description: '2 crystals',
+    icon: '🔮',
+    category: 'mineral_pack',
+    cost: { shard: 12 },
+    reward: { type: 'minerals', tier: 'crystal', amount: 2 },
   },
   {
-    id: 'tank_deal',
-    name: 'Tank Upgrade Sale',
-    description: 'Reinforced tank at 40% off',
+    id: 'feat_o2_double',
+    name: 'Double Refill',
+    description: '+2 oxygen tanks',
     icon: '🫧',
-    category: 'recipe_discount',
-    cost: { dust: 120, shard: 3 },
-    reward: { type: 'recipe_discount', recipeId: 'reinforced_tank', discountPercent: 40 },
+    category: 'oxygen_boost',
+    cost: { dust: 500, shard: 8 },
+    reward: { type: 'oxygen_tanks', amount: 2 },
+  },
+]
+
+const FEATURED_RARE: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
+  {
+    id: 'feat_geode_rare',
+    name: 'Rare Geode Bundle',
+    description: '2 geodes (pity deal)',
+    icon: '🪨',
+    category: 'mineral_pack',
+    cost: { crystal: 12 },
+    reward: { type: 'minerals', tier: 'geode', amount: 2 },
+  },
+  {
+    id: 'feat_mystery_rare',
+    name: 'Golden Cache',
+    description: 'Premium mineral haul',
+    icon: '✨',
+    category: 'mystery_box',
+    cost: { dust: 200, shard: 5 },
+    reward: { type: 'random_minerals', minDust: 200, maxDust: 500 },
   },
 ]
 
 /**
+ * Simple seeded PRNG for deterministic daily picks.
+ * Returns a function that produces values in [0, 1).
+ */
+function seededRng(seed: number): () => number {
+  let s = seed
+  return () => {
+    s = (s * 1103515245 + 12345) & 0x7fffffff
+    return s / 0x7fffffff
+  }
+}
+
+/**
+ * Compute which day in the 7-day cycle today falls on (1-7).
+ * Uses UTC date so all players see the same deals.
+ */
+function getFeaturedDay(): number {
+  const now = new Date()
+  const epoch = Date.UTC(2026, 0, 1) // reference: 2026-01-01 UTC
+  const daysSinceEpoch = Math.floor((now.getTime() - epoch) / (1000 * 60 * 60 * 24))
+  return (daysSinceEpoch % 7) + 1
+}
+
+/**
  * Generate today's 3 deals using the date as seed.
- * Same deals for everyone on the same day.
+ * - Slot 1 (Consumable): 20% discount, rotates through consumable pool
+ * - Slot 2 (Special): standard price, rotates through special pool
+ * - Slot 3 (Featured): 7-day cycle. Days 1-6: uncommon items. Day 7: rare+ guaranteed.
  */
 export function getTodaysDeals(): DailyDeal[] {
   const today = new Date()
   const seed =
     today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
-  // Simple seeded shuffle to pick 3
-  const shuffled = [...DEAL_POOL]
-  let s = seed
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    s = (s * 1103515245 + 12345) & 0x7fffffff
-    const j = s % (i + 1)
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  const rng = seededRng(seed)
+
+  // Slot 1: Consumable (20% off)
+  const consumableIdx = Math.floor(rng() * CONSUMABLE_POOL.length)
+  const slot1: DailyDeal = {
+    ...CONSUMABLE_POOL[consumableIdx],
+    slot: 1,
+    discountPercent: 20,
   }
-  return shuffled.slice(0, 3)
+
+  // Slot 2: Special (0% discount)
+  const specialIdx = Math.floor(rng() * SPECIAL_POOL.length)
+  const slot2: DailyDeal = {
+    ...SPECIAL_POOL[specialIdx],
+    slot: 2,
+    discountPercent: 0,
+  }
+
+  // Slot 3: Featured (7-day rotation)
+  const day = getFeaturedDay()
+  let featuredBase: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>
+  if (day === 7) {
+    // Pity day: rare+ guaranteed
+    const rareIdx = Math.floor(rng() * FEATURED_RARE.length)
+    featuredBase = FEATURED_RARE[rareIdx]
+  } else {
+    const uncommonIdx = Math.floor(rng() * FEATURED_UNCOMMON.length)
+    featuredBase = FEATURED_UNCOMMON[uncommonIdx]
+  }
+  const slot3: DailyDeal = {
+    ...featuredBase,
+    slot: 3,
+    discountPercent: 0,
+    featuredDay: day,
+  }
+
+  return [slot1, slot2, slot3]
 }
 
-/** Get hours remaining until deals reset (midnight) */
+/** Get hours and minutes remaining until deals reset (midnight local). */
 export function getTimeUntilReset(): { hours: number; minutes: number } {
   const now = new Date()
   const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1)
@@ -121,4 +236,9 @@ export function getTimeUntilReset(): { hours: number; minutes: number } {
     hours: Math.floor(diff / (1000 * 60 * 60)),
     minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
   }
+}
+
+/** Returns the current day in the 7-day featured rotation (1-7). */
+export function getCurrentFeaturedDay(): number {
+  return getFeaturedDay()
 }

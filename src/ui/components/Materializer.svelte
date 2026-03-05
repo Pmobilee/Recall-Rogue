@@ -7,6 +7,7 @@
   import { audioManager } from '../../services/audioService'
   import { upgradeFloor } from '../stores/playerData'
   import FloorUpgradePanel from './FloorUpgradePanel.svelte'
+  import DuplicateMixingModal from './DuplicateMixingModal.svelte'
   import type { FloorUpgradeTier } from '../../data/hubLayout'
   import { currentFloorIndex } from '../stores/gameState'
   import { getDefaultHubStack } from '../../data/hubFloors'
@@ -102,6 +103,7 @@
 
   // Floor upgrade state
   let showUpgradePanel = $state(false)
+  let showMixingModal = $state(false)
   const hubStack = getDefaultHubStack()
   const unlockedIds = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
   const floorTiers = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
@@ -324,6 +326,20 @@
       onClose={() => { showUpgradePanel = false }}
       onUpgrade={handleUpgrade}
     />
+  {/if}
+
+  <!-- Recycle Artifacts -->
+  <section class="recycle-section">
+    <h3 class="section-heading">Recycle Artifacts</h3>
+    <p class="recycle-desc">Combine 3+ duplicate artifact cards for a chance at a rarity upgrade.</p>
+    <button class="recycle-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showMixingModal = true }}>
+      Open Artifact Mixer
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </button>
+  </section>
+
+  {#if showMixingModal}
+    <DuplicateMixingModal onClose={() => { showMixingModal = false }} />
   {/if}
 </section>
 
@@ -790,6 +806,42 @@
 
   .arrow {
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* ---- Recycle section ---- */
+  .recycle-section {
+    background: var(--color-surface, #1e1e3a);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+
+  .recycle-desc {
+    color: var(--color-text-dim, #8888a0);
+    font-size: 0.78rem;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+
+  .recycle-btn {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #7c3aed;
+    border-radius: 10px;
+    background: color-mix(in srgb, #7c3aed 20%, var(--color-surface, #1e1e3a) 80%);
+    color: var(--color-text, #e8e8f0);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .recycle-btn:active {
+    transform: translateY(1px);
   }
 
   /* ---- Responsive ---- */

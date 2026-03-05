@@ -161,7 +161,10 @@
       &larr; Back
     </button>
     <div class="title-block">
-      <h1>&#x2B50; Premium Workshop</h1>
+      <div class="premium-header-row">
+        <h1>Premium Workshop</h1>
+        <span class="premium-badge">PREMIUM</span>
+      </div>
       <p class="subtitle">Craft rare items with precious in-game drops</p>
     </div>
   </div>
@@ -349,6 +352,28 @@
     padding: 8px;
     font-family: 'Courier New', monospace;
     -webkit-overflow-scrolling: touch;
+    box-shadow: inset 0 0 60px rgba(255, 200, 0, 0.08);
+    border-top: 2px solid rgba(255, 200, 0, 0.3);
+  }
+
+  .premium-header-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .premium-badge {
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: #1a0e00;
+    background: linear-gradient(135deg, #ffd700 0%, #ffba00 50%, #ffd700 100%);
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px rgba(255, 200, 0, 0.5);
+    flex-shrink: 0;
   }
 
   /* ---- Header ---- */
@@ -385,7 +410,7 @@
 
   h1 {
     margin: 0;
-    background: linear-gradient(135deg, #f0abfc 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, #ffd700 0%, #ffba00 40%, #ffc107 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -408,8 +433,9 @@
     margin: 8px;
     padding: 10px 12px;
     background: color-mix(in srgb, #2a0060 60%, var(--color-surface) 40%);
-    border: 1px solid rgba(192, 132, 252, 0.3);
+    border: 1px solid rgba(255, 200, 0, 0.35);
     border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 200, 0, 0.12);
   }
 
   .material-pill {

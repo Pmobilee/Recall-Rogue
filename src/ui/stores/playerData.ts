@@ -829,6 +829,93 @@ export function unlockDustCatCosmetic(cosmeticId: string): void {
 }
 
 // =========================================================
+// Phase 55: Economy Depth — Duplicate Artifact Mixing
+// =========================================================
+
+import type { ArtifactCard } from '../../data/types'
+
+const RARITY_ORDER_MIX = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic']
+
+/**
+ * Mixes 3+ duplicate artifact cards into a new card with a chance of rarity upgrade.
+ * Deducts MIX_FEE_DUST dust. Removes input cards, adds one output card.
+ *
+ * @param instanceIds - Array of 3+ artifact card instanceIds to consume.
+ * @returns The output rarity string, or null if the mix failed (insufficient cards/dust).
+ */
+export function mixArtifacts(instanceIds: string[]): string | null {
+  const current = get(playerSave)
+  if (!current) return null
+
+  const cards = current.inventoryArtifacts ?? []
+  if (instanceIds.length < BALANCE.MIX_MIN_CARDS) return null
+  if (current.minerals.dust < BALANCE.MIX_FEE_DUST) return null
+
+  // Validate all instanceIds exist
+  const selectedCards = instanceIds.map(id => cards.find(c => c.instanceId === id)).filter(Boolean) as ArtifactCard[]
+  if (selectedCards.length < BALANCE.MIX_MIN_CARDS) return null
+
+  // Determine base rarity: most common rarity among selected cards
+  const rarityCounts: Record<string, number> = {}
+  for (const card of selectedCards) {
+    rarityCounts[card.rarity] = (rarityCounts[card.rarity] ?? 0) + 1
+  }
+  let baseRarity = selectedCards[0].rarity
+  let maxCount = 0
+  for (const [rarity, count] of Object.entries(rarityCounts)) {
+    if (count > maxCount) {
+      maxCount = count
+      baseRarity = rarity
+    }
+  }
+
+  // Roll for output rarity
+  const roll = Math.random()
+  const baseIdx = RARITY_ORDER_MIX.indexOf(baseRarity)
+  let outputRarity: string
+  if (roll < BALANCE.MIX_RARITY_TWO_UP) {
+    // Two tiers up (capped at mythic)
+    outputRarity = RARITY_ORDER_MIX[Math.min(baseIdx + 2, RARITY_ORDER_MIX.length - 1)]
+  } else if (roll < BALANCE.MIX_RARITY_TWO_UP + BALANCE.MIX_RARITY_ONE_UP) {
+    // One tier up (capped at mythic)
+    outputRarity = RARITY_ORDER_MIX[Math.min(baseIdx + 1, RARITY_ORDER_MIX.length - 1)]
+  } else {
+    // Same rarity
+    outputRarity = baseRarity
+  }
+
+  // Build new card
+  const newCard: ArtifactCard = {
+    instanceId: crypto.randomUUID(),
+    factId: selectedCards[0].factId,
+    rarity: outputRarity,
+    discoveredAt: Date.now(),
+    isSoulbound: false,
+    isListed: false,
+  }
+
+  const removeSet = new Set(instanceIds)
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      minerals: {
+        ...save.minerals,
+        dust: save.minerals.dust - BALANCE.MIX_FEE_DUST,
+      },
+      inventoryArtifacts: [
+        ...(save.inventoryArtifacts ?? []).filter(c => !removeSet.has(c.instanceId)),
+        newCard,
+      ],
+    }
+  })
+
+  persistPlayer()
+  return outputRarity
+}
+
+// =========================================================
 // Phase 48: Prestige & Endgame
 // =========================================================
 

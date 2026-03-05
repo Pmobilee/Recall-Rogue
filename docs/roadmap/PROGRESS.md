@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 53 (Knowledge Tree Vitality) COMPLETE. Leaf wilting visuals with 3 decay stages tied to SM-2 review state. Branch completion percentage badges. Learning Sparks currency earned via mastery milestones. Branch gameplay bonuses at 25% completion thresholds. 0 typecheck errors, build clean.
+Phase 54 (Mine Atmosphere) COMPLETE. 65+ ambient story entries by biome with floating popups, 40+ quote stone entries with QuoteStoneModal (GAIA reactions), 25+ cavern text entries with CavernTextModal, WallText non-mineable block type in 25% of rest alcoves, scanner tier constants. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -148,7 +148,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 53: Knowledge Tree Vitality** — Leaf wilting/decay (3 visual stages), branch completion percentage badges, Learning Sparks currency, branch gameplay bonuses at 25% completion → [`completed/PHASE-53-KNOWLEDGE-TREE-VITALITY.md`](completed/PHASE-53-KNOWLEDGE-TREE-VITALITY.md)
 
 ### Mine & Atmosphere (Phase 54)
-- [ ] **Phase 54: Mine Atmosphere** — Ambient environmental storytelling (60+ biome flavor texts), Quote Stones with content library, readable cavern wall texts, scanner sonar pulse animation, artifact scan-without-mine → [`phases/PHASE-54-MINE-ATMOSPHERE.md`](phases/PHASE-54-MINE-ATMOSPHERE.md)
+- [x] **Phase 54: Mine Atmosphere** — Ambient environmental storytelling (65+ biome flavor texts), Quote Stones with 40+ entries and GAIA reactions, readable cavern wall texts (25+ entries), WallText block type, scanner constants → [`completed/PHASE-54-MINE-ATMOSPHERE.md`](completed/PHASE-54-MINE-ATMOSPHERE.md)
 
 ### Social & Live-Ops (Phase 56)
 - [ ] **Phase 56: Social & Live-Ops Foundation** — Fact of the Day (server-selected daily, Hub panel), dome guestbook completion, fact trading anti-exploitation guards, guild knowledge-focus and XP pool, seasonal event framework → [`phases/PHASE-56-SOCIAL-LIVEOPS.md`](phases/PHASE-56-SOCIAL-LIVEOPS.md)

@@ -1,10 +1,14 @@
 <script lang="ts">
-  interface DuplicateCard {
-    instanceId: string
+  import { playerSave } from '../stores/playerData'
+  import { mixArtifacts } from '../stores/playerData'
+  import { BALANCE } from '../../data/balance'
+  import type { ArtifactCard } from '../../data/types'
+
+  interface DuplicateGroup {
     factId: string
     rarity: string
+    cards: ArtifactCard[]
     factPreview: string
-    duplicateCount: number
   }
 
   interface Props {
@@ -24,94 +28,83 @@
 
   const RARITY_ORDER = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic']
 
-  // Available duplicates (cards with 3+ of same rarity & category)
-  let duplicateGroups = $state<DuplicateCard[]>([])
-  let loadingDups = $state(false)
+  // Derive duplicate groups from local save
+  const duplicateGroups = $derived.by(() => {
+    const cards = $playerSave?.inventoryArtifacts ?? []
+    const groupMap = new Map<string, ArtifactCard[]>()
+    for (const card of cards) {
+      const key = `${card.factId}:${card.rarity}`
+      const arr = groupMap.get(key) ?? []
+      arr.push(card)
+      groupMap.set(key, arr)
+    }
+    const groups: DuplicateGroup[] = []
+    for (const [key, groupCards] of groupMap) {
+      if (groupCards.length >= BALANCE.MIX_MIN_CARDS) {
+        const [factId, rarity] = key.split(':')
+        groups.push({
+          factId,
+          rarity,
+          cards: groupCards,
+          factPreview: factId.replace(/_/g, ' ').slice(0, 40),
+        })
+      }
+    }
+    return groups
+  })
 
-  // Slots (all 3 must be filled with the same card group)
-  let selectedCard = $state<DuplicateCard | null>(null)
+  // Selected group for mixing
+  let selectedGroup = $state<DuplicateGroup | null>(null)
   let showPicker = $state(false)
 
   // Mixing state
   let mixing = $state(false)
-  let mixResult = $state<{ success: boolean; newRarity: string; newFactPreview: string } | null>(null)
+  let mixResult = $state<{ upgraded: boolean; newRarity: string } | null>(null)
   let animating = $state(false)
   let errorMessage = $state('')
 
-  async function loadDuplicates(): Promise<void> {
-    loadingDups = true
-    errorMessage = ''
-    try {
-      const resp = await fetch('/api/trading/duplicates')
-      if (!resp.ok) throw new Error('Failed to load duplicates')
-      const data = await resp.json() as { groups: DuplicateCard[] }
-      duplicateGroups = data.groups ?? []
-    } catch (err) {
-      errorMessage = err instanceof Error ? err.message : 'Failed to load duplicates'
-    } finally {
-      loadingDups = false
-    }
-  }
+  const dustBalance = $derived($playerSave?.minerals.dust ?? 0)
+  const canAffordFee = $derived(dustBalance >= BALANCE.MIX_FEE_DUST)
 
-  function selectDuplicate(card: DuplicateCard): void {
-    selectedCard = card
+  function selectDuplicate(group: DuplicateGroup): void {
+    selectedGroup = group
     showPicker = false
+    mixResult = null
+    errorMessage = ''
   }
 
   function clearSelection(): void {
-    selectedCard = null
+    selectedGroup = null
     mixResult = null
   }
 
-  async function performMix(): Promise<void> {
-    if (!selectedCard) return
+  function performMix(): void {
+    if (!selectedGroup) return
+    if (!canAffordFee) {
+      errorMessage = `Not enough dust. Need ${BALANCE.MIX_FEE_DUST}.`
+      return
+    }
+
     mixing = true
     animating = true
     errorMessage = ''
     mixResult = null
 
-    try {
-      const resp = await fetch('/api/trading/mix', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cardFactId: selectedCard.factId,
-          rarity: selectedCard.rarity,
-        }),
-      })
-      if (!resp.ok) throw new Error('Mix failed')
-      const data = await resp.json() as { success: boolean; newRarity: string; newFactPreview: string }
-      mixResult = data
+    // Pick the first MIX_MIN_CARDS instanceIds from the group
+    const idsToMix = selectedGroup.cards.slice(0, BALANCE.MIX_MIN_CARDS).map(c => c.instanceId)
+    const baseRarity = selectedGroup.rarity
+    const outputRarity = mixArtifacts(idsToMix)
 
-      // Remove or reduce count from duplicates list
-      duplicateGroups = duplicateGroups
-        .map(g =>
-          g.factId === selectedCard!.factId
-            ? { ...g, duplicateCount: g.duplicateCount - 3 }
-            : g
-        )
-        .filter(g => g.duplicateCount >= 3)
-
-      if (mixResult.success) {
-        // Upgraded — bump rarity
-        selectedCard = null
-      } else {
-        // Same rarity — clear selection
-        selectedCard = null
-      }
-    } catch (err) {
-      errorMessage = err instanceof Error ? err.message : 'Mix failed'
-    } finally {
-      mixing = false
-      // Keep animating for a moment so the result is visible
-      setTimeout(() => { animating = false }, 1400)
+    if (outputRarity) {
+      const upgraded = RARITY_ORDER.indexOf(outputRarity) > RARITY_ORDER.indexOf(baseRarity)
+      mixResult = { upgraded, newRarity: outputRarity }
+      selectedGroup = null
+    } else {
+      errorMessage = 'Mix failed. Check your cards and dust balance.'
     }
-  }
 
-  function upgradeRarity(rarity: string): string {
-    const idx = RARITY_ORDER.indexOf(rarity)
-    if (idx === -1 || idx >= RARITY_ORDER.length - 1) return rarity
-    return RARITY_ORDER[idx + 1]
+    mixing = false
+    setTimeout(() => { animating = false }, 1400)
   }
 
   function rarityColor(rarity: string): string {
@@ -122,15 +115,11 @@
     return rarity.charAt(0).toUpperCase() + rarity.slice(1)
   }
 
-  const canMix = $derived(selectedCard !== null && !mixing)
+  const canMix = $derived(selectedGroup !== null && !mixing && canAffordFee)
 
   function handleBackdropClick(e: MouseEvent): void {
     if (e.target === e.currentTarget) onClose()
   }
-
-  $effect(() => {
-    loadDuplicates()
-  })
 </script>
 
 <!-- Backdrop -->
@@ -145,12 +134,13 @@
     <!-- Header -->
     <div class="modal-header">
       <h2 class="modal-title">Mix Duplicates</h2>
-      <button class="close-btn" type="button" onclick={onClose} aria-label="Close">✕</button>
+      <button class="close-btn" type="button" onclick={onClose} aria-label="Close">X</button>
     </div>
 
     <div class="modal-body">
       <p class="description">
-        Combine <strong>3 duplicate cards</strong> of the same rarity and category to potentially upgrade their rarity.
+        Combine <strong>{BALANCE.MIX_MIN_CARDS} duplicate cards</strong> of the same type to potentially upgrade their rarity.
+        Fee: <strong>{BALANCE.MIX_FEE_DUST} dust</strong> per mix.
       </p>
 
       {#if errorMessage}
@@ -159,9 +149,16 @@
 
       <!-- Odds info -->
       <div class="odds-banner" aria-label="Mix odds">
-        <span class="odds-item odds-success">70% chance of rarity upgrade</span>
-        <span class="odds-divider" aria-hidden="true">·</span>
-        <span class="odds-item odds-fail">30% chance of same rarity</span>
+        <span class="odds-item odds-success">{Math.round(BALANCE.MIX_RARITY_ONE_UP * 100)}% one tier up</span>
+        <span class="odds-divider" aria-hidden="true">|</span>
+        <span class="odds-item odds-rare">{Math.round(BALANCE.MIX_RARITY_TWO_UP * 100)}% two tiers up</span>
+        <span class="odds-divider" aria-hidden="true">|</span>
+        <span class="odds-item odds-fail">{Math.round(BALANCE.MIX_RARITY_SAME * 100)}% same</span>
+      </div>
+
+      <!-- Dust balance -->
+      <div class="dust-balance" class:dust-low={!canAffordFee}>
+        Dust: {dustBalance} (fee: {BALANCE.MIX_FEE_DUST})
       </div>
 
       <!-- 3 slots -->
@@ -169,24 +166,24 @@
         {#each [0, 1, 2] as slotIndex}
           <div
             class="slot"
-            class:slot-filled={selectedCard !== null}
-            class:slot-animating={animating && selectedCard === null && mixResult !== null}
-            style={selectedCard ? `border-color: ${rarityColor(selectedCard.rarity)}` : ''}
-            aria-label="Slot {slotIndex + 1}: {selectedCard ? formatRarity(selectedCard.rarity) + ' card' : 'Empty'}"
+            class:slot-filled={selectedGroup !== null}
+            class:slot-animating={animating && selectedGroup === null && mixResult !== null}
+            style={selectedGroup ? `border-color: ${rarityColor(selectedGroup.rarity)}` : ''}
+            aria-label="Slot {slotIndex + 1}: {selectedGroup ? formatRarity(selectedGroup.rarity) + ' card' : 'Empty'}"
           >
-            {#if selectedCard}
+            {#if selectedGroup}
               <span
                 class="rarity-badge"
-                style="background: {rarityColor(selectedCard.rarity)}"
-              >{formatRarity(selectedCard.rarity)}</span>
-              <p class="slot-preview">{selectedCard.factPreview}</p>
+                style="background: {rarityColor(selectedGroup.rarity)}"
+              >{formatRarity(selectedGroup.rarity)}</span>
+              <p class="slot-preview">{selectedGroup.factPreview}</p>
               {#if slotIndex === 2}
                 <button
                   class="btn-clear"
                   type="button"
                   onclick={clearSelection}
                   aria-label="Clear card selection"
-                >✕</button>
+                >X</button>
               {/if}
             {:else}
               <span class="slot-empty" aria-hidden="true">+</span>
@@ -199,7 +196,7 @@
       </div>
 
       <!-- Pick card button (shown when no selection) -->
-      {#if !selectedCard}
+      {#if !selectedGroup}
         <button
           class="btn-pick"
           type="button"
@@ -214,25 +211,24 @@
       {#if mixResult}
         <div
           class="result-panel"
-          class:result-success={mixResult.success}
-          class:result-fail={!mixResult.success}
+          class:result-success={mixResult.upgraded}
+          class:result-fail={!mixResult.upgraded}
           role="status"
           aria-live="polite"
-          aria-label={mixResult.success ? 'Upgrade successful' : 'Same rarity result'}
+          aria-label={mixResult.upgraded ? 'Upgrade successful' : 'Same rarity result'}
         >
-          {#if mixResult.success}
+          {#if mixResult.upgraded}
             <div class="result-glow" aria-hidden="true"></div>
-            <span class="result-icon" aria-hidden="true">✨</span>
+            <span class="result-icon" aria-hidden="true">*</span>
             <div class="result-text">
               <strong>Upgraded!</strong>
-              <span>New card: <span style="color: {rarityColor(mixResult.newRarity)}">{formatRarity(mixResult.newRarity)}</span></span>
-              <span class="result-preview">{mixResult.newFactPreview}</span>
+              <span>New rarity: <span style="color: {rarityColor(mixResult.newRarity)}">{formatRarity(mixResult.newRarity)}</span></span>
             </div>
           {:else}
-            <span class="result-icon" aria-hidden="true">😔</span>
+            <span class="result-icon" aria-hidden="true">~</span>
             <div class="result-text">
               <strong>Same rarity</strong>
-              <span>Better luck next time! You kept a <span style="color: {rarityColor(mixResult.newRarity)}">{formatRarity(mixResult.newRarity)}</span> card.</span>
+              <span>Better luck next time! You got a <span style="color: {rarityColor(mixResult.newRarity)}">{formatRarity(mixResult.newRarity)}</span> card.</span>
             </div>
           {/if}
         </div>
@@ -251,7 +247,7 @@
         {#if mixing}
           Mixing...
         {:else}
-          Mix! ✨
+          Mix!
         {/if}
       </button>
     </div>
@@ -270,12 +266,10 @@
     <div class="picker-panel">
       <div class="picker-header">
         <h3 class="picker-title">Pick Duplicate Cards</h3>
-        <button class="close-btn" type="button" onclick={() => { showPicker = false }} aria-label="Close picker">✕</button>
+        <button class="close-btn" type="button" onclick={() => { showPicker = false }} aria-label="Close picker">X</button>
       </div>
-      {#if loadingDups}
-        <div class="state-msg" role="status">Loading duplicates...</div>
-      {:else if duplicateGroups.length === 0}
-        <div class="state-msg">No duplicates available. You need 3+ copies of the same card.</div>
+      {#if duplicateGroups.length === 0}
+        <div class="state-msg">No duplicates available. You need {BALANCE.MIX_MIN_CARDS}+ copies of the same card and rarity.</div>
       {:else}
         <div class="picker-list">
           {#each duplicateGroups as group}
@@ -284,11 +278,11 @@
               style="border-color: {rarityColor(group.rarity)}"
               type="button"
               onclick={() => selectDuplicate(group)}
-              aria-label="Mix {group.duplicateCount} {formatRarity(group.rarity)} copies: {group.factPreview}"
+              aria-label="Mix {group.cards.length} {formatRarity(group.rarity)} copies: {group.factPreview}"
             >
               <span class="rarity-badge" style="background: {rarityColor(group.rarity)}">{formatRarity(group.rarity)}</span>
               <span class="picker-preview">{group.factPreview}</span>
-              <span class="dup-count">×{group.duplicateCount}</span>
+              <span class="dup-count">x{group.cards.length}</span>
             </button>
           {/each}
         </div>
@@ -402,8 +396,20 @@
   }
 
   .odds-success { color: #4ade80; }
+  .odds-rare { color: #60a5fa; }
   .odds-fail { color: #f87171; }
   .odds-divider { color: #475569; }
+
+  .dust-balance {
+    font-size: 0.78rem;
+    color: #4ecca3;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .dust-low {
+    color: #f87171;
+  }
 
   /* Card slots */
   .slots-container {
@@ -557,12 +563,6 @@
 
   .result-text strong { color: #e2e8f0; font-size: 0.85rem; }
   .result-text span { color: #94a3b8; }
-
-  .result-preview {
-    font-size: 0.7rem;
-    color: #64748b;
-    font-style: italic;
-  }
 
   /* Mix button */
   .btn-mix {

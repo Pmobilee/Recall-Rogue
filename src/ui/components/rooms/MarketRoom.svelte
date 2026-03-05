@@ -1,7 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../../stores/playerData'
   import { audioManager } from '../../../services/audioService'
-  import { getTodaysDeals, getTimeUntilReset, type DailyDeal } from '../../../data/dailyDeals'
+  import { getTodaysDeals, getTimeUntilReset, getCurrentFeaturedDay, type DailyDeal } from '../../../data/dailyDeals'
   import { purchaseDeal } from '../../../services/saveService'
   import { calculateTotalPending } from '../../../data/farm'
 
@@ -24,6 +24,13 @@
 
   const todaysDeals = $derived(getTodaysDeals())
   const resetTimer = $derived(getTimeUntilReset())
+  const featuredDay = $derived(getCurrentFeaturedDay())
+
+  const SLOT_LABELS: Record<number, string> = {
+    1: 'Consumable',
+    2: 'Special',
+    3: 'Featured',
+  }
 
   const purchasedDealIds = $derived.by(() => {
     const save = $playerSave
@@ -116,14 +123,34 @@
         class="deal-card"
         class:deal-purchased={purchased}
         class:deal-unaffordable={!affordable && !purchased}
+        class:deal-featured={deal.slot === 3}
         aria-label="{deal.name} deal"
       >
+        <div class="deal-slot-label">{SLOT_LABELS[deal.slot] ?? ''}</div>
+        {#if deal.discountPercent > 0}
+          <div class="deal-discount-badge">{deal.discountPercent}% OFF</div>
+        {/if}
+        {#if deal.slot === 3 && deal.featuredDay === 7}
+          <div class="deal-pity-badge">PITY</div>
+        {/if}
         <div class="deal-icon" aria-hidden="true">{deal.icon}</div>
         <div class="deal-name">{deal.name}</div>
         <div class="deal-desc">{deal.description}</div>
         <div class="deal-cost" aria-label="Cost: {formatDealCost(deal)}">
           {formatDealCost(deal)}
         </div>
+        {#if deal.slot === 3}
+          <div class="featured-strip" aria-label="Day {featuredDay} of 7">
+            {#each [1, 2, 3, 4, 5, 6, 7] as d}
+              <span
+                class="featured-dot"
+                class:featured-dot-active={d === featuredDay}
+                class:featured-dot-pity={d === 7}
+                aria-hidden="true"
+              ></span>
+            {/each}
+          </div>
+        {/if}
         <button
           class="deal-buy-btn"
           class:deal-btn-sold={purchased}
@@ -349,6 +376,65 @@
   .deal-btn-sold {
     background: color-mix(in srgb, var(--color-text-dim) 40%, var(--color-surface) 60%);
     color: var(--color-text-dim);
+  }
+
+  .deal-slot-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: #c89000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .deal-discount-badge {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    background: #4ade80;
+    border-radius: 4px;
+    padding: 1px 6px;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .deal-pity-badge {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    background: #fbbf24;
+    border-radius: 4px;
+    padding: 1px 6px;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .deal-featured {
+    border-color: rgba(255, 186, 0, 0.5);
+    background: color-mix(in srgb, #ffba00 14%, var(--color-bg) 86%);
+  }
+
+  .featured-strip {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    margin: 4px 0 2px;
+  }
+
+  .featured-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #334155;
+  }
+
+  .featured-dot-active {
+    background: #ffba00;
+    box-shadow: 0 0 4px rgba(255, 186, 0, 0.6);
+  }
+
+  .featured-dot-pity {
+    background: #fbbf24;
   }
 
   @media (max-width: 520px) {

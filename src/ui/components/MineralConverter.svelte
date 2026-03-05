@@ -10,8 +10,10 @@
 
   let { onClose }: Props = $props()
 
-  /** Total cost to convert: ratio + 10% tax (rounded up). */
-  const COST = BALANCE.MINERAL_CONVERSION_RATIO + Math.ceil(BALANCE.MINERAL_CONVERSION_RATIO * BALANCE.MINERAL_CONVERSION_TAX)
+  /** Total cost to convert: ratio + tax (rounded up). */
+  const TAX_AMOUNT = Math.ceil(BALANCE.MINERAL_CONVERSION_RATIO * BALANCE.MINERAL_CONVERSION_TAX)
+  const COST = BALANCE.MINERAL_CONVERSION_RATIO + TAX_AMOUNT
+  const TAX_PERCENT = Math.round(BALANCE.MINERAL_CONVERSION_TAX * 100)
 
   /** Ordered conversion pairs: [from, to, dot class, label]. */
   const CONVERSIONS: Array<{ from: MineralTier; to: MineralTier; fromDot: string; toDot: string; fromLabel: string; toLabel: string }> = [
@@ -60,8 +62,7 @@
 <div class="converter-modal" role="dialog" aria-modal="true" aria-label="Mineral Converter">
   <h2 class="converter-title">Mineral Converter</h2>
   <p class="converter-subtitle">
-    Cost: {COST} of lower tier = 1 of higher tier
-    <span class="tax-note">(+{Math.ceil(BALANCE.MINERAL_CONVERSION_RATIO * BALANCE.MINERAL_CONVERSION_TAX)} tax)</span>
+    {BALANCE.MINERAL_CONVERSION_RATIO} base + <span class="tax-note">{TAX_AMOUNT} compression loss ({TAX_PERCENT}%)</span> = {COST} per conversion
   </p>
 
   <div class="conversion-list">
