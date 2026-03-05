@@ -1,7 +1,11 @@
 <script lang="ts">
-  import { playerSave } from '../../stores/playerData'
+  import { playerSave, upgradeFloor } from '../../stores/playerData'
   import { audioManager } from '../../../services/audioService'
   import MineralConverter from '../MineralConverter.svelte'
+  import FloorUpgradePanel from '../FloorUpgradePanel.svelte'
+  import type { FloorUpgradeTier } from '../../../data/hubLayout'
+  import { currentFloorIndex } from '../../stores/gameState'
+  import { getDefaultHubStack } from '../../../data/hubFloors'
 
   // Resource icon sprites
   const iconDust = '/assets/sprites/icons/icon_dust.png'
@@ -15,6 +19,20 @@
   }
 
   let { onMaterializer, onPremiumMaterializer }: Props = $props()
+
+  // Floor upgrade state
+  let showUpgradePanel = $state(false)
+  const hubStack = getDefaultHubStack()
+  const unlockedIds = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
+  const floorTiers = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
+  const unlockedFloors = $derived(hubStack.floors.filter(f => unlockedIds.includes(f.id)))
+  const currentFloorId = $derived(unlockedFloors[$currentFloorIndex]?.id ?? 'starter')
+  const currentFloorTier = $derived((floorTiers[currentFloorId] ?? 0) as FloorUpgradeTier)
+
+  function handleUpgrade(floorId: string, targetTier: FloorUpgradeTier): void {
+    upgradeFloor(floorId, targetTier)
+    showUpgradePanel = false
+  }
 
   const dust = $derived($playerSave?.minerals.dust ?? 0)
   const shard = $derived($playerSave?.minerals.shard ?? 0)
@@ -73,14 +91,29 @@
   </div>
 </div>
 
-<div class="card actions-card" aria-label="Workshop actions">
+<!-- Crafting Section -->
+<div class="card section-card">
+  <h3 class="section-title">⚒️ Crafting</h3>
   <button class="action-button materializer-button" type="button" onclick={handleMaterializer}>
     <span>Materializer</span>
     <span class="action-arrow" aria-hidden="true">&#8594;</span>
   </button>
-
   <button class="action-button convert-btn" type="button" onclick={handleOpenConverter}>
     <span>Convert Minerals</span>
+    <span class="action-arrow" aria-hidden="true">&#8594;</span>
+  </button>
+</div>
+
+<!-- Dome Upgrades Section -->
+<div class="card section-card">
+  <h3 class="section-title">🏗️ Dome Upgrades</h3>
+  <div class="upgrade-info">
+    <span class="upgrade-floor-name">{unlockedFloors[$currentFloorIndex]?.name ?? 'Starter Hub'}</span>
+    <span class="upgrade-tier-badge">Tier {currentFloorTier}</span>
+  </div>
+  <p class="upgrade-desc">Improve dome floors to unlock new rooms and machines.</p>
+  <button class="action-button upgrade-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showUpgradePanel = true }}>
+    <span>Upgrade Current Floor</span>
     <span class="action-arrow" aria-hidden="true">&#8594;</span>
   </button>
 </div>
@@ -91,6 +124,15 @@
 
 {#if showConverter}
   <MineralConverter onClose={() => { showConverter = false }} />
+{/if}
+
+{#if showUpgradePanel}
+  <FloorUpgradePanel
+    floorId={currentFloorId}
+    currentTier={currentFloorTier}
+    onClose={() => { showUpgradePanel = false }}
+    onUpgrade={handleUpgrade}
+  />
 {/if}
 
 <style>
@@ -172,10 +214,54 @@
     font-weight: 700;
   }
 
-  .actions-card {
+  .section-title {
+    color: var(--color-accent, #4ecca3);
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .section-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .upgrade-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--color-bg) 35%, var(--color-surface) 65%);
+    border-radius: 8px;
+  }
+
+  .upgrade-floor-name {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .upgrade-tier-badge {
+    color: var(--color-warning, #f0a030);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--color-warning, #f0a030) 15%, transparent);
+  }
+
+  .upgrade-desc {
+    color: var(--color-text-dim);
+    font-size: 0.78rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .upgrade-btn {
+    background: color-mix(in srgb, var(--color-accent, #4ecca3) 20%, var(--color-surface) 80%);
+    border-color: var(--color-accent, #4ecca3);
   }
 
   .action-button {

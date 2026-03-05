@@ -203,13 +203,24 @@ bootGame().then(() => {
   }
 })
 
-// Register the Service Worker for offline asset caching.
-// This is an optional progressive enhancement — failure is silent so the game
-// continues to work in environments where SW is not supported or blocked.
+// Service Worker management.
+// In dev mode, actively unregister any stale SW and clear caches — the cache-first
+// strategy serves stale modules that break HMR and prevent code changes from reaching
+// the browser. In production, register the SW for offline asset caching.
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(() => {
-    // Silent failure — SW is an optional enhancement, not a hard requirement.
-  })
+  if (import.meta.env.DEV) {
+    // Dev mode: tear down any existing SW to prevent stale cache issues
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      for (const r of regs) r.unregister()
+    }).catch(() => {})
+    caches.keys().then(names => {
+      for (const n of names) caches.delete(n)
+    }).catch(() => {})
+  } else {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Silent failure — SW is an optional enhancement, not a hard requirement.
+    })
+  }
 }
 
 export default app
