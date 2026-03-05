@@ -1,12 +1,12 @@
 /**
  * Manages per-biome ambient particle emitters.
  * Phase 9.5 — enforces a global particle budget and supports LOD reduction.
+ * Phase 28 — uses device quality preset for particle budget (DD-V2-215).
  */
 
 import { BIOME_PARTICLE_CONFIGS, type ParticleConfig } from '../../data/biomeParticles'
+import { getQualityPreset } from '../../services/deviceTierService'
 
-/** Hard cap on simultaneous on-screen particles across all emitters */
-const MAX_PARTICLES = 50
 /** Hard cap on ambient particles visible at any time (DD-V2-253) */
 const VIEWPORT_PARTICLE_CAP = 20
 /** LOD cap for low-memory devices */
@@ -30,12 +30,14 @@ export class BiomeParticleManager {
   /**
    * Activates particle emitters for the given biome.
    * Destroys previous biome's emitters first.
+   * Uses device quality preset for particle budget (DD-V2-215).
    */
   public activateBiome(biomeId: string): void {
     this.destroyAll()
     this.currentBiomeId = biomeId
     const configs = BIOME_PARTICLE_CONFIGS[biomeId] ?? []
-    const perEmitterBudget = Math.floor(MAX_PARTICLES / Math.max(configs.length, 1))
+    const maxParticles = getQualityPreset().ambientParticleBudget
+    const perEmitterBudget = Math.floor(maxParticles / Math.max(configs.length, 1))
     for (const config of configs) {
       const emitter = this.createEmitter(config, perEmitterBudget)
       if (emitter) this.emitters.push(emitter)

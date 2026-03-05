@@ -221,6 +221,10 @@ export interface MineCell {
   requiredTier?: number
   /** For RecipeFragmentNode: which fragment recipe ID is stored here (Phase 35.5). */
   fragmentId?: string
+  /** Pre-computed autotile bitmask. Cached at generation; invalidated when tile changes. */
+  autotileBitmask?: number
+  /** Sprite key derived from autotileBitmask. Avoids bitmask recomputation on every draw. */
+  cachedSpriteKey?: string
 }
 
 /** Content inside a special block */

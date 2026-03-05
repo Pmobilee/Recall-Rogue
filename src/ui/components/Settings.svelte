@@ -13,9 +13,13 @@
     sfxEnabled,
     highContrastQuiz,
     reducedMotion,
+    deviceTierOverride,
+    getDeviceTier,
     type GaiaMood,
     type SpriteResolution,
+    type DeviceTier,
   } from '../stores/settings'
+  import { getTierLabel } from '../../services/deviceTierService'
   import { audioManager } from '../../services/audioService'
   import { GAIA_IDLE_QUIPS } from '../../data/gaiaDialogue'
   import { GAIA_NAME } from '../../data/gaiaAvatar'
@@ -546,6 +550,36 @@
             </div>
           </div>
         {/if}
+      </div>
+    </section>
+
+    <!-- ===== PERFORMANCE SETTINGS (Phase 28) ===== -->
+    <section class="settings-section" aria-labelledby="performance-heading">
+      <h2 id="performance-heading" class="section-heading">Performance</h2>
+
+      <div class="settings-card">
+        <p class="setting-note">Auto-detected: {getTierLabel(getDeviceTier())}</p>
+        <div class="setting-block" aria-label="Quality Preset">
+          <div class="setting-info">
+            <span class="setting-label">Quality Preset</span>
+            <span class="setting-desc">Controls particles, textures, and animations</span>
+          </div>
+          <select
+            class="setting-select"
+            value={$deviceTierOverride ?? ''}
+            onchange={(e) => {
+              const val = (e.target as HTMLSelectElement).value
+              deviceTierOverride.set(val === '' ? null : val as DeviceTier)
+            }}
+            aria-label="Quality preset selection"
+          >
+            <option value="">Auto ({getTierLabel(getDeviceTier())})</option>
+            <option value="low-end">{getTierLabel('low-end')}</option>
+            <option value="mid">{getTierLabel('mid')}</option>
+            <option value="flagship">{getTierLabel('flagship')}</option>
+          </select>
+        </div>
+        <p class="setting-note">Changes apply after restarting the game.</p>
       </div>
     </section>
 
@@ -1156,5 +1190,18 @@
     justify-content: center;
     z-index: 9150;
     overflow-y: auto;
+  }
+
+  /* ---- Performance quality select ---- */
+  .setting-select {
+    border: 1px solid var(--color-border, rgba(255,255,255,0.15));
+    border-radius: 8px;
+    background: var(--color-surface, rgba(255,255,255,0.08));
+    color: var(--color-text, #fff);
+    font-family: inherit;
+    font-size: 0.82rem;
+    padding: 8px 10px;
+    cursor: pointer;
+    flex-shrink: 0;
   }
 </style>

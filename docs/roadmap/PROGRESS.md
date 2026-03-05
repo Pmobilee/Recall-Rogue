@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 49. Phase 44 (Teacher Dashboard): standalone Vite 7 + Svelte 5 educator app in `teacher/` (port 5174); educator verification flow (`POST /api/educator/verify-request`, `GET /api/educator/status`); full classroom CRUD (`/api/classrooms`) with 6-char join codes, class limits, archive; per-class aggregate analytics from `analytics_events` JSON blob queries; homework assignment category-lock delivery to student game (`syncActiveAssignment()`); class announcements with 14-day auto-expiry (`AnnouncementBanner.svelte`); admin educator review queue and classroom health endpoints; in-game `ClassJoinPanel.svelte` in Settings screen; `classroomStore.ts` persists membership to localStorage; `interestSpawner.ts` respects teacher assignment lock over player lock; 0 typecheck errors on root, server, and teacher app. Next: Phase 46 (Learning Effectiveness Research).
+Phases 0-28 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 49. Phase 28 (Performance & Optimization): device tier detection (low-end/mid/flagship) with quality presets; DirtyRectTracker for O(changed_tiles) rendering; TextureAtlasLRU for 3-atlas GPU memory cap (DD-V2-189); fog RenderTexture (single texture, dirty-rect updates); LootPopSystem 50-instance object pool; sql.js lazy dynamic import (-300 KB initial bundle); BiomeParticleManager uses device quality preset budget; gpuMemoryService (GMAN_webgl_memory extension); Settings Performance section with quality preset selector; DevPanel live perf overlay (FPS, draw calls, GPU MB, JS heap, dirty tiles, save KB); vite.config.ts manualChunks function splits dev/social/seasons into lazy chunks; npm run analyze script; BASELINE.md performance metrics doc; 0 typecheck errors. Next: Phase 46 (Learning Effectiveness Research).
 
 ---
 
@@ -85,7 +85,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Production Readiness (Phases 26-28)
 - [x] **Phase 26: Production Backend Integration** — RevenueCat IAP, email provider (Resend), FCM/APNs push, Azure TTS, mount all server routes → [`completed/PHASE-26-PRODUCTION-BACKEND.md`](completed/PHASE-26-PRODUCTION-BACKEND.md)
 - [x] **Phase 27: Test Suite & CI/CD** — Unit tests (Vitest), integration tests, E2E (Playwright), GitHub Actions, seed determinism, code coverage → [`completed/PHASE-27-TEST-SUITE-CICD.md`](completed/PHASE-27-TEST-SUITE-CICD.md)
-- [ ] **Phase 28: Performance & Optimization** — Device tier profiling, bundle analysis, GPU budget enforcement, dirty-rect rendering, memory management → [`phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md`](phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md)
+- [x] **Phase 28: Performance & Optimization** — Device tier profiling, bundle analysis, GPU budget enforcement, dirty-rect rendering, memory management → [`completed/PHASE-28-PERFORMANCE-OPTIMIZATION.md`](completed/PHASE-28-PERFORMANCE-OPTIMIZATION.md)
 
 ### Visual & Game Feel (Phases 29-31)
 - [x] **Phase 29: Character Animation System** — 48-frame miner sprite sheets, directional walk/mine, idle states, gear overlays, animation state machine → [`completed/PHASE-29-CHARACTER-ANIMATION.md`](completed/PHASE-29-CHARACTER-ANIMATION.md)

@@ -255,6 +255,27 @@ analyticsEnabled.subscribe(v => {
 })
 
 // =========================================================
+// Device Tier Override (Phase 28 — Performance)
+// =========================================================
+
+import { getDeviceTier, setDeviceTierOverride, type DeviceTier } from '../../services/deviceTierService'
+
+/**
+ * Reactive Svelte store for the manual device tier override.
+ * Null means "auto-detect". Persisted to localStorage via deviceTierService.
+ * Changes apply after the game is restarted.
+ */
+export const deviceTierOverride = singletonWritable<DeviceTier | null>('deviceTierOverride', null)
+deviceTierOverride.subscribe((t) => {
+  if (typeof window !== 'undefined') {
+    setDeviceTierOverride(t)
+  }
+})
+
+// Re-export for convenience in Settings.svelte
+export { getDeviceTier, type DeviceTier }
+
+// =========================================================
 // Interest Configuration (Phase 12)
 // =========================================================
 

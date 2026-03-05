@@ -41,9 +41,37 @@ export interface LootPopConfig {
 export class LootPopSystem {
   private scene: Phaser.Scene
   private activePops: Phaser.GameObjects.Image[] = []
+  private pool: Phaser.GameObjects.Image[] = []
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene
+  }
+
+  /**
+   * Acquires a sprite from the object pool (or creates a new one if pool is empty).
+   * Reduces GC pressure from rapid create/destroy cycles during fast mining.
+   *
+   * @param key - Texture key for the sprite
+   * @param x   - World X position
+   * @param y   - World Y position
+   * @returns A ready-to-use Phaser Image game object
+   */
+  private acquire(key: string, x: number, y: number): Phaser.GameObjects.Image {
+    const img = this.pool.pop()
+    if (img) return img.setTexture(key).setPosition(x, y).setVisible(true).setActive(true)
+    return this.scene.add.image(x, y, key)
+  }
+
+  /**
+   * Returns a sprite to the object pool (or destroys it if pool is at capacity).
+   * Pool is capped at 50 instances to prevent unbounded memory growth.
+   *
+   * @param img - The sprite to release back to the pool
+   */
+  private release(img: Phaser.GameObjects.Image): void {
+    img.setVisible(false).setActive(false)
+    if (this.pool.length < 50) this.pool.push(img)
+    else img.destroy()
   }
 
   // ----------------------------------------------------------
@@ -97,11 +125,13 @@ export class LootPopSystem {
   }
 
   /**
-   * Destroy all active pop sprites. Call on scene shutdown.
+   * Destroy all active pop sprites and clear the object pool. Call on scene shutdown.
    */
   destroy(): void {
     for (const s of this.activePops) s.destroy()
     this.activePops = []
+    for (const s of this.pool) s.destroy()
+    this.pool = []
   }
 
   // ----------------------------------------------------------
@@ -125,7 +155,7 @@ export class LootPopSystem {
       return
     }
 
-    const sprite = this.scene.add.image(worldX, worldY, textureKey)
+    const sprite = this.acquire(textureKey, worldX, worldY)
     sprite.setDisplaySize(16, 16)
     sprite.setDepth(20)
     this.activePops.push(sprite)
@@ -213,14 +243,14 @@ export class LootPopSystem {
   }
 
   /**
-   * Removes a loot sprite from the active pool and destroys it.
+   * Removes a loot sprite from the active pool and returns it to the object pool.
    *
    * @param sprite - The sprite to remove
    */
   private _removePop(sprite: Phaser.GameObjects.Image): void {
-    sprite.destroy()
     const idx = this.activePops.indexOf(sprite)
     if (idx >= 0) this.activePops.splice(idx, 1)
+    this.release(sprite)
   }
 
   /**

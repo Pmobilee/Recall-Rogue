@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type Phaser from 'phaser'
   import { get } from 'svelte/store'
   import { BALANCE } from '../../data/balance'
   import { FOSSIL_SPECIES } from '../../data/fossils'
@@ -17,6 +18,7 @@
   } from '../stores/playerData'
   import type { FossilState } from '../../data/types'
   import { ALL_BIOMES, type BiomeId } from '../../data/biomes'
+  import { queryGpuMemory } from '../../services/gpuMemoryService'
 
   // ─── panel open/close ───────────────────────────────────────
   let open = $state(false)
@@ -417,6 +419,54 @@
     if (!factsDB.isReady()) return 0
     return factsDB.getAll().length
   }
+
+  // ─── Performance Stats (Phase 28) ─────────────────────────────
+
+  interface PerfStats {
+    fps: number
+    drawCalls: number
+    sprites: number
+    gpuMB: number
+    heapMB: number
+    dirtyTiles: number
+    saveSizeKB: number
+  }
+  let perfStats = $state<PerfStats>({ fps: 0, drawCalls: 0, sprites: 0, gpuMB: 0, heapMB: 0, dirtyTiles: 0, saveSizeKB: 0 })
+  let perfInterval: ReturnType<typeof setInterval> | null = null
+
+  function startPerfPolling(): void {
+    if (perfInterval) return
+    perfInterval = setInterval(() => {
+      const gm = getGM()
+      const game = (gm as unknown as { game?: Phaser.Game })?.game
+      if (!game) return
+      const renderer = game.renderer as (Phaser.Renderer.WebGL.WebGLRenderer & { drawCount?: number }) | undefined
+      const fps = Math.round(game.loop.actualFps)
+      const drawCalls = (renderer as unknown as { drawCount?: number })?.drawCount ?? 0
+      let sprites = 0
+      game.scene.scenes.forEach((s) => { sprites += s.children?.length ?? 0 })
+      const gpu = queryGpuMemory()
+      const gpuMB = gpu.textureBytes / 1024 / 1024
+      const perfMem = (performance as unknown as { memory?: { usedJSHeapSize?: number } }).memory
+      const heapMB = (perfMem?.usedJSHeapSize ?? 0) / 1024 / 1024
+      // Dirty tile count: read from MineScene if accessible
+      const mineScene = game.scene.getScene('MineScene') as unknown as { dirtyTracker?: { pendingCount: number } } | null
+      const dirtyTiles = mineScene?.dirtyTracker?.pendingCount ?? 0
+      // Save size from localStorage
+      const raw = localStorage.getItem('terra-gacha-save') ?? ''
+      const saveSizeKB = Math.round(raw.length / 1024)
+      perfStats = { fps, drawCalls, sprites, gpuMB, heapMB, dirtyTiles, saveSizeKB }
+    }, 500)
+  }
+
+  function stopPerfPolling(): void {
+    if (perfInterval) { clearInterval(perfInterval); perfInterval = null }
+  }
+
+  $effect(() => {
+    if (open && sectionsOpen.debug) startPerfPolling()
+    else stopPerfPolling()
+  })
 </script>
 
 <!-- DEV toggle button (always visible) -->
@@ -813,6 +863,28 @@
             <span class="debug-key">Zero-dive %:</span>
             <span class="debug-val">{$playerSave?.stats.totalSessions ? Math.round(($playerSave.stats.zeroDiveSessions / $playerSave.stats.totalSessions) * 100) : 0}%</span>
           </div>
+          <!-- Performance Stats Overlay (Phase 28) -->
+          <div class="perf-overlay">
+            <div class="perf-row" class:warn={perfStats.fps < 30} class:ok={perfStats.fps >= 55}>
+              FPS: {perfStats.fps} {perfStats.fps >= 55 ? '✓' : perfStats.fps >= 30 ? '⚠' : '✗'}
+            </div>
+            <div class="perf-row" class:warn={perfStats.drawCalls > 50}>
+              Draw calls: {perfStats.drawCalls}{perfStats.drawCalls > 50 ? ' ⚠ DD-V2-186' : ''}
+            </div>
+            <div class="perf-row" class:warn={perfStats.sprites > 300}>
+              Sprites: {perfStats.sprites}
+            </div>
+            <div class="perf-row" class:warn={perfStats.gpuMB > 60}>
+              GPU tex: {perfStats.gpuMB.toFixed(1)} MB{perfStats.gpuMB > 80 ? ' ✗ OVER BUDGET' : perfStats.gpuMB > 60 ? ' ⚠' : ''}
+            </div>
+            <div class="perf-row" class:warn={perfStats.heapMB > 100}>
+              JS heap: {perfStats.heapMB.toFixed(1)} MB
+            </div>
+            <div class="perf-row">Dirty tiles: {perfStats.dirtyTiles}</div>
+            <div class="perf-row" class:warn={perfStats.saveSizeKB > 200}>
+              Save: {perfStats.saveSizeKB} KB{perfStats.saveSizeKB > 200 ? ' ⚠ large' : ''}
+            </div>
+          </div>
         </div>
       {/if}
     </section>
@@ -1177,4 +1249,20 @@
     color: #e94560;
     border-color: #7a2030;
   }
+
+  /* ─── Performance overlay (Phase 28) ────────────────────── */
+  .perf-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    color: #eee;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .perf-row { color: #ccc; }
+  .perf-row.warn { color: #ffaa00; }
+  .perf-row.ok   { color: #44ff88; }
 </style>

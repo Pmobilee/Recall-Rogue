@@ -1,8 +1,31 @@
-import initSqlJs, { type Database } from 'sql.js'
+// sql.js is loaded lazily via dynamic import to defer ~300 KB WASM from the critical path.
+// The facts DB is not needed until the player's first quiz (30+ seconds into a session).
+// DD-V2-218: Initial JS bundle < 500 KB gzipped.
+import type { Database } from 'sql.js'
 import type { Fact, ContentType, Rarity, AgeRating } from '../data/types'
-import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url'
 import { factPackService } from './factPackService'
 import { AGE_BRACKET_KEY } from './legalConstants'
+
+type SqlJsStatic = typeof import('sql.js')['default']
+let _initSqlJs: SqlJsStatic | null = null
+
+/**
+ * Lazily loads sql.js on first call. Subsequent calls return the cached module.
+ * This defers ~300 KB of WASM from the critical path (DD-V2-218).
+ */
+async function getSqlJs(): Promise<SqlJsStatic> {
+  if (!_initSqlJs) {
+    const mod = await import('sql.js')
+    _initSqlJs = mod.default
+  }
+  return _initSqlJs
+}
+
+/** Lazily resolved WASM URL — only loaded when getSqlJs() is first called. */
+async function getSqlWasmUrl(): Promise<string> {
+  const mod = await import('sql.js/dist/sql-wasm.wasm?url')
+  return mod.default as string
+}
 
 /**
  * Maps the raw `terra_age_bracket` localStorage string to the canonical
@@ -74,8 +97,9 @@ class FactsDB {
       // Silent failure is intentional — offline players must not be affected.
     })
 
-    const [SQL, buffer] = await Promise.all([
-      initSqlJs({ locateFile: () => sqlWasmUrl }),
+    const [initFn, wasmUrl, buffer] = await Promise.all([
+      getSqlJs(),
+      getSqlWasmUrl(),
       fetch('/facts.db').then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch /facts.db: ${response.status} ${response.statusText}`)
@@ -83,6 +107,7 @@ class FactsDB {
         return response.arrayBuffer()
       }),
     ])
+    const SQL = await initFn({ locateFile: () => wasmUrl })
     this.db = new SQL.Database(new Uint8Array(buffer))
     this.initialized = true
   }

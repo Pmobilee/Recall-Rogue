@@ -65,9 +65,32 @@ function structuredDataPlugin(): Plugin {
   }
 }
 
+// Conditionally import visualizer for bundle analysis (DD-V2-218)
+// Run: ANALYZE=true npm run build (or npm run analyze)
+let visualizerPlugin: Plugin | null = null
+if (process.env.ANALYZE === 'true') {
+  try {
+    // Dynamic require so it doesn't fail when rollup-plugin-visualizer is not installed
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { visualizer } = require('rollup-plugin-visualizer')
+    visualizerPlugin = visualizer({
+      filename: 'docs/perf/bundle-report.html',
+      gzipSize: true,
+      template: 'treemap',
+    }) as Plugin
+  } catch (_) {
+    console.warn('[vite] rollup-plugin-visualizer not installed; skipping bundle analysis')
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [svelte(), cspInjectPlugin(), structuredDataPlugin()],
+  plugins: [
+    svelte(),
+    cspInjectPlugin(),
+    structuredDataPlugin(),
+    ...(visualizerPlugin ? [visualizerPlugin] : []),
+  ],
   base: process.env.VITE_ASSET_BASE_URL || '/',
   server: {
     // Mobile testing on local network
@@ -83,9 +106,18 @@ export default defineConfig({
     chunkSizeWarningLimit: 500, // 500KB warning threshold
     rollupOptions: {
       output: {
-        manualChunks: {
-          phaser: ['phaser'],
-          'sql-wasm': ['sql.js'],
+        manualChunks(id) {
+          // Dev panel is never loaded in production
+          if (id.includes('DevPanel'))  return 'dev'
+          // Phaser and sql.js are large; always split
+          if (id.includes('node_modules/phaser')) return 'phaser'
+          if (id.includes('node_modules/sql.js')) return 'sql-wasm'
+          // Social features — only loaded when social tab is opened in hub
+          if (id.includes('GuildView') || id.includes('DuelView') || id.includes('LeaderboardView')) {
+            return 'social'
+          }
+          // Season pass UI — only loaded on season pass screen
+          if (id.includes('SeasonPass') || id.includes('SeasonBanner')) return 'seasons'
         },
         assetFileNames: (assetInfo) => {
           // Preserve fact sprite filenames (no content hash) so URLs are stable

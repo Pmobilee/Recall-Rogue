@@ -26,7 +26,8 @@
     "deploy:preview": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch preview",
     "deploy:production": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch main",
     "i18n:validate": "node src/i18n/scripts/validate-locale.mjs",
-    "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs"
+    "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs",
+    "analyze": "ANALYZE=true npm run build"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
