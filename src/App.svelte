@@ -185,12 +185,12 @@
     const presetId = params.get('devpreset')
     if (presetId) {
       import('./dev/presets').then(({ SCENARIO_PRESETS }) => {
-        const preset = SCENARIO_PRESETS.find((p: { id: string }) => p.id === presetId)
+        const preset = SCENARIO_PRESETS.find((p: { id: string; targetScreen?: string }) => p.id === presetId)
         if (preset) {
           const builtSave = preset.buildSave(Date.now())
           persistSave(builtSave)
           playerSave.set(builtSave)
-          currentScreen.set('base')
+          currentScreen.set(preset.targetScreen ?? 'base')
         }
       })
     }

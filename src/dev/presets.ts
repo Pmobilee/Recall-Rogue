@@ -18,6 +18,8 @@ export interface ScenarioPreset {
   id: string
   label: string
   description: string
+  /** The screen to navigate to after loading. Defaults to 'base' if omitted. */
+  targetScreen?: string
   /** Builds a complete PlayerSave for the given timestamp. */
   buildSave(now: number): PlayerSave
 }
@@ -659,6 +661,316 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         diveCount: 0,
         oxygen: 0,
         minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 14. WORKSHOP UNLOCKED — workshop just unlocked, early game
+  // ----------------------------------------------------------
+  {
+    id: 'workshop_unlocked',
+    label: 'Workshop Just Unlocked',
+    description: '3 dives, 3 rooms unlocked, 450 dust, 12 shards, 8 facts. Workshop just accessible.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(8)
+      const yesterday = new Date(now - 86_400_000).toISOString().split('T')[0]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 450, shard: 12, crystal: 0, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        tutorialComplete: true,
+        diveCount: 3,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        lastDiveDate: yesterday,
+        stats: {
+          totalBlocksMined: 200,
+          totalDivesCompleted: 3,
+          deepestLayerReached: 5,
+          totalFactsLearned: 8,
+          totalFactsSold: 0,
+          totalQuizCorrect: 16,
+          totalQuizWrong: 3,
+          currentStreak: 2,
+          bestStreak: 2,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 15. MID DIVE ACTIVE — about to start dive (DivePrepScreen)
+  // ----------------------------------------------------------
+  {
+    id: 'mid_dive_active',
+    label: 'Mid Dive Active (Dive Prep)',
+    description: 'Mid-game player ready to start a dive. Targets DivePrepScreen.',
+    targetScreen: 'divePrepScreen',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(15)
+      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        fossils: {
+          trilobite: {
+            speciesId: 'trilobite',
+            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
+            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
+            revived: true,
+            revivedAt: now - 7 * 24 * 3600_000,
+          },
+        },
+        activeCompanion: 'trilobite',
+        tutorialComplete: true,
+        diveCount: 8,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 600,
+          totalDivesCompleted: 8,
+          deepestLayerReached: 8,
+          totalFactsLearned: 15,
+          totalFactsSold: 0,
+          totalQuizCorrect: 35,
+          totalQuizWrong: 5,
+          currentStreak: 4,
+          bestStreak: 6,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 16. FIVE ROOMS — 5 rooms unlocked, active farm
+  // ----------------------------------------------------------
+  {
+    id: 'five_rooms',
+    label: '5 Rooms + Active Farm',
+    description: '20 dives, 40 facts, 6 rooms, trilobite on farm, ammonite partial, streak 12.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(40)
+      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
+      const ammoniteSpecies = FOSSIL_SPECIES.find(s => s.id === 'ammonite')!
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 5000, shard: 150, crystal: 30, geode: 5, essence: 0 },
+        knowledgePoints: 800,
+        unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'farm', 'zoo'],
+        fossils: {
+          trilobite: {
+            speciesId: 'trilobite',
+            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
+            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
+            revived: true,
+            revivedAt: now - 14 * 24 * 3600_000,
+          },
+          ammonite: {
+            speciesId: 'ammonite',
+            fragmentsFound: Math.min(2, ammoniteSpecies.fragmentsNeeded),
+            fragmentsNeeded: ammoniteSpecies.fragmentsNeeded,
+            revived: false,
+          },
+        },
+        activeCompanion: 'trilobite',
+        farm: {
+          slots: [
+            { speciesId: 'trilobite', placedAt: now - 3 * 24 * 3600_000, lastCollectedAt: now - 2 * 3600_000 },
+            null,
+            null,
+          ],
+          maxSlots: 3,
+        },
+        streakFreezes: 1,
+        tutorialComplete: true,
+        diveCount: 20,
+        selectedInterests: ['Natural Sciences', 'History'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 3500,
+          totalDivesCompleted: 20,
+          deepestLayerReached: 12,
+          totalFactsLearned: 40,
+          totalFactsSold: 3,
+          totalQuizCorrect: 140,
+          totalQuizWrong: 20,
+          currentStreak: 12,
+          bestStreak: 15,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 17. STREAK ABOUT TO BREAK — streak at risk, no freezes
+  // ----------------------------------------------------------
+  {
+    id: 'streak_about_to_break',
+    label: 'Streak at Risk',
+    description: '14-day streak, last dive 2 days ago, 0 freezes — streak about to break!',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(25)
+      const twoDaysAgo = new Date(now - 2 * 86_400_000).toISOString().split('T')[0]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 1200, shard: 40, crystal: 5, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        lastDiveDate: twoDaysAgo,
+        streakFreezes: 0,
+        tutorialComplete: true,
+        diveCount: 12,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 1000,
+          totalDivesCompleted: 12,
+          deepestLayerReached: 8,
+          totalFactsLearned: 25,
+          totalFactsSold: 1,
+          totalQuizCorrect: 60,
+          totalQuizWrong: 8,
+          currentStreak: 14,
+          bestStreak: 14,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 18. DIVE RESULTS — just finished a dive (results screen)
+  // ----------------------------------------------------------
+  {
+    id: 'dive_results',
+    label: 'Dive Results Screen',
+    description: '3 dives done, just finished a dive. Targets diveResults screen.',
+    targetScreen: 'diveResults',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(5)
+      const today = new Date(now).toISOString().split('T')[0]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 320, shard: 8, crystal: 1, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab'],
+        lastDiveDate: today,
+        lastDiveBiome: 'limestone_caves',
+        tutorialComplete: true,
+        diveCount: 3,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 250,
+          totalDivesCompleted: 3,
+          deepestLayerReached: 4,
+          totalFactsLearned: 5,
+          totalFactsSold: 0,
+          totalQuizCorrect: 10,
+          totalQuizWrong: 2,
+          currentStreak: 2,
+          bestStreak: 2,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 19. MANY REVIEWS DUE — heavy review load, all overdue
+  // ----------------------------------------------------------
+  {
+    id: 'many_reviews_due',
+    label: 'Many Reviews Due',
+    description: '50 facts, ALL overdue by 2 days. Tests heavy review load.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(50)
+      // Make all reviews overdue by 2 days with non-trivial interval/repetitions
+      for (const state of reviewStates) {
+        state.nextReviewAt = now - 2 * 86_400_000
+        state.interval = 3
+        state.repetitions = 2
+      }
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 3000, shard: 80, crystal: 15, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
+        tutorialComplete: true,
+        diveCount: 25,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 4000,
+          totalDivesCompleted: 25,
+          deepestLayerReached: 12,
+          totalFactsLearned: 50,
+          totalFactsSold: 2,
+          totalQuizCorrect: 200,
+          totalQuizWrong: 25,
+          currentStreak: 8,
+          bestStreak: 12,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 20. JUST CRAFTED — has crafted items and consumables active
+  // ----------------------------------------------------------
+  {
+    id: 'just_crafted',
+    label: 'Just Crafted',
+    description: '15 dives, reinforced_tank crafted, bomb_kit active consumable.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(20)
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 800, shard: 30, crystal: 5, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        craftedItems: { reinforced_tank: 1 },
+        craftCounts: { reinforced_tank: 1 },
+        activeConsumables: ['bomb_kit'],
+        tutorialComplete: true,
+        diveCount: 15,
+        selectedInterests: ['Generalist'],
+        ownedPickaxes: ['standard_pick'],
+        stats: {
+          totalBlocksMined: 1500,
+          totalDivesCompleted: 15,
+          deepestLayerReached: 10,
+          totalFactsLearned: 20,
+          totalFactsSold: 1,
+          totalQuizCorrect: 55,
+          totalQuizWrong: 8,
+          currentStreak: 5,
+          bestStreak: 7,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
       }
     },
   },
