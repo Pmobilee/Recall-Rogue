@@ -89,6 +89,7 @@ import { getMineEvent } from '../data/mineEvents'
 import { getFragmentRecipe } from '../data/recipeFragments'
 import { checkBiomeCompletion } from '../services/biomeCompletionService'
 import { biomeCompletionStore } from '../ui/stores/gameState'
+import { wireEventBridge } from './GameEventBridge'
 
 /**
  * Singleton manager for the Phaser game instance.
@@ -100,22 +101,22 @@ import { biomeCompletionStore } from '../ui/stores/gameState'
 export class GameManager {
   private static instance: GameManager
   private game: Phaser.Game | null = null
-  private maxDepthThisRun = 0
-  private gaiaDepthMilestones = new Set<number>()
-  /** Zero-based index of the current mine layer within the active dive. */
-  private currentLayer = 0
+  /** @internal */ maxDepthThisRun = 0
+  /** @internal */ gaiaDepthMilestones = new Set<number>()
+  /** @internal Zero-based index of the current mine layer within the active dive. */
+  currentLayer = 0
   /** Seed used for the current dive (layer seeds are derived from this). */
   private diveSeed = 0
-  /** Relics collected during the current dive run. */
-  private runRelics: Relic[] = []
+  /** @internal Relics collected during the current dive run. */
+  runRelics: Relic[] = []
   /** Pre-dive oxygen tank count (includes permanent upgrades). Used to restore the correct amount on dive end. */
   private preDiveOxygenTanks: number = BALANCE.STARTING_OXYGEN_TANKS
   /** Whether the current dive is insured (no forced-surface item loss if true). */
   private currentDiveInsured = false
   /** Shuffled biome sequence for the current dive run, indexed by layer number. */
   private biomeSequence: Biome[] = []
-  /** Seeded RNG for fossil species selection during the current dive. */
-  private fossilRng: () => number = Math.random
+  /** @internal Seeded RNG for fossil species selection during the current dive. */
+  fossilRng: () => number = Math.random
   /** Companion effect active for the current dive (null if no companion equipped). */
   private companionEffect: CompanionEffect | null = null
   /** Count of new (previously unseen) facts shown in the current dive session. Reset per dive. (FIX-9) */
@@ -138,10 +139,10 @@ export class GameManager {
   private tutorialEarthquakeShown = false
 
   // ---- Sub-managers (initialized lazily in boot()) ----
-  private gaiaManager!: GaiaManager
+  /** @internal */ gaiaManager!: GaiaManager
   private quizManager!: QuizManager
   private studyManager!: StudyManager
-  private inventoryManager!: InventoryManager
+  /** @internal */ inventoryManager!: InventoryManager
 
   private constructor() {}
 
@@ -275,550 +276,19 @@ export class GameManager {
   // Event Bridge: Phaser → Svelte stores
   // =========================================================
 
-  /** Wire up all Phaser event listeners to update Svelte stores */
+  /** @internal Wire up all Phaser event listeners to update Svelte stores */
   private setupEventBridge(): void {
     if (!this.game) return
-
-    const events = this.game.events
-
-    events.on('mine-started', (data: { seed: number; oxygen: OxygenState; inventorySlots: number; layer?: number }) => {
-      oxygenCurrent.set(data.oxygen.current)
-      oxygenMax.set(data.oxygen.max)
-      currentDepth.set(1)
-      currentLayerStore.set(data.layer ?? 0)
-      // Only reset inventory display on fresh layer-0 starts; layer descents carry it over.
-      if ((data.layer ?? 0) === 0) {
-        inventory.set(
-          Array.from({ length: data.inventorySlots }, () => ({ type: 'empty' as const }))
-        )
-      }
-    })
-
-    events.on('oxygen-changed', (state: OxygenState) => {
-      oxygenCurrent.set(state.current)
-      oxygenMax.set(state.max)
-      if (!this.gaiaManager.gaiaLowO2Warned && state.max > 0 && state.current / state.max < 0.25) {
-        this.gaiaManager.gaiaLowO2Warned = true
-        this.triggerGaia('lowOxygen')
-      }
-    })
-
-    events.on('depth-changed', (depth: number) => {
-      currentDepth.set(depth)
-      if (depth > this.maxDepthThisRun) this.maxDepthThisRun = depth
-
-      // Derive grid height from current layer so depth milestones scale correctly.
-      const [, gridHeight] = getLayerGridSize(this.currentLayer + 1)
-      const pct = depth / gridHeight
-
-      if (pct >= 0.25 && !this.gaiaDepthMilestones.has(25)) {
-        this.gaiaDepthMilestones.add(25)
-        this.triggerGaia('depthMilestone25')
-      } else if (pct >= 0.5 && !this.gaiaDepthMilestones.has(50)) {
-        this.gaiaDepthMilestones.add(50)
-        this.triggerGaia('depthMilestone50')
-      } else if (pct >= 0.75 && !this.gaiaDepthMilestones.has(75)) {
-        this.gaiaDepthMilestones.add(75)
-        this.triggerGaia('depthMilestone75')
-      }
-    })
-
-    events.on('mineral-collected', (data: { mineralType?: string; mineralAmount?: number; addedToInventory: boolean }) => {
-      // Update inventory display
-      this.inventoryManager.syncInventoryFromScene()
-      // 1% chance to drop a void_crystal when collecting a geode or essence mineral
-      const tier = data.mineralType as MineralTier | undefined
-      if ((tier === 'geode' || tier === 'essence') && Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'void_crystal')!.dropChance) {
-        this.gaiaManager.awardPremiumMaterial('void_crystal')
-      }
-    })
-
-    events.on('cave-in', (_data: { affectedCount: number }) => {
-      this.triggerGaia('caveIn')
-    })
-
-    events.on('earthquake', (_data: { collapsed: number; revealed: number }) => {
-      this.triggerGaia('earthquake')
-    })
-
-    events.on(
-      'artifact-found',
-      (data: { factId?: string; rarity?: string; addedToInventory: boolean; rarityBoosted?: boolean }) => {
-        this.inventoryManager.syncInventoryFromScene()
-        // 3% chance to drop star_dust when collecting any artifact
-        if (Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'star_dust')!.dropChance) {
-          this.gaiaManager.awardPremiumMaterial('star_dust')
-        }
-        if (data.rarityBoosted) {
-          // Rarity was upgraded through the appraisal quiz
-          gaiaMessage.set("Rarity boost! This artifact is more valuable than it looked.")
-        } else if (data.factId) {
-          // Show GAIA's per-fact comment if available, otherwise use mood-based dialogue
-          const fact = factsDB.getById(data.factId)
-          if (fact?.gaiaComment) {
-            gaiaMessage.set(fact.gaiaComment)
-          } else {
-            this.triggerGaia('artifactFound')
-          }
-        } else {
-          this.triggerGaia('artifactFound')
-        }
-      },
-    )
-
-    events.on('oxygen-restored', () => {
-      // Already handled by oxygen-changed
-    })
-
-    events.on('oxygen-tank-found', () => {
-      const save = get(playerSave)
-      if (!save) return
-      if (save.oxygen < BALANCE.OXYGEN_TANK_MAX_TOTAL) {
-        playerSave.update(s => {
-          if (!s) return s
-          return { ...s, oxygen: s.oxygen + 1 }
-        })
-        persistPlayer()
-        const current = get(playerSave)?.oxygen ?? save.oxygen + 1
-        gaiaMessage.set(`A salvaged oxygen tank! Your reserves just grew. (${current}/${BALANCE.OXYGEN_TANK_MAX_TOTAL} tanks)`)
-      } else {
-        gaiaMessage.set(`Another tank, but your reserves are full. Wasted opportunity.`)
-      }
-    })
-
-    events.on('upgrade-found', (data: { upgrade: string }) => {
-      this.inventoryManager.syncInventoryFromScene()
-      if (data.upgrade === 'bomb') {
-        // Bomb is capped at BOMB_MAX_STACK in MineScene; mirror the cap here
-        activeUpgrades.update(rec => ({
-          ...rec,
-          bomb: Math.min((rec['bomb'] ?? 0) + 1, BALANCE.BOMB_MAX_STACK),
-        }))
-      } else {
-        activeUpgrades.update(rec => ({ ...rec, [data.upgrade]: (rec[data.upgrade] ?? 0) + 1 }))
-      }
-      // GAIA reacts to each upgrade type
-      const upgradeQuips: Record<string, string[]> = {
-        pickaxe_boost: ["Ooh, sharper tools. Try not to cut yourself."],
-        scanner_boost: ["Enhanced sensors. Now you can see all the ways you might die."],
-        // backpack_expand quips are handled by the 'backpack-expanded' event for count-based messages.
-        oxygen_efficiency: ["Better breathing tech. Staying alive — how novel."],
-        bomb: ["A bomb. For when subtlety fails. Which is often."],
-      }
-      const quips = upgradeQuips[data.upgrade]
-      if (quips) {
-        this.randomGaia(quips)
-      }
-    })
-
-    events.on('pickaxe-upgraded', (data: { tierIndex: number; tierName: string }) => {
-      pickaxeTier.set(data.tierIndex)
-      gaiaMessage.set(`Upgraded to ${data.tierName}! Mining just got easier.`)
-    })
-
-    events.on('backpack-expanded', (data: { slotsAdded: number; totalSlots: number; expansionCount: number }) => {
-      // Sync inventory now that new slots have been added.
-      this.inventoryManager.syncInventoryFromScene()
-      // Accumulate temporary slots in the store so UI can show the "Temp: +N" indicator.
-      tempBackpackSlots.update(n => n + data.slotsAdded)
-      // Show a count-based GAIA message for each expansion milestone.
-      const messages: Record<number, string> = {
-        1: "Extra pockets! You can carry more now.",
-        2: "Another expansion! Getting spacious in there.",
-        3: "Maximum storage reached! That's one big backpack.",
-      }
-      const msg = messages[data.expansionCount]
-      if (msg) {
-        gaiaMessage.set(msg)
-        setTimeout(() => gaiaMessage.set(null), 4000)
-      }
-    })
-
-    events.on('bomb-used', (data: { remaining: number }) => {
-      activeUpgrades.update(rec => ({ ...rec, bomb: data.remaining }))
-    })
-
-    events.on('scanner-upgraded', (data: { tierIndex: number; tierName: string }) => {
-      scannerTier.set(data.tierIndex)
-      gaiaMessage.set(`Scanner upgraded to ${data.tierName}!`)
-    })
-
-    events.on('relic-found', (data: { relic: Relic }) => {
-      const { relic } = data
-      this.runRelics.push(relic)
-      activeRelics.set([...this.runRelics])
-
-      // Check for newly activated synergies
-      const relicIds = this.runRelics.map(r => r.id)
-      const newSynergies = getActiveSynergies(relicIds)
-      const previousSynergies = get(activeSynergies)
-      activeSynergies.set(newSynergies)
-
-      // If a new synergy just activated, show GAIA message for it
-      if (newSynergies.length > previousSynergies.length) {
-        const justActivated = newSynergies.find(
-          s => !previousSynergies.some(p => p.id === s.id)
-        )
-        if (justActivated) {
-          gaiaMessage.set(`Synergy activated: ${justActivated.name}! ${justActivated.description}`)
-          return
-        }
-      }
-
-      // GAIA commentary on finding a relic (only when no synergy message shown)
-      const relicQuips = [
-        `${relic.icon} ${relic.name} acquired. ${relic.description}`,
-        `Relic found: ${relic.name}. ${relic.description}`,
-      ]
-      this.randomGaia(relicQuips)
-    })
-
-    events.on('blocks-mined-update', (count: number) => {
-      blocksMinedLive.set(count)
-    })
-
-    events.on('quiz-gate', (data: { factId?: string; gateX?: number; gateY?: number; gateRemaining?: number; gateTotal?: number }) => {
-      this.quizManager.pendingGateCoords = (data.gateX !== undefined && data.gateY !== undefined)
-        ? { x: data.gateX, y: data.gateY }
-        : null
-      // Pick a random fact for each gate question (not the same stored factId every time)
-      const fact = this.getInterestWeightedFact()
-      if (fact) {
-        const choices = getQuizChoices(fact)
-        activeQuiz.set({
-          fact,
-          choices,
-          source: 'gate',
-          gateProgress: (data.gateRemaining !== undefined)
-            ? { remaining: data.gateRemaining, total: data.gateTotal ?? data.gateRemaining }
-            : undefined,
-        })
-        currentScreen.set('quiz')
-      } else {
-        // No fact found — just resume (treat as passed to avoid blocking player)
-        this.resumeQuiz(true)
-      }
-    })
-
-    events.on('oxygen-quiz', (data: { factId?: string; oxygenAmount: number }) => {
-      const fact = data.factId ? factsDB.getById(data.factId) : null
-      if (fact) {
-        const choices = getQuizChoices(fact)
-        activeQuiz.set({ fact, choices, source: 'oxygen' })
-        currentScreen.set('quiz')
-      } else {
-        // No fact found — grant oxygen anyway
-        const scene = this.getMineScene()
-        if (scene) {
-          scene.resumeFromOxygenQuiz(true)
-        }
-      }
-    })
-
-    events.on('exit-reached', () => {
-      this.triggerGaia('exitReached')
-      this.endDive(false)
-    })
-
-    events.on(
-      'artifact-quiz',
-      (data: {
-        factId?: string
-        artifactRarity?: string
-        questionsRemaining?: number
-        questionsTotal?: number
-        boostedSoFar?: number
-      }) => {
-        const total = data.questionsTotal ?? BALANCE.ARTIFACT_QUIZ_QUESTIONS
-        const remaining = data.questionsRemaining ?? total
-        const questionNumber = total - remaining + 1
-
-        // If this is the first question in a new artifact flow, clear the used-fact set
-        if (remaining === total) {
-          this.quizManager.artifactQuizUsedFactIds.clear()
-        }
-
-        // Pick a fact we haven't used yet in this artifact flow
-        let fact: ReturnType<typeof factsDB.getById> = null
-        if (data.factId && !this.quizManager.artifactQuizUsedFactIds.has(data.factId)) {
-          fact = factsDB.getById(data.factId)
-        }
-        if (!fact) {
-          // Find a random unused fact
-          const allIds = factsDB.getAllIds()
-          const unusedIds = allIds.filter((id) => !this.quizManager.artifactQuizUsedFactIds.has(id))
-          if (unusedIds.length > 0) {
-            const randomId = unusedIds[Math.floor(Math.random() * unusedIds.length)]
-            fact = factsDB.getById(randomId)
-          }
-        }
-
-        if (fact) {
-          this.quizManager.artifactQuizUsedFactIds.add(fact.id)
-          const choices = getQuizChoices(fact)
-          activeQuiz.set({
-            fact,
-            choices,
-            source: 'artifact',
-            gateProgress: { remaining: total - questionNumber, total },
-          })
-          currentScreen.set('quiz')
-          if (questionNumber === 1) {
-            gaiaMessage.set("Appraisal time. Answer well and the artifact's value might surprise you.")
-          }
-        } else {
-          // No fact available — skip to finalize with whatever boosts accumulated
-          const scene = this.getMineScene()
-          if (scene) {
-            scene.resumeFromArtifactQuiz(true)
-          }
-        }
-      },
-    )
-
-    events.on('random-quiz', () => {
-      const fact = this.getInterestWeightedFact()
-      if (fact) {
-        const choices = getQuizChoices(fact)
-        activeQuiz.set({ fact, choices, source: 'random' })
-        currentScreen.set('quiz')
-        gaiaMessage.set("Scanner ping! Residual data detected — answer to earn bonus minerals.")
-      } else {
-        // No fact available — resume without quiz
-        const scene = this.getMineScene()
-        if (scene) {
-          scene.resumeFromRandomQuiz(false)
-        }
-      }
-    })
-
-    events.on('oxygen-depleted', () => {
-      this.handleOxygenDepleted()
-    })
-
-    events.on('open-backpack', () => {
-      this.inventoryManager.syncInventoryFromScene()
-      currentScreen.set('backpack')
-    })
-
-    events.on('run-complete', () => {
-      // Handled by endDive
-    })
-
-    events.on('layer-entrance-quiz', (_data: { layer: number }) => {
-      const fact = this.getInterestWeightedFact()
-      if (fact) {
-        const choices = getQuizChoices(fact)
-        activeQuiz.set({ fact, choices, source: 'layer' })
-        currentScreen.set('quiz')
-        gaiaMessage.set("The shaft hums with energy. Prove your knowledge to descend safely.")
-      } else {
-        // No fact available — skip the quiz and descend immediately
-        const scene = this.getMineScene()
-        if (scene) {
-          scene.resumeFromLayerQuiz(true)
-        }
-      }
-    })
-
-    events.on('descent-shaft-entered', (data: {
-      layer: number
-      inventory: InventorySlot[]
-      blocksMinedThisRun: number
-      artifactsFound: string[]
-      oxygenState: OxygenState
-    }) => {
-      this.handleDescentShaft(data)
-    })
-
-    events.on('quote-found', (data: { quote: string }) => {
-      gaiaMessage.set(data.quote)
-    })
-
-    events.on('send-up-station', (_data: { inventory: InventorySlot[] }) => {
-      showSendUp.set(true)
-      this.randomGaia([
-        "A send-up station! Secure your best finds before going deeper.",
-        "Pneumatic tube to the surface. Smart miners use these.",
-        "Send up what matters. The deep layers aren't forgiving.",
-      ])
-    })
-
-    events.on('data-disc-found', () => {
-      const save = get(playerSave)
-      if (!save) return
-
-      const unlockedDiscs = save.unlockedDiscs ?? []
-      // Use a fresh random for disc selection (not seeded — fine for this reward pick)
-      const disc = pickRandomDisc(unlockedDiscs, Math.random)
-
-      if (disc) {
-        playerSave.update(s => {
-          if (!s) return s
-          return { ...s, unlockedDiscs: [...(s.unlockedDiscs ?? []), disc.id] }
-        })
-        persistPlayer()
-        gaiaMessage.set(`Data Disc acquired: ${disc.icon} ${disc.name}! ${disc.description}`)
-      } else {
-        gaiaMessage.set("Another data disc, but you've already collected them all!")
-      }
-    })
-
-    events.on('fossil-found', (_data: { x: number; y: number }) => {
-      const save = get(playerSave)
-      if (!save) return
-
-      // 0.5% chance to drop ancient_essence from any fossil fragment
-      if (Math.random() < PREMIUM_MATERIALS.find(m => m.id === 'ancient_essence')!.dropChance) {
-        this.gaiaManager.awardPremiumMaterial('ancient_essence')
-      }
-
-      // Pick species using seeded RNG for this dive (deterministic per seed).
-      const species = pickFossilDrop(this.fossilRng)
-      const existingFossils: Record<string, FossilState> = save.fossils ?? {}
-      const existing = existingFossils[species.id]
-
-      let updatedFossil: FossilState
-      if (existing) {
-        // Already collecting this species — increment fragment count (capped at fragmentsNeeded).
-        updatedFossil = {
-          ...existing,
-          fragmentsFound: Math.min(existing.fragmentsFound + 1, species.fragmentsNeeded),
-        }
-      } else {
-        // First fragment of this species.
-        updatedFossil = {
-          speciesId: species.id,
-          fragmentsFound: 1,
-          fragmentsNeeded: species.fragmentsNeeded,
-          revived: false,
-        }
-      }
-
-      playerSave.update(s => {
-        if (!s) return s
-        return {
-          ...s,
-          fossils: {
-            ...(s.fossils ?? {}),
-            [species.id]: updatedFossil,
-          },
-        }
-      })
-      persistPlayer()
-
-      const { fragmentsFound, fragmentsNeeded } = updatedFossil
-      const learnedCount = save.learnedFacts.length
-
-      if (fragmentsFound >= fragmentsNeeded && !updatedFossil.revived && learnedCount >= species.requiredFacts) {
-        gaiaMessage.set(`${species.icon} ${species.name} collection complete — Ready to revive!`)
-      } else if (fragmentsFound >= fragmentsNeeded && !updatedFossil.revived) {
-        const needed = species.requiredFacts - learnedCount
-        gaiaMessage.set(`${species.icon} ${species.name} fragments complete! Learn ${needed} more facts to revive.`)
-      } else {
-        gaiaMessage.set(`${species.icon} Found a ${species.name} fragment! (${fragmentsFound}/${fragmentsNeeded})`)
-      }
-    })
-
-    events.on('companion-triggered', (_data: { effect: string }) => {
-      // Flash the companion badge for a moment
-      companionBadgeFlash.set(true)
-      setTimeout(() => companionBadgeFlash.set(false), 600)
-    })
-
-    // ---- Hazard contact events (Phase 8.3) ----
-    events.on('hazard-lava-contact', () => {
-      // Shield charge interception: absorb the hit if shield is active (DD-V2-064)
-      if (get(shieldActive)) {
-        shieldActive.set(false)
-        gaiaMessage.set('Shield absorbed the hit — charge depleted.')
-        return
-      }
-      // Apply lava damage — drain O2 and trigger GAIA commentary (DD-V2-060)
-      const damage = BASE_LAVA_HAZARD_DAMAGE
-      oxygenCurrent.update(o => Math.max(0, o - damage))
-      this.gaiaManager.triggerGaia('hazardLava')
-    })
-
-    events.on('hazard-gas-contact', () => {
-      // Shield charge interception: absorb the hit if shield is active (DD-V2-064)
-      if (get(shieldActive)) {
-        shieldActive.set(false)
-        gaiaMessage.set('Shield absorbed the hit — charge depleted.')
-        return
-      }
-      // Apply gas damage per tick while player stands in cloud (DD-V2-062)
-      const damage = BASE_GAS_HAZARD_DAMAGE
-      oxygenCurrent.update(o => Math.max(0, o - damage))
-    })
-
-    // ---- Consumable toast (Phase 8.6) ----
-    events.on('gaia-toast', (msg: string) => {
-      gaiaMessage.set(msg)
-    })
-
-    // ---- Phase 31.5: Descent animation overlay ----
-    events.on('descent-animation-start', (data: { fromLayer: number; toLayer: number; biomeName: string | null }) => {
-      descentOverlayState.set({ visible: true, fromLayer: data.fromLayer, toLayer: data.toLayer, biomeName: data.biomeName })
-    })
-
-    // ---- Landmark: Chest opened (DD-V2-055) ----
-    events.on('chest-opened', (data: { layer: number }) => {
-      // Award bonus minerals based on current layer depth.
-      const bonusTier = data.layer >= 14 ? 'geode' : data.layer >= 9 ? 'crystal' : 'shard'
-      const bonusAmount = 5 + Math.floor(data.layer / 2)
-      addMinerals(bonusTier as MineralTier, bonusAmount)
-      gaiaMessage.set('You opened a treasure chest! Rare minerals secured.')
-    })
-
-    // ---- Phase 35.3: Offering Altar adjacent ----
-    events.on('altar-adjacent', (data: { x: number; y: number }) => {
-      activeAltar.set({ altarX: data.x, altarY: data.y })
-      currentScreen.set('sacrifice')
-    })
-
-    // ---- Phase 35.6: Locked block denied ----
-    events.on('locked-block-denied', (data: { requiredTier: number }) => {
-      const tierNames = ['', 'Iron', 'Steel', 'Diamond', 'Plasma']
-      const name = tierNames[data.requiredTier] ?? `Tier ${data.requiredTier}`
-      gaiaMessage.set(`Locked. Requires ${name} Pick or drill charge.`)
-    })
-
-    // ---- Phase 35.5: Recipe fragment collected ----
-    events.on('fragment-collected', (data: { fragmentId: string }) => {
-      this.collectRecipeFragment(data.fragmentId)
-    })
-
-    // ---- Phase 35.7: Mine event fired ----
-    events.on('mine-event', (data: { type: MineEventType }) => {
-      this.handleMineEvent(data.type)
-    })
-
-    // ---- Phase 36: Combat encounters ----
-    events.on('boss-encounter', (boss: Boss) => {
-      gaiaMessage.set(boss.phases[0]?.dialogue ?? `${boss.name} blocks your path!`)
-      encounterManager.startBossEncounter(boss)
-    })
-
-    events.on('creature-encounter', (creature: Creature) => {
-      gaiaMessage.set(`Something stirs in the dark...`)
-      encounterManager.startCreatureEncounter(creature)
-    })
-
-    events.on('the-deep-unlocked', () => {
-      currentScreen.set('the-deep-unlock')
-      playerSave.update(save =>
-        save ? { ...save, theDeepVisits: (save.theDeepVisits ?? 0) + 1 } : save
-      )
-    })
+    wireEventBridge(this, this.game.events)
   }
 
   /**
    * Handles the player entering a descent shaft: transitions to the next mine layer.
    * Preserves inventory, artifacts, and blocks mined from the current layer.
    * Restores oxygen bonus and generates a fresh, harder mine for the new layer.
+   * @internal
    */
-  private handleDescentShaft(data: {
+  handleDescentShaft(data: {
     layer: number
     inventory: InventorySlot[]
     blocksMinedThisRun: number
@@ -912,8 +382,8 @@ export class GameManager {
     currentScreen.set('mining')
   }
 
-  /** Get active MineScene if running */
-  private getMineScene(): MineScene | null {
+  /** @internal Get active MineScene if running */
+  getMineScene(): MineScene | null {
     if (!this.game) return null
     const scene = this.game.scene.getScene('MineScene')
     return scene as MineScene | null
@@ -922,8 +392,9 @@ export class GameManager {
   /**
    * Selects a random fact with interest-weighted bias.
    * Falls back to factsDB.getRandomOne() if no interest config.
+   * @internal
    */
-  private getInterestWeightedFact(): Fact | null {
+  getInterestWeightedFact(): Fact | null {
     const ps = get(playerSave)
 
     // FIX-9: Use paced fact selection to avoid overwhelming the player with new facts.
@@ -1431,8 +902,8 @@ export class GameManager {
     currentScreen.set('diveResults')
   }
 
-  /** Handle oxygen depletion — forced surface */
-  private handleOxygenDepleted(): void {
+  /** @internal Handle oxygen depletion — forced surface */
+  handleOxygenDepleted(): void {
     this.onPlayerDeath()
     this.applyLootLoss(this.currentLayer)
     this.endDive(true)
@@ -1843,8 +1314,9 @@ export class GameManager {
    * Collect a recipe fragment for the given fragmentId.
    * Increments the fragment count in playerSave.recipeFragments.
    * If the total equals the recipe's totalFragments, pushes to assembledRecipes. (Phase 35.5)
+   * @internal
    */
-  private collectRecipeFragment(fragmentId: string): void {
+  collectRecipeFragment(fragmentId: string): void {
     if (!fragmentId) return
 
     const recipe = getFragmentRecipe(fragmentId)
@@ -1878,8 +1350,9 @@ export class GameManager {
   /**
    * Handle a random mine event dispatched by MineEventSystem. (Phase 35.7)
    * Each event type has distinct in-mine effects.
+   * @internal
    */
-  private handleMineEvent(type: MineEventType): void {
+  handleMineEvent(type: MineEventType): void {
     const event = getMineEvent(type)
     if (!event) return
 
@@ -1939,15 +1412,17 @@ export class GameManager {
   /**
    * Pick a random line and push it to the gaiaMessage store,
    * subject to the player's chattiness setting.
+   * @internal
    */
-  private randomGaia(lines: string[], trigger = 'idle'): void {
+  randomGaia(lines: string[], trigger = 'idle'): void {
     this.gaiaManager.randomGaia(lines, trigger)
   }
 
   /**
    * Emit a mood-aware GAIA line for the given named trigger, respecting chattiness.
+   * @internal
    */
-  private triggerGaia(trigger: keyof typeof GAIA_TRIGGERS): void {
+  triggerGaia(trigger: keyof typeof GAIA_TRIGGERS): void {
     this.gaiaManager.triggerGaia(trigger)
   }
 
