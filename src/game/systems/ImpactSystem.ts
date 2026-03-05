@@ -322,8 +322,9 @@ export class ImpactSystem {
   private triggerHaptic(isFinalHit: boolean, hitState: HitState): void {
     try {
       const cap = (globalThis as Record<string, unknown>).Capacitor as
-        | { Plugins?: { Haptics?: { impact: (opts: { style: string }) => void } } }
+        | { isNativePlatform?: () => boolean; Plugins?: { Haptics?: { impact: (opts: { style: string }) => Promise<void> } } }
         | undefined
+      if (!cap?.isNativePlatform?.()) return
       const haptics = cap?.Plugins?.Haptics
       if (haptics) {
         const style = (isFinalHit || hitState === 'critical')
@@ -331,7 +332,7 @@ export class ImpactSystem {
           : hitState === 'heavy'
             ? 'Light'
             : 'Light'
-        haptics.impact({ style })
+        haptics.impact({ style }).catch(() => {})
       }
     } catch {
       // Intentionally silent — haptics are enhancement only

@@ -149,6 +149,8 @@ export type Screen =
   | 'onboarding'
   | 'ageSelection'
   | 'tutorialMine'
+  | 'quote_stone'
+  | 'cavern_text'
 
 export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
 
@@ -434,3 +436,16 @@ export const combatEncounterActive = singletonWritable<boolean>('combatEncounter
  * Reset to null after the overlay is dismissed.
  */
 export const biomeCompletionStore = singletonWritable<string | null>('biomeCompletion', null)
+
+// =========================================================
+// Phase 54 — Mine Atmosphere (Quote Stone & Cavern Text modals)
+// =========================================================
+
+import type { QuoteStoneEntry } from '../../data/quoteStones'
+import type { CavernText } from '../../data/cavernTexts'
+
+/** Active quote stone modal entry. Set to non-null to show the QuoteStoneModal. */
+export const quoteStoneModalEntry = singletonWritable<QuoteStoneEntry | null>('quoteStoneModalEntry', null)
+
+/** Active cavern text modal entry. Set to non-null to show the CavernTextModal. */
+export const cavernTextModalEntry = singletonWritable<CavernText | null>('cavernTextModalEntry', null)

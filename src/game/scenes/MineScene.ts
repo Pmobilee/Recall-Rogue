@@ -43,6 +43,7 @@ import { getSpriteUrls, getSpriteUrlsForBiome } from '../spriteManifest'
 import { getSpriteResolution } from '../../ui/stores/settings'
 import { GameManager } from '../GameManager'
 import { CreatureSpawner } from '../systems/CreatureSpawner'
+import { AMBIENT_STORIES } from '../../data/ambientStories'
 import { playerSave } from '../../ui/stores/playerData'
 import {
   redrawAll as redrawAllImpl,
@@ -201,6 +202,10 @@ export class MineScene extends Phaser.Scene {
   public difficultyProfile: DifficultyProfile | undefined = undefined
   /** @internal Phase 36: Creature spawner — manages random encounter timing and selection. */
   public creatureSpawner = new CreatureSpawner()
+  /** @internal Phase 54: Whether an ambient story has been shown this layer. */
+  public layerAmbientStoryShown = false
+  /** @internal Phase 54: Set of ambient story IDs already shown this dive (prevents repeats). */
+  public shownStoryIds = new Set<string>()
 
   constructor() {
     super({ key: 'MineScene' })
@@ -210,11 +215,19 @@ export class MineScene extends Phaser.Scene {
    * Initializes the run state from scene data.
    */
   init(data: Partial<MineSceneData> = {}): void {
+    // Clear stale sprite pool from previous scene lifecycle
+    this.itemSpritePool = []
+    this.itemSpritePoolIndex = 0
     this.seed = data.seed ?? (Date.now() >>> 0)
     this.oxygenTanks = data.oxygenTanks ?? BALANCE.STARTING_OXYGEN_TANKS
     this.inventorySlots = data.inventorySlots ?? BALANCE.STARTING_INVENTORY_SLOTS
     this.facts = data.facts ?? []
     this.currentLayer = data.layer ?? 0
+    // Reset per-layer ambient story flag; keep shownStoryIds across layers (no repeats in a dive)
+    this.layerAmbientStoryShown = false
+    if (this.currentLayer === 0) {
+      this.shownStoryIds.clear()
+    }
     // Carry over persistent run data when descending layers.
     this.blocksMinedThisRun = data.blocksMinedThisRun ?? 0
     this.artifactsFound = data.artifactsFound ? [...data.artifactsFound] : []
@@ -1096,6 +1109,80 @@ export class MineScene extends Phaser.Scene {
       oxygenState: { ...this.oxygenState },
       collectedRelics: [...this.collectedRelics],
     })
+  }
+
+  /**
+   * Phase 54: Shows a floating ambient story text popup near a world position.
+   * The text fades in, lingers for 3 seconds, then fades out and self-destructs.
+   */
+  showAmbientStory(text: string, worldX: number, worldY: number): void {
+    const popup = this.add.text(worldX, worldY, `"${text}"`, {
+      fontFamily: 'monospace',
+      fontSize: '9px',
+      color: '#c8d8e8',
+      stroke: '#000000',
+      strokeThickness: 2,
+      wordWrap: { width: 180 },
+    })
+    popup.setOrigin(0.5, 1)
+    popup.setDepth(200)
+    popup.setAlpha(0)
+
+    this.tweens.add({
+      targets: popup,
+      alpha: { from: 0, to: 0.9 },
+      y: worldY - 40,
+      duration: 600,
+      ease: 'Cubic.Out',
+      onComplete: () => {
+        this.tweens.add({
+          targets: popup,
+          alpha: 0,
+          delay: 3000,
+          duration: 800,
+          onComplete: () => popup.destroy(),
+        })
+      },
+    })
+  }
+
+  /**
+   * Phase 54: Tries to trigger an ambient story popup when a block is mined.
+   * Only one ambient story is shown per layer. Uses AMBIENT_STORY_TRIGGER_CHANCE.
+   */
+  tryAmbientStory(biomeId: string, blockType: BlockType, worldX: number, worldY: number): void {
+    if (this.layerAmbientStoryShown) return
+    if (this.rng() >= BALANCE.AMBIENT_STORY_TRIGGER_CHANCE) return
+
+    const eligible = AMBIENT_STORIES.filter(s =>
+      (s.biome === 'any' || s.biome === biomeId) &&
+      (!s.triggerBlock || s.triggerBlock === blockType) &&
+      !this.shownStoryIds.has(s.id)
+    )
+    if (eligible.length === 0) return
+
+    const story = eligible[Math.floor(this.rng() * eligible.length)]
+    this.shownStoryIds.add(story.id)
+    this.layerAmbientStoryShown = true
+    this.showAmbientStory(story.text, worldX, worldY)
+  }
+
+  /**
+   * Phase 54: Force-shows a biome-appropriate ambient story on layer entry (100% chance).
+   * Called when the player enters a new layer/biome.
+   */
+  triggerBiomeEntryStory(biomeId: string, worldX: number, worldY: number): void {
+    if (this.layerAmbientStoryShown) return
+    const eligible = AMBIENT_STORIES.filter(s =>
+      (s.biome === 'any' || s.biome === biomeId) &&
+      !s.triggerBlock &&
+      !this.shownStoryIds.has(s.id)
+    )
+    if (eligible.length === 0) return
+    const story = eligible[Math.floor(this.rng() * eligible.length)]
+    this.shownStoryIds.add(story.id)
+    this.layerAmbientStoryShown = true
+    this.showAmbientStory(story.text, worldX, worldY)
   }
 
   /**

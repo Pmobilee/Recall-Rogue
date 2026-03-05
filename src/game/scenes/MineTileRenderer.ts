@@ -44,6 +44,7 @@ export const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.LockedBlock]: 0x4a4a4a,
   [BlockType.RecipeFragmentNode]: 0x44ccaa,
   [BlockType.ChallengeGate]: 0xff6600,
+  [BlockType.WallText]: 0x997755,
   [BlockType.Unbreakable]: 0x2c2c2c,
 }
 
@@ -231,6 +232,21 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
     }
     case BlockType.QuoteStone: {
       getPooledSprite(scene, 'block_quote_stone', cx, cy)
+      break
+    }
+    case BlockType.WallText: {
+      // Render as a glowing text-inscribed wall block
+      const wg = scene.tileGraphics
+      wg.fillStyle(0x997755, 1)
+      wg.fillRect(px + 1, py + 1, TILE_SIZE - 2, TILE_SIZE - 2)
+      // Glow effect — slightly lighter inner rectangle
+      wg.fillStyle(0xbbaa88, 0.3)
+      wg.fillRect(px + 3, py + 3, TILE_SIZE - 6, TILE_SIZE - 6)
+      // Inscription lines
+      wg.fillStyle(0xddccaa, 0.5)
+      wg.fillRect(px + 5, py + 6, TILE_SIZE - 10, 1)
+      wg.fillRect(px + 5, py + 10, TILE_SIZE - 10, 1)
+      wg.fillRect(px + 5, py + 14, TILE_SIZE - 12, 1)
       break
     }
     case BlockType.RelicShrine: {

@@ -13,8 +13,10 @@ import {
   getOxygenCostForBlock,
 } from '../systems/OxygenSystem'
 import { audioManager } from '../../services/audioService'
-import { pickQuote } from '../../data/quotes'
 import { pickRandomRelic } from '../../data/relics'
+import { QUOTE_STONES } from '../../data/quoteStones'
+import { CAVERN_TEXTS } from '../../data/cavernTexts'
+import { quoteStoneModalEntry, cavernTextModalEntry } from '../../ui/stores/gameState'
 import { invalidateNeighborVariants } from '../systems/AutotileSystem'
 import { TickSystem } from '../systems/TickSystem'
 import { tickCount, layerTickCount } from '../../ui/stores/gameState'
@@ -107,6 +109,22 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
     }
 
     scene.redrawAll()
+    return
+  }
+
+  // WallText: non-mineable but tappable — opens cavern text modal
+  if (targetCell.type === BlockType.WallText) {
+    const isAdjacent = Math.abs(targetX - playerX) + Math.abs(targetY - playerY) === 1
+    if (isAdjacent) {
+      const textId = targetCell.content?.factId
+      if (textId) {
+        const ctEntry = CAVERN_TEXTS.find(ct => ct.id === textId)
+        if (ctEntry) {
+          cavernTextModalEntry.set(ctEntry)
+          currentScreen.set('cavern_text' as any)
+        }
+      }
+    }
     return
   }
 
@@ -570,9 +588,15 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
         return
       }
       case BlockType.QuoteStone: {
-        // Quote stone broken — pick a random lore quote and emit it as a toast message.
-        const quote = pickQuote(scene.rng)
-        scene.game.events.emit('quote-found', { quote })
+        // Quote stone mined — open the QuoteStone modal with full quote + GAIA reaction
+        const quoteStoneId = targetCell.content?.factId
+        const entry = quoteStoneId
+          ? QUOTE_STONES.find(q => q.id === quoteStoneId)
+          : QUOTE_STONES[Math.floor(scene.rng() * QUOTE_STONES.length)]
+        if (entry) {
+          quoteStoneModalEntry.set(entry)
+          currentScreen.set('quote_stone' as any)
+        }
         break
       }
       case BlockType.UnstableGround: {
@@ -597,6 +621,7 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
           BlockType.Chest,
           BlockType.Tablet,
           BlockType.Unbreakable,
+          BlockType.WallText,
         ])
         const terrainTypes = new Set<BlockType>([
           BlockType.Dirt,
@@ -1094,6 +1119,7 @@ export function triggerEarthquake(scene: MineScene): void {
     BlockType.GasPocket,
     BlockType.UnstableGround,
     BlockType.SendUpStation,
+    BlockType.WallText,
   ])
 
   // === Phase 1: Screen shake (stronger than cave-in) ===
@@ -1245,10 +1271,11 @@ export function useBomb(scene: MineScene): void {
 
       const cell = scene.grid[y][x]
 
-      // Skip the player's own cell (already empty), unbreakable, exit ladder, and quiz gates
+      // Skip the player's own cell (already empty), unbreakable, wall text, exit ladder, and quiz gates
       if (
         cell.type === BlockType.Empty ||
         cell.type === BlockType.Unbreakable ||
+        cell.type === BlockType.WallText ||
         cell.type === BlockType.ExitLadder ||
         cell.type === BlockType.QuizGate
       ) continue
@@ -1407,6 +1434,7 @@ export function applyBomb(scene: MineScene): void {
       if (nx < 0 || ny < 0 || nx >= scene.grid[0].length || ny >= scene.grid.length) continue
       const cell = scene.grid[ny][nx]
       if (cell.type !== BlockType.Empty && cell.type !== BlockType.Unbreakable &&
+          cell.type !== BlockType.WallText &&
           cell.type !== BlockType.ExitLadder && cell.type !== BlockType.DescentShaft) {
         scene.grid[ny][nx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
         cleared++
@@ -1459,7 +1487,7 @@ export function applyDrillCharge(scene: MineScene): void {
     cy += ddy
     if (cx < 0 || cy < 0 || cx >= width || cy >= height) break
     const cell = scene.grid[cy][cx]
-    if (cell.type === BlockType.Unbreakable) break
+    if (cell.type === BlockType.Unbreakable || cell.type === BlockType.WallText) break
     if (cell.type !== BlockType.Empty) {
       scene.grid[cy][cx] = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: true }
       mined++

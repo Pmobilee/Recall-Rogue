@@ -69,7 +69,7 @@ export function canMine(grid: MineCell[][], x: number, y: number, playerX: numbe
   }
 
   const cell = grid[y][x]
-  return cell.type !== BlockType.Empty && cell.type !== BlockType.Unbreakable
+  return cell.type !== BlockType.Empty && cell.type !== BlockType.Unbreakable && cell.type !== BlockType.WallText
 }
 
 /**

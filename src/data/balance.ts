@@ -184,6 +184,15 @@ export const BALANCE = {
   QUOTE_STONE_COUNT: 3,              // Per mine layer
   QUOTE_STONE_MIN_DEPTH: 3,          // Minimum row depth
 
+  // === MINE ATMOSPHERE ===
+  AMBIENT_STORY_TRIGGER_CHANCE: 0.20,  // 20% chance per block mine
+  WALL_TEXT_ALCOVE_CHANCE: 0.25,       // 25% of rest alcoves get a wall text
+  SCANNER_PULSE_INTERVAL_MS: 4000,
+  SCANNER_TIER_0_RADIUS: 0,
+  SCANNER_TIER_1_RADIUS: 3,
+  SCANNER_TIER_2_RADIUS: 5,
+  SCANNER_TIER_3_RADIUS: 8,
+
   // === CAVE-IN ===
   UNSTABLE_GROUND_MIN_DEPTH_PERCENT: 0.3,
   UNSTABLE_GROUND_DENSITY: 0.015,

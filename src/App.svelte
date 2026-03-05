@@ -65,6 +65,9 @@
   import StreakFeedback from './ui/components/StreakFeedback.svelte'
   import SacrificeOverlay from './ui/components/SacrificeOverlay.svelte'
   import DecisionScreen from './ui/components/DecisionScreen.svelte'
+  import QuoteStoneModal from './ui/components/QuoteStoneModal.svelte'
+  import CavernTextModal from './ui/components/CavernTextModal.svelte'
+  import { quoteStoneModalEntry, cavernTextModalEntry } from './ui/stores/gameState'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources, save as persistSave } from './services/saveService'
@@ -317,6 +320,20 @@
     const seq = generateBiomeSequence(rng, 1)
     return seq[0] ?? null
   })
+
+  // Phase 54: Quote Stone & Cavern Text modal entries
+  const quoteStoneEntry = $derived($quoteStoneModalEntry)
+  const cavernTextEntry = $derived($cavernTextModalEntry)
+
+  function closeQuoteStoneModal() {
+    quoteStoneModalEntry.set(null)
+    currentScreen.set('mining')
+  }
+
+  function closeCavernTextModal() {
+    cavernTextModalEntry.set(null)
+    currentScreen.set('mining')
+  }
 
   // Quiz mode tracking
   let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'>('gate')
@@ -1008,6 +1025,14 @@
 
   {:else if $currentScreen === 'decision'}
     <DecisionScreen />
+  {/if}
+
+  {#if $currentScreen === 'quote_stone' && quoteStoneEntry}
+    <QuoteStoneModal entry={quoteStoneEntry} onClose={closeQuoteStoneModal} />
+  {/if}
+
+  {#if $currentScreen === 'cavern_text' && cavernTextEntry}
+    <CavernTextModal entry={cavernTextEntry} onClose={closeCavernTextModal} />
   {/if}
 
   {#if $showSendUp}

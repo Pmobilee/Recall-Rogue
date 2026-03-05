@@ -10,6 +10,7 @@ import { BlockType, type MineCell } from '../../data/types'
 import { LANDMARK_TEMPLATES, type LandmarkTemplate } from '../../data/landmarks'
 import { BIOME_STRUCTURAL_FEATURES, STRUCTURAL_FEATURE_CONFIGS, type StructuralFeatureId } from '../../data/biomeStructures'
 import { getHardness, randomIntInclusive, pickRarity } from './MineGeneratorUtils'
+import { CAVERN_TEXTS } from '../../data/cavernTexts'
 
 /**
  * Stamps a landmark template into the center of the mine grid.
@@ -713,6 +714,10 @@ export function placeMicroStructures(
     const W = 5
     const H = 5
 
+    // 25% chance to place a WallText block on the back wall (dy=0, dx 1-3)
+    const placeWallText = rng() < BALANCE.WALL_TEXT_ALCOVE_CHANCE
+    const wallTextDx = placeWallText ? 1 + Math.floor(rng() * 3) : -1
+
     for (let dy = 0; dy < H; dy++) {
       for (let dx = 0; dx < W; dx++) {
         const gx = roomX + dx
@@ -728,7 +733,18 @@ export function placeMicroStructures(
 
         let cell: MineCell
 
-        if (isOxygen) {
+        // WallText on back wall position
+        if (placeWallText && dy === 0 && dx === wallTextDx) {
+          const eligible = CAVERN_TEXTS.filter(ct => ct.biome === 'any')
+          const picked = eligible[Math.floor(rng() * eligible.length)]
+          cell = {
+            type: BlockType.WallText,
+            hardness: 999,
+            maxHardness: 999,
+            revealed: false,
+            content: picked ? { factId: picked.id } : undefined,
+          }
+        } else if (isOxygen) {
           cell = {
             type: BlockType.OxygenCache,
             hardness: 2,

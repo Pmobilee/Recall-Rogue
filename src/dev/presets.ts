@@ -153,16 +153,21 @@ export function BASE_SAVE(now: number): PlayerSave {
 // HELPER — build N fake fact IDs and their review states
 // ============================================================
 
-/**
- * Generates `count` synthetic fact IDs (e.g. "fact-001") and matching
- * initial ReviewState entries. Used by presets to simulate learned facts
- * without requiring actual DB content to exist.
- */
+/** Real fact IDs from the database — used by presets so study sessions actually work. */
+const PRESET_FACT_IDS = [
+  'cult-001', 'cult-002', 'cult-003', 'cult-004', 'cult-005',
+  'cult-006', 'cult-007', 'cult-008', 'cult-009', 'cult-010',
+  'geo-001', 'geo-002', 'geo-003', 'geo-004', 'geo-005',
+  'lsci-001', 'lsci-002', 'lsci-003', 'lsci-004', 'lsci-005',
+  'hist-001', 'hist-002', 'hist-003', 'hist-004', 'hist-005',
+  'nsci-001', 'nsci-002', 'nsci-003', 'nsci-004', 'nsci-005',
+]
+
 function makeLearnedFacts(count: number): { learnedFacts: string[]; reviewStates: ReturnType<typeof createReviewState>[] } {
   const learnedFacts: string[] = []
   const reviewStates = []
-  for (let i = 1; i <= count; i++) {
-    const id = `fact-${String(i).padStart(3, '0')}`
+  for (let i = 0; i < count && i < PRESET_FACT_IDS.length; i++) {
+    const id = PRESET_FACT_IDS[i]
     learnedFacts.push(id)
     reviewStates.push(createReviewState(id))
   }

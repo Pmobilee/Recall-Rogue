@@ -180,6 +180,7 @@ export enum BlockType {
   LockedBlock = 29,          // Tier/tool locked hard rock (Phase 35.6)
   RecipeFragmentNode = 30,  // Collectible recipe fragment (Phase 35.5)
   ChallengeGate = 31,       // Post-mastery challenge block (Phase 48.4)
+  WallText = 32,            // Non-mineable readable wall text block
   Unbreakable = 99,
 }
 

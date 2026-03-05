@@ -10,6 +10,7 @@ import { BlockType, type MineCell } from '../../data/types'
 import { type Biome } from '../../data/biomes'
 import { HAZARD_DENSITY_BY_LAYER } from '../../data/balance'
 import { randomIntInclusive } from './MineGeneratorUtils'
+import { QUOTE_STONES } from '../../data/quoteStones'
 
 export function buildSpecialPositionPool(width: number, height: number): Array<{ x: number; y: number }> {
   const pool: Array<{ x: number; y: number }> = []
@@ -350,6 +351,7 @@ export function placeQuoteStones(
       hardness,
       maxHardness: hardness,
       revealed: false,
+      content: { factId: QUOTE_STONES[Math.floor(rng() * QUOTE_STONES.length)].id },
     }
   }
 }
