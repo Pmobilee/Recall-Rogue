@@ -7,6 +7,8 @@
   let distractors = ['', '', '']
   let category = 'General Knowledge'
   let sourceUrl = ''
+  let sourceName = ''
+  let licenseConsented = false
   let submitting = false
   let error = ''
 
@@ -36,6 +38,8 @@
     if (!correctAnswer.trim()) { error = 'Correct answer is required'; return }
     if (filledDistractors.length < 3) { error = 'At least 3 distractors required'; return }
     if (!sourceUrl.trim()) { error = 'Source URL is required for verification'; return }
+    if (!sourceName.trim()) { error = 'Source name is required for verification'; return }
+    if (!licenseConsented) { error = 'You must agree to the CC BY 4.0 license to submit'; return }
 
     submitting = true
     try {
@@ -96,12 +100,36 @@
       <span class="hint">A verifiable source for this fact</span>
     </label>
 
+    <label class="field-label">
+      Source Name
+      <input type="text" bind:value={sourceName} placeholder="e.g. NASA, Wikipedia, NIST" maxlength="200" />
+    </label>
+
+    <label class="consent-row">
+      <input
+        type="checkbox"
+        bind:checked={licenseConsented}
+        aria-required="true"
+      />
+      <span>
+        I license this submission under
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+          CC BY 4.0
+        </a>.
+        I confirm this fact is factually accurate and the source URL is valid.
+      </span>
+    </label>
+
     {#if error}
       <p class="error-msg">{error}</p>
     {/if}
 
-    <button class="submit-btn" on:click={handleSubmit} disabled={submitting}>
-      {submitting ? 'Submitting...' : 'Submit for Review'}
+    <button
+      class="submit-btn"
+      disabled={!licenseConsented || submitting}
+      on:click={handleSubmit}
+    >
+      {submitting ? 'Submitting...' : 'Submit Fact'}
     </button>
   </div>
 </div>
@@ -214,6 +242,27 @@
     color: #e94560;
     font-size: 11px;
     margin: 8px 0;
+  }
+  .consent-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 12px 0;
+    cursor: pointer;
+  }
+  .consent-row input[type="checkbox"] {
+    width: auto;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .consent-row span {
+    color: #a0a0a0;
+    font-size: 11px;
+    line-height: 1.5;
+    font-weight: normal;
+  }
+  .consent-row a {
+    color: #e94560;
   }
   .submit-btn {
     display: block;

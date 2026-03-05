@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra Gacha Quiz Widget</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: transparent; }
+    .tg-widget { max-width: 480px; border: 2px solid #2D5382; border-radius: 12px;
+                 padding: 20px; background: #0d1a2d; color: #e8e8e8; }
+    .tg-fact { font-size: 1.1rem; margin-bottom: 16px; line-height: 1.5; }
+    .tg-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tg-option { padding: 10px; border: 1px solid #4A7EC7; border-radius: 8px;
+                 background: transparent; color: inherit; cursor: pointer; font-size: 0.9rem; }
+    .tg-option:hover { background: #2D5382; }
+    .tg-option.correct { background: #1a4a1a; border-color: #4caf50; }
+    .tg-option.wrong { background: #4a1a1a; border-color: #f44336; }
+    .tg-attribution { font-size: 0.7rem; color: #888; margin-top: 12px; text-align: right; }
+    .tg-attribution a { color: #4A7EC7; }
+    .tg-next { display: block; margin: 12px auto 0; padding: 8px 20px;
+               background: #2D5382; border: none; border-radius: 6px;
+               color: white; cursor: pointer; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="tg-widget" id="tg-root">
+    <div class="tg-fact" id="tg-question">Loading...</div>
+    <div class="tg-options" id="tg-options"></div>
+    <div class="tg-attribution">
+      Facts by <a href="https://terragacha.com" target="_blank" rel="noopener">Terra Gacha</a>
+      &mdash; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
+    </div>
+  </div>
+  <script>
+    ;(async () => {
+      const script = document.currentScript
+      const apiKey = script?.dataset?.apiKey ?? ''
+      const category = script?.dataset?.category ?? ''
+      const apiBase = script?.dataset?.apiBase ?? 'https://api.terragacha.com'
+
+      async function loadFact() {
+        const url = `${apiBase}/api/v1/facts/random?count=1${category ? '&category=' + encodeURIComponent(category) : ''}`
+        try {
+          const res = await fetch(url, { headers: { 'X-Api-Key': apiKey } })
+          if (!res.ok) {
+            document.getElementById('tg-question').textContent = 'Failed to load fact.'
+            return
+          }
+          const json = await res.json()
+          const fact = json.data[0]
+          if (!fact) {
+            document.getElementById('tg-question').textContent = 'No facts available.'
+            return
+          }
+
+          const detailRes = await fetch(`${apiBase}/api/v1/facts/${fact.id}`, {
+            headers: { 'X-Api-Key': apiKey }
+          })
+          if (!detailRes.ok) {
+            renderQuiz(fact)
+            return
+          }
+          const detail = (await detailRes.json()).data
+          renderQuiz(detail)
+        } catch (err) {
+          document.getElementById('tg-question').textContent = 'Error loading quiz.'
+        }
+      }
+
+      function renderQuiz(fact) {
+        document.getElementById('tg-question').textContent = fact.quiz_question || fact.statement
+        const distractorTexts = (fact.distractors || []).slice(0, 3).map(d =>
+          typeof d === 'object' ? d.text : d
+        )
+        const options = [fact.correct_answer, ...distractorTexts]
+          .sort(() => Math.random() - 0.5)
+        const container = document.getElementById('tg-options')
+        container.innerHTML = ''
+        let answered = false
+        for (const opt of options) {
+          const btn = document.createElement('button')
+          btn.className = 'tg-option'
+          btn.textContent = opt
+          btn.addEventListener('click', () => {
+            if (answered) return
+            answered = true
+            container.querySelectorAll('.tg-option').forEach(b => { b.disabled = true })
+            btn.classList.add(opt === fact.correct_answer ? 'correct' : 'wrong')
+            if (opt !== fact.correct_answer) {
+              container.querySelectorAll('.tg-option').forEach(b => {
+                if (b.textContent === fact.correct_answer) b.classList.add('correct')
+              })
+            }
+            // Add "Next question" button
+            const next = document.createElement('button')
+            next.className = 'tg-next'
+            next.textContent = 'Next question'
+            next.addEventListener('click', () => { next.remove(); loadFact() })
+            container.parentElement.insertBefore(next, container.nextSibling)
+          })
+          container.appendChild(btn)
+        }
+      }
+
+      await loadFact()
+    })()
+  </script>
+</body>
+</html>

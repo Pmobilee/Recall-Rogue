@@ -280,5 +280,128 @@ export function initFactsSchema(): void {
       ON facts (difficulty_tier, status);
   `);
 
+  // ── Phase 50: UGC submission tables ──────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS ugc_submissions (
+      id                  TEXT PRIMARY KEY,
+      player_id           TEXT NOT NULL,
+      fact_text           TEXT NOT NULL,
+      correct_answer      TEXT NOT NULL,
+      distractors         TEXT NOT NULL,   -- JSON array of strings
+      category            TEXT NOT NULL,   -- JSON array of strings
+      source_url          TEXT NOT NULL,
+      source_name         TEXT NOT NULL,
+      license_consented   INTEGER NOT NULL DEFAULT 0,
+      auto_filter_passed  INTEGER NOT NULL DEFAULT 0,
+      auto_filter_reason  TEXT,
+      upvotes             INTEGER NOT NULL DEFAULT 0,
+      downvotes           INTEGER NOT NULL DEFAULT 0,
+      status              TEXT NOT NULL DEFAULT 'pending',
+      appeal_id           TEXT,
+      submitted_at        TEXT NOT NULL,
+      reviewed_by         TEXT,
+      reviewed_at         TEXT,
+      rejection_reason    TEXT
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_ugc_submissions_status
+      ON ugc_submissions (status);
+    CREATE INDEX IF NOT EXISTS idx_ugc_submissions_player_id
+      ON ugc_submissions (player_id);
+
+    CREATE TABLE IF NOT EXISTS ugc_votes (
+      id            TEXT PRIMARY KEY,
+      submission_id TEXT NOT NULL REFERENCES ugc_submissions(id) ON DELETE CASCADE,
+      voter_id      TEXT NOT NULL,
+      vote          TEXT NOT NULL,   -- 'up' | 'down'
+      voted_at      TEXT NOT NULL,
+      UNIQUE (submission_id, voter_id)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_ugc_votes_submission_id
+      ON ugc_votes (submission_id);
+  `);
+
+  // ── Phase 50: Open Content Ecosystem tables ──────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS api_keys (
+      id          TEXT PRIMARY KEY,
+      owner_id    TEXT,
+      key_hash    TEXT NOT NULL UNIQUE,
+      key_prefix  TEXT NOT NULL,
+      name        TEXT NOT NULL,
+      tier        TEXT NOT NULL DEFAULT 'free',
+      quota_per_day  INTEGER NOT NULL DEFAULT 1000,
+      quota_per_min  INTEGER NOT NULL DEFAULT 60,
+      is_active   INTEGER NOT NULL DEFAULT 1,
+      last_used_at   INTEGER,
+      created_at  INTEGER NOT NULL,
+      updated_at  INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS usage_logs (
+      id         TEXT PRIMARY KEY,
+      key_id     TEXT NOT NULL REFERENCES api_keys(id) ON DELETE CASCADE,
+      endpoint   TEXT NOT NULL,
+      hour_bucket INTEGER NOT NULL,
+      request_count INTEGER NOT NULL DEFAULT 0,
+      created_at INTEGER NOT NULL,
+      UNIQUE (key_id, endpoint, hour_bucket)
+    );
+    CREATE INDEX IF NOT EXISTS idx_usage_logs_key_hour
+      ON usage_logs (key_id, hour_bucket DESC);
+
+    CREATE TABLE IF NOT EXISTS partner_orgs (
+      id            TEXT PRIMARY KEY,
+      name          TEXT NOT NULL,
+      domain        TEXT NOT NULL UNIQUE,
+      org_type      TEXT NOT NULL,
+      contact_email TEXT NOT NULL,
+      contact_name  TEXT NOT NULL,
+      license_tier  TEXT NOT NULL DEFAULT 'pending',
+      api_key_id    TEXT REFERENCES api_keys(id) ON DELETE SET NULL,
+      content_config TEXT NOT NULL DEFAULT '{}',
+      verified      INTEGER NOT NULL DEFAULT 0,
+      created_at    INTEGER NOT NULL,
+      updated_at    INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS license_grants (
+      id            TEXT PRIMARY KEY,
+      key_id        TEXT NOT NULL REFERENCES api_keys(id) ON DELETE CASCADE,
+      fact_ids      TEXT NOT NULL,
+      license_type  TEXT NOT NULL,
+      granted_at    INTEGER NOT NULL,
+      attribution_text TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_license_grants_key
+      ON license_grants (key_id, granted_at DESC);
+
+    CREATE TABLE IF NOT EXISTS webhook_subscriptions (
+      id            TEXT PRIMARY KEY,
+      key_id        TEXT NOT NULL REFERENCES api_keys(id) ON DELETE CASCADE,
+      endpoint_url  TEXT NOT NULL,
+      event         TEXT NOT NULL,
+      secret        TEXT NOT NULL,
+      is_active     INTEGER NOT NULL DEFAULT 1,
+      created_at    INTEGER NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_webhook_subscriptions_key_event
+      ON webhook_subscriptions (key_id, event);
+
+    CREATE TABLE IF NOT EXISTS ugc_appeals (
+      id              TEXT PRIMARY KEY,
+      submission_id   TEXT NOT NULL,
+      appellant_id    TEXT NOT NULL,
+      reason          TEXT NOT NULL,
+      status          TEXT NOT NULL DEFAULT 'pending',
+      moderator_note  TEXT,
+      filed_at        INTEGER NOT NULL,
+      resolved_at     INTEGER
+    );
+    CREATE INDEX IF NOT EXISTS idx_ugc_appeals_submission
+      ON ugc_appeals (submission_id);
+  `);
+
   console.log("[facts-db] Facts schema initialised.");
 }

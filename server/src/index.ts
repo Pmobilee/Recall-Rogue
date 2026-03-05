@@ -39,6 +39,10 @@ import { coopRoutes } from "./routes/coop.js";
 import { pruneStaleRooms } from "./services/coopRoomService.js";
 import { educatorRoutes } from "./routes/educator.js";
 import { classroomsRoutes } from "./routes/classrooms.js";
+import { publicApiRoutes } from "./routes/publicApi.js";
+import { apiKeyRoutes } from "./routes/apiKeys.js";
+import { partnerPortalRoutes } from "./routes/partnerPortal.js";
+import { webhookRoutes } from "./routes/webhooks.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -97,7 +101,7 @@ export async function buildApp() {
   await fastify.register(cors, {
     origin: config.corsOrigin,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Admin-Key"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Admin-Key", "X-Api-Key"],
     credentials: true,
   });
 
@@ -231,6 +235,22 @@ export async function buildApp() {
     { prefix: "/api/educator" }
   );
   await fastify.register(classroomsRoutes, { prefix: "/api/classrooms" });
+
+  // Phase 50: Open Content Ecosystem routes
+  const publicApiRateLimit = createRateLimiter(120, 60_000);  // 120 req/min per IP ceiling
+  await fastify.register(async (scoped) => {
+    scoped.addHook('preHandler', publicApiRateLimit);
+    await publicApiRoutes(scoped);
+  }, { prefix: '/api/v1' });
+
+  // API key management (admin or JWT-auth)
+  await fastify.register(apiKeyRoutes, { prefix: '/api/keys' });
+
+  // Educational partner portal
+  await fastify.register(partnerPortalRoutes, { prefix: '/api/partner' });
+
+  // Webhook subscription management
+  await fastify.register(webhookRoutes, { prefix: '/api/webhooks' });
 
   // Phase 43: Co-op WebSocket + REST routes
   await fastify.register(websocket);

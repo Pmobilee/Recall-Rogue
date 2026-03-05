@@ -127,6 +127,52 @@ export function buildGaiaLetterEmail(
 }
 
 /**
+ * Send a partner welcome email to a newly registered educational institution.
+ * Notifies the contact that their application has been received.
+ *
+ * @param contactEmail - The institution contact's email address.
+ * @param orgName      - The institution's registered name.
+ * @returns Promise resolving when the email is sent (or logged in dev).
+ */
+export async function sendPartnerWelcomeEmail(
+  contactEmail: string,
+  orgName: string
+): Promise<void> {
+  if (!config.resendApiKey) {
+    console.log(
+      `[EmailService] DEV — Partner welcome email to ${contactEmail} for "${orgName}"`
+    )
+    return
+  }
+
+  const html = `
+    <h2>Terra Gacha Partner Application Received</h2>
+    <p>Thank you for registering <strong>${orgName}</strong> as an educational partner.</p>
+    <p>Your application is under review. We will contact you within 2 business days.</p>
+    <p>Questions? Email <a href="mailto:partners@terragacha.com">partners@terragacha.com</a></p>
+  `
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${config.resendApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: config.fromEmail ?? 'GAIA <gaia@terra-gacha.app>',
+      to: [contactEmail],
+      subject: 'Terra Gacha Partner Application Received',
+      html,
+    }),
+  })
+
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`Resend error ${res.status}: ${text}`)
+  }
+}
+
+/**
  * Build season announcement email.
  *
  * @param seasonName - Name of the new season.

@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-28 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 49. Phase 46 (Learning Effectiveness Research): k-anonymity (k≥5) + Laplace differential privacy pipeline; research data export endpoint (CSV/JSON) with API key guard; public /metrics endpoint with 7-point retention curve and 7-category transfer learning; GAIA Report "My Learning" tab (LearningInsightsTab.svelte) with mastery stats, category bars, retention predictions, and memory health; partner key issuance/revocation service (SHA-256 hashed, 100 req/hr rate limit); admin research key management routes (POST/GET/DELETE /api/admin/research-keys); annual effectiveness report generator (reportGenerator.ts + annualReportJob.ts CLI); 0 typecheck errors. Next: Phase 50 (Open Content Ecosystem).
+ALL 50 PHASES COMPLETE. Phase 50 (Open Content Ecosystem): public versioned Fact API (/api/v1/facts, /facts/:id, /facts/random, /categories, /stats, /license) with three-tier API key system (free/institutional/enterprise), SHA-256 hashed keys, per-minute + daily quota enforcement; community UGC submission pipeline with auto-filter, community voting, appeals workflow; educational partner portal with institution registration, admin approval, institutional key issuance, content configuration; CC BY 4.0 / CC BY-NC 4.0 licensing framework with per-fact attribution metadata; webhook system with HMAC-SHA256 signing, exponential backoff retry, 5 subscriptions/key; self-contained embed widget (packages/widget/embed.html); TypeScript SDK (packages/sdk/index.ts); 14-page API docs (docs/api/); 0 typecheck errors client + server.
 
 ---
 
@@ -123,7 +123,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism, mine preview thumbnail, dynamic difficulty → [`completed/PHASE-49-ADVANCED-MINE-GENERATION.md`](completed/PHASE-49-ADVANCED-MINE-GENERATION.md)
 
 ### Platform Maturity (Phase 50)
-- [ ] **Phase 50: Open Content Ecosystem** — Public fact API, community moderation tools, educational partnerships, content licensing, third-party integrations → [`phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md`](phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md)
+- [x] **Phase 50: Open Content Ecosystem** — Public fact API, community moderation tools, educational partnerships, content licensing, third-party integrations → [`completed/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md`](completed/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md)
 
 ---
 
