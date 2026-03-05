@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 56 (Social & Live-Ops Foundation) COMPLETE. Fact of the Day panel in HubView, guestbook entry flagging, trade soulbound guards and daily limit display, guild XP display, SeasonLeaderboard component, server seasonInfo route with hardcoded Season 01. 0 typecheck errors, build clean.
+Phase 57 (Visual & Feel Polish) COMPLETE. Dirt tint overlay (4 stages), backpack fill indicator, study session dome background with tree shimmer, barely-made-it mechanic (skip sacrifice within 5 blocks of exit), greyscale-to-color fact mastery filters, GaiaAvatar expression component with 5 animated states. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -154,7 +154,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 56: Social & Live-Ops Foundation** — Fact of the Day (server-selected daily, Hub panel), dome guestbook completion, fact trading anti-exploitation guards, guild knowledge-focus and XP pool, seasonal event framework → [`completed/PHASE-56-SOCIAL-LIVEOPS.md`](completed/PHASE-56-SOCIAL-LIVEOPS.md)
 
 ### Visual Polish (Phase 57)
-- [ ] **Phase 57: Visual & Feel Polish Pass** — Miner progressive dirt tint, study session atmospheric dome scene, "barely made it" mechanic (resolve Q-D4), greyscale-to-color fact image wiring, GAIA avatar micro-expressions → [`phases/PHASE-57-VISUAL-POLISH.md`](phases/PHASE-57-VISUAL-POLISH.md)
+- [x] **Phase 57: Visual & Feel Polish Pass** — Miner progressive dirt tint, study session atmospheric dome scene, "barely made it" mechanic (resolve Q-D4), greyscale-to-color fact image wiring, GAIA avatar micro-expressions → [`completed/PHASE-57-VISUAL-POLISH.md`](completed/PHASE-57-VISUAL-POLISH.md)
 
 ### Content Quality (Phase 58)
 - [ ] **Phase 58: Content & Data Quality** — Scale facts to 1,000, distractor pool audit and expansion to 25 per fact, source field population, fact content admin dashboard (/admin/facts), content quality audit report → [`phases/PHASE-58-CONTENT-QUALITY.md`](phases/PHASE-58-CONTENT-QUALITY.md)
