@@ -251,9 +251,12 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
   })
 
   events.on('quiz-gate', (data: { factId?: string; gateX?: number; gateY?: number; gateRemaining?: number; gateTotal?: number }) => {
-    gm.getQuizManager().pendingGateCoords = (data.gateX !== undefined && data.gateY !== undefined)
+    const qm = gm.getQuizManager()
+    qm.pendingGateCoords = (data.gateX !== undefined && data.gateY !== undefined)
       ? { x: data.gateX, y: data.gateY }
       : null
+    // Initialize gate retry attempts for this gate encounter
+    qm.resetGateAttempts()
     // Pick a random fact for each gate question (not the same stored factId every time)
     const fact = gm.getInterestWeightedFact()
     if (fact) {
@@ -378,21 +381,69 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
     // Handled by endDive
   })
 
-  events.on('layer-entrance-quiz', (_data: { layer: number }) => {
-    const fact = gm.getInterestWeightedFact()
-    if (fact) {
-      const choices = getQuizChoices(fact)
-      activeQuiz.set({ fact, choices, source: 'layer' })
-      currentScreen.set('quiz')
-      gaiaMessage.set("The shaft hums with energy. Prove your knowledge to descend safely.")
-    } else {
-      // No fact available — skip the quiz and descend immediately
+  // Phase 52: Layer entrance challenge — sequential multi-question flow
+  let layerChallengeRemaining = 0
+  let layerChallengeTotal = 0
+  let layerChallengeAllCorrect = true
+
+  function presentNextLayerQuestion(): void {
+    if (layerChallengeRemaining <= 0) {
+      gm.quizManager.layerChallengeActive = false
       const scene = gm.getMineScene()
       if (scene) {
         scene.resumeFromLayerQuiz(true)
+        if (get(currentScreen) !== 'diveResults') {
+          if (layerChallengeAllCorrect) {
+            gaiaMessage.set("Perfect calibration. Descending with full confidence.")
+          } else {
+            gaiaMessage.set("Calibration complete. Descending...")
+          }
+          currentScreen.set('mining')
+        }
       }
+      return
     }
+
+    const fact = gm.getInterestWeightedFact()
+    if (!fact) {
+      layerChallengeRemaining = 0
+      presentNextLayerQuestion()
+      return
+    }
+
+    const choices = getQuizChoices(fact)
+    const currentQ = layerChallengeTotal - layerChallengeRemaining + 1
+    const mnemonicInfo = gm.quizManager.getMnemonicInfo(fact.id, (fact as any).mnemonic)
+
+    activeQuiz.set({
+      fact,
+      choices,
+      source: 'layer',
+      layerChallengeProgress: { current: currentQ, total: layerChallengeTotal },
+      ...mnemonicInfo,
+    })
+    currentScreen.set('quiz')
+
+    if (currentQ === 1) {
+      gaiaMessage.set("The shaft hums with energy. Prove your knowledge to descend safely.")
+    }
+  }
+
+  events.on('layer-entrance-quiz', (_data: { layer: number }) => {
+    layerChallengeTotal = BALANCE.LAYER_ENTRANCE_QUESTIONS
+    layerChallengeRemaining = layerChallengeTotal
+    layerChallengeAllCorrect = true
+    gm.quizManager.layerChallengeActive = true
+    presentNextLayerQuestion()
   })
+
+  // Phase 52: Listen for layer challenge answer events from QuizManager
+  window.addEventListener('layer-challenge-answer', ((e: CustomEvent<{ correct: boolean }>) => {
+    const { correct } = e.detail
+    if (!correct) layerChallengeAllCorrect = false
+    layerChallengeRemaining--
+    presentNextLayerQuestion()
+  }) as EventListener)
 
   events.on('descent-shaft-entered', (data: {
     layer: number

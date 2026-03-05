@@ -94,7 +94,7 @@ export const BALANCE = {
   EXIT_GATE_QUESTIONS: 3,               // Number of correct answers needed to pass exit gate
 
   // === LAYER ENTRANCE ===
-  LAYER_ENTRANCE_QUESTIONS: 1,       // Questions to answer before descending
+  LAYER_ENTRANCE_QUESTIONS: 3,       // Questions to answer before descending
   LAYER_ENTRANCE_WRONG_O2_COST: 10,  // O2 penalty for wrong answer
 
   // === QUIZ ===
@@ -227,6 +227,13 @@ export const BALANCE = {
   EVENING_REVIEW_END: 23,
   RITUAL_BONUS_DUST: 25,                // bonus dust for completing a ritual
   RITUAL_CARD_COUNT: 5,                 // cards per ritual session
+  MORNING_REVIEW_FACT_COUNT: 5,       // Facts required to claim morning bonus
+  EVENING_REVIEW_FACT_COUNT: 5,       // Facts required to claim evening bonus
+  MORNING_REVIEW_O2_BONUS: 1,        // Oxygen tanks awarded for morning review
+  EVENING_REVIEW_O2_BONUS: 1,        // Oxygen tanks awarded for evening review
+  STRUGGLE_WRONG_THRESHOLD: 3,       // Wrong count before GAIA shows mnemonic
+  ARTIFACT_BOOST_QUESTION_COUNT: 2,  // Questions in artifact boost quiz
+  ARTIFACT_BOOST_RARITY_CHANCE_PER_CORRECT: 0.15, // 15% rarity upgrade chance per correct answer
 
   // === FOSSILS ===
   FOSSIL_NODE_COUNT: 2,                  // Per mine

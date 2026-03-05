@@ -36,12 +36,18 @@
   interface Props {
     fact: Fact
     choices: string[]
-    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'review' | 'discovery' | 'combat'
+    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'review' | 'discovery' | 'combat' | 'artifact_boost'
     gateProgress?: { remaining: number; total: number }
     /** Whether the wrong answer triggered a consistency penalty (knew this before). */
     isConsistencyPenalty?: boolean
     /** When 'three_button', shows Easy/Got it/Didn't get it instead of answer choices */
     responseMode?: 'standard' | 'three_button'
+    /** Whether GAIA should show a mnemonic hint for a struggle fact. */
+    showMnemonic?: boolean
+    /** Mnemonic text from the fact data. */
+    mnemonic?: string
+    /** Layer challenge progress (e.g., question 2 of 3). */
+    layerChallengeProgress?: { current: number; total: number }
     onAnswer: (correct: boolean) => void
     /** Callback for 3-button study responses: quality 1=didn't get it, 4=got it, 5=easy */
     onStudyResponse?: (quality: number) => void
@@ -50,7 +56,9 @@
 
   const totalAttempts = BALANCE.QUIZ_GATE_MAX_FAILURES + 1
 
-  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', onAnswer, onStudyResponse, onClose }: Props = $props()
+  const isDev = import.meta.env.DEV
+
+  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', showMnemonic = false, mnemonic = '', layerChallengeProgress, onAnswer, onStudyResponse, onClose }: Props = $props()
 
   let selectedAnswer = $state<string | null>(null)
   let isCorrect = $state<boolean | null>(null)
@@ -121,7 +129,10 @@
     selectedAnswer = null
     isCorrect = null
     showResult = false
-    attemptsRemaining = totalAttempts
+    // Only reset attempts when the mode changes, not on gate retries (new fact, same gate)
+    if (mode !== 'gate') {
+      attemptsRemaining = totalAttempts
+    }
     waitingForTap = false
   })
 
@@ -185,15 +196,13 @@
       return
     }
 
-    if (mode === 'artifact' || mode === 'random' || mode === 'layer') {
+    if (mode === 'artifact' || mode === 'random' || mode === 'layer' || mode === 'artifact_boost') {
       onAnswer(false)
       return
     }
 
-    // Gate mode with attempts remaining: reset for another try
-    selectedAnswer = null
-    isCorrect = null
-    showResult = false
+    // Gate mode with attempts remaining: dismiss and let QuizManager re-present with a new fact
+    onAnswer(false)
   }
 
   function getChoiceClass(choice: string): string {
@@ -248,14 +257,42 @@
       <p class="artifact-appraisal-hint">Artifact uplink — your knowledge calibrates the analysis.</p>
     {/if}
 
+    {#if mode === 'artifact_boost'}
+      <p class="artifact-boost-header">Analyze This Discovery!</p>
+      <p class="artifact-boost-hint">Correct answers boost the artifact's rarity before you claim it</p>
+    {/if}
+
     {#if mode === 'layer'}
       <p class="layer-entrance-header">Depth Calibration</p>
+      {#if layerChallengeProgress}
+        <div class="layer-progress">
+          <span class="layer-progress-text">Question {layerChallengeProgress.current} of {layerChallengeProgress.total}</span>
+          <div class="layer-progress-bar">
+            {#each Array(layerChallengeProgress.total) as _, i}
+              <div class="layer-progress-pip" class:filled={i < layerChallengeProgress.current}></div>
+            {/each}
+          </div>
+        </div>
+      {/if}
       <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
     {/if}
 
     {#if fact?.hasPixelArt}
       <div class="fact-art-wrapper">
         <FactArtwork factId={fact.id} size={96} />
+      </div>
+    {/if}
+
+    {#if showMnemonic && !showResult}
+      <div class="gaia-mnemonic-bubble">
+        <img src="/assets/sprites/dome/gaia_thinking.png" alt="GAIA" class="mnemonic-avatar" width="32" height="32" />
+        <div class="mnemonic-text">
+          {#if mnemonic}
+            <strong>GAIA:</strong> "Having trouble? Try this: <em>{mnemonic}</em>"
+          {:else}
+            <strong>GAIA:</strong> "You've struggled with this one. Take a moment — you've got this."
+          {/if}
+        </div>
       </div>
     {/if}
 
@@ -281,6 +318,12 @@
         </button>
       {/each}
     </div>
+
+    {#if isDev && !showResult}
+      <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>
+        ⏭ Skip (✓)
+      </button>
+    {/if}
 
     {#if showResult}
       <p class={`result-text ${resultClass}`}>{resultText}</p>
@@ -815,5 +858,109 @@
 
   .got-it-btn:active {
     transform: scale(0.97);
+  }
+
+  .dev-skip-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 50, 50, 0.8);
+    color: white;
+    border: 1px solid #ff6666;
+    padding: 4px 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 100;
+  }
+
+  /* Phase 52: GAIA mnemonic bubble */
+  .gaia-mnemonic-bubble {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(100, 200, 255, 0.1);
+    border: 1px solid rgba(100, 200, 255, 0.25);
+    border-radius: 10px;
+    margin-bottom: 0.25rem;
+    animation: mnemonic-fade-in 400ms ease-out;
+  }
+
+  .mnemonic-avatar {
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(100, 200, 255, 0.3);
+  }
+
+  .mnemonic-text {
+    font-size: 0.82rem;
+    color: #b0d4f1;
+    line-height: 1.4;
+  }
+
+  .mnemonic-text em {
+    color: #88ddff;
+  }
+
+  @keyframes mnemonic-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Phase 52: Layer challenge progress */
+  .layer-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: -0.25rem;
+  }
+
+  .layer-progress-text {
+    font-size: 0.78rem;
+    color: #bb99ff;
+    letter-spacing: 0.5px;
+  }
+
+  .layer-progress-bar {
+    display: flex;
+    gap: 6px;
+  }
+
+  .layer-progress-pip {
+    width: 28px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(153, 102, 255, 0.2);
+    border: 1px solid rgba(153, 102, 255, 0.3);
+    transition: background 300ms ease;
+  }
+
+  .layer-progress-pip.filled {
+    background: #9966ff;
+    border-color: #bb99ff;
+    box-shadow: 0 0 6px rgba(153, 102, 255, 0.5);
+  }
+
+  /* Phase 52: Artifact boost mode */
+  .artifact-boost-header {
+    text-align: center;
+    color: #ffd369;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .artifact-boost-hint {
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    margin-top: -0.4rem;
+    font-style: italic;
   }
 </style>

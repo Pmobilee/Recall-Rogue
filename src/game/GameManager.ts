@@ -146,7 +146,8 @@ export class GameManager {
 
   // ---- Sub-managers (initialized lazily in boot()) ----
   /** @internal */ gaiaManager!: GaiaManager
-  private quizManager!: QuizManager
+  /** @internal Exposed for GameEventBridge access. */
+  quizManager!: QuizManager
   private studyManager!: StudyManager
   /** @internal */ inventoryManager!: InventoryManager
 

@@ -27,9 +27,15 @@ import { selectQuestion, getQuizChoices } from '../../services/quizService'
 type ActiveQuizValue = {
   fact: Fact
   choices: string[]
-  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'
+  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'
   gateProgress?: { remaining: number; total: number }
   isConsistencyPenalty?: boolean
+  /** Whether GAIA should show a mnemonic hint for this fact (struggle detection). */
+  showMnemonic?: boolean
+  /** The mnemonic text to display, if available. */
+  mnemonic?: string
+  /** Layer challenge progress: current question number and total. */
+  layerChallengeProgress?: { current: number; total: number }
 }
 
 /**
@@ -52,6 +58,7 @@ export class QuizManager {
     layer:     "Depth calibration sequence — what do you recall?",
     oxygen:    "Field scan detected — answer to unlock the cache.",
     combat:    "ATTACK VECTOR — Knowledge is your weapon. Answer to strike!",
+    artifact_boost: "Analyze This Discovery! Your knowledge may enhance it.",
   } as const
   private getMineScene: () => MineScene | null
   private randomGaia: (lines: string[], trigger?: string) => void
@@ -59,11 +66,17 @@ export class QuizManager {
   /** Coordinates of the quiz gate that triggered the current quiz (used to unlock it on pass). */
   pendingGateCoords: { x: number; y: number } | null = null
 
+  /** When true, layer quiz answers dispatch a custom event instead of resuming mining. Set by GameEventBridge. */
+  layerChallengeActive = false
+
   /** Fact IDs already used in the current artifact appraisal flow (avoids repeats). */
   artifactQuizUsedFactIds = new Set<string>()
 
   /** Dev toggle: when true, every block mined triggers a quiz (bypasses all rate/cooldown checks). */
   devForceQuizEveryBlock = false
+
+  /** Remaining wrong-answer attempts for the current gate quiz (reset when a new gate is activated). */
+  private gateAttemptsRemaining = 0
 
   // =========================================================
   // Quiz rate tracking fields (DD-V2-060)
@@ -213,6 +226,75 @@ export class QuizManager {
     ])
   }
 
+  /**
+   * Increments the wrongCount field on a fact's ReviewState when answered incorrectly.
+   * Used for GAIA mnemonic struggle detection.
+   */
+  private incrementWrongCount(factId: string): void {
+    const save = get(playerSave)
+    if (!save) return
+    const idx = save.reviewStates.findIndex(rs => rs.factId === factId)
+    if (idx === -1) return
+    const updated = [...save.reviewStates]
+    updated[idx] = { ...updated[idx], wrongCount: (updated[idx].wrongCount ?? 0) + 1 }
+    playerSave.update(s => s ? { ...s, reviewStates: updated } : s)
+  }
+
+  /**
+   * Updates the lastReviewContext field on a fact's ReviewState.
+   */
+  private updateReviewContext(factId: string, context: 'study' | 'mine' | 'ritual'): void {
+    playerSave.update(s => {
+      if (!s) return s
+      return {
+        ...s,
+        reviewStates: s.reviewStates.map(rs =>
+          rs.factId === factId ? { ...rs, lastReviewContext: context } : rs
+        ),
+      }
+    })
+  }
+
+  /**
+   * Checks if a fact qualifies for GAIA mnemonic assistance based on wrongCount.
+   * Returns { showMnemonic, mnemonic } to pass to the quiz payload.
+   */
+  getMnemonicInfo(factId: string, factMnemonic?: string): { showMnemonic: boolean; mnemonic?: string } {
+    const save = get(playerSave)
+    if (!save) return { showMnemonic: false }
+    const rs = save.reviewStates.find(r => r.factId === factId)
+    if (!rs || (rs.wrongCount ?? 0) < BALANCE.STRUGGLE_WRONG_THRESHOLD) return { showMnemonic: false }
+    return {
+      showMnemonic: true,
+      mnemonic: factMnemonic || undefined,
+    }
+  }
+
+  /**
+   * Applies an additional SM-2 ease factor penalty when a fact was correct in study
+   * but wrong under dive pressure. Called after the standard SM-2 update.
+   * Extra penalty: easeFactor -= 0.15 (on top of the standard 0.20 decrease).
+   */
+  applyConsistencyEasePenalty(factId: string): void {
+    const save = get(playerSave)
+    if (!save) return
+    const rs = save.reviewStates.find(r => r.factId === factId)
+    if (!rs) return
+    // Only apply when last correct was in study context and fact is mature
+    if (rs.lastReviewContext !== 'study') return
+    if (rs.repetitions < BALANCE.CONSISTENCY_MIN_REPS) return
+
+    const updated = save.reviewStates.map(s => {
+      if (s.factId !== factId) return s
+      return {
+        ...s,
+        easeFactor: Math.max(1.3, s.easeFactor - 0.15),
+        interval: 1,
+      }
+    })
+    playerSave.update(s => s ? { ...s, reviewStates: updated } : s)
+  }
+
   // =========================================================
   // Analytics helpers
   // =========================================================
@@ -244,6 +326,39 @@ export class QuizManager {
   // =========================================================
   // Resume / gate
   // =========================================================
+
+  /**
+   * Reset the gate failure attempt counter for a new gate encounter.
+   * Called by GameEventBridge when a quiz-gate event fires.
+   */
+  resetGateAttempts(): void {
+    this.gateAttemptsRemaining = BALANCE.QUIZ_GATE_MAX_FAILURES + 1
+  }
+
+  /**
+   * Pick a new fact and update activeQuiz for a gate retry (wrong answer with attempts remaining).
+   * Keeps the quiz overlay open with a fresh question.
+   */
+  private presentNewGateFact(): void {
+    const save = get(playerSave)
+    if (!save) return
+    const allFacts = factsDB.getAll()
+    const fact = selectQuestion(allFacts, save.reviewStates)
+    if (!fact) {
+      // No more facts available — treat as pass to avoid blocking player
+      this.resumeQuiz(true)
+      return
+    }
+    const choices = getQuizChoices(fact)
+    const prevQuiz = get(activeQuiz)
+    activeQuiz.set({
+      fact,
+      choices,
+      source: 'gate',
+      gateProgress: prevQuiz?.gateProgress,
+    })
+    currentScreen.set('quiz')
+  }
 
   /** Resume mining after a quiz gate answer */
   resumeQuiz(passed: boolean): void {
@@ -280,10 +395,26 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
         if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
           this.applyConsistencyPenalty(quiz.fact.id)
+          this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
+
+      // Gate wrong answer with retries remaining: show a new question instead of resuming
+      if (!correct) {
+        this.gateAttemptsRemaining--
+        if (this.gateAttemptsRemaining > 0) {
+          this.trackFailureEscalation(quiz?.fact.id ?? '')
+          this.presentNewGateFact()
+          return
+        }
+      }
+
       this.resumeQuiz(correct)
     } catch (error) {
       console.error('QuizManager handleQuizAnswer error:', error)
@@ -297,8 +428,13 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
         if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
           this.applyConsistencyPenalty(quiz.fact.id)
+          this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
       activeQuiz.set(null)
@@ -325,6 +461,10 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
       }
       // Check if more questions remain by inspecting gateProgress
       const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
@@ -362,8 +502,13 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
         if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
           this.applyConsistencyPenalty(quiz.fact.id)
+          this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
 
@@ -417,10 +562,31 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
         if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
           this.applyConsistencyPenalty(quiz.fact.id)
+          this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
+
+      // Phase 52: Multi-question layer challenge — dispatch event to GameEventBridge
+      if (this.layerChallengeActive) {
+        activeQuiz.set(null)
+        if (!correct) {
+          // Apply O2 penalty for wrong answer
+          const scene = this.getMineScene()
+          if (scene) {
+            scene.drainOxygen(BALANCE.LAYER_ENTRANCE_WRONG_O2_COST)
+          }
+        }
+        window.dispatchEvent(new CustomEvent('layer-challenge-answer', { detail: { correct } }))
+        return
+      }
+
+      // Legacy single-question path (fallback)
       activeQuiz.set(null)
       const scene = this.getMineScene()
       if (scene) {
@@ -488,6 +654,26 @@ export class QuizManager {
     }
   }
 
+  /** Handle an artifact boost quiz answer */
+  handleArtifactBoostQuizAnswer(correct: boolean): void {
+    try {
+      const quiz = get(activeQuiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
+      }
+      // Don't clear activeQuiz or navigate — the caller manages the flow
+      // Just dispatch the result via a custom event
+      window.dispatchEvent(new CustomEvent('artifact-boost-answer', { detail: { correct } }))
+    } catch (error) {
+      console.error('QuizManager handleArtifactBoostQuizAnswer error:', error)
+    }
+  }
+
   /**
    * Handle a quiz answer during a combat encounter.
    * Routes the result to EncounterManager for damage/reward resolution.
@@ -500,8 +686,13 @@ export class QuizManager {
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
         updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        this.updateReviewContext(quiz.fact.id, 'mine')
+        if (!correct) {
+          this.incrementWrongCount(quiz.fact.id)
+        }
         if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
           this.applyConsistencyPenalty(quiz.fact.id)
+          this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
       activeQuiz.set(null)

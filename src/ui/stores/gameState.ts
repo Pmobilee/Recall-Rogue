@@ -216,10 +216,16 @@ export const inventory = singletonWritable<InventorySlot[]>('inventory', [])
 export const activeQuiz = singletonWritable<{
   fact: Fact
   choices: string[]
-  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'
+  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'
   gateProgress?: { remaining: number; total: number }
   /** True when the player has demonstrably learned this fact (repetitions >= CONSISTENCY_MIN_REPS) but answered wrong in-dive. */
   isConsistencyPenalty?: boolean
+  /** Whether GAIA should show a mnemonic hint for this fact (struggle detection). */
+  showMnemonic?: boolean
+  /** The mnemonic text to display, if available. */
+  mnemonic?: string
+  /** Layer challenge progress: current question number and total. */
+  layerChallengeProgress?: { current: number; total: number }
 } | null>('activeQuiz', null)
 
 // Fact reveal state

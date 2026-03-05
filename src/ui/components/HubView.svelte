@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import { getDefaultHubStack } from '../../data/hubFloors'
-  import { playerSave } from '../stores/playerData'
+  import { BALANCE } from '../../data/balance'
+  import { playerSave, isMorningReviewAvailable, isEveningReviewAvailable } from '../stores/playerData'
   import { currentFloorIndex } from '../stores/gameState'
   import FloorIndicator from './FloorIndicator.svelte'
   import type { Fact } from '../../data/types'
@@ -156,6 +157,24 @@
   const prestigeEligible = $derived($playerSave ? isEligibleForPrestige($playerSave) : false)
   const omniscientStatus = $derived($playerSave ? isOmniscient($playerSave) : false)
 
+  // Phase 52: Morning/evening review bonus
+  const showMorningPrompt = $derived(
+    $playerSave ? isMorningReviewAvailable($playerSave) : false
+  )
+  const showEveningPrompt = $derived(
+    $playerSave ? isEveningReviewAvailable($playerSave) : false
+  )
+
+  function startMorningReview(): void {
+    // Trigger a study session — StudyManager detects the morning window
+    onStudy?.()
+  }
+
+  function startEveningReview(): void {
+    // Trigger a study session — StudyManager detects the evening window
+    onStudy?.()
+  }
+
   // ---- Lifecycle ----
 
   let hubEventsConnected = false
@@ -227,6 +246,28 @@
       <span class="res">🫧 {$playerSave.oxygen} O₂</span>
     {/if}
   </div>
+
+  <!-- Phase 52: Morning/Evening review bonus banners -->
+  {#if showMorningPrompt}
+    <div class="review-bonus-banner morning">
+      <span class="review-icon">🌅</span>
+      <div class="review-text">
+        <strong>Morning Review</strong>
+        <small>Answer {BALANCE.MORNING_REVIEW_FACT_COUNT} facts — earn +{BALANCE.MORNING_REVIEW_O2_BONUS} O₂ Tank</small>
+      </div>
+      <button class="review-start-btn" type="button" onclick={startMorningReview}>Start</button>
+    </div>
+  {/if}
+  {#if showEveningPrompt}
+    <div class="review-bonus-banner evening">
+      <span class="review-icon">🌙</span>
+      <div class="review-text">
+        <strong>Evening Review</strong>
+        <small>Answer {BALANCE.EVENING_REVIEW_FACT_COUNT} facts — earn +{BALANCE.EVENING_REVIEW_O2_BONUS} O₂ Tank</small>
+      </div>
+      <button class="review-start-btn" type="button" onclick={startEveningReview}>Start</button>
+    </div>
+  {/if}
 
   <!-- Settings button — always visible in dome -->
   <button class="settings-btn" type="button" onclick={() => onSettings?.()} aria-label="Open settings">
@@ -371,5 +412,83 @@
   @keyframes prestige-pulse {
     0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
     50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+  }
+
+  /* Phase 52: Review bonus banners */
+  .review-bonus-banner {
+    pointer-events: auto;
+    position: absolute;
+    top: 44px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    z-index: 42;
+    animation: banner-slide-in 300ms ease-out;
+  }
+
+  .review-bonus-banner.morning {
+    background: linear-gradient(135deg, rgba(255, 183, 77, 0.25), rgba(255, 138, 0, 0.15));
+    border: 1px solid rgba(255, 183, 77, 0.5);
+  }
+
+  .review-bonus-banner.evening {
+    background: linear-gradient(135deg, rgba(100, 100, 255, 0.25), rgba(80, 80, 200, 0.15));
+    border: 1px solid rgba(100, 100, 255, 0.5);
+    top: 44px;
+  }
+
+  .review-bonus-banner.morning + .review-bonus-banner.evening {
+    top: 104px;
+  }
+
+  .review-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .review-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .review-text strong {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: #fff;
+  }
+
+  .review-text small {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: #ccc;
+  }
+
+  .review-start-btn {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    min-height: 32px;
+    transition: background 0.15s;
+  }
+
+  .review-start-btn:active {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  @keyframes banner-slide-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>

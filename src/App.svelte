@@ -319,7 +319,7 @@
   })
 
   // Quiz mode tracking
-  let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'>('gate')
+  let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'>('gate')
 
   // Phase 36: boss intro overlay state
   let showBossIntro = $state(false)

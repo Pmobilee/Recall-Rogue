@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 51 (Core Loot Loop Fidelity) COMPLETE. SacrificeOverlay replaces flat 30% loot penalty — players manually choose items to sacrifice on oxygen depletion (depth-scaled thresholds from 20% at L1 to 75% at L8+). DecisionScreen ("The Cloth") appears when backpack is full during mining — swap new item with existing or leave it behind. Send-up slots now depth-scaled (1 at L1, up to 4 at L4+). Backpack shows "FULL" indicator when at capacity. Rescue Beacon consumable: 200 Crystal + 2 Geode craft cost, one per dive, emergency extraction with zero loot loss; dedicated HUD button with confirmation dialog. Balance constants: SACRIFICE_THRESHOLD_BY_LAYER, SEND_UP_SLOTS_BY_LAYER, MINERAL_STACK_LIMITS, ARTIFACT_SLOT_COST, FOSSIL_SLOT_COST. 0 typecheck errors, build clean.
+Phase 52 (Learning Depth) COMPLETE. Morning/evening review O2 bonus rewards players for reviewing facts outside of dives. 3-question layer entrance challenge gates deeper layers behind knowledge checks. Artifact rarity boost quiz lets players answer questions to upgrade artifact rarity on discovery. GAIA mnemonic hints appear when players struggle with specific facts. SM-2 consistency ease penalty wired into the review system. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -144,7 +144,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [ ] **Phase 55: Economy Depth** — Duplicate artifact mixing (gacha rarity roll), mineral compression tax, Rescue Beacon crafting cost, structured 3-slot daily deals, Premium Materializer distinction → [`phases/PHASE-55-ECONOMY-DEPTH.md`](phases/PHASE-55-ECONOMY-DEPTH.md)
 
 ### Learning Systems (Phases 52, 53)
-- [ ] **Phase 52: Learning Depth** — Morning/evening quiz oxygen bonus, 3-question layer entrance challenge, artifact rarity boost quiz, GAIA mnemonic on struggle, SM-2 consistency penalty exact wiring → [`phases/PHASE-52-LEARNING-DEPTH.md`](phases/PHASE-52-LEARNING-DEPTH.md)
+- [x] **Phase 52: Learning Depth** — Morning/evening quiz oxygen bonus, 3-question layer entrance challenge, artifact rarity boost quiz, GAIA mnemonic on struggle, SM-2 consistency penalty exact wiring → [`completed/PHASE-52-LEARNING-DEPTH.md`](completed/PHASE-52-LEARNING-DEPTH.md)
 - [ ] **Phase 53: Knowledge Tree Vitality** — Leaf wilting/decay (3 visual stages), branch completion percentage badges, Learning Sparks currency, branch gameplay bonuses at 25% completion → [`phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md`](phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md)
 
 ### Mine & Atmosphere (Phase 54)

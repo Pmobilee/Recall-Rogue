@@ -6,8 +6,6 @@ import {
   pendingArtifacts,
   studyFacts,
   studyReviewStates,
-  gaiaMessage,
-  gaiaExpression,
 } from '../../ui/stores/gameState'
 import {
   playerSave,
@@ -71,12 +69,6 @@ export class StudyManager {
       }
     }
 
-    if (facts.length === 0) {
-      gaiaMessage.set('No facts to review right now. Mine for new artifacts to discover more knowledge!')
-      gaiaExpression.set('thinking')
-      return
-    }
-
     // Collect matching review states
     const reviewStates = save.reviewStates.filter(rs =>
       facts.some(f => f.id === rs.factId)
@@ -130,16 +122,19 @@ export class StudyManager {
         : true
 
     if (ritualType !== null && !alreadyCompleted && save) {
-      // Mark ritual completed and award bonus dust
+      // Mark ritual completed and award bonus dust + O2
+      const o2Bonus = ritualType === 'morning'
+        ? BALANCE.MORNING_REVIEW_O2_BONUS
+        : BALANCE.EVENING_REVIEW_O2_BONUS
       const updatedField = ritualType === 'morning'
         ? { lastMorningReview: today }
         : { lastEveningReview: today }
-      playerSave.update(s => s ? { ...s, ...updatedField } : s)
+      playerSave.update(s => s ? { ...s, ...updatedField, oxygen: (s.oxygen ?? 0) + o2Bonus } : s)
       addMinerals('dust', BALANCE.RITUAL_BONUS_DUST)
 
       const bonusMsg = ritualType === 'morning'
-        ? `Great morning practice! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
-        : `A productive evening! +${BALANCE.RITUAL_BONUS_DUST} dust bonus!`
+        ? `Great morning practice! +${BALANCE.RITUAL_BONUS_DUST} dust & +${o2Bonus} O₂ Tank!`
+        : `A productive evening! +${BALANCE.RITUAL_BONUS_DUST} dust & +${o2Bonus} O₂ Tank!`
       this.gaiaMessage(bonusMsg)
       setTimeout(() => this.gaiaMessage(null), 5000)
     } else {
@@ -184,8 +179,7 @@ export class StudyManager {
     const pending = get(pendingArtifacts)
     if (pending.length === 0) {
       activeFact.set(null)
-      gaiaMessage.set('No artifacts waiting for review. Find more during your next dive!')
-      gaiaExpression.set('calm')
+      currentScreen.set('factReveal')
       return
     }
 

@@ -143,6 +143,8 @@ export interface ReviewState {
   quality: number             // Last response quality (0-5)
   /** Context in which the fact was last reviewed. Used for DD-V2-097 consistency penalty. */
   lastReviewContext?: 'study' | 'mine' | 'ritual'
+  /** Cumulative number of times this fact has been answered incorrectly (never resets). */
+  wrongCount?: number
 }
 
 // ============================================================

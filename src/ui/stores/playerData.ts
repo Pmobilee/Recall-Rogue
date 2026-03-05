@@ -864,3 +864,41 @@ export function awardMentorPrestigePoints(amount: number): void {
   })
   persistPlayer()
 }
+
+/** Returns true if the player is eligible for the morning review bonus right now. */
+export function isMorningReviewAvailable(save: PlayerSave): boolean {
+  const now = new Date()
+  const hour = now.getHours()
+  const todayIso = now.toISOString().slice(0, 10)
+  if (hour < BALANCE.MORNING_REVIEW_HOUR || hour >= BALANCE.MORNING_REVIEW_END) return false
+  return save.lastMorningReview !== todayIso
+}
+
+/** Returns true if the player is eligible for the evening review bonus right now. */
+export function isEveningReviewAvailable(save: PlayerSave): boolean {
+  const now = new Date()
+  const hour = now.getHours()
+  const todayIso = now.toISOString().slice(0, 10)
+  if (hour < BALANCE.EVENING_REVIEW_HOUR || hour >= BALANCE.EVENING_REVIEW_END) return false
+  return save.lastEveningReview !== todayIso
+}
+
+/** Awards the morning review bonus and updates the timestamp. */
+export function claimMorningReviewBonus(save: PlayerSave): PlayerSave {
+  const todayIso = new Date().toISOString().slice(0, 10)
+  return {
+    ...save,
+    lastMorningReview: todayIso,
+    oxygen: save.oxygen + BALANCE.MORNING_REVIEW_O2_BONUS,
+  }
+}
+
+/** Awards the evening review bonus and updates the timestamp. */
+export function claimEveningReviewBonus(save: PlayerSave): PlayerSave {
+  const todayIso = new Date().toISOString().slice(0, 10)
+  return {
+    ...save,
+    lastEveningReview: todayIso,
+    oxygen: save.oxygen + BALANCE.EVENING_REVIEW_O2_BONUS,
+  }
+}
