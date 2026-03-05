@@ -976,6 +976,7 @@ export class GameManager {
     this.newFactsThisDive = 0
 
     diveResults.set(null)
+    this.stopDome()
     this.game.scene.stop('MineScene')
     this.game.scene.start('MineScene', {
       seed: layerSeed,

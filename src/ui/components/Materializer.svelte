@@ -5,6 +5,11 @@
   import type { Recipe } from '../../data/recipes'
   import type { MineralTier } from '../../data/types'
   import { audioManager } from '../../services/audioService'
+  import { upgradeFloor } from '../stores/playerData'
+  import FloorUpgradePanel from './FloorUpgradePanel.svelte'
+  import type { FloorUpgradeTier } from '../../data/hubLayout'
+  import { currentFloorIndex } from '../stores/gameState'
+  import { getDefaultHubStack } from '../../data/hubFloors'
 
   interface Props {
     onBack: () => void
@@ -93,6 +98,20 @@
 
   function tierLabel(tier: MineralTier): string {
     return tier.charAt(0).toUpperCase() + tier.slice(1)
+  }
+
+  // Floor upgrade state
+  let showUpgradePanel = $state(false)
+  const hubStack = getDefaultHubStack()
+  const unlockedIds = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
+  const floorTiers = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
+  const unlockedFloors = $derived(hubStack.floors.filter(f => unlockedIds.includes(f.id)))
+  const currentFloorId = $derived(unlockedFloors[$currentFloorIndex]?.id ?? 'starter')
+  const currentFloorTier = $derived((floorTiers[currentFloorId] ?? 0) as FloorUpgradeTier)
+
+  function handleUpgrade(floorId: string, targetTier: FloorUpgradeTier): void {
+    upgradeFloor(floorId, targetTier)
+    showUpgradePanel = false
   }
 </script>
 
@@ -282,6 +301,29 @@
         {/each}
       </div>
     </div>
+  {/if}
+
+  <!-- Dome Upgrades Section -->
+  <section class="dome-upgrades-section">
+    <h3 class="section-heading">🏗️ Dome Upgrades</h3>
+    <div class="upgrade-info-row">
+      <span class="upgrade-floor-name">{unlockedFloors[$currentFloorIndex]?.name ?? 'Starter Hub'}</span>
+      <span class="upgrade-tier-badge">Tier {currentFloorTier}</span>
+    </div>
+    <p class="upgrade-desc">Improve dome floors to unlock new rooms and machines.</p>
+    <button class="upgrade-floor-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showUpgradePanel = true }}>
+      Upgrade Current Floor
+      <span class="arrow" aria-hidden="true">→</span>
+    </button>
+  </section>
+
+  {#if showUpgradePanel}
+    <FloorUpgradePanel
+      floorId={currentFloorId}
+      currentTier={currentFloorTier}
+      onClose={() => { showUpgradePanel = false }}
+      onUpgrade={handleUpgrade}
+    />
   {/if}
 </section>
 
@@ -678,6 +720,76 @@
     color: #60a5fa;
     font-weight: 700;
     font-size: 0.78rem;
+  }
+
+  /* ---- Dome Upgrades ---- */
+  .dome-upgrades-section {
+    background: var(--color-surface, #1e1e3a);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+
+  .section-heading {
+    color: var(--color-accent, #4ecca3);
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+  }
+
+  .upgrade-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--color-bg, #0a0e1a) 35%, var(--color-surface, #1e1e3a) 65%);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .upgrade-floor-name {
+    color: var(--color-text, #e8e8f0);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .upgrade-tier-badge {
+    color: var(--color-warning, #f0a030);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--color-warning, #f0a030) 15%, transparent);
+  }
+
+  .upgrade-desc {
+    color: var(--color-text-dim, #8888a0);
+    font-size: 0.78rem;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+
+  .upgrade-floor-btn {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--color-accent, #4ecca3);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-accent, #4ecca3) 20%, var(--color-surface, #1e1e3a) 80%);
+    color: var(--color-text, #e8e8f0);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .upgrade-floor-btn:active {
+    transform: translateY(1px);
+  }
+
+  .arrow {
+    color: rgba(255, 255, 255, 0.5);
   }
 
   /* ---- Responsive ---- */

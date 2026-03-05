@@ -6,6 +6,8 @@ import {
   pendingArtifacts,
   studyFacts,
   studyReviewStates,
+  gaiaMessage,
+  gaiaExpression,
 } from '../../ui/stores/gameState'
 import {
   playerSave,
@@ -69,7 +71,11 @@ export class StudyManager {
       }
     }
 
-    if (facts.length === 0) return
+    if (facts.length === 0) {
+      gaiaMessage.set('No facts to review right now. Mine for new artifacts to discover more knowledge!')
+      gaiaExpression.set('thinking')
+      return
+    }
 
     // Collect matching review states
     const reviewStates = save.reviewStates.filter(rs =>
@@ -178,7 +184,8 @@ export class StudyManager {
     const pending = get(pendingArtifacts)
     if (pending.length === 0) {
       activeFact.set(null)
-      currentScreen.set('base')
+      gaiaMessage.set('No artifacts waiting for review. Find more during your next dive!')
+      gaiaExpression.set('calm')
       return
     }
 
