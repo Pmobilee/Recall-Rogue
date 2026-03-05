@@ -37,6 +37,8 @@ import websocket from "@fastify/websocket";
 import { coopWsRoutes } from "./routes/coopWs.js";
 import { coopRoutes } from "./routes/coop.js";
 import { pruneStaleRooms } from "./services/coopRoomService.js";
+import { educatorRoutes } from "./routes/educator.js";
+import { classroomsRoutes } from "./routes/classrooms.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -218,6 +220,17 @@ export async function buildApp() {
 
   // Phase 45: Parental controls routes
   await fastify.register(parentalRoutes, { prefix: "/parental" });
+
+  // Phase 44: Teacher Dashboard routes
+  const educatorRateLimit = createRateLimiter(20, 60_000); // 20/min
+  await fastify.register(
+    async (educatorInstance) => {
+      educatorInstance.addHook("preHandler", educatorRateLimit);
+      await educatorRoutes(educatorInstance);
+    },
+    { prefix: "/api/educator" }
+  );
+  await fastify.register(classroomsRoutes, { prefix: "/api/classrooms" });
 
   // Phase 43: Co-op WebSocket + REST routes
   await fastify.register(websocket);

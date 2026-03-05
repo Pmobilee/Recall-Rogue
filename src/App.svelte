@@ -105,6 +105,10 @@
   import SessionWarningBanner from './ui/components/SessionWarningBanner.svelte'
   import './app-kid-theme.css'
 
+  // Phase 44: Teacher Dashboard — in-game classroom integration
+  import AnnouncementBanner from './ui/components/AnnouncementBanner.svelte'
+  import { syncAllClassroomData } from './services/classroomService'
+
   // ============================================================
   // PROFILE ROUTING LAYER (Phase 19.6)
   // ============================================================
@@ -219,6 +223,8 @@
   function handleAuthLogin(user: { id: string; email: string; displayName: string | null }): void {
     authStore.setUser(user)
     authScreen = null
+    // Phase 44: Sync classroom data (active assignment + announcement) on login
+    void syncAllClassroomData()
   }
 
   /** Navigates from login to register. */
@@ -1022,6 +1028,13 @@
       }}
       onDecline={() => pendingRelicPickup.set(null)}
     />
+  {/if}
+
+  <!-- Phase 44: Teacher announcement banner (student-facing, dismissable) -->
+  {#if gameVisible}
+    <div style="position: fixed; top: 8px; left: 50%; transform: translateX(-50%); width: min(90vw, 480px); z-index: 300; pointer-events: auto;">
+      <AnnouncementBanner />
+    </div>
   {/if}
 
   <!-- Phase 35: Mine Mechanics HUD overlays (self-conditionally shown during mining) -->

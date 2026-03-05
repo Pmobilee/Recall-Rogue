@@ -136,6 +136,17 @@ export const users = sqliteTable("users", {
   createdAt: integer("created_at").notNull(),
   /** Row last-updated timestamp (epoch ms). */
   updatedAt: integer("updated_at").notNull(),
+  // ── Phase 44: Educator fields (added via ALTER TABLE in migrate.ts) ──────────
+  /** Account role: 'player' | 'educator' | 'admin'. Defaults to 'player'. */
+  role: text("role").notNull().default("player"),
+  /** Educator verification status: 'pending' | 'approved' | 'rejected' | null. */
+  educatorVerification: text("educator_verification"),
+  /** School name for educator accounts (free text, 100 chars). */
+  educatorOrg: text("educator_org"),
+  /** Email domain for educator accounts (e.g. 'school.edu'). */
+  educatorDomain: text("educator_domain"),
+  /** Maximum number of classes this educator can create. */
+  classLimit: integer("class_limit").notNull().default(5),
 });
 
 // ── saves ─────────────────────────────────────────────────────────────────────
@@ -1100,3 +1111,131 @@ export type FeatureFlag = typeof featureFlags.$inferSelect;
 export type NewFeatureFlag = typeof featureFlags.$inferInsert;
 export type FeatureFlagOverride = typeof featureFlagOverrides.$inferSelect;
 export type NewFeatureFlagOverride = typeof featureFlagOverrides.$inferInsert;
+
+// ── Phase 44: Teacher Dashboard ───────────────────────────────────────────────
+
+// Extend the users table with educator role fields.
+// These columns are added via ALTER TABLE in migrate.ts (SQLite ADD COLUMN).
+// They are declared here as non-null with defaults so Drizzle knows their shape.
+
+/**
+ * Educator verification requests submitted by users seeking educator access.
+ */
+export const educatorVerificationRequests = sqliteTable('educator_verification_requests', {
+  /** UUID v4. */
+  id: text('id').primaryKey(),
+  /** Foreign key → users.id. */
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  /** School name (free text, max 200 chars). */
+  schoolName: text('school_name').notNull(),
+  /** Domain portion of the applicant's email address. */
+  emailDomain: text('email_domain').notNull(),
+  /** Optional school website URL. */
+  schoolUrl: text('school_url'),
+  /** Optional message from applicant, max 500 chars. */
+  verificationNote: text('verification_note'),
+  /** Review status: 'pending' | 'approved' | 'rejected'. */
+  status: text('status').notNull().default('pending'),
+  /** Admin user ID who reviewed this request. */
+  reviewedBy: text('reviewed_by'),
+  /** Rejection reason shown to the applicant. */
+  reviewNote: text('review_note'),
+  /** Unix epoch ms when submitted. */
+  submittedAt: integer('submitted_at').notNull(),
+  /** Unix epoch ms when reviewed, or null if still pending. */
+  reviewedAt: integer('reviewed_at'),
+})
+
+/**
+ * Educator-owned classrooms.
+ * Each classroom has a unique 6-character join code for students.
+ */
+export const classrooms = sqliteTable('classrooms', {
+  /** UUID v4. */
+  id: text('id').primaryKey(),
+  /** Foreign key → users.id (the educator). */
+  teacherId: text('teacher_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  /** Display name for the classroom. Max 100 chars. */
+  name: text('name').notNull(),
+  /** 6-character alphanumeric join code, e.g. 'GEO42X'. */
+  joinCode: text('join_code').notNull().unique(),
+  /** Content rating for students in this class: 'kid' | 'teen'. */
+  ageRating: text('age_rating').notNull().default('teen'),
+  /** Soft-delete flag: 0 = active, 1 = archived. */
+  isArchived: integer('is_archived').notNull().default(0),
+  /** Row creation timestamp (epoch ms). */
+  createdAt: integer('created_at').notNull(),
+  /** Row last-updated timestamp (epoch ms). */
+  updatedAt: integer('updated_at').notNull(),
+})
+
+/**
+ * Student membership records linking students to classrooms.
+ */
+export const classroomStudents = sqliteTable('classroom_students', {
+  /** UUID v4. */
+  id: text('id').primaryKey(),
+  /** Foreign key → classrooms.id. */
+  classroomId: text('classroom_id').notNull().references(() => classrooms.id, { onDelete: 'cascade' }),
+  /** Foreign key → users.id (the student). */
+  studentId: text('student_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  /** Unix epoch ms when the student joined. */
+  joinedAt: integer('joined_at').notNull(),
+  /** Active flag: 1 = enrolled, 0 = removed by teacher. */
+  isActive: integer('is_active').notNull().default(1),
+})
+
+/**
+ * Teacher-created homework assignments.
+ * When active (between startDate and dueDate), the student's quiz pool is
+ * biased toward the assignment categories.
+ */
+export const homeworkAssignments = sqliteTable('homework_assignments', {
+  /** UUID v4. */
+  id: text('id').primaryKey(),
+  /** Foreign key → classrooms.id. */
+  classroomId: text('classroom_id').notNull().references(() => classrooms.id, { onDelete: 'cascade' }),
+  /** Assignment display title. Max 200 chars. */
+  title: text('title').notNull(),
+  /** JSON array of category strings, e.g. '["Geology","Chemistry"]'. Max 10 categories. */
+  categories: text('categories').notNull(),
+  /** Unix epoch ms — assignment becomes active from this date (inclusive). */
+  startDate: integer('start_date').notNull(),
+  /** Unix epoch ms — assignment expires at this date (inclusive). */
+  dueDate: integer('due_date').notNull(),
+  /** Active flag: 1 = active, 0 = cancelled. */
+  isActive: integer('is_active').notNull().default(1),
+  /** Row creation timestamp (epoch ms). */
+  createdAt: integer('created_at').notNull(),
+})
+
+/**
+ * Teacher-posted class announcements.
+ * Shown as a dismissable banner in the game for 14 days.
+ */
+export const classAnnouncements = sqliteTable('class_announcements', {
+  /** UUID v4. */
+  id: text('id').primaryKey(),
+  /** Foreign key → classrooms.id. */
+  classroomId: text('classroom_id').notNull().references(() => classrooms.id, { onDelete: 'cascade' }),
+  /** Plain-text announcement body. Max 280 chars. */
+  message: text('message').notNull(),
+  /** Unix epoch ms when posted. */
+  postedAt: integer('posted_at').notNull(),
+  /** Unix epoch ms when the announcement auto-expires (postedAt + 14 days). */
+  expiresAt: integer('expires_at').notNull(),
+  /** Soft-delete flag: 0 = active, 1 = deleted by teacher. */
+  isDeleted: integer('is_deleted').notNull().default(0),
+})
+
+// Phase 44 type exports
+export type EducatorVerificationRequest = typeof educatorVerificationRequests.$inferSelect;
+export type NewEducatorVerificationRequest = typeof educatorVerificationRequests.$inferInsert;
+export type Classroom = typeof classrooms.$inferSelect;
+export type NewClassroom = typeof classrooms.$inferInsert;
+export type ClassroomStudent = typeof classroomStudents.$inferSelect;
+export type NewClassroomStudent = typeof classroomStudents.$inferInsert;
+export type HomeworkAssignment = typeof homeworkAssignments.$inferSelect;
+export type NewHomeworkAssignment = typeof homeworkAssignments.$inferInsert;
+export type ClassAnnouncement = typeof classAnnouncements.$inferSelect;
+export type NewClassAnnouncement = typeof classAnnouncements.$inferInsert;

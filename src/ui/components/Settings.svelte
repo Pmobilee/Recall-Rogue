@@ -28,6 +28,7 @@
   import { parentalStore, setPin } from '../stores/parentalStore'
   import ParentalPinGate from './ParentalPinGate.svelte'
   import ParentalControlsPanel from './ParentalControlsPanel.svelte'
+  import ClassJoinPanel from './ClassJoinPanel.svelte'
 
   interface Props {
     /** Called when the user taps the Back button. */
@@ -479,6 +480,16 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== CLASSROOM (Phase 44) ===== -->
+    {#if $authStore.isLoggedIn}
+      <section class="settings-section" aria-labelledby="classroom-heading">
+        <h2 id="classroom-heading" class="section-heading">Classroom</h2>
+        <div class="settings-card">
+          <ClassJoinPanel />
+        </div>
+      </section>
+    {/if}
 
     <!-- ===== ACCOUNT ===== -->
     <section class="settings-section" aria-labelledby="account-heading">

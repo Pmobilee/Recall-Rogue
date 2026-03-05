@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 47, 49. Phase 36 (Combat System): `EncounterManager.ts` coordinates all combat lifecycle; boss encounters gate descent at layers 5/10/15/20 via `BOSS_LAYER_MAP`; `CreatureSpawner.ts` biome-affine random creature selection; 12 creature templates + 5 boss templates (including `boss_deep_leviathan`); quiz-driven combat (correct answers = attack); `CombatManager.ts` extended with `pendingQuizMultiplier`; `QuizManager.ts` extended with `triggerCombatQuiz`/`handleCombatQuizAnswer`; "The Deep" secret biome (Layer 21+) unlocks when all 4 bosses defeated in one dive; 3 new Svelte overlays (`CombatOverlay`, `BossIntroOverlay`, `TheDeepUnlockOverlay`); PlayerSave extended with `defeatedBossesThisRun`, `defeatedBosses`, `creatureKills`, `theDeepVisits`; 0 typecheck errors, build succeeds. Next: Phase 44 (Teacher Dashboard).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 49. Phase 44 (Teacher Dashboard): standalone Vite 7 + Svelte 5 educator app in `teacher/` (port 5174); educator verification flow (`POST /api/educator/verify-request`, `GET /api/educator/status`); full classroom CRUD (`/api/classrooms`) with 6-char join codes, class limits, archive; per-class aggregate analytics from `analytics_events` JSON blob queries; homework assignment category-lock delivery to student game (`syncActiveAssignment()`); class announcements with 14-day auto-expiry (`AnnouncementBanner.svelte`); admin educator review queue and classroom health endpoints; in-game `ClassJoinPanel.svelte` in Settings screen; `classroomStore.ts` persists membership to localStorage; `interestSpawner.ts` respects teacher assignment lock over player lock; 0 typecheck errors on root, server, and teacher app. Next: Phase 46 (Learning Effectiveness Research).
 
 ---
 
@@ -113,7 +113,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`completed/PHASE-43-COOPERATIVE-DIVES.md`](completed/PHASE-43-COOPERATIVE-DIVES.md)
 
 ### Education (Phases 44-46)
-- [ ] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`phases/PHASE-44-TEACHER-DASHBOARD.md`](phases/PHASE-44-TEACHER-DASHBOARD.md)
+- [x] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`completed/PHASE-44-TEACHER-DASHBOARD.md`](completed/PHASE-44-TEACHER-DASHBOARD.md)
 - [x] **Phase 45: Kid Mode & Parental Controls** — Kid Wow Score, session time limits, parent PIN, weekly learning emails, COPPA enforcement → [`completed/PHASE-45-KID-MODE-PARENTAL.md`](completed/PHASE-45-KID-MODE-PARENTAL.md)
 - [ ] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`phases/PHASE-46-LEARNING-EFFECTIVENESS.md`](phases/PHASE-46-LEARNING-EFFECTIVENESS.md)
 

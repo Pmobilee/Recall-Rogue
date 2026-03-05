@@ -145,7 +145,92 @@ export function initSchema(): void {
 
     CREATE INDEX IF NOT EXISTS idx_feature_flag_overrides_flag_key ON feature_flag_overrides(flag_key);
     CREATE INDEX IF NOT EXISTS idx_feature_flag_overrides_user_id ON feature_flag_overrides(user_id);
+
+    -- Phase 44: Educator columns on users (ALTER TABLE is idempotent via try/catch)
+    -- SQLite only allows ADD COLUMN, not IF NOT EXISTS for columns.
   `);
+
+  // Phase 44: Add educator columns to users table (idempotent — ignore errors if column exists)
+  const educatorColumns: [string, string][] = [
+    ['role', "TEXT NOT NULL DEFAULT 'player'"],
+    ['educator_verification', 'TEXT'],
+    ['educator_org', 'TEXT'],
+    ['educator_domain', 'TEXT'],
+    ['class_limit', 'INTEGER NOT NULL DEFAULT 5'],
+  ];
+  for (const [col, def] of educatorColumns) {
+    try {
+      sqliteDb.exec(`ALTER TABLE users ADD COLUMN ${col} ${def}`)
+    } catch {
+      // Column already exists — safe to ignore
+    }
+  }
+
+  // Phase 44: New tables for teacher dashboard
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS educator_verification_requests (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      school_name TEXT NOT NULL,
+      email_domain TEXT NOT NULL,
+      school_url TEXT,
+      verification_note TEXT,
+      status TEXT NOT NULL DEFAULT 'pending',
+      reviewed_by TEXT,
+      review_note TEXT,
+      submitted_at INTEGER NOT NULL,
+      reviewed_at INTEGER
+    );
+
+    CREATE TABLE IF NOT EXISTS classrooms (
+      id TEXT PRIMARY KEY,
+      teacher_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      join_code TEXT NOT NULL UNIQUE,
+      age_rating TEXT NOT NULL DEFAULT 'teen',
+      is_archived INTEGER NOT NULL DEFAULT 0,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS classroom_students (
+      id TEXT PRIMARY KEY,
+      classroom_id TEXT NOT NULL REFERENCES classrooms(id) ON DELETE CASCADE,
+      student_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      joined_at INTEGER NOT NULL,
+      is_active INTEGER NOT NULL DEFAULT 1
+    );
+
+    CREATE TABLE IF NOT EXISTS homework_assignments (
+      id TEXT PRIMARY KEY,
+      classroom_id TEXT NOT NULL REFERENCES classrooms(id) ON DELETE CASCADE,
+      title TEXT NOT NULL,
+      categories TEXT NOT NULL,
+      start_date INTEGER NOT NULL,
+      due_date INTEGER NOT NULL,
+      is_active INTEGER NOT NULL DEFAULT 1,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS class_announcements (
+      id TEXT PRIMARY KEY,
+      classroom_id TEXT NOT NULL REFERENCES classrooms(id) ON DELETE CASCADE,
+      message TEXT NOT NULL,
+      posted_at INTEGER NOT NULL,
+      expires_at INTEGER NOT NULL,
+      is_deleted INTEGER NOT NULL DEFAULT 0
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_evr_user_id ON educator_verification_requests(user_id);
+    CREATE INDEX IF NOT EXISTS idx_evr_status ON educator_verification_requests(status);
+    CREATE INDEX IF NOT EXISTS idx_classrooms_teacher_id ON classrooms(teacher_id);
+    CREATE INDEX IF NOT EXISTS idx_classrooms_join_code ON classrooms(join_code);
+    CREATE INDEX IF NOT EXISTS idx_classroom_students_classroom_id ON classroom_students(classroom_id);
+    CREATE INDEX IF NOT EXISTS idx_classroom_students_student_id ON classroom_students(student_id);
+    CREATE INDEX IF NOT EXISTS idx_homework_classroom_id ON homework_assignments(classroom_id);
+    CREATE INDEX IF NOT EXISTS idx_announcements_classroom_id ON class_announcements(classroom_id);
+  `);
+
   console.log("[db] Schema initialised.");
 }
 

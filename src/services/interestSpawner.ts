@@ -2,6 +2,8 @@ import type { InterestConfig } from '../data/interestConfig'
 import { computeFactWeights, weightedRandomSelect } from '../data/interestConfig'
 import type { Biome } from '../data/biomes'
 import { ALL_BIOMES } from '../data/biomes'
+import { get } from 'svelte/store'
+import { classroomStore } from '../ui/stores/classroomStore'
 
 /** Biome-to-category affinity mapping (DD-V2-120). */
 const BIOME_CATEGORY_AFFINITY: Record<string, string[]> = {
@@ -79,6 +81,8 @@ export function generateInterestBiasedBiomeSequence(
 
 /**
  * Selects a fact ID from the available fact pool using interest-weighted random selection.
+ * If a teacher homework assignment is active, its category lock takes precedence over
+ * the player's own interest lock (DD-V2-172).
  * If category lock is active and no facts match, falls back to the full pool.
  */
 export function selectWeightedFact(
@@ -87,6 +91,19 @@ export function selectWeightedFact(
   rng: () => number,
 ): string | undefined {
   if (factPool.length === 0) return undefined
+
+  // Phase 44: Teacher assignment overrides player interest lock.
+  // The student's UI shows no indication of a teacher-assigned lock — it
+  // appears identical to a player-set category focus (DD-V2-172).
+  const classroom = get(classroomStore)
+  if (classroom.activeAssignment) {
+    const assignedCategories = classroom.activeAssignment.categories
+    const locked = factPool.filter(f =>
+      assignedCategories.some(cat => f.category.includes(cat)),
+    )
+    const pool = locked.length > 0 ? locked : factPool
+    return weightedRandomSelect(pool, pool.map(() => 1.0), rng)?.id
+  }
 
   let weights = computeFactWeights(factPool, interestConfig)
   const totalWeight = weights.reduce((s, w) => s + w, 0)
