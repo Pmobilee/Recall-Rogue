@@ -20,12 +20,14 @@ import {
 import type { MineScene } from '../scenes/MineScene'
 import type { Fact } from '../../data/types'
 import { analyticsService } from '../../services/analyticsService'
+import { factsDB } from '../../services/factsDB'
+import { selectQuestion, getQuizChoices } from '../../services/quizService'
 
 /** Value shape of the activeQuiz store (non-null state). */
 type ActiveQuizValue = {
   fact: Fact
   choices: string[]
-  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'
+  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'
   gateProgress?: { remaining: number; total: number }
   isConsistencyPenalty?: boolean
 }
@@ -49,6 +51,7 @@ export class QuizManager {
     hazard:    "Rapid field assessment! Your knowledge reduces the damage!",
     layer:     "Depth calibration sequence — what do you recall?",
     oxygen:    "Field scan detected — answer to unlock the cache.",
+    combat:    "ATTACK VECTOR — Knowledge is your weapon. Answer to strike!",
   } as const
   private getMineScene: () => MineScene | null
   private randomGaia: (lines: string[], trigger?: string) => void
@@ -75,6 +78,9 @@ export class QuizManager {
   // Phase 31.6 — Streak tracking
   // =========================================================
   private consecutiveCorrect = 0
+
+  /** Reference to EncounterManager — set by GameManager to avoid circular imports. */
+  encounterManagerRef: import('../managers/EncounterManager').EncounterManager | null = null
 
   constructor(
     getMineScene: () => MineScene | null,
@@ -434,6 +440,75 @@ export class QuizManager {
       }
     } catch (error) {
       console.error('QuizManager handleLayerQuizAnswer error:', error)
+    }
+  }
+
+  // =========================================================
+  // Combat quiz methods (Phase 36)
+  // =========================================================
+
+  /**
+   * Trigger a quiz attack during combat. Selects a fact from the creature's
+   * category if possible, falls back to any available fact.
+   *
+   * @param factCategory       The creature's associated quiz category.
+   * @param gauntletTotal      Total questions in this gauntlet chain (default 1).
+   * @param gauntletRemaining  Questions remaining including this one.
+   */
+  triggerCombatQuiz(
+    factCategory: string,
+    gauntletTotal = 1,
+    gauntletRemaining = 1,
+  ): void {
+    try {
+      const save = get(playerSave)
+      if (!save) return
+
+      // Try to find a fact matching the creature's category, else any fact
+      const allFacts = factsDB.getAll()
+      const categoryFacts = allFacts.filter(f =>
+        f.category.some(c => c.toLowerCase().includes(factCategory.toLowerCase()))
+      )
+      const pool = categoryFacts.length > 0 ? categoryFacts : allFacts
+      const fact = selectQuestion(pool, save.reviewStates)
+      if (!fact) return
+
+      const choices = getQuizChoices(fact)
+      activeQuiz.set({
+        fact,
+        choices,
+        source: 'combat',
+        gateProgress: gauntletTotal > 1
+          ? { remaining: gauntletRemaining, total: gauntletTotal }
+          : undefined,
+      })
+      currentScreen.set('quiz')
+    } catch (error) {
+      console.error('QuizManager triggerCombatQuiz error:', error)
+    }
+  }
+
+  /**
+   * Handle a quiz answer during a combat encounter.
+   * Routes the result to EncounterManager for damage/reward resolution.
+   *
+   * @param correct - Whether the player answered correctly.
+   */
+  handleCombatQuizAnswer(correct: boolean): void {
+    try {
+      const quiz = get(activeQuiz)
+      if (quiz) {
+        this.trackQuizAnswered(quiz, correct)
+        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
+          this.applyConsistencyPenalty(quiz.fact.id)
+        }
+      }
+      activeQuiz.set(null)
+      currentScreen.set('combat')
+      this.encounterManagerRef?.resolveCombatQuizAnswer(correct)
+    } catch (error) {
+      console.error('QuizManager handleCombatQuizAnswer error:', error)
     }
   }
 }

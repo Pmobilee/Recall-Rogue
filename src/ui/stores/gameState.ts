@@ -123,6 +123,8 @@ export type Screen =
   | 'divePrepScreen'
   | 'mining'
   | 'quiz'
+  | 'combat'
+  | 'the-deep-unlock'
   | 'factReveal'
   | 'backpack'
   | 'runStats'
@@ -206,7 +208,7 @@ export const inventory = singletonWritable<InventorySlot[]>('inventory', [])
 export const activeQuiz = singletonWritable<{
   fact: Fact
   choices: string[]
-  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'
+  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'
   gateProgress?: { remaining: number; total: number }
   /** True when the player has demonstrably learned this fact (repetitions >= CONSISTENCY_MIN_REPS) but answered wrong in-dive. */
   isConsistencyPenalty?: boolean
@@ -370,3 +372,10 @@ export const activeAltar = singletonWritable<AltarPayload | null>('activeAltar',
 
 /** The active mine event notification shown in the overlay. Null = no event. */
 export const activeMineEvent = singletonWritable<{ type: string; label: string } | null>('activeMineEvent', null)
+
+// =========================================================
+// Phase 36 — Combat System
+// =========================================================
+
+/** True whenever a CombatOverlay is shown (blocks mining input). */
+export const combatEncounterActive = singletonWritable<boolean>('combatEncounterActive', false)

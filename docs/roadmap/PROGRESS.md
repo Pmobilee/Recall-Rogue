@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47, 49. Phase 49 (Advanced Mine Generation): shape-aware `stampFeature()` dispatcher replacing rectangular fills in `placeStructuralFeatures()`, 3 new micro-structure room types (Underground River, Stalactite Gallery, Geode Chamber), dual-biome blending with `blendBiomeWeights()` and `flagTransitionZones()`, 3 new `StructuralFeatureId` values (`stalactite_field`, `crystal_formation`, `hydrothermal_vent`), anomaly zone injection system (`AnomalyZoneSystem.ts`, 5 zone types), seed determinism verification (`SeedVerifier.ts`, djb2 checksum), mine preview thumbnail (`MinePreview.ts` + `MinePreviewThumbnail.svelte` integrated into `DivePrepScreen.svelte`), dynamic difficulty profile (`DifficultyProfile`, `buildDifficultyProfile()`) passed from `GameManager.ts`. 0 typecheck errors. Next: Phase 28 (Performance Optimization) or Phase 44.
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 47, 49. Phase 36 (Combat System): `EncounterManager.ts` coordinates all combat lifecycle; boss encounters gate descent at layers 5/10/15/20 via `BOSS_LAYER_MAP`; `CreatureSpawner.ts` biome-affine random creature selection; 12 creature templates + 5 boss templates (including `boss_deep_leviathan`); quiz-driven combat (correct answers = attack); `CombatManager.ts` extended with `pendingQuizMultiplier`; `QuizManager.ts` extended with `triggerCombatQuiz`/`handleCombatQuizAnswer`; "The Deep" secret biome (Layer 21+) unlocks when all 4 bosses defeated in one dive; 3 new Svelte overlays (`CombatOverlay`, `BossIntroOverlay`, `TheDeepUnlockOverlay`); PlayerSave extended with `defeatedBossesThisRun`, `defeatedBosses`, `creatureKills`, `theDeepVisits`; 0 typecheck errors, build succeeds. Next: Phase 44 (Teacher Dashboard).
 
 ---
 
@@ -99,7 +99,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Gameplay Expansion (Phases 35-37)
 - [x] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`completed/PHASE-35-MINE-MECHANICS-COMPLETION.md`](completed/PHASE-35-MINE-MECHANICS-COMPLETION.md)
-- [ ] **Phase 36: Combat System** — Boss encounters at L5/L10/L15/L20, creature spawning, quiz gauntlets, combat rewards, "The Deep" secret biome → [`phases/PHASE-36-COMBAT-SYSTEM.md`](phases/PHASE-36-COMBAT-SYSTEM.md)
+- [x] **Phase 36: Combat System** — Boss encounters at L5/L10/L15/L20, creature spawning, quiz gauntlets, combat rewards, "The Deep" secret biome → [`completed/PHASE-36-COMBAT-SYSTEM.md`](completed/PHASE-36-COMBAT-SYSTEM.md)
 - [x] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`completed/PHASE-37-ADVANCED-PET-SYSTEM.md`](completed/PHASE-37-ADVANCED-PET-SYSTEM.md)
 
 ### Platform & International (Phases 38-40)

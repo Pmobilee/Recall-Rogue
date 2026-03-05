@@ -2,6 +2,7 @@ import type { Creature } from '../entities/Creature'
 import type { Boss } from '../entities/Boss'
 import { calculateDamage, shouldFlee } from '../entities/Creature'
 import { checkPhaseTransition } from '../entities/Boss'
+import { BALANCE } from '../../data/balance'
 
 /** Combat action types */
 export type CombatAction = 'attack' | 'defend' | 'use_item' | 'flee' | 'quiz_attack'
@@ -45,6 +46,9 @@ class CombatManager {
     log: []
   }
 
+  /** Multiplier applied on the next quiz_attack action (reset to 1.0 after use). */
+  private pendingQuizMultiplier = 1.0
+
   /** Start a combat encounter */
   startCombat(creature: Creature | Boss, playerStats: { hp: number; attack: number; defense: number }): CombatState {
     this.state = {
@@ -77,8 +81,11 @@ class CombatManager {
     switch (action) {
       case 'attack':
       case 'quiz_attack': {
-        const attackMultiplier = action === 'quiz_attack' ? 1.5 : 1.0  // Bonus for quiz-powered attacks
-        playerDamageDealt = calculateDamage(this.state.playerAttack * attackMultiplier, creature.defense)
+        const quizMult = action === 'quiz_attack'
+          ? BALANCE.COMBAT_QUIZ_ATTACK_MULTIPLIER * this.pendingQuizMultiplier
+          : 1.0
+        this.pendingQuizMultiplier = 1.0  // reset after use
+        playerDamageDealt = calculateDamage(this.state.playerAttack * quizMult, creature.defense)
         creature.hp = Math.max(0, creature.hp - playerDamageDealt)
         message = `You deal ${playerDamageDealt} damage!`
         this.state.defending = false
@@ -143,6 +150,16 @@ class CombatManager {
 
     this.state.log.push(message)
     return { playerDamageDealt, creatureDamageDealt, playerHp: this.state.playerHp, creatureHp: creature.hp, message, combatOver: false, victory: false, phaseTransition }
+  }
+
+  /**
+   * Set a multiplier to apply on the next quiz_attack turn.
+   * Called by EncounterManager after a correct quiz answer to boost damage. (DD-V2-025)
+   *
+   * @param multiplier - Extra multiplier stacked on top of COMBAT_QUIZ_ATTACK_MULTIPLIER.
+   */
+  setPendingQuizMultiplier(multiplier: number): void {
+    this.pendingQuizMultiplier = multiplier
   }
 
   /** Get current combat state */

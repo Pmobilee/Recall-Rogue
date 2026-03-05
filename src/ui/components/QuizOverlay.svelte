@@ -36,7 +36,7 @@
   interface Props {
     fact: Fact
     choices: string[]
-    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'review' | 'discovery'
+    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'review' | 'discovery' | 'combat'
     gateProgress?: { remaining: number; total: number }
     /** Whether the wrong answer triggered a consistency penalty (knew this before). */
     isConsistencyPenalty?: boolean

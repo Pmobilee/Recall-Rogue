@@ -49,6 +49,10 @@ import { ALL_BIOMES } from '../../data/biomes'
 import { getSpriteUrls } from '../spriteManifest'
 import { getSpriteResolution } from '../../ui/stores/settings'
 import { GameManager } from '../GameManager'
+import { BOSS_LAYER_MAP, createBoss } from '../entities/Boss'
+import { CreatureSpawner } from '../systems/CreatureSpawner'
+import { playerSave } from '../../ui/stores/playerData'
+import { encounterManager } from '../managers/EncounterManager'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -191,6 +195,8 @@ export class MineScene extends Phaser.Scene {
   private secondaryBiome: Biome | undefined = undefined
   /** Phase 49.7: Optional dynamic difficulty profile. */
   private difficultyProfile: DifficultyProfile | undefined = undefined
+  /** Phase 36: Creature spawner — manages random encounter timing and selection. */
+  private creatureSpawner = new CreatureSpawner()
 
   constructor() {
     super({ key: 'MineScene' })
@@ -225,7 +231,13 @@ export class MineScene extends Phaser.Scene {
     if ((data.layer ?? 0) === 0) {
       this.collectedRelics = []
       this.sentUpItems = []
-    } else if (data.collectedRelics) {
+      // Phase 36: Reset creature spawner for a fresh dive
+      this.creatureSpawner.resetForDive()
+    } else {
+      // Phase 36: Reset creature spawner for a new layer (but not a full dive reset)
+      this.creatureSpawner.resetForLayer()
+    }
+    if ((data.layer ?? 0) !== 0 && data.collectedRelics) {
       this.collectedRelics = [...data.collectedRelics]
     }
     this.rng = seededRandom((data.seed ?? Date.now()) ^ 0xdeadbeef)
@@ -1693,6 +1705,17 @@ export class MineScene extends Phaser.Scene {
       this.blocksSinceLastQuake += 1
       this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
 
+      // Phase 36: Creature spawn check after each block mined
+      if (mineResult.destroyed) {
+        const spawnedCreature = this.creatureSpawner.checkSpawn(
+          this.currentLayer,
+          (this.currentBiome?.id as import('../../data/biomes').BiomeId) ?? null
+        )
+        if (spawnedCreature) {
+          this.game.events.emit('creature-encounter', spawnedCreature)
+        }
+      }
+
       // Advance tick on every successful block hit
       const tsMine = TickSystem.getInstance()
       tsMine.advance()
@@ -1980,6 +2003,24 @@ export class MineScene extends Phaser.Scene {
           break
         }
         case BlockType.DescentShaft: {
+          // Phase 36: Boss gate check — block descent at landmark layers until boss is defeated
+          const bossTemplateId = BOSS_LAYER_MAP[this.currentLayer]
+          if (bossTemplateId !== undefined) {
+            const save = get(playerSave)
+            const defeatedThisRun: string[] = save?.defeatedBossesThisRun ?? []
+            if (!defeatedThisRun.includes(bossTemplateId)) {
+              const boss = createBoss(bossTemplateId, this.currentLayer + 1)
+              if (boss) {
+                this.game.events.emit('boss-encounter', boss)
+                return  // Halt descent until boss is defeated
+              }
+            }
+          }
+          // Phase 36: The Deep unlock check at layer index 19
+          if (this.currentLayer === 19 && encounterManager.isTheDeepUnlocked()) {
+            this.game.events.emit('the-deep-unlocked')
+            return
+          }
           // Phase 29: Start fall animation before descent
           this.animController?.startFall()
           // Phase 31.5: Animate descent before showing the layer entrance quiz.

@@ -89,6 +89,11 @@
   import MineEventOverlay from './ui/components/MineEventOverlay.svelte'
   import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
   import { activeAltar } from './ui/stores/gameState'
+  // Phase 36: Combat System
+  import CombatOverlay from './ui/components/CombatOverlay.svelte'
+  import BossIntroOverlay from './ui/components/BossIntroOverlay.svelte'
+  import TheDeepUnlockOverlay from './ui/components/TheDeepUnlockOverlay.svelte'
+  import { combatState } from './ui/stores/combatState'
 
   // Phase 42: Deep link listener
   import { registerDeepLinkListener, type DeepLinkRoute } from './services/deepLinkService'
@@ -281,7 +286,10 @@
   })
 
   // Quiz mode tracking
-  let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'>('gate')
+  let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat'>('gate')
+
+  // Phase 36: boss intro overlay state
+  let showBossIntro = $state(false)
 
   // Resume modal state — shown when a mid-dive save is detected on app start (DD-V2-053)
   let showResumeModal = $state(false)
@@ -494,6 +502,8 @@
       gm.handleRandomQuizAnswer(correct)
     } else if (quizMode === 'layer') {
       gm.handleLayerQuizAnswer(correct)
+    } else if (quizMode === 'combat') {
+      gm.handleCombatQuizAnswer(correct)
     } else {
       gm.handleStudyAnswer(correct)
     }
@@ -510,6 +520,8 @@
       getGM()?.handleRandomQuizAnswer(false)
     } else if (quizMode === 'layer') {
       getGM()?.handleLayerQuizAnswer(false)
+    } else if (quizMode === 'combat') {
+      getGM()?.handleCombatQuizAnswer(false)
     } else {
       currentScreen.set('base')
     }
@@ -1017,6 +1029,19 @@
   <InstabilityMeter />
   <MineEventOverlay />
   <AltarSacrificeOverlay />
+
+  <!-- Phase 36: Combat overlays -->
+  {#if $combatState.active && $combatState.encounterType === 'boss' && showBossIntro && $combatState.creature}
+    <BossIntroOverlay
+      boss={$combatState.creature as import('./game/entities/Boss').Boss}
+      onDismiss={() => { showBossIntro = false }}
+    />
+  {:else if $combatState.active}
+    <CombatOverlay />
+  {/if}
+  {#if $currentScreen === 'the-deep-unlock'}
+    <TheDeepUnlockOverlay onProceed={() => currentScreen.set('mining')} />
+  {/if}
 
   <DevPanel />
   <PwaInstallPrompt />

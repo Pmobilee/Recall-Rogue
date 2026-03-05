@@ -342,10 +342,10 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 14 | W3 | **34** | Pixel Art Per Fact | [x] |
 | 15 | W3 | **43** | Cooperative Dives | [x] |
 | 16 | W3 | **30** | Mining Juice | [x] |
-| 17 | W3 | **35** | Mine Mechanics | [ ] |
+| 17 | W3 | **35** | Mine Mechanics | [x] |
 | 18 | W4 | **42** | Viral Growth | [x] |
 | 19 | W4 | **49** | Advanced Mine Gen | [x] |
-| 20 | W4 | **36** | Combat System | [ ] |
+| 20 | W4 | **36** | Combat System | [x] |
 | 21 | W5 | **44** | Teacher Dashboard | [ ] |
 | 22 | W5 | **48** | Prestige & Endgame | [ ] |
 | 23 | W5 | **28** | Performance & Optimization | [ ] |

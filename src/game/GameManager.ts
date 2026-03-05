@@ -78,6 +78,9 @@ import { InventoryManager } from './managers/InventoryManager'
 import { SaveManager, AUTO_SAVE_TICK_INTERVAL } from './managers/SaveManager'
 import type { DiveSaveState } from '../data/saveState'
 import { DIVE_SAVE_VERSION } from '../data/saveState'
+import { encounterManager } from './managers/EncounterManager'
+import type { Boss } from './entities/Boss'
+import type { Creature } from './entities/Creature'
 import { LOOT_LOSS_RATE_SHALLOW, LOOT_LOSS_RATE_MID, LOOT_LOSS_RATE_DEEP, SEND_UP_TICK_COST } from '../data/balance'
 import { TickSystem } from './systems/TickSystem'
 import type { MineEventType } from '../data/mineEvents'
@@ -174,6 +177,11 @@ export class GameManager {
     this.inventoryManager = new InventoryManager(
       () => this.getMineScene(),
     )
+
+    // Wire EncounterManager cross-references (Phase 36)
+    encounterManager.quizManagerRef = this.quizManager
+    encounterManager.setMineSceneAccessor(() => this.getMineScene())
+    this.quizManager.encounterManagerRef = encounterManager
 
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.WEBGL,   // Force WebGL (DD-V2-190)
@@ -781,6 +789,24 @@ export class GameManager {
     // ---- Phase 35.7: Mine event fired ----
     events.on('mine-event', (data: { type: MineEventType }) => {
       this.handleMineEvent(data.type)
+    })
+
+    // ---- Phase 36: Combat encounters ----
+    events.on('boss-encounter', (boss: Boss) => {
+      gaiaMessage.set(boss.phases[0]?.dialogue ?? `${boss.name} blocks your path!`)
+      encounterManager.startBossEncounter(boss)
+    })
+
+    events.on('creature-encounter', (creature: Creature) => {
+      gaiaMessage.set(`Something stirs in the dark...`)
+      encounterManager.startCreatureEncounter(creature)
+    })
+
+    events.on('the-deep-unlocked', () => {
+      currentScreen.set('the-deep-unlock')
+      playerSave.update(save =>
+        save ? { ...save, theDeepVisits: (save.theDeepVisits ?? 0) + 1 } : save
+      )
     })
   }
 
@@ -1550,6 +1576,11 @@ export class GameManager {
   /** Handle a layer entrance quiz answer */
   handleLayerQuizAnswer(correct: boolean): void {
     this.quizManager.handleLayerQuizAnswer(correct)
+  }
+
+  /** Handle a combat encounter quiz answer (Phase 36). */
+  handleCombatQuizAnswer(correct: boolean): void {
+    this.quizManager.handleCombatQuizAnswer(correct)
   }
 
   // =========================================================

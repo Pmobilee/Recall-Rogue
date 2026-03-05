@@ -632,6 +632,14 @@ export interface PlayerSave {
   /** IDs of boss entities the player has defeated (used by isPaintingUnlocked). */
   defeatedBosses?: string[]
 
+  // Phase 36: Combat System
+  /** Boss template IDs defeated in the CURRENT dive run. Cleared when dive ends. */
+  defeatedBossesThisRun?: string[]
+  /** Total creature (non-boss) kills across all dives. */
+  creatureKills?: number
+  /** Number of times "The Deep" has been entered. */
+  theDeepVisits?: number
+
   // Phase 37: Advanced Pet System
   /** Whether the Dust Cat has been received (given after first completed dome tour). */
   dustCatUnlocked?: boolean

@@ -75,6 +75,55 @@ export const BOSS_TEMPLATES: Omit<Boss, 'hp' | 'state' | 'currentPhase'>[] = [
     spriteKey: 'creature_wyrm'
   },
   {
+    id: 'boss_deep_leviathan',
+    name: 'Deep Leviathan',
+    title: 'Sovereign of the Abyssal Dark',
+    species: 'leviathan',
+    rarity: 'legendary',
+    isBoss: true,
+    behavior: 'aggressive',
+    maxHp: 600,
+    attack: 30,
+    defense: 22,
+    speed: 6,
+    biomeAffinity: ['deep_biolume', 'obsidian_rift', 'primordial_mantle'],
+    depthRange: [13, 16] as [number, number],
+    quizRequired: true,
+    quizCategory: 'Natural Sciences',
+    loot: [{ mineralTier: 'geode', amount: 6 }, { mineralTier: 'essence', amount: 3 }],
+    phases: [
+      {
+        hpThreshold: 0.7,
+        ability: {
+          name: 'Bioluminescent Pulse',
+          description: 'Blinds player — next wrong answer deals 2x creature damage',
+          cooldown: 4, effect: 'weaken', magnitude: 2
+        },
+        dialogue: 'A blinding wave of bioluminescent light erupts from the Leviathan!'
+      },
+      {
+        hpThreshold: 0.45,
+        ability: {
+          name: 'Crushing Depth',
+          description: 'Drains 20 O2 immediately',
+          cooldown: 0, effect: 'weaken', magnitude: 20
+        },
+        dialogue: 'The pressure intensifies. Your suit groans under the weight of the deep.'
+      },
+      {
+        hpThreshold: 0.2,
+        ability: {
+          name: 'Final Surge',
+          description: 'Attacks twice per turn for 3 turns',
+          cooldown: 0, effect: 'weaken', magnitude: 1.8
+        },
+        dialogue: 'The Leviathan lets out a deafening cry and lunges!'
+      }
+    ],
+    relicDrop: 'relic_leviathan_fin',
+    spriteKey: 'creature_leviathan'
+  },
+  {
     id: 'boss_void_sentinel',
     name: 'Void Sentinel',
     title: 'Watcher at the World\'s End',
@@ -101,6 +150,17 @@ export const BOSS_TEMPLATES: Omit<Boss, 'hp' | 'state' | 'currentPhase'>[] = [
     spriteKey: 'creature_sentinel'
   }
 ]
+
+/**
+ * Maps 0-based layer index to the boss template ID that guards descent.
+ * Used by MineScene to gate the DescentShaft interaction. (DD-V2-025)
+ */
+export const BOSS_LAYER_MAP: Record<number, string> = {
+  4:  'boss_crystal_golem',     // Layer 5  (0-based: 4)
+  9:  'boss_lava_wyrm',         // Layer 10 (0-based: 9)
+  14: 'boss_deep_leviathan',    // Layer 15 (0-based: 14)
+  19: 'boss_void_sentinel',     // Layer 20 (0-based: 19)
+}
 
 /**
  * Create a boss instance
