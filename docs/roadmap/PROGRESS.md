@@ -129,6 +129,12 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ---
 
+## Emergency Fixes
+
+- [x] **Phase 51 Emergency UX Fixes** — 13 critical bugs: dive-deeper CTA, mine re-entry crash, owned-only consumables/relics/pickaxes, loot summary, starter dome rooms, GAIA click, button overlap, floor dots, context-aware sidebar, quiz no-repeat → [`completed/PHASE-51-EMERGENCY-UX-FIXES.md`](completed/PHASE-51-EMERGENCY-UX-FIXES.md)
+
+---
+
 ## V4 Roadmap — Phases 51-58
 
 Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
