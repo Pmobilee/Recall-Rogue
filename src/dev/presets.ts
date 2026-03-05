@@ -1,4 +1,5 @@
 import type { PlayerSave } from '../data/types'
+import type { Screen } from '../ui/stores/gameState'
 import { BALANCE } from '../data/balance'
 import { FOSSIL_SPECIES } from '../data/fossils'
 import { defaultHubSaveState } from '../data/hubLayout'
@@ -19,7 +20,7 @@ export interface ScenarioPreset {
   label: string
   description: string
   /** The screen to navigate to after loading. Defaults to 'base' if omitted. */
-  targetScreen?: string
+  targetScreen?: Screen
   /** Builds a complete PlayerSave for the given timestamp. */
   buildSave(now: number): PlayerSave
 }
