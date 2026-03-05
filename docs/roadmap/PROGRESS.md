@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 58 (Content & Data Quality) COMPLETE. Admin facts dashboard at /admin/facts with list/edit/bulk operations, basic auth middleware, distractor audit script, fact quality audit report (JSON+Markdown), .env.example. 723 seed facts, audit tooling ready for pipeline runs. 0 typecheck errors, build clean.
+Phase 59 (Artifact Analyzer) COMPLETE. ALL V4 PHASES DONE (51-59). Mystery loot system with study score (0.0-1.0), weighted loot tables per rarity tier, 5-stage cracking animation, PendingArtifact type rework with migration, GAIA study nudges. 0 typecheck errors, build clean. 592 TypeScript/Svelte files.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -160,7 +160,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 58: Content & Data Quality** — Scale facts to 1,000, distractor pool audit and expansion to 25 per fact, source field population, fact content admin dashboard (/admin/facts), content quality audit report → [`completed/PHASE-58-CONTENT-QUALITY.md`](completed/PHASE-58-CONTENT-QUALITY.md)
 
 ### Core Loop Rework (Phase 59)
-- [ ] **Phase 59: Artifact Analyzer** — Artifacts become mystery containers cracked open in Artifact Lab. Rewards: facts, dust, consumables, fossils, upgrade tokens, junk. Study score (SM-2 habits) shifts loot table — diligent learners get better rewards, neglectful players get junk + GAIA nudges. 5-stage cracking animation. Badge count on Artifact Lab. → [`phases/PHASE-59-ARTIFACT-ANALYZER.md`](phases/PHASE-59-ARTIFACT-ANALYZER.md)
+- [x] **Phase 59: Artifact Analyzer** — Artifacts become mystery containers cracked open in Artifact Lab. Rewards: facts, dust, consumables, fossils, upgrade tokens, junk. Study score (SM-2 habits) shifts loot table — diligent learners get better rewards, neglectful players get junk + GAIA nudges. 5-stage cracking animation. Badge count on Artifact Lab. → [`completed/PHASE-59-ARTIFACT-ANALYZER.md`](completed/PHASE-59-ARTIFACT-ANALYZER.md)
 
 ---
 
