@@ -95,6 +95,36 @@ node tests/e2e/03-save-resume.cjs
 - **data-testid selectors**: `btn-dive`, `btn-enter-mine`, `btn-surface`, `quiz-answer-0`..`quiz-answer-3`, `btn-age-adult`, `hud-o2-bar`
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
+### 3. Playwright Test Agents (test creation and healing)
+- Three agents in `.claude/agents/`: **planner** (explores app, writes test plans), **generator** (converts plans to tests), **healer** (debugs and fixes failing tests)
+- Config: `playwright.config.ts`, tests in `tests/e2e/playwright/`, seed test: `seed.spec.ts`
+- Use the **Healer agent** after any fix to automatically verify tests still pass
+- Agents use `mcp__playwright-test__*` tools (separate MCP server from the interactive one)
+- Run tests directly: `npx playwright test` (uses the config file)
+
+## Fix Verification — MANDATORY
+- After ANY bug fix, VERIFY it works before reporting done (Playwright screenshot+snapshot, console logs, or tests)
+- Never say "this should fix it" — either confirm it works or say "I cannot verify this runtime behavior"
+- If a fix can't be visually confirmed (e.g., Phaser canvas), add temporary `console.log` and check via `browser_console_messages` or `browser_evaluate` before removing them
+- Use `window.__terraDebug()` (available in dev mode) to check runtime state: current screen, Phaser scene, player position, interactive element health
+- Use `window.__terraLog` (ring buffer of last 100 events) to trace what actually happened after an interaction
+
+## Debugging Approach — MANDATORY
+When fixing interaction/visual bugs:
+1. **ADD LOGGING** first to confirm what's actually happening (don't guess)
+2. **READ THE LOGS** via `browser_console_messages` or `browser_evaluate(() => window.__terraLog)`
+3. **FIX** based on evidence
+4. **VERIFY** the fix with logs, Playwright screenshot, or `window.__terraDebug()`
+Never skip to step 3 — guessing at fixes without evidence wastes cycles and creates fix-loops.
+
+## Phaser Canvas Debugging
+- Playwright CANNOT interact with Phaser canvas objects — clicks don't reach Phaser's input system
+- To debug Phaser interactions: add `this.input.on('pointerdown', (p: any) => console.log('scene click', p.x, p.y))` at scene level first to confirm clicks reach Phaser
+- Common Phaser click failures: missing `setInteractive()`, z-order occlusion, camera/scale mismatch, Svelte DOM overlay blocking canvas
+- Use devpresets and `globalThis[Symbol.for('terra:currentScreen')].set('screenName')` for testing game states instead of clicking canvas
+- To check if a DOM button is actually clickable, use `browser_evaluate` to test: visibility, disabled state, pointer-events, and z-index occlusion
+- For Phaser-specific state, use `window.__terraDebug()` which exposes active scene, input handler count, and last click coordinates
+
 ## Roadmap Workflow — MANDATORY
 
 ### PROGRESS.md = Lightweight Oversight Index

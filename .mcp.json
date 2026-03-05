@@ -2,7 +2,11 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp", "--config", "/root/terra-miner/.playwright-mcp-config.json"]
+      "args": ["-y", "@playwright/mcp", "--caps", "vision", "--config", "/root/terra-miner/.playwright-mcp-config.json"]
+    },
+    "playwright-test": {
+      "command": "npx",
+      "args": ["playwright", "run-test-mcp-server"]
     },
     "svelte": {
       "type": "http",

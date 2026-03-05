@@ -17,6 +17,7 @@ import { perfService } from './services/perfService'
 import { initI18n } from './i18n/index'
 import { initAchievements } from './ui/stores/achievements'
 import { achievementService } from './services/achievementService'
+import { initDebugBridge } from './dev/debugBridge'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -86,6 +87,9 @@ if (!compatReport.isSupported) {
 
 // Start Core Web Vitals collection
 perfService.observe()
+
+// Initialize dev debug bridge (window.__terraDebug, window.__terraLog) — DEV only
+initDebugBridge()
 
 // Prevent long-press context menu on mobile
 document.addEventListener('contextmenu', (e) => e.preventDefault())
