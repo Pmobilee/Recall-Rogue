@@ -278,9 +278,31 @@
                   ></div>
                 </div>
               </div>
+              {#if myGuild.primaryFocus}
+                <span class="primary-focus" aria-label="Primary focus: {myGuild.primaryFocus}">Focus: {myGuild.primaryFocus}</span>
+              {/if}
               <span class="member-count">{myGuild.memberCount}/30 members</span>
+              {#if myGuild.guildXp != null}
+                <span class="guild-xp-label" aria-label="Guild XP: {myGuild.guildXp}">Guild XP: {myGuild.guildXp}</span>
+              {/if}
             </div>
           </div>
+
+          <!-- Phase 56: Branch Completion Progress -->
+          {#if myGuild.branchCompletion && Object.keys(myGuild.branchCompletion).length > 0}
+            <h3 class="section-title">Branch Completion</h3>
+            <div class="branch-list" aria-label="Knowledge branch completion">
+              {#each Object.entries(myGuild.branchCompletion) as [branch, pct]}
+                <div class="branch-row" aria-label="{branch}: {pct}%">
+                  <span class="branch-name">{branch}</span>
+                  <div class="branch-bar" role="progressbar" aria-valuenow={pct} aria-valuemax={100}>
+                    <div class="branch-fill" style="width: {Math.min(100, pct)}%"></div>
+                  </div>
+                  <span class="branch-pct">{pct}%</span>
+                </div>
+              {/each}
+            </div>
+          {/if}
 
           <!-- Weekly Challenges -->
           <h3 class="section-title">Weekly Challenges</h3>
@@ -703,6 +725,12 @@
     color: #64748b;
   }
 
+  .guild-xp-label {
+    font-size: 0.68rem;
+    color: #f59e0b;
+    font-weight: 700;
+  }
+
   /* Section titles */
   .section-title {
     font-size: 0.72rem;
@@ -1039,6 +1067,59 @@
     color: #64748b;
     font-size: 0.82rem;
     padding: 20px 0;
+  }
+
+  /* Phase 56: Primary focus */
+  .primary-focus {
+    font-size: 0.68rem;
+    color: #60a5fa;
+    font-weight: 600;
+  }
+
+  /* Phase 56: Branch completion */
+  .branch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .branch-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0f172a;
+    border-radius: 6px;
+    padding: 6px 10px;
+  }
+
+  .branch-name {
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .branch-bar {
+    flex: 1;
+    background: #1e293b;
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .branch-fill {
+    background: #3b82f6;
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .branch-pct {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #60a5fa;
+    min-width: 30px;
+    text-align: right;
   }
 
   @media (max-width: 480px) {

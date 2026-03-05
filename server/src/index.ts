@@ -43,6 +43,8 @@ import { publicApiRoutes } from "./routes/publicApi.js";
 import { apiKeyRoutes } from "./routes/apiKeys.js";
 import { partnerPortalRoutes } from "./routes/partnerPortal.js";
 import { webhookRoutes } from "./routes/webhooks.js";
+import { factOfDayRoutes } from "./routes/factOfDay.js";
+import { seasonInfoRoutes } from "./routes/seasonInfo.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -251,6 +253,12 @@ export async function buildApp() {
 
   // Webhook subscription management
   await fastify.register(webhookRoutes, { prefix: '/api/webhooks' });
+
+  // Phase 56: Fact of the Day (public, no prefix — route includes /api/v1)
+  await fastify.register(factOfDayRoutes);
+
+  // Phase 56: Season info + leaderboard (public v1 API)
+  await fastify.register(seasonInfoRoutes, { prefix: '/api/v1' });
 
   // Phase 43: Co-op WebSocket + REST routes
   await fastify.register(websocket);

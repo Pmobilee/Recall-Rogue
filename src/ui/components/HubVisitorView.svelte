@@ -96,6 +96,19 @@
     showGiftModal = false
   }
 
+  /** Flag a guestbook entry for moderation. */
+  async function flagEntry(entryId: string): Promise<void> {
+    try {
+      await socialService.flagGuestbookEntry(playerId, entryId)
+      flaggedEntries.add(entryId)
+      flaggedEntries = new Set(flaggedEntries)
+    } catch {
+      // Silently ignore flag errors — best effort
+    }
+  }
+
+  let flaggedEntries = $state<Set<string>>(new Set())
+
   /** Formats a timestamp as a relative date string (e.g. "3 days ago"). */
   function formatRelative(ts: number): string {
     const diffMs = Date.now() - ts
@@ -324,6 +337,17 @@
                   <div class="entry-header">
                     <span class="entry-author">{safeText(entry.authorDisplayName)}</span>
                     <span class="entry-date">{formatRelative(entry.createdAt)}</span>
+                    {#if !flaggedEntries.has(entry.id)}
+                      <button
+                        class="flag-btn"
+                        type="button"
+                        onclick={() => flagEntry(entry.id)}
+                        aria-label="Flag message for moderation"
+                        title="Report this message"
+                      >&#x2691;</button>
+                    {:else}
+                      <span class="flagged-label" aria-label="Flagged">Flagged</span>
+                    {/if}
                   </div>
                   <p class="entry-message">{safeText(entry.message)}</p>
                 </div>
@@ -823,6 +847,27 @@
     line-height: 1.5;
     margin: 0;
     word-break: break-word;
+  }
+
+  .flag-btn {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 2px 4px;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+
+  .flag-btn:hover {
+    color: #ef4444;
+  }
+
+  .flagged-label {
+    font-size: 0.65rem;
+    color: #ef4444;
+    flex-shrink: 0;
   }
 
   /* ============================================================

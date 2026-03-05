@@ -77,6 +77,15 @@ export const socialService = {
   },
 
   /**
+   * Flag a guestbook entry for moderation review.
+   * @param playerId - Hub owner's player ID.
+   * @param entryId  - The guestbook entry ID to flag.
+   */
+  async flagGuestbookEntry(playerId: string, entryId: string): Promise<void> {
+    await _authedPost(`/social/hubs/${encodeURIComponent(playerId)}/guestbook/${encodeURIComponent(entryId)}/flag`, {})
+  },
+
+  /**
    * Send a gift to another player.
    * Gift types:
    *  - `'minerals'`: payload must include `{ amount: number }` (100 dust, server enforces).

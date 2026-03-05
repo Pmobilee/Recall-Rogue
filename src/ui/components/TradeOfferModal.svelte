@@ -44,13 +44,40 @@
   let sentSuccess = $state(false)
   let errorMessage = $state('')
 
+  // Phase 56: Daily trade limit tracking (client-side display)
+  const DAILY_TRADE_LIMIT = 3
+  let dailyTradeCount = $state(0)
+
+  function getDailyTradeCount(): number {
+    const today = new Date().toISOString().slice(0, 10)
+    const key = `terra:trades-${today}`
+    const stored = localStorage.getItem(key)
+    return stored ? parseInt(stored, 10) : 0
+  }
+
+  function incrementDailyTradeCount(): void {
+    const today = new Date().toISOString().slice(0, 10)
+    const key = `terra:trades-${today}`
+    const count = getDailyTradeCount() + 1
+    localStorage.setItem(key, String(count))
+    dailyTradeCount = count
+  }
+
+  $effect(() => {
+    dailyTradeCount = getDailyTradeCount()
+  })
+
+  const tradesRemaining = $derived(Math.max(0, DAILY_TRADE_LIMIT - dailyTradeCount))
+  const atDailyLimit = $derived(dailyTradeCount >= DAILY_TRADE_LIMIT)
+
   async function loadMyCards(): Promise<void> {
     loadingMine = true
     try {
       const resp = await fetch('/api/trading/my-tradeable')
       if (!resp.ok) throw new Error('Failed to load your cards')
       const data = await resp.json() as { cards: ArtifactCard[] }
-      myCards = data.cards ?? []
+      // Phase 56: Client-side soulbound filter (defense-in-depth)
+      myCards = (data.cards ?? []).filter(c => !c.isSoulbound)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Failed to load cards'
     } finally {
@@ -90,6 +117,7 @@
       if (!resp.ok) throw new Error('Failed to send offer')
       sentSuccess = true
       showConfirm = false
+      incrementDailyTradeCount()
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Failed to send offer'
     } finally {
@@ -130,7 +158,7 @@
     return rarity.charAt(0).toUpperCase() + rarity.slice(1)
   }
 
-  const canSend = $derived(selectedMyCard !== null && selectedReceiverCard !== null)
+  const canSend = $derived(selectedMyCard !== null && selectedReceiverCard !== null && !atDailyLimit)
 
   function handleBackdropClick(e: MouseEvent): void {
     if (e.target === e.currentTarget) onClose()
@@ -162,6 +190,19 @@
     {:else}
       <div class="modal-body">
         <p class="trade-target">Trading with: <strong>{receiverName}</strong></p>
+
+        <!-- Phase 56: Daily trade limit display -->
+        <div class="trade-limit-row" role="status" aria-label="Daily trade limit">
+          <span class="trade-limit-label">Daily trades:</span>
+          <span class="trade-limit-count" class:at-limit={atDailyLimit}>
+            {dailyTradeCount}/{DAILY_TRADE_LIMIT}
+          </span>
+          {#if atDailyLimit}
+            <span class="trade-limit-warning">Limit reached. Try again tomorrow.</span>
+          {:else}
+            <span class="trade-limit-remaining">{tradesRemaining} remaining</span>
+          {/if}
+        </div>
 
         {#if errorMessage}
           <div class="error-banner" role="alert">{errorMessage}</div>
@@ -256,7 +297,7 @@
           onclick={() => { showConfirm = true }}
           aria-disabled={!canSend}
         >
-          Send Offer
+          {atDailyLimit ? 'No trades remaining today' : 'Send Offer'}
         </button>
       </div>
     {/if}
@@ -286,13 +327,18 @@
           {#each myCards as card}
             <button
               class="picker-item"
+              class:picker-item-disabled={card.isSoulbound}
               style="border-color: {rarityColor(card.rarity)}"
               type="button"
+              disabled={card.isSoulbound}
               onclick={() => selectMyCard(card)}
-              aria-label="{formatRarity(card.rarity)} artifact: {card.factId}"
+              aria-label="{formatRarity(card.rarity)} artifact: {card.factId}{card.isSoulbound ? ' (soulbound)' : ''}"
             >
               <span class="rarity-badge" style="background: {rarityColor(card.rarity)}">{formatRarity(card.rarity)}</span>
               <span class="card-id mono">{card.factId}</span>
+              {#if card.isSoulbound}
+                <span class="soulbound-tag">Soulbound</span>
+              {/if}
             </button>
           {/each}
         </div>
@@ -680,8 +726,25 @@
     transition: border-color 0.1s;
   }
 
-  .picker-item:hover { border-color: #f59e0b; }
-  .picker-item:active { transform: translateY(1px); }
+  .picker-item:hover:not(:disabled) { border-color: #f59e0b; }
+  .picker-item:active:not(:disabled) { transform: translateY(1px); }
+
+  .picker-item-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .soulbound-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    padding: 1px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
 
   /* Confirm panel */
   .confirm-panel {
@@ -754,4 +817,41 @@
   }
 
   .mono { font-family: monospace; }
+
+  /* Phase 56: Trade limit styles */
+  .trade-limit-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-size: 0.72rem;
+  }
+
+  .trade-limit-label {
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .trade-limit-count {
+    color: #f59e0b;
+    font-weight: 700;
+  }
+
+  .trade-limit-count.at-limit {
+    color: #ef4444;
+  }
+
+  .trade-limit-remaining {
+    color: #4ade80;
+    font-size: 0.68rem;
+  }
+
+  .trade-limit-warning {
+    color: #ef4444;
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
 </style>

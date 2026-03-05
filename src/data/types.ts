@@ -409,6 +409,12 @@ export interface GuildInfo {
   memberCount: number;
   isOpen: boolean;
   description: string;
+  /** Primary knowledge focus area for the guild (Phase 56). */
+  primaryFocus?: string;
+  /** Branch completion percentages keyed by category (Phase 56). */
+  branchCompletion?: Record<string, number>;
+  /** Total guild XP pool (Phase 56). */
+  guildXp?: number;
 }
 
 /** A guild's weekly collaborative challenge */

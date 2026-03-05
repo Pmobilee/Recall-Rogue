@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 54 (Mine Atmosphere) COMPLETE. 65+ ambient story entries by biome with floating popups, 40+ quote stone entries with QuoteStoneModal (GAIA reactions), 25+ cavern text entries with CavernTextModal, WallText non-mineable block type in 25% of rest alcoves, scanner tier constants. 0 typecheck errors, build clean.
+Phase 55 (Economy Depth) COMPLETE. Duplicate artifact mixing with local state (60/30/10 rarity roll), compression tax display in MineralConverter, 3-slot daily deals (consumable 20% off, special, 7-day featured with Day 7 pity), Premium Materializer golden glow and PREMIUM badge. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -141,7 +141,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Loot & Economy (Phases 51, 55)
 - [x] **Phase 51: Core Loot Loop Fidelity** — Sacrifice choice screen (depth-scaled), "The Cloth" decision overlay, send-up slot scaling, backpack stack limits per tier, Rescue Beacon consumable → [`completed/PHASE-51-CORE-LOOT-FIDELITY.md`](completed/PHASE-51-CORE-LOOT-FIDELITY.md)
-- [ ] **Phase 55: Economy Depth** — Duplicate artifact mixing (gacha rarity roll), mineral compression tax, Rescue Beacon crafting cost, structured 3-slot daily deals, Premium Materializer distinction → [`phases/PHASE-55-ECONOMY-DEPTH.md`](phases/PHASE-55-ECONOMY-DEPTH.md)
+- [x] **Phase 55: Economy Depth** — Duplicate artifact mixing (local state, 60/30/10 rarity roll), compression tax display, 3-slot daily deals with 7-day pity rotation, Premium Materializer golden glow + PREMIUM badge → [`completed/PHASE-55-ECONOMY-DEPTH.md`](completed/PHASE-55-ECONOMY-DEPTH.md)
 
 ### Learning Systems (Phases 52, 53)
 - [x] **Phase 52: Learning Depth** — Morning/evening quiz oxygen bonus, 3-question layer entrance challenge, artifact rarity boost quiz, GAIA mnemonic on struggle, SM-2 consistency penalty exact wiring → [`completed/PHASE-52-LEARNING-DEPTH.md`](completed/PHASE-52-LEARNING-DEPTH.md)

@@ -16,6 +16,8 @@
   import PrestigeBadge from './PrestigeBadge.svelte'
   import OmniscientReveal from './OmniscientReveal.svelte'
   import { isEligibleForPrestige, isOmniscient } from '../../services/prestigeService'
+  import { fetchFactOfDay, type FactOfDay } from '../../services/factOfDayService'
+  import { addLearnedFact } from '../stores/playerData'
 
   interface Props {
     onDive: () => void
@@ -157,6 +159,28 @@
   const prestigeEligible = $derived($playerSave ? isEligibleForPrestige($playerSave) : false)
   const omniscientStatus = $derived($playerSave ? isOmniscient($playerSave) : false)
 
+  // Phase 56: Fact of the Day
+  let factOfDay = $state<FactOfDay | null>(null)
+  let factDismissed = $state(false)
+
+  $effect(() => {
+    fetchFactOfDay().then(f => { factOfDay = f }).catch(() => {})
+  })
+
+  const factAlreadyLearned = $derived(
+    factOfDay ? ($playerSave?.learnedFacts ?? []).includes(factOfDay.factId) : false
+  )
+
+  function dismissFact(): void {
+    factDismissed = true
+  }
+
+  function addFactToStudy(): void {
+    if (factOfDay && !factAlreadyLearned) {
+      addLearnedFact(factOfDay.factId)
+    }
+  }
+
   // Phase 52: Morning/evening review bonus
   const showMorningPrompt = $derived(
     $playerSave ? isMorningReviewAvailable($playerSave) : false
@@ -266,6 +290,25 @@
         <small>Answer {BALANCE.EVENING_REVIEW_FACT_COUNT} facts — earn +{BALANCE.EVENING_REVIEW_O2_BONUS} O₂ Tank</small>
       </div>
       <button class="review-start-btn" type="button" onclick={startEveningReview}>Start</button>
+    </div>
+  {/if}
+
+  <!-- Phase 56: Today's Discovery panel -->
+  {#if factOfDay && !factDismissed}
+    <div class="fact-of-day-panel" role="region" aria-label="Today's Discovery">
+      <div class="fact-header">
+        <span class="fact-category-tag">{factOfDay.category}</span>
+        <button class="fact-dismiss-btn" type="button" onclick={dismissFact} aria-label="Dismiss">&#x2715;</button>
+      </div>
+      <p class="fact-statement">{factOfDay.statement}</p>
+      <p class="fact-gaia-comment">GAIA: "{factOfDay.gaiaComment}"</p>
+      <div class="fact-actions">
+        {#if factAlreadyLearned}
+          <button class="fact-add-btn" type="button" disabled>Already in collection</button>
+        {:else}
+          <button class="fact-add-btn fact-add-active" type="button" onclick={addFactToStudy}>Add to Study</button>
+        {/if}
+      </div>
     </div>
   {/if}
 
@@ -490,5 +533,115 @@
   @keyframes banner-slide-in {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Phase 56: Fact of the Day panel */
+  .fact-of-day-panel {
+    pointer-events: auto;
+    position: absolute;
+    bottom: 120px;
+    left: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, rgba(40, 80, 160, 0.3), rgba(30, 60, 120, 0.2));
+    border: 1px solid rgba(80, 140, 220, 0.45);
+    border-radius: 12px;
+    padding: 12px 14px;
+    z-index: 42;
+    animation: banner-slide-in 300ms ease-out;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .fact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .fact-category-tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #6cb4ee;
+    background: rgba(80, 140, 220, 0.2);
+    border: 1px solid rgba(80, 140, 220, 0.35);
+    border-radius: 4px;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .fact-dismiss-btn {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    color: #888;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .fact-dismiss-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ccc;
+  }
+
+  .fact-statement {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #e0e8f0;
+    line-height: 1.5;
+    margin: 0 0 6px;
+  }
+
+  .fact-gaia-comment {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #8ab8e0;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .fact-actions {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fact-add-btn {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #888;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    padding: 5px 10px;
+    cursor: default;
+    min-height: 28px;
+  }
+
+  .fact-add-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .fact-add-active {
+    background: rgba(80, 140, 220, 0.2);
+    border-color: rgba(80, 140, 220, 0.45);
+    color: #6cb4ee;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .fact-add-active:active {
+    background: rgba(80, 140, 220, 0.35);
   }
 </style>
