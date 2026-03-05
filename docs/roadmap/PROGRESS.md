@@ -1,6 +1,6 @@
 # Terra Gacha — Progress Tracker & Roadmap
 
-Last updated: 2026-03-06
+Last updated: 2026-03-06 (Phase 51 emergency plan added)
 
 ## How This Roadmap Works
 
@@ -124,6 +124,31 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Platform Maturity (Phase 50)
 - [x] **Phase 50: Open Content Ecosystem** — Public fact API, community moderation tools, educational partnerships, content licensing, third-party integrations → [`completed/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md`](completed/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md)
+
+---
+
+## EMERGENCY — Phase 51: Critical UX & Gameplay Fixes
+
+**Status**: NOT STARTED — Must be done before any sharing/testing
+
+- [ ] **Phase 51: Emergency UX & Gameplay Fixes** — 13 critical bugs from playtesting: dive-deeper flow, mine restart responsiveness, consumable/relic/pickaxe gating, artifact→facts pipeline, loot summary screen, dome completeness, settings/DEV button overlap, floor dots, context sidebar, SM-2 mine contribution, quiz repeat prevention → [`phases/PHASE-51-EMERGENCY-UX-FIXES.md`](phases/PHASE-51-EMERGENCY-UX-FIXES.md)
+
+### Phase 51 Sub-steps
+| Sub-step | Issue | Status |
+|----------|-------|--------|
+| 51.1 | "Continue" after dive goes to dome; need "Dive Deeper" CTA | ☐ |
+| 51.2 | Re-entering mine after dome visit: unresponsive empty scene | ☐ |
+| 51.3 | Consumables shown without ownership (all types freely available) | ☐ |
+| 51.4 | Relics shown without finding them (RELIC_CATALOGUE fallback) | ☐ |
+| 51.5 | Pickaxe UI shows all tiers; should be owned-only dropdown | ☐ |
+| 51.6 | Artifact mined but never appears in facts/knowledge base | ☐ |
+| 51.7 | Can select same consumable ×N without owning N copies | ☐ |
+| 51.8 | No loot summary screen shown on mine exit | ☐ |
+| 51.9 | Dome missing study/artifact/upgrade rooms; GAIA not clickable | ☐ |
+| 51.10 | Settings button hidden behind DEV button | ☐ |
+| 51.11 | Floor indicator dots stuck as full-screen overlay | ☐ |
+| 51.12 | Sidebar shows review stats during mine (should show mine stats) | ☐ |
+| 51.13 | Wrong quiz answer: next question can be the same fact | ☐ |
 
 ---
 
