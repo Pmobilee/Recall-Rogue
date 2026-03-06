@@ -39,9 +39,11 @@
     onBack: () => void
     /** Optional — called when user taps "Account / Profile". Opens the auth profile screen. */
     onViewProfile?: () => void
+    /** Optional — called when user taps "Log Out" from settings. */
+    onLogout?: () => void
   }
 
-  let { onBack, onViewProfile }: Props = $props()
+  let { onBack, onViewProfile, onLogout }: Props = $props()
 
   /** True when the user is logged in (shows "Account" option). */
   const loggedIn = $derived($authStore.isLoggedIn)
@@ -530,6 +532,17 @@
           </div>
         {/if}
 
+        {#if loggedIn && onLogout}
+          <button
+            class="logout-btn"
+            type="button"
+            onclick={onLogout}
+            data-testid="btn-logout"
+          >
+            Log Out
+          </button>
+        {/if}
+
         {#if !showDeleteConfirm}
           <button
             class="delete-btn"
@@ -897,6 +910,30 @@
     color: var(--color-text-dim);
     font-style: italic;
     line-height: 1.4;
+  }
+
+  /* ---- Log out ---- */
+  .logout-btn {
+    margin: 8px 16px 4px;
+    padding: 10px 16px;
+    border: 2px solid var(--color-warning, #f0b84c);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-warning, #f0b84c) 10%, var(--color-surface) 90%);
+    color: var(--color-warning, #f0b84c);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.12s;
+    align-self: flex-start;
+  }
+
+  .logout-btn:hover {
+    background: color-mix(in srgb, var(--color-warning, #f0b84c) 20%, var(--color-surface) 80%);
+  }
+
+  .logout-btn:active {
+    transform: translateY(1px);
   }
 
   /* ---- Delete save ---- */

@@ -66,7 +66,6 @@ function getStoredAgeRating(): AgeRating {
  *   const fact = factsDB.getById('some-id')
  */
 class FactsDB {
-  private static instance: FactsDB
   private db: Database | null = null
   private initialized = false
 
@@ -76,10 +75,11 @@ class FactsDB {
    * Returns the shared singleton instance of FactsDB.
    */
   static getInstance(): FactsDB {
-    if (!FactsDB.instance) {
-      FactsDB.instance = new FactsDB()
+    const sym = Symbol.for('terra:factsDB')
+    if (!(globalThis as any)[sym]) {
+      (globalThis as any)[sym] = new FactsDB()
     }
-    return FactsDB.instance
+    return (globalThis as any)[sym] as FactsDB
   }
 
   /**

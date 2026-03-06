@@ -439,20 +439,23 @@ export function resolveTileSpriteKey(
   variant: number,
   textures: Phaser.Textures.TextureManager,
 ): string {
-  const biomeKey = biomeTileSpriteKey(biomeId, category, variant)
+  // Use variant 00 as the uniform base texture for the biome.
+  // Individual autotile variants (01-15) are visually inconsistent since each was
+  // generated independently. A single seamless texture per biome/category looks
+  // much better than a patchwork of different styles.
+  const baseKey = biomeTileSpriteKey(biomeId, category, 0)
 
-  // Check per-tier atlas first (atlas frame key format: 'atlas_shallow|limestone_caves_rock_07')
+  // Check per-tier atlas first
   const atlasKey = TIER_ATLAS_KEYS[getBiomeTier(biomeId)] ?? 'atlas_shallow'
-  if (textures.exists(atlasKey) && textures.get(atlasKey).has(biomeKey)) {
-    return biomeKey  // Phaser resolves atlas frames by frame name
+  if (textures.exists(atlasKey) && textures.get(atlasKey).has(baseKey)) {
+    return baseKey
   }
 
   // Check standalone texture
-  if (textures.exists(biomeKey)) return biomeKey
+  if (textures.exists(baseKey)) return baseKey
 
-  // Fallback to universal autotile
-  const padded = String(variant % 16).padStart(2, '0')
-  return `autotile_${category}_${padded}`
+  // Fallback to universal autotile (also use variant 00 for consistency)
+  return `autotile_${category}_00`
 }
 
 /**

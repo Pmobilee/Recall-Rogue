@@ -75,3 +75,31 @@ docs/audit/fact-sprite-coverage.json
 scripts/fact-audit-report.json
 scripts/fact-audit-report.md
 scripts/distractor-expansion-queue.json
+
+# Dev/debug screenshots (root level)
+*.png
+# But keep public assets and sprite-gen registry tracked
+!public/**/*.png
+!sprite-gen/sprite-registry.json
+
+# Sprite generation intermediate output (keep registry, ignore raw output)
+sprite-gen/output/characters/
+sprite-gen/output/companions/
+sprite-gen/output/dome/
+sprite-gen/output/icons/
+sprite-gen/output/items/
+sprite-gen/output/pets/
+sprite-gen/output/tiles/
+sprite-gen/output/test-biome/
+sprite-gen/reference-images/
+sprite-gen/review-tool/
+sprite-gen/generation-log.txt
+sprite-gen/new-sprites-pending.json
+
+# Playtest screenshots
+playtest/
+
+# Server data (added for backend)
+server/node_modules/
+server/dist/
+pgdata/

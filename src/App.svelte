@@ -298,6 +298,12 @@
     authScreen = 'login'
   }
 
+  /** Settings: direct logout handler (clears auth then resets to login). */
+  function handleSettingsLogout(): void {
+    authStore.clear()
+    handleProfileLogout()
+  }
+
   /** Opens the profile screen from Settings. */
   function handleViewProfile(): void {
     authScreen = 'profile'
@@ -1070,7 +1076,7 @@
     <Farm onBack={handleBackFromFarm} />
 
   {:else if $currentScreen === 'settings'}
-    <Settings onBack={handleBackFromSettings} onViewProfile={handleViewProfile} />
+    <Settings onBack={handleBackFromSettings} onViewProfile={handleViewProfile} onLogout={handleSettingsLogout} />
 
   {:else if $currentScreen === 'gaiaReport'}
     <GaiaReport onBack={() => currentScreen.set('base')} />
