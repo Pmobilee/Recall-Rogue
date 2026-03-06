@@ -1,5 +1,6 @@
 <script lang="ts">
   import { apiClient } from '../../../services/apiClient'
+  import type { AuthResponse } from '../../../services/apiClient'
   import { authStore } from '../../stores/authStore'
 
   interface Props {
@@ -41,7 +42,14 @@
     errorMessage = null
 
     try {
-      const response = await apiClient.login(trimmedEmail, trimmedPassword)
+      let response: AuthResponse
+      try {
+        response = await apiClient.login(trimmedEmail, trimmedPassword)
+      } catch {
+        // Backend unreachable — use local auth
+        const { localLogin } = await import('../../../services/localAuth')
+        response = await localLogin(trimmedEmail, trimmedPassword)
+      }
       authStore.setUser({
         id: response.user.id,
         email: response.user.email,

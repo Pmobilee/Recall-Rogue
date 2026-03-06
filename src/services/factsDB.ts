@@ -21,10 +21,9 @@ async function getSqlJs(): Promise<SqlJsStatic> {
   return _initSqlJs
 }
 
-/** Lazily resolved WASM URL — only loaded when getSqlJs() is first called. */
+/** Returns the URL to the sql-wasm.wasm file served from public/. */
 async function getSqlWasmUrl(): Promise<string> {
-  const mod = await import('sql.js/dist/sql-wasm.wasm?url')
-  return mod.default as string
+  return '/sql-wasm.wasm'
 }
 
 /**
@@ -453,7 +452,10 @@ class FactsDB {
     if (!this.ensureReady()) return []
     // sql.js accepts BindParams as an array of values or a named object.
     // Casting through unknown keeps strict-mode happy while staying correct.
-    const stmt = this.db!.prepare(sql, params as Parameters<Database['prepare']>[1])
+    const stmt = this.db!.prepare(sql)
+    if (params.length > 0) {
+      stmt.bind(params as Parameters<Database['prepare']>[1])
+    }
     const facts: Fact[] = []
     try {
       while (stmt.step()) {

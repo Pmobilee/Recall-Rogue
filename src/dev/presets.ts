@@ -146,6 +146,9 @@ export function BASE_SAVE(now: number): PlayerSave {
     tutorialStep: 0,
     activeFossil: null,
     studySessionsCompleted: 0,
+
+    // Phase 59: Artifact Analyzer persistence
+    pendingArtifacts: [],
   }
 }
 

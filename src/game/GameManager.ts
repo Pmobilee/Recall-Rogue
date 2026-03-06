@@ -60,6 +60,7 @@ import {
   getDueReviews,
   syncKnowledgePoints,
   deductMinerals,
+  savePendingArtifacts,
 } from '../ui/stores/playerData'
 import { getQuizChoices, selectQuestion } from '../services/quizService'
 import { factsDB } from '../services/factsDB'
@@ -820,6 +821,8 @@ export class GameManager {
     // Queue artifacts for review at base
     if (artifactItems.length > 0) {
       pendingArtifacts.update(existing => [...existing, ...artifactItems])
+      savePendingArtifacts(get(pendingArtifacts))
+      persistPlayer()
     }
 
     // Record dive stats
@@ -1523,6 +1526,8 @@ export class GameManager {
 
     // Add a pending artifact with the guaranteed rarity
     pendingArtifacts.update(existing => [...existing, { factId: `altar_${guaranteedRarity}_${Date.now()}`, rarity: guaranteedRarity as import('../data/types').Rarity, minedAt: Date.now() }])
+    savePendingArtifacts(get(pendingArtifacts))
+    persistPlayer()
 
     gaiaMessage.set(`Sacrifice accepted. A ${guaranteedRarity} relic emerges from the stone.`)
 

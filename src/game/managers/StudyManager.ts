@@ -13,6 +13,7 @@ import {
   addLearnedFact,
   updateReviewState,
   addMinerals,
+  savePendingArtifacts,
   getDueReviews,
   syncKnowledgePoints,
 } from '../../ui/stores/playerData'
@@ -200,6 +201,8 @@ export class StudyManager {
     } else {
       // Skip unknown fact
       pendingArtifacts.update(arr => arr.slice(1))
+      savePendingArtifacts(get(pendingArtifacts))
+      persistPlayer()
       this.reviewNextArtifact()
     }
   }
@@ -210,6 +213,8 @@ export class StudyManager {
     if (fact) {
       addLearnedFact(fact.id)
       pendingArtifacts.update(arr => arr.filter(a => a.factId !== fact.id))
+      savePendingArtifacts(get(pendingArtifacts))
+      persistPlayer()
     }
     activeFact.set(null)
     this.reviewNextArtifact()
@@ -226,6 +231,8 @@ export class StudyManager {
       const reward = sellValues[fact.rarity] ?? 5
       addMinerals('dust', reward)
       pendingArtifacts.update(arr => arr.filter(a => a.factId !== fact.id))
+      savePendingArtifacts(get(pendingArtifacts))
+      persistPlayer()
     }
     activeFact.set(null)
     this.reviewNextArtifact()

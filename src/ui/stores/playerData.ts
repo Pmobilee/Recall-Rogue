@@ -9,7 +9,7 @@ function singletonWritable<T>(key: string, initial: T): Writable<T> {
   }
   return (globalThis as any)[sym] as Writable<T>
 }
-import type { AgeRating, MineralTier, PlayerSave, ReviewState } from '../../data/types'
+import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 import { getUnlockedPaintingIds } from './achievements'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
@@ -80,6 +80,25 @@ export function persistPlayer(): void {
 
   playerSave.set(updated)
   saveFn(updated)
+}
+
+/**
+ * Save pending artifacts to player save.
+ *
+ * @param artifacts - The current pending artifacts array.
+ */
+export function savePendingArtifacts(artifacts: PendingArtifact[]): void {
+  playerSave.update(s => s ? { ...s, pendingArtifacts: artifacts } : s)
+}
+
+/**
+ * Load pending artifacts from player save.
+ *
+ * @returns Array of pending artifacts from the save, or empty array.
+ */
+export function loadPendingArtifacts(): PendingArtifact[] {
+  const save = get(playerSave)
+  return save?.pendingArtifacts ?? []
 }
 
 /**

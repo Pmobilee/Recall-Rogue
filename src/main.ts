@@ -4,7 +4,7 @@ import App from './App.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
-import { currentScreen } from './ui/stores/gameState'
+import { currentScreen, pendingArtifacts } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
 import { analyticsService } from './services/analyticsService'
@@ -108,6 +108,9 @@ const app = mount(App, {
 // Initialize player save data
 const save = initPlayer('teen')
 
+// Restore pending artifacts from save into the in-memory store
+pendingArtifacts.set(save.pendingArtifacts ?? [])
+
 // Phase 47: Initialize achievement gallery state from saved data
 {
   const currentSaveForAchievements = get(playerSave)
@@ -130,6 +133,7 @@ async function bootGame(): Promise<void> {
 
   // Start DB init in background — don't block Phaser boot
   const dbPromise = factsDB.init().catch(err => {
+    console.error('FactsDB init failed:', err)
     console.warn('FactsDB init failed, continuing without database:', err)
   })
 

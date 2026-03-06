@@ -101,6 +101,9 @@
     return tier.charAt(0).toUpperCase() + tier.slice(1)
   }
 
+  // Tab state
+  let activeTab = $state<'crafting' | 'dome'>('crafting')
+
   // Floor upgrade state
   let showUpgradePanel = $state(false)
   let showMixingModal = $state(false)
@@ -140,6 +143,27 @@
     {/each}
   </div>
 
+  <!-- Tab bar -->
+  <div class="tab-bar">
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'crafting'}
+      type="button"
+      onclick={() => { audioManager.playSound('button_click'); activeTab = 'crafting' }}
+    >
+      ⚗️ Crafting
+    </button>
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'dome'}
+      type="button"
+      onclick={() => { audioManager.playSound('button_click'); activeTab = 'dome' }}
+    >
+      🏗️ Dome Upgrades
+    </button>
+  </div>
+
+  {#if activeTab === 'crafting'}
   <!-- Permanent upgrades section -->
   <div class="section">
     <h2 class="section-title permanent-title">Permanent Upgrades</h2>
@@ -305,6 +329,18 @@
     </div>
   {/if}
 
+  <!-- Recycle Artifacts -->
+  <section class="recycle-section">
+    <h3 class="section-heading">Recycle Artifacts</h3>
+    <p class="recycle-desc">Combine 3+ duplicate artifact cards for a chance at a rarity upgrade.</p>
+    <button class="recycle-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showMixingModal = true }}>
+      Open Artifact Mixer
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </button>
+  </section>
+  {/if}
+
+  {#if activeTab === 'dome'}
   <!-- Dome Upgrades Section -->
   <section class="dome-upgrades-section">
     <h3 class="section-heading">🏗️ Dome Upgrades</h3>
@@ -318,6 +354,7 @@
       <span class="arrow" aria-hidden="true">→</span>
     </button>
   </section>
+  {/if}
 
   {#if showUpgradePanel}
     <FloorUpgradePanel
@@ -327,16 +364,6 @@
       onUpgrade={handleUpgrade}
     />
   {/if}
-
-  <!-- Recycle Artifacts -->
-  <section class="recycle-section">
-    <h3 class="section-heading">Recycle Artifacts</h3>
-    <p class="recycle-desc">Combine 3+ duplicate artifact cards for a chance at a rarity upgrade.</p>
-    <button class="recycle-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showMixingModal = true }}>
-      Open Artifact Mixer
-      <span class="arrow" aria-hidden="true">&rarr;</span>
-    </button>
-  </section>
 
   {#if showMixingModal}
     <DuplicateMixingModal onClose={() => { showMixingModal = false }} />
@@ -438,6 +465,39 @@
   .mlabel {
     color: var(--color-text-dim);
     font-size: 0.75rem;
+  }
+
+  /* ---- Tab bar ---- */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    margin: 8px;
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: 4px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-height: 44px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+  }
+
+  .tab-btn.active {
+    background: color-mix(in srgb, var(--color-primary, #a78bfa) 25%, var(--color-bg) 75%);
+    color: var(--color-text);
+  }
+
+  .tab-btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.05);
   }
 
   /* ---- Sections ---- */

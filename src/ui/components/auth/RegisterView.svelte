@@ -1,5 +1,6 @@
 <script lang="ts">
   import { apiClient } from '../../../services/apiClient'
+  import type { AuthResponse } from '../../../services/apiClient'
   import { authStore } from '../../stores/authStore'
 
   /** Age bracket selected by the user during registration. */
@@ -61,7 +62,14 @@
     errorMessage = null
 
     try {
-      const response = await apiClient.register(email.trim(), password, displayName.trim())
+      let response: AuthResponse
+      try {
+        response = await apiClient.register(email.trim(), password, displayName.trim())
+      } catch {
+        // Backend unreachable — use local auth
+        const { localRegister } = await import('../../../services/localAuth')
+        response = await localRegister(email.trim(), password, displayName.trim())
+      }
       authStore.setUser({
         id: response.user.id,
         email: response.user.email,

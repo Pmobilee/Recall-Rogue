@@ -731,6 +731,8 @@ export interface PlayerSave {
   isPioneer?: boolean
 
   // Phase 59: Artifact Analyzer
+  /** Pending artifacts awaiting analysis (persisted across sessions). */
+  pendingArtifacts?: PendingArtifact[]
   /** Timestamps of recent study sessions (pruned to last 7 days). */
   lastStudySessionTimestamps?: number[]
   /** Upgrade tokens earned from artifact cracking. */

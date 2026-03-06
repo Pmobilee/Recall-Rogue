@@ -327,8 +327,11 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['authoredHints'])) {
       parsedAny['authoredHints'] = []
     }
-    // Phase 59: Artifact Analyzer — migrate pendingArtifacts from string[] to PendingArtifact[]
-    // and initialize new fields
+    // Phase 59: Artifact Analyzer — migrate pendingArtifacts persistence
+    if (!Array.isArray(parsedAny['pendingArtifacts'])) {
+      parsedAny['pendingArtifacts'] = []
+    }
+    // Phase 59: Artifact Analyzer — initialize new fields
     if (!Array.isArray(parsedAny['lastStudySessionTimestamps'])) {
       parsedAny['lastStudySessionTimestamps'] = []
     }
@@ -412,6 +415,9 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     // Phase 47: Achievement Gallery
     unlockedPaintings: [],
     defeatedBosses: [],
+
+    // Phase 59: Artifact Analyzer persistence
+    pendingArtifacts: [],
   }
 }
 

@@ -3,7 +3,7 @@
   import type { PendingArtifact, Rarity } from '../../data/types'
   import { rollArtifactReward } from '../../data/artifactLootTable'
   import { computeStudyScore } from '../../services/studyScore'
-  import { playerSave, addMinerals, addLearnedFact, persistPlayer } from '../stores/playerData'
+  import { playerSave, addMinerals, addLearnedFact, persistPlayer, savePendingArtifacts } from '../stores/playerData'
   import { pendingArtifacts, activeFact } from '../stores/gameState'
   import { factsDB } from '../../services/factsDB'
   import { get } from 'svelte/store'
@@ -128,6 +128,7 @@
     pendingArtifacts.update(arr =>
       arr.filter(a => a.factId !== artifact.factId || a.minedAt !== artifact.minedAt),
     )
+    savePendingArtifacts(get(pendingArtifacts))
     persistPlayer()
     stage = 5
   }
@@ -138,6 +139,7 @@
     pendingArtifacts.update(arr =>
       arr.filter(a => a.factId !== artifact.factId || a.minedAt !== artifact.minedAt),
     )
+    savePendingArtifacts(get(pendingArtifacts))
     persistPlayer()
     activeFact.set(null)
     showFactChoice = false
@@ -158,6 +160,7 @@
     pendingArtifacts.update(arr =>
       arr.filter(a => a.factId !== artifact.factId || a.minedAt !== artifact.minedAt),
     )
+    savePendingArtifacts(get(pendingArtifacts))
     persistPlayer()
     activeFact.set(null)
     showFactChoice = false
