@@ -223,15 +223,15 @@
       // Phase 15.5: Fire return engagement greeting before idle bubbles start.
       // This takes priority over the idle bubble timer so the welcome message
       // is the first thing the player sees when they open or return to the app.
-      gm.getGaiaManager().fireReturnEngagement()
+      gm.getGaiaManager()?.fireReturnEngagement()
 
       // Start GAIA idle thought bubble timer (Phase 15.2)
-      gm.getGaiaManager().startIdleBubbleTimer()
+      gm.getGaiaManager()?.startIdleBubbleTimer()
 
       // Phase 15.4: Fire a journey memory comment after a short delay so the
       // player has time to see the dome before GAIA references their history.
       setTimeout(() => {
-        gm.getGaiaManager().fireJourneyMemory()
+        gm.getGaiaManager()?.fireJourneyMemory()
       }, 2000)
 
       // Defer unsub to next microtask so subscribe() can return first,

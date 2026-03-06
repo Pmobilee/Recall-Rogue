@@ -344,8 +344,10 @@
     const pending = get(pendingArtifacts)
     if (pending.length > 0) {
       currentAnalyzerArtifact = pending[0]
-      currentScreen.set('factReveal')
+    } else {
+      currentAnalyzerArtifact = null
     }
+    currentScreen.set('factReveal')
   }
 
   /** Advance to the next artifact in the analyzer queue. */

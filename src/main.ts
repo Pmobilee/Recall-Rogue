@@ -134,9 +134,12 @@ async function bootGame(): Promise<void> {
   })
 
   // Boot Phaser engine immediately (parallel with DB load)
+  // IMPORTANT: boot() must be called BEFORE setting the store. Setting the store
+  // fires Svelte subscribers synchronously (e.g. HubView calls gm.getGaiaManager()),
+  // which will crash if boot() hasn't initialized the sub-managers yet.
   const gameManager = GameManager.getInstance()
-  gameManagerStore.set(gameManager)
   gameManager.boot()
+  gameManagerStore.set(gameManager)
 
   // BootScene has no preload, so boot completes synchronously.
   // Navigate to appropriate screen immediately.
