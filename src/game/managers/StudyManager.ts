@@ -56,6 +56,20 @@ export class StudyManager {
     const dueReviews = getDueReviews()
 
     const facts: Fact[] = []
+    if (!factsDB.isReady()) {
+      console.warn('[StudyManager] FactsDB not ready — retrying init')
+      factsDB.init().then(() => {
+        // Retry after init completes
+        this.startStudySession()
+      }).catch(() => {
+        console.error('[StudyManager] FactsDB init failed — cannot start study session')
+        // Show session with empty facts so user sees an error state
+        studyFacts.set([])
+        studyReviewStates.set([])
+        currentScreen.set('studySession')
+      })
+      return
+    }
     for (const review of dueReviews) {
       const fact = factsDB.getById(review.factId)
       if (fact) facts.push(fact)

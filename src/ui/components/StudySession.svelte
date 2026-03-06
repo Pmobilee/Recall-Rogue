@@ -220,6 +220,7 @@
 
       {#if facts.length === 0}
         <p class="no-cards-note">No cards due right now. Dive to discover more facts!</p>
+        <p class="db-hint">Facts database may still be loading. Try again in a few seconds.</p>
       {/if}
 
       <button class="back-link" type="button" onclick={handleComplete}>
@@ -608,6 +609,13 @@
     font-size: 0.85rem;
     text-align: center;
     font-style: italic;
+  }
+
+  .db-hint {
+    font-size: 0.75rem;
+    color: var(--color-warning, #f2c94c);
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   .back-link {
