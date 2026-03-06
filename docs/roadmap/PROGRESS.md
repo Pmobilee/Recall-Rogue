@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 63 (Dive Prep & Results UX) COMPLETE — 6 fixes: auto-select pickaxe when single option, free-dive exploit guard (skip recordDiveComplete when 0 blocks), "No Oxygen Tanks!" warning for 0 tanks, PostDiveHooks icons (Unicode ✦▲▼), progress countdown text, tank button labels. Next: Phase 64 (Study Session & Quiz Polish). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
+Phase 64 (Study Session & Quiz Polish) COMPLETE — 3-button grading UI (Again/Good/Easy with SM-2 quality 1/3/5), card-back scrollable with responsive min-height. Visual phases 62/65/67 committed (dome sprites, mine rendering, block animations). Next: Phase 66 (Settings & Reports Polish). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -174,7 +174,7 @@ Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 
 ### High Priority (Phases 63-64)
 - [x] **Phase 63: Dive Prep & Results UX** — Pickaxe auto-select, free dust exploit, O2 display issues, dive results polish (C4, C5, H6, M4, M5, L1) → [`completed/PHASE-63-DIVE-PREP-RESULTS.md`](completed/PHASE-63-DIVE-PREP-RESULTS.md)
-- [ ] **Phase 64: Study Session & Quiz Polish** — Card layout overlap, 2-button vs 3-button grading inconsistency (H4, H7) → [`phases/PHASE-64-STUDY-QUIZ-POLISH.md`](phases/PHASE-64-STUDY-QUIZ-POLISH.md)
+- [x] **Phase 64: Study Session & Quiz Polish** — Card layout overlap, 2-button vs 3-button grading inconsistency (H4, H7) → [`completed/PHASE-64-STUDY-QUIZ-POLISH.md`](completed/PHASE-64-STUDY-QUIZ-POLISH.md)
 
 ### Medium Priority (Phase 66)
 - [ ] **Phase 66: Settings & Reports Polish** — Dome upgrades tab, streak claiming, Coming Soon labels, report screen polish (M6, M7, M10, L4, L3, L5) → [`phases/PHASE-66-SETTINGS-REPORTS.md`](phases/PHASE-66-SETTINGS-REPORTS.md)
@@ -183,9 +183,9 @@ Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 - [ ] **Phase 68: Devpreset Expansion** — 5 new presets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning → [`phases/PHASE-68-DEVPRESET-EXPANSION.md`](phases/PHASE-68-DEVPRESET-EXPANSION.md)
 
 ### Delegated to Visual Overhaul Worker
-- **Phase 62: Dome Visual Polish** — Green placeholder tiles, label truncation, emoji icons, floor nav label (H1, H2, M1, M2)
-- **Phase 65: Mine Scene Improvements** — Missing sprite frames, block visibility, DEV button overlap (H3, M11, H8)
-- **Phase 67: Onboarding Polish** — Backstory placeholder, scroll indicators (M3, L2)
+- **Phase 62: Dome Visual Polish** — COMMITTED (dome sprites, floor backgrounds, DomeScene improvements)
+- **Phase 65: Mine Scene Improvements** — COMMITTED (MineTileRenderer crack overlays, BlockAnimSystem refactor, MineRoomStamper biome-aware stamping)
+- **Phase 67: Onboarding Polish** — Deferred (backstory placeholder, scroll indicators)
 
 ---
 
