@@ -33,6 +33,7 @@
     onZoo?: () => void
     onStreakPanel?: () => void
     onFarm?: () => void
+    onDecorator?: () => void
     onSettings?: () => void
     facts?: Fact[]
   }
@@ -41,13 +42,27 @@
     onDive, onStudy, onReviewArtifact, onGaiaReport, onViewTree,
     onMaterializer, onPremiumMaterializer, onCosmetics,
     onKnowledgeStore, onFossils, onZoo, onStreakPanel,
-    onFarm, onSettings,
+    onFarm, onDecorator, onSettings,
   }: Props = $props()
 
   const hubStack = getDefaultHubStack()
 
   // Derive hub state from playerSave
-  const unlockedIds   = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
+  const unlockedIds = $derived.by(() => {
+    const hubFloorIds = $playerSave?.hubState?.unlockedFloorIds ?? ['starter']
+    const legacyRooms = $playerSave?.unlockedRooms ?? ['command']
+    // Merge both sources — hubState is canonical, but legacy rooms provide backward compat
+    const merged = new Set<string>(hubFloorIds)
+    merged.add('starter') // always present
+    for (const roomId of legacyRooms) {
+      const mapped: Record<string, string> = {
+        command: 'starter', lab: 'starter', workshop: 'workshop',
+        museum: 'museum', market: 'market', archive: 'archive',
+      }
+      if (mapped[roomId]) merged.add(mapped[roomId])
+    }
+    return [...merged]
+  })
   const floorTiers    = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
   const masteredCount = $derived(
     ($playerSave?.reviewStates ?? []).filter(rs => rs.repetitions >= 6).length
@@ -137,6 +152,7 @@
       case 'zoo':                 onZoo?.(); break
       case 'streakPanel':         onStreakPanel?.(); break
       case 'farm':                onFarm?.(); break
+      case 'decorator':           onDecorator?.(); break
       case 'studySession':        onStudy?.(); break
       case 'reviewArtifact':      onReviewArtifact?.(); break
       case 'settings':            onSettings?.(); break

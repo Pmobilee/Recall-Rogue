@@ -226,6 +226,36 @@ export function load(): PlayerSave | null {
     if (!parsedAny['hubState'] || typeof parsedAny['hubState'] !== 'object') {
       parsedAny['hubState'] = defaultHubSaveState()
     }
+    // Phase 61: Migrate legacy unlockedRooms → hubState.unlockedFloorIds
+    {
+      const hs = parsedAny['hubState'] as Record<string, unknown>
+      if (!Array.isArray(hs['unlockedFloorIds'])) {
+        hs['unlockedFloorIds'] = ['starter']
+      }
+      // If player has rooms beyond 'command' but hubState only has 'starter', sync them
+      const rooms = parsedAny['unlockedRooms'] as string[] | undefined
+      const currentFloors = hs['unlockedFloorIds'] as string[]
+      if (rooms && rooms.length > 1 && currentFloors.length <= 1) {
+        const roomToFloor: Record<string, string> = {
+          command: 'starter', lab: 'starter', workshop: 'workshop',
+          museum: 'museum', market: 'market', archive: 'archive',
+        }
+        const migrated = new Set<string>(currentFloors)
+        for (const roomId of rooms) {
+          const floorId = roomToFloor[roomId]
+          if (floorId) migrated.add(floorId)
+        }
+        hs['unlockedFloorIds'] = [...migrated]
+        // Initialize floor tiers for newly migrated floors
+        if (!hs['floorTiers'] || typeof hs['floorTiers'] !== 'object') {
+          hs['floorTiers'] = {}
+        }
+        const tiers = hs['floorTiers'] as Record<string, number>
+        for (const fId of hs['unlockedFloorIds'] as string[]) {
+          if (!(fId in tiers)) tiers[fId] = 0
+        }
+      }
+    }
     // Backward compatibility: Phase 12 — interest & personalization fields
     if (!parsedAny['interestConfig'] || typeof parsedAny['interestConfig'] !== 'object') {
       parsedAny['interestConfig'] = createDefaultInterestConfig()

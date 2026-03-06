@@ -7,6 +7,9 @@ import { createReviewState } from '../services/sm2'
 import { SAVE_VERSION } from '../services/saveService'
 import { createDefaultInterestConfig } from '../data/interestConfig'
 
+/** All 10 canonical floor IDs from hubFloors.ts */
+const ALL_FLOOR_IDS = ['starter', 'farm', 'workshop', 'zoo', 'museum', 'market', 'research', 'archive', 'observatory', 'gallery'] as const
+
 // ============================================================
 // SCENARIO PRESET TYPES
 // ============================================================
@@ -259,6 +262,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 600, shard: 15, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         fossils: {
           trilobite: {
             speciesId: 'trilobite',
@@ -306,6 +310,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 2400, shard: 80, crystal: 15, geode: 0, essence: 0 },
         knowledgePoints: 240,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum'], floorTiers: { starter: 1, workshop: 0, museum: 0 } },
         stats: {
           totalBlocksMined: 1800,
           totalDivesCompleted: 18,
@@ -340,6 +345,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 18_000, shard: 400, crystal: 80, geode: 20, essence: 5 },
         knowledgePoints: 2800,
         unlockedRooms: allRoomIds as string[],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         premiumMaterials: {
           star_dust: 12,
           void_crystal: 5,
@@ -398,6 +404,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 50_000, shard: 1500, crystal: 300, geode: 80, essence: 20 },
         knowledgePoints: 5000,
         unlockedRooms: allRoomIds as string[],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         unlockedDiscs: discs,
         fossils,
         activeCompanion: 'trex',
@@ -447,6 +454,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
         knowledgePoints: 180,
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         stats: {
           totalBlocksMined: 3000,
           totalDivesCompleted: 32,
@@ -483,6 +491,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 22_000, shard: 500, crystal: 100, geode: 25, essence: 6 },
         knowledgePoints: 3200,
         unlockedRooms: allRoomIds as string[],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         lastDiveDate: yesterday,
         titles: ['Centurion', 'Deep Scholar'],
         activeTitle: 'Centurion',
@@ -564,6 +573,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         fossils: {
           trilobite: {
             speciesId: 'trilobite',
@@ -613,6 +623,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 1500, shard: 50, crystal: 10, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
         diveCount: 15,
         stats: {
@@ -649,6 +660,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 99_999, shard: 5000, crystal: 500, geode: 100, essence: 20 },
         knowledgePoints: 10_000,
         unlockedRooms: allRoomIds as string[],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         premiumMaterials: {
           star_dust: 50,
           void_crystal: 25,
@@ -707,6 +719,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 450, shard: 12, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
         diveCount: 3,
         selectedInterests: ['Generalist'],
@@ -746,6 +759,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         fossils: {
           trilobite: {
             speciesId: 'trilobite',
@@ -795,6 +809,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 5000, shard: 150, crystal: 30, geode: 5, essence: 0 },
         knowledgePoints: 800,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'farm', 'zoo'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum', 'farm', 'zoo'], floorTiers: { starter: 1, workshop: 1, museum: 0, farm: 1, zoo: 0 } },
         fossils: {
           trilobite: {
             speciesId: 'trilobite',
@@ -857,6 +872,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 1200, shard: 40, crystal: 5, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         lastDiveDate: twoDaysAgo,
         streakFreezes: 0,
         tutorialComplete: true,
@@ -941,6 +957,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 3000, shard: 80, crystal: 15, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum'], floorTiers: { starter: 1, workshop: 0, museum: 0 } },
         tutorialComplete: true,
         diveCount: 25,
         selectedInterests: ['Generalist'],
@@ -977,6 +994,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 800, shard: 30, crystal: 5, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         craftedItems: { reinforced_tank: 1 },
         craftCounts: { reinforced_tank: 1 },
         activeConsumables: ['bomb_kit'],

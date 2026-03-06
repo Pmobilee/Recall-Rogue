@@ -19,6 +19,30 @@ import { calculateKnowledgePoints } from '../../data/knowledgeStore'
 import { BALANCE, LEARNING_SPARKS_PER_MILESTONE } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
+import { defaultHubSaveState } from '../../data/hubLayout'
+
+/** Maps legacy BALANCE.DOME_ROOMS IDs to hubFloors.ts floor IDs. */
+export const ROOM_TO_FLOOR_MAP: Record<string, string> = {
+  command: 'starter',
+  lab: 'starter',      // lab actions live on starter floor
+  workshop: 'workshop',
+  museum: 'museum',
+  market: 'market',
+  archive: 'archive',
+}
+
+/**
+ * Converts an array of legacy room IDs to their corresponding floor IDs.
+ * Always includes 'starter'. Deduplicates.
+ */
+export function roomIdsToFloorIds(roomIds: string[]): string[] {
+  const floorSet = new Set<string>(['starter'])
+  for (const roomId of roomIds) {
+    const floorId = ROOM_TO_FLOOR_MAP[roomId]
+    if (floorId) floorSet.add(floorId)
+  }
+  return [...floorSet]
+}
 import { gaiaMessage } from '../stores/gameState'
 import { recordFastMastery } from '../../services/behavioralLearner'
 
@@ -364,6 +388,21 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       ? [...currentRooms, ...newlyUnlocked]
       : currentRooms
 
+    // Phase 61: Also update hubState.unlockedFloorIds when rooms are unlocked
+    let updatedHubState = { ...(save.hubState ?? defaultHubSaveState()) }
+    if (newlyUnlocked.length > 0) {
+      const floorIds = new Set<string>(updatedHubState.unlockedFloorIds)
+      const floorTiers = { ...updatedHubState.floorTiers }
+      for (const roomId of newlyUnlocked) {
+        const floorId = ROOM_TO_FLOOR_MAP[roomId]
+        if (floorId && !floorIds.has(floorId)) {
+          floorIds.add(floorId)
+          floorTiers[floorId] = 0
+        }
+      }
+      updatedHubState = { ...updatedHubState, unlockedFloorIds: [...floorIds], floorTiers }
+    }
+
     // Auto-claim newly reached streak milestones
     const claimedMilestones = [...(save.claimedMilestones ?? [])]
     let updatedMinerals = { ...save.minerals }
@@ -438,6 +477,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       minerals: updatedMinerals,
       oxygen: updatedOxygen,
       unlockedRooms: updatedRooms,
+      hubState: updatedHubState,
       archetypeData: updatedArchetype,
       engagementData: updatedEngagement,
       stats: updatedStats,

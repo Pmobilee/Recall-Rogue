@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 60 (Critical Data Pipeline) COMPLETE — fixed Knowledge Tree category display (cachedFacts race condition), GAIA radar chart (wrong category names → canonical 7), mastery counters (aligned to getMasteryLevel, fixed preset intervals), My Learning tab (populated factCategoryMap from factsDB), branch label clipping (clamping + abbreviations). Next: Phase 61 (Dome Floor Navigation). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
+Phase 61 (Dome Floor Navigation) COMPLETE — fixed dual ID namespace disconnect between legacy unlockedRooms and hubState.unlockedFloorIds. Added room-to-floor mapping, merged HubView derivation, updated all 16 presets with hubState, added save migration, synced auto-unlock logic. All 10 floor pips now correctly enabled/disabled per unlock state. Next: Phase 63 (Dive Prep & Results UX). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -170,20 +170,22 @@ Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 
 ### Critical Fixes (Phases 60-61)
 - [x] **Phase 60: Critical Data Pipeline Fixes** — Fact→category mapping broken across Knowledge Tree, GAIA radar, mastery counter, My Learning tab (C2, C3, H5, M9) → [`completed/PHASE-60-DATA-PIPELINE-FIXES.md`](completed/PHASE-60-DATA-PIPELINE-FIXES.md)
-- [ ] **Phase 61: Dome Floor Navigation Fix** — All floor buttons always disabled regardless of unlocked rooms (C1) → [`phases/PHASE-61-DOME-FLOOR-NAV.md`](phases/PHASE-61-DOME-FLOOR-NAV.md)
+- [x] **Phase 61: Dome Floor Navigation Fix** — All floor buttons always disabled regardless of unlocked rooms (C1) → [`completed/PHASE-61-DOME-FLOOR-NAV.md`](completed/PHASE-61-DOME-FLOOR-NAV.md)
 
-### High Priority (Phases 62-64)
-- [ ] **Phase 62: Dome Visual Polish** — Green placeholder tiles, label truncation, emoji icons replacing pixel art (H1, H2, M1, M2) → [`phases/PHASE-62-DOME-VISUAL-POLISH.md`](phases/PHASE-62-DOME-VISUAL-POLISH.md)
+### High Priority (Phases 63-64)
 - [ ] **Phase 63: Dive Prep & Results UX** — Pickaxe auto-select, free dust exploit, O2 display issues, dive results polish (C4, C5, H6, M4, M5, L1) → [`phases/PHASE-63-DIVE-PREP-RESULTS.md`](phases/PHASE-63-DIVE-PREP-RESULTS.md)
 - [ ] **Phase 64: Study Session & Quiz Polish** — Card layout overlap, 2-button vs 3-button grading inconsistency (H4, H7) → [`phases/PHASE-64-STUDY-QUIZ-POLISH.md`](phases/PHASE-64-STUDY-QUIZ-POLISH.md)
 
-### Medium Priority (Phases 65-66)
-- [ ] **Phase 65: Mine Scene Improvements** — Missing sprite frames, block visibility issues, DEV button overlap (H3, M11, H8) → [`phases/PHASE-65-MINE-SCENE.md`](phases/PHASE-65-MINE-SCENE.md)
+### Medium Priority (Phase 66)
 - [ ] **Phase 66: Settings & Reports Polish** — Dome upgrades tab, streak claiming, Coming Soon labels, report screen polish (M6, M7, M10, L4, L3, L5) → [`phases/PHASE-66-SETTINGS-REPORTS.md`](phases/PHASE-66-SETTINGS-REPORTS.md)
 
-### Low Priority (Phases 67-68)
-- [ ] **Phase 67: Onboarding Polish** — Backstory placeholder text, scroll indicators (M3, L2) → [`phases/PHASE-67-ONBOARDING-POLISH.md`](phases/PHASE-67-ONBOARDING-POLISH.md)
+### Low Priority (Phase 68)
 - [ ] **Phase 68: Devpreset Expansion** — 5 new presets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning → [`phases/PHASE-68-DEVPRESET-EXPANSION.md`](phases/PHASE-68-DEVPRESET-EXPANSION.md)
+
+### Delegated to Visual Overhaul Worker
+- **Phase 62: Dome Visual Polish** — Green placeholder tiles, label truncation, emoji icons, floor nav label (H1, H2, M1, M2)
+- **Phase 65: Mine Scene Improvements** — Missing sprite frames, block visibility, DEV button overlap (H3, M11, H8)
+- **Phase 67: Onboarding Polish** — Backstory placeholder, scroll indicators (M3, L2)
 
 ---
 
