@@ -3,7 +3,7 @@
  * All functions receive `scene: MineScene` as their first parameter.
  */
 import { get } from 'svelte/store'
-import { BALANCE } from '../../data/balance'
+import { BALANCE, getAdaptiveArtifactQuizChance } from '../../data/balance'
 import { BlockType, type InventorySlot, type MineralTier, type RunUpgrade, type BackpackItemState } from '../../data/types'
 import { canMine, mineBlock } from '../systems/MiningSystem'
 import { revealAround } from '../systems/MineGenerator'
@@ -31,6 +31,7 @@ import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '..
 import { BOSS_LAYER_MAP, createBoss } from '../entities/Boss'
 import { encounterManager } from '../managers/EncounterManager'
 import { playerSave } from '../../ui/stores/playerData'
+import { computeStudyScore } from '../../services/studyScore'
 import { GameManager } from '../GameManager'
 import type { MineScene } from './MineScene'
 
@@ -418,22 +419,29 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
         }
         // double_artifact_chance synergy (Scholar's Blessing): 2x the rarity-boost quiz trigger chance
         const artifactSynergyEffects = scene.getActiveSynergyEffects()
+        const save = get(playerSave)
+        const dueReviewCount = save ? save.reviewStates.filter(
+          (rs: any) => rs.repetitions > 0 && (rs.lastReviewAt + rs.interval * 24 * 60 * 60 * 1000) < Date.now()
+        ).length : 0
+        const unlearnedFactCount = scene.facts.length - (save?.learnedFacts?.length ?? 0)
+        const score = save ? computeStudyScore(save) : 0.5
+        const adaptiveChance = getAdaptiveArtifactQuizChance(scene.currentLayer, dueReviewCount, Math.max(0, unlearnedFactCount), score)
         const doubleArtifactChance = artifactSynergyEffects.some(e => e.type === 'double_artifact_chance')
         const effectiveArtifactQuizChance = doubleArtifactChance
-          ? Math.min(1, BALANCE.ARTIFACT_QUIZ_CHANCE * 2)
-          : BALANCE.ARTIFACT_QUIZ_CHANCE
+          ? Math.min(1, adaptiveChance * 2)
+          : adaptiveChance
         if (Math.random() < effectiveArtifactQuizChance && scene.facts.length > 0) {
           // Artifact triggers a multi-question appraisal quiz — store the slot pending quiz result
           scene.pendingArtifactSlot = artifactSlot
-          scene.pendingArtifactQuestions = BALANCE.ARTIFACT_QUIZ_QUESTIONS
+          scene.pendingArtifactQuestions = 1 + Math.floor(Math.random() * BALANCE.ARTIFACT_QUIZ_QUESTIONS)
           scene.pendingArtifactBoosts = 0
           scene.isPaused = true
           const factId = scene.facts[Math.floor(Math.random() * scene.facts.length)]
           scene.game.events.emit('artifact-quiz', {
             factId,
             artifactRarity: mineResult.content?.artifactRarity,
-            questionsRemaining: BALANCE.ARTIFACT_QUIZ_QUESTIONS,
-            questionsTotal: BALANCE.ARTIFACT_QUIZ_QUESTIONS,
+            questionsRemaining: scene.pendingArtifactQuestions,
+            questionsTotal: scene.pendingArtifactQuestions,
           })
         } else {
           // Phase 31.2: trigger camera zoom + GAIA commentary before collecting

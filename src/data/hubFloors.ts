@@ -54,6 +54,7 @@ function makeStarterFloor(): HubFloor {
       { id: 'knowledge_tree', spriteKey: 'obj_knowledge_tree_stage0', label: 'Knowledge Tree', action: 'knowledgeTree', gridX: 22, gridY: 28, gridW: 12, gridH: 17, interactive: true },
       { id: 'workbench', spriteKey: 'obj_workbench', label: 'Materializer', action: 'workshop', gridX: 70, gridY: 32, gridW: 13, gridH: 13, interactive: true },
       { id: 'streak_board', spriteKey: 'obj_streak_board', label: 'Streak Board', action: 'streakPanel', gridX: 84, gridY: 35, gridW: 6, gridH: 10, interactive: true },
+      { id: 'decorator', spriteKey: 'obj_decorator', label: 'Decorator', action: 'decorator', gridX: 3, gridY: 32, gridW: 8, gridH: 13, interactive: true },
       { id: 'study_desk', spriteKey: 'obj_study_alcove', label: 'Study Desk', action: 'studySession', gridX: 36, gridY: 32, gridW: 8, gridH: 13, interactive: true },
       { id: 'artifact_lab', spriteKey: 'obj_display_case', label: 'Artifact Lab', action: 'reviewArtifact', gridX: 60, gridY: 32, gridW: 10, gridH: 13, interactive: true },
     ],

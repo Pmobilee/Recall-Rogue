@@ -235,6 +235,8 @@ export interface MineCell {
   autotileBitmask?: number
   /** Sprite key derived from autotileBitmask. Avoids bitmask recomputation on every draw. */
   cachedSpriteKey?: string
+  /** Whether this cell sits on soil or rock terrain. Used by overlay renderer for base tile selection. */
+  baseTerrainCategory?: 'soil' | 'rock'
 }
 
 /** Content inside a special block */
@@ -739,6 +741,10 @@ export interface PlayerSave {
   upgradeTokens?: number
   /** Whether the player has seen the study nudge tutorial. */
   hasSeenStudyNudge?: boolean
+
+  // Decorator
+  /** Purchased floor background IDs for the Decorator */
+  ownedBackgrounds?: string[]
 
   // Phase 53: Learning Sparks
   /** Learning Sparks currency — earned through mastery milestones, used in Knowledge Store. */

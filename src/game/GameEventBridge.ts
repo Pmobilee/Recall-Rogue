@@ -336,7 +336,7 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
           fact,
           choices,
           source: 'artifact',
-          gateProgress: { remaining: total - questionNumber, total },
+          gateProgress: { remaining, total },
         })
         currentScreen.set('quiz')
         if (questionNumber === 1) {

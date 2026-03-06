@@ -12,10 +12,9 @@
     artifact: PendingArtifact
     remainingCount: number
     onNext: () => void
-    onDone: () => void
   }
 
-  let { artifact, remainingCount, onNext, onDone }: Props = $props()
+  let { artifact, remainingCount, onNext }: Props = $props()
 
   let stage = $state<1 | 2 | 3 | 4 | 5>(1)
   let reward = $state<ArtifactReward | null>(null)
@@ -169,11 +168,7 @@
 
   /** Move to next artifact or finish */
   function goNextOrDone() {
-    if (remainingCount > 0) {
-      onNext()
-    } else {
-      onDone()
-    }
+    onNext()
   }
 
   /** Get a display label for a reward */

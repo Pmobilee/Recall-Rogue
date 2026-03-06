@@ -36,7 +36,7 @@ export function placeSpecialBlocks(
   for (let i = 0; i < placements; i++) {
     const randomIndex = Math.floor(rng() * positions.length)
     const [position] = positions.splice(randomIndex, 1)
-    grid[position.y][position.x] = createCell()
+    grid[position.y][position.x] = { ...createCell(), baseTerrainCategory: 'rock' }
   }
 }
 
@@ -68,6 +68,7 @@ export function placeEmptyPockets(grid: MineCell[][], rng: () => number, count: 
           hardness: 0,
           maxHardness: 0,
           revealed: false,
+          baseTerrainCategory: 'rock',
         }
       }
     }
@@ -125,6 +126,7 @@ export function placeExitRoom(
         hardness: isWall ? 999 : 0,
         maxHardness: isWall ? 999 : 0,
         revealed: false,
+        baseTerrainCategory: 'rock',
       }
     }
   }
@@ -137,6 +139,7 @@ export function placeExitRoom(
     hardness: 0,
     maxHardness: 0,
     revealed: false,
+    baseTerrainCategory: 'rock',
   }
 
   // Choose a random side for the corridor entrance: 0=left, 1=right, 2=top, 3=bottom
@@ -183,6 +186,7 @@ export function placeExitRoom(
     content: {
       factId,
     },
+    baseTerrainCategory: 'rock',
   }
 
   // Carve a short corridor (1-2 blocks) outward from the gate
@@ -196,6 +200,7 @@ export function placeExitRoom(
         hardness: 0,
         maxHardness: 0,
         revealed: false,
+        baseTerrainCategory: 'rock',
       }
     }
   }
@@ -307,6 +312,7 @@ export function placeEmptyCaverns(
             hardness: 0,
             maxHardness: 0,
             revealed: false,
+            baseTerrainCategory: 'rock',
           }
         }
       }
@@ -352,6 +358,7 @@ export function placeQuoteStones(
       maxHardness: hardness,
       revealed: false,
       content: { factId: QUOTE_STONES[Math.floor(rng() * QUOTE_STONES.length)].id },
+      baseTerrainCategory: 'rock',
     }
   }
 }
@@ -380,6 +387,7 @@ export function placeRelicShrines(
       hardness,
       maxHardness: hardness,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
   }
 }
@@ -421,6 +429,7 @@ export function placeOxygenTanks(
       hardness,
       maxHardness: hardness,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
   }
 }
@@ -462,6 +471,7 @@ export function placeDataDiscs(
       hardness,
       maxHardness: hardness,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
   }
 }
@@ -503,6 +513,7 @@ export function placeFossilNodes(
       hardness,
       maxHardness: hardness,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
   }
 }
@@ -549,6 +560,7 @@ export function placeHazards(grid: MineCell[][], rng: () => number, height: numb
           hardness: 2,
           maxHardness: 2,
           revealed: false,
+          baseTerrainCategory: 'rock',
         }
       } else if (gasEligible && rng() < gasDensity) {
         row[x] = {
@@ -556,6 +568,7 @@ export function placeHazards(grid: MineCell[][], rng: () => number, height: numb
           hardness: 1,
           maxHardness: 1,
           revealed: false,
+          baseTerrainCategory: 'rock',
         }
       } else if (unstableEligible && rng() < unstableDensity) {
         row[x] = {
@@ -563,6 +576,7 @@ export function placeHazards(grid: MineCell[][], rng: () => number, height: numb
           hardness: 1,
           maxHardness: 1,
           revealed: false,
+          baseTerrainCategory: 'rock',
         }
       }
     }
@@ -615,6 +629,7 @@ export function placeDescentShaft(
       hardness: 1,
       maxHardness: 1,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
     return
   }
@@ -668,6 +683,7 @@ export function placeSendUpStation(
       hardness: 1,
       maxHardness: 1,
       revealed: false,
+      baseTerrainCategory: 'rock',
     }
     return
   }

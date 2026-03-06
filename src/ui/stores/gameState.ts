@@ -136,6 +136,7 @@ export type Screen =
   | 'materializer'
   | 'premiumMaterializer'
   | 'cosmeticsShop'
+  | 'decorator'
   | 'knowledgeStore'
   | 'fossilGallery'
   | 'zoo'

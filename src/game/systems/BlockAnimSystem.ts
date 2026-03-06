@@ -30,49 +30,7 @@ export interface MoteParticleConfig {
  * optional — if they don't exist, the system gracefully falls
  * back to the base frame.
  */
-const BLOCK_ANIM_CONFIGS: Partial<Record<BlockType, BlockAnimConfig>> = {
-  [BlockType.LavaBlock]: {
-    frames: ['block_lava', 'block_lava_01', 'block_lava_02', 'block_lava_03', 'block_lava_04', 'block_lava_05'],
-    periodMs: 800,
-  },
-  [BlockType.GasPocket]: {
-    frames: ['block_gas', 'block_gas_01', 'block_gas_02', 'block_gas_03'],
-    periodMs: 1200,
-  },
-  [BlockType.DescentShaft]: {
-    frames: ['block_descent_shaft', 'block_descent_shaft_01', 'block_descent_shaft_02',
-             'block_descent_shaft_03', 'block_descent_shaft_04', 'block_descent_shaft_05'],
-    periodMs: 2000,
-  },
-  [BlockType.QuizGate]: {
-    frames: ['block_quiz_gate', 'block_quiz_gate_01', 'block_quiz_gate_02', 'block_quiz_gate_03'],
-    periodMs: 1000,
-  },
-  [BlockType.MineralNode]: {
-    frames: ['block_mineral_shimmer_00', 'block_mineral_shimmer_01', 'block_mineral_shimmer_02'],
-    periodMs: 1500,
-  },
-  [BlockType.ArtifactNode]: {
-    frames: ['block_artifact', 'block_artifact_01', 'block_artifact_02', 'block_artifact_03'],
-    periodMs: 2000,
-  },
-  [BlockType.RelicShrine]: {
-    frames: ['block_relic_shrine', 'block_relic_shrine_01', 'block_relic_shrine_02', 'block_relic_shrine_03'],
-    periodMs: 2500,
-  },
-  [BlockType.OxygenCache]: {
-    frames: ['block_oxygen_cache', 'block_oxygen_cache_01', 'block_oxygen_cache_02', 'block_oxygen_cache_03'],
-    periodMs: 1800,
-  },
-  [BlockType.UpgradeCrate]: {
-    frames: ['block_upgrade_crate', 'block_upgrade_crate_01', 'block_upgrade_crate_02'],
-    periodMs: 3000,
-  },
-  [BlockType.FossilNode]: {
-    frames: ['block_fossil', 'block_fossil_01', 'block_fossil_02'],
-    periodMs: 3000,
-  },
-}
+const BLOCK_ANIM_CONFIGS: Partial<Record<BlockType, BlockAnimConfig>> = {}
 
 /** Block types that emit ambient mote particles */
 const MOTE_CONFIGS: Partial<Record<BlockType, MoteParticleConfig>> = {

@@ -114,6 +114,8 @@ export class DomeScene extends Phaser.Scene {
   private detailGraphics!: Phaser.GameObjects.Graphics
   /** Text labels placed over floor objects. */
   private labelTexts: Phaser.GameObjects.Text[] = []
+  /** Sprite images placed over floor objects (cleaned up on re-render). */
+  private objectSprites: Phaser.GameObjects.Sprite[] = []
 
   /** Live particle state array — covers all unlocked floors. */
   private particleData: ParticleState[] = []
@@ -142,6 +144,43 @@ export class DomeScene extends Phaser.Scene {
     if (data?.floorTiers) this.floorTiers = data.floorTiers
     if (data?.masteredCount !== undefined) this.masteredCount = data.masteredCount
     if (data?.floorIndex !== undefined) this.floorIndex = data.floorIndex
+  }
+
+  /**
+   * Preload dome object sprite textures so they can be rendered in place of colored rectangles.
+   * Loads hi-res PNGs from /assets/sprites-hires/dome/ for every spriteKey used by hub floors,
+   * plus knowledge tree stages, GAIA expressions, and decorations.
+   */
+  preload(): void {
+    const hubStack = getDefaultHubStack()
+
+    // Collect unique spriteKeys from all floor objects
+    const spriteKeys = new Set<string>()
+    for (const floor of hubStack.floors) {
+      for (const obj of floor.objects) {
+        if (obj.spriteKey) spriteKeys.add(obj.spriteKey)
+      }
+    }
+
+    // Knowledge tree stage sprites
+    for (let i = 0; i <= 5; i++) {
+      spriteKeys.add(`obj_knowledge_tree_stage${i}`)
+    }
+
+    // GAIA expression sprites
+    for (const expr of ['neutral', 'happy', 'thinking', 'snarky', 'surprised', 'calm']) {
+      spriteKeys.add(`gaia_${expr}`)
+    }
+
+    // Decoration sprites
+    for (const deco of ['deco_ceiling_light', 'deco_plant_pot', 'deco_wall_monitor']) {
+      spriteKeys.add(deco)
+    }
+
+    // Load each sprite texture (Phaser silently skips duplicates)
+    for (const key of spriteKeys) {
+      this.load.image(key, `/assets/sprites-hires/dome/${key}.png`)
+    }
   }
 
   /**
@@ -417,6 +456,9 @@ export class DomeScene extends Phaser.Scene {
     for (const t of this.labelTexts) t.destroy()
     this.labelTexts = []
 
+    for (const sprite of this.objectSprites) sprite.destroy()
+    this.objectSprites = []
+
     const unlocked = this.getUnlockedFloors()
     if (unlocked.length === 0) return
 
@@ -524,37 +566,45 @@ export class DomeScene extends Phaser.Scene {
       const w = obj.gridW * FLOOR_TILE_SIZE
       const h = obj.gridH * FLOOR_TILE_SIZE
 
-      // Glow ring for interactive objects
-      if (obj.interactive) {
+      // Object body — use sprite texture if available, fall back to colored rectangle
+      const hasSprite = this.textures.exists(obj.spriteKey)
+
+      // Glow ring for interactive objects (only on fallback rectangles — sprites have their own visual weight)
+      if (obj.interactive && !hasSprite) {
         this.glowGraphics.fillStyle(ambient.glowColor, ambient.glowAlpha)
         this.glowGraphics.fillRect(x - 2, y - 2, w + 4, h + 4)
       }
+      if (hasSprite) {
+        const sprite = this.add.sprite(x + w / 2, y + h / 2, obj.spriteKey)
+        sprite.setDisplaySize(w, h)
+        sprite.setDepth(2)
+        this.objectSprites.push(sprite)
+      } else {
+        const fillColor = obj.interactive ? 0x50c8a0 : 0x3c3c50
+        const fillAlpha = obj.interactive ? 0.4 : 0.3
+        this.objectGraphics.fillStyle(fillColor, fillAlpha)
+        this.objectGraphics.fillRect(x, y, w, h)
 
-      // Object body
-      const fillColor = obj.interactive ? 0x50c8a0 : 0x3c3c50
-      const fillAlpha = obj.interactive ? 0.4 : 0.3
-      this.objectGraphics.fillStyle(fillColor, fillAlpha)
-      this.objectGraphics.fillRect(x, y, w, h)
+        // Border for interactive objects (only on fallback rectangles)
+        if (obj.interactive) {
+          this.objectGraphics.lineStyle(2, 0x50c8a0, 0.6)
+          this.objectGraphics.strokeRect(x + 1, y + 1, w - 2, h - 2)
+        }
 
-      // Border for interactive objects
-      if (obj.interactive) {
-        this.objectGraphics.lineStyle(2, 0x50c8a0, 0.6)
-        this.objectGraphics.strokeRect(x + 1, y + 1, w - 2, h - 2)
+        // Label (only on fallback rectangles — sprites are self-explanatory)
+        const effectiveLabel = this.getEffectiveLabel(obj.action, obj.label)
+        const labelText = effectiveLabel.length > 12
+          ? effectiveLabel.slice(0, 11) + '\u2026'
+          : effectiveLabel
+        const text = this.add.text(x + w / 2, y + h / 2, labelText, {
+          fontFamily: "'Press Start 2P', monospace",
+          fontSize: '10px',
+          color: '#e0e0e0',
+          align: 'center',
+          wordWrap: { width: w - 4, useAdvancedWrap: true },
+        }).setOrigin(0.5).setDepth(5)
+        this.labelTexts.push(text)
       }
-
-      // Label
-      const effectiveLabel = this.getEffectiveLabel(obj.action, obj.label)
-      const labelText = effectiveLabel.length > 12
-        ? effectiveLabel.slice(0, 11) + '\u2026'
-        : effectiveLabel
-      const text = this.add.text(x + w / 2, y + h / 2, labelText, {
-        fontFamily: "'Press Start 2P', monospace",
-        fontSize: '10px',
-        color: '#e0e0e0',
-        align: 'center',
-        wordWrap: { width: w - 4, useAdvancedWrap: true },
-      }).setOrigin(0.5).setDepth(5)
-      this.labelTexts.push(text)
     }
   }
 

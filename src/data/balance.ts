@@ -88,7 +88,7 @@ export const BALANCE = {
   ARTIFACT_BOOST_CHANCE: 0.6,          // 60% chance to boost rarity per correct answer
 
   // === EXIT ROOM ===
-  ARTIFACT_QUIZ_CHANCE: 0.7,           // 70% chance artifact triggers quiz
+  ARTIFACT_QUIZ_CHANCE: 0.35,          // 35% chance artifact triggers quiz
   EXIT_ROOM_WIDTH: 7,                  // Interior width of exit room
   EXIT_ROOM_HEIGHT: 5,                 // Interior height of exit room
   EXIT_GATE_QUESTIONS: 3,               // Number of correct answers needed to pass exit gate
@@ -461,6 +461,38 @@ export const BALANCE = {
   MIX_RARITY_ONE_UP: 0.30,
   MIX_RARITY_TWO_UP: 0.10,
 } as const
+
+/**
+ * Compute adaptive artifact quiz chance based on player state.
+ * Returns a probability 0.0–0.8 based on:
+ * - depth (deeper = slightly higher chance, encouraging learning)
+ * - due reviews (more overdue = higher chance, nudging review)
+ * - new unstudied facts (more = higher chance, encouraging discovery)
+ * - study score (lower score = higher chance, helping struggling learners)
+ */
+export function getAdaptiveArtifactQuizChance(
+  currentLayer: number,
+  dueReviewCount: number,
+  unlearnedFactCount: number,
+  studyScore: number,
+): number {
+  const base = BALANCE.ARTIFACT_QUIZ_CHANCE // 0.35
+
+  // Depth factor: +0 to +0.1 across 20 layers
+  const depthBonus = (currentLayer / (BALANCE.MAX_LAYERS - 1)) * 0.1
+
+  // Due reviews factor: +0 to +0.15 (capped at 10+ due)
+  const dueBonus = Math.min(dueReviewCount / 10, 1) * 0.15
+
+  // Unlearned facts factor: +0 to +0.1 (capped at 20+ unlearned)
+  const unlearnedBonus = Math.min(unlearnedFactCount / 20, 1) * 0.1
+
+  // Study health factor: lower score → higher chance (struggling = more practice)
+  // score 1.0 → +0, score 0.0 → +0.1
+  const healthBonus = (1 - studyScore) * 0.1
+
+  return Math.min(base + depthBonus + dueBonus + unlearnedBonus + healthBonus, 0.8)
+}
 
 /**
  * Returns the O2 cost multiplier for the given layer (0-indexed).

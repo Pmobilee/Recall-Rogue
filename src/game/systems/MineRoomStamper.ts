@@ -59,7 +59,7 @@ export function stampLandmark(
         type: blockType,
         hardness,
         maxHardness: hardness,
-        revealed: false,
+        revealed: false, baseTerrainCategory: 'soil',
       }
     }
   }
@@ -106,11 +106,11 @@ export function stampFeature(
 
   function solidCell(type: BlockType): MineCell {
     const h = getHardness(type)
-    return { type, hardness: h, maxHardness: h, revealed: false }
+    return { type, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil' }
   }
 
   function emptyCell(): MineCell {
-    return { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+    return { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
   }
 
   switch (featureId) {
@@ -525,7 +525,7 @@ export function placeMicroStructures(
             type: BlockType.ArtifactNode,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: {
               artifactRarity: 'rare',
               factId,
@@ -537,7 +537,7 @@ export function placeMicroStructures(
             type: BlockType.QuizGate,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: { factId },
           }
         } else if (isWall) {
@@ -545,14 +545,14 @@ export function placeMicroStructures(
             type: BlockType.Unbreakable,
             hardness: 999,
             maxHardness: 999,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else {
           cell = {
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         }
 
@@ -663,7 +663,7 @@ export function placeMicroStructures(
             type: BlockType.MineralNode,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: {
               mineralType: cavernMineralType,
               mineralAmount,
@@ -674,7 +674,7 @@ export function placeMicroStructures(
             type: BlockType.OxygenCache,
             hardness: 2,
             maxHardness: 2,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: { oxygenAmount: BALANCE.OXYGEN_CACHE_RESTORE },
           }
         } else if (isWall) {
@@ -683,7 +683,7 @@ export function placeMicroStructures(
             type: BlockType.HardRock,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else {
           // Interior empty cells and entrance gap
@@ -691,7 +691,7 @@ export function placeMicroStructures(
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         }
 
@@ -741,7 +741,7 @@ export function placeMicroStructures(
             type: BlockType.WallText,
             hardness: 999,
             maxHardness: 999,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: picked ? { factId: picked.id } : undefined,
           }
         } else if (isOxygen) {
@@ -749,7 +749,7 @@ export function placeMicroStructures(
             type: BlockType.OxygenCache,
             hardness: 2,
             maxHardness: 2,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: { oxygenAmount: BALANCE.OXYGEN_CACHE_RESTORE },
           }
         } else if (isWall) {
@@ -758,7 +758,7 @@ export function placeMicroStructures(
             type: BlockType.Stone,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else {
           // Interior empty cells and the entrance gap
@@ -766,7 +766,7 @@ export function placeMicroStructures(
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         }
 
@@ -808,7 +808,7 @@ export function placeMicroStructures(
             type: BlockType.Unbreakable,
             hardness: 999,
             maxHardness: 999,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else {
           // Middle row (dy === 1): entrance, rubble, and reward
@@ -821,7 +821,7 @@ export function placeMicroStructures(
               type: BlockType.Empty,
               hardness: 0,
               maxHardness: 0,
-              revealed: false,
+              revealed: false, baseTerrainCategory: 'soil',
             }
           } else if (dx === artifactCol) {
             // Reward ArtifactNode at the far end of the tunnel
@@ -830,7 +830,7 @@ export function placeMicroStructures(
               type: BlockType.ArtifactNode,
               hardness,
               maxHardness: hardness,
-              revealed: false,
+              revealed: false, baseTerrainCategory: 'soil',
               content: {
                 artifactRarity: pickRarity(rng),
                 factId,
@@ -845,7 +845,7 @@ export function placeMicroStructures(
               type: rubbleType,
               hardness: rubbleHardness,
               maxHardness: rubbleHardness,
-              revealed: false,
+              revealed: false, baseTerrainCategory: 'soil',
             }
           }
         }
@@ -940,7 +940,7 @@ export function placeMicroStructures(
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else if (isArtifact) {
           const hardness = BALANCE.HARDNESS_ARTIFACT_NODE
@@ -948,7 +948,7 @@ export function placeMicroStructures(
             type: BlockType.ArtifactNode,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: {
               artifactRarity: 'rare',
               factId,
@@ -959,7 +959,7 @@ export function placeMicroStructures(
             type: BlockType.QuoteStone,
             hardness: 2,
             maxHardness: 2,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else if (isMineral) {
           const hardness = BALANCE.HARDNESS_MINERAL_NODE
@@ -968,7 +968,7 @@ export function placeMicroStructures(
             type: BlockType.MineralNode,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: {
               mineralType: 'dust',
               mineralAmount,
@@ -979,7 +979,7 @@ export function placeMicroStructures(
             type: BlockType.OxygenCache,
             hardness: 2,
             maxHardness: 2,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
             content: { oxygenAmount: BALANCE.OXYGEN_CACHE_RESTORE },
           }
         } else if (isDirt && !onBorder) {
@@ -988,7 +988,7 @@ export function placeMicroStructures(
             type: BlockType.Dirt,
             hardness,
             maxHardness: hardness,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else if (onBorder && isCrumbled) {
           // Crumbled wall section — open gap suggesting ruin
@@ -996,7 +996,7 @@ export function placeMicroStructures(
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         } else if (onBorder) {
           // Wall: corners always Unbreakable; other cells alternate Stone/Unbreakable by position
@@ -1007,7 +1007,7 @@ export function placeMicroStructures(
               type: BlockType.Unbreakable,
               hardness: 999,
               maxHardness: 999,
-              revealed: false,
+              revealed: false, baseTerrainCategory: 'soil',
             }
           } else {
             const hardness = BALANCE.HARDNESS_STONE
@@ -1015,7 +1015,7 @@ export function placeMicroStructures(
               type: BlockType.Stone,
               hardness,
               maxHardness: hardness,
-              revealed: false,
+              revealed: false, baseTerrainCategory: 'soil',
             }
           }
         } else {
@@ -1024,7 +1024,7 @@ export function placeMicroStructures(
             type: BlockType.Empty,
             hardness: 0,
             maxHardness: 0,
-            revealed: false,
+            revealed: false, baseTerrainCategory: 'soil',
           }
         }
 
@@ -1223,14 +1223,14 @@ export function placeMicroStructures(
         const isExit = dx === W - 1 && (dy === 1 || dy === 2)
         let cell: MineCell
         if (isEntrance || isExit) {
-          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
         } else if (dy === 0 || dy === H - 1) {
-          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false }
+          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false, baseTerrainCategory: 'soil' }
         } else if (dy === 1) {
-          cell = { type: BlockType.LavaBlock, hardness: 0, maxHardness: 0, revealed: false }
+          cell = { type: BlockType.LavaBlock, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
         } else {
           const h = BALANCE.HARDNESS_STONE
-          cell = { type: BlockType.Stone, hardness: h, maxHardness: h, revealed: false }
+          cell = { type: BlockType.Stone, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil' }
         }
         grid[gy][gx] = cell
       }
@@ -1274,18 +1274,18 @@ export function placeMicroStructures(
         let cell: MineCell
         if (isQuizGate) {
           const hardness = BALANCE.HARDNESS_QUIZ_GATE
-          cell = { type: BlockType.QuizGate, hardness, maxHardness: hardness, revealed: false, content: { factId } }
+          cell = { type: BlockType.QuizGate, hardness, maxHardness: hardness, revealed: false, baseTerrainCategory: 'soil', content: { factId } }
         } else if (isWall) {
-          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false }
+          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false, baseTerrainCategory: 'soil' }
         } else if (isStalactite) {
           const h = BALANCE.HARDNESS_HARD_ROCK
-          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false }
+          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil' }
         } else if (isMineral) {
           const h = BALANCE.HARDNESS_MINERAL_NODE
           const amt = randomIntInclusive(rng, BALANCE.MINERAL_DROP_MIN, BALANCE.MINERAL_DROP_MAX)
-          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, content: { mineralType: 'crystal', mineralAmount: amt } }
+          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil', content: { mineralType: 'crystal', mineralAmount: amt } }
         } else {
-          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
         }
         grid[gy][gx] = cell
       }
@@ -1332,20 +1332,20 @@ export function placeMicroStructures(
         let cell: MineCell
 
         if (isEntrance) {
-          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
         } else if (gx === cx && gy === cy) {
           // Central artifact
           const h = BALANCE.HARDNESS_ARTIFACT_NODE
-          cell = { type: BlockType.ArtifactNode, hardness: h, maxHardness: h, revealed: false, content: { artifactRarity: 'epic', factId } }
+          cell = { type: BlockType.ArtifactNode, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil', content: { artifactRarity: 'epic', factId } }
         } else if (mineralPositions.has(key) && dist <= outerR) {
           const h = BALANCE.HARDNESS_MINERAL_NODE
           const amt = randomIntInclusive(rng, 1, 3)
-          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, content: { mineralType: gemTier, mineralAmount: amt } }
+          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil', content: { mineralType: gemTier, mineralAmount: amt } }
         } else if (dist <= innerR) {
-          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false, baseTerrainCategory: 'soil' }
         } else if (dist <= outerR) {
           const h = BALANCE.HARDNESS_HARD_ROCK
-          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false }
+          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false, baseTerrainCategory: 'soil' }
         } else {
           continue  // outside the circle — skip (leave existing block)
         }

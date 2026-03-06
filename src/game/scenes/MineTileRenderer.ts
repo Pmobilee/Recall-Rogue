@@ -15,6 +15,11 @@ import type { MineScene } from './MineScene'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
+/** Get the terrain category for a cell, defaulting to 'rock' for backwards compatibility. */
+export function getTerrainCategory(cell: MineCell): 'soil' | 'rock' {
+  return cell.baseTerrainCategory ?? 'rock'
+}
+
 /** Block-type to fallback color mapping — used only by rendering. */
 export const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.Empty]: 0x3a3550,
@@ -46,6 +51,101 @@ export const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.ChallengeGate]: 0xff6600,
   [BlockType.WallText]: 0x997755,
   [BlockType.Unbreakable]: 0x2c2c2c,
+}
+
+/** Overlay rendering spec for each special block type (Phase D). */
+interface OverlaySpec {
+  /** Key prefix for the overlay texture. Variant suffix is appended: e.g., overlay_mineral_dust_00 */
+  keyPrefix: string
+  /** Number of variants (typically 5) */
+  variants: number
+  /** Display scale relative to tile size: subtle (0.45), medium (0.6), prominent (0.75), full (0.9) */
+  scale: number
+  /** Alpha transparency of the overlay */
+  alpha: number
+}
+
+/** Maps block types to their overlay specs. Blocks not listed render normally (no overlay). */
+const OVERLAY_SPECS: Partial<Record<BlockType, OverlaySpec | ((cell: MineCell) => OverlaySpec)>> = {
+  [BlockType.MineralNode]: (cell: MineCell) => {
+    const tier = cell.content?.mineralType ?? 'dust'
+    const prefix = `overlay_mineral_${tier}`
+    const scale = tier === 'essence' ? 0.85 : tier === 'geode' ? 0.75 : tier === 'crystal' ? 0.65 : tier === 'shard' ? 0.55 : 0.45
+    return { keyPrefix: prefix, variants: 5, scale, alpha: 1.0 }
+  },
+  [BlockType.ArtifactNode]: (cell: MineCell) => {
+    const rarity = cell.content?.artifactRarity ?? 'common'
+    const prefix = rarity === 'rare' || rarity === 'legendary' ? 'overlay_artifact_rare'
+      : rarity === 'uncommon' ? 'overlay_artifact_uncommon'
+      : 'overlay_artifact_common'
+    return { keyPrefix: prefix, variants: 5, scale: 0.75, alpha: 1.0 }
+  },
+  [BlockType.LavaBlock]: { keyPrefix: 'overlay_lava_seep', variants: 5, scale: 0.7, alpha: 0.9 },
+  [BlockType.GasPocket]: { keyPrefix: 'overlay_gas_wisp', variants: 5, scale: 0.6, alpha: 0.85 },
+  [BlockType.UnstableGround]: { keyPrefix: 'overlay_unstable', variants: 5, scale: 0.6, alpha: 0.8 },
+  [BlockType.FossilNode]: { keyPrefix: 'overlay_fossil', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.DataDisc]: { keyPrefix: 'overlay_data_disc', variants: 5, scale: 0.6, alpha: 1.0 },
+  [BlockType.OxygenCache]: { keyPrefix: 'overlay_oxygen_cache', variants: 5, scale: 0.6, alpha: 1.0 },
+  [BlockType.OxygenTank]: { keyPrefix: 'overlay_oxygen_tank', variants: 5, scale: 0.65, alpha: 1.0 },
+  [BlockType.Chest]: { keyPrefix: 'overlay_chest', variants: 5, scale: 0.75, alpha: 1.0 },
+  [BlockType.ExitLadder]: { keyPrefix: 'overlay_exit_ladder', variants: 5, scale: 0.85, alpha: 1.0 },
+  [BlockType.DescentShaft]: { keyPrefix: 'overlay_descent_shaft', variants: 5, scale: 0.85, alpha: 1.0 },
+  [BlockType.QuizGate]: { keyPrefix: 'overlay_quiz_gate', variants: 5, scale: 0.8, alpha: 1.0 },
+  [BlockType.SendUpStation]: { keyPrefix: 'overlay_send_up', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.UpgradeCrate]: { keyPrefix: 'overlay_upgrade_crate', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.QuoteStone]: { keyPrefix: 'overlay_quote_stone', variants: 5, scale: 0.55, alpha: 0.9 },
+  [BlockType.WallText]: { keyPrefix: 'overlay_wall_text', variants: 5, scale: 0.6, alpha: 0.9 },
+  [BlockType.Tablet]: { keyPrefix: 'overlay_tablet', variants: 5, scale: 0.6, alpha: 1.0 },
+  [BlockType.OfferingAltar]: { keyPrefix: 'overlay_offering_altar', variants: 5, scale: 0.8, alpha: 1.0 },
+  [BlockType.LockedBlock]: { keyPrefix: 'overlay_locked', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.RelicShrine]: { keyPrefix: 'overlay_relic_shrine', variants: 5, scale: 0.8, alpha: 1.0 },
+  [BlockType.RecipeFragmentNode]: { keyPrefix: 'overlay_recipe_frag', variants: 5, scale: 0.65, alpha: 1.0 },
+}
+
+/** Deterministic variant selection based on tile position. */
+function overlayVariant(tileX: number, tileY: number, variants: number): number {
+  return ((tileX * 7 + tileY * 13) % variants + variants) % variants
+}
+
+/** Resolve the overlay spec for a block, handling both static and dynamic specs. */
+function resolveOverlaySpec(blockType: BlockType, cell: MineCell): OverlaySpec | null {
+  const specOrFn = OVERLAY_SPECS[blockType]
+  if (!specOrFn) return null
+  return typeof specOrFn === 'function' ? specOrFn(cell) : specOrFn
+}
+
+/**
+ * Try to render a block using the overlay system: biome base tile + overlay sprite.
+ * Returns true if overlay rendering succeeded, false if we should fall back to legacy rendering.
+ */
+function tryRenderOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY: number, px: number, py: number): boolean {
+  const spec = resolveOverlaySpec(cell.type, cell)
+  if (!spec) return false
+
+  const variant = overlayVariant(tileX, tileY, spec.variants)
+  const overlayKey = `${spec.keyPrefix}_${String(variant).padStart(2, '0')}`
+
+  // Check if the overlay texture actually exists
+  if (!scene.textures.exists(overlayKey)) return false
+
+  const cx = px + TILE_SIZE * 0.5
+  const cy = py + TILE_SIZE * 0.5
+
+  // Step 1: Render biome base tile
+  const terrainCategory = getTerrainCategory(cell)
+  const tileVariant = cell.tileVariant ?? 0
+  const baseSpriteKey = resolveTileSpriteKey(scene.currentBiome.id, terrainCategory, tileVariant, scene.textures)
+  getPooledSprite(scene, baseSpriteKey, cx, cy).setDepth(5)
+
+  // Step 2: Render overlay on top
+  const overlaySprite = getPooledSprite(scene, overlayKey, cx, cy)
+  overlaySprite.setDepth(5.5)
+  overlaySprite.setAlpha(spec.alpha)
+  // Scale the overlay relative to the tile
+  const displaySize = TILE_SIZE * spec.scale
+  overlaySprite.setDisplaySize(displaySize, displaySize)
+
+  return true
 }
 
 /** Pure function — shifts RGB channels of a color by a signed amount. */
@@ -157,29 +257,57 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       break
     }
     case BlockType.OxygenCache: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.OxygenCache, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_oxygen_cache', cx, cy)
       break
     }
     case BlockType.UpgradeCrate: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.UpgradeCrate, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_upgrade_crate', cx, cy)
       break
     }
     case BlockType.QuizGate: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.QuizGate, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_quiz_gate', cx, cy)
       break
     }
-    case BlockType.ExitLadder:
+    case BlockType.ExitLadder: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_exit_ladder', cx, cy)
       break
+    }
     case BlockType.DescentShaft: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.DescentShaft, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_descent_shaft', cx, cy)
       break
     }
     case BlockType.MineralNode: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) {
+        // Overlay rendered successfully — still add shimmer + essence glow on top
+        const shimmerKey = BlockAnimSystem.getFrameKey(BlockType.MineralNode, scene.time.now, scene.textures)
+        if (shimmerKey) {
+          const shimmer = getPooledSprite(scene, shimmerKey, cx, cy)
+          shimmer.setAlpha(0.3)
+          shimmer.setDepth(6)
+        }
+        if ((cell.content?.mineralType ?? 'dust') === 'essence') {
+          const r = TILE_SIZE * 0.38
+          scene.overlayGraphics.lineStyle(2, 0xffd700, 0.9)
+          scene.overlayGraphics.lineBetween(cx, cy - r, cx, cy + r)
+          scene.overlayGraphics.lineBetween(cx - r, cy, cx + r, cy)
+          const rd = r * 0.65
+          scene.overlayGraphics.lineStyle(1, 0xffd700, 0.55)
+          scene.overlayGraphics.lineBetween(cx - rd, cy - rd, cx + rd, cy + rd)
+          scene.overlayGraphics.lineBetween(cx + rd, cy - rd, cx - rd, cy + rd)
+          scene.overlayGraphics.fillStyle(0xffffff, 1)
+          scene.overlayGraphics.fillCircle(cx, cy, 3)
+        }
+        break
+      }
       const tier = cell.content?.mineralType ?? 'dust'
       const mineralKey = tier === 'essence' ? 'block_mineral_essence'
         : tier === 'geode' ? 'block_mineral_geode'
@@ -208,11 +336,19 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       break
     }
     case BlockType.ArtifactNode: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.ArtifactNode, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_artifact', cx, cy)
       break
     }
     case BlockType.LavaBlock: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) {
+        scene.overlayGraphics.fillStyle(0xff8800, 0.6)
+        const dotX2 = px + 4 + seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
+        const dotY2 = py + 4 + seededModulo(tileX, tileY, 11, TILE_SIZE - 8)
+        scene.overlayGraphics.fillCircle(dotX2, dotY2, 2)
+        break
+      }
       const animKey = BlockAnimSystem.getFrameKey(BlockType.LavaBlock, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_lava', cx, cy)
       scene.overlayGraphics.fillStyle(0xff8800, 0.6)
@@ -222,19 +358,23 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       break
     }
     case BlockType.GasPocket: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.GasPocket, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_gas', cx, cy)
       break
     }
     case BlockType.UnstableGround: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_unstable', cx, cy)
       break
     }
     case BlockType.QuoteStone: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_quote_stone', cx, cy)
       break
     }
     case BlockType.WallText: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       // Render as a glowing text-inscribed wall block
       const wg = scene.tileGraphics
       wg.fillStyle(0x997755, 1)
@@ -250,28 +390,34 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       break
     }
     case BlockType.RelicShrine: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.RelicShrine, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_relic_shrine', cx, cy)
       break
     }
     case BlockType.SendUpStation: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_send_up', cx, cy)
       break
     }
     case BlockType.OxygenTank: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_oxygen_tank', cx, cy)
       break
     }
     case BlockType.DataDisc: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       getPooledSprite(scene, 'block_data_disc', cx, cy)
       break
     }
     case BlockType.FossilNode: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, scene.time.now, scene.textures)
       getPooledSprite(scene, animKey ?? 'block_fossil', cx, cy)
       break
     }
     case BlockType.Chest: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const g = scene.tileGraphics
       g.fillStyle(0xffd700)
       g.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
@@ -280,6 +426,7 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       break
     }
     case BlockType.Tablet: {
+      if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const g = scene.tileGraphics
       g.fillStyle(0x8888cc)
       g.fillRect(px + 3, py + 1, TILE_SIZE - 6, TILE_SIZE - 2)
@@ -287,6 +434,12 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
       g.fillRect(px + 5, py + 3, TILE_SIZE - 10, 1)
       g.fillRect(px + 5, py + 6, TILE_SIZE - 10, 1)
       g.fillRect(px + 5, py + 9, TILE_SIZE - 12, 1)
+      break
+    }
+    case BlockType.OfferingAltar:
+    case BlockType.LockedBlock:
+    case BlockType.RecipeFragmentNode: {
+      tryRenderOverlay(scene, cell, tileX, tileY, px, py)
       break
     }
     default:

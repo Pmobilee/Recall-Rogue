@@ -14,6 +14,11 @@ export const DOME_SPRITE_KEYS = [
   'obj_experiment_bench', 'obj_gaia_report', 'obj_study_alcove',
   'obj_telescope', 'obj_streak_shrine', 'obj_star_map',
   'obj_fossil_display', 'obj_fossil_tank',
+  // Decorator machine
+  'obj_decorator',
+  // Floor backgrounds (Decorator)
+  'floor_bg_steel_grate', 'floor_bg_mossy_stone', 'floor_bg_crystal_tiles',
+  'floor_bg_lava_rock', 'floor_bg_starfield',
   // Phase 47: Achievement Gallery
   'obj_gallery_frame',
   // Painting sprites (generated in Phase 34; placeholders during Phase 47)
@@ -43,31 +48,19 @@ export const DOME_SPRITE_KEYS = [
 
 export type DomeSpriteKey = typeof DOME_SPRITE_KEYS[number]
 
-// Eagerly load both sprite sets
-const loResGlob = import.meta.glob<{ default: string }>(
-  '../assets/sprites/dome/*.png',
-  { eager: true }
-)
+// Build URL maps pointing to public/ directory sprites
+const base = import.meta.env.BASE_URL ?? '/'
 
-const hiResGlob = import.meta.glob<{ default: string }>(
-  '../assets/sprites-hires/dome/*.png',
-  { eager: true }
-)
-
-function buildSpriteMap(glob: Record<string, { default: string }>): Record<string, string> {
+function buildSpriteMap(dir: string): Record<string, string> {
   const map: Record<string, string> = {}
-  for (const [path, mod] of Object.entries(glob)) {
-    // Extract key from path: "../assets/sprites/dome/dome_glass.png" → "dome_glass"
-    const filename = path.split('/').pop()?.replace('.png', '')
-    if (filename) {
-      map[filename] = mod.default
-    }
+  for (const key of DOME_SPRITE_KEYS) {
+    map[key] = `${base}assets/${dir}/dome/${key}.png`
   }
   return map
 }
 
-const loResMap = buildSpriteMap(loResGlob)
-const hiResMap = buildSpriteMap(hiResGlob)
+const loResMap = buildSpriteMap('sprites')
+const hiResMap = buildSpriteMap('sprites-hires')
 
 /**
  * Get sprite URL map for the given resolution.
