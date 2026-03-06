@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 66 (Settings & Reports Polish) COMPLETE — 6 fixes: dome upgrades tab with tier info/costs/progression, retroactive streak milestone claiming, "Coming Soon" rows hidden, activity chart empty state, "Terra Gacha" branding, retention empty state. Next: Phase 68 (Devpreset Expansion). ALL V4+V5 PHASES DONE except 68. 595 TypeScript/Svelte files, 0 typecheck errors.
+ALL V5 PLAYTEST PHASES COMPLETE (60-68). Phase 68 added 5 new devpresets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning. Total: 25 devpresets. 595 TypeScript/Svelte files, 0 typecheck errors. Project is feature-complete for V5.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -180,7 +180,7 @@ Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 - [x] **Phase 66: Settings & Reports Polish** — Dome upgrades tab, streak claiming, Coming Soon labels, report screen polish (M6, M7, M10, L4, L3, L5) → [`completed/PHASE-66-SETTINGS-REPORTS.md`](completed/PHASE-66-SETTINGS-REPORTS.md)
 
 ### Low Priority (Phase 68)
-- [ ] **Phase 68: Devpreset Expansion** — 5 new presets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning → [`phases/PHASE-68-DEVPRESET-EXPANSION.md`](phases/PHASE-68-DEVPRESET-EXPANSION.md)
+- [x] **Phase 68: Devpreset Expansion** — 5 new presets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning → [`completed/PHASE-68-DEVPRESET-EXPANSION.md`](completed/PHASE-68-DEVPRESET-EXPANSION.md)
 
 ### Delegated to Visual Overhaul Worker
 - **Phase 62: Dome Visual Polish** — COMMITTED (dome sprites, floor backgrounds, DomeScene improvements)
