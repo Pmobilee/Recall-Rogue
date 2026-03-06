@@ -1,4 +1,4 @@
-import type { PlayerSave } from '../data/types'
+import type { PlayerSave, PendingArtifact } from '../data/types'
 import type { Screen } from '../ui/stores/gameState'
 import { BALANCE } from '../data/balance'
 import { FOSSIL_SPECIES } from '../data/fossils'
@@ -1012,6 +1012,221 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
           totalQuizWrong: 8,
           currentStreak: 5,
           bestStreak: 7,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 21. HAS PENDING ARTIFACTS — mid-game with 3 pending artifacts
+  // ----------------------------------------------------------
+  {
+    id: 'has_pending_artifacts',
+    label: 'Has Pending Artifacts',
+    description: 'Mid-game player with 3 pending artifacts (common, uncommon, rare)',
+    targetScreen: 'base' as const,
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(15)
+      const pendingArtifacts: PendingArtifact[] = [
+        { factId: 'cult-001', rarity: 'common', minedAt: now - 600_000 },
+        { factId: 'geo-002', rarity: 'uncommon', minedAt: now - 400_000 },
+        { factId: 'hist-003', rarity: 'rare', minedAt: now - 200_000 },
+      ]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 1200, shard: 35, crystal: 5, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
+        tutorialComplete: true,
+        diveCount: 10,
+        pendingArtifacts,
+        stats: {
+          totalBlocksMined: 800,
+          totalDivesCompleted: 10,
+          deepestLayerReached: 8,
+          totalFactsLearned: 15,
+          totalFactsSold: 0,
+          totalQuizCorrect: 40,
+          totalQuizWrong: 6,
+          currentStreak: 5,
+          bestStreak: 7,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 22. ALL FLOORS UNLOCKED — endgame with all dome floors
+  // ----------------------------------------------------------
+  {
+    id: 'all_floors_unlocked',
+    label: 'All Floors Unlocked',
+    description: 'Endgame player with all dome floors unlocked',
+    targetScreen: 'base' as const,
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(30, true)
+      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 12_000, shard: 300, crystal: 60, geode: 15, essence: 3 },
+        knowledgePoints: 2000,
+        unlockedRooms: allRoomIds as string[],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
+        tutorialComplete: true,
+        diveCount: 70,
+        titles: ['Explorer', 'Miner'],
+        activeTitle: 'Explorer',
+        stats: {
+          totalBlocksMined: 9000,
+          totalDivesCompleted: 70,
+          deepestLayerReached: 18,
+          totalFactsLearned: 60,
+          totalFactsSold: 5,
+          totalQuizCorrect: 400,
+          totalQuizWrong: 30,
+          currentStreak: 25,
+          bestStreak: 35,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 23. STREAK JUST CLAIMED — 14-day streak with milestones claimed
+  // ----------------------------------------------------------
+  {
+    id: 'streak_just_claimed',
+    label: 'Streak Just Claimed',
+    description: '14-day streak with 3-Day and 7-Day milestones already claimed',
+    targetScreen: 'base' as const,
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(20)
+      const yesterday = new Date(now - 86_400_000).toISOString().split('T')[0]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 2000, shard: 60, crystal: 10, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
+        tutorialComplete: true,
+        diveCount: 14,
+        lastDiveDate: yesterday,
+        claimedMilestones: [3, 7],
+        titles: ['Explorer'],
+        activeTitle: 'Explorer',
+        streakFreezes: 1,
+        stats: {
+          totalBlocksMined: 1400,
+          totalDivesCompleted: 14,
+          deepestLayerReached: 9,
+          totalFactsLearned: 20,
+          totalFactsSold: 1,
+          totalQuizCorrect: 70,
+          totalQuizWrong: 10,
+          currentStreak: 14,
+          bestStreak: 14,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 24. HEAVY REVIEW OVERDUE — 100 facts, all 7+ days overdue
+  // ----------------------------------------------------------
+  {
+    id: 'heavy_review_overdue',
+    label: 'Heavy Review Overdue',
+    description: '100 learned facts, ALL overdue by 7+ days',
+    targetScreen: 'base' as const,
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(30)
+      // Generate 70 synthetic fact IDs to reach 100 total
+      for (let i = 1; i <= 70; i++) {
+        const id = `synth-fact-${String(i).padStart(3, '0')}`
+        learnedFacts.push(id)
+        reviewStates.push(createReviewState(id))
+      }
+      // Make ALL review states 7 days overdue
+      const sevenDaysAgo = now - 7 * 86_400_000
+      for (const state of reviewStates) {
+        state.nextReviewAt = sevenDaysAgo
+        state.interval = 5
+        state.repetitions = 3
+      }
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 5000, shard: 120, crystal: 20, geode: 3, essence: 0 },
+        knowledgePoints: 1500,
+        unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'market'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum', 'market'], floorTiers: { starter: 1, workshop: 0, museum: 0, market: 0 } },
+        tutorialComplete: true,
+        diveCount: 45,
+        stats: {
+          totalBlocksMined: 7000,
+          totalDivesCompleted: 45,
+          deepestLayerReached: 15,
+          totalFactsLearned: 100,
+          totalFactsSold: 5,
+          totalQuizCorrect: 350,
+          totalQuizWrong: 40,
+          currentStreak: 0,
+          bestStreak: 20,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 25. FIRST DIVE RETURNING — first-time player back from dive
+  // ----------------------------------------------------------
+  {
+    id: 'first_dive_returning',
+    label: 'First Dive Returning',
+    description: 'First-time player returning from dive with 1 pending artifact',
+    targetScreen: 'base' as const,
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(2)
+      const today = new Date(now).toISOString().split('T')[0]
+      const pendingArtifacts: PendingArtifact[] = [
+        { factId: 'cult-003', rarity: 'common', minedAt: now - 300_000 },
+      ]
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 120, shard: 3, crystal: 0, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab'],
+        tutorialComplete: true,
+        diveCount: 1,
+        lastDiveDate: today,
+        pendingArtifacts,
+        stats: {
+          totalBlocksMined: 80,
+          totalDivesCompleted: 1,
+          deepestLayerReached: 3,
+          totalFactsLearned: 2,
+          totalFactsSold: 0,
+          totalQuizCorrect: 4,
+          totalQuizWrong: 1,
+          currentStreak: 1,
+          bestStreak: 1,
           totalSessions: 0,
           zeroDiveSessions: 0,
         },
