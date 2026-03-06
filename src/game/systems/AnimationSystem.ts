@@ -171,12 +171,29 @@ export class MinerAnimController {
    * @param scene - The Phaser scene whose AnimationManager will store the configs
    */
   registerAnims(scene: Phaser.Scene): void {
+    // Get the actual frame count from the loaded texture
+    const texture = scene.textures.get('miner_sheet')
+    const totalFrames = texture ? texture.frameTotal - 1 : 0 // frameTotal includes __BASE
+
     for (const cfg of ANIM_CONFIGS) {
       if (scene.anims.exists(cfg.key)) continue
 
+      // Skip animations whose frames don't exist in the loaded spritesheet
+      if (cfg.startFrame >= totalFrames) {
+        // Fall back: create a single-frame animation using frame 0
+        scene.anims.create({
+          key: cfg.key,
+          frames: scene.anims.generateFrameNumbers('miner_sheet', { start: 0, end: 0 }),
+          frameRate: cfg.frameRate,
+          repeat: cfg.repeat,
+        })
+        continue
+      }
+
+      const endFrame = Math.min(cfg.startFrame + cfg.frameCount - 1, totalFrames - 1)
       const frames = scene.anims.generateFrameNumbers('miner_sheet', {
         start: cfg.startFrame,
-        end: cfg.startFrame + cfg.frameCount - 1,
+        end: endFrame,
       })
 
       scene.anims.create({

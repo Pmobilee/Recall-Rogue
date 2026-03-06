@@ -8,7 +8,8 @@
   import { listSnapshots, storeSnapshot, deleteSnapshot, exportSnapshotBlob, parseSnapshotFile, type SaveSnapshot } from '../../dev/snapshotStore'
   import { factsDB } from '../../services/factsDB'
   import { getGM } from '../../game/gameManagerRef'
-  import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen, addConsumableToDive } from '../stores/gameState'
+  import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen, addConsumableToDive, pendingArtifacts } from '../stores/gameState'
+  import { savePendingArtifacts } from '../stores/playerData'
   import {
     addLearnedFact,
     addMinerals,
@@ -333,6 +334,29 @@
     addMinerals('shard', 25)
     addMinerals('crystal', 8)
     addMinerals('geode', 2)
+  }
+
+  function addTestArtifacts(): void {
+    const testFacts = factsDB.isReady() ? factsDB.getAll().slice(0, 5) : []
+    const rarities = ['common', 'uncommon', 'rare', 'epic', 'legendary'] as const
+    const newArtifacts = testFacts.map((f, i) => ({
+      factId: f.id,
+      rarity: rarities[i % rarities.length] as import('../../data/types').Rarity,
+      minedAt: Date.now(),
+    }))
+    if (newArtifacts.length === 0) {
+      // Fallback if DB not ready
+      for (let i = 0; i < 5; i++) {
+        newArtifacts.push({
+          factId: `nsci-00${i + 1}`,
+          rarity: rarities[i] as import('../../data/types').Rarity,
+          minedAt: Date.now(),
+        })
+      }
+    }
+    pendingArtifacts.update(existing => [...existing, ...newArtifacts])
+    savePendingArtifacts([...get(pendingArtifacts)])
+    persistPlayer()
   }
 
   // ─── Section 5: Navigation ────────────────────────────────────
@@ -718,6 +742,7 @@
           <div class="btn-grid">
             <button class="btn-give" type="button" onclick={give8OxygenTanks}>8 O2 Tanks</button>
             <button class="btn-give" type="button" onclick={fillBackpack}>Fill Backpack</button>
+            <button class="btn-give" type="button" onclick={addTestArtifacts}>+5 Artifacts</button>
           </div>
         </div>
       {/if}

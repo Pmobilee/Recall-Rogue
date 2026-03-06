@@ -15,8 +15,14 @@ let _initSqlJs: SqlJsStatic | null = null
  */
 async function getSqlJs(): Promise<SqlJsStatic> {
   if (!_initSqlJs) {
-    const mod = await import('sql.js')
-    _initSqlJs = mod.default
+    try {
+      const mod = await import('sql.js')
+      _initSqlJs = mod.default
+    } catch {
+      // Stale Vite dep cache (504 Outdated Optimize Dep) — retry once after clearing
+      const mod = await import(/* @vite-ignore */ 'sql.js')
+      _initSqlJs = mod.default
+    }
   }
   return _initSqlJs
 }
@@ -109,6 +115,7 @@ class FactsDB {
     const SQL = await initFn({ locateFile: () => wasmUrl })
     this.db = new SQL.Database(new Uint8Array(buffer))
     this.initialized = true
+    console.info(`[FactsDB] Initialized: ${this.getAll().length} facts loaded`)
   }
 
   /**
