@@ -438,7 +438,7 @@ export function resolveTileSpriteKey(
   category: 'soil' | 'rock',
   variant: number,
   textures: Phaser.Textures.TextureManager,
-): string {
+): string | null {
   // Use variant 00 as the uniform base texture for the biome.
   // Individual autotile variants (01-15) are visually inconsistent since each was
   // generated independently. A single seamless texture per biome/category looks
@@ -455,7 +455,11 @@ export function resolveTileSpriteKey(
   if (textures.exists(baseKey)) return baseKey
 
   // Fallback to universal autotile (also use variant 00 for consistency)
-  return `autotile_${category}_00`
+  const fallback = `autotile_${category}_00`
+  if (textures.exists(fallback)) return fallback
+
+  // No texture available — caller should render a colored rectangle
+  return null
 }
 
 /**

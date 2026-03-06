@@ -150,29 +150,10 @@ export class DomeScene extends Phaser.Scene {
    * plus knowledge tree stages, GAIA expressions, and decorations.
    */
   preload(): void {
-    const hubStack = getDefaultHubStack()
-
-    // Floor objects use colored blocks — no sprite textures needed
-    const spriteKeys = new Set<string>()
-
-    // Knowledge tree stage sprites
-    for (let i = 0; i <= 5; i++) {
-      spriteKeys.add(`obj_knowledge_tree_stage${i}`)
-    }
-
-    // GAIA expression sprites
+    // GAIA expression sprites (located in /assets/sprites-hires/gaia/)
     for (const expr of ['neutral', 'happy', 'thinking', 'snarky', 'surprised', 'calm']) {
-      spriteKeys.add(`gaia_${expr}`)
-    }
-
-    // Decoration sprites
-    for (const deco of ['deco_ceiling_light', 'deco_plant_pot', 'deco_wall_monitor']) {
-      spriteKeys.add(deco)
-    }
-
-    // Load each sprite texture (Phaser silently skips duplicates)
-    for (const key of spriteKeys) {
-      this.load.image(key, `/assets/sprites-hires/dome/${key}.png`)
+      const key = `gaia_${expr}`
+      this.load.image(key, `/assets/sprites-hires/gaia/${key}.png`)
     }
   }
 

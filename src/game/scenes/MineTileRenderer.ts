@@ -63,6 +63,8 @@ interface OverlaySpec {
   scale: number
   /** Alpha transparency of the overlay */
   alpha: number
+  /** Optional fallback sprite key to use as overlay when overlay_* sprites don't exist */
+  fallbackKey?: string
 }
 
 /** Maps block types to their overlay specs. Blocks not listed render normally (no overlay). */
@@ -71,34 +73,39 @@ const OVERLAY_SPECS: Partial<Record<BlockType, OverlaySpec | ((cell: MineCell) =
     const tier = cell.content?.mineralType ?? 'dust'
     const prefix = `overlay_mineral_${tier}`
     const scale = tier === 'essence' ? 0.85 : tier === 'geode' ? 0.75 : tier === 'crystal' ? 0.65 : tier === 'shard' ? 0.55 : 0.45
-    return { keyPrefix: prefix, variants: 5, scale, alpha: 1.0 }
+    const fallbackKey = tier === 'essence' ? 'block_mineral_essence'
+      : tier === 'geode' ? 'block_mineral_geode'
+      : tier === 'crystal' ? 'block_mineral_crystal'
+      : tier === 'shard' ? 'block_mineral_shard'
+      : 'block_mineral_dust'
+    return { keyPrefix: prefix, variants: 5, scale, alpha: 1.0, fallbackKey }
   },
   [BlockType.ArtifactNode]: (cell: MineCell) => {
     const rarity = cell.content?.artifactRarity ?? 'common'
     const prefix = rarity === 'rare' || rarity === 'legendary' ? 'overlay_artifact_rare'
       : rarity === 'uncommon' ? 'overlay_artifact_uncommon'
       : 'overlay_artifact_common'
-    return { keyPrefix: prefix, variants: 5, scale: 0.75, alpha: 1.0 }
+    return { keyPrefix: prefix, variants: 5, scale: 0.75, alpha: 1.0, fallbackKey: 'block_artifact' }
   },
-  [BlockType.LavaBlock]: { keyPrefix: 'overlay_lava_seep', variants: 5, scale: 0.7, alpha: 0.9 },
-  [BlockType.GasPocket]: { keyPrefix: 'overlay_gas_wisp', variants: 5, scale: 0.6, alpha: 0.85 },
-  [BlockType.UnstableGround]: { keyPrefix: 'overlay_unstable', variants: 5, scale: 0.6, alpha: 0.8 },
-  [BlockType.FossilNode]: { keyPrefix: 'overlay_fossil', variants: 5, scale: 0.7, alpha: 1.0 },
-  [BlockType.DataDisc]: { keyPrefix: 'overlay_data_disc', variants: 5, scale: 0.6, alpha: 1.0 },
-  [BlockType.OxygenCache]: { keyPrefix: 'overlay_oxygen_cache', variants: 5, scale: 0.6, alpha: 1.0 },
-  [BlockType.OxygenTank]: { keyPrefix: 'overlay_oxygen_tank', variants: 5, scale: 0.65, alpha: 1.0 },
+  [BlockType.LavaBlock]: { keyPrefix: 'overlay_lava_seep', variants: 5, scale: 0.7, alpha: 0.9, fallbackKey: 'block_lava' },
+  [BlockType.GasPocket]: { keyPrefix: 'overlay_gas_wisp', variants: 5, scale: 0.6, alpha: 0.85, fallbackKey: 'block_gas' },
+  [BlockType.UnstableGround]: { keyPrefix: 'overlay_unstable', variants: 5, scale: 0.6, alpha: 0.8, fallbackKey: 'block_unstable' },
+  [BlockType.FossilNode]: { keyPrefix: 'overlay_fossil', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_fossil' },
+  [BlockType.DataDisc]: { keyPrefix: 'overlay_data_disc', variants: 5, scale: 0.6, alpha: 1.0, fallbackKey: 'block_data_disc' },
+  [BlockType.OxygenCache]: { keyPrefix: 'overlay_oxygen_cache', variants: 5, scale: 0.6, alpha: 1.0, fallbackKey: 'block_oxygen_cache' },
+  [BlockType.OxygenTank]: { keyPrefix: 'overlay_oxygen_tank', variants: 5, scale: 0.65, alpha: 1.0, fallbackKey: 'block_oxygen_tank' },
   [BlockType.Chest]: { keyPrefix: 'overlay_chest', variants: 5, scale: 0.75, alpha: 1.0 },
-  [BlockType.ExitLadder]: { keyPrefix: 'overlay_exit_ladder', variants: 5, scale: 0.85, alpha: 1.0 },
-  [BlockType.DescentShaft]: { keyPrefix: 'overlay_descent_shaft', variants: 5, scale: 0.85, alpha: 1.0 },
-  [BlockType.QuizGate]: { keyPrefix: 'overlay_quiz_gate', variants: 5, scale: 0.8, alpha: 1.0 },
-  [BlockType.SendUpStation]: { keyPrefix: 'overlay_send_up', variants: 5, scale: 0.7, alpha: 1.0 },
-  [BlockType.UpgradeCrate]: { keyPrefix: 'overlay_upgrade_crate', variants: 5, scale: 0.7, alpha: 1.0 },
-  [BlockType.QuoteStone]: { keyPrefix: 'overlay_quote_stone', variants: 5, scale: 0.55, alpha: 0.9 },
+  [BlockType.ExitLadder]: { keyPrefix: 'overlay_exit_ladder', variants: 5, scale: 0.85, alpha: 1.0, fallbackKey: 'block_exit_ladder' },
+  [BlockType.DescentShaft]: { keyPrefix: 'overlay_descent_shaft', variants: 5, scale: 0.85, alpha: 1.0, fallbackKey: 'block_descent_shaft' },
+  [BlockType.QuizGate]: { keyPrefix: 'overlay_quiz_gate', variants: 5, scale: 0.8, alpha: 1.0, fallbackKey: 'block_quiz_gate' },
+  [BlockType.SendUpStation]: { keyPrefix: 'overlay_send_up', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_send_up' },
+  [BlockType.UpgradeCrate]: { keyPrefix: 'overlay_upgrade_crate', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_upgrade_crate' },
+  [BlockType.QuoteStone]: { keyPrefix: 'overlay_quote_stone', variants: 5, scale: 0.55, alpha: 0.9, fallbackKey: 'block_quote_stone' },
   [BlockType.WallText]: { keyPrefix: 'overlay_wall_text', variants: 5, scale: 0.6, alpha: 0.9 },
   [BlockType.Tablet]: { keyPrefix: 'overlay_tablet', variants: 5, scale: 0.6, alpha: 1.0 },
   [BlockType.OfferingAltar]: { keyPrefix: 'overlay_offering_altar', variants: 5, scale: 0.8, alpha: 1.0 },
   [BlockType.LockedBlock]: { keyPrefix: 'overlay_locked', variants: 5, scale: 0.7, alpha: 1.0 },
-  [BlockType.RelicShrine]: { keyPrefix: 'overlay_relic_shrine', variants: 5, scale: 0.8, alpha: 1.0 },
+  [BlockType.RelicShrine]: { keyPrefix: 'overlay_relic_shrine', variants: 5, scale: 0.8, alpha: 1.0, fallbackKey: 'block_relic_shrine' },
   [BlockType.RecipeFragmentNode]: { keyPrefix: 'overlay_recipe_frag', variants: 5, scale: 0.65, alpha: 1.0 },
 }
 
@@ -125,8 +132,13 @@ function tryRenderOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY
   const variant = overlayVariant(tileX, tileY, spec.variants)
   const overlayKey = `${spec.keyPrefix}_${String(variant).padStart(2, '0')}`
 
-  // Check if the overlay texture actually exists
-  if (!scene.textures.exists(overlayKey)) return false
+  // Determine the actual overlay texture key: dedicated overlay sprite, or fallback block sprite
+  const hasDedicatedOverlay = scene.textures.exists(overlayKey)
+  const useOverlayKey = hasDedicatedOverlay ? overlayKey
+    : spec.fallbackKey && scene.textures.exists(spec.fallbackKey) ? spec.fallbackKey
+    : null
+
+  if (!useOverlayKey) return false
 
   const cx = px + TILE_SIZE * 0.5
   const cy = py + TILE_SIZE * 0.5
@@ -135,14 +147,22 @@ function tryRenderOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY
   const terrainCategory = getTerrainCategory(cell)
   const tileVariant = cell.tileVariant ?? 0
   const baseSpriteKey = resolveTileSpriteKey(scene.currentBiome.id, terrainCategory, tileVariant, scene.textures)
-  getPooledSprite(scene, baseSpriteKey, cx, cy).setDepth(5)
+  if (baseSpriteKey) {
+    getPooledSprite(scene, baseSpriteKey, cx, cy).setDepth(5)
+  } else {
+    const color = (scene.currentBiome.blockColorOverrides[cell.type] ?? BLOCK_COLORS[cell.type]) ?? scene.currentBiome.fogTint
+    scene.tileGraphics.fillStyle(color, 1)
+    scene.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+  }
 
   // Step 2: Render overlay on top
-  const overlaySprite = getPooledSprite(scene, overlayKey, cx, cy)
+  // Fallback block sprites are full-tile images — render at near-full size (0.92)
+  // Dedicated overlay sprites use their configured scale (typically smaller)
+  const effectiveScale = hasDedicatedOverlay ? spec.scale : Math.max(spec.scale, 0.92)
+  const overlaySprite = getPooledSprite(scene, useOverlayKey, cx, cy)
   overlaySprite.setDepth(5.5)
   overlaySprite.setAlpha(spec.alpha)
-  // Scale the overlay relative to the tile
-  const displaySize = TILE_SIZE * spec.scale
+  const displaySize = TILE_SIZE * effectiveScale
   overlaySprite.setDisplaySize(displaySize, displaySize)
 
   return true
@@ -218,6 +238,16 @@ export function getPooledSprite(scene: MineScene, key: string, x: number, y: num
   return sprite
 }
 
+/** Renders a block sprite if the texture exists, otherwise falls back to a colored rectangle. */
+function renderBlockFallback(scene: MineScene, cell: MineCell, spriteKey: string | null, cx: number, cy: number, px: number, py: number): void {
+  if (spriteKey && scene.textures.exists(spriteKey)) {
+    getPooledSprite(scene, spriteKey, cx, cy)
+  } else {
+    scene.tileGraphics.fillStyle(BLOCK_COLORS[cell.type] ?? 0x333333, 1)
+    scene.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+  }
+}
+
 /** Renders the block-specific sprite/pattern for a single cell. */
 export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
   const cx = px + TILE_SIZE * 0.5
@@ -236,7 +266,13 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
           break
         }
       }
-      getPooledSprite(scene, biomeSpriteKey, cx, cy)
+      if (biomeSpriteKey) {
+        getPooledSprite(scene, biomeSpriteKey, cx, cy)
+      } else {
+        const color = (scene.currentBiome.blockColorOverrides[cell.type] ?? BLOCK_COLORS[cell.type]) ?? scene.currentBiome.fogTint
+        scene.tileGraphics.fillStyle(color, 1)
+        scene.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+      }
       break
     }
     case BlockType.Stone:
@@ -253,36 +289,42 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
           break
         }
       }
-      getPooledSprite(scene, biomeSpriteKey, cx, cy)
+      if (biomeSpriteKey) {
+        getPooledSprite(scene, biomeSpriteKey, cx, cy)
+      } else {
+        const color = (scene.currentBiome.blockColorOverrides[cell.type] ?? BLOCK_COLORS[cell.type]) ?? scene.currentBiome.fogTint
+        scene.tileGraphics.fillStyle(color, 1)
+        scene.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+      }
       break
     }
     case BlockType.OxygenCache: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.OxygenCache, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_oxygen_cache', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_oxygen_cache', cx, cy, px, py)
       break
     }
     case BlockType.UpgradeCrate: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.UpgradeCrate, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_upgrade_crate', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_upgrade_crate', cx, cy, px, py)
       break
     }
     case BlockType.QuizGate: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.QuizGate, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_quiz_gate', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_quiz_gate', cx, cy, px, py)
       break
     }
     case BlockType.ExitLadder: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_exit_ladder', cx, cy)
+      renderBlockFallback(scene, cell, 'block_exit_ladder', cx, cy, px, py)
       break
     }
     case BlockType.DescentShaft: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.DescentShaft, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_descent_shaft', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_descent_shaft', cx, cy, px, py)
       break
     }
     case BlockType.MineralNode: {
@@ -314,7 +356,7 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
         : tier === 'crystal' ? 'block_mineral_crystal'
         : tier === 'shard' ? 'block_mineral_shard'
         : 'block_mineral_dust'
-      getPooledSprite(scene, mineralKey, cx, cy)
+      renderBlockFallback(scene, cell, mineralKey, cx, cy, px, py)
       const shimmerKey = BlockAnimSystem.getFrameKey(BlockType.MineralNode, scene.time.now, scene.textures)
       if (shimmerKey) {
         const shimmer = getPooledSprite(scene, shimmerKey, cx, cy)
@@ -338,7 +380,7 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
     case BlockType.ArtifactNode: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.ArtifactNode, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_artifact', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_artifact', cx, cy, px, py)
       break
     }
     case BlockType.LavaBlock: {
@@ -350,7 +392,7 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
         break
       }
       const animKey = BlockAnimSystem.getFrameKey(BlockType.LavaBlock, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_lava', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_lava', cx, cy, px, py)
       scene.overlayGraphics.fillStyle(0xff8800, 0.6)
       const dotX = px + 4 + seededModulo(tileX, tileY, 7, TILE_SIZE - 8)
       const dotY = py + 4 + seededModulo(tileX, tileY, 11, TILE_SIZE - 8)
@@ -360,17 +402,17 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
     case BlockType.GasPocket: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.GasPocket, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_gas', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_gas', cx, cy, px, py)
       break
     }
     case BlockType.UnstableGround: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_unstable', cx, cy)
+      renderBlockFallback(scene, cell, 'block_unstable', cx, cy, px, py)
       break
     }
     case BlockType.QuoteStone: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_quote_stone', cx, cy)
+      renderBlockFallback(scene, cell, 'block_quote_stone', cx, cy, px, py)
       break
     }
     case BlockType.WallText: {
@@ -392,28 +434,28 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
     case BlockType.RelicShrine: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.RelicShrine, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_relic_shrine', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_relic_shrine', cx, cy, px, py)
       break
     }
     case BlockType.SendUpStation: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_send_up', cx, cy)
+      renderBlockFallback(scene, cell, 'block_send_up', cx, cy, px, py)
       break
     }
     case BlockType.OxygenTank: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_oxygen_tank', cx, cy)
+      renderBlockFallback(scene, cell, 'block_oxygen_tank', cx, cy, px, py)
       break
     }
     case BlockType.DataDisc: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
-      getPooledSprite(scene, 'block_data_disc', cx, cy)
+      renderBlockFallback(scene, cell, 'block_data_disc', cx, cy, px, py)
       break
     }
     case BlockType.FossilNode: {
       if (tryRenderOverlay(scene, cell, tileX, tileY, px, py)) break
       const animKey = BlockAnimSystem.getFrameKey(BlockType.FossilNode, scene.time.now, scene.textures)
-      getPooledSprite(scene, animKey ?? 'block_fossil', cx, cy)
+      renderBlockFallback(scene, cell, animKey ?? 'block_fossil', cx, cy, px, py)
       break
     }
     case BlockType.Chest: {
