@@ -118,6 +118,11 @@ export class DomeScene extends Phaser.Scene {
   /** Live particle state array — covers all unlocked floors. */
   private particleData: ParticleState[] = []
 
+  // ---- Camera drag scrolling ----
+  private dragStartY = 0
+  private dragStartScrollY = 0
+  private isDragging = false
+
   // ---- Phase 10.16: GAIA thought bubble ----
   private bubbleContainer: Phaser.GameObjects.Container | null = null
   private bubbleTimer: Phaser.Time.TimerEvent | null = null
@@ -221,9 +226,11 @@ export class DomeScene extends Phaser.Scene {
     const cam = this.cameras.main
     if (!cam) return  // guard: camera not ready
     if (cam.width <= 0 || cam.height <= 0) return
-    const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
+    const zoom = cam.width / FLOOR_CANVAS_W
     if (zoom <= 0) return
     cam.setZoom(zoom)
+    // Set camera bounds to cover all floors
+    cam.setBounds(0, 0, FLOOR_CANVAS_W, this.floors.length * FLOOR_CANVAS_H)
     // Tween to the center of the target floor
     const targetCenterX = FLOOR_CANVAS_W / 2
     const targetCenterY = index * FLOOR_CANVAS_H + FLOOR_CANVAS_H / 2
@@ -404,9 +411,13 @@ export class DomeScene extends Phaser.Scene {
     if (!cam) return  // guard: camera not ready (scene stopped or not yet created)
     // Guard: skip if canvas dimensions are not yet resolved (RESIZE mode race)
     if (cam.width <= 0 || cam.height <= 0) return
-    const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
+    // Zoom to fit floor WIDTH so all floors are scrollable vertically
+    const zoom = cam.width / FLOOR_CANVAS_W
     if (zoom <= 0) return
     cam.setZoom(zoom)
+    // Set camera bounds to cover all floors
+    const totalHeight = this.floors.length * FLOOR_CANVAS_H
+    cam.setBounds(0, 0, FLOOR_CANVAS_W, totalHeight)
     // Center on the middle of the current floor
     const centerX = FLOOR_CANVAS_W / 2
     const centerY = this.floorIndex * FLOOR_CANVAS_H + FLOOR_CANVAS_H / 2
@@ -656,8 +667,29 @@ export class DomeScene extends Phaser.Scene {
    * plus wheel scrolling for multi-floor navigation (Phase 10.11).
    */
   private setupInput(): void {
+    // Enable camera drag scrolling for mobile and desktop
+    this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+      this.dragStartY = pointer.y
+      this.dragStartScrollY = this.cameras.main.scrollY
+      this.isDragging = false
+    })
+
+    this.input.on('pointermove', (pointer: Phaser.Input.Pointer) => {
+      if (!pointer.isDown) return
+      const dy = pointer.y - this.dragStartY
+      if (Math.abs(dy) > 4) this.isDragging = true
+      if (this.isDragging) {
+        const cam = this.cameras.main
+        const zoom = cam.zoom || 1
+        cam.scrollY = this.dragStartScrollY - dy / zoom
+      }
+    })
+
     // Pointer tap — hit-test against the floor at the world point
     this.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
+      // Distinguish taps from drags
+      if (this.isDragging) return
+
       const worldPoint = this.cameras.main.getWorldPoint(pointer.x, pointer.y)
 
       // Determine which floor the tap landed on based on world Y
@@ -687,24 +719,6 @@ export class DomeScene extends Phaser.Scene {
         }
       }
     })
-
-    // Phase 10.11 — Wheel scroll to move between floors
-    this.input.on(
-      'wheel',
-      (_ptr: unknown, _objs: unknown[], _dx: number, dy: number) => {
-        const unlocked = this.getUnlockedFloors()
-        if (unlocked.length <= 1) return
-        if (dy > 0 && this.floorIndex < unlocked.length - 1) {
-          this.floorIndex++
-          this.centerCamera()
-          hubEvents.emit('floorChanged', this.floorIndex)
-        } else if (dy < 0 && this.floorIndex > 0) {
-          this.floorIndex--
-          this.centerCamera()
-          hubEvents.emit('floorChanged', this.floorIndex)
-        }
-      },
-    )
   }
 
   // =========================================================

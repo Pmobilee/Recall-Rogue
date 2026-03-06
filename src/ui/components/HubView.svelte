@@ -4,7 +4,6 @@
   import { BALANCE } from '../../data/balance'
   import { playerSave, isMorningReviewAvailable, isEveningReviewAvailable } from '../stores/playerData'
   import { currentFloorIndex } from '../stores/gameState'
-  import FloorIndicator from './FloorIndicator.svelte'
   import type { Fact } from '../../data/types'
   import { gameManagerStore, getGM } from '../../game/gameManagerRef'
   import { hubEvents } from '../../game/hubEvents'
@@ -114,33 +113,6 @@
       dome.goToFloor(idx)
     }
   })
-
-  // Touch navigation
-  let touchStartY = $state(0)
-
-  function handleTouchStart(e: TouchEvent): void {
-    touchStartY = e.touches[0].clientY
-  }
-
-  function handleTouchEnd(e: TouchEvent): void {
-    const deltaY = touchStartY - e.changedTouches[0].clientY
-    if (Math.abs(deltaY) > 40) {
-      if (deltaY > 0 && floorIndex < unlockedFloors.length - 1) {
-        floorIndex++
-      } else if (deltaY < 0 && floorIndex > 0) {
-        floorIndex--
-      }
-    }
-  }
-
-  function handleWheel(e: WheelEvent): void {
-    e.preventDefault()
-    if (e.deltaY > 0 && floorIndex < unlockedFloors.length - 1) {
-      floorIndex++
-    } else if (e.deltaY < 0 && floorIndex > 0) {
-      floorIndex--
-    }
-  }
 
   function handleFloorSelect(index: number): void {
     if (index >= 0 && index < unlockedFloors.length) {
@@ -285,17 +257,9 @@
       queueMicrotask(() => unsub?.())
     })
 
-    // Floor navigation listeners — attached to document since hub-view
-    // has pointer-events:none for Phaser canvas passthrough
-    document.addEventListener('touchstart', handleTouchStart as unknown as EventListener)
-    document.addEventListener('touchend', handleTouchEnd as unknown as EventListener)
-    document.addEventListener('wheel', handleWheel as unknown as EventListener, { passive: false })
   })
 
   onDestroy(() => {
-    document.removeEventListener('touchstart', handleTouchStart as unknown as EventListener)
-    document.removeEventListener('touchend', handleTouchEnd as unknown as EventListener)
-    document.removeEventListener('wheel', handleWheel as unknown as EventListener)
     hubEvents.off('objectTap', handleObjectTap)
     // Stop GAIA thought bubble timer on cleanup (Phase 15.2)
     const gm = getGM()
@@ -361,13 +325,6 @@
   <button class="settings-btn" type="button" onclick={() => onSettings?.()} aria-label="Open settings">
     ⚙
   </button>
-
-  <FloorIndicator
-    floors={hubStack.floors}
-    {unlockedIds}
-    currentIndex={floorIndex}
-    onFloorSelect={handleFloorSelect}
-  />
 
   <!-- Phase 15.2: GAIA idle thought bubbles -->
   <GaiaThoughtBubble />
