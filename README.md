@@ -88,6 +88,27 @@ See `docs/DEPLOYMENT.md` for step-by-step guidance.
   - `node tests/e2e/01-app-loads.cjs`
 - Never commit secrets (`.env`, API keys, private tokens).
 
+## Dev Services (Remote Access)
+
+| Service | Port | URL |
+| --- | --- | --- |
+| Vite dev server | 5173 | `http://<host>:5173` |
+| ComfyUI | 8188 | `http://<host>:8188` |
+| JupyterLab | 8888 | `http://<host>:8888` |
+
+- **ComfyUI** — Stable Diffusion node editor for sprite generation (SDXL + pixel art LoRA on RTX 3060 12GB). Venv: `/opt/comfyui-env`, install: `/opt/ComfyUI/`.
+- **JupyterLab** — Python notebook environment (no auth). Venv: `/opt/jupyter-env`.
+
+Start services manually if they're not running:
+
+```bash
+# ComfyUI (listen on all interfaces)
+cd /opt/ComfyUI && /opt/comfyui-env/bin/python main.py --listen 0.0.0.0 --lowvram --preview-method auto --use-split-cross-attention --port 8188 &
+
+# JupyterLab (no auth, listen on all interfaces)
+/opt/jupyter-env/bin/jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --ServerApp.token='' --ServerApp.password='' --notebook-dir=/opt/ComfyUI &
+```
+
 ## Documentation map
 
 Start here for implementation-grounded docs:

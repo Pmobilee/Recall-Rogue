@@ -19,6 +19,7 @@ import {
   syncKnowledgePoints,
   shouldShowNewCards,
   incrementNewCardCount,
+  updateDailyStreak,
 } from '../../ui/stores/playerData'
 import type { AnkiButton } from '../../services/sm2'
 import { BALANCE, NEW_CARDS_PER_SESSION } from '../../data/balance'
@@ -229,8 +230,9 @@ export class StudyManager {
       const now = Date.now()
       const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000
       const timestamps = [...(s.lastStudySessionTimestamps ?? []), now].filter(t => t > sevenDaysAgo)
+      const streakUpdated = updateDailyStreak(s)
       return {
-        ...s,
+        ...streakUpdated,
         lastStudySessionTimestamps: timestamps,
         hasCompletedInitialStudy: true,
       }

@@ -646,6 +646,54 @@ export function unlockRoom(roomId: string): void {
 }
 
 /**
+ * Updates the daily streak fields on a PlayerSave. Returns the updated save.
+ * Both dive completions and study sessions count toward the streak.
+ * Does NOT handle milestone claiming or room unlocking (those are dive-specific).
+ */
+export function updateDailyStreak(save: PlayerSave): PlayerSave {
+  const today = new Date().toISOString().split('T')[0]
+  const lastDate = save.lastDiveDate
+  let newStreak = save.stats.currentStreak
+  let streakProtected = save.streakProtected ?? false
+
+  if (lastDate === today) {
+    // Already active today — streak unchanged
+    streakProtected = false
+  } else if (lastDate) {
+    const last = new Date(lastDate)
+    const todayDate = new Date(today)
+    const diffDays = Math.floor((todayDate.getTime() - last.getTime()) / (1000 * 60 * 60 * 24))
+    if (diffDays === 1) {
+      newStreak += 1
+      streakProtected = false
+    } else if (diffDays > 1 && streakProtected) {
+      streakProtected = false
+    } else {
+      newStreak = 1
+      streakProtected = false
+    }
+  } else {
+    newStreak = 1
+    streakProtected = false
+  }
+
+  const bestStreak = Math.max(save.stats.bestStreak, newStreak)
+  const longestStreak = Math.max(save.longestStreak ?? 0, newStreak)
+
+  return {
+    ...save,
+    lastDiveDate: today,
+    streakProtected,
+    longestStreak,
+    stats: {
+      ...save.stats,
+      currentStreak: newStreak,
+      bestStreak,
+    },
+  }
+}
+
+/**
  * Records a completed dive in player statistics and updates the daily streak.
  * Also checks if any new dome rooms should be unlocked based on total dives,
  * and auto-claims any newly reached streak milestones.
@@ -659,37 +707,10 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       return save
     }
 
-    const today = new Date().toISOString().split('T')[0]
-    const lastDate = save.lastDiveDate
-
-    let newStreak = save.stats.currentStreak
-    let streakProtected = save.streakProtected ?? false
-
-    if (lastDate === today) {
-      // Already dived today — streak unchanged, clear protection flag
-      streakProtected = false
-    } else if (lastDate) {
-      const lastDiveDate = new Date(lastDate)
-      const todayDate = new Date(today)
-      const diffDays = Math.floor((todayDate.getTime() - lastDiveDate.getTime()) / (1000 * 60 * 60 * 24))
-
-      if (diffDays === 1) {
-        // Consecutive day — increment streak
-        newStreak += 1
-        streakProtected = false
-      } else if (diffDays > 1 && streakProtected) {
-        // Missed a day but streak was protected — don't reset, just consume the protection
-        streakProtected = false
-      } else {
-        // Streak broken — reset to 1
-        newStreak = 1
-        streakProtected = false
-      }
-    } else {
-      // First ever dive
-      newStreak = 1
-      streakProtected = false
-    }
+    const streakUpdated = updateDailyStreak(save)
+    const newStreak = streakUpdated.stats.currentStreak
+    const streakProtected = streakUpdated.streakProtected ?? false
+    const today = streakUpdated.lastDiveDate!
 
     const newDiveCount = save.stats.totalDivesCompleted + 1
 
@@ -756,7 +777,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
           ? deepestLayer
           : save.stats.deepestLayerReached,
       currentStreak: newStreak,
-      bestStreak: Math.max(save.stats.bestStreak, newStreak),
+      bestStreak: streakUpdated.stats.bestStreak,
     }
 
     // Phase 12: Evaluate archetype (weekly re-eval)
@@ -785,6 +806,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       ...save,
       lastDiveDate: today,
       streakProtected,
+      longestStreak: streakUpdated.longestStreak,
       claimedMilestones,
       lastStreakMilestone: highestClaimed,
       titles: updatedTitles,

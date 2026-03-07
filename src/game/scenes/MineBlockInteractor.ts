@@ -107,6 +107,7 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
 
     if (isExitLadder) {
       scene.game.events.emit('exit-reached')
+      return  // Scene is stopped by endDive — don't redraw
     }
 
     scene.redrawAll()
