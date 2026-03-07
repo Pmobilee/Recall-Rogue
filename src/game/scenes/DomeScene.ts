@@ -156,11 +156,7 @@ export class DomeScene extends Phaser.Scene {
    * plus knowledge tree stages, GAIA expressions, and decorations.
    */
   preload(): void {
-    // GAIA expression sprites (located in /assets/sprites-hires/gaia/)
-    for (const expr of ['neutral', 'happy', 'thinking', 'snarky', 'surprised', 'calm']) {
-      const key = `gaia_${expr}`
-      this.load.image(key, `/assets/sprites-hires/gaia/${key}.png`)
-    }
+    // Intentionally empty — sprites loaded lazily after create() to avoid blocking scene start
   }
 
   /**
@@ -197,6 +193,16 @@ export class DomeScene extends Phaser.Scene {
     this.scale.on('resize', () => {
       this.centerCamera()
     })
+
+    // Load GAIA expressions in background (non-blocking)
+    this.load.on('complete', () => {
+      // Sprites now available — could refresh GAIA display if needed
+    })
+    for (const expr of ['neutral', 'happy', 'thinking', 'snarky', 'surprised', 'calm']) {
+      const key = `gaia_${expr}`
+      this.load.image(key, `/assets/sprites-hires/gaia/${key}.png`)
+    }
+    this.load.start()
   }
 
   /** Animate particles every frame. */
