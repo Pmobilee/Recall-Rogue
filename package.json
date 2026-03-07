@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/gen-sprite-keys.mjs && node scripts/build-facts-db.mjs && vite",
-    "prebuild": "node scripts/audit-fact-sprites.mjs --emit-manifest",
+    "webp": "node scripts/convert-to-webp.mjs",
+    "prebuild": "node scripts/audit-fact-sprites.mjs --emit-manifest && node scripts/convert-to-webp.mjs",
     "build": "node scripts/gen-sprite-keys.mjs && node scripts/audit-assets.mjs && node scripts/build-facts-db.mjs && vite build",
     "audit:sprites": "node scripts/audit-fact-sprites.mjs",
     "audit:sprites:ci": "node scripts/audit-fact-sprites.mjs --fail-below=80",

@@ -8,6 +8,7 @@
 
 import Phaser from 'phaser'
 import { getFactSpriteManifest } from '../../services/factSpriteManifest'
+import { supportsWebP } from '../spriteManifest'
 
 export class FactSpriteLoader {
   private scene: Phaser.Scene
@@ -30,7 +31,8 @@ export class FactSpriteLoader {
 
     this.loading.add(factId)
     const key = `fact_sprite_${factId}`
-    const url = `/assets/sprites/facts/${factId}.png`
+    const ext = supportsWebP() ? '.webp' : '.png'
+    const url = `/assets/sprites/facts/${factId}${ext}`
 
     return new Promise((resolve) => {
       if (this.scene.textures.exists(key)) {

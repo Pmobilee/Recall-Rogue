@@ -33,6 +33,7 @@ import {
 import { getDefaultHubStack } from '../../data/hubFloors'
 import { getTreeStage } from '../../data/knowledgeTreeStages'
 import { hubEvents } from '../hubEvents'
+import { supportsWebP } from '../spriteManifest'
 
 /** Theme ambient configs — one per floor theme. */
 interface AmbientConfig {
@@ -86,6 +87,10 @@ interface ParticleState {
   alpha: number
   /** Which floor index this particle belongs to (for multi-floor world offset). */
   floorIndex: number
+  /** Pre-computed fill color (avoids per-frame theme/tier lookups). */
+  color: number
+  /** Pre-computed world Y base offset: floorIndex * FLOOR_CANVAS_H. */
+  worldYBase: number
 }
 
 /**
@@ -115,9 +120,17 @@ export class DomeScene extends Phaser.Scene {
   /** Text labels placed over floor objects. */
   private labelTexts: Phaser.GameObjects.Text[] = []
 
+  // ---- Baked RenderTextures (static layers) ----
+  private tileRT: Phaser.GameObjects.RenderTexture | null = null
+  private detailRT: Phaser.GameObjects.RenderTexture | null = null
+  private glowRT: Phaser.GameObjects.RenderTexture | null = null
+  private objectRT: Phaser.GameObjects.RenderTexture | null = null
+
   /** Live particle state array — covers all unlocked floors. */
   private particleData: ParticleState[] = []
-  private debugText: Phaser.GameObjects.Text | null = null
+
+  /** Cached result of getUnlockedFloors() — recomputed in setHubState() and renderAllFloors(). */
+  private cachedUnlockedFloors: HubFloor[] = []
 
   // ---- Camera drag scrolling ----
   private dragStartY = 0
@@ -175,15 +188,6 @@ export class DomeScene extends Phaser.Scene {
     this.initAllParticles()
     this.created = true
 
-    // Temporary debug overlay for mobile diagnosis
-    this.debugText = this.add.text(10, 10, '', {
-      fontSize: '14px',
-      fontFamily: 'monospace',
-      color: '#ff0',
-      backgroundColor: '#000a',
-      padding: { x: 6, y: 4 },
-    }).setScrollFactor(0).setDepth(999)
-
     // Defer camera centering to ensure Phaser RESIZE has resolved actual canvas size.
     // Multiple retries handle Safari's lazy layout timing.
     this.time.delayedCall(0, () => this.centerCamera())
@@ -198,9 +202,10 @@ export class DomeScene extends Phaser.Scene {
     this.load.on('complete', () => {
       // Sprites now available — could refresh GAIA display if needed
     })
+    const gaiaExt = supportsWebP() ? '.webp' : '.png'
     for (const expr of ['neutral', 'happy', 'thinking', 'snarky', 'surprised', 'calm']) {
       const key = `gaia_${expr}`
-      this.load.image(key, `/assets/sprites-hires/gaia/${key}.png`)
+      this.load.image(key, `/assets/sprites-hires/gaia/${key}${gaiaExt}`)
     }
     this.load.start()
   }
@@ -208,23 +213,6 @@ export class DomeScene extends Phaser.Scene {
   /** Animate particles every frame. */
   update(_time: number, delta: number): void {
     this.updateParticles(delta)
-
-    // Update debug overlay
-    if (this.debugText) {
-      const cam = this.cameras.main
-      const unlocked = this.getUnlockedFloors()
-      this.debugText.setText([
-        `cam: ${Math.round(cam.width)}x${Math.round(cam.height)}`,
-        `zoom: ${cam.zoom.toFixed(3)}`,
-        `scroll: ${Math.round(cam.scrollX)},${Math.round(cam.scrollY)}`,
-        `bounds: ${cam.getBounds().width}x${cam.getBounds().height}`,
-        `floors: ${unlocked.length}/${this.floors.length}`,
-        `floorIdx: ${this.floorIndex}`,
-        `canvas: ${this.scale.width}x${this.scale.height}`,
-        `renderer: ${this.game.renderer.type === 1 ? 'Canvas' : 'WebGL'}`,
-        `particles: ${this.particleData.length}`,
-      ].join('\n'))
-    }
   }
 
   // =========================================================
@@ -243,6 +231,7 @@ export class DomeScene extends Phaser.Scene {
     this.unlockedIds   = unlockedIds
     this.floorTiers    = floorTiers
     this.masteredCount = masteredCount
+    this.cachedUnlockedFloors = this.floors.filter(f => this.unlockedIds.includes(f.id))
     if (!this.created) return
     this.renderAllFloors()
     this.initAllParticles()
@@ -465,16 +454,17 @@ export class DomeScene extends Phaser.Scene {
   private renderAllFloors(): void {
     // Guard against calls before create() is complete
     if (!this.tileGraphics) return
-    // Clear all layers
-    this.tileGraphics.clear()
-    this.glowGraphics.clear()
-    this.objectGraphics.clear()
-    this.detailGraphics.clear()
+    // Clear all layers — restore visibility first (hidden after previous bake)
+    this.tileGraphics.setVisible(true).clear()
+    this.glowGraphics.setVisible(true).clear()
+    this.objectGraphics.setVisible(true).clear()
+    this.detailGraphics.setVisible(true).clear()
 
     for (const t of this.labelTexts) t.destroy()
     this.labelTexts = []
 
-    const unlocked = this.getUnlockedFloors()
+    this.cachedUnlockedFloors = this.floors.filter(f => this.unlockedIds.includes(f.id))
+    const unlocked = this.cachedUnlockedFloors
     if (unlocked.length === 0) return
 
     // Camera: zoom to fit, centered on current floor
@@ -487,6 +477,11 @@ export class DomeScene extends Phaser.Scene {
 
     // Draw structural connectors between floors (Phase 10.11)
     this.renderFloorConnectors(unlocked.length)
+
+    // Bake static graphics into RenderTextures for O(1) per-frame rendering.
+    // Graphics objects contain ~50K draw commands across 10 floors — too expensive
+    // to re-submit every frame. RenderTextures draw once, render as a single quad.
+    this.bakeStaticLayers()
   }
 
   /**
@@ -599,17 +594,22 @@ export class DomeScene extends Phaser.Scene {
         this.objectGraphics.strokeRect(x + 1, y + 1, w - 2, h - 2)
       }
 
-      // Label text
+      // Label text — scale font to fit within object bounds
       const effectiveLabel = this.getEffectiveLabel(obj.action, obj.label)
       const labelText = effectiveLabel.length > 12
         ? effectiveLabel.slice(0, 11) + '\u2026'
         : effectiveLabel
+
+      // Dynamic font size: scale to object dimensions, clamped for readability
+      // h * 0.35 allows ~2-3 lines; w / 5 ensures ~5 chars fit per line
+      const fontSize = Math.max(10, Math.min(22, Math.floor(Math.min(h * 0.35, w / 5))))
+
       const text = this.add.text(x + w / 2, y + h / 2, labelText, {
-        fontSize: '10px',
+        fontSize: `${fontSize}px`,
         fontFamily: 'monospace',
         color: '#c0f0e0',
         align: 'center',
-        wordWrap: { width: w - 4, useAdvancedWrap: true },
+        wordWrap: { width: w - 8, useAdvancedWrap: true },
       }).setOrigin(0.5).setDepth(5)
       this.labelTexts.push(text)
     }
@@ -638,6 +638,47 @@ export class DomeScene extends Phaser.Scene {
       connectorGfx.lineBetween(4, baseY, 4, baseY + FLOOR_CANVAS_H)
       connectorGfx.lineBetween(FLOOR_CANVAS_W - 4, baseY, FLOOR_CANVAS_W - 4, baseY + FLOOR_CANVAS_H)
     }
+  }
+
+  /**
+   * Bake static Graphics layers into RenderTextures.
+   * Called after renderAllFloors(). Converts ~50K draw commands into ~4 texture quads.
+   * particleGraphics is excluded — it changes every frame.
+   */
+  private bakeStaticLayers(): void {
+    const worldW = FLOOR_CANVAS_W
+    const worldH = Math.max(1, this.cachedUnlockedFloors.length * FLOOR_CANVAS_H)
+
+    // Create or resize render textures
+    if (!this.tileRT || this.tileRT.width !== worldW || this.tileRT.height !== worldH) {
+      this.tileRT?.destroy()
+      this.detailRT?.destroy()
+      this.glowRT?.destroy()
+      this.objectRT?.destroy()
+
+      this.tileRT = this.add.renderTexture(0, 0, worldW, worldH).setDepth(0).setOrigin(0, 0)
+      this.detailRT = this.add.renderTexture(0, 0, worldW, worldH).setDepth(0.5).setOrigin(0, 0)
+      this.glowRT = this.add.renderTexture(0, 0, worldW, worldH).setDepth(1).setOrigin(0, 0)
+      this.objectRT = this.add.renderTexture(0, 0, worldW, worldH).setDepth(2).setOrigin(0, 0)
+    }
+
+    // Draw graphics into render textures then hide the source graphics.
+    // Non-null assertions are safe: the if-block above guarantees all four RTs exist.
+    this.tileRT!.clear()
+    this.tileRT!.draw(this.tileGraphics)
+    this.tileGraphics.setVisible(false)
+
+    this.detailRT!.clear()
+    this.detailRT!.draw(this.detailGraphics)
+    this.detailGraphics.setVisible(false)
+
+    this.glowRT!.clear()
+    this.glowRT!.draw(this.glowGraphics)
+    this.glowGraphics.setVisible(false)
+
+    this.objectRT!.clear()
+    this.objectRT!.draw(this.objectGraphics)
+    this.objectGraphics.setVisible(false)
   }
 
   /**
@@ -780,6 +821,7 @@ export class DomeScene extends Phaser.Scene {
       // Base particle count + bonus for tier 2+
       const count = ambient.particleCount + (tier >= 2 ? 8 : 0)
 
+      const baseColor = (tier >= 2) ? 0xffd070 : ambient.particleColor
       for (let p = 0; p < count; p++) {
         this.particleData.push({
           x:          rng() * FLOOR_CANVAS_W,
@@ -788,6 +830,8 @@ export class DomeScene extends Phaser.Scene {
           size:       1.5  + rng() * 1.5,
           alpha:      0.3  + rng() * 0.5,
           floorIndex: fi,
+          color:      baseColor,
+          worldYBase: fi * FLOOR_CANVAS_H,
         })
       }
 
@@ -802,6 +846,8 @@ export class DomeScene extends Phaser.Scene {
             size:       2.0  + goldRng() * 1.0,
             alpha:      0.4  + goldRng() * 0.3,
             floorIndex: fi,
+            color:      0xffd070,
+            worldYBase: fi * FLOOR_CANVAS_H,
           })
         }
       }
@@ -812,27 +858,11 @@ export class DomeScene extends Phaser.Scene {
   private updateParticles(delta: number): void {
     this.particleGraphics.clear()
 
-    const unlocked = this.getUnlockedFloors()
-    if (unlocked.length === 0) return
-
     for (const p of this.particleData) {
-      const floor = unlocked[p.floorIndex]
-      if (!floor) continue
-      const ambient = THEME_AMBIENT[floor.theme] ?? THEME_AMBIENT['sci-fi']
-      const tier = this.floorTiers[floor.id] ?? 0
-
       p.y -= p.speed * delta * 0.06
-      if (p.y < -p.size) {
-        p.y = FLOOR_CANVAS_H + p.size
-      }
-
-      // World Y offset for this floor
-      const worldY = p.floorIndex * FLOOR_CANVAS_H + p.y
-
-      // Tier 2+ golden dust motes use a warm color (index-based: last 6 particles per tier-2 floor)
-      const color = (tier >= 2) ? 0xffd070 : ambient.particleColor
-      this.particleGraphics.fillStyle(color, p.alpha * 0.5)
-      this.particleGraphics.fillCircle(p.x, worldY, p.size)
+      if (p.y < -p.size) p.y = FLOOR_CANVAS_H + p.size
+      this.particleGraphics.fillStyle(p.color, p.alpha * 0.5)
+      this.particleGraphics.fillCircle(p.x, p.worldYBase + p.y, p.size)
     }
   }
 

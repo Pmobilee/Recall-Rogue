@@ -113,6 +113,14 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // GAIA dialogue data — 1009 lines of strings, lazy-loaded
+          if (id.includes('data/gaiaDialogue')) return 'gaiaDialogue'
+          // Combat system — only needed during mine encounters
+          if (id.includes('EncounterManager') || id.includes('CombatOverlay')) return 'combat'
+          // Heavy game data modules — only needed after game boot
+          if (id.includes('/data/biomes') || id.includes('/data/fossils') || id.includes('/data/creatures') || id.includes('/data/relics') || id.includes('/data/premiumRecipes') || id.includes('/data/recipes') || id.includes('/data/hubFloors') || id.includes('/data/ambientStories')) return 'game-data'
+          // Capacitor native bridge — only needed on mobile
+          if (id.includes('node_modules/@capacitor')) return 'capacitor'
           // Dev panel is never loaded in production
           if (id.includes('DevPanel'))  return 'dev'
           // Phaser and sql.js are large; always split

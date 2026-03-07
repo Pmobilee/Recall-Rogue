@@ -90,6 +90,7 @@ export class HazardSystem {
     for (const h of this.hazards) {
       if (h.type !== 'lava') continue
       if (h.ticksAlive % TICK_LAVA_SPREAD_INTERVAL !== 0) continue
+      if (h.cells.size >= 3) continue  // Cap: origin + 2 spreads max
       const candidates: Array<{ x: number; y: number }> = []
       for (const cellKey of h.cells) {
         const [cx, cy] = cellKey.split(',').map(Number)

@@ -1,5 +1,19 @@
 import './app.css'
 import './ui/styles/overlay.css'
+
+// CSS code-splitting: load desktop.css only on non-mobile screens (saves ~4KB on mobile)
+if (window.matchMedia('(min-width: 768px)').matches) {
+  import('./ui/styles/desktop.css')
+}
+
+// CSS code-splitting: load rtl.css only when an RTL locale is active (saves ~3KB for LTR users)
+// Uses the same storage key as src/i18n/index.ts (LOCALE_STORAGE_KEY = 'terra_ui_locale').
+const rtlLocales = new Set(['ar', 'he'])
+const storedLocale = localStorage.getItem('terra_ui_locale') ?? 'en'
+if (rtlLocales.has(storedLocale)) {
+  import('./ui/styles/rtl.css')
+}
+
 import App from './App.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
@@ -9,12 +23,7 @@ import { get } from 'svelte/store'
 import { factsDB } from './services/factsDB'
 import { gameManagerStore, getGM } from './game/gameManagerRef'
 import { getSyncVersion, setSyncVersion } from './services/deltaSync'
-import { checkBrowserCompat, applyCompatPatches } from './services/browserCompat'
-import { perfService } from './services/perfService'
 import { initI18n } from './i18n/index'
-import { initAchievements } from './ui/stores/achievements'
-import { achievementService } from './services/achievementService'
-import { initDebugBridge } from './dev/debugBridge'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -75,18 +84,19 @@ function isWebGLSupported(): boolean {
   }
 }
 
-// Run browser compatibility checks and apply engine-specific patches
-const compatReport = checkBrowserCompat()
-applyCompatPatches(compatReport)
-if (!compatReport.isSupported) {
-  // Already handled by the WebGLFallback mount below
+// Run browser compatibility checks and apply engine-specific patches (deferred — not needed before first paint)
+import('./services/browserCompat').then(({ checkBrowserCompat, applyCompatPatches }) => {
+  const report = checkBrowserCompat()
+  applyCompatPatches(report)
+})
+
+// Start Core Web Vitals collection (deferred — can begin after first paint)
+import('./services/perfService').then(m => m.perfService.observe())
+
+// Initialize dev debug bridge (window.__terraDebug, window.__terraLog) — DEV only, deferred
+if (import.meta.env.DEV) {
+  import('./dev/debugBridge').then(m => m.initDebugBridge())
 }
-
-// Start Core Web Vitals collection
-perfService.observe()
-
-// Initialize dev debug bridge (window.__terraDebug, window.__terraLog) — DEV only
-initDebugBridge()
 
 // Prevent long-press context menu on mobile
 document.addEventListener('contextmenu', (e) => e.preventDefault())
@@ -109,18 +119,20 @@ const save = initPlayer('teen')
 // Restore pending artifacts from save into the in-memory store
 pendingArtifacts.set(save.pendingArtifacts ?? [])
 
-// Phase 47: Initialize achievement gallery state from saved data
-{
+async function bootGame(): Promise<void> {
+  // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
+  await initI18n()
+
+  // Phase 47: Initialize achievement gallery state from saved data (deferred — doesn't affect first paint)
+  const [{ initAchievements }, { achievementService }] = await Promise.all([
+    import('./ui/stores/achievements'),
+    import('./services/achievementService'),
+  ])
   const currentSaveForAchievements = get(playerSave)
   if (currentSaveForAchievements) {
     initAchievements(currentSaveForAchievements.unlockedPaintings ?? [])
     achievementService.init()
   }
-}
-
-async function bootGame(): Promise<void> {
-  // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
-  await initI18n()
 
   // Start DB init in background — don't block Phaser boot
   const dbPromise = factsDB.init().catch(err => {

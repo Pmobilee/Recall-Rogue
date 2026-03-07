@@ -1,6 +1,6 @@
-@import './ui/styles/desktop.css';
 @import './ui/styles/accessibility.css';
-@import './ui/styles/rtl.css';
+
+/* desktop.css and rtl.css are loaded dynamically in main.ts — see CSS code-splitting */
 
 /* ── Safe area foundation (Phase 38 — iOS Dynamic Island / notch support) ── */
 :root {

@@ -26,21 +26,8 @@
 
   // Eagerly imported components (critical path / always visible)
   import HUD from './ui/components/HUD.svelte'
-  import QuizOverlay from './ui/components/QuizOverlay.svelte'
-  import DivePrepScreen from './ui/components/DivePrepScreen.svelte'
   import BaseView from './ui/components/BaseView.svelte'
-  import HubView from './ui/components/HubView.svelte'
-  import DevPanel from './ui/components/DevPanel.svelte'
   import GaiaToast from './ui/components/GaiaToast.svelte'
-  import OfflineToast from './ui/components/OfflineToast.svelte'
-  import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
-  import PwaInstallPrompt from './ui/components/PwaInstallPrompt.svelte'
-  import KeyboardShortcutHelp from './ui/components/KeyboardShortcutHelp.svelte'
-  // Phase 35: Mine Mechanics HUD (unconditionally rendered, self-conditional)
-  import QuizStreakBadge from './ui/components/QuizStreakBadge.svelte'
-  import InstabilityMeter from './ui/components/InstabilityMeter.svelte'
-  import MineEventOverlay from './ui/components/MineEventOverlay.svelte'
-  import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
 
   import { quoteStoneModalEntry, cavernTextModalEntry } from './ui/stores/gameState'
   import { shortcutService } from './services/shortcutService'
@@ -951,38 +938,42 @@
     </div>
 
   {:else if $currentScreen === 'base'}
-    <HubView
-      onDive={handleDive}
-      onStudy={handleStudy}
-      onReviewArtifact={handleReviewArtifact}
-      onGaiaReport={handleViewGaiaReport}
-      onViewTree={handleViewKnowledgeTree}
-      onMaterializer={handleViewMaterializer}
-      onPremiumMaterializer={handleViewPremiumMaterializer}
-      onCosmetics={handleViewCosmeticsShop}
-      onKnowledgeStore={handleViewKnowledgeStore}
-      onFossils={handleViewFossils}
-      onZoo={handleViewZoo}
-      onStreakPanel={handleViewStreakPanel}
-      onFarm={handleViewFarm}
-      onDecorator={handleViewDecorator}
-      onSettings={handleViewSettings}
-      onMuseum={handleViewMuseum}
-      onMarket={handleViewMarket}
-      onArchive={handleViewArchive}
-      onObservatory={handleViewObservatory}
-      facts={cachedFacts}
-    />
+    {#await import('./ui/components/HubView.svelte') then { default: HubView }}
+      <HubView
+        onDive={handleDive}
+        onStudy={handleStudy}
+        onReviewArtifact={handleReviewArtifact}
+        onGaiaReport={handleViewGaiaReport}
+        onViewTree={handleViewKnowledgeTree}
+        onMaterializer={handleViewMaterializer}
+        onPremiumMaterializer={handleViewPremiumMaterializer}
+        onCosmetics={handleViewCosmeticsShop}
+        onKnowledgeStore={handleViewKnowledgeStore}
+        onFossils={handleViewFossils}
+        onZoo={handleViewZoo}
+        onStreakPanel={handleViewStreakPanel}
+        onFarm={handleViewFarm}
+        onDecorator={handleViewDecorator}
+        onSettings={handleViewSettings}
+        onMuseum={handleViewMuseum}
+        onMarket={handleViewMarket}
+        onArchive={handleViewArchive}
+        onObservatory={handleViewObservatory}
+        facts={cachedFacts}
+      />
+    {/await}
     <GaiaToast />
 
   {:else if $currentScreen === 'divePrepScreen'}
-    <DivePrepScreen
-      availableTanks={$playerSave?.oxygen ?? 0}
-      onStartDive={handleStartDive}
-      onBack={handleBackFromDivePrep}
-      nextBiomeName={previewBiome?.name}
-      nextBiomeDesc={previewBiome?.description}
-    />
+    {#await import('./ui/components/DivePrepScreen.svelte') then { default: DivePrepScreen }}
+      <DivePrepScreen
+        availableTanks={$playerSave?.oxygen ?? 0}
+        onStartDive={handleStartDive}
+        onBack={handleBackFromDivePrep}
+        nextBiomeName={previewBiome?.name}
+        nextBiomeDesc={previewBiome?.description}
+      />
+    {/await}
 
   {:else if $currentScreen === 'mining'}
     <HUD
@@ -1022,15 +1013,17 @@
         onUseConsumable={handleUseConsumable}
       />
     {/if}
-    <QuizOverlay
-      fact={$activeQuiz.fact}
-      choices={$activeQuiz.choices}
-      mode={quizMode}
-      gateProgress={$activeQuiz.gateProgress}
-      isConsistencyPenalty={$activeQuiz.isConsistencyPenalty ?? false}
-      onAnswer={handleQuizAnswer}
-      onClose={handleQuizClose}
-    />
+    {#await import('./ui/components/QuizOverlay.svelte') then { default: QuizOverlay }}
+      <QuizOverlay
+        fact={$activeQuiz.fact}
+        choices={$activeQuiz.choices}
+        mode={quizMode}
+        gateProgress={$activeQuiz.gateProgress}
+        isConsistencyPenalty={$activeQuiz.isConsistencyPenalty ?? false}
+        onAnswer={handleQuizAnswer}
+        onClose={handleQuizClose}
+      />
+    {/await}
 
   {:else if $currentScreen === 'backpack'}
     <HUD
@@ -1269,11 +1262,19 @@
     </div>
   {/if}
 
-  <!-- Phase 35: Mine Mechanics HUD overlays (self-conditionally shown during mining) -->
-  <QuizStreakBadge />
-  <InstabilityMeter />
-  <MineEventOverlay />
-  <AltarSacrificeOverlay />
+  <!-- Phase 35: Mine Mechanics HUD overlays (lazy-loaded, self-conditionally shown during mining) -->
+  {#await import('./ui/components/QuizStreakBadge.svelte') then { default: QuizStreakBadge }}
+    <QuizStreakBadge />
+  {/await}
+  {#await import('./ui/components/InstabilityMeter.svelte') then { default: InstabilityMeter }}
+    <InstabilityMeter />
+  {/await}
+  {#await import('./ui/components/MineEventOverlay.svelte') then { default: MineEventOverlay }}
+    <MineEventOverlay />
+  {/await}
+  {#await import('./ui/components/AltarSacrificeOverlay.svelte') then { default: AltarSacrificeOverlay }}
+    <AltarSacrificeOverlay />
+  {/await}
 
   <!-- Phase 36: Combat overlays -->
   {#if $combatState.active && $combatState.encounterType === 'boss' && showBossIntro && $combatState.creature}
@@ -1294,9 +1295,15 @@
     {/await}
   {/if}
 
-  <DevPanel />
-  <PwaInstallPrompt />
-  <KeyboardShortcutHelp />
+  {#await import('./ui/components/DevPanel.svelte') then { default: DevPanel }}
+    <DevPanel />
+  {/await}
+  {#await import('./ui/components/PwaInstallPrompt.svelte') then { default: PwaInstallPrompt }}
+    <PwaInstallPrompt />
+  {/await}
+  {#await import('./ui/components/KeyboardShortcutHelp.svelte') then { default: KeyboardShortcutHelp }}
+    <KeyboardShortcutHelp />
+  {/await}
   {#if gameVisible}
     {#await import('./ui/components/DesktopSidePanel.svelte') then { default: DesktopSidePanel }}
       <DesktopSidePanel />
@@ -1323,11 +1330,15 @@
   {/if}
   <!-- /AUTH ROUTING LAYER -->
 </div>
-<OfflineToast />
+{#await import('./ui/components/OfflineToast.svelte') then { default: OfflineToast }}
+  <OfflineToast />
+{/await}
 <!-- ATT consent prompt (Phase 38): fires the iOS App Tracking Transparency dialog.
      Mounted outside the auth layer so it triggers on every cold app launch.
      No visible UI — the OS native dialog is presented by the Capacitor plugin. -->
-<ATTConsentPrompt />
+{#await import('./ui/components/ATTConsentPrompt.svelte') then { default: ATTConsentPrompt }}
+  <ATTConsentPrompt />
+{/await}
 
 <style>
   .main-menu {

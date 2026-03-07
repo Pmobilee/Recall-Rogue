@@ -35,18 +35,22 @@ export const DOME_SPRITE_KEYS = [
 export type DomeSpriteKey = typeof DOME_SPRITE_KEYS[number]
 
 // Build URL maps pointing to public/ directory sprites
+import { supportsWebP } from './spriteManifest'
+
 const base = import.meta.env.BASE_URL ?? '/'
 
 function buildSpriteMap(dir: string): Record<string, string> {
+  const ext = supportsWebP() ? '.webp' : '.png'
   const map: Record<string, string> = {}
   for (const key of DOME_SPRITE_KEYS) {
-    map[key] = `${base}assets/${dir}/dome/${key}.png`
+    map[key] = `${base}assets/${dir}/dome/${key}${ext}`
   }
   return map
 }
 
-const loResMap = buildSpriteMap('sprites')
-const hiResMap = buildSpriteMap('sprites-hires')
+/** Lazy-initialized URL maps — deferred until first call so DOM is available for WebP detection. */
+let loResMap: Record<string, string> | null = null
+let hiResMap: Record<string, string> | null = null
 
 /**
  * Get sprite URL map for the given resolution.
@@ -54,5 +58,7 @@ const hiResMap = buildSpriteMap('sprites-hires')
  * @returns A record mapping dome sprite keys to their URL strings
  */
 export function getDomeSpriteUrls(resolution: 'low' | 'high'): Record<string, string> {
+  if (!loResMap) loResMap = buildSpriteMap('sprites')
+  if (!hiResMap) hiResMap = buildSpriteMap('sprites-hires')
   return resolution === 'high' ? hiResMap : loResMap
 }

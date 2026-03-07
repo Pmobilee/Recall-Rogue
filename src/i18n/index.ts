@@ -157,8 +157,13 @@ locale.subscribe((code) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem(LOCALE_STORAGE_KEY, code)
     // Apply dir="rtl" to the document root
-    document.documentElement.dir = LOCALE_META[code].rtl ? 'rtl' : 'ltr'
+    const isRtl = LOCALE_META[code].rtl
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr'
     document.documentElement.lang = code
+    // Dynamically load RTL stylesheet when switching to an RTL locale (CSS code-splitting)
+    if (isRtl) {
+      import('../ui/styles/rtl.css')
+    }
   }
 })
 

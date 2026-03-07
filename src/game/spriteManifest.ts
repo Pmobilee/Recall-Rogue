@@ -3,8 +3,15 @@ import { HIGH_RES_KEYS, LOW_RES_KEYS } from '../data/spriteKeys';
 
 const BASE = (import.meta.env.VITE_ASSET_BASE_URL ?? '') as string;
 
+/** Cached WebP support flag — computed once on first call. */
+let _webpCached: boolean | null = null
+
 function buildUrl(resolution: SpriteResolution, subpath: string): string {
-  return `${BASE}/assets/${resolution === 'high' ? 'sprites-hires' : 'sprites'}/${subpath}`;
+  const base = `${BASE}/assets/${resolution === 'high' ? 'sprites-hires' : 'sprites'}/${subpath}`;
+  if (supportsWebP() && !subpath.includes('miner_sheet')) {
+    return base.replace(/\.png$/, '.webp');
+  }
+  return base;
 }
 
 /**
@@ -40,11 +47,13 @@ export function getBiomeAtlasKey(biomeId: string): string {
  * @returns True if WebP is supported in the current browser
  */
 export function supportsWebP(): boolean {
+  if (_webpCached !== null) return _webpCached
   try {
     const c = document.createElement('canvas')
     c.width = 1; c.height = 1
-    return c.toDataURL('image/webp').startsWith('data:image/webp')
-  } catch (_) { return false }
+    _webpCached = c.toDataURL('image/webp').startsWith('data:image/webp')
+  } catch (_) { _webpCached = false }
+  return _webpCached
 }
 
 /**

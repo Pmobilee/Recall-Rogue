@@ -13,6 +13,30 @@ function singletonWritable<T>(key: string, initial: T): Writable<T> {
   return singletonRegistry[sym] as Writable<T>
 }
 
+/** Pending localStorage writes, batched and flushed via microtask. */
+const pendingWrites = new Map<string, string>()
+let flushScheduled = false
+
+function schedulePersist(key: string, value: string): void {
+  pendingWrites.set(key, value)
+  if (!flushScheduled) {
+    flushScheduled = true
+    queueMicrotask(flushPendingWrites)
+  }
+}
+
+function flushPendingWrites(): void {
+  flushScheduled = false
+  for (const [key, value] of pendingWrites) {
+    try {
+      window.localStorage.setItem(key, value)
+    } catch {
+      // Storage full or unavailable — silently skip
+    }
+  }
+  pendingWrites.clear()
+}
+
 /** Sprite resolution setting: 'low' for 32px, 'high' for 256px. */
 export type SpriteResolution = 'low' | 'high'
 
@@ -74,7 +98,7 @@ function readGaiaMood(): GaiaMood {
 export const gaiaMood = singletonWritable<GaiaMood>('gaiaMood', readGaiaMood())
 gaiaMood.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('gaia-mood', v)
+    schedulePersist('gaia-mood', v)
   }
 })
 
@@ -92,7 +116,7 @@ function readGaiaChattiness(): number {
 export const gaiaChattiness = singletonWritable<number>('gaiaChattiness', readGaiaChattiness())
 gaiaChattiness.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('gaia-chattiness', String(v))
+    schedulePersist('gaia-chattiness', String(v))
   }
 })
 
@@ -113,7 +137,7 @@ function readShowExplanations(): boolean {
 export const showExplanations = singletonWritable<boolean>('showExplanations', readShowExplanations())
 showExplanations.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('show-explanations', String(v))
+    schedulePersist('show-explanations', String(v))
   }
 })
 
@@ -132,7 +156,7 @@ function readMusicVolume(): number {
 export const musicVolume = singletonWritable<number>('musicVolume', readMusicVolume())
 musicVolume.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_musicVolume', String(v))
+    schedulePersist('setting_musicVolume', String(v))
   }
 })
 
@@ -147,7 +171,7 @@ function readSfxVolume(): number {
 export const sfxVolume = singletonWritable<number>('sfxVolume', readSfxVolume())
 sfxVolume.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_sfxVolume', String(v))
+    schedulePersist('setting_sfxVolume', String(v))
   }
 })
 
@@ -161,7 +185,7 @@ function readMusicEnabled(): boolean {
 export const musicEnabled = singletonWritable<boolean>('musicEnabled', readMusicEnabled())
 musicEnabled.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_musicEnabled', String(v))
+    schedulePersist('setting_musicEnabled', String(v))
   }
 })
 
@@ -175,7 +199,7 @@ function readSfxEnabled(): boolean {
 export const sfxEnabled = singletonWritable<boolean>('sfxEnabled', readSfxEnabled())
 sfxEnabled.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_sfxEnabled', String(v))
+    schedulePersist('setting_sfxEnabled', String(v))
   }
 })
 
@@ -193,7 +217,7 @@ function readHighContrastQuiz(): boolean {
 export const highContrastQuiz = singletonWritable<boolean>('highContrastQuiz', readHighContrastQuiz())
 highContrastQuiz.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_highContrastQuiz', String(v))
+    schedulePersist('setting_highContrastQuiz', String(v))
   }
 })
 
@@ -207,7 +231,7 @@ function readReducedMotion(): boolean {
 export const reducedMotion = singletonWritable<boolean>('reducedMotion', readReducedMotion())
 reducedMotion.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_reducedMotion', String(v))
+    schedulePersist('setting_reducedMotion', String(v))
   }
 })
 
@@ -230,7 +254,7 @@ function readScreenShakeIntensity(): number {
 export const screenShakeIntensity = singletonWritable<number>('screenShakeIntensity', readScreenShakeIntensity())
 screenShakeIntensity.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_screenShakeIntensity', String(v))
+    schedulePersist('setting_screenShakeIntensity', String(v))
   }
 })
 
@@ -253,7 +277,7 @@ function readAnalyticsEnabled(): boolean {
 export const analyticsEnabled = singletonWritable<boolean>('analyticsEnabled', readAnalyticsEnabled())
 analyticsEnabled.subscribe(v => {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('setting_analyticsEnabled', String(v))
+    schedulePersist('setting_analyticsEnabled', String(v))
   }
 })
 
@@ -310,3 +334,5 @@ export function saveInterestConfig(config: InterestConfig): void {
   persistPlayer()
   interestConfig.set(config)
 }
+
+export { flushPendingWrites as flushSettings }

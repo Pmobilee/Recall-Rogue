@@ -1,16 +1,22 @@
 <script lang="ts">
   interface Props {
     imageSrc: string
+    imageWebp?: string
     caption: string
     onAdvance: () => void
     onSkip: () => void
   }
 
-  const { imageSrc, caption, onAdvance, onSkip }: Props = $props()
+  const { imageSrc, imageWebp, caption, onAdvance, onSkip }: Props = $props()
 </script>
 
 <div class="panel" onclick={onAdvance} role="button" tabindex="0" onkeydown={(e) => e.key === 'Enter' && onAdvance()}>
-  <img src={imageSrc} alt="" class="panel-image" />
+  <picture>
+    {#if imageWebp}
+      <source srcset={imageWebp} type="image/webp" />
+    {/if}
+    <img src={imageSrc} alt="" class="panel-image" />
+  </picture>
   <p class="caption">{caption}</p>
   <button class="skip-btn" onclick={(e) => { e.stopPropagation(); onSkip() }}>Skip</button>
 </div>

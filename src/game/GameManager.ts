@@ -68,8 +68,7 @@ import { RECIPES } from '../data/recipes'
 import { save as savePlayer } from '../services/saveService'
 import type { OxygenState } from './systems/OxygenSystem'
 import { type Biome, pickBiome, generateBiomeSequence, ALL_BIOMES } from '../data/biomes'
-import { generateInterestBiasedBiomeSequence, selectWeightedFact } from '../services/interestSpawner'
-import type { InterestConfig } from '../data/interestConfig'
+import { generateInterestBiasedBiomeSequence } from '../services/interestSpawner'
 import { getEligibleFacts } from '../data/contentFilter'
 import { seededRandom, buildDifficultyProfile, type DifficultyProfile } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
@@ -401,65 +400,29 @@ export class GameManager {
   }
 
   /**
-   * Selects a random fact with interest-weighted bias.
-   * Falls back to factsDB.getRandomOne() if no interest config.
+   * Selects a review-due fact for mine quizzes (Anki-faithful).
+   * Only returns facts the player has already learned and that are due for review.
+   * Returns null when no review cards are due — callers skip the quiz gracefully.
    * @internal
    */
   getInterestWeightedFact(): Fact | null {
     const ps = get(playerSave)
+    if (!ps) return null
 
-    // FIX-9: Use paced fact selection to avoid overwhelming the player with new facts.
-    // Prioritises review-due facts, then previously unlocked facts, then new introductions
-    // (capped at maxNewPerDive per dive).
-    if (ps) {
-      const interestWeights: Record<string, number> = ps.interestWeights ?? {}
-      // Also fold in interest-config category weights
-      const interestConfig: InterestConfig | undefined = ps.interestConfig
-      if (interestConfig) {
-        for (const cat of interestConfig.categories) {
-          if (cat.weight > 0) {
-            interestWeights[cat.category] = Math.max(interestWeights[cat.category] ?? 0, cat.weight)
-          }
-        }
-      }
-
-      // Build exclude list: last asked fact + recently failed facts (avoid repeats)
-      const excludeIds = [
-        ...(this.lastAskedFactId ? [this.lastAskedFactId] : []),
-        ...Array.from(this.recentlyFailedFactIds),
-      ]
-
-      const fact = factsDB.getPacedFact({
-        learnedFacts: ps.learnedFacts,
-        reviewStates: ps.reviewStates,
-        unlockedFactIds: ps.unlockedFactIds,
-        newFactsThisDive: this.newFactsThisDive,
-        interestWeights,
-        excludeIds,
-      })
-
-      if (fact) {
-        // Track if this is a new fact for pacing purposes
-        const isNew = !ps.learnedFacts.includes(fact.id) && !(ps.unlockedFactIds ?? []).includes(fact.id)
-        if (isNew) {
-          this.newFactsThisDive++
-        }
-        this.lastAskedFactId = fact.id
-        return fact
-      }
-    }
-
-    // Fallback: legacy interest-weighted selection
-    const interestConfig: InterestConfig | undefined = ps?.interestConfig
-    if (!interestConfig || !interestConfig.categories.some(c => c.weight > 0)) {
-      return factsDB.getRandomOne()
-    }
     const allFacts = factsDB.getAll()
-    if (allFacts.length === 0) return null
-    const pool = allFacts.map(f => ({ id: f.id, category: f.category }))
-    const selectedId = selectWeightedFact(pool, interestConfig, () => Math.random())
-    if (!selectedId) return factsDB.getRandomOne()
-    return factsDB.getById(selectedId) ?? factsDB.getRandomOne()
+    const excludeIds = [
+      ...(this.lastAskedFactId ? [this.lastAskedFactId] : []),
+      ...Array.from(this.recentlyFailedFactIds),
+    ]
+
+    // Only pick from review-due learned facts (Anki-faithful: no new facts in mines)
+    const candidateFacts = allFacts.filter(f => !excludeIds.includes(f.id))
+    const fact = selectQuestion(candidateFacts, ps.reviewStates)
+
+    if (fact) {
+      this.lastAskedFactId = fact.id
+    }
+    return fact
   }
 
   /** Get the DomeScene instance (null if game not booted) */

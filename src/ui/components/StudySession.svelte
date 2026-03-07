@@ -28,8 +28,6 @@
 
   // ── Card flip state ─────────────────────────────────────────
   let isFlipped = $state(false)
-  let isFlipping = $state(false)
-  let flipRipple = $state(false)
 
   // ── Score tracking ──────────────────────────────────────────
   let correctCount = $state(0)
@@ -114,17 +112,10 @@
   }
 
   /** Flip the card to reveal the answer. */
-  async function revealCard(): Promise<void> {
-    if (isFlipped || isFlipping) return
+  function revealCard(): void {
+    if (isFlipped) return
     audioManager.playSound('button_click')
-    isFlipping = true
-    // Trigger ripple animation
-    flipRipple = false
-    await new Promise<void>(r => setTimeout(r, 10))
-    flipRipple = true
-    await new Promise<void>(r => setTimeout(r, 400))
     isFlipped = true
-    isFlipping = false
   }
 
   /** Player self-rates and advances to the next card. */
@@ -145,8 +136,6 @@
       isDone = true
     } else {
       isFlipped = false
-      isFlipping = false
-      flipRipple = false
       cardIndex++
     }
   }
@@ -293,6 +282,11 @@
       />
     </div>
 
+    <!-- Category breadcrumb (outside the card) -->
+    <p class="top-category" style="color: {getCategoryColor(currentFact.category)};">
+      {currentFact.category.join(' › ')}
+    </p>
+
     <!-- Progress bar -->
     <div class="progress-bar-wrap" aria-label="Session progress">
       <div class="progress-bar">
@@ -310,29 +304,15 @@
 
     <!-- Card scene -->
     <div class="card-scene" aria-live="polite">
-      <!-- Flip ripple indicator -->
-      {#if flipRipple}
-        <div class="flip-ripple" aria-hidden="true"></div>
-      {/if}
-
-      <div
-        class="card"
-        class:card--flipped={isFlipped}
-        role="button"
-        tabindex={isFlipped ? -1 : 0}
-        aria-label={isFlipped ? undefined : 'Reveal answer'}
-        onclick={() => void revealCard()}
-        onkeydown={e => { if (!isFlipped && (e.key === 'Enter' || e.key === ' ')) void revealCard() }}
-      >
-        <!-- Front (question) -->
-        <div class="card-face card-front">
-          <p
-            class="card-category"
-            style="color: {getCategoryColor(currentFact.category)};"
-          >{currentFact.category.join(' › ')}</p>
-          <div class="card-sprite" aria-hidden="true">
-            <span class="card-sprite-label">sprite</span>
-          </div>
+      {#if !isFlipped}
+        <div
+          class="card-face card-front"
+          role="button"
+          tabindex={0}
+          aria-label="Reveal answer"
+          onclick={() => void revealCard()}
+          onkeydown={e => { if (e.key === 'Enter' || e.key === ' ') void revealCard() }}
+        >
           <p class="card-question">{currentFact.quizQuestion}</p>
           <p class="tap-hint">Tap card or press Reveal</p>
           <button
@@ -343,14 +323,12 @@
             Reveal
           </button>
         </div>
-
-        <!-- Back (answer + details) -->
+      {:else}
         <div class="card-face card-back">
-          <p
-            class="card-category"
-            style="color: {getCategoryColor(currentFact.category)};"
-          >{currentFact.category.join(' › ')}</p>
           <p class="card-answer">{currentFact.correctAnswer}</p>
+          <div class="card-sprite" aria-hidden="true">
+            <span class="card-sprite-label">sprite</span>
+          </div>
           {#if currentFact.explanation || currentFact.mnemonic || currentFact.gaiaComment}
             <div class="card-details">
               {#if currentFact.explanation}
@@ -365,7 +343,7 @@
             </div>
           {/if}
         </div>
-      </div>
+      {/if}
     </div>
 
     <!-- Self-rating buttons (only after flip) -->
@@ -401,7 +379,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background: radial-gradient(ellipse at 50% 110%, #1a2a4a 0%, #0a1525 70%);
     font-family: 'Courier New', monospace;
     padding: 1rem;
@@ -662,6 +639,19 @@
     box-shadow: 0 0 10px rgba(120, 120, 200, 0.12);
   }
 
+  /* ── Top category breadcrumb ───────────────────────────────── */
+  .top-category {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    padding-top: 0.5rem;
+    z-index: 2;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
   /* ── Progress bar ────────────────────────────────────────────── */
   .progress-bar-wrap {
     position: relative;
@@ -719,66 +709,36 @@
     text-align: right;
   }
 
-  /* ── Card scene (3-D flip) ───────────────────────────────────── */
+  /* ── Card scene ────────────────────────────────────────────── */
   .card-scene {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 420px;
-    perspective: 1000px;
-    margin-bottom: 1.25rem;
-  }
-
-  /* Flip ripple — visual cue when card flips */
-  .flip-ripple {
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    pointer-events: none;
-    z-index: 3;
-    animation: ripple-expand 0.5s ease-out forwards;
-    border: 2px solid rgba(100, 100, 255, 0.5);
-    will-change: transform, opacity;
-  }
-
-  @keyframes ripple-expand {
-    0%   { transform: scale(1);    opacity: 0.7; }
-    100% { transform: scale(1.06); opacity: 0;   }
-  }
-
-  .card {
-    position: relative;
-    width: 100%;
-    min-height: min(300px, 50vh);
-    transform-style: preserve-3d;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    border-radius: 18px;
-    will-change: transform;
-  }
-
-  .card--flipped {
-    transform: rotateY(180deg);
-    cursor: default;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-bottom: 0;
+    padding-bottom: 100px;
   }
 
   .card-face {
-    position: absolute;
-    inset: 0;
     border-radius: 18px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 1.75rem 1.5rem;
-    gap: 1rem;
+    padding: 1.25rem 1rem;
+    gap: 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.07);
+    width: 100%;
   }
 
   /* Card front: dark base with blue/purple glow */
   .card-front {
+    flex: 1;
+    min-height: 0;
+    justify-content: center;
     background: #1a1a2e;
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.55),
@@ -787,30 +747,21 @@
 
   /* Card back: slightly lighter background */
   .card-back {
-    transform: rotateY(180deg);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: #252540;
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.55),
       0 0 15px rgba(78, 204, 163, 0.12);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .card-category {
-    font-size: 0.72rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 0;
-    line-height: 1.3;
-    font-weight: 600;
   }
 
   /* ── Sprite placeholder ──────────────────────────────────────── */
   .card-sprite {
-    width: 120px;
-    height: 120px;
-    border-radius: 12px;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
     border: 2px dashed rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.03);
     display: flex;
@@ -828,7 +779,7 @@
 
   .card-question {
     color: var(--color-warning);
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     text-align: center;
     line-height: 1.5;
     margin: 0;
@@ -869,7 +820,7 @@
 
   .card-answer {
     color: var(--color-success);
-    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
     font-weight: 800;
     text-align: center;
     line-height: 1.3;
@@ -877,10 +828,9 @@
     letter-spacing: 0.5px;
   }
 
-  /* ── Scrollable detail box ───────────────────────────────────── */
+  /* ── Detail box ────────────────────────────────────────────── */
   .card-details {
     width: 100%;
-    max-height: 150px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: 0.75rem;
@@ -893,7 +843,7 @@
 
   .detail-explanation {
     color: #8a8aa0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-align: center;
     line-height: 1.55;
     margin: 0;
@@ -924,22 +874,33 @@
 
   /* ── Rating buttons ──────────────────────────────────────────── */
   .rating-buttons {
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 2;
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     width: 100%;
     max-width: 420px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    background: linear-gradient(to top, rgba(10,21,37,0.95) 60%, transparent);
   }
 
   .rating-buttons--hidden {
+    position: static;
     pointer-events: none;
     opacity: 0;
+    min-height: 90px;
+    background: none;
+    padding: 0;
   }
 
   .rating-btn {
     flex: 1;
-    min-height: 56px;
+    min-height: 48px;
     border: 0;
     border-radius: 14px;
     font-family: inherit;
@@ -979,13 +940,13 @@
 
   .rating-label {
     display: block;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
   }
 
   .rating-interval {
     display: block;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 400;
     opacity: 0.7;
     margin-top: 2px;
@@ -993,7 +954,7 @@
 
   .rating-btn-placeholder {
     flex: 1;
-    min-height: 56px;
+    min-height: 48px;
   }
 
   /* ── Complete screen ─────────────────────────────────────────── */

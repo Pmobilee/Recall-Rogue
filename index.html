@@ -7,6 +7,13 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Resource hints: preload WASM for sql.js (used by factsDB, loaded after first paint) -->
+    <link rel="preload" href="/sql-wasm.wasm" as="fetch" crossorigin>
+
+    <!-- Resource hints: API server DNS/connection warm-up -->
+    <link rel="dns-prefetch" href="https://api.terragacha.com">
+    <link rel="preconnect" href="https://api.terragacha.com" crossorigin>
+
     <!-- Security: Content Security Policy (injected per environment by Vite csp-inject plugin) -->
 
     <!-- Primary metadata -->
