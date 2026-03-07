@@ -20,7 +20,7 @@ async function sendAlert(message: string): Promise<void> {
   // Log to server stdout as a fallback (always works regardless of integration).
   console.error(`[CrashAlert] ${new Date().toISOString()} — ${message}`)
 
-  // TODO: Integrate with team notification channel (Slack/email/PagerDuty).
+  // TODO(codex): [integration] wire crash alerts to Slack/email/PagerDuty channel — needs human decision
   // Example Slack webhook:
   // const webhookUrl = process.env.SLACK_CRASH_WEBHOOK
   // if (webhookUrl) {

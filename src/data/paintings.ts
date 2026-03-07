@@ -77,7 +77,7 @@ export function isPaintingUnlocked(painting: Painting, playerStats: Record<strin
     case 'minerals_collected': return (playerStats[`minerals_${condition.tier}`] ?? 0) >= condition.count
     case 'relics_found': return (playerStats.relicsFound ?? 0) >= condition.count
     case 'companions_evolved': return (playerStats.companionsEvolved ?? 0) >= condition.count
-    case 'season_completed': return false  // TODO: check season completion
+    case 'season_completed': return false  // TODO(codex): [feature] implement season completion unlock check — needs human decision
     default: return false
   }
 }

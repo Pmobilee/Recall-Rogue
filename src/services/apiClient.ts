@@ -537,7 +537,7 @@ export class ApiClient {
    * will set tokens directly via Set-Cookie headers on auth responses.
    */
   private persistTokens(): void {
-    // TODO (19.11): Remove localStorage writes when backend uses httpOnly cookies.
+    // TODO(codex): [security] remove localStorage token writes after httpOnly cookie migration — needs human decision
     if (this.token !== null) {
       localStorage.setItem(TOKEN_KEY, this.token)
     } else {
@@ -560,7 +560,7 @@ export class ApiClient {
    * will transmit the cookie automatically on each request.
    */
   private loadTokens(): void {
-    // TODO (19.11): Remove localStorage reads when backend uses httpOnly cookies.
+    // TODO(codex): [security] remove localStorage token reads after httpOnly cookie migration — needs human decision
     this.token = localStorage.getItem(TOKEN_KEY)
     this.refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY)
   }

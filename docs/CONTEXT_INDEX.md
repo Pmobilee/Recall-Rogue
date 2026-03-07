@@ -1,50 +1,61 @@
-# Context Index — Terra Miner
+# Terra Miner Context Index
 
-Quick lookup for agents: find the right doc for your task.
+Fast lookup for implementation-grounded docs and source locations.
 
-## By Topic
-| Need to understand... | Read this file |
-|---|---|
-| **MVP implementation plan (BUILD THIS)** | **`docs/MVP_PLAN.md`** |
-| Project overview, tech stack, conventions | `CLAUDE.md` (project root) |
-| Game concept, loop, pillars, monetization | `docs/GAME_DESIGN.md` |
-| Dive mechanics, layers, oxygen, mining, backpack | `docs/ROGUELITE_RUNS.md` |
-| Artifacts, facts, quizzes, Anki system, Knowledge Tree | `docs/KNOWLEDGE_SYSTEM.md` |
-| Minerals, currency, crafting, pets, farm, economy sinks | `docs/ECONOMY.md` |
-| System architecture, data flow, components | `docs/ARCHITECTURE.md` |
-| Why a technology/design was chosen | `docs/DECISIONS.md` |
-| Unresolved design questions | `docs/OPEN_QUESTIONS.md` |
-| Next brainstorming session questions | `docs/NEXT_QUESTIONS.md` |
-| Security policies and practices | `docs/SECURITY.md` |
-| Sprite generation with ComfyUI | `docs/SPRITE_PIPELINE.md` |
+## Core project docs
 
-## By Task
-| Task | Start here |
-|---|---|
-| **Build the MVP** | **`docs/MVP_PLAN.md`** — follow the build order |
-| Understand the full game vision | `docs/GAME_DESIGN.md` → system-specific docs |
-| Add a new game mechanic | `docs/ROGUELITE_RUNS.md` or `docs/ECONOMY.md` then `src/game/systems/` |
-| Work on the mining system | `docs/ROGUELITE_RUNS.md` then `src/game/scenes/MainScene.ts` |
-| Work on quiz/learning system | `docs/KNOWLEDGE_SYSTEM.md` then `src/ui/components/` |
-| Work on economy/crafting | `docs/ECONOMY.md` then `src/data/types.ts` |
-| Create a new UI screen | `src/ui/components/` — follow existing Svelte patterns |
-| Generate new sprites | `docs/SPRITE_PIPELINE.md` then `sprite-gen/scripts/` |
-| Add a new quiz category | `docs/KNOWLEDGE_SYSTEM.md` for structure, `src/data/` for types |
-| Fix a security issue | `docs/SECURITY.md` for policies |
-| Understand a past decision | `docs/DECISIONS.md` |
-| Check what's undecided | `docs/OPEN_QUESTIONS.md` |
-| Set up development environment | `CLAUDE.md` Commands section |
+| Need | Primary reference |
+| --- | --- |
+| Project setup and workflow | `README.md` |
+| Runtime architecture and data flow | `docs/ARCHITECTURE.md` |
+| Runtime/config keys and env vars | `docs/CONFIGURATION.md` |
+| Save schema and migration behavior | `docs/SAVE-FORMAT.md` |
+| Svelte store inventory | `docs/STORE-REFERENCE.md` |
+| Event channels and payload contracts | `docs/EVENT-BUS-REFERENCE.md` |
+| Dev scenario presets | `docs/DEVPRESET-REFERENCE.md` |
+| Sprite loading/manifests/atlas pipeline | `docs/SPRITE-REFERENCE.md` |
+| Testing commands and selectors | `docs/TESTING-GUIDE.md` |
+| Deploy targets and release flow | `docs/DEPLOYMENT.md` |
+| Dependency inventory and audit state | `docs/DEPENDENCIES.md` |
+| Bundle sizes and chunk risks | `docs/BUNDLE-ANALYSIS.md` |
+| Security findings and remediation queue | `docs/SECURITY-AUDIT-RESULTS.md` |
+| Pending TODO/FIX debt | `docs/TODO-AUDIT.md` |
 
-## File Size Guide (for context budgeting)
-- `CLAUDE.md`: ~60 lines — always safe to load
-- `docs/GAME_DESIGN.md`: ~100 lines — load for game overview
-- `docs/ROGUELITE_RUNS.md`: ~250 lines — load when working on dive/mining mechanics
-- `docs/KNOWLEDGE_SYSTEM.md`: ~250 lines — load when working on facts/quiz/learning
-- `docs/ECONOMY.md`: ~200 lines — load when working on minerals/crafting/pets
-- `docs/OPEN_QUESTIONS.md`: ~200 lines — load when making design decisions
-- `docs/DECISIONS.md`: ~150 lines — load when questioning a choice
-- `docs/ARCHITECTURE.md`: ~80 lines — load when working on system design
-- `docs/SECURITY.md`: ~60 lines — load when touching auth, input, or CSP
-- `docs/SPRITE_PIPELINE.md`: ~50 lines — load when generating assets
-- `docs/NEXT_QUESTIONS.md`: ~300 lines — prepared questions for next design session
-- `docs/CONTEXT_INDEX.md`: ~50 lines — quick reference, always safe to load
+## Code map by concern
+
+| Concern | Files to read first |
+| --- | --- |
+| App bootstrap | `src/main.ts`, `src/App.svelte` |
+| Game orchestration | `src/game/GameManager.ts`, `src/game/GameEventBridge.ts` |
+| Mine gameplay | `src/game/scenes/MineScene.ts`, `src/game/scenes/MineBlockInteractor.ts`, `src/game/systems/*` |
+| Quiz/learning | `src/game/managers/QuizManager.ts`, `src/game/managers/StudyManager.ts`, `src/services/sm2.ts`, `src/services/factsDB.ts` |
+| Save/profile state | `src/services/saveService.ts`, `src/ui/stores/playerData.ts`, `src/services/profileService.ts` |
+| UI state | `src/ui/stores/gameState.ts`, `src/ui/stores/settings.ts`, `src/ui/components/*` |
+| Event contracts | `src/events/types.ts`, `src/events/EventBus.ts`, `src/game/hubEvents.ts` |
+| Sprite pipeline | `src/game/spriteManifest.ts`, `src/services/factSpriteManifest.ts`, `scripts/gen-sprite-keys.mjs`, `scripts/audit-fact-sprites.mjs` |
+| Build and asset generation | `package.json`, `vite.config.ts`, `scripts/build-facts-db.mjs` |
+| Backend API | `server/src/index.ts`, `server/src/routes/*`, `server/src/config.ts` |
+| Tests | `tests/unit/*`, `tests/e2e/*.cjs`, `tests/e2e/playwright/*` |
+
+## Task-oriented entry points
+
+| Task | Jump to |
+| --- | --- |
+| Add/modify a screen flow | `src/App.svelte`, then relevant component under `src/ui/components/` |
+| Add a new store field | `src/ui/stores/gameState.ts` or `src/ui/stores/playerData.ts` |
+| Adjust save migration behavior | `src/services/saveService.ts` (`load()` migration section) |
+| Add a new mine event | emit in `MineBlockInteractor.ts`, consume in `GameEventBridge.ts` |
+| Tune quiz cadence or penalties | `src/game/managers/QuizManager.ts`, `src/data/balance.ts` |
+| Change fact selection logic | `src/services/factsDB.ts` (`getPacedFact`) |
+| Add/update dev preset | `src/dev/presets.ts` |
+| Diagnose bundle growth | `docs/BUNDLE-ANALYSIS.md`, `vite.config.ts`, `scripts/check-bundle-size.mjs` |
+| Validate runtime behavior quickly | `node tests/e2e/01-app-loads.cjs` |
+
+## Roadmap tracking
+
+| Need | File |
+| --- | --- |
+| Global phase checklist | `docs/roadmap/PROGRESS.md` |
+| In-progress specs | `docs/roadmap/in-progress/` |
+| Not-started phase specs | `docs/roadmap/phases/` |
+| Completed phase specs | `docs/roadmap/completed/` |

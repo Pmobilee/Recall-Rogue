@@ -15,6 +15,18 @@ The dome evolves from a single survival hub into a multi-floor glass complex, wi
 3. **Gacha dopamine** — Artifact reveals, rarity tiers, fossil pet synthesis, and loot moments create anticipation and payoff ("terra-gacha").
 4. **Meaningful progression** — Knowledge Tree grows permanently. Base expands. Pets come alive. The player's world reflects what they've learned.
 
+## Implementation Status Snapshot (V4)
+
+This snapshot reflects what is currently implemented in the repo (V4 baseline plus shipped follow-up fixes), and is the quickest source of truth for feature status. Detailed sections below remain the full design reference.
+
+- **Core loop (implemented)**: Dive into procedural mine layers, mine blocks/loot, trigger quizzes (gate/random/hazard contexts), return to dome, process artifacts through the Artifact Analyzer flow, then convert rewards into upgrades/progression.
+- **Biome/block variety + hazards (implemented)**: Multi-biome generation with depth-tier mapping, expanded block taxonomy, and movement-tick hazard systems (lava, gas, instability/earthquake pressure), with balancing constants and systems wired in gameplay code.
+- **Companion + Dust Cat systems (implemented)**: Fossil companion selection/effects are active in dives and HUD; persistent Dust Cat unlock/happiness/traits/cosmetics and synergy hooks are present in save/store/UI flows.
+- **Dome floors/rooms + Knowledge Tree progression (implemented)**: Multi-floor dome navigation is live with the current 10-floor stack (starter, study, farm, workshop, zoo, collection, market, research, observatory, gallery), with Knowledge Tree progression and branch-completion vitality features integrated.
+- **Economy + currencies (implemented)**: Core mineral economy (`dust`, `shard`, `crystal`, `geode`, `essence`) plus oxygen pacing, crafting/materializer loops, daily deals, artifact mixing/compression tax systems, and Learning Sparks progression currency.
+- **Social/live-ops surfaces (implemented where present)**: Fact of the Day, guild flows (focus + XP/leaderboard wiring), trade market with anti-exploitation guards, seasonal banners/leaderboards/rewards, guestbook UI/data model surfaces, and referral routes/UI are present.
+- **Endgame systems (implemented where present)**: Achievement tracking + gallery reveal/share flows, Artifact Analyzer queue/reward pipeline, and prestige progression/reset surfaces are available in app/service/store layers.
+
 ## High-Level Game Loop
 
 ```

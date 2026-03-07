@@ -82,7 +82,7 @@ async function generateTile(biomeId, category, variant, spec) {
   try {
     const response = await fetch(`${COMFYUI_URL}/system_stats`)
     if (response.ok) {
-      // ComfyUI is running — TODO: implement full generation pipeline
+      // ComfyUI is running — TODO(codex): [integration] replace generation stub with full ComfyUI pipeline — needs human decision
       console.log(`  COMFYUI ${filename} (pipeline stub)`)
       loResBuffer = createPlaceholderPng(spec.primaryColor, spec.secondaryColor, 32)
       hiResBuffer = createPlaceholderPng(spec.primaryColor, spec.secondaryColor, 256)
