@@ -199,6 +199,8 @@ export class QuizManager {
     if (!save) return false
     const reviewState = save.reviewStates.find(rs => rs.factId === factId)
     if (!reviewState) return false
+    // Only penalize review-state cards (not learning/new/relearning).
+    if (reviewState.cardState !== 'review') return false
     // Penalize if player has answered this correctly at least CONSISTENCY_MIN_REPS times before
     return reviewState.repetitions >= BALANCE.CONSISTENCY_MIN_REPS
   }

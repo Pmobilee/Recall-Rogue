@@ -161,12 +161,18 @@ async function bootGame(): Promise<void> {
 
   // BootScene has no preload, so boot completes synchronously.
   // Navigate to appropriate screen immediately.
-  // Phase 14: Route through tutorial flow for new players
-  if (!save.tutorialComplete) {
-    // Brand new player — start the onboarding cutscene
-    currentScreen.set('cutscene')
-  } else {
-    currentScreen.set('base')
+  // Phase 14: Route through tutorial flow for new players.
+  // Skip screen routing when a dev preset is active; App.svelte's async
+  // preset loader sets the intended screen once the preset save is applied.
+  const urlParams = new URLSearchParams(window.location.search)
+  const hasDevPreset = import.meta.env.DEV && urlParams.get('devpreset')
+  if (!hasDevPreset) {
+    if (!save.tutorialComplete) {
+      // Brand new player — start the onboarding cutscene
+      currentScreen.set('cutscene')
+    } else {
+      currentScreen.set('base')
+    }
   }
 
   // Wait for DB to finish loading

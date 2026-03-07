@@ -111,7 +111,7 @@ export const BALANCE = {
   // === CONSISTENCY PENALTY ===
   CONSISTENCY_PENALTY_O2: 8,      // Extra O2 cost for inconsistent answer (knew it before, got it wrong now)
   CONSISTENCY_PENALTY_DUST: -5,   // Lose 5 dust during dive mineral tracking (future use)
-  CONSISTENCY_MIN_REPS: 2,        // Only penalize facts with 2+ successful reps (actually learned)
+  CONSISTENCY_MIN_REPS: 1,        // Penalize facts with 1+ successful reps (graduated to review)
 
   // === SM-2 DEFAULTS ===
   SM2_INITIAL_EASE: 2.5,
