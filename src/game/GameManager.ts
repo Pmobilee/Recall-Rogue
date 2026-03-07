@@ -52,7 +52,6 @@ import {
   playerSave,
   initPlayer,
   persistPlayer,
-  addLearnedFact,
   sellFact,
   updateReviewState,
   addMinerals,

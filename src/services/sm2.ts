@@ -150,22 +150,23 @@ function graduateEasy(state: ReviewState, now: number, isRelearning: boolean): R
 function handleReview(state: ReviewState, button: AnkiButton, now: number): ReviewState {
   switch (button) {
     case 'again': {
-      // Lapse — enter relearning
+      // Lapse — enter relearning (or auto-suspend if leech)
       const newEase = Math.max(state.easeFactor - 0.20, BALANCE.SM2_MIN_EASE)
       const newLapseCount = state.lapseCount + 1
+      const isLeech = newLapseCount >= SM2_LEECH_THRESHOLD
       const steps = SM2_RELEARNING_STEPS
       const delay = steps[0] ?? 10
 
       return {
         ...state,
-        cardState: 'relearning',
+        cardState: isLeech ? 'suspended' : 'relearning',
         easeFactor: newEase,
         learningStep: 0,
         lapseCount: newLapseCount,
-        isLeech: newLapseCount >= SM2_LEECH_THRESHOLD,
+        isLeech,
         repetitions: 0,
         quality: 1,
-        nextReviewAt: now + delay * MS_PER_MIN,
+        nextReviewAt: isLeech ? 0 : now + delay * MS_PER_MIN,
         lastReviewAt: now,
       }
     }

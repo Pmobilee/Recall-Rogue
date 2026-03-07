@@ -62,6 +62,7 @@ export function BASE_SAVE(now: number): PlayerSave {
     learnedFacts: [],
     reviewStates: [],
     soldFacts: [],
+    discoveredFacts: [],
 
     // Stats
     stats: {

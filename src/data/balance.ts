@@ -474,6 +474,12 @@ export const BALANCE = {
   MIX_RARITY_SAME: 0.60,
   MIX_RARITY_ONE_UP: 0.30,
   MIX_RARITY_TWO_UP: 0.10,
+
+  // === ACTIVATION CAP ===
+  ACTIVATION_CAP_BASE: 5,          // Starting max new+learning cards
+  ACTIVATION_CAP_PER_MASTERED: 1,  // +1 cap per N mastered
+  ACTIVATION_CAP_MASTERED_DIVISOR: 5,  // per 5 mastered cards
+  ACTIVATION_CAP_MAX: 20,         // Hard ceiling
 } as const
 
 /**
@@ -537,6 +543,11 @@ export const SM2_EASY_INTERVAL = 4                  // days — interval when Ea
 export const SM2_LAPSE_NEW_INTERVAL_PCT = 0.70      // 70% of old interval preserved after lapse
 export const SM2_LEECH_THRESHOLD = 8                // lapses before leech flag
 export const SM2_EASY_BONUS_MULTIPLIER = 1.3        // Good button: interval * ease * 1.3
+
+export const ACTIVATION_CAP_BASE = BALANCE.ACTIVATION_CAP_BASE
+export const ACTIVATION_CAP_PER_MASTERED = BALANCE.ACTIVATION_CAP_PER_MASTERED
+export const ACTIVATION_CAP_MASTERED_DIVISOR = BALANCE.ACTIVATION_CAP_MASTERED_DIVISOR
+export const ACTIVATION_CAP_MAX = BALANCE.ACTIVATION_CAP_MAX
 export const SM2_STARTING_FACTS_COUNT = 5           // facts seeded for new players
 export const SM2_DAILY_NEW_LIMIT = 10               // max new cards introduced per day/session
 

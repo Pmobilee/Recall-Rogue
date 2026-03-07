@@ -3,7 +3,7 @@
   import type { PendingArtifact, Rarity } from '../../data/types'
   import { rollArtifactReward } from '../../data/artifactLootTable'
   import { computeStudyScore } from '../../services/studyScore'
-  import { playerSave, addMinerals, addLearnedFact, persistPlayer, savePendingArtifacts } from '../stores/playerData'
+  import { playerSave, addMinerals, discoverFact, persistPlayer, savePendingArtifacts } from '../stores/playerData'
   import { pendingArtifacts, activeFact } from '../stores/gameState'
   import { factsDB } from '../../services/factsDB'
   import { get } from 'svelte/store'
@@ -144,7 +144,7 @@
 
   /** Player chose to learn the fact reward */
   function learnFact() {
-    addLearnedFact(artifact.factId)
+    discoverFact(artifact.factId)
     pendingArtifacts.update(arr =>
       arr.filter(a => a.factId !== artifact.factId || a.minedAt !== artifact.minedAt),
     )

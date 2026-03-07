@@ -10,7 +10,7 @@ import {
 import {
   playerSave,
   persistPlayer,
-  addLearnedFact,
+  discoverFact,
   updateReviewState,
   updateReviewStateByButton,
   addMinerals,
@@ -232,7 +232,7 @@ export class StudyManager {
   learnArtifact(): void {
     const fact = get(activeFact)
     if (fact) {
-      addLearnedFact(fact.id)
+      discoverFact(fact.id)
       pendingArtifacts.update(arr => arr.filter(a => a.factId !== fact.id))
       savePendingArtifacts(get(pendingArtifacts))
       persistPlayer()

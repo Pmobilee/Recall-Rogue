@@ -16,7 +16,7 @@
   import OmniscientReveal from './OmniscientReveal.svelte'
   import { isEligibleForPrestige, isOmniscient } from '../../services/prestigeService'
   import { fetchFactOfDay, type FactOfDay } from '../../services/factOfDayService'
-  import { addLearnedFact } from '../stores/playerData'
+  import { discoverFact } from '../stores/playerData'
 
   interface Props {
     onDive: () => void
@@ -182,7 +182,7 @@
 
   function addFactToStudy(): void {
     if (factOfDay && !factAlreadyLearned) {
-      addLearnedFact(factOfDay.factId)
+      discoverFact(factOfDay.factId)
     }
   }
 

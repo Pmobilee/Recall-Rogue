@@ -140,7 +140,7 @@ export interface Fact {
 // ============================================================
 
 /** Anki-faithful card state machine */
-export type CardState = 'new' | 'learning' | 'review' | 'relearning'
+export type CardState = 'new' | 'learning' | 'review' | 'relearning' | 'suspended'
 
 /** SM-2 review state for a single fact (Anki-faithful) */
 export interface ReviewState {
@@ -485,6 +485,7 @@ export interface PlayerSave {
   learnedFacts: string[]      // Fact IDs the player has ingested
   reviewStates: ReviewState[] // SM-2 state per fact
   soldFacts: string[]         // Fact IDs sold (never show again)
+  discoveredFacts: string[]    // Fact IDs discovered but not yet activated for study
 
   // Stats
   stats: PlayerStats

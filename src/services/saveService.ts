@@ -379,6 +379,10 @@ export function load(): PlayerSave | null {
     if (typeof parsedAny['hasSeenStudyNudge'] !== 'boolean') {
       parsedAny['hasSeenStudyNudge'] = false
     }
+    // Backward compatibility: ensure discoveredFacts exists
+    if (!Array.isArray(parsedAny['discoveredFacts'])) {
+      parsedAny['discoveredFacts'] = []
+    }
     // Anki-faithful SM-2 migration — backfill new ReviewState fields
     if (Array.isArray(parsedAny['reviewStates'])) {
       for (const rs of parsedAny['reviewStates'] as Record<string, unknown>[]) {
@@ -432,6 +436,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     learnedFacts: [],
     reviewStates,
     soldFacts: [],
+    discoveredFacts: [],
     craftedItems: {},
     craftCounts: {},
     activeConsumables: [],

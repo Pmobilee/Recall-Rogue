@@ -16,11 +16,11 @@ import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState }
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 import { getUnlockedPaintingIds } from './achievements'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
-import { createReviewState, isDue, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
+import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
-import { BALANCE, LEARNING_SPARKS_PER_MILESTONE } from '../../data/balance'
+import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 import { defaultHubSaveState } from '../../data/hubLayout'
@@ -148,6 +148,126 @@ export function addLearnedFact(factId: string): void {
         ...save.stats,
         totalFactsLearned: save.stats.totalFactsLearned + 1,
       },
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Discovers a fact (adds to discoveredFacts, NOT learnedFacts).
+ * Called when a player appraises an artifact in the Artifact Lab.
+ * The fact must be activated separately to enter the SM-2 review cycle.
+ *
+ * @param factId - Fact identifier to discover.
+ */
+export function discoverFact(factId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    if (save.discoveredFacts.includes(factId) || save.learnedFacts.includes(factId) || save.soldFacts.includes(factId)) {
+      return save
+    }
+
+    return {
+      ...save,
+      discoveredFacts: [...save.discoveredFacts, factId],
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Returns the dynamic activation cap: max number of new+learning cards allowed.
+ * Formula: min(20, 5 + floor(masteredCount / 5))
+ */
+export function getActivationCap(ps: PlayerSave): number {
+  const masteredCount = ps.reviewStates.filter(r => isMastered(r)).length
+  return Math.min(ACTIVATION_CAP_MAX, ACTIVATION_CAP_BASE + Math.floor(masteredCount / ACTIVATION_CAP_MASTERED_DIVISOR))
+}
+
+/**
+ * Returns how many activation slots are currently used (new + learning cards).
+ */
+export function getActivationSlotsUsed(ps: PlayerSave): number {
+  return ps.reviewStates.filter(r =>
+    r.cardState === 'new' || r.cardState === 'learning'
+  ).length
+}
+
+/**
+ * Activates a discovered fact, moving it from discoveredFacts to learnedFacts
+ * and creating its initial SM-2 review state.
+ *
+ * @param factId - Fact identifier to activate.
+ * @returns Object indicating success and optional reason for failure.
+ */
+export function activateFact(factId: string): { success: boolean; reason?: string } {
+  const ps = get(playerSave)
+  if (!ps) return { success: false, reason: 'No save data' }
+
+  if (!ps.discoveredFacts.includes(factId)) {
+    return { success: false, reason: 'Fact not discovered' }
+  }
+
+  const cap = getActivationCap(ps)
+  const used = getActivationSlotsUsed(ps)
+  if (used >= cap) {
+    return { success: false, reason: 'Activation cap reached' }
+  }
+
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      discoveredFacts: save.discoveredFacts.filter(id => id !== factId),
+      learnedFacts: [...save.learnedFacts, factId],
+      reviewStates: [...save.reviewStates, createReviewState(factId)],
+      stats: {
+        ...save.stats,
+        totalFactsLearned: save.stats.totalFactsLearned + 1,
+      },
+    }
+  })
+
+  persistPlayer()
+  return { success: true }
+}
+
+/**
+ * Deactivates a learned fact, moving it back to discoveredFacts.
+ * Removes its SM-2 review state. Used from Study Station.
+ *
+ * @param factId - Fact identifier to deactivate.
+ */
+export function deactivateFact(factId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    if (!save.learnedFacts.includes(factId)) return save
+
+    return {
+      ...save,
+      learnedFacts: save.learnedFacts.filter(id => id !== factId),
+      reviewStates: save.reviewStates.filter(r => r.factId !== factId),
+      discoveredFacts: [...save.discoveredFacts, factId],
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Unsuspends a leeched card, setting it back to relearning state.
+ */
+export function unsuspendFact(factId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map(r => {
+        if (r.factId !== factId || r.cardState !== 'suspended') return r
+        return { ...r, cardState: 'relearning' as const, learningStep: 0 }
+      }),
     }
   })
 
