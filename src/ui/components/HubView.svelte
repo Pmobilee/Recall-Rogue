@@ -21,6 +21,7 @@
   interface Props {
     onDive: () => void
     onStudy?: () => void
+    onStudyStation?: () => void
     onReviewArtifact?: () => void
     onGaiaReport?: () => void
     onViewTree?: () => void
@@ -42,7 +43,7 @@
   }
 
   const {
-    onDive, onStudy, onReviewArtifact, onGaiaReport, onViewTree,
+    onDive, onStudy, onStudyStation, onReviewArtifact, onGaiaReport, onViewTree,
     onMaterializer, onPremiumMaterializer, onCosmetics,
     onKnowledgeStore, onFossils, onZoo, onStreakPanel,
     onFarm, onDecorator, onSettings,
@@ -136,6 +137,7 @@
       case 'farm':                onFarm?.(); break
       case 'decorator':           onDecorator?.(); break
       case 'studySession':        onStudy?.(); break
+      case 'studyStation':        onStudyStation?.(); break
       case 'reviewArtifact':      onReviewArtifact?.(); break
       case 'settings':            onSettings?.(); break
       case 'command':             onGaiaReport?.(); break

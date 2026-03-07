@@ -404,6 +404,10 @@
     getGM()?.startStudySession()
   }
 
+  function handleStudyStation(): void {
+    currentScreen.set('studyStation')
+  }
+
   // Study session (card-flip mode) handlers
   let studySessionCorrectCount = $state(0)
   let studySessionTotal = $state(0)
@@ -942,6 +946,7 @@
       <HubView
         onDive={handleDive}
         onStudy={handleStudy}
+        onStudyStation={handleStudyStation}
         onReviewArtifact={handleReviewArtifact}
         onGaiaReport={handleViewGaiaReport}
         onViewTree={handleViewKnowledgeTree}
@@ -1093,6 +1098,11 @@
   {:else if $currentScreen === 'diveResults'}
     {#await import('./ui/components/DiveResults.svelte') then { default: DiveResults }}
       <DiveResults onContinue={handleDiveResultsContinue} onDiveDeeper={() => getGM()?.continueToNextLayer()} />
+    {/await}
+
+  {:else if $currentScreen === 'studyStation'}
+    {#await import('./ui/components/StudyStation.svelte') then { default: StudyStation }}
+      <StudyStation onBack={() => currentScreen.set('base')} />
     {/await}
 
   {:else if $currentScreen === 'studySession'}

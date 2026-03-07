@@ -159,6 +159,7 @@ export type Screen =
   | 'market'
   | 'archive'
   | 'observatory'
+  | 'studyStation'
 
 export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
 
