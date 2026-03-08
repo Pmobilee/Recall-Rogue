@@ -9,7 +9,7 @@
 ## P0 — Core Prototype (first playable)
 
 - [x] **CR-01 Card Foundation** — Card entity, types, deck manager, domain resolver, card factory, run pool builder → `docs/roadmap/completed/CR-01-CARD-FOUNDATION.md`
-- [ ] **CR-02 Encounter Engine** — Turn-based encounter loop, enemy system (HP, telegraphed intents, attack patterns), basic enemy roster → `docs/roadmap/phases/CR-02-ENCOUNTER-ENGINE.md`
+- [x] **CR-02 Encounter Engine** — Turn-based encounter loop, enemy system, status effects, card resolution, rewards → `docs/roadmap/completed/CR-02-ENCOUNTER-ENGINE.md`
 - [ ] **CR-03 Combat Scene** — Phaser scene with split-stage portrait layout (top 55% display, bottom 45% interaction), enemy sprites, HP bars, intent icons → `docs/roadmap/phases/CR-03-COMBAT-SCENE.md`
 - [ ] **CR-04 Card Hand UI** — Fanned arc hand, two-step play (tap to select → answer to activate), card animations (launch, fizzle, dissolve), answer buttons → `docs/roadmap/phases/CR-04-CARD-HAND-UI.md`
 - [ ] **CR-05 Game Juice** — Correct/wrong answer feedback stack (haptics, screen flash, damage numbers, combo counter, sound stubs), enemy hit reactions → `docs/roadmap/phases/CR-05-GAME-JUICE.md`

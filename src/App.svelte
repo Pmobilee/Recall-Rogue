@@ -1221,6 +1221,13 @@
     {#await import('./ui/components/DecisionScreen.svelte') then { default: DecisionScreen }}
       <DecisionScreen />
     {/await}
+
+  {:else if $currentScreen === 'combat'}
+    <!-- CR-03: Combat Scene active — Phaser renders top 55% -->
+    <!-- CR-04 will add card hand UI here in the bottom 45% -->
+    <div class="combat-interaction-zone" style="position: fixed; bottom: 0; left: 0; right: 0; height: 45vh; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); color: white; font-size: 14px; z-index: 10;">
+      Card Hand UI (CR-04)
+    </div>
   {/if}
 
   {#if $currentScreen === 'quote_stone' && quoteStoneEntry}

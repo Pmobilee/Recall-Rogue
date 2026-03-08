@@ -73,6 +73,7 @@ import { seededRandom, buildDifficultyProfile, type DifficultyProfile } from './
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
 import { DomeScene } from './scenes/DomeScene'
+import { CombatScene } from './scenes/CombatScene'
 import { GaiaManager } from './managers/GaiaManager'
 import { QuizManager } from './managers/QuizManager'
 import { StudyManager } from './managers/StudyManager'
@@ -216,7 +217,7 @@ export class GameManager {
           debug: false,
         },
       },
-      scene: [BootScene, MineScene, DomeScene],
+      scene: [BootScene, MineScene, DomeScene, CombatScene],
       input: {
         activePointers: 3,
       },
@@ -489,6 +490,45 @@ export class GameManager {
     if (!this.game) return
     if (this.game.scene.isActive('DomeScene')) {
       this.game.scene.stop('DomeScene')
+    }
+  }
+
+  /** Get the CombatScene instance (null if game not booted). */
+  getCombatScene(): CombatScene | null {
+    if (!this.game) return null
+    return this.game.scene.getScene('CombatScene') as CombatScene | null
+  }
+
+  /** Start the CombatScene for a new encounter. */
+  startCombat(): void {
+    if (!this.game) return
+    const sceneManager = this.game.scene
+
+    // Stop mining/dome scenes if active
+    if (sceneManager.isActive('MineScene')) {
+      sceneManager.stop('MineScene')
+    }
+    if (sceneManager.isActive('DomeScene')) {
+      sceneManager.stop('DomeScene')
+    }
+
+    // Start or wake combat scene
+    if (sceneManager.isActive('CombatScene')) {
+      // Already running
+    } else if (sceneManager.isSleeping('CombatScene')) {
+      sceneManager.wake('CombatScene')
+    } else {
+      sceneManager.start('CombatScene')
+    }
+
+    currentScreen.set('combat')
+  }
+
+  /** Stop the CombatScene. */
+  stopCombat(): void {
+    if (!this.game) return
+    if (this.game.scene.isActive('CombatScene')) {
+      this.game.scene.stop('CombatScene')
     }
   }
 
