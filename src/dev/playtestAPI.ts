@@ -303,6 +303,33 @@ async function answerQuizIncorrectly(): Promise<PlayResult> {
   return answerQuiz(wrongIndex);
 }
 
+/** Force a quiz for a specific fact ID (for deterministic playtest targeting). */
+async function forceQuizForFact(factId: string): Promise<PlayResult> {
+  return safeAction(async () => {
+    const save = getSave();
+    if (!save) return { ok: false, message: 'No save data' };
+
+    const fact = save.learnedFacts?.find((f: any) => f.id === factId);
+    if (!fact) return { ok: false, message: `Fact '${factId}' not found in learnedFacts` };
+
+    const { getQuizChoices } = await import('../services/quizService');
+    const choices = getQuizChoices(fact);
+    const correctIndex = choices.indexOf(fact.answer);
+
+    const quiz = {
+      fact,
+      choices,
+      correctIndex,
+      mode: 'forced',
+      quizType: 'random',
+    };
+
+    writeStore('terra:activeQuiz', quiz);
+    await wait(300);
+    return { ok: true, message: `Forced quiz for fact '${factId}': ${fact.question}`, state: { factId, question: fact.question } };
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Study
 // ---------------------------------------------------------------------------
@@ -369,6 +396,22 @@ async function endStudy(): Promise<PlayResult> {
     }
     return { ok: true, message: `Study ended. Screen: ${getScreen()}` };
   });
+}
+
+/** Get leech and suspended card details for playtest observability. */
+function getLeechInfo(): { suspended: any[]; nearLeech: any[]; totalLeeches: number } {
+  const save = getSave();
+  if (!save) return { suspended: [], nearLeech: [], totalLeeches: 0 };
+
+  const states: any[] = save.reviewStates ?? [];
+  const suspended = states.filter((rs: any) => rs.cardState === 'suspended' || rs.isLeech);
+  const nearLeech = states.filter((rs: any) => rs.lapseCount >= 6 && rs.cardState !== 'suspended');
+
+  return {
+    suspended: suspended.map((rs: any) => ({ factId: rs.factId, lapseCount: rs.lapseCount, ease: rs.easeFactor })),
+    nearLeech: nearLeech.map((rs: any) => ({ factId: rs.factId, lapseCount: rs.lapseCount, ease: rs.easeFactor, cardState: rs.cardState })),
+    totalLeeches: suspended.length,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -466,10 +509,69 @@ async function fastForward(hours: number): Promise<PlayResult> {
         ).toISOString().slice(0, 10);
       }
 
+      // Shift study session timestamps backward
+      if (Array.isArray(updated.lastStudySessionTimestamps)) {
+        updated.lastStudySessionTimestamps = updated.lastStudySessionTimestamps.map(
+          (t: number) => t - msShift
+        );
+      }
+
       return updated;
     });
 
     return { ok: true, message: `Fast-forwarded ${hours} hours` };
+  });
+}
+
+/** Seed a dense review state fixture for 7-day drift testing. */
+async function seedDriftFixture(factCount = 30, maxIntervalDays = 3): Promise<PlayResult> {
+  return safeAction(async () => {
+    const sym = Symbol.for('terra:playerSave');
+    const store = (globalThis as Record<symbol, unknown>)[sym] as any;
+    if (!store?.update) return { ok: false, message: 'playerSave store not found' };
+
+    store.update((s: any) => {
+      if (!s) return s;
+      const updated = { ...s };
+      const now = Date.now();
+      const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+      // Ensure we have enough learned facts
+      if (!updated.learnedFacts || updated.learnedFacts.length < factCount) {
+        return s; // Not enough facts to seed
+      }
+
+      // Set first N facts to short intervals with staggered due dates
+      const states: any[] = [...(updated.reviewStates ?? [])];
+      for (let i = 0; i < Math.min(factCount, updated.learnedFacts.length); i++) {
+        const factId = updated.learnedFacts[i].id;
+        const existingIdx = states.findIndex((rs: any) => rs.factId === factId);
+        const interval = 1 + Math.floor(Math.random() * maxIntervalDays);
+        const dueOffset = Math.floor(Math.random() * maxIntervalDays) * MS_PER_DAY;
+        const rs = {
+          factId,
+          cardState: 'review' as const,
+          easeFactor: 2.3 + Math.random() * 0.5,
+          interval,
+          repetitions: 2 + Math.floor(Math.random() * 3),
+          nextReviewAt: now + dueOffset,
+          lastReviewAt: now - interval * MS_PER_DAY,
+          quality: 3,
+          learningStep: 0,
+          lapseCount: Math.floor(Math.random() * 3),
+          isLeech: false,
+        };
+        if (existingIdx >= 0) {
+          states[existingIdx] = rs;
+        } else {
+          states.push(rs);
+        }
+      }
+      updated.reviewStates = states;
+      return updated;
+    });
+
+    return { ok: true, message: `Seeded ${factCount} facts with intervals 1-${maxIntervalDays}d for drift testing` };
   });
 }
 
@@ -551,11 +653,13 @@ export function initPlaytestAPI(): void {
     answerQuiz,
     answerQuizCorrectly,
     answerQuizIncorrectly,
+    forceQuizForFact,
     // Study
     startStudy,
     getStudyCard,
     gradeCard,
     endStudy,
+    getLeechInfo,
     // Dome
     enterRoom,
     exitRoom,
@@ -565,6 +669,7 @@ export function initPlaytestAPI(): void {
     getStats,
     // Meta
     fastForward,
+    seedDriftFixture,
     resetToPreset,
     getRecentEvents,
     getSessionSummary,
