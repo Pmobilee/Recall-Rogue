@@ -1,168 +1,299 @@
-# Terra Miner Architecture (V4)
+# Terra Miner Architecture (V6 — Card Roguelite)
 
-This document describes the current code-backed architecture in `src/`, `server/`, `scripts/`, and `tests/`.
+Every card is a fact. Learning IS gameplay.
 
-## System overview
+## 1. System Overview
 
-```text
-Svelte UI (App.svelte + stores)
-  -> orchestrates screen routing, overlays, auth/profile gates
-  -> calls GameManager methods
-
-GameManager (singleton)
-  -> boots Phaser, owns dive lifecycle, coordinates managers
-  -> consumes/updates Svelte stores
-
-Phaser scenes and systems
-  -> MineScene/DomeScene render and emit gameplay events
-  -> systems/managers handle mining, combat, quiz, save tick, particles
-
-Services and data
-  -> factsDB(sql.js), saveService(localStorage), API clients, analytics, presets
-  -> typed constants and schemas in src/data
-
-Optional backend (server/)
-  -> Fastify routes for auth, saves, facts, social, coop, analytics
+```
+Tech Stack: Vite 7 + Svelte 5 + TypeScript 5.9 + Phaser 3 + Capacitor (Android/iOS)
+Three game systems: Card Combat, Deck Building, Run Progression
+Data: sql.js fact database (522 facts, expandable to 20,000+)
+Persistence: localStorage (profile-namespaced), optional cloud sync
 ```
 
 Primary boot path:
 
-1. `src/main.ts` mounts Svelte app and initializes player save.
-2. `GameManager.boot()` creates Phaser game with `BootScene`, `MineScene`, `DomeScene`.
-3. `GameEventBridge` wires Phaser emitter events into Svelte stores.
-4. `factsDB.init()` loads `public/facts.db` in parallel for quiz content.
+1. `src/main.ts` mounts Svelte app, initializes player save.
+2. `GameManager.boot()` creates Phaser game with `BootScene` and `CombatScene`.
+3. `GameEventBridge` wires Phaser events into Svelte stores.
+4. `factsDB.init()` loads `public/facts.db` in parallel for quiz/card content.
 
-## Current data flow
+## 2. Layer Architecture
 
-### Stores -> Svelte -> Phaser -> managers/services
-
-1. Stores in `src/ui/stores/gameState.ts` and `src/ui/stores/playerData.ts` hold UI/game/save state.
-2. `src/App.svelte` renders by `currentScreen` and dispatches user actions to `GameManager`.
-3. `GameManager` delegates focused logic to managers (`QuizManager`, `StudyManager`, `InventoryManager`, `SaveManager`).
-4. Phaser scene events (from `MineScene` and helpers like `MineBlockInteractor`) are emitted through `game.events`.
-5. `wireEventBridge` in `src/game/GameEventBridge.ts` listens to those events and updates stores/services.
-6. Persistence paths:
-   - full player save: `saveService.save()`
-   - mid-dive snapshot: `SaveManager.save()`
-   - optional cloud sync via `syncService`/`apiClient`.
-
-## Directory layout
-
-```text
-src/
-  game/
-    scenes/            BootScene, MineScene, DomeScene, rendering helpers
-    managers/          Game lifecycle managers (quiz, study, save, inventory, combat)
-    systems/           Mine generation, hazards, camera, particles, atlas LRU, etc.
-  ui/
-    components/        Svelte UI screens and overlays
-    stores/            Reactive writable/derived stores
-  services/            Save/auth/api/facts/sync/audio/analytics/helpers
-  data/                Types, balance, content tables, save shape, constants
-  events/              Typed EventBus contract
-  dev/                 Presets and debug bridge
-
-server/
-  src/                 Fastify app, routes, jobs, db migrations
-
-tests/
-  unit/                Vitest unit coverage
-  e2e/                 Node Playwright scripts and diagnostics
+```
+┌─────────────────────────────────────────────────┐
+│  Svelte UI Layer                                │
+│  Card hand, answer buttons, room selection,     │
+│  post-run summary, domain picker, menus         │
+├─────────────────────────────────────────────────┤
+│  Phaser Layer                                   │
+│  CombatScene: enemy sprites, card sprite pool,  │
+│  hit/fizzle animations, particles, tweens       │
+├─────────────────────────────────────────────────┤
+│  Service Layer                                  │
+│  Quiz engine, SM-2 scheduler, facts DB,         │
+│  save/load, API client, audio, analytics        │
+├─────────────────────────────────────────────────┤
+│  Data Layer                                     │
+│  Types, balance constants, fact schemas,         │
+│  enemy definitions, card type mappings           │
+└─────────────────────────────────────────────────┘
 ```
 
-## Typed event bus
+### Phaser Layer
 
-Two typed buses currently exist:
+- `CombatScene` — **TO BUILD** — renders enemy sprite, card play animations, damage numbers, particle effects, screen shake
+- Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
+- Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
+- GPU-accelerated tweens for all card animations (not CSS)
+- Pixel-art config: `pixelArt`, `roundPixels`, `antialias: false`
 
-- Global typed bus: `src/events/EventBus.ts` with payload contract in `src/events/types.ts`.
-  - Includes typed events like `block-mined`, `player-moved`, `oxygen-changed`, `quiz-answer-submitted`.
-  - Supports `emit`, `emitAsync`, `on`, `off`, `clear`.
-- Dome bridge bus: `src/game/hubEvents.ts` for DomeScene <-> Svelte interactions.
-  - Events include `objectTap`, `floorChanged`, `gallery-painting-tap`.
+### Svelte UI Layer
 
-Main runtime bridge is still Phaser `game.events` plus `GameEventBridge`; typed bus contracts are available for cross-boundary hardening.
+- **Bottom 45% of screen** (interaction zone): card hand (fanned arc), answer buttons, skip/hint, end turn
+- **Top 55% of screen** (display zone): enemy, HP bars, intent telegraph, floor counter, passive relics
+- All interactive elements below the screen midpoint (thumb-reachable)
+- Touch targets: 48x48dp minimum, cards 60x80dp, answer buttons full-width 56dp height
+- Screen routing via `currentScreen` store in `App.svelte`
 
-## Save/load architecture
+### Service Layer
 
-### Local persistence
+Located in `src/services/`:
 
-- Full save type: `PlayerSave` in `src/data/types.ts`.
-- Save service: `src/services/saveService.ts`.
-- Active save key resolution uses profile namespacing via `profileService.getSaveKey()`:
-  - per-profile: `terra_save_<profileId>`
-  - fallback when no profile: `terra_save`
-- Mid-dive checkpoint save:
-  - key: `terra_miner_dive_save`
-  - type: `DiveSaveState` in `src/data/saveState.ts`
-  - writer: `SaveManager` every `AUTO_SAVE_TICK_INTERVAL` ticks.
+| Service | File | Status |
+|---------|------|--------|
+| Quiz engine | `quizService.ts` | EXISTS — reuse |
+| SM-2 scheduler | `sm2.ts` | EXISTS — reuse, add tier derivation |
+| Facts database | `factsDB.ts` | EXISTS — reuse, extend schema |
+| Save/load | `saveService.ts` | EXISTS — reuse |
+| Audio | `audioService.ts` | EXISTS — reuse |
+| Analytics | `analyticsService.ts` | EXISTS — reuse |
+| API client | `apiClient.ts` | EXISTS — reuse |
+| Profile mgmt | `profileService.ts` | EXISTS — reuse |
+| Haptics | `hapticService.ts` | EXISTS — reuse |
 
-### Versioning and migration
+### Data Layer
 
-- `SAVE_VERSION` is currently `1` (`saveService.ts`).
-- `load()` performs additive migrations for many legacy fields (minerals rename, hub floor migration, streak, onboarding, prestige, artifact analyzer, etc.).
-- Migrations are in-code, field-by-field, not external migration files.
+Located in `src/data/`:
 
-### Optional sub-document split
+- `types.ts` — PlayerSave, fact types (extend with card types)
+- `balance.ts` — tuning constants (retune for card effect values)
+- `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
+- Enemy definitions — **TO BUILD**
+- Card type mappings — **TO BUILD**
 
-- `src/services/saveSubDocs.ts` can split/merge saves into `core`, `knowledge`, `inventory`, `dome`, `analytics` documents for future sync optimization.
+## 3. Retained Systems
 
-## Rendering pipeline and sprite resolution
+These systems transfer from the mining codebase with minimal changes:
 
-### Phaser rendering
+| System | Key Files | Reuse % |
+|--------|-----------|---------|
+| Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | 100% |
+| SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | 100% |
+| Facts database | `factsDB.ts`, `public/facts.db` | 100% |
+| Artifact/loot system | `RelicManager.ts`, `CelebrationManager.ts` | 90% — artifacts become run rewards |
+| Audio manager | `AudioManager.ts`, `audioService.ts` | 100% |
+| Save/load | `SaveManager.ts`, `saveService.ts` | 100% |
+| Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | 100% |
+| Achievement tracking | `AchievementManager.ts` | 100% |
+| GAIA NPC | `GaiaManager.ts` | 100% |
+| Session tracking | `SessionTracker.ts`, `sessionTimer.ts` | 100% |
+| Particle system | `ParticleSystem.ts` | 80% — adapt for card effects |
+| Screen shake | `ScreenShakeSystem.ts` | 100% |
 
-- Game config in `GameManager.boot()` uses pixel-art settings (`pixelArt`, `roundPixels`, `antialias: false`).
-- Mine rendering pipeline lives in `MineScene` + `MineTileRenderer`.
-- Atlas memory is bounded by `TextureAtlasLRU` (`maxAtlases` default 3).
+## 4. New Systems to Build
 
-### Sprite resolution handling
+### P0 — Core (Prototype)
 
-- Setting store: `spriteResolution` in `src/ui/stores/settings.ts`.
-- Values: `low` and `high`, persisted under `terra-miner-sprite-resolution`.
-- URL resolver: `src/game/spriteManifest.ts` (`getSpriteUrls*`, `getBiomeAtlasUrl`).
-- Sprite key list is generated by `scripts/gen-sprite-keys.mjs` into `src/data/spriteKeys.ts`.
+| System | Description | Planned Location |
+|--------|-------------|------------------|
+| Card entity | Card type, effect value, tier, fact binding | `src/game/card/Card.ts` |
+| DeckManager | Draw pile, discard pile, shuffle, hand draw (5 cards) | `src/game/card/DeckManager.ts` |
+| Hand manager | Hand of 5, tap-to-select, answer-to-play flow | `src/game/card/Hand.ts` |
+| CardRenderer | Svelte component for card visuals | `src/ui/components/CardRenderer.svelte` |
+| Encounter engine | Turn loop: player plays cards → enemy attacks → repeat | `src/game/combat/Encounter.ts` |
+| Enemy system | Types, HP, attack patterns, telegraphed intents | `src/game/combat/Enemy.ts` |
+| CombatScene | Phaser scene for encounter rendering | `src/game/scenes/CombatScene.ts` |
+| RunManager | Floor progression, room selection, run lifecycle | `src/game/run/RunManager.ts` |
+| RunPoolBuilder | Build 120-fact pool from domain selection (40/30/30 split) | `src/game/run/RunPoolBuilder.ts` |
+| DomainSelector | Run-start domain pick UI | `src/ui/components/DomainSelector.svelte` |
+| FloorMap | 3-choice room selection between encounters | `src/ui/components/FloorMap.svelte` |
+| Card reward screen | Pick 1 of 3 cards after encounters | `src/ui/components/CardReward.svelte` |
 
-### Fact sprite path
+### P1 — First Update
 
-- Fact sprite availability manifest: `src/assets/fact-sprite-manifest.json`.
-- Runtime lookup: `src/services/factSpriteManifest.ts` + `FactSpriteLoader`.
-- Manifest generation/audit: `scripts/audit-fact-sprites.mjs`.
+| System | Description | Planned Location |
+|--------|-------------|------------------|
+| MasteryManager | Tier 1→2→3 evolution, passive tracking | `src/game/meta/MasteryManager.ts` |
+| Cash-out screen | Surface-or-continue risk/reward at segment checkpoints | `src/ui/components/CashOut.svelte` |
+| Knowledge Library | Fact collection/mastery view | `src/ui/components/KnowledgeLibrary.svelte` |
+| StreakTracker | Daily streak logic | `src/game/meta/StreakTracker.ts` |
+| Knowledge Combo | Consecutive correct answers → multiplier | `src/game/combat/ComboTracker.ts` |
+| Canary system | Adaptive difficulty (per-player, per-domain) | `src/game/meta/CanarySystem.ts` |
 
-## Quiz and learning pipeline
+### P2+ — Post-Launch
 
-1. Content build: `scripts/build-facts-db.mjs` compiles JSON seed files to `public/facts.db`.
-2. Runtime DB: `factsDB` lazily loads sql.js and queries the facts table.
-3. Fact selection:
-   - `GameManager.getInterestWeightedFact()` calls `factsDB.getPacedFact()`.
-   - Selection prioritizes due reviews, then unlocked facts, then capped new facts.
-4. Choice generation: `quizService.getQuizChoices()` plus distractor data from fact rows.
-5. Answer processing: `QuizManager` routes by source (`gate`, `oxygen`, `artifact`, `random`, `layer`, `combat`).
-6. Scheduling: `playerData.updateReviewState()` applies `sm2.reviewFact()` and persists review states.
-7. Study mode: `StudyManager` consumes due cards and writes back SM-2 quality-based updates.
+- Endless mode, cosmetic store, language pack support, leaderboards
 
-## Simple dependency graph
+## 5. Archived Systems
 
-```text
+Mining-specific code moved to `src/_archived-mining/`. Stub files remain at original paths for import compatibility.
+
+Archived systems include: mining grid, block breaking, fog of war, O2 system, mine generation, biome rendering, hazard system, mine block interactor, dome scene (hub world), creature spawner, instability system.
+
+## 6. Data Flow
+
+### Run Lifecycle
+
+```
+Domain Selection (pick primary + secondary domain)
+  → RunPoolBuilder builds 120-fact pool (40% primary, 30% secondary, 30% SM-2 review)
+  → DeckManager shuffles pool into draw pile
+  → Floor 1 begins
+
+Combat Loop (per encounter):
+  1. Draw 5 cards from draw pile
+  2. Player taps card → question appears (3 answer options)
+  3. Correct → card effect activates (damage/heal/shield), SM-2 quality update
+     Wrong → card fizzles (gentle dissolve), correct answer shown 2s, SM-2 update
+  4. Enemy turn → telegraphed attack executes
+  5. Repeat until enemy HP = 0 or player HP = 0
+
+Between Encounters:
+  → Room selection (3 choices: enemy, mystery, rest, shop, elite)
+  → Card reward (pick 1 of 3 new cards)
+
+Segment Checkpoint (every 3 floors):
+  → Cash-out-or-continue decision
+  → Boss encounter if continuing
+
+Run End:
+  → Post-run summary (facts learned, cards earned, floor reached)
+  → SM-2 states persisted, meta-progression applied
+  → Return to hub
+```
+
+### Store Architecture
+
+- `src/ui/stores/gameState.ts` — current screen, run state, combat state
+- `src/ui/stores/playerData.ts` — save data, SM-2 states, achievements
+- Phaser `CombatScene` owns transient combat state (enemy HP, animations)
+- `saveService` persists `PlayerSave` to localStorage (profile-namespaced)
+
+## 7. State Management
+
+| State Type | Owner | Persistence |
+|------------|-------|-------------|
+| UI navigation | Svelte stores (`currentScreen`) | Session only |
+| Run progress | RunManager → Svelte store | Saved after every encounter |
+| Combat state | CombatScene + encounter engine | Transient (rebuilt from run state) |
+| Card/deck state | DeckManager | Saved as part of run state |
+| SM-2 review data | playerData store | Persisted in PlayerSave |
+| Meta-progression | playerData store | Persisted in PlayerSave |
+| Settings | settings store | localStorage |
+
+Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
+
+## 8. Performance Budget
+
+| Metric | Target |
+|--------|--------|
+| Active game objects in combat | ~12 (1 background, 1 enemy, 5 cards, 2 HP bars, 1 combo counter, 1 particle emitter, 1 intent icon) |
+| Concurrent particles | 50 max |
+| Frame rate | 60fps |
+| Run state size | <50KB |
+| Texture atlases in memory | 3 max (via TextureAtlasLRU) |
+| Card animations | Phaser tweens only (GPU-accelerated) |
+
+## 9. Typed Event Bus
+
+Two buses:
+
+- **Global**: `src/events/EventBus.ts` — typed payloads in `src/events/types.ts`. Supports `emit`, `emitAsync`, `on`, `off`, `clear`. Will extend with card combat events (`card-played`, `card-fizzled`, `encounter-won`, `floor-cleared`, `run-ended`).
+- **Phaser bridge**: `GameEventBridge.ts` wires Phaser scene events into Svelte stores.
+
+## 10. Save/Load Architecture
+
+- Full save: `PlayerSave` in `src/data/types.ts`
+- Save key: `terra_save_<profileId>` (fallback: `terra_save`)
+- Mid-run checkpoint: saved after every encounter (replaces mid-dive snapshot)
+- Save version migrations: in-code, field-by-field in `saveService.ts`
+- Optional sub-document split: `saveSubDocs.ts` (core, knowledge, inventory, analytics)
+- Optional cloud sync: `syncService`/`apiClient`
+
+## 11. Directory Structure
+
+### Current (exists)
+
+```
+src/
+  game/
+    scenes/          BootScene, MineScene (stub), DomeScene (stub)
+    managers/        QuizManager, StudyManager, SaveManager, AudioManager,
+                     RelicManager, CelebrationManager, GaiaManager,
+                     AchievementManager, InventoryManager, CombatManager,
+                     CompanionManager, EncounterManager
+    systems/         ParticleSystem, ScreenShakeSystem, SessionTracker,
+                     CameraSystem, AnimationSystem, TextureAtlasLRU, ...
+    entities/        Player, Boss, Creature
+  ui/
+    components/      150+ Svelte components (HUD, QuizOverlay, Settings, ...)
+    stores/          gameState, playerData, settings
+  services/          factsDB, saveService, sm2, quizService, audioService, ...
+  data/              types, balance, biomes, relics, saveState, ...
+  events/            EventBus, types
+  dev/               presets, debug bridge
+  _archived-mining/  ~38 mining-specific files (stubs at original paths)
+```
+
+### Planned (to build)
+
+```
+src/
+  game/
+    card/            Card.ts, DeckManager.ts, Hand.ts
+    combat/          Encounter.ts, Enemy.ts, ComboTracker.ts
+    run/             RunManager.ts, RunPoolBuilder.ts
+    meta/            MasteryManager.ts, StreakTracker.ts, CanarySystem.ts
+    scenes/          CombatScene.ts (new)
+  ui/
+    components/      CardRenderer.svelte, DomainSelector.svelte,
+                     FloorMap.svelte, CashOut.svelte, CardReward.svelte,
+                     KnowledgeLibrary.svelte
+  data/
+    enemies/         Enemy stat definitions
+```
+
+## 12. Dependency Graph
+
+```
 App.svelte
-  -> ui/stores/*
-  -> game/gameManagerRef -> GameManager
+  → ui/stores/* (currentScreen, playerData, settings)
+  → game/gameManagerRef → GameManager
 
 GameManager
-  -> game/scenes/*
-  -> game/managers/*
-  -> services/factsDB, services/saveService
-  -> ui/stores/gameState, ui/stores/playerData
+  → scenes/CombatScene (TO BUILD)
+  → managers/* (retained: Quiz, Study, Save, Audio, Relic, Gaia, Achievement)
+  → services/factsDB, services/saveService
+  → stores/gameState, stores/playerData
 
-MineScene + MineBlockInteractor
-  -> emit Phaser game events
+CombatScene (TO BUILD)
+  → card/DeckManager → card/Hand
+  → combat/Encounter → combat/Enemy
+  → run/RunManager
+
+RunManager (TO BUILD)
+  → run/RunPoolBuilder → services/factsDB + services/sm2
+  → emits floor/room events → GameEventBridge → stores
 
 GameEventBridge
-  -> consumes Phaser game events
-  -> updates stores and calls managers/services
+  → consumes Phaser events
+  → updates stores, calls managers/services
 
-playerData/saveService
-  -> data/types PlayerSave
-  -> localStorage (profile namespaced keys)
+playerData / saveService
+  → data/types (PlayerSave)
+  → localStorage (profile-namespaced keys)
 
 factsDB
-  -> public/facts.db (built by scripts/build-facts-db.mjs)
+  → public/facts.db (built by scripts/build-facts-db.mjs)
 ```

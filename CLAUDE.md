@@ -3,7 +3,7 @@
 A 2D pixel art mining/knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting mobile via Capacitor.
 
 ## Project Summary
-- **Concept**: Miner crash-lands on a far-future Earth. Mine underground to discover minerals and relics. Learn facts about Earth's history through Anki-inspired spaced repetition quizzes (1 correct + 3 similar distractors).
+- **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat, build knowledge-powered decks, and descend deeper into procedurally generated mine floors. Learning IS the core mechanic — powered by SM-2 spaced repetition.
 - **Tech Stack**: Vite 7, Svelte 5, TypeScript 5.9, Phaser 3, Capacitor (Android/iOS)
 - **Sprite Generation**: ComfyUI with SDXL + pixel art LoRA, running locally on RTX 3060 12GB
 - **Backend**: Fastify + TypeScript (planned), containerized for portable hosting
@@ -12,12 +12,13 @@ A 2D pixel art mining/knowledge game built with Vite + Svelte + TypeScript + Pha
 ## Directory Structure
 ```
 src/game/          — Phaser scenes, entities, game systems
-src/ui/            — Svelte components (menus, quiz overlay, HUD)
-src/services/      — API client, caching, auth
-src/data/          — TypeScript types, schemas, seed data
-src/assets/        — Sprites, tilesets, audio, UI graphics
-sprite-gen/        — ComfyUI workflows, automation scripts
+src/ui/            — Svelte components (card hand, combat UI, menus)
+src/services/      — Quiz engine, SM-2 scheduler, API client, caching
+src/data/          — TypeScript types, schemas, fact database, enemy definitions
+src/assets/        — Sprites, card art, audio, UI graphics
+src/_archived-mining/ — Archived mining-specific code (not compiled)
 docs/              — Project documentation (LLM-optimized)
+docs/RESEARCH/     — Design specs and research (source of truth for game design)
 ```
 
 ## Key Conventions
@@ -91,8 +92,8 @@ node tests/e2e/03-save-resume.cjs
 
 - **ALWAYS capture diagnostics** — screenshots alone miss silent JS failures
 - **ALWAYS verify before ending a session** — run at least `01-app-loads.cjs`
-- **ALWAYS run unit tests after logic changes** — `npx vitest run` (215+ tests); typecheck alone is not enough
-- **data-testid selectors**: `btn-dive`, `btn-enter-mine`, `btn-surface`, `quiz-answer-0`..`quiz-answer-3`, `btn-age-adult`, `hud-o2-bar`
+- **ALWAYS run unit tests after logic changes** — `npx vitest run` (240+ tests); typecheck alone is not enough
+- **data-testid selectors**: `btn-start-run`, `btn-enter-mine`, `card-0`..`card-4`, `quiz-answer-0`..`quiz-answer-2`, `btn-age-adult`, `btn-cash-out`, `btn-descend`, `combo-counter`, `room-choice-0`..`room-choice-2`
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ### 3. Playwright Test Agents (test creation and healing)
@@ -106,7 +107,7 @@ node tests/e2e/03-save-resume.cjs
 - After ANY bug fix, VERIFY it works before reporting done (Playwright screenshot+snapshot, console logs, or tests)
 - Never say "this should fix it" — either confirm it works or say "I cannot verify this runtime behavior"
 - If a fix can't be visually confirmed (e.g., Phaser canvas), add temporary `console.log` and check via `browser_console_messages` or `browser_evaluate` before removing them
-- Use `window.__terraDebug()` (available in dev mode) to check runtime state: current screen, Phaser scene, player position, interactive element health
+- Use `window.__terraDebug()` (available in dev mode) to check runtime state: current screen, Phaser scene, combat state, interactive element health
 - Use `window.__terraLog` (ring buffer of last 100 events) to trace what actually happened after an interaction
 
 ## Debugging Approach — MANDATORY
@@ -119,8 +120,8 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 
 ## Phaser Canvas Debugging
 - Playwright CANNOT interact with Phaser canvas objects — clicks don't reach Phaser's input system
-- To debug Phaser interactions: add `this.input.on('pointerdown', (p: any) => console.log('scene click', p.x, p.y))` at scene level first to confirm clicks reach Phaser
-- Common Phaser click failures: missing `setInteractive()`, z-order occlusion, camera/scale mismatch, Svelte DOM overlay blocking canvas
+- To debug Phaser interactions in the combat scene: add `this.input.on('pointerdown', (p: any) => console.log('scene click', p.x, p.y))` at scene level first to confirm clicks reach Phaser
+- Common Phaser click failures in combat scene: missing `setInteractive()`, z-order occlusion, camera/scale mismatch, Svelte DOM overlay blocking canvas
 - Use devpresets and `globalThis[Symbol.for('terra:currentScreen')].set('screenName')` for testing game states instead of clicking canvas
 - To check if a DOM button is actually clickable, use `browser_evaluate` to test: visibility, disabled state, pointer-events, and z-index occlusion
 - For Phaser-specific state, use `window.__terraDebug()` which exposes active scene, input handler count, and last click coordinates
@@ -134,7 +135,7 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 
 ### Detailed Phase Documents = Source of Truth for Implementation
 - Every uncompleted phase has a dedicated detailed document in `docs/roadmap/phases/`
-- Naming: `PHASE-07-VISUAL-ENGINE.md`, `PHASE-08-MINE-GAMEPLAY.md`, etc.
+- Naming: `CR-01-CARD-SYSTEM.md`, `CR-02-ENCOUNTER-ENGINE.md`, etc.
 - These documents are the SOLE specification that coding workers (Sonnet/Haiku) execute against
 - Each phase document MUST contain:
   1. **Overview**: Goal, dependencies on prior phases, estimated complexity
@@ -188,10 +189,11 @@ When generating sprites, delegate to a sub-agent with these instructions:
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md`
 - System architecture and data flow → `docs/ARCHITECTURE.md`
-- Past decisions and rationale → `docs/DECISIONS.md`
+- Card roguelite specification → `docs/RESEARCH/terra-miner-card-roguelite-spec.md`
+- UX design details → `docs/RESEARCH/03_UX_IMPROVEMENTS.md`
+- Addictiveness research → `docs/RESEARCH/Addictiveness_research.md`
 - Sprite generation pipeline → `docs/SPRITE_PIPELINE.md`
 - Security policies and practices → `docs/SECURITY.md`
-- Quick lookup index → `docs/CONTEXT_INDEX.md`
 
 ## Svelte MCP — MANDATORY for Component Work
 The `mcp__svelte__*` MCP server provides official Svelte 5 documentation. Use it proactively:

@@ -903,7 +903,7 @@ export class GameManager {
       layerCompleted: this.currentLayer,
       canDiveDeeper: !forced && !voluntary && this.currentLayer < BALANCE.MAX_LAYERS - 1,
       artifactNames: artifactItems.map(a => factsDB.getById(a.factId)?.statement ?? a.factId),
-      relicNames: (results.collectedRelics ?? []).map(r => r.name),
+      relicNames: (results.collectedRelics ?? []).map((r: Relic) => r.name),
       factsLearnedCount: this.newFactsThisDive,
       layersReached: this.currentLayer,
       lootLostToForce,
@@ -1162,7 +1162,7 @@ export class GameManager {
     return {
       version: DIVE_SAVE_VERSION,
       savedAt: new Date().toISOString(),
-      mineGrid: scene.getGrid().map(row => row.map(cell => (cell.type as unknown) as string)),
+      mineGrid: scene.getGrid().map((row: any[]) => row.map((cell: any) => (cell.type as unknown) as string)),
       playerPos,
       inventorySnapshot: get(inventory).map(slot => ({ type: slot.type, count: slot.mineralAmount ?? 1 })),
       ticks: TickSystem.getInstance().getTick(),

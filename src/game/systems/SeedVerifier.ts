@@ -30,27 +30,16 @@ export function gridChecksum(grid: MineCell[][]): number {
   return hash >>> 0
 }
 
+// TODO: card-roguelite — removed mining dependency (verifyMineChecksum used generateMine from archived MineGenerator)
 /**
- * Verifies that re-generating a mine from its seed produces the same checksum
- * as was recorded during the original generation. Returns true if checksums match.
- *
- * @param seed - Original seed.
- * @param facts - Original facts array.
- * @param layer - Layer index.
- * @param biome - Biome used.
- * @param expectedChecksum - Previously recorded checksum.
+ * Stubbed — mine generation is archived. Always returns false.
  */
 export function verifyMineChecksum(
-  seed: number,
-  facts: string[],
-  layer: number,
-  biome: import('../../data/biomes').Biome,
-  expectedChecksum: number,
+  _seed: number,
+  _facts: string[],
+  _layer: number,
+  _biome: import('../../data/biomes').Biome,
+  _expectedChecksum: number,
 ): boolean {
-  // Dynamic import to avoid circular dependency issues at module load time.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { generateMine } = require('./MineGenerator') as typeof import('./MineGenerator')
-  const { grid } = generateMine(seed, facts, layer, biome)
-  const actual = gridChecksum(grid)
-  return actual === expectedChecksum
+  return false
 }

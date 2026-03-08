@@ -8,7 +8,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.{test,spec}.ts', 'src/**/*.{test,spec}.ts'],
-    exclude: ['node_modules', 'dist', 'android', 'ios', 'tests/e2e/**'],
+    exclude: ['node_modules', 'dist', 'android', 'ios', 'tests/e2e/**', 'src/_archived-mining/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
