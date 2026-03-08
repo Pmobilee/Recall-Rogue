@@ -160,6 +160,11 @@ export type Screen =
   | 'archive'
   | 'observatory'
   | 'studyStation'
+  | 'domainSelection'
+  | 'roomSelection'
+  | 'mysteryEvent'
+  | 'restRoom'
+  | 'runEnd'
 
 export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
 

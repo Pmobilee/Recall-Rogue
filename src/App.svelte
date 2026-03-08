@@ -46,6 +46,13 @@
   // Phase 36: Combat System
   import { combatState } from './ui/stores/combatState'
 
+  // CR-07: Game flow controller + run managers
+  import { activeRunState, activeRoomOptions, activeMysteryEvent, activeRunEndData } from './services/gameFlowController'
+  import { onDomainsSelected, onRoomSelected, onMysteryResolved, onRestResolved, returnToMenu, playAgain } from './services/gameFlowController'
+  import { healPlayer, damagePlayer } from './services/runManager'
+  import type { FactDomain } from './data/card-types'
+  import type { MysteryEffect } from './services/floorManager'
+
   // Phase 42: Deep link listener
   import { registerDeepLinkListener, type DeepLinkRoute } from './services/deepLinkService'
 
@@ -673,6 +680,38 @@
     getGM()?.skipSendUp()
   }
 
+  // CR-07: Game flow handlers
+  function handleDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
+    onDomainsSelected(primary, secondary)
+  }
+  function handleRoomSelected(index: number): void {
+    const rooms = get(activeRoomOptions)
+    if (rooms[index]) onRoomSelected(rooms[index])
+  }
+  function handleMysteryResolved(effect: MysteryEffect): void {
+    const state = get(activeRunState)
+    if (state) {
+      if (effect.type === 'heal') healPlayer(state, effect.amount)
+      else if (effect.type === 'damage') damagePlayer(state, effect.amount)
+      activeRunState.set(state)
+    }
+    onMysteryResolved()
+  }
+  function handleRestHeal(): void {
+    const state = get(activeRunState)
+    if (state) {
+      healPlayer(state, Math.round(state.playerMaxHp * 0.3))
+      activeRunState.set(state)
+    }
+    onRestResolved()
+  }
+  function handleRestUpgrade(): void {
+    // Placeholder — just advance for now
+    onRestResolved()
+  }
+  function handlePlayAgain(): void { playAgain() }
+  function handleReturnHome(): void { returnToMenu() }
+
   // Fact reveal actions
   function handleLearnFact(): void {
     getGM()?.learnArtifact()
@@ -1231,6 +1270,57 @@
         onplaycard={(cardId, correct, speedBonus) => { console.log('play card', cardId, correct, speedBonus) }}
         onskipcard={(cardId) => { console.log('skip card', cardId) }}
         onendturn={() => { console.log('end turn') }}
+      />
+    {/await}
+
+  {:else if $currentScreen === 'domainSelection'}
+    {#await import('./ui/components/DomainSelection.svelte') then { default: DomainSelection }}
+      <DomainSelection onstart={handleDomainsSelected} onback={() => currentScreen.set('mainMenu')} />
+    {/await}
+
+  {:else if $currentScreen === 'roomSelection'}
+    {#await import('./ui/components/RoomSelection.svelte') then { default: RoomSelection }}
+      <RoomSelection
+        options={$activeRoomOptions}
+        playerHp={$activeRunState?.playerHp ?? 80}
+        playerMaxHp={$activeRunState?.playerMaxHp ?? 80}
+        currentFloor={$activeRunState?.floor.currentFloor ?? 1}
+        encounterNumber={$activeRunState?.floor.currentEncounter ?? 1}
+        onselect={handleRoomSelected}
+      />
+    {/await}
+
+  {:else if $currentScreen === 'mysteryEvent'}
+    {#await import('./ui/components/MysteryEventOverlay.svelte') then { default: MysteryEventOverlay }}
+      <MysteryEventOverlay
+        event={$activeMysteryEvent}
+        playerHp={$activeRunState?.playerHp ?? 80}
+        playerMaxHp={$activeRunState?.playerMaxHp ?? 80}
+        onresolve={handleMysteryResolved}
+      />
+    {/await}
+
+  {:else if $currentScreen === 'restRoom'}
+    {#await import('./ui/components/RestRoomOverlay.svelte') then { default: RestRoomOverlay }}
+      <RestRoomOverlay
+        playerHp={$activeRunState?.playerHp ?? 80}
+        playerMaxHp={$activeRunState?.playerMaxHp ?? 80}
+        onheal={handleRestHeal}
+        onupgrade={handleRestUpgrade}
+      />
+    {/await}
+
+  {:else if $currentScreen === 'runEnd'}
+    {#await import('./ui/components/RunEndScreen.svelte') then { default: RunEndScreen }}
+      <RunEndScreen
+        result={$activeRunEndData?.result ?? 'defeat'}
+        floorReached={$activeRunEndData?.floorReached ?? 1}
+        factsAnswered={$activeRunEndData?.factsAnswered ?? 0}
+        accuracy={$activeRunEndData?.accuracy ?? 0}
+        bestCombo={$activeRunEndData?.bestCombo ?? 0}
+        cardsEarned={$activeRunEndData?.cardsEarned ?? 0}
+        onplayagain={handlePlayAgain}
+        onhome={handleReturnHome}
       />
     {/await}
   {/if}
