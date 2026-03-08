@@ -1,0 +1,91 @@
+// === Card Type ===
+// Maps to combat roles derived from knowledge domains
+
+export type CardType = 'attack' | 'shield' | 'heal' | 'utility' | 'buff' | 'debuff' | 'regen' | 'wild';
+
+// === Fact Domain ===
+// Normalized domain categories derived from the existing fact.category[] hierarchy
+
+export type FactDomain = 'science' | 'history' | 'geography' | 'language' | 'math' | 'arts' | 'medicine' | 'technology';
+
+// === Domain → CardType Mapping ===
+// Each knowledge domain produces a specific card combat role
+
+export const DOMAIN_CARD_TYPE: Record<FactDomain, CardType> = {
+  science:    'attack',
+  history:    'shield',
+  geography:  'utility',
+  language:   'buff',
+  math:       'debuff',
+  arts:       'heal',
+  medicine:   'regen',
+  technology: 'wild',
+};
+
+// === Card Tier ===
+// Derived from SM-2 review state progression
+
+export type CardTier = 1 | 2 | 3;
+
+// === Card Entity ===
+// A single playable card in a run, linked to a Fact
+
+export interface Card {
+  /** Unique per-run card instance ID (e.g., `card_<nanoid>`) */
+  id: string;
+  /** Links to the source Fact in the facts DB */
+  factId: string;
+  /** Combat role, derived from domain */
+  cardType: CardType;
+  /** Knowledge domain, derived from fact.category */
+  domain: FactDomain;
+  /** Power tier: 1=new/learning, 2=familiar, 3=mastered (passive) */
+  tier: CardTier;
+  /** Base numeric effect (damage/block/heal amount before multipliers) */
+  baseEffectValue: number;
+  /** Multiplier from difficulty-proportional power (easy cards hit softer) */
+  effectMultiplier: number;
+  /** True if this is an Echo (ghost card injected from wrong answer) */
+  isEcho?: boolean;
+}
+
+// === Card Run State ===
+// Full state of the card deck during an active run.
+// Named CardRunState to avoid collision with the existing RunState (mine/dive).
+
+export interface CardRunState {
+  /** Cards remaining to be drawn */
+  drawPile: Card[];
+  /** Cards played this turn cycle, waiting to be reshuffled */
+  discardPile: Card[];
+  /** Cards currently in the player's hand */
+  hand: Card[];
+  /** Cards permanently removed from this run */
+  exhaustPile: Card[];
+  /** Current consecutive correct-answer combo count (resets on wrong) */
+  comboCount: number;
+  /** Current floor number (1-indexed) */
+  currentFloor: number;
+  /** Current encounter index within the floor (0-indexed) */
+  currentEncounter: number;
+  /** Player's current hit points */
+  playerHP: number;
+  /** Player's maximum hit points */
+  playerMaxHP: number;
+  /** Player's current shield/block points */
+  playerShield: number;
+  /** Remaining hint uses for this run */
+  hintsRemaining: number;
+  /** Currency (dust) earned during this run */
+  currency: number;
+}
+
+// === Deck Stats ===
+// Snapshot of deck pile sizes for HUD display
+
+export interface DeckStats {
+  drawRemaining: number;
+  discardSize: number;
+  exhaustedCount: number;
+  handSize: number;
+}

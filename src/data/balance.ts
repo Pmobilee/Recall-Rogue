@@ -817,3 +817,66 @@ export const REVIEW_PROMPT_TRIGGERS = {
   /** Cooldown in days between prompt appearances. */
   cooldownDays: 90,
 } as const
+
+// ============================================================
+// CARD ROGUELITE BALANCE (CR-01)
+// ============================================================
+
+// Card Combat
+export const HAND_SIZE = 5;
+export const DEFAULT_POOL_SIZE = 120;
+export const POOL_PRIMARY_PCT = 0.40;
+export const POOL_SECONDARY_PCT = 0.30;
+export const POOL_REVIEW_PCT = 0.30;
+
+// Base effect values by card type
+// Uses Record<string, number> instead of Record<CardType, number> to avoid
+// circular imports (balance.ts should NOT import from card-types.ts).
+export const BASE_EFFECT: Record<string, number> = {
+  attack: 8,
+  shield: 6,
+  heal: 5,
+  utility: 0,
+  buff: 0,
+  debuff: 0,
+  regen: 3,
+  wild: 0,
+};
+
+// Tier multipliers — Tier 3 is passive (no active effect value)
+export const TIER_MULTIPLIER: Record<number, number> = {
+  1: 1.0,
+  2: 1.5,
+  3: 0,
+};
+
+// Difficulty-proportional power: lower ease = harder card = higher multiplier
+// Sorted ascending by maxEase. First match wins.
+export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [
+  { maxEase: 1.5,      multiplier: 1.6 },  // Very Hard (ease < 1.5)
+  { maxEase: 2.0,      multiplier: 1.3 },  // Hard      (ease < 2.0)
+  { maxEase: 2.5,      multiplier: 1.0 },  // Medium    (ease < 2.5)
+  { maxEase: Infinity,  multiplier: 0.8 },  // Easy      (ease >= 2.5)
+];
+
+// Player defaults
+export const PLAYER_START_HP = 80;
+export const PLAYER_MAX_HP = 80;
+export const HINTS_PER_ENCOUNTER = 1;
+
+// Speed scaling (timer in seconds by floor)
+export const FLOOR_TIMER: Array<{ maxFloor: number; seconds: number }> = [
+  { maxFloor: 3,        seconds: 12 },
+  { maxFloor: 6,        seconds: 9 },
+  { maxFloor: 9,        seconds: 7 },
+  { maxFloor: 12,       seconds: 5 },
+  { maxFloor: Infinity, seconds: 4 },
+];
+
+// Knowledge combo multipliers
+// Index 0 = 1st correct, index 4 = 5th correct (perfect turn)
+export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
+
+// Speed bonus
+export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
+export const SPEED_BONUS_MULTIPLIER = 1.5;
