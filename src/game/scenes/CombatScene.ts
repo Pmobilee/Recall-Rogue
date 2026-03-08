@@ -369,6 +369,20 @@ export class CombatScene extends Phaser.Scene {
     this.particles.explode(count, x, y)
   }
 
+  /** Play a gold-tinted screen flash for perfect turn celebration. */
+  playGoldFlash(): void {
+    this.flashRect.setFillStyle(0xFFD700, 0.2)
+    this.tweens.add({
+      targets: this.flashRect,
+      alpha: 0,
+      duration: 200,
+      ease: 'Power2',
+      onComplete: () => {
+        this.flashRect.setFillStyle(0xFFFFFF, 0)
+      }
+    })
+  }
+
   // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════

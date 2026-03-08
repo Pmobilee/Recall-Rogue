@@ -25,6 +25,7 @@ export interface JuiceEvent {
   isCritical?: boolean  // Speed bonus achieved
   comboCount: number
   effectLabel?: string  // e.g. "HEAL 8", "SHIELD 15"
+  isPerfectTurn?: boolean
 }
 
 /** Callbacks registered by UI components to receive juice events */
@@ -99,6 +100,15 @@ class JuiceManager {
       tapHeavy()
       setTimeout(() => tapHeavy(), 80)
       setTimeout(() => tapHeavy(), 160)
+    }
+
+    // Perfect turn celebration (all cards correct this turn)
+    if (event.isPerfectTurn) {
+      setTimeout(() => {
+        this.callbacks.onScreenFlash?.(0.2)
+        this.callbacks.onParticleBurst?.(50, 0xFFD700)
+        emitSound('combo-5')
+      }, 500)
     }
   }
 

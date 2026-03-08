@@ -13,7 +13,7 @@ import { createPlayerCombatState, applyShield, takeDamage, healPlayer, tickPlaye
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects } from './enemyManager';
 import { applyStatusEffect } from '../data/statusEffects';
-import { PLAYER_START_HP } from '../data/balance';
+import { PLAYER_START_HP, COMBO_MULTIPLIERS } from '../data/balance';
 
 /** The current phase of a turn in the encounter. */
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
@@ -49,6 +49,10 @@ export interface TurnState {
   comboCount: number;
   /** Number of cards played this turn. */
   cardsPlayedThisTurn: number;
+  /** Number of correct answers this turn. */
+  cardsCorrectThisTurn: number;
+  /** True if all played cards this turn were answered correctly. */
+  isPerfectTurn: boolean;
   /** Percentage buff accumulated from buff cards for the next card. */
   buffNextCard: number;
   /** The card type of the last card played (for wild resolution). */
@@ -71,6 +75,8 @@ export interface PlayCardResult {
   fizzled: boolean;
   /** Whether the card was blocked (domain immunity). */
   blocked: boolean;
+  /** Whether this is a perfect turn (all cards correct so far). */
+  isPerfectTurn: boolean;
   /** The updated turn state. */
   turnState: TurnState;
 }
@@ -114,6 +120,8 @@ export function startEncounter(
     deck,
     comboCount: 0,
     cardsPlayedThisTurn: 0,
+    cardsCorrectThisTurn: 0,
+    isPerfectTurn: false,
     buffNextCard: 0,
     lastCardType: undefined,
     result: null,
@@ -184,6 +192,7 @@ export function playCardAction(
       enemyDefeated: false,
       fizzled: false,
       blocked: true,
+      isPerfectTurn: false,
       turnState,
     };
   }
@@ -211,12 +220,15 @@ export function playCardAction(
       enemyDefeated: false,
     };
 
+    turnState.isPerfectTurn = false;
+
     return {
       effect: fizzledEffect,
       comboCount: 0,
       enemyDefeated: false,
       fizzled: true,
       blocked: false,
+      isPerfectTurn: false,
       turnState,
     };
   }
@@ -259,6 +271,10 @@ export function playCardAction(
   // Update turn state
   turnState.comboCount += 1;
   turnState.cardsPlayedThisTurn += 1;
+  turnState.cardsCorrectThisTurn += 1;
+
+  // Check perfect turn: all played cards were answered correctly
+  turnState.isPerfectTurn = (turnState.cardsCorrectThisTurn === turnState.cardsPlayedThisTurn && turnState.cardsPlayedThisTurn > 0);
 
   // Track last card type for wild resolution
   turnState.lastCardType = effect.effectType;
@@ -294,6 +310,7 @@ export function playCardAction(
     enemyDefeated,
     fizzled: false,
     blocked: false,
+    isPerfectTurn: turnState.isPerfectTurn,
     turnState,
   };
 }
@@ -450,6 +467,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   // 5. Reset turn state
   resetTurnState(playerState);
+  turnState.comboCount = 0;
+  turnState.cardsPlayedThisTurn = 0;
+  turnState.cardsCorrectThisTurn = 0;
+  turnState.isPerfectTurn = false;
 
   // 6. Roll new enemy intent
   rollNextIntent(enemy);
@@ -505,4 +526,14 @@ export function isHandEmpty(turnState: TurnState): boolean {
  */
 export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
+}
+
+/**
+ * Get the combo multiplier for a given combo count.
+ * @param comboCount - Current consecutive correct answers (0-based)
+ * @returns Multiplier value (1.0 to 2.0)
+ */
+export function getComboMultiplier(comboCount: number): number {
+  const index = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
+  return COMBO_MULTIPLIERS[index];
 }

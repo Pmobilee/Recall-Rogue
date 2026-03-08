@@ -22,6 +22,7 @@
   let damageNumbers = $state<Array<{id: number, value: string, isCritical: boolean}>>([])
   let cardAnimations = $state<Record<string, 'launch' | 'fizzle' | null>>({})
   let comboCount = $derived(turnState?.comboCount ?? 0)
+  let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
   let damageIdCounter = $state(0)
 
   /** Remove a damage number by id after its animation completes. */
@@ -144,12 +145,14 @@
 
     // Fire juice effects
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
+    const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
     juiceManager.fire({
       type: isCorrect ? 'correct' : 'wrong',
       damage: isCorrect ? effectVal : 0,
       isCritical: speedBonus,
       comboCount: nextCombo,
       effectLabel: isCorrect ? effectLabel : undefined,
+      isPerfectTurn: willBePerfect,
     })
 
     onplaycard(cardId, isCorrect, speedBonus)
@@ -201,8 +204,13 @@
       <DamageNumber value={dn.value} isCritical={dn.isCritical} onComplete={() => removeDamageNumber(dn.id)} />
     {/each}
 
+    <!-- Screen edge pulse at combo 4+ -->
+    {#if comboCount >= 4}
+      <div class="screen-edge-pulse" style="pointer-events: none;"></div>
+    {/if}
+
     <!-- Combo Counter -->
-    <ComboCounter count={comboCount} />
+    <ComboCounter count={comboCount} {isPerfectTurn} />
 
     <CardHand
       cards={handCards}
@@ -282,5 +290,22 @@
 
   .end-turn-btn:active {
     background: #C0392B;
+  }
+
+  .screen-edge-pulse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 60px 20px rgba(255, 215, 0, 0.15);
+    animation: edgePulse 400ms ease-in-out;
+    z-index: 5;
+  }
+
+  @keyframes edgePulse {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
   }
 </style>
