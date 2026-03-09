@@ -71,6 +71,18 @@ export function initSchema(): void {
       created_at INTEGER NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS error_reports (
+      id TEXT PRIMARY KEY,
+      message TEXT NOT NULL,
+      stack TEXT,
+      context TEXT NOT NULL,
+      platform TEXT NOT NULL DEFAULT 'web',
+      app_version TEXT,
+      user_agent TEXT,
+      url TEXT,
+      ts INTEGER NOT NULL
+    );
+
     CREATE TABLE IF NOT EXISTS feedback_entries (
       id TEXT PRIMARY KEY,
       user_id TEXT NOT NULL,
@@ -114,6 +126,9 @@ export function initSchema(): void {
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_expires_at ON refresh_tokens(expires_at);
     CREATE INDEX IF NOT EXISTS idx_analytics_events_session_id ON analytics_events(session_id);
     CREATE INDEX IF NOT EXISTS idx_analytics_events_event_name ON analytics_events(event_name);
+    CREATE INDEX IF NOT EXISTS idx_error_reports_ts ON error_reports(ts DESC);
+    CREATE INDEX IF NOT EXISTS idx_error_reports_platform ON error_reports(platform);
+    CREATE INDEX IF NOT EXISTS idx_error_reports_context ON error_reports(context);
     CREATE INDEX IF NOT EXISTS idx_feedback_created_at ON feedback_entries(created_at DESC);
     CREATE INDEX IF NOT EXISTS idx_feedback_account_id ON feedback_entries(account_id);
     CREATE INDEX IF NOT EXISTS idx_invite_enabled ON invite_codes(enabled);

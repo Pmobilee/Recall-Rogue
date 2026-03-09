@@ -48,6 +48,7 @@ import { seasonInfoRoutes } from "./routes/seasonInfo.js";
 import { adminFactsRoutes } from "./routes/adminFacts.js";
 import { feedbackRoutes } from "./routes/feedback.js";
 import { inviteRoutes } from "./routes/invite.js";
+import { errorRoutes } from "./routes/errors.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -292,6 +293,7 @@ export async function buildApp() {
   // AR-14: Soft-launch operational routes.
   await fastify.register(feedbackRoutes, { prefix: '/api/feedback' });
   await fastify.register(inviteRoutes, { prefix: '/api/invite' });
+  await fastify.register(errorRoutes, { prefix: '/api/errors' });
 
   // Phase 43: Co-op WebSocket + REST routes
   await fastify.register(websocket);

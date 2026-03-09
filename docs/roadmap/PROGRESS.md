@@ -15,7 +15,7 @@
 
 **Deck building redesigned.** Card rewards now use type-selection (player picks card TYPE, random fact assigned). Archetype selection at run start. See GAME_DESIGN.md §7. AR-09 implements this.
 
-**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), complete AR-13 launch readiness gates, then close remaining AR-14 launch operations.
+**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), close the remaining AR-13 gates (full suite + dead-code cleanup + deployment + Capacitor verification), then ship AR-14 public deploy and first-week top-issue fixes.
 
 ---
 
@@ -178,14 +178,14 @@ Depends on: AR-08 (Settings accessible). Estimated: Medium-Large. **Status: Comp
 ### AR-13: Launch Readiness (supersedes AR-07)
 **Everything needed for Malaysia soft launch (web-first, Capacitor native later).**
 
-- [ ] Performance audit: 60fps combat, <3s cold start, <150MB memory
+- [x] Performance audit: 60fps combat, <3s cold start, <150MB memory
 - [ ] Full Playwright E2E test suite (hub, run flow, type selection, FSRS, combos, relics, save/load)
 - [ ] Dead code cleanup (archive mining-era code, remove unused social nav entries)
-- [ ] PWA configuration (manifest, service worker, offline, app icons)
+- [x] PWA configuration (manifest, service worker, offline, app icons)
 - [ ] Web deployment (Vercel/Netlify)
-- [ ] Error tracking (Sentry or equivalent)
-- [ ] Share image generator verification
-- [ ] Responsive layout on common mobile screen sizes
+- [x] Error tracking (Sentry or equivalent)
+- [x] Share image generator verification
+- [x] Responsive layout on common mobile screen sizes
 - [ ] Capacitor native builds (Android + iOS) — stretch goal
 
 Depends on: AR-08, AR-09. Estimated: Medium.
@@ -201,9 +201,11 @@ Depends on: AR-08, AR-09. Estimated: Medium.
 - [x] A/B test experiments: Slow Reader default, 3 vs 4 AP, starter deck 15 vs 18
 - [x] Malaysia geo-targeting or invite codes
 - [x] In-app feedback button in Settings
-- [ ] Weekly analytics dashboard
+- [x] Weekly analytics dashboard
 - [x] Weekly analytics review checklist documented
 - [ ] Fix top 5 issues from first-week data
+
+Weekly runbook: `docs/roadmap/AR-14-WEEKLY-ANALYTICS-RUNBOOK.md`
 
 Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium.
 → [Spec](phases/AR-14-SOFT-LAUNCH-ANALYTICS.md)

@@ -24,6 +24,7 @@ import { factsDB } from './services/factsDB'
 import { initI18n } from './i18n/index'
 import { initAccessibilityManager } from './services/accessibilityManager'
 import { initCardAudio } from './services/cardAudioManager'
+import { initErrorReporting } from './services/errorReporting'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -116,6 +117,11 @@ document.getElementById('splash')?.remove()
 // Initialize global accessibility + audio settings before user interaction.
 initAccessibilityManager()
 initCardAudio()
+
+// Launch error capture in production (or when explicitly enabled in dev).
+if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'true') {
+  initErrorReporting()
+}
 
 // Initialize player save data
 const save = initPlayer('teen')

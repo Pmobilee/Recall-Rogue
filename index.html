@@ -66,11 +66,17 @@
       </style>
     </div>
     <script>
-      // Emergency SW cleanup: the cache-first SW cached stale JS modules in dev.
-      // This inline script runs before any module imports, ensuring the SW is
-      // removed and caches purged so fresh code is always fetched.
-      // Safe in production: the SW re-registers itself via main.ts.
-      if ('serviceWorker' in navigator) {
+      // Dev-only SW cleanup: remove stale cache-first workers during local runs.
+      // In production this must stay disabled so offline/PWA behavior works.
+      const host = window.location.hostname;
+      const isLocalDev =
+        host === 'localhost' ||
+        host === '127.0.0.1' ||
+        host === '0.0.0.0' ||
+        host.endsWith('.local');
+      const forceCleanup = window.location.search.includes('swcleanup=1');
+
+      if ((isLocalDev || forceCleanup) && 'serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(regs) {
           regs.forEach(function(r) { r.unregister(); });
         });

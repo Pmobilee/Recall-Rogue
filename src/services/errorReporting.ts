@@ -13,20 +13,45 @@ interface ErrorReport {
   timestamp: number
   userAgent: string
   url: string
+  platform: 'web' | 'android' | 'ios'
+  appVersion: string
 }
 
-const ERROR_ENDPOINT = '/api/errors'
 const MAX_ERRORS_PER_SESSION = 20
+const APP_VERSION = '0.1.0'
 
 let errorCount = 0
+
+function resolveApiBase(): string {
+  const env = (import.meta as unknown as { env?: { VITE_API_BASE_URL?: string } }).env
+  if (env?.VITE_API_BASE_URL) return env.VITE_API_BASE_URL
+
+  const host = window.location.hostname
+  const isLocal =
+    host === 'localhost' ||
+    host === '127.0.0.1' ||
+    host === '0.0.0.0' ||
+    host.endsWith('.local')
+
+  if (isLocal) return `${window.location.protocol}//${host}:3001`
+  return window.location.origin
+}
+
+function getPlatform(): 'web' | 'android' | 'ios' {
+  const ua = navigator.userAgent.toLowerCase()
+  if (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ios')) return 'ios'
+  if (ua.includes('android')) return 'android'
+  return 'web'
+}
 
 /** Reports an error to the backend error collection endpoint */
 function reportError(error: ErrorReport): void {
   if (errorCount >= MAX_ERRORS_PER_SESSION) return
   errorCount++
+  const endpoint = `${resolveApiBase()}/api/errors`
 
   // Fire-and-forget — don't let error reporting itself cause crashes
-  fetch(ERROR_ENDPOINT, {
+  fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(error),
@@ -45,6 +70,8 @@ export function initErrorReporting(): void {
       timestamp: Date.now(),
       userAgent: navigator.userAgent,
       url: window.location.href,
+      platform: getPlatform(),
+      appVersion: APP_VERSION,
     })
   })
 
@@ -57,6 +84,8 @@ export function initErrorReporting(): void {
       timestamp: Date.now(),
       userAgent: navigator.userAgent,
       url: window.location.href,
+      platform: getPlatform(),
+      appVersion: APP_VERSION,
     })
   })
 }
@@ -70,5 +99,7 @@ export function captureError(error: Error, context: string): void {
     timestamp: Date.now(),
     userAgent: navigator.userAgent,
     url: window.location.href,
+    platform: getPlatform(),
+    appVersion: APP_VERSION,
   })
 }

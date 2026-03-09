@@ -113,6 +113,138 @@ interface AnalyticsBody {
   events: IncomingEvent[];
 }
 
+interface DashboardIssue {
+  key: string;
+  source: "errors" | "feedback" | "analytics";
+  summary: string;
+  occurrences: number;
+  sample?: string;
+}
+
+interface FeedbackRow {
+  feedback: string;
+}
+
+interface ErrorIssueRow {
+  context: string;
+  count: number;
+  sample: string | null;
+}
+
+const FEEDBACK_ISSUE_RULES: Array<{
+  key: string;
+  summary: string;
+  pattern: RegExp;
+}> = [
+  {
+    key: "difficulty_spike",
+    summary: "Difficulty spikes or overtuned encounters",
+    pattern: /\b(too hard|difficult|impossible|overtuned|enemy|floor\s*[0-9]+)\b/i,
+  },
+  {
+    key: "timer_pressure",
+    summary: "Timer is too short for reading/answering",
+    pattern: /\b(timer|too fast|not enough time|slow reader|time pressure)\b/i,
+  },
+  {
+    key: "bugs_or_crashes",
+    summary: "Bugs, crashes, or freezes reported by players",
+    pattern: /\b(bug|crash|freeze|stuck|glitch|error)\b/i,
+  },
+  {
+    key: "performance",
+    summary: "Performance issues (lag, stutter, long loads)",
+    pattern: /\b(lag|stutter|fps|slow|performance|loading)\b/i,
+  },
+  {
+    key: "ui_clarity",
+    summary: "UI/navigation confusion",
+    pattern: /\b(confus|can't find|cannot find|where is|navigation|menu)\b/i,
+  },
+];
+
+function collectTopIssuesSince(since: number): DashboardIssue[] {
+  const issues: DashboardIssue[] = [];
+
+  try {
+    const errorRows = sqliteDb
+      .prepare(
+        `SELECT context, COUNT(*) as count, MIN(message) as sample
+         FROM error_reports
+         WHERE ts >= ?
+         GROUP BY context
+         ORDER BY count DESC
+         LIMIT 5`,
+      )
+      .all(since) as ErrorIssueRow[];
+
+    for (const row of errorRows) {
+      if (!row.context || !row.count) continue;
+      issues.push({
+        key: `error_${row.context}`,
+        source: "errors",
+        summary: `Client errors in context "${row.context}"`,
+        occurrences: Number(row.count),
+        sample: row.sample ?? undefined,
+      });
+    }
+  } catch {
+    // error_reports table may not exist on very old DBs.
+  }
+
+  try {
+    const feedbackRows = sqliteDb
+      .prepare(
+        `SELECT feedback_text as feedback
+         FROM feedback_entries
+         WHERE created_at >= ?
+         ORDER BY created_at DESC
+         LIMIT 2000`,
+      )
+      .all(since) as FeedbackRow[];
+
+    for (const rule of FEEDBACK_ISSUE_RULES) {
+      const matches = feedbackRows.filter((row) => rule.pattern.test(row.feedback));
+      if (matches.length === 0) continue;
+      issues.push({
+        key: rule.key,
+        source: "feedback",
+        summary: rule.summary,
+        occurrences: matches.length,
+        sample: matches[0]?.feedback?.slice(0, 220),
+      });
+    }
+  } catch {
+    // feedback_entries table may not exist on very old DBs.
+  }
+
+  try {
+    const timeoutDeaths = sqliteDb
+      .prepare(
+        `SELECT COUNT(*) as count
+         FROM analytics_events
+         WHERE created_at >= ?
+           AND event_name = 'run_death'
+           AND properties LIKE '%"cause":"timeout"%'`,
+      )
+      .get(since) as { count: number };
+
+    if ((timeoutDeaths.count ?? 0) > 0) {
+      issues.push({
+        key: "run_death_timeout",
+        source: "analytics",
+        summary: "Run deaths caused by timer timeout",
+        occurrences: Number(timeoutDeaths.count),
+      });
+    }
+  } catch {
+    // Keep analytics endpoint resilient if a query fails.
+  }
+
+  issues.sort((a, b) => b.occurrences - a.occurrences);
+  return issues.slice(0, 5);
+}
+
 // ── Route plugin ───────────────────────────────────────────────────────────────
 
 /**
@@ -387,6 +519,193 @@ export async function analyticsRoutes(
 
       const report = await computeViralMetrics(dbAdapter, windowDays)
       return reply.send(report)
+    }
+  )
+
+  /**
+   * GET /api/analytics/dashboard
+   * Weekly launch dashboard: top events, funnel snapshots, experiment rollups,
+   * retention sample, and top issues for triage.
+   * Admin-only (X-Admin-Key required).
+   */
+  fastify.get(
+    '/dashboard',
+    async (
+      request: FastifyRequest<{ Querystring: { days?: string; cohortDate?: string } }>,
+      reply: FastifyReply
+    ) => {
+      if (request.headers['x-admin-key'] !== config.adminApiKey) {
+        return reply.status(403).send({ error: 'Forbidden' })
+      }
+
+      const rawDays = parseInt((request.query as { days?: string }).days ?? '7', 10)
+      const days = Math.min(Math.max(1, isNaN(rawDays) ? 7 : rawDays), 30)
+      const now = Date.now()
+      const since = now - days * 86_400_000
+
+      const totals = sqliteDb
+        .prepare(
+          `SELECT
+             COUNT(*) as totalEvents,
+             COUNT(DISTINCT session_id) as uniqueSessions
+           FROM analytics_events
+           WHERE created_at >= ?`
+        )
+        .get(since) as { totalEvents: number; uniqueSessions: number }
+
+      const topEvents = sqliteDb
+        .prepare(
+          `SELECT
+             event_name as eventName,
+             COUNT(*) as count,
+             COUNT(DISTINCT session_id) as uniqueSessions
+           FROM analytics_events
+           WHERE created_at >= ?
+           GROUP BY event_name
+           ORDER BY count DESC
+           LIMIT 10`
+        )
+        .all(since) as Array<{ eventName: string; count: number; uniqueSessions: number }>
+
+      const runStats = sqliteDb
+        .prepare(
+          `SELECT
+             SUM(CASE WHEN event_name = 'run_start' THEN 1 ELSE 0 END) as runStarts,
+             SUM(CASE WHEN event_name = 'run_complete' THEN 1 ELSE 0 END) as runCompletions,
+             SUM(CASE WHEN event_name = 'run_death' THEN 1 ELSE 0 END) as runDeaths,
+             SUM(CASE WHEN event_name = 'share_card_generated' THEN 1 ELSE 0 END) as shares
+           FROM analytics_events
+           WHERE created_at >= ?`
+        )
+        .get(since) as {
+          runStarts: number | null;
+          runCompletions: number | null;
+          runDeaths: number | null;
+          shares: number | null;
+        }
+
+      const funnelRows = await db
+        .select({ eventName: analyticsEvents.eventName, sessionId: analyticsEvents.sessionId })
+        .from(analyticsEvents)
+        .where(sql`${analyticsEvents.createdAt} >= ${since}`)
+        .all()
+
+      const funnels = FUNNELS.map((def) => ({
+        key: def.key,
+        report: computeFunnel(def, funnelRows),
+      }))
+
+      const experimentRows = await db
+        .select({
+          eventName: analyticsEvents.eventName,
+          properties: analyticsEvents.properties,
+          sessionId: analyticsEvents.sessionId,
+        })
+        .from(analyticsEvents)
+        .where(sql`${analyticsEvents.createdAt} >= ${since}`)
+        .all()
+
+      const experiments = EXPERIMENTS.map((def) =>
+        computeExperimentResult(
+          def.key,
+          def.primaryMetric,
+          [...def.variants],
+          experimentRows
+        )
+      )
+
+      const cohortDateRaw = (request.query as { cohortDate?: string }).cohortDate
+      const cohortDate = cohortDateRaw ? new Date(cohortDateRaw) : (() => {
+        const d = new Date()
+        d.setDate(d.getDate() - 7)
+        return d
+      })()
+
+      if (isNaN(cohortDate.getTime())) {
+        return reply.status(400).send({ error: 'Invalid cohortDate — must be ISO 8601' })
+      }
+
+      const retentionRows = await db
+        .select({
+          sessionId: analyticsEvents.sessionId,
+          eventName: analyticsEvents.eventName,
+          createdAt: analyticsEvents.createdAt,
+        })
+        .from(analyticsEvents)
+        .where(
+          and(
+            eq(analyticsEvents.eventName, "app_open"),
+            sql`${analyticsEvents.createdAt} >= ${cohortDate.getTime() - 31 * 86_400_000}`
+          )
+        )
+        .all()
+
+      const retention = computeRetention(
+        cohortDate,
+        retentionRows.map((row) => ({
+          sessionId: row.sessionId,
+          eventName: row.eventName,
+          createdAt: row.createdAt,
+        }))
+      )
+
+      const runStarts = Number(runStats.runStarts ?? 0)
+      const runCompletions = Number(runStats.runCompletions ?? 0)
+      const runDeaths = Number(runStats.runDeaths ?? 0)
+
+      return reply.send({
+        period: {
+          start: new Date(since).toISOString(),
+          end: new Date(now).toISOString(),
+          days,
+        },
+        totals: {
+          totalEvents: Number(totals.totalEvents ?? 0),
+          uniqueSessions: Number(totals.uniqueSessions ?? 0),
+          runStarts,
+          runCompletions,
+          runDeaths,
+          runCompletionRate: runStarts > 0 ? runCompletions / runStarts : null,
+          shares: Number(runStats.shares ?? 0),
+        },
+        topEvents,
+        funnels,
+        experiments,
+        retention,
+        topIssues: collectTopIssuesSince(since),
+      })
+    }
+  )
+
+  /**
+   * GET /api/analytics/top-issues
+   * Returns ranked launch issues from errors, feedback, and failure analytics.
+   * Admin-only (X-Admin-Key required).
+   */
+  fastify.get(
+    '/top-issues',
+    async (
+      request: FastifyRequest<{ Querystring: { days?: string } }>,
+      reply: FastifyReply
+    ) => {
+      if (request.headers['x-admin-key'] !== config.adminApiKey) {
+        return reply.status(403).send({ error: 'Forbidden' })
+      }
+
+      const rawDays = parseInt((request.query as { days?: string }).days ?? '7', 10)
+      const days = Math.min(Math.max(1, isNaN(rawDays) ? 7 : rawDays), 30)
+      const now = Date.now()
+      const since = now - days * 86_400_000
+      const topIssues = collectTopIssuesSince(since)
+
+      return reply.send({
+        period: {
+          start: new Date(since).toISOString(),
+          end: new Date(now).toISOString(),
+          days,
+        },
+        items: topIssues,
+      })
     }
   )
 

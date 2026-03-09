@@ -26,6 +26,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
+    "audit:perf": "node tests/e2e/performance-audit.mjs",
     "build:check": "npm run build && node scripts/check-bundle-size.mjs",
     "deploy:preview": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch preview",
     "deploy:production": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch main",
