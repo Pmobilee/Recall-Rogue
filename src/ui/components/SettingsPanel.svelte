@@ -16,12 +16,14 @@
     unlockCardAudio,
     playCardAudio,
   } from '../../services/cardAudioManager'
+  import ParentalControlsPanel from './ParentalControlsPanel.svelte'
 
   interface Props {
     onback: () => void
   }
 
   let { onback }: Props = $props()
+  let showParentalControls = $state(false)
 
   const difficultyOptions: DifficultyMode[] = ['explorer', 'standard', 'scholar']
   const textSizeOptions: TextSize[] = ['small', 'medium', 'large']
@@ -127,8 +129,24 @@
         <strong>{Math.round($musicVolume * 100)}%</strong>
       </label>
     </section>
+
+    <section class="settings-section">
+      <h3>Family</h3>
+      <button
+        type="button"
+        class="back-btn"
+        aria-label="Parental Controls"
+        onclick={() => { showParentalControls = true }}
+      >
+        Parental Controls
+      </button>
+    </section>
   </div>
 </div>
+
+{#if showParentalControls}
+  <ParentalControlsPanel onClose={() => { showParentalControls = false }} />
+{/if}
 
 <style>
   .settings-overlay {

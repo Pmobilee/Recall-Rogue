@@ -34,11 +34,15 @@ function singletonDerived<T, S>(key: string, deps: Readable<S>, fn: (value: S) =
 
 /** All top-level UI screens used by routing state. */
 export type Screen =
+  | 'hub'
   | 'mainMenu'
   | 'base'
   | 'combat'
   | 'domainSelection'
   | 'library'
+  | 'profile'
+  | 'journal'
+  | 'leaderboards'
   | 'roomSelection'
   | 'mysteryEvent'
   | 'restRoom'
@@ -49,4 +53,73 @@ export type Screen =
   | 'ageSelection'
   | 'settings'
 
-export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
+const SCREEN_STORAGE_KEY = 'card:currentScreen'
+
+const VALID_SCREENS: Screen[] = [
+  'hub',
+  'mainMenu',
+  'base',
+  'combat',
+  'domainSelection',
+  'library',
+  'profile',
+  'journal',
+  'leaderboards',
+  'roomSelection',
+  'mysteryEvent',
+  'restRoom',
+  'runEnd',
+  'cardReward',
+  'retreatOrDelve',
+  'onboarding',
+  'ageSelection',
+  'settings',
+]
+
+const PERSISTABLE_SCREENS = new Set<Screen>([
+  'hub',
+  'mainMenu',
+  'base',
+  'library',
+  'settings',
+  'profile',
+  'journal',
+  'leaderboards',
+])
+
+function normalizeHomeScreen(screen: Screen): Screen {
+  if (screen === 'mainMenu' || screen === 'base') return 'hub'
+  return screen
+}
+
+function isScreen(value: unknown): value is Screen {
+  return typeof value === 'string' && VALID_SCREENS.includes(value as Screen)
+}
+
+function readInitialScreen(): Screen {
+  if (typeof window === 'undefined') return 'hub'
+  try {
+    const raw = window.localStorage.getItem(SCREEN_STORAGE_KEY)
+    if (!raw) return 'hub'
+    const parsed = JSON.parse(raw) as unknown
+    if (!isScreen(parsed)) return 'hub'
+    if (!PERSISTABLE_SCREENS.has(parsed)) return 'hub'
+    return normalizeHomeScreen(parsed)
+  } catch {
+    return 'hub'
+  }
+}
+
+export const currentScreen = singletonWritable<Screen>('currentScreen', readInitialScreen())
+
+if (typeof window !== 'undefined') {
+  currentScreen.subscribe((screen) => {
+    if (!PERSISTABLE_SCREENS.has(screen)) return
+    try {
+      const persisted = normalizeHomeScreen(screen)
+      window.localStorage.setItem(SCREEN_STORAGE_KEY, JSON.stringify(persisted))
+    } catch {
+      // Ignore localStorage failures.
+    }
+  })
+}

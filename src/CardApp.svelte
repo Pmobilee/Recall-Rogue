@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { get } from 'svelte/store'
   import { currentScreen } from './ui/stores/gameState'
+  import type { Screen } from './ui/stores/gameState'
+  import { navigateToScreen, type HubScreenName, normalizeHomeScreen } from './services/screenController'
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
@@ -30,10 +33,11 @@
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
   import type { MysteryEffect } from './services/floorManager'
-  import { get } from 'svelte/store'
   import { healPlayer } from './services/runManager'
   import { isSlowReader } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
+  import { playerSave } from './ui/stores/playerData'
+  import { lastRunSummary } from './services/hubState'
 
   import DomainSelection from './ui/components/DomainSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -46,21 +50,58 @@
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import SettingsPanel from './ui/components/SettingsPanel.svelte'
   import KnowledgeLibrary from './ui/components/KnowledgeLibrary.svelte'
+  import HubScreen from './ui/components/HubScreen.svelte'
+  import HubNavBar from './ui/components/HubNavBar.svelte'
+  import ProfileScreen from './ui/components/ProfileScreen.svelte'
+  import JournalScreen from './ui/components/JournalScreen.svelte'
+  import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
+
+  const NAV_VISIBLE_SCREENS = new Set<Screen>([
+    'hub',
+    'mainMenu',
+    'base',
+    'library',
+    'settings',
+    'profile',
+    'journal',
+    'leaderboards',
+  ])
+
+  function transitionScreen(target: Screen): void {
+    const nextScreen = navigateToScreen(target, $currentScreen)
+    currentScreen.set(nextScreen)
+  }
 
   function handleStartRun(): void {
     startNewRun()
   }
 
   function handleOpenLibrary(): void {
-    currentScreen.set('library')
+    transitionScreen('library')
   }
 
   function handleOpenSettings(): void {
-    currentScreen.set('settings')
+    transitionScreen('settings')
+  }
+
+  function handleOpenProfile(): void {
+    transitionScreen('profile')
+  }
+
+  function handleOpenJournal(): void {
+    transitionScreen('journal')
+  }
+
+  function handleOpenLeaderboards(): void {
+    transitionScreen('leaderboards')
+  }
+
+  function handleHubNavigate(target: HubScreenName): void {
+    transitionScreen(target)
   }
 
   function handleBackToMenu(): void {
-    currentScreen.set('mainMenu')
+    transitionScreen('hub')
   }
 
   function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
@@ -124,6 +165,10 @@
     unlockCardAudio()
   }
 
+  function shouldShowHubNav(screen: Screen): boolean {
+    return NAV_VISIBLE_SCREENS.has(screen)
+  }
+
   onMount(() => {
     const onInteraction = (): void => {
       handleUserInteraction()
@@ -148,20 +193,17 @@
     class:visible={$currentScreen === 'combat'}
   ></div>
 
-  {#if $currentScreen === 'mainMenu' || $currentScreen === 'base'}
-    <div class="main-menu">
-      <h1 class="menu-title">ARCANE RECALL</h1>
-      <p class="menu-subtitle">Card Roguelite</p>
-      <button class="start-btn" data-testid="btn-start-run" onclick={handleStartRun}>
-        Start Run
-      </button>
-      <button class="menu-btn menu-btn-secondary" onclick={handleOpenLibrary}>
-        Knowledge Library
-      </button>
-      <button class="menu-btn menu-btn-secondary" onclick={handleOpenSettings}>
-        Settings
-      </button>
-    </div>
+  {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
+    <HubScreen
+      streak={$playerSave?.stats.currentStreak ?? 0}
+      lastRunSummary={$lastRunSummary}
+      onStartRun={handleStartRun}
+      onOpenLibrary={handleOpenLibrary}
+      onOpenSettings={handleOpenSettings}
+      onOpenProfile={handleOpenProfile}
+      onOpenJournal={handleOpenJournal}
+      onOpenLeaderboards={handleOpenLeaderboards}
+    />
   {/if}
 
   {#if $currentScreen === 'domainSelection'}
@@ -274,6 +316,22 @@
   {#if $currentScreen === 'settings'}
     <SettingsPanel onback={handleBackToMenu} />
   {/if}
+
+  {#if $currentScreen === 'profile'}
+    <ProfileScreen onBack={handleBackToMenu} />
+  {/if}
+
+  {#if $currentScreen === 'journal'}
+    <JournalScreen summary={$lastRunSummary} onBack={handleBackToMenu} />
+  {/if}
+
+  {#if $currentScreen === 'leaderboards'}
+    <LeaderboardsScreen onBack={handleBackToMenu} />
+  {/if}
+
+  {#if shouldShowHubNav($currentScreen)}
+    <HubNavBar current={normalizeHomeScreen($currentScreen)} onNavigate={handleHubNavigate} />
+  {/if}
 </div>
 
 <style>
@@ -297,78 +355,4 @@
     display: block;
   }
 
-  .main-menu {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    z-index: 10;
-  }
-
-  .menu-title {
-    font-size: 32px;
-    font-weight: 800;
-    color: #f1c40f;
-    letter-spacing: 3px;
-    margin: 0;
-    text-align: center;
-    text-shadow: 0 2px 8px rgba(241, 196, 15, 0.3);
-  }
-
-  .menu-subtitle {
-    font-size: 14px;
-    color: #8b949e;
-    margin: 0 0 24px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .start-btn {
-    width: 220px;
-    height: 64px;
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
-    border: none;
-    border-radius: 16px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-    letter-spacing: 1px;
-  }
-
-  .start-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-  }
-
-  .start-btn:active {
-    transform: scale(0.97);
-  }
-
-  .menu-btn {
-    width: 220px;
-    height: 52px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.2s;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    font-size: calc(14px * var(--text-scale, 1));
-  }
-
-  .menu-btn-secondary {
-    background: #2d333b;
-    color: #f8fafc;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
-  }
-
-  .menu-btn-secondary:hover {
-    transform: scale(1.02);
-  }
 </style>

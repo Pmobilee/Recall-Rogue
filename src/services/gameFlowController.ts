@@ -23,6 +23,7 @@ import { onboardingState, incrementRunsCompleted, markOnboardingComplete } from 
 import { updateBounties } from './bountyManager';
 import { resetCanaryFloor } from './canaryService';
 import { recordDiveComplete } from '../ui/stores/playerData';
+import { captureRunSummary, lastRunSummary } from './hubState';
 
 export type GameFlowState =
   | 'idle'
@@ -64,6 +65,17 @@ function markRunCompleted(): void {
   if (!onboarding.hasCompletedOnboarding) {
     markOnboardingComplete();
   }
+}
+
+function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
+  lastRunSummary.set(captureRunSummary(run, endData));
+  activeRunEndData.set(endData);
+  activeRunState.set(null);
+  activeCardRewardOptions.set([]);
+  pendingFloorCompleted = false;
+  pendingClearedFloor = 0;
+  gameFlowState.set('idle');
+  currentScreen.set('hub');
 }
 
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
@@ -136,9 +148,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
     markRunCompleted();
     const endData = endRun(run, 'defeat');
-    activeRunEndData.set(endData);
-    gameFlowState.set('runEnd');
-    currentScreen.set('runEnd');
+    finishRunAndReturnToHub(run, endData);
     return;
   }
 
@@ -169,9 +179,7 @@ export function onRetreat(): void {
   recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
   markRunCompleted();
   const endData = endRun(run, 'retreat');
-  activeRunEndData.set(endData);
-  gameFlowState.set('runEnd');
-  currentScreen.set('runEnd');
+  finishRunAndReturnToHub(run, endData);
 }
 
 export function onDelve(): void {
@@ -243,7 +251,7 @@ export function returnToMenu(): void {
   pendingFloorCompleted = false;
   pendingClearedFloor = 0;
   gameFlowState.set('idle');
-  currentScreen.set('mainMenu');
+  currentScreen.set('hub');
 }
 
 export function playAgain(): void {

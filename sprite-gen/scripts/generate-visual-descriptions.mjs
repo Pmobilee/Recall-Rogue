@@ -79,7 +79,7 @@ function validateDescription(text) {
     if (pattern.test(text)) return { safe: false, reason: pattern.toString() };
   }
   if (text.length < 20) return { safe: false, reason: 'too short' };
-  if (text.length > 200) return { safe: false, reason: 'too long' };
+  if (text.length > 300) return { safe: false, reason: 'too long' };
   return { safe: true };
 }
 

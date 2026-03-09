@@ -9,13 +9,13 @@
 
 **Playable pre-launch build.** AR-01 through AR-06 complete. Core combat, FSRS, visual assets, onboarding, sound/engagement, and knowledge library all implemented.
 
-**Critical context:** Many features are BUILT but NOT ACCESSIBLE from the app UI. The app currently opens straight to "start run" with no hub navigation. Knowledge Library, Settings, Parental Controls, Streak display, Leaderboards, and Profile all exist as Svelte components but have no entry point. AR-08 fixes this.
+**AR-08 complete:** Hub navigation now ships as the default app entry. Knowledge Library, Settings + Parental Controls, Profile, Journal, and Leaderboards are now reachable from the home hub and persistent bottom nav.
 
 **Calibration decision RESOLVED.** Option B (accelerated FSRS gains during early runs) selected. See GAME_DESIGN.md §14. No longer blocked.
 
 **Deck building redesigned.** Card rewards now use type-selection (player picks card TYPE, random fact assigned). Archetype selection at run start. See GAME_DESIGN.md §7. AR-09 implements this.
 
-**Next up:** AR-08 (Hub Navigation) → AR-09 (Strategic Deck Building) → AR-10 (Calibration) can run in parallel with AR-11 (Content Pipeline). Then AR-12 (Auth) → AR-13 (Launch Readiness) → AR-14 (Soft Launch).
+**Next up:** AR-09 (Strategic Deck Building) → AR-10 (Calibration) can run in parallel with AR-11 (Content Pipeline). Then AR-12 (Auth) → AR-13 (Launch Readiness) → AR-14 (Soft Launch).
 
 ---
 
@@ -72,16 +72,16 @@ Note: AR-07 is being superseded by AR-13 which has a broader scope including web
 ### AR-08: Hub Navigation & Feature Discovery
 **Surface all built-but-hidden features.** Create main hub/home screen with navigation to Start Run, Knowledge Library, Settings, Profile. Add streak display, last run summary widget, post-run share image generator. Wire up existing components that currently have no entry point.
 
-- [ ] Main hub screen with tab/nav bar
-- [ ] Knowledge Library accessible from hub
-- [ ] Settings + Parental Controls accessible
-- [ ] Profile screen accessible
-- [ ] Streak display on home screen
-- [ ] Last run summary widget
-- [ ] Post-run share image generator (Wordle-style)
-- [ ] Run start flow preserved (domain selection → archetype → run)
+- [x] Main hub screen with tab/nav bar
+- [x] Knowledge Library accessible from hub
+- [x] Settings + Parental Controls accessible
+- [x] Profile screen accessible
+- [x] Streak display on home screen
+- [x] Last run summary widget
+- [x] Post-run share image generator (Wordle-style)
+- [x] Run start flow preserved (domain selection → archetype → run)
 
-Depends on: None. Estimated: Medium.
+Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
 → [Spec](phases/AR-08-HUB-NAVIGATION.md)
 
 ---

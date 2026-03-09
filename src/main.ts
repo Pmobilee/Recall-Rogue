@@ -143,7 +143,7 @@ async function bootGame(): Promise<void> {
   const urlParams = new URLSearchParams(window.location.search)
   const hasDevPreset = import.meta.env.DEV && urlParams.get('devpreset')
   if (!hasDevPreset) {
-    currentScreen.set('mainMenu')
+    currentScreen.set('hub')
   }
 
   // Wait for DB to finish loading
