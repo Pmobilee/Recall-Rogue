@@ -50,10 +50,15 @@ Primary boot path:
 
 ### Svelte UI Layer
 
-- **Bottom 45% of screen** (interaction zone): card hand (fanned arc), answer buttons, skip/hint, end turn
+- **Bottom 45% of screen** (interaction zone): card hand (fanned arc), answer buttons, end turn
 - **Top 55% of screen** (display zone): enemy, HP bars, intent telegraph, floor counter, passive relics
 - All interactive elements below the screen midpoint (thumb-reachable)
-- Touch targets: 48x48dp minimum, cards 60x80dp, answer buttons full-width 56dp height
+- Touch targets: 48x48dp minimum, cards `min(18vw, 85px)` width with 1.5:1 aspect ratio, answer buttons full-width 56dp height
+- Card hand fans in a natural arc (low-high-low, center card highest) with 30° total spread and 20px max arc offset
+- Two-step commit flow: tap to select (card rises 80px with info overlay) → tap again or swipe up (>60px) to cast → quiz panel appears above hand
+- Question panel positioned via `position: fixed; bottom: calc(45vh - 20px)` — no overlap with card hand
+- Enemy intent badge (STS-style) displayed between AP and bounty strips; hidden during quiz
+- End Turn button: gold pulsing glow when no actions remain; confirmation popup if AP and playable cards available
 - Screen routing via `currentScreen` store in `CardApp.svelte`
 
 ### Service Layer
@@ -279,9 +284,9 @@ src/
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
     components/
-      CardCombatOverlay.svelte  — Bottom 45% interaction zone
-      CardHand.svelte           — Fanned card hand
-      CardExpanded.svelte       — Expanded card with quiz
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent badge, end turn button with gold pulse
+      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), green glow on playable cards, AP cost badges, tap-to-select + tap/swipe-to-cast, touch drag with opacity fade
+      CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
       ComboCounter.svelte       — Knowledge combo display
       DamageNumber.svelte       — Floating damage numbers
       DomainSelection.svelte    — Run-start domain picker

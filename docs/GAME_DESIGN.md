@@ -42,11 +42,12 @@ PLAYER TURN:
   1. Draw hand of 5 fact-cards from draw pile
   2. Player has 3 Action Points (AP) this turn
   3. For each card the player wants to play:
-     a. TAP card → card rises, shows FRONT ONLY (name, mechanic, effect value, stars, domain tint)
-        Player can deselect freely — no question visible yet.
-        Non-selected cards dim and slide down slightly to prevent accidental taps.
-     b. TAP "Cast" button → card LOCKED IN. Question + answers appear. Timer starts.
-        NO BACKING OUT. Must answer or auto-fizzle when timer expires.
+     a. TAP card → card rises 80px, shows info overlay (mechanic name, effect, "Tap or Swipe Up ↑")
+        Non-selected cards dim. Cards with insufficient AP are greyed out.
+        Player can deselect by tapping backdrop or another card.
+     b. TAP selected card again OR SWIPE UP (>60px threshold) → card LOCKED IN.
+        Question panel appears ABOVE card hand. Selected card drops back into hand.
+        Timer starts. NO BACKING OUT. Must answer or auto-fizzle when timer expires.
      c. ANSWER correctly → card effect activates. Costs 1 AP.
      d. ANSWER incorrectly → card fizzles (discarded, no effect). Still costs 1 AP.
   4. SKIP is free (costs 0 AP). Skipped cards go to discard.
@@ -64,11 +65,11 @@ ENEMY TURN:
 
 Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 44% for restudying. Kornell et al. (2009) — even failed retrieval beats passive viewing. Richland et al. (2009) — "preview without commitment" = LESS learning than committed attempts.
 
-**Stage 1 — In hand:** Card name, mechanic name + description, effect value, difficulty stars, domain tint. NO question.
+**Stage 1 — In hand:** Cards fan in a natural arc (low-high-low, center card highest). Each card shows mechanic name, effect value, difficulty stars, domain tint, and an AP cost badge (blue circle, top-right). Playable cards have a green glow; insufficient-AP cards are greyed out. NO question.
 
-**Stage 2 — Selected (tap to rise):** Enlarged front. "Cast" button below. Non-selected cards dim and slide down. Player sees what the card DOES and how hard the question is. Can freely deselect. Strategic decision point.
+**Stage 2 — Selected (tap to rise):** Card rises 80px with info overlay showing mechanic name, effect description, and "Tap or Swipe Up ↑" prompt. Non-selected cards dim. Touch drag: selected card visually follows finger upward with opacity fade. Can freely deselect by tapping backdrop. Strategic decision point.
 
-**Stage 3 — Committed (tap Cast):** Question + answers appear. Dynamic timer starts (see Timer System). No cancel. Must answer or auto-fizzle.
+**Stage 3 — Committed (tap again or swipe up >60px):** Selected card drops back into hand. Question panel appears ABOVE the card hand (positioned via `position: fixed; bottom: calc(45vh - 20px)` — no overlap). Dynamic timer starts (see Timer System). No cancel. Must answer or auto-fizzle.
 
 ### Action Points (Turn Economy)
 
@@ -92,7 +93,7 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 | 10-12 | 5s |
 | 13+ | 4s |
 
-**Question length modifier:** Add +1 second per 15 words in question text beyond 10 words. A 40-word question on Floor 1 gets 12 + 2 = 14 seconds. A 10-word question gets the base 12.
+**Question length modifier:** Add +1 second per 12 words in total text (question + all answer options) beyond 10 words. A 40-word question on Floor 1 gets 12 + 2.5 ≈ 14 seconds. A 10-word question gets the base 12. (Word bonus increased ~25% from earlier divisor of 15 to improve readability on longer questions.)
 
 **Slow Reader mode (set during onboarding):** "Do you prefer more time to read?" YES adds a flat +3 seconds to all timers and changes the timer bar color from red to amber (less stressful visual). This is NOT Explorer mode (which removes timers entirely). Slow Reader mode preserves urgency but gives breathing room.
 
@@ -106,13 +107,9 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 
 **Back (commit only):** Question text, answer options (3/4/5 by tier), timer bar, hint button.
 
-**Committed card wireframe:**
+**Quiz panel wireframe (appears above card hand when committed):**
 ```
 ┌────────────────────────┐
-│  Card Art / Icon       │
-│  "Arcane Barrage"      │
-│  Multi-Hit: 3x3 dmg   │
-│                        │
 │  What is the hardest   │
 │  mineral on Mohs scale?│
 │                        │
@@ -127,7 +124,7 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 │  └──────────────────┘  │
 │                        │
 │  ▓▓▓▓▓▓▓▓░░░░ 7s      │
-│  [Skip]  [Hint 💎1]   │
+│        [Hint 💎1]      │
 └────────────────────────┘
 ```
 
@@ -358,7 +355,7 @@ Relic type depends on card type at graduation. Specific passive randomly selecte
 
 | Depth | Floors | Encounters/Floor | Boss | Retreat |
 |-------|--------|-----------------|------|---------|
-| Shallow | 1-3 | 3 + 1 event | Floor 3: "Gate Guardian" | Keep 100% or delve |
+| Shallow | 1-3 | 3 + 1 event | Floor 3: "The Excavator" | Keep 100% or delve |
 | Deep | 4-6 | 3 + 1-2 events | Floor 6: "Magma Wyrm" | Die = keep 80% |
 | Abyss | 7-9 | 3 + 2 events | Floor 9: "The Archivist" | Die = keep 65% |
 | Endless | 10+ | Scaling | Mini-boss every 3 | Die = keep 50% |
@@ -399,23 +396,23 @@ After each encounter, choose from 3 doors:
 
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
-| Dungeon Bat | 20 | 3/turn | Every turn. Teaches speed. |
-| Crystal Golem | 40 | 8 every 2 turns | Blocks 4 on off-turns. Sustained damage. |
-| Toxic Spore | 18 | 2 + poison 2/t x3 | Low HP, DOT. Teaches healing. |
-| Shadow Mimic | 30 | Copies last card | Punishes repetition. |
+| Cave Bat | 22 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
+| Crystal Golem | 45 | 9 every 2 turns, 13 (heavy) | Blocks on off-turns. Sustained damage. |
+| Toxic Spore | 18 | 5 + poison | Low HP, DOT. Teaches healing. |
+| Shadow Mimic | 28 | 7, copies last card | Punishes repetition. |
 
 ### Elites
 
 | Enemy | HP | Special |
 |-------|-----|---------|
-| Dungeon Wyrm | 60 | Phase 2 doubles attack |
+| Ore Wyrm | 58 | Phase 2 doubles attack |
 | Tome Guardian | 50 | Immune to 1 random card TYPE |
 
 ### Bosses
 
 | Boss | Floor | HP | Pattern |
 |------|-------|-----|---------|
-| Gate Guardian | 3 | 80 | 6, 6, 12, repeat |
+| The Excavator | 3 | 72 | 12 damage, escalating |
 | Magma Wyrm | 6 | 100 | 8, +2/turn escalating |
 | The Archivist | 9 | 90 | 7 + shuffles hand |
 
@@ -553,8 +550,8 @@ Research: Mobile users decide to keep an app within 7-30 seconds. Duolingo delay
 0-3s:   Dungeon entrance. "ENTER THE DEPTHS" button.
 3-5s:   Brief: "Do you prefer more time to read?" [Yes / No] (Slow Reader toggle)
 5-10s:  First encounter. Hand of 5. Tooltip: "Tap a card to examine it"
-10-14s: Card rises, front only. Tooltip: "Tap Cast to commit"
-14-20s: Question appears. Correct → juice stack. Wrong → gentle fizzle.
+10-14s: Card rises with info overlay. Tooltip: "Tap again or swipe up to cast"
+14-20s: Question panel appears above hand. Correct → juice stack. Wrong → gentle fizzle.
 20-35s: Remaining AP. End Turn tooltip.
 35-60s: Second encounter. Minimal tooltips.
 ~2-3m:  Run ends. "Create account to save progress?" (skippable).
@@ -563,7 +560,73 @@ Run 2:  Domain selection unlocks.
 
 First encounter: 2 AP. Full 3 AP from encounter 3.
 
-**Calibration Deep Scan:** After first run, optional 20-question rapid placement. Correct → facts start at Tier 2a.
+### Calibration Deep Scan — Design Status: NEEDS RESEARCH
+
+The original spec proposes a standalone 20-question placement test after Run 1. The core problem it solves is real, but the solution may not be the right one. This section documents the problem space, existing systems that already partially address it, candidate approaches, and open research questions.
+
+#### The Problem: Bored Expert / Cold Start
+
+A player who already knows 80% of general-knowledge facts will spend their first 2-3 runs answering trivially easy Tier 1 questions. Every card is weak (Tier 1 = lowest power), combat feels like busywork, and the player may churn before the system catches up. This is the classic spaced-repetition cold-start problem — the scheduler has no prior data and must assume everything is new.
+
+The inverse problem also matters: a player who knows very little gets overwhelmed by too many wrong answers early, feels dumb, and churns. The Canary system (§21) handles this side via invisible difficulty reduction, but the cold-start calibration question applies to both directions.
+
+#### Existing Systems That Already Calibrate
+
+Two systems already adjust to player knowledge during gameplay:
+
+1. **FSRS (§26)** — Tracks per-fact difficulty, stability, and retrievability. A fact answered correctly gets higher stability → longer interval → faster tier promotion. After ~2-3 correct answers, a well-known fact reaches Tier 2a (stability ≥5d + 3 consecutive correct). This means FSRS self-calibrates within 2-3 encounters per fact — but only for facts the player has actually seen.
+
+2. **Canary System (§21)** — Adjusts game difficulty (not educational rigor) based on per-floor performance. 3+ wrong/floor → easier facts, -15% enemy damage. 5+ correct streak → harder facts, elite variants. This smooths the gameplay experience but doesn't accelerate tier promotion for known facts.
+
+**Gap:** Neither system proactively tests unseen facts. A player may know 80% of a domain's facts, but until each fact appears in a run, FSRS can't know that. With 723 facts and ~80-120 seen per run, full calibration takes 6-9 runs. The question is whether this matters enough to justify a separate calibration flow.
+
+#### Candidate Approaches
+
+**Option A: Standalone Deep Scan (original spec)**
+After Run 1, offer an optional 20-question rapid-fire test (no card frames, no timer, no combat). Correct → fact placed at Tier 2a (stability=5, consecutiveCorrect=3). Wrong → stays Tier 1, no penalty.
+
+- *Pro:* Directly solves cold-start for tested facts. Fast (20 questions ≈ 2 minutes). Familiar pattern from language apps (Duolingo placement test).
+- *Con:* Immersion break — feels like a school exam, not a game. Domain selection doesn't unlock until Run 2, so what domain do you test? High skip rate likely (optional tests get ~20-30% engagement in mobile). Only calibrates 20 of potentially hundreds of facts. Engineering cost for a one-time-use screen.
+
+**Option B: Gameplay-Inferred Calibration (accelerated FSRS)**
+No separate test. Instead, boost FSRS gains during early runs (runs 1-3) so the system calibrates faster from normal play.
+
+Possible mechanics:
+- Correct + fast response (under 50% of allotted time) → count as 2 consecutive correct instead of 1 (doubled stability gain)
+- 80%+ run accuracy → all correctly-answered facts get a flat stability bonus (+2 days)
+- First-time correct on a new fact → start stability at 2d instead of default 1d
+- Could be domain-specific: when a player first picks a new domain, the first run in that domain uses accelerated gains
+
+- *Pro:* Zero immersion break — the dungeon IS the placement test. No skip problem (it's invisible). Works for every domain, not just the first. No extra UI to build.
+- *Con:* Still takes 2-3 runs to fully calibrate (just faster, not instant). Doesn't help with facts the player hasn't seen yet. May need tuning to avoid over-promoting facts that were lucky guesses.
+
+**Option C: In-Run Domain Probe**
+When a player selects a new domain for the first time, the first encounter of that run is a "calibration encounter" — slightly different from normal combat. Present 5-8 rapid questions from the domain (no card effects, no AP cost, just answer). Results seed FSRS state for those facts. Then normal combat begins.
+
+- *Pro:* Domain-aware (tests the domain the player just chose). Stays in the game world (it's an encounter, not a menu). Shorter than 20 questions. Only triggers once per domain.
+- *Con:* Still somewhat test-like. Delays getting to real combat. Needs clear narrative framing ("The dungeon tests your knowledge before you enter...").
+
+**Option D: Cut Entirely**
+Trust FSRS + Canary to handle calibration organically. Accept that the first 2-3 runs per domain are a warm-up period. Many successful roguelites have early runs that feel easier — this could be a feature, not a bug ("the shallow floors are easy, the depths are where it gets real").
+
+- *Pro:* Zero engineering cost. No design risk. Simplest solution.
+- *Con:* Bored experts may churn in runs 1-3 before the system catches up. No mitigation for cold-start.
+
+#### Open Research Questions
+
+1. **How fast does FSRS actually calibrate?** Model the math: if a player sees 80 unique facts in Run 1 and gets 70 correct, how many are at Tier 2a by Run 2? By Run 3? Is the gap between "no calibration" and "perfect calibration" actually noticeable in terms of card power and combat feel?
+
+2. **What do Duolingo/Anki/Memrise do?** Duolingo's placement test is mandatory and well-studied. Anki has no placement — users import decks at their level. Memrise lets users mark known words. What's the engagement data on optional vs mandatory placement? What's the churn difference for users who skip vs complete?
+
+3. **Does card power matter enough early?** Tier 1 cards are weaker, but early enemies are also weak (Canary ensures this). If the power curve is balanced so that Tier 1 cards vs Floor 1-3 enemies feels fine, the cold-start problem may be a non-issue from a gameplay perspective — it only matters educationally (seeing easy questions is boring). But is "boring" the same as "churn-inducing" when the combat itself is engaging?
+
+4. **Domain-specific calibration timing** — Since domain selection unlocks at Run 2, any calibration for a specific domain can't happen until then. Should calibration be per-domain (triggered on first selection) rather than a one-time global event? This changes the UX significantly.
+
+5. **Could the run pool builder handle this?** Instead of a separate calibration step, could RunPoolBuilder intelligently front-load "probe facts" (diverse difficulty within a domain) in early runs, then use the results to seed FSRS for similar facts the player hasn't seen? E.g., if a player aces 5 geography-capital questions, infer they likely know other geography-capital facts and boost those too.
+
+#### Decision Needed
+
+Research the questions above, then pick one of Options A-D (or a hybrid). The implementation is blocked on this decision. Key criteria: player retention impact (does cold-start actually cause churn?), engineering cost vs value, and alignment with the "learning IS gameplay" philosophy (a separate test contradicts this).
 
 ---
 
@@ -588,30 +651,41 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 **Top 55% (Display):** Enemy, HP bars, intent, floor counter, relics, AP. No interactives. Top-third tap accuracy: 61%.
 
-**Bottom 45% (Interaction):** Card hand, Cast button, answer buttons, hint, End Turn. Bottom-third accuracy: 96%.
+**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn. Bottom-third accuracy: 96%.
 
 ### Touch Targets
 
 | Element | Size |
 |---------|------|
 | General | 48x48dp min |
-| Cards in hand | 60x80dp |
-| Cast button | 80x48dp |
+| Cards in hand | `min(18vw, 85px)` width, 1.5:1 aspect ratio |
 | Answer buttons | Full width, 56dp height, 8dp spacing |
 | End Turn | Full width, 48dp |
 | Bottom safe area | 16dp for gesture nav |
 
 ### Card States
 
-| State | W | H | Shows |
-|-------|---|---|-------|
-| In hand | ~65dp | ~95dp | Mechanic, value, stars, tint |
-| Selected | ~200dp | ~280dp | Enlarged front + Cast button. Other cards dim + slide down. |
-| Committed | ~300dp | ~350dp | Question, answers, timer, hint |
+| State | Size | Shows |
+|-------|------|-------|
+| In hand | `min(18vw, 85px)` width, 1.5:1 aspect ratio | Mechanic, value, stars, domain tint, AP cost badge (blue circle top-right). Green glow if playable. 30° total fan spread, 20px max arc offset. |
+| Selected | Same card, rises 80px | Info overlay: mechanic name, effect, "Tap or Swipe Up ↑". Non-selected cards dim. Touch drag follows finger upward with opacity fade. |
+| Committed | Question panel above hand | `position: fixed; bottom: calc(45vh - 20px)`. Selected card drops back into hand. Question, answers, timer, hint. No overlap with card hand. |
 
 ### AP Display
 
 3 gem icons below hand. Lit = available, dim = spent.
+
+### Enemy Intent Display
+
+STS-style intent badge shown in combat overlay (center, between AP and bounty strips). Shows icon + value:
+- ⚔️ Attack, ⚔️× Multi-attack, 🛡️ Defend, 💪 Buff, ☠️ Debuff, 💚 Heal
+- Attack intents have red border highlight
+- Hidden during quiz (committed stage) to reduce visual noise
+- Data sourced from `turnState.enemy.nextIntent` (pre-rolled by enemyManager)
+
+### End Turn Button
+
+Simplified display: shows "END TURN" only (no AP count). Turns gold with pulsing glow when no actions remain (0 AP or no playable cards). Confirmation popup when tapping End Turn with AP remaining and playable cards available.
 
 ---
 
@@ -974,7 +1048,7 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Draw Pile | Shuffled deck of RunCards for the current run |
 | Discard Pile | Played/skipped cards. Reshuffles into draw pile when draw pile empties. |
 | Fizzle | Wrong answer. No effect, card discarded, still costs 1 AP. |
-| Commit (Cast) | Irrevocable action: locks card, reveals question, starts timer. No cancel. |
+| Commit (Cast) | Irrevocable action: tap selected card again or swipe up to lock in. Reveals question panel above hand, starts timer. No cancel. |
 | Retreat | End run voluntarily at checkpoint. Keep 100% rewards. |
 | FSRS | Free Spaced Repetition Scheduler. Replaces SM-2. Tracks difficulty, stability, retrievability. |
 | Stability | FSRS: days of memory stability. Drives tier promotion. |
@@ -987,4 +1061,4 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Bounty Quest | Optional per-run bonus objective with rewards. |
 | Lore Discovery | Narrative milestone at 10/25/50/100 mastered facts. |
 | Canary | Invisible adaptive difficulty system. Adjusts game, never educational rigor. |
-| Deep Scan | Optional 20-question calibration test after first run. |
+| Deep Scan | Optional calibration system after first run. Design under review — may be replaced by accelerated FSRS gains during early runs. |
