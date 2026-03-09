@@ -72,6 +72,8 @@ export interface TurnState {
   canaryQuestionBias: -1 | 0 | 1;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
+  /** Facts answered (correct or incorrect) during this encounter */
+  encounterAnsweredFacts: string[];
 }
 
 export interface PlayCardResult {
@@ -229,6 +231,7 @@ export function startEncounter(
     canaryQuestionBias: 0,
     result: null,
     turnLog: [],
+    encounterAnsweredFacts: [],
   };
 
   drawHand(deck, initialState.baseDrawCount);
@@ -298,6 +301,11 @@ export function playCardAction(
   const card: Card = { ...cardInHand };
   deckPlayCard(deck, cardId);
   turnState.apCurrent = Math.max(0, turnState.apCurrent - apCost);
+
+  // Track answered fact for encounter cooldown
+  if (cardInHand.factId) {
+    turnState.encounterAnsweredFacts.push(cardInHand.factId);
+  }
 
   if (isCardBlocked(card, enemy)) {
     turnState.cardsPlayedThisTurn += 1;

@@ -1,18 +1,21 @@
 <script lang="ts">
   import type { Card, FactDomain, CardType } from '../../data/card-types'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
+  import { getCardbackUrl, hasCardback } from '../utils/cardbackManifest'
+  import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
 
   interface Props {
     cards: Card[]
+    animatingCards?: Card[]
     selectedIndex: number | null
     disabled: boolean
     apCurrent: number
-    cardAnimations?: Record<string, 'launch' | 'fizzle' | null>
+    cardAnimations?: Record<string, CardAnimPhase>
     onselectcard: (index: number) => void
     ondeselectcard: () => void
   }
 
-  let { cards, selectedIndex, disabled, apCurrent, cardAnimations, onselectcard }: Props = $props()
+  let { cards, animatingCards = [], selectedIndex, disabled, apCurrent, cardAnimations, onselectcard }: Props = $props()
 
   const DOMAIN_COLORS: Record<FactDomain, string> = {
     science: '#E74C3C',
@@ -99,6 +102,17 @@
   let isDragging = $state(false)
   let dragCardIndex = $state<number | null>(null)
 
+  // Preload cardback images for cards in hand
+  $effect(() => {
+    for (const card of cards) {
+      const url = getCardbackUrl(card.factId)
+      if (url) {
+        const img = new Image()
+        img.src = url
+      }
+    }
+  })
+
   function handleTouchStart(e: TouchEvent, index: number): void {
     touchStartY = e.touches[0].clientY
     dragCardIndex = index
@@ -158,6 +172,10 @@
     {@const tierBadge = getTierBadge(card)}
     {@const apCost = Math.max(1, card.apCost ?? 1)}
     {@const insufficientAp = !hasEnoughAp(card)}
+    {@const cardbackUrl = getCardbackUrl(card.factId)}
+    {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
+    {@const isRevealing = cardAnim === 'reveal'}
+    {@const isMechanic = cardAnim === 'mechanic'}
 
     <button
       class="card-in-hand"
@@ -172,8 +190,10 @@
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-launch={cardAnim === 'launch'}
       class:card-fizzle={cardAnim === 'fizzle'}
+      class:card-reveal={isRevealing || isMechanic}
+      class:card-mechanic={isMechanic}
       style="
-        transform: translateX({xOffset}px) translateY({isSelected ? -80 - (isDragging && dragCardIndex === i ? dragOffsetY : 0) : isOther ? 15 : -arcOffset}px) rotate({isSelected ? 0 : rotation}deg) scale({isSelected ? 1.2 : 1});
+        {isRevealing || isMechanic ? '' : `transform: translateX(${xOffset}px) translateY(${isSelected ? -80 - (isDragging && dragCardIndex === i ? dragOffsetY : 0) : isOther ? 15 : -arcOffset}px) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : 1});`}
         border-color: {domainColor};
         --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
@@ -186,30 +206,85 @@
       ontouchmove={(e) => isSelected ? handleTouchMove(e) : null}
       ontouchend={(e) => isSelected ? handleTouchEnd(e, i) : null}
     >
-      <div class="ap-badge">{apCost}</div>
-      <div class="card-domain-stripe" style="background: {domainColor};"></div>
-      <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
-      <div class="card-type-icon">{icon}</div>
-      <div class="card-effect-value">{effectVal}</div>
+      <div class="card-inner" class:flipped={isRevealing || isMechanic}>
+        <div class="card-front">
+          <div class="ap-badge">{apCost}</div>
+          <div class="card-domain-stripe" style="background: {domainColor};"></div>
+          <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
+          <div class="card-type-icon">{icon}</div>
+          <div class="card-effect-value">{effectVal}</div>
 
-      {#if tierBadge}
-        <div class="card-tier-badge">{tierBadge}</div>
-      {/if}
-      {#if card.isMasteryTrial}
-        <div class="trial-badge">TRIAL</div>
-      {/if}
-      {#if card.isEcho}
-        <div class="echo-badge">ECHO</div>
-      {/if}
+          {#if tierBadge}
+            <div class="card-tier-badge">{tierBadge}</div>
+          {/if}
+          {#if card.isMasteryTrial}
+            <div class="trial-badge">TRIAL</div>
+          {/if}
+          {#if card.isEcho}
+            <div class="echo-badge">ECHO</div>
+          {/if}
 
-      {#if isSelected}
-        <div class="card-info-overlay">
-          <div class="info-mechanic">{card.mechanicName ?? card.cardType}</div>
-          <div class="info-effect">{getCardEffectText(card)}</div>
-          <div class="info-cast-hint">Tap or Swipe Up ↑</div>
+          {#if isSelected}
+            <div class="card-info-overlay">
+              <div class="info-mechanic">{card.mechanicName ?? card.cardType}</div>
+              <div class="info-effect">{getCardEffectText(card)}</div>
+              <div class="info-cast-hint">Tap or Swipe Up ↑</div>
+            </div>
+          {/if}
         </div>
+        {#if cardbackUrl}
+          <div class="card-back">
+            <img src={cardbackUrl} alt="Card art" class="cardback-img" />
+          </div>
+        {/if}
+      </div>
+
+      {#if isMechanic}
+        <div class="mechanic-overlay {mechAnimClass}"></div>
       {/if}
     </button>
+  {/each}
+
+  {#each animatingCards as card (card.id)}
+    {@const cardAnim = cardAnimations?.[card.id] ?? null}
+    {@const cardbackUrl = getCardbackUrl(card.factId)}
+    {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
+    {@const isRevealing = cardAnim === 'reveal'}
+    {@const isMechanic = cardAnim === 'mechanic'}
+    {@const domainColor = DOMAIN_COLORS[card.domain]}
+    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
+    {@const domainIconPath = getDomainIconPath(card.domain)}
+    {@const effectVal = getEffectValue(card)}
+
+    <div
+      class="card-in-hand card-animating"
+      class:card-reveal={isRevealing || isMechanic}
+      class:card-mechanic={isMechanic}
+      class:card-launch={cardAnim === 'launch'}
+      class:card-fizzle={cardAnim === 'fizzle'}
+      style="
+        border-color: {domainColor};
+        --frame-image: url('{framePath}');
+      "
+    >
+      <div class="card-inner" class:flipped={isRevealing || isMechanic}>
+        <div class="card-front">
+          <div class="card-domain-stripe" style="background: {domainColor};"></div>
+          <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
+          <div class="card-type-icon">{TYPE_ICONS[card.cardType]}</div>
+          <div class="card-effect-value">{effectVal}</div>
+        </div>
+        {#if cardbackUrl}
+          <div class="card-back">
+            <img src={cardbackUrl} alt="Card art" class="cardback-img" />
+          </div>
+        {/if}
+      </div>
+
+      {#if isMechanic}
+        <div class="mechanic-overlay {mechAnimClass}"></div>
+      {/if}
+    </div>
   {/each}
 </div>
 
@@ -253,6 +328,19 @@
     font-family: inherit;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    perspective: 800px;
+  }
+
+  .card-animating {
+    position: absolute;
+    width: var(--card-w);
+    height: var(--card-h);
+    pointer-events: none;
+    z-index: 50;
+    /* Start at bottom center of hand area */
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
   }
 
   .card-in-hand:active:not(:disabled) {
@@ -301,6 +389,71 @@
   .trial-card {
     border-color: #f1c40f !important;
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
+  }
+
+  /* Card 3D flip infrastructure */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 400ms ease-in-out;
+  }
+
+  .card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-front {
+    z-index: 1;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .cardback-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Reveal phase: card centers and enlarges */
+  .card-reveal {
+    position: fixed !important;
+    left: 50% !important;
+    top: 45% !important;
+    transform: translate(-50%, -50%) scale(1.8) !important;
+    z-index: 100 !important;
+    transition: all 400ms ease-in-out;
+    pointer-events: none;
+  }
+
+  /* Mechanic overlay base */
+  .mechanic-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 10;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
   }
 
   .card-domain-stripe {
@@ -473,5 +626,375 @@
   @keyframes cardFizzle {
     0% { transform: translateY(0) scale(1); opacity: 0.4; filter: grayscale(0.5); }
     100% { transform: translateY(100px) scale(0.8); opacity: 0; filter: grayscale(1); }
+  }
+
+  /* ═══ ATTACK ANIMATIONS (red/orange) ═══ */
+
+  .mech-strike {
+    background: linear-gradient(135deg, transparent 40%, rgba(231, 76, 60, 0.8) 50%, transparent 60%);
+    background-size: 300% 300%;
+    animation-name: mechSlash;
+  }
+  @keyframes mechSlash {
+    0% { background-position: 0% 0%; opacity: 0; }
+    30% { opacity: 1; }
+    100% { background-position: 100% 100%; opacity: 0; }
+  }
+
+  .mech-multi-hit {
+    animation-name: mechMultiHit;
+    box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0);
+  }
+  @keyframes mechMultiHit {
+    0%, 100% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); }
+    15% { box-shadow: inset 0 -20px 0 0 rgba(231, 76, 60, 0.6); }
+    25% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); }
+    40% { box-shadow: inset 0 0 20px 0 rgba(231, 76, 60, 0.6); }
+    50% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); }
+    65% { box-shadow: inset 0 20px 0 0 rgba(231, 76, 60, 0.6); }
+    75% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); }
+  }
+
+  .mech-heavy-strike {
+    animation-name: mechHeavy;
+  }
+  @keyframes mechHeavy {
+    0% { transform: scaleY(1); box-shadow: none; }
+    30% { transform: scaleY(0.85); box-shadow: 0 0 20px rgba(231, 76, 60, 0.8); }
+    50% { transform: scaleY(1.05); }
+    70% { transform: scaleY(0.95); }
+    100% { transform: scaleY(1); box-shadow: none; }
+  }
+
+  .mech-piercing {
+    animation-name: mechPierce;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(231, 76, 60, 0.4) 30%, transparent 50%);
+    background-size: 0% 0%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  @keyframes mechPierce {
+    0% { background-size: 0% 0%; opacity: 1; }
+    50% { background-size: 120% 120%; opacity: 1; }
+    100% { background-size: 200% 200%; opacity: 0; }
+  }
+
+  .mech-reckless {
+    animation-name: mechReckless;
+    border: 2px solid transparent;
+  }
+  @keyframes mechReckless {
+    0%, 100% { transform: translateX(0); box-shadow: 0 0 0 rgba(231, 76, 60, 0); }
+    10% { transform: translateX(-3px); box-shadow: 0 0 15px rgba(231, 76, 60, 0.7); }
+    20% { transform: translateX(3px); }
+    30% { transform: translateX(-2px); box-shadow: 0 0 20px rgba(231, 76, 60, 0.9); }
+    40% { transform: translateX(2px); }
+    50% { transform: translateX(-1px); box-shadow: 0 0 25px rgba(231, 76, 60, 1); }
+    60% { transform: translateX(1px); }
+    80% { box-shadow: 0 0 10px rgba(231, 76, 60, 0.4); }
+  }
+
+  .mech-execute {
+    animation-name: mechExecute;
+  }
+  @keyframes mechExecute {
+    0% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); background: transparent; }
+    40% { box-shadow: inset 0 0 30px 5px rgba(231, 76, 60, 0.6); }
+    60% { box-shadow: inset 0 0 40px 10px rgba(200, 30, 30, 0.8); background: rgba(231, 76, 60, 0.15); }
+    100% { box-shadow: inset 0 0 0 0 rgba(231, 76, 60, 0); background: transparent; }
+  }
+
+  /* ═══ SHIELD ANIMATIONS (blue/cyan) ═══ */
+
+  .mech-block {
+    animation-name: mechBlock;
+  }
+  @keyframes mechBlock {
+    0% { box-shadow: inset 0 0 0 0 rgba(52, 152, 219, 0); }
+    40% { box-shadow: inset 0 0 0 8px rgba(52, 152, 219, 0.7); }
+    100% { box-shadow: inset 0 0 0 3px rgba(52, 152, 219, 0.3); }
+  }
+
+  .mech-thorns {
+    animation-name: mechThorns;
+  }
+  @keyframes mechThorns {
+    0% { box-shadow: inset 0 0 0 4px rgba(52, 152, 219, 0); }
+    30% { box-shadow: inset 0 0 0 6px rgba(52, 152, 219, 0.7); }
+    50% { box-shadow: inset 0 0 0 4px rgba(52, 152, 219, 0.5), 0 0 12px rgba(231, 76, 60, 0.6); }
+    100% { box-shadow: inset 0 0 0 0 rgba(52, 152, 219, 0), 0 0 0 rgba(231, 76, 60, 0); }
+  }
+
+  .mech-fortify {
+    animation-name: mechFortify;
+  }
+  @keyframes mechFortify {
+    0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.6); }
+    33% { box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.5); }
+    66% { box-shadow: 0 0 0 8px rgba(52, 152, 219, 0.3); }
+    100% { box-shadow: 0 0 0 12px rgba(52, 152, 219, 0); }
+  }
+
+  .mech-parry {
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%);
+    background-size: 300% 300%;
+    animation-name: mechParry;
+  }
+  @keyframes mechParry {
+    0% { background-position: 100% 100%; opacity: 0; }
+    20% { opacity: 1; }
+    50% { background-position: 0% 0%; opacity: 1; }
+    70% { background-position: 100% 100%; opacity: 0.5; }
+    100% { opacity: 0; }
+  }
+
+  .mech-brace {
+    animation-name: mechBrace;
+  }
+  @keyframes mechBrace {
+    0% { border: 0 solid rgba(52, 152, 219, 0); }
+    30% { border: 4px solid rgba(52, 152, 219, 0.8); }
+    60% { border: 6px solid rgba(100, 180, 230, 0.9); }
+    100% { border: 3px solid rgba(52, 152, 219, 0.4); }
+  }
+
+  /* ═══ HEAL ANIMATIONS (green) ═══ */
+
+  .mech-restore {
+    animation-name: mechRestore;
+  }
+  @keyframes mechRestore {
+    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); background: transparent; }
+    50% { box-shadow: 0 0 20px 5px rgba(46, 204, 113, 0.5); background: rgba(46, 204, 113, 0.15); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); background: transparent; }
+  }
+
+  .mech-cleanse {
+    animation-name: mechCleanse;
+    background: linear-gradient(to top, rgba(46, 204, 113, 0.4), transparent);
+    background-size: 100% 200%;
+  }
+  @keyframes mechCleanse {
+    0% { background-position: 0 100%; opacity: 0; }
+    30% { opacity: 1; }
+    100% { background-position: 0 -100%; opacity: 0; }
+  }
+
+  .mech-overheal {
+    animation-name: mechOverheal;
+  }
+  @keyframes mechOverheal {
+    0% { background: radial-gradient(circle, rgba(46, 204, 113, 0.5), transparent 50%); }
+    50% { background: radial-gradient(circle, rgba(46, 204, 113, 0.6) 30%, rgba(52, 152, 219, 0.4) 60%, transparent 80%); }
+    100% { background: radial-gradient(circle, transparent, transparent); }
+  }
+
+  .mech-lifetap {
+    background: linear-gradient(to right, rgba(231, 76, 60, 0.5), rgba(46, 204, 113, 0.5));
+    background-size: 200% 100%;
+    animation-name: mechLifetap;
+  }
+  @keyframes mechLifetap {
+    0% { background-position: 0% 0%; opacity: 0; }
+    30% { opacity: 0.8; }
+    100% { background-position: 100% 0%; opacity: 0; }
+  }
+
+  /* ═══ BUFF ANIMATIONS (gold) ═══ */
+
+  .mech-empower {
+    animation-name: mechEmpower;
+  }
+  @keyframes mechEmpower {
+    0% { box-shadow: 0 0 0 rgba(241, 196, 15, 0); background: linear-gradient(to top, rgba(241, 196, 15, 0.4), transparent 50%); background-position: 0 100%; }
+    50% { box-shadow: 0 0 15px rgba(241, 196, 15, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(241, 196, 15, 0); background-position: 0 -50%; }
+  }
+
+  .mech-quicken {
+    animation-name: mechQuicken;
+  }
+  @keyframes mechQuicken {
+    0%, 100% { background: transparent; box-shadow: none; }
+    15% { background: rgba(255, 255, 255, 0.7); box-shadow: 0 0 20px rgba(241, 196, 15, 0.8); }
+    30% { background: transparent; }
+    45% { background: rgba(241, 196, 15, 0.3); box-shadow: 0 0 15px rgba(241, 196, 15, 0.5); }
+    60% { background: transparent; box-shadow: none; }
+  }
+
+  .mech-double-strike {
+    animation-name: mechDoubleStrike;
+  }
+  @keyframes mechDoubleStrike {
+    0% { box-shadow: -5px 0 10px rgba(241, 196, 15, 0), 5px 0 10px rgba(241, 196, 15, 0); }
+    40% { box-shadow: -8px 0 15px rgba(241, 196, 15, 0.6), 8px 0 15px rgba(241, 196, 15, 0.6); }
+    100% { box-shadow: -3px 0 5px rgba(241, 196, 15, 0), 3px 0 5px rgba(241, 196, 15, 0); }
+  }
+
+  .mech-focus {
+    animation-name: mechFocus;
+  }
+  @keyframes mechFocus {
+    0% { box-shadow: 0 0 0 15px rgba(241, 196, 15, 0.4); }
+    50% { box-shadow: 0 0 0 5px rgba(241, 196, 15, 0.7); }
+    100% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0); }
+  }
+
+  /* ═══ DEBUFF ANIMATIONS (purple) ═══ */
+
+  .mech-weaken {
+    animation-name: mechWeaken;
+  }
+  @keyframes mechWeaken {
+    0% { background: radial-gradient(circle, rgba(155, 89, 182, 0.6), transparent 0%); }
+    50% { background: radial-gradient(circle, rgba(155, 89, 182, 0.4) 30%, transparent 70%); }
+    100% { background: radial-gradient(circle, transparent, transparent); }
+  }
+
+  .mech-expose {
+    animation-name: mechExpose;
+  }
+  @keyframes mechExpose {
+    0% { box-shadow: inset 0 0 0 0 rgba(155, 89, 182, 0); }
+    20% { box-shadow: inset 5px 0 0 0 rgba(155, 89, 182, 0.6); }
+    40% { box-shadow: inset 5px 0 0 0 rgba(155, 89, 182, 0.6), inset -5px 5px 0 0 rgba(155, 89, 182, 0.5); }
+    60% { box-shadow: inset 5px 0 0 0 rgba(155, 89, 182, 0.6), inset -5px 5px 0 0 rgba(155, 89, 182, 0.5), inset 0 -5px 0 0 rgba(155, 89, 182, 0.4); }
+    100% { box-shadow: inset 0 0 0 0 rgba(155, 89, 182, 0); }
+  }
+
+  .mech-slow {
+    background: conic-gradient(rgba(155, 89, 182, 0.5) 0deg, transparent 0deg);
+    animation-name: mechSlow;
+  }
+  @keyframes mechSlow {
+    0% { background: conic-gradient(rgba(155, 89, 182, 0.5) 0deg, transparent 0deg); }
+    80% { background: conic-gradient(rgba(155, 89, 182, 0.5) 360deg, transparent 360deg); }
+    100% { opacity: 0; }
+  }
+
+  .mech-hex {
+    animation-name: mechHex;
+  }
+  @keyframes mechHex {
+    0% { background: linear-gradient(to bottom, rgba(46, 204, 113, 0.6), transparent 0%); }
+    60% { background: linear-gradient(to bottom, rgba(46, 204, 113, 0.5) 0%, rgba(46, 204, 113, 0.3) 60%, transparent 80%); }
+    100% { background: linear-gradient(to bottom, transparent, transparent); opacity: 0; }
+  }
+
+  /* ═══ UTILITY ANIMATIONS (teal) ═══ */
+
+  .mech-scout {
+    animation-name: mechScout;
+  }
+  @keyframes mechScout {
+    0%, 100% { box-shadow: 0 0 0 rgba(26, 188, 156, 0); background: transparent; }
+    30% { box-shadow: 0 0 15px rgba(26, 188, 156, 0.5); background: rgba(26, 188, 156, 0.1); }
+    50% { box-shadow: 0 0 5px rgba(26, 188, 156, 0.2); background: transparent; }
+    70% { box-shadow: 0 0 15px rgba(26, 188, 156, 0.5); background: rgba(26, 188, 156, 0.1); }
+  }
+
+  .mech-recycle {
+    animation-name: mechRecycle;
+  }
+  @keyframes mechRecycle {
+    0% { transform: rotate(0deg); box-shadow: 0 0 10px rgba(26, 188, 156, 0.4); }
+    100% { transform: rotate(360deg); box-shadow: 0 0 0 rgba(26, 188, 156, 0); }
+  }
+
+  .mech-foresight {
+    animation-name: mechForesight;
+  }
+  @keyframes mechForesight {
+    0% { box-shadow: 0 0 0 rgba(26, 188, 156, 0); background: transparent; }
+    30% { box-shadow: 0 0 20px rgba(26, 188, 156, 0.6); background: rgba(26, 188, 156, 0.2); }
+    70% { box-shadow: 0 0 25px rgba(26, 188, 156, 0.4); }
+    100% { box-shadow: 0 0 0 rgba(26, 188, 156, 0); background: transparent; }
+  }
+
+  .mech-transmute {
+    animation-name: mechTransmute;
+  }
+  @keyframes mechTransmute {
+    0% { filter: hue-rotate(0deg); box-shadow: 0 0 10px rgba(26, 188, 156, 0.5); }
+    100% { filter: hue-rotate(360deg); box-shadow: 0 0 0 rgba(26, 188, 156, 0); }
+  }
+
+  /* ═══ REGEN ANIMATIONS (nature green) ═══ */
+
+  .mech-sustained {
+    animation-name: mechSustained;
+  }
+  @keyframes mechSustained {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(39, 174, 96, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(39, 174, 96, 0.6); }
+  }
+
+  .mech-emergency {
+    animation-name: mechEmergency;
+  }
+  @keyframes mechEmergency {
+    0% { background: rgba(231, 76, 60, 0.5); }
+    40% { background: rgba(231, 76, 60, 0.3); }
+    60% { background: rgba(46, 204, 113, 0.4); }
+    100% { background: transparent; }
+  }
+
+  .mech-immunity {
+    animation-name: mechImmunity;
+  }
+  @keyframes mechImmunity {
+    0% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.6); border-radius: 50%; transform: scale(0.5); opacity: 0; }
+    40% { box-shadow: 0 0 15px 5px rgba(241, 196, 15, 0.4); border-radius: 50%; transform: scale(1); opacity: 1; }
+    100% { box-shadow: 0 0 10px 2px rgba(241, 196, 15, 0.2); border-radius: 8px; transform: scale(1); opacity: 0.5; }
+  }
+
+  /* ═══ WILD ANIMATIONS (rainbow/chaos) ═══ */
+
+  .mech-mirror {
+    background: linear-gradient(135deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 80%);
+    background-size: 200% 200%;
+    animation-name: mechMirror;
+  }
+  @keyframes mechMirror {
+    0% { background-position: -100% -100%; }
+    100% { background-position: 200% 200%; }
+  }
+
+  .mech-adapt {
+    animation-name: mechAdapt;
+  }
+  @keyframes mechAdapt {
+    0% { border-radius: 8px; box-shadow: 0 0 10px rgba(149, 165, 166, 0.5); }
+    33% { border-radius: 50%; box-shadow: 0 0 15px rgba(52, 152, 219, 0.5); }
+    66% { border-radius: 8px 20px; box-shadow: 0 0 15px rgba(241, 196, 15, 0.5); }
+    100% { border-radius: 8px; box-shadow: 0 0 0 transparent; }
+  }
+
+  .mech-overclock {
+    animation-name: mechOverclock;
+  }
+  @keyframes mechOverclock {
+    0%, 100% { background: transparent; box-shadow: none; }
+    15% { background: rgba(255, 255, 255, 0.6); box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+    25% { background: transparent; }
+    40% { background: rgba(255, 255, 255, 0.5); box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+    50% { background: transparent; }
+    70% { background: rgba(231, 76, 60, 0.4); box-shadow: 0 0 15px rgba(231, 76, 60, 0.5); }
+    85% { background: transparent; box-shadow: none; }
+  }
+
+  /* ═══ REDUCED MOTION ═══ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-inner {
+      transition: none;
+    }
+    .card-reveal {
+      transition: none;
+    }
+    .mechanic-overlay {
+      animation: none !important;
+      opacity: 0.5;
+    }
   }
 </style>

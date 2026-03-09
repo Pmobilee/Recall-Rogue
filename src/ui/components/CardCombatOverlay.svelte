@@ -21,6 +21,8 @@
   import { getReviewStateByFactId } from '../stores/playerData'
   import type { ActiveBounty } from '../../services/bountyManager'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { hasCardback } from '../utils/cardbackManifest'
+  import { REVEAL_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
 
   interface Props {
     turnState: TurnState | null
@@ -56,7 +58,8 @@
 
   let answeredThisTurn = $state(0)
   let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean }>>([])
-  let cardAnimations = $state<Record<string, 'launch' | 'fizzle' | null>>({})
+  let cardAnimations = $state<Record<string, CardAnimPhase>>({})
+  let animatingCards = $state<Card[]>([])
   let damageIdCounter = $state(0)
   let slowReaderEnabled = $state(false)
   let currentDifficulty = $state<DifficultyMode>('standard')
@@ -237,51 +240,75 @@
   })
 
   function getQuizForCard(card: Card, optionCount: number): QuizData {
-    const variantCount = 3
-    const lastVariant = getReviewStateByFactId(card.factId)?.lastVariantIndex ?? -1
-    let variantIndex = 0
-    if (variantCount > 1) {
-      if (canaryQuestionBias < 0) {
-        variantIndex = 0
-      } else if (canaryQuestionBias > 0) {
-        const challengeVariants = [1, 2].filter((value) => value !== lastVariant)
-        variantIndex = challengeVariants[Math.floor(Math.random() * challengeVariants.length)] ?? 1
-      } else {
-        variantIndex = Math.floor(Math.random() * variantCount)
-        while (variantCount > 1 && variantIndex === lastVariant) {
-          variantIndex = Math.floor(Math.random() * variantCount)
-        }
-      }
-    }
-
     const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
     if (!fact) {
       return {
         question: `Question for ${card.factId}`,
         answers: ['Answer', 'Wrong A', 'Wrong B'],
         correctAnswer: 'Answer',
-        variantIndex,
+        variantIndex: 0,
+      }
+    }
+
+    // Vocab cards use the legacy 3-variant system (forward/reverse/fill-blank)
+    // Knowledge facts with a variants array use the new N-variant system
+    const hasVariantsArray = fact.type !== 'vocabulary' && fact.variants && fact.variants.length > 0
+    const variantCount = hasVariantsArray ? fact.variants!.length : 3
+    const lastVariant = getReviewStateByFactId(card.factId)?.lastVariantIndex ?? -1
+
+    let variantIndex = 0
+    if (variantCount > 1) {
+      if (canaryQuestionBias < 0) {
+        variantIndex = 0
+      } else if (canaryQuestionBias > 0) {
+        const indices = Array.from({ length: variantCount }, (_, i) => i).filter(i => i !== 0 && i !== lastVariant)
+        variantIndex = indices.length > 0
+          ? indices[Math.floor(Math.random() * indices.length)]
+          : Math.min(1, variantCount - 1)
+      } else {
+        variantIndex = Math.floor(Math.random() * variantCount)
+        let attempts = 0
+        while (variantCount > 1 && variantIndex === lastVariant && attempts < 10) {
+          variantIndex = Math.floor(Math.random() * variantCount)
+          attempts++
+        }
+      }
+    }
+
+    let question: string
+    let correctAnswer: string
+    let distractorSource: string[]
+
+    if (hasVariantsArray) {
+      // Use the fact's variants array
+      const variant = fact.variants![variantIndex % fact.variants!.length]
+      question = variant.question
+      correctAnswer = variant.correctAnswer
+      distractorSource = variant.distractors ?? fact.distractors
+    } else {
+      // Legacy system for vocab cards and facts without variants
+      correctAnswer = fact.correctAnswer
+      distractorSource = fact.distractors
+
+      if (variantIndex === 2) {
+        question = `Fill in the blank: ${fact.statement.replace(fact.correctAnswer, '_____')}`
+      } else {
+        question = fact.quizQuestion
       }
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
-    const shuffledDistractors = [...fact.distractors].sort(() => Math.random() - 0.5)
+    const shuffledDistractors = [...distractorSource].sort(() => Math.random() - 0.5)
     const picked = shuffledDistractors.slice(0, Math.min(distractorCount, shuffledDistractors.length))
 
     const allAnswers = [...picked]
     const insertIdx = Math.floor(Math.random() * (allAnswers.length + 1))
-    allAnswers.splice(insertIdx, 0, fact.correctAnswer)
-
-    const question = variantIndex === 1
-      ? fact.quizQuestion
-      : variantIndex === 2
-        ? `Fill in the blank: ${fact.statement.replace(fact.correctAnswer, '_____')}`
-        : fact.quizQuestion
+    allAnswers.splice(insertIdx, 0, correctAnswer)
 
     return {
       question,
       answers: allAnswers,
-      correctAnswer: fact.correctAnswer,
+      correctAnswer,
       variantIndex,
     }
   }
@@ -372,30 +399,103 @@
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
     if (!committedCard) return
 
-    const cardId = committedCard.id
+    // Capture card data before animation (onplaycard will remove card from hand)
+    const card = committedCard
+    const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
-    const effectVal = Math.round(committedCard.baseEffectValue * committedCard.effectMultiplier)
-    const effectLabel = `${committedCard.cardType.toUpperCase()} ${effectVal}`
-
-    cardAnimations = { ...cardAnimations, [cardId]: isCorrect ? 'launch' : 'fizzle' }
-    setTimeout(() => {
-      cardAnimations = { ...cardAnimations, [cardId]: null }
-    }, isCorrect ? 300 : 400)
-
+    const effectVal = Math.round(card.baseEffectValue * card.effectMultiplier)
+    const effectLabel = `${card.cardType.toUpperCase()} ${effectVal}`
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
-    juiceManager.fire({
-      type: isCorrect ? 'correct' : 'wrong',
-      damage: isCorrect ? effectVal : 0,
-      isCritical: speedBonus,
-      comboCount: nextCombo,
-      effectLabel: isCorrect ? effectLabel : undefined,
-      isPerfectTurn: willBePerfect,
-    })
 
-    onplaycard(cardId, isCorrect, speedBonus, responseTimeMs, committedQuizData?.variantIndex)
-    answeredThisTurn += 1
+    // Capture before resetCardFlow nulls it
+    const quizVariantIndex = committedQuizData?.variantIndex
+
+    // Reset card flow immediately (hides quiz panel)
     resetCardFlow()
+
+    if (!isCorrect) {
+      // Wrong answer: buffer card for animation, then remove from hand immediately
+      animatingCards = [...animatingCards, card]
+      cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
+      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex)
+
+      juiceManager.fire({
+        type: 'wrong',
+        damage: 0,
+        isCritical: false,
+        comboCount: 0,
+        effectLabel: undefined,
+        isPerfectTurn: false,
+      })
+
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: null }
+        animatingCards = animatingCards.filter(c => c.id !== cardId)
+      }, 400)
+    } else {
+      // Correct answer: reveal → mechanic → launch sequence
+      const hasBack = hasCardback(card.factId)
+
+      if (hasBack) {
+        // Buffer card for animation, call onplaycard immediately
+        animatingCards = [...animatingCards, card]
+        cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+        onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
+
+        setTimeout(() => {
+          // Phase 2: Mechanic animation (400-900ms)
+          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
+
+          juiceManager.fire({
+            type: 'correct',
+            damage: effectVal,
+            isCritical: speedBonus,
+            comboCount: nextCombo,
+            effectLabel: effectLabel,
+            isPerfectTurn: willBePerfect,
+          })
+        }, REVEAL_DURATION)
+
+        setTimeout(() => {
+          // Phase 3: Launch (900-1200ms)
+          cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
+        }, REVEAL_DURATION + MECHANIC_DURATION)
+
+        setTimeout(() => {
+          // Cleanup
+          cardAnimations = { ...cardAnimations, [cardId]: null }
+          animatingCards = animatingCards.filter(c => c.id !== cardId)
+        }, REVEAL_DURATION + MECHANIC_DURATION + LAUNCH_DURATION)
+      } else {
+        // No cardback: buffer card, call onplaycard immediately
+        animatingCards = [...animatingCards, card]
+        cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
+        onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
+
+        juiceManager.fire({
+          type: 'correct',
+          damage: effectVal,
+          isCritical: speedBonus,
+          comboCount: nextCombo,
+          effectLabel: effectLabel,
+          isPerfectTurn: willBePerfect,
+        })
+
+        setTimeout(() => {
+          // Launch
+          cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
+        }, MECHANIC_DURATION)
+
+        setTimeout(() => {
+          // Cleanup
+          cardAnimations = { ...cardAnimations, [cardId]: null }
+          animatingCards = animatingCards.filter(c => c.id !== cardId)
+        }, MECHANIC_DURATION + LAUNCH_DURATION)
+      }
+    }
+
+    answeredThisTurn += 1
 
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenAnswerTooltip) {
@@ -515,6 +615,7 @@
 
     <CardHand
       cards={handCards}
+      {animatingCards}
       {selectedIndex}
       {cardAnimations}
       apCurrent={apCurrent}

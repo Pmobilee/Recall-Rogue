@@ -34,6 +34,66 @@
       "A locust in a transformer",
       "A mite in an oscilloscope"
     ],
+    "variants": [
+      {
+        "question": "What insect was found inside the Harvard Mark II computer in 1947?",
+        "type": "forward",
+        "correctAnswer": "A moth trapped in a relay",
+        "distractors": [
+          "A beetle lodged in a vacuum tube",
+          "A fly caught in a capacitor",
+          "A spider stuck in a punch card reader"
+        ]
+      },
+      {
+        "question": "The term 'debugging' originated from which real-world incident?",
+        "type": "reverse",
+        "correctAnswer": "Removing a moth from a computer relay",
+        "distractors": [
+          "Fixing a software error in early UNIX",
+          "Repairing a broken telegraph wire",
+          "Clearing dust from a vacuum tube"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the first computer bug?",
+        "type": "negative",
+        "correctAnswer": "It was found inside a transistor chip",
+        "distractors": [
+          "It was a moth found in 1947",
+          "It was taped into a logbook",
+          "Grace Hopper's team popularized the term"
+        ]
+      },
+      {
+        "question": "A computer engineer in 1947 discovers a hardware malfunction. What literal cause might they find?",
+        "type": "context",
+        "correctAnswer": "An insect trapped in the machinery",
+        "distractors": [
+          "A loose wire in the power supply",
+          "A cracked vacuum tube in the rack",
+          "A misaligned punch card reader"
+        ]
+      },
+      {
+        "question": "The first computer bug was a _____ found in a relay of the Harvard Mark II.",
+        "type": "fill_blank",
+        "correctAnswer": "moth",
+        "distractors": [
+          "beetle",
+          "spider",
+          "cockroach"
+        ]
+      },
+      {
+        "question": "The first computer bug logbook is preserved at the Smithsonian Institution.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Computing",
@@ -81,6 +141,58 @@
       "Sub-carrier multiplexing",
       "Mode-division splitting",
       "Spectral band partitioning"
+    ],
+    "variants": [
+      {
+        "question": "What method enables a single fiber optic strand to transmit multiple data channels at once?",
+        "type": "forward",
+        "correctAnswer": "Wavelength-division multiplexing",
+        "distractors": [
+          "Time-division multiplexing",
+          "Frequency-shift keying",
+          "Quantum entanglement routing"
+        ]
+      },
+      {
+        "question": "Wavelength-division multiplexing is the key technology behind what telecommunications feat?",
+        "type": "reverse",
+        "correctAnswer": "Carrying multiple data channels on one fiber",
+        "distractors": [
+          "Transmitting data through copper wires",
+          "Broadcasting radio over satellite links",
+          "Encoding signals in electrical pulses"
+        ]
+      },
+      {
+        "question": "Which is NOT true about fiber optic data transmission?",
+        "type": "negative",
+        "correctAnswer": "It relies on electrical signals through copper cores",
+        "distractors": [
+          "A single strand can carry over 1 petabit per second",
+          "It uses wavelength-division multiplexing",
+          "Japanese researchers achieved record speeds in 2022"
+        ]
+      },
+      {
+        "question": "A data center needs to stream every film ever made in under a minute. What technology makes this possible?",
+        "type": "context",
+        "correctAnswer": "Fiber optics using wavelength-division multiplexing",
+        "distractors": [
+          "Satellite arrays with phased antennas",
+          "Copper cables with advanced compression",
+          "Quantum computing data transfer protocols"
+        ]
+      },
+      {
+        "question": "A single fiber optic strand achieved 1.02 _____ per second in a 2022 Japanese experiment.",
+        "type": "fill_blank",
+        "correctAnswer": "petabits",
+        "distractors": [
+          "terabits",
+          "gigabits",
+          "exabits"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -130,6 +242,56 @@
       "20 kilobytes",
       "3 kilobytes"
     ],
+    "variants": [
+      {
+        "question": "What amount of RAM did the Apollo 11 guidance computer use to land on the Moon?",
+        "type": "forward",
+        "correctAnswer": "4 kilobytes",
+        "distractors": [
+          "64 kilobytes",
+          "1 megabyte",
+          "256 kilobytes"
+        ]
+      },
+      {
+        "question": "A guidance computer with only 4 KB of RAM is famously associated with which space mission?",
+        "type": "reverse",
+        "correctAnswer": "The Apollo 11 Moon landing",
+        "distractors": [
+          "The Voyager 1 deep space probe",
+          "The Space Shuttle Challenger",
+          "The International Space Station"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Apollo Guidance Computer?",
+        "type": "negative",
+        "correctAnswer": "It used solid-state flash memory chips",
+        "distractors": [
+          "It had only 4 KB of RAM",
+          "Its software was woven into rope memory",
+          "It ran at 2 MHz processing speed"
+        ]
+      },
+      {
+        "question": "The Apollo 11 guidance computer had _____ KB of RAM.",
+        "type": "fill_blank",
+        "correctAnswer": "4",
+        "distractors": [
+          "64",
+          "16",
+          "128"
+        ]
+      },
+      {
+        "question": "The Apollo 11 guidance computer had about 100,000 times less memory than a modern smartphone.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Space Tech",
@@ -177,6 +339,56 @@
       "2 petabytes",
       "12 exabytes",
       "4 exabytes"
+    ],
+    "variants": [
+      {
+        "question": "How much data does global internet traffic transmit each day in the mid-2020s?",
+        "type": "forward",
+        "correctAnswer": "5 exabytes",
+        "distractors": [
+          "5 petabytes",
+          "500 terabytes",
+          "50 exabytes"
+        ]
+      },
+      {
+        "question": "The fact that more data is created every 48 hours than existed before 2003 illustrates what trend?",
+        "type": "reverse",
+        "correctAnswer": "Exponential growth of daily internet traffic",
+        "distractors": [
+          "The decline of physical media storage",
+          "Increasing efficiency of data compression",
+          "The rapid expansion of cloud computing"
+        ]
+      },
+      {
+        "question": "Which is NOT true about daily internet data transmission?",
+        "type": "negative",
+        "correctAnswer": "Daily traffic was already 1 exabyte in 1992",
+        "distractors": [
+          "Traffic exceeds 5 exabytes per day",
+          "Video streaming is a major driver",
+          "Growth follows Nielsen's Law predictions"
+        ]
+      },
+      {
+        "question": "The growth of internet bandwidth roughly follows _____ Law, predicting 50% annual growth.",
+        "type": "fill_blank",
+        "correctAnswer": "Nielsen's",
+        "distractors": [
+          "Moore's",
+          "Metcalfe's",
+          "Amdahl's"
+        ]
+      },
+      {
+        "question": "In 1992, global internet traffic was roughly 100 gigabytes per day.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -226,6 +438,58 @@
       "Caterpillar feet gripping leaves",
       "Mistletoe attaching to tree bark"
     ],
+    "variants": [
+      {
+        "question": "What inspired Swiss engineer George de Mestral to invent Velcro?",
+        "type": "forward",
+        "correctAnswer": "Burdock burrs clinging to his dog's fur",
+        "distractors": [
+          "Gecko feet sticking to glass surfaces",
+          "Spider webs catching flying insects",
+          "Ivy vines clinging to stone walls"
+        ]
+      },
+      {
+        "question": "Burdock burrs with tiny hooks catching on loops of fabric inspired which invention?",
+        "type": "reverse",
+        "correctAnswer": "Velcro hook-and-loop fasteners",
+        "distractors": [
+          "Zipper interlocking teeth design",
+          "Button and buttonhole fastening",
+          "Magnetic snap closure systems"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the invention of Velcro?",
+        "type": "negative",
+        "correctAnswer": "It was perfected within a single year",
+        "distractors": [
+          "It was inspired by burdock burrs",
+          "The name comes from French words",
+          "NASA adopted it for zero-gravity use"
+        ]
+      },
+      {
+        "question": "An engineer returns from a hike and notices plant burrs stuck to his clothes. He examines them under a microscope. What does he eventually create?",
+        "type": "context",
+        "correctAnswer": "A hook-and-loop fastener system",
+        "distractors": [
+          "A new type of adhesive bandage",
+          "A plant-based textile fiber",
+          "A burr-resistant fabric coating"
+        ]
+      },
+      {
+        "question": "The name 'Velcro' comes from the French words velours (velvet) and _____ (hook).",
+        "type": "fill_blank",
+        "correctAnswer": "crochet",
+        "distractors": [
+          "agrafe",
+          "crampon",
+          "attache"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Inventions",
@@ -273,6 +537,56 @@
       "Compliant joint control",
       "Contact-implicit trajectory optimization",
       "Stochastic optimal control"
+    ],
+    "variants": [
+      {
+        "question": "What technique does the Atlas robot use to stay balanced during acrobatic maneuvers?",
+        "type": "forward",
+        "correctAnswer": "Model predictive control",
+        "distractors": [
+          "Gyroscopic stabilization",
+          "Fuzzy logic control systems",
+          "Proportional-integral-derivative control"
+        ]
+      },
+      {
+        "question": "Simulating hundreds of possible futures every millisecond to choose the best trajectory describes which robotics technique?",
+        "type": "reverse",
+        "correctAnswer": "Model predictive control",
+        "distractors": [
+          "Reinforcement learning",
+          "Neural network balancing",
+          "Zero-moment point control"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Boston Dynamics' Atlas robot?",
+        "type": "negative",
+        "correctAnswer": "It weighs over 200 kilograms",
+        "distractors": [
+          "It can perform backflips",
+          "It has 28 degrees of freedom",
+          "It transitioned to electric actuators in 2024"
+        ]
+      },
+      {
+        "question": "Atlas uses model predictive control, simulating possible futures every _____.",
+        "type": "fill_blank",
+        "correctAnswer": "millisecond",
+        "distractors": [
+          "second",
+          "minute",
+          "microsecond"
+        ]
+      },
+      {
+        "question": "Boston Dynamics' Atlas robot weighs 89 kg and can recover from being pushed mid-jump.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -322,6 +636,58 @@
       "Dropout layers randomly disable math-critical neurons",
       "Pre-training objectives do not reward exactness"
     ],
+    "variants": [
+      {
+        "question": "Why do large language models like GPT-4 fail at basic arithmetic tasks?",
+        "type": "forward",
+        "correctAnswer": "They predict likely text rather than computing",
+        "distractors": [
+          "Their training data lacked math content",
+          "GPU hardware cannot perform calculations",
+          "Backpropagation destroys numerical precision"
+        ]
+      },
+      {
+        "question": "The tendency to predict statistically likely text instead of reasoning logically explains which AI limitation?",
+        "type": "reverse",
+        "correctAnswer": "Failure at basic arithmetic despite vast training",
+        "distractors": [
+          "Inability to generate original images",
+          "Poor performance at language translation",
+          "Difficulty understanding spoken audio input"
+        ]
+      },
+      {
+        "question": "Which is NOT true about GPT-4's arithmetic limitations?",
+        "type": "negative",
+        "correctAnswer": "It was deliberately excluded from math training",
+        "distractors": [
+          "It predicts tokens rather than computing answers",
+          "It was trained on roughly 1 trillion tokens",
+          "Modern LLMs use tool-calling for precise math"
+        ]
+      },
+      {
+        "question": "You ask an AI trained on trillions of words to count the letters in 'strawberry.' Why might it give a wrong answer?",
+        "type": "context",
+        "correctAnswer": "It predicts likely responses, not exact computations",
+        "distractors": [
+          "Its character set does not include letter counts",
+          "The word is too long for its context window",
+          "Counting requires a separate hardware module"
+        ]
+      },
+      {
+        "question": "The gap between fluent text and genuine reasoning in LLMs is called the '_____ parrot' problem.",
+        "type": "fill_blank",
+        "correctAnswer": "stochastic",
+        "distractors": [
+          "statistical",
+          "probabilistic",
+          "mechanical"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "AI",
@@ -369,6 +735,56 @@
       "Cold pressing of carbon nanotubes",
       "Controlled oxidation of diamond surfaces",
       "Rolling carbon nanotube arrays flat"
+    ],
+    "variants": [
+      {
+        "question": "What simple method was used to first isolate graphene in a laboratory?",
+        "type": "forward",
+        "correctAnswer": "Scotch tape peeling layers off graphite",
+        "distractors": [
+          "Chemical vapor deposition on copper",
+          "Laser ablation of carbon fibers",
+          "Electrochemical exfoliation in acid"
+        ]
+      },
+      {
+        "question": "Using adhesive tape to peel layers off graphite led to the isolation of which revolutionary material?",
+        "type": "reverse",
+        "correctAnswer": "Graphene",
+        "distractors": [
+          "Carbon nanotubes",
+          "Diamond film",
+          "Buckminsterfullerene"
+        ]
+      },
+      {
+        "question": "Which is NOT true about graphene?",
+        "type": "negative",
+        "correctAnswer": "It conducts electricity slower than copper",
+        "distractors": [
+          "It is 200 times stronger than steel",
+          "It was first isolated using Scotch tape",
+          "Its discoverers won the 2010 Nobel Prize"
+        ]
+      },
+      {
+        "question": "Two physicists at the University of Manchester win the Nobel Prize for isolating a material with _____ tape.",
+        "type": "fill_blank",
+        "correctAnswer": "Scotch",
+        "distractors": [
+          "electrical",
+          "masking",
+          "duct"
+        ]
+      },
+      {
+        "question": "Graphene has a tensile strength of 130 GPa, compared to steel's 0.4 GPa.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -418,6 +834,56 @@
       "Superconducting magnetic energy storage",
       "Dark matter interaction cell"
     ],
+    "variants": [
+      {
+        "question": "What type of power source has kept Voyager 1 running for over 45 years in deep space?",
+        "type": "forward",
+        "correctAnswer": "Plutonium-238 radioisotope thermoelectric generators",
+        "distractors": [
+          "Solar panels designed for deep space",
+          "Hydrogen fuel cells with backup batteries",
+          "Uranium-235 nuclear fission reactor"
+        ]
+      },
+      {
+        "question": "Plutonium-238 radioisotope thermoelectric generators are the power source for which famous spacecraft?",
+        "type": "reverse",
+        "correctAnswer": "The Voyager 1 spacecraft",
+        "distractors": [
+          "The Hubble Space Telescope",
+          "The International Space Station",
+          "The Mars Curiosity Rover"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Voyager 1's communications?",
+        "type": "negative",
+        "correctAnswer": "It transmits data at broadband internet speeds",
+        "distractors": [
+          "Its radio uses about 23 watts of power",
+          "Signals take 22 hours to reach Earth",
+          "NASA uses 70-meter antennas to detect it"
+        ]
+      },
+      {
+        "question": "Voyager 1 is over 23 billion kilometers from Earth but still communicates using a radio with just _____ watts of power.",
+        "type": "fill_blank",
+        "correctAnswer": "23",
+        "distractors": [
+          "230",
+          "2300",
+          "2.3"
+        ]
+      },
+      {
+        "question": "Voyager 1 crossed into interstellar space in 2012.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Space Tech",
@@ -465,6 +931,56 @@
       "Managing railway scheduling across Europe",
       "Linking census data between governments",
       "Distributing chemical safety data sheets"
+    ],
+    "variants": [
+      {
+        "question": "What was Tim Berners-Lee's original purpose for creating the World Wide Web?",
+        "type": "forward",
+        "correctAnswer": "Helping CERN physicists share documents",
+        "distractors": [
+          "Enabling military communications to survive attack",
+          "Connecting university library catalogs",
+          "Replacing postal mail with electronic letters"
+        ]
+      },
+      {
+        "question": "A system originally designed to help physicists share research documents at CERN became what global technology?",
+        "type": "reverse",
+        "correctAnswer": "The World Wide Web",
+        "distractors": [
+          "The ARPANET military network",
+          "The Global Positioning System",
+          "The Internet Protocol Suite"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the invention of the World Wide Web?",
+        "type": "negative",
+        "correctAnswer": "It was funded by the US military from the start",
+        "distractors": [
+          "Tim Berners-Lee invented it at CERN",
+          "His boss called the proposal 'vague but exciting'",
+          "He made it royalty-free for universal adoption"
+        ]
+      },
+      {
+        "question": "Tim Berners-Lee's boss wrote '_____ but exciting' on his World Wide Web proposal.",
+        "type": "fill_blank",
+        "correctAnswer": "vague",
+        "distractors": [
+          "interesting",
+          "ambitious",
+          "impractical"
+        ]
+      },
+      {
+        "question": "The first website went live at CERN on December 20, 1990.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -514,6 +1030,58 @@
       "Adiabatic evolution",
       "Quantum walks"
     ],
+    "variants": [
+      {
+        "question": "What quantum property allows qubits to represent both 0 and 1 simultaneously?",
+        "type": "forward",
+        "correctAnswer": "Superposition",
+        "distractors": [
+          "Entanglement",
+          "Tunneling",
+          "Coherence"
+        ]
+      },
+      {
+        "question": "The ability to represent 0 and 1 simultaneously, enabling exponentially parallel computation, is known as what?",
+        "type": "reverse",
+        "correctAnswer": "Superposition",
+        "distractors": [
+          "Quantum annealing",
+          "Spin polarization",
+          "Wave-particle duality"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Google's quantum supremacy claim?",
+        "type": "negative",
+        "correctAnswer": "IBM fully agreed with Google's time comparison",
+        "distractors": [
+          "The Sycamore processor completed a task in 200 seconds",
+          "It used 53 qubits for the computation",
+          "Quantum computers are not universally faster"
+        ]
+      },
+      {
+        "question": "A quantum computing company claims their chip solved in 200 seconds what would take a supercomputer 10,000 years. What property makes this possible?",
+        "type": "context",
+        "correctAnswer": "Qubits exploit superposition for parallel computation",
+        "distractors": [
+          "Classical bits are rearranged more efficiently",
+          "Quantum tunneling bypasses computational steps",
+          "Entanglement eliminates the need for memory"
+        ]
+      },
+      {
+        "question": "Google's quantum processor Sycamore used _____ qubits to achieve quantum supremacy.",
+        "type": "fill_blank",
+        "correctAnswer": "53",
+        "distractors": [
+          "128",
+          "32",
+          "256"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Computing",
@@ -561,6 +1129,56 @@
       "Gold was mandated by treaty for space telescope optics",
       "Gold provides uniform reflectivity across all wavelengths",
       "Gold is the only metal stable at temperatures below 10 Kelvin"
+    ],
+    "variants": [
+      {
+        "question": "Why was gold chosen as the coating for the James Webb Space Telescope's mirror?",
+        "type": "forward",
+        "correctAnswer": "Gold reflects infrared light exceptionally well",
+        "distractors": [
+          "Gold resists corrosion in space vacuum",
+          "Gold is lighter than aluminum at nanoscale",
+          "Gold stays rigid at cryogenic temperatures"
+        ]
+      },
+      {
+        "question": "The need to reflect infrared light from galaxies 13.6 billion light-years away determined which coating choice for JWST?",
+        "type": "reverse",
+        "correctAnswer": "A 100-nanometer layer of gold",
+        "distractors": [
+          "A polished aluminum mirror surface",
+          "A multi-layer silver-platinum coating",
+          "A diamond-like carbon reflective film"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the James Webb Space Telescope's mirror?",
+        "type": "negative",
+        "correctAnswer": "It uses several kilograms of gold coating",
+        "distractors": [
+          "The gold layer is 100 nanometers thick",
+          "It has 18 hexagonal mirror segments",
+          "It must operate colder than Pluto's surface"
+        ]
+      },
+      {
+        "question": "The JWST mirror uses only _____ grams of gold, less than a typical wedding ring.",
+        "type": "fill_blank",
+        "correctAnswer": "48.25",
+        "distractors": [
+          "500.0",
+          "2,000",
+          "5.50"
+        ]
+      },
+      {
+        "question": "The James Webb Space Telescope's primary mirror spans 6.5 meters in diameter.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -610,6 +1228,56 @@
       "Low temperatures reduce electron mobility in silicon anodes",
       "The DC-DC converter loses efficiency below 5 degrees Celsius"
     ],
+    "variants": [
+      {
+        "question": "What primarily causes lithium-ion batteries in EVs to lose range in cold weather?",
+        "type": "forward",
+        "correctAnswer": "Lithium ions move more slowly through the electrolyte",
+        "distractors": [
+          "The separator membrane freezes solid",
+          "Electrodes contract and lose contact",
+          "The battery management system shuts down"
+        ]
+      },
+      {
+        "question": "Slower ion transport through increasingly viscous electrolyte explains which EV performance issue?",
+        "type": "reverse",
+        "correctAnswer": "Reduced driving range in cold weather",
+        "distractors": [
+          "Faster battery degradation over time",
+          "Overheating during rapid charging",
+          "Reduced regenerative braking efficiency"
+        ]
+      },
+      {
+        "question": "Which is NOT true about EV battery performance in cold weather?",
+        "type": "negative",
+        "correctAnswer": "The energy stored in the battery is permanently lost",
+        "distractors": [
+          "Electrolyte viscosity increases at low temperatures",
+          "Lithium plating can occur on anodes below 0 degrees C",
+          "Battery management systems pre-warm the packs"
+        ]
+      },
+      {
+        "question": "An EV owner notices their car loses up to _____% of its driving range on a freezing day.",
+        "type": "fill_blank",
+        "correctAnswer": "40",
+        "distractors": [
+          "10",
+          "75",
+          "5"
+        ]
+      },
+      {
+        "question": "Solid-state batteries using ceramic electrolytes are being developed to reduce cold weather range loss.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Energy",
@@ -657,6 +1325,56 @@
       "Hyperloop uses solar energy to overcome air resistance",
       "Pods are aerodynamically shaped to create thrust from drag",
       "Plasma sheaths around pods reduce aerodynamic resistance"
+    ],
+    "variants": [
+      {
+        "question": "What makes a Hyperloop pod capable of speeds exceeding 1,000 km/h?",
+        "type": "forward",
+        "correctAnswer": "Near-vacuum tubes eliminate most aerodynamic drag",
+        "distractors": [
+          "Superconducting magnetic levitation removes friction",
+          "Rocket boosters accelerate pods between stations",
+          "Electromagnetic catapults launch pods supersonically"
+        ]
+      },
+      {
+        "question": "Eliminating aerodynamic drag by reducing tube pressure to 1/1000th atmosphere enables what transportation concept?",
+        "type": "reverse",
+        "correctAnswer": "The Hyperloop",
+        "distractors": [
+          "Maglev bullet trains",
+          "Supersonic commercial aircraft",
+          "Underground vacuum freight systems"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Hyperloop concept?",
+        "type": "negative",
+        "correctAnswer": "It has already achieved commercial passenger service",
+        "distractors": [
+          "Elon Musk published the concept in 2013",
+          "Pods travel through near-vacuum tubes",
+          "Virgin Hyperloop completed a human test ride"
+        ]
+      },
+      {
+        "question": "A Hyperloop could travel from Los Angeles to San Francisco in about _____ minutes.",
+        "type": "fill_blank",
+        "correctAnswer": "35",
+        "distractors": [
+          "120",
+          "5",
+          "90"
+        ]
+      },
+      {
+        "question": "Virgin Hyperloop completed a human test ride in 2020 at 172 km/h.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -706,6 +1424,56 @@
       "35 microseconds",
       "48 microseconds"
     ],
+    "variants": [
+      {
+        "question": "How many microseconds per day do GPS satellite clocks gain due to relativistic effects?",
+        "type": "forward",
+        "correctAnswer": "38 microseconds",
+        "distractors": [
+          "7 microseconds",
+          "100 microseconds",
+          "1 millisecond"
+        ]
+      },
+      {
+        "question": "Without correcting for a 38-microsecond-per-day clock drift, what system would accumulate 10 km of position errors daily?",
+        "type": "reverse",
+        "correctAnswer": "The Global Positioning System (GPS)",
+        "distractors": [
+          "Submarine sonar navigation systems",
+          "Aircraft inertial navigation systems",
+          "Maritime radar tracking stations"
+        ]
+      },
+      {
+        "question": "Which is NOT true about GPS and relativity?",
+        "type": "negative",
+        "correctAnswer": "Only special relativity affects GPS clocks",
+        "distractors": [
+          "GPS satellites orbit at 20,200 km altitude",
+          "Satellite clocks are pre-adjusted before launch",
+          "Without correction, errors would reach 10 km per day"
+        ]
+      },
+      {
+        "question": "A navigation engineer must account for Einstein's theories. Special relativity slows clocks by 7 microseconds, but general relativity speeds them up by how much?",
+        "type": "context",
+        "correctAnswer": "45 microseconds per day",
+        "distractors": [
+          "7 microseconds per day",
+          "100 microseconds per day",
+          "38 microseconds per day"
+        ]
+      },
+      {
+        "question": "GPS satellite clocks are pre-adjusted before launch to compensate for relativistic effects.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Space Tech",
@@ -753,6 +1521,56 @@
       "Printing structural supports for skyscrapers",
       "Creating custom orthotics for podiatrists",
       "Producing replacement parts for vintage automobiles"
+    ],
+    "variants": [
+      {
+        "question": "What motivated Chuck Hull to invent the first 3D printing technology?",
+        "type": "forward",
+        "correctAnswer": "Quickly prototyping plastic furniture parts",
+        "distractors": [
+          "Producing dental implants without molds",
+          "Creating custom prosthetic limbs cheaply",
+          "Printing circuit board substrates faster"
+        ]
+      },
+      {
+        "question": "Stereolithography (SLA), the first 3D printing process, was invented to solve what practical problem?",
+        "type": "reverse",
+        "correctAnswer": "Reducing prototype creation time from weeks to hours",
+        "distractors": [
+          "Replacing injection molding in toy factories",
+          "Creating architectural scale models faster",
+          "Manufacturing replacement aircraft parts"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the invention of 3D printing?",
+        "type": "negative",
+        "correctAnswer": "It was originally developed for aerospace applications",
+        "distractors": [
+          "Chuck Hull invented stereolithography in 1983",
+          "The first process used UV laser on photopolymer resin",
+          "Hull co-founded 3D Systems in 1986"
+        ]
+      },
+      {
+        "question": "Chuck Hull filed his patent for stereolithography in _____.",
+        "type": "fill_blank",
+        "correctAnswer": "1984",
+        "distractors": [
+          "1995",
+          "1972",
+          "2001"
+        ]
+      },
+      {
+        "question": "3D printing technology now encompasses bioprinting of living tissue.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -802,6 +1620,56 @@
       "Boattail flaps on the lower stage body",
       "Electrostatic deflectors interact with ionosphere"
     ],
+    "variants": [
+      {
+        "question": "What allows the Falcon 9 booster to steer during atmospheric reentry?",
+        "type": "forward",
+        "correctAnswer": "Grid fins for aerodynamic steering",
+        "distractors": [
+          "Deployable parachutes for descent control",
+          "Differential thrust from multiple engines",
+          "Deployable delta wings for glide control"
+        ]
+      },
+      {
+        "question": "Grid fins providing aerodynamic control during reentry are a signature feature of which reusable rocket?",
+        "type": "reverse",
+        "correctAnswer": "SpaceX Falcon 9",
+        "distractors": [
+          "Blue Origin New Shepard",
+          "Rocket Lab Electron booster",
+          "ULA Vulcan Centaur upper stage"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Falcon 9 booster landing system?",
+        "type": "negative",
+        "correctAnswer": "It uses parachutes to slow the final descent",
+        "distractors": [
+          "Grid fins steer it during atmospheric reentry",
+          "The Merlin engine throttles to 40% for landing",
+          "Boosters have been reused up to 25 times"
+        ]
+      },
+      {
+        "question": "SpaceX's first successful Falcon 9 landing occurred on December 21, _____.",
+        "type": "fill_blank",
+        "correctAnswer": "2015",
+        "distractors": [
+          "2010",
+          "2018",
+          "2012"
+        ]
+      },
+      {
+        "question": "Reusing Falcon 9 boosters reduces launch costs by roughly 30% compared to expendable rockets.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Space Tech",
@@ -849,6 +1717,56 @@
       "The helical twist converts horizontal wind to rotation",
       "Piezoelectric crystal arrays in the blade harvest vibration energy",
       "Wind pressure acts differentially on the outer and inner blade sections"
+    ],
+    "variants": [
+      {
+        "question": "How do modern wind turbine blades generate rotational force?",
+        "type": "forward",
+        "correctAnswer": "They generate aerodynamic lift like airplane wings",
+        "distractors": [
+          "Wind pushes against the flat blade face",
+          "Vortices behind the blade pull it forward",
+          "The Magnus effect from spinning creates force"
+        ]
+      },
+      {
+        "question": "The same principle that keeps airplanes airborne also explains how what renewable energy device works?",
+        "type": "reverse",
+        "correctAnswer": "Wind turbine blades",
+        "distractors": [
+          "Solar panel tracking motors",
+          "Tidal energy converters",
+          "Geothermal steam turbines"
+        ]
+      },
+      {
+        "question": "Which is NOT true about modern wind turbines?",
+        "type": "negative",
+        "correctAnswer": "Blades work by catching wind like sails on a ship",
+        "distractors": [
+          "Blade tips can travel over 320 km/h",
+          "Blades are shaped like airplane wings",
+          "Blade pitch is computer-controlled"
+        ]
+      },
+      {
+        "question": "The tip of an 80-meter blade rotating at 12 RPM moves at approximately _____ km/h.",
+        "type": "fill_blank",
+        "correctAnswer": "320",
+        "distractors": [
+          "50",
+          "800",
+          "120"
+        ]
+      },
+      {
+        "question": "The largest offshore wind turbines can power up to 20,000 homes.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -898,6 +1816,58 @@
       "36",
       "120"
     ],
+    "variants": [
+      {
+        "question": "How many interlocking bronze gears were found inside the Antikythera mechanism?",
+        "type": "forward",
+        "correctAnswer": "37",
+        "distractors": [
+          "12",
+          "72",
+          "108"
+        ]
+      },
+      {
+        "question": "An ancient device with 37 interlocking bronze gears that could predict eclipses is known as what?",
+        "type": "reverse",
+        "correctAnswer": "The Antikythera mechanism",
+        "distractors": [
+          "The Archimedes Calculator",
+          "The Ptolemaic Orrery",
+          "The Heron Automaton"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Antikythera mechanism?",
+        "type": "negative",
+        "correctAnswer": "It was built during the Renaissance period",
+        "distractors": [
+          "It was found in a Roman-era shipwreck",
+          "X-ray tomography revealed its gears in 2006",
+          "It could model the Moon's elliptical orbit"
+        ]
+      },
+      {
+        "question": "An archaeologist in 1901 recovers a corroded bronze device from a shipwreck off Greece. It turns out to be what kind of ancient instrument?",
+        "type": "context",
+        "correctAnswer": "An analog computer for predicting astronomical events",
+        "distractors": [
+          "A navigational compass for Roman ships",
+          "A musical instrument for temple ceremonies",
+          "A mechanical lock for a treasure chest"
+        ]
+      },
+      {
+        "question": "Nothing of comparable mechanical complexity appeared in Europe for _____ years after the Antikythera mechanism.",
+        "type": "fill_blank",
+        "correctAnswer": "1,400",
+        "distractors": [
+          "200",
+          "500",
+          "3,000"
+        ]
+      }
+    ],
     "category": [
       "Technology",
       "Computing",
@@ -945,6 +1915,56 @@
       "The zinc finger nuclease system in human somatic cells",
       "The TAL effector immune escape mechanism of plant pathogens",
       "The exonuclease proofreading system of DNA polymerase"
+    ],
+    "variants": [
+      {
+        "question": "From what natural system was CRISPR-Cas9 gene editing technology derived?",
+        "type": "forward",
+        "correctAnswer": "The immune system of bacteria",
+        "distractors": [
+          "The DNA repair mechanism of white blood cells",
+          "The gene silencing pathway in plant cells",
+          "The RNA interference pathway in nematodes"
+        ]
+      },
+      {
+        "question": "A natural defense system in which organisms stores snippets of viral DNA for recognition, inspiring CRISPR-Cas9?",
+        "type": "reverse",
+        "correctAnswer": "Bacteria",
+        "distractors": [
+          "Human blood cells",
+          "Fungal spore cells",
+          "Plant root tissue"
+        ]
+      },
+      {
+        "question": "Which is NOT true about CRISPR-Cas9?",
+        "type": "negative",
+        "correctAnswer": "It was first demonstrated in the 1980s",
+        "distractors": [
+          "It was derived from bacterial immune systems",
+          "Doudna and Charpentier won the 2020 Nobel Prize",
+          "It has been approved for sickle cell disease treatment"
+        ]
+      },
+      {
+        "question": "CRISPR therapies for _____ disease represent the first approved human genetic cure.",
+        "type": "fill_blank",
+        "correctAnswer": "sickle cell",
+        "distractors": [
+          "Parkinson's",
+          "Alzheimer's",
+          "Huntington's"
+        ]
+      },
+      {
+        "question": "Jennifer Doudna and Emmanuelle Charpentier won the 2020 Nobel Prize in Chemistry for CRISPR-Cas9 research.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Technology",
@@ -994,6 +2014,56 @@
       "Leonardo believed eyebrows distracted from the eyes",
       "It was a Medici family tradition in commissioned portraits"
     ],
+    "variants": [
+      {
+        "question": "Why is the Mona Lisa depicted without eyebrows?",
+        "type": "forward",
+        "correctAnswer": "Shaved brows were fashionable in Renaissance Florence",
+        "distractors": [
+          "The eyebrows faded from age and restoration",
+          "Leonardo left the painting deliberately unfinished",
+          "The subject had a condition causing hair loss"
+        ]
+      },
+      {
+        "question": "The Renaissance Florentine fashion of shaving eyebrows explains a famous feature of which painting?",
+        "type": "reverse",
+        "correctAnswer": "The Mona Lisa's missing eyebrows",
+        "distractors": [
+          "Botticelli's Birth of Venus hairstyle",
+          "Raphael's School of Athens bald figures",
+          "Michelangelo's Sistine Chapel Adam's beard"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Mona Lisa's eyebrows?",
+        "type": "negative",
+        "correctAnswer": "Leonardo deliberately omitted them as artistic mystery",
+        "distractors": [
+          "Shaved brows were fashionable in Renaissance Florence",
+          "The subject was Lisa Gherardini",
+          "Viewers interpreted missing brows as intentional ambiguity"
+        ]
+      },
+      {
+        "question": "In 15th-century Florence, plucked or shaved _____ were a mark of high social status.",
+        "type": "fill_blank",
+        "correctAnswer": "eyebrows",
+        "distractors": [
+          "eyelashes",
+          "sideburns",
+          "mustaches"
+        ]
+      },
+      {
+        "question": "Many viewers have interpreted the Mona Lisa's missing eyebrows as intentional artistic ambiguity rather than period fashion.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Art",
@@ -1041,6 +2111,56 @@
       "He had severe hearing loss in one ear but not both",
       "He had a vitamin deficiency causing muscle weakness",
       "He was bedridden for the entire two years of composition"
+    ],
+    "variants": [
+      {
+        "question": "What physical condition did Beethoven have when he composed his famous Ninth Symphony?",
+        "type": "forward",
+        "correctAnswer": "He was completely deaf",
+        "distractors": [
+          "He was blind in one eye",
+          "He had severe arthritis in both hands",
+          "He was partially paralyzed from a stroke"
+        ]
+      },
+      {
+        "question": "A composer who was completely deaf for over a decade created which celebrated choral symphony?",
+        "type": "reverse",
+        "correctAnswer": "Beethoven's Ninth Symphony with Ode to Joy",
+        "distractors": [
+          "Mozart's Requiem in D minor",
+          "Handel's Messiah oratorio",
+          "Brahms' German Requiem"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the premiere of Beethoven's Ninth Symphony?",
+        "type": "negative",
+        "correctAnswer": "Beethoven conducted the orchestra himself that night",
+        "distractors": [
+          "He had been deaf for over a decade",
+          "He had to be turned around to see the applause",
+          "The audience gave a thunderous standing ovation"
+        ]
+      },
+      {
+        "question": "At the premiere of his Ninth Symphony, Beethoven had to be turned around by a soloist because he could not hear the _____.",
+        "type": "fill_blank",
+        "correctAnswer": "applause",
+        "distractors": [
+          "orchestra",
+          "conductor",
+          "chorus"
+        ]
+      },
+      {
+        "question": "Beethoven completed his Ninth Symphony in 1824.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1090,6 +2210,56 @@
       "Control the tides near coastal cities",
       "Prevent plagues and disease outbreaks"
     ],
+    "variants": [
+      {
+        "question": "What did the ancient Greeks believe different musical modes could do to people?",
+        "type": "forward",
+        "correctAnswer": "Change their moral character and emotional state",
+        "distractors": [
+          "Heal physical diseases and injuries",
+          "Communicate directly with the gods",
+          "Grant temporary superhuman strength"
+        ]
+      },
+      {
+        "question": "The Greek concept of 'ethos' in music theory held that each musical mode had what kind of effect?",
+        "type": "reverse",
+        "correctAnswer": "A specific moral and emotional influence on listeners",
+        "distractors": [
+          "A mathematical relationship to planetary orbits",
+          "A therapeutic effect on specific illnesses",
+          "A magical power over natural elements"
+        ]
+      },
+      {
+        "question": "Which is NOT true about ancient Greek beliefs about music?",
+        "type": "negative",
+        "correctAnswer": "All musical modes were considered equally virtuous",
+        "distractors": [
+          "Plato wanted to ban certain scales from his ideal city",
+          "The Dorian mode was considered noble and warlike",
+          "Greeks believed music could change moral character"
+        ]
+      },
+      {
+        "question": "Plato argued in 'The Republic' that the state should control which musical _____ citizens could hear.",
+        "type": "fill_blank",
+        "correctAnswer": "modes",
+        "distractors": [
+          "rhythms",
+          "volumes",
+          "tempos"
+        ]
+      },
+      {
+        "question": "The Lydian mode was considered soft and effeminate by ancient Greek standards.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Music",
@@ -1137,6 +2307,56 @@
       "His beard, which contained his power",
       "His voice, rendering him mute for a century",
       "His physical strength"
+    ],
+    "variants": [
+      {
+        "question": "What did the Norse god Odin sacrifice to gain wisdom from the Well of Wisdom?",
+        "type": "forward",
+        "correctAnswer": "One of his eyes",
+        "distractors": [
+          "His right hand",
+          "His golden spear Gungnir",
+          "His eight-legged horse Sleipnir"
+        ]
+      },
+      {
+        "question": "A Norse god who gave up an eye and hung from a tree for nine days is known as whom?",
+        "type": "reverse",
+        "correctAnswer": "Odin, king of the Norse gods",
+        "distractors": [
+          "Thor, god of thunder and storms",
+          "Loki, the trickster shape-shifter",
+          "Tyr, the god of war and justice"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Odin's quest for knowledge?",
+        "type": "negative",
+        "correctAnswer": "He sacrificed both of his eyes for wisdom",
+        "distractors": [
+          "He gave one eye to the giant Mimir",
+          "He hung from Yggdrasil for nine days",
+          "He stabbed himself with his own spear"
+        ]
+      },
+      {
+        "question": "Odin hung himself from _____, the Norse world tree, to learn the secret of runes.",
+        "type": "fill_blank",
+        "correctAnswer": "Yggdrasil",
+        "distractors": [
+          "Bifrost",
+          "Valhalla",
+          "Midgard"
+        ]
+      },
+      {
+        "question": "According to Norse mythology, the Norse valued self-sacrifice for knowledge above almost all other virtues.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1186,6 +2406,56 @@
       "Their translucent bodies symbolize clarity of mind in old age",
       "Shrimp were found abundantly only in sacred temple waters"
     ],
+    "variants": [
+      {
+        "question": "In Osechi Ryori, why do shrimp symbolize longevity in Japanese New Year meals?",
+        "type": "forward",
+        "correctAnswer": "They curl like the bent back of an elderly person",
+        "distractors": [
+          "Shrimp live for exactly 100 years in folklore",
+          "Their red color symbolizes good fortune",
+          "Shrimp regenerate their claws, symbolizing renewal"
+        ]
+      },
+      {
+        "question": "The curved shape of an elderly person's back inspired which food symbol in Japanese New Year cuisine?",
+        "type": "reverse",
+        "correctAnswer": "Shrimp representing longevity",
+        "distractors": [
+          "Rolled omelette representing scholarship",
+          "Lotus root representing clear vision",
+          "Konbu seaweed representing joy"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Japanese Osechi Ryori tradition?",
+        "type": "negative",
+        "correctAnswer": "The tradition began in the 20th century",
+        "distractors": [
+          "Every dish carries symbolic meaning",
+          "It originated in Heian-period court culture",
+          "Food is served in stacked lacquer jubako boxes"
+        ]
+      },
+      {
+        "question": "A Japanese family prepares their New Year feast. Each ingredient is a coded wish for the future. Lotus root's holes symbolize what?",
+        "type": "context",
+        "correctAnswer": "An unobstructed view of the future",
+        "distractors": [
+          "The many blessings of the coming year",
+          "The holes in the fabric of time",
+          "Openness to new spiritual experiences"
+        ]
+      },
+      {
+        "question": "In Osechi Ryori, konbu seaweed represents joy because its name sounds like 'yorokobu.'",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Traditions",
@@ -1233,6 +2503,56 @@
       "An earthquake damaged the demolition equipment before work started",
       "The original 20-year permit was discovered to have been forged",
       "A fire at the plans office destroyed all demolition documentation"
+    ],
+    "variants": [
+      {
+        "question": "What saved the Eiffel Tower from being demolished in 1909?",
+        "type": "forward",
+        "correctAnswer": "It was being used as a vital radio antenna",
+        "distractors": [
+          "A public petition signed by millions of Parisians",
+          "Tourism revenue made it too profitable to destroy",
+          "The government declared it a national monument"
+        ]
+      },
+      {
+        "question": "The Eiffel Tower's use as a radio transmission antenna led to what outcome in 1909?",
+        "type": "reverse",
+        "correctAnswer": "Its demolition was canceled indefinitely",
+        "distractors": [
+          "It was sold to a private investor",
+          "It was declared a UNESCO heritage site",
+          "The French military relocated its base there"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Eiffel Tower's early history?",
+        "type": "negative",
+        "correctAnswer": "Parisians immediately loved the tower upon construction",
+        "distractors": [
+          "It was built for the 1889 World's Fair",
+          "It was granted a 20-year demolition permit",
+          "Parisians called it an 'iron monster'"
+        ]
+      },
+      {
+        "question": "Gustave Eiffel strategically allowed _____ researchers to use the tower, making it indispensable.",
+        "type": "fill_blank",
+        "correctAnswer": "military and meteorological",
+        "distractors": [
+          "academic and artistic",
+          "astronomical and geological",
+          "commercial and industrial"
+        ]
+      },
+      {
+        "question": "The Eiffel Tower is seen by approximately 7 million visitors per year.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1282,6 +2602,56 @@
       "Heavy snow in midsummer, which was unprecedented in Swiss records",
       "A malaria outbreak in the lakeside villages around their villa"
     ],
+    "variants": [
+      {
+        "question": "What unusual weather event kept Mary Shelley indoors and helped inspire Frankenstein?",
+        "type": "forward",
+        "correctAnswer": "A volcanic eruption caused an abnormally cold, dark summer",
+        "distractors": [
+          "A hurricane that flooded Lake Geneva for weeks",
+          "A severe Swiss blizzard burying the villa in snow",
+          "A solar eclipse that lasted three days"
+        ]
+      },
+      {
+        "question": "The eruption of Mount Tambora in 1815 created 'The Year Without a Summer,' which indirectly inspired what literary work?",
+        "type": "reverse",
+        "correctAnswer": "Mary Shelley's Frankenstein",
+        "distractors": [
+          "Edgar Allan Poe's The Raven",
+          "Bram Stoker's Dracula novel",
+          "H.G. Wells' The Time Machine"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the creation of Frankenstein?",
+        "type": "negative",
+        "correctAnswer": "Mary Shelley was in her forties when she wrote it",
+        "distractors": [
+          "It was conceived during a ghost story contest",
+          "Lord Byron proposed the writing challenge",
+          "It is widely regarded as the first science fiction novel"
+        ]
+      },
+      {
+        "question": "Mary Shelley was only _____ years old when she wrote Frankenstein.",
+        "type": "fill_blank",
+        "correctAnswer": "18",
+        "distractors": [
+          "35",
+          "25",
+          "42"
+        ]
+      },
+      {
+        "question": "Frankenstein was published in 1818 and is widely regarded as the first true science fiction novel.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Literature",
@@ -1329,6 +2699,56 @@
       "Dried and smoked like tobacco for ceremonial purposes",
       "Eaten as seeds only by royalty while the pulp was discarded",
       "Ground and mixed into clay pottery as a sacred glaze"
+    ],
+    "variants": [
+      {
+        "question": "How did the Aztecs originally consume chocolate?",
+        "type": "forward",
+        "correctAnswer": "As a cold, bitter, spicy drink with chili peppers",
+        "distractors": [
+          "As a warm, sweetened porridge for breakfast",
+          "Baked into ceremonial flatbreads for festivals",
+          "As a solid bar mixed with dried berries"
+        ]
+      },
+      {
+        "question": "A cold, bitter, spicy drink made with cacao, chili peppers, and water was the original form of what modern food?",
+        "type": "reverse",
+        "correctAnswer": "Chocolate",
+        "distractors": [
+          "Coffee",
+          "Cola beverages",
+          "Vanilla extract"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the history of chocolate?",
+        "type": "negative",
+        "correctAnswer": "The Aztecs sweetened chocolate with cane sugar",
+        "distractors": [
+          "It was originally consumed as a bitter drink",
+          "Cacao beans were used as currency by the Aztecs",
+          "Spanish colonizers began sweetening it with sugar"
+        ]
+      },
+      {
+        "question": "The Aztec word for their chocolate drink was '_____.'",
+        "type": "fill_blank",
+        "correctAnswer": "xocolatl",
+        "distractors": [
+          "cacahuatl",
+          "teonanacatl",
+          "pulcatl"
+        ]
+      },
+      {
+        "question": "Adding sugar to chocolate was a European innovation, not an Aztec practice.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1378,6 +2798,56 @@
       "Condemned men given a chance to earn freedom through service",
       "A rotating team of all Roman tradesmen on a civic duty schedule"
     ],
+    "variants": [
+      {
+        "question": "Who operated the retractable shade covering of the Roman Colosseum?",
+        "type": "forward",
+        "correctAnswer": "Sailors from the Roman navy",
+        "distractors": [
+          "A guild of specialized craftsmen",
+          "Enslaved workers in the upper tiers",
+          "Roman legionary engineers on rotation"
+        ]
+      },
+      {
+        "question": "The Roman navy's Misenum fleet was permanently assigned to operate what remarkable feature of the Colosseum?",
+        "type": "reverse",
+        "correctAnswer": "The velarium retractable shade covering",
+        "distractors": [
+          "The underground animal elevator system",
+          "The flooding mechanism for naval battles",
+          "The VIP entrance security checkpoints"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Colosseum's velarium?",
+        "type": "negative",
+        "correctAnswer": "It was made of heavy metal chain links",
+        "distractors": [
+          "It was operated by sailors from the navy",
+          "It could shade up to two-thirds of the arena",
+          "It used a complex system of ropes and winches"
+        ]
+      },
+      {
+        "question": "The Colosseum's shade covering was called the _____ and was made of linen.",
+        "type": "fill_blank",
+        "correctAnswer": "velarium",
+        "distractors": [
+          "tegmentum",
+          "canopeum",
+          "tentorum"
+        ]
+      },
+      {
+        "question": "The Roman Colosseum was completed in 80 CE and could seat approximately 50,000 spectators.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Architecture",
@@ -1425,6 +2895,56 @@
       "A solar eclipse that appeared to darken the theater itself",
       "A collapsing bridge over a river with realistic sound effects",
       "A submarine emerging from underwater directly at the viewers"
+    ],
+    "variants": [
+      {
+        "question": "What early film subject reportedly caused viewers to panic at one of the first screenings for a paying audience?",
+        "type": "forward",
+        "correctAnswer": "A train arriving at a station",
+        "distractors": [
+          "Ocean waves appearing to crash into the theater",
+          "A galloping cavalry charge toward the audience",
+          "A lion walking toward the camera lens"
+        ]
+      },
+      {
+        "question": "The audience panic at the Lumiere brothers' 1895 film screening was caused by the realistic image of what?",
+        "type": "reverse",
+        "correctAnswer": "A train appearing to rush toward them",
+        "distractors": [
+          "Workers leaving a factory at closing time",
+          "Ocean waves crashing on a rocky shore",
+          "A man sneezing directly at the camera"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the first film screenings?",
+        "type": "negative",
+        "correctAnswer": "The films were over 30 minutes long each",
+        "distractors": [
+          "They were shown by the Lumiere brothers in 1895",
+          "Audiences reportedly fled thinking the train was real",
+          "The screenings took place at the Grand Cafe in Paris"
+        ]
+      },
+      {
+        "question": "The Lumiere brothers screened their first films to a paying audience on December 28, _____.",
+        "type": "fill_blank",
+        "correctAnswer": "1895",
+        "distractors": [
+          "1875",
+          "1910",
+          "1852"
+        ]
+      },
+      {
+        "question": "The first film shown to a paying audience was less than one minute long.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1474,6 +2994,56 @@
       "The organizing council added six female judges to prevent future bias",
       "Competitors had to certify the identity of all their personal staff"
     ],
+    "variants": [
+      {
+        "question": "After discovering a woman disguised as a trainer at the ancient Olympics, what new rule did officials create?",
+        "type": "forward",
+        "correctAnswer": "Trainers had to appear naked to prove they were male",
+        "distractors": [
+          "Women were allowed to sit in a separate section",
+          "All spectators had to register before entering",
+          "Guards checked for disguises at every entrance"
+        ]
+      },
+      {
+        "question": "The rule requiring all trainers at the ancient Olympics to appear naked was created because of what incident?",
+        "type": "reverse",
+        "correctAnswer": "A mother disguised as a trainer was discovered",
+        "distractors": [
+          "A rival city sent spies disguised as trainers",
+          "Foreign women were caught betting on events",
+          "Male athletes refused to compete against clothed trainers"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Kallipateira at the ancient Olympics?",
+        "type": "negative",
+        "correctAnswer": "She was sentenced to death for her disguise",
+        "distractors": [
+          "She was from the Diagorid athletic family of Rhodes",
+          "Her son Peisirodos won his competition",
+          "She was discovered when she leaped a fence in excitement"
+        ]
+      },
+      {
+        "question": "Married women at the ancient Olympics faced what penalty if caught attending?",
+        "type": "context",
+        "correctAnswer": "Death by being thrown from a cliff",
+        "distractors": [
+          "A fine of fifty gold drachmas",
+          "Exile from their home city for life",
+          "Public humiliation in the town square"
+        ]
+      },
+      {
+        "question": "Kallipateira's father, brothers, and son were all Olympic champions.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Sports",
@@ -1521,6 +3091,56 @@
       "Shades of russet, which was a specific cheap cloth type",
       "Only the colors that God provided naturally in wool and linen",
       "Pale colors only, because bright dyes faded quickly and were impractical"
+    ],
+    "variants": [
+      {
+        "question": "What colors did medieval European peasants typically wear?",
+        "type": "forward",
+        "correctAnswer": "Bright, vivid colors from natural plant dyes",
+        "distractors": [
+          "Drab browns and grays from undyed wool",
+          "Only black or white as law required",
+          "Earth tones because dyes were too expensive"
+        ]
+      },
+      {
+        "question": "The Hollywood myth of medieval people wearing drab browns contradicts what archaeological evidence?",
+        "type": "reverse",
+        "correctAnswer": "Peasants wore brightly dyed clothing in vivid colors",
+        "distractors": [
+          "Only nobility could afford any clothing at all",
+          "All clothing was imported from the Middle East",
+          "Peasants wore only animal skins until the 1400s"
+        ]
+      },
+      {
+        "question": "Which is NOT true about medieval European clothing?",
+        "type": "negative",
+        "correctAnswer": "Natural dyes were expensive and only for the wealthy",
+        "distractors": [
+          "Peasants wore bright reds, greens, and blues",
+          "Weld, woad, and madder were common dye sources",
+          "The muted aesthetic comes from early Hollywood"
+        ]
+      },
+      {
+        "question": "Medieval Europeans used weld for yellow, madder for red, and _____ for blue dye.",
+        "type": "fill_blank",
+        "correctAnswer": "woad",
+        "distractors": [
+          "indigo",
+          "cobalt",
+          "lapis"
+        ]
+      },
+      {
+        "question": "The idea that medieval peasants dressed in drab browns and grays is a Hollywood myth.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1570,6 +3190,56 @@
       "As a lighthouse to guide traders along the Yamuna River",
       "To honor a mystical Sufi poet who inspired his spiritual journey"
     ],
+    "variants": [
+      {
+        "question": "Why did Mughal Emperor Shah Jahan commission the Taj Mahal?",
+        "type": "forward",
+        "correctAnswer": "As a mausoleum for his wife who died in childbirth",
+        "distractors": [
+          "As a victory monument after a military conquest",
+          "To prove Mughal supremacy over Ottoman Turkey",
+          "As a personal meditation retreat from the court"
+        ]
+      },
+      {
+        "question": "A grand white marble mausoleum built over 22 years by 20,000 workers was commissioned to honor whom?",
+        "type": "reverse",
+        "correctAnswer": "Mumtaz Mahal, Shah Jahan's beloved wife",
+        "distractors": [
+          "Akbar the Great, Shah Jahan's grandfather",
+          "A Sufi saint who inspired the emperor",
+          "Shah Jahan's eldest son killed in battle"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Taj Mahal?",
+        "type": "negative",
+        "correctAnswer": "Shah Jahan lived there as his primary palace",
+        "distractors": [
+          "It took 22 years and 20,000 workers to build",
+          "Shah Jahan was later imprisoned by his own son",
+          "It was built as a mausoleum for Mumtaz Mahal"
+        ]
+      },
+      {
+        "question": "Shah Jahan was imprisoned by his son Aurangzeb and could see the Taj Mahal from his window in _____ Fort.",
+        "type": "fill_blank",
+        "correctAnswer": "Agra",
+        "distractors": [
+          "Delhi",
+          "Lahore",
+          "Jaipur"
+        ]
+      },
+      {
+        "question": "Mumtaz Mahal, for whom the Taj Mahal was built, died during childbirth.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Architecture",
@@ -1617,6 +3287,56 @@
       "Over 800, primarily medical and legal terminology",
       "Between 50 and 75 words still in common modern usage",
       "Approximately 250 words borrowed from Latin and Greekified"
+    ],
+    "variants": [
+      {
+        "question": "Approximately how many English words still in use today were invented by Shakespeare?",
+        "type": "forward",
+        "correctAnswer": "Over 1,700",
+        "distractors": [
+          "Around 50",
+          "Roughly 500",
+          "More than 3,000"
+        ]
+      },
+      {
+        "question": "The earliest recorded uses of words like 'bedroom,' 'lonely,' and 'critic' are all attributed to which writer?",
+        "type": "reverse",
+        "correctAnswer": "William Shakespeare",
+        "distractors": [
+          "Geoffrey Chaucer",
+          "John Milton",
+          "King James I"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Shakespeare's contributions to English?",
+        "type": "negative",
+        "correctAnswer": "He borrowed most words directly from Latin texts",
+        "distractors": [
+          "He invented over 1,700 words still in use",
+          "He coined phrases like 'break the ice'",
+          "He converted nouns to verbs and vice versa"
+        ]
+      },
+      {
+        "question": "Shakespeare created new words by combining existing words, adding prefixes, and converting _____ to verbs.",
+        "type": "fill_blank",
+        "correctAnswer": "nouns",
+        "distractors": [
+          "adjectives",
+          "adverbs",
+          "pronouns"
+        ]
+      },
+      {
+        "question": "Shakespeare originated the phrase 'all that glitters is not gold.'",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1666,6 +3386,56 @@
       "Shaving was required in all urban areas for disease control",
       "Real hair was donated to temples as religious offerings"
     ],
+    "variants": [
+      {
+        "question": "Why did wealthy ancient Egyptians shave their heads and then wear wigs?",
+        "type": "forward",
+        "correctAnswer": "Shaving eliminated lice, while wigs displayed status",
+        "distractors": [
+          "Priests mandated shaving as a religious rite",
+          "Real hair attracted scorpions in the desert",
+          "Wigs were gifts from the pharaoh showing loyalty"
+        ]
+      },
+      {
+        "question": "Elaborate human-hair wigs scented with beeswax served what dual purpose in ancient Egypt?",
+        "type": "reverse",
+        "correctAnswer": "Displaying social status after hygienic head-shaving",
+        "distractors": [
+          "Protecting from sun damage in the desert heat",
+          "Disguising identity during temple ceremonies",
+          "Absorbing perfume oils for religious rituals"
+        ]
+      },
+      {
+        "question": "Which is NOT true about ancient Egyptian wig culture?",
+        "type": "negative",
+        "correctAnswer": "Only pharaohs were permitted to wear wigs",
+        "distractors": [
+          "Shaving the head prevented lice infestation",
+          "Wealthy Egyptians wore wigs of real human hair",
+          "Wig styles indicated profession, region, and rank"
+        ]
+      },
+      {
+        "question": "Poor ancient Egyptians wore wigs made of _____ or plant fiber instead of human hair.",
+        "type": "fill_blank",
+        "correctAnswer": "wool",
+        "distractors": [
+          "silk",
+          "cotton",
+          "papyrus"
+        ]
+      },
+      {
+        "question": "Ancient Egyptian wigs were sometimes scented with beeswax and perfumed resin.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Fashion",
@@ -1713,6 +3483,56 @@
       "Homer used 'wine-dark' because wine was the most common liquid Greeks saw",
       "The original manuscripts used a dye that has faded from a word for blue",
       "Ancient Greek philosophers believed the sea had no true color of its own"
+    ],
+    "variants": [
+      {
+        "question": "Why do scholars believe Homer described the sea as 'wine-dark' instead of blue?",
+        "type": "forward",
+        "correctAnswer": "Ancient Greek had no distinct word for blue",
+        "distractors": [
+          "Homer was colorblind and could not see blue",
+          "The Mediterranean was often discolored by algae",
+          "Wine was sacred and the sea was considered divine"
+        ]
+      },
+      {
+        "question": "The absence of a word for blue in many ancient languages — including Greek, Hebrew, and Chinese — suggests what about human color perception?",
+        "type": "reverse",
+        "correctAnswer": "Language categories affect ability to distinguish colors",
+        "distractors": [
+          "Ancient humans had different eye biology",
+          "Blue objects were extremely rare in nature",
+          "Ancient people were more often colorblind"
+        ]
+      },
+      {
+        "question": "Which is NOT true about color words in ancient languages?",
+        "type": "negative",
+        "correctAnswer": "All ancient civilizations had a word for blue",
+        "distractors": [
+          "Homer described the sky as 'bronze' colored",
+          "Ancient Egyptians were among the first with a blue word",
+          "The ancient Greek sea was described as 'wine-dark'"
+        ]
+      },
+      {
+        "question": "The ancient _____, who manufactured blue dye, were among the first civilizations to have a dedicated word for the color blue.",
+        "type": "fill_blank",
+        "correctAnswer": "Egyptians",
+        "distractors": [
+          "Greeks",
+          "Romans",
+          "Persians"
+        ]
+      },
+      {
+        "question": "Research suggests that without a linguistic category for a color, the brain has more difficulty distinguishing it.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1762,6 +3582,56 @@
       "His ability to adapt Star Wars into a stage musical",
       "His right to develop the Star Wars story into a TV series"
     ],
+    "variants": [
+      {
+        "question": "What did George Lucas sacrifice in exchange for keeping Star Wars sequel and merchandising rights?",
+        "type": "forward",
+        "correctAnswer": "His director's fee",
+        "distractors": [
+          "His share of box office profits",
+          "His screenplay copyright ownership",
+          "His credit as the film's writer"
+        ]
+      },
+      {
+        "question": "Retaining merchandising and sequel rights — a deal that eventually made George Lucas a billionaire — cost him what?",
+        "type": "reverse",
+        "correctAnswer": "His $500,000 director's salary",
+        "distractors": [
+          "His role directing the first sequel",
+          "His ownership of Industrial Light and Magic",
+          "His producer credit on the original film"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the creation of Star Wars?",
+        "type": "negative",
+        "correctAnswer": "Every major studio competed to produce it",
+        "distractors": [
+          "Multiple studios rejected the concept",
+          "Only 20th Century Fox agreed to produce it",
+          "Lucas kept merchandising and sequel rights"
+        ]
+      },
+      {
+        "question": "Disney purchased Lucasfilm in 2012 for $_____ billion.",
+        "type": "fill_blank",
+        "correctAnswer": "4.05",
+        "distractors": [
+          "1.5",
+          "10",
+          "2.2"
+        ]
+      },
+      {
+        "question": "George Lucas's film American Graffiti helped convince 20th Century Fox to take a chance on Star Wars.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Film",
@@ -1809,6 +3679,56 @@
       "It is twelve times longer than Dante's Divine Comedy",
       "It is twice as long as all surviving ancient Greek literature combined",
       "It is six times longer than the Iliad alone"
+    ],
+    "variants": [
+      {
+        "question": "How does the Mahabharata's length compare to Homer's Iliad and Odyssey combined?",
+        "type": "forward",
+        "correctAnswer": "It is ten times longer than both combined",
+        "distractors": [
+          "It is twice as long as both combined",
+          "It is about the same length as both",
+          "It is five times longer than both combined"
+        ]
+      },
+      {
+        "question": "At 1.8 million words and 100,000 couplets, what is recognized as the longest poem ever written?",
+        "type": "reverse",
+        "correctAnswer": "The ancient Indian epic Mahabharata",
+        "distractors": [
+          "The ancient Greek Iliad by Homer",
+          "The Persian epic Shahnameh by Ferdowsi",
+          "The Babylonian Epic of Gilgamesh"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Mahabharata?",
+        "type": "negative",
+        "correctAnswer": "It was written by a single known historical author",
+        "distractors": [
+          "It contains approximately 1.8 million words",
+          "It includes the Bhagavad Gita within it",
+          "It encompasses philosophical treatises and sub-stories"
+        ]
+      },
+      {
+        "question": "The Mahabharata tells the story of the war between the Pandava and _____ dynasties.",
+        "type": "fill_blank",
+        "correctAnswer": "Kaurava",
+        "distractors": [
+          "Gupta",
+          "Maurya",
+          "Chola"
+        ]
+      },
+      {
+        "question": "The Mahabharata famously states of itself: 'What is here is found elsewhere. What is not here is found nowhere.'",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",
@@ -1858,6 +3778,56 @@
       "Candles on cakes were a signal used by merchants at night markets",
       "The tradition came from Celtic Druids and spread through Greek trade routes"
     ],
+    "variants": [
+      {
+        "question": "What was the original purpose of lit cakes in ancient Greece that started the birthday candle tradition?",
+        "type": "forward",
+        "correctAnswer": "Offerings to the moon goddess Artemis at her temple",
+        "distractors": [
+          "Helping count the years of an elder's life",
+          "Keeping flies off food at outdoor festivals",
+          "Lighting the way for the dead to reach Hades"
+        ]
+      },
+      {
+        "question": "Round honey cakes called 'amphiphontes' lit with candles to resemble a glowing moon were offerings to which deity?",
+        "type": "reverse",
+        "correctAnswer": "Artemis, the Greek goddess of the moon",
+        "distractors": [
+          "Apollo, the Greek god of the sun",
+          "Demeter, the goddess of the harvest",
+          "Hera, the queen of the Greek gods"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the origin of birthday candles?",
+        "type": "negative",
+        "correctAnswer": "The tradition started for individual human birthdays",
+        "distractors": [
+          "Ancient Greeks celebrated birthdays of gods",
+          "Smoke from candles was believed to carry prayers",
+          "Moon-shaped cakes were brought to Artemis's temple"
+        ]
+      },
+      {
+        "question": "The Greek honey cakes used in the birthday candle tradition were called '_____,' meaning 'shining on both sides.'",
+        "type": "fill_blank",
+        "correctAnswer": "amphiphontes",
+        "distractors": [
+          "plerophontes",
+          "kallichoros",
+          "selenophontes"
+        ]
+      },
+      {
+        "question": "The birthday candle tradition became personalized for individual birthdays during the medieval period.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
     "category": [
       "Culture",
       "Traditions",
@@ -1905,6 +3875,56 @@
       "To protect the foot from snakes when walking through grass",
       "As footwear for professional roof-walkers in Chinese cities",
       "To help rice farmers in Asia keep balance on flooded paddy walls"
+    ],
+    "variants": [
+      {
+        "question": "Why were high heels originally invented?",
+        "type": "forward",
+        "correctAnswer": "To help cavalry soldiers grip stirrups while shooting",
+        "distractors": [
+          "To keep feet clean above muddy medieval streets",
+          "To make royalty appear taller at court ceremonies",
+          "As medical treatment for flat feet"
+        ]
+      },
+      {
+        "question": "Persian cavalry soldiers needing to lock their feet in stirrups while shooting arrows inspired the invention of what fashion item?",
+        "type": "reverse",
+        "correctAnswer": "High-heeled shoes",
+        "distractors": [
+          "Reinforced leather boots",
+          "Armored shin guards",
+          "Ankle-length riding chaps"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the history of high heels?",
+        "type": "negative",
+        "correctAnswer": "They were originally designed for women",
+        "distractors": [
+          "The earliest high heels appear in Persian cavalry art",
+          "European men adopted heels as a status symbol",
+          "Women began wearing heels to appear more masculine"
+        ]
+      },
+      {
+        "question": "High heels became feminized only in the _____ century as Enlightenment rationalism changed fashion norms.",
+        "type": "fill_blank",
+        "correctAnswer": "18th",
+        "distractors": [
+          "15th",
+          "20th",
+          "12th"
+        ]
+      },
+      {
+        "question": "The earliest high-heeled shoes date to around 1000 CE and appear in Persian cavalry illustrations.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
     ],
     "category": [
       "Culture",

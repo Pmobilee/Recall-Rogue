@@ -181,14 +181,6 @@ async function main() {
       .filter(f => f.endsWith('.json'))
       .map(f => path.join(SEED_DIR, f));
 
-    // Also read from subdirectories (e.g. fossils/)
-    const FOSSIL_SEED_DIR = path.join(SEED_DIR, 'fossils');
-    if (fs.existsSync(FOSSIL_SEED_DIR)) {
-      const fossilFiles = fs.readdirSync(FOSSIL_SEED_DIR)
-        .filter(f => f.endsWith('.json'))
-        .map(f => path.join(FOSSIL_SEED_DIR, f));
-      seedFiles.push(...fossilFiles);
-    }
   } catch (err) {
     console.error(`[ERROR] Could not read seed directory: ${SEED_DIR}`);
     console.error(err.message);

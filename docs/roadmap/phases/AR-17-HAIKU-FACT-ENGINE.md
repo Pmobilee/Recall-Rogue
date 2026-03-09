@@ -342,6 +342,13 @@ Do NOT rate a fact "kid" if it contains medical terminology beyond basic health 
 5. Output ONLY valid JSON (no markdown, no explanations).
 ```
 
+#### Mandatory: Question Variants
+Every generated fact MUST include a `variants` array with 4-6 entries. Each variant has:
+- `question` (string), `type` (forward|reverse|negative|context|fill_blank|true_false), `correctAnswer` (string, under 60 chars), `distractors` (3 strings, similar length to correctAnswer)
+- Always include `forward` + at least 2 other types
+- All answer options within a variant must be similar length (within ~20% char count)
+- This is non-negotiable — facts without variants will fail validation
+
 ---
 
 **Domain-Specific Instructions** (insert into template above for each prompt):

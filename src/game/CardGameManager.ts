@@ -32,7 +32,7 @@ export class CardGameManager {
       height: 844,
       backgroundColor: '#0D1117',
       scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
       scene: [BootScene, CombatScene],

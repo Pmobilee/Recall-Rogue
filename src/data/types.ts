@@ -82,6 +82,14 @@ export interface PendingArtifact {
   minedAt: number
 }
 
+/** A question variant for knowledge facts (vocab cards use their own system) */
+export interface QuestionVariant {
+  question: string;
+  type: 'forward' | 'reverse' | 'negative' | 'context' | 'fill_blank' | 'true_false';
+  correctAnswer: string;  // May differ from fact.correctAnswer for reverse questions
+  distractors?: string[]; // Variant-specific distractors (optional, falls back to fact.distractors)
+}
+
 /** A single learnable fact/word in the database */
 export interface Fact {
   id: string
@@ -97,6 +105,7 @@ export interface Fact {
   quizQuestion: string
   correctAnswer: string
   distractors: string[]       // 8-25 plausible wrong answers
+  variants?: QuestionVariant[]; // Question variants for knowledge facts (vocab excluded)
 
   // Classification
   category: string[]          // Hierarchical: ["Language", "Japanese", "N3"]

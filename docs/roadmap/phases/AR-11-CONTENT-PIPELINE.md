@@ -18,6 +18,7 @@ From GAME_DESIGN.md Section 30 (Content Management):
 > - Difficulty in 1-3 range
 > - No obvious duplicates (fuzzy match on question text)
 > - Age rating appropriate for domain
+> - Question variants generated (4-6 per fact, types: forward/reverse/negative/context/fill_blank/true_false)
 
 From docs/RESEARCH/terra-miner-spec.md:
 

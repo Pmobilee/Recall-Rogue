@@ -6,7 +6,7 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
 import { buildRunPool } from './runPoolBuilder';
-import { addCardToDeck, createDeck, insertCardWithDelay } from './deckManager';
+import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState, onEncounterComplete } from './gameFlowController';
@@ -42,7 +42,9 @@ function freshTurnState(ts: TurnState): TurnState {
       hand: [...ts.deck.hand],
       drawPile: [...ts.deck.drawPile],
       discardPile: [...ts.deck.discardPile],
+      factCooldown: [...ts.deck.factCooldown],
     },
+    encounterAnsweredFacts: [...ts.encounterAnsweredFacts],
   };
 }
 
@@ -228,6 +230,8 @@ export function startEncounterForRoom(enemyId?: string): void {
   const enemy = createEnemy(template, run.floor.currentFloor);
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
+  // Tick encounter cooldowns at the start of each new encounter
+  tickFactCooldowns(activeDeck);
   turnState.playerState.hp = run.playerHp;
   turnState.apMax = Math.max(2, run.startingAp);
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
@@ -445,6 +449,10 @@ export function handlePlayCard(
   }
 
   if (result.enemyDefeated) {
+    // Record answered facts for cooldown before encounter ends
+    if (activeDeck && result.turnState.encounterAnsweredFacts.length > 0) {
+      addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
+    }
     setTimeout(() => {
       activeTurnState.set(null);
       onEncounterComplete('victory');
@@ -509,6 +517,10 @@ export function handleEndTurn(): void {
   }
 
   if (result.playerDefeated) {
+    // Record answered facts for cooldown before encounter ends
+    if (activeDeck && result.turnState.encounterAnsweredFacts.length > 0) {
+      addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
+    }
     setTimeout(() => {
       activeTurnState.set(null);
       activeDeck = null;

@@ -74,6 +74,10 @@ export interface CardRunState {
   hintsRemaining: number;
   /** Currency (dust) earned during this run */
   currency: number;
+  /** Pool of fact IDs available for assignment to card slots this encounter */
+  factPool: string[];
+  /** Facts currently on cooldown (recently answered) — see encounter cooldown */
+  factCooldown: { factId: string; encountersRemaining: number }[];
 }
 
 // === Deck Stats ===

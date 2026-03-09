@@ -13,6 +13,53 @@
       "Cleopatra lived before most ancient Greek philosophers",
       "The pyramids are the oldest human structures by 10,000 years"
     ],
+    "variants": [
+      {
+        "question": "What surprising fact is true about Cleopatra and the timeline of ancient history?",
+        "type": "forward",
+        "correctAnswer": "She lived closer to the Moon landing than to the pyramids",
+        "distractors": [
+          "She ruled Egypt when the pyramids were first built",
+          "She lived midway between the pyramids and today"
+        ]
+      },
+      {
+        "question": "The Moon landing in 1969 was closer in time to which historical figure than the Great Pyramid was?",
+        "type": "reverse",
+        "correctAnswer": "Cleopatra, who ruled Egypt around 30 BC",
+        "distractors": [
+          "Ramesses II, who built Abu Simbel temple",
+          "Khufu, who commissioned the Great Pyramid"
+        ]
+      },
+      {
+        "question": "Which statement is NOT true about ancient Egyptian timelines?",
+        "type": "negative",
+        "correctAnswer": "Cleopatra watched the Great Pyramid being built",
+        "distractors": [
+          "Cleopatra lived closer to the Moon landing than to the pyramids",
+          "Over 2,500 years separate the pyramids from Cleopatra's reign"
+        ]
+      },
+      {
+        "question": "A history student is amazed to discover that Cleopatra is separated from the Great Pyramid by 2,500 years. What else surprises them?",
+        "type": "context",
+        "correctAnswer": "She is only 2,000 years from the Moon landing",
+        "distractors": [
+          "She is over 4,000 years from the Moon landing",
+          "She ruled during the pyramid construction era"
+        ]
+      },
+      {
+        "question": "Cleopatra lived closer to the _____ than to the construction of the Great Pyramid.",
+        "type": "fill_blank",
+        "correctAnswer": "Moon landing",
+        "distractors": [
+          "Roman Republic",
+          "fall of Troy"
+        ]
+      }
+    ],
     "category": [
       "History"
     ],

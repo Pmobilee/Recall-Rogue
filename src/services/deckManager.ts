@@ -35,6 +35,8 @@ export function createDeck(pool: Card[]): CardRunState {
     playerShield: 0,
     hintsRemaining: HINTS_PER_ENCOUNTER,
     currency: 0,
+    factPool: pool.map(c => c.factId),
+    factCooldown: [],
   };
 }
 
@@ -84,6 +86,45 @@ export function drawHand(deck: CardRunState, count?: number): Card[] {
       deck.hand.push(card);
       drawn.push(card);
       if (card.mechanicId) mechanicsInHand.add(card.mechanicId);
+    }
+  }
+
+  // === Fact-Card Shuffling ===
+  // Reassign facts to drawn card slots from the available fact pool
+  if (deck.factPool.length > 0 && drawn.length > 0) {
+    const availableFacts = deck.factPool.filter(
+      fId => !deck.factCooldown.some(c => c.factId === fId)
+    );
+
+    // Edge case: if cooldown removes too many facts, reduce cooldown
+    let factsToUse = availableFacts;
+    if (factsToUse.length < drawn.length) {
+      // If available facts < hand size, reduce cooldown to 1
+      const relaxedFacts = deck.factPool.filter(
+        fId => !deck.factCooldown.some(c => c.factId === fId && c.encountersRemaining > 1)
+      );
+      if (relaxedFacts.length >= drawn.length) {
+        factsToUse = relaxedFacts;
+      } else {
+        // If still not enough, disable cooldown entirely
+        factsToUse = [...deck.factPool];
+        if (factsToUse.length < 3) {
+          console.warn('[deckManager] fact pool exhaustion — cooldown disabled');
+        }
+      }
+    }
+
+    // Shuffle available facts
+    const shuffledFacts = [...factsToUse];
+    for (let i = shuffledFacts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledFacts[i], shuffledFacts[j]] = [shuffledFacts[j], shuffledFacts[i]];
+    }
+
+    // Pair each drawn card slot with a random fact
+    for (let i = 0; i < drawn.length; i++) {
+      const factId = shuffledFacts[i % shuffledFacts.length];
+      drawn[i].factId = factId;
     }
   }
 
@@ -199,6 +240,29 @@ export function addCardToDeck(deck: CardRunState, card: Card, place: 'top' | 'bo
  *
  * Draw pile is stack-mode (`pop` from the end), so lower indices are deeper.
  */
+/**
+ * Adds answered fact IDs to the cooldown list (3 encounters).
+ * Call at the end of each encounter.
+ */
+export function addFactsToCooldown(deck: CardRunState, answeredFactIds: string[]): void {
+  for (const factId of answeredFactIds) {
+    // Don't add duplicates
+    if (!deck.factCooldown.some(c => c.factId === factId)) {
+      deck.factCooldown.push({ factId, encountersRemaining: 3 });
+    }
+  }
+}
+
+/**
+ * Decrements encounter cooldowns and removes expired entries.
+ * Call at the start of each new encounter.
+ */
+export function tickFactCooldowns(deck: CardRunState): void {
+  deck.factCooldown = deck.factCooldown
+    .map(c => ({ ...c, encountersRemaining: c.encountersRemaining - 1 }))
+    .filter(c => c.encountersRemaining > 0);
+}
+
 export function insertCardWithDelay(deck: CardRunState, card: Card, minDelayCards: number): void {
   if (deck.drawPile.length === 0) {
     deck.drawPile.push(card);

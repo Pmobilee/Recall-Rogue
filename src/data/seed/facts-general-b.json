@@ -45,7 +45,59 @@
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Oxford predates the Aztec Empire. While students were failing exams in England, the Aztecs hadn't been invented yet.",
-    "visualDescription": "Ancient stone university buildings with Gothic spires standing tall, while in the distant background an Aztec pyramid is just beginning to be constructed"
+    "visualDescription": "Ancient stone university buildings with Gothic spires standing tall, while in the distant background an Aztec pyramid is just beginning to be constructed",
+    "variants": [
+      {
+        "question": "Which institution predates the Aztec Empire by over two centuries?",
+        "type": "forward",
+        "correctAnswer": "Oxford University",
+        "distractors": [
+          "Cambridge University",
+          "The University of Bologna",
+          "The Sorbonne"
+        ]
+      },
+      {
+        "question": "The Aztec capital Tenochtitlan was founded in 1325. Which famous university was already over 200 years old by then?",
+        "type": "reverse",
+        "correctAnswer": "Oxford University",
+        "distractors": [
+          "Harvard University",
+          "University of Paris",
+          "University of Salamanca"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Oxford University and the Aztec Empire?",
+        "type": "negative",
+        "correctAnswer": "They were founded in the same century",
+        "distractors": [
+          "Oxford predates the Aztec Empire",
+          "Teaching at Oxford began around 1096 AD",
+          "Tenochtitlan was founded in 1325"
+        ]
+      },
+      {
+        "question": "A history teacher wants to show students how old Oxford is. She compares it to ___.",
+        "type": "context",
+        "correctAnswer": "The Aztec Empire, which it predates by centuries",
+        "distractors": [
+          "The Roman Empire, which came much later",
+          "Harvard, which was founded first",
+          "Cambridge, which is centuries older"
+        ]
+      },
+      {
+        "question": "Oxford University was already active when the ______ Empire was founded in 1325.",
+        "type": "fill_blank",
+        "correctAnswer": "Aztec",
+        "distractors": [
+          "Roman",
+          "Ottoman",
+          "Mongol"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-002",
@@ -93,7 +145,67 @@
     "ageRating": "kid",
     "sourceName": "Guinness World Records",
     "gaiaComment": "Thirty-eight minutes. The shortest war ever fought. Some meetings last longer.",
-    "visualDescription": "A British warship firing a single cannon volley at a small island fortress flying a red flag, with a clock showing only 38 minutes elapsed"
+    "visualDescription": "A British warship firing a single cannon volley at a small island fortress flying a red flag, with a clock showing only 38 minutes elapsed",
+    "variants": [
+      {
+        "question": "How long did the Anglo-Zanzibar War of 1896 last?",
+        "type": "forward",
+        "correctAnswer": "About 38 to 45 minutes",
+        "distractors": [
+          "About three hours",
+          "About one full day",
+          "About six hours"
+        ]
+      },
+      {
+        "question": "Which war holds the Guinness World Record for the shortest war ever fought?",
+        "type": "reverse",
+        "correctAnswer": "The Anglo-Zanzibar War of 1896",
+        "distractors": [
+          "The Six-Day War of 1967",
+          "The Football War of 1969",
+          "The Falklands War of 1982"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Anglo-Zanzibar War?",
+        "type": "negative",
+        "correctAnswer": "It lasted several days of intense fighting",
+        "distractors": [
+          "It began on 27 August 1896 in East Africa",
+          "Britain won the war against Zanzibar",
+          "It started at approximately 9 AM that day"
+        ]
+      },
+      {
+        "question": "A student researching record-breaking conflicts discovers a war shorter than most school lessons. This war was between ___.",
+        "type": "context",
+        "correctAnswer": "Britain and Zanzibar in 1896",
+        "distractors": [
+          "France and Prussia in 1870",
+          "Spain and the USA in 1898",
+          "Britain and Argentina in 1982"
+        ]
+      },
+      {
+        "question": "The shortest war in history lasted about 38 to 45 minutes and was fought between Britain and ______.",
+        "type": "fill_blank",
+        "correctAnswer": "Zanzibar",
+        "distractors": [
+          "Madagascar",
+          "Samoa",
+          "Tonga"
+        ]
+      },
+      {
+        "question": "The Anglo-Zanzibar War lasted less than one hour.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-003",
@@ -141,7 +253,57 @@
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "The Great Wall is not visible from space. Sorry. Astronauts checked. The myth is better, but no.",
-    "visualDescription": "An astronaut floating above Earth looking down at the Great Wall of China, which is completely invisible among the vast landscape far below"
+    "visualDescription": "An astronaut floating above Earth looking down at the Great Wall of China, which is completely invisible among the vast landscape far below",
+    "variants": [
+      {
+        "question": "Can the Great Wall of China be seen from space without optical aids?",
+        "type": "forward",
+        "correctAnswer": "No, it is far too narrow to see unaided",
+        "distractors": [
+          "Yes, it is clearly visible from orbit",
+          "Yes, but only during daytime passes",
+          "Yes, Chinese astronauts confirmed it"
+        ]
+      },
+      {
+        "question": "A Chinese astronaut reported he could not see a certain famous structure from orbit. Which structure was it?",
+        "type": "reverse",
+        "correctAnswer": "The Great Wall of China",
+        "distractors": [
+          "The Forbidden City in Beijing",
+          "The Three Gorges Dam",
+          "The Terracotta Army site"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Great Wall from space?",
+        "type": "negative",
+        "correctAnswer": "Astronauts have confirmed it is visible",
+        "distractors": [
+          "The wall is only 4 to 9 metres wide",
+          "It blends into the surrounding terrain",
+          "Yang Liwei could not see it from orbit"
+        ]
+      },
+      {
+        "question": "The Great Wall of China is only 4 to 9 metres wide on average.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "question": "The Great Wall is often said to be visible from space, but its width of only ______ makes this impossible.",
+        "type": "fill_blank",
+        "correctAnswer": "4 to 9 metres",
+        "distractors": [
+          "50 to 100 metres",
+          "200 to 300 metres",
+          "1 to 2 kilometres"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-004",
@@ -189,7 +351,59 @@
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "Napoleon wasn't short. British propaganda did that. He was average height. The propaganda was better PR than the truth.",
-    "visualDescription": "A stylized figure of Napoleon standing at average height among his soldiers, a broken measuring stick at his feet dispelling the shortness myth"
+    "visualDescription": "A stylized figure of Napoleon standing at average height among his soldiers, a broken measuring stick at his feet dispelling the shortness myth",
+    "variants": [
+      {
+        "question": "What was Napoleon Bonaparte's actual height in modern measurement?",
+        "type": "forward",
+        "correctAnswer": "About 168 to 170 cm, close to average",
+        "distractors": [
+          "About 155 cm, genuinely short",
+          "About 180 cm, above average",
+          "About 160 cm, slightly below average"
+        ]
+      },
+      {
+        "question": "The myth of a famously 'short' leader originated from British propaganda and a unit conversion error. Who was this leader?",
+        "type": "reverse",
+        "correctAnswer": "Napoleon Bonaparte",
+        "distractors": [
+          "King Louis XVI of France",
+          "Alexander the Great",
+          "Julius Caesar"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Napoleon's height?",
+        "type": "negative",
+        "correctAnswer": "He was significantly shorter than average",
+        "distractors": [
+          "His height in French units was misconverted",
+          "British caricaturists exaggerated his shortness",
+          "He was about 168 to 170 cm tall"
+        ]
+      },
+      {
+        "question": "The 'short Napoleon' myth came from a conversion error between French and ______ measurement units.",
+        "type": "fill_blank",
+        "correctAnswer": "English",
+        "distractors": [
+          "Metric",
+          "Spanish",
+          "Prussian"
+        ]
+      },
+      {
+        "question": "A museum guide explains that Napoleon was actually average height for his era. The 'short' image came from ___.",
+        "type": "context",
+        "correctAnswer": "British wartime propaganda and a unit error",
+        "distractors": [
+          "French court records describing him",
+          "Medical reports after his death",
+          "His own letters expressing insecurity"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-005",
@@ -237,7 +451,57 @@
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "The Library of Alexandria wasn't destroyed in one fire. It just... faded away over centuries. History is boring like that.",
-    "visualDescription": "The grand Library of Alexandria with scrolls on towering shelves, some sections darkened and crumbling while scholars still work in the lit areas"
+    "visualDescription": "The grand Library of Alexandria with scrolls on towering shelves, some sections darkened and crumbling while scholars still work in the lit areas",
+    "variants": [
+      {
+        "question": "How was the Library of Alexandria most likely destroyed?",
+        "type": "forward",
+        "correctAnswer": "Gradually through multiple incidents over centuries",
+        "distractors": [
+          "In a single great fire by Julius Caesar",
+          "By Arab invaders in 641 AD",
+          "By an earthquake in 365 AD"
+        ]
+      },
+      {
+        "question": "Which famous institution declined through neglect, underfunding, and multiple partial destructions rather than one dramatic event?",
+        "type": "reverse",
+        "correctAnswer": "The Library of Alexandria",
+        "distractors": [
+          "The Colosseum in Rome",
+          "The Hanging Gardens of Babylon",
+          "The Lighthouse of Alexandria"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Library of Alexandria's destruction?",
+        "type": "negative",
+        "correctAnswer": "It was destroyed in a single catastrophic fire",
+        "distractors": [
+          "Caesar's fire in 48 BC may have damaged it",
+          "The Serapeum was destroyed in 391 AD",
+          "It suffered multiple incidents over centuries"
+        ]
+      },
+      {
+        "question": "The Library of Alexandria was destroyed in one dramatic fire.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "question": "Historians believe the Library of Alexandria declined through ______, not a single dramatic fire.",
+        "type": "fill_blank",
+        "correctAnswer": "multiple incidents over centuries",
+        "distractors": [
+          "a deliberate Roman policy",
+          "flooding from the Mediterranean",
+          "a single volcanic eruption"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-006",
@@ -285,7 +549,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The bottles were green, not the drink. One letter of clarification away from being less interesting.",
-    "visualDescription": "An old-fashioned apothecary bottle filled with dark green liquid labeled with vintage Coca-Cola-style lettering, surrounded by coca leaves and kola nuts"
+    "visualDescription": "An old-fashioned apothecary bottle filled with dark green liquid labeled with vintage Coca-Cola-style lettering, surrounded by coca leaves and kola nuts",
+    "variants": [
+      {
+        "question": "What was originally green about Coca-Cola?",
+        "type": "forward",
+        "correctAnswer": "The glass bottles were green-tinted",
+        "distractors": [
+          "The drink itself was green",
+          "The company logo was green",
+          "The bottle caps were green"
+        ]
+      },
+      {
+        "question": "Early Coca-Cola bottles had a distinctive tint due to the minerals in the glass. What colour was it?",
+        "type": "reverse",
+        "correctAnswer": "Green",
+        "distractors": [
+          "Amber",
+          "Clear",
+          "Blue"
+        ]
+      },
+      {
+        "question": "Which is NOT true about early Coca-Cola?",
+        "type": "negative",
+        "correctAnswer": "The drink itself had a green colour",
+        "distractors": [
+          "The glass bottles were green-tinted",
+          "The drink has always been brown",
+          "The green tint came from the glass materials"
+        ]
+      },
+      {
+        "question": "The drink inside early Coca-Cola bottles was green.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "question": "Early Coca-Cola bottles were made from ______-tinted glass due to naturally occurring minerals in the silica.",
+        "type": "fill_blank",
+        "correctAnswer": "green",
+        "distractors": [
+          "amber",
+          "clear",
+          "brown"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-007",
@@ -333,7 +647,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The first computer bug was an actual moth. Taped into the log. Still at the Smithsonian. Peak documentation.",
-    "visualDescription": "A large brown moth trapped between copper relay contacts inside a massive early computer, with vacuum tubes glowing warmly in the background"
+    "visualDescription": "A large brown moth trapped between copper relay contacts inside a massive early computer, with vacuum tubes glowing warmly in the background",
+    "variants": [
+      {
+        "question": "What was the first computer 'bug' discovered in 1947?",
+        "type": "forward",
+        "correctAnswer": "A moth trapped in a relay of the Mark II",
+        "distractors": [
+          "A software error in ENIAC",
+          "A wiring mistake in a transistor",
+          "A cockroach in a cooling system"
+        ]
+      },
+      {
+        "question": "The term 'debugging' in computing traces back to an insect found in a relay. Which computer was it?",
+        "type": "reverse",
+        "correctAnswer": "The Harvard Mark II",
+        "distractors": [
+          "ENIAC at UPenn",
+          "The Manchester Baby",
+          "The Colossus at Bletchley"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the first computer bug?",
+        "type": "negative",
+        "correctAnswer": "It was a software error in a punch card",
+        "distractors": [
+          "It was a moth trapped in a relay",
+          "Grace Hopper's team discovered it",
+          "The logbook is preserved at the Smithsonian"
+        ]
+      },
+      {
+        "question": "A computer science student learns about the origin of 'debugging'. The first bug was a ______ found in Relay #70.",
+        "type": "fill_blank",
+        "correctAnswer": "moth",
+        "distractors": [
+          "beetle",
+          "spider",
+          "ant"
+        ]
+      },
+      {
+        "question": "The first computer bug was found on September 9, 1947.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-008",
@@ -381,7 +745,59 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Urine contains ammonia. Romans used it as toothpaste. The Emperor taxed the trade. Entrepreneurship.",
-    "visualDescription": "An ancient Roman figure at a marble basin holding an amphora of yellow liquid, using it to clean gleaming white teeth with a reluctant expression"
+    "visualDescription": "An ancient Roman figure at a marble basin holding an amphora of yellow liquid, using it to clean gleaming white teeth with a reluctant expression",
+    "variants": [
+      {
+        "question": "Why did ancient Romans use urine for dental hygiene?",
+        "type": "forward",
+        "correctAnswer": "It contains ammonia, an effective cleaning agent",
+        "distractors": [
+          "It was a religious purification ritual",
+          "It was the only available liquid",
+          "It contained calcium for enamel"
+        ]
+      },
+      {
+        "question": "The ammonia in this surprising substance made it useful as toothpaste in ancient Rome. What was it?",
+        "type": "reverse",
+        "correctAnswer": "Urine",
+        "distractors": [
+          "Vinegar",
+          "Honey",
+          "Wine"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Roman dental hygiene using urine?",
+        "type": "negative",
+        "correctAnswer": "Romans used it as a religious ritual only",
+        "distractors": [
+          "Urine contains ammonia",
+          "Romans imported Portuguese urine",
+          "Emperor Vespasian taxed the urine trade"
+        ]
+      },
+      {
+        "question": "Emperor ______ taxed the urine trade in ancient Rome, which is why Italian public toilets are sometimes named after him.",
+        "type": "fill_blank",
+        "correctAnswer": "Vespasian",
+        "distractors": [
+          "Augustus",
+          "Tiberius",
+          "Hadrian"
+        ]
+      },
+      {
+        "question": "An archaeologist explains to tourists why Roman latrines collected urine. It was used for ___.",
+        "type": "context",
+        "correctAnswer": "Dental hygiene and cloth cleaning",
+        "distractors": [
+          "Religious ceremonies and blessings",
+          "Watering gardens and crops",
+          "Mixing concrete for buildings"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-009",
@@ -429,7 +845,57 @@
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Horned Viking helmets came from an opera costume designer in 1876. Halloween owes an apology to Scandinavia.",
-    "visualDescription": "A real Viking warrior wearing a simple rounded iron helmet without horns, standing next to a theatrical costume rack with a comically horned helmet"
+    "visualDescription": "A real Viking warrior wearing a simple rounded iron helmet without horns, standing next to a theatrical costume rack with a comically horned helmet",
+    "variants": [
+      {
+        "question": "Where did the idea of Vikings wearing horned helmets originate?",
+        "type": "forward",
+        "correctAnswer": "A 19th-century opera costume designer",
+        "distractors": [
+          "Archaeological finds in Scandinavia",
+          "Medieval manuscripts of Norse warriors",
+          "Roman descriptions of Germanic tribes"
+        ]
+      },
+      {
+        "question": "Carl Emil Doepler designed theatrical costumes for Wagner's Ring Cycle in 1876 that created a lasting myth about which group of warriors?",
+        "type": "reverse",
+        "correctAnswer": "Vikings",
+        "distractors": [
+          "Gladiators",
+          "Celts",
+          "Spartans"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Viking helmets?",
+        "type": "negative",
+        "correctAnswer": "Archaeological evidence shows they wore horns",
+        "distractors": [
+          "Real Viking helmets were simple iron or leather",
+          "The Gjermundbu helmet has no horns",
+          "The horned image came from 19th-century opera"
+        ]
+      },
+      {
+        "question": "The only near-complete Viking helmet ever found is the ______ helmet from Norway.",
+        "type": "fill_blank",
+        "correctAnswer": "Gjermundbu",
+        "distractors": [
+          "Sutton Hoo",
+          "Vendel",
+          "Coppergate"
+        ]
+      },
+      {
+        "question": "Viking warriors wore horned helmets in battle.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-010",
@@ -476,7 +942,57 @@
     "ageRating": "teen",
     "sourceName": "Wikipedia",
     "gaiaComment": "The guillotine and Star Wars existed at the same time. France. 1977. Let that land.",
-    "visualDescription": "A guillotine blade gleaming under French lamplight on one side, while a movie theater marquee showing a space adventure film glows on the other side"
+    "visualDescription": "A guillotine blade gleaming under French lamplight on one side, while a movie theater marquee showing a space adventure film glows on the other side",
+    "variants": [
+      {
+        "question": "In what year was the guillotine last used in France?",
+        "type": "forward",
+        "correctAnswer": "1977",
+        "distractors": [
+          "1945",
+          "1960",
+          "1981"
+        ]
+      },
+      {
+        "question": "A famous American science fiction film premiered the same year France last used this execution method. What was the method?",
+        "type": "reverse",
+        "correctAnswer": "The guillotine",
+        "distractors": [
+          "Hanging",
+          "Firing squad",
+          "Lethal injection"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the guillotine in France?",
+        "type": "negative",
+        "correctAnswer": "It was last used before World War II ended",
+        "distractors": [
+          "It was last used in 1977",
+          "France abolished capital punishment in 1981",
+          "Star Wars premiered the same year"
+        ]
+      },
+      {
+        "question": "France abolished capital punishment in ______ under President Mitterrand.",
+        "type": "fill_blank",
+        "correctAnswer": "1981",
+        "distractors": [
+          "1977",
+          "1968",
+          "1990"
+        ]
+      },
+      {
+        "question": "The guillotine was still in use in France when Star Wars premiered.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-011",
@@ -524,7 +1040,57 @@
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "The Great Fire of London: six confirmed deaths. Thirteen thousand houses. History is strange.",
-    "visualDescription": "Medieval London buildings engulfed in orange flames and thick smoke, with tiny figures escaping safely across the Thames in small wooden boats"
+    "visualDescription": "Medieval London buildings engulfed in orange flames and thick smoke, with tiny figures escaping safely across the Thames in small wooden boats",
+    "variants": [
+      {
+        "question": "How many confirmed deaths resulted from the Great Fire of London in 1666?",
+        "type": "forward",
+        "correctAnswer": "As few as six confirmed deaths",
+        "distractors": [
+          "Hundreds of confirmed deaths",
+          "About fifty confirmed deaths",
+          "Thousands of confirmed deaths"
+        ]
+      },
+      {
+        "question": "A four-day fire in 1666 destroyed 13,200 houses and 87 churches but had surprisingly few confirmed fatalities. Which fire was this?",
+        "type": "reverse",
+        "correctAnswer": "The Great Fire of London",
+        "distractors": [
+          "The Great Fire of Rome",
+          "The Chicago Fire of 1871",
+          "The Hamburg Firestorm of 1943"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Great Fire of London?",
+        "type": "negative",
+        "correctAnswer": "Thousands of people died in the blaze",
+        "distractors": [
+          "It started in a bakery on Pudding Lane",
+          "Only six deaths were officially confirmed",
+          "It burned for four days in September 1666"
+        ]
+      },
+      {
+        "question": "The Great Fire of London destroyed over 13,000 houses but resulted in only six confirmed deaths.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "question": "The Great Fire of London started in a bakery on ______ Lane.",
+        "type": "fill_blank",
+        "correctAnswer": "Pudding",
+        "distractors": [
+          "Baker",
+          "Thames",
+          "Fleet"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-012",
@@ -572,7 +1138,59 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Ancient Egyptians packed wounds with moldy bread. Three thousand years before penicillin. Empirical medicine before microscopes.",
-    "visualDescription": "An ancient Egyptian healer pressing a piece of fuzzy blue-green moldy bread against a wound on a patient's arm inside a torchlit sandstone chamber"
+    "visualDescription": "An ancient Egyptian healer pressing a piece of fuzzy blue-green moldy bread against a wound on a patient's arm inside a torchlit sandstone chamber",
+    "variants": [
+      {
+        "question": "What ancient antimicrobial treatment did Egyptians use on wounds?",
+        "type": "forward",
+        "correctAnswer": "Mouldy bread containing Penicillium mould",
+        "distractors": [
+          "Crushed garlic and olive oil",
+          "Clay mixed with river water",
+          "Heated sand applied directly"
+        ]
+      },
+      {
+        "question": "Three thousand years before penicillin was discovered, an ancient civilization used Penicillium mould empirically. Which civilization?",
+        "type": "reverse",
+        "correctAnswer": "Ancient Egyptians",
+        "distractors": [
+          "Ancient Greeks",
+          "Ancient Romans",
+          "Ancient Chinese"
+        ]
+      },
+      {
+        "question": "Which is NOT true about ancient Egyptian wound treatment?",
+        "type": "negative",
+        "correctAnswer": "They understood microbiology and bacteria",
+        "distractors": [
+          "They used mouldy bread on infections",
+          "The Ebers Papyrus describes the treatment",
+          "The mould produces penicillin naturally"
+        ]
+      },
+      {
+        "question": "The ______ Papyrus, dating to around 1550 BC, describes applying mouldy bread to infections.",
+        "type": "fill_blank",
+        "correctAnswer": "Ebers",
+        "distractors": [
+          "Rhind",
+          "Kahun",
+          "Harris"
+        ]
+      },
+      {
+        "question": "A medical historian explains how ancient knowledge anticipated modern antibiotics by using ___.",
+        "type": "context",
+        "correctAnswer": "Mouldy bread on infected wounds",
+        "distractors": [
+          "Heated copper instruments",
+          "Purified salt water rinses",
+          "Distilled herbal tinctures"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-013",
@@ -620,7 +1238,57 @@
     "ageRating": "kid",
     "sourceName": "Plutarch",
     "gaiaComment": "Caesar joked he'd crucify the pirates. Then he did. When he said something, he meant it.",
-    "visualDescription": "A young Roman nobleman standing defiantly on the deck of a pirate ship, arms crossed, while nervous pirates exchange worried glances around him"
+    "visualDescription": "A young Roman nobleman standing defiantly on the deck of a pirate ship, arms crossed, while nervous pirates exchange worried glances around him",
+    "variants": [
+      {
+        "question": "What did Julius Caesar do after being ransomed from pirates?",
+        "type": "forward",
+        "correctAnswer": "He returned with a fleet and had them crucified",
+        "distractors": [
+          "He forgave them and moved on",
+          "He reported them to the Roman Senate",
+          "He enslaved them in Roman mines"
+        ]
+      },
+      {
+        "question": "A young Roman nobleman was kidnapped by pirates, joked he would crucify them, and then did exactly that. Who was he?",
+        "type": "reverse",
+        "correctAnswer": "Julius Caesar",
+        "distractors": [
+          "Marcus Brutus",
+          "Pompey the Great",
+          "Mark Antony"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Caesar's kidnapping by pirates?",
+        "type": "negative",
+        "correctAnswer": "He was terrified and begged for release",
+        "distractors": [
+          "He insisted the ransom be raised to 50 talents",
+          "He joked about crucifying the pirates",
+          "He participated in games with his captors"
+        ]
+      },
+      {
+        "question": "Caesar insisted the pirates raise his ransom from 20 to ______ talents of silver.",
+        "type": "fill_blank",
+        "correctAnswer": "50",
+        "distractors": [
+          "30",
+          "100",
+          "75"
+        ]
+      },
+      {
+        "question": "Caesar was about 25 years old when he was kidnapped by pirates.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-014",
@@ -668,7 +1336,59 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The Eiffel Tower grows 15 centimeters in summer. Iron expands. The tower literally knows what season it is.",
-    "visualDescription": "The Eiffel Tower standing tall in golden summer sunlight, slightly taller than its winter silhouette shown as a faint blue outline beside it"
+    "visualDescription": "The Eiffel Tower standing tall in golden summer sunlight, slightly taller than its winter silhouette shown as a faint blue outline beside it",
+    "variants": [
+      {
+        "question": "By how much can the Eiffel Tower grow in summer due to thermal expansion?",
+        "type": "forward",
+        "correctAnswer": "Up to 15 cm",
+        "distractors": [
+          "Up to 1 cm",
+          "Up to 50 cm",
+          "Up to 5 cm"
+        ]
+      },
+      {
+        "question": "A famous iron structure grows measurably taller in summer due to thermal expansion. Which structure?",
+        "type": "reverse",
+        "correctAnswer": "The Eiffel Tower",
+        "distractors": [
+          "The Statue of Liberty",
+          "The Golden Gate Bridge",
+          "The London Eye"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Eiffel Tower's thermal expansion?",
+        "type": "negative",
+        "correctAnswer": "The expansion is visible to the naked eye",
+        "distractors": [
+          "It can grow by up to 15 cm in summer",
+          "The tower is made of 7,300 tonnes of iron",
+          "Iron expands when heated"
+        ]
+      },
+      {
+        "question": "The Eiffel Tower grows taller in summer because ______ causes iron to expand.",
+        "type": "fill_blank",
+        "correctAnswer": "thermal expansion",
+        "distractors": [
+          "wind pressure",
+          "humidity absorption",
+          "gravitational tides"
+        ]
+      },
+      {
+        "question": "An engineer is measuring seasonal changes in the Eiffel Tower. In summer, the 7,300-tonne iron structure ___.",
+        "type": "context",
+        "correctAnswer": "Expands up to 15 cm due to heat",
+        "distractors": [
+          "Contracts by about 10 cm from wind",
+          "Stays exactly the same height",
+          "Shifts sideways due to Earth's rotation"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-015",
@@ -716,7 +1436,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Romans had fast food restaurants with heated counters 2,000 years ago. Civilization peaks, collapses, and reinvents the same things.",
-    "visualDescription": "A bustling ancient Roman street food counter with steaming clay pots set into a stone countertop, customers reaching for bowls of hot stew"
+    "visualDescription": "A bustling ancient Roman street food counter with steaming clay pots set into a stone countertop, customers reaching for bowls of hot stew",
+    "variants": [
+      {
+        "question": "What was a Roman thermopolium?",
+        "type": "forward",
+        "correctAnswer": "A street-food restaurant with heated counters",
+        "distractors": [
+          "A public bath with heated water",
+          "A temple dedicated to the god of fire",
+          "A Roman underfloor heating system"
+        ]
+      },
+      {
+        "question": "Pompeii has 80 preserved examples of an ancient Roman establishment that served hot food from counters. What were they called?",
+        "type": "reverse",
+        "correctAnswer": "Thermopolia",
+        "distractors": [
+          "Tabernae",
+          "Cauponae",
+          "Popinae"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Roman thermopolia?",
+        "type": "negative",
+        "correctAnswer": "Only wealthy Romans used them regularly",
+        "distractors": [
+          "They had counters with ceramic jars for warm food",
+          "Most Romans had no cooking facilities at home",
+          "Pompeii has 80 preserved thermopolia"
+        ]
+      },
+      {
+        "question": "Most Romans lived in apartment blocks called ______ that had no cooking facilities, making street food essential.",
+        "type": "fill_blank",
+        "correctAnswer": "insulae",
+        "distractors": [
+          "domus",
+          "villae",
+          "thermae"
+        ]
+      },
+      {
+        "question": "Ancient Romans invented fast food restaurants.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-016",
@@ -764,7 +1534,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "A pathologist stole Einstein's brain, kept it in a jar for decades, and mailed slices to researchers. Science is wild.",
-    "visualDescription": "A glass jar sitting on a dusty shelf containing a preserved brain floating in amber liquid, with old scientific instruments scattered around it"
+    "visualDescription": "A glass jar sitting on a dusty shelf containing a preserved brain floating in amber liquid, with old scientific instruments scattered around it",
+    "variants": [
+      {
+        "question": "What happened to Einstein's brain after his death in 1955?",
+        "type": "forward",
+        "correctAnswer": "A pathologist removed and kept it in a jar for decades",
+        "distractors": [
+          "It was donated to Harvard Medical School",
+          "It was cremated along with his body",
+          "It was preserved at the Smithsonian"
+        ]
+      },
+      {
+        "question": "Pathologist Thomas Harvey removed a famous scientist's brain without permission and kept it for decades. Whose brain was it?",
+        "type": "reverse",
+        "correctAnswer": "Albert Einstein's",
+        "distractors": [
+          "Nikola Tesla's",
+          "Isaac Newton's",
+          "Stephen Hawking's"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Einstein's brain?",
+        "type": "negative",
+        "correctAnswer": "It was immediately donated to Princeton University",
+        "distractors": [
+          "Thomas Harvey removed it without permission",
+          "It was cut into 240 blocks",
+          "Harvey drove it across America in 1997"
+        ]
+      },
+      {
+        "question": "Harvey cut Einstein's brain into ______ blocks and mailed slices to researchers.",
+        "type": "fill_blank",
+        "correctAnswer": "240",
+        "distractors": [
+          "50",
+          "100",
+          "500"
+        ]
+      },
+      {
+        "question": "Einstein's brain was removed with his family's full permission.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-017",
@@ -812,7 +1632,59 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The pyramid builders got beer, bread, and medical care. They left graffiti. They named their teams. They were people.",
-    "visualDescription": "The Great Pyramid of Giza under construction, massive limestone blocks being hauled up ramps by teams of workers under a blazing Egyptian sun"
+    "visualDescription": "The Great Pyramid of Giza under construction, massive limestone blocks being hauled up ramps by teams of workers under a blazing Egyptian sun",
+    "variants": [
+      {
+        "question": "Were the Great Pyramid builders enslaved people?",
+        "type": "forward",
+        "correctAnswer": "No, they were paid skilled workers with benefits",
+        "distractors": [
+          "Yes, Egyptian records confirm mass slavery",
+          "Yes, they were prisoners of war",
+          "Unknown, no records survive"
+        ]
+      },
+      {
+        "question": "Archaeological excavations near Giza found workers' villages with bakeries, breweries, and medical facilities. What did this prove?",
+        "type": "reverse",
+        "correctAnswer": "Pyramid builders were paid workers, not slaves",
+        "distractors": [
+          "Slaves were treated humanely by modern standards",
+          "Only foreign workers were used on the pyramids",
+          "The pyramids were built by religious volunteers"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Great Pyramid builders?",
+        "type": "negative",
+        "correctAnswer": "They were enslaved Hebrews as described in the Bible",
+        "distractors": [
+          "Workers' villages with bakeries have been found",
+          "Their graffiti teams like 'Friends of Khufu' survive",
+          "They received medical care for injuries"
+        ]
+      },
+      {
+        "question": "Work teams left graffiti with names like '______' on pyramid stones.",
+        "type": "fill_blank",
+        "correctAnswer": "Friends of Khufu",
+        "distractors": [
+          "Servants of Ra",
+          "Children of the Nile",
+          "Builders of Osiris"
+        ]
+      },
+      {
+        "question": "The 'slave builders' myth about the pyramids dates back to the ancient historian ______.",
+        "type": "context",
+        "correctAnswer": "Herodotus",
+        "distractors": [
+          "Thucydides",
+          "Strabo",
+          "Tacitus"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-018",
@@ -860,7 +1732,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Humanity's oldest written recipe is for beer. Priorities haven't changed much in four thousand years.",
-    "visualDescription": "An ancient Sumerian clay tablet inscribed with cuneiform symbols beside a clay vessel of foaming golden beer, grain stalks scattered on a stone table"
+    "visualDescription": "An ancient Sumerian clay tablet inscribed with cuneiform symbols beside a clay vessel of foaming golden beer, grain stalks scattered on a stone table",
+    "variants": [
+      {
+        "question": "What is the world's oldest known written recipe for?",
+        "type": "forward",
+        "correctAnswer": "Beer, from the Sumerian Hymn to Ninkasi",
+        "distractors": [
+          "Bread, from an Egyptian papyrus",
+          "Wine, from a Mesopotamian tablet",
+          "Lentil stew, from a Babylonian tablet"
+        ]
+      },
+      {
+        "question": "The Hymn to Ninkasi is a Sumerian poem that doubles as a complete recipe. What does it describe how to make?",
+        "type": "reverse",
+        "correctAnswer": "Beer",
+        "distractors": [
+          "Wine",
+          "Bread",
+          "Mead"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the world's oldest recipe?",
+        "type": "negative",
+        "correctAnswer": "It describes how to bake bread",
+        "distractors": [
+          "It is a Sumerian beer recipe",
+          "It dates to around 1800 BC",
+          "It is written as a hymn to a goddess"
+        ]
+      },
+      {
+        "question": "The Hymn to Ninkasi is addressed to the Sumerian goddess of ______.",
+        "type": "fill_blank",
+        "correctAnswer": "beer",
+        "distractors": [
+          "wine",
+          "grain",
+          "bread"
+        ]
+      },
+      {
+        "question": "Humanity's oldest written recipe is for an alcoholic beverage.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-019",
@@ -908,7 +1830,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The Inca ran an empire spanning 4,000 kilometers with no writing system. Just knots. Magnificently efficient knots.",
-    "visualDescription": "Colorful knotted strings of an Inca quipu hanging from a wooden bar, each knot and color representing numbers and records against an Andean mountain backdrop"
+    "visualDescription": "Colorful knotted strings of an Inca quipu hanging from a wooden bar, each knot and color representing numbers and records against an Andean mountain backdrop",
+    "variants": [
+      {
+        "question": "What system did the Inca Empire use instead of written language?",
+        "type": "forward",
+        "correctAnswer": "Knotted strings called quipus",
+        "distractors": [
+          "Symbols carved on stone tablets",
+          "Painted deerskin scrolls",
+          "Coloured beads on strings"
+        ]
+      },
+      {
+        "question": "Specialist keepers called quipucamayoc maintained a system of coloured, knotted strings. Which empire used this system?",
+        "type": "reverse",
+        "correctAnswer": "The Inca Empire",
+        "distractors": [
+          "The Aztec Empire",
+          "The Maya Empire",
+          "The Olmec civilization"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Inca quipu system?",
+        "type": "negative",
+        "correctAnswer": "Modern scholars have fully deciphered the code",
+        "distractors": [
+          "Quipus used coloured, knotted strings",
+          "They recorded census and tax data",
+          "The Inca Empire had no written language"
+        ]
+      },
+      {
+        "question": "The Inca quipu code has been fully deciphered by modern scholars.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "question": "Inca record-keepers called ______ were trained specialists who maintained the quipu system.",
+        "type": "fill_blank",
+        "correctAnswer": "quipucamayoc",
+        "distractors": [
+          "amautas",
+          "curacas",
+          "chasquis"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-020",
@@ -956,7 +1928,59 @@
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "One-third of Europe died. The survivors got to negotiate wages for the first time. Silver linings are complicated.",
-    "visualDescription": "A medieval European village with empty houses and overgrown fields, a lone surviving peasant negotiating confidently with a wealthy landowner"
+    "visualDescription": "A medieval European village with empty houses and overgrown fields, a lone surviving peasant negotiating confidently with a wealthy landowner",
+    "variants": [
+      {
+        "question": "How did the Black Death contribute to ending feudalism?",
+        "type": "forward",
+        "correctAnswer": "Labour scarcity gave surviving peasants bargaining power",
+        "distractors": [
+          "The plague killed most of the nobility",
+          "The Church lost credibility completely",
+          "Mass migration created new free cities"
+        ]
+      },
+      {
+        "question": "After a devastating plague killed up to half of Europe's population, surviving peasants gained unprecedented bargaining power. Which plague?",
+        "type": "reverse",
+        "correctAnswer": "The Black Death of 1347-1351",
+        "distractors": [
+          "The Plague of Justinian in 541 AD",
+          "The Great Plague of London in 1665",
+          "The Antonine Plague of 165 AD"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Black Death's social effects?",
+        "type": "negative",
+        "correctAnswer": "Wages fell because of economic collapse",
+        "distractors": [
+          "Labour became scarce after mass death",
+          "Surviving workers gained bargaining power",
+          "It helped weaken the feudal system"
+        ]
+      },
+      {
+        "question": "The Black Death killed an estimated ______ of Europe's population.",
+        "type": "fill_blank",
+        "correctAnswer": "30 to 60 percent",
+        "distractors": [
+          "5 to 10 percent",
+          "80 to 90 percent",
+          "10 to 15 percent"
+        ]
+      },
+      {
+        "question": "A historian explains how the worst disaster in European history paradoxically improved conditions for surviving workers by ___.",
+        "type": "context",
+        "correctAnswer": "Creating a labour shortage that raised wages",
+        "distractors": [
+          "Destroying the currency and forcing barter",
+          "Eliminating the Church's influence entirely",
+          "Causing nobles to flee to other continents"
+        ]
+      }
+    ]
   },
   {
     "id": "hist-021",
@@ -1004,7 +2028,57 @@
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Edison electrocuted an elephant to scare people away from AC power. Your wall socket is Tesla's legacy. Edison lost.",
-    "visualDescription": "Two rival inventors facing off across a crackling electrical arc, one holding a DC battery and the other an AC generator, sparks flying between them"
+    "visualDescription": "Two rival inventors facing off across a crackling electrical arc, one holding a DC battery and the other an AC generator, sparks flying between them",
+    "variants": [
+      {
+        "question": "What was the 'War of Currents' about?",
+        "type": "forward",
+        "correctAnswer": "A rivalry over AC versus DC electrical standards",
+        "distractors": [
+          "A legal battle over the light bulb patent",
+          "A race to power New York City first",
+          "A dispute over who invented the motor"
+        ]
+      },
+      {
+        "question": "Edison publicly electrocuted animals to discredit a rival electrical system. Which system was he attacking?",
+        "type": "reverse",
+        "correctAnswer": "Tesla and Westinghouse's AC system",
+        "distractors": [
+          "Marconi's radio transmission system",
+          "Bell's telephone system",
+          "Siemens' DC generators"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the War of Currents?",
+        "type": "negative",
+        "correctAnswer": "Edison's DC system ultimately won the contest",
+        "distractors": [
+          "Edison backed direct current",
+          "Tesla and Westinghouse backed alternating current",
+          "Edison staged animal electrocutions to scare the public"
+        ]
+      },
+      {
+        "question": "AC won the War of Currents because it can be transmitted over long distances with ______ power loss.",
+        "type": "fill_blank",
+        "correctAnswer": "less",
+        "distractors": [
+          "more",
+          "zero",
+          "equal"
+        ]
+      },
+      {
+        "question": "Modern household wall sockets use alternating current, Tesla's technology.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-001",
@@ -1051,7 +2125,57 @@
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Eleven time zones. Russia is so wide that calling across it covers almost a full day. One country, one border, eleven sunsets.",
-    "visualDescription": "A vast map of Russia stretching across the top of a globe, eleven different clock faces showing different times lined up along its enormous width"
+    "visualDescription": "A vast map of Russia stretching across the top of a globe, eleven different clock faces showing different times lined up along its enormous width",
+    "variants": [
+      {
+        "question": "How many time zones does Russia span?",
+        "type": "forward",
+        "correctAnswer": "11 time zones",
+        "distractors": [
+          "7 time zones",
+          "9 time zones",
+          "14 time zones"
+        ]
+      },
+      {
+        "question": "Which country spans 11 time zones, more than any other nation?",
+        "type": "reverse",
+        "correctAnswer": "Russia",
+        "distractors": [
+          "Canada",
+          "China",
+          "Brazil"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Russia's time zones?",
+        "type": "negative",
+        "correctAnswer": "Russia spans only 5 time zones",
+        "distractors": [
+          "Russia spans 11 time zones total",
+          "It stretches 9,000 km east to west",
+          "Calls across it span nearly a day"
+        ]
+      },
+      {
+        "question": "Russia stretches approximately ______ kilometers from west to east.",
+        "type": "fill_blank",
+        "correctAnswer": "9,000",
+        "distractors": [
+          "3,000",
+          "15,000",
+          "6,000"
+        ]
+      },
+      {
+        "question": "Russia spans more time zones than any other country.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-002",
@@ -1098,7 +2222,59 @@
     "ageRating": "kid",
     "sourceName": "NASA Earth Observatory",
     "gaiaComment": "The Great Wall is not visible from space with the naked eye. Still worth building, apparently.",
-    "visualDescription": "A satellite view of Earth showing the Great Wall as an impossibly thin line lost among mountain ranges, rivers, and vast terrain patterns"
+    "visualDescription": "A satellite view of Earth showing the Great Wall as an impossibly thin line lost among mountain ranges, rivers, and vast terrain patterns",
+    "variants": [
+      {
+        "question": "Which famous structure is often falsely claimed to be visible from space?",
+        "type": "forward",
+        "correctAnswer": "The Great Wall of China",
+        "distractors": [
+          "The Pyramids of Giza",
+          "The Hoover Dam",
+          "The Panama Canal"
+        ]
+      },
+      {
+        "question": "Multiple astronauts, including taikonaut Yang Liwei, confirmed this structure cannot be seen from orbit. Which structure?",
+        "type": "reverse",
+        "correctAnswer": "The Great Wall of China",
+        "distractors": [
+          "The Three Gorges Dam",
+          "The Suez Canal",
+          "The Trans-Siberian Railway"
+        ]
+      },
+      {
+        "question": "Which is NOT true about seeing the Great Wall from space?",
+        "type": "negative",
+        "correctAnswer": "Chinese astronauts confirmed it is visible",
+        "distractors": [
+          "The wall is only 4 to 5 metres wide",
+          "It is far too narrow to resolve from orbit",
+          "The myth persists despite being debunked"
+        ]
+      },
+      {
+        "question": "The Great Wall is over 21,000 kilometres long but only ______ metres wide on average.",
+        "type": "fill_blank",
+        "correctAnswer": "4 to 5",
+        "distractors": [
+          "50 to 100",
+          "20 to 30",
+          "200 to 300"
+        ]
+      },
+      {
+        "question": "A teacher explains why length alone does not make a structure visible from space. She uses ___.",
+        "type": "context",
+        "correctAnswer": "The Great Wall's narrow width as an example",
+        "distractors": [
+          "The Amazon River's winding path",
+          "The Suez Canal's straight line",
+          "The Trans-Siberian Railway's length"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-003",
@@ -1145,7 +2321,57 @@
     "ageRating": "kid",
     "sourceName": "U.S. Geological Survey",
     "gaiaComment": "The Amazon pumps 20% of all freshwater into the ocean. Its plume extends 400 kilometers into the Atlantic. It's barely trying.",
-    "visualDescription": "The mighty Amazon River mouth pouring a massive plume of brown freshwater into the deep blue Atlantic Ocean, visible from a dramatic aerial perspective"
+    "visualDescription": "The mighty Amazon River mouth pouring a massive plume of brown freshwater into the deep blue Atlantic Ocean, visible from a dramatic aerial perspective",
+    "variants": [
+      {
+        "question": "What percentage of all freshwater discharged into Earth's oceans comes from the Amazon?",
+        "type": "forward",
+        "correctAnswer": "About 20 percent",
+        "distractors": [
+          "About 5 percent",
+          "About 10 percent",
+          "About 40 percent"
+        ]
+      },
+      {
+        "question": "Which river accounts for roughly one-fifth of all freshwater entering the world's oceans?",
+        "type": "reverse",
+        "correctAnswer": "The Amazon River",
+        "distractors": [
+          "The Congo River",
+          "The Ganges River",
+          "The Mississippi River"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Amazon River?",
+        "type": "negative",
+        "correctAnswer": "Its freshwater plume extends only 10 km offshore",
+        "distractors": [
+          "It discharges about 20% of global freshwater",
+          "Its basin covers 40% of South America",
+          "Its plume extends 400 km into the Atlantic"
+        ]
+      },
+      {
+        "question": "The Amazon's freshwater plume extends ______ kilometres into the Atlantic Ocean.",
+        "type": "fill_blank",
+        "correctAnswer": "400",
+        "distractors": [
+          "40",
+          "4,000",
+          "100"
+        ]
+      },
+      {
+        "question": "The Amazon discharges more freshwater than the next seven largest rivers combined.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-004",
@@ -1192,7 +2418,59 @@
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Mauna Kea is taller than Everest — most of it is just underwater. Measurement is everything.",
-    "visualDescription": "Mauna Kea rising from the dark ocean floor to above the water surface, shown in cross-section to reveal its full height dwarfing Mount Everest beside it"
+    "visualDescription": "Mauna Kea rising from the dark ocean floor to above the water surface, shown in cross-section to reveal its full height dwarfing Mount Everest beside it",
+    "variants": [
+      {
+        "question": "Which mountain is tallest when measured from its oceanic base?",
+        "type": "forward",
+        "correctAnswer": "Mauna Kea in Hawaii",
+        "distractors": [
+          "Mount Everest in Nepal",
+          "K2 in Pakistan",
+          "Kilimanjaro in Tanzania"
+        ]
+      },
+      {
+        "question": "A volcanic mountain rises 10,210 metres from the ocean floor, taller than Everest from base to summit. Which mountain?",
+        "type": "reverse",
+        "correctAnswer": "Mauna Kea",
+        "distractors": [
+          "Mauna Loa",
+          "Mount Fuji",
+          "Mount Etna"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Mauna Kea?",
+        "type": "negative",
+        "correctAnswer": "It is shorter than Everest by every measure",
+        "distractors": [
+          "It rises 10,210 metres from the ocean floor",
+          "Most of it is hidden underwater",
+          "It is taller than Everest from base to peak"
+        ]
+      },
+      {
+        "question": "Mauna Kea rises ______ metres from its base on the ocean floor to its summit.",
+        "type": "fill_blank",
+        "correctAnswer": "10,210",
+        "distractors": [
+          "8,849",
+          "5,000",
+          "15,000"
+        ]
+      },
+      {
+        "question": "A geography teacher explains the difference between 'tallest' and 'highest' mountains. 'Tallest' means measured from ___.",
+        "type": "context",
+        "correctAnswer": "Base to summit, regardless of sea level",
+        "distractors": [
+          "Sea level to the peak only",
+          "The nearest coastline to the peak",
+          "The country's lowest point to the peak"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-005",
@@ -1239,7 +2517,57 @@
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Sahara is the size of the contiguous United States. And 75% of it is rocks, not sand. Your mental image is wrong.",
-    "visualDescription": "An aerial view of the vast golden Sahara Desert overlaid transparently on top of the contiguous United States, showing their remarkably similar sizes"
+    "visualDescription": "An aerial view of the vast golden Sahara Desert overlaid transparently on top of the contiguous United States, showing their remarkably similar sizes",
+    "variants": [
+      {
+        "question": "Which desert is the world's largest hot desert?",
+        "type": "forward",
+        "correctAnswer": "The Sahara Desert",
+        "distractors": [
+          "The Gobi Desert",
+          "The Arabian Desert",
+          "The Kalahari Desert"
+        ]
+      },
+      {
+        "question": "This desert covers about 9.2 million square kilometres, roughly the size of the contiguous United States. Which desert?",
+        "type": "reverse",
+        "correctAnswer": "The Sahara Desert",
+        "distractors": [
+          "The Australian Outback",
+          "The Antarctic interior",
+          "The Patagonian Desert"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Sahara Desert?",
+        "type": "negative",
+        "correctAnswer": "It is mostly covered in sand dunes",
+        "distractors": [
+          "It covers about 9.2 million square km",
+          "Only about 25% is sand dunes",
+          "It is roughly the size of the contiguous US"
+        ]
+      },
+      {
+        "question": "Only about ______ percent of the Sahara is actually sand dunes.",
+        "type": "fill_blank",
+        "correctAnswer": "25",
+        "distractors": [
+          "75",
+          "90",
+          "50"
+        ]
+      },
+      {
+        "question": "Most of the Sahara Desert is covered in sand dunes.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-006",
@@ -1286,7 +2614,57 @@
     "ageRating": "kid",
     "sourceName": "Natural Resources Canada",
     "gaiaComment": "Canada has 60% of the world's lake water and more than 2 million lakes they've never fully counted. Classic Canada.",
-    "visualDescription": "A panoramic view of the Canadian Shield dotted with thousands of shimmering blue lakes stretching to every horizon under a clear northern sky"
+    "visualDescription": "A panoramic view of the Canadian Shield dotted with thousands of shimmering blue lakes stretching to every horizon under a clear northern sky",
+    "variants": [
+      {
+        "question": "What percentage of the world's lake water does Canada hold?",
+        "type": "forward",
+        "correctAnswer": "About 60 percent",
+        "distractors": [
+          "About 20 percent",
+          "About 40 percent",
+          "About 80 percent"
+        ]
+      },
+      {
+        "question": "Which country has more lakes than all other countries combined, totalling over 2 million?",
+        "type": "reverse",
+        "correctAnswer": "Canada",
+        "distractors": [
+          "Russia",
+          "Finland",
+          "Sweden"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Canada's lakes?",
+        "type": "negative",
+        "correctAnswer": "Canada holds about 20% of the world's lake water",
+        "distractors": [
+          "Canada has over 2 million lakes",
+          "Retreating glaciers carved the Canadian Shield",
+          "Canada holds about 60% of the world's lake water"
+        ]
+      },
+      {
+        "question": "Canada's lake-rich landscape was created by retreating ______ during the last Ice Age.",
+        "type": "fill_blank",
+        "correctAnswer": "glaciers",
+        "distractors": [
+          "volcanoes",
+          "rivers",
+          "earthquakes"
+        ]
+      },
+      {
+        "question": "Canada has accurately counted all of its lakes.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-007",
@@ -1333,7 +2711,57 @@
     "ageRating": "kid",
     "sourceName": "NOAA Ocean Service",
     "gaiaComment": "The Pacific Ocean is bigger than all of Earth's land combined. There's more ocean than continent on this planet. Statistically, you live on a water world.",
-    "visualDescription": "The enormous Pacific Ocean filling most of a globe view, all of Earth's continents fitting easily within its vast blue expanse with room to spare"
+    "visualDescription": "The enormous Pacific Ocean filling most of a globe view, all of Earth's continents fitting easily within its vast blue expanse with room to spare",
+    "variants": [
+      {
+        "question": "How does the Pacific Ocean's area compare to all of Earth's landmasses?",
+        "type": "forward",
+        "correctAnswer": "It is larger than all landmasses combined",
+        "distractors": [
+          "They are roughly equal in size",
+          "It is about half the total land area",
+          "All landmasses are slightly larger"
+        ]
+      },
+      {
+        "question": "Which single ocean covers more area than all of Earth's continents and islands combined?",
+        "type": "reverse",
+        "correctAnswer": "The Pacific Ocean",
+        "distractors": [
+          "The Atlantic Ocean",
+          "The Indian Ocean",
+          "The Southern Ocean"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Pacific Ocean?",
+        "type": "negative",
+        "correctAnswer": "It covers about 25 percent of Earth's surface",
+        "distractors": [
+          "It covers about 165 million square km",
+          "It is larger than all landmasses combined",
+          "It holds roughly half of all seawater"
+        ]
+      },
+      {
+        "question": "The Pacific Ocean covers approximately ______ million square kilometres.",
+        "type": "fill_blank",
+        "correctAnswer": "165",
+        "distractors": [
+          "80",
+          "250",
+          "120"
+        ]
+      },
+      {
+        "question": "Earth has more ocean surface than land surface.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-008",
@@ -1380,7 +2808,57 @@
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Vatican City is smaller than a golf course and has its own army. Founded 1506. Still operating. Efficient.",
-    "visualDescription": "The tiny walled enclave of Vatican City with its iconic dome nestled inside the sprawling orange-roofed cityscape of Rome stretching in every direction"
+    "visualDescription": "The tiny walled enclave of Vatican City with its iconic dome nestled inside the sprawling orange-roofed cityscape of Rome stretching in every direction",
+    "variants": [
+      {
+        "question": "What is the world's smallest country by area?",
+        "type": "forward",
+        "correctAnswer": "Vatican City",
+        "distractors": [
+          "Monaco",
+          "San Marino",
+          "Liechtenstein"
+        ]
+      },
+      {
+        "question": "A sovereign nation with its own army, radio station, and passports covers only 0.44 square kilometres. Which nation?",
+        "type": "reverse",
+        "correctAnswer": "Vatican City",
+        "distractors": [
+          "Monaco",
+          "Nauru",
+          "Tuvalu"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Vatican City?",
+        "type": "negative",
+        "correctAnswer": "It has a population of about 50,000 people",
+        "distractors": [
+          "It covers just 0.44 square kilometres",
+          "It has its own army, the Swiss Guard",
+          "It is entirely surrounded by Rome"
+        ]
+      },
+      {
+        "question": "The Pontifical ______ Guard, founded in 1506, is Vatican City's army and the world's oldest standing army.",
+        "type": "fill_blank",
+        "correctAnswer": "Swiss",
+        "distractors": [
+          "Italian",
+          "Papal",
+          "Roman"
+        ]
+      },
+      {
+        "question": "Vatican City is smaller than many golf courses.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-009",
@@ -1427,7 +2905,57 @@
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Dead Sea drops a meter a year and could vanish within a century. The clock is ticking.",
-    "visualDescription": "A person floating effortlessly on the surface of the ultra-salty Dead Sea, reading a book while crystalline salt formations glitter along the turquoise shore"
+    "visualDescription": "A person floating effortlessly on the surface of the ultra-salty Dead Sea, reading a book while crystalline salt formations glitter along the turquoise shore",
+    "variants": [
+      {
+        "question": "How much does the Dead Sea's water level drop each year?",
+        "type": "forward",
+        "correctAnswer": "About 1 metre per year",
+        "distractors": [
+          "About 10 centimetres per year",
+          "About 5 metres per year",
+          "It is stable and not changing"
+        ]
+      },
+      {
+        "question": "A body of water is shrinking because its main inflow has been diverted for agriculture. Which body of water?",
+        "type": "reverse",
+        "correctAnswer": "The Dead Sea",
+        "distractors": [
+          "The Aral Sea",
+          "Lake Chad",
+          "The Caspian Sea"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Dead Sea?",
+        "type": "negative",
+        "correctAnswer": "Its water level is stable and not changing",
+        "distractors": [
+          "It has a salinity of about 34%",
+          "Its level drops about one metre per year",
+          "The Jordan River has been heavily diverted"
+        ]
+      },
+      {
+        "question": "The Dead Sea has a salinity of about ______ percent, nearly 10 times saltier than the ocean.",
+        "type": "fill_blank",
+        "correctAnswer": "34",
+        "distractors": [
+          "10",
+          "50",
+          "75"
+        ]
+      },
+      {
+        "question": "The Dead Sea could vanish entirely within a century at its current rate of decline.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-010",
@@ -1474,7 +3002,59 @@
     "ageRating": "kid",
     "sourceName": "NASA Earth Observatory",
     "gaiaComment": "Parts of the Atacama have never recorded rainfall. Never. Not once. Driest place on a planet with oceans.",
-    "visualDescription": "The barren rust-colored landscape of the Atacama Desert stretching endlessly under a perfectly clear sky, cracked earth showing no sign of moisture anywhere"
+    "visualDescription": "The barren rust-colored landscape of the Atacama Desert stretching endlessly under a perfectly clear sky, cracked earth showing no sign of moisture anywhere",
+    "variants": [
+      {
+        "question": "Which desert is the driest non-polar desert on Earth?",
+        "type": "forward",
+        "correctAnswer": "The Atacama Desert in Chile",
+        "distractors": [
+          "The Sahara Desert in Africa",
+          "The Gobi Desert in Mongolia",
+          "The Namib Desert in Namibia"
+        ]
+      },
+      {
+        "question": "Some weather stations in this desert have operated for decades without recording a single drop of rain. Which desert?",
+        "type": "reverse",
+        "correctAnswer": "The Atacama Desert",
+        "distractors": [
+          "The Sahara Desert",
+          "The Arabian Desert",
+          "The Mojave Desert"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Atacama Desert?",
+        "type": "negative",
+        "correctAnswer": "It receives moderate annual rainfall",
+        "distractors": [
+          "Some parts have never recorded rainfall",
+          "It has a double rain shadow effect",
+          "It hosts some of the world's largest telescopes"
+        ]
+      },
+      {
+        "question": "The Atacama's extreme dryness is caused by a double ______ effect from surrounding mountains.",
+        "type": "fill_blank",
+        "correctAnswer": "rain shadow",
+        "distractors": [
+          "monsoon",
+          "trade wind",
+          "ocean current"
+        ]
+      },
+      {
+        "question": "An astronomer chooses the Atacama for a telescope site because its extreme dryness creates ___.",
+        "type": "context",
+        "correctAnswer": "Extraordinarily clear skies for observation",
+        "distractors": [
+          "Flat terrain ideal for large instruments",
+          "Proximity to major research universities",
+          "Protection from electromagnetic interference"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-011",
@@ -1521,7 +3101,57 @@
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Indonesia has 17,000 islands. Visiting one per day would take 46 years. Most aren't on any map you own.",
-    "visualDescription": "A sweeping aerial view of the Indonesian archipelago, thousands of lush green tropical islands scattered across brilliant turquoise and deep blue seas"
+    "visualDescription": "A sweeping aerial view of the Indonesian archipelago, thousands of lush green tropical islands scattered across brilliant turquoise and deep blue seas",
+    "variants": [
+      {
+        "question": "Which country has the most islands in the world?",
+        "type": "forward",
+        "correctAnswer": "Indonesia with over 17,000 islands",
+        "distractors": [
+          "The Philippines with over 7,000",
+          "Japan with over 6,000 islands",
+          "Sweden with over 200,000 islands"
+        ]
+      },
+      {
+        "question": "An archipelago of over 17,000 islands stretches across 5,100 kilometres and three time zones. Which country?",
+        "type": "reverse",
+        "correctAnswer": "Indonesia",
+        "distractors": [
+          "Philippines",
+          "Japan",
+          "Malaysia"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Indonesia's islands?",
+        "type": "negative",
+        "correctAnswer": "All of its islands are inhabited",
+        "distractors": [
+          "It has over 17,000 islands",
+          "About 6,000 of them are inhabited",
+          "They span three time zones"
+        ]
+      },
+      {
+        "question": "Indonesia's islands stretch across ______ kilometres of ocean.",
+        "type": "fill_blank",
+        "correctAnswer": "5,100",
+        "distractors": [
+          "1,000",
+          "10,000",
+          "2,500"
+        ]
+      },
+      {
+        "question": "Visiting one Indonesian island per day would take over 46 years.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-012",
@@ -1568,7 +3198,57 @@
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Africa sits in all four hemispheres simultaneously. The most central continent on Earth, somehow always called 'remote.'",
-    "visualDescription": "The African continent centered on a globe, clearly spanning above and below the equator and crossing both the prime meridian and its opposite longitude"
+    "visualDescription": "The African continent centered on a globe, clearly spanning above and below the equator and crossing both the prime meridian and its opposite longitude",
+    "variants": [
+      {
+        "question": "Which is the only continent that lies in all four hemispheres?",
+        "type": "forward",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "Europe",
+          "Oceania"
+        ]
+      },
+      {
+        "question": "Both the prime meridian and the equator pass through this continent, placing it in all four hemispheres. Which one?",
+        "type": "reverse",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "Europe",
+          "Oceania"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Africa's hemispheric position?",
+        "type": "negative",
+        "correctAnswer": "Africa lies entirely in the Southern Hemisphere",
+        "distractors": [
+          "The equator crosses through Africa",
+          "The prime meridian passes through Ghana",
+          "Africa is in all four hemispheres"
+        ]
+      },
+      {
+        "question": "The prime meridian passes through the African country of ______.",
+        "type": "fill_blank",
+        "correctAnswer": "Ghana",
+        "distractors": [
+          "Egypt",
+          "Kenya",
+          "Congo"
+        ]
+      },
+      {
+        "question": "Africa is the most centrally located continent on Earth.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-013",
@@ -1615,7 +3295,59 @@
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Nile or the Amazon, depending on how you measure. Geography: still arguing. Length is complicated.",
-    "visualDescription": "The Nile and Amazon rivers shown side by side as winding blue ribbons across their continents, nearly equal in length, each snaking through varied terrain"
+    "visualDescription": "The Nile and Amazon rivers shown side by side as winding blue ribbons across their continents, nearly equal in length, each snaking through varied terrain",
+    "variants": [
+      {
+        "question": "Which river is traditionally measured as the world's longest?",
+        "type": "forward",
+        "correctAnswer": "The Nile",
+        "distractors": [
+          "The Amazon",
+          "The Yangtze",
+          "The Congo"
+        ]
+      },
+      {
+        "question": "A 2007 study challenged the traditional ranking by measuring a South American river as longer than this African river. Which river lost its title?",
+        "type": "reverse",
+        "correctAnswer": "The Nile",
+        "distractors": [
+          "The Congo",
+          "The Niger",
+          "The Zambezi"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Nile versus Amazon debate?",
+        "type": "negative",
+        "correctAnswer": "Scientists have definitively settled the debate",
+        "distractors": [
+          "The Nile is traditionally cited at 6,650 km",
+          "A 2007 study extended the Amazon's length",
+          "The dispute depends on which tributaries count"
+        ]
+      },
+      {
+        "question": "The Nile is traditionally cited at ______ kilometres in length.",
+        "type": "fill_blank",
+        "correctAnswer": "6,650",
+        "distractors": [
+          "4,200",
+          "8,800",
+          "10,000"
+        ]
+      },
+      {
+        "question": "A geography student asks which river is longest. The answer depends on how tributaries are measured. The two contenders are ___.",
+        "type": "context",
+        "correctAnswer": "The Nile and the Amazon",
+        "distractors": [
+          "The Yangtze and the Mississippi",
+          "The Congo and the Mekong",
+          "The Ganges and the Danube"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-014",
@@ -1662,7 +3394,57 @@
     "ageRating": "kid",
     "sourceName": "United Nations World Urbanization Prospects",
     "gaiaComment": "Tokyo's metro area has more people than all of Canada. One city. Thirty-seven million. It works somehow.",
-    "visualDescription": "The dense glowing nighttime skyline of Tokyo stretching endlessly in every direction, millions of tiny lights forming a vast luminous urban ocean"
+    "visualDescription": "The dense glowing nighttime skyline of Tokyo stretching endlessly in every direction, millions of tiny lights forming a vast luminous urban ocean",
+    "variants": [
+      {
+        "question": "How many people live in the Greater Tokyo metropolitan area?",
+        "type": "forward",
+        "correctAnswer": "Over 37 million",
+        "distractors": [
+          "Over 15 million",
+          "Over 25 million",
+          "Over 50 million"
+        ]
+      },
+      {
+        "question": "Which city's metropolitan population exceeds the entire population of Canada?",
+        "type": "reverse",
+        "correctAnswer": "Tokyo",
+        "distractors": [
+          "Shanghai",
+          "Jakarta",
+          "Beijing"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Greater Tokyo?",
+        "type": "negative",
+        "correctAnswer": "It is one of the most dangerous cities globally",
+        "distractors": [
+          "It has over 37 million residents",
+          "Its population exceeds Canada's",
+          "It ranks among the world's safest cities"
+        ]
+      },
+      {
+        "question": "Greater Tokyo's population of over 37 million exceeds the total population of ______.",
+        "type": "fill_blank",
+        "correctAnswer": "Canada",
+        "distractors": [
+          "Australia",
+          "Germany",
+          "Brazil"
+        ]
+      },
+      {
+        "question": "Tokyo is the world's largest metropolitan area by population.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-015",
@@ -1709,7 +3491,57 @@
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "Bolivia has two capitals and has been debating which is the real one for 125 years. They've committed to the ambiguity.",
-    "visualDescription": "Two Bolivian cities perched at different elevations in the Andes mountains, each flying a capital city flag, connected by a winding mountain road between them"
+    "visualDescription": "Two Bolivian cities perched at different elevations in the Andes mountains, each flying a capital city flag, connected by a winding mountain road between them",
+    "variants": [
+      {
+        "question": "Which country has both Sucre and La Paz as its capitals?",
+        "type": "forward",
+        "correctAnswer": "Bolivia",
+        "distractors": [
+          "Peru",
+          "Chile",
+          "Ecuador"
+        ]
+      },
+      {
+        "question": "A civil war in 1899 led to this country splitting its capital functions between two cities. Which country?",
+        "type": "reverse",
+        "correctAnswer": "Bolivia",
+        "distractors": [
+          "Colombia",
+          "Venezuela",
+          "Paraguay"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Bolivia's dual capitals?",
+        "type": "negative",
+        "correctAnswer": "La Paz is the constitutional capital",
+        "distractors": [
+          "Sucre is the constitutional capital",
+          "La Paz is the seat of government",
+          "The split dates to the 1899 Federal Revolution"
+        ]
+      },
+      {
+        "question": "La Paz is the world's highest-elevation seat of government at roughly ______ metres above sea level.",
+        "type": "fill_blank",
+        "correctAnswer": "3,640",
+        "distractors": [
+          "1,200",
+          "2,100",
+          "5,000"
+        ]
+      },
+      {
+        "question": "Bolivia is the only country in the world with two official capitals.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-016",
@@ -1756,7 +3588,57 @@
     "ageRating": "kid",
     "sourceName": "NOAA Ocean Service",
     "gaiaComment": "The Challenger Deep is so far down that Everest fits inside with 2,200 meters to spare. The ocean floor is alien territory.",
-    "visualDescription": "A dramatic cross-section of the ocean showing the Mariana Trench plunging far deeper than Mount Everest is tall, with a tiny mountain silhouette for scale"
+    "visualDescription": "A dramatic cross-section of the ocean showing the Mariana Trench plunging far deeper than Mount Everest is tall, with a tiny mountain silhouette for scale",
+    "variants": [
+      {
+        "question": "Where is the deepest known point on Earth?",
+        "type": "forward",
+        "correctAnswer": "The Challenger Deep in the Mariana Trench",
+        "distractors": [
+          "The Puerto Rico Trench deepest point",
+          "The Java Trench deepest point",
+          "The Tonga Trench deepest point"
+        ]
+      },
+      {
+        "question": "This oceanic point is so deep that Mount Everest could fit inside with over a mile of water to spare. What is it?",
+        "type": "reverse",
+        "correctAnswer": "The Challenger Deep, Mariana Trench",
+        "distractors": [
+          "The Puerto Rico Trench deepest point",
+          "The Tonga Trench floor",
+          "The Philippine Trench basin"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the Challenger Deep?",
+        "type": "negative",
+        "correctAnswer": "More people have visited it than the Moon",
+        "distractors": [
+          "It is about 11,034 metres deep",
+          "Pressure there is over 1,000 times atmospheric",
+          "It is deeper than Everest is tall"
+        ]
+      },
+      {
+        "question": "The Challenger Deep reaches approximately ______ metres below sea level.",
+        "type": "fill_blank",
+        "correctAnswer": "11,034",
+        "distractors": [
+          "8,849",
+          "6,000",
+          "15,000"
+        ]
+      },
+      {
+        "question": "Fewer people have visited the Challenger Deep than have walked on the Moon.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-017",
@@ -1803,7 +3685,57 @@
     "ageRating": "kid",
     "sourceName": "British Antarctic Survey",
     "gaiaComment": "Antarctica is technically a desert. The driest, coldest, windiest continent. It qualifies on a technicality.",
-    "visualDescription": "A vast white Antarctic ice sheet stretching to the horizon under a pale blue sky, with almost no snowfall visible despite the frozen landscape"
+    "visualDescription": "A vast white Antarctic ice sheet stretching to the horizon under a pale blue sky, with almost no snowfall visible despite the frozen landscape",
+    "variants": [
+      {
+        "question": "Why is Antarctica classified as a desert?",
+        "type": "forward",
+        "correctAnswer": "It receives very little annual precipitation",
+        "distractors": [
+          "It has no plant life at all",
+          "It has no liquid water anywhere",
+          "It is extremely cold year-round"
+        ]
+      },
+      {
+        "question": "This continent receives less than 50 mm of precipitation annually, making it technically a desert. Which continent?",
+        "type": "reverse",
+        "correctAnswer": "Antarctica",
+        "distractors": [
+          "Australia",
+          "The Arctic",
+          "Greenland"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Antarctica being a desert?",
+        "type": "negative",
+        "correctAnswer": "Deserts are defined by high temperatures",
+        "distractors": [
+          "Deserts are defined by low precipitation",
+          "Antarctica's interior gets less than 50 mm per year",
+          "It is drier than parts of the Sahara"
+        ]
+      },
+      {
+        "question": "Antarctica holds about ______ percent of Earth's freshwater locked in its ice sheet.",
+        "type": "fill_blank",
+        "correctAnswer": "70",
+        "distractors": [
+          "30",
+          "50",
+          "90"
+        ]
+      },
+      {
+        "question": "Antarctica receives less annual precipitation than the Sahara Desert.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-018",
@@ -1850,7 +3782,57 @@
     "ageRating": "kid",
     "sourceName": "International Boundary Commission",
     "gaiaComment": "The US-Canada border is 8,891 kilometers long and mostly just a cleared line through the forest. World's friendliest boundary.",
-    "visualDescription": "An incredibly long border line stretching across forests, prairies, lakes, and mountains between two vast neighboring countries from coast to coast"
+    "visualDescription": "An incredibly long border line stretching across forests, prairies, lakes, and mountains between two vast neighboring countries from coast to coast",
+    "variants": [
+      {
+        "question": "Which international land border is the longest in the world?",
+        "type": "forward",
+        "correctAnswer": "The USA-Canada border at 8,891 km",
+        "distractors": [
+          "The Russia-China border",
+          "The Argentina-Chile border",
+          "The India-China border"
+        ]
+      },
+      {
+        "question": "An 8,891-kilometre border crosses 6 time zones and remains largely unguarded. Which border?",
+        "type": "reverse",
+        "correctAnswer": "The USA-Canada border",
+        "distractors": [
+          "The Russia-Kazakhstan border",
+          "The Brazil-Bolivia border",
+          "The India-Pakistan border"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the USA-Canada border?",
+        "type": "negative",
+        "correctAnswer": "It is one of the most heavily militarised borders",
+        "distractors": [
+          "It stretches 8,891 kilometres",
+          "Most follows the 49th parallel",
+          "It crosses over 6 time zones"
+        ]
+      },
+      {
+        "question": "Most of the US-Canada border in the lower 48 states follows the ______ parallel.",
+        "type": "fill_blank",
+        "correctAnswer": "49th",
+        "distractors": [
+          "45th",
+          "52nd",
+          "38th"
+        ]
+      },
+      {
+        "question": "The US-Canada border is the longest international border in the world.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-019",
@@ -1897,7 +3879,59 @@
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Greenland is 50 times bigger than Denmark. Denmark still runs it. One of history's more politely maintained arrangements.",
-    "visualDescription": "The enormous white ice-covered island of Greenland floating in arctic waters, with tiny Denmark shown to scale in the corner for dramatic size comparison"
+    "visualDescription": "The enormous white ice-covered island of Greenland floating in arctic waters, with tiny Denmark shown to scale in the corner for dramatic size comparison",
+    "variants": [
+      {
+        "question": "What percentage of Greenland is covered by ice?",
+        "type": "forward",
+        "correctAnswer": "About 80 percent",
+        "distractors": [
+          "About 40 percent",
+          "About 60 percent",
+          "About 95 percent"
+        ]
+      },
+      {
+        "question": "The world's largest island is governed by a country 50 times smaller. Which island?",
+        "type": "reverse",
+        "correctAnswer": "Greenland",
+        "distractors": [
+          "Borneo",
+          "Madagascar",
+          "New Guinea"
+        ]
+      },
+      {
+        "question": "Which is NOT true about Greenland?",
+        "type": "negative",
+        "correctAnswer": "It is classified as a continent, not an island",
+        "distractors": [
+          "It is the world's largest island",
+          "About 80 percent is covered by ice",
+          "It is governed by the nation of Denmark"
+        ]
+      },
+      {
+        "question": "Greenland covers 2.17 million square km but Denmark covers only ______ thousand square km.",
+        "type": "fill_blank",
+        "correctAnswer": "43",
+        "distractors": [
+          "200",
+          "500",
+          "100"
+        ]
+      },
+      {
+        "question": "A student studying Arctic geography learns that Greenland has about ______ inhabitants, mostly Inuit.",
+        "type": "context",
+        "correctAnswer": "56,000",
+        "distractors": [
+          "5 million",
+          "500,000",
+          "1 million"
+        ]
+      }
+    ]
   },
   {
     "id": "geo-020",
@@ -1944,6 +3978,56 @@
     "ageRating": "kid",
     "sourceName": "Royal Geographical Society",
     "gaiaComment": "The tropics drift 15 meters toward the equator every year. Every line on every map is slowly wrong.",
-    "visualDescription": "The Tropic of Cancer and Tropic of Capricorn shown as glowing latitude lines on a globe, with tiny arrows indicating their slow drift toward the equator"
+    "visualDescription": "The Tropic of Cancer and Tropic of Capricorn shown as glowing latitude lines on a globe, with tiny arrows indicating their slow drift toward the equator",
+    "variants": [
+      {
+        "question": "What causes the Tropics of Cancer and Capricorn to shift position over time?",
+        "type": "forward",
+        "correctAnswer": "Changes in Earth's axial tilt",
+        "distractors": [
+          "Continental drift",
+          "Changes in Earth's rotation speed",
+          "Magnetic pole reversal"
+        ]
+      },
+      {
+        "question": "Earth's axial tilt oscillates over a 41,000-year cycle, causing two geographic lines to drift slowly. Which lines?",
+        "type": "reverse",
+        "correctAnswer": "The Tropics of Cancer and Capricorn",
+        "distractors": [
+          "The Arctic and Antarctic Circles",
+          "The Equator and Prime Meridian",
+          "The International Date Line"
+        ]
+      },
+      {
+        "question": "Which is NOT true about the shifting tropics?",
+        "type": "negative",
+        "correctAnswer": "They are moving away from the equator",
+        "distractors": [
+          "They shift about 15 metres per year",
+          "The shift is caused by axial tilt changes",
+          "Earth's tilt oscillates over 41,000 years"
+        ]
+      },
+      {
+        "question": "Earth's axial tilt oscillates between about 22.1 and 24.5 degrees over a ______-year cycle.",
+        "type": "fill_blank",
+        "correctAnswer": "41,000",
+        "distractors": [
+          "10,000",
+          "100,000",
+          "1,000"
+        ]
+      },
+      {
+        "question": "The tropics currently drift about 15 metres closer to the equator each year.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ]
   }
 ]
