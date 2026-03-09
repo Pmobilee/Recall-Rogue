@@ -1022,9 +1022,18 @@ interface Fact {
   baseDifficulty: 1 | 2 | 3 | 4 | 5;
   variants: QuestionVariant[];    // min 2, target 4
   // cardType and mechanic NOT on Fact — assigned per-run
-  source?: string;
+
+  // Source verification (MANDATORY — see §22 and Content Accuracy below)
+  sourceName: string;             // REQUIRED. e.g., "Wikipedia", "NASA", "Jisho.org"
+  sourceUrl?: string;             // Recommended. Permalink to verification source
+  verifiedAt?: Date;              // Null until human-reviewed. Required before production.
+
+  // Card art generation (see §22 Card Back Visual Descriptions)
+  visualDescription?: string;     // 20-40 word pixel art scene prompt. Language-themed for vocab.
+  pixelArtPath?: string;          // Path to generated card back sprite (null until generated)
+  pixelArtStatus?: 'none' | 'generating' | 'review' | 'approved' | 'rejected';
+
   tags: string[];
-  verifiedAt?: Date;
 }
 
 interface RunCard {
@@ -1055,16 +1064,38 @@ function getEligibleFacts(profile: PlayerProfile): Fact[] {
 }
 ```
 
-### Content Accuracy at Scale (Post-Launch)
+### Content Accuracy at Scale (MANDATORY)
 
-- All facts require `verifiedAt` before live database
+Incorrect facts destroy trust in an educational product. This is non-negotiable:
+
+- **`sourceName` is REQUIRED** on every fact — ingestion pipeline rejects facts without it
+- **`sourceUrl` is strongly recommended** — Wikipedia permalinks preferred over live articles
+- All facts require `verifiedAt` timestamp before entering production database
 - Community-submitted facts enter "Provisional" state (visually marked) until verified
 - "Report Error" button on every card (tap-and-hold → "This fact seems wrong")
-- AI-drafted facts ALWAYS flagged for human review
+- AI-drafted facts ALWAYS flagged for human review before `verifiedAt` is set
+- Vocabulary facts: verified against authoritative language sources (Jisho.org for Japanese, RAE for Spanish, Larousse for French)
+
+**Source Quality Tiers:**
+
+| Tier | Source Type | Trust Level | Pipeline Action |
+|------|-----------|-------------|-----------------|
+| Gold | Wikipedia permalink, NASA, NIH, Oxford, authoritative language dictionaries | High | Accept if schema valid |
+| Silver | Educational sites, textbooks, encyclopedias | Medium | Accept, flag for spot-check |
+| Bronze | AI-generated, no URL, unverifiable | Low | Reject unless manually verified first |
+
+### Visual Description Pipeline
+
+Every fact requires a `visualDescription` for card back art generation. See §22 for full rules.
+
+- General knowledge facts: fantasy/educational scene illustrating the fact
+- Vocabulary facts: **language-themed** scenes (see §22 for per-language cultural requirements)
+- `pixelArtStatus` tracks generation state: `none` → `generating` → `review` → `approved`/`rejected`
+- Cards with `pixelArtStatus: 'none'` use a generic domain-colored card back as fallback
 
 ### Scale
 
-522 launch → 20K+ growth → 5K+ per language pack. All human-verified.
+122 current → 10K+ per domain → 5K+ per language pack. All human-verified. All sourced.
 
 ---
 
