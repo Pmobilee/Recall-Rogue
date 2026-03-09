@@ -209,23 +209,109 @@ Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium.
 
 ---
 
-## Post-Soft-Launch Phases (Future)
+## Post-Soft-Launch: Content at Scale
 
-### AR-15: Content Expansion & Language Packs
-- [ ] Scale to 10K+ facts per domain via content pipeline
-- [ ] Language pack framework (audio, furigana, production cards at Tier 2+)
-- [ ] First language pack: Japanese N5 (800 vocabulary facts)
-- [ ] Domain pack IAP ($2.99) and language pack IAP ($4.99)
-- [ ] Age gating filter at query level
+### AR-15: Content Source Registry & Wikidata Query Library
+**Document all commercially safe data sources and build automated SPARQL/API query scripts.** This is the foundation — everything else depends on knowing WHERE data comes from.
 
-### AR-16: Competitive & Social Features
+- [ ] Create `docs/CONTENT_STRATEGY.md` with full source registry and licensing analysis
+- [ ] Write Wikidata SPARQL query scripts per knowledge domain (10 domains)
+- [ ] Test all queries — each must return 1,000+ structured results
+- [ ] Create source config JSON files for the ingestion pipeline (one per source)
+- [ ] Document NASA, PubChem, GBIF, USDA, Met Museum, Art Institute API access
+- [ ] Verify JMdict/EDRDG commercial license terms and document attribution requirements
+- [ ] Build API fetch scripts for non-SPARQL sources (REST endpoints)
+
+Depends on: None — can start immediately. Estimated: Medium. No API keys required.
+→ [Spec](phases/AR-15-CONTENT-SOURCE-REGISTRY.md)
+
+---
+
+### AR-16: Knowledge Domain Expansion (Code Changes)
+**Add 6 new knowledge domains to the game codebase.** This is pure code — no content generation, no API keys.
+
+- [ ] Add new `FactDomain` values: `space_astronomy`, `mythology_folklore`, `animals_wildlife`, `human_body_health`, `food_cuisine`, `art_architecture`
+- [ ] Update `CATEGORIES` constant in `src/data/types.ts` to include all 10 knowledge domains
+- [ ] Add domain metadata (display name, color tint, icon, description) to domain config
+- [ ] Update biome-to-category affinities in `src/services/interestSpawner.ts` for new domains
+- [ ] Add domain-specific card art themes (visual description style guides per domain)
+- [ ] Update domain selection UI in onboarding and settings
+- [ ] Update Knowledge Library filters for new domains
+- [ ] Add domain icons/sprites for new categories
+- [ ] Update age rating logic — ensure each new domain has appropriate content flags
+
+Depends on: None — can start immediately. Estimated: Medium. No API keys required.
+→ [Spec](phases/AR-16-DOMAIN-EXPANSION.md)
+
+---
+
+### AR-17: Haiku Fact Generation Engine
+**Build the pipeline that transforms structured source data into game-ready Fact schema JSON using Claude Haiku API.** This is the engine that makes content scaling possible.
+
+- [ ] Haiku API integration script with rate limiting, retry logic, cost tracking
+- [ ] Domain-specific system prompts (10 knowledge domains) — each guides Haiku to generate appropriate questions, distractors, difficulty, funScore
+- [ ] Batch processor: reads source data JSON → calls Haiku → outputs Fact schema JSON
+- [ ] Output validation: schema check, distractor quality check, difficulty distribution check
+- [ ] Distractor generation quality: ensure distractors are plausible but unambiguously wrong
+- [ ] Question variant generator: 3–4 variants per fact (forward/reverse/fill-blank/true-false)
+- [ ] Cost estimation tool: preview cost before running a batch
+- [ ] `visualDescription` generation integrated into the same pipeline
+- [ ] `wowFactor` framing generation
+- [ ] Dry-run mode: generate 10 sample facts per domain for review before full batch
+
+Depends on: AR-15 (needs source data). Estimated: Large. **REQUIRES Anthropic API key (Haiku model).**
+→ [Spec](phases/AR-17-HAIKU-FACT-ENGINE.md)
+
+---
+
+### AR-18: Vocabulary Expansion — 6 Languages
+**Import and process vocabulary data for all 6 target languages from JMdict, CEFR frequency lists, and open lexical databases.**
+
+- [ ] JMdict full import: complete JLPT N5–N1 vocabulary (currently only N3 exists)
+- [ ] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2)
+- [ ] TOPIK vocabulary import for Korean (levels 1–6)
+- [ ] HSK vocabulary import for Mandarin Chinese (levels 1–6)
+- [ ] Per-language schema extensions (reading field, romanization, example sentences)
+- [ ] Language-themed visual description generation using cultural themes from GAME_DESIGN.md §22
+- [ ] Tatoeba example sentence matching: link sentences to vocabulary entries
+- [ ] Difficulty mapping: JLPT/CEFR/HSK/TOPIK level → game difficulty (1–5)
+- [ ] Language selection UI updates (support 6 languages in onboarding + settings)
+- [ ] Audio placeholder system (TTS integration point for future)
+
+Depends on: AR-15 (source registry), AR-11 Part C (visual description pipeline). Estimated: Large. No API keys required for import scripts; Haiku API needed for visual descriptions.
+→ [Spec](phases/AR-18-VOCABULARY-EXPANSION.md)
+
+---
+
+### AR-19: Bulk Content Generation & Quality Assurance
+**Execute the full pipeline: generate 10K+ facts per domain, verify quality, populate production database.**
+
+- [ ] Run Haiku generation across all 10 knowledge domains
+- [ ] Run vocabulary processing for all 6 languages
+- [ ] Automated QA checks: schema validation, duplicate detection, distractor quality scoring
+- [ ] Domain coverage report: facts per domain × difficulty × age rating
+- [ ] Human review queue: prioritize Gold-tier sources, spot-check Silver, reject Bronze
+- [ ] Flag and fix facts with ambiguous answers, controversial content, or stale data
+- [ ] Generate `visualDescription` for all new facts (domain-themed for knowledge, language-themed for vocab)
+- [ ] Run ComfyUI card back generation for top-priority facts (sample batch per domain)
+- [ ] Final coverage audit: minimum 10K facts per knowledge domain, 5K per language
+- [ ] Production database migration: approved facts → `public/facts.db`
+
+Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRES Anthropic API key (Haiku model).**
+→ [Spec](phases/AR-19-BULK-GENERATION-QA.md)
+
+---
+
+## Post-Content: Social & Monetization (Future)
+
+### AR-20: Competitive & Social Features
 - [ ] Daily Expedition (fixed seed, one attempt/day, leaderboard)
 - [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard)
 - [ ] Mastery Challenges (rare Mystery room, 3s timer, 5 distractors, fail = Tier 2b)
 - [ ] Relic Sanctum (between-run relic management for >12 mastered)
 - [ ] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking)
 
-### AR-17: Monetization Activation
+### AR-21: Monetization Activation
 - [ ] Ad removal IAP ($4.99)
 - [ ] Arcane Pass subscription ($4.99/mo — all packs, cosmetics, analytics, family 5x)
 - [ ] Cosmetic store (card backs, frames, dungeon skins, avatars)
@@ -240,17 +326,22 @@ COMPLETED:
   AR-01 ──┬── AR-02 ──┬── AR-04 (3/4) ── AR-05 ✓ ── AR-06 ✓
           └── AR-03 ──┘
 
-NEXT (parallel tracks):
-  Track A: AR-08 (Hub) → AR-09 (Deck Building) ──→ AR-13 (Launch) → AR-14 (Soft Launch)
+PRE-LAUNCH (parallel tracks):
+  Track A: AR-08 ✓ (Hub) → AR-09 (Deck Building) ──→ AR-13 (Launch) → AR-14 (Soft Launch)
   Track B: AR-11 (Content Pipeline) ─────────────┘        ↑
   Track C: AR-10 (Calibration) ──────────────────────────┘
   Track D: AR-12 (Auth) ─────────────────────────────────→ AR-14
 
+CONTENT AT SCALE (parallel where possible):
+  AR-15 (Sources) ──┬── AR-17 (Haiku Engine) ──→ AR-19 (Bulk Gen & QA)
+  AR-16 (Domains) ──┘                                ↑
+  AR-18 (Vocab) ─────────────────────────────────────┘
+
 FUTURE:
-  AR-14 → AR-15 (Content) / AR-16 (Social) / AR-17 (Monetization)
+  AR-19 → AR-20 (Social) / AR-21 (Monetization)
 ```
 
-**Parallelism:** AR-08, AR-09, AR-10, and AR-11 have NO dependencies on each other and can all be worked in parallel. AR-12 needs AR-08 (for Settings access). AR-13 needs AR-08 + AR-09. AR-14 needs everything.
+**Parallelism:** AR-15 and AR-16 have NO dependencies and can start immediately in parallel. AR-17 needs AR-15 (source data to feed into Haiku). AR-18 needs AR-15. AR-19 needs everything. AR-15 and AR-16 do NOT require API keys. AR-17 and AR-19 REQUIRE Anthropic API key (Haiku model).
 
 ---
 
@@ -268,11 +359,11 @@ These features exist as implemented Svelte components / services but are current
 | Post-Run Summary | RunEnd components | Built ✓ | AR-08 |
 | Analytics Service | analyticsService.ts | Built ✓ | AR-14 |
 | A/B Testing | experiments.ts, featureFlagService.ts | Built ✓ | AR-14 |
-| Leaderboards | Leaderboard components | Built ✓ | AR-16 |
-| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-16 |
-| Guild View | GuildView.svelte | Built ✓ | AR-16 |
-| Duel View | DuelView.svelte | Built ✓ | AR-16 |
-| Season Pass | SeasonPassView.svelte | Built ✓ | AR-17 |
-| IAP Service | iapService.ts | Built ✓ | AR-17 |
-| Daily Deals | dailyDeals.ts | Built ✓ | AR-17 |
-| Gacha System | GachaReveal.svelte | Built ✓ | AR-17 |
+| Leaderboards | Leaderboard components | Built ✓ | AR-20 |
+| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-20 |
+| Guild View | GuildView.svelte | Built ✓ | AR-20 |
+| Duel View | DuelView.svelte | Built ✓ | AR-20 |
+| Season Pass | SeasonPassView.svelte | Built ✓ | AR-21 |
+| IAP Service | iapService.ts | Built ✓ | AR-21 |
+| Daily Deals | dailyDeals.ts | Built ✓ | AR-21 |
+| Gacha System | GachaReveal.svelte | Built ✓ | AR-21 |

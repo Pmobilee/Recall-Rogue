@@ -155,6 +155,32 @@ Game builds 120-fact pool → assigns each fact a type from balanced distributio
 
 Domains provide: content organization, visual identity (color tint), Knowledge Library categorization, run pool selection. Domains do NOT determine card type, mechanic, or power.
 
+### Fact Domains (16 Total)
+
+**Original domains (content exists):**
+- General Knowledge — broad trivia, cross-domain surprising facts
+- Natural Sciences — biology, chemistry, physics, earth science
+- Geography — countries, capitals, landmarks, flags, demographics
+- History — events, figures, dates, civilizations, wars, inventions
+
+**New knowledge domains (AR-16):**
+- Space & Astronomy — planets, stars, missions, phenomena, cosmology, astronauts
+- Mythology & Folklore — gods, creatures, legends, creation myths across all cultures
+- Animals & Wildlife — species, behaviors, habitats, record-holders, taxonomy
+- Human Body & Health — anatomy, nutrition, diseases, psychology, history of medicine
+- Food & World Cuisine — dishes, ingredients, techniques, food history, cultural traditions
+- Art & Architecture — movements, masterpieces, artists, famous buildings, design history
+
+**Language vocabulary domains (AR-18):**
+- Japanese (JLPT N5–N1)
+- Spanish (CEFR A1–C2)
+- French (CEFR A1–C2)
+- German (CEFR A1–C2)
+- Korean (TOPIK 1–6)
+- Mandarin Chinese (HSK 1–6)
+
+Domain count determines content breadth. Each knowledge domain targets 10K+ facts. Each language targets 5K+ vocabulary entries across all proficiency levels.
+
 ---
 
 ## 4. Card Mechanics Pool (35 Mechanics)
@@ -288,7 +314,7 @@ Fact at Tier 2b + stability >30d + 7 consecutive correct → qualifies.
 
 1. **FSRS decay:** Retrievability <0.7 → fact re-enters active pool as Tier 2a, relic goes dormant
 2. **Domain exhaustion prompt:** <10 unmastered facts → prompt to add new domain
-3. **Content expansion:** 522 launch → 20K+ growth. ~10 months to master all launch content
+3. **Content expansion:** 10K+ facts per domain at launch across 10 knowledge domains + 6 language packs. Years of content depth.
 4. **Mastery Challenge events:** Rare Mystery room. Mastered fact, 3s timer, 5 distractors. Fail → Tier 2b, relic dormant
 5. **Minimum active pool:** <15 active facts → Tier 2b facts re-enter as active cards
 
@@ -905,7 +931,7 @@ Research: Vampire Survivors $57M+ on $5 premium. Duolingo $1B+ freemium subscrip
 
 | Offering | Price |
 |----------|-------|
-| Free | Full game, unlimited runs, 522 facts, 3-4 domains |
+| Free | Full game, unlimited runs, all domains, community facts |
 | Ad removal | $4.99 |
 | Domain packs | $2.99 each |
 | Language packs | $4.99 each |
@@ -1099,7 +1125,80 @@ Every fact requires a `visualDescription` for card back art generation. See §22
 
 ---
 
-## 28. Competitive Moat
+## 28. Content Generation Strategy
+
+### Commercially Safe Sources Only
+
+All fact content must come from sources with licenses that permit commercial use without ShareAlike obligations. This is non-negotiable for a commercial product.
+
+**Approved license types:**
+- CC0 (public domain dedication) — preferred, no restrictions
+- CC-BY (attribution only) — permitted, must credit source
+- US Government works — public domain by law
+- MIT / Apache 2.0 licensed datasets — permitted
+
+**Prohibited license types:**
+- CC-BY-SA (ShareAlike) — derivative work ambiguity risk for commercial games
+- CC-BY-NC (NonCommercial) — explicitly prohibits commercial use
+- GPL-licensed datasets — viral copyleft
+- Unlicensed / unknown — assume all rights reserved
+
+### Primary Data Sources
+
+| Source | License | Use Case | Domains |
+|--------|---------|----------|---------|
+| Wikidata SPARQL | CC0 | Structured facts (countries, elements, species, etc.) | All knowledge domains |
+| NASA Open APIs | US Gov (PD) | Space imagery, mission data, astronomy facts | Space & Astronomy |
+| OpenStax (CC-BY books) | CC-BY 4.0 | Textbook-quality science, anatomy, history | Sciences, Human Body, History |
+| PubChem (NIH) | CC0 | Chemical compound data | Natural Sciences |
+| GBIF | CC0 | Species occurrence and taxonomy | Animals & Wildlife |
+| USDA FoodData Central | US Gov (PD) | Nutritional data, food composition | Food & World Cuisine |
+| Metropolitan Museum API | CC0 | Artwork metadata, artist information | Art & Architecture |
+| Art Institute of Chicago API | CC0 | Artwork metadata and images | Art & Architecture |
+| World Bank Open Data | CC-BY 4.0 | Demographics, economics | Geography |
+| Smithsonian Open Access | CC0 | 4.7M+ items across all domains | Cross-domain |
+| JMdict/EDRDG | Custom (commercial OK) | Japanese vocabulary, readings, meanings | Japanese |
+| Tatoeba | CC-BY 2.0 | Example sentences per language | All languages |
+
+### Haiku-Powered Question Generation
+
+Raw structured data from the sources above is transformed into the game's Fact schema using **Claude Haiku API** calls. This is the core of the content pipeline.
+
+**Pipeline flow:**
+```
+Wikidata SPARQL query → structured JSON
+    → Claude Haiku prompt (with domain-specific system prompt)
+    → Fact schema JSON (question, answer, distractors, difficulty, funScore)
+    → Schema validation
+    → Duplicate detection
+    → Human verification queue
+    → Production database
+```
+
+**Why Haiku:** Cost-efficient ($0.25/M input, $1.25/M output), fast (sub-second), good enough for question/distractor generation. At ~500 tokens per fact, generating 10K facts ≈ $6.25 per domain. Total for all 10 domains ≈ $62.50.
+
+**Haiku generates:**
+- Quiz question text (natural language, engaging phrasing)
+- 3–4 question variants per fact (forward, reverse, fill-blank, true/false)
+- 8–25 plausible distractors with difficulty tiers (easy/medium/hard)
+- `difficulty` rating (1–5)
+- `funScore` rating (1–10)
+- `visualDescription` (culturally themed for vocabulary, fact-illustrating for knowledge)
+- `wowFactor` framing (mind-blowing restatement shown on correct answer)
+
+**Haiku does NOT replace human verification.** Every generated fact enters the pipeline with `verifiedAt: null` and must be reviewed before production. See §27 Content Accuracy.
+
+### Wikipedia as Verification Layer
+
+Wikipedia is CC-BY-SA, which creates ShareAlike ambiguity for derivative works. Therefore:
+- Wikipedia is used for **fact-checking**, NOT as a content source
+- `sourceName` points to the actual data source (Wikidata, NASA, OpenStax, etc.)
+- Facts are generated from CC0/CC-BY structured data, then accuracy is cross-referenced against Wikipedia
+- This sidesteps ShareAlike entirely while maintaining verification rigor
+
+---
+
+## 29. Competitive Moat
 
 No commercial game currently combines spaced repetition with card roguelite mechanics. IEEE peer-reviewed paper: FSRS/SM-2 integration with learning games "has yet to be implemented at scale." SciTePress 2023: roguelites "well-adapted" for declarative knowledge training.
 
@@ -1119,7 +1218,7 @@ No commercial game currently combines spaced repetition with card roguelite mech
 
 ---
 
-## 29. Technical Notes
+## 30. Technical Notes
 
 **Stack:** Svelte 5 + Phaser 3 + TypeScript + Capacitor. Portrait. Mobile-first.
 
@@ -1167,3 +1266,5 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Canary | Invisible adaptive difficulty system. Adjusts game, never educational rigor. |
 | Accelerated FSRS | Calibration system during runs 1-3. Boosted gains on correct fast responses and high accuracy runs accelerate tier promotion and cold-start calibration. |
 | Archetype Bias | Run-start deck strategy preference (Balanced/Aggressive/Defensive/Control/Hybrid). Soft weighting on card type rewards. |
+| Haiku Generation | Content pipeline using Claude Haiku API to transform structured data (Wikidata, NASA, etc.) into Fact schema JSON with questions, distractors, and metadata. |
+| Content Source Registry | Documented inventory of all approved data sources with license verification. See docs/CONTENT_STRATEGY.md. |
