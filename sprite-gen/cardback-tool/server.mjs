@@ -295,8 +295,9 @@ app.use(express.static(resolve(__dirname, 'public')));
 // List all cards (with filters and pagination)
 app.get('/api/cards', (req, res) => {
   const { domain, status, search, type, page, limit: limitParam } = req.query;
-  const limit = Math.min(parseInt(limitParam) || 50, 200);
-  const offset = ((parseInt(page) || 1) - 1) * limit;
+  const limitRaw = parseInt(limitParam);
+  const limit = limitRaw === 0 ? null : Math.min(limitRaw || 50, 2000);
+  const offset = limit ? ((parseInt(page) || 1) - 1) * limit : 0;
 
   let where = [];
   let params = {};
@@ -319,9 +320,13 @@ app.get('/api/cards', (req, res) => {
   }
 
   const whereClause = where.length > 0 ? `WHERE ${where.join(' AND ')}` : '';
-  const sql = `SELECT * FROM cardbacks ${whereClause} ORDER BY domain, fact_id LIMIT @limit OFFSET @offset`;
-  params.limit = limit;
-  params.offset = offset;
+  const sql = limit
+    ? `SELECT * FROM cardbacks ${whereClause} ORDER BY domain, fact_id LIMIT @limit OFFSET @offset`
+    : `SELECT * FROM cardbacks ${whereClause} ORDER BY domain, fact_id`;
+  if (limit) {
+    params.limit = limit;
+    params.offset = offset;
+  }
 
   const rows = db.prepare(sql).all(params);
   res.json(rows);
