@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcane Recall — Cardback Art Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a1a2e;
+    border-bottom: 2px solid #333;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    color: #4ecca3;
+    white-space: nowrap;
+  }
+
+  .stats {
+    display: flex;
+    gap: 8px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .stats .stat {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  .stat-total { background: #333; color: #888; }
+  .stat-pending { background: #555; color: #ccc; }
+  .stat-generating { background: #4a3a1a; color: #ffaa44; }
+  .stat-review { background: #2a3a4a; color: #66aacc; }
+  .stat-accepted { background: #1a4a3a; color: #4ecca3; }
+  .stat-rejected { background: #4a1a1a; color: #ff6666; }
+
+  .filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filters select, .filters input, .filters button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #222;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+  }
+  .filters select:focus, .filters input:focus {
+    outline: none;
+    border-color: #4ecca3;
+  }
+  .filters input { width: 220px; }
+
+  .btn-scan {
+    background: #2a4a6a;
+    color: #88bbff;
+    cursor: pointer;
+    font-weight: 600;
+    border: 1px solid #446;
+  }
+  .btn-scan:hover { background: #3a5a7a; }
+
+  /* Batch controls */
+  .batch-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .btn-generate-missing {
+    background: #1a4a3a;
+    color: #4ecca3;
+    border: 1px solid #2a6a4a;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .btn-generate-missing:hover { background: #2a5a4a; }
+  .btn-generate-missing:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-stop {
+    background: #4a1a1a;
+    color: #ff6666;
+    border: 1px solid #6a2a2a;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: none;
+  }
+  .btn-stop:hover { background: #5a2a2a; }
+
+  .batch-progress {
+    display: none;
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    align-items: center;
+    gap: 10px;
+  }
+  .batch-progress.active { display: flex; }
+
+  .progress-bar-container {
+    flex: 1;
+    height: 20px;
+    background: #222;
+    border-radius: 10px;
+    border: 1px solid #444;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2a6a4a, #4ecca3);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    padding: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 601px) and (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .card {
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 8px;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.2s;
+  }
+  .card.status-accepted { border-color: #4ecca3; }
+  .card.status-rejected { border-color: #ff4444; }
+  .card.status-generating { border-color: #ffaa44; }
+  .card.status-review { border-color: #66aacc; }
+
+  .card-thumb-wrapper {
+    width: 150px;
+    height: 200px;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .card-thumb-wrapper:hover { border-color: #666; }
+
+  .card-thumb {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .card-placeholder {
+    color: #555;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 8px;
+    word-break: break-all;
+  }
+
+  .card-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    border: 3px solid #333;
+    border-top-color: #4ecca3;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .card-statement {
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 1.3;
+    color: #ccc;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    min-height: 2em;
+  }
+
+  .domain-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .status-indicator {
+    font-size: 0.85rem;
+    width: 20px;
+    text-align: center;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+  }
+  .card-actions button {
+    flex: 1;
+    padding: 4px 0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: #222;
+    color: #ccc;
+    transition: all 0.15s;
+  }
+  .card-actions button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-accept { border-color: #2a6a4a !important; color: #4ecca3 !important; }
+  .btn-accept:hover { background: #1a4a3a !important; }
+  .btn-accept.active { background: #1a4a3a !important; }
+  .btn-reject { border-color: #6a2a2a !important; color: #ff6666 !important; }
+  .btn-reject:hover { background: #4a1a1a !important; }
+  .btn-reject.active { background: #4a1a1a !important; }
+  .btn-regen { border-color: #5a5a2a !important; color: #ccaa44 !important; }
+  .btn-regen:hover { background: #3a3a1a !important; }
+
+  .desc-area {
+    width: 100%;
+    display: none;
+  }
+  .desc-area.visible { display: block; }
+  .desc-area textarea {
+    width: 100%;
+    min-height: 50px;
+    padding: 6px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #111;
+    color: #ddd;
+    font-size: 0.72rem;
+    resize: vertical;
+    font-family: inherit;
+  }
+  .desc-area textarea:focus { outline: none; border-color: #4ecca3; }
+
+  .btn-desc {
+    border-color: #446 !important;
+    color: #88aadd !important;
+  }
+  .btn-desc:hover { background: #1a2a4a !important; }
+  .btn-desc.has-desc { background: #1a2a3a !important; }
+
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+    grid-column: 1 / -1;
+  }
+  .empty-state h2 { color: #666; margin-bottom: 10px; }
+
+  /* Lightbox / Detail Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-content {
+    background: #1a1a2e;
+    border: 2px solid #444;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .modal-close:hover { color: #fff; }
+
+  .modal-image-wrapper {
+    width: 300px;
+    height: 400px;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .modal-image {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+  .modal-placeholder {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .modal-statement {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .modal-category {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+  }
+
+  .modal-meta {
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+  }
+
+  .modal-desc-label {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: -8px;
+  }
+
+  .modal-desc {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #111;
+    color: #ddd;
+    font-size: 0.85rem;
+    resize: vertical;
+    font-family: inherit;
+  }
+  .modal-desc:focus { outline: none; border-color: #4ecca3; }
+
+  .modal-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .modal-actions button {
+    flex: 1;
+    padding: 8px 0;
+    border: 1px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #222;
+    color: #ccc;
+    transition: all 0.15s;
+  }
+
+  .btn-save-desc {
+    background: #2a4a6a !important;
+    color: #88bbff !important;
+    border-color: #446 !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    align-self: flex-end;
+  }
+  .btn-save-desc:hover { background: #3a5a7a !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <h1>Arcane Recall &mdash; Cardback Art Dashboard</h1>
+    <div class="stats" id="stats"></div>
+  </div>
+  <div class="filters">
+    <select id="filter-domain">
+      <option value="">All Domains</option>
+    </select>
+    <select id="filter-status">
+      <option value="">All Status</option>
+      <option value="pending">Pending</option>
+      <option value="generating">Generating</option>
+      <option value="review">Review</option>
+      <option value="accepted">Accepted</option>
+      <option value="rejected">Rejected</option>
+    </select>
+    <select id="filter-type">
+      <option value="">All Types</option>
+      <option value="fact">Fact</option>
+      <option value="vocabulary">Vocabulary</option>
+      <option value="fossil">Fossil</option>
+    </select>
+    <input type="text" id="filter-search" placeholder="Search fact statement...">
+    <button class="btn-scan" id="btn-scan">Scan</button>
+  </div>
+  <div class="batch-controls">
+    <button class="btn-generate-missing" id="btn-generate-missing">Generate Missing</button>
+    <button class="btn-stop" id="btn-stop">Stop</button>
+    <div class="batch-progress" id="batch-progress">
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+      <span class="progress-text" id="progress-text">0 / 0</span>
+    </div>
+  </div>
+</header>
+
+<div id="grid" class="grid">
+  <div class="loading">Loading cards...</div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-content" id="modal-content">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div class="modal-image-wrapper">
+      <img class="modal-image" id="modal-image" src="" alt="" style="display:none;">
+      <span class="modal-placeholder" id="modal-image-placeholder">No image</span>
+    </div>
+    <div class="modal-statement" id="modal-statement"></div>
+    <div class="modal-category" id="modal-category"></div>
+    <div class="modal-meta" id="modal-meta"></div>
+    <label class="modal-desc-label">Visual Description</label>
+    <textarea class="modal-desc" id="modal-desc" placeholder="Describe the visual for card art generation..."></textarea>
+    <button class="btn-save-desc" id="btn-save-desc">Save Description</button>
+    <div class="modal-actions">
+      <button class="btn-accept" id="modal-accept">Accept</button>
+      <button class="btn-reject" id="modal-reject">Reject</button>
+      <button class="btn-regen" id="modal-regen">Regenerate</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // --- State ---
+  let allCards = [];
+  let debounceTimers = {};
+  let batchSSE = null;
+  let currentModalId = null;
+
+  // --- Domain Colors ---
+  const domainColors = {
+    'Natural Sciences': { bg: '#1a2a4a', color: '#66aaff' },
+    'Language':         { bg: '#3a1a4a', color: '#aa88ff' },
+    'Life Sciences':    { bg: '#1a4a2a', color: '#66cc88' },
+    'History':          { bg: '#4a3a1a', color: '#ccaa44' },
+    'Geography':        { bg: '#1a4a3a', color: '#44ccaa' },
+    'Technology':       { bg: '#2a2a4a', color: '#8888ff' },
+    'Culture':          { bg: '#4a1a3a', color: '#cc66aa' },
+  };
+
+  // --- DOM Refs ---
+  const grid = document.getElementById('grid');
+  const statsEl = document.getElementById('stats');
+  const filterDomain = document.getElementById('filter-domain');
+  const filterStatus = document.getElementById('filter-status');
+  const filterType = document.getElementById('filter-type');
+  const filterSearch = document.getElementById('filter-search');
+  const btnScan = document.getElementById('btn-scan');
+  const btnGenerateMissing = document.getElementById('btn-generate-missing');
+  const btnStop = document.getElementById('btn-stop');
+  const batchProgress = document.getElementById('batch-progress');
+  const progressBarFill = document.getElementById('progress-bar-fill');
+  const progressText = document.getElementById('progress-text');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalContent = document.getElementById('modal-content');
+  const modalClose = document.getElementById('modal-close');
+  const modalImage = document.getElementById('modal-image');
+  const modalImagePlaceholder = document.getElementById('modal-image-placeholder');
+  const modalStatement = document.getElementById('modal-statement');
+  const modalCategory = document.getElementById('modal-category');
+  const modalMeta = document.getElementById('modal-meta');
+  const modalDesc = document.getElementById('modal-desc');
+  const btnSaveDesc = document.getElementById('btn-save-desc');
+  const modalAccept = document.getElementById('modal-accept');
+  const modalReject = document.getElementById('modal-reject');
+  const modalRegen = document.getElementById('modal-regen');
+
+  // --- Status Icons ---
+  const statusIcons = {
+    pending: '\u25CB',
+    generating: '\u21BB',
+    review: '\u25C9',
+    accepted: '\u2714',
+    rejected: '\u2718',
+  };
+
+  // --- API Helpers ---
+  async function api(path, options) {
+    const res = await fetch(path, options);
+    return res.json();
+  }
+
+  // --- Load Data ---
+  async function loadCards() {
+    try {
+      var raw = await api('/api/cards');
+      // Normalize: API returns fact_id, UI uses id
+      allCards = raw.map(function(c) {
+        c.id = c.fact_id;
+        c.visualDescription = c.visual_description;
+        c.filePathHires = c.file_path_hires;
+        c.filePathLowres = c.file_path_lowres;
+        c.generationCount = c.generation_count;
+        return c;
+      });
+    } catch (e) {
+      allCards = [];
+      console.error('Failed to load cards:', e);
+    }
+    renderGrid();
+  }
+
+  async function loadStats() {
+    try {
+      const stats = await api('/api/stats');
+      statsEl.innerHTML =
+        '<span class="stat stat-total">' + (stats.total || 0) + ' total</span>' +
+        '<span class="stat stat-pending">' + (stats.pending || 0) + ' pending</span>' +
+        '<span class="stat stat-generating">' + (stats.generating || 0) + ' generating</span>' +
+        '<span class="stat stat-review">' + (stats.review || 0) + ' review</span>' +
+        '<span class="stat stat-accepted">' + (stats.accepted || 0) + ' accepted</span>' +
+        '<span class="stat stat-rejected">' + (stats.rejected || 0) + ' rejected</span>';
+    } catch (e) {
+      console.error('Failed to load stats:', e);
+    }
+  }
+
+  async function loadDomains() {
+    try {
+      const domains = await api('/api/domains');
+      const current = filterDomain.value;
+      filterDomain.innerHTML = '<option value="">All Domains</option>';
+      for (const d of domains) {
+        var opt = document.createElement('option');
+        opt.value = d;
+        opt.textContent = d;
+        filterDomain.appendChild(opt);
+      }
+      filterDomain.value = current;
+    } catch (e) {
+      console.error('Failed to load domains:', e);
+    }
+  }
+
+  // --- Filtering ---
+  function getFilteredCards() {
+    var domain = filterDomain.value;
+    var status = filterStatus.value;
+    var type = filterType.value;
+    var search = filterSearch.value.toLowerCase();
+
+    return allCards.filter(function(c) {
+      if (domain && c.domain !== domain) return false;
+      if (status && c.status !== status) return false;
+      if (type && c.type !== type) return false;
+      if (search && (!c.statement || !c.statement.toLowerCase().includes(search))) return false;
+      return true;
+    });
+  }
+
+  // --- Render ---
+  function renderGrid() {
+    var filtered = getFilteredCards();
+
+    if (filtered.length === 0) {
+      grid.innerHTML =
+        '<div class="empty-state">' +
+          '<h2>No cards found</h2>' +
+          '<p>Click "Scan" to discover cards, or adjust your filters.</p>' +
+        '</div>';
+      return;
+    }
+
+    grid.innerHTML = '';
+    for (var i = 0; i < filtered.length; i++) {
+      grid.appendChild(createCard(filtered[i]));
+    }
+  }
+
+  function getDomainStyle(domain) {
+    var d = domainColors[domain];
+    if (d) return 'background:' + d.bg + ';color:' + d.color;
+    return 'background:#333;color:#aaa';
+  }
+
+  function createCard(card) {
+    var el = document.createElement('div');
+    el.className = 'card status-' + (card.status || 'pending');
+    el.dataset.id = card.id;
+
+    var icon = statusIcons[card.status] || statusIcons.pending;
+    var hasDesc = card.visualDescription && card.visualDescription.trim().length > 0;
+    var hasImage = card.hasImage !== false;
+
+    var thumbHTML;
+    if (hasImage) {
+      thumbHTML =
+        '<div class="card-thumb-wrapper" data-id="' + card.id + '">' +
+          '<img class="card-thumb" src="/api/cards/' + encodeURIComponent(card.id) + '/thumb" ' +
+            'alt="' + escapeAttr(card.id) + '" loading="lazy" ' +
+            'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">' +
+          '<span class="card-placeholder" style="display:none">' + escapeHTML(card.id) + '</span>' +
+        '</div>';
+    } else {
+      thumbHTML =
+        '<div class="card-thumb-wrapper" data-id="' + card.id + '">' +
+          '<span class="card-placeholder">' + escapeHTML(card.id) + '</span>' +
+        '</div>';
+    }
+
+    el.innerHTML =
+      thumbHTML +
+      '<div class="card-statement">' + escapeHTML(card.statement || '') + '</div>' +
+      '<span class="domain-badge" style="' + getDomainStyle(card.domain) + '">' + escapeHTML(card.domain || 'Unknown') + '</span>' +
+      '<span class="status-indicator">' + icon + '</span>' +
+      '<div class="card-actions">' +
+        '<button class="btn-accept ' + (card.status === 'accepted' ? 'active' : '') + '" data-action="accept" data-id="' + card.id + '">Accept</button>' +
+        '<button class="btn-reject ' + (card.status === 'rejected' ? 'active' : '') + '" data-action="reject" data-id="' + card.id + '">Reject</button>' +
+        '<button class="btn-regen" data-action="regen" data-id="' + card.id + '">Regen</button>' +
+      '</div>' +
+      '<div class="card-actions" style="margin-top:-2px">' +
+        '<button class="btn-desc ' + (hasDesc ? 'has-desc' : '') + '" data-action="toggle-desc" data-id="' + card.id + '">Desc</button>' +
+      '</div>' +
+      '<div class="desc-area">' +
+        '<textarea placeholder="Visual description for art generation..." data-id="' + card.id + '">' + escapeHTML(card.visualDescription || '') + '</textarea>' +
+      '</div>';
+
+    return el;
+  }
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function escapeAttr(str) {
+    return escapeHTML(str);
+  }
+
+  // --- Event Delegation ---
+  grid.addEventListener('click', function(e) {
+    var btn = e.target.closest('button[data-action]');
+    if (btn) {
+      var action = btn.dataset.action;
+      var id = btn.dataset.id;
+      if (action === 'accept') reviewCard(id, 'accepted');
+      else if (action === 'reject') reviewCard(id, 'rejected');
+      else if (action === 'regen') regenerateCard(id);
+      else if (action === 'toggle-desc') toggleDesc(btn);
+      return;
+    }
+
+    var thumbWrapper = e.target.closest('.card-thumb-wrapper');
+    if (thumbWrapper) {
+      openModal(thumbWrapper.dataset.id);
+    }
+  });
+
+  grid.addEventListener('input', function(e) {
+    if (e.target.matches('.desc-area textarea')) {
+      debounceSaveDesc(e.target);
+    }
+  });
+
+  // --- Card Actions ---
+  async function reviewCard(id, status) {
+    var card = allCards.find(function(c) { return c.id === id; });
+    if (!card) return;
+
+    await api('/api/cards/' + encodeURIComponent(id) + '/review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: status }),
+    });
+
+    card.status = status;
+    updateCardInGrid(id, card);
+    loadStats();
+
+    // Update modal if open
+    if (currentModalId === id) {
+      modalAccept.classList.toggle('active', status === 'accepted');
+      modalReject.classList.toggle('active', status === 'rejected');
+    }
+  }
+
+  function updateCardInGrid(id, card) {
+    var el = grid.querySelector('[data-id="' + id + '"]');
+    if (!el) return;
+
+    el.className = 'card status-' + (card.status || 'pending');
+
+    var icon = statusIcons[card.status] || statusIcons.pending;
+    var indicator = el.querySelector('.status-indicator');
+    if (indicator) indicator.textContent = icon;
+
+    var acceptBtn = el.querySelector('.btn-accept');
+    var rejectBtn = el.querySelector('.btn-reject');
+    if (acceptBtn) acceptBtn.classList.toggle('active', card.status === 'accepted');
+    if (rejectBtn) rejectBtn.classList.toggle('active', card.status === 'rejected');
+  }
+
+  function toggleDesc(btn) {
+    var cardEl = btn.closest('.card');
+    var area = cardEl.querySelector('.desc-area');
+    area.classList.toggle('visible');
+    if (area.classList.contains('visible')) {
+      area.querySelector('textarea').focus();
+    }
+  }
+
+  function debounceSaveDesc(textarea) {
+    var id = textarea.dataset.id;
+    clearTimeout(debounceTimers[id]);
+    debounceTimers[id] = setTimeout(function() {
+      var card = allCards.find(function(c) { return c.id === id; });
+      if (card) card.visualDescription = textarea.value;
+
+      api('/api/cards/' + encodeURIComponent(id) + '/description', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ visualDescription: textarea.value }),
+      });
+
+      var cardEl = textarea.closest('.card');
+      var descBtn = cardEl.querySelector('.btn-desc');
+      if (descBtn) {
+        descBtn.classList.toggle('has-desc', textarea.value.trim().length > 0);
+      }
+    }, 500);
+  }
+
+  async function regenerateCard(id) {
+    var cardEl = grid.querySelector('[data-id="' + id + '"]');
+    if (!cardEl) return;
+
+    var regenBtn = cardEl.querySelector('.btn-regen');
+    if (regenBtn) {
+      regenBtn.disabled = true;
+      regenBtn.textContent = 'Gen...';
+    }
+
+    cardEl.className = 'card status-generating';
+    var indicator = cardEl.querySelector('.status-indicator');
+    if (indicator) indicator.textContent = statusIcons.generating;
+
+    // Show spinner on thumbnail
+    var wrapper = cardEl.querySelector('.card-thumb-wrapper');
+    var spinner = document.createElement('div');
+    spinner.className = 'card-spinner';
+    wrapper.appendChild(spinner);
+
+    try {
+      await api('/api/cards/' + encodeURIComponent(id) + '/generate', {
+        method: 'POST',
+      });
+
+      // Poll for completion
+      pollForCompletion(id, cardEl, regenBtn, spinner);
+    } catch (err) {
+      console.error('Regenerate failed:', err);
+      if (regenBtn) { regenBtn.textContent = 'Failed'; regenBtn.disabled = false; }
+      if (spinner.parentNode) spinner.parentNode.removeChild(spinner);
+      setTimeout(function() { if (regenBtn) regenBtn.textContent = 'Regen'; }, 2000);
+    }
+  }
+
+  function pollForCompletion(id, cardEl, regenBtn, spinner) {
+    var interval = setInterval(async function() {
+      try {
+        var cards = await api('/api/cards');
+        var updated = cards.find(function(c) { return c.fact_id === id; });
+        if (!updated || updated.status !== 'generating') {
+          clearInterval(interval);
+          if (spinner.parentNode) spinner.parentNode.removeChild(spinner);
+
+          if (updated) {
+            var localCard = allCards.find(function(c) { return c.id === id; });
+            if (localCard) {
+              Object.assign(localCard, updated);
+              localCard.id = localCard.fact_id;
+              localCard.visualDescription = localCard.visual_description;
+              localCard.filePathHires = localCard.file_path_hires;
+              localCard.filePathLowres = localCard.file_path_lowres;
+              localCard.generationCount = localCard.generation_count;
+            }
+
+            updateCardInGrid(id, updated);
+
+            // Refresh thumbnail
+            var thumb = cardEl.querySelector('.card-thumb');
+            if (thumb) {
+              thumb.style.display = '';
+              thumb.src = '/api/cards/' + encodeURIComponent(id) + '/thumb?t=' + Date.now();
+              var placeholder = cardEl.querySelector('.card-placeholder');
+              if (placeholder) placeholder.style.display = 'none';
+            }
+          }
+
+          if (regenBtn) {
+            regenBtn.textContent = updated && updated.status !== 'rejected' ? 'Done!' : 'Failed';
+            setTimeout(function() { regenBtn.textContent = 'Regen'; regenBtn.disabled = false; }, 2000);
+          }
+          loadStats();
+        }
+      } catch (e) {
+        // Keep polling on error
+      }
+    }, 2000);
+  }
+
+  // --- Scan ---
+  btnScan.addEventListener('click', async function() {
+    btnScan.disabled = true;
+    btnScan.textContent = 'Scanning...';
+    try {
+      await api('/api/scan', { method: 'POST' });
+      await Promise.all([loadCards(), loadStats(), loadDomains()]);
+      btnScan.textContent = 'Done!';
+    } catch (err) {
+      btnScan.textContent = 'Failed';
+      console.error('Scan failed:', err);
+    }
+    setTimeout(function() { btnScan.textContent = 'Scan'; btnScan.disabled = false; }, 2000);
+  });
+
+  // --- Batch Generate ---
+  btnGenerateMissing.addEventListener('click', async function() {
+    btnGenerateMissing.disabled = true;
+    btnStop.style.display = 'inline-block';
+    batchProgress.classList.add('active');
+    progressBarFill.style.width = '0%';
+    progressText.textContent = 'Starting...';
+
+    try {
+      await api('/api/batch/start', { method: 'POST' });
+    } catch (err) {
+      console.error('Batch start failed:', err);
+      resetBatchUI();
+      return;
+    }
+
+    // Connect SSE
+    batchSSE = new EventSource('/api/batch/status');
+    batchSSE.onmessage = function(e) {
+      var data;
+      try { data = JSON.parse(e.data); } catch (err) { return; }
+
+      if (data.current !== undefined && data.total !== undefined) {
+        var pct = data.total > 0 ? Math.round((data.current / data.total) * 100) : 0;
+        progressBarFill.style.width = pct + '%';
+        progressText.textContent = data.current + ' / ' + data.total +
+          (data.currentId ? ' \u2014 Generating ' + data.currentId + '...' : '');
+      }
+
+      if (data.completedId) {
+        // Refresh the completed card's thumbnail
+        var cardEl = grid.querySelector('[data-id="' + data.completedId + '"]');
+        if (cardEl) {
+          var thumb = cardEl.querySelector('.card-thumb');
+          if (thumb) {
+            thumb.style.display = '';
+            thumb.src = '/api/cards/' + encodeURIComponent(data.completedId) + '/thumb?t=' + Date.now();
+            var placeholder = cardEl.querySelector('.card-placeholder');
+            if (placeholder) placeholder.style.display = 'none';
+          }
+          var localCard = allCards.find(function(c) { return c.id === data.completedId; });
+          if (localCard) {
+            localCard.status = data.completedStatus || 'review';
+            localCard.hasImage = true;
+          }
+          updateCardInGrid(data.completedId, localCard || { status: 'review' });
+          var spinnerEl = cardEl.querySelector('.card-spinner');
+          if (spinnerEl) spinnerEl.parentNode.removeChild(spinnerEl);
+        }
+        loadStats();
+      }
+
+      if (data.done) {
+        closeBatchSSE();
+        resetBatchUI();
+        progressText.textContent = 'Complete!';
+        setTimeout(function() {
+          batchProgress.classList.remove('active');
+        }, 3000);
+        loadCards();
+        loadStats();
+      }
+
+      if (data.error) {
+        progressText.textContent = 'Error: ' + data.error;
+      }
+    };
+
+    batchSSE.onerror = function() {
+      closeBatchSSE();
+      resetBatchUI();
+      progressText.textContent = 'Connection lost';
+      setTimeout(function() {
+        batchProgress.classList.remove('active');
+      }, 3000);
+    };
+  });
+
+  // --- Batch Stop ---
+  btnStop.addEventListener('click', async function() {
+    try {
+      await api('/api/batch/stop', { method: 'POST' });
+    } catch (e) {
+      console.error('Batch stop failed:', e);
+    }
+    closeBatchSSE();
+    resetBatchUI();
+    progressText.textContent = 'Stopped';
+    setTimeout(function() {
+      batchProgress.classList.remove('active');
+    }, 2000);
+  });
+
+  function closeBatchSSE() {
+    if (batchSSE) {
+      batchSSE.close();
+      batchSSE = null;
+    }
+  }
+
+  function resetBatchUI() {
+    btnGenerateMissing.disabled = false;
+    btnStop.style.display = 'none';
+  }
+
+  // --- Filters ---
+  filterDomain.addEventListener('change', renderGrid);
+  filterStatus.addEventListener('change', renderGrid);
+  filterType.addEventListener('change', renderGrid);
+  filterSearch.addEventListener('input', renderGrid);
+
+  // --- Detail Modal ---
+  function openModal(id) {
+    var card = allCards.find(function(c) { return c.id === id; });
+    if (!card) return;
+    currentModalId = id;
+
+    // Image
+    if (card.hasImage !== false) {
+      modalImage.src = '/api/cards/' + encodeURIComponent(id) + '/full?t=' + Date.now();
+      modalImage.style.display = '';
+      modalImage.onerror = function() {
+        modalImage.style.display = 'none';
+        modalImagePlaceholder.style.display = '';
+        modalImagePlaceholder.textContent = id;
+      };
+      modalImagePlaceholder.style.display = 'none';
+    } else {
+      modalImage.style.display = 'none';
+      modalImagePlaceholder.style.display = '';
+      modalImagePlaceholder.textContent = id;
+    }
+
+    modalStatement.textContent = card.statement || '';
+    modalCategory.textContent = (card.domain || '') + (card.categoryPath ? ' > ' + card.categoryPath : '');
+    modalMeta.textContent =
+      'Type: ' + (card.type || 'unknown') +
+      (card.generationCount !== undefined ? ' | Generations: ' + card.generationCount : '') +
+      (card.updatedAt ? ' | Updated: ' + new Date(card.updatedAt).toLocaleDateString() : '');
+
+    modalDesc.value = card.visualDescription || '';
+
+    modalAccept.classList.toggle('active', card.status === 'accepted');
+    modalReject.classList.toggle('active', card.status === 'rejected');
+
+    modalOverlay.classList.add('open');
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    modalImage.src = '';
+    currentModalId = null;
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  // Prevent modal content clicks from closing
+  modalContent.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+
+  btnSaveDesc.addEventListener('click', async function() {
+    if (!currentModalId) return;
+    var card = allCards.find(function(c) { return c.id === currentModalId; });
+    if (card) card.visualDescription = modalDesc.value;
+
+    await api('/api/cards/' + encodeURIComponent(currentModalId) + '/description', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visualDescription: modalDesc.value }),
+    });
+
+    btnSaveDesc.textContent = 'Saved!';
+    setTimeout(function() { btnSaveDesc.textContent = 'Save Description'; }, 1500);
+
+    // Update grid card desc button
+    var gridCard = grid.querySelector('[data-id="' + currentModalId + '"]');
+    if (gridCard) {
+      var descBtn = gridCard.querySelector('.btn-desc');
+      if (descBtn) descBtn.classList.toggle('has-desc', modalDesc.value.trim().length > 0);
+      var descArea = gridCard.querySelector('.desc-area textarea');
+      if (descArea) descArea.value = modalDesc.value;
+    }
+  });
+
+  modalAccept.addEventListener('click', function() {
+    if (currentModalId) reviewCard(currentModalId, 'accepted');
+  });
+
+  modalReject.addEventListener('click', function() {
+    if (currentModalId) reviewCard(currentModalId, 'rejected');
+  });
+
+  modalRegen.addEventListener('click', function() {
+    if (currentModalId) {
+      regenerateCard(currentModalId);
+      closeModal();
+    }
+  });
+
+  // --- Keyboard ---
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // --- Init ---
+  Promise.all([loadCards(), loadStats(), loadDomains()]);
+})();
+</script>
+</body>
+</html>

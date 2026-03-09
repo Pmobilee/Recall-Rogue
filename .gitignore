@@ -96,6 +96,12 @@ sprite-gen/review-tool/
 sprite-gen/generation-log.txt
 sprite-gen/new-sprites-pending.json
 
+# Cardback tool local state
+sprite-gen/cardback-tool/cardbacks.db
+sprite-gen/cardback-tool/batch-state.json
+sprite-gen/cardback-tool/node_modules/
+sprite-gen/scripts/.vd-checkpoint.json
+
 # Playtest screenshots
 playtest/
 
