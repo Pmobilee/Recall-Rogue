@@ -19,6 +19,38 @@
       "Red algae",
       "Protists"
     ],
+    "variants": [
+      {
+        "question": "What group of organisms gave rise to all land plants about 470 million years ago?",
+        "type": "forward",
+        "correctAnswer": "Charophyte algae (freshwater green algae)",
+        "distractors": ["Marine seaweed", "Cyanobacteria", "Lichens"]
+      },
+      {
+        "question": "All land plants share a common ancestor with which group of freshwater organisms?",
+        "type": "reverse",
+        "correctAnswer": "Charophyte algae",
+        "distractors": ["Brown algae", "Red algae", "Diatoms"]
+      },
+      {
+        "question": "Which adaptation was NOT required for plants to transition from water to land?",
+        "type": "negative",
+        "correctAnswer": "Developing gills for underwater breathing",
+        "distractors": ["Waxy cuticles to prevent desiccation", "Stomata for gas exchange", "UV protection via flavonoids"]
+      },
+      {
+        "question": "Land plants evolved from charophyte algae during the _____ period, approximately 470 million years ago.",
+        "type": "fill_blank",
+        "correctAnswer": "Ordovician",
+        "distractors": ["Cambrian", "Silurian", "Devonian"]
+      },
+      {
+        "question": "All land plants descended from a group of freshwater green algae called charophytes.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +78,32 @@
       "Because mosses rely on wind for pollination which limits size",
       "Because mosses grow on rocks which provide insufficient nutrients",
       "Because moss DNA prevents cell division beyond a certain limit"
+    ],
+    "variants": [
+      {
+        "question": "What prevents mosses from growing tall like vascular plants?",
+        "type": "forward",
+        "correctAnswer": "They lack vascular tissue (xylem and phloem)",
+        "distractors": ["Their cell walls are too weak", "They cannot photosynthesize efficiently", "Their roots are too shallow"]
+      },
+      {
+        "question": "Plants that lack xylem and phloem and must stay small, relying on osmosis and capillary action for water transport, belong to which group?",
+        "type": "reverse",
+        "correctAnswer": "Mosses (Bryophyta)",
+        "distractors": ["Ferns (Pteridophyta)", "Grasses (Poaceae)", "Conifers (Pinophyta)"]
+      },
+      {
+        "question": "Which statement about mosses is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Mosses have specialized xylem and phloem tissue",
+        "distractors": ["Water moves through mosses by capillary action", "Mosses are limited to a few centimeters in height", "Mosses can dehydrate and rehydrate successfully"]
+      },
+      {
+        "question": "In mosses, water and nutrients move through the plant body by _____ and capillary action rather than through tubes.",
+        "type": "fill_blank",
+        "correctAnswer": "Osmosis",
+        "distractors": ["Active transport", "Photosynthesis", "Fermentation"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -75,6 +133,38 @@
       "About 90%",
       "About one-twentieth"
     ],
+    "variants": [
+      {
+        "question": "What fraction of Earth's soil carbon is stored in peat bogs?",
+        "type": "forward",
+        "correctAnswer": "About one-third",
+        "distractors": ["About 5%", "About one-tenth", "About three-quarters"]
+      },
+      {
+        "question": "An ecosystem that covers only 3% of Earth's land area but stores about one-third of all soil carbon is what type of environment?",
+        "type": "reverse",
+        "correctAnswer": "Peat bogs (formed by Sphagnum moss)",
+        "distractors": ["Tropical rainforests", "Coral reef systems", "Grassland prairies"]
+      },
+      {
+        "question": "Which statement about peat bogs is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Peat bogs cover about 30% of Earth's land area",
+        "distractors": ["They hold approximately 550 billion tonnes of carbon", "They are formed mainly by Sphagnum moss", "Drying peat bogs can release CO₂"]
+      },
+      {
+        "question": "A climate scientist studying carbon storage discovers that peat bogs store more carbon than all _____ combined.",
+        "type": "context",
+        "correctAnswer": "Tropical forests",
+        "distractors": ["Ocean plankton", "Desert soils", "Arctic permafrost"]
+      },
+      {
+        "question": "Peat bogs cover about 3% of Earth's land but hold roughly one-third of all soil carbon.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -103,6 +193,38 @@
       "By photosynthesizing continuously to generate warmth",
       "By switching to anaerobic respiration during winter"
     ],
+    "variants": [
+      {
+        "question": "What survival strategy do Antarctic mosses use to endure temperatures of -20°C?",
+        "type": "forward",
+        "correctAnswer": "Cryptobiosis — suspending metabolic processes",
+        "distractors": ["Producing antifreeze proteins", "Burrowing below the frost line", "Generating collective heat"]
+      },
+      {
+        "question": "A state of reversible metabolic suspension that allows mosses to survive extreme cold is called what?",
+        "type": "reverse",
+        "correctAnswer": "Cryptobiosis",
+        "distractors": ["Hibernation", "Estivation", "Photodormancy"]
+      },
+      {
+        "question": "Which statement about Antarctic mosses is NOT true?",
+        "type": "negative",
+        "correctAnswer": "They generate internal heat to stay warm at -20°C",
+        "distractors": ["They can survive temperatures of -20°C", "They lose most water content when freezing", "Some have been revived after 1,500 years frozen"]
+      },
+      {
+        "question": "During cryptobiosis, Antarctic mosses lose most of their _____ content and cellular chemistry slows to near zero.",
+        "type": "fill_blank",
+        "correctAnswer": "Water",
+        "distractors": ["Mineral", "Protein", "Chlorophyll"]
+      },
+      {
+        "question": "Some frozen Antarctic moss fragments over 1,000 years old have been successfully revived and re-grown in a laboratory.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -130,6 +252,32 @@
       "Because it contains natural painkillers",
       "Because it is waterproof on one side",
       "Because it is sterile when harvested from bogs"
+    ],
+    "variants": [
+      {
+        "question": "Why was Sphagnum moss an effective wound dressing during World War I?",
+        "type": "forward",
+        "correctAnswer": "It is highly absorbent and naturally antiseptic",
+        "distractors": ["It grows faster than cotton", "It contains natural painkillers", "It is sterile when harvested"]
+      },
+      {
+        "question": "A natural material that holds 16–26 times its dry weight in water and has antiseptic properties due to acidic pH was used as WWI wound dressings. What is it?",
+        "type": "reverse",
+        "correctAnswer": "Sphagnum moss",
+        "distractors": ["Cotton gauze", "Linen bandage", "Seaweed strips"]
+      },
+      {
+        "question": "Which statement about Sphagnum moss as a wound dressing is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Cotton is more absorbent than Sphagnum moss",
+        "distractors": ["Sphagnum holds up to 26 times its weight in water", "Its acidic pH helps kill bacteria", "Millions of pounds were collected for WWI hospitals"]
+      },
+      {
+        "question": "A WWI field surgeon runs out of cotton bandages. A colleague suggests using Sphagnum moss because its _____ compounds bind and deactivate bacterial proteins.",
+        "type": "context",
+        "correctAnswer": "Sphagnan",
+        "distractors": ["Cellulose", "Tannin", "Pectin"]
+      }
     ],
     "category": [
       "History",
@@ -160,6 +308,38 @@
       "They can draw water from solid rock through chemical reactions",
       "They can survive boiling temperatures by forming spores"
     ],
+    "variants": [
+      {
+        "question": "What survival ability makes desiccation-tolerant mosses remarkable among organisms?",
+        "type": "forward",
+        "correctAnswer": "Losing 95%+ of water and reviving when rehydrated",
+        "distractors": ["Photosynthesizing in total darkness", "Surviving boiling temperatures", "Reproducing without water"]
+      },
+      {
+        "question": "An organism that can lose 95% of its cellular water, drop to undetectable metabolism, and resume photosynthesis within 30 minutes of rehydration describes which type of plant?",
+        "type": "reverse",
+        "correctAnswer": "Desiccation-tolerant mosses",
+        "distractors": ["Cacti and succulents", "Deep-sea algae", "Arctic lichens"]
+      },
+      {
+        "question": "Which statement about desiccation-tolerant mosses is NOT true?",
+        "type": "negative",
+        "correctAnswer": "They require at least 50% water content to survive",
+        "distractors": ["They can resume photosynthesis in 15–30 minutes", "Dehydrins protect their cell membranes", "They are early colonizers of bare rock"]
+      },
+      {
+        "question": "Desiccation-tolerant mosses survive extreme drying thanks to protective proteins called _____ that stabilize cell membranes.",
+        "type": "fill_blank",
+        "correctAnswer": "Dehydrins",
+        "distractors": ["Hemoglobins", "Keratins", "Collagens"]
+      },
+      {
+        "question": "Syntrichia ruralis can resume full photosynthesis within 15–30 minutes of being rehydrated after near-complete desiccation.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -187,6 +367,32 @@
       "Through a shared network of underground rhizomes",
       "Through photosynthesis converting light energy directly to nutrients",
       "Through symbiotic bacteria living in their cells"
+    ],
+    "variants": [
+      {
+        "question": "How do mosses primarily take in water and nutrients?",
+        "type": "forward",
+        "correctAnswer": "Through their leaves and stems via capillary action",
+        "distractors": ["Through their roots like other plants", "Through underground fungal partners", "By condensing water vapor in stems"]
+      },
+      {
+        "question": "Hair-like structures in mosses that anchor the plant but have minimal absorption function are called what?",
+        "type": "reverse",
+        "correctAnswer": "Rhizoids",
+        "distractors": ["Root hairs", "Mycorrhizae", "Stolons"]
+      },
+      {
+        "question": "Which statement about moss water absorption is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Moss rhizoids are the primary water-absorbing organs",
+        "distractors": ["Mosses absorb water through their leaves", "Sphagnum has dead cells that act as water reservoirs", "Mosses make effective pollution biomonitors"]
+      },
+      {
+        "question": "Sphagnum moss has specialized dead cells called _____ in their leaves that rapidly absorb and hold large volumes of water.",
+        "type": "fill_blank",
+        "correctAnswer": "Hyalocysts",
+        "distractors": ["Stomata", "Trichomes", "Lenticels"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -216,6 +422,38 @@
       "Because they produce bioluminescence proportional to pollution levels",
       "Because they attract pollution-sensitive insects that can be counted"
     ],
+    "variants": [
+      {
+        "question": "What makes mosses valuable as biological monitors of air pollution?",
+        "type": "forward",
+        "correctAnswer": "They absorb atmospheric pollutants into their tissue",
+        "distractors": ["They change color when pollution is high", "They release reactive chemicals", "They grow faster in polluted air"]
+      },
+      {
+        "question": "After the Chernobyl disaster, scientists detected radioactive caesium-137 by analyzing which type of organism in Northern Europe?",
+        "type": "reverse",
+        "correctAnswer": "Mosses",
+        "distractors": ["Tree bark", "River fish", "Wildflowers"]
+      },
+      {
+        "question": "Which statement about mosses as pollution monitors is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Mosses absorb pollutants through their root systems",
+        "distractors": ["They accumulate heavy metals from the air", "The European Moss Survey maps pollution every 5 years", "Mosses detected Chernobyl radioactive fallout"]
+      },
+      {
+        "question": "An environmental scientist collects moss samples from standardized sites across Europe to map atmospheric deposition of heavy metals like lead, cadmium, and _____.",
+        "type": "context",
+        "correctAnswer": "Nickel",
+        "distractors": ["Gold", "Silicon", "Carbon"]
+      },
+      {
+        "question": "The European Moss Survey collects moss samples every five years to map atmospheric heavy metal deposition.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -243,6 +481,32 @@
       "About 200 million years ago",
       "About 1 billion years ago",
       "About 30 million years ago"
+    ],
+    "variants": [
+      {
+        "question": "When did moss-like plants first appear in the fossil record?",
+        "type": "forward",
+        "correctAnswer": "About 300–470 million years ago",
+        "distractors": ["About 65 million years ago", "About 150 million years ago", "About 10 million years ago"]
+      },
+      {
+        "question": "Ancient ground-cover plants that carpeted Carboniferous swamp forest floors alongside giant tree ferns and clubmosses were early relatives of which modern plant group?",
+        "type": "reverse",
+        "correctAnswer": "Mosses (bryophytes)",
+        "distractors": ["Grasses", "Cacti", "Orchids"]
+      },
+      {
+        "question": "Which statement about ancient mosses is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Moss-like plants first appeared after the dinosaurs",
+        "distractors": ["Fossil spores date to the Ordovician period", "They helped create humid understory microclimates", "They have remained relatively unchanged in form"]
+      },
+      {
+        "question": "A paleobotanist finds moss-like fossils in Carboniferous coal deposits alongside giant _____ and horsetails.",
+        "type": "context",
+        "correctAnswer": "Tree ferns",
+        "distractors": ["Flowering shrubs", "Pine trees", "Grass species"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -272,6 +536,38 @@
       "Because they attract pollution-sensitive beetles that can be counted",
       "Because acid rain prevents moss reproduction and spore germination first",
       "Because mosses and lichens produce gases that react with sulfur dioxide"
+    ],
+    "variants": [
+      {
+        "question": "Why are mosses and lichens the first organisms affected by acid rain?",
+        "type": "forward",
+        "correctAnswer": "They absorb precipitation directly, lacking barriers",
+        "distractors": ["They only grow in pristine wilderness", "They change color when exposed to acid", "Their spores are sensitive to acidity"]
+      },
+      {
+        "question": "Areas around industrial cities in 19th-century Britain where mosses and lichens disappeared were called what?",
+        "type": "reverse",
+        "correctAnswer": "Lichen deserts",
+        "distractors": ["Pollution zones", "Dead forests", "Acid corridors"]
+      },
+      {
+        "question": "Which statement about mosses and acid rain is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Mosses have waxy cuticles that protect them from acid rain",
+        "distractors": ["They absorb precipitation directly", "They lack protective bark", "Clean air legislation has allowed them to return"]
+      },
+      {
+        "question": "Mosses are sensitive to acid rain because they lack the protective _____ or waxy cuticles of vascular plants.",
+        "type": "fill_blank",
+        "correctAnswer": "Bark",
+        "distractors": ["Thorns", "Flowers", "Seeds"]
+      },
+      {
+        "question": "Since the 1970s clean air legislation, mosses and lichens have returned to many urban areas in Europe.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

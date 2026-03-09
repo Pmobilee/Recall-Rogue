@@ -19,6 +19,32 @@
       "About 300 million years ago",
       "About 100 million years ago"
     ],
+    "variants": [
+      {
+        "question": "When did multicellular life first appear on Earth?",
+        "type": "forward",
+        "correctAnswer": "About 600–800 million years ago",
+        "distractors": ["About 65 million years ago", "About 4.5 billion years ago", "About 200 million years ago"]
+      },
+      {
+        "question": "Soft-bodied organisms like Dickinsonia and Charnia, found as impressions in rock, represent the earliest known multicellular life from which geological period?",
+        "type": "reverse",
+        "correctAnswer": "The Ediacaran period",
+        "distractors": ["The Cambrian period", "The Devonian period", "The Silurian period"]
+      },
+      {
+        "question": "Which statement about early multicellular life is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Multicellularity evolved only once in a single lineage",
+        "distractors": ["Earth had single-celled life for 3+ billion years", "Dickinsonia lived on the ancient seafloor", "Ediacaran organisms were soft-bodied"]
+      },
+      {
+        "question": "Before multicellular life appeared, Earth's biosphere was dominated by single-celled _____ and archaea for over 3 billion years.",
+        "type": "fill_blank",
+        "correctAnswer": "Bacteria",
+        "distractors": ["Fungi", "Plants", "Animals"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "History"
@@ -47,6 +73,38 @@
       "When continental plates first separated, releasing stored gases",
       "When ancient algae evolved to remove carbon from the ocean",
       "When the first forests began producing oxygen from CO2"
+    ],
+    "variants": [
+      {
+        "question": "What was the Great Oxidation Event approximately 2.4 billion years ago?",
+        "type": "forward",
+        "correctAnswer": "Cyanobacteria flooding Earth's atmosphere with oxygen",
+        "distractors": ["Earth forming an atmosphere from volcanic gases", "The first land plants photosynthesizing", "The ozone layer forming from solar radiation"]
+      },
+      {
+        "question": "Organisms that produced oxygen through photosynthesis, causing the Great Oxidation Event 2.4 billion years ago, were what type of microbe?",
+        "type": "reverse",
+        "correctAnswer": "Cyanobacteria",
+        "distractors": ["Archaea", "Fungi", "Protozoa"]
+      },
+      {
+        "question": "Which was NOT a consequence of the Great Oxidation Event?",
+        "type": "negative",
+        "correctAnswer": "It caused the atmosphere to become methane-rich",
+        "distractors": ["It removed methane from the atmosphere", "It triggered the Huronian glaciation", "It enabled aerobic metabolism"]
+      },
+      {
+        "question": "The Great Oxidation Event caused the first major ice age, called the _____ glaciation, when oxygen reacted with and removed atmospheric methane.",
+        "type": "fill_blank",
+        "correctAnswer": "Huronian",
+        "distractors": ["Quaternary", "Permian", "Ordovician"]
+      },
+      {
+        "question": "Without cyanobacteria's oxygen production, complex multicellular animals could not exist.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -77,6 +135,38 @@
       "Largest Undiscovered Cave Ancestor — a cave organism predating plants",
       "Lateral Unduplicated Chromosome Architecture — a primitive DNA structure"
     ],
+    "variants": [
+      {
+        "question": "What does LUCA stand for in evolutionary biology?",
+        "type": "forward",
+        "correctAnswer": "Last Universal Common Ancestor",
+        "distractors": ["Largest Unicellular Carbon Absorber", "Lateral Universal Cell Architecture", "Last Undiscovered Cambrian Animal"]
+      },
+      {
+        "question": "The single-celled organism that likely lived in a hydrothermal vent environment 3.5–3.8 billion years ago and gave rise to all three domains of life is called what?",
+        "type": "reverse",
+        "correctAnswer": "LUCA (Last Universal Common Ancestor)",
+        "distractors": ["The First Cell", "Prokaryote Prime", "The Origin Species"]
+      },
+      {
+        "question": "Which statement about LUCA is NOT true?",
+        "type": "negative",
+        "correctAnswer": "LUCA was the very first life form on Earth",
+        "distractors": ["LUCA lived about 3.5–3.8 billion years ago", "All three domains of life descend from LUCA", "LUCA probably lived near hydrothermal vents"]
+      },
+      {
+        "question": "LUCA is the ancestor of all three domains of life: Bacteria, Archaea, and _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Eukarya",
+        "distractors": ["Viruses", "Protista", "Plantae"]
+      },
+      {
+        "question": "LUCA was the first life form ever to exist on Earth.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -104,6 +194,38 @@
       "Mineral deposits and ores",
       "Underground water tables",
       "The ozone layer"
+    ],
+    "variants": [
+      {
+        "question": "What did the earliest land plants create that did not exist before their colonization?",
+        "type": "forward",
+        "correctAnswer": "Soil — by weathering rock and adding organic matter",
+        "distractors": ["Freshwater rivers", "Underground caves", "Mountain ranges"]
+      },
+      {
+        "question": "The thin biological layer that makes agriculture possible and was first created by mosses and liverworts weathering bare rock is called what?",
+        "type": "reverse",
+        "correctAnswer": "Soil",
+        "distractors": ["Bedrock", "Sediment", "Loam"]
+      },
+      {
+        "question": "Which statement about soil formation is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Soil existed before plants colonized land",
+        "distractors": ["Early plants produced acids that weathered rock", "Dead organic matter accumulated to form soil", "Before plants, continents were bare rock"]
+      },
+      {
+        "question": "Early land plants like mosses and liverworts produced _____ that chemically weathered rock surfaces, beginning soil formation.",
+        "type": "fill_blank",
+        "correctAnswer": "Acids",
+        "distractors": ["Enzymes", "Sugars", "Salts"]
+      },
+      {
+        "question": "Before land plants evolved, Earth's continents had organic soil similar to what we see today.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -133,6 +255,32 @@
       "About 50 million years ago",
       "About 250 million years ago"
     ],
+    "variants": [
+      {
+        "question": "When did the plant lineage diverge from green algae?",
+        "type": "forward",
+        "correctAnswer": "About 1–1.5 billion years ago",
+        "distractors": ["About 470 million years ago", "About 65 million years ago", "About 3.5 billion years ago"]
+      },
+      {
+        "question": "The closest algal relatives of land plants, from which they diverged approximately 1.5 billion years ago, belong to which group?",
+        "type": "reverse",
+        "correctAnswer": "Charophytes (green algae)",
+        "distractors": ["Red algae", "Brown algae", "Diatoms"]
+      },
+      {
+        "question": "Which statement about plant evolution is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Animals evolved before the plant lineage diverged",
+        "distractors": ["Plants diverged from algae about 1.5 billion years ago", "The first land plant fossils are from 470 MYA", "Plant ancestors diversified in freshwater environments"]
+      },
+      {
+        "question": "The first animals evolved approximately 600–700 million years ago — hundreds of millions of years _____ plant ancestors had already diverged from algae.",
+        "type": "fill_blank",
+        "correctAnswer": "After",
+        "distractors": ["Before", "While", "Unless"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -160,6 +308,38 @@
       "Chloroplasts evolved from ancient ribosomes gaining green pigment",
       "Chloroplasts formed when two different plant cells fused permanently",
       "Chloroplasts originated from crystallized minerals in early freshwater environments"
+    ],
+    "variants": [
+      {
+        "question": "How did chloroplasts originate in plant cells, according to endosymbiotic theory?",
+        "type": "forward",
+        "correctAnswer": "From cyanobacteria engulfed by eukaryotic cells",
+        "distractors": ["From the nucleus dividing into organelles", "From mitochondria gaining photosynthesis", "From viral particles infecting cells"]
+      },
+      {
+        "question": "The biologist who championed the endosymbiotic theory explaining how chloroplasts and mitochondria originated was who?",
+        "type": "reverse",
+        "correctAnswer": "Lynn Margulis",
+        "distractors": ["Charles Darwin", "Gregor Mendel", "Barbara McClintock"]
+      },
+      {
+        "question": "Which piece of evidence does NOT support the endosymbiotic origin of chloroplasts?",
+        "type": "negative",
+        "correctAnswer": "Chloroplasts share DNA with the host cell nucleus",
+        "distractors": ["Chloroplasts have their own circular DNA", "They divide by binary fission like bacteria", "They have double membranes"]
+      },
+      {
+        "question": "Evidence for endosymbiosis includes that chloroplasts have their own circular _____, similar to bacteria.",
+        "type": "fill_blank",
+        "correctAnswer": "DNA",
+        "distractors": ["Proteins", "Sugars", "Lipids"]
+      },
+      {
+        "question": "Chloroplasts have bacterial-sized ribosomes, supporting their origin from engulfed cyanobacteria.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -189,6 +369,38 @@
       "About 40%",
       "About 30%"
     ],
+    "variants": [
+      {
+        "question": "What percentage of land plant species have mycorrhizal fungal partnerships?",
+        "type": "forward",
+        "correctAnswer": "About 80%",
+        "distractors": ["About 20%", "About 50%", "About 5%"]
+      },
+      {
+        "question": "A symbiotic relationship where fungi supply minerals and water to plant roots in exchange for photosynthetic sugars is called what?",
+        "type": "reverse",
+        "correctAnswer": "Mycorrhizal symbiosis",
+        "distractors": ["Parasitism", "Commensalism", "Nitrogen fixation"]
+      },
+      {
+        "question": "Which statement about mycorrhizal relationships is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Mycorrhizal fungi only evolved in the last million years",
+        "distractors": ["About 80% of land plants form these partnerships", "Plants supply up to 20–30% of their sugars to fungi", "Early land plant fossils already show mycorrhizal associations"]
+      },
+      {
+        "question": "In mycorrhizal symbiosis, plants provide sugars while fungi supply phosphorus, nitrogen, and _____ from soil beyond root reach.",
+        "type": "fill_blank",
+        "correctAnswer": "Water",
+        "distractors": ["Oxygen", "Carbon dioxide", "Sunlight"]
+      },
+      {
+        "question": "Crop plants that lose their mycorrhizal fungi often show reduced stress tolerance.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -216,6 +428,32 @@
       "They all have the same type of reproductive cells",
       "They all have identical DNA sequences in their chloroplasts",
       "They all evolved from the same type of fungal ancestor"
+    ],
+    "variants": [
+      {
+        "question": "What does 'monophyletic' mean when applied to land plants?",
+        "type": "forward",
+        "correctAnswer": "All descend from a single common ancestor",
+        "distractors": ["They all photosynthesize identically", "They all share the same chromosome count", "They all evolved independently"]
+      },
+      {
+        "question": "Shared features like multicellular embryos, alternation of generations, and sporopollenin-walled spores support that all land plants descended from what type of ancestor?",
+        "type": "reverse",
+        "correctAnswer": "A charophyte (freshwater green alga)",
+        "distractors": ["A marine brown alga", "A terrestrial fungus", "A soil bacterium"]
+      },
+      {
+        "question": "Which feature is NOT shared by all land plants as evidence of their common origin?",
+        "type": "negative",
+        "correctAnswer": "Production of flowers and seeds",
+        "distractors": ["Multicellular embryos in maternal tissue", "Spores with sporopollenin walls", "Cuticles to prevent desiccation"]
+      },
+      {
+        "question": "All land plants share spores with UV-resistant _____ walls, a trait inherited from their common ancestor.",
+        "type": "fill_blank",
+        "correctAnswer": "Sporopollenin",
+        "distractors": ["Cellulose", "Chitin", "Keratin"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -245,6 +483,38 @@
       "About 20 extinctions",
       "Exactly 7 extinctions"
     ],
+    "variants": [
+      {
+        "question": "How many major mass extinctions have reshaped life on Earth?",
+        "type": "forward",
+        "correctAnswer": "At least 5 (the Big Five)",
+        "distractors": ["Only 1", "Exactly 2", "About 10"]
+      },
+      {
+        "question": "The most severe mass extinction, killing 96% of marine species and 70% of land species approximately 252 MYA, is called what?",
+        "type": "reverse",
+        "correctAnswer": "The End-Permian extinction",
+        "distractors": ["The End-Cretaceous extinction", "The End-Ordovician extinction", "The Late Devonian extinction"]
+      },
+      {
+        "question": "Which statement about mass extinctions is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Plants went completely extinct during each mass extinction",
+        "distractors": ["The End-Permian killed 96% of marine species", "Surviving lineages diversified after each event", "Flowering plants dominated after the End-Cretaceous"]
+      },
+      {
+        "question": "After the End-Cretaceous extinction that killed the dinosaurs, _____ (flowering plants) recovered and came to dominate Earth's vegetation.",
+        "type": "fill_blank",
+        "correctAnswer": "Angiosperms",
+        "distractors": ["Gymnosperms", "Bryophytes", "Pteridophytes"]
+      },
+      {
+        "question": "The End-Permian extinction was the most severe of the Big Five, killing approximately 96% of marine species.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "History"
@@ -273,6 +543,38 @@
       "25% from plants, 75% from ocean",
       "60% from plants, 40% from ocean",
       "1% from plants, 99% from other sources"
+    ],
+    "variants": [
+      {
+        "question": "How is Earth's atmospheric oxygen production split between land plants and ocean phytoplankton?",
+        "type": "forward",
+        "correctAnswer": "Roughly 50% each",
+        "distractors": ["90% land, 10% ocean", "75% land, 25% ocean", "25% land, 75% ocean"]
+      },
+      {
+        "question": "A single genus of ocean cyanobacteria estimated to produce 20% of Earth's oxygen alone is called what?",
+        "type": "reverse",
+        "correctAnswer": "Prochlorococcus",
+        "distractors": ["Spirulina", "Chlorella", "Anabaena"]
+      },
+      {
+        "question": "Which statement about Earth's oxygen production is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Land plants produce over 90% of atmospheric oxygen",
+        "distractors": ["Ocean phytoplankton produce about 50% of oxygen", "Prochlorococcus alone produces about 20%", "Land plants and ocean organisms contribute roughly equally"]
+      },
+      {
+        "question": "The health of the world's oceans is as important for breathable air as the health of all land vegetation because phytoplankton produce approximately _____% of Earth's oxygen.",
+        "type": "fill_blank",
+        "correctAnswer": "50",
+        "distractors": ["10", "5", "90"]
+      },
+      {
+        "question": "Ocean phytoplankton produce roughly half of all the oxygen in Earth's atmosphere.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

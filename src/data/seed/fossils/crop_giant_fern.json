@@ -19,6 +19,38 @@
       "Up to 2 meters",
       "Up to 15 meters"
     ],
+    "variants": [
+      {
+        "question": "What is the maximum height that tree ferns can reach?",
+        "type": "forward",
+        "correctAnswer": "Up to 25 meters",
+        "distractors": ["Up to 5 meters", "Up to 50 meters", "Up to 10 meters"]
+      },
+      {
+        "question": "A plant that can grow up to 25 meters tall using a trunk of compressed root and stem tissue describes which type of plant?",
+        "type": "reverse",
+        "correctAnswer": "Tree ferns",
+        "distractors": ["Palm trees", "Giant bamboo", "Redwood saplings"]
+      },
+      {
+        "question": "Which statement about tree ferns is NOT true?",
+        "type": "negative",
+        "correctAnswer": "They produce true wood like hardwood trees",
+        "distractors": ["They can grow up to 25 meters tall", "Their trunks accumulate over centuries", "They are relics of the Carboniferous period"]
+      },
+      {
+        "question": "A botanist discovers a towering fern in a New Zealand rainforest with a trunk made of compressed root tissue. How tall could this tree fern potentially grow?",
+        "type": "context",
+        "correctAnswer": "Up to 25 meters",
+        "distractors": ["Up to 5 meters", "Up to 50 meters", "Up to 10 meters"]
+      },
+      {
+        "question": "Tree ferns grow using trunks made of _____ rather than true wood.",
+        "type": "fill_blank",
+        "correctAnswer": "Compressed root and stem tissue",
+        "distractors": ["Hollow bamboo-like cells", "Petrified bark layers", "Woven leaf fibers"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +78,38 @@
       "Ordovician algae mats",
       "Silurian coral reefs",
       "Cambrian shellfish beds"
+    ],
+    "variants": [
+      {
+        "question": "Which ancient plant communities were compressed over millions of years to form the coal deposits used during the Industrial Revolution?",
+        "type": "forward",
+        "correctAnswer": "Carboniferous fern forests and swamp plants",
+        "distractors": ["Jurassic conifer forests", "Cretaceous flowering plants", "Devonian ocean plankton"]
+      },
+      {
+        "question": "Coal deposits that powered the Industrial Revolution originated from the compressed remains of which geological period's plant life?",
+        "type": "reverse",
+        "correctAnswer": "The Carboniferous period (300–360 MYA)",
+        "distractors": ["The Jurassic period (150 MYA)", "The Cretaceous period (66 MYA)", "The Permian period (250 MYA)"]
+      },
+      {
+        "question": "Which statement about Carboniferous coal formation is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Coal formed from compressed dinosaur remains",
+        "distractors": ["Fern forests accumulated in oxygen-poor swamps", "Dead plants were prevented from decomposing", "Coal powered the Industrial Revolution"]
+      },
+      {
+        "question": "Coal formed because Carboniferous swamp forests accumulated in _____ conditions that prevented decomposition.",
+        "type": "fill_blank",
+        "correctAnswer": "Oxygen-poor",
+        "distractors": ["Extremely hot", "Highly alkaline", "Mineral-rich"]
+      },
+      {
+        "question": "The Industrial Revolution was powered by coal formed from ancient fern forests that grew 300–360 million years ago.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "History",
@@ -76,6 +140,38 @@
       "About 20 million years",
       "About 600 million years"
     ],
+    "variants": [
+      {
+        "question": "How much earlier did ferns appear in the fossil record compared to flowering plants?",
+        "type": "forward",
+        "correctAnswer": "About 230 million years earlier",
+        "distractors": ["About 50 million years earlier", "About 500 million years earlier", "About 10 million years earlier"]
+      },
+      {
+        "question": "Which plant group dominated Earth's land vegetation for over 200 million years before flowering plants evolved?",
+        "type": "reverse",
+        "correctAnswer": "Ferns and their relatives",
+        "distractors": ["Conifers and pines", "Grasses and sedges", "Flowering shrubs"]
+      },
+      {
+        "question": "Which statement about ferns is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Ferns evolved after flowering plants",
+        "distractors": ["Ferns first appeared about 360 million years ago", "Over 10,000 fern species exist today", "Ferns dominated land for 200+ million years"]
+      },
+      {
+        "question": "Ferns first appeared approximately _____ million years ago during the Devonian period.",
+        "type": "fill_blank",
+        "correctAnswer": "360",
+        "distractors": ["130", "500", "65"]
+      },
+      {
+        "question": "Flowering plants evolved before ferns appeared on Earth.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -103,6 +199,32 @@
       "Rhizomes only",
       "Fruits",
       "Eggs like animals"
+    ],
+    "variants": [
+      {
+        "question": "What structures do ferns use for reproduction instead of seeds?",
+        "type": "forward",
+        "correctAnswer": "Spores produced in sori clusters",
+        "distractors": ["Pollen released from cones", "Berries containing embryos", "Bulbs that split underground"]
+      },
+      {
+        "question": "Brown dots visible on the underside of fern fronds are clusters of spore-producing structures called what?",
+        "type": "reverse",
+        "correctAnswer": "Sori",
+        "distractors": ["Pistils", "Anthers", "Rhizoids"]
+      },
+      {
+        "question": "Which statement about fern reproduction is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Fern sperm can fertilize eggs without water",
+        "distractors": ["Ferns reproduce using spores not seeds", "Spores grow into heart-shaped gametophytes", "A single frond can produce millions of spores"]
+      },
+      {
+        "question": "An archaeologist examining a fossil fern finds brown dot clusters on the underside of a frond impression. These clusters are _____, the spore-producing structures of ferns.",
+        "type": "fill_blank",
+        "correctAnswer": "Sori",
+        "distractors": ["Pollen sacs", "Seed pods", "Root nodules"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -132,6 +254,38 @@
       "A prothallus",
       "A catkin"
     ],
+    "variants": [
+      {
+        "question": "What is the tightly coiled young frond of a fern called?",
+        "type": "forward",
+        "correctAnswer": "A crozier or fiddlehead",
+        "distractors": ["A tendril or runner", "A rhizome or stolon", "A stipe or rachis"]
+      },
+      {
+        "question": "A structure named after a bishop's hooked staff that unfurls into a fern frond is called what?",
+        "type": "reverse",
+        "correctAnswer": "A crozier",
+        "distractors": ["A rhizome", "A sporangium", "A prothallus"]
+      },
+      {
+        "question": "Which statement about fern fiddleheads is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Fiddleheads are always toxic to humans",
+        "distractors": ["They follow a logarithmic spiral pattern", "They protect the delicate growing tip", "They are named after a violin scroll"]
+      },
+      {
+        "question": "The coiling of a young fern frond is called circinate vernation, and the coiled structure is known as a _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Crozier or fiddlehead",
+        "distractors": ["Pinnule or rachis", "Sporangium or sorus", "Rhizome or stolon"]
+      },
+      {
+        "question": "Many fern fiddleheads are edible.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -159,6 +313,32 @@
       "About 50,000 species",
       "About 2,000 species",
       "About 200 species"
+    ],
+    "variants": [
+      {
+        "question": "How many recognized fern species exist worldwide?",
+        "type": "forward",
+        "correctAnswer": "Over 10,500 species",
+        "distractors": ["About 500 species", "About 5,000 species", "About 50,000 species"]
+      },
+      {
+        "question": "Which plant group is the second most diverse group of vascular plants after flowering plants, with over 10,500 species?",
+        "type": "reverse",
+        "correctAnswer": "Ferns (Polypodiopsida)",
+        "distractors": ["Conifers (Pinophyta)", "Mosses (Bryophyta)", "Horsetails (Equisetopsida)"]
+      },
+      {
+        "question": "Which statement about fern diversity is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Ferns are only found in tropical rainforests",
+        "distractors": ["Ferns are the second most diverse vascular plant group", "Some ferns live in aquatic habitats", "Ferns occupy habitats from tropics to tundra"]
+      },
+      {
+        "question": "A conservation team surveys a remote island and finds ferns in habitats from coastal areas to mountain peaks. This is consistent with fern diversity because they occupy habitats from _____ to alpine environments.",
+        "type": "context",
+        "correctAnswer": "Tropical rainforests to Arctic tundra",
+        "distractors": ["Desert oases to river banks", "Cave systems to open plains", "Volcanic vents to coral reefs"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -188,6 +368,38 @@
       "Staghorn fern",
       "Ostrich fern"
     ],
+    "variants": [
+      {
+        "question": "Which fern is considered the most widespread land plant on Earth?",
+        "type": "forward",
+        "correctAnswer": "Bracken fern (Pteridium aquilinum)",
+        "distractors": ["Boston fern", "Maidenhair fern", "Royal fern"]
+      },
+      {
+        "question": "A fern found on every continent except Antarctica, that thrives after fires by resprouting from deep rhizomes, is which species?",
+        "type": "reverse",
+        "correctAnswer": "Bracken fern",
+        "distractors": ["Sword fern", "Staghorn fern", "Tree fern"]
+      },
+      {
+        "question": "Which statement about bracken fern is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Bracken fern is safe forage for livestock",
+        "distractors": ["It grows on every continent except Antarctica", "It thrives after fires via deep rhizomes", "It is considered invasive in many regions"]
+      },
+      {
+        "question": "After a forest fire clears a hillside, a botanist notices one fern species resprouting aggressively from deep underground rhizomes. This fire-adapted, globally widespread species is most likely _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Bracken fern",
+        "distractors": ["Boston fern", "Maidenhair fern", "Ostrich fern"]
+      },
+      {
+        "question": "Bracken fern is found on every continent including Antarctica.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -215,6 +427,38 @@
       "About 15%",
       "About 40%",
       "About 60%"
+    ],
+    "variants": [
+      {
+        "question": "What was the approximate atmospheric oxygen level during the Carboniferous period?",
+        "type": "forward",
+        "correctAnswer": "About 35%",
+        "distractors": ["About 21%", "About 50%", "About 10%"]
+      },
+      {
+        "question": "An atmospheric oxygen level of approximately 35% — high enough to enable giant insects — occurred during which geological period?",
+        "type": "reverse",
+        "correctAnswer": "The Carboniferous period",
+        "distractors": ["The Jurassic period", "The Cambrian period", "The Triassic period"]
+      },
+      {
+        "question": "Which factor did NOT contribute to the high Carboniferous oxygen levels?",
+        "type": "negative",
+        "correctAnswer": "Rapid fungal decomposition of dead wood",
+        "distractors": ["Massive fern forest photosynthesis", "Dead wood burial in swamps", "Incomplete lignin breakdown by microbes"]
+      },
+      {
+        "question": "Carboniferous oxygen levels rose because fungi had not yet evolved enzymes to break down _____ in woody plant tissue.",
+        "type": "fill_blank",
+        "correctAnswer": "Lignin",
+        "distractors": ["Cellulose", "Chlorophyll", "Glucose"]
+      },
+      {
+        "question": "Today's atmospheric oxygen level of 21% is lower than the Carboniferous peak of about 35%.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -245,6 +489,32 @@
       "About 50 centimeters",
       "About 100 centimeters"
     ],
+    "variants": [
+      {
+        "question": "How large was the wingspan of the Carboniferous giant insect Meganeura?",
+        "type": "forward",
+        "correctAnswer": "Up to 70 centimeters",
+        "distractors": ["About 15 centimeters", "About 1 meter", "About 30 centimeters"]
+      },
+      {
+        "question": "Giant flying insects with 70-centimeter wingspans that lived in Carboniferous fern forests belonged to which genus?",
+        "type": "reverse",
+        "correctAnswer": "Meganeura",
+        "distractors": ["Archaeopteryx", "Pteranodon", "Dimetrodon"]
+      },
+      {
+        "question": "Which statement about Meganeura is NOT true?",
+        "type": "negative",
+        "correctAnswer": "They breathed using lungs like mammals",
+        "distractors": ["Their wingspans reached up to 70 cm", "They lived during the Carboniferous period", "High oxygen levels enabled their large size"]
+      },
+      {
+        "question": "A paleontologist excavating a Carboniferous fossil bed finds a giant insect wing impression. The insect could grow so large because it breathed by passive oxygen diffusion through _____, which was more effective in 35% oxygen air.",
+        "type": "context",
+        "correctAnswer": "Tracheae (tubes)",
+        "distractors": ["Gills", "Lung sacs", "Skin pores"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "History"
@@ -273,6 +543,38 @@
       "By producing oxygen that speeds rice growth",
       "By secreting growth hormones into the water",
       "By drawing water from deeper soil layers"
+    ],
+    "variants": [
+      {
+        "question": "How does the water fern Azolla naturally fertilize rice paddies?",
+        "type": "forward",
+        "correctAnswer": "By hosting cyanobacteria that fix atmospheric nitrogen",
+        "distractors": ["By releasing phosphorus from roots", "By shading weeds to prevent growth", "By decomposing and releasing potassium"]
+      },
+      {
+        "question": "A tiny aquatic fern used for over 1,000 years in Asian rice farming to naturally enrich soil with nitrogen is which plant?",
+        "type": "reverse",
+        "correctAnswer": "Azolla",
+        "distractors": ["Duckweed", "Water hyacinth", "Water lettuce"]
+      },
+      {
+        "question": "Which statement about Azolla is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Azolla fixes nitrogen using its own enzymes",
+        "distractors": ["It harbors cyanobacteria in leaf cavities", "It has been used in rice farming for over 1,000 years", "It converts atmospheric nitrogen into ammonia"]
+      },
+      {
+        "question": "A rice farmer in Vietnam grows a tiny floating fern between rice crops to enrich the soil. This traditional practice relies on Azolla's symbiotic partner, _____, which fixes atmospheric nitrogen.",
+        "type": "context",
+        "correctAnswer": "Cyanobacteria (Anabaena azollae)",
+        "distractors": ["Mycorrhizal fungi", "Root-dwelling bacteria", "Parasitic algae"]
+      },
+      {
+        "question": "Azolla has been used as a natural fertilizer in Asian rice paddies for over 1,000 years.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",

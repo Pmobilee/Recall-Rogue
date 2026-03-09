@@ -19,6 +19,38 @@
       "Up to 200 years",
       "Up to 2,000 years"
     ],
+    "variants": [
+      {
+        "question": "What is the maximum recorded viability period for lotus seeds?",
+        "type": "forward",
+        "correctAnswer": "Up to 1,300 years",
+        "distractors": ["Up to 100 years", "Up to 500 years", "Up to 5,000 years"]
+      },
+      {
+        "question": "Seeds recovered from a dry Chinese lake bed and carbon-dated to approximately 1,300 years old were successfully germinated from which plant?",
+        "type": "reverse",
+        "correctAnswer": "Lotus (Nelumbo nucifera)",
+        "distractors": ["Rice (Oryza sativa)", "Bamboo (Bambusoideae)", "Ginkgo (Ginkgo biloba)"]
+      },
+      {
+        "question": "Which statement about lotus seed longevity is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Lotus seeds remain viable due to a soft permeable coat",
+        "distractors": ["Seeds germinated after 1,300 years of dormancy", "Their hard coat protects against desiccation", "Carbon dating confirmed their age"]
+      },
+      {
+        "question": "Lotus seeds survive for centuries because their hard _____ coat protects them from desiccation and decay.",
+        "type": "fill_blank",
+        "correctAnswer": "Impermeable",
+        "distractors": ["Transparent", "Porous", "Gelatinous"]
+      },
+      {
+        "question": "In 1994, scientists successfully germinated lotus seeds that were approximately 1,300 years old.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -47,6 +79,32 @@
       "15–20°C",
       "25–30°C"
     ],
+    "variants": [
+      {
+        "question": "To what temperature range can the lotus flower heat itself through thermogenesis?",
+        "type": "forward",
+        "correctAnswer": "30–35°C",
+        "distractors": ["10–15°C", "40–50°C", "20–25°C"]
+      },
+      {
+        "question": "A plant that can warm its flower to 30–35°C even when air temperatures are 10°C is exhibiting what ability?",
+        "type": "reverse",
+        "correctAnswer": "Thermogenesis",
+        "distractors": ["Phototropism", "Chemosynthesis", "Bioluminescence"]
+      },
+      {
+        "question": "Which statement about lotus thermogenesis is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The lotus heats itself to kill parasitic insects",
+        "distractors": ["Heat helps volatilize fragrant compounds", "The receptacle can reach 30–35°C", "Warmth may reward sheltering pollinators"]
+      },
+      {
+        "question": "The lotus generates heat during flowering to volatilize _____ compounds that attract pollinators.",
+        "type": "fill_blank",
+        "correctAnswer": "Fragrant",
+        "distractors": ["Toxic", "Acidic", "Magnetic"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -74,6 +132,38 @@
       "Ancient Greek, Mayan, and Aztec religions",
       "Confucianism, Buddhism, and Taoism",
       "Hinduism, Jainism, and Sikhism"
+    ],
+    "variants": [
+      {
+        "question": "In which three major religious traditions is the lotus sacred?",
+        "type": "forward",
+        "correctAnswer": "Buddhism, Hinduism, and ancient Egyptian religion",
+        "distractors": ["Christianity, Islam, and Judaism", "Greek, Roman, and Norse religions", "Confucianism, Buddhism, and Taoism"]
+      },
+      {
+        "question": "A flower that symbolizes purity by rising from muddy water, revered across Buddhism, Hinduism, and ancient Egypt, is which plant?",
+        "type": "reverse",
+        "correctAnswer": "The lotus",
+        "distractors": ["The lily", "The rose", "The orchid"]
+      },
+      {
+        "question": "Which statement about the sacred lotus is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The lotus symbolizes war and conquest in Buddhism",
+        "distractors": ["Hindu deities are depicted seated on lotus flowers", "In Buddhism it symbolizes enlightenment", "In Egypt the blue lotus symbolized rebirth"]
+      },
+      {
+        "question": "In Buddhism, the lotus rising pure from muddy water symbolizes the soul's journey from _____ to wisdom.",
+        "type": "fill_blank",
+        "correctAnswer": "Suffering",
+        "distractors": ["Wealth", "Power", "Ignorance"]
+      },
+      {
+        "question": "The blue lotus in ancient Egyptian religion symbolized creation and rebirth.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "History",
@@ -104,6 +194,32 @@
       "Reducing the plant's weight",
       "Storing seeds"
     ],
+    "variants": [
+      {
+        "question": "What biological function do the holes in lotus root serve?",
+        "type": "forward",
+        "correctAnswer": "Delivering oxygen to submerged tissues",
+        "distractors": ["Storing food reserves", "Absorbing extra water", "Providing structural support"]
+      },
+      {
+        "question": "Hollow air canals called aerenchyma that transport oxygen from leaves to underwater roots are found in which edible aquatic plant?",
+        "type": "reverse",
+        "correctAnswer": "Lotus",
+        "distractors": ["Water chestnut", "Seaweed", "Watercress"]
+      },
+      {
+        "question": "Which statement about lotus root holes is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The holes are caused by insect damage to the root",
+        "distractors": ["They are cross-sections of air channels", "They deliver oxygen to submerged tissues", "The channels run from leaves through stems to roots"]
+      },
+      {
+        "question": "A chef slicing lotus root in a Tokyo kitchen sees the distinctive lacy pattern. These holes are cross-sections of _____ that deliver oxygen to underwater tissues.",
+        "type": "context",
+        "correctAnswer": "Aerenchyma (air channels)",
+        "distractors": ["Water storage cells", "Nutrient vessels", "Structural fibers"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -131,6 +247,32 @@
       "Food packaging and containers",
       "Telescope lenses and mirrors",
       "Engine pistons and gaskets"
+    ],
+    "variants": [
+      {
+        "question": "What engineering applications has the lotus leaf's surface inspired?",
+        "type": "forward",
+        "correctAnswer": "Waterproof fabrics, self-cleaning paints, coatings",
+        "distractors": ["Solar panels and batteries", "Computer chips and circuits", "Medical implants and sutures"]
+      },
+      {
+        "question": "A biomimicry phenomenon where microscopic waxy bumps create a self-cleaning surface with water contact angles exceeding 150° is named after which plant?",
+        "type": "reverse",
+        "correctAnswer": "The lotus (the 'lotus effect')",
+        "distractors": ["The rose (the 'rose effect')", "The cactus (the 'cactus effect')", "The bamboo (the 'bamboo effect')"]
+      },
+      {
+        "question": "Which statement about the lotus effect is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Lotus leaves absorb water to stay clean",
+        "distractors": ["Water beads into nearly perfect spheres on lotus leaves", "Rolling droplets carry away dirt and bacteria", "The surface has microscopic waxy nanostructures"]
+      },
+      {
+        "question": "The lotus leaf's surface is called _____ because water droplets bead up with a contact angle exceeding 150°.",
+        "type": "fill_blank",
+        "correctAnswer": "Superhydrophobic",
+        "distractors": ["Hygroscopic", "Hydrophilic", "Thermophilic"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -160,6 +302,32 @@
       "Tidal patterns",
       "Chemical signals from roots"
     ],
+    "variants": [
+      {
+        "question": "What environmental factors trigger lotus flowers to open and close daily?",
+        "type": "forward",
+        "correctAnswer": "Changes in light and temperature",
+        "distractors": ["Wind speed and direction", "Underground water pressure", "Lunar cycles"]
+      },
+      {
+        "question": "The opening and closing of lotus flowers in response to daily light and temperature changes is an example of what botanical phenomenon?",
+        "type": "reverse",
+        "correctAnswer": "Nyctinasty",
+        "distractors": ["Phototropism", "Thigmotropism", "Geotropism"]
+      },
+      {
+        "question": "Which statement about lotus flower opening is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Lotus flowers stay open continuously for weeks",
+        "distractors": ["They open and close daily for about three days", "Opening concentrates pollinator visits", "They typically open between 6–9 AM"]
+      },
+      {
+        "question": "A lotus flower blooms for approximately _____ days, opening each morning and closing each evening.",
+        "type": "fill_blank",
+        "correctAnswer": "Three",
+        "distractors": ["Thirty", "One", "Fourteen"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -187,6 +355,38 @@
       "Only the flowers",
       "Only the leaves and seeds",
       "Only the seeds"
+    ],
+    "variants": [
+      {
+        "question": "Which parts of the lotus plant can be eaten?",
+        "type": "forward",
+        "correctAnswer": "All parts: roots, stems, leaves, seeds, and petals",
+        "distractors": ["Only the roots and seeds", "Only the flowers and leaves", "Only the roots"]
+      },
+      {
+        "question": "An aquatic plant cultivated as a food crop in China for over 3,000 years, with every part edible from roots to petals, is which species?",
+        "type": "reverse",
+        "correctAnswer": "Lotus (Nelumbo nucifera)",
+        "distractors": ["Water chestnut", "Taro", "Rice"]
+      },
+      {
+        "question": "Which statement about lotus as food is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Only the roots of the lotus are edible",
+        "distractors": ["Lotus seeds are ground into paste for mooncakes", "Young leaves wrap sticky rice", "Stamens are used to scent tea"]
+      },
+      {
+        "question": "In Chinese cuisine, lotus seeds are ground into _____ paste, a key ingredient in mooncakes.",
+        "type": "fill_blank",
+        "correctAnswer": "Lotus seed",
+        "distractors": ["Red bean", "Taro root", "Sesame"]
+      },
+      {
+        "question": "Lotus has been cultivated as a food crop in China for over 3,000 years.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -217,6 +417,32 @@
       "Lotus velvet",
       "Lotus muslin"
     ],
+    "variants": [
+      {
+        "question": "What rare fabric is made from lotus stalk fibers in Myanmar?",
+        "type": "forward",
+        "correctAnswer": "Lotus silk",
+        "distractors": ["Lotus linen", "Lotus cotton", "Lotus hemp"]
+      },
+      {
+        "question": "A sacred fabric requiring thousands of plant stalks for a single garment, used only in high Buddhist temples in Myanmar, is made from which plant?",
+        "type": "reverse",
+        "correctAnswer": "Lotus",
+        "distractors": ["Bamboo", "Mulberry", "Hemp"]
+      },
+      {
+        "question": "Which statement about lotus silk is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Lotus silk fibers are extracted from the petals",
+        "distractors": ["Thousands of stalks are needed per garment", "The fabric is considered sacred", "It is only used in high Buddhist temples"]
+      },
+      {
+        "question": "Lotus flowers contain _____ and anthocyanins in their petals, which can be used as natural dyes.",
+        "type": "fill_blank",
+        "correctAnswer": "Flavonoids",
+        "distractors": ["Alkaloids", "Terpenes", "Steroids"]
+      }
+    ],
     "category": [
       "History",
       "Life Sciences"
@@ -246,6 +472,38 @@
       "By expelling toxic gases constantly",
       "By decomposing organic matter for energy"
     ],
+    "variants": [
+      {
+        "question": "How does the lotus survive in oxygen-poor muddy environments?",
+        "type": "forward",
+        "correctAnswer": "By transporting oxygen via aerenchyma air channels",
+        "distractors": ["By breathing through its leaves only", "By going dormant underwater", "By absorbing oxygen from bacteria"]
+      },
+      {
+        "question": "An aquatic plant that releases oxygen into surrounding anoxic mud, creating an oxidized zone for beneficial bacteria, is which species?",
+        "type": "reverse",
+        "correctAnswer": "Lotus",
+        "distractors": ["Water lily", "Cattail", "Reed"]
+      },
+      {
+        "question": "Which statement about lotus survival in mud is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The lotus avoids muddy environments due to low oxygen",
+        "distractors": ["It uses aerenchyma to transport oxygen to roots", "It releases oxygen into surrounding mud", "It creates an oxidized zone for beneficial bacteria"]
+      },
+      {
+        "question": "A botanist studying a lotus pond discovers that the plant releases oxygen into the surrounding anoxic mud, creating small _____ zones where beneficial bacteria thrive.",
+        "type": "context",
+        "correctAnswer": "Oxidized",
+        "distractors": ["Acidified", "Sterilized", "Frozen"]
+      },
+      {
+        "question": "Most plants cannot survive in waterlogged anoxic mud because their roots suffocate without oxygen.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -273,6 +531,38 @@
       "The tropical lotus and the temperate lotus",
       "The wild lotus and the garden lotus",
       "The sun lotus and the moon lotus"
+    ],
+    "variants": [
+      {
+        "question": "What are the only two living species of lotus?",
+        "type": "forward",
+        "correctAnswer": "Asian sacred lotus (pink) and American lotus (yellow)",
+        "distractors": ["Asian lotus and African lotus", "Pink lotus and blue lotus", "Sacred lotus and giant lotus"]
+      },
+      {
+        "question": "The family Nelumbonaceae has only two surviving species — one Asian with pink flowers and one American with what color flowers?",
+        "type": "reverse",
+        "correctAnswer": "Yellow",
+        "distractors": ["White", "Blue", "Red"]
+      },
+      {
+        "question": "Which statement about lotus species is NOT true?",
+        "type": "negative",
+        "correctAnswer": "There are dozens of lotus species worldwide",
+        "distractors": ["Only two living lotus species exist", "The American lotus has yellow flowers", "The family once included many more fossil species"]
+      },
+      {
+        "question": "The American lotus (Nelumbo lutea) grows natively across the eastern _____ and into Central America.",
+        "type": "fill_blank",
+        "correctAnswer": "United States",
+        "distractors": ["Australia", "Russia", "India"]
+      },
+      {
+        "question": "The lotus family Nelumbonaceae once included many more species now known only from fossils.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

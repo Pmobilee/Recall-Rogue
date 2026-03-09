@@ -19,6 +19,38 @@
       "Iran (Persia)",
       "China"
     ],
+    "variants": [
+      {
+        "question": "In which country was the oldest evidence of wine fermentation found, dating to about 8,000 years ago?",
+        "type": "forward",
+        "correctAnswer": "Georgia (the country in the South Caucasus)",
+        "distractors": ["Egypt", "Greece", "Iran (Persia)"]
+      },
+      {
+        "question": "Pottery shards containing tartaric acid residue from fermented grapes dating to 6000 BCE were found in which region?",
+        "type": "reverse",
+        "correctAnswer": "The South Caucasus (Georgia)",
+        "distractors": ["The Nile Delta (Egypt)", "The Aegean (Greece)", "The Rhine Valley (Germany)"]
+      },
+      {
+        "question": "Which statement about early wine fermentation is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The oldest wine evidence was found in ancient Egypt",
+        "distractors": ["Pottery shards contained tartaric acid residue", "The evidence dates to about 8,000 years ago", "Georgia still uses ancient qvevri wine-making"]
+      },
+      {
+        "question": "An archaeologist discovers pottery with chemical signatures of _____, malic acid, and citric acid — proof of ancient wine fermentation.",
+        "type": "fill_blank",
+        "correctAnswer": "Tartaric acid",
+        "distractors": ["Sulfuric acid", "Acetic acid", "Hydrochloric acid"]
+      },
+      {
+        "question": "Georgia still uses ancient clay amphora (qvevri) wine-making techniques today.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "History",
       "Life Sciences"
@@ -47,6 +79,32 @@
       "Ancient Mesopotamia (Iraq)",
       "The Indus Valley, Pakistan",
       "Ancient China"
+    ],
+    "variants": [
+      {
+        "question": "Where was the domestic grapevine first domesticated?",
+        "type": "forward",
+        "correctAnswer": "The South Caucasus region",
+        "distractors": ["The Nile Delta", "Ancient Greece", "Roman Italy"]
+      },
+      {
+        "question": "All domestic grape varieties descend from a single domestication event of which wild species?",
+        "type": "reverse",
+        "correctAnswer": "Vitis vinifera ssp. sylvestris",
+        "distractors": ["Vitis labrusca", "Vitis riparia", "Vitis rotundifolia"]
+      },
+      {
+        "question": "Which statement about grape domestication is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Grapes were independently domesticated in several regions",
+        "distractors": ["All cultivated grapes descend from one domestication event", "Domestication occurred 6,000–8,000 years ago", "Wild grapes still grow from the Caucasus to Europe"]
+      },
+      {
+        "question": "From the South Caucasus, grapevine cultivation spread westward through the _____ to the Mediterranean.",
+        "type": "fill_blank",
+        "correctAnswer": "Fertile Crescent",
+        "distractors": ["Silk Road", "Saharan trade routes", "Trans-Siberian corridor"]
+      }
     ],
     "category": [
       "History",
@@ -77,6 +135,38 @@
       "A nematode worm from the Mediterranean",
       "A spider mite introduced from India"
     ],
+    "variants": [
+      {
+        "question": "What pest destroyed approximately 40% of European vineyards in the late 1800s?",
+        "type": "forward",
+        "correctAnswer": "Grape phylloxera (a North American aphid)",
+        "distractors": ["Powdery mildew fungus", "A vine beetle from Africa", "A bacterial blight from Asia"]
+      },
+      {
+        "question": "Grafting European grapevines onto American rootstocks was the solution to which devastating 19th-century agricultural crisis?",
+        "type": "reverse",
+        "correctAnswer": "The phylloxera aphid infestation",
+        "distractors": ["The potato blight of Ireland", "The wheat rust epidemic", "The citrus canker outbreak"]
+      },
+      {
+        "question": "Which statement about the phylloxera crisis is NOT true?",
+        "type": "negative",
+        "correctAnswer": "American grape species were equally devastated by phylloxera",
+        "distractors": ["Phylloxera originated in North America", "It destroyed about 40% of European vineyards", "The solution involved grafting onto American rootstocks"]
+      },
+      {
+        "question": "European vineyards were saved from phylloxera by grafting vines onto resistant _____ rootstocks.",
+        "type": "fill_blank",
+        "correctAnswer": "American",
+        "distractors": ["Asian", "African", "Australian"]
+      },
+      {
+        "question": "Today, most European grapevines are still grafted onto American rootstocks to resist phylloxera.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "History",
       "Life Sciences"
@@ -105,6 +195,32 @@
       "The number of hours of sunlight grapes receive",
       "The winemaker's family tradition and technique",
       "The blend ratio of different grape varieties"
+    ],
+    "variants": [
+      {
+        "question": "What does the concept of 'terroir' refer to in wine production?",
+        "type": "forward",
+        "correctAnswer": "Soil, climate, and geography shaping wine character",
+        "distractors": ["The fermentation technique used", "The age of the grapevines", "The grape variety grown"]
+      },
+      {
+        "question": "A French term meaning 'earth' or 'land' that describes how a vineyard's specific environment shapes wine character is called what?",
+        "type": "reverse",
+        "correctAnswer": "Terroir",
+        "distractors": ["Appellation", "Cuvée", "Sommelier"]
+      },
+      {
+        "question": "Which factor is NOT part of the terroir concept?",
+        "type": "negative",
+        "correctAnswer": "The brand label and marketing of the wine",
+        "distractors": ["Soil mineral composition", "Local microclimate", "Altitude and slope of the vineyard"]
+      },
+      {
+        "question": "Modern _____ analysis has confirmed that wines from different regions have chemically distinct profiles reflecting their geographic origin.",
+        "type": "fill_blank",
+        "correctAnswer": "Metabolomics and isotope ratio",
+        "distractors": ["Genetic and DNA", "Astronomical and tidal", "Microscopic and visual"]
+      }
     ],
     "category": [
       "History",
@@ -135,6 +251,32 @@
       "About 5,000 varieties",
       "About 200 varieties"
     ],
+    "variants": [
+      {
+        "question": "How many named grape cultivar varieties exist worldwide?",
+        "type": "forward",
+        "correctAnswer": "Over 10,000 varieties",
+        "distractors": ["About 100 varieties", "About 1,000 varieties", "About 50,000 varieties"]
+      },
+      {
+        "question": "Despite over 10,000 grape varieties existing, about how many dominate commercial wine production worldwide?",
+        "type": "reverse",
+        "correctAnswer": "About 12–15 varieties",
+        "distractors": ["About 500 varieties", "About 2,000 varieties", "About 100 varieties"]
+      },
+      {
+        "question": "Which statement about grape variety diversity is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Most grape varieties are widely grown commercially",
+        "distractors": ["Over 10,000 named varieties exist globally", "Italy alone has over 350 catalogued varieties", "Many varieties exist only in small regional pockets"]
+      },
+      {
+        "question": "Grapevines propagate easily by _____, allowing local varieties to accumulate over millennia.",
+        "type": "fill_blank",
+        "correctAnswer": "Cuttings",
+        "distractors": ["Seed dispersal", "Spore release", "Root division"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -162,6 +304,38 @@
       "Greece",
       "Portugal",
       "Austria"
+    ],
+    "variants": [
+      {
+        "question": "Where is the world's oldest known living grapevine located?",
+        "type": "forward",
+        "correctAnswer": "Maribor, Slovenia",
+        "distractors": ["Bordeaux, France", "Tuscany, Italy", "Tbilisi, Georgia"]
+      },
+      {
+        "question": "A vine called 'Stara trta' that is over 400 years old and still produces grapes annually is located in which city?",
+        "type": "reverse",
+        "correctAnswer": "Maribor, Slovenia",
+        "distractors": ["Athens, Greece", "Porto, Portugal", "Vienna, Austria"]
+      },
+      {
+        "question": "Which statement about the world's oldest grapevine is NOT true?",
+        "type": "negative",
+        "correctAnswer": "It produces over 1,000 kg of grapes per year",
+        "distractors": ["It is over 400 years old", "It is listed in the Guinness Book of Records", "It was protected during World War II"]
+      },
+      {
+        "question": "The oldest grapevine in the world produces about 100 small bottles of wine each year, given to world leaders and _____.",
+        "type": "context",
+        "correctAnswer": "Dignitaries",
+        "distractors": ["Local farmers", "Wine merchants", "University students"]
+      },
+      {
+        "question": "The world's oldest living grapevine was already alive during Shakespeare's lifetime.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "History",
@@ -192,6 +366,32 @@
       "-15°C",
       "-80°C"
     ],
+    "variants": [
+      {
+        "question": "What is the lowest temperature some wild grapevines can survive?",
+        "type": "forward",
+        "correctAnswer": "-40°C",
+        "distractors": ["-10°C", "-20°C", "-60°C"]
+      },
+      {
+        "question": "Wild North American grape species like Vitis riparia that survive -40°C do so by accumulating sugars and producing what type of proteins?",
+        "type": "reverse",
+        "correctAnswer": "Antifreeze proteins",
+        "distractors": ["Growth hormones", "Photosynthetic enzymes", "Structural collagens"]
+      },
+      {
+        "question": "Which statement about wild grapevine cold-hardiness is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Domesticated grapes are more cold-hardy than wild ones",
+        "distractors": ["Wild grapes accumulate sugars as cryoprotectants", "Vitis riparia can survive -40°C", "American rootstocks tolerate wider environmental stresses"]
+      },
+      {
+        "question": "Wild grapevines survive extreme cold through controlled cell _____, sugar accumulation, and antifreeze protein production.",
+        "type": "fill_blank",
+        "correctAnswer": "Dehydration",
+        "distractors": ["Division", "Expansion", "Combustion"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -219,6 +419,32 @@
       "About 1500 BCE",
       "About 100 CE",
       "About 800 BCE"
+    ],
+    "variants": [
+      {
+        "question": "When do Egyptian hieroglyphs depicting wine production date to?",
+        "type": "forward",
+        "correctAnswer": "Approximately 3100 BCE (about 5,000 years ago)",
+        "distractors": ["About 500 BCE", "About 1500 BCE", "About 10,000 years ago"]
+      },
+      {
+        "question": "The earliest known wine labels specifying vintage and vineyard were found in which ancient civilization's royal tombs?",
+        "type": "reverse",
+        "correctAnswer": "Ancient Egypt",
+        "distractors": ["Ancient Rome", "Ancient Greece", "Ancient Mesopotamia"]
+      },
+      {
+        "question": "Which statement about Egyptian wine production is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Wine was a common drink for all social classes in Egypt",
+        "distractors": ["Hieroglyphs depict grape harvesting and wine production", "Wine residue was found in pottery from Abydos", "Royal tombs contained wine jars with vintage labels"]
+      },
+      {
+        "question": "Egyptian wine was primarily a _____ good, imported from the Levant and produced domestically in the Nile Delta.",
+        "type": "fill_blank",
+        "correctAnswer": "Luxury",
+        "distractors": ["Common", "Religious", "Military"]
+      }
     ],
     "category": [
       "History"
@@ -248,6 +474,32 @@
       "Because they dry out quickly; oldest are 500,000 years old",
       "Because they absorb silica from water; oldest are 300 million years old"
     ],
+    "variants": [
+      {
+        "question": "Why do grape seeds preserve well as fossils?",
+        "type": "forward",
+        "correctAnswer": "Their hard silica-rich seed coat resists decay",
+        "distractors": ["They contain anti-decay chemicals", "They are preserved in amber", "They turn to stone rapidly"]
+      },
+      {
+        "question": "Fossilized Vitis seeds found in deposits from which geological epoch are approximately 55 million years old?",
+        "type": "reverse",
+        "correctAnswer": "The Eocene epoch",
+        "distractors": ["The Pleistocene epoch", "The Holocene epoch", "The Miocene epoch"]
+      },
+      {
+        "question": "Which statement about fossilized grape seeds is NOT true?",
+        "type": "negative",
+        "correctAnswer": "The oldest grape seed fossils are only 5,000 years old",
+        "distractors": ["Grape seeds have silica-rich coats that resist decay", "Fossils have been found in North America, Europe, and Asia", "Grapes co-evolved with fruit-eating birds and mammals"]
+      },
+      {
+        "question": "A paleobotanist discovers fossilized grape seeds in Eocene rock. These 55-million-year-old seeds predate human viticulture, showing grapes co-evolved with _____ birds and mammals.",
+        "type": "context",
+        "correctAnswer": "Frugivorous (fruit-eating)",
+        "distractors": ["Carnivorous (meat-eating)", "Insectivorous (insect-eating)", "Herbivorous (leaf-eating)"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "History"
@@ -276,6 +528,38 @@
       "The heartwood contracting and forcing sap upward",
       "Chemical reactions between soil minerals and vine roots",
       "Gravity-driven sap flow reversing after winter dormancy"
+    ],
+    "variants": [
+      {
+        "question": "What causes grapevines to bleed sap from pruning cuts in early spring?",
+        "type": "forward",
+        "correctAnswer": "Root pressure from osmotic water uptake",
+        "distractors": ["Stored sugar reserves expanding", "Bacteria releasing gas in stems", "Transpiration pulling water upward"]
+      },
+      {
+        "question": "A vineyard phenomenon where cut grapevines weep sap at up to 1.5 liters per day due to root pressure is called what?",
+        "type": "reverse",
+        "correctAnswer": "Spring bleeding (or vine weeping)",
+        "distractors": ["Sap fermentation", "Root flooding", "Spring transpiration"]
+      },
+      {
+        "question": "Which statement about grapevine spring bleeding is NOT true?",
+        "type": "negative",
+        "correctAnswer": "Spring bleeding indicates the vine is diseased",
+        "distractors": ["Sap pressure can reach 4–6 atmospheres", "The sap contains sugars and amino acids", "It occurs before leaves emerge in spring"]
+      },
+      {
+        "question": "Grapevine root pressure in spring can reach up to _____ atmospheres, enough to cause sap to bleed from pruning cuts.",
+        "type": "fill_blank",
+        "correctAnswer": "6",
+        "distractors": ["1", "20", "50"]
+      },
+      {
+        "question": "Grapevine sap that bleeds from spring pruning cuts is slightly sweet to the taste.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
