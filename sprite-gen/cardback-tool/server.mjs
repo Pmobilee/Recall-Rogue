@@ -484,8 +484,8 @@ app.post('/api/batch/start', (req, res) => {
   let where = [];
   let params = {};
 
-  // Exclude already accepted cards
-  where.push("status != 'accepted'");
+  // Only generate cards that need it (pending or rejected)
+  where.push("status IN ('pending', 'rejected')");
 
   if (filter?.domain) {
     where.push('domain = @domain');
