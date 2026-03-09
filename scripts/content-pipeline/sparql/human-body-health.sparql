@@ -1,0 +1,14 @@
+SELECT ?item ?itemLabel ?itemDescription ?instanceLabel ?causeLabel WHERE {
+  {
+    ?item wdt:P31 wd:Q12136 .
+  } UNION {
+    ?item wdt:P31 wd:Q796194 .
+  } UNION {
+    ?item wdt:P31 wd:Q7187 .
+  }
+  OPTIONAL { ?item wdt:P31 ?instance . }
+  OPTIONAL { ?item wdt:P828 ?cause . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

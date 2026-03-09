@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-09",
+  "domains": {
+    "general_knowledge": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/general-knowledge.sparql",
+      "expectedMinimum": 350,
+      "minimumPolicy": "strict"
+    },
+    "natural_sciences": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/natural-sciences.sparql",
+      "expectedMinimum": 200,
+      "minimumPolicy": "strict"
+    },
+    "space_astronomy": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/space-astronomy.sparql",
+      "expectedMinimum": 300,
+      "minimumPolicy": "strict"
+    },
+    "geography": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/geography.sparql",
+      "expectedMinimum": 150,
+      "minimumPolicy": "advisory"
+    },
+    "history": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/history.sparql",
+      "expectedMinimum": 500,
+      "minimumPolicy": "strict"
+    },
+    "mythology_folklore": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/mythology-folklore.sparql",
+      "expectedMinimum": 400,
+      "minimumPolicy": "strict"
+    },
+    "animals_wildlife": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/animals-wildlife.sparql",
+      "expectedMinimum": 200,
+      "minimumPolicy": "strict"
+    },
+    "human_body_health": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/human-body-health.sparql",
+      "expectedMinimum": 600,
+      "minimumPolicy": "strict"
+    },
+    "food_cuisine": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/food-cuisine.sparql",
+      "expectedMinimum": 250,
+      "minimumPolicy": "strict"
+    },
+    "art_architecture": {
+      "source": "wikidata",
+      "queryFile": "scripts/content-pipeline/sparql/art-architecture.sparql",
+      "expectedMinimum": 400,
+      "minimumPolicy": "advisory"
+    }
+  },
+  "apis": {
+    "nasa": {
+      "baseUrl": "https://api.nasa.gov",
+      "license": "US Government Public Domain"
+    },
+    "pubchem": {
+      "baseUrl": "https://pubchem.ncbi.nlm.nih.gov/rest/pug",
+      "license": "US Government Public Domain"
+    },
+    "gbif": {
+      "baseUrl": "https://api.gbif.org/v1",
+      "license": "CC BY / CC0 mixed (filter required)"
+    },
+    "usda": {
+      "baseUrl": "https://api.nal.usda.gov/fdc/v1",
+      "license": "US Government Public Domain"
+    },
+    "met": {
+      "baseUrl": "https://collectionapi.metmuseum.org/public/collection/v1",
+      "license": "CC0"
+    },
+    "artic": {
+      "baseUrl": "https://api.artic.edu/api/v1",
+      "license": "CC0 metadata"
+    },
+    "world_bank": {
+      "baseUrl": "https://api.worldbank.org/v2",
+      "license": "CC BY 4.0"
+    }
+  },
+  "languages": {
+    "ja": {
+      "source": "jmdict",
+      "importScript": "scripts/content-pipeline/vocab/import-jmdict.mjs"
+    },
+    "tatoeba": {
+      "source": "tatoeba",
+      "importScript": "scripts/content-pipeline/vocab/import-tatoeba.mjs"
+    },
+    "wikidata_lexemes": {
+      "source": "wikidata",
+      "importScript": "scripts/content-pipeline/vocab/import-wikidata-lexemes.mjs"
+    }
+  }
+}

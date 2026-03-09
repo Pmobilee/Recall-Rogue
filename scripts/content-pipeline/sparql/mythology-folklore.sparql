@@ -1,0 +1,14 @@
+SELECT ?entity ?entityLabel ?entityDescription ?mythologyLabel ?instanceLabel WHERE {
+  {
+    ?entity wdt:P31 wd:Q22989102 .
+  } UNION {
+    ?entity wdt:P31 wd:Q2239243 .
+  } UNION {
+    ?entity wdt:P31 wd:Q1656682 .
+  }
+  OPTIONAL { ?entity wdt:P361 ?mythology . }
+  OPTIONAL { ?entity wdt:P31 ?instance . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

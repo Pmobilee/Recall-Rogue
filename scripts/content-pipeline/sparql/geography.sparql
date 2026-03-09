@@ -1,0 +1,10 @@
+SELECT ?country ?countryLabel ?countryDescription ?capitalLabel ?population ?area ?continentLabel WHERE {
+  ?country wdt:P31 wd:Q3624078 .
+  OPTIONAL { ?country wdt:P36 ?capital . }
+  OPTIONAL { ?country wdt:P1082 ?population . }
+  OPTIONAL { ?country wdt:P2046 ?area . }
+  OPTIONAL { ?country wdt:P30 ?continent . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

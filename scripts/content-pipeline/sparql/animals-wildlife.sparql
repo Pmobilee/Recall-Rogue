@@ -1,0 +1,11 @@
+SELECT ?species ?speciesLabel ?speciesDescription ?taxonName ?conservationLabel WHERE {
+  ?species wdt:P31 wd:Q16521 ;
+           wdt:P141 ?conservation .
+  ?species rdfs:label ?speciesLabel .
+  FILTER(LANG(?speciesLabel) = "en")
+  OPTIONAL { ?species wdt:P225 ?taxonName . }
+  OPTIONAL { ?species schema:description ?speciesDescription . FILTER(LANG(?speciesDescription) = "en") }
+  OPTIONAL { ?conservation rdfs:label ?conservationLabel . FILTER(LANG(?conservationLabel) = "en") }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

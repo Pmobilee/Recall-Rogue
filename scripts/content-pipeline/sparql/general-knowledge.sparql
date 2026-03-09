@@ -1,0 +1,14 @@
+SELECT ?item ?itemLabel ?itemDescription ?inception ?discovererLabel WHERE {
+  VALUES ?class {
+    wd:Q7191
+    wd:Q44539
+    wd:Q19020
+    wd:Q37922
+  }
+  ?item wdt:P31 ?class .
+  OPTIONAL { ?item wdt:P571 ?inception . }
+  OPTIONAL { ?item wdt:P61 ?discoverer . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

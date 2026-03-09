@@ -1,0 +1,17 @@
+SELECT ?item ?itemLabel ?itemDescription ?mass ?orbitalPeriod ?discovererLabel WHERE {
+  {
+    ?item wdt:P31 wd:Q634 .
+  } UNION {
+    ?item wdt:P31 wd:Q3504248 .
+  } UNION {
+    ?item wdt:P31 wd:Q40218 .
+  } UNION {
+    ?item wdt:P31 wd:Q5916 .
+  }
+  OPTIONAL { ?item wdt:P2067 ?mass . }
+  OPTIONAL { ?item wdt:P2146 ?orbitalPeriod . }
+  OPTIONAL { ?item wdt:P61 ?discoverer . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

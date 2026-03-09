@@ -1,0 +1,14 @@
+SELECT ?item ?itemLabel ?itemDescription ?originLabel ?ingredientLabel WHERE {
+  {
+    ?item wdt:P31 wd:Q746549 .
+  } UNION {
+    ?item wdt:P31 wd:Q2095 .
+  } UNION {
+    ?item wdt:P31 wd:Q25403900 .
+  }
+  OPTIONAL { ?item wdt:P495 ?origin . }
+  OPTIONAL { ?item wdt:P527 ?ingredient . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

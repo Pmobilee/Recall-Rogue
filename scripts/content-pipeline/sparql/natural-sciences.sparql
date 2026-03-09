@@ -1,0 +1,16 @@
+SELECT ?item ?itemLabel ?itemDescription ?instanceLabel ?discovererLabel WHERE {
+  VALUES ?class {
+    wd:Q11344
+    wd:Q173227
+    wd:Q11426
+    wd:Q214609
+  }
+  ?item wdt:P31 ?class .
+  ?item rdfs:label ?itemLabel .
+  FILTER(LANG(?itemLabel) = "en")
+  OPTIONAL { ?item schema:description ?itemDescription . FILTER(LANG(?itemDescription) = "en") }
+  OPTIONAL { ?item wdt:P31 ?instance . ?instance rdfs:label ?instanceLabel . FILTER(LANG(?instanceLabel) = "en") }
+  OPTIONAL { ?item wdt:P61 ?discoverer . ?discoverer rdfs:label ?discovererLabel . FILTER(LANG(?discovererLabel) = "en") }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

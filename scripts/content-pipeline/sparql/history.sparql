@@ -1,0 +1,15 @@
+SELECT ?event ?eventLabel ?eventDescription ?startDate ?endDate ?locationLabel WHERE {
+  {
+    ?event wdt:P31 wd:Q178561 .
+  } UNION {
+    ?event wdt:P31 wd:Q4438121 .
+  } UNION {
+    ?event wdt:P31 wd:Q198 .
+  }
+  OPTIONAL { ?event wdt:P580 ?startDate . }
+  OPTIONAL { ?event wdt:P582 ?endDate . }
+  OPTIONAL { ?event wdt:P276 ?location . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}

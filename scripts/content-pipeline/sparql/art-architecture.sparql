@@ -1,0 +1,10 @@
+SELECT ?item ?itemLabel ?itemDescription ?creatorLabel ?inception ?movementLabel WHERE {
+  VALUES ?class { wd:Q3305213 wd:Q811979 wd:Q33506 wd:Q860861 }
+  ?item wdt:P31 ?class .
+  OPTIONAL { ?item wdt:P170 ?creator . }
+  OPTIONAL { ?item wdt:P571 ?inception . }
+  OPTIONAL { ?item wdt:P135 ?movement . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT {{LIMIT}}
+OFFSET {{OFFSET}}
