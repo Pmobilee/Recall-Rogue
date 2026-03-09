@@ -35,6 +35,40 @@ export function createReviewState(factId: string): ReviewState {
     learningStep: 0,
     lapseCount: 0,
     isLeech: false,
+    stability: 0,
+    consecutiveCorrect: 0,
+    passedMasteryTrial: false,
+    retrievability: 1,
+    masteredAt: 0,
+    graduatedRelicId: null,
+  }
+}
+
+function finalizeReviewState(
+  previous: ReviewState,
+  updated: ReviewState,
+  button: AnkiButton,
+): ReviewState {
+  const correct = button !== 'again'
+  const previousStability = previous.stability ?? previous.interval ?? 0
+  const nextStability = Math.max(0, updated.interval ?? previousStability)
+  const previousRetrievability = previous.retrievability ?? 1
+  const retrievability = correct
+    ? Math.min(1, previousRetrievability + 0.05)
+    : Math.max(0.1, previousRetrievability - 0.2)
+  const masteredAt =
+    (previous.masteredAt ?? 0) > 0
+      ? (previous.masteredAt ?? 0)
+      : (nextStability >= 30 ? Date.now() : 0)
+
+  return {
+    ...updated,
+    stability: nextStability,
+    consecutiveCorrect: correct ? (previous.consecutiveCorrect ?? 0) + 1 : 0,
+    passedMasteryTrial: previous.passedMasteryTrial ?? false,
+    retrievability,
+    masteredAt,
+    graduatedRelicId: previous.graduatedRelicId ?? null,
   }
 }
 
@@ -48,18 +82,25 @@ export function createReviewState(factId: string): ReviewState {
  */
 export function reviewCard(state: ReviewState, button: AnkiButton): ReviewState {
   const now = Date.now()
+  let updated: ReviewState
 
   switch (state.cardState) {
     case 'new':
     case 'learning':
-      return handleLearning(state, button, now, SM2_LEARNING_STEPS, 'review')
+      updated = handleLearning(state, button, now, SM2_LEARNING_STEPS, 'review')
+      break
     case 'review':
-      return handleReview(state, button, now)
+      updated = handleReview(state, button, now)
+      break
     case 'relearning':
-      return handleLearning(state, button, now, SM2_RELEARNING_STEPS, 'review')
+      updated = handleLearning(state, button, now, SM2_RELEARNING_STEPS, 'review')
+      break
     default:
-      return handleLearning(state, button, now, SM2_LEARNING_STEPS, 'review')
+      updated = handleLearning(state, button, now, SM2_LEARNING_STEPS, 'review')
+      break
   }
+
+  return finalizeReviewState(state, updated, button)
 }
 
 /** Handle learning/relearning state button presses */

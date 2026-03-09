@@ -965,7 +965,7 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Card (RunCard) | A playable entity: Fact + assigned type + mechanic + tier + effect value |
 | Tier | Evolution stage: 1 (Learning), 2a (Recall), 2b (Deep Recall), 3 (Mastered/Passive) |
 | Domain | Subject category (Science, History, etc.). Content label only. Does NOT determine card type. |
-| Run | Single playthrough: enter dungeon, descend floors, retreat or die |
+| Run | Single playthrough: enter dungeon, delve through floors, retreat or die |
 | Floor | One dungeon depth containing 3 encounters + optional events |
 | Segment | Group of 3 floors ending in boss + retreat checkpoint |
 | Encounter | Single combat: player plays cards vs one enemy |

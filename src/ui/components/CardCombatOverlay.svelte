@@ -2,11 +2,12 @@
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
   import { FLOOR_TIMER } from '../../data/balance'
+  import { getQuestionPresentation } from '../../services/questionFormatter'
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
   import DamageNumber from './DamageNumber.svelte'
   import ComboCounter from './ComboCounter.svelte'
-  import PassiveEffectBar from './PassiveEffectBar.svelte'
+  import RelicTray from './RelicTray.svelte'
   import { juiceManager } from '../../services/juiceManager'
   import { factsDB } from '../../services/factsDB'
 
@@ -21,25 +22,36 @@
 
   let selectedIndex = $state<number | null>(null)
   let answeredThisTurn = $state(0)
-  let damageNumbers = $state<Array<{id: number, value: string, isCritical: boolean}>>([])
+  let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean }>>([])
   let cardAnimations = $state<Record<string, 'launch' | 'fizzle' | null>>({})
-  let comboCount = $derived(turnState?.comboCount ?? 0)
-  let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
-  let activePassives = $derived(turnState?.activePassives ?? [])
   let damageIdCounter = $state(0)
 
-  /** Remove a damage number by id after its animation completes. */
+  let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
+  let comboCount = $derived(turnState?.comboCount ?? 0)
+  let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
+  let activeRelics = $derived(turnState?.activeRelics ?? [])
+  let apCurrent = $derived(turnState?.apCurrent ?? 0)
+  let apMax = $derived(turnState?.apMax ?? 0)
+
+  let selectedCard = $derived<Card | null>(
+    selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null,
+  )
+
+  let selectedPresentation = $derived(
+    selectedCard
+      ? getQuestionPresentation(selectedCard.tier, selectedCard.isMasteryTrial === true)
+      : null,
+  )
+
   function removeDamageNumber(id: number): void {
-    damageNumbers = damageNumbers.filter(dn => dn.id !== id)
+    damageNumbers = damageNumbers.filter((entry) => entry.id !== id)
   }
 
-  /** Spawn a floating damage number. */
   function spawnDamageNumber(value: string, isCritical: boolean): void {
     const id = damageIdCounter++
     damageNumbers = [...damageNumbers, { id, value, isCritical }]
   }
 
-  // Wire juiceManager callbacks on mount
   $effect(() => {
     juiceManager.setCallbacks({
       onDamageNumber: (value, isCritical) => spawnDamageNumber(value, isCritical),
@@ -47,52 +59,20 @@
     return () => juiceManager.clearCallbacks()
   })
 
-  /** Cards currently in hand from turn state. */
-  let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
-
-  /** Whether the end turn button should be shown. */
-  let showEndTurn = $derived(
-    turnState !== null &&
-    turnState.phase === 'player_action' &&
-    (turnState.deck.hand.length === 0 || answeredThisTurn > 0)
-  )
-
-  /** The currently selected card (if any). */
-  let selectedCard = $derived<Card | null>(
-    selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null
-  )
-
-  /** Timer duration in seconds for the current floor. */
-  let timerSeconds = $derived(
-    turnState
-      ? (FLOOR_TIMER.find(t => turnState!.deck.currentFloor <= t.maxFloor)?.seconds ?? 4)
-      : 4
-  )
-
-  /**
-   * Build quiz data for a card using real facts from the database.
-   * Falls back to placeholder text if the fact can't be loaded.
-   */
-  function getQuizForCard(card: Card): { question: string; answers: string[]; correctAnswer: string } {
+  function getQuizForCard(card: Card, optionCount: number): { question: string; answers: string[]; correctAnswer: string } {
     const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
-
     if (!fact) {
-      // Fallback when DB isn't ready or fact not found
       return {
         question: `Question for ${card.factId}`,
-        answers: [`Answer`, `Wrong A`, `Wrong B`],
-        correctAnswer: `Answer`,
+        answers: ['Answer', 'Wrong A', 'Wrong B'],
+        correctAnswer: 'Answer',
       }
     }
 
-    // Pick distractor count based on tier: T1=2, T2=3, T3=4
-    const distractorCount = card.tier === 1 ? 2 : card.tier === 2 ? 3 : 4
-
-    // Shuffle and take a subset of distractors
+    const distractorCount = Math.max(2, optionCount - 1)
     const shuffledDistractors = [...fact.distractors].sort(() => Math.random() - 0.5)
     const picked = shuffledDistractors.slice(0, Math.min(distractorCount, shuffledDistractors.length))
 
-    // Insert correct answer at random position
     const allAnswers = [...picked]
     const insertIdx = Math.floor(Math.random() * (allAnswers.length + 1))
     allAnswers.splice(insertIdx, 0, fact.correctAnswer)
@@ -104,27 +84,43 @@
     }
   }
 
-  /** Quiz data for the selected card, sourced from factsDB. */
-  let quizData = $derived(selectedCard ? getQuizForCard(selectedCard) : null)
+  let quizData = $derived(
+    selectedCard && selectedPresentation
+      ? getQuizForCard(selectedCard, selectedPresentation.optionCount)
+      : null,
+  )
 
-  // Reset state when turn number changes (new turn drawn)
+  let timerSeconds = $derived(
+    !turnState
+      ? 4
+      : (selectedPresentation?.timerOverride
+        ?? (FLOOR_TIMER.find((entry) => turnState.deck.currentFloor <= entry.maxFloor)?.seconds ?? 4)),
+  )
+
+  let speedBonusThreshold = $derived(
+    turnState?.activeRelicIds.has('scholars_focus') ? 0.30 : 0.25,
+  )
+
+  let showEndTurn = $derived(
+    turnState !== null &&
+      turnState.phase === 'player_action' &&
+      (turnState.deck.hand.length === 0 || answeredThisTurn > 0 || turnState.apCurrent <= 0),
+  )
+
   let _lastTurnNumber = 0
   $effect(() => {
-    const tn = turnState?.turnNumber ?? 0
-    if (tn !== _lastTurnNumber) {
-      _lastTurnNumber = tn
+    const nextTurn = turnState?.turnNumber ?? 0
+    if (nextTurn !== _lastTurnNumber) {
+      _lastTurnNumber = nextTurn
       selectedIndex = null
       answeredThisTurn = 0
     }
   })
 
-  // Auto end turn when hand is empty and at least one card was played
   let autoEndTimeout: ReturnType<typeof setTimeout> | undefined
   $effect(() => {
     if (turnState && handCards.length === 0 && answeredThisTurn > 0) {
-      autoEndTimeout = setTimeout(() => {
-        onendturn()
-      }, 500)
+      autoEndTimeout = setTimeout(() => onendturn(), 500)
       return () => {
         if (autoEndTimeout !== undefined) clearTimeout(autoEndTimeout)
       }
@@ -132,6 +128,11 @@
   })
 
   function handleSelect(index: number): void {
+    if (!turnState) return
+    const card = handCards[index]
+    if (!card) return
+    const cost = Math.max(1, card.apCost ?? 1)
+    if (cost > turnState.apCurrent) return
     selectedIndex = index
   }
 
@@ -145,14 +146,11 @@
     const effectVal = Math.round(selectedCard.baseEffectValue * selectedCard.effectMultiplier)
     const effectLabel = `${selectedCard.cardType.toUpperCase()} ${effectVal}`
 
-    // Set card animation
     cardAnimations = { ...cardAnimations, [cardId]: isCorrect ? 'launch' : 'fizzle' }
-    // Clear animation after it finishes
     setTimeout(() => {
       cardAnimations = { ...cardAnimations, [cardId]: null }
     }, isCorrect ? 300 : 400)
 
-    // Fire juice effects
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
     juiceManager.fire({
@@ -171,26 +169,23 @@
 
   function handleSkip(): void {
     if (!selectedCard) return
-    const cardId = selectedCard.id
-    onskipcard(cardId)
+    onskipcard(selectedCard.id)
     selectedIndex = null
-  }
-
-  function handleEndTurn(): void {
-    onendturn()
   }
 </script>
 
 <div class="card-combat-overlay">
   {#if turnState === null}
-    <!-- Empty state when no combat is active -->
     <div class="empty-state">Waiting for encounter...</div>
   {:else}
-    <!-- Passive effects from Tier 3 mastered cards -->
-    <PassiveEffectBar passives={activePassives} />
+    <RelicTray relics={activeRelics} triggeredRelicId={turnState.triggeredRelicId} />
 
-    <!-- Backdrop for cancel when card is expanded -->
-    {#if selectedIndex !== null && selectedCard && quizData}
+    <div class="ap-strip" aria-label="Action points">
+      <span>AP</span>
+      <strong>{apCurrent}/{apMax}</strong>
+    </div>
+
+    {#if selectedIndex !== null && selectedCard && quizData && selectedPresentation}
       <button
         class="card-backdrop"
         onclick={handleDeselect}
@@ -205,40 +200,37 @@
         timerDuration={timerSeconds}
         comboCount={turnState.comboCount}
         hintsRemaining={turnState.deck.hintsRemaining}
+        speedBonusThreshold={speedBonusThreshold}
+        showMasteryTrialHeader={selectedCard.isMasteryTrial === true}
+        timerColorVariant={selectedCard.isMasteryTrial ? 'gold' : 'default'}
         onanswer={handleAnswer}
         onskip={handleSkip}
         oncancel={handleDeselect}
       />
     {/if}
 
-    <!-- Damage Numbers -->
     {#each damageNumbers as dn (dn.id)}
       <DamageNumber value={dn.value} isCritical={dn.isCritical} onComplete={() => removeDamageNumber(dn.id)} />
     {/each}
 
-    <!-- Screen edge pulse at combo 4+ -->
     {#if comboCount >= 4}
       <div class="screen-edge-pulse" style="pointer-events: none;"></div>
     {/if}
 
-    <!-- Combo Counter -->
     <ComboCounter count={comboCount} {isPerfectTurn} />
 
     <CardHand
       cards={handCards}
       {selectedIndex}
       {cardAnimations}
+      apCurrent={apCurrent}
       disabled={turnState.phase !== 'player_action'}
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
     />
 
     {#if showEndTurn}
-      <button
-        class="end-turn-btn"
-        data-testid="btn-end-turn"
-        onclick={handleEndTurn}
-      >
+      <button class="end-turn-btn" data-testid="btn-end-turn" onclick={onendturn}>
         END TURN
       </button>
     {/if}
@@ -262,8 +254,30 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #7F8C8D;
+    color: #7f8c8d;
     font-size: 14px;
+  }
+
+  .ap-strip {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    z-index: 8;
+    background: rgba(15, 23, 35, 0.92);
+    border: 1px solid #3a4b63;
+    border-radius: 10px;
+    color: #dce7f6;
+    padding: 6px 10px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  }
+
+  .ap-strip strong {
+    font-size: 15px;
+    color: #7dd3fc;
   }
 
   .card-backdrop {
@@ -287,7 +301,7 @@
     transform: translateX(-50%);
     width: 200px;
     height: 56px;
-    background: #E74C3C;
+    background: #e74c3c;
     color: white;
     border: none;
     border-radius: 10px;
@@ -301,7 +315,7 @@
   }
 
   .end-turn-btn:active {
-    background: #C0392B;
+    background: #c0392b;
   }
 
   .screen-edge-pulse {

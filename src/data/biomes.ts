@@ -1,7 +1,8 @@
 import { BlockType } from './types'
 import type { BiomePalette, FogPalette } from './palette'
 import { fogPaletteFromAmbient } from './palette'
-import { BIOME_STRUCTURAL_FEATURES } from './biomeStructures'
+// biomeStructures.ts archived — inline empty lookup
+const BIOME_STRUCTURAL_FEATURES: Record<string, string[]> = {}
 
 // ─── Tier and ID types ────────────────────────────────────────────────────────
 

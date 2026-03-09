@@ -1,7 +1,8 @@
 import type { Fact, ReviewState } from '../data/types';
 import type { Card, CardTier } from '../data/card-types';
 import { resolveDomain, resolveCardType } from './domainResolver';
-import { BASE_EFFECT, TIER_MULTIPLIER, EASE_POWER } from '../data/balance';
+import { BASE_EFFECT, EASE_POWER } from '../data/balance';
+import { getCardTier, qualifiesForMasteryTrial } from './tierDerivation';
 
 let _cardIdCounter = 0;
 
@@ -19,19 +20,14 @@ export function resetCardIdCounter(): void {
 }
 
 /**
- * Computes the card tier from SM-2 review state.
- *
- * - Tier 3: interval >= 21 AND repetitions >= 5 (mastered — passive effect)
- * - Tier 2: interval >= 3 AND repetitions >= 3 (familiar)
- * - Tier 1: everything else (new/learning)
- *
- * If no reviewState is provided, defaults to Tier 1.
+ * Computes card tier from review progression state.
  */
 export function computeTier(reviewState: ReviewState | undefined): CardTier {
-  if (!reviewState) return 1;
-  if (reviewState.interval >= 21 && reviewState.repetitions >= 5) return 3;
-  if (reviewState.interval >= 3 && reviewState.repetitions >= 3) return 2;
-  return 1;
+  return getCardTier({
+    stability: reviewState?.stability ?? reviewState?.interval ?? 0,
+    consecutiveCorrect: reviewState?.consecutiveCorrect ?? reviewState?.repetitions ?? 0,
+    passedMasteryTrial: reviewState?.passedMasteryTrial ?? false,
+  });
 }
 
 /**
@@ -71,8 +67,13 @@ export function createCard(fact: Fact, reviewState: ReviewState | undefined): Ca
   const domain = resolveDomain(fact);
   const cardType = resolveCardType(domain);
   const tier = computeTier(reviewState);
-  const baseEffectValue = (BASE_EFFECT[cardType] ?? 0) * (TIER_MULTIPLIER[tier] ?? 1.0);
+  const baseEffectValue = BASE_EFFECT[cardType] ?? 0;
   const effectMultiplier = computeEffectMultiplier(reviewState);
+  const isMasteryTrial = qualifiesForMasteryTrial({
+    stability: reviewState?.stability ?? reviewState?.interval ?? 0,
+    consecutiveCorrect: reviewState?.consecutiveCorrect ?? reviewState?.repetitions ?? 0,
+    passedMasteryTrial: reviewState?.passedMasteryTrial ?? false,
+  });
 
   return {
     id: generateCardId(),
@@ -82,5 +83,6 @@ export function createCard(fact: Fact, reviewState: ReviewState | undefined): Ca
     tier,
     baseEffectValue,
     effectMultiplier,
+    isMasteryTrial,
   };
 }

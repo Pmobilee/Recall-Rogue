@@ -1,0 +1,423 @@
+{
+  "sprites": [
+    {
+      "id": "cave_bat_idle",
+      "category": "enemies",
+      "prompt": "A large golden pale bat, flying ominously, wings spread wide, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "cave_bat_hit",
+      "category": "enemies",
+      "prompt": "A large golden pale bat, recoiling from impact, slight knockback pose, brief pain expression, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "cave_bat_death",
+      "category": "enemies",
+      "prompt": "A large golden pale bat, crumbling apart, defeated and collapsing, breaking into pieces, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "crystal_golem_idle",
+      "category": "enemies",
+      "prompt": "A crystal golem made of purple and blue minerals, hulking, arms at sides, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "crystal_golem_hit",
+      "category": "enemies",
+      "prompt": "A crystal golem made of purple and blue minerals, recoiling from impact, slight knockback pose, cracks appearing in crystals, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "crystal_golem_death",
+      "category": "enemies",
+      "prompt": "A crystal golem made of purple and blue minerals, crumbling apart, defeated and collapsing, shattering into crystal shards, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG style, hand-pixeled, 48x64 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 96,
+      "targetHeight": 128,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "the_excavator_idle",
+      "category": "enemies",
+      "prompt": "A massive drill-armed mechanical construct, corrupted and ancient, imposing boss creature with glowing red eyes and rusted metallic body, drill arm prominent, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG boss style, hand-pixeled, imposing large character scaled up, clean hard pixel edges, limited color palette, 5-6 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 128,
+      "targetHeight": 160,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "the_excavator_hit",
+      "category": "enemies",
+      "prompt": "A massive drill-armed mechanical construct, recoiling from impact, sparks flying, slight knockback pose, damaged plating, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG boss style, hand-pixeled, imposing large character scaled up, clean hard pixel edges, limited color palette, 5-6 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 128,
+      "targetHeight": 160,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "the_excavator_death",
+      "category": "enemies",
+      "prompt": "A massive drill-armed mechanical construct, crumbling apart, defeated and collapsing, drill arm broken, gears scattering, mechanical death, full body visible with padding around edges, standing in a neutral pose, pixel art sprite, 32-bit era JRPG boss style, hand-pixeled, imposing large character scaled up, clean hard pixel edges, limited color palette, 5-6 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 128,
+      "targetHeight": 160,
+      "useGreenScreen": true,
+      "outputDir": "enemies"
+    },
+    {
+      "id": "player_idle",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, standing relaxed, subtle breathing pose, weight on one foot, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_attack",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, lunging forward with arm extended, action pose, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_hit",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, flinching backward, arms up defensively, pain expression, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_heal",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, standing with arms slightly out, peaceful expression, eyes closed, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_shield",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, bracing with arms crossed in front, defensive stance, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_death",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, collapsed on ground, defeated pose, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "player_victory",
+      "category": "player",
+      "prompt": "An adventurous explorer character with a warm yellow helmet lamp and pickaxe on back, determined expression, facing right, fist raised triumphantly, celebrating, full body visible with padding around edges, pixel art sprite, 32-bit era JRPG hero style, hand-pixeled, 32x48 pixel character scaled up, clean hard pixel edges, limited color palette, 4-5 colors per material, flat shading with no gradients, strong black outline, single character centered, no ground shadow, no environment, no blur, game asset sprite sheet style, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 96,
+      "useGreenScreen": true,
+      "outputDir": "player"
+    },
+    {
+      "id": "frame_attack",
+      "category": "cards",
+      "prompt": "Red-orange toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_shield",
+      "category": "cards",
+      "prompt": "Blue-steel toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_heal",
+      "category": "cards",
+      "prompt": "Green-emerald toned ornate border, no bright green matching background, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_utility",
+      "category": "cards",
+      "prompt": "Teal-cyan toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_buff",
+      "category": "cards",
+      "prompt": "Purple toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_debuff",
+      "category": "cards",
+      "prompt": "Dark indigo toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_regen",
+      "category": "cards",
+      "prompt": "Pink-white toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_wild",
+      "category": "cards",
+      "prompt": "Rainbow prismatic toned ornate border, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "card_back",
+      "category": "cards",
+      "prompt": "An ornate mystical card back design with an arcane symbol, dark blue and gold colors, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "frame_echo",
+      "category": "cards",
+      "prompt": "A ghostly translucent card frame with ethereal blue-purple wisps, dashed border style, haunted appearance, centered on solid bright green (#00FF00) background, pixel art game card frame template, ornate rectangular border with rounded corners, empty center area for text content, decorative corner flourishes, 32-bit era JRPG style, clean pixel edges, limited color palette, strong border lines, no text, no characters, no icons inside the frame, game UI asset, flat design",
+      "targetWidth": 150,
+      "targetHeight": 200,
+      "useGreenScreen": true,
+      "outputDir": "cards"
+    },
+    {
+      "id": "icon_science",
+      "category": "icons",
+      "prompt": "A stylized atom symbol with orbiting electrons, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_history",
+      "category": "icons",
+      "prompt": "An ancient scroll or classical column, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_geography",
+      "category": "icons",
+      "prompt": "A compass rose, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_language",
+      "category": "icons",
+      "prompt": "A speech bubble with small characters inside, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_math",
+      "category": "icons",
+      "prompt": "A pi symbol, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_arts",
+      "category": "icons",
+      "prompt": "A painter's palette with colorful paint dots, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_medicine",
+      "category": "icons",
+      "prompt": "A medical heart with pulse line, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_technology",
+      "category": "icons",
+      "prompt": "A circuit board or microchip, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "icon_locked",
+      "category": "icons",
+      "prompt": "A locked padlock, gray tones, centered, single simple icon, pixel art style, 32-bit era, clean hard pixel edges, limited to 4-6 colors, strong black outline, flat shading, no gradients, no shadow, no environment, game UI icon asset, 32x32 pixel icon scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 64,
+      "targetHeight": 64,
+      "useGreenScreen": true,
+      "outputDir": "icons"
+    },
+    {
+      "id": "door_combat",
+      "category": "doors",
+      "prompt": "A stone archway entrance with a red glow and crossed sword emblem, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    },
+    {
+      "id": "door_mystery",
+      "category": "doors",
+      "prompt": "A mysterious dark doorway with a glowing question mark, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    },
+    {
+      "id": "door_rest",
+      "category": "doors",
+      "prompt": "A warm lit entrance with campfire glow visible inside, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    },
+    {
+      "id": "door_treasure",
+      "category": "doors",
+      "prompt": "A golden ornate doorway with a treasure chest visible inside, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    },
+    {
+      "id": "door_shop",
+      "category": "doors",
+      "prompt": "A wooden door with a hanging lantern and merchant sign, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    },
+    {
+      "id": "door_boss",
+      "category": "doors",
+      "prompt": "A large imposing gate with skull emblem and red glow, centered, single doorway or entrance viewed from front, pixel art sprite, 32-bit era JRPG dungeon style, clean hard pixel edges, limited color palette, strong outlines, no characters, no creatures, flat shading, game asset, 40x50 pixel door scaled up, solid bright green (#00FF00) background",
+      "targetWidth": 80,
+      "targetHeight": 100,
+      "useGreenScreen": true,
+      "outputDir": "doors"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "bg_combat_dungeon",
+      "category": "combat",
+      "prompt": "A dark stone dungeon corridor with torches on the walls, wide establishing view, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG battle backdrop style, layered depth with darker foreground edges and lighter center, focal point in upper third of image, flat ground plane at vertical center for enemy to stand on, atmospheric but not busy, muted saturation so foreground sprites pop, limited color palette per material, clean pixel clusters, hand-pixeled, no blur, no depth of field, no photorealism, game asset, parallax-ready layered composition",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "combat"
+    },
+    {
+      "id": "bg_menu_title",
+      "category": "menu",
+      "prompt": "A vast cavern entrance with light streaming in from above, expansive vista, wide establishing view, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG style, large open areas of low-detail space for text overlay, dark or dim regions in lower half for UI readability, visual interest concentrated in upper third, atmospheric lighting with single dominant color temperature, limited color palette, clean pixel clusters, hand-pixeled, no blur, no photorealism, game asset, poster composition with negative space",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "menu"
+    },
+    {
+      "id": "bg_room_selection",
+      "category": "rooms",
+      "prompt": "An underground crossroads with three branching tunnels carved into stone, symmetrical composition with three distinct paths or doorways visible side by side, wide view, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG dungeon style, three entry points evenly spaced in the upper half, open floor area in lower half, atmospheric dim lighting with glow from each path entrance, limited color palette, clean pixel clusters, hand-pixeled, no blur, no photorealism, game asset, clear spatial separation between the three routes",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "rooms"
+    },
+    {
+      "id": "bg_rest_area",
+      "category": "rooms",
+      "prompt": "A quiet alcove in a stone cavern with a small campfire, interior scene viewed from front, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG rest screen style, warm central light source, dark surrounding edges creating vignette, calm and safe atmosphere, open center area for object placement, rocky or natural walls framing the scene, limited color palette, warm orange and amber tones dominating, clean pixel clusters, hand-pixeled, no blur, no photorealism, game asset, peaceful mood",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "rooms"
+    },
+    {
+      "id": "bg_shop",
+      "category": "rooms",
+      "prompt": "A cozy underground merchant den with shelves of potions and crystals, interior scene viewed from front, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG shop screen style, warm lantern lighting, shelves or displays on left and right walls, open center area for NPC placement, counter or table at vertical center, cozy and enclosed feeling, limited color palette, warm saturated tones, clean pixel clusters, hand-pixeled, no blur, no photorealism, game asset, inviting atmosphere",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "rooms"
+    },
+    {
+      "id": "bg_treasure",
+      "category": "rooms",
+      "prompt": "A small hidden chamber with golden light reflecting off the walls, small enclosed chamber viewed from front, no characters, no creatures, portrait orientation tall narrow scene, pixel art game background, 32-bit era JRPG treasure room style, golden warm light emanating from center, sparkle and gleam atmosphere, open center area for chest placement, stone or carved walls, limited color palette with gold accent, clean pixel clusters, hand-pixeled, no blur, no photorealism, game asset, sense of discovery",
+      "targetWidth": 270,
+      "targetHeight": 600,
+      "outputDir": "rooms"
+    }
+  ]
+}

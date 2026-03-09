@@ -97,7 +97,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    allowedHosts: 'all',
+    allowedHosts: true,
     hmr: {
       host: '100.74.153.81',
       port: 5173,

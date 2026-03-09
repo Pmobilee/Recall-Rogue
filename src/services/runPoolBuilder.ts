@@ -1,26 +1,21 @@
 import type { Fact, ReviewState } from '../data/types';
-import type { Card, FactDomain } from '../data/card-types';
+import type { Card, CardType, FactDomain } from '../data/card-types';
 import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
-import { resolveDomain } from './domainResolver';
-import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_REVIEW_PCT } from '../data/balance';
-import { isDue } from './sm2';
+import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data/balance';
+import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 
-/** Maps a FactDomain back to the top-level category string used in factsDB. */
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
-  science:    ['Natural Sciences'],
-  history:    ['History'],
-  geography:  ['Geography'],
-  language:   ['Language'],
-  math:       ['Natural Sciences'],   // Math facts are filed under Natural Sciences currently
-  arts:       ['Culture'],
-  medicine:   ['Life Sciences'],
+  science: ['Natural Sciences'],
+  history: ['History'],
+  geography: ['Geography'],
+  language: ['Language'],
+  math: ['Natural Sciences'],
+  arts: ['Culture'],
+  medicine: ['Life Sciences'],
   technology: ['Technology'],
 };
 
-/**
- * Shuffles an array in place (Fisher-Yates).
- */
 function shuffle<T>(arr: T[]): T[] {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -29,24 +24,37 @@ function shuffle<T>(arr: T[]): T[] {
   return arr;
 }
 
-/**
- * Builds the initial card pool for a run.
- *
- * Composition:
- *   - 40% from the primary domain
- *   - 30% from the secondary domain
- *   - 30% from the SM-2 review queue (due or near-due cards across all domains)
- *
- * If a domain doesn't have enough facts to fill its allocation, the shortfall
- * is redistributed to the review pool, then to the other domain, then filled
- * with random facts as a last resort.
- *
- * @param primaryDomain - The player's chosen primary knowledge domain.
- * @param secondaryDomain - The player's chosen secondary knowledge domain.
- * @param allReviewStates - All of the player's SM-2 review states.
- * @param options.poolSize - Target pool size (default 120).
- * @returns A shuffled array of Card objects ready for deck construction.
- */
+function pickMechanic(
+  cardType: CardType,
+  mechanicCounts: Map<string, number>,
+): MechanicDefinition {
+  const pool = MECHANICS_BY_TYPE[cardType];
+  const eligible = pool.filter((mechanic) => {
+    if (mechanic.maxPerPool <= 0) return true;
+    return (mechanicCounts.get(mechanic.id) ?? 0) < mechanic.maxPerPool;
+  });
+
+  const source = eligible.length > 0 ? eligible : pool;
+  const selected = source[Math.floor(Math.random() * source.length)];
+  mechanicCounts.set(selected.id, (mechanicCounts.get(selected.id) ?? 0) + 1);
+  return selected;
+}
+
+function applyMechanics(cards: Card[]): Card[] {
+  const mechanicCounts = new Map<string, number>();
+  return cards.map((card) => {
+    const mechanic = pickMechanic(card.cardType, mechanicCounts);
+    return {
+      ...card,
+      mechanicId: mechanic.id,
+      mechanicName: mechanic.name,
+      apCost: mechanic.apCost,
+      baseEffectValue: mechanic.baseValue,
+      originalBaseEffectValue: mechanic.baseValue,
+    };
+  });
+}
+
 export function buildRunPool(
   primaryDomain: FactDomain,
   secondaryDomain: FactDomain,
@@ -60,65 +68,54 @@ export function buildRunPool(
   const secondaryTarget = Math.round(poolSize * POOL_SECONDARY_PCT);
   const reviewTarget = poolSize - primaryTarget - secondaryTarget;
 
-  // Build a review state lookup by factId
   const stateByFactId = new Map<string, ReviewState>();
-  for (const rs of allReviewStates) {
-    stateByFactId.set(rs.factId, rs);
-  }
+  for (const state of allReviewStates) stateByFactId.set(state.factId, state);
 
-  // Helper: get facts for a domain
   function getFactsForDomain(domain: FactDomain, limit: number): Fact[] {
-    const categories = DOMAIN_TO_CATEGORY[domain] ?? [];
-    return factsDB.getByCategory(categories, limit);
+    return factsDB.getByCategory(DOMAIN_TO_CATEGORY[domain] ?? [], limit);
   }
 
-  // Helper: convert facts to cards
   function factsToCards(facts: Fact[]): Card[] {
-    return facts.map(f => createCard(f, stateByFactId.get(f.id)));
+    return facts.map((fact) => createCard(fact, stateByFactId.get(fact.id)));
   }
 
-  // 1. Primary domain cards
   const primaryFacts = getFactsForDomain(primaryDomain, primaryTarget);
+  const usedFactIds = new Set(primaryFacts.map((fact) => fact.id));
   const primaryCards = factsToCards(primaryFacts);
-  const usedFactIds = new Set(primaryFacts.map(f => f.id));
 
-  // 2. Secondary domain cards (exclude already-used facts)
   const secondaryFacts = getFactsForDomain(secondaryDomain, secondaryTarget + 20)
-    .filter(f => !usedFactIds.has(f.id))
+    .filter((fact) => !usedFactIds.has(fact.id))
     .slice(0, secondaryTarget);
+  for (const fact of secondaryFacts) usedFactIds.add(fact.id);
   const secondaryCards = factsToCards(secondaryFacts);
-  for (const f of secondaryFacts) usedFactIds.add(f.id);
 
-  // 3. Review queue cards (due or near-due, any domain, excluding already-used)
   const reviewCandidates = allReviewStates
-    .filter(rs => !usedFactIds.has(rs.factId))
-    .sort((a, b) => a.nextReviewAt - b.nextReviewAt) // most overdue first
+    .filter((state) => !usedFactIds.has(state.factId))
+    .sort((a, b) => a.nextReviewAt - b.nextReviewAt)
     .slice(0, reviewTarget + 20);
 
   const reviewCards: Card[] = [];
-  for (const rs of reviewCandidates) {
+  for (const state of reviewCandidates) {
     if (reviewCards.length >= reviewTarget) break;
-    const fact = factsDB.getById(rs.factId);
-    if (fact && !usedFactIds.has(fact.id)) {
-      reviewCards.push(createCard(fact, rs));
-      usedFactIds.add(fact.id);
-    }
+    const fact = factsDB.getById(state.factId);
+    if (!fact || usedFactIds.has(fact.id)) continue;
+    reviewCards.push(createCard(fact, state));
+    usedFactIds.add(fact.id);
   }
 
-  // 4. Combine and check for shortfall
   let pool = [...primaryCards, ...secondaryCards, ...reviewCards];
 
-  // If under target, fill with random facts not already in pool
   if (pool.length < poolSize) {
     const shortage = poolSize - pool.length;
     const fillerFacts = factsDB.getRandom(shortage + 20)
-      .filter(f => !usedFactIds.has(f.id))
+      .filter((fact) => !usedFactIds.has(fact.id))
       .slice(0, shortage);
     pool.push(...factsToCards(fillerFacts));
   }
 
-  // Trim to exact pool size (in case of rounding overshoot)
   pool = pool.slice(0, poolSize);
+  pool = pool.filter((card) => card.tier !== '3');
+  pool = applyMechanics(pool);
 
   return shuffle(pool);
 }

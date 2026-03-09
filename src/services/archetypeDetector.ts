@@ -110,8 +110,8 @@ export function getEffectiveArchetype(data: ArchetypeData): PlayerArchetype {
   return data.manualOverride ?? data.detected
 }
 
-/** GAIA message modifiers per archetype. */
-export const ARCHETYPE_GAIA_EMPHASIS: Record<PlayerArchetype, string> = {
+/** Keeper message modifiers per archetype. */
+export const ARCHETYPE_KEEPER_EMPHASIS: Record<PlayerArchetype, string> = {
   explorer:    'discovery',
   scholar:     'mastery',
   collector:   'completionist',

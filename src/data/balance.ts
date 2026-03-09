@@ -844,10 +844,18 @@ export const BASE_EFFECT: Record<string, number> = {
 };
 
 // Tier multipliers — Tier 3 is passive (no active effect value)
-export const TIER_MULTIPLIER: Record<number, number> = {
-  1: 1.0,
-  2: 1.5,
-  3: 0,
+export const TIER_MULTIPLIER: Record<'1' | '2a' | '2b' | '3', number> = {
+  '1': 1.0,
+  '2a': 1.3,
+  '2b': 1.6,
+  '3': 0,
+};
+
+// Legacy compatibility for numeric-tier callers.
+export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
+  1: TIER_MULTIPLIER['1'],
+  2: TIER_MULTIPLIER['2a'],
+  3: TIER_MULTIPLIER['3'],
 };
 
 /** Passive bonus values for Tier 3 mastered cards by card type. */
@@ -860,6 +868,29 @@ export const TIER3_PASSIVE_VALUE: Record<string, number> = {
   debuff: 1,    // +1 to debuff potency
   regen: 1,     // +1 regen at turn start
   wild: 1,      // +1 to wild card effect
+};
+
+export const TIER3_PASSIVE = TIER3_PASSIVE_VALUE;
+
+export const MASTERY_TRIAL = {
+  TIMER_SECONDS: 4,
+  ANSWER_OPTIONS: 5,
+  REQUIRED_STABILITY: 30,
+  REQUIRED_CONSECUTIVE_CORRECT: 7,
+  USE_HARDEST_VARIANT: true,
+  SLOW_READER_BONUS: false,
+} as const;
+
+export const TIER_QUESTION_FORMAT: Record<'1' | '2a' | '2b' | '3', {
+  options: number;
+  allowReverse: boolean;
+  allowFillBlank: boolean;
+  useCloseDistractors: boolean;
+}> = {
+  '1': { options: 3, allowReverse: false, allowFillBlank: false, useCloseDistractors: false },
+  '2a': { options: 4, allowReverse: true, allowFillBlank: false, useCloseDistractors: false },
+  '2b': { options: 5, allowReverse: true, allowFillBlank: true, useCloseDistractors: true },
+  '3': { options: 0, allowReverse: false, allowFillBlank: false, useCloseDistractors: false },
 };
 
 // Difficulty-proportional power: lower ease = harder card = higher multiplier
@@ -875,6 +906,8 @@ export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [
 export const PLAYER_START_HP = 80;
 export const PLAYER_MAX_HP = 80;
 export const HINTS_PER_ENCOUNTER = 1;
+export const START_AP_PER_TURN = 3;
+export const MAX_AP_PER_TURN = 5;
 
 // Speed scaling (timer in seconds by floor)
 export const FLOOR_TIMER: Array<{ maxFloor: number; seconds: number }> = [
@@ -892,3 +925,25 @@ export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
 // Speed bonus
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
+
+export const MAX_ACTIVE_RELICS = 12;
+export const DORMANCY_THRESHOLD = 0.7;
+
+export const ECHO = {
+  REAPPEARANCE_CHANCE: 0.70,
+  POWER_MULTIPLIER: 0.70,
+  FSRS_STABILITY_BONUS: 2.0,
+  MAX_ECHOES_PER_RUN: 15,
+  INSERT_DELAY_CARDS: 3,
+} as const;
+
+/** Reward retention on death, by segment. Retreat/victory keep 100%. */
+export const DEATH_PENALTY: Record<1 | 2 | 3 | 4, number> = {
+  1: 1.0,
+  2: 0.80,
+  3: 0.65,
+  4: 0.50,
+};
+
+export const SEGMENT_BOSS_FLOORS = [3, 6, 9] as const;
+export const ENDLESS_BOSS_INTERVAL = 3;

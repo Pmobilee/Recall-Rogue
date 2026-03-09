@@ -4,7 +4,7 @@
  */
 
 import type { FactDomain } from '../data/card-types'
-import { FLOOR_TIMER } from '../data/balance'
+import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL } from '../data/balance'
 import { ENEMY_TEMPLATES } from '../data/enemies'
 
 // ============================================================
@@ -178,14 +178,18 @@ export function getEventsForFloor(floor: number): number {
   return 2
 }
 
-/** Check if a floor has a boss encounter. True for floors 3, 6, 9. */
+/** Check if a floor has a boss encounter. */
 export function isBossFloor(floor: number): boolean {
-  return floor === 3 || floor === 6 || floor === 9
+  if (SEGMENT_BOSS_FLOORS.includes(floor as (typeof SEGMENT_BOSS_FLOORS)[number])) return true
+  if (floor <= 9) return false
+  return floor % ENDLESS_BOSS_INTERVAL === 0
 }
 
 /** Get the boss enemy template ID for a boss floor, or null. */
 export function getBossForFloor(floor: number): string | null {
-  return BOSS_MAP[floor] ?? null
+  if (BOSS_MAP[floor]) return BOSS_MAP[floor]
+  if (isBossFloor(floor)) return 'the_archivist'
+  return null
 }
 
 /** Get the timer duration in seconds for a given floor. */

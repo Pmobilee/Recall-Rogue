@@ -8,7 +8,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.{test,spec}.ts', 'src/**/*.{test,spec}.ts'],
-    exclude: ['node_modules', 'dist', 'android', 'ios', 'tests/e2e/**', 'src/_archived-mining/**'],
+    exclude: ['node_modules', 'dist', 'android', 'ios', 'tests/e2e/**', 'src/_archived-mining/**', 'tests/unit/_archived/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
@@ -28,8 +28,7 @@ export default defineConfig({
         'src/game/systems/MineGenerator.ts',
         'src/game/systems/TickSystem.ts',
         'src/game/managers/SaveManager.ts',
-        'src/game/managers/CompanionManager.ts',
-        'src/game/managers/QuizManager.ts',
+        // CompanionManager.ts and QuizManager.ts archived
       ],
     },
   },

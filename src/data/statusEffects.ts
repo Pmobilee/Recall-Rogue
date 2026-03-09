@@ -3,7 +3,7 @@
 // NO Phaser, Svelte, or DOM imports.
 
 /** The types of status effects that can be applied to players or enemies. */
-export type StatusEffectType = 'poison' | 'regen' | 'strength' | 'weakness' | 'vulnerable';
+export type StatusEffectType = 'poison' | 'regen' | 'strength' | 'weakness' | 'vulnerable' | 'immunity';
 
 /** A single active status effect instance. */
 export interface StatusEffect {
@@ -58,10 +58,15 @@ export function applyStatusEffect(effects: StatusEffect[], newEffect: StatusEffe
 export function tickStatusEffects(effects: StatusEffect[]): TickResult {
   let poisonDamage = 0;
   let regenHeal = 0;
+  const immunity = effects.find((effect) => effect.type === 'immunity' && effect.turnsRemaining > 0);
 
   for (const effect of effects) {
     if (effect.type === 'poison') {
-      poisonDamage += effect.value;
+      if (immunity) {
+        immunity.turnsRemaining = 0;
+      } else {
+        poisonDamage += effect.value;
+      }
     }
     if (effect.type === 'regen') {
       regenHeal += effect.value;

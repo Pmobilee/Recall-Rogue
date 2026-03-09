@@ -3,7 +3,7 @@ export interface BranchBonus {
   id: string
   category: string
   threshold: number
-  bonusType: 'oxygen_efficiency' | 'artifact_rarity' | 'scanner_range' | 'mineral_magnet' | 'quiz_streak' | 'dust_drop'
+  bonusType: 'oxygen_efficiency' | 'artifact_rarity' | 'scanner_range' | 'loot_magnet' | 'quiz_streak' | 'dust_drop'
   bonusValue: number
   displayName: string
   description: string
@@ -18,7 +18,7 @@ export const BRANCH_BONUSES_25: BranchBonus[] = [
     bonusType: 'oxygen_efficiency',
     bonusValue: 0.05,
     displayName: "Naturalist's Breath",
-    description: "Mining gear takes 5% less oxygen — you understand how to work with the planet's rhythms.",
+    description: "Dungeon gear uses 5% less energy — you understand how to work with the planet's rhythms.",
   },
   {
     id: 'history_25',
@@ -42,10 +42,10 @@ export const BRANCH_BONUSES_25: BranchBonus[] = [
     id: 'life_sciences_25',
     category: 'Life Sciences',
     threshold: 25,
-    bonusType: 'mineral_magnet',
+    bonusType: 'loot_magnet',
     bonusValue: 1,
     displayName: 'Living World Bond',
-    description: "Minerals within 1 extra tile are auto-collected — you feel the earth's pulse.",
+    description: "Loot within 1 extra tile is auto-collected — you feel the earth's pulse.",
   },
   {
     id: 'geography_25',
@@ -72,7 +72,7 @@ export const BRANCH_BONUSES_25: BranchBonus[] = [
     bonusType: 'dust_drop',
     bonusValue: 0.05,
     displayName: 'Cultural Lens',
-    description: 'Mineral dust drop rate increased by 5% — cultural knowledge reveals hidden value.',
+    description: 'Loot drop rate increased by 5% — cultural knowledge reveals hidden value.',
   },
 ]
 

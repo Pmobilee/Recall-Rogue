@@ -1,5 +1,16 @@
-import type { HubSaveState } from './hubLayout'
 import type { InterestConfig } from './interestConfig'
+
+/** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
+export type FloorUpgradeTier = 0 | 1 | 2 | 3
+
+/** Per-save state for the hub (inlined from archived hubLayout.ts for backward compat). */
+export interface HubSaveState {
+  unlockedFloorIds: string[]
+  activeWallpapers: Record<string, string | null>
+  floorTiers: Record<string, FloorUpgradeTier>
+  lastBriefingDate: string | null
+  firstDomeTourComplete?: boolean
+}
 import type { BehavioralSignals } from '../services/behavioralLearner'
 import type { ArchetypeData } from '../services/archetypeDetector'
 import type { EngagementData } from '../services/engagementScorer'
@@ -159,6 +170,18 @@ export interface ReviewState {
   lastReviewContext?: 'study' | 'mine' | 'ritual'
   /** Cumulative number of times this fact has been answered incorrectly (never resets). */
   wrongCount?: number
+  /** FSRS-style stability (days) used by card tier derivation. */
+  stability?: number
+  /** Consecutive correct answers used for tier progression gates. */
+  consecutiveCorrect?: number
+  /** True once the fact passes Mastery Trial and can become Tier 3. */
+  passedMasteryTrial?: boolean
+  /** FSRS retrievability used for relic dormancy checks. */
+  retrievability?: number
+  /** Timestamp (ms) when fact entered mastery/relic state. */
+  masteredAt?: number
+  /** Relic assigned when this fact graduated to Tier 3. */
+  graduatedRelicId?: string | null
 }
 
 // ============================================================
@@ -205,7 +228,7 @@ export enum BlockType {
 /** The effect a relic provides during a dive */
 export type RelicEffect =
   | { type: 'oxygen_regen'; amount: number }      // Restore N O2 every 10 blocks mined
-  | { type: 'mineral_magnet'; radius: number }     // Auto-collect minerals within N tiles
+  | { type: 'loot_magnet'; radius: number }     // Auto-collect loot within N tiles
   | { type: 'tough_skin'; reduction: number }      // Reduce hazard O2 cost by N
   | { type: 'lucky_strike'; chance: number }       // N% chance to double mineral drops
   | { type: 'deep_breath'; bonus: number }         // +N max oxygen

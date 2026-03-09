@@ -17,10 +17,7 @@ import {
   RELICS,
   SYNERGIES,
 } from '../../src/data/relics'
-import { getDefaultHubStack } from '../../src/data/hubFloors'
-import { FLOOR_COLS, FLOOR_ROWS } from '../../src/data/hubLayout'
-import { PAINTINGS } from '../../src/data/paintings'
-import { rarityToTier, TIER_ORDER } from '../../src/data/achievementTiers'
+// hubFloors, hubLayout, paintings archived — tests for those removed
 import { HIGH_RES_KEYS, LOW_RES_KEYS } from '../../src/data/spriteKeys'
 import { DOME_SPRITE_KEYS, getDomeSpriteUrls } from '../../src/game/domeManifest'
 
@@ -147,53 +144,8 @@ describe('relic definitions and synergies', () => {
   })
 })
 
-describe('hub floor definitions', () => {
-  it('uses unique floor ids and contiguous stack indices', () => {
-    const floors = getDefaultHubStack().floors
-    const ids = floors.map(f => f.id)
-    const stackIndices = floors.map(f => f.stackIndex).sort((a, b) => a - b)
-
-    expect(new Set(ids).size).toBe(ids.length)
-    expect(stackIndices).toEqual([...Array(floors.length).keys()])
-  })
-
-  it('keeps object ids unique per floor and object bounds within grid', () => {
-    const floors = getDefaultHubStack().floors
-    for (const floor of floors) {
-      const objectIds = floor.objects.map(o => o.id)
-      expect(new Set(objectIds).size).toBe(objectIds.length)
-
-      for (const obj of floor.objects) {
-        expect(obj.gridX).toBeGreaterThanOrEqual(0)
-        expect(obj.gridY).toBeGreaterThanOrEqual(0)
-        expect(obj.gridW).toBeGreaterThan(0)
-        expect(obj.gridH).toBeGreaterThan(0)
-        expect(obj.gridX + obj.gridW).toBeLessThanOrEqual(FLOOR_COLS)
-        expect(obj.gridY + obj.gridH).toBeLessThanOrEqual(FLOOR_ROWS)
-      }
-    }
-  })
-})
-
-describe('painting and achievement tier definitions', () => {
-  it('uses unique painting ids and keeps rarity-tier mapping consistent', () => {
-    const ids = PAINTINGS.map(p => p.id)
-    expect(new Set(ids).size).toBe(ids.length)
-
-    for (const painting of PAINTINGS) {
-      expect(painting.tier).toBe(rarityToTier(painting.rarity))
-    }
-  })
-
-  it('uses only known achievement tiers and keeps all tiers represented', () => {
-    const paintingTiers = new Set(PAINTINGS.map(p => p.tier))
-    for (const tier of paintingTiers) {
-      expect(TIER_ORDER.includes(tier)).toBe(true)
-    }
-
-    expect(paintingTiers.size).toBeGreaterThan(0)
-  })
-})
+// Hub floor definitions and painting/achievement tier tests archived
+// (hubFloors.ts, hubLayout.ts, paintings.ts moved to _archived-mining)
 
 describe('sprite key manifests', () => {
   it('keeps HIGH_RES_KEYS and LOW_RES_KEYS in sync', () => {

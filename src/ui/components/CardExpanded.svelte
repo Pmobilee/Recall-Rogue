@@ -10,14 +10,30 @@
     timerDuration: number
     comboCount: number
     hintsRemaining: number
+    speedBonusThreshold?: number
+    timerColorVariant?: 'default' | 'gold'
+    showMasteryTrialHeader?: boolean
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
   }
 
-  let { card, question, answers, correctAnswer, timerDuration, comboCount, hintsRemaining, onanswer, onskip, oncancel }: Props = $props()
+  let {
+    card,
+    question,
+    answers,
+    correctAnswer,
+    timerDuration,
+    comboCount,
+    hintsRemaining,
+    speedBonusThreshold = 0.25,
+    timerColorVariant = 'default',
+    showMasteryTrialHeader = false,
+    onanswer,
+    onskip,
+    oncancel,
+  }: Props = $props()
 
-  /** Domain color mapping */
   const DOMAIN_COLORS: Record<FactDomain, string> = {
     science: '#E74C3C',
     history: '#3498DB',
@@ -29,7 +45,6 @@
     technology: '#95A5A6',
   }
 
-  /** Domain display names */
   const DOMAIN_NAMES: Record<FactDomain, string> = {
     science: 'Science',
     history: 'History',
@@ -41,7 +56,6 @@
     technology: 'Technology',
   }
 
-  /** Card type emoji icons */
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
@@ -53,46 +67,43 @@
     wild: '💎',
   }
 
-  /** Effect description templates */
   const EFFECT_DESCRIPTIONS: Record<CardType, string> = {
     attack: 'Deal N Damage',
     shield: 'Block N Damage',
     heal: 'Heal N HP',
     buff: 'Buff +N%',
-    debuff: 'Weaken Enemy',
+    debuff: 'Apply Debuff',
     regen: 'Regen N/turn',
-    utility: 'Draw +1 Card',
-    wild: 'Copy Last',
+    utility: 'Utility',
+    wild: 'Adaptive',
   }
 
-  // Computed card values
   let effectValue = $derived(Math.round(card.baseEffectValue * card.effectMultiplier))
   let effectDescription = $derived(
-    EFFECT_DESCRIPTIONS[card.cardType].replace('N', String(effectValue))
+    EFFECT_DESCRIPTIONS[card.cardType].replace('N', String(effectValue)),
   )
   let domainColor = $derived(DOMAIN_COLORS[card.domain])
   let domainName = $derived(DOMAIN_NAMES[card.domain])
   let typeIcon = $derived(TYPE_ICONS[card.cardType])
+  let tierLabel = $derived(card.tier === '1' ? '' : card.tier.toUpperCase())
 
-  // Timer state
   let startTime = $state(Date.now())
   let elapsed = $state(0)
   let timerFraction = $derived(Math.max(0, 1 - elapsed / (timerDuration * 1000)))
-  let timerColor = $derived(
-    timerFraction > 0.5 ? '#27AE60' : timerFraction > 0.25 ? '#F1C40F' : '#E74C3C'
-  )
+  let timerColor = $derived(() => {
+    if (timerColorVariant === 'gold') {
+      return timerFraction > 0.5 ? '#D4AF37' : timerFraction > 0.25 ? '#F1C40F' : '#E67E22'
+    }
+    return timerFraction > 0.5 ? '#27AE60' : timerFraction > 0.25 ? '#F1C40F' : '#E74C3C'
+  })
 
-  // Answer state
   let selectedAnswerIndex = $state<number | null>(null)
   let answerRevealed = $state(false)
   let answersDisabled = $state(false)
   let showSpeedBonus = $state(false)
   let timerExpired = $state(false)
-
-  // Swipe tracking
   let touchStartY = $state<number | null>(null)
 
-  // Timer animation loop
   let rafId: number | undefined
   let feedbackTimeoutId: ReturnType<typeof setTimeout> | undefined
   let correctRevealTimeoutId: ReturnType<typeof setTimeout> | undefined
@@ -111,12 +122,10 @@
   }
 
   $effect(() => {
-    // Start timer on mount
     startTime = Date.now()
     elapsed = 0
     timerExpired = false
     rafId = requestAnimationFrame(timerTick)
-
     return () => {
       if (rafId !== undefined) cancelAnimationFrame(rafId)
       if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
@@ -125,24 +134,21 @@
     }
   })
 
-  /**
-   * Handle an answer button tap.
-   */
   function handleAnswer(index: number): void {
     if (answersDisabled) return
     answersDisabled = true
     selectedAnswerIndex = index
 
     const isCorrect = answers[index] === correctAnswer
-    const speedBonus = elapsed < (timerDuration * 1000 * 0.25)
-
+    const speedBonus = elapsed < (timerDuration * 1000 * speedBonusThreshold)
     if (isCorrect && speedBonus) {
       showSpeedBonus = true
-      speedBonusTimeoutId = setTimeout(() => { showSpeedBonus = false }, 500)
+      speedBonusTimeoutId = setTimeout(() => {
+        showSpeedBonus = false
+      }, 500)
     }
 
     if (!isCorrect) {
-      // Reveal correct answer after 400ms
       correctRevealTimeoutId = setTimeout(() => {
         answerRevealed = true
       }, 400)
@@ -150,15 +156,11 @@
       answerRevealed = true
     }
 
-    // Call onanswer after 800ms feedback
     feedbackTimeoutId = setTimeout(() => {
       onanswer(index, isCorrect, speedBonus)
     }, 800)
   }
 
-  /**
-   * Get the CSS class for an answer button based on state.
-   */
   function getAnswerClass(index: number): string {
     if (selectedAnswerIndex === null) return ''
     const isCorrect = answers[index] === correctAnswer
@@ -205,26 +207,23 @@
   aria-label="Card question"
   tabindex="-1"
 >
-  <!-- Card header -->
+  {#if showMasteryTrialHeader}
+    <div class="mastery-trial-header">MASTERY TRIAL</div>
+  {/if}
+
   <div class="card-header" style="background: {domainColor};">
     <span class="header-domain">
       {domainName}
-      {#if card.tier >= 2}
-        <span class="tier-stars" class:tier-2={card.tier === 2} class:tier-3={card.tier === 3}>
-          {card.tier === 2 ? '★★' : '★★★'}
-        </span>
+      {#if tierLabel}
+        <span class="tier-stars">{tierLabel}</span>
       {/if}
     </span>
     <span class="header-icon">{typeIcon}</span>
   </div>
 
-  <!-- Effect description -->
   <div class="card-effect-desc">{effectDescription}</div>
-
-  <!-- Question text -->
   <div class="card-question">{question}</div>
 
-  <!-- Answer buttons -->
   <div class="card-answers">
     {#each answers as answer, i}
       <button
@@ -238,12 +237,10 @@
     {/each}
   </div>
 
-  <!-- Speed bonus badge -->
   {#if showSpeedBonus}
     <div class="speed-bonus-badge">SPEED BONUS</div>
   {/if}
 
-  <!-- Timer bar -->
   <div class="timer-bar-container">
     <div
       class="timer-bar-fill"
@@ -251,17 +248,13 @@
     ></div>
   </div>
 
-  <!-- Action row -->
   <div class="action-row">
-    <button class="action-btn skip-btn" onclick={onskip} disabled={answersDisabled}>
-      Skip
-    </button>
+    <button class="action-btn skip-btn" onclick={onskip} disabled={answersDisabled}>Skip</button>
     <button class="action-btn hint-btn" disabled={answersDisabled || hintsRemaining <= 0}>
       Hint ({hintsRemaining})
     </button>
   </div>
 
-  <!-- Combo indicator -->
   {#if comboCount > 0}
     <div class="combo-indicator">Combo x{comboCount}</div>
   {/if}
@@ -273,8 +266,9 @@
     bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
-    width: 300px;
-    background: #1A2332;
+    width: 320px;
+    max-width: calc(100vw - 24px);
+    background: #1a2332;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
@@ -293,12 +287,22 @@
     }
   }
 
+  .mastery-trial-header {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #5b4510, #9f7e1e);
+    color: #f4e7b0;
+    text-align: center;
+  }
+
   .card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 6px 12px;
-    height: 32px;
+    min-height: 32px;
     box-sizing: border-box;
   }
 
@@ -313,148 +317,110 @@
   }
 
   .tier-stars {
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 6px;
-  }
-  .tier-stars.tier-2 {
-    color: #C0C0C0;
-  }
-  .tier-stars.tier-3 {
-    color: #FFD700;
+    color: #f8f8f8;
   }
 
   .card-effect-desc {
-    padding: 4px 12px;
-    font-size: 13px;
-    color: #BDC3C7;
-    text-align: center;
-    height: 24px;
-    line-height: 24px;
+    font-size: 12px;
+    color: #94a3b8;
+    padding: 8px 12px 0;
   }
 
   .card-question {
-    padding: 8px 12px;
     font-size: 16px;
-    color: #ECF0F1;
-    line-height: 1.4;
-    max-height: 67px; /* ~3 lines */
-    overflow: hidden;
-    text-align: center;
+    color: #f8fafc;
+    line-height: 1.35;
+    padding: 8px 12px 10px;
   }
 
   .card-answers {
-    padding: 4px 12px 8px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 8px;
+    padding: 0 12px 12px;
   }
 
   .answer-btn {
-    width: 100%;
-    height: 56px;
-    background: #2C3E50;
-    border: 1px solid #34495E;
-    border-radius: 8px;
-    color: #ECF0F1;
-    font-size: 16px;
+    min-height: 52px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-size: 14px;
+    padding: 10px;
     text-align: left;
-    padding: 0 16px;
-    cursor: pointer;
-    transition: background 200ms ease, border-color 200ms ease;
-    -webkit-tap-highlight-color: transparent;
-    font-family: inherit;
   }
 
-  .answer-btn:active:not(:disabled) {
-    background: #34495E;
+  .answer-btn.answer-correct {
+    border-color: #16a34a;
+    background: #052e16;
   }
 
-  .answer-btn:disabled {
-    cursor: default;
+  .answer-btn.answer-wrong {
+    border-color: #dc2626;
+    background: #3f1217;
   }
 
-  .answer-correct {
-    background: #27AE60 !important;
-    border-color: #27AE60 !important;
-  }
-
-  .answer-wrong {
-    background: #7F8C8D !important;
-    border-color: #7F8C8D !important;
-  }
-
-  .answer-reveal-correct {
-    background: #3498DB !important;
-    border-color: #3498DB !important;
+  .answer-btn.answer-reveal-correct {
+    border-color: #eab308;
+    box-shadow: inset 0 0 0 1px rgba(234, 179, 8, 0.8);
   }
 
   .speed-bonus-badge {
-    text-align: center;
-    color: #F1C40F;
-    font-size: 14px;
+    position: absolute;
+    right: 12px;
+    top: 40px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 10px;
     font-weight: 700;
-    padding: 4px 0;
-    animation: pulse-badge 500ms ease-out;
-  }
-
-  @keyframes pulse-badge {
-    0% { transform: scale(0.8); opacity: 0; }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
+    border-radius: 8px;
+    padding: 4px 7px;
   }
 
   .timer-bar-container {
     height: 8px;
-    background: #2C3E50;
-    margin: 0 12px;
-    border-radius: 4px;
-    overflow: hidden;
+    background: #334155;
   }
 
   .timer-bar-fill {
     height: 100%;
-    border-radius: 4px;
-    transition: width 100ms linear;
+    transition: width 80ms linear;
   }
 
   .action-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 12px;
-    height: 48px;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px 12px;
   }
 
   .action-btn {
-    background: transparent;
-    border: 1px solid #4A6274;
-    border-radius: 6px;
-    color: #BDC3C7;
-    font-size: 13px;
-    padding: 4px 16px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    font-family: inherit;
+    min-height: 44px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
   }
 
-  .action-btn:disabled {
-    opacity: 0.4;
-    cursor: default;
+  .skip-btn {
+    background: #374151;
+    color: #f8fafc;
   }
 
-  .action-btn:active:not(:disabled) {
-    background: rgba(255, 255, 255, 0.05);
+  .hint-btn {
+    background: #1d4ed8;
+    color: #fff;
+  }
+
+  .hint-btn:disabled {
+    opacity: 0.45;
   }
 
   .combo-indicator {
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    background: #F39C12;
-    color: #1A2332;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
+    text-align: center;
+    color: #facc15;
+    font-size: 12px;
+    padding: 0 0 10px;
   }
 </style>

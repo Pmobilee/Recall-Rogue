@@ -4,7 +4,7 @@
 
 import type { BlockType, MineralTier } from '../data/types'
 
-/** Emitted by MineScene when a block is fully destroyed. */
+/** Emitted by CombatScene when a block is fully destroyed. */
 export interface BlockMinedEvent {
   x: number
   y: number
@@ -12,7 +12,7 @@ export interface BlockMinedEvent {
   loot: Array<{ type: string; tier: MineralTier }>
 }
 
-/** Emitted by MineScene each time the player moves one tile. */
+/** Emitted when the player moves one tile. */
 export interface PlayerMovedEvent {
   gridX: number
   gridY: number
@@ -34,14 +34,14 @@ export interface QuizAnswerSubmittedEvent {
   isCorrect: boolean
 }
 
-/** Emitted by DiveManager when a layer transition begins. */
+/** Emitted when a floor transition begins. */
 export interface LayerTransitionEvent {
   fromLayer: number
   toLayer: number
   biome: string
 }
 
-/** Emitted by GameManager when the score/dust count updates. */
+/** Emitted when the score count updates. */
 export interface ScoreUpdatedEvent {
   dust: number
   shards: number
@@ -50,8 +50,8 @@ export interface ScoreUpdatedEvent {
   essence: number
 }
 
-/** Emitted by GaiaManager when a new GAIA toast should appear. */
-export interface GaiaToastRequestedEvent {
+/** Emitted when a new Keeper toast should appear. */
+export interface KeeperToastRequestedEvent {
   message: string
   mood: 'calm' | 'excited' | 'stern' | 'curious'
   duration?: number
@@ -65,7 +65,7 @@ export interface GameEventMap {
   'quiz-answer-submitted': QuizAnswerSubmittedEvent
   'layer-transition': LayerTransitionEvent
   'score-updated': ScoreUpdatedEvent
-  'gaia-toast-requested': GaiaToastRequestedEvent
+  'keeper-toast-requested': KeeperToastRequestedEvent
   // Lifecycle events (no payload)
   'dive-start-requested': void
   'dive-end-requested': void

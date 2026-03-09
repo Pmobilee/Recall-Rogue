@@ -139,6 +139,15 @@ describe('RunManager', () => {
       expect(endData.floorReached).toBe(5)
     })
 
+    it('applies segment death penalty on defeat', () => {
+      const state = createRunState('science', 'history')
+      state.floor.currentFloor = 5 // segment 2 -> 80%
+      state.currency = 200
+      const endData = endRun(state, 'defeat')
+      expect(endData.rewardMultiplier).toBe(0.8)
+      expect(endData.currencyEarned).toBe(160)
+    })
+
     it('sets result correctly', () => {
       const state1 = createRunState('science', 'history')
       expect(endRun(state1, 'victory').result).toBe('victory')
@@ -147,7 +156,7 @@ describe('RunManager', () => {
       expect(endRun(state2, 'defeat').result).toBe('defeat')
 
       const state3 = createRunState('science', 'history')
-      expect(endRun(state3, 'cashout').result).toBe('cashout')
+      expect(endRun(state3, 'retreat').result).toBe('retreat')
     })
 
     it('marks run as inactive', () => {
@@ -169,6 +178,8 @@ describe('RunManager', () => {
       state.startedAt = Date.now() - 1000
       const endData = endRun(state, 'victory')
       expect(endData.duration).toBeGreaterThan(0)
+      expect(endData.rewardMultiplier).toBe(1)
+      expect(endData.currencyEarned).toBe(state.currency)
     })
   })
 })

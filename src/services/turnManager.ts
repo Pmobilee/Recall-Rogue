@@ -1,181 +1,236 @@
 // === Turn Manager ===
-// Core encounter loop for the card roguelite.
-// Manages the draw → play → enemy → end turn cycle.
-// NO Phaser, Svelte, or DOM imports.
+// Core encounter loop for card combat.
 
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { CardEffectResult } from './cardEffectResolver';
+import type { ActiveRelic } from '../data/passiveRelics';
 import { drawHand, playCard as deckPlayCard } from './deckManager';
-import { createPlayerCombatState, applyShield, takeDamage, healPlayer, tickPlayerStatusEffects, resetTurnState } from './playerCombatState';
+import {
+  createPlayerCombatState,
+  applyShield,
+  takeDamage,
+  healPlayer,
+  tickPlayerStatusEffects,
+  resetTurnState,
+} from './playerCombatState';
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects } from './enemyManager';
 import { applyStatusEffect } from '../data/statusEffects';
-import { PLAYER_START_HP, COMBO_MULTIPLIERS } from '../data/balance';
+import { COMBO_MULTIPLIERS, PLAYER_START_HP, START_AP_PER_TURN, MAX_AP_PER_TURN } from '../data/balance';
+import { MECHANICS_BY_TYPE } from '../data/mechanics';
 
-/** The current phase of a turn in the encounter. */
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
 
-/** A single log entry for turn events. */
 export interface TurnLogEntry {
-  /** The type of event. */
   type: 'play' | 'skip' | 'fizzle' | 'blocked' | 'enemy_action' | 'status_tick' | 'draw' | 'victory' | 'defeat';
-  /** Human-readable description of the event. */
   message: string;
-  /** Optional numeric value associated with the event. */
   value?: number;
-  /** Optional card ID associated with the event. */
   cardId?: string;
 }
 
-/** The result type for encounter conclusion. */
 export type EncounterResult = 'victory' | 'defeat' | null;
 
-/** Full state of a turn in progress. */
 export interface TurnState {
-  /** Current turn phase. */
   phase: TurnPhase;
-  /** Turn number (1-indexed, increments each full turn cycle). */
   turnNumber: number;
-  /** The player's combat state for this encounter. */
   playerState: PlayerCombatState;
-  /** The enemy being fought. */
   enemy: EnemyInstance;
-  /** The deck state. */
   deck: CardRunState;
-  /** Current combo count (consecutive correct answers). */
   comboCount: number;
-  /** Number of cards played this turn. */
+  baseComboCount: number;
   cardsPlayedThisTurn: number;
-  /** Number of correct answers this turn. */
   cardsCorrectThisTurn: number;
-  /** True if all played cards this turn were answered correctly. */
   isPerfectTurn: boolean;
-  /** Percentage buff accumulated from buff cards for the next card. */
   buffNextCard: number;
-  /** The card type of the last card played (for wild resolution). */
   lastCardType?: CardType;
-  /** Active passive effects from Tier 3 mastered cards. */
   activePassives: PassiveEffect[];
-  /** Encounter result (null while in progress). */
+  activeRelics: ActiveRelic[];
+  activeRelicIds: Set<string>;
+  apCurrent: number;
+  apMax: number;
+  bonusApNextTurn: number;
+  baseDrawCount: number;
+  bonusDrawNextTurn: number;
+  pendingDrawCountOverride: number | null;
+  damageDealtThisTurn: number;
+  skippedCardsThisEncounter: number;
+  firstAttackUsed: boolean;
+  secondWindUsed: boolean;
+  doubleStrikeReady: boolean;
+  focusReady: boolean;
+  overclockReady: boolean;
+  slowEnemyIntent: boolean;
+  foresightTurnsRemaining: number;
+  persistentShield: number;
+  triggeredRelicId: string | null;
   result: EncounterResult;
-  /** Log of events for the current turn. */
   turnLog: TurnLogEntry[];
 }
 
-/** Result of playing a card. */
 export interface PlayCardResult {
-  /** The resolved card effect. */
   effect: CardEffectResult;
-  /** Updated combo count. */
   comboCount: number;
-  /** Whether the enemy was defeated by this card. */
   enemyDefeated: boolean;
-  /** Whether the card fizzled (wrong answer). */
   fizzled: boolean;
-  /** Whether the card was blocked (domain immunity). */
   blocked: boolean;
-  /** Whether this is a perfect turn (all cards correct so far). */
   isPerfectTurn: boolean;
-  /** The updated turn state. */
   turnState: TurnState;
 }
 
-/** Result of the enemy's turn. */
 export interface EnemyTurnResult {
-  /** Damage dealt to the player. */
   damageDealt: number;
-  /** Status effects applied to the player. */
   effectsApplied: StatusEffect[];
-  /** Whether the player was defeated. */
   playerDefeated: boolean;
-  /** The enemy's next telegraphed intent. */
   nextEnemyIntent: string;
-  /** The updated turn state. */
   turnState: TurnState;
 }
 
-/**
- * Starts a new encounter by creating player state, drawing a hand, and
- * setting up the initial turn state.
- *
- * @param deck - The card run state (mutated: hand is drawn).
- * @param enemy - The enemy instance to fight.
- * @param playerMaxHP - Optional max HP override.
- * @returns The initial TurnState with phase='player_action'.
- */
+function buildActiveRelicIds(relics: ActiveRelic[]): Set<string> {
+  return new Set(
+    relics
+      .filter((relic) => !relic.isDormant)
+      .map((relic) => relic.definition.id),
+  );
+}
+
+function getPassiveBonuses(passives: PassiveEffect[]): Partial<Record<CardType, number>> {
+  const bonuses: Partial<Record<CardType, number>> = {};
+  for (const passive of passives) {
+    bonuses[passive.cardType] = (bonuses[passive.cardType] ?? 0) + passive.value;
+  }
+  return bonuses;
+}
+
+function randomCardTypeDifferentFrom(type: CardType): CardType {
+  const all: CardType[] = ['attack', 'shield', 'heal', 'utility', 'buff', 'debuff', 'regen', 'wild'];
+  const candidates = all.filter((candidate) => candidate !== type);
+  return candidates[Math.floor(Math.random() * candidates.length)];
+}
+
+function transmuteRandomHandCard(turnState: TurnState): void {
+  const { hand } = turnState.deck;
+  if (hand.length === 0) return;
+  const targetIndex = Math.floor(Math.random() * hand.length);
+  const target = hand[targetIndex];
+  const newType = randomCardTypeDifferentFrom(target.cardType);
+  const mechanicPool = MECHANICS_BY_TYPE[newType];
+  const mechanic = mechanicPool[Math.floor(Math.random() * mechanicPool.length)];
+
+  hand[targetIndex] = {
+    ...target,
+    cardType: newType,
+    mechanicId: mechanic.id,
+    mechanicName: mechanic.name,
+    apCost: mechanic.apCost,
+    baseEffectValue: mechanic.baseValue,
+    originalBaseEffectValue: mechanic.baseValue,
+  };
+}
+
 export function startEncounter(
   deck: CardRunState,
   enemy: EnemyInstance,
   playerMaxHP?: number,
 ): TurnState {
   const playerState = createPlayerCombatState(playerMaxHP ?? PLAYER_START_HP);
-  drawHand(deck);
 
-  return {
+  const initialState: TurnState = {
     phase: 'player_action',
     turnNumber: 1,
     playerState,
     enemy,
     deck,
     comboCount: 0,
+    baseComboCount: 0,
     cardsPlayedThisTurn: 0,
     cardsCorrectThisTurn: 0,
     isPerfectTurn: false,
     buffNextCard: 0,
     lastCardType: undefined,
     activePassives: [],
+    activeRelics: [],
+    activeRelicIds: new Set<string>(),
+    apCurrent: START_AP_PER_TURN,
+    apMax: MAX_AP_PER_TURN,
+    bonusApNextTurn: 0,
+    baseDrawCount: 5,
+    bonusDrawNextTurn: 0,
+    pendingDrawCountOverride: null,
+    damageDealtThisTurn: 0,
+    skippedCardsThisEncounter: 0,
+    firstAttackUsed: false,
+    secondWindUsed: false,
+    doubleStrikeReady: false,
+    focusReady: false,
+    overclockReady: false,
+    slowEnemyIntent: false,
+    foresightTurnsRemaining: 0,
+    persistentShield: 0,
+    triggeredRelicId: null,
     result: null,
     turnLog: [],
   };
+
+  drawHand(deck, initialState.baseDrawCount);
+  return initialState;
 }
 
-/**
- * Plays a card from the player's hand.
- *
- * - If answeredCorrectly: resolves effect, applies results, increments combo.
- * - If wrong: fizzles, resets combo to 0.
- * - If blocked (domain immunity): no effect, no combo change.
- *
- * @param turnState - The current turn state (mutated in place).
- * @param cardId - The ID of the card to play.
- * @param answeredCorrectly - Whether the quiz question was answered correctly.
- * @param speedBonusEarned - Whether the speed bonus was earned (1.5x if true).
- * @returns The play card result.
- */
 export function playCardAction(
   turnState: TurnState,
   cardId: string,
   answeredCorrectly: boolean,
   speedBonusEarned: boolean,
 ): PlayCardResult {
+  turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
+  turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
+  if (turnState.comboCount < turnState.baseComboCount) turnState.comboCount = turnState.baseComboCount;
+
   const { deck, playerState, enemy } = turnState;
+  const cardInHand = deck.hand.find((card) => card.id === cardId);
+  if (!cardInHand) throw new Error(`Card ${cardId} not found in hand`);
 
-  // Find the card in hand before moving it
-  const cardInHand = deck.hand.find(c => c.id === cardId);
-  if (!cardInHand) {
-    throw new Error(`Card ${cardId} not found in hand`);
-  }
-
-  // Make a copy of card data before deck manipulation moves it
-  const card: Card = { ...cardInHand };
-
-  // Move card from hand to discard via deckManager
-  deckPlayCard(deck, cardId);
-
-  const speedBonus = speedBonusEarned ? 1.5 : 1.0;
-
-  // Check if blocked
-  if (isCardBlocked(card, enemy)) {
-    turnState.cardsPlayedThisTurn += 1;
+  const apCost = Math.max(1, cardInHand.apCost ?? 1);
+  if (turnState.apCurrent < apCost) {
+    const blockedEffect: CardEffectResult = {
+      effectType: cardInHand.cardType,
+      rawValue: 0,
+      finalValue: 0,
+      targetHit: false,
+      damageDealt: 0,
+      shieldApplied: 0,
+      healApplied: 0,
+      statusesApplied: [],
+      extraCardsDrawn: 0,
+      enemyDefeated: false,
+      mechanicId: cardInHand.mechanicId,
+      mechanicName: cardInHand.mechanicName,
+    };
     turnState.turnLog.push({
       type: 'blocked',
-      message: `${card.cardType} card blocked by enemy immunity`,
+      message: `Not enough AP (${apCost} required)`,
       cardId,
     });
+    return {
+      effect: blockedEffect,
+      comboCount: turnState.comboCount,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: true,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+    };
+  }
 
+  const card: Card = { ...cardInHand };
+  deckPlayCard(deck, cardId);
+  turnState.apCurrent = Math.max(0, turnState.apCurrent - apCost);
+
+  if (isCardBlocked(card, enemy)) {
+    turnState.cardsPlayedThisTurn += 1;
+    turnState.isPerfectTurn = false;
     const blockedEffect: CardEffectResult = {
       effectType: card.cardType,
       rawValue: 0,
@@ -187,8 +242,14 @@ export function playCardAction(
       statusesApplied: [],
       extraCardsDrawn: 0,
       enemyDefeated: false,
+      mechanicId: card.mechanicId,
+      mechanicName: card.mechanicName,
     };
-
+    turnState.turnLog.push({
+      type: 'blocked',
+      message: `${card.cardType} card blocked by enemy immunity`,
+      cardId,
+    });
     return {
       effect: blockedEffect,
       comboCount: turnState.comboCount,
@@ -200,13 +261,13 @@ export function playCardAction(
     };
   }
 
-  // Check if fizzled (wrong answer)
   if (!answeredCorrectly) {
-    turnState.comboCount = 0;
+    turnState.comboCount = turnState.baseComboCount;
     turnState.cardsPlayedThisTurn += 1;
+    turnState.isPerfectTurn = false;
     turnState.turnLog.push({
       type: 'fizzle',
-      message: `Card fizzled — wrong answer`,
+      message: 'Card fizzled — wrong answer',
       cardId,
     });
 
@@ -214,20 +275,20 @@ export function playCardAction(
       effectType: card.cardType,
       rawValue: 0,
       finalValue: 0,
-      targetHit: false,
+      targetHit: true,
       damageDealt: 0,
       shieldApplied: 0,
       healApplied: 0,
       statusesApplied: [],
       extraCardsDrawn: 0,
       enemyDefeated: false,
+      mechanicId: card.mechanicId,
+      mechanicName: card.mechanicName,
     };
-
-    turnState.isPerfectTurn = false;
 
     return {
       effect: fizzledEffect,
-      comboCount: 0,
+      comboCount: turnState.comboCount,
       enemyDefeated: false,
       fizzled: true,
       blocked: false,
@@ -236,13 +297,11 @@ export function playCardAction(
     };
   }
 
-  // Compute passive bonuses from Tier 3 mastered cards
-  const passiveBonuses: Partial<Record<CardType, number>> = {};
-  for (const p of turnState.activePassives) {
-    passiveBonuses[p.cardType] = (passiveBonuses[p.cardType] ?? 0) + p.value;
-  }
+  const speedBonus = speedBonusEarned ? 1.5 : 1.0;
+  const useDoubleStrike = turnState.doubleStrikeReady && card.cardType === 'attack';
+  const useFocus = turnState.focusReady;
+  const useOverclock = turnState.overclockReady;
 
-  // Resolve the card effect
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -251,64 +310,105 @@ export function playCardAction(
     speedBonus,
     turnState.buffNextCard,
     turnState.lastCardType,
-    passiveBonuses,
+    getPassiveBonuses(turnState.activePassives),
+    {
+      activeRelicIds: turnState.activeRelicIds,
+      isFirstAttackThisEncounter: !turnState.firstAttackUsed,
+      isDoubleStrikeActive: useDoubleStrike,
+      isFocusActive: useFocus,
+      isOverclockActive: useOverclock,
+      damageDealtThisTurn: turnState.damageDealtThisTurn,
+    },
   );
 
-  // Apply results
-  let enemyDefeated = false;
+  if (card.cardType === 'attack') turnState.firstAttackUsed = true;
+  if (useDoubleStrike && card.cardType === 'attack') turnState.doubleStrikeReady = false;
+  if (useFocus) turnState.focusReady = false;
+  if (useOverclock) {
+    turnState.overclockReady = false;
+    turnState.pendingDrawCountOverride = 4;
+  }
 
   if (effect.damageDealt > 0) {
-    const dmgResult = applyDamageToEnemy(enemy, effect.damageDealt);
-    enemyDefeated = dmgResult.defeated;
+    const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
+    effect.enemyDefeated = damageResult.defeated;
+    turnState.damageDealtThisTurn += effect.damageDealt;
   }
 
-  if (effect.shieldApplied > 0) {
-    applyShield(playerState, effect.shieldApplied);
+  if (effect.selfDamage && effect.selfDamage > 0) {
+    // Reckless self-damage ignores shield.
+    playerState.hp = Math.max(0, playerState.hp - effect.selfDamage);
   }
 
-  if (effect.healApplied > 0) {
-    healPlayer(playerState, effect.healApplied);
+  if (effect.shieldApplied > 0) applyShield(playerState, effect.shieldApplied);
+
+  if (effect.healApplied > 0) healPlayer(playerState, effect.healApplied);
+
+  if ((effect.overhealToShield ?? 0) > 0) {
+    if (card.mechanicId === 'overheal' || turnState.activeRelicIds.has('overgrowth')) {
+      applyShield(playerState, effect.overhealToShield ?? 0);
+    }
   }
 
   for (const status of effect.statusesApplied) {
     applyStatusEffect(enemy.statusEffects, status);
   }
 
+  if (effect.applyImmunity) {
+    applyStatusEffect(playerState.statusEffects, {
+      type: 'immunity',
+      value: 1,
+      turnsRemaining: 99,
+    });
+  }
+
   if (effect.extraCardsDrawn > 0) {
     drawHand(deck, effect.extraCardsDrawn);
   }
 
-  // Update turn state
-  turnState.comboCount += 1;
-  turnState.cardsPlayedThisTurn += 1;
-  turnState.cardsCorrectThisTurn += 1;
+  if ((effect.parryDrawBonus ?? 0) > 0) {
+    turnState.bonusDrawNextTurn += effect.parryDrawBonus ?? 0;
+  }
 
-  // Check perfect turn: all played cards were answered correctly
-  turnState.isPerfectTurn = (turnState.cardsCorrectThisTurn === turnState.cardsPlayedThisTurn && turnState.cardsPlayedThisTurn > 0);
+  if (effect.applyDoubleStrikeBuff) turnState.doubleStrikeReady = true;
+  if (effect.applyFocusBuff) turnState.focusReady = true;
+  if (effect.applyOverclock) turnState.overclockReady = true;
+  if (effect.applySlow) turnState.slowEnemyIntent = true;
+  if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
+  if (effect.applyTransmute) transmuteRandomHandCard(turnState);
 
-  // Track last card type for wild resolution
-  turnState.lastCardType = effect.effectType;
+  if ((effect.grantsAp ?? 0) > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + (effect.grantsAp ?? 0));
+  }
 
-  // Handle buff: store for next card, then reset
-  if (card.cardType === 'buff') {
+  if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock) {
     turnState.buffNextCard = effect.finalValue;
   } else {
-    // Consume buff on non-buff card
     turnState.buffNextCard = 0;
   }
 
-  // Check for victory
-  if (enemyDefeated) {
+  if (effect.enemyDefeated && turnState.activeRelicIds.has('bloodlust')) {
+    healPlayer(playerState, 5);
+    turnState.triggeredRelicId = 'bloodlust';
+  }
+
+  turnState.comboCount += 1;
+  turnState.cardsPlayedThisTurn += 1;
+  turnState.cardsCorrectThisTurn += 1;
+  turnState.isPerfectTurn = (
+    turnState.cardsPlayedThisTurn > 0 &&
+    turnState.cardsCorrectThisTurn === turnState.cardsPlayedThisTurn
+  );
+  turnState.lastCardType = effect.effectType;
+
+  if (effect.enemyDefeated) {
     turnState.result = 'victory';
     turnState.phase = 'encounter_end';
-    turnState.turnLog.push({
-      type: 'victory',
-      message: 'Enemy defeated!',
-    });
+    turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated!' });
   } else {
     turnState.turnLog.push({
       type: 'play',
-      message: `Played ${effect.effectType} card`,
+      message: `Played ${effect.mechanicName ?? effect.effectType}`,
       value: effect.finalValue,
       cardId,
     });
@@ -317,7 +417,7 @@ export function playCardAction(
   return {
     effect,
     comboCount: turnState.comboCount,
-    enemyDefeated,
+    enemyDefeated: effect.enemyDefeated,
     fizzled: false,
     blocked: false,
     isPerfectTurn: turnState.isPerfectTurn,
@@ -325,15 +425,9 @@ export function playCardAction(
   };
 }
 
-/**
- * Skips (discards) a card without penalty. No combo reset.
- *
- * @param turnState - The current turn state (mutated in place).
- * @param cardId - The ID of the card to skip.
- * @returns The updated turn state.
- */
 export function skipCard(turnState: TurnState, cardId: string): TurnState {
   deckPlayCard(turnState.deck, cardId);
+  turnState.skippedCardsThisEncounter += 1;
   turnState.turnLog.push({
     type: 'skip',
     message: 'Card skipped',
@@ -342,64 +436,67 @@ export function skipCard(turnState: TurnState, cardId: string): TurnState {
   return turnState;
 }
 
-/**
- * Ends the player's turn and executes the full enemy turn sequence.
- *
- * Sequence:
- * 1. Execute enemy intent (damage/effects)
- * 2. Apply enemy status effects to player
- * 3. Tick player status effects
- * 4. Tick enemy status effects
- * 5. Reset turn state (shield, combo, cardsPlayed)
- * 6. Roll new enemy intent
- * 7. Advance turn number
- * 8. Draw new hand
- * 9. Clear turnLog
- * 10. Check for encounter end
- *
- * @param turnState - The current turn state (mutated in place).
- * @returns The enemy turn result.
- */
 export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
+  turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
   const { playerState, enemy, deck } = turnState;
 
-  // 1. Execute enemy intent
-  const intentResult = executeEnemyIntent(enemy);
+  let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0 };
+  let intentSkipped = false;
+  if (
+    turnState.slowEnemyIntent &&
+    (enemy.nextIntent.type === 'defend' || enemy.nextIntent.type === 'buff')
+  ) {
+    intentSkipped = true;
+    turnState.slowEnemyIntent = false;
+  } else {
+    intentResult = executeEnemyIntent(enemy);
+  }
 
   let damageDealt = 0;
   let playerDefeated = false;
   const effectsApplied: StatusEffect[] = [];
 
   if (intentResult.damage > 0) {
-    const dmgResult = takeDamage(playerState, intentResult.damage);
-    damageDealt = intentResult.damage;
-    playerDefeated = dmgResult.defeated;
+    let incomingDamage = intentResult.damage;
+    if (turnState.activeRelicIds.has('glass_cannon')) {
+      incomingDamage = Math.round(incomingDamage * 1.10);
+      turnState.triggeredRelicId = 'glass_cannon';
+    }
+
+    const shieldBefore = playerState.shield;
+    const damageResult = takeDamage(playerState, incomingDamage);
+    damageDealt = incomingDamage;
+    playerDefeated = damageResult.defeated;
+
+    if (shieldBefore > 0 && turnState.activeRelicIds.has('retaliation')) {
+      applyDamageToEnemy(enemy, 2);
+      turnState.triggeredRelicId = 'retaliation';
+    }
   }
 
   turnState.turnLog.push({
     type: 'enemy_action',
-    message: `Enemy uses ${enemy.nextIntent.telegraph}`,
+    message: intentSkipped ? 'Enemy action disrupted by Slow' : `Enemy uses ${enemy.nextIntent.telegraph}`,
     value: intentResult.damage,
   });
 
-  // 2. Apply enemy debuffs to player
   for (const effect of intentResult.playerEffects) {
     applyStatusEffect(playerState.statusEffects, effect);
     effectsApplied.push(effect);
   }
 
-  // Check defeat after enemy attack
+  if (playerDefeated && turnState.activeRelicIds.has('second_wind') && !turnState.secondWindUsed) {
+    playerState.hp = 1;
+    playerDefeated = false;
+    turnState.secondWindUsed = true;
+    turnState.triggeredRelicId = 'second_wind';
+  }
+
   if (playerDefeated) {
     turnState.result = 'defeat';
     turnState.phase = 'encounter_end';
-    turnState.turnLog.push({
-      type: 'defeat',
-      message: 'Player defeated!',
-    });
-
-    // Roll next intent for display even on defeat
+    turnState.turnLog.push({ type: 'defeat', message: 'Player defeated!' });
     rollNextIntent(enemy);
-
     return {
       damageDealt,
       effectsApplied,
@@ -409,18 +506,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     };
   }
 
-  // 3. Tick player status effects
   const playerTick = tickPlayerStatusEffects(playerState);
   if (playerTick.defeated) {
     turnState.result = 'defeat';
     turnState.phase = 'encounter_end';
-    turnState.turnLog.push({
-      type: 'defeat',
-      message: 'Player defeated by status effects!',
-    });
-
+    turnState.turnLog.push({ type: 'defeat', message: 'Player defeated by status effects!' });
     rollNextIntent(enemy);
-
     return {
       damageDealt,
       effectsApplied,
@@ -446,18 +537,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     });
   }
 
-  // 4. Tick enemy status effects
   const enemyTick = tickEnemyStatusEffects(enemy);
   if (enemy.currentHP <= 0) {
     turnState.result = 'victory';
     turnState.phase = 'encounter_end';
-    turnState.turnLog.push({
-      type: 'victory',
-      message: 'Enemy defeated by status effects!',
-    });
-
+    turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated by status effects!' });
     rollNextIntent(enemy);
-
     return {
       damageDealt,
       effectsApplied,
@@ -475,39 +560,51 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     });
   }
 
-  // 4b. Apply passive heal/regen effects at turn boundary
   for (const passive of turnState.activePassives) {
     if (passive.cardType === 'heal' || passive.cardType === 'regen') {
       healPlayer(playerState, passive.value);
-      turnState.turnLog.push({
-        type: 'status_tick',
-        message: `Mastered ${passive.cardType} passive healed ${passive.value} HP`,
-        value: passive.value,
-      });
     }
   }
 
-  // 5. Reset turn state
+  if (turnState.activeRelicIds.has('momentum') && turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
+    turnState.bonusApNextTurn += 1;
+    turnState.triggeredRelicId = 'momentum';
+  }
+
+  const carryShield = turnState.activeRelicIds.has('fortress')
+    ? playerState.shield
+    : turnState.persistentShield;
+  if (turnState.activeRelicIds.has('fortress')) turnState.triggeredRelicId = 'fortress';
+
   resetTurnState(playerState);
-  turnState.comboCount = 0;
+  playerState.shield = Math.max(0, carryShield);
+  turnState.persistentShield = 0;
+
+  turnState.comboCount = turnState.baseComboCount;
   turnState.cardsPlayedThisTurn = 0;
   turnState.cardsCorrectThisTurn = 0;
   turnState.isPerfectTurn = false;
+  turnState.buffNextCard = 0;
+  turnState.lastCardType = undefined;
+  turnState.damageDealtThisTurn = 0;
+  turnState.firstAttackUsed = false;
+  turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);
+  turnState.bonusApNextTurn = 0;
 
-  // 6. Roll new enemy intent
+  if (turnState.foresightTurnsRemaining > 0) {
+    turnState.foresightTurnsRemaining -= 1;
+  }
+
   rollNextIntent(enemy);
-
-  // 7. Advance turn number
   turnState.turnNumber += 1;
 
-  // 8. Draw new hand
-  drawHand(deck);
+  const drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
+  turnState.pendingDrawCountOverride = null;
+  drawHand(deck, drawCount + turnState.bonusDrawNextTurn);
+  turnState.bonusDrawNextTurn = 0;
 
-  // 9. Clear turnLog for next turn
-  turnState.turnLog = [];
-
-  // 10. Set phase for next turn
   turnState.phase = 'player_action';
+  turnState.turnLog = [];
 
   return {
     damageDealt,
@@ -518,43 +615,20 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   };
 }
 
-/**
- * Checks whether the encounter has ended (victory or defeat).
- *
- * @param turnState - The current turn state.
- * @returns The encounter result, or null if still in progress.
- */
 export function checkEncounterEnd(turnState: TurnState): EncounterResult {
   if (turnState.enemy.currentHP <= 0) return 'victory';
   if (turnState.playerState.hp <= 0) return 'defeat';
   return null;
 }
 
-/**
- * Checks whether the player's hand is empty.
- *
- * @param turnState - The current turn state.
- * @returns True if no cards remain in hand.
- */
 export function isHandEmpty(turnState: TurnState): boolean {
   return turnState.deck.hand.length === 0;
 }
 
-/**
- * Gets the current hand size.
- *
- * @param turnState - The current turn state.
- * @returns The number of cards in the player's hand.
- */
 export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
 }
 
-/**
- * Get the combo multiplier for a given combo count.
- * @param comboCount - Current consecutive correct answers (0-based)
- * @returns Multiplier value (1.0 to 2.0)
- */
 export function getComboMultiplier(comboCount: number): number {
   const index = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
   return COMBO_MULTIPLIERS[index];

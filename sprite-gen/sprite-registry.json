@@ -9792,5 +9792,87 @@
       "notes": "Decorator floor background - 5000 dust"
     }
   ],
-  "updatedAt": "2026-03-06T07:59:32.882Z"
+  "updatedAt": "2026-03-06T07:59:32.882Z",
+  "arcane": {
+    "icon_science": {
+      "id": "icon_science",
+      "category": "icons",
+      "type": "sprite",
+      "generatedAt": "2026-03-09T04:18:45.953Z",
+      "model": "google/gemini-2.5-flash-image",
+      "targetSize": {
+        "width": 64,
+        "height": 64
+      },
+      "paths": {
+        "raw": "sprite-gen/output/icons/icon_science_original.png",
+        "2x": "public/assets/sprites/icons/icon_science.png",
+        "1x": "public/assets/sprites/icons/icon_science_1x.png"
+      }
+    },
+    "icon_history": {
+      "id": "icon_history",
+      "category": "icons",
+      "type": "sprite",
+      "generatedAt": "2026-03-09T04:18:54.441Z",
+      "model": "google/gemini-2.5-flash-image",
+      "targetSize": {
+        "width": 64,
+        "height": 64
+      },
+      "paths": {
+        "raw": "sprite-gen/output/icons/icon_history_original.png",
+        "2x": "public/assets/sprites/icons/icon_history.png",
+        "1x": "public/assets/sprites/icons/icon_history_1x.png"
+      }
+    },
+    "icon_arts": {
+      "id": "icon_arts",
+      "category": "icons",
+      "type": "sprite",
+      "generatedAt": "2026-03-09T04:19:02.133Z",
+      "model": "google/gemini-2.5-flash-image",
+      "targetSize": {
+        "width": 64,
+        "height": 64
+      },
+      "paths": {
+        "raw": "sprite-gen/output/icons/icon_arts_original.png",
+        "2x": "public/assets/sprites/icons/icon_arts.png",
+        "1x": "public/assets/sprites/icons/icon_arts_1x.png"
+      }
+    },
+    "crystal_golem_idle": {
+      "id": "crystal_golem_idle",
+      "category": "enemies",
+      "type": "sprite",
+      "generatedAt": "2026-03-09T04:19:42.595Z",
+      "model": "google/gemini-2.5-flash-image",
+      "targetSize": {
+        "width": 96,
+        "height": 128
+      },
+      "paths": {
+        "raw": "sprite-gen/output/enemies/crystal_golem_idle_original.png",
+        "2x": "public/assets/sprites/enemies/crystal_golem_idle.png",
+        "1x": "public/assets/sprites/enemies/crystal_golem_idle_1x.png"
+      }
+    },
+    "frame_attack": {
+      "id": "frame_attack",
+      "category": "cards",
+      "type": "sprite",
+      "generatedAt": "2026-03-09T04:20:17.058Z",
+      "model": "google/gemini-2.5-flash-image",
+      "targetSize": {
+        "width": 150,
+        "height": 200
+      },
+      "paths": {
+        "raw": "sprite-gen/output/cards/frame_attack_original.png",
+        "2x": "public/assets/sprites/cards/frame_attack.png",
+        "1x": "public/assets/sprites/cards/frame_attack_1x.png"
+      }
+    }
+  }
 }

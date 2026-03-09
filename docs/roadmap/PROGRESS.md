@@ -38,29 +38,7 @@
 
 ## P0.5 — Critical Fixes (MUST complete before P1)
 
-### CR-FIX-01: Fantasy Theme Rename
-**Do first. 30 min search-replace.**
-
-| Old | New |
-|-----|-----|
-| Terra Miner | Arcane Recall |
-| Mine / mine floors | Dungeon / dungeon depths |
-| Miner | Adventurer |
-| Excavation | Expedition |
-| Miner's Log | Adventurer's Journal |
-| Miner's Instinct | Scholar's Insight |
-| Mineral Veins | Bounty Quests |
-| Fossil Discovery | Lore Discovery |
-| Surface / cash out | Retreat |
-| Descend | Delve |
-| GAIA | Keeper (guide character) |
-| The Excavator | Gate Guardian |
-| Magma Core | Magma Wyrm |
-| Ore Wyrm | Dungeon Wyrm |
-
-Global search-replace all source files, UI strings, tooltip text, narrative.
-
----
+- [x] **CR-FIX-01 Fantasy Theme Rename** → `docs/roadmap/completed/CR-FIX-01-FANTASY-RENAME.md`
 
 ### CR-FIX-02: Card Effect Values + Enemy Balancing
 **BLOCKER. Fastest win — set numbers on existing entities.**

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { Fact, Rarity } from '../../data/types'
-  import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
+  import { KEEPER_EXPRESSIONS, KEEPER_NAME, getKeeperExpression } from '../../data/gaiaAvatar'
   import { gaiaMood } from '../stores/settings'
 
   type Props = {
@@ -45,7 +45,7 @@
   })
 
   const gaiaCommentEmoji = $derived(
-    getGaiaExpression(rarityTrigger, $gaiaMood).emoji
+    getKeeperExpression(rarityTrigger, $gaiaMood).emoji
   )
 
   onMount(() => {
@@ -92,7 +92,7 @@
         <div class="gaia-section">
           <div class="gaia-section-header">
             <span class="gaia-section-emoji" aria-hidden="true">{gaiaCommentEmoji}</span>
-            <span class="gaia-label">{GAIA_NAME}</span>
+            <span class="gaia-label">{KEEPER_NAME}</span>
           </div>
           <p class="gaia-text">"{fact.gaiaComment}"</p>
         </div>

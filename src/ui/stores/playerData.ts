@@ -12,18 +12,26 @@ function singletonWritable<T>(key: string, initial: T): Writable<T> {
   }
   return singletonRegistry[sym] as Writable<T>
 }
-import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
+import type { AgeRating, HubSaveState, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
-import { getUnlockedPaintingIds } from './achievements'
+// Achievement gallery is archived — getUnlockedPaintingIds inlined as no-op
+function getUnlockedPaintingIds(): string[] { return [] }
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
-import type { Cosmetic } from '../../data/cosmetics'
-import { calculateKnowledgePoints } from '../../data/knowledgeStore'
+// cosmetics.ts and knowledgeStore.ts archived — inline stubs
+type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
+function calculateKnowledgePoints(_stats: unknown, _mastered: number): number { return 0 }
 import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX, NEW_CARD_THROTTLE_RATIO, getAdaptiveNewCardLimit } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
-import { defaultHubSaveState } from '../../data/hubLayout'
+// hubLayout.ts archived — inline default hub state
+const defaultHubSaveState = (): HubSaveState => ({
+  unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection', 'market', 'research', 'observatory', 'gallery'],
+  activeWallpapers: {},
+  floorTiers: { starter: 0, study: 0, farm: 0, workshop: 0, zoo: 0, collection: 0, market: 0, research: 0, observatory: 0, gallery: 0 },
+  lastBriefingDate: null,
+})
 
 /** Maps legacy BALANCE.DOME_ROOMS IDs to hubFloors.ts floor IDs. */
 export const ROOM_TO_FLOOR_MAP: Record<string, string> = {
@@ -47,7 +55,8 @@ export function roomIdsToFloorIds(roomIds: string[]): string[] {
   }
   return [...floorSet]
 }
-import { gaiaMessage } from '../stores/gameState'
+// gaiaMessage removed from gameState — inline no-op writable
+const gaiaMessage = singletonWritable<string | null>('gaiaMessage', null)
 import { recordFastMastery } from '../../services/behavioralLearner'
 
 /** The active player save data. */
@@ -501,6 +510,81 @@ export function updateReviewStateByButton(factId: string, button: AnkiButton, fa
       new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
     )
   }
+}
+
+/** Returns the current review state for a fact, if present. */
+export function getReviewStateByFactId(factId: string): ReviewState | undefined {
+  const save = get(playerSave)
+  return save?.reviewStates.find((state) => state.factId === factId)
+}
+
+/**
+ * Applies mastery-trial pass/fail outcome to a fact state.
+ * Pass marks the fact as trial-complete. Fail clears streak and reduces stability.
+ */
+export function applyMasteryTrialOutcome(factId: string, passed: boolean): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) => {
+        if (state.factId !== factId) return state
+        if (passed) {
+          return {
+            ...state,
+            passedMasteryTrial: true,
+            masteredAt: state.masteredAt && state.masteredAt > 0 ? state.masteredAt : Date.now(),
+          }
+        }
+
+        const currentStability = state.stability ?? state.interval ?? 0
+        return {
+          ...state,
+          passedMasteryTrial: false,
+          consecutiveCorrect: 0,
+          repetitions: 0,
+          stability: Math.max(0, currentStability - 5),
+        }
+      }),
+    }
+  })
+  persistPlayer()
+}
+
+/** Adds an echo-redemption stability bonus after a correct echo answer. */
+export function applyEchoStabilityBonus(factId: string, multiplier: number = 2): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) => {
+        if (state.factId !== factId) return state
+        const baseStability = state.stability ?? state.interval ?? 0
+        const bonus = Math.max(1, Math.round(baseStability * Math.max(0, multiplier - 1) * 0.15))
+        return {
+          ...state,
+          stability: baseStability + bonus,
+          interval: Math.max(state.interval, state.interval + Math.ceil(bonus / 2)),
+          retrievability: Math.min(1, (state.retrievability ?? 1) + 0.05),
+        }
+      }),
+    }
+  })
+  persistPlayer()
+}
+
+/** Persists the relic assigned when a fact graduates into Tier 3 mastery. */
+export function setGraduatedRelicId(factId: string, relicId: string | null): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) =>
+        state.factId === factId ? { ...state, graduatedRelicId: relicId } : state,
+      ),
+    }
+  })
+  persistPlayer()
 }
 
 /**
@@ -1119,21 +1203,19 @@ export function purchaseKnowledgeItem(itemId: string, cost: number): boolean {
   return true
 }
 
-import type { CompanionState } from '../../data/companions'
-import { COMPANION_CATALOGUE } from '../../data/companions'
+// companions.ts archived — inline stub
+type CompanionState = { companionId: string; currentStage: number; unlocked: boolean }
 
 /** Persistent companion states for all companions (unlocked or not). */
 export const playerCompanionStates = singletonWritable<CompanionState[]>(
   'playerCompanionStates',
-  COMPANION_CATALOGUE.map(c => ({
-    companionId: c.id,
-    currentStage: 0,
-    unlocked: c.id === 'comp_borebot', // Borebot unlocked by default
-  }))
+  [{ companionId: 'comp_borebot', currentStage: 0, unlocked: true }]
 )
 
-import type { FloorUpgradeTier } from '../../data/hubLayout'
-import { getUpgradeDef, canUpgrade } from '../../data/hubUpgrades'
+import type { FloorUpgradeTier } from '../../data/types'
+// hubUpgrades.ts archived — inline stubs
+function canUpgrade(_f: string, _t: number, _s: PlayerSave): { allowed: boolean } { return { allowed: false } }
+function getUpgradeDef(_f: string, _t: number): { dustCost: number; premiumCosts: { materialId: string; count: number }[] } | null { return null }
 
 /**
  * Upgrades a hub floor to the next tier, spending resources.
@@ -1197,8 +1279,9 @@ export function setFloorWallpaper(floorId: string, wallpaperId: string | null): 
 // Phase 37: Advanced Pet System — Dust Cat functions
 // =========================================================
 
-import { assignTraits } from '../../data/petTraits'
-import { playerOwnsDustCatCosmetic } from '../../data/dustCatCosmetics'
+// petTraits.ts and dustCatCosmetics.ts archived — inline stubs
+function assignTraits(_seed: number): [string, string] { return ['friendly', 'curious'] }
+function playerOwnsDustCatCosmetic(_id: string, _owned: string[]): boolean { return false }
 
 /**
  * Decay Dust Cat happiness based on elapsed real time.
@@ -1400,7 +1483,8 @@ export function mixArtifacts(instanceIds: string[]): string | null {
 // Phase 48: Prestige & Endgame
 // =========================================================
 
-import { applyPrestige as _applyPrestige } from '../../services/prestigeService'
+// prestigeService.ts archived — inline stub
+function _applyPrestige(s: PlayerSave): PlayerSave { return s }
 
 /**
  * Applies a prestige reset to the current player save.

@@ -1,69 +1,81 @@
 // === Card Effect Resolver ===
-// Resolves the effect of a played card into concrete results.
-// Does NOT apply effects — returns results for the turn manager to apply.
-// NO Phaser, Svelte, or DOM imports.
+// Resolves card play into effect results. Does not mutate player/enemy state.
 
 import type { Card, CardType } from '../data/card-types';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { EnemyInstance } from '../data/enemies';
-import { TIER_MULTIPLIER, COMBO_MULTIPLIERS } from '../data/balance';
+import {
+  COMBO_MULTIPLIERS,
+  ECHO,
+  LEGACY_TIER_MULTIPLIER,
+  TIER_MULTIPLIER,
+} from '../data/balance';
 import { isVulnerable } from '../data/statusEffects';
+import { getMechanicDefinition } from '../data/mechanics';
 
-/** The result of resolving a card's effect. */
 export interface CardEffectResult {
-  /** The card type that was resolved. */
   effectType: CardType;
-  /** Raw value before multipliers. */
   rawValue: number;
-  /** Final value after all multipliers. */
   finalValue: number;
-  /** Whether the target was hit (false if blocked). */
   targetHit: boolean;
-  /** Damage dealt to the enemy (attack/wild). */
   damageDealt: number;
-  /** Shield applied to the player. */
   shieldApplied: number;
-  /** Healing applied to the player. */
   healApplied: number;
-  /** Status effects to be applied. */
   statusesApplied: StatusEffect[];
-  /** Extra cards to draw (utility). */
   extraCardsDrawn: number;
-  /** Whether this card's damage would defeat the enemy. */
   enemyDefeated: boolean;
+  mechanicId?: string;
+  mechanicName?: string;
+  damageDealtBypassesBlock?: boolean;
+  selfDamage?: number;
+  reflectDamage?: number;
+  persistentShield?: number;
+  parryDrawBonus?: number;
+  overhealToShield?: number;
+  grantsAp?: number;
+  applyDoubleStrikeBuff?: boolean;
+  applyFocusBuff?: boolean;
+  applySlow?: boolean;
+  applyForesight?: boolean;
+  applyTransmute?: boolean;
+  applyImmunity?: boolean;
+  applyOverclock?: boolean;
+  drawCountOverride?: number;
 }
 
-/**
- * Checks whether a card is blocked by the enemy's domain immunity.
- *
- * @param card - The card being played.
- * @param enemy - The target enemy.
- * @returns True if the card's domain matches the enemy's immuneDomain.
- */
+export interface AdvancedResolveOptions {
+  activeRelicIds?: Set<string>;
+  isFirstAttackThisEncounter?: boolean;
+  isDoubleStrikeActive?: boolean;
+  isFocusActive?: boolean;
+  isOverclockActive?: boolean;
+  damageDealtThisTurn?: number;
+}
+
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
   return enemy.template.immuneDomain != null && card.domain === enemy.template.immuneDomain;
 }
 
-/**
- * Resolves the full effect of a played card.
- *
- * Calculates the multiplier chain:
- *   baseEffectValue * TIER_MULTIPLIER[tier] * effectMultiplier * comboMult * speedBonus * (1 + buffNextCard/100)
- *
- * Does NOT modify player or enemy state — returns a result object
- * for the turn manager to apply.
- *
- * @param card - The card being played.
- * @param playerState - The player's current combat state (read-only peek).
- * @param enemy - The target enemy (read-only peek for HP/vulnerability check).
- * @param comboCount - Current combo count for combo multiplier lookup.
- * @param speedBonus - Speed bonus multiplier (1.0 if no bonus, 1.5 if earned).
- * @param buffNextCard - Percentage buff from a previous buff card (0 if none).
- * @param lastCardType - The type of the last card played (for wild cards).
- * @param passiveBonuses - Optional flat bonuses from Tier 3 passive effects, keyed by card type.
- * @returns The resolved card effect result.
- */
+function getTierMultiplier(tier: Card['tier']): number {
+  if (typeof tier === 'string') return TIER_MULTIPLIER[tier] ?? 1.0;
+  return LEGACY_TIER_MULTIPLIER[tier as 1 | 2 | 3] ?? 1.0;
+}
+
+function getComboMultiplier(comboCount: number): number {
+  const comboIndex = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
+  return COMBO_MULTIPLIERS[comboIndex] ?? 1;
+}
+
+function resolveEchoBase(card: Card, activeRelicIds: Set<string>): number {
+  if (!card.isEcho) return card.baseEffectValue;
+  if (activeRelicIds.has('echo_chamber')) {
+    if (card.originalBaseEffectValue != null) return card.originalBaseEffectValue;
+    return card.baseEffectValue / ECHO.POWER_MULTIPLIER;
+  }
+  return card.baseEffectValue;
+}
+
 export function resolveCardEffect(
   card: Card,
   playerState: PlayerCombatState,
@@ -73,7 +85,11 @@ export function resolveCardEffect(
   buffNextCard: number,
   lastCardType?: CardType,
   passiveBonuses?: Partial<Record<CardType, number>>,
+  advanced: AdvancedResolveOptions = {},
 ): CardEffectResult {
+  const activeRelicIds = advanced.activeRelicIds ?? new Set<string>();
+  const mechanic = getMechanicDefinition(card.mechanicId);
+
   const result: CardEffectResult = {
     effectType: card.cardType,
     rawValue: 0,
@@ -85,44 +101,164 @@ export function resolveCardEffect(
     statusesApplied: [],
     extraCardsDrawn: 0,
     enemyDefeated: false,
+    mechanicId: card.mechanicId,
+    mechanicName: card.mechanicName,
   };
 
-  // Check immunity
   if (isCardBlocked(card, enemy)) {
     result.targetHit = false;
     return result;
   }
 
-  // Determine effective card type (wild copies last, defaults to attack)
   let effectiveType: CardType = card.cardType;
-  if (card.cardType === 'wild') {
+  if (card.cardType === 'wild' && card.mechanicId !== 'overclock') {
     effectiveType = lastCardType ?? 'attack';
     result.effectType = effectiveType;
   }
 
-  // Calculate raw value
-  const tierMult = TIER_MULTIPLIER[card.tier] ?? 1.0;
-  const rawValue = card.baseEffectValue * tierMult * card.effectMultiplier;
+  const focusAdjustedMultiplier = advanced.isFocusActive
+    ? Math.max(card.effectMultiplier, 1.3)
+    : card.effectMultiplier;
+  const tierMultiplier = getTierMultiplier(card.tier);
+  const comboMultiplier = getComboMultiplier(comboCount);
+  const buffMultiplier = 1 + buffNextCard / 100;
+  const overclockMultiplier = advanced.isOverclockActive ? 2 : 1;
+  const baseEffectValue = resolveEchoBase(card, activeRelicIds);
+
+  const strikeTag = mechanic?.tags.includes('strike') ?? false;
+  const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('sharpened_edge') ? 3 : 0;
+  const effectiveBase = baseEffectValue + sharpenedEdgeBonus;
+
+  let attackRelicMultiplier = 1;
+  if (effectiveType === 'attack') {
+    if (advanced.isFirstAttackThisEncounter && activeRelicIds.has('first_blood')) {
+      attackRelicMultiplier *= 1.5;
+    }
+    if (activeRelicIds.has('glass_cannon')) {
+      attackRelicMultiplier *= 1.25;
+    }
+  }
+
+  const rawValue = effectiveBase * tierMultiplier * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-
-  // Combo multiplier (cap at array length - 1)
-  const comboIndex = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
-  const comboMult = COMBO_MULTIPLIERS[comboIndex];
-
-  // Full multiplier chain
-  const buffMult = 1 + buffNextCard / 100;
-  const finalValue = Math.round(rawValue * comboMult * speedBonus * buffMult);
+  const finalValue = Math.round(rawValue * comboMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
   result.finalValue = finalValue;
 
-  // Apply effect based on type
+  const applyAttackDamage = (baseDamage: number): void => {
+    let damage = Math.max(0, Math.round(baseDamage + (passiveBonuses?.attack ?? 0)));
+    if (isVulnerable(enemy.statusEffects)) damage = Math.round(damage * 1.5);
+    result.damageDealt = damage;
+    result.enemyDefeated = damage >= enemy.currentHP;
+  };
+
+  // Double Strike buff consumes on next attack card.
+  if (advanced.isDoubleStrikeActive && effectiveType === 'attack') {
+    const perHit = Math.round(finalValue * 0.6);
+    applyAttackDamage(perHit * 2);
+    return result;
+  }
+
+  const mechanicId = card.mechanicId ?? '';
+  switch (mechanicId) {
+    case 'multi_hit': {
+      const hits = (mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning') ? 1 : 0);
+      applyAttackDamage(finalValue * hits);
+      return result;
+    }
+    case 'piercing': {
+      result.damageDealtBypassesBlock = true;
+      applyAttackDamage(finalValue);
+      return result;
+    }
+    case 'reckless': {
+      result.selfDamage = mechanic?.secondaryValue ?? 3;
+      applyAttackDamage(finalValue);
+      return result;
+    }
+    case 'execute': {
+      const threshold = mechanic?.secondaryThreshold ?? 0.3;
+      const bonusBase = mechanic?.secondaryValue ?? 8;
+      const executeBonus = enemy.currentHP / enemy.maxHP < threshold
+        ? Math.round(bonusBase * tierMultiplier * focusAdjustedMultiplier * comboMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier)
+        : 0;
+      applyAttackDamage(finalValue + executeBonus);
+      return result;
+    }
+    case 'fortify': {
+      const shield = finalValue + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = shield;
+      result.persistentShield = shield;
+      return result;
+    }
+    case 'parry': {
+      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
+      if (enemyIsAttacking || activeRelicIds.has('aegis')) result.parryDrawBonus = 1;
+      return result;
+    }
+    case 'brace': {
+      const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
+      result.shieldApplied = enemyIsAttacking ? enemy.nextIntent.value + (passiveBonuses?.shield ?? 0) : 0;
+      return result;
+    }
+    case 'overheal': {
+      const targetHeal = finalValue + (passiveBonuses?.heal ?? 0);
+      const missingHp = Math.max(0, playerState.maxHP - playerState.hp);
+      result.healApplied = Math.min(targetHeal, missingHp);
+      result.overhealToShield = Math.max(0, targetHeal - missingHp);
+      return result;
+    }
+    case 'lifetap': {
+      const turnDamage = advanced.damageDealtThisTurn ?? 0;
+      result.healApplied = Math.max(1, Math.floor(turnDamage * 0.30));
+      return result;
+    }
+    case 'quicken': {
+      result.grantsAp = 1;
+      result.finalValue = 1;
+      return result;
+    }
+    case 'double_strike': {
+      result.applyDoubleStrikeBuff = true;
+      return result;
+    }
+    case 'focus': {
+      result.applyFocusBuff = true;
+      return result;
+    }
+    case 'slow': {
+      result.applySlow = true;
+      return result;
+    }
+    case 'hex': {
+      result.statusesApplied.push({ type: 'poison', value: 3, turnsRemaining: 3 });
+      return result;
+    }
+    case 'foresight': {
+      result.applyForesight = true;
+      return result;
+    }
+    case 'transmute': {
+      result.applyTransmute = true;
+      return result;
+    }
+    case 'immunity': {
+      result.applyImmunity = true;
+      return result;
+    }
+    case 'overclock': {
+      result.applyOverclock = true;
+      result.drawCountOverride = 4;
+      return result;
+    }
+    default:
+      break;
+  }
+
+  // Fallback behavior by card type (phase-1 compatibility).
   switch (effectiveType) {
     case 'attack': {
-      let damage = finalValue + (passiveBonuses?.attack ?? 0);
-      if (isVulnerable(enemy.statusEffects)) {
-        damage = Math.round(damage * 1.5);
-      }
-      result.damageDealt = damage;
-      result.enemyDefeated = damage >= enemy.currentHP;
+      applyAttackDamage(finalValue);
       break;
     }
     case 'shield': {
@@ -135,12 +271,10 @@ export function resolveCardEffect(
       break;
     }
     case 'buff': {
-      // Buff returns finalValue as percentage for next card, plus passive buff bonus
       result.finalValue = finalValue + (passiveBonuses?.buff ?? 0);
       break;
     }
     case 'debuff': {
-      // Apply weakness (2 turns, floor(debuffFinal/2)) with passive bonus
       const debuffFinal = finalValue + (passiveBonuses?.debuff ?? 0);
       const weaknessValue = Math.floor(debuffFinal / 2);
       if (weaknessValue > 0) {
@@ -150,7 +284,6 @@ export function resolveCardEffect(
           turnsRemaining: 2,
         });
       }
-      // Also apply vulnerable if debuffFinal >= 5
       if (debuffFinal >= 5) {
         result.statusesApplied.push({
           type: 'vulnerable',
@@ -161,7 +294,6 @@ export function resolveCardEffect(
       break;
     }
     case 'regen': {
-      // Regen status (3 turns, ceil(regenFinal/3) per turn) with passive bonus
       const regenFinal = finalValue + (passiveBonuses?.regen ?? 0);
       const regenPerTurn = Math.ceil(regenFinal / 3);
       if (regenPerTurn > 0) {
@@ -174,14 +306,11 @@ export function resolveCardEffect(
       break;
     }
     case 'utility': {
-      // Utility draws extra cards; passive bonus adds more draws (capped at draw pile)
-      result.extraCardsDrawn = 1 + (passiveBonuses?.utility ?? 0);
+      result.extraCardsDrawn = Math.max(1, finalValue + (passiveBonuses?.utility ?? 0));
       break;
     }
-    case 'wild': {
-      // Should not reach here since we resolved wild above
+    case 'wild':
       break;
-    }
   }
 
   return result;

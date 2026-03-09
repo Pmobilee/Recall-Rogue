@@ -52,6 +52,7 @@ export function createDeck(pool: Card[]): CardRunState {
 export function drawHand(deck: CardRunState, count?: number): Card[] {
   const toDraw = count ?? HAND_SIZE;
   const drawn: Card[] = [];
+  const mechanicsInHand = new Set(deck.hand.map((card) => card.mechanicId).filter(Boolean) as string[]);
 
   for (let i = 0; i < toDraw; i++) {
     // If draw pile empty, reshuffle discard into draw
@@ -60,10 +61,27 @@ export function drawHand(deck: CardRunState, count?: number): Card[] {
       reshuffleDiscard(deck);
     }
 
-    const card = deck.drawPile.pop();
+    let card = deck.drawPile.pop();
+    if (!card) break;
+
+    // No duplicate mechanics in a drawn hand when avoidable.
+    if (card.mechanicId && mechanicsInHand.has(card.mechanicId)) {
+      const rerollIndex = [...deck.drawPile]
+        .reverse()
+        .findIndex((candidate) => !candidate.mechanicId || !mechanicsInHand.has(candidate.mechanicId));
+
+      if (rerollIndex >= 0) {
+        const actualIndex = deck.drawPile.length - 1 - rerollIndex;
+        const [rerolled] = deck.drawPile.splice(actualIndex, 1);
+        deck.drawPile.push(card);
+        card = rerolled;
+      }
+    }
+
     if (card) {
       deck.hand.push(card);
       drawn.push(card);
+      if (card.mechanicId) mechanicsInHand.add(card.mechanicId);
     }
   }
 
@@ -157,4 +175,37 @@ export function getDeckStats(deck: CardRunState): DeckStats {
     exhaustedCount: deck.exhaustPile.length,
     handSize: deck.hand.length,
   };
+}
+
+/**
+ * Adds a card directly into the draw pile.
+ *
+ * @param deck - The current deck state (mutated in place).
+ * @param card - Card to add.
+ * @param place - 'top' places for immediate draw, 'bottom' for later.
+ */
+export function addCardToDeck(deck: CardRunState, card: Card, place: 'top' | 'bottom' = 'top'): void {
+  if (place === 'top') {
+    deck.drawPile.push(card);
+  } else {
+    deck.drawPile.unshift(card);
+  }
+}
+
+/**
+ * Inserts a card into draw pile with delay from top draw order.
+ *
+ * Draw pile is stack-mode (`pop` from the end), so lower indices are deeper.
+ */
+export function insertCardWithDelay(deck: CardRunState, card: Card, minDelayCards: number): void {
+  if (deck.drawPile.length === 0) {
+    deck.drawPile.push(card);
+    return;
+  }
+
+  const maxByDepth = Math.floor(deck.drawPile.length * 0.6);
+  const maxByDelay = Math.max(0, deck.drawPile.length - minDelayCards);
+  const upperBound = Math.max(0, Math.min(maxByDepth, maxByDelay));
+  const index = Math.floor(Math.random() * (upperBound + 1));
+  deck.drawPile.splice(index, 0, card);
 }

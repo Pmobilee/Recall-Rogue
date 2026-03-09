@@ -1,17 +1,17 @@
 /**
- * GAIA visual identity — expression states and metadata.
+ * Keeper visual identity — expression states and metadata.
  * All avatar presentation is emoji-based; no image assets required.
  */
 
-export interface GaiaExpression {
+export interface KeeperExpression {
   id: string
   /** Primary emoji used to represent this expression */
   emoji: string
   label: string
 }
 
-/** All available GAIA expression states */
-export const GAIA_EXPRESSIONS: Record<string, GaiaExpression> = {
+/** All available Keeper expression states */
+export const KEEPER_EXPRESSIONS: Record<string, KeeperExpression> = {
   neutral:   { id: 'neutral',   emoji: '🤖', label: 'Neutral' },
   happy:     { id: 'happy',     emoji: '😊', label: 'Happy' },
   excited:   { id: 'excited',   emoji: '🤩', label: 'Excited' },
@@ -24,8 +24,8 @@ export const GAIA_EXPRESSIONS: Record<string, GaiaExpression> = {
 
 /** Maps known trigger names to an expression id. */
 const EXPRESSION_MAP: Record<string, string> = {
-  mine_entry:      'excited',
-  mineEntry:       'excited',
+  dungeon_entry:   'excited',
+  dungeonEntry:    'excited',
   depth_25:        'neutral',
   depthMilestone25: 'neutral',
   depth_50:        'thinking',
@@ -49,12 +49,12 @@ const EXPRESSION_MAP: Record<string, string> = {
   quiz_wrong:      'thinking', // overridden below for snarky mood
   idle:            'neutral',  // overridden below for snarky mood
   pet_comment:     'happy',
-  dive_return:         'happy',
-  postDiveReaction:    'happy',
-  postDiveShallow:     'neutral',
-  postDiveDeep:        'excited',
-  postDiveFreeGift:    'surprised',
-  postDiveBiomeTeaser: 'thinking',
+  expedition_return:         'happy',
+  postExpeditionReaction:    'happy',
+  postExpeditionShallow:     'neutral',
+  postExpeditionDeep:        'excited',
+  postExpeditionFreeGift:    'surprised',
+  postExpeditionBiomeTeaser: 'thinking',
   memory:              'thinking',
   barely_made_it:      'worried',
   barelyMadeIt:        'worried',
@@ -63,13 +63,13 @@ const EXPRESSION_MAP: Record<string, string> = {
 }
 
 /**
- * Resolve the GAIA expression for a given trigger and current mood.
+ * Resolve the Keeper expression for a given trigger and current mood.
  * Falls back to `neutral` for unknown triggers.
  *
  * @param trigger - Event/trigger name (camelCase or snake_case both work)
- * @param mood    - Current player-selected GAIA mood
+ * @param mood    - Current player-selected Keeper mood
  */
-export function getGaiaExpression(trigger: string, mood: string): GaiaExpression {
+export function getKeeperExpression(trigger: string, mood: string): KeeperExpression {
   let exprId = EXPRESSION_MAP[trigger] ?? 'neutral'
 
   // Mood-based overrides for neutral/ambiguous triggers
@@ -77,14 +77,14 @@ export function getGaiaExpression(trigger: string, mood: string): GaiaExpression
     exprId = 'snarky'
   }
 
-  return GAIA_EXPRESSIONS[exprId] ?? GAIA_EXPRESSIONS.neutral
+  return KEEPER_EXPRESSIONS[exprId] ?? KEEPER_EXPRESSIONS.neutral
 }
 
 /** Short display name shown in UI headers */
-export const GAIA_NAME = 'G.A.I.A.'
+export const KEEPER_NAME = 'Keeper'
 
 /** Full expanded name shown in tooltip / About section */
-export const GAIA_FULL_NAME = 'Geological Analytical Intelligence Assistant'
+export const KEEPER_FULL_NAME = 'The Keeper of Knowledge'
 
 /** One-line tagline shown below the full name */
-export const GAIA_TAGLINE = 'Your AI companion, since the crash...'
+export const KEEPER_TAGLINE = 'Your guide through the depths...'

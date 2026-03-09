@@ -1,19 +1,21 @@
 <script lang="ts">
   interface Props {
-    result: 'victory' | 'defeat' | 'cashout'
+    result: 'victory' | 'defeat' | 'retreat'
     floorReached: number
     factsAnswered: number
     accuracy: number
     bestCombo: number
     cardsEarned: number
+    rewardMultiplier: number
+    currencyEarned: number
     onplayagain: () => void
     onhome: () => void
   }
 
-  let { result, floorReached, factsAnswered, accuracy, bestCombo, cardsEarned, onplayagain, onhome }: Props = $props()
+  let { result, floorReached, factsAnswered, accuracy, bestCombo, cardsEarned, rewardMultiplier, currencyEarned, onplayagain, onhome }: Props = $props()
 
-  let isVictory = $derived(result === 'victory' || result === 'cashout')
-  let headerText = $derived(isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
+  let isVictory = $derived(result === 'victory' || result === 'retreat')
+  let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
 </script>
 
@@ -40,6 +42,14 @@
     <div class="stat-row">
       <span class="stat-label">Cards Earned</span>
       <span class="stat-value">{cardsEarned}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Reward Multiplier</span>
+      <span class="stat-value">{Math.round(rewardMultiplier * 100)}%</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Currency Earned</span>
+      <span class="stat-value">{currencyEarned}</span>
     </div>
   </div>
 

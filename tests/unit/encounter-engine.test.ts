@@ -84,7 +84,7 @@ function mockCard(overrides?: Partial<Card>): Card {
     factId: 'fact_1',
     cardType: 'attack',
     domain: 'science',
-    tier: 1,
+    tier: '1',
     baseEffectValue: 8,
     effectMultiplier: 1.0,
     ...overrides,
@@ -825,7 +825,7 @@ describe('Card Effect Resolver', () => {
     const defaultEnemy = mockEnemyInstance({ currentHP: 50, maxHP: 50 });
 
     it('resolves attack card with damage', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       // 8 * 1.0 (tier) * 1.0 (effectMult) * 1.0 (combo[0]) * 1.0 (speed) * 1.0 (buff)
       expect(result.damageDealt).toBe(8);
@@ -833,49 +833,49 @@ describe('Card Effect Resolver', () => {
     });
 
     it('applies tier multiplier', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 2, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '2a', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
-      // 8 * 1.5 (tier 2) * 1.0 * 1.0 * 1.0 * 1.0 = 12
-      expect(result.damageDealt).toBe(12);
+      // 8 * 1.3 (tier 2a) * 1.0 * 1.0 * 1.0 * 1.0 = 10.4 -> round 10
+      expect(result.damageDealt).toBe(10);
     });
 
     it('tier 3 produces 0 effect value', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 3, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '3', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.finalValue).toBe(0);
       expect(result.damageDealt).toBe(0);
     });
 
     it('applies combo multiplier', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 2, 1.0, 0);
       // 8 * 1.0 * 1.0 * 1.3 (combo[2]) * 1.0 * 1.0 = 10.4 → round 10
       expect(result.damageDealt).toBe(Math.round(8 * COMBO_MULTIPLIERS[2]));
     });
 
     it('caps combo multiplier at max index', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 100, 1.0, 0);
       // Should use last index (2.0)
       expect(result.damageDealt).toBe(Math.round(8 * COMBO_MULTIPLIERS[COMBO_MULTIPLIERS.length - 1]));
     });
 
     it('applies speed bonus', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.5, 0);
       // 8 * 1.0 * 1.0 * 1.0 * 1.5 * 1.0 = 12
       expect(result.damageDealt).toBe(12);
     });
 
     it('applies buff percentage', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 50);
       // 8 * 1.0 * 1.0 * 1.0 * 1.0 * 1.5 = 12
       expect(result.damageDealt).toBe(12);
     });
 
     it('resolves shield card', () => {
-      const card = mockCard({ cardType: 'shield', baseEffectValue: 6, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'shield', baseEffectValue: 6, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.shieldApplied).toBe(6);
       expect(result.damageDealt).toBe(0);
@@ -883,20 +883,20 @@ describe('Card Effect Resolver', () => {
 
     it('resolves heal card (capped at missing HP)', () => {
       const player = mockPlayerState({ hp: 75, maxHP: 80 });
-      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, player, defaultEnemy, 0, 1.0, 0);
       expect(result.healApplied).toBe(5);
     });
 
     it('heal capped when near full HP', () => {
       const player = mockPlayerState({ hp: 78, maxHP: 80 });
-      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, player, defaultEnemy, 0, 1.0, 0);
       expect(result.healApplied).toBe(2);
     });
 
     it('resolves debuff card with weakness', () => {
-      const card = mockCard({ cardType: 'debuff', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'debuff', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       // finalValue = 8, floor(8/2) = 4 weakness
       expect(result.statusesApplied).toContainEqual(
@@ -909,14 +909,14 @@ describe('Card Effect Resolver', () => {
     });
 
     it('debuff does NOT apply vulnerable when finalValue < 5', () => {
-      const card = mockCard({ cardType: 'debuff', baseEffectValue: 4, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'debuff', baseEffectValue: 4, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       const vulnEffects = result.statusesApplied.filter(s => s.type === 'vulnerable');
       expect(vulnEffects).toHaveLength(0);
     });
 
     it('resolves regen card with regen status', () => {
-      const card = mockCard({ cardType: 'regen', baseEffectValue: 3, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'regen', baseEffectValue: 3, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       // ceil(3/3) = 1 regen per turn for 3 turns
       expect(result.statusesApplied).toContainEqual(
@@ -925,20 +925,20 @@ describe('Card Effect Resolver', () => {
     });
 
     it('resolves utility card with extra draw', () => {
-      const card = mockCard({ cardType: 'utility', baseEffectValue: 0, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'utility', baseEffectValue: 0, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.extraCardsDrawn).toBe(1);
     });
 
     it('resolves wild card as last card type', () => {
-      const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0, 'shield');
       expect(result.effectType).toBe('shield');
       expect(result.shieldApplied).toBe(8);
     });
 
     it('wild defaults to attack when no lastCardType', () => {
-      const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.effectType).toBe('attack');
       expect(result.damageDealt).toBe(8);
@@ -955,7 +955,7 @@ describe('Card Effect Resolver', () => {
     });
 
     it('attack on vulnerable enemy deals 1.5x', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 10, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 10, tier: '1', effectMultiplier: 1.0 });
       const enemy = mockEnemyInstance({
         currentHP: 50,
         maxHP: 50,
@@ -966,7 +966,7 @@ describe('Card Effect Resolver', () => {
     });
 
     it('sets enemyDefeated when damage >= enemy HP', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 50, tier: 1, effectMultiplier: 1.0 });
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 50, tier: '1', effectMultiplier: 1.0 });
       const enemy = mockEnemyInstance({ currentHP: 10, maxHP: 20 });
       const result = resolveCardEffect(card, defaultPlayer, enemy, 0, 1.0, 0);
       expect(result.enemyDefeated).toBe(true);
@@ -976,13 +976,12 @@ describe('Card Effect Resolver', () => {
       const card = mockCard({
         cardType: 'attack',
         baseEffectValue: 8,
-        tier: 2,
+        tier: '2a',
         effectMultiplier: 1.3,
       });
-      // 8 * 1.5 (tier2) * 1.3 (effectMult) = 15.6 raw
-      // 15.6 * 1.3 (combo[2]) * 1.5 (speed) * 1.5 (buff 50%) = 45.63 → round 46
+      // 8 * 1.3 (tier2a) * 1.3 (effectMult) = 13.52 raw
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 2, 1.5, 50);
-      const expected = Math.round(8 * 1.5 * 1.3 * 1.3 * 1.5 * 1.5);
+      const expected = Math.round(8 * 1.3 * 1.3 * 1.3 * 1.5 * 1.5);
       expect(result.damageDealt).toBe(expected);
     });
   });
@@ -1162,10 +1161,12 @@ describe('Turn Manager', () => {
 
     it('draws new hand', () => {
       const ts = startEncounter(deck, enemy);
+      ts.apCurrent = 99; // bypass AP gating for this legacy full-hand drain test
       // Play all cards to empty hand
       while (ts.deck.hand.length > 0) {
         const cardId = ts.deck.hand[0].id;
-        playCardAction(ts, cardId, true, false);
+        const play = playCardAction(ts, cardId, true, false);
+        if (play.blocked) break;
         if (ts.result) break;
       }
       if (!ts.result) {
@@ -1266,9 +1267,11 @@ describe('Turn Manager', () => {
 
     it('isHandEmpty returns true after all cards played', () => {
       const ts = startEncounter(deck, enemy);
+      ts.apCurrent = 99; // bypass AP gating for this legacy full-hand drain test
       while (ts.deck.hand.length > 0) {
         const cardId = ts.deck.hand[0].id;
-        playCardAction(ts, cardId, true, false);
+        const play = playCardAction(ts, cardId, true, false);
+        if (play.blocked) break;
         if (ts.result) break;
       }
       if (!ts.result) {
@@ -1353,7 +1356,7 @@ describe('Encounter Rewards', () => {
     it('generates tier 1 cards', () => {
       const facts = [makeFact({ id: 'fact-1' })];
       const result = generateCardRewards(1, facts, 1);
-      expect(result[0].tier).toBe(1);
+      expect(result[0].tier).toBe('1');
     });
 
     it('each card has a unique ID', () => {

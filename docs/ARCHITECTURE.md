@@ -1,4 +1,4 @@
-# Terra Miner Architecture (V6 — Card Roguelite)
+# Arcane Recall Architecture (V6 — Card Roguelite)
 
 Every card is a fact. Learning IS gameplay.
 
@@ -96,7 +96,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Save/load | `SaveManager.ts`, `saveService.ts` | 100% |
 | Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | 100% |
 | Achievement tracking | `AchievementManager.ts` | 100% |
-| GAIA NPC | `GaiaManager.ts` | 100% |
+| Keeper NPC | `GaiaManager.ts` | 100% |
 | Session tracking | `SessionTracker.ts`, `sessionTimer.ts` | 100% |
 | Particle system | `ParticleSystem.ts` | 80% — adapt for card effects |
 | Screen shake | `ScreenShakeSystem.ts` | 100% |

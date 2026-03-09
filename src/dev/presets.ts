@@ -1,14 +1,36 @@
-import type { PlayerSave, PendingArtifact, ReviewState } from '../data/types'
+import type { PlayerSave, PendingArtifact, ReviewState, HubSaveState, FloorUpgradeTier } from '../data/types'
 import type { Screen } from '../ui/stores/gameState'
 import { BALANCE } from '../data/balance'
-import { FOSSIL_SPECIES } from '../data/fossils'
-import { defaultHubSaveState } from '../data/hubLayout'
 import { createReviewState } from '../services/sm2'
 import { SAVE_VERSION } from '../services/saveService'
 import { createDefaultInterestConfig } from '../data/interestConfig'
 
-/** All 10 canonical floor IDs from hubFloors.ts */
+/** All 10 canonical floor IDs (inlined from archived hubFloors.ts) */
 const ALL_FLOOR_IDS = ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection', 'market', 'research', 'observatory', 'gallery'] as const
+
+/** Inlined from archived hubLayout.ts */
+function defaultHubSaveState(): HubSaveState {
+  return {
+    unlockedFloorIds: [...ALL_FLOOR_IDS],
+    activeWallpapers: {},
+    floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 0 as FloorUpgradeTier])) as Record<string, FloorUpgradeTier>,
+    lastBriefingDate: null,
+  }
+}
+
+/** Minimal fossil species data inlined from archived fossils.ts (preset use only) */
+const FOSSIL_SPECIES = [
+  { id: 'trilobite', name: 'Trilobite', fragmentsNeeded: 3 },
+  { id: 'ammonite', name: 'Ammonite', fragmentsNeeded: 3 },
+  { id: 'raptor', name: 'Velociraptor', fragmentsNeeded: 5 },
+  { id: 'mammoth', name: 'Woolly Mammoth', fragmentsNeeded: 5 },
+  { id: 'megalodon', name: 'Megalodon', fragmentsNeeded: 6 },
+  { id: 'pteranodon', name: 'Pteranodon', fragmentsNeeded: 6 },
+  { id: 'trex', name: 'Tyrannosaurus Rex', fragmentsNeeded: 8 },
+  { id: 'dodo', name: 'Dodo', fragmentsNeeded: 4 },
+  { id: 'sabertooth', name: 'Saber-toothed Cat', fragmentsNeeded: 5 },
+  { id: 'archaeopteryx', name: 'Archaeopteryx', fragmentsNeeded: 7 },
+]
 
 // ============================================================
 // SCENARIO PRESET TYPES
@@ -754,7 +776,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     id: 'mid_dive_active',
     label: 'Mid Dive Active (Dive Prep)',
     description: 'Mid-game player ready to start a dive. Targets DivePrepScreen.',
-    targetScreen: 'divePrepScreen',
+    targetScreen: 'divePrepScreen' as Screen,
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(15)
       const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
@@ -908,7 +930,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     id: 'dive_results',
     label: 'Dive Results Screen',
     description: '3 dives done, just finished a dive. Targets diveResults screen.',
-    targetScreen: 'diveResults',
+    targetScreen: 'diveResults' as Screen,
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(5)
       const today = new Date(now).toISOString().split('T')[0]

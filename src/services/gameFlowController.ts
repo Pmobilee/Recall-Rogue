@@ -1,19 +1,24 @@
 /**
- * Orchestrates screen transitions and game flow state machine for the card roguelite.
- * Uses Svelte stores for reactive state.
+ * Screen routing and run flow state machine for card roguelite.
  */
 
-import { currentScreen } from '../ui/stores/gameState'
-import type { RunState, RunEndData } from './runManager'
-import { createRunState, endRun } from './runManager'
-import type { RoomOption, MysteryEvent } from './floorManager'
-import { generateRoomOptions, generateMysteryEvent, advanceEncounter, advanceFloor } from './floorManager'
-import type { FactDomain } from '../data/card-types'
-import { writable, get } from 'svelte/store'
-
-// ============================================================
-// Flow state types
-// ============================================================
+import { writable, get } from 'svelte/store';
+import { currentScreen } from '../ui/stores/gameState';
+import type { RunState, RunEndData } from './runManager';
+import { createRunState, endRun } from './runManager';
+import type { RoomOption, MysteryEvent } from './floorManager';
+import {
+  generateRoomOptions,
+  generateMysteryEvent,
+  advanceEncounter,
+  advanceFloor,
+  getSegment,
+  isBossFloor,
+} from './floorManager';
+import type { Card, FactDomain } from '../data/card-types';
+import { DEATH_PENALTY } from '../data/balance';
+import { generateCardRewardOptions } from './rewardGenerator';
+import { addRewardCardToActiveDeck, getActiveDeckFactIds, getRunPoolCards } from './encounterBridge';
 
 export type GameFlowState =
   | 'idle'
@@ -24,136 +29,191 @@ export type GameFlowState =
   | 'restRoom'
   | 'treasureReward'
   | 'bossEncounter'
-  | 'runEnd'
+  | 'cardReward'
+  | 'retreatOrDelve'
+  | 'runEnd';
 
-// ============================================================
-// Stores
-// ============================================================
+export const gameFlowState = writable<GameFlowState>('idle');
+export const activeRunState = writable<RunState | null>(null);
+export const activeRoomOptions = writable<RoomOption[]>([]);
+export const activeMysteryEvent = writable<MysteryEvent | null>(null);
+export const activeRunEndData = writable<RunEndData | null>(null);
+export const activeCardRewardOptions = writable<Card[]>([]);
 
-export const gameFlowState = writable<GameFlowState>('idle')
-export const activeRunState = writable<RunState | null>(null)
-export const activeRoomOptions = writable<RoomOption[]>([])
-export const activeMysteryEvent = writable<MysteryEvent | null>(null)
-export const activeRunEndData = writable<RunEndData | null>(null)
+let pendingFloorCompleted = false;
+let pendingClearedFloor = 0;
 
-// ============================================================
-// Flow control functions
-// ============================================================
-
-/** Start new run flow — go to domain selection. */
 export function startNewRun(): void {
-  gameFlowState.set('domainSelection')
-  currentScreen.set('domainSelection')
+  gameFlowState.set('domainSelection');
+  currentScreen.set('domainSelection');
 }
 
-/** Domains selected — build run state, start first encounter. */
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
-  const state = createRunState(primary, secondary)
-  activeRunState.set(state)
-  gameFlowState.set('combat')
-  currentScreen.set('combat')
+  activeRunState.set(createRunState(primary, secondary));
+  gameFlowState.set('combat');
+  currentScreen.set('combat');
 }
 
-/** Encounter complete — generate rooms or handle boss/end. */
-export function onEncounterComplete(result: 'victory' | 'defeat'): void {
-  if (result === 'defeat') {
-    const state = get(activeRunState)!
-    const endData = endRun(state, 'defeat')
-    activeRunEndData.set(endData)
-    gameFlowState.set('runEnd')
-    currentScreen.set('runEnd')
-    return
-  }
+function proceedAfterReward(): void {
+  const run = get(activeRunState);
+  if (!run) return;
 
-  // Victory — advance encounter and check floor state
-  const state = get(activeRunState)!
-  const floorDone = advanceEncounter(state.floor)
-
-  if (floorDone) {
-    // Boss floor complete or last encounter
-    if (state.floor.currentFloor >= 9) {
-      const endData = endRun(state, 'victory')
-      activeRunEndData.set(endData)
-      gameFlowState.set('runEnd')
-      currentScreen.set('runEnd')
-    } else {
-      advanceFloor(state.floor)
-      activeRunState.set(state)
-      // Generate rooms for next segment
-      const rooms = generateRoomOptions(state.floor.currentFloor)
-      activeRoomOptions.set(rooms)
-      gameFlowState.set('roomSelection')
-      currentScreen.set('roomSelection')
+  const floorToResolve = pendingClearedFloor || run.floor.currentFloor;
+  if (pendingFloorCompleted) {
+    if (isBossFloor(floorToResolve)) {
+      gameFlowState.set('retreatOrDelve');
+      currentScreen.set('retreatOrDelve');
+      return;
     }
-  } else {
-    // More encounters on this floor
-    const rooms = generateRoomOptions(state.floor.currentFloor)
-    activeRoomOptions.set(rooms)
-    gameFlowState.set('roomSelection')
-    currentScreen.set('roomSelection')
+
+    advanceFloor(run.floor);
+    activeRunState.set(run);
   }
+
+  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  gameFlowState.set('roomSelection');
+  currentScreen.set('roomSelection');
 }
 
-/** Room selected — navigate to appropriate screen. */
+function openCardReward(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  const options = generateCardRewardOptions(
+    getRunPoolCards(),
+    getActiveDeckFactIds(),
+    run.consumedRewardFactIds,
+    3,
+  );
+
+  if (options.length === 0) {
+    proceedAfterReward();
+    return;
+  }
+
+  activeCardRewardOptions.set(options);
+  gameFlowState.set('cardReward');
+  currentScreen.set('cardReward');
+}
+
+export function onEncounterComplete(result: 'victory' | 'defeat'): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  if (result === 'defeat') {
+    const endData = endRun(run, 'defeat');
+    activeRunEndData.set(endData);
+    gameFlowState.set('runEnd');
+    currentScreen.set('runEnd');
+    return;
+  }
+
+  pendingFloorCompleted = advanceEncounter(run.floor);
+  pendingClearedFloor = run.floor.currentFloor;
+  activeRunState.set(run);
+  openCardReward();
+}
+
+export function onCardRewardSelected(card: Card): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  run.consumedRewardFactIds.add(card.factId);
+  activeRunState.set(run);
+  addRewardCardToActiveDeck(card);
+  activeCardRewardOptions.set([]);
+  proceedAfterReward();
+}
+
+export function onCardRewardSkipped(): void {
+  activeCardRewardOptions.set([]);
+  proceedAfterReward();
+}
+
+export function onRetreat(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  const endData = endRun(run, 'retreat');
+  activeRunEndData.set(endData);
+  gameFlowState.set('runEnd');
+  currentScreen.set('runEnd');
+}
+
+export function onDelve(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  advanceFloor(run.floor);
+  activeRunState.set(run);
+  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  gameFlowState.set('roomSelection');
+  currentScreen.set('roomSelection');
+}
+
+export function getCurrentDelvePenalty(): number {
+  const run = get(activeRunState);
+  if (!run) return 1;
+  const nextFloor = run.floor.currentFloor + 1;
+  const segment = getSegment(nextFloor);
+  return DEATH_PENALTY[segment];
+}
+
 export function onRoomSelected(room: RoomOption): void {
   switch (room.type) {
     case 'combat':
-      gameFlowState.set('combat')
-      currentScreen.set('combat')
-      break
-    case 'mystery': {
-      const event = generateMysteryEvent()
-      activeMysteryEvent.set(event)
-      gameFlowState.set('mysteryEvent')
-      currentScreen.set('mysteryEvent')
-      break
-    }
+      gameFlowState.set('combat');
+      currentScreen.set('combat');
+      break;
+    case 'mystery':
+      activeMysteryEvent.set(generateMysteryEvent());
+      gameFlowState.set('mysteryEvent');
+      currentScreen.set('mysteryEvent');
+      break;
     case 'rest':
-      gameFlowState.set('restRoom')
-      currentScreen.set('restRoom')
-      break
+      gameFlowState.set('restRoom');
+      currentScreen.set('restRoom');
+      break;
     case 'treasure':
-      gameFlowState.set('treasureReward')
-      currentScreen.set('combat') // Treasure gives free card then goes to next
-      break
+      gameFlowState.set('treasureReward');
+      currentScreen.set('combat');
+      break;
     case 'shop':
-      // Placeholder — shop not implemented yet, treat as combat
-      gameFlowState.set('combat')
-      currentScreen.set('combat')
-      break
+      gameFlowState.set('combat');
+      currentScreen.set('combat');
+      break;
   }
 }
 
-/** Mystery resolved — back to room selection or next encounter. */
 export function onMysteryResolved(): void {
-  const state = get(activeRunState)!
-  const rooms = generateRoomOptions(state.floor.currentFloor)
-  activeRoomOptions.set(rooms)
-  gameFlowState.set('roomSelection')
-  currentScreen.set('roomSelection')
+  const run = get(activeRunState);
+  if (!run) return;
+  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  gameFlowState.set('roomSelection');
+  currentScreen.set('roomSelection');
 }
 
-/** Rest resolved — back to room selection. */
 export function onRestResolved(): void {
-  const state = get(activeRunState)!
-  const rooms = generateRoomOptions(state.floor.currentFloor)
-  activeRoomOptions.set(rooms)
-  gameFlowState.set('roomSelection')
-  currentScreen.set('roomSelection')
+  const run = get(activeRunState);
+  if (!run) return;
+  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  gameFlowState.set('roomSelection');
+  currentScreen.set('roomSelection');
 }
 
-/** Return to main menu. */
 export function returnToMenu(): void {
-  activeRunState.set(null)
-  activeRunEndData.set(null)
-  gameFlowState.set('idle')
-  currentScreen.set('mainMenu')
+  activeRunState.set(null);
+  activeRunEndData.set(null);
+  activeCardRewardOptions.set([]);
+  pendingFloorCompleted = false;
+  pendingClearedFloor = 0;
+  gameFlowState.set('idle');
+  currentScreen.set('mainMenu');
 }
 
-/** Play again — shortcut to domain selection. */
 export function playAgain(): void {
-  activeRunState.set(null)
-  activeRunEndData.set(null)
-  gameFlowState.set('domainSelection')
-  currentScreen.set('domainSelection')
+  activeRunState.set(null);
+  activeRunEndData.set(null);
+  activeCardRewardOptions.set([]);
+  pendingFloorCompleted = false;
+  pendingClearedFloor = 0;
+  gameFlowState.set('domainSelection');
+  currentScreen.set('domainSelection');
 }

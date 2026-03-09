@@ -101,8 +101,8 @@ function collectActions(): string[] {
   return actions;
 }
 
-/** Try to access the Phaser MineScene for grid data. */
-function getMineScene(): {
+/** Try to access the Phaser CombatScene for grid data. */
+function getCombatScene(): {
   grid: Array<Array<{ type: string }>> | null;
   playerX: number;
   playerY: number;
@@ -112,7 +112,7 @@ function getMineScene(): {
       scene?: { getScene?: (key: string) => unknown };
     } | undefined;
     if (!game?.scene?.getScene) return null;
-    const scene = game.scene.getScene('MineScene') as {
+    const scene = game.scene.getScene('CombatScene') as {
       grid?: Array<Array<{ type: string }>>;
       player?: { gridX: number; gridY: number };
     } | null;
@@ -140,19 +140,19 @@ export function look(): string {
   const actions = collectActions();
 
   switch (screen) {
-    case 'mine':
-    case 'mineActive': {
+    case 'combat':
+    case 'combatActive': {
       const o2 = readStore<number>('terra:oxygenCurrent');
       const save = readStore<Record<string, unknown>>('terra:playerSave') as Record<string, unknown> | undefined;
       const dust = (save?.dust as number) ?? '?';
       const layer = (save?.currentLayer as number) ?? '?';
       const depth = (save?.currentDepth as number) ?? '?';
 
-      lines.push(`SCREEN: mine (layer ${layer}, depth ${depth})`);
+      lines.push(`SCREEN: combat (layer ${layer}, depth ${depth})`);
       lines.push(`O2: ${o2 ?? '?'}  DUST: ${dust}`);
       lines.push('');
 
-      const ms = getMineScene();
+      const ms = getCombatScene();
       if (ms?.grid) {
         const { grid, playerX, playerY } = ms;
         const radius = 2;
@@ -217,7 +217,7 @@ export function look(): string {
         if (studyCard.answer) lines.push(`  Answer: ${studyCard.answer}`);
         if (studyCard.explanation) lines.push(`  Explanation: ${studyCard.explanation}`);
         if (studyCard.mnemonic) lines.push(`  Mnemonic: ${studyCard.mnemonic}`);
-        if (studyCard.gaiaComment) lines.push(`  GAIA: ${studyCard.gaiaComment}`);
+        if (studyCard.gaiaComment) lines.push(`  Keeper: ${studyCard.gaiaComment}`);
       } else {
         lines.push('CURRENT CARD: (not visible)');
       }
@@ -232,7 +232,7 @@ export function look(): string {
         lines.push(`QUESTION: ${quiz.question}`);
         lines.push('CHOICES:');
         quiz.choices.forEach((c, i) => lines.push(`  [${i}] ${c}`));
-        if (quiz.gaiaReaction) lines.push(`GAIA: ${quiz.gaiaReaction}`);
+        if (quiz.gaiaReaction) lines.push(`Keeper: ${quiz.gaiaReaction}`);
         if (quiz.memoryTip) lines.push(`TIP: ${quiz.memoryTip}`);
         if (quiz.resultText) lines.push(`RESULT: ${quiz.resultText}`);
         if (quiz.consistencyWarning) lines.push(`WARNING: ${quiz.consistencyWarning}`);

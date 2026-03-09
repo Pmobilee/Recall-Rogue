@@ -18,7 +18,7 @@ import CardApp from './CardApp.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
-import { currentScreen, pendingArtifacts } from './ui/stores/gameState'
+import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { factsDB } from './services/factsDB'
 import { initI18n } from './i18n/index'
@@ -48,7 +48,7 @@ const setupCapacitor = async (): Promise<{ hide: () => Promise<void> } | null> =
     // Handle Android hardware back button
     CapApp.addListener('backButton', ({ canGoBack }) => {
       const screen = document.querySelector('[data-screen]')?.getAttribute('data-screen') ?? ''
-      if (screen === 'mining') {
+      if (screen === 'combat') {
         document.dispatchEvent(new CustomEvent('game:back-pressed'))
         return
       }
@@ -114,8 +114,7 @@ document.getElementById('splash')?.remove()
 // Initialize player save data
 const save = initPlayer('teen')
 
-// Restore pending artifacts from save into the in-memory store
-pendingArtifacts.set(save.pendingArtifacts ?? [])
+// pendingArtifacts store removed — card roguelite doesn't use artifact system
 
 async function bootGame(): Promise<void> {
   // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)

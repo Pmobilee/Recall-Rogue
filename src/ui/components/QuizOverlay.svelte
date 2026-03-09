@@ -5,7 +5,7 @@
   import { audioManager } from '../../services/audioService'
   import { playerSave } from '../stores/playerData'
   import { gaiaMood, highContrastQuiz } from '../stores/settings'
-  import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
+  import { KEEPER_EXPRESSIONS, KEEPER_NAME, getKeeperExpression } from '../../data/gaiaAvatar'
   import ReportModal from './ReportModal.svelte'
   import FactArtwork from './FactArtwork.svelte'
   import { notifySuccess, notifyError, tapLight } from '../../services/hapticService'
@@ -140,7 +140,7 @@
   const gaiaReactionExpressionId = $derived.by(() => {
     if (!showResult || isCorrect === null) return 'neutral'
     const trigger = isCorrect ? 'quiz_correct' : 'quiz_wrong'
-    return getGaiaExpression(trigger, $gaiaMood).id
+    return getKeeperExpression(trigger, $gaiaMood).id
   })
 
   /** Sprite URL for the GAIA reaction bubble */
@@ -332,7 +332,7 @@
     {#if showResult && isCorrect !== null}
       <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
         <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
-        <span class="gaia-reaction-name">{GAIA_NAME}</span>
+        <span class="gaia-reaction-name">{KEEPER_NAME}</span>
         <span class="gaia-reaction-text" data-testid="gaia-reaction-text">
           {#if isCorrect}
             {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}

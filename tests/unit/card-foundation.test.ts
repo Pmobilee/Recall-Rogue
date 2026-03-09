@@ -3,7 +3,7 @@ import { resolveDomain, resolveCardType } from '../../src/services/domainResolve
 import { createCard, computeTier, computeEffectMultiplier, resetCardIdCounter } from '../../src/services/cardFactory';
 import { createDeck, drawHand, playCard, discardCard, exhaustCard, reshuffleDiscard, getDeckStats } from '../../src/services/deckManager';
 import { DOMAIN_CARD_TYPE } from '../../src/data/card-types';
-import { BASE_EFFECT, TIER_MULTIPLIER, EASE_POWER, HAND_SIZE } from '../../src/data/balance';
+import { HAND_SIZE } from '../../src/data/balance';
 import type { Fact, ReviewState } from '../../src/data/types';
 import type { Card, FactDomain } from '../../src/data/card-types';
 
@@ -53,7 +53,7 @@ function makeCards(n: number): Card[] {
     factId: `fact_${i + 1}`,
     cardType: 'attack' as const,
     domain: 'science' as FactDomain,
-    tier: 1 as const,
+    tier: '1' as const,
     baseEffectValue: 8,
     effectMultiplier: 1.0,
   }));
@@ -120,27 +120,28 @@ describe('cardFactory', () => {
 
   describe('computeTier', () => {
     it('returns tier 1 when no review state', () => {
-      expect(computeTier(undefined)).toBe(1);
+      expect(computeTier(undefined)).toBe('1');
     });
 
     it('returns tier 1 for new/learning cards', () => {
-      expect(computeTier(makeReviewState({ interval: 1, repetitions: 1 }))).toBe(1);
+      expect(computeTier(makeReviewState({ stability: 1, consecutiveCorrect: 1 }))).toBe('1');
     });
 
-    it('returns tier 2 for familiar cards (interval >= 3, reps >= 3)', () => {
-      expect(computeTier(makeReviewState({ interval: 3, repetitions: 3 }))).toBe(2);
+    it('returns tier 2a at first mastery threshold', () => {
+      expect(computeTier(makeReviewState({ stability: 5, consecutiveCorrect: 3 }))).toBe('2a');
     });
 
-    it('returns tier 3 for mastered cards (interval >= 21, reps >= 5)', () => {
-      expect(computeTier(makeReviewState({ interval: 21, repetitions: 5 }))).toBe(3);
+    it('returns tier 2b before mastery trial pass', () => {
+      expect(computeTier(makeReviewState({ stability: 15, consecutiveCorrect: 5 }))).toBe('2b');
     });
 
-    it('returns tier 2 when interval is high but reps are low', () => {
-      expect(computeTier(makeReviewState({ interval: 30, repetitions: 4 }))).toBe(2);
-    });
-
-    it('returns tier 1 when reps are high but interval is low', () => {
-      expect(computeTier(makeReviewState({ interval: 2, repetitions: 10 }))).toBe(1);
+    it('returns tier 3 only after mastery trial flag is set', () => {
+      const state = makeReviewState({
+        stability: 30,
+        consecutiveCorrect: 7,
+        passedMasteryTrial: true,
+      });
+      expect(computeTier(state)).toBe('3');
     });
   });
 
@@ -171,7 +172,7 @@ describe('cardFactory', () => {
       const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined);
       expect(card.domain).toBe('science');
       expect(card.cardType).toBe('attack');
-      expect(card.tier).toBe(1);
+      expect(card.tier).toBe('1');
       expect(card.effectMultiplier).toBe(1.0);
     });
 
@@ -181,26 +182,28 @@ describe('cardFactory', () => {
       expect(card1.id).not.toBe(card2.id);
     });
 
-    it('computes baseEffectValue from cardType and tier', () => {
-      // Tier 1 attack: 8 * 1.0 = 8
+    it('keeps baseEffectValue independent of tier and marks mastery trials', () => {
       const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined);
       expect(t1.baseEffectValue).toBe(8);
+      expect(t1.tier).toBe('1');
 
-      // Tier 2 attack: 8 * 1.5 = 12
       resetCardIdCounter();
-      const t2 = createCard(
+      const t2bTrial = createCard(
         makeFact({ category: ['Natural Sciences'] }),
-        makeReviewState({ interval: 5, repetitions: 3 }),
+        makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: false }),
       );
-      expect(t2.baseEffectValue).toBe(12);
+      expect(t2bTrial.baseEffectValue).toBe(8);
+      expect(t2bTrial.tier).toBe('2b');
+      expect(t2bTrial.isMasteryTrial).toBe(true);
 
-      // Tier 3 attack: 8 * 0 = 0 (passive)
       resetCardIdCounter();
       const t3 = createCard(
         makeFact({ category: ['Natural Sciences'] }),
-        makeReviewState({ interval: 25, repetitions: 6 }),
+        makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: true }),
       );
-      expect(t3.baseEffectValue).toBe(0);
+      expect(t3.baseEffectValue).toBe(8);
+      expect(t3.tier).toBe('3');
+      expect(t3.isMasteryTrial).toBe(false);
     });
 
     it('links factId correctly', () => {

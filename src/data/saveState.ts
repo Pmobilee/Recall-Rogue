@@ -1,5 +1,5 @@
-import type { ConsumableSlot } from '../ui/stores/gameState'
-import type { MineCell } from './types'
+// ConsumableSlot inlined from archived gameState — mining dive save only
+type ConsumableSlot = { id: string; remainingUses: number } | null
 
 /**
  * Full mid-dive save state. Written to localStorage every 30 ticks.

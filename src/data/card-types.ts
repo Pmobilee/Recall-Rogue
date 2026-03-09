@@ -25,7 +25,7 @@ export const DOMAIN_CARD_TYPE: Record<FactDomain, CardType> = {
 // === Card Tier ===
 // Derived from SM-2 review state progression
 
-export type CardTier = 1 | 2 | 3;
+export type CardTier = '1' | '2a' | '2b' | '3';
 
 // === Card Entity ===
 // A single playable card in a run, linked to a Fact
@@ -39,7 +39,7 @@ export interface Card {
   cardType: CardType;
   /** Knowledge domain, derived from fact.category */
   domain: FactDomain;
-  /** Power tier: 1=new/learning, 2=familiar, 3=mastered (passive) */
+  /** Power tier: 1=new/learning, 2a/2b=active, 3=mastered passive */
   tier: CardTier;
   /** Base numeric effect (damage/block/heal amount before multipliers) */
   baseEffectValue: number;
@@ -47,6 +47,16 @@ export interface Card {
   effectMultiplier: number;
   /** True if this is an Echo (ghost card injected from wrong answer) */
   isEcho?: boolean;
+  /** True when this card is a Mastery Trial candidate. */
+  isMasteryTrial?: boolean;
+  /** Mechanic ID from the mechanics pool. */
+  mechanicId?: string;
+  /** Human-readable mechanic name. */
+  mechanicName?: string;
+  /** AP cost to play this card. */
+  apCost?: number;
+  /** Pre-echo base effect value used by Echo Chamber. */
+  originalBaseEffectValue?: number;
 }
 
 // === Card Run State ===

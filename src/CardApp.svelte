@@ -1,67 +1,64 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte'
   import { currentScreen } from './ui/stores/gameState'
   import {
-    gameFlowState,
-    activeRunState,
-    activeRoomOptions,
+    activeCardRewardOptions,
     activeMysteryEvent,
+    activeRoomOptions,
     activeRunEndData,
-    startNewRun,
+    activeRunState,
+    getCurrentDelvePenalty,
+    onCardRewardSelected,
+    onCardRewardSkipped,
+    onDelve,
     onDomainsSelected,
-    onEncounterComplete,
-    onRoomSelected,
     onMysteryResolved,
     onRestResolved,
-    returnToMenu,
+    onRetreat,
+    onRoomSelected,
     playAgain,
+    returnToMenu,
+    startNewRun,
   } from './services/gameFlowController'
   import {
     activeTurnState,
+    handleEndTurn,
     handlePlayCard,
     handleSkipCard,
-    handleEndTurn,
     startEncounterForRoom,
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
-  import type { RoomOption, MysteryEffect } from './services/floorManager'
-  import type { RunEndData } from './services/runManager'
+  import type { MysteryEffect } from './services/floorManager'
   import { get } from 'svelte/store'
   import { healPlayer } from './services/runManager'
 
-  // Lazy imports for code-splitting
   import DomainSelection from './ui/components/DomainSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
   import RoomSelection from './ui/components/RoomSelection.svelte'
   import MysteryEventOverlay from './ui/components/MysteryEventOverlay.svelte'
   import RestRoomOverlay from './ui/components/RestRoomOverlay.svelte'
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
-
-  // ── Handlers ──────────────────────────────────────
+  import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
+  import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
 
   function handleStartRun(): void {
     startNewRun()
   }
 
-  function handleDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
+  function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
     onDomainsSelected(primary, secondary)
-    // Start first combat encounter
     startEncounterForRoom()
   }
 
-  function handleRoomSelected(index: number): void {
-    const rooms = get(activeRoomOptions)
-    const room = rooms[index]
+  function handleRoomPick(index: number): void {
+    const room = get(activeRoomOptions)[index]
     if (!room) return
     onRoomSelected(room)
-    // If the room type is combat, start the encounter
     if (room.type === 'combat') {
       startEncounterForRoom(room.enemyId)
     }
   }
 
   function handleMysteryResolve(effect: MysteryEffect): void {
-    // Apply effect to run state
     const run = get(activeRunState)
     if (run) {
       if (effect.type === 'heal') {
@@ -76,30 +73,30 @@
 
   function handleRestHeal(): void {
     const run = get(activeRunState)
-    if (run) {
-      const amount = Math.round(run.playerMaxHp * 0.3)
-      healPlayer(run, amount)
-      activeRunState.set(run)
-    }
+    if (!run) return
+    const amount = Math.round(run.playerMaxHp * 0.3)
+    healPlayer(run, amount)
+    activeRunState.set(run)
     onRestResolved()
   }
 
   function handleRestUpgrade(): void {
-    // Placeholder — just resolve like heal for now
     onRestResolved()
   }
 
-  function handleOnEncounterComplete(result: 'victory' | 'defeat'): void {
-    onEncounterComplete(result)
+  function handleRewardSelected(card: import('./data/card-types').Card): void {
+    onCardRewardSelected(card)
   }
 
-  function handleGoBack(): void {
-    returnToMenu()
+  function nextSegmentName(floor: number): string {
+    if (floor < 3) return 'Shallow Depths'
+    if (floor < 6) return 'Deep Dungeon'
+    if (floor < 9) return 'The Abyss'
+    return 'Endless Depths'
   }
 </script>
 
 <div class="card-app" data-screen={$currentScreen}>
-  <!-- Phaser canvas container (always present, hidden when not in combat) -->
   <div
     id="phaser-container"
     class="phaser-container"
@@ -108,7 +105,7 @@
 
   {#if $currentScreen === 'mainMenu' || $currentScreen === 'base'}
     <div class="main-menu">
-      <h1 class="menu-title">TERRA MINER</h1>
+      <h1 class="menu-title">ARCANE RECALL</h1>
       <p class="menu-subtitle">Card Roguelite</p>
       <button class="start-btn" data-testid="btn-start-run" onclick={handleStartRun}>
         Start Run
@@ -117,10 +114,7 @@
   {/if}
 
   {#if $currentScreen === 'domainSelection'}
-    <DomainSelection
-      onstart={handleDomainsSelected}
-      onback={handleGoBack}
-    />
+    <DomainSelection onstart={handleDomainsChosen} onback={returnToMenu} />
   {/if}
 
   {#if $currentScreen === 'combat'}
@@ -132,6 +126,31 @@
     />
   {/if}
 
+  {#if $currentScreen === 'cardReward'}
+    <CardRewardScreen
+      options={$activeCardRewardOptions}
+      onselect={handleRewardSelected}
+      onskip={onCardRewardSkipped}
+    />
+  {/if}
+
+  {#if $currentScreen === 'retreatOrDelve'}
+    {@const run = $activeRunState}
+    {#if run}
+      <RetreatOrDelve
+        bossName={run.floor.currentFloor === 3 ? 'Gate Guardian' : run.floor.currentFloor === 6 ? 'Magma Wyrm' : run.floor.currentFloor === 9 ? 'The Archivist' : 'Endless Sentinel'}
+        segment={run.floor.segment}
+        currency={run.currency}
+        playerHp={run.playerHp}
+        playerMaxHp={run.playerMaxHp}
+        nextSegmentName={nextSegmentName(run.floor.currentFloor)}
+        deathPenalty={getCurrentDelvePenalty()}
+        onretreat={onRetreat}
+        ondelve={onDelve}
+      />
+    {/if}
+  {/if}
+
   {#if $currentScreen === 'roomSelection'}
     {@const run = $activeRunState}
     {#if run}
@@ -141,7 +160,7 @@
         playerMaxHp={run.playerMaxHp}
         currentFloor={run.floor.currentFloor}
         encounterNumber={run.floor.currentEncounter}
-        onselect={handleRoomSelected}
+        onselect={handleRoomPick}
       />
     {/if}
   {/if}
@@ -176,6 +195,8 @@
         accuracy={end.accuracy}
         bestCombo={end.bestCombo}
         cardsEarned={end.cardsEarned}
+        rewardMultiplier={end.rewardMultiplier}
+        currencyEarned={end.currencyEarned}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />
@@ -187,7 +208,7 @@
   .card-app {
     position: fixed;
     inset: 0;
-    background: #0D1117;
+    background: #0d1117;
     overflow: hidden;
   }
 
@@ -218,7 +239,7 @@
   .menu-title {
     font-size: 32px;
     font-weight: 800;
-    color: #F1C40F;
+    color: #f1c40f;
     letter-spacing: 3px;
     margin: 0;
     text-align: center;
@@ -227,7 +248,7 @@
 
   .menu-subtitle {
     font-size: 14px;
-    color: #8B949E;
+    color: #8b949e;
     margin: 0 0 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -236,7 +257,7 @@
   .start-btn {
     width: 220px;
     height: 64px;
-    background: linear-gradient(135deg, #27AE60, #2ECC71);
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
     border: none;
     border-radius: 16px;
     color: #fff;
