@@ -68,6 +68,35 @@
   let apCurrent = $derived(turnState?.apCurrent ?? 0)
   let apMax = $derived(turnState?.apMax ?? 0)
 
+  let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
+  let enemyName = $derived(turnState?.enemy.template.name ?? '')
+
+  const INTENT_ICONS: Record<string, string> = {
+    attack: '⚔️',
+    multi_attack: '⚔️×',
+    defend: '🛡️',
+    buff: '💪',
+    debuff: '☠️',
+    heal: '💚',
+  }
+
+  let intentDisplay = $derived.by(() => {
+    if (!enemyIntent) return null
+    const icon = INTENT_ICONS[enemyIntent.type] ?? '❓'
+    const val = enemyIntent.value
+    if (enemyIntent.type === 'multi_attack') {
+      const hits = enemyIntent.hitCount ?? 2
+      return { icon: '⚔️', text: `${val}×${hits}`, type: enemyIntent.type }
+    }
+    if (enemyIntent.type === 'attack') {
+      return { icon, text: `${val}`, type: enemyIntent.type }
+    }
+    if (enemyIntent.type === 'defend') {
+      return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type }
+    }
+    return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type }
+  })
+
   let selectedCard = $derived<Card | null>(
     selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null,
   )
@@ -111,13 +140,11 @@
     const floorBase = committedPresentation.timerOverride
       ?? (FLOOR_TIMER.find((entry) => turnState.deck.currentFloor <= entry.maxFloor)?.seconds ?? 4)
 
-    const questionWords = committedQuizData.question
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean).length
+    const allText = [committedQuizData.question, ...committedQuizData.answers].join(' ')
+    const totalWords = allText.trim().split(/\s+/).filter(Boolean).length
 
-    const extraWords = Math.max(0, questionWords - 10)
-    const wordBonus = Math.floor(extraWords / 15)
+    const extraWords = Math.max(0, totalWords - 10)
+    const wordBonus = Math.floor(extraWords / 12)
     const slowReaderBonus = slowReaderEnabled && !committedPresentation.disableSlowReader ? 3 : 0
 
     let timer = floorBase + wordBonus + slowReaderBonus
@@ -151,11 +178,12 @@
     }
 
     if (cardPlayStage === 'selected' && !state.hasSeenCastTooltip) {
-      return 'Tap Cast to commit — you cannot cancel'
+      return 'Tap the card again to cast it'
     }
 
-    if (cardPlayStage === 'committed' && !state.hasSeenAnswerTooltip) {
-      return 'Answer to activate your card'
+    if (cardPlayStage === 'committed') {
+      // Don't show tooltip during quiz — it overlaps answer buttons
+      return null
     }
 
     if (answeredThisTurn > 0 && !state.hasSeenEndTurnTooltip) {
@@ -245,7 +273,7 @@
     allAnswers.splice(insertIdx, 0, fact.correctAnswer)
 
     const question = variantIndex === 1
-      ? `Which prompt maps to "${fact.correctAnswer}"?`
+      ? fact.quizQuestion
       : variantIndex === 2
         ? `Fill in the blank: ${fact.statement.replace(fact.correctAnswer, '_____')}`
         : fact.quizQuestion
@@ -289,19 +317,11 @@
     }
   })
 
-  let autoEndTimeout: ReturnType<typeof setTimeout> | undefined
-  $effect(() => {
-    if (
-      turnState &&
-      turnState.phase === 'player_action' &&
-      turnState.apCurrent <= 0 &&
-      cardPlayStage !== 'committed'
-    ) {
-      autoEndTimeout = setTimeout(() => onendturn(), 500)
-      return () => {
-        if (autoEndTimeout !== undefined) clearTimeout(autoEndTimeout)
-      }
-    }
+  let showEndTurnConfirm = $state(false)
+
+  let hasPlayableCards = $derived.by(() => {
+    if (!turnState || turnState.phase !== 'player_action') return false
+    return handCards.some((c) => Math.max(1, c.apCost ?? 1) <= turnState!.apCurrent)
   })
 
   function handleSelect(index: number): void {
@@ -312,7 +332,7 @@
     if (!card) return
 
     if (selectedIndex === index && cardPlayStage === 'selected') {
-      handleDeselect()
+      handleCast()
       return
     }
 
@@ -338,10 +358,14 @@
     committedCardIndex = selectedIndex
     committedQuizData = getQuizForCard(selectedCard, selectedPresentation.optionCount)
     committedAtMs = Date.now()
+    selectedIndex = null
 
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenCastTooltip) {
       markOnboardingTooltipSeen('hasSeenCastTooltip')
+    }
+    if (!state.hasCompletedOnboarding && !state.hasSeenAnswerTooltip) {
+      markOnboardingTooltipSeen('hasSeenAnswerTooltip')
     }
   }
 
@@ -396,29 +420,18 @@
     if (!state.hasCompletedOnboarding && !state.hasSeenEndTurnTooltip) {
       markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
     }
+
+    if (apCurrent > 0 && hasPlayableCards && !showEndTurnConfirm) {
+      showEndTurnConfirm = true
+      return
+    }
+
+    showEndTurnConfirm = false
     onendturn()
   }
 
-  function getCardStars(card: Card): string {
-    if (card.tier === '3') return '★★★'
-    if (card.tier === '2b') return '★★'
-    if (card.tier === '2a') return '★★'
-    return '★'
-  }
-
-  function getCardEffectText(card: Card): string {
-    const amount = Math.round(card.baseEffectValue * card.effectMultiplier)
-    switch (card.cardType) {
-      case 'attack': return `Deal ${amount} damage`
-      case 'shield': return `Gain ${amount} shield`
-      case 'heal': return `Recover ${amount} HP`
-      case 'buff': return `Boost next cast (${amount})`
-      case 'debuff': return `Apply debuff (${amount})`
-      case 'regen': return `Regen ${amount}`
-      case 'utility': return `Utility effect (${amount})`
-      case 'wild': return `Adaptive effect (${amount})`
-      default: return `Effect ${amount}`
-    }
+  function cancelEndTurn(): void {
+    showEndTurnConfirm = false
   }
 
   function bountyLabel(bounty: ActiveBounty): string {
@@ -446,32 +459,21 @@
       </div>
     {/if}
 
+    {#if intentDisplay && cardPlayStage !== 'committed'}
+      <div class="enemy-intent" class:intent-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}>
+        <span class="intent-icon">{intentDisplay.icon}</span>
+        {#if intentDisplay.text}
+          <span class="intent-value">{intentDisplay.text}</span>
+        {/if}
+      </div>
+    {/if}
+
     {#if cardPlayStage === 'selected' && selectedCard}
       <button
         class="card-backdrop"
         onclick={handleDeselect}
         aria-label="Cancel card selection"
       ></button>
-
-      <section class="selected-panel" aria-label="Selected card">
-        <div class="selected-header">
-          <span class="selected-type">{selectedCard.cardType.toUpperCase()}</span>
-          <span class="selected-stars">{getCardStars(selectedCard)}</span>
-        </div>
-        <h3>{selectedCard.mechanicName ?? selectedCard.cardType}</h3>
-        <p>{getCardEffectText(selectedCard)}</p>
-        <p class="selected-tier">Tier {selectedCard.tier.toUpperCase()}</p>
-
-        <button
-          class="cast-btn"
-          data-testid="btn-cast-card"
-          onclick={handleCast}
-          disabled={castDisabled}
-        >
-          CAST
-        </button>
-        <button class="selected-skip" onclick={handleSkip}>Skip</button>
-      </section>
     {/if}
 
     {#if cardPlayStage === 'committed' && committedCard && committedQuizData && committedPresentation}
@@ -525,12 +527,25 @@
       <button
         class="end-turn-btn"
         class:disabled={endTurnDisabled}
+        class:end-turn-pulse={!endTurnDisabled && (apCurrent === 0 || !hasPlayableCards)}
         data-testid="btn-end-turn"
         onclick={handleEndTurn}
         disabled={endTurnDisabled}
       >
-        END TURN • {apCurrent} AP LEFT
+        END TURN
       </button>
+    {/if}
+
+    {#if showEndTurnConfirm}
+      <div class="end-turn-confirm-overlay">
+        <div class="end-turn-confirm-box">
+          <p>You still have AP to spend. End turn anyway?</p>
+          <div class="confirm-buttons">
+            <button class="confirm-btn confirm-end" onclick={handleEndTurn}>End Turn</button>
+            <button class="confirm-btn confirm-cancel" onclick={cancelEndTurn}>Cancel</button>
+          </div>
+        </div>
+      </div>
     {/if}
   {/if}
 </div>
@@ -543,7 +558,7 @@
     right: 0;
     height: 45vh;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.6);
     overflow: visible;
   }
 
@@ -600,6 +615,45 @@
     color: #facc15;
   }
 
+  .enemy-intent {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(15, 23, 35, 0.92);
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 5px 12px;
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    animation: intent-fade-in 300ms ease-out;
+  }
+
+  .enemy-intent.intent-attack {
+    border-color: #dc2626;
+    color: #fca5a5;
+  }
+
+  .intent-icon {
+    font-size: 16px;
+  }
+
+  .intent-value {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  @keyframes intent-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
   .ap-strip strong {
     font-size: 15px;
     color: #7dd3fc;
@@ -619,70 +673,6 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .selected-panel {
-    position: absolute;
-    bottom: 128px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 240px;
-    max-width: calc(100vw - 28px);
-    background: #162231;
-    border: 2px solid #f1c40f;
-    border-radius: 14px;
-    padding: 14px;
-    z-index: 20;
-    text-align: center;
-  }
-
-  .selected-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #a8d6ff;
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-
-  .selected-panel h3 {
-    margin: 4px 0;
-    color: #f5f7fb;
-    font-size: 16px;
-  }
-
-  .selected-panel p {
-    margin: 3px 0;
-    color: #c7d5e8;
-    font-size: 12px;
-  }
-
-  .selected-tier {
-    color: #f4d35e;
-  }
-
-  .cast-btn {
-    width: 120px;
-    height: 48px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 8px;
-    background: linear-gradient(135deg, #f5b83d, #c97d16);
-    color: #151006;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-  }
-
-  .cast-btn:disabled {
-    opacity: 0.45;
-  }
-
-  .selected-skip {
-    margin-top: 8px;
-    border: none;
-    background: transparent;
-    color: #9aa8ba;
-    font-size: 12px;
-    text-decoration: underline;
-  }
 
   .onboarding-tip {
     position: absolute;
@@ -698,7 +688,7 @@
   }
 
   .tip-hand {
-    bottom: 118px;
+    bottom: 178px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -730,7 +720,7 @@
     position: absolute;
     left: 12px;
     right: 12px;
-    bottom: 68px;
+    bottom: 12px;
     height: 48px;
     background: #1f2937;
     color: #f8fafc;
@@ -749,6 +739,71 @@
   .end-turn-btn:disabled {
     background: #334155;
     color: #94a3b8;
+  }
+
+  .end-turn-pulse {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    color: #fbbf24;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(234, 179, 8, 0.5); background: #854d0e; }
+    50% { box-shadow: 0 0 16px rgba(234, 179, 8, 0.8); background: #a16207; }
+  }
+
+  .end-turn-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .end-turn-confirm-box {
+    background: #1f2937;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 16px 20px;
+    max-width: 260px;
+    text-align: center;
+  }
+
+  .end-turn-confirm-box p {
+    color: #f8fafc;
+    font-size: 14px;
+    margin: 0 0 14px;
+    line-height: 1.4;
+  }
+
+  .confirm-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .confirm-btn {
+    flex: 1;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .confirm-end {
+    background: #dc2626;
+    color: #fff;
+  }
+
+  .confirm-cancel {
+    background: #374151;
+    color: #f8fafc;
   }
 
   .screen-edge-pulse {

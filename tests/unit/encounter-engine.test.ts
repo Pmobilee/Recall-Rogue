@@ -327,14 +327,14 @@ describe('Enemy Templates', () => {
     expect(boss).toHaveLength(3);
   });
 
-  it('cave_bat has 15 baseHP', () => {
+  it('cave_bat has 22 baseHP', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'cave_bat');
-    expect(bat?.baseHP).toBe(15);
+    expect(bat?.baseHP).toBe(22);
   });
 
-  it('crystal_golem has 40 baseHP', () => {
+  it('crystal_golem has 45 baseHP', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
-    expect(golem?.baseHP).toBe(40);
+    expect(golem?.baseHP).toBe(45);
   });
 
   it('the_archivist has 100 baseHP', () => {

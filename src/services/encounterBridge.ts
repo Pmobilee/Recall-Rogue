@@ -32,6 +32,19 @@ import { updateBounties } from './bountyManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
 
+/** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
+function freshTurnState(ts: TurnState): TurnState {
+  return {
+    ...ts,
+    deck: {
+      ...ts.deck,
+      hand: [...ts.deck.hand],
+      drawPile: [...ts.deck.drawPile],
+      discardPile: [...ts.deck.discardPile],
+    },
+  };
+}
+
 function getCombatScene(): CombatScene | null {
   try {
     const reg = globalThis as Record<symbol, unknown>;
@@ -136,8 +149,16 @@ export function startEncounterForRoom(enemyId?: string): void {
   if (!run) return;
 
   if (!activeDeck) {
+    if (!factsDB.isReady()) {
+      console.warn('[encounterBridge] factsDB not ready — cannot start encounter');
+      return;
+    }
     const reviewStates = get(playerSave)?.reviewStates ?? [];
     activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates);
+    if (activeRunPool.length === 0) {
+      console.warn('[encounterBridge] Empty run pool — cannot start encounter');
+      return;
+    }
     const starterDeck = activeRunPool.slice(0, 24);
     activeDeck = createDeck(starterDeck);
   }
@@ -192,7 +213,7 @@ export function startEncounterForRoom(enemyId?: string): void {
   // Tier-3 passives (legacy CR-08 layer) still supported.
   turnState.activePassives = buildPassiveEffectsFromRelics(activeRelics);
 
-  activeTurnState.set(turnState);
+  activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
 
   // Encounter start sound + draw swooshes.
@@ -320,7 +341,7 @@ export function handlePlayCard(
     maybeGenerateEcho(playedCard, correct);
   }
 
-  activeTurnState.set({ ...result.turnState });
+  activeTurnState.set(freshTurnState(result.turnState));
 
   const scene = getCombatScene();
   if (scene) {
@@ -362,7 +383,7 @@ export function handleSkipCard(cardId: string): void {
     activeRunState.set(run);
   }
 
-  activeTurnState.set({ ...turnState });
+  activeTurnState.set(freshTurnState(turnState));
 }
 
 export function handleUseHint(): void {
@@ -370,7 +391,7 @@ export function handleUseHint(): void {
   if (!turnState) return;
   if (turnState.deck.hintsRemaining <= 0) return;
   turnState.deck.hintsRemaining -= 1;
-  activeTurnState.set({ ...turnState });
+  activeTurnState.set(freshTurnState(turnState));
 }
 
 export function handleEndTurn(): void {
@@ -384,7 +405,7 @@ export function handleEndTurn(): void {
     activeRunState.set(run);
   }
 
-  activeTurnState.set({ ...result.turnState });
+  activeTurnState.set(freshTurnState(result.turnState));
 
   const scene = getCombatScene();
   if (scene) {

@@ -29,9 +29,9 @@ const COLOR_HP_RED = 0xe74c3c
 const COLOR_HP_GREEN = 0x2ecc71
 const COLOR_HP_YELLOW = 0xf1c40f
 const COLOR_BAR_BG = 0x333333
-const COLOR_COMMON = 0x888888
+const COLOR_COMMON = 0x6b7280
 const COLOR_ELITE = 0xd4af37
-const COLOR_BOSS = 0xcc3333
+const COLOR_BOSS = 0xdc2626
 
 /** Map enemy category to placeholder color. */
 function categoryColor(category: 'common' | 'elite' | 'boss'): number {
@@ -92,6 +92,8 @@ export class CombatScene extends Phaser.Scene {
   private relicContainer!: Phaser.GameObjects.Container
   private flashRect!: Phaser.GameObjects.Rectangle
   private particles!: Phaser.GameObjects.Particles.ParticleEmitter
+  private enemyPlaceholderBorder!: Phaser.GameObjects.Rectangle | null
+  private enemyPlaceholderIcon!: Phaser.GameObjects.Text | null
 
   // ── State ────────────────────────────────────────────────
   private currentEnemyHP = 0
@@ -170,6 +172,20 @@ export class CombatScene extends Phaser.Scene {
       ENEMY_SIZE, ENEMY_SIZE,
       COLOR_COMMON,
     ).setOrigin(0.5, 0.5)
+
+    // Border outline for placeholder
+    this.enemyPlaceholderBorder = this.add.rectangle(
+      w * ENEMY_X_PCT, enemyY,
+      ENEMY_SIZE + 4, ENEMY_SIZE + 4,
+    ).setOrigin(0.5, 0.5).setStrokeStyle(2, 0xaaaaaa).setFillStyle(0x000000, 0)
+
+    // "?" silhouette indicator
+    this.enemyPlaceholderIcon = this.add.text(w * ENEMY_X_PCT, enemyY, '?', {
+      fontFamily: 'monospace',
+      fontSize: '36px',
+      color: '#ffffff',
+      align: 'center',
+    }).setOrigin(0.5, 0.5).setAlpha(0.6)
 
     this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + ENEMY_SIZE / 2 + 8, '', {
       fontFamily: 'monospace',
@@ -265,7 +281,9 @@ export class CombatScene extends Phaser.Scene {
 
     // Reset enemy sprite for new encounter
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
-    if (hasTexture(this, texture)) {
+    const hasSprite = hasTexture(this, texture)
+
+    if (hasSprite) {
       if (!('setTexture' in this.enemySprite)) {
         this.enemySprite.destroy()
         this.enemySprite = this.add.image(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT, texture)
@@ -286,6 +304,18 @@ export class CombatScene extends Phaser.Scene {
 
     if ('setFillStyle' in this.enemySprite) {
       this.enemySprite.setFillStyle(categoryColor(category))
+    }
+
+    // Show/hide placeholder border and icon based on whether real sprite exists
+    const borderColor = category === 'boss' ? 0xff4444 : category === 'elite' ? 0xffd700 : 0xaaaaaa
+    if (this.enemyPlaceholderBorder) {
+      this.enemyPlaceholderBorder.setVisible(!hasSprite)
+      this.enemyPlaceholderBorder.setStrokeStyle(2, borderColor)
+      this.enemyPlaceholderBorder.setPosition(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT)
+    }
+    if (this.enemyPlaceholderIcon) {
+      this.enemyPlaceholderIcon.setVisible(!hasSprite)
+      this.enemyPlaceholderIcon.setPosition(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT)
     }
 
     this.enemySprite.setAlpha(1)

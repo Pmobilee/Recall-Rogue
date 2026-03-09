@@ -38,7 +38,7 @@
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
-    const spread = 16
+    const spread = 30
     const step = spread / (total - 1)
     return -spread / 2 + step * index
   }
@@ -47,13 +47,38 @@
     if (total <= 1) return 0
     const mid = (total - 1) / 2
     const normalized = (index - mid) / mid
-    return Math.abs(normalized) * 8
+    return (1 - Math.abs(normalized)) * 20
+  }
+
+  function getCardSpacing(total: number): number {
+    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 390
+    const maxHandWidth = screenWidth * 0.88
+    if (total <= 1) return 0
+    // 60% of card width overlap
+    const cardW = Math.min(screenWidth * 0.18, 85)
+    const overlapSpacing = cardW * 0.6
+    return Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1)))
   }
 
   function getXOffset(index: number, total: number): number {
-    const cardVisibleWidth = 39
+    const cardVisibleWidth = getCardSpacing(total)
     const totalWidth = cardVisibleWidth * (total - 1)
     return -totalWidth / 2 + cardVisibleWidth * index
+  }
+
+  function getCardEffectText(card: Card): string {
+    const amount = Math.round(card.baseEffectValue * card.effectMultiplier)
+    switch (card.cardType) {
+      case 'attack': return `Deal ${amount} damage`
+      case 'shield': return `Gain ${amount} shield`
+      case 'heal': return `Recover ${amount} HP`
+      case 'buff': return `Boost next (${amount})`
+      case 'debuff': return `Debuff (${amount})`
+      case 'regen': return `Regen ${amount}`
+      case 'utility': return `Utility (${amount})`
+      case 'wild': return `Adaptive (${amount})`
+      default: return `Effect ${amount}`
+    }
   }
 
   function getEffectValue(card: Card): number {
@@ -67,6 +92,46 @@
 
   function hasEnoughAp(card: Card): boolean {
     return Math.max(1, card.apCost ?? 1) <= apCurrent
+  }
+
+  let touchStartY: number | null = null
+  let dragOffsetY = $state(0)
+  let isDragging = $state(false)
+  let dragCardIndex = $state<number | null>(null)
+
+  function handleTouchStart(e: TouchEvent, index: number): void {
+    touchStartY = e.touches[0].clientY
+    dragCardIndex = index
+    isDragging = true
+    dragOffsetY = 0
+  }
+
+  function handleTouchMove(e: TouchEvent): void {
+    if (touchStartY === null || !isDragging) return
+    const deltaY = touchStartY - e.touches[0].clientY
+    // Only allow dragging upward (positive deltaY = upward)
+    dragOffsetY = Math.max(0, deltaY)
+    if (dragOffsetY > 10) {
+      e.preventDefault()
+    }
+  }
+
+  function handleTouchEnd(e: TouchEvent, index: number): void {
+    if (touchStartY === null) {
+      isDragging = false
+      dragCardIndex = null
+      dragOffsetY = 0
+      return
+    }
+    const deltaY = touchStartY - e.changedTouches[0].clientY
+    touchStartY = null
+    isDragging = false
+    dragCardIndex = null
+    dragOffsetY = 0
+    if (deltaY > 60) {
+      // Swipe up past threshold — cast the card
+      if (!disabled) onselectcard(index)
+    }
   }
 
   function handleCardClick(index: number): void {
@@ -104,23 +169,28 @@
       class:echo-card={card.isEcho}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
+      class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-launch={cardAnim === 'launch'}
       class:card-fizzle={cardAnim === 'fizzle'}
       style="
-        transform: translateX({xOffset}px) translateY({isOther ? 20 : -arcOffset}px) rotate({isSelected ? 0 : rotation}deg);
+        transform: translateX({xOffset}px) translateY({isSelected ? -80 - (isDragging && dragCardIndex === i ? dragOffsetY : 0) : isOther ? 15 : -arcOffset}px) rotate({isSelected ? 0 : rotation}deg) scale({isSelected ? 1.2 : 1});
         border-color: {domainColor};
         --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
+        opacity: {isSelected && isDragging && dragCardIndex === i ? Math.max(0.3, 1 - dragOffsetY / 200) : isOther ? 0.3 : 1};
       "
       data-testid="card-hand-{i}"
       disabled={disabled || isOther}
       onclick={() => handleCardClick(i)}
+      ontouchstart={(e) => isSelected ? handleTouchStart(e, i) : null}
+      ontouchmove={(e) => isSelected ? handleTouchMove(e) : null}
+      ontouchend={(e) => isSelected ? handleTouchEnd(e, i) : null}
     >
+      <div class="ap-badge">{apCost}</div>
       <div class="card-domain-stripe" style="background: {domainColor};"></div>
       <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
       <div class="card-type-icon">{icon}</div>
       <div class="card-effect-value">{effectVal}</div>
-      <div class="ap-cost">{apCost} AP</div>
 
       {#if tierBadge}
         <div class="card-tier-badge">{tierBadge}</div>
@@ -131,17 +201,28 @@
       {#if card.isEcho}
         <div class="echo-badge">ECHO</div>
       {/if}
+
+      {#if isSelected}
+        <div class="card-info-overlay">
+          <div class="info-mechanic">{card.mechanicName ?? card.cardType}</div>
+          <div class="info-effect">{getCardEffectText(card)}</div>
+          <div class="info-cast-hint">Tap or Swipe Up ↑</div>
+        </div>
+      {/if}
     </button>
   {/each}
 </div>
 
 <style>
   .card-hand-container {
+    --card-w: min(18vw, 85px);
+    --card-h: calc(var(--card-w) * 1.5);
     position: absolute;
-    bottom: 16px;
+    bottom: 68px;
     left: 50%;
+    z-index: 20;
     transform: translateX(-50%);
-    height: 100px;
+    height: 160px;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -151,8 +232,8 @@
 
   .card-in-hand {
     position: absolute;
-    width: 65px;
-    height: 100px;
+    width: var(--card-w);
+    height: var(--card-h);
     background-color: #1e2d3d;
     background-image: var(--frame-image);
     background-size: cover;
@@ -165,21 +246,26 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     transition: transform 250ms ease, opacity 250ms ease;
     animation: card-fan-in 300ms ease-out both;
     -webkit-tap-highlight-color: transparent;
     font-family: inherit;
     color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   }
 
   .card-in-hand:active:not(:disabled) {
     transform: scale(1.05);
   }
 
+  .card-playable {
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
   .card-selected {
     z-index: 5;
-    transform: translateY(-20px) scale(1.1) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
 
   .card-dimmed {
@@ -224,31 +310,43 @@
   }
 
   .card-domain-icon {
-    width: 16px;
-    height: 16px;
+    width: 1.4em;
+    height: 1.4em;
     object-fit: contain;
     image-rendering: pixelated;
-    margin-top: 4px;
+    margin-top: 0.25em;
+    font-size: calc(var(--card-w) * 0.18);
   }
 
   .card-type-icon {
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: calc(var(--card-w) * 0.25);
+    margin-top: 0.3em;
     line-height: 1;
   }
 
   .card-effect-value {
-    font-size: 22px;
+    font-size: calc(var(--card-w) * 0.32);
     font-weight: 700;
-    margin-top: 3px;
+    margin-top: 0.15em;
     line-height: 1;
   }
 
-  .ap-cost {
-    margin-top: 2px;
-    font-size: 9px;
-    font-weight: 700;
-    color: #90caf9;
+  .ap-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1e40af;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #3b82f6;
+    z-index: 2;
   }
 
   .card-tier-badge {
@@ -289,6 +387,58 @@
     background: rgba(31, 41, 55, 0.8);
     border-radius: 3px;
     padding: 1px 3px;
+  }
+
+  .card-info-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 16, 28, 0.88);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 6px;
+    pointer-events: none;
+    animation: info-fade-in 200ms ease-out;
+  }
+
+  .info-mechanic {
+    font-size: calc(var(--card-w) * 0.14);
+    font-weight: 700;
+    color: #f4d35e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .info-effect {
+    font-size: calc(var(--card-w) * 0.12);
+    color: #c7d5e8;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .info-cast-hint {
+    font-size: calc(var(--card-w) * 0.11);
+    color: #7dd3fc;
+    margin-top: auto;
+    font-weight: 600;
+    animation: hint-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes info-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes hint-pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
   }
 
   @keyframes card-fan-in {

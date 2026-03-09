@@ -289,7 +289,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 55vh;
+    height: 100vh;
     display: none;
   }
 

@@ -105,7 +105,7 @@
   let timerTotalMs = $state(1000)
   let timerFraction = $derived(Math.max(0, 1 - elapsed / timerTotalMs))
   let secondsRemaining = $derived(Math.max(0, Math.ceil((timerTotalMs - elapsed) / 1000)))
-  let timerColor = $derived(() => {
+  let timerColor = $derived.by(() => {
     if (timerColorVariant === 'gold') {
       return timerFraction > 0.5 ? '#D4AF37' : timerFraction > 0.25 ? '#F1C40F' : '#E67E22'
     }
@@ -310,7 +310,7 @@
     <div class="timer-bar-container">
       <div
         class="timer-bar-fill"
-        style="width: {timerFraction * 100}%; background: {timerColor};"
+        style="--fraction: {timerFraction}; background: {timerColor};"
       ></div>
       <span class="timer-seconds">{secondsRemaining}s</span>
     </div>
@@ -343,18 +343,19 @@
 
 <style>
   .card-expanded {
-    position: absolute;
-    bottom: 120px;
+    position: fixed;
+    bottom: calc(45vh - 20px);
     left: 50%;
     transform: translateX(-50%);
     width: 320px;
     max-width: calc(100vw - 24px);
+    max-height: 55vh;
+    overflow-y: auto;
     background:
       linear-gradient(rgba(14, 20, 30, 0.86), rgba(14, 20, 30, 0.9)),
       var(--card-frame-image) center / cover no-repeat,
       #1a2332;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     z-index: 20;
     animation: slide-up 200ms ease-out;
@@ -486,20 +487,29 @@
 
   .timer-bar-container {
     position: relative;
+    width: 100%;
     height: 8px;
-    background: #334155;
+    background: #374151;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
   }
 
   .timer-bar-fill {
     height: 100%;
-    transition: width 80ms linear;
+    transform-origin: left;
+    transform: scaleX(var(--fraction));
+    border-radius: 4px;
+    will-change: transform;
+    transition: transform 100ms linear, background 500ms ease;
   }
 
   .timer-seconds {
     position: absolute;
     right: 8px;
     top: -18px;
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     color: #e2e8f0;
   }
 
