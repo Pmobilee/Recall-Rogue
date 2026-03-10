@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-09",
+  "updatedAt": "2026-03-10",
   "domains": {
     "general_knowledge": {
       "source": "wikidata",
@@ -91,6 +91,123 @@
     "world_bank": {
       "baseUrl": "https://api.worldbank.org/v2",
       "license": "CC BY 4.0"
+    }
+  },
+  "sourceMix": {
+    "version": 1,
+    "defaultPrimaryWeight": 1,
+    "defaultSupplementWeight": 0.25,
+    "domains": {
+      "general_knowledge": {
+        "primary": "data/raw/general_knowledge.json",
+        "supplements": [
+          {
+            "path": "data/raw/world-bank-countries.json",
+            "weight": 0.2
+          },
+          {
+            "path": "data/raw/nasa-apod.json",
+            "weight": 0.1
+          },
+          {
+            "path": "data/raw/met-objects.json",
+            "weight": 0.08
+          }
+        ]
+      },
+      "natural_sciences": {
+        "primary": "data/raw/natural_sciences.json",
+        "supplements": [
+          {
+            "path": "data/raw/pubchem-compounds.json",
+            "weight": 0.3
+          },
+          {
+            "path": "data/raw/nasa-apod.json",
+            "weight": 0.1
+          }
+        ]
+      },
+      "space_astronomy": {
+        "primary": "data/raw/space_astronomy.json",
+        "supplements": [
+          {
+            "path": "data/raw/nasa-apod.json",
+            "weight": 0.5
+          }
+        ]
+      },
+      "geography": {
+        "primary": "data/raw/geography.json",
+        "supplements": [
+          {
+            "path": "data/raw/world-bank-countries.json",
+            "weight": 0.45
+          }
+        ]
+      },
+      "history": {
+        "primary": "data/raw/history.json",
+        "supplements": [
+          {
+            "path": "data/raw/met-objects.json",
+            "weight": 0.12
+          },
+          {
+            "path": "data/raw/artic-artworks.json",
+            "weight": 0.08
+          }
+        ]
+      },
+      "mythology_folklore": {
+        "primary": "data/raw/mythology_folklore.json",
+        "supplements": [
+          {
+            "path": "data/raw/artic-artworks.json",
+            "weight": 0.1
+          }
+        ]
+      },
+      "animals_wildlife": {
+        "primary": "data/raw/animals_wildlife.json",
+        "supplements": [
+          {
+            "path": "data/raw/gbif-species.json",
+            "weight": 0.55
+          }
+        ]
+      },
+      "human_body_health": {
+        "primary": "data/raw/human_body_health.json",
+        "supplements": [
+          {
+            "path": "data/raw/pubchem-compounds.json",
+            "weight": 0.35
+          }
+        ]
+      },
+      "food_cuisine": {
+        "primary": "data/raw/food_cuisine.json",
+        "supplements": [
+          {
+            "path": "data/raw/world-bank-countries.json",
+            "weight": 0.1
+          }
+        ]
+      },
+      "art_architecture": {
+        "primary": "data/raw/art_architecture.json",
+        "supplements": [
+          {
+            "path": "data/raw/met-objects.json",
+            "weight": 0.35
+          },
+          {
+            "path": "data/raw/artic-artworks.json",
+            "weight": 0.35
+          }
+        ]
+      }
     }
   },
   "languages": {

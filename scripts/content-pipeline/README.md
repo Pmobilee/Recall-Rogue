@@ -14,7 +14,13 @@ node scripts/content-pipeline/fetch/verify-sparql.mjs
 node scripts/content-pipeline/fetch-all.mjs
 ```
 
-3. Fetch one domain only:
+3. Build mixed-source domain inputs (Wikidata + API datasets):
+```bash
+npm run content:source-mix
+# Writes data/raw/mixed/<domain>.json and data/generated/qa-reports/source-mix-report.json
+```
+
+4. Fetch one domain only:
 ```bash
 node scripts/content-pipeline/fetch-all.mjs --domain geography --domain-target 1500 --skip-apis
 ```
@@ -54,7 +60,17 @@ node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain g
 
 # All domains in one run (use --dry-run first, then remove it for production)
 npm run content:generate:all -- --dry-run --limit 50 --strict false
+
+# Same command with mixed-source inputs (recommended for production runs)
+npm run content:generate:all -- --source-mix --limit 1000 --concurrency 2 --rate-limit 80 --resume true --max-cost-usd 25
 ```
+
+Safety and observability:
+- `--max-cost-usd <N>` hard-stops generation when estimated spend reaches `N` USD.
+- `--budget-ledger <path>` shares spend tracking across parallel workers via one ledger JSONL file.
+- `--retry-report-limit <N>` caps stored retry detail volume.
+- `--retry-flag-threshold <N>` marks facts that needed at least `N` retries (default `3`) while continuing ingestion.
+- Retry/error artifacts are emitted to `data/generated/retries-<domain>-<timestamp>.json` and `data/generated/errors-<domain>-<timestamp>.json`.
 
 ## Vocabulary pipeline (AR-18)
 
@@ -94,6 +110,8 @@ npm run content:vocab:validate -- --languages ja,es,fr,de,ko,zh --min-rows 100
 - `qa/coverage-gate.mjs`
 - `qa/run-post-generation-qa.mjs`
 - `qa/promote-approved-to-db.mjs`
+- `qa/gameplay-safety-check.mjs`
+- `qa/post-ingestion-gate.mjs`
 
 Example:
 ```bash
@@ -104,10 +122,17 @@ node scripts/content-pipeline/qa/flag-content-risks.mjs --input data/generated
 # Full post-generation QA chain (coverage/dedup/review sample/migration/gates)
 npm run content:qa -- --input data/generated
 
+# Run gameplay safety check independently (run-pool variety + duplicate risk gate)
+npm run content:qa:gameplay -- --input data/generated --strict
+
+# Run post-ingestion quality gate independently (validation/dedup/coverage/gameplay)
+npm run content:qa:gate -- --strict
+
 # Coverage threshold gate (AR-19 target checks)
 npm run content:coverage:gate -- --knowledge-min 10000 --language-min 5000
 
 # Promote approved generated facts into seed and rebuild public/facts.db
+# Note: promotion now enforces a passing post-ingestion gate report by default.
 npm run content:promote -- --input data/generated --approved-only true --rebuild-db true
 ```
 

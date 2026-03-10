@@ -74,6 +74,8 @@ Card slots (type + mechanic + base effect) and facts (the questions to answer) a
 4. Slots and facts are paired randomly
 5. Tier multiplier (1.0x/1.3x/1.6x) follows the FACT, not the slot — mastered facts are still more powerful regardless of which card type they land on
 
+**First-draw funScore bias:** On the very first encounter of a run (floor 1, encounter 1), fact assignment is weighted so facts with funScore >= 7 are 2x more likely to appear in the opening hand. This creates a strong first impression with the most engaging content. Subsequent draws use uniform random assignment.
+
 **Applies to:** All cards (knowledge AND vocabulary).
 
 ### Encounter Cooldown
@@ -667,7 +669,7 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 | standard | Timed Mode | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
 | scholar | Expert Mode | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 1.20x |
 
-**Story Mode forced for new players:** Runs 1-3 automatically use Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 3 completed runs, all modes unlock.
+**Story Mode forced for new players:** Run 1 automatically uses Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, all modes unlock.
 
 **Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Story Mode and Timed Mode earn standard rewards; Expert Mode earns a 20% bonus.
 
@@ -765,7 +767,7 @@ Research: Mobile users decide to keep an app within 7-30 seconds. Duolingo delay
 
 ```
 0-3s:   Dungeon entrance. "ENTER THE DEPTHS" button.
-3-10s:  First encounter (Story Mode forced). Hand of 5. Tooltip: "Tap a card to examine it"
+3-10s:  First encounter (Story Mode forced for Run 1). Hand of 5. Tooltip: "Tap a card to examine it"
 10-14s: Card rises with info overlay. Tooltip: "Tap again or swipe up to cast"
 14-20s: Question panel appears above hand. Correct → juice stack. Wrong → gentle fizzle.
 20-35s: Remaining AP. End Turn tooltip.
@@ -1254,6 +1256,18 @@ FSRS replaced SM-2 as Anki default 2023. Tracks Difficulty (1-10), Stability (da
 
 Players never see facts from domains they haven't opted into.
 
+### Stratified Difficulty Sampling
+
+Within each domain allocation, facts are sampled by difficulty to ensure a balanced challenge curve:
+
+| Difficulty | Target % | Range |
+|-----------|----------|-------|
+| Easy (1-2) | 30% | 25-35% |
+| Medium (3) | 45% | 40-50% |
+| Hard (4-5) | 25% | 20-30% |
+
+These are soft targets — if a domain lacks facts at a given difficulty, shortfalls backfill from medium first, then any remaining bucket. This prevents runs from being all-easy or all-hard regardless of domain content distribution.
+
 ### Domain Partitioning for Performance
 
 At 20,000+ facts, a single FSRS queue is a mobile performance concern. Each domain maintains its own scheduler:
@@ -1540,6 +1554,56 @@ For language vocabulary, popular Anki shared decks provide superior word curatio
 **Languages NOT needing Anki extraction:** Japanese (JMdict), Mandarin (complete-hsk-vocabulary MIT repo)
 
 This specifically solves the Korean vocabulary gap identified in the content source research.
+
+### Manual Fact Ingestion & Semantic Dedup
+
+**Status: Built.** Implemented in `scripts/content-pipeline/manual-ingest/`. Provides a complete pipeline for manually curated facts (JSON/JSONL) with validation, semantic deduplication, and safe merge workflow.
+
+**Source-mix stage (built):** `scripts/content-pipeline/manual-ingest/source-mix.mjs` blends each domain's Wikidata pull with domain-specific API datasets (NASA, GBIF, PubChem, Met, ArtIC, World Bank) into `data/raw/mixed/<domain>.json` before generation.
+
+**Pipeline flow:**
+```
+Input JSON/JSONL
+    → Schema validation + normalization (3-attempt retry per record)
+    → Stage A: exact key dedup (normalized statement::answer)
+    → Stage A: trigram/Jaccard candidate pair generation
+    → Stage B: multi-signal composite scoring (trigram + keyword + Levenshtein + answer + statement)
+    → Stage B: TF-IDF cosine similarity (corpus-aware, enabled by default)
+    → Decision: auto-duplicate (≥0.92) / needs-review (0.70–0.91) / distinct (<0.70)
+    → Review queue (interactive browser UI or JSON report)
+    → Merge preview → explicit finalize step
+```
+
+**Key features:**
+- **Two-stage dedup:** Cheap trigram blocking generates candidate pairs; multi-signal composite scoring with TF-IDF ranks them. Zero external dependencies.
+- **Answer-match boost:** When two facts share nearly identical answers (≥90% similar) AND questions share ≥30% overlap, the score is boosted by 0.15–0.40 — captures the "same answer = likely same question" signal critical for quiz content.
+- **CJK-aware:** Automatic detection of Japanese, Korean, Chinese text. Uses character bigrams (not trigrams) and character-level token extraction for non-Latin scripts.
+- **Persistent dedup index:** Caches exact keys + trigram inverted index to `data/generated/qa-reports/dedup-index.json` for faster repeated runs.
+- **Interactive review UI:** Local HTTP server (`localhost:3456`) with dark-themed browser interface. Side-by-side fact comparison, per-feature score breakdown, accept/reject/undo with persistent decisions.
+- **QA pipeline integration:** Runs automatically as part of `npm run content:qa` with conservative thresholds (0.95 auto, 0.75 review).
+- **Strict post-ingestion gate:** `npm run content:qa` now runs gameplay safety + post-ingestion pass/fail checks before migration. Promotion (`content:promote`) refuses to run unless `post-ingestion-gate.json` passes.
+- **Data safety:** Never overwrites existing files. Creates timestamped backups before merge. Failed records are flagged (never silently dropped). Every accepted record preserves sourceRecordId/sourceName/sourceUrl.
+
+**Reports emitted** (in `data/generated/qa-reports/`):
+- `source-mix-report.json` — per-domain source composition from mixed inputs
+- `manual-ingest-validation-report.json` — schema validation results
+- `manual-ingest-dedup-report.json` — dedup decisions with full feature evidence
+- `manual-ingest-flagged-report.json` — records that failed ≥3 validation attempts
+- `manual-ingest-merge-preview.json` — what merge would produce
+- `gameplay-safety-report.json` — run-pool safety checks (duplicate risk, type/difficulty/source coverage)
+- `post-ingestion-gate.json` — strict gate summary across validation, dedup, coverage, and gameplay checks
+
+**Commands:**
+```bash
+npm run content:manual:validate -- --input <file> --domain <name>
+npm run content:manual:dedup -- --input <file> --domain <name> --dry-run
+npm run content:manual:full -- --input <file> --domain <name> --target <file>
+npm run content:manual:review          # interactive browser UI
+npm run content:manual:build-index     # build persistent dedup index
+npm run content:source-mix             # build mixed-source domain inputs
+npm run content:qa:gameplay -- --strict
+npm run content:qa:gate -- --strict
+```
 
 ---
 

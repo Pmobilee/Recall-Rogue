@@ -301,6 +301,7 @@ Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
 - [x] `visualDescription` generation integrated into the same pipeline
 - [x] `wowFactor` framing generation
 - [x] Dry-run mode: generate sample facts per domain for review before full batch
+- [x] Mixed-source input builder for worker runs (`content:source-mix`; outputs `data/raw/mixed/*.json`)
 
 Depends on: AR-15 (needs source data). Estimated: Large.
 Implementation status: **Tooling complete (March 10, 2026)**. Full non-dry-run execution still requires Anthropic API key and production batch run.
@@ -339,6 +340,8 @@ Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full
 - [x] Domain coverage report: facts per domain × difficulty × age rating (`qa/coverage-report.mjs`)
 - [x] Human review queue: prioritize Gold-tier sources, spot-check Silver, reject Bronze (`qa/review-sample.mjs`)
 - [x] Flagging pipeline for ambiguous answers, controversial content, or stale data (`qa/flag-content-risks.mjs`)
+- [x] Gameplay safety QA gate (`qa/gameplay-safety-check.mjs`) and strict post-ingestion gate (`qa/post-ingestion-gate.mjs`)
+- [x] Promotion hard gate: `content:promote` now requires passing `post-ingestion-gate.json`
 - [ ] Generate `visualDescription` for all new facts (domain-themed for knowledge, language-themed for vocab)
 - [ ] Run ComfyUI card back generation for top-priority facts (sample batch per domain)
 - [x] Final coverage audit gate tooling: minimum 10K facts per knowledge domain, 5K per language (`qa/coverage-gate.mjs`)

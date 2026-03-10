@@ -73,6 +73,10 @@ function toUnderscoreDomain(slug) {
   return String(slug).replace(/-/g, '_')
 }
 
+function toSlugDomain(raw) {
+  return String(raw).trim().replace(/_/g, '-')
+}
+
 async function main() {
   const args = parseArgs(process.argv, {
     domains: DEFAULT_DOMAINS.join(','),
@@ -81,9 +85,20 @@ async function main() {
     'report-path': 'data/generated/qa-reports/generate-all-domains-report.json',
     limit: 0,
     'dry-run': false,
+    resume: true,
     validate: true,
     strict: false,
     concurrency: 2,
+    'rate-limit': Number(process.env.HAIKU_RATE_LIMIT || 50),
+    retries: Number(process.env.HAIKU_RETRIES || 3),
+    'max-cost-usd': Number(process.env.HAIKU_MAX_COST_USD || 0),
+    'budget-ledger': process.env.HAIKU_BUDGET_LEDGER_PATH || '',
+    'retry-report-limit': 5000,
+    'retry-flag-threshold': 3,
+    'source-mix': false,
+    'source-mix-output-dir': 'data/raw/mixed',
+    'source-mix-report': 'data/generated/qa-reports/source-mix-report.json',
+    'source-mix-target': 0,
   })
 
   const domains = String(args.domains)
@@ -96,9 +111,32 @@ async function main() {
   const reportPath = resolveFromRoot(String(args['report-path']))
   const limit = Math.max(0, Number(args.limit) || 0)
   const dryRun = Boolean(args['dry-run'])
+  const resume = Boolean(args.resume)
   const validate = Boolean(args.validate)
   const strict = Boolean(args.strict)
   const concurrency = Math.max(1, Number(args.concurrency) || 2)
+  const rateLimit = Math.max(1, Number(args['rate-limit']) || 50)
+  const retries = Math.max(1, Number(args.retries) || 3)
+  const maxCostUsd = Math.max(0, Number(args['max-cost-usd']) || 0)
+  const budgetLedger = String(args['budget-ledger'] || '').trim()
+  const retryReportLimit = Math.max(0, Number(args['retry-report-limit']) || 5000)
+  const retryFlagThreshold = Math.max(1, Number(args['retry-flag-threshold']) || 3)
+  const sourceMix = Boolean(args['source-mix'])
+  const sourceMixOutputDir = String(args['source-mix-output-dir'] || 'data/raw/mixed')
+  const sourceMixReport = String(args['source-mix-report'] || 'data/generated/qa-reports/source-mix-report.json')
+  const sourceMixTarget = Math.max(0, Number(args['source-mix-target']) || 0)
+
+  if (sourceMix) {
+    const mixArgs = [
+      '--domains', domains.map((domain) => toUnderscoreDomain(toSlugDomain(domain))).join(','),
+      '--output-dir', sourceMixOutputDir,
+      '--report', sourceMixReport,
+    ]
+    if (sourceMixTarget > 0) {
+      mixArgs.push('--target', String(sourceMixTarget))
+    }
+    await runNodeScript('scripts/content-pipeline/manual-ingest/source-mix.mjs', mixArgs)
+  }
 
   await fs.mkdir(outputDir, { recursive: true })
   await fs.mkdir(path.dirname(reportPath), { recursive: true })
@@ -107,12 +145,29 @@ async function main() {
 
   for (const domainSlug of domains) {
     const startedAt = Date.now()
-    const domainKey = toUnderscoreDomain(domainSlug)
-    const inputPath = path.join(inputDir, `${domainSlug}.json`)
-    const outputPath = path.join(outputDir, `${domainSlug}.jsonl`)
+    const normalizedSlug = toSlugDomain(domainSlug)
+    const domainKey = toUnderscoreDomain(normalizedSlug)
+    const inputCandidates = [
+      ...(sourceMix ? [path.join(resolveFromRoot(sourceMixOutputDir), `${domainKey}.json`)] : []),
+      path.join(inputDir, `${domainSlug}.json`),
+      path.join(inputDir, `${normalizedSlug}.json`),
+      path.join(inputDir, `${domainKey}.json`),
+    ].filter((candidate, idx, arr) => arr.indexOf(candidate) === idx)
+
+    let inputPath = null
+    for (const candidate of inputCandidates) {
+      // eslint-disable-next-line no-await-in-loop
+      if (await exists(candidate)) {
+        inputPath = candidate
+        break
+      }
+    }
+
+    const outputPath = path.join(outputDir, `${domainKey}.jsonl`)
 
     const result = {
-      domain: domainSlug,
+      requestedDomain: domainSlug,
+      domain: normalizedSlug,
       domainKey,
       inputPath,
       outputPath,
@@ -124,11 +179,11 @@ async function main() {
       steps: [],
     }
 
-    if (!(await exists(inputPath))) {
+    if (!inputPath) {
       result.steps.push({
         name: 'preflight',
         ok: false,
-        error: `input file missing: ${inputPath}`,
+        error: `input file missing; tried: ${inputCandidates.join(', ')}`,
       })
       result.durationMs = Date.now() - startedAt
       results.push(result)
@@ -156,10 +211,23 @@ async function main() {
       '--domain', domainKey,
       '--output', outputPath,
       '--concurrency', String(concurrency),
+      '--rate-limit', String(rateLimit),
+      '--retries', String(retries),
+      '--max-cost-usd', String(maxCostUsd),
+      '--retry-report-limit', String(retryReportLimit),
+      '--retry-flag-threshold', String(retryFlagThreshold),
     ]
+
+    if (budgetLedger) {
+      generateArgs.push('--budget-ledger', budgetLedger)
+    }
 
     if (limit > 0) {
       generateArgs.push('--limit', String(limit))
+    }
+
+    if (resume) {
+      generateArgs.push('--resume')
     }
 
     if (dryRun) {
@@ -222,6 +290,13 @@ async function main() {
     validate,
     strict,
     concurrency,
+    rateLimit,
+    retries,
+    maxCostUsd,
+    budgetLedger: budgetLedger || null,
+    retryReportLimit,
+    retryFlagThreshold,
+    resume,
     limit: limit || null,
     results,
     pass: results.length > 0 && results.every((result) => result.ok),

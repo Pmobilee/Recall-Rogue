@@ -4,7 +4,7 @@ import path from 'node:path'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
-import { listJsonlFiles, loadJsonl, parseArgs, writeJson } from './shared.mjs'
+import { listJsonlFiles, loadJsonl, parseArgs, readJson, writeJson } from './shared.mjs'
 
 const execFileAsync = promisify(execFile)
 const __filename = fileURLToPath(import.meta.url)
@@ -32,12 +32,29 @@ async function main() {
     output: 'src/data/seed/facts-generated.json',
     'approved-only': true,
     'rebuild-db': true,
+    'enforce-qa-gate': true,
+    'qa-report': 'data/generated/qa-reports/post-ingestion-gate.json',
   })
 
   const inputDir = path.resolve(root, String(args.input))
   const outputPath = path.resolve(root, String(args.output))
   const approvedOnly = Boolean(args['approved-only'])
   const rebuildDb = Boolean(args['rebuild-db'])
+  const enforceQaGate = Boolean(args['enforce-qa-gate'])
+  const qaReportPath = path.resolve(root, String(args['qa-report']))
+
+  if (enforceQaGate) {
+    let qaReport
+    try {
+      qaReport = await readJson(qaReportPath)
+    } catch (error) {
+      throw new Error(`QA gate report missing or unreadable: ${qaReportPath}. Run npm run content:qa first.`)
+    }
+
+    if (!qaReport?.pass) {
+      throw new Error(`QA gate failed in ${qaReportPath}. Refusing promotion.`)
+    }
+  }
 
   const files = await listJsonlFiles(inputDir)
   const merged = []
@@ -60,6 +77,8 @@ async function main() {
     scannedFiles: files.length,
     promotedFacts: merged.length,
     outputPath,
+    qaGateEnforced: enforceQaGate,
+    qaReportPath: enforceQaGate ? qaReportPath : null,
   })
 
   if (rebuildDb) {
@@ -71,7 +90,15 @@ async function main() {
   }
 
   await fs.mkdir(path.dirname(reportPath), { recursive: true })
-  console.log(JSON.stringify({ ok: true, outputPath, reportPath, rebuildDb, promotedFacts: merged.length }, null, 2))
+  console.log(JSON.stringify({
+    ok: true,
+    outputPath,
+    reportPath,
+    rebuildDb,
+    promotedFacts: merged.length,
+    qaGateEnforced: enforceQaGate,
+    qaReportPath: enforceQaGate ? qaReportPath : null,
+  }, null, 2))
 }
 
 main().catch((error) => {

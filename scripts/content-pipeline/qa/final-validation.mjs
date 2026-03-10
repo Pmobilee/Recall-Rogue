@@ -22,22 +22,33 @@ async function main() {
     coverage: 'data/generated/qa-reports/coverage-report.json',
     dedup: 'data/generated/qa-reports/cross-domain-dedup.json',
     migration: 'data/generated/qa-reports/migration-report.json',
+    gate: 'data/generated/qa-reports/post-ingestion-gate.json',
+    gameplay: 'data/generated/qa-reports/gameplay-safety-report.json',
   })
 
   const coveragePath = path.resolve(root, String(args.coverage))
   const dedupPath = path.resolve(root, String(args.dedup))
   const migrationPath = path.resolve(root, String(args.migration))
+  const gatePath = path.resolve(root, String(args.gate))
+  const gameplayPath = path.resolve(root, String(args.gameplay))
 
   const checks = {
     coverageReport: await exists(coveragePath),
     dedupReport: await exists(dedupPath),
     migrationReport: await exists(migrationPath),
+    postIngestionGate: await exists(gatePath),
+    gameplaySafetyReport: await exists(gameplayPath),
   }
+
+  const gatePass = checks.postIngestionGate ? Boolean((await readJson(gatePath)).pass) : false
+  const gameplayPass = checks.gameplaySafetyReport ? Boolean((await readJson(gameplayPath)).pass) : false
 
   const result = {
     generatedAt: new Date().toISOString(),
     checks,
-    pass: Object.values(checks).every(Boolean),
+    gatePass,
+    gameplayPass,
+    pass: Object.values(checks).every(Boolean) && gatePass && gameplayPass,
     totals: {
       migratedFacts: checks.migrationReport ? (await readJson(migrationPath)).totalFacts ?? 0 : 0,
       duplicates: checks.dedupReport ? (await readJson(dedupPath)).duplicates ?? 0 : 0,
