@@ -18,6 +18,7 @@ const DEFAULT_BASE_URL = typeof window !== 'undefined'
   ? `${window.location.protocol}//${window.location.hostname}:3001/api`
   : 'http://localhost:3001/api'
 const TOKEN_KEY = 'terra_auth_token'
+const LEGACY_TOKEN_KEY = 'tg_access_token'
 const REFRESH_TOKEN_KEY = 'terra_refresh_token'
 
 // ============================================================
@@ -59,7 +60,9 @@ export interface TokenStorage {
  */
 class LocalStorageTokenStorage implements TokenStorage {
   getToken(): string | null {
-    return localStorage.getItem(TOKEN_KEY)
+    const token = localStorage.getItem(TOKEN_KEY)
+    if (token) return token
+    return localStorage.getItem(LEGACY_TOKEN_KEY)
   }
 
   getRefreshToken(): string | null {
@@ -68,11 +71,14 @@ class LocalStorageTokenStorage implements TokenStorage {
 
   store(token: string, refreshToken: string): void {
     localStorage.setItem(TOKEN_KEY, token)
+    // Migrate old auth key so all services use a single source of truth.
+    localStorage.removeItem(LEGACY_TOKEN_KEY)
     localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
   }
 
   clear(): void {
     localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(LEGACY_TOKEN_KEY)
     localStorage.removeItem(REFRESH_TOKEN_KEY)
   }
 }

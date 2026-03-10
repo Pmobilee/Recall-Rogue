@@ -9,13 +9,21 @@
   import { fetchActiveAnnouncement } from '../../services/classroomService'
 
   const DISMISSED_KEY = 'tg_dismissed_announcements'
+  const ACCESS_TOKEN_KEYS = ['terra_auth_token', 'tg_access_token']
 
   let announcement: { id: string; message: string; expiresAt: number } | null = $state(null)
   let dismissed = $state(false)
 
+  function hasAccessToken(): boolean {
+    return ACCESS_TOKEN_KEYS.some((key) => {
+      const token = localStorage.getItem(key)
+      return typeof token === 'string' && token.trim().length > 0
+    })
+  }
+
   onMount(async () => {
     // Don't show if user is not logged in
-    if (!localStorage.getItem('tg_access_token')) return
+    if (!hasAccessToken()) return
 
     const dismissedIds: string[] = JSON.parse(localStorage.getItem(DISMISSED_KEY) ?? '[]')
     const data = await fetchActiveAnnouncement()
