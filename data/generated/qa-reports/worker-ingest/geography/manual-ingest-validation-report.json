@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.598Z",
+  "inputFiles": [
+    "data/generated/worker-output/geography.jsonl"
+  ],
+  "domain": "geography",
+  "counts": {
+    "input": 50,
+    "valid": 50,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "geo-saint-lucia-001",
+      "question": "What is the capital of Saint Lucia?"
+    },
+    {
+      "id": "geo-saint-kitts-and-nevis-002",
+      "question": "What is the capital of Saint Kitts and Nevis?"
+    },
+    {
+      "id": "geo-jamaica-003",
+      "question": "What is the capital of Jamaica?"
+    },
+    {
+      "id": "geo-grenada-004",
+      "question": "What is the capital of Grenada?"
+    },
+    {
+      "id": "geo-guatemala-005",
+      "question": "What is the capital of Guatemala?"
+    }
+  ]
+}

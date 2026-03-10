@@ -83,28 +83,60 @@
 
   const INTENT_ICONS: Record<string, string> = {
     attack: '⚔️',
-    multi_attack: '⚔️×',
+    multi_attack: '⚔️⚔️',
     defend: '🛡️',
     buff: '💪',
-    debuff: '☠️',
+    debuff: '🔮',
     heal: '💚',
+  }
+
+  const INTENT_COLORS: Record<string, string> = {
+    attack: 'rgba(231, 76, 60, 0.25)',
+    multi_attack: 'rgba(192, 57, 43, 0.3)',
+    defend: 'rgba(52, 152, 219, 0.25)',
+    buff: 'rgba(241, 196, 15, 0.25)',
+    debuff: 'rgba(155, 89, 182, 0.25)',
+    heal: 'rgba(46, 204, 113, 0.25)',
+  }
+
+  const INTENT_BORDER_COLORS: Record<string, string> = {
+    attack: 'rgba(231, 76, 60, 0.6)',
+    multi_attack: 'rgba(192, 57, 43, 0.7)',
+    defend: 'rgba(52, 152, 219, 0.6)',
+    buff: 'rgba(241, 196, 15, 0.6)',
+    debuff: 'rgba(155, 89, 182, 0.6)',
+    heal: 'rgba(46, 204, 113, 0.6)',
+  }
+
+  const INTENT_LABELS: Record<string, string> = {
+    attack: 'Attack',
+    multi_attack: 'Multi-hit',
+    defend: 'Defend',
+    buff: 'Buff',
+    debuff: 'Debuff',
+    heal: 'Heal',
   }
 
   let intentDisplay = $derived.by(() => {
     if (!enemyIntent) return null
     const icon = INTENT_ICONS[enemyIntent.type] ?? '❓'
     const val = enemyIntent.value
+    const label = INTENT_LABELS[enemyIntent.type] ?? ''
+    const color = INTENT_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.2)'
+    const borderColor = INTENT_BORDER_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.4)'
+    const telegraph = enemyIntent.telegraph ?? ''
+
     if (enemyIntent.type === 'multi_attack') {
       const hits = enemyIntent.hitCount ?? 2
-      return { icon: '⚔️', text: `${val}×${hits}`, type: enemyIntent.type }
+      return { icon, text: `${val}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'attack') {
-      return { icon, text: `${val}`, type: enemyIntent.type }
+      return { icon, text: `${val}`, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'defend') {
-      return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type }
+      return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
     }
-    return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type }
+    return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
   })
 
   let selectedCard = $derived<Card | null>(
@@ -226,13 +258,13 @@
     wowFactorText = fact.wowFactor
     wowFactorVisible = true
 
-    // fade in 200ms (CSS), hold 1.5s, fade out 300ms (CSS), cleanup
+    // fade in 200ms (CSS), hold 5s, fade out 300ms (CSS), cleanup
     setTimeout(() => {
       wowFactorVisible = false
-    }, 1700) // 200ms fade-in + 1500ms hold
+    }, 5200) // 200ms fade-in + 5000ms hold
     setTimeout(() => {
       wowFactorText = null
-    }, 2000) // + 300ms fade-out
+    }, 5500) // + 300ms fade-out
   }
 
   function removeDamageNumber(id: number): void {
@@ -405,6 +437,22 @@
   function handleDeselect(): void {
     if (cardPlayStage !== 'selected') return
     resetCardFlow()
+  }
+
+  function handleCastDirect(index: number): void {
+    if (!turnState || turnState.phase !== 'player_action') return
+    if (cardPlayStage === 'committed') return
+
+    const card = handCards[index]
+    if (!card) return
+    if (Math.max(1, card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
+
+    // Select and immediately cast
+    selectedIndex = index
+    cardPlayStage = 'selected'
+
+    // Now cast
+    handleCast()
   }
 
   function handleCast(): void {
@@ -597,11 +645,22 @@
     {/if}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
-      <div class="enemy-intent" class:intent-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}>
-        <span class="intent-icon">{intentDisplay.icon}</span>
-        {#if intentDisplay.text}
-          <span class="intent-value">{intentDisplay.text}</span>
-        {/if}
+      <div
+        class="enemy-intent-panel"
+        style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
+      >
+        <div class="intent-main-row">
+          <span class="intent-icon">{intentDisplay.icon}</span>
+          <span class="intent-telegraph">{intentDisplay.telegraph || intentDisplay.label}</span>
+          {#if intentDisplay.text}
+            <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
+              class:intent-value-defend={intentDisplay.type === 'defend'}>{intentDisplay.text}</span>
+          {/if}
+        </div>
+        <div class="intent-sub-row">
+          <span class="intent-enemy-name">{enemyName}</span>
+          <span class="intent-type-label">{intentDisplay.label}</span>
+        </div>
       </div>
     {/if}
 
@@ -662,6 +721,7 @@
       disabled={turnState.phase !== 'player_action' || cardPlayStage === 'committed'}
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
+      oncastdirect={handleCastDirect}
     />
 
     {#if showEndTurn}
@@ -776,38 +836,82 @@
     color: #facc15;
   }
 
-  .enemy-intent {
+  .enemy-intent-panel {
     position: absolute;
-    top: 10px;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 8;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(15, 23, 35, 0.92);
-    border: 1px solid #475569;
+    z-index: 12;
+    border: 1.5px solid;
     border-radius: 10px;
-    padding: 5px 12px;
-    color: #e2e8f0;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
+    padding: 6px 14px;
+    min-width: 140px;
+    max-width: 240px;
+    backdrop-filter: blur(8px);
     animation: intent-fade-in 300ms ease-out;
   }
 
-  .enemy-intent.intent-attack {
-    border-color: #dc2626;
-    color: #fca5a5;
+  .intent-main-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
   }
 
   .intent-icon {
     font-size: 16px;
+    line-height: 1;
+  }
+
+  .intent-telegraph {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .intent-value {
     font-size: 16px;
     font-weight: 800;
+    color: #e2e8f0;
+    min-width: 24px;
+    text-align: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .intent-value-attack {
+    color: #ef4444;
+  }
+
+  .intent-value-defend {
+    color: #3b82f6;
+  }
+
+  .intent-sub-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+    gap: 8px;
+  }
+
+  .intent-enemy-name {
+    font-size: 10px;
+    color: #94a3b8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .intent-type-label {
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   @keyframes intent-fade-in {

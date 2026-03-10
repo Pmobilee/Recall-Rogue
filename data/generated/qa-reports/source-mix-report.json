@@ -1,0 +1,264 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.068Z",
+  "configPath": "/root/terra-miner/scripts/content-pipeline/sources.json",
+  "outputDir": "/root/terra-miner/data/raw/mixed",
+  "reportPath": "/root/terra-miner/data/generated/qa-reports/source-mix-report.json",
+  "targetPerDomain": null,
+  "seed": "worker-packages-v1",
+  "strict": false,
+  "domains": [
+    {
+      "domain": "general_knowledge",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/general_knowledge.json",
+        "available": 1396,
+        "selected": 1396
+      },
+      "supplements": [
+        {
+          "path": "data/raw/world-bank-countries.json",
+          "weight": 0.2,
+          "available": 195,
+          "selected": 195,
+          "missing": false
+        },
+        {
+          "path": "data/raw/nasa-apod.json",
+          "weight": 0.1,
+          "available": 50,
+          "selected": 50,
+          "missing": false
+        },
+        {
+          "path": "data/raw/met-objects.json",
+          "weight": 0.08,
+          "available": 80,
+          "selected": 80,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/general_knowledge.json",
+      "outputCount": 1721,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "natural_sciences",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/natural_sciences.json",
+        "available": 482,
+        "selected": 482
+      },
+      "supplements": [
+        {
+          "path": "data/raw/pubchem-compounds.json",
+          "weight": 0.3,
+          "available": 15,
+          "selected": 15,
+          "missing": false
+        },
+        {
+          "path": "data/raw/nasa-apod.json",
+          "weight": 0.1,
+          "available": 50,
+          "selected": 48,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/natural_sciences.json",
+      "outputCount": 545,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "space_astronomy",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/space_astronomy.json",
+        "available": 468,
+        "selected": 468
+      },
+      "supplements": [
+        {
+          "path": "data/raw/nasa-apod.json",
+          "weight": 0.5,
+          "available": 50,
+          "selected": 50,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/space_astronomy.json",
+      "outputCount": 518,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "geography",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/geography.json",
+        "available": 196,
+        "selected": 196
+      },
+      "supplements": [
+        {
+          "path": "data/raw/world-bank-countries.json",
+          "weight": 0.45,
+          "available": 195,
+          "selected": 88,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/geography.json",
+      "outputCount": 284,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "history",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/history.json",
+        "available": 1261,
+        "selected": 1261
+      },
+      "supplements": [
+        {
+          "path": "data/raw/met-objects.json",
+          "weight": 0.12,
+          "available": 80,
+          "selected": 80,
+          "missing": false
+        },
+        {
+          "path": "data/raw/artic-artworks.json",
+          "weight": 0.08,
+          "available": 1000,
+          "selected": 101,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/history.json",
+      "outputCount": 1442,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "mythology_folklore",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/mythology_folklore.json",
+        "available": 1020,
+        "selected": 1020
+      },
+      "supplements": [
+        {
+          "path": "data/raw/artic-artworks.json",
+          "weight": 0.1,
+          "available": 1000,
+          "selected": 102,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/mythology_folklore.json",
+      "outputCount": 1122,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "animals_wildlife",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/animals_wildlife.json",
+        "available": 940,
+        "selected": 940
+      },
+      "supplements": [
+        {
+          "path": "data/raw/gbif-species.json",
+          "weight": 0.55,
+          "available": 1000,
+          "selected": 517,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/animals_wildlife.json",
+      "outputCount": 1457,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "human_body_health",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/human_body_health.json",
+        "available": 1023,
+        "selected": 1023
+      },
+      "supplements": [
+        {
+          "path": "data/raw/pubchem-compounds.json",
+          "weight": 0.35,
+          "available": 15,
+          "selected": 15,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/human_body_health.json",
+      "outputCount": 1038,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "food_cuisine",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/food_cuisine.json",
+        "available": 1062,
+        "selected": 1062
+      },
+      "supplements": [
+        {
+          "path": "data/raw/world-bank-countries.json",
+          "weight": 0.1,
+          "available": 195,
+          "selected": 106,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/food_cuisine.json",
+      "outputCount": 1168,
+      "duplicatesDropped": 0
+    },
+    {
+      "domain": "art_architecture",
+      "pass": true,
+      "primary": {
+        "path": "data/raw/art_architecture.json",
+        "available": 1260,
+        "selected": 1260
+      },
+      "supplements": [
+        {
+          "path": "data/raw/met-objects.json",
+          "weight": 0.35,
+          "available": 80,
+          "selected": 80,
+          "missing": false
+        },
+        {
+          "path": "data/raw/artic-artworks.json",
+          "weight": 0.35,
+          "available": 1000,
+          "selected": 441,
+          "missing": false
+        }
+      ],
+      "outputPath": "/root/terra-miner/data/raw/mixed/art_architecture.json",
+      "outputCount": 1781,
+      "duplicatesDropped": 0
+    }
+  ],
+  "totals": {
+    "domainsRequested": 10,
+    "domainsProcessed": 10,
+    "rowsWritten": 11076,
+    "duplicatesDropped": 0,
+    "missingInputs": 0
+  },
+  "pass": true
+}

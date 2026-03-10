@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.480Z",
+  "inputFiles": [
+    "data/generated/worker-output/natural_sciences.jsonl"
+  ],
+  "domain": "natural_sciences",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 54,
+    "existingCompared": 1233,
+    "exactDuplicates": 54,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "limestone-001",
+      "candidateQuestion": "What is limestone primarily made of?",
+      "matchId": "limestone-001",
+      "matchQuestion": "What is limestone primarily made of?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bronze-alloy-001",
+      "candidateQuestion": "What two metals make up bronze?",
+      "matchId": "bronze-alloy-001",
+      "matchQuestion": "What two metals make up bronze?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bambuseae-001",
+      "candidateQuestion": "What taxonomic rank is Bambuseae?",
+      "matchId": "bambuseae-001",
+      "matchQuestion": "What taxonomic rank is Bambuseae?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q518350-copper-alloy-001",
+      "candidateQuestion": "What metal is principal in copper-based alloys?",
+      "matchId": "Q518350-copper-alloy-001",
+      "matchQuestion": "What metal is principal in copper-based alloys?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "tool-steel-001",
+      "candidateQuestion": "What is tool steel primarily used for?",
+      "matchId": "tool-steel-001",
+      "matchQuestion": "What is tool steel primarily used for?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "phosphogypsum-001",
+      "candidateQuestion": "What is phosphogypsum primarily composed of?",
+      "matchId": "phosphogypsum-001",
+      "matchQuestion": "What is phosphogypsum primarily composed of?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bainite-001",
+      "candidateQuestion": "What is bainite in metallurgy?",
+      "matchId": "bainite-001",
+      "matchQuestion": "What is bainite in metallurgy?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q782491-petro-seep-001",
+      "candidateQuestion": "What is a petroleum seep?",
+      "matchId": "Q782491-petro-seep-001",
+      "matchQuestion": "What is a petroleum seep?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "arch-glass-001",
+      "candidateQuestion": "What is architectural glass primarily used for?",
+      "matchId": "arch-glass-001",
+      "matchQuestion": "What is architectural glass primarily used for?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "baumberger-kalksandstein-001",
+      "candidateQuestion": "What is Baumberger Kalksandstein primarily used for?",
+      "matchId": "baumberger-kalksandstein-001",
+      "matchQuestion": "What is Baumberger Kalksandstein primarily used for?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "stoneware-001",
+      "candidateQuestion": "What material is stoneware primarily made from?",
+      "matchId": "stoneware-001",
+      "matchQuestion": "What material is stoneware primarily made from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q852520-reinf-concrete-001",
+      "candidateQuestion": "What does reinforcement do in concrete?",
+      "matchId": "Q852520-reinf-concrete-001",
+      "matchQuestion": "What does reinforcement do in concrete?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q837336-dross-001",
+      "candidateQuestion": "What is dross in metalworking?",
+      "matchId": "Q837336-dross-001",
+      "matchQuestion": "What is dross in metalworking?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "blasfilm-001",
+      "candidateQuestion": "What does Blasfilm refer to?",
+      "matchId": "blasfilm-001",
+      "matchQuestion": "What does Blasfilm refer to?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q891460-bollingen-sandstone",
+      "candidateQuestion": "What is Bollingen sandstone?",
+      "matchId": "Q891460-bollingen-sandstone",
+      "matchQuestion": "What is Bollingen sandstone?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "lime-mortar-001",
+      "candidateQuestion": "What is lime mortar primarily used for?",
+      "matchId": "lime-mortar-001",
+      "matchQuestion": "What is lime mortar primarily used for?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "vulcanized-fibre-001",
+      "candidateQuestion": "What material is vulcanized fibre made from?",
+      "matchId": "vulcanized-fibre-001",
+      "matchQuestion": "What material is vulcanized fibre made from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "sheepskin-001",
+      "candidateQuestion": "What is sheepskin?",
+      "matchId": "sheepskin-001",
+      "matchQuestion": "What is sheepskin?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "horsehair-001",
+      "candidateQuestion": "What is horsehair?",
+      "matchId": "horsehair-001",
+      "matchQuestion": "What is horsehair?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "nsci-catgut-001",
+      "candidateQuestion": "What animal provides catgut material?",
+      "matchId": "nsci-catgut-001",
+      "matchQuestion": "What animal provides catgut material?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

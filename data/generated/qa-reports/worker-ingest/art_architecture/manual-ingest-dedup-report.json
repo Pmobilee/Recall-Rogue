@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:10.321Z",
+  "inputFiles": [
+    "data/generated/worker-output/art_architecture.jsonl"
+  ],
+  "domain": "art_architecture",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 62,
+    "existingCompared": 1233,
+    "exactDuplicates": 62,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "mfn-berlin-1810",
+      "candidateQuestion": "When did Museum für Naturkunde Berlin open?",
+      "matchId": "mfn-berlin-1810",
+      "matchQuestion": "When did Museum für Naturkunde Berlin open?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "qa-valencia-arts-sciences-001",
+      "candidateQuestion": "What cultural complex opened in Valencia, Spain in 1998?",
+      "matchId": "qa-valencia-arts-sciences-001",
+      "matchQuestion": "What cultural complex opened in Valencia, Spain in 1998?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "ushmm-founding-1993",
+      "candidateQuestion": "When did the US Holocaust Memorial Museum open?",
+      "matchId": "ushmm-founding-1993",
+      "matchQuestion": "When did the US Holocaust Memorial Museum open?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "olavinlinna-castle-001",
+      "candidateQuestion": "Where is Olavinlinna Castle located?",
+      "matchId": "olavinlinna-castle-001",
+      "matchQuestion": "Where is Olavinlinna Castle located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q251672-chateau-borely-1778",
+      "candidateQuestion": "When was Château Borély established?",
+      "matchId": "q251672-chateau-borely-1778",
+      "matchQuestion": "When was Château Borély established?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "abbots-palace-oliwa-1756",
+      "candidateQuestion": "When was Abbot's Palace in Oliwa built?",
+      "matchId": "abbots-palace-oliwa-1756",
+      "matchQuestion": "When was Abbot's Palace in Oliwa built?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "su-nuraxi-barumini-001",
+      "candidateQuestion": "What is Su Nuraxi di Barumini?",
+      "matchId": "su-nuraxi-barumini-001",
+      "matchQuestion": "What is Su Nuraxi di Barumini?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "tyreso-palace-1633",
+      "candidateQuestion": "When was Tyresö Palace completed?",
+      "matchId": "tyreso-palace-1633",
+      "matchQuestion": "When was Tyresö Palace completed?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "egyp-mus-leipzig-1874",
+      "candidateQuestion": "When was the Egyptian Museum of Leipzig founded?",
+      "matchId": "egyp-mus-leipzig-1874",
+      "matchQuestion": "When was the Egyptian Museum of Leipzig founded?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q256200-charlier-museum-1844",
+      "candidateQuestion": "In which city is the Charlier Museum located?",
+      "matchId": "Q256200-charlier-museum-1844",
+      "matchQuestion": "In which city is the Charlier Museum located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "cabildo-montevideo-1804",
+      "candidateQuestion": "What historical building houses a museum in Montevideo?",
+      "matchId": "cabildo-montevideo-1804",
+      "matchQuestion": "What historical building houses a museum in Montevideo?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "huntington-beach-state-park-1960",
+      "candidateQuestion": "When was Huntington Beach State Park established?",
+      "matchId": "huntington-beach-state-park-1960",
+      "matchQuestion": "When was Huntington Beach State Park established?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-heralds-museum-001",
+      "candidateQuestion": "When was Heralds' Museum established?",
+      "matchId": "art-heralds-museum-001",
+      "matchQuestion": "When was Heralds' Museum established?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-holocaust-museum-la-002",
+      "candidateQuestion": "When was Holocaust Museum LA established?",
+      "matchId": "art-holocaust-museum-la-002",
+      "matchQuestion": "When was Holocaust Museum LA established?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-auezov-home-museum-003",
+      "candidateQuestion": "Where is Auezov Home Museum located?",
+      "matchId": "art-auezov-home-museum-003",
+      "matchQuestion": "Where is Auezov Home Museum located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-k-lonia-004",
+      "candidateQuestion": "Where is Kélonia located?",
+      "matchId": "art-k-lonia-004",
+      "matchQuestion": "Where is Kélonia located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-centraal-museum-005",
+      "candidateQuestion": "Where is Centraal Museum located?",
+      "matchId": "art-centraal-museum-005",
+      "matchQuestion": "Where is Centraal Museum located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-ghetto-fighters-house-006",
+      "candidateQuestion": "When was Ghetto Fighters' House established?",
+      "matchId": "art-ghetto-fighters-house-006",
+      "matchQuestion": "When was Ghetto Fighters' House established?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-guinness-storehouse-007",
+      "candidateQuestion": "Where is Guinness Storehouse located?",
+      "matchId": "art-guinness-storehouse-007",
+      "matchQuestion": "Where is Guinness Storehouse located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "art-illuminated-block-008",
+      "candidateQuestion": "Where is Illuminated Block located?",
+      "matchId": "art-illuminated-block-008",
+      "matchQuestion": "Where is Illuminated Block located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

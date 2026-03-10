@@ -1,0 +1,17 @@
+{
+  "domain": "food_cuisine",
+  "domainSlug": "food-cuisine",
+  "existingFacts": 63,
+  "existingFactsPath": "data/generated/food_cuisine.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 250,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/food_cuisine.json",
+  "workerOutputPath": "data/generated/worker-output/food_cuisine.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

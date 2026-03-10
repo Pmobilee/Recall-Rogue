@@ -1,0 +1,435 @@
+{
+  "generatedAt": "2026-03-10T06:27:25.078Z",
+  "inputDir": "/root/terra-miner/data/generated",
+  "thresholds": {
+    "minDomainFacts": 120,
+    "poolSize": 45,
+    "encounterSize": 10,
+    "maxDuplicateQuestionRate": 0.03,
+    "maxTopAnswerShare": 0.12,
+    "minVariantsCoverage": 0.9,
+    "minDistractorsCoverage": 0.95,
+    "minSourceCoverage": 0.95,
+    "maxEncounterDupRisk": 0.2,
+    "minDifficultyBuckets": 3,
+    "knowledgeOnly": true
+  },
+  "summary": {
+    "domainsChecked": 10,
+    "totalFacts": 710,
+    "globalExactQuestionDuplicates": 3,
+    "failures": 21
+  },
+  "domains": [
+    {
+      "domain": "animals_wildlife",
+      "total": 63,
+      "uniqueQuestions": 63,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 37,
+      "topAnswer": {
+        "value": "bird",
+        "count": 15
+      },
+      "topAnswerShare": 0.2381,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.529123,
+      "difficulty": {
+        "1": 0,
+        "2": 24,
+        "3": 39,
+        "4": 0,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 2
+    },
+    {
+      "domain": "art_architecture",
+      "total": 62,
+      "uniqueQuestions": 62,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 55,
+      "topAnswer": {
+        "value": "museum",
+        "count": 4
+      },
+      "topAnswerShare": 0.0645,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 0,
+      "encounterDuplicateRisk": 0.53513,
+      "difficulty": {
+        "1": 0,
+        "2": 19,
+        "3": 38,
+        "4": 5,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 3
+    },
+    {
+      "domain": "food_cuisine",
+      "total": 63,
+      "uniqueQuestions": 63,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 53,
+      "topAnswer": {
+        "value": "france",
+        "count": 5
+      },
+      "topAnswerShare": 0.0794,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.529123,
+      "difficulty": {
+        "1": 12,
+        "2": 38,
+        "3": 13,
+        "4": 0,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 3
+    },
+    {
+      "domain": "general_knowledge",
+      "total": 140,
+      "uniqueQuestions": 137,
+      "duplicateQuestionCount": 3,
+      "duplicateQuestionRate": 0.0214,
+      "uniqueAnswers": 110,
+      "topAnswer": {
+        "value": "temple",
+        "count": 12
+      },
+      "topAnswerShare": 0.0857,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.285615,
+      "difficulty": {
+        "1": 3,
+        "2": 87,
+        "3": 29,
+        "4": 14,
+        "5": 7
+      },
+      "difficultyBucketsPresent": 5
+    },
+    {
+      "domain": "geography",
+      "total": 50,
+      "uniqueQuestions": 50,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 50,
+      "topAnswer": {
+        "value": "castries",
+        "count": 1
+      },
+      "topAnswerShare": 0.02,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.618293,
+      "difficulty": {
+        "1": 3,
+        "2": 11,
+        "3": 22,
+        "4": 6,
+        "5": 8
+      },
+      "difficultyBucketsPresent": 5
+    },
+    {
+      "domain": "history",
+      "total": 91,
+      "uniqueQuestions": 91,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 88,
+      "topAnswer": {
+        "value": "1942",
+        "count": 2
+      },
+      "topAnswerShare": 0.022,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.401105,
+      "difficulty": {
+        "1": 3,
+        "2": 34,
+        "3": 52,
+        "4": 2,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 4
+    },
+    {
+      "domain": "human_body_health",
+      "total": 63,
+      "uniqueQuestions": 63,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 56,
+      "topAnswer": {
+        "value": "protein coding gene",
+        "count": 7
+      },
+      "topAnswerShare": 0.1111,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 0,
+      "encounterDuplicateRisk": 0.529123,
+      "difficulty": {
+        "1": 4,
+        "2": 25,
+        "3": 28,
+        "4": 6,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 4
+    },
+    {
+      "domain": "mythology_folklore",
+      "total": 63,
+      "uniqueQuestions": 63,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 59,
+      "topAnswer": {
+        "value": "mythical creature",
+        "count": 5
+      },
+      "topAnswerShare": 0.0794,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.529123,
+      "difficulty": {
+        "1": 0,
+        "2": 18,
+        "3": 41,
+        "4": 4,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 3
+    },
+    {
+      "domain": "natural_sciences",
+      "total": 54,
+      "uniqueQuestions": 54,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 53,
+      "topAnswer": {
+        "value": "building material",
+        "count": 2
+      },
+      "topAnswerShare": 0.037,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.58811,
+      "difficulty": {
+        "1": 15,
+        "2": 18,
+        "3": 14,
+        "4": 7,
+        "5": 0
+      },
+      "difficultyBucketsPresent": 4
+    },
+    {
+      "domain": "space_astronomy",
+      "total": 61,
+      "uniqueQuestions": 61,
+      "duplicateQuestionCount": 0,
+      "duplicateQuestionRate": 0,
+      "uniqueAnswers": 58,
+      "topAnswer": {
+        "value": "failed rocket launch",
+        "count": 3
+      },
+      "topAnswerShare": 0.0492,
+      "variantsCoverage": 1,
+      "distractorsCoverage": 1,
+      "sourceCoverage": 1,
+      "categoryHintCoverage": 1,
+      "encounterDuplicateRisk": 0.541266,
+      "difficulty": {
+        "1": 0,
+        "2": 18,
+        "3": 22,
+        "4": 19,
+        "5": 2
+      },
+      "difficultyBucketsPresent": 4
+    }
+  ],
+  "failures": [
+    {
+      "domain": "animals_wildlife",
+      "check": "min_domain_facts",
+      "actual": 63,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "animals_wildlife",
+      "check": "top_answer_share",
+      "actual": 0.2381,
+      "expected": "<= 0.12",
+      "reason": "single answer appears too frequently and may create predictable runs"
+    },
+    {
+      "domain": "animals_wildlife",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.529123,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "animals_wildlife",
+      "check": "difficulty_spread",
+      "actual": 2,
+      "expected": ">= 3 buckets populated",
+      "reason": "difficulty spread is too narrow for stable run pacing"
+    },
+    {
+      "domain": "art_architecture",
+      "check": "min_domain_facts",
+      "actual": 62,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "art_architecture",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.53513,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "food_cuisine",
+      "check": "min_domain_facts",
+      "actual": 63,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "food_cuisine",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.529123,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "general_knowledge",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.285615,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "geography",
+      "check": "min_domain_facts",
+      "actual": 50,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "geography",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.618293,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "history",
+      "check": "min_domain_facts",
+      "actual": 91,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "history",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.401105,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "human_body_health",
+      "check": "min_domain_facts",
+      "actual": 63,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "human_body_health",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.529123,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "mythology_folklore",
+      "check": "min_domain_facts",
+      "actual": 63,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "mythology_folklore",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.529123,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "natural_sciences",
+      "check": "min_domain_facts",
+      "actual": 54,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "natural_sciences",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.58811,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    },
+    {
+      "domain": "space_astronomy",
+      "check": "min_domain_facts",
+      "actual": 61,
+      "expected": ">= 120",
+      "reason": "domain has too few facts for stable run-pool variety"
+    },
+    {
+      "domain": "space_astronomy",
+      "check": "encounter_duplicate_risk",
+      "actual": 0.541266,
+      "expected": "<= 0.2",
+      "reason": "estimated duplicate risk per encounter is too high"
+    }
+  ],
+  "pass": false
+}

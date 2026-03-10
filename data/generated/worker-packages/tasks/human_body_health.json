@@ -1,0 +1,17 @@
+{
+  "domain": "human_body_health",
+  "domainSlug": "human-body-health",
+  "existingFacts": 63,
+  "existingFactsPath": "data/generated/human_body_health.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 600,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/human_body_health.json",
+  "workerOutputPath": "data/generated/worker-output/human_body_health.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

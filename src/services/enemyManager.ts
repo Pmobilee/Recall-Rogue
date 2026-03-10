@@ -57,6 +57,7 @@ export function createEnemy(template: EnemyTemplate, floor: number): EnemyInstan
     template,
     currentHP: scaledHP,
     maxHP: scaledHP,
+    block: 0,
     nextIntent: weightedRandomIntent(template.intentPool),
     statusEffects: [],
     phase: 1,
@@ -93,6 +94,11 @@ export function applyDamageToEnemy(
   enemy: EnemyInstance,
   damage: number
 ): { defeated: boolean; remainingHP: number } {
+  if (enemy.block > 0) {
+    const blockedDamage = Math.min(enemy.block, damage);
+    enemy.block -= blockedDamage;
+    damage -= blockedDamage;
+  }
   enemy.currentHP = Math.max(0, enemy.currentHP - damage);
 
   // Check phase transition
@@ -145,9 +151,7 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
       break;
     }
     case 'defend': {
-      // Enemy shields itself — not implemented as player damage
-      // but tracked via status effects or separate shield system.
-      // For now, defend reduces incoming damage next turn via status.
+      enemy.block += intent.value;
       break;
     }
     case 'buff': {

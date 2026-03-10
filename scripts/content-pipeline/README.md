@@ -1,8 +1,8 @@
 # Content Pipeline (AR-15+)
 
-This folder contains source registry, data fetchers, generation tooling, vocabulary imports, and QA scripts for AR-15 through AR-19.
+This folder contains source registry, data fetchers, worker-first ingestion tooling, vocabulary imports, and QA scripts for AR-15 through AR-19.
 
-## Quick start
+## Quick start (worker-first pipeline)
 
 1. Verify SPARQL output counts:
 ```bash
@@ -14,13 +14,49 @@ node scripts/content-pipeline/fetch/verify-sparql.mjs
 node scripts/content-pipeline/fetch-all.mjs
 ```
 
-3. Build mixed-source domain inputs (Wikidata + API datasets):
+3. Build worker task bundles (mixed inputs + missing-count analysis + per-domain prompts):
 ```bash
-npm run content:source-mix
-# Writes data/raw/mixed/<domain>.json and data/generated/qa-reports/source-mix-report.json
+npm run content:workers:prepare -- --target-per-domain 1000
+# Writes:
+# - data/raw/mixed/<domain>.json
+# - data/generated/worker-packages/tasks/<domain>.json
+# - data/generated/worker-packages/prompts/<domain>.md
+# - data/generated/qa-reports/agent-workers-prepare.json
 ```
 
-4. Fetch one domain only:
+4. Run Claude subscription workers externally using generated prompt files and write outputs to:
+```text
+data/generated/worker-output/<domain>.jsonl
+```
+
+5. Ingest + dedup worker outputs:
+```bash
+npm run content:workers:ingest -- --strict true
+```
+
+6. Run QA gate and promote into seed/db:
+```bash
+npm run content:workers:qa
+npm run content:workers:promote
+```
+
+One-shot (all steps in sequence):
+```bash
+npm run content:workers:all -- --target-per-domain 1000 --strict true
+```
+
+Single-command autopilot (knowledge + vocab + visual fill + QA + DB promote):
+```bash
+npm run content:autopilot -- --target-per-domain 1000 --target-per-language 1000
+```
+
+Notes:
+- `content:autopilot` will run prepare/ingest/QA/promote and vocab build+ingest.
+- It also fills missing `visualDescription` values in generated data (and optionally seed files).
+- For live fact writing quality, an Opus worker should generate missing worker outputs in
+  `data/generated/worker-output/*.jsonl` before or during autopilot runs.
+
+Single-domain fetch still available:
 ```bash
 node scripts/content-pipeline/fetch-all.mjs --domain geography --domain-target 1500 --skip-apis
 ```
@@ -39,16 +75,19 @@ All scripts support `--limit` and `--output`:
 
 Legacy names (`fetch-nasa-apod.mjs`, `fetch-gbif-species.mjs`, etc.) remain as wrappers.
 
-## Fact generation (AR-17)
+## Fact generation helpers (AR-17)
 
-Note: local paid Anthropic API generation is disabled in this repo. Generation scripts run in dry-run mode only. Use external Claude subscription workers for live fact creation, then ingest/QA here.
+Local paid Anthropic API execution paths are removed from content-pipeline scripts. Live generation should happen through external Claude subscription workers using the task/prompt bundles emitted by `content:workers:prepare`.
 
-- `generate/haiku-client.mjs` - API client with retry/rate/cost tracking
-- `generate/batch-generate.mjs` - batch JSON -> JSONL generation
+- `generate/haiku-client.mjs` - dry-run local fact stub generator
+- `generate/batch-generate.mjs` - batch JSON -> JSONL dry-run generator
 - `generate/validate-output.mjs` - schema + quality validation
 - `generate/estimate-cost.mjs` - token/cost estimate
-- `generate/sample.mjs` - small sample generation
-- `generate/generate-all-domains.mjs` - orchestrate multi-domain generation + validation
+- `generate/sample.mjs` - small sample dry-run generation
+- `generate/generate-all-domains.mjs` - dry-run multi-domain generation helper
+- `agent-workers.mjs` - full worker-first orchestrator (`prepare`, `ingest`, `qa`, `promote`, `all`)
+- `autopilot.mjs` - end-to-end orchestration (knowledge + vocab + visuals + QA + promote)
+- `fill-missing-visual-descriptions.mjs` - fills empty visualDescription fields without paid API calls
 
 Example:
 ```bash
@@ -60,7 +99,7 @@ node scripts/content-pipeline/generate/batch-generate.mjs --input data/raw/geogr
 node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography.generated.jsonl --strict
 node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain geography --dry-run --report /tmp/geography.ingest-report.json
 
-# All domains in one run (dry-run only in this repo)
+# All domains in one run (dry-run helper only)
 npm run content:generate:all -- --dry-run --limit 50 --strict false
 
 # Same command with mixed-source inputs (dry-run)

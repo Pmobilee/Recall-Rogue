@@ -1,5 +1,6 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
 import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER } from '../data/balance';
+import { factsDB } from './factsDB';
 
 /**
  * Shuffles an array in place (Fisher-Yates). Returns the same reference.
@@ -10,6 +11,41 @@ function shuffle<T>(arr: T[]): T[] {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+}
+
+/**
+ * Weighted shuffle biasing high-funScore facts toward the front.
+ * Facts with funScore >= 7 get 2x weight in selection probability.
+ * Used only for the first draw of a run to create a strong first impression.
+ */
+function weightedFactShuffle(factIds: string[]): string[] {
+  const weighted = factIds.map(id => {
+    const fact = factsDB.getById(id);
+    const funScore = fact?.funScore ?? 5;
+    return { id, weight: funScore >= 7 ? 2 : 1 };
+  });
+
+  const result: string[] = [];
+  const pool = [...weighted];
+
+  while (pool.length > 0) {
+    const totalWeight = pool.reduce((sum, item) => sum + item.weight, 0);
+    let random = Math.random() * totalWeight;
+
+    let selectedIdx = 0;
+    for (let i = 0; i < pool.length; i++) {
+      random -= pool[i].weight;
+      if (random <= 0) {
+        selectedIdx = i;
+        break;
+      }
+    }
+
+    result.push(pool[selectedIdx].id);
+    pool.splice(selectedIdx, 1);
+  }
+
+  return result;
 }
 
 /**
@@ -51,7 +87,7 @@ export function createDeck(pool: Card[]): CardRunState {
  * @param count - Number of cards to draw (default HAND_SIZE = 5).
  * @returns The array of cards drawn (same references as in deck.hand).
  */
-export function drawHand(deck: CardRunState, count?: number): Card[] {
+export function drawHand(deck: CardRunState, count?: number, options?: { firstDrawBias?: boolean }): Card[] {
   const requested = count ?? HAND_SIZE;
   const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
   const toDraw = Math.max(0, Math.min(requested, availableSpace));
@@ -114,11 +150,17 @@ export function drawHand(deck: CardRunState, count?: number): Card[] {
       }
     }
 
-    // Shuffle available facts
-    const shuffledFacts = [...factsToUse];
-    for (let i = shuffledFacts.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledFacts[i], shuffledFacts[j]] = [shuffledFacts[j], shuffledFacts[i]];
+    // Shuffle available facts (with optional first-draw funScore bias)
+    let shuffledFacts: string[];
+    if (options?.firstDrawBias) {
+      // Weighted shuffle: facts with funScore >= 7 are 2x more likely to appear first
+      shuffledFacts = weightedFactShuffle(factsToUse);
+    } else {
+      shuffledFacts = [...factsToUse];
+      for (let i = shuffledFacts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledFacts[i], shuffledFacts[j]] = [shuffledFacts[j], shuffledFacts[i]];
+      }
     }
 
     // Pair each drawn card slot with a random fact
@@ -262,6 +304,9 @@ export function tickFactCooldowns(deck: CardRunState): void {
     .map(c => ({ ...c, encountersRemaining: c.encountersRemaining - 1 }))
     .filter(c => c.encountersRemaining > 0);
 }
+
+// Exported for unit testing only — not part of the public API.
+export { weightedFactShuffle as _weightedFactShuffle_forTest };
 
 export function insertCardWithDelay(deck: CardRunState, card: Card, minDelayCards: number): void {
   if (deck.drawPile.length === 0) {

@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.448Z",
+  "inputFiles": [
+    "data/generated/worker-output/natural_sciences.jsonl"
+  ],
+  "domain": "natural_sciences",
+  "counts": {
+    "input": 54,
+    "valid": 54,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "limestone-001",
+      "question": "What is limestone primarily made of?"
+    },
+    {
+      "id": "bronze-alloy-001",
+      "question": "What two metals make up bronze?"
+    },
+    {
+      "id": "bambuseae-001",
+      "question": "What taxonomic rank is Bambuseae?"
+    },
+    {
+      "id": "Q518350-copper-alloy-001",
+      "question": "What metal is principal in copper-based alloys?"
+    },
+    {
+      "id": "tool-steel-001",
+      "question": "What is tool steel primarily used for?"
+    }
+  ]
+}

@@ -199,6 +199,9 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   const onboarding = get(onboardingState);
   if (onboarding.runsCompleted < STORY_MODE_FORCED_RUNS) {
     difficultyMode.set('explorer');
+  } else if (get(difficultyMode) === 'explorer') {
+    // Reset from forced explorer after tutorial runs complete
+    difficultyMode.set('standard');
   }
 
   const run = createRunState(pending.primary, pending.secondary, {

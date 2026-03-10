@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:10.104Z",
+  "inputFiles": [
+    "data/generated/worker-output/food_cuisine.jsonl"
+  ],
+  "domain": "food_cuisine",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 63,
+    "existingCompared": 1233,
+    "exactDuplicates": 63,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "waffle-origin-france",
+      "candidateQuestion": "Where did waffles originate?",
+      "matchId": "waffle-origin-france",
+      "matchQuestion": "Where did waffles originate?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food_cuisine_hamburger_001",
+      "candidateQuestion": "What is a hamburger primarily made from?",
+      "matchId": "food_cuisine_hamburger_001",
+      "matchQuestion": "What is a hamburger primarily made from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "labskaus-001",
+      "candidateQuestion": "What is Labskaus?",
+      "matchId": "labskaus-001",
+      "matchQuestion": "What is Labskaus?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "mille-feuille-001",
+      "candidateQuestion": "What is mille-feuille?",
+      "matchId": "mille-feuille-001",
+      "matchQuestion": "What is mille-feuille?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "crêpe-001-france",
+      "candidateQuestion": "What country originated crêpes?",
+      "matchId": "crêpe-001-france",
+      "matchQuestion": "What country originated crêpes?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "fideuà-001",
+      "candidateQuestion": "What is fideuà?",
+      "matchId": "fideuà-001",
+      "matchQuestion": "What is fideuà?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "spatzle-001",
+      "candidateQuestion": "What is spätzle?",
+      "matchId": "spatzle-001",
+      "matchQuestion": "What is spätzle?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-cn-paper-covered-bone-001",
+      "candidateQuestion": "What is paper-covered bone?",
+      "matchId": "food-cn-paper-covered-bone-001",
+      "matchQuestion": "What is paper-covered bone?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "lasagna-001",
+      "candidateQuestion": "What country did lasagna originate from?",
+      "matchId": "lasagna-001",
+      "matchQuestion": "What country did lasagna originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "tarta-santiago-001",
+      "candidateQuestion": "What is Tarta de Santiago's main ingredient?",
+      "matchId": "tarta-santiago-001",
+      "matchQuestion": "What is Tarta de Santiago's main ingredient?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "pancake-origin-us-001",
+      "candidateQuestion": "Where did pancakes originate?",
+      "matchId": "pancake-origin-us-001",
+      "matchQuestion": "Where did pancakes originate?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "choc-cake-001",
+      "candidateQuestion": "What is chocolate cake primarily flavored with?",
+      "matchId": "choc-cake-001",
+      "matchQuestion": "What is chocolate cake primarily flavored with?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bun-cha-001",
+      "candidateQuestion": "What is bun cha?",
+      "matchId": "bun-cha-001",
+      "matchQuestion": "What is bun cha?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-muesli-014",
+      "candidateQuestion": "Where does muesli originate from?",
+      "matchId": "food-muesli-014",
+      "matchQuestion": "Where does muesli originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-cold-borscht-015",
+      "candidateQuestion": "Where does cold borscht originate from?",
+      "matchId": "food-cold-borscht-015",
+      "matchQuestion": "Where does cold borscht originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-ahle-wurst-016",
+      "candidateQuestion": "Where does Ahle Wurst originate from?",
+      "matchId": "food-ahle-wurst-016",
+      "matchQuestion": "Where does Ahle Wurst originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-pemmican-017",
+      "candidateQuestion": "Where does pemmican originate from?",
+      "matchId": "food-pemmican-017",
+      "matchQuestion": "Where does pemmican originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-a-ure-018",
+      "candidateQuestion": "Where does aşure originate from?",
+      "matchId": "food-a-ure-018",
+      "matchQuestion": "Where does aşure originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-dondurma-019",
+      "candidateQuestion": "Where does dondurma originate from?",
+      "matchId": "food-dondurma-019",
+      "matchQuestion": "Where does dondurma originate from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-fruit-salad-020",
+      "candidateQuestion": "What is fruit salad?",
+      "matchId": "food-fruit-salad-020",
+      "matchQuestion": "What is fruit salad?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

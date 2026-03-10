@@ -1,0 +1,17 @@
+{
+  "domain": "animals_wildlife",
+  "domainSlug": "animals-wildlife",
+  "existingFacts": 63,
+  "existingFactsPath": "data/generated/animals_wildlife.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 200,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/animals_wildlife.json",
+  "workerOutputPath": "data/generated/worker-output/animals_wildlife.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

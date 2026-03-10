@@ -54,6 +54,8 @@ export interface EnemyInstance {
   currentHP: number;
   /** Maximum hit points (after floor scaling). */
   maxHP: number;
+  /** Current block/shield amount. Absorbs damage before HP. Resets at start of enemy turn. */
+  block: number;
   /** The pre-rolled next action. */
   nextIntent: EnemyIntent;
   /** Active status effects on this enemy. */

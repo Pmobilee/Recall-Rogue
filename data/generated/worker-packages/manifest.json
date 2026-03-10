@@ -1,0 +1,202 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.048Z",
+  "seed": "worker-packages-v1",
+  "domains": [
+    "general_knowledge",
+    "natural_sciences",
+    "space_astronomy",
+    "geography",
+    "history",
+    "mythology_folklore",
+    "animals_wildlife",
+    "human_body_health",
+    "food_cuisine",
+    "art_architecture"
+  ],
+  "totals": {
+    "domains": 10,
+    "missingFacts": 0,
+    "requestedFacts": 0,
+    "alreadySatisfiedDomains": 10,
+    "missingInputDomains": 0
+  },
+  "tasks": [
+    {
+      "domain": "general_knowledge",
+      "domainSlug": "general-knowledge",
+      "existingFacts": 140,
+      "existingFactsPath": "data/generated/general_knowledge.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 350,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/general_knowledge.json",
+      "workerOutputPath": "data/generated/worker-output/general_knowledge.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "natural_sciences",
+      "domainSlug": "natural-sciences",
+      "existingFacts": 54,
+      "existingFactsPath": "data/generated/natural_sciences.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 200,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/natural_sciences.json",
+      "workerOutputPath": "data/generated/worker-output/natural_sciences.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "space_astronomy",
+      "domainSlug": "space-astronomy",
+      "existingFacts": 61,
+      "existingFactsPath": "data/generated/space_astronomy.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 300,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/space_astronomy.json",
+      "workerOutputPath": "data/generated/worker-output/space_astronomy.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "geography",
+      "domainSlug": "geography",
+      "existingFacts": 50,
+      "existingFactsPath": "data/generated/geography.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 150,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/geography.json",
+      "workerOutputPath": "data/generated/worker-output/geography.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "history",
+      "domainSlug": "history",
+      "existingFacts": 91,
+      "existingFactsPath": "data/generated/history.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 500,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/history.json",
+      "workerOutputPath": "data/generated/worker-output/history.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "mythology_folklore",
+      "domainSlug": "mythology-folklore",
+      "existingFacts": 63,
+      "existingFactsPath": "data/generated/mythology_folklore.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 400,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/mythology_folklore.json",
+      "workerOutputPath": "data/generated/worker-output/mythology_folklore.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "animals_wildlife",
+      "domainSlug": "animals-wildlife",
+      "existingFacts": 63,
+      "existingFactsPath": "data/generated/animals_wildlife.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 200,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/animals_wildlife.json",
+      "workerOutputPath": "data/generated/worker-output/animals_wildlife.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "human_body_health",
+      "domainSlug": "human-body-health",
+      "existingFacts": 63,
+      "existingFactsPath": "data/generated/human_body_health.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 600,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/human_body_health.json",
+      "workerOutputPath": "data/generated/worker-output/human_body_health.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "food_cuisine",
+      "domainSlug": "food-cuisine",
+      "existingFacts": 63,
+      "existingFactsPath": "data/generated/food_cuisine.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 250,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/food_cuisine.json",
+      "workerOutputPath": "data/generated/worker-output/food_cuisine.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    },
+    {
+      "domain": "art_architecture",
+      "domainSlug": "art-architecture",
+      "existingFacts": 62,
+      "existingFactsPath": "data/generated/art_architecture.jsonl",
+      "targetFacts": 50,
+      "expectedMinimum": 400,
+      "missingFacts": 0,
+      "requestedNewFacts": 0,
+      "inputPath": "data/raw/mixed/art_architecture.json",
+      "workerOutputPath": "data/generated/worker-output/art_architecture.jsonl",
+      "recommendation": "skip",
+      "pass": true,
+      "notes": [
+        "domain target already satisfied"
+      ]
+    }
+  ],
+  "usage": {
+    "prepare": "npm run content:workers:prepare",
+    "ingest": "npm run content:workers:ingest",
+    "qa": "npm run content:workers:qa",
+    "promote": "npm run content:workers:promote",
+    "full": "npm run content:workers:all"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.774Z",
+  "inputFiles": [
+    "data/generated/worker-output/mythology_folklore.jsonl"
+  ],
+  "domain": "mythology_folklore",
+  "counts": {
+    "input": 63,
+    "valid": 63,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "cupid-001",
+      "question": "What is Cupid the Roman god of?"
+    },
+    {
+      "id": "curupira-001",
+      "question": "What is Curupira in Brazilian mythology?"
+    },
+    {
+      "id": "loch-ness-monster-001",
+      "question": "What is the Loch Ness Monster from?"
+    },
+    {
+      "id": "easter-bunny-001",
+      "question": "What folkloric figure symbolizes Easter?"
+    },
+    {
+      "id": "kubikajiri-001",
+      "question": "What does Kubikajiri, a Japanese yokai, do?"
+    }
+  ]
+}

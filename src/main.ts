@@ -20,6 +20,8 @@ import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
+import { difficultyMode, onboardingState } from './services/cardPreferences'
+import { STORY_MODE_FORCED_RUNS } from './data/balance'
 import { factsDB } from './services/factsDB'
 import { initI18n } from './i18n/index'
 import { initAccessibilityManager } from './services/accessibilityManager'
@@ -129,6 +131,16 @@ if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'tru
 
 // Initialize player save data
 const save = initPlayer('teen')
+
+// Fix stuck explorer difficulty mode from legacy bug (DD-V2-FIX):
+// If runsCompleted >= threshold but difficultyMode is still 'explorer', reset to 'standard'.
+// This runs at startup so users don't have to start a new run to escape explorer mode.
+{
+  const _onb = get(onboardingState)
+  if (get(difficultyMode) === 'explorer' && _onb.runsCompleted >= STORY_MODE_FORCED_RUNS) {
+    difficultyMode.set('standard')
+  }
+}
 
 // pendingArtifacts store removed — card roguelite doesn't use artifact system
 

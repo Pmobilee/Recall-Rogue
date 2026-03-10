@@ -1,0 +1,17 @@
+{
+  "domain": "art_architecture",
+  "domainSlug": "art-architecture",
+  "existingFacts": 62,
+  "existingFactsPath": "data/generated/art_architecture.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 400,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/art_architecture.json",
+  "workerOutputPath": "data/generated/worker-output/art_architecture.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

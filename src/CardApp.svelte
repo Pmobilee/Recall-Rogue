@@ -49,7 +49,7 @@
   import type { FactDomain } from './data/card-types'
   import type { MysteryEffect } from './services/floorManager'
   import { healPlayer } from './services/runManager'
-  import { isSlowReader } from './services/cardPreferences'
+  import { isSlowReader, onboardingState } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
   import { playerSave } from './ui/stores/playerData'
@@ -222,14 +222,46 @@
     // Navigate to the saved screen or default to room selection
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
     currentScreen.set(screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection'))
+    hasRunSave = false
   }
 
+  let showAbandonConfirm = $state(false)
+  let abandonRunInfo = $state<{ floor: number; gold: number; encounters: number; factsCorrect: number } | null>(null)
+
   function handleAbandonRun(): void {
+    const saved = loadActiveRun()
+    if (saved) {
+      abandonRunInfo = {
+        floor: saved.runState.floor.currentFloor,
+        gold: saved.runState.currency,
+        encounters: saved.runState.encountersWon,
+        factsCorrect: saved.runState.factsCorrect,
+      }
+    }
+    showAbandonConfirm = true
+  }
+
+  function confirmAbandon(): void {
     abandonActiveRun()
+    hasRunSave = false
+    showAbandonConfirm = false
+    abandonRunInfo = null
+  }
+
+  function cancelAbandon(): void {
+    showAbandonConfirm = false
+    abandonRunInfo = null
   }
 
   let activeRunFloor = $derived($activeRunState?.floor.currentFloor ?? 0)
-  let showActiveRunBanner = $derived(!$activeRunState && hasActiveRun())
+  let hasRunSave = $state(hasActiveRun())
+  let showActiveRunBanner = $derived(!$activeRunState && hasRunSave)
+
+  $effect(() => {
+    if ($currentScreen === 'hub') {
+      hasRunSave = hasActiveRun()
+    }
+  })
 
   function nextSegmentName(floor: number): string {
     if (floor < 3) return 'Shallow Depths'
@@ -278,13 +310,6 @@
   ></div>
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
-    {#if showActiveRunBanner}
-      <div class="active-run-banner">
-        <span>Run in progress</span>
-        <button type="button" class="banner-resume-btn" onclick={handleResumeActiveRun}>Resume</button>
-        <button type="button" class="banner-abandon-btn" onclick={handleAbandonRun}>Abandon</button>
-      </div>
-    {/if}
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
@@ -295,6 +320,33 @@
       onOpenJournal={handleOpenJournal}
       onOpenLeaderboards={handleOpenLeaderboards}
     />
+    {#if showActiveRunBanner}
+      <div class="active-run-banner">
+        <span>Run in progress</span>
+        <button type="button" class="banner-resume-btn" onclick={handleResumeActiveRun}>Resume</button>
+        <button type="button" class="banner-abandon-btn" onclick={handleAbandonRun}>Abandon</button>
+      </div>
+    {/if}
+    {#if showAbandonConfirm}
+      <div class="abandon-confirm-overlay" role="dialog" aria-modal="true" aria-label="Confirm abandon run">
+        <div class="abandon-confirm-modal">
+          <h3>Abandon Run?</h3>
+          {#if abandonRunInfo}
+            <div class="abandon-run-stats">
+              <div class="abandon-stat"><span class="stat-label">Floor</span><span class="stat-value">{abandonRunInfo.floor}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Gold</span><span class="stat-value">{abandonRunInfo.gold}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Encounters Won</span><span class="stat-value">{abandonRunInfo.encounters}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Facts Correct</span><span class="stat-value">{abandonRunInfo.factsCorrect}</span></div>
+            </div>
+          {/if}
+          <p class="abandon-warning">All progress will be lost!</p>
+          <div class="abandon-confirm-buttons">
+            <button class="abandon-btn-cancel" onclick={cancelAbandon}>Cancel</button>
+            <button class="abandon-btn-confirm" onclick={confirmAbandon}>Yes, Abandon</button>
+          </div>
+        </div>
+      </div>
+    {/if}
   {/if}
 
   {#if $currentScreen === 'domainSelection'}
@@ -446,6 +498,7 @@
         runDurationMs={end.runDurationMs}
         rewardMultiplier={end.rewardMultiplier}
         currencyEarned={end.currencyEarned}
+        isFirstRunComplete={$onboardingState.runsCompleted === 1}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />
@@ -488,8 +541,10 @@
   .phaser-container {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
     height: 100vh;
     display: none;
   }
@@ -509,13 +564,14 @@
     background: rgba(15, 23, 42, 0.85);
     color: #cbd5e1;
     font-size: 14px;
-    font-weight: 800;
+    font-family: monospace;
+    font-weight: 700;
     z-index: 150;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: -1px;
+    letter-spacing: 2px;
   }
 
   .active-run-banner {
@@ -523,7 +579,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 250;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -537,7 +593,7 @@
   }
 
   .banner-resume-btn {
-    min-height: 32px;
+    min-height: 44px;
     padding: 0 14px;
     border-radius: 8px;
     border: 1px solid #f59e0b;
@@ -549,13 +605,102 @@
   }
 
   .banner-abandon-btn {
-    min-height: 32px;
+    min-height: 44px;
     padding: 0 10px;
     border-radius: 8px;
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(30, 41, 59, 0.75);
     color: #94a3b8;
     font-size: calc(11px * var(--text-scale, 1));
+    cursor: pointer;
+  }
+
+  .abandon-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+  }
+
+  .abandon-confirm-modal {
+    background: #1a1a2e;
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 320px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .abandon-confirm-modal h3 {
+    color: #e74c3c;
+    margin: 0 0 16px;
+    font-size: 20px;
+  }
+
+  .abandon-run-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .abandon-stat {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+  }
+
+  .stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1c40f;
+  }
+
+  .abandon-warning {
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .abandon-confirm-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .abandon-btn-cancel {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #64748b;
+    background: transparent;
+    color: #e2e8f0;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .abandon-btn-confirm {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
   }
 

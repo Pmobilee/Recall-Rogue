@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-10T06:27:10.324Z",
+  "inputFiles": [
+    "data/generated/worker-output/art_architecture.jsonl"
+  ],
+  "target": "data/generated/art_architecture.jsonl",
+  "targetExists": true,
+  "existingFactsInTarget": 62,
+  "factsToAdd": 0,
+  "newTotalAfterMerge": 62,
+  "sampleFacts": [],
+  "coverage": {
+    "generatedAt": "2026-03-10T06:27:10.324Z",
+    "totalFacts": 0,
+    "withSource": 0,
+    "sourceCoveragePct": 0,
+    "byCategory": {},
+    "byDifficulty": {},
+    "byType": {},
+    "byAgeRating": {},
+    "byVerification": {
+      "verified": 0,
+      "unverified": 0
+    },
+    "distractorWarnings": []
+  }
+}

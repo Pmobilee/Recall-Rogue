@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.398Z",
+  "inputFiles": [
+    "data/generated/worker-output/general_knowledge.jsonl"
+  ],
+  "domain": "general_knowledge",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 140,
+    "existingCompared": 1233,
+    "exactDuplicates": 140,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "fan-sin-temple-001",
+      "candidateQuestion": "Where is Fan Sin Temple located?",
+      "matchId": "fan-sin-temple-001",
+      "matchQuestion": "Where is Fan Sin Temple located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "aqaba-church-001",
+      "candidateQuestion": "Where is Aqaba Church located?",
+      "matchId": "aqaba-church-001",
+      "matchQuestion": "Where is Aqaba Church located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q2873434-minerva-chalcidica",
+      "candidateQuestion": "Where is the Temple of Minerva Chalcidica located?",
+      "matchId": "q2873434-minerva-chalcidica",
+      "matchQuestion": "Where is the Temple of Minerva Chalcidica located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q2882977-etemple-uruk",
+      "candidateQuestion": "What ancient temple is located in Uruk?",
+      "matchId": "Q2882977-etemple-uruk",
+      "matchQuestion": "What ancient temple is located in Uruk?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q2883612-baolun-ge",
+      "candidateQuestion": "Where is Baolun ge temple located?",
+      "matchId": "Q2883612-baolun-ge",
+      "matchQuestion": "Where is Baolun ge temple located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q2900794-ein-gedi-temple",
+      "candidateQuestion": "When was Ein Gedi Temple built?",
+      "matchId": "q2900794-ein-gedi-temple",
+      "matchQuestion": "When was Ein Gedi Temple built?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "guang-ming-temple-orlando",
+      "candidateQuestion": "When was Guang Ming Temple in Orlando founded?",
+      "matchId": "guang-ming-temple-orlando",
+      "matchQuestion": "When was Guang Ming Temple in Orlando founded?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q2919923-001",
+      "candidateQuestion": "Where is the Temple of Saint Anthony of Padua located?",
+      "matchId": "Q2919923-001",
+      "matchQuestion": "Where is the Temple of Saint Anthony of Padua located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bubasteion-alexandria-001",
+      "candidateQuestion": "What was the Bubasteion of Alexandria?",
+      "matchId": "bubasteion-alexandria-001",
+      "matchQuestion": "What was the Bubasteion of Alexandria?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q2937495-capitolium-vetus",
+      "candidateQuestion": "What was Capitolium Vetus in ancient Rome?",
+      "matchId": "Q2937495-capitolium-vetus",
+      "matchQuestion": "What was Capitolium Vetus in ancient Rome?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q3057828-antique-stairs",
+      "candidateQuestion": "What are Vienna's Escaliers antiques?",
+      "matchId": "Q3057828-antique-stairs",
+      "matchQuestion": "What are Vienna's Escaliers antiques?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q3074203-temple-trajan-001",
+      "candidateQuestion": "Where is the Temple of Trajan located?",
+      "matchId": "Q3074203-temple-trajan-001",
+      "matchQuestion": "Where is the Temple of Trajan located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "sukuh-temple-001",
+      "candidateQuestion": "What is Sukuh?",
+      "matchId": "sukuh-temple-001",
+      "matchQuestion": "What is Sukuh?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q3142437-temple-apollo-patroos",
+      "candidateQuestion": "Where is Temple of Apollo Patroos located?",
+      "matchId": "Q3142437-temple-apollo-patroos",
+      "matchQuestion": "Where is Temple of Apollo Patroos located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q3162567-universel-murad-hassil",
+      "candidateQuestion": "When was Universel Murad Hassil built?",
+      "matchId": "q3162567-universel-murad-hassil",
+      "matchQuestion": "When was Universel Murad Hassil built?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q3218064-nanhua",
+      "candidateQuestion": "Where is Nan Hua Temple located?",
+      "matchId": "Q3218064-nanhua",
+      "matchQuestion": "Where is Nan Hua Temple located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q3271236-st-lawrence-macau",
+      "candidateQuestion": "When was St Lawrence's Church in Macau founded?",
+      "matchId": "q3271236-st-lawrence-macau",
+      "matchQuestion": "When was St Lawrence's Church in Macau founded?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "Q3309400-temple-jupiter-pompeii",
+      "candidateQuestion": "What was Pompeii's main forum temple?",
+      "matchId": "Q3309400-temple-jupiter-pompeii",
+      "matchQuestion": "What was Pompeii's main forum temple?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q3320367-monastery-gabriel",
+      "candidateQuestion": "When was the Monastery of Saint Archangel Gabriel founded?",
+      "matchId": "q3320367-monastery-gabriel",
+      "matchQuestion": "When was the Monastery of Saint Archangel Gabriel founded?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q3347155-jagannath-puri",
+      "candidateQuestion": "Where is Shri Jagannath Puri Temple located?",
+      "matchId": "q3347155-jagannath-puri",
+      "matchQuestion": "Where is Shri Jagannath Puri Temple located?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

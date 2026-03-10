@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:11.143Z",
+  "command": "promote",
+  "args": {
+    "generated-dir": "data/generated",
+    "output": "src/data/seed/facts-generated.json",
+    "approved-only": true,
+    "rebuild-db": true,
+    "enforce-qa-gate": true,
+    "qa-report": "data/generated/qa-reports/post-ingestion-gate.json",
+    "report": "data/generated/qa-reports/agent-workers-promote-wrapper.json"
+  },
+  "run": {
+    "script": "scripts/content-pipeline/qa/promote-approved-to-db.mjs",
+    "ok": false,
+    "exitCode": 1,
+    "durationMs": 30,
+    "stdout": "",
+    "stderr": "[promote-approved-to-db] failed: QA gate report missing or unreadable: /root/terra-miner/data/generated/qa-reports/post-ingestion-gate.json. Run npm run content:qa first.",
+    "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/qa/promote-approved-to-db.mjs --input data/generated --output src/data/seed/facts-generated.json --approved-only true --rebuild-db true --enforce-qa-gate true --qa-report data/generated/qa-reports/post-ingestion-gate.json\n[promote-approved-to-db] failed: QA gate report missing or unreadable: /root/terra-miner/data/generated/qa-reports/post-ingestion-gate.json. Run npm run content:qa first.\n",
+    "args": [
+      "--input",
+      "data/generated",
+      "--output",
+      "src/data/seed/facts-generated.json",
+      "--approved-only",
+      "true",
+      "--rebuild-db",
+      "true",
+      "--enforce-qa-gate",
+      "true",
+      "--qa-report",
+      "data/generated/qa-reports/post-ingestion-gate.json"
+    ]
+  }
+}

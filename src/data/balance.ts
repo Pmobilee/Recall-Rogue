@@ -1018,7 +1018,7 @@ export const ENABLE_PHASE2_MECHANICS = false;
 export const ENABLE_LANGUAGE_DOMAINS = false;
 
 /** Number of runs that force Story Mode (explorer) difficulty. */
-export const STORY_MODE_FORCED_RUNS = 3;
+export const STORY_MODE_FORCED_RUNS = 1;
 
 /** Number of completed runs before archetype selection unlocks (auto-balanced until then). */
 export const ARCHETYPE_UNLOCK_RUNS = 3;

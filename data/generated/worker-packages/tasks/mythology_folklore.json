@@ -1,0 +1,17 @@
+{
+  "domain": "mythology_folklore",
+  "domainSlug": "mythology-folklore",
+  "existingFacts": 63,
+  "existingFactsPath": "data/generated/mythology_folklore.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 400,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/mythology_folklore.json",
+  "workerOutputPath": "data/generated/worker-output/mythology_folklore.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

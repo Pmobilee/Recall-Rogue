@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-03-10T06:27:24.918Z",
+  "inputFiles": [
+    "data/generated"
+  ],
+  "counts": {
+    "flagged": 1
+  },
+  "items": [
+    {
+      "index": 125,
+      "id": null,
+      "question": "(unknown)",
+      "errors": [
+        "statement_too_short",
+        "quiz_question_too_short",
+        "missing_correct_answer",
+        "distractors_below_minimum",
+        "variants_below_minimum",
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

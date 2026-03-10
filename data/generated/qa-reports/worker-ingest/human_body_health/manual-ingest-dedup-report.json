@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:10.011Z",
+  "inputFiles": [
+    "data/generated/worker-output/human_body_health.jsonl"
+  ],
+  "domain": "human_body_health",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 63,
+    "existingCompared": 1233,
+    "exactDuplicates": 63,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "adgra2-gene-001",
+      "candidateQuestion": "What is ADGRA2 classified as?",
+      "matchId": "adgra2-gene-001",
+      "matchQuestion": "What is ADGRA2 classified as?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "polr2mp1-001",
+      "candidateQuestion": "What is POLR2MP1 in humans?",
+      "matchId": "polr2mp1-001",
+      "matchQuestion": "What is POLR2MP1 in humans?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "gprc5d-001",
+      "candidateQuestion": "What does GPRC5D encode in human cells?",
+      "matchId": "gprc5d-001",
+      "matchQuestion": "What does GPRC5D encode in human cells?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "gltp-gene-q5572626",
+      "candidateQuestion": "What does GLTP stand for in human genetics?",
+      "matchId": "gltp-gene-q5572626",
+      "matchQuestion": "What does GLTP stand for in human genetics?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "gpc4-protein-gene-001",
+      "candidateQuestion": "What type of gene is GPC4?",
+      "matchId": "gpc4-protein-gene-001",
+      "matchQuestion": "What type of gene is GPC4?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "glyc3pdh-001",
+      "candidateQuestion": "What does GAPDH enzyme do in cells?",
+      "matchId": "glyc3pdh-001",
+      "matchQuestion": "What does GAPDH enzyme do in cells?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "his3-gene-001",
+      "candidateQuestion": "What does the HIS3 gene encode?",
+      "matchId": "his3-gene-001",
+      "matchQuestion": "What does the HIS3 gene encode?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "gpc5-gene-001",
+      "candidateQuestion": "What type of gene is GPC5 in humans?",
+      "matchId": "gpc5-gene-001",
+      "matchQuestion": "What type of gene is GPC5 in humans?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "H1-4-gene-001",
+      "candidateQuestion": "What type of gene is H1-4?",
+      "matchId": "H1-4-gene-001",
+      "matchQuestion": "What type of gene is H1-4?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "tcn1-protein-gene-001",
+      "candidateQuestion": "What is TCN1 in human genetics?",
+      "matchId": "tcn1-protein-gene-001",
+      "matchQuestion": "What is TCN1 in human genetics?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "hothead-arabidopsis-gene-001",
+      "candidateQuestion": "What organism contains the HOTHEAD gene?",
+      "matchId": "hothead-arabidopsis-gene-001",
+      "matchQuestion": "What organism contains the HOTHEAD gene?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "histone-gene-001",
+      "candidateQuestion": "What do histone genes encode?",
+      "matchId": "histone-gene-001",
+      "matchQuestion": "What do histone genes encode?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "pde10a-001",
+      "candidateQuestion": "What type of gene is PDE10A in humans?",
+      "matchId": "pde10a-001",
+      "matchQuestion": "What type of gene is PDE10A in humans?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-cesarean-section-001",
+      "candidateQuestion": "How is a baby delivered via C-section?",
+      "matchId": "health-cesarean-section-001",
+      "matchQuestion": "How is a baby delivered via C-section?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-lumbar-puncture-002",
+      "candidateQuestion": "What does a lumbar puncture collect?",
+      "matchId": "health-lumbar-puncture-002",
+      "matchQuestion": "What does a lumbar puncture collect?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-pulse-oximetry-003",
+      "candidateQuestion": "What does pulse oximetry measure?",
+      "matchId": "health-pulse-oximetry-003",
+      "matchQuestion": "What does pulse oximetry measure?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-covid-19-test-004",
+      "candidateQuestion": "What virus does a COVID-19 test detect?",
+      "matchId": "health-covid-19-test-004",
+      "matchQuestion": "What virus does a COVID-19 test detect?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-pacemaker-implantation-005",
+      "candidateQuestion": "What does a pacemaker regulate?",
+      "matchId": "health-pacemaker-implantation-005",
+      "matchQuestion": "What does a pacemaker regulate?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-tracheal-intubation-006",
+      "candidateQuestion": "Where is a tube placed during intubation?",
+      "matchId": "health-tracheal-intubation-006",
+      "matchQuestion": "Where is a tube placed during intubation?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "health-whole-body-mri-007",
+      "candidateQuestion": "What does whole-body MRI scan?",
+      "matchId": "health-whole-body-mri-007",
+      "matchQuestion": "What does whole-body MRI scan?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

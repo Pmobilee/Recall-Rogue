@@ -42,6 +42,100 @@ function shuffle<T>(arr: T[]): T[] {
   return arr;
 }
 
+/** Weighted shuffle: items with higher weights are more likely to appear earlier. */
+function weightedShuffle<T extends { _weight: number }>(items: T[], count: number): T[] {
+  const result: T[] = [];
+  const pool = [...items];
+  for (let i = 0; i < count && pool.length > 0; i++) {
+    const totalWeight = pool.reduce((sum, item) => sum + item._weight, 0);
+    let roll = Math.random() * totalWeight;
+    let picked = 0;
+    for (let j = 0; j < pool.length; j++) {
+      roll -= pool[j]._weight;
+      if (roll <= 0) { picked = j; break; }
+    }
+    result.push(pool.splice(picked, 1)[0]);
+  }
+  return result;
+}
+
+const RECENT_FACTS_KEY = 'recall-rogue-recent-facts';
+const MAX_RECENT_RUNS = 2;
+
+/** Get fact IDs from the last N runs */
+function getRecentFactIds(): Set<string> {
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(RECENT_FACTS_KEY) : null;
+    if (!raw) return new Set();
+    const runs: string[][] = JSON.parse(raw);
+    return new Set(runs.flat());
+  } catch { return new Set(); }
+}
+
+/** Record fact IDs from the completed run */
+export function recordRunFacts(factIds: string[]): void {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    const raw = localStorage.getItem(RECENT_FACTS_KEY);
+    const runs: string[][] = raw ? JSON.parse(raw) : [];
+    runs.unshift(factIds);
+    while (runs.length > MAX_RECENT_RUNS) runs.pop();
+    localStorage.setItem(RECENT_FACTS_KEY, JSON.stringify(runs));
+  } catch { /* localStorage unavailable */ }
+}
+
+/**
+ * Stratified sampling by difficulty.
+ * Targets: easy (1-2) ~30%, medium (3) ~45%, hard (4-5) ~25%.
+ * Shortfalls backfill from medium first, then any remaining bucket.
+ */
+function stratifiedSample(facts: Fact[], target: number): Fact[] {
+  const recentIds = getRecentFactIds();
+  // Partition each bucket: non-recent (shuffled) first, then recent (shuffled) — so slicing prefers fresh facts
+  const deprioritize = (arr: Fact[]) => {
+    const fresh = shuffle(arr.filter(f => !recentIds.has(f.id)));
+    const recent = shuffle(arr.filter(f => recentIds.has(f.id)));
+    return [...fresh, ...recent];
+  };
+  const easy = deprioritize(facts.filter(f => (f.difficulty ?? 3) <= 2));
+  const medium = deprioritize(facts.filter(f => (f.difficulty ?? 3) === 3));
+  const hard = deprioritize(facts.filter(f => (f.difficulty ?? 3) >= 4));
+
+  const easyTarget = Math.round(target * 0.30);
+  const hardTarget = Math.round(target * 0.25);
+  const mediumTarget = target - easyTarget - hardTarget;
+
+  const selected: Fact[] = [];
+  const addedIds = new Set<string>();
+
+  const take = (source: Fact[], count: number) => {
+    let taken = 0;
+    for (const f of source) {
+      if (taken >= count) break;
+      if (addedIds.has(f.id)) continue;
+      selected.push(f);
+      addedIds.add(f.id);
+      taken++;
+    }
+    return taken;
+  };
+
+  // Take from each bucket
+  take(easy, easyTarget);
+  take(medium, mediumTarget);
+  take(hard, hardTarget);
+
+  // Backfill shortfalls: prefer medium, then easy, then hard
+  const remaining = target - selected.length;
+  if (remaining > 0) {
+    take(medium, remaining);
+    take(easy, remaining);
+    take(hard, remaining);
+  }
+
+  return selected.slice(0, target);
+}
+
 function pickRandomSubset<T>(items: T[], count: number): T[] {
   return shuffle([...items]).slice(0, Math.max(0, count));
 }
@@ -138,8 +232,10 @@ export function buildRunPool(
       addedIds.add(fact.id);
     };
 
-    for (const fact of factsDB.getByCategory(categories, limit + 40)) {
-      if (selected.length >= limit) break;
+    const categoryFacts = factsDB.getByCategory(categories, limit * 3)
+      .filter(f => !excludedFactIds.has(f.id));
+    const stratified = stratifiedSample(categoryFacts, limit);
+    for (const fact of stratified) {
       pushUnique(fact);
     }
 
@@ -174,13 +270,24 @@ export function buildRunPool(
   for (const fact of secondaryFacts) usedFactIds.add(fact.id);
   const secondaryCards = factsToCards(secondaryFacts);
 
-  const reviewCandidates = allReviewStates
-    .filter((state) => !usedFactIds.has(state.factId))
-    .sort((a, b) => a.nextReviewAt - b.nextReviewAt)
-    .slice(0, reviewTarget + 20);
+  const now = Date.now();
+  const DAY_MS = 86_400_000;
+  const WEEK_MS = 7 * DAY_MS;
+
+  const reviewCandidatesRaw = allReviewStates
+    .filter((state) => !usedFactIds.has(state.factId));
+
+  const weightedReviews = reviewCandidatesRaw.map(r => ({
+    ...r,
+    _weight: r.nextReviewAt <= now ? 3.0
+      : r.nextReviewAt <= now + DAY_MS ? 2.0
+      : r.nextReviewAt <= now + WEEK_MS ? 1.0
+      : 0.3,
+  }));
+  const selectedReviews = weightedShuffle(weightedReviews, reviewTarget + 20);
 
   const reviewCards: Card[] = [];
-  for (const state of reviewCandidates) {
+  for (const state of selectedReviews) {
     if (reviewCards.length >= reviewTarget) break;
     const fact = factsDB.getById(state.factId);
     if (!fact || usedFactIds.has(fact.id)) continue;
@@ -213,3 +320,6 @@ export function buildRunPool(
 
   return shuffle(pool);
 }
+
+// Exported for unit testing only — not part of the public API.
+export { stratifiedSample as _stratifiedSample_forTest };

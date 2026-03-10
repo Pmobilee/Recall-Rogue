@@ -1,5 +1,922 @@
 [
   {
+    "country": "http://www.wikidata.org/entity/Q16",
+    "population": "36991981",
+    "area": "9984670",
+    "countryLabel": "Canada",
+    "countryDescription": "country in North America",
+    "capitalLabel": "Ottawa",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q17",
+    "population": "123802000",
+    "area": "377972.28",
+    "countryLabel": "Japan",
+    "countryDescription": "island country in East Asia",
+    "capitalLabel": "Tokyo",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q20",
+    "population": "5627400",
+    "area": "385207",
+    "countryLabel": "Norway",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Oslo",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q27",
+    "population": "5149139",
+    "area": "69797",
+    "countryLabel": "Ireland",
+    "countryDescription": "sovereign state in Northwestern Europe",
+    "capitalLabel": "Dublin",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q28",
+    "population": "9603634",
+    "area": "93011.4",
+    "countryLabel": "Hungary",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Budapest",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q29",
+    "population": "48592909",
+    "area": "505990",
+    "countryLabel": "Spain",
+    "countryDescription": "country in southwestern Europe with territories in Africa",
+    "capitalLabel": "Madrid",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q30",
+    "population": "340110988",
+    "area": "9826675",
+    "countryLabel": "United States",
+    "countryDescription": "country located primarily in North America",
+    "capitalLabel": "Washington, D.C.",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q31",
+    "population": "11825551",
+    "area": "30688",
+    "countryLabel": "Belgium",
+    "countryDescription": "country in western Europe",
+    "capitalLabel": "City of Brussels",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q32",
+    "population": "681987",
+    "area": "2586.36",
+    "countryLabel": "Luxembourg",
+    "countryDescription": "country in Western Europe",
+    "capitalLabel": "Luxembourg",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q33",
+    "population": "5608218",
+    "area": "338478.34",
+    "countryLabel": "Finland",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Helsinki",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q34",
+    "population": "10609460",
+    "area": "447425.16",
+    "countryLabel": "Sweden",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Stockholm",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q36",
+    "population": "37563071",
+    "area": "312683",
+    "countryLabel": "Poland",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Warsaw",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q37",
+    "population": "2860002",
+    "area": "65300",
+    "countryLabel": "Lithuania",
+    "countryDescription": "country in northeastern Europe",
+    "capitalLabel": "Vilnius",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q38",
+    "population": "58850717",
+    "area": "302068",
+    "countryLabel": "Italy",
+    "countryDescription": "country in southern Europe",
+    "capitalLabel": "Rome",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q39",
+    "population": "9104063",
+    "area": "41291",
+    "countryLabel": "Switzerland",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Bern",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q40",
+    "population": "8979894",
+    "area": "83878.99",
+    "countryLabel": "Austria",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Vienna",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q41",
+    "population": "10482487",
+    "area": "131957",
+    "countryLabel": "Greece",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Athens",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q43",
+    "population": "85372377",
+    "area": "783562",
+    "countryLabel": "Turkey",
+    "countryDescription": "country in West Asia and Southeast Europe",
+    "capitalLabel": "Ankara",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q45",
+    "population": "10347892",
+    "area": "92225",
+    "countryLabel": "Portugal",
+    "countryDescription": "country in Southwestern Europe",
+    "capitalLabel": "Lisbon",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q77",
+    "population": "3444263",
+    "area": "176215",
+    "countryLabel": "Uruguay",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Montevideo",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q79",
+    "population": "114535772",
+    "area": "1010407.87",
+    "countryLabel": "Egypt",
+    "countryDescription": "country in Northeast Africa and Southwest Asia",
+    "capitalLabel": "Cairo",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q96",
+    "population": "132274416",
+    "area": "1972550",
+    "countryLabel": "Mexico",
+    "countryDescription": "country in North America",
+    "capitalLabel": "Mexico City",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q114",
+    "population": "48468138",
+    "area": "581309",
+    "countryLabel": "Kenya",
+    "countryDescription": "country in Eastern Africa",
+    "capitalLabel": "Nairobi",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q115",
+    "population": "128691692",
+    "area": "1104300",
+    "countryLabel": "Ethiopia",
+    "countryDescription": "country in the Horn of Africa",
+    "capitalLabel": "Addis Ababa",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q117",
+    "population": "32833031",
+    "area": "238535",
+    "countryLabel": "Ghana",
+    "countryDescription": "country in West Africa",
+    "capitalLabel": "Accra",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q142",
+    "population": "68605616",
+    "area": "643801",
+    "countryLabel": "France",
+    "countryDescription": "country in Western Europe and other continents (through its overseas territories in America, Africa and Oceania)",
+    "capitalLabel": "Paris",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q145",
+    "population": "67326569",
+    "area": "242495",
+    "countryLabel": "United Kingdom",
+    "countryDescription": "island country in north-west Europe",
+    "capitalLabel": "London",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q148",
+    "population": "1442965000",
+    "area": "9596961",
+    "countryLabel": "People's Republic of China",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Beijing",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q155",
+    "population": "213421037",
+    "area": "8515767",
+    "countryLabel": "Brazil",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Brasília",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q159",
+    "population": "146119928",
+    "area": "17075400",
+    "countryLabel": "Russia",
+    "countryDescription": "country in Eastern Europe and Northern Asia",
+    "capitalLabel": "Moscow",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q183",
+    "population": "83577140",
+    "area": "357587.77",
+    "countryLabel": "Germany",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Berlin",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q184",
+    "population": "9109280",
+    "area": "207596.76",
+    "countryLabel": "Belarus",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Minsk",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q189",
+    "population": "364260",
+    "area": "103004",
+    "countryLabel": "Iceland",
+    "countryDescription": "Nordic island country in the North Atlantic Ocean",
+    "capitalLabel": "Reykjavík",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q191",
+    "population": "1369995",
+    "area": "45335",
+    "countryLabel": "Estonia",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Tallinn",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q211",
+    "population": "1856932",
+    "area": "62226.85",
+    "countryLabel": "Latvia",
+    "countryDescription": "sovereign state in northeastern Europe",
+    "capitalLabel": "Riga",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q212",
+    "population": "41167335",
+    "area": "603550",
+    "countryLabel": "Ukraine",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Kyiv",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q213",
+    "population": "10909500",
+    "area": "78871",
+    "countryLabel": "Czech Republic",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Prague",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q214",
+    "population": "5419451",
+    "area": "49034",
+    "countryLabel": "Slovakia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Bratislava",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q215",
+    "population": "2066880",
+    "area": "20271",
+    "countryLabel": "Slovenia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Ljubljana",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q217",
+    "population": "2409207",
+    "area": "33843.5",
+    "countryLabel": "Moldova",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Chișinău",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q218",
+    "population": "19053815",
+    "area": "238397",
+    "countryLabel": "Romania",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Bucharest",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q219",
+    "population": "6437360",
+    "area": "110993.6",
+    "countryLabel": "Bulgaria",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Sofia",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q221",
+    "population": "1836713",
+    "area": "25713",
+    "countryLabel": "North Macedonia",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Skopje",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q222",
+    "population": "2811655",
+    "area": "28748",
+    "countryLabel": "Albania",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Tirana",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q224",
+    "population": "3871833",
+    "area": "56594",
+    "countryLabel": "Croatia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Zagreb",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q225",
+    "population": "3816459",
+    "area": "51197",
+    "countryLabel": "Bosnia and Herzegovina",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Sarajevo",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q227",
+    "population": "10180770",
+    "area": "86600",
+    "countryLabel": "Azerbaijan",
+    "countryDescription": "country in the Caucasus in Eastern Europe and Western Asia",
+    "capitalLabel": "Baku",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q228",
+    "population": "87486",
+    "area": "468",
+    "countryLabel": "Andorra",
+    "countryDescription": "sovereign microstate between France and Spain, in Western Europe",
+    "capitalLabel": "Andorra la Vella",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q229",
+    "population": "1344976",
+    "area": "9242.45",
+    "countryLabel": "Cyprus",
+    "countryDescription": "country in the Mediterranean Sea",
+    "capitalLabel": "Nicosia",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q230",
+    "population": "3717100",
+    "area": "69700",
+    "countryLabel": "Georgia",
+    "countryDescription": "country in the Caucasus region of Europe and Asia",
+    "capitalLabel": "Tbilisi",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q232",
+    "population": "20139914",
+    "area": "2724900",
+    "countryLabel": "Kazakhstan",
+    "countryDescription": "sovereign state in Eastern Europe and Central Asia",
+    "capitalLabel": "Astana",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q233",
+    "population": "553214",
+    "area": "316",
+    "countryLabel": "Malta",
+    "countryDescription": "country in Southern Europe situated on an archipelago in the Mediterranean Sea",
+    "capitalLabel": "Valletta",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q235",
+    "population": "38423",
+    "area": "2.08",
+    "countryLabel": "Monaco",
+    "countryDescription": "microstate in Western Europe",
+    "capitalLabel": "Monaco City",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q236",
+    "population": "617213",
+    "area": "13883",
+    "countryLabel": "Montenegro",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Podgorica",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q237",
+    "population": "882",
+    "area": "0.49",
+    "countryLabel": "Vatican City",
+    "countryDescription": "Holy See's independent state, an enclave within Rome, Italy",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q238",
+    "population": "33600",
+    "area": "61.2",
+    "countryLabel": "San Marino",
+    "countryDescription": "sovereign state in southern Europe, enclaved within Italy",
+    "capitalLabel": "San Marino",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q241",
+    "population": "10985974",
+    "area": "109884",
+    "countryLabel": "Cuba",
+    "countryDescription": "sovereign state situated on an island in the Caribbean Sea",
+    "capitalLabel": "Havana",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q242",
+    "population": "411106",
+    "area": "22966",
+    "countryLabel": "Belize",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Belmopan",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q244",
+    "population": "303431",
+    "area": "439",
+    "countryLabel": "Barbados",
+    "countryDescription": "island nation in the Caribbean",
+    "capitalLabel": "Bridgetown",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q252",
+    "population": "275439000",
+    "area": "1904570",
+    "countryLabel": "Indonesia",
+    "countryDescription": "island country in Southeast Asia and Oceania",
+    "capitalLabel": "Jakarta",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q258",
+    "population": "62027503",
+    "area": "1221037",
+    "countryLabel": "South Africa",
+    "countryDescription": "country in southern Africa",
+    "capitalLabel": "Pretoria",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q262",
+    "population": "46164219",
+    "area": "2381741",
+    "countryLabel": "Algeria",
+    "countryDescription": "country in North Africa",
+    "capitalLabel": "Algiers",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q265",
+    "population": "34915100",
+    "area": "448978",
+    "countryLabel": "Uzbekistan",
+    "countryDescription": "sovereign state in Central Asia",
+    "capitalLabel": "Tashkent",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q298",
+    "population": "19458000",
+    "area": "756102",
+    "countryLabel": "Chile",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Santiago",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q334",
+    "population": "5866139",
+    "area": "719.1",
+    "countryLabel": "Singapore",
+    "countryDescription": "sovereign island country and city-state in maritime Southeast Asia",
+    "capitalLabel": "Singapore",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q347",
+    "population": "37922",
+    "area": "160",
+    "countryLabel": "Liechtenstein",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Vaduz",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q398",
+    "population": "1569666",
+    "area": "786.5",
+    "countryLabel": "Bahrain",
+    "countryDescription": "country in the Persian Gulf",
+    "capitalLabel": "Manama",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q399",
+    "population": "2930450",
+    "area": "29743.423459",
+    "countryLabel": "Armenia",
+    "countryDescription": "sovereign state in the South Caucasus region of Eurasia",
+    "capitalLabel": "Yerevan",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q403",
+    "population": "6605168",
+    "area": "88499",
+    "countryLabel": "Serbia",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Belgrade",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q408",
+    "population": "27614411",
+    "area": "7692024",
+    "countryLabel": "Australia",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Canberra",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q414",
+    "population": "47327407",
+    "area": "2780400",
+    "countryLabel": "Argentina",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Buenos Aires",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q419",
+    "population": "33726000",
+    "area": "1285216",
+    "countryLabel": "Peru",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Lima",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q423",
+    "population": "26418204",
+    "area": "120540",
+    "countryLabel": "North Korea",
+    "countryDescription": "Sovereign state in East Asia",
+    "capitalLabel": "Pyongyang",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q424",
+    "population": "17423880",
+    "area": "181035",
+    "countryLabel": "Cambodia",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Phnom Penh",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q574",
+    "population": "1243235",
+    "area": "14918.72",
+    "countryLabel": "Timor-Leste",
+    "countryDescription": "sovereign state situated on several islands in Southeast Asia",
+    "capitalLabel": "Dili",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q657",
+    "population": "19319064",
+    "area": "1284000",
+    "countryLabel": "Chad",
+    "countryDescription": "sovereign state in central Africa",
+    "capitalLabel": "N'Djamena",
+    "continentLabel": "Africa"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q664",
+    "population": "5307800",
+    "area": "268021",
+    "countryLabel": "New Zealand",
+    "countryDescription": "island country in the southwest Pacific Ocean",
+    "capitalLabel": "Wellington",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q668",
+    "population": "1477519529",
+    "area": "3287263",
+    "countryLabel": "India",
+    "countryDescription": "country in South Asia",
+    "capitalLabel": "New Delhi",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q672",
+    "population": "10643",
+    "area": "25.14",
+    "countryLabel": "Tuvalu",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Funafuti",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q678",
+    "population": "108020",
+    "area": "748.506563",
+    "countryLabel": "Tonga",
+    "countryDescription": "sovereign state in Oceania, situated on an archipelago",
+    "capitalLabel": "Nukuʻalofa",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q683",
+    "population": "200010",
+    "area": "2842",
+    "countryLabel": "Samoa",
+    "countryDescription": "sovereign state made up of six islands in the Pacific Ocean",
+    "capitalLabel": "Apia",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q685",
+    "population": "611343",
+    "area": "28400",
+    "countryLabel": "Solomon Islands",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Honiara",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q686",
+    "population": "300019",
+    "area": "12190",
+    "countryLabel": "Vanuatu",
+    "countryDescription": "island country in Oceania",
+    "capitalLabel": "Port Vila",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q691",
+    "population": "8935000",
+    "area": "462840",
+    "countryLabel": "Papua New Guinea",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Port Moresby",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q695",
+    "population": "21729",
+    "area": "465.550362",
+    "countryLabel": "Palau",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Ngerulmud",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q697",
+    "population": "13650",
+    "area": "21",
+    "countryLabel": "Nauru",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Yaren District",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q702",
+    "population": "105544",
+    "area": "702",
+    "countryLabel": "Federated States of Micronesia",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Palikir",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q709",
+    "population": "53127",
+    "area": "181.43",
+    "countryLabel": "Marshall Islands",
+    "countryDescription": "country near the equator in the Pacific Ocean",
+    "capitalLabel": "Majuro",
+    "continentLabel": "Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q710",
+    "population": "134518",
+    "area": "811",
+    "countryLabel": "Kiribati",
+    "countryDescription": "island sovereign state in the central Pacific Ocean",
+    "capitalLabel": "Tarawa",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q739",
+    "population": "52321152",
+    "area": "1141748",
+    "countryLabel": "Colombia",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Bogotá",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q750",
+    "population": "12244159",
+    "area": "1098581",
+    "countryLabel": "Bolivia",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "La Paz",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q754",
+    "population": "1369125",
+    "area": "5128",
+    "countryLabel": "Trinidad and Tobago",
+    "countryDescription": "island sovereign state in the Caribbean",
+    "capitalLabel": "Port of Spain",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q757",
+    "population": "109897",
+    "area": "389",
+    "countryLabel": "Saint Vincent and the Grenadines",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Kingstown",
+    "continentLabel": "North America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q756617",
+    "population": "5930987",
+    "area": "2220930",
+    "countryLabel": "Kingdom of Denmark",
+    "countryDescription": "transcontinental sovereign state and constitutional monarchy",
+    "capitalLabel": "Copenhagen",
+    "continentLabel": "Europe"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q736",
+    "population": "16938986",
+    "area": "257204.27",
+    "countryLabel": "Ecuador",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Quito",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q219060",
+    "population": "5227193",
+    "area": "6020",
+    "countryLabel": "Palestine",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "East Jerusalem",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q711",
+    "population": "3409939",
+    "area": "1564116",
+    "countryLabel": "Mongolia",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Ulaanbaatar",
+    "continentLabel": "Asia"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q712",
+    "population": "926276",
+    "area": "18274",
+    "countryLabel": "Fiji",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Suva",
+    "continentLabel": "Insular Oceania"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q717",
+    "population": "31250306",
+    "area": "912050",
+    "countryLabel": "Venezuela",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Caracas",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q730",
+    "population": "563402",
+    "area": "163270",
+    "countryLabel": "Suriname",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Paramaribo",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q733",
+    "population": "6811297",
+    "area": "406756",
+    "countryLabel": "Paraguay",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Asunción",
+    "continentLabel": "South America"
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q734",
+    "population": "878674",
+    "area": "214970",
+    "countryLabel": "Guyana",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Georgetown",
+    "continentLabel": "South America"
+  },
+  {
     "country": "http://www.wikidata.org/entity/Q760",
     "population": "167591",
     "area": "617.012867",
@@ -153,15 +1070,6 @@
     "continentLabel": "Asia"
   },
   {
-    "country": "http://www.wikidata.org/entity/Q805",
-    "population": "28250420",
-    "area": "455503",
-    "countryLabel": "Yemen",
-    "countryDescription": "country in West Asia",
-    "capitalLabel": "Aden",
-    "continentLabel": "Asia"
-  },
-  {
     "country": "http://www.wikidata.org/entity/Q810",
     "population": "10428241",
     "area": "89341",
@@ -294,15 +1202,6 @@
     "countryLabel": "Sri Lanka",
     "countryDescription": "island country in South Asia",
     "capitalLabel": "Colombo",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q854",
-    "population": "21444000",
-    "area": "65610",
-    "countryLabel": "Sri Lanka",
-    "countryDescription": "island country in South Asia",
-    "capitalLabel": "Sri Jayawardenepura Kotte",
     "continentLabel": "Asia"
   },
   {
@@ -837,30 +1736,12 @@
     "continentLabel": "Africa"
   },
   {
-    "country": "http://www.wikidata.org/entity/Q1049",
-    "population": "40533330",
-    "area": "1886068",
-    "countryLabel": "Sudan",
-    "countryDescription": "country in Northeast Africa",
-    "capitalLabel": "Khartoum",
-    "continentLabel": "Africa"
-  },
-  {
     "country": "http://www.wikidata.org/entity/Q1050",
     "population": "1230506",
     "area": "17364",
     "countryLabel": "Eswatini",
     "countryDescription": "sovereign state in southern Africa",
     "capitalLabel": "Mbabane",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q1050",
-    "population": "1230506",
-    "area": "17364",
-    "countryLabel": "Eswatini",
-    "countryDescription": "sovereign state in southern Africa",
-    "capitalLabel": "Lobamba",
     "continentLabel": "Africa"
   },
   {
@@ -880,1048 +1761,5 @@
     "countryDescription": "former empire in Eurasia and North America (1721–1917)",
     "capitalLabel": "Saint Petersburg",
     "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q34266",
-    "population": "181537800",
-    "area": "23700000",
-    "countryLabel": "Russian Empire",
-    "countryDescription": "former empire in Eurasia and North America (1721–1917)",
-    "capitalLabel": "Saint Petersburg",
-    "continentLabel": "Eurasia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q219060",
-    "population": "5227193",
-    "area": "6020",
-    "countryLabel": "Palestine",
-    "countryDescription": "country in West Asia",
-    "capitalLabel": "Ramallah",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q739",
-    "population": "52321152",
-    "area": "1141748",
-    "countryLabel": "Colombia",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Bogotá",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q750",
-    "population": "12244159",
-    "area": "1098581",
-    "countryLabel": "Bolivia",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "La Paz",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q750",
-    "population": "12244159",
-    "area": "1098581",
-    "countryLabel": "Bolivia",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "Sucre",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q754",
-    "population": "1369125",
-    "area": "5128",
-    "countryLabel": "Trinidad and Tobago",
-    "countryDescription": "island sovereign state in the Caribbean",
-    "capitalLabel": "Port of Spain",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q757",
-    "population": "109897",
-    "area": "389",
-    "countryLabel": "Saint Vincent and the Grenadines",
-    "countryDescription": "island sovereign state in the Caribbean Sea",
-    "capitalLabel": "Kingstown",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q736",
-    "population": "16938986",
-    "area": "257204.27",
-    "countryLabel": "Ecuador",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "Quito",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q756617",
-    "population": "5930987",
-    "area": "2220930",
-    "countryLabel": "Kingdom of Denmark",
-    "countryDescription": "transcontinental sovereign state and constitutional monarchy",
-    "capitalLabel": "Copenhagen",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q219060",
-    "population": "5227193",
-    "area": "6020",
-    "countryLabel": "Palestine",
-    "countryDescription": "country in West Asia",
-    "capitalLabel": "East Jerusalem",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q711",
-    "population": "3409939",
-    "area": "1564116",
-    "countryLabel": "Mongolia",
-    "countryDescription": "country in East Asia",
-    "capitalLabel": "Ulaanbaatar",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q712",
-    "population": "926276",
-    "area": "18274",
-    "countryLabel": "Fiji",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Suva",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q717",
-    "population": "31250306",
-    "area": "912050",
-    "countryLabel": "Venezuela",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Caracas",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q730",
-    "population": "563402",
-    "area": "163270",
-    "countryLabel": "Suriname",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Paramaribo",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q733",
-    "population": "6811297",
-    "area": "406756",
-    "countryLabel": "Paraguay",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "Asunción",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q734",
-    "population": "878674",
-    "area": "214970",
-    "countryLabel": "Guyana",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Georgetown",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q16",
-    "population": "36991981",
-    "area": "9984670",
-    "countryLabel": "Canada",
-    "countryDescription": "country in North America",
-    "capitalLabel": "Ottawa",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q17",
-    "population": "123802000",
-    "area": "377972.28",
-    "countryLabel": "Japan",
-    "countryDescription": "island country in East Asia",
-    "capitalLabel": "Tokyo",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q20",
-    "population": "5627400",
-    "area": "385207",
-    "countryLabel": "Norway",
-    "countryDescription": "country in Northern Europe",
-    "capitalLabel": "Oslo",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q27",
-    "population": "5149139",
-    "area": "69797",
-    "countryLabel": "Ireland",
-    "countryDescription": "sovereign state in Northwestern Europe",
-    "capitalLabel": "Dublin",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q28",
-    "population": "9603634",
-    "area": "93011.4",
-    "countryLabel": "Hungary",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Budapest",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q29",
-    "population": "48592909",
-    "area": "505990",
-    "countryLabel": "Spain",
-    "countryDescription": "country in southwestern Europe with territories in Africa",
-    "capitalLabel": "Madrid",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q30",
-    "population": "340110988",
-    "area": "9826675",
-    "countryLabel": "United States",
-    "countryDescription": "country located primarily in North America",
-    "capitalLabel": "Washington, D.C.",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q31",
-    "population": "11825551",
-    "area": "30688",
-    "countryLabel": "Belgium",
-    "countryDescription": "country in western Europe",
-    "capitalLabel": "City of Brussels",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q32",
-    "population": "681987",
-    "area": "2586.36",
-    "countryLabel": "Luxembourg",
-    "countryDescription": "country in Western Europe",
-    "capitalLabel": "Luxembourg",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q33",
-    "population": "5608218",
-    "area": "338478.34",
-    "countryLabel": "Finland",
-    "countryDescription": "country in Northern Europe",
-    "capitalLabel": "Helsinki",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q34",
-    "population": "10609460",
-    "area": "447425.16",
-    "countryLabel": "Sweden",
-    "countryDescription": "country in Northern Europe",
-    "capitalLabel": "Stockholm",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q36",
-    "population": "37563071",
-    "area": "312683",
-    "countryLabel": "Poland",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Warsaw",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q37",
-    "population": "2860002",
-    "area": "65300",
-    "countryLabel": "Lithuania",
-    "countryDescription": "country in northeastern Europe",
-    "capitalLabel": "Vilnius",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q38",
-    "population": "58850717",
-    "area": "302068",
-    "countryLabel": "Italy",
-    "countryDescription": "country in southern Europe",
-    "capitalLabel": "Rome",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q39",
-    "population": "9104063",
-    "area": "41291",
-    "countryLabel": "Switzerland",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Bern",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q40",
-    "population": "8979894",
-    "area": "83878.99",
-    "countryLabel": "Austria",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Vienna",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q41",
-    "population": "10482487",
-    "area": "131957",
-    "countryLabel": "Greece",
-    "countryDescription": "country in Southeast Europe",
-    "capitalLabel": "Athens",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q43",
-    "population": "85372377",
-    "area": "783562",
-    "countryLabel": "Turkey",
-    "countryDescription": "country in West Asia and Southeast Europe",
-    "capitalLabel": "Ankara",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q45",
-    "population": "10347892",
-    "area": "92225",
-    "countryLabel": "Portugal",
-    "countryDescription": "country in Southwestern Europe",
-    "capitalLabel": "Lisbon",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q77",
-    "population": "3444263",
-    "area": "176215",
-    "countryLabel": "Uruguay",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "Montevideo",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q79",
-    "population": "114535772",
-    "area": "1010407.87",
-    "countryLabel": "Egypt",
-    "countryDescription": "country in Northeast Africa and Southwest Asia",
-    "capitalLabel": "Cairo",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q96",
-    "population": "132274416",
-    "area": "1972550",
-    "countryLabel": "Mexico",
-    "countryDescription": "country in North America",
-    "capitalLabel": "Mexico City",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q114",
-    "population": "48468138",
-    "area": "581309",
-    "countryLabel": "Kenya",
-    "countryDescription": "country in Eastern Africa",
-    "capitalLabel": "Nairobi",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q115",
-    "population": "128691692",
-    "area": "1104300",
-    "countryLabel": "Ethiopia",
-    "countryDescription": "country in the Horn of Africa",
-    "capitalLabel": "Addis Ababa",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q117",
-    "population": "32833031",
-    "area": "238535",
-    "countryLabel": "Ghana",
-    "countryDescription": "country in West Africa",
-    "capitalLabel": "Accra",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q142",
-    "population": "68605616",
-    "area": "643801",
-    "countryLabel": "France",
-    "countryDescription": "country in Western Europe and other continents (through its overseas territories in America, Africa and Oceania)",
-    "capitalLabel": "Paris",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q145",
-    "population": "67326569",
-    "area": "242495",
-    "countryLabel": "United Kingdom",
-    "countryDescription": "island country in north-west Europe",
-    "capitalLabel": "London",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q148",
-    "population": "1442965000",
-    "area": "9596961",
-    "countryLabel": "People's Republic of China",
-    "countryDescription": "country in East Asia",
-    "capitalLabel": "Beijing",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q155",
-    "population": "213421037",
-    "area": "8515767",
-    "countryLabel": "Brazil",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Brasília",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q159",
-    "population": "146119928",
-    "area": "17075400",
-    "countryLabel": "Russia",
-    "countryDescription": "country in Eastern Europe and Northern Asia",
-    "capitalLabel": "Moscow",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q183",
-    "population": "83577140",
-    "area": "357587.77",
-    "countryLabel": "Germany",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Berlin",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q184",
-    "population": "9109280",
-    "area": "207596.76",
-    "countryLabel": "Belarus",
-    "countryDescription": "country in Eastern Europe",
-    "capitalLabel": "Minsk",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q189",
-    "population": "364260",
-    "area": "103004",
-    "countryLabel": "Iceland",
-    "countryDescription": "Nordic island country in the North Atlantic Ocean",
-    "capitalLabel": "Reykjavík",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q191",
-    "population": "1369995",
-    "area": "45335",
-    "countryLabel": "Estonia",
-    "countryDescription": "country in Northern Europe",
-    "capitalLabel": "Tallinn",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q211",
-    "population": "1856932",
-    "area": "62226.85",
-    "countryLabel": "Latvia",
-    "countryDescription": "sovereign state in northeastern Europe",
-    "capitalLabel": "Riga",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q211",
-    "population": "1856932",
-    "area": "64593.76",
-    "countryLabel": "Latvia",
-    "countryDescription": "sovereign state in northeastern Europe",
-    "capitalLabel": "Riga",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q212",
-    "population": "41167335",
-    "area": "603550",
-    "countryLabel": "Ukraine",
-    "countryDescription": "country in Eastern Europe",
-    "capitalLabel": "Kyiv",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q213",
-    "population": "10909500",
-    "area": "78871",
-    "countryLabel": "Czech Republic",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Prague",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q214",
-    "population": "5419451",
-    "area": "49034",
-    "countryLabel": "Slovakia",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Bratislava",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q215",
-    "population": "2066880",
-    "area": "20271",
-    "countryLabel": "Slovenia",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Ljubljana",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q217",
-    "population": "2409207",
-    "area": "33843.5",
-    "countryLabel": "Moldova",
-    "countryDescription": "country in Eastern Europe",
-    "capitalLabel": "Chișinău",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q218",
-    "population": "19053815",
-    "area": "238397",
-    "countryLabel": "Romania",
-    "countryDescription": "country in Southeast Europe",
-    "capitalLabel": "Bucharest",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q219",
-    "population": "6437360",
-    "area": "110993.6",
-    "countryLabel": "Bulgaria",
-    "countryDescription": "country in Southeast Europe",
-    "capitalLabel": "Sofia",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q221",
-    "population": "1836713",
-    "area": "25713",
-    "countryLabel": "North Macedonia",
-    "countryDescription": "country in southeastern Europe",
-    "capitalLabel": "Skopje",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q222",
-    "population": "2811655",
-    "area": "28748",
-    "countryLabel": "Albania",
-    "countryDescription": "country in southeastern Europe",
-    "capitalLabel": "Tirana",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q224",
-    "population": "3871833",
-    "area": "56594",
-    "countryLabel": "Croatia",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Zagreb",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q225",
-    "population": "3816459",
-    "area": "51197",
-    "countryLabel": "Bosnia and Herzegovina",
-    "countryDescription": "country in Southeast Europe",
-    "capitalLabel": "Sarajevo",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q227",
-    "population": "10180770",
-    "area": "86600",
-    "countryLabel": "Azerbaijan",
-    "countryDescription": "country in the Caucasus in Eastern Europe and Western Asia",
-    "capitalLabel": "Baku",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q228",
-    "population": "87486",
-    "area": "468",
-    "countryLabel": "Andorra",
-    "countryDescription": "sovereign microstate between France and Spain, in Western Europe",
-    "capitalLabel": "Andorra la Vella",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q229",
-    "population": "1344976",
-    "area": "9242.45",
-    "countryLabel": "Cyprus",
-    "countryDescription": "country in the Mediterranean Sea",
-    "capitalLabel": "Nicosia",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q230",
-    "population": "3717100",
-    "area": "69700",
-    "countryLabel": "Georgia",
-    "countryDescription": "country in the Caucasus region of Europe and Asia",
-    "capitalLabel": "Tbilisi",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q232",
-    "population": "20139914",
-    "area": "2724900",
-    "countryLabel": "Kazakhstan",
-    "countryDescription": "sovereign state in Eastern Europe and Central Asia",
-    "capitalLabel": "Astana",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q232",
-    "population": "20139914",
-    "area": "2724900",
-    "countryLabel": "Kazakhstan",
-    "countryDescription": "sovereign state in Eastern Europe and Central Asia",
-    "capitalLabel": "Astana",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q233",
-    "population": "553214",
-    "area": "316",
-    "countryLabel": "Malta",
-    "countryDescription": "country in Southern Europe situated on an archipelago in the Mediterranean Sea",
-    "capitalLabel": "Valletta",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q235",
-    "population": "38423",
-    "area": "2.08",
-    "countryLabel": "Monaco",
-    "countryDescription": "microstate in Western Europe",
-    "capitalLabel": "Monaco City",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q236",
-    "population": "617213",
-    "area": "13883",
-    "countryLabel": "Montenegro",
-    "countryDescription": "country in southeastern Europe",
-    "capitalLabel": "Podgorica",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q236",
-    "population": "617213",
-    "area": "13883",
-    "countryLabel": "Montenegro",
-    "countryDescription": "country in southeastern Europe",
-    "capitalLabel": "Cetinje",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q237",
-    "population": "882",
-    "area": "0.49",
-    "countryLabel": "Vatican City",
-    "countryDescription": "Holy See's independent state, an enclave within Rome, Italy",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q238",
-    "population": "33600",
-    "area": "61.2",
-    "countryLabel": "San Marino",
-    "countryDescription": "sovereign state in southern Europe, enclaved within Italy",
-    "capitalLabel": "San Marino",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q241",
-    "population": "10985974",
-    "area": "109884",
-    "countryLabel": "Cuba",
-    "countryDescription": "sovereign state situated on an island in the Caribbean Sea",
-    "capitalLabel": "Havana",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q242",
-    "population": "411106",
-    "area": "22966",
-    "countryLabel": "Belize",
-    "countryDescription": "sovereign state in Central America",
-    "capitalLabel": "Belmopan",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q244",
-    "population": "303431",
-    "area": "439",
-    "countryLabel": "Barbados",
-    "countryDescription": "island nation in the Caribbean",
-    "capitalLabel": "Bridgetown",
-    "continentLabel": "North America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q252",
-    "population": "275439000",
-    "area": "1904570",
-    "countryLabel": "Indonesia",
-    "countryDescription": "island country in Southeast Asia and Oceania",
-    "capitalLabel": "Jakarta",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q258",
-    "population": "62027503",
-    "area": "1221037",
-    "countryLabel": "South Africa",
-    "countryDescription": "country in southern Africa",
-    "capitalLabel": "Pretoria",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q258",
-    "population": "62027503",
-    "area": "1221037",
-    "countryLabel": "South Africa",
-    "countryDescription": "country in southern Africa",
-    "capitalLabel": "Cape Town",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q258",
-    "population": "62027503",
-    "area": "1221037",
-    "countryLabel": "South Africa",
-    "countryDescription": "country in southern Africa",
-    "capitalLabel": "Bloemfontein",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q262",
-    "population": "46164219",
-    "area": "2381741",
-    "countryLabel": "Algeria",
-    "countryDescription": "country in North Africa",
-    "capitalLabel": "Algiers",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q265",
-    "population": "34915100",
-    "area": "448978",
-    "countryLabel": "Uzbekistan",
-    "countryDescription": "sovereign state in Central Asia",
-    "capitalLabel": "Tashkent",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q298",
-    "population": "19458000",
-    "area": "756102",
-    "countryLabel": "Chile",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Santiago",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q334",
-    "population": "5866139",
-    "area": "719.1",
-    "countryLabel": "Singapore",
-    "countryDescription": "sovereign island country and city-state in maritime Southeast Asia",
-    "capitalLabel": "Singapore",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q347",
-    "population": "37922",
-    "area": "160",
-    "countryLabel": "Liechtenstein",
-    "countryDescription": "country in Central Europe",
-    "capitalLabel": "Vaduz",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q398",
-    "population": "1569666",
-    "area": "786.5",
-    "countryLabel": "Bahrain",
-    "countryDescription": "country in the Persian Gulf",
-    "capitalLabel": "Manama",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q399",
-    "population": "2930450",
-    "area": "29743.423459",
-    "countryLabel": "Armenia",
-    "countryDescription": "sovereign state in the South Caucasus region of Eurasia",
-    "capitalLabel": "Yerevan",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q403",
-    "population": "6605168",
-    "area": "88499",
-    "countryLabel": "Serbia",
-    "countryDescription": "country in Southeast Europe",
-    "capitalLabel": "Belgrade",
-    "continentLabel": "Europe"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q408",
-    "population": "27614411",
-    "area": "7692024",
-    "countryLabel": "Australia",
-    "countryDescription": "country in Oceania",
-    "capitalLabel": "Canberra",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q414",
-    "population": "47327407",
-    "area": "2780400",
-    "countryLabel": "Argentina",
-    "countryDescription": "country in South America",
-    "capitalLabel": "Buenos Aires",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q419",
-    "population": "33726000",
-    "area": "1285216",
-    "countryLabel": "Peru",
-    "countryDescription": "sovereign state in South America",
-    "capitalLabel": "Lima",
-    "continentLabel": "South America"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q423",
-    "population": "26418204",
-    "area": "120540",
-    "countryLabel": "North Korea",
-    "countryDescription": "Sovereign state in East Asia",
-    "capitalLabel": "Pyongyang",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q424",
-    "population": "17423880",
-    "area": "181035",
-    "countryLabel": "Cambodia",
-    "countryDescription": "country in Southeast Asia",
-    "capitalLabel": "Phnom Penh",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q574",
-    "population": "1243235",
-    "area": "14918.72",
-    "countryLabel": "Timor-Leste",
-    "countryDescription": "sovereign state situated on several islands in Southeast Asia",
-    "capitalLabel": "Dili",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q657",
-    "population": "19319064",
-    "area": "1284000",
-    "countryLabel": "Chad",
-    "countryDescription": "sovereign state in central Africa",
-    "capitalLabel": "N'Djamena",
-    "continentLabel": "Africa"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q664",
-    "population": "5307800",
-    "area": "268021",
-    "countryLabel": "New Zealand",
-    "countryDescription": "island country in the southwest Pacific Ocean",
-    "capitalLabel": "Wellington",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q668",
-    "population": "1477519529",
-    "area": "3287263",
-    "countryLabel": "India",
-    "countryDescription": "country in South Asia",
-    "capitalLabel": "New Delhi",
-    "continentLabel": "Asia"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q672",
-    "population": "10643",
-    "area": "25.14",
-    "countryLabel": "Tuvalu",
-    "countryDescription": "country in Oceania",
-    "capitalLabel": "Funafuti",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q672",
-    "population": "10643",
-    "area": "25.14",
-    "countryLabel": "Tuvalu",
-    "countryDescription": "country in Oceania",
-    "capitalLabel": "Funafuti",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q678",
-    "population": "108020",
-    "area": "748.506563",
-    "countryLabel": "Tonga",
-    "countryDescription": "sovereign state in Oceania, situated on an archipelago",
-    "capitalLabel": "Nukuʻalofa",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q683",
-    "population": "200010",
-    "area": "2842",
-    "countryLabel": "Samoa",
-    "countryDescription": "sovereign state made up of six islands in the Pacific Ocean",
-    "capitalLabel": "Apia",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q685",
-    "population": "611343",
-    "area": "28400",
-    "countryLabel": "Solomon Islands",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Honiara",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q685",
-    "population": "611343",
-    "area": "28400",
-    "countryLabel": "Solomon Islands",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Honiara",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q686",
-    "population": "300019",
-    "area": "12190",
-    "countryLabel": "Vanuatu",
-    "countryDescription": "island country in Oceania",
-    "capitalLabel": "Port Vila",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q691",
-    "population": "8935000",
-    "area": "462840",
-    "countryLabel": "Papua New Guinea",
-    "countryDescription": "country in Oceania",
-    "capitalLabel": "Port Moresby",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q695",
-    "population": "21729",
-    "area": "465.550362",
-    "countryLabel": "Palau",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Ngerulmud",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q695",
-    "population": "21729",
-    "area": "465.550362",
-    "countryLabel": "Palau",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Ngerulmud",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q697",
-    "population": "13650",
-    "area": "21",
-    "countryLabel": "Nauru",
-    "countryDescription": "country in Oceania",
-    "capitalLabel": "Yaren District",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q702",
-    "population": "105544",
-    "area": "702",
-    "countryLabel": "Federated States of Micronesia",
-    "countryDescription": "island sovereign state in Oceania",
-    "capitalLabel": "Palikir",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q709",
-    "population": "53127",
-    "area": "181.43",
-    "countryLabel": "Marshall Islands",
-    "countryDescription": "country near the equator in the Pacific Ocean",
-    "capitalLabel": "Majuro",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q710",
-    "population": "134518",
-    "area": "811",
-    "countryLabel": "Kiribati",
-    "countryDescription": "island sovereign state in the central Pacific Ocean",
-    "capitalLabel": "Tarawa",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q710",
-    "population": "134518",
-    "area": "811",
-    "countryLabel": "Kiribati",
-    "countryDescription": "island sovereign state in the central Pacific Ocean",
-    "capitalLabel": "South Tarawa",
-    "continentLabel": "Insular Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q710",
-    "population": "134518",
-    "area": "811",
-    "countryLabel": "Kiribati",
-    "countryDescription": "island sovereign state in the central Pacific Ocean",
-    "capitalLabel": "Tarawa",
-    "continentLabel": "Oceania"
-  },
-  {
-    "country": "http://www.wikidata.org/entity/Q710",
-    "population": "134518",
-    "area": "811",
-    "countryLabel": "Kiribati",
-    "countryDescription": "island sovereign state in the central Pacific Ocean",
-    "capitalLabel": "South Tarawa",
-    "continentLabel": "Oceania"
   }
 ]

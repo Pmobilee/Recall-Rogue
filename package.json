@@ -17,6 +17,13 @@
     "content:vocab:build": "node scripts/content-pipeline/vocab/build-seed-packs.mjs",
     "content:vocab:validate": "node scripts/content-pipeline/vocab/validate-seed-packs.mjs",
     "content:source-mix": "node scripts/content-pipeline/manual-ingest/source-mix.mjs",
+    "content:workers:prepare": "node scripts/content-pipeline/agent-workers.mjs prepare",
+    "content:workers:ingest": "node scripts/content-pipeline/agent-workers.mjs ingest",
+    "content:workers:qa": "node scripts/content-pipeline/agent-workers.mjs qa",
+    "content:workers:promote": "node scripts/content-pipeline/agent-workers.mjs promote",
+    "content:workers:all": "node scripts/content-pipeline/agent-workers.mjs all",
+    "content:visuals:fill": "node scripts/content-pipeline/fill-missing-visual-descriptions.mjs",
+    "content:autopilot": "node scripts/content-pipeline/autopilot.mjs",
     "content:generate:all": "node scripts/content-pipeline/generate/generate-all-domains.mjs",
     "content:factcheck": "node scripts/content-pipeline/qa/source-fact-check.mjs",
     "content:qa": "node scripts/content-pipeline/qa/run-post-generation-qa.mjs",
@@ -53,7 +60,6 @@
     "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.63.1",
     "@playwright/test": "^1.58.2",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@testing-library/jest-dom": "^6.9.1",

@@ -234,7 +234,8 @@ export function startEncounter(
     encounterAnsweredFacts: [],
   };
 
-  drawHand(deck, initialState.baseDrawCount);
+  const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
+  drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
   return initialState;
 }
 
@@ -541,6 +542,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
   const { playerState, enemy, deck } = turnState;
+
+  // Block decays each turn — enemy must re-defend to maintain it (STS-style)
+  enemy.block = 0;
 
   let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0 };
   let intentSkipped = false;

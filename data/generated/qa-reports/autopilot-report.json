@@ -1,0 +1,230 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.021Z",
+  "command": "autopilot",
+  "args": {
+    "domains": "",
+    "languages": "ja,es,fr,de,ko,zh,nl,cs",
+    "generated-dir": "data/generated",
+    "seed-dir": "src/data/seed",
+    "worker-output-dir": "data/generated/worker-output",
+    "language-worker-output-dir": "data/generated/worker-output-languages",
+    "tasks-dir": "data/generated/worker-packages",
+    "qa-dir": "data/generated/qa-reports",
+    "qa-root": "data/generated/qa-reports/worker-ingest",
+    "qa-output": "data/generated/qa-reports/agent-workers-qa.json",
+    "report": "data/generated/qa-reports/autopilot-report.json",
+    "target-per-domain": 50,
+    "target-per-language": 0,
+    "vocab-limit": 5000,
+    "vocab-min-rows": 100,
+    "include-vocab": true,
+    "fill-visuals": true,
+    "fill-visuals-in-seed": true,
+    "source-mix": true,
+    "knowledge-strict-ingest": false,
+    "coverage-knowledge-min": 0,
+    "coverage-language-min": 0,
+    "skip-qa": false,
+    "skip-promote": false,
+    "compare-against": "src/data/seed",
+    "auto-dedup-threshold": 0.95,
+    "review-threshold": 0.75,
+    "dry-run": false,
+    "strict": false,
+    "rebuild-db": true,
+    "enforce-qa-gate": true
+  },
+  "steps": [
+    {
+      "stage": "knowledge-prepare",
+      "ok": true,
+      "exitCode": 0,
+      "script": "scripts/content-pipeline/agent-workers.mjs",
+      "args": [
+        "prepare",
+        "--target-per-domain",
+        "50",
+        "--source-mix",
+        "true",
+        "--strict",
+        "false",
+        "--worker-output-dir",
+        "data/generated/worker-output",
+        "--tasks-dir",
+        "data/generated/worker-packages",
+        "--qa-dir",
+        "data/generated/qa-reports",
+        "--generated-dir",
+        "data/generated"
+      ],
+      "durationMs": 179,
+      "stdout": "{\n  \"ok\": true,\n  \"reportPath\": \"/root/terra-miner/data/generated/qa-reports/agent-workers-prepare.json\",\n  \"manifestPath\": \"/root/terra-miner/data/generated/worker-packages/manifest.json\",\n  \"domains\": 10,\n  \"totalMissingFacts\": 0,\n  \"missingInputDomains\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "stage": "knowledge-ingest",
+      "ok": true,
+      "exitCode": 0,
+      "script": "scripts/content-pipeline/agent-workers.mjs",
+      "args": [
+        "ingest",
+        "--strict",
+        "false",
+        "--dry-run",
+        "false",
+        "--use-index",
+        "true",
+        "--compare-against",
+        "src/data/seed",
+        "--auto-dedup-threshold",
+        "0.95",
+        "--review-threshold",
+        "0.75",
+        "--worker-output-dir",
+        "data/generated/worker-output",
+        "--tasks-dir",
+        "data/generated/worker-packages",
+        "--qa-root",
+        "data/generated/qa-reports/worker-ingest",
+        "--generated-dir",
+        "data/generated"
+      ],
+      "durationMs": 1139,
+      "stdout": "{\n  \"ok\": true,\n  \"reportPath\": \"/root/terra-miner/data/generated/qa-reports/agent-workers-ingest.json\",\n  \"domains\": 10,\n  \"processed\": 10,\n  \"missingOutputs\": 0,\n  \"inputRows\": 710\n}",
+      "stderr": ""
+    },
+    {
+      "stage": "vocab-build",
+      "ok": false,
+      "exitCode": 1,
+      "script": "scripts/content-pipeline/vocab/build-seed-packs.mjs",
+      "args": [
+        "--languages",
+        "ja,es,fr,de,ko,zh,nl,cs",
+        "--limit",
+        "5000",
+        "--output-dir",
+        "src/data/seed",
+        "--temp-dir",
+        "data/generated/vocab-build"
+      ],
+      "durationMs": 272,
+      "stdout": "",
+      "stderr": "[build-seed-packs] failed: Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/vocab/import-jmdict.mjs --output-dir /root/terra-miner/src/data/seed --limit 20000\n[import-jmdict] failed: Failed to download JMdict source: HTTP 404",
+      "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/vocab/build-seed-packs.mjs --languages ja,es,fr,de,ko,zh,nl,cs --limit 5000 --output-dir src/data/seed --temp-dir data/generated/vocab-build\n[build-seed-packs] failed: Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/vocab/import-jmdict.mjs --output-dir /root/terra-miner/src/data/seed --limit 20000\n[import-jmdict] failed: Failed to download JMdict source: HTTP 404\n\n"
+    },
+    {
+      "stage": "fill-visuals",
+      "ok": true,
+      "exitCode": 0,
+      "script": "scripts/content-pipeline/fill-missing-visual-descriptions.mjs",
+      "args": [
+        "--generated-dir",
+        "data/generated",
+        "--seed-dir",
+        "src/data/seed",
+        "--include-generated",
+        "true",
+        "--include-seed",
+        "true",
+        "--dry-run",
+        "false"
+      ],
+      "durationMs": 89,
+      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/visual-description-fill-report.json\",\n  \"patchedFacts\": 0,\n  \"scannedFacts\": 2653,\n  \"dryRun\": false\n}",
+      "stderr": ""
+    },
+    {
+      "stage": "qa",
+      "ok": true,
+      "exitCode": 1,
+      "script": "scripts/content-pipeline/agent-workers.mjs",
+      "args": [
+        "qa",
+        "--generated-dir",
+        "data/generated",
+        "--qa-dir",
+        "data/generated/qa-reports",
+        "--output",
+        "data/generated/qa-reports/agent-workers-qa.json",
+        "--coverage-knowledge-min",
+        "3000",
+        "--coverage-language-min",
+        "0",
+        "--stop-on-fail",
+        "true"
+      ],
+      "durationMs": 385,
+      "stdout": "",
+      "stderr": "",
+      "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/agent-workers.mjs qa --generated-dir data/generated --qa-dir data/generated/qa-reports --output data/generated/qa-reports/agent-workers-qa.json --coverage-knowledge-min 3000 --coverage-language-min 0 --stop-on-fail true\n"
+    },
+    {
+      "stage": "promote",
+      "ok": true,
+      "exitCode": 1,
+      "script": "scripts/content-pipeline/agent-workers.mjs",
+      "args": [
+        "promote",
+        "--generated-dir",
+        "data/generated",
+        "--rebuild-db",
+        "true",
+        "--enforce-qa-gate",
+        "true",
+        "--approved-only",
+        "true"
+      ],
+      "durationMs": 66,
+      "stdout": "",
+      "stderr": "",
+      "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/agent-workers.mjs promote --generated-dir data/generated --rebuild-db true --enforce-qa-gate true --approved-only true\n"
+    }
+  ],
+  "languageOutputs": [],
+  "shortages": {
+    "languages": {
+      "ja": {
+        "count": 400,
+        "target": 1000,
+        "missing": 600
+      },
+      "es": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "fr": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "de": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "ko": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "zh": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "nl": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      },
+      "cs": {
+        "count": 0,
+        "target": 1000,
+        "missing": 1000
+      }
+    }
+  },
+  "pass": false
+}

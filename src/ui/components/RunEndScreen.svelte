@@ -1,6 +1,7 @@
 <script lang="ts">
   import { shareRunSummaryCard } from '../../services/runShareService'
   import { analyticsService } from '../../services/analyticsService'
+  import { difficultyMode, type DifficultyMode } from '../../services/cardPreferences'
 
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
@@ -18,6 +19,7 @@
     runDurationMs?: number
     rewardMultiplier: number
     currencyEarned: number
+    isFirstRunComplete?: boolean
     onplayagain: () => void
     onhome: () => void
   }
@@ -38,6 +40,7 @@
     runDurationMs = 0,
     rewardMultiplier,
     currencyEarned,
+    isFirstRunComplete = false,
     onplayagain,
     onhome,
   }: Props = $props()
@@ -46,6 +49,20 @@
   let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
   let shareStatus = $state<'idle' | 'sharing' | 'done' | 'error'>('idle')
+  let showDifficultyUnlock = $state(false)
+  let selectedDifficulty = $state<DifficultyMode>('standard')
+
+  $effect(() => {
+    if (isFirstRunComplete) {
+      const timer = setTimeout(() => { showDifficultyUnlock = true }, 1500)
+      return () => clearTimeout(timer)
+    }
+  })
+
+  function confirmDifficulty(): void {
+    difficultyMode.set(selectedDifficulty)
+    showDifficultyUnlock = false
+  }
 
   function formatDuration(ms: number): string {
     const totalSeconds = Math.max(0, Math.floor(ms / 1000))
@@ -181,6 +198,48 @@
       Home
     </button>
   </div>
+
+  {#if showDifficultyUnlock}
+    <div class="difficulty-unlock-overlay" role="dialog" aria-modal="true" aria-label="Difficulty modes unlocked">
+      <div class="difficulty-unlock-modal">
+        <div class="unlock-badge">🎉</div>
+        <h3>Difficulty Modes Unlocked!</h3>
+        <p class="unlock-desc">Great first run! You can now choose how you want to play. You can change this anytime in Settings.</p>
+
+        <div class="difficulty-options">
+          <button
+            class="diff-option"
+            class:diff-selected={selectedDifficulty === 'explorer'}
+            onclick={() => selectedDifficulty = 'explorer'}
+          >
+            <span class="diff-name">📖 Story Mode</span>
+            <span class="diff-detail">No timer — learn at your own pace</span>
+          </button>
+          <button
+            class="diff-option"
+            class:diff-selected={selectedDifficulty === 'standard'}
+            onclick={() => selectedDifficulty = 'standard'}
+          >
+            <span class="diff-name">⏱️ Timed Mode</span>
+            <span class="diff-detail">Answer before time runs out — the intended experience</span>
+            <span class="diff-recommended">Recommended</span>
+          </button>
+          <button
+            class="diff-option"
+            class:diff-selected={selectedDifficulty === 'scholar'}
+            onclick={() => selectedDifficulty = 'scholar'}
+          >
+            <span class="diff-name">🏆 Expert Mode</span>
+            <span class="diff-detail">Tighter timers, harder questions — 1.2× rewards</span>
+          </button>
+        </div>
+
+        <button class="diff-confirm-btn" onclick={confirmDifficulty}>
+          Continue
+        </button>
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -287,5 +346,119 @@
   .bounty-item {
     font-size: 11px;
     color: #e7f0ff;
+  }
+
+  .difficulty-unlock-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 400;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .difficulty-unlock-modal {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid #f1c40f;
+    border-radius: 16px;
+    padding: 24px 20px;
+    max-width: 340px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .unlock-badge {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+
+  .difficulty-unlock-modal h3 {
+    color: #f1c40f;
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+
+  .unlock-desc {
+    color: #94a3b8;
+    font-size: 13px;
+    margin: 0 0 16px;
+    line-height: 1.4;
+  }
+
+  .difficulty-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .diff-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+  }
+
+  .diff-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .diff-selected {
+    border-color: #f1c40f !important;
+    background: rgba(241, 196, 15, 0.1) !important;
+  }
+
+  .diff-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .diff-detail {
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .diff-recommended {
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: #f1c40f;
+    color: #1a1a2e;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .diff-confirm-btn {
+    background: #f1c40f;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .diff-confirm-btn:hover {
+    background: #f39c12;
   }
 </style>

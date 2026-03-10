@@ -288,12 +288,12 @@ Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
 
 ---
 
-### AR-17: Haiku Fact Generation Engine
-**Build the pipeline that transforms structured source data into game-ready Fact schema JSON using Claude Haiku API.** This is the engine that makes content scaling possible.
+### AR-17: Worker Fact Generation Engine
+**Build the pipeline that transforms structured source data into game-ready Fact schema JSON through external Claude subscription workers.** This is the engine that makes content scaling possible.
 
-- [x] Haiku API integration script with rate limiting, retry logic, cost tracking
-- [x] Domain-specific system prompts (10 knowledge domains) — each guides Haiku to generate appropriate questions, distractors, difficulty, funScore
-- [x] Batch processor: reads source data JSON → calls Haiku → outputs Fact schema JSON
+- [x] Worker orchestration script with rate limiting metadata, retry reporting, and budget safeguards
+- [x] Domain-specific system prompts (10 knowledge domains) — each guides worker output for questions, distractors, difficulty, funScore
+- [x] Batch processor: reads source data JSON → worker output JSONL → Fact schema validation
 - [x] Output validation: schema check, distractor quality check, difficulty distribution check
 - [x] Distractor generation quality checks and schema-compatible normalization bridge
 - [x] Question variant generator support (3–4 variants via prompt + normalization)
@@ -304,7 +304,7 @@ Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
 - [x] Mixed-source input builder for worker runs (`content:source-mix`; outputs `data/raw/mixed/*.json`)
 
 Depends on: AR-15 (needs source data). Estimated: Large.
-Implementation status: **Tooling complete (March 10, 2026)**. Full non-dry-run execution still requires Anthropic API key and production batch run.
+Implementation status: **Tooling complete (March 10, 2026)**. Local paid API generation paths removed; live generation runs through external Claude subscription workers plus ingest/QA/promotion gates.
 → [Spec](phases/AR-17-HAIKU-FACT-ENGINE.md)
 
 ---
@@ -314,12 +314,12 @@ Implementation status: **Tooling complete (March 10, 2026)**. Full non-dry-run e
 
 - [x] JMdict full import tooling: supports JLPT N5–N1 file generation (`import-jmdict.mjs` + `build-seed-packs.mjs`)
 - [x] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2), Dutch (A1–C2), Czech (A1–C2)
-- [x] Korean vocabulary pipeline scaffolding via Anki extraction + Haiku enrichment (with Wikidata fallback path)
+- [x] Korean vocabulary pipeline scaffolding via Anki extraction + local deterministic enrichment (with Wikidata fallback path)
 - [x] HSK vocabulary import for Mandarin Chinese (levels 1–6)
 - [x] Per-language schema extensions (reading field, romanization, example sentences)
 - [ ] Language-themed visual description generation using cultural themes from GAME_DESIGN.md §22
 - [x] Anki deck word list extraction: parse .apkg files for Korean/Spanish/French/German/Dutch/Czech, extract target-language words only
-- [x] Haiku enrichment pipeline: generate fresh translations + CEFR/TOPIK levels from extracted word lists (creates CC0 data)
+- [x] Enrichment pipeline: normalize translations + CEFR/TOPIK levels from extracted word lists without paid API requirements
 - [x] Tatoeba example sentence matching: link sentences to vocabulary entries
 - [x] Difficulty mapping: JLPT/CEFR/HSK/TOPIK level → game difficulty (1–5)
 - [x] Language selection UI updates (support 6 languages in onboarding + settings)
@@ -334,7 +334,7 @@ Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full
 ### AR-19: Bulk Content Generation & Quality Assurance
 **Execute the full pipeline: generate 10K+ facts per domain, verify quality, populate production database.**
 
-- [x] Haiku generation orchestration tooling across all 10 knowledge domains (`content:generate:all`; live execution requires API key/quota)
+- [x] Worker generation orchestration tooling across all 10 knowledge domains (`content:workers:prepare` + external worker outputs + `content:workers:ingest`)
 - [x] Run vocabulary processing tooling for all 6 languages (`content:vocab:build` + `content:vocab:validate`)
 - [x] Automated QA checks: schema validation, duplicate detection, distractor quality scoring (`content:qa`)
 - [x] Domain coverage report: facts per domain × difficulty × age rating (`qa/coverage-report.mjs`)
@@ -347,8 +347,8 @@ Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full
 - [x] Final coverage audit gate tooling: minimum 10K facts per knowledge domain, 5K per language (`qa/coverage-gate.mjs`)
 - [x] Production database migration tooling: approved facts → `public/facts.db` (`qa/promote-approved-to-db.mjs`)
 
-Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRES Anthropic API key (Haiku model)** for non-dry-run generation.
-Implementation status: post-generation QA/migration tooling is in place; live generation plus visual/Comfy production runs are tracked separately.
+Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **No local paid API requirement for content scripts**; worker-generated outputs must pass QA before promotion.
+Implementation status: post-generation QA/migration tooling is in place; worker-first generation plus visual/Comfy production runs are tracked separately.
 → [Spec](phases/AR-19-BULK-GENERATION-QA.md)
 
 ---
@@ -458,6 +458,7 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 - [ ] Arcane Pass subscription ($4.99/mo — all packs, cosmetics, analytics, family 5x)
 - [ ] Cosmetic store (card backs, frames, dungeon skins, avatars)
 - [ ] Scholar Challenges (weekly curated runs + leaderboards)
+- [ ] Subscriber category filtering (Arcane Pass): fine-grained sub-category toggles per domain (e.g., WW2 only in History)
 
 ### AR-27: Card Tier-Up Celebration Animations
 **Visual reward feedback when cards level up during a run.** Short, satisfying animations play when a correct answer causes a card to advance tiers — blue (→Recall), green (→Deep Recall), purple/gold (→Mastered). Makes each correct answer feel like visible progress. Per-fact unique mastery animations generated as art assets in a later phase.
@@ -549,7 +550,7 @@ FUTURE:
   AR-30 (Camp Cosmetics) — depends on AR-08 (complete), can run anytime
 ```
 
-**Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 require Anthropic API access for non-dry-run generation. AR-22→26 game design overhaul is complete (March 2026).
+**Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 now run through worker-first generation + ingest/QA/promote scripts. AR-22→26 game design overhaul is complete (March 2026).
 
 ---
 

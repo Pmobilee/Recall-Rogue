@@ -1,0 +1,17 @@
+{
+  "domain": "geography",
+  "domainSlug": "geography",
+  "existingFacts": 50,
+  "existingFactsPath": "data/generated/geography.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 150,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/geography.json",
+  "workerOutputPath": "data/generated/worker-output/geography.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

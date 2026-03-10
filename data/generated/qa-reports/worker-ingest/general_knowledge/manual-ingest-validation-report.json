@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.365Z",
+  "inputFiles": [
+    "data/generated/worker-output/general_knowledge.jsonl"
+  ],
+  "domain": "general_knowledge",
+  "counts": {
+    "input": 140,
+    "valid": 140,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "fan-sin-temple-001",
+      "question": "Where is Fan Sin Temple located?"
+    },
+    {
+      "id": "aqaba-church-001",
+      "question": "Where is Aqaba Church located?"
+    },
+    {
+      "id": "q2873434-minerva-chalcidica",
+      "question": "Where is the Temple of Minerva Chalcidica located?"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "question": "What ancient temple is located in Uruk?"
+    },
+    {
+      "id": "Q2883612-baolun-ge",
+      "question": "Where is Baolun ge temple located?"
+    }
+  ]
+}

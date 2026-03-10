@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.690Z",
+  "inputFiles": [
+    "data/generated/worker-output/history.jsonl"
+  ],
+  "domain": "history",
+  "counts": {
+    "input": 91,
+    "valid": 91,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "battle-marignano-1515",
+      "question": "Which countries fought at Marignano in 1515?"
+    },
+    {
+      "id": "battle-nieuwpoort-1600",
+      "question": "Where did the Battle of Nieuwpoort occur?"
+    },
+    {
+      "id": "battle-jarama-1937",
+      "question": "When did the Battle of Jarama occur?"
+    },
+    {
+      "id": "hist-vlasenica-1943-001",
+      "question": "What was the Battle for Vlasenica in 1943?"
+    },
+    {
+      "id": "q4373-white-mountain-1620",
+      "question": "What battle ended the Bohemian phase of the Thirty Years' War?"
+    }
+  ]
+}

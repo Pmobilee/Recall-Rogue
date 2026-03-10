@@ -103,6 +103,12 @@ export default defineConfig({
       port: 5173,
       overlay: false,
     },
+    watch: {
+      ignored: [
+        '**/public/assets/cardbacks/**',
+        '**/sprite-gen/**',
+      ],
+    },
   },
   build: {
     // Optimize for mobile — target <500KB per chunk

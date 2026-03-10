@@ -1,0 +1,4613 @@
+[
+  {
+    "id": "TKM",
+    "name": "Turkmenistan",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Ashgabat",
+    "longitude": "58.3794",
+    "latitude": "37.9509",
+    "population": 7494498,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/tkm",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "HTI",
+    "name": "Haiti",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Port-au-Prince",
+    "longitude": "-72.3288",
+    "latitude": "18.5392",
+    "population": 11772557,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/hti",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q734",
+    "population": "878674",
+    "area": "214970",
+    "countryLabel": "Guyana",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Georgetown",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q712",
+    "population": "926276",
+    "area": "18274",
+    "countryLabel": "Fiji",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Suva",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "CHE",
+    "name": "Switzerland",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Bern",
+    "longitude": "7.44821",
+    "latitude": "46.948",
+    "population": 9005582,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/che",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1029",
+    "population": "29668834",
+    "area": "801590",
+    "countryLabel": "Mozambique",
+    "countryDescription": "country in Southeastern Africa; the current form of Mozambique since 1975",
+    "capitalLabel": "Maputo",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "ABW",
+    "name": "Aruba",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Oranjestad",
+    "longitude": "-70.0167",
+    "latitude": "12.5167",
+    "population": 107995,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/abw",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q813",
+    "population": "7281800",
+    "area": "199951",
+    "countryLabel": "Kyrgyzstan",
+    "countryDescription": "sovereign state in Central Asia",
+    "capitalLabel": "Bishkek",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "SWZ",
+    "name": "Eswatini",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Mbabane",
+    "longitude": "31.4659",
+    "latitude": "-26.5225",
+    "population": 1242822,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/swz",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1050",
+    "population": "1230506",
+    "area": "17364",
+    "countryLabel": "Eswatini",
+    "countryDescription": "sovereign state in southern Africa",
+    "capitalLabel": "Mbabane",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "NCL",
+    "name": "New Caledonia",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Noum'ea",
+    "longitude": "166.464",
+    "latitude": "-22.2677",
+    "population": 292639,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ncl",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q191",
+    "population": "1369995",
+    "area": "45335",
+    "countryLabel": "Estonia",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Tallinn",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q792",
+    "population": "6029976",
+    "area": "21041",
+    "countryLabel": "El Salvador",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "San Salvador",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q148",
+    "population": "1442965000",
+    "area": "9596961",
+    "countryLabel": "People's Republic of China",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Beijing",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q16",
+    "population": "36991981",
+    "area": "9984670",
+    "countryLabel": "Canada",
+    "countryDescription": "country in North America",
+    "capitalLabel": "Ottawa",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q695",
+    "population": "21729",
+    "area": "465.550362",
+    "countryLabel": "Palau",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Ngerulmud",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "FIN",
+    "name": "Finland",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Helsinki",
+    "longitude": "24.9525",
+    "latitude": "60.1608",
+    "population": 5619911,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/fin",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q678",
+    "population": "108020",
+    "area": "748.506563",
+    "countryLabel": "Tonga",
+    "countryDescription": "sovereign state in Oceania, situated on an archipelago",
+    "capitalLabel": "Nukuʻalofa",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q916",
+    "population": "36749906",
+    "area": "1246700",
+    "countryLabel": "Angola",
+    "countryDescription": "country on the west coast of Southern Africa",
+    "capitalLabel": "Luanda",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q159",
+    "population": "146119928",
+    "area": "17075400",
+    "countryLabel": "Russia",
+    "countryDescription": "country in Eastern Europe and Northern Asia",
+    "capitalLabel": "Moscow",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q40",
+    "population": "8979894",
+    "area": "83878.99",
+    "countryLabel": "Austria",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Vienna",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1045",
+    "population": "11031386",
+    "area": "637657",
+    "countryLabel": "Somalia",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Mogadishu",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q189",
+    "population": "364260",
+    "area": "103004",
+    "countryLabel": "Iceland",
+    "countryDescription": "Nordic island country in the North Atlantic Ocean",
+    "capitalLabel": "Reykjavík",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q672",
+    "population": "10643",
+    "area": "25.14",
+    "countryLabel": "Tuvalu",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Funafuti",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "QAT",
+    "name": "Qatar",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Doha",
+    "longitude": "51.5082",
+    "latitude": "25.2948",
+    "population": 2857822,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/qat",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "ARG",
+    "name": "Argentina",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Buenos Aires",
+    "longitude": "-58.4173",
+    "latitude": "-34.6118",
+    "population": 45696159,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/arg",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "NOR",
+    "name": "Norway",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Oslo",
+    "longitude": "10.7387",
+    "latitude": "59.9138",
+    "population": 5572279,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/nor",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MLT",
+    "name": "Malta",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Valletta",
+    "longitude": "14.5189",
+    "latitude": "35.9042",
+    "population": 568847,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mlt",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "THA",
+    "name": "Thailand",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Bangkok",
+    "longitude": "100.521",
+    "latitude": "13.7308",
+    "population": 71668011,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/tha",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q736",
+    "population": "16938986",
+    "area": "257204.27",
+    "countryLabel": "Ecuador",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Quito",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q408",
+    "population": "27614411",
+    "area": "7692024",
+    "countryLabel": "Australia",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Canberra",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q836",
+    "population": "53370609",
+    "area": "676577.2",
+    "countryLabel": "Myanmar",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Naypyidaw",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "PER",
+    "name": "Peru",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Lima",
+    "longitude": "-77.0465",
+    "latitude": "-12.0931",
+    "population": 34217848,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/per",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q774",
+    "population": "17263239",
+    "area": "108889",
+    "countryLabel": "Guatemala",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Guatemala City",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q730",
+    "population": "563402",
+    "area": "163270",
+    "countryLabel": "Suriname",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Paramaribo",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q17",
+    "population": "123802000",
+    "area": "377972.28",
+    "countryLabel": "Japan",
+    "countryDescription": "island country in East Asia",
+    "capitalLabel": "Tokyo",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q739",
+    "population": "52321152",
+    "area": "1141748",
+    "countryLabel": "Colombia",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Bogotá",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1008",
+    "population": "31165654",
+    "area": "322463",
+    "countryLabel": "Ivory Coast",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Yamoussoukro",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "GRC",
+    "name": "Greece",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Athens",
+    "longitude": "23.7166",
+    "latitude": "37.9792",
+    "population": 10405134,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/grc",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q265",
+    "population": "34915100",
+    "area": "448978",
+    "countryLabel": "Uzbekistan",
+    "countryDescription": "sovereign state in Central Asia",
+    "capitalLabel": "Tashkent",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q227",
+    "population": "10180770",
+    "area": "86600",
+    "countryLabel": "Azerbaijan",
+    "countryDescription": "country in the Caucasus in Eastern Europe and Western Asia",
+    "capitalLabel": "Baku",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q869",
+    "population": "66188503",
+    "area": "513119.5",
+    "countryLabel": "Thailand",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Bangkok",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1042",
+    "population": "119773",
+    "area": "459",
+    "countryLabel": "Seychelles",
+    "countryDescription": "island sovereign state off the eastern coast of Africa",
+    "capitalLabel": "Victoria",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q219",
+    "population": "6437360",
+    "area": "110993.6",
+    "countryLabel": "Bulgaria",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Sofia",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "COM",
+    "name": "Comoros",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Moroni",
+    "longitude": "43.2418",
+    "latitude": "-11.6986",
+    "population": 866628,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/com",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q230",
+    "population": "3717100",
+    "area": "69700",
+    "countryLabel": "Georgia",
+    "countryDescription": "country in the Caucasus region of Europe and Asia",
+    "capitalLabel": "Tbilisi",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q805",
+    "population": "28250420",
+    "area": "455503",
+    "countryLabel": "Yemen",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Sanaa",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "TJK",
+    "name": "Tajikistan",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Dushanbe",
+    "longitude": "68.7864",
+    "latitude": "38.5878",
+    "population": 10590927,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/tjk",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q971",
+    "population": "6142180",
+    "area": "342000",
+    "countryLabel": "Republic of the Congo",
+    "countryDescription": "country in Central Africa, capital Brazzaville",
+    "capitalLabel": "Brazzaville",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q863",
+    "population": "9504000",
+    "area": "143100",
+    "countryLabel": "Tajikistan",
+    "countryDescription": "sovereign state in Central Asia",
+    "capitalLabel": "Dushanbe",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "ARM",
+    "name": "Armenia",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Yerevan",
+    "longitude": "44.509",
+    "latitude": "40.1596",
+    "population": 3033500,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/arm",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MCO",
+    "name": "Monaco",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Monaco",
+    "longitude": "7.41891",
+    "latitude": "43.7325",
+    "population": 38631,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mco",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MDV",
+    "name": "Maldives",
+    "region": "South Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Male",
+    "longitude": "73.5109",
+    "latitude": "4.1742",
+    "population": 527799,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mdv",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q34",
+    "population": "10609460",
+    "area": "447425.16",
+    "countryLabel": "Sweden",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Stockholm",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q228",
+    "population": "87486",
+    "area": "468",
+    "countryLabel": "Andorra",
+    "countryDescription": "sovereign microstate between France and Spain, in Western Europe",
+    "capitalLabel": "Andorra la Vella",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q29",
+    "population": "48592909",
+    "area": "505990",
+    "countryLabel": "Spain",
+    "countryDescription": "country in southwestern Europe with territories in Africa",
+    "capitalLabel": "Madrid",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "COG",
+    "name": "Congo, Rep.",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Brazzaville",
+    "longitude": "15.2662",
+    "latitude": "-4.2767",
+    "population": 6332961,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/cog",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q27",
+    "population": "5149139",
+    "area": "69797",
+    "countryLabel": "Ireland",
+    "countryDescription": "sovereign state in Northwestern Europe",
+    "capitalLabel": "Dublin",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q29999",
+    "population": "17100715",
+    "area": "42201",
+    "countryLabel": "Kingdom of the Netherlands",
+    "countryDescription": "transcontinental sovereign state and constitutional monarchy",
+    "capitalLabel": "Amsterdam",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q237",
+    "population": "882",
+    "area": "0.49",
+    "countryLabel": "Vatican City",
+    "countryDescription": "Holy See's independent state, an enclave within Rome, Italy",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q954",
+    "population": "15178979",
+    "area": "390757",
+    "countryLabel": "Zimbabwe",
+    "countryDescription": "sovereign state in southern Africa",
+    "capitalLabel": "Harare",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q702",
+    "population": "105544",
+    "area": "702",
+    "countryLabel": "Federated States of Micronesia",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Palikir",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q945",
+    "population": "7797694",
+    "area": "56785",
+    "countryLabel": "Togo",
+    "countryDescription": "country in West Africa",
+    "capitalLabel": "Lomé",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "MKD",
+    "name": "North Macedonia",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Skopje",
+    "longitude": "21.4361",
+    "latitude": "42.0024",
+    "population": 1824359,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mkd",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "IRQ",
+    "name": "Iraq",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Baghdad",
+    "longitude": "44.394",
+    "latitude": "33.3302",
+    "population": 46042015,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/irq",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q77",
+    "population": "3444263",
+    "area": "176215",
+    "countryLabel": "Uruguay",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Montevideo",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "LSO",
+    "name": "Lesotho",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Maseru",
+    "longitude": "27.7167",
+    "latitude": "-29.5208",
+    "population": 2337423,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/lso",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "PSE",
+    "name": "West Bank and Gaza",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Not classified",
+    "capitalCity": "",
+    "longitude": "",
+    "latitude": "",
+    "population": 5289152,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/pse",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q114",
+    "population": "48468138",
+    "area": "581309",
+    "countryLabel": "Kenya",
+    "countryDescription": "country in Eastern Africa",
+    "capitalLabel": "Nairobi",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q881",
+    "population": "96208984",
+    "area": "331690",
+    "countryLabel": "Vietnam",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Hanoi",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q766",
+    "population": "2697983",
+    "area": "10991.90954",
+    "countryLabel": "Jamaica",
+    "countryDescription": "island state in the Caribbean Sea",
+    "capitalLabel": "Kingston",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "PRY",
+    "name": "Paraguay",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Asuncion",
+    "longitude": "-57.6362",
+    "latitude": "-25.3005",
+    "population": 6929153,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/pry",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q851",
+    "population": "33000000",
+    "area": "2250000",
+    "countryLabel": "Saudi Arabia",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Riyadh",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q258",
+    "population": "62027503",
+    "area": "1221037",
+    "countryLabel": "South Africa",
+    "countryDescription": "country in southern Africa",
+    "capitalLabel": "Pretoria",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q414",
+    "population": "47327407",
+    "area": "2780400",
+    "countryLabel": "Argentina",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Buenos Aires",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "TCA",
+    "name": "Turks and Caicos Islands",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Grand Turk",
+    "longitude": "-71.141389",
+    "latitude": "21.4602778",
+    "population": 46535,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/tca",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "GMB",
+    "name": "Gambia, The",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Banjul",
+    "longitude": "-16.5885",
+    "latitude": "13.4495",
+    "population": 2759988,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/gmb",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q224",
+    "population": "3871833",
+    "area": "56594",
+    "countryLabel": "Croatia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Zagreb",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q37",
+    "population": "2860002",
+    "area": "65300",
+    "countryLabel": "Lithuania",
+    "countryDescription": "country in northeastern Europe",
+    "capitalLabel": "Vilnius",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q236",
+    "population": "617213",
+    "area": "13883",
+    "countryLabel": "Montenegro",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Podgorica",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "SVK",
+    "name": "Slovak Republic",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Bratislava",
+    "longitude": "17.1073",
+    "latitude": "48.1484",
+    "population": 5422069,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/svk",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "PHL",
+    "name": "Philippines",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Manila",
+    "longitude": "121.035",
+    "latitude": "14.5515",
+    "population": 115843670,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/phl",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q221",
+    "population": "1836713",
+    "area": "25713",
+    "countryLabel": "North Macedonia",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Skopje",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q965",
+    "population": "23025776",
+    "area": "274200",
+    "countryLabel": "Burkina Faso",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Ouagadougou",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q843",
+    "population": "223773700",
+    "area": "881913",
+    "countryLabel": "Pakistan",
+    "countryDescription": "sovereign state in South Asia",
+    "capitalLabel": "Islamabad",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q31",
+    "population": "11825551",
+    "area": "30688",
+    "countryLabel": "Belgium",
+    "countryDescription": "country in western Europe",
+    "capitalLabel": "City of Brussels",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "ECU",
+    "name": "Ecuador",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Quito",
+    "longitude": "-78.5243",
+    "latitude": "-0.229498",
+    "population": 18135478,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ecu",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q214",
+    "population": "5419451",
+    "area": "49034",
+    "countryLabel": "Slovakia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Bratislava",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q217",
+    "population": "2409207",
+    "area": "33843.5",
+    "countryLabel": "Moldova",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Chișinău",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "GRD",
+    "name": "Grenada",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Saint George's",
+    "longitude": "-61.7449",
+    "latitude": "12.0653",
+    "population": 117207,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/grd",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q334",
+    "population": "5866139",
+    "area": "719.1",
+    "countryLabel": "Singapore",
+    "countryDescription": "sovereign island country and city-state in maritime Southeast Asia",
+    "capitalLabel": "Singapore",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "HKG",
+    "name": "Hong Kong SAR, China",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "",
+    "longitude": "114.109",
+    "latitude": "22.3964",
+    "population": 7524100,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/hkg",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q710",
+    "population": "134518",
+    "area": "811",
+    "countryLabel": "Kiribati",
+    "countryDescription": "island sovereign state in the central Pacific Ocean",
+    "capitalLabel": "Tarawa",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q833",
+    "population": "32447385",
+    "area": "330803",
+    "countryLabel": "Malaysia",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Kuala Lumpur",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q800",
+    "population": "5265575",
+    "area": "51179.92",
+    "countryLabel": "Costa Rica",
+    "countryDescription": "country in Central America",
+    "capitalLabel": "San José",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q819",
+    "population": "6858160",
+    "area": "236800",
+    "countryLabel": "Laos",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Vientiane",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q781",
+    "population": "101489",
+    "area": "440.29",
+    "countryLabel": "Antigua and Barbuda",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "St. John's",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "COL",
+    "name": "Colombia",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Bogota",
+    "longitude": "-74.082",
+    "latitude": "4.60987",
+    "population": 52886363,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/col",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q846",
+    "population": "2639211",
+    "area": "11437",
+    "countryLabel": "Qatar",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Doha",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "BHS",
+    "name": "Bahamas, The",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Nassau",
+    "longitude": "-77.339",
+    "latitude": "25.0661",
+    "population": 401283,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/bhs",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q784",
+    "population": "74656",
+    "area": "751.096551",
+    "countryLabel": "Dominica",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Roseau",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q229",
+    "population": "1344976",
+    "area": "9242.45",
+    "countryLabel": "Cyprus",
+    "countryDescription": "country in the Mediterranean Sea",
+    "capitalLabel": "Nicosia",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q865",
+    "population": "23317031",
+    "area": "36193",
+    "countryLabel": "Taiwan",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Taipei",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q983",
+    "population": "1847549",
+    "area": "28051",
+    "countryLabel": "Equatorial Guinea",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Ciudad de la Paz",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q822",
+    "population": "6100075",
+    "area": "10452",
+    "countryLabel": "Lebanon",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Beirut",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q218",
+    "population": "19053815",
+    "area": "238397",
+    "countryLabel": "Romania",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Bucharest",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "CHI",
+    "name": "Channel Islands",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "",
+    "longitude": "",
+    "latitude": "",
+    "population": 168126,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/chi",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q235",
+    "population": "38423",
+    "area": "2.08",
+    "countryLabel": "Monaco",
+    "countryDescription": "microstate in Western Europe",
+    "capitalLabel": "Monaco City",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q225",
+    "population": "3816459",
+    "area": "51197",
+    "countryLabel": "Bosnia and Herzegovina",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Sarajevo",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q928",
+    "population": "112729484",
+    "area": "343448",
+    "countryLabel": "Philippines",
+    "countryDescription": "archipelagic country in Southeast Asia",
+    "capitalLabel": "Manila",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "SLB",
+    "name": "Solomon Islands",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Honiara",
+    "longitude": "159.949",
+    "latitude": "-9.42676",
+    "population": 819198,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/slb",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q683",
+    "population": "200010",
+    "area": "2842",
+    "countryLabel": "Samoa",
+    "countryDescription": "sovereign state made up of six islands in the Pacific Ocean",
+    "capitalLabel": "Apia",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1006",
+    "population": "12717176",
+    "area": "245857",
+    "countryLabel": "Guinea",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Conakry",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q32",
+    "population": "681987",
+    "area": "2586.36",
+    "countryLabel": "Luxembourg",
+    "countryDescription": "country in Western Europe",
+    "capitalLabel": "Luxembourg",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1025",
+    "population": "4736139",
+    "area": "1030700",
+    "countryLabel": "Mauritania",
+    "countryDescription": "sovereign state in West Africa and North Africa",
+    "capitalLabel": "Nouakchott",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1030",
+    "population": "2533794",
+    "area": "825615",
+    "countryLabel": "Namibia",
+    "countryDescription": "country in Southern Africa",
+    "capitalLabel": "Windhoek",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q917",
+    "population": "787424",
+    "area": "38394",
+    "countryLabel": "Bhutan",
+    "countryDescription": "sovereign state in South Asia",
+    "capitalLabel": "Thimphu",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q790",
+    "population": "10981229",
+    "area": "27750",
+    "countryLabel": "Haiti",
+    "countryDescription": "country in the Caribbean Sea",
+    "capitalLabel": "Port-au-Prince",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q43",
+    "population": "85372377",
+    "area": "783562",
+    "countryLabel": "Turkey",
+    "countryDescription": "country in West Asia and Southeast Europe",
+    "capitalLabel": "Ankara",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "SXM",
+    "name": "Sint Maarten (Dutch part)",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Philipsburg",
+    "longitude": "",
+    "latitude": "",
+    "population": 43350,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/sxm",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1028",
+    "population": "36828330",
+    "area": "446550",
+    "countryLabel": "Morocco",
+    "countryDescription": "sovereign state in North Africa",
+    "capitalLabel": "Rabat",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "NIC",
+    "name": "Nicaragua",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Managua",
+    "longitude": "-86.2734",
+    "latitude": "12.1475",
+    "population": 6916140,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/nic",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q783",
+    "population": "8303771",
+    "area": "112492",
+    "countryLabel": "Honduras",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Tegucigalpa",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "IND",
+    "name": "India",
+    "region": "South Asia",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "New Delhi",
+    "longitude": "77.225",
+    "latitude": "28.6353",
+    "population": 1450935791,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ind",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "ESP",
+    "name": "Spain",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Madrid",
+    "longitude": "-3.70327",
+    "latitude": "40.4167",
+    "population": 48848840,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/esp",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q878",
+    "population": "9890400",
+    "area": "83600",
+    "countryLabel": "United Arab Emirates",
+    "countryDescription": "country in Western Asia",
+    "capitalLabel": "Abu Dhabi",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q36",
+    "population": "37563071",
+    "area": "312683",
+    "countryLabel": "Poland",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Warsaw",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q963",
+    "population": "2480244",
+    "area": "581737",
+    "countryLabel": "Botswana",
+    "countryDescription": "sovereign state in Southern Africa",
+    "capitalLabel": "Gaborone",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q717",
+    "population": "31250306",
+    "area": "912050",
+    "countryLabel": "Venezuela",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Caracas",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q970",
+    "population": "902348",
+    "area": "2034",
+    "countryLabel": "Comoros",
+    "countryDescription": "sovereign state situated on an archipelago in the Indian Ocean off the eastern coast of Africa",
+    "capitalLabel": "Moroni",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "GIB",
+    "name": "Gibraltar",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "",
+    "longitude": "",
+    "latitude": "",
+    "population": 39329,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/gib",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1000",
+    "population": "2025137",
+    "area": "267667",
+    "countryLabel": "Gabon",
+    "countryDescription": "country on the Atlantic coast of Central Africa",
+    "capitalLabel": "Libreville",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q33",
+    "population": "5608218",
+    "area": "338478.34",
+    "countryLabel": "Finland",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Helsinki",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "CHL",
+    "name": "Chile",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "IBRD",
+    "capitalCity": "Santiago",
+    "longitude": "-70.6475",
+    "latitude": "-33.475",
+    "population": 19764771,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/chl",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q733",
+    "population": "6811297",
+    "area": "406756",
+    "countryLabel": "Paraguay",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Asunción",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q810",
+    "population": "10428241",
+    "area": "89341",
+    "countryLabel": "Jordan",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Amman",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "JPN",
+    "name": "Japan",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Tokyo",
+    "longitude": "139.77",
+    "latitude": "35.67",
+    "population": 123975371,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/jpn",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q711",
+    "population": "3409939",
+    "area": "1564116",
+    "countryLabel": "Mongolia",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Ulaanbaatar",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1033",
+    "population": "211400708",
+    "area": "923768",
+    "countryLabel": "Nigeria",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Abuja",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q219060",
+    "population": "5227193",
+    "area": "6020",
+    "countryLabel": "Palestine",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "East Jerusalem",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1044",
+    "population": "7557212",
+    "area": "71740",
+    "countryLabel": "Sierra Leone",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Freetown",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q232",
+    "population": "20139914",
+    "area": "2724900",
+    "countryLabel": "Kazakhstan",
+    "countryDescription": "sovereign state in Eastern Europe and Central Asia",
+    "capitalLabel": "Astana",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1007",
+    "population": "1861283",
+    "area": "36125",
+    "countryLabel": "Guinea-Bissau",
+    "countryDescription": "sovereign state in Western Africa",
+    "capitalLabel": "Bissau",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1037",
+    "population": "14569341",
+    "area": "26338",
+    "countryLabel": "Rwanda",
+    "countryDescription": "country in East Africa",
+    "capitalLabel": "Kigali",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "NZL",
+    "name": "New Zealand",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Wellington",
+    "longitude": "174.776",
+    "latitude": "-41.2865",
+    "population": 5287500,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/nzl",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q769",
+    "population": "114299",
+    "area": "348.5",
+    "countryLabel": "Grenada",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "St. George's",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "AZE",
+    "name": "Azerbaijan",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Baku",
+    "longitude": "49.8932",
+    "latitude": "40.3834",
+    "population": 10202830,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/aze",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q912",
+    "population": "20250833",
+    "area": "1240192",
+    "countryLabel": "Mali",
+    "countryDescription": "country in West Africa",
+    "capitalLabel": "Bamako",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1041",
+    "population": "16876720",
+    "area": "196722",
+    "countryLabel": "Senegal",
+    "countryDescription": "country on the coast of West Africa",
+    "capitalLabel": "Dakar",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "KNA",
+    "name": "St. Kitts and Nevis",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "IBRD",
+    "capitalCity": "Basseterre",
+    "longitude": "-62.7309",
+    "latitude": "17.3",
+    "population": 46843,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/kna",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "BRB",
+    "name": "Barbados",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "IBRD",
+    "capitalCity": "Bridgetown",
+    "longitude": "-59.6105",
+    "latitude": "13.0935",
+    "population": 282467,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/brb",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q958",
+    "population": "12575714",
+    "area": "644329",
+    "countryLabel": "South Sudan",
+    "countryDescription": "country in East Africa",
+    "capitalLabel": "Juba",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q760",
+    "population": "167591",
+    "area": "617.012867",
+    "countryLabel": "Saint Lucia",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Castries",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "GNB",
+    "name": "Guinea-Bissau",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Bissau",
+    "longitude": "-15.1804",
+    "latitude": "11.8037",
+    "population": 2201352,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/gnb",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q241",
+    "population": "10985974",
+    "area": "109884",
+    "countryLabel": "Cuba",
+    "countryDescription": "sovereign state situated on an island in the Caribbean Sea",
+    "capitalLabel": "Havana",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1005",
+    "population": "2639916",
+    "area": "11300",
+    "countryLabel": "The Gambia",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Banjul",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q778",
+    "population": "399440",
+    "area": "13878",
+    "countryLabel": "The Bahamas",
+    "countryDescription": "island sovereign state in the West Indies",
+    "capitalLabel": "Nassau",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "CIV",
+    "name": "Cote d'Ivoire",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Yamoussoukro",
+    "longitude": "-4.0305",
+    "latitude": "5.332",
+    "population": 31934230,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/civ",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MWI",
+    "name": "Malawi",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Lilongwe",
+    "longitude": "33.7703",
+    "latitude": "-13.9899",
+    "population": 21655286,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mwi",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q213",
+    "population": "10909500",
+    "area": "78871",
+    "countryLabel": "Czech Republic",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Prague",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "CAN",
+    "name": "Canada",
+    "region": "North America",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Ottawa",
+    "longitude": "-75.6919",
+    "latitude": "45.4215",
+    "population": 41288599,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/can",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "JOR",
+    "name": "Jordan",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Amman",
+    "longitude": "35.9263",
+    "latitude": "31.9497",
+    "population": 11552876,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/jor",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "GUY",
+    "name": "Guyana",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "IDA",
+    "capitalCity": "Georgetown",
+    "longitude": "-58.1548",
+    "latitude": "6.80461",
+    "population": 831087,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/guy",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "SSD",
+    "name": "South Sudan",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Juba",
+    "longitude": "31.6",
+    "latitude": "4.85",
+    "population": 11943408,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ssd",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1009",
+    "population": "28372687",
+    "area": "475442",
+    "countryLabel": "Cameroon",
+    "countryDescription": "sovereign state in West-Central Africa",
+    "capitalLabel": "Yaoundé",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "AGO",
+    "name": "Angola",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Luanda",
+    "longitude": "13.242",
+    "latitude": "-8.81155",
+    "population": 37885849,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ago",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "PRT",
+    "name": "Portugal",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Lisbon",
+    "longitude": "-9.13552",
+    "latitude": "38.7072",
+    "population": 10694681,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/prt",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "HUN",
+    "name": "Hungary",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Budapest",
+    "longitude": "19.0408",
+    "latitude": "47.4984",
+    "population": 9562065,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/hun",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q38",
+    "population": "58850717",
+    "area": "302068",
+    "countryLabel": "Italy",
+    "countryDescription": "country in southern Europe",
+    "capitalLabel": "Rome",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q948",
+    "population": "11565204",
+    "area": "163610",
+    "countryLabel": "Tunisia",
+    "countryDescription": "country in North Africa",
+    "capitalLabel": "Tunis",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q750",
+    "population": "12244159",
+    "area": "1098581",
+    "countryLabel": "Bolivia",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "La Paz",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q697",
+    "population": "13650",
+    "area": "21",
+    "countryLabel": "Nauru",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Yaren District",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q757",
+    "population": "109897",
+    "area": "389",
+    "countryLabel": "Saint Vincent and the Grenadines",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Kingstown",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1019",
+    "population": "31964956",
+    "area": "587295",
+    "countryLabel": "Madagascar",
+    "countryDescription": "island sovereign state off the coast of Southeast Africa, in the Indian Ocean",
+    "capitalLabel": "Antananarivo",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q953",
+    "population": "19610769",
+    "area": "752618",
+    "countryLabel": "Zambia",
+    "countryDescription": "country at the crossroads of Central and Southern Africa",
+    "capitalLabel": "Lusaka",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q45",
+    "population": "10347892",
+    "area": "92225",
+    "countryLabel": "Portugal",
+    "countryDescription": "country in Southwestern Europe",
+    "capitalLabel": "Lisbon",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q756617",
+    "population": "5930987",
+    "area": "2220930",
+    "countryLabel": "Kingdom of Denmark",
+    "countryDescription": "transcontinental sovereign state and constitutional monarchy",
+    "capitalLabel": "Copenhagen",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q347",
+    "population": "37922",
+    "area": "160",
+    "countryLabel": "Liechtenstein",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Vaduz",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q184",
+    "population": "9109280",
+    "area": "207596.76",
+    "countryLabel": "Belarus",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Minsk",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "KWT",
+    "name": "Kuwait",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Kuwait City",
+    "longitude": "47.9824",
+    "latitude": "29.3721",
+    "population": 4897263,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/kwt",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q215",
+    "population": "2066880",
+    "area": "20271",
+    "countryLabel": "Slovenia",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Ljubljana",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q20",
+    "population": "5627400",
+    "area": "385207",
+    "countryLabel": "Norway",
+    "countryDescription": "country in Northern Europe",
+    "capitalLabel": "Oslo",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q423",
+    "population": "26418204",
+    "area": "120540",
+    "countryLabel": "North Korea",
+    "countryDescription": "Sovereign state in East Asia",
+    "capitalLabel": "Pyongyang",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q145",
+    "population": "67326569",
+    "area": "242495",
+    "countryLabel": "United Kingdom",
+    "countryDescription": "island country in north-west Europe",
+    "capitalLabel": "London",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q244",
+    "population": "303431",
+    "area": "439",
+    "countryLabel": "Barbados",
+    "countryDescription": "island nation in the Caribbean",
+    "capitalLabel": "Bridgetown",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "LBY",
+    "name": "Libya",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Tripoli",
+    "longitude": "13.1072",
+    "latitude": "32.8578",
+    "population": 7381023,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/lby",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "GBR",
+    "name": "United Kingdom",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "London",
+    "longitude": "-0.126236",
+    "latitude": "51.5002",
+    "population": 69226000,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/gbr",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MAR",
+    "name": "Morocco",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Rabat",
+    "longitude": "-6.8704",
+    "latitude": "33.9905",
+    "population": 38081173,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mar",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "FJI",
+    "name": "Fiji",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Suva",
+    "longitude": "178.399",
+    "latitude": "-18.1149",
+    "population": 928784,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/fji",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q238",
+    "population": "33600",
+    "area": "61.2",
+    "countryLabel": "San Marino",
+    "countryDescription": "sovereign state in southern Europe, enclaved within Italy",
+    "capitalLabel": "San Marino",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q298",
+    "population": "19458000",
+    "area": "756102",
+    "countryLabel": "Chile",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Santiago",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q419",
+    "population": "33726000",
+    "area": "1285216",
+    "countryLabel": "Peru",
+    "countryDescription": "sovereign state in South America",
+    "capitalLabel": "Lima",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q786",
+    "population": "10760028",
+    "area": "48670.82",
+    "countryLabel": "Dominican Republic",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Santo Domingo",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q398",
+    "population": "1569666",
+    "area": "786.5",
+    "countryLabel": "Bahrain",
+    "countryDescription": "country in the Persian Gulf",
+    "capitalLabel": "Manama",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q252",
+    "population": "275439000",
+    "area": "1904570",
+    "countryLabel": "Indonesia",
+    "countryDescription": "island country in Southeast Asia and Oceania",
+    "capitalLabel": "Jakarta",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q685",
+    "population": "611343",
+    "area": "28400",
+    "countryLabel": "Solomon Islands",
+    "countryDescription": "island sovereign state in Oceania",
+    "capitalLabel": "Honiara",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1020",
+    "population": "17563749",
+    "area": "118484",
+    "countryLabel": "Malawi",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Lilongwe",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q142",
+    "population": "68605616",
+    "area": "643801",
+    "countryLabel": "France",
+    "countryDescription": "country in Western Europe and other continents (through its overseas territories in America, Africa and Oceania)",
+    "capitalLabel": "Paris",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q28",
+    "population": "9603634",
+    "area": "93011.4",
+    "countryLabel": "Hungary",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Budapest",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q212",
+    "population": "41167335",
+    "area": "603550",
+    "countryLabel": "Ukraine",
+    "countryDescription": "country in Eastern Europe",
+    "capitalLabel": "Kyiv",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "BOL",
+    "name": "Bolivia",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "La Paz",
+    "longitude": "-66.1936",
+    "latitude": "-13.9908",
+    "population": 12413315,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/bol",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q837",
+    "population": "29164578",
+    "area": "147181.254346",
+    "countryLabel": "Nepal",
+    "countryDescription": "country in South Asia",
+    "capitalLabel": "Kathmandu",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "PAK",
+    "name": "Pakistan",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Islamabad",
+    "longitude": "72.8",
+    "latitude": "30.5167",
+    "population": 251269164,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/pak",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q96",
+    "population": "132274416",
+    "area": "1972550",
+    "countryLabel": "Mexico",
+    "countryDescription": "country in North America",
+    "capitalLabel": "Mexico City",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1032",
+    "population": "21477348",
+    "area": "1267000",
+    "countryLabel": "Niger",
+    "countryDescription": "sovereign state in western Africa",
+    "capitalLabel": "Niamey",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "ARE",
+    "name": "United Arab Emirates",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Abu Dhabi",
+    "longitude": "54.3705",
+    "latitude": "24.4764",
+    "population": 10986400,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/are",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "CYM",
+    "name": "Cayman Islands",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "George Town",
+    "longitude": "-81.3857",
+    "latitude": "19.3022",
+    "population": 74457,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/cym",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q921",
+    "population": "458949",
+    "area": "5765.313533",
+    "countryLabel": "Brunei",
+    "countryDescription": "sovereign country and sultanate on the island of Borneo in south-east Asia, member of the Commonwealth of Nations",
+    "capitalLabel": "Bandar Seri Begawan",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q30",
+    "population": "340110988",
+    "area": "9826675",
+    "countryLabel": "United States",
+    "countryDescription": "country located primarily in North America",
+    "capitalLabel": "Washington, D.C.",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q34266",
+    "population": "181537800",
+    "area": "23700000",
+    "countryLabel": "Russian Empire",
+    "countryDescription": "former empire in Eurasia and North America (1721–1917)",
+    "capitalLabel": "Saint Petersburg",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "BGD",
+    "name": "Bangladesh",
+    "region": "South Asia",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Dhaka",
+    "longitude": "90.4113",
+    "latitude": "23.7055",
+    "population": 173562364,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/bgd",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q222",
+    "population": "2811655",
+    "area": "28748",
+    "countryLabel": "Albania",
+    "countryDescription": "country in southeastern Europe",
+    "capitalLabel": "Tirana",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "NGA",
+    "name": "Nigeria",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Abuja",
+    "longitude": "7.48906",
+    "latitude": "9.05804",
+    "population": 232679478,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/nga",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q79",
+    "population": "114535772",
+    "area": "1010407.87",
+    "countryLabel": "Egypt",
+    "countryDescription": "country in Northeast Africa and Southwest Asia",
+    "capitalLabel": "Cairo",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1036",
+    "population": "47123531",
+    "area": "241038",
+    "countryLabel": "Uganda",
+    "countryDescription": "country in East Africa",
+    "capitalLabel": "Kampala",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q691",
+    "population": "8935000",
+    "area": "462840",
+    "countryLabel": "Papua New Guinea",
+    "countryDescription": "country in Oceania",
+    "capitalLabel": "Port Moresby",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "MOZ",
+    "name": "Mozambique",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Maputo",
+    "longitude": "32.5713",
+    "latitude": "-25.9664",
+    "population": 34631766,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/moz",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q924",
+    "population": "57310019",
+    "area": "947303",
+    "countryLabel": "Tanzania",
+    "countryDescription": "country in East Africa",
+    "capitalLabel": "Dodoma",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q574",
+    "population": "1243235",
+    "area": "14918.72",
+    "countryLabel": "Timor-Leste",
+    "countryDescription": "sovereign state situated on several islands in Southeast Asia",
+    "capitalLabel": "Dili",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q155",
+    "population": "213421037",
+    "area": "8515767",
+    "countryLabel": "Brazil",
+    "countryDescription": "country in South America",
+    "capitalLabel": "Brasília",
+    "continentLabel": "South America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "BWA",
+    "name": "Botswana",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Gaborone",
+    "longitude": "25.9201",
+    "latitude": "-24.6544",
+    "population": 2521139,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/bwa",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "CUB",
+    "name": "Cuba",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "Not classified",
+    "capitalCity": "Havana",
+    "longitude": "-82.3667",
+    "latitude": "23.1333",
+    "population": 10979783,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/cub",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "PLW",
+    "name": "Palau",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "IBRD",
+    "capitalCity": "Koror",
+    "longitude": "134.479",
+    "latitude": "7.34194",
+    "population": 17695,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/plw",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q826",
+    "population": "436330",
+    "area": "298",
+    "countryLabel": "Maldives",
+    "countryDescription": "sovereign state in South Asia, situated on an archipelago in the Arabian Sea",
+    "capitalLabel": "Malé",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q657",
+    "population": "19319064",
+    "area": "1284000",
+    "countryLabel": "Chad",
+    "countryDescription": "sovereign state in central Africa",
+    "capitalLabel": "N'Djamena",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q664",
+    "population": "5307800",
+    "area": "268021",
+    "countryLabel": "New Zealand",
+    "countryDescription": "island country in the southwest Pacific Ocean",
+    "capitalLabel": "Wellington",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q929",
+    "population": "5152421",
+    "area": "622984",
+    "countryLabel": "Central African Republic",
+    "countryDescription": "country in Central Africa",
+    "capitalLabel": "Bangui",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1013",
+    "population": "2007201",
+    "area": "30355",
+    "countryLabel": "Lesotho",
+    "countryDescription": "sovereign state in southern Africa",
+    "capitalLabel": "Maseru",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q233",
+    "population": "553214",
+    "area": "316",
+    "countryLabel": "Malta",
+    "countryDescription": "country in Southern Europe situated on an archipelago in the Mediterranean Sea",
+    "capitalLabel": "Valletta",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q399",
+    "population": "2930450",
+    "area": "29743.423459",
+    "countryLabel": "Armenia",
+    "countryDescription": "sovereign state in the South Caucasus region of Eurasia",
+    "capitalLabel": "Yerevan",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q117",
+    "population": "32833031",
+    "area": "238535",
+    "countryLabel": "Ghana",
+    "countryDescription": "country in West Africa",
+    "capitalLabel": "Accra",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1027",
+    "population": "1264613",
+    "area": "2040",
+    "countryLabel": "Mauritius",
+    "countryDescription": "island sovereign state off of East Africa in the Indian Ocean",
+    "capitalLabel": "Port Louis",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "KEN",
+    "name": "Kenya",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Nairobi",
+    "longitude": "36.8126",
+    "latitude": "-1.27975",
+    "population": 56432944,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ken",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q709",
+    "population": "53127",
+    "area": "181.43",
+    "countryLabel": "Marshall Islands",
+    "countryDescription": "country near the equator in the Pacific Ocean",
+    "capitalLabel": "Majuro",
+    "continentLabel": "Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q211",
+    "population": "1856932",
+    "area": "62226.85",
+    "countryLabel": "Latvia",
+    "countryDescription": "sovereign state in northeastern Europe",
+    "capitalLabel": "Riga",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q763",
+    "population": "46922",
+    "area": "269.358763",
+    "countryLabel": "Saint Kitts and Nevis",
+    "countryDescription": "island sovereign state in the Caribbean Sea",
+    "capitalLabel": "Basseterre",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q39",
+    "population": "9104063",
+    "area": "41291",
+    "countryLabel": "Switzerland",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Bern",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q115",
+    "population": "128691692",
+    "area": "1104300",
+    "countryLabel": "Ethiopia",
+    "countryDescription": "country in the Horn of Africa",
+    "capitalLabel": "Addis Ababa",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q686",
+    "population": "300019",
+    "area": "12190",
+    "countryLabel": "Vanuatu",
+    "countryDescription": "island country in Oceania",
+    "capitalLabel": "Port Vila",
+    "continentLabel": "Insular Oceania",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "OMN",
+    "name": "Oman",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Muscat",
+    "longitude": "58.5874",
+    "latitude": "23.6105",
+    "population": 5281538,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/omn",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q41",
+    "population": "10482487",
+    "area": "131957",
+    "countryLabel": "Greece",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Athens",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q986",
+    "population": "3497000",
+    "area": "117600",
+    "countryLabel": "Eritrea",
+    "countryDescription": "country in the Horn of Africa",
+    "capitalLabel": "Asmara",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q242",
+    "population": "411106",
+    "area": "22966",
+    "countryLabel": "Belize",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Belmopan",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q967",
+    "population": "13689450",
+    "area": "27834",
+    "countryLabel": "Burundi",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Gitega",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q804",
+    "population": "4570133",
+    "area": "74177.3",
+    "countryLabel": "Panama",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Panama City",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "GEO",
+    "name": "Georgia",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Tbilisi",
+    "longitude": "44.793",
+    "latitude": "41.71",
+    "population": 3699557,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/geo",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "MRT",
+    "name": "Mauritania",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Nouakchott",
+    "longitude": "-15.9824",
+    "latitude": "18.2367",
+    "population": 5169395,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mrt",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q842",
+    "population": "4829480",
+    "area": "309500",
+    "countryLabel": "Oman",
+    "countryDescription": "sovereign state in western Asia",
+    "capitalLabel": "Muscat",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "SVN",
+    "name": "Slovenia",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Ljubljana",
+    "longitude": "14.5044",
+    "latitude": "46.0546",
+    "population": 2127400,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/svn",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q424",
+    "population": "17423880",
+    "area": "181035",
+    "countryLabel": "Cambodia",
+    "countryDescription": "country in Southeast Asia",
+    "capitalLabel": "Phnom Penh",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1014",
+    "population": "5214030",
+    "area": "111369",
+    "countryLabel": "Liberia",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Monrovia",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1016",
+    "population": "6678567",
+    "area": "1759541",
+    "countryLabel": "Libya",
+    "countryDescription": "sovereign state in North Africa",
+    "capitalLabel": "Tripoli",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q858",
+    "population": "23865423",
+    "area": "185180",
+    "countryLabel": "Syria",
+    "countryDescription": "country in West Asia",
+    "capitalLabel": "Damascus",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q902",
+    "population": "171466990",
+    "area": "147570",
+    "countryLabel": "Bangladesh",
+    "countryDescription": "country in South Asia",
+    "capitalLabel": "Dhaka",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1049",
+    "population": "40533330",
+    "area": "1840687",
+    "countryLabel": "Sudan",
+    "countryDescription": "country in Northeast Africa",
+    "capitalLabel": "Khartoum",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "MDG",
+    "name": "Madagascar",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Antananarivo",
+    "longitude": "45.7167",
+    "latitude": "-20.4667",
+    "population": 31964956,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/mdg",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q183",
+    "population": "83577140",
+    "area": "357587.77",
+    "countryLabel": "Germany",
+    "countryDescription": "country in Central Europe",
+    "capitalLabel": "Berlin",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q754",
+    "population": "1369125",
+    "area": "5128",
+    "countryLabel": "Trinidad and Tobago",
+    "countryDescription": "island sovereign state in the Caribbean",
+    "capitalLabel": "Port of Spain",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q262",
+    "population": "46164219",
+    "area": "2381741",
+    "countryLabel": "Algeria",
+    "countryDescription": "country in North Africa",
+    "capitalLabel": "Algiers",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "KAZ",
+    "name": "Kazakhstan",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Astana",
+    "longitude": "71.4382",
+    "latitude": "51.1879",
+    "population": 20592571,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/kaz",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1039",
+    "population": "204327",
+    "area": "1001",
+    "countryLabel": "São Tomé and Príncipe",
+    "countryDescription": "island sovereign state in Africa",
+    "capitalLabel": "São Tomé",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q874",
+    "population": "6117933",
+    "area": "491210",
+    "countryLabel": "Turkmenistan",
+    "countryDescription": "country in Central Asia",
+    "capitalLabel": "Ashgabat",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q889",
+    "population": "41454761",
+    "area": "652230",
+    "countryLabel": "Afghanistan",
+    "countryDescription": "country in Central and South Asia",
+    "capitalLabel": "Kabul",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q817",
+    "population": "4464000",
+    "area": "17818",
+    "countryLabel": "Kuwait",
+    "countryDescription": "sovereign state in Western Asia",
+    "capitalLabel": "Kuwait City",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "IRN",
+    "name": "Iran, Islamic Rep.",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Tehran",
+    "longitude": "51.4447",
+    "latitude": "35.6878",
+    "population": 91567738,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/irn",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q811",
+    "population": "5142098",
+    "area": "120340",
+    "countryLabel": "Nicaragua",
+    "countryDescription": "sovereign state in Central America",
+    "capitalLabel": "Managua",
+    "continentLabel": "North America",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q962",
+    "population": "14111034",
+    "area": "114763",
+    "countryLabel": "Benin",
+    "countryDescription": "sovereign state in West Africa",
+    "capitalLabel": "Porto-Novo",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q794",
+    "population": "92417700",
+    "area": "1648195",
+    "countryLabel": "Iran",
+    "countryDescription": "country in Western Asia",
+    "capitalLabel": "Tehran",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q974",
+    "population": "105789731",
+    "area": "2344858",
+    "countryLabel": "Democratic Republic of the Congo",
+    "countryDescription": "country in Central Africa",
+    "capitalLabel": "Kinshasa",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "PRI",
+    "name": "Puerto Rico (US)",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "San Juan",
+    "longitude": "-66",
+    "latitude": "18.23",
+    "population": 3203295,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/pri",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "SUR",
+    "name": "Suriname",
+    "region": "Latin America & Caribbean ",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "Blend",
+    "capitalCity": "Paramaribo",
+    "longitude": "-55.1679",
+    "latitude": "5.8232",
+    "population": 634431,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/sur",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q668",
+    "population": "1477519529",
+    "area": "3287263",
+    "countryLabel": "India",
+    "countryDescription": "country in South Asia",
+    "capitalLabel": "New Delhi",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "BEN",
+    "name": "Benin",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IDA",
+    "capitalCity": "Porto-Novo",
+    "longitude": "2.6323",
+    "latitude": "6.4779",
+    "population": 14462724,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/ben",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "BIH",
+    "name": "Bosnia and Herzegovina",
+    "region": "Europe & Central Asia",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Sarajevo",
+    "longitude": "18.4214",
+    "latitude": "43.8607",
+    "population": 3164253,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/bih",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "NAM",
+    "name": "Namibia",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Lower middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Windhoek",
+    "longitude": "17.0931",
+    "latitude": "-22.5648",
+    "population": 3030131,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/nam",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q854",
+    "population": "21444000",
+    "area": "65610",
+    "countryLabel": "Sri Lanka",
+    "countryDescription": "island country in South Asia",
+    "capitalLabel": "Colombo",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q977",
+    "population": "1152944",
+    "area": "23200",
+    "countryLabel": "Djibouti",
+    "countryDescription": "sovereign state in Africa",
+    "capitalLabel": "Djibouti City",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q1011",
+    "population": "555988",
+    "area": "4033",
+    "countryLabel": "Cape Verde",
+    "countryDescription": "sovereign state comprising ten islands off the Western coast of Africa",
+    "capitalLabel": "Praia",
+    "continentLabel": "Africa",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "id": "RWA",
+    "name": "Rwanda",
+    "region": "Sub-Saharan Africa ",
+    "incomeLevel": "Low income",
+    "lendingType": "IDA",
+    "capitalCity": "Kigali",
+    "longitude": "30.0587",
+    "latitude": "-1.95325",
+    "population": 14256567,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/rwa",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "GUM",
+    "name": "Guam",
+    "region": "East Asia & Pacific",
+    "incomeLevel": "High income",
+    "lendingType": "Not classified",
+    "capitalCity": "Agana",
+    "longitude": "144.794",
+    "latitude": "13.4443",
+    "population": 167777,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/gum",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "id": "DZA",
+    "name": "Algeria",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "incomeLevel": "Upper middle income",
+    "lendingType": "IBRD",
+    "capitalCity": "Algiers",
+    "longitude": "3.05097",
+    "latitude": "36.7397",
+    "population": 46814308,
+    "sourceName": "World Bank Open Data",
+    "sourceUrl": "https://data.worldbank.org/country/dza",
+    "sourceDataset": "world-bank-countries",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/world-bank-countries.json",
+      "sourceRole": "supplement"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q796",
+    "population": "38274618",
+    "area": "437072",
+    "countryLabel": "Iraq",
+    "countryDescription": "sovereign state in Western Asia",
+    "capitalLabel": "Baghdad",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q884",
+    "population": "51466201",
+    "area": "100295",
+    "countryLabel": "South Korea",
+    "countryDescription": "country in East Asia",
+    "capitalLabel": "Seoul",
+    "continentLabel": "Asia",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  },
+  {
+    "country": "http://www.wikidata.org/entity/Q403",
+    "population": "6605168",
+    "area": "88499",
+    "countryLabel": "Serbia",
+    "countryDescription": "country in Southeast Europe",
+    "capitalLabel": "Belgrade",
+    "continentLabel": "Europe",
+    "sourceDataset": "geography",
+    "sourceMix": {
+      "domain": "geography",
+      "sourcePath": "data/raw/geography.json",
+      "sourceRole": "primary"
+    }
+  }
+]

@@ -5,7 +5,7 @@
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
-import { buildRunPool } from './runPoolBuilder';
+import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
@@ -163,6 +163,7 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.enemy.nextIntent.value > 0 ? turnState.enemy.nextIntent.value : undefined,
     );
     scene.updatePlayerHP(turnState.playerState.hp, turnState.playerState.maxHP, false);
+    scene.updateEnemyBlock(turnState.enemy.block, false);
     scene.setFloorInfo(
       turnState.deck.currentFloor,
       turnState.deck.currentEncounter,
@@ -200,6 +201,8 @@ export function startEncounterForRoom(enemyId?: string): boolean {
       probeRunNumber: run.primaryDomainRunNumber,
       probeDomain: run.primaryDomain,
     });
+    // Record pool fact IDs for recently-played deprioritization in future runs
+    recordRunFacts(activeRunPool.map(c => c.factId));
     if (activeRunPool.length === 0) {
       console.warn('[encounterBridge] Empty run pool — cannot start encounter');
       return false;
@@ -444,6 +447,7 @@ export function handlePlayCard(
     }
 
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
+    scene.updateEnemyBlock(result.turnState.enemy.block, true);
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
     if (result.enemyDefeated) {
       playCardAudio('enemy-death');
@@ -507,6 +511,7 @@ export function handleEndTurn(): void {
     }
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
+    scene.updateEnemyBlock(result.turnState.enemy.block, true);
     scene.setEnemyIntent(
       result.turnState.enemy.nextIntent.telegraph,
       result.turnState.enemy.nextIntent.value > 0 ? result.turnState.enemy.nextIntent.value : undefined,

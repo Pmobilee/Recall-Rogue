@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.979Z",
+  "inputFiles": [
+    "data/generated/worker-output/human_body_health.jsonl"
+  ],
+  "domain": "human_body_health",
+  "counts": {
+    "input": 63,
+    "valid": 63,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "adgra2-gene-001",
+      "question": "What is ADGRA2 classified as?"
+    },
+    {
+      "id": "polr2mp1-001",
+      "question": "What is POLR2MP1 in humans?"
+    },
+    {
+      "id": "gprc5d-001",
+      "question": "What does GPRC5D encode in human cells?"
+    },
+    {
+      "id": "gltp-gene-q5572626",
+      "question": "What does GLTP stand for in human genetics?"
+    },
+    {
+      "id": "gpc4-protein-gene-001",
+      "question": "What type of gene is GPC4?"
+    }
+  ]
+}

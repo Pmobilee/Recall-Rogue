@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.808Z",
+  "inputFiles": [
+    "data/generated/worker-output/mythology_folklore.jsonl"
+  ],
+  "domain": "mythology_folklore",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 63,
+    "existingCompared": 1233,
+    "exactDuplicates": 63,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "cupid-001",
+      "candidateQuestion": "What is Cupid the Roman god of?",
+      "matchId": "cupid-001",
+      "matchQuestion": "What is Cupid the Roman god of?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "curupira-001",
+      "candidateQuestion": "What is Curupira in Brazilian mythology?",
+      "matchId": "curupira-001",
+      "matchQuestion": "What is Curupira in Brazilian mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "loch-ness-monster-001",
+      "candidateQuestion": "What is the Loch Ness Monster from?",
+      "matchId": "loch-ness-monster-001",
+      "matchQuestion": "What is the Loch Ness Monster from?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "easter-bunny-001",
+      "candidateQuestion": "What folkloric figure symbolizes Easter?",
+      "matchId": "easter-bunny-001",
+      "matchQuestion": "What folkloric figure symbolizes Easter?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "kubikajiri-001",
+      "candidateQuestion": "What does Kubikajiri, a Japanese yokai, do?",
+      "matchId": "kubikajiri-001",
+      "matchQuestion": "What does Kubikajiri, a Japanese yokai, do?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "bahkauv-001",
+      "candidateQuestion": "What type of creature is Bahkauv in Slavic mythology?",
+      "matchId": "bahkauv-001",
+      "matchQuestion": "What type of creature is Bahkauv in Slavic mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "chupacabra-001",
+      "candidateQuestion": "Where was the Chupacabra first reportedly sighted?",
+      "matchId": "chupacabra-001",
+      "matchQuestion": "Where was the Chupacabra first reportedly sighted?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-death-danse-macabre-001",
+      "candidateQuestion": "What medieval tradition features Death as a main character?",
+      "matchId": "myth-death-danse-macabre-001",
+      "matchQuestion": "What medieval tradition features Death as a main character?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "marid-islamic-jinn-001",
+      "candidateQuestion": "What is a Marid in Islamic mythology?",
+      "matchId": "marid-islamic-jinn-001",
+      "matchQuestion": "What is a Marid in Islamic mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "baphomet-001",
+      "candidateQuestion": "What is Baphomet primarily known as?",
+      "matchId": "baphomet-001",
+      "matchQuestion": "What is Baphomet primarily known as?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "adne-sadeh-001",
+      "candidateQuestion": "What is Adne Sadeh in Jewish folklore?",
+      "matchId": "adne-sadeh-001",
+      "matchQuestion": "What is Adne Sadeh in Jewish folklore?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "barong-001",
+      "candidateQuestion": "What is Barong in Indonesian mythology?",
+      "matchId": "barong-001",
+      "matchQuestion": "What is Barong in Indonesian mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myt-001-mongolian-death-worm",
+      "candidateQuestion": "What is the Olgoi-Khorkhoi?",
+      "matchId": "myt-001-mongolian-death-worm",
+      "matchQuestion": "What is the Olgoi-Khorkhoi?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-lady-midday-014",
+      "candidateQuestion": "What kind of creature is Lady Midday?",
+      "matchId": "myth-lady-midday-014",
+      "matchQuestion": "What kind of creature is Lady Midday?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-namazu-015",
+      "candidateQuestion": "What kind of creature is Namazu?",
+      "matchId": "myth-namazu-015",
+      "matchQuestion": "What kind of creature is Namazu?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-lindworm-016",
+      "candidateQuestion": "What kind of creature is lindworm?",
+      "matchId": "myth-lindworm-016",
+      "matchQuestion": "What kind of creature is lindworm?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-nasnas-017",
+      "candidateQuestion": "What kind of creature is Nasnas?",
+      "matchId": "myth-nasnas-017",
+      "matchQuestion": "What kind of creature is Nasnas?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-buraq-018",
+      "candidateQuestion": "What is Buraq in mythology?",
+      "matchId": "myth-buraq-018",
+      "matchQuestion": "What is Buraq in mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-erymanthian-boar-019",
+      "candidateQuestion": "What is Erymanthian Boar in mythology?",
+      "matchId": "myth-erymanthian-boar-019",
+      "matchQuestion": "What is Erymanthian Boar in mythology?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "myth-afanc-020",
+      "candidateQuestion": "What kind of creature is Afanc?",
+      "matchId": "myth-afanc-020",
+      "matchQuestion": "What kind of creature is Afanc?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

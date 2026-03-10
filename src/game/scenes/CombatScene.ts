@@ -95,10 +95,14 @@ export class CombatScene extends Phaser.Scene {
   private particles!: Phaser.GameObjects.Particles.ParticleEmitter
   private enemyPlaceholderBorder!: Phaser.GameObjects.Rectangle | null
   private enemyPlaceholderIcon!: Phaser.GameObjects.Text | null
+  private enemyBlockBarFill!: Phaser.GameObjects.Rectangle
+  private enemyBlockIcon!: Phaser.GameObjects.Text
+  private enemyBlockText!: Phaser.GameObjects.Text
 
   // ── State ────────────────────────────────────────────────
   private currentEnemyHP = 0
   private currentEnemyMaxHP = 0
+  private currentEnemyBlock = 0
   private currentPlayerHP = 80
   private currentPlayerMaxHP = 80
   private currentFloor = 1
@@ -165,6 +169,23 @@ export class CombatScene extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     }).setOrigin(0.5, 0.5)
+
+    // ── Enemy block bar (overlays HP bar when enemy has block) ──
+    this.enemyBlockBarFill = this.add.rectangle(
+      w / 2 - ENEMY_HP_BAR_W / 2, enemyHpY,
+      0, ENEMY_HP_BAR_H,
+      0x3498db, 0.6
+    ).setOrigin(0, 0.5).setDepth(12)
+
+    this.enemyBlockIcon = this.add.text(
+      w / 2 - ENEMY_HP_BAR_W / 2 - 20, enemyHpY,
+      '🛡️', { fontSize: '14px' }
+    ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
+
+    this.enemyBlockText = this.add.text(
+      w / 2 - ENEMY_HP_BAR_W / 2 - 20, enemyHpY + 12,
+      '', { fontFamily: 'monospace', fontSize: '10px', color: '#3498db' }
+    ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
     // ── Enemy sprite placeholder ──────────────────────────
     const enemyY = this.displayH * ENEMY_Y_PCT
@@ -331,6 +352,12 @@ export class CombatScene extends Phaser.Scene {
   updateEnemyHP(hp: number, animate = true): void {
     this.currentEnemyHP = Phaser.Math.Clamp(hp, 0, this.currentEnemyMaxHP)
     this.refreshEnemyHpBar(animate && !this.reduceMotion)
+  }
+
+  /** Update enemy block display (called by encounterBridge). */
+  updateEnemyBlock(block: number, animate = true): void {
+    this.currentEnemyBlock = block
+    this.refreshEnemyBlockBar(animate && !this.reduceMotion)
   }
 
   /** Update enemy intent telegraph. */
@@ -581,7 +608,46 @@ export class CombatScene extends Phaser.Scene {
       this.enemyHpBarFill.displayWidth = targetW
     }
 
+    // Color HP bar based on block presence
+    if (this.currentEnemyBlock > 0) {
+      this.enemyHpBarFill.setFillStyle(0x3498db)
+    } else {
+      this.enemyHpBarFill.setFillStyle(COLOR_HP_RED)
+    }
+
     this.enemyHpText.setText(`${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
+  }
+
+  /** Refresh enemy block bar overlay and indicators. */
+  private refreshEnemyBlockBar(animate: boolean): void {
+    const hasBlock = this.currentEnemyBlock > 0
+
+    this.enemyBlockIcon.setVisible(hasBlock)
+    this.enemyBlockText.setVisible(hasBlock)
+
+    if (hasBlock) {
+      this.enemyBlockText.setText(`${this.currentEnemyBlock}`)
+      const blockRatio = Math.min(1, this.currentEnemyBlock / this.currentEnemyMaxHP)
+      const targetW = Math.max(1, blockRatio * ENEMY_HP_BAR_W)
+
+      if (animate) {
+        this.tweens.add({
+          targets: this.enemyBlockBarFill,
+          displayWidth: targetW,
+          duration: 300,
+          ease: 'Power2',
+        })
+      } else {
+        this.enemyBlockBarFill.displayWidth = targetW
+      }
+
+      // Tint HP bar blue when block is active
+      this.enemyHpBarFill.setFillStyle(0x3498db)
+    } else {
+      this.enemyBlockBarFill.displayWidth = 0
+      // Restore HP bar to red
+      this.enemyHpBarFill.setFillStyle(COLOR_HP_RED)
+    }
   }
 
   /** Refresh player HP bar fill width, color, and text. */

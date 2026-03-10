@@ -1,0 +1,606 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.225Z",
+  "command": "ingest",
+  "domains": [
+    "general_knowledge",
+    "natural_sciences",
+    "space_astronomy",
+    "geography",
+    "history",
+    "mythology_folklore",
+    "animals_wildlife",
+    "human_body_health",
+    "food_cuisine",
+    "art_architecture"
+  ],
+  "dryRun": false,
+  "strict": false,
+  "useIndex": true,
+  "compareAgainst": "src/data/seed",
+  "tasksDir": "/root/terra-miner/data/generated/worker-packages",
+  "workerOutputDir": "/root/terra-miner/data/generated/worker-output",
+  "qaRoot": "/root/terra-miner/data/generated/qa-reports/worker-ingest",
+  "results": [
+    {
+      "domain": "general_knowledge",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/general_knowledge.jsonl",
+      "targetPath": "data/generated/general_knowledge.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/general_knowledge",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 140,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 140
+      },
+      "dedupReport": {
+        "input": 140,
+        "existingCompared": 1233,
+        "exactDuplicates": 140,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 140,
+        "valid": 140,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 82,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/general_knowledge.jsonl domain=general_knowledge\n  loaded 140 records\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-validation-report.json\n  valid=140 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1373 documents)\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-dedup-report.json\n  exact=140 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/general_knowledge.jsonl (current: 140)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 140 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/general_knowledge.jsonl",
+          "--domain",
+          "general_knowledge",
+          "--target",
+          "data/generated/general_knowledge.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/general_knowledge",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "natural_sciences",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/natural_sciences.jsonl",
+      "targetPath": "data/generated/natural_sciences.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/natural_sciences",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 54,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 54
+      },
+      "dedupReport": {
+        "input": 54,
+        "existingCompared": 1233,
+        "exactDuplicates": 54,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 54,
+        "valid": 54,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 75,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/natural_sciences.jsonl domain=natural_sciences\n  loaded 54 records\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-validation-report.json\n  valid=54 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1287 documents)\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-dedup-report.json\n  exact=54 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/natural_sciences.jsonl (current: 54)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 54 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/natural_sciences.jsonl",
+          "--domain",
+          "natural_sciences",
+          "--target",
+          "data/generated/natural_sciences.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/natural_sciences",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "space_astronomy",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/space_astronomy.jsonl",
+      "targetPath": "data/generated/space_astronomy.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/space_astronomy",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 61,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 61
+      },
+      "dedupReport": {
+        "input": 61,
+        "existingCompared": 1233,
+        "exactDuplicates": 61,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 61,
+        "valid": 61,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 76,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/space_astronomy.jsonl domain=space_astronomy\n  loaded 61 records\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-validation-report.json\n  valid=61 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1294 documents)\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-dedup-report.json\n  exact=61 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/space_astronomy.jsonl (current: 61)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 61 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/space_astronomy.jsonl",
+          "--domain",
+          "space_astronomy",
+          "--target",
+          "data/generated/space_astronomy.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/space_astronomy",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "geography",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/geography.jsonl",
+      "targetPath": "data/generated/geography.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/geography",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 50,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 50
+      },
+      "dedupReport": {
+        "input": 50,
+        "existingCompared": 1233,
+        "exactDuplicates": 50,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 50,
+        "valid": 50,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 83,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/geography.jsonl domain=geography\n  loaded 50 records\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-validation-report.json\n  valid=50 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1283 documents)\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-dedup-report.json\n  exact=50 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/geography.jsonl (current: 50)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 50 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/geography.jsonl",
+          "--domain",
+          "geography",
+          "--target",
+          "data/generated/geography.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/geography",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "history",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/history.jsonl",
+      "targetPath": "data/generated/history.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/history",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 91,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 91
+      },
+      "dedupReport": {
+        "input": 91,
+        "existingCompared": 1233,
+        "exactDuplicates": 91,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 91,
+        "valid": 91,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 81,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/history.jsonl domain=history\n  loaded 91 records\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-validation-report.json\n  valid=91 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1324 documents)\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-dedup-report.json\n  exact=91 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/history.jsonl (current: 91)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 91 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/history.jsonl",
+          "--domain",
+          "history",
+          "--target",
+          "data/generated/history.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/history",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "mythology_folklore",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/mythology_folklore.jsonl",
+      "targetPath": "data/generated/mythology_folklore.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/mythology_folklore",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 63,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 63
+      },
+      "dedupReport": {
+        "input": 63,
+        "existingCompared": 1233,
+        "exactDuplicates": 63,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 63,
+        "valid": 63,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 85,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/mythology_folklore.jsonl domain=mythology_folklore\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/mythology_folklore.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/mythology_folklore.jsonl",
+          "--domain",
+          "mythology_folklore",
+          "--target",
+          "data/generated/mythology_folklore.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/mythology_folklore",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "animals_wildlife",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/animals_wildlife.jsonl",
+      "targetPath": "data/generated/animals_wildlife.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/animals_wildlife",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 63,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 63
+      },
+      "dedupReport": {
+        "input": 63,
+        "existingCompared": 1233,
+        "exactDuplicates": 63,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 63,
+        "valid": 63,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 113,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/animals_wildlife.jsonl domain=animals_wildlife\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/animals_wildlife.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/animals_wildlife.jsonl",
+          "--domain",
+          "animals_wildlife",
+          "--target",
+          "data/generated/animals_wildlife.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/animals_wildlife",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "human_body_health",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/human_body_health.jsonl",
+      "targetPath": "data/generated/human_body_health.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/human_body_health",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 63,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 63
+      },
+      "dedupReport": {
+        "input": 63,
+        "existingCompared": 1233,
+        "exactDuplicates": 63,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 63,
+        "valid": 63,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 77,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/human_body_health.jsonl domain=human_body_health\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/human_body_health.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/human_body_health.jsonl",
+          "--domain",
+          "human_body_health",
+          "--target",
+          "data/generated/human_body_health.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/human_body_health",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "food_cuisine",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/food_cuisine.jsonl",
+      "targetPath": "data/generated/food_cuisine.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/food_cuisine",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 63,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 63
+      },
+      "dedupReport": {
+        "input": 63,
+        "existingCompared": 1233,
+        "exactDuplicates": 63,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 63,
+        "valid": 63,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 94,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/food_cuisine.jsonl domain=food_cuisine\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/food_cuisine.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/food_cuisine.jsonl",
+          "--domain",
+          "food_cuisine",
+          "--target",
+          "data/generated/food_cuisine.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/food_cuisine",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "art_architecture",
+      "expectedMissing": 0,
+      "inputPath": "data/generated/worker-output/art_architecture.jsonl",
+      "targetPath": "data/generated/art_architecture.jsonl",
+      "qaDir": "data/generated/qa-reports/worker-ingest/art_architecture",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 62,
+      "mergePreview": {
+        "factsToAdd": 0,
+        "newTotalAfterMerge": 62
+      },
+      "dedupReport": {
+        "input": 62,
+        "existingCompared": 1233,
+        "exactDuplicates": 62,
+        "semanticDuplicates": 0,
+        "needsReview": 0,
+        "accepted": 0
+      },
+      "validationReport": {
+        "input": 62,
+        "valid": 62,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 211,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/art_architecture.jsonl domain=art_architecture\n  loaded 62 records\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-validation-report.json\n  valid=62 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1295 documents)\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-dedup-report.json\n  exact=62 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/art_architecture.jsonl (current: 62)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 62 | Accepted: 0 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "data/generated/worker-output/art_architecture.jsonl",
+          "--domain",
+          "art_architecture",
+          "--target",
+          "data/generated/art_architecture.jsonl",
+          "--qa-dir",
+          "data/generated/qa-reports/worker-ingest/art_architecture",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    }
+  ],
+  "pass": true,
+  "totals": {
+    "domains": 10,
+    "domainsProcessed": 10,
+    "domainsMissingOutput": 0,
+    "inputsFound": 10,
+    "inputsRows": 710
+  },
+  "indexStep": {
+    "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+    "ok": true,
+    "exitCode": 0,
+    "durationMs": 100,
+    "stdout": "[build-index] Loading facts from all targets...\n  loaded 1233 facts\n  index built: 1233 facts, 1232 keys, 5627 trigrams\n  saved to: data/generated/qa-reports/dedup-index.json",
+    "stderr": "",
+    "args": [
+      "build-index",
+      "--compare-against",
+      "src/data/seed"
+    ]
+  }
+}

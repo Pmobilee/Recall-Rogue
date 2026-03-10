@@ -1,0 +1,17 @@
+{
+  "domain": "space_astronomy",
+  "domainSlug": "space-astronomy",
+  "existingFacts": 61,
+  "existingFactsPath": "data/generated/space_astronomy.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 300,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/space_astronomy.json",
+  "workerOutputPath": "data/generated/worker-output/space_astronomy.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

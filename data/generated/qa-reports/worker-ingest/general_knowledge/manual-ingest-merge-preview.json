@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.399Z",
+  "inputFiles": [
+    "data/generated/worker-output/general_knowledge.jsonl"
+  ],
+  "target": "data/generated/general_knowledge.jsonl",
+  "targetExists": true,
+  "existingFactsInTarget": 140,
+  "factsToAdd": 0,
+  "newTotalAfterMerge": 140,
+  "sampleFacts": [],
+  "coverage": {
+    "generatedAt": "2026-03-10T06:27:09.399Z",
+    "totalFacts": 0,
+    "withSource": 0,
+    "sourceCoveragePct": 0,
+    "byCategory": {},
+    "byDifficulty": {},
+    "byType": {},
+    "byAgeRating": {},
+    "byVerification": {
+      "verified": 0,
+      "unverified": 0
+    },
+    "distractorWarnings": []
+  }
+}

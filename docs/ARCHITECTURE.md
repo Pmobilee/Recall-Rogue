@@ -299,7 +299,7 @@ src/
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
-    enemyManager.ts        — Creates enemies, floor scaling, intent rolling
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution
     floorManager.ts        — Floor/room/boss/mini-boss generation
     runManager.ts          — Run stats recording
     runSaveService.ts      — Save/resume active run to localStorage

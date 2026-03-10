@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.928Z",
+  "inputFiles": [
+    "data/generated/worker-output/animals_wildlife.jsonl"
+  ],
+  "target": "data/generated/animals_wildlife.jsonl",
+  "targetExists": true,
+  "existingFactsInTarget": 63,
+  "factsToAdd": 0,
+  "newTotalAfterMerge": 63,
+  "sampleFacts": [],
+  "coverage": {
+    "generatedAt": "2026-03-10T06:27:09.928Z",
+    "totalFacts": 0,
+    "withSource": 0,
+    "sourceCoveragePct": 0,
+    "byCategory": {},
+    "byDifficulty": {},
+    "byType": {},
+    "byAgeRating": {},
+    "byVerification": {
+      "verified": 0,
+      "unverified": 0
+    },
+    "distractorWarnings": []
+  }
+}

@@ -15,9 +15,10 @@
     cardAnimations?: Record<string, CardAnimPhase>
     onselectcard: (index: number) => void
     ondeselectcard: () => void
+    oncastdirect?: (index: number) => void
   }
 
-  let { cards, animatingCards = [], selectedIndex, disabled, apCurrent, cardAnimations, onselectcard }: Props = $props()
+  let { cards, animatingCards = [], selectedIndex, disabled, apCurrent, cardAnimations, onselectcard, oncastdirect }: Props = $props()
 
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
@@ -92,10 +93,23 @@
     return getDomainMetadata(domain).colorTint
   }
 
-  let touchStartY: number | null = null
-  let dragOffsetY = $state(0)
-  let isDragging = $state(false)
-  let dragCardIndex = $state<number | null>(null)
+  let hoveredIndex = $state<number | null>(null)
+
+  let dragState = $state<{
+    cardIndex: number
+    startX: number
+    startY: number
+    currentX: number
+    currentY: number
+    pointerId: number
+  } | null>(null)
+
+  let dragDeltaX = $derived(dragState ? dragState.currentX - dragState.startX : 0)
+  let dragDeltaY = $derived(dragState ? Math.max(0, dragState.startY - dragState.currentY) : 0)
+  let dragRawDeltaY = $derived(dragState ? dragState.startY - dragState.currentY : 0)
+  let dragScale = $derived(1 + Math.min(0.3, dragDeltaY / 200))
+  let isDragPastThreshold = $derived(dragDeltaY > 60)
+  let isDragPreview = $derived(dragDeltaY > 40)
 
   // Reactive version counter — incremented when new cardbacks arrive via SSE
   let cardbackVersion = $state(0)
@@ -131,46 +145,63 @@
     }
   })
 
-  function handleTouchStart(e: TouchEvent, index: number): void {
-    touchStartY = e.touches[0].clientY
-    dragCardIndex = index
-    isDragging = true
-    dragOffsetY = 0
+  function handlePointerEnter(e: PointerEvent, index: number): void {
+    if (e.pointerType !== 'mouse') return
+    if (selectedIndex !== null || disabled || dragState) return
+    hoveredIndex = index
   }
 
-  function handleTouchMove(e: TouchEvent): void {
-    if (touchStartY === null || !isDragging) return
-    const deltaY = touchStartY - e.touches[0].clientY
-    // Only allow dragging upward (positive deltaY = upward)
-    dragOffsetY = Math.max(0, deltaY)
-    if (dragOffsetY > 10) {
+  function handlePointerLeave(): void {
+    hoveredIndex = null
+  }
+
+  function handlePointerDown(e: PointerEvent, index: number): void {
+    if (disabled) return
+    const card = cards[index]
+    if (!card) return
+    if (selectedIndex !== null && selectedIndex !== index) return
+
+    dragState = {
+      cardIndex: index,
+      startX: e.clientX,
+      startY: e.clientY,
+      currentX: e.clientX,
+      currentY: e.clientY,
+      pointerId: e.pointerId,
+    }
+    hoveredIndex = null
+    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+  }
+
+  function handlePointerMove(e: PointerEvent): void {
+    if (!dragState || e.pointerId !== dragState.pointerId) return
+    dragState = { ...dragState, currentX: e.clientX, currentY: e.clientY }
+    const totalMovement = Math.abs(e.clientX - dragState.startX) + Math.abs(dragState.startY - e.clientY)
+    if (totalMovement > 10) {
       e.preventDefault()
     }
   }
 
-  function handleTouchEnd(e: TouchEvent, index: number): void {
-    if (touchStartY === null) {
-      isDragging = false
-      dragCardIndex = null
-      dragOffsetY = 0
-      return
-    }
-    const deltaY = touchStartY - e.changedTouches[0].clientY
-    touchStartY = null
-    isDragging = false
-    dragCardIndex = null
-    dragOffsetY = 0
-    if (deltaY > 60) {
-      // Swipe up past threshold — cast the card
-      if (!disabled) onselectcard(index)
-    }
-  }
+  function handlePointerUp(e: PointerEvent): void {
+    if (!dragState || e.pointerId !== dragState.pointerId) return
+    const deltaY = dragState.startY - e.clientY
+    const deltaX = Math.abs(e.clientX - dragState.startX)
+    const wasDrag = Math.abs(deltaY) > 20 || deltaX > 20
+    const index = dragState.cardIndex
+    dragState = null
 
-  function handleCardClick(index: number): void {
-    if (disabled) return
-    const card = cards[index]
-    if (!card) return
-    onselectcard(index)
+    if (deltaY > 60) {
+      // Upward drag past threshold — cast directly
+      if (oncastdirect) {
+        oncastdirect(index)
+      } else {
+        onselectcard(index)
+      }
+    } else if (!wasDrag) {
+      // Tap (minimal movement) — normal select behavior
+      onselectcard(index)
+    }
+    // Below threshold with movement: card returns to hand (no action)
   }
 </script>
 
@@ -194,6 +225,13 @@
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isMechanic = cardAnim === 'mechanic'}
+    {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
+    {@const hoverLift = isHovered ? 18 : 0}
+    {@const hoverScale = isHovered ? 1.15 : 1}
+    {@const isDraggingThis = dragState?.cardIndex === i}
+    {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
+    {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
+    {@const cardDragScale = isDraggingThis ? dragScale : 1}
 
     <button
       class="card-in-hand"
@@ -210,19 +248,22 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-reveal={isRevealing || isMechanic}
       class:card-mechanic={isMechanic}
+      class:drag-ready={isDragPastThreshold && isDraggingThis}
       style="
-        {isRevealing || isMechanic ? '' : `transform: translateX(${xOffset}px) translateY(${isSelected ? -80 - (isDragging && dragCardIndex === i ? dragOffsetY : 0) : isOther ? 15 : -arcOffset}px) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : 1});`}
+        {isRevealing || isMechanic ? '' : isDraggingThis ? `transform: translateX(${xOffset + cardDragX}px) translateY(${(isSelected ? -80 : -arcOffset) - cardDragRawY}px) rotate(0deg) scale(${cardDragScale});` : `transform: translateX(${xOffset}px) translateY(${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         border-color: {domainColor};
         --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
-        opacity: {isSelected && isDragging && dragCardIndex === i ? Math.max(0.3, 1 - dragOffsetY / 200) : isOther ? 0.3 : 1};
+        opacity: {isOther ? 0.3 : 1};
+        z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
       "
       data-testid="card-hand-{i}"
       disabled={disabled || isOther}
-      onclick={() => handleCardClick(i)}
-      ontouchstart={(e) => isSelected ? handleTouchStart(e, i) : null}
-      ontouchmove={(e) => isSelected ? handleTouchMove(e) : null}
-      ontouchend={(e) => isSelected ? handleTouchEnd(e, i) : null}
+      onpointerdown={(e) => handlePointerDown(e, i)}
+      onpointermove={(e) => handlePointerMove(e)}
+      onpointerup={(e) => handlePointerUp(e)}
+      onpointerenter={(e) => handlePointerEnter(e, i)}
+      onpointerleave={handlePointerLeave}
     >
       <div class="card-inner" class:flipped={isRevealing || isMechanic}>
         <div class="card-front">
@@ -242,11 +283,13 @@
             <div class="echo-badge">ECHO</div>
           {/if}
 
-          {#if isSelected}
+          {#if isSelected || (isDragPreview && isDraggingThis)}
             <div class="card-info-overlay">
               <div class="info-mechanic">{card.mechanicName ?? card.cardType}</div>
               <div class="info-effect">{getCardEffectText(card)}</div>
-              <div class="info-cast-hint">Tap or Swipe Up ↑</div>
+              {#if isSelected && !isDraggingThis}
+                <div class="info-cast-hint">Tap or Swipe Up ↑</div>
+              {/if}
             </div>
           {/if}
         </div>
@@ -340,9 +383,10 @@
     align-items: center;
     padding: 0;
     overflow: visible;
-    transition: transform 250ms ease, opacity 250ms ease;
+    transition: transform 0.15s ease-out, opacity 0.25s ease;
     animation: card-fan-in 300ms ease-out both;
     -webkit-tap-highlight-color: transparent;
+    touch-action: none;
     font-family: inherit;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -367,6 +411,10 @@
 
   .card-playable {
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .drag-ready {
+    box-shadow: 0 0 16px rgba(34, 197, 94, 0.7), 0 0 32px rgba(34, 197, 94, 0.3) !important;
   }
 
   .card-selected {

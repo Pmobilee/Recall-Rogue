@@ -55,10 +55,12 @@ PLAYER TURN:
      Remaining unplayed cards discarded.
 
 ENEMY TURN:
-  6. Enemy executes telegraphed attack (intent visible before player turn)
-  7. Damage applied minus player's block
-  8. Block resets to 0 (unless Fortress passive active)
-  9. Next turn begins
+  6. Enemy block resets to 0 (STS-style — must re-defend each turn)
+  7. Enemy executes telegraphed action (intent visible before player turn)
+     - Defend intents add block to enemy (absorbs damage before HP)
+  8. Player damage applied minus player's block
+  9. Player block resets to 0 (unless Fortress passive active)
+  10. Next turn begins
 ```
 
 ### Fact-Card Shuffling (Per-Draw Randomization)
@@ -88,11 +90,13 @@ Facts answered in an encounter enter a 3-encounter cooldown. They cannot appear 
 
 Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 44% for restudying. Kornell et al. (2009) — even failed retrieval beats passive viewing. Richland et al. (2009) — "preview without commitment" = LESS learning than committed attempts.
 
-**Stage 1 — In hand:** Cards fan in a natural arc (low-high-low, center card highest). Each card shows mechanic name, effect value, difficulty stars, domain tint, and an AP cost badge (blue circle, top-right). Playable cards have a green glow; insufficient-AP cards are greyed out. NO question.
+**Stage 1 — In hand:** Cards fan in a natural arc (low-high-low, center card highest). Each card shows mechanic name, effect value, difficulty stars, domain tint, and an AP cost badge (blue circle, top-right). Playable cards have a green glow; insufficient-AP cards are greyed out. NO question. **Hover pop-out (mouse only):** hovering over a card lifts it 18px and scales to 1.15x with a snappy 150ms transition, giving a satisfying browse feel. Hover is suppressed during drag or when a card is selected.
 
-**Stage 2 — Selected (tap to rise):** Card rises 80px with info overlay showing mechanic name, effect description, and "Tap or Swipe Up ↑" prompt. Non-selected cards dim. Touch drag: selected card visually follows finger upward with opacity fade. Can freely deselect by tapping backdrop. Strategic decision point.
+**Stage 2 — Selected (tap to rise):** Card rises 80px with info overlay showing mechanic name, effect description, and "Tap or Swipe Up" prompt. Non-selected cards dim. Can freely deselect by tapping backdrop. Strategic decision point.
 
-**Stage 3 — Committed (tap again or swipe up >60px):** Selected card drops back into hand. Question panel appears ABOVE the card hand (positioned via `position: fixed; bottom: calc(45vh - 20px)` — no overlap). Dynamic timer starts (see Timer System). No cancel. Must answer or auto-fizzle.
+**Stage 2b — Drag-to-play (mouse + touch):** Grabbing any card and dragging upward smoothly lifts and scales it (up to 1.3x). After 40px, the card info overlay appears; after 60px, a green "ready to cast" glow signals the threshold. Releasing above 60px casts the card directly (bypasses the two-step select-then-cast flow). Releasing below the threshold returns the card to hand with no action. Uses unified pointer events for both mouse and touch.
+
+**Stage 3 — Committed (tap again, swipe up >60px, or drag-to-play):** Selected card drops back into hand. Question panel appears ABOVE the card hand (positioned via `position: fixed; bottom: calc(45vh - 20px)` — no overlap). Dynamic timer starts (see Timer System). No cancel. Must answer or auto-fizzle.
 
 ### Action Points (Turn Economy)
 
@@ -596,7 +600,7 @@ Events are randomly selected from the pool after each boss fight.
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
 | Cave Bat | 19 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
-| Crystal Golem | 38 | 9 every 2 turns, 13 (heavy) | Blocks on off-turns. Sustained damage. |
+| Crystal Golem | 38 | 9 every 2 turns, 13 (heavy) | Gains block on off-turns via defend intent. Sustained damage. |
 | Toxic Spore | 15 | 5 + poison | Low HP, DOT. Teaches healing. |
 | Shadow Mimic | 24 | 7, copies last card | Punishes repetition. |
 
@@ -670,6 +674,8 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 | scholar | Expert Mode | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 1.20x |
 
 **Story Mode forced for new players:** Run 1 automatically uses Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, all modes unlock.
+
+**Difficulty unlock popup:** When the player completes their first run (`runsCompleted === 1`), the RunEndScreen displays a modal popup after a 1.5-second delay. The popup congratulates the player, explains the three difficulty modes (Story / Timed / Expert), and lets them choose. Timed Mode is pre-selected and marked as "Recommended". The selection is saved to `difficultyMode` in `cardPreferences.ts`. Players can always change their difficulty later in Settings.
 
 **Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Story Mode and Timed Mode earn standard rewards; Expert Mode earns a 20% bonus.
 
@@ -881,8 +887,9 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 | State | Size | Shows |
 |-------|------|-------|
-| In hand | `min(18vw, 85px)` width, 1.5:1 aspect ratio | Mechanic, value, stars, domain tint, AP cost badge (blue circle top-right). Green glow if playable. 30° total fan spread, 20px max arc offset. |
-| Selected | Same card, rises 80px | Info overlay: mechanic name, effect, "Tap or Swipe Up ↑". Non-selected cards dim. Touch drag follows finger upward with opacity fade. |
+| In hand | `min(18vw, 85px)` width, 1.5:1 aspect ratio | Mechanic, value, stars, domain tint, AP cost badge (blue circle top-right). Green glow if playable. 30° total fan spread, 20px max arc offset. Mouse hover: +18px lift, 1.15x scale. |
+| Dragging | Same card, follows pointer | Lifts and scales (up to 1.3x). Info overlay at 40px drag. Green glow at 60px (cast threshold). Opacity fades with distance. |
+| Selected | Same card, rises 80px | Info overlay: mechanic name, effect, "Tap or Swipe Up". Non-selected cards dim. |
 | Committed | Question panel above hand | `position: fixed; bottom: calc(45vh - 20px)`. Selected card drops back into hand. Question, answers, timer, hint. No overlap with card hand. |
 
 ### AP Display
@@ -896,6 +903,16 @@ STS-style intent badge shown in combat overlay (center, between AP and bounty st
 - Attack intents have red border highlight
 - Hidden during quiz (committed stage) to reduce visual noise
 - Data sourced from `turnState.enemy.nextIntent` (pre-rolled by enemyManager)
+
+### Enemy Block (Shield) System
+
+Enemies can gain block via defend intents, following STS conventions:
+
+- **Gaining block:** When an enemy executes a defend intent, `enemy.block += intent.value`.
+- **Absorbing damage:** Player damage hits block first. Blocked damage is subtracted from block; remaining damage hits HP.
+- **Block decay:** Enemy block resets to 0 at the START of each enemy turn (before the enemy acts). Block gained from defend lasts through the entire player turn, then clears when the enemy acts again.
+- **Visual display:** Blue semi-transparent bar overlays the enemy HP bar when block > 0. Shield icon and block amount shown to the left of the HP bar. HP bar fill turns blue while block is active, returns to red when block is depleted.
+- **Data:** `EnemyInstance.block` field (number, default 0). Managed by `enemyManager.applyDamageToEnemy()` and `turnManager.endPlayerTurn()`.
 
 ### End Turn Button
 
@@ -1188,6 +1205,17 @@ Research: Vampire Survivors $57M+ on $5 premium. Duolingo $1B+ freemium subscrip
 | Cosmetics | Varies (frames, animations, dungeon skins, avatars) |
 
 No pay-to-win. No premium currency. No gacha. Education (primary) + Games (secondary).
+
+### Subscriber Category Filtering (Planned)
+
+Arcane Pass subscribers gain access to fine-grained category filters within each domain. Free players select a domain (e.g., History); subscribers can drill down and toggle specific sub-categories (e.g., "WW2 only", "Ancient Rome only", "Turn off Medieval"). This applies to the run pool builder — filtered categories are excluded from fact selection during runs.
+
+**Design constraints:**
+- Minimum 1 sub-category must remain active per domain (can't empty the pool)
+- Filters persist across runs until changed
+- UI: accessible from Settings → Learning Preferences (subscriber-gated)
+- Free players see the filter UI greyed out with an upgrade prompt
+- Sub-categories are driven by the `tags` field on facts, not a separate taxonomy
 
 ### Camp Hub & Cosmetic Progression
 
@@ -1743,6 +1771,123 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 
 ---
 
+## 35. Automated Playtesting Framework
+
+AI-driven playtesting system that simulates diverse player types, analyzes gameplay logs, and produces a ranked issue leaderboard — all without manual play.
+
+### Three-Tier Architecture
+
+| Tier | Agent | Role |
+|------|-------|------|
+| **Play** | Haiku (cheap) | Runs headless combat simulations following player profiles. Records structured JSON logs. Does NOT analyze. |
+| **Analyze** | Sonnet | Reads playthrough logs, detects balance/UX/progression issues using detection rules, writes issue reports. |
+| **Triage** | Opus | Deduplicates issues across playthroughs, scores by severity × frequency × profile breadth, maintains ranked leaderboard. |
+
+### Player Profiles
+
+Six configurable JSON profiles in `tests/playtest/profiles/`:
+
+| Profile | Accuracy | Speed | Strategy | Purpose |
+|---------|----------|-------|----------|---------|
+| `beginner` | 50% flat | slow | random | Tests canary assist, early difficulty |
+| `average` | 70% improving | normal | basic | Typical player experience |
+| `expert` | 90% flat | fast | optimal | Tests high-combo balance, speed bonus |
+| `speed-runner` | 90% + 90% speed bonus | fast | optimal | Tests speed bonus snowball effect |
+| `struggling` | 40% declining | slow | random | Stress-tests canary + echo mechanics |
+| `impatient` | 70% volatile | normal | random, 25% skip | Tests skip/engagement patterns |
+
+Each profile controls: accuracy curve (flat/improving/declining/volatile), reading speed (speed bonus probability), strategic skill level (random → optimal card selection), engagement (skip probability, aggression), and session behavior (max floors, cash-out floor).
+
+Profiles support deterministic overrides: predetermined answer sequences, enemy sequences, RNG seeds, start floor, and start HP for reproducible testing.
+
+### Headless Combat Simulation
+
+The `HeadlessCombatSimulator` (`tests/playtest/core/headless-combat.ts`) imports the real game engine services directly under Vitest + happy-dom — no browser, no Phaser, no rendering:
+
+- `turnManager.ts` — encounter loop, card play, enemy turns
+- `deckManager.ts` — deck/hand management
+- `enemyManager.ts` — enemy creation, HP scaling, intent rolling
+- `cardEffectResolver.ts` — damage/shield/heal calculation
+- `playerCombatState.ts` — player HP/shield/status tracking
+
+Uses `patchMathRandom(seed)` for fully deterministic, reproducible runs.
+
+### Card Selection AI
+
+Four strategy levels (`tests/playtest/core/combat-strategies.ts`):
+
+- **Random**: Pick any card, small skip chance
+- **Basic**: Prioritize attacks, heal when HP < 50%
+- **Intermediate**: Read enemy intent — shield before attacks, debuff before multi-attacks, buff before own attacks
+- **Optimal**: Full decision tree — combo management, buff stacking, shield timing, vulnerability exploitation
+
+### Playthrough Log Format
+
+Structured JSON logs in `data/playtests/logs/` with:
+- **Per-action entries**: card type, mechanic, answer correctness, speed bonus, damage dealt/received, combo state
+- **State snapshots**: player HP/shield, enemy HP, hand size, AP after every action
+- **Per-encounter summaries**: turns to resolve, accuracy, max combo, damage dealt/taken
+- **Run summary**: result, final floor, total encounters, overall accuracy, max combo, perfect turns
+
+### Issue Detection Rules
+
+The Sonnet analyzer checks for 17 issue categories across 5 areas:
+
+- **Balance**: damage spikes (>50% HP in one hit), too easy (3+ fights at >90% HP), combo unreachable (>60% accuracy but max combo <3)
+- **Progression**: difficulty spikes (>2× turns vs previous floor), dead ends (0 damage dealt)
+- **UX**: dead turns (no meaningful choices), unfun moments (HP 70%→20% in one fight)
+- **Canary**: not triggering (3+ wrong answers, still neutral), over-compensating (assist at >70% accuracy)
+- **Mechanics**: unused card types, broken effects (0 value when non-zero expected)
+
+### Issue Leaderboard
+
+Scored and ranked in `data/playtests/leaderboard.json`:
+
+```
+Score = severity_weight × frequency × breadth_factor
+```
+
+- Severity weights: critical=10, high=5, medium=3, low=1, cosmetic=0.5
+- Breadth factor: 1.0 (1 profile), 1.25 (2 profiles), 1.5 (3+ profiles)
+- Deduplication by `{category}_{floor_bucket}` (early/mid-early/mid/late/endgame)
+
+View with: `node tests/playtest/view-leaderboard.mjs`
+
+### Skills
+
+| Skill | Purpose |
+|-------|---------|
+| `/playtest-suite` | Run full pipeline: simulate → analyze → triage → display results |
+| `/playtest-results` | View existing leaderboard, logs, or reports |
+| `/playtest --profile expert --seed 42` | Run a single simulation |
+| `/playtest-analyze --latest` | Analyze the most recent log |
+| `/playtest-triage` | Deduplicate and rank all reports |
+
+### Key Files
+
+```
+tests/playtest/
+  core/
+    headless-combat.ts    — HeadlessCombatSimulator class
+    combat-strategies.ts  — Card selection AI (4 levels)
+    seeded-rng.ts         — Deterministic PRNG
+    types.ts              — All TypeScript types
+  profiles/               — 6 player profile JSONs
+  runners/
+    run-headless.test.ts  — Vitest entry point
+  analysis/
+    sonnet-analyzer-prompt.md  — Detection checklist
+    opus-triage-prompt.md      — Triage guide
+    issue-categories.ts        — Categories + scoring
+  view-leaderboard.mjs    — CLI leaderboard viewer
+data/playtests/
+  logs/                   — Playthrough JSON logs
+  reports/                — Issue report JSONs
+  leaderboard.json        — Ranked issue leaderboard
+```
+
+---
+
 ## Appendix A: Glossary for Coding Agents
 
 | Term | Definition |
@@ -1782,3 +1927,6 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 | Campfire Pause | In-run pause screen showing run stats with resume/hub options. Saves run state. |
 | Special Event | Post-boss reward event (Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery). |
 | Push Notification | Local mobile notification for retention (streak risk, milestone, review due, win-back). Max 1/day. |
+| Playtest Profile | JSON config defining simulated player behavior: accuracy curve, reading speed, strategy level, engagement pattern. In tests/playtest/profiles/. |
+| Headless Playtest | Combat simulation using real game engine under Vitest + happy-dom. No browser/Phaser required. Driven by HeadlessCombatSimulator. |
+| Issue Leaderboard | Ranked list of game design issues found by automated playtesting. Scored by severity × frequency × profile breadth. In data/playtests/leaderboard.json. |

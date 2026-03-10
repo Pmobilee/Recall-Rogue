@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.641Z",
+  "inputFiles": [
+    "data/generated/worker-output/geography.jsonl"
+  ],
+  "domain": "geography",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 50,
+    "existingCompared": 1233,
+    "exactDuplicates": 50,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "geo-saint-lucia-001",
+      "candidateQuestion": "What is the capital of Saint Lucia?",
+      "matchId": "geo-saint-lucia-001",
+      "matchQuestion": "What is the capital of Saint Lucia?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-saint-kitts-and-nevis-002",
+      "candidateQuestion": "What is the capital of Saint Kitts and Nevis?",
+      "matchId": "geo-saint-kitts-and-nevis-002",
+      "matchQuestion": "What is the capital of Saint Kitts and Nevis?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-jamaica-003",
+      "candidateQuestion": "What is the capital of Jamaica?",
+      "matchId": "geo-jamaica-003",
+      "matchQuestion": "What is the capital of Jamaica?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-grenada-004",
+      "candidateQuestion": "What is the capital of Grenada?",
+      "matchId": "geo-grenada-004",
+      "matchQuestion": "What is the capital of Grenada?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-guatemala-005",
+      "candidateQuestion": "What is the capital of Guatemala?",
+      "matchId": "geo-guatemala-005",
+      "matchQuestion": "What is the capital of Guatemala?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-the-bahamas-006",
+      "candidateQuestion": "What is the capital of The Bahamas?",
+      "matchId": "geo-the-bahamas-006",
+      "matchQuestion": "What is the capital of The Bahamas?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-antigua-and-barbuda-007",
+      "candidateQuestion": "What is the capital of Antigua and Barbuda?",
+      "matchId": "geo-antigua-and-barbuda-007",
+      "matchQuestion": "What is the capital of Antigua and Barbuda?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-honduras-008",
+      "candidateQuestion": "What is the capital of Honduras?",
+      "matchId": "geo-honduras-008",
+      "matchQuestion": "What is the capital of Honduras?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-dominica-009",
+      "candidateQuestion": "What is the capital of Dominica?",
+      "matchId": "geo-dominica-009",
+      "matchQuestion": "What is the capital of Dominica?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-dominican-republic-010",
+      "candidateQuestion": "What is the capital of Dominican Republic?",
+      "matchId": "geo-dominican-republic-010",
+      "matchQuestion": "What is the capital of Dominican Republic?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-haiti-011",
+      "candidateQuestion": "What is the capital of Haiti?",
+      "matchId": "geo-haiti-011",
+      "matchQuestion": "What is the capital of Haiti?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-el-salvador-012",
+      "candidateQuestion": "What is the capital of El Salvador?",
+      "matchId": "geo-el-salvador-012",
+      "matchQuestion": "What is the capital of El Salvador?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-iran-013",
+      "candidateQuestion": "What is the capital of Iran?",
+      "matchId": "geo-iran-013",
+      "matchQuestion": "What is the capital of Iran?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-iraq-014",
+      "candidateQuestion": "What is the capital of Iraq?",
+      "matchId": "geo-iraq-014",
+      "matchQuestion": "What is the capital of Iraq?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-costa-rica-015",
+      "candidateQuestion": "What is the capital of Costa Rica?",
+      "matchId": "geo-costa-rica-015",
+      "matchQuestion": "What is the capital of Costa Rica?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-panama-016",
+      "candidateQuestion": "What is the capital of Panama?",
+      "matchId": "geo-panama-016",
+      "matchQuestion": "What is the capital of Panama?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-yemen-017",
+      "candidateQuestion": "What is the capital of Yemen?",
+      "matchId": "geo-yemen-017",
+      "matchQuestion": "What is the capital of Yemen?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-jordan-018",
+      "candidateQuestion": "What is the capital of Jordan?",
+      "matchId": "geo-jordan-018",
+      "matchQuestion": "What is the capital of Jordan?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-nicaragua-019",
+      "candidateQuestion": "What is the capital of Nicaragua?",
+      "matchId": "geo-nicaragua-019",
+      "matchQuestion": "What is the capital of Nicaragua?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "geo-kyrgyzstan-020",
+      "candidateQuestion": "What is the capital of Kyrgyzstan?",
+      "matchId": "geo-kyrgyzstan-020",
+      "matchQuestion": "What is the capital of Kyrgyzstan?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

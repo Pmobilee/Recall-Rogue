@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.481Z",
+  "inputFiles": [
+    "data/generated/worker-output/natural_sciences.jsonl"
+  ],
+  "target": "data/generated/natural_sciences.jsonl",
+  "targetExists": true,
+  "existingFactsInTarget": 54,
+  "factsToAdd": 0,
+  "newTotalAfterMerge": 54,
+  "sampleFacts": [],
+  "coverage": {
+    "generatedAt": "2026-03-10T06:27:09.481Z",
+    "totalFacts": 0,
+    "withSource": 0,
+    "sourceCoveragePct": 0,
+    "byCategory": {},
+    "byDifficulty": {},
+    "byType": {},
+    "byAgeRating": {},
+    "byVerification": {
+      "verified": 0,
+      "unverified": 0
+    },
+    "distractorWarnings": []
+  }
+}

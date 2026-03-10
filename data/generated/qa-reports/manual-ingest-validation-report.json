@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:24.918Z",
+  "inputFiles": [
+    "data/generated"
+  ],
+  "domain": "general_knowledge",
+  "counts": {
+    "input": 711,
+    "valid": 710,
+    "invalid": 0,
+    "flagged": 1
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "genet-victoriae-001",
+      "question": "What is a giant forest genet?"
+    },
+    {
+      "id": "parnassius-apollo-001",
+      "question": "What type of animal is Parnassius apollo?"
+    },
+    {
+      "id": "senna-alata-001",
+      "question": "What is Senna alata?"
+    },
+    {
+      "id": "leopard-cat-001",
+      "question": "What is the scientific name of the leopard cat?"
+    },
+    {
+      "id": "phaseolus-vulgaris-001",
+      "question": "What is Phaseolus vulgaris commonly known as?"
+    }
+  ]
+}

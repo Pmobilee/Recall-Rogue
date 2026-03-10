@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:10.246Z",
+  "inputFiles": [
+    "data/generated/worker-output/art_architecture.jsonl"
+  ],
+  "domain": "art_architecture",
+  "counts": {
+    "input": 62,
+    "valid": 62,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "mfn-berlin-1810",
+      "question": "When did Museum für Naturkunde Berlin open?"
+    },
+    {
+      "id": "qa-valencia-arts-sciences-001",
+      "question": "What cultural complex opened in Valencia, Spain in 1998?"
+    },
+    {
+      "id": "ushmm-founding-1993",
+      "question": "When did the US Holocaust Memorial Museum open?"
+    },
+    {
+      "id": "olavinlinna-castle-001",
+      "question": "Where is Olavinlinna Castle located?"
+    },
+    {
+      "id": "q251672-chateau-borely-1778",
+      "question": "When was Château Borély established?"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.723Z",
+  "inputFiles": [
+    "data/generated/worker-output/history.jsonl"
+  ],
+  "domain": "history",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 91,
+    "existingCompared": 1233,
+    "exactDuplicates": 91,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 0
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "battle-marignano-1515",
+      "candidateQuestion": "Which countries fought at Marignano in 1515?",
+      "matchId": "battle-marignano-1515",
+      "matchQuestion": "Which countries fought at Marignano in 1515?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-nieuwpoort-1600",
+      "candidateQuestion": "Where did the Battle of Nieuwpoort occur?",
+      "matchId": "battle-nieuwpoort-1600",
+      "matchQuestion": "Where did the Battle of Nieuwpoort occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-jarama-1937",
+      "candidateQuestion": "When did the Battle of Jarama occur?",
+      "matchId": "battle-jarama-1937",
+      "matchQuestion": "When did the Battle of Jarama occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "hist-vlasenica-1943-001",
+      "candidateQuestion": "What was the Battle for Vlasenica in 1943?",
+      "matchId": "hist-vlasenica-1943-001",
+      "matchQuestion": "What was the Battle for Vlasenica in 1943?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "q4373-white-mountain-1620",
+      "candidateQuestion": "What battle ended the Bohemian phase of the Thirty Years' War?",
+      "matchId": "q4373-white-mountain-1620",
+      "matchQuestion": "What battle ended the Bohemian phase of the Thirty Years' War?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "vlasenica-1942-001",
+      "candidateQuestion": "When did Yugoslav forces assault Vlasenica?",
+      "matchId": "vlasenica-1942-001",
+      "matchQuestion": "When did Yugoslav forces assault Vlasenica?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-valmy-001",
+      "candidateQuestion": "In what year did the Battle of Valmy occur?",
+      "matchId": "battle-valmy-001",
+      "matchQuestion": "In what year did the Battle of Valmy occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-bagradas-001",
+      "candidateQuestion": "Which war featured the Battle of Bagradas?",
+      "matchId": "battle-bagradas-001",
+      "matchQuestion": "Which war featured the Battle of Bagradas?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-dorylaeum-1097",
+      "candidateQuestion": "In what year did the Battle of Dorylaeum occur?",
+      "matchId": "battle-dorylaeum-1097",
+      "matchQuestion": "In what year did the Battle of Dorylaeum occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-bolia-001",
+      "candidateQuestion": "Where did the Battle of Bolia occur?",
+      "matchId": "battle-bolia-001",
+      "matchQuestion": "Where did the Battle of Bolia occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-ice-1242",
+      "candidateQuestion": "When did the Battle of the Ice happen?",
+      "matchId": "battle-ice-1242",
+      "matchQuestion": "When did the Battle of the Ice happen?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "normandy-landings-001",
+      "candidateQuestion": "When did the Normandy landings begin?",
+      "matchId": "normandy-landings-001",
+      "matchQuestion": "When did the Normandy landings begin?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-przemysl-1918",
+      "candidateQuestion": "When did the Battle of Przemyśl take place?",
+      "matchId": "battle-przemysl-1918",
+      "matchQuestion": "When did the Battle of Przemyśl take place?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-dresden-1813",
+      "candidateQuestion": "When did the Battle of Dresden occur?",
+      "matchId": "battle-dresden-1813",
+      "matchQuestion": "When did the Battle of Dresden occur?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-lula-rugaro-1891",
+      "candidateQuestion": "When did the Battle of Lula-Rugaro take place?",
+      "matchId": "battle-lula-rugaro-1891",
+      "matchQuestion": "When did the Battle of Lula-Rugaro take place?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "ugra-1480-standoff",
+      "candidateQuestion": "What 1480 event ended Mongol rule over Muscovy?",
+      "matchId": "ugra-1480-standoff",
+      "matchQuestion": "What 1480 event ended Mongol rule over Muscovy?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-nasice-1944",
+      "candidateQuestion": "When did the Battle of Našice take place?",
+      "matchId": "battle-nasice-1944",
+      "matchQuestion": "When did the Battle of Našice take place?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-dandanaqan-1040",
+      "candidateQuestion": "Which empire won the Battle of Dandanaqan?",
+      "matchId": "battle-dandanaqan-1040",
+      "matchQuestion": "Which empire won the Battle of Dandanaqan?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "battle-krasnoi-1812",
+      "candidateQuestion": "When did the Battle of Krasnoi take place?",
+      "matchId": "battle-krasnoi-1812",
+      "matchQuestion": "When did the Battle of Krasnoi take place?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "hist-korean-war-ongjin-1950",
+      "candidateQuestion": "When did the Battle of Ongjin take place?",
+      "matchId": "hist-korean-war-ongjin-1950",
+      "matchQuestion": "When did the Battle of Ongjin take place?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": []
+}

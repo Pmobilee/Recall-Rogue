@@ -589,6 +589,17 @@ async function resetToPreset(presetId: string): Promise<PlayResult> {
     localStorage.clear();
     localStorage.setItem('terra_save', JSON.stringify(save));
     localStorage.setItem('terra_onboarding_complete', 'true');
+    // Ensure onboarding state marks runs as completed so explorer mode doesn't get stuck
+    localStorage.setItem('card:onboardingState', JSON.stringify({
+      hasCompletedOnboarding: true,
+      hasSeenCardTapTooltip: true,
+      hasSeenCastTooltip: true,
+      hasSeenAnswerTooltip: true,
+      hasSeenEndTurnTooltip: true,
+      hasSeenAPTooltip: true,
+      runsCompleted: 3,
+    }));
+    localStorage.setItem('card:difficultyMode', JSON.stringify('standard'));
 
     window.location.href = `${window.location.origin}?skipOnboarding=true`;
     return { ok: true, message: `Reset to preset '${presetId}'. Reloading...` };

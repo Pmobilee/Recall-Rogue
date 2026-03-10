@@ -1,0 +1,17 @@
+{
+  "domain": "history",
+  "domainSlug": "history",
+  "existingFacts": 91,
+  "existingFactsPath": "data/generated/history.jsonl",
+  "targetFacts": 50,
+  "expectedMinimum": 500,
+  "missingFacts": 0,
+  "requestedNewFacts": 0,
+  "inputPath": "data/raw/mixed/history.json",
+  "workerOutputPath": "data/generated/worker-output/history.jsonl",
+  "recommendation": "skip",
+  "pass": true,
+  "notes": [
+    "domain target already satisfied"
+  ]
+}

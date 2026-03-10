@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-03-10T06:03:37.600Z",
+  "inputPath": "/tmp/rewrite-in.json",
+  "outputPath": "/tmp/rewrite-out.json",
+  "totalInput": 1,
+  "rewritten": 1,
+  "mode": "local-deterministic",
+  "note": "Paid API rewrite paths removed. This script now performs local shape normalization only."
+}

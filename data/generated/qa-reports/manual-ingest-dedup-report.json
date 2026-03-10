@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-03-10T06:27:25.028Z",
+  "inputFiles": [
+    "data/generated"
+  ],
+  "domain": "general_knowledge",
+  "thresholds": {
+    "autoDedup": 0.95,
+    "review": 0.75
+  },
+  "counts": {
+    "input": 711,
+    "existingCompared": 1233,
+    "exactDuplicates": 710,
+    "semanticDuplicates": 0,
+    "needsReview": 0,
+    "accepted": 1
+  },
+  "exactDuplicates": [
+    {
+      "candidateId": "genet-victoriae-001",
+      "candidateQuestion": "What is a giant forest genet?",
+      "matchId": "genet-victoriae-001",
+      "matchQuestion": "What is a giant forest genet?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "parnassius-apollo-001",
+      "candidateQuestion": "What type of animal is Parnassius apollo?",
+      "matchId": "parnassius-apollo-001",
+      "matchQuestion": "What type of animal is Parnassius apollo?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "senna-alata-001",
+      "candidateQuestion": "What is Senna alata?",
+      "matchId": "senna-alata-001",
+      "matchQuestion": "What is Senna alata?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "leopard-cat-001",
+      "candidateQuestion": "What is the scientific name of the leopard cat?",
+      "matchId": "leopard-cat-001",
+      "matchQuestion": "What is the scientific name of the leopard cat?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "phaseolus-vulgaris-001",
+      "candidateQuestion": "What is Phaseolus vulgaris commonly known as?",
+      "matchId": "phaseolus-vulgaris-001",
+      "matchQuestion": "What is Phaseolus vulgaris commonly known as?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "serval-001",
+      "candidateQuestion": "What African wild cat has exceptionally long legs?",
+      "matchId": "serval-001",
+      "matchQuestion": "What African wild cat has exceptionally long legs?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "laetacara-curviceps-001",
+      "candidateQuestion": "What species is Laetacara curviceps?",
+      "matchId": "laetacara-curviceps-001",
+      "matchQuestion": "What species is Laetacara curviceps?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "baikal-seal-001",
+      "candidateQuestion": "What is the Baikal seal's primary habitat?",
+      "matchId": "baikal-seal-001",
+      "matchQuestion": "What is the Baikal seal's primary habitat?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "alpine-pika-001",
+      "candidateQuestion": "What family do Alpine pikas belong to?",
+      "matchId": "alpine-pika-001",
+      "matchQuestion": "What family do Alpine pikas belong to?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "red-fox-001",
+      "candidateQuestion": "What is the scientific name for red foxes?",
+      "matchId": "red-fox-001",
+      "matchQuestion": "What is the scientific name for red foxes?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "mullus-barbatus-001",
+      "candidateQuestion": "What species is Mullus barbatus?",
+      "matchId": "mullus-barbatus-001",
+      "matchQuestion": "What species is Mullus barbatus?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "nannacara_aureocephalus_001",
+      "candidateQuestion": "What species is Nannacara aureocephalus?",
+      "matchId": "nannacara_aureocephalus_001",
+      "matchQuestion": "What species is Nannacara aureocephalus?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "pomegranate-001",
+      "candidateQuestion": "What type of plant is a pomegranate?",
+      "matchId": "pomegranate-001",
+      "matchQuestion": "What type of plant is a pomegranate?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-wolverine-001",
+      "candidateQuestion": "What type of animal is the Wolverine?",
+      "matchId": "anim-wolverine-001",
+      "matchQuestion": "What type of animal is the Wolverine?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-house-sparrow-002",
+      "candidateQuestion": "What type of animal is the House Sparrow?",
+      "matchId": "anim-house-sparrow-002",
+      "matchQuestion": "What type of animal is the House Sparrow?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-mallard-003",
+      "candidateQuestion": "What type of animal is the Mallard?",
+      "matchId": "anim-mallard-003",
+      "matchQuestion": "What type of animal is the Mallard?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-eurasian-jay-004",
+      "candidateQuestion": "What type of animal is the Eurasian Jay?",
+      "matchId": "anim-eurasian-jay-004",
+      "matchQuestion": "What type of animal is the Eurasian Jay?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-white-stork-005",
+      "candidateQuestion": "What type of animal is the White Stork?",
+      "matchId": "anim-white-stork-005",
+      "matchQuestion": "What type of animal is the White Stork?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-accipiter-gentilis-006",
+      "candidateQuestion": "What type of animal is the Accipiter gentilis?",
+      "matchId": "anim-accipiter-gentilis-006",
+      "matchQuestion": "What type of animal is the Accipiter gentilis?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    },
+    {
+      "candidateId": "anim-northern-raven-007",
+      "candidateQuestion": "What type of animal is the Northern Raven?",
+      "matchId": "anim-northern-raven-007",
+      "matchQuestion": "What type of animal is the Northern Raven?",
+      "score": 1,
+      "decision": "exact_duplicate",
+      "source": "existing"
+    }
+  ],
+  "semanticDuplicates": [],
+  "needsReview": [],
+  "topAccepted": [
+    {
+      "id": "general-knowledge-1773124044965-t0ztm4",
+      "question": ""
+    }
+  ]
+}

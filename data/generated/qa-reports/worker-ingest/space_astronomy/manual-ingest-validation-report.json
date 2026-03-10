@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-10T06:27:09.525Z",
+  "inputFiles": [
+    "data/generated/worker-output/space_astronomy.jsonl"
+  ],
+  "domain": "space_astronomy",
+  "counts": {
+    "input": 61,
+    "valid": 61,
+    "invalid": 0,
+    "flagged": 0
+  },
+  "invalid": [],
+  "topExamples": [
+    {
+      "id": "apx-001-satellite-power",
+      "question": "What did Advanced Photovoltaic Experiment test in space?"
+    },
+    {
+      "id": "a101-testflight-001",
+      "question": "What was A-101 in rocket history?"
+    },
+    {
+      "id": "A-103-001",
+      "question": "What was the purpose of A-103?"
+    },
+    {
+      "id": "apollo-a104-test-1965",
+      "question": "What was Apollo A-104's primary purpose?"
+    },
+    {
+      "id": "apollo-a105-boilerplate",
+      "question": "What was A-105 in Apollo program history?"
+    }
+  ]
+}
