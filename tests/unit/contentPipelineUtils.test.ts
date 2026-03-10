@@ -71,4 +71,34 @@ describe('contentPipelineUtils', () => {
     expect(report.byType.fact).toBe(1)
     expect(report.byType.vocabulary).toBe(1)
   })
+
+  it('normalizes generated shapes (object distractors, string category, string variants)', () => {
+    const fact = normalizeFactInput({
+      id: 'gen-1',
+      statement: 'The Eiffel Tower is in Paris.',
+      explanation: 'Landmark in France.',
+      quizQuestion: 'Where is the Eiffel Tower?',
+      correctAnswer: 'Paris',
+      distractors: [
+        { text: 'London', difficultyTier: 'easy' },
+        { text: 'Rome', difficultyTier: 'easy' },
+      ],
+      category: 'geography',
+      variants: [
+        'Which city has the Eiffel Tower?',
+        'The Eiffel Tower is located in which city?',
+      ],
+      sourceName: 'Wikipedia',
+      ageRating: 'kid',
+      type: 'fact',
+    }, { domain: 'geography', verify: false })
+
+    expect(fact.category).toEqual(['geography'])
+    expect(fact.distractors).toEqual(['London', 'Rome'])
+    expect(Array.isArray(fact.variants)).toBe(true)
+    expect(fact.variants?.length).toBe(2)
+    expect(fact.variants?.[0]?.type).toBe('forward')
+    const result = validateFactRecord(fact)
+    expect(result.valid).toBe(true)
+  })
 })

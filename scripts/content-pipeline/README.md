@@ -45,6 +45,11 @@ Example:
 ```bash
 node scripts/content-pipeline/generate/sample.mjs --domain geography --count 5 --dry-run --output /tmp/geography-sample.json
 node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography-sample.json --schema-only
+
+# End-to-end dry-run: source -> generated JSONL -> ingest normalization report
+node scripts/content-pipeline/generate/batch-generate.mjs --input data/raw/geography.json --domain geography --output /tmp/geography.generated.jsonl --limit 20 --dry-run
+node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography.generated.jsonl --strict
+node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain geography --dry-run --report /tmp/geography.ingest-report.json
 ```
 
 ## Vocabulary pipeline (AR-18)

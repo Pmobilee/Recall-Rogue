@@ -41,6 +41,22 @@ function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'))
 }
 
+function readJsonl(filePath) {
+  const text = fs.readFileSync(filePath, 'utf8')
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => JSON.parse(line))
+}
+
+function readFactsSource(filePath) {
+  if (filePath.endsWith('.jsonl')) {
+    return readJsonl(filePath)
+  }
+  return readJson(filePath)
+}
+
 function writeJson(filePath, data) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
   fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`)
@@ -95,9 +111,9 @@ function main() {
   const targetPath = typeof args.target === 'string' ? path.resolve(process.cwd(), args.target) : null
   const reportPath = typeof args.report === 'string' ? path.resolve(process.cwd(), args.report) : DEFAULT_REPORT
 
-  const incomingRaw = readJson(sourcePath)
+  const incomingRaw = readFactsSource(sourcePath)
   if (!Array.isArray(incomingRaw)) {
-    console.error('Source JSON must be an array of fact objects.')
+    console.error('Source must be a JSON array (.json) or JSONL stream (.jsonl) of fact objects.')
     process.exit(1)
   }
 

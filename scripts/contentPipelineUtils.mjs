@@ -46,6 +46,72 @@ function ensureArray(value) {
   return Array.isArray(value) ? value : []
 }
 
+function toStringArray(values) {
+  if (!Array.isArray(values)) return []
+  return values
+    .map((item) => {
+      if (typeof item === 'string') return cleanString(item)
+      if (item && typeof item === 'object' && typeof item.text === 'string') return cleanString(item.text)
+      return ''
+    })
+    .filter(Boolean)
+}
+
+function normalizeCategory(value, fallbackDomain) {
+  if (Array.isArray(value)) {
+    return value.map(cleanString).filter(Boolean)
+  }
+  if (typeof value === 'string') {
+    const text = cleanString(value)
+    return text ? [text] : [fallbackDomain]
+  }
+  return [fallbackDomain]
+}
+
+function normalizeVariants(rawVariants, correctAnswer, distractors) {
+  const values = ensureArray(rawVariants)
+  if (values.length === 0) return []
+
+  const fallbackDistractors = distractors.slice(0, 3)
+  return values
+    .map((variant) => {
+      if (typeof variant === 'string') {
+        const question = cleanString(variant)
+        if (!question) return null
+        return {
+          question,
+          type: 'forward',
+          correctAnswer,
+          distractors: fallbackDistractors,
+        }
+      }
+
+      if (!variant || typeof variant !== 'object') return null
+
+      const question = cleanString(variant.question ?? variant.prompt ?? variant.text ?? '')
+      if (!question) return null
+
+      const type = cleanString(variant.type || 'forward')
+      const normalizedType = [
+        'forward',
+        'reverse',
+        'negative',
+        'context',
+        'fill_blank',
+        'true_false',
+      ].includes(type) ? type : 'forward'
+
+      const variantDistractors = toStringArray(variant.distractors)
+      return {
+        question,
+        type: normalizedType,
+        correctAnswer: cleanString(variant.correctAnswer ?? correctAnswer),
+        distractors: variantDistractors.length > 0 ? variantDistractors : fallbackDistractors,
+      }
+    })
+    .filter(Boolean)
+}
+
 export function levenshteinDistance(a, b) {
   const left = String(a ?? '')
   const right = String(b ?? '')
@@ -137,19 +203,18 @@ export function normalizeFactInput(raw, options = {}) {
   const answers = ensureArray(raw.answers).map(cleanString).filter(Boolean)
   const correctAnswer = cleanString(raw.correctAnswer ?? raw.answer ?? answers[0] ?? '')
 
-  const rawDistractors = ensureArray(raw.distractors)
-    .map(cleanString)
-    .filter(Boolean)
+  const rawDistractors = toStringArray(raw.distractors)
   const fallbackDistractors = answers
     .slice(correctAnswer && answers[0] === correctAnswer ? 1 : 0)
     .map(cleanString)
     .filter((answer) => answer && answer !== correctAnswer)
 
   const distractors = rawDistractors.length > 0 ? rawDistractors : fallbackDistractors
-  const category = ensureArray(raw.category).map(cleanString).filter(Boolean)
+  const category = normalizeCategory(raw.category, domain)
   const acceptableAnswers = ensureArray(raw.acceptableAnswers ?? raw.variantAnswers)
     .map(cleanString)
     .filter(Boolean)
+  const variants = normalizeVariants(raw.variants, correctAnswer, distractors)
 
   const id = cleanString(raw.id) || `${slug(domain)}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 
@@ -170,6 +235,7 @@ export function normalizeFactInput(raw, options = {}) {
     sourceName: cleanString(raw.sourceName ?? raw.sourceAttribution ?? raw.source ?? ''),
     sourceUrl: cleanString(raw.sourceUrl ?? ''),
     acceptableAnswers: acceptableAnswers.length > 0 ? acceptableAnswers : [correctAnswer].filter(Boolean),
+    variants: variants.length > 0 ? variants : undefined,
     categoryL1: cleanString(raw.categoryL1 || category[0] || domain),
     categoryL2: cleanString(raw.categoryL2 || category[1] || ''),
     categoryL3: cleanString(raw.categoryL3 || category[2] || ''),
@@ -186,6 +252,7 @@ export function validateFactRecord(fact) {
   if (!fact.quizQuestion || fact.quizQuestion.length < 10) errors.push('quiz_question_too_short')
   if (!fact.correctAnswer) errors.push('missing_correct_answer')
   if (!Array.isArray(fact.distractors) || fact.distractors.length < 2) errors.push('distractors_below_minimum')
+  if (!Array.isArray(fact.variants) || fact.variants.length < 2) errors.push('variants_below_minimum')
   if (!fact.sourceName) errors.push('missing_source_name')
   if (!VALID_TYPES.has(fact.type)) errors.push('invalid_type')
   if (!VALID_AGE_RATINGS.has(fact.ageRating)) errors.push('invalid_age_rating')

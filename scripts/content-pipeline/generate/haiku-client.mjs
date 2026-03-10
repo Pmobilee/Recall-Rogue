@@ -27,11 +27,18 @@ function extractTextContent(content) {
 
 function schemaValidateFact(fact) {
   if (!fact || typeof fact !== 'object') return 'Fact is not an object'
-  const requiredStringFields = ['id', 'statement', 'quizQuestion', 'correctAnswer', 'category']
+  const requiredStringFields = ['id', 'statement', 'quizQuestion', 'correctAnswer']
   for (const field of requiredStringFields) {
     if (typeof fact[field] !== 'string' || fact[field].trim().length === 0) {
       return `Missing/invalid string field: ${field}`
     }
+  }
+
+  const category = fact.category
+  const categoryOk = typeof category === 'string'
+    || (Array.isArray(category) && category.length > 0 && category.every((item) => typeof item === 'string'))
+  if (!categoryOk) {
+    return 'category must be a non-empty string or array of strings'
   }
 
   if (!Array.isArray(fact.variants) || fact.variants.length < 2) {
@@ -40,6 +47,15 @@ function schemaValidateFact(fact) {
 
   if (!Array.isArray(fact.distractors) || fact.distractors.length < 4) {
     return 'distractors must be an array with at least 4 items'
+  }
+
+  const distractorOk = fact.distractors.every((item) => {
+    if (typeof item === 'string') return item.trim().length > 0
+    if (item && typeof item === 'object' && typeof item.text === 'string') return item.text.trim().length > 0
+    return false
+  })
+  if (!distractorOk) {
+    return 'distractors entries must be strings or { text } objects'
   }
 
   return null
@@ -136,20 +152,38 @@ export function createHaikuClient(config = {}) {
 
     if (dryRun) {
       const id = sourceData?.id || sourceData?.item || sourceData?.name || `${domainTag}-${callCount}`
+      const shortId = String(id).slice(0, 40)
+      const sourceLabel = String(
+        sourceData?.label
+        || sourceData?.itemLabel
+        || sourceData?.country
+        || sourceData?.name
+        || shortId,
+      ).slice(0, 60)
       return {
         id: `dry-${String(id).replace(/[^a-zA-Z0-9_-]/g, '_')}`,
-        statement: `Dry run fact for ${domainTag}`,
-        quizQuestion: `What domain is this dry run from?`,
+        statement: `Dry run fact for ${domainTag} source "${sourceLabel}".`,
+        quizQuestion: `Item "${sourceLabel}" belongs to which domain bucket?`,
         correctAnswer: domainTag,
         variants: [
-          `Which domain generated this item?`,
-          `This fact belongs to which domain?`,
+          {
+            question: `Source label "${sourceLabel}" maps to which domain?`,
+            type: 'forward',
+            correctAnswer: domainTag,
+            distractors: ['history', 'geography', 'language'],
+          },
+          {
+            question: `Choose the domain for item "${sourceLabel}".`,
+            type: 'forward',
+            correctAnswer: domainTag,
+            distractors: ['history', 'geography', 'language'],
+          },
         ],
         distractors: [
-          { text: 'history', difficultyTier: 'easy' },
-          { text: 'geography', difficultyTier: 'easy' },
-          { text: 'language', difficultyTier: 'medium' },
-          { text: 'space_astronomy', difficultyTier: 'hard' },
+          'history',
+          'geography',
+          'language',
+          'space_astronomy',
         ],
         difficulty: 2,
         funScore: 5,
@@ -158,8 +192,8 @@ export function createHaikuClient(config = {}) {
         ageRating: 'kid',
         sourceName: sourceData?.sourceName || 'dry-run',
         sourceUrl: sourceData?.sourceUrl || null,
-        category: domainTag,
-        contentType: 'knowledge',
+        type: 'fact',
+        category: [domainTag],
         tags: ['dry-run'],
         dryRun: true,
       }

@@ -114,11 +114,18 @@ function schemaErrors(fact) {
     return ['Fact must be an object']
   }
 
-  const requiredStrings = ['id', 'statement', 'quizQuestion', 'correctAnswer', 'category']
+  const requiredStrings = ['id', 'statement', 'quizQuestion', 'correctAnswer']
   for (const field of requiredStrings) {
     if (typeof fact[field] !== 'string' || fact[field].trim().length === 0) {
       issues.push(`invalid ${field}`)
     }
+  }
+
+  const category = fact.category
+  const categoryValid = typeof category === 'string'
+    || (Array.isArray(category) && category.length > 0 && category.every((item) => typeof item === 'string'))
+  if (!categoryValid) {
+    issues.push('category must be a non-empty string or array of strings')
   }
 
   if (!Array.isArray(fact.variants) || fact.variants.length < 2) {
@@ -127,6 +134,16 @@ function schemaErrors(fact) {
 
   if (!Array.isArray(fact.distractors) || fact.distractors.length < 4) {
     issues.push('distractors must have at least 4 entries')
+  }
+
+  if (Array.isArray(fact.distractors)) {
+    const distractorsValid = fact.distractors.every((item) => {
+      if (typeof item === 'string') return item.trim().length > 0
+      return item && typeof item === 'object' && typeof item.text === 'string' && item.text.trim().length > 0
+    })
+    if (!distractorsValid) {
+      issues.push('distractors entries must be strings or { text } objects')
+    }
   }
 
   const difficulty = Number(fact.difficulty)
