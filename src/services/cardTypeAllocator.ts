@@ -8,7 +8,7 @@ export const CARD_TYPE_DISTRIBUTION: Array<{ type: CardType; weight: number }> =
   { type: 'debuff', weight: 0.08 },
   { type: 'utility', weight: 0.07 },
   { type: 'regen', weight: 0.03 },
-  { type: 'wild', weight: 0.02 },
+  { type: 'wild', weight: 0.05 },
 ]
 
 function shuffle<T>(arr: T[]): T[] {

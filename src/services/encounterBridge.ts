@@ -21,13 +21,13 @@ import {
   setGraduatedRelicId,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, TIER3_PASSIVE, DORMANCY_THRESHOLD, HINTS_PER_ENCOUNTER } from '../data/balance';
+import { ECHO, TIER3_PASSIVE, DORMANCY_THRESHOLD, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
 import { deriveCardTypeForFactId } from './cardTypeAllocator';
 import type { ActiveRelic } from '../data/passiveRelics';
 import { assignRelicOnGraduation, buildActiveRelics, checkRelicDormancy } from './relicManager';
-import { onboardingState } from './cardPreferences';
+import { onboardingState, difficultyMode } from './cardPreferences';
 import { updateBounties } from './bountyManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
@@ -276,10 +276,14 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     run.floor.currentFloor,
     ascensionModifiers,
   );
-  const enemyHpMultiplier = (
+  let enemyHpMultiplier = (
     ascensionModifiers.enemyHpMultiplier *
     (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1)
   );
+  // Early mini-bosses (floors 1-3) have reduced HP for smoother difficulty curve
+  if (ascensionTemplate.category === 'mini_boss' && run.floor.currentFloor <= 3) {
+    enemyHpMultiplier *= EARLY_MINI_BOSS_HP_MULTIPLIER;
+  }
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier });
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
@@ -521,6 +525,14 @@ export function handlePlayCard(
     // Record answered facts for cooldown before encounter ends
     if (activeDeck && result.turnState.encounterAnsweredFacts.length > 0) {
       addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
+    }
+    // Post-encounter healing: restore a percentage of max HP
+    if (run) {
+      const isStoryMode = get(difficultyMode) === 'explorer';
+      const healPct = POST_ENCOUNTER_HEAL_PCT + (isStoryMode ? EXPLORER_POST_ENCOUNTER_HEAL_BONUS : 0);
+      const healAmt = Math.round(run.playerMaxHp * healPct);
+      run.playerHp = Math.min(run.playerMaxHp, run.playerHp + healAmt);
+      activeRunState.set(run);
     }
     setTimeout(() => {
       activeTurnState.set(null);

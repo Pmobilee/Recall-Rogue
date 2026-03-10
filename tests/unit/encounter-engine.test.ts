@@ -112,8 +112,10 @@ function mockEnemyInstance(overrides?: Partial<EnemyInstance>): EnemyInstance {
     currentHP: overrides?.currentHP ?? template.baseHP,
     maxHP: overrides?.maxHP ?? template.baseHP,
     nextIntent: overrides?.nextIntent ?? template.intentPool[0],
+    block: overrides?.block ?? 0,
     statusEffects: overrides?.statusEffects ?? [],
     phase: overrides?.phase ?? 1,
+    floor: overrides?.floor ?? 1,
   };
 }
 
@@ -504,7 +506,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 10, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      expect(result.damage).toBe(10);
+      // Floor 1 applies 0.85x early-game enemy damage scaling.
+      expect(result.damage).toBe(9);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -513,8 +516,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // 10 * 1.5 = 15
-      expect(result.damage).toBe(15);
+      // Floor 1: 10 * 1.5 * 0.85 = 12.75 => 13
+      expect(result.damage).toBe(13);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -939,7 +942,7 @@ describe('Card Effect Resolver', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0, 'shield');
       expect(result.effectType).toBe('shield');
-      expect(result.shieldApplied).toBe(8);
+      expect(result.shieldApplied).toBe(6);
     });
 
     it('wild defaults to attack when no lastCardType', () => {

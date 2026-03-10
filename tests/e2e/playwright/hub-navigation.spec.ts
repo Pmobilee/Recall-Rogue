@@ -7,19 +7,19 @@ test('hub nav reaches core destinations', async ({ page }) => {
 
   await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible()
 
-  await page.getByRole('button', { name: 'Library' }).click()
+  await page.getByRole('button', { name: 'Library', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Knowledge Library' })).toBeVisible({ timeout: 20_000 })
   await page.getByRole('button', { name: 'Back', exact: true }).click()
 
-  await page.getByRole('button', { name: 'Settings' }).click()
+  await page.getByRole('button', { name: 'Settings', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible()
   await page.getByRole('button', { name: 'Back', exact: true }).click()
 
-  await page.getByRole('button', { name: 'Profile' }).click()
+  await page.getByRole('button', { name: 'Profile', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Profile' })).toBeVisible()
   await page.getByRole('button', { name: 'Back', exact: true }).click()
 
-  await page.getByRole('button', { name: 'Journal' }).click()
+  await page.getByRole('button', { name: 'Journal', exact: true }).click()
   await expect(page.getByRole('heading', { name: /Adventurer.s Journal/ })).toBeVisible()
   await page.getByRole('button', { name: 'Back', exact: true }).click()
 

@@ -835,7 +835,7 @@ export const POOL_REVIEW_PCT = 0.30;
 export const BASE_EFFECT: Record<string, number> = {
   attack: 8,
   shield: 6,
-  heal: 5,
+  heal: 8,
   utility: 0,
   buff: 0,
   debuff: 0,
@@ -903,11 +903,19 @@ export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [
 ];
 
 // Player defaults
-export const PLAYER_START_HP = 80;
-export const PLAYER_MAX_HP = 80;
+export const PLAYER_START_HP = 100;
+export const PLAYER_MAX_HP = 100;
 export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
 export const MAX_AP_PER_TURN = 5;
+
+// Post-encounter healing (AR-31: between-encounter recovery)
+/** Fraction of max HP healed after each non-defeat encounter. */
+export const POST_ENCOUNTER_HEAL_PCT = 0.15;
+/** Extra healing fraction for Story/Explorer mode (additive with POST_ENCOUNTER_HEAL_PCT). */
+export const EXPLORER_POST_ENCOUNTER_HEAL_BONUS = 0.10;
+/** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
+export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.75;
 
 // Speed scaling (timer in seconds by floor)
 export const FLOOR_TIMER: Array<{ maxFloor: number; seconds: number }> = [

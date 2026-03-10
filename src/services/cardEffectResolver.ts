@@ -6,6 +6,7 @@ import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { EnemyInstance } from '../data/enemies';
 import {
+  BASE_EFFECT,
   COMBO_MULTIPLIERS,
   ECHO,
   LEGACY_TIER_MULTIPLIER,
@@ -114,6 +115,7 @@ export function resolveCardEffect(
   if (card.cardType === 'wild' && card.mechanicId !== 'overclock') {
     effectiveType = lastCardType ?? 'attack';
     result.effectType = effectiveType;
+    card = { ...card, baseEffectValue: BASE_EFFECT[effectiveType] ?? card.baseEffectValue };
   }
 
   const focusAdjustedMultiplier = advanced.isFocusActive

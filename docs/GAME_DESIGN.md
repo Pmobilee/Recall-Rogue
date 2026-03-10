@@ -1272,24 +1272,37 @@ Arcane Pass subscribers gain access to fine-grained category filters within each
 
 ### Camp Hub & Cosmetic Progression
 
-The between-runs hub is a camp scene near the dungeon entrance. Gold earned from runs is spent on purely visual upgrades.
+The between-runs hub is a full-screen interactive pixel art camp scene. A cave background image fills the viewport, with 11 positioned pixel art sprites serving as tappable navigation buttons. Each sprite maps to a game feature.
 
-**Camp elements** (each is a sprite slot at a fixed screen position):
+**Camp scene layout** (10 tappable zones + 1 decorative):
 
-| Element | Upgrade Tiers | Example Progression |
-|---|---|---|
-| Tent | 5 | Bedroll → canvas tent → leather tent → decorated tent → ornate pavilion |
-| Seating | 4 | Log → wooden bench → cushioned bench → carved throne |
-| Campfire | 4 | Small fire → stone pit → brazier → magical flame |
-| Character | cosmetic | Outfit/armor visual variants |
-| Pet | unlockable | Cat, owl, fox, dragon whelp (one active at camp) |
-| Decorations | collectible | Boss trophies, banners, garden, bookshelves |
+| # | Sprite | Position | Action | Notes |
+|---|--------|----------|--------|-------|
+| 1 | Dungeon Gate | Top center | Start/Resume Run | Primary entry; `data-testid="btn-start-run"` |
+| 2 | Bookshelf | Mid-left | Library | Card collection and fact review |
+| 3 | Signpost | Mid-right | Settings | Game settings |
+| 4 | Anvil | Center-left | Upgrades modal | Opens camp upgrade shop (element tiers, outfits, companions) |
+| 5 | Campfire | Dead center | Decorative | Streak visual; not clickable. Future: animation tiers based on streak |
+| 6 | Tent | Center-right | Profile | Player profile and stats |
+| 7 | Player Character | On top of tent | Customize | Opens upgrade modal (outfit/companion). Higher z-index than tent — visually overlaps |
+| 8 | Cat (Pet) | By campfire | "Grrr" popup | Speech bubble appears for 2s. Future: pet interactions and unlockable dialogue |
+| 9 | Journal (Book) | Foreground-left | Journal | Run history and adventurer's journal |
+| 10 | Quest Board | Foreground-right | Quests + Leaderboards | Community rankings |
+| 11 | Treasure Chest | Foreground-center | Social | Social features. Future: dedicated shop screen |
 
-**Menu navigation** is integrated into the camp scene: tap the tent (inventory), campfire (start run), signpost (settings), character (profile).
+**HUD overlays** (pinned to screen corners, not scene objects):
+- Top-left: Streak count pill (fire icon + number)
+- Top-right: Dust/currency balance pill (gem icon + number)
 
-**Technical model:** `campState = { tent: 3, seating: 2, fire: 1, pet: 'owl', decorations: ['boss_slime_trophy'] }` — each key maps to a sprite variant rendered at a fixed position. Upgrades are purely visual sprite swaps. State persists in player save data.
+**Camp upgrade modal** (accessed via Anvil or Character tap): Contains the element upgrade grid (Tent, Seating, Campfire, Decor — 4 tiers each), outfit selector (Scout, Warden, Scholar, Vanguard), and companion selector (Cat, Owl, Fox, Dragon Whelp with unlock costs).
+
+**Sprite organization**: Each sprite lives in its own folder (`/public/assets/camp/sprites/{name}/`) with a `-base` suffix (e.g., `campfire-base.png`). Future cosmetic variants are added alongside (e.g., `campfire-tier2.png`, `campfire-streak5.png`). This supports visual upgrades where each element can have multiple sprite tiers.
+
+**Technical model:** `campState = { tiers: { tent: 0, seating: 0, campfire: 0, decor: 0 }, outfit: 'scout', activePet: 'cat', unlockedPets: ['cat'] }` — tiers map to sprite variants. Upgrades are purely visual sprite swaps. State persists in localStorage.
 
 **Gold sink design:** Camp upgrades are the primary gold sink. Pricing scales exponentially per tier. No gameplay advantage — purely cosmetic progression that rewards consistent play.
+
+**Bottom nav bar**: A 6-button nav bar (Start, Library, Social, Settings, Profile, Journal) persists as a secondary navigation fallback below the camp scene.
 
 ---
 

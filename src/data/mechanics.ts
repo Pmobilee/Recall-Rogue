@@ -37,11 +37,11 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   { id: 'brace', name: 'Brace', type: 'shield', description: 'Block equal to enemy telegraph.', baseValue: 0, apCost: 1, maxPerPool: 0, tags: ['brace'], launchPhase: 2 },
 
   // Heal (phase 1)
-  { id: 'restore', name: 'Restore', type: 'heal', description: 'Heal HP.', baseValue: 5, apCost: 1, maxPerPool: 0, tags: ['heal'], launchPhase: 1 },
-  { id: 'cleanse', name: 'Cleanse', type: 'heal', description: 'Heal and cleanse debuffs.', baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['heal', 'cleanse'], launchPhase: 1 },
+  { id: 'restore', name: 'Restore', type: 'heal', description: 'Heal HP.', baseValue: 8, apCost: 1, maxPerPool: 0, tags: ['heal'], launchPhase: 1 },
+  { id: 'cleanse', name: 'Cleanse', type: 'heal', description: 'Heal and cleanse debuffs.', baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['heal', 'cleanse'], launchPhase: 1 },
 
   // Heal (phase 2)
-  { id: 'overheal', name: 'Overheal', type: 'heal', description: 'Excess healing becomes block.', baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['heal', 'overheal'], launchPhase: 2 },
+  { id: 'overheal', name: 'Overheal', type: 'heal', description: 'Excess healing becomes block.', baseValue: 7, apCost: 1, maxPerPool: 0, tags: ['heal', 'overheal'], launchPhase: 2 },
   { id: 'lifetap', name: 'Lifetap', type: 'heal', description: 'Heal from this turn damage dealt.', baseValue: 30, apCost: 1, maxPerPool: 0, tags: ['lifetap'], launchPhase: 2 },
 
   // Buff (phase 1)

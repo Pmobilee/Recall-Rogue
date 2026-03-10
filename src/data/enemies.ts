@@ -62,6 +62,8 @@ export interface EnemyInstance {
   statusEffects: StatusEffect[];
   /** Current phase (1 or 2). */
   phase: 1 | 2;
+  /** The floor this enemy was spawned on. Used for damage scaling. */
+  floor: number;
 }
 
 // ============================================================
@@ -91,9 +93,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     category: 'common',
     baseHP: 38,
     intentPool: [
-      { type: 'attack', value: 9, weight: 2, telegraph: 'Crystal slam' },
+      { type: 'attack', value: 7, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
-      { type: 'attack', value: 13, weight: 1, telegraph: 'Shard barrage' },
+      { type: 'attack', value: 9, weight: 1, telegraph: 'Shard barrage' },
     ],
     description: 'A slow golem encrusted with resonating crystals.',
   },
@@ -314,7 +316,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 8, weight: 3, telegraph: 'Crystal strike' },
       { type: 'defend', value: 6, weight: 3, telegraph: 'Stone shell' },
-      { type: 'attack', value: 12, weight: 1, telegraph: 'Shard eruption' },
+      { type: 'attack', value: 9, weight: 1, telegraph: 'Shard eruption' },
     ],
     description: 'A golem variant encased in protective crystal. Gains block every turn.',
   },
@@ -338,7 +340,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     category: 'mini_boss',
     baseHP: 40,
     intentPool: [
-      { type: 'attack', value: 9, weight: 2, telegraph: 'Heavy swing' },
+      { type: 'attack', value: 7, weight: 2, telegraph: 'Heavy swing' },
       { type: 'defend', value: 10, weight: 3, telegraph: 'Fortify' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Harden', statusEffect: { type: 'strength', value: 1, turns: 3 } },
     ],
@@ -351,8 +353,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     category: 'mini_boss',
     baseHP: 32,
     intentPool: [
-      { type: 'attack', value: 10, weight: 3, telegraph: 'Fire breath' },
-      { type: 'attack', value: 15, weight: 2, telegraph: 'Inferno blast' },
+      { type: 'attack', value: 7, weight: 3, telegraph: 'Fire breath' },
+      { type: 'attack', value: 10, weight: 2, telegraph: 'Inferno blast' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Scorching heat', statusEffect: { type: 'poison', value: 2, turns: 2 } },
     ],
     description: 'A small but ferocious drake. Glass cannon — hits hard but shatters easily.',

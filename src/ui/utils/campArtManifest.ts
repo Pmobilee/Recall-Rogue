@@ -134,3 +134,18 @@ export function getCampPetArtUrl(pet: CampPet): string | null {
   return cache.pets[pet] || null
 }
 
+export type CampSpriteId =
+  | 'dungeon-gate' | 'bookshelf' | 'signpost' | 'anvil'
+  | 'campfire' | 'tent' | 'character' | 'cat'
+  | 'journal' | 'quest-board' | 'treasure-chest'
+
+/** Returns the URL for a camp scene sprite by its ID. */
+export function getCampSpriteUrl(id: CampSpriteId): string {
+  return `/assets/camp/sprites/${id}/${id}-base.png`
+}
+
+/** Returns the URL for the camp background image. */
+export function getCampBackgroundUrl(): string {
+  return '/assets/camp/sprites/background/camp-background.jpg'
+}
+

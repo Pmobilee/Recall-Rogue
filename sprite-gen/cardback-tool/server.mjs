@@ -12,6 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = resolve(__dirname, '../..');
 const DB_PATH = resolve(__dirname, 'cardbacks.db');
 const PORT = 5175;
+const AUTO_RESUME_INTERVAL_MS = 20 * 60 * 1000;
 
 const SEED_DIR = resolve(PROJECT_ROOT, 'src/data/seed');
 const HIRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/hires');
@@ -471,6 +472,20 @@ const stmtRevertPending = db.prepare(`
   UPDATE cardbacks SET status = 'pending' WHERE fact_id = ?
 `);
 
+const stmtCountPendingOrRejected = db.prepare(`
+  SELECT COUNT(*) AS count FROM cardbacks WHERE status IN ('pending', 'rejected')
+`);
+
+const stmtCountGenerating = db.prepare(`
+  SELECT COUNT(*) AS count FROM cardbacks WHERE status = 'generating'
+`);
+
+const stmtSelectPendingOrRejected = db.prepare(`
+  SELECT fact_id FROM cardbacks
+  WHERE status IN ('pending', 'rejected')
+  ORDER BY domain, fact_id
+`);
+
 // --- Batch Controller ---
 class BatchController {
   #running = false;
@@ -587,6 +602,47 @@ class BatchController {
 }
 
 const batchController = new BatchController();
+
+async function isComfyUiBusy() {
+  try {
+    const response = await fetch('http://localhost:8188/queue');
+    if (!response.ok) return true;
+    const payload = await response.json();
+    const running = Array.isArray(payload.queue_running) ? payload.queue_running.length : 0;
+    const pending = Array.isArray(payload.queue_pending) ? payload.queue_pending.length : 0;
+    return running > 0 || pending > 0;
+  } catch {
+    return true;
+  }
+}
+
+let autoResumeInFlight = false;
+async function autoResumeBatchIfIdle() {
+  if (autoResumeInFlight) return;
+  autoResumeInFlight = true;
+  try {
+    const status = batchController.getStatus();
+    if (status.running) return;
+
+    const remaining = Number(stmtCountPendingOrRejected.get()?.count ?? 0);
+    if (remaining <= 0) return;
+
+    const generating = Number(stmtCountGenerating.get()?.count ?? 0);
+    if (generating > 0) return;
+
+    const comfyBusy = await isComfyUiBusy();
+    if (comfyBusy) return;
+
+    const rows = stmtSelectPendingOrRejected.all();
+    const factIds = rows.map((row) => row.fact_id);
+    if (factIds.length === 0) return;
+
+    batchController.start(factIds);
+    console.log(`[auto-resume] Restarted batch with ${factIds.length} pending cardbacks.`);
+  } finally {
+    autoResumeInFlight = false;
+  }
+}
 
 // --- Card Generation Helper ---
 async function generateSingleCard(factId) {
@@ -1622,4 +1678,10 @@ app.listen(PORT, () => {
   console.log(`Project root: ${PROJECT_ROOT}`);
   console.log(`Seed dir: ${SEED_DIR}`);
   console.log(`Output: ${HIRES_DIR} / ${LOWRES_DIR}`);
+  console.log(`[auto-resume] Enabled. Checking every ${AUTO_RESUME_INTERVAL_MS / 60000} minutes.`);
+  void autoResumeBatchIfIdle();
 });
+
+setInterval(() => {
+  void autoResumeBatchIfIdle();
+}, AUTO_RESUME_INTERVAL_MS);

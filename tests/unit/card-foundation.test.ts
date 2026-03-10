@@ -229,8 +229,8 @@ describe('deckManager', () => {
     });
 
     it('initializes player stats from balance', () => {
-      expect(deck.playerHP).toBe(80);
-      expect(deck.playerMaxHP).toBe(80);
+      expect(deck.playerHP).toBe(100);
+      expect(deck.playerMaxHP).toBe(100);
       expect(deck.playerShield).toBe(0);
       expect(deck.currentFloor).toBe(1);
     });

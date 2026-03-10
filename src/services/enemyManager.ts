@@ -19,6 +19,22 @@ export function getFloorScaling(floor: number): number {
 }
 
 /**
+ * Computes damage scaling factor for a given floor.
+ *
+ * Floors 1-3: 85% damage (training wheels for new players).
+ * Floors 4-6: 100% base damage.
+ * Floors 7+: +5% per floor above 6.
+ *
+ * @param floor - The current floor number (1-indexed).
+ * @returns The damage scaling multiplier.
+ */
+export function getFloorDamageScaling(floor: number): number {
+  if (floor <= 3) return 0.85;
+  if (floor <= 6) return 1.0;
+  return 1.0 + (floor - 6) * 0.05;
+}
+
+/**
  * Selects a random intent from a weighted pool.
  *
  * Uses weighted random selection where each intent's weight determines
@@ -66,6 +82,7 @@ export function createEnemy(
     nextIntent: weightedRandomIntent(template.intentPool),
     statusEffects: [],
     phase: 1,
+    floor,
   };
 }
 
@@ -147,12 +164,12 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
 
   switch (intent.type) {
     case 'attack': {
-      damage = Math.round(intent.value * strengthMod);
+      damage = Math.round(intent.value * strengthMod * getFloorDamageScaling(enemy.floor));
       break;
     }
     case 'multi_attack': {
       const hits = intent.hitCount ?? 1;
-      damage = Math.round(intent.value * strengthMod) * hits;
+      damage = Math.round(intent.value * strengthMod * getFloorDamageScaling(enemy.floor)) * hits;
       break;
     }
     case 'defend': {
