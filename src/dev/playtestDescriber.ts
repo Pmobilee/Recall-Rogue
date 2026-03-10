@@ -5,6 +5,8 @@
  * DEV MODE ONLY — never included in production builds.
  */
 
+import { readStore } from './storeBridge'
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -50,18 +52,6 @@ export interface ValidationResult {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-/** Read a Svelte store value from globalThis Symbol singletons. */
-function readStore<T>(key: string): T | undefined {
-  const sym = Symbol.for(key);
-  const store = (globalThis as Record<symbol, unknown>)[sym];
-  if (!store || typeof store !== 'object') return undefined;
-  const s = store as { subscribe?: (cb: (v: unknown) => void) => () => void };
-  if (typeof s.subscribe !== 'function') return undefined;
-  let v: T | undefined;
-  s.subscribe((x: unknown) => { v = x as T; })();
-  return v;
-}
 
 /** Get trimmed textContent from a CSS selector, or null. */
 function textOf(selector: string): string | null {
