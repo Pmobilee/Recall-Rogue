@@ -1,4 +1,5 @@
 import type { InterestConfig } from './interestConfig'
+import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
 export type FloorUpgradeTier = 0 | 1 | 2 | 3
@@ -61,27 +62,8 @@ export interface CoreFact {
 /** Age rating for content filtering */
 export type AgeRating = 'kid' | 'teen' | 'adult'
 
-/** Top-level fact categories */
-export const CATEGORIES = [
-  'General Knowledge',
-  'Natural Sciences',
-  'Space & Astronomy',
-  'Geography',
-  'History',
-  'Mythology & Folklore',
-  'Animals & Wildlife',
-  'Human Body & Health',
-  'Food & World Cuisine',
-  'Art & Architecture',
-  'Language',
-] as const
-
-/** Human-readable content domain, based on top-level category labels. */
-export type FactDomain = typeof CATEGORIES[number]
-
-export function isFactDomain(value: unknown): value is FactDomain {
-  return typeof value === 'string' && CATEGORIES.includes(value as FactDomain)
-}
+export { CATEGORIES, isFactDomain }
+export type { FactDomain }
 
 /** Metadata used by category-first UIs and domain configuration screens. */
 export interface DomainMetadata {

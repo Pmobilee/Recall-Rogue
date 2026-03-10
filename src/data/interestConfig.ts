@@ -1,4 +1,4 @@
-import { CATEGORIES } from './types'
+import { CATEGORIES } from './categories'
 
 /** Relative weight for one category (0 = no boost, 100 = full interest boost). */
 export interface CategoryInterest {

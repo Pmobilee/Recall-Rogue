@@ -1,6 +1,6 @@
 import type { InterestConfig } from '../data/interestConfig'
 import { MAX_INFERRED_BOOST } from '../data/interestConfig'
-import { CATEGORIES } from '../data/types'
+import { CATEGORIES } from '../data/categories'
 
 /** Positive behavioral signals tracked per category for interest inference (DD-V2-118). */
 export interface CategoryBehavioralSignals {
