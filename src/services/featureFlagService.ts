@@ -6,6 +6,7 @@
  * Falls back to hardcoded defaults when offline or when the bootstrap endpoint
  * is unavailable, ensuring the game is always playable without connectivity.
  */
+import { readAccessToken } from './authTokens'
 
 /** Hardcoded defaults used offline / before bootstrap completes. */
 const FLAG_DEFAULTS: Record<string, boolean> = {
@@ -36,7 +37,7 @@ class FeatureFlagService {
   async bootstrap(): Promise<void> {
     try {
       const apiBase = (import.meta as unknown as Record<string, Record<string, string>>).env?.VITE_API_BASE_URL ?? `${window.location.protocol}//${window.location.hostname}:3001`
-      const token = localStorage.getItem('terra_auth_token')
+      const token = readAccessToken()
       const res = await fetch(`${apiBase}/api/flags`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       })

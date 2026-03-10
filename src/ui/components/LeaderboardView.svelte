@@ -3,6 +3,7 @@
   import type { LeaderboardEntry } from '../../services/apiClient'
   import { playerSave } from '../stores/playerData'
   import { authStore } from '../stores/authStore'
+  import { readAccessToken } from '../../services/authTokens'
 
   // ============================================================
   // TYPES
@@ -90,7 +91,7 @@
       const baseUrl = (apiClient as unknown as { baseUrl: string }).baseUrl
         ?? 'http://localhost:3001/api'
 
-      const token = localStorage.getItem('terra_auth_token')
+      const token = readAccessToken()
       const headers: Record<string, string> = { 'Content-Type': 'application/json' }
       if (token) headers['Authorization'] = `Bearer ${token}`
 

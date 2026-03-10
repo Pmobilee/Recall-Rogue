@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { GuildInfo, GuildChallenge } from '../../data/types'
+  import { readAccessToken } from '../../services/authTokens'
 
   interface GuildMember {
     playerId: string
@@ -91,7 +92,7 @@
   }
 
   function authHeaders(): Record<string, string> {
-    const token = localStorage.getItem('terra_auth_token')
+    const token = readAccessToken()
     const headers: Record<string, string> = { 'Content-Type': 'application/json' }
     if (token) headers.Authorization = `Bearer ${token}`
     return headers

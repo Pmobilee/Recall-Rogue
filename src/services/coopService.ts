@@ -7,6 +7,7 @@
 
 import { wsClient } from './wsClient'
 import type { WSMessage } from './wsClient'
+import { readAccessToken } from './authTokens'
 
 /** Resolve the API base URL from Vite environment or fall back to localhost. */
 const BASE = () =>
@@ -15,7 +16,7 @@ const BASE = () =>
     : `${window.location.protocol}//${window.location.hostname}:3001/api`
   ).replace(/\/$/, '')
 
-const AUTH = () => localStorage.getItem('terra_auth_token') ?? ''
+const AUTH = () => readAccessToken() ?? ''
 
 async function post<T>(path: string, body: object): Promise<T> {
   const res = await fetch(`${BASE()}${path}`, {

@@ -9,6 +9,15 @@
  */
 
 import type { PlayerSave } from '../data/types'
+import {
+  clearAccessToken,
+  clearAllAuthTokens,
+  clearRefreshToken,
+  persistAccessToken,
+  persistRefreshToken,
+  readAccessToken,
+  readRefreshToken,
+} from './authTokens'
 
 // ============================================================
 // CONSTANTS
@@ -17,9 +26,6 @@ import type { PlayerSave } from '../data/types'
 const DEFAULT_BASE_URL = typeof window !== 'undefined'
   ? `${window.location.protocol}//${window.location.hostname}:3001/api`
   : 'http://localhost:3001/api'
-const TOKEN_KEY = 'terra_auth_token'
-const LEGACY_TOKEN_KEY = 'tg_access_token'
-const REFRESH_TOKEN_KEY = 'terra_refresh_token'
 
 // ============================================================
 // TOKEN STORAGE ABSTRACTION (19.11)
@@ -60,26 +66,20 @@ export interface TokenStorage {
  */
 class LocalStorageTokenStorage implements TokenStorage {
   getToken(): string | null {
-    const token = localStorage.getItem(TOKEN_KEY)
-    if (token) return token
-    return localStorage.getItem(LEGACY_TOKEN_KEY)
+    return readAccessToken()
   }
 
   getRefreshToken(): string | null {
-    return localStorage.getItem(REFRESH_TOKEN_KEY)
+    return readRefreshToken()
   }
 
   store(token: string, refreshToken: string): void {
-    localStorage.setItem(TOKEN_KEY, token)
-    // Migrate old auth key so all services use a single source of truth.
-    localStorage.removeItem(LEGACY_TOKEN_KEY)
-    localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
+    persistAccessToken(token)
+    persistRefreshToken(refreshToken)
   }
 
   clear(): void {
-    localStorage.removeItem(TOKEN_KEY)
-    localStorage.removeItem(LEGACY_TOKEN_KEY)
-    localStorage.removeItem(REFRESH_TOKEN_KEY)
+    clearAllAuthTokens()
   }
 }
 
@@ -288,8 +288,7 @@ export class ApiClient {
   logout(): void {
     this.token = null
     this.refreshToken = null
-    localStorage.removeItem(TOKEN_KEY)
-    localStorage.removeItem(REFRESH_TOKEN_KEY)
+    clearAllAuthTokens()
   }
 
   /**
@@ -580,15 +579,15 @@ export class ApiClient {
   private persistTokens(): void {
     // TODO(codex): [security] remove localStorage token writes after httpOnly cookie migration — needs human decision
     if (this.token !== null) {
-      localStorage.setItem(TOKEN_KEY, this.token)
+      persistAccessToken(this.token)
     } else {
-      localStorage.removeItem(TOKEN_KEY)
+      clearAccessToken()
     }
 
     if (this.refreshToken !== null) {
-      localStorage.setItem(REFRESH_TOKEN_KEY, this.refreshToken)
+      persistRefreshToken(this.refreshToken)
     } else {
-      localStorage.removeItem(REFRESH_TOKEN_KEY)
+      clearRefreshToken()
     }
   }
 
@@ -602,8 +601,8 @@ export class ApiClient {
    */
   private loadTokens(): void {
     // TODO(codex): [security] remove localStorage token reads after httpOnly cookie migration — needs human decision
-    this.token = localStorage.getItem(TOKEN_KEY)
-    this.refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY)
+    this.token = readAccessToken()
+    this.refreshToken = readRefreshToken()
   }
 
   /**

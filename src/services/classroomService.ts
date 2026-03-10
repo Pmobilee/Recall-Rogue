@@ -7,16 +7,7 @@
  */
 
 import { classroomStore } from '../ui/stores/classroomStore'
-
-const ACCESS_TOKEN_KEYS = ['terra_auth_token', 'tg_access_token'] as const
-
-function readAccessToken(): string | null {
-  for (const key of ACCESS_TOKEN_KEYS) {
-    const token = localStorage.getItem(key)
-    if (token && token.trim().length > 0) return token
-  }
-  return null
-}
+import { readAccessToken } from './authTokens'
 
 /** Authorization header value read from localStorage. */
 function getAuthHeader(): string {

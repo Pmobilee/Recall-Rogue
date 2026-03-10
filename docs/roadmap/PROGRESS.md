@@ -24,6 +24,7 @@
 - Added dome sprite coverage regression tests to keep layout/tree sprite keys aligned with `DOME_SPRITE_KEYS` (`tests/unit/domeManifest.test.ts`).
 - Build-pipeline hardening: `scripts/convert-to-webp.mjs` now skips up-to-date assets, validates conversion integrity (non-empty + dimension match), and fails strict builds on conversion errors.
 - Worker-orchestration observability: `content:workers:status` now summarizes per-domain generated/worker-output counts, target deltas, and prepare/ingest/QA/promote stage health in one JSON report.
+- Auth/session hardening: centralized access/refresh token handling in `src/services/authTokens.ts` and removed scattered token-key reads from social/classroom/feature-flag clients.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 

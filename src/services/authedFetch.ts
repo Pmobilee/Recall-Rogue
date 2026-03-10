@@ -1,7 +1,5 @@
 import { ApiError } from './apiClient'
-
-const TOKEN_KEY = 'terra_auth_token'
-const LEGACY_TOKEN_KEY = 'tg_access_token'
+import { readAccessToken } from './authTokens'
 
 function resolveBaseUrl(): string {
   const envUrl =
@@ -12,11 +10,7 @@ function resolveBaseUrl(): string {
 }
 
 function readToken(): string | null {
-  try {
-    return localStorage.getItem(TOKEN_KEY) ?? localStorage.getItem(LEGACY_TOKEN_KEY)
-  } catch {
-    return null
-  }
+  return readAccessToken()
 }
 
 async function extractErrorMessage(response: Response): Promise<string> {
