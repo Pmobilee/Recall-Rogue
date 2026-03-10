@@ -192,6 +192,8 @@
 
   /** Cached HTMLImageElement instances, keyed by sprite key. */
   const imageMap = new Map<string, HTMLImageElement>()
+  /** Sprite keys that failed to load; rendered via placeholders instead. */
+  const failedImageKeys = new Set<string>()
 
   /**
    * Offscreen canvases for static layers (bg and fg).
@@ -241,6 +243,7 @@
         if (remaining === 0) onAllLoaded()
       }
       img.onerror = () => {
+        failedImageKeys.add(key)
         remaining--
         if (remaining === 0) onAllLoaded()
       }
@@ -596,6 +599,10 @@
     if (!url) return
     const img = new Image()
     img.onload = () => { dirty = true }
+    img.onerror = () => {
+      failedImageKeys.add(key)
+      dirty = true
+    }
     img.src = url
     imageMap.set(key, img)
   }
@@ -665,6 +672,48 @@
   }
 
   /**
+   * Draw a readable placeholder when an object's sprite is missing.
+   * Keeps interactive hit-targets discoverable even if art assets are unavailable.
+   */
+  function drawObjectPlaceholder(ctx: CanvasRenderingContext2D, obj: DomeObject, isTapped: boolean): void {
+    const px = obj.gridX * TILE_SIZE
+    const py = obj.gridY * TILE_SIZE
+    const pw = obj.gridW * TILE_SIZE
+    const ph = obj.gridH * TILE_SIZE
+
+    const baseFill = obj.interactive ? 'rgba(44, 68, 104, 0.72)' : 'rgba(56, 56, 64, 0.62)'
+    const border = obj.interactive ? 'rgba(189, 219, 255, 0.85)' : 'rgba(198, 198, 208, 0.7)'
+
+    ctx.save()
+    ctx.fillStyle = baseFill
+    ctx.fillRect(px, py, pw, ph)
+    ctx.strokeStyle = border
+    ctx.lineWidth = 1
+    ctx.strokeRect(px + 0.5, py + 0.5, Math.max(1, pw - 1), Math.max(1, ph - 1))
+
+    if (isTapped) {
+      ctx.fillStyle = 'rgba(255,255,255,0.18)'
+      ctx.fillRect(px, py, pw, ph)
+    }
+
+    const label = obj.label
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((part) => part[0])
+      .slice(0, 4)
+      .join('')
+      .toUpperCase() || '?'
+
+    const fontSize = Math.max(8, Math.min(11, Math.floor(ph * 0.28)))
+    ctx.font = `${fontSize}px "Courier New", monospace`
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillStyle = 'rgba(235, 240, 255, 0.95)'
+    ctx.fillText(label, px + pw / 2, py + ph / 2)
+    ctx.restore()
+  }
+
+  /**
    * Draw all dome objects and furniture.
    * Interactive objects get a hover glow when they are the current hoveredObject.
    * A tapped object gets a white semi-transparent highlight and a 10% scale-up.
@@ -681,13 +730,13 @@
         drawHoverGlow(ctx, obj)
       }
 
-      const img = imageMap.get(obj.spriteKey)
-      if (!img || !img.complete || img.naturalWidth === 0) continue
-
       const px = obj.gridX * TILE_SIZE
       const py = obj.gridY * TILE_SIZE
       const pw = obj.gridW * TILE_SIZE
       const ph = obj.gridH * TILE_SIZE
+      const img = imageMap.get(obj.spriteKey)
+      const hasImage = Boolean(img && img.complete && img.naturalWidth > 0)
+      const isTapped = tappedId === obj.id
 
       // Shadow beneath object (visual grounding) — skip for dive_hatch which is flush with the floor
       if (obj.id !== 'dive_hatch') {
@@ -704,7 +753,11 @@
         ctx.restore()
       }
 
-      const isTapped = tappedId === obj.id
+      if (!hasImage || failedImageKeys.has(obj.spriteKey)) {
+        drawObjectPlaceholder(ctx, obj, isTapped)
+        continue
+      }
+      const loadedImg = img as HTMLImageElement
 
       if (isTapped) {
         // White semi-transparent flash behind the object
@@ -717,9 +770,9 @@
         const scaledH = ph * scale
         const offsetX = (scaledW - pw) / 2
         const offsetY = (scaledH - ph) / 2
-        ctx.drawImage(img, px - offsetX, py - offsetY, scaledW, scaledH)
+        ctx.drawImage(loadedImg, px - offsetX, py - offsetY, scaledW, scaledH)
       } else {
-        ctx.drawImage(img, px, py, pw, ph)
+        ctx.drawImage(loadedImg, px, py, pw, ph)
       }
     }
   }

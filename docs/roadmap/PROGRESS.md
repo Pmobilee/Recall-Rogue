@@ -18,6 +18,7 @@
 - AR-20 Competitive/social runtime wiring including Daily + Endless leaderboard submissions.
 - AR-21 Monetization activation including Arcane Pass/Season Pass/Cosmetic Store surfacing and Scholar Challenge.
 - Regression hardening pass: unit coverage added for AR-21 monetization grant flows and AR-30 camp cosmetics progression state (`tests/unit/monetizationService.test.ts`, `tests/unit/campState.test.ts`).
+- Hub rendering hardening: `DomeCanvas` now renders interactive placeholders for missing sprite assets so knowledge-tree and other dome objects remain visible/clickable even without full art packs.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
