@@ -17,9 +17,14 @@ export const DOME_SPRITE_KEYS = [
   'painting_perfect_year', 'painting_library', 'painting_home',
   'painting_seasons',
   // knowledge tree stages
+  'obj_knowledge_tree',
   'obj_knowledge_tree_stage0', 'obj_knowledge_tree_stage1',
   'obj_knowledge_tree_stage2', 'obj_knowledge_tree_stage3',
-  'obj_knowledge_tree_stage4', 'obj_knowledge_tree_stage5',
+  'obj_knowledge_tree_stage4', 'obj_knowledge_tree_stage5', 'obj_knowledge_tree_stage6',
+  // interactive hub objects
+  'obj_bookshelf', 'obj_locked_silhouette', 'obj_gaia_terminal',
+  'obj_streak_board', 'obj_display_case', 'obj_workbench',
+  'obj_market_stall', 'obj_farm_plot', 'obj_dive_hatch',
   // pet sprites
   'pet_trilobite_walk', 'pet_trilobite_idle',
   'pet_mammoth_walk', 'pet_mammoth_idle',
