@@ -1090,6 +1090,13 @@ Same seed all players. Score = accuracy x speed x depth x combo. One attempt/day
 
 Why critical: Wordle's entire viral success = one-a-day appointment. STS daily climb = most-played mode. "Did you beat today's Expedition?" = organic marketing.
 
+### Implementation Status (March 10, 2026)
+
+- Daily runs now submit to backend leaderboard category `daily_expedition` with `metadata.dateKey` (`YYYY-MM-DD`).
+- Backend enforces one Daily submission per user per date key.
+- Daily leaderboard API supports date-key filtering so rankings are scoped to the current daily seed cycle.
+- Endless mode submits to separate backend category `endless_depths` and keeps local fallback rows for offline/unauthenticated sessions.
+
 ---
 
 ## 21. Canary System (Invisible Adaptive Difficulty)

@@ -24,7 +24,6 @@ import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type {
   LeaderboardEntry,
   LeaderboardCategory,
-  MyRanking,
 } from "../types/index.js";
 
 /** Maximum entries returned for a category leaderboard. */
@@ -41,7 +40,12 @@ const VALID_CATEGORIES: Set<string> = new Set([
   "deepest_dive",
   "facts_mastered",
   "longest_streak",
+  "knowledge_tree",
+  "quiz_accuracy",
+  "total_dives",
   "total_dust",
+  "daily_expedition",
+  "endless_depths",
 ]);
 
 // ── Plausibility bounds (Phase 22.7) ──────────────────────────────────────────
@@ -79,6 +83,10 @@ const PLAUSIBILITY_BOUNDS: Readonly<Record<string, PlausibilityBounds>> = {
   total_dives: { min: 0, max: 100_000 },
   /** total_dust has no meaningful upper bound for now. */
   total_dust: { min: 0, max: Number.MAX_SAFE_INTEGER },
+  /** Daily expedition score (accuracy/speed/depth/combo composite). */
+  daily_expedition: { min: 0, max: 1_000_000 },
+  /** Endless score scales with floor and accuracy; keep bound generous. */
+  endless_depths: { min: 0, max: 10_000_000 },
 };
 
 /**
@@ -183,6 +191,15 @@ class LeaderboardLruCache {
   invalidate(category: string): void {
     this.store.delete(category);
   }
+
+  /** Invalidate all cache keys starting with a given prefix. */
+  invalidatePrefix(prefix: string): void {
+    for (const key of this.store.keys()) {
+      if (key.startsWith(prefix)) {
+        this.store.delete(key);
+      }
+    }
+  }
 }
 
 /** Singleton cache — shared across all requests in this process. */
@@ -216,6 +233,26 @@ function tryParseJson(str: string): unknown {
 }
 
 /**
+ * Parse and validate a `YYYY-MM-DD` date key used by Daily Expedition.
+ */
+function parseDailyDateKey(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(trimmed) ? trimmed : null;
+}
+
+/**
+ * Build a cache key for category + optional daily date key.
+ * Daily Expedition leaderboards are cached per date key.
+ */
+function buildCacheKey(category: string, dateKey: string | null): string {
+  if (category !== "daily_expedition" || !dateKey) {
+    return category;
+  }
+  return `${category}::${dateKey}`;
+}
+
+/**
  * Register leaderboard routes on the Fastify instance.
  * All routes are prefixed with /api/leaderboards by the calling index.ts.
  *
@@ -232,10 +269,15 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
   fastify.get(
     "/me",
     withAuth,
-    async (request: FastifyRequest): Promise<MyRanking[]> => {
+    async (request: FastifyRequest): Promise<LeaderboardEntry[]> => {
       const { sub: userId } = getAuthUser(request);
+      const me = await db
+        .select({ displayName: users.displayName })
+        .from(users)
+        .where(eq(users.id, userId))
+        .get();
 
-      const results: MyRanking[] = [];
+      const results: LeaderboardEntry[] = [];
 
       for (const category of VALID_CATEGORIES) {
         // Get this user's best score in the category
@@ -250,7 +292,16 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
           .get();
 
         if (!myBest) {
-          results.push({ category, score: 0, rank: null });
+          results.push({
+            id: `me-${category}`,
+            userId,
+            displayName: me?.displayName ?? null,
+            category,
+            score: 0,
+            metadata: null,
+            createdAt: Date.now(),
+            rank: 0,
+          });
           continue;
         }
 
@@ -265,7 +316,16 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
 
         const rank = (higherCount?.count ?? 0) + 1;
 
-        results.push({ category, score: myBest.score, rank });
+        results.push({
+          id: `me-${category}`,
+          userId,
+          displayName: me?.displayName ?? null,
+          category,
+          score: myBest.score,
+          metadata: null,
+          createdAt: Date.now(),
+          rank,
+        });
       }
 
       return results;
@@ -286,6 +346,19 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
     async (request: FastifyRequest, reply: FastifyReply) => {
       const params = request.params as { category: string };
       const { category } = params;
+      const query = request.query as Record<string, unknown>;
+      const rawLimit = query?.limit;
+      const limit = Math.max(
+        1,
+        Math.min(
+          TOP_N,
+          typeof rawLimit === "string"
+            ? parseInt(rawLimit, 10) || TOP_N
+            : TOP_N
+        )
+      );
+      const requestedDateKey = parseDailyDateKey(query?.dateKey);
+      const cacheKey = buildCacheKey(category, requestedDateKey);
 
       if (!isValidCategory(category)) {
         return reply.status(400).send({
@@ -295,14 +368,14 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
       }
 
       // Try the LRU cache first (avoids a DB query for 60 seconds after each write)
-      const cached = leaderboardCache.get(category);
+      const cached = leaderboardCache.get(cacheKey);
       if (cached !== null) {
-        // Slice to TOP_N in case the cache holds the full CACHE_TOP_N
-        return cached.slice(0, TOP_N);
+        return cached.slice(0, limit);
       }
 
       // Cache miss — query the database.
       // Fetch CACHE_TOP_N rows so the cache can serve any slice up to that limit.
+      const queryLimit = category === "daily_expedition" ? 1000 : CACHE_TOP_N;
       const rows = await db
         .select({
           id: leaderboards.id,
@@ -317,14 +390,26 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         .leftJoin(users, eq(leaderboards.userId, users.id))
         .where(eq(leaderboards.category, category as LeaderboardCategory))
         .orderBy(desc(leaderboards.score))
-        .limit(CACHE_TOP_N)
+        .limit(queryLimit)
         .all();
+
+      // Daily Expedition can be requested for a specific UTC date key.
+      const filteredRows =
+        category === "daily_expedition" && requestedDateKey
+          ? rows.filter((row) => {
+              const parsed = row.metadata ? tryParseJson(row.metadata) : null;
+              if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+                return false;
+              }
+              return (parsed as Record<string, unknown>).dateKey === requestedDateKey;
+            })
+          : rows;
 
       // Deduplicate: keep only the best score per user (one row per user_id
       // guaranteed by the upsert on write, but guard here for legacy data).
       const seen = new Set<string>();
-      const deduped: typeof rows = [];
-      for (const row of rows) {
+      const deduped: typeof filteredRows = [];
+      for (const row of filteredRows) {
         if (!seen.has(row.userId)) {
           seen.add(row.userId);
           deduped.push(row);
@@ -343,9 +428,9 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
       }));
 
       // Populate the cache for subsequent requests
-      leaderboardCache.set(category, result);
+      leaderboardCache.set(cacheKey, result);
 
-      return result.slice(0, TOP_N);
+      return result.slice(0, limit);
     }
   );
 
@@ -446,39 +531,47 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         });
       }
 
-      // ── Upsert: one row per (userId, category) ────────────────────────────
-      // Check if the user already has an entry for this category.
-      // If they do, update only when the new score is strictly higher.
-      // This prevents duplicate leaderboard entries and keeps the best score.
-      //
-      // SQLite equivalent of INSERT ... ON CONFLICT DO UPDATE SET ...
-      // We implement this with a manual check+update rather than raw SQL so
-      // that Drizzle's type system stays intact.
-      const existingEntry = await db
-        .select({ id: leaderboards.id, score: leaderboards.score })
-        .from(leaderboards)
-        .where(
-          sql`${leaderboards.userId} = ${userId} AND ${leaderboards.category} = ${category}`
-        )
-        .get();
-
       let entryId: string;
       let entryCreatedAt: number;
+      let effectiveScore = flooredScore;
+      let rank = 1;
 
-      if (existingEntry) {
-        entryId = existingEntry.id;
-        // Only update if the new score is strictly higher (keep personal best)
-        if (flooredScore > existingEntry.score) {
-          await db
-            .update(leaderboards)
-            .set({ score: flooredScore, metadata: serialisedMeta })
-            .where(eq(leaderboards.id, existingEntry.id));
-          // Invalidate the cache so the next read reflects the updated score
-          leaderboardCache.invalidate(category);
+      if (category === "daily_expedition") {
+        const dailyDateKey = parseDailyDateKey(
+          metadata && typeof metadata === "object" && !Array.isArray(metadata)
+            ? (metadata as Record<string, unknown>).dateKey
+            : null
+        );
+        if (!dailyDateKey) {
+          return reply.status(400).send({
+            error: "daily_expedition submissions require metadata.dateKey (YYYY-MM-DD)",
+            statusCode: 400,
+          });
         }
-        entryCreatedAt = now;
-      } else {
-        // New entry — insert fresh row
+
+        // One attempt per day per user: block duplicate submissions for same date key.
+        const existingDailyRows = await db
+          .select({
+            id: leaderboards.id,
+            metadata: leaderboards.metadata,
+          })
+          .from(leaderboards)
+          .where(
+            sql`${leaderboards.userId} = ${userId} AND ${leaderboards.category} = ${category}`
+          )
+          .all();
+        const alreadySubmittedToday = existingDailyRows.some((row) => {
+          const parsed = row.metadata ? tryParseJson(row.metadata) : null;
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return false;
+          return (parsed as Record<string, unknown>).dateKey === dailyDateKey;
+        });
+        if (alreadySubmittedToday) {
+          return reply.status(409).send({
+            error: "Daily Expedition score already submitted for this dateKey",
+            statusCode: 409,
+          });
+        }
+
         entryId = crypto.randomUUID();
         entryCreatedAt = now;
         await db.insert(leaderboards).values({
@@ -489,31 +582,84 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
           metadata: serialisedMeta,
           createdAt: now,
         });
-        // Invalidate the cache for this category
+        leaderboardCache.invalidatePrefix(`${category}::`);
         leaderboardCache.invalidate(category);
+
+        // Rank within this specific Daily Expedition date key.
+        const dailyRows = await db
+          .select({
+            userId: leaderboards.userId,
+            score: leaderboards.score,
+            metadata: leaderboards.metadata,
+          })
+          .from(leaderboards)
+          .where(eq(leaderboards.category, category as LeaderboardCategory))
+          .orderBy(desc(leaderboards.score))
+          .limit(2000)
+          .all();
+        const seenDailyUsers = new Set<string>();
+        let higherDistinctUsers = 0;
+        for (const row of dailyRows) {
+          if (seenDailyUsers.has(row.userId)) continue;
+          const parsed = row.metadata ? tryParseJson(row.metadata) : null;
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
+          if ((parsed as Record<string, unknown>).dateKey !== dailyDateKey) continue;
+          seenDailyUsers.add(row.userId);
+          if (row.score > flooredScore) {
+            higherDistinctUsers += 1;
+          }
+        }
+        rank = higherDistinctUsers + 1;
+      } else {
+        // ── Upsert: one row per (userId, category) ──────────────────────────
+        const existingEntry = await db
+          .select({ id: leaderboards.id, score: leaderboards.score })
+          .from(leaderboards)
+          .where(
+            sql`${leaderboards.userId} = ${userId} AND ${leaderboards.category} = ${category}`
+          )
+          .get();
+
+        if (existingEntry) {
+          entryId = existingEntry.id;
+          if (flooredScore > existingEntry.score) {
+            await db
+              .update(leaderboards)
+              .set({ score: flooredScore, metadata: serialisedMeta })
+              .where(eq(leaderboards.id, existingEntry.id));
+            leaderboardCache.invalidate(category);
+          }
+          entryCreatedAt = now;
+          effectiveScore = Math.max(existingEntry.score, flooredScore);
+        } else {
+          entryId = crypto.randomUUID();
+          entryCreatedAt = now;
+          await db.insert(leaderboards).values({
+            id: entryId,
+            userId,
+            category,
+            score: flooredScore,
+            metadata: serialisedMeta,
+            createdAt: now,
+          });
+          leaderboardCache.invalidate(category);
+        }
+
+        const higherCount = await db
+          .select({ count: sql<number>`COUNT(DISTINCT ${leaderboards.userId})` })
+          .from(leaderboards)
+          .where(
+            sql`${leaderboards.category} = ${category} AND ${leaderboards.score} > ${effectiveScore}`
+          )
+          .get();
+        rank = (higherCount?.count ?? 0) + 1;
       }
-
-      // Compute rank for the submitted score
-      const higherCount = await db
-        .select({ count: sql<number>`COUNT(DISTINCT ${leaderboards.userId})` })
-        .from(leaderboards)
-        .where(
-          sql`${leaderboards.category} = ${category} AND ${leaderboards.score} > ${flooredScore}`
-        )
-        .get();
-
-      const rank = (higherCount?.count ?? 0) + 1;
 
       const user = await db
         .select({ displayName: users.displayName })
         .from(users)
         .where(eq(users.id, userId))
         .get();
-
-      // Return the effective score (the actual best stored, which may be unchanged)
-      const effectiveScore = existingEntry && existingEntry.score > flooredScore
-        ? existingEntry.score
-        : flooredScore;
 
       const result: LeaderboardEntry = {
         id: entryId,

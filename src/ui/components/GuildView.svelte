@@ -20,6 +20,33 @@
     description: string
   }
 
+  interface ApiGuildMember {
+    userId: string
+    displayName: string | null
+    role: 'leader' | 'officer' | 'member'
+    joinedAt: number
+  }
+
+  interface ApiGuildChallenge {
+    id: string
+    title: string
+    targetCount: number
+    currentCount: number
+    completedAt: number | null
+  }
+
+  interface ApiGuild {
+    id: string
+    name: string
+    tag: string
+    emblemId: string
+    description: string
+    members: ApiGuildMember[]
+    gkp: number
+    challenges: ApiGuildChallenge[]
+    open: boolean
+  }
+
   interface Props {
     onClose: () => void
   }
@@ -56,22 +83,110 @@
   let createSuccess = $state(false)
 
   let errorMessage = $state('')
+  let didBootstrap = $state(false)
+
+  function apiBase(): string {
+    const stored = localStorage.getItem('terra_api_base')
+    return (stored ?? 'http://localhost:3001/api').replace(/\/$/, '')
+  }
+
+  function authHeaders(): Record<string, string> {
+    const token = localStorage.getItem('terra_auth_token')
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+    if (token) headers.Authorization = `Bearer ${token}`
+    return headers
+  }
+
+  function emblemIndex(emblemId: string): number {
+    const parsed = Number.parseInt(emblemId, 10)
+    if (Number.isFinite(parsed) && parsed >= 0) return parsed % GUILD_EMBLEMS.length
+    let hash = 0
+    for (let i = 0; i < emblemId.length; i += 1) {
+      hash = ((hash << 5) - hash) + emblemId.charCodeAt(i)
+      hash |= 0
+    }
+    return Math.abs(hash) % GUILD_EMBLEMS.length
+  }
+
+  function guildRank(gkp: number): number {
+    return Math.max(1, Math.floor(gkp / 1000) + 1)
+  }
+
+  function mapApiGuild(guild: ApiGuild): {
+    guildInfo: GuildInfo
+    mappedMembers: GuildMember[]
+    mappedChallenges: GuildChallenge[]
+  } {
+    const mappedMembers: GuildMember[] = guild.members.map((member) => ({
+      playerId: member.userId,
+      displayName: member.displayName ?? `Rogue-${member.userId.slice(0, 6)}`,
+      role: member.role,
+      weeklyContribution: 0,
+      lastActive: new Date(member.joinedAt).toISOString(),
+    }))
+    const mappedChallenges: GuildChallenge[] = guild.challenges.map((challenge) => ({
+      id: challenge.id,
+      challengeType: challenge.title,
+      target: challenge.targetCount,
+      progress: challenge.currentCount,
+      isCompleted: challenge.completedAt !== null,
+      weekStart: challenge.completedAt ?? Date.now(),
+    }))
+    return {
+      guildInfo: {
+        id: guild.id,
+        name: guild.name,
+        tag: guild.tag,
+        emblemId: emblemIndex(guild.emblemId),
+        rank: guildRank(guild.gkp),
+        gkp: guild.gkp,
+        memberCount: guild.members.length,
+        isOpen: guild.open,
+        description: guild.description,
+      },
+      mappedMembers,
+      mappedChallenges,
+    }
+  }
+
+  async function bootstrapGuildState(): Promise<void> {
+    try {
+      const resp = await fetch(`${apiBase()}/guilds/me`, { headers: authHeaders() })
+      if (!resp.ok) {
+        hasGuild = false
+        myGuild = null
+        members = []
+        challenges = []
+        topContributors = []
+        if (activeTab === 'my-guild') activeTab = 'find-guilds'
+        return
+      }
+      const guild = await resp.json() as ApiGuild
+      const mapped = mapApiGuild(guild)
+      hasGuild = true
+      myGuild = mapped.guildInfo
+      members = mapped.mappedMembers
+      challenges = mapped.mappedChallenges
+      topContributors = [...members]
+        .sort((a, b) => b.weeklyContribution - a.weeklyContribution)
+        .slice(0, 5)
+    } catch {
+      // Ignore bootstrap failures; search/create tabs can still be used.
+    }
+  }
 
   async function loadMyGuild(): Promise<void> {
-    if (!hasGuild) return
     loadingGuild = true
     errorMessage = ''
     try {
-      const resp = await fetch('/api/guild/my')
+      const resp = await fetch(`${apiBase()}/guilds/me`, { headers: authHeaders() })
       if (!resp.ok) throw new Error('Failed to load guild')
-      const data = await resp.json() as {
-        guild: GuildInfo
-        members: GuildMember[]
-        challenges: GuildChallenge[]
-      }
-      myGuild = data.guild
-      members = data.members ?? []
-      challenges = data.challenges ?? []
+      const guild = await resp.json() as ApiGuild
+      const mapped = mapApiGuild(guild)
+      hasGuild = true
+      myGuild = mapped.guildInfo
+      members = mapped.mappedMembers
+      challenges = mapped.mappedChallenges
       topContributors = [...members]
         .sort((a, b) => b.weeklyContribution - a.weeklyContribution)
         .slice(0, 5)
@@ -83,14 +198,37 @@
   }
 
   async function searchGuilds(): Promise<void> {
+    const trimmed = searchQuery.trim()
+    if (trimmed.length === 0) {
+      searchResults = []
+      return
+    }
     searchLoading = true
     errorMessage = ''
     try {
-      const query = encodeURIComponent(searchQuery.trim())
-      const resp = await fetch(`/api/guild/search?q=${query}`)
+      const query = encodeURIComponent(trimmed)
+      const resp = await fetch(`${apiBase()}/guilds/search?q=${query}`)
       if (!resp.ok) throw new Error('Search failed')
-      const data = await resp.json() as { guilds: GuildSearchResult[] }
-      searchResults = data.guilds ?? []
+      const data = await resp.json() as Array<{
+        id: string
+        name: string
+        tag: string
+        memberCount: number
+        maxMembers: number
+        gkp: number
+        open: boolean
+        description: string
+      }>
+      searchResults = data.map((guild) => ({
+        id: guild.id,
+        name: guild.name,
+        tag: guild.tag,
+        rank: guildRank(guild.gkp),
+        memberCount: guild.memberCount,
+        maxMembers: guild.maxMembers,
+        isOpen: guild.open,
+        description: guild.description,
+      }))
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Search failed'
       searchResults = []
@@ -101,10 +239,9 @@
 
   async function joinGuild(guildId: string): Promise<void> {
     try {
-      const resp = await fetch('/api/guild/join', {
+      const resp = await fetch(`${apiBase()}/guilds/${encodeURIComponent(guildId)}/join`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ guildId }),
+        headers: authHeaders(),
       })
       if (!resp.ok) throw new Error('Failed to join guild')
       hasGuild = true
@@ -127,13 +264,13 @@
     createLoading = true
     createError = ''
     try {
-      const resp = await fetch('/api/guild/create', {
+      const resp = await fetch(`${apiBase()}/guilds/create`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({
           name: createName.trim(),
           tag: createTag.trim().toUpperCase(),
-          emblemId: createEmblem,
+          emblemId: String(createEmblem),
           description: createDescription.trim(),
         }),
       })
@@ -193,8 +330,12 @@
   }
 
   $effect(() => {
+    if (!didBootstrap) {
+      didBootstrap = true
+      void bootstrapGuildState()
+    }
     if (activeTab === 'my-guild' && hasGuild && !myGuild) loadMyGuild()
-    if (activeTab === 'find-guilds' && searchResults.length === 0 && !searchLoading) searchGuilds()
+    if (activeTab === 'find-guilds' && searchQuery.trim().length > 0 && searchResults.length === 0 && !searchLoading) searchGuilds()
   })
 </script>
 

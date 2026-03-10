@@ -41,12 +41,9 @@ export const socialService = {
    */
   async searchPlayers(query: string): Promise<PlayerSearchResult[]> {
     const params = new URLSearchParams({ q: query.trim() })
-    const response = await (apiClient as unknown as {
-      fetchPublic: (path: string, opts?: RequestInit) => Promise<Response>
-    }).fetchPublic?.(`/social/search?${params.toString()}`, { method: 'GET' })
-      ?? await _authedGet(`/social/search?${params.toString()}`)
-
-    const data = (await response.json()) as { players: PlayerSearchResult[] }
+    const response = await _authedGet(`/players/search?${params.toString()}`)
+    const data = (await response.json()) as PlayerSearchResult[] | { players?: PlayerSearchResult[] }
+    if (Array.isArray(data)) return data
     return data.players ?? []
   },
 
@@ -59,9 +56,12 @@ export const socialService = {
    * @throws {ApiError} 403 if hub is private, 404 if player not found.
    */
   async getHubSnapshot(playerId: string): Promise<HubSnapshot> {
-    const response = await _authedGet(`/social/hubs/${encodeURIComponent(playerId)}`)
-    const data = (await response.json()) as { snapshot: HubSnapshot }
-    return data.snapshot
+    const response = await _authedGet(`/players/${encodeURIComponent(playerId)}/hub-snapshot`)
+    const data = (await response.json()) as Record<string, unknown> | { snapshot?: Record<string, unknown> }
+    const raw = ('snapshot' in data && data.snapshot && typeof data.snapshot === 'object')
+      ? data.snapshot
+      : data
+    return _normalizeHubSnapshot(raw as Record<string, unknown>)
   },
 
   /**
@@ -73,7 +73,7 @@ export const socialService = {
    * @throws {ApiError} On validation failure, rate limit (429), or network error.
    */
   async postGuestbookEntry(playerId: string, message: string): Promise<void> {
-    await _authedPost(`/social/hubs/${encodeURIComponent(playerId)}/guestbook`, { message })
+    await _authedPost(`/players/${encodeURIComponent(playerId)}/guestbook`, { message })
   },
 
   /**
@@ -82,7 +82,7 @@ export const socialService = {
    * @param entryId  - The guestbook entry ID to flag.
    */
   async flagGuestbookEntry(playerId: string, entryId: string): Promise<void> {
-    await _authedPost(`/social/hubs/${encodeURIComponent(playerId)}/guestbook/${encodeURIComponent(entryId)}/flag`, {})
+    await _authedPost(`/players/${encodeURIComponent(playerId)}/guestbook/${encodeURIComponent(entryId)}/flag`, {})
   },
 
   /**
@@ -103,7 +103,10 @@ export const socialService = {
     type: 'minerals' | 'fact_link',
     payload: object,
   ): Promise<void> {
-    await _authedPost(`/social/gifts`, { recipientId: playerId, type, payload })
+    const mappedPayload = type === 'minerals'
+      ? { dust: Number((payload as { amount?: unknown }).amount ?? 0) }
+      : payload
+    await _authedPost(`/players/${encodeURIComponent(playerId)}/gift`, { type, payload: mappedPayload })
   },
 
   /**
@@ -113,9 +116,28 @@ export const socialService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getReceivedGifts(): Promise<GiftRecord[]> {
-    const response = await _authedGet(`/social/gifts/received`)
-    const data = (await response.json()) as { gifts: GiftRecord[] }
-    return data.gifts ?? []
+    const response = await _authedGet(`/players/me/received-gifts`)
+    const data = (await response.json()) as Array<Record<string, unknown>> | { gifts?: Array<Record<string, unknown>> }
+    const rows = Array.isArray(data) ? data : (data.gifts ?? [])
+    return rows.map((gift) => {
+      const payloadRaw = (gift.payload as Record<string, unknown> | undefined) ?? {}
+      const amount = typeof payloadRaw.amount === 'number'
+        ? payloadRaw.amount
+        : (typeof payloadRaw.dust === 'number' ? payloadRaw.dust : undefined)
+      return {
+        id: String(gift.id ?? ''),
+        senderId: String(gift.senderId ?? ''),
+        senderName: String(gift.senderDisplayName ?? 'Explorer'),
+        giftType: gift.type === 'fact_link' ? 'fact_link' : 'minerals',
+        payload: {
+          amount,
+          factId: typeof payloadRaw.factId === 'string' ? payloadRaw.factId : undefined,
+          factPreview: typeof payloadRaw.factPreview === 'string' ? payloadRaw.factPreview : undefined,
+        },
+        sentAt: Number(gift.createdAt ?? Date.now()),
+        claimed: gift.claimedAt !== null && gift.claimedAt !== undefined,
+      }
+    })
   },
 
   /**
@@ -126,7 +148,7 @@ export const socialService = {
    * @throws {ApiError} 404 if gift not found or already claimed.
    */
   async claimGift(giftId: string): Promise<void> {
-    await _authedPost(`/social/gifts/${encodeURIComponent(giftId)}/claim`, {})
+    await _authedPost(`/players/me/received-gifts/${encodeURIComponent(giftId)}/claim`, {})
   },
 
   /**
@@ -137,7 +159,7 @@ export const socialService = {
    * @throws {ApiError} 409 if already friends, 404 if player not found.
    */
   async sendFriendRequest(playerId: string): Promise<void> {
-    await _authedPost(`/social/friends/request`, { targetId: playerId })
+    await _authedPost(`/players/friends/request`, { playerId })
   },
 
   /**
@@ -147,8 +169,9 @@ export const socialService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getFriends(): Promise<FriendEntry[]> {
-    const response = await _authedGet(`/social/friends`)
-    const data = (await response.json()) as { friends: FriendEntry[] }
+    const response = await _authedGet(`/players/me/friends`)
+    const data = (await response.json()) as FriendEntry[] | { friends?: FriendEntry[] }
+    if (Array.isArray(data)) return data
     return data.friends ?? []
   },
 }
@@ -256,5 +279,47 @@ async function _extractErrorMessage(response: Response): Promise<string> {
     return body.message ?? body.error ?? `Server error (${response.status})`
   } catch {
     return response.statusText || `Server error (${response.status})`
+  }
+}
+
+function _normalizeHubSnapshot(raw: Record<string, unknown>): HubSnapshot {
+  const displayName = typeof raw.displayName === 'string' && raw.displayName.trim().length > 0
+    ? raw.displayName
+    : 'Explorer'
+  const rawGuestbook = Array.isArray(raw.guestbook) ? raw.guestbook as Array<Record<string, unknown>> : []
+  const guestbook: GuestbookEntry[] = rawGuestbook.map((entry) => ({
+    id: String(entry.id ?? `guest-${Math.random().toString(36).slice(2)}`),
+    authorId: String(entry.authorId ?? ''),
+    authorDisplayName: String(entry.authorDisplayName ?? 'Explorer'),
+    message: String(entry.message ?? ''),
+    createdAt: Number(entry.createdAt ?? Date.now()),
+  }))
+
+  return {
+    playerId: String(raw.playerId ?? ''),
+    displayName,
+    playerLevel: Number(raw.playerLevel ?? 1),
+    patronBadge: typeof raw.patronBadge === 'string' ? raw.patronBadge : null,
+    pioneerBadge: Boolean(raw.pioneerBadge ?? false),
+    joinDate: typeof raw.joinDate === 'string' ? raw.joinDate : new Date(0).toISOString(),
+    dome: {
+      wallpaper: 'default',
+      unlockedRooms: [],
+      decorations: [],
+      petDisplayed: null,
+    },
+    knowledgeTree: {
+      totalFacts: 0,
+      masteredFacts: 0,
+      categoryBreakdown: {},
+      topBranch: 'General',
+      completionPercent: 0,
+    },
+    zoo: { revived: [], totalCount: 0, rarest: '' },
+    farm: { animalCount: 0, activeSpecies: [] },
+    gallery: { achievements: [] },
+    guestbook,
+    visitCount: Number(raw.visitCount ?? 0),
+    lastActive: typeof raw.lastActive === 'string' ? raw.lastActive : new Date().toISOString(),
   }
 }

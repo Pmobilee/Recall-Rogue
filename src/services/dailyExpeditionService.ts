@@ -1,3 +1,5 @@
+import { apiClient } from './apiClient'
+
 export interface DailyExpeditionAttempt {
   dateKey: string
   seed: number
@@ -243,4 +245,22 @@ export function completeDailyExpeditionAttempt(metrics: CompletionMetrics): Dail
   state.attempts[dateKey] = updated
   writeState(state)
   return updated
+}
+
+export async function getDailyExpeditionGlobalLeaderboard(
+  dateKey: string,
+  limit = 20,
+): Promise<DailyExpeditionLeaderboardEntry[] | null> {
+  try {
+    const rows = await apiClient.getLeaderboard('daily_expedition', limit, { dateKey })
+    return rows.map((row) => ({
+      rank: row.rank,
+      playerId: row.userId,
+      playerName: row.displayName || 'Rogue',
+      score: row.score,
+      source: 'player',
+    }))
+  } catch {
+    return null
+  }
 }

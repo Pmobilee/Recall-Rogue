@@ -2,8 +2,16 @@
   import { authStore } from '../stores/authStore'
   import { playerSave } from '../stores/playerData'
   import { parentalStore } from '../stores/parentalStore'
-  import { getDailyExpeditionStatus, type DailyExpeditionStatus } from '../../services/dailyExpeditionService'
-  import { getEndlessDepthsLeaderboard, type EndlessDepthsEntry } from '../../services/endlessDepthsService'
+  import {
+    getDailyExpeditionStatus,
+    getDailyExpeditionGlobalLeaderboard,
+    type DailyExpeditionStatus,
+  } from '../../services/dailyExpeditionService'
+  import {
+    getEndlessDepthsLeaderboard,
+    getEndlessDepthsGlobalLeaderboard,
+    type EndlessDepthsEntry,
+  } from '../../services/endlessDepthsService'
   import CoopLobby from './CoopLobby.svelte'
   import DuelView from './DuelView.svelte'
   import GuildView from './GuildView.svelte'
@@ -29,9 +37,11 @@
   let coopLobbyId = $state(makeLobbyId())
   let dailyStatus = $state<DailyExpeditionStatus>(getDailyExpeditionStatus())
   let dailyMessage = $state('')
+  let dailyRows = $state<DailyExpeditionStatus['leaderboard']>([])
   let endlessRows = $state<EndlessDepthsEntry[]>(getEndlessDepthsLeaderboard(5))
   let endlessMessage = $state('')
   let relicMessage = $state('')
+  let leaderboardMessage = $state('')
 
   const socialEnabled = $derived($parentalStore.socialEnabled)
   const playerId = $derived($authStore.userId ?? $playerSave?.playerId ?? 'local-player')
@@ -63,19 +73,34 @@
     coopLobbyId = makeLobbyId()
   }
 
-  function refreshDailyStatus(): void {
+  async function refreshDailyStatus(): Promise<void> {
     dailyStatus = getDailyExpeditionStatus()
+    dailyRows = dailyStatus.leaderboard.slice(0, 5)
+    const remoteRows = await getDailyExpeditionGlobalLeaderboard(dailyStatus.dateKey, 5)
+    if (remoteRows && remoteRows.length > 0) {
+      dailyRows = remoteRows
+      leaderboardMessage = ''
+    } else {
+      leaderboardMessage = 'Using local fallback leaderboard.'
+    }
   }
 
-  function refreshEndlessRows(): void {
+  async function refreshEndlessRows(): Promise<void> {
     endlessRows = getEndlessDepthsLeaderboard(5)
+    const remoteRows = await getEndlessDepthsGlobalLeaderboard(5)
+    if (remoteRows && remoteRows.length > 0) {
+      endlessRows = remoteRows
+      leaderboardMessage = ''
+    } else if (!leaderboardMessage) {
+      leaderboardMessage = 'Using local fallback leaderboard.'
+    }
   }
 
-  function startDaily(): void {
+  async function startDaily(): Promise<void> {
     const started = onStartDailyExpedition()
     if (started.ok) {
       dailyMessage = ''
-      refreshDailyStatus()
+      await refreshDailyStatus()
       return
     }
     if (started.reason === 'already_attempted_today') {
@@ -85,10 +110,10 @@
     } else {
       dailyMessage = 'Unable to start daily expedition right now.'
     }
-    refreshDailyStatus()
+    await refreshDailyStatus()
   }
 
-  function startEndless(): void {
+  async function startEndless(): Promise<void> {
     const started = onStartEndlessDepths()
     if (started.ok) {
       endlessMessage = ''
@@ -99,7 +124,7 @@
     } else {
       endlessMessage = 'Unable to start Endless Depths right now.'
     }
-    refreshEndlessRows()
+    await refreshEndlessRows()
   }
 
   function openRelicSanctum(): void {
@@ -119,8 +144,8 @@
 
   $effect(() => {
     playerName
-    refreshDailyStatus()
-    refreshEndlessRows()
+    void refreshDailyStatus()
+    void refreshEndlessRows()
   })
 </script>
 
@@ -141,6 +166,9 @@
       Co-op, duel, and guild frontends are now accessible from the app flow.
       Matchmaking and backend reliability hardening are tracked in AR-20.
     </p>
+    {#if leaderboardMessage}
+      <p class="helper">{leaderboardMessage}</p>
+    {/if}
 
     <div class="cards">
       <article class="card">
@@ -167,7 +195,7 @@
           {/each}
         </div>
         <div class="leaderboard-mini" aria-label="Daily expedition leaderboard">
-          {#each dailyStatus.leaderboard.slice(0, 5) as row}
+          {#each dailyRows as row}
             <div class="leaderboard-row">
               <span class="leader-rank">#{row.rank}</span>
               <span class="leader-name">{row.playerName}</span>

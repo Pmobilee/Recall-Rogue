@@ -116,6 +116,7 @@ export interface LeaderboardEntry {
   rank: number
   category: string
   createdAt: number
+  metadata?: unknown | null
 }
 
 /** Typed API error carrying a user-facing message and HTTP status. */
@@ -367,13 +368,24 @@ export class ApiClient {
    * @returns Sorted array of leaderboard entries (rank 1 = best).
    * @throws {ApiError} On network failure or server error.
    */
-  async getLeaderboard(category: string, limit: number = 50): Promise<LeaderboardEntry[]> {
-    const params = new URLSearchParams({ category, limit: String(limit) })
-    const response = await this.fetchWithAuth(`/leaderboards?${params.toString()}`, {
+  async getLeaderboard(
+    category: string,
+    limit: number = 50,
+    opts?: { dateKey?: string },
+  ): Promise<LeaderboardEntry[]> {
+    const params = new URLSearchParams({ limit: String(limit) })
+    if (opts?.dateKey) {
+      params.set('dateKey', opts.dateKey)
+    }
+    const response = await this.fetchWithAuth(
+      `/leaderboards/${encodeURIComponent(category)}?${params.toString()}`,
+      {
       method: 'GET',
-    })
+      }
+    )
 
-    const data = (await response.json()) as { entries: LeaderboardEntry[] }
+    const data = (await response.json()) as LeaderboardEntry[] | { entries?: LeaderboardEntry[] }
+    if (Array.isArray(data)) return data
     return data.entries ?? []
   }
 
@@ -385,10 +397,10 @@ export class ApiClient {
    * @param score - The score value to submit (integer).
    * @throws {ApiError} On network failure or server error.
    */
-  async submitScore(category: string, score: number): Promise<void> {
-    await this.fetchWithAuth('/leaderboards/submit', {
+  async submitScore(category: string, score: number, metadata?: Record<string, unknown>): Promise<void> {
+    await this.fetchWithAuth(`/leaderboards/${encodeURIComponent(category)}`, {
       method: 'POST',
-      body: JSON.stringify({ category, score }),
+      body: JSON.stringify({ score, metadata }),
     })
   }
 
@@ -401,7 +413,8 @@ export class ApiClient {
    */
   async getMyRankings(): Promise<LeaderboardEntry[]> {
     const response = await this.fetchWithAuth('/leaderboards/me', { method: 'GET' })
-    const data = (await response.json()) as { entries: LeaderboardEntry[] }
+    const data = (await response.json()) as LeaderboardEntry[] | { entries?: LeaderboardEntry[] }
+    if (Array.isArray(data)) return data
     return data.entries ?? []
   }
 

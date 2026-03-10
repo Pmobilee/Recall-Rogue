@@ -456,11 +456,13 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 ## Post-Content: Social & Monetization (Future)
 
 ### AR-20: Competitive & Social Features
-- [ ] Daily Expedition (fixed seed, one attempt/day, leaderboard) — deterministic seeded run mode + one-attempt/day lock + local read-only leaderboard + local reward-band ranking implemented; backend/global leaderboard pending
-- [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard) — playable start-at-floor-10 mode + separate local leaderboard + endless enemy-scaling balance pass implemented; backend/global board pending
+- [x] Daily Expedition (fixed seed, one attempt/day, leaderboard) — deterministic seeded run mode + one-attempt/day lock + local reward-band ranking + backend category (`daily_expedition`) with date-key filtered global leaderboard and one-submission-per-day enforcement
+- [x] Endless Depths (infinite scaling after Floor 9, separate leaderboard) — playable start-at-floor-10 mode + separate local leaderboard + endless enemy-scaling balance pass + backend category (`endless_depths`) wired from run completion submissions
 - [x] Mastery Challenges (rare Mystery room, 3s timer, 5 distractors, fail = Tier 2b) — mystery-room challenge roll + challenge overlay + fail demotion flow implemented (local)
 - [x] Relic Sanctum (between-run relic management for >12 mastered) — Social entry + 12-slot active relic loadout management implemented (local)
-- [x] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking)
+- [x] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking) — backend route registration enabled; duel/guild/social clients aligned to live route contracts
+
+→ [Spec](completed/AR-20-COMPETITIVE-SOCIAL.md)
 
 ### AR-21: Monetization Activation
 - [ ] Ad removal IAP ($4.99)
@@ -578,9 +580,9 @@ These features exist as implemented Svelte components / services but are current
 | Analytics Service | analyticsService.ts | Built ✓ | AR-14 |
 | A/B Testing | experiments.ts, featureFlagService.ts | Built ✓ | AR-14 |
 | Leaderboards | Leaderboard components | Built ✓ | AR-20 |
-| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-20 (partial) |
-| Guild View | GuildView.svelte | Built ✓ | AR-20 (partial) |
-| Duel View | DuelView.svelte | Built ✓ | AR-20 (partial) |
+| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-20 |
+| Guild View | GuildView.svelte | Built ✓ | AR-20 |
+| Duel View | DuelView.svelte | Built ✓ | AR-20 |
 | Season Pass | SeasonPassView.svelte | Built ✓ | AR-21 |
 | IAP Service | iapService.ts | Built ✓ | AR-21 |
 | Daily Deals | dailyDeals.ts | Built ✓ | AR-21 |

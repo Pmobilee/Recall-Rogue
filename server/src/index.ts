@@ -37,6 +37,9 @@ import websocket from "@fastify/websocket";
 import { coopWsRoutes } from "./routes/coopWs.js";
 import { coopRoutes } from "./routes/coop.js";
 import { pruneStaleRooms } from "./services/coopRoomService.js";
+import { duelRoutes } from "./routes/duels.js";
+import { guildRoutes } from "./routes/guilds.js";
+import { socialRoutes } from "./routes/social.js";
 import { educatorRoutes } from "./routes/educator.js";
 import { classroomsRoutes } from "./routes/classrooms.js";
 import { publicApiRoutes } from "./routes/publicApi.js";
@@ -89,6 +92,9 @@ const refreshRateLimit = createRateLimiter(20, 60_000);          // 20/min
 const passwordResetRateLimit = createRateLimiter(3, 5 * 60_000); // 3 per 5 min
 const savesRateLimit = createRateLimiter(30, 60_000);            // 30/min
 const leaderboardRateLimit = createRateLimiter(60, 60_000);      // 60/min
+const socialWriteRateLimit = createRateLimiter(120, 60_000);     // 120/min
+const duelRateLimit = createRateLimiter(120, 60_000);            // 120/min
+const guildRateLimit = createRateLimiter(120, 60_000);           // 120/min
 
 /**
  * Build the Fastify application instance with all plugins and routes.
@@ -299,6 +305,27 @@ export async function buildApp() {
   await fastify.register(websocket);
   await fastify.register(coopRoutes, { prefix: "/api/coop" });
   await fastify.register(coopWsRoutes);   // WebSocket routes registered at root level
+  await fastify.register(
+    async (socialInstance) => {
+      socialInstance.addHook("preHandler", socialWriteRateLimit);
+      await socialRoutes(socialInstance);
+    },
+    { prefix: "/api/players" }
+  );
+  await fastify.register(
+    async (duelInstance) => {
+      duelInstance.addHook("preHandler", duelRateLimit);
+      await duelRoutes(duelInstance);
+    },
+    { prefix: "/api/duels" }
+  );
+  await fastify.register(
+    async (guildInstance) => {
+      guildInstance.addHook("preHandler", guildRateLimit);
+      await guildRoutes(guildInstance);
+    },
+    { prefix: "/api/guilds" }
+  );
 
   // Prune stale co-op rooms every 30 minutes.
   setInterval(pruneStaleRooms, 30 * 60 * 1000);

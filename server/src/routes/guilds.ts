@@ -267,6 +267,28 @@ export async function guildRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
+  // ── GET /me ─────────────────────────────────────────────────────────────────
+
+  /**
+   * GET /api/guilds/me
+   * Returns the full guild profile for the authenticated player.
+   * Returns 404 if the player is not currently in a guild.
+   */
+  fastify.get(
+    "/me",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const guild = getPlayerGuild(userId);
+      if (!guild) {
+        return reply
+          .status(404)
+          .send({ error: "You are not a member of any guild", statusCode: 404 });
+      }
+      return reply.status(200).send(guild);
+    }
+  );
+
   // ── GET /invites/:inviteId/respond — registered before /:guildId ───────────
   // (Fastify matches routes in registration order; specific paths must come first
   // to avoid the /:guildId wildcard capturing "invites".)

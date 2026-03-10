@@ -61,6 +61,7 @@ import {
   reserveDailyExpeditionAttempt,
 } from './dailyExpeditionService'
 import { recordEndlessDepthsRun } from './endlessDepthsService'
+import { apiClient } from './apiClient'
 import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
@@ -176,6 +177,17 @@ function computeEndlessEnemyDamageMultiplier(floor: number): number {
 
 function applyEndlessDepthsScaling(run: RunState): void {
   run.endlessEnemyDamageMultiplier = computeEndlessEnemyDamageMultiplier(run.floor.currentFloor)
+}
+
+function submitCompetitiveScore(
+  category: 'daily_expedition' | 'endless_depths',
+  score: number,
+  metadata: Record<string, unknown>,
+): void {
+  if (!apiClient.isLoggedIn()) return
+  void apiClient.submitScore(category, score, metadata).catch((error) => {
+    console.warn(`[gameFlowController] submitScore(${category}) failed:`, error)
+  })
 }
 
 export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: string } {
@@ -295,13 +307,22 @@ export function rescheduleNotificationsFromPlayerState(): void {
 function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   if (activeRunMode === 'daily_expedition') {
     const score = calculateDailyExpeditionScore(endData)
-    completeDailyExpeditionAttempt({
+    const completedAttempt = completeDailyExpeditionAttempt({
       score,
       floorReached: endData.floorReached,
       accuracy: endData.accuracy,
       bestCombo: endData.bestCombo,
       runDurationMs: endData.runDurationMs,
     })
+    if (completedAttempt) {
+      submitCompetitiveScore('daily_expedition', score, {
+        dateKey: completedAttempt.dateKey,
+        floorReached: endData.floorReached,
+        accuracy: endData.accuracy,
+        bestCombo: endData.bestCombo,
+        runDurationMs: endData.runDurationMs,
+      })
+    }
     analyticsService.track({
       name: 'daily_expedition_complete',
       properties: {
@@ -318,6 +339,12 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     const playerName = save?.accountEmail?.split('@')[0] ?? `Rogue-${playerId.slice(0, 6)}`
     const score = calculateEndlessDepthsScore(endData)
     recordEndlessDepthsRun(playerId, playerName, score, endData.floorReached)
+    submitCompetitiveScore('endless_depths', score, {
+      floorReached: endData.floorReached,
+      accuracy: endData.accuracy,
+      bestCombo: endData.bestCombo,
+      runDurationMs: endData.runDurationMs,
+    })
   }
   activeRunMode = 'standard'
   activeDailySeed = null

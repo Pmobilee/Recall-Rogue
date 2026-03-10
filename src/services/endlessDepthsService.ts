@@ -1,3 +1,5 @@
+import { apiClient } from './apiClient'
+
 export interface EndlessDepthsEntry {
   rank: number
   playerId: string
@@ -104,3 +106,24 @@ export function getEndlessDepthsLeaderboard(limit = 20): EndlessDepthsEntry[] {
   return entries.slice(0, Math.max(1, limit)).map((entry, index) => ({ ...entry, rank: index + 1 }))
 }
 
+export async function getEndlessDepthsGlobalLeaderboard(limit = 20): Promise<EndlessDepthsEntry[] | null> {
+  try {
+    const rows = await apiClient.getLeaderboard('endless_depths', limit)
+    return rows.map((row) => {
+      const metadata = (row.metadata && typeof row.metadata === 'object' && !Array.isArray(row.metadata))
+        ? row.metadata as Record<string, unknown>
+        : null
+      const floorFromMetadata = Number(metadata?.floorReached ?? 0)
+      return {
+        rank: row.rank,
+        playerId: row.userId,
+        playerName: row.displayName || 'Rogue',
+        score: row.score,
+        floorReached: Number.isFinite(floorFromMetadata) ? floorFromMetadata : 0,
+        source: 'player' as const,
+      }
+    })
+  } catch {
+    return null
+  }
+}

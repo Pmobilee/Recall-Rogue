@@ -42,8 +42,8 @@ export const duelService = {
    */
   async challengeDuel(opponentId: string, wagerDust: number): Promise<{ duelId: string }> {
     const response = await _authedPost('/duels/challenge', { opponentId, wagerDust })
-    const data = (await response.json()) as { duelId: string }
-    return { duelId: data.duelId }
+    const data = (await response.json()) as { id?: string; duelId?: string }
+    return { duelId: data.duelId ?? data.id ?? '' }
   },
 
   /**
@@ -56,8 +56,8 @@ export const duelService = {
    */
   async getPendingDuels(): Promise<DuelRecord[]> {
     const response = await _authedGet('/duels/pending')
-    const data = (await response.json()) as { duels: DuelRecord[] }
-    return data.duels ?? []
+    const data = (await response.json()) as DuelRecord[] | { duels?: DuelRecord[] }
+    return Array.isArray(data) ? data : (data.duels ?? [])
   },
 
   /**
@@ -94,7 +94,7 @@ export const duelService = {
    *   409 if answers already submitted.
    */
   async submitAnswers(duelId: string, answers: DuelAnswer[]): Promise<void> {
-    await _authedPost(`/duels/${encodeURIComponent(duelId)}/answers`, { answers })
+    await _authedPost(`/duels/${encodeURIComponent(duelId)}/submit-answers`, { answers })
   },
 
   /**
@@ -106,9 +106,8 @@ export const duelService = {
    * @throws {ApiError} 404 if duel not found.
    */
   async getDuelResult(duelId: string): Promise<DuelRecord> {
-    const response = await _authedGet(`/duels/${encodeURIComponent(duelId)}`)
-    const data = (await response.json()) as { duel: DuelRecord }
-    return data.duel
+    const response = await _authedGet(`/duels/${encodeURIComponent(duelId)}/result`)
+    return (await response.json()) as DuelRecord
   },
 
   /**
@@ -121,8 +120,8 @@ export const duelService = {
   async getDuelHistory(limit: number = 20): Promise<DuelRecord[]> {
     const params = new URLSearchParams({ limit: String(Math.min(limit, 100)) })
     const response = await _authedGet(`/duels/history?${params.toString()}`)
-    const data = (await response.json()) as { duels: DuelRecord[] }
-    return data.duels ?? []
+    const data = (await response.json()) as DuelRecord[] | { duels?: DuelRecord[] }
+    return Array.isArray(data) ? data : (data.duels ?? [])
   },
 
   /**
@@ -133,8 +132,25 @@ export const duelService = {
    */
   async getDuelStats(): Promise<DuelStats> {
     const response = await _authedGet('/duels/stats')
-    const data = (await response.json()) as { stats: DuelStats }
-    return data.stats
+    const raw = (await response.json()) as {
+      wins?: number
+      losses?: number
+      ties?: number
+      total?: number
+      winRate?: number
+    } | { stats?: DuelStats }
+    if ('stats' in raw && raw.stats) return raw.stats
+    const summary = raw as { wins?: number; losses?: number; ties?: number; total?: number }
+    return {
+      wins: summary.wins ?? 0,
+      losses: summary.losses ?? 0,
+      ties: summary.ties ?? 0,
+      totalDuels: summary.total ?? 0,
+      totalDustWon: 0,
+      totalDustLost: 0,
+      currentWinStreak: 0,
+      longestWinStreak: 0,
+    }
   },
 }
 

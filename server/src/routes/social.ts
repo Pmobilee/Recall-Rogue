@@ -103,6 +103,7 @@ const giftStore = new Map<string, Gift[]>();
 
 /** friendStore = all friend requests/connections. */
 const friendStore: FriendRequest[] = [];
+const flaggedGuestbookEntries = new Set<string>();
 
 // ── Helper: parse and validate save data ─────────────────────────────────────
 
@@ -495,6 +496,32 @@ export async function socialRoutes(fastify: FastifyInstance): Promise<void> {
       guestbookStore.get(ownerId)!.push(entry);
 
       return reply.status(201).send(entry);
+    }
+  );
+
+  // ── POST /api/players/:playerId/guestbook/:entryId/flag ───────────────────
+
+  /**
+   * POST /api/players/:playerId/guestbook/:entryId/flag
+   * Flag a guestbook entry for moderation review.
+   * This phase stores flags in memory; moderation tooling can poll later.
+   * Authentication required.
+   */
+  fastify.post(
+    "/:playerId/guestbook/:entryId/flag",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { playerId, entryId } = request.params as { playerId: string; entryId: string };
+      const entries = guestbookStore.get(playerId) ?? [];
+      const found = entries.find((entry) => entry.id === entryId);
+      if (!found) {
+        return reply
+          .status(404)
+          .send({ error: "Guestbook entry not found", statusCode: 404 });
+      }
+
+      flaggedGuestbookEntries.add(entryId);
+      return reply.status(200).send({ ok: true });
     }
   );
 

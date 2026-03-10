@@ -8,10 +8,28 @@
   // ============================================================
 
   type DuelTab = 'challenge' | 'pending' | 'history' | 'stats'
+  type UiDuelRecord = DuelRecord & { incoming: boolean }
 
   interface Friend {
-    userId: string
+    id: string
     displayName: string
+  }
+
+  interface ApiDuelResult {
+    score: number
+    correctCount: number
+  }
+
+  interface ApiDuelRecord {
+    id: string
+    challengerId: string
+    opponentId: string
+    status: 'pending' | 'active' | 'awaiting_results' | 'completed' | 'declined'
+    wagerDust: number
+    createdAt: number
+    resolvedAt?: number | null
+    challengerResult?: ApiDuelResult | null
+    opponentResult?: ApiDuelResult | null
   }
 
   // ============================================================
@@ -40,13 +58,13 @@
   let challengeResult = $state<string | null>(null)
 
   // Pending tab
-  let pendingDuels = $state<DuelRecord[]>([])
+  let pendingDuels = $state<UiDuelRecord[]>([])
   let pendingLoading = $state(false)
   let pendingError = $state<string | null>(null)
   let actioningDuelId = $state<string | null>(null)
 
   // History tab
-  let historyDuels = $state<DuelRecord[]>([])
+  let historyDuels = $state<UiDuelRecord[]>([])
   let historyLoading = $state(false)
   let historyError = $state<string | null>(null)
 
@@ -58,7 +76,7 @@
   // ============================================================
 
   const selectedFriend = $derived(
-    friends.find(f => f.userId === selectedFriendId) ?? null
+    friends.find(f => f.id === selectedFriendId) ?? null
   )
 
   const canChallenge = $derived(
@@ -95,13 +113,13 @@
     friendsLoading = true
     friendsError = null
     try {
-      const res = await fetch(`${baseUrl()}/social/friends`, { headers: authHeaders() })
+      const res = await fetch(`${baseUrl()}/players/me/friends`, { headers: authHeaders() })
       if (!res.ok) {
         friendsError = `Could not load friends (${res.status})`
         return
       }
-      const data = (await res.json()) as { friends?: Friend[] }
-      friends = Array.isArray(data.friends) ? data.friends : []
+      const data = (await res.json()) as Friend[] | { friends?: Friend[] }
+      friends = Array.isArray(data) ? data : (Array.isArray(data.friends) ? data.friends : [])
     } catch {
       friendsError = 'Network error loading friends.'
     } finally {
@@ -118,8 +136,9 @@
         pendingError = `Could not load duels (${res.status})`
         return
       }
-      const data = (await res.json()) as { duels?: DuelRecord[] }
-      pendingDuels = Array.isArray(data.duels) ? data.duels : []
+      const data = (await res.json()) as ApiDuelRecord[] | { duels?: ApiDuelRecord[] }
+      const rows = Array.isArray(data) ? data : (Array.isArray(data.duels) ? data.duels : [])
+      pendingDuels = rows.map((duel) => mapApiDuelToUi(duel, $authStore.userId ?? ''))
     } catch {
       pendingError = 'Network error loading duels.'
     } finally {
@@ -136,8 +155,9 @@
         historyError = `Could not load history (${res.status})`
         return
       }
-      const data = (await res.json()) as { duels?: DuelRecord[] }
-      historyDuels = Array.isArray(data.duels) ? data.duels : []
+      const data = (await res.json()) as ApiDuelRecord[] | { duels?: ApiDuelRecord[] }
+      const rows = Array.isArray(data) ? data : (Array.isArray(data.duels) ? data.duels : [])
+      historyDuels = rows.map((duel) => mapApiDuelToUi(duel, $authStore.userId ?? ''))
     } catch {
       historyError = 'Network error loading history.'
     } finally {
@@ -233,6 +253,44 @@
   // HELPERS
   // ============================================================
 
+  function mapApiDuelToUi(duel: ApiDuelRecord, myId: string): UiDuelRecord {
+    const amChallenger = duel.challengerId === myId
+    const challengerSubmitted = duel.challengerResult !== null && duel.challengerResult !== undefined
+    const opponentSubmitted = duel.opponentResult !== null && duel.opponentResult !== undefined
+
+    let status: DuelRecord['status'] = 'pending'
+    if (duel.status === 'declined') {
+      status = 'declined'
+    } else if (duel.status === 'completed') {
+      status = 'completed'
+    } else if (duel.status === 'active' || duel.status === 'awaiting_results') {
+      if (challengerSubmitted && !opponentSubmitted) {
+        status = amChallenger ? 'challenger_done' : 'opponent_done'
+      } else if (opponentSubmitted && !challengerSubmitted) {
+        status = amChallenger ? 'opponent_done' : 'challenger_done'
+      } else {
+        status = amChallenger ? 'opponent_done' : 'challenger_done'
+      }
+    }
+
+    const myScore = amChallenger ? duel.challengerResult?.score : duel.opponentResult?.score
+    const opponentScore = amChallenger ? duel.opponentResult?.score : duel.challengerResult?.score
+    const opponentId = amChallenger ? duel.opponentId : duel.challengerId
+
+    return {
+      id: duel.id,
+      opponentId,
+      opponentName: `Rogue-${opponentId.slice(0, 6)}`,
+      status,
+      wagerDust: duel.wagerDust,
+      myScore,
+      opponentScore,
+      createdAt: duel.createdAt,
+      expiresAt: duel.createdAt + (48 * 60 * 60 * 1000),
+      incoming: !amChallenger,
+    }
+  }
+
   function duelResult(duel: DuelRecord): 'win' | 'loss' | 'tie' | 'pending' {
     if (duel.status !== 'completed') return 'pending'
     if (duel.myScore === undefined || duel.opponentScore === undefined) return 'pending'
@@ -252,13 +310,11 @@
     return new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
   }
 
-  function isIncoming(duel: DuelRecord): boolean {
-    // If current user is the opponent (not the challenger), it's incoming
-    const myId = $authStore.userId ?? ''
-    return duel.opponentId === myId && duel.status === 'pending'
+  function isIncoming(duel: UiDuelRecord): boolean {
+    return duel.incoming && duel.status === 'pending'
   }
 
-  function statusLabel(duel: DuelRecord): string {
+  function statusLabel(duel: UiDuelRecord): string {
     switch (duel.status) {
       case 'pending': return isIncoming(duel) ? 'Incoming' : 'Awaiting answer'
       case 'challenger_done': return 'Waiting for opponent'
@@ -329,15 +385,15 @@
                 {#each friends as friend}
                   <button
                     class="friend-row"
-                    class:friend-selected={selectedFriendId === friend.userId}
+                    class:friend-selected={selectedFriendId === friend.id}
                     type="button"
                     role="option"
-                    aria-selected={selectedFriendId === friend.userId}
-                    onclick={() => { selectedFriendId = friend.userId }}
+                    aria-selected={selectedFriendId === friend.id}
+                    onclick={() => { selectedFriendId = friend.id }}
                   >
                     <span class="friend-avatar" aria-hidden="true">👤</span>
                     <span class="friend-name">{friend.displayName}</span>
-                    {#if selectedFriendId === friend.userId}
+                    {#if selectedFriendId === friend.id}
                       <span class="friend-check" aria-hidden="true">✓</span>
                     {/if}
                   </button>
