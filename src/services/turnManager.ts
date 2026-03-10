@@ -70,6 +70,16 @@ export interface TurnState {
   triggeredRelicId: string | null;
   canaryEnemyDamageMultiplier: number;
   canaryQuestionBias: -1 | 0 | 1;
+  ascensionLevel: number;
+  ascensionEnemyDamageMultiplier: number;
+  ascensionHealCardMultiplier: number;
+  ascensionWrongAnswerSelfDamage: number;
+  ascensionBaseTimerPenaltySeconds: number;
+  ascensionEncounterTimerPenaltySeconds: number;
+  ascensionPreferCloseDistractors: boolean;
+  ascensionTier1OptionCount: number;
+  ascensionForceHardQuestionFormats: boolean;
+  ascensionPreventFlee: boolean;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
@@ -153,39 +163,6 @@ function createNoEffect(card: Card): CardEffectResult {
   };
 }
 
-function applyExplorerPartialEffect(turnState: TurnState, card: Card): CardEffectResult {
-  const value = Math.max(0, Math.round(card.baseEffectValue * card.effectMultiplier * 0.5));
-  const effect: CardEffectResult = {
-    effectType: card.cardType,
-    rawValue: value,
-    finalValue: value,
-    targetHit: true,
-    damageDealt: 0,
-    shieldApplied: 0,
-    healApplied: 0,
-    statusesApplied: [],
-    extraCardsDrawn: 0,
-    enemyDefeated: false,
-    mechanicId: card.mechanicId,
-    mechanicName: card.mechanicName,
-  };
-
-  if (card.cardType === 'attack' || card.cardType === 'wild') {
-    if (value > 0) {
-      const damageResult = applyDamageToEnemy(turnState.enemy, value);
-      effect.damageDealt = value;
-      effect.enemyDefeated = damageResult.defeated;
-    }
-  } else if (card.cardType === 'shield') {
-    applyShield(turnState.playerState, value);
-    effect.shieldApplied = value;
-  } else if (card.cardType === 'heal' || card.cardType === 'regen') {
-    healPlayer(turnState.playerState, value);
-    effect.healApplied = value;
-  }
-
-  return effect;
-}
 
 export function startEncounter(
   deck: CardRunState,
@@ -229,6 +206,16 @@ export function startEncounter(
     triggeredRelicId: null,
     canaryEnemyDamageMultiplier: 1,
     canaryQuestionBias: 0,
+    ascensionLevel: 0,
+    ascensionEnemyDamageMultiplier: 1,
+    ascensionHealCardMultiplier: 1,
+    ascensionWrongAnswerSelfDamage: 0,
+    ascensionBaseTimerPenaltySeconds: 0,
+    ascensionEncounterTimerPenaltySeconds: 0,
+    ascensionPreferCloseDistractors: false,
+    ascensionTier1OptionCount: 3,
+    ascensionForceHardQuestionFormats: false,
+    ascensionPreventFlee: false,
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
@@ -329,31 +316,28 @@ export function playCardAction(
   }
 
   if (!answeredCorrectly) {
+    if (turnState.ascensionWrongAnswerSelfDamage > 0) {
+      turnState.playerState.hp = Math.max(0, turnState.playerState.hp - turnState.ascensionWrongAnswerSelfDamage);
+    }
+
     const mode = get(difficultyMode);
     if (mode === 'explorer') {
       turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + apCost);
-      const partialEffect = applyExplorerPartialEffect(turnState, card);
+      const fizzledEffect = createNoEffect(card);
       turnState.comboCount = turnState.baseComboCount;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
       turnState.turnLog.push({
-        type: 'play',
-        message: 'Explorer mode: partial effect on wrong answer',
+        type: 'fizzle',
+        message: 'Explorer mode: card fizzled — AP refunded',
         cardId,
-        value: partialEffect.finalValue,
       });
 
-      if (partialEffect.enemyDefeated) {
-        turnState.result = 'victory';
-        turnState.phase = 'encounter_end';
-        turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated!' });
-      }
-
       return {
-        effect: partialEffect,
+        effect: fizzledEffect,
         comboCount: turnState.comboCount,
-        enemyDefeated: partialEffect.enemyDefeated,
-        fizzled: false,
+        enemyDefeated: false,
+        fizzled: true,
         blocked: false,
         isPerfectTurn: false,
         turnState,
@@ -435,6 +419,15 @@ export function playCardAction(
   if (effect.shieldApplied > 0) applyShield(playerState, effect.shieldApplied);
 
   if (effect.healApplied > 0) healPlayer(playerState, effect.healApplied);
+  if (effect.healApplied > 0 && turnState.ascensionHealCardMultiplier !== 1) {
+    const adjustedHeal = Math.max(0, Math.round(effect.healApplied * turnState.ascensionHealCardMultiplier));
+    const delta = adjustedHeal - effect.healApplied;
+    if (delta !== 0) {
+      healPlayer(playerState, delta);
+      effect.healApplied = adjustedHeal;
+      effect.finalValue = adjustedHeal;
+    }
+  }
 
   if ((effect.overhealToShield ?? 0) > 0) {
     if (card.mechanicId === 'overheal' || turnState.activeRelicIds.has('overgrowth')) {
@@ -575,7 +568,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       incomingDamage = Math.round(incomingDamage * 1.2);
     }
 
-    incomingDamage = Math.max(0, Math.round(incomingDamage * (turnState.canaryEnemyDamageMultiplier ?? 1)));
+    incomingDamage = Math.max(
+      0,
+      Math.round(
+        incomingDamage *
+        (turnState.ascensionEnemyDamageMultiplier ?? 1) *
+        (turnState.canaryEnemyDamageMultiplier ?? 1),
+      ),
+    );
 
     if (turnState.activeRelicIds.has('glass_cannon')) {
       incomingDamage = Math.round(incomingDamage * 1.10);

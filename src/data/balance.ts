@@ -1022,3 +1022,8 @@ export const STORY_MODE_FORCED_RUNS = 1;
 
 /** Number of completed runs before archetype selection unlocks (auto-balanced until then). */
 export const ARCHETYPE_UNLOCK_RUNS = 3;
+
+/** Minimum encounter cooldown applied to a fact after it is answered. */
+export const FACT_COOLDOWN_MIN = 1;
+/** Maximum encounter cooldown applied to a fact after it is answered. */
+export const FACT_COOLDOWN_MAX = 3;

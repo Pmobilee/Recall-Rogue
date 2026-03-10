@@ -6,6 +6,7 @@
 
 import type { RunState } from './runManager';
 import type { RoomOption } from './floorManager';
+import { getAscensionModifiers } from './ascension';
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
@@ -51,12 +52,23 @@ function serializeRunState(run: RunState): SerializedRunState {
 
 /** Deserialize arrays back to Sets for RunState. */
 function deserializeRunState(saved: SerializedRunState): RunState {
+  const savedAny = saved as unknown as Record<string, unknown>;
+  const rawLevel = typeof savedAny['ascensionLevel'] === 'number' ? Number(savedAny['ascensionLevel']) : 0;
+  const ascensionLevel = Number.isFinite(rawLevel) ? Math.max(0, Math.floor(rawLevel)) : 0;
+  const defaultModifiers = getAscensionModifiers(ascensionLevel);
+  const savedModifiers = (
+    typeof savedAny['ascensionModifiers'] === 'object' && savedAny['ascensionModifiers'] !== null
+  ) ? savedAny['ascensionModifiers'] as Partial<RunState['ascensionModifiers']> : null;
+
   return {
     ...saved,
     echoFactIds: new Set(saved.echoFactIds),
     consumedRewardFactIds: new Set(saved.consumedRewardFactIds),
     factsAnsweredCorrectly: new Set(saved.factsAnsweredCorrectly),
     factsAnsweredIncorrectly: new Set(saved.factsAnsweredIncorrectly),
+    ascensionLevel,
+    ascensionModifiers: savedModifiers ? { ...defaultModifiers, ...savedModifiers } : defaultModifiers,
+    retreatRewardLocked: Boolean(savedAny['retreatRewardLocked']),
   };
 }
 

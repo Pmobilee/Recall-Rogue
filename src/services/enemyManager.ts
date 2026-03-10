@@ -51,8 +51,13 @@ function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
  * @param floor - The current floor number for HP scaling.
  * @returns A fully initialized EnemyInstance.
  */
-export function createEnemy(template: EnemyTemplate, floor: number): EnemyInstance {
-  const scaledHP = Math.round(template.baseHP * getFloorScaling(floor));
+export function createEnemy(
+  template: EnemyTemplate,
+  floor: number,
+  options?: { hpMultiplier?: number },
+): EnemyInstance {
+  const hpMultiplier = options?.hpMultiplier ?? 1;
+  const scaledHP = Math.max(1, Math.round(template.baseHP * getFloorScaling(floor) * hpMultiplier));
   return {
     template,
     currentHP: scaledHP,

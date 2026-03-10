@@ -70,7 +70,38 @@ describe('scholarChallengeService', () => {
     ])
 
     vi.spyOn(apiClient, 'getLeaderboard').mockRejectedValueOnce(new Error('net'))
-    const failed = await getScholarChallengeGlobalLeaderboard(weekKey, 5)
+    const failed = await getScholarChallengeGlobalLeaderboard(weekKey, 6)
     expect(failed).toBeNull()
+  })
+
+  it('uses cached global rows when leaderboard request times out', async () => {
+    vi.useFakeTimers()
+    try {
+      const weekKey = getScholarChallengeStatus().weekKey
+      const spy = vi.spyOn(apiClient, 'getLeaderboard')
+      spy.mockResolvedValueOnce([
+        {
+          rank: 1,
+          userId: 'cached-scholar',
+          displayName: 'Cached Scholar',
+          score: 6543,
+        },
+      ] as never)
+
+      const first = await getScholarChallengeGlobalLeaderboard(weekKey, 9)
+      expect(first?.[0]?.playerName).toBe('Cached Scholar')
+
+      spy.mockImplementationOnce(((_category, _limit, opts) => new Promise((_resolve, reject) => {
+        opts?.signal?.addEventListener('abort', () => reject(new Error('aborted')))
+      })) as never)
+
+      const pending = getScholarChallengeGlobalLeaderboard(weekKey, 9)
+      await vi.advanceTimersByTimeAsync(4000)
+      const cached = await pending
+
+      expect(cached).toEqual(first)
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

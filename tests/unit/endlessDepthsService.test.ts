@@ -57,7 +57,38 @@ describe('endlessDepthsService', () => {
     ])
 
     vi.spyOn(apiClient, 'getLeaderboard').mockRejectedValueOnce(new Error('boom'))
-    const failed = await getEndlessDepthsGlobalLeaderboard(3)
+    const failed = await getEndlessDepthsGlobalLeaderboard(4)
     expect(failed).toBeNull()
+  })
+
+  it('falls back to cached leaderboard when global request times out', async () => {
+    vi.useFakeTimers()
+    try {
+      const spy = vi.spyOn(apiClient, 'getLeaderboard')
+      spy.mockResolvedValueOnce([
+        {
+          rank: 1,
+          userId: 'cached-u',
+          displayName: 'Cached',
+          score: 8888,
+          metadata: { floorReached: 19 },
+        },
+      ] as never)
+
+      const first = await getEndlessDepthsGlobalLeaderboard(6)
+      expect(first?.[0]?.playerName).toBe('Cached')
+
+      spy.mockImplementationOnce(((_category, _limit, opts) => new Promise((_resolve, reject) => {
+        opts?.signal?.addEventListener('abort', () => reject(new Error('aborted')))
+      })) as never)
+
+      const pending = getEndlessDepthsGlobalLeaderboard(6)
+      await vi.advanceTimersByTimeAsync(4000)
+      const cached = await pending
+
+      expect(cached).toEqual(first)
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

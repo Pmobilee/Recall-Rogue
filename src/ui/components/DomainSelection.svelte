@@ -7,6 +7,8 @@
   import { playerSave, persistPlayer } from '../stores/playerData'
   import { hasArcanePass } from '../../services/subscriptionService'
   import { getDomainSubcategories } from '../../services/domainSubcategoryService'
+  import { ascensionProfile, setAscensionLevel } from '../../services/cardPreferences'
+  import { getAscensionRule } from '../../services/ascension'
 
   interface Props {
     onstart: (primary: FactDomain, secondary: FactDomain) => void
@@ -37,6 +39,12 @@
   const arcanePassActive = $derived($playerSave ? hasArcanePass($playerSave) : false)
 
   let canStart = $derived(primaryDomain !== null && secondaryDomain !== null)
+  let ascensionRule = $derived(getAscensionRule($ascensionProfile.selectedLevel))
+  let ascensionUnlockText = $derived(
+    $ascensionProfile.highestUnlockedLevel > 0
+      ? `Unlocked: ${$ascensionProfile.highestUnlockedLevel}`
+      : 'Unlock by completing a successful floor 9+ run.',
+  )
 
   function handleDomainTap(domain: (typeof DOMAINS)[number]): void {
     if (!domain.unlocked) return
@@ -143,6 +151,12 @@
     if (secondaryDomain === domain.id) return 'SECONDARY'
     return ''
   }
+
+  function shiftAscension(delta: number): void {
+    const highest = Math.max(0, $ascensionProfile.highestUnlockedLevel ?? 0)
+    const next = Math.max(0, Math.min(highest, ($ascensionProfile.selectedLevel ?? 0) + delta))
+    setAscensionLevel(next)
+  }
 </script>
 
 <div class="domain-selection-overlay">
@@ -156,12 +170,46 @@
     <p class="subtitle subtitle-pass locked">Arcane Pass unlocks sub-category filters.</p>
   {/if}
 
+  <section class="ascension-panel" aria-label="Ascension mode">
+    <div class="ascension-header">
+      <span class="ascension-title">Ascension</span>
+      <span class="ascension-unlock">{ascensionUnlockText}</span>
+    </div>
+    <div class="ascension-controls">
+      <button
+        type="button"
+        class="ascension-step"
+        data-testid="ascension-decrease"
+        onclick={() => shiftAscension(-1)}
+        disabled={$ascensionProfile.highestUnlockedLevel <= 0 || $ascensionProfile.selectedLevel <= 0}
+      >-</button>
+      <div class="ascension-level">
+        <strong>Level {$ascensionProfile.selectedLevel}</strong>
+        <small>
+          {#if ascensionRule}
+            {ascensionRule.name}: {ascensionRule.effect}
+          {:else}
+            Off
+          {/if}
+        </small>
+      </div>
+      <button
+        type="button"
+        class="ascension-step"
+        data-testid="ascension-increase"
+        onclick={() => shiftAscension(1)}
+        disabled={$ascensionProfile.highestUnlockedLevel <= 0 || $ascensionProfile.selectedLevel >= $ascensionProfile.highestUnlockedLevel}
+      >+</button>
+    </div>
+  </section>
+
   <div class="domain-grid">
     {#each DOMAINS as domain (domain.id)}
       <button
         class="domain-card"
         class:locked={!domain.unlocked}
         class:selected={primaryDomain === domain.id || secondaryDomain === domain.id}
+        data-testid={`domain-card-${domain.id}`}
         style="border-color: {getBorderColor(domain)}; --domain-color: {domain.color}"
         onclick={() => handleDomainTap(domain)}
         disabled={!domain.unlocked}
@@ -293,6 +341,78 @@
   }
   .subtitle-pass.locked {
     color: #94a3b8;
+  }
+
+  .ascension-panel {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 10px;
+    background: rgba(15, 23, 35, 0.7);
+  }
+
+  .ascension-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .ascension-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .ascension-unlock {
+    font-size: 11px;
+    color: #a8b3c4;
+    text-align: right;
+  }
+
+  .ascension-controls {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ascension-step {
+    min-height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: #1f2b3a;
+    color: #e2e8f0;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .ascension-step:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .ascension-level {
+    display: grid;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .ascension-level strong {
+    color: #facc15;
+    font-size: 14px;
+  }
+
+  .ascension-level small {
+    color: #cbd5e1;
+    font-size: 11px;
+    line-height: 1.3;
   }
 
   .domain-grid {

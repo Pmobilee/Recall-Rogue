@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store'
+import { get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
+import { MAX_ASCENSION_LEVEL } from './ascension'
 
 export type DifficultyMode = 'explorer' | 'standard' | 'scholar'
 export type TextSize = 'small' | 'medium' | 'large'
@@ -14,6 +16,11 @@ export interface OnboardingState {
   runsCompleted: number
 }
 
+export interface AscensionProfile {
+  highestUnlockedLevel: number
+  selectedLevel: number
+}
+
 const defaultOnboardingState: OnboardingState = {
   hasCompletedOnboarding: false,
   hasSeenCardTapTooltip: false,
@@ -22,6 +29,11 @@ const defaultOnboardingState: OnboardingState = {
   hasSeenEndTurnTooltip: false,
   hasSeenAPTooltip: false,
   runsCompleted: 0,
+}
+
+const defaultAscensionProfile: AscensionProfile = {
+  highestUnlockedLevel: 0,
+  selectedLevel: 0,
 }
 
 function read<T>(key: string, fallback: T): T {
@@ -55,6 +67,23 @@ export const textSize = persistedWritable<TextSize>('card:textSize', 'medium')
 export const highContrastMode = persistedWritable<boolean>('card:highContrastMode', false)
 export const reduceMotionMode = persistedWritable<boolean>('card:reduceMotionMode', false)
 export const onboardingState = persistedWritable<OnboardingState>('card:onboardingState', defaultOnboardingState)
+export const ascensionProfile = persistedWritable<AscensionProfile>('card:ascensionProfile', defaultAscensionProfile)
+
+function clampAscensionLevel(level: number): number {
+  if (!Number.isFinite(level)) return 0
+  return Math.max(0, Math.min(MAX_ASCENSION_LEVEL, Math.floor(level)))
+}
+
+function sanitizeAscensionProfile(profile: AscensionProfile): AscensionProfile {
+  const highestUnlockedLevel = clampAscensionLevel(profile?.highestUnlockedLevel ?? 0)
+  const selectedLevel = Math.min(highestUnlockedLevel, clampAscensionLevel(profile?.selectedLevel ?? 0))
+  return {
+    highestUnlockedLevel,
+    selectedLevel,
+  }
+}
+
+ascensionProfile.update((profile) => sanitizeAscensionProfile(profile))
 
 /** Display names for difficulty modes (internal IDs unchanged for save compat). */
 export const DIFFICULTY_DISPLAY_NAMES: Record<DifficultyMode, string> = {
@@ -90,4 +119,38 @@ export function markOnboardingTooltipSeen(
   >,
 ): void {
   onboardingState.update((state) => ({ ...state, [key]: true }))
+}
+
+export function getAscensionLevel(): number {
+  return sanitizeAscensionProfile(get(ascensionProfile)).selectedLevel
+}
+
+export function setAscensionLevel(level: number): void {
+  ascensionProfile.update((profile) => {
+    const safe = sanitizeAscensionProfile(profile)
+    const selectedLevel = Math.min(safe.highestUnlockedLevel, clampAscensionLevel(level))
+    return {
+      ...safe,
+      selectedLevel,
+    }
+  })
+}
+
+export function unlockAscensionLevel(level: number): void {
+  ascensionProfile.update((profile) => {
+    const safe = sanitizeAscensionProfile(profile)
+    const highestUnlockedLevel = Math.max(safe.highestUnlockedLevel, clampAscensionLevel(level))
+    const selectedLevel = Math.min(
+      highestUnlockedLevel,
+      safe.selectedLevel > 0 ? safe.selectedLevel : highestUnlockedLevel > 0 ? 1 : 0,
+    )
+    return {
+      highestUnlockedLevel,
+      selectedLevel,
+    }
+  })
+}
+
+export function unlockNextAscensionLevel(currentLevel: number): void {
+  unlockAscensionLevel(currentLevel + 1)
 }

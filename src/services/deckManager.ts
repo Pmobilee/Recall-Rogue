@@ -1,5 +1,5 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
-import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER } from '../data/balance';
+import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX } from '../data/balance';
 import { factsDB } from './factsDB';
 import { shuffled } from './randomUtils';
 
@@ -276,7 +276,7 @@ export function addFactsToCooldown(deck: CardRunState, answeredFactIds: string[]
   for (const factId of answeredFactIds) {
     // Don't add duplicates
     if (!deck.factCooldown.some(c => c.factId === factId)) {
-      deck.factCooldown.push({ factId, encountersRemaining: 3 });
+      deck.factCooldown.push({ factId, encountersRemaining: FACT_COOLDOWN_MIN + Math.floor(Math.random() * (FACT_COOLDOWN_MAX - FACT_COOLDOWN_MIN + 1)) });
     }
   }
 }

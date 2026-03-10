@@ -537,9 +537,10 @@ Post-encounter rewards are presented as physical objects on an atmospheric altar
 **Interaction flow:**
 1. All reward options displayed as icons on the altar (pick one)
 2. Tap an icon → it lifts, spotlight focuses, stats tooltip appears below
-3. "Select" button appears at bottom
-4. On select → chosen reward flies to deck/inventory, others fade to shadow
-5. Each icon has subtle idle animation (bob, shimmer, glow pulse)
+3. "Accept" button appears at bottom (no fact preview or reroll — the fact is hidden until after selection)
+4. On accept → chosen reward flies to deck/inventory, others fade to shadow
+5. A "New Fact Acquired" toast appears for 2.5 seconds showing the fact text of the gained card
+6. Each icon has subtle idle animation (bob, shimmer, glow pulse)
 
 **Art assets required:** ~30 icon sprites (multiple variants per reward type), 4-5 altar surface backgrounds, cloth/mat overlay, spotlight effect.
 
@@ -571,7 +572,7 @@ Players can quit mid-run and resume later. Only ONE active run save at a time. S
 
 ### Campfire Pause Screen
 
-A cozy pause screen accessible via a pause button (top-right corner) during combat and room selection.
+A cozy pause screen accessible via a pause button (top-right corner, CSS pseudo-element bars icon) during combat and room selection.
 
 **Displays:** Floor number, HP, deck size, relic count, accuracy percentage.
 
@@ -871,9 +872,9 @@ Instead of a separate placement test (immersion-breaking) or accepting slow cali
 
 Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-driven. Clash Royale portrait cited as more playable than Clash of Clans landscape. STS mobile #1 complaint = small text and janky card selection from landscape squeeze. Casino designers call this the "Split-Stage" pattern.
 
-**Top 55% (Display):** Enemy, HP bars, intent, floor counter, relics, AP. No interactives. Top-third tap accuracy: 61%.
+**Top 55% (Display):** Enemy sprite, enemy HP bar, enemy name header (color-coded by category). No interactives. Top-third tap accuracy: 61%. Phaser renders the enemy sprite and HP bars; Svelte overlay renders the enemy name header, intent panel, floor info, and bounty strip.
 
-**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn. Bottom-third accuracy: 96%.
+**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn, player HP bar (at 88% Y), relic tray (at 92% Y), bounty strip (bottom-right, above End Turn). Bottom-third accuracy: 96%.
 
 ### Touch Targets
 
@@ -898,9 +899,22 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 3 gem icons below hand. Lit = available, dim = spent.
 
+### Enemy Name Header
+
+Color-coded enemy name displayed in the Svelte combat overlay at 38vh (centered, 18px bold, text-shadow). Color indicates enemy category:
+
+| Category | Color |
+|----------|-------|
+| Common | `#9ca3af` (gray) |
+| Elite | `#60a5fa` (blue) |
+| Mini-boss | `#a78bfa` (purple) |
+| Boss | `#fbbf24` (gold) |
+
+Data sourced from `turnState.enemy.template.category` (derived `enemyCategory`).
+
 ### Enemy Intent Display
 
-Color-coded intent panel shown in combat overlay (center, between AP and bounty strips). Each intent type has a distinct background color for instant readability:
+Color-coded intent panel shown in Svelte combat overlay. Floor info and intent are rendered in the Svelte overlay (not Phaser). Each intent type has a distinct background color for instant readability:
 
 | Intent | Background | Icon | Label |
 |--------|-----------|------|-------|
@@ -938,8 +952,13 @@ Combat and room exploration use a first-person viewpoint — the player characte
 **Combat framing:**
 - Upper ~55% of screen: first-person view of the room with the enemy/boss looming large, facing the player directly
 - Lower ~45%: card hand and interaction area (unchanged)
-- Enemies rendered at 2-3x current sprite scale, centered and menacing
+- Enemy sprite sizes (Phaser): Common 200px, Elite 250px, Boss 300px. Enemy Y position at 35% of scene height.
+- Player HP bar at 88% Y, relic tray at 92% Y (both near bottom of display zone, above interaction area)
 - Boss encounters use even larger sprites with a dramatic zoom-in on room entry
+
+**Phaser vs Svelte rendering split:**
+- **Phaser (CombatScene):** Enemy sprite, enemy HP bar (with block overlay), hit/death animations, damage particles, screen flash
+- **Svelte overlay (CardCombatOverlay):** Enemy name header (color-coded), intent panel, floor info, bounty strip (bottom-right above End Turn), card hand, answer buttons, combo counter, damage numbers
 
 **Room transitions:**
 - Entering a new room triggers a fade-in from black (~400ms) for pacing and atmosphere
@@ -1772,9 +1791,9 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 
 ---
 
-## 33. Ascension Mode (Post-Launch Design)
+## 33. Ascension Mode
 
-**Status: Post-Launch — Implementation TBD (future AR phase).**
+**Status: Implemented.**
 
 **Unlocks:** After first successful run completion (reach floor 9+ and retreat, or clear floor 24).
 

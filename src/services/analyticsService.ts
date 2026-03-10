@@ -171,6 +171,7 @@ interface DomainSelectEvent {
     starter_deck_size: number
     starting_ap: number
     early_boost_active: boolean
+    ascension_level: number
   }
 }
 
@@ -183,6 +184,7 @@ interface RunStartEvent {
     starting_ap: number
     starter_deck_size: number
     run_number: number
+    ascension_level: number
   }
 }
 
@@ -197,6 +199,8 @@ interface RunCompleteEvent {
     best_combo: number
     cards_earned: number
     bounties_completed: number
+    retreat_rewards_locked: boolean
+    ascension_level: number
   }
 }
 
@@ -218,6 +222,8 @@ interface CashOutEvent {
     accuracy?: number
     reason?: string
     decision?: string
+    retreat_rewards_locked: boolean
+    ascension_level: number
   }
 }
 

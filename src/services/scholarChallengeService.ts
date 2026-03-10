@@ -1,5 +1,10 @@
 import { apiClient } from './apiClient'
 import type { FactDomain } from '../data/card-types'
+import {
+  readCachedLeaderboardRows,
+  withAbortTimeout,
+  writeCachedLeaderboardRows,
+} from './leaderboardFetch'
 
 export interface ScholarChallengeAttempt {
   weekKey: string
@@ -50,6 +55,7 @@ interface CompletionMetrics {
 }
 
 const STORAGE_KEY = 'recall-rogue-scholar-challenge-v1'
+const GLOBAL_CACHE_KEY_PREFIX = 'recall-rogue-scholar-challenge-global-v1'
 const MAX_LEADERBOARD_ROWS = 20
 
 const BOT_NAMES = [
@@ -256,17 +262,22 @@ export async function getScholarChallengeGlobalLeaderboard(
   currentWeekKey: string,
   limit = 20,
 ): Promise<ScholarChallengeLeaderboardEntry[] | null> {
+  const safeLimit = Math.max(1, Math.floor(limit))
+  const cacheKey = `${GLOBAL_CACHE_KEY_PREFIX}:${currentWeekKey}:${safeLimit}`
   try {
-    const rows = await apiClient.getLeaderboard('scholar_challenge', limit, { weekKey: currentWeekKey })
-    return rows.map((row) => ({
+    const rows = await withAbortTimeout(
+      (signal) => apiClient.getLeaderboard('scholar_challenge', safeLimit, { weekKey: currentWeekKey, signal }),
+    )
+    const mapped = rows.map((row) => ({
       rank: row.rank,
       playerId: row.userId,
       playerName: row.displayName || 'Rogue',
       score: row.score,
-      source: 'player',
+      source: 'player' as const,
     }))
+    writeCachedLeaderboardRows(cacheKey, mapped)
+    return mapped
   } catch {
-    return null
+    return readCachedLeaderboardRows<ScholarChallengeLeaderboardEntry>(cacheKey)
   }
 }
-

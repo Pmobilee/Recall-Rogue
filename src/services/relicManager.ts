@@ -25,6 +25,7 @@ export function assignRelicOnGraduation(
 export function buildActiveRelics(
   reviewStates: ReviewState[],
   resolveCardTypeForFact: (factId: string) => CardType | null,
+  options?: { maxActiveRelics?: number },
 ): ActiveRelic[] {
   const built: ActiveRelic[] = [];
 
@@ -52,9 +53,10 @@ export function buildActiveRelics(
     });
   }
 
+  const maxRelics = Math.max(1, Math.floor(options?.maxActiveRelics ?? MAX_ACTIVE_RELICS));
   return built
     .sort((a, b) => b.masteredAt - a.masteredAt)
-    .slice(0, MAX_ACTIVE_RELICS);
+    .slice(0, maxRelics);
 }
 
 export function checkRelicDormancy(
@@ -71,4 +73,3 @@ export function checkRelicDormancy(
 export function getActiveRelicIds(relics: ActiveRelic[]): Set<string> {
   return new Set(relics.filter((relic) => !relic.isDormant).map((relic) => relic.definition.id));
 }
-

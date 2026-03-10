@@ -84,6 +84,17 @@
 
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
+  let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
+  let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
+  let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
+
+  const CATEGORY_COLORS: Record<string, string> = {
+    common: '#9ca3af',
+    elite: '#60a5fa',
+    mini_boss: '#a78bfa',
+    boss: '#fbbf24',
+  }
+  let categoryColor = $derived(CATEGORY_COLORS[enemyCategory] ?? '#9ca3af')
 
   const INTENT_ICONS: Record<string, string> = {
     attack: '⚔️',
@@ -151,15 +162,29 @@
     committedCardIndex !== null && handCards[committedCardIndex] ? handCards[committedCardIndex] : null,
   )
 
+  function applyAscensionQuestionPresentation(card: Card, base: ReturnType<typeof getQuestionPresentation>) {
+    const tier1OptionCount = turnState?.ascensionTier1OptionCount ?? 3
+    if (card.tier === '1' && card.isMasteryTrial !== true && tier1OptionCount > base.optionCount) {
+      return { ...base, optionCount: tier1OptionCount }
+    }
+    return base
+  }
+
   let selectedPresentation = $derived(
     selectedCard
-      ? getQuestionPresentation(selectedCard.tier, selectedCard.isMasteryTrial === true)
+      ? applyAscensionQuestionPresentation(
+        selectedCard,
+        getQuestionPresentation(selectedCard.tier, selectedCard.isMasteryTrial === true),
+      )
       : null,
   )
 
   let committedPresentation = $derived(
     committedCard
-      ? getQuestionPresentation(committedCard.tier, committedCard.isMasteryTrial === true)
+      ? applyAscensionQuestionPresentation(
+        committedCard,
+        getQuestionPresentation(committedCard.tier, committedCard.isMasteryTrial === true),
+      )
       : null,
   )
 
@@ -193,14 +218,15 @@
     const wordBonus = Math.floor(extraWords / 8)
     const slowReaderBonus = slowReaderEnabled && !committedPresentation.disableSlowReader ? 3 : 0
 
-    let timer = floorBase + wordBonus + slowReaderBonus
+    const ascensionPenalty = (turnState.ascensionBaseTimerPenaltySeconds ?? 0) + (turnState.ascensionEncounterTimerPenaltySeconds ?? 0)
+    let timer = floorBase + wordBonus + slowReaderBonus - ascensionPenalty
 
     if (currentDifficulty === 'scholar' && committedCard) {
       const tierRank = committedCard.tier === '1' ? 0 : committedCard.tier === '2a' ? 1 : committedCard.tier === '2b' ? 2 : 3
       timer = Math.max(2, timer - tierRank * 2)
     }
 
-    return timer
+    return Math.max(2, timer)
   })
 
   let timerColorVariant = $derived<'default' | 'gold' | 'slowReader'>(
@@ -301,6 +327,86 @@
     return () => juiceManager.clearCallbacks()
   })
 
+  /** Redact the correct answer from the question text to prevent self-answering. */
+  function redactAnswerFromQuestion(question: string, answer: string): string {
+    if (!answer || answer.length < 3) return question
+
+    // Strip common prefixes like "About", "Approximately", etc. to find the core value
+    const prefixPattern = /^(about|approximately|around|roughly|nearly|over|under|more than|less than|at least)\s+/i
+    const coreAnswer = answer.replace(prefixPattern, '').trim()
+
+    // Skip very short answers or boolean answers to avoid false positives
+    if (coreAnswer.length < 3) return question
+    if (/^(true|false|yes|no)$/i.test(coreAnswer)) return question
+
+    // Try full answer with word boundaries first
+    const escaped = coreAnswer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const fullRegex = new RegExp(`\\b${escaped}\\b`, 'gi')
+    if (fullRegex.test(question)) {
+      return question.replace(new RegExp(`\\b${escaped}\\b`, 'gi'), '___')
+    }
+
+    // Try part before parentheses: "Isinglass (fish swim bladders)" → try "Isinglass"
+    const parenIdx = coreAnswer.indexOf('(')
+    if (parenIdx > 2) {
+      const beforeParen = coreAnswer.substring(0, parenIdx).trim()
+      if (beforeParen.length >= 3) {
+        const parenEscaped = beforeParen.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        const parenRegex = new RegExp(`\\b${parenEscaped}\\b`, 'gi')
+        if (parenRegex.test(question)) {
+          return question.replace(new RegExp(`\\b${parenEscaped}\\b`, 'gi'), '___')
+        }
+      }
+    }
+
+    return question
+  }
+
+  function normalizeForSimilarity(value: string): string[] {
+    return value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter(Boolean)
+  }
+
+  function distractorSimilarityScore(correctAnswer: string, distractor: string): number {
+    const correctTokens = normalizeForSimilarity(correctAnswer)
+    const distractorTokens = normalizeForSimilarity(distractor)
+    if (correctTokens.length === 0 || distractorTokens.length === 0) return 0
+
+    const correctSet = new Set(correctTokens)
+    const overlap = distractorTokens.reduce((acc, token) => acc + (correctSet.has(token) ? 1 : 0), 0)
+    const overlapRatio = overlap / Math.max(correctSet.size, 1)
+    const lengthPenalty = Math.abs(correctAnswer.length - distractor.length) / Math.max(correctAnswer.length, 1)
+
+    return overlapRatio * 10 - lengthPenalty
+  }
+
+  function pickDistractors(
+    distractorSource: string[],
+    correctAnswer: string,
+    distractorCount: number,
+    preferClose: boolean,
+  ): string[] {
+    const unique = [...new Set(distractorSource.filter((entry) => entry && entry !== correctAnswer))]
+    if (unique.length === 0) return []
+
+    if (!preferClose) {
+      return shuffled(unique).slice(0, Math.min(distractorCount, unique.length))
+    }
+
+    const ranked = shuffled(unique)
+      .map((entry) => ({ entry, score: distractorSimilarityScore(correctAnswer, entry) }))
+      .sort((a, b) => b.score - a.score)
+      .map((entry) => entry.entry)
+
+    const hardCount = Math.min(distractorCount, Math.max(1, Math.ceil(distractorCount * 0.7)))
+    const primary = ranked.slice(0, hardCount)
+    const secondaryPool = ranked.slice(hardCount)
+    return [...primary, ...shuffled(secondaryPool).slice(0, distractorCount - primary.length)]
+  }
+
   function getQuizForCard(card: Card, optionCount: number): QuizData {
     const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
     if (!fact) {
@@ -315,7 +421,18 @@
     // Vocab cards use the legacy 3-variant system (forward/reverse/fill-blank)
     // Knowledge facts with a variants array use the new N-variant system
     const hasVariantsArray = fact.type !== 'vocabulary' && fact.variants && fact.variants.length > 0
-    const variantCount = hasVariantsArray ? fact.variants!.length : 3
+    const forceHardFormats = turnState?.ascensionForceHardQuestionFormats === true
+    const variantPool = hasVariantsArray
+      ? (() => {
+        const variants = fact.variants!
+        if (!forceHardFormats) return variants
+        const preferred = variants.filter((variant) => (
+          variant.type === 'fill_blank' || variant.type === 'reverse' || variant.type === 'context'
+        ))
+        return preferred.length > 0 ? preferred : variants
+      })()
+      : []
+    const variantCount = hasVariantsArray ? variantPool.length : 3
     const lastVariant = getReviewStateByFactId(card.factId)?.lastVariantIndex ?? -1
 
     let variantIndex = 0
@@ -343,16 +460,21 @@
 
     if (hasVariantsArray) {
       // Use the fact's variants array
-      const variant = fact.variants![variantIndex % fact.variants!.length]
+      const variant = variantPool[variantIndex % variantPool.length]
       question = variant.question
       correctAnswer = variant.correctAnswer
       distractorSource = variant.distractors ?? fact.distractors
+      // Store back the source index in the original array for variety tracking.
+      const sourceVariantIndex = fact.variants!.findIndex((entry) => (
+        entry.question === variant.question && entry.correctAnswer === variant.correctAnswer
+      ))
+      if (sourceVariantIndex >= 0) variantIndex = sourceVariantIndex
     } else {
       // Legacy system for vocab cards and facts without variants
       correctAnswer = fact.correctAnswer
       distractorSource = fact.distractors
 
-      if (variantIndex === 2) {
+      if (variantIndex === 2 || forceHardFormats) {
         question = `Fill in the blank: ${fact.statement.replace(fact.correctAnswer, '_____')}`
       } else {
         question = fact.quizQuestion
@@ -360,8 +482,15 @@
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
-    const shuffledDistractors = shuffled(distractorSource)
-    const picked = shuffledDistractors.slice(0, Math.min(distractorCount, shuffledDistractors.length))
+    const picked = pickDistractors(
+      distractorSource,
+      correctAnswer,
+      Math.min(distractorCount, distractorSource.length),
+      turnState?.ascensionPreferCloseDistractors === true,
+    )
+
+    // Redact answer if it appears verbatim in the question text
+    question = redactAnswerFromQuestion(question, correctAnswer)
 
     const allAnswers = [...picked]
     const insertIdx = Math.floor(Math.random() * (allAnswers.length + 1))
@@ -695,6 +824,12 @@
   {:else}
     <RelicTray relics={activeRelics} triggeredRelicId={turnState.triggeredRelicId} />
 
+    {#if turnState && enemyName}
+      <div class="enemy-name-header" style="color: {categoryColor}">
+        {enemyName}
+      </div>
+    {/if}
+
     <div class="ap-strip" aria-label="Action points">
       <span>AP</span>
       <strong>{apCurrent}/{apMax}</strong>
@@ -722,7 +857,7 @@
           {/if}
         </div>
         <div class="intent-sub-row">
-          <span class="intent-enemy-name">{enemyName}</span>
+          <span class="intent-floor-info">Floor {currentFloor} · {currentEncounter}/3</span>
           <span class="intent-type-label">{intentDisplay.label}</span>
         </div>
       </div>
@@ -877,7 +1012,7 @@
   .bounty-strip {
     position: absolute;
     right: 12px;
-    top: 10px;
+    bottom: 68px;
     z-index: 8;
     min-width: 146px;
     max-width: 220px;
@@ -972,11 +1107,31 @@
     white-space: nowrap;
   }
 
+  .intent-floor-info {
+    font-size: 10px;
+    color: #94a3b8;
+    letter-spacing: 0.3px;
+  }
+
   .intent-type-label {
     font-size: 10px;
     color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  .enemy-name-header {
+    position: fixed;
+    top: 38vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    pointer-events: none;
   }
 
   @keyframes intent-fade-in {

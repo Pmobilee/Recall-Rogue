@@ -2,26 +2,27 @@ import Phaser from 'phaser'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
-const ENEMY_Y_PCT = 0.28
+const ENEMY_Y_PCT = 0.35
 const ENEMY_X_PCT = 0.50
-const PLAYER_HP_Y_PCT = 0.50
+const PLAYER_HP_Y_PCT = 0.88
 const ENEMY_HP_Y_PCT = 0.12
 const FLOOR_COUNTER_Y = 16
 const INTENT_ICON_OFFSET_Y = -40
-const RELIC_TRAY_Y_PCT = 0.52
+const RELIC_TRAY_Y_PCT = 0.92
 
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
 const ENEMY_HP_BAR_H = 12
 
 /** Player HP bar dimensions. */
-const PLAYER_HP_BAR_W = 200
+const PLAYER_HP_BAR_W = 140
 const PLAYER_HP_BAR_H = 16
+const PLAYER_HP_X = 12
 
 /** Enemy first-person sprite sizes by enemy tier. */
-const ENEMY_SIZE_COMMON = 168
-const ENEMY_SIZE_ELITE = 198
-const ENEMY_SIZE_BOSS = 236
+const ENEMY_SIZE_COMMON = 200
+const ENEMY_SIZE_ELITE = 250
+const ENEMY_SIZE_BOSS = 300
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
@@ -103,6 +104,7 @@ export class CombatScene extends Phaser.Scene {
   private enemyBlockBarFill!: Phaser.GameObjects.Rectangle
   private enemyBlockIcon!: Phaser.GameObjects.Text
   private enemyBlockText!: Phaser.GameObjects.Text
+  private sceneReady = false
 
   // ── State ────────────────────────────────────────────────
   private currentEnemyHP = 0
@@ -146,6 +148,7 @@ export class CombatScene extends Phaser.Scene {
       fontSize: '13px',
       color: '#cccccc',
     })
+    this.floorCounterText.setVisible(false)
 
     // ── Enemy intent ──────────────────────────────────────
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
@@ -155,6 +158,7 @@ export class CombatScene extends Phaser.Scene {
       color: '#ff9999',
       align: 'center',
     }).setOrigin(0.5, 1)
+    this.intentText.setVisible(false)
 
     // ── Enemy HP bar ──────────────────────────────────────
     this.enemyHpBarBg = this.add.rectangle(
@@ -223,22 +227,23 @@ export class CombatScene extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     }).setOrigin(0.5, 0).setDepth(7)
+    this.enemyNameText.setVisible(false)
 
     // ── Player HP bar ─────────────────────────────────────
     const playerHpY = this.displayH * PLAYER_HP_Y_PCT
     this.playerHpBarBg = this.add.rectangle(
-      w / 2, playerHpY,
+      PLAYER_HP_X + PLAYER_HP_BAR_W / 2, playerHpY,
       PLAYER_HP_BAR_W, PLAYER_HP_BAR_H,
       COLOR_BAR_BG,
     ).setOrigin(0.5, 0.5)
 
     this.playerHpBarFill = this.add.rectangle(
-      w / 2 - PLAYER_HP_BAR_W / 2, playerHpY,
+      PLAYER_HP_X, playerHpY,
       PLAYER_HP_BAR_W, PLAYER_HP_BAR_H,
       COLOR_HP_GREEN,
     ).setOrigin(0, 0.5)
 
-    this.playerHpText = this.add.text(w / 2, playerHpY, `${this.currentPlayerHP} / ${this.currentPlayerMaxHP}`, {
+    this.playerHpText = this.add.text(PLAYER_HP_X + PLAYER_HP_BAR_W / 2, playerHpY, `${this.currentPlayerHP} / ${this.currentPlayerMaxHP}`, {
       fontFamily: 'monospace',
       fontSize: '11px',
       color: '#ffffff',
@@ -246,7 +251,7 @@ export class CombatScene extends Phaser.Scene {
     }).setOrigin(0.5, 0.5)
 
     // ── Relic tray container ──────────────────────────────
-    this.relicContainer = this.add.container(w / 2, this.displayH * RELIC_TRAY_Y_PCT)
+    this.relicContainer = this.add.container(PLAYER_HP_X + PLAYER_HP_BAR_W / 2, this.displayH * RELIC_TRAY_Y_PCT)
 
     // ── Screen flash overlay (full display zone, max depth) ─
     this.flashRect = this.add.rectangle(
@@ -292,6 +297,8 @@ export class CombatScene extends Phaser.Scene {
     this.events.on('shutdown', this.onShutdown, this)
     this.events.on('sleep', this.onShutdown, this)
     this.events.on('wake', this.onWake, this)
+
+    this.sceneReady = true
   }
 
   // ═════════════════════════════════════════════════════════
@@ -306,6 +313,7 @@ export class CombatScene extends Phaser.Scene {
     maxHP: number,
     enemyId?: string,
   ): void {
+    if (!this.sceneReady) return
     this.currentEnemyHP = hp
     this.currentEnemyMaxHP = maxHP
     this.currentEnemyId = enemyId ?? this.currentEnemyId
@@ -376,18 +384,19 @@ export class CombatScene extends Phaser.Scene {
 
   /** Update enemy block display (called by encounterBridge). */
   updateEnemyBlock(block: number, animate = true): void {
+    if (!this.sceneReady) return
     this.currentEnemyBlock = block
     this.refreshEnemyBlockBar(animate && !this.reduceMotion)
   }
 
   /** Update enemy intent telegraph. */
   setEnemyIntent(telegraph: string, value?: number): void {
-    const label = value !== undefined ? `${telegraph} ${value}` : telegraph
-    this.intentText.setText(label)
+    if (!this.sceneReady) return
   }
 
   /** Update player HP (optionally animate the bar). */
   updatePlayerHP(hp: number, maxHP: number, animate = true): void {
+    if (!this.sceneReady) return
     this.currentPlayerHP = Phaser.Math.Clamp(hp, 0, maxHP)
     this.currentPlayerMaxHP = maxHP
     this.refreshPlayerHpBar(animate && !this.reduceMotion)
@@ -395,14 +404,15 @@ export class CombatScene extends Phaser.Scene {
 
   /** Set floor and encounter counters. */
   setFloorInfo(floor: number, encounter: number, totalEncounters: number): void {
+    if (!this.sceneReady) return
     this.currentFloor = floor
     this.currentEncounter = encounter
     this.totalEncounters = totalEncounters
-    this.floorCounterText.setText(this.floorLabel())
   }
 
   /** Set passive relics to display in the relic tray. */
   setRelics(relics: Array<{ domain: string; label: string }>): void {
+    if (!this.sceneReady) return
     this.relicContainer.removeAll(true)
     const spacing = 36
     const startX = -((relics.length - 1) * spacing) / 2
@@ -757,6 +767,5 @@ export class CombatScene extends Phaser.Scene {
     this.reduceMotion = isReduceMotionEnabled()
     this.refreshEnemyHpBar(false)
     this.refreshPlayerHpBar(false)
-    this.floorCounterText.setText(this.floorLabel())
   }
 }

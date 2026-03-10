@@ -33,6 +33,7 @@ import { save as persistRaw } from './services/saveService'
 import { analyticsService } from './services/analyticsService'
 import { rescheduleNotificationsFromPlayerState } from './services/gameFlowController'
 import { initSyncDurabilityListener } from './services/syncDurabilityService'
+import { initScoreSubmissionQueue } from './services/scoreSubmissionQueue'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -126,6 +127,7 @@ document.getElementById('splash')?.remove()
 initAccessibilityManager()
 initCardAudio()
 initSyncDurabilityListener()
+initScoreSubmissionQueue()
 
 // Start loading cardback manifest in background (enables live reload in dev)
 initCardbackManifest()

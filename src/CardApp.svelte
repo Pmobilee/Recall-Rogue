@@ -19,7 +19,6 @@
     onArchetypeSelected,
     onCardRewardSelected,
     onCardRewardSkipped,
-    onCardRewardReroll,
     onDelve,
     onDomainsSelected,
     onMysteryResolved,
@@ -62,6 +61,7 @@
   import { languageService } from './services/languageService'
   import { playerSave } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
+  import { factsDB } from './services/factsDB'
 
   import DomainSelection from './ui/components/DomainSelection.svelte'
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
@@ -125,6 +125,8 @@
     transitionScreen('social')
   }
 
+  let gainedFactText = $state<string | null>(null)
+
   let showArcanePassModal = $state(false)
   let showSeasonPassModal = $state(false)
   let showCosmeticStoreModal = $state(false)
@@ -141,15 +143,15 @@
     showCosmeticStoreModal = true
   }
 
-  function handleStartDailyExpedition(): { ok: true } | { ok: false; reason: string } {
+  function handleStartDailyExpedition(): Promise<{ ok: true } | { ok: false; reason: string }> {
     return startDailyExpeditionRun()
   }
 
-  function handleStartEndlessDepths(): { ok: true } | { ok: false; reason: string } {
+  function handleStartEndlessDepths(): Promise<{ ok: true } | { ok: false; reason: string }> {
     return startEndlessDepthsRun()
   }
 
-  function handleStartScholarChallenge(): { ok: true } | { ok: false; reason: string } {
+  function handleStartScholarChallenge(): Promise<{ ok: true } | { ok: false; reason: string }> {
     return startScholarChallengeRun()
   }
 
@@ -173,16 +175,16 @@
     onDomainsSelected(primary, secondary)
   }
 
-  function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): void {
+  async function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): Promise<void> {
     onArchetypeSelected(archetype)
     void ensurePhaserBooted()
-    if (!startEncounterForRoom()) {
+    if (!(await startEncounterForRoom())) {
       currentScreen.set('hub')
       activeRunState.set(null)
     }
   }
 
-  function handleOnboardingBegin(slowReader: boolean, languageCode: string | null): void {
+  async function handleOnboardingBegin(slowReader: boolean, languageCode: string | null): Promise<void> {
     isSlowReader.set(slowReader)
     if (languageCode) {
       const firstLevel = languageService.getLevelsForLanguage(languageCode)[0]
@@ -195,19 +197,19 @@
     onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
     void ensurePhaserBooted()
-    if (!startEncounterForRoom()) {
+    if (!(await startEncounterForRoom())) {
       currentScreen.set('hub')
       activeRunState.set(null)
     }
   }
 
-  function handleRoomPick(index: number): void {
+  async function handleRoomPick(index: number): Promise<void> {
     const room = get(activeRoomOptions)[index]
     if (!room) return
     onRoomSelected(room)
     if (room.type === 'combat') {
       void ensurePhaserBooted()
-      if (!startEncounterForRoom(room.enemyId)) {
+      if (!(await startEncounterForRoom(room.enemyId))) {
         currentScreen.set('hub')
         activeRunState.set(null)
       }
@@ -242,6 +244,13 @@
 
   function handleRewardSelected(card: import('./data/card-types').Card): void {
     onCardRewardSelected(card)
+    // Show "Fact Gained" toast
+    const fact = factsDB.getById(card.factId)
+    if (fact) {
+      const text = fact.quizQuestion ?? fact.statement ?? ''
+      gainedFactText = text.length > 140 ? text.slice(0, 137) + '...' : text
+      setTimeout(() => { gainedFactText = null }, 2500)
+    }
   }
 
   function handlePause(): void {
@@ -417,10 +426,10 @@
       onOpenSocial={handleOpenSocial}
     />
     {#if showActiveRunBanner}
-      <div class="active-run-banner">
+      <div class="active-run-banner" data-testid="active-run-banner">
         <span>Run in progress</span>
-        <button type="button" class="banner-resume-btn" onclick={handleResumeActiveRun}>Resume</button>
-        <button type="button" class="banner-abandon-btn" onclick={handleAbandonRun}>Abandon</button>
+        <button type="button" class="banner-resume-btn" data-testid="btn-resume-run" onclick={handleResumeActiveRun}>Resume</button>
+        <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
       </div>
     {/if}
     {#if showAbandonConfirm}
@@ -473,7 +482,7 @@
       data-testid="btn-pause"
       onclick={handlePause}
       aria-label="Pause"
-    >II</button>
+    ><span class="pause-icon" aria-hidden="true"></span></button>
   {/if}
 
   {#if $currentScreen === 'cardReward'}
@@ -481,7 +490,6 @@
       options={$activeCardRewardOptions}
       onselect={handleRewardSelected}
       onskip={onCardRewardSkipped}
-      onreroll={onCardRewardReroll}
     />
   {/if}
 
@@ -511,6 +519,7 @@
         deckSize={0}
         relicCount={0}
         accuracy={run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0}
+        canReturnHub={!(run.ascensionModifiers?.preventFlee ?? false)}
         onresume={handleCampfireResume}
         onreturnhub={handleCampfireHub}
       />
@@ -528,6 +537,11 @@
         playerMaxHp={run.playerMaxHp}
         nextSegmentName={nextSegmentName(run.floor.currentFloor)}
         deathPenalty={getCurrentDelvePenalty()}
+        retreatRewardsLocked={Boolean(
+          run.ascensionModifiers?.minRetreatFloorForRewards != null &&
+          run.floor.currentFloor < run.ascensionModifiers.minRetreatFloorForRewards
+        )}
+        retreatRewardsMinFloor={run.ascensionModifiers?.minRetreatFloorForRewards ?? null}
         onretreat={onRetreat}
         ondelve={onDelve}
       />
@@ -551,7 +565,7 @@
         data-testid="btn-pause-room"
         onclick={handlePause}
         aria-label="Pause"
-      >II</button>
+      ><span class="pause-icon" aria-hidden="true"></span></button>
     {/if}
   {/if}
 
@@ -691,6 +705,13 @@
   {#if shouldShowHubNav($currentScreen)}
     <HubNavBar current={normalizeHomeScreen($currentScreen)} onNavigate={handleHubNavigate} />
   {/if}
+
+  {#if gainedFactText}
+    <div class="fact-gained-toast" role="status">
+      <div class="toast-header">New Fact Acquired</div>
+      <div class="toast-text">{gainedFactText}</div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -735,6 +756,21 @@
     align-items: center;
     justify-content: center;
     letter-spacing: 2px;
+  }
+
+  .pause-icon {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+  }
+  .pause-icon::before,
+  .pause-icon::after {
+    content: '';
+    width: 3px;
+    height: 14px;
+    background: currentColor;
+    border-radius: 1px;
   }
 
   .active-run-banner {
@@ -865,6 +901,40 @@
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  .fact-gained-toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(340px, calc(100vw - 32px));
+    background: linear-gradient(180deg, #1a2332, #0f1923);
+    border: 1px solid rgba(99, 179, 237, 0.4);
+    border-radius: 12px;
+    padding: 14px 16px;
+    z-index: 500;
+    animation: toast-in 0.3s ease-out;
+  }
+
+  .toast-header {
+    font-size: 12px;
+    font-weight: 700;
+    color: #63b3ed;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .toast-text {
+    font-size: 13px;
+    color: #e2e8f0;
+    line-height: 1.4;
+  }
+
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
 </style>

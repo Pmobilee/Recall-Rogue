@@ -376,7 +376,7 @@ export class ApiClient {
   async getLeaderboard(
     category: string,
     limit: number = 50,
-    opts?: { dateKey?: string; weekKey?: string },
+    opts?: { dateKey?: string; weekKey?: string; signal?: AbortSignal },
   ): Promise<LeaderboardEntry[]> {
     const params = new URLSearchParams({ limit: String(limit) })
     if (opts?.dateKey) {
@@ -389,6 +389,7 @@ export class ApiClient {
       `/leaderboards/${encodeURIComponent(category)}?${params.toString()}`,
       {
       method: 'GET',
+      signal: opts?.signal,
       }
     )
 

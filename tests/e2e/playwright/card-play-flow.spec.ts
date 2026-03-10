@@ -9,7 +9,7 @@ test('three-stage card commit flow works', async ({ page }) => {
       hasSeenAnswerTooltip: true,
       hasSeenEndTurnTooltip: true,
       hasSeenAPTooltip: true,
-      runsCompleted: 1,
+      runsCompleted: 5,
     }))
   })
 
@@ -17,8 +17,8 @@ test('three-stage card commit flow works', async ({ page }) => {
   await expect(page.getByTestId('btn-start-run')).toBeVisible({ timeout: 15_000 })
   await page.waitForTimeout(1200)
   await page.getByTestId('btn-start-run').click()
-  await page.getByRole('button', { name: /Science & Nature/ }).click()
-  await page.getByRole('button', { name: /History & Culture/ }).click()
+  await page.getByTestId('domain-card-natural_sciences').click()
+  await page.getByTestId('domain-card-history').click()
   await page.getByTestId('btn-start-run').click()
   await page.getByTestId('archetype-balanced').click()
 

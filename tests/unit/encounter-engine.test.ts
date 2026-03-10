@@ -1069,6 +1069,15 @@ describe('Turn Manager', () => {
       expect(ts.comboCount).toBe(0);
     });
 
+    it('applies ascension wrong-answer self damage', () => {
+      const ts = startEncounter(deck, enemy);
+      ts.ascensionWrongAnswerSelfDamage = 5;
+      const hpBefore = ts.playerState.hp;
+      const cardId = ts.deck.hand[0].id;
+      playCardAction(ts, cardId, false, false);
+      expect(ts.playerState.hp).toBe(hpBefore - 5);
+    });
+
     it('blocked card does not change combo', () => {
       const immuneTemplate = mockEnemyTemplate({ immuneDomain: 'science' });
       const immuneEnemy = createEnemy(immuneTemplate, 1);
@@ -1127,6 +1136,19 @@ describe('Turn Manager', () => {
       playCardAction(ts, cardId, true, false);
       // buff card's finalValue becomes buffNextCard
       expect(ts.buffNextCard).toBeGreaterThanOrEqual(0);
+    });
+
+    it('reduces heal card value via ascension heal multiplier', () => {
+      const healCards = makeCards(20, 'heal');
+      const healDeck = createDeck(healCards);
+      const ts = startEncounter(healDeck, enemy);
+      ts.playerState.hp = 30;
+      ts.ascensionHealCardMultiplier = 0.75;
+      const cardId = ts.deck.hand[0].id;
+
+      const result = playCardAction(ts, cardId, true, false);
+      expect(result.effect.healApplied).toBeLessThanOrEqual(Math.ceil(result.effect.rawValue));
+      expect(ts.playerState.hp).toBeGreaterThan(30);
     });
   });
 

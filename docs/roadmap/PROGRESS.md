@@ -26,6 +26,8 @@
 - Worker-orchestration observability: `content:workers:status` now summarizes per-domain generated/worker-output counts, target deltas, and prepare/ingest/QA/promote stage health in one JSON report.
 - Auth/session hardening: centralized access/refresh token handling in `src/services/authTokens.ts` and removed scattered token-key reads from social/classroom/feature-flag clients.
 - Build-budget hardening: `scripts/check-bundle-size.mjs` now supports per-chunk budget overrides for known lazy chunks (`phaser`, `sql-wasm`) while keeping strict app-shell bundle limits.
+- Release-gate hardening: added PR CI gate for typecheck + critical unit + critical Playwright flows, a unified `verify:release-gate` script, and resilient competitive leaderboard score submission queue with retry/drop safeguards.
+- Competitive sync UX hardening: Social screen now surfaces pending score submissions plus last submission attempt status/error for Daily/Endless/Scholar leaderboard reliability visibility.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
@@ -409,7 +411,7 @@ Transformed from 3-floor quick runs to 24-floor STS-style dungeon with save/resu
 - [x] Special events after boss floors (Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery)
 - [x] Retreat-or-delve checkpoints every 3 floors (after boss fights)
 - [x] Death penalties: 80%/65%/50%/35% by segment
-- [x] Ascension mode designed (20 levels, documented in GAME_DESIGN.md, build deferred)
+- [x] Ascension mode implemented (20 levels, stacked modifiers, unlock/progression, and run-start selector)
 - [x] Enemy HP reduced 15% across all existing enemies
 
 → [Spec](completed/AR-23-RUN-STRUCTURE-OVERHAUL.md)

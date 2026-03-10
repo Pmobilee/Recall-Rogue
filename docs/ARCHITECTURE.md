@@ -15,7 +15,7 @@ Primary boot path:
 
 1. `src/main.ts` mounts Svelte app, initializes player save.
 2. `CardGameManager.boot()` creates Phaser game with `BootScene` and `CombatScene`.
-3. `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display.
+3. `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display. `startEncounterForRoom()` is async and calls `await factsDB.init()` if the DB is not yet ready (guards against race conditions).
 4. `factsDB.init()` loads `public/facts.db` in parallel for quiz/card content.
 
 ## 2. Layer Architecture
@@ -42,7 +42,8 @@ Primary boot path:
 
 ### Phaser Layer
 
-- `CombatScene` — renders enemy sprite, HP bars, intent telegraph, hit/death animations, damage particles, screen flash, floor info
+- `CombatScene` — renders enemy sprite, enemy HP bars (with block overlay), hit/death animations, damage particles, screen flash. Intent, floor info, enemy name, and bounty strip have moved to the Svelte overlay.
+- `CombatScene` uses a `sceneReady` guard: a private boolean flag set `true` at end of `create()`. All public methods (`setEnemy`, `updateEnemyBlock`, `setEnemyIntent`, `updatePlayerHP`, `setFloorInfo`, `setRelics`) early-return if the scene is not yet ready, preventing race conditions when callers invoke display updates before Phaser objects exist.
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
 - Scale mode: `Scale.ENVELOP` (fills viewport without gaps)
@@ -57,7 +58,7 @@ Primary boot path:
 - Card hand fans in a natural arc (low-high-low, center card highest) with 30° total spread and 20px max arc offset
 - Two-step commit flow: tap to select (card rises 80px with info overlay) → tap again or swipe up (>60px) to cast → quiz panel appears above hand
 - Question panel positioned via `position: fixed; bottom: calc(45vh - 20px)` — no overlap with card hand
-- Enemy intent badge (STS-style) displayed between AP and bounty strips; hidden during quiz
+- Enemy intent panel, floor info, enemy name header (color-coded by category), and bounty strip (bottom-right, above End Turn) rendered in Svelte overlay — not Phaser
 - End Turn button: gold pulsing glow when no actions remain; confirmation popup if AP and playable cards available
 - Screen routing via `currentScreen` store in `CardApp.svelte`
 
@@ -262,7 +263,7 @@ Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
 Two buses:
 
 - **Global**: `src/events/EventBus.ts` — typed payloads in `src/events/types.ts`. Supports `emit`, `emitAsync`, `on`, `off`, `clear`. Will extend with card combat events (`card-played`, `card-fizzled`, `encounter-won`, `floor-cleared`, `run-ended`).
-- **Encounter bridge**: `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display.
+- **Encounter bridge**: `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display. `startEncounterForRoom()` is async; callers in `CardApp.svelte` and `gameFlowController.ts` await it.
 
 ## 10. Save/Load Architecture
 
@@ -284,7 +285,7 @@ src/
     CardGameManager.ts     — Minimal Phaser boot (~80 lines)
     scenes/
       BootScene.ts         — Asset loading
-      CombatScene.ts       — Phaser combat display zone (top 55%)
+      CombatScene.ts       — Phaser combat display zone (enemy sprite, HP bars, animations; sceneReady guard pattern)
     managers/              QuizManager, StudyManager, SaveManager, AudioManager,
                            RelicManager, CelebrationManager, GaiaManager,
                            AchievementManager, InventoryManager, CombatManager,
@@ -293,7 +294,7 @@ src/
                            CameraSystem, AnimationSystem, TextureAtlasLRU, ...
     entities/              Player, Boss, Creature
   services/
-    encounterBridge.ts     — Wires flow → deck → enemy → turns → display
+    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard)
     gameFlowController.ts  — Screen routing + run lifecycle
     turnManager.ts         — Turn-based encounter logic
     deckManager.ts         — Draw/discard/shuffle/exhaust
@@ -308,7 +309,7 @@ src/
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
     components/
-      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent badge, end turn button with gold pulse, 3-phase card animation orchestration (reveal→mechanic→launch) via setTimeout chains and animatingCards buffer pattern
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, 3-phase card animation orchestration (reveal→mechanic→launch) via setTimeout chains and animatingCards buffer pattern
       CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), green glow on playable cards, AP cost badges, tap-to-select + tap/swipe-to-cast, touch drag with opacity fade, dual-face card DOM (front/back with backface-visibility), 31 @keyframes mechanic animations, animatingCards buffer rendering, cardback preloading, reduced-motion support
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
       ComboCounter.svelte       — Knowledge combo display

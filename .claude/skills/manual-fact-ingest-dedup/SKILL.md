@@ -38,6 +38,16 @@ Raw data lives in `data/raw/<domain>.json` — structured Wikidata/API dumps wit
 ### Truthfulness
 All facts (whether source-based or from training knowledge) must be verifiable. Agents should not invent statistics, dates, or claims they are uncertain about. When in doubt, use hedging language ("approximately", "estimated") or skip the fact entirely.
 
+### Variant & Answer Quality Rules (Mandatory)
+Every fact MUST have 2 proper variant objects. Every variant MUST pass these checks:
+
+1. **Variant coherence**: `correctAnswer` must directly answer the variant's `question`. If the question asks "how many", the answer must contain a number. If it asks "where", the answer must be a place name. If it asks "who", the answer must be a person/entity.
+2. **No self-answering**: No significant word (5+ chars) from `correctAnswer` may appear in the variant's `question`. The question sets up the answer — it must not reveal it. Example violation: Q: "From what part of a fish is isinglass obtained?" A: "Isinglass (fish swim bladders)" — "isinglass" appears in both.
+3. **Distractor format match**: Distractors must be the same *type* as the answer. Numbers match numbers, proper nouns match proper nouns, short phrases match short phrases. Never pair a 3-word answer with 15-word distractors.
+4. **Variant structure**: Every variant MUST be a `{ question, type, correctAnswer, distractors }` object — NEVER a plain string. Types: `forward`, `reverse`, `context`, `fill_blank`, `negative`.
+5. **No parenthetical reveals**: Use concise answers without "Answer (explanation)" format. Put explanations in the `explanation` field. Bad: "Isinglass (fish swim bladders)". Good: "The swim bladder".
+6. **Variant-specific distractors**: Each variant SHOULD have its own `distractors` array (3 minimum) tailored to that variant's question. Falling back to the base fact's distractors only works when the variant asks the same type of question as the base.
+
 ## One-Command Backbone
 Use this as the orchestration backbone:
 ```bash

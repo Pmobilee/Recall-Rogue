@@ -10,6 +10,38 @@ env:
   NODE_VERSION: '22'
 
 jobs:
+  release-gate:
+    name: Release Gate (Typecheck + Unit + Critical E2E)
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run release gate checks
+        run: npm run verify:release-gate
+        env:
+          CI: true
+
+      - name: Upload Playwright artifacts (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-critical-results
+          path: /tmp/pw-results/
+          retention-days: 7
+
   # ─── Lint & Type Check ────────────────────────────────────────────────────
   lint-typecheck:
     name: Lint & Typecheck

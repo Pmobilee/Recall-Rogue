@@ -1,4 +1,9 @@
 import { apiClient } from './apiClient'
+import {
+  readCachedLeaderboardRows,
+  withAbortTimeout,
+  writeCachedLeaderboardRows,
+} from './leaderboardFetch'
 
 export interface EndlessDepthsEntry {
   rank: number
@@ -22,6 +27,7 @@ interface EndlessDepthsState {
 }
 
 const STORAGE_KEY = 'recall-rogue-endless-depths-v1'
+const GLOBAL_CACHE_KEY_PREFIX = 'recall-rogue-endless-depths-global-v1'
 const MAX_RECORDS = 40
 
 const BOT_BASELINE: Array<{ name: string; floor: number; score: number }> = [
@@ -107,9 +113,13 @@ export function getEndlessDepthsLeaderboard(limit = 20): EndlessDepthsEntry[] {
 }
 
 export async function getEndlessDepthsGlobalLeaderboard(limit = 20): Promise<EndlessDepthsEntry[] | null> {
+  const safeLimit = Math.max(1, Math.floor(limit))
+  const cacheKey = `${GLOBAL_CACHE_KEY_PREFIX}:${safeLimit}`
   try {
-    const rows = await apiClient.getLeaderboard('endless_depths', limit)
-    return rows.map((row) => {
+    const rows = await withAbortTimeout(
+      (signal) => apiClient.getLeaderboard('endless_depths', safeLimit, { signal }),
+    )
+    const mapped = rows.map((row) => {
       const metadata = (row.metadata && typeof row.metadata === 'object' && !Array.isArray(row.metadata))
         ? row.metadata as Record<string, unknown>
         : null
@@ -123,7 +133,9 @@ export async function getEndlessDepthsGlobalLeaderboard(limit = 20): Promise<End
         source: 'player' as const,
       }
     })
+    writeCachedLeaderboardRows(cacheKey, mapped)
+    return mapped
   } catch {
-    return null
+    return readCachedLeaderboardRows<EndlessDepthsEntry>(cacheKey)
   }
 }

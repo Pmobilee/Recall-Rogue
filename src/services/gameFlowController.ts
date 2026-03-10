@@ -30,7 +30,15 @@ import {
   startEncounterForRoom,
 } from './encounterBridge';
 import { activeRunState } from './runStateStore';
-import { onboardingState, incrementRunsCompleted, markOnboardingComplete, difficultyMode } from './cardPreferences';
+import {
+  onboardingState,
+  incrementRunsCompleted,
+  markOnboardingComplete,
+  difficultyMode,
+  getAscensionLevel,
+  unlockAscensionLevel,
+  unlockNextAscensionLevel,
+} from './cardPreferences';
 import { isSlowReader } from './cardPreferences';
 import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS } from '../data/balance';
 import { updateBounties } from './bountyManager';
@@ -68,6 +76,7 @@ import {
 } from './scholarChallengeService'
 import { recordEndlessDepthsRun } from './endlessDepthsService'
 import { apiClient } from './apiClient'
+import { enqueueCompetitiveScoreSubmission } from './scoreSubmissionQueue'
 import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
@@ -78,6 +87,7 @@ import {
 } from './masteryChallengeService'
 import { getCardTier } from './tierDerivation'
 import { shuffled } from './randomUtils'
+import { getAscensionModifiers } from './ascension';
 
 export type GameFlowState =
   | 'idle'
@@ -200,12 +210,10 @@ function submitCompetitiveScore(
   metadata: Record<string, unknown>,
 ): void {
   if (!apiClient.isLoggedIn()) return
-  void apiClient.submitScore(category, score, metadata).catch((error) => {
-    console.warn(`[gameFlowController] submitScore(${category}) failed:`, error)
-  })
+  enqueueCompetitiveScoreSubmission(category, score, metadata)
 }
 
-export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: string } {
+export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
     currentScreen.set('onboarding')
@@ -226,7 +234,7 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
   activateDeterministicRandom(reservation.attempt.seed)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
-  if (!startEncounterForRoom()) {
+  if (!(await startEncounterForRoom())) {
     currentScreen.set('hub')
     activeRunState.set(null)
     activeRunMode = 'standard'
@@ -245,7 +253,7 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
   return { ok: true }
 }
 
-export function startScholarChallengeRun(): { ok: true } | { ok: false; reason: string } {
+export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
     currentScreen.set('onboarding')
@@ -269,7 +277,7 @@ export function startScholarChallengeRun(): { ok: true } | { ok: false; reason: 
     secondary: reservation.attempt.secondaryDomain,
   }
   onArchetypeSelected('balanced')
-  if (!startEncounterForRoom()) {
+  if (!(await startEncounterForRoom())) {
     currentScreen.set('hub')
     activeRunState.set(null)
     activeRunMode = 'standard'
@@ -280,7 +288,7 @@ export function startScholarChallengeRun(): { ok: true } | { ok: false; reason: 
   return { ok: true }
 }
 
-export function startEndlessDepthsRun(): { ok: true } | { ok: false; reason: string } {
+export async function startEndlessDepthsRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
     currentScreen.set('onboarding')
@@ -310,7 +318,7 @@ export function startEndlessDepthsRun(): { ok: true } | { ok: false; reason: str
   applyEndlessDepthsScaling(run)
   activeRunState.set(run)
 
-  if (!startEncounterForRoom()) {
+  if (!(await startEncounterForRoom())) {
     currentScreen.set('hub')
     activeRunState.set(null)
     activeRunMode = 'standard'
@@ -449,6 +457,22 @@ function applyRunCompletionBonuses(run: RunState): void {
   }
 }
 
+function isAscensionSuccess(run: RunState, result: 'retreat' | 'victory' | 'defeat'): boolean {
+  if (activeRunMode !== 'standard') return false
+  if (result === 'retreat') return run.floor.currentFloor >= 9
+  if (result === 'victory') return run.floor.currentFloor >= 24
+  return false
+}
+
+function progressAscensionAfterSuccess(run: RunState): void {
+  const currentLevel = run.ascensionLevel ?? 0
+  if (currentLevel <= 0) {
+    unlockAscensionLevel(1)
+    return
+  }
+  unlockNextAscensionLevel(currentLevel)
+}
+
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
   pendingDomainSelection = { primary, secondary };
 
@@ -471,7 +495,10 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   const runNumber = save ? getRunNumberForDomain(save, pending.primary) : 1;
   const earlyBoostActive = save ? isEarlyBoostActiveForDomain(save, pending.primary) : true;
   const startingAp = getExperimentValue('starting_ap_3_vs_4', userId);
-  const starterDeckSize = getExperimentValue('starter_deck_15_vs_18', userId);
+  const starterDeckSizeExperiment = getExperimentValue('starter_deck_15_vs_18', userId);
+  const selectedAscensionLevel = getAscensionLevel();
+  const ascensionModifiers = getAscensionModifiers(selectedAscensionLevel);
+  const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? Number(starterDeckSizeExperiment);
   const slowReaderDefault = getExperimentValue('slow_reader_default', userId);
 
   // Apply first-run default only once; user preferences continue to override after this.
@@ -499,10 +526,11 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
 
   const run = createRunState(pending.primary, pending.secondary, {
     selectedArchetype: archetype,
-    starterDeckSize: Number(starterDeckSize),
+    starterDeckSize,
     startingAp: Number(startingAp),
     primaryDomainRunNumber: runNumber,
     earlyBoostActive,
+    ascensionLevel: selectedAscensionLevel,
   });
   analyticsService.track({
     name: 'domain_select',
@@ -514,6 +542,7 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
       starter_deck_size: starterDeckSize,
       starting_ap: startingAp,
       early_boost_active: earlyBoostActive,
+      ascension_level: selectedAscensionLevel,
     },
   });
   analyticsService.track({
@@ -525,6 +554,7 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
       starting_ap: startingAp,
       starter_deck_size: starterDeckSize,
       run_number: runNumber,
+      ascension_level: selectedAscensionLevel,
     },
   });
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
@@ -534,7 +564,7 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   currentScreen.set('combat');
 }
 
-function proceedAfterReward(): void {
+async function proceedAfterReward(): Promise<void> {
   const run = get(activeRunState);
   if (!run) return;
 
@@ -571,7 +601,7 @@ function proceedAfterReward(): void {
   if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
     gameFlowState.set('combat');
     currentScreen.set('combat');
-    startEncounterForRoom();
+    await startEncounterForRoom();
     return;
   }
 
@@ -592,7 +622,7 @@ function openCardReward(): void {
   );
 
   if (options.length === 0) {
-    proceedAfterReward();
+    void proceedAfterReward();
     return;
   }
 
@@ -657,6 +687,8 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
         best_combo: run.bestCombo,
         cards_earned: run.cardsEarned,
         bounties_completed: run.bounties.filter((b) => b.completed).length,
+        retreat_rewards_locked: run.retreatRewardLocked,
+        ascension_level: run.ascensionLevel ?? 0,
       },
     });
     analyticsService.track({
@@ -702,12 +734,12 @@ export function onCardRewardSelected(card: Card): void {
   });
   activeCardRewardOptions.set([]);
   autoSaveRun('roomSelection');
-  proceedAfterReward();
+  void proceedAfterReward();
 }
 
 export function onCardRewardSkipped(): void {
   activeCardRewardOptions.set([]);
-  proceedAfterReward();
+  void proceedAfterReward();
 }
 
 function openShopRoom(): void {
@@ -761,6 +793,10 @@ export function onShopDone(): void {
 export function onRetreat(): void {
   const run = get(activeRunState);
   if (!run) return;
+  const minRetreatFloorForRewards = run.ascensionModifiers?.minRetreatFloorForRewards ?? null
+  run.retreatRewardLocked = Boolean(
+    minRetreatFloorForRewards != null && run.floor.currentFloor < minRetreatFloorForRewards,
+  )
   const accuracy = run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0;
   analyticsService.track({
     name: 'cash_out',
@@ -769,6 +805,8 @@ export function onRetreat(): void {
       gold: run.currency,
       accuracy,
       reason: 'retreat',
+      retreat_rewards_locked: run.retreatRewardLocked,
+      ascension_level: run.ascensionLevel ?? 0,
     },
   });
   analyticsService.track({
@@ -782,11 +820,16 @@ export function onRetreat(): void {
       best_combo: run.bestCombo,
       cards_earned: run.cardsEarned,
       bounties_completed: run.bounties.filter((b) => b.completed).length,
+      retreat_rewards_locked: run.retreatRewardLocked,
+      ascension_level: run.ascensionLevel ?? 0,
     },
   });
   recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
   applyRunCompletionBonuses(run);
   markRunCompleted();
+  if (isAscensionSuccess(run, 'retreat')) {
+    progressAscensionAfterSuccess(run)
+  }
   // Boss kill review prompt (retreat always follows a boss floor)
   void checkBossKillTrigger();
   const endData = endRun(run, 'retreat');
@@ -802,6 +845,8 @@ export function onDelve(): void {
       floor: run.floor.currentFloor,
       gold: 0,
       decision: 'delve',
+      retreat_rewards_locked: run.retreatRewardLocked,
+      ascension_level: run.ascensionLevel ?? 0,
     },
   });
   advanceFloor(run.floor);
@@ -881,7 +926,7 @@ export function onRoomSelected(room: RoomOption): void {
 
 export function onSpecialEventResolved(): void {
   activeSpecialEvent.set(null);
-  proceedAfterReward();
+  void proceedAfterReward();
 }
 
 export function onMasteryChallengeResolved(passed: boolean): void {
@@ -934,6 +979,10 @@ export function resumeFromCampfire(): void {
 }
 
 export function returnToHubFromCampfire(): void {
+  const run = get(activeRunState)
+  if (run?.ascensionModifiers?.preventFlee) {
+    return
+  }
   // Save run state so player can resume later
   autoSaveRun('campfire');
   deactivateDeterministicRandom()

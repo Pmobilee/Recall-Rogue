@@ -17,6 +17,7 @@
     getScholarChallengeGlobalLeaderboard,
     type ScholarChallengeStatus,
   } from '../../services/scholarChallengeService'
+  import { scoreSubmissionQueueStatus } from '../../services/scoreSubmissionQueue'
   import { readAccessToken } from '../../services/authTokens'
   import WeeklyChallenge from './WeeklyChallenge.svelte'
   import CoopLobby from './CoopLobby.svelte'
@@ -26,9 +27,9 @@
   interface Props {
     onBack: () => void
     onOpenSettings: () => void
-    onStartDailyExpedition: () => { ok: true } | { ok: false; reason: string }
-    onStartEndlessDepths: () => { ok: true } | { ok: false; reason: string }
-    onStartScholarChallenge: () => { ok: true } | { ok: false; reason: string }
+    onStartDailyExpedition: () => Promise<{ ok: true } | { ok: false; reason: string }>
+    onStartEndlessDepths: () => Promise<{ ok: true } | { ok: false; reason: string }>
+    onStartScholarChallenge: () => Promise<{ ok: true } | { ok: false; reason: string }>
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onOpenArcanePass: () => void
     onOpenSeasonPass: () => void
@@ -68,6 +69,19 @@
   const masteredCount = $derived(($playerSave?.reviewStates ?? []).filter((state) => (
     (state.stability ?? state.interval ?? 0) >= 30 && Boolean(state.passedMasteryTrial)
   )).length)
+  const scoreSyncHasFailure = $derived(
+    $scoreSubmissionQueueStatus.lastFailureAt !== null &&
+    ($scoreSubmissionQueueStatus.lastFailureAt ?? 0) >= ($scoreSubmissionQueueStatus.lastSuccessAt ?? 0),
+  )
+
+  function formatQueueTimestamp(ts: number | null): string {
+    if (ts === null) return 'Never'
+    try {
+      return new Date(ts).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })
+    } catch {
+      return 'Unknown'
+    }
+  }
 
   function makeLobbyId(): string {
     const stamp = Date.now().toString(36)
@@ -168,7 +182,7 @@
   }
 
   async function startDaily(): Promise<void> {
-    const started = onStartDailyExpedition()
+    const started = await onStartDailyExpedition()
     if (started.ok) {
       dailyMessage = ''
       await refreshDailyStatus()
@@ -185,7 +199,7 @@
   }
 
   async function startEndless(): Promise<void> {
-    const started = onStartEndlessDepths()
+    const started = await onStartEndlessDepths()
     if (started.ok) {
       endlessMessage = ''
       return
@@ -199,7 +213,7 @@
   }
 
   async function startScholarChallenge(): Promise<void> {
-    const started = onStartScholarChallenge()
+    const started = await onStartScholarChallenge()
     if (started.ok) {
       scholarMessage = ''
       await refreshScholarRows()
@@ -251,6 +265,31 @@
       <button type="button" class="settings-btn" onclick={onOpenSettings}>Open Settings</button>
     </article>
   {:else}
+    <article class="score-sync-card" data-testid="score-sync-status">
+      <h3>Competitive Score Sync</h3>
+      <div class="sync-row">
+        <span>Pending submissions</span>
+        <strong>{$scoreSubmissionQueueStatus.pendingCount}</strong>
+      </div>
+      <div class="sync-row">
+        <span>
+          {#if scoreSyncHasFailure}
+            Last attempt failed
+          {:else if $scoreSubmissionQueueStatus.lastSuccessAt !== null}
+            Last attempt succeeded
+          {:else if $scoreSubmissionQueueStatus.lastAttemptAt !== null}
+            Last attempt started
+          {:else}
+            Waiting for first submission
+          {/if}
+        </span>
+        <span>{formatQueueTimestamp($scoreSubmissionQueueStatus.lastAttemptAt)}</span>
+      </div>
+      {#if scoreSyncHasFailure && $scoreSubmissionQueueStatus.lastErrorMessage}
+        <div class="sync-error">Last error: {$scoreSubmissionQueueStatus.lastErrorMessage}</div>
+      {/if}
+    </article>
+
     <p class="helper">
       Co-op, duel, and guild frontends are now accessible from the app flow.
       Matchmaking and backend reliability hardening are tracked in AR-20.
@@ -493,6 +532,7 @@
   }
 
   .blocked-card,
+  .score-sync-card,
   .card {
     border-radius: 14px;
     border: 1px solid rgba(148, 163, 184, 0.35);
@@ -503,6 +543,7 @@
   }
 
   .blocked-card h3,
+  .score-sync-card h3,
   .card h3 {
     margin: 0;
     font-size: calc(16px * var(--text-scale, 1));
@@ -575,5 +616,30 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  .score-sync-card {
+    gap: 6px;
+    border-color: rgba(125, 211, 252, 0.45);
+    background: rgba(8, 25, 43, 0.75);
+  }
+
+  .sync-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #cbd5e1;
+  }
+
+  .sync-row strong {
+    color: #7dd3fc;
+    font-weight: 800;
+  }
+
+  .sync-error {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #fca5a5;
   }
 </style>

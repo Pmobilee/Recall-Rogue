@@ -33,6 +33,10 @@ import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
 import { analyticsService } from './analyticsService';
 import { isSubscriber } from './subscriptionService';
+import {
+  applyAscensionEnemyTemplateAdjustments,
+  getAscensionModifiers,
+} from './ascension';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -154,7 +158,9 @@ function buildPassiveEffectsFromRelics(relics: ActiveRelic[]): PassiveEffect[] {
 function recomputeActiveRelics(): void {
   const save = get(playerSave);
   const reviewStates = save?.reviewStates ?? [];
-  activeRelics = buildActiveRelics(reviewStates, factCardTypeResolver);
+  const run = get(activeRunState);
+  const ascensionRelicCap = run?.ascensionModifiers.relicCap ?? getAscensionModifiers(0).relicCap;
+  activeRelics = buildActiveRelics(reviewStates, factCardTypeResolver, { maxActiveRelics: ascensionRelicCap });
 
   const factStates = new Map<string, { retrievability: number }>();
   for (const state of reviewStates) {
@@ -196,29 +202,31 @@ function syncCombatScene(turnState: TurnState): void {
     );
   };
 
-  const scene = getCombatScene();
-  if (scene && scene.scene.isActive()) {
-    pushDisplayData();
-  } else {
-    setTimeout(() => {
-      const s = getCombatScene();
-      if (s && s.scene.isActive()) {
-        pushDisplayData();
-      } else {
-        setTimeout(pushDisplayData, 300);
-      }
-    }, 100);
-  }
+  const tryPush = (retries: number) => {
+    ensureCombatStarted();
+    const s = getCombatScene();
+    if (s && (s as any).sceneReady) {
+      pushDisplayData();
+    } else if (retries > 0) {
+      setTimeout(() => tryPush(retries - 1), 200);
+    }
+  };
+  tryPush(15);
 }
 
-export function startEncounterForRoom(enemyId?: string): boolean {
+export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
   const run = get(activeRunState);
   if (!run) return false;
+  const ascensionModifiers = run.ascensionModifiers ?? getAscensionModifiers(run.ascensionLevel ?? 0);
 
   if (!activeDeck) {
     if (!factsDB.isReady()) {
-      console.warn('[encounterBridge] factsDB not ready — cannot start encounter');
-      return false;
+      try {
+        await factsDB.init();
+      } catch (err) {
+        console.warn('[encounterBridge] factsDB failed to initialize', err);
+        return false;
+      }
     }
     const save = get(playerSave);
     const reviewStates = save?.reviewStates ?? [];
@@ -261,7 +269,18 @@ export function startEncounterForRoom(enemyId?: string): boolean {
   const template = ENEMY_TEMPLATES.find((enemyTemplate) => enemyTemplate.id === templateId);
   if (!template || !activeDeck) return false;
 
-  const enemy = createEnemy(template, run.floor.currentFloor);
+  activeDeck.currentFloor = run.floor.currentFloor;
+  activeDeck.currentEncounter = run.floor.currentEncounter;
+  const ascensionTemplate = applyAscensionEnemyTemplateAdjustments(
+    template,
+    run.floor.currentFloor,
+    ascensionModifiers,
+  );
+  const enemyHpMultiplier = (
+    ascensionModifiers.enemyHpMultiplier *
+    (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1)
+  );
+  const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier });
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   // Tick encounter cooldowns at the start of each new encounter
@@ -278,6 +297,18 @@ export function startEncounterForRoom(enemyId?: string): boolean {
   turnState.baseDrawCount = turnState.activeRelicIds.has('quick_draw') ? 6 : 5;
   turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
+  turnState.ascensionLevel = run.ascensionLevel ?? 0;
+  turnState.ascensionEnemyDamageMultiplier = ascensionModifiers.enemyDamageMultiplier;
+  turnState.ascensionHealCardMultiplier = ascensionModifiers.healCardMultiplier;
+  turnState.ascensionWrongAnswerSelfDamage = ascensionModifiers.wrongAnswerSelfDamage;
+  turnState.ascensionBaseTimerPenaltySeconds = ascensionModifiers.timerBasePenaltySeconds;
+  turnState.ascensionEncounterTimerPenaltySeconds = (
+    run.floor.currentEncounter === 2 ? ascensionModifiers.encounterTwoTimerPenaltySeconds : 0
+  );
+  turnState.ascensionPreferCloseDistractors = ascensionModifiers.preferCloseDistractors;
+  turnState.ascensionTier1OptionCount = ascensionModifiers.tier1OptionCount;
+  turnState.ascensionForceHardQuestionFormats = ascensionModifiers.forceHardQuestionFormats;
+  turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
 
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding && run.floor.currentFloor === 1 && run.floor.currentEncounter <= 2) {
@@ -321,6 +352,7 @@ function createEchoCardFrom(card: Card): Card {
 function maybeGenerateEcho(card: Card, wasCorrect: boolean): void {
   const run = get(activeRunState);
   if (!run || !activeDeck) return;
+  if (run.ascensionModifiers?.disableEcho) return;
   if (wasCorrect || card.isEcho || card.isMasteryTrial) return;
   if (run.echoCount >= ECHO.MAX_ECHOES_PER_RUN) return;
   if (run.echoFactIds.has(card.factId)) return;

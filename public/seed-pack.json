@@ -2,7 +2,7 @@
   "packId": "seed-v1",
   "category": "all",
   "version": 1,
-  "factCount": 4009,
+  "factCount": 4108,
   "facts": [
     {
       "id": "A-103-001",
@@ -557,7 +557,7 @@
     },
     {
       "id": "Q3595240-mahalakshmi-temple",
-      "question": "What deity is Mahalakshmi Temple dedicated to?",
+      "question": "Which Hindu goddess of wealth is honored at a major temple in Mumbai?",
       "answer": "Lakshmi",
       "distractors": [
         "[object Object]",
@@ -918,7 +918,7 @@
     },
     {
       "id": "Q518350-copper-alloy-001",
-      "question": "What metal is principal in copper-based alloys?",
+      "question": "What is the principal metal in alloys like bronze and brass?",
       "answer": "Copper",
       "distractors": [
         "[object Object]",
@@ -1049,7 +1049,6 @@
       "question": "When was Abbot's Palace in Oliwa built?",
       "answer": "1756",
       "distractors": [
-        "[object Object]",
         "[object Object]",
         "[object Object]",
         "[object Object]",
@@ -2110,7 +2109,7 @@
     },
     {
       "id": "animal-african-emerald-cuckoo-087",
-      "question": "Where can African Emerald Cuckoo primarily be found?",
+      "question": "Where does the emerald cuckoo (Chrysococcyx cupreus) primarily live?",
       "answer": "Africa",
       "distractors": [
         "[object Object]",
@@ -2143,6 +2142,40 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-african-lungfish-aestivation-338",
+      "question": "How long can African lungfish survive without water?",
+      "answer": "Up to 4 years through aestivation in a mucus cocoon",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "During drought, lungfish dig into drying mud, curl up, and encase themselves in dried mucus that hardens into a protective cocoon. Their metabolism drops to nearly zero, and they breathe air through a small tube to the surface. When rains return years later, they revive within hours.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-african-wild-dog-vote-355",
+      "question": "How do African wild dogs decide to start a hunt?",
+      "answer": "By sneezing — enough sneezes triggers a group hunt",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Researchers at Botswana's Moremi Game Reserve observed that wild dogs use audible sneezes as a quorum-based voting mechanism before rallies (group hunts). When a dominant individual sneezed, only 3 sneezes were needed; for subordinates, the threshold was about 10 sneezes.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-alburnoides-eichwaldii-067",
       "question": "Where can Alburnoides eichwaldii primarily be found?",
       "answer": "various habitats worldwide",
@@ -2158,6 +2191,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Alburnoides eichwaldii, commonly known as the Alburnoides eichwaldii, inhabits various habitats worldwide. This fish has been assessed as Least Concern by conservationists, meaning its populations remain relatively stable in the wild.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-alpine-chough-altitude-348",
+      "question": "At what altitude have Alpine choughs been observed on Everest?",
+      "answer": "8,200 metres",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "These crow relatives follow mountaineers, scavenging food scraps at extreme camps. Their blood carries oxygen more efficiently than lowland birds thanks to a haemoglobin variant that binds oxygen more tightly. They nest in cliff faces up to 6,500 metres, the highest nesting altitude of any bird.",
       "category": "",
       "wowFactor": 5
     },
@@ -2195,7 +2245,7 @@
     },
     {
       "id": "animal-amandava-amandava-083",
-      "question": "Which species is known as the Amandava amandava?",
+      "question": "Which small red waxbill bird is also called the strawberry finch?",
       "answer": "Amandava amandava",
       "distractors": [
         "[object Object]",
@@ -2256,6 +2306,23 @@
       ],
       "gaiaComment": "",
       "explanation": "In species like Ceratias holboelli, the male is 60 times smaller than the female. When he finds a female (rare in the vast deep sea), he bites her and releases an enzyme that dissolves his mouth and her skin, fusing their circulatory systems. His eyes, brain, and organs gradually degenerate. A single female can have up to 8 males parasitically fused to her body. This extreme strategy evolved because finding a mate in the lightless deep ocean is so difficult that once found, you never let go.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-archer-fish-refraction-366",
+      "question": "What physics problem do archerfish instinctively solve when hunting?",
+      "answer": "Light refraction — prey appears in a different position than it really is",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This means archerfish solve a physics problem (Snell's law of refraction) instinctively every time they shoot. They also adjust the force of their jet based on prey distance, creating a blob of water that accelerates mid-flight to hit with maximum impact. Young archerfish learn by watching experienced shooters.",
       "category": "",
       "wowFactor": 5
     },
@@ -2354,6 +2421,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-baikal-seal-nerpa-360",
+      "question": "What is unique about the Baikal seal among all seal species?",
+      "answer": "It is the only exclusively freshwater seal in the world",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Lake Baikal is the deepest and oldest lake on Earth. The nerpa likely descended from Arctic ringed seals that migrated up rivers during the last ice age. With an estimated population of 100,000, these small seals dive to 400 metres in the crystal-clear waters of this ancient lake.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-barn-swallow-range-293",
       "question": "On how many continents do barn swallows breed?",
       "answer": "Six (all except Antarctica)",
@@ -2384,6 +2468,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Bat hawks have evolved enormous gapes (mouth openings) relative to their body size, allowing them to swallow entire bats without landing. They must catch enough food in those 20 twilight minutes to sustain themselves for the remaining 23+ hours.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-bee-hummingbird-smallest-339",
+      "question": "How fast does a bee hummingbird's heart beat during flight?",
+      "answer": "1,260 beats per minute",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "To fuel this incredible metabolism, bee hummingbirds visit up to 1,500 flowers daily and consume half their body weight in nectar. At night, they enter torpor — a mini-hibernation that drops their heart rate to just 36 beats per minute to conserve energy.",
       "category": "",
       "wowFactor": 5
     },
@@ -2688,6 +2789,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-capybara-babysitting-341",
+      "question": "What is unusual about capybara parenting?",
+      "answer": "Any female nurses any calf, not just her own (communal babysitting)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This cooperative breeding strategy is highly unusual among rodents. The communal approach means calves always have protection even if their mother is foraging. Capybaras are also famous for their tolerant nature — other species regularly sit or sleep on top of them.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-cassowary-danger-200",
       "question": "How fast can a cassowary run through dense rainforest?",
       "answer": "Up to 50 km/h",
@@ -2729,6 +2847,23 @@
       ],
       "gaiaComment": "",
       "explanation": "In studies, cleaner wrasses that were marked with colored dye and shown a mirror attempted to scrape off the marks by rubbing against surfaces, behavior only seen when a mirror was present. This sparked debate about whether the mirror test accurately measures self-awareness across all species.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-clownfish-hierarchy-365",
+      "question": "What happens when the female clownfish in a group dies?",
+      "answer": "The largest male changes sex and becomes the new female",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This sequential hermaphroditism ensures there is always a breeding pair in every anemone. The dominance hierarchy is strictly size-based: the female is largest, the breeding male is second, and all other males suppress their growth. If Nemo's mother died, Nemo's father would have become his new mother.",
       "category": "",
       "wowFactor": 5
     },
@@ -2812,6 +2947,40 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-common-rosefinch-song-378",
+      "question": "How do common rosefinch songs vary between populations?",
+      "answer": "Each population has a different dialect learned from local birds",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The song is commonly transcribed as 'pleased to MEET you' with emphasis on the third note. Like many songbirds, rosefinches learn their song culturally rather than genetically, resulting in regional dialects. Males arriving from migration must quickly learn the local version to attract females.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-cone-snail-insulin-weapon-362",
+      "question": "How do certain cone snails immobilize fish?",
+      "answer": "Release weaponized insulin that causes hypoglycemic shock",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The geographic cone snail (Conus geographus) uses this insulin weapon alongside its venomous harpoon. The released insulin is a fast-acting variant that works faster than any fish's own insulin. Scientists are studying it to develop better diabetes treatments for humans.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-cone-snail-venom-156",
       "question": "What medical product has been derived from cone snail venom?",
       "answer": "Ziconotide, a painkiller 1,000 times more potent than morphine",
@@ -2874,6 +3043,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-crows-recognize-faces-375",
+      "question": "How long can crows remember and hold grudges against specific humans?",
+      "answer": "More than 5 years, and they teach their offspring to recognise threats",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "In a famous University of Washington experiment, researchers wore specific masks while trapping crows. Years later, crows who had never been trapped but had learned from their parents would scold and mob anyone wearing the 'dangerous' mask, demonstrating cultural transmission of enemy recognition.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-cuttlefish-colorblind-270",
       "question": "What is paradoxical about cuttlefish color-changing ability?",
       "answer": "They can produce any color but are completely colorblind themselves",
@@ -2885,6 +3071,23 @@
       ],
       "gaiaComment": "",
       "explanation": "This is one of biology's great paradoxes. Cuttlefish have specialized skin cells called chromatophores (pigment), iridophores (reflective), and leucophores (white) that they control with direct neural connections — faster than any hormonal system. Each square millimeter of skin contains 200+ chromatophores. Scientists hypothesize they may perceive color through an unusual mechanism: their W-shaped pupils create chromatic aberration, allowing them to detect color through focus differences rather than receptor types.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-cuttlefish-final-flash-335",
+      "question": "What remarkable display can male cuttlefish perform?",
+      "answer": "Show different patterns on each side of their body simultaneously",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This 'dual signalling' was captured on video by researchers studying giant Australian cuttlefish. The male positions himself between a female and a rival, essentially wearing two different disguises at once to mate without being challenged.",
       "category": "",
       "wowFactor": 5
     },
@@ -3017,6 +3220,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-dolphin-sponge-tool-333",
+      "question": "Why do some dolphins in Shark Bay wear sponges on their noses?",
+      "answer": "To protect their sensitive snouts while foraging on rocky sea floors",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This 'sponging' behaviour is culturally transmitted almost exclusively from mothers to daughters and has been observed for at least 180 years. It represents one of the clearest examples of tool use and cultural traditions in non-primate mammals.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-dolphins-names-158",
       "question": "How long can dolphins remember another dolphin's signature whistle?",
       "answer": "Over 20 years",
@@ -3047,6 +3267,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-dragonfly-intercept-376",
+      "question": "What hunting technique makes dragonflies so successful?",
+      "answer": "Predictive interception — flying to where prey will be, not where it is",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Dragonflies are the most efficient aerial predators on Earth. Their brain processes visual information in just 30 milliseconds and adjusts wing angles independently (they have 4 independent wings) to intercept moving targets. They can hover, fly backwards, and reach speeds of 54 km/h.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-dragonfly-success-274",
       "question": "What hunting success rate makes dragonflies the most efficient predators?",
       "answer": "95% — far higher than lions (25%) or great white sharks (50%)",
@@ -3073,6 +3310,40 @@
       ],
       "gaiaComment": "",
       "explanation": "Three electric organs (the main organ, Hunter's organ, and Sachs' organ) contain thousands of electrocytes stacked like batteries in series. The eel can modulate its discharge for navigation (low voltage), communication, or prey stunning (high voltage).",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-electric-ray-stun-340",
+      "question": "How much voltage can an electric ray deliver?",
+      "answer": "Up to 220 volts",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The electricity-producing organs, called electroplaques, are derived from muscle tissue arranged in columns like a stack of batteries wired in series. Ancient Romans used electric rays as a primitive form of electroshock therapy, placing them on patients' heads to treat headaches.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-elephant-empathy-mourning-367",
+      "question": "What do elephants do when a family member dies?",
+      "answer": "Hold vigils, touch the body, cover it with branches, and revisit bones years later",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Elephants show some of the clearest evidence of mourning and death awareness outside of humans. They have been observed falling silent around a dead companion, standing guard for days, and making return visits to bone sites of relatives. Different family groups may visit the same remains independently.",
       "category": "",
       "wowFactor": 5
     },
@@ -3237,6 +3508,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-flamingo-upside-down-331",
+      "question": "What is unusual about a flamingo's beak mechanism?",
+      "answer": "The upper jaw moves while the lower jaw stays fixed (opposite to other birds)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "When a flamingo plunges its head underwater and flips it upside-down, the upper jaw becomes the bottom scoop. Comb-like structures called lamellae filter tiny shrimp and algae from the water, similar to how baleen whales filter-feed but on a miniature scale.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-flying-fish-glide-264",
       "question": "How far can a flying fish glide through the air?",
       "answer": "Up to 400 meters — the length of four football fields",
@@ -3248,6 +3536,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The Exocoetidae family contains about 64 species of flying fish. They launch from the water at speed, spread their enlarged pectoral fins like wings, and use their forked tail to taxi across the surface for additional lift. Some species have four 'wings' (enlarged pelvic fins too). In Barbados, flying fish are the national symbol and a culinary staple. Sailors have historically found them flopping on deck in the morning after nighttime flights attracted by ship lights.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-flying-fox-pollinator-347",
+      "question": "Why are flying foxes essential to tropical ecosystems?",
+      "answer": "They pollinate over 300 plant species",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "These fruit bats carry pollen on their fur across vast distances as they feed on nectar and fruit. Some trees have evolved to bloom only at night specifically to attract flying foxes. A single colony can pollinate plants across hundreds of square kilometres.",
       "category": "",
       "wowFactor": 5
     },
@@ -3287,7 +3592,7 @@
     },
     {
       "id": "animal-galaxias-fasciatus-068",
-      "question": "Which species is known as the Galaxias fasciatus?",
+      "question": "What banded freshwater fish species is endemic to New Zealand?",
       "answer": "Galaxias fasciatus",
       "distractors": [
         "[object Object]",
@@ -3339,6 +3644,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-gentoo-penguin-proposal-374",
+      "question": "How do male gentoo penguins court females?",
+      "answer": "By finding and presenting the perfect pebble as a gift",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Pebbles are a scarce and valuable nesting resource in Antarctic penguin colonies. A well-chosen pebble demonstrates the male's ability to find resources. Gentoo penguins are the fastest underwater swimming birds, reaching 36 km/h, which may help them cover ground quickly during pebble hunts.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-geographic-cone-snail-175",
       "question": "How does the geography cone snail deliver its venom?",
       "answer": "By firing a hollow tooth like a harpoon",
@@ -3354,6 +3676,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-gerenuk-standing-browse-343",
+      "question": "What is unique about how gerenuks feed?",
+      "answer": "They stand on hind legs and use their long necks to browse high branches",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Gerenuks have evolved elongated necks, small heads, and wedge-shaped mouths perfectly designed for extracting leaves between thorns. They almost never need to drink water, getting all their moisture from the plants they eat.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-glass-frog-transparent-133",
       "question": "How do glass frogs become nearly invisible while sleeping?",
       "answer": "They hide red blood cells in their liver",
@@ -3365,6 +3704,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Recent research revealed that glass frogs achieve near-transparency during sleep by sequestering about 89% of their red blood cells in their liver, which is coated in reflective crystals. This makes them virtually invisible on green leaves, their preferred resting spots.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-glass-sponge-fiber-optics-370",
+      "question": "What remarkable property do glass sponge fibres have?",
+      "answer": "They transmit light better than commercial fibre optic cables",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The Venus' flower basket sponge constructs an intricate lattice of glass fibres at the bottom of the cold ocean. Each fibre is layered like an onion, giving it flexibility that prevents shattering. Telecommunications engineers study these sponges to learn how to make better fibre optic cables.",
       "category": "",
       "wowFactor": 5
     },
@@ -3488,6 +3844,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-greater-roadrunner-snake-342",
+      "question": "How does the greater roadrunner kill rattlesnakes?",
+      "answer": "Grabs behind the head and smashes them against rocks",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Roadrunners are among the few predators fast and agile enough to take on venomous snakes. They use their speed (32 km/h on foot) to dodge strikes, then seize the snake and batter it. Parts of an oversized snake meal may dangle from the bird's beak for hours as digestion slowly works from the stomach end.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-greenland-shark-age-184",
       "question": "How do scientists determine the age of Greenland sharks?",
       "answer": "By radiocarbon dating proteins in their eye lenses",
@@ -3499,6 +3872,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Scientists determined Greenland shark ages by radiocarbon dating proteins in the lens of their eyes. These sharks grow only about 1 cm per year and don't reach sexual maturity until approximately 150 years old. Most are blind due to parasitic copepods that attach to their corneas.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-greenland-shark-parasite-eye-346",
+      "question": "Why are most adult Greenland sharks blind?",
+      "answer": "A parasitic copepod permanently attaches to and damages their corneas",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The copepod Ommatokoita elongata latches onto the shark's eye and feeds on corneal tissue, causing opacity and eventual blindness. Since Greenland sharks live at depths where sunlight barely penetrates and can live 400+ years, losing vision appears to be an acceptable trade-off.",
       "category": "",
       "wowFactor": 5
     },
@@ -3546,6 +3936,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Harpy eagles are among the most powerful raptors in the world. Their massive rear talons can be up to 13 cm (5 inches) long, and their crushing grip allows them to snatch monkeys and sloths directly from tree canopies.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-harris-hawk-pack-hunt-369",
+      "question": "What makes Harris's hawks unique among raptors?",
+      "answer": "They hunt cooperatively in family packs like wolves",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This wolf-like hunting behaviour is unique among birds of prey. Family groups take different positions around brush piles, with some birds flushing rabbits from cover while others wait in ambush. They also practice 'backstanding' — stacking on top of each other on perches when perch space is limited.",
       "category": "",
       "wowFactor": 5
     },
@@ -3644,6 +4051,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-honey-badger-thick-skin-373",
+      "question": "Why is the honey badger's skin so effective against predators?",
+      "answer": "It is thick and loose enough that the badger can twist around inside it to bite attackers",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Honey badger skin is about 6mm thick and is not firmly attached to the muscle beneath, creating a 'loose jacket' effect. Combined with their extreme aggression and resistance to snake venom, this makes them pound-for-pound perhaps the most fearless animal in Africa.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-honeybee-waggle-131",
       "question": "Who decoded the honeybee waggle dance?",
       "answer": "Karl von Frisch",
@@ -3655,6 +4079,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The angle of the waggle run relative to vertical indicates direction relative to the sun, while the duration of the waggle indicates distance. Karl von Frisch decoded this dance language and received the Nobel Prize in 1973 for the discovery.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-hoopoe-stink-defence-337",
+      "question": "How do hoopoe chicks defend themselves?",
+      "answer": "By spraying foul-smelling brown liquid from their preen gland",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The liquid contains bacteria-produced chemicals that smell like rotting meat. Mother hoopoes also smear this substance on their eggs, which acts as both an antimicrobial coating and a predator deterrent. The name 'hoopoe' comes from their distinctive 'oop-oop-oop' call.",
       "category": "",
       "wowFactor": 5
     },
@@ -3750,7 +4191,7 @@
     },
     {
       "id": "animal-ixobrychus-cinnamomeus-109",
-      "question": "What is the scientific name of the Ixobrychus cinnamomeus?",
+      "question": "Which small heron inhabits dense reedbeds across tropical Asia?",
       "answer": "Ixobrychus cinnamomeus",
       "distractors": [
         "[object Object]",
@@ -3945,6 +4386,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-leafcutter-ant-antibiotics-353",
+      "question": "What do leafcutter ants actually do with the leaves they harvest?",
+      "answer": "Grow fungus on them underground — the fungus is their food",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Leafcutter ant farming predates human agriculture by 50 million years. The ants carry specialized Streptomyces bacteria on their exoskeletons that produce antifungal compounds to defend their fungus gardens — essentially inventing antibiotics tens of millions of years before Alexander Fleming discovered penicillin.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-leafcutter-ant-farming-138",
       "question": "What do leafcutter ants actually eat?",
       "answer": "Fungus they cultivate on chewed leaves",
@@ -4050,7 +4508,7 @@
     },
     {
       "id": "animal-lonchura-ferruginosa-088",
-      "question": "Which species is known as the Lonchura ferruginosa?",
+      "question": "Which munia bird species has a dark brown plumage and is native to Java?",
       "answer": "Lonchura ferruginosa",
       "distractors": [
         "[object Object]",
@@ -4096,6 +4554,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The superb lyrebird has the most complex vocal organ (syrinx) of any songbird, with the most muscles controlling it. Each male builds a repertoire of mimicked sounds over years, incorporating both natural sounds (other bird species, koalas, dingoes) and artificial ones. David Attenborough's famous footage showed one mimicking camera motor drives from nature photographers. Males perform these mimicry concerts on dirt mounds to attract females, dancing while singing.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-lyrebird-construction-sounds-372",
+      "question": "What is remarkable about the lyrebird's vocal abilities?",
+      "answer": "It can perfectly mimic chainsaws, car alarms, speech, and dozens of other sounds",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Male lyrebirds use their extraordinary vocal abilities to create complex songs incorporating dozens of other bird species and environmental sounds. Their syrinx (vocal organ) is the most complex of any songbird, allowing them to produce two independent sounds simultaneously.",
       "category": "",
       "wowFactor": 5
     },
@@ -4285,6 +4760,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-migratory-locust-swarm-364",
+      "question": "How many locusts can a single square kilometre of a swarm contain?",
+      "answer": "80 million",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Desert locusts undergo a dramatic phase change from solitary grasshoppers into gregarious swarming forms triggered by crowding. Their brain releases serotonin, their body colour changes, and they become social and migratory. One 2020 swarm over East Africa was estimated at 200 billion locusts.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-migratory-salmon-smell-164",
       "question": "How do salmon find their exact birth river after years at sea?",
       "answer": "By detecting the unique chemical smell of their natal stream",
@@ -4433,7 +4925,7 @@
     },
     {
       "id": "animal-motacilla-alba-099",
-      "question": "What is the scientific name of the Motacilla alba?",
+      "question": "Which small insectivorous bird constantly wags its tail up and down?",
       "answer": "Motacilla alba",
       "distractors": [
         "[object Object]",
@@ -4483,6 +4975,23 @@
       ],
       "gaiaComment": "",
       "explanation": "This weasel's flexible skull and elongated body plan are extreme adaptations for tunnel hunting. They pursue prey underground at high speed, cornering rodents that thought they were safe in their own burrows.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-naked-mole-rat-oxygen-336",
+      "question": "How do naked mole-rats survive without oxygen for 18 minutes?",
+      "answer": "They switch to burning fructose instead of glucose",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "When oxygen drops, naked mole-rat cells start burning fructose (fruit sugar) through a metabolic pathway normally only found in plants. This allows their vital organs to keep functioning in the near-zero-oxygen air of their deep underground tunnels during crowding.",
       "category": "",
       "wowFactor": 5
     },
@@ -4664,6 +5173,40 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-osprey-reversible-toe-371",
+      "question": "What foot adaptation makes ospreys unique among raptors?",
+      "answer": "A reversible outer toe for gripping slippery fish",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This zygodactyl toe arrangement, combined with spiny foot pads called spicules, gives ospreys an unbreakable grip on wet fish. They also rotate caught fish headfirst in flight to reduce aerodynamic drag — a behaviour no other fish-eating raptor performs.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-owl-silent-flight-361",
+      "question": "What makes owl flight nearly silent?",
+      "answer": "Serrated feather edges and velvety surface that break up air turbulence",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Three adaptations combine for stealth: comb-like serrations on the leading flight feather disrupt air flow into tiny vortices, a soft downy surface absorbs remaining sound, and trailing fringes on the rear edge further dampen noise. Engineers are now copying owl feathers to design quieter wind turbines and aircraft.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-oxpecker-symbiosis-166",
       "question": "What makes the oxpecker-mammal relationship more complex than simple mutualism?",
       "answer": "Oxpeckers also drink blood from their host's wounds",
@@ -4675,6 +5218,40 @@
       ],
       "gaiaComment": "",
       "explanation": "While oxpeckers remove thousands of ticks per day from buffalo, rhinos, and giraffes, studies found they preferentially target wounds and keep them open to feed on blood. The relationship is more accurately described as parasitism balanced by pest removal, not pure mutualism.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-painted-turtle-winter-heart-349",
+      "question": "What happens to painted turtle hatchlings during their first winter?",
+      "answer": "They freeze solid in their nests and thaw alive in spring",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Like wood frogs, painted turtle hatchlings produce cryoprotectant chemicals that prevent lethal ice crystal formation in their cells. They spend their first winter frozen in their shallow nest just centimetres below the surface, enduring temperatures below -10°C before emerging.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-pangolin-ant-count-330",
+      "question": "Where is a pangolin's tongue anchored inside its body?",
+      "answer": "Near the pelvis, not in the mouth",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Pangolins have no teeth. Their sticky tongue is anchored near the pelvis (not in the mouth) and extends through a special sheath along the throat. They can flick it in and out twice per second, and their stomach contains small stones that help grind up insects.",
       "category": "",
       "wowFactor": 5
     },
@@ -4725,7 +5302,7 @@
     },
     {
       "id": "animal-papilio-aristodemus-094",
-      "question": "What is the scientific name of the Papilio aristodemus?",
+      "question": "Which endangered swallowtail butterfly is native to the Florida Keys?",
       "answer": "Papilio aristodemus",
       "distractors": [
         "[object Object]",
@@ -4754,6 +5331,23 @@
       ],
       "gaiaComment": "",
       "explanation": "These bright green frogs launch themselves from high branches, spreading their enormous webbed toes and extending skin flaps on their forearms and legs. They can control their descent angle and direction, making banked turns between trees in the Borneo rainforest.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-parrotfish-sand-329",
+      "question": "How do tropical white sand beaches form?",
+      "answer": "Largely from parrotfish excreting ground-up coral",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Parrotfish use their beak-like fused teeth to scrape algae from coral, grinding up the hard limestone skeleton in the process. The coral passes through their gut and emerges as fine sand. Hawaii's famous white beaches are largely built from centuries of parrotfish excretion.",
       "category": "",
       "wowFactor": 5
     },
@@ -4804,7 +5398,7 @@
     },
     {
       "id": "animal-phocoena-phocoena-108",
-      "question": "Which species is known as the Phocoena phocoena?",
+      "question": "Which small cetacean is the most common porpoise in northern waters?",
       "answer": "Phocoena phocoena",
       "distractors": [
         "[object Object]",
@@ -4822,6 +5416,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-pistol-shrimp-colony-332",
+      "question": "What makes certain pistol shrimp species unique among marine animals?",
+      "answer": "They are eusocial with queens, soldiers, and workers like ants",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The snapping shrimp Synalpheus regalis forms colonies of up to 300 individuals within a single sponge. Like termites, only one female breeds while others defend the colony and maintain the sponge fortress. This discovery in 1996 overturned assumptions that eusociality was limited to insects and naked mole-rats.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-pistol-shrimp-goby-154",
       "question": "How does the goby fish warn the pistol shrimp of danger?",
       "answer": "By flicking its tail, which the shrimp touches with its antenna",
@@ -4833,6 +5444,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The goby rests at the burrow entrance while the shrimp works, maintaining physical contact via its antenna on the goby's tail. When danger approaches, the goby flicks its tail, signaling the shrimp to retreat. Neither species thrives as well alone.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-pistol-shrimp-louder-whale-351",
+      "question": "How loud is a pistol shrimp's claw snap?",
+      "answer": "218 decibels — louder than a gunshot",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The snap creates a cavitation bubble that collapses with such force it generates a shockwave, a flash of light (sonoluminescence), and temperatures briefly reaching 4,700°C (hotter than the sun's surface). Colonies of pistol shrimp create such noise that they can interfere with submarine sonar.",
       "category": "",
       "wowFactor": 5
     },
@@ -4893,6 +5521,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The platypus bill contains mechanoreceptors and electroreceptors arranged in stripes. By sweeping its bill side to side, the platypus triangulates prey location from electrical signals alone. This electrolocation system is shared with only a handful of other mammals, like echidnas.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-platypus-glow-biofluorescent-377",
+      "question": "What colour does platypus fur glow under ultraviolet light?",
+      "answer": "Blue-green",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Discovered in 2020, this biofluorescence has no confirmed function yet. Since platypuses are nocturnal and crepuscular, some researchers speculate the glow may help them see or communicate in low UV light conditions at dawn and dusk, or it may simply be a byproduct of fur chemistry.",
       "category": "",
       "wowFactor": 5
     },
@@ -4961,6 +5606,40 @@
       ],
       "gaiaComment": "",
       "explanation": "Coccyzus vieilloti, commonly known as the Puerto Rican Lizard Cuckoo, inhabits various habitats worldwide. This bird has been assessed as Least Concern by conservationists, meaning its populations remain relatively stable in the wild.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-pufferfish-art-356",
+      "question": "Why do male pufferfish build elaborate sand circles on the sea floor?",
+      "answer": "To attract females with the most intricate design",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Discovered in 2011 off the coast of Japan, these underwater crop circles were initially a mystery. Each sculpture has radial ridges and a smooth central area decorated with shells. Females inspect the patterns, and males with the most intricate designs get chosen as mates.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-raccoon-lock-picking-359",
+      "question": "How long can raccoons remember puzzle solutions?",
+      "answer": "At least 3 years",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Their dexterous front paws contain four times more sensory receptors than most mammals, giving them almost human-like touch sensitivity. Combined with excellent problem-solving intelligence, this makes raccoons extraordinarily adept at manipulating objects, opening containers, and defeating 'raccoon-proof' bins.",
       "category": "",
       "wowFactor": 5
     },
@@ -5050,6 +5729,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-sawfish-electroreception-354",
+      "question": "What can a sawfish's rostrum (saw) detect?",
+      "answer": "Electric fields from prey heartbeats and muscle movements",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The rostrum (saw) contains up to 3,000 ampullae of Lorenzini that sense the weak electric fields generated by living organisms. Once prey is detected, the sawfish swings its rostrum sideways with incredible speed, using the sharp teeth along the edges to wound or stun fish before eating them.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-scaly-foot-snail-iron-314",
       "question": "What makes the scaly-foot snail's shell unique among animals?",
       "answer": "It is partially made of iron sulfide",
@@ -5063,6 +5759,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Living at depths of 2,400 metres near volcanic vents, this snail absorbs iron compounds from the superheated water. Its foot is covered in iron-mineralized scales that act as armor against predatory crabs. The US military has studied its shell for inspiration in body armor design.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-sea-cucumber-breathe-butt-344",
+      "question": "How do sea cucumbers breathe?",
+      "answer": "Through a respiratory tree connected to their anus",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This unique respiratory system is called the respiratory tree, a pair of branching tubes that absorb oxygen from water pumped through the cloaca. Some species pump up to 20 litres of water through their rear per hour. A tiny pearlfish has even evolved to live inside the sea cucumber's respiratory tree, entering through the anus.",
       "category": "",
       "wowFactor": 5
     },
@@ -5093,6 +5806,40 @@
       ],
       "gaiaComment": "",
       "explanation": "Sea otters select specific rocks as anvils and keep favorite ones in a loose pouch of skin under their forearms. They strike abalone and clams against these rocks at rates of up to 45 blows in 15 seconds. Some otters pass preferred tools to their offspring.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-secretary-bird-stomp-334",
+      "question": "How does the secretary bird kill venomous snakes?",
+      "answer": "By stomping with 5x its body weight in 15 milliseconds",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Secretary birds stand 1.3 metres tall and have specially reinforced leg scales that protect against bites. Their stomping force of 195 Newtons is delivered so rapidly that the snake's nervous system cannot trigger a defensive strike in time.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-serval-leap-accuracy-363",
+      "question": "What is the serval's hunting success rate?",
+      "answer": "Nearly 50% — the highest of any wild cat",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Servals' oversized ears rotate independently to pinpoint prey in tall grass using sound alone. They combine this acoustic tracking with explosive vertical leaps, often catching birds and rodents that other predators would miss entirely.",
       "category": "",
       "wowFactor": 5
     },
@@ -5159,6 +5906,23 @@
       ],
       "gaiaComment": "",
       "explanation": "The brachial gland on the slow loris's inner elbow secretes an oily toxin. When threatened, the loris licks its brachial glands and delivers the venom-saliva mixture through a specialized tooth comb. The toxin causes necrosis in other lorises and can trigger fatal allergic reactions in humans.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-slow-loris-venom-elbow-357",
+      "question": "Where does the slow loris produce its venom?",
+      "answer": "A gland on its elbow (brachial gland)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The brachial gland on the loris's inner elbow secretes an oily toxin. Before biting defensively, the loris raises its arms over its head — a posture that looks cute but is actually positioning its elbow near its mouth to load venom onto its teeth. Loris bites have caused human deaths from anaphylaxis.",
       "category": "",
       "wowFactor": 5
     },
@@ -5295,6 +6059,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-stoat-hypnotic-dance-345",
+      "question": "What does the stoat's 'war dance' do to rabbits?",
+      "answer": "Apparently hypnotises them into standing still",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Scientists debate whether this behaviour is deliberate hunting strategy or a symptom of a parasite (Skrjabingylus) affecting the brain. However, rabbits consistently freeze and watch the display with apparent fascination, and stoats that dance catch more prey than those that simply stalk.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-superb-fairy-wren-password-179",
       "question": "Why do fairy-wren mothers teach passwords to unhatched chicks?",
       "answer": "To identify their own chicks and detect brood parasites like cuckoos",
@@ -5321,6 +6102,23 @@
       ],
       "gaiaComment": "",
       "explanation": "During mating, the male presses fertilized eggs onto the female's back, where her skin swells to encase each egg. Over 3-4 months, the eggs develop through tadpole stage entirely within the skin pockets. Up to 100 fully developed toadlets burst out simultaneously.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-swift-years-airborne-352",
+      "question": "How long can common swifts stay airborne without landing?",
+      "answer": "Up to 10 consecutive months",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Using lightweight data loggers, researchers confirmed that swifts leaving their nest in Sweden in August did not land again until they returned to breed the following June. They sleep in short micro-naps while gliding at altitude, one brain hemisphere at a time.",
       "category": "",
       "wowFactor": 5
     },
@@ -5557,6 +6355,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-water-bear-radiation-368",
+      "question": "What protein do tardigrades use to survive extreme radiation?",
+      "answer": "Dsup (Damage Suppression) — it forms a shield around DNA",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The Dsup (Damage Suppression) protein was discovered in 2016 and acts as a physical shield that wraps around DNA to block radiation damage. When scientists transferred this gene to human cells in a lab, those cells became significantly more radiation-resistant.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-whale-shark-filter-146",
       "question": "How much water can a whale shark filter per hour?",
       "answer": "Up to 6,000 liters",
@@ -5657,6 +6472,23 @@
       "wowFactor": 5
     },
     {
+      "id": "animal-wolverine-avalanche-nose-350",
+      "question": "How deep can wolverines detect buried carcasses through snow?",
+      "answer": "Up to 6 metres (20 feet)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This extraordinary olfactory ability makes wolverines the ultimate Arctic scavengers. They can smell a carcass buried meters deep, then use their powerful claws and incredible stamina to dig for hours through packed snow and ice to reach the meal.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
       "id": "animal-wolverine-strength-165",
       "question": "What physical adaptation helps wolverines travel through deep snow?",
       "answer": "Oversized paws that act as snowshoes",
@@ -5683,6 +6515,23 @@
       ],
       "gaiaComment": "",
       "explanation": "Wombat feces are distinctly cubic, about 2 cm per side. Research published in 2018 revealed the mechanism: the wombat's intestine has varying thickness and stiffness, with two stiffer regions creating the flat faces while the softer regions form the corners. The cubes are functional — they stack without rolling, allowing wombats to mark territory on logs and rocks without their droppings tumbling away. Wombats can produce up to 100 cubes per night.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "animal-wood-ant-catapult-358",
+      "question": "How far can wood ants spray formic acid?",
+      "answer": "Up to 30 cm (1 foot)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Worker ants position themselves around the nest entrance, raise their gasters (abdomens) toward approaching threats, and fire jets of formic acid. The acid burns skin and mucous membranes. A colony of 300,000 ants can collectively spray about 200 litres of formic acid per season.",
       "category": "",
       "wowFactor": 5
     },
@@ -6026,7 +6875,7 @@
     },
     {
       "id": "art-austrian-museum-of-folk-life-a-045",
-      "question": "What type of structure is Austrian Museum of F?",
+      "question": "What type of cultural institution showcases Austrian folk art and traditions?",
       "answer": "Museum",
       "distractors": [
         "[object Object]",
@@ -6045,7 +6894,7 @@
     },
     {
       "id": "art-austrian-national-library-037",
-      "question": "Where is Austrian National Library located?",
+      "question": "In which country is the national library founded in 1368 located?",
       "answer": "Austria",
       "distractors": [
         "[object Object]",
@@ -6710,7 +7559,7 @@
     },
     {
       "id": "art-hus-museum-016",
-      "question": "What type of structure is Åhus Museum?",
+      "question": "What type of cultural institution is found in Åhus, Sweden?",
       "answer": "Museum",
       "distractors": [
         "[object Object]",
@@ -6862,7 +7711,7 @@
     },
     {
       "id": "art-landesmuseum-hannover-046",
-      "question": "Where is Landesmuseum Hannover located?",
+      "question": "In which German city is the Landesmuseum established in 1856?",
       "answer": "Hannover",
       "distractors": [
         "[object Object]",
@@ -11829,7 +12678,7 @@
     },
     {
       "id": "battle-nieuwpoort-1600",
-      "question": "Where did the Battle of Nieuwpoort occur?",
+      "question": "In which Belgian town did Dutch and Spanish forces clash in 1600?",
       "answer": "Nieuwpoort",
       "distractors": [
         "[object Object]",
@@ -14103,7 +14952,7 @@
     },
     {
       "id": "food-mattar-paneer-091",
-      "question": "What type of cheese is used in mattar paneer?",
+      "question": "What type of fresh cheese is used in mattar (peas) curry?",
       "answer": "Paneer",
       "distractors": [
         "[object Object]",
@@ -14752,7 +15601,7 @@
     },
     {
       "id": "food-shahe-fen-102",
-      "question": "What Chinese town are shahe fen noodles named after?",
+      "question": "Which Guangdong town gave its name to a famous wide rice noodle?",
       "answer": "Shahe",
       "distractors": [
         "[object Object]",
@@ -16825,7 +17674,7 @@
     },
     {
       "id": "food_cuisine_gen_184",
-      "question": "Which German city is the frankfurter sausage named after?",
+      "question": "Which German city lent its name to a famous hot dog sausage?",
       "answer": "Frankfurt",
       "distractors": [
         "Berlin",
@@ -17664,6 +18513,937 @@
       ],
       "gaiaComment": "",
       "explanation": "After a 20-year legal battle, Greece won exclusive rights to the name. Danish and French versions must now use other names like 'salad cheese.'",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_240",
+      "question": "Allspice comes from a single berry — which country is its primary origin?",
+      "answer": "Jamaica",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Christopher Columbus's crew discovered allspice in Jamaica in 1494. Jamaica still produces most of the world's supply. The dried unripe berries resemble large peppercorns.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_241",
+      "question": "Korean mandu dumplings were likely introduced during which dynasty?",
+      "answer": "Goryeo Dynasty",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The Mongol Empire connected East and West, spreading dumpling culture across Eurasia. Mandu became a Korean New Year staple and are often shaped like half-moons or coins for good luck.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_242",
+      "question": "What gives Turkish dondurma ice cream its uniquely stretchy texture?",
+      "answer": "Salep and mastic resin",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Dondurma vendors in Turkey are famous street performers who tease customers by flipping and stretching the ice cream on long metal paddles. The salep orchid is now endangered from overharvesting.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_243",
+      "question": "In which ancient civilization were street vendors already selling pea soup as fast food?",
+      "answer": "Ancient Rome",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Dried peas were one of the earliest cultivated crops, and pea soup became a staple across Northern Europe. In Sweden, ärtsoppa (pea soup) is traditionally eaten every Thursday, a custom dating back to medieval Catholic fasting rules.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_244",
+      "question": "In which ancient empire was sorbet first created?",
+      "answer": "Persian Empire",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The word 'sherbet' comes from the Persian 'sharbat' meaning iced drink. Arab traders spread the concept to Europe via Sicily, where it evolved into modern Italian sorbetto and eventually French sorbet.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_245",
+      "question": "How many strokes does the Chinese character for 'biang' in biangbiang noodles have?",
+      "answer": "58",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The character is so complex it doesn't appear in standard dictionaries or computer fonts. Noodle shops display it hand-painted. The thick, belt-like noodles are hand-pulled and can be over an inch wide.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_246",
+      "question": "Aşure (Noah's Pudding) is legendary for being made from leftover ingredients on what?",
+      "answer": "Noah's Ark",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "This grain-and-fruit porridge traditionally contains at least 15 ingredients including wheat, chickpeas, dried fruits, and nuts. In Turkey, it is shared with neighbors and friends to symbolize gratitude and community.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_247",
+      "question": "Where did samosas originally come from before reaching India?",
+      "answer": "Middle East",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The samosa appears in the writings of Iranian historian Abul-Fazl Bayhaqi around 1030 CE. Traders along the Silk Road spread it eastward. India adopted and transformed it with local spices, making it the global icon it is today.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_248",
+      "question": "How is gimbap rice seasoned differently from sushi rice?",
+      "answer": "Sesame oil instead of vinegar",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Gimbap (literally 'seaweed rice') became popular in 20th-century Korea as affordable, easy-to-transport food. Unlike sushi, it rarely uses raw fish, favoring cooked fillings like bulgogi, pickled radish, and spinach.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_249",
+      "question": "Fideuà was invented when a fisherman ran out of what ingredient for paella?",
+      "answer": "Rice",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The dish originates from the fishing town of Gandia near Valencia. It uses the same seafood broth, saffron, and technique as paella but with thin vermicelli-like noodles that absorb even more flavor. Annual fideuà competitions are held in Gandia.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_250",
+      "question": "What does the Hungarian word 'gulyás' (goulash) literally mean?",
+      "answer": "Herdsman",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Shepherds on the Hungarian puszta (plains) would dry cubes of cooked stew into portable cakes, then rehydrate them with water when needed — an early form of instant food. Paprika was only added in the 18th century.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_251",
+      "question": "Which ancient people used olive oil for embalming their rulers?",
+      "answer": "Egyptians",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The olive tree was domesticated around 6,000 years ago in the eastern Mediterranean. Early civilizations valued olive oil primarily as a cosmetic, medicine, and ceremonial substance. Cooking with it came relatively late in its long history.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_252",
+      "question": "In what year did astronauts first eat food grown in space?",
+      "answer": "2015",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "NASA's Veggie experiment uses red, blue, and green LED lights to grow 'Outredgeous' red romaine lettuce in orbit. Growing fresh food in space is critical for future Mars missions where resupply from Earth won't be possible.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_253",
+      "question": "How old is the oldest known bread ever found?",
+      "answer": "14,400 years",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Archaeologists at the Shubayqa 1 site found charred bread crumbs made from wild wheat and barley in a stone fireplace. This discovery suggests that the desire to make bread may have actually motivated early humans to begin farming grain.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_254",
+      "question": "How is real coconut milk actually made?",
+      "answer": "By squeezing grated coconut flesh",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Coconut water is a clear, low-fat drink found naturally inside young coconuts. Coconut milk, used in curries and desserts across Southeast Asia, is a manufactured product with much higher fat content — the first press yields thick cream, subsequent presses yield thinner milk.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_255",
+      "question": "The story of Margherita pizza being created for a queen in 1889 is now considered what?",
+      "answer": "Likely a publicity myth",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "While pizza with tomato, mozzarella, and basil existed in Naples before 1889, the romantic story of pizzaiolo Raffaele Esposito creating it for the Queen lacks contemporary documentation. The 'royal letter of appreciation' may have been fabricated. The dish was already common among Neapolitan poor.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_256",
+      "question": "What toxic substance in cashew shells is also found in poison ivy?",
+      "answer": "Urushiol",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The cashew shell contains urushiol, the same irritant found in poison ivy. This is why cashews are never sold in the shell and why they're always roasted — the heat destroys the toxin. Workers processing raw cashews can get painful chemical burns.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_257",
+      "question": "Which Roman emperor reportedly served 600 flamingo heads at one banquet?",
+      "answer": "Elagabalus",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Roman elite dining (cena) featured exotic foods as status symbols. Flamingo tongues were prized for their supposedly exquisite flavor. The naturalist Pliny the Elder wrote about their delicate taste. Other bizarre Roman delicacies included dormice fattened on walnuts and moray eels fed on enslaved people.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_258",
+      "question": "What compound in tonic water makes it glow under UV light?",
+      "answer": "Quinine",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Quinine was originally extracted from the bark of the South American cinchona tree as a malaria treatment. British colonials in India mixed it with gin and sugar to make the bitter medicine palatable — inventing the gin and tonic. Modern tonic water contains much less quinine.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_259",
+      "question": "Approximately how much honey does a single bee produce in its lifetime?",
+      "answer": "1/12th of a teaspoon",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "A honeybee visits 50-100 flowers per foraging trip and makes about 10 trips per day. Over its 6-week summer lifespan, one bee produces roughly 1.5 grams of honey. It takes the lifetime output of about 768 bees to produce a single pound of honey.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_260",
+      "question": "Which Roman emperor burned a year's supply of cinnamon at his wife's funeral?",
+      "answer": "Nero",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Cinnamon comes from the inner bark of Cinnamomum trees, originally from Sri Lanka and Southeast Asia. Arab traders kept its origin secret for centuries, inventing wild stories about cinnamon being harvested from the nests of giant birds to maintain their monopoly.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_261",
+      "question": "What unusual meat is in Icelandic hot dogs that gives them their distinctive taste?",
+      "answer": "Lamb",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Operating since 1937, the tiny stand near Reykjavik's harbor serves over 100,000 hot dogs per year. The lamb gives Icelandic hot dogs their distinctive flavor. They're traditionally ordered 'eina með öllu' (one with everything) — raw and crispy onions, ketchup, sweet mustard, and remoulade.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_262",
+      "question": "Who first described the roux technique in a 1651 cookbook?",
+      "answer": "La Varenne",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "French chef François Pierre La Varenne first described roux in 1651 in his groundbreaking cookbook 'Le Cuisinier François.' Before roux, sauces were thickened with bread. This simple innovation enabled béchamel, velouté, and espagnole — three of the five French mother sauces.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_263",
+      "question": "What does the German word 'Streusel' literally mean?",
+      "answer": "To scatter",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The word 'Streusel' comes from the German 'streuen' meaning 'to scatter.' Originally a thrifty bakers' solution, the buttery crumble topping became a signature of German and Central European baking, appearing on everything from Apfelkuchen to Pflaumenkuchen.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_264",
+      "question": "Why have airlines banned cans of surströmming?",
+      "answer": "The cans can explode from fermentation gas",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The fermentation continues inside the sealed tin, creating enormous internal pressure. When opened, the smell is so intense that it's traditionally eaten outdoors. Some landlords in Sweden have ruled that opening surströmming indoors constitutes grounds for eviction.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_265",
+      "question": "What part of a chili pepper contains most of the capsaicin?",
+      "answer": "The white pith (placenta)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Seeds themselves contain very little capsaicin. The membrane tissue that attaches seeds to the pepper wall is the true heat source. Removing the pith dramatically reduces a pepper's spiciness while keeping the flavor — a technique professional chefs use to control heat levels precisely.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_266",
+      "question": "What actually causes wagyu beef's extreme tenderness?",
+      "answer": "Genetics that create intramuscular fat marbling",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "While some farmers do play music for their cattle or brush them to reduce stress, the massage-and-beer story is largely exaggerated by Western media. The key is selective breeding of Japanese Black cattle over centuries, creating fat distribution at the cellular level that no other breed can match.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_267",
+      "question": "What was the original Chinese 'kê-tsiap' made from?",
+      "answer": "Fermented fish",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "British traders brought kê-tsiap to Europe where cooks reinvented it using mushrooms, walnuts, and oysters. Tomatoes weren't added until the 1800s in America. The original Chinese version was made from fermented fish entrails and soybeans — nothing like modern ketchup.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_268",
+      "question": "Why must Greenland shark be fermented before eating?",
+      "answer": "The fresh meat is toxic",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Greenland shark flesh is toxic when fresh due to high levels of trimethylamine oxide. Icelanders discovered that burying it underground for 6-12 weeks and then hanging it to dry for 4-5 months makes it safe to eat. The fermentation converts the toxins into ammonia, giving it that infamous smell.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_269",
+      "question": "What is the minimum alcohol percentage required in US vanilla extract?",
+      "answer": "35%",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The FDA requires vanilla extract to contain at least 35% ethyl alcohol to properly dissolve and preserve the vanillin and other flavor compounds from vanilla beans. This is 70 proof — comparable to some liquors. During Prohibition, some Americans reportedly used vanilla extract as an alcoholic beverage substitute.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_270",
+      "question": "Which Dutch holiday features pepernoten cookies?",
+      "answer": "Sinterklaas",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "These bite-sized cookies (about the size of a marble) are made from a heavily spiced dough and traditionally scattered by Sinterklaas helpers during the Dutch holiday season in early December. The spice blend reflects the Netherlands' colonial spice trade history with Indonesia.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_271",
+      "question": "What determines maple syrup's grade?",
+      "answer": "Light transmittance (color)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The old grading system (Grade A vs Grade B) confused consumers into thinking B was inferior. In 2015, the system was revised so all retail maple syrup is Grade A with color descriptors. Darker syrup is produced later in the sugaring season when warmer temperatures cause more complex chemical reactions in the sap.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_272",
+      "question": "What mineral salt is traditionally used to coagulate soy milk into tofu?",
+      "answer": "Nigari (magnesium chloride)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Legend attributes tofu's invention to Prince Liu An of the Han Dynasty around 164 BCE, though this may be apocryphal. The coagulation chemistry is identical to cheese-making: an acid or mineral salt causes proteins to clump and separate from liquid whey. Tofu spread to Japan and Korea by the 8th century.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_273",
+      "question": "What is the term for an oyster's regional flavor profile, analogous to wine's terroir?",
+      "answer": "Merroir",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Oysters feed by pumping water through their gills and trapping phytoplankton. The minerals, salinity, algae species, and temperature of their home waters directly shape their flavor. A Kumamoto from California tastes nothing like a Belon from Brittany, even though both are oysters.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_274",
+      "question": "What chocolate ingredient is completely absent from white chocolate?",
+      "answer": "Cocoa solids",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Real chocolate gets its brown color and complex flavor from cocoa solids (the non-fat part of the cocoa bean). White chocolate uses only the fat (cocoa butter), which is naturally pale yellow. Many cheaper white chocolates substitute vegetable oils for cocoa butter, making them even less chocolatey.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_275",
+      "question": "What royal house gave ladyfinger biscuits their Italian name 'savoiardi'?",
+      "answer": "House of Savoy",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "These light, dry, finger-shaped sponge cakes were created to honor a visit by the King of France. Their absorbent texture made them perfect for soaking up coffee and mascarpone in tiramisu, which wasn't invented until the 1960s–1980s. The name 'ladyfinger' comes from their elegant, delicate shape.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_276",
+      "question": "In what year was Hawaii's food kapu system abolished?",
+      "answer": "1819",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The Hawaiian kapu system, derived from Polynesian tapu, divided foods by gender and social rank. Coconut, pork, banana, and certain fish were reserved for men and religious ceremonies. The system was officially abolished in 1819 when Queen Kaahumanu publicly ate forbidden foods with King Liholiho.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_277",
+      "question": "How many years after the tin can was the can opener invented?",
+      "answer": "48 years",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Peter Durand patented the tin can in 1810, but the first practical can opener wasn't invented until 1858 by Ezra Warner. Early military cans came with instructions like 'Cut round on the top near to the outer edge with a chisel and hammer.' The delay happened because early cans had thick walls that required industrial tools.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_278",
+      "question": "What happens to a potato's power output when it is boiled first?",
+      "answer": "It increases tenfold",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The phosphoric acid in potato juice acts as an electrolyte. When zinc and copper electrodes are inserted, a chemical reaction generates about 0.5 volts per potato. Israeli researchers in 2010 discovered that boiling potatoes for 8 minutes breaks down cell membranes, dramatically increasing the current.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_279",
+      "question": "Where was ranch dressing originally created?",
+      "answer": "Alaska",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Henson, a plumber from Nebraska, developed the buttermilk-herb dressing while cooking for construction workers in Alaska. He and his wife later bought a dude ranch near Santa Barbara, California, renamed it Hidden Valley Ranch, and started selling the seasoning packets by mail. Clorox bought the brand in 1972.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_280",
+      "question": "What botanical term describes how pistachios naturally split open?",
+      "answer": "Dehiscent",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The split shell is not artificial processing — it's the pistachio's natural way of signaling ripeness. Unsplit pistachios are typically processed into pistachio butter or ice cream flavoring. Iran and the United States produce about 70% of the world's pistachios.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_281",
+      "question": "How long does the dough for the world's most expensive pizza take to prepare?",
+      "answer": "72 hours",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Called 'Louis XIII,' this pizza uses dough aged for 72 hours, is baked in the customer's home by Viola himself using a portable oven, and is served with Rémy Martin Louis XIII cognac. The extravagant toppings include Oscietra Royal Prestige caviar, Kashmiri saffron, and hand-harvested Murray River salt.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_282",
+      "question": "Why must miso paste be added to soup after removing from heat?",
+      "answer": "High heat kills the beneficial live bacteria",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Miso contains live Lactobacillus and other probiotic organisms from the fermentation process. These die above 60°C (140°F). Adding miso to boiling water kills the beneficial cultures and also degrades the delicate umami flavor compounds. This is why miso should never be boiled.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_283",
+      "question": "What fruit family are almonds most closely related to?",
+      "answer": "Peaches and plums (stone fruits)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The 'nut' we eat is the pit (stone) of a fruit that looks like a small, unripe peach. Almond trees even produce fuzzy green fruits that split open to reveal the familiar shell. Botanically, true nuts include hazelnuts, chestnuts, and acorns — almonds are as much a nut as a peach pit is.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_284",
+      "question": "How long does it take to make black garlic?",
+      "answer": "3-6 weeks",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "The process was popularized in Korea and Japan. The prolonged low heat converts the garlic's harsh allicin into sweet melanoidins and S-allyl cysteine, a powerful antioxidant. The texture becomes soft and spreadable like a date. No fermentation is involved despite common misconceptions.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_285",
+      "question": "What does 'poutine' mean in Quebec slang?",
+      "answer": "A mess",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Poutine was invented in rural Quebec in the 1950s. For decades, it was seen as low-class roadside food. Its rehabilitation began when Montreal chefs started creating gourmet versions with foie gras, lobster, and truffle oil, elevating it into Canada's unofficial national dish.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_286",
+      "question": "What destroys the sting in stinging nettles, making them edible?",
+      "answer": "Cooking or drying",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Cooking, steaming, or drying nettles destroys the formic acid and histamine in their tiny stinging hairs (trichomes). Europeans have eaten nettles for millennia — nettle soup is traditional in Scandinavia, Britain, and Eastern Europe. The plant contains more vitamin C than oranges and more calcium than milk, gram for gram.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_287",
+      "question": "What traditional tool do Icelandic puffin hunters use?",
+      "answer": "A háfur (net on a long pole)",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "Atlantic puffins breed in enormous colonies on Icelandic sea cliffs. Icelanders have hunted them sustainably for centuries using a specialized net on a long pole called a háfur. The meat is dark, gamey, and rich — often compared to liver. Declining puffin populations have made hunting increasingly controversial.",
+      "category": "",
+      "wowFactor": 5
+    },
+    {
+      "id": "food_cuisine_gen_288",
+      "question": "How long must Worcestershire sauce age before bottling?",
+      "answer": "18 months",
+      "distractors": [
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]",
+        "[object Object]"
+      ],
+      "gaiaComment": "",
+      "explanation": "John Lea and William Perrins were chemists in Worcester, England, hired to recreate a sauce a nobleman had tasted in India. Their first attempt tasted terrible, so they stored the barrels in their cellar and forgot about them. When rediscovered months later, the fermented sauce had developed its complex, tangy flavor. The recipe remains secret to this day.",
       "category": "",
       "wowFactor": 5
     },
@@ -24070,7 +25850,7 @@
     {
       "id": "gk-academy-award-for-best-original-song-sco-161",
       "question": "What is the Academy Award for Best Original Song Score?",
-      "answer": "Name of the best original score category at the 43rd academy awards (1971)",
+      "answer": "A film award category",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -24082,7 +25862,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "The Academy Award for Best Original Song Score recognizes outstanding achievement in cinema. It is one of the most prestigious honors in the film industry, awarded annually by the Academy of Motion Picture Arts and Sciences.",
+      "explanation": "It was the name of the Best Original Score category at the 43rd Academy Awards (1971). The Academy Award for Best Original Song Score recognizes outstanding achievement in cinema, awarded annually by the Academy of Motion Picture Arts and Sciences.",
       "category": "",
       "wowFactor": 5
     },
@@ -24122,8 +25902,8 @@
     },
     {
       "id": "gk-ajanta-caves-166",
-      "question": "What is Ajanta Caves?",
-      "answer": "2nd century bce to 1st century ce buddhist cave monuments located in maharashtra, india",
+      "question": "What are the Ajanta Caves in Maharashtra, India?",
+      "answer": "Buddhist cave monuments",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -24135,7 +25915,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Ajanta Caves represents a remarkable window into ancient civilizations. Archaeological investigations at this site have revealed important artifacts and structures that help us understand how people lived in the distant past.",
+      "explanation": "The Ajanta Caves are 2nd century BCE to 1st century CE Buddhist cave monuments located in Maharashtra, India. Archaeological investigations have revealed important artifacts including paintings and sculptures that illuminate ancient Buddhist life and art.",
       "category": "",
       "wowFactor": 5
     },
@@ -24205,8 +25985,8 @@
     },
     {
       "id": "gk-ancient-temple-siddheshwar-mahadeva-temp-155",
-      "question": "What is Ancient Temple (Siddheshwar Mahadeva Temple)?",
-      "answer": "Sidheshwar Mahadev Mandir (also known as Siddheshwar Shiv Mandir or Mahadev Mandir, Avanti Pur Badodiya) is a Hindu temple in Shajapur district, Madhya Pradesh, dedicated to Lord Shiva, attracting devotees especially during Mahashivratri and Shravan.",
+      "question": "What is the Ancient Temple (Siddheshwar Mahadeva Temple)?",
+      "answer": "A Hindu Shiva temple",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -24218,7 +25998,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Ancient Temple (Siddheshwar Mahadeva Temple) is a sacred Hindu site dedicated to worship and devotion. Hindu temples like this one feature intricate carvings, vibrant decorations, and serve as important centers of spiritual and community life.",
+      "explanation": "Sidheshwar Mahadev Mandir (also known as Siddheshwar Shiv Mandir or Mahadev Mandir, Avanti Pur Badodiya) is a Hindu temple in Shajapur district, Madhya Pradesh, dedicated to Lord Shiva. It attracts devotees especially during Mahashivratri and Shravan.",
       "category": "",
       "wowFactor": 5
     },
@@ -24258,8 +26038,8 @@
     },
     {
       "id": "gk-ashok-binayak-temple-183",
-      "question": "What is Ashok Binayak Temple?",
-      "answer": "A hindu temple located in kathmandu district at eastern side of kathmandu durbar square in maru tole",
+      "question": "What is Ashok Binayak Temple in Kathmandu?",
+      "answer": "A Hindu temple",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -24271,7 +26051,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Ashok Binayak Temple is a sacred Hindu site dedicated to worship and devotion. Hindu temples like this one feature intricate carvings, vibrant decorations, and serve as important centers of spiritual and community life.",
+      "explanation": "A Hindu temple located in Kathmandu district at the eastern side of Kathmandu Durbar Square in Maru Tole. It features intricate carvings, vibrant decorations, and serves as an important center of spiritual and community life.",
       "category": "",
       "wowFactor": 5
     },
@@ -24943,7 +26723,7 @@
     },
     {
       "id": "gk-dendera-temple-complex-130",
-      "question": "What type of structure is Dendera Temple complex?",
+      "question": "What type of ancient Egyptian structure stands at Dendera?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -25359,7 +27139,7 @@
     },
     {
       "id": "gk-forum-temple-of-emporiae-142",
-      "question": "What is Forum Temple of Emporiae?",
+      "question": "What type of Roman religious structure stood in the forum of Emporiae?",
       "answer": "Temple",
       "distractors": [
         "[object Object]",
@@ -25655,7 +27435,7 @@
     },
     {
       "id": "gk-ishtar-s-temple-in-ebla-152",
-      "question": "What is Ishtar’s Temple in Ebla?",
+      "question": "What type of ancient Mesopotamian structure in Ebla was dedicated to Ishtar?",
       "answer": "Temple",
       "distractors": [
         "[object Object]",
@@ -25708,7 +27488,7 @@
     },
     {
       "id": "gk-karnak-temple-complex-100",
-      "question": "What type of structure is Karnak Temple Complex?",
+      "question": "What type of ancient Egyptian structure stands at Karnak?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -26177,7 +27957,7 @@
     },
     {
       "id": "gk-old-temple-of-athena-123",
-      "question": "What type of structure is Old Temple of Athena?",
+      "question": "What type of ancient structure once stood on the Athenian Acropolis?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -26684,7 +28464,7 @@
     },
     {
       "id": "gk-reno-west-of-la-324",
-      "question": "Which city is farther west: Reno, Nevada, or Los Angeles, California?",
+      "question": "Which city is surprisingly farther west despite being in Nevada, east of California?",
       "answer": "Reno, Nevada",
       "distractors": [
         "Los Angeles, California",
@@ -27067,7 +28847,7 @@
     },
     {
       "id": "gk-temple-of-aphaea-107",
-      "question": "What type of structure is Temple of Aphaea?",
+      "question": "What type of ancient Greek structure stands on the island of Aegina?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27086,7 +28866,7 @@
     },
     {
       "id": "gk-temple-of-apollo-at-aegina-116",
-      "question": "What type of structure is Temple of Apollo at Aegina?",
+      "question": "What type of archaic Doric structure stands at Kolona on Aegina?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27105,8 +28885,8 @@
     },
     {
       "id": "gk-temple-of-apollo-at-didyma-180",
-      "question": "What is Temple of Apollo at Didyma?",
-      "answer": "An ancient greek sanctuary on the coast of ionia in the domain of the famous city of miletus",
+      "question": "What is the Temple of Apollo at Didyma?",
+      "answer": "A Greek sanctuary",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -27118,7 +28898,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Temple of Apollo at Didyma represents the pinnacle of ancient Greek religious architecture. Greek temples were designed to house deity statues and served as focal points for religious festivals and civic ceremonies.",
+      "explanation": "An ancient Greek sanctuary on the coast of Ionia in the domain of the famous city of Miletus. It represents the pinnacle of ancient Greek religious architecture, designed to house deity statues and serve as a focal point for religious festivals.",
       "category": "",
       "wowFactor": 5
     },
@@ -27181,7 +28961,7 @@
     },
     {
       "id": "gk-temple-of-bellona-091",
-      "question": "What type of structure is Temple of Bellona?",
+      "question": "What type of structure from Ostia was dedicated to Bellona?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27333,7 +29113,7 @@
     },
     {
       "id": "gk-temple-of-flora-096",
-      "question": "What type of structure is Temple of Flora?",
+      "question": "What type of Roman structure at Cerreto Sannita was dedicated to Flora?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27428,8 +29208,8 @@
     },
     {
       "id": "gk-temple-of-hercules-musarum-148",
-      "question": "What is Temple of Hercules Musarum?",
-      "answer": "Temple dedicated to hercules in ancient rome, near the circus flaminius built by marcus fulvius nobilior, who conquered the greek city of ambracia in 189 bc",
+      "question": "What is the Temple of Hercules Musarum?",
+      "answer": "A Roman temple",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -27441,7 +29221,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Temple of Hercules Musarum represents the pinnacle of ancient Greek religious architecture. Greek temples were designed to house deity statues and served as focal points for religious festivals and civic ceremonies.",
+      "explanation": "Temple dedicated to Hercules in ancient Rome, near the Circus Flaminius, built by Marcus Fulvius Nobilior after he conquered the Greek city of Ambracia in 189 BC. It represents the pinnacle of ancient Roman religious architecture.",
       "category": "",
       "wowFactor": 5
     },
@@ -27485,7 +29265,7 @@
     },
     {
       "id": "gk-temple-of-jupiter-097",
-      "question": "What type of structure is Temple of Jupiter?",
+      "question": "What type of poliadic structure stood in the Latin city of Cosa?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27523,7 +29303,7 @@
     },
     {
       "id": "gk-temple-of-jupiter-optimus-maximus-106",
-      "question": "What type of structure is Temple of Jupiter Optimus Maximus?",
+      "question": "What type of poliadic structure crowned ancient Rome's Capitoline Hill?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -27675,7 +29455,7 @@
     },
     {
       "id": "gk-temple-of-simut-and-nin-ali-in-dur-untas-165",
-      "question": "What is Temple of Simut and Nin Ali in Dur Untash?",
+      "question": "What type of ancient Elamite structure in Dur Untash honored Simut and Nin Ali?",
       "answer": "Temple",
       "distractors": [
         "[object Object]",
@@ -27732,7 +29512,7 @@
     },
     {
       "id": "gk-temple-of-vespasian-and-titus-129",
-      "question": "What type of structure is Temple of Vespasian and Titus?",
+      "question": "What type of structure at the Forum Romanum honored Vespasian and Titus?",
       "answer": "temple",
       "distractors": [
         "[object Object]",
@@ -29218,7 +30998,7 @@
     },
     {
       "id": "health-hypophosphatemic-rickets-034",
-      "question": "What mineral is lacking in hypophosphatemic rickets?",
+      "question": "What mineral is deficient in the rickets variant that weakens bones?",
       "answer": "Phosphate",
       "distractors": [
         "[object Object]",
@@ -30782,7 +32562,7 @@
     },
     {
       "id": "hist-attack-on-pearl-harbor-057",
-      "question": "Where did the Attack on Pearl Harbor take place?",
+      "question": "Which Hawaiian naval base was attacked by Japan on December 7, 1941?",
       "answer": "Pearl Harbor",
       "distractors": [
         "[object Object]",
@@ -30941,7 +32721,7 @@
     },
     {
       "id": "hist-battle-of-arachova-079",
-      "question": "Where did the Battle of Arachova take place?",
+      "question": "Near which Greek mountain village did a key battle of the Greek War of Independence occur in 1826?",
       "answer": "Arachova",
       "distractors": [
         "[object Object]",
@@ -31017,7 +32797,7 @@
     },
     {
       "id": "hist-battle-of-branisko-099",
-      "question": "In which region did the Battle of Branisko take place?",
+      "question": "Near which Slovak mountain pass did a battle take place in 1849?",
       "answer": "Branisko",
       "distractors": [
         "[object Object]",
@@ -31036,7 +32816,7 @@
     },
     {
       "id": "hist-battle-of-brenta-091",
-      "question": "Where did the Battle of Brenta take place?",
+      "question": "Near which Italian river did a battle take place in 899?",
       "answer": "Brenta",
       "distractors": [
         "[object Object]",
@@ -31077,7 +32857,6 @@
       "question": "In what year did the Battle of Charleroi happen?",
       "answer": "1914",
       "distractors": [
-        "[object Object]",
         "[object Object]",
         "[object Object]",
         "[object Object]",
@@ -31150,7 +32929,7 @@
     },
     {
       "id": "hist-battle-of-custoza-051",
-      "question": "Where did the Battle of Custoza take place?",
+      "question": "Near which Italian village did Austrian and Italian forces clash in 1866?",
       "answer": "Custoza",
       "distractors": [
         "[object Object]",
@@ -31226,7 +33005,7 @@
     },
     {
       "id": "hist-battle-of-emb-te-083",
-      "question": "Where did the Battle of Embūte take place?",
+      "question": "Near which Latvian location did a battle take place in 1244?",
       "answer": "Embūte",
       "distractors": [
         "[object Object]",
@@ -31393,7 +33172,7 @@
     },
     {
       "id": "hist-battle-of-königsberg-116",
-      "question": "Where did the Battle of Königsberg take place?",
+      "question": "Which East Prussian city was the site of a major 1945 WWII battle?",
       "answer": "Königsberg",
       "distractors": [
         "[object Object]",
@@ -31431,7 +33210,7 @@
     },
     {
       "id": "hist-battle-of-lake-vadimo-085",
-      "question": "Where did the Battle of Lake Vadimo take place?",
+      "question": "Near which ancient Italian lake did Romans defeat the Etruscans in 310 BCE?",
       "answer": "Lake Vadimo",
       "distractors": [
         "[object Object]",
@@ -31469,7 +33248,7 @@
     },
     {
       "id": "hist-battle-of-le-mans-043",
-      "question": "Where did the Battle of Le Mans take place?",
+      "question": "Near which French city did a Franco-Prussian War battle occur in 1871?",
       "answer": "Le Mans",
       "distractors": [
         "[object Object]",
@@ -31655,7 +33434,7 @@
     },
     {
       "id": "hist-battle-of-noreia-111",
-      "question": "Where did the Battle of Noreia take place?",
+      "question": "Near which ancient settlement did a Cimbrian War battle occur in 113 BCE?",
       "answer": "Noreia",
       "distractors": [
         "[object Object]",
@@ -31674,7 +33453,7 @@
     },
     {
       "id": "hist-battle-of-novara-121",
-      "question": "Where did the Battle of Novara take place?",
+      "question": "Near which Piedmontese city did a decisive 1849 battle of Italian independence occur?",
       "answer": "Novara",
       "distractors": [
         "[object Object]",
@@ -31807,7 +33586,7 @@
     },
     {
       "id": "hist-battle-of-saint-omer-067",
-      "question": "Where did the Battle of Saint-Omer take place?",
+      "question": "Near which northern French town did a battle take place in 1340?",
       "answer": "Saint-Omer",
       "distractors": [
         "[object Object]",
@@ -31845,7 +33624,7 @@
     },
     {
       "id": "hist-battle-of-soissons-041",
-      "question": "Where did the Battle of Soissons take place?",
+      "question": "Near which French town did a pivotal battle occur in 486 CE?",
       "answer": "Soissons",
       "distractors": [
         "[object Object]",
@@ -31879,7 +33658,7 @@
     },
     {
       "id": "hist-battle-of-stony-point-087",
-      "question": "Where did the Battle of Stony Point take place?",
+      "question": "Which Hudson River fortress did American forces capture in a 1779 midnight assault?",
       "answer": "Stony Point",
       "distractors": [
         "[object Object]",
@@ -31917,7 +33696,7 @@
     },
     {
       "id": "hist-battle-of-the-dukla-pass-061",
-      "question": "Where did the Battle of the Dukla Pass take place?",
+      "question": "Through which Carpathian mountain pass did Soviet forces fight in 1944?",
       "answer": "Dukla Pass",
       "distractors": [
         "[object Object]",
@@ -32034,7 +33813,6 @@
       "question": "When did the Battle of Tinian occur?",
       "answer": "1944",
       "distractors": [
-        "[object Object]",
         "[object Object]",
         "[object Object]",
         "[object Object]",
@@ -33083,8 +34861,8 @@
     },
     {
       "id": "hist-ghost-dance-war-098",
-      "question": "What was the Ghost Dance War?",
-      "answer": "Armed conflict between a group of the Sioux people and the US from 1890 until 1891",
+      "question": "What was the Ghost Dance War of 1890?",
+      "answer": "A Sioux-US conflict",
       "distractors": [
         "[object Object]",
         "[object Object]",
@@ -33096,7 +34874,7 @@
         "[object Object]"
       ],
       "gaiaComment": "",
-      "explanation": "Ghost Dance War: armed conflict between a group of the Sioux people and the US from 1890 until 1891. It took place in the region of South Dakota.",
+      "explanation": "An armed conflict between a group of the Sioux people and the United States from 1890 until 1891. It took place in South Dakota and was connected to the Ghost Dance religious movement.",
       "category": "",
       "wowFactor": 5
     },
@@ -33297,7 +35075,7 @@
     },
     {
       "id": "hist-invasion-of-martinique-065",
-      "question": "Where did the Invasion of Martinique take place?",
+      "question": "Which Caribbean island was invaded by British forces in 1762?",
       "answer": "Martinique",
       "distractors": [
         "[object Object]",
@@ -33361,7 +35139,7 @@
     },
     {
       "id": "hist-justinian-plague-187",
-      "question": "Which emperor gave the Plague of Justinian its name?",
+      "question": "Which Byzantine emperor survived the devastating 541 CE plague that bears his name?",
       "answer": "Justinian I",
       "distractors": [
         "Constantine",
@@ -33892,7 +35670,6 @@
         "[object Object]",
         "[object Object]",
         "[object Object]",
-        "[object Object]",
         "[object Object]"
       ],
       "gaiaComment": "",
@@ -34116,7 +35893,6 @@
       "question": "When did the Pursuit of Krasnokutsk occur?",
       "answer": "1709",
       "distractors": [
-        "[object Object]",
         "[object Object]",
         "[object Object]",
         "[object Object]",
@@ -35249,7 +37025,7 @@
     },
     {
       "id": "human_body_health_gen_074",
-      "question": "Does the human body contain more bacterial cells or human cells?",
+      "question": "Does the human body contain more bacteria or human cells?",
       "answer": "More bacterial cells",
       "distractors": [
         "More human cells",
@@ -51801,7 +53577,7 @@
     },
     {
       "id": "mythology_folklore_gen_317",
-      "question": "Which Aztec god transformed into an axolotl to escape death — giving the salamander its name?",
+      "question": "Which Aztec god — twin brother of Quetzalcoatl — escaped death by shapeshifting into a salamander?",
       "answer": "Xolotl",
       "distractors": [
         "Quetzalcoatl",
@@ -54528,7 +56304,7 @@
     },
     {
       "id": "nsci-boron-001",
-      "question": "Is boron a metal or metalloid?",
+      "question": "Is the element boron (B, atomic number 5) classified as a metal or something else?",
       "answer": "Metalloid",
       "distractors": [
         "[object Object]",
@@ -55408,7 +57184,7 @@
     },
     {
       "id": "nsci-glass-ball-bounce-276",
-      "question": "Which bounces higher when dropped: a solid glass ball or a solid rubber ball?",
+      "question": "Which type of solid ball bounces higher when dropped — glass or rubber?",
       "answer": "A solid glass ball",
       "distractors": [
         "A solid rubber ball",
@@ -56773,7 +58549,7 @@
     },
     {
       "id": "nsci-promethium-001",
-      "question": "Is promethium natural or synthetic?",
+      "question": "Is the radioactive element promethium (atomic number 61) natural or artificially produced?",
       "answer": "Synthetic",
       "distractors": [
         "[object Object]",
@@ -58191,7 +59967,7 @@
     },
     {
       "id": "q3517521-hathor-memphis",
-      "question": "Which Egyptian goddess did Memphis's Hathor temple honor?",
+      "question": "Which Egyptian goddess of love and joy was honored by a temple in Memphis?",
       "answer": "Hathor",
       "distractors": [
         "[object Object]",
@@ -62870,7 +64646,7 @@
     },
     {
       "id": "space_astronomy_gen_227",
-      "question": "Are there more trees on Earth or stars in the Milky Way?",
+      "question": "Which are more numerous: trees on Earth or stars in the Milky Way?",
       "answer": "More trees on Earth",
       "distractors": [
         "More stars in the Milky Way",

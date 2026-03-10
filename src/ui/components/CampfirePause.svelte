@@ -8,6 +8,7 @@
     accuracy: number
     onresume: () => void
     onreturnhub: () => void
+    canReturnHub?: boolean
   }
 
   let {
@@ -19,6 +20,7 @@
     accuracy,
     onresume,
     onreturnhub,
+    canReturnHub = true,
   }: Props = $props()
 </script>
 
@@ -58,17 +60,25 @@
       >
         Resume Run
       </button>
-      <button
-        type="button"
-        class="hub-btn"
-        data-testid="btn-campfire-hub"
-        onclick={onreturnhub}
-      >
-        Return to Hub
-      </button>
+      {#if canReturnHub}
+        <button
+          type="button"
+          class="hub-btn"
+          data-testid="btn-campfire-hub"
+          onclick={onreturnhub}
+        >
+          Return to Hub
+        </button>
+      {/if}
     </div>
 
-    <p class="hub-hint">Your run will be saved. Resume any time.</p>
+    <p class="hub-hint">
+      {#if canReturnHub}
+        Your run will be saved. Resume any time.
+      {:else}
+        Ascension Iron Will is active: this run cannot be fled.
+      {/if}
+    </p>
   </div>
 </div>
 

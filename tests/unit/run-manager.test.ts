@@ -34,6 +34,12 @@ describe('RunManager', () => {
       const state = createRunState('science', 'history')
       expect(state.playerHp).toBe(PLAYER_START_HP)
     })
+
+    it('applies ascension level 14 max HP override', () => {
+      const state = createRunState('science', 'history', { ascensionLevel: 14 })
+      expect(state.playerHp).toBe(70)
+      expect(state.playerMaxHp).toBe(70)
+    })
   })
 
   describe('recordCardPlay', () => {
@@ -170,6 +176,14 @@ describe('RunManager', () => {
       const endData = endRun(state, 'defeat')
       expect(endData.accuracy).toBe(0)
       expect(endData.factsAnswered).toBe(0)
+    })
+
+    it('suppresses retreat rewards when retreat lock is active', () => {
+      const state = createRunState('science', 'history', { ascensionLevel: 10 })
+      state.currency = 999
+      state.retreatRewardLocked = true
+      const endData = endRun(state, 'retreat')
+      expect(endData.currencyEarned).toBe(0)
     })
 
     it('returns duration > 0', () => {

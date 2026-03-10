@@ -13,6 +13,7 @@ import type { ActiveBounty } from './bountyManager';
 import { selectRunBounties } from './bountyManager';
 import type { CanaryState } from './canaryService';
 import { createCanaryState, recordCanaryAnswer } from './canaryService';
+import { getAscensionModifiers, type AscensionModifiers } from './ascension';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -49,6 +50,9 @@ export interface RunState {
   factsAnsweredIncorrectly: Set<string>;
   runAccuracyBonusApplied: boolean;
   endlessEnemyDamageMultiplier: number;
+  ascensionLevel: number;
+  ascensionModifiers: AscensionModifiers;
+  retreatRewardLocked: boolean;
 }
 
 export interface RunEndData {
@@ -79,21 +83,26 @@ export function createRunState(
     startingAp?: number;
     primaryDomainRunNumber?: number;
     earlyBoostActive?: boolean;
+    ascensionLevel?: number;
   },
 ): RunState {
   const bountyCount = Math.random() < 0.5 ? 1 : 2;
+  const ascensionLevel = options?.ascensionLevel ?? 0;
+  const ascensionModifiers = getAscensionModifiers(ascensionLevel);
+  const maxHp = ascensionModifiers.playerMaxHpOverride ?? PLAYER_MAX_HP;
+  const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? options?.starterDeckSize ?? 15;
   return {
     isActive: true,
     primaryDomain: primary,
     secondaryDomain: secondary,
     selectedArchetype: options?.selectedArchetype ?? 'balanced',
-    starterDeckSize: options?.starterDeckSize ?? 15,
+    starterDeckSize,
     startingAp: options?.startingAp ?? 3,
     primaryDomainRunNumber: options?.primaryDomainRunNumber ?? 1,
     earlyBoostActive: options?.earlyBoostActive ?? true,
     floor: createFloorState(),
-    playerHp: PLAYER_START_HP,
-    playerMaxHp: PLAYER_MAX_HP,
+    playerHp: maxHp,
+    playerMaxHp: maxHp,
     currency: 0,
     cardsEarned: 0,
     factsAnswered: 0,
@@ -115,6 +124,9 @@ export function createRunState(
     factsAnsweredIncorrectly: new Set<string>(),
     runAccuracyBonusApplied: false,
     endlessEnemyDamageMultiplier: 1,
+    ascensionLevel,
+    ascensionModifiers,
+    retreatRewardLocked: false,
   };
 }
 
@@ -172,8 +184,10 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
   const difficultyBonus = DIFFICULTY_REWARD_MULTIPLIER[mode] ?? 1.0;
   const rewardMultiplier = deathPenalty * difficultyBonus;
   const completedBounties = state.bounties.filter((bounty) => bounty.completed).map((bounty) => bounty.name);
-  const bountyBonusCurrency = completedBounties.length * 20;
-  const currencyEarned = Math.floor((state.currency + bountyBonusCurrency) * rewardMultiplier);
+  const rewardsSuppressed = reason === 'retreat' && state.retreatRewardLocked;
+  const bountyBonusCurrency = rewardsSuppressed ? 0 : completedBounties.length * 20;
+  const baseCurrency = rewardsSuppressed ? 0 : (state.currency + bountyBonusCurrency);
+  const currencyEarned = Math.floor(baseCurrency * rewardMultiplier);
 
   return {
     result: reason,

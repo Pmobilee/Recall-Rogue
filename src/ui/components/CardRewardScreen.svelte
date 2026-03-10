@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Card, CardType } from '../../data/card-types'
-  import { factsDB } from '../../services/factsDB'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { getCardFramePath } from '../utils/domainAssets'
 
@@ -8,12 +7,10 @@
     options: Card[]
     onselect: (card: Card) => void
     onskip: () => void
-    onreroll?: (type: CardType) => void
   }
 
-  let { options, onselect, onskip, onreroll }: Props = $props()
+  let { options, onselect, onskip }: Props = $props()
   let selectedType = $state<CardType | null>(null)
-  let previewQuestion = $state<string>('Tap a reward icon to inspect it.')
   let collectLocked = $state(false)
   let collectingType = $state<CardType | null>(null)
   let hasPlayedIntroCue = $state(false)
@@ -188,25 +185,6 @@
       playCardAudio('card-cast')
     }
     selectedType = cardType
-    updatePreview()
-  }
-
-  function updatePreview(): void {
-    const selected = selectedCard()
-    if (!selected) {
-      previewQuestion = 'Select a type to preview a fact.'
-      return
-    }
-    const fact = factsDB.getById(selected.factId)
-    const raw = fact?.quizQuestion ?? fact?.statement ?? 'Unknown fact'
-    previewQuestion = raw.length > 120 ? `${raw.slice(0, 117)}...` : raw
-  }
-
-  function reroll(): void {
-    const selected = selectedCard()
-    if (!selected || !onreroll || collectLocked) return
-    playCardAudio('card-draw')
-    onreroll(selected.cardType)
   }
 
   function accept(): void {
@@ -228,7 +206,6 @@
   $effect(() => {
     if (options.length === 0) {
       selectedType = null
-      previewQuestion = 'No rewards available.'
       return
     }
     if (selectedType === null || !options.some((option) => option.cardType === selectedType)) {
@@ -242,7 +219,6 @@
     collectingType = null
     altarBiome = pickBiome(options)
     iconByType = buildIconMap(options)
-    updatePreview()
   })
 
   function isSelected(option: Card): boolean {
@@ -316,24 +292,12 @@
         <p class="inspect-summary">Tap an icon on the altar to reveal details.</p>
       {/if}
 
-      <div class="preview">
-        <div class="preview-label">Fact Preview</div>
-        <div class="preview-text">{previewQuestion}</div>
-      </div>
     </section>
   </section>
 
   <div class="actions">
-    <button
-      class="reroll"
-      onclick={reroll}
-      disabled={!selectedCard() || !onreroll || collectLocked}
-      data-testid="reward-reroll"
-    >
-      Swap Fact
-    </button>
     <button class="accept" onclick={accept} disabled={!selectedCard() || collectLocked} data-testid="reward-accept">
-      {collectLocked ? 'Collecting...' : 'Select Reward'}
+      {collectLocked ? 'Collecting...' : 'Accept'}
     </button>
     <button class="skip" onclick={skip} disabled={collectLocked}>Skip</button>
   </div>
@@ -617,39 +581,14 @@
     padding: 4px 8px;
   }
 
-  .preview {
-    border-radius: 10px;
-    border: 1px solid rgba(151, 172, 199, 0.24);
-    background: rgba(17, 25, 38, 0.8);
-    padding: 10px;
-    display: grid;
-    gap: 5px;
-  }
-
-  .preview-label {
-    color: #90a3b8;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 700;
-  }
-
-  .preview-text {
-    font-weight: 700;
-    font-size: 14px;
-    color: #eaf1f8;
-    line-height: 1.35;
-  }
-
   .actions {
     width: min(920px, 100%);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
 
   .accept,
-  .reroll,
   .skip {
     height: 52px;
     border-radius: 10px;
@@ -664,18 +603,12 @@
     color: #fff;
   }
 
-  .reroll {
-    background: #33465d;
-    color: #d7e6f5;
-  }
-
   .skip {
     background: #2d333b;
     color: #9ba4ad;
   }
 
   .accept:disabled,
-  .reroll:disabled,
   .skip:disabled,
   .altar-option:disabled {
     opacity: 0.56;

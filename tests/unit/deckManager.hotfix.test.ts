@@ -53,9 +53,14 @@ describe('deckManager hotfix behavior', () => {
     addFactsToCooldown(deck, ['fact-a', 'fact-a', 'fact-b'])
     expect(deck.factCooldown).toHaveLength(2)
 
-    tickFactCooldowns(deck)
-    expect(deck.factCooldown.find((entry) => entry.factId === 'fact-a')?.encountersRemaining).toBe(2)
+    // Cooldowns are randomized between 1 and 3
+    for (const entry of deck.factCooldown) {
+      expect(entry.encountersRemaining).toBeGreaterThanOrEqual(1)
+      expect(entry.encountersRemaining).toBeLessThanOrEqual(3)
+    }
 
+    // After 3 ticks (max cooldown), all entries must be expired
+    tickFactCooldowns(deck)
     tickFactCooldowns(deck)
     tickFactCooldowns(deck)
     expect(deck.factCooldown).toHaveLength(0)

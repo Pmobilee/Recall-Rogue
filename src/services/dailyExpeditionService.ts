@@ -1,4 +1,9 @@
 import { apiClient } from './apiClient'
+import {
+  readCachedLeaderboardRows,
+  withAbortTimeout,
+  writeCachedLeaderboardRows,
+} from './leaderboardFetch'
 
 export interface DailyExpeditionAttempt {
   dateKey: string
@@ -48,6 +53,7 @@ interface CompletionMetrics {
 }
 
 const STORAGE_KEY = 'recall-rogue-daily-expedition-v1'
+const GLOBAL_CACHE_KEY_PREFIX = 'recall-rogue-daily-expedition-global-v1'
 const MAX_LEADERBOARD_ROWS = 20
 const REWARD_PREVIEW = [
   'Top 10%: Champion badge + highest bonus',
@@ -251,16 +257,22 @@ export async function getDailyExpeditionGlobalLeaderboard(
   dateKey: string,
   limit = 20,
 ): Promise<DailyExpeditionLeaderboardEntry[] | null> {
+  const safeLimit = Math.max(1, Math.floor(limit))
+  const cacheKey = `${GLOBAL_CACHE_KEY_PREFIX}:${dateKey}:${safeLimit}`
   try {
-    const rows = await apiClient.getLeaderboard('daily_expedition', limit, { dateKey })
-    return rows.map((row) => ({
+    const rows = await withAbortTimeout(
+      (signal) => apiClient.getLeaderboard('daily_expedition', safeLimit, { dateKey, signal }),
+    )
+    const mapped = rows.map((row) => ({
       rank: row.rank,
       playerId: row.userId,
       playerName: row.displayName || 'Rogue',
       score: row.score,
-      source: 'player',
+      source: 'player' as const,
     }))
+    writeCachedLeaderboardRows(cacheKey, mapped)
+    return mapped
   } catch {
-    return null
+    return readCachedLeaderboardRows<DailyExpeditionLeaderboardEntry>(cacheKey)
   }
 }

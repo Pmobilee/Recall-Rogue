@@ -7,6 +7,8 @@
     playerMaxHp: number
     nextSegmentName: string
     deathPenalty: number
+    retreatRewardsLocked?: boolean
+    retreatRewardsMinFloor?: number | null
     onretreat: () => void
     ondelve: () => void
   }
@@ -19,6 +21,8 @@
     playerMaxHp,
     nextSegmentName,
     deathPenalty,
+    retreatRewardsLocked = false,
+    retreatRewardsMinFloor = null,
     onretreat,
     ondelve,
   }: Props = $props()
@@ -38,7 +42,13 @@
 
   <button class="retreat" onclick={onretreat}>
     Retreat
-    <span>Keep all {currency}</span>
+    <span>
+      {#if retreatRewardsLocked}
+        No rewards before Floor {retreatRewardsMinFloor ?? 12}
+      {:else}
+        Keep all {currency}
+      {/if}
+    </span>
   </button>
 
   <button class="delve" onclick={ondelve}>
@@ -46,7 +56,12 @@
     <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
   </button>
 
-  <div class="risk">Enemies are stronger. Timer is shorter.</div>
+  <div class="risk">
+    Enemies are stronger. Timer is shorter.
+    {#if retreatRewardsLocked}
+      Retreat rewards are locked for this depth on current Ascension.
+    {/if}
+  </div>
 </div>
 
 <style>
@@ -119,4 +134,3 @@
     color: #C9D1D9;
   }
 </style>
-
