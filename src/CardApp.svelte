@@ -39,6 +39,7 @@
     returnToMenu,
     startNewRun,
     startDailyExpeditionRun,
+    startEndlessDepthsRun,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -126,6 +127,10 @@
 
   function handleStartDailyExpedition(): { ok: true } | { ok: false; reason: string } {
     return startDailyExpeditionRun()
+  }
+
+  function handleStartEndlessDepths(): { ok: true } | { ok: false; reason: string } {
+    return startEndlessDepthsRun()
   }
 
   function handleHubNavigate(target: HubScreenName): void {
@@ -544,6 +549,7 @@
       onBack={handleBackToMenu}
       onOpenSettings={handleOpenSettings}
       onStartDailyExpedition={handleStartDailyExpedition}
+      onStartEndlessDepths={handleStartEndlessDepths}
     />
   {/if}
 

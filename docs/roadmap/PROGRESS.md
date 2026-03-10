@@ -457,7 +457,7 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 
 ### AR-20: Competitive & Social Features
 - [ ] Daily Expedition (fixed seed, one attempt/day, leaderboard) — deterministic seeded run mode + one-attempt/day lock + local read-only leaderboard implemented; backend/global leaderboard and reward bands pending
-- [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard)
+- [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard) — playable start-at-floor-10 mode + separate local leaderboard implemented; backend/global board and balancing pass pending
 - [ ] Mastery Challenges (rare Mystery room, 3s timer, 5 distractors, fail = Tier 2b)
 - [ ] Relic Sanctum (between-run relic management for >12 mastered)
 - [x] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking)

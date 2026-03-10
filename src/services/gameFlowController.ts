@@ -53,6 +53,7 @@ import {
   completeDailyExpeditionAttempt,
   reserveDailyExpeditionAttempt,
 } from './dailyExpeditionService'
+import { recordEndlessDepthsRun } from './endlessDepthsService'
 import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
@@ -89,7 +90,7 @@ let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
-type ActiveRunMode = 'standard' | 'daily_expedition'
+type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths'
 let activeRunMode: ActiveRunMode = 'standard'
 let activeDailySeed: number | null = null
 
@@ -115,6 +116,13 @@ function calculateDailyExpeditionScore(endData: RunEndData): number {
   return Math.round(accuracyFactor * speedFactor * depthFactor * comboFactor * 1000)
 }
 
+function calculateEndlessDepthsScore(endData: RunEndData): number {
+  const depthFactor = Math.max(10, endData.floorReached)
+  const comboFactor = Math.max(1, endData.bestCombo)
+  const accuracyFactor = Math.max(0, endData.accuracy)
+  return Math.round((depthFactor * 650) + (comboFactor * 180) + (accuracyFactor * 22))
+}
+
 export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: string } {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
@@ -136,6 +144,14 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
   activateDeterministicRandom(reservation.attempt.seed)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
+  if (!startEncounterForRoom()) {
+    currentScreen.set('hub')
+    activeRunState.set(null)
+    activeRunMode = 'standard'
+    activeDailySeed = null
+    deactivateDeterministicRandom()
+    return { ok: false, reason: 'failed_to_start_encounter' }
+  }
   analyticsService.track({
     name: 'daily_expedition_start',
     properties: {
@@ -144,6 +160,44 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
       player_id: reservation.attempt.playerId,
     },
   })
+  return { ok: true }
+}
+
+export function startEndlessDepthsRun(): { ok: true } | { ok: false; reason: string } {
+  const onboarding = get(onboardingState)
+  if (!onboarding.hasCompletedOnboarding) {
+    currentScreen.set('onboarding')
+    gameFlowState.set('idle')
+    return { ok: false, reason: 'onboarding_required' }
+  }
+
+  activeRunMode = 'endless_depths'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
+  pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
+  onArchetypeSelected('balanced')
+
+  const run = get(activeRunState)
+  if (!run) {
+    activeRunMode = 'standard'
+    return { ok: false, reason: 'failed_to_create_run' }
+  }
+
+  run.floor.currentFloor = 10
+  run.floor.currentEncounter = 1
+  run.floor.segment = getSegment(10)
+  run.floor.encountersPerFloor = 3
+  run.floor.eventsPerFloor = 2
+  run.floor.isBossFloor = isBossFloor(10)
+  run.floor.bossDefeated = false
+  activeRunState.set(run)
+
+  if (!startEncounterForRoom()) {
+    currentScreen.set('hub')
+    activeRunState.set(null)
+    activeRunMode = 'standard'
+    return { ok: false, reason: 'failed_to_start_encounter' }
+  }
   return { ok: true }
 }
 
@@ -202,6 +256,12 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
         run_duration_ms: endData.runDurationMs,
       },
     })
+  } else if (activeRunMode === 'endless_depths') {
+    const save = get(playerSave)
+    const playerId = save?.accountId ?? save?.deviceId ?? save?.playerId ?? 'anonymous'
+    const playerName = save?.accountEmail?.split('@')[0] ?? `Rogue-${playerId.slice(0, 6)}`
+    const score = calculateEndlessDepthsScore(endData)
+    recordEndlessDepthsRun(playerId, playerName, score, endData.floorReached)
   }
   activeRunMode = 'standard'
   activeDailySeed = null
@@ -774,11 +834,17 @@ export function playAgain(): void {
   currentScreen.set('domainSelection');
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition', dailySeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths', dailySeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed
     activateDeterministicRandom(dailySeed)
+    return
+  }
+  if (runMode === 'endless_depths') {
+    activeRunMode = 'endless_depths'
+    activeDailySeed = null
+    deactivateDeterministicRandom()
     return
   }
   activeRunMode = 'standard'

@@ -3,6 +3,7 @@
   import { playerSave } from '../stores/playerData'
   import { parentalStore } from '../stores/parentalStore'
   import { getDailyExpeditionStatus, type DailyExpeditionStatus } from '../../services/dailyExpeditionService'
+  import { getEndlessDepthsLeaderboard, type EndlessDepthsEntry } from '../../services/endlessDepthsService'
   import CoopLobby from './CoopLobby.svelte'
   import DuelView from './DuelView.svelte'
   import GuildView from './GuildView.svelte'
@@ -11,15 +12,23 @@
     onBack: () => void
     onOpenSettings: () => void
     onStartDailyExpedition: () => { ok: true } | { ok: false; reason: string }
+    onStartEndlessDepths: () => { ok: true } | { ok: false; reason: string }
   }
 
-  let { onBack, onOpenSettings, onStartDailyExpedition }: Props = $props()
+  let {
+    onBack,
+    onOpenSettings,
+    onStartDailyExpedition,
+    onStartEndlessDepths,
+  }: Props = $props()
 
   type SocialPanel = 'coop' | 'duel' | 'guild' | null
   let activePanel = $state<SocialPanel>(null)
   let coopLobbyId = $state(makeLobbyId())
   let dailyStatus = $state<DailyExpeditionStatus>(getDailyExpeditionStatus())
   let dailyMessage = $state('')
+  let endlessRows = $state<EndlessDepthsEntry[]>(getEndlessDepthsLeaderboard(5))
+  let endlessMessage = $state('')
 
   const socialEnabled = $derived($parentalStore.socialEnabled)
   const playerId = $derived($authStore.userId ?? $playerSave?.playerId ?? 'local-player')
@@ -52,6 +61,10 @@
     dailyStatus = getDailyExpeditionStatus()
   }
 
+  function refreshEndlessRows(): void {
+    endlessRows = getEndlessDepthsLeaderboard(5)
+  }
+
   function startDaily(): void {
     const started = onStartDailyExpedition()
     if (started.ok) {
@@ -69,9 +82,24 @@
     refreshDailyStatus()
   }
 
+  function startEndless(): void {
+    const started = onStartEndlessDepths()
+    if (started.ok) {
+      endlessMessage = ''
+      return
+    }
+    if (started.reason === 'onboarding_required') {
+      endlessMessage = 'Finish onboarding before Endless Depths unlocks.'
+    } else {
+      endlessMessage = 'Unable to start Endless Depths right now.'
+    }
+    refreshEndlessRows()
+  }
+
   $effect(() => {
     playerName
     refreshDailyStatus()
+    refreshEndlessRows()
   })
 </script>
 
@@ -127,6 +155,26 @@
         <div class="actions">
           <button type="button" onclick={regenerateLobby}>New Lobby ID</button>
           <button type="button" class="primary" onclick={() => openPanel('coop')}>Open Co-op</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Endless Depths</h3>
+        <p>Starts at Floor 10 and keeps scaling. Separate endless leaderboard.</p>
+        <div class="actions">
+          <button type="button" class="primary" onclick={startEndless}>Start Endless Run</button>
+        </div>
+        {#if endlessMessage}
+          <p class="inline-message">{endlessMessage}</p>
+        {/if}
+        <div class="leaderboard-mini" aria-label="Endless depths leaderboard">
+          {#each endlessRows as row}
+            <div class="leaderboard-row">
+              <span class="leader-rank">#{row.rank}</span>
+              <span class="leader-name">{row.playerName}</span>
+              <span class="leader-score">F{row.floorReached} • {row.score}</span>
+            </div>
+          {/each}
         </div>
       </article>
 
