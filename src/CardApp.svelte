@@ -74,21 +74,11 @@
   import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
-  import SettingsPanel from './ui/components/SettingsPanel.svelte'
-  import KnowledgeLibrary from './ui/components/KnowledgeLibrary.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
   import HubNavBar from './ui/components/HubNavBar.svelte'
-  import ProfileScreen from './ui/components/ProfileScreen.svelte'
-  import JournalScreen from './ui/components/JournalScreen.svelte'
-  import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
-  import SocialScreen from './ui/components/SocialScreen.svelte'
-  import RelicSanctumScreen from './ui/components/RelicSanctumScreen.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
-  import TerraPassModal from './ui/components/TerraPassModal.svelte'
-  import SeasonPassView from './ui/components/SeasonPassView.svelte'
-  import CosmeticStoreModal from './ui/components/CosmeticStoreModal.svelte'
 
   const NAV_VISIBLE_SCREENS = new Set<Screen>([
     'hub',
@@ -339,6 +329,27 @@
   function shouldShowHubNav(screen: Screen): boolean {
     return NAV_VISIBLE_SCREENS.has(screen)
   }
+
+  function createLazyLoader<T>(factory: () => Promise<T>): () => Promise<T> {
+    let promise: Promise<T> | null = null
+    return () => {
+      if (!promise) {
+        promise = factory()
+      }
+      return promise
+    }
+  }
+
+  const loadKnowledgeLibrary = createLazyLoader(() => import('./ui/components/KnowledgeLibrary.svelte'))
+  const loadSettingsPanel = createLazyLoader(() => import('./ui/components/SettingsPanel.svelte'))
+  const loadProfileScreen = createLazyLoader(() => import('./ui/components/ProfileScreen.svelte'))
+  const loadJournalScreen = createLazyLoader(() => import('./ui/components/JournalScreen.svelte'))
+  const loadLeaderboardsScreen = createLazyLoader(() => import('./ui/components/LeaderboardsScreen.svelte'))
+  const loadSocialScreen = createLazyLoader(() => import('./ui/components/SocialScreen.svelte'))
+  const loadRelicSanctumScreen = createLazyLoader(() => import('./ui/components/RelicSanctumScreen.svelte'))
+  const loadTerraPassModal = createLazyLoader(() => import('./ui/components/TerraPassModal.svelte'))
+  const loadSeasonPassView = createLazyLoader(() => import('./ui/components/SeasonPassView.svelte'))
+  const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
 
   let phaserBooted = false
   let phaserBootPromise: Promise<void> | null = null
@@ -598,53 +609,83 @@
   {/if}
 
   {#if $currentScreen === 'library'}
-    <KnowledgeLibrary onback={handleBackToMenu} />
+    {#await loadKnowledgeLibrary() then module}
+      {@const KnowledgeLibraryView = module.default}
+      <KnowledgeLibraryView onback={handleBackToMenu} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'settings'}
-    <SettingsPanel onback={handleBackToMenu} />
+    {#await loadSettingsPanel() then module}
+      {@const SettingsPanelView = module.default}
+      <SettingsPanelView onback={handleBackToMenu} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'profile'}
-    <ProfileScreen onBack={handleBackToMenu} />
+    {#await loadProfileScreen() then module}
+      {@const ProfileScreenView = module.default}
+      <ProfileScreenView onBack={handleBackToMenu} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'journal'}
-    <JournalScreen summary={$lastRunSummary} onBack={handleBackToMenu} />
+    {#await loadJournalScreen() then module}
+      {@const JournalScreenView = module.default}
+      <JournalScreenView summary={$lastRunSummary} onBack={handleBackToMenu} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'leaderboards'}
-    <LeaderboardsScreen onBack={handleBackToMenu} />
+    {#await loadLeaderboardsScreen() then module}
+      {@const LeaderboardsScreenView = module.default}
+      <LeaderboardsScreenView onBack={handleBackToMenu} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'social'}
-    <SocialScreen
-      onBack={handleBackToMenu}
-      onOpenSettings={handleOpenSettings}
-      onStartDailyExpedition={handleStartDailyExpedition}
-      onStartEndlessDepths={handleStartEndlessDepths}
-      onStartScholarChallenge={handleStartScholarChallenge}
-      onOpenRelicSanctum={handleOpenRelicSanctum}
-      onOpenArcanePass={handleOpenArcanePass}
-      onOpenSeasonPass={handleOpenSeasonPass}
-      onOpenCosmeticStore={handleOpenCosmeticStore}
-    />
+    {#await loadSocialScreen() then module}
+      {@const SocialScreenView = module.default}
+      <SocialScreenView
+        onBack={handleBackToMenu}
+        onOpenSettings={handleOpenSettings}
+        onStartDailyExpedition={handleStartDailyExpedition}
+        onStartEndlessDepths={handleStartEndlessDepths}
+        onStartScholarChallenge={handleStartScholarChallenge}
+        onOpenRelicSanctum={handleOpenRelicSanctum}
+        onOpenArcanePass={handleOpenArcanePass}
+        onOpenSeasonPass={handleOpenSeasonPass}
+        onOpenCosmeticStore={handleOpenCosmeticStore}
+      />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'relicSanctum'}
-    <RelicSanctumScreen onBack={handleCloseRelicSanctum} />
+    {#await loadRelicSanctumScreen() then module}
+      {@const RelicSanctumScreenView = module.default}
+      <RelicSanctumScreenView onBack={handleCloseRelicSanctum} />
+    {/await}
   {/if}
 
   {#if showArcanePassModal}
-    <TerraPassModal onClose={() => { showArcanePassModal = false }} />
+    {#await loadTerraPassModal() then module}
+      {@const TerraPassModalView = module.default}
+      <TerraPassModalView onClose={() => { showArcanePassModal = false }} />
+    {/await}
   {/if}
 
   {#if showSeasonPassModal}
-    <SeasonPassView onClose={() => { showSeasonPassModal = false }} />
+    {#await loadSeasonPassView() then module}
+      {@const SeasonPassViewModal = module.default}
+      <SeasonPassViewModal onClose={() => { showSeasonPassModal = false }} />
+    {/await}
   {/if}
 
   {#if showCosmeticStoreModal}
-    <CosmeticStoreModal onClose={() => { showCosmeticStoreModal = false }} />
+    {#await loadCosmeticStoreModal() then module}
+      {@const CosmeticStoreModalView = module.default}
+      <CosmeticStoreModalView onClose={() => { showCosmeticStoreModal = false }} />
+    {/await}
   {/if}
 
   {#if shouldShowHubNav($currentScreen)}
