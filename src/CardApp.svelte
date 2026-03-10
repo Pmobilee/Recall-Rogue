@@ -185,6 +185,7 @@
 
   function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): void {
     onArchetypeSelected(archetype)
+    void ensurePhaserBooted()
     if (!startEncounterForRoom()) {
       currentScreen.set('hub')
       activeRunState.set(null)
@@ -203,6 +204,7 @@
     }
     onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
+    void ensurePhaserBooted()
     if (!startEncounterForRoom()) {
       currentScreen.set('hub')
       activeRunState.set(null)
@@ -214,6 +216,7 @@
     if (!room) return
     onRoomSelected(room)
     if (room.type === 'combat') {
+      void ensurePhaserBooted()
       if (!startEncounterForRoom(room.enemyId)) {
         currentScreen.set('hub')
         activeRunState.set(null)
@@ -277,6 +280,9 @@
     }
     // Navigate to the saved screen or default to room selection
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
+    if (screen === 'combat') {
+      void ensurePhaserBooted()
+    }
     currentScreen.set(screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection'))
     hasRunSave = false
   }
@@ -334,13 +340,35 @@
     return NAV_VISIBLE_SCREENS.has(screen)
   }
 
-  onMount(() => {
-    // Boot Phaser after Svelte has stabilized the DOM
-    import('./game/CardGameManager').then(({ CardGameManager }) => {
-      const mgr = CardGameManager.getInstance()
-      mgr.boot()
-    })
+  let phaserBooted = false
+  let phaserBootPromise: Promise<void> | null = null
 
+  function ensurePhaserBooted(): Promise<void> {
+    if (phaserBooted) return Promise.resolve()
+    if (phaserBootPromise) return phaserBootPromise
+
+    phaserBootPromise = import('./game/CardGameManager')
+      .then(({ CardGameManager }) => {
+        const mgr = CardGameManager.getInstance()
+        mgr.boot()
+        phaserBooted = true
+      })
+      .catch((error) => {
+        phaserBootPromise = null
+        console.warn('[CardApp] Failed to boot Phaser on demand', error)
+        throw error
+      })
+
+    return phaserBootPromise
+  }
+
+  $effect(() => {
+    if ($currentScreen === 'combat') {
+      void ensurePhaserBooted()
+    }
+  })
+
+  onMount(() => {
     const onInteraction = (): void => {
       handleUserInteraction()
       window.removeEventListener('pointerdown', onInteraction)
