@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-03-10T09:08:37.574Z",
-  "input": "data/generated",
-  "qaDir": "data/generated/qa-reports",
+  "generatedAt": "2026-03-10T10:11:34.816Z",
+  "input": "/tmp/content-autopilot-skill-test-20260310-110948/generated",
+  "qaDir": "/tmp/content-autopilot-skill-test-20260310-110948/qa",
   "dedupCompareAgainst": "src/data/seed",
   "stopOnFail": true,
   "haltedAfterStep": "scripts/content-pipeline/qa/coverage-gate.mjs",
@@ -9,59 +9,59 @@
     {
       "script": "scripts/content-pipeline/qa/coverage-report.mjs",
       "ok": true,
-      "durationMs": 77,
-      "stdout": "coverage report: /root/terra-miner/data/generated/qa-reports/coverage-report.json",
+      "durationMs": 30,
+      "stdout": "coverage report: /tmp/content-autopilot-skill-test-20260310-110948/qa/coverage-report.json",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/cross-domain-dedup.mjs",
       "ok": true,
-      "durationMs": 97,
-      "stdout": "cross-domain dedup report: /root/terra-miner/data/generated/qa-reports/cross-domain-dedup.json (721 duplicates)",
+      "durationMs": 29,
+      "stdout": "cross-domain dedup report: /tmp/content-autopilot-skill-test-20260310-110948/qa/cross-domain-dedup.json (0 duplicates)",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/manual-ingest/run.mjs",
       "ok": true,
-      "durationMs": 573,
-      "stdout": "[validate] input=data/generated domain=general_knowledge\n  loaded 3433 records\n  report: data/generated/qa-reports/manual-ingest-validation-report.json\n  report: data/generated/qa-reports/manual-ingest-flagged-report.json\n  valid=2092 invalid=0 flagged=1341",
+      "durationMs": 32,
+      "stdout": "[validate] input=/tmp/content-autopilot-skill-test-20260310-110948/generated domain=general_knowledge\n  loaded 23 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/manual-ingest-validation-report.json\n  valid=23 invalid=0 flagged=0",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/manual-ingest/run.mjs",
       "ok": true,
-      "durationMs": 303,
-      "stdout": "[dedup] thresholds: auto=0.95 review=0.75 dryRun=true tfidf=true index=false\n  comparing against 1 target files\n  loaded 3955 existing facts\n  built TF-IDF scorer (7388 documents)\n  report: data/generated/qa-reports/manual-ingest-dedup-report.json\n  exact=3432 semantic=0 review=0 accepted=1",
+      "durationMs": 6697,
+      "stdout": "[dedup] thresholds: auto=0.95 review=0.75 dryRun=true tfidf=true index=false\n  comparing against 1 target files\n  loaded 4318 existing facts\n  built TF-IDF scorer (4341 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/manual-ingest-dedup-report.json\n  exact=0 semantic=0 review=14 accepted=23",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/flag-content-risks.mjs",
       "ok": true,
-      "durationMs": 200,
-      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/content-risk-report.json\",\n  \"totalFlagged\": 47\n}",
+      "durationMs": 30,
+      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/tmp/content-autopilot-skill-test-20260310-110948/qa/content-risk-report.json\",\n  \"totalFlagged\": 0\n}",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/source-fact-check.mjs",
       "ok": true,
-      "durationMs": 6643,
-      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/source-fact-check.json\",\n  \"summary\": {\n    \"totalFacts\": 200,\n    \"matched\": 2,\n    \"lowEvidence\": 2,\n    \"missingSourceName\": 87,\n    \"missingSourceUrl\": 0,\n    \"fetchFailed\": 109,\n    \"fetchedUrls\": 113\n  }\n}",
+      "durationMs": 29,
+      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/tmp/content-autopilot-skill-test-20260310-110948/qa/source-fact-check.json\",\n  \"summary\": {\n    \"totalFacts\": 23,\n    \"matched\": 0,\n    \"lowEvidence\": 0,\n    \"missingSourceName\": 0,\n    \"missingSourceUrl\": 23,\n    \"fetchFailed\": 0,\n    \"fetchedUrls\": 0\n  }\n}",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/review-sample.mjs",
       "ok": true,
-      "durationMs": 88,
+      "durationMs": 29,
       "stdout": "review sample: /root/terra-miner/samples/human-review/review-sample.md",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/coverage-gate.mjs",
       "ok": false,
-      "durationMs": 30,
-      "stdout": "{\n  \"ok\": false,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/coverage-gate.json\",\n  \"deficits\": 11\n}",
+      "durationMs": 26,
+      "stdout": "{\n  \"ok\": false,\n  \"outputPath\": \"/tmp/content-autopilot-skill-test-20260310-110948/qa/coverage-gate.json\",\n  \"deficits\": 10\n}",
       "stderr": "",
-      "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/qa/coverage-gate.mjs --input data/generated/qa-reports/coverage-report.json --output data/generated/qa-reports/coverage-gate.json --knowledge-min 0 --language-min 0 --strict\n"
+      "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/qa/coverage-gate.mjs --input /tmp/content-autopilot-skill-test-20260310-110948/qa/coverage-report.json --output /tmp/content-autopilot-skill-test-20260310-110948/qa/coverage-gate.json --knowledge-min 0 --language-min 0 --strict\n"
     }
   ],
   "pass": false

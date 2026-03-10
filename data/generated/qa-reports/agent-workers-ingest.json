@@ -1,67 +1,579 @@
 {
-  "generatedAt": "2026-03-10T10:03:24.770Z",
+  "generatedAt": "2026-03-10T10:11:15.095Z",
   "command": "ingest",
   "domains": [
-    "geography"
+    "general_knowledge",
+    "natural_sciences",
+    "space_astronomy",
+    "geography",
+    "history",
+    "mythology_folklore",
+    "animals_wildlife",
+    "human_body_health",
+    "food_cuisine",
+    "art_architecture"
   ],
-  "dryRun": true,
+  "dryRun": false,
   "strict": false,
   "useIndex": true,
   "compareAgainst": "src/data/seed",
-  "tasksDir": "/root/terra-miner/data/generated/worker-packages",
-  "workerOutputDir": "/root/terra-miner/data/generated/worker-output",
-  "qaRoot": "/root/terra-miner/data/generated/qa-reports/worker-ingest",
+  "tasksDir": "/tmp/content-autopilot-skill-test-20260310-110948/tasks",
+  "workerOutputDir": "/tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output",
+  "qaRoot": "/tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest",
   "results": [
     {
-      "domain": "geography",
-      "expectedMissing": 0,
-      "inputPath": "data/generated/worker-output/geography.jsonl",
-      "targetPath": "data/generated/geography.jsonl",
-      "qaDir": "data/generated/qa-reports/worker-ingest/geography",
+      "domain": "general_knowledge",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/general_knowledge.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/general_knowledge.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/general_knowledge",
       "ok": true,
       "skipped": false,
       "pass": true,
-      "inputRows": 300,
+      "inputRows": 5,
       "mergePreview": {
-        "factsToAdd": 0,
-        "newTotalAfterMerge": 300
+        "factsToAdd": 4,
+        "newTotalAfterMerge": 4
       },
       "dedupReport": {
-        "input": 106,
+        "input": 5,
         "existingCompared": 3608,
-        "exactDuplicates": 106,
-        "semanticDuplicates": 0,
-        "needsReview": 0,
-        "accepted": 0
+        "exactDuplicates": 0,
+        "semanticDuplicates": 1,
+        "needsReview": 6,
+        "accepted": 4
       },
       "validationReport": {
-        "input": 300,
-        "valid": 106,
+        "input": 5,
+        "valid": 5,
         "invalid": 0,
-        "flagged": 194
+        "flagged": 0
       },
       "run": {
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 189,
-        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/geography.jsonl domain=geography\n  loaded 300 records\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-validation-report.json\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-flagged-report.json\n  valid=106 invalid=0 flagged=194\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=true tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3714 documents)\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-dedup-report.json\n  exact=106 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/geography.jsonl (current: 300)\n\n[dry-run] Skipping finalize",
+        "durationMs": 1004,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/general_knowledge.jsonl domain=general_knowledge\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/general_knowledge/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/general_knowledge/manual-ingest-dedup-report.json\n  exact=0 semantic=1 review=6 accepted=4\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/general_knowledge/manual-ingest-merge-preview.json\n  would add 4 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/general_knowledge.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 4 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/general_knowledge.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 4 | Review: 6 | Flagged: 0",
         "stderr": "",
         "args": [
           "full",
           "--input",
-          "data/generated/worker-output/geography.jsonl",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/general_knowledge.jsonl",
           "--domain",
-          "geography",
+          "general_knowledge",
           "--target",
-          "data/generated/geography.jsonl",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/general_knowledge.jsonl",
           "--qa-dir",
-          "data/generated/qa-reports/worker-ingest/geography",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/general_knowledge",
           "--auto-dedup-threshold",
           "0.95",
           "--review-threshold",
           "0.75",
-          "--dry-run",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "natural_sciences",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/natural_sciences.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/natural_sciences.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/natural_sciences",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 2,
+        "newTotalAfterMerge": 2
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 3,
+        "needsReview": 1,
+        "accepted": 2
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 1175,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/natural_sciences.jsonl domain=natural_sciences\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/natural_sciences/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/natural_sciences/manual-ingest-dedup-report.json\n  exact=0 semantic=3 review=1 accepted=2\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/natural_sciences/manual-ingest-merge-preview.json\n  would add 2 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/natural_sciences.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 2 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/natural_sciences.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 2 | Review: 1 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/natural_sciences.jsonl",
+          "--domain",
+          "natural_sciences",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/natural_sciences.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/natural_sciences",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "space_astronomy",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/space_astronomy.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/space_astronomy.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/space_astronomy",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 2,
+        "newTotalAfterMerge": 2
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 3,
+        "needsReview": 4,
+        "accepted": 2
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 1461,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/space_astronomy.jsonl domain=space_astronomy\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/space_astronomy/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/space_astronomy/manual-ingest-dedup-report.json\n  exact=0 semantic=3 review=4 accepted=2\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/space_astronomy/manual-ingest-merge-preview.json\n  would add 2 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/space_astronomy.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 2 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/space_astronomy.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 2 | Review: 4 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/space_astronomy.jsonl",
+          "--domain",
+          "space_astronomy",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/space_astronomy.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/space_astronomy",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "geography",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/geography.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/geography.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/geography",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 1,
+        "newTotalAfterMerge": 1
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 4,
+        "needsReview": 0,
+        "accepted": 1
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 2115,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/geography.jsonl domain=geography\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/geography/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/geography/manual-ingest-dedup-report.json\n  exact=0 semantic=4 review=0 accepted=1\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/geography/manual-ingest-merge-preview.json\n  would add 1 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/geography.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 1 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/geography.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 1 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/geography.jsonl",
+          "--domain",
+          "geography",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/geography.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/geography",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "history",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/history.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/history.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/history",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 1,
+        "newTotalAfterMerge": 1
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 4,
+        "needsReview": 0,
+        "accepted": 1
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 970,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/history.jsonl domain=history\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/history/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/history/manual-ingest-dedup-report.json\n  exact=0 semantic=4 review=0 accepted=1\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/history/manual-ingest-merge-preview.json\n  would add 1 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/history.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 1 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/history.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 1 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/history.jsonl",
+          "--domain",
+          "history",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/history.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/history",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "mythology_folklore",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/mythology_folklore.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/mythology_folklore.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/mythology_folklore",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 3,
+        "newTotalAfterMerge": 3
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 2,
+        "needsReview": 3,
+        "accepted": 3
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 989,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/mythology_folklore.jsonl domain=mythology_folklore\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/mythology_folklore/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/mythology_folklore/manual-ingest-dedup-report.json\n  exact=0 semantic=2 review=3 accepted=3\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/mythology_folklore/manual-ingest-merge-preview.json\n  would add 3 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/mythology_folklore.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 3 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/mythology_folklore.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 3 | Review: 3 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/mythology_folklore.jsonl",
+          "--domain",
+          "mythology_folklore",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/mythology_folklore.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/mythology_folklore",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "animals_wildlife",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/animals_wildlife.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/animals_wildlife.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/animals_wildlife",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 1,
+        "newTotalAfterMerge": 1
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 4,
+        "needsReview": 0,
+        "accepted": 1
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 1678,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/animals_wildlife.jsonl domain=animals_wildlife\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/animals_wildlife/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/animals_wildlife/manual-ingest-dedup-report.json\n  exact=0 semantic=4 review=0 accepted=1\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/animals_wildlife/manual-ingest-merge-preview.json\n  would add 1 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/animals_wildlife.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 1 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/animals_wildlife.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 1 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/animals_wildlife.jsonl",
+          "--domain",
+          "animals_wildlife",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/animals_wildlife.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/animals_wildlife",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "human_body_health",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/human_body_health.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/human_body_health.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/human_body_health",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 2,
+        "newTotalAfterMerge": 2
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 3,
+        "needsReview": 0,
+        "accepted": 2
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 1006,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/human_body_health.jsonl domain=human_body_health\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/human_body_health/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/human_body_health/manual-ingest-dedup-report.json\n  exact=0 semantic=3 review=0 accepted=2\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/human_body_health/manual-ingest-merge-preview.json\n  would add 2 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/human_body_health.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 2 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/human_body_health.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 2 | Review: 0 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/human_body_health.jsonl",
+          "--domain",
+          "human_body_health",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/human_body_health.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/human_body_health",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "food_cuisine",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/food_cuisine.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/food_cuisine.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/food_cuisine",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 2,
+        "newTotalAfterMerge": 2
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 3,
+        "needsReview": 1,
+        "accepted": 2
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 919,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/food_cuisine.jsonl domain=food_cuisine\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/food_cuisine/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/food_cuisine/manual-ingest-dedup-report.json\n  exact=0 semantic=3 review=1 accepted=2\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/food_cuisine/manual-ingest-merge-preview.json\n  would add 2 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/food_cuisine.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 2 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/food_cuisine.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 2 | Review: 1 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/food_cuisine.jsonl",
+          "--domain",
+          "food_cuisine",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/food_cuisine.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/food_cuisine",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
+          "--use-index",
+          "--compare-against",
+          "src/data/seed"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "domain": "art_architecture",
+      "expectedMissing": 5,
+      "inputPath": "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/art_architecture.jsonl",
+      "targetPath": "../../tmp/content-autopilot-skill-test-20260310-110948/generated/art_architecture.jsonl",
+      "qaDir": "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/art_architecture",
+      "ok": true,
+      "skipped": false,
+      "pass": true,
+      "inputRows": 5,
+      "mergePreview": {
+        "factsToAdd": 5,
+        "newTotalAfterMerge": 5
+      },
+      "dedupReport": {
+        "input": 5,
+        "existingCompared": 3608,
+        "exactDuplicates": 0,
+        "semanticDuplicates": 0,
+        "needsReview": 2,
+        "accepted": 5
+      },
+      "validationReport": {
+        "input": 5,
+        "valid": 5,
+        "invalid": 0,
+        "flagged": 0
+      },
+      "run": {
+        "script": "scripts/content-pipeline/manual-ingest/run.mjs",
+        "ok": true,
+        "exitCode": 0,
+        "durationMs": 1202,
+        "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/art_architecture.jsonl domain=art_architecture\n  loaded 5 records\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/art_architecture/manual-ingest-validation-report.json\n  valid=5 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 3608 facts from cache\n  loaded 3608 existing facts\n  built TF-IDF scorer (3613 documents)\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/art_architecture/manual-ingest-dedup-report.json\n  exact=0 semantic=0 review=2 accepted=5\n\n[step 3/4] Merge Preview\n  report: ../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/art_architecture/manual-ingest-merge-preview.json\n  would add 5 facts to ../../tmp/content-autopilot-skill-test-20260310-110948/generated/art_architecture.jsonl (current: 0)\n\n[step 4/4] Finalize Merge\n  merged 5 facts into ../../tmp/content-autopilot-skill-test-20260310-110948/generated/art_architecture.jsonl\n\n=== Complete ===\n  Valid: 5 | Accepted: 5 | Review: 2 | Flagged: 0",
+        "stderr": "",
+        "args": [
+          "full",
+          "--input",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/haiku-worker-output/art_architecture.jsonl",
+          "--domain",
+          "art_architecture",
+          "--target",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/generated/art_architecture.jsonl",
+          "--qa-dir",
+          "../../tmp/content-autopilot-skill-test-20260310-110948/qa/worker-ingest/art_architecture",
+          "--auto-dedup-threshold",
+          "0.95",
+          "--review-threshold",
+          "0.75",
           "--use-index",
           "--compare-against",
           "src/data/seed"
@@ -72,11 +584,11 @@
   ],
   "pass": true,
   "totals": {
-    "domains": 1,
-    "domainsProcessed": 1,
+    "domains": 10,
+    "domainsProcessed": 10,
     "domainsMissingOutput": 0,
-    "inputsFound": 1,
-    "inputsRows": 300
+    "inputsFound": 10,
+    "inputsRows": 50
   },
   "indexStep": {
     "script": "scripts/content-pipeline/manual-ingest/run.mjs",

@@ -17,6 +17,7 @@
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 - AR-20 Competitive/social runtime wiring including Daily + Endless leaderboard submissions.
 - AR-21 Monetization activation including Arcane Pass/Season Pass/Cosmetic Store surfacing and Scholar Challenge.
+- Regression hardening pass: unit coverage added for AR-21 monetization grant flows and AR-30 camp cosmetics progression state (`tests/unit/monetizationService.test.ts`, `tests/unit/campState.test.ts`).
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 

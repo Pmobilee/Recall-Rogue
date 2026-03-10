@@ -1,904 +1,114 @@
 # Human Review Sample
 
 ## animals_wildlife
-- [ ] The Surinam toad gives birth through its back — eggs are pressed into the mother's skin, where they develop in honeycomb-like pockets, and fully formed toadlets erupt from her back.
-  - Question: Where do Surinam toad embryos develop?
-  - Answer: In honeycomb-like pockets embedded in the mother's back skin
-  - Source: n/a (n/a)
-- [ ] Woodlarks are one of the few European songbirds that regularly sing at night — their haunting, spiraling melody floating through moonlit heaths has inspired poets for centuries.
-  - Question: What makes the woodlark unusual among European songbirds?
-  - Answer: It regularly sings at night, not just during the day
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26969)
-- [ ] Little Owl is the common name for Athene noctua, a species of bird with Least Concern conservation status.
-  - Question: What is the conservation status of the Little Owl?
-  - Answer: Least Concern
-  - Source: Wikidata (http://www.wikidata.org/entity/Q129958)
-- [ ] Senna alata is a tropical plant species with least concern conservation status.
-  - Question: What is Senna alata?
-  - Answer: A tropical plant
-  - Source: Wikidata (http://www.wikidata.org/entity/Q41504)
-- [ ] Razorbills lay a single egg on bare cliff ledges with no nest — the egg is specially shaped like a pear so it rolls in a tight circle instead of falling off the edge.
-  - Question: Why are razorbill eggs pear-shaped?
-  - Answer: So they roll in a circle instead of off the cliff ledge
-  - Source: Wikidata (http://www.wikidata.org/entity/Q27102)
-- [ ] The star-nosed mole has 22 fleshy tentacles on its nose containing over 100,000 nerve fibers — six times more touch receptors than the entire human hand — making it the most touch-sensitive organ known.
-  - Question: How fast can the star-nosed mole identify and eat a prey item?
-  - Answer: As little as 120 milliseconds
-  - Source: n/a (n/a)
-- [ ] European plaice are born as normal-looking fish, but as they grow, one eye literally migrates across the skull to the other side — so both eyes end up on top when the fish lies flat on the seabed.
-  - Question: What happens to a European plaice's eyes as it grows from a larva?
-  - Answer: One eye migrates across the skull so both eyes are on the same side
-  - Source: Wikidata (http://www.wikidata.org/entity/Q27098)
-- [ ] The desert rain frog of Namibia has gone viral for its tiny body and absurdly squeaky defensive cry, which sounds like a dog's squeaky toy rather than a fearsome warning.
-  - Question: Where does the desert rain frog live?
-  - Answer: Coastal sand dunes of Namibia and South Africa
-  - Source: n/a (n/a)
-- [ ] Archerfish can shoot jets of water from their mouths with pinpoint accuracy to knock insects off overhanging branches up to 3 meters away.
-  - Question: How do archerfish catch insects above the water?
-  - Answer: They shoot jets of water to knock them down
-  - Source: n/a (n/a)
-- [ ] African grey parrots can learn over 1,000 words and use them contextually, with cognitive abilities comparable to a 5-year-old human child.
-  - Question: What historic question did Alex the African grey parrot famously ask?
-  - Answer: What color am I?
-  - Source: n/a (n/a)
-- [ ] The jewel wasp turns cockroaches into zombies by injecting venom directly into their brain, disabling their escape reflex while keeping them alive, then leads them by the antenna to a burrow where it lays an egg on them.
-  - Question: How does the jewel wasp control the cockroach's behavior?
-  - Answer: By injecting venom directly into specific brain regions
-  - Source: n/a (n/a)
-- [ ] Each eye of a Philippine tarsier is larger than its brain and is fixed in the skull — so it cannot move its eyes at all and must rotate its entire head 180 degrees like an owl to look around.
-  - Question: Why can't tarsiers move their eyes?
-  - Answer: Their eyes are too large for the skull and are fixed in place
-  - Source: n/a (n/a)
-- [ ] New Caledonian crows craft and use tools in sequences, including bending wire into hooks and trimming leaves into specific shapes to extract grubs from crevices.
-  - Question: What advanced cognitive ability do New Caledonian crows demonstrate with tools?
-  - Answer: Meta-tool use — using one tool to retrieve another
-  - Source: n/a (n/a)
-- [ ] Honeybees communicate the distance and direction of food sources through a figure-eight waggle dance, one of the most sophisticated communication systems in the insect world.
-  - Question: Who decoded the honeybee waggle dance?
-  - Answer: Karl von Frisch
-  - Source: n/a (n/a)
-- [ ] The cougar holds the Guinness World Record for the animal with the most names — it has over 40 English names including puma, mountain lion, panther, catamount, and painter.
-  - Question: Which animal holds the record for the most common names in English?
-  - Answer: The cougar (also called puma, mountain lion, panther)
-  - Source: Wikidata (http://www.wikidata.org/entity/Q35255)
-- [ ] The Wolverine (Gulo gulo) is classified as Least Concern.
-  - Question: What type of animal is the Wolverine?
-  - Answer: Largest land-dwelling the family mu
-  - Source: Wikidata (http://www.wikidata.org/entity/Q14334)
-- [ ] Superb fairy-wren mothers teach their unhatched chicks a unique 'password' song through the eggshell, which the chicks must sing after hatching to receive food — a defense against brood parasites.
-  - Question: Why do fairy-wren mothers teach passwords to unhatched chicks?
-  - Answer: To identify their own chicks and detect brood parasites like cuckoos
-  - Source: n/a (n/a)
-- [ ] New Zealand's beloved whitebait — the most expensive fish per kilo in the country — are actually the babies of five different galaxias species, and their populations have plummeted by over 70% since the 1980s.
-  - Question: What are New Zealand's prized whitebait actually?
-  - Answer: The juvenile larvae of five different galaxias fish species
-  - Source: Wikidata (http://www.wikidata.org/entity/Q44229)
-- [ ] The Black Swan, or Cygnus atratus, is a bird species that holds Least Concern conservation status.
-  - Question: What type of animal is the Black Swan?
-  - Answer: Bird
-  - Source: Wikidata (http://www.wikidata.org/entity/Q131044)
-- [ ] Alpine pikas are small mammals in the Ochotonidae family found in mountainous regions.
-  - Question: What family do Alpine pikas belong to?
-  - Answer: Ochotonidae
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4524)
+- [ ] "http_www_wikidata_org_entity_Q41133" is classified under animals_wildlife.
+  - Question: Which domain matches "http_www_wikidata_org_entity_Q41133"?
+  - Answer: animals_wildlife
+  - Source: worker-dry-run (n/a)
 
 ## art_architecture
-- [ ] Austrian Museum of Folk Life and Folk Art is a notable museum of cultural significance.
-  - Question: What type of structure is Austrian Museum of F?
-  - Answer: Museum
-  - Source: Wikidata (http://www.wikidata.org/entity/Q306678)
-- [ ] The Seoul Olympic Museum opened in 1990 to commemorate the 1988 Summer Olympics held in Seoul, South Korea.
-  - Question: In what year did the Seoul Olympic Museum open?
-  - Answer: 1990
-  - Source: Wikidata (http://www.wikidata.org/entity/Q624285)
-- [ ] Burg Kreuzenstein is a reconstructed medieval castle in Lower Austria, rebuilt from ruins between 1874 and 1906.
-  - Question: Who rebuilt Burg Kreuzenstein from ruins?
-  - Answer: Count Johann Nepomuk Wilczek
-  - Source: Wikidata (http://www.wikidata.org/entity/Q669642)
-- [ ] The Evoluon in Eindhoven, Netherlands, is a futuristic flying saucer-shaped building commissioned by Philips in 1966.
-  - Question: Which company commissioned the construction of the Evoluon?
-  - Answer: Philips
-  - Source: Wikidata (http://www.wikidata.org/entity/Q23212)
-- [ ] The Taj Mahal appears to change color throughout the day — pinkish in the morning, white at midday, and golden in the moonlight — because its white marble contains semi-translucent properties that reflect surrounding light.
-  - Question: Why does the Taj Mahal appear to change color throughout the day?
-  - Answer: Its white marble has semi-translucent properties that reflect surrounding light
-  - Source: n/a (n/a)
-- [ ] The Royal Convent of La Encarnación is a Baroque monastery in Madrid, Spain, founded in 1616.
-  - Question: In what year was the Royal Convent of La Encarnación in Madrid founded?
-  - Answer: 1616
-  - Source: Wikidata (http://www.wikidata.org/entity/Q205524)
-- [ ] The ancient Roman Pantheon's unreinforced concrete dome, built around 125 CE, remains the world's largest of its kind at 43.3 meters in diameter.
-  - Question: What is the diameter of the Pantheon's unreinforced concrete dome?
-  - Answer: 43.3 meters
-  - Source: n/a (n/a)
-- [ ] Chinese calligraphy's 'Four Treasures of the Study' are the brush, ink, paper, and inkstone, each considered an art form in its own right.
-  - Question: What are the 'Four Treasures of the Study' in Chinese calligraphy?
-  - Answer: Brush, ink, paper, and inkstone
-  - Source: n/a (n/a)
-- [ ] The flying buttress, a hallmark of Gothic architecture, was invented around 1150 to allow churches to have enormous stained glass windows by transferring wall loads to external supports.
-  - Question: What architectural innovation allowed Gothic cathedrals to have enormous stained glass windows?
-  - Answer: Flying buttress
-  - Source: n/a (n/a)
-- [ ] The Watts Towers in Los Angeles were built single-handedly by Italian immigrant Simon Rodia over 33 years using scrap metal, broken pottery, glass, and seashells.
-  - Question: Who single-handedly built the Watts Towers in Los Angeles over 33 years?
-  - Answer: Simon Rodia
-  - Source: n/a (n/a)
-- [ ] The Terracotta Army, discovered in 1974 near Xi'an, China, contains over 8,000 life-sized clay soldiers, each with a unique face, built to protect Emperor Qin Shi Huang in the afterlife.
-  - Question: Approximately how many terracotta warriors were created for Emperor Qin Shi Huang's tomb?
-  - Answer: Over 8,000
-  - Source: n/a (n/a)
-- [ ] Robert Smithson's 'Spiral Jetty' (1970) is a 1,500-foot-long coil of black basalt rock, earth, and salt crystals built into the Great Salt Lake in Utah, making it one of the most famous works of Land Art.
-  - Question: Where is Robert Smithson's 'Spiral Jetty' located?
-  - Answer: Great Salt Lake, Utah
-  - Source: n/a (n/a)
-- [ ] Kintsugi is the Japanese art of repairing broken pottery with gold, treating breakage as part of the object's history rather than something to hide.
-  - Question: What is the Japanese art of repairing broken pottery with gold called?
-  - Answer: Kintsugi
-  - Source: n/a (n/a)
-- [ ] The Sagrada Família in Barcelona, designed by Antoni Gaudí, has been under construction since 1882 and is expected to be completed around 2026.
-  - Question: Who designed the Sagrada Família basilica in Barcelona?
-  - Answer: Antoni Gaudí
-  - Source: n/a (n/a)
-- [ ] The Golden Gate Bridge's distinctive International Orange color was originally just the primer paint, but architect Irving Morrow liked it so much he made it permanent.
-  - Question: What is the official color of the Golden Gate Bridge?
-  - Answer: International Orange
-  - Source: n/a (n/a)
-- [ ] Zaha Hadid was the first woman to receive the Pritzker Architecture Prize in 2004, and her fluid, gravity-defying buildings earned her the nickname 'Queen of the Curve.'
-  - Question: Who was the first woman to win the Pritzker Architecture Prize?
-  - Answer: Zaha Hadid
-  - Source: n/a (n/a)
-- [ ] Ai Weiwei's Sunflower Seeds installation at the Tate Modern consisted of 100 million individually handcrafted porcelain seeds, each painted by artisans in Jingdezhen, China.
-  - Question: How many porcelain sunflower seeds did Ai Weiwei's Tate Modern installation contain?
-  - Answer: 100 million
-  - Source: n/a (n/a)
-- [ ] Valentin-Volkssänger-Musäum is a museum in Munich, Germany, established in 1954.
-  - Question: Where is Valentin-Volkssänger-Musäum located?
-  - Answer: Munich, Germany
-  - Source: Wikidata (http://www.wikidata.org/entity/Q264209)
-- [ ] Art Nouveau architect Antoni Gaudí's Sagrada Família in Barcelona has been under construction since 1882 and is not expected to be completed until 2026, making it one of the longest-running building projects in history.
-  - Question: In what year did construction of Gaudí's Sagrada Família begin?
-  - Answer: 1882
-  - Source: n/a (n/a)
-- [ ] The ancient Greek Parthenon uses entasis—a slight outward curve in its columns—to correct the optical illusion that straight columns appear to bow inward.
-  - Question: What technique do the Parthenon's columns use to correct the illusion of inward bowing?
-  - Answer: Entasis
-  - Source: n/a (n/a)
+- [ ] "Museum für Naturkunde - Leibniz Institute for Evolution and Biodiversity Science" is classified under art_architecture.
+  - Question: Which domain matches "Museum für Naturkunde - Leibniz Institute for Evolution and Biodiversity Science"?
+  - Answer: art_architecture
+  - Source: worker-dry-run (n/a)
+- [ ] "City of Arts and Sciences" is classified under art_architecture.
+  - Question: Which domain matches "City of Arts and Sciences"?
+  - Answer: art_architecture
+  - Source: worker-dry-run (n/a)
+- [ ] "Olavinlinna Castle" is classified under art_architecture.
+  - Question: Which domain matches "Olavinlinna Castle"?
+  - Answer: art_architecture
+  - Source: worker-dry-run (n/a)
+- [ ] "United States Holocaust Memorial Museum" is classified under art_architecture.
+  - Question: Which domain matches "United States Holocaust Memorial Museum"?
+  - Answer: art_architecture
+  - Source: worker-dry-run (n/a)
+- [ ] "Heralds' Museum" is classified under art_architecture.
+  - Question: Which domain matches "Heralds' Museum"?
+  - Answer: art_architecture
+  - Source: worker-dry-run (n/a)
 
 ## food_cuisine
-- [ ] Smoked paprika (pimentón de la Vera) is made by slowly drying peppers over oak fires for two weeks, a technique used in Spain's Extremadura region for 500 years.
-  - Question: What wood is traditionally used to smoke-dry the peppers for pimentón de la Vera?
-  - Answer: Oak
-  - Source: n/a (n/a)
-- [ ] Corn (maize) must be nixtamalized — soaked in an alkaline solution — to unlock its niacin content and prevent pellagra, a vitamin deficiency disease.
-  - Question: What process must corn undergo to make its niacin nutritionally available?
-  - Answer: Nixtamalization
-  - Source: n/a (n/a)
-- [ ] The hotdog-style sausage originated in Frankfurt, Germany (frankfurter) and was popularized in the United States by German immigrants at Coney Island.
-  - Question: Which German city is the frankfurter sausage named after?
-  - Answer: Frankfurt
-  - Source: n/a (n/a)
-- [ ] Capsaicin, the molecule that makes chili peppers hot, doesn't actually cause any physical damage — it tricks pain receptors into thinking they're burning.
-  - Question: How does capsaicin make peppers taste hot?
-  - Answer: It tricks pain receptors into sensing heat
-  - Source: n/a (n/a)
-- [ ] Umami, the fifth basic taste, was identified by Japanese chemist Kikunae Ikeda in 1908 after studying the flavor of kombu seaweed broth.
-  - Question: Who identified umami as the fifth basic taste in 1908?
-  - Answer: Kikunae Ikeda
-  - Source: n/a (n/a)
-- [ ] Turmeric gets its intense yellow color from curcumin, which has been studied for anti-inflammatory properties but has low bioavailability unless combined with black pepper.
-  - Question: What compound in black pepper dramatically increases the absorption of turmeric's curcumin?
-  - Answer: Piperine
-  - Source: n/a (n/a)
-- [ ] Egg yolk color has nothing to do with nutrition or freshness — it's entirely determined by what the hen ate. Hens fed marigold petals lay eggs with deep orange yolks.
-  - Question: What determines the color of an egg yolk?
-  - Answer: The hen's diet
-  - Source: Wikidata (http://www.wikidata.org/entity/Q181409)
-- [ ] Esquites is a popular Mexican street food of corn kernels served in a cup with mayo, lime, chili, and cheese.
-  - Question: What Mexican street food consists of corn kernels served in a cup with toppings?
-  - Answer: Esquites
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5243850)
-- [ ] Kombucha is made by fermenting sweetened tea with a SCOBY (Symbiotic Culture of Bacteria and Yeast), producing a fizzy, slightly sour drink.
-  - Question: What does SCOBY stand for in kombucha brewing?
-  - Answer: Symbiotic Culture of Bacteria and Yeast
-  - Source: n/a (n/a)
-- [ ] Vanilla is the second most expensive spice after saffron because each vanilla orchid flower must be hand-pollinated and the pods take 9 months to mature.
-  - Question: Why must vanilla orchids outside Mexico be hand-pollinated?
-  - Answer: The native Melipona bees that pollinate them naturally only exist in Mexico
-  - Source: n/a (n/a)
-- [ ] Nasi padang is an Indonesian dining style from West Sumatra where steamed rice is served with dozens of pre-cooked dishes.
-  - Question: From which Indonesian island does Nasi padang originate?
-  - Answer: Sumatra
-  - Source: Wikidata (http://www.wikidata.org/entity/Q17054040)
-- [ ] Pancakes are a traditional breakfast food originating from the United States.
-  - Question: Where did pancakes originate?
-  - Answer: United States
-  - Source: Wikidata (http://www.wikidata.org/entity/Q44541)
-- [ ] Orzotto is an Italian dish prepared like risotto but using pearl barley instead of rice.
-  - Question: What grain replaces rice in orzotto?
-  - Answer: Pearl barley
-  - Source: Wikidata (http://www.wikidata.org/entity/Q17101058)
-- [ ] The world's most expensive coffee, kopi luwak, is made from beans eaten and excreted by civet cats — it can cost over $600 per pound.
-  - Question: How is kopi luwak coffee produced?
-  - Answer: From beans eaten and excreted by civet cats
-  - Source: n/a (n/a)
-- [ ] Coconut milk isn't the liquid inside a coconut — that's coconut water. Coconut milk is actually made by grating the white flesh and squeezing it through cheesecloth.
-  - Question: How is coconut milk actually made?
-  - Answer: By pressing grated coconut flesh
-  - Source: Wikidata (http://www.wikidata.org/entity/Q841779)
-- [ ] Carrageenan, extracted from red seaweed, is in almost every ice cream you've ever eaten — it prevents ice crystals from forming and keeps the texture smooth and creamy.
-  - Question: What seaweed-derived ingredient keeps ice cream smooth by preventing ice crystals?
-  - Answer: Carrageenan
-  - Source: Wikidata (http://www.wikidata.org/entity/Q421991)
-- [ ] goulash is a Hungarian dish from Kingdom of Hungary.
-  - Question: Where does goulash originate from?
-  - Answer: Kingdom of Hungary
-  - Source: Wikidata (http://www.wikidata.org/entity/Q205762)
-- [ ] Pumpernickel bread from Westphalia, Germany, is steam-baked in a sealed tin for 16-24 hours at low temperature, creating its dark color without any added coloring.
-  - Question: What gives traditional Westphalian pumpernickel its very dark color?
-  - Answer: Extended low-temperature baking (Maillard reaction)
-  - Source: n/a (n/a)
-- [ ] Carrots were originally purple, white, and yellow — the orange variety was developed in the Netherlands in the 17th century.
-  - Question: What color were carrots originally before the orange variety was developed?
-  - Answer: Purple, white, and yellow
-  - Source: n/a (n/a)
-- [ ] The sandwich is named after John Montagu, 4th Earl of Sandwich, who reportedly asked for meat between bread slices so he could eat without leaving the gaming table.
-  - Question: After whom is the sandwich named?
-  - Answer: The Earl of Sandwich
-  - Source: n/a (n/a)
+- [ ] "waffle" is classified under food_cuisine.
+  - Question: Which domain matches "waffle"?
+  - Answer: food_cuisine
+  - Source: worker-dry-run (n/a)
+- [ ] "mille-feuille" is classified under food_cuisine.
+  - Question: Which domain matches "mille-feuille"?
+  - Answer: food_cuisine
+  - Source: worker-dry-run (n/a)
 
 ## general_knowledge
-- [ ] Pringles are technically not potato chips — they are made from dehydrated potato flakes pressed into a uniform shape, and were legally classified differently in a UK tax case.
-  - Question: Why were Pringles argued to be 'not potato chips' in a UK tax case?
-  - Answer: They contain only 42% potato content, made from dehydrated flakes
-  - Source: n/a (n/a)
-- [ ] Temple of Marquis Wu, Baidicheng is a building in China.
-  - Question: What is Temple of Marquis Wu, Baidicheng?
-  - Answer: Building in china
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2261045)
-- [ ] Socrates, one of the most influential philosophers in history, never wrote down any of his ideas — they were recorded by his students, primarily Plato.
-  - Question: Which famous ancient philosopher never wrote down any of his own teachings?
-  - Answer: Socrates
-  - Source: n/a (n/a)
-- [ ] The first commercially successful typewriter was the Remington No. 1 (1873), which typed only in uppercase — you couldn't see what you were typing until you pulled the paper out.
-  - Question: What was unusual about the Remington No. 1 typewriter (1873)?
-  - Answer: It typed only uppercase and you couldn't see the text while typing
-  - Source: n/a (n/a)
-- [ ] The Temple of Hathor in Memphis honored the Egyptian goddess of love and joy.
-  - Question: Which Egyptian goddess did Memphis's Hathor temple honor?
-  - Answer: Hathor
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3517521)
-- [ ] Stockholm syndrome was named after a 1973 bank robbery in Stockholm, Sweden, where hostages developed emotional bonds with their captors over six days.
-  - Question: Stockholm syndrome was named after a 1973 incident involving what type of crime?
-  - Answer: A bank robbery
-  - Source: n/a (n/a)
-- [ ] The Wright Brothers' first powered flight at Kitty Hawk in 1903 covered only 120 feet — less than the wingspan of a modern Boeing 747.
-  - Question: The Wright Brothers' first flight distance of 120 feet is shorter than what part of a Boeing 747?
-  - Answer: Its wingspan
-  - Source: n/a (n/a)
-- [ ] Q723125 is a archaeological site located in Rhineland-Palatinate, Germany.
-  - Question: Where is Q723125 located?
-  - Answer: Rhineland-Palatinate, Germany
-  - Source: Wikidata (http://www.wikidata.org/entity/Q723125)
-- [ ] The Temple of Concordia is an ancient Roman temple located in Agrigento, Italy.
-  - Question: Where is the Temple of Concordia located?
-  - Answer: Agrigento, Italy
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3983202)
-- [ ] Earth's rotation is slowing by about 2.3 milliseconds per century, meaning dinosaurs experienced roughly 23-hour days 200 million years ago.
-  - Question: Approximately how much is Earth's day lengthening per century?
-  - Answer: 2.3 milliseconds
-  - Source: n/a (n/a)
-- [ ] When the Gregorian calendar was adopted in 1582, ten days were skipped — October 4 was followed directly by October 15 to correct accumulated drift.
-  - Question: How many days were skipped when the Gregorian calendar was first adopted in 1582?
-  - Answer: 10 days
-  - Source: n/a (n/a)
-- [ ] The world's first narrative feature film is generally considered to be 'The Story of the Kelly Gang' (1906), produced in Australia.
-  - Question: Which country produced what is generally considered the world's first narrative feature film in 1906?
-  - Answer: Australia
-  - Source: n/a (n/a)
-- [ ] The Temple in Jerusalem was the central religious center for ancient Israelites.
-  - Question: What was the Temple in Jerusalem?
-  - Answer: Israelite religious center
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3906600)
-- [ ] Shri Jagannath Puri Temple is a Hindu temple building located in South Africa.
-  - Question: Where is Shri Jagannath Puri Temple located?
-  - Answer: South Africa
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3347155)
-- [ ] The Dunning-Kruger effect describes how people with limited knowledge in a domain tend to overestimate their own competence in that domain.
-  - Question: What cognitive bias causes people with low ability to overestimate their competence?
-  - Answer: The Dunning-Kruger effect
-  - Source: n/a (n/a)
-- [ ] Temple of Antoninus and Faustina is a temple located in Rome which was later converted into a Roman Catholic.
-  - Question: Where is Temple of Antoninus and Faustina located?
-  - Answer: Rome which was later converted
-  - Source: Wikidata (http://www.wikidata.org/entity/Q752555)
-- [ ] Temple of Apollo Sosianus is a building located in Rome, Italy.
-  - Question: Where is Temple of Apollo Sosianus located?
-  - Answer: Rome, Italy
-  - Source: Wikidata (http://www.wikidata.org/entity/Q582353)
-- [ ] The Pygmalion effect (also called the Rosenthal effect) shows that higher expectations placed on people lead to improved performance — essentially a self-fulfilling prophecy.
-  - Question: What does the Pygmalion effect demonstrate?
-  - Answer: Higher expectations lead to improved performance
-  - Source: n/a (n/a)
-- [ ] Templo Mayor is described as main Temple of Tenochtitlan.
-  - Question: What type of structure is Templo Mayor?
-  - Answer: temple
-  - Source: Wikidata (http://www.wikidata.org/entity/Q774021)
-- [ ] Temple of Simut and Nin Ali in Dur Untash is a temple.
-  - Question: What is Temple of Simut and Nin Ali in Dur Untash?
-  - Answer: Temple
-  - Source: Wikidata (http://www.wikidata.org/entity/Q82073986)
+- [ ] "Fan Sin Temple" is classified under general_knowledge.
+  - Question: Which domain matches "Fan Sin Temple"?
+  - Answer: general_knowledge
+  - Source: worker-dry-run (n/a)
+- [ ] "E-sara" is classified under general_knowledge.
+  - Question: Which domain matches "E-sara"?
+  - Answer: general_knowledge
+  - Source: worker-dry-run (n/a)
+- [ ] "Aqaba Church" is classified under general_knowledge.
+  - Question: Which domain matches "Aqaba Church"?
+  - Answer: general_knowledge
+  - Source: worker-dry-run (n/a)
+- [ ] "Temple of Minerva Chalcidica" is classified under general_knowledge.
+  - Question: Which domain matches "Temple of Minerva Chalcidica"?
+  - Answer: general_knowledge
+  - Source: worker-dry-run (n/a)
 
 ## geography
-- [ ] The Alps mountain range spans eight European countries: France, Monaco, Switzerland, Italy, Liechtenstein, Austria, Germany, and Slovenia.
-  - Question: How many countries do the Alps span?
-  - Answer: Eight
-  - Source: n/a (n/a)
-- [ ] Until about 8,000 years ago, Britain was connected to continental Europe by a landmass called Doggerland, now submerged beneath the North Sea.
-  - Question: What was the landmass that once connected Britain to Europe called?
-  - Answer: Doggerland
-  - Source: n/a (n/a)
-- [ ] The Strait of Hormuz, only 33 km wide at its narrowest point, sees roughly 20% of the world's oil supply pass through it daily.
-  - Question: What percentage of the world's oil passes through the Strait of Hormuz?
-  - Answer: About 20%
-  - Source: n/a (n/a)
-- [ ] The capital of Syria is Damascus.
-  - Question: What is the capital of Syria?
-  - Answer: Damascus
-  - Source: Wikidata (http://www.wikidata.org/entity/Q858)
-- [ ] The Sargasso Sea is the only sea in the world with no land boundaries — it is defined entirely by ocean currents in the North Atlantic.
-  - Question: What makes the Sargasso Sea unique among seas?
-  - Answer: It has no land boundaries
-  - Source: n/a (n/a)
-- [ ] Earth's outer shell is divided into about 15 major tectonic plates that float on the semi-fluid mantle below.
-  - Question: About how many major tectonic plates make up Earth's outer shell?
-  - Answer: About 15
-  - Source: n/a (n/a)
-- [ ] The Ring of Fire is a horseshoe-shaped zone around the Pacific Ocean where about 75% of the world's volcanoes are found.
-  - Question: What percentage of the world's volcanoes are found in the Ring of Fire?
-  - Answer: About 75%
-  - Source: n/a (n/a)
-- [ ] The Trans-Siberian Railway is the longest railway line in the world, stretching 9,289 km from Moscow to Vladivostok.
-  - Question: How long is the Trans-Siberian Railway?
-  - Answer: 9,289 km
-  - Source: n/a (n/a)
-- [ ] The Drake Passage between South America and Antarctica is considered the roughest sea crossing in the world, with waves regularly exceeding 12 meters.
-  - Question: Where is the Drake Passage located?
-  - Answer: Between South America and Antarctica
-  - Source: n/a (n/a)
-- [ ] The Tokyo metropolitan area is the most populous urban agglomeration in the world, with about 37 million people.
-  - Question: What is the most populous urban agglomeration in the world?
-  - Answer: Tokyo
-  - Source: n/a (n/a)
-- [ ] South Sudan is classified as a low income country by the World Bank.
-  - Question: How does the World Bank classify South Sudan's income level?
-  - Answer: Low income
-  - Source: World Bank (https://data.worldbank.org/country/ssd)
-- [ ] The capital of Laos is Vientiane.
-  - Question: What is the capital of Laos?
-  - Answer: Vientiane
-  - Source: Wikidata (http://www.wikidata.org/entity/Q819)
-- [ ] Ha Long Bay in Vietnam contains about 1,600 limestone islands and islets, many with caves and grottoes inside.
-  - Question: How many limestone islands are in Ha Long Bay?
-  - Answer: About 1,600
-  - Source: n/a (n/a)
-- [ ] Iceland sits on the Mid-Atlantic Ridge, directly on top of the boundary between the North American and Eurasian tectonic plates.
-  - Question: Iceland sits on the boundary between which two tectonic plates?
-  - Answer: North American and Eurasian
-  - Source: n/a (n/a)
-- [ ] About 335 million years ago, all continents were joined into a single supercontinent called Pangaea.
-  - Question: What was the name of the supercontinent that existed about 335 million years ago?
-  - Answer: Pangaea
-  - Source: n/a (n/a)
-- [ ] Petra, the ancient city carved into rose-red cliffs in Jordan, was the capital of the Nabataean Kingdom over 2,000 years ago.
-  - Question: In which country is the ancient city of Petra located?
-  - Answer: Jordan
-  - Source: n/a (n/a)
-- [ ] Very few land areas on Earth are directly antipodal to other land — most land has its opposite point in the ocean.
-  - Question: What is the geographic term for the point directly opposite a location on Earth?
-  - Answer: Antipode
-  - Source: n/a (n/a)
-- [ ] Lesotho is one of only three countries in the world that are entirely surrounded by a single other country — it is completely enclosed by South Africa.
-  - Question: Which country is entirely surrounded by South Africa?
-  - Answer: Lesotho
-  - Source: n/a (n/a)
-- [ ] The capital of Afghanistan is Kabul.
-  - Question: What is the capital of Afghanistan?
-  - Answer: Kabul
-  - Source: Wikidata (http://www.wikidata.org/entity/Q889)
-- [ ] The Strait of Malacca between Malaysia and Indonesia is the shortest sea route between the Indian Ocean and the Pacific, carrying about 25% of the world's traded goods.
-  - Question: What percentage of the world's traded goods pass through the Strait of Malacca?
-  - Answer: About 25%
-  - Source: n/a (n/a)
+- [ ] "http://www.wikidata.org/entity/Q16" is classified under geography.
+  - Question: Which domain matches "http://www.wikidata.org/entity/Q16"?
+  - Answer: geography
+  - Source: worker-dry-run (n/a)
 
 ## history
-- [ ] The Battle of the Golden Spurs took place in 1302 near Kortrijk.
-  - Question: Where did the Battle of the Golden Spurs take place?
-  - Answer: Kortrijk
-  - Source: Wikidata (http://www.wikidata.org/entity/Q44732)
-- [ ] The Seleucid–Mauryan War took place in 304 BCE near Indus basin.
-  - Question: In which region did the Seleucid–Mauryan War take place?
-  - Answer: Indus basin
-  - Source: Wikidata (http://www.wikidata.org/entity/Q7447941)
-- [ ] The Battle of La Marfée took place in 1641 near Sedan.
-  - Question: When did the Battle of La Marfée occur?
-  - Answer: 1641
-  - Source: Wikidata (http://www.wikidata.org/entity/Q830246)
-- [ ] The Battle of Noreia took place in 113 BCE near Noreia.
-  - Question: Where did the Battle of Noreia take place?
-  - Answer: Noreia
-  - Source: Wikidata (http://www.wikidata.org/entity/Q657620)
-- [ ] The Battle of Poitiers took place in 1356 near Nouaillé-Maupertuis.
-  - Question: In what year did the Battle of Poitiers happen?
-  - Answer: 1356
-  - Source: Wikidata (http://www.wikidata.org/entity/Q201692)
-- [ ] The Battle of Plassey in 1757, which gave Britain control of India, was largely won through bribery rather than fighting. The British had secretly paid off Mir Jafar, the commander of most of the Bengali army, to simply not fight — and most of his troops stood idle while the battle raged.
-  - Question: How did the British effectively win the Battle of Plassey in 1757?
-  - Answer: By bribing the enemy's main general to not fight
-  - Source: Wikidata (http://www.wikidata.org/entity/Q203233)
-- [ ] The Battle of Novara took place in 1849 near Novara.
-  - Question: Where did the Battle of Novara take place?
-  - Answer: Novara
-  - Source: Wikidata (http://www.wikidata.org/entity/Q837787)
-- [ ] The Operation Ramadan ul-Mubarak took place in 1988 near Al-Faw Peninsula.
-  - Question: When did the Operation Ramadan ul-Mubarak occur?
-  - Answer: 1988
-  - Source: Wikidata (http://www.wikidata.org/entity/Q82995)
-- [ ] Galileo Galilei was tried by the Roman Inquisition in 1633 for advocating the heliocentric model of the solar system.
-  - Question: Why was Galileo tried by the Roman Inquisition?
-  - Answer: For advocating the heliocentric model
-  - Source: n/a (n/a)
-- [ ] The Code of Hammurabi, created around 1754 BCE in Babylon, is one of the earliest known written legal codes.
-  - Question: How many laws does the Code of Hammurabi contain?
-  - Answer: 282
-  - Source: n/a (n/a)
-- [ ] The Battle of Kadesh in 1274 BCE between Egypt and the Hittites is the earliest battle in recorded history for which we have detailed tactical accounts from BOTH sides — and both claimed victory.
-  - Question: What makes the Battle of Kadesh (1274 BCE) unique in military history?
-  - Answer: It is the earliest battle with detailed accounts from both sides
-  - Source: Wikidata (http://www.wikidata.org/entity/Q203729)
-- [ ] The Battle of Königsberg took place in 1945 near Königsberg.
-  - Question: Where did the Battle of Königsberg take place?
-  - Answer: Königsberg
-  - Source: Wikidata (http://www.wikidata.org/entity/Q671528)
-- [ ] The Battle of Deutschbrod occurred in 1422 in Havlíčkův Brod.
-  - Question: In what year did the Battle of Deutschbrod take place?
-  - Answer: 1422
-  - Source: Wikidata (http://www.wikidata.org/entity/Q38977)
-- [ ] The Battle of the Ice occurred in 1242 on Lake Peipus.
-  - Question: When did the Battle of the Ice happen?
-  - Answer: 1242
-  - Source: Wikidata (http://www.wikidata.org/entity/Q14689)
-- [ ] The Bay of Pigs invasion in April 1961 was a failed CIA-sponsored attempt by Cuban exiles to overthrow Fidel Castro's government.
-  - Question: How long did the Bay of Pigs invasion last before the exiles were defeated?
-  - Answer: About three days
-  - Source: n/a (n/a)
-- [ ] The Castille War occurred in 1578.
-  - Question: In what year did the Castille War happen?
-  - Answer: 1578
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31880)
-- [ ] The Barrios' War of Reunification occurred in 1885.
-  - Question: In what year did the Barrios' War of Reunification happen?
-  - Answer: 1885
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5918797)
-- [ ] The magnetic compass was invented in China during the Han Dynasty (around 206 BCE–220 CE), originally used for feng shui before navigation.
-  - Question: What was the magnetic compass originally used for in China?
-  - Answer: Feng shui
-  - Source: n/a (n/a)
-- [ ] The First Rohilla War occurred in 1773.
-  - Question: In what year did the First Rohilla War happen?
-  - Answer: 1773
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5453768)
-- [ ] The Battle of the Hydaspes took place in 326 BCE near Jhelum River.
-  - Question: In what year did the Battle of the Hydaspes happen?
-  - Answer: 326 BCE
-  - Source: Wikidata (http://www.wikidata.org/entity/Q213074)
+- [ ] "history-2" is classified under history.
+  - Question: Which domain matches "history-2"?
+  - Answer: history
+  - Source: worker-dry-run (n/a)
 
 ## human_body_health
-- [ ] The placebo effect can cause measurable physiological changes, including altered brain chemistry and reduced inflammation.
-  - Question: What real physiological changes can the placebo effect produce?
-  - Answer: Altered brain chemistry and reduced inflammation
-  - Source: n/a (n/a)
-- [ ] The liver can regenerate to its full size from as little as 25% of its original tissue.
-  - Question: What percentage of liver tissue is needed for the organ to regenerate fully?
-  - Answer: As little as 25%
-  - Source: n/a (n/a)
-- [ ] The pineal gland produces melatonin and was called the 'seat of the soul' by Descartes.
-  - Question: Which gland did Descartes call the 'seat of the soul'?
-  - Answer: Pineal gland
-  - Source: n/a (n/a)
-- [ ] Humans shed about 600,000 skin particles every hour, replacing the entire outer skin layer every two to four weeks.
-  - Question: Approximately how many skin particles do humans shed per hour?
-  - Answer: About 600,000
-  - Source: n/a (n/a)
-- [ ] A tourniquet is a tight band applied to a limb to stop life-threatening bleeding by cutting off blood flow to the wound.
-  - Question: How does a tourniquet stop bleeding?
-  - Answer: By compressing the artery to stop blood flow
-  - Source: Wikidata (http://www.wikidata.org/entity/Q306586)
-- [ ] Tracheal intubation places a tube into the windpipe for breathing.
-  - Question: Where is a tube placed during intubation?
-  - Answer: The trachea
-  - Source: Wikidata (http://www.wikidata.org/entity/Q750195)
-- [ ] Your ears never stop growing — they grow about 0.22 mm per year throughout your entire life.
-  - Question: Which body part never stops growing throughout life?
-  - Answer: Ears
-  - Source: n/a (n/a)
-- [ ] Hallucinosis is a syndrome of persistent hallucinations while awake.
-  - Question: What characterizes hallucinosis?
-  - Answer: Persistent hallucinations
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4132712)
-- [ ] Your body gives off enough heat in 30 minutes to boil half a gallon of water.
-  - Question: How much heat does the human body produce at rest?
-  - Answer: About 80-100 watts
-  - Source: n/a (n/a)
-- [ ] The human genome contains about 20,000-25,000 protein-coding genes, far fewer than originally predicted.
-  - Question: Approximately how many protein-coding genes does the human genome contain?
-  - Answer: 20,000-25,000
-  - Source: n/a (n/a)
-- [ ] The tongue is covered in about 10,000 taste buds, each containing 50 to 100 taste receptor cells.
-  - Question: Approximately how many taste buds does the human tongue have?
-  - Answer: About 10,000
-  - Source: n/a (n/a)
-- [ ] The pancreas serves dual roles: producing digestive enzymes (exocrine) and regulating blood sugar via insulin (endocrine).
-  - Question: What are the two major functions of the pancreas?
-  - Answer: Producing digestive enzymes and regulating blood sugar
-  - Source: n/a (n/a)
-- [ ] Occludin is a protein that forms the tight seals between cells, preventing fluids from leaking through tissue barriers.
-  - Question: What structure does occludin help form between cells?
-  - Answer: Tight junctions
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2013337)
-- [ ] Esophageal dilation widens a narrowed esophagus for easier swallowing.
-  - Question: What does esophageal dilation widen?
-  - Answer: The esophagus
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4993158)
-- [ ] Alcohol withdrawal can actually be fatal — it is one of the very few drug withdrawals that can directly kill, due to the risk of seizures and delirium tremens.
-  - Question: Withdrawal from which substance is one of the few drug withdrawals that can be directly fatal?
-  - Answer: Alcohol
-  - Source: Wikidata (http://www.wikidata.org/entity/Q837960)
-- [ ] The cilia in your trachea beat about 1,000 times per minute to sweep mucus and trapped particles upward and out of the airways.
-  - Question: How fast do the cilia in the trachea beat per minute?
-  - Answer: About 1,000 times
-  - Source: n/a (n/a)
-- [ ] Pleurodesis is a procedure that glues the lung to the chest wall to prevent the lung from collapsing repeatedly.
-  - Question: What does pleurodesis prevent?
-  - Answer: Recurrent lung collapse
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1229945)
-- [ ] The placebo effect can cause measurable physical changes — including actual painkiller release in the brain.
-  - Question: What real chemicals does the brain release during the placebo effect?
-  - Answer: Endorphins and dopamine
-  - Source: n/a (n/a)
-- [ ] Iron deficiency is the most common nutritional deficiency worldwide, affecting over 1.6 billion people.
-  - Question: What is the most common nutritional deficiency in the world?
-  - Answer: Iron deficiency
-  - Source: n/a (n/a)
-- [ ] Humans share about 60% of their DNA with bananas.
-  - Question: What percentage of DNA do humans share with bananas?
-  - Answer: About 60%
-  - Source: n/a (n/a)
+- [ ] "Glyceraldehyde-3-phosphate dehydrogenase" is classified under human_body_health.
+  - Question: Which domain matches "Glyceraldehyde-3-phosphate dehydrogenase"?
+  - Answer: human_body_health
+  - Source: worker-dry-run (n/a)
+- [ ] "ADGRA2" is classified under human_body_health.
+  - Question: Which domain matches "ADGRA2"?
+  - Answer: human_body_health
+  - Source: worker-dry-run (n/a)
 
 ## mythology_folklore
-- [ ] The Chinese goddess Nüwa created humanity by molding figures from yellow mud — when she got tired, she dipped a rope in mud and flung it, creating common people from the drops.
-  - Question: How did the Chinese goddess Nüwa create the first humans?
-  - Answer: She molded them from yellow mud
-  - Source: n/a (n/a)
-- [ ] Morag is a legendary lake monster said to inhabit Loch Morar, the deepest freshwater loch in Scotland.
-  - Question: In which Scottish loch does Morag allegedly live?
-  - Answer: Loch Morar
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1503117)
-- [ ] The White Stag appears across Celtic, Hungarian, and Arthurian mythology as an uncatchable creature that leads heroes on quests — in every tradition, the chase itself matters more than the capture, because the stag can never truly be caught.
-  - Question: What does the White Stag represent across multiple mythological traditions?
-  - Answer: An uncatchable creature that leads heroes on quests
-  - Source: Wikidata (http://www.wikidata.org/entity/Q873886)
-- [ ] The Greek hero Heracles (Hercules) had to complete twelve seemingly impossible labors as penance, including slaying the nine-headed Hydra and capturing Cerberus, the three-headed guard dog of the underworld.
-  - Question: How many labors did the Greek hero Heracles have to complete as penance?
-  - Answer: Twelve
-  - Source: n/a (n/a)
-- [ ] In Greek mythology, Sisyphus was condemned to push a boulder up a hill for eternity, only for it to roll back down each time he neared the top, as punishment for his deceit of the gods.
-  - Question: In Greek mythology, who was condemned to push a boulder up a hill for eternity?
-  - Answer: Sisyphus
-  - Source: n/a (n/a)
-- [ ] Aphroditus is an androgynous deity in Greek mythology, a male form of Aphrodite worshipped in Cyprus.
-  - Question: What is unique about the deity Aphroditus?
-  - Answer: An androgynous male form of Aphrodite
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1247904)
-- [ ] Coyote is a central trickster figure in many Native American mythologies, sometimes creating the world, sometimes causing chaos, and often teaching lessons through mischief.
-  - Question: Which animal serves as a central trickster figure across many Native American mythologies?
-  - Answer: Coyote
-  - Source: n/a (n/a)
-- [ ] In Norse mythology, Thor once dressed as a bride — complete with veil and jewelry — to trick a giant who had stolen his hammer Mjölnir.
-  - Question: Why did Thor dress as a bride in Norse mythology?
-  - Answer: To recover his stolen hammer Mjölnir from a giant
-  - Source: n/a (n/a)
-- [ ] In Chinese mythology, the Jade Emperor is the supreme ruler of heaven and all realms of existence, presiding over a celestial bureaucracy that mirrors earthly government.
-  - Question: Who is the supreme ruler of heaven in Chinese mythology, presiding over a celestial bureaucracy?
-  - Answer: The Jade Emperor
-  - Source: n/a (n/a)
-- [ ] In Japanese folklore, Yuki-onna (Snow Woman) is a spirit of winter who appears during snowstorms as a beautiful woman in white, leading travelers to freeze to death.
-  - Question: In Japanese folklore, what is the name of the ghostly woman in white who appears during snowstorms?
-  - Answer: Yuki-onna
-  - Source: n/a (n/a)
-- [ ] In Hindu mythology, Krishna lifted the entire Govardhan Hill on one finger to shelter the villagers of Vrindavan from a devastating rainstorm sent by the angry god Indra.
-  - Question: In Hindu mythology, which god lifted Govardhan Hill on one finger to protect villagers from a storm?
-  - Answer: Krishna
-  - Source: n/a (n/a)
-- [ ] In Hindu mythology, Vishnu's avatar Narasimha appeared as a half-man, half-lion to defeat the demon king Hiranyakashipu, who had a boon making him nearly invincible.
-  - Question: Which avatar of Vishnu, appearing as half-man and half-lion, defeated the demon Hiranyakashipu?
-  - Answer: Narasimha
-  - Source: n/a (n/a)
-- [ ] The Japanese oni are fearsome ogre-like demons typically depicted with red or blue skin, horns, wild hair, and carrying iron clubs called kanabō.
-  - Question: In Japanese folklore, what are the fearsome horned, club-wielding demons called?
-  - Answer: Oni
-  - Source: n/a (n/a)
-- [ ] In Chinese mythology, Nüwa is the goddess who created humanity from yellow clay and later repaired the sky after the water god Gong Gong smashed one of the pillars holding it up.
-  - Question: In Chinese mythology, which goddess created humanity from clay and later repaired the broken sky?
-  - Answer: Nüwa
-  - Source: n/a (n/a)
-- [ ] The Purusha in Hindu mythology was a cosmic giant whose body was sacrificed by the gods to create the entire universe — his eyes became the sun and moon, his breath became the wind, and from his mind came the moon.
-  - Question: In Hindu mythology, what was created from the sacrifice of the cosmic giant Purusha?
-  - Answer: The entire universe
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1052353)
-- [ ] The Lilin were demons in ancient Mesopotamian mythology believed to prey on pregnant women and newborns — they are among the earliest recorded evil spirits in human history, appearing in Sumerian texts from around 2400 BCE.
-  - Question: The Lilin, among the earliest recorded demons in history, appear in texts from which ancient civilization?
-  - Answer: Sumerian
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1130107)
-- [ ] William Tell is a Swiss folk hero who, according to legend, was forced to shoot an apple off his son's head with a crossbow as punishment for refusing to bow to a tyrant's hat on a pole.
-  - Question: Which folk hero was forced to shoot an apple off his son's head with a crossbow?
-  - Answer: William Tell
-  - Source: n/a (n/a)
-- [ ] In Greek mythology, the goddess Aphrodite was born from the sea foam that formed when Kronos cast the severed body parts of the sky god Ouranos into the ocean.
-  - Question: According to Greek mythology, how was the goddess Aphrodite born?
-  - Answer: From sea foam
-  - Source: n/a (n/a)
-- [ ] Raven is a creator and trickster figure in Pacific Northwest Native American mythology, credited with releasing the sun from a box and bringing light to the world.
-  - Question: In Pacific Northwest Native American mythology, which trickster released the sun from a box to bring light to the world?
-  - Answer: Raven
-  - Source: n/a (n/a)
-- [ ] The Minotaur's labyrinth was designed by Daedalus, the same inventor who later built wax wings for himself and his son Icarus — who flew too close to the sun.
-  - Question: Who designed both the Labyrinth and the wax wings in Greek mythology?
-  - Answer: Daedalus
-  - Source: n/a (n/a)
+- [ ] "Easter Bunny" is classified under mythology_folklore.
+  - Question: Which domain matches "Easter Bunny"?
+  - Answer: mythology_folklore
+  - Source: worker-dry-run (n/a)
+- [ ] "Loch Ness Monster" is classified under mythology_folklore.
+  - Question: Which domain matches "Loch Ness Monster"?
+  - Answer: mythology_folklore
+  - Source: worker-dry-run (n/a)
+- [ ] "Cupid" is classified under mythology_folklore.
+  - Question: Which domain matches "Cupid"?
+  - Answer: mythology_folklore
+  - Source: worker-dry-run (n/a)
 
 ## natural_sciences
-- [ ] There is a species of jellyfish (Cassiopea) that sunbathes upside down on the ocean floor because it farms algae inside its body for food.
-  - Question: Why does the Cassiopea jellyfish rest upside down on the ocean floor?
-  - Answer: To expose its symbiotic algae to sunlight for photosynthesis
-  - Source: n/a (n/a)
-- [ ] Helium is a noble gas with atomic number 2 and symbol He.
-  - Question: What type of gas is helium?
-  - Answer: Noble gas
-  - Source: Wikidata (http://www.wikidata.org/entity/Q560)
-- [ ] Lyrebirds can mimic almost any sound including chainsaws, camera shutters, car alarms, and other bird species with extraordinary accuracy.
-  - Question: What bird can mimic chainsaws, cameras, and car alarms?
-  - Answer: Lyrebird
-  - Source: n/a (n/a)
-- [ ] Duplex stainless steel has a two-phase microstructure of austenite and ferrite, giving it roughly twice the strength of regular stainless steel.
-  - Question: What two crystal structures does duplex stainless steel contain?
-  - Answer: Austenite and ferrite
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1266528)
-- [ ] Volcanic lightning occurs inside eruption plumes because ash particles collide and generate static electricity, creating spectacular electrical storms.
-  - Question: What causes lightning inside volcanic eruption plumes?
-  - Answer: Static electricity from colliding ash particles
-  - Source: n/a (n/a)
-- [ ] Copper-based alloys contain copper as their principal metal component.
-  - Question: What metal is principal in copper-based alloys?
-  - Answer: Copper
-  - Source: Wikidata (http://www.wikidata.org/entity/Q518350)
-- [ ] Brick dust has been used as a construction additive for centuries, creating a hydraulic mortar that sets underwater.
-  - Question: What special property does brick dust give to mortar?
-  - Answer: It can set and harden underwater
-  - Source: Wikidata (http://www.wikidata.org/entity/Q13561156)
-- [ ] Reinforcement strengthens concrete by resisting tensile forces and cracks.
-  - Question: What does reinforcement do in concrete?
-  - Answer: Resists tensile forces
-  - Source: Wikidata (http://www.wikidata.org/entity/Q852520)
-- [ ] Horseshoe crabs have blue blood containing a clotting agent (LAL) that is essential for testing the safety of vaccines and medical devices.
-  - Question: What color is horseshoe crab blood?
-  - Answer: Blue
-  - Source: n/a (n/a)
-- [ ] Lime mortar is a traditional building material made from limestone and sand.
-  - Question: What is lime mortar primarily used for?
-  - Answer: Building material
-  - Source: Wikidata (http://www.wikidata.org/entity/Q911999)
-- [ ] Planck length is the smallest meaningful unit of length in physics.
-  - Question: What is the smallest unit of length called?
-  - Answer: Planck length
-  - Source: Wikidata (http://www.wikidata.org/entity/Q207387)
-- [ ] Fluorine is the most reactive element — it reacts violently with almost everything including water, glass, and even noble gases.
-  - Question: What is the most chemically reactive element?
-  - Answer: Fluorine
-  - Source: n/a (n/a)
-- [ ] Trees in a forest can recognize their own seedlings through the mycorrhizal network and preferentially send them more nutrients.
-  - Question: How do mother trees recognize their own seedlings underground?
-  - Answer: Through the mycorrhizal fungal network
-  - Source: n/a (n/a)
-- [ ] Leather is created by tanning animal rawhide and skin.
-  - Question: What process creates leather from hides?
-  - Answer: Tanning
-  - Source: Wikidata (http://www.wikidata.org/entity/Q286)
-- [ ] Potassium is a chemical element with symbol K and atomic number 19, an alkali metal essential for nerve and muscle function.
-  - Question: Why does potassium have the symbol K instead of P?
-  - Answer: K comes from the Latin 'kalium'
-  - Source: Wikidata (http://www.wikidata.org/entity/Q703)
-- [ ] Hydrogen is the lightest chemical element with atomic number 1.
-  - Question: What is the lightest chemical element?
-  - Answer: Hydrogen
-  - Source: Wikidata (http://www.wikidata.org/entity/Q556)
-- [ ] Architectural glass is a transparent building material used in window glazing.
-  - Question: What is architectural glass primarily used for?
-  - Answer: Window glazing
-  - Source: Wikidata (http://www.wikidata.org/entity/Q811361)
-- [ ] Cellulose acetate is a compound derived from plant cellulose.
-  - Question: What natural material is cellulose acetate from?
-  - Answer: Plant cellulose
-  - Source: Wikidata (http://www.wikidata.org/entity/Q124686)
-- [ ] Metallic hydrogen, theorized to exist at the core of Jupiter under extreme pressure, may be the most abundant form of hydrogen in the universe.
-  - Question: Where in the solar system is metallic hydrogen theorized to exist?
-  - Answer: Jupiter's core
-  - Source: n/a (n/a)
-- [ ] There are more possible iterations of a game of chess than there are atoms in the observable universe — the Shannon number is approximately 10^120.
-  - Question: What is the approximate Shannon number representing possible chess game iterations?
-  - Answer: 10^120
-  - Source: n/a (n/a)
-
-## production-facts
-- [ ] The capital of Nepal is Kathmandu.
-  - Question: What is the capital of Nepal?
-  - Answer: Kathmandu
-  - Source: Wikidata (http://www.wikidata.org/entity/Q837)
-- [ ] The Battle of Denain took place in 1712 near Denain.
-  - Question: When did the Battle of Denain occur?
-  - Answer: 1712
-  - Source: Wikidata (http://www.wikidata.org/entity/Q41320)
-- [ ] SPARTAN 201-04 was a free-flying solar observatory deployed from the Space Shuttle.
-  - Question: How was SPARTAN 201-04 deployed in space?
-  - Answer: From the Space Shuttle
-  - Source: Wikidata (http://www.wikidata.org/entity/Q111858478)
-- [ ] Polyester is a category of synthetic polymers widely used in textiles.
-  - Question: What type of material is polyester?
-  - Answer: Synthetic polymer
-  - Source: Wikidata (http://www.wikidata.org/entity/Q188245)
-- [ ] The Battle of Przemyśl occurred in November 1918 during the Polish-Ukrainian War.
-  - Question: When did the Battle of Przemyśl take place?
-  - Answer: November 1918
-  - Source: Wikidata (http://www.wikidata.org/entity/Q16992)
-- [ ] Elbow tendinopathy causes pain from inflamed or degenerated elbow tendons.
-  - Question: What causes elbow tendinopathy pain?
-  - Answer: Damaged elbow tendons
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54947001)
-- [ ] Cupid is the Roman god of love, counterpart to Greek god Eros.
-  - Question: What is Cupid the Roman god of?
-  - Answer: Love
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5011)
-- [ ] Whole-body MRI scans the entire body using magnetic resonance imaging.
-  - Question: What does whole-body MRI scan?
-  - Answer: The entire body
-  - Source: Wikidata (http://www.wikidata.org/entity/Q110972658)
-- [ ] Aqaba Church is an ancient church building located in Aqaba, Jordan.
-  - Question: Where is Aqaba Church located?
-  - Answer: Aqaba, Jordan
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2845916)
-- [ ] Baumberger Kalksandstein is a German limestone-sandstone building material.
-  - Question: What is Baumberger Kalksandstein primarily used for?
-  - Answer: Building material
-  - Source: Wikidata (http://www.wikidata.org/entity/Q811527)
-- [ ] ahuizotl is a Aztec mythological creature.
-  - Question: What kind of creature is ahuizotl?
-  - Answer: Aztec mythological creature
-  - Source: Wikidata (http://www.wikidata.org/entity/Q403017)
-- [ ] Austrian museum of aviation is a museum established in 1979.
-  - Question: When was Austrian museum of aviation established?
-  - Answer: 1979
-  - Source: Wikidata (http://www.wikidata.org/entity/Q306671)
-- [ ] The Lepus europaeus (Lepus europaeus) is classified as Least Concern.
-  - Question: What type of animal is the Lepus europaeus?
-  - Answer: Mammal
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26838)
-- [ ] Dendera Temple complex is described as ancient Egyptian temple complex.
-  - Question: What type of structure is Dendera Temple complex?
-  - Answer: temple
-  - Source: Wikidata (http://www.wikidata.org/entity/Q735254)
-- [ ] The capital of Syria is Damascus.
-  - Question: What is the capital of Syria?
-  - Answer: Damascus
-  - Source: Wikidata (http://www.wikidata.org/entity/Q858)
-- [ ] The Seljuks defeated the Ghaznavids at Dandanaqan in 1040.
-  - Question: Which empire won the Battle of Dandanaqan?
-  - Answer: Seljuks
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26493)
-- [ ] Ein Gedi Temple is an ancient archaeological site in Israel from 3500 BCE.
-  - Question: When was Ein Gedi Temple built?
-  - Answer: 3500 BCE
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2900794)
-- [ ] The Battle of Dresden occurred August 26–27, 1813, during the Sixth Coalition War.
-  - Question: When did the Battle of Dresden occur?
-  - Answer: August 26-27, 1813
-  - Source: Wikidata (http://www.wikidata.org/entity/Q17594)
-- [ ] Mahalakshmi Temple is dedicated to Lakshmi, the Hindu goddess of wealth.
-  - Question: What deity is Mahalakshmi Temple dedicated to?
-  - Answer: Lakshmi
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3595240)
-- [ ] Mullus barbatus is a red mullet fish species with least concern conservation status.
-  - Question: What species is Mullus barbatus?
-  - Answer: Red mullet
-  - Source: Wikidata (http://www.wikidata.org/entity/Q7171)
+- [ ] "copper-based alloy" is classified under natural_sciences.
+  - Question: Which domain matches "copper-based alloy"?
+  - Answer: natural_sciences
+  - Source: worker-dry-run (n/a)
+- [ ] "limestone" is classified under natural_sciences.
+  - Question: Which domain matches "limestone"?
+  - Answer: natural_sciences
+  - Source: worker-dry-run (n/a)
 
 ## space_astronomy
-- [ ] The observable universe contains an estimated 2 trillion galaxies.
-  - Question: Approximately how many galaxies are estimated to exist in the observable universe?
-  - Answer: 2 trillion
-  - Source: n/a (n/a)
-- [ ] Saturn SA-1 was NASA's first uncrewed Apollo test flight in 1961.
-  - Question: What was Saturn SA-1's purpose in NASA's Apollo program?
-  - Answer: First uncrewed test flight
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1071068)
-- [ ] Titan, Saturn's largest moon, is the only moon in the solar system with a dense atmosphere, and it has lakes of liquid methane.
-  - Question: Which moon has a dense atmosphere and lakes of liquid methane?
-  - Answer: Titan
-  - Source: n/a (n/a)
-- [ ] The Crab Nebula is the remnant of a supernova explosion recorded by Chinese astronomers in 1054 AD — the 'guest star' was visible in daylight for 23 days.
-  - Question: In what year was the supernova that created the Crab Nebula recorded?
-  - Answer: 1054 AD
-  - Source: n/a (n/a)
-- [ ] Solar-C is a planned Japanese-led Sun-observing satellite that will study the solar atmosphere in extreme ultraviolet.
-  - Question: What wavelength of light will Solar-C primarily observe?
-  - Answer: Extreme ultraviolet
-  - Source: Wikidata (http://www.wikidata.org/entity/Q85867516)
-- [ ] Binary star systems, where two stars orbit a common center of mass, are more common than single stars like our Sun.
-  - Question: Are binary star systems more or less common than single star systems?
-  - Answer: More common
-  - Source: n/a (n/a)
-- [ ] Triton, Neptune's largest moon, orbits in the opposite direction to Neptune's rotation, suggesting it was captured from the Kuiper Belt.
-  - Question: Which large moon orbits its planet in a retrograde direction, suggesting capture from the Kuiper Belt?
-  - Answer: Triton
-  - Source: n/a (n/a)
-- [ ] Astronauts on the ISS can lose up to 1-2% of their bone density per month due to microgravity.
-  - Question: Approximately how much bone density can astronauts lose per month in microgravity?
-  - Answer: 1-2%
-  - Source: n/a (n/a)
-- [ ] The Cassini spacecraft ended its 13-year mission at Saturn by intentionally plunging into the planet's atmosphere in 2017 — to prevent contaminating potentially habitable moons.
-  - Question: Why did NASA crash the Cassini spacecraft into Saturn?
-  - Answer: To prevent contaminating potentially habitable moons
-  - Source: n/a (n/a)
-- [ ] The Wow! signal, detected in 1977, was a 72-second radio burst from space that remains one of the strongest candidates for an extraterrestrial signal ever recorded.
-  - Question: When was the famous Wow! signal detected?
-  - Answer: 1977
-  - Source: n/a (n/a)
-- [ ] Shenzhou 11 carried two taikonauts to the Tiangong-2 space laboratory for a 30-day stay in 2016.
-  - Question: How long did the Shenzhou 11 crew stay aboard Tiangong-2?
-  - Answer: 30 days
-  - Source: Wikidata (http://www.wikidata.org/entity/Q9335995)
-- [ ] Apollo 10's S-IVB third stage had a 10-meter bottom diameter.
-  - Question: What was the bottom diameter of Saturn V's S-IVB?
-  - Answer: About 10 meters
-  - Source: Wikidata (http://www.wikidata.org/entity/Q111860822)
-- [ ] Explorer 23 was a NASA micrometeoroid detection satellite launched in 1964 to study tiny space particles.
-  - Question: What did Explorer 23 detect in space?
-  - Answer: Micrometeoroid impacts
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3501369)
-- [ ] The Wow! signal was a strong narrowband radio signal detected in 1977 that has never been explained or repeated.
-  - Question: In what year was the unexplained Wow! signal detected?
-  - Answer: 1977
-  - Source: n/a (n/a)
-- [ ] Mars has the tallest known volcano in the solar system: Olympus Mons, standing about 21.9 km high.
-  - Question: What is the name of the tallest known volcano in the solar system?
-  - Answer: Olympus Mons
-  - Source: n/a (n/a)
-- [ ] Scientists planned to launch an artificial comet into space in the 1960s.
-  - Question: What unusual object was planned for space launch in 1963?
-  - Answer: An artificial comet
-  - Source: Wikidata (http://www.wikidata.org/entity/Q112958593)
-- [ ] Demonstrator-2R was an ESA spacecraft that tested inflatable heat shield technology for atmospheric re-entry.
-  - Question: What innovative technology did Demonstrator-2R test?
-  - Answer: Inflatable heat shield
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1186526)
-- [ ] The Kepler Space Telescope discovered over 2,600 confirmed exoplanets during its mission.
-  - Question: Approximately how many confirmed exoplanets did the Kepler Space Telescope discover?
-  - Answer: Over 2,600
-  - Source: n/a (n/a)
-- [ ] A red giant star can expand to over 100 times the diameter of the Sun before ending its life.
-  - Question: How large can a red giant star expand compared to the Sun's diameter?
-  - Answer: Over 100 times
-  - Source: n/a (n/a)
-- [ ] The International Space Station orbits Earth about 16 times per day, meaning astronauts see 16 sunrises and sunsets every 24 hours.
-  - Question: How many times does the ISS orbit Earth per day?
-  - Answer: About 16 times
-  - Source: n/a (n/a)
+- [ ] "A-101" is classified under space_astronomy.
+  - Question: Which domain matches "A-101"?
+  - Answer: space_astronomy
+  - Source: worker-dry-run (n/a)
+- [ ] "Advanced Photovoltaic Experiment" is classified under space_astronomy.
+  - Question: Which domain matches "Advanced Photovoltaic Experiment"?
+  - Answer: space_astronomy
+  - Source: worker-dry-run (n/a)
 
