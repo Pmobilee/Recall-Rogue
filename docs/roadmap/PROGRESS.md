@@ -16,7 +16,7 @@
 - AR-25 Push notifications: 4 notification types, quiet hours, priority scheduling, per-type settings toggles.
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 
-**Next up:** Complete AR-17 through AR-19 productionization (schema alignment, generation QA, and final migration flow). Remaining AR-11 content-regeneration cleanup is deferred until generation quality tuning is finalized.
+**Next up:** Execute live AR-17/AR-19 production runs (API-backed generation + full-scale QA) and process deferred go-live tasks when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
 **Parallel workstreams (separate from core engineering):**
 - Visual descriptions regeneration (AR-11 Part C + AR-18 visual theming) is handled in a dedicated content-art stream.
