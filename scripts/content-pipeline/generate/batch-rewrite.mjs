@@ -13,6 +13,7 @@ const MODEL = 'claude-haiku-4-5-20251001'
 const MAX_TOKENS = 2500
 const INPUT_COST_PER_MILLION = 0.8
 const OUTPUT_COST_PER_MILLION = 4.0
+const LOCAL_PAID_GENERATION_DISABLED = true
 
 const REWRITE_SYSTEM_PROMPT = `You rewrite educational quiz facts for brevity in a fast-paced card combat game.
 You receive a JSON fact object. Output ONLY these four fields as a JSON object:
@@ -112,7 +113,7 @@ async function main() {
     output: '',
     limit: 0,
     concurrency: 3,
-    'dry-run': false,
+    'dry-run': true,
     retries: 3,
     'rate-limit': 50,
   })
@@ -126,6 +127,10 @@ async function main() {
   const dryRun = Boolean(args['dry-run'])
   const retries = Number(args.retries) || 3
   const rateLimit = Number(args['rate-limit']) || 50
+
+  if (!dryRun && LOCAL_PAID_GENERATION_DISABLED) {
+    throw new Error('Paid API rewrite is disabled in this repository. Use --dry-run and external Claude workers for live rewrite tasks.')
+  }
 
   const allFacts = await readSourceInput(inputPath)
   const limit = Number(args.limit) > 0 ? Math.min(Number(args.limit), allFacts.length) : allFacts.length

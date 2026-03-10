@@ -37,9 +37,10 @@ const MODEL = 'claude-haiku-4-5-20251001';
 const BATCH_SIZE = 10;
 const MAX_TOKENS_BATCH = 1500;
 const MAX_TOKENS_SINGLE = 100;
-const RATE_LIMIT_MS = 500;
-const RETRY_DELAY_MS = 2000;
+const RATE_LIMIT_MS = 7000;
+const RETRY_DELAY_MS = 30000;
 const OVERUSE_THRESHOLD = 0.10; // 10%
+const LOCAL_PAID_LLM_SCRIPTS_DISABLED = true;
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -121,7 +122,7 @@ function validateDescription(text, opts = {}) {
   }
 
   if (words.length < 15) return { safe: false, reason: 'too_short_words' };
-  if (trimmed.length > 300) return { safe: false, reason: 'too_long' };
+  if (trimmed.length > 450) return { safe: false, reason: 'too_long' };
 
   const languageConfig = opts.languageConfig;
   if (languageConfig) {
@@ -148,21 +149,34 @@ function validateDescription(text, opts = {}) {
 // System prompt (single mode / no-language mode)
 // ---------------------------------------------------------------------------
 
-const SYSTEM_PROMPT = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Recall Rogue.
+const SYSTEM_PROMPT = `You write hyper-literal visual scene descriptions for pixel art card illustrations in a knowledge card game called Recall Rogue.
 
-Given a learning fact, write a single-sentence visual description (20-40 words) suitable as a prompt for generating pixel art card art.
+Given a learning fact, write a single-sentence visual description (20-40 words) that depicts the fact AS IF IT IS PHYSICALLY HAPPENING right now.
 
-Rules:
-- Describe a CONCRETE visual scene, not an abstract concept
-- ONE clear focal subject that embodies the fact
-- No text, labels, numbers, or UI elements in the scene
-- No realistic human faces (historical figures OK if stylized/symbolic)
-- No political symbols, religious controversy, or disputed territories
-- No violence beyond fantasy (no blood, no weapons pointed at viewer)
-- No sexual content
-- For vocabulary/language facts: illustrate the MEANING of the word, not the word itself
-- Vivid colors, dramatic lighting, pixel-art-friendly composition
+HYPER-LITERAL RULES:
+- Show the SPECIFIC CLAIM of the fact in action — not just the subject, but the exact detail
+- If the fact says "X has property Y" → show X actively demonstrating/acquiring property Y
+- If the fact says "X did Y" → show X in the physical act of doing Y
+- Every object, body position, and spatial relationship must be concrete and unambiguous
+- A viewer who knows the fact should INSTANTLY recognize it; a viewer who doesn't should be intrigued
+- Describe exact physical details: what is being held, how hands are positioned, what is broken/open/moving
+- NO metaphor, NO mood descriptions, NO abstract concepts — only physical reality
+- NO text, NO labels, NO numbers, NO writing, NO letters, NO symbols anywhere in the scene
+- NO realistic human faces (historical figures OK if stylized/symbolic as pixel art characters)
+- NO political symbols, religious controversy, or disputed territories
+- NO violence beyond fantasy, NO sexual content
+- Vivid colors, dramatic moment frozen in time
 - Subject fills 80% of frame with breathing room at edges
+
+GOOD hyper-literal examples:
+- Fact: "The Mona Lisa has no eyebrows" → "A woman in Renaissance dress seated before a mirror carefully shaving off her eyebrows with a small blade, her reflection showing a smooth browless forehead, a painting easel visible behind her"
+- Fact: "Honey never spoils" → "An ancient Egyptian clay jar being cracked open to reveal perfectly golden liquid honey inside, hieroglyphic tomb walls visible behind, the honey gleaming fresh despite dusty surroundings"
+- Fact: "Octopuses have three hearts" → "A large octopus with its chest cavity dramatically opened like an anatomy display, three distinct glowing red hearts visible beating inside, tentacles spread wide, underwater coral background"
+- Fact: "The Eiffel Tower grows 6 inches in summer" → "The Eiffel Tower visibly stretching taller with a measuring tape running up its side, a bright summer sun beating down, heat shimmer waves rising from the metal, a small figure below looking up in surprise"
+
+BAD examples (too vague, not depicting the specific claim):
+- "The Mona Lisa has no eyebrows" → "A mysterious painting in a golden frame" (WHERE are the missing eyebrows?)
+- "Honey never spoils" → "A golden honeycomb glowing warmly" (nothing about it NOT spoiling)
 
 Return ONLY the visual description string. No JSON, no quotes, no explanation.`;
 
@@ -455,10 +469,11 @@ async function generateDescriptionSingle(fact, config = null) {
   };
 
   let lastError;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     if (attempt > 0) {
-      console.log(`  Retrying after ${RETRY_DELAY_MS}ms...`);
-      await sleep(RETRY_DELAY_MS);
+      const delay = RETRY_DELAY_MS * attempt;
+      console.log(`  Retrying after ${delay / 1000}s (attempt ${attempt + 1}/3)...`);
+      await sleep(delay);
     }
     try {
       const resp = await fetch(API_URL, {
@@ -498,33 +513,34 @@ async function generateDescriptionSingle(fact, config = null) {
  * @returns {string}
  */
 function buildBatchSystemPrompt(config, selectedCategories, avoidList, count) {
-  let prompt = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game.
+  let prompt = `You write hyper-literal visual scene descriptions for pixel art card illustrations in a knowledge card game.
 
-For each vocabulary word below, create a scene that DIRECTLY and OBVIOUSLY depicts the word's meaning.
-The viewer should be able to GUESS the word just by looking at the image.
+For each vocabulary word below, depict its meaning AS A PHYSICAL ACTION OR STATE happening right now. The scene must be so specific and concrete that a viewer could GUESS the word just by looking.
 
-CRITICAL RULES:
-- The word's meaning must be the CENTRAL ACTION or STATE in the scene
-- Show the concept through clear body language, facial expressions, or obvious visual metaphor
-- The background setting is just flavor — the word meaning is the STAR
-- Include 1-2 distinctly ${config.baseTheme} visual elements (architecture, clothing, nature)
-- Vivid, colorful scenes with clear visual storytelling
-- Each description: 20-40 words, one sentence, concrete and vivid
-- No text, labels, numbers, or UI elements in the scene
+HYPER-LITERAL RULES:
+- Show the EXACT MEANING through unambiguous physical action, body language, and spatial relationships
+- Every object, gesture, and position must be concrete — describe what hands are doing, what is being held, what direction things move
+- For verbs: show someone DOING the action with clear before/after visual evidence
+- For nouns: show the thing being USED, ENCOUNTERED, or DEMONSTRATED in its most recognizable context
+- For adjectives: show something BEING that quality in an obvious, exaggerated way
+- Include 1-2 distinctly ${config.baseTheme} visual elements (architecture, clothing, nature) as background flavor
+- The word meaning is the STAR — background setting is just cultural flavor
+- Each description: 20-40 words, one sentence, extremely concrete and physical
+- Absolutely NO text, NO writing, NO letters, NO numbers, NO kanji, NO kana, NO symbols, NO script of any kind in the scene
 - No realistic human faces (stylized pixel art people OK)
 - No violence beyond fantasy, no sexual content
 
-GOOD examples (word meaning is immediately obvious):
-- "to deliver" → A smiling courier in traditional clothing hands a wrapped package to a grateful merchant at a market stall, cherry trees blooming overhead.
-- "to get angry" → A red-faced merchant slams his fist on a wooden counter, startling nearby cats, steam practically rising from his head in a bustling market.
-- "to celebrate" → Villagers in colorful yukatas dance around a decorated shrine, throwing confetti and raising cups, paper streamers and koi flags overhead.
-- "to increase" → Stacks of gold coins growing taller on a merchant's table, more coins pouring in from above, warm market scene with wooden shelves.
-- "investigation" → A detective-like figure with magnifying glass examines footprints on a garden path, lantern held close, scrolls of notes tucked under arm.
+GOOD hyper-literal examples (specific physical action depicting the word):
+- "to deliver" → A courier in a happi coat extending both arms to hand a large wrapped package to a merchant whose hands reach forward to receive it, a delivery cart with more boxes behind, cherry blossoms falling
+- "to apologize" → A person with closed eyes bowing deeply with both hands pressed together in front of their chest, a broken ceramic vase lying in pieces on the floor beside them, guilt visible in hunched shoulders
+- "scenery" → A stunning panoramic mountain vista seen through a natural stone torii gate, rolling green hills with a winding river below, dramatic colorful sunset sky with layers of clouds
+- "to increase" → A merchant's abacus with beads being rapidly pushed upward as stacks of gold coins grow visibly taller on the wooden counter, coins still falling from above into the growing piles
+- "rather/instead" → A person at a crossroads dramatically turning their whole body away from one path and striding decisively toward the other path, one hand pointing firmly at their chosen direction
 
-BAD examples (too metaphorical — viewer cannot guess the word):
-- "to give up" → "A lighthouse keeper gazes at sunset" (how is this giving up?)
-- "investigation" → "Storm-tossed fishing net on a dock" (this means nothing)
-- "meaning" → "Alpine shrine gate emerging from mist" (vague, no clear concept)
+BAD examples (too vague — viewer CANNOT guess the word):
+- "to give up" → "A lighthouse keeper gazes at sunset" (HOW is this giving up? Show someone dropping something, walking away, hands releasing)
+- "investigation" → "Storm-tossed fishing net on a dock" (NOTHING about investigating)
+- "meaning" → "Alpine shrine gate emerging from mist" (vague mood, no concept shown)
 
 COLOR PALETTE: ${config.palette}`;
 
@@ -1005,6 +1021,11 @@ async function main() {
   if (ANALYZE) console.log('  Mode: ANALYZE (frequency analysis only)');
   if (REGENERATE_ALL) console.log('  Mode: REGENERATE ALL (clearing existing descriptions)');
   console.log();
+
+  if (!DRY_RUN && LOCAL_PAID_LLM_SCRIPTS_DISABLED) {
+    console.error('Error: Paid LLM visual-description generation is disabled in this repository. Use --dry-run and external Claude workers for live generation.');
+    process.exit(1);
+  }
 
   // Discover JSON files
   let jsonFiles = await findJsonFiles(SEED_DIR);
