@@ -1,0 +1,175 @@
+{
+  "playthroughId": "playthrough-speed-runner-42-1773154406069",
+  "profileId": "speed-runner",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 9,
+    "accuracy": 0.9009433962264151,
+    "maxCombo": 12
+  },
+  "analyzedAt": "2026-03-10T15:02:38.628Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-001",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 encounter 2",
+      "description": "Enemy dealt 12 damage when player had 12 HP (100.0% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [317],
+        "floor": 9,
+        "metric": "12/12 = 100.0%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Reach floor 9, encounter 2",
+        "Observe enemy turn 3 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-002",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 encounter 2",
+      "description": "Enemy dealt 12 damage when player had 12 HP (100.0% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [321],
+        "floor": 9,
+        "metric": "12/12 = 100.0%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Reach floor 9, encounter 2",
+        "Observe enemy turn 4 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-003",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters starting floor 1",
+      "description": "Player maintained >90% HP (>72/80) across 3 consecutive encounters (floors 1-1). HP values: 80, 80, 80.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "3 consecutive encounters above 72 HP"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Play through floors 1-1",
+        "Observe lack of meaningful HP pressure"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-004",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "4 consecutive easy encounters starting floor 1",
+      "description": "Player maintained >90% HP (>72/80) across 4 consecutive encounters (floors 1-2). HP values: 80, 80, 80, 80.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "4 consecutive encounters above 72 HP"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Play through floors 1-2",
+        "Observe lack of meaningful HP pressure"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-005",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "5 consecutive easy encounters starting floor 1",
+      "description": "Player maintained >90% HP (>72/80) across 5 consecutive encounters (floors 1-2). HP values: 80, 80, 80, 80, 78.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "5 consecutive encounters above 72 HP"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Play through floors 1-2",
+        "Observe lack of meaningful HP pressure"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-006",
+      "category": "balance_healing_insufficient",
+      "severity": "MEDIUM",
+      "title": "Insufficient healing after floor 3",
+      "description": "Player's maximum HP after floor 3 was 47, never reaching the 60% threshold of 48. This suggests healing mechanics are insufficient for sustain in mid-to-late game.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 4,
+        "metric": "max HP after floor 3: 47/48 threshold"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Progress past floor 3",
+        "Monitor HP recovery throughout remaining floors"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-007",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 2 encounter 2",
+      "description": "Encounter against crystal_guardian took 4 turns to resolve, more than 2x the previous floor's average of 1.7 turns. This indicates a sudden difficulty increase.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "metric": "4 turns vs prev avg 1.7"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Progress to floor 2",
+        "Encounter crystal_guardian at encounter 2",
+        "Observe increased turn count"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-008",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 5 encounter 2",
+      "description": "Encounter against stone_sentinel took 7 turns to resolve, more than 2x the previous floor's average of 2.7 turns. This indicates a sudden difficulty increase.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "metric": "7 turns vs prev avg 2.7"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Progress to floor 5",
+        "Encounter stone_sentinel at encounter 2",
+        "Observe increased turn count"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773154406069-009",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "The \"wild\" card type was never used during this playthrough. This may indicate the card type is unavailable, underpowered, or the player's deck/archetype doesn't include it.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Monitor card type distribution during run",
+        "Check if \"wild\" cards appear in deck"
+      ]
+    }
+  ]
+}

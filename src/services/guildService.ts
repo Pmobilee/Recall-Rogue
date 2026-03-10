@@ -68,4 +68,9 @@ export const guildService = {
     const response = await authedPost('/guilds/create', input)
     return response.json() as Promise<GuildRecord>
   },
+
+  async invitePlayer(guildId: string, playerId: string): Promise<{ id: string; status: string }> {
+    const response = await authedPost(`/guilds/${encodeURIComponent(guildId)}/invite`, { playerId })
+    return response.json() as Promise<{ id: string; status: string }>
+  },
 }

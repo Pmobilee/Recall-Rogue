@@ -1,0 +1,109 @@
+{
+  "playthroughId": "playthrough-average-42-1773154374727",
+  "profileId": "average",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 4,
+    "accuracy": 0.7843137254901961,
+    "maxCombo": 9
+  },
+  "analyzedAt": "2026-03-10T14:57:04.491Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-average-42-1773154374727-001",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 20 dmg (51% of 39 HP) on floor 2",
+      "description": "On floor 2, encounter 2, turn 17, the enemy dealt 20 damage against player with 39 HP (51% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [
+          124
+        ],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "Enemy dealt 20 dmg (51% of 39 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 2, Encounter 2, Turn 17"
+      ]
+    },
+    {
+      "id": "issue-playthrough-average-42-1773154374727-002",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 7 dmg (54% of 13 HP) on floor 3",
+      "description": "On floor 3, encounter 0, turn 4, the enemy dealt 7 damage against player with 13 HP (54% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [
+          145
+        ],
+        "floor": 3,
+        "encounter": 0,
+        "metric": "Enemy dealt 7 dmg (54% of 13 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 3, Encounter 0, Turn 4"
+      ]
+    },
+    {
+      "id": "issue-playthrough-average-42-1773154374727-003",
+      "category": "balance_healing_insufficient",
+      "severity": "medium",
+      "title": "Player never exceeded 48 HP (60%) after floor 3 (max: 21)",
+      "description": "After floor 3, the player's HP never exceeded 21, which is below the 60% threshold (48 HP). This suggests healing is insufficient to sustain longer runs.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 4,
+        "encounter": 0,
+        "metric": "Max HP after floor 3: 21/80 (26%)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Check HP values from floor 4 onwards"
+      ]
+    },
+    {
+      "id": "issue-playthrough-average-42-1773154374727-004",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 2 enc 2: 18 turns vs prev floor avg 2.7",
+      "description": "Encounter 2 on floor 2 took 18 turns to resolve, which is more than 2x the previous floor's average of 2.7 turns. This indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "18 turns vs prev floor avg 2.7 (6.8x)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 2, Encounter 2, enemy: stone_sentinel"
+      ]
+    },
+    {
+      "id": "issue-playthrough-average-42-1773154374727-005",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (153 total cards played). This suggests either the card type was not available in the deck or was not worth playing.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of \"wild\" out of 153 total card plays"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Check deck composition for \"wild\" cards"
+      ]
+    }
+  ]
+}

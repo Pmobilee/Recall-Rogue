@@ -298,6 +298,54 @@
     font-weight: 600;
   }
 
+  /* --- Context Tags --- */
+  .ctx-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 1px 2px;
+    white-space: nowrap;
+  }
+
+  .ctx-tag-mode { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .ctx-tag-archetype { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .ctx-tag-domain { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+  /* --- Run Breakdown Table (inside detail panel) --- */
+  .breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-top: 6px;
+  }
+
+  .breakdown-table th {
+    background: #1e293b;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid #334155;
+  }
+
+  .breakdown-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(51,65,85,0.5);
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.76rem;
+  }
+
+  .result-victory { color: #22c55e; }
+  .result-defeat { color: #ef4444; }
+  .result-cash_out { color: #f59e0b; }
+
   /* --- Empty State --- */
   .empty-state {
     text-align: center;
@@ -379,6 +427,20 @@
       <select id="filter-profile" onchange="renderIssues()">
         <option value="all">All Profiles</option>
       </select>
+      <select id="filter-difficulty" onchange="renderIssues()">
+        <option value="all">All Difficulty Modes</option>
+        <option value="story">Story</option>
+        <option value="standard">Standard</option>
+        <option value="expert">Expert</option>
+      </select>
+      <select id="filter-archetype" onchange="renderIssues()">
+        <option value="all">All Archetypes</option>
+        <option value="balanced">Balanced</option>
+        <option value="aggressive">Aggressive</option>
+        <option value="defensive">Defensive</option>
+        <option value="control">Control</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
     </div>
     <div class="table-wrap">
       <table>
@@ -391,6 +453,7 @@
             <th>Score</th>
             <th>Status</th>
             <th>Profiles</th>
+            <th>Context</th>
           </tr>
         </thead>
         <tbody id="issues-body"></tbody>
@@ -408,6 +471,9 @@
         <thead>
           <tr>
             <th>Profile</th>
+            <th>Domain</th>
+            <th>Mode</th>
+            <th>Archetype</th>
             <th>Seed</th>
             <th>Result</th>
             <th>Floor</th>
@@ -515,6 +581,8 @@
     const sevFilter = document.getElementById('filter-severity').value;
     const statusFilter = document.getElementById('filter-status').value;
     const profileFilter = document.getElementById('filter-profile').value;
+    const diffFilter = document.getElementById('filter-difficulty').value;
+    const archFilter = document.getElementById('filter-archetype').value;
 
     let issues = leaderboardData.issues || [];
 
@@ -526,6 +594,12 @@
     }
     if (profileFilter !== 'all') {
       issues = issues.filter(i => (i.profiles || []).includes(profileFilter));
+    }
+    if (diffFilter !== 'all') {
+      issues = issues.filter(i => i.affectedSettings && i.affectedSettings.difficultyModes && i.affectedSettings.difficultyModes.includes(diffFilter));
+    }
+    if (archFilter !== 'all') {
+      issues = issues.filter(i => i.affectedSettings && i.affectedSettings.archetypes && i.affectedSettings.archetypes.includes(archFilter));
     }
 
     const tbody = document.getElementById('issues-body');
@@ -551,6 +625,21 @@
       const score = typeof issue.score === 'number' ? issue.score.toFixed(1) : '--';
       const isExpanded = expandedIssueId === issue.id;
 
+      // Build context tags from affectedSettings
+      let ctxHtml = '';
+      if (issue.affectedSettings) {
+        (issue.affectedSettings.difficultyModes || []).forEach(m => {
+          ctxHtml += '<span class="ctx-tag ctx-tag-mode">' + escapeHtml(m) + '</span>';
+        });
+        (issue.affectedSettings.archetypes || []).forEach(a => {
+          ctxHtml += '<span class="ctx-tag ctx-tag-archetype">' + escapeHtml(a) + '</span>';
+        });
+        (issue.affectedSettings.domains || []).forEach(d => {
+          ctxHtml += '<span class="ctx-tag ctx-tag-domain">' + escapeHtml(d) + '</span>';
+        });
+      }
+      if (!ctxHtml) ctxHtml = '<span style="color:#64748b;">--</span>';
+
       html += '<tr onclick="toggleIssueDetail(\'' + escapeAttr(issue.id) + '\')" class="' + (isExpanded ? 'expanded-parent' : '') + '">';
       html += '<td>' + rank + '</td>';
       html += '<td><span class="badge badge-' + sev + '">' + sev + '</span></td>';
@@ -559,10 +648,11 @@
       html += '<td>' + score + '</td>';
       html += '<td><span class="status-badge status-' + status + '">' + formatStatus(status) + '</span></td>';
       html += '<td style="color:#94a3b8;font-size:0.78rem;">' + escapeHtml(profiles) + '</td>';
+      html += '<td>' + ctxHtml + '</td>';
       html += '</tr>';
 
       if (isExpanded) {
-        html += '<tr class="detail-row"><td colspan="7">';
+        html += '<tr class="detail-row"><td colspan="8">';
         html += buildIssueDetail(issue);
         html += '</td></tr>';
       }
@@ -602,6 +692,26 @@
       h += '<div class="detail-section"><h4>Suggested Fix</h4><p>' + escapeHtml(issue.suggestedFix) + '</p></div>';
     }
 
+    // Run Breakdown table
+    if (issue.runBreakdown && issue.runBreakdown.length > 0) {
+      h += '<div class="detail-section"><h4>Run Breakdown</h4>';
+      h += '<table class="breakdown-table"><thead><tr>';
+      h += '<th>Profile</th><th>Seed</th><th>Mode</th><th>Archetype</th><th>Result</th><th>Floor</th>';
+      h += '</tr></thead><tbody>';
+      issue.runBreakdown.forEach(rb => {
+        const resultClass = rb.result === 'victory' ? 'result-victory' : rb.result === 'defeat' ? 'result-defeat' : rb.result === 'cash_out' ? 'result-cash_out' : '';
+        h += '<tr>';
+        h += '<td>' + escapeHtml(rb.profileId || '--') + '</td>';
+        h += '<td>' + escapeHtml(rb.seed != null ? String(rb.seed) : '--') + '</td>';
+        h += '<td><span class="ctx-tag ctx-tag-mode">' + escapeHtml(rb.difficultyMode || '--') + '</span></td>';
+        h += '<td><span class="ctx-tag ctx-tag-archetype">' + escapeHtml(rb.archetype || '--') + '</span></td>';
+        h += '<td class="' + resultClass + '">' + escapeHtml(rb.result || '--') + '</td>';
+        h += '<td>' + (rb.floor != null ? rb.floor : '--') + '</td>';
+        h += '</tr>';
+      });
+      h += '</tbody></table></div>';
+    }
+
     h += '</div>';
     return h;
   }
@@ -632,7 +742,7 @@
     let html = '';
     logsData.forEach(run => {
       if (run.error) {
-        html += '<tr><td colspan="9" style="color:#ef4444;">' + escapeHtml(run.file) + ': ' + escapeHtml(run.error) + '</td></tr>';
+        html += '<tr><td colspan="12" style="color:#ef4444;">' + escapeHtml(run.file) + ': ' + escapeHtml(run.error) + '</td></tr>';
         return;
       }
 
@@ -642,8 +752,16 @@
       const report = reportsData.find(r => r.playthroughId === run.id);
       const isExpanded = expandedRunId === run.id;
 
+      const settings = run.settings;
+      const domain = settings ? escapeHtml(settings.domain || '--') : '--';
+      const mode = settings ? escapeHtml(settings.difficultyMode || '--') : '--';
+      const archetype = settings ? escapeHtml(settings.archetype || '--') : '--';
+
       html += '<tr onclick="toggleRunDetail(\'' + escapeAttr(run.id || run.file) + '\')">';
       html += '<td>' + escapeHtml(run.profileId || '--') + '</td>';
+      html += '<td><span class="ctx-tag ctx-tag-domain">' + domain + '</span></td>';
+      html += '<td><span class="ctx-tag ctx-tag-mode">' + mode + '</span></td>';
+      html += '<td><span class="ctx-tag ctx-tag-archetype">' + archetype + '</span></td>';
       html += '<td>' + escapeHtml(run.rngSeed != null ? String(run.rngSeed) : '--') + '</td>';
       html += '<td><span class="badge ' + resultClass + '">' + escapeHtml(result) + '</span></td>';
       html += '<td>' + (run.finalFloor ?? '--') + '</td>';
@@ -655,7 +773,7 @@
       html += '</tr>';
 
       if (isExpanded) {
-        html += '<tr class="detail-row"><td colspan="9">';
+        html += '<tr class="detail-row"><td colspan="12">';
         html += '<div class="detail-content">';
         if (report) {
           html += '<h4>Analysis Report</h4>';

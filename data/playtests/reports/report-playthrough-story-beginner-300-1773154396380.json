@@ -1,0 +1,105 @@
+{
+  "playthroughId": "playthrough-story-beginner-300-1773154396380",
+  "profileId": "story-beginner",
+  "settings": {
+    "difficultyMode": "story",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 1,
+    "accuracy": 0.5921052631578947,
+    "maxCombo": 8
+  },
+  "analyzedAt": "2026-03-10T15:02:38.632Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-story-beginner-300-1773154396380-001",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 1 encounter 1",
+      "description": "Enemy dealt 21 damage when player had 41 HP (51.2% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [92],
+        "floor": 1,
+        "metric": "21/41 = 51.2%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 300, profile story-beginner",
+        "Reach floor 1, encounter 1",
+        "Observe enemy turn 18 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-300-1773154396380-002",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 1 encounter 1",
+      "description": "Enemy dealt 31 damage when player had 17 HP (182.4% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [100],
+        "floor": 1,
+        "metric": "31/17 = 182.4%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 300, profile story-beginner",
+        "Reach floor 1, encounter 1",
+        "Observe enemy turn 20 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-300-1773154396380-003",
+      "category": "balance_too_hard",
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 1",
+      "description": "Player was defeated on floor 1 (early game). Defeated by crystal_golem (common) with accuracy 56.1%.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "defeat on floor 1"
+      },
+      "reproductionSteps": [
+        "Start run with seed 300, profile story-beginner",
+        "Play through to floor 1",
+        "Observe defeat conditions"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-300-1773154396380-004",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "Unfun HP swing in floor 1 encounter 1",
+      "description": "Player HP dropped from 73 (>56=70% of 80) to 0 (<16=20% of 80) within a single encounter. This kind of swing feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [15, 109],
+        "floor": 1,
+        "metric": "HP 73 -> 0"
+      },
+      "reproductionSteps": [
+        "Start run with seed 300, profile story-beginner",
+        "Reach floor 1 encounter 1",
+        "Observe dramatic HP loss during encounter"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-300-1773154396380-005",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "The \"wild\" card type was never used during this playthrough. This may indicate the card type is unavailable, underpowered, or the player's deck/archetype doesn't include it.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start run with seed 300, profile story-beginner",
+        "Monitor card type distribution during run",
+        "Check if \"wild\" cards appear in deck"
+      ]
+    }
+  ]
+}

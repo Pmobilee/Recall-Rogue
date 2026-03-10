@@ -115,6 +115,28 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
     }
   }
 
+  // === Hand Composition Guard ===
+  // Guarantee at least 1 attack-type card to prevent 0-DPS dead turns
+  const hasAttack = drawn.some(c => c.cardType === 'attack');
+  if (!hasAttack && drawn.length > 0) {
+    // Find an attack card in the draw pile
+    const attackIdx = deck.drawPile.findIndex(c => c.cardType === 'attack');
+    if (attackIdx >= 0) {
+      // Swap the last drawn non-attack card with the attack card from draw pile
+      const swapTarget = drawn[drawn.length - 1];
+      const [attackCard] = deck.drawPile.splice(attackIdx, 1);
+      // Put the swapped card back in draw pile
+      deck.drawPile.push(swapTarget);
+      // Replace in hand
+      const handIdx = deck.hand.indexOf(swapTarget);
+      if (handIdx >= 0) {
+        deck.hand[handIdx] = attackCard;
+        drawn[drawn.length - 1] = attackCard;
+        if (attackCard.mechanicId) mechanicsInHand.add(attackCard.mechanicId);
+      }
+    }
+  }
+
   // === Fact-Card Shuffling ===
   // Reassign facts to drawn card slots from the available fact pool
   if (deck.factPool.length > 0 && drawn.length > 0) {

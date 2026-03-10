@@ -1,0 +1,155 @@
+{
+  "playthroughId": "playthrough-expert-42-1773154374086",
+  "profileId": "expert",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 12,
+    "accuracy": 0.8836633663366337,
+    "maxCombo": 13
+  },
+  "analyzedAt": "2026-03-10T15:03:37.525Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-001",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 13 dmg (54% of 24 HP) on floor 11",
+      "description": "During enemy turn seq 481 on floor 11 encounter 1, the enemy dealt 13 damage while the player had 24 HP. This exceeds the 50% threshold (12 HP).",
+      "evidence": {
+        "turnSeqs": [481],
+        "floor": 11,
+        "encounter": 1,
+        "metric": "13 dmg vs 24 HP (54%)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 11, Encounter 1, Turn seq 481"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-002",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 60 dmg (6000% of 1 HP) on floor 12",
+      "description": "During enemy turn seq 584 on floor 12 encounter 2, the enemy dealt 60 damage while the player had 1 HP. This exceeds the 50% threshold (1 HP).",
+      "evidence": {
+        "turnSeqs": [584],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "60 dmg vs 1 HP (6000%)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 12, Encounter 2, Turn seq 584"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-003",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "6 consecutive encounters with HP > 90% (floors 1-2)",
+      "description": "6 encounters in a row where player HP remained above 72 (90% of 80 max): F1E0, F1E1, F1E2, F2E0, F2E1, F2E2. HP values: 78, 78, 78, 78, 76, 74. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "6 consecutive encounters >72 HP remaining"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Encounters: F1E0, F1E1, F1E2, F2E0, F2E1, F2E2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-004",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 3 enc 2: 7 turns vs prev floor avg 3.0",
+      "description": "Encounter 2 on floor 3 took 7 turns to resolve, which is more than 2x the previous floor's average of 3.0 turns. This indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "7 turns vs prev floor avg 3.0 (2.3x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 3, Encounter 2, enemy: the_archivist"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-005",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 6 enc 2: 9 turns vs prev floor avg 2.3",
+      "description": "Encounter 2 on floor 6 took 9 turns to resolve, which is more than 2x the previous floor's average of 2.3 turns. This indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "9 turns vs prev floor avg 2.3 (3.9x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 6, Encounter 2, enemy: the_excavator"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-006",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 9 enc 2: 16 turns vs prev floor avg 3.0",
+      "description": "Encounter 2 on floor 9 took 16 turns to resolve, which is more than 2x the previous floor's average of 3.0 turns. This indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "16 turns vs prev floor avg 3.0 (5.3x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 9, Encounter 2, enemy: void_weaver"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-007",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 11 enc 2: 9 turns vs prev floor avg 4.3",
+      "description": "Encounter 2 on floor 11 took 9 turns to resolve, which is more than 2x the previous floor's average of 4.3 turns. This indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 2,
+        "metric": "9 turns vs prev floor avg 4.3 (2.1x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 11, Encounter 2, enemy: crystal_guardian"
+      ]
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773154374086-008",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (404 total cards played). This suggests either the card type was not available in the deck or was not worth playing.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of \"wild\" out of 404 total card plays"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Check deck composition for \"wild\" cards"
+      ]
+    }
+  ]
+}

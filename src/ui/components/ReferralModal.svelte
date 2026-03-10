@@ -2,6 +2,7 @@
   import type { ReferralRecord } from '../../data/types'
   import { REFERRAL_REWARD_TIERS, REFERRAL_MAX_PER_YEAR } from '../../data/balance'
   import { analyticsService } from '../../services/analyticsService'
+  import { referralService } from '../../services/referralService'
 
   interface Props {
     onClose: () => void
@@ -51,15 +52,10 @@
     loading = true
     errorMessage = ''
     try {
-      const [codeResp, historyResp] = await Promise.all([
-        fetch('/api/referrals/my-code'),
-        fetch('/api/referrals/my-history'),
+      const [codeData, historyData] = await Promise.all([
+        referralService.getMyCode(),
+        referralService.getMyHistory(),
       ])
-      if (!codeResp.ok) throw new Error('Failed to load referral code')
-      if (!historyResp.ok) throw new Error('Failed to load referral history')
-
-      const codeData = await codeResp.json() as { code: string }
-      const historyData = await historyResp.json() as { history: ReferralRecord[] }
 
       referralCode = codeData.code
       referralHistory = historyData.history ?? []

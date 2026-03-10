@@ -1,0 +1,192 @@
+{
+  "playthroughId": "playthrough-control-expert-100-1773154427048",
+  "profileId": "control-expert",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "control",
+    "cardTierMix": "tier1:0.4/tier2:0.4/tier3:0.2",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 7,
+    "accuracy": 0.8943089430894309,
+    "maxCombo": 18
+  },
+  "analyzedAt": "2026-03-10T15:02:28.582Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-001",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 6 enc 2 turn 6",
+      "description": "Enemy dealt 12 damage (>5 = 50% of 10 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [298],
+        "floor": 6,
+        "metric": "12 dmg vs 10 HP (120.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 6, encounter 2",
+        "Reach turn 6",
+        "Observe enemy dealing 12 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-002",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 7 enc 1 turn 1",
+      "description": "Enemy dealt 7 damage (>3 = 50% of 6 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [319],
+        "floor": 7,
+        "metric": "7 dmg vs 6 HP (116.7%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 1",
+        "Reach turn 1",
+        "Observe enemy dealing 7 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-003",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 7 enc 1 turn 2",
+      "description": "Enemy dealt 5 damage (>1 = 50% of 1 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [323],
+        "floor": 7,
+        "metric": "5 dmg vs 1 HP (500.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 1",
+        "Reach turn 2",
+        "Observe enemy dealing 5 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-004",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 7 enc 1 turn 4",
+      "description": "Enemy dealt 3 damage (>2 = 50% of 3 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [331],
+        "floor": 7,
+        "metric": "3 dmg vs 3 HP (100.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 1",
+        "Reach turn 4",
+        "Observe enemy dealing 3 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-005",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 7 enc 1 turn 5",
+      "description": "Enemy dealt 2 damage (>1 = 50% of 1 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [335],
+        "floor": 7,
+        "metric": "2 dmg vs 1 HP (200.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 1",
+        "Reach turn 5",
+        "Observe enemy dealing 2 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-006",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 7 enc 2 turn 1",
+      "description": "Enemy dealt 6 damage (>3 = 50% of 6 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [352],
+        "floor": 7,
+        "metric": "6 dmg vs 6 HP (100.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 2",
+        "Reach turn 1",
+        "Observe enemy dealing 6 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-007",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Lethal damage spike on floor 7 enc 2 turn 3",
+      "description": "Enemy dealt 9 lethal damage (>2 = 50% of 3 pre-turn HP), killing the player.",
+      "evidence": {
+        "turnSeqs": [360],
+        "floor": 7,
+        "metric": "9 dmg vs 3 pre-turn HP (300.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 7, encounter 2",
+        "Reach turn 3",
+        "Observe lethal damage of 9"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-008",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 2 enc 2 took 11 turns (prev avg: 3.7)",
+      "description": "Encounter 2 on floor 2 against stone_sentinel took 11 turns to resolve, more than 2x the previous floor's average of 3.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "metric": "11 turns vs 3.7 prev avg (3.0x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 2",
+        "Face stone_sentinel",
+        "Observe encounter takes 11 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-009",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 5 enc 1 took 7 turns (prev avg: 2.0)",
+      "description": "Encounter 1 on floor 5 against crystal_golem took 7 turns to resolve, more than 2x the previous floor's average of 2.0 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "metric": "7 turns vs 2.0 prev avg (3.5x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 5",
+        "Face crystal_golem",
+        "Observe encounter takes 7 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773154427048-010",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "No cards of type \"wild\" were played during this run. This card type may be missing from the deck or not being offered.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Check deck composition for \"wild\" cards",
+        "Observe absence of \"wild\" card plays"
+      ]
+    }
+  ]
+}

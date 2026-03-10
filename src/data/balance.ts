@@ -959,7 +959,7 @@ export const QA_LIMITS = {
 } as const;
 
 // Knowledge combo multipliers
-// Index 0 = 1st correct, index 4 = 5th correct (perfect turn)
+// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.0x)
 export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
 
 // Speed bonus

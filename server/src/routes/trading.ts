@@ -134,6 +134,49 @@ function isValidRarity(v: unknown): v is Rarity {
   );
 }
 
+function findActiveListingByInstanceId(instanceId: string): MarketplaceListing | null {
+  for (const listing of listingStore.values()) {
+    if (listing.instanceId === instanceId && listing.boughtAt === null) return listing;
+  }
+  return null;
+}
+
+function mapArtifactToClientCard(artifact: ArtifactInstance) {
+  const activeListing = findActiveListingByInstanceId(artifact.instanceId);
+  return {
+    instanceId: artifact.instanceId,
+    factId: artifact.artifactName,
+    rarity: artifact.rarity,
+    discoveredAt: 0,
+    isSoulbound: artifact.soulbound,
+    isListed: activeListing !== null,
+    listPrice: activeListing?.priceDust,
+    factPreview: artifact.artifactName,
+    category: artifact.category,
+  };
+}
+
+function mapListingToClientListing(listing: MarketplaceListing) {
+  return {
+    id: listing.id,
+    sellerId: listing.sellerId,
+    sellerDisplayName: listing.sellerDisplayName,
+    instanceId: listing.instanceId,
+    artifactName: listing.artifactName,
+    rarity: listing.rarity,
+    category: listing.category,
+    priceDust: listing.priceDust,
+    listedAt: listing.listedAt,
+    boughtAt: listing.boughtAt,
+    buyerId: listing.buyerId,
+    // Legacy fields consumed by older Svelte components.
+    factId: listing.instanceId,
+    factPreview: listing.artifactName,
+    price: listing.priceDust,
+    sellerName: listing.sellerDisplayName ?? "Explorer",
+  };
+}
+
 // ── Route registration ────────────────────────────────────────────────────────
 
 /**
@@ -179,7 +222,51 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
       // Sort by most recently listed first
       listings.sort((a, b) => b.listedAt - a.listedAt);
 
-      return reply.status(200).send(listings.slice(0, limit));
+      return reply.status(200).send(listings.slice(0, limit).map(mapListingToClientListing));
+    }
+  );
+
+  // ── GET /my-listings (legacy client compatibility) ────────────────────────
+  fastify.get(
+    "/my-listings",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const listedArtifacts = [...artifactInventory.values()]
+        .filter((artifact) => artifact.ownerId === userId && findActiveListingByInstanceId(artifact.instanceId) !== null)
+        .map(mapArtifactToClientCard);
+      return reply.status(200).send({ listings: listedArtifacts });
+    }
+  );
+
+  // ── GET /my-tradeable (legacy client compatibility) ───────────────────────
+  fastify.get(
+    "/my-tradeable",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const cards = [...artifactInventory.values()]
+        .filter((artifact) => artifact.ownerId === userId && !artifact.soulbound)
+        .map(mapArtifactToClientCard);
+      return reply.status(200).send({ cards });
+    }
+  );
+
+  // ── GET /tradeable/:playerId (legacy client compatibility) ────────────────
+  fastify.get(
+    "/tradeable/:playerId",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { playerId } = request.params as { playerId: string };
+      const cards = [...artifactInventory.values()]
+        .filter((artifact) => artifact.ownerId === playerId && !artifact.soulbound)
+        .map((artifact) => ({
+          instanceId: artifact.instanceId,
+          factId: artifact.artifactName,
+          rarity: artifact.rarity,
+          factPreview: artifact.artifactName,
+        }));
+      return reply.status(200).send({ cards });
     }
   );
 
@@ -334,6 +421,43 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
+  // ── POST /buy (legacy client compatibility) ───────────────────────────────
+  fastify.post(
+    "/buy",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: buyerId } = getAuthUser(request);
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const instanceId = body?.instanceId;
+      if (typeof instanceId !== "string" || instanceId.trim().length === 0) {
+        return reply.status(400).send({ error: "instanceId is required", statusCode: 400 });
+      }
+
+      const listing = findActiveListingByInstanceId(instanceId);
+      if (!listing) {
+        return reply.status(404).send({ error: "Listing not found", statusCode: 404 });
+      }
+      if (listing.sellerId === buyerId) {
+        return reply.status(400).send({ error: "Cannot buy your own listing", statusCode: 400 });
+      }
+
+      const fee = Math.floor(listing.priceDust * MARKETPLACE_FEE_RATE);
+      const sellerReceives = listing.priceDust - fee;
+      const artifact = artifactInventory.get(listing.instanceId);
+      if (artifact) artifact.ownerId = buyerId;
+
+      listing.boughtAt = Date.now();
+      listing.buyerId = buyerId;
+
+      return reply.status(200).send({
+        listing: mapListingToClientListing(listing),
+        dustDeducted: listing.priceDust,
+        sellerReceives,
+        feeBurned: fee,
+      });
+    }
+  );
+
   // ── DELETE /marketplace/:listingId ─────────────────────────────────────────
 
   /**
@@ -368,6 +492,31 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
       listingStore.delete(listingId);
 
       return reply.status(204).send();
+    }
+  );
+
+  // ── POST /delist (legacy client compatibility) ────────────────────────────
+  fastify.post(
+    "/delist",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const instanceId = body?.instanceId;
+      if (typeof instanceId !== "string" || instanceId.trim().length === 0) {
+        return reply.status(400).send({ error: "instanceId is required", statusCode: 400 });
+      }
+
+      const listing = findActiveListingByInstanceId(instanceId);
+      if (!listing) {
+        return reply.status(404).send({ error: "Listing not found", statusCode: 404 });
+      }
+      if (listing.sellerId !== userId) {
+        return reply.status(403).send({ error: "Not your listing", statusCode: 403 });
+      }
+
+      listingStore.delete(listing.id);
+      return reply.status(200).send({ ok: true, listingId: listing.id });
     }
   );
 
@@ -491,6 +640,58 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
+  // ── POST /offers/create (legacy client compatibility) ─────────────────────
+  fastify.post(
+    "/offers/create",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const receiverId = body?.receiverId;
+      const offeredCardInstanceId = body?.offeredCardInstanceId;
+      const requestedCardInstanceId = body?.requestedCardInstanceId;
+      const additionalDust = body?.additionalDust ?? 0;
+
+      if (typeof receiverId !== "string" || receiverId.trim().length === 0) {
+        return reply.status(400).send({ error: "receiverId is required", statusCode: 400 });
+      }
+      if (typeof offeredCardInstanceId !== "string" || offeredCardInstanceId.trim().length === 0) {
+        return reply.status(400).send({ error: "offeredCardInstanceId is required", statusCode: 400 });
+      }
+      if (typeof requestedCardInstanceId !== "string" || requestedCardInstanceId.trim().length === 0) {
+        return reply.status(400).send({ error: "requestedCardInstanceId is required", statusCode: 400 });
+      }
+      if (typeof additionalDust !== "number" || !Number.isFinite(additionalDust) || additionalDust < 0 || additionalDust > TRADE_MAX_DUST) {
+        return reply.status(400).send({ error: `additionalDust must be between 0 and ${TRADE_MAX_DUST}`, statusCode: 400 });
+      }
+
+      const { sub: senderId } = getAuthUser(request);
+      if (senderId === receiverId) {
+        return reply.status(400).send({ error: "Cannot send a trade offer to yourself", statusCode: 400 });
+      }
+
+      const sender = await db
+        .select({ displayName: users.displayName })
+        .from(users)
+        .where(eq(users.id, senderId))
+        .get();
+
+      const offer: TradeOffer = {
+        id: crypto.randomUUID(),
+        senderId,
+        senderDisplayName: sender?.displayName ?? null,
+        receiverId,
+        offeredCardId: offeredCardInstanceId,
+        requestedCardId: requestedCardInstanceId,
+        additionalDust: Math.floor(additionalDust),
+        status: "pending",
+        createdAt: Date.now(),
+        resolvedAt: null,
+      };
+      offerStore.set(offer.id, offer);
+      return reply.status(201).send(offer);
+    }
+  );
+
   // ── POST /offers/:offerId/accept ────────────────────────────────────────────
 
   /**
@@ -543,6 +744,31 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
+  // ── POST /offers/accept (legacy client compatibility) ─────────────────────
+  fastify.post(
+    "/offers/accept",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const offerId = body?.offerId;
+      if (typeof offerId !== "string" || offerId.trim().length === 0) {
+        return reply.status(400).send({ error: "offerId is required", statusCode: 400 });
+      }
+      const offer = offerStore.get(offerId);
+      if (!offer) return reply.status(404).send({ error: "Offer not found", statusCode: 404 });
+      if (offer.receiverId !== userId) return reply.status(403).send({ error: "Not the recipient of this offer", statusCode: 403 });
+      if (offer.status !== "pending") return reply.status(409).send({ error: "Offer is no longer pending", statusCode: 409 });
+      const offeredArtifact = artifactInventory.get(offer.offeredCardId);
+      const requestedArtifact = artifactInventory.get(offer.requestedCardId);
+      if (offeredArtifact) offeredArtifact.ownerId = offer.receiverId;
+      if (requestedArtifact) requestedArtifact.ownerId = offer.senderId;
+      offer.status = "accepted";
+      offer.resolvedAt = Date.now();
+      return reply.status(200).send(offer);
+    }
+  );
+
   // ── POST /offers/:offerId/decline ───────────────────────────────────────────
 
   /**
@@ -582,6 +808,27 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
     }
   );
 
+  // ── POST /offers/decline (legacy client compatibility) ────────────────────
+  fastify.post(
+    "/offers/decline",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { sub: userId } = getAuthUser(request);
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const offerId = body?.offerId;
+      if (typeof offerId !== "string" || offerId.trim().length === 0) {
+        return reply.status(400).send({ error: "offerId is required", statusCode: 400 });
+      }
+      const offer = offerStore.get(offerId);
+      if (!offer) return reply.status(404).send({ error: "Offer not found", statusCode: 404 });
+      if (offer.receiverId !== userId) return reply.status(403).send({ error: "Not the recipient of this offer", statusCode: 403 });
+      if (offer.status !== "pending") return reply.status(409).send({ error: "Offer is no longer pending", statusCode: 409 });
+      offer.status = "declined";
+      offer.resolvedAt = Date.now();
+      return reply.status(200).send(offer);
+    }
+  );
+
   // ── GET /offers/pending ─────────────────────────────────────────────────────
 
   /**
@@ -595,11 +842,53 @@ export async function tradingRoutes(fastify: FastifyInstance): Promise<void> {
     async (request: FastifyRequest, reply: FastifyReply) => {
       const { sub: userId } = getAuthUser(request);
 
-      const pending = [...offerStore.values()].filter(
+      const incoming = [...offerStore.values()].filter(
         (o) => o.receiverId === userId && o.status === "pending"
       );
+      const outgoing = [...offerStore.values()].filter(
+        (o) => o.senderId === userId && o.status === "pending"
+      );
 
-      return reply.status(200).send(pending);
+      const incomingRows = incoming.map((offer) => {
+        const offered = artifactInventory.get(offer.offeredCardId);
+        const requested = artifactInventory.get(offer.requestedCardId);
+        return {
+          id: offer.id,
+          offererId: offer.senderId,
+          offererName: offer.senderDisplayName ?? "Explorer",
+          receiverId: offer.receiverId,
+          offeredCardInstanceId: offer.offeredCardId,
+          requestedCardInstanceId: offer.requestedCardId,
+          additionalDust: offer.additionalDust,
+          status: offer.status,
+          createdAt: offer.createdAt,
+          expiresAt: offer.createdAt + 48 * 60 * 60 * 1000,
+          offererNameDisplay: offer.senderDisplayName ?? "Explorer",
+          offeredCardPreview: offered?.artifactName ?? offer.offeredCardId,
+          requestedCardPreview: requested?.artifactName ?? offer.requestedCardId,
+          wagerDust: offer.additionalDust,
+        };
+      });
+
+      const outgoingRows = outgoing.map((offer) => {
+        const offered = artifactInventory.get(offer.offeredCardId);
+        const requested = artifactInventory.get(offer.requestedCardId);
+        return {
+          id: offer.id,
+          receiverId: offer.receiverId,
+          receiverNameDisplay: `Rogue-${offer.receiverId.slice(0, 6)}`,
+          offeredCardInstanceId: offer.offeredCardId,
+          requestedCardInstanceId: offer.requestedCardId,
+          additionalDust: offer.additionalDust,
+          status: offer.status,
+          createdAt: offer.createdAt,
+          expiresAt: offer.createdAt + 48 * 60 * 60 * 1000,
+          offeredCardPreview: offered?.artifactName ?? offer.offeredCardId,
+          requestedCardPreview: requested?.artifactName ?? offer.requestedCardId,
+        };
+      });
+
+      return reply.status(200).send({ incoming: incomingRows, outgoing: outgoingRows });
     }
   );
 

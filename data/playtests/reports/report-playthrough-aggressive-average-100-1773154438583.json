@@ -1,0 +1,92 @@
+{
+  "playthroughId": "playthrough-aggressive-average-100-1773154438583",
+  "profileId": "aggressive-average",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "aggressive",
+    "cardTierMix": "tier1:0.6/tier2:0.3/tier3:0.1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 3,
+    "accuracy": 0.72,
+    "maxCombo": 11
+  },
+  "analyzedAt": "2026-03-10T14:57:04.484Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773154438583-001",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 11 dmg (100% of 11 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 2, the enemy dealt 11 damage against player with 11 HP (100% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [
+          141
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 11 dmg (100% of 11 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773154438583-002",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 8 dmg (73% of 11 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 3, the enemy dealt 8 damage against player with 11 HP (73% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [
+          145
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 8 dmg (73% of 11 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 3"
+      ]
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773154438583-003",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 3 (early game)",
+      "description": "Player was defeated on floor 3 out of the early floors (1-3). This may indicate the early game is too punishing for aggressive-average profile players. Overall accuracy was 72%.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Defeated on floor 3, accuracy 72%"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Defeated on floor 3"
+      ]
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773154438583-004",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (100 total cards played). This suggests either the card type was not available in the deck or was not worth playing.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of \"wild\" out of 100 total card plays"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Check deck composition for \"wild\" cards"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { analyticsService } from '../../services/analyticsService'
+  import { feedbackService } from '../../services/feedbackService'
 
   let open = $state(false)
   let text = $state('')
@@ -14,19 +15,12 @@
     sending = true
     notice = null
     try {
-      const response = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: $playerSave?.deviceId ?? $playerSave?.playerId ?? 'anonymous',
-          feedback: trimmed,
-          accountId: $playerSave?.accountId ?? null,
-          timestamp: Date.now(),
-        }),
+      await feedbackService.submit({
+        userId: $playerSave?.deviceId ?? $playerSave?.playerId ?? 'anonymous',
+        feedback: trimmed,
+        accountId: $playerSave?.accountId ?? null,
+        timestamp: Date.now(),
       })
-      if (!response.ok) {
-        throw new Error(`Feedback failed (${response.status})`)
-      }
       analyticsService.track({
         name: 'feedback_submitted',
         properties: {

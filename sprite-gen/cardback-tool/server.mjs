@@ -1562,7 +1562,8 @@ app.get('/api/playtest/logs', (req, res) => {
           totalEncounters: log.summary?.totalEncounters,
           overallAccuracy: log.summary?.overallAccuracy,
           maxCombo: log.summary?.maxCombo,
-          speedBonuses: log.summary?.speedBonuses
+          speedBonuses: log.summary?.speedBonuses,
+          settings: log.settings || null
         };
       } catch { return { file: f, error: 'parse error' }; }
     });

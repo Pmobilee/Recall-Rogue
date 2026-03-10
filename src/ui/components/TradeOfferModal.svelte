@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { ArtifactCard } from '../../data/types'
+  import { tradingService } from '../../services/tradingService'
 
   interface ReceiverCard {
     instanceId: string
@@ -73,11 +74,9 @@
   async function loadMyCards(): Promise<void> {
     loadingMine = true
     try {
-      const resp = await fetch('/api/trading/my-tradeable')
-      if (!resp.ok) throw new Error('Failed to load your cards')
-      const data = await resp.json() as { cards: ArtifactCard[] }
+      const data = await tradingService.getMyTradeableCards()
       // Phase 56: Client-side soulbound filter (defense-in-depth)
-      myCards = (data.cards ?? []).filter(c => !c.isSoulbound)
+      myCards = (data ?? []).filter(c => !c.isSoulbound)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Failed to load cards'
     } finally {
@@ -88,10 +87,7 @@
   async function loadReceiverCards(): Promise<void> {
     loadingReceiver = true
     try {
-      const resp = await fetch(`/api/trading/tradeable/${receiverId}`)
-      if (!resp.ok) throw new Error("Failed to load receiver's cards")
-      const data = await resp.json() as { cards: ReceiverCard[] }
-      receiverCards = data.cards ?? []
+      receiverCards = await tradingService.getPlayerTradeableCards(receiverId)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Failed to load cards'
     } finally {
@@ -104,17 +100,12 @@
     sending = true
     errorMessage = ''
     try {
-      const resp = await fetch('/api/trading/offers/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          receiverId,
-          offeredCardInstanceId: selectedMyCard.instanceId,
-          requestedCardInstanceId: selectedReceiverCard.instanceId,
-          additionalDust: dustSweetener,
-        }),
+      await tradingService.createOffer({
+        receiverId,
+        offeredCardInstanceId: selectedMyCard.instanceId,
+        requestedCardInstanceId: selectedReceiverCard.instanceId,
+        additionalDust: dustSweetener,
       })
-      if (!resp.ok) throw new Error('Failed to send offer')
       sentSuccess = true
       showConfirm = false
       incrementDailyTradeCount()

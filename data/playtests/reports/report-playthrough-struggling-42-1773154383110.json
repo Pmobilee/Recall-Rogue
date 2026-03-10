@@ -1,0 +1,126 @@
+{
+  "playthroughId": "playthrough-struggling-42-1773154383110",
+  "profileId": "struggling",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 1,
+    "accuracy": 0.2875,
+    "maxCombo": 3
+  },
+  "analyzedAt": "2026-03-10T14:58:33.655Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-42-1773154383110-001",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 12 dmg (86% of 14 HP) on floor 1",
+      "description": "On floor 1, encounter 1, turn 15 (seq 111), the enemy dealt 12 damage which is 86% of the player's 14 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          111
+        ],
+        "floor": 1,
+        "encounter": 1,
+        "metric": "Enemy dealt 12 dmg (86% of 14 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Turn 15"
+      ]
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773154383110-002",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 18 dmg (100% of 18 HP) on floor 1",
+      "description": "On floor 1, encounter 1, turn 17 (seq 119), the enemy dealt 18 damage which is 100% of the player's 18 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          119
+        ],
+        "floor": 1,
+        "encounter": 1,
+        "metric": "Enemy dealt 18 dmg (100% of 18 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Turn 17"
+      ]
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773154383110-003",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 1, encounter 1 (crystal_golem)",
+      "description": "Player was defeated on floor 1, encounter 1 against crystal_golem (common). Accuracy was 27% with 17 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 1,
+        "enemyId": "crystal_golem",
+        "enemyCategory": "common",
+        "accuracy": 0.27450980392156865,
+        "turnsToResolve": 17,
+        "metric": "Defeated on floor 1 with 27% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Enemy: crystal_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773154383110-004",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashed from 63 to 14 in floor 1 encounter 1",
+      "description": "During floor 1, encounter 1, player HP dropped from 63 (79%) to 14 (18%). Going from >70% to <20% in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 1,
+        "hpStart": 63,
+        "hpEnd": 14,
+        "turnSeqs": [
+          45,
+          107
+        ],
+        "metric": "HP 63 → 14 (79% → 18%)"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1"
+      ]
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773154383110-005",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (80 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 80,
+        "cardTypeCounts": {
+          "attack": 24,
+          "shield": 15,
+          "heal": 13,
+          "buff": 11,
+          "debuff": 7,
+          "utility": 5,
+          "regen": 5,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 80 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

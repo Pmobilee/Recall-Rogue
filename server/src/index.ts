@@ -52,6 +52,8 @@ import { adminFactsRoutes } from "./routes/adminFacts.js";
 import { feedbackRoutes } from "./routes/feedback.js";
 import { inviteRoutes } from "./routes/invite.js";
 import { errorRoutes } from "./routes/errors.js";
+import { tradingRoutes } from "./routes/trading.js";
+import { referralRoutes } from "./routes/referrals.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -325,6 +327,20 @@ export async function buildApp() {
       await guildRoutes(guildInstance);
     },
     { prefix: "/api/guilds" }
+  );
+  await fastify.register(
+    async (tradingInstance) => {
+      tradingInstance.addHook("preHandler", socialWriteRateLimit);
+      await tradingRoutes(tradingInstance);
+    },
+    { prefix: "/api/trading" }
+  );
+  await fastify.register(
+    async (referralInstance) => {
+      referralInstance.addHook("preHandler", socialWriteRateLimit);
+      await referralRoutes(referralInstance);
+    },
+    { prefix: "/api/referrals" }
   );
 
   // Prune stale co-op rooms every 30 minutes.

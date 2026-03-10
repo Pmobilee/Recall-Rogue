@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { ArtifactCard, TradeOffer } from '../../data/types'
+  import { tradingService } from '../../services/tradingService'
   import DuplicateMixingModal from './DuplicateMixingModal.svelte'
 
   interface MarketListing {
@@ -68,10 +69,7 @@
     loadingMarket = true
     errorMessage = ''
     try {
-      const resp = await fetch('/api/trading/marketplace')
-      if (!resp.ok) throw new Error('Failed to load marketplace')
-      const data = await resp.json() as { listings: MarketListing[] }
-      marketListings = data.listings ?? []
+      marketListings = await tradingService.getMarketplace()
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Unknown error'
       marketListings = []
@@ -84,10 +82,7 @@
     loadingListings = true
     errorMessage = ''
     try {
-      const resp = await fetch('/api/trading/my-listings')
-      if (!resp.ok) throw new Error('Failed to load your listings')
-      const data = await resp.json() as { listings: ArtifactCard[] }
-      myListings = data.listings ?? []
+      myListings = await tradingService.getMyListings()
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Unknown error'
       myListings = []
@@ -100,9 +95,7 @@
     loadingOffers = true
     errorMessage = ''
     try {
-      const resp = await fetch('/api/trading/offers/pending')
-      if (!resp.ok) throw new Error('Failed to load trade offers')
-      const data = await resp.json() as { incoming: IncomingOffer[]; outgoing: OutgoingOffer[] }
+      const data = await tradingService.getPendingOffers()
       incomingOffers = data.incoming ?? []
       outgoingOffers = data.outgoing ?? []
     } catch (err) {
@@ -116,12 +109,7 @@
 
   async function handleBuy(listing: MarketListing): Promise<void> {
     try {
-      const resp = await fetch('/api/trading/buy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ instanceId: listing.instanceId }),
-      })
-      if (!resp.ok) throw new Error('Purchase failed')
+      await tradingService.buy(listing.instanceId)
       marketListings = marketListings.filter(l => l.instanceId !== listing.instanceId)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Purchase failed'
@@ -130,12 +118,7 @@
 
   async function handleDelist(card: ArtifactCard): Promise<void> {
     try {
-      const resp = await fetch('/api/trading/delist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ instanceId: card.instanceId }),
-      })
-      if (!resp.ok) throw new Error('Delist failed')
+      await tradingService.delist(card.instanceId)
       myListings = myListings.filter(c => c.instanceId !== card.instanceId)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Delist failed'
@@ -144,12 +127,7 @@
 
   async function handleAcceptOffer(offer: IncomingOffer): Promise<void> {
     try {
-      const resp = await fetch('/api/trading/offers/accept', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ offerId: offer.id }),
-      })
-      if (!resp.ok) throw new Error('Accept failed')
+      await tradingService.acceptOffer(offer.id)
       incomingOffers = incomingOffers.filter(o => o.id !== offer.id)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Accept failed'
@@ -158,12 +136,7 @@
 
   async function handleDeclineOffer(offer: IncomingOffer): Promise<void> {
     try {
-      const resp = await fetch('/api/trading/offers/decline', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ offerId: offer.id }),
-      })
-      if (!resp.ok) throw new Error('Decline failed')
+      await tradingService.declineOffer(offer.id)
       incomingOffers = incomingOffers.filter(o => o.id !== offer.id)
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Decline failed'

@@ -1,648 +1,2399 @@
 {
-  "updatedAt": "2026-03-10T13:04:02.474Z",
-  "totalPlaythroughs": 25,
-  "totalIssues": 17,
+  "updatedAt": "2026-03-10T15:03:41.893Z",
+  "totalPlaythroughs": 37,
+  "totalIssues": 18,
   "issues": [
     {
-      "canonicalId": "balance_combo_unreachable_global",
-      "category": "balance_combo_unreachable",
-      "severity": "critical",
-      "title": "Systemic combo cap at 3 — expert/speed-runner profile cannot reach higher combos",
-      "description": "Max combo across entire run is exactly 3 (439 cards played, 91.34396355353076% accuracy). All 27 encounters also capped at maxCombo <= 3. This is a systemic bug — the combo system appears hard-capped at 3, preventing expert players from achieving the designed 1.5x/2.0x multipliers at combo 4/5. This severely limits damage output and is likely the root cause of expert defeats.",
-      "frequency": 13,
+      "canonicalId": "mechanic_unused_global",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "The \"wild\" card type was never used during this playthrough. This may indicate the card type is unavailable, underpowered, or the player's deck/archetype doesn't include it.",
+      "frequency": 37,
       "affectedProfiles": [
+        "aggressive-average",
         "average",
+        "beginner",
+        "control-expert",
+        "defensive-average",
         "expert",
-        "speed-runner"
+        "impatient",
+        "scholar-expert",
+        "speed-runner",
+        "story-beginner",
+        "struggling",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.320Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "affectedSettings": {
+        "difficultyModes": [
+          "scholar",
+          "standard",
+          "story"
+        ],
+        "archetypes": [
+          "aggressive",
+          "balanced",
+          "control",
+          "defensive",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "aggressive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "aggressive-average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 4
+        },
+        {
+          "profileId": "average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 7
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 6
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "impatient",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "impatient",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 100,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 200,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 100,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 300,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 600,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 6
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.484Z",
+      "lastSeen": "2026-03-10T15:02:38.632Z",
       "rank": 1,
-      "score": 195,
+      "score": 55.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-average-100-1773147436903",
-        "playthrough-average-201-1773147448175",
-        "playthrough-average-303-1773147468738",
-        "playthrough-average-400-1773147471156",
-        "playthrough-average-500-1773147472444",
-        "playthrough-average-600-1773147473528",
-        "playthrough-average-704-1773147481564",
-        "playthrough-expert-100-1773147438103",
-        "playthrough-expert-200-1773147447024",
-        "playthrough-expert-401-1773147474938",
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-aggressive-average-100-1773154438583",
+        "playthrough-aggressive-average-500-1773154443046",
+        "playthrough-average-100-1773154379189",
+        "playthrough-average-200-1773154383459",
+        "playthrough-average-300-1773154387918",
+        "playthrough-average-42-1773154374727",
+        "playthrough-average-500-1773154392824",
+        "playthrough-beginner-100-1773154373370",
+        "playthrough-beginner-200-1773154379504",
+        "playthrough-beginner-300-1773154384068",
+        "playthrough-beginner-42-1773154368400",
+        "playthrough-beginner-500-1773154388196",
+        "playthrough-control-expert-100-1773154427048",
+        "playthrough-control-expert-700-1773154434457",
+        "playthrough-defensive-average-100-1773154418190",
+        "playthrough-defensive-average-400-1773154422843",
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-200-1773154389174",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-expert-700-1773154398768",
+        "playthrough-impatient-300-1773154424738",
+        "playthrough-impatient-42-1773154419927",
+        "playthrough-scholar-expert-100-1773154409402",
+        "playthrough-scholar-expert-200-1773154413842",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-story-beginner-100-1773154391114",
+        "playthrough-story-beginner-300-1773154396380",
+        "playthrough-struggling-100-1773154387099",
+        "playthrough-struggling-200-1773154391928",
+        "playthrough-struggling-400-1773154396381",
+        "playthrough-struggling-42-1773154383110",
+        "playthrough-struggling-600-1773154401488",
+        "playthrough-veteran-expert-100-1773154447376",
+        "playthrough-veteran-expert-700-1773154451440"
       ],
       "bestEvidence": {
-        "maxCombo": 3,
-        "totalCardsPlayed": 439,
-        "overallAccuracy": 0.9134396355353075,
-        "allEncountersCapped": true,
-        "metric": "maxCombo = 3 with 91.3% accuracy over 439 cards — combo system broken"
+        "turnSeqs": [],
+        "floor": 0,
+        "metric": "0 plays of type \"wild\""
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 100",
-        "Achieve 4+ consecutive correct answers in a single turn"
+        "Start a run with seed 200",
+        "Check deck composition for \"wild\" cards",
+        "Observe absence of \"wild\" card plays"
       ]
     },
     {
       "canonicalId": "balance_damage_spike_early",
       "category": "balance_damage_spike",
-      "severity": "high",
-      "title": "Damage spike: enemy dealt 38 dmg (173% of 22 HP) on floor 3",
-      "description": "At turn seq 214 (floor 3, encounter 2, turn 15), the enemy dealt 38 damage when the player had 22 HP. This is 173% of the player's current HP, exceeding the 50% spike threshold.",
-      "frequency": 19,
+      "severity": "HIGH",
+      "title": "Lethal damage spike on floor 2 enc 1 turn 15",
+      "description": "Enemy dealt 31 damage when player had 17 HP (182.4% of current HP). This exceeds the 50% threshold.",
+      "frequency": 27,
       "affectedProfiles": [
+        "aggressive-average",
         "average",
         "beginner",
-        "expert",
+        "control-expert",
+        "defensive-average",
         "impatient",
+        "scholar-expert",
         "speed-runner",
-        "struggling"
+        "story-beginner",
+        "struggling",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.320Z",
-      "lastSeen": "2026-03-10T13:02:35.622Z",
+      "affectedSettings": {
+        "difficultyModes": [
+          "scholar",
+          "standard",
+          "story"
+        ],
+        "archetypes": [
+          "aggressive",
+          "balanced",
+          "control",
+          "defensive",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "aggressive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "aggressive-average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "average",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 4
+        },
+        {
+          "profileId": "average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "impatient",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 100,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 200,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 100,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 300,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 600,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.484Z",
+      "lastSeen": "2026-03-10T15:02:38.632Z",
       "rank": 2,
-      "score": 142.5,
+      "score": 40.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-average-100-1773147436903",
-        "playthrough-average-201-1773147448175",
-        "playthrough-average-303-1773147468738",
-        "playthrough-average-400-1773147471156",
-        "playthrough-average-500-1773147472444",
-        "playthrough-average-704-1773147481564",
-        "playthrough-beginner-100-1773147435674",
-        "playthrough-beginner-203-1773147450665",
-        "playthrough-beginner-300-1773147464896",
-        "playthrough-beginner-304-1773147469779",
-        "playthrough-expert-200-1773147447024",
-        "playthrough-impatient-100-1773147440212",
-        "playthrough-impatient-302-1773147467768",
-        "playthrough-impatient-702-1773147479282",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-struggling-100-1773147439084",
-        "playthrough-struggling-204-1773147452102",
-        "playthrough-struggling-301-1773147466293",
-        "playthrough-struggling-501-1773147476040"
+        "playthrough-aggressive-average-100-1773154438583",
+        "playthrough-aggressive-average-500-1773154443046",
+        "playthrough-average-200-1773154383459",
+        "playthrough-average-300-1773154387918",
+        "playthrough-average-42-1773154374727",
+        "playthrough-average-500-1773154392824",
+        "playthrough-beginner-100-1773154373370",
+        "playthrough-beginner-200-1773154379504",
+        "playthrough-beginner-300-1773154384068",
+        "playthrough-beginner-42-1773154368400",
+        "playthrough-beginner-500-1773154388196",
+        "playthrough-control-expert-700-1773154434457",
+        "playthrough-defensive-average-100-1773154418190",
+        "playthrough-defensive-average-400-1773154422843",
+        "playthrough-impatient-300-1773154424738",
+        "playthrough-impatient-42-1773154419927",
+        "playthrough-scholar-expert-100-1773154409402",
+        "playthrough-scholar-expert-200-1773154413842",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-story-beginner-100-1773154391114",
+        "playthrough-story-beginner-300-1773154396380",
+        "playthrough-struggling-100-1773154387099",
+        "playthrough-struggling-200-1773154391928",
+        "playthrough-struggling-400-1773154396381",
+        "playthrough-struggling-42-1773154383110",
+        "playthrough-struggling-600-1773154401488",
+        "playthrough-veteran-expert-100-1773154447376"
       ],
       "bestEvidence": {
         "turnSeqs": [
-          254,
-          255
+          183
         ],
-        "floor": 3,
-        "encounter": 2,
-        "metric": "Enemy dealt 30 damage (200% of player's 15 HP)"
+        "floor": 2,
+        "metric": "12 dmg vs 11 pre-turn HP (109.1%)"
       },
       "reproductionSteps": [
-        "Profile: average, Seed: 100",
-        "Reach floor 3, encounter 2, turn 11"
-      ]
-    },
-    {
-      "canonicalId": "balance_too_hard_early",
-      "category": "balance_too_hard",
-      "severity": "high",
-      "title": "Player defeated on floor 1, encounter 2 (stone_sentinel) — struggling profile",
-      "description": "The struggling player was defeated by stone_sentinel (mini_boss) on floor 1, encounter 2 after 19 turns. They dealt 42 damage but took 105. Accuracy was 35.1%. Dying on floor 1 is extremely punishing for retention.",
-      "frequency": 19,
-      "affectedProfiles": [
-        "average",
-        "beginner",
-        "expert",
-        "impatient",
-        "struggling"
-      ],
-      "firstSeen": "2026-03-10T13:01:45.320Z",
-      "lastSeen": "2026-03-10T13:02:35.622Z",
-      "rank": 3,
-      "score": 142.5,
-      "status": "open",
-      "sourceReports": [
-        "playthrough-average-100-1773147436903",
-        "playthrough-average-201-1773147448175",
-        "playthrough-average-303-1773147468738",
-        "playthrough-average-400-1773147471156",
-        "playthrough-average-500-1773147472444",
-        "playthrough-average-600-1773147473528",
-        "playthrough-average-704-1773147481564",
-        "playthrough-beginner-100-1773147435674",
-        "playthrough-beginner-203-1773147450665",
-        "playthrough-beginner-300-1773147464896",
-        "playthrough-beginner-304-1773147469779",
-        "playthrough-expert-200-1773147447024",
-        "playthrough-impatient-100-1773147440212",
-        "playthrough-impatient-302-1773147467768",
-        "playthrough-impatient-702-1773147479282",
-        "playthrough-struggling-100-1773147439084",
-        "playthrough-struggling-204-1773147452102",
-        "playthrough-struggling-301-1773147466293",
-        "playthrough-struggling-501-1773147476040"
-      ],
-      "bestEvidence": {
-        "floor": 1,
-        "encounter": 2,
-        "enemyId": "stone_sentinel",
-        "enemyCategory": "mini_boss",
-        "turnsToResolve": 19,
-        "damageDealt": 42,
-        "damageTaken": 105,
-        "accuracy": 0.3508771929824561,
-        "metric": "Defeated on floor 1 by stone_sentinel (105 damage taken)"
-      },
-      "reproductionSteps": [
-        "Profile: beginner, Seed: 100",
-        "Play through floor 1"
+        "Play to floor 1, encounter 1",
+        "Reach turn 13",
+        "Observe enemy dealing 9 damage"
       ]
     },
     {
       "canonicalId": "progression_difficulty_spike_early",
       "category": "progression_difficulty_spike",
-      "severity": "high",
-      "title": "Difficulty spike: stone_sentinel on floor 2 took 10 turns (prev floor avg: 4.0)",
-      "description": "Encounter 2 on floor 2 against stone_sentinel (mini_boss) required 10 turns to resolve, which is 2.5x the previous floor's average of 4.0 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 121 damage and took 11.",
-      "frequency": 9,
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 2 enc 0 took 12 turns (prev avg: 5.7)",
+      "description": "Encounter against crystal_guardian took 4 turns to resolve, more than 2x the previous floor's average of 1.7 turns. This indicates a sudden difficulty increase.",
+      "frequency": 26,
       "affectedProfiles": [
         "average",
+        "beginner",
+        "control-expert",
+        "defensive-average",
         "expert",
         "impatient",
-        "speed-runner"
+        "scholar-expert",
+        "speed-runner",
+        "story-beginner",
+        "struggling",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.320Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 4,
-      "score": 67.5,
+      "affectedSettings": {
+        "difficultyModes": [
+          "scholar",
+          "standard",
+          "story"
+        ],
+        "archetypes": [
+          "aggressive",
+          "balanced",
+          "control",
+          "defensive",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 4
+        },
+        {
+          "profileId": "average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 7
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 6
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "impatient",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "impatient",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 100,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 200,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 100,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "struggling",
+          "seed": 600,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 6
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.487Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 3,
+      "score": 39,
       "status": "open",
       "sourceReports": [
-        "playthrough-average-100-1773147436903",
-        "playthrough-average-201-1773147448175",
-        "playthrough-average-303-1773147468738",
-        "playthrough-expert-100-1773147438103",
-        "playthrough-expert-200-1773147447024",
-        "playthrough-expert-401-1773147474938",
-        "playthrough-impatient-702-1773147479282",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-average-100-1773154379189",
+        "playthrough-average-200-1773154383459",
+        "playthrough-average-300-1773154387918",
+        "playthrough-average-42-1773154374727",
+        "playthrough-average-500-1773154392824",
+        "playthrough-beginner-300-1773154384068",
+        "playthrough-beginner-42-1773154368400",
+        "playthrough-control-expert-100-1773154427048",
+        "playthrough-control-expert-700-1773154434457",
+        "playthrough-defensive-average-400-1773154422843",
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-200-1773154389174",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-expert-700-1773154398768",
+        "playthrough-impatient-300-1773154424738",
+        "playthrough-impatient-42-1773154419927",
+        "playthrough-scholar-expert-100-1773154409402",
+        "playthrough-scholar-expert-200-1773154413842",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-story-beginner-100-1773154391114",
+        "playthrough-struggling-600-1773154401488",
+        "playthrough-veteran-expert-100-1773154447376",
+        "playthrough-veteran-expert-700-1773154451440"
       ],
       "bestEvidence": {
-        "floor": 3,
-        "encounter": 2,
-        "turnsToResolve": 20,
-        "previousFloorAvg": 6,
-        "ratio": 3.3,
-        "enemyId": "the_archivist",
-        "metric": "20 turns vs 6.0 avg (3.3x)"
+        "turnSeqs": [],
+        "floor": 2,
+        "metric": "12 turns vs 5.7 prev avg (2.1x)"
       },
       "reproductionSteps": [
-        "Profile: average, Seed: 100",
-        "Reach floor 3, encounter 2"
+        "Start a run with seed 300",
+        "Progress to floor 2",
+        "Face shadow_mimic",
+        "Observe encounter takes 12 turns"
       ]
     },
     {
-      "canonicalId": "balance_too_hard_global",
+      "canonicalId": "balance_too_hard_early",
       "category": "balance_too_hard",
-      "severity": "high",
-      "title": "speed-runner defeated on floor 9 with 90.3% accuracy — mid-game scaling too harsh",
-      "description": "The speed-runner player achieved 89.9% accuracy over 36 encounters and reached floor 12, but still lost. With near-90% accuracy and optimal play, the player should be able to complete a 12-floor run. The inability to win despite high skill suggests damage scaling outpaces available healing/shielding, or the combo cap bug (maxCombo=3) prevents necessary damage output.",
-      "frequency": 5,
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 2",
+      "description": "Player was defeated on floor 3 (early game). Defeated by crystal_golem (common) with accuracy 55.6%.",
+      "frequency": 25,
       "affectedProfiles": [
-        "expert",
-        "speed-runner"
+        "aggressive-average",
+        "average",
+        "beginner",
+        "control-expert",
+        "defensive-average",
+        "impatient",
+        "scholar-expert",
+        "story-beginner",
+        "struggling"
       ],
-      "firstSeen": "2026-03-10T13:02:35.605Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 5,
-      "score": 31.25,
+      "affectedSettings": {
+        "difficultyModes": [
+          "scholar",
+          "standard",
+          "story"
+        ],
+        "archetypes": [
+          "aggressive",
+          "balanced",
+          "control",
+          "defensive"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "aggressive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "aggressive-average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "average",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "control-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "defensive-average",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "defensive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "impatient",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 100,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "scholar-expert",
+          "seed": 200,
+          "difficultyMode": "scholar",
+          "archetype": "aggressive",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 100,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 300,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 400,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 600,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.484Z",
+      "lastSeen": "2026-03-10T15:02:38.632Z",
+      "rank": 4,
+      "score": 37.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-200-1773147447024",
-        "playthrough-expert-401-1773147474938",
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-aggressive-average-100-1773154438583",
+        "playthrough-aggressive-average-500-1773154443046",
+        "playthrough-average-100-1773154379189",
+        "playthrough-average-200-1773154383459",
+        "playthrough-average-300-1773154387918",
+        "playthrough-average-500-1773154392824",
+        "playthrough-beginner-100-1773154373370",
+        "playthrough-beginner-200-1773154379504",
+        "playthrough-beginner-300-1773154384068",
+        "playthrough-beginner-42-1773154368400",
+        "playthrough-beginner-500-1773154388196",
+        "playthrough-control-expert-700-1773154434457",
+        "playthrough-defensive-average-100-1773154418190",
+        "playthrough-defensive-average-400-1773154422843",
+        "playthrough-impatient-300-1773154424738",
+        "playthrough-impatient-42-1773154419927",
+        "playthrough-scholar-expert-100-1773154409402",
+        "playthrough-scholar-expert-200-1773154413842",
+        "playthrough-story-beginner-100-1773154391114",
+        "playthrough-story-beginner-300-1773154396380",
+        "playthrough-struggling-100-1773154387099",
+        "playthrough-struggling-200-1773154391928",
+        "playthrough-struggling-400-1773154396381",
+        "playthrough-struggling-42-1773154383110",
+        "playthrough-struggling-600-1773154401488"
       ],
       "bestEvidence": {
-        "result": "defeat",
-        "finalFloor": 3,
-        "accuracy": 0.8940397350993378,
-        "totalEncounters": 9,
-        "maxCombo": 3,
-        "metric": "Expert defeat on floor 3 at 89.4% accuracy"
+        "turnSeqs": [],
+        "floor": 2,
+        "metric": "defeat at floor 2 enc 0"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 200",
-        "Play to floor 3"
+        "Start a run with seed 200",
+        "Play to floor 2",
+        "Face shadow_mimic",
+        "Observe defeat"
       ]
     },
     {
       "canonicalId": "progression_difficulty_spike_mid_early",
       "category": "progression_difficulty_spike",
-      "severity": "high",
-      "title": "Difficulty spike: bone_collector on floor 5 took 9 turns (prev floor avg: 3.3)",
-      "description": "Encounter 2 on floor 5 against bone_collector (mini_boss) required 9 turns to resolve, which is 2.7x the previous floor's average of 3.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 81 damage and took 16.",
-      "frequency": 4,
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 5 enc 1 took 7 turns (prev avg: 2.0)",
+      "description": "Encounter against crystal_warden took 10 turns to resolve, more than 2x the previous floor's average of 2.0 turns. This indicates a sudden difficulty increase.",
+      "frequency": 10,
       "affectedProfiles": [
+        "control-expert",
         "expert",
-        "speed-runner"
+        "speed-runner",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:02:35.608Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 6,
-      "score": 25,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced",
+          "control",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "control-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 7
+        },
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 6
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 6
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.660Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 5,
+      "score": 15,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-401-1773147474938",
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-control-expert-100-1773154427048",
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-200-1773154389174",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-veteran-expert-100-1773154447376",
+        "playthrough-veteran-expert-700-1773154451440"
       ],
       "bestEvidence": {
-        "floor": 6,
-        "encounter": 2,
-        "enemyId": "void_weaver",
-        "turnsToResolve": 24,
-        "previousFloorAvg": 3.3,
-        "ratio": 7.2,
-        "metric": "24 turns vs 3.3 avg (7.2x)"
+        "turnSeqs": [],
+        "floor": 5,
+        "metric": "7 turns vs 2.0 prev avg (3.5x)"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 401",
-        "Reach floor 5, encounter 2 (bone_collector)"
+        "Start a run with seed 100",
+        "Progress to floor 5",
+        "Face crystal_golem",
+        "Observe encounter takes 7 turns"
       ]
     },
     {
-      "canonicalId": "balance_damage_spike_mid",
-      "category": "balance_damage_spike",
-      "severity": "high",
-      "title": "Damage spike: enemy dealt 13 dmg (87% of 15 HP) on floor 7",
-      "description": "At turn seq 387 (floor 7, encounter 1, turn 3), the enemy dealt 13 damage when the player had 15 HP. This is 87% of the player's current HP, exceeding the 50% spike threshold.",
-      "frequency": 3,
+      "canonicalId": "balance_too_easy_early",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters starting floor 1",
+      "description": "Player maintained >90% HP (>72/80) across 5 consecutive encounters (floors 1-2). HP values: 80, 80, 80, 80, 78.",
+      "frequency": 7,
       "affectedProfiles": [
         "expert",
-        "speed-runner"
+        "speed-runner",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.333Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 7,
-      "score": 18.75,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 6
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.660Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 6,
+      "score": 10.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-100-1773147438103",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-expert-700-1773154398768",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-veteran-expert-100-1773154447376",
+        "playthrough-veteran-expert-700-1773154451440"
       ],
       "bestEvidence": {
-        "turnSeqs": [
-          627,
-          628
-        ],
-        "floor": 9,
-        "encounter": 2,
-        "metric": "Enemy dealt 24 damage (100% of player's 24 HP)"
+        "turnSeqs": [],
+        "floor": 1,
+        "metric": "3 consecutive encounters above 72 HP"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 100",
-        "Reach floor 9, encounter 2, turn 4"
+        "Start run with seed 42, profile speed-runner",
+        "Play through floors 1-1",
+        "Observe lack of meaningful HP pressure"
       ]
     },
     {
       "canonicalId": "progression_difficulty_spike_mid",
       "category": "progression_difficulty_spike",
-      "severity": "high",
-      "title": "Difficulty spike: bone_collector on floor 8 took 10 turns (prev floor avg: 4.7)",
-      "description": "Encounter 2 on floor 8 against stone_sentinel (mini_boss) required 11 turns to resolve, which is 3.3x the previous floor's average of 3.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 137 damage and took 11.",
-      "frequency": 3,
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 9 encounter 2",
+      "description": "Encounter against crystal_warden took 10 turns to resolve, more than 2x the previous floor's average of 3.3 turns. This indicates a sudden difficulty increase.",
+      "frequency": 7,
       "affectedProfiles": [
         "expert",
-        "speed-runner"
+        "speed-runner",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.333Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 8,
-      "score": 18.75,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.660Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 7,
+      "score": 10.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-100-1773147438103",
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-expert-700-1773154398768",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-500-1773154415920",
+        "playthrough-veteran-expert-100-1773154447376"
       ],
       "bestEvidence": {
+        "turnSeqs": [],
         "floor": 9,
-        "encounter": 2,
-        "turnsToResolve": 13,
-        "previousFloorAvg": 6,
-        "ratio": 2.2,
-        "enemyId": "the_curator",
-        "metric": "13 turns vs 6.0 avg (2.2x)"
+        "metric": "10 turns vs prev avg 3.3"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 100",
-        "Reach floor 9, encounter 2"
+        "Start run with seed 200, profile speed-runner",
+        "Progress to floor 9",
+        "Encounter the_excavator at encounter 2",
+        "Observe increased turn count"
       ]
     },
     {
-      "canonicalId": "balance_damage_spike_late",
-      "category": "balance_damage_spike",
-      "severity": "high",
-      "title": "Damage spike: enemy dealt 27 dmg (208% of 13 HP) on floor 12",
-      "description": "At turn seq 881 (floor 12, encounter 2, turn 19), the enemy dealt 27 damage when the player had 13 HP. This is 208% of the player's current HP, exceeding the 50% spike threshold.",
-      "frequency": 2,
+      "canonicalId": "ux_unfun_moment_early",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "Unfun HP swing in floor 1 encounter 1",
+      "description": "Player HP dropped from 73 (>56=70% of 80) to 0 (<16=20% of 80) within a single encounter. This kind of swing feels punishing and unfun.",
+      "frequency": 7,
       "affectedProfiles": [
-        "expert",
-        "speed-runner"
+        "beginner",
+        "impatient",
+        "story-beginner",
+        "struggling"
       ],
-      "firstSeen": "2026-03-10T13:02:35.612Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 9,
-      "score": 12.5,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard",
+          "story"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "beginner",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        },
+        {
+          "profileId": "impatient",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 3
+        },
+        {
+          "profileId": "story-beginner",
+          "seed": 300,
+          "difficultyMode": "story",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        },
+        {
+          "profileId": "struggling",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 1
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.493Z",
+      "lastSeen": "2026-03-10T15:02:38.632Z",
+      "rank": 8,
+      "score": 10.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-beginner-100-1773154373370",
+        "playthrough-beginner-200-1773154379504",
+        "playthrough-impatient-42-1773154419927",
+        "playthrough-story-beginner-300-1773154396380",
+        "playthrough-struggling-100-1773154387099",
+        "playthrough-struggling-200-1773154391928",
+        "playthrough-struggling-42-1773154383110"
       ],
       "bestEvidence": {
         "turnSeqs": [
-          881
+          0,
+          154
         ],
-        "floor": 12,
-        "encounter": 2,
-        "metric": "Enemy dealt 27 damage (208% of player's 13 HP)"
+        "floor": 1,
+        "metric": "HP: 80 → 3"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 700",
-        "Reach floor 12, encounter 2, turn 17"
-      ]
-    },
-    {
-      "canonicalId": "balance_damage_spike_mid_early",
-      "category": "balance_damage_spike",
-      "severity": "high",
-      "title": "Damage spike: enemy dealt 14 dmg (108% of 13 HP) on floor 6",
-      "description": "At turn seq 396 (floor 6, encounter 2, turn 10), the enemy dealt 20 damage when the player had 10 HP. This is 200% of the player's current HP, exceeding the 50% spike threshold.",
-      "frequency": 2,
-      "affectedProfiles": [
-        "expert",
-        "speed-runner"
-      ],
-      "firstSeen": "2026-03-10T13:02:35.608Z",
-      "lastSeen": "2026-03-10T13:02:35.617Z",
-      "rank": 10,
-      "score": 12.5,
-      "status": "open",
-      "sourceReports": [
-        "playthrough-expert-401-1773147474938",
-        "playthrough-speed-runner-202-1773147449441"
-      ],
-      "bestEvidence": {
-        "turnSeqs": [
-          384
-        ],
-        "floor": 6,
-        "encounter": 2,
-        "metric": "Enemy dealt 14 damage (108% of player's 13 HP)"
-      },
-      "reproductionSteps": [
-        "Profile: expert, Seed: 401",
-        "Reach floor 6, encounter 2, turn 4"
+        "Start a run with seed 200",
+        "Progress to floor 1, encounter 0",
+        "Observe HP dropping from 80 to 3"
       ]
     },
     {
       "canonicalId": "progression_dead_end_early",
       "category": "progression_dead_end",
       "severity": "critical",
-      "title": "Dead end: Zero damage dealt in F3E2 against the_curator",
-      "description": "Player dealt 0 damage in floor 3 encounter 2 against the_curator (boss). This means the player could not progress. Cards played: 6, correct: 3, wrong: 3.",
+      "title": "Zero damage dealt in floor 2 encounter 2 (ember_drake)",
+      "description": "The player dealt 0 damage during floor 2, encounter 2 against ember_drake. The player had no way to damage the enemy, resulting in a dead end. Player was defeated.",
       "frequency": 1,
       "affectedProfiles": [
-        "average"
+        "beginner"
       ],
-      "firstSeen": "2026-03-10T13:01:45.327Z",
-      "lastSeen": "2026-03-10T13:01:45.327Z",
-      "rank": 11,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "beginner",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 2
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.493Z",
+      "lastSeen": "2026-03-10T14:57:04.493Z",
+      "rank": 9,
       "score": 10,
       "status": "open",
       "sourceReports": [
-        "playthrough-average-704-1773147481564"
+        "playthrough-beginner-100-1773154373370"
       ],
       "bestEvidence": {
-        "floor": 3,
+        "turnSeqs": [],
+        "floor": 2,
         "encounter": 2,
-        "enemyId": "the_curator",
-        "cardsPlayed": 6,
-        "metric": "0 damage dealt with 6 cards played"
+        "metric": "0 damage dealt, 3 cards played, 1 turns"
       },
       "reproductionSteps": [
-        "Profile: average, Seed: 704",
-        "Reach floor 3, encounter 2"
+        "Profile: beginner, Seed: 100",
+        "Floor 2, Encounter 2, enemy: ember_drake"
       ]
     },
     {
-      "canonicalId": "ux_unfun_moment_early",
-      "category": "ux_unfun_moment",
-      "severity": "low",
-      "title": "Unfun moment: HP dropped from 59 to 0 in single encounter (floor 1, stone_sentinel)",
-      "description": "During encounter 2 on floor 1 against stone_sentinel (mini_boss), the player's HP plummeted from 59 (74%) to 0 (0%). This 59 HP loss in a single encounter feels punishing and demoralizing, especially for struggling players.",
+      "canonicalId": "balance_damage_spike_mid",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Lethal damage spike on floor 7 enc 2 turn 3",
+      "description": "Enemy dealt 12 damage when player had 12 HP (100.0% of current HP). This exceeds the 50% threshold.",
       "frequency": 6,
       "affectedProfiles": [
-        "beginner",
-        "struggling"
+        "control-expert",
+        "expert",
+        "speed-runner",
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.329Z",
-      "lastSeen": "2026-03-10T13:02:35.622Z",
-      "rank": 12,
-      "score": 7.5,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced",
+          "control",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "control-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 7
+        },
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.660Z",
+      "lastSeen": "2026-03-10T15:02:38.628Z",
+      "rank": 10,
+      "score": 9,
       "status": "open",
       "sourceReports": [
-        "playthrough-beginner-300-1773147464896",
-        "playthrough-beginner-304-1773147469779",
-        "playthrough-struggling-100-1773147439084",
-        "playthrough-struggling-204-1773147452102",
-        "playthrough-struggling-301-1773147466293",
-        "playthrough-struggling-501-1773147476040"
+        "playthrough-control-expert-100-1773154427048",
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-veteran-expert-100-1773154447376"
       ],
       "bestEvidence": {
-        "floor": 1,
-        "encounter": 1,
-        "enemyId": "crystal_golem",
-        "startHP": 64,
-        "endHP": 0,
-        "damageTaken": 108,
-        "metric": "HP: 64 → 0 (lost 64)"
+        "turnSeqs": [
+          360
+        ],
+        "floor": 7,
+        "metric": "9 dmg vs 3 pre-turn HP (300.0%)"
       },
       "reproductionSteps": [
-        "Profile: beginner, Seed: 300",
-        "Reach floor 1, encounter 2"
+        "Play to floor 7, encounter 1",
+        "Reach turn 1",
+        "Observe enemy dealing 7 damage"
       ]
     },
     {
-      "canonicalId": "balance_too_easy_early",
-      "category": "balance_too_easy",
-      "severity": "low",
-      "title": "3+ consecutive encounters with >90% HP remaining (floors 1-1)",
-      "description": "Encounters 0 through 4 (5 in a row) ended with the player above 90% HP (>72). This suggests these encounters provide no meaningful challenge. Encounters: f1e0(HP=80), f1e1(HP=80), f1e2(HP=80), f2e0(HP=80), f2e1(HP=73).",
+      "canonicalId": "balance_damage_spike_late",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 10 encounter 2",
+      "description": "Enemy dealt 15 damage when player had 15 HP (100.0% of current HP). This exceeds the 50% threshold.",
       "frequency": 5,
       "affectedProfiles": [
         "expert",
         "speed-runner"
       ],
-      "firstSeen": "2026-03-10T13:01:45.333Z",
-      "lastSeen": "2026-03-10T13:02:35.620Z",
-      "rank": 13,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 300,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        },
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        }
+      ],
+      "firstSeen": "2026-03-10T15:02:32.751Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 11,
       "score": 6.25,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-100-1773147438103",
-        "playthrough-expert-401-1773147474938",
-        "playthrough-expert-700-1773147477343",
-        "playthrough-speed-runner-202-1773147449441",
-        "playthrough-speed-runner-701-1773147478324"
+        "playthrough-expert-100-1773154378754",
+        "playthrough-expert-300-1773154393221",
+        "playthrough-expert-42-1773154374086",
+        "playthrough-speed-runner-200-1773154410370",
+        "playthrough-speed-runner-500-1773154415920"
       ],
       "bestEvidence": {
-        "floors": [
-          1,
-          1,
-          1
+        "turnSeqs": [
+          433
         ],
-        "encounters": [
-          0,
-          1,
-          2
-        ],
-        "hpRemaining": [
-          80,
-          80,
-          80
-        ],
-        "metric": "All 3 encounters ended with HP > 72: 80, 80, 80"
+        "floor": 10,
+        "metric": "15/15 = 100.0%"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 100",
-        "Play through floors 1-1"
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 10, encounter 2",
+        "Observe enemy turn 1 damage"
       ]
     },
     {
-      "canonicalId": "balance_too_hard_mid",
-      "category": "balance_too_hard",
+      "canonicalId": "progression_difficulty_spike_endgame",
+      "category": "progression_difficulty_spike",
       "severity": "high",
-      "title": "Expert/speed-runner defeated on floor 9 despite 91% accuracy",
-      "description": "expert profile with 91.3% accuracy was defeated on floor 9 after 27 encounters. With this level of skill, the player should be able to progress further. The combination of combo cap at 3 and enemy scaling likely makes late-game progression impossible even for skilled players.",
+      "title": "Floor 15 enc 2: 19 turns vs prev floor avg 7.0",
+      "description": "Encounter 2 on floor 15 took 19 turns to resolve, which is more than 2x the previous floor's average of 7.0 turns. This indicates a difficulty spike.",
       "frequency": 1,
       "affectedProfiles": [
         "expert"
       ],
-      "firstSeen": "2026-03-10T13:01:45.333Z",
-      "lastSeen": "2026-03-10T13:01:45.333Z",
-      "rank": 14,
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        }
+      ],
+      "firstSeen": "2026-03-10T15:02:32.764Z",
+      "lastSeen": "2026-03-10T15:02:32.764Z",
+      "rank": 12,
       "score": 5,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-100-1773147438103"
+        "playthrough-expert-700-1773154398768"
       ],
       "bestEvidence": {
-        "floor": 9,
-        "accuracy": 0.9134396355353075,
-        "totalEncounters": 27,
-        "maxCombo": 3,
-        "metric": "Defeat on floor 9 with 91.3% accuracy and maxCombo 3"
+        "turnSeqs": [],
+        "floor": 15,
+        "encounter": 2,
+        "metric": "19 turns vs prev floor avg 7.0 (2.7x)"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 100",
-        "Play through to floor 9"
+        "Profile: expert, Seed: 700",
+        "Floor 15, Encounter 2, enemy: void_weaver"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_mid_early",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 6 enc 2 turn 6",
+      "description": "Enemy dealt 12 damage (>5 = 50% of 10 HP) in a single enemy turn.",
+      "frequency": 3,
+      "affectedProfiles": [
+        "control-expert",
+        "expert",
+        "veteran-expert"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced",
+          "control",
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "control-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "control",
+          "result": "defeat",
+          "floor": 7
+        },
+        {
+          "profileId": "expert",
+          "seed": 200,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 6
+        },
+        {
+          "profileId": "veteran-expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 6
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.661Z",
+      "lastSeen": "2026-03-10T15:02:32.755Z",
+      "rank": 13,
+      "score": 4.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-control-expert-100-1773154427048",
+        "playthrough-expert-200-1773154389174",
+        "playthrough-veteran-expert-700-1773154451440"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          298
+        ],
+        "floor": 6,
+        "metric": "12 dmg vs 10 HP (120.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 6, encounter 2",
+        "Reach turn 6",
+        "Observe enemy dealing 12 damage"
+      ]
+    },
+    {
+      "canonicalId": "balance_healing_insufficient_mid_early",
+      "category": "balance_healing_insufficient",
+      "severity": "MEDIUM",
+      "title": "Insufficient healing after floor 3",
+      "description": "Player's maximum HP after floor 3 was 47, never reaching the 60% threshold of 48. This suggests healing mechanics are insufficient for sustain in mid-to-late game.",
+      "frequency": 3,
+      "affectedProfiles": [
+        "average",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 4
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 9
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        }
+      ],
+      "firstSeen": "2026-03-10T14:57:04.491Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
+      "rank": 14,
+      "score": 3.75,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-42-1773154374727",
+        "playthrough-speed-runner-42-1773154406069",
+        "playthrough-speed-runner-500-1773154415920"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [],
+        "floor": 4,
+        "metric": "max HP after floor 3: 47/48 threshold"
+      },
+      "reproductionSteps": [
+        "Start run with seed 42, profile speed-runner",
+        "Progress past floor 3",
+        "Monitor HP recovery throughout remaining floors"
       ]
     },
     {
       "canonicalId": "progression_difficulty_spike_late",
       "category": "progression_difficulty_spike",
-      "severity": "high",
-      "title": "Difficulty spike: the_archivist on floor 12 took 19 turns (prev floor avg: 9.3)",
-      "description": "Encounter 2 on floor 12 against the_archivist (boss) required 19 turns to resolve, which is 2.0x the previous floor's average of 9.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 249 damage and took 89.",
-      "frequency": 1,
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 11 encounter 0",
+      "description": "Encounter against crystal_warden took 12 turns to resolve, more than 2x the previous floor's average of 5.3 turns. This indicates a sudden difficulty increase.",
+      "frequency": 3,
       "affectedProfiles": [
-        "expert"
+        "expert",
+        "speed-runner"
       ],
-      "firstSeen": "2026-03-10T13:02:35.612Z",
-      "lastSeen": "2026-03-10T13:02:35.612Z",
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 42,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 12
+        },
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        }
+      ],
+      "firstSeen": "2026-03-10T15:02:32.759Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
       "rank": 15,
-      "score": 5,
+      "score": 3.75,
       "status": "open",
       "sourceReports": [
-        "playthrough-expert-700-1773147477343"
+        "playthrough-expert-42-1773154374086",
+        "playthrough-expert-700-1773154398768",
+        "playthrough-speed-runner-500-1773154415920"
       ],
       "bestEvidence": {
+        "turnSeqs": [],
         "floor": 12,
-        "encounter": 2,
-        "enemyId": "the_archivist",
-        "turnsToResolve": 19,
-        "previousFloorAvg": 9.3,
-        "ratio": 2,
-        "metric": "19 turns vs 9.3 avg (2.0x)"
+        "metric": "12 turns vs prev avg 5.3"
       },
       "reproductionSteps": [
-        "Profile: expert, Seed: 700",
-        "Reach floor 12, encounter 2 (the_archivist)"
+        "Start run with seed 500, profile speed-runner",
+        "Progress to floor 11",
+        "Encounter crystal_golem at encounter 0",
+        "Observe increased turn count"
       ]
     },
     {
       "canonicalId": "balance_healing_insufficient_global",
       "category": "balance_healing_insufficient",
       "severity": "medium",
-      "title": "Player never recovered above 60% HP (48) after floor 3",
-      "description": "After floor 3, the player's HP remained at or below 48 for all remaining encounters. This indicates healing mechanics are insufficient to sustain a run beyond early floors. HP values: f4e0(HP=28), f4e1(HP=28), f4e2(HP=18), f5e0(HP=18), f5e1(HP=18), f5e2(HP=15), f6e0(HP=15), f6e1(HP=15), f6e2(HP=15), f7e0(HP=15), f7e1(HP=13), f7e2(HP=10), f8e0(HP=10), f8e1(HP=8), f8e2(HP=8), f9e0(HP=6), f9e1(HP=0).",
+      "title": "Player never exceeded 60% HP after floor 3 (max: 44)",
+      "description": "After floor 3, the player's HP never exceeded 44 (threshold: 48, which is 60% of 80 max HP). This suggests healing mechanics are insufficient to sustain the player in later floors.",
       "frequency": 1,
       "affectedProfiles": [
-        "speed-runner"
+        "veteran-expert"
       ],
-      "firstSeen": "2026-03-10T13:02:35.617Z",
-      "lastSeen": "2026-03-10T13:02:35.617Z",
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "hybrid"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "veteran-expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "hybrid",
+          "result": "defeat",
+          "floor": 9
+        }
+      ],
+      "firstSeen": "2026-03-10T14:58:33.660Z",
+      "lastSeen": "2026-03-10T14:58:33.660Z",
       "rank": 16,
       "score": 3,
       "status": "open",
       "sourceReports": [
-        "playthrough-speed-runner-202-1773147449441"
+        "playthrough-veteran-expert-100-1773154447376"
       ],
       "bestEvidence": {
-        "metric": "Max HP after floor 3: 28",
-        "floorsAfter3": 17
+        "maxHPPostFloor3": 44,
+        "threshold": 48,
+        "metric": "Max HP after floor 3: 44/80 (55%)"
       },
       "reproductionSteps": [
-        "Profile: speed-runner, Seed: 202",
-        "Observe HP after completing floor 3"
+        "Profile: veteran-expert, Seed: 100",
+        "Floors 4+: check healing card availability and heal amounts"
       ]
     },
     {
-      "canonicalId": "ux_dead_turn_early",
-      "category": "ux_dead_turn",
-      "severity": "low",
-      "title": "Dead turn: player played 0 cards on floor 3, encounter 1, turn 16",
-      "description": "On turn 16 of encounter 1 (floor 3), the player ended their turn without playing any cards. This could indicate AP exhaustion, empty hand, or a stuck state. Hand size was 5 and AP was 3.",
+      "canonicalId": "balance_damage_spike_endgame",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 13 encounter 1",
+      "description": "Enemy dealt 7 damage when player had 4 HP (175.0% of current HP). This exceeds the 50% threshold.",
       "frequency": 2,
       "affectedProfiles": [
-        "impatient"
+        "expert",
+        "speed-runner"
       ],
-      "firstSeen": "2026-03-10T13:02:35.615Z",
-      "lastSeen": "2026-03-10T13:02:35.616Z",
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 700,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 18
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 500,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 13
+        }
+      ],
+      "firstSeen": "2026-03-10T15:02:32.764Z",
+      "lastSeen": "2026-03-10T15:02:38.631Z",
       "rank": 17,
-      "score": 2,
+      "score": 2.5,
       "status": "open",
       "sourceReports": [
-        "playthrough-impatient-302-1773147467768",
-        "playthrough-impatient-702-1773147479282"
+        "playthrough-expert-700-1773154398768",
+        "playthrough-speed-runner-500-1773154415920"
       ],
       "bestEvidence": {
         "turnSeqs": [
-          325
+          602
         ],
-        "floor": 3,
-        "encounter": 1,
-        "turnNumber": 16,
-        "metric": "0 cards played before end_turn"
+        "floor": 13,
+        "metric": "7/4 = 175.0%"
       },
       "reproductionSteps": [
-        "Profile: impatient, Seed: 302",
-        "Reach floor 3, encounter 1, turn 16"
+        "Start run with seed 500, profile speed-runner",
+        "Reach floor 13, encounter 1",
+        "Observe enemy turn 1 damage"
+      ]
+    },
+    {
+      "canonicalId": "ux_unfun_moment_mid",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP dropped from 62 to 14 in floor 9 encounter 0",
+      "description": "Player HP went from 62 (>56) to 14 (<16) within a single encounter on floor 9. This dramatic HP swing can feel unfair and unfun.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "expert"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 100,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "result": "defeat",
+          "floor": 11
+        }
+      ],
+      "firstSeen": "2026-03-10T15:02:32.751Z",
+      "lastSeen": "2026-03-10T15:02:32.751Z",
+      "rank": 18,
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-100-1773154378754"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 0,
+        "metric": "HP 62 → 14"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Floor 9, Encounter 0"
       ]
     }
   ]

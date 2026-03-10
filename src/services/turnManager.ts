@@ -699,7 +699,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   playerState.shield = Math.max(0, carryShield);
   turnState.persistentShield = 0;
 
-  turnState.comboCount = turnState.baseComboCount;
+  // comboCount intentionally NOT reset here — combo persists across turns
+  // and resets only on wrong answer (line 351) or explorer fizzle (line 327)
   turnState.cardsPlayedThisTurn = 0;
   turnState.cardsCorrectThisTurn = 0;
   turnState.isPerfectTurn = false;

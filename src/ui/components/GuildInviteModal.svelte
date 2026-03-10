@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { socialService } from '../../services/socialService'
+  import { guildService } from '../../services/guildService'
+
   interface PlayerSearchResult {
     playerId: string
     displayName: string
@@ -25,10 +28,12 @@
     searchLoading = true
     errorMessage = ''
     try {
-      const resp = await fetch(`/api/players/search?q=${encodeURIComponent(q)}`)
-      if (!resp.ok) throw new Error('Search failed')
-      const data = await resp.json() as { players: PlayerSearchResult[] }
-      searchResults = data.players ?? []
+      const rows = await socialService.searchPlayers(q)
+      searchResults = rows.map((row) => ({
+        playerId: row.id,
+        displayName: row.displayName,
+        level: 1,
+      }))
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Search failed'
       searchResults = []
@@ -39,12 +44,7 @@
 
   async function sendInvite(player: PlayerSearchResult): Promise<void> {
     try {
-      const resp = await fetch('/api/guild/invite', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ guildId, inviteeId: player.playerId }),
-      })
-      if (!resp.ok) throw new Error('Failed to send invite')
+      await guildService.invitePlayer(guildId, player.playerId)
       sentInvites = new Set([...sentInvites, player.playerId])
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : 'Failed to send invite'

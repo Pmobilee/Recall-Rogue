@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const REPORTS_DIR = path.join(__dirname, 'reports');
+const LOGS_DIR = path.join(__dirname, 'logs');
 const OUTPUT_PATH = path.join(__dirname, 'leaderboard.json');
 
 // ── Floor bucket helpers ──────────────────────────────────────────
@@ -123,8 +124,40 @@ function pickReproductionSteps(issues) {
   return sorted[0].reproductionSteps || [];
 }
 
+// ── Log settings loader ──────────────────────────────────────────
+const DEFAULT_SETTINGS = { difficultyMode: 'standard', archetype: 'balanced', domain: 'general_knowledge' };
+
+/**
+ * Build a map of playthroughId -> { settings, summary } from log files.
+ * Falls back to defaults when log is missing or has no settings field.
+ */
+function loadLogMetadata() {
+  const meta = new Map();
+  if (!fs.existsSync(LOGS_DIR)) return meta;
+
+  const files = fs.readdirSync(LOGS_DIR).filter(f => f.endsWith('.json'));
+  for (const file of files) {
+    try {
+      const log = JSON.parse(fs.readFileSync(path.join(LOGS_DIR, file), 'utf8'));
+      if (log.id) {
+        meta.set(log.id, {
+          settings: log.settings || DEFAULT_SETTINGS,
+          summary: log.summary || {},
+          profileId: log.profileId,
+          rngSeed: log.rngSeed,
+        });
+      }
+    } catch { /* skip unparseable logs */ }
+  }
+  return meta;
+}
+
 // ── Main ──────────────────────────────────────────────────────────
 function main() {
+  // 0. Load log metadata (settings, summaries) keyed by playthroughId
+  const logMeta = loadLogMetadata();
+  console.log(`Loaded metadata for ${logMeta.size} log files`);
+
   // 1. Read all report files
   const files = fs.readdirSync(REPORTS_DIR)
     .filter(f => f.endsWith('.json'))
@@ -201,6 +234,31 @@ function main() {
     const firstSeen = timestamps[0] || null;
     const lastSeen = timestamps[timestamps.length - 1] || null;
 
+    // Aggregate settings from source logs
+    const settingsModes = new Set();
+    const settingsArchetypes = new Set();
+    const settingsDomains = new Set();
+    const runBreakdown = [];
+
+    for (const playthroughId of group.reportIds) {
+      const meta = logMeta.get(playthroughId);
+      const settings = meta ? meta.settings : DEFAULT_SETTINGS;
+      const summary = meta ? meta.summary : {};
+
+      settingsModes.add(settings.difficultyMode || 'standard');
+      settingsArchetypes.add(settings.archetype || 'balanced');
+      settingsDomains.add(settings.domain || 'general_knowledge');
+
+      runBreakdown.push({
+        profileId: meta ? meta.profileId : null,
+        seed: meta ? meta.rngSeed : null,
+        difficultyMode: settings.difficultyMode || 'standard',
+        archetype: settings.archetype || 'balanced',
+        result: summary.result || null,
+        floor: summary.finalFloor || null,
+      });
+    }
+
     leaderboardIssues.push({
       canonicalId,
       category: group.category,
@@ -209,6 +267,12 @@ function main() {
       description: pickBestDescription(group.issues),
       frequency,
       affectedProfiles: profiles,
+      affectedSettings: {
+        difficultyModes: [...settingsModes].sort(),
+        archetypes: [...settingsArchetypes].sort(),
+        domains: [...settingsDomains].sort(),
+      },
+      runBreakdown,
       firstSeen,
       lastSeen,
       rank: 0, // assigned after sort

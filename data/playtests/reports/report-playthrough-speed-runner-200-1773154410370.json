@@ -1,0 +1,210 @@
+{
+  "playthroughId": "playthrough-speed-runner-200-1773154410370",
+  "profileId": "speed-runner",
+  "settings": {
+    "difficultyMode": "standard",
+    "archetype": "balanced",
+    "cardTierMix": "all_tier1",
+    "domain": "general_knowledge",
+    "slowReader": false
+  },
+  "runSummary": {
+    "result": "defeat",
+    "finalFloor": 12,
+    "accuracy": 0.8689458689458689,
+    "maxCombo": 13
+  },
+  "analyzedAt": "2026-03-10T15:02:38.626Z",
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-001",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 encounter 2",
+      "description": "Enemy dealt 12 damage when player had 18 HP (66.7% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [376],
+        "floor": 9,
+        "metric": "12/18 = 66.7%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 9, encounter 2",
+        "Observe enemy turn 4 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-002",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 10 encounter 2",
+      "description": "Enemy dealt 10 damage when player had 16 HP (62.5% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [425],
+        "floor": 10,
+        "metric": "10/16 = 62.5%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 10, encounter 2",
+        "Observe enemy turn 1 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-003",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 10 encounter 2",
+      "description": "Enemy dealt 10 damage when player had 6 HP (166.7% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [429],
+        "floor": 10,
+        "metric": "10/6 = 166.7%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 10, encounter 2",
+        "Observe enemy turn 2 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-004",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 10 encounter 2",
+      "description": "Enemy dealt 15 damage when player had 15 HP (100.0% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [433],
+        "floor": 10,
+        "metric": "15/15 = 100.0%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 10, encounter 2",
+        "Observe enemy turn 3 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-005",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 encounter 0",
+      "description": "Enemy dealt 5 damage when player had 9 HP (55.6% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [484],
+        "floor": 12,
+        "metric": "5/9 = 55.6%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 12, encounter 0",
+        "Observe enemy turn 1 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-006",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 encounter 2",
+      "description": "Enemy dealt 12 damage when player had 8 HP (150.0% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [507],
+        "floor": 12,
+        "metric": "12/8 = 150.0%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 12, encounter 2",
+        "Observe enemy turn 1 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-007",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 encounter 2",
+      "description": "Enemy dealt 12 damage when player had 9 HP (133.3% of current HP). This exceeds the 50% threshold.",
+      "evidence": {
+        "turnSeqs": [515],
+        "floor": 12,
+        "metric": "12/9 = 133.3%"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Reach floor 12, encounter 2",
+        "Observe enemy turn 3 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-008",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 3 encounter 2",
+      "description": "Encounter against void_weaver took 8 turns to resolve, more than 2x the previous floor's average of 2.7 turns. This indicates a sudden difficulty increase.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "metric": "8 turns vs prev avg 2.7"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Progress to floor 3",
+        "Encounter void_weaver at encounter 2",
+        "Observe increased turn count"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-009",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 6 encounter 2",
+      "description": "Encounter against void_weaver took 11 turns to resolve, more than 2x the previous floor's average of 3.3 turns. This indicates a sudden difficulty increase.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "metric": "11 turns vs prev avg 3.3"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Progress to floor 6",
+        "Encounter void_weaver at encounter 2",
+        "Observe increased turn count"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-010",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 9 encounter 2",
+      "description": "Encounter against the_excavator took 9 turns to resolve, more than 2x the previous floor's average of 3.3 turns. This indicates a sudden difficulty increase.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "metric": "9 turns vs prev avg 3.3"
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Progress to floor 9",
+        "Encounter the_excavator at encounter 2",
+        "Observe increased turn count"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-200-1773154410370-011",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "The \"wild\" card type was never used during this playthrough. This may indicate the card type is unavailable, underpowered, or the player's deck/archetype doesn't include it.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start run with seed 200, profile speed-runner",
+        "Monitor card type distribution during run",
+        "Check if \"wild\" cards appear in deck"
+      ]
+    }
+  ]
+}

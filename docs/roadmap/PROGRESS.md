@@ -31,6 +31,7 @@
 - Co-op networking hardening: `coopService` now uses authenticated API helpers with consistent error normalization; invite-code lookups treat only HTTP 404 as "not found" while surfacing true network failures in UI flows.
 - Guild networking hardening: extracted `guildService` for authenticated guild/me/search/join/create calls so Guild UI now gets consistent API error messages and token/base handling via shared authed fetch.
 - Duel networking hardening: Duel UI now routes challenge/pending/history/friend flows through `duelService` + `socialService` instead of ad-hoc fetch calls, improving error consistency and reducing duplicated auth logic.
+- Trade/referral hardening: server now registers `/api/trading` and `/api/referrals`; trade/referral/feedback UIs now call shared services (`tradingService`, `referralService`, `feedbackService`) with normalized auth/error handling and compatibility payload mapping.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
