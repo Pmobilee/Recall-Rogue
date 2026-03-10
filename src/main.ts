@@ -25,6 +25,7 @@ import { initI18n } from './i18n/index'
 import { initAccessibilityManager } from './services/accessibilityManager'
 import { initCardAudio } from './services/cardAudioManager'
 import { initErrorReporting } from './services/errorReporting'
+import { initCardbackManifest } from './ui/utils/cardbackManifest'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -117,6 +118,9 @@ document.getElementById('splash')?.remove()
 // Initialize global accessibility + audio settings before user interaction.
 initAccessibilityManager()
 initCardAudio()
+
+// Start loading cardback manifest in background (enables live reload in dev)
+initCardbackManifest()
 
 // Launch error capture in production (or when explicitly enabled in dev).
 if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'true') {

@@ -25,6 +25,20 @@ mkdirSync(LOWRES_DIR, { recursive: true });
 mkdirSync(STYLELAB_OUTPUT_DIR, { recursive: true });
 mkdirSync(PROMPTLAB_OUTPUT_DIR, { recursive: true });
 
+const MANIFEST_PATH = resolve(PROJECT_ROOT, 'public/assets/cardbacks/manifest.json');
+
+function writeManifest() {
+  try {
+    const lowresFiles = readdirSync(LOWRES_DIR)
+      .filter(f => f.endsWith('.webp'))
+      .map(f => f.replace('.webp', ''));
+    writeFileSync(MANIFEST_PATH, JSON.stringify({ ids: lowresFiles, updatedAt: Date.now() }));
+  } catch { /* non-critical */ }
+}
+
+// Write initial manifest on server start
+writeManifest();
+
 // --- Database Setup ---
 const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
@@ -206,6 +220,34 @@ const STYLE_PRESETS = [
     loraStrength: 0.3, numColors: 8, pixelationSize: 480, guidance: 4.5, steps: 20
   },
 ];
+
+// --- Production Style Routing ---
+// These are the finalized styles used by the batch generator.
+// Domain is detected from fact ID prefix.
+const PRODUCTION_STYLES = {
+  // Default for all non-Japanese cards (Dark Mood Baseline winner from Style Lab round 1)
+  default: {
+    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a dark moody background, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no gradients, no text, no UI elements, no border frame, no watermark, slight atmospheric glow around subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
+    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
+  },
+  // Japanese vocabulary cards — Ukiyo-e Woodblock (Style Lab #16)
+  // Extra-strong "no text" reinforcement because Flux loves inserting kanji
+  japanese: {
+    styleSuffix: `authentic Japanese ukiyo-e woodblock print style with flat color planes separated by hard carved edges, characteristic ukiyo-e palette of indigo blue vermillion red ochre yellow and black, no gradients only flat color areas like carved woodblock layers, bold black outlines of varying thickness suggesting carved wood grain, dynamic composition with flowing fabric hair or natural elements, characteristic wave patterns cloud motifs and stylized water, Hokusai and Hiroshige aesthetic translated into pixel art, strong sense of graphic design and negative space, dramatic poses with theatrical kabuki energy, absolutely no text no writing no kanji no kana no hiragana no katakana no letters no characters no words no numbers no symbols no script of any kind anywhere in the image, pixel art trading card illustration, bold readable silhouette, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
+    loraStrength: 0.25, numColors: 12, pixelationSize: 480, guidance: 4.5, steps: 20
+  }
+};
+
+/**
+ * Get the production style config for a given fact ID.
+ * Routes Japanese vocab cards to Ukiyo-e, everything else to Dark Mood.
+ * @param {string} factId
+ * @returns {{ styleSuffix: string, loraStrength: number, numColors: number, pixelationSize: number, guidance: number, steps: number }}
+ */
+function getProductionStyle(factId) {
+  if (factId.startsWith('ja-')) return PRODUCTION_STYLES.japanese;
+  return PRODUCTION_STYLES.default;
+}
 
 // Style Lab test card fact_ids (same 10 cards as Prompt Lab)
 const STYLE_LAB_CARD_IDS = [
@@ -548,11 +590,12 @@ async function generateSingleCard(factId) {
   stmtUpdateGenerating.run(factId);
 
   try {
-    // Submit to ComfyUI
+    // Submit to ComfyUI with domain-specific style
     const seed = Math.floor(Math.random() * 2 ** 32);
-    const promptId = await submitCardback(row.visual_description, seed);
-    const outputFiles = await waitForCompletion(promptId);
-    const rawPng = await readComfyUIOutput(outputFiles[0]);
+    const style = getProductionStyle(factId);
+    const promptId = await submitStyledCardback(row.visual_description, seed, style);
+    const outputFiles = await waitForStyledCompletion(promptId);
+    const rawPng = await readStyledOutput(outputFiles[0]);
 
     // Process through image pipeline (resize, format conversion, etc.)
     const outputRoot = resolve(PROJECT_ROOT, 'public/assets/cardbacks');
@@ -567,6 +610,9 @@ async function generateSingleCard(factId) {
       generated_at: new Date().toISOString(),
       seed: seed ?? null,
     });
+
+    writeManifest();
+    broadcastToGame({ type: 'cardback_ready', factId, url: `/assets/cardbacks/lowres/${factId}.webp` });
 
     return { hiresPath, lowresPath };
   } catch (err) {
@@ -623,6 +669,26 @@ app.use((req, res, next) => {
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
+
+// SSE endpoint for game live-reload of cardbacks
+const gameSSEClients = new Set();
+
+app.get('/api/game/cardback-updates', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.flushHeaders();
+  gameSSEClients.add(res);
+  req.on('close', () => gameSSEClients.delete(res));
+});
+
+function broadcastToGame(event) {
+  const data = `data: ${JSON.stringify(event)}\n\n`;
+  for (const client of gameSSEClients) {
+    try { client.write(data); } catch { gameSSEClients.delete(client); }
+  }
+}
 
 // Static files
 app.use(express.static(resolve(__dirname, 'public')));
@@ -785,6 +851,7 @@ app.post('/api/scan', (req, res) => {
   });
 
   insertMany(facts);
+  writeManifest();
 
   const total = db.prepare('SELECT COUNT(*) as count FROM cardbacks').get().count;
   res.json({ added, updated, total });

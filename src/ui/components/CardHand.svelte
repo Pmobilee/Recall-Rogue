@@ -2,7 +2,7 @@
   import type { Card, FactDomain, CardType } from '../../data/card-types'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
-  import { getCardbackUrl, hasCardback } from '../utils/cardbackManifest'
+  import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
 
@@ -97,10 +97,33 @@
   let isDragging = $state(false)
   let dragCardIndex = $state<number | null>(null)
 
+  // Reactive version counter — incremented when new cardbacks arrive via SSE
+  let cardbackVersion = $state(0)
+
+  $effect(() => {
+    const unsub = onCardbackReady(() => {
+      cardbackVersion++
+    })
+    return unsub
+  })
+
+  // Reactive cardback URL map — re-computed when cards change or new cardbacks arrive
+  let cardbackUrls = $derived(
+    (() => {
+      void cardbackVersion
+      const map = new Map<string, string | null>()
+      for (const card of [...cards, ...animatingCards]) {
+        if (!map.has(card.factId)) {
+          map.set(card.factId, getCardbackUrl(card.factId))
+        }
+      }
+      return map
+    })()
+  )
+
   // Preload cardback images for cards in hand
   $effect(() => {
-    for (const card of cards) {
-      const url = getCardbackUrl(card.factId)
+    for (const [, url] of cardbackUrls) {
       if (url) {
         const img = new Image()
         img.src = url
@@ -167,7 +190,7 @@
     {@const tierBadge = getTierBadge(card)}
     {@const apCost = Math.max(1, card.apCost ?? 1)}
     {@const insufficientAp = !hasEnoughAp(card)}
-    {@const cardbackUrl = getCardbackUrl(card.factId)}
+    {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isMechanic = cardAnim === 'mechanic'}
@@ -242,7 +265,7 @@
 
   {#each animatingCards as card (card.id)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
-    {@const cardbackUrl = getCardbackUrl(card.factId)}
+    {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isMechanic = cardAnim === 'mechanic'}
@@ -347,7 +370,7 @@
   }
 
   .card-selected {
-    z-index: 5;
+    z-index: 20; /* Must be above .card-backdrop (z-index: 15) in CardCombatOverlay */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
 
