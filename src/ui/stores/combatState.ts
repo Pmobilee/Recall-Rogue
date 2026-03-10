@@ -1,6 +1,6 @@
-import { writable } from 'svelte/store'
 import type { Creature } from '../../game/entities/Creature'
 import type { Boss } from '../../game/entities/Boss'
+import { singletonWritable } from './singletonStore'
 
 /** Reactive UI state for all combat encounters (creature and boss). */
 export interface CombatUIState {
@@ -27,32 +27,19 @@ export interface CombatUIState {
   companionXpEarned: number
 }
 
-/**
- * Singleton writable store for combat UI state.
- * Uses globalThis to survive module re-evaluation across code-split chunks.
- */
-function makeCombatState(): ReturnType<typeof writable<CombatUIState>> {
-  const sym = Symbol.for('terra:combatState')
-  const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
-  if (!(sym in singletonRegistry)) {
-    singletonRegistry[sym] = writable<CombatUIState>({
-      active: false,
-      encounterType: 'creature',
-      creature: null,
-      playerHp: 0,
-      playerMaxHp: 0,
-      creatureHp: 0,
-      creatureMaxHp: 0,
-      turn: 0,
-      bossPhase: 0,
-      log: [],
-      awaitingQuiz: false,
-      result: null,
-      pendingLoot: [],
-      companionXpEarned: 0,
-    })
-  }
-  return singletonRegistry[sym] as ReturnType<typeof writable<CombatUIState>>
-}
-
-export const combatState = makeCombatState()
+export const combatState = singletonWritable<CombatUIState>('combatState', {
+  active: false,
+  encounterType: 'creature',
+  creature: null,
+  playerHp: 0,
+  playerMaxHp: 0,
+  creatureHp: 0,
+  creatureMaxHp: 0,
+  turn: 0,
+  bossPhase: 0,
+  log: [],
+  awaitingQuiz: false,
+  result: null,
+  pendingLoot: [],
+  companionXpEarned: 0,
+})

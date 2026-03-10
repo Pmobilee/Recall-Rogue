@@ -1,17 +1,5 @@
-import { get, writable } from 'svelte/store'
-import type { Writable } from 'svelte/store'
-
-/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
-const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
-
-/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
-function singletonWritable<T>(key: string, initial: T): Writable<T> {
-  const sym = Symbol.for('terra:' + key)
-  if (!(sym in singletonRegistry)) {
-    singletonRegistry[sym] = writable<T>(initial)
-  }
-  return singletonRegistry[sym] as Writable<T>
-}
+import { get } from 'svelte/store'
+import { singletonWritable } from './singletonStore'
 import type { AgeRating, HubSaveState, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 // Achievement gallery is archived — getUnlockedPaintingIds inlined as no-op
