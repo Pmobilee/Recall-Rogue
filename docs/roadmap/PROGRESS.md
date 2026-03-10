@@ -515,18 +515,18 @@ Depends on: None. Estimated: Medium-Large. **Status: Core implementation complet
 ### AR-30: Camp Cosmetics & Visual Progression
 **Between-runs hub becomes a visual camp scene near the dungeon entrance.** Players spend gold on purely cosmetic upgrades — tent, seating, campfire, character outfit, pet companion, decorations. Each camp element is a location-aware sprite slot; upgrades swap sprite variants. Gives gold a meaningful non-gameplay sink and creates "home base" attachment.
 
-- [ ] Camp scene layout: campfire, tent, bench, dungeon entrance backdrop, character sitting
-- [ ] Menu integration: tap camp objects to navigate (tent=inventory, campfire=start run, signpost=settings)
-- [ ] Upgrade tier system: 4-5 visual tiers per camp element (tent, seating, fire, decorations)
-- [ ] Character cosmetic variants (outfit/armor appearance)
-- [ ] Pet companion system: unlock and display pets at camp (cat, owl, fox, dragon whelp)
-- [ ] Gold-to-upgrade shop UI: preview upgrade → spend gold → sprite swap
-- [ ] Boss trophy display: defeated bosses leave trophies/banners at camp
+- [x] Camp scene layout: campfire, tent, bench, dungeon entrance backdrop, character sitting
+- [x] Menu integration: tap camp objects to navigate (tent=inventory, campfire=start run, signpost=settings)
+- [x] Upgrade tier system: 4 visual tiers per camp element (tent, seating, fire, decorations)
+- [x] Character cosmetic variants (outfit/armor appearance)
+- [x] Pet companion system: unlock and display pets at camp (cat, owl, fox, dragon whelp)
+- [x] Gold-to-upgrade shop UI: preview upgrade → spend gold → sprite swap
+- [x] Boss trophy display: defeated bosses leave trophies/banners at camp
 - [ ] Sprite generation pipeline: location-aware camp element variants via AI image gen
-- [ ] Camp state persistence (save/load upgrade levels)
+- [x] Camp state persistence (save/load upgrade levels)
 
-Depends on: AR-08 (hub — complete). Estimated: Large.
-→ Spec: TBD
+Depends on: AR-08 (hub — complete). Estimated: Large. **Status: Core implementation completed (March 10, 2026); AI-generated camp sprite pipeline remains pending.**
+→ [Spec](completed/AR-30-CAMP-COSMETICS-VISUAL-PROGRESSION.md)
 
 ---
 
@@ -556,7 +556,7 @@ FUTURE:
   AR-27 (Tier-Up Animations) — independent, can run anytime
   AR-28 (Reward Altar) — core complete, optional icon art pass can run anytime
   AR-29 (First-Person Crawl) — core complete
-  AR-30 (Camp Cosmetics) — depends on AR-08 (complete), can run anytime
+  AR-30 (Camp Cosmetics) — core complete, sprite-generation pipeline pending
 ```
 
 **Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 now run through worker-first generation + ingest/QA/promote scripts. AR-22→26 game design overhaul is complete (March 2026).
