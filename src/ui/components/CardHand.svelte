@@ -44,6 +44,34 @@
     wild: '💎',
   }
 
+  interface TierUpVisualSignature {
+    hue: number
+    sparkX: number
+    sparkY: number
+    spinDeg: number
+    intensity: number
+  }
+
+  function hashString(input: string): number {
+    let hash = 2166136261
+    for (let i = 0; i < input.length; i += 1) {
+      hash ^= input.charCodeAt(i)
+      hash = Math.imul(hash, 16777619)
+    }
+    return hash >>> 0
+  }
+
+  function getTierUpVisualSignature(factId: string): TierUpVisualSignature {
+    const hash = hashString(factId || 'unknown-fact')
+    return {
+      hue: hash % 360,
+      sparkX: 16 + (hash % 62),
+      sparkY: 16 + ((hash >>> 6) % 62),
+      spinDeg: -9 + ((hash >>> 12) % 19),
+      intensity: 0.86 + (((hash >>> 17) % 36) / 100),
+    }
+  }
+
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
     const spread = 30
@@ -247,6 +275,7 @@
     {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
     {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
+    {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <button
       class="card-in-hand"
@@ -328,6 +357,13 @@
           class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
           class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
           class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
+          style="
+            --tier-hue: {tierVisual.hue};
+            --spark-x: {tierVisual.sparkX}%;
+            --spark-y: {tierVisual.sparkY}%;
+            --spark-spin: {tierVisual.spinDeg}deg;
+            --spark-intensity: {tierVisual.intensity};
+          "
         ></div>
       {/if}
     </button>
@@ -345,6 +381,7 @@
     {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
+    {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
       class="card-in-hand card-animating"
@@ -384,6 +421,13 @@
           class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
           class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
           class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
+          style="
+            --tier-hue: {tierVisual.hue};
+            --spark-x: {tierVisual.sparkX}%;
+            --spark-y: {tierVisual.sparkY}%;
+            --spark-spin: {tierVisual.spinDeg}deg;
+            --spark-intensity: {tierVisual.intensity};
+          "
         ></div>
       {/if}
     </div>
@@ -759,6 +803,39 @@
     animation-timing-function: ease-out;
   }
 
+  .tier-up-overlay::before,
+  .tier-up-overlay::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .tier-up-overlay::before {
+    background:
+      radial-gradient(
+        circle at var(--spark-x, 25%) var(--spark-y, 22%),
+        hsl(var(--tier-hue, 210) 98% 78% / 0.58) 0,
+        transparent 36%
+      ),
+      radial-gradient(
+        circle at calc(100% - var(--spark-x, 25%)) calc(100% - var(--spark-y, 22%)),
+        hsl(calc(var(--tier-hue, 210) + 36) 96% 74% / 0.48) 0,
+        transparent 34%
+      );
+    mix-blend-mode: screen;
+    opacity: 0;
+    animation: tierSignatureSpark 600ms ease-out both;
+  }
+
+  .tier-up-overlay::after {
+    border: 1px solid hsl(calc(var(--tier-hue, 210) + 18) 95% 74% / 0.5);
+    transform: rotate(var(--spark-spin, 0deg)) scale(0.9);
+    opacity: 0;
+    animation: tierSignatureTrace 600ms ease-out both;
+  }
+
   .tier-up-overlay.tier-up-1-2a {
     border: 2px solid rgba(96, 165, 250, 0.95);
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.95), 0 0 40px rgba(37, 99, 235, 0.5);
@@ -798,6 +875,18 @@
     0% { opacity: 0; transform: scale(0.84) rotate(-2deg); }
     45% { opacity: 1; transform: scale(1.04) rotate(1deg); }
     100% { opacity: 0; transform: scale(1.24) rotate(3deg); }
+  }
+
+  @keyframes tierSignatureSpark {
+    0% { opacity: 0; transform: scale(0.82); }
+    44% { opacity: 1; transform: scale(var(--spark-intensity, 1)); }
+    100% { opacity: 0; transform: scale(1.22); }
+  }
+
+  @keyframes tierSignatureTrace {
+    0% { opacity: 0; transform: rotate(var(--spark-spin, 0deg)) scale(0.82); }
+    35% { opacity: 0.72; transform: rotate(var(--spark-spin, 0deg)) scale(1.02); }
+    100% { opacity: 0; transform: rotate(var(--spark-spin, 0deg)) scale(1.2); }
   }
 
   /* ═══ ATTACK ANIMATIONS (red/orange) ═══ */

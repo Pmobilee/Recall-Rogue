@@ -488,10 +488,10 @@ Depends on: AR-20 (social surfaces available). Estimated: Medium. **Status: Comp
 - [x] Purple/gold glow animation for Tier 2b → 3 transition (integrates with Mastery Trial ceremony)
 - [x] Insert ~600ms celebration phase into answer animation sequence (between reveal and mechanic)
 - [x] Generic gold burst placeholder for per-fact mastery animation
-- [ ] Per-fact unique mastery animations (art asset generation — future phase)
+- [x] Per-fact unique mastery animations (deterministic per-fact visual signatures in tier-up overlays)
 
-Depends on: None (combat system is stable). Estimated: Medium. **Status: Core implementation completed (March 10, 2026); unique per-fact art pass pending.**
-→ Spec: TBD
+Depends on: None (combat system is stable). Estimated: Medium. **Status: Completed (March 10, 2026).**
+→ [Spec](completed/AR-27-TIER-UP-CELEBRATIONS.md)
 
 ### AR-28: Reward Altar (Loot Presentation Overhaul)
 **Replace post-encounter reward buttons with an atmospheric altar scene.** Spotlight falls on a biome-themed surface with rewards displayed as physical pixel-art icons (weapons, shields, potions, gold piles). Tap to inspect, select one to collect. Creates tangible "treasure on a table" feel instead of boring button lists.
