@@ -1,4 +1,4 @@
-Generate Spanish vocabulary records for Arcane Recall.
+Generate Spanish vocabulary records for Recall Rogue.
 
 Rules:
 - Output strict JSON array only.

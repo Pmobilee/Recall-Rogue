@@ -1,4 +1,4 @@
-Generate French vocabulary records for Arcane Recall.
+Generate French vocabulary records for Recall Rogue.
 
 Rules:
 - Output strict JSON array only.

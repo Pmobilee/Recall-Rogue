@@ -1,4 +1,4 @@
-# MVP Implementation Plan — Terra Miner (Terra-Gacha)
+# MVP Implementation Plan — Terra Miner (Recall-Rogue)
 
 Complete, step-by-step implementation guide for the MVP. Designed to be executed by a non-creative coding model with zero ambiguity.
 
@@ -355,7 +355,7 @@ The balance constants above.
 - save(data: PlayerSave): void — serialize to LocalStorage
 - load(): PlayerSave | null — deserialize from LocalStorage
 - createNewPlayer(ageRating: AgeRating): PlayerSave — default save
-- SAVE_KEY = 'terra-gacha-save'
+- SAVE_KEY = 'recall-rogue-save'
 - SAVE_VERSION = 1
 ```
 

@@ -14,7 +14,7 @@ scoring)
 
 ## Overview
 
-Phase 48 is the endgame pillar of Terra Gacha. It activates when a player approaches or reaches
+Phase 48 is the endgame pillar of Recall Rogue. It activates when a player approaches or reaches
 total mastery of the fact database — a milestone defined as 100% of available facts at SM-2
 `interval >= 60` days (general) or `>= 30` days (vocabulary). At that threshold, the game
 transforms rather than ending: the dome visually becomes golden, GAIA shifts from teacher to
@@ -1221,7 +1221,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject a save with all facts mastered (interval >= 60, >= 50 facts)
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || 'null')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || 'null')
     if (!save) return
     save.reviewStates = save.reviewStates.map((rs) => ({
       ...rs, interval: 61, repetitions: 8, easeFactor: 2.5,
@@ -1235,7 +1235,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
       })
     }
     save.prestigeLevel = 0
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
 
   await page.reload()
@@ -1267,14 +1267,14 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject mastered save
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || 'null')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || 'null')
     if (!save) return
     save.reviewStates = Array.from({ length: 60 }, (_, i) => ({
       factId: 'fact_' + i, interval: 65, repetitions: 9,
       easeFactor: 2.5, nextReviewAt: 0, lastReviewAt: 0, quality: 5,
     }))
     save.prestigeLevel = 0
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForSelector('button', { timeout: 10000 })
@@ -1301,14 +1301,14 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Verify prestige level updated in save
   const level = await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || '{}')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || '{}')
     return save.prestigeLevel
   })
   console.log('Prestige level after reset:', level) // expected: 1
 
   // Verify review states reset
   const intervals = await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || '{}')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || '{}')
     return (save.reviewStates || []).map((rs) => rs.interval)
   })
   const allZero = intervals.every((i) => i === 0)
@@ -1336,7 +1336,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject omniscient save
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || 'null')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || 'null')
     if (!save) return
     save.reviewStates = Array.from({ length: 60 }, (_, i) => ({
       factId: 'f' + i, interval: 65, repetitions: 9,
@@ -1344,7 +1344,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
     }))
     save.omniscientUnlockedAt = Date.now() - 1000
     localStorage.setItem('terra_omniscient_revealed', 'true') // skip reveal animation
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForTimeout(3000) // let DomeScene load
@@ -1385,11 +1385,11 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject save with limestone_caves completed
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || 'null')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || 'null')
     if (!save) return
     save.completedBiomes = ['limestone_caves']
     save.titles = [...(save.titles || []), 'title_limestone_scholar']
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForTimeout(2000)
@@ -1402,7 +1402,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   const bonus = await page.evaluate(async () => {
     try {
       const { getCumulativeBiomeBonus } = await import('/src/services/biomeCompletionService.ts')
-      const save = JSON.parse(localStorage.getItem('terra-gacha-save') || '{}')
+      const save = JSON.parse(localStorage.getItem('recall-rogue-save') || '{}')
       return getCumulativeBiomeBonus(save)
     } catch (e) {
       return { error: String(e) }
@@ -1432,14 +1432,14 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject omniscient save
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') || 'null')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') || 'null')
     if (!save) return
     save.omniscientUnlockedAt = Date.now() - 86400000
     save.reviewStates = Array.from({ length: 60 }, (_, i) => ({
       factId: 'f' + i, interval: 65, repetitions: 9,
       easeFactor: 2.5, nextReviewAt: 0, lastReviewAt: 0, quality: 5,
     }))
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
     localStorage.setItem('terra_omniscient_revealed', 'true')
   })
   await page.reload()

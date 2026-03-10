@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Service Worker — Phase 39.1
+ * Recall Rogue Service Worker — Phase 39.1
  *
  * Strategy:
  *  - Network-first for /api/ requests (offline fallback from cache).
@@ -11,7 +11,7 @@
  */
 
 const CACHE_VERSION = '__SW_VERSION__'
-const CACHE_NAME = `terra-gacha-${CACHE_VERSION}`
+const CACHE_NAME = `recall-rogue-${CACHE_VERSION}`
 const OFFLINE_URL = '/offline.html'
 
 const PRECACHE_URLS = [

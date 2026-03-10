@@ -1,5 +1,5 @@
 /**
- * Distractor Audit Script — Terra Gacha
+ * Distractor Audit Script — Recall Rogue
  *
  * Reads all seed JSON files from src/data/seed/ and analyzes
  * distractor counts per fact. Outputs statistics and a queue

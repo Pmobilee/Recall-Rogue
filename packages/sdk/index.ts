@@ -1,11 +1,11 @@
 /**
- * Terra Gacha JavaScript/TypeScript SDK.
+ * Recall Rogue JavaScript/TypeScript SDK.
  * Wraps all public API endpoints with typed interfaces and built-in
  * CC attribution handling.
  *
  * Usage:
- *   import { TerraGachaClient } from 'terra-gacha-sdk'
- *   const client = new TerraGachaClient({ apiKey: 'tg_live_...' })
+ *   import { RecallRogueClient } from 'recall-rogue-sdk'
+ *   const client = new RecallRogueClient({ apiKey: 'tg_live_...' })
  *   const facts = await client.getFacts({ category: 'Biology', limit: 10 })
  */
 
@@ -87,8 +87,8 @@ export interface StatsResponse {
   meta: CcMeta
 }
 
-/** Options for the TerraGachaClient constructor. */
-export interface TerraGachaClientOptions {
+/** Options for the RecallRogueClient constructor. */
+export interface RecallRogueClientOptions {
   /** Your API key (starts with tg_live_). */
   apiKey: string
   /**
@@ -113,19 +113,19 @@ export interface GetRandomFactsOptions {
 }
 
 /**
- * Terra Gacha public API client.
+ * Recall Rogue public API client.
  * All methods automatically include CC attribution in the response.
  */
-export class TerraGachaClient {
+export class RecallRogueClient {
   private readonly apiKey: string
   private readonly baseUrl: string
 
   /**
-   * Create a new TerraGachaClient.
+   * Create a new RecallRogueClient.
    *
    * @param options - Client configuration including API key and optional base URL.
    */
-  constructor(options: TerraGachaClientOptions) {
+  constructor(options: RecallRogueClientOptions) {
     this.apiKey = options.apiKey
     this.baseUrl = (options.baseUrl ?? 'https://api.terragacha.com').replace(/\/$/, '')
   }
@@ -224,4 +224,4 @@ export class TerraGachaClient {
   }
 }
 
-export default TerraGachaClient
+export default RecallRogueClient

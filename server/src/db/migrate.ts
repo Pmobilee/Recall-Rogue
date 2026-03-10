@@ -1,5 +1,5 @@
 /**
- * Migration runner for the Terra Gacha database.
+ * Migration runner for the Recall Rogue database.
  * Applies all pending Drizzle ORM migrations to the SQLite database.
  *
  * Run via: npm run migrate

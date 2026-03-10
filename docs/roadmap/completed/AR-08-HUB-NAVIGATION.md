@@ -91,7 +91,7 @@ export function isScreenAccessible(screen: ScreenName, profile: PlayerProfile): 
 New component `src/ui/screens/HubScreen.svelte`:
 
 - Full-screen portrait layout
-- Top: Title "ARCANE RECALL" (24dp, pixel font)
+- Top: Title "RECALL ROGUE" (24dp, pixel font)
 - Top section (40% height): Daily streak widget + last run summary card
   - Streak: "🔥 {dailyStreak} DAY STREAK" (18dp, gold text, centered)
   - Last run card: "{floorReached}F | {enemiesDefeated} Foes | {goldEarned} Gold" (14dp, semi-transparent dark bg, 8dp padding)

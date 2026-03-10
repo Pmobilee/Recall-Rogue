@@ -2,6 +2,7 @@
   import type { FactDomain } from '../../data/card-types'
   import { getAllDomainMetadata } from '../../data/domainMetadata'
   import { getDomainIconPath } from '../utils/domainAssets'
+  import { ENABLE_LANGUAGE_DOMAINS } from '../../data/balance'
 
   interface Props {
     onstart: (primary: FactDomain, secondary: FactDomain) => void
@@ -10,15 +11,17 @@
 
   let { onstart, onback }: Props = $props()
 
-  const DOMAINS = getAllDomainMetadata().map((domain) => ({
-    id: domain.id,
-    name: domain.displayName,
-    shortName: domain.shortName,
-    icon: domain.icon,
-    color: domain.colorTint,
-    unlocked: !domain.comingSoon,
-    comingSoon: domain.comingSoon === true,
-  }))
+  const DOMAINS = getAllDomainMetadata()
+    .filter((domain) => ENABLE_LANGUAGE_DOMAINS || domain.id !== 'language')
+    .map((domain) => ({
+      id: domain.id,
+      name: domain.displayName,
+      shortName: domain.shortName,
+      icon: domain.icon,
+      color: domain.colorTint,
+      unlocked: !domain.comingSoon,
+      comingSoon: domain.comingSoon === true,
+    }))
 
   let primaryDomain = $state<FactDomain | null>(null)
   let secondaryDomain = $state<FactDomain | null>(null)
@@ -66,8 +69,8 @@
 <div class="domain-selection-overlay">
   <button class="back-btn" onclick={onback}>&larr; Back</button>
 
-  <h1 class="title">Choose Your Domains</h1>
-  <p class="subtitle">Primary (40% cards) and Secondary (30% cards)</p>
+  <h1 class="title">What are you curious about?</h1>
+  <p class="subtitle">Pick 2 to specialize in. You can always add more later.</p>
 
   <div class="domain-grid">
     {#each DOMAINS as domain (domain.id)}

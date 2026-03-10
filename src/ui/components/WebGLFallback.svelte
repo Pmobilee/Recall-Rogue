@@ -5,7 +5,7 @@
 <div class="fallback">
   <h1>Device Not Supported</h1>
   <p>
-    Terra Gacha requires WebGL, which is not available in your current browser or device.
+    Recall Rogue requires WebGL, which is not available in your current browser or device.
   </p>
   <p>
     Please update your browser, or try opening the game in Chrome or Firefox.

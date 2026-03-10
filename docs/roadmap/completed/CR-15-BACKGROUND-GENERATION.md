@@ -185,7 +185,7 @@ Or individually: `npm run generate:arcane-sprites -- --id bg_combat_dungeon`
 
 #### Sprite Registry Updates
 
-After each background is generated, add to `sprite-registry.json` under the `arcaneRecall` array:
+After each background is generated, add to `sprite-registry.json` under the `recallRogue` array:
 
 ```json
 {
@@ -268,7 +268,7 @@ No UI changes in this CR. Backgrounds are generated and saved to disk. Wiring th
 | Create | `public/assets/backgrounds/rooms/rest.png` | Rest area background (270x600) |
 | Create | `public/assets/backgrounds/rooms/shop.png` | Shop background (270x600) |
 | Create | `public/assets/backgrounds/rooms/treasure.png` | Treasure room background (270x600) |
-| Modify | `sprite-gen/sprite-registry.json` | Register all 6 backgrounds in `arcaneRecall` array |
+| Modify | `sprite-gen/sprite-registry.json` | Register all 6 backgrounds in `recallRogue` array |
 
 ## Done When
 
@@ -283,7 +283,7 @@ No UI changes in this CR. Backgrounds are generated and saved to disk. Wiring th
 - [ ] **Rest area** (`rest.png`): feels warm and safe, amber/orange tones from campfire, calm atmosphere
 - [ ] **Shop** (`shop.png`): feels cozy and merchant-like, shelves of goods visible, warm lantern lighting
 - [ ] **Treasure room** (`treasure.png`): has golden glow atmosphere, sparkle/magical feeling
-- [ ] All 6 backgrounds registered in `sprite-registry.json` under `arcaneRecall` array with `generatedAt` timestamps
+- [ ] All 6 backgrounds registered in `sprite-registry.json` under `recallRogue` array with `generatedAt` timestamps
 - [ ] All raw outputs saved in `sprite-gen/output/backgrounds/` (not committed to git)
 - [ ] Playwright screenshots taken at mobile viewport (390x844, Pixel 7) for each background — saved for human review
 - [ ] No obvious style inconsistencies between the 6 backgrounds (all read as same game world)

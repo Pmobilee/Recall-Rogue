@@ -9,7 +9,7 @@
 
 ## Overview
 
-Phase 17 is a comprehensive audit and enhancement pass over every system in Terra Gacha, targeting maximum engagement, dopamine response, and long-term retention — without resorting to anxiety-inducing dark patterns. Every sub-phase corresponds to one engagement pillar:
+Phase 17 is a comprehensive audit and enhancement pass over every system in Recall Rogue, targeting maximum engagement, dopamine response, and long-term retention — without resorting to anxiety-inducing dark patterns. Every sub-phase corresponds to one engagement pillar:
 
 1. **17.1 — Gacha & Dopamine Audit**: every reward moment audited for anticipation → reveal → payoff cycle; rarity-tiered animations; near-miss feedback; mastery milestone celebrations
 2. **17.2 — Sound Design Enhancement**: full audio pass from web synthesizer to proper chiptune audio files; biome-specific music; rarity fanfares; GAIA sound cues
@@ -1476,11 +1476,11 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject a save that is 4 days old to test comeback bonus
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (raw) {
       const s = JSON.parse(raw)
       s.lastLoginDate = Date.now() - (4 * 24 * 60 * 60 * 1000)
-      localStorage.setItem('terra-gacha-save', JSON.stringify(s))
+      localStorage.setItem('recall-rogue-save', JSON.stringify(s))
     }
   })
   await page.reload()
@@ -1979,7 +1979,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Test 3: Inject a streak break scenario and verify positive framing
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (raw) {
       const s = JSON.parse(raw)
       s.lastDiveDate = Date.now() - (3 * 24 * 60 * 60 * 1000)  // 3 days ago
@@ -1987,7 +1987,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
       s.stats.currentStreak = 45
       s.stats.bestStreak = 45
       s.longestStreak = 45
-      localStorage.setItem('terra-gacha-save', JSON.stringify(s))
+      localStorage.setItem('recall-rogue-save', JSON.stringify(s))
     }
   })
   await page.reload()

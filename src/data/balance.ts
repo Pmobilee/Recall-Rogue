@@ -911,12 +911,52 @@ export const MAX_AP_PER_TURN = 5;
 
 // Speed scaling (timer in seconds by floor)
 export const FLOOR_TIMER: Array<{ maxFloor: number; seconds: number }> = [
-  { maxFloor: 3,        seconds: 12 },
-  { maxFloor: 6,        seconds: 9 },
-  { maxFloor: 9,        seconds: 7 },
-  { maxFloor: 12,       seconds: 5 },
-  { maxFloor: Infinity, seconds: 4 },
+  { maxFloor: 6,        seconds: 12 },   // Segment 1: Shallow Depths
+  { maxFloor: 12,       seconds: 9 },    // Segment 2: Deep Caverns
+  { maxFloor: 18,       seconds: 7 },    // Segment 3: The Abyss
+  { maxFloor: 24,       seconds: 5 },    // Segment 4: The Archive
+  { maxFloor: Infinity, seconds: 4 },    // Endless
 ];
+
+// Q&A brevity limits — enforced by generation prompts and validation pipeline
+export const QA_LIMITS = {
+  /** Max words for base quizQuestion */
+  QUESTION_MAX_WORDS: 12,
+  /** Max words for any answer option (correct or distractor) */
+  ANSWER_MAX_WORDS: 5,
+  /** Max characters for any answer option */
+  ANSWER_MAX_CHARS: 30,
+  /** Max characters for distractors specifically */
+  DISTRACTOR_MAX_CHARS: 30,
+  /** Minimum distractors per fact (top-level pool) */
+  DISTRACTOR_MIN_COUNT: 8,
+  /** Maximum distractors per fact (top-level pool) */
+  DISTRACTOR_MAX_COUNT: 12,
+  /** Minimum variants per knowledge fact */
+  VARIANT_MIN_COUNT: 4,
+  /** Target variants per knowledge fact */
+  VARIANT_TARGET_COUNT: 5,
+  /** Answer options must be within this tolerance of each other's char count */
+  SIMILAR_LENGTH_TOLERANCE: 0.20,
+  /** Per-variant-type question word limits */
+  VARIANT_QUESTION_MAX_WORDS: {
+    forward: 12,
+    reverse: 15,
+    negative: 10,
+    fill_blank: 15,
+    true_false: 15,
+    context: 15,
+  },
+  /** Per-variant-type answer word limits */
+  VARIANT_ANSWER_MAX_WORDS: {
+    forward: 5,
+    reverse: 4,
+    negative: 5,
+    fill_blank: 3,
+    true_false: 1,
+    context: 4,
+  },
+} as const;
 
 // Knowledge combo multipliers
 // Index 0 = 1st correct, index 4 = 5th correct (perfect turn)
@@ -937,13 +977,48 @@ export const ECHO = {
   INSERT_DELAY_CARDS: 3,
 } as const;
 
-/** Reward retention on death, by segment. Retreat/victory keep 100%. */
-export const DEATH_PENALTY: Record<1 | 2 | 3 | 4, number> = {
-  1: 1.0,
-  2: 0.80,
-  3: 0.65,
-  4: 0.50,
+/** Currency multiplier per difficulty mode. Applied at end-of-run. */
+export const DIFFICULTY_REWARD_MULTIPLIER: Record<'explorer' | 'standard' | 'scholar', number> = {
+  explorer: 1.00,
+  standard: 1.00,
+  scholar: 1.20,
 };
 
-export const SEGMENT_BOSS_FLOORS = [3, 6, 9] as const;
+/** Reward retention on death, by segment. Retreat/victory keep 100%. */
+export const DEATH_PENALTY: Record<1 | 2 | 3 | 4, number> = {
+  1: 0.80,
+  2: 0.65,
+  3: 0.50,
+  4: 0.35,
+};
+
+export const SEGMENT_BOSS_FLOORS = [3, 6, 9, 12, 15, 18, 21, 24] as const;
 export const ENDLESS_BOSS_INTERVAL = 3;
+
+/** Number of encounters per floor (2 regular + 1 mini-boss/boss). */
+export const ENCOUNTERS_PER_FLOOR = 3;
+
+/** Maximum floors in a standard run. */
+export const MAX_FLOORS = 24;
+
+/** Human-readable segment names. */
+export const SEGMENT_NAMES: Record<1 | 2 | 3 | 4, string> = {
+  1: 'Shallow Depths',
+  2: 'Deep Caverns',
+  3: 'The Abyss',
+  4: 'The Archive',
+};
+
+// === FEATURE FLAGS ===
+
+/** When true, phase 2 mechanics are included in the card pool. */
+export const ENABLE_PHASE2_MECHANICS = false;
+
+/** When true, language domains appear in the domain picker. */
+export const ENABLE_LANGUAGE_DOMAINS = false;
+
+/** Number of runs that force Story Mode (explorer) difficulty. */
+export const STORY_MODE_FORCED_RUNS = 3;
+
+/** Number of completed runs before archetype selection unlocks (auto-balanced until then). */
+export const ARCHETYPE_UNLOCK_RUNS = 3;

@@ -34,9 +34,10 @@ const COLOR_ELITE = 0xd4af37
 const COLOR_BOSS = 0xdc2626
 
 /** Map enemy category to placeholder color. */
-function categoryColor(category: 'common' | 'elite' | 'boss'): number {
+function categoryColor(category: 'common' | 'elite' | 'mini_boss' | 'boss'): number {
   switch (category) {
     case 'elite': return COLOR_ELITE
+    case 'mini_boss': return COLOR_ELITE  // Mini-bosses share elite coloring
     case 'boss': return COLOR_BOSS
     default: return COLOR_COMMON
   }
@@ -270,7 +271,7 @@ export class CombatScene extends Phaser.Scene {
   /** Set the enemy display data. */
   setEnemy(
     name: string,
-    category: 'common' | 'elite' | 'boss',
+    category: 'common' | 'elite' | 'mini_boss' | 'boss',
     hp: number,
     maxHP: number,
     enemyId?: string,

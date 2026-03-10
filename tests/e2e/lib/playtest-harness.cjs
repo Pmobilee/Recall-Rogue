@@ -50,7 +50,7 @@ async function createPlaytester(opts = {}) {
     await page.evaluate((s) => {
       localStorage.setItem('terra_guest_mode', 'true');
       localStorage.setItem('terra_age_bracket', 'teen');
-      localStorage.setItem('terra-gacha-save', JSON.stringify(s));
+      localStorage.setItem('recall-rogue-save', JSON.stringify(s));
     }, save);
   }
 

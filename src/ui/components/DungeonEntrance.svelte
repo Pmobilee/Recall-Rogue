@@ -4,26 +4,18 @@
   }
 
   let { onbegin }: Props = $props()
-  let askSlowReader = $state(false)
 
   function handleEnter(): void {
-    askSlowReader = true
+    // Slow reader setting moved to Settings panel; skip question during onboarding
+    onbegin(false)
   }
 </script>
 
 <div class="onboarding-screen">
   <div class="onboarding-panel">
-    <h1>ARCANE RECALL</h1>
-    {#if !askSlowReader}
-      <p>Enter the depths and test your recall.</p>
-      <button class="enter-btn" onclick={handleEnter}>ENTER THE DEPTHS</button>
-    {:else}
-      <p>Do you prefer more time to read?</p>
-      <div class="slow-reader-actions">
-        <button class="choice-btn" onclick={() => onbegin(true)}>Yes</button>
-        <button class="choice-btn" onclick={() => onbegin(false)}>No</button>
-      </div>
-    {/if}
+    <h1>RECALL ROGUE</h1>
+    <p>Enter the depths and test your recall.</p>
+    <button class="enter-btn" onclick={handleEnter}>ENTER THE DEPTHS</button>
   </div>
 </div>
 
@@ -75,18 +67,4 @@
     letter-spacing: 1px;
   }
 
-  .slow-reader-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .choice-btn {
-    min-height: 48px;
-    border-radius: 10px;
-    border: none;
-    background: #243447;
-    color: #f8fafc;
-    font-weight: 700;
-  }
 </style>

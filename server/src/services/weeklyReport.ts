@@ -60,7 +60,7 @@ function addDays(isoDate: string, days: number): string {
 export function formatReportPlainText(report: WeeklyReportData): string {
   const { playerDisplayName, weekStartIso, weekEndIso } = report
   const lines: string[] = [
-    `Terra Gacha — Weekly Learning Report`,
+    `Recall Rogue — Weekly Learning Report`,
     `Player: ${playerDisplayName}`,
     `Week: ${weekStartIso} to ${weekEndIso}`,
     ``,
@@ -81,7 +81,7 @@ export function formatReportPlainText(report: WeeklyReportData): string {
     ``,
     `Facts due for review this week: ${report.nextReviewDue}`,
     ``,
-    `To change report settings, open Terra Gacha → Settings → Parental Controls.`,
+    `To change report settings, open Recall Rogue → Settings → Parental Controls.`,
     `To unsubscribe: reply to this email with "UNSUBSCRIBE".`,
   ]
   return lines.join('\n')

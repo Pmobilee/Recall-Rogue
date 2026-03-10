@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Sprite Generation Daemon.
+ * Recall Rogue Sprite Generation Daemon.
  * Background process that scans for approved facts needing pixel art,
  * generates sprites via ComfyUI, applies resizing via sharp, and
  * saves them to the public fact-sprites directory.

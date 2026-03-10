@@ -1,9 +1,9 @@
-# Terra Miner — Agent Context
+# Recall Rogue — Agent Context
 
-A 2D pixel art mining/knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting mobile via Capacitor.
+A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting mobile via Capacitor.
 
 ## Project Summary
-- **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat, build knowledge-powered decks, and descend deeper into procedurally generated mine floors. Learning IS the core mechanic — powered by SM-2 spaced repetition.
+- **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat, build knowledge-powered decks, and delve deeper into procedurally generated dungeon floors. Learning IS the core mechanic — powered by SM-2 spaced repetition.
 - **Tech Stack**: Vite 7, Svelte 5, TypeScript 5.9, Phaser 3, Capacitor (Android/iOS)
 - **Sprite Generation**: ComfyUI with SDXL + pixel art LoRA, running locally on RTX 3060 12GB
 - **Backend**: Fastify + TypeScript (planned), containerized for portable hosting
@@ -120,6 +120,7 @@ node tests/e2e/03-save-resume.cjs
 - **ALWAYS verify before ending a session** — run at least `01-app-loads.cjs`
 - **ALWAYS run unit tests after logic changes** — `npx vitest run` (240+ tests); typecheck alone is not enough
 - **data-testid selectors**: `btn-start-run`, `btn-enter-mine`, `card-0`..`card-4`, `quiz-answer-0`..`quiz-answer-2`, `btn-age-adult`, `btn-cash-out`, `btn-descend`, `combo-counter`, `room-choice-0`..`room-choice-2`
+- **Screen flow**: Start Run (`btn-start-run`) → choose domain → combat encounters → cash out (`btn-cash-out`) or descend deeper (`btn-descend`)
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ### 3. Playwright Test Agents (test creation and healing)
@@ -217,7 +218,7 @@ When generating sprites, delegate to a sub-agent with these instructions:
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md`
 - System architecture and data flow → `docs/ARCHITECTURE.md`
-- Card roguelite specification → `docs/RESEARCH/terra-miner-card-roguelite-spec.md`
+- Card roguelite specification → `docs/RESEARCH/terra-miner-card-roguelite-spec.md` (legacy filename)
 - UX design details → `docs/RESEARCH/03_UX_IMPROVEMENTS.md`
 - Addictiveness research → `docs/RESEARCH/Addictiveness_research.md`
 - Sprite generation pipeline → `docs/SPRITE_PIPELINE.md`

@@ -1,5 +1,5 @@
 /**
- * Analytics ingestion routes for the Terra Gacha server.
+ * Analytics ingestion routes for the Recall Rogue server.
  * Accepts batched event payloads from game clients and persists them
  * to the analytics_events table for later querying.
  *
@@ -62,7 +62,7 @@ const ALLOWED_EVENTS = new Set([
   "referral_link_shared",
   "referral_converted",
   "badge_shared",
-  // Arcane Recall run/deck funnels (AR-14)
+  // Recall Rogue run/deck funnels (AR-14)
   "domain_select",
   "run_start",
   "run_complete",

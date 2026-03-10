@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Server — entry point.
+ * Recall Rogue Server — entry point.
  * Builds and starts the Fastify application with all plugins and routes.
  */
 
@@ -150,7 +150,7 @@ export async function buildApp() {
     const authHeader = request.headers.authorization ?? "";
     const [scheme, credentials] = authHeader.split(" ");
     if (scheme !== "Basic" || !credentials) {
-      reply.header("WWW-Authenticate", 'Basic realm="Terra Gacha Admin"');
+      reply.header("WWW-Authenticate", 'Basic realm="Recall Rogue Admin"');
       return reply.status(401).send("Unauthorized");
     }
     const decoded = Buffer.from(credentials, "base64").toString();
@@ -346,7 +346,7 @@ async function start(): Promise<void> {
   try {
     await app.listen({ port: config.port, host: "0.0.0.0" });
     console.log(
-      `[server] Terra Gacha API listening on http://0.0.0.0:${config.port}`
+      `[server] Recall Rogue API listening on http://0.0.0.0:${config.port}`
     );
   } catch (err) {
     app.log.error(err);

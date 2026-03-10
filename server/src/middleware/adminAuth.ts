@@ -1,5 +1,5 @@
 /**
- * Admin API key authentication middleware for the Terra Gacha server.
+ * Admin API key authentication middleware for the Recall Rogue server.
  * Protects fact management endpoints from unauthenticated access.
  */
 

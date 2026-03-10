@@ -2,9 +2,9 @@
 
 ## Overview
 
-**Goal**: Build a first-class parental-control layer on top of the existing COPPA age-gate infrastructure, giving parents full visibility and authority over how their child uses Terra Gacha. The centrepiece is the Kid Wow Score — a star-based mastery display that replaces the numeric SM-2 review grades visible to kids — alongside session time limits with a hard stop, a PIN-protected parent panel, weekly learning email digests, aggressive content filtering for the `under_13` age bracket, full COPPA data-collection enforcement, and a kid-friendly UI theme that makes the game feel welcoming rather than intimidating for young players.
+**Goal**: Build a first-class parental-control layer on top of the existing COPPA age-gate infrastructure, giving parents full visibility and authority over how their child uses Recall Rogue. The centrepiece is the Kid Wow Score — a star-based mastery display that replaces the numeric SM-2 review grades visible to kids — alongside session time limits with a hard stop, a PIN-protected parent panel, weekly learning email digests, aggressive content filtering for the `under_13` age bracket, full COPPA data-collection enforcement, and a kid-friendly UI theme that makes the game feel welcoming rather than intimidating for young players.
 
-**Why this phase matters**: A meaningful share of Terra Gacha players are children using a parent's device or their own. App store reviewers and schools scrutinise child-safety features closely. Shipping a credible parental-controls suite (with COPPA enforcement, spending guards, and progress visibility) is the prerequisite for educational-partnership deals (Phase 44) and for any serious push into the K-12 market. It also eliminates the most common negative-review categories: surprise spending, excessive screen time, and complex UI that frustrates younger players.
+**Why this phase matters**: A meaningful share of Recall Rogue players are children using a parent's device or their own. App store reviewers and schools scrutinise child-safety features closely. Shipping a credible parental-controls suite (with COPPA enforcement, spending guards, and progress visibility) is the prerequisite for educational-partnership deals (Phase 44) and for any serious push into the K-12 market. It also eliminates the most common negative-review categories: surprise spending, excessive screen time, and complex UI that frustrates younger players.
 
 **Dependencies (must be complete before starting)**:
 - Phase 19 Auth & Cloud — `AgeGate.svelte`, `AGE_BRACKET_KEY`, `AgeRating` type, profile system, `authStore`
@@ -591,7 +591,7 @@ function defaultSettings(): ParentalSettings {
 /** SHA-256 hash of a string (Web Crypto API, async). */
 export async function hashPin(pin: string): Promise<string> {
   const encoder = new TextEncoder()
-  const data = encoder.encode('terra-gacha:pin:' + pin)
+  const data = encoder.encode('recall-rogue:pin:' + pin)
   const hashBuffer = await crypto.subtle.digest('SHA-256', data)
   return Array.from(new Uint8Array(hashBuffer))
     .map(b => b.toString(16).padStart(2, '0'))
@@ -874,7 +874,7 @@ function addDays(isoDate: string, days: number): string {
 export function formatReportPlainText(report: WeeklyReportData): string {
   const { playerDisplayName, weekStartIso, weekEndIso } = report
   const lines: string[] = [
-    `Terra Gacha — Weekly Learning Report`,
+    `Recall Rogue — Weekly Learning Report`,
     `Player: ${playerDisplayName}`,
     `Week: ${weekStartIso} to ${weekEndIso}`,
     ``,
@@ -895,7 +895,7 @@ export function formatReportPlainText(report: WeeklyReportData): string {
     ``,
     `Facts due for review this week: ${report.nextReviewDue}`,
     ``,
-    `To change report settings, open Terra Gacha → Settings → Parental Controls.`,
+    `To change report settings, open Recall Rogue → Settings → Parental Controls.`,
     `To unsubscribe: reply to this email with "UNSUBSCRIBE".`,
   ]
   return lines.join('\n')
@@ -1095,7 +1095,7 @@ Modify `src/ui/components/DomeView.svelte`:
 
 ### 45.6 — COPPA Enforcement
 
-**Goal**: Ensure that Terra Gacha is compliant with the Children's Online Privacy Protection Act (COPPA) for players identified as under-13. This means: no analytics event collection beyond session length and aggregate counts; no behavioural ad targeting (already excluded by DD-V2-131); mandatory verifiable parental consent before account creation; a parent-accessible data deletion flow.
+**Goal**: Ensure that Recall Rogue is compliant with the Children's Online Privacy Protection Act (COPPA) for players identified as under-13. This means: no analytics event collection beyond session length and aggregate counts; no behavioural ad targeting (already excluded by DD-V2-131); mandatory verifiable parental consent before account creation; a parent-accessible data deletion flow.
 
 ---
 
@@ -1346,7 +1346,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   // First, set a PIN via localStorage (simulate a prior PIN setup)
   await page.evaluate(async () => {
     const encoder = new TextEncoder()
-    const data = encoder.encode('terra-gacha:pin:1234')
+    const data = encoder.encode('recall-rogue:pin:1234')
     const buf = await crypto.subtle.digest('SHA-256', data)
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('')
     const settings = JSON.parse(localStorage.getItem('terra_parental_v1') || '{}')
@@ -1529,7 +1529,7 @@ The following files are intentionally unchanged — they already contain the nec
 
 ## Design Rationale Notes
 
-**Why SHA-256 for PIN storage?** The PIN is low-entropy (4–6 digits, ≤1,000,000 possibilities), making it easily brute-forceable offline if the hash is obtained. However, the threat model here is a child circumventing parental controls from within the app, not an adversary with filesystem access to the device. SHA-256 with a domain-specific salt (`terra-gacha:pin:`) is sufficient for this threat model and avoids adding `bcrypt`/`argon2` as a client-side dependency. If the PIN were used for account security (it is not — it is local only), Argon2id would be required per the existing security policy in `docs/SECURITY.md`.
+**Why SHA-256 for PIN storage?** The PIN is low-entropy (4–6 digits, ≤1,000,000 possibilities), making it easily brute-forceable offline if the hash is obtained. However, the threat model here is a child circumventing parental controls from within the app, not an adversary with filesystem access to the device. SHA-256 with a domain-specific salt (`recall-rogue:pin:`) is sufficient for this threat model and avoids adding `bcrypt`/`argon2` as a client-side dependency. If the PIN were used for account security (it is not — it is local only), Argon2id would be required per the existing security policy in `docs/SECURITY.md`.
 
 **Why not `<13 = no account`?** COPPA allows under-13 accounts with verifiable parental consent, which is the approach taken here. Blocking accounts entirely would eliminate the educational-partnership market (Phase 44) and is not required by the regulation.
 

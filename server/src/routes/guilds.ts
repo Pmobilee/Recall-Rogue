@@ -1,5 +1,5 @@
 /**
- * Guild system routes for the Terra Gacha server.
+ * Guild system routes for the Recall Rogue server.
  * Guilds are player-formed groups that collaborate on weekly challenges and
  * accumulate Guild Knowledge Points (GKP) to appear on the guild leaderboard.
  *

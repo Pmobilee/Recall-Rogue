@@ -104,7 +104,7 @@
       <img
         class="card-preview"
         src={previewUrl}
-        alt="Share card preview showing your Terra Gacha progress"
+        alt="Share card preview showing your Recall Rogue progress"
       />
     {/if}
 

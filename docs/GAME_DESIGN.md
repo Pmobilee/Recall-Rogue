@@ -1,4 +1,4 @@
-# Arcane Recall — Game Design (Single Source of Truth)
+# Recall Rogue — Game Design (Single Source of Truth)
 
 > **One-line summary:** Card roguelite where every card is a fact — answer to attack, build your knowledge deck, the deeper you delve the stronger you become.
 
@@ -19,7 +19,7 @@ Reference: Habgood & Ainsworth (2011) demonstrated that intrinsic integration pr
 
 Prodigy Math Game (150M+ users, ~$50M/yr revenue) uses quizzes as a toll gate to RPG combat. Result: children spend ~3 min on math per 20 min of play. 888 questions needed to raise a standardized test score by one point. Children optimize around the learning.
 
-Arcane Recall inverts this. There is nothing to do EXCEPT engage with facts. Every card play, every deck-building choice, every reward selection involves a fact. The optimization path and the learning path are identical.
+Recall Rogue inverts this. There is nothing to do EXCEPT engage with facts. Every card play, every deck-building choice, every reward selection involves a fact. The optimization path and the learning path are identical.
 
 ### Three Systems Only
 
@@ -106,21 +106,21 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 
 **Base timer by floor:**
 
-| Floor | Base Timer |
-|-------|-----------|
-| 1-3 | 12s |
-| 4-6 | 9s |
-| 7-9 | 7s |
-| 10-12 | 5s |
-| 13+ | 4s |
+| Floor | Base Timer | Segment |
+|-------|-----------|---------|
+| 1-6 | 12s | Shallow Depths |
+| 7-12 | 9s | Deep Caverns |
+| 13-18 | 7s | The Abyss |
+| 19-24 | 5s | The Archive |
+| 25+ | 4s | Endless |
 
 **Question length modifier:** Add +1 second per 12 words in total text (question + all answer options) beyond 10 words. A 40-word question on Floor 1 gets 12 + 2.5 ≈ 14 seconds. A 10-word question gets the base 12. (Word bonus increased ~25% from earlier divisor of 15 to improve readability on longer questions.)
 
-**Slow Reader mode (set during onboarding):** "Do you prefer more time to read?" YES adds a flat +3 seconds to all timers and changes the timer bar color from red to amber (less stressful visual). This is NOT Explorer mode (which removes timers entirely). Slow Reader mode preserves urgency but gives breathing room.
+**Slow Reader mode (set in Settings):** Adds a flat +3 seconds to all timers and changes the timer bar color from red to amber (less stressful visual). This is NOT Story Mode (which removes timers entirely). Slow Reader mode preserves urgency but gives breathing room.
 
 **Speed bonus:** Answer in first 25% of the EFFECTIVE timer (after modifiers) → +50% effect.
 
-**Scholar Mode override:** -2s from base per tier. Tier 2 cards require free recall (no multiple choice).
+**Expert Mode (Scholar) override:** -2s from base per tier. Tier 2 cards require free recall (no multiple choice).
 
 ### Card Anatomy
 
@@ -207,9 +207,11 @@ Domain count determines content breadth. Each knowledge domain targets 10K+ fact
 
 ---
 
-## 4. Card Mechanics Pool (35 Mechanics)
+## 4. Card Mechanics Pool (35 Mechanics, 18 at Launch)
 
 Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its assigned type's pool. Same fact, different mechanic each run. Prevents "France = my Multi-Hit card" memorization.
+
+**Launch Phase Gating:** Each mechanic has a `launchPhase` (1 or 2). At launch, only Phase 1 mechanics (18 of 35) are active. Phase 2 mechanics are gated behind the `ENABLE_PHASE2_MECHANICS` feature flag in `balance.ts`. This ensures a tighter, more learnable mechanic set for new players. Phase 2 mechanics will unlock post-launch after player feedback.
 
 ### Attack Mechanics
 
@@ -316,12 +318,14 @@ Each fact needs 2-4 question variants. System tracks `lastVariantIndex` per fact
 
 Facts get HARDER as they approach mastery. Bjork's desirable difficulties: harder retrieval = better long-term memory.
 
-| Tier | Name | FSRS Trigger | Question Format | Power | Visual |
-|------|------|-------------|----------------|-------|--------|
-| 1 | Learning | Stability <5d | 3-option MCQ, generous timer | 1.0x | Standard frame |
-| 2a | Recall | Stability 5-15d, 3+ correct | 4-option MCQ OR reverse format | 1.3x | Silver tint |
-| 2b | Deep Recall | Stability 15-30d, 5+ correct | 5-option close distractors OR fill-blank | 1.6x | Silver + glow |
-| 3 | Mastered | Pass Mastery Trial | Not asked — passive relic | Permanent | Gold frame, relic tray |
+| Tier | Internal | Display Name | FSRS Trigger | Question Format | Power | Visual |
+|------|----------|-------------|-------------|----------------|-------|--------|
+| 1 | 1 | Learning | Stability <5d | 3-option MCQ, generous timer | 1.0x | Standard frame (bronze) |
+| 2a | 2a | Proven | Stability 5-15d, 3+ correct | 4-option MCQ OR reverse format | 1.3x | Silver tint |
+| 2b | 2b | Proven | Stability 15-30d, 5+ correct | 5-option close distractors OR fill-blank | 1.6x | Silver + glow |
+| 3 | 3 | Mastered | Pass Mastery Trial | Not asked — passive relic | Permanent | Gold frame, relic tray |
+
+**Display Simplification:** Players see only 3 tiers: **Learning** (bronze), **Proven** (silver), and **Mastered** (gold). Internal tiers 2a/2b are both displayed as "Proven" — the sub-tier distinction is invisible to players. This reduces cognitive load while preserving the FSRS-driven difficulty escalation under the hood. Functions `getTierDisplayName()` and `getDisplayTier()` in `tierDerivation.ts` handle this mapping.
 
 ### Mastery Trial
 
@@ -341,6 +345,24 @@ Fact at Tier 2b + stability >30d + 7 consecutive correct → qualifies.
 3. **Content expansion:** 10K+ facts per domain at launch across 10 knowledge domains + 6 language packs. Years of content depth.
 4. **Mastery Challenge events:** Rare Mystery room. Mastered fact, 3s timer, 5 distractors. Fail → Tier 2b, relic dormant
 5. **Minimum active pool:** <15 active facts → Tier 2b facts re-enter as active cards
+
+### Tier-Up Celebration Animations
+
+When a correct answer causes a card to advance to a higher tier (consecutiveCorrect crosses a threshold), a short celebration animation plays before the card launches:
+
+| Transition | Color | Animation |
+|---|---|---|
+| Tier 1 → 2a (Recall) | Blue glow | Card rumbles, blue pulse radiates outward |
+| Tier 2a → 2b (Deep Recall) | Green glow | Card rumbles, green pulse, brief sparkle particles |
+| Tier 2b → 3 (Mastered) | Purple/Gold glow | Card rumbles, purple-to-gold gradient pulse, per-fact unique animation (future art asset) |
+
+**Timing**: The tier-up animation inserts a ~600ms celebration phase between the existing "reveal" (400ms) and "mechanic" (500ms) phases. Total correct-answer sequence becomes: reveal → tier-up celebration → mechanic → launch.
+
+**Detection**: After updating FSRS state on correct answer, compare the card's tier before and after. If tier increased, trigger the celebration before proceeding to the mechanic phase.
+
+**Mastery Trial exception**: Tier 2b → 3 only occurs via the Mastery Trial, which already has its own golden card ceremony. The purple/gold tier-up animation plays as an additional flourish within that ceremony.
+
+**Per-fact mastery animation**: When a card reaches Tier 3, a unique pixel-art animation specific to that fact plays (e.g., a lightning bolt fact shows lightning striking). These animations are generated as art assets in a future content phase. Until then, a generic gold burst placeholder is used.
 
 ---
 
@@ -403,20 +425,34 @@ Relic type depends on card type at graduation. Specific passive randomly selecte
 
 ### Dungeon Layout
 
-| Depth | Floors | Encounters/Floor | Boss | Retreat |
-|-------|--------|-----------------|------|---------|
-| Shallow | 1-3 | 3 + 1 event | Floor 3: "The Excavator" | Keep 100% or delve |
-| Deep | 4-6 | 3 + 1-2 events | Floor 6: "Magma Wyrm" | Die = keep 80% |
-| Abyss | 7-9 | 3 + 2 events | Floor 9: "The Archivist" | Die = keep 65% |
-| Endless | 10+ | Scaling | Mini-boss every 3 | Die = keep 50% |
+| Segment | Floors | Encounters/Floor | Bosses | Death Penalty |
+|---------|--------|-----------------|--------|---------------|
+| Shallow Depths | 1-6 | 3 (2 regular + 1 mini-boss) + events | Floor 3: "The Excavator", Floor 6: "Magma Core" | Die = keep 80% |
+| Deep Caverns | 7-12 | 3 (2 regular + 1 mini-boss) + events | Floor 9: "The Archivist", Floor 12: "Crystal Warden" | Die = keep 65% |
+| The Abyss | 13-18 | 3 (2 regular + 1 mini-boss) + events | Floor 15: "Shadow Hydra", Floor 18: "Void Weaver" | Die = keep 50% |
+| The Archive | 19-24 | 3 (2 regular + 1 mini-boss) + events | Floor 21: "Knowledge Golem", Floor 24: "The Curator" (final) | Die = keep 35% |
+| Endless | 25+ | Scaling | Boss every 3 floors (cycles through bosses) | Die = keep 35% |
+
+Each floor has 3 encounters: encounters 1-2 are regular combat (common enemies), encounter 3 is always a mini-boss (or full boss on boss floors: 3, 6, 9, 12, 15, 18, 21, 24).
 
 ### Retreat-or-Delve Psychology
 
-Kahneman & Tversky's prospect theory: loss aversion at ~2x. At 20% risk (Segment 2), most players push. At 50% risk (Endless), only confident players continue. Escalating risk matches escalating reward. Never exceed 50% loss — total wipeout causes quit behavior on mobile.
+Kahneman & Tversky's prospect theory: loss aversion at ~2x. At 20% risk (Segment 1), most players push. At 65% risk (Segment 4), only confident players continue. Escalating risk matches escalating reward. Never exceed 65% loss — total wipeout causes quit behavior on mobile.
+
+### Encounter Loop (Per Floor)
+
+Each floor has 3 encounters with the following flow:
+1. **Encounter 1** (regular enemy) → card reward → **room selection** (3 doors)
+2. **Encounter 2** (regular enemy from chosen room) → card reward → **auto-start encounter 3** (no room selection)
+3. **Encounter 3** (mini-boss on normal floors, full boss on boss floors) → card reward → floor transition
+   - On boss floors: card reward → **special event** → **retreat-or-delve** checkpoint
+   - On normal floors: advance to next floor → room selection for floor N+1
+
+Room selection only appears between encounters 1→2 and between floors. Encounter 3 is always the floor's climactic fight.
 
 ### Room Selection
 
-After each encounter, choose from 3 doors:
+After encounters 1 and between floors, choose from 3 doors:
 
 | Icon | Room | Description |
 |------|------|-------------|
@@ -471,11 +507,83 @@ Players still engage with diverse facts because fact assignment is random. Choos
 **Anti-Exploitation Note:**
 Card type selection does not let players avoid any domain. A player building an all-Attack deck still sees facts from every domain they've engaged with during the run. Type selection affects combat strategy, not educational scope.
 
+### Reward Altar Presentation
+
+Post-encounter rewards are presented as physical objects on an atmospheric altar scene rather than UI buttons.
+
+**Scene composition:**
+- A spotlight cone illuminates a surface from above
+- Surface style varies by biome: stone slab (caves), wooden table (library), mossy altar (forest), ornate pedestal (temple)
+- A decorative cloth/mat sits on the surface with reward icons arranged on top
+
+**Reward icons** (pixel-art objects, not buttons):
+
+| Reward Type | Icon Variants |
+|---|---|
+| Attack card | Sword, axe, dagger, staff, bow |
+| Shield card | Round shield, tower shield, buckler |
+| Heal card | Potion bottle, herbs, bandage roll |
+| Buff/Utility card | Scroll, crystal, tome, amulet |
+| Gold | Small pile of gold coins |
+| Potion | Glowing flask |
+| Relic | Ornate glowing artifact |
+
+**Interaction flow:**
+1. All reward options displayed as icons on the altar (pick one)
+2. Tap an icon → it lifts, spotlight focuses, stats tooltip appears below
+3. "Select" button appears at bottom
+4. On select → chosen reward flies to deck/inventory, others fade to shadow
+5. Each icon has subtle idle animation (bob, shimmer, glow pulse)
+
+**Art assets required:** ~30 icon sprites (multiple variants per reward type), 4-5 altar surface backgrounds, cloth/mat overlay, spotlight effect.
+
 ### Encounter Termination
 
 1. Enemy HP ≤ 0 → Victory + card reward (type selection screen)
 2. Player HP ≤ 0 → Defeat, run ends with retreat penalties
 3. Turn 15+ → Enemy +3 dmg/turn (soft enrage)
+
+### Save/Resume System
+
+Players can quit mid-run and resume later. Only ONE active run save at a time. Save state is stored in `localStorage` under key `recall-rogue-active-run`.
+
+**Auto-save triggers:**
+- After every encounter victory (before card reward)
+- After card reward selection
+- After room selection (before encounter starts)
+- When player enters campfire/pause screen
+- When app goes to background
+
+**Resume flow:**
+- On app startup, if an active run save exists, the Hub shows a "Run in progress" banner with Resume/Abandon buttons
+- Resume restores full run state (floor, HP, deck, pool, relics, screen position)
+- Abandon clears the save; FSRS progress is kept but run rewards are lost
+
+**Save cleared on:** run end (victory, defeat, retreat, abandon)
+
+### Campfire Pause Screen
+
+A cozy pause screen accessible via a pause button (top-right corner) during combat and room selection.
+
+**Displays:** Floor number, HP, deck size, relic count, accuracy percentage.
+
+**Actions:**
+- **Resume Run** — returns to the previous screen
+- **Return to Hub** — saves run state and goes to hub (player can resume later)
+
+### Special Events (Post-Boss)
+
+After defeating a boss, the player receives a card reward and then faces a special event before the retreat-or-delve checkpoint.
+
+| Event | Effect |
+|-------|--------|
+| Relic Forge | Choose 1 of 3 relic upgrades |
+| Card Transform | Upgrade one card mechanic to next tier |
+| Deck Thin | Remove up to 2 cards from your deck |
+| Knowledge Spring | All facts answered correctly this run gain +1 day FSRS stability |
+| Mystery Event | Random beneficial effect (heal 20 HP, gain 50 gold, or draw +1 card) |
+
+Events are randomly selected from the pool after each boss fight.
 
 ---
 
@@ -485,25 +593,41 @@ Card type selection does not let players avoid any domain. A player building an 
 
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
-| Cave Bat | 22 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
-| Crystal Golem | 45 | 9 every 2 turns, 13 (heavy) | Blocks on off-turns. Sustained damage. |
-| Toxic Spore | 18 | 5 + poison | Low HP, DOT. Teaches healing. |
-| Shadow Mimic | 28 | 7, copies last card | Punishes repetition. |
+| Cave Bat | 19 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
+| Crystal Golem | 38 | 9 every 2 turns, 13 (heavy) | Blocks on off-turns. Sustained damage. |
+| Toxic Spore | 15 | 5 + poison | Low HP, DOT. Teaches healing. |
+| Shadow Mimic | 24 | 7, copies last card | Punishes repetition. |
 
 ### Elites
 
 | Enemy | HP | Special |
 |-------|-----|---------|
 | Ore Wyrm | 58 | Phase 2 doubles attack |
-| Tome Guardian | 50 | Immune to 1 random card TYPE |
+| Fossil Guardian | 45 | Immune to history domain |
 
-### Bosses
+### Mini-Bosses (Encounter 3 on non-boss floors)
+
+| Enemy | HP | Damage | Behavior |
+|-------|-----|--------|----------|
+| Crystal Guardian | 35 | 8 | Golem variant, gains block per turn |
+| Venomfang | 30 | 7 | Spider, applies poison on attack |
+| Stone Sentinel | 40 | 9 | Tanky — low attack, high HP |
+| Ember Drake | 32 | 10 | Glass cannon — high damage, low HP |
+| Shade Stalker | 28 | 8 | Copies player's last played card type |
+| Bone Collector | 36 | 7 | Heals 5 HP when player answers wrong |
+
+### Bosses (Every 3rd floor)
 
 | Boss | Floor | HP | Pattern |
 |------|-------|-----|---------|
-| The Excavator | 3 | 72 | 12 damage, escalating |
-| Magma Wyrm | 6 | 100 | 8, +2/turn escalating |
-| The Archivist | 9 | 90 | 7 + shuffles hand |
+| The Excavator | 3 | 61 | 12 damage, escalating |
+| Magma Core | 6 | 68 | 8 + poison, phase 2 eruption at 40% HP |
+| The Archivist | 9 | 85 | 7 + shuffles hand, phase 2 at 50% HP |
+| Crystal Warden | 12 | 90 | 12 damage, status immunity, counter + heal |
+| Shadow Hydra | 15 | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
+| Void Weaver | 18 | 125 | 13 damage, hand disruption, debuffs |
+| Knowledge Golem | 21 | 140 | 15 damage, +5 bonus on wrong answers |
+| The Curator | 24 | 160 | 16 damage, all mechanics, phase 2 at 40% HP (final boss) |
 
 Floor scaling: HP and damage +15% per depth segment. Player: 80 HP start, 100 max, 0 block (resets each turn).
 
@@ -537,15 +661,19 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 
 ### Player Modes
 
-| Mode | Timer | Wrong Penalty | Enemy Dmg | Rewards |
-|------|-------|--------------|-----------|---------|
-| Explorer | None | 50% effect | -30% | 70% |
-| Standard | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 100% |
-| Scholar | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 150% |
+| Internal ID | Display Name | Timer | Wrong Penalty | Enemy Dmg | Reward Multiplier |
+|-------------|-------------|-------|--------------|-----------|-------------------|
+| explorer | Story Mode | None | 50% effect | -30% | 1.00x |
+| standard | Timed Mode | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
+| scholar | Expert Mode | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 1.20x |
+
+**Story Mode forced for new players:** Runs 1-3 automatically use Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 3 completed runs, all modes unlock.
+
+**Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Story Mode and Timed Mode earn standard rewards; Expert Mode earns a 20% bonus.
 
 ### Slow Reader Option
 
-Set during onboarding: "Do you prefer more time to read?" Adds flat +3 seconds to all timers. Timer bar color changes from red to amber (less stressful). Preserves urgency without panic. NOT Explorer mode (which removes timers entirely). Can be changed in settings anytime.
+Adds flat +3 seconds to all timers. Timer bar color changes from red to amber (less stressful). Preserves urgency without panic. NOT Story Mode (which removes timers entirely). Can be changed in Settings anytime. (Previously asked during onboarding; now set exclusively in the Settings panel.)
 
 ### Difficulty-Proportional Power
 
@@ -637,14 +765,14 @@ Research: Mobile users decide to keep an app within 7-30 seconds. Duolingo delay
 
 ```
 0-3s:   Dungeon entrance. "ENTER THE DEPTHS" button.
-3-5s:   Brief: "Do you prefer more time to read?" [Yes / No] (Slow Reader toggle)
-5-10s:  First encounter. Hand of 5. Tooltip: "Tap a card to examine it"
+3-10s:  First encounter (Story Mode forced). Hand of 5. Tooltip: "Tap a card to examine it"
 10-14s: Card rises with info overlay. Tooltip: "Tap again or swipe up to cast"
 14-20s: Question panel appears above hand. Correct → juice stack. Wrong → gentle fizzle.
 20-35s: Remaining AP. End Turn tooltip.
 35-60s: Second encounter. Minimal tooltips.
 ~2-3m:  Run ends. "Create account to save progress?" (skippable).
-Run 2:  Domain selection unlocks.
+Run 2:  Domain selection unlocks ("What are you curious about? Pick 2 to specialize in.").
+Run 4:  Archetype selection unlocks (runs 1-3 auto-assign 'Balanced').
 ```
 
 First encounter: 2 AP. Full 3 AP from encounter 3.
@@ -684,7 +812,7 @@ Instead of a separate placement test (immersion-breaking) or accepting slow cali
 
 ### Run-Start Archetype Selection — Deck Strategy Layer
 
-**Availability:** Unlocks at Run 2 (same timing as domain selection). At run start, before the first encounter, players select a preferred **Deck Archetype Bias**. This is a SOFT preference, not a hard constraint.
+**Availability:** Unlocks at Run 4 (after 3 completed runs). During runs 1-3, the archetype selection screen is skipped and 'Balanced' is automatically assigned. This reduces cognitive load during onboarding — new players focus on learning combat basics before making strategic deck choices. Controlled by `ARCHETYPE_UNLOCK_RUNS` in `balance.ts`. At run start, before the first encounter, players select a preferred **Deck Archetype Bias**. This is a SOFT preference, not a hard constraint.
 
 **Archetype Options:**
 
@@ -771,6 +899,24 @@ STS-style intent badge shown in combat overlay (center, between AP and bounty st
 
 Simplified display: shows "END TURN" only (no AP count). Turns gold with pulsing glow when no actions remain (0 AP or no playable cards). Confirmation popup when tapping End Turn with AP remaining and playable cards available.
 
+### First-Person Dungeon Perspective
+
+Combat and room exploration use a first-person viewpoint — the player character is not visible in dungeon scenes.
+
+**Combat framing:**
+- Upper ~55% of screen: first-person view of the room with the enemy/boss looming large, facing the player directly
+- Lower ~45%: card hand and interaction area (unchanged)
+- Enemies rendered at 2-3x current sprite scale, centered and menacing
+- Boss encounters use even larger sprites with a dramatic zoom-in on room entry
+
+**Room transitions:**
+- Entering a new room triggers a fade-in from black (~400ms) for pacing and atmosphere
+- Door/room selection presented as a first-person hallway with 2-3 visible doorways to choose from
+
+**Player character visibility:**
+- NOT visible during dungeon crawl (first-person)
+- Visible at the camp hub between runs (third-person camp scene)
+
 ---
 
 ## 17. Game Juice
@@ -853,6 +999,17 @@ Each card mechanic has a unique CSS `@keyframes` animation that plays during the
 | 6 | Sound | Crisp impact (Wordle ding x fighting game punch) |
 | 7 | Combo | Escalating text + particles at 3+, burst at 5 |
 
+### wowFactor Display (Learning Tier Only)
+
+After a correct answer on a **Learning-tier (Tier 1)** card, if the fact has a `wowFactor` string, a brief overlay displays it for 2.5 seconds. This surfaces the "mind-blowing restatement" generated by the content pipeline (see §25) at the moment of peak engagement — right after a correct answer.
+
+**Rules:**
+- Only fires for Tier 1 cards (Learning) — players seeing a fact for the first few times benefit most from elaborative framing
+- Maximum 3 wowFactor displays per encounter (prevents fatigue)
+- 200ms fade-in, 300ms fade-out animation
+- Overlay appears below the question area, styled as semi-transparent dark panel with amber accent
+- Counter resets each encounter (tracked per turn-1 reset)
+
 ### Wrong Answer (muted)
 
 | # | Element | Detail |
@@ -890,8 +1047,8 @@ Apple and Google factor accessibility into editorial featuring. "Apps We Love" d
 | Category | Detail |
 |----------|--------|
 | Visual | Colorblind (shape/icon not just color), 3 text sizes, high contrast, reduce motion (disables shake/particles, keeps haptics) |
-| Motor | Tap only, 48dp+ targets, no timer in Explorer, Slow Reader option |
-| Cognitive | Explorer soft fail, hints, numeric+icon indicators, 6th-grade reading level |
+| Motor | Tap only, 48dp+ targets, no timer in Story Mode, Slow Reader option |
+| Cognitive | Story Mode soft fail, hints, numeric+icon indicators, 6th-grade reading level |
 
 ---
 
@@ -911,7 +1068,9 @@ Invisible. Never announced. Never reduces educational rigor (answer count, forma
 
 ---
 
-## 22. Language Learning Integration
+## 22. Language Learning Integration (Post-Launch)
+
+**Status:** Language domains are hidden from the domain picker at launch (`ENABLE_LANGUAGE_DOMAINS = false` in `balance.ts`). Language content (Japanese N3-N5, etc.) exists in the facts database but is not selectable until the feature flag is enabled post-launch. This allows focus on knowledge domains for initial launch quality.
 
 Vocabulary cards require different UI and interaction patterns.
 
@@ -1028,6 +1187,27 @@ Research: Vampire Survivors $57M+ on $5 premium. Duolingo $1B+ freemium subscrip
 
 No pay-to-win. No premium currency. No gacha. Education (primary) + Games (secondary).
 
+### Camp Hub & Cosmetic Progression
+
+The between-runs hub is a camp scene near the dungeon entrance. Gold earned from runs is spent on purely visual upgrades.
+
+**Camp elements** (each is a sprite slot at a fixed screen position):
+
+| Element | Upgrade Tiers | Example Progression |
+|---|---|---|
+| Tent | 5 | Bedroll → canvas tent → leather tent → decorated tent → ornate pavilion |
+| Seating | 4 | Log → wooden bench → cushioned bench → carved throne |
+| Campfire | 4 | Small fire → stone pit → brazier → magical flame |
+| Character | cosmetic | Outfit/armor visual variants |
+| Pet | unlockable | Cat, owl, fox, dragon whelp (one active at camp) |
+| Decorations | collectible | Boss trophies, banners, garden, bookshelves |
+
+**Menu navigation** is integrated into the camp scene: tap the tent (inventory), campfire (start run), signpost (settings), character (profile).
+
+**Technical model:** `campState = { tent: 3, seating: 2, fire: 1, pet: 'owl', decorations: ['boss_slime_trophy'] }` — each key maps to a sprite variant rendered at a fixed position. Upgrades are purely visual sprite swaps. State persists in player save data.
+
+**Gold sink design:** Camp upgrades are the primary gold sink. Pricing scales exponentially per tier. No gameplay advantage — purely cosmetic progression that rewards consistent play.
+
 ---
 
 ## 24. Anti-Features
@@ -1056,7 +1236,7 @@ No chat/social. No AI-generated facts without human review. No PvP. No deck edit
 └──────────────────────────┘
 ```
 
-**Share button** generates a Wordle-style card image: "I explored Depth 6 of Arcane Recall, answered 42 facts with 81% accuracy, and mastered 2 new concepts. How deep can you go?" Communicates achievement without spoiling content. Organic viral loop.
+**Share button** generates a Wordle-style card image: "I explored Depth 6 of Recall Rogue, answered 42 facts with 81% accuracy, and mastered 2 new concepts. How deep can you go?" Communicates achievement without spoiling content. Organic viral loop.
 
 ---
 
@@ -1161,7 +1341,7 @@ interface RunCard {
 
 ### Question Variant Requirements
 
-**Knowledge facts:** Minimum 4 variants, target 6-8. Variant types:
+**Knowledge facts:** Minimum 4 variants, target 5. Variant types:
 - **Forward**: Direct question → correct answer (e.g., "What causes oil formation?")
 - **Reverse**: Answer/description → identify the subject (e.g., "Heat and pressure on organic matter over millions of years produces...")
 - **Negative**: "Which is NOT..." → identify the false option (e.g., "Which is NOT a factor in oil formation?")
@@ -1169,11 +1349,27 @@ interface RunCard {
 - **Fill-blank**: Statement with key term blanked (e.g., "Oil is formed from ___ under heat and pressure over millions of years")
 - **True/false**: Statement that may be subtly wrong (e.g., "Oil is formed from volcanic activity under the ocean" → False)
 
+**Q&A length constraints** (enforced by `QA_LIMITS` in `balance.ts`):
+
+| Variant Type | Question Max Words | Answer Max Words |
+|---|---|---|
+| forward | 12 | 5 |
+| reverse | 15 | 4 |
+| negative | 10 | 5 |
+| fill_blank | 15 | 3 |
+| true_false | 15 | 1 |
+| context | 15 | 4 |
+
+- Base question limit: 12 words
+- Answer limit: 5 words / 30 characters
+- Answer options must be within 20% character count of each other
+
 **Distractor quality rules:**
 - All options must be similar length (within 20% character count)
 - All options must be similarly specific (no "obviously detailed" correct answer)
 - Distractors must be plausible to someone who doesn't know the answer
 - For negative variants, the distractors ARE correct facts (the wrong answer is the one that IS true)
+- 8–12 distractors per fact (top-level pool), max 30 characters each
 
 **Vocabulary facts:** Exempt from variant expansion. The existing forward/reverse/fill-blank system is sufficient because answer options are always similar-length words.
 
@@ -1298,8 +1494,8 @@ Wikidata SPARQL query → structured JSON
 
 **Haiku generates:**
 - Quiz question text (natural language, engaging phrasing)
-- 3–4 question variants per fact (forward, reverse, fill-blank, true/false)
-- 8–25 plausible distractors with difficulty tiers (easy/medium/hard)
+- 4–5 question variants per fact (forward, reverse, negative, fill-blank, true/false, context)
+- 8–12 plausible distractors with difficulty tiers (easy/medium/hard), max 30 chars each
 - `difficulty` rating (1–5)
 - `funScore` rating (1–10)
 - `visualDescription` (culturally themed for vocabulary, fact-illustrating for knowledge)
@@ -1383,10 +1579,103 @@ No commercial game currently combines spaced repetition with card roguelite mech
 
 ---
 
-## 31. Future Todo (Post-Launch)
+## 31. App Store Review Prompt Timing
+
+Native App Store / Play Store review prompts are triggered at emotionally positive peaks to maximize conversion. Implemented in `src/services/reviewPromptService.ts`.
+
+**Trigger Conditions (any ONE fires the prompt):**
+1. **First Boss Kill** — After defeating any boss and retreating (positive victory moment)
+2. **First Tier 2 Promotion** — When any fact reaches Tier 2a, 2b, or 3 for the first time (knowledge milestone)
+3. **7-Day Streak** — When the player reaches a 7-consecutive-day streak (habit formation peak)
+
+**Rate Limiting:**
+- Maximum 1 prompt per 90 days
+- Never during an active run or after a death/defeat
+- Minimum 3 completed runs before any prompt
+- Maximum 3 prompts total per rolling year (Apple guideline compliance)
+- Each trigger fires at most once (e.g., second boss kill won't re-trigger)
+
+**Technical:** Uses Capacitor's `registerPlugin('StoreReview')` for native prompts. Falls back to no-op on web. State persisted in localStorage.
+
+---
+
+## 32. Push Notifications (Mobile Retention)
+
+**Status: Built.** Implemented in `src/services/notificationService.ts`. Settings UI in `SettingsPanel.svelte`. Integration in `gameFlowController.ts` (run completion) and `main.ts` (app open).
+
+**4 Notification Types (priority order):**
+
+| # | Type | Trigger | Schedule | Example Message |
+|---|------|---------|----------|-----------------|
+| 1 | Streak Risk | Streak >= 2 days, no run today | 6 PM local (6 hrs before midnight) | "Your {N}-day streak is at risk! Jump back into the dungeon." |
+| 2 | Milestone Proximity | Within 2 facts of domain mastery | 4 hours after last session | "You're 2 facts from mastering {domain}!" |
+| 3 | Facts Due | FSRS has 10+ facts due for review | 9 AM local (next day if past 9 AM) | "{N} facts are ready for review. Keep your knowledge sharp!" |
+| 4 | Win-Back | No session in 3+ days | Day 3, 7, 14 after last session at 10 AM | "Your deck misses you. {N} facts are overdue for review." |
+
+**Scheduling Rules:**
+- **Max 1 notification per day** — tracked via `lastNotificationDate` in localStorage
+- **Quiet hours: 10 PM – 8 AM local** — notifications falling in quiet hours are pushed to 8 AM
+- **Priority**: streak > milestone > facts due > win-back (only the highest fires)
+- **Reschedule on every app open** — cancel all pending, recalculate, reschedule
+- **Reschedule on run completion** — same cancel-recalculate cycle
+
+**Permission & Platform:**
+- Permission requested after first completed run (not during onboarding)
+- Uses Capacitor `LocalNotifications` plugin via dynamic import with `@vite-ignore`
+- Web fallback: silent no-op (all functions are safe to call on web)
+- Win-back stops after Day 14 (no further notifications for inactive players)
+
+**Settings UI (in Settings > Notifications):**
+- Master toggle: "Push Notifications" (on/off, cancels all when off)
+- Sub-toggles (visible only when master is on): Streak Reminders, Review Reminders, Milestone Alerts, Win-back Messages
+- All enabled by default; state persisted in localStorage key `recall-rogue-notifications`
+
+---
+
+## 33. Ascension Mode (Post-Launch Design)
+
+**Status: Post-Launch — Implementation TBD (future AR phase).**
+
+**Unlocks:** After first successful run completion (reach floor 9+ and retreat, or clear floor 24).
+
+20 Ascension levels, each adds a permanent modifier. All previous levels stack:
+
+| Level | Modifier | Effect |
+|-------|----------|--------|
+| 1 | Tougher Enemies | All enemies +10% HP |
+| 2 | Aggressive Foes | All enemies +10% damage |
+| 3 | Fewer Heals | Heal cards 25% less effective |
+| 4 | Shorter Fuse | Timer -1s base on all questions |
+| 5 | Thin Deck | Start with 12 cards instead of 15 |
+| 6 | Iron Will | No flee from encounters |
+| 7 | Harsh Grading | Close-distractor answers more common |
+| 8 | Elite Surge | Mini-bosses gain boss-tier attacks |
+| 9 | Combo Breaker | Combo resets on turn end (not just on wrong answer) |
+| 10 | Endurance | Runs must reach floor 12+ to retreat with rewards |
+| 11 | Fading Light | Encounter 2 per floor has -2s timer |
+| 12 | Relic Tax | Max 8 relics instead of 12 |
+| 13 | Deep Knowledge | All Tier 1 cards are 4-option MCQ (no easy 3-option) |
+| 14 | Glass Cannon | Player max HP reduced to 70 |
+| 15 | Boss Rush | Bosses gain +25% HP |
+| 16 | No Echo | Echo mechanic disabled (wrong answers don't return) |
+| 17 | Scholar's Burden | Wrong answers deal 5 self-damage (all modes) |
+| 18 | Minimalist | Start with 10 cards |
+| 19 | True Test | All questions are fill-blank or production format |
+| 20 | Heart of the Archive | Floor 24 boss gains a secret second phase |
+
+**Design philosophy:** Each level targets a different player skill. Early levels (1-5) are stat adjustments anyone can handle. Mid levels (6-12) restrict strategies. Late levels (13-20) fundamentally alter gameplay. Level 20 is a prestige challenge — only the most dedicated players will see the Curator's true form.
+
+**Interaction with difficulty modes:** Ascension modifiers stack ON TOP of difficulty mode settings. Story Mode + Ascension 5 still has no timer but starts with 12 cards. Expert Mode + Ascension 17 means wrong answers deal 5 self-damage AND 3 self-damage from fizzle.
+
+---
+
+## 34. Future Todo (Post-Launch)
 
 - **Reintroduce Knowledge Tree UI (exploration mode):**
   Bring back a dedicated tree-view progression screen that visualizes category/subcategory mastery across all 11 domains, with zoom levels (forest -> branch -> leaf), overdue-state visual cues, and tap-through fact detail. This is currently not part of the primary run loop and should return only after launch-critical stability/content pipeline work is complete.
+
+- **Mastery Skins (Animated Card Backs):**
+  Every card that reaches "Learned" state (Tier 2a+) unlocks a unique animated card back — a short looping animation generated with WAN2.1 (video diffusion model). This replaces the static pixel art cardback with a living, breathing scene. If the player's FSRS retrievability drops below the learned threshold (i.e., the fact decays back to Tier 1 due to missed reviews), the animated skin is lost and reverts to the static card back. Re-learning the fact re-unlocks the animation. This creates a powerful visual incentive loop: players SEE their knowledge literally come alive, and neglecting review causes their collection to visually decay. The transience makes mastery feel earned, not permanent — matching how real memory works.
 
 ---
 
@@ -1400,7 +1689,7 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Domain | Subject category (Science, History, etc.). Content label only. Does NOT determine card type. |
 | Run | Single playthrough: enter dungeon, delve through floors, retreat or die |
 | Floor | One dungeon depth containing 3 encounters + optional events |
-| Segment | Group of 3 floors ending in boss + retreat checkpoint |
+| Segment | Group of 6 floors ending in boss + retreat-or-delve checkpoint |
 | Encounter | Single combat: player plays cards vs one enemy |
 | Hand | 5 cards drawn from draw pile for current turn |
 | AP (Action Points) | 3 per turn. Each card commit costs 1. Skip is free. |
@@ -1424,3 +1713,8 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Archetype Bias | Run-start deck strategy preference (Balanced/Aggressive/Defensive/Control/Hybrid). Soft weighting on card type rewards. |
 | Haiku Generation | Content pipeline using Claude Haiku API to transform structured data (Wikidata, NASA, etc.) into Fact schema JSON with questions, distractors, and metadata. |
 | Content Source Registry | Documented inventory of all approved data sources with license verification. See docs/CONTENT_STRATEGY.md. |
+| Mastery Skin | Animated card back (WAN2.1 video) unlocked when a fact reaches Tier 2a+. Reverts to static art if FSRS retrievability decays below learned threshold. |
+| Ascension Mode | Post-launch difficulty system. 20 stacking levels of increasing challenge. Unlocks after first successful run. |
+| Campfire Pause | In-run pause screen showing run stats with resume/hub options. Saves run state. |
+| Special Event | Post-boss reward event (Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery). |
+| Push Notification | Local mobile notification for retention (streak risk, milestone, review due, win-back). Max 1/day. |

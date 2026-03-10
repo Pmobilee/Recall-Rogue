@@ -325,7 +325,7 @@ export async function adminFactsRoutes(fastify: FastifyInstance): Promise<void> 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facts Dashboard — Terra Gacha Admin</title>
+  <title>Facts Dashboard — Recall Rogue Admin</title>
   <style>${PAGE_CSS}</style>
 </head>
 <body>
@@ -449,7 +449,7 @@ export async function adminFactsRoutes(fastify: FastifyInstance): Promise<void> 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Fact ${esc(id.slice(0, 12))} — Terra Gacha Admin</title>
+  <title>Edit Fact ${esc(id.slice(0, 12))} — Recall Rogue Admin</title>
   <style>${PAGE_CSS}</style>
 </head>
 <body>

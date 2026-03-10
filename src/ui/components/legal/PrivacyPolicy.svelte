@@ -22,7 +22,7 @@
     <section class="policy-section">
       <h2 class="section-heading">1. Introduction</h2>
       <p>
-        Terra Gacha ("the Game") is developed and operated by an independent ("indie") developer.
+        Recall Rogue ("the Game") is developed and operated by an independent ("indie") developer.
         This Privacy Policy explains what personal data we collect when you play the Game, how we
         use it, and what rights you have over it. By creating an account or playing the Game you
         agree to the practices described here.
@@ -186,7 +186,7 @@
         For privacy-related enquiries, data access requests, or concerns, please write to:
       </p>
       <address class="contact-address">
-        Terra Gacha Privacy Team<br />
+        Recall Rogue Privacy Team<br />
         <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>
       </address>
       <p>We aim to respond to all privacy requests within <strong>30 days</strong>.</p>

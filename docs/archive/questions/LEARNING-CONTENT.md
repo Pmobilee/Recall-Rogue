@@ -2,7 +2,7 @@
 
 > These questions explore the knowledge system, quiz mechanics, fact pipeline,
 > GAIA teaching, and learning retention. Answer them to refine the educational core
-> of Terra Gacha. Each question references the current implementation state and
+> of Recall Rogue. Each question references the current implementation state and
 > includes professional advice from an educational game design perspective.
 
 ---

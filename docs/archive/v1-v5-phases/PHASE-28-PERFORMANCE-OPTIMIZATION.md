@@ -12,7 +12,7 @@ DD-V2-192, DD-V2-194, DD-V2-215, DD-V2-218, DD-V2-219, DD-V2-222, DD-V2-223, DD-
 
 ## Overview
 
-Phase 28 brings Terra Gacha's rendering, memory, and network footprint within the budget
+Phase 28 brings Recall Rogue's rendering, memory, and network footprint within the budget
 constraints defined at architecture time. The three primary targets:
 
 1. **60 fps** on mid-range devices (Snapdragon 7xx / A14 class, 6 GB RAM) during active mining
@@ -257,11 +257,11 @@ Add to `package.json` scripts:
 
 ```typescript
 /**
- * Custom Phaser entry point for Terra Gacha.
+ * Custom Phaser entry point for Recall Rogue.
  * Re-exporting default preserves Phaser.X.Y namespace types used throughout the codebase.
  * Named re-exports allow Rollup to tree-shake unused modules (Matter.js, Spine, DOM plugin).
  *
- * Excluded (not used by Terra Gacha):
+ * Excluded (not used by Recall Rogue):
  *   Matter.js physics, Arcade physics, Facebook Instant Games, Spine, Rope game object,
  *   Impact physics, DOM element plugin, Bitmap mask (we use geometry mask for fog only)
  *
@@ -1014,7 +1014,7 @@ function startPerfPolling(): void {
     const mineScene = game.scene.getScene('MineScene') as any
     const dirtyTiles = mineScene?.dirtyTracker?.pendingCount ?? 0
     // Save size from localStorage
-    const raw = localStorage.getItem('terra-gacha-save') ?? ''
+    const raw = localStorage.getItem('recall-rogue-save') ?? ''
     const saveSizeKB = Math.round(raw.length / 1024)
     perfStats = { fps, drawCalls, sprites, gpuMB, heapMB, dirtyTiles, saveSizeKB }
   }, 500)

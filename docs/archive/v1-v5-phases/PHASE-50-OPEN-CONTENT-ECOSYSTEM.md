@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Goal**: Transform Terra Gacha's fact database into a publicly accessible, community-driven educational
+**Goal**: Transform Recall Rogue's fact database into a publicly accessible, community-driven educational
 content platform. This phase builds on the existing UGC scaffolding (`server/src/routes/ugc.ts`,
 `server/src/services/ugcReviewService.ts`) and fact administration infrastructure
 (`server/src/routes/facts.ts`) to expose a versioned public API, implement a full community
@@ -16,7 +16,7 @@ ecosystem creates an external content contribution flywheel — partners submit 
 pipeline ensures quality, and approved facts flow back into the game. Licensing and attribution
 tracking also satisfy the legal requirements of institutional partners (schools, universities,
 nonprofit ed-tech organizations) who need explicit Creative Commons terms before embedding
-Terra Gacha content in curricula.
+Recall Rogue content in curricula.
 
 **Dependencies (must be complete before starting)**:
 - Phase 11: Fact Content Engine — `factsDb` singleton, `facts.db` SQLite schema, ingestion API,
@@ -300,7 +300,7 @@ function ccAttribution() {
   return {
     license: 'CC BY 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
-    attribution: 'Terra Gacha Fact Database — terragacha.com',
+    attribution: 'Recall Rogue Fact Database — terragacha.com',
     requiresAttribution: true
   }
 }
@@ -1203,7 +1203,7 @@ export function generateAttribution(factIds: string[]): CcAttribution {
   const licenseUrl = LICENSE_URLS[licenseType]
   const year = new Date().getFullYear()
   const attributionText =
-    `© ${year} Terra Gacha (terragacha.com). Licensed under ${licenseType === 'CC_BY_4' ? 'CC BY 4.0' : 'CC BY-NC 4.0'}.`
+    `© ${year} Recall Rogue (terragacha.com). Licensed under ${licenseType === 'CC_BY_4' ? 'CC BY 4.0' : 'CC BY-NC 4.0'}.`
 
   return {
     licenseType,
@@ -1212,8 +1212,8 @@ export function generateAttribution(factIds: string[]): CcAttribution {
     attributionText,
     attributionHtml:
       `<span xmlns:dct="http://purl.org/dc/terms/">` +
-      `Terra Gacha Facts</span> by ` +
-      `<a href="https://terragacha.com">Terra Gacha</a> is licensed under ` +
+      `Recall Rogue Facts</span> by ` +
+      `<a href="https://terragacha.com">Recall Rogue</a> is licensed under ` +
       `<a href="${licenseUrl}">${licenseType === 'CC_BY_4' ? 'CC BY 4.0' : 'CC BY-NC 4.0'}</a>.`,
     requiresShareAlike: false,
     requiresNonCommercial: licenseType === 'CC_BY_NC_4',
@@ -1253,14 +1253,14 @@ app.get('/license', async (_req, reply) => {
       licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
       requiresAttribution: true,
       requiresNonCommercial: false,
-      attributionTemplate: '© {year} Terra Gacha (terragacha.com). Licensed under CC BY 4.0.'
+      attributionTemplate: '© {year} Recall Rogue (terragacha.com). Licensed under CC BY 4.0.'
     },
     pixelArtImages: {
       license: 'CC BY-NC 4.0',
       licenseUrl: 'https://creativecommons.org/licenses/by-nc/4.0/',
       requiresAttribution: true,
       requiresNonCommercial: true,
-      attributionTemplate: '© {year} Terra Gacha (terragacha.com). Licensed under CC BY-NC 4.0.'
+      attributionTemplate: '© {year} Recall Rogue (terragacha.com). Licensed under CC BY-NC 4.0.'
     },
     contactForCommercialLicensing: 'licensing@terragacha.com'
   })
@@ -1277,7 +1277,7 @@ app.get('/license', async (_req, reply) => {
 
 ### 50.6 — Third-Party Integration SDK
 
-**Goal**: Produce a self-contained JavaScript/TypeScript SDK (`terra-gacha-sdk`) in
+**Goal**: Produce a self-contained JavaScript/TypeScript SDK (`recall-rogue-sdk`) in
 `packages/sdk/` that wraps the public API, an embeddable iframe widget in
 `packages/widget/embed.html`, and a webhook delivery service on the server.
 
@@ -1349,8 +1349,8 @@ async function deliverWithRetry(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-TerraGacha-Signature': `sha256=${signature}`,
-        'X-TerraGacha-Attempt': String(attempt + 1)
+        'X-RecallRogue-Signature': `sha256=${signature}`,
+        'X-RecallRogue-Attempt': String(attempt + 1)
       },
       body,
       signal: AbortSignal.timeout(10_000)
@@ -1458,7 +1458,7 @@ renders a quiz card.
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terra Gacha Quiz Widget</title>
+  <title>Recall Rogue Quiz Widget</title>
   <style>
     body { margin: 0; font-family: system-ui, sans-serif; background: transparent; }
     .tg-widget { max-width: 480px; border: 2px solid #2D5382; border-radius: 12px;
@@ -1479,7 +1479,7 @@ renders a quiz card.
     <div class="tg-fact" id="tg-question">Loading...</div>
     <div class="tg-options" id="tg-options"></div>
     <div class="tg-attribution">
-      Facts by <a href="https://terragacha.com" target="_blank" rel="noopener">Terra Gacha</a>
+      Facts by <a href="https://terragacha.com" target="_blank" rel="noopener">Recall Rogue</a>
       — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
     </div>
   </div>
@@ -1534,7 +1534,7 @@ renders a quiz card.
 
 **Acceptance criteria (50.6)**:
 - `triggerWebhook('ugc.submitted', {...})` fans out to all active subscriptions for that event
-- The HMAC signature header `X-TerraGacha-Signature` matches `sha256=<hmac>` computed from
+- The HMAC signature header `X-RecallRogue-Signature` matches `sha256=<hmac>` computed from
   the request body using the subscription secret
 - `POST /api/webhooks` with 6 existing subscriptions returns 400 (max 5 limit)
 - `DELETE /api/webhooks/:id` sets `is_active = 0` for all sub-rows matching `id%`
@@ -1583,7 +1583,7 @@ File: `docs/api/index.md` (NEW)
 
 The content of this file must include:
 
-1. A one-paragraph description of the Terra Gacha Fact API and its purpose
+1. A one-paragraph description of the Recall Rogue Fact API and its purpose
 2. A quickstart section showing the complete minimal fetch call in JavaScript and curl
 3. A versioning policy statement: "The API is versioned via URL path (`/api/v1/`). Breaking
    changes increment the version number. Non-breaking additions are added without a version bump."

@@ -1,5 +1,5 @@
 /**
- * Social feature routes for the Terra Gacha server.
+ * Social feature routes for the Recall Rogue server.
  * Handles hub visiting, guestbook entries, gifts, friend connections,
  * and player search. All write endpoints require JWT authentication.
  *

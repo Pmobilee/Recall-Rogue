@@ -1,4 +1,4 @@
-name = "terra-gacha"
+name = "recall-rogue"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "./dist"
 
@@ -6,7 +6,7 @@ pages_build_output_dir = "./dist"
 bucket = "./dist"
 
 [env.preview]
-name = "terra-gacha-preview"
+name = "recall-rogue-preview"
 
 [env.production]
-name = "terra-gacha-production"
+name = "recall-rogue-production"

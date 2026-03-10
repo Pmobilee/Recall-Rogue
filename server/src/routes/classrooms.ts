@@ -1,5 +1,5 @@
 /**
- * Classroom management routes for the Terra Gacha Teacher Dashboard.
+ * Classroom management routes for the Recall Rogue Teacher Dashboard.
  * Covers full CRUD for classrooms, student membership, homework assignments,
  * class announcements, analytics aggregation, and progress reports.
  *

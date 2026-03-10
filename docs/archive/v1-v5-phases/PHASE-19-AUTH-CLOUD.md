@@ -8,7 +8,7 @@
 
 ## Overview
 
-Phase 19 hardens Terra Gacha's backend from a development prototype into a production-grade cloud system. The existing Fastify server (`server/`) has JWT auth, SQLite saves, and leaderboard routes — all functioning. This phase extends that foundation with: a polished auth UI that non-technical players can navigate, PostgreSQL migration for production scale, offline-first fact delivery (DD-V2-093), multiple device profiles (DD-V2-177), and the 10 analytics events that are mandatory before any beta (DD-V2-181).
+Phase 19 hardens Recall Rogue's backend from a development prototype into a production-grade cloud system. The existing Fastify server (`server/`) has JWT auth, SQLite saves, and leaderboard routes — all functioning. This phase extends that foundation with: a polished auth UI that non-technical players can navigate, PostgreSQL migration for production scale, offline-first fact delivery (DD-V2-093), multiple device profiles (DD-V2-177), and the 10 analytics events that are mandatory before any beta (DD-V2-181).
 
 **Non-negotiable rule**: Network calls are NEVER required to show a quiz. All fact content must be cached locally before any quiz can trigger. Any feature that breaks offline-first fails its acceptance criteria immediately.
 
@@ -34,7 +34,7 @@ Phase 19 hardens Terra Gacha's backend from a development prototype into a produ
 ### Screen: Login
 ```
 ┌─────────────────────────────────────────┐
-│  [← Back]              Terra Gacha      │
+│  [← Back]              Recall Rogue      │
 │                                         │
 │         ╔═══════════════════╗           │
 │         ║   G.A.I.A. icon   ║           │
@@ -68,7 +68,7 @@ Phase 19 hardens Terra Gacha's backend from a development prototype into a produ
 ### Screen: Register
 ```
 ┌─────────────────────────────────────────┐
-│  [← Login]              Terra Gacha     │
+│  [← Login]              Recall Rogue     │
 │                                         │
 │  Join the expedition.                   │
 │  Your progress syncs to all devices.   │
@@ -100,7 +100,7 @@ Phase 19 hardens Terra Gacha's backend from a development prototype into a produ
 ### Screen: Profile Selector (title screen, before entering dome)
 ```
 ┌─────────────────────────────────────────┐
-│              Terra Gacha                │
+│              Recall Rogue                │
 │                                         │
 │  Who's playing?                         │
 │                                         │
@@ -464,7 +464,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: terra-gacha-postgres
+    container_name: recall-rogue-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-terragacha}
@@ -484,7 +484,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: terra-gacha-server
+    container_name: recall-rogue-server
     restart: unless-stopped
     depends_on:
       postgres:
@@ -511,7 +511,7 @@ services:
 
   backup:
     image: postgres:16-alpine
-    container_name: terra-gacha-backup
+    container_name: recall-rogue-backup
     restart: unless-stopped
     depends_on:
       - postgres
@@ -604,7 +604,7 @@ fastify.post('/password-reset-request', {
 `POST /api/auth/password-reset-confirm` — no auth, body `{ token, newPassword }`, validates token, updates password hash, marks token used, returns 200.
 
 - **How** (deployment to Railway):
-  1. `cd server && docker build -t terra-gacha-server .` — verify build succeeds
+  1. `cd server && docker build -t recall-rogue-server .` — verify build succeeds
   2. Create Railway project, provision PostgreSQL addon, copy `DATABASE_URL` to Railway env
   3. Set all required env vars in Railway dashboard (or via `railway env set KEY=VALUE`)
   4. `railway up` from `server/` directory
@@ -713,7 +713,7 @@ fastify.post('/password-reset-request', {
 
   5. **Service Worker** (`public/sw.js`) — cache-first strategy for app shell:
      ```js
-     const CACHE_NAME = 'terra-gacha-v1'
+     const CACHE_NAME = 'recall-rogue-v1'
      const PRECACHE_URLS = [
        '/',
        '/index.html',
@@ -802,7 +802,7 @@ fastify.post('/password-reset-request', {
 ### Privacy Policy Template Outline
 
 ```
-Privacy Policy — Terra Gacha
+Privacy Policy — Recall Rogue
 Last updated: [DATE]
 
 1. Introduction
@@ -1289,7 +1289,7 @@ export const analyticsService = new AnalyticsService()
 
 `scripts/analytics-dashboard.ts` — run with `npx tsx scripts/analytics-dashboard.ts`:
 ```
-Terra Gacha Analytics Dashboard
+Recall Rogue Analytics Dashboard
 ================================
 Period: 2026-03-01 to 2026-03-03
 

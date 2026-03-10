@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.terragacha.app',
-  appName: 'Terra Gacha',
+  appName: 'Recall Rogue',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

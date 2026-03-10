@@ -4,7 +4,7 @@
 > Depends on: None
 > Estimated scope: L
 
-The codebase retains extensive mining-themed language from the original "Terra Miner" concept. The game has been rebranded to **Arcane Recall** — a dungeon-delving card roguelite. This CR systematically replaces all mining references with fantasy/dungeon equivalents in active code, and archives all dead mining-specific files that aren't part of the active card roguelite app.
+The codebase retains extensive mining-themed language from the original "Terra Miner" concept. The game has been rebranded to **Recall Rogue** — a dungeon-delving card roguelite. This CR systematically replaces all mining references with fantasy/dungeon equivalents in active code, and archives all dead mining-specific files that aren't part of the active card roguelite app.
 
 ## Design Reference
 

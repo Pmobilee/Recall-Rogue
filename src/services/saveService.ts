@@ -19,7 +19,7 @@ import { profileService } from '../services/profileService'
  * Legacy/fallback save key. Used when no profiles exist (backward compatibility).
  * Active profile saves use the profile-namespaced key from profileService.getSaveKey().
  */
-export const SAVE_KEY = 'terra-gacha-save'
+export const SAVE_KEY = 'recall-rogue-save'
 export const SAVE_VERSION = 2
 
 // ============================================================

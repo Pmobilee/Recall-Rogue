@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-Terra Gacha currently hard-codes all UI text in English. Phase 40 adds a full internationalization (i18n) layer so the game can be played in multiple languages without rewriting components. This is a pure UI translation phase — it does not touch the in-game language learning content managed by Phase 24 (Language Learning tracks in `languageService.ts`).
+Recall Rogue currently hard-codes all UI text in English. Phase 40 adds a full internationalization (i18n) layer so the game can be played in multiple languages without rewriting components. This is a pure UI translation phase — it does not touch the in-game language learning content managed by Phase 24 (Language Learning tracks in `languageService.ts`).
 
 ### Goals
 
@@ -434,7 +434,7 @@ This is the canonical source for all UI text. The file must be complete before a
   "hub": {
     "dive_button": "Dive",
     "enter_mine": "Enter Mine",
-    "title": "Terra Gacha",
+    "title": "Recall Rogue",
     "rooms": {
       "command": "Command",
       "workshop": "Workshop",
@@ -710,7 +710,7 @@ Every locale file mirrors `en.json`'s key structure exactly. Missing keys fall t
   "hub": {
     "dive_button": "Bucear",
     "enter_mine": "Entrar a la Mina",
-    "title": "Terra Gacha"
+    "title": "Recall Rogue"
   },
   "quiz": {
     "correct": "¡Correcto!",

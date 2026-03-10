@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: terra-gacha-server
+    container_name: recall-rogue-server
     restart: unless-stopped
     ports:
       - "3001:3001"
@@ -16,11 +16,11 @@ services:
       - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
       - JWT_EXPIRY=${JWT_EXPIRY:-15m}
       - REFRESH_EXPIRY=${REFRESH_EXPIRY:-7d}
-      - DATABASE_URL=${DATABASE_URL:-/data/terra-gacha.db}
+      - DATABASE_URL=${DATABASE_URL:-/data/recall-rogue.db}
       - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
     volumes:
       # Persist SQLite database across container restarts
-      - terra-gacha-data:/data
+      - recall-rogue-data:/data
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3001/health').then(r => process.exit(r.ok ? 0 : 1))"]
       interval: 30s
@@ -29,5 +29,5 @@ services:
       start_period: 10s
 
 volumes:
-  terra-gacha-data:
+  recall-rogue-data:
     driver: local

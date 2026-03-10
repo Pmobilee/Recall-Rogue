@@ -21,7 +21,7 @@ const attachDiagnostics = require('./lib/diagnostics.cjs')
 
   // Check whether localStorage is accessible and check for save data
   const saveState = await page.evaluate(() => {
-    const playerSave = localStorage.getItem('terra-gacha-save')
+    const playerSave = localStorage.getItem('recall-rogue-save')
     const diveSave = localStorage.getItem('terra_miner_dive_save')
     const allKeys = Object.keys(localStorage)
     return {

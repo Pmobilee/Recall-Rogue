@@ -1,6 +1,6 @@
-# Terra Gacha Fact API
+# Recall Rogue Fact API
 
-The Terra Gacha Fact API provides programmatic access to our curated educational fact database.
+The Recall Rogue Fact API provides programmatic access to our curated educational fact database.
 All approved facts are available under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/),
 enabling educators, developers, and ed-tech platforms to embed knowledge quizzes in their products.
 

@@ -1,5 +1,5 @@
 /**
- * Environment configuration for the Terra Gacha server.
+ * Environment configuration for the Recall Rogue server.
  * Reads values from process.env (populated via dotenv at startup).
  * All fields are validated and typed; missing required values throw at boot.
  */
@@ -130,7 +130,7 @@ export const config: Config = {
   jwtSecret: env("JWT_SECRET", "dev-secret-change-me"),
   jwtExpiry: env("JWT_EXPIRY", "15m"),
   refreshExpiry: env("REFRESH_EXPIRY", "7d"),
-  databaseUrl: env("DATABASE_URL", "./data/terra-gacha.db"),
+  databaseUrl: env("DATABASE_URL", "./data/recall-rogue.db"),
   corsOrigin: rawCors.includes(",")
     ? rawCors.split(",").map((s) => s.trim())
     : rawCors,

@@ -1,5 +1,5 @@
 /**
- * Knowledge duel routes for the Terra Gacha server.
+ * Knowledge duel routes for the Recall Rogue server.
  * Players may challenge each other to 5-question knowledge duels with a dust wager.
  * Both players independently submit answers; the server resolves the winner and
  * transfers the wager dust.

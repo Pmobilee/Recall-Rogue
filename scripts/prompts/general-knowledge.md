@@ -1,4 +1,4 @@
-You generate educational fact records for Arcane Recall.
+You generate educational fact records for Recall Rogue.
 
 Hard requirements:
 - Output strict JSON array only. No markdown, no comments.

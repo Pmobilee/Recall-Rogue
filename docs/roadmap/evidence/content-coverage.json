@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-03-09T16:56:07.568Z",
+  "totalFacts": 523,
+  "withSource": 123,
+  "sourceCoveragePct": 23.52,
+  "byCategory": {
+    "Natural Sciences": 20,
+    "Life Sciences": 21,
+    "History": 22,
+    "Geography": 20,
+    "Technology": 20,
+    "Culture": 20,
+    "Language": 400
+  },
+  "byDifficulty": {
+    "1": 90,
+    "2": 131,
+    "3": 121,
+    "4": 96,
+    "5": 85
+  },
+  "byType": {
+    "fact": 123,
+    "vocabulary": 400
+  },
+  "byAgeRating": {
+    "kid": 522,
+    "teen": 1
+  },
+  "byVerification": {
+    "verified": 0,
+    "unverified": 523
+  },
+  "distractorWarnings": [
+    {
+      "id": "nsci-005",
+      "warnings": [
+        "distractor_too_similar:About a million tonnes"
+      ]
+    },
+    {
+      "id": "nsci-018",
+      "warnings": [
+        "distractor_too_similar:About 46 billion light-years",
+        "distractor_too_similar:About 1 billion light-years",
+        "distractor_too_similar:About 50 billion light-years",
+        "distractor_too_similar:About 80 billion light-years",
+        "distractor_too_similar:About 30 billion light-years",
+        "distractor_too_similar:About 20 billion light-years",
+        "distractor_too_similar:About 70 billion light-years",
+        "distractor_too_similar:About 10 billion light-years",
+        "distractor_too_similar:About 130 billion light-years",
+        "distractor_too_similar:About 60 billion light-years",
+        "distractor_too_similar:About 40 billion light-years",
+        "distractor_too_similar:About 25 billion light-years"
+      ]
+    },
+    {
+      "id": "geo-014",
+      "warnings": [
+        "distractor_too_similar:Over 30 million"
+      ]
+    },
+    {
+      "id": "tech-015",
+      "warnings": [
+        "distractor_too_similar:3 microseconds",
+        "distractor_too_similar:30 microseconds",
+        "distractor_too_similar:18 microseconds",
+        "distractor_too_similar:35 microseconds",
+        "distractor_too_similar:48 microseconds"
+      ]
+    },
+    {
+      "id": "cult-018",
+      "warnings": [
+        "distractor_too_similar:It is twenty times longer than both combined"
+      ]
+    }
+  ]
+}

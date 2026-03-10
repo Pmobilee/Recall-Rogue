@@ -606,7 +606,7 @@
       <div class="settings-card">
         <div class="about-row">
           <span class="about-label">Version</span>
-          <span class="about-value">Terra Gacha v0.1.0-alpha</span>
+          <span class="about-value">Recall Rogue v0.1.0-alpha</span>
         </div>
         <div class="about-row">
           <span class="about-label">Build</span>

@@ -22,6 +22,23 @@ export function getCardTier(state: TierStateLike | undefined): CardTier {
   return '1';
 }
 
+/** Returns the player-facing tier display name (never exposes 2a/2b). */
+export function getTierDisplayName(tier: CardTier | 'unseen'): string {
+  if (tier === '1') return 'Learning';
+  if (tier === '2a' || tier === '2b') return 'Proven';
+  if (tier === '3') return 'Mastered';
+  if (tier === 'unseen') return 'Unseen';
+  return 'Unknown';
+}
+
+/** Returns the display tier class for visual styling (bronze/silver/gold). */
+export function getDisplayTier(tier: CardTier): 'bronze' | 'silver' | 'gold' {
+  if (tier === '1') return 'bronze';
+  if (tier === '2a' || tier === '2b') return 'silver';
+  if (tier === '3') return 'gold';
+  return 'bronze';
+}
+
 export function qualifiesForMasteryTrial(state: TierStateLike | undefined): boolean {
   const normalized = normalizeState(state);
   return (

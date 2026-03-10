@@ -1,5 +1,5 @@
 /**
- * Health check routes for the Terra Gacha server.
+ * Health check routes for the Recall Rogue server.
  * Returns liveness and readiness information; used by Docker healthcheck and
  * monitoring systems to verify the server and its integrations are running.
  */

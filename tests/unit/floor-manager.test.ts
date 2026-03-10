@@ -12,50 +12,69 @@ import {
   generateMysteryEvent,
   advanceEncounter,
   advanceFloor,
+  isMiniBossEncounter,
+  getMiniBossForFloor,
 } from '../../src/services/floorManager'
 
 describe('FloorManager', () => {
   describe('getSegment', () => {
-    it('returns 1 for floors 1-3', () => {
+    it('returns 1 for floors 1-6 (Shallow Depths)', () => {
       expect(getSegment(1)).toBe(1)
-      expect(getSegment(2)).toBe(1)
       expect(getSegment(3)).toBe(1)
+      expect(getSegment(6)).toBe(1)
     })
 
-    it('returns 2 for floors 4-6', () => {
-      expect(getSegment(4)).toBe(2)
-      expect(getSegment(5)).toBe(2)
-      expect(getSegment(6)).toBe(2)
+    it('returns 2 for floors 7-12 (Deep Caverns)', () => {
+      expect(getSegment(7)).toBe(2)
+      expect(getSegment(9)).toBe(2)
+      expect(getSegment(12)).toBe(2)
     })
 
-    it('returns 3 for floors 7-9', () => {
-      expect(getSegment(7)).toBe(3)
-      expect(getSegment(8)).toBe(3)
-      expect(getSegment(9)).toBe(3)
+    it('returns 3 for floors 13-18 (The Abyss)', () => {
+      expect(getSegment(13)).toBe(3)
+      expect(getSegment(15)).toBe(3)
+      expect(getSegment(18)).toBe(3)
     })
 
-    it('returns 4 for floors 10+', () => {
-      expect(getSegment(10)).toBe(4)
-      expect(getSegment(15)).toBe(4)
+    it('returns 4 for floors 19-24 (The Archive) and beyond', () => {
+      expect(getSegment(19)).toBe(4)
+      expect(getSegment(24)).toBe(4)
+      expect(getSegment(25)).toBe(4)
       expect(getSegment(100)).toBe(4)
     })
   })
 
   describe('isBossFloor', () => {
-    it('returns true for floor 3, 6, 9', () => {
+    it('returns true for all boss floors (every 3rd floor up to 24)', () => {
       expect(isBossFloor(3)).toBe(true)
       expect(isBossFloor(6)).toBe(true)
       expect(isBossFloor(9)).toBe(true)
+      expect(isBossFloor(12)).toBe(true)
+      expect(isBossFloor(15)).toBe(true)
+      expect(isBossFloor(18)).toBe(true)
+      expect(isBossFloor(21)).toBe(true)
+      expect(isBossFloor(24)).toBe(true)
     })
 
-    it('returns false for other floors', () => {
+    it('returns false for non-boss floors within standard run', () => {
       expect(isBossFloor(1)).toBe(false)
       expect(isBossFloor(2)).toBe(false)
       expect(isBossFloor(4)).toBe(false)
       expect(isBossFloor(5)).toBe(false)
       expect(isBossFloor(7)).toBe(false)
-      expect(isBossFloor(8)).toBe(false)
       expect(isBossFloor(10)).toBe(false)
+      expect(isBossFloor(22)).toBe(false)
+      expect(isBossFloor(23)).toBe(false)
+    })
+
+    it('returns true for endless boss floors (multiples of 3 past 24)', () => {
+      expect(isBossFloor(27)).toBe(true)
+      expect(isBossFloor(30)).toBe(true)
+    })
+
+    it('returns false for non-boss endless floors', () => {
+      expect(isBossFloor(25)).toBe(false)
+      expect(isBossFloor(26)).toBe(false)
     })
   })
 
@@ -72,17 +91,70 @@ describe('FloorManager', () => {
       expect(getBossForFloor(9)).toBe('the_archivist')
     })
 
+    it('returns crystal_warden for floor 12', () => {
+      expect(getBossForFloor(12)).toBe('crystal_warden')
+    })
+
+    it('returns shadow_hydra for floor 15', () => {
+      expect(getBossForFloor(15)).toBe('shadow_hydra')
+    })
+
+    it('returns void_weaver for floor 18', () => {
+      expect(getBossForFloor(18)).toBe('void_weaver')
+    })
+
+    it('returns knowledge_golem for floor 21', () => {
+      expect(getBossForFloor(21)).toBe('knowledge_golem')
+    })
+
+    it('returns the_curator for floor 24 (final boss)', () => {
+      expect(getBossForFloor(24)).toBe('the_curator')
+    })
+
     it('returns null for non-boss floors', () => {
       expect(getBossForFloor(1)).toBeNull()
       expect(getBossForFloor(2)).toBeNull()
       expect(getBossForFloor(4)).toBeNull()
-      expect(getBossForFloor(10)).toBeNull()
+      expect(getBossForFloor(22)).toBeNull()
+    })
+
+    it('cycles through bosses in endless mode', () => {
+      const boss = getBossForFloor(27)
+      expect(boss).toBeTruthy()
+      expect(typeof boss).toBe('string')
+    })
+  })
+
+  describe('isMiniBossEncounter', () => {
+    it('returns true for encounter 3 on non-boss floors', () => {
+      expect(isMiniBossEncounter(1, 3)).toBe(true)
+      expect(isMiniBossEncounter(2, 3)).toBe(true)
+      expect(isMiniBossEncounter(4, 3)).toBe(true)
+    })
+
+    it('returns false for encounter 3 on boss floors', () => {
+      expect(isMiniBossEncounter(3, 3)).toBe(false)
+      expect(isMiniBossEncounter(6, 3)).toBe(false)
+      expect(isMiniBossEncounter(24, 3)).toBe(false)
+    })
+
+    it('returns false for encounters 1 and 2', () => {
+      expect(isMiniBossEncounter(1, 1)).toBe(false)
+      expect(isMiniBossEncounter(1, 2)).toBe(false)
+    })
+  })
+
+  describe('getMiniBossForFloor', () => {
+    it('returns a valid mini-boss id', () => {
+      const id = getMiniBossForFloor(1)
+      expect(typeof id).toBe('string')
+      expect(id.length).toBeGreaterThan(0)
     })
   })
 
   describe('generateRoomOptions', () => {
     it('always returns exactly 3 options', () => {
-      for (let floor = 1; floor <= 12; floor++) {
+      for (let floor = 1; floor <= 24; floor++) {
         const options = generateRoomOptions(floor)
         expect(options).toHaveLength(3)
       }
@@ -136,33 +208,33 @@ describe('FloorManager', () => {
   })
 
   describe('getTimerForFloor', () => {
-    it('returns 12 for floors 1-3', () => {
+    it('returns 12 for floors 1-6 (Segment 1)', () => {
       expect(getTimerForFloor(1)).toBe(12)
-      expect(getTimerForFloor(2)).toBe(12)
       expect(getTimerForFloor(3)).toBe(12)
+      expect(getTimerForFloor(6)).toBe(12)
     })
 
-    it('returns 9 for floors 4-6', () => {
-      expect(getTimerForFloor(4)).toBe(9)
-      expect(getTimerForFloor(5)).toBe(9)
-      expect(getTimerForFloor(6)).toBe(9)
+    it('returns 9 for floors 7-12 (Segment 2)', () => {
+      expect(getTimerForFloor(7)).toBe(9)
+      expect(getTimerForFloor(9)).toBe(9)
+      expect(getTimerForFloor(12)).toBe(9)
     })
 
-    it('returns 7 for floors 7-9', () => {
-      expect(getTimerForFloor(7)).toBe(7)
-      expect(getTimerForFloor(8)).toBe(7)
-      expect(getTimerForFloor(9)).toBe(7)
+    it('returns 7 for floors 13-18 (Segment 3)', () => {
+      expect(getTimerForFloor(13)).toBe(7)
+      expect(getTimerForFloor(15)).toBe(7)
+      expect(getTimerForFloor(18)).toBe(7)
     })
 
-    it('returns 5 for floors 10-12', () => {
-      expect(getTimerForFloor(10)).toBe(5)
-      expect(getTimerForFloor(11)).toBe(5)
-      expect(getTimerForFloor(12)).toBe(5)
+    it('returns 5 for floors 19-24 (Segment 4)', () => {
+      expect(getTimerForFloor(19)).toBe(5)
+      expect(getTimerForFloor(22)).toBe(5)
+      expect(getTimerForFloor(24)).toBe(5)
     })
 
-    it('returns 4 for floor 13+', () => {
-      expect(getTimerForFloor(13)).toBe(4)
-      expect(getTimerForFloor(20)).toBe(4)
+    it('returns 4 for floor 25+ (Endless)', () => {
+      expect(getTimerForFloor(25)).toBe(4)
+      expect(getTimerForFloor(30)).toBe(4)
       expect(getTimerForFloor(100)).toBe(4)
     })
   })
@@ -204,10 +276,10 @@ describe('FloorManager', () => {
       const state = createFloorState()
       expect(state.segment).toBe(1)
 
-      // Advance to floor 4 (segment 2)
-      state.currentFloor = 3
+      // Advance to floor 7 (segment 2)
+      state.currentFloor = 6
       advanceFloor(state)
-      expect(state.currentFloor).toBe(4)
+      expect(state.currentFloor).toBe(7)
       expect(state.segment).toBe(2)
     })
 
@@ -262,7 +334,7 @@ describe('FloorManager', () => {
 
   describe('getEncountersForFloor', () => {
     it('always returns 3', () => {
-      for (let floor = 1; floor <= 15; floor++) {
+      for (let floor = 1; floor <= 24; floor++) {
         expect(getEncountersForFloor(floor)).toBe(3)
       }
     })

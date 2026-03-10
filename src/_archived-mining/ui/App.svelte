@@ -975,7 +975,7 @@
 
   {:else if $currentScreen === 'mainMenu'}
     <div class="main-menu">
-      <h1 class="game-title">Terra Gacha</h1>
+      <h1 class="game-title">Recall Rogue</h1>
       <p class="tagline">Mine. Discover. Learn.</p>
       <button class="start-btn" type="button" onclick={handleStart}>Start</button>
     </div>

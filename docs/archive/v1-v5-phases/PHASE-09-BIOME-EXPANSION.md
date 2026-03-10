@@ -11,7 +11,7 @@
 
 ## Overview
 
-Phase 9 expands Terra Gacha's mine system from 3 placeholder biomes to a full catalog of 25 fully-realized biomes. Each biome delivers a distinct visual identity, unique tile sprites, ambient particle systems, structural room variants, biome-specific hazard frequency tuning, and mineral spawn weights calibrated to its depth tier.
+Phase 9 expands Recall Rogue's mine system from 3 placeholder biomes to a full catalog of 25 fully-realized biomes. Each biome delivers a distinct visual identity, unique tile sprites, ambient particle systems, structural room variants, biome-specific hazard frequency tuning, and mineral spawn weights calibrated to its depth tier.
 
 The 25 biomes are stratified into four depth tiers — Shallow (L1-5), Mid (L6-10), Deep (L11-15), and Extreme (L16-20) — with 5 anomaly biomes that can override any tier at a 10-15% frequency. This means a Shallow layer might suddenly become a Gravity Well, or an Extreme layer could fracture into the Time-Fractured anomaly. Anomaly biomes are always prefixed with a brief GAIA commentary line on first entry.
 

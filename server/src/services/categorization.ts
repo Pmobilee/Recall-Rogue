@@ -1,5 +1,5 @@
 /**
- * LLM-powered fact categorization service for the Terra Gacha content engine.
+ * LLM-powered fact categorization service for the Recall Rogue content engine.
  * Assigns L1/L2/L3 categories, tags, and related fact links using Claude.
  * Falls back to safe defaults on LLM errors.
  */

@@ -1,5 +1,5 @@
 /**
- * Fact content engine routes for the Terra Gacha server.
+ * Fact content engine routes for the Recall Rogue server.
  * Provides admin endpoints for fact management and public endpoints
  * for game clients (delta sync, player reports).
  */

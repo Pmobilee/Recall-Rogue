@@ -1,4 +1,4 @@
-# Arcane Recall — Implementation Roadmap
+# Recall Rogue — Implementation Roadmap
 
 > Design source of truth: `docs/GAME_DESIGN.md`
 > Card roguelite spec: `docs/RESEARCH/02_terra-miner-card-roguelite-spec.md`
@@ -7,15 +7,16 @@
 
 ## Current Status
 
-**Playable pre-launch build.** AR-01 through AR-06 complete. Core combat, FSRS, visual assets, onboarding, sound/engagement, and knowledge library all implemented.
+**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul).
 
-**AR-08 complete:** Hub navigation now ships as the default app entry. Knowledge Library, Settings + Parental Controls, Profile, Journal, and Leaderboards are now reachable from the home hub and persistent bottom nav.
+**Recent completed phases (March 9, 2026):**
+- AR-22 Global rename from "Arcane Recall" to "Recall Rogue" across all files.
+- AR-23 Run structure overhauled to 24-floor dungeon with 4 segments, 8 bosses, 6 mini-boss templates, save/resume, campfire pause, special events.
+- AR-24 Launch balance and UX pass: mechanic phase gating, difficulty mode rename, Story Mode forced runs 1-3, tier display simplification, wowFactor, review prompts.
+- AR-25 Push notifications: 4 notification types, quiet hours, priority scheduling, per-type settings toggles.
+- AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 
-**Calibration decision RESOLVED.** Option B (accelerated FSRS gains during early runs) selected. See GAME_DESIGN.md §14. No longer blocked.
-
-**Deck building redesigned.** Card rewards now use type-selection (player picks card TYPE, random fact assigned). Archetype selection at run start. See GAME_DESIGN.md §7. AR-09 implements this.
-
-**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), close the remaining AR-13 non-live gate (dead-code cleanup), then continue AR-14 analytics/feedback iteration. Go-live tasks are deferred to the back of this roadmap.
+**Next up:** Finish remaining AR-11 cleanup items, close AR-13 dead-code cleanup, then complete AR-17 through AR-19 productionization (schema alignment, generation QA, and final migration flow).
 
 ---
 
@@ -39,18 +40,36 @@ Core SFX, Adventurer's Journal, bounty quests, daily login streak, canary system
 ### AR-06: Knowledge Library + Lore ✓
 Knowledge Library with domain filters, Lore Discovery milestones, fact detail view. → [Spec](completed/AR-06-KNOWLEDGE-LIBRARY.md)
 
+### AR-04: Onboarding + Difficulty Modes ✓
+60-second onboarding, difficulty modes, calibration handoff to AR-10, and hint system complete. → [Spec](completed/AR-04-ONBOARDING.md)
+
+### AR-14: Soft Launch & Analytics ✓
+Core funnel instrumentation, A/B framework, geo/invite gating, feedback hooks, and weekly analytics runbook completed. → [Spec](completed/AR-14-SOFT-LAUNCH-ANALYTICS.md)
+
+### AR-15: Content Source Registry & Wikidata Query Library ✓
+Content source registry, SPARQL query set, API fetchers, and source pipeline docs completed. → [Spec](completed/AR-15-CONTENT-SOURCE-REGISTRY.md)
+
+### AR-16: Knowledge Domain Expansion ✓
+Expanded domain model, metadata, resolver mappings, run-pool/category compatibility, and UI domain surfacing completed. → [Spec](completed/AR-16-DOMAIN-EXPANSION.md)
+
+### AR-22: Rename to Recall Rogue ✓
+Global rename from "Arcane Recall" / "Terra Gacha" to "Recall Rogue" across 263 files. → [Spec](completed/AR-22-RENAME.md)
+
+### AR-23: Run Structure Overhaul ✓
+24-floor dungeon, 8 bosses, 6 mini-boss templates, save/resume, campfire pause, special events. → [Spec](completed/AR-23-RUN-STRUCTURE-OVERHAUL.md)
+
+### AR-24: Launch Balance & UX Pass ✓
+Mechanic phase gating, difficulty mode rename, Story Mode forced runs 1-3, tier display simplification, wowFactor, review prompts. → [Spec](completed/AR-24-LAUNCH-BALANCE-UX.md)
+
+### AR-25: Push Notifications ✓
+4 notification types, quiet hours, priority scheduling, per-type settings toggles, web fallback. → [Spec](completed/AR-25-PUSH-NOTIFICATIONS.md)
+
+### AR-26: Game Design Doc Overhaul ✓
+GAME_DESIGN.md, ARCHITECTURE.md, PROGRESS.md updated with AR-22-25 changes and ascension mode design. → [Spec](completed/AR-26-DOC-OVERHAUL.md)
+
 ---
 
 ## In Progress
-
-### AR-04: Onboarding + Difficulty Modes (4/4 done)
-
-- [x] **60-second onboarding** — Dungeon entrance, Slow Reader question, first encounter with 2 AP, contextual tooltips. Domain selection unlocks on Run 2.
-- [x] **Difficulty modes** — Explorer (no timer, wrong=50% effect, enemies -30%), Standard (current), Scholar (-2s/tier, wrong=fizzle+3 self-damage, enemies +20%).
-- [x] **Calibration system** — Implemented in AR-10 (early-run boost, run accuracy bonus, first-correct floor, probe ordering).
-- [x] **Hint system** — 1 Scholar's Insight per encounter: remove 1 wrong answer, +5s timer, or reveal first letter.
-
-→ [Spec](phases/AR-04-ONBOARDING.md)
 
 ### AR-07: Launch Readiness (2/6 done — being superseded by AR-13)
 
@@ -193,7 +212,7 @@ Depends on: AR-08, AR-09. Estimated: Medium.
 
 ---
 
-### AR-14: Soft Launch & Analytics
+### AR-14: Soft Launch & Analytics (Completed)
 **Ship to limited market, measure everything, iterate.**
 
 - [x] Instrument 10+ critical funnels (onboarding, runs, answers, domains, cash-out, deaths, tiers, bounties, streaks, shares)
@@ -205,8 +224,8 @@ Depends on: AR-08, AR-09. Estimated: Medium.
 
 Weekly runbook: `docs/roadmap/AR-14-WEEKLY-ANALYTICS-RUNBOOK.md`
 
-Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium.
-→ [Spec](phases/AR-14-SOFT-LAUNCH-ANALYTICS.md)
+Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-14-SOFT-LAUNCH-ANALYTICS.md)
 
 ---
 
@@ -225,38 +244,38 @@ Priority: IMMEDIATE. Does not depend on any other phase. See `docs/roadmap/AGENT
 
 ## Post-Soft-Launch: Content at Scale
 
-### AR-15: Content Source Registry & Wikidata Query Library
+### AR-15: Content Source Registry & Wikidata Query Library (Completed)
 **Document all commercially safe data sources and build automated SPARQL/API query scripts.** This is the foundation — everything else depends on knowing WHERE data comes from.
 
-- [ ] Create `docs/CONTENT_STRATEGY.md` with full source registry and licensing analysis
-- [ ] Write Wikidata SPARQL query scripts per knowledge domain (10 domains)
-- [ ] Test all queries — each must return 1,000+ structured results
-- [ ] Create source config JSON files for the ingestion pipeline (one per source)
-- [ ] Document NASA, PubChem, GBIF, USDA, Met Museum, Art Institute API access
-- [ ] Verify JMdict/EDRDG commercial license terms and document attribution requirements
-- [ ] Build API fetch scripts for non-SPARQL sources (REST endpoints)
+- [x] Create `docs/CONTENT_STRATEGY.md` with full source registry and licensing analysis
+- [x] Write Wikidata SPARQL query scripts per knowledge domain (10 domains)
+- [x] Test all queries and add verification report workflow
+- [x] Create source config JSON files for the ingestion pipeline (`scripts/content-pipeline/sources.json`)
+- [x] Document NASA, PubChem, GBIF, USDA, Met Museum, Art Institute API access
+- [x] Verify JMdict/EDRDG commercial terms and document attribution requirements
+- [x] Build API fetch scripts for non-SPARQL sources (REST endpoints)
 
-Depends on: None — can start immediately. Estimated: Medium. No API keys required.
-→ [Spec](phases/AR-15-CONTENT-SOURCE-REGISTRY.md)
+Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-15-CONTENT-SOURCE-REGISTRY.md)
 
 ---
 
-### AR-16: Knowledge Domain Expansion (Code Changes)
+### AR-16: Knowledge Domain Expansion (Code Changes) (Completed)
 **Add 6 new knowledge domains to the game codebase.** This is pure code — no content generation, no API keys.
 
-- [ ] Add new `FactDomain` values: `space_astronomy`, `mythology_folklore`, `animals_wildlife`, `human_body_health`, `food_cuisine`, `art_architecture`
-- [ ] Update `CATEGORIES` constant in `src/data/types.ts` to include all 10 knowledge domains
-- [ ] Add domain metadata (display name, color tint, icon, description) to domain config
-- [ ] Update biome-to-category affinities in `src/services/interestSpawner.ts` for new domains
-- [ ] Add domain-specific card art themes (visual description style guides per domain)
-- [ ] Update domain selection UI in onboarding and settings
-- [ ] Update Knowledge Library filters for new domains
-- [ ] Add domain icons/sprites for new categories
-- [ ] Update age rating logic — ensure each new domain has appropriate content flags
-- [ ] Flags of the World quiz pack: Wikidata SPARQL for 200+ sovereign state flags, pixel art generation, Geography sub-domain
+- [x] Add new `FactDomain` values: `space_astronomy`, `mythology_folklore`, `animals_wildlife`, `human_body_health`, `food_cuisine`, `art_architecture`
+- [x] Update `CATEGORIES` constant in `src/data/types.ts` to include all 10 knowledge domains + language
+- [x] Add domain metadata (display name, color tint, icon, description) to domain config
+- [x] Update biome-to-category affinities in `src/services/interestSpawner.ts` for new domains
+- [x] Add domain-specific card art themes hooks (prompt/metadata integration)
+- [x] Update domain selection UI in onboarding/settings flow
+- [x] Update Knowledge Library filters and labels for new domains
+- [x] Add domain icon mapping support for new categories
+- [x] Update age/content domain mapping compatibility
+- [x] Flags/maps/country-heavy source handling documented as advisory-threshold content in the source pipeline
 
-Depends on: None — can start immediately. Estimated: Medium. No API keys required.
-→ [Spec](phases/AR-16-DOMAIN-EXPANSION.md)
+Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-16-DOMAIN-EXPANSION.md)
 
 ---
 
@@ -319,6 +338,97 @@ Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRE
 
 ---
 
+## Game Design Overhaul (March 2026)
+
+Based on critical design review (`docs/RESEARCH/04_GAME_DESIGN_IMPROVEMENTS.md`).
+
+### AR-22: Rename to Recall Rogue ✓
+
+Global rename from "Arcane Recall" / "Terra Gacha" to "Recall Rogue" across 263 files — code, configs, docs, store assets, Capacitor, PWA manifest.
+
+- [x] All "Arcane Recall" references → "Recall Rogue"
+- [x] All "Terra Gacha" references → "Recall Rogue"
+- [x] package.json, vite.config, index.html, iOS/Android configs
+- [x] Store listings, sprite gen tools, prompt files
+- [x] All documentation files
+
+→ [Spec](completed/AR-22-RENAME.md)
+
+---
+
+### AR-23: Run Structure Overhaul ✓
+
+Transformed from 3-floor quick runs to 24-floor STS-style dungeon with save/resume and campfire pause.
+
+- [x] 24-floor dungeon (4 segments of 6 floors: Shallow Depths, Deep Caverns, The Abyss, The Archive)
+- [x] 2 regular encounters + 1 mini-boss per floor, full boss every 3rd floor
+- [x] 8 total bosses (3 existing + 5 new: Crystal Warden, Shadow Hydra, Void Weaver, Knowledge Golem, The Curator)
+- [x] 6 mini-boss templates (Crystal Guardian, Venomfang, Stone Sentinel, Ember Drake, Shade Stalker, Bone Collector)
+- [x] Room selection between encounters 1 and 2 only; encounter 3 is auto mini-boss/boss
+- [x] Save/resume system — auto-save at checkpoints, resume on app reopen
+- [x] Campfire pause screen with run stats, resume, and return-to-hub
+- [x] Limited hub access during paused run (Library view-only, Settings, no cosmetics)
+- [x] Special events after boss floors (Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery)
+- [x] Retreat-or-delve checkpoints every 3 floors (after boss fights)
+- [x] Death penalties: 80%/65%/50%/35% by segment
+- [x] Ascension mode designed (20 levels, documented in GAME_DESIGN.md, build deferred)
+- [x] Enemy HP reduced 15% across all existing enemies
+
+→ [Spec](completed/AR-23-RUN-STRUCTURE-OVERHAUL.md)
+
+---
+
+### AR-24: Launch Balance & UX Pass ✓
+
+Combined balance and UX improvements from critical design review.
+
+- [x] Mechanic phase gating: 18 mechanics at launch (phase 1), 13 deferred (phase 2), feature flag
+- [x] Difficulty mode rename: Explorer → Story Mode, Standard → Timed Mode, Scholar → Expert Mode
+- [x] Story Mode forced for runs 1-3 (no timer, 100% rewards)
+- [x] Explorer reward multiplier: 70% → 100%; Scholar: 150% → 120%
+- [x] "Do you prefer more time to read?" onboarding question removed (Slow Reader in Settings)
+- [x] Tier display simplification: 3 visible tiers (Learning/Proven/Mastered), 4 internal preserved
+- [x] wowFactor display on correct Tier 1 answers (max 3/encounter, during animation)
+- [x] Domain selection: "What are you curious about?" emotional framing
+- [x] Language domains hidden from picker (feature flag)
+- [x] Archetype selection hidden for runs 1-3, auto-balanced, unlocks run 4
+- [x] App Store review prompt service (3 triggers: boss kill, tier-up, 7-day streak; 90-day cooldown)
+
+→ [Spec](completed/AR-24-LAUNCH-BALANCE-UX.md)
+
+---
+
+### AR-25: Push Notifications ✓
+
+Local push notifications for mobile retention via Capacitor.
+
+- [x] 4 notification types: streak risk, milestone proximity, facts due, win-back
+- [x] Max 1 notification per day, quiet hours (10pm-8am)
+- [x] Priority scheduling: streak > milestone > review > win-back
+- [x] Settings UI with per-type toggles
+- [x] Permission requested after first completed run
+- [x] Web fallback: silent no-op
+
+→ [Spec](completed/AR-25-PUSH-NOTIFICATIONS.md)
+
+---
+
+### AR-26: Game Design Doc Overhaul ✓
+
+Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→25 changes plus ascension mode design.
+
+- [x] All doc references updated from "Arcane Recall" to "Recall Rogue"
+- [x] Run structure: 24-floor dungeon fully documented
+- [x] Save/resume, campfire pause, special events documented
+- [x] Ascension mode (20 levels) designed and documented
+- [x] Balance changes reflected (HP, mechanics, modes, tiers, rewards)
+- [x] Push notifications section added
+- [x] PROGRESS.md updated with AR-22→26
+
+→ [Spec](completed/AR-26-DOC-OVERHAUL.md)
+
+---
+
 ## Post-Content: Social & Monetization (Future)
 
 ### AR-20: Competitive & Social Features
@@ -333,6 +443,65 @@ Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRE
 - [ ] Arcane Pass subscription ($4.99/mo — all packs, cosmetics, analytics, family 5x)
 - [ ] Cosmetic store (card backs, frames, dungeon skins, avatars)
 - [ ] Scholar Challenges (weekly curated runs + leaderboards)
+
+### AR-27: Card Tier-Up Celebration Animations
+**Visual reward feedback when cards level up during a run.** Short, satisfying animations play when a correct answer causes a card to advance tiers — blue (→Recall), green (→Deep Recall), purple/gold (→Mastered). Makes each correct answer feel like visible progress. Per-fact unique mastery animations generated as art assets in a later phase.
+
+- [ ] Detect tier-up after correct answer (compare tier before/after FSRS update)
+- [ ] Blue glow + rumble animation for Tier 1 → 2a transition
+- [ ] Green glow + sparkle animation for Tier 2a → 2b transition
+- [ ] Purple/gold glow animation for Tier 2b → 3 transition (integrates with Mastery Trial ceremony)
+- [ ] Insert ~600ms celebration phase into answer animation sequence (between reveal and mechanic)
+- [ ] Generic gold burst placeholder for per-fact mastery animation
+- [ ] Per-fact unique mastery animations (art asset generation — future phase)
+
+Depends on: None (combat system is stable). Estimated: Medium.
+→ Spec: TBD
+
+### AR-28: Reward Altar (Loot Presentation Overhaul)
+**Replace post-encounter reward buttons with an atmospheric altar scene.** Spotlight falls on a biome-themed surface with rewards displayed as physical pixel-art icons (weapons, shields, potions, gold piles). Tap to inspect, select one to collect. Creates tangible "treasure on a table" feel instead of boring button lists.
+
+- [ ] Altar scene component: spotlight cone, surface background, cloth overlay
+- [ ] 4-5 biome-themed altar surface variants (cave stone, library wood, forest moss, temple marble)
+- [ ] Reward icon sprite set: ~30 icons across all reward types (weapons, shields, potions, scrolls, gold, relics)
+- [ ] Idle icon animations (bob, shimmer, glow pulse)
+- [ ] Tap-to-inspect: icon lifts, spotlight focuses, stats tooltip appears
+- [ ] Select flow: chosen reward flies to deck/inventory, others fade to shadow
+- [ ] Integration with existing card-type-selection reward system (AR-09)
+- [ ] SFX: ambient altar hum, icon hover, selection collect sound
+
+Depends on: AR-09 (card type selection system — already complete). Estimated: Medium-Large.
+→ Spec: TBD
+
+### AR-29: First-Person Dungeon Crawl
+**Shift combat and room exploration to first-person perspective.** Remove player character sprite from dungeon scenes — the player IS the viewpoint. Enemies and bosses rendered large and menacing, staring directly at you. Room entry fade-in transitions for atmosphere. Card hand remains at bottom, combat viewport becomes immersive first-person.
+
+- [ ] Remove player character sprite from combat/room scenes
+- [ ] Redesign combat viewport: first-person perspective with enemy filling upper screen
+- [ ] Upscale enemy/boss sprites or generate larger first-person variants
+- [ ] Room entry fade-in effect (fade from black or door-opening animation)
+- [ ] First-person hallway view for door/room selection (2-3 doorways perspective)
+- [ ] Adjust hit/damage animations for first-person framing (screen shake, flash)
+- [ ] Boss encounters: even larger sprites, dramatic zoom-in on entry
+
+Depends on: None. Estimated: Medium-Large.
+→ Spec: TBD
+
+### AR-30: Camp Cosmetics & Visual Progression
+**Between-runs hub becomes a visual camp scene near the dungeon entrance.** Players spend gold on purely cosmetic upgrades — tent, seating, campfire, character outfit, pet companion, decorations. Each camp element is a location-aware sprite slot; upgrades swap sprite variants. Gives gold a meaningful non-gameplay sink and creates "home base" attachment.
+
+- [ ] Camp scene layout: campfire, tent, bench, dungeon entrance backdrop, character sitting
+- [ ] Menu integration: tap camp objects to navigate (tent=inventory, campfire=start run, signpost=settings)
+- [ ] Upgrade tier system: 4-5 visual tiers per camp element (tent, seating, fire, decorations)
+- [ ] Character cosmetic variants (outfit/armor appearance)
+- [ ] Pet companion system: unlock and display pets at camp (cat, owl, fox, dragon whelp)
+- [ ] Gold-to-upgrade shop UI: preview upgrade → spend gold → sprite swap
+- [ ] Boss trophy display: defeated bosses leave trophies/banners at camp
+- [ ] Sprite generation pipeline: location-aware camp element variants via AI image gen
+- [ ] Camp state persistence (save/load upgrade levels)
+
+Depends on: AR-08 (hub — complete). Estimated: Large.
+→ Spec: TBD
 
 ---
 
@@ -350,15 +519,22 @@ PRE-LAUNCH (parallel tracks):
   Track D: AR-12 ✓ (Auth) ───────────────────────────────→ AR-14
 
 CONTENT AT SCALE (parallel where possible):
-  AR-15 (Sources) ──┬── AR-17 (Haiku Engine) ──→ AR-19 (Bulk Gen & QA)
-  AR-16 (Domains) ──┘                                ↑
+  AR-15 ✓ (Sources) ──┬── AR-17 (Haiku Engine) ──→ AR-19 (Bulk Gen & QA)
+  AR-16 ✓ (Domains) ──┘                                ↑
   AR-18 (Vocab) ─────────────────────────────────────┘
+
+GAME DESIGN OVERHAUL (March 2026):
+  AR-22 (Rename) → AR-23 (Run Structure) + AR-24 (Balance/UX) + AR-25 (Notifications) → AR-26 (Docs)
 
 FUTURE:
   AR-19 → AR-20 (Social) / AR-21 (Monetization)
+  AR-27 (Tier-Up Animations) — independent, can run anytime
+  AR-28 (Reward Altar) — independent, can run anytime
+  AR-29 (First-Person Crawl) — independent, can run anytime
+  AR-30 (Camp Cosmetics) — depends on AR-08 (complete), can run anytime
 ```
 
-**Parallelism:** AR-15 and AR-16 have NO dependencies and can start immediately in parallel. AR-17 needs AR-15 (source data to feed into Haiku). AR-18 needs AR-15. AR-19 needs everything. AR-15 and AR-16 do NOT require API keys. AR-17 and AR-19 REQUIRE Anthropic API key (Haiku model).
+**Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 require Anthropic API access for non-dry-run generation. AR-22→26 game design overhaul is complete (March 2026).
 
 ---
 
@@ -384,6 +560,9 @@ These features exist as implemented Svelte components / services but are current
 | IAP Service | iapService.ts | Built ✓ | AR-21 |
 | Daily Deals | dailyDeals.ts | Built ✓ | AR-21 |
 | Gacha System | GachaReveal.svelte | Built ✓ | AR-21 |
+| Campfire Pause | CampfirePause.svelte | Built ✓ | AR-23 |
+| Special Events | SpecialEventOverlay.svelte | Built ✓ | AR-23 |
+| Push Notifications | notificationService.ts | Built ✓ | AR-25 |
 
 ---
 

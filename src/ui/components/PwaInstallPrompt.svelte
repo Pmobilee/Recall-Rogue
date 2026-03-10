@@ -45,7 +45,7 @@
     <div class="pwa-prompt-content">
       <span class="pwa-icon">📱</span>
       <div class="pwa-text">
-        <strong>Install Terra Gacha</strong>
+        <strong>Install Recall Rogue</strong>
         <span>Play offline from your home screen</span>
       </div>
       <button class="pwa-install-btn" onclick={install}>Install</button>

@@ -1,7 +1,7 @@
 import type { PlayerSave } from '../data/types'
 import { SAVE_VERSION } from '../services/saveService'
 
-const SNAPSHOT_STORE_KEY = 'terra-gacha-dev-snapshots'
+const SNAPSHOT_STORE_KEY = 'recall-rogue-dev-snapshots'
 const MAX_STORED_SNAPSHOTS = 20
 
 export interface SaveSnapshot {

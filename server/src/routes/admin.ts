@@ -1,5 +1,5 @@
 /**
- * Admin routes for the Terra Gacha server.
+ * Admin routes for the Recall Rogue server.
  * Provides internal monitoring and moderation endpoints.
  *
  * All endpoints are protected by the X-Admin-Key header via the requireAdmin
@@ -711,7 +711,7 @@ export async function adminRoutes(fastify: FastifyInstance): Promise<void> {
 
       const html = `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Educator Queue — Terra Gacha Admin</title>
+<head><meta charset="UTF-8"><title>Educator Queue — Recall Rogue Admin</title>
 <style>body{font-family:system-ui;padding:2rem}table{border-collapse:collapse;width:100%}
 td,th{border:1px solid #ccc;padding:8px;text-align:left}tr:nth-child(even){background:#f9f9f9}</style>
 </head>

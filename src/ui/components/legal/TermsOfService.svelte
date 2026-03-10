@@ -19,7 +19,7 @@
     <p class="effective-date">Effective date: 1 January 2025</p>
 
     <p class="intro">
-      Please read these Terms of Service ("Terms") carefully before playing Terra Gacha ("the
+      Please read these Terms of Service ("Terms") carefully before playing Recall Rogue ("the
       Game"). By creating an account or using the Game in any way, you agree to be bound by these
       Terms. If you do not agree, do not use the Game.
     </p>
@@ -55,7 +55,7 @@
       <h2 class="section-heading">3. Content and Intellectual Property</h2>
       <p>
         All game content — including but not limited to graphics, text, music, code, quiz facts,
-        and the Terra Gacha name — is owned by or licensed to the developer and is protected by
+        and the Recall Rogue name — is owned by or licensed to the developer and is protected by
         copyright and other intellectual property laws.
       </p>
       <p>
@@ -142,7 +142,7 @@
       <h2 class="section-heading">9. Contact</h2>
       <p>If you have questions about these Terms, please contact us:</p>
       <address class="contact-address">
-        Terra Gacha Support<br />
+        Recall Rogue Support<br />
         <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>
       </address>
     </section>

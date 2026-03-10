@@ -6,7 +6,7 @@ import type { StatusEffectType, StatusEffect } from './statusEffects';
 import type { FactDomain } from './card-types';
 
 /** Enemy difficulty category. */
-export type EnemyCategory = 'common' | 'elite' | 'boss';
+export type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss';
 
 /** A single intent in an enemy's action pool. */
 export interface EnemyIntent {
@@ -74,7 +74,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'cave_bat',
     name: 'Cave Bat',
     category: 'common',
-    baseHP: 22,
+    baseHP: 19,
     intentPool: [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Swooping strike' },
       { type: 'attack', value: 9, weight: 1, telegraph: 'Frenzied bite' },
@@ -87,7 +87,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'crystal_golem',
     name: 'Crystal Golem',
     category: 'common',
-    baseHP: 45,
+    baseHP: 38,
     intentPool: [
       { type: 'attack', value: 9, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
@@ -100,7 +100,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'toxic_spore',
     name: 'Toxic Spore',
     category: 'common',
-    baseHP: 18,
+    baseHP: 15,
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -113,7 +113,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'shadow_mimic',
     name: 'Shadow Mimic',
     category: 'common',
-    baseHP: 28,
+    baseHP: 24,
     intentPool: [
       { type: 'attack', value: 7, weight: 2, telegraph: 'Shadow strike' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
@@ -164,7 +164,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'the_excavator',
     name: 'The Excavator',
     category: 'boss',
-    baseHP: 72,
+    baseHP: 61,
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Drill charge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Grinding gears', hitCount: 3 },
@@ -178,7 +178,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'magma_core',
     name: 'Magma Core',
     category: 'boss',
-    baseHP: 80,
+    baseHP: 68,
     intentPool: [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Lava splash' },
       { type: 'attack', value: 15, weight: 1, telegraph: 'Eruption' },
@@ -198,7 +198,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'the_archivist',
     name: 'The Archivist',
     category: 'boss',
-    baseHP: 100,
+    baseHP: 85,
     intentPool: [
       { type: 'attack', value: 7, weight: 1, telegraph: 'Data beam' },
       { type: 'defend', value: 12, weight: 1, telegraph: 'Firewall' },
@@ -213,5 +213,173 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Backup restore' },
     ],
+  },
+
+  {
+    id: 'crystal_warden',
+    name: 'Crystal Warden',
+    category: 'boss',
+    baseHP: 90,
+    intentPool: [
+      { type: 'attack', value: 12, weight: 4, telegraph: 'Prismatic slash' },
+      { type: 'defend', value: 10, weight: 3, telegraph: 'Crystal barrier' },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Shard storm', hitCount: 3 },
+      { type: 'heal', value: 8, weight: 1, telegraph: 'Crystalline mend' },
+    ],
+    description: 'A towering sentinel of living crystal. Immune to status effects, it guards the deep caverns with unwavering resolve.',
+  },
+
+  {
+    id: 'shadow_hydra',
+    name: 'Shadow Hydra',
+    category: 'boss',
+    baseHP: 110,
+    intentPool: [
+      { type: 'attack', value: 14, weight: 35, telegraph: 'Hydra strike' },
+      { type: 'multi_attack', value: 5, weight: 30, telegraph: 'Twin fangs', hitCount: 3 },
+      { type: 'debuff', value: 3, weight: 20, telegraph: 'Venom spray', statusEffect: { type: 'poison', value: 3, turns: 3 } },
+      { type: 'attack', value: 10, weight: 15, telegraph: 'Tail lash' },
+    ],
+    description: 'A many-headed beast of shadow. At half strength, a second head awakens, doubling its fury.',
+    phaseTransitionAt: 0.5,
+    phase2IntentPool: [
+      { type: 'multi_attack', value: 7, weight: 3, telegraph: 'Dual hydra strike', hitCount: 2 },
+      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Fang barrage', hitCount: 4 },
+      { type: 'debuff', value: 4, weight: 2, telegraph: 'Toxic deluge', statusEffect: { type: 'poison', value: 4, turns: 3 } },
+      { type: 'attack', value: 18, weight: 1, telegraph: 'Decapitation bite' },
+    ],
+  },
+
+  {
+    id: 'void_weaver',
+    name: 'Void Weaver',
+    category: 'boss',
+    baseHP: 125,
+    intentPool: [
+      { type: 'attack', value: 13, weight: 3, telegraph: 'Void bolt' },
+      { type: 'debuff', value: 3, weight: 25, telegraph: 'Reality tear', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+      { type: 'debuff', value: 2, weight: 25, telegraph: 'Hand disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+      { type: 'defend', value: 12, weight: 2, telegraph: 'Phase shift' },
+    ],
+    description: 'A being woven from the spaces between dimensions. Its attacks disrupt not just flesh, but thought itself.',
+  },
+
+  {
+    id: 'knowledge_golem',
+    name: 'Knowledge Golem',
+    category: 'boss',
+    baseHP: 140,
+    intentPool: [
+      { type: 'attack', value: 15, weight: 35, telegraph: 'Tome slam' },
+      { type: 'attack', value: 22, weight: 25, telegraph: 'Crushing knowledge' },
+      { type: 'defend', value: 14, weight: 20, telegraph: 'Page shield' },
+      { type: 'buff', value: 3, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 3, turns: 3 } },
+    ],
+    description: 'An ancient construct built from compressed tomes. Deals bonus damage when knowledge fails — wrong answers empower it.',
+  },
+
+  {
+    id: 'the_curator',
+    name: 'The Curator',
+    category: 'boss',
+    baseHP: 160,
+    intentPool: [
+      { type: 'attack', value: 16, weight: 25, telegraph: 'Cataloguing strike' },
+      { type: 'multi_attack', value: 5, weight: 20, telegraph: 'Archive barrage', hitCount: 4 },
+      { type: 'debuff', value: 3, weight: 20, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
+      { type: 'buff', value: 3, weight: 15, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'heal', value: 12, weight: 10, telegraph: 'Restoration protocol' },
+      { type: 'attack', value: 24, weight: 10, telegraph: 'Final examination' },
+    ],
+    description: 'The ultimate guardian of the Archive. Master of all knowledge domains, it tests the worth of those who dare reach the deepest floor.',
+    phaseTransitionAt: 0.4,
+    phase2IntentPool: [
+      { type: 'attack', value: 20, weight: 3, telegraph: 'Judgement' },
+      { type: 'multi_attack', value: 7, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
+      { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 2, turns: 3 } },
+      { type: 'heal', value: 15, weight: 1, telegraph: 'Archive restoration' },
+      { type: 'buff', value: 4, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 4, turns: 99 } },
+    ],
+  },
+
+  // ── MINI-BOSS (6) ──
+
+  {
+    id: 'crystal_guardian',
+    name: 'Crystal Guardian',
+    category: 'mini_boss',
+    baseHP: 35,
+    intentPool: [
+      { type: 'attack', value: 8, weight: 3, telegraph: 'Crystal strike' },
+      { type: 'defend', value: 6, weight: 3, telegraph: 'Stone shell' },
+      { type: 'attack', value: 12, weight: 1, telegraph: 'Shard eruption' },
+    ],
+    description: 'A golem variant encased in protective crystal. Gains block every turn.',
+  },
+
+  {
+    id: 'venomfang',
+    name: 'Venomfang',
+    category: 'mini_boss',
+    baseHP: 30,
+    intentPool: [
+      { type: 'attack', value: 7, weight: 3, telegraph: 'Fang strike' },
+      { type: 'debuff', value: 2, weight: 3, telegraph: 'Venom bite', statusEffect: { type: 'poison', value: 3, turns: 3 } },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Rapid fangs', hitCount: 3 },
+    ],
+    description: 'A venomous spider lurking in the shadows. Its bites leave a lingering poison.',
+  },
+
+  {
+    id: 'stone_sentinel',
+    name: 'Stone Sentinel',
+    category: 'mini_boss',
+    baseHP: 40,
+    intentPool: [
+      { type: 'attack', value: 9, weight: 2, telegraph: 'Heavy swing' },
+      { type: 'defend', value: 10, weight: 3, telegraph: 'Fortify' },
+      { type: 'buff', value: 2, weight: 1, telegraph: 'Harden', statusEffect: { type: 'strength', value: 1, turns: 3 } },
+    ],
+    description: 'An ancient stone warrior. Slow but incredibly tough — a war of attrition.',
+  },
+
+  {
+    id: 'ember_drake',
+    name: 'Ember Drake',
+    category: 'mini_boss',
+    baseHP: 32,
+    intentPool: [
+      { type: 'attack', value: 10, weight: 3, telegraph: 'Fire breath' },
+      { type: 'attack', value: 15, weight: 2, telegraph: 'Inferno blast' },
+      { type: 'debuff', value: 2, weight: 1, telegraph: 'Scorching heat', statusEffect: { type: 'poison', value: 2, turns: 2 } },
+    ],
+    description: 'A small but ferocious drake. Glass cannon — hits hard but shatters easily.',
+  },
+
+  {
+    id: 'shade_stalker',
+    name: 'Shade Stalker',
+    category: 'mini_boss',
+    baseHP: 28,
+    intentPool: [
+      { type: 'attack', value: 8, weight: 3, telegraph: 'Shadow lunge' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Phantom copies', hitCount: 3 },
+      { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+    ],
+    description: 'An enhanced shadow that copies the player\'s last played card type. More dangerous than its mimic cousin.',
+  },
+
+  {
+    id: 'bone_collector',
+    name: 'Bone Collector',
+    category: 'mini_boss',
+    baseHP: 36,
+    intentPool: [
+      { type: 'attack', value: 7, weight: 3, telegraph: 'Bone slash' },
+      { type: 'heal', value: 5, weight: 2, telegraph: 'Consume remains' },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Bone armor' },
+      { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow drain', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+    ],
+    description: 'A skeletal scavenger that feeds on failure. Heals when the player answers wrong.',
   },
 ];

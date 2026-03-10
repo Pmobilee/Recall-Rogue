@@ -1,4 +1,4 @@
-Generate Japanese vocabulary records for Arcane Recall.
+Generate Japanese vocabulary records for Recall Rogue.
 
 Rules:
 - Output strict JSON array only.

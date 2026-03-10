@@ -1,12 +1,12 @@
 /**
- * Delta sync service for the Terra Gacha fact cache.
+ * Delta sync service for the Recall Rogue fact cache.
  * Fetches only facts modified since the client's last sync cursor.
  * Falls back to full pack on first install or corrupted cursor.
  */
 
 import type { Fact } from '../data/types.js';
 
-const SYNC_VERSION_KEY = 'terra-gacha-fact-sync-version';
+const SYNC_VERSION_KEY = 'recall-rogue-fact-sync-version';
 const SYNC_URL_BASE = '/api/facts';
 
 export interface DeltaSyncResult {

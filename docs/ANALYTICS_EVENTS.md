@@ -1,6 +1,6 @@
 # Analytics Events Reference
 
-This document is the source of truth for Arcane Recall soft-launch tracking events.
+This document is the source of truth for Recall Rogue soft-launch tracking events.
 
 ## Ingestion
 

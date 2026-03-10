@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-03-09T16:55:55.993Z",
+  "hasFailure": true,
+  "results": [
+    {
+      "domain": "general_knowledge",
+      "rows": 399,
+      "expectedMinimum": 350,
+      "minimumPolicy": "strict",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    },
+    {
+      "domain": "natural_sciences",
+      "rows": 199,
+      "expectedMinimum": 200,
+      "minimumPolicy": "strict",
+      "status": "fail",
+      "reason": "below_strict_minimum",
+      "ok": false
+    },
+    {
+      "domain": "space_astronomy",
+      "rows": 312,
+      "expectedMinimum": 300,
+      "minimumPolicy": "strict",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    },
+    {
+      "domain": "geography",
+      "rows": 187,
+      "expectedMinimum": 150,
+      "minimumPolicy": "advisory",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    },
+    {
+      "domain": "history",
+      "rows": 535,
+      "expectedMinimum": 500,
+      "minimumPolicy": "strict",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    },
+    {
+      "domain": "mythology_folklore",
+      "rows": 299,
+      "expectedMinimum": 400,
+      "minimumPolicy": "strict",
+      "status": "fail",
+      "reason": "below_strict_minimum",
+      "ok": false
+    },
+    {
+      "domain": "animals_wildlife",
+      "rows": 200,
+      "expectedMinimum": 200,
+      "minimumPolicy": "strict",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    },
+    {
+      "domain": "human_body_health",
+      "rows": 404,
+      "expectedMinimum": 600,
+      "minimumPolicy": "strict",
+      "status": "fail",
+      "reason": "below_strict_minimum",
+      "ok": false
+    },
+    {
+      "domain": "food_cuisine",
+      "rows": 240,
+      "expectedMinimum": 250,
+      "minimumPolicy": "strict",
+      "status": "fail",
+      "reason": "below_strict_minimum",
+      "ok": false
+    },
+    {
+      "domain": "art_architecture",
+      "rows": 485,
+      "expectedMinimum": 400,
+      "minimumPolicy": "advisory",
+      "status": "pass",
+      "reason": "meets_minimum",
+      "ok": true
+    }
+  ]
+}

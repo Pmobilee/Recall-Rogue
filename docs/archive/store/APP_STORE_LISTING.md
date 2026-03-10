@@ -1,8 +1,8 @@
-# Terra Gacha — App Store Listing Copy
+# Recall Rogue — App Store Listing Copy
 
 ## Ad-Free Policy
 
-No ads. Terra Gacha is completely ad-free. Our educational mission requires a distraction-free experience.
+No ads. Recall Rogue is completely ad-free. Our educational mission requires a distraction-free experience.
 
 If we ever add optional ads, they will be:
 - Opt-in only

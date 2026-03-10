@@ -1207,7 +1207,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 // /tmp/test-51-3.js
 ;(async () => {
   // Clear save
-  await p.evaluate(() => localStorage.removeItem('terra-gacha-save'))
+  await p.evaluate(() => localStorage.removeItem('recall-rogue-save'))
   await p.reload(); await p.waitForTimeout(1000)
   // ... skip onboarding ...
   // Open dive prep

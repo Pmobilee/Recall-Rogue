@@ -1,4 +1,4 @@
-# Arcane Recall Code Issues Audit
+# Recall Rogue Code Issues Audit
 
 Date: 2026-03-09
 Scope: `src/`, `scripts/`, `docs/roadmap/`
@@ -335,7 +335,7 @@ Top priorities:
 
 ### P5-01: Arcane vs Terra/Mine naming remains mixed in active code
 - Evidence examples (non-archived):
-  - `src/i18n/locales/en.json` title still `Terra Gacha`
+  - `src/i18n/locales/en.json` title still `Recall Rogue`
   - multiple active UI/legal/components and game comments reference mine/miner/minerals.
 - Impact:
   - Product identity drift and inconsistent UX copy.
@@ -428,7 +428,7 @@ Because this repo is heavily agent-built, prioritizing deterministic structure a
 4. Add CI checks for cycle/clone/spec consistency.
 
 ### Phase D (Ongoing)
-1. Naming migration (Arcane Recall canonical copy).
+1. Naming migration (Recall Rogue canonical copy).
 2. Archive isolation strategy to shrink active cognitive surface.
 3. Full auth cookie migration.
 

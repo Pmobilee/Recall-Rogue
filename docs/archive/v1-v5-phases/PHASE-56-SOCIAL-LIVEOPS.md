@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-Phase 56 builds the social layer that makes Terra Gacha a shared experience. Five systems are implemented:
+Phase 56 builds the social layer that makes Recall Rogue a shared experience. Five systems are implemented:
 
 1. **Fact of the Day** — a single server-selected daily fact shown prominently on the Hub, creating a shared daily cultural moment.
 2. **Dome Guestbook** — players leave short messages when visiting another player's dome (component exists; verify functionality).

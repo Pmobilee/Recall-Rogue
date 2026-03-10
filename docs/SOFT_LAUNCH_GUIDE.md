@@ -2,7 +2,7 @@
 
 ## Scope
 
-Soft launch for Arcane Recall focuses on:
+Soft launch for Recall Rogue focuses on:
 
 - Invite-gated onboarding
 - Full run funnel telemetry

@@ -1,5 +1,5 @@
 /**
- * LLM prompt templates for the Terra Gacha fact content engine.
+ * LLM prompt templates for the Recall Rogue fact content engine.
  * Centralises all prompt construction so prompts can be versioned
  * and tested independently of the generation logic.
  */
@@ -28,7 +28,7 @@ export function buildFactGenerationPrompt(fact: FactPromptInput): string {
       ? `Category: ${fact.categoryL1}${fact.categoryL2 ? ` > ${fact.categoryL2}` : ""}`
       : "Category: Unknown";
 
-  return `You are a content editor for Terra Gacha, an educational mobile game where players mine underground and learn facts through spaced repetition quizzes.
+  return `You are a content editor for Recall Rogue, an educational mobile game where players mine underground and learn facts through spaced repetition quizzes.
 
 ${categoryContext}
 Fact statement: "${fact.statement}"

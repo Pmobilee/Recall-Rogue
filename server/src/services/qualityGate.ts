@@ -1,5 +1,5 @@
 /**
- * 3rd-stage quality gate for the Terra Gacha fact pipeline.
+ * 3rd-stage quality gate for the Recall Rogue fact pipeline.
  * Independently validates factual plausibility, distractor coverage,
  * and readability using a lightweight LLM pass.
  */

@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Fact Dashboard — frontend application.
+ * Recall Rogue Fact Dashboard — frontend application.
  * Vanilla JS with tab-based navigation, direct API calls, and table rendering.
  */
 

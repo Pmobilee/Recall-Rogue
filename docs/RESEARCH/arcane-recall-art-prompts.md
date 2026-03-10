@@ -1,4 +1,4 @@
-# Arcane Recall — Art Asset Prompt Templates
+# Recall Rogue — Art Asset Prompt Templates
 ## For: NB1 (google/gemini-2.5-flash-image) via OpenRouter
 ## Version: 1.0 — March 2026
 

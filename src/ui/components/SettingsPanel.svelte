@@ -5,9 +5,12 @@
     isSlowReader,
     reduceMotionMode,
     textSize,
+    onboardingState,
+    getDifficultyDisplayName,
     type DifficultyMode,
     type TextSize,
   } from '../../services/cardPreferences'
+  import { STORY_MODE_FORCED_RUNS } from '../../data/balance'
   import {
     sfxEnabled,
     musicEnabled,
@@ -20,6 +23,11 @@
   import AccountSettings from './AccountSettings.svelte'
   import FeedbackButton from './FeedbackButton.svelte'
   import ParentalControlsPanel from './ParentalControlsPanel.svelte'
+  import {
+    getNotificationPreferences,
+    setNotificationPreferences,
+    type NotificationPreferences,
+  } from '../../services/notificationService'
 
   interface Props {
     onback: () => void
@@ -27,6 +35,22 @@
 
   let { onback }: Props = $props()
   let showParentalControls = $state(false)
+
+  // Notification preferences — loaded once on mount, written back on toggle.
+  let notifPrefs = $state<NotificationPreferences>(getNotificationPreferences())
+
+  function updateNotifPref<K extends keyof NotificationPreferences>(key: K, value: NotificationPreferences[K]): void {
+    notifPrefs[key] = value
+    setNotificationPreferences({ [key]: value })
+    trackSettingChange(`notification_${key}`, value)
+  }
+
+  let runsCompleted = $state(0)
+  $effect(() => {
+    const unsub = onboardingState.subscribe((s) => { runsCompleted = s.runsCompleted })
+    return () => unsub()
+  })
+  let difficultyLocked = $derived(runsCompleted < STORY_MODE_FORCED_RUNS)
 
   const difficultyOptions: DifficultyMode[] = ['explorer', 'standard', 'scholar']
   const textSizeOptions: TextSize[] = ['small', 'medium', 'large']
@@ -54,9 +78,7 @@
   }
 
   function formatDifficulty(mode: DifficultyMode): string {
-    if (mode === 'explorer') return 'Explorer'
-    if (mode === 'scholar') return 'Scholar'
-    return 'Standard'
+    return getDifficultyDisplayName(mode)
   }
 
   function formatTextSize(size: TextSize): string {
@@ -75,12 +97,16 @@
 
     <section class="settings-section">
       <h3>Difficulty</h3>
+      {#if difficultyLocked}
+        <p class="difficulty-lock-note">Story Mode is active for your first {STORY_MODE_FORCED_RUNS} runs.</p>
+      {/if}
       <div class="chip-row">
         {#each difficultyOptions as mode}
           <button
             class="chip"
             class:selected={$difficultyMode === mode}
             onclick={() => setDifficulty(mode)}
+            disabled={difficultyLocked && mode !== 'explorer'}
           >
             {formatDifficulty(mode)}
           </button>
@@ -177,6 +203,56 @@
       </label>
     </section>
 
+    <section class="settings-section">
+      <h3>Notifications</h3>
+      <label class="toggle-row">
+        <span>Push Notifications</span>
+        <input
+          type="checkbox"
+          checked={notifPrefs.enabled}
+          onchange={(event) => updateNotifPref('enabled', (event.currentTarget as HTMLInputElement).checked)}
+        />
+      </label>
+
+      {#if notifPrefs.enabled}
+        <label class="toggle-row">
+          <span>Streak Reminders</span>
+          <input
+            type="checkbox"
+            checked={notifPrefs.streakReminders}
+            onchange={(event) => updateNotifPref('streakReminders', (event.currentTarget as HTMLInputElement).checked)}
+          />
+        </label>
+
+        <label class="toggle-row">
+          <span>Review Reminders</span>
+          <input
+            type="checkbox"
+            checked={notifPrefs.reviewReminders}
+            onchange={(event) => updateNotifPref('reviewReminders', (event.currentTarget as HTMLInputElement).checked)}
+          />
+        </label>
+
+        <label class="toggle-row">
+          <span>Milestone Alerts</span>
+          <input
+            type="checkbox"
+            checked={notifPrefs.milestoneAlerts}
+            onchange={(event) => updateNotifPref('milestoneAlerts', (event.currentTarget as HTMLInputElement).checked)}
+          />
+        </label>
+
+        <label class="toggle-row">
+          <span>Win-back Messages</span>
+          <input
+            type="checkbox"
+            checked={notifPrefs.winbackMessages}
+            onchange={(event) => updateNotifPref('winbackMessages', (event.currentTarget as HTMLInputElement).checked)}
+          />
+        </label>
+      {/if}
+    </section>
+
     <AccountSettings />
     <FeedbackButton />
 
@@ -268,6 +344,18 @@
     border-color: #38bdf8;
     background: #0f2942;
     color: #f8fafc;
+  }
+
+  .chip:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .difficulty-lock-note {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #f59e0b;
+    margin: 0 0 8px;
+    line-height: 1.3;
   }
 
   .back-btn {

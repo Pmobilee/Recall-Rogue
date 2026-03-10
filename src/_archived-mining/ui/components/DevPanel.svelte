@@ -95,7 +95,7 @@
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `terra-gacha-snapshot-${snap.snapshotId}.json`
+    a.download = `recall-rogue-snapshot-${snap.snapshotId}.json`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -477,7 +477,7 @@
       const mineScene = game.scene.getScene('MineScene') as unknown as { dirtyTracker?: { pendingCount: number } } | null
       const dirtyTiles = mineScene?.dirtyTracker?.pendingCount ?? 0
       // Save size from localStorage
-      const raw = localStorage.getItem('terra-gacha-save') ?? ''
+      const raw = localStorage.getItem('recall-rogue-save') ?? ''
       const saveSizeKB = Math.round(raw.length / 1024)
       perfStats = { fps, drawCalls, sprites, gpuMB, heapMB, dirtyTiles, saveSizeKB }
     }, 500)

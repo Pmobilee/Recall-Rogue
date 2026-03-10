@@ -6,7 +6,9 @@
 import type { FactDomain } from '../data/card-types';
 import type { FloorState } from './floorManager';
 import { createFloorState, getSegment } from './floorManager';
-import { PLAYER_START_HP, PLAYER_MAX_HP, DEATH_PENALTY } from '../data/balance';
+import { PLAYER_START_HP, PLAYER_MAX_HP, DEATH_PENALTY, DIFFICULTY_REWARD_MULTIPLIER } from '../data/balance';
+import { difficultyMode } from './cardPreferences';
+import { get } from 'svelte/store';
 import type { ActiveBounty } from './bountyManager';
 import { selectRunBounties } from './bountyManager';
 import type { CanaryState } from './canaryService';
@@ -163,7 +165,10 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     : 0;
 
   const segment = getSegment(state.floor.currentFloor);
-  const rewardMultiplier = reason === 'defeat' ? DEATH_PENALTY[segment] : 1.0;
+  const deathPenalty = reason === 'defeat' ? DEATH_PENALTY[segment] : 1.0;
+  const mode = get(difficultyMode);
+  const difficultyBonus = DIFFICULTY_REWARD_MULTIPLIER[mode] ?? 1.0;
+  const rewardMultiplier = deathPenalty * difficultyBonus;
   const completedBounties = state.bounties.filter((bounty) => bounty.completed).map((bounty) => bounty.name);
   const bountyBonusCurrency = completedBounties.length * 20;
   const currencyEarned = Math.floor((state.currency + bountyBonusCurrency) * rewardMultiplier);

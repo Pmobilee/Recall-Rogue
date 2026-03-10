@@ -117,7 +117,7 @@ async function injectSave(page) {
 
     localStorage.setItem('terra_guest_mode', 'true');
     localStorage.setItem('terra_age_bracket', 'teen');
-    localStorage.setItem('terra_gacha_save', JSON.stringify(save));
+    localStorage.setItem('recall_rogue_save', JSON.stringify(save));
     localStorage.setItem('terra_save', JSON.stringify(save));
     return ids.length;
   }, factIds);

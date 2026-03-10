@@ -1,6 +1,6 @@
 # Embed Widget
 
-The Terra Gacha embed widget lets you drop a quiz card into any webpage with a single
+The Recall Rogue embed widget lets you drop a quiz card into any webpage with a single
 `<script>` tag. No build step required.
 
 ## Setup

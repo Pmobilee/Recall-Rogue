@@ -56,7 +56,7 @@ Three card templates are provided, selected automatically based on the trigger c
 | Template ID | Trigger | Headline |
 |---|---|---|
 | `fact_mastery` | Player masters their Nth fact | "I just mastered {N} facts about Earth's deep past" |
-| `dive_record` | Player reaches a personal-best layer | "Reached Layer {N} in Terra Gacha" |
+| `dive_record` | Player reaches a personal-best layer | "Reached Layer {N} in Recall Rogue" |
 | `guild_win` | Player's guild completes a weekly challenge | "{GuildName} conquered the Knowledge Challenge" |
 
 ### Where
@@ -216,7 +216,7 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
   ctx.font = 'bold 28px "Space Mono", monospace'
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
-  ctx.fillText('TERRA GACHA', 48, 32)
+  ctx.fillText('RECALL ROGUE', 48, 32)
 
   ctx.fillStyle = PALETTE.textMuted
   ctx.font = '16px "Space Mono", monospace'
@@ -265,15 +265,15 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
   const dataUrl = canvas.toDataURL('image/png')
 
   const shareTexts: Record<ShareCardTemplate, string> = {
-    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Terra Gacha! Join me: https://terragacha.com`,
-    dive_record:  `I reached Layer ${payload.primaryMetric} in Terra Gacha! How deep can you go? https://terragacha.com`,
-    guild_win:    `My guild just completed a Knowledge Challenge in Terra Gacha. The Earth still has secrets to share. https://terragacha.com`,
+    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Recall Rogue! Join me: https://terragacha.com`,
+    dive_record:  `I reached Layer ${payload.primaryMetric} in Recall Rogue! How deep can you go? https://terragacha.com`,
+    guild_win:    `My guild just completed a Knowledge Challenge in Recall Rogue. The Earth still has secrets to share. https://terragacha.com`,
   }
 
   return {
     dataUrl,
-    filename: `terra-gacha-${payload.template}-${Date.now()}.png`,
-    shareTitle: 'Terra Gacha',
+    filename: `recall-rogue-${payload.template}-${Date.now()}.png`,
+    shareTitle: 'Recall Rogue',
     shareText: shareTexts[payload.template],
   }
 }
@@ -396,7 +396,7 @@ export async function shareOrDownloadCard(result: ShareCardResult): Promise<void
       <img
         class="card-preview"
         src={previewUrl}
-        alt="Share card preview showing your Terra Gacha progress"
+        alt="Share card preview showing your Recall Rogue progress"
       />
     {/if}
 
@@ -981,14 +981,14 @@ fastify.get<{ Params: { playerId: string; badgeId: string } }>(
 <head>
   <meta charset="utf-8">
   <meta property="og:title" content="${safeName} earned: ${def.label}">
-  <meta property="og:description" content="${def.description} — Terra Gacha">
+  <meta property="og:description" content="${def.description} — Recall Rogue">
   <meta property="og:image" content="${ogImageUrl}">
   <meta property="og:url" content="https://terragacha.com/badge/${playerId}/${badgeId}">
   <meta name="twitter:card" content="summary_large_image">
-  <title>${safeName} — ${def.label} | Terra Gacha</title>
+  <title>${safeName} — ${def.label} | Recall Rogue</title>
 </head>
 <body>
-  <p>Redirecting to Terra Gacha…</p>
+  <p>Redirecting to Recall Rogue…</p>
   <script>
     // Deep link redirect — opens app if installed, App Store otherwise
     window.location = 'terragacha://badge/${playerId}/${badgeId}'
@@ -1014,7 +1014,7 @@ fastify.get<{ Params: { playerId: string; badgeId: string } }>(
 
 ### What
 
-Universal links (iOS) and App Links (Android) that open Terra Gacha at specific in-app destinations when tapped from outside the app. The same URL also works in a browser (graceful fallback to web). Three link types are supported:
+Universal links (iOS) and App Links (Android) that open Recall Rogue at specific in-app destinations when tapped from outside the app. The same URL also works in a browser (graceful fallback to web). Three link types are supported:
 
 | Route | In-App Destination | Browser Fallback |
 |---|---|---|

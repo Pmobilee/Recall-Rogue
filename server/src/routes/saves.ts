@@ -1,5 +1,5 @@
 /**
- * Save data routes for the Terra Gacha server.
+ * Save data routes for the Recall Rogue server.
  * Allows authenticated players to upload and retrieve their game saves.
  * All routes require a valid JWT (enforced via requireAuth preHandler).
  */

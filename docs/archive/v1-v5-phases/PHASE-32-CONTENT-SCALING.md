@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Goal**: Scale the Terra Gacha fact database from 522 approved facts to 3,000+ by hardening the automated LLM content pipeline, expanding the distractor system to 4–8 distractors per quiz (up from the current minimum floor), implementing a delta sync protocol that lets clients fetch only new and updated facts rather than the full pack, and adding content cadence tooling (versioned weekly bundles, a release scheduler, and a coverage dashboard).
+**Goal**: Scale the Recall Rogue fact database from 522 approved facts to 3,000+ by hardening the automated LLM content pipeline, expanding the distractor system to 4–8 distractors per quiz (up from the current minimum floor), implementing a delta sync protocol that lets clients fetch only new and updated facts rather than the full pack, and adding content cadence tooling (versioned weekly bundles, a release scheduler, and a coverage dashboard).
 
 **Why this phase matters**: DD-V2-057 establishes 3,000 approved facts as the hard gate before subscriptions open. Phase 11 built the pipeline skeleton; Phase 32 turns it into a reliable, observable factory that can produce 75–150 facts per week with minimal operator intervention. The delta sync protocol is required for the 3,000-fact milestone to be operationally viable — a full-pack download at that scale exceeds acceptable cold-start bandwidth on mobile.
 
@@ -308,7 +308,7 @@ export async function generateStatements(
   }
   const client = new Anthropic({ apiKey: config.anthropicApiKey });
 
-  const prompt = `You are a fact researcher for Terra Gacha, an educational quiz game.
+  const prompt = `You are a fact researcher for Recall Rogue, an educational quiz game.
 Topic: "${topic}"
 Category: ${categoryL1}
 
@@ -552,7 +552,7 @@ Return ONLY the JSON, no markdown fences.`;
 
 ```typescript
 /**
- * 3rd-stage quality gate for the Terra Gacha fact pipeline.
+ * 3rd-stage quality gate for the Recall Rogue fact pipeline.
  * Independently validates factual plausibility, distractor coverage,
  * and readability using a lightweight LLM pass.
  */
@@ -1079,14 +1079,14 @@ fastify.get('/delta', async (request: FastifyRequest, reply: FastifyReply) => {
 
 ```typescript
 /**
- * Delta sync service for the Terra Gacha fact cache.
+ * Delta sync service for the Recall Rogue fact cache.
  * Fetches only facts modified since the client's last sync cursor.
  * Falls back to full pack on first install or corrupted cursor.
  */
 
 import type { Fact } from '../data/types.js';
 
-const SYNC_VERSION_KEY = 'terra-gacha-fact-sync-version';
+const SYNC_VERSION_KEY = 'recall-rogue-fact-sync-version';
 const SYNC_URL_BASE = '/api/facts';
 
 export interface DeltaSyncResult {
@@ -1592,7 +1592,7 @@ app.get('/coverage', (_req, reply) => {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Terra Gacha — Fact Coverage Dashboard</title>
+  <title>Recall Rogue — Fact Coverage Dashboard</title>
   <style>
     body { font-family: monospace; background: #111; color: #ccc; padding: 20px; }
     h1 { color: #0cf; }
@@ -1609,7 +1609,7 @@ app.get('/coverage', (_req, reply) => {
   </style>
 </head>
 <body>
-  <h1>Terra Gacha — Fact Coverage Dashboard</h1>
+  <h1>Recall Rogue — Fact Coverage Dashboard</h1>
   <div id="progress">Loading…</div>
   <div id="content"></div>
   <script src="coverage.js"></script>
@@ -1726,7 +1726,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core');
 
   // Verify sync version key is set after initialization
   const syncVersion = await page.evaluate(() =>
-    localStorage.getItem('terra-gacha-fact-sync-version')
+    localStorage.getItem('recall-rogue-fact-sync-version')
   );
   console.log('Sync version after init:', syncVersion);
   if (syncVersion === null) {

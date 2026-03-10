@@ -11,7 +11,7 @@
 
 ### Goal
 
-Establish a comprehensive automated test suite for Terra Gacha, covering pure-logic unit tests, manager-level unit tests, Svelte component tests, Fastify server integration tests, and full E2E Playwright scenarios. Wire everything into a GitHub Actions CI/CD pipeline that enforces coverage thresholds and blocks merges on failure.
+Establish a comprehensive automated test suite for Recall Rogue, covering pure-logic unit tests, manager-level unit tests, Svelte component tests, Fastify server integration tests, and full E2E Playwright scenarios. Wire everything into a GitHub Actions CI/CD pipeline that enforces coverage thresholds and blocks merges on failure.
 
 ### Why Now
 
@@ -1324,7 +1324,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Check that localStorage is accessible and contains save data (or not)
   const hasSave = await page.evaluate(() => {
-    return localStorage.getItem('terra-gacha-save') !== null ||
+    return localStorage.getItem('recall-rogue-save') !== null ||
            localStorage.getItem('terra-dive-save') !== null
   })
 

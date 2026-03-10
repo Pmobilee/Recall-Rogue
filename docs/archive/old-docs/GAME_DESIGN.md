@@ -1,4 +1,4 @@
-# Game Design Document — Terra Miner (a.k.a. Terra-Gacha)
+# Game Design Document — Terra Miner (a.k.a. Recall-Rogue)
 
 Mining roguelite meets knowledge game. Dig deep, discover artifacts, learn real facts, grow your Knowledge Tree.
 
@@ -12,7 +12,7 @@ The dome evolves from a single survival hub into a multi-floor glass complex, wi
 
 1. **Addictive learning** — The primary goal. Every system must make acquiring knowledge feel rewarding, never tedious. Players should *want* to learn more, not feel forced.
 2. **Roguelite replayability** — Every dive is unique. Procedural generation, random loot, in-run upgrades, and risk/reward depth layers ensure no two runs are alike.
-3. **Gacha dopamine** — Artifact reveals, rarity tiers, fossil pet synthesis, and loot moments create anticipation and payoff ("terra-gacha").
+3. **Gacha dopamine** — Artifact reveals, rarity tiers, fossil pet synthesis, and loot moments create anticipation and payoff ("recall-rogue").
 4. **Meaningful progression** — Knowledge Tree grows permanently. Base expands. Pets come alive. The player's world reflects what they've learned.
 
 ## Implementation Status Snapshot (V4)
@@ -74,7 +74,7 @@ This snapshot reflects what is currently implemented in the repo (V4 baseline pl
 
 ## Core Time Model — Movement-Based, Never Real-Time
 
-Terra Gacha uses a strictly movement-based time system. **No game mechanic uses real-time seconds.** One player movement or one block hit equals one "tick." This means:
+Recall Rogue uses a strictly movement-based time system. **No game mechanic uses real-time seconds.** One player movement or one block hit equals one "tick." This means:
 
 - Lava flows expand by one block per tick (never exponentially)
 - Gas clouds drift one tile per tick toward the player
@@ -461,7 +461,7 @@ Examples:
 
 ## Session Design & Daily Engagement Loop
 
-Terra Gacha is designed around two coexisting play patterns — the focused expedition and the casual check-in. Neither is second-class.
+Recall Rogue is designed around two coexisting play patterns — the focused expedition and the casual check-in. Neither is second-class.
 
 ### Dual Session Profiles
 
@@ -505,7 +505,7 @@ Mineral decay was removed from the design. It felt punishing without teaching an
 
 ## Monetization
 
-Terra Gacha uses a hybrid monetization model built around one inviolable principle: **all knowledge is free**. Every fact in the game is findable through normal play. "Free to learn" is a philosophical line in the sand, not a marketing claim.
+Recall Rogue uses a hybrid monetization model built around one inviolable principle: **all knowledge is free**. Every fact in the game is findable through normal play. "Free to learn" is a philosophical line in the sand, not a marketing claim.
 
 ### Hybrid Model
 
@@ -517,7 +517,7 @@ All facts are free to find in-game, always. What can be sold instead: cosmetic D
 
 ### Ad-Free Policy
 
-Terra Gacha launches ad-free. If ads are ever considered, the only acceptable format is strictly opt-in rewarded video shown after dives only — never interrupting gameplay, never appearing during quizzes, and never shown as banners. This is a hard constraint that protects the learning experience.
+Recall Rogue launches ad-free. If ads are ever considered, the only acceptable format is strictly opt-in rewarded video shown after dives only — never interrupting gameplay, never appearing during quizzes, and never shown as banners. This is a hard constraint that protects the learning experience.
 
 ### Cosmetic Pricing
 
@@ -593,7 +593,7 @@ Subscriptions should not open until the fact pool reaches at least 3,000 facts. 
 ## Interest & Personalization System
 
 ### Philosophy
-Players should be able to use Terra Gacha to study whatever they want. If someone wants to use it exclusively for particle physics, they can. If someone wants broad general knowledge, that's the default. The system adapts to both extremes and everything in between.
+Players should be able to use Recall Rogue to study whatever they want. If someone wants to use it exclusively for particle physics, they can. If someone wants broad general knowledge, that's the default. The system adapts to both extremes and everything in between.
 
 ### Interest Settings
 - **Settings page**: Categories and subcategories with sliding preference bars
@@ -816,7 +816,7 @@ Each fact is tagged with a volatility class:
 ## SM-2 Tuning & Learning System
 
 ### SM-2 Calibration for Casual Mobile
-The default Anki SM-2 algorithm is tuned for dedicated desktop learners. Terra Gacha adjusts several parameters for mobile casual play:
+The default Anki SM-2 algorithm is tuned for dedicated desktop learners. Recall Rogue adjusts several parameters for mobile casual play:
 
 **Second interval**: Shortened from 6 days to **3 days**. Mobile players study less consistently; a shorter early interval catches lapses before the player forgets and gets frustrated.
 
@@ -981,7 +981,7 @@ Free Teacher Dashboard and free Classroom License are planned for post-launch, b
 
 ## Player Psychology & Ethics
 
-Terra Gacha serves a diverse player base with heterogeneous motivations. The design acknowledges this explicitly rather than optimizing for a single archetype.
+Recall Rogue serves a diverse player base with heterogeneous motivations. The design acknowledges this explicitly rather than optimizing for a single archetype.
 
 ### Four Player Archetypes
 
@@ -1020,7 +1020,7 @@ The Archive floor displays "GAIA's Report" — a personal learning analytics das
 
 ### Learning Effectiveness Publishing
 
-An annual "Terra Gacha Learning Report" is published with anonymized aggregate data demonstrating educational outcomes: average retention rates, facts mastered per player, most popular knowledge categories, language learning progression. This document serves dual purposes — it holds the team accountable to educational quality and it provides institutional credibility for educational partnership conversations.
+An annual "Recall Rogue Learning Report" is published with anonymized aggregate data demonstrating educational outcomes: average retention rates, facts mastered per player, most popular knowledge categories, language learning progression. This document serves dual purposes — it holds the team accountable to educational quality and it provides institutional credibility for educational partnership conversations.
 
 ### 10 Critical Pre-Beta Events
 

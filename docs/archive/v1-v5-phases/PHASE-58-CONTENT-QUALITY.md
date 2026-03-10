@@ -222,7 +222,7 @@ app.addHook('onRequest', async (request, reply) => {
   const authHeader = request.headers.authorization ?? ''
   const [scheme, credentials] = authHeader.split(' ')
   if (scheme !== 'Basic' || !credentials) {
-    reply.header('WWW-Authenticate', 'Basic realm="Terra Gacha Admin"')
+    reply.header('WWW-Authenticate', 'Basic realm="Recall Rogue Admin"')
     reply.status(401).send('Unauthorized')
     return
   }
@@ -375,7 +375,7 @@ writeFileSync('scripts/fact-audit-report.json', JSON.stringify(report, null, 2))
 
 // Write Markdown
 const md = [
-  `# Terra Gacha — Fact Content Quality Report`,
+  `# Recall Rogue — Fact Content Quality Report`,
   `Generated: ${report.generatedAt}`,
   `Total approved facts: **${report.totalFacts}**`,
   '',

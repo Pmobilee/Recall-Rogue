@@ -1,5 +1,5 @@
 /**
- * JWT authentication middleware for the Terra Gacha server.
+ * JWT authentication middleware for the Recall Rogue server.
  * Verifies the Bearer token in the Authorization header and
  * provides a typed accessor for the decoded payload.
  */

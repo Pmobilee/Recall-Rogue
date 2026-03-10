@@ -1157,7 +1157,7 @@ export interface GeneratedFactContent {
  * Takes a statement and context, outputs all generated fields.
  */
 function buildGenerationPrompt(statement: string, categoryL1: string, categoryL2: string): string {
-  return `You are a content writer for Terra Gacha, an educational game where players mine underground and discover fascinating facts about Earth.
+  return `You are a content writer for Recall Rogue, an educational game where players mine underground and discover fascinating facts about Earth.
 
 FACT TO ENRICH:
 "${statement}"
@@ -1678,12 +1678,12 @@ The full HTML/JS is intentionally plain (no React/Vue) so it runs with zero buil
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Terra Gacha — Fact Dashboard</title>
+  <title>Recall Rogue — Fact Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav>
-    <h1>Terra Gacha Fact Dashboard</h1>
+    <h1>Recall Rogue Fact Dashboard</h1>
     <div id="tabs">
       <button onclick="showTab('facts')" class="active">Facts</button>
       <button onclick="showTab('gap')">Gap Analysis</button>
@@ -2364,7 +2364,7 @@ curl -sf "http://localhost:3001/api/facts/gap-analysis" \
 # Expected: > 0 (some subcategories will be under 20)
 
 # 9. Dashboard accessible
-curl -sf http://localhost:3002/ | grep -q 'Terra Gacha'
+curl -sf http://localhost:3002/ | grep -q 'Recall Rogue'
 # Expected: exit code 0
 
 # 10. Distractor confidence threshold enforced

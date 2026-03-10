@@ -1,7 +1,7 @@
 /**
  * Browser compatibility detection service.
  *
- * Detects features used by Terra Gacha and reports compatibility issues
+ * Detects features used by Recall Rogue and reports compatibility issues
  * to the error reporting service and as a console warning.
  *
  * Called once at boot in main.ts.

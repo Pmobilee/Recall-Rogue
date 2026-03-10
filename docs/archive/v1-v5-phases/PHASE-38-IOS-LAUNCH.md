@@ -1,7 +1,7 @@
 # Phase 38: iOS App Store Launch
 
 **Status**: Not Started
-**Goal**: Ship Terra Gacha to the Apple App Store. This covers Apple Developer account configuration, Xcode project setup, iOS-specific UI and API adjustments, TestFlight beta distribution, App Store review guidelines compliance, full App Store submission with metadata and privacy labels, and post-launch monitoring with App Store Connect analytics.
+**Goal**: Ship Recall Rogue to the Apple App Store. This covers Apple Developer account configuration, Xcode project setup, iOS-specific UI and API adjustments, TestFlight beta distribution, App Store review guidelines compliance, full App Store submission with metadata and privacy labels, and post-launch monitoring with App Store Connect analytics.
 **Design Decisions**: DD-V2-131 (no premium randomization — critical for App Store guideline 3.1.1), DD-V2-145 (direct pricing, no premium currency), DD-V2-165 (Games > Adventure/Casual category), DD-V2-166 (subtitle locked: "Mine Deep. Learn Everything."), DD-V2-167 (soft-launch by region), DD-V2-178 (accessibility requirements), DD-V2-270 (JWT auth, Sign in with Apple required if any social login exists)
 
 ---
@@ -10,10 +10,10 @@
 
 The Capacitor Android platform is already configured (`com.terragacha.app`, Capacitor 8.1.0). Phase 20 completed the Capacitor build polish pass, store listing text, accessibility compliance, and PWA. Phase 19 completed auth (JWT, cloud sync, profiles). Phase 21 completed monetization (Terra Pass, IAP catalog, O2 regen). This phase exclusively targets the Apple distribution channel.
 
-Apple's review process is the most scrutinized gate in mobile publishing. Every sub-phase in this document is written with that constraint front-and-center. The two highest-rejection-risk areas for Terra Gacha are:
+Apple's review process is the most scrutinized gate in mobile publishing. Every sub-phase in this document is written with that constraint front-and-center. The two highest-rejection-risk areas for Recall Rogue are:
 
-1. **Guideline 3.1.1 — Loot boxes**: The game must not misrepresent any random reward as having a guaranteed value. Terra Gacha uses `GACHA_TIERS` for cosmetic reveals. The word "gacha" is in the app name. This will attract scrutiny. Sub-phase 38.5 contains a full audit of every randomized reward surface.
-2. **Guideline 3.1.3(b) — Reader apps**: Terra Gacha serves educational content (facts) that a user can subscribe to receive more of. Apple requires that IAP be used for any in-app subscription purchase — the existing `com.terragacha.terrapass.monthly` and patron tiers must route through StoreKit 2, not a web payment flow, for any purchase initiated inside the iOS app.
+1. **Guideline 3.1.1 — Loot boxes**: The game must not misrepresent any random reward as having a guaranteed value. Recall Rogue uses `GACHA_TIERS` for cosmetic reveals. The word "gacha" is in the app name. This will attract scrutiny. Sub-phase 38.5 contains a full audit of every randomized reward surface.
+2. **Guideline 3.1.3(b) — Reader apps**: Recall Rogue serves educational content (facts) that a user can subscribe to receive more of. Apple requires that IAP be used for any in-app subscription purchase — the existing `com.terragacha.terrapass.monthly` and patron tiers must route through StoreKit 2, not a web payment flow, for any purchase initiated inside the iOS app.
 
 **Dependencies (must be complete before starting)**:
 - Phase 19: Auth & Cloud (JWT auth, cloud sync, profiles) — COMPLETE
@@ -67,7 +67,7 @@ This sub-phase contains no web or Svelte code. All work happens in Apple's devel
 Navigate to `https://developer.apple.com/account/resources/identifiers/list`:
 
 1. Click **+** → **App IDs** → **App**
-2. Description: `Terra Gacha`
+2. Description: `Recall Rogue`
 3. Bundle ID: `com.terragacha.app` (Explicit, matches `capacitor.config.ts` appId)
 4. Enable capabilities:
    - **Push Notifications** (required for Phase 17 re-engagement)
@@ -92,7 +92,7 @@ Two certificates are required:
 **Apple Push Notification service (APNs) Key** (for push notifications):
 ```bash
 # developer.apple.com > Keys > +
-# Name: Terra Gacha Push
+# Name: Recall Rogue Push
 # Enable: Apple Push Notifications service (APNs)
 # Download the .p8 file — it can only be downloaded ONCE
 # Store in: server/config/apns-key.p8 (gitignored)
@@ -104,7 +104,7 @@ Two certificates are required:
 1. `developer.apple.com` → Profiles → **+** → **App Store Connect**
 2. App ID: `com.terragacha.app`
 3. Certificate: select the Distribution certificate created in 38.1.3
-4. Name: `Terra Gacha App Store`
+4. Name: `Recall Rogue App Store`
 5. Download `Terra_Gacha_App_Store.mobileprovision`
 6. Double-click to install; it appears in Xcode automatically
 
@@ -112,7 +112,7 @@ Two certificates are required:
 
 1. `appstoreconnect.apple.com` → My Apps → **+** → **New App**
 2. Platforms: iOS
-3. Name: `Terra Gacha`
+3. Name: `Recall Rogue`
 4. Primary Language: English (U.S.)
 5. Bundle ID: `com.terragacha.app`
 6. SKU: `TERRA-GACHA-001` (internal identifier, never shown publicly)
@@ -133,7 +133,7 @@ All IAP products must be registered in App Store Connect before any native purch
 | `com.terragacha.pioneerpack` | Non-Consumable | $4.99 |
 | `com.terragacha.seasonpass` | Non-Consumable | $9.99 |
 
-Subscription group name: `Terra Gacha Subscriptions`
+Subscription group name: `Recall Rogue Subscriptions`
 Subscription group reference name: used internally for the family of subscription products
 
 **Acceptance criteria**:
@@ -177,7 +177,7 @@ Open `ios/App/App.xcworkspace` in Xcode:
 2. Team: select the enrolled Apple Developer team
 3. Bundle Identifier: `com.terragacha.app` (verify it matches)
 4. Signing Certificate: **Apple Distribution** (for release), **Apple Development** (for debug)
-5. Provisioning Profile: **Terra Gacha App Store** (auto-selected if installed)
+5. Provisioning Profile: **Recall Rogue App Store** (auto-selected if installed)
 6. Enable **Automatically manage signing** only for debug builds — for release, use the manual provisioning profile to guarantee deterministic behavior
 
 #### 38.2.3 — Info.plist Configuration
@@ -187,7 +187,7 @@ Edit `ios/App/App/Info.plist`. The following keys must be present:
 ```xml
 <!-- Display name shown under the app icon -->
 <key>CFBundleDisplayName</key>
-<string>Terra Gacha</string>
+<string>Recall Rogue</string>
 
 <!-- Minimum iOS version: 16.0 (Capacitor 8.x requirement) -->
 <key>MinimumOSVersion</key>
@@ -206,19 +206,19 @@ Edit `ios/App/App/Info.plist`. The following keys must be present:
 
 <!-- Camera — used for avatar capture (future phase; include now to avoid re-review) -->
 <key>NSCameraUsageDescription</key>
-<string>Terra Gacha uses your camera to set a profile photo.</string>
+<string>Recall Rogue uses your camera to set a profile photo.</string>
 
 <!-- Photo Library — save screenshots, import avatar -->
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Terra Gacha reads your photo library to set a profile photo.</string>
+<string>Recall Rogue reads your photo library to set a profile photo.</string>
 
 <!-- App Tracking Transparency — required before accessing IDFA -->
 <key>NSUserTrackingUsageDescription</key>
-<string>We use this to understand how players discover Terra Gacha so we can make it better. No personal data is sold.</string>
+<string>We use this to understand how players discover Recall Rogue so we can make it better. No personal data is sold.</string>
 
 <!-- Notifications — used for O2 regen and streak reminders (Phase 17) -->
 <key>NSUserNotificationsUsageDescription</key>
-<string>Terra Gacha sends reminders when your oxygen tanks are recharged and to keep your learning streak alive.</string>
+<string>Recall Rogue sends reminders when your oxygen tanks are recharged and to keep your learning streak alive.</string>
 
 <!-- Suppress iTunes file sharing (saves are cloud-synced, not user-accessible files) -->
 <key>UIFileSharingEnabled</key>
@@ -321,14 +321,14 @@ xcodebuild archive \
   -workspace ios/App/App.xcworkspace \
   -scheme App \
   -configuration Release \
-  -archivePath /tmp/TerraGacha.xcarchive \
+  -archivePath /tmp/RecallRogue.xcarchive \
   CODE_SIGN_IDENTITY="Apple Distribution" \
-  PROVISIONING_PROFILE_SPECIFIER="Terra Gacha App Store"
+  PROVISIONING_PROFILE_SPECIFIER="Recall Rogue App Store"
 
 # Export IPA from archive
 xcodebuild -exportArchive \
-  -archivePath /tmp/TerraGacha.xcarchive \
-  -exportPath /tmp/TerraGacha-export/ \
+  -archivePath /tmp/RecallRogue.xcarchive \
+  -exportPath /tmp/RecallRogue-export/ \
   -exportOptionsPlist ios/ExportOptions.plist
 ```
 
@@ -354,7 +354,7 @@ xcodebuild -exportArchive \
   <key>provisioningProfiles</key>
   <dict>
     <key>com.terragacha.app</key>
-    <string>Terra Gacha App Store</string>
+    <string>Recall Rogue App Store</string>
   </dict>
 </dict>
 </plist>
@@ -697,7 +697,7 @@ Mount `<ATTConsentPrompt />` in `src/App.svelte` before the GAIA intro sequence,
 
 ### 38.4 — TestFlight Beta Distribution
 
-**Goal**: Distribute Terra Gacha to internal testers (team) and external testers (up to 10,000 users) via TestFlight. Collect crash reports and feedback before App Store submission.
+**Goal**: Distribute Recall Rogue to internal testers (team) and external testers (up to 10,000 users) via TestFlight. Collect crash reports and feedback before App Store submission.
 
 #### 38.4.1 — Build Version Conventions
 
@@ -720,7 +720,7 @@ Recommended scheme for this phase:
 # Upload via Transporter CLI (Apple's official tool)
 xcrun altool --upload-app \
   --type ios \
-  --file /tmp/TerraGacha-export/TerraGacha.ipa \
+  --file /tmp/RecallRogue-export/RecallRogue.ipa \
   --apiKey YOUR_API_KEY \
   --apiIssuer YOUR_ISSUER_ID
 
@@ -734,7 +734,7 @@ After upload, the build appears in App Store Connect under **TestFlight** within
 In App Store Connect → TestFlight → Internal Testing:
 - Add up to 25 internal testers (must be App Store Connect users with Developer or Admin role)
 - Enable build for internal testing immediately (no Apple review required)
-- Create group: `Terra Gacha Team`
+- Create group: `Recall Rogue Team`
 - Add testers by Apple ID email
 - Internal builds are available within minutes of processing
 
@@ -789,7 +789,7 @@ The app name contains "Gacha." Apple scrutinizes any app with this name pattern 
 1. Disclose the odds of each item type before purchase
 2. Not use randomized virtual items that are purchased with real money
 
-Terra Gacha's gacha reveals (`GachaReveal.svelte`, `GACHA_TIERS` in `balance.ts`) are triggered by in-game mineral currency, NOT by real money purchases. The Terra Pass subscription grants a monthly cosmetic — always the same cosmetic, never randomized. This is compliant.
+Recall Rogue's gacha reveals (`GachaReveal.svelte`, `GACHA_TIERS` in `balance.ts`) are triggered by in-game mineral currency, NOT by real money purchases. The Terra Pass subscription grants a monthly cosmetic — always the same cosmetic, never randomized. This is compliant.
 
 **Verification checklist**:
 - [ ] No IAP product triggers a randomized reward. Verify in `src/data/iapCatalog.ts` — all products yield deterministic items.
@@ -844,7 +844,7 @@ Verify:
 
 #### 38.5.4 — Guideline 4.2 — Minimum Functionality
 
-Apple rejects apps that are too simple or serve as thin wrappers. Terra Gacha has extensive native-class functionality. No action required.
+Apple rejects apps that are too simple or serve as thin wrappers. Recall Rogue has extensive native-class functionality. No action required.
 
 #### 38.5.5 — Guideline 2.3.3 — Accurate Screenshots
 
@@ -852,7 +852,7 @@ All App Store screenshots (38.6.2) must reflect actual gameplay. No mockup scree
 
 #### 38.5.6 — Guideline 1.3 — Kids Category Age Rating
 
-Terra Gacha targets all ages but uses an age gate (Phase 19) and COPPA compliance. Do NOT select the "Kids" category — that category restricts IAP and analytics. Select age rating **4+** (no objectionable content) or **9+** if any fantasy violence from boss encounters is present (Phase 36).
+Recall Rogue targets all ages but uses an age gate (Phase 19) and COPPA compliance. Do NOT select the "Kids" category — that category restricts IAP and analytics. Select age rating **4+** (no objectionable content) or **9+** if any fantasy violence from boss encounters is present (Phase 36).
 
 Recommended: **9+** to be safe once Phase 36 (combat) is included. For pre-combat builds: **4+**.
 
@@ -877,13 +877,13 @@ Fill in App Store Connect → App Information:
 
 | Field | Value |
 |---|---|
-| Name | Terra Gacha |
+| Name | Recall Rogue |
 | Subtitle | Mine Deep. Learn Everything. |
 | Category (Primary) | Games |
 | Sub-category | Adventure |
 | Category (Secondary) | Education |
 | Age Rating | 9+ (see 38.5.6) |
-| Copyright | © 2026 Terra Gacha |
+| Copyright | © 2026 Recall Rogue |
 | Support URL | https://terragacha.com/support |
 | Marketing URL | https://terragacha.com |
 | Privacy Policy URL | https://terragacha.com/privacy |
@@ -898,7 +898,7 @@ The only way home is to mine deep enough to power your ship's reactor — and th
 deeper you go, the more secrets you uncover.
 
 Every mineral you extract teaches you something real. Every relic you surface
-reveals a lost chapter of human history. Terra Gacha turns every dive into a
+reveals a lost chapter of human history. Recall Rogue turns every dive into a
 study session you actually want to finish.
 
 ──── HOW IT WORKS ────
@@ -908,7 +908,7 @@ study session you actually want to finish.
 • Return to your dome and watch your Knowledge Tree grow
 
 ──── DESIGNED FOR REAL LEARNING ────
-Terra Gacha uses spaced repetition (the same algorithm behind Anki and Duolingo)
+Recall Rogue uses spaced repetition (the same algorithm behind Anki and Duolingo)
 to surface facts at exactly the right moment. No grinding. No cramming.
 Just 15 minutes a day building genuine long-term memory.
 
@@ -964,7 +964,7 @@ Apple requires declaring every data type the app collects under **App Privacy** 
 Create `docs/store/privacy-nutrition-label.md` with these declarations:
 
 **Data Used to Track You** (requires ATT prompt):
-- None (Terra Gacha does not use cross-app tracking)
+- None (Recall Rogue does not use cross-app tracking)
 
 **Data Linked to You**:
 | Data Type | Usage | Optional? |
@@ -1288,7 +1288,7 @@ xcodebuild archive \
   -workspace ios/App/App.xcworkspace \
   -scheme App \
   -configuration Release \
-  -archivePath /tmp/TerraGacha.xcarchive
+  -archivePath /tmp/RecallRogue.xcarchive
 # Must exit 0; no compile errors; no signing errors
 ```
 

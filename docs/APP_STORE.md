@@ -1,14 +1,14 @@
-# Arcane Recall App Store Metadata Draft
+# Recall Rogue App Store Metadata Draft
 
 ## Product
-- App Name: `Arcane Recall`
+- App Name: `Recall Rogue`
 - Subtitle: `Learn Facts. Build Decks. Delve.`
 - Primary Category: `Education`
 - Secondary Category: `Games / Card`
 - Age Rating: `4+`
 
 ## Short Description
-Arcane Recall is a mobile-first educational card roguelite that combines retrieval practice with tactical combat.
+Recall Rogue is a mobile-first educational card roguelite that combines retrieval practice with tactical combat.
 
 ## Full Description
 Descend through encounters, commit cards, answer knowledge prompts, and build a stronger deck each run.

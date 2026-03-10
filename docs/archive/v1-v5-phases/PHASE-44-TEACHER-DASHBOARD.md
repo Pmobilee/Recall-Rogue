@@ -10,7 +10,7 @@
 
 **Goal**: Build a standalone educator-facing web application that lets verified teachers create and manage classes, monitor aggregate student learning progress, and push homework category locks directly into students' games. The teacher dashboard is a separate Vite app served from `teacher/` in the repository root; it shares only the backend API and TypeScript types with the main game. It does not use Phaser or Capacitor.
 
-**Why this phase exists**: Terra Gacha's SM-2 engine and category system make it uniquely suited for structured classroom use. A teacher who can lock the fact category to "Geology" for a week, see which students are struggling with specific facts, and schedule a due-date deadline has a genuinely useful pedagogical tool — not a toy. The Dashboard is the B2B wedge that unlocks school licensing deals and provides third-party proof of learning effectiveness.
+**Why this phase exists**: Recall Rogue's SM-2 engine and category system make it uniquely suited for structured classroom use. A teacher who can lock the fact category to "Geology" for a week, see which students are struggling with specific facts, and schedule a due-date deadline has a genuinely useful pedagogical tool — not a toy. The Dashboard is the B2B wedge that unlocks school licensing deals and provides third-party proof of learning effectiveness.
 
 **Design decisions governing this phase**:
 - **DD-V2-169**: Teacher Dashboard launches post-launch, after D30 retention >= 10%. The dashboard is useless without an installed player base in schools.
@@ -78,7 +78,7 @@ Bootstrap a standalone Vite 7 + Svelte 5 + TypeScript application in `teacher/` 
 
 ```json
 {
-  "name": "terra-gacha-teacher",
+  "name": "recall-rogue-teacher",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -679,7 +679,7 @@ The Login screen has two modes: standard login (for already-approved educators) 
 
 ### What
 
-An approved educator can create up to `classLimit` classes (default: 5), each with a unique 6-character join code. Students join via the main Terra Gacha game's Settings screen by entering the join code. The teacher can view the student roster, remove students, and archive (soft-delete) a class. The `classroom.ts` stub is deleted and replaced by `classrooms.ts` with full database persistence.
+An approved educator can create up to `classLimit` classes (default: 5), each with a unique 6-character join code. Students join via the main Recall Rogue game's Settings screen by entering the join code. The teacher can view the student roster, remove students, and archive (soft-delete) a class. The `classroom.ts` stub is deleted and replaced by `classrooms.ts` with full database persistence.
 
 ### Where
 
@@ -1721,7 +1721,7 @@ app.get('/educator-queue-ui', { preHandler: requireAdmin }, async (_req, reply) 
 
   const html = `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Educator Queue — Terra Gacha Admin</title>
+<head><meta charset="UTF-8"><title>Educator Queue — Recall Rogue Admin</title>
 <style>body{font-family:system-ui;padding:2rem}table{border-collapse:collapse;width:100%}
 td,th{border:1px solid #ccc;padding:8px;text-align:left}tr:nth-child(even){background:#f9f9f9}</style>
 </head>

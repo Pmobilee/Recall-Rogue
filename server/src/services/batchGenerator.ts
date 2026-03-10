@@ -35,7 +35,7 @@ export async function generateStatements(
   }
   const client = new Anthropic({ apiKey: config.anthropicApiKey });
 
-  const prompt = `You are a fact researcher for Terra Gacha, an educational quiz game.
+  const prompt = `You are a fact researcher for Recall Rogue, an educational quiz game.
 Topic: "${topic}"
 Category: ${categoryL1}
 

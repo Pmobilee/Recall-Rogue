@@ -1,4 +1,4 @@
-# Visual & UX Overhaul Plan — Terra Gacha
+# Visual & UX Overhaul Plan — Recall Rogue
 
 > **Status**: PLANNING (do not build yet)
 > **Last updated**: 2026-03-01

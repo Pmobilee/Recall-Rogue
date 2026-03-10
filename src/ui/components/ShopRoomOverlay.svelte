@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
+  import { getTierDisplayName } from '../../services/tierDerivation'
 
   interface Props {
     cards: Card[]
@@ -28,7 +29,7 @@
   }
 
   function tierLabel(card: Card): string {
-    return card.tier === '1' ? 'Tier 1' : `Tier ${card.tier.toUpperCase()}`
+    return getTierDisplayName(card.tier)
   }
 </script>
 

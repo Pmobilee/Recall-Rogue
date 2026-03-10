@@ -1,4 +1,4 @@
-# Apple Privacy Nutrition Label — Terra Gacha
+# Apple Privacy Nutrition Label — Recall Rogue
 
 **App Store Connect path**: App Record → App Privacy → Privacy Practices
 
@@ -11,7 +11,7 @@ Translate the tables below directly into the App Store Connect checkboxes.
 
 > "Tracking" in Apple's definition means linking data to a third-party identity or sharing data with data brokers.
 
-**None.** Terra Gacha does not use cross-app tracking. No IDFA-dependent advertising calls are made. The ATT consent prompt (38.3.4) appears on iOS 14.5+ but the answer does not change what data is collected — it gates analytics events that would otherwise leave the app.
+**None.** Recall Rogue does not use cross-app tracking. No IDFA-dependent advertising calls are made. The ATT consent prompt (38.3.4) appears on iOS 14.5+ but the answer does not change what data is collected — it gates analytics events that would otherwise leave the app.
 
 Select: **No data used to track you.**
 
@@ -55,7 +55,7 @@ These data types are collected anonymously and not associated with any user acco
 
 ## Data Not Collected
 
-The following sensitive data types are NOT collected by Terra Gacha:
+The following sensitive data types are NOT collected by Recall Rogue:
 
 - Health & Fitness data
 - Financial information (card numbers, bank accounts — IAP handled by StoreKit/Apple)
@@ -84,7 +84,7 @@ The privacy policy must be live and accessible from a web browser before App Sto
 
 ## Notes for App Store Review
 
-- Terra Gacha does **not** use advertising networks or share data with data brokers.
+- Recall Rogue does **not** use advertising networks or share data with data brokers.
 - The ATT prompt (NSUserTrackingUsageDescription) is shown because analytics events are fired that could theoretically be used for cross-app measurement. However, no IDFA is read. The prompt satisfies Apple's requirement to ask before any data collection that could be "tracking" in the broad sense.
 - Email authentication is the only contact info collected. No marketing emails are sent without explicit opt-in.
 - All delete-account requests wipe user data within 30 days per GDPR/COPPA compliance.

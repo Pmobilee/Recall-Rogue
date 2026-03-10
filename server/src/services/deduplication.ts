@@ -1,5 +1,5 @@
 /**
- * Semantic duplicate detection service for the Terra Gacha fact content engine.
+ * Semantic duplicate detection service for the Recall Rogue fact content engine.
  * Uses Claude API to detect near-duplicate facts before ingestion.
  * Fails open on LLM errors to avoid blocking content pipeline.
  */

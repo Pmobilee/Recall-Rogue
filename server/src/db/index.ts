@@ -1,5 +1,5 @@
 /**
- * Database connection setup for the Terra Gacha server.
+ * Database connection setup for the Recall Rogue server.
  * Uses better-sqlite3 + Drizzle ORM for SQLite (development/self-hosted).
  * The connection is a singleton; import `db` throughout the application.
  */

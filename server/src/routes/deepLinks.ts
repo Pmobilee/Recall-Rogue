@@ -1,5 +1,5 @@
 /**
- * Deep link routing endpoints for the Terra Gacha server.
+ * Deep link routing endpoints for the Recall Rogue server.
  * Phase 42.4: Serves AASA (Apple App Site Association) and assetlinks.json.
  *
  * Endpoints:
@@ -91,19 +91,19 @@ export async function deepLinkRoutes(fastify: FastifyInstance): Promise<void> {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Join me on Terra Gacha!">
-  <meta property="og:description" content="Mine for ancient knowledge in Terra Gacha.">
-  <title>Terra Gacha Invite</title>
+  <meta property="og:title" content="Join me on Recall Rogue!">
+  <meta property="og:description" content="Mine for ancient knowledge in Recall Rogue.">
+  <title>Recall Rogue Invite</title>
 </head>
 <body>
-  <p>Opening Terra Gacha\u2026</p>
+  <p>Opening Recall Rogue\u2026</p>
   <script>
     var code = ${JSON.stringify(safeCode)};
     window.location = 'terragacha://invite/' + code;
     setTimeout(function() {
       var ua = navigator.userAgent;
       if (/iPad|iPhone|iPod/.test(ua)) {
-        window.location = 'https://apps.apple.com/app/terra-gacha/id000000000';
+        window.location = 'https://apps.apple.com/app/recall-rogue/id000000000';
       } else if (/Android/.test(ua)) {
         window.location = 'https://play.google.com/store/apps/details?id=com.terragacha.app';
       } else {
@@ -140,12 +140,12 @@ export async function deepLinkRoutes(fastify: FastifyInstance): Promise<void> {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Discover this Earth fact in Terra Gacha">
+  <meta property="og:title" content="Discover this Earth fact in Recall Rogue">
   <meta property="og:description" content="Learn fascinating facts about Earth's history through mining and exploration.">
-  <title>Terra Gacha Fact</title>
+  <title>Recall Rogue Fact</title>
 </head>
 <body>
-  <p>Opening Terra Gacha\u2026</p>
+  <p>Opening Recall Rogue\u2026</p>
   <script>
     window.location = 'terragacha://fact/${safeFactId}';
     setTimeout(function() { window.location = 'https://terragacha.com'; }, 1500);

@@ -246,7 +246,7 @@ Create `docs/APP_STORE.md` with:
 
 ```markdown
 ## App Name
-Arcane Recall
+Recall Rogue
 
 ## Subtitle (30 chars)
 Learn Facts. Build Decks. Delve.

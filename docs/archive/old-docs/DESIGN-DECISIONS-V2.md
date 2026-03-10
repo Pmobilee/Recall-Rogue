@@ -2,7 +2,7 @@
 
 **Date**: 2026-03-02
 **Session Type**: Comprehensive Q&A design review
-**Project**: Terra Gacha (formerly Terra Miner)
+**Project**: Recall Rogue (formerly Terra Miner)
 
 This document captures all design decisions from the V2 Q&A session. Each decision is numbered, grouped by system area, and includes context for future reference.
 
@@ -1936,9 +1936,9 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: Ethics — Gacha Guardrails
 **Date**: 2026-03-03
 
-**Context**: Artifacts have rarity tiers (Common 60% to Mythic 0.1%) with escalating reveal animations. The game is named "Terra Gacha." Gacha mechanics face regulatory scrutiny in some regions.
+**Context**: Artifacts have rarity tiers (Common 60% to Mythic 0.1%) with escalating reveal animations. The game is named "Recall Rogue." Gacha mechanics face regulatory scrutiny in some regions.
 
-**Decision**: Five ethical guardrails: (1) All drop rates are displayed in-game with full transparency. (2) No real money directly buys randomized loot — you buy cosmetics directly or oxygen to play, which may lead to finds (indirect only). (3) Gacha excitement is earned through gameplay, never purchased. (4) Pity system: after 20 artifacts without a rare+, guarantee the next one is rare. (5) No "limited time" pressure on gacha items — no FOMO-driven mechanics. Be prepared for Belgium and Netherlands regulatory scrutiny with the "Terra Gacha" name. Affects Phase 21 and artifact system.
+**Decision**: Five ethical guardrails: (1) All drop rates are displayed in-game with full transparency. (2) No real money directly buys randomized loot — you buy cosmetics directly or oxygen to play, which may lead to finds (indirect only). (3) Gacha excitement is earned through gameplay, never purchased. (4) Pity system: after 20 artifacts without a rare+, guarantee the next one is rare. (5) No "limited time" pressure on gacha items — no FOMO-driven mechanics. Be prepared for Belgium and Netherlands regulatory scrutiny with the "Recall Rogue" name. Affects Phase 21 and artifact system.
 
 ---
 
@@ -1988,7 +1988,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 
 **Context**: DD-V2-134 tracks internal metrics. Publishing aggregate learning outcomes establishes educational credibility and generates press coverage.
 
-**Decision**: Build an internal Learning Effectiveness Dashboard tracking the five metrics from DD-V2-134. Publish an annual "Terra Gacha Learning Report" with aggregate anonymized data — e.g., "Our players retained 78% of learned facts after 30 days, compared to the typical 20% without spaced repetition." This establishes credibility with educators and parents, generates press coverage, and differentiates from every "educational" game that never proves it works. Extends DD-V2-134. Affects Phase 21.3 and post-launch marketing.
+**Decision**: Build an internal Learning Effectiveness Dashboard tracking the five metrics from DD-V2-134. Publish an annual "Recall Rogue Learning Report" with aggregate anonymized data — e.g., "Our players retained 78% of learned facts after 30 days, compared to the typical 20% without spaced repetition." This establishes credibility with educators and parents, generates press coverage, and differentiates from every "educational" game that never proves it works. Extends DD-V2-134. Affects Phase 21.3 and post-launch marketing.
 
 ---
 
@@ -2433,7 +2433,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: Architecture — No ECS Framework
 **Date**: 2026-03-03
 
-**Context**: Entity Component System (ECS) frameworks like bitecs are sometimes proposed for Phaser games to improve data locality and update performance. The question is whether Terra Gacha's architecture would benefit from adopting ECS.
+**Context**: Entity Component System (ECS) frameworks like bitecs are sometimes proposed for Phaser games to improve data locality and update performance. The question is whether Recall Rogue's architecture would benefit from adopting ECS.
 
 **Decision**: Do NOT adopt full Entity Component System. Grid cells are uniform structs, not free-moving heterogeneous entities where ECS shines. Instead, enrich MineCell with optional component-like fields (animation state, particle config, hazard timer) + dedicated update systems (animation, hazard, visibility). Separation-of-concerns without framework overhead. Affects Phase 7, Phase 25.
 
@@ -2528,7 +2528,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: Autotiling — Bitmask Complexity
 **Date**: 2026-03-03
 
-**Context**: Terra Gacha plans 25 biomes, each requiring tiled block rendering that matches neighbors. The choice between 4-bit (16-variant) and 8-bit (47-variant) autotiling has significant art production implications: 8-bit requires ~3x more sprites per material and proportionally more ComfyUI generation time.
+**Context**: Recall Rogue plans 25 biomes, each requiring tiled block rendering that matches neighbors. The choice between 4-bit (16-variant) and 8-bit (47-variant) autotiling has significant art production implications: 8-bit requires ~3x more sprites per material and proportionally more ComfyUI generation time.
 
 **Decision**: Start with 4-bit (16-variant) autotiling for all 25 biomes at launch. The visual leap from zero to 4-bit is approximately 90% of the quality gain. Ship 4-bit everywhere, then upgrade the 5 most-visited biomes (Sedimentary, Topsoil, Volcanic, Crystalline, Fungal Forest) to 8-bit (47-variant) post-launch based on player time-spent data. Affects Phase 7.1.
 
@@ -2758,7 +2758,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: VFX — Gacha Reveal Animation Tiers
 **Date**: 2026-03-03
 
-**Context**: Artifact reveals are a primary excitement moment in Terra Gacha. If all rarities receive the same reveal animation, the rarity system loses emotional weight. The contrast between tiers creates anticipation and makes Legendary pulls feel genuinely special.
+**Context**: Artifact reveals are a primary excitement moment in Recall Rogue. If all rarities receive the same reveal animation, the rarity system loses emotional weight. The contrast between tiers creates anticipation and makes Legendary pulls feel genuinely special.
 
 **Decision**: Design animations from Legendary DOWN, not Common up. Legendary: full-screen gold flash, 50 particles, 5px shake, light rays, 3-second hold, unique sound. Each lower tier subtracts one element: Epic drops screen flash, Rare drops light rays, Uncommon drops shake, Common = pop-out plus 8 particles only. Duration scales: Common 1.5s → Legendary 4-5s. Always provide a "Skip" button available after 1 second. Affects Phase 7.5.
 
@@ -2778,7 +2778,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: UI — No Per-Block Health Bar
 **Date**: 2026-03-03
 
-**Context**: Floating health bars above blocks are a common game UI pattern but have specific drawbacks for Terra Gacha: they clutter the visual field, require constant repositioning relative to camera, and conflict with the pixel art aesthetic of crack-stage overlays already handling the same information.
+**Context**: Floating health bars above blocks are a common game UI pattern but have specific drawbacks for Recall Rogue: they clutter the visual field, require constant repositioning relative to camera, and conflict with the pixel art aesthetic of crack-stage overlays already handling the same information.
 
 **Decision**: Do not add floating health bars above blocks. Use the 4 crack stages (25/50/75/90%) supplemented by micro shake and particle bursts on each threshold transition to communicate remaining health. Optionally show a brief "2/5 HP" text indicator in pixel font for 0.5 seconds after each hit, then fade. Affects Phase 7.
 
@@ -2848,7 +2848,7 @@ This section captures decisions from a dedicated gameplay and mechanics Q&A sess
 **Area**: UI — Unified Overlay Style Guide
 **Date**: 2026-03-03
 
-**Context**: Terra Gacha has 10+ distinct overlay screens (quiz, artifact reveal, GAIA, knowledge tree, settings, crafting, inventory, etc.) that have been built incrementally over multiple phases. Each uses different border styles, backdrop opacity, and interaction color palettes, making the game feel visually fragmented.
+**Context**: Recall Rogue has 10+ distinct overlay screens (quiz, artifact reveal, GAIA, knowledge tree, settings, crafting, inventory, etc.) that have been built incrementally over multiple phases. Each uses different border styles, backdrop opacity, and interaction color palettes, making the game feel visually fragmented.
 
 **Decision**: Three mandatory shared elements across all overlays: (1) 70% dark backdrop with subtle blur effect, (2) rounded-corner panel frame with 2px pixel art border in neutral dark-steel color, (3) shared interactive palette — gold for primary actions, teal for secondary actions, red for wrong/destructive, green for correct/success. Apply these retroactively to all existing overlays. Consistent chrome matters more than consistent content. Affects Phase 7, Phase 14.
 

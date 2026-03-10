@@ -342,7 +342,7 @@ async function clearAndInjectSave(page, save) {
     localStorage.setItem('terra_guest_mode', 'true')
     localStorage.setItem('terra_age_bracket', 'teen')
     localStorage.setItem('terra_save', JSON.stringify(s))
-    localStorage.setItem('terra-gacha-save', JSON.stringify(s))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(s))
   }, save)
   await page.goto(`${BASE_URL}?skipOnboarding=true`, { waitUntil: 'domcontentloaded' })
   await page.waitForTimeout(2500)

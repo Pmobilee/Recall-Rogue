@@ -1,4 +1,4 @@
-# Terra Gacha Server — Dockerfile
+# Recall Rogue Server — Dockerfile
 # Multi-stage build: builder stage compiles TypeScript, runner stage is minimal
 
 # ── Stage 1: Builder ────────────────────────────────────────────────────────

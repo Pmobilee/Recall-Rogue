@@ -1096,7 +1096,7 @@ if (save) {
 
 ### 47.6 — Share to Device Gallery
 
-**Goal**: When a player taps a revealed painting in `AchievementGalleryView`, a share sheet (`AchievementShareSheet.svelte`) appears with a preview. Tapping "Save to Gallery" exports a composited PNG (painting + GAIA comment + tier badge + "Terra Gacha" watermark) to the device. On native mobile, uses Capacitor's filesystem + media gallery API. On web/PWA, triggers a browser download.
+**Goal**: When a player taps a revealed painting in `AchievementGalleryView`, a share sheet (`AchievementShareSheet.svelte`) appears with a preview. Tapping "Save to Gallery" exports a composited PNG (painting + GAIA comment + tier badge + "Recall Rogue" watermark) to the device. On native mobile, uses Capacitor's filesystem + media gallery API. On web/PWA, triggers a browser download.
 
 **Files affected**:
 - `src/ui/components/AchievementGalleryView.svelte` — new file (full gallery grid UI)
@@ -1444,15 +1444,15 @@ export async function sharePainting(painting: Painting & { unlocked: boolean }):
 
   try {
     const blob = await renderShareCard(painting)
-    const filename = `terra-gacha-${painting.id.replace('paint_', '')}.png`
+    const filename = `recall-rogue-${painting.id.replace('paint_', '')}.png`
 
     // Try native Web Share API (mobile browsers + Capacitor WebView)
     if (navigator.share && navigator.canShare) {
       const file = new File([blob], filename, { type: 'image/png' })
       if (navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: `Terra Gacha — ${painting.title}`,
-          text: `I unlocked the "${painting.title}" achievement in Terra Gacha! ${painting.description}`,
+          title: `Recall Rogue — ${painting.title}`,
+          text: `I unlocked the "${painting.title}" achievement in Recall Rogue! ${painting.description}`,
           files: [file],
         })
         return true
@@ -1537,7 +1537,7 @@ async function renderShareCard(painting: Painting & { unlocked: boolean }): Prom
   // Watermark
   ctx.fillStyle = '#2a3a4a'
   ctx.font = '11px monospace'
-  ctx.fillText('Terra Gacha · terra-gacha.app', CARD_W / 2, CARD_H - 20)
+  ctx.fillText('Recall Rogue · recall-rogue.app', CARD_W / 2, CARD_H - 20)
 
   return canvas.convertToBlob({ type: 'image/png' })
 }
@@ -1728,7 +1728,7 @@ Create `/root/terra-miner/src/ui/components/AchievementShareSheet.svelte`:
 - On desktop: a PNG download is triggered via the `<a download>` fallback
 - On mobile: `navigator.share` is called with the composited PNG file
 - `shareService.ts` passes TypeScript strict-mode checks (no `any` in public API)
-- The composited share card includes: painting image, title, tier badge, truncated GAIA comment, and "Terra Gacha" watermark
+- The composited share card includes: painting image, title, tier badge, truncated GAIA comment, and "Recall Rogue" watermark
 
 ---
 
@@ -1757,7 +1757,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   // (assumes DevPanel has a "Unlock all floors" dev shortcut)
   // For CI: inject save data directly via page.evaluate
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}')
     save.unlockedRooms = [
       'starter','farm','workshop','zoo','museum','market','research','archive','observatory','gallery'
     ]
@@ -1765,7 +1765,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
     save.learnedFacts = (save.learnedFacts ?? []).slice(0, 260)
     save.unlockedPaintings = []
     save.defeatedBosses = []
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
@@ -1860,13 +1860,13 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Set 5 paintings unlocked
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}')
     save.unlockedPaintings = [
       'paint_first_light', 'paint_deep_dive', 'paint_knowledge_tree',
       'paint_streak_flame', 'paint_biome_atlas',
     ]
     save.defeatedBosses = []
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
@@ -1911,9 +1911,9 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Set first painting unlocked
   await page.evaluate(() => {
-    const save = JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}')
+    const save = JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}')
     save.unlockedPaintings = ['paint_first_light']
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload()
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })

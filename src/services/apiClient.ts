@@ -1,6 +1,6 @@
 /**
  * @file apiClient.ts
- * Typed HTTP client for the Terra Gacha backend API.
+ * Typed HTTP client for the Recall Rogue backend API.
  *
  * Handles authentication (register/login/logout), cloud save upload/download,
  * and leaderboard operations. Tokens are persisted in localStorage and the

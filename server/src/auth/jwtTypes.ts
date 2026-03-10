@@ -37,7 +37,7 @@ export interface JwtConfig {
 }
 
 /**
- * JWT payload structure for Terra Gacha access and refresh tokens.
+ * JWT payload structure for Recall Rogue access and refresh tokens.
  * The `kid` field enables key rotation: when a new key pair is deployed,
  * old tokens signed with the previous key-id remain verifiable until they expire.
  */

@@ -22,7 +22,7 @@
       onclick={() => navigate('dashboard')}
       aria-label="Go to dashboard"
     >
-      Terra Gacha — Teacher Dashboard
+      Recall Rogue — Teacher Dashboard
     </button>
 
     <div class="navbar-actions">

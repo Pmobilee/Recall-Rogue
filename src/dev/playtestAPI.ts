@@ -1,6 +1,6 @@
 /**
  * Playtest gameplay API — registers window.__terraPlay in dev mode.
- * Lets AI models play Arcane Recall programmatically via action and perception methods.
+ * Lets AI models play Recall Rogue programmatically via action and perception methods.
  * DEV MODE ONLY — never included in production builds.
  */
 

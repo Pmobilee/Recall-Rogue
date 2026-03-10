@@ -162,7 +162,7 @@ export async function researchRoutes(app: FastifyInstance): Promise<void> {
       const csv = rowsToCsv(anonymized, req2.dimensions, req2.metrics)
       return reply
         .header('Content-Type', 'text/csv')
-        .header('Content-Disposition', `attachment; filename="terra-gacha-research-${req2.startDate}.csv"`)
+        .header('Content-Disposition', `attachment; filename="recall-rogue-research-${req2.startDate}.csv"`)
         .send(csv)
     }
 

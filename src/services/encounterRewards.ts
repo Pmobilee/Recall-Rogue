@@ -57,6 +57,7 @@ export function generateCurrencyReward(floor: number, enemyCategory: EnemyCatego
   const baseRewards: Record<EnemyCategory, number> = {
     common: 10,
     elite: 25,
+    mini_boss: 30,
     boss: 50,
   };
 

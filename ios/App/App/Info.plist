@@ -15,7 +15,7 @@
 
   <!-- Display name shown under the app icon -->
   <key>CFBundleDisplayName</key>
-  <string>Terra Gacha</string>
+  <string>Recall Rogue</string>
 
   <key>CFBundleName</key>
   <string>App</string>
@@ -51,19 +51,19 @@
 
   <!-- Camera — used for avatar capture (future phase; include now to avoid re-review) -->
   <key>NSCameraUsageDescription</key>
-  <string>Terra Gacha uses your camera to set a profile photo.</string>
+  <string>Recall Rogue uses your camera to set a profile photo.</string>
 
   <!-- Photo Library — save screenshots, import avatar -->
   <key>NSPhotoLibraryUsageDescription</key>
-  <string>Terra Gacha reads your photo library to set a profile photo.</string>
+  <string>Recall Rogue reads your photo library to set a profile photo.</string>
 
   <!-- App Tracking Transparency — required before accessing IDFA -->
   <key>NSUserTrackingUsageDescription</key>
-  <string>We use this to understand how players discover Terra Gacha so we can make it better. No personal data is sold.</string>
+  <string>We use this to understand how players discover Recall Rogue so we can make it better. No personal data is sold.</string>
 
   <!-- Notifications — used for O2 regen and streak reminders -->
   <key>NSUserNotificationsUsageDescription</key>
-  <string>Terra Gacha sends reminders when your oxygen tanks are recharged and to keep your learning streak alive.</string>
+  <string>Recall Rogue sends reminders when your oxygen tanks are recharged and to keep your learning streak alive.</string>
 
   <!-- ── Display configuration ──────────────────────────────────────── -->
 

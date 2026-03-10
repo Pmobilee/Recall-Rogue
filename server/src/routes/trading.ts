@@ -1,5 +1,5 @@
 /**
- * Trading and marketplace routes for the Terra Gacha server.
+ * Trading and marketplace routes for the Recall Rogue server.
  * Covers the artifact marketplace (list, buy, delist), direct trade offers
  * between players, and the duplicate mixing mechanic.
  *

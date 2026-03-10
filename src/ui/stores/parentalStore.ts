@@ -55,7 +55,7 @@ function defaultSettings(): ParentalSettings {
 /** SHA-256 hash of a string (Web Crypto API, async). */
 export async function hashPin(pin: string): Promise<string> {
   const encoder = new TextEncoder()
-  const data = encoder.encode('terra-gacha:pin:' + pin)
+  const data = encoder.encode('recall-rogue:pin:' + pin)
   const hashBuffer = await crypto.subtle.digest('SHA-256', data)
   return Array.from(new Uint8Array(hashBuffer))
     .map(b => b.toString(16).padStart(2, '0'))

@@ -1,4 +1,4 @@
-# Arcane Recall — Content Strategy & Source Registry
+# Recall Rogue — Content Strategy & Source Registry
 
 > This document is the single source of truth for WHERE content comes from, HOW it is generated, and WHAT licenses apply.
 > For game mechanics and fact schema, see `GAME_DESIGN.md`. For pipeline implementation, see `docs/roadmap/phases/AR-17-HAIKU-FACT-ENGINE.md`.
@@ -9,7 +9,7 @@
 
 ## 1. Commercial Licensing Requirements
 
-Arcane Recall is a commercial product. ALL fact content must come from sources with licenses that permit commercial use without copyleft/ShareAlike obligations.
+Recall Rogue is a commercial product. ALL fact content must come from sources with licenses that permit commercial use without copyleft/ShareAlike obligations.
 
 ### Approved Licenses
 
@@ -72,7 +72,7 @@ The following popular data sources fail the strict commercial licensing requirem
 
 ## 3. Quality Funnel: Fact Targets (NOT Millions)
 
-Arcane Recall does NOT aim for quantity. The goal is **10,000 interesting, quiz-worthy facts per domain** — carefully curated, well-sourced, with high educational value and fun discovery potential. Here are the per-domain targets:
+Recall Rogue does NOT aim for quantity. The goal is **10,000 interesting, quiz-worthy facts per domain** — carefully curated, well-sourced, with high educational value and fun discovery potential. Here are the per-domain targets:
 
 | Domain | Target Facts | Rationale | Primary Source |
 |--------|-------------|-----------|-----------------|

@@ -2,7 +2,7 @@
 
 > These questions explore engine performance, backend design, mobile optimization,
 > offline-first patterns, and scaling strategy. Answer them to make solid technical decisions
-> for Phases 7-25 of Terra Gacha.
+> for Phases 7-25 of Recall Rogue.
 
 ---
 

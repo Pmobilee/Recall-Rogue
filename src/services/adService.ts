@@ -1,6 +1,6 @@
 /**
  * Ad service stub (DD-V2-146).
- * Terra Gacha is completely ad-free at launch.
+ * Recall Rogue is completely ad-free at launch.
  * This stub exists for future opt-in rewarded ads, feature-flagged OFF.
  */
 

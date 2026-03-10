@@ -148,7 +148,7 @@ function validateDescription(text, opts = {}) {
 // System prompt (single mode / no-language mode)
 // ---------------------------------------------------------------------------
 
-const SYSTEM_PROMPT = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Arcane Recall.
+const SYSTEM_PROMPT = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Recall Rogue.
 
 Given a learning fact, write a single-sentence visual description (20-40 words) suitable as a prompt for generating pixel art card art.
 

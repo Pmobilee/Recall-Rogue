@@ -1,5 +1,5 @@
 {
-  "name": "terra-miner",
+  "name": "recall-rogue",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -28,14 +28,15 @@
     "test:ui": "vitest --ui",
     "audit:perf": "node tests/e2e/performance-audit.mjs",
     "build:check": "npm run build && node scripts/check-bundle-size.mjs",
-    "deploy:preview": "npm run build && npx wrangler pages deploy dist --project-name terra-gacha --branch preview",
-    "deploy:production": "npm run build && npx wrangler pages deploy dist --project-name terra-gacha --branch main",
+    "deploy:preview": "npm run build && npx wrangler pages deploy dist --project-name recall-rogue --branch preview",
+    "deploy:production": "npm run build && npx wrangler pages deploy dist --project-name recall-rogue --branch main",
     "i18n:validate": "node src/i18n/scripts/validate-locale.mjs",
     "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs",
     "analyze": "ANALYZE=true npm run build",
     "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.63.1",
     "@playwright/test": "^1.58.2",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@testing-library/jest-dom": "^6.9.1",

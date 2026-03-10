@@ -4,7 +4,7 @@
  */
 
 import type { FactDomain } from '../data/card-types'
-import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL } from '../data/balance'
+import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL, MAX_FLOORS } from '../data/balance'
 import { ENEMY_TEMPLATES } from '../data/enemies'
 
 // ============================================================
@@ -138,7 +138,22 @@ const BOSS_MAP: Record<number, string> = {
   3: 'the_excavator',
   6: 'magma_core',
   9: 'the_archivist',
+  12: 'crystal_warden',
+  15: 'shadow_hydra',
+  18: 'void_weaver',
+  21: 'knowledge_golem',
+  24: 'the_curator',
 }
+
+/** Mini-boss pool IDs, used for encounter 3 on non-boss floors. */
+const MINI_BOSS_POOL = [
+  'crystal_guardian',
+  'venomfang',
+  'stone_sentinel',
+  'ember_drake',
+  'shade_stalker',
+  'bone_collector',
+]
 
 // ============================================================
 // Exported functions
@@ -159,10 +174,10 @@ export function createFloorState(): FloorState {
 
 /** Get the segment (difficulty tier) for a given floor. */
 export function getSegment(floor: number): 1 | 2 | 3 | 4 {
-  if (floor <= 3) return 1
-  if (floor <= 6) return 2
-  if (floor <= 9) return 3
-  return 4
+  if (floor <= 6) return 1   // Shallow Depths: floors 1-6
+  if (floor <= 12) return 2  // Deep Caverns: floors 7-12
+  if (floor <= 18) return 3  // The Abyss: floors 13-18
+  return 4                   // The Archive: floors 19-24 (and endless 25+)
 }
 
 /** Get the number of combat encounters per floor. Always 3. */
@@ -181,15 +196,39 @@ export function getEventsForFloor(floor: number): number {
 /** Check if a floor has a boss encounter. */
 export function isBossFloor(floor: number): boolean {
   if (SEGMENT_BOSS_FLOORS.includes(floor as (typeof SEGMENT_BOSS_FLOORS)[number])) return true
-  if (floor <= 9) return false
+  if (floor <= MAX_FLOORS) return false
+  // Endless mode: boss every ENDLESS_BOSS_INTERVAL floors
   return floor % ENDLESS_BOSS_INTERVAL === 0
 }
 
 /** Get the boss enemy template ID for a boss floor, or null. */
 export function getBossForFloor(floor: number): string | null {
   if (BOSS_MAP[floor]) return BOSS_MAP[floor]
-  if (isBossFloor(floor)) return 'the_archivist'
+  if (isBossFloor(floor)) {
+    // Endless mode: cycle through bosses
+    const bossIds = Object.values(BOSS_MAP)
+    return bossIds[(floor - 1) % bossIds.length]
+  }
   return null
+}
+
+/**
+ * Check if a given encounter on a floor is a mini-boss encounter.
+ * Returns true if encounter === 3 AND the floor is NOT a boss floor.
+ * On boss floors, encounter 3 is a full boss instead.
+ */
+export function isMiniBossEncounter(floor: number, encounter: number): boolean {
+  return encounter === 3 && !isBossFloor(floor)
+}
+
+/**
+ * Get the mini-boss enemy template ID for a given floor.
+ * Picks from the mini-boss pool based on floor number for variety.
+ */
+export function getMiniBossForFloor(floor: number): string {
+  // Use floor number to deterministically pick, with some randomness
+  const idx = Math.floor(Math.random() * MINI_BOSS_POOL.length)
+  return MINI_BOSS_POOL[idx]
 }
 
 /** Get the timer duration in seconds for a given floor. */
@@ -222,7 +261,11 @@ export function generateRoomOptions(floor: number): RoomOption[] {
   return options
 }
 
-/** Pick a random combat enemy from the common pool for this floor's segment. */
+/**
+ * Pick a random combat enemy from the common pool for this floor's segment.
+ * NOTE: Only call for encounters 1 and 2 (regular encounters).
+ * Encounter 3 is always a mini-boss (via getMiniBossForFloor) or boss (via getBossForFloor).
+ */
 export function pickCombatEnemy(floor: number): string {
   const commonEnemies = ENEMY_TEMPLATES.filter(e => e.category === 'common')
   if (commonEnemies.length === 0) return 'cave_bat' // fallback

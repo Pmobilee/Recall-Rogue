@@ -3,7 +3,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: terra-gacha-postgres
+    container_name: recall-rogue-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-terragacha}
@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: terra-gacha-server
+    container_name: recall-rogue-server
     restart: unless-stopped
     depends_on:
       postgres:
@@ -49,7 +49,7 @@ services:
 
   backup:
     image: postgres:16-alpine
-    container_name: terra-gacha-backup
+    container_name: recall-rogue-backup
     restart: unless-stopped
     depends_on:
       - postgres

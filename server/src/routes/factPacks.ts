@@ -1,5 +1,5 @@
 /**
- * Fact pack delivery routes for the Terra Gacha server.
+ * Fact pack delivery routes for the Recall Rogue server.
  *
  * Provides public (no-auth) endpoints that return pre-packaged JSON bundles of
  * approved facts so game clients can cache them locally for offline play.

@@ -1,5 +1,5 @@
 /**
- * Shared TypeScript interfaces for the Terra Gacha Teacher Dashboard.
+ * Shared TypeScript interfaces for the Recall Rogue Teacher Dashboard.
  */
 
 /** A classroom owned by an educator. */

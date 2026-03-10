@@ -322,24 +322,29 @@ describe('Enemy Templates', () => {
     expect(elite).toHaveLength(2);
   });
 
-  it('has 3 boss enemies', () => {
+  it('has 8 boss enemies', () => {
     const boss = ENEMY_TEMPLATES.filter(t => t.category === 'boss');
-    expect(boss).toHaveLength(3);
+    expect(boss).toHaveLength(8);
   });
 
-  it('cave_bat has 22 baseHP', () => {
+  it('has 6 mini-boss enemies', () => {
+    const miniBoss = ENEMY_TEMPLATES.filter(t => t.category === 'mini_boss');
+    expect(miniBoss).toHaveLength(6);
+  });
+
+  it('cave_bat has 19 baseHP', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'cave_bat');
-    expect(bat?.baseHP).toBe(22);
+    expect(bat?.baseHP).toBe(19);
   });
 
-  it('crystal_golem has 45 baseHP', () => {
+  it('crystal_golem has 38 baseHP', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
-    expect(golem?.baseHP).toBe(45);
+    expect(golem?.baseHP).toBe(38);
   });
 
-  it('the_archivist has 100 baseHP', () => {
+  it('the_archivist has 85 baseHP', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'the_archivist');
-    expect(archivist?.baseHP).toBe(100);
+    expect(archivist?.baseHP).toBe(85);
   });
 
   it('fossil_guardian has history immuneDomain', () => {

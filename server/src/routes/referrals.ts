@@ -1,5 +1,5 @@
 /**
- * Referral system routes for the Terra Gacha server.
+ * Referral system routes for the Recall Rogue server.
  * Players earn rewards for referring new users:
  *   - Invitee completes first dive → referrer earns a fossil egg.
  *   - Invitee reaches a 7-day login streak → referrer earns bonus dust.

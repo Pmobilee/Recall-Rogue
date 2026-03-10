@@ -75,7 +75,7 @@ export async function runRetentionAlertJob(): Promise<{ alerted: boolean; d7Rate
 async function fireRetentionAlert(actual: number, breachCount: number): Promise<void> {
   const pctActual = (actual * 100).toFixed(1)
   const pctTarget = (D7_TARGET * 100).toFixed(1)
-  const subject = `[Terra Gacha] D7 Retention Alert — ${pctActual}% (target: ${pctTarget}%)`
+  const subject = `[Recall Rogue] D7 Retention Alert — ${pctActual}% (target: ${pctTarget}%)`
   const body = [
     `D7 retention has fallen below the alert threshold.`,
     ``,

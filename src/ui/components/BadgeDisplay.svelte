@@ -25,7 +25,7 @@
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
-        await navigator.share({ title: 'Terra Gacha Badge', url })
+        await navigator.share({ title: 'Recall Rogue Badge', url })
         shareMethod = 'native_share'
       } catch {
         // Dismissed or unavailable — fall through to clipboard

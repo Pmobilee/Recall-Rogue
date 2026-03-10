@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Arcane Recall — NB1 Sprite Generation Pipeline
+ * Recall Rogue — NB1 Sprite Generation Pipeline
  *
  * Generates pixel art sprites via OpenRouter (Gemini 2.5 Flash Image)
  * with green screen removal and nearest-neighbor resizing.
@@ -77,7 +77,7 @@ if (entries.length === 0) {
   process.exit(1);
 }
 
-console.log(`\n🎨 Arcane Recall Sprite Generator — ${entries.length} sprite(s) queued\n`);
+console.log(`\n🎨 Recall Rogue Sprite Generator — ${entries.length} sprite(s) queued\n`);
 
 // ── Registry ────────────────────────────────────────────────────────────
 

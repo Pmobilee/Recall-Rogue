@@ -32,7 +32,7 @@ export async function renderRunShareCard(summary: RunEndData): Promise<Blob> {
 
   ctx.fillStyle = '#f8fafc'
   ctx.font = '700 72px system-ui'
-  ctx.fillText('ARCANE RECALL', 80, 140)
+  ctx.fillText('RECALL ROGUE', 80, 140)
 
   ctx.fillStyle = '#fbbf24'
   ctx.font = '600 44px system-ui'
@@ -84,7 +84,7 @@ export async function renderRunShareCard(summary: RunEndData): Promise<Blob> {
 
 export async function shareRunSummaryCard(summary: RunEndData): Promise<RunShareMethod> {
   const blob = await renderRunShareCard(summary)
-  const filename = `arcane-recall-run-${summary.floorReached}.png`
+  const filename = `recall-rogue-run-${summary.floorReached}.png`
 
   const nav = navigator as Navigator & {
     canShare?: (data: { files: File[] }) => boolean
@@ -95,13 +95,13 @@ export async function shareRunSummaryCard(summary: RunEndData): Promise<RunShare
     try {
       if (!nav.canShare || nav.canShare({ files: [file] })) {
         await nav.share({
-          title: 'Arcane Recall Run',
+          title: 'Recall Rogue Run',
           text: `Depth ${summary.floorReached} • Accuracy ${summary.accuracy}% • Combo x${summary.bestCombo}`,
           files: [file],
         })
       } else {
         await nav.share({
-          title: 'Arcane Recall Run',
+          title: 'Recall Rogue Run',
           text: `Depth ${summary.floorReached} • Accuracy ${summary.accuracy}% • Combo x${summary.bestCombo}`,
         })
       }

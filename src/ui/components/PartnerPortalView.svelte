@@ -160,7 +160,7 @@
 
 <div class="portal-container">
   <div class="portal-card">
-    <h1 class="portal-title">Terra Gacha Partner Portal</h1>
+    <h1 class="portal-title">Recall Rogue Partner Portal</h1>
     <p class="portal-subtitle">
       Educational institutions can access the full fact database for classroom integration.
     </p>

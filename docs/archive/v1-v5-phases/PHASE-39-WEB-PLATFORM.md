@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Goal**: Elevate Terra Gacha's web presence to production quality. This phase closes the gap between a functional web build and a polished, discoverable, installable web application. It targets a Lighthouse PWA score of 95+, full desktop responsiveness at 1440px, a rebindable keyboard shortcut system, complete SEO/social metadata, Cloudflare Pages deployment, cross-browser certification, and a monitored Core Web Vitals budget.
+**Goal**: Elevate Recall Rogue's web presence to production quality. This phase closes the gap between a functional web build and a polished, discoverable, installable web application. It targets a Lighthouse PWA score of 95+, full desktop responsiveness at 1440px, a rebindable keyboard shortcut system, complete SEO/social metadata, Cloudflare Pages deployment, cross-browser certification, and a monitored Core Web Vitals budget.
 
 **Dependencies**:
 - Phase 19 (Auth & Cloud) — service worker (`public/sw.js`), PWA manifest, `VITE_ASSET_BASE_URL` CDN config, `errorReporting.ts`
@@ -42,8 +42,8 @@ Replace the current content with the expanded version below. The key additions a
 
 ```json
 {
-  "name": "Terra Gacha",
-  "short_name": "Terra Gacha",
+  "name": "Recall Rogue",
+  "short_name": "Recall Rogue",
   "description": "Mine Deep. Learn Everything. A spaced-repetition mining adventure set on a far-future Earth.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
@@ -135,7 +135,7 @@ Replace the current service worker with the improved version below. Changes:
 
 ```js
 /**
- * Terra Gacha Service Worker — Phase 39.1
+ * Recall Rogue Service Worker — Phase 39.1
  *
  * Strategy:
  *  - Network-first for /api/ requests (offline fallback from cache).
@@ -144,7 +144,7 @@ Replace the current service worker with the improved version below. Changes:
  */
 
 const CACHE_VERSION = '__SW_VERSION__'
-const CACHE_NAME = `terra-gacha-${CACHE_VERSION}`
+const CACHE_NAME = `recall-rogue-${CACHE_VERSION}`
 const OFFLINE_URL = '/offline.html'
 
 const PRECACHE_URLS = [
@@ -242,7 +242,7 @@ self.addEventListener('fetch', (event) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terra Gacha — Offline</title>
+  <title>Recall Rogue — Offline</title>
   <style>
     :root { --bg: #1a1a2e; --text: #eee; --accent: #4ecca3; --dim: #999; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -286,7 +286,7 @@ self.addEventListener('fetch', (event) => {
 </html>
 ```
 
-**Acceptance criterion**: File exists at `public/offline.html`. Matches Terra Gacha visual style (dark background, monospace font, accent color).
+**Acceptance criterion**: File exists at `public/offline.html`. Matches Recall Rogue visual style (dark background, monospace font, accent color).
 
 #### 39.1.4 — Track PWA install outcome in analytics
 
@@ -1067,30 +1067,30 @@ Locate the existing `<head>` section and add the following block (after the CSP 
 
 ```html
 <!-- Primary metadata -->
-<meta name="description" content="Terra Gacha — Mine deep into a far-future Earth. Learn real history, science, and languages through a spaced-repetition mining adventure. Free to play on web." />
+<meta name="description" content="Recall Rogue — Mine deep into a far-future Earth. Learn real history, science, and languages through a spaced-repetition mining adventure. Free to play on web." />
 <meta name="keywords" content="educational game, spaced repetition, mining game, pixel art, progressive web app, learn history, language learning" />
 <link rel="canonical" href="https://terragacha.com/" />
 
 <!-- Open Graph -->
 <meta property="og:type"        content="website" />
 <meta property="og:url"         content="https://terragacha.com/" />
-<meta property="og:title"       content="Terra Gacha — Mine Deep. Learn Everything." />
+<meta property="og:title"       content="Recall Rogue — Mine Deep. Learn Everything." />
 <meta property="og:description" content="Crash-land on far-future Earth. Mine for artifacts, master knowledge through spaced repetition, and grow your dome." />
 <meta property="og:image"       content="https://terragacha.com/social/og-cover.png" />
 <meta property="og:image:width"  content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale"      content="en_US" />
-<meta property="og:site_name"   content="Terra Gacha" />
+<meta property="og:site_name"   content="Recall Rogue" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image" />
-<meta name="twitter:title"       content="Terra Gacha — Mine Deep. Learn Everything." />
+<meta name="twitter:title"       content="Recall Rogue — Mine Deep. Learn Everything." />
 <meta name="twitter:description" content="A spaced-repetition mining roguelite. Discover Earth's history one artifact at a time." />
 <meta name="twitter:image"       content="https://terragacha.com/social/og-cover.png" />
 
 <!-- PWA / App metadata -->
-<meta name="application-name" content="Terra Gacha" />
-<meta name="apple-mobile-web-app-title" content="Terra Gacha" />
+<meta name="application-name" content="Recall Rogue" />
+<meta name="apple-mobile-web-app-title" content="Recall Rogue" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
@@ -1100,7 +1100,7 @@ Locate the existing `<head>` section and add the following block (after the CSP 
 <meta name="color-scheme" content="dark" />
 ```
 
-**File**: `public/social/og-cover.png` — Placeholder 1200×630 PNG must exist. The final asset is a production art deliverable (dark starfield with Terra Gacha logo and miner sprite). Create a 1×1 placeholder so the build does not 404.
+**File**: `public/social/og-cover.png` — Placeholder 1200×630 PNG must exist. The final asset is a production art deliverable (dark starfield with Recall Rogue logo and miner sprite). Create a 1×1 placeholder so the build does not 404.
 
 **Acceptance criterion**: Running the URL through the [Open Graph debugger](https://developers.facebook.com/tools/debug/) shows the title, description, and image. Running `curl -s https://terragacha.com/ | grep og:title` returns the expected tag in production.
 
@@ -1120,7 +1120,7 @@ function structuredDataPlugin(): Plugin {
       const schema = JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'VideoGame',
-        'name': 'Terra Gacha',
+        'name': 'Recall Rogue',
         'url': 'https://terragacha.com/',
         'description': 'A spaced-repetition mining roguelite set on far-future Earth.',
         'genre': ['Educational', 'Roguelite', 'Puzzle'],
@@ -1135,7 +1135,7 @@ function structuredDataPlugin(): Plugin {
         },
         'author': {
           '@type': 'Organization',
-          'name': 'Terra Gacha Team',
+          'name': 'Recall Rogue Team',
         },
       })
       return html.replace(
@@ -1251,17 +1251,17 @@ This ensures that direct navigation to `/?action=dive` works correctly even befo
 **File**: `wrangler.toml` (new file, root of repo)
 
 ```toml
-name = "terra-gacha"
+name = "recall-rogue"
 compatibility_date = "2024-09-23"
 
 [site]
 bucket = "./dist"
 
 [env.preview]
-name = "terra-gacha-preview"
+name = "recall-rogue-preview"
 
 [env.production]
-name = "terra-gacha-production"
+name = "recall-rogue-production"
 ```
 
 **Note**: The actual Cloudflare account ID and project tokens live in CI environment variables (`CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`) and are never committed.
@@ -1271,8 +1271,8 @@ name = "terra-gacha-production"
 **File**: `package.json` — add scripts:
 
 ```json
-"deploy:preview": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch preview",
-"deploy:production": "npm run build && wrangler pages deploy dist --project-name terra-gacha --branch main"
+"deploy:preview": "npm run build && wrangler pages deploy dist --project-name recall-rogue --branch preview",
+"deploy:production": "npm run build && wrangler pages deploy dist --project-name recall-rogue --branch main"
 ```
 
 **File**: `.github/workflows/deploy.yml` (new file)
@@ -1305,7 +1305,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name terra-gacha
+          command: pages deploy dist --project-name recall-rogue
 ```
 
 **Acceptance criterion**: Running `npm run build` produces a `dist/` directory. `_headers` and `_redirects` files are present at the root of `dist/`. The GitHub Actions workflow file is valid YAML.
@@ -1328,7 +1328,7 @@ Define and execute a compatibility matrix covering Chrome 120+, Firefox 120+, Sa
 /**
  * Browser compatibility detection service.
  *
- * Detects features used by Terra Gacha and reports compatibility issues
+ * Detects features used by Recall Rogue and reports compatibility issues
  * to the error reporting service and as a console warning.
  *
  * Called once at boot in main.ts.
@@ -1458,7 +1458,7 @@ Create a minimal test matrix that workers can fill in manually before each relea
 
 ### Overview
 
-Define, enforce, and monitor Core Web Vitals targets for the Terra Gacha web build. Integrate bundle size assertions into the build script and add a lightweight performance timing collector that reports to the analytics service.
+Define, enforce, and monitor Core Web Vitals targets for the Recall Rogue web build. Integrate bundle size assertions into the build script and add a lightweight performance timing collector that reports to the analytics service.
 
 ### Sub-steps
 
@@ -1686,7 +1686,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   const manifestResp = await page.request.get(`http://localhost:5173${manifestHref}`)
   console.assert(manifestResp.ok(), 'manifest fetch failed')
   const manifest = await manifestResp.json()
-  console.assert(manifest.name === 'Terra Gacha', 'manifest.name wrong')
+  console.assert(manifest.name === 'Recall Rogue', 'manifest.name wrong')
   console.assert(Array.isArray(manifest.icons) && manifest.icons.length >= 4, 'manifest needs >=4 icon entries')
   const maskableIcon = manifest.icons.find(i => i.purpose === 'maskable')
   const anyIcon = manifest.icons.find(i => i.purpose === 'any')
@@ -1810,7 +1810,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   const twitterCard = await page.$eval('meta[name="twitter:card"]', el => el.getAttribute('content'))
   const description = await page.$eval('meta[name="description"]', el => el.getAttribute('content'))
 
-  console.assert(ogTitle && ogTitle.includes('Terra Gacha'), `og:title wrong: ${ogTitle}`)
+  console.assert(ogTitle && ogTitle.includes('Recall Rogue'), `og:title wrong: ${ogTitle}`)
   console.assert(ogDesc && ogDesc.length > 20, `og:description too short: ${ogDesc}`)
   console.assert(twitterCard === 'summary_large_image', `twitter:card wrong: ${twitterCard}`)
   console.assert(description && description.length > 30, `description too short: ${description}`)
@@ -1910,7 +1910,7 @@ All of the following must pass before Phase 39 is marked complete:
 
 - [ ] Screenshot at 390×844 (mobile): no layout regressions, PwaInstallPrompt renders correctly
 - [ ] Screenshot at 1440×900 (desktop): side panel visible, two-column layout correct
-- [ ] `public/offline.html` screenshot matches dark Terra Gacha visual style
+- [ ] `public/offline.html` screenshot matches dark Recall Rogue visual style
 
 ---
 

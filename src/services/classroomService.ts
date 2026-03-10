@@ -1,5 +1,5 @@
 /**
- * Classroom service for the Terra Gacha game client.
+ * Classroom service for the Recall Rogue game client.
  * Handles student-side API calls for classroom membership, homework assignments,
  * and announcements. Integrates with classroomStore to provide reactive state.
  *

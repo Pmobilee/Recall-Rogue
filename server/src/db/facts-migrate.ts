@@ -1,5 +1,5 @@
 /**
- * Schema migration for the Terra Gacha facts content database.
+ * Schema migration for the Recall Rogue facts content database.
  * Creates all tables, indexes, and triggers needed for the fact content engine.
  * All DDL statements use IF NOT EXISTS — safe to run multiple times.
  */

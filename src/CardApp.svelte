@@ -11,6 +11,7 @@
     activeRunEndData,
     activeRunState,
     activeShopCards,
+    activeSpecialEvent,
     getCurrentDelvePenalty,
     onArchetypeSelected,
     onCardRewardSelected,
@@ -24,6 +25,13 @@
     onRoomSelected,
     onShopDone,
     onShopSell,
+    onSpecialEventResolved,
+    openCampfire,
+    resumeFromCampfire,
+    returnToHubFromCampfire,
+    abandonActiveRun,
+    hasActiveRun,
+    loadActiveRun,
     playAgain,
     returnToMenu,
     startNewRun,
@@ -62,6 +70,8 @@
   import JournalScreen from './ui/components/JournalScreen.svelte'
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
+  import CampfirePause from './ui/components/CampfirePause.svelte'
+  import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
 
   const NAV_VISIBLE_SCREENS = new Set<Screen>([
     'hub',
@@ -166,6 +176,41 @@
     onCardRewardSelected(card)
   }
 
+  function handlePause(): void {
+    openCampfire()
+  }
+
+  function handleCampfireResume(): void {
+    resumeFromCampfire()
+  }
+
+  function handleCampfireHub(): void {
+    returnToHubFromCampfire()
+  }
+
+  function handleSpecialEventResolved(): void {
+    onSpecialEventResolved()
+  }
+
+  function handleResumeActiveRun(): void {
+    const saved = loadActiveRun()
+    if (!saved) return
+    activeRunState.set(saved.runState)
+    if (saved.roomOptions && saved.roomOptions.length > 0) {
+      activeRoomOptions.set(saved.roomOptions)
+    }
+    // Navigate to the saved screen or default to room selection
+    const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
+    currentScreen.set(screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection'))
+  }
+
+  function handleAbandonRun(): void {
+    abandonActiveRun()
+  }
+
+  let activeRunFloor = $derived($activeRunState?.floor.currentFloor ?? 0)
+  let showActiveRunBanner = $derived(!$activeRunState && hasActiveRun())
+
   function nextSegmentName(floor: number): string {
     if (floor < 3) return 'Shallow Depths'
     if (floor < 6) return 'Deep Dungeon'
@@ -206,6 +251,13 @@
   ></div>
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
+    {#if showActiveRunBanner}
+      <div class="active-run-banner">
+        <span>Run in progress</span>
+        <button type="button" class="banner-resume-btn" onclick={handleResumeActiveRun}>Resume</button>
+        <button type="button" class="banner-abandon-btn" onclick={handleAbandonRun}>Abandon</button>
+      </div>
+    {/if}
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
@@ -239,6 +291,13 @@
       onendturn={handleEndTurn}
       onusehint={handleUseHint}
     />
+    <button
+      type="button"
+      class="pause-btn"
+      data-testid="btn-pause"
+      onclick={handlePause}
+      aria-label="Pause"
+    >II</button>
   {/if}
 
   {#if $currentScreen === 'cardReward'}
@@ -257,6 +316,29 @@
       onsell={onShopSell}
       ondone={onShopDone}
     />
+  {/if}
+
+  {#if $currentScreen === 'specialEvent'}
+    <SpecialEventOverlay
+      event={$activeSpecialEvent}
+      onresolve={handleSpecialEventResolved}
+    />
+  {/if}
+
+  {#if $currentScreen === 'campfire'}
+    {@const run = $activeRunState}
+    {#if run}
+      <CampfirePause
+        currentFloor={run.floor.currentFloor}
+        playerHp={run.playerHp}
+        playerMaxHp={run.playerMaxHp}
+        deckSize={0}
+        relicCount={0}
+        accuracy={run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0}
+        onresume={handleCampfireResume}
+        onreturnhub={handleCampfireHub}
+      />
+    {/if}
   {/if}
 
   {#if $currentScreen === 'retreatOrDelve'}
@@ -287,6 +369,13 @@
         encounterNumber={run.floor.currentEncounter}
         onselect={handleRoomPick}
       />
+      <button
+        type="button"
+        class="pause-btn"
+        data-testid="btn-pause-room"
+        onclick={handlePause}
+        aria-label="Pause"
+      >II</button>
     {/if}
   {/if}
 
@@ -379,6 +468,67 @@
 
   .phaser-container.visible {
     display: block;
+  }
+
+  .pause-btn {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: rgba(15, 23, 42, 0.85);
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 800;
+    z-index: 150;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+  }
+
+  .active-run-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+    border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+  }
+
+  .banner-resume-btn {
+    min-height: 32px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid #f59e0b;
+    background: linear-gradient(180deg, #2f7a35, #1f5c28);
+    color: #f8fafc;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .banner-abandon-btn {
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(30, 41, 59, 0.75);
+    color: #94a3b8;
+    font-size: calc(11px * var(--text-scale, 1));
+    cursor: pointer;
   }
 
 </style>

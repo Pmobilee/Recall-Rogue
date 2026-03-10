@@ -432,7 +432,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
 
   const save = await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     return raw ? JSON.parse(raw) : null
   })
   const historyEntry = save?.interestConfig?.categories?.find(c => c.category === 'History')
@@ -693,12 +693,12 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject a high History interest weight directly into localStorage
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (!raw) return
     const save = JSON.parse(raw)
     const histIdx = save.interestConfig.categories.findIndex(c => c.category === 'History')
     if (histIdx >= 0) save.interestConfig.categories[histIdx].weight = 100
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
@@ -1019,7 +1019,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Enable behavioral learning and inject signals directly
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (!raw) return
     const save = JSON.parse(raw)
     save.interestConfig.behavioralLearningEnabled = true
@@ -1029,7 +1029,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
       artifactsKept: 3,
       fastMasteryCount: 2,
     }
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
@@ -1039,7 +1039,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   await page.click('text=Interest Settings')
   await page.waitForSelector('text=GAIA thinks you like', { timeout: 5000 })
 
-  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}'))
+  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}'))
   const historyBoost = save?.interestConfig?.inferredBoosts?.['History'] ?? 0
   console.assert(historyBoost > 0, `History inferred boost should be > 0, got ${historyBoost}`)
   console.assert(historyBoost <= 0.3, `Inferred boost should be capped at 0.3, got ${historyBoost}`)
@@ -1244,7 +1244,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Simulate having purchased the Focus Crystal and configured a lock
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (!raw) return
     const save = JSON.parse(raw)
     if (!save.purchasedKnowledgeItems.includes('category_lock')) {
@@ -1252,7 +1252,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
     }
     save.interestConfig.categoryLock = ['Language']
     save.interestConfig.categoryLockActive = true
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
@@ -1431,7 +1431,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Clear save to simulate new player
   await page.goto('http://localhost:5173', { bypassCSP: true })
-  await page.evaluate(() => localStorage.removeItem('terra-gacha-save'))
+  await page.evaluate(() => localStorage.removeItem('recall-rogue-save'))
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('text=What do you want to discover', { timeout: 10000 })
 
@@ -1446,7 +1446,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   await page.waitForSelector('button:has-text("Dive")', { timeout: 10000 })
 
-  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}'))
+  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}'))
   const histEntry = save?.interestConfig?.categories?.find(c => c.category === 'History')
   console.assert(histEntry?.weight > 0, `Historian persona should set History weight > 0, got ${histEntry?.weight}`)
   console.assert(!save?.interestConfig?.categoryLockActive, 'Open discovery should leave lock inactive')
@@ -1731,7 +1731,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject explorer-type save
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (!raw) return
     const save = JSON.parse(raw)
     save.stats.totalDivesCompleted = 20
@@ -1739,14 +1739,14 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
     save.stats.totalFactsLearned = 8
     save.stats.currentStreak = 14  // 14 days = 2 weeks of daily dives
     save.archetypeData = { detected: 'undetected', manualOverride: null, lastEvaluatedDate: null, detectedOnDay: null }
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
 
   // Trigger evaluation by simulating a dive completion (reload triggers evaluation on next dive)
   // For test purposes, directly call evaluateArchetype via page.evaluate and check result
   const archetype = await page.evaluate(() => {
     // This assumes archetypeDetector is accessible; in practice test via the Settings screen
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     return raw ? JSON.parse(raw).archetypeData?.detected : 'error'
   })
   console.log(`Archetype before dive: ${archetype}`)
@@ -2040,7 +2040,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Inject a low-engagement save (7 days of bad accuracy)
   await page.evaluate(() => {
-    const raw = localStorage.getItem('terra-gacha-save')
+    const raw = localStorage.getItem('recall-rogue-save')
     if (!raw) return
     const save = JSON.parse(raw)
     const today = new Date()
@@ -2058,12 +2058,12 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
         }
       }),
     }
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save))
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save))
   })
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
 
-  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('terra-gacha-save') ?? '{}'))
+  const save = await page.evaluate(() => JSON.parse(localStorage.getItem('recall-rogue-save') ?? '{}'))
   // Score should be low — verify engagementData is present and correctly structured
   console.assert(save?.engagementData, 'engagementData should exist in save')
   console.assert(save?.engagementData?.dailySnapshots?.length <= 7, 'Should have at most 7 snapshots')

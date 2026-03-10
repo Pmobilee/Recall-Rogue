@@ -39,7 +39,7 @@ curl "https://api.terragacha.com/api/v1/facts/random?count=5&category=Biology" \
     "count": 5,
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "attribution": "Terra Gacha Fact Database — terragacha.com",
+    "attribution": "Recall Rogue Fact Database — terragacha.com",
     "requiresAttribution": true
   }
 }

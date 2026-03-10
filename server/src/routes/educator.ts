@@ -1,5 +1,5 @@
 /**
- * Educator account endpoints for Terra Gacha.
+ * Educator account endpoints for Recall Rogue.
  * Handles educator verification requests and status checks.
  *
  * Routes (registered under /api/educator):

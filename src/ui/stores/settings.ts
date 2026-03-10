@@ -40,7 +40,7 @@ function flushPendingWrites(): void {
 /** Sprite resolution setting: 'low' for 32px, 'high' for 256px. */
 export type SpriteResolution = 'low' | 'high'
 
-const STORAGE_KEY = 'arcane-recall-sprite-resolution'
+const STORAGE_KEY = 'recall-rogue-sprite-resolution'
 
 /**
  * Reads the sprite resolution setting from localStorage.

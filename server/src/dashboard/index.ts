@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Fact Dashboard — standalone Fastify server on port 3002.
+ * Recall Rogue Fact Dashboard — standalone Fastify server on port 3002.
  * Local admin tool for reviewing, approving, and managing fact content.
  * No authentication required (local-only tool).
  */
@@ -460,7 +460,7 @@ async function startDashboard(): Promise<void> {
   try {
     await fastify.listen({ port: DASHBOARD_PORT, host: "127.0.0.1" });
     console.log(
-      `[dashboard] Terra Gacha Dashboard running at http://127.0.0.1:${DASHBOARD_PORT}`
+      `[dashboard] Recall Rogue Dashboard running at http://127.0.0.1:${DASHBOARD_PORT}`
     );
   } catch (err) {
     fastify.log.error(err);

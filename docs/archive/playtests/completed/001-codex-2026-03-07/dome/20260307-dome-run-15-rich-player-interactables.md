@@ -41,6 +41,6 @@
 ## Final State
 
 - `href=http://localhost:5173/?skipOnboarding=true&devpreset=rich_player`
-- `title=Terra Gacha`
+- `title=Recall Rogue`
 - `screen=base`
 - One browser session used for this playthrough run.

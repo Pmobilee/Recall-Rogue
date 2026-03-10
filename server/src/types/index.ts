@@ -1,5 +1,5 @@
 /**
- * Shared type definitions for the Terra Gacha server.
+ * Shared type definitions for the Recall Rogue server.
  * These types are used across routes, middleware, and database layers.
  */
 

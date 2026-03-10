@@ -8,7 +8,7 @@
 
 ## Overview
 
-Phase 7 transforms Terra Gacha's mining experience from functional-but-flat placeholder sprites into a Terraria-quality visual engine. The mine must feel alive, responsive, and rewarding. Every action — movement, mining, loot collection — must produce satisfying visual feedback.
+Phase 7 transforms Recall Rogue's mining experience from functional-but-flat placeholder sprites into a Terraria-quality visual engine. The mine must feel alive, responsive, and rewarding. Every action — movement, mining, loot collection — must produce satisfying visual feedback.
 
 **Why this matters**: The mining loop will be executed millions of times per player lifetime. Every sub-second of visual feedback compounds across thousands of sessions. A single percent improvement in mining satisfaction translates directly to hours of additional play per cohort. This is not polish — it is core game feel infrastructure.
 
@@ -2956,7 +2956,7 @@ Change `GameConfig.type` from `Phaser.AUTO` to `Phaser.WEBGL`. Drop the Canvas2D
 
 **Why drop Canvas2D**: `Phaser.AUTO` silently falls back to Canvas2D on some obscure devices and browser configurations, leading to inconsistent visual output and masking renderer-specific bugs during development. Explicit WebGL forces all rendering to go through the same GPU path.
 
-**User-facing fallback**: A small number of legacy Android WebView installs lack WebGL. Add a blocking message page: "Terra Gacha requires a WebGL-capable device. Please update your browser or try a different device." This affects < 0.5% of target audience.
+**User-facing fallback**: A small number of legacy Android WebView installs lack WebGL. Add a blocking message page: "Recall Rogue requires a WebGL-capable device. Please update your browser or try a different device." This affects < 0.5% of target audience.
 
 ### Where
 - **Modify**: `src/game/config.ts` (or wherever `GameConfig` is defined) — change `type: Phaser.AUTO` to `type: Phaser.WEBGL`
@@ -3013,7 +3013,7 @@ const GameConfig: Phaser.Types.Core.GameConfig = {
 <div class="fallback">
   <h1>Device Not Supported</h1>
   <p>
-    Terra Gacha requires WebGL, which is not available in your current browser or device.
+    Recall Rogue requires WebGL, which is not available in your current browser or device.
   </p>
   <p>
     Please update your browser, or try opening the game in Chrome or Firefox.
@@ -3491,7 +3491,7 @@ import { Capacitor } from '@capacitor/core'
 import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics'
 
 /**
- * Typed haptic feedback service for Terra Gacha.
+ * Typed haptic feedback service for Recall Rogue.
  *
  * All methods are no-ops on web — safe to call unconditionally.
  * Fire at animation impact keyframes, NOT in input handlers.

@@ -1,5 +1,5 @@
 /**
- * ASO (App Store Optimization) admin routes for the Terra Gacha server.
+ * ASO (App Store Optimization) admin routes for the Recall Rogue server.
  * Phase 42.5: Keyword rank dashboard and screenshot A/B config.
  *
  * Endpoints:

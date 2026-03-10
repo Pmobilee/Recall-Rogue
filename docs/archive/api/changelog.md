@@ -2,7 +2,7 @@
 
 ## v1.0.0 — 2026-03-05
 
-Initial public release of the Terra Gacha Fact API.
+Initial public release of the Recall Rogue Fact API.
 
 ### New Endpoints
 - `GET /api/v1/facts` — Paginated fact list with cursor pagination

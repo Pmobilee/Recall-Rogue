@@ -111,7 +111,7 @@ const O2_WARNING_TEX = 'particle_o2_warn'
 // ============================================================
 
 /**
- * Centralised particle system for Terra Gacha.
+ * Centralised particle system for Recall Rogue.
  *
  * Responsibilities:
  *  - Block-break burst emitters (one per configured BlockType)

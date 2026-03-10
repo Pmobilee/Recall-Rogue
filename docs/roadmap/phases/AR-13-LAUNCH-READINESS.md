@@ -159,8 +159,8 @@ export default {
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Arcane Recall',
-        short_name: 'Arcane Recall',
+        name: 'Recall Rogue',
+        short_name: 'Recall Rogue',
         description: 'Learn facts. Build decks. Delve.',
         theme_color: '#1a1a1a',
         background_color: '#1a1a1a',
@@ -221,11 +221,11 @@ Add to `index.html`:
   <meta name="theme-color" content="#1a1a1a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Arcane Recall" />
+  <meta name="apple-mobile-web-app-title" content="Recall Rogue" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/icons/icon-180.png" />
   <link rel="manifest" href="/manifest.json" />
-  <title>Arcane Recall</title>
+  <title>Recall Rogue</title>
 </head>
 <body>
   <div id="app"></div>
@@ -251,7 +251,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.arcanerecall.game',
-  appName: 'Arcane Recall',
+  appName: 'Recall Rogue',
   webDir: 'dist',
   server: {
     androidScheme: 'https',
@@ -403,7 +403,7 @@ test.describe('App Loading', () => {
     expect(errors).toHaveLength(0);
 
     // Verify initial screen renders
-    const hubTitle = await page.locator('text=ARCANE RECALL').isVisible();
+    const hubTitle = await page.locator('text=RECALL ROGUE').isVisible();
     expect(hubTitle).toBeTruthy();
 
     // Take screenshot
@@ -588,10 +588,10 @@ Create `docs/APP_STORE.md`:
 
 ## App Details
 
-- **Name:** Arcane Recall
+- **Name:** Recall Rogue
 - **Subtitle:** Learn Facts. Build Decks. Delve.
 - **Description:**
-  Arcane Recall is an educational card roguelite. Combine strategic deck-building with spaced repetition learning. Answer questions to activate cards in turn-based combat. Descend through procedurally generated dungeons, unlock new facts, and master multiple knowledge domains.
+  Recall Rogue is an educational card roguelite. Combine strategic deck-building with spaced repetition learning. Answer questions to activate cards in turn-based combat. Descend through procedurally generated dungeons, unlock new facts, and master multiple knowledge domains.
 
   Features:
   - Roguelite Gameplay: 500+ facts across domains. Procedural runs, meaningful choices.

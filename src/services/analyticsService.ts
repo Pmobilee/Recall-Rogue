@@ -160,7 +160,7 @@ interface ShareCardGeneratedEvent {
   }
 }
 
-/** Arcane Recall run/deck funnel events (AR-14). */
+/** Recall Rogue run/deck funnel events (AR-14). */
 interface DomainSelectEvent {
   name: 'domain_select'
   properties: {

@@ -351,7 +351,7 @@ Check for lore unlock after every mastery trial success (in `encounterBridge.ts`
 - Title in gold pixel font, 20dp
 - Body text in 14dp, white, max 280dp width, center-aligned
 - Pixel art illustration placeholder (200×150dp) — can be solid dark rectangle for now
-- Share button: generates image similar to run summary share (lore title + quote + "Arcane Recall")
+- Share button: generates image similar to run summary share (lore title + quote + "Recall Rogue")
 - Continue button: dismisses overlay, returns to previous screen
 - Sound: atmospheric chime (reuse `turn-chime.ogg` from AR-05 or dedicated lore sound)
 

@@ -1,7 +1,7 @@
 # Phase 21: Monetization
 
 **Status**: NOT STARTED
-**Goal**: Establish sustainable, ethical revenue without pay-to-win. Build the oxygen economy, subscription system, IAP catalog, analytics infrastructure, and economy rebalance required to run Terra Gacha as a live commercial product.
+**Goal**: Establish sustainable, ethical revenue without pay-to-win. Build the oxygen economy, subscription system, IAP catalog, analytics infrastructure, and economy rebalance required to run Recall Rogue as a live commercial product.
 **Design Decisions**: DD-V2-134, DD-V2-138, DD-V2-145, DD-V2-146, DD-V2-147, DD-V2-148, DD-V2-149, DD-V2-150, DD-V2-151, DD-V2-152, DD-V2-153, DD-V2-154, DD-V2-155
 
 ---
@@ -619,7 +619,7 @@ Formally implement and document the ad-free policy. Ensure no ad SDK is included
    ```
 2. Add `FEATURE_REWARDED_ADS: false` to `server/config/features.ts` and ensure the feature flag is checked server-side before any ad endpoint is exposed.
 3. Verify no ad SDK packages in `package.json`. Add `ads` to `.npmrc` blocklist comment as documentation.
-4. Add policy text to `docs/store/APP_STORE_LISTING.md`: "No ads. Terra Gacha is completely ad-free. Our educational mission requires a distraction-free experience. If we ever add optional ads, they will be: opt-in only, rewarded only, and never shown during gameplay or quizzes."
+4. Add policy text to `docs/store/APP_STORE_LISTING.md`: "No ads. Recall Rogue is completely ad-free. Our educational mission requires a distraction-free experience. If we ever add optional ads, they will be: opt-in only, rewarded only, and never shown during gameplay or quizzes."
 
 ### Acceptance Criteria
 - [ ] `grep -r 'AdMob\|admob\|advertisement\|ad_unit' src/` returns no results

@@ -3,6 +3,7 @@
   import type { Card, FactDomain, CardType } from '../../data/card-types'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
+  import { getTierDisplayName } from '../../services/tierDerivation'
 
   interface Props {
     card: Card
@@ -75,7 +76,7 @@
   let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
   let domainName = $derived(getDomainMetadata(card.domain).displayName)
   let typeIcon = $derived(TYPE_ICONS[card.cardType])
-  let tierLabel = $derived(card.tier === '1' ? '' : card.tier.toUpperCase())
+  let tierLabel = $derived(card.tier === '1' ? '' : getTierDisplayName(card.tier))
   let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType))
   let domainIconPath = $derived(getDomainIconPath(card.domain))
 

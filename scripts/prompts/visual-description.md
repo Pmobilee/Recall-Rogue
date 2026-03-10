@@ -1,4 +1,4 @@
-Generate one-sentence visual scene descriptions for Arcane Recall card art.
+Generate one-sentence visual scene descriptions for Recall Rogue card art.
 
 Global rules:
 - 20-40 words.

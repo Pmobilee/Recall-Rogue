@@ -51,7 +51,7 @@ curl "https://api.terragacha.com/api/v1/facts?category=Biology&limit=10" \
     "totalApproved": 3142,
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "attribution": "Terra Gacha Fact Database — terragacha.com",
+    "attribution": "Recall Rogue Fact Database — terragacha.com",
     "requiresAttribution": true
   }
 }
@@ -77,4 +77,4 @@ curl "https://api.terragacha.com/api/v1/facts?limit=10&cursor=bio-010" \
 > **Important**: You MUST display attribution as specified in `meta.attribution`
 > whenever you display facts sourced from this API.
 >
-> Minimum attribution: "Facts from [Terra Gacha](https://terragacha.com) — CC BY 4.0"
+> Minimum attribution: "Facts from [Recall Rogue](https://terragacha.com) — CC BY 4.0"

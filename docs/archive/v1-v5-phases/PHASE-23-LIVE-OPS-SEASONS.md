@@ -8,7 +8,7 @@
 
 ## Overview
 
-Phase 23 transforms Terra Gacha from a static product into a living service. It covers the full retention lifecycle: seasonal content injections to keep long-term players engaged, a disciplined push notification system that respects player attention, win-back flows for lapsed players, a completionist endgame for top performers, and a community-driven user-generated fact pipeline that unlocks at peak mastery.
+Phase 23 transforms Recall Rogue from a static product into a living service. It covers the full retention lifecycle: seasonal content injections to keep long-term players engaged, a disciplined push notification system that respects player attention, win-back flows for lapsed players, a completionist endgame for top performers, and a community-driven user-generated fact pipeline that unlocks at peak mastery.
 
 Every system in this phase is anchored in respect for the player's time and attention (DD-V2-159). The recurring failure mode for live ops in educational games is that retention mechanics slide into coercive anxiety — broken streaks presented as shameful, notifications that feel like nagging, emails that feel like spam. This phase explicitly prevents that failure at the implementation level.
 
@@ -775,7 +775,7 @@ Your dome is waiting. No pressure.
 
 You can unsubscribe at any time: [unsubscribe link]
 G.A.I.A. — Geological Analytical Intelligence Assistant
-Terra Gacha
+Recall Rogue
 ---
 ```
 

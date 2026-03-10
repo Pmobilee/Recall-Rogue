@@ -8,7 +8,7 @@
 
 ## Overview
 
-Phase 24 extends Terra Gacha's knowledge engine into a full-featured language learning platform. The core insight is that language learning — vocabulary, grammar, phrases — is structurally identical to fact learning: there is a statement (a word or rule), a correct answer (its meaning or form), and plausible distractors (semantically similar words or rules). The SM-2 engine, Knowledge Tree, and quiz system require no fundamental changes; they simply receive new fact types and new content.
+Phase 24 extends Recall Rogue's knowledge engine into a full-featured language learning platform. The core insight is that language learning — vocabulary, grammar, phrases — is structurally identical to fact learning: there is a statement (a word or rule), a correct answer (its meaning or form), and plausible distractors (semantically similar words or rules). The SM-2 engine, Knowledge Tree, and quiz system require no fundamental changes; they simply receive new fact types and new content.
 
 This is not a separate "language game mode." Language learning is implemented as a Category Lock (DD-V2-132) — a settings toggle that filters the fact pool to language content. A player who toggles Language Mode sees the same dome, the same mine, the same Knowledge Tree — but GAIA serves vocabulary and grammar facts instead of natural science facts. All progress lives on the same tree.
 

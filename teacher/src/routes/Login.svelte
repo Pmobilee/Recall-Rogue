@@ -106,7 +106,7 @@
 <div class="login-page">
   <div class="login-card card">
     <div class="login-header">
-      <h1 class="login-title">Terra Gacha</h1>
+      <h1 class="login-title">Recall Rogue</h1>
       <p class="login-subtitle">Teacher Dashboard</p>
     </div>
 

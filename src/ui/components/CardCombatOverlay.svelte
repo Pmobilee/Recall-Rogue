@@ -64,6 +64,12 @@
   let slowReaderEnabled = $state(false)
   let currentDifficulty = $state<DifficultyMode>('standard')
 
+  // wowFactor overlay state
+  let wowFactorText = $state<string | null>(null)
+  let wowFactorVisible = $state(false)
+  let wowFactorCount = $state(0)
+  const WOW_FACTOR_MAX_PER_ENCOUNTER = 3
+
   let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
@@ -147,7 +153,7 @@
     const totalWords = allText.trim().split(/\s+/).filter(Boolean).length
 
     const extraWords = Math.max(0, totalWords - 10)
-    const wordBonus = Math.floor(extraWords / 12)
+    const wordBonus = Math.floor(extraWords / 8)
     const slowReaderBonus = slowReaderEnabled && !committedPresentation.disableSlowReader ? 3 : 0
 
     let timer = floorBase + wordBonus + slowReaderBonus
@@ -208,6 +214,25 @@
     if ((turnState?.turnNumber ?? 0) >= 2) return 'tip-ap'
     return 'tip-hand'
   })
+
+  function showWowFactor(card: Card): void {
+    if (wowFactorCount >= WOW_FACTOR_MAX_PER_ENCOUNTER) return
+    if (card.tier !== '1') return
+    const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
+    if (!fact?.wowFactor) return
+
+    wowFactorCount++
+    wowFactorText = fact.wowFactor
+    wowFactorVisible = true
+
+    // fade in 200ms (CSS), hold 1.5s, fade out 300ms (CSS), cleanup
+    setTimeout(() => {
+      wowFactorVisible = false
+    }, 1700) // 200ms fade-in + 1500ms hold
+    setTimeout(() => {
+      wowFactorText = null
+    }, 2000) // + 300ms fade-out
+  }
 
   function removeDamageNumber(id: number): void {
     damageNumbers = damageNumbers.filter((entry) => entry.id !== id)
@@ -328,6 +353,10 @@
       _lastTurnNumber = nextTurn
       resetCardFlow()
       answeredThisTurn = 0
+      // Reset wowFactor counter at the start of each encounter (turn 1)
+      if (nextTurn === 1) {
+        wowFactorCount = 0
+      }
 
       if (nextTurn >= 2) {
         const state = get(onboardingState)
@@ -433,6 +462,9 @@
         animatingCards = animatingCards.filter(c => c.id !== cardId)
       }, 400)
     } else {
+      // Show wowFactor overlay for Learning-tier cards with a wowFactor
+      showWowFactor(card)
+
       // Correct answer: reveal → mechanic → launch sequence
       const hasBack = hasCardback(card.factId)
 
@@ -605,6 +637,10 @@
     {#each damageNumbers as dn (dn.id)}
       <DamageNumber value={dn.value} isCritical={dn.isCritical} onComplete={() => removeDamageNumber(dn.id)} />
     {/each}
+
+    {#if wowFactorText}
+      <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}>{wowFactorText}</div>
+    {/if}
 
     {#if comboCount >= 4}
       <div class="screen-edge-pulse" style="pointer-events: none;"></div>
@@ -904,6 +940,31 @@
   .confirm-cancel {
     background: #374151;
     color: #f8fafc;
+  }
+
+  .wow-factor-overlay {
+    position: absolute;
+    top: 48px;
+    left: 12px;
+    right: 12px;
+    z-index: 12;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    color: #fef3c7;
+    background: rgba(15, 23, 35, 0.82);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    border-radius: 8px;
+    padding: 8px 12px;
+    line-height: 1.35;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .wow-factor-overlay.wow-visible {
+    opacity: 1;
+    transition: opacity 200ms ease;
   }
 
   .screen-edge-pulse {

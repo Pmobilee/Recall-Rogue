@@ -178,13 +178,13 @@
     ctx.fillStyle = '#555'
     ctx.font = '10px monospace'
     ctx.textAlign = 'center'
-    ctx.fillText('Terra Gacha — Mine. Discover. Learn.', 300, 380)
+    ctx.fillText('Recall Rogue — Mine. Discover. Learn.', 300, 380)
 
     // Download
     const dataUrl = canvas.toDataURL('image/png')
     const a = document.createElement('a')
     a.href = dataUrl
-    a.download = 'terra-gacha-report.png'
+    a.download = 'recall-rogue-report.png'
     a.click()
   }
 </script>

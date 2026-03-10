@@ -1,7 +1,7 @@
 # Retention & Growth -- 50 Questions for Roadmap Expansion
 
 > These questions explore monetization, player retention, session design,
-> growth strategy, and market positioning for Terra Gacha. Answer them to
+> growth strategy, and market positioning for Recall Rogue. Answer them to
 > build a sustainable game that teaches addictively without compromising
 > educational integrity. Each question references specific existing systems
 > and includes professional advice grounded in mobile gaming best practices.
@@ -142,7 +142,7 @@
 
 ## D. Growth, Marketing & Market Position (Questions 31-40)
 
-### Q31: How do you position Terra Gacha in app stores -- Games category or Education category?
+### Q31: How do you position Recall Rogue in app stores -- Games category or Education category?
 **Context**: The game targets "anyone who is curious" with no specific age range. It has deep gaming mechanics (roguelite, gacha, crafting) and deep educational mechanics (spaced repetition, knowledge tree, 25 distractors per fact).
 **My Advice**: List in Games (Adventure or Casual subcategory) as primary, with Education as secondary. The Education category has 50% lower organic install rates than Games. Your Terraria/Motherload-style mining is your user acquisition hook; the learning is your retention hook. Marketing should lead with "mine, explore, discover" and reveal the learning as a delightful surprise. Parents will find you via "educational game" searches regardless of category, but gamers will only find you if you are in Games.
 
@@ -195,8 +195,8 @@
 **My Advice**: Three rules: (1) Every quiz must have immediate tangible stakes -- correct answers boost artifact rarity, open gates, grant oxygen. Abstract "learning progress" alone is not motivating in the moment. (2) Wrong answers should cost something (oxygen) but never end the run or permanently lock content. (3) After every wrong answer, show the correct answer with GAIA's explanation and mnemonic immediately -- the "aha!" moment must follow the mistake. Frame quizzes as "challenges" not "tests." The difference is psychological: a challenge is something you choose to overcome; a test is something imposed on you.
 
 ### Q43: How do you ensure the gacha/reveal mechanics do not cross ethical lines, especially for younger players?
-**Context**: Artifacts have rarity tiers (Common 60% to Mythic 0.1%) with escalating reveal animations. The game is called "Terra Gacha." Pet synthesis and Data Discs also have gacha-like reveals. Premium Materializer uses rare materials.
-**My Advice**: Establish clear ethical guardrails: (1) all drop rates are displayed in-game (full transparency), (2) no real money directly buys randomized loot -- you buy cosmetics directly or oxygen to play, which may lead to finds (indirect), (3) gacha excitement is earned through gameplay, never purchased, (4) pity system: after 20 artifacts without rare+, guarantee the next one is rare, (5) no "limited time" pressure on gacha items (FOMO drives problematic spending in kids). The name "Terra Gacha" is playful, but be prepared for regulatory scrutiny in Belgium and Netherlands where gacha mechanics face legal challenges.
+**Context**: Artifacts have rarity tiers (Common 60% to Mythic 0.1%) with escalating reveal animations. The game is called "Recall Rogue." Pet synthesis and Data Discs also have gacha-like reveals. Premium Materializer uses rare materials.
+**My Advice**: Establish clear ethical guardrails: (1) all drop rates are displayed in-game (full transparency), (2) no real money directly buys randomized loot -- you buy cosmetics directly or oxygen to play, which may lead to finds (indirect), (3) gacha excitement is earned through gameplay, never purchased, (4) pity system: after 20 artifacts without rare+, guarantee the next one is rare, (5) no "limited time" pressure on gacha items (FOMO drives problematic spending in kids). The name "Recall Rogue" is playful, but be prepared for regulatory scrutiny in Belgium and Netherlands where gacha mechanics face legal challenges.
 
 ### Q44: How do you handle content sensitivity across KID/TEEN/ADULT tiers without making the kid version feel shallow?
 **Context**: Facts have `age_rating` (kid/teen/adult), `sensitivity_level` (0-5), and `sensitivity_note`. Kid mode filters to "family-safe, no violence, no controversy."
@@ -216,7 +216,7 @@
 
 ### Q48: How do you measure whether the game is actually effective at teaching, and should you publish those metrics?
 **Context**: The SM-2 algorithm tracks retention intervals per fact. The Knowledge Tree shows mastery progression. No external validation or learning outcome measurement exists.
-**My Advice**: Build an internal "Learning Effectiveness Dashboard" tracking: (1) average facts retained at 30-day intervals, (2) quiz accuracy improvement over time per user, (3) category mastery velocity, (4) SM-2 interval distribution (are facts actually reaching 60+ day retention?). Publish an annual "Terra Gacha Learning Report" with aggregate anonymized data -- "Our players retained 78% of learned facts after 30 days, compared to the typical 20% without spaced repetition." This establishes credibility with educators and parents, generates press coverage, and differentiates you from every "educational" game that never proves it works.
+**My Advice**: Build an internal "Learning Effectiveness Dashboard" tracking: (1) average facts retained at 30-day intervals, (2) quiz accuracy improvement over time per user, (3) category mastery velocity, (4) SM-2 interval distribution (are facts actually reaching 60+ day retention?). Publish an annual "Recall Rogue Learning Report" with aggregate anonymized data -- "Our players retained 78% of learned facts after 30 days, compared to the typical 20% without spaced repetition." This establishes credibility with educators and parents, generates press coverage, and differentiates you from every "educational" game that never proves it works.
 
 ### Q49: Should there be a referral mechanic, and what thematic format avoids feeling exploitative?
 **Context**: No referral system exists. The game has fossil eggs, pets, and cosmetics as potential referral rewards. Phase 22 covers social features but not referrals specifically.

@@ -1,4 +1,4 @@
-# Competitor Analysis — Terra Gacha ASO (DD-V2-168)
+# Competitor Analysis — Recall Rogue ASO (DD-V2-168)
 
 ## Key Competitors
 

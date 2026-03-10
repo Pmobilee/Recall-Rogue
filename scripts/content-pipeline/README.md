@@ -33,6 +33,43 @@ All scripts support `--limit` and `--output`:
 
 Legacy names (`fetch-nasa-apod.mjs`, `fetch-gbif-species.mjs`, etc.) remain as wrappers.
 
+## Fact generation (AR-17)
+
+- `generate/haiku-client.mjs` - API client with retry/rate/cost tracking
+- `generate/batch-generate.mjs` - batch JSON -> JSONL generation
+- `generate/validate-output.mjs` - schema + quality validation
+- `generate/estimate-cost.mjs` - token/cost estimate
+- `generate/sample.mjs` - small sample generation
+
+Example:
+```bash
+node scripts/content-pipeline/generate/sample.mjs --domain geography --count 5 --dry-run --output /tmp/geography-sample.json
+node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography-sample.json --schema-only
+```
+
+## Vocabulary pipeline (AR-18)
+
+- `vocab/import-jmdict.mjs`
+- `vocab/import-tatoeba.mjs`
+- `vocab/import-wikidata-lexemes.mjs`
+- `vocab/extract-anki-wordlist.mjs`
+- `vocab/enrich-wordlist.mjs`
+- `vocab/verify-translations.mjs`
+- `vocab/import-european-vocab.mjs`
+- `vocab/level-mapper.mjs`
+- `vocab/import-hsk-vocabulary.mjs`
+- `vocab/match-tatoeba.mjs`
+- `vocab/vocab-to-facts.mjs`
+
+## QA and migration (AR-19)
+
+- `qa/cross-domain-dedup.mjs`
+- `qa/coverage-report.mjs`
+- `qa/review-sample.mjs`
+- `qa/generate-validation-summary.mjs`
+- `qa/migrate-to-production.mjs`
+- `qa/final-validation.mjs`
+
 ## Notes
 
 - SPARQL templates use `{{LIMIT}}` and `{{OFFSET}}`.

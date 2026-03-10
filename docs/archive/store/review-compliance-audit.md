@@ -1,10 +1,10 @@
-# App Store Review Guidelines Compliance Audit — Terra Gacha
+# App Store Review Guidelines Compliance Audit — Recall Rogue
 
 **Date**: 2026-03-04
 **Build**: 1.0.0 (build 1)
 **Phase**: 38 — iOS App Store Launch
 
-This document maps every known review risk for Terra Gacha to the specific App Store Review Guidelines section and records the verification status of each item.
+This document maps every known review risk for Recall Rogue to the specific App Store Review Guidelines section and records the verification status of each item.
 
 ---
 
@@ -16,8 +16,8 @@ This document maps every known review risk for Terra Gacha to the specific App S
 ### What Apple requires
 Apps must disclose the odds of each item type before a player pays for a randomized reward. Random virtual items may not be purchased with real money without odds disclosure.
 
-### Terra Gacha's position
-Terra Gacha's gacha reveal mechanic (`GachaReveal.svelte`, `GACHA_TIERS` in `src/data/balance.ts`) is triggered by spending **in-game mineral currency** (dust, shards, crystals), **not by real money purchases**.
+### Recall Rogue's position
+Recall Rogue's gacha reveal mechanic (`GachaReveal.svelte`, `GACHA_TIERS` in `src/data/balance.ts`) is triggered by spending **in-game mineral currency** (dust, shards, crystals), **not by real money purchases**.
 
 **Verification checklist**:
 - [x] No IAP product triggers a randomized reward. Verified in `src/data/iapCatalog.ts` — all products yield deterministic items:
@@ -44,7 +44,7 @@ Terra Gacha's gacha reveal mechanic (`GachaReveal.svelte`, `GACHA_TIERS` in `src
 - External payment links are not permitted in-app.
 - Subscription terms (price, renewal, cancellation) must be shown before purchase confirmation.
 
-### Terra Gacha's position
+### Recall Rogue's position
 - IAP routing (`src/services/iapService.ts`) uses RevenueCat for StoreKit 2 on iOS — all subscription purchases on iOS go through Apple's payment sheet.
 - `TerraPassModal.svelte` does **not** link to any web payment page.
 - iOS subscription disclosure added in Phase 38 (`isIOS` block in `TerraPassModal.svelte`):
@@ -69,7 +69,7 @@ in Settings > [Your Name] > Subscriptions. No refunds for partial months.
 ### What Apple requires
 Apps must disclose all data they collect. Data collection must be consistent with the stated privacy policy. Users must have a path to data deletion.
 
-### Terra Gacha's position
+### Recall Rogue's position
 - Email is used only for authentication and account recovery. No marketing email without explicit opt-in.
 - `analyticsService.ts` checks `analyticsEnabled` store (set by ATT consent result) before firing any event.
 - Users can delete their account via `src/services/dataDeletion.ts` (Phase 19). Server endpoint: `DELETE /api/account`.
@@ -88,7 +88,7 @@ Apps must disclose all data they collect. Data collection must be consistent wit
 **Risk Level**: LOW
 **Status**: COMPLIANT (no action required)
 
-Terra Gacha has extensive native-class functionality:
+Recall Rogue has extensive native-class functionality:
 - 20-layer procedurally generated mine
 - SM-2 spaced repetition quiz system (522+ facts)
 - Dome hub with 6 rooms and upgrades
@@ -125,7 +125,7 @@ Screenshot manifest:
 **Risk Level**: LOW
 **Status**: COMPLIANT
 
-Terra Gacha does **not** use the "Kids" category (which restricts IAP and analytics).
+Recall Rogue does **not** use the "Kids" category (which restricts IAP and analytics).
 
 **Age rating selected**: **9+**
 
@@ -145,7 +145,7 @@ Age gate (Phase 19) ensures COPPA compliance: players under 13 are routed to a r
 
 **Status**: COMPLIANT
 
-Terra Gacha's auth screen includes Google Sign In (Phase 19). Therefore, Sign In with Apple **is required** by Guideline 4.8.
+Recall Rogue's auth screen includes Google Sign In (Phase 19). Therefore, Sign In with Apple **is required** by Guideline 4.8.
 
 `src/ui/components/SignInWithApple.svelte` has been created in Phase 38. The `POST /api/auth/apple` endpoint added to `server/src/routes/auth.ts` handles token verification and user upsert.
 
@@ -166,7 +166,7 @@ Terra Gacha's auth screen includes Google Sign In (Phase 19). Therefore, Sign In
 
 **Status**: No encryption
 
-Terra Gacha uses HTTPS for all network communication (standard WebKit APIs). No custom encryption is implemented. Select **No** on the export compliance question in App Store Connect.
+Recall Rogue uses HTTPS for all network communication (standard WebKit APIs). No custom encryption is implemented. Select **No** on the export compliance question in App Store Connect.
 
 ---
 

@@ -5,14 +5,14 @@ Educational institutions can apply for free Institutional API access through the
 ## Registration
 
 1. Visit [terragacha.com/partner](https://terragacha.com/partner) or navigate to
-   `/partner` in the Terra Gacha app.
+   `/partner` in the Recall Rogue app.
 2. Fill in the registration form:
    - Organization name
    - Domain (e.g. `school.edu`)
    - Organization type: K-12, University, Nonprofit, or EdTech
    - Contact name and email
 3. Submit — you'll receive a reference ID immediately.
-4. The Terra Gacha team reviews your application within 2 business days.
+4. The Recall Rogue team reviews your application within 2 business days.
 5. Upon approval, you receive an API key with **Institutional tier** quotas.
 
 ## API Registration (programmatic)

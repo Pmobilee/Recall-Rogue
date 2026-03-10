@@ -5,9 +5,9 @@
 > Depends on: None
 > Estimated scope: M
 
-Set up the Arcane Recall asset generation pipeline using NB1 (`google/gemini-2.5-flash-image`) via OpenRouter API. This creates a new prompt-manifest-driven generation script and post-processing pipeline tailored to Arcane Recall's art needs (fantasy pixel art sprites and backgrounds). This is the foundation for all subsequent asset generation CRs.
+Set up the Recall Rogue asset generation pipeline using NB1 (`google/gemini-2.5-flash-image`) via OpenRouter API. This creates a new prompt-manifest-driven generation script and post-processing pipeline tailored to Recall Rogue's art needs (fantasy pixel art sprites and backgrounds). This is the foundation for all subsequent asset generation CRs.
 
-Note: The project already has `sprite-gen/scripts/generate-sprites.mjs` (registry-driven, Terra Miner dome/mining assets) and `sharp` is installed. This CR creates a **new, parallel script** specifically for Arcane Recall assets, using a JSON prompt manifest instead of the existing sprite registry.
+Note: The project already has `sprite-gen/scripts/generate-sprites.mjs` (registry-driven, Terra Miner dome/mining assets) and `sharp` is installed. This CR creates a **new, parallel script** specifically for Recall Rogue assets, using a JSON prompt manifest instead of the existing sprite registry.
 
 ## Design Reference
 
@@ -46,13 +46,13 @@ Response parsing (from existing script):
 
 #### Prompt Manifest: `sprite-gen/arcane-prompts.json`
 
-A JSON file that drives all Arcane Recall asset generation. Separate arrays for sprites (green-screen) and backgrounds (no green-screen).
+A JSON file that drives all Recall Rogue asset generation. Separate arrays for sprites (green-screen) and backgrounds (no green-screen).
 
 ```json
 {
   "meta": {
     "version": 1,
-    "description": "Arcane Recall asset generation prompts",
+    "description": "Recall Rogue asset generation prompts",
     "model": "google/gemini-2.5-flash-image",
     "updatedAt": null
   },
@@ -82,11 +82,11 @@ A JSON file that drives all Arcane Recall asset generation. Separate arrays for 
 
 #### Sprite Registry Updates: `sprite-gen/sprite-registry.json`
 
-After successful generation, add entries to the existing sprite registry under a new `"arcaneRecall"` array (separate from the existing `"sprites"` array used by Terra Miner assets):
+After successful generation, add entries to the existing sprite registry under a new `"recallRogue"` array (separate from the existing `"sprites"` array used by Terra Miner assets):
 
 ```json
 {
-  "arcaneRecall": [
+  "recallRogue": [
     {
       "key": "cave_bat_idle",
       "category": "enemies",
@@ -333,7 +333,7 @@ As part of pipeline validation, generate 1 test sprite end-to-end:
 4. Auto-crop removes excess transparent padding
 5. Nearest-neighbor downscale to 96x128 produces crisp pixel edges
 6. Final output saved to `public/assets/sprites/enemies/cave_bat_idle.png`
-7. `sprite-registry.json` updated with new `arcaneRecall` entry
+7. `sprite-registry.json` updated with new `recallRogue` entry
 
 ### Visual Inspection (Playwright)
 
@@ -380,7 +380,7 @@ Alternatively, the orchestrator can do this manually after running the script.
 | Create | `sprite-gen/arcane-prompts.json` | Prompt manifest (initially just cave_bat_idle test sprite) |
 | Create | `sprite-gen/lib/green-screen.mjs` | Green screen chroma key removal with edge despill |
 | Create | `sprite-gen/lib/post-process.mjs` | Auto-crop, nearest-neighbor resize, palette quantize, pipeline |
-| Modify | `sprite-gen/sprite-registry.json` | Add `arcaneRecall` array with test sprite entry after generation |
+| Modify | `sprite-gen/sprite-registry.json` | Add `recallRogue` array with test sprite entry after generation |
 | Modify | `.env.example` | Update `OPENROUTER_MODEL` to `google/gemini-2.5-flash-image` |
 | Modify | `package.json` | Add `"generate:arcane-sprites"` npm script (sharp already installed) |
 
@@ -394,7 +394,7 @@ Alternatively, the orchestrator can do this manually after running the script.
 - [ ] Auto-crop removes excess transparent padding around the sprite
 - [ ] Nearest-neighbor downscale to 96x128 produces crisp pixel art (no blurring)
 - [ ] Final output saved to `public/assets/sprites/enemies/cave_bat_idle.png`
-- [ ] `sprite-registry.json` updated with `arcaneRecall` entry including `generatedAt` timestamp
+- [ ] `sprite-registry.json` updated with `recallRogue` entry including `generatedAt` timestamp
 - [ ] `--force` flag allows regenerating existing sprites (overwrites output)
 - [ ] `--dry-run` flag previews what would be generated without calling API
 - [ ] `--id` flag generates a single sprite by ID

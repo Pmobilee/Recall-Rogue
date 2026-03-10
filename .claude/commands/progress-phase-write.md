@@ -1,4 +1,4 @@
-# Arcane Recall — CR Spec Writer Skill
+# Recall Rogue — CR Spec Writer Skill
 
 ## When To Use This Skill
 

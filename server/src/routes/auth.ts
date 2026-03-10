@@ -1,5 +1,5 @@
 /**
- * Authentication routes for the Terra Gacha server.
+ * Authentication routes for the Recall Rogue server.
  * Handles user registration, login, JWT token refresh, account deletion,
  * password reset (request + confirm), guest account creation, and guest linking.
  * Passwords are hashed with Node.js built-in crypto (PBKDF2).
@@ -313,7 +313,7 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
       // Send welcome email (non-fatal — never blocks registration)
       sendEmail({
         to: email.toLowerCase(),
-        subject: "Welcome to Terra Gacha",
+        subject: "Welcome to Recall Rogue",
         template: "welcome",
         variables: { playerName: trimmedDisplay ?? email.split("@")[0] ?? "Explorer" },
       }).catch((err: unknown) =>

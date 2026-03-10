@@ -15,6 +15,7 @@ import {
   advanceFloor,
   getSegment,
   isBossFloor,
+  isMiniBossEncounter,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
 import { DEATH_PENALTY } from '../data/balance';
@@ -26,11 +27,13 @@ import {
   getRunPoolCards,
   sellCardFromActiveDeck,
 } from './encounterBridge';
-import { onboardingState, incrementRunsCompleted, markOnboardingComplete } from './cardPreferences';
+import { onboardingState, incrementRunsCompleted, markOnboardingComplete, difficultyMode } from './cardPreferences';
 import { isSlowReader } from './cardPreferences';
+import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS } from '../data/balance';
 import { updateBounties } from './bountyManager';
 import { resetCanaryFloor } from './canaryService';
 import { applyRunAccuracyBonus, playerSave, persistPlayer, recordDiveComplete } from '../ui/stores/playerData';
+import { recordRunCompleted as recordRunForReview, checkBossKillTrigger } from './reviewPromptService';
 import { captureRunSummary, lastRunSummary } from './hubState';
 import {
   getRunNumberForDomain,
@@ -39,6 +42,12 @@ import {
 } from './runEarlyBoostController';
 import { getExperimentValue } from './experimentService';
 import { analyticsService } from './analyticsService';
+import type { SpecialEvent } from '../data/specialEvents';
+import { rollSpecialEvent } from '../data/specialEvents';
+import { saveActiveRun, loadActiveRun, clearActiveRun, hasActiveRun } from './runSaveService'
+import { requestNotificationPermission, rescheduleNotifications } from './notificationService'
+import type { NotificationPlayerData } from './notificationService'
+import { getDueReviews } from '../ui/stores/playerData';
 
 export type GameFlowState =
   | 'idle'
@@ -53,6 +62,8 @@ export type GameFlowState =
   | 'cardReward'
   | 'retreatOrDelve'
   | 'shopRoom'
+  | 'specialEvent'
+  | 'campfire'
   | 'runEnd';
 
 export const gameFlowState = writable<GameFlowState>('idle');
@@ -62,8 +73,11 @@ export const activeMysteryEvent = writable<MysteryEvent | null>(null);
 export const activeRunEndData = writable<RunEndData | null>(null);
 export const activeCardRewardOptions = writable<Card[]>([]);
 export const activeShopCards = writable<Card[]>([]);
+export const activeSpecialEvent = writable<SpecialEvent | null>(null);
+export const campfireReturnScreen = writable<GameFlowState | null>(null);
 
 let pendingFloorCompleted = false;
+let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
 
@@ -81,18 +95,48 @@ export function startNewRun(): void {
 function markRunCompleted(): void {
   const onboarding = get(onboardingState);
   incrementRunsCompleted();
+  recordRunForReview();
   if (!onboarding.hasCompletedOnboarding) {
     markOnboardingComplete();
   }
+
+  // Request notification permission after first completed run.
+  if (onboarding.runsCompleted === 0) {
+    void requestNotificationPermission();
+  }
+
+  // Reschedule notifications with current player state.
+  void rescheduleNotificationsFromPlayerState();
+}
+
+/** Builds NotificationPlayerData from current stores and triggers reschedule. */
+export function rescheduleNotificationsFromPlayerState(): void {
+  const save = get(playerSave);
+  if (!save) return;
+
+  const dueReviews = getDueReviews();
+
+  const playerData: NotificationPlayerData = {
+    currentStreak: save.stats.currentStreak,
+    dueReviewCount: dueReviews.length,
+    lastSessionDate: save.lastDiveDate ?? null,
+    nearMilestoneDomain: null,
+    factsToMilestone: Infinity,
+  };
+
+  void rescheduleNotifications(playerData);
 }
 
 function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
+  clearActiveRun();
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeSpecialEvent.set(null);
   pendingFloorCompleted = false;
+  pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
   gameFlowState.set('idle');
@@ -114,6 +158,14 @@ function applyRunCompletionBonuses(run: RunState): void {
 
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
   pendingDomainSelection = { primary, secondary };
+
+  // Skip archetype selection for runs 1-3; auto-assign 'balanced'
+  const onboarding = get(onboardingState);
+  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
+    onArchetypeSelected('balanced');
+    return;
+  }
+
   gameFlowState.set('archetypeSelection');
   currentScreen.set('archetypeSelection');
 }
@@ -141,6 +193,12 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     }
     playerSave.set(updatedSave);
     persistPlayer();
+  }
+
+  // Force Story Mode (explorer) for first N runs
+  const onboarding = get(onboardingState);
+  if (onboarding.runsCompleted < STORY_MODE_FORCED_RUNS) {
+    difficultyMode.set('explorer');
   }
 
   const run = createRunState(pending.primary, pending.secondary, {
@@ -186,7 +244,19 @@ function proceedAfterReward(): void {
 
   const floorToResolve = pendingClearedFloor || run.floor.currentFloor;
   if (pendingFloorCompleted) {
+    // After boss floor: show special event first, then retreat/delve
     if (isBossFloor(floorToResolve)) {
+      if (!pendingSpecialEvent) {
+        // Show special event before retreat/delve
+        pendingSpecialEvent = true;
+        const event = rollSpecialEvent();
+        activeSpecialEvent.set(event);
+        gameFlowState.set('specialEvent');
+        currentScreen.set('specialEvent');
+        return;
+      }
+      // Special event already resolved, now show retreat/delve
+      pendingSpecialEvent = false;
       gameFlowState.set('retreatOrDelve');
       currentScreen.set('retreatOrDelve');
       return;
@@ -196,6 +266,13 @@ function proceedAfterReward(): void {
     run.canary = resetCanaryFloor(run.canary);
     run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
     activeRunState.set(run);
+  }
+
+  // After encounter 2, auto-start encounter 3 (mini-boss/boss) — no room selection
+  if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
+    gameFlowState.set('combat');
+    currentScreen.set('combat');
+    return;
   }
 
   activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
@@ -302,6 +379,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;
   activeRunState.set(run);
+  autoSaveRun('cardReward');
   openCardReward();
 }
 
@@ -321,6 +399,7 @@ export function onCardRewardSelected(card: Card): void {
     },
   });
   activeCardRewardOptions.set([]);
+  autoSaveRun('roomSelection');
   proceedAfterReward();
 }
 
@@ -407,6 +486,8 @@ export function onRetreat(): void {
   recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
   applyRunCompletionBonuses(run);
   markRunCompleted();
+  // Boss kill review prompt (retreat always follows a boss floor)
+  void checkBossKillTrigger();
   const endData = endRun(run, 'retreat');
   finishRunAndReturnToHub(run, endData);
 }
@@ -475,6 +556,81 @@ export function onRoomSelected(room: RoomOption): void {
   }
 }
 
+export function onSpecialEventResolved(): void {
+  activeSpecialEvent.set(null);
+  proceedAfterReward();
+}
+
+export function openCampfire(): void {
+  const currentState = get(gameFlowState);
+  campfireReturnScreen.set(currentState);
+  // Auto-save when entering campfire
+  autoSaveRun('campfire');
+  gameFlowState.set('campfire');
+  currentScreen.set('campfire');
+}
+
+export function resumeFromCampfire(): void {
+  const returnState = get(campfireReturnScreen);
+  if (returnState) {
+    gameFlowState.set(returnState);
+    currentScreen.set(returnState as string as import('../ui/stores/gameState').Screen);
+  } else {
+    gameFlowState.set('combat');
+    currentScreen.set('combat');
+  }
+  campfireReturnScreen.set(null);
+}
+
+export function returnToHubFromCampfire(): void {
+  // Save run state so player can resume later
+  autoSaveRun('campfire');
+  campfireReturnScreen.set(null);
+  gameFlowState.set('idle');
+  currentScreen.set('hub');
+}
+
+export function abandonActiveRun(): void {
+  clearActiveRun();
+  activeRunState.set(null);
+  activeCardRewardOptions.set([]);
+  activeShopCards.set([]);
+  activeSpecialEvent.set(null);
+  pendingFloorCompleted = false;
+  pendingSpecialEvent = false;
+  pendingClearedFloor = 0;
+  pendingDomainSelection = null;
+  gameFlowState.set('idle');
+  currentScreen.set('hub');
+}
+
+export function checkAndResumeActiveRun(): boolean {
+  if (!hasActiveRun()) return false;
+  const saved = loadActiveRun();
+  if (!saved) return false;
+  // Restore is delegated to the caller (CardApp) which handles bridge restoration
+  return true;
+}
+
+export { hasActiveRun, loadActiveRun, clearActiveRun };
+
+/** Auto-save the current run state at a safe point. */
+function autoSaveRun(screen: string): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  try {
+    saveActiveRun({
+      version: 1,
+      savedAt: new Date().toISOString(),
+      runState: run,
+      currentScreen: screen,
+      roomOptions: get(activeRoomOptions),
+    });
+  } catch {
+    // Silently fail — save is best-effort
+  }
+}
+
 export function onMysteryResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -492,11 +648,14 @@ export function onRestResolved(): void {
 }
 
 export function returnToMenu(): void {
+  clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeSpecialEvent.set(null);
   pendingFloorCompleted = false;
+  pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
   gameFlowState.set('idle');
@@ -504,11 +663,14 @@ export function returnToMenu(): void {
 }
 
 export function playAgain(): void {
+  clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeSpecialEvent.set(null);
   pendingFloorCompleted = false;
+  pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
   gameFlowState.set('domainSelection');

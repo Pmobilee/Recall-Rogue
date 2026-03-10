@@ -1,5 +1,5 @@
 /**
- * Badge routes for the Terra Gacha server.
+ * Badge routes for the Recall Rogue server.
  * Phase 42.3: Social proof badges with public badge pages (Open Graph).
  *
  * Endpoints:
@@ -177,14 +177,14 @@ export async function badgeRoutes(fastify: FastifyInstance): Promise<void> {
 <head>
   <meta charset="utf-8">
   <meta property="og:title" content="${htmlEncode(safeName)} earned: ${htmlEncode(def.label)}">
-  <meta property="og:description" content="${htmlEncode(def.description)} \u2014 Terra Gacha">
+  <meta property="og:description" content="${htmlEncode(def.description)} \u2014 Recall Rogue">
   <meta property="og:image" content="${ogImageUrl}">
   <meta property="og:url" content="https://terragacha.com/badge/${encodeURIComponent(playerId)}/${encodeURIComponent(badgeId)}">
   <meta name="twitter:card" content="summary_large_image">
-  <title>${htmlEncode(safeName)} \u2014 ${htmlEncode(def.label)} | Terra Gacha</title>
+  <title>${htmlEncode(safeName)} \u2014 ${htmlEncode(def.label)} | Recall Rogue</title>
 </head>
 <body>
-  <p>Redirecting to Terra Gacha\u2026</p>
+  <p>Redirecting to Recall Rogue\u2026</p>
   <script>
     window.location = 'terragacha://badge/${encodeURIComponent(playerId)}/${encodeURIComponent(badgeId)}';
     setTimeout(function() { window.location = 'https://terragacha.com'; }, 2000);
@@ -218,7 +218,7 @@ export async function badgeRoutes(fastify: FastifyInstance): Promise<void> {
   <circle cx="100" cy="80" r="48" fill="#00CCFF22" stroke="#00CCFF" stroke-width="2"/>
   <path d="${def.iconSvgPath}" fill="#00CCFF" transform="translate(88,68) scale(1)"/>
   <text x="100" y="148" font-family="monospace" font-size="14" font-weight="bold" fill="#F0F4FF" text-anchor="middle">${htmlEncode(def.label)}</text>
-  <text x="100" y="168" font-family="monospace" font-size="11" fill="#8AA8CC" text-anchor="middle">TERRA GACHA</text>
+  <text x="100" y="168" font-family="monospace" font-size="11" fill="#8AA8CC" text-anchor="middle">RECALL ROGUE</text>
 </svg>`;
 
       reply.type("image/svg+xml").send(svg);

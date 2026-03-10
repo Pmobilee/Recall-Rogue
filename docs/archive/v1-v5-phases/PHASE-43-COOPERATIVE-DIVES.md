@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-Phase 43 adds two-player cooperative mining to Terra Gacha. Two players share a single mine
+Phase 43 adds two-player cooperative mining to Recall Rogue. Two players share a single mine
 instance, each taking on a distinct role (Miner or Scholar), and must work together to reach
 maximum depth and maximize loot. The server acts as the sole authority over mine state;
 clients predict locally and reconcile against server snapshots. A co-op loot ledger

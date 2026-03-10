@@ -1,4 +1,4 @@
-# Arcane Recall Architecture (V6 — Card Roguelite)
+# Recall Rogue Architecture (V6 — Card Roguelite)
 
 Every card is a fact. Learning IS gameplay.
 
@@ -91,6 +91,7 @@ Located in `src/services/`:
 | API client | `apiClient.ts` | EXISTS — reuse |
 | Profile mgmt | `profileService.ts` | EXISTS — reuse |
 | Haptics | `hapticService.ts` | EXISTS — reuse |
+| Push notifications | `notificationService.ts` | Built — 4 types, local scheduling via Capacitor |
 
 ### Data Layer
 
@@ -156,6 +157,11 @@ These systems transfer from the mining codebase with minimal changes:
 | Run end overlay | `src/ui/components/RunEndOverlay.svelte` | Built |
 | Enemy templates | `src/data/enemies.ts` | Built |
 | Balance constants | `src/data/balance.ts` (extended) | Built |
+| Run save/resume | `src/services/runSaveService.ts` | Built |
+| Special events data | `src/data/specialEvents.ts` | Built |
+| Campfire pause screen | `src/ui/components/CampfirePause.svelte` | Built |
+| Special event overlay | `src/ui/components/SpecialEventOverlay.svelte` | Built |
+| Push notifications | `src/services/notificationService.ts` | Built |
 
 ### Implemented (P0.5 — Mastery Tiers)
 
@@ -294,8 +300,9 @@ src/
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
     enemyManager.ts        — Creates enemies, floor scaling, intent rolling
-    floorManager.ts        — Floor/room/boss generation
+    floorManager.ts        — Floor/room/boss/mini-boss generation
     runManager.ts          — Run stats recording
+    runSaveService.ts      — Save/resume active run to localStorage
     juiceManager.ts        — Game juice effects (haptics, sounds, particles)
     domainResolver.ts      — Maps fact categories to card domains/types
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...

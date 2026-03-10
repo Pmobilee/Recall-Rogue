@@ -39,7 +39,7 @@ function structuredDataPlugin(): Plugin {
       const schema = JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'VideoGame',
-        'name': 'Terra Gacha',
+        'name': 'Recall Rogue',
         'url': 'https://terragacha.com/',
         'description': 'A spaced-repetition mining roguelite set on far-future Earth.',
         'genre': ['Educational', 'Roguelite', 'Puzzle'],
@@ -54,7 +54,7 @@ function structuredDataPlugin(): Plugin {
         },
         'author': {
           '@type': 'Organization',
-          'name': 'Terra Gacha Team',
+          'name': 'Recall Rogue Team',
         },
       })
       return html.replace(

@@ -515,7 +515,7 @@ Minor polish items. Address when bandwidth allows.
 
 ---
 
-### L4: Version String Shows "Terra Miner" Not "Terra Gacha"
+### L4: Version String Shows "Terra Miner" Not "Recall Rogue"
 
 | Field | Detail |
 |-------|--------|
@@ -524,9 +524,9 @@ Minor polish items. Address when bandwidth allows.
 | **Location** | Settings, About section |
 | **Fix Phase** | 66 |
 
-**Problem**: Shows "Terra Miner v0.1.0-alpha" but the game was renamed to "Terra Gacha".
+**Problem**: Shows "Terra Miner v0.1.0-alpha" but the game was renamed to "Recall Rogue".
 
-**Expected Behavior**: Update to "Terra Gacha v0.1.0-alpha". Also update any other references to "Terra Miner" in user-visible strings.
+**Expected Behavior**: Update to "Recall Rogue v0.1.0-alpha". Also update any other references to "Terra Miner" in user-visible strings.
 
 ---
 
@@ -693,7 +693,7 @@ Minor polish items. Address when bandwidth allows.
 2. Implement streak milestone auto-claim or add Claim button
 3. Remove or implement "Coming Soon" settings items
 4. Add empty-state message for 30-day activity chart
-5. Update version string from "Terra Miner" to "Terra Gacha"
+5. Update version string from "Terra Miner" to "Recall Rogue"
 6. Add empty-state for predicted retention when 0 facts mastered
 
 **Acceptance Criteria**:
@@ -701,7 +701,7 @@ Minor polish items. Address when bandwidth allows.
 - Achieved streak milestones are claimable or auto-claimed
 - No "Coming Soon" labels in settings
 - Empty charts show helpful messages instead of blank space
-- Version string reads "Terra Gacha"
+- Version string reads "Recall Rogue"
 - Predicted retention shows helpful message when no facts mastered
 
 ---

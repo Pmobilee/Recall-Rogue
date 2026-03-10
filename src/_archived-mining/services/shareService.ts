@@ -24,15 +24,15 @@ export async function sharePainting(painting: Painting & { unlocked: boolean }):
 
   try {
     const blob = await renderShareCard(painting)
-    const filename = `terra-gacha-${painting.id.replace('paint_', '')}.png`
+    const filename = `recall-rogue-${painting.id.replace('paint_', '')}.png`
 
     // Try native Web Share API (mobile browsers + Capacitor WebView)
     if (navigator.share && navigator.canShare) {
       const file = new File([blob], filename, { type: 'image/png' })
       if (navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: `Terra Gacha — ${painting.title}`,
-          text: `I unlocked the "${painting.title}" achievement in Terra Gacha! ${painting.description}`,
+          title: `Recall Rogue — ${painting.title}`,
+          text: `I unlocked the "${painting.title}" achievement in Recall Rogue! ${painting.description}`,
           files: [file],
         })
         return true
@@ -117,7 +117,7 @@ async function renderShareCard(painting: Painting & { unlocked: boolean }): Prom
   // Watermark
   ctx.fillStyle = '#2a3a4a'
   ctx.font = '11px monospace'
-  ctx.fillText('Terra Gacha · terra-gacha.app', CARD_W / 2, CARD_H - 20)
+  ctx.fillText('Recall Rogue · recall-rogue.app', CARD_W / 2, CARD_H - 20)
 
   return canvas.convertToBlob({ type: 'image/png' })
 }

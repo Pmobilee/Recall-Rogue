@@ -1,4 +1,4 @@
-# Terra Gacha — Browser Compatibility Matrix
+# Recall Rogue — Browser Compatibility Matrix
 
 Manual test matrix for verifying feature support before each production release.
 

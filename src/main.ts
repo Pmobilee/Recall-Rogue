@@ -188,6 +188,10 @@ async function bootGame(): Promise<void> {
       age_bracket: currentSave?.ageRating === 'kid' ? 'under_13' : (currentSave?.ageRating ?? 'unknown'),
     },
   })
+
+  // Reschedule local push notifications on every app open.
+  const { rescheduleNotificationsFromPlayerState } = await import('./services/gameFlowController')
+  rescheduleNotificationsFromPlayerState()
 }
 
 bootGame()

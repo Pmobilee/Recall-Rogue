@@ -1,6 +1,6 @@
 # Webhooks
 
-Receive real-time notifications when content events occur in the Terra Gacha ecosystem.
+Receive real-time notifications when content events occur in the Recall Rogue ecosystem.
 
 ## Supported Events
 
@@ -20,7 +20,7 @@ curl -X POST https://api.terragacha.com/api/webhooks \
   -H "X-Api-Key: tg_live_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
-    "endpointUrl": "https://yourserver.com/webhooks/terra-gacha",
+    "endpointUrl": "https://yourserver.com/webhooks/recall-rogue",
     "events": ["ugc.approved", "fact.updated"]
   }'
 ```
@@ -31,7 +31,7 @@ Response:
   "subscriptionId": "uuid-here",
   "secret": "64-char-hex-secret",
   "events": ["ugc.approved", "fact.updated"],
-  "endpointUrl": "https://yourserver.com/webhooks/terra-gacha"
+  "endpointUrl": "https://yourserver.com/webhooks/recall-rogue"
 }
 ```
 
@@ -39,9 +39,9 @@ Response:
 
 ## Verifying Signatures
 
-Every delivery includes an `X-TerraGacha-Signature` header:
+Every delivery includes an `X-RecallRogue-Signature` header:
 ```
-X-TerraGacha-Signature: sha256=abc123...
+X-RecallRogue-Signature: sha256=abc123...
 ```
 
 Verify it server-side using the subscription secret:
@@ -54,7 +54,7 @@ function verifySignature(body, secret, signatureHeader) {
 }
 
 // In your webhook handler (Express example):
-app.post('/webhooks/terra-gacha', express.raw({ type: 'application/json' }), (req, res) => {
+app.post('/webhooks/recall-rogue', express.raw({ type: 'application/json' }), (req, res) => {
   const sig = req.headers['x-terragacha-signature']
   if (!verifySignature(req.body, process.env.WEBHOOK_SECRET, sig)) {
     return res.status(401).send('Invalid signature')

@@ -22,7 +22,7 @@ Resolved by `profileService.getSaveKey()` in `src/services/profileService.ts`:
 - active profile: `terra_save_<profileId>`
 - no profile fallback: `terra_save`
 
-Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'terra-gacha-save'` as a legacy constant, but active save/read path uses `getActiveSaveKey()` -> `profileService.getSaveKey()`.
+Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save'` as a legacy constant, but active save/read path uses `getActiveSaveKey()` -> `profileService.getSaveKey()`.
 
 ### Mid-dive save key
 

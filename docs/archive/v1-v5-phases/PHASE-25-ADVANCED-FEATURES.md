@@ -199,7 +199,7 @@ A 7th dome room — the Gallery — that fills with milestone-earned pixel art p
 | "The Bone Archive" | Revive 30 total fossil species | A museum hall filled with fossil specimens | Fossils |
 | "The Knowledge Tree in Winter" | Have 100+ facts in "Known" tier | The Knowledge Tree in full bloom under snow | Learning |
 | "100 Days Underground" | Accumulate 100 total dive completions | A commemorative stamp-art style poster | Milestone |
-| "Terra Gacha Cartography" | Explore 10 different biomes | A pixel art map parchment showing all discovered biomes | Exploration |
+| "Recall Rogue Cartography" | Explore 10 different biomes | A pixel art map parchment showing all discovered biomes | Exploration |
 | "The Mnemonic" | Get any fact wrong 5+ times then master it | A painting that IS the mnemonic for that specific fact | Learning |
 | "Omniscient's Portrait" | Reach Omniscient status | Stylized portrait of the miner in golden light | Endgame |
 | "The Volcanic Dawn" | Complete 5 Volcanic biome dives | Sunrise over a volcanic landscape | Biomes |
@@ -791,7 +791,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
 ### What
 
-An annual published report with aggregate, anonymized player learning outcome data (DD-V2-179). This is both a credibility-building document for educators and parents AND a press-generating asset. The report positions Terra Gacha as a game that provably works educationally, not just claims to.
+An annual published report with aggregate, anonymized player learning outcome data (DD-V2-179). This is both a credibility-building document for educators and parents AND a press-generating asset. The report positions Recall Rogue as a game that provably works educationally, not just claims to.
 
 **Internal Learning Effectiveness Dashboard** (prerequisite — built in Phase 21.3):
 
@@ -815,7 +815,7 @@ The report is published as:
 **Report structure outline**:
 
 ```
-Terra Gacha Learning Effectiveness Report [Year]
+Recall Rogue Learning Effectiveness Report [Year]
 
 Executive Summary
   - Total anonymized player-years of data
@@ -835,7 +835,7 @@ Results
   - Platform comparison: web vs mobile retention rates
 
 Limitations
-  - Selection bias: players who use Terra Gacha self-select as motivated learners
+  - Selection bias: players who use Recall Rogue self-select as motivated learners
   - No control group (ethical constraints on withholding learning opportunities)
   - Fact quality variation: some categories have higher intrinsic memorability
 
@@ -928,23 +928,23 @@ In ArchiveRoom.svelte, the "GAIA's Report" tab shows per-player statistics in a 
 
 ### What
 
-A Teacher Dashboard web application at `dashboard.terragacha.com` that allows verified educators to manage a classroom's Terra Gacha usage (DD-V2-169). This is explicitly post-launch, built only after D30 >= 10% proves the consumer product retains players independently.
+A Teacher Dashboard web application at `dashboard.terragacha.com` that allows verified educators to manage a classroom's Recall Rogue usage (DD-V2-169). This is explicitly post-launch, built only after D30 >= 10% proves the consumer product retains players independently.
 
-**Class code system**: Teacher creates a class, gets a 6-character alphanumeric code (e.g., `STEM42`). Students enter the code in their Terra Gacha settings. Teacher can see aggregated (not individual-level) learning data for the class.
+**Class code system**: Teacher creates a class, gets a 6-character alphanumeric code (e.g., `STEM42`). Students enter the code in their Recall Rogue settings. Teacher can see aggregated (not individual-level) learning data for the class.
 
 **Teacher Dashboard wireframe description**:
 
 ```
 dashboard.terragacha.com — Teacher Login (email + password, educator verified)
 
-[Header]: Terra Gacha Teacher Dashboard | [Class: "Mr. Chen's Science Class (STEM42)"] | [Add Class] [Settings] [Logout]
+[Header]: Recall Rogue Teacher Dashboard | [Class: "Mr. Chen's Science Class (STEM42)"] | [Add Class] [Settings] [Logout]
 
 [Left Nav]:
   Classes
     ○ Mr. Chen's Science Class (STEM42) — 23 students
     ○ Add New Class
   Resources
-    ○ How to Use Terra Gacha in Class
+    ○ How to Use Recall Rogue in Class
     ○ Standards Alignment Guide
     ○ Printable Fact Sheets
 
@@ -976,10 +976,10 @@ dashboard.terragacha.com — Teacher Login (email + password, educator verified)
     [Link: Standards Alignment: NGSS Grade 8 Earth Science]
 ```
 
-**Educator verification**: Teachers must verify with a school email domain (`.edu`, `.k12.[state].us`, or equivalent). Terra Gacha manually reviews and approves educator accounts within 48 hours. No self-serve auto-approval.
+**Educator verification**: Teachers must verify with a school email domain (`.edu`, `.k12.[state].us`, or equivalent). Recall Rogue manually reviews and approves educator accounts within 48 hours. No self-serve auto-approval.
 
 **COPPA compliance**: For classrooms with students under 13, the Classroom License requires:
-- Parent/guardian consent collected by the school (Terra Gacha does not collect consent from parents directly in the classroom context — the school is the responsible party)
+- Parent/guardian consent collected by the school (Recall Rogue does not collect consent from parents directly in the classroom context — the school is the responsible party)
 - Student accounts in a verified classroom cannot be individually identified in the Teacher Dashboard — only aggregate data
 - Students under 13 in a classroom automatically have Kid Mode enabled and cannot disable it without parental PIN
 
@@ -1045,7 +1045,7 @@ When a teacher sets a category lock via the Dashboard, it pushes to all enrolled
 
 ### What
 
-A formal compliance audit and implementation review ensuring Terra Gacha meets all current and pending gacha regulation requirements (DD-V2-174). This is not a one-time task — it establishes an ongoing compliance monitoring process.
+A formal compliance audit and implementation review ensuring Recall Rogue meets all current and pending gacha regulation requirements (DD-V2-174). This is not a one-time task — it establishes an ongoing compliance monitoring process.
 
 **Gacha ethics compliance checklist** (to be reviewed at launch and annually):
 
@@ -1192,9 +1192,9 @@ When `sessionTimeLimitMinutes` is set:
 **Weekly learning summary email to parent**:
 
 ```
-Subject: [ChildName]'s Terra Gacha learning summary — this week
+Subject: [ChildName]'s Recall Rogue learning summary — this week
 
-This week, [ChildName] explored Terra Gacha and learned:
+This week, [ChildName] explored Recall Rogue and learned:
 
 FACTS DISCOVERED: [N]
   [3 example facts from this week — the highest Kid Wow Score ones]
@@ -1211,7 +1211,7 @@ SESSIONS THIS WEEK: [N] sessions, avg [N] minutes each
   [Progress bar: weekly time limit]
 
 Keep exploring,
-G.A.I.A. — Terra Gacha's AI companion
+G.A.I.A. — Recall Rogue's AI companion
 
 [Button: See full Learning Report]
 [Unsubscribe from learning summaries]

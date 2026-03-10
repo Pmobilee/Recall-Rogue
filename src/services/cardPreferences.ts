@@ -56,6 +56,18 @@ export const highContrastMode = persistedWritable<boolean>('card:highContrastMod
 export const reduceMotionMode = persistedWritable<boolean>('card:reduceMotionMode', false)
 export const onboardingState = persistedWritable<OnboardingState>('card:onboardingState', defaultOnboardingState)
 
+/** Display names for difficulty modes (internal IDs unchanged for save compat). */
+export const DIFFICULTY_DISPLAY_NAMES: Record<DifficultyMode, string> = {
+  explorer: 'Story Mode',
+  standard: 'Timed Mode',
+  scholar: 'Expert Mode',
+};
+
+/** Returns the user-facing display name for a difficulty mode. */
+export function getDifficultyDisplayName(mode: DifficultyMode): string {
+  return DIFFICULTY_DISPLAY_NAMES[mode];
+}
+
 export function markOnboardingComplete(): void {
   onboardingState.update((state) => ({
     ...state,

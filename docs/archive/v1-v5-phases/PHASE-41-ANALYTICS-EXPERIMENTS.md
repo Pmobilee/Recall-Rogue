@@ -1077,7 +1077,7 @@ export function renderDashboard(data: DashboardData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Terra Gacha — Analytics Dashboard</title>
+  <title>Recall Rogue — Analytics Dashboard</title>
   <style>
     body { font-family: monospace; background: #1a1a2e; color: #eee; margin: 0; padding: 24px; }
     h1 { color: #e94560; margin-bottom: 4px; }
@@ -1091,7 +1091,7 @@ export function renderDashboard(data: DashboardData): string {
   </style>
 </head>
 <body>
-  <h1>Terra Gacha — Analytics Dashboard</h1>
+  <h1>Recall Rogue — Analytics Dashboard</h1>
   <div class="ts">Generated: ${data.generatedAt} | Cohort: ${r.cohortDate}</div>
 
   <h2>Retention</h2>
@@ -1167,7 +1167,7 @@ fastify.get('/dashboard', async (request, reply) => {
 #### Acceptance criteria — 41.4
 
 - `GET /api/admin/dashboard` with a valid `X-Admin-Key` returns `Content-Type: text/html` and a
-  page containing the string "Terra Gacha — Analytics Dashboard".
+  page containing the string "Recall Rogue — Analytics Dashboard".
 - The HTML contains separate sections for Retention, Experiments, Funnels, and Player Segments.
 - Without a valid `X-Admin-Key`, returns HTTP 403.
 - A second request within 5 minutes returns the cached response (same body, no DB query).
@@ -1250,7 +1250,7 @@ export async function runRetentionAlertJob(): Promise<{ alerted: boolean; d7Rate
 async function fireRetentionAlert(actual: number, breachCount: number): Promise<void> {
   const pctActual = (actual * 100).toFixed(1)
   const pctTarget = (D7_TARGET * 100).toFixed(1)
-  const subject = `[Terra Gacha] D7 Retention Alert — ${pctActual}% (target: ${pctTarget}%)`
+  const subject = `[Recall Rogue] D7 Retention Alert — ${pctActual}% (target: ${pctTarget}%)`
   const body = [
     `D7 retention has fallen below the alert threshold.`,
     ``,
@@ -1675,7 +1675,7 @@ function get(path) {
   const { status, body, headers } = await get('/api/admin/dashboard')
   console.assert(status === 200, `Expected 200, got ${status}`)
   console.assert(headers['content-type']?.includes('text/html'), 'Expected text/html')
-  console.assert(body.includes('Terra Gacha'), 'Expected dashboard title in HTML')
+  console.assert(body.includes('Recall Rogue'), 'Expected dashboard title in HTML')
   console.assert(body.includes('Retention'), 'Expected Retention section')
   console.assert(body.includes('Experiments'), 'Expected Experiments section')
   console.assert(body.includes('Funnels'), 'Expected Funnels section')

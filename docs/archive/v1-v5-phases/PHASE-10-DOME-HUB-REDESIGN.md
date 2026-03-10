@@ -1979,7 +1979,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Clear lastBriefingDate so briefing shows
   await page.evaluateOnNewDocument(() => {
-    const key = 'terra-gacha-save'
+    const key = 'recall-rogue-save'
     try {
       const raw = localStorage.getItem(key)
       if (raw) {
@@ -2147,7 +2147,7 @@ Section 6 — Share Button:
 1. Create an offscreen `<canvas>` 600×400
 2. Draw a simple card: dark background, GAIA logo text, the 6 summary stats, accuracy bar, category dots
 3. Call `canvas.toDataURL('image/png')` to get a data URL
-4. Create a temporary `<a href={dataUrl} download="terra-gacha-report.png">` and programmatically click it
+4. Create a temporary `<a href={dataUrl} download="recall-rogue-report.png">` and programmatically click it
 5. On mobile where download is not supported, show a `<img src={dataUrl}>` in a modal for screenshot
 
 #### Step 5: Route in `src/App.svelte`

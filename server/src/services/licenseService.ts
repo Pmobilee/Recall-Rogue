@@ -45,7 +45,7 @@ export function generateAttribution(factIds: string[]): CcAttribution {
   const year = new Date().getFullYear()
   const shortLicenseName = licenseType === 'CC_BY_4' ? 'CC BY 4.0' : 'CC BY-NC 4.0'
   const attributionText =
-    `© ${year} Terra Gacha (terragacha.com). Licensed under ${shortLicenseName}.`
+    `© ${year} Recall Rogue (terragacha.com). Licensed under ${shortLicenseName}.`
 
   return {
     licenseType,
@@ -54,8 +54,8 @@ export function generateAttribution(factIds: string[]): CcAttribution {
     attributionText,
     attributionHtml:
       `<span xmlns:dct="http://purl.org/dc/terms/">` +
-      `Terra Gacha Facts</span> by ` +
-      `<a href="https://terragacha.com">Terra Gacha</a> is licensed under ` +
+      `Recall Rogue Facts</span> by ` +
+      `<a href="https://terragacha.com">Recall Rogue</a> is licensed under ` +
       `<a href="${licenseUrl}">${shortLicenseName}</a>.`,
     requiresShareAlike: false,
     requiresNonCommercial: licenseType === 'CC_BY_NC_4',

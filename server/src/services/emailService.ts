@@ -78,7 +78,7 @@ export async function sendEmail(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: config.fromEmail ?? 'GAIA <gaia@terra-gacha.app>',
+      from: config.fromEmail ?? 'GAIA <gaia@recall-rogue.app>',
       to: [payload.to],
       subject: payload.subject,
       html,
@@ -146,7 +146,7 @@ export async function sendPartnerWelcomeEmail(
   }
 
   const html = `
-    <h2>Terra Gacha Partner Application Received</h2>
+    <h2>Recall Rogue Partner Application Received</h2>
     <p>Thank you for registering <strong>${orgName}</strong> as an educational partner.</p>
     <p>Your application is under review. We will contact you within 2 business days.</p>
     <p>Questions? Email <a href="mailto:partners@terragacha.com">partners@terragacha.com</a></p>
@@ -159,9 +159,9 @@ export async function sendPartnerWelcomeEmail(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: config.fromEmail ?? 'GAIA <gaia@terra-gacha.app>',
+      from: config.fromEmail ?? 'GAIA <gaia@recall-rogue.app>',
       to: [contactEmail],
-      subject: 'Terra Gacha Partner Application Received',
+      subject: 'Recall Rogue Partner Application Received',
       html,
     }),
   })

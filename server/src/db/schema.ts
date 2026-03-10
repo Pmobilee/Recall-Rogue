@@ -1,5 +1,5 @@
 /**
- * Drizzle ORM schema definitions for the Terra Gacha database.
+ * Drizzle ORM schema definitions for the Recall Rogue database.
  * Uses SQLite dialect for development (better-sqlite3).
  * All timestamps are stored as Unix epoch integers (milliseconds).
  */

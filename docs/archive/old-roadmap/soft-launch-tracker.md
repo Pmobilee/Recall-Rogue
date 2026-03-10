@@ -1,4 +1,4 @@
-# Soft Launch Tracker — Terra Gacha
+# Soft Launch Tracker — Recall Rogue
 
 ## Launch Regions: Philippines, Malaysia, Colombia (DD-V2-167)
 

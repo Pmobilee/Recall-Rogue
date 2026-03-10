@@ -1,5 +1,5 @@
 /**
- * Full content generation pipeline for the Terra Gacha fact content engine.
+ * Full content generation pipeline for the Recall Rogue fact content engine.
  * Orchestrates 2-pass LLM generation (content + distractor validation),
  * fact extraction from raw passages, and DB persistence.
  */

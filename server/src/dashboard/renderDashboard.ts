@@ -29,7 +29,7 @@ export function renderDashboard(data: DashboardData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Terra Gacha — Analytics Dashboard</title>
+  <title>Recall Rogue — Analytics Dashboard</title>
   <style>
     body { font-family: monospace; background: #1a1a2e; color: #eee; margin: 0; padding: 24px; }
     h1 { color: #e94560; margin-bottom: 4px; }
@@ -43,7 +43,7 @@ export function renderDashboard(data: DashboardData): string {
   </style>
 </head>
 <body>
-  <h1>Terra Gacha — Analytics Dashboard</h1>
+  <h1>Recall Rogue — Analytics Dashboard</h1>
   <div class="ts">Generated: ${data.generatedAt} | Cohort: ${r.cohortDate}</div>
 
   <h2>Retention</h2>

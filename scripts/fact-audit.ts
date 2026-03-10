@@ -1,5 +1,5 @@
 /**
- * Fact Audit Report Script — Terra Gacha
+ * Fact Audit Report Script — Recall Rogue
  *
  * Reads all seed JSON files from src/data/seed/ and generates
  * a comprehensive audit report on fact quality and coverage.

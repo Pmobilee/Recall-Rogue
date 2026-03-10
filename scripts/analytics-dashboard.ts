@@ -1,5 +1,5 @@
 /**
- * Analytics Dashboard CLI — Terra Gacha
+ * Analytics Dashboard CLI — Recall Rogue
  *
  * Queries the SQLite analytics_events table and prints retention metrics
  * to stdout. Useful for quick local analysis without a BI tool.
@@ -16,7 +16,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const DB_PATH = resolve(__dirname, "../server/data/terra-gacha.db");
+const DB_PATH = resolve(__dirname, "../server/data/recall-rogue.db");
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 

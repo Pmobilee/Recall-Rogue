@@ -27,7 +27,7 @@
 
 <div class="profile-select-view">
   <div class="header">
-    <h1 class="title">Terra Gacha</h1>
+    <h1 class="title">Recall Rogue</h1>
     <p class="subtitle">Select your explorer</p>
   </div>
 

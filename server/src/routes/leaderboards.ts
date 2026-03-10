@@ -1,5 +1,5 @@
 /**
- * Leaderboard routes for the Terra Gacha server.
+ * Leaderboard routes for the Recall Rogue server.
  * Supports fetching top-50 per category and submitting scores.
  * Score submission and "my rankings" require JWT authentication.
  *

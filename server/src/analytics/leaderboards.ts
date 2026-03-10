@@ -1,5 +1,5 @@
 /**
- * Leaderboard score computation service for Terra Gacha.
+ * Leaderboard score computation service for Recall Rogue.
  * Runs nightly to aggregate player performance across all 6 categories and
  * upsert the results into the leaderboards table.
  *

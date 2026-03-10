@@ -201,24 +201,24 @@
 
 ---
 
-### 66.5 — Update Version String from "Terra Miner" to "Terra Gacha"
+### 66.5 — Update Version String from "Terra Miner" to "Recall Rogue"
 
 **Files to update:**
-- `src/ui/components/Settings.svelte` — line 593: `Terra Miner v0.1.0-alpha` -> `Terra Gacha v0.1.0-alpha`
+- `src/ui/components/Settings.svelte` — line 593: `Terra Miner v0.1.0-alpha` -> `Recall Rogue v0.1.0-alpha`
 - `src/game/systems/ParticleSystem.ts` — search for "Terra Miner" and update if user-visible
 - `src/services/audioService.ts` — search for "Terra Miner" and update if user-visible
-- `package.json` — `"name"` field (if it says "terra-miner", update to "terra-gacha")
+- `package.json` — `"name"` field (if it says "terra-miner", update to "recall-rogue")
 - `index.html` — `<title>` tag (if it says "Terra Miner")
 - Any `manifest.json` or `capacitor.config.ts` with the old name
 
 **Changes:**
 
 1. **Search all files** for the string "Terra Miner" (case-sensitive)
-2. **Replace with "Terra Gacha"** in all user-visible locations
+2. **Replace with "Recall Rogue"** in all user-visible locations
 3. **For internal/technical identifiers** (package.json `name`, directory names, import paths): leave as-is unless they appear in user-facing UI — changing `package.json` name can break scripts
 4. **Specifically update:**
-   - Settings About section: `Terra Gacha v0.1.0-alpha`
-   - HTML title: `<title>Terra Gacha</title>`
+   - Settings About section: `Recall Rogue v0.1.0-alpha`
+   - HTML title: `<title>Recall Rogue</title>`
    - Any manifest `short_name` or `name` fields
 
 **Implementation notes:**
@@ -227,8 +227,8 @@
 - Only change user-visible strings and metadata fields
 
 **Acceptance Criteria:**
-- [ ] Settings -> About shows "Terra Gacha" not "Terra Miner"
-- [ ] Browser tab title shows "Terra Gacha"
+- [ ] Settings -> About shows "Recall Rogue" not "Terra Miner"
+- [ ] Browser tab title shows "Recall Rogue"
 - [ ] No user-visible reference to "Terra Miner" remains
 - [ ] `package.json` name field updated if it was user-visible
 - [ ] Typecheck passes, build succeeds
@@ -284,7 +284,7 @@ All of the following MUST pass before Phase 66 is marked complete:
    - Navigate to Streak Panel -> achieved milestones are claimed with checkmarks
    - Navigate to Settings -> no "Coming Soon" labels visible
    - Navigate to GAIA Terminal -> Overview -> activity chart shows empty state message (for new/sparse saves)
-   - Navigate to Settings -> About -> reads "Terra Gacha"
+   - Navigate to Settings -> About -> reads "Recall Rogue"
    - Navigate to GAIA Terminal -> My Learning -> with 0 mastered facts shows message, not percentages
 5. **Dev preset testing:** Use `?skipOnboarding=true&devpreset=new_player` (0 facts, 0 streak) and `?skipOnboarding=true&devpreset=mid_game_3_rooms` (has data) to verify both empty and populated states
 

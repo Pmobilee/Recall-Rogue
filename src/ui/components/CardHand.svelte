@@ -4,6 +4,7 @@
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getCardbackUrl, hasCardback } from '../utils/cardbackManifest'
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { getTierDisplayName } from '../../services/tierDerivation'
 
   interface Props {
     cards: Card[]
@@ -80,7 +81,7 @@
 
   function getTierBadge(card: Card): string {
     if (card.tier === '1') return ''
-    return card.tier.toUpperCase()
+    return getTierDisplayName(card.tier)
   }
 
   function hasEnoughAp(card: Card): boolean {

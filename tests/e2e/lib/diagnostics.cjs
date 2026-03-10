@@ -27,7 +27,7 @@ module.exports = function attachDiagnostics(page) {
         })(),
         phaserCanvas: !!document.querySelector('canvas'),
         canvasDimensions: (() => { const c = document.querySelector('canvas'); return c ? `${c.width}x${c.height}` : null })(),
-        hasSave: !!localStorage.getItem('terra-gacha-save'),
+        hasSave: !!localStorage.getItem('recall-rogue-save'),
         ageBracket: localStorage.getItem('terra_age_bracket'),
         isGuest: localStorage.getItem('terra_guest_mode'),
       }))

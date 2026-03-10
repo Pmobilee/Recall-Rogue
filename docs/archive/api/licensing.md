@@ -17,18 +17,18 @@ You are free to:
 - **Adapt** — remix, transform, and build upon the material for any purpose, **including commercial**
 
 Under the following terms:
-- **Attribution** — You must give appropriate credit to Terra Gacha, provide a link to the
+- **Attribution** — You must give appropriate credit to Recall Rogue, provide a link to the
   license, and indicate if changes were made.
 
 ### Attribution Template
 
 ```
-© {year} Terra Gacha (terragacha.com). Licensed under CC BY 4.0.
+© {year} Recall Rogue (terragacha.com). Licensed under CC BY 4.0.
 ```
 
 Or in HTML:
 ```html
-<span>Facts from <a href="https://terragacha.com">Terra Gacha</a>
+<span>Facts from <a href="https://terragacha.com">Recall Rogue</a>
 — <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
 ```
 

@@ -13,12 +13,12 @@ import { generateAnnualReport } from '../services/reportGenerator.js'
  * Writes the report JSON to the configured output path.
  *
  * @param year       - 4-digit year to report on (defaults to current year).
- * @param outputPath - File path for the output JSON (defaults to /tmp/terra-gacha-annual-report.json).
+ * @param outputPath - File path for the output JSON (defaults to /tmp/recall-rogue-annual-report.json).
  * @returns The generated report object.
  */
 export async function runAnnualReportJob(
   year = new Date().getFullYear().toString(),
-  outputPath = '/tmp/terra-gacha-annual-report.json',
+  outputPath = '/tmp/recall-rogue-annual-report.json',
 ): Promise<ReturnType<typeof generateAnnualReport>> {
   console.log(`[AnnualReportJob] Generating ${year} effectiveness report...`)
 
@@ -35,7 +35,7 @@ export async function runAnnualReportJob(
 // CLI entry point: node dist/jobs/annualReportJob.js [year] [outputPath]
 if (process.argv[1]?.endsWith('annualReportJob.js')) {
   const year       = process.argv[2] ?? new Date().getFullYear().toString()
-  const outputPath = process.argv[3] ?? '/tmp/terra-gacha-annual-report.json'
+  const outputPath = process.argv[3] ?? '/tmp/recall-rogue-annual-report.json'
   runAnnualReportJob(year, outputPath).catch((err) => {
     console.error('[AnnualReportJob] Fatal error:', err)
     process.exit(1)

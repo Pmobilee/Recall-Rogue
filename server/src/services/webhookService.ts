@@ -77,8 +77,8 @@ async function deliverWithRetry(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-TerraGacha-Signature': `sha256=${signature}`,
-        'X-TerraGacha-Attempt': String(attempt + 1)
+        'X-RecallRogue-Signature': `sha256=${signature}`,
+        'X-RecallRogue-Attempt': String(attempt + 1)
       },
       body,
       signal: AbortSignal.timeout(10_000)

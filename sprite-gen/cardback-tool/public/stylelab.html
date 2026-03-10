@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Rogue — Style Lab</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a1a2e;
+    border-bottom: 2px solid #333;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    color: #4ecca3;
+    white-space: nowrap;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: #88aadd;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #446;
+    border-radius: 6px;
+    background: #1a2a4a;
+  }
+  .nav-link:hover { background: #2a3a5a; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid #444;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-start {
+    background: #1a4a3a;
+    color: #4ecca3;
+    border-color: #2a6a4a;
+  }
+  .btn-start:hover:not(:disabled) { background: #2a5a4a; }
+
+  .btn-stop {
+    background: #4a1a1a;
+    color: #ff6666;
+    border-color: #6a2a2a;
+    display: none;
+  }
+  .btn-stop:hover:not(:disabled) { background: #5a2a2a; }
+  .btn-stop.visible { display: inline-block; }
+
+  .btn-force-quit {
+    background: #6a1a1a;
+    color: #ff4444;
+    border-color: #8a2a2a;
+  }
+  .btn-force-quit:hover:not(:disabled) { background: #7a2a2a; }
+
+  .btn-toggle-panel {
+    background: #2a2a4a;
+    color: #aabbdd;
+    border-color: #446;
+  }
+  .btn-toggle-panel:hover { background: #3a3a5a; }
+
+  /* Progress bar */
+  .progress-section {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .progress-section.active { display: flex; }
+
+  .progress-bar-container {
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    height: 20px;
+    background: #222;
+    border-radius: 10px;
+    border: 1px solid #444;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2a6a4a, #4ecca3);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+
+  /* Config panels */
+  .config-panel {
+    display: none;
+    background: #151525;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .config-panel.open { display: block; }
+
+  .config-panel h3 {
+    font-size: 0.9rem;
+    color: #88aadd;
+    margin-bottom: 8px;
+  }
+
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 6px;
+  }
+
+  .config-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .config-item:hover { border-color: #555; }
+  .config-item.active { border-color: #4ecca3; background: #1a2a2a; }
+
+  .config-item input[type="checkbox"] {
+    accent-color: #4ecca3;
+    cursor: pointer;
+  }
+
+  .config-item .item-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .config-item .item-params {
+    color: #777;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .select-all-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .select-all-bar button {
+    padding: 3px 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.75rem;
+  }
+  .select-all-bar button:hover { background: #333; }
+
+  /* Comparison Grid */
+  .grid-wrapper {
+    overflow: auto;
+    padding: 10px;
+    max-height: calc(100vh - 180px);
+  }
+
+  .comparison-grid {
+    display: grid;
+    border-collapse: collapse;
+    min-width: max-content;
+  }
+
+  .grid-corner {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 8px;
+    min-width: 180px;
+    font-size: 0.75rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .col-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #aabbdd;
+    min-width: 162px;
+    max-width: 162px;
+    writing-mode: horizontal-tb;
+    line-height: 1.3;
+  }
+  .col-header .style-params {
+    font-size: 0.6rem;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .row-header {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    color: #ccc;
+    min-width: 180px;
+    max-width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+  .row-header .fact-id {
+    color: #4ecca3;
+    font-weight: 600;
+    font-size: 0.68rem;
+  }
+  .row-header .fact-statement {
+    color: #999;
+    font-size: 0.65rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .grid-cell {
+    border: 1px solid #333;
+    padding: 4px;
+    min-width: 162px;
+    max-width: 162px;
+    height: 216px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.15s;
+  }
+  .grid-cell:hover { border-color: #4ecca3; }
+
+  .grid-cell img {
+    max-width: 150px;
+    max-height: 200px;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .cell-placeholder {
+    color: #444;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .cell-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #333;
+    border-top-color: #4ecca3;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .cell-error {
+    color: #ff6666;
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  /* Lightbox */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lightbox-overlay.open { display: flex; }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    image-rendering: pixelated;
+    border: 2px solid #444;
+    border-radius: 8px;
+  }
+
+  .lightbox-info {
+    color: #ccc;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 80vw;
+  }
+  .lightbox-info .lb-fact { color: #4ecca3; font-weight: 600; }
+  .lightbox-info .lb-style { color: #88aadd; }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { color: #fff; }
+
+  .lightbox-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .lightbox-nav button {
+    padding: 6px 16px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #222;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .lightbox-nav button:hover { background: #333; color: #fff; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #555;
+  }
+  .empty-state h2 { color: #666; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-left">
+      <h1>Recall Rogue &mdash; Style Lab</h1>
+      <a class="nav-link" href="/">Dashboard</a>
+      <a class="nav-link" href="/promptlab.html">Prompt Lab</a>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn btn-start" id="btn-start">Start Generation</button>
+    <button class="btn btn-stop" id="btn-stop">Stop</button>
+    <button class="btn btn-force-quit" id="btn-force-quit">Force Quit</button>
+    <button class="btn btn-toggle-panel" id="btn-toggle-styles">Styles (15)</button>
+    <button class="btn btn-toggle-panel" id="btn-toggle-cards">Cards (10)</button>
+  </div>
+  <div class="progress-section" id="progress-section">
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+    <span class="progress-text" id="progress-text">0 / 0</span>
+  </div>
+  <div class="config-panel" id="styles-panel">
+    <h3>Style Presets</h3>
+    <div class="select-all-bar">
+      <button id="styles-select-all">Select All</button>
+      <button id="styles-select-none">Select None</button>
+    </div>
+    <div class="config-grid" id="styles-grid"></div>
+  </div>
+  <div class="config-panel" id="cards-panel">
+    <h3>Test Cards</h3>
+    <div class="select-all-bar">
+      <button id="cards-select-all">Select All</button>
+      <button id="cards-select-none">Select None</button>
+    </div>
+    <div class="config-grid" id="cards-grid"></div>
+  </div>
+</header>
+
+<div class="grid-wrapper" id="grid-wrapper">
+  <div class="empty-state" id="empty-state">
+    <h2>Style Lab</h2>
+    <p>Compare 15 style presets (varying dungeon ambiance levels) across 10 test cards. Click "Start Generation" to begin.</p>
+    <p style="color:#444;margin-top:8px;">Loading presets and cards...</p>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <div class="lightbox-info" id="lightbox-info"></div>
+  <div class="lightbox-nav">
+    <button id="lb-prev-style">&larr; Prev Style</button>
+    <button id="lb-next-style">Next Style &rarr;</button>
+    <button id="lb-prev-card">&uarr; Prev Card</button>
+    <button id="lb-next-card">Next Card &darr;</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // --- State ---
+  let presets = [];
+  let testCards = [];
+  let activeStyleIds = new Set();
+  let activeCardIds = new Set();
+  let results = {}; // { 'factId:styleId': { status, imageUrl } }
+  let sseSource = null;
+  let running = false;
+  let lightboxFactId = null;
+  let lightboxStyleId = null;
+
+  // --- DOM Refs ---
+  const btnStart = document.getElementById('btn-start');
+  const btnStop = document.getElementById('btn-stop');
+  const btnForceQuit = document.getElementById('btn-force-quit');
+  const btnToggleStyles = document.getElementById('btn-toggle-styles');
+  const btnToggleCards = document.getElementById('btn-toggle-cards');
+  const progressSection = document.getElementById('progress-section');
+  const progressBarFill = document.getElementById('progress-bar-fill');
+  const progressText = document.getElementById('progress-text');
+  const stylesPanel = document.getElementById('styles-panel');
+  const cardsPanel = document.getElementById('cards-panel');
+  const stylesGrid = document.getElementById('styles-grid');
+  const cardsGrid = document.getElementById('cards-grid');
+  const gridWrapper = document.getElementById('grid-wrapper');
+  const emptyState = document.getElementById('empty-state');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxInfo = document.getElementById('lightbox-info');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  // --- API Helpers ---
+  async function api(path, options) {
+    const res = await fetch(path, options);
+    return res.json();
+  }
+
+  // --- Load Presets ---
+  async function loadPresets() {
+    try {
+      presets = await api('/api/stylelab/presets');
+      activeStyleIds = new Set(presets.map(p => p.id));
+      renderStylesPanel();
+      updateStyleCount();
+    } catch (e) {
+      console.error('Failed to load presets:', e);
+    }
+  }
+
+  // --- Load Test Cards ---
+  async function loadTestCards() {
+    try {
+      testCards = await api('/api/stylelab/test-cards');
+      activeCardIds = new Set(testCards.map(c => c.fact_id));
+      renderCardsPanel();
+      updateCardCount();
+    } catch (e) {
+      console.error('Failed to load test cards:', e);
+    }
+  }
+
+  // --- Load existing results ---
+  async function loadResults() {
+    try {
+      const res = await api('/api/stylelab/results');
+      for (const r of res) {
+        const key = r.fact_id + ':' + r.style_id;
+        results[key] = {
+          status: r.status,
+          imageUrl: r.status === 'done' ? '/api/stylelab/image/' + encodeURIComponent(r.fact_id) + '/' + encodeURIComponent(r.style_id) : null
+        };
+      }
+    } catch (e) {
+      console.error('Failed to load results:', e);
+    }
+  }
+
+  // --- Render Config Panels ---
+  function renderStylesPanel() {
+    stylesGrid.innerHTML = '';
+    for (const preset of presets) {
+      const active = activeStyleIds.has(preset.id);
+      const params = [];
+      if (preset.loraStrength !== 0.3) params.push('LoRA:' + preset.loraStrength);
+      if (preset.numColors !== 16) params.push(preset.numColors === 0 ? 'NoPix' : preset.numColors + 'col');
+      if (preset.pixelationSize !== 480 && preset.numColors > 0) params.push('Pix:' + preset.pixelationSize);
+      if (preset.guidance !== 4) params.push('G:' + preset.guidance);
+
+      const item = document.createElement('div');
+      item.className = 'config-item' + (active ? ' active' : '');
+      item.innerHTML =
+        '<input type="checkbox" data-style-id="' + preset.id + '" ' + (active ? 'checked' : '') + '>' +
+        '<span class="item-name">' + escapeHTML(preset.name) + '</span>' +
+        (params.length > 0 ? '<span class="item-params">' + params.join(' ') + '</span>' : '');
+      item.addEventListener('click', function(e) {
+        if (e.target.tagName === 'INPUT') return;
+        const cb = item.querySelector('input');
+        cb.checked = !cb.checked;
+        cb.dispatchEvent(new Event('change'));
+      });
+      item.querySelector('input').addEventListener('change', function() {
+        if (this.checked) {
+          activeStyleIds.add(preset.id);
+          item.classList.add('active');
+        } else {
+          activeStyleIds.delete(preset.id);
+          item.classList.remove('active');
+        }
+        updateStyleCount();
+        renderComparisonGrid();
+      });
+      stylesGrid.appendChild(item);
+    }
+  }
+
+  function renderCardsPanel() {
+    cardsGrid.innerHTML = '';
+    for (const card of testCards) {
+      const active = activeCardIds.has(card.fact_id);
+      const item = document.createElement('div');
+      item.className = 'config-item' + (active ? ' active' : '');
+      item.innerHTML =
+        '<input type="checkbox" data-card-id="' + card.fact_id + '" ' + (active ? 'checked' : '') + '>' +
+        '<span class="item-name">' + escapeHTML(card.fact_id) + '</span>' +
+        '<span class="item-params">' + escapeHTML((card.statement || '').substring(0, 40)) + '</span>';
+      item.addEventListener('click', function(e) {
+        if (e.target.tagName === 'INPUT') return;
+        const cb = item.querySelector('input');
+        cb.checked = !cb.checked;
+        cb.dispatchEvent(new Event('change'));
+      });
+      item.querySelector('input').addEventListener('change', function() {
+        if (this.checked) {
+          activeCardIds.add(card.fact_id);
+          item.classList.add('active');
+        } else {
+          activeCardIds.delete(card.fact_id);
+          item.classList.remove('active');
+        }
+        updateCardCount();
+        renderComparisonGrid();
+      });
+      cardsGrid.appendChild(item);
+    }
+  }
+
+  function updateStyleCount() {
+    btnToggleStyles.textContent = 'Styles (' + activeStyleIds.size + ')';
+  }
+  function updateCardCount() {
+    btnToggleCards.textContent = 'Cards (' + activeCardIds.size + ')';
+  }
+
+  // --- Toggle Panels ---
+  btnToggleStyles.addEventListener('click', function() {
+    stylesPanel.classList.toggle('open');
+    cardsPanel.classList.remove('open');
+  });
+  btnToggleCards.addEventListener('click', function() {
+    cardsPanel.classList.toggle('open');
+    stylesPanel.classList.remove('open');
+  });
+
+  // Select all/none
+  document.getElementById('styles-select-all').addEventListener('click', function() {
+    activeStyleIds = new Set(presets.map(p => p.id));
+    renderStylesPanel();
+    updateStyleCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('styles-select-none').addEventListener('click', function() {
+    activeStyleIds.clear();
+    renderStylesPanel();
+    updateStyleCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('cards-select-all').addEventListener('click', function() {
+    activeCardIds = new Set(testCards.map(c => c.fact_id));
+    renderCardsPanel();
+    updateCardCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('cards-select-none').addEventListener('click', function() {
+    activeCardIds.clear();
+    renderCardsPanel();
+    updateCardCount();
+    renderComparisonGrid();
+  });
+
+  // --- Comparison Grid ---
+  function renderComparisonGrid() {
+    const activeStyles = presets.filter(p => activeStyleIds.has(p.id));
+    const activeCards = testCards.filter(c => activeCardIds.has(c.fact_id));
+
+    if (activeStyles.length === 0 || activeCards.length === 0) {
+      gridWrapper.innerHTML = '<div class="empty-state"><h2>No items selected</h2><p>Select at least one style and one card to see the comparison grid.</p></div>';
+      return;
+    }
+
+    const cols = activeStyles.length + 1; // +1 for row header
+
+    let html = '<div class="comparison-grid" style="grid-template-columns: 180px repeat(' + activeStyles.length + ', 162px);">';
+
+    // Corner cell
+    html += '<div class="grid-corner">Card \\ Style</div>';
+
+    // Column headers
+    for (const style of activeStyles) {
+      const params = [];
+      if (style.loraStrength !== 0.3) params.push('LoRA ' + style.loraStrength);
+      if (style.numColors !== 16) params.push(style.numColors === 0 ? 'No Pix' : style.numColors + ' colors');
+      if (style.pixelationSize !== 480 && style.numColors > 0) params.push('Pix ' + style.pixelationSize);
+      if (style.guidance !== 4) params.push('Guide ' + style.guidance);
+
+      html += '<div class="col-header">' +
+        escapeHTML(style.name) +
+        (params.length > 0 ? '<div class="style-params">' + params.join(' | ') + '</div>' : '') +
+        '</div>';
+    }
+
+    // Rows
+    for (const card of activeCards) {
+      // Row header
+      html += '<div class="row-header">' +
+        '<span class="fact-id">' + escapeHTML(card.fact_id) + '</span>' +
+        '<span class="fact-statement">' + escapeHTML(card.statement || '') + '</span>' +
+        '</div>';
+
+      // Cells
+      for (const style of activeStyles) {
+        const key = card.fact_id + ':' + style.id;
+        const result = results[key];
+        let cellContent;
+
+        if (result && result.status === 'done' && result.imageUrl) {
+          cellContent = '<img src="' + result.imageUrl + '?t=' + Date.now() + '" alt="' + escapeHTML(card.fact_id + ' / ' + style.name) + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">' +
+            '<span class="cell-error" style="display:none">Load error</span>';
+        } else if (result && result.status === 'generating') {
+          cellContent = '<div class="cell-spinner"></div>';
+        } else if (result && result.status === 'error') {
+          cellContent = '<span class="cell-error">Failed</span>';
+        } else {
+          cellContent = '<span class="cell-placeholder">&#x2014;</span>';
+        }
+
+        html += '<div class="grid-cell" data-fact-id="' + card.fact_id + '" data-style-id="' + style.id + '">' +
+          cellContent + '</div>';
+      }
+    }
+
+    html += '</div>';
+    gridWrapper.innerHTML = html;
+
+    // Add click handlers
+    gridWrapper.querySelectorAll('.grid-cell').forEach(function(cell) {
+      cell.addEventListener('click', function() {
+        const fid = cell.dataset.factId;
+        const sid = cell.dataset.styleId;
+        const key = fid + ':' + sid;
+        const r = results[key];
+        if (r && r.status === 'done' && r.imageUrl) {
+          openLightbox(fid, sid);
+        }
+      });
+    });
+  }
+
+  // --- Update single cell ---
+  function updateCell(factId, styleId) {
+    const cell = gridWrapper.querySelector('.grid-cell[data-fact-id="' + factId + '"][data-style-id="' + styleId + '"]');
+    if (!cell) return;
+
+    const key = factId + ':' + styleId;
+    const result = results[key];
+
+    if (result && result.status === 'done' && result.imageUrl) {
+      cell.innerHTML = '<img src="' + result.imageUrl + '?t=' + Date.now() + '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">' +
+        '<span class="cell-error" style="display:none">Load error</span>';
+      cell.addEventListener('click', function() { openLightbox(factId, styleId); });
+    } else if (result && result.status === 'generating') {
+      cell.innerHTML = '<div class="cell-spinner"></div>';
+    } else if (result && result.status === 'error') {
+      cell.innerHTML = '<span class="cell-error">Failed</span>';
+    }
+  }
+
+  // --- Start Generation ---
+  btnStart.addEventListener('click', async function() {
+    const cardIds = Array.from(activeCardIds);
+    const styleIds = Array.from(activeStyleIds);
+
+    if (cardIds.length === 0 || styleIds.length === 0) {
+      alert('Select at least one card and one style preset.');
+      return;
+    }
+
+    btnStart.disabled = true;
+    btnStop.classList.add('visible');
+    progressSection.classList.add('active');
+    progressBarFill.style.width = '0%';
+    progressText.textContent = 'Starting...';
+    running = true;
+
+    // Render grid now
+    renderComparisonGrid();
+
+    try {
+      await api('/api/stylelab/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardIds, styleIds }),
+      });
+    } catch (err) {
+      console.error('Start failed:', err);
+      resetUI();
+      return;
+    }
+
+    // Connect SSE
+    connectSSE();
+  });
+
+  function connectSSE() {
+    if (sseSource) sseSource.close();
+    sseSource = new EventSource('/api/stylelab/status');
+
+    sseSource.onmessage = function(e) {
+      let data;
+      try { data = JSON.parse(e.data); } catch { return; }
+
+      if (data.type === 'progress') {
+        const pct = data.total > 0 ? Math.round((data.completed / data.total) * 100) : 0;
+        progressBarFill.style.width = pct + '%';
+        progressText.textContent = data.completed + ' / ' + data.total +
+          (data.currentFactId ? ' — ' + data.currentFactId + ' / ' + data.currentStyleId : '');
+
+        if (data.currentFactId && data.currentStyleId) {
+          const key = data.currentFactId + ':' + data.currentStyleId;
+          results[key] = { status: 'generating', imageUrl: null };
+          updateCell(data.currentFactId, data.currentStyleId);
+        }
+      }
+
+      if (data.type === 'image_done') {
+        const key = data.factId + ':' + data.styleId;
+        results[key] = { status: 'done', imageUrl: data.imageUrl };
+        updateCell(data.factId, data.styleId);
+      }
+
+      if (data.type === 'image_error') {
+        const key = data.factId + ':' + data.styleId;
+        results[key] = { status: 'error', imageUrl: null };
+        updateCell(data.factId, data.styleId);
+      }
+
+      if (data.type === 'done') {
+        closeSSE();
+        resetUI();
+        progressText.textContent = 'Complete! ' + data.completed + ' done, ' + data.failed + ' failed';
+        setTimeout(function() { progressSection.classList.remove('active'); }, 5000);
+      }
+    };
+
+    sseSource.onerror = function() {
+      closeSSE();
+      resetUI();
+      progressText.textContent = 'Connection lost';
+      setTimeout(function() { progressSection.classList.remove('active'); }, 3000);
+    };
+  }
+
+  // --- Stop ---
+  btnStop.addEventListener('click', async function() {
+    try {
+      await api('/api/stylelab/stop', { method: 'POST' });
+    } catch (e) {
+      console.error('Stop failed:', e);
+    }
+    closeSSE();
+    resetUI();
+    progressText.textContent = 'Stopped';
+    setTimeout(function() { progressSection.classList.remove('active'); }, 2000);
+  });
+
+  // --- Force Quit ---
+  btnForceQuit.addEventListener('click', async function() {
+    btnForceQuit.disabled = true;
+    btnForceQuit.textContent = 'Killing...';
+    try {
+      await api('/api/stylelab/stop', { method: 'POST' });
+      await api('/api/force-quit', { method: 'POST' });
+    } catch (e) {
+      console.error('Force quit failed:', e);
+    }
+    closeSSE();
+    resetUI();
+    progressSection.classList.add('active');
+    progressText.textContent = 'Force stopped';
+    setTimeout(function() { progressSection.classList.remove('active'); }, 3000);
+    btnForceQuit.textContent = 'Force Quit';
+    btnForceQuit.disabled = false;
+  });
+
+  function closeSSE() {
+    if (sseSource) { sseSource.close(); sseSource = null; }
+  }
+
+  function resetUI() {
+    running = false;
+    btnStart.disabled = false;
+    btnStop.classList.remove('visible');
+  }
+
+  // --- Lightbox ---
+  function openLightbox(factId, styleId) {
+    lightboxFactId = factId;
+    lightboxStyleId = styleId;
+
+    const key = factId + ':' + styleId;
+    const r = results[key];
+    if (!r || !r.imageUrl) return;
+
+    lightboxImg.src = r.imageUrl + '?t=' + Date.now();
+
+    const style = presets.find(p => p.id === styleId);
+    const card = testCards.find(c => c.fact_id === factId);
+
+    lightboxInfo.innerHTML =
+      '<span class="lb-fact">' + escapeHTML(factId) + '</span>' +
+      (card ? ' — ' + escapeHTML((card.statement || '').substring(0, 60)) : '') +
+      '<br><span class="lb-style">' + escapeHTML(style ? style.name : styleId) + '</span>';
+
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    lightboxFactId = null;
+    lightboxStyleId = null;
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Lightbox navigation
+  function getActiveStyles() { return presets.filter(p => activeStyleIds.has(p.id)); }
+  function getActiveCards() { return testCards.filter(c => activeCardIds.has(c.fact_id)); }
+
+  document.getElementById('lb-prev-style').addEventListener('click', function() {
+    const styles = getActiveStyles();
+    const idx = styles.findIndex(s => s.id === lightboxStyleId);
+    if (idx > 0) openLightbox(lightboxFactId, styles[idx - 1].id);
+  });
+  document.getElementById('lb-next-style').addEventListener('click', function() {
+    const styles = getActiveStyles();
+    const idx = styles.findIndex(s => s.id === lightboxStyleId);
+    if (idx < styles.length - 1) openLightbox(lightboxFactId, styles[idx + 1].id);
+  });
+  document.getElementById('lb-prev-card').addEventListener('click', function() {
+    const cards = getActiveCards();
+    const idx = cards.findIndex(c => c.fact_id === lightboxFactId);
+    if (idx > 0) openLightbox(cards[idx - 1].fact_id, lightboxStyleId);
+  });
+  document.getElementById('lb-next-card').addEventListener('click', function() {
+    const cards = getActiveCards();
+    const idx = cards.findIndex(c => c.fact_id === lightboxFactId);
+    if (idx < cards.length - 1) openLightbox(cards[idx + 1].fact_id, lightboxStyleId);
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') document.getElementById('lb-prev-style').click();
+    if (e.key === 'ArrowRight') document.getElementById('lb-next-style').click();
+    if (e.key === 'ArrowUp') { e.preventDefault(); document.getElementById('lb-prev-card').click(); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); document.getElementById('lb-next-card').click(); }
+  });
+
+  // --- Helpers ---
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // --- Init ---
+  async function init() {
+    await Promise.all([loadPresets(), loadTestCards()]);
+    await loadResults();
+    renderComparisonGrid();
+  }
+  init();
+})();
+</script>
+</body>
+</html>

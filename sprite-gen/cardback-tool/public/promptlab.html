@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Rogue — Prompt Lab</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a1a2e;
+    border-bottom: 2px solid #333;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    color: #4ecca3;
+    white-space: nowrap;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: #88aadd;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #446;
+    border-radius: 6px;
+    background: #1a2a4a;
+  }
+  .nav-link:hover { background: #2a3a5a; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid #444;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-start {
+    background: #1a4a3a;
+    color: #4ecca3;
+    border-color: #2a6a4a;
+  }
+  .btn-start:hover:not(:disabled) { background: #2a5a4a; }
+
+  .btn-stop {
+    background: #4a1a1a;
+    color: #ff6666;
+    border-color: #6a2a2a;
+    display: none;
+  }
+  .btn-stop:hover:not(:disabled) { background: #5a2a2a; }
+  .btn-stop.visible { display: inline-block; }
+
+  .btn-force-quit {
+    background: #6a1a1a;
+    color: #ff4444;
+    border-color: #8a2a2a;
+  }
+  .btn-force-quit:hover:not(:disabled) { background: #7a2a2a; }
+
+  .btn-toggle-panel {
+    background: #2a2a4a;
+    color: #aabbdd;
+    border-color: #446;
+  }
+  .btn-toggle-panel:hover { background: #3a3a5a; }
+
+  /* Progress bar */
+  .progress-section {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .progress-section.active { display: flex; }
+
+  .progress-bar-container {
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    height: 20px;
+    background: #222;
+    border-radius: 10px;
+    border: 1px solid #444;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2a6a4a, #4ecca3);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+
+  /* Config panels */
+  .config-panel {
+    display: none;
+    background: #151525;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .config-panel.open { display: block; }
+
+  .config-panel h3 {
+    font-size: 0.9rem;
+    color: #88aadd;
+    margin-bottom: 8px;
+  }
+
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 6px;
+  }
+
+  .config-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .config-item:hover { border-color: #555; }
+  .config-item.active { border-color: #4ecca3; background: #1a2a2a; }
+
+  .config-item input[type="checkbox"] {
+    accent-color: #4ecca3;
+    cursor: pointer;
+  }
+
+  .config-item .item-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .config-item .item-type {
+    color: #777;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .select-all-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .select-all-bar button {
+    padding: 3px 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.75rem;
+  }
+  .select-all-bar button:hover { background: #333; }
+
+  /* Comparison Grid */
+  .grid-wrapper {
+    overflow: auto;
+    padding: 10px;
+    max-height: calc(100vh - 180px);
+  }
+
+  .comparison-grid {
+    display: grid;
+    border-collapse: collapse;
+    min-width: max-content;
+  }
+
+  .grid-corner {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 8px;
+    min-width: 220px;
+    font-size: 0.75rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .col-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #aabbdd;
+    min-width: 172px;
+    max-width: 172px;
+    line-height: 1.3;
+  }
+
+  .row-header {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    color: #ccc;
+    min-width: 220px;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+  .row-header .fact-id {
+    color: #4ecca3;
+    font-weight: 600;
+    font-size: 0.68rem;
+  }
+  .row-header .fact-label {
+    color: #ddd;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .row-header .fact-type {
+    color: #777;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .grid-cell {
+    border: 1px solid #333;
+    padding: 4px;
+    min-width: 172px;
+    max-width: 172px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.15s;
+  }
+  .grid-cell:hover { border-color: #4ecca3; }
+
+  .cell-img-wrapper {
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid-cell img {
+    max-width: 150px;
+    max-height: 200px;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .cell-desc {
+    font-size: 0.6rem;
+    color: #888;
+    text-align: center;
+    padding: 2px 4px;
+    line-height: 1.2;
+    max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 100%;
+    cursor: help;
+  }
+  .cell-desc:hover {
+    max-height: none;
+    -webkit-line-clamp: unset;
+    color: #bbb;
+    background: #1a1a2e;
+    position: relative;
+    z-index: 5;
+  }
+
+  .cell-placeholder {
+    color: #444;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .cell-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #333;
+    border-top-color: #4ecca3;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .cell-error {
+    color: #ff6666;
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  /* Lightbox */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lightbox-overlay.open { display: flex; }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 60vh;
+    image-rendering: pixelated;
+    border: 2px solid #444;
+    border-radius: 8px;
+  }
+
+  .lightbox-info {
+    color: #ccc;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 80vw;
+  }
+  .lightbox-info .lb-fact { color: #4ecca3; font-weight: 600; }
+  .lightbox-info .lb-strategy { color: #88aadd; }
+
+  .lightbox-desc {
+    color: #aaa;
+    font-size: 0.8rem;
+    text-align: center;
+    max-width: 70vw;
+    line-height: 1.4;
+    background: #1a1a2e;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    max-height: 20vh;
+    overflow-y: auto;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { color: #fff; }
+
+  .lightbox-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .lightbox-nav button {
+    padding: 6px 16px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #222;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .lightbox-nav button:hover { background: #333; color: #fff; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #555;
+  }
+  .empty-state h2 { color: #666; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-left">
+      <h1>Recall Rogue &mdash; Prompt Lab</h1>
+      <a class="nav-link" href="/">Dashboard</a>
+      <a class="nav-link" href="/stylelab.html">Style Lab</a>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn btn-start" id="btn-start">Start Generation</button>
+    <button class="btn btn-stop" id="btn-stop">Stop</button>
+    <button class="btn btn-force-quit" id="btn-force-quit">Force Quit</button>
+    <button class="btn btn-toggle-panel" id="btn-toggle-strategies">Strategies (5)</button>
+    <button class="btn btn-toggle-panel" id="btn-toggle-cards">Cards (10)</button>
+  </div>
+  <div class="progress-section" id="progress-section">
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+    <span class="progress-text" id="progress-text">0 / 0</span>
+  </div>
+  <div class="config-panel" id="strategies-panel">
+    <h3>Prompt Strategies</h3>
+    <div class="select-all-bar">
+      <button id="strategies-select-all">Select All</button>
+      <button id="strategies-select-none">Select None</button>
+    </div>
+    <div class="config-grid" id="strategies-grid"></div>
+  </div>
+  <div class="config-panel" id="cards-panel">
+    <h3>Test Cards</h3>
+    <div class="select-all-bar">
+      <button id="cards-select-all">Select All</button>
+      <button id="cards-select-none">Select None</button>
+    </div>
+    <div class="config-grid" id="cards-grid"></div>
+  </div>
+</header>
+
+<div class="grid-wrapper" id="grid-wrapper">
+  <div class="empty-state" id="empty-state">
+    <h2>Prompt Lab</h2>
+    <p>Compare 5 prompting strategies across 10 test cards. Click "Start Generation" to begin.</p>
+    <p style="color:#444;margin-top:8px;">Loading strategies and cards...</p>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <div class="lightbox-info" id="lightbox-info"></div>
+  <div class="lightbox-desc" id="lightbox-desc"></div>
+  <div class="lightbox-nav">
+    <button id="lb-prev-strategy">&larr; Prev Strategy</button>
+    <button id="lb-next-strategy">Next Strategy &rarr;</button>
+    <button id="lb-prev-card">&uarr; Prev Card</button>
+    <button id="lb-next-card">Next Card &darr;</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // --- State ---
+  var strategies = [];
+  var testCards = [];
+  var activeStrategyIds = new Set();
+  var activeCardIds = new Set();
+  var results = {}; // { 'factId:strategyId': { status, imageUrl } }
+  var descriptions = {}; // { 'factId:strategyId': description text }
+  var sseSource = null;
+  var running = false;
+  var lightboxFactId = null;
+  var lightboxStrategyId = null;
+
+  // --- DOM Refs ---
+  var btnStart = document.getElementById('btn-start');
+  var btnStop = document.getElementById('btn-stop');
+  var btnForceQuit = document.getElementById('btn-force-quit');
+  var btnToggleStrategies = document.getElementById('btn-toggle-strategies');
+  var btnToggleCards = document.getElementById('btn-toggle-cards');
+  var progressSection = document.getElementById('progress-section');
+  var progressBarFill = document.getElementById('progress-bar-fill');
+  var progressText = document.getElementById('progress-text');
+  var strategiesPanel = document.getElementById('strategies-panel');
+  var cardsPanel = document.getElementById('cards-panel');
+  var strategiesGrid = document.getElementById('strategies-grid');
+  var cardsGrid = document.getElementById('cards-grid');
+  var gridWrapper = document.getElementById('grid-wrapper');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxInfo = document.getElementById('lightbox-info');
+  var lightboxDesc = document.getElementById('lightbox-desc');
+  var lightboxClose = document.getElementById('lightbox-close');
+
+  // --- API Helpers ---
+  async function api(path, options) {
+    var res = await fetch(path, options);
+    return res.json();
+  }
+
+  // --- Load Strategies ---
+  async function loadStrategies() {
+    try {
+      strategies = await api('/api/promptlab/strategies');
+      activeStrategyIds = new Set(strategies.map(function(s) { return s.id; }));
+      renderStrategiesPanel();
+      updateStrategyCount();
+    } catch (e) {
+      console.error('Failed to load strategies:', e);
+    }
+  }
+
+  // --- Load Test Cards ---
+  async function loadTestCards() {
+    try {
+      testCards = await api('/api/promptlab/cards');
+      activeCardIds = new Set(testCards.map(function(c) { return c.factId; }));
+      // Store descriptions
+      for (var i = 0; i < testCards.length; i++) {
+        var card = testCards[i];
+        if (card.descriptions) {
+          for (var sid in card.descriptions) {
+            descriptions[card.factId + ':' + sid] = card.descriptions[sid];
+          }
+        }
+      }
+      renderCardsPanel();
+      updateCardCount();
+    } catch (e) {
+      console.error('Failed to load test cards:', e);
+    }
+  }
+
+  // --- Load existing results ---
+  async function loadResults() {
+    try {
+      var res = await api('/api/promptlab/results');
+      for (var i = 0; i < res.length; i++) {
+        var r = res[i];
+        var key = r.fact_id + ':' + r.strategy_id;
+        results[key] = {
+          status: r.status,
+          imageUrl: r.status === 'done'
+            ? '/api/promptlab/image/' + encodeURIComponent(r.fact_id) + '/' + encodeURIComponent(r.strategy_id)
+            : null
+        };
+        if (r.visual_description) {
+          descriptions[key] = r.visual_description;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load results:', e);
+    }
+  }
+
+  // --- Render Config Panels ---
+  function renderStrategiesPanel() {
+    strategiesGrid.innerHTML = '';
+    for (var i = 0; i < strategies.length; i++) {
+      var s = strategies[i];
+      var active = activeStrategyIds.has(s.id);
+      var item = document.createElement('div');
+      item.className = 'config-item' + (active ? ' active' : '');
+      item.innerHTML =
+        '<input type="checkbox" data-strategy-id="' + s.id + '" ' + (active ? 'checked' : '') + '>' +
+        '<span class="item-name">' + escapeHTML(s.name) + '</span>';
+      (function(strategy, el) {
+        el.addEventListener('click', function(e) {
+          if (e.target.tagName === 'INPUT') return;
+          var cb = el.querySelector('input');
+          cb.checked = !cb.checked;
+          cb.dispatchEvent(new Event('change'));
+        });
+        el.querySelector('input').addEventListener('change', function() {
+          if (this.checked) {
+            activeStrategyIds.add(strategy.id);
+            el.classList.add('active');
+          } else {
+            activeStrategyIds.delete(strategy.id);
+            el.classList.remove('active');
+          }
+          updateStrategyCount();
+          renderComparisonGrid();
+        });
+      })(s, item);
+      strategiesGrid.appendChild(item);
+    }
+  }
+
+  function renderCardsPanel() {
+    cardsGrid.innerHTML = '';
+    for (var i = 0; i < testCards.length; i++) {
+      var card = testCards[i];
+      var active = activeCardIds.has(card.factId);
+      var item = document.createElement('div');
+      item.className = 'config-item' + (active ? ' active' : '');
+      item.innerHTML =
+        '<input type="checkbox" data-card-id="' + card.factId + '" ' + (active ? 'checked' : '') + '>' +
+        '<span class="item-name">' + escapeHTML(card.label) + '</span>' +
+        '<span class="item-type">' + escapeHTML(card.type) + '</span>';
+      (function(c, el) {
+        el.addEventListener('click', function(e) {
+          if (e.target.tagName === 'INPUT') return;
+          var cb = el.querySelector('input');
+          cb.checked = !cb.checked;
+          cb.dispatchEvent(new Event('change'));
+        });
+        el.querySelector('input').addEventListener('change', function() {
+          if (this.checked) {
+            activeCardIds.add(c.factId);
+            el.classList.add('active');
+          } else {
+            activeCardIds.delete(c.factId);
+            el.classList.remove('active');
+          }
+          updateCardCount();
+          renderComparisonGrid();
+        });
+      })(card, item);
+      cardsGrid.appendChild(item);
+    }
+  }
+
+  function updateStrategyCount() {
+    btnToggleStrategies.textContent = 'Strategies (' + activeStrategyIds.size + ')';
+  }
+  function updateCardCount() {
+    btnToggleCards.textContent = 'Cards (' + activeCardIds.size + ')';
+  }
+
+  // --- Toggle Panels ---
+  btnToggleStrategies.addEventListener('click', function() {
+    strategiesPanel.classList.toggle('open');
+    cardsPanel.classList.remove('open');
+  });
+  btnToggleCards.addEventListener('click', function() {
+    cardsPanel.classList.toggle('open');
+    strategiesPanel.classList.remove('open');
+  });
+
+  // Select all/none
+  document.getElementById('strategies-select-all').addEventListener('click', function() {
+    activeStrategyIds = new Set(strategies.map(function(s) { return s.id; }));
+    renderStrategiesPanel();
+    updateStrategyCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('strategies-select-none').addEventListener('click', function() {
+    activeStrategyIds.clear();
+    renderStrategiesPanel();
+    updateStrategyCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('cards-select-all').addEventListener('click', function() {
+    activeCardIds = new Set(testCards.map(function(c) { return c.factId; }));
+    renderCardsPanel();
+    updateCardCount();
+    renderComparisonGrid();
+  });
+  document.getElementById('cards-select-none').addEventListener('click', function() {
+    activeCardIds.clear();
+    renderCardsPanel();
+    updateCardCount();
+    renderComparisonGrid();
+  });
+
+  // --- Comparison Grid ---
+  function renderComparisonGrid() {
+    var activeStrats = strategies.filter(function(s) { return activeStrategyIds.has(s.id); });
+    var activeCards = testCards.filter(function(c) { return activeCardIds.has(c.factId); });
+
+    if (activeStrats.length === 0 || activeCards.length === 0) {
+      gridWrapper.innerHTML = '<div class="empty-state"><h2>No items selected</h2><p>Select at least one strategy and one card to see the comparison grid.</p></div>';
+      return;
+    }
+
+    var html = '<div class="comparison-grid" style="grid-template-columns: 220px repeat(' + activeStrats.length + ', 172px);">';
+
+    // Corner cell
+    html += '<div class="grid-corner">Card \\ Strategy</div>';
+
+    // Column headers
+    for (var si = 0; si < activeStrats.length; si++) {
+      html += '<div class="col-header">' + escapeHTML(activeStrats[si].name) + '</div>';
+    }
+
+    // Rows
+    for (var ci = 0; ci < activeCards.length; ci++) {
+      var card = activeCards[ci];
+
+      // Row header
+      html += '<div class="row-header">' +
+        '<span class="fact-id">' + escapeHTML(card.factId) + '</span>' +
+        '<span class="fact-label">' + escapeHTML(card.label) + '</span>' +
+        '<span class="fact-type">' + escapeHTML(card.type) + '</span>' +
+        '</div>';
+
+      // Cells
+      for (var sj = 0; sj < activeStrats.length; sj++) {
+        var strat = activeStrats[sj];
+        var key = card.factId + ':' + strat.id;
+        var result = results[key];
+        var desc = descriptions[key] || '';
+        var descPreview = desc.length > 60 ? desc.substring(0, 57) + '...' : desc;
+        var cellContent;
+
+        if (result && result.status === 'done' && result.imageUrl) {
+          cellContent = '<div class="cell-img-wrapper">' +
+            '<img src="' + result.imageUrl + '?t=' + Date.now() + '" alt="' + escapeHTML(card.factId + ' / ' + strat.name) + '" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.innerHTML=\'<span class=cell-error>Load error</span>\'">' +
+            '</div>';
+        } else if (result && result.status === 'generating') {
+          cellContent = '<div class="cell-img-wrapper"><div class="cell-spinner"></div></div>';
+        } else if (result && result.status === 'error') {
+          cellContent = '<div class="cell-img-wrapper"><span class="cell-error">Failed</span></div>';
+        } else {
+          cellContent = '<div class="cell-img-wrapper"><span class="cell-placeholder">&#x2014;</span></div>';
+        }
+
+        cellContent += '<div class="cell-desc" title="' + escapeHTML(desc) + '">' + escapeHTML(descPreview) + '</div>';
+
+        html += '<div class="grid-cell" data-fact-id="' + card.factId + '" data-strategy-id="' + strat.id + '">' +
+          cellContent + '</div>';
+      }
+    }
+
+    html += '</div>';
+    gridWrapper.innerHTML = html;
+
+    // Add click handlers
+    gridWrapper.querySelectorAll('.grid-cell').forEach(function(cell) {
+      cell.addEventListener('click', function() {
+        var fid = cell.dataset.factId;
+        var sid = cell.dataset.strategyId;
+        var k = fid + ':' + sid;
+        var r = results[k];
+        if (r && r.status === 'done' && r.imageUrl) {
+          openLightbox(fid, sid);
+        }
+      });
+    });
+  }
+
+  // --- Update single cell ---
+  function updateCell(factId, strategyId) {
+    var cell = gridWrapper.querySelector('.grid-cell[data-fact-id="' + factId + '"][data-strategy-id="' + strategyId + '"]');
+    if (!cell) return;
+
+    var key = factId + ':' + strategyId;
+    var result = results[key];
+    var desc = descriptions[key] || '';
+    var descPreview = desc.length > 60 ? desc.substring(0, 57) + '...' : desc;
+
+    if (result && result.status === 'done' && result.imageUrl) {
+      cell.innerHTML = '<div class="cell-img-wrapper">' +
+        '<img src="' + result.imageUrl + '?t=' + Date.now() + '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.innerHTML=\'<span class=cell-error>Load error</span>\'">' +
+        '</div>' +
+        '<div class="cell-desc" title="' + escapeHTML(desc) + '">' + escapeHTML(descPreview) + '</div>';
+      cell.onclick = function() { openLightbox(factId, strategyId); };
+    } else if (result && result.status === 'generating') {
+      cell.innerHTML = '<div class="cell-img-wrapper"><div class="cell-spinner"></div></div>' +
+        '<div class="cell-desc" title="' + escapeHTML(desc) + '">' + escapeHTML(descPreview) + '</div>';
+    } else if (result && result.status === 'error') {
+      cell.innerHTML = '<div class="cell-img-wrapper"><span class="cell-error">Failed</span></div>' +
+        '<div class="cell-desc" title="' + escapeHTML(desc) + '">' + escapeHTML(descPreview) + '</div>';
+    }
+  }
+
+  // --- Start Generation ---
+  btnStart.addEventListener('click', async function() {
+    var cardIds = Array.from(activeCardIds);
+    var strategyIds = Array.from(activeStrategyIds);
+
+    if (cardIds.length === 0 || strategyIds.length === 0) {
+      alert('Select at least one card and one strategy.');
+      return;
+    }
+
+    btnStart.disabled = true;
+    btnStop.classList.add('visible');
+    progressSection.classList.add('active');
+    progressBarFill.style.width = '0%';
+    progressText.textContent = 'Starting...';
+    running = true;
+
+    renderComparisonGrid();
+
+    try {
+      await api('/api/promptlab/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardIds: cardIds, strategyIds: strategyIds }),
+      });
+    } catch (err) {
+      console.error('Start failed:', err);
+      resetUI();
+      return;
+    }
+
+    connectSSE();
+  });
+
+  function connectSSE() {
+    if (sseSource) sseSource.close();
+    sseSource = new EventSource('/api/promptlab/status');
+
+    sseSource.onmessage = function(e) {
+      var data;
+      try { data = JSON.parse(e.data); } catch (ex) { return; }
+
+      if (data.type === 'progress') {
+        var pct = data.total > 0 ? Math.round((data.completed / data.total) * 100) : 0;
+        progressBarFill.style.width = pct + '%';
+        progressText.textContent = data.completed + ' / ' + data.total +
+          (data.currentFactId ? ' - ' + data.currentFactId + ' / ' + data.currentStrategyId : '');
+
+        if (data.currentFactId && data.currentStrategyId) {
+          var key = data.currentFactId + ':' + data.currentStrategyId;
+          results[key] = { status: 'generating', imageUrl: null };
+          updateCell(data.currentFactId, data.currentStrategyId);
+        }
+      }
+
+      if (data.type === 'image_done') {
+        var doneKey = data.factId + ':' + data.strategyId;
+        results[doneKey] = { status: 'done', imageUrl: data.imageUrl };
+        updateCell(data.factId, data.strategyId);
+      }
+
+      if (data.type === 'image_error') {
+        var errKey = data.factId + ':' + data.strategyId;
+        results[errKey] = { status: 'error', imageUrl: null };
+        updateCell(data.factId, data.strategyId);
+      }
+
+      if (data.type === 'done') {
+        closeSSE();
+        resetUI();
+        progressText.textContent = 'Complete! ' + data.completed + ' done, ' + data.failed + ' failed';
+        setTimeout(function() { progressSection.classList.remove('active'); }, 5000);
+      }
+    };
+
+    sseSource.onerror = function() {
+      closeSSE();
+      resetUI();
+      progressText.textContent = 'Connection lost';
+      setTimeout(function() { progressSection.classList.remove('active'); }, 3000);
+    };
+  }
+
+  // --- Stop ---
+  btnStop.addEventListener('click', async function() {
+    try {
+      await api('/api/promptlab/stop', { method: 'POST' });
+    } catch (e) {
+      console.error('Stop failed:', e);
+    }
+    closeSSE();
+    resetUI();
+    progressText.textContent = 'Stopped';
+    setTimeout(function() { progressSection.classList.remove('active'); }, 2000);
+  });
+
+  // --- Force Quit ---
+  btnForceQuit.addEventListener('click', async function() {
+    btnForceQuit.disabled = true;
+    btnForceQuit.textContent = 'Killing...';
+    try {
+      await api('/api/promptlab/stop', { method: 'POST' });
+      await api('/api/force-quit', { method: 'POST' });
+    } catch (e) {
+      console.error('Force quit failed:', e);
+    }
+    closeSSE();
+    resetUI();
+    progressSection.classList.add('active');
+    progressText.textContent = 'Force stopped';
+    setTimeout(function() { progressSection.classList.remove('active'); }, 3000);
+    btnForceQuit.textContent = 'Force Quit';
+    btnForceQuit.disabled = false;
+  });
+
+  function closeSSE() {
+    if (sseSource) { sseSource.close(); sseSource = null; }
+  }
+
+  function resetUI() {
+    running = false;
+    btnStart.disabled = false;
+    btnStop.classList.remove('visible');
+  }
+
+  // --- Lightbox ---
+  function openLightbox(factId, strategyId) {
+    lightboxFactId = factId;
+    lightboxStrategyId = strategyId;
+
+    var key = factId + ':' + strategyId;
+    var r = results[key];
+    if (!r || !r.imageUrl) return;
+
+    lightboxImg.src = r.imageUrl + '?t=' + Date.now();
+
+    var strat = strategies.find(function(s) { return s.id === strategyId; });
+    var card = testCards.find(function(c) { return c.factId === factId; });
+
+    lightboxInfo.innerHTML =
+      '<span class="lb-fact">' + escapeHTML(factId) + '</span>' +
+      (card ? ' - ' + escapeHTML(card.label) : '') +
+      '<br><span class="lb-strategy">' + escapeHTML(strat ? strat.name : strategyId) + '</span>';
+
+    var desc = descriptions[key] || '';
+    lightboxDesc.textContent = desc;
+    lightboxDesc.style.display = desc ? '' : 'none';
+
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    lightboxFactId = null;
+    lightboxStrategyId = null;
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Lightbox navigation
+  function getActiveStrategies() { return strategies.filter(function(s) { return activeStrategyIds.has(s.id); }); }
+  function getActiveCards() { return testCards.filter(function(c) { return activeCardIds.has(c.factId); }); }
+
+  document.getElementById('lb-prev-strategy').addEventListener('click', function() {
+    var strats = getActiveStrategies();
+    var idx = strats.findIndex(function(s) { return s.id === lightboxStrategyId; });
+    if (idx > 0) openLightbox(lightboxFactId, strats[idx - 1].id);
+  });
+  document.getElementById('lb-next-strategy').addEventListener('click', function() {
+    var strats = getActiveStrategies();
+    var idx = strats.findIndex(function(s) { return s.id === lightboxStrategyId; });
+    if (idx < strats.length - 1) openLightbox(lightboxFactId, strats[idx + 1].id);
+  });
+  document.getElementById('lb-prev-card').addEventListener('click', function() {
+    var cards = getActiveCards();
+    var idx = cards.findIndex(function(c) { return c.factId === lightboxFactId; });
+    if (idx > 0) openLightbox(cards[idx - 1].factId, lightboxStrategyId);
+  });
+  document.getElementById('lb-next-card').addEventListener('click', function() {
+    var cards = getActiveCards();
+    var idx = cards.findIndex(function(c) { return c.factId === lightboxFactId; });
+    if (idx < cards.length - 1) openLightbox(cards[idx + 1].factId, lightboxStrategyId);
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') document.getElementById('lb-prev-strategy').click();
+    if (e.key === 'ArrowRight') document.getElementById('lb-next-strategy').click();
+    if (e.key === 'ArrowUp') { e.preventDefault(); document.getElementById('lb-prev-card').click(); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); document.getElementById('lb-next-card').click(); }
+  });
+
+  // --- Helpers ---
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // --- Init ---
+  async function init() {
+    await Promise.all([loadStrategies(), loadTestCards()]);
+    await loadResults();
+    renderComparisonGrid();
+  }
+  init();
+})();
+</script>
+</body>
+</html>

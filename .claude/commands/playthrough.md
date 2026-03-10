@@ -70,7 +70,7 @@ const path = require('path');
     await page.evaluate((saveData) => {
       localStorage.setItem('terra_guest_mode', 'true');
       localStorage.setItem('terra_age_bracket', 'teen');
-      localStorage.setItem('terra-gacha-save', JSON.stringify(saveData));
+      localStorage.setItem('recall-rogue-save', JSON.stringify(saveData));
     }, buildCustomSave());
 
     // 4. Reload with skipOnboarding
@@ -538,7 +538,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core');
   await page.evaluate((save) => {
     localStorage.setItem('terra_guest_mode', 'true');
     localStorage.setItem('terra_age_bracket', 'teen');
-    localStorage.setItem('terra-gacha-save', JSON.stringify(save));
+    localStorage.setItem('recall-rogue-save', JSON.stringify(save));
   }, buildSave());
 
   // Step 4: Reload with skipOnboarding
@@ -654,7 +654,7 @@ Build a custom `PlayerSave` object tailored to the test scenario, inject it, and
 
   localStorage.setItem('terra_guest_mode', 'true');
   localStorage.setItem('terra_age_bracket', 'teen');
-  localStorage.setItem('terra-gacha-save', JSON.stringify(save));
+  localStorage.setItem('recall-rogue-save', JSON.stringify(save));
   return { injected: true, factCount: save.learnedFacts.length };
 })()
 ```

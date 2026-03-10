@@ -10,7 +10,7 @@ import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tic
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState, onEncounterComplete } from './gameFlowController';
-import { getBossForFloor, pickCombatEnemy, isBossFloor } from './floorManager';
+import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor } from './floorManager';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
@@ -212,8 +212,10 @@ export function startEncounterForRoom(enemyId?: string): void {
 
   let templateId = enemyId;
   if (!templateId) {
-    if (isBossFloor(run.floor.currentFloor)) {
+    if (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor) {
       templateId = getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor);
+    } else if (isMiniBossEncounter(run.floor.currentFloor, run.floor.currentEncounter)) {
+      templateId = getMiniBossForFloor(run.floor.currentFloor);
     } else {
       if (run.canary.mode === 'challenge' && Math.random() < 0.35) {
         const eliteCandidates = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');

@@ -96,8 +96,8 @@
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Join me on Terra Gacha!',
-          text: 'Mine for knowledge with me on Terra Gacha. You and I both get a fossil egg!',
+          title: 'Join me on Recall Rogue!',
+          text: 'Mine for knowledge with me on Recall Rogue. You and I both get a fossil egg!',
           url: referralLink,
         })
         analyticsService.track({

@@ -1,7 +1,7 @@
 # Phase 20: Mobile Launch
 
 **Status**: Planned (Android Capacitor setup complete — see commit `be5c5ce`)
-**Goal**: Ship Terra Gacha to Google Play and Apple App Store with soft-launch strategy, full accessibility compliance, and a first-class web experience at terragacha.com.
+**Goal**: Ship Recall Rogue to Google Play and Apple App Store with soft-launch strategy, full accessibility compliance, and a first-class web experience at terragacha.com.
 **Design Decisions**: DD-V2-165, DD-V2-166, DD-V2-167, DD-V2-168, DD-V2-171, DD-V2-178
 
 ---
@@ -131,7 +131,7 @@ npx cap open ios
 ```xml
 <!-- Display name shown under icon -->
 <key>CFBundleDisplayName</key>
-<string>Terra Gacha</string>
+<string>Recall Rogue</string>
 
 <!-- App URL scheme for deep links -->
 <key>CFBundleURLTypes</key>
@@ -293,7 +293,7 @@ await SplashScreen.hide()
 ### Store Listing Copy Drafts (DD-V2-165, DD-V2-166)
 
 **App Title** (max 30 chars):
-`Terra Gacha`
+`Recall Rogue`
 
 **App Subtitle** (max 30 chars — Apple only):
 `Mine Deep. Learn Everything.`
@@ -311,7 +311,7 @@ Crash-land on a far-future Earth and descend through 20 layers of prehistoric gr
 Answer real questions about Earth science, biology, ancient history, and the cosmos. Get it right? Your artifact rarity soars. Get it wrong? You lose oxygen — so you'd better remember next time.
 
 REAL KNOWLEDGE. NOT TRIVIA.
-Terra Gacha uses spaced repetition — the scientifically proven study method. Facts you struggle with come back sooner. Facts you know move to long intervals. You actually remember what you learn.
+Recall Rogue uses spaced repetition — the scientifically proven study method. Facts you struggle with come back sooner. Facts you know move to long intervals. You actually remember what you learn.
 
 REVIVE 40+ EXTINCT SPECIES
 Collect fossil fragments across your dives. Learn about each species through quizzes. Answer enough correctly to bring them back to life in your biodome — from a trilobite to a T-Rex.
@@ -337,7 +337,7 @@ FEATURES
 • Up to 4 player profiles per device (great for families!)
 • Age-appropriate content filtering
 
-Terra Gacha is free to play. Optional purchases: premium oxygen refills and cosmetic items. No loot boxes. All drop rates are displayed.
+Recall Rogue is free to play. Optional purchases: premium oxygen refills and cosmetic items. No loot boxes. All drop rates are displayed.
 
 "The only game that made me want to look up more stuff after." — Beta tester
 
@@ -349,7 +349,7 @@ Download and start your first dive. Your first fossil is waiting 3 layers down.
 ```
 Descend through 20 layers of prehistoric Earth — and come back smarter every time.
 
-WHAT IS TERRA GACHA?
+WHAT IS RECALL ROGUE?
 A mining adventure where every block you break might hide a fossil fragment, a mineral vein, or a real science quiz from G.A.I.A. (your Geological Analytical Intelligence Assistant). Roguelite tension. Spaced-repetition learning. One more layer calling you down.
 
 THE SCIENCE IS REAL
@@ -915,8 +915,8 @@ test('Home screen has no critical a11y violations', async ({ page }) => {
 `public/manifest.webmanifest`:
 ```json
 {
-  "name": "Terra Gacha",
-  "short_name": "Terra Gacha",
+  "name": "Recall Rogue",
+  "short_name": "Recall Rogue",
   "description": "Mine Deep. Learn Everything. A spaced-repetition mining adventure.",
   "start_url": "/",
   "scope": "/",
@@ -969,7 +969,7 @@ test('Home screen has no critical a11y violations', async ({ page }) => {
     },
     {
       "platform": "itunes",
-      "url": "https://apps.apple.com/app/terra-gacha/id0000000000"
+      "url": "https://apps.apple.com/app/recall-rogue/id0000000000"
     }
   ]
 }
@@ -1234,7 +1234,7 @@ npx cap doctor
 
 # 5. PWA manifest validation
 curl -s http://localhost:5173/manifest.webmanifest | jq '.name'
-# Expected: "Terra Gacha"
+# Expected: "Recall Rogue"
 
 # 6. Service Worker check
 node -e "

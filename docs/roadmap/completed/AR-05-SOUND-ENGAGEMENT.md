@@ -191,7 +191,7 @@ On "Share" tap:
 - Generate a canvas-based image (400×600px):
   ```
   ┌─────────────────────────┐
-  │    ARCANE RECALL         │
+  │    RECALL ROGUE         │
   │                          │
   │    Depth: ██████░░░ 6/9  │
   │    Accuracy: ████████ 81%│

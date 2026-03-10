@@ -35,7 +35,7 @@ function main(): void {
       ? ((audioCount / CURRENT_FACT_COUNT) * 100).toFixed(1)
       : '0.0'
 
-  console.log('=== Terra Gacha Fact Count Check ===')
+  console.log('=== Recall Rogue Fact Count Check ===')
   console.log(`Current approved facts: ${CURRENT_FACT_COUNT}`)
   console.log(`Required for subscriptions: ${MINIMUM_FACTS_REQUIRED}`)
   console.log(`Gap: ${gap} facts`)

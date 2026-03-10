@@ -326,8 +326,8 @@ API key — no npm SDK needed.
 #### New environment variables
 ```
 RESEND_API_KEY=re_xxxxxxxxxxxx
-FROM_EMAIL=GAIA <gaia@terra-gacha.app>
-EMAIL_UNSUBSCRIBE_BASE_URL=https://terra-gacha.app/api/email/unsubscribe
+FROM_EMAIL=GAIA <gaia@recall-rogue.app>
+EMAIL_UNSUBSCRIBE_BASE_URL=https://recall-rogue.app/api/email/unsubscribe
 ```
 
 #### Implementation steps
@@ -378,7 +378,7 @@ export async function sendEmail(payload: EmailPayload): Promise<{ sent: boolean;
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: config.fromEmail ?? 'GAIA <gaia@terra-gacha.app>',
+      from: config.fromEmail ?? 'GAIA <gaia@recall-rogue.app>',
       to: [payload.to],
       subject: payload.subject,
       html,
@@ -407,7 +407,7 @@ of the existing `gaia-letter.html` (dark sci-fi, monospace font, `#e94560` accen
 // After creating the user:
 sendEmail({
   to: email,
-  subject: 'Welcome to Terra Gacha',
+  subject: 'Welcome to Recall Rogue',
   template: 'welcome',
   variables: { playerName: username },
 }).catch(err => fastify.log.warn(err, 'Welcome email failed (non-fatal)'))
@@ -452,8 +452,8 @@ win-back and reminder pushes.
 
 #### New environment variables
 ```
-FCM_PROJECT_ID=terra-gacha-12345
-FCM_CLIENT_EMAIL=firebase-adminsdk@terra-gacha-12345.iam.gserviceaccount.com
+FCM_PROJECT_ID=recall-rogue-12345
+FCM_CLIENT_EMAIL=firebase-adminsdk@recall-rogue-12345.iam.gserviceaccount.com
 FCM_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
 ```
 
@@ -728,7 +728,7 @@ export async function generatePronunciationAudio(
       'Ocp-Apim-Subscription-Key': config.azureSpeechKey,
       'Content-Type':              'application/ssml+xml',
       'X-Microsoft-OutputFormat':  'audio-16khz-128kbitrate-mono-mp3',
-      'User-Agent':                'TerraGachaServer/1.0',
+      'User-Agent':                'RecallRogueServer/1.0',
     },
     body: ssml,
   })
@@ -851,8 +851,8 @@ NODE_ENV=production
 JWT_SECRET=change-me-minimum-64-chars-random-string
 JWT_EXPIRY=15m
 REFRESH_EXPIRY=7d
-DATABASE_URL=postgresql://user:password@localhost:5432/terra_gacha
-CORS_ORIGIN=https://terra-gacha.app
+DATABASE_URL=postgresql://user:password@localhost:5432/recall_rogue
+CORS_ORIGIN=https://recall-rogue.app
 ADMIN_API_KEY=change-me-admin-key
 
 # ── Content pipeline ──────────────────────────────────────────────────────────
@@ -866,13 +866,13 @@ REVENUECAT_WEBHOOK_SECRET=rc_whsec_...
 
 # ── Email (Resend) ────────────────────────────────────────────────────────────
 RESEND_API_KEY=re_...
-FROM_EMAIL=GAIA <gaia@terra-gacha.app>
-PASSWORD_RESET_BASE_URL=https://terra-gacha.app/reset-password
-EMAIL_UNSUBSCRIBE_BASE_URL=https://terra-gacha.app/api/email/unsubscribe
+FROM_EMAIL=GAIA <gaia@recall-rogue.app>
+PASSWORD_RESET_BASE_URL=https://recall-rogue.app/reset-password
+EMAIL_UNSUBSCRIBE_BASE_URL=https://recall-rogue.app/api/email/unsubscribe
 
 # ── Push Notifications (FCM) ──────────────────────────────────────────────────
-FCM_PROJECT_ID=terra-gacha-12345
-FCM_CLIENT_EMAIL=firebase-adminsdk@terra-gacha-12345.iam.gserviceaccount.com
+FCM_PROJECT_ID=recall-rogue-12345
+FCM_CLIENT_EMAIL=firebase-adminsdk@recall-rogue-12345.iam.gserviceaccount.com
 FCM_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nXXXX\n-----END PRIVATE KEY-----\n"
 
 # ── TTS (Azure Cognitive Services) ───────────────────────────────────────────

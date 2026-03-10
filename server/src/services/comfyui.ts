@@ -103,7 +103,7 @@ export function buildPixelArtWorkflow(
     "7": {
       class_type: "SaveImage",
       inputs: {
-        filename_prefix: "terra-gacha-sprite",
+        filename_prefix: "recall-rogue-sprite",
         images: ["6", 0],
       },
     },

@@ -20,6 +20,8 @@ import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
 import { migrateReviewState as migrateToFsrsState, reviewFact as reviewFactFsrs } from '../../services/fsrsScheduler'
+import { getCardTier } from '../../services/tierDerivation'
+import { checkTierUpTrigger, checkStreakTrigger } from '../../services/reviewPromptService'
 import { applyStabilityBonusToFacts } from '../../services/runEarlyBoostController'
 // cosmetics.ts and knowledgeStore.ts archived — inline stubs
 type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
@@ -483,6 +485,7 @@ export function updateReviewStateByButton(
   meta?: ReviewUpdateMeta,
 ): void {
   let masteryEvent: { factId: string; masteryNumber: number } | null = null
+  let tierPromotion: string | null = null
 
   playerSave.update((save) => {
     if (!save) return save
@@ -548,6 +551,13 @@ export function updateReviewStateByButton(
       masteryEvent = { factId, masteryNumber: alreadyMastered + 1 }
     }
 
+    // AR-24: Check for tier promotion (review prompt trigger)
+    const oldTier = getCardTier(existingState)
+    const newTier = getCardTier(boostedState)
+    if (oldTier === '1' && (newTier === '2a' || newTier === '2b' || newTier === '3')) {
+      tierPromotion = newTier
+    }
+
     return {
       ...save,
       reviewStates: save.reviewStates.map((state) =>
@@ -568,6 +578,11 @@ export function updateReviewStateByButton(
     document.dispatchEvent(
       new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
     )
+  }
+
+  // AR-24: Fire review prompt on first tier-2 promotion
+  if (tierPromotion) {
+    void checkTierUpTrigger(tierPromotion)
   }
 }
 
@@ -885,6 +900,8 @@ export function updateDailyStreak(save: PlayerSave): PlayerSave {
  * @param blocksMined - Number of blocks mined during the dive.
  */
 export function recordDiveComplete(deepestLayer: number, blocksMined: number): void {
+  let capturedStreak = 0
+
   playerSave.update((save) => {
     if (!save) {
       return save
@@ -892,6 +909,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
 
     const streakUpdated = updateDailyStreak(save)
     const newStreak = streakUpdated.stats.currentStreak
+    capturedStreak = newStreak
     const streakProtected = streakUpdated.streakProtected ?? false
     const today = streakUpdated.lastDiveDate!
 
@@ -1004,6 +1022,11 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
   })
 
   persistPlayer()
+
+  // AR-24: Fire review prompt on 7-day streak
+  if (capturedStreak > 0) {
+    void checkStreakTrigger(capturedStreak)
+  }
 }
 
 /**

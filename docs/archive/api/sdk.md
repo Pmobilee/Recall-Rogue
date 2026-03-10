@@ -1,6 +1,6 @@
 # JavaScript / TypeScript SDK
 
-The `terra-gacha-sdk` package wraps all public API endpoints with typed interfaces
+The `recall-rogue-sdk` package wraps all public API endpoints with typed interfaces
 and built-in CC attribution handling.
 
 ## Installation
@@ -15,9 +15,9 @@ npm install /path/to/terra-miner/packages/sdk
 ## Quickstart
 
 ```typescript
-import { TerraGachaClient } from 'terra-gacha-sdk'
+import { RecallRogueClient } from 'recall-rogue-sdk'
 
-const client = new TerraGachaClient({
+const client = new RecallRogueClient({
   apiKey: process.env.TERRA_GACHA_API_KEY!,
   // Optional: override for local dev
   baseUrl: 'http://localhost:3001'

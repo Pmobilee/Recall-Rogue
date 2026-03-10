@@ -1,5 +1,5 @@
 /**
- * Entry point for the Terra Gacha Teacher Dashboard.
+ * Entry point for the Recall Rogue Teacher Dashboard.
  * Mounts the Svelte 5 app into the #app div.
  */
 import { mount } from 'svelte'

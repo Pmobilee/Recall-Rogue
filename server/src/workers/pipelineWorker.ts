@@ -1,5 +1,5 @@
 /**
- * Terra Gacha Content Pipeline Worker.
+ * Recall Rogue Content Pipeline Worker.
  * CLI-invokable queue worker that processes pending entries in the
  * facts_processing_queue table using Claude Sonnet for content generation.
  *
@@ -195,7 +195,7 @@ function printQueueSummary(): void {
  * Main entry point for the pipeline worker.
  */
 async function main(): Promise<void> {
-  console.log("[pipeline] Terra Gacha Content Pipeline Worker starting...");
+  console.log("[pipeline] Recall Rogue Content Pipeline Worker starting...");
 
   initFactsSchema();
 

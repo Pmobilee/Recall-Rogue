@@ -46,7 +46,7 @@ const fs = require('fs');
     await page.evaluate((save) => {
       localStorage.setItem('terra_guest_mode', 'true');
       localStorage.setItem('terra_age_bracket', 'teen');
-      localStorage.setItem('terra-gacha-save', JSON.stringify(save));
+      localStorage.setItem('recall-rogue-save', JSON.stringify(save));
     }, buildYourSave());
 
     // Reload with skip

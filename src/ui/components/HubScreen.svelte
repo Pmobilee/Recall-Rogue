@@ -34,7 +34,7 @@
 
 <section class="hub-screen" aria-label="Home hub">
   <header class="hero">
-    <h1>ARCANE RECALL</h1>
+    <h1>RECALL ROGUE</h1>
     <p>Learn facts. Build decks. Delve.</p>
   </header>
 

@@ -54,7 +54,7 @@ function ccAttribution() {
   return {
     license: 'CC BY 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
-    attribution: 'Terra Gacha Fact Database — terragacha.com',
+    attribution: 'Recall Rogue Fact Database — terragacha.com',
     requiresAttribution: true
   }
 }
@@ -202,14 +202,14 @@ export async function publicApiRoutes(app: FastifyInstance): Promise<void> {
         licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
         requiresAttribution: true,
         requiresNonCommercial: false,
-        attributionTemplate: '© {year} Terra Gacha (terragacha.com). Licensed under CC BY 4.0.'
+        attributionTemplate: '© {year} Recall Rogue (terragacha.com). Licensed under CC BY 4.0.'
       },
       pixelArtImages: {
         license: 'CC BY-NC 4.0',
         licenseUrl: 'https://creativecommons.org/licenses/by-nc/4.0/',
         requiresAttribution: true,
         requiresNonCommercial: true,
-        attributionTemplate: '© {year} Terra Gacha (terragacha.com). Licensed under CC BY-NC 4.0.'
+        attributionTemplate: '© {year} Recall Rogue (terragacha.com). Licensed under CC BY-NC 4.0.'
       },
       contactForCommercialLicensing: 'licensing@terragacha.com'
     })

@@ -141,7 +141,7 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
   ctx.font = 'bold 28px "Space Mono", monospace'
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
-  ctx.fillText('TERRA GACHA', 48, 32)
+  ctx.fillText('RECALL ROGUE', 48, 32)
 
   ctx.fillStyle = PALETTE.textMuted
   ctx.font = '16px "Space Mono", monospace'
@@ -190,15 +190,15 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
   const dataUrl = canvas.toDataURL('image/png')
 
   const shareTexts: Record<ShareCardTemplate, string> = {
-    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Terra Gacha! Join me: https://terragacha.com`,
-    dive_record:  `I reached Layer ${payload.primaryMetric} in Terra Gacha! How deep can you go? https://terragacha.com`,
-    guild_win:    `My guild just completed a Knowledge Challenge in Terra Gacha. The Earth still has secrets to share. https://terragacha.com`,
+    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Recall Rogue! Join me: https://terragacha.com`,
+    dive_record:  `I reached Layer ${payload.primaryMetric} in Recall Rogue! How deep can you go? https://terragacha.com`,
+    guild_win:    `My guild just completed a Knowledge Challenge in Recall Rogue. The Earth still has secrets to share. https://terragacha.com`,
   }
 
   return {
     dataUrl,
-    filename: `terra-gacha-${payload.template}-${Date.now()}.png`,
-    shareTitle: 'Terra Gacha',
+    filename: `recall-rogue-${payload.template}-${Date.now()}.png`,
+    shareTitle: 'Recall Rogue',
     shareText: shareTexts[payload.template],
   }
 }
