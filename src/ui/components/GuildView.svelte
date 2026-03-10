@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { GuildInfo, GuildChallenge } from '../../data/types'
-  import { readAccessToken } from '../../services/authTokens'
+  import { ApiError } from '../../services/apiClient'
+  import { guildService, type GuildRecord } from '../../services/guildService'
 
   interface GuildMember {
     playerId: string
@@ -34,18 +35,6 @@
     targetCount: number
     currentCount: number
     completedAt: number | null
-  }
-
-  interface ApiGuild {
-    id: string
-    name: string
-    tag: string
-    emblemId: string
-    description: string
-    members: ApiGuildMember[]
-    gkp: number
-    challenges: ApiGuildChallenge[]
-    open: boolean
   }
 
   interface Props {
@@ -86,18 +75,6 @@
   let errorMessage = $state('')
   let didBootstrap = $state(false)
 
-  function apiBase(): string {
-    const stored = localStorage.getItem('terra_api_base')
-    return (stored ?? 'http://localhost:3001/api').replace(/\/$/, '')
-  }
-
-  function authHeaders(): Record<string, string> {
-    const token = readAccessToken()
-    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-    if (token) headers.Authorization = `Bearer ${token}`
-    return headers
-  }
-
   function emblemIndex(emblemId: string): number {
     const parsed = Number.parseInt(emblemId, 10)
     if (Number.isFinite(parsed) && parsed >= 0) return parsed % GUILD_EMBLEMS.length
@@ -113,7 +90,7 @@
     return Math.max(1, Math.floor(gkp / 1000) + 1)
   }
 
-  function mapApiGuild(guild: ApiGuild): {
+  function mapApiGuild(guild: GuildRecord): {
     guildInfo: GuildInfo
     mappedMembers: GuildMember[]
     mappedChallenges: GuildChallenge[]
@@ -152,17 +129,7 @@
 
   async function bootstrapGuildState(): Promise<void> {
     try {
-      const resp = await fetch(`${apiBase()}/guilds/me`, { headers: authHeaders() })
-      if (!resp.ok) {
-        hasGuild = false
-        myGuild = null
-        members = []
-        challenges = []
-        topContributors = []
-        if (activeTab === 'my-guild') activeTab = 'find-guilds'
-        return
-      }
-      const guild = await resp.json() as ApiGuild
+      const guild = await guildService.getMyGuild()
       const mapped = mapApiGuild(guild)
       hasGuild = true
       myGuild = mapped.guildInfo
@@ -171,7 +138,16 @@
       topContributors = [...members]
         .sort((a, b) => b.weeklyContribution - a.weeklyContribution)
         .slice(0, 5)
-    } catch {
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 404) {
+        hasGuild = false
+        myGuild = null
+        members = []
+        challenges = []
+        topContributors = []
+        if (activeTab === 'my-guild') activeTab = 'find-guilds'
+        return
+      }
       // Ignore bootstrap failures; search/create tabs can still be used.
     }
   }
@@ -180,9 +156,7 @@
     loadingGuild = true
     errorMessage = ''
     try {
-      const resp = await fetch(`${apiBase()}/guilds/me`, { headers: authHeaders() })
-      if (!resp.ok) throw new Error('Failed to load guild')
-      const guild = await resp.json() as ApiGuild
+      const guild = await guildService.getMyGuild()
       const mapped = mapApiGuild(guild)
       hasGuild = true
       myGuild = mapped.guildInfo
@@ -207,19 +181,7 @@
     searchLoading = true
     errorMessage = ''
     try {
-      const query = encodeURIComponent(trimmed)
-      const resp = await fetch(`${apiBase()}/guilds/search?q=${query}`)
-      if (!resp.ok) throw new Error('Search failed')
-      const data = await resp.json() as Array<{
-        id: string
-        name: string
-        tag: string
-        memberCount: number
-        maxMembers: number
-        gkp: number
-        open: boolean
-        description: string
-      }>
+      const data = await guildService.search(trimmed)
       searchResults = data.map((guild) => ({
         id: guild.id,
         name: guild.name,
@@ -240,11 +202,7 @@
 
   async function joinGuild(guildId: string): Promise<void> {
     try {
-      const resp = await fetch(`${apiBase()}/guilds/${encodeURIComponent(guildId)}/join`, {
-        method: 'POST',
-        headers: authHeaders(),
-      })
-      if (!resp.ok) throw new Error('Failed to join guild')
+      await guildService.joinGuild(guildId)
       hasGuild = true
       activeTab = 'my-guild'
       await loadMyGuild()
@@ -265,17 +223,12 @@
     createLoading = true
     createError = ''
     try {
-      const resp = await fetch(`${apiBase()}/guilds/create`, {
-        method: 'POST',
-        headers: authHeaders(),
-        body: JSON.stringify({
-          name: createName.trim(),
-          tag: createTag.trim().toUpperCase(),
-          emblemId: String(createEmblem),
-          description: createDescription.trim(),
-        }),
+      await guildService.createGuild({
+        name: createName.trim(),
+        tag: createTag.trim().toUpperCase(),
+        emblemId: String(createEmblem),
+        description: createDescription.trim(),
       })
-      if (!resp.ok) throw new Error('Failed to create guild')
       createSuccess = true
       hasGuild = true
       activeTab = 'my-guild'

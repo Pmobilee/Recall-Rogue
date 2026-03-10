@@ -29,6 +29,7 @@
 - Release-gate hardening: added PR CI gate for typecheck + critical unit + critical Playwright flows, a unified `verify:release-gate` script, and resilient competitive leaderboard score submission queue with retry/drop safeguards.
 - Competitive sync UX hardening: Social screen now surfaces pending score submissions plus last submission attempt status/error for Daily/Endless/Scholar leaderboard reliability visibility.
 - Co-op networking hardening: `coopService` now uses authenticated API helpers with consistent error normalization; invite-code lookups treat only HTTP 404 as "not found" while surfacing true network failures in UI flows.
+- Guild networking hardening: extracted `guildService` for authenticated guild/me/search/join/create calls so Guild UI now gets consistent API error messages and token/base handling via shared authed fetch.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
