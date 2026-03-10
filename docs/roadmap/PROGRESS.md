@@ -17,6 +17,7 @@
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 - AR-20 Competitive/social runtime wiring including Daily + Endless leaderboard submissions.
 - AR-21 Monetization activation including Arcane Pass/Season Pass/Cosmetic Store surfacing and Scholar Challenge.
+- AR-31 Combat balance pass: player HP 80→100, heal buff, enemy damage reductions, floor damage scaling, post-encounter healing, wild card fix, early mini-boss HP reduction.
 - Regression hardening pass: unit coverage added for AR-21 monetization grant flows and AR-30 camp cosmetics progression state (`tests/unit/monetizationService.test.ts`, `tests/unit/campState.test.ts`).
 - Hub rendering hardening: `DomeCanvas` now renders interactive placeholders for missing sprite assets so knowledge-tree and other dome objects remain visible/clickable even without full art packs.
 - Dome asset key coverage hardening: added missing dome object/stage keys in `domeManifest`, generated deterministic low/high placeholder dome sprites, and restored clean `audit-assets` status (`All clear`).
@@ -553,6 +554,22 @@ Depends on: None. Estimated: Medium-Large. **Status: Core implementation complet
 Depends on: AR-08 (hub — complete). Estimated: Large. **Status: Completed (March 10, 2026).**
 → [Spec](completed/AR-30-CAMP-COSMETICS-VISUAL-PROGRESSION.md)
 
+### AR-31: Combat Balance Pass (Playtest-Driven) ✅
+
+Playtest-driven balance adjustments to reduce early-game lethality, improve heal card viability, and smooth the difficulty curve.
+
+- [x] Increase player HP to 100 (from 80)
+- [x] Buff heal cards (BASE_EFFECT.heal 5→8, restore/cleanse/overheal baseValues)
+- [x] Reduce early enemy damage (6 intent values across 4 enemies)
+- [x] Add floor-based enemy damage scaling (0.85×/1.0×/+5%)
+- [x] Post-encounter healing (15% standard, 25% story mode)
+- [x] Fix wild card (copies target type's base effect, weight 2%→5%)
+- [x] Early mini-boss HP reduction (0.75× on floors 1-3)
+- [x] Headless simulator updated to mirror all changes
+- [x] All 530 tests pass, 0 typecheck errors
+
+Depends on: None (combat system stable). Estimated: Medium. **Status: Completed (March 10, 2026).**
+
 ---
 
 ## Dependency Graph
@@ -582,6 +599,7 @@ FUTURE:
   AR-28 (Reward Altar) — core complete, optional icon art pass can run anytime
   AR-29 (First-Person Crawl) — core complete
   AR-30 (Camp Cosmetics) — core complete, sprite-generation pipeline pending
+  AR-31 (Combat Balance Pass) — complete, playtest-driven
 ```
 
 **Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 now run through worker-first generation + ingest/QA/promote scripts. AR-22→26 game design overhaul is complete (March 2026).

@@ -176,7 +176,7 @@ Game builds 120-fact pool → assigns each fact a type from balanced distributio
 | Debuff | ~8% | Weaken enemy |
 | Utility | ~7% | Draw, scout, manipulate |
 | Regen | ~3% | Heal over time |
-| Wild | ~2% | Copy/adapt |
+| Wild | ~5% | Copy/adapt (copies target type's BASE_EFFECT value) |
 
 ### Domain Role
 
@@ -244,9 +244,9 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
-| Restore | Flat heal | 5 |
-| Cleanse | Heal + remove 1 debuff | 3 + cleanse |
-| Overheal | Heal, excess → temporary block | 4 (overflow) |
+| Restore | Flat heal | 8 |
+| Cleanse | Heal + remove 1 debuff | 6 + cleanse |
+| Overheal | Heal, excess → temporary block | 7 (overflow) |
 | Lifetap | Heal % of damage dealt this turn | 30% turn dmg |
 
 ### Buff Mechanics
@@ -289,7 +289,7 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
 | Mirror | Copy previous card's effect | Copy |
-| Adapt | Choose attack/shield/heal at reduced value | 5/4/4 |
+| Adapt | Choose attack/shield/heal — copies target type's BASE_EFFECT | Varies (target type's base) |
 | Overclock | Double effect, draw 4 next turn instead of 5 | 2x, -1 draw |
 
 ### Mechanic Assignment Rules
@@ -603,7 +603,7 @@ Events are randomly selected from the pool after each boss fight.
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
 | Cave Bat | 19 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
-| Crystal Golem | 38 | 9 every 2 turns, 13 (heavy) | Gains block on off-turns via defend intent. Sustained damage. |
+| Crystal Golem | 38 | 7 every 2 turns, 9 (heavy) | Gains block on off-turns via defend intent. Sustained damage. |
 | Toxic Spore | 15 | 5 + poison | Low HP, DOT. Teaches healing. |
 | Shadow Mimic | 24 | 7, copies last card | Punishes repetition. |
 
@@ -618,10 +618,10 @@ Events are randomly selected from the pool after each boss fight.
 
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
-| Crystal Guardian | 35 | 8 | Golem variant, gains block per turn |
+| Crystal Guardian | 35 | 9 | Golem variant, gains block per turn |
 | Venomfang | 30 | 7 | Spider, applies poison on attack |
-| Stone Sentinel | 40 | 9 | Tanky — low attack, high HP |
-| Ember Drake | 32 | 10 | Glass cannon — high damage, low HP |
+| Stone Sentinel | 40 | 7 | Tanky — low attack, high HP |
+| Ember Drake | 32 | 7/10 | Glass cannon — 7 (fire breath), 10 (inferno blast) |
 | Shade Stalker | 28 | 8 | Copies player's last played card type |
 | Bone Collector | 36 | 7 | Heals 5 HP when player answers wrong |
 
@@ -638,7 +638,16 @@ Events are randomly selected from the pool after each boss fight.
 | Knowledge Golem | 21 | 140 | 15 damage, +5 bonus on wrong answers |
 | The Curator | 24 | 160 | 16 damage, all mechanics, phase 2 at 40% HP (final boss) |
 
-Floor scaling: HP and damage +15% per depth segment. Player: 80 HP start, 100 max, 0 block (resets each turn).
+Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and max, 0 block (resets each turn).
+
+**Floor-based enemy damage scaling (AR-31):** Enemy attack damage is multiplied by a floor-dependent factor via `getFloorDamageScaling(floor)` in `enemyManager.ts`:
+- Floors 1-3: 0.85x (reduced damage for onboarding)
+- Floors 4-6: 1.0x (baseline)
+- Floors 7+: +5% per floor above 6 (e.g., floor 10 = 1.20x)
+
+**Post-encounter healing (AR-31):** After each non-defeat encounter, the player heals 15% of max HP (`POST_ENCOUNTER_HEAL_PCT` in `balance.ts`). In Story Mode, an additional 10% is added (25% total, via `EXPLORER_POST_ENCOUNTER_HEAL_BONUS`).
+
+**Early mini-boss HP reduction (AR-31):** Mini-bosses on floors 1-3 have their HP multiplied by 0.75x (`EARLY_MINI_BOSS_HP_MULTIPLIER` in `balance.ts`), making them less punishing during early progression.
 
 ---
 

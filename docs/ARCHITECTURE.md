@@ -99,9 +99,9 @@ Located in `src/services/`:
 Located in `src/data/`:
 
 - `types.ts` — PlayerSave, fact types (extend with card types)
-- `balance.ts` — tuning constants (retune for card effect values)
+- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base damage/heal values), `POST_ENCOUNTER_HEAL_PCT` (15%), `EXPLORER_POST_ENCOUNTER_HEAL_BONUS` (10%), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.75x for floors 1-3)
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
-- Enemy definitions — `src/data/enemies.ts`
+- Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling
 - Card type mappings — `src/data/card-types.ts`
 
 ## 3. Retained Systems
@@ -135,10 +135,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Deck manager | `src/services/deckManager.ts` | Built |
 | Run pool builder | `src/services/runPoolBuilder.ts` | Built |
 | Turn manager | `src/services/turnManager.ts` | Built |
-| Enemy manager | `src/services/enemyManager.ts` | Built |
+| Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` for floor-based enemy damage multipliers |
 | Floor manager | `src/services/floorManager.ts` | Built |
 | Game flow controller | `src/services/gameFlowController.ts` | Built |
-| Encounter bridge | `src/services/encounterBridge.ts` | Built |
+| Encounter bridge | `src/services/encounterBridge.ts` | Built — applies post-encounter healing (`POST_ENCOUNTER_HEAL_PCT`) and early mini-boss HP reduction (`EARLY_MINI_BOSS_HP_MULTIPLIER`) |
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
@@ -183,7 +183,7 @@ These systems transfer from the mining codebase with minimal changes:
 | PassiveEffect type | `src/data/card-types.ts` | Built |
 | Tier 3 passive constants | `src/data/balance.ts` (`TIER3_PASSIVE_VALUE`) | Built |
 | Passive tracking in TurnState | `src/services/turnManager.ts` (`activePassives`) | Built |
-| Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built |
+| Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built — wild card branch now copies target type's `BASE_EFFECT` value |
 | Tier 3 extraction & SM-2 wiring | `src/services/encounterBridge.ts` | Built |
 
 ### Planned (P1)
@@ -306,13 +306,13 @@ src/
                            CameraSystem, AnimationSystem, TextureAtlasLRU, ...
     entities/              Player, Boss, Creature
   services/
-    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard)
+    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). Applies post-encounter healing and early mini-boss HP reduction.
     gameFlowController.ts  — Screen routing + run lifecycle
     turnManager.ts         — Turn-based encounter logic
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
-    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` for floor-based enemy damage multipliers.
     floorManager.ts        — Floor/room/boss/mini-boss generation
     runManager.ts          — Run stats recording
     runSaveService.ts      — Save/resume active run to localStorage
