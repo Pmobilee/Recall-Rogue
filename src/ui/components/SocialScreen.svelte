@@ -149,6 +149,9 @@
         <div class="meta">Today: <code>{dailyStatus.dateKey}</code> • Seed <code>{dailyStatus.seed}</code></div>
         {#if dailyStatus.attempt}
           <div class="meta">Status: {dailyStatus.attempt.status === 'completed' ? 'Completed' : 'In Progress'}</div>
+          {#if dailyStatus.playerRank !== null}
+            <div class="meta">Rank: #{dailyStatus.playerRank} • Reward: {dailyStatus.rewardLabel ?? 'Participation badge'}</div>
+          {/if}
         {:else}
           <div class="meta">Status: Not attempted yet</div>
         {/if}
@@ -158,6 +161,11 @@
         {#if dailyMessage}
           <p class="inline-message">{dailyMessage}</p>
         {/if}
+        <div class="meta reward-preview">
+          {#each dailyStatus.rewardPreview as rewardLine}
+            <div>{rewardLine}</div>
+          {/each}
+        </div>
         <div class="leaderboard-mini" aria-label="Daily expedition leaderboard">
           {#each dailyStatus.leaderboard.slice(0, 5) as row}
             <div class="leaderboard-row">
@@ -332,6 +340,11 @@
   .meta {
     font-size: calc(11px * var(--text-scale, 1));
     color: #93c5fd;
+  }
+
+  .reward-preview {
+    display: grid;
+    gap: 2px;
   }
 
   .inline-message {

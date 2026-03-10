@@ -27,6 +27,10 @@ export interface DailyExpeditionStatus {
   canAttempt: boolean
   attempt: DailyExpeditionAttempt | null
   leaderboard: DailyExpeditionLeaderboardEntry[]
+  playerRank: number | null
+  rewardBand: 'top_10' | 'top_25' | 'top_50' | 'participation' | null
+  rewardLabel: string | null
+  rewardPreview: string[]
 }
 
 interface DailyExpeditionState {
@@ -43,6 +47,12 @@ interface CompletionMetrics {
 
 const STORAGE_KEY = 'recall-rogue-daily-expedition-v1'
 const MAX_LEADERBOARD_ROWS = 20
+const REWARD_PREVIEW = [
+  'Top 10%: Champion badge + highest bonus',
+  'Top 25%: Elite badge + medium bonus',
+  'Top 50%: Explorer badge + small bonus',
+  'Everyone else: Participation badge',
+]
 
 const BOT_NAMES = [
   'Astra', 'Glyph', 'Nova', 'Rune', 'Kestrel', 'Echo', 'Talon', 'Vesper', 'Quill', 'Orion',
@@ -146,17 +156,44 @@ function buildLeaderboard(seed: number, attempt: DailyExpeditionAttempt | null):
   return entries.slice(0, MAX_LEADERBOARD_ROWS).map((entry, index) => ({ ...entry, rank: index + 1 }))
 }
 
+function getRewardBandForRank(rank: number, totalEntries: number): {
+  band: 'top_10' | 'top_25' | 'top_50' | 'participation'
+  label: string
+} {
+  const safeTotal = Math.max(1, totalEntries)
+  const percentile = rank / safeTotal
+  if (percentile <= 0.10) {
+    return { band: 'top_10', label: 'Top 10% • Champion bonus' }
+  }
+  if (percentile <= 0.25) {
+    return { band: 'top_25', label: 'Top 25% • Elite bonus' }
+  }
+  if (percentile <= 0.50) {
+    return { band: 'top_50', label: 'Top 50% • Explorer bonus' }
+  }
+  return { band: 'participation', label: 'Participation badge' }
+}
+
 export function getDailyExpeditionStatus(): DailyExpeditionStatus {
   const dateKey = todayKey()
   const seed = expeditionSeed(dateKey)
   const state = readState()
   const attempt = state.attempts[dateKey] ?? null
+  const leaderboard = buildLeaderboard(seed, attempt)
+  const playerRow = attempt?.status === 'completed'
+    ? leaderboard.find((row) => row.playerId === attempt.playerId && row.source === 'player')
+    : undefined
+  const reward = playerRow ? getRewardBandForRank(playerRow.rank, leaderboard.length) : null
   return {
     dateKey,
     seed,
     canAttempt: attempt === null,
     attempt,
-    leaderboard: buildLeaderboard(seed, attempt),
+    leaderboard,
+    playerRank: playerRow?.rank ?? null,
+    rewardBand: reward?.band ?? null,
+    rewardLabel: reward?.label ?? null,
+    rewardPreview: REWARD_PREVIEW,
   }
 }
 
@@ -207,4 +244,3 @@ export function completeDailyExpeditionAttempt(metrics: CompletionMetrics): Dail
   writeState(state)
   return updated
 }
-
