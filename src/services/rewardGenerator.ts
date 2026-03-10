@@ -1,6 +1,7 @@
 import type { Card } from '../data/card-types';
 import type { CardType } from '../data/card-types';
 import type { RewardArchetype } from './runManager';
+import { shuffled } from './randomUtils';
 
 const ALL_REWARD_TYPES: CardType[] = ['attack', 'shield', 'heal', 'buff', 'debuff', 'utility', 'regen', 'wild'];
 
@@ -56,8 +57,7 @@ export function generateCardRewardOptions(
 ): Card[] {
   const eligible = filterEligible(runPool, activeDeckFactIds, consumedRewardFactIds);
 
-  const shuffled = [...eligible].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
+  return shuffled(eligible).slice(0, count);
 }
 
 /**

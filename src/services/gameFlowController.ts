@@ -75,6 +75,7 @@ import {
   type MasteryChallengeQuestion,
 } from './masteryChallengeService'
 import { getCardTier } from './tierDerivation'
+import { shuffled } from './randomUtils'
 
 export type GameFlowState =
   | 'idle'
@@ -708,10 +709,9 @@ export function onCardRewardSkipped(): void {
 function openShopRoom(): void {
   const run = get(activeRunState);
   if (!run) return;
-  const cards = [...getActiveDeckCards()]
-    .filter((card) => !card.isEcho)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+  const cards = shuffled(
+    [...getActiveDeckCards()].filter((card) => !card.isEcho),
+  ).slice(0, 3);
   activeShopCards.set(cards);
   analyticsService.track({
     name: 'shop_visit',

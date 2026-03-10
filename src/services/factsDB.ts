@@ -5,6 +5,7 @@ import type { Database } from 'sql.js'
 import type { Fact, ContentType, Rarity, AgeRating, QuestionVariant } from '../data/types'
 import { factPackService } from './factPackService'
 import { AGE_BRACKET_KEY } from './legalConstants'
+import { shuffled } from './randomUtils'
 
 type SqlJsStatic = typeof import('sql.js')['default']
 let _initSqlJs: SqlJsStatic | null = null
@@ -178,8 +179,7 @@ class FactsDB {
       return categories.includes(topCategory)
     })
     // Shuffle and take up to limit
-    const shuffled = [...matching].sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, limit)
+    return shuffled(matching).slice(0, limit)
   }
 
   /**
@@ -337,8 +337,7 @@ class FactsDB {
 
     // If there are due review facts, prefer them
     if (dueFacts.length > 0) {
-      const shuffled = dueFacts.sort(() => Math.random() - 0.5)
-      for (const rs of shuffled) {
+      for (const rs of shuffled(dueFacts)) {
         const fact = this.getById(rs.factId)
         if (fact) return fact
       }

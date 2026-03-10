@@ -4,6 +4,7 @@
   import { factsDB } from '../../services/factsDB'
   import { challengeService, type ChallengeMode } from '../../services/challengeService'
   import { BALANCE } from '../../data/balance'
+  import { shuffled } from '../../services/randomUtils'
   import SpeedRoundTimer from './SpeedRoundTimer.svelte'
 
   interface Props {
@@ -32,13 +33,11 @@
         .filter(f => f.id !== fact.id && f.category.some(c => fact.category.includes(c)))
         .slice(0, 3)
         .map(f => f.quizQuestion)
-      const options = [...decoys, fact.quizQuestion]
-      return options.sort(() => Math.random() - 0.5)
+      return shuffled([...decoys, fact.quizQuestion])
     }
     // speed mode: standard 4-option quiz
     const distractors = (fact.distractors ?? []).slice(0, 3)
-    const options = [...distractors, fact.correctAnswer]
-    return options.sort(() => Math.random() - 0.5)
+    return shuffled([...distractors, fact.correctAnswer])
   }
   const choices = $derived(buildChoices())
 

@@ -6,6 +6,7 @@ import type { Card } from '../data/card-types';
 import type { Fact } from '../data/types';
 import type { EnemyCategory } from '../data/enemies';
 import { createCard } from './cardFactory';
+import { shuffled } from './randomUtils';
 
 /** The reward options presented after an encounter. */
 export interface EncounterRewardOptions {
@@ -36,8 +37,7 @@ export function generateCardRewards(
   if (availableFacts.length === 0) return [];
 
   // Shuffle and pick up to `count` facts
-  const shuffled = [...availableFacts].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+  const selected = shuffled(availableFacts).slice(0, Math.min(count, availableFacts.length));
 
   // Create tier 1 cards (no reviewState = tier 1)
   return selected.map(fact => createCard(fact, undefined));

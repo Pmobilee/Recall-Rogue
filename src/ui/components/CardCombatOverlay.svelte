@@ -24,6 +24,7 @@
   import { playCardAudio } from '../../services/cardAudioManager'
   import { hasCardback } from '../utils/cardbackManifest'
   import { REVEAL_DURATION, TIER_UP_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { shuffled } from '../../services/randomUtils'
 
   interface Props {
     turnState: TurnState | null
@@ -359,7 +360,7 @@
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
-    const shuffledDistractors = [...distractorSource].sort(() => Math.random() - 0.5)
+    const shuffledDistractors = shuffled(distractorSource)
     const picked = shuffledDistractors.slice(0, Math.min(distractorCount, shuffledDistractors.length))
 
     const allAnswers = [...picked]
