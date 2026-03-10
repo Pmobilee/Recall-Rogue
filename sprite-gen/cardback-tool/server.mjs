@@ -19,6 +19,11 @@ const LOWRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/lowres');
 const STYLELAB_OUTPUT_DIR = resolve(__dirname, 'stylelab-output');
 const PROMPTLAB_OUTPUT_DIR = resolve(__dirname, 'promptlab-output');
 
+const PLAYTEST_DIR = resolve(PROJECT_ROOT, 'data/playtests');
+const PLAYTEST_LOGS_DIR = resolve(PLAYTEST_DIR, 'logs');
+const PLAYTEST_REPORTS_DIR = resolve(PLAYTEST_DIR, 'reports');
+const PLAYTEST_LEADERBOARD_PATH = resolve(PLAYTEST_DIR, 'leaderboard.json');
+
 // Ensure output directories exist
 mkdirSync(HIRES_DIR, { recursive: true });
 mkdirSync(LOWRES_DIR, { recursive: true });
@@ -1523,6 +1528,90 @@ app.get('/api/promptlab/image/:factId/:strategyId', (req, res) => {
 app.get('/api/promptlab/results', (req, res) => {
   const rows = stmtPromptResults.all();
   res.json(rows);
+});
+
+// --- Playtest Dashboard API ---
+
+app.get('/api/playtest/leaderboard', (req, res) => {
+  if (!existsSync(PLAYTEST_LEADERBOARD_PATH)) {
+    return res.json({ updatedAt: null, totalPlaythroughs: 0, totalIssues: 0, issues: [] });
+  }
+  try {
+    const data = JSON.parse(readFileSync(PLAYTEST_LEADERBOARD_PATH, 'utf-8'));
+    res.json(data);
+  } catch (e) {
+    res.status(500).json({ error: 'Failed to read leaderboard' });
+  }
+});
+
+app.get('/api/playtest/logs', (req, res) => {
+  if (!existsSync(PLAYTEST_LOGS_DIR)) return res.json([]);
+  try {
+    const files = readdirSync(PLAYTEST_LOGS_DIR).filter(f => f.endsWith('.json')).sort().reverse();
+    const summaries = files.map(f => {
+      try {
+        const log = JSON.parse(readFileSync(resolve(PLAYTEST_LOGS_DIR, f), 'utf-8'));
+        return {
+          id: log.id,
+          file: f,
+          profileId: log.profileId,
+          rngSeed: log.rngSeed,
+          startedAt: log.startedAt,
+          result: log.summary?.result,
+          finalFloor: log.summary?.finalFloor,
+          totalEncounters: log.summary?.totalEncounters,
+          overallAccuracy: log.summary?.overallAccuracy,
+          maxCombo: log.summary?.maxCombo,
+          speedBonuses: log.summary?.speedBonuses
+        };
+      } catch { return { file: f, error: 'parse error' }; }
+    });
+    res.json(summaries);
+  } catch (e) {
+    res.status(500).json({ error: 'Failed to read logs' });
+  }
+});
+
+app.get('/api/playtest/reports', (req, res) => {
+  if (!existsSync(PLAYTEST_REPORTS_DIR)) return res.json([]);
+  try {
+    const files = readdirSync(PLAYTEST_REPORTS_DIR).filter(f => f.endsWith('.json')).sort().reverse();
+    const summaries = files.map(f => {
+      try {
+        const report = JSON.parse(readFileSync(resolve(PLAYTEST_REPORTS_DIR, f), 'utf-8'));
+        return {
+          playthroughId: report.playthroughId,
+          profileId: report.profileId,
+          analyzedAt: report.analyzedAt,
+          issueCount: report.issueCount ?? (report.issues || []).length,
+          file: f
+        };
+      } catch { return { file: f, error: 'parse error' }; }
+    });
+    res.json(summaries);
+  } catch (e) {
+    res.status(500).json({ error: 'Failed to read reports' });
+  }
+});
+
+app.get('/api/playtest/log/:id', (req, res) => {
+  const logPath = resolve(PLAYTEST_LOGS_DIR, `${req.params.id}.json`);
+  if (!existsSync(logPath)) return res.status(404).json({ error: 'Log not found' });
+  try {
+    res.json(JSON.parse(readFileSync(logPath, 'utf-8')));
+  } catch (e) {
+    res.status(500).json({ error: 'Failed to read log' });
+  }
+});
+
+app.get('/api/playtest/report/:id', (req, res) => {
+  const reportPath = resolve(PLAYTEST_REPORTS_DIR, `report-${req.params.id}.json`);
+  if (!existsSync(reportPath)) return res.status(404).json({ error: 'Report not found' });
+  try {
+    res.json(JSON.parse(readFileSync(reportPath, 'utf-8')));
+  } catch (e) {
+    res.status(500).json({ error: 'Failed to read report' });
+  }
 });
 
 // --- Start Server ---
