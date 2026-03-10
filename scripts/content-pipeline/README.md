@@ -41,6 +41,8 @@ Legacy names (`fetch-nasa-apod.mjs`, `fetch-gbif-species.mjs`, etc.) remain as w
 
 ## Fact generation (AR-17)
 
+Note: local paid Anthropic API generation is disabled in this repo. Generation scripts run in dry-run mode only. Use external Claude subscription workers for live fact creation, then ingest/QA here.
+
 - `generate/haiku-client.mjs` - API client with retry/rate/cost tracking
 - `generate/batch-generate.mjs` - batch JSON -> JSONL generation
 - `generate/validate-output.mjs` - schema + quality validation
@@ -58,10 +60,10 @@ node scripts/content-pipeline/generate/batch-generate.mjs --input data/raw/geogr
 node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography.generated.jsonl --strict
 node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain geography --dry-run --report /tmp/geography.ingest-report.json
 
-# All domains in one run (use --dry-run first, then remove it for production)
+# All domains in one run (dry-run only in this repo)
 npm run content:generate:all -- --dry-run --limit 50 --strict false
 
-# Same command with mixed-source inputs (recommended for production runs)
+# Same command with mixed-source inputs (dry-run)
 npm run content:generate:all -- --source-mix --limit 1000 --concurrency 2 --rate-limit 80 --resume true --max-cost-usd 25
 ```
 

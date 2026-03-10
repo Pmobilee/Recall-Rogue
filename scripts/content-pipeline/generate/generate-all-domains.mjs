@@ -84,7 +84,7 @@ async function main() {
     'output-dir': 'data/generated',
     'report-path': 'data/generated/qa-reports/generate-all-domains-report.json',
     limit: 0,
-    'dry-run': false,
+    'dry-run': true,
     resume: true,
     validate: true,
     strict: false,
@@ -320,3 +320,6 @@ main().catch((error) => {
   console.error('[generate-all-domains] failed:', error instanceof Error ? error.message : error)
   process.exit(1)
 })
+  if (!dryRun) {
+    throw new Error('Paid API generation is disabled in this repo. Keep --dry-run true and use external Claude workers for live fact generation.')
+  }

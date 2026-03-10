@@ -20,7 +20,7 @@ async function main() {
     count: 5,
     input: '',
     output: '',
-    'dry-run': false,
+    'dry-run': true,
     'rate-limit': 50,
     retries: 3,
   })
@@ -39,8 +39,12 @@ async function main() {
 
   const prompt = await loadPrompt(root, args.domain)
   const domainTag = toDomainTag(args.domain)
+  const dryRun = Boolean(args['dry-run'])
+  if (!dryRun) {
+    throw new Error('Paid API generation is disabled. Use --dry-run and route live generation through external Claude workers.')
+  }
   const client = createHaikuClient({
-    dryRun: Boolean(args['dry-run']),
+    dryRun,
     rateLimit: Number(args['rate-limit']) || 50,
     retries: Number(args.retries) || 3,
   })

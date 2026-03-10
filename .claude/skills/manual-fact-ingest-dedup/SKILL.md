@@ -11,6 +11,8 @@ Use this skill when:
 ## Overview
 End-to-end pipeline for manual fact ingestion with schema validation, two-stage deduplication (exact + semantic with TF-IDF), CJK-aware scoring, persistent dedup index, interactive review UI, source-mix prep for generation workers, and safe merge workflow. All operations are non-destructive until explicit finalize step.
 
+Local paid Anthropic API generation is intentionally disabled in this repo. Use external Claude subscription workers for live fact generation, then run ingestion/QA/promotion here.
+
 ## Commands
 
 ### Build Mixed Source Inputs (for generation workers)

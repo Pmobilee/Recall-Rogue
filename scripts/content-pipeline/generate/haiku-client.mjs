@@ -1,11 +1,43 @@
 import { setTimeout as sleep } from 'node:timers/promises'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 const MODEL = 'claude-haiku-4-5-20251001'
 const INPUT_COST_PER_MILLION = 0.8
 const OUTPUT_COST_PER_MILLION = 4.0
+const LOCAL_PAID_GENERATION_DISABLED = true
 
 function estimateCostUsd(inputTokens, outputTokens) {
   return ((inputTokens / 1_000_000) * INPUT_COST_PER_MILLION) + ((outputTokens / 1_000_000) * OUTPUT_COST_PER_MILLION)
+}
+
+async function readLedgerTotalUsd(ledgerPath) {
+  try {
+    const text = await fs.readFile(ledgerPath, 'utf8')
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .reduce((sum, line) => {
+        try {
+          const parsed = JSON.parse(line)
+          return sum + Number(parsed?.deltaCostUsd || 0)
+        } catch {
+          return sum
+        }
+      }, 0)
+  } catch (error) {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
+      return 0
+    }
+    throw error
+  }
+}
+
+async function appendLedgerUsage(ledgerPath, usage) {
+  if (!ledgerPath) return
+  await fs.mkdir(path.dirname(ledgerPath), { recursive: true })
+  await fs.appendFile(ledgerPath, `${JSON.stringify(usage)}\n`, 'utf8')
 }
 
 function maybeJsonParse(text) {
@@ -93,8 +125,18 @@ async function loadAnthropicClient(apiKey) {
 export function createHaikuClient(config = {}) {
   const apiKey = config.apiKey || process.env.ANTHROPIC_API_KEY || ''
   const rateLimit = Number(config.rateLimit || process.env.HAIKU_RATE_LIMIT || 50)
-  const retries = Number(config.retries || process.env.HAIKU_RETRIES || 3)
+  const retryLimit = Math.max(0, Number(config.retries || process.env.HAIKU_RETRIES || 3))
   const dryRun = Boolean(config.dryRun)
+  const maxCostUsd = Math.max(0, Number(config.maxCostUsd ?? process.env.HAIKU_MAX_COST_USD ?? 0))
+  const ledgerPathRaw = String(config.budgetLedgerPath || process.env.HAIKU_BUDGET_LEDGER_PATH || '').trim()
+  const budgetLedgerPath = ledgerPathRaw ? path.resolve(process.cwd(), ledgerPathRaw) : ''
+  const budgetRefreshMs = Math.max(250, Number(config.budgetRefreshMs || process.env.HAIKU_BUDGET_REFRESH_MS || 2000))
+
+  if (!dryRun && LOCAL_PAID_GENERATION_DISABLED) {
+    throw new Error(
+      'Paid Anthropic API generation is disabled in this repository. Use dry-run mode locally and route real generation through external Claude subscription workers.',
+    )
+  }
 
   if (!dryRun && !apiKey) {
     throw new Error('ANTHROPIC_API_KEY is required unless dryRun=true')
@@ -104,8 +146,12 @@ export function createHaikuClient(config = {}) {
   let totalOutputTokens = 0
   let callCount = 0
   let errorCount = 0
+  let retryCount = 0
   let nextAvailableAt = 0
   let clientPromise = null
+  let lastBudgetRefreshAt = 0
+  let cachedGlobalCostUsd = 0
+  const retryEvents = []
 
   async function throttle() {
     const intervalMs = Math.max(50, Math.round(60_000 / Math.max(rateLimit, 1)))
@@ -123,11 +169,41 @@ export function createHaikuClient(config = {}) {
     return clientPromise
   }
 
-  function trackUsage(usage) {
+  async function refreshGlobalCost(force = false) {
+    if (!budgetLedgerPath) return 0
+    const now = Date.now()
+    if (!force && now - lastBudgetRefreshAt < budgetRefreshMs) return cachedGlobalCostUsd
+    cachedGlobalCostUsd = await readLedgerTotalUsd(budgetLedgerPath)
+    lastBudgetRefreshAt = now
+    return cachedGlobalCostUsd
+  }
+
+  async function budgetExceeded() {
+    if (dryRun || maxCostUsd <= 0) return false
+    if (budgetLedgerPath) {
+      const spent = await refreshGlobalCost()
+      return spent >= maxCostUsd
+    }
+    return estimateCostUsd(totalInputTokens, totalOutputTokens) >= maxCostUsd
+  }
+
+  async function trackUsage(usage) {
     const input = Number(usage?.input_tokens || 0)
     const output = Number(usage?.output_tokens || 0)
     totalInputTokens += input
     totalOutputTokens += output
+    const deltaCostUsd = estimateCostUsd(input, output)
+    if (budgetLedgerPath && deltaCostUsd > 0) {
+      await appendLedgerUsage(budgetLedgerPath, {
+        ts: new Date().toISOString(),
+        pid: process.pid,
+        model: MODEL,
+        inputTokens: input,
+        outputTokens: output,
+        deltaCostUsd,
+      })
+      cachedGlobalCostUsd += deltaCostUsd
+    }
   }
 
   function getStats() {
@@ -137,6 +213,10 @@ export function createHaikuClient(config = {}) {
       estimatedCost: estimateCostUsd(totalInputTokens, totalOutputTokens),
       callCount,
       errorCount,
+      retryCount,
+      maxCostUsd,
+      budgetLedgerPath: budgetLedgerPath || null,
+      globalEstimatedCost: budgetLedgerPath ? cachedGlobalCostUsd : null,
     }
   }
 
@@ -145,6 +225,8 @@ export function createHaikuClient(config = {}) {
     totalOutputTokens = 0
     callCount = 0
     errorCount = 0
+    retryCount = 0
+    retryEvents.length = 0
   }
 
   async function generateFact(systemPrompt, sourceData, domainTag) {
@@ -200,8 +282,19 @@ export function createHaikuClient(config = {}) {
     }
 
     let lastError = null
-    for (let attempt = 1; attempt <= retries; attempt += 1) {
+    const maxAttempts = retryLimit + 1
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
       try {
+        if (await budgetExceeded()) {
+          return {
+            error: `Budget cap reached (maxCostUsd=${maxCostUsd})`,
+            retryable: false,
+            code: 'BudgetExceeded',
+            attempts: attempt - 1,
+            retries: Math.max(0, attempt - 1),
+          }
+        }
+
         await throttle()
         const client = await getClient()
         const response = await client.messages.create({
@@ -216,7 +309,7 @@ export function createHaikuClient(config = {}) {
           ],
         })
 
-        trackUsage(response?.usage)
+        await trackUsage(response?.usage)
         const text = extractTextContent(response?.content)
 
         let parsed
@@ -228,7 +321,19 @@ export function createHaikuClient(config = {}) {
 
         const schemaError = schemaValidateFact(parsed)
         if (schemaError) {
-          return { error: schemaError, retryable: false, code: 'SchemaValidationError' }
+          return {
+            error: schemaError,
+            retryable: false,
+            code: 'SchemaValidationError',
+            attempts: attempt,
+            retries: Math.max(0, attempt - 1),
+          }
+        }
+
+        parsed._generationMeta = {
+          attempts: attempt,
+          retries: Math.max(0, attempt - 1),
+          lastRetryCode: lastError?.code || null,
         }
 
         return parsed
@@ -236,12 +341,24 @@ export function createHaikuClient(config = {}) {
         const mapped = mapError(error)
         lastError = mapped
 
-        if (!mapped.retryable || attempt >= retries) {
+        if (!mapped.retryable || attempt >= maxAttempts) {
           errorCount += 1
-          return mapped
+          return {
+            ...mapped,
+            attempts: attempt,
+            retries: Math.max(0, attempt - 1),
+          }
         }
 
         const backoffMs = (2 ** attempt) * 1000 + Math.floor(Math.random() * 1000)
+        retryCount += 1
+        retryEvents.push({
+          ts: new Date().toISOString(),
+          attempt,
+          code: mapped.code,
+          backoffMs,
+          message: String(mapped.error || '').slice(0, 240),
+        })
         await sleep(backoffMs)
       }
     }
@@ -250,9 +367,10 @@ export function createHaikuClient(config = {}) {
     return lastError || { error: 'Unknown failure', retryable: false, code: 'UnknownError' }
   }
 
-  return {
-    generateFact,
-    getStats,
-    resetStats,
-  }
+    return {
+      generateFact,
+      getStats,
+      resetStats,
+      getRetryEvents: () => [...retryEvents],
+    }
 }
