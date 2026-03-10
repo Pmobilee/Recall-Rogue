@@ -164,6 +164,18 @@ These systems transfer from the mining codebase with minimal changes:
 | Special event overlay | `src/ui/components/SpecialEventOverlay.svelte` | Built |
 | Push notifications | `src/services/notificationService.ts` | Built |
 
+### Implemented (Camp Hub Visual Overhaul)
+
+| System | File(s) | Status |
+|--------|---------|--------|
+| Camp sprite button | `src/ui/components/CampSpriteButton.svelte` | Built |
+| Camp speech bubble | `src/ui/components/CampSpeechBubble.svelte` | Built |
+| Camp HUD overlay | `src/ui/components/CampHudOverlay.svelte` | Built |
+| Camp upgrade modal | `src/ui/components/CampUpgradeModal.svelte` | Built |
+| Hub screen (camp scene) | `src/ui/components/HubScreen.svelte` | Rewritten |
+| Camp art manifest | `src/ui/utils/campArtManifest.ts` | Extended |
+| Camp sprites | `public/assets/camp/sprites/{name}/{name}-base.png` | 11 sprites + background |
+
 ### Implemented (P0.5 — Mastery Tiers)
 
 | System | File(s) | Status |
@@ -186,7 +198,7 @@ These systems transfer from the mining codebase with minimal changes:
 
 ### P2+ — Post-Launch
 
-- Endless mode, cosmetic store, language pack support, leaderboards
+- Endless mode, cosmetic store (Treasure Chest sprite → dedicated shop), language pack support
 
 ## 5. Archived Systems
 
