@@ -21,6 +21,7 @@
 - Hub rendering hardening: `DomeCanvas` now renders interactive placeholders for missing sprite assets so knowledge-tree and other dome objects remain visible/clickable even without full art packs.
 - Dome asset key coverage hardening: added missing dome object/stage keys in `domeManifest`, generated deterministic low/high placeholder dome sprites, and restored clean `audit-assets` status (`All clear`).
 - AR-20 competitive runtime hardening: added regression coverage for Endless Depths and Scholar Challenge reservation/completion/leaderboard mapping (`tests/unit/endlessDepthsService.test.ts`, `tests/unit/scholarChallengeService.test.ts`).
+- Added dome sprite coverage regression tests to keep layout/tree sprite keys aligned with `DOME_SPRITE_KEYS` (`tests/unit/domeManifest.test.ts`).
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
