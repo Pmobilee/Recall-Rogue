@@ -12,6 +12,12 @@
     getEndlessDepthsGlobalLeaderboard,
     type EndlessDepthsEntry,
   } from '../../services/endlessDepthsService'
+  import {
+    getScholarChallengeStatus,
+    getScholarChallengeGlobalLeaderboard,
+    type ScholarChallengeStatus,
+  } from '../../services/scholarChallengeService'
+  import WeeklyChallenge from './WeeklyChallenge.svelte'
   import CoopLobby from './CoopLobby.svelte'
   import DuelView from './DuelView.svelte'
   import GuildView from './GuildView.svelte'
@@ -21,7 +27,11 @@
     onOpenSettings: () => void
     onStartDailyExpedition: () => { ok: true } | { ok: false; reason: string }
     onStartEndlessDepths: () => { ok: true } | { ok: false; reason: string }
+    onStartScholarChallenge: () => { ok: true } | { ok: false; reason: string }
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
+    onOpenArcanePass: () => void
+    onOpenSeasonPass: () => void
+    onOpenCosmeticStore: () => void
   }
 
   let {
@@ -29,7 +39,11 @@
     onOpenSettings,
     onStartDailyExpedition,
     onStartEndlessDepths,
+    onStartScholarChallenge,
     onOpenRelicSanctum,
+    onOpenArcanePass,
+    onOpenSeasonPass,
+    onOpenCosmeticStore,
   }: Props = $props()
 
   type SocialPanel = 'coop' | 'duel' | 'guild' | null
@@ -39,7 +53,10 @@
   let dailyMessage = $state('')
   let dailyRows = $state<DailyExpeditionStatus['leaderboard']>([])
   let endlessRows = $state<EndlessDepthsEntry[]>(getEndlessDepthsLeaderboard(5))
+  let scholarStatus = $state<ScholarChallengeStatus>(getScholarChallengeStatus())
+  let scholarRows = $state(getScholarChallengeStatus().leaderboard.slice(0, 5))
   let endlessMessage = $state('')
+  let scholarMessage = $state('')
   let relicMessage = $state('')
   let leaderboardMessage = $state('')
   let coopMessage = $state('')
@@ -137,6 +154,18 @@
     }
   }
 
+  async function refreshScholarRows(): Promise<void> {
+    scholarStatus = getScholarChallengeStatus()
+    scholarRows = scholarStatus.leaderboard.slice(0, 5)
+    const remoteRows = await getScholarChallengeGlobalLeaderboard(scholarStatus.weekKey, 5)
+    if (remoteRows && remoteRows.length > 0) {
+      scholarRows = remoteRows
+      leaderboardMessage = ''
+    } else if (!leaderboardMessage) {
+      leaderboardMessage = 'Using local fallback leaderboard.'
+    }
+  }
+
   async function startDaily(): Promise<void> {
     const started = onStartDailyExpedition()
     if (started.ok) {
@@ -168,6 +197,23 @@
     await refreshEndlessRows()
   }
 
+  async function startScholarChallenge(): Promise<void> {
+    const started = onStartScholarChallenge()
+    if (started.ok) {
+      scholarMessage = ''
+      await refreshScholarRows()
+      return
+    }
+    if (started.reason === 'already_attempted_this_week') {
+      scholarMessage = 'Scholar Challenge already attempted this week.'
+    } else if (started.reason === 'onboarding_required') {
+      scholarMessage = 'Finish onboarding before Scholar Challenge unlocks.'
+    } else {
+      scholarMessage = 'Unable to start Scholar Challenge right now.'
+    }
+    await refreshScholarRows()
+  }
+
   function openRelicSanctum(): void {
     const opened = onOpenRelicSanctum()
     if (opened.ok) {
@@ -187,6 +233,7 @@
     playerName
     void refreshDailyStatus()
     void refreshEndlessRows()
+    void refreshScholarRows()
   })
 </script>
 
@@ -280,6 +327,40 @@
       </article>
 
       <article class="card">
+        <h3>Scholar Challenge</h3>
+        <p>Weekly curated run with a deterministic seed and a cycle-scoped leaderboard.</p>
+        <div class="meta">
+          Week: <code>{scholarStatus.weekKey}</code> • Seed <code>{scholarStatus.seed}</code>
+        </div>
+        <div class="meta">
+          Domains: {scholarStatus.primaryDomain.replace('_', ' ')} + {scholarStatus.secondaryDomain.replace('_', ' ')}
+        </div>
+        {#if scholarStatus.attempt}
+          <div class="meta">Status: {scholarStatus.attempt.status === 'completed' ? 'Completed' : 'In Progress'}</div>
+          {#if scholarStatus.playerRank !== null}
+            <div class="meta">Rank: #{scholarStatus.playerRank}</div>
+          {/if}
+        {:else}
+          <div class="meta">Status: Not attempted this week</div>
+        {/if}
+        <div class="actions">
+          <button type="button" class="primary" onclick={startScholarChallenge} disabled={!scholarStatus.canAttempt}>Start Scholar Run</button>
+        </div>
+        {#if scholarMessage}
+          <p class="inline-message">{scholarMessage}</p>
+        {/if}
+        <div class="leaderboard-mini" aria-label="Scholar challenge leaderboard">
+          {#each scholarRows as row}
+            <div class="leaderboard-row">
+              <span class="leader-rank">#{row.rank}</span>
+              <span class="leader-name">{row.playerName}</span>
+              <span class="leader-score">{row.score}</span>
+            </div>
+          {/each}
+        </div>
+      </article>
+
+      <article class="card">
         <h3>Relic Sanctum</h3>
         <p>Between runs, choose which mastered relics stay in your active 12-slot loadout.</p>
         <div class="meta">Mastered relic facts: {masteredCount}</div>
@@ -305,6 +386,36 @@
         <div class="actions">
           <button type="button" class="primary" onclick={() => openPanel('guild')}>Open Guilds</button>
         </div>
+      </article>
+
+      <article class="card">
+        <h3>Arcane Pass</h3>
+        <p>Subscription tiers, ad-free unlock, and subscriber-only category filtering.</p>
+        <div class="actions">
+          <button type="button" class="primary" onclick={onOpenArcanePass}>Open Arcane Pass</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Season Pass</h3>
+        <p>Track free and premium milestones for the current season.</p>
+        <div class="actions">
+          <button type="button" class="primary" onclick={onOpenSeasonPass}>Open Season Pass</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Cosmetic Store</h3>
+        <p>Daily mineral deals, premium cosmetics, and mystery cache reveals.</p>
+        <div class="actions">
+          <button type="button" class="primary" onclick={onOpenCosmeticStore}>Open Store</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Weekly Challenges</h3>
+        <p>Progress on weekly goals tied to mining, learning, and collecting.</p>
+        <WeeklyChallenge />
       </article>
     </div>
   {/if}

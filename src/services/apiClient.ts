@@ -371,11 +371,14 @@ export class ApiClient {
   async getLeaderboard(
     category: string,
     limit: number = 50,
-    opts?: { dateKey?: string },
+    opts?: { dateKey?: string; weekKey?: string },
   ): Promise<LeaderboardEntry[]> {
     const params = new URLSearchParams({ limit: String(limit) })
     if (opts?.dateKey) {
       params.set('dateKey', opts.dateKey)
+    }
+    if (opts?.weekKey) {
+      params.set('weekKey', opts.weekKey)
     }
     const response = await this.fetchWithAuth(
       `/leaderboards/${encodeURIComponent(category)}?${params.toString()}`,

@@ -7,6 +7,8 @@
 import type { PlayerSave } from '../data/types'
 import { purchaseProduct } from './iapService'
 
+const AD_FREE_PRODUCT_ID = 'com.terragacha.adfree'
+
 export interface SubscriptionRecord {
   type: string
   expiresAt: string
@@ -23,6 +25,18 @@ export function isSubscriber(save: PlayerSave): boolean {
 export function getSubscriptionTier(save: PlayerSave): string | null {
   if (!isSubscriber(save)) return null
   return save.subscription!.type
+}
+
+/** Arcane Pass access gate (includes all paid subscription tiers). */
+export function hasArcanePass(save: PlayerSave): boolean {
+  const tier = getSubscriptionTier(save)
+  return tier === 'terra_pass' || tier === 'expedition_patron' || tier === 'grand_patron'
+}
+
+/** True when one-time ad-removal has been purchased. */
+export function hasAdRemoval(save: PlayerSave): boolean {
+  if (save.adsRemoved) return true
+  return (save.purchasedProducts ?? []).includes(AD_FREE_PRODUCT_ID)
 }
 
 /** Check if user is a patron (expedition or grand) */
@@ -44,6 +58,11 @@ export async function subscribeExpeditionPatron(): Promise<{ success: boolean; e
 /** Attempt to subscribe as Grand Patron */
 export async function subscribeGrandPatron(): Promise<{ success: boolean; error?: string }> {
   return purchaseProduct('com.terragacha.patron.annual')
+}
+
+/** Attempt to unlock one-time ad removal. */
+export async function purchaseAdRemoval(): Promise<{ success: boolean; error?: string }> {
+  return purchaseProduct(AD_FREE_PRODUCT_ID)
 }
 
 /** Open platform subscription management (App Store / Play Store) */

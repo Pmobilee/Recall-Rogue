@@ -1,5 +1,6 @@
 import type { Fact, ReviewState } from '../data/types';
 import type { Card, CardType, FactDomain } from '../data/card-types';
+import { normalizeFactDomain } from '../data/card-types';
 import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data/balance';
@@ -203,7 +204,12 @@ export function buildRunPool(
   primaryDomain: FactDomain,
   secondaryDomain: FactDomain,
   allReviewStates: ReviewState[],
-  options?: { poolSize?: number; probeRunNumber?: number; probeDomain?: FactDomain },
+  options?: {
+    poolSize?: number
+    probeRunNumber?: number
+    probeDomain?: FactDomain
+    subscriberCategoryFilters?: Record<string, string[]>
+  },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
   resetCardIdCounter();
@@ -220,6 +226,30 @@ export function buildRunPool(
     return 'general_knowledge';
   }
 
+  function factSubcategory(fact: Fact): string {
+    const second = fact.category[1]?.trim();
+    if (second) return second;
+    const l2 = fact.categoryL2?.trim();
+    if (l2) return l2;
+    return 'General';
+  }
+
+  function normalizeSubcategoryLabel(value: string): string {
+    return value.trim().toLowerCase();
+  }
+
+  function applySubscriberSubcategoryFilter(domain: FactDomain, facts: Fact[]): Fact[] {
+    const filters = options?.subscriberCategoryFilters;
+    if (!filters) return facts;
+    const key = normalizeFactDomain(domain);
+    const enabled = filters[key];
+    if (!Array.isArray(enabled) || enabled.length === 0) return facts;
+    const allowed = new Set(enabled.map(normalizeSubcategoryLabel));
+    const filtered = facts.filter((fact) => allowed.has(normalizeSubcategoryLabel(factSubcategory(fact))));
+    // Fallback to the unfiltered domain set if the filter became too strict.
+    return filtered.length > 0 ? filtered : facts;
+  }
+
   function collectDomainFacts(domain: FactDomain, limit: number, excludedFactIds: Set<string>): Fact[] {
     const normalized = normalizeDomain(domain);
     const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
@@ -232,8 +262,9 @@ export function buildRunPool(
       addedIds.add(fact.id);
     };
 
-    const categoryFacts = factsDB.getByCategory(categories, limit * 3)
+    const categoryFactsRaw = factsDB.getByCategory(categories, limit * 3)
       .filter(f => !excludedFactIds.has(f.id));
+    const categoryFacts = applySubscriberSubcategoryFilter(normalized, categoryFactsRaw);
     const stratified = stratifiedSample(categoryFacts, limit);
     for (const fact of stratified) {
       pushUnique(fact);
@@ -242,13 +273,17 @@ export function buildRunPool(
     if (selected.length >= limit) return selected.slice(0, limit);
 
     const fallbackDomains = FALLBACK_DOMAIN_ORDER
-      .filter((candidate) => candidate !== normalized)
-      .map((candidate) => DOMAIN_TO_CATEGORY[candidate] ?? []);
+      .filter((candidate) => candidate !== normalized);
 
-    for (const fallbackCategories of fallbackDomains) {
+    for (const fallbackDomain of fallbackDomains) {
       const needed = limit - selected.length;
       if (needed <= 0) break;
-      for (const fact of factsDB.getByCategory(fallbackCategories, needed + 30)) {
+      const fallbackCategories = DOMAIN_TO_CATEGORY[fallbackDomain] ?? [];
+      const fallbackFacts = applySubscriberSubcategoryFilter(
+        fallbackDomain,
+        factsDB.getByCategory(fallbackCategories, needed + 30),
+      );
+      for (const fact of fallbackFacts) {
         if (selected.length >= limit) break;
         pushUnique(fact);
       }

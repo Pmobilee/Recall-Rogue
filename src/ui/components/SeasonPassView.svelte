@@ -1,7 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { getCurrentSeason, computeSeasonPoints, type SeasonReward } from '../../data/seasonPass'
-  import { purchaseProduct } from '../../services/iapService'
+  import { purchaseWithLocalFallback } from '../../services/monetizationService'
 
   interface Props {
     onClose: () => void
@@ -32,10 +32,12 @@
   const progressPercent = $derived(Math.min(100, (currentPoints / maxPoints) * 100))
 
   let purchasing = $state(false)
+  let purchaseMessage = $state('')
 
   async function handleUpgrade() {
     purchasing = true
-    await purchaseProduct('com.terragacha.seasonpass.current')
+    const result = await purchaseWithLocalFallback('com.terragacha.seasonpass.current')
+    purchaseMessage = result.success ? 'Premium track unlocked.' : 'Purchase failed. Please try again.'
     purchasing = false
   }
 
@@ -101,6 +103,9 @@
         {/each}
       </div>
     </div>
+    {#if purchaseMessage}
+      <p class="status-msg">{purchaseMessage}</p>
+    {/if}
   </div>
 </div>
 
@@ -223,4 +228,10 @@
     cursor: pointer;
   }
   .upgrade-btn:disabled { opacity: 0.5; }
+  .status-msg {
+    margin: 8px 0 0;
+    text-align: center;
+    font-size: 8px;
+    color: #86efac;
+  }
 </style>

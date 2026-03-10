@@ -57,6 +57,15 @@ export const SUBSCRIPTION_PRODUCTS: IAPProduct[] = [
 /** One-time purchase products */
 export const ONE_TIME_PRODUCTS: IAPProduct[] = [
   {
+    id: 'com.terragacha.adfree',
+    name: 'Ad-Free Upgrade',
+    description: 'Remove rewarded ad prompts permanently',
+    priceUSD: 4.99,
+    tier: 'one_time',
+    isSubscription: false,
+    isConsumable: false,
+  },
+  {
     id: 'com.terragacha.pioneerpack',
     name: 'Pioneer Pack',
     description: '500 dust, Rare+ artifact, Pioneer Pickaxe, 3 bonus tanks, Pioneer badge',

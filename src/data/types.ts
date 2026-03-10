@@ -708,10 +708,14 @@ export interface PlayerSave {
   pioneerPackDismissed?: boolean
   /** List of IAP product IDs the player has purchased */
   purchasedProducts?: string[]
+  /** True when one-time ad-removal has been purchased. */
+  adsRemoved?: boolean
   /** Active subscription record */
   subscription?: { type: string; expiresAt: string; source: 'apple' | 'google' | 'web' }
   /** Season pass progress */
   seasonPassProgress?: { seasonId: string; points: number; claimedFree: number[]; claimedPremium: number[]; hasPremium: boolean }
+  /** Arcane Pass subscriber sub-category filters (domainId -> enabled subcategory labels). */
+  subscriberCategoryFilters?: Record<string, string[]>
   /** Dust spent this calendar week (resets Monday 00:00 UTC) */
   weeklyDustSpent?: number
   /** ISO date of last weekly maintenance charge */

@@ -42,6 +42,7 @@
     startNewRun,
     startDailyExpeditionRun,
     startEndlessDepthsRun,
+    startScholarChallengeRun,
     openRelicSanctum,
     closeRelicSanctum,
   } from './services/gameFlowController'
@@ -85,6 +86,9 @@
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
+  import TerraPassModal from './ui/components/TerraPassModal.svelte'
+  import SeasonPassView from './ui/components/SeasonPassView.svelte'
+  import CosmeticStoreModal from './ui/components/CosmeticStoreModal.svelte'
 
   const NAV_VISIBLE_SCREENS = new Set<Screen>([
     'hub',
@@ -131,12 +135,32 @@
     transitionScreen('social')
   }
 
+  let showArcanePassModal = $state(false)
+  let showSeasonPassModal = $state(false)
+  let showCosmeticStoreModal = $state(false)
+
+  function handleOpenArcanePass(): void {
+    showArcanePassModal = true
+  }
+
+  function handleOpenSeasonPass(): void {
+    showSeasonPassModal = true
+  }
+
+  function handleOpenCosmeticStore(): void {
+    showCosmeticStoreModal = true
+  }
+
   function handleStartDailyExpedition(): { ok: true } | { ok: false; reason: string } {
     return startDailyExpeditionRun()
   }
 
   function handleStartEndlessDepths(): { ok: true } | { ok: false; reason: string } {
     return startEndlessDepthsRun()
+  }
+
+  function handleStartScholarChallenge(): { ok: true } | { ok: false; reason: string } {
+    return startScholarChallengeRun()
   }
 
   function handleOpenRelicSanctum(): { ok: true } | { ok: false; reason: string } {
@@ -571,12 +595,28 @@
       onOpenSettings={handleOpenSettings}
       onStartDailyExpedition={handleStartDailyExpedition}
       onStartEndlessDepths={handleStartEndlessDepths}
+      onStartScholarChallenge={handleStartScholarChallenge}
       onOpenRelicSanctum={handleOpenRelicSanctum}
+      onOpenArcanePass={handleOpenArcanePass}
+      onOpenSeasonPass={handleOpenSeasonPass}
+      onOpenCosmeticStore={handleOpenCosmeticStore}
     />
   {/if}
 
   {#if $currentScreen === 'relicSanctum'}
     <RelicSanctumScreen onBack={handleCloseRelicSanctum} />
+  {/if}
+
+  {#if showArcanePassModal}
+    <TerraPassModal onClose={() => { showArcanePassModal = false }} />
+  {/if}
+
+  {#if showSeasonPassModal}
+    <SeasonPassView onClose={() => { showSeasonPassModal = false }} />
+  {/if}
+
+  {#if showCosmeticStoreModal}
+    <CosmeticStoreModal onClose={() => { showCosmeticStoreModal = false }} />
   {/if}
 
   {#if shouldShowHubNav($currentScreen)}

@@ -46,6 +46,7 @@ const VALID_CATEGORIES: Set<string> = new Set([
   "total_dust",
   "daily_expedition",
   "endless_depths",
+  "scholar_challenge",
 ]);
 
 // ── Plausibility bounds (Phase 22.7) ──────────────────────────────────────────
@@ -87,6 +88,8 @@ const PLAUSIBILITY_BOUNDS: Readonly<Record<string, PlausibilityBounds>> = {
   daily_expedition: { min: 0, max: 1_000_000 },
   /** Endless score scales with floor and accuracy; keep bound generous. */
   endless_depths: { min: 0, max: 10_000_000 },
+  /** Weekly curated scholar challenge composite score. */
+  scholar_challenge: { min: 0, max: 1_500_000 },
 };
 
 /**
@@ -242,14 +245,34 @@ function parseDailyDateKey(value: unknown): string | null {
 }
 
 /**
+ * Parse and validate a `YYYY-MM-DD` week key used by Scholar Challenge.
+ */
+function parseWeekKey(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(trimmed) ? trimmed : null;
+}
+
+function isCycleScopedCategory(category: string): boolean {
+  return category === "daily_expedition" || category === "scholar_challenge";
+}
+
+/**
  * Build a cache key for category + optional daily date key.
  * Daily Expedition leaderboards are cached per date key.
  */
-function buildCacheKey(category: string, dateKey: string | null): string {
-  if (category !== "daily_expedition" || !dateKey) {
-    return category;
+function buildCacheKey(
+  category: string,
+  dateKey: string | null,
+  weekKey: string | null,
+): string {
+  if (category === "daily_expedition" && dateKey) {
+    return `${category}::date:${dateKey}`;
   }
-  return `${category}::${dateKey}`;
+  if (category === "scholar_challenge" && weekKey) {
+    return `${category}::week:${weekKey}`;
+  }
+  return category;
 }
 
 /**
@@ -358,7 +381,8 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         )
       );
       const requestedDateKey = parseDailyDateKey(query?.dateKey);
-      const cacheKey = buildCacheKey(category, requestedDateKey);
+      const requestedWeekKey = parseWeekKey(query?.weekKey);
+      const cacheKey = buildCacheKey(category, requestedDateKey, requestedWeekKey);
 
       if (!isValidCategory(category)) {
         return reply.status(400).send({
@@ -375,7 +399,7 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
 
       // Cache miss — query the database.
       // Fetch CACHE_TOP_N rows so the cache can serve any slice up to that limit.
-      const queryLimit = category === "daily_expedition" ? 1000 : CACHE_TOP_N;
+      const queryLimit = isCycleScopedCategory(category) ? 1000 : CACHE_TOP_N;
       const rows = await db
         .select({
           id: leaderboards.id,
@@ -393,17 +417,24 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         .limit(queryLimit)
         .all();
 
-      // Daily Expedition can be requested for a specific UTC date key.
-      const filteredRows =
-        category === "daily_expedition" && requestedDateKey
-          ? rows.filter((row) => {
-              const parsed = row.metadata ? tryParseJson(row.metadata) : null;
-              if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-                return false;
-              }
-              return (parsed as Record<string, unknown>).dateKey === requestedDateKey;
-            })
-          : rows;
+      // Cycle-scoped categories can be requested for a specific cycle key.
+      const filteredRows = rows.filter((row) => {
+        if (category === "daily_expedition" && requestedDateKey) {
+          const parsed = row.metadata ? tryParseJson(row.metadata) : null;
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+            return false;
+          }
+          return (parsed as Record<string, unknown>).dateKey === requestedDateKey;
+        }
+        if (category === "scholar_challenge" && requestedWeekKey) {
+          const parsed = row.metadata ? tryParseJson(row.metadata) : null;
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+            return false;
+          }
+          return (parsed as Record<string, unknown>).weekKey === requestedWeekKey;
+        }
+        return true;
+      });
 
       // Deduplicate: keep only the best score per user (one row per user_id
       // guaranteed by the upsert on write, but guard here for legacy data).
@@ -536,23 +567,25 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
       let effectiveScore = flooredScore;
       let rank = 1;
 
-      if (category === "daily_expedition") {
-        const dailyDateKey = parseDailyDateKey(
-          metadata && typeof metadata === "object" && !Array.isArray(metadata)
-            ? (metadata as Record<string, unknown>).dateKey
-            : null
-        );
-        if (!dailyDateKey) {
+      if (isCycleScopedCategory(category)) {
+        const cycleKeyField = category === "daily_expedition" ? "dateKey" : "weekKey";
+        const rawCycleKey = metadata && typeof metadata === "object" && !Array.isArray(metadata)
+          ? (metadata as Record<string, unknown>)[cycleKeyField]
+          : null;
+        const cycleKey = category === "daily_expedition"
+          ? parseDailyDateKey(rawCycleKey)
+          : parseWeekKey(rawCycleKey);
+        if (!cycleKey) {
+          const keyLabel = category === "daily_expedition" ? "metadata.dateKey" : "metadata.weekKey";
           return reply.status(400).send({
-            error: "daily_expedition submissions require metadata.dateKey (YYYY-MM-DD)",
+            error: `${category} submissions require ${keyLabel} (YYYY-MM-DD)`,
             statusCode: 400,
           });
         }
 
-        // One attempt per day per user: block duplicate submissions for same date key.
-        const existingDailyRows = await db
+        // One submission per cycle per user.
+        const existingRows = await db
           .select({
-            id: leaderboards.id,
             metadata: leaderboards.metadata,
           })
           .from(leaderboards)
@@ -560,14 +593,15 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
             sql`${leaderboards.userId} = ${userId} AND ${leaderboards.category} = ${category}`
           )
           .all();
-        const alreadySubmittedToday = existingDailyRows.some((row) => {
+        const alreadySubmittedForCycle = existingRows.some((row) => {
           const parsed = row.metadata ? tryParseJson(row.metadata) : null;
           if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return false;
-          return (parsed as Record<string, unknown>).dateKey === dailyDateKey;
+          return (parsed as Record<string, unknown>)[cycleKeyField] === cycleKey;
         });
-        if (alreadySubmittedToday) {
+        if (alreadySubmittedForCycle) {
+          const cycleLabel = category === "daily_expedition" ? "dateKey" : "weekKey";
           return reply.status(409).send({
-            error: "Daily Expedition score already submitted for this dateKey",
+            error: `${category} score already submitted for this ${cycleLabel}`,
             statusCode: 409,
           });
         }
@@ -585,8 +619,8 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         leaderboardCache.invalidatePrefix(`${category}::`);
         leaderboardCache.invalidate(category);
 
-        // Rank within this specific Daily Expedition date key.
-        const dailyRows = await db
+        // Rank within this specific cycle key.
+        const cycleRows = await db
           .select({
             userId: leaderboards.userId,
             score: leaderboards.score,
@@ -597,14 +631,14 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
           .orderBy(desc(leaderboards.score))
           .limit(2000)
           .all();
-        const seenDailyUsers = new Set<string>();
+        const seenUsers = new Set<string>();
         let higherDistinctUsers = 0;
-        for (const row of dailyRows) {
-          if (seenDailyUsers.has(row.userId)) continue;
+        for (const row of cycleRows) {
+          if (seenUsers.has(row.userId)) continue;
           const parsed = row.metadata ? tryParseJson(row.metadata) : null;
           if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
-          if ((parsed as Record<string, unknown>).dateKey !== dailyDateKey) continue;
-          seenDailyUsers.add(row.userId);
+          if ((parsed as Record<string, unknown>)[cycleKeyField] !== cycleKey) continue;
+          seenUsers.add(row.userId);
           if (row.score > flooredScore) {
             higherDistinctUsers += 1;
           }

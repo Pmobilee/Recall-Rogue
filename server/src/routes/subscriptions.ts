@@ -4,15 +4,26 @@
  */
 
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import { factsDb } from '../db/facts-db.js'
 
 /** Content volume gate: minimum approved facts before subscriptions activate */
 const MINIMUM_FACTS_REQUIRED = 3000
-const CURRENT_FACT_COUNT = 522 // Updated by content pipeline
+
+function getApprovedFactCount(): number {
+  try {
+    const row = factsDb
+      .prepare(`SELECT COUNT(*) as c FROM facts WHERE status = 'approved'`)
+      .get() as { c?: number }
+    return Math.max(0, row?.c ?? 0)
+  } catch {
+    return 0
+  }
+}
 
 export async function subscriptionRoutes(fastify: FastifyInstance): Promise<void> {
   /** GET /status — returns subscription availability and current state */
   fastify.get('/status', async (_request: FastifyRequest, _reply: FastifyReply) => {
-    const factsReady = CURRENT_FACT_COUNT
+    const factsReady = getApprovedFactCount()
     const available = factsReady >= MINIMUM_FACTS_REQUIRED
 
     return {
@@ -29,11 +40,12 @@ export async function subscriptionRoutes(fastify: FastifyInstance): Promise<void
 
   /** POST /verify — RevenueCat webhook handler */
   fastify.post('/verify', async (_request: FastifyRequest, reply: FastifyReply) => {
+    const factCount = getApprovedFactCount()
     // Content volume gate check
-    if (CURRENT_FACT_COUNT < MINIMUM_FACTS_REQUIRED) {
+    if (factCount < MINIMUM_FACTS_REQUIRED) {
       return reply.status(503).send({
         error: 'subscription_not_yet_available',
-        factsReady: CURRENT_FACT_COUNT,
+        factsReady: factCount,
         required: MINIMUM_FACTS_REQUIRED,
       })
     }

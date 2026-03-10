@@ -20,7 +20,7 @@ export interface RunSaveState {
   /** Which screen to restore on resume. */
   currentScreen: string;
   /** Active run mode for deterministic/resume behavior. */
-  runMode?: 'standard' | 'daily_expedition' | 'endless_depths';
+  runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   /** Optional deterministic seed used by fixed-seed modes. */
   dailySeed?: number | null;
   /** Room options if paused at room selection. */
@@ -66,7 +66,7 @@ export function saveActiveRun(state: {
   savedAt: string;
   runState: RunState;
   currentScreen: string;
-  runMode?: 'standard' | 'daily_expedition' | 'endless_depths';
+  runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   dailySeed?: number | null;
   roomOptions?: RoomOption[];
 }): void {
@@ -90,7 +90,7 @@ export function saveActiveRun(state: {
 export function loadActiveRun(): {
   runState: RunState;
   currentScreen: string;
-  runMode?: 'standard' | 'daily_expedition' | 'endless_depths';
+  runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   dailySeed?: number | null;
   roomOptions?: RoomOption[];
 } | null {

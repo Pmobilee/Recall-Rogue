@@ -60,6 +60,10 @@ import {
   completeDailyExpeditionAttempt,
   reserveDailyExpeditionAttempt,
 } from './dailyExpeditionService'
+import {
+  completeScholarChallengeAttempt,
+  reserveScholarChallengeAttempt,
+} from './scholarChallengeService'
 import { recordEndlessDepthsRun } from './endlessDepthsService'
 import { apiClient } from './apiClient'
 import {
@@ -106,7 +110,7 @@ let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
-type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths'
+type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
 let activeRunMode: ActiveRunMode = 'standard'
 let activeDailySeed: number | null = null
 
@@ -169,6 +173,14 @@ function calculateEndlessDepthsScore(endData: RunEndData): number {
   return Math.round((depthFactor * 650) + (comboFactor * 180) + (accuracyFactor * 22))
 }
 
+function calculateScholarChallengeScore(endData: RunEndData): number {
+  const accuracyFactor = Math.max(0, endData.accuracy) / 100
+  const speedFactor = Math.max(0.5, Math.min(2.2, 520_000 / Math.max(60_000, endData.runDurationMs)))
+  const depthFactor = Math.max(1, endData.floorReached)
+  const comboFactor = Math.max(1, endData.bestCombo)
+  return Math.round(accuracyFactor * speedFactor * depthFactor * comboFactor * 1150)
+}
+
 function computeEndlessEnemyDamageMultiplier(floor: number): number {
   const depthPast10 = Math.max(0, floor - 10)
   // Endless balance pass: +3% enemy damage per floor after 10, capped at +75%.
@@ -180,7 +192,7 @@ function applyEndlessDepthsScaling(run: RunState): void {
 }
 
 function submitCompetitiveScore(
-  category: 'daily_expedition' | 'endless_depths',
+  category: 'daily_expedition' | 'endless_depths' | 'scholar_challenge',
   score: number,
   metadata: Record<string, unknown>,
 ): void {
@@ -227,6 +239,41 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
       player_id: reservation.attempt.playerId,
     },
   })
+  return { ok: true }
+}
+
+export function startScholarChallengeRun(): { ok: true } | { ok: false; reason: string } {
+  const onboarding = get(onboardingState)
+  if (!onboarding.hasCompletedOnboarding) {
+    currentScreen.set('onboarding')
+    gameFlowState.set('idle')
+    return { ok: false, reason: 'onboarding_required' }
+  }
+
+  const save = get(playerSave)
+  const playerId = save?.accountId ?? save?.deviceId ?? save?.playerId ?? 'anonymous'
+  const playerName = save?.accountEmail?.split('@')[0] ?? `Rogue-${playerId.slice(0, 6)}`
+  const reservation = reserveScholarChallengeAttempt(playerId, playerName)
+  if (!reservation.ok) {
+    return { ok: false, reason: reservation.reason }
+  }
+
+  activeRunMode = 'scholar_challenge'
+  activeDailySeed = reservation.attempt.seed
+  activateDeterministicRandom(reservation.attempt.seed)
+  pendingDomainSelection = {
+    primary: reservation.attempt.primaryDomain,
+    secondary: reservation.attempt.secondaryDomain,
+  }
+  onArchetypeSelected('balanced')
+  if (!startEncounterForRoom()) {
+    currentScreen.set('hub')
+    activeRunState.set(null)
+    activeRunMode = 'standard'
+    activeDailySeed = null
+    deactivateDeterministicRandom()
+    return { ok: false, reason: 'failed_to_start_encounter' }
+  }
   return { ok: true }
 }
 
@@ -345,6 +392,26 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
       bestCombo: endData.bestCombo,
       runDurationMs: endData.runDurationMs,
     })
+  } else if (activeRunMode === 'scholar_challenge') {
+    const score = calculateScholarChallengeScore(endData)
+    const completedAttempt = completeScholarChallengeAttempt({
+      score,
+      floorReached: endData.floorReached,
+      accuracy: endData.accuracy,
+      bestCombo: endData.bestCombo,
+      runDurationMs: endData.runDurationMs,
+    })
+    if (completedAttempt) {
+      submitCompetitiveScore('scholar_challenge', score, {
+        weekKey: completedAttempt.weekKey,
+        floorReached: endData.floorReached,
+        accuracy: endData.accuracy,
+        bestCombo: endData.bestCombo,
+        runDurationMs: endData.runDurationMs,
+        primaryDomain: completedAttempt.primaryDomain,
+        secondaryDomain: completedAttempt.secondaryDomain,
+      })
+    }
   }
   activeRunMode = 'standard'
   activeDailySeed = null
@@ -977,9 +1044,15 @@ export function playAgain(): void {
   currentScreen.set('domainSelection');
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths', dailySeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
+    activeDailySeed = dailySeed
+    activateDeterministicRandom(dailySeed)
+    return
+  }
+  if (runMode === 'scholar_challenge' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
+    activeRunMode = 'scholar_challenge'
     activeDailySeed = dailySeed
     activateDeterministicRandom(dailySeed)
     return

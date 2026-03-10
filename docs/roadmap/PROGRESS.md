@@ -7,14 +7,16 @@
 
 ## Current Status
 
-**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul).
+**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul).
 
-**Recent completed phases (March 9, 2026):**
+**Recent completed phases (March 9-10, 2026):**
 - AR-22 Global rename from "Arcane Recall" to "Recall Rogue" across all files.
 - AR-23 Run structure overhauled to 24-floor dungeon with 4 segments, 8 bosses, 6 mini-boss templates, save/resume, campfire pause, special events.
 - AR-24 Launch balance and UX pass: mechanic phase gating, difficulty mode rename, Story Mode forced runs 1-3, tier display simplification, wowFactor, review prompts.
 - AR-25 Push notifications: 4 notification types, quiet hours, priority scheduling, per-type settings toggles.
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
+- AR-20 Competitive/social runtime wiring including Daily + Endless leaderboard submissions.
+- AR-21 Monetization activation including Arcane Pass/Season Pass/Cosmetic Store surfacing and Scholar Challenge.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
@@ -83,6 +85,9 @@ Mechanic phase gating, difficulty mode rename, Story Mode forced runs 1-3, tier 
 
 ### AR-26: Game Design Doc Overhaul ✓
 GAME_DESIGN.md, ARCHITECTURE.md, PROGRESS.md updated with AR-22-25 changes and ascension mode design. → [Spec](completed/AR-26-DOC-OVERHAUL.md)
+
+### AR-21: Monetization Activation ✓
+Ad-removal entitlement, Arcane Pass/Season Pass/Cosmetic Store surfacing, Scholar Challenge weekly mode + leaderboard cycle, and subscriber sub-category filters are implemented. → [Spec](completed/AR-21-MONETIZATION-ACTIVATION.md)
 
 ---
 
@@ -453,7 +458,7 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 
 ---
 
-## Post-Content: Social & Monetization (Future)
+## Post-Content: Social & Monetization
 
 ### AR-20: Competitive & Social Features
 - [x] Daily Expedition (fixed seed, one attempt/day, leaderboard) — deterministic seeded run mode + one-attempt/day lock + local reward-band ranking + backend category (`daily_expedition`) with date-key filtered global leaderboard and one-submission-per-day enforcement
@@ -465,11 +470,14 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 → [Spec](completed/AR-20-COMPETITIVE-SOCIAL.md)
 
 ### AR-21: Monetization Activation
-- [ ] Ad removal IAP ($4.99)
-- [ ] Arcane Pass subscription ($4.99/mo — all packs, cosmetics, analytics, family 5x)
-- [ ] Cosmetic store (card backs, frames, dungeon skins, avatars)
-- [ ] Scholar Challenges (weekly curated runs + leaderboards)
-- [ ] Subscriber category filtering (Arcane Pass): fine-grained sub-category toggles per domain (e.g., WW2 only in History)
+- [x] Ad removal IAP ($4.99)
+- [x] Arcane Pass subscription ($4.99/mo — all packs, cosmetics, analytics, family 5x)
+- [x] Cosmetic store (card backs, frames, dungeon skins, avatars)
+- [x] Scholar Challenges (weekly curated runs + leaderboards)
+- [x] Subscriber category filtering (Arcane Pass): fine-grained sub-category toggles per domain (e.g., WW2 only in History)
+
+Depends on: AR-20 (social surfaces available). Estimated: Medium. **Status: Completed (March 10, 2026).**
+→ [Spec](completed/AR-21-MONETIZATION-ACTIVATION.md)
 
 ### AR-27: Card Tier-Up Celebration Animations
 **Visual reward feedback when cards level up during a run.** Short, satisfying animations play when a correct answer causes a card to advance tiers — blue (→Recall), green (→Deep Recall), purple/gold (→Mastered). Makes each correct answer feel like visible progress. Per-fact unique mastery animations generated as art assets in a later phase.
@@ -554,7 +562,7 @@ GAME DESIGN OVERHAUL (March 2026):
   AR-22 (Rename) → AR-23 (Run Structure) + AR-24 (Balance/UX) + AR-25 (Notifications) → AR-26 (Docs)
 
 FUTURE:
-  AR-19 → AR-20 (Social) / AR-21 (Monetization)
+  AR-19 → AR-20 ✓ (Social) / AR-21 ✓ (Monetization)
   AR-27 (Tier-Up Animations) — independent, can run anytime
   AR-28 (Reward Altar) — core complete, optional icon art pass can run anytime
   AR-29 (First-Person Crawl) — core complete

@@ -2,12 +2,11 @@
   import { playerSave } from '../stores/playerData'
   import {
     isSubscriber,
-    subscribeTerraPass,
-    subscribeExpeditionPatron,
-    subscribeGrandPatron,
+    hasAdRemoval,
     openSubscriptionManagement,
     checkContentGate,
   } from '../../services/subscriptionService'
+  import { purchaseWithLocalFallback } from '../../services/monetizationService'
   import { kidModeIapGuard } from '../../services/iapService'
   import { onMount } from 'svelte'
 
@@ -22,6 +21,7 @@
     required: 3000,
   })
   let purchasing = $state(false)
+  let purchaseMessage = $state('')
 
   /** Detect iOS Capacitor environment for showing required Apple subscription language */
   const isIOS = typeof window !== 'undefined' &&
@@ -29,6 +29,7 @@
     /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const hasSubscription = $derived($playerSave ? isSubscriber($playerSave) : false)
+  const adFreeUnlocked = $derived($playerSave ? hasAdRemoval($playerSave) : false)
   const subscriptionType = $derived($playerSave?.subscription?.type ?? null)
   const expiresAt = $derived($playerSave?.subscription?.expiresAt ?? null)
 
@@ -39,10 +40,18 @@
     contentGate = await checkContentGate()
   })
 
-  async function handleSubscribe(fn: () => Promise<{ success: boolean; error?: string }>) {
+  async function handleSubscribe(productId: string) {
     kidModeIapGuard(() => {
       purchasing = true
-      fn().then(() => { purchasing = false })
+      purchaseWithLocalFallback(productId)
+        .then((result) => {
+          purchaseMessage = result.success
+            ? (result.simulated ? 'Unlocked in local/dev mode.' : 'Purchase complete.')
+            : 'Purchase failed. Please try again.'
+        })
+        .finally(() => {
+          purchasing = false
+        })
     })
   }
 </script>
@@ -50,7 +59,7 @@
 <div class="terra-pass-overlay" data-testid="terra-pass-modal">
   <div class="terra-pass-modal">
     <button class="close-btn" onclick={onClose} aria-label="Close">&times;</button>
-    <h2 class="modal-title">Terra Pass</h2>
+    <h2 class="modal-title">Arcane Pass</h2>
 
     {#if hasSubscription}
       <div class="active-sub">
@@ -75,6 +84,28 @@
         </div>
         <p class="progress-text">{contentGate.factsReady} / {contentGate.required} facts ready</p>
       </div>
+      <div class="tier-card adfree">
+        <h3 class="tier-name">Ad-Free Upgrade</h3>
+        <p class="tier-price">$4.99 one-time</p>
+        <ul class="tier-benefits">
+          <li>Removes rewarded ad prompts</li>
+          <li>No gameplay power advantage</li>
+        </ul>
+        <button
+          class="subscribe-btn"
+          class:ask-parent-btn={isKidMode}
+          onclick={() => handleSubscribe('com.terragacha.adfree')}
+          disabled={purchasing || adFreeUnlocked}
+        >
+          {#if adFreeUnlocked}
+            Unlocked
+          {:else if purchasing}
+            Processing...
+          {:else}
+            {isKidMode ? 'Ask a Parent' : 'Unlock Ad-Free'}
+          {/if}
+        </button>
+      </div>
     {:else}
       <!-- Benefit Matrix -->
       <div class="benefit-section">
@@ -98,7 +129,7 @@
         <button
           class="subscribe-btn"
           class:ask-parent-btn={isKidMode}
-          onclick={() => handleSubscribe(subscribeTerraPass)}
+          onclick={() => handleSubscribe('com.terragacha.terrapass.monthly')}
           disabled={purchasing}
           aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Terra Pass'}
         >
@@ -120,7 +151,7 @@
         <button
           class="subscribe-btn patron-btn"
           class:ask-parent-btn={isKidMode}
-          onclick={() => handleSubscribe(subscribeExpeditionPatron)}
+          onclick={() => handleSubscribe('com.terragacha.patron.season')}
           disabled={purchasing}
           aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Expedition Patron'}
         >
@@ -141,13 +172,41 @@
         <button
           class="subscribe-btn grand-btn"
           class:ask-parent-btn={isKidMode}
-          onclick={() => handleSubscribe(subscribeGrandPatron)}
+          onclick={() => handleSubscribe('com.terragacha.patron.annual')}
           disabled={purchasing}
           aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Grand Patron'}
         >
           {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : 'Subscribe'}
         </button>
       </div>
+
+      <div class="tier-card adfree">
+        <h3 class="tier-name">Ad-Free Upgrade</h3>
+        <p class="tier-price">$4.99 one-time</p>
+        <ul class="tier-benefits">
+          <li>Removes rewarded ad prompts</li>
+          <li>No gameplay power advantage</li>
+        </ul>
+        <button
+          class="subscribe-btn"
+          class:ask-parent-btn={isKidMode}
+          onclick={() => handleSubscribe('com.terragacha.adfree')}
+          disabled={purchasing || adFreeUnlocked}
+          aria-label={isKidMode ? 'Ask a Parent to unlock Ad-Free' : 'Unlock ad-free mode'}
+        >
+          {#if adFreeUnlocked}
+            Unlocked
+          {:else if purchasing}
+            Processing...
+          {:else}
+            {isKidMode ? 'Ask a Parent' : 'Unlock Ad-Free'}
+          {/if}
+        </button>
+      </div>
+    {/if}
+
+    {#if purchaseMessage}
+      <p class="purchase-msg">{purchaseMessage}</p>
     {/if}
 
     {#if isIOS}
@@ -301,6 +360,9 @@
   .tier-card.grand {
     border-color: #e2b714;
   }
+  .tier-card.adfree {
+    border-color: #38bdf8;
+  }
   .tier-name {
     color: #e5e7eb;
     font-size: 11px;
@@ -354,5 +416,11 @@
   .subscription-terms a {
     color: #a78bfa;
     text-decoration: underline;
+  }
+  .purchase-msg {
+    margin: 8px 0 0;
+    text-align: center;
+    font-size: 8px;
+    color: #86efac;
   }
 </style>

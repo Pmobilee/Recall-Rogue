@@ -1226,16 +1226,30 @@ Research: Vampire Survivors $57M+ on $5 premium. Duolingo $1B+ freemium subscrip
 
 No pay-to-win. No premium currency. No gacha. Education (primary) + Games (secondary).
 
-### Subscriber Category Filtering (Planned)
+### Implementation Status (March 10, 2026)
+
+- Ad-removal entitlement implemented as a one-time product (`$4.99`) with persisted local unlock state.
+- Arcane Pass/Season Pass/Cosmetic Store are surfaced in-app from the social hub.
+- Scholar Challenge is implemented as a weekly deterministic run mode with one-attempt-per-week reservation and cycle-scoped leaderboard submission (`weekKey`).
+- Arcane Pass subscriber category filtering is implemented in run setup and applied by the run-pool builder.
+
+### Subscriber Category Filtering (Implemented)
 
 Arcane Pass subscribers gain access to fine-grained category filters within each domain. Free players select a domain (e.g., History); subscribers can drill down and toggle specific sub-categories (e.g., "WW2 only", "Ancient Rome only", "Turn off Medieval"). This applies to the run pool builder — filtered categories are excluded from fact selection during runs.
 
 **Design constraints:**
 - Minimum 1 sub-category must remain active per domain (can't empty the pool)
 - Filters persist across runs until changed
-- UI: accessible from Settings → Learning Preferences (subscriber-gated)
+- UI: accessible from domain selection for selected primary/secondary domains (subscriber-gated)
 - Free players see the filter UI greyed out with an upgrade prompt
-- Sub-categories are driven by the `tags` field on facts, not a separate taxonomy
+- Sub-categories are derived from fact taxonomy (`category[1]`, fallback `categoryL2`, fallback `General`)
+
+### Scholar Challenge (Weekly Curated Run)
+
+- Weekly cycle key is Monday UTC (`YYYY-MM-DD`).
+- Run seed and curated domain pair are deterministic for the cycle.
+- One attempt is reserved per player per week; completion submits to leaderboard category `scholar_challenge` with `metadata.weekKey`.
+- Global leaderboard fetch supports week-key filtering with local fallback rows when offline/unavailable.
 
 ### Camp Hub & Cosmetic Progression
 

@@ -32,6 +32,7 @@ import { updateBounties } from './bountyManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
 import { analyticsService } from './analyticsService';
+import { isSubscriber } from './subscriptionService';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -203,10 +204,15 @@ export function startEncounterForRoom(enemyId?: string): boolean {
       console.warn('[encounterBridge] factsDB not ready — cannot start encounter');
       return false;
     }
-    const reviewStates = get(playerSave)?.reviewStates ?? [];
+    const save = get(playerSave);
+    const reviewStates = save?.reviewStates ?? [];
+    const subscriberCategoryFilters = save && isSubscriber(save)
+      ? (save.subscriberCategoryFilters ?? undefined)
+      : undefined;
     activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
       probeRunNumber: run.primaryDomainRunNumber,
       probeDomain: run.primaryDomain,
+      subscriberCategoryFilters,
     });
     // Record pool fact IDs for recently-played deprioritization in future runs
     recordRunFacts(activeRunPool.map(c => c.factId));
