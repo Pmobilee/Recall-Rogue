@@ -1,0 +1,523 @@
+{
+  "playthroughId": "playthrough-expert-42-1773159765769",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-10T16:44:47.672Z",
+  "issueCount": 25,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-1",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 78 dmg (58% of 135 HP) on floor 12 enc 2",
+      "description": "On floor 12, encounter 2, turn 6 (seq 584), the enemy dealt 78 damage which is 58% of the player's 135 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          584
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damageReceived=78, playerHP_before=135, ratio=0.578"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 12, Encounter 2, Turn 6"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-2",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 34 dmg (52% of 65 HP) on floor 12 enc 2",
+      "description": "On floor 12, encounter 2, turn 23 (seq 652), the enemy dealt 34 damage which is 52% of the player's 65 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          652
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damageReceived=34, playerHP_before=65, ratio=0.523"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 12, Encounter 2, Turn 23"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-3",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 37 dmg (54% of 69 HP) on floor 12 enc 2",
+      "description": "On floor 12, encounter 2, turn 24 (seq 656), the enemy dealt 37 damage which is 54% of the player's 69 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          656
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damageReceived=37, playerHP_before=69, ratio=0.536"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 12, Encounter 2, Turn 24"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-4",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 27 dmg (63% of 43 HP) on floor 24 enc 2",
+      "description": "On floor 24, encounter 2, turn 21 (seq 1649), the enemy dealt 27 damage which is 63% of the player's 43 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          1649
+        ],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "damageReceived=27, playerHP_before=43, ratio=0.628"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 24, Encounter 2, Turn 21"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-5",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 30 dmg (56% of 54 HP) on floor 24 enc 2",
+      "description": "On floor 24, encounter 2, turn 22 (seq 1653), the enemy dealt 30 damage which is 56% of the player's 54 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          1653
+        ],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "damageReceived=30, playerHP_before=54, ratio=0.556"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 24, Encounter 2, Turn 22"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-6",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 53 dmg (100% of 53 HP) on floor 24 enc 2",
+      "description": "On floor 24, encounter 2, turn 24 (seq 1661), the enemy dealt 53 damage which is 100% of the player's 53 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          1661
+        ],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "damageReceived=53, playerHP_before=53, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 24, Encounter 2, Turn 24"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-7",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "28 consecutive encounters with >90% HP remaining (floors 1-10)",
+      "description": "28 consecutive encounters (indices 0 to 27) ended with player HP above 90% of max (100). HP remaining: 98, 100, 100, 100, 98, 99, 98, 100, 100, 98, 100, 100, 100, 100, 97, 98, 94, 100, 98, 100, 100, 100, 100, 100, 100, 93, 100, 100. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "HP remaining: 98/100, 100/100, 100/100, 100/100, 98/100, 99/100, 98/100, 100/100, 100/100, 98/100, 100/100, 100/100, 100/100, 100/100, 97/100, 98/100, 94/100, 100/100, 98/100, 100/100, 100/100, 100/100, 100/100, 100/100, 100/100, 93/100, 100/100, 100/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 1-10"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-8",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "5 consecutive encounters with >90% HP remaining (floors 11-12)",
+      "description": "5 consecutive encounters (indices 30 to 34) ended with player HP above 90% of max (100). HP remaining: 97, 100, 100, 99, 100. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 0,
+        "metric": "HP remaining: 97/100, 100/100, 100/100, 99/100, 100/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 11-12"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-9",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "14 consecutive encounters with >90% HP remaining (floors 14-18)",
+      "description": "14 consecutive encounters (indices 39 to 52) ended with player HP above 90% of max (100). HP remaining: 96, 100, 100, 100, 100, 97, 95, 96, 100, 100, 96, 100, 100, 95. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 14,
+        "encounter": 0,
+        "metric": "HP remaining: 96/100, 100/100, 100/100, 100/100, 100/100, 97/100, 95/100, 96/100, 100/100, 100/100, 96/100, 100/100, 100/100, 95/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 14-18"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-10",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "6 consecutive encounters with >90% HP remaining (floors 19-21)",
+      "description": "6 consecutive encounters (indices 55 to 60) ended with player HP above 90% of max (100). HP remaining: 98, 100, 97, 98, 100, 100. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 19,
+        "encounter": 1,
+        "metric": "HP remaining: 98/100, 100/100, 97/100, 98/100, 100/100, 100/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 19-21"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-11",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "5 consecutive encounters with >90% HP remaining (floors 21-23)",
+      "description": "5 consecutive encounters (indices 62 to 66) ended with player HP above 90% of max (100). HP remaining: 97, 99, 100, 100, 100. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "HP remaining: 97/100, 99/100, 100/100, 100/100, 100/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 21-23"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-12",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3 consecutive encounters with >90% HP remaining (floors 23-24)",
+      "description": "3 consecutive encounters (indices 68 to 70) ended with player HP above 90% of max (100). HP remaining: 95, 96, 100. This suggests these encounters are too easy.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 23,
+        "encounter": 2,
+        "metric": "HP remaining: 95/100, 96/100, 100/100"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floors 23-24"
+      ],
+      "suggestedFix": "Consider increasing enemy HP or damage for these encounters."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-13",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 3 enc 2: 7 turns vs prev floor avg 3.0 (2.3x)",
+      "description": "Encounter 2 on floor 3 (enemy: the_archivist, boss) took 7 turns to resolve, which is 2.3x the previous floor's average of 3.0 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=7, prevFloorAvg=3.0, ratio=2.3x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 3, Encounter 2, Enemy: the_archivist"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-14",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 6 enc 2: 9 turns vs prev floor avg 2.3 (3.9x)",
+      "description": "Encounter 2 on floor 6 (enemy: the_excavator, boss) took 9 turns to resolve, which is 3.9x the previous floor's average of 2.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turnsToResolve=9, prevFloorAvg=2.3, ratio=3.9x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 6, Encounter 2, Enemy: the_excavator"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-15",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 9 enc 2: 16 turns vs prev floor avg 3.0 (5.3x)",
+      "description": "Encounter 2 on floor 9 (enemy: void_weaver, boss) took 16 turns to resolve, which is 5.3x the previous floor's average of 3.0 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turnsToResolve=16, prevFloorAvg=3.0, ratio=5.3x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 9, Encounter 2, Enemy: void_weaver"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-16",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 11 enc 2: 9 turns vs prev floor avg 4.3 (2.1x)",
+      "description": "Encounter 2 on floor 11 (enemy: crystal_guardian, mini_boss) took 9 turns to resolve, which is 2.1x the previous floor's average of 4.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 2,
+        "metric": "turnsToResolve=9, prevFloorAvg=4.3, ratio=2.1x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 11, Encounter 2, Enemy: crystal_guardian"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-17",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 12 enc 2: 25 turns vs prev floor avg 7.7 (3.3x)",
+      "description": "Encounter 2 on floor 12 (enemy: the_curator, boss) took 25 turns to resolve, which is 3.3x the previous floor's average of 7.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "turnsToResolve=25, prevFloorAvg=7.7, ratio=3.3x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 12, Encounter 2, Enemy: the_curator"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-18",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 15 enc 2: 9 turns vs prev floor avg 4.3 (2.1x)",
+      "description": "Encounter 2 on floor 15 (enemy: the_excavator, boss) took 9 turns to resolve, which is 2.1x the previous floor's average of 4.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 15,
+        "encounter": 2,
+        "metric": "turnsToResolve=9, prevFloorAvg=4.3, ratio=2.1x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 15, Encounter 2, Enemy: the_excavator"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-19",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 18 enc 0: 12 turns vs prev floor avg 4.3 (2.8x)",
+      "description": "Encounter 0 on floor 18 (enemy: crystal_golem, common) took 12 turns to resolve, which is 2.8x the previous floor's average of 4.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 18,
+        "encounter": 0,
+        "metric": "turnsToResolve=12, prevFloorAvg=4.3, ratio=2.8x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 18, Encounter 0, Enemy: crystal_golem"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-20",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 18 enc 2: 15 turns vs prev floor avg 4.3 (3.5x)",
+      "description": "Encounter 2 on floor 18 (enemy: crystal_warden, boss) took 15 turns to resolve, which is 3.5x the previous floor's average of 4.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "turnsToResolve=15, prevFloorAvg=4.3, ratio=3.5x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 18, Encounter 2, Enemy: crystal_warden"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-21",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 20 enc 2: 11 turns vs prev floor avg 5.0 (2.2x)",
+      "description": "Encounter 2 on floor 20 (enemy: stone_sentinel, mini_boss) took 11 turns to resolve, which is 2.2x the previous floor's average of 5.0 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 20,
+        "encounter": 2,
+        "metric": "turnsToResolve=11, prevFloorAvg=5.0, ratio=2.2x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 20, Encounter 2, Enemy: stone_sentinel"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-22",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 21 enc 2: 19 turns vs prev floor avg 6.7 (2.9x)",
+      "description": "Encounter 2 on floor 21 (enemy: crystal_warden, boss) took 19 turns to resolve, which is 2.9x the previous floor's average of 6.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "turnsToResolve=19, prevFloorAvg=6.7, ratio=2.9x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 21, Encounter 2, Enemy: crystal_warden"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-23",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 24 enc 2: 24 turns vs prev floor avg 6.7 (3.6x)",
+      "description": "Encounter 2 on floor 24 (enemy: crystal_warden, boss) took 24 turns to resolve, which is 3.6x the previous floor's average of 6.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "turnsToResolve=24, prevFloorAvg=6.7, ratio=3.6x"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 24, Encounter 2, Enemy: crystal_warden"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-24",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP dropped from 100 to 0 in floor 24 encounter 2",
+      "description": "During floor 24, encounter 2, player HP dropped from 100 to 0. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [
+          1565,
+          1661
+        ],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "HP swing: 100 -> 0 (delta=100)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Floor 24, Encounter 2"
+      ],
+      "suggestedFix": "Add damage caps per encounter or provide emergency healing at low HP."
+    },
+    {
+      "id": "issue-playthrough-expert-42-1773159765769-25",
+      "playthroughId": "playthrough-expert-42-1773159765769",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'aoe' never played across entire run",
+      "description": "The card type 'aoe' was never used in any play_card action during the entire 72-encounter run. Card types used: buff, attack, debuff, shield, utility, heal, regen. This may indicate the type is never dealt or is unappealing to play.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "usedCardTypes=[buff,attack,debuff,shield,utility,heal,regen], missing=aoe"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 42",
+        "Entire run"
+      ],
+      "suggestedFix": "Ensure 'aoe' cards appear in starting deck or are offered as rewards."
+    }
+  ]
+}

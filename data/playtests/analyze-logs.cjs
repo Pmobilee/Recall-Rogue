@@ -1,6 +1,6 @@
 /**
  * Playtest log analyzer for Recall Rogue.
- * Reads each log file, checks all 9 issue types, writes a report JSON.
+ * Reads each log file, checks all 10 issue types, writes a report JSON.
  */
 const fs = require('fs');
 const path = require('path');
@@ -9,14 +9,10 @@ const LOG_DIR = path.join(__dirname, 'logs');
 const REPORT_DIR = path.join(__dirname, 'reports');
 
 const TARGET_FILES = [
-  'playthrough-beginner-200-1773154379504.json',
-  'playthrough-beginner-300-1773154384068.json',
-  'playthrough-beginner-42-1773154368400.json',
-  'playthrough-beginner-500-1773154388196.json',
-  'playthrough-control-expert-100-1773154427048.json',
-  'playthrough-control-expert-700-1773154434457.json',
-  'playthrough-defensive-average-100-1773154418190.json',
-  'playthrough-defensive-average-400-1773154422843.json',
+  'playthrough-expert-500-1773159769776.json',
+  'playthrough-expert-700-1773159774657.json',
+  'playthrough-speed-runner-42-1773159771160.json',
+  'playthrough-story-beginner-100-1773159772427.json',
 ];
 
 const ALL_CARD_TYPES = ['attack', 'shield', 'heal', 'buff', 'debuff', 'utility', 'regen', 'wild'];
@@ -25,17 +21,21 @@ function analyze(log) {
   const issues = [];
   let issueNum = 0;
 
-  function addIssue(category, severity, title, description, evidence, reproSteps) {
+  function addIssue(category, severity, title, description, evidence, reproSteps, suggestedFix) {
     issueNum++;
-    issues.push({
+    const issue = {
       id: `issue-${log.id}-${String(issueNum).padStart(3, '0')}`,
+      playthroughId: log.id,
+      profileId: log.profileId,
       category,
       severity,
       title: title.slice(0, 120),
       description,
       evidence,
       reproductionSteps: reproSteps,
-    });
+    };
+    if (suggestedFix) issue.suggestedFix = suggestedFix;
+    issues.push(issue);
   }
 
   const baseRepro = `Profile: ${log.profileId}, Seed: ${log.rngSeed}`;
@@ -66,7 +66,8 @@ function analyze(log) {
             encounter: turn.encounter,
             metric: `Enemy dealt ${turn.outcome.damageReceived} dmg (${Math.round(ratio * 100)}% of ${hpBefore} HP)`,
           },
-          [baseRepro, `Floor ${turn.floor}, Encounter ${turn.encounter}, Turn ${turn.turnNumber}`]
+          [baseRepro, `Floor ${turn.floor}, Encounter ${turn.encounter}, Turn ${turn.turnNumber}`],
+          'Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics.'
         );
       }
     }
@@ -74,34 +75,38 @@ function analyze(log) {
 
   // =========================================================================
   // 2. balance_too_easy (LOW)
-  //    3+ consecutive encounters where playerHPRemaining > 72 (90% of 80).
+  //    3+ consecutive encounters where playerHPRemaining > 90.
+  //    Report each maximal streak once (not at every length increment).
   // =========================================================================
   {
-    let consecutive = 0;
     let streakStart = -1;
-    for (let i = 0; i < encounterResults.length; i++) {
-      const er = encounterResults[i];
-      if (er.playerHPRemaining > 72) {
-        if (consecutive === 0) streakStart = i;
-        consecutive++;
-        if (consecutive >= 3) {
-          const streakEncounters = encounterResults.slice(streakStart, i + 1);
-          addIssue(
-            'balance_too_easy',
-            'low',
-            `${consecutive} consecutive easy encounters (floors ${streakEncounters[0].floor}-${streakEncounters[consecutive - 1].floor})`,
-            `${consecutive} consecutive encounters where player ended with >90% HP (>72). Encounters: ${streakEncounters.map(e => `F${e.floor}E${e.encounter}:${e.playerHPRemaining}HP`).join(', ')}. The game may not be challenging enough in this stretch.`,
-            {
-              floors: streakEncounters.map(e => e.floor),
-              encounters: streakEncounters.map(e => e.encounter),
-              hpValues: streakEncounters.map(e => e.playerHPRemaining),
-              metric: `${consecutive} encounters with HP > 72/80`,
-            },
-            [baseRepro, `Floors ${streakEncounters[0].floor}-${streakEncounters[consecutive - 1].floor}`]
-          );
-        }
+    for (let i = 0; i <= encounterResults.length; i++) {
+      const er = i < encounterResults.length ? encounterResults[i] : null;
+      if (er && er.playerHPRemaining > 90) {
+        if (streakStart === -1) streakStart = i;
       } else {
-        consecutive = 0;
+        // Streak ended (or array ended)
+        if (streakStart !== -1) {
+          const streakLen = i - streakStart;
+          if (streakLen >= 3) {
+            const streakEncounters = encounterResults.slice(streakStart, i);
+            addIssue(
+              'balance_too_easy',
+              'low',
+              `${streakLen} consecutive easy encounters (floors ${streakEncounters[0].floor}-${streakEncounters[streakLen - 1].floor})`,
+              `${streakLen} consecutive encounters where player ended with >90 HP remaining. Encounters: ${streakEncounters.map(e => `F${e.floor}E${e.encounter}:${e.playerHPRemaining}HP`).join(', ')}. The game may not be challenging enough in this stretch.`,
+              {
+                floors: streakEncounters.map(e => e.floor),
+                encounters: streakEncounters.map(e => e.encounter),
+                hpValues: streakEncounters.map(e => e.playerHPRemaining),
+                metric: `${streakLen} encounters with HP > 90`,
+              },
+              [baseRepro, `Floors ${streakEncounters[0].floor}-${streakEncounters[streakLen - 1].floor}`],
+              'Consider scaling enemy HP or damage for this difficulty/profile combination.'
+            );
+          }
+          streakStart = -1;
+        }
       }
     }
   }
@@ -126,31 +131,33 @@ function analyze(log) {
           turnsToResolve: er.turnsToResolve,
           metric: `Defeated on floor ${er.floor} with ${Math.round(er.accuracy * 100)}% accuracy`,
         },
-        [baseRepro, `Floor ${er.floor}, Encounter ${er.encounter}, Enemy: ${er.enemyId}`]
+        [baseRepro, `Floor ${er.floor}, Encounter ${er.encounter}, Enemy: ${er.enemyId}`],
+        'Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles.'
       );
     }
   }
 
   // =========================================================================
   // 4. balance_healing_insufficient (MEDIUM)
-  //    Player never heals above 60% HP (48) after floor 3.
+  //    Player never heals above 60 HP after floor 3.
   // =========================================================================
   {
     const postFloor3Turns = turns.filter(t => t.floor > 3);
     if (postFloor3Turns.length > 0) {
       const maxHPPostFloor3 = Math.max(...postFloor3Turns.map(t => t.snapshot.playerHP));
-      if (maxHPPostFloor3 < 48) {
+      if (maxHPPostFloor3 < 60) {
         addIssue(
           'balance_healing_insufficient',
           'medium',
-          `Player never exceeded 60% HP after floor 3 (max: ${maxHPPostFloor3})`,
-          `After floor 3, the player's HP never exceeded ${maxHPPostFloor3} (threshold: 48, which is 60% of 80 max HP). This suggests healing mechanics are insufficient to sustain the player in later floors.`,
+          `Player never exceeded 60 HP after floor 3 (max: ${maxHPPostFloor3})`,
+          `After floor 3, the player's HP never exceeded ${maxHPPostFloor3} (threshold: 60). This suggests healing mechanics are insufficient to sustain the player in later floors.`,
           {
             maxHPPostFloor3,
-            threshold: 48,
-            metric: `Max HP after floor 3: ${maxHPPostFloor3}/80 (${Math.round(maxHPPostFloor3 / 80 * 100)}%)`,
+            threshold: 60,
+            metric: `Max HP after floor 3: ${maxHPPostFloor3}/100`,
           },
-          [baseRepro, 'Floors 4+: check healing card availability and heal amounts']
+          [baseRepro, 'Floors 4+: check healing card availability and heal amounts'],
+          'Increase heal card frequency or heal amounts in later floors.'
         );
       }
     }
@@ -172,8 +179,57 @@ function analyze(log) {
         maxCombo: summary.maxCombo,
         metric: `${Math.round(summary.overallAccuracy * 100)}% accuracy, max combo ${summary.maxCombo}`,
       },
-      [baseRepro, 'Review combo mechanics — is combo broken by enemy turns or card type changes?']
+      [baseRepro, 'Review combo mechanics — is combo broken by enemy turns or card type changes?'],
+      'Consider making combo-building more forgiving or adding combo-preservation mechanics.'
     );
+  }
+
+  // =========================================================================
+  // 5b. balance_attrition_death (MEDIUM)
+  //     Player HP decreases every encounter with no recovery, leading to
+  //     inevitable death. We look for streaks of 4+ encounters where HP
+  //     never increases, ending in defeat.
+  // =========================================================================
+  {
+    let declineStart = 0;
+    for (let i = 1; i <= encounterResults.length; i++) {
+      const prev = encounterResults[i - 1];
+      const curr = i < encounterResults.length ? encounterResults[i] : null;
+      const declining = curr && (curr.playerHPRemaining <= prev.playerHPRemaining);
+      const defeated = curr && curr.result === 'defeat';
+
+      if (declining || defeated) {
+        // Continue streak — if defeated, include this encounter and close streak
+        if (defeated) {
+          const streakLen = i - declineStart + 1;
+          if (streakLen >= 4) {
+            const streak = encounterResults.slice(declineStart, i + 1);
+            const hpTrajectory = streak.map(e => e.playerHPRemaining);
+            const floors = streak.map(e => `F${e.floor}E${e.encounter}`).join(', ');
+            addIssue(
+              'balance_attrition_death',
+              'medium',
+              `${streakLen}-encounter HP decline ending in death (${hpTrajectory[0]} → ${hpTrajectory[hpTrajectory.length - 1]})`,
+              `Player HP decreased across ${streakLen} consecutive encounters (${floors}) with no recovery, ending in defeat. HP trajectory: [${hpTrajectory.join(', ')}]. This attrition pattern suggests the player had no way to recover from a slow bleed.`,
+              {
+                turnSeqs: [],
+                floor: streak[0].floor,
+                encounter: streak[0].encounter,
+                hpTrajectory,
+                metric: `HP decline over ${streakLen} encounters: [${hpTrajectory.join(', ')}]`,
+              },
+              [baseRepro, `Floors ${streak[0].floor}-${streak[streak.length - 1].floor}`],
+              'Add HP recovery between encounters (campfire healing, victory heal). Ensure heal cards can outpace incoming damage.'
+            );
+          }
+          declineStart = i + 1;
+        }
+        // else continue the streak
+      } else {
+        // HP went up — reset streak
+        declineStart = i;
+      }
+    }
   }
 
   // =========================================================================
@@ -243,7 +299,7 @@ function analyze(log) {
 
   // =========================================================================
   // 8. ux_unfun_moment (LOW)
-  //    Player HP drops from >70% to <20% within a single encounter.
+  //    Player HP drops from >70 to <20 within a single encounter.
   // =========================================================================
   {
     // Group turns by encounter
@@ -256,26 +312,25 @@ function analyze(log) {
     }
     for (const [key, eTurns] of Object.entries(encounterTurns)) {
       const hpValues = eTurns.map(t => t.snapshot.playerHP);
-      const maxHP = 80;
-      // Check if any HP value > 70% (56) and any later HP value < 20% (16) in same encounter
+      // Check if any HP value > 70 and any later HP value < 20 in same encounter
       for (let i = 0; i < hpValues.length; i++) {
-        if (hpValues[i] > 0.7 * maxHP) { // >56
+        if (hpValues[i] > 70) {
           for (let j = i + 1; j < hpValues.length; j++) {
-            if (hpValues[j] < 0.2 * maxHP) { // <16
+            if (hpValues[j] < 20) {
               const floor = eTurns[0].floor;
               const encounter = eTurns[0].encounter;
               addIssue(
                 'ux_unfun_moment',
                 'low',
                 `HP crashed from ${hpValues[i]} to ${hpValues[j]} in floor ${floor} encounter ${encounter}`,
-                `During floor ${floor}, encounter ${encounter}, player HP dropped from ${hpValues[i]} (${Math.round(hpValues[i] / maxHP * 100)}%) to ${hpValues[j]} (${Math.round(hpValues[j] / maxHP * 100)}%). Going from >70% to <20% in one encounter feels punishing and unfun.`,
+                `During floor ${floor}, encounter ${encounter}, player HP dropped from ${hpValues[i]} to ${hpValues[j]}. Going from >70 to <20 in one encounter feels punishing and unfun.`,
                 {
                   floor,
                   encounter,
                   hpStart: hpValues[i],
                   hpEnd: hpValues[j],
                   turnSeqs: [eTurns[i].seq, eTurns[j].seq],
-                  metric: `HP ${hpValues[i]} → ${hpValues[j]} (${Math.round(hpValues[i] / maxHP * 100)}% → ${Math.round(hpValues[j] / maxHP * 100)}%)`,
+                  metric: `HP ${hpValues[i]} → ${hpValues[j]}`,
                 },
                 [baseRepro, `Floor ${floor}, Encounter ${encounter}`]
               );
@@ -327,14 +382,8 @@ function analyze(log) {
   const report = {
     playthroughId: log.id,
     profileId: log.profileId,
-    settings: log.settings,
-    runSummary: {
-      result: summary.result,
-      finalFloor: summary.finalFloor,
-      accuracy: summary.overallAccuracy,
-      maxCombo: summary.maxCombo,
-    },
     analyzedAt: new Date().toISOString(),
+    issueCount: issues.length,
     issues,
   };
 
@@ -342,6 +391,7 @@ function analyze(log) {
 }
 
 // Process all target files
+const summaryRows = [];
 for (const filename of TARGET_FILES) {
   const filepath = path.join(LOG_DIR, filename);
   console.log(`Analyzing: ${filename}`);
@@ -350,7 +400,38 @@ for (const filename of TARGET_FILES) {
   const reportFilename = `report-${log.id}.json`;
   const reportPath = path.join(REPORT_DIR, reportFilename);
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-  console.log(`  → ${reportFilename} (${report.issues.length} issues found)`);
+  console.log(`  → ${reportFilename} (${report.issueCount} issues found)`);
+
+  const sev = { critical: 0, high: 0, medium: 0, low: 0 };
+  for (const iss of report.issues) sev[iss.severity] = (sev[iss.severity] || 0) + 1;
+  summaryRows.push({ id: report.playthroughId, profile: report.profileId, total: report.issueCount, ...sev });
 }
 
-console.log('\nDone. All 8 reports written.');
+console.log('\n=== SUMMARY: Issues per log by severity ===');
+console.log('Playthrough ID'.padEnd(62) + 'CRIT  HIGH  MED   LOW   TOTAL');
+console.log('-'.repeat(100));
+for (const r of summaryRows) {
+  console.log(
+    r.id.padEnd(62) +
+    String(r.critical).padEnd(6) +
+    String(r.high).padEnd(6) +
+    String(r.medium).padEnd(6) +
+    String(r.low).padEnd(6) +
+    String(r.total)
+  );
+}
+const totals = summaryRows.reduce((a, r) => ({
+  critical: a.critical + r.critical, high: a.high + r.high,
+  medium: a.medium + r.medium, low: a.low + r.low, total: a.total + r.total
+}), { critical: 0, high: 0, medium: 0, low: 0, total: 0 });
+console.log('-'.repeat(100));
+console.log(
+  'TOTALS'.padEnd(62) +
+  String(totals.critical).padEnd(6) +
+  String(totals.high).padEnd(6) +
+  String(totals.medium).padEnd(6) +
+  String(totals.low).padEnd(6) +
+  String(totals.total)
+);
+
+console.log(`\nDone. ${TARGET_FILES.length} reports written to ${REPORT_DIR}`);

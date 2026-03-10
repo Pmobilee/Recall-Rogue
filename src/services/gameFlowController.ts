@@ -159,7 +159,6 @@ export function canOpenRelicSanctum(): boolean {
 
 export function openRelicSanctum(): { ok: true } | { ok: false; reason: string } {
   if (get(activeRunState)) return { ok: false, reason: 'run_active' }
-  if (!canOpenRelicSanctum()) return { ok: false, reason: 'insufficient_mastered' }
   gameFlowState.set('relicSanctum')
   currentScreen.set('relicSanctum')
   return { ok: true }
@@ -168,7 +167,7 @@ export function openRelicSanctum(): { ok: true } | { ok: false; reason: string }
 export function closeRelicSanctum(): void {
   if (get(activeRunState)) return
   gameFlowState.set('idle')
-  currentScreen.set('social')
+  currentScreen.set('hub')
 }
 
 function calculateDailyExpeditionScore(endData: RunEndData): number {

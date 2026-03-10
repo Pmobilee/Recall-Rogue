@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { authStore } from '../stores/authStore'
   import { playerSave } from '../stores/playerData'
   import { parentalStore } from '../stores/parentalStore'
@@ -222,8 +223,7 @@
     }
   }
 
-  $effect(() => {
-    playerName
+  onMount(() => {
     void refreshDailyStatus()
     void refreshEndlessRows()
     void refreshScholarRows()

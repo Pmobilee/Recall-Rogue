@@ -1,0 +1,155 @@
+{
+  "playthroughId": "playthrough-average-42-1773159388406",
+  "profileId": "average",
+  "analyzedAt": "2026-03-10T16:47:43.700Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-42-1773159388406-1",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 33 dmg (87% of 38 HP) on floor 3 enc 2",
+      "description": "On floor 3, encounter 2, turn 9 (seq 233), the enemy dealt 33 damage which is 87% of the player's 38 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          233
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damageReceived=33, playerHP_before=38, ratio=0.868"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 3, Encounter 2, Turn 9"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-2",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 22 dmg (100% of 22 HP) on floor 3 enc 2",
+      "description": "On floor 3, encounter 2, turn 10 (seq 237), the enemy dealt 22 damage which is 100% of the player's 22 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          237
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damageReceived=22, playerHP_before=22, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 3, Encounter 2, Turn 10"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-3",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "5 consecutive easy encounters (floors 1-2): HP stayed above 90",
+      "description": "5 consecutive encounters where player ended with HP > 90 (90% of 100). Encounters: F1E0:98HP, F1E1:100HP, F1E2:91HP, F2E0:94HP, F2E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "playerHPRemaining: [98, 100, 91, 94, 100]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floors 1e0 through 2e1"
+      ],
+      "suggestedFix": "Increase enemy damage or reduce healing on early floors."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-4",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 3, encounter 2 by knowledge_golem (boss)",
+      "description": "Player was defeated on floor 3, encounter 2 against knowledge_golem (boss). Accuracy was 63% over 10 turns. They dealt 64 damage and took 176 damage. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "accuracy=63%, damage_dealt=64, damage_taken=176"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 3, Encounter 2"
+      ],
+      "suggestedFix": "Consider reducing boss HP/damage on floor 3, or providing a healing opportunity before bosses."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-5",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "balance_attrition_death",
+      "severity": "medium",
+      "title": "Player defeated despite 73% accuracy — knowledge mastery didn't save them",
+      "description": "Player was defeated with 73% overall accuracy (119/163 correct), well above 60%. Dying despite knowing the material feels unfair and undermines the core loop.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 0,
+        "metric": "accuracy=73.0%, result=defeat, finalFloor=3"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Review enemy damage scaling vs. healing/shield availability"
+      ],
+      "suggestedFix": "Reduce enemy damage or increase healing for players above 60% accuracy (canary system integration)."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-6",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "F2E2 (stone_sentinel) took 18 turns vs prev floor avg 2.7",
+      "description": "Encounter 2 on floor 2 against stone_sentinel (mini_boss) took 18 turns. Previous floor averaged 2.7 turns. This is a 6.8x spike, exceeding the 2x threshold.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "turnsToResolve=18, prevFloorAvg=2.7, ratio=6.8"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 2, Encounter 2"
+      ],
+      "suggestedFix": "Review stone_sentinel HP/defense scaling relative to floor 1 enemies."
+    },
+    {
+      "id": "issue-playthrough-average-42-1773159388406-7",
+      "playthroughId": "playthrough-average-42-1773159388406",
+      "profileId": "average",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashed from 100 to 5 in floor 3 encounter 2",
+      "description": "During floor 3, encounter 2, player HP dropped from 100 (>70) to 5 (<20). Going from >70% to <20% in one encounter feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [
+          196,
+          233
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "HP 100 -> 5"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 42",
+        "Floor 3, Encounter 2"
+      ],
+      "suggestedFix": "Cap per-encounter damage or add emergency healing triggers."
+    }
+  ]
+}

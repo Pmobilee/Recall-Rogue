@@ -10,14 +10,8 @@ let cardbackFactIds = new Set<string>()
 let initialized = false
 let initPromise: Promise<void> | null = null
 
-// Build-time glob as fallback (works in production builds)
-const cardbackModules = import.meta.glob('/public/assets/cardbacks/lowres/*.webp')
-const staticIds = new Set<string>(
-  Object.keys(cardbackModules).map(path => {
-    const filename = path.split('/').pop() ?? ''
-    return filename.replace('.webp', '')
-  })
-)
+// Keep bundle size lean: cardback IDs are sourced from manifest JSON at runtime.
+const EMPTY_IDS = new Set<string>()
 
 /** Callbacks notified when new cardbacks become available */
 type CardbackListener = (factId: string) => void
@@ -35,11 +29,11 @@ export function onCardbackReady(cb: CardbackListener): () => void {
 async function fetchManifest(): Promise<Set<string>> {
   try {
     const res = await fetch('/assets/cardbacks/manifest.json', { cache: 'no-store' })
-    if (!res.ok) return staticIds
+    if (!res.ok) return EMPTY_IDS
     const data = await res.json()
     if (Array.isArray(data.ids)) return new Set<string>(data.ids)
   } catch { /* fallback */ }
-  return staticIds
+  return EMPTY_IDS
 }
 
 function connectSSE(): void {
@@ -87,7 +81,7 @@ export function initCardbackManifest(): Promise<void> {
  * Checks whether a cardback image exists for the given fact ID.
  */
 export function hasCardback(factId: string): boolean {
-  if (!initialized) return staticIds.has(factId)
+  if (!initialized) return false
   return cardbackFactIds.has(factId)
 }
 

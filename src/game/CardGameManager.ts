@@ -41,7 +41,7 @@ export class CardGameManager {
         antialias: false,
       },
       input: {
-        activePointers: 2,
+        activePointers: 1,
       },
       // Transparent so Svelte overlays show through
       transparent: false,

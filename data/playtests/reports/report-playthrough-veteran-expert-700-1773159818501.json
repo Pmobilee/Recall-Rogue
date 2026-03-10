@@ -1,0 +1,178 @@
+{
+  "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+  "profileId": "veteran-expert",
+  "analyzedAt": "2026-03-10T16:34:22.534Z",
+  "issueCount": 8,
+  "issues": [
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-001",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 6 enc 2 turn 5",
+      "description": "Enemy dealt 39 damage (>30 = 50% of 61 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          209
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "39 dmg vs 61 HP (63.9%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 6, encounter 2",
+        "Reach turn 5",
+        "Observe enemy dealing 39 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-002",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 6 enc 2 turn 7",
+      "description": "Enemy dealt 38 damage (>16 = 50% of 33 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          217
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "38 dmg vs 33 HP (115.2%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 6, encounter 2",
+        "Reach turn 7",
+        "Observe enemy dealing 38 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-003",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 6 enc 2 turn 8",
+      "description": "Enemy dealt 26 damage (>3 = 50% of 7 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          221
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "26 dmg vs 7 HP (371.4%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 6, encounter 2",
+        "Reach turn 8",
+        "Observe enemy dealing 26 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-004",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 1",
+      "description": "17 consecutive encounters with player HP remaining > 90, starting at floor 1. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "17 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 700",
+        "Progress through floors 1-1",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-005",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated with 93.5% accuracy on floor 6",
+      "description": "Player died on floor 6 despite having 93.5% overall accuracy. This suggests the player was skilled but ground down by attrition rather than making strategic mistakes.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "defeat at 93.5% accuracy"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 700",
+        "Play with ~94% accuracy",
+        "Observe defeat via HP attrition on floor 6"
+      ],
+      "suggestedFix": "Consider adding more healing opportunities or reducing cumulative damage on later floors"
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-006",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 3 enc 2 took 6 turns (prev avg: 2.0)",
+      "description": "Encounter 2 on floor 3 against the_archivist took 6 turns to resolve, more than 2x the previous floor's average of 2.0 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "6 turns vs 2.0 prev avg (3.0x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 700",
+        "Progress to floor 3",
+        "Face the_archivist",
+        "Observe encounter takes 6 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-007",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 6 enc 2 took 12 turns (prev avg: 2.7)",
+      "description": "Encounter 2 on floor 6 against knowledge_golem took 12 turns to resolve, more than 2x the previous floor's average of 2.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "12 turns vs 2.7 prev avg (4.5x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 700",
+        "Progress to floor 6",
+        "Face knowledge_golem",
+        "Observe encounter takes 12 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-700-1773159818501-008",
+      "playthroughId": "playthrough-veteran-expert-700-1773159818501",
+      "profileId": "veteran-expert",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "No cards of type \"wild\" were played during this run. This card type may be missing from the deck or not being offered.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start a run with seed 700",
+        "Check deck composition for \"wild\" cards",
+        "Observe absence of \"wild\" card plays"
+      ]
+    }
+  ]
+}

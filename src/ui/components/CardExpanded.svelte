@@ -75,7 +75,7 @@
   let domainName = $derived(getDomainMetadata(card.domain).displayName)
   let typeIcon = $derived(TYPE_ICONS[card.cardType])
   let tierLabel = $derived(card.tier === '1' ? '' : getTierDisplayName(card.tier))
-  let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType))
+  let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType))
   let domainIconPath = $derived(getDomainIconPath(card.domain))
 
   let startTime = $state(Date.now())

@@ -1,0 +1,273 @@
+{
+  "playthroughId": "playthrough-defensive-average-100-1773159792829",
+  "profileId": "defensive-average",
+  "analyzedAt": "2026-03-10T16:38:04.399Z",
+  "issueCount": 10,
+  "issues": [
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-001",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 49 dmg (74% of 66 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 20 (seq 269), the enemy dealt 49 damage which is 74% of the player's 66 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          269
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 49 dmg (74% of 66 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 20"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-002",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 45 dmg (100% of 45 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 21 (seq 273), the enemy dealt 45 damage which is 100% of the player's 45 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          273
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 45 dmg (100% of 45 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 21"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-003",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters (floors 1-1)",
+      "description": "3 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:100HP, F1E1:94HP, F1E2:91HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1
+        ],
+        "encounters": [
+          0,
+          1,
+          2
+        ],
+        "hpValues": [
+          100,
+          94,
+          91
+        ],
+        "metric": "3 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floors 1-1"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-004",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "4 consecutive easy encounters (floors 1-2)",
+      "description": "4 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:100HP, F1E1:94HP, F1E2:91HP, F2E0:98HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "hpValues": [
+          100,
+          94,
+          91,
+          98
+        ],
+        "metric": "4 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floors 1-2"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-005",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "5 consecutive easy encounters (floors 1-2)",
+      "description": "5 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:100HP, F1E1:94HP, F1E2:91HP, F2E0:98HP, F2E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          100,
+          94,
+          91,
+          98,
+          100
+        ],
+        "metric": "5 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floors 1-2"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-006",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_too_hard",
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 3, encounter 2 (the_curator)",
+      "description": "Player was defeated on floor 3, encounter 2 against the_curator (boss). Accuracy was 70% with 21 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "enemyId": "the_curator",
+        "enemyCategory": "boss",
+        "accuracy": 0.6984126984126984,
+        "turnsToResolve": 21,
+        "metric": "Defeated on floor 3 with 70% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floor 3, Encounter 2, Enemy: the_curator"
+      ],
+      "suggestedFix": "Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-007",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated despite 69% accuracy",
+      "description": "Player was defeated with an overall accuracy of 69%, well above the 60% threshold. This suggests the player knew the material but the game's damage/healing balance is too punishing. Dying despite knowledge mastery feels unfair.",
+      "evidence": {
+        "accuracy": 0.6907216494845361,
+        "finalFloor": 3,
+        "metric": "Defeated with 69% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Review enemy damage scaling vs. healing/shield availability"
+      ],
+      "suggestedFix": "Reduce enemy damage or increase healing for players above 60% accuracy (canary system integration)."
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-008",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Floor 3 enc 2: 21 turns vs prev floor avg 6.7",
+      "description": "Encounter 2 on floor 3 took 21 turns to resolve, which is more than 2x the previous floor's average of 6.7 turns. This indicates a sharp difficulty spike. Enemy: the_curator (boss).",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "turnsToResolve": 21,
+        "previousFloorAvg": 6.7,
+        "ratio": 3.15,
+        "enemyId": "the_curator",
+        "metric": "21 turns vs 6.7 avg (3.1x)"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floor 3, Encounter 2, Enemy: the_curator"
+      ]
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-009",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "HP crashed from 100 to 17 in floor 3 encounter 2",
+      "description": "During floor 3, encounter 2, player HP dropped from 100 to 17. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "hpStart": 100,
+        "hpEnd": 17,
+        "turnSeqs": [
+          189,
+          269
+        ],
+        "metric": "HP 100 → 17"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Floor 3, Encounter 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-defensive-average-100-1773159792829-010",
+      "playthroughId": "playthrough-defensive-average-100-1773159792829",
+      "profileId": "defensive-average",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (194 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 194,
+        "cardTypeCounts": {
+          "attack": 48,
+          "shield": 63,
+          "heal": 32,
+          "buff": 10,
+          "debuff": 11,
+          "utility": 19,
+          "regen": 11,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 194 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: defensive-average, Seed: 100",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

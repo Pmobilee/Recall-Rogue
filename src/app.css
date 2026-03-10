@@ -19,6 +19,8 @@
   --safe-right:  env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left:   env(safe-area-inset-left, 0px);
+
+  --gw: min(100vw, calc(100vh * 571 / 1024));
 }
 
 * {
@@ -33,7 +35,7 @@ html, body {
   overflow: hidden;
   overscroll-behavior: none;
   position: fixed;
-  background-color: var(--color-bg);
+  background: #000;
   color: var(--color-text);
   font-family: 'Courier New', monospace;
   -webkit-tap-highlight-color: transparent;

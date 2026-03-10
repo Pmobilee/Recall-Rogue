@@ -1,0 +1,190 @@
+{
+  "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+  "profileId": "aggressive-average",
+  "analyzedAt": "2026-03-10T16:38:04.398Z",
+  "issueCount": 8,
+  "issues": [
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-001",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 49 dmg (71% of 69 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 18 (seq 209), the enemy dealt 49 damage which is 71% of the player's 69 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          209
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 49 dmg (71% of 69 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 18"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-002",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 40 dmg (91% of 44 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 21 (seq 222), the enemy dealt 40 damage which is 91% of the player's 44 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          222
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 40 dmg (91% of 44 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 21"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-003",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 37 dmg (100% of 37 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 22 (seq 226), the enemy dealt 37 damage which is 100% of the player's 37 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          226
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 37 dmg (100% of 37 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Turn 22"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-004",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "balance_too_hard",
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 3, encounter 2 (knowledge_golem)",
+      "description": "Player was defeated on floor 3, encounter 2 against knowledge_golem (boss). Accuracy was 74% with 22 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "enemyId": "knowledge_golem",
+        "enemyCategory": "boss",
+        "accuracy": 0.7424242424242424,
+        "turnsToResolve": 22,
+        "metric": "Defeated on floor 3 with 74% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Enemy: knowledge_golem"
+      ],
+      "suggestedFix": "Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles."
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-005",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated despite 73% accuracy",
+      "description": "Player was defeated with an overall accuracy of 73%, well above the 60% threshold. This suggests the player knew the material but the game's damage/healing balance is too punishing. Dying despite knowledge mastery feels unfair.",
+      "evidence": {
+        "accuracy": 0.7272727272727273,
+        "finalFloor": 3,
+        "metric": "Defeated with 73% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Review enemy damage scaling vs. healing/shield availability"
+      ],
+      "suggestedFix": "Reduce enemy damage or increase healing for players above 60% accuracy (canary system integration)."
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-006",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Floor 3 enc 2: 22 turns vs prev floor avg 3.3",
+      "description": "Encounter 2 on floor 3 took 22 turns to resolve, which is more than 2x the previous floor's average of 3.3 turns. This indicates a sharp difficulty spike. Enemy: knowledge_golem (boss).",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "turnsToResolve": 22,
+        "previousFloorAvg": 3.3,
+        "ratio": 6.6,
+        "enemyId": "knowledge_golem",
+        "metric": "22 turns vs 3.3 avg (6.6x)"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2, Enemy: knowledge_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-007",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "HP crashed from 100 to 4 in floor 3 encounter 2",
+      "description": "During floor 3, encounter 2, player HP dropped from 100 to 4. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "hpStart": 100,
+        "hpEnd": 4,
+        "turnSeqs": [
+          136,
+          222
+        ],
+        "metric": "HP 100 → 4"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, Encounter 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159786956-008",
+      "playthroughId": "playthrough-aggressive-average-100-1773159786956",
+      "profileId": "aggressive-average",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (154 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 154,
+        "cardTypeCounts": {
+          "attack": 68,
+          "shield": 16,
+          "heal": 13,
+          "buff": 16,
+          "debuff": 19,
+          "utility": 12,
+          "regen": 10,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 154 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

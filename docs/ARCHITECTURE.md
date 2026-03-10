@@ -99,7 +99,7 @@ Located in `src/services/`:
 Located in `src/data/`:
 
 - `types.ts` — PlayerSave, fact types (extend with card types)
-- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base damage/heal values), `POST_ENCOUNTER_HEAL_PCT` (15%), `EXPLORER_POST_ENCOUNTER_HEAL_BONUS` (10%), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.75x for floors 1-3)
+- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base damage/heal values), `POST_ENCOUNTER_HEAL_PCT` (15%), `EXPLORER_POST_ENCOUNTER_HEAL_BONUS` (10%), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (10%), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps)
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling
 - Card type mappings — `src/data/card-types.ts`
@@ -135,10 +135,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Deck manager | `src/services/deckManager.ts` | Built |
 | Run pool builder | `src/services/runPoolBuilder.ts` | Built |
 | Turn manager | `src/services/turnManager.ts` | Built |
-| Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` for floor-based enemy damage multipliers |
+| Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` (+3%/floor above 6), `getSegmentForFloor(floor)`, and per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` |
 | Floor manager | `src/services/floorManager.ts` | Built |
 | Game flow controller | `src/services/gameFlowController.ts` | Built |
-| Encounter bridge | `src/services/encounterBridge.ts` | Built — applies post-encounter healing (`POST_ENCOUNTER_HEAL_PCT`) and early mini-boss HP reduction (`EARLY_MINI_BOSS_HP_MULTIPLIER`) |
+| Encounter bridge | `src/services/encounterBridge.ts` | Built — applies post-encounter healing (`POST_ENCOUNTER_HEAL_PCT`, `POST_BOSS_ENCOUNTER_HEAL_BONUS` for boss/mini-boss) and early mini-boss HP reduction (`EARLY_MINI_BOSS_HP_MULTIPLIER`) |
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
@@ -175,6 +175,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Hub screen (camp scene) | `src/ui/components/HubScreen.svelte` | Rewritten |
 | Camp art manifest | `src/ui/utils/campArtManifest.ts` | Extended |
 | Camp sprites | `public/assets/camp/sprites/{name}/{name}-base.png` | 11 sprites + background |
+| Firefly background | `src/ui/components/FireflyBackground.svelte` | Built |
+| Game frame (responsive) | `src/CardApp.svelte` (`.card-app` CSS) | Built |
+
+**Global CSS variable `--gw`** (`src/app.css`): `min(100vw, 430px)` — represents the game viewport width. Used by HubScreen sprites instead of `vw` units to ensure proper sizing within the phone frame on desktop.
 
 ### Implemented (P0.5 — Mastery Tiers)
 
@@ -306,13 +310,13 @@ src/
                            CameraSystem, AnimationSystem, TextureAtlasLRU, ...
     entities/              Player, Boss, Creature
   services/
-    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). Applies post-encounter healing and early mini-boss HP reduction.
+    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). Applies post-encounter healing (with boss/mini-boss bonus) and early mini-boss HP reduction.
     gameFlowController.ts  — Screen routing + run lifecycle
     turnManager.ts         — Turn-based encounter logic
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
-    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` for floor-based enemy damage multipliers.
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`.
     floorManager.ts        — Floor/room/boss/mini-boss generation
     runManager.ts          — Run stats recording
     runSaveService.ts      — Save/resume active run to localStorage

@@ -1,0 +1,227 @@
+{
+  "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+  "profileId": "aggressive-average",
+  "analyzedAt": "2026-03-10T16:46:16.206541+00:00",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-001",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy deals 49 damage (71% of 69 HP) on floor 3",
+      "description": "During enemy turn (seq 209), the player took 49 damage, which is 71.0% of their 69 HP at the time. Floor 3, encounter 2, turn 18.",
+      "evidence": {
+        "turnSeqs": [
+          209
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damageReceived=49, playerHP_before=69, ratio=0.71"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Consider capping single-turn enemy damage or adding damage reduction mechanics"
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-002",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy deals 40 damage (90% of 44 HP) on floor 3",
+      "description": "During enemy turn (seq 222), the player took 40 damage, which is 90.9% of their 44 HP at the time. Floor 3, encounter 2, turn 21.",
+      "evidence": {
+        "turnSeqs": [
+          222
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damageReceived=40, playerHP_before=44, ratio=0.91"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Consider capping single-turn enemy damage or adding damage reduction mechanics"
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-003",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy deals 37 damage (100% of 37 HP) on floor 3",
+      "description": "During enemy turn (seq 226), the player took 37 damage, which is 100.0% of their 37 HP at the time. Floor 3, encounter 2, turn 22.",
+      "evidence": {
+        "turnSeqs": [
+          226
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damageReceived=37, playerHP_before=37, ratio=1.00"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Consider capping single-turn enemy damage or adding damage reduction mechanics"
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-004",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashes from 100 to 4 in single encounter on floor 3",
+      "description": "During encounter 2 on floor 3, player HP went from a high of 100 to 4, an unfun swing of 96 HP in one encounter.",
+      "evidence": {
+        "turnSeqs": [
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "HP_high=100, HP_low=4, swing=96"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Add damage mitigation or split boss damage over more turns"
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-005",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 3 by knowledge_golem (boss)",
+      "description": "Player was defeated on floor 3, encounter 2 against knowledge_golem (boss). Accuracy was 74.2% with 66 cards played over 22 turns. Damage dealt: 243, damage taken: 260.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "defeated_floor=3, enemy=knowledge_golem, accuracy=0.742, dmg_dealt=243, dmg_taken=260"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Reduce early boss/enemy difficulty or provide more healing opportunities before floor 3 boss"
+    },
+    {
+      "id": "issue-playthrough-aggressive-average-100-1773159778361-006",
+      "playthroughId": "playthrough-aggressive-average-100-1773159778361",
+      "profileId": "aggressive-average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "F3E2 takes 22 turns (prev floor avg: 3.3, 6.6x)",
+      "description": "Encounter 2 on floor 3 against knowledge_golem (boss) took 22 turns to resolve, which is 6.6x the average of 3.3 turns from floor 2. This represents a significant difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=22, prev_floor_avg=3.3, ratio=6.6x"
+      },
+      "reproductionSteps": [
+        "Profile: aggressive-average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floor 2 and floor 3; reduce knowledge_golem HP or damage"
+    }
+  ]
+}

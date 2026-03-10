@@ -629,8 +629,8 @@ Events are randomly selected from the pool after each boss fight.
 
 | Boss | Floor | HP | Pattern |
 |------|-------|-----|---------|
-| The Excavator | 3 | 61 | 12 damage, escalating |
-| Magma Core | 6 | 68 | 8 + poison, phase 2 eruption at 40% HP |
+| The Excavator | 3 | 50 | 12 damage, escalating |
+| Magma Core | 6 | 55 | 8 + poison, phase 2 eruption at 40% HP |
 | The Archivist | 9 | 85 | 7 + shuffles hand, phase 2 at 50% HP |
 | Crystal Warden | 12 | 90 | 12 damage, status immunity, counter + heal |
 | Shadow Hydra | 15 | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
@@ -640,14 +640,23 @@ Events are randomly selected from the pool after each boss fight.
 
 Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and max, 0 block (resets each turn).
 
-**Floor-based enemy damage scaling (AR-31):** Enemy attack damage is multiplied by a floor-dependent factor via `getFloorDamageScaling(floor)` in `enemyManager.ts`:
+**Floor-based enemy damage scaling (AR-31, AR-32):** Enemy attack damage is multiplied by a floor-dependent factor via `getFloorDamageScaling(floor)` in `enemyManager.ts`:
 - Floors 1-3: 0.85x (reduced damage for onboarding)
 - Floors 4-6: 1.0x (baseline)
-- Floors 7+: +5% per floor above 6 (e.g., floor 10 = 1.20x)
+- Floors 7+: +3% per floor above 6 (e.g., floor 10 = 1.12x) — controlled by `FLOOR_DAMAGE_SCALING_PER_FLOOR` in `balance.ts`
 
-**Post-encounter healing (AR-31):** After each non-defeat encounter, the player heals 15% of max HP (`POST_ENCOUNTER_HEAL_PCT` in `balance.ts`). In Story Mode, an additional 10% is added (25% total, via `EXPLORER_POST_ENCOUNTER_HEAL_BONUS`).
+**Post-encounter healing (AR-31, AR-32):** After each non-defeat encounter, the player heals 15% of max HP (`POST_ENCOUNTER_HEAL_PCT` in `balance.ts`). In Story Mode, an additional 10% is added (25% total, via `EXPLORER_POST_ENCOUNTER_HEAL_BONUS`). Boss and mini-boss encounters grant a further 10% bonus healing (`POST_BOSS_ENCOUNTER_HEAL_BONUS`), for 25% standard / 35% Story Mode after boss fights.
 
-**Early mini-boss HP reduction (AR-31):** Mini-bosses on floors 1-3 have their HP multiplied by 0.75x (`EARLY_MINI_BOSS_HP_MULTIPLIER` in `balance.ts`), making them less punishing during early progression.
+**Per-turn enemy damage cap (AR-32):** Enemy damage per turn is capped by segment via `ENEMY_TURN_DAMAGE_CAP` in `balance.ts`, applied in `executeEnemyIntent()`. This prevents spike deaths from high-strength buffed enemies:
+- Segment 1 (floors 1-6): 25 damage cap
+- Segment 2 (floors 7-12): 35 damage cap
+- Segment 3 (floors 13-18): 45 damage cap
+- Segment 4 (floors 19-24): 55 damage cap
+- Endless (floors 25+): no cap
+
+Segment mapping is handled by `getSegmentForFloor()` in `enemyManager.ts`.
+
+**Early mini-boss HP reduction (AR-31, AR-32):** Mini-bosses on floors 1-3 have their HP multiplied by 0.60x (`EARLY_MINI_BOSS_HP_MULTIPLIER` in `balance.ts`), making them less punishing during early progression.
 
 ---
 
@@ -1312,6 +1321,8 @@ The between-runs hub is a full-screen interactive pixel art camp scene. A cave b
 **Gold sink design:** Camp upgrades are the primary gold sink. Pricing scales exponentially per tier. No gameplay advantage — purely cosmetic progression that rewards consistent play.
 
 **Bottom nav bar**: A 6-button nav bar (Start, Library, Social, Settings, Profile, Journal) persists as a secondary navigation fallback below the camp scene.
+
+**Desktop layout**: On screens wider than 430px, the game renders in a centered phone-sized column (430px max-width) with a black background outside. The edges of the game frame fade smoothly to black via gradient overlays. Drifting firefly particles animate in the dark area outside the frame. On mobile (< 430px), the game fills the full viewport width with sprites stretching to match. This letterboxing approach preserves the intended portrait layout on all devices.
 
 ---
 

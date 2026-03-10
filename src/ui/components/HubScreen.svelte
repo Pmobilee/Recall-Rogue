@@ -19,6 +19,7 @@
     onOpenJournal: () => void
     onOpenLeaderboards: () => void
     onOpenSocial: () => void
+    onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
   }
 
   let {
@@ -31,6 +32,7 @@
     onOpenJournal,
     onOpenLeaderboards,
     onOpenSocial,
+    onOpenRelicSanctum,
   }: Props = $props()
 
   let showUpgradeModal = $state(false)
@@ -54,9 +56,15 @@
       petBubbleVisible = false
     }, 2000)
   }
+
+  function handleRelicClick(): void {
+    onOpenRelicSanctum()
+  }
 </script>
 
 <section class="camp-hub" aria-label="Camp hub">
+  <CampHudOverlay {streak} {dustBalance} />
+
   <img
     class="camp-bg"
     src={getCampBackgroundUrl()}
@@ -66,60 +74,51 @@
     decoding="async"
   />
 
-  <CampHudOverlay {streak} {dustBalance} />
-
   <!-- 1. Dungeon Gate - Start Run -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('dungeon-gate')}
     label="Enter Dungeon"
     testId="btn-start-run"
-    top="22%"
-    left="50%"
-    width="45vw"
     zIndex={10}
     onclick={onStartRun}
+    hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
+    labelTop="40%" labelLeft="50%"
   />
 
   <!-- 2. Bookshelf - Library -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('bookshelf')}
     label="Library"
-    top="42%"
-    left="12%"
-    width="22vw"
     zIndex={20}
     onclick={onOpenLibrary}
+    hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
+    labelTop="55%" labelLeft="18%"
   />
 
   <!-- 3. Signpost - Settings -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('signpost')}
     label="Settings"
-    top="40%"
-    left="88%"
-    width="14vw"
     zIndex={20}
     onclick={onOpenSettings}
+    hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
+    labelTop="48%" labelLeft="84%"
   />
 
-  <!-- 4. Anvil - Upgrades -->
+  <!-- 4. Anvil - Relics -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('anvil')}
-    label="Upgrades"
-    top="58%"
-    left="20%"
-    width="16vw"
+    label="Relics"
     zIndex={20}
-    onclick={openUpgradeModal}
+    onclick={handleRelicClick}
+    hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
+    labelTop="65%" labelLeft="35%"
   />
 
-  <!-- 5. Campfire - Decorative (streak visual) -->
+  <!-- 5. Campfire - Decorative (no hitbox, no label) -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('campfire')}
     label="Campfire"
-    top="62%"
-    left="50%"
-    width="22vw"
     zIndex={15}
     decorative
   />
@@ -128,66 +127,60 @@
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('tent')}
     label="Profile"
-    top="55%"
-    left="80%"
-    width="30vw"
     zIndex={18}
     onclick={onOpenProfile}
+    hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
+    labelTop="67%" labelLeft="82%"
   />
 
-  <!-- 7. Character - Customize (opens upgrade modal) -->
+  <!-- 7. Character - Shop (social features) -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('character')}
-    label="Customize"
-    top="52%"
-    left="75%"
-    width="16vw"
+    label="Shop"
     zIndex={25}
-    onclick={openUpgradeModal}
+    onclick={onOpenSocial}
+    hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
+    labelTop="71%" labelLeft="68%"
   />
 
   <!-- 8. Cat - Pet, shows speech bubble -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('cat')}
     label="Pet"
-    top="68%"
-    left="42%"
-    width="10vw"
     zIndex={22}
     onclick={showPetBubble}
+    hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="4%"
+    labelTop="74%" labelLeft="72%"
   />
 
   <!-- 9. Journal (Book) -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('journal')}
     label="Journal"
-    top="78%"
-    left="18%"
-    width="14vw"
     zIndex={25}
     onclick={onOpenJournal}
+    hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
+    labelTop="86%" labelLeft="16%"
   />
 
   <!-- 10. Quest Board - Leaderboards -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('quest-board')}
     label="Quests"
-    top="75%"
-    left="82%"
-    width="20vw"
     zIndex={25}
     onclick={onOpenLeaderboards}
+    hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
+    labelTop="96%" labelLeft="85%"
   />
 
-  <!-- 11. Treasure Chest - Social -->
+  <!-- 11. Treasure Chest - Customize (opens upgrade modal) -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('treasure-chest')}
-    label="Social"
-    top="82%"
-    left="50%"
-    width="16vw"
+    label="Customize"
     zIndex={25}
-    onclick={onOpenSocial}
+    onclick={openUpgradeModal}
+    hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
+    labelTop="99%" labelLeft="62%"
   />
 
   <!-- Pet speech bubble -->
@@ -202,6 +195,7 @@
   {#if showUpgradeModal}
     <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
   {/if}
+
 </section>
 
 <style>
@@ -217,8 +211,9 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     z-index: 0;
     image-rendering: pixelated;
   }
+
 </style>

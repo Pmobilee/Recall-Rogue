@@ -5,7 +5,7 @@
   let phaserContainer: HTMLDivElement
   import { currentScreen } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
-  import { navigateToScreen, type HubScreenName, normalizeHomeScreen } from './services/screenController'
+  import { navigateToScreen } from './services/screenController'
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
@@ -75,22 +75,17 @@
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
-  import HubNavBar from './ui/components/HubNavBar.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
-
-  const NAV_VISIBLE_SCREENS = new Set<Screen>([
-    'hub',
-    'mainMenu',
-    'base',
-    'library',
-    'settings',
-    'profile',
-    'journal',
-    'leaderboards',
-    'social',
-  ])
+  import FireflyBackground from './ui/components/FireflyBackground.svelte'
+  import KnowledgeLibrary from './ui/components/KnowledgeLibrary.svelte'
+  import SettingsPanel from './ui/components/SettingsPanel.svelte'
+  import ProfileScreen from './ui/components/ProfileScreen.svelte'
+  import JournalScreen from './ui/components/JournalScreen.svelte'
+  import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
+  import SocialScreen from './ui/components/SocialScreen.svelte'
+  import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
 
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
@@ -157,10 +152,6 @@
 
   function handleOpenRelicSanctum(): { ok: true } | { ok: false; reason: string } {
     return openRelicSanctum()
-  }
-
-  function handleHubNavigate(target: HubScreenName): void {
-    transitionScreen(target)
   }
 
   function handleBackToMenu(): void {
@@ -335,10 +326,6 @@
     unlockCardAudio()
   }
 
-  function shouldShowHubNav(screen: Screen): boolean {
-    return NAV_VISIBLE_SCREENS.has(screen)
-  }
-
   function createLazyLoader<T>(factory: () => Promise<T>): () => Promise<T> {
     let promise: Promise<T> | null = null
     return () => {
@@ -349,13 +336,6 @@
     }
   }
 
-  const loadKnowledgeLibrary = createLazyLoader(() => import('./ui/components/KnowledgeLibrary.svelte'))
-  const loadSettingsPanel = createLazyLoader(() => import('./ui/components/SettingsPanel.svelte'))
-  const loadProfileScreen = createLazyLoader(() => import('./ui/components/ProfileScreen.svelte'))
-  const loadJournalScreen = createLazyLoader(() => import('./ui/components/JournalScreen.svelte'))
-  const loadLeaderboardsScreen = createLazyLoader(() => import('./ui/components/LeaderboardsScreen.svelte'))
-  const loadSocialScreen = createLazyLoader(() => import('./ui/components/SocialScreen.svelte'))
-  const loadRelicSanctumScreen = createLazyLoader(() => import('./ui/components/RelicSanctumScreen.svelte'))
   const loadTerraPassModal = createLazyLoader(() => import('./ui/components/TerraPassModal.svelte'))
   const loadSeasonPassView = createLazyLoader(() => import('./ui/components/SeasonPassView.svelte'))
   const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
@@ -405,6 +385,7 @@
   })
 </script>
 
+<FireflyBackground />
 <div class="card-app" data-screen={$currentScreen}>
   <div
     id="phaser-container"
@@ -424,6 +405,7 @@
       onOpenJournal={handleOpenJournal}
       onOpenLeaderboards={handleOpenLeaderboards}
       onOpenSocial={handleOpenSocial}
+      onOpenRelicSanctum={() => handleOpenRelicSanctum()}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner" data-testid="active-run-banner">
@@ -623,62 +605,41 @@
   {/if}
 
   {#if $currentScreen === 'library'}
-    {#await loadKnowledgeLibrary() then module}
-      {@const KnowledgeLibraryView = module.default}
-      <KnowledgeLibraryView onback={handleBackToMenu} />
-    {/await}
+    <KnowledgeLibrary onback={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'settings'}
-    {#await loadSettingsPanel() then module}
-      {@const SettingsPanelView = module.default}
-      <SettingsPanelView onback={handleBackToMenu} />
-    {/await}
+    <SettingsPanel onback={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'profile'}
-    {#await loadProfileScreen() then module}
-      {@const ProfileScreenView = module.default}
-      <ProfileScreenView onBack={handleBackToMenu} />
-    {/await}
+    <ProfileScreen onBack={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'journal'}
-    {#await loadJournalScreen() then module}
-      {@const JournalScreenView = module.default}
-      <JournalScreenView summary={$lastRunSummary} onBack={handleBackToMenu} />
-    {/await}
+    <JournalScreen summary={$lastRunSummary} onBack={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'leaderboards'}
-    {#await loadLeaderboardsScreen() then module}
-      {@const LeaderboardsScreenView = module.default}
-      <LeaderboardsScreenView onBack={handleBackToMenu} />
-    {/await}
+    <LeaderboardsScreen onBack={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'social'}
-    {#await loadSocialScreen() then module}
-      {@const SocialScreenView = module.default}
-      <SocialScreenView
-        onBack={handleBackToMenu}
-        onOpenSettings={handleOpenSettings}
-        onStartDailyExpedition={handleStartDailyExpedition}
-        onStartEndlessDepths={handleStartEndlessDepths}
-        onStartScholarChallenge={handleStartScholarChallenge}
-        onOpenRelicSanctum={handleOpenRelicSanctum}
-        onOpenArcanePass={handleOpenArcanePass}
-        onOpenSeasonPass={handleOpenSeasonPass}
-        onOpenCosmeticStore={handleOpenCosmeticStore}
-      />
-    {/await}
+    <SocialScreen
+      onBack={handleBackToMenu}
+      onOpenSettings={handleOpenSettings}
+      onStartDailyExpedition={handleStartDailyExpedition}
+      onStartEndlessDepths={handleStartEndlessDepths}
+      onStartScholarChallenge={handleStartScholarChallenge}
+      onOpenRelicSanctum={handleOpenRelicSanctum}
+      onOpenArcanePass={handleOpenArcanePass}
+      onOpenSeasonPass={handleOpenSeasonPass}
+      onOpenCosmeticStore={handleOpenCosmeticStore}
+    />
   {/if}
 
   {#if $currentScreen === 'relicSanctum'}
-    {#await loadRelicSanctumScreen() then module}
-      {@const RelicSanctumScreenView = module.default}
-      <RelicSanctumScreenView onBack={handleCloseRelicSanctum} />
-    {/await}
+    <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
   {/if}
 
   {#if showArcanePassModal}
@@ -702,10 +663,6 @@
     {/await}
   {/if}
 
-  {#if shouldShowHubNav($currentScreen)}
-    <HubNavBar current={normalizeHomeScreen($currentScreen)} onNavigate={handleHubNavigate} />
-  {/if}
-
   {#if gainedFactText}
     <div class="fact-gained-toast" role="status">
       <div class="toast-header">New Fact Acquired</div>
@@ -717,9 +674,36 @@
 <style>
   .card-app {
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100vw, calc(100vh * 571 / 1024));
     background: #0d1117;
     overflow: hidden;
+  }
+
+  @media (min-width: 450px) {
+    .card-app::before,
+    .card-app::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    .card-app::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+    }
+
+    .card-app::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+    }
   }
 
   .phaser-container {

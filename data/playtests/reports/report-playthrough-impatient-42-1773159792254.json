@@ -1,0 +1,273 @@
+{
+  "playthroughId": "playthrough-impatient-42-1773159792254",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-10T16:38:04.393Z",
+  "issueCount": 10,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-001",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 22 dmg (88% of 25 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 16 (seq 446), the enemy dealt 22 damage which is 88% of the player's 25 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          446
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 22 dmg (88% of 25 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floor 3, Encounter 2, Turn 16"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-002",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters (floors 1-1)",
+      "description": "3 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:94HP, F1E1:97HP, F1E2:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1
+        ],
+        "encounters": [
+          0,
+          1,
+          2
+        ],
+        "hpValues": [
+          94,
+          97,
+          100
+        ],
+        "metric": "3 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floors 1-1"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-003",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "4 consecutive easy encounters (floors 1-2)",
+      "description": "4 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:94HP, F1E1:97HP, F1E2:100HP, F2E0:91HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "hpValues": [
+          94,
+          97,
+          100,
+          91
+        ],
+        "metric": "4 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floors 1-2"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-004",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "5 consecutive easy encounters (floors 1-2)",
+      "description": "5 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:94HP, F1E1:97HP, F1E2:100HP, F2E0:91HP, F2E1:99HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          94,
+          97,
+          100,
+          91,
+          99
+        ],
+        "metric": "5 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floors 1-2"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-005",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_too_hard",
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 3, encounter 2 (shadow_hydra)",
+      "description": "Player was defeated on floor 3, encounter 2 against shadow_hydra (boss). Accuracy was 71% with 17 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "enemyId": "shadow_hydra",
+        "enemyCategory": "boss",
+        "accuracy": 0.7142857142857143,
+        "turnsToResolve": 17,
+        "metric": "Defeated on floor 3 with 71% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floor 3, Encounter 2, Enemy: shadow_hydra"
+      ],
+      "suggestedFix": "Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-006",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated despite 68% accuracy",
+      "description": "Player was defeated with an overall accuracy of 68%, well above the 60% threshold. This suggests the player knew the material but the game's damage/healing balance is too punishing. Dying despite knowledge mastery feels unfair.",
+      "evidence": {
+        "accuracy": 0.6818181818181818,
+        "finalFloor": 3,
+        "metric": "Defeated with 68% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Review enemy damage scaling vs. healing/shield availability"
+      ],
+      "suggestedFix": "Reduce enemy damage or increase healing for players above 60% accuracy (canary system integration)."
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-007",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Floor 2 enc 0: 16 turns vs prev floor avg 5.0",
+      "description": "Encounter 0 on floor 2 took 16 turns to resolve, which is more than 2x the previous floor's average of 5.0 turns. This indicates a sharp difficulty spike. Enemy: crystal_golem (common).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 0,
+        "turnsToResolve": 16,
+        "previousFloorAvg": 5,
+        "ratio": 3.2,
+        "enemyId": "crystal_golem",
+        "metric": "16 turns vs 5.0 avg (3.2x)"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floor 2, Encounter 0, Enemy: crystal_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-008",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Floor 2 enc 2: 25 turns vs prev floor avg 5.0",
+      "description": "Encounter 2 on floor 2 took 25 turns to resolve, which is more than 2x the previous floor's average of 5.0 turns. This indicates a sharp difficulty spike. Enemy: stone_sentinel (mini_boss).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 2,
+        "turnsToResolve": 25,
+        "previousFloorAvg": 5,
+        "ratio": 5,
+        "enemyId": "stone_sentinel",
+        "metric": "25 turns vs 5.0 avg (5.0x)"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floor 2, Encounter 2, Enemy: stone_sentinel"
+      ]
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-009",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "HP crashed from 100 to 3 in floor 3 encounter 2",
+      "description": "During floor 3, encounter 2, player HP dropped from 100 to 3. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "hpStart": 100,
+        "hpEnd": 3,
+        "turnSeqs": [
+          369,
+          446
+        ],
+        "metric": "HP 100 → 3"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Floor 3, Encounter 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-impatient-42-1773159792254-010",
+      "playthroughId": "playthrough-impatient-42-1773159792254",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (264 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 264,
+        "cardTypeCounts": {
+          "attack": 69,
+          "shield": 55,
+          "heal": 42,
+          "buff": 36,
+          "debuff": 33,
+          "utility": 15,
+          "regen": 14,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 264 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 42",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

@@ -1226,14 +1226,14 @@ describe('Turn Manager', () => {
     });
 
     it('detects player defeat from enemy attack', () => {
-      // Create enemy with massive attack
+      // Create enemy with massive attack on endless floor (no damage cap)
       const bigTemplate = mockEnemyTemplate({
         baseHP: 100,
         intentPool: [
           { type: 'attack', value: 999, weight: 1, telegraph: 'Lethal Strike' },
         ],
       });
-      const bigEnemy = createEnemy(bigTemplate, 1);
+      const bigEnemy = createEnemy(bigTemplate, 25);
       const ts = startEncounter(deck, bigEnemy);
 
       const result = endPlayerTurn(ts);

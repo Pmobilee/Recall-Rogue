@@ -7,7 +7,7 @@
 
 ## Current Status
 
-**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul).
+**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul). AR-32 mobile performance/snappiness pass is complete.
 
 **Recent completed phases (March 9-10, 2026):**
 - AR-22 Global rename from "Arcane Recall" to "Recall Rogue" across all files.
@@ -18,6 +18,7 @@
 - AR-20 Competitive/social runtime wiring including Daily + Endless leaderboard submissions.
 - AR-21 Monetization activation including Arcane Pass/Season Pass/Cosmetic Store surfacing and Scholar Challenge.
 - AR-31 Combat balance pass: player HP 80→100, heal buff, enemy damage reductions, floor damage scaling, post-encounter healing, wild card fix, early mini-boss HP reduction.
+- AR-32 Mobile performance/snappiness deep pass: removed cardback glob module fanout, added FactsDB in-memory indexes, reduced combat FX allocation churn, switched key UI/combat assets to WebP, and restored bundle budget compliance (`build:check` 497 KB → 198 KB initial JS gzip estimate).
 - Regression hardening pass: unit coverage added for AR-21 monetization grant flows and AR-30 camp cosmetics progression state (`tests/unit/monetizationService.test.ts`, `tests/unit/campState.test.ts`).
 - Hub rendering hardening: `DomeCanvas` now renders interactive placeholders for missing sprite assets so knowledge-tree and other dome objects remain visible/clickable even without full art packs.
 - Dome asset key coverage hardening: added missing dome object/stage keys in `domeManifest`, generated deterministic low/high placeholder dome sprites, and restored clean `audit-assets` status (`All clear`).
@@ -570,6 +571,24 @@ Playtest-driven balance adjustments to reduce early-game lethality, improve heal
 
 Depends on: None (combat system stable). Estimated: Medium. **Status: Completed (March 10, 2026).**
 
+### AR-32: Mobile Performance & Snappiness Deep Pass ✅
+
+Hyper-deep runtime pass focused on mobile startup speed, frame pacing, and reducing repeated data-path work without changing gameplay outcomes.
+
+- [x] Removed `cardbackManifest` `import.meta.glob` fanout that inflated JS chunk/module overhead
+- [x] Added FactsDB in-memory indexes for hot lookup paths (all/byId/category/age buckets)
+- [x] Reduced library aggregation to single-pass summary logic
+- [x] Added domain-resolution memoization by fact ID
+- [x] Reused combat flash overlay and reduced per-effect object churn
+- [x] BootScene preload trimmed (unused player sprites removed; enemy/background WebP + low-end `_1x` variants)
+- [x] UI sprite path pass to WebP for domain icons, card frames, doors, camp sprites
+- [x] Cardback preload dedupe in card hand rendering
+- [x] Release gate validated (typecheck + critical unit + critical Playwright)
+- [x] Build budget recovered: initial JS gzip estimate now below CI cap
+
+Depends on: None. Estimated: Medium-Large. **Status: Completed (March 10, 2026).**
+→ [Spec](completed/AR-32-MOBILE-PERFORMANCE-SNAPPY.md)
+
 ---
 
 ## Dependency Graph
@@ -600,6 +619,7 @@ FUTURE:
   AR-29 (First-Person Crawl) — core complete
   AR-30 (Camp Cosmetics) — core complete, sprite-generation pipeline pending
   AR-31 (Combat Balance Pass) — complete, playtest-driven
+  AR-32 (Mobile Performance & Snappiness) — complete
 ```
 
 **Parallelism:** AR-15 and AR-16 are complete. AR-17 depends on AR-15 source outputs. AR-18 depends on AR-15 source registry. AR-19 depends on AR-17 and AR-18 completion plus QA gate passage. AR-17 and AR-19 now run through worker-first generation + ingest/QA/promote scripts. AR-22→26 game design overhaul is complete (March 2026).

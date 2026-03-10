@@ -1,0 +1,565 @@
+{
+  "playthroughId": "playthrough-speed-runner-42-1773159771160",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-10T16:46:41.775Z",
+  "issueCount": 18,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-001",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 41 dmg (72% of 57 HP) on floor 21",
+      "description": "On floor 21, encounter 2, turn 16 (seq 1253), the enemy dealt 41 damage which is 72% of the player's 57 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          1253
+        ],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "Enemy dealt 41 dmg (72% of 57 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 21, Encounter 2, Turn 16"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-002",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 169 dmg (100% of 169 HP) on floor 21",
+      "description": "On floor 21, encounter 2, turn 21 (seq 1273), the enemy dealt 169 damage which is 100% of the player's 169 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          1273
+        ],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "Enemy dealt 169 dmg (100% of 169 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 21, Encounter 2, Turn 21"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-003",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "17 consecutive easy encounters (floors 1-6)",
+      "description": "17 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E0:100HP, F1E1:100HP, F1E2:100HP, F2E0:100HP, F2E1:98HP, F2E2:93HP, F3E0:95HP, F3E1:96HP, F3E2:91HP, F4E0:100HP, F4E1:100HP, F4E2:100HP, F5E0:98HP, F5E1:98HP, F5E2:100HP, F6E0:100HP, F6E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          100,
+          100,
+          100,
+          100,
+          98,
+          93,
+          95,
+          96,
+          91,
+          100,
+          100,
+          100,
+          98,
+          98,
+          100,
+          100,
+          100
+        ],
+        "metric": "17 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 1-6"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-004",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "6 consecutive easy encounters (floors 7-8)",
+      "description": "6 consecutive encounters where player ended with >90 HP remaining. Encounters: F7E0:100HP, F7E1:100HP, F7E2:100HP, F8E0:100HP, F8E1:100HP, F8E2:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          7,
+          7,
+          7,
+          8,
+          8,
+          8
+        ],
+        "encounters": [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2
+        ],
+        "hpValues": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "metric": "6 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 7-8"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-005",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "6 consecutive easy encounters (floors 9-11)",
+      "description": "6 consecutive encounters where player ended with >90 HP remaining. Encounters: F9E1:93HP, F9E2:93HP, F10E0:100HP, F10E1:100HP, F10E2:92HP, F11E0:94HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          9,
+          9,
+          10,
+          10,
+          10,
+          11
+        ],
+        "encounters": [
+          1,
+          2,
+          0,
+          1,
+          2,
+          0
+        ],
+        "hpValues": [
+          93,
+          93,
+          100,
+          100,
+          92,
+          94
+        ],
+        "metric": "6 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 9-11"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-006",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3 consecutive easy encounters (floors 11-12)",
+      "description": "3 consecutive encounters where player ended with >90 HP remaining. Encounters: F11E2:100HP, F12E0:96HP, F12E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          11,
+          12,
+          12
+        ],
+        "encounters": [
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          100,
+          96,
+          100
+        ],
+        "metric": "3 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 11-12"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-007",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "10 consecutive easy encounters (floors 14-17)",
+      "description": "10 consecutive encounters where player ended with >90 HP remaining. Encounters: F14E1:98HP, F14E2:100HP, F15E0:98HP, F15E1:100HP, F15E2:100HP, F16E0:96HP, F16E1:100HP, F16E2:100HP, F17E0:100HP, F17E1:97HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          14,
+          14,
+          15,
+          15,
+          15,
+          16,
+          16,
+          16,
+          17,
+          17
+        ],
+        "encounters": [
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          98,
+          100,
+          98,
+          100,
+          100,
+          96,
+          100,
+          100,
+          100,
+          97
+        ],
+        "metric": "10 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 14-17"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-008",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "7 consecutive easy encounters (floors 18-20)",
+      "description": "7 consecutive encounters where player ended with >90 HP remaining. Encounters: F18E1:100HP, F18E2:91HP, F19E0:98HP, F19E1:97HP, F19E2:100HP, F20E0:97HP, F20E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          18,
+          18,
+          19,
+          19,
+          19,
+          20,
+          20
+        ],
+        "encounters": [
+          1,
+          2,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          100,
+          91,
+          98,
+          97,
+          100,
+          97,
+          100
+        ],
+        "metric": "7 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floors 18-20"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-009",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 2 enc 2: 4 turns vs prev floor avg 1.7",
+      "description": "Encounter 2 on floor 2 took 4 turns to resolve, which is more than 2x the previous floor's average of 1.7 turns. This indicates a sharp difficulty spike. Enemy: crystal_guardian (mini_boss).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 2,
+        "turnsToResolve": 4,
+        "previousFloorAvg": 1.7,
+        "ratio": 2.4,
+        "enemyId": "crystal_guardian",
+        "metric": "4 turns vs 1.7 avg (2.4x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 2, Encounter 2, Enemy: crystal_guardian"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-010",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 5 enc 2: 7 turns vs prev floor avg 2.7",
+      "description": "Encounter 2 on floor 5 took 7 turns to resolve, which is more than 2x the previous floor's average of 2.7 turns. This indicates a sharp difficulty spike. Enemy: stone_sentinel (mini_boss).",
+      "evidence": {
+        "floor": 5,
+        "encounter": 2,
+        "turnsToResolve": 7,
+        "previousFloorAvg": 2.7,
+        "ratio": 2.63,
+        "enemyId": "stone_sentinel",
+        "metric": "7 turns vs 2.7 avg (2.6x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 5, Encounter 2, Enemy: stone_sentinel"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-011",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 9 enc 2: 11 turns vs prev floor avg 3.0",
+      "description": "Encounter 2 on floor 9 took 11 turns to resolve, which is more than 2x the previous floor's average of 3.0 turns. This indicates a sharp difficulty spike. Enemy: crystal_warden (boss).",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "turnsToResolve": 11,
+        "previousFloorAvg": 3,
+        "ratio": 3.67,
+        "enemyId": "crystal_warden",
+        "metric": "11 turns vs 3.0 avg (3.7x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 9, Encounter 2, Enemy: crystal_warden"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-012",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 12 enc 2: 11 turns vs prev floor avg 4.0",
+      "description": "Encounter 2 on floor 12 took 11 turns to resolve, which is more than 2x the previous floor's average of 4.0 turns. This indicates a sharp difficulty spike. Enemy: shadow_hydra (boss).",
+      "evidence": {
+        "floor": 12,
+        "encounter": 2,
+        "turnsToResolve": 11,
+        "previousFloorAvg": 4,
+        "ratio": 2.75,
+        "enemyId": "shadow_hydra",
+        "metric": "11 turns vs 4.0 avg (2.8x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 12, Encounter 2, Enemy: shadow_hydra"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-013",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 15 enc 2: 19 turns vs prev floor avg 6.0",
+      "description": "Encounter 2 on floor 15 took 19 turns to resolve, which is more than 2x the previous floor's average of 6.0 turns. This indicates a sharp difficulty spike. Enemy: knowledge_golem (boss).",
+      "evidence": {
+        "floor": 15,
+        "encounter": 2,
+        "turnsToResolve": 19,
+        "previousFloorAvg": 6,
+        "ratio": 3.17,
+        "enemyId": "knowledge_golem",
+        "metric": "19 turns vs 6.0 avg (3.2x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 15, Encounter 2, Enemy: knowledge_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-014",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 18 enc 2: 20 turns vs prev floor avg 7.0",
+      "description": "Encounter 2 on floor 18 took 20 turns to resolve, which is more than 2x the previous floor's average of 7.0 turns. This indicates a sharp difficulty spike. Enemy: crystal_warden (boss).",
+      "evidence": {
+        "floor": 18,
+        "encounter": 2,
+        "turnsToResolve": 20,
+        "previousFloorAvg": 7,
+        "ratio": 2.86,
+        "enemyId": "crystal_warden",
+        "metric": "20 turns vs 7.0 avg (2.9x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 18, Encounter 2, Enemy: crystal_warden"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-015",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 20 enc 0: 9 turns vs prev floor avg 3.7",
+      "description": "Encounter 0 on floor 20 took 9 turns to resolve, which is more than 2x the previous floor's average of 3.7 turns. This indicates a sharp difficulty spike. Enemy: crystal_golem (common).",
+      "evidence": {
+        "floor": 20,
+        "encounter": 0,
+        "turnsToResolve": 9,
+        "previousFloorAvg": 3.7,
+        "ratio": 2.45,
+        "enemyId": "crystal_golem",
+        "metric": "9 turns vs 3.7 avg (2.5x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 20, Encounter 0, Enemy: crystal_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-016",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 21 enc 2: 21 turns vs prev floor avg 6.0",
+      "description": "Encounter 2 on floor 21 took 21 turns to resolve, which is more than 2x the previous floor's average of 6.0 turns. This indicates a sharp difficulty spike. Enemy: the_curator (boss).",
+      "evidence": {
+        "floor": 21,
+        "encounter": 2,
+        "turnsToResolve": 21,
+        "previousFloorAvg": 6,
+        "ratio": 3.5,
+        "enemyId": "the_curator",
+        "metric": "21 turns vs 6.0 avg (3.5x)"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 21, Encounter 2, Enemy: the_curator"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-017",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashed from 100 to 16 in floor 21 encounter 2",
+      "description": "During floor 21, encounter 2, player HP dropped from 100 to 16. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 21,
+        "encounter": 2,
+        "hpStart": 100,
+        "hpEnd": 16,
+        "turnSeqs": [
+          1189,
+          1253
+        ],
+        "metric": "HP 100 → 16"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Floor 21, Encounter 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159771160-018",
+      "playthroughId": "playthrough-speed-runner-42-1773159771160",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (879 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 879,
+        "cardTypeCounts": {
+          "attack": 318,
+          "shield": 202,
+          "heal": 70,
+          "buff": 85,
+          "debuff": 133,
+          "utility": 38,
+          "regen": 33,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 879 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 42",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

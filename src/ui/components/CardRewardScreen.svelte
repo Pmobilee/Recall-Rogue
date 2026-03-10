@@ -254,7 +254,7 @@
             class:selected={isSelected(option)}
             class:shadowed={isShadowed(option)}
             class:collecting={isCollecting(option)}
-            style={`--frame-image: url('${option.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(option.cardType)}'); --icon-glow: ${icon.glow};`}
+            style={`--frame-image: url('${option.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(option.cardType)}'); --icon-glow: ${icon.glow};`}
             onclick={() => selectType(option.cardType)}
             onpointerenter={() => hoverType(option.cardType)}
             disabled={collectLocked}

@@ -168,7 +168,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'the_excavator',
     name: 'The Excavator',
     category: 'boss',
-    baseHP: 61,
+    baseHP: 50,
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Drill charge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Grinding gears', hitCount: 3 },
@@ -182,7 +182,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     id: 'magma_core',
     name: 'Magma Core',
     category: 'boss',
-    baseHP: 68,
+    baseHP: 55,
     intentPool: [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Lava splash' },
       { type: 'attack', value: 15, weight: 1, telegraph: 'Eruption' },

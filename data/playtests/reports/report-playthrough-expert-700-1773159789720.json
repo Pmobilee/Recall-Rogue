@@ -1,0 +1,509 @@
+{
+  "playthroughId": "playthrough-expert-700-1773159789720",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-10T16:34:20.559Z",
+  "issueCount": 19,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-1",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 15 encounter 2",
+      "description": "Enemy dealt 40 damage in a single enemy turn when player had 46 HP (87.0% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          936
+        ],
+        "floor": 15,
+        "encounter": 2,
+        "metric": "damageReceived=40, playerHP_before=46, ratio=0.870"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 15, encounter 2, turn 20",
+        "Observe enemy turn dealing 40 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-2",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 18 encounter 2",
+      "description": "Enemy dealt 22 damage in a single enemy turn when player had 39 HP (56.4% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1233
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "damageReceived=22, playerHP_before=39, ratio=0.564"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2, turn 11",
+        "Observe enemy turn dealing 22 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-3",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 18 encounter 2",
+      "description": "Enemy dealt 35 damage in a single enemy turn when player had 58 HP (60.3% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1249
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "damageReceived=35, playerHP_before=58, ratio=0.603"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2, turn 15",
+        "Observe enemy turn dealing 35 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-4",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 18 encounter 2",
+      "description": "Enemy dealt 31 damage in a single enemy turn when player had 40 HP (77.5% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1257
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "damageReceived=31, playerHP_before=40, ratio=0.775"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2, turn 17",
+        "Observe enemy turn dealing 31 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-5",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 18 encounter 2",
+      "description": "Enemy dealt 34 damage in a single enemy turn when player had 50 HP (68.0% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1261
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "damageReceived=34, playerHP_before=50, ratio=0.680"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2, turn 18",
+        "Observe enemy turn dealing 34 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-6",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 18 encounter 2",
+      "description": "Enemy dealt 23 damage in a single enemy turn when player had 26 HP (88.5% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1265
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "damageReceived=23, playerHP_before=26, ratio=0.885"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2, turn 19",
+        "Observe enemy turn dealing 23 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-7",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "39 consecutive easy encounters (floors 1-13)",
+      "description": "Player maintained >90 HP across 39 consecutive encounters from floor 1 enc 0 to floor 13 enc 2. HP values: [100, 100, 100, 100, 100, 99, 100, 100, 97, 100, 100, 99, 100, 100, 100, 98, 98, 96, 98, 100, 100, 96, 94, 100, 92, 100, 100, 98, 100, 100, 96, 100, 100, 100, 98, 99, 93, 93, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "consecutiveEasyEncounters=39, hpValues=[100,100,100,100,100,99,100,100,97,100,100,99,100,100,100,98,98,96,98,100,100,96,94,100,92,100,100,98,100,100,96,100,100,100,98,99,93,93,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floors 1-13",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-8",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "4 consecutive easy encounters (floors 14-15)",
+      "description": "Player maintained >90 HP across 4 consecutive encounters from floor 14 enc 1 to floor 15 enc 1. HP values: [100, 100, 100, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 14,
+        "encounter": 1,
+        "metric": "consecutiveEasyEncounters=4, hpValues=[100,100,100,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floors 14-15",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-9",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters (floors 17-18)",
+      "description": "Player maintained >90 HP across 3 consecutive encounters from floor 17 enc 2 to floor 18 enc 1. HP values: [97, 100, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 17,
+        "encounter": 2,
+        "metric": "consecutiveEasyEncounters=3, hpValues=[97,100,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floors 17-18",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-10",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "7 consecutive easy encounters (floors 22-24)",
+      "description": "Player maintained >90 HP across 7 consecutive encounters from floor 22 enc 1 to floor 24 enc 1. HP values: [100, 100, 100, 96, 100, 100, 96]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 22,
+        "encounter": 1,
+        "metric": "consecutiveEasyEncounters=7, hpValues=[100,100,100,96,100,100,96]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floors 22-24",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-11",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 3 encounter 2 (knowledge_golem)",
+      "description": "Encounter took 12 turns to resolve, but the previous floor (2) averaged 3.0 turns. This is a 4.0x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=12, prevFloorAvg=3.0, ratio=4.00"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 2 (avg 3.0 turns)",
+        "Enter floor 3 encounter 2",
+        "Observe dramatic difficulty increase (12 turns)"
+      ],
+      "suggestedFix": "Review knowledge_golem stats — HP or damage may be disproportionately high for floor 3"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-12",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 9 encounter 2 (void_weaver)",
+      "description": "Encounter took 12 turns to resolve, but the previous floor (8) averaged 3.0 turns. This is a 4.0x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turnsToResolve=12, prevFloorAvg=3.0, ratio=4.00"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 8 (avg 3.0 turns)",
+        "Enter floor 9 encounter 2",
+        "Observe dramatic difficulty increase (12 turns)"
+      ],
+      "suggestedFix": "Review void_weaver stats — HP or damage may be disproportionately high for floor 9"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-13",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 12 encounter 0 (crystal_golem)",
+      "description": "Encounter took 9 turns to resolve, but the previous floor (11) averaged 3.7 turns. This is a 2.5x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 0,
+        "metric": "turnsToResolve=9, prevFloorAvg=3.7, ratio=2.45"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 11 (avg 3.7 turns)",
+        "Enter floor 12 encounter 0",
+        "Observe dramatic difficulty increase (9 turns)"
+      ],
+      "suggestedFix": "Review crystal_golem stats — HP or damage may be disproportionately high for floor 12"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-14",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 12 encounter 2 (the_excavator)",
+      "description": "Encounter took 11 turns to resolve, but the previous floor (11) averaged 3.7 turns. This is a 3.0x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "turnsToResolve=11, prevFloorAvg=3.7, ratio=3.00"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 11 (avg 3.7 turns)",
+        "Enter floor 12 encounter 2",
+        "Observe dramatic difficulty increase (11 turns)"
+      ],
+      "suggestedFix": "Review the_excavator stats — HP or damage may be disproportionately high for floor 12"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-15",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 15 encounter 2 (knowledge_golem)",
+      "description": "Encounter took 21 turns to resolve, but the previous floor (14) averaged 7.0 turns. This is a 3.0x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 15,
+        "encounter": 2,
+        "metric": "turnsToResolve=21, prevFloorAvg=7.0, ratio=3.00"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 14 (avg 7.0 turns)",
+        "Enter floor 15 encounter 2",
+        "Observe dramatic difficulty increase (21 turns)"
+      ],
+      "suggestedFix": "Review knowledge_golem stats — HP or damage may be disproportionately high for floor 15"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-16",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 18 encounter 2 (shadow_hydra)",
+      "description": "Encounter took 20 turns to resolve, but the previous floor (17) averaged 7.0 turns. This is a 2.9x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "turnsToResolve=20, prevFloorAvg=7.0, ratio=2.86"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 17 (avg 7.0 turns)",
+        "Enter floor 18 encounter 2",
+        "Observe dramatic difficulty increase (20 turns)"
+      ],
+      "suggestedFix": "Review shadow_hydra stats — HP or damage may be disproportionately high for floor 18"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-17",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 21 encounter 2 (the_archivist)",
+      "description": "Encounter took 16 turns to resolve, but the previous floor (20) averaged 4.7 turns. This is a 3.4x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "turnsToResolve=16, prevFloorAvg=4.7, ratio=3.43"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 20 (avg 4.7 turns)",
+        "Enter floor 21 encounter 2",
+        "Observe dramatic difficulty increase (16 turns)"
+      ],
+      "suggestedFix": "Review the_archivist stats — HP or damage may be disproportionately high for floor 21"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-18",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 24 encounter 2 (the_archivist)",
+      "description": "Encounter took 19 turns to resolve, but the previous floor (23) averaged 5.7 turns. This is a 3.4x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 24,
+        "encounter": 2,
+        "metric": "turnsToResolve=19, prevFloorAvg=5.7, ratio=3.35"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Play through floor 23 (avg 5.7 turns)",
+        "Enter floor 24 encounter 2",
+        "Observe dramatic difficulty increase (19 turns)"
+      ],
+      "suggestedFix": "Review the_archivist stats — HP or damage may be disproportionately high for floor 24"
+    },
+    {
+      "id": "issue-playthrough-expert-700-1773159789720-19",
+      "playthroughId": "playthrough-expert-700-1773159789720",
+      "profileId": "expert",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "Unfun HP swing on floor 18 encounter 2",
+      "description": "Player HP ranged from 100 (high) to 17 (low) within a single encounter. A drop from >70 to <20 feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [
+          1189,
+          1190,
+          1191,
+          1192,
+          1193,
+          1194,
+          1195,
+          1196,
+          1197,
+          1198,
+          1199,
+          1200,
+          1201,
+          1202,
+          1203,
+          1204,
+          1205,
+          1206,
+          1207,
+          1208,
+          1209,
+          1210,
+          1211,
+          1212,
+          1213,
+          1214,
+          1215,
+          1216,
+          1217,
+          1218,
+          1219,
+          1220,
+          1221,
+          1222,
+          1223,
+          1224,
+          1225,
+          1226,
+          1227,
+          1228,
+          1229,
+          1230,
+          1231,
+          1232,
+          1233,
+          1234,
+          1235,
+          1236,
+          1237,
+          1238,
+          1239,
+          1240,
+          1241,
+          1242,
+          1243,
+          1244,
+          1245,
+          1246,
+          1247,
+          1248,
+          1249,
+          1250,
+          1251,
+          1252,
+          1253,
+          1254,
+          1255,
+          1256,
+          1257,
+          1258,
+          1259,
+          1260,
+          1261,
+          1262,
+          1263,
+          1264,
+          1265,
+          1266,
+          1267,
+          1268,
+          1269
+        ],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "maxHP=100, minHP=17, startHP=100, endHP=33"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-expert-700-1773159789720",
+        "Navigate to floor 18, encounter 2",
+        "Observe dramatic HP swing from 100 to 17"
+      ],
+      "suggestedFix": "Add damage smoothing or emergency shield mechanics to prevent dramatic HP swings"
+    }
+  ]
+}

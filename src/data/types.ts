@@ -847,6 +847,15 @@ export interface PlayerSave {
   sparkWeekStart?: string
   /** Branch milestones already awarded (prevents double-award). e.g. ["Natural Sciences:25", "History:100"] */
   awardedBranchMilestones?: string[]
+  // Relic System Overhaul
+  /** Total mastery coins earned lifetime (1 per Tier 3 mastered fact). */
+  masteryCoins?: number
+  /** Mastery coins available to spend (lifetime earned minus spent). */
+  masteryCoinsAvailable?: number
+  /** Relic definition IDs the player has permanently unlocked. */
+  unlockedRelicIds?: string[]
+  /** Relic definition IDs the player has excluded from their run pool. */
+  excludedRelicIds?: string[]
 }
 
 /** Player statistics */

@@ -1,0 +1,347 @@
+{
+  "playthroughId": "playthrough-control-expert-100-1773159800160",
+  "profileId": "control-expert",
+  "analyzedAt": "2026-03-10T16:34:22.526Z",
+  "issueCount": 16,
+  "issues": [
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-001",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 enc 2 turn 4",
+      "description": "Enemy dealt 49 damage (>23 = 50% of 47 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          689
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "49 dmg vs 47 HP (104.3%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 12, encounter 2",
+        "Reach turn 4",
+        "Observe enemy dealing 49 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-002",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 enc 2 turn 5",
+      "description": "Enemy dealt 39 damage (>4 = 50% of 8 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          693
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "39 dmg vs 8 HP (487.5%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 12, encounter 2",
+        "Reach turn 5",
+        "Observe enemy dealing 39 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-003",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 enc 2 turn 7",
+      "description": "Enemy dealt 7 damage (>5 = 50% of 10 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          701
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "7 dmg vs 10 HP (70.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 12, encounter 2",
+        "Reach turn 7",
+        "Observe enemy dealing 7 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-004",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 12 enc 2 turn 8",
+      "description": "Enemy dealt 5 damage (>2 = 50% of 5 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          705
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "5 dmg vs 5 HP (100.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 12, encounter 2",
+        "Reach turn 8",
+        "Observe enemy dealing 5 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-005",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 1",
+      "description": "8 consecutive encounters with player HP remaining > 90, starting at floor 1. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "8 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 1-1",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-006",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 4",
+      "description": "8 consecutive encounters with player HP remaining > 90, starting at floor 4. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 4,
+        "encounter": 0,
+        "metric": "8 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 4-4",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-007",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 7",
+      "description": "3 consecutive encounters with player HP remaining > 90: f7e2, f8e0, f8e1. Game may be too easy at this point.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 7,
+        "encounter": 2,
+        "metric": "3 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 7-8",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-008",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 9",
+      "description": "6 consecutive encounters with player HP remaining > 90, starting at floor 9. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 0,
+        "metric": "6 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 9-9",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-009",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated with 89.1% accuracy on floor 12",
+      "description": "Player died on floor 12 despite having 89.1% overall accuracy. This suggests the player was skilled but ground down by attrition rather than making strategic mistakes.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "defeat at 89.1% accuracy"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Play with ~89% accuracy",
+        "Observe defeat via HP attrition on floor 12"
+      ],
+      "suggestedFix": "Consider adding more healing opportunities or reducing cumulative damage on later floors"
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-010",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 2 enc 2 took 11 turns (prev avg: 3.7)",
+      "description": "Encounter 2 on floor 2 against stone_sentinel took 11 turns to resolve, more than 2x the previous floor's average of 3.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "11 turns vs 3.7 prev avg (3.0x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 2",
+        "Face stone_sentinel",
+        "Observe encounter takes 11 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-011",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 5 enc 1 took 7 turns (prev avg: 2.0)",
+      "description": "Encounter 1 on floor 5 against crystal_golem took 7 turns to resolve, more than 2x the previous floor's average of 2.0 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "encounter": 1,
+        "metric": "7 turns vs 2.0 prev avg (3.5x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 5",
+        "Face crystal_golem",
+        "Observe encounter takes 7 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-012",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 9 enc 2 took 8 turns (prev avg: 3.7)",
+      "description": "Encounter 2 on floor 9 against the_excavator took 8 turns to resolve, more than 2x the previous floor's average of 3.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "8 turns vs 3.7 prev avg (2.2x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 9",
+        "Face the_excavator",
+        "Observe encounter takes 8 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-013",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 11 enc 0 took 11 turns (prev avg: 2.7)",
+      "description": "Encounter 0 on floor 11 against shadow_mimic took 11 turns to resolve, more than 2x the previous floor's average of 2.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 0,
+        "metric": "11 turns vs 2.7 prev avg (4.1x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 11",
+        "Face shadow_mimic",
+        "Observe encounter takes 11 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-014",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 11 enc 1 took 6 turns (prev avg: 2.7)",
+      "description": "Encounter 1 on floor 11 against cave_bat took 6 turns to resolve, more than 2x the previous floor's average of 2.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 1,
+        "metric": "6 turns vs 2.7 prev avg (2.3x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 11",
+        "Face cave_bat",
+        "Observe encounter takes 6 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-015",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 11 enc 2 took 6 turns (prev avg: 2.7)",
+      "description": "Encounter 2 on floor 11 against bone_collector took 6 turns to resolve, more than 2x the previous floor's average of 2.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 2,
+        "metric": "6 turns vs 2.7 prev avg (2.3x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 11",
+        "Face bone_collector",
+        "Observe encounter takes 6 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-control-expert-100-1773159800160-016",
+      "playthroughId": "playthrough-control-expert-100-1773159800160",
+      "profileId": "control-expert",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "No cards of type \"wild\" were played during this run. This card type may be missing from the deck or not being offered.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Check deck composition for \"wild\" cards",
+        "Observe absence of \"wild\" card plays"
+      ]
+    }
+  ]
+}

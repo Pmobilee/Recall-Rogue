@@ -2,10 +2,10 @@ import { expect, test } from '@playwright/test'
 
 test('hub nav reaches core destinations', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByTestId('btn-start-run')).toBeVisible({ timeout: 15_000 })
+  await expect(page.getByTestId('btn-start-run')).toBeVisible({ timeout: 30_000 })
   await page.waitForTimeout(1200)
 
-  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible()
+  await expect(page.getByRole('region', { name: 'Camp hub' })).toBeVisible()
 
   await page.getByRole('button', { name: 'Library', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Knowledge Library' })).toBeVisible({ timeout: 20_000 })

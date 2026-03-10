@@ -69,6 +69,10 @@ function getStoredAgeRating(): AgeRating {
 class FactsDB {
   private db: Database | null = null
   private initialized = false
+  private allFactsCache: Fact[] | null = null
+  private factByIdCache: Map<string, Fact> | null = null
+  private topCategoryIndex: Map<string, Fact[]> | null = null
+  private ageRatingIndex: { kid: Fact[]; teen: Fact[]; adult: Fact[] } | null = null
 
   private constructor() {}
 
@@ -117,7 +121,9 @@ class FactsDB {
     const SQL = await initFn({ locateFile: () => wasmUrl })
     this.db = new SQL.Database(new Uint8Array(buffer))
     this.initialized = true
-    console.info(`[FactsDB] Initialized: ${this.getAll().length} facts loaded`)
+    this.invalidateIndexes()
+    this.ensureIndexes()
+    console.info(`[FactsDB] Initialized: ${this.allFactsCache?.length ?? 0} facts loaded`)
   }
 
   /**
@@ -136,15 +142,16 @@ class FactsDB {
    * Returns every fact in the database.
    */
   getAll(): Fact[] {
-    return this.query('SELECT * FROM facts')
+    this.ensureIndexes()
+    return this.allFactsCache ?? []
   }
 
   /**
    * Returns the fact with the given id, or null if not found.
    */
   getById(id: string): Fact | null {
-    const results = this.query('SELECT * FROM facts WHERE id = ?', [id])
-    return results[0] ?? null
+    this.ensureIndexes()
+    return this.factByIdCache?.get(id) ?? null
   }
 
   /**
@@ -153,15 +160,24 @@ class FactsDB {
    */
   getByIds(ids: string[]): Fact[] {
     if (ids.length === 0) return []
-    const placeholders = ids.map(() => '?').join(', ')
-    return this.query(`SELECT * FROM facts WHERE id IN (${placeholders})`, ids)
+    this.ensureIndexes()
+    const byId = this.factByIdCache
+    if (!byId) return []
+    const results: Fact[] = []
+    for (const id of ids) {
+      const fact = byId.get(id)
+      if (fact) results.push(fact)
+    }
+    return results
   }
 
   /**
    * Returns all facts of the given content type.
    */
   getByType(type: ContentType): Fact[] {
-    return this.query('SELECT * FROM facts WHERE type = ?', [type])
+    this.ensureIndexes()
+    const all = this.allFactsCache ?? []
+    return all.filter((fact) => fact.type === type)
   }
 
   /**
@@ -173,11 +189,22 @@ class FactsDB {
    */
   getByCategory(categories: string[], limit: number): Fact[] {
     if (categories.length === 0) return []
-    const all = this.getAll()
-    const matching = all.filter(f => {
-      const topCategory = f.category[0] ?? ''
-      return categories.includes(topCategory)
-    })
+    this.ensureIndexes()
+    const index = this.topCategoryIndex
+    if (!index) return []
+
+    const matching: Fact[] = []
+    const seen = new Set<string>()
+    for (const category of categories) {
+      const rows = index.get(category)
+      if (!rows) continue
+      for (const fact of rows) {
+        if (seen.has(fact.id)) continue
+        seen.add(fact.id)
+        matching.push(fact)
+      }
+    }
+
     // Shuffle and take up to limit
     return shuffled(matching).slice(0, limit)
   }
@@ -207,14 +234,12 @@ class FactsDB {
    * - 'adult': all facts (no filter applied)
    */
   getByAgeRating(rating: AgeRating): Fact[] {
-    if (rating === 'adult') {
-      return this.query('SELECT * FROM facts')
-    }
-    if (rating === 'teen') {
-      return this.query("SELECT * FROM facts WHERE age_rating IN ('kid', 'teen')")
-    }
-    // 'kid'
-    return this.query("SELECT * FROM facts WHERE age_rating = 'kid'")
+    this.ensureIndexes()
+    const index = this.ageRatingIndex
+    if (!index) return []
+    if (rating === 'adult') return index.adult
+    if (rating === 'teen') return index.teen
+    return index.kid
   }
 
   /**
@@ -229,18 +254,8 @@ class FactsDB {
   getRandomFiltered(count = 1, ageRating?: AgeRating): Fact[] {
     const n = Math.max(1, Math.floor(count))
     const rating = ageRating ?? getStoredAgeRating()
-    if (rating === 'adult') {
-      return this.query(`SELECT * FROM facts ORDER BY RANDOM() LIMIT ${n}`)
-    }
-    if (rating === 'teen') {
-      return this.query(
-        `SELECT * FROM facts WHERE age_rating IN ('kid', 'teen') ORDER BY RANDOM() LIMIT ${n}`,
-      )
-    }
-    // 'kid'
-    return this.query(
-      `SELECT * FROM facts WHERE age_rating = 'kid' ORDER BY RANDOM() LIMIT ${n}`,
-    )
+    const source = this.getByAgeRating(rating)
+    return this.pickRandomFacts(source, n)
   }
 
   /**
@@ -281,20 +296,8 @@ class FactsDB {
    * Returns the id of every fact in the database.
    */
   getAllIds(): string[] {
-    if (!this.ensureReady()) return []
-    const stmt = this.db!.prepare('SELECT id FROM facts')
-    const ids: string[] = []
-    try {
-      while (stmt.step()) {
-        const row = stmt.getAsObject() as Record<string, unknown>
-        if (typeof row['id'] === 'string') {
-          ids.push(row['id'])
-        }
-      }
-    } finally {
-      stmt.free()
-    }
-    return ids
+    this.ensureIndexes()
+    return this.allFactsCache?.map((fact) => fact.id) ?? []
   }
 
   /**
@@ -467,6 +470,65 @@ class FactsDB {
    */
   private ensureReady(): boolean {
     return this.initialized && this.db !== null
+  }
+
+  private invalidateIndexes(): void {
+    this.allFactsCache = null
+    this.factByIdCache = null
+    this.topCategoryIndex = null
+    this.ageRatingIndex = null
+  }
+
+  /**
+   * Build in-memory lookup indexes once per session to avoid repeated full-table scans.
+   */
+  private ensureIndexes(): void {
+    if (!this.ensureReady()) return
+    if (this.allFactsCache && this.factByIdCache && this.topCategoryIndex && this.ageRatingIndex) return
+
+    const all = this.query('SELECT * FROM facts')
+    const byId = new Map<string, Fact>()
+    const categoryIndex = new Map<string, Fact[]>()
+    const kid: Fact[] = []
+    const teen: Fact[] = []
+
+    for (const fact of all) {
+      byId.set(fact.id, fact)
+
+      const topCategory = fact.category[0] ?? ''
+      if (topCategory) {
+        const bucket = categoryIndex.get(topCategory)
+        if (bucket) bucket.push(fact)
+        else categoryIndex.set(topCategory, [fact])
+      }
+
+      if (fact.ageRating === 'kid') {
+        kid.push(fact)
+        teen.push(fact)
+      } else if (fact.ageRating === 'teen') {
+        teen.push(fact)
+      }
+    }
+
+    this.allFactsCache = all
+    this.factByIdCache = byId
+    this.topCategoryIndex = categoryIndex
+    this.ageRatingIndex = { kid, teen, adult: all }
+  }
+
+  private pickRandomFacts(pool: Fact[], count: number): Fact[] {
+    if (pool.length === 0 || count <= 0) return []
+    if (count >= pool.length) return shuffled(pool).slice(0, count)
+
+    const picks: Fact[] = []
+    const used = new Set<number>()
+    while (picks.length < count && used.size < pool.length) {
+      const idx = Math.floor(Math.random() * pool.length)
+      if (used.has(idx)) continue
+      used.add(idx)
+      picks.push(pool[idx]!)
+    }
+    return picks
   }
 
   /**

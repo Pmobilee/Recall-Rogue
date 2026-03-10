@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getDeviceTier } from '../../services/deviceTierService'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -118,6 +119,8 @@ export class CombatScene extends Phaser.Scene {
   private currentEnemyId = 'cave_bat'
   private currentEnemyCategory: 'common' | 'elite' | 'mini_boss' | 'boss' = 'common'
   private reduceMotion = false
+  private effectScale = 1
+  private flashTween: Phaser.Tweens.Tween | null = null
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -129,6 +132,7 @@ export class CombatScene extends Phaser.Scene {
   /** Create all game objects for the combat display zone. */
   create(): void {
     this.reduceMotion = isReduceMotionEnabled()
+    this.effectScale = getDeviceTier() === 'low-end' ? 0.65 : 1
     const w = this.scale.width
     const h = this.scale.height
     this.displayH = h * DISPLAY_ZONE_HEIGHT_PCT
@@ -289,7 +293,7 @@ export class CombatScene extends Phaser.Scene {
       lifespan: 300,
       gravityY: 50,
       emitting: false,
-      maxParticles: 50,
+      maxParticles: Math.max(20, Math.round(50 * this.effectScale)),
     })
     this.particles.setDepth(998)
 
@@ -378,6 +382,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Update enemy HP (optionally animate the bar). */
   updateEnemyHP(hp: number, animate = true): void {
+    if (!this.sceneReady) return
     this.currentEnemyHP = Phaser.Math.Clamp(hp, 0, this.currentEnemyMaxHP)
     this.refreshEnemyHpBar(animate && !this.reduceMotion)
   }
@@ -452,7 +457,7 @@ export class CombatScene extends Phaser.Scene {
     const origScaleX = this.enemySprite.scaleX
     const origScaleY = this.enemySprite.scaleY
     if (this.reduceMotion) return
-    this.cameras.main.shake(100, 0.0025, true)
+    this.cameras.main.shake(100, 0.0025 * this.effectScale, true)
     this.tweens.add({
       targets: this.enemySprite,
       scaleX: origScaleX * 1.08,
@@ -482,7 +487,7 @@ export class CombatScene extends Phaser.Scene {
       yoyo: true,
       ease: 'Power2',
     })
-    this.cameras.main.shake(130, 0.0034, true)
+    this.cameras.main.shake(130, 0.0034 * this.effectScale, true)
   }
 
   /** Play enemy death animation (fade out + scale down). Returns promise resolving on completion. */
@@ -513,20 +518,8 @@ export class CombatScene extends Phaser.Scene {
   playPlayerDamageFlash(): void {
     if (this.reduceMotion) return
 
-    const flash = this.add.rectangle(
-      this.scale.width / 2, this.displayH / 2,
-      this.scale.width, this.displayH,
-      COLOR_HP_RED, 0,
-    )
-    this.tweens.add({
-      targets: flash,
-      alpha: 0.15,
-      duration: 50,
-      yoyo: true,
-      hold: 0,
-      onComplete: () => flash.destroy(),
-    })
-    this.cameras.main.shake(150, 0.004, true)
+    this.pulseFlash(COLOR_HP_RED, 0.15, 110)
+    this.cameras.main.shake(150, 0.004 * this.effectScale, true)
   }
 
   /** Play heal effect (green particles rising near player HP bar). */
@@ -534,53 +527,26 @@ export class CombatScene extends Phaser.Scene {
     if (this.reduceMotion) return
 
     const playerHpY = this.displayH * PLAYER_HP_Y_PCT
-    const cx = this.scale.width / 2
-    for (let i = 0; i < 8; i++) {
-      const px = cx + Phaser.Math.Between(-60, 60)
-      const py = playerHpY + Phaser.Math.Between(-4, 4)
-      const particle = this.add.rectangle(px, py, 4, 4, COLOR_HP_GREEN)
-      this.tweens.add({
-        targets: particle,
-        y: py - Phaser.Math.Between(20, 40),
-        alpha: 0,
-        duration: 200 + Phaser.Math.Between(0, 100),
-        ease: 'Sine.easeOut',
-        onComplete: () => particle.destroy(),
-      })
-    }
+    this.burstParticles(12, this.scale.width / 2, playerHpY, COLOR_HP_GREEN)
   }
 
   /** Flash the display zone white. */
   playScreenFlash(intensity: number = 0.3): void {
     if (this.reduceMotion) return
-    this.flashRect.setAlpha(intensity)
-    this.tweens.add({
-      targets: this.flashRect,
-      alpha: 0,
-      duration: 150,
-      ease: 'Power2'
-    })
+    this.pulseFlash(0xFFFFFF, intensity, 150)
   }
 
   /** Burst particles at a position. */
   burstParticles(count: number, x: number, y: number, tint: number = 0xFFD700): void {
     if (!this.particles || this.reduceMotion) return
+    const scaledCount = Math.max(1, Math.round(count * this.effectScale))
     this.particles.setParticleTint(tint)
-    this.particles.explode(count, x, y)
+    this.particles.explode(scaledCount, x, y)
   }
 
   /** Play a gold-tinted screen flash for perfect turn celebration. */
   playGoldFlash(): void {
-    this.flashRect.setFillStyle(0xFFD700, 0.2)
-    this.tweens.add({
-      targets: this.flashRect,
-      alpha: 0,
-      duration: 200,
-      ease: 'Power2',
-      onComplete: () => {
-        this.flashRect.setFillStyle(0xFFFFFF, 0)
-      }
-    })
+    this.pulseFlash(0xFFD700, 0.2, 200)
   }
 
   playPlayerAttackAnimation(): void {
@@ -619,7 +585,7 @@ export class CombatScene extends Phaser.Scene {
   playPlayerDefeatAnimation(): void {
     if (this.reduceMotion) return
     this.playPlayerDamageFlash()
-    this.cameras.main.shake(200, 0.005, true)
+    this.cameras.main.shake(200, 0.005 * this.effectScale, true)
   }
 
   // ═════════════════════════════════════════════════════════
@@ -655,7 +621,7 @@ export class CombatScene extends Phaser.Scene {
     })
 
     if (isBoss && !this.reduceMotion) {
-      this.cameras.main.shake(180, 0.0035, true)
+      this.cameras.main.shake(180, 0.0035 * this.effectScale, true)
       const cam = this.cameras.main
       const baseZoom = cam.zoom
       this.tweens.add({
@@ -671,6 +637,27 @@ export class CombatScene extends Phaser.Scene {
   /** Build floor counter label. */
   private floorLabel(): string {
     return `Floor ${this.currentFloor} \u2014 Encounter ${this.currentEncounter}/${this.totalEncounters}`
+  }
+
+  private pulseFlash(color: number, peakAlpha: number, durationMs: number): void {
+    if (this.flashTween) {
+      this.flashTween.stop()
+      this.flashTween = null
+    }
+    this.flashRect.setFillStyle(color, peakAlpha)
+    this.flashRect.setAlpha(0)
+    this.flashTween = this.tweens.add({
+      targets: this.flashRect,
+      alpha: peakAlpha,
+      duration: Math.max(40, Math.round(durationMs * 0.4)),
+      yoyo: true,
+      ease: 'Sine.easeOut',
+      onComplete: () => {
+        this.flashRect.setAlpha(0)
+        this.flashRect.setFillStyle(0xFFFFFF, 0)
+        this.flashTween = null
+      },
+    })
   }
 
   /** Refresh enemy HP bar fill width and text. */
@@ -760,6 +747,7 @@ export class CombatScene extends Phaser.Scene {
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */
   private onShutdown(): void {
     this.tweens.killAll()
+    this.flashTween = null
   }
 
   /** Re-sync display on wake/resume. */

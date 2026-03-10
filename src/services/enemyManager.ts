@@ -5,6 +5,7 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR } from '../data/balance';
 
 /**
  * Computes HP scaling factor for a given floor.
@@ -23,7 +24,7 @@ export function getFloorScaling(floor: number): number {
  *
  * Floors 1-3: 85% damage (training wheels for new players).
  * Floors 4-6: 100% base damage.
- * Floors 7+: +5% per floor above 6.
+ * Floors 7+: +3% per floor above 6.
  *
  * @param floor - The current floor number (1-indexed).
  * @returns The damage scaling multiplier.
@@ -31,7 +32,7 @@ export function getFloorScaling(floor: number): number {
 export function getFloorDamageScaling(floor: number): number {
   if (floor <= 3) return 0.85;
   if (floor <= 6) return 1.0;
-  return 1.0 + (floor - 6) * 0.05;
+  return 1.0 + (floor - 6) * FLOOR_DAMAGE_SCALING_PER_FLOOR;
 }
 
 /**
@@ -142,6 +143,20 @@ export function applyDamageToEnemy(
 }
 
 /**
+ * Maps a floor number to its difficulty segment.
+ *
+ * @param floor - The current floor number.
+ * @returns The segment (1-4) or 'endless' for floors 25+.
+ */
+function getSegmentForFloor(floor: number): 1 | 2 | 3 | 4 | 'endless' {
+  if (floor <= 6) return 1;
+  if (floor <= 12) return 2;
+  if (floor <= 18) return 3;
+  if (floor <= 24) return 4;
+  return 'endless';
+}
+
+/**
  * Executes the enemy's current intent, applying strength modifier.
  *
  * Returns the results of the intent execution without modifying player state
@@ -202,6 +217,15 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
       enemyHealed = Math.min(intent.value, enemy.maxHP - enemy.currentHP);
       enemy.currentHP += enemyHealed;
       break;
+    }
+  }
+
+  // Apply per-turn damage cap by segment (AR-32)
+  if (damage > 0) {
+    const seg = getSegmentForFloor(enemy.floor);
+    const cap = ENEMY_TURN_DAMAGE_CAP[seg];
+    if (cap != null) {
+      damage = Math.min(damage, cap);
     }
   }
 

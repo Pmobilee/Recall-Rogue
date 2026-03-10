@@ -1,0 +1,93 @@
+{
+  "playthroughId": "playthrough-beginner-200-1773159798620",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-10T16:39:37.518Z",
+  "issueCount": 4,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-200-1773159798620-1",
+      "playthroughId": "playthrough-beginner-200-1773159798620",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 35 dmg (100% of 35 HP) on floor 3 enc 1",
+      "description": "On floor 3, encounter 1, turn 23 (seq 403), the enemy dealt 35 damage which is 100% of the player's 35 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          403
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "damageReceived=35, playerHP_before=35, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 200",
+        "Floor 3, Encounter 1, Turn 23"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-beginner-200-1773159798620-2",
+      "playthroughId": "playthrough-beginner-200-1773159798620",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 3, encounter 1 by crystal_golem (common)",
+      "description": "Player was defeated on floor 3, encounter 1 against crystal_golem (common). Accuracy was 51% over 23 turns. They dealt 64 damage and took 174 damage. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "result=defeat, damageDealt=64, damageTaken=174, accuracy=51%"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 200",
+        "Floor 3, Encounter 1, Enemy: crystal_golem"
+      ],
+      "suggestedFix": "Consider reducing enemy stats for floors 1-3."
+    },
+    {
+      "id": "issue-playthrough-beginner-200-1773159798620-3",
+      "playthroughId": "playthrough-beginner-200-1773159798620",
+      "profileId": "beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 3 enc 1: 23 turns vs prev floor avg 9.7 (2.4x)",
+      "description": "Encounter 1 on floor 3 (enemy: crystal_golem, common) took 23 turns to resolve, which is 2.4x the previous floor's average of 9.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "turnsToResolve=23, prevFloorAvg=9.7, ratio=2.4x"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 200",
+        "Floor 3, Encounter 1, Enemy: crystal_golem"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-beginner-200-1773159798620-4",
+      "playthroughId": "playthrough-beginner-200-1773159798620",
+      "profileId": "beginner",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP dropped from 90 to 0 in floor 3 encounter 1",
+      "description": "During floor 3, encounter 1, player HP dropped from 90 to 0. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [
+          306,
+          403
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "HP swing: 90 -> 0 (delta=90)"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 200",
+        "Floor 3, Encounter 1"
+      ],
+      "suggestedFix": "Add damage caps per encounter or provide emergency healing at low HP."
+    }
+  ]
+}

@@ -141,11 +141,10 @@ export type CampSpriteId =
 
 /** Returns the URL for a camp scene sprite by its ID. */
 export function getCampSpriteUrl(id: CampSpriteId): string {
-  return `/assets/camp/sprites/${id}/${id}-base.png`
+  return `/assets/camp/sprites/${id}/${id}-base.webp`
 }
 
 /** Returns the URL for the camp background image. */
 export function getCampBackgroundUrl(): string {
   return '/assets/camp/sprites/background/camp-background.jpg'
 }
-

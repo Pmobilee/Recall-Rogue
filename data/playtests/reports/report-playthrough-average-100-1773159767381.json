@@ -1,0 +1,209 @@
+{
+  "playthroughId": "playthrough-average-100-1773159767381",
+  "profileId": "average",
+  "analyzedAt": "2026-03-10T16:46:16.211696+00:00",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-100-1773159767381-001",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy deals 54 damage (100% of 54 HP) on floor 6",
+      "description": "During enemy turn (seq 420), the player took 54 damage, which is 100.0% of their 54 HP at the time. Floor 6, encounter 2, turn 19.",
+      "evidence": {
+        "turnSeqs": [
+          420
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damageReceived=54, playerHP_before=54, ratio=1.00"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floor 6, encounter 2"
+      ],
+      "suggestedFix": "Consider capping single-turn enemy damage or adding damage reduction mechanics"
+    },
+    {
+      "id": "issue-playthrough-average-100-1773159767381-002",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashes from 100 to 0 in single encounter on floor 6",
+      "description": "During encounter 2 on floor 6, player HP went from a high of 100 to 0, an unfun swing of 100 HP in one encounter.",
+      "evidence": {
+        "turnSeqs": [
+          344,
+          345,
+          346,
+          347,
+          348,
+          349,
+          350,
+          351,
+          352,
+          353,
+          354,
+          355,
+          356,
+          357,
+          358,
+          359,
+          360,
+          361,
+          362,
+          363,
+          364,
+          365,
+          366,
+          367,
+          368,
+          369,
+          370,
+          371,
+          372,
+          373,
+          374,
+          375,
+          376,
+          377,
+          378,
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          394,
+          395,
+          396,
+          397,
+          398,
+          399,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          418,
+          419,
+          420,
+          421
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "HP_high=100, HP_low=0, swing=100"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floor 6, encounter 2"
+      ],
+      "suggestedFix": "Add damage mitigation or split boss damage over more turns"
+    },
+    {
+      "id": "issue-playthrough-average-100-1773159767381-003",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "5 consecutive encounters with >90% HP remaining (floors 5-6)",
+      "description": "Player maintained >90% HP ([95, 93, 91, 97, 95]) across 5 consecutive encounters (F5E0, F5E1, F5E2, F6E0, F6E1). The game may lack challenge in this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "encounter": 0,
+        "metric": "consecutive_easy_count=5, hp_remaining=[95, 93, 91, 97, 95]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floors 5-6"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid encounters to maintain tension"
+    },
+    {
+      "id": "issue-playthrough-average-100-1773159767381-004",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "F3E0 takes 7 turns (prev floor avg: 2.7, 2.6x)",
+      "description": "Encounter 0 on floor 3 against crystal_golem (common) took 7 turns to resolve, which is 2.6x the average of 2.7 turns from floor 2. This represents a significant difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 0,
+        "metric": "turnsToResolve=7, prev_floor_avg=2.7, ratio=2.6x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floor 3, encounter 0"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floor 2 and floor 3; reduce crystal_golem HP or damage"
+    },
+    {
+      "id": "issue-playthrough-average-100-1773159767381-005",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "F3E2 takes 9 turns (prev floor avg: 2.7, 3.4x)",
+      "description": "Encounter 2 on floor 3 against magma_core (boss) took 9 turns to resolve, which is 3.4x the average of 2.7 turns from floor 2. This represents a significant difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=9, prev_floor_avg=2.7, ratio=3.4x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floor 3, encounter 2"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floor 2 and floor 3; reduce magma_core HP or damage"
+    },
+    {
+      "id": "issue-playthrough-average-100-1773159767381-006",
+      "playthroughId": "playthrough-average-100-1773159767381",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "F6E2 takes 19 turns (prev floor avg: 5.0, 3.8x)",
+      "description": "Encounter 2 on floor 6 against knowledge_golem (boss) took 19 turns to resolve, which is 3.8x the average of 5.0 turns from floor 5. This represents a significant difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turnsToResolve=19, prev_floor_avg=5.0, ratio=3.8x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Floor 6, encounter 2"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floor 5 and floor 6; reduce knowledge_golem HP or damage"
+    }
+  ]
+}

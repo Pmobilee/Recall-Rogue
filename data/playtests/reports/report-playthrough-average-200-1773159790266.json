@@ -1,0 +1,216 @@
+{
+  "playthroughId": "playthrough-average-200-1773159790266",
+  "profileId": "average",
+  "analyzedAt": "2026-03-10T16:39:37.524Z",
+  "issueCount": 10,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-200-1773159790266-1",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 40 dmg (58% of 69 HP) on floor 6 enc 2",
+      "description": "On floor 6, encounter 2, turn 18 (seq 465), the enemy dealt 40 damage which is 58% of the player's 69 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          465
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damageReceived=40, playerHP_before=69, ratio=0.580"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 6, Encounter 2, Turn 18"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-2",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 35 dmg (81% of 43 HP) on floor 6 enc 2",
+      "description": "On floor 6, encounter 2, turn 19 (seq 469), the enemy dealt 35 damage which is 81% of the player's 43 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          469
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damageReceived=35, playerHP_before=43, ratio=0.814"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 6, Encounter 2, Turn 19"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-3",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 46 dmg (100% of 46 HP) on floor 6 enc 2",
+      "description": "On floor 6, encounter 2, turn 20 (seq 473), the enemy dealt 46 damage which is 100% of the player's 46 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          473
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damageReceived=46, playerHP_before=46, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 6, Encounter 2, Turn 20"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for this enemy type."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-4",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3 consecutive easy encounters (floors 2-2): HP stayed above 90",
+      "description": "3 consecutive encounters where player ended with HP > 90. Encounters: F2E0:98HP, F2E1:96HP, F2E2:93HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "encounter": 0,
+        "metric": "playerHPRemaining: [98, 96, 93]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floors 2e0 through 2e2"
+      ],
+      "suggestedFix": "Increase enemy damage or reduce healing on early floors."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-5",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3 consecutive easy encounters (floors 5-6): HP stayed above 90",
+      "description": "3 consecutive encounters where player ended with HP > 90. Encounters: F5E2:96HP, F6E0:92HP, F6E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "encounter": 2,
+        "metric": "playerHPRemaining: [96, 92, 100]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floors 5e2 through 6e1"
+      ],
+      "suggestedFix": "Increase enemy damage or reduce healing on early floors."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-6",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "balance_attrition_death",
+      "severity": "medium",
+      "title": "Player defeated despite 77% accuracy: attrition death",
+      "description": "The player was defeated on floor 6 with an overall accuracy of 77%. High-accuracy players should have a fair chance of survival; this suggests the damage/healing balance is too punishing.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "overallAccuracy=0.7706422018348624, result=defeat, finalFloor=6"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200"
+      ],
+      "suggestedFix": "Reduce enemy damage scaling or increase healing from correct answers."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-7",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 3 enc 1: 9 turns vs prev floor avg 3.7 (2.5x)",
+      "description": "Encounter 1 on floor 3 (enemy: crystal_golem, common) took 9 turns to resolve, which is 2.5x the previous floor's average of 3.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "turnsToResolve=9, prevFloorAvg=3.7, ratio=2.5x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 3, Encounter 1, Enemy: crystal_golem"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-8",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 3 enc 2: 8 turns vs prev floor avg 3.7 (2.2x)",
+      "description": "Encounter 2 on floor 3 (enemy: magma_core, boss) took 8 turns to resolve, which is 2.2x the previous floor's average of 3.7 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=8, prevFloorAvg=3.7, ratio=2.2x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 3, Encounter 2, Enemy: magma_core"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-9",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 6 enc 2: 20 turns vs prev floor avg 6.3 (3.2x)",
+      "description": "Encounter 2 on floor 6 (enemy: the_curator, boss) took 20 turns to resolve, which is 3.2x the previous floor's average of 6.3 turns. This exceeds the 2x threshold and indicates a difficulty spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turnsToResolve=20, prevFloorAvg=6.3, ratio=3.2x"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 6, Encounter 2, Enemy: the_curator"
+      ],
+      "suggestedFix": "Smooth difficulty curve between floors or reduce this enemy's HP/damage."
+    },
+    {
+      "id": "issue-playthrough-average-200-1773159790266-10",
+      "playthroughId": "playthrough-average-200-1773159790266",
+      "profileId": "average",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP dropped from 100 to 8 in floor 6 encounter 2",
+      "description": "During floor 6, encounter 2, player HP dropped from 100 to 8. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "turnSeqs": [
+          392,
+          469
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "HP swing: 100 -> 8 (delta=92)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 200",
+        "Floor 6, Encounter 2"
+      ],
+      "suggestedFix": "Add damage caps per encounter or provide emergency healing at low HP."
+    }
+  ]
+}

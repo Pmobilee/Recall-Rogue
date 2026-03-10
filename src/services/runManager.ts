@@ -53,6 +53,14 @@ export interface RunState {
   ascensionLevel: number;
   ascensionModifiers: AscensionModifiers;
   retreatRewardLocked: boolean;
+  /** Relics collected during this run (no cap). */
+  runRelics: Array<{ definitionId: string; acquiredAtFloor: number; acquiredAtEncounter: number; triggerCount: number }>;
+  /** Relic IDs already offered during this run (prevents duplicates). */
+  offeredRelicIds: Set<string>;
+  /** Whether the first mini-boss relic choice has occurred. */
+  firstMiniBossRelicAwarded: boolean;
+  /** Whether the phoenix feather (once-per-run lethal save) has been used. */
+  phoenixFeatherUsed: boolean;
 }
 
 export interface RunEndData {
@@ -72,6 +80,8 @@ export interface RunEndData {
   runDurationMs: number;
   rewardMultiplier: number;
   currencyEarned: number;
+  /** Relics collected during the run. */
+  relicsCollected?: number;
 }
 
 export function createRunState(
@@ -127,6 +137,10 @@ export function createRunState(
     ascensionLevel,
     ascensionModifiers,
     retreatRewardLocked: false,
+    runRelics: [],
+    offeredRelicIds: new Set<string>(),
+    firstMiniBossRelicAwarded: false,
+    phoenixFeatherUsed: false,
   };
 }
 
@@ -206,5 +220,6 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     runDurationMs: duration,
     rewardMultiplier,
     currencyEarned,
+    relicsCollected: state.runRelics.length,
   };
 }

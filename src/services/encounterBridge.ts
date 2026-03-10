@@ -16,12 +16,13 @@ import { recordCardPlay } from './runManager';
 import {
   applyEchoStabilityBonus,
   applyMasteryTrialOutcome,
+  awardMasteryCoin,
   getReviewStateByFactId,
   playerSave,
   setGraduatedRelicId,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, TIER3_PASSIVE, DORMANCY_THRESHOLD, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
+import { ECHO, TIER3_PASSIVE, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
 import { deriveCardTypeForFactId } from './cardTypeAllocator';
@@ -374,18 +375,8 @@ function maybeApplyMasteryOutcome(card: Card, wasCorrect: boolean): void {
   applyMasteryTrialOutcome(card.factId, wasCorrect);
   if (!wasCorrect) return;
 
-  const reviewState = getReviewStateByFactId(card.factId);
-  if (!reviewState) return;
-  if (reviewState.retrievability != null && reviewState.retrievability < DORMANCY_THRESHOLD) return;
-
-  const definition = assignRelicOnGraduation(card.cardType, activeRelics);
-  if (!definition) {
-    setGraduatedRelicId(card.factId, null);
-    return;
-  }
-
-  setGraduatedRelicId(card.factId, definition.id);
-  recomputeActiveRelics();
+  // Award a Mastery Coin for reaching Tier 3 (replaces old relic assignment)
+  awardMasteryCoin();
 }
 
 export function handlePlayCard(
@@ -527,9 +518,14 @@ export function handlePlayCard(
       addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
     }
     // Post-encounter healing: restore a percentage of max HP
+    // Boss/mini-boss encounters grant bonus healing (AR-32)
     if (run) {
       const isStoryMode = get(difficultyMode) === 'explorer';
-      const healPct = POST_ENCOUNTER_HEAL_PCT + (isStoryMode ? EXPLORER_POST_ENCOUNTER_HEAL_BONUS : 0);
+      const enemyCategory = result.turnState.enemy.template.category;
+      const isBossOrMiniBoss = enemyCategory === 'boss' || enemyCategory === 'mini_boss';
+      const healPct = POST_ENCOUNTER_HEAL_PCT
+        + (isStoryMode ? EXPLORER_POST_ENCOUNTER_HEAL_BONUS : 0)
+        + (isBossOrMiniBoss ? POST_BOSS_ENCOUNTER_HEAL_BONUS : 0);
       const healAmt = Math.round(run.playerMaxHp * healPct);
       run.playerHp = Math.min(run.playerMaxHp, run.playerHp + healAmt);
       activeRunState.set(run);

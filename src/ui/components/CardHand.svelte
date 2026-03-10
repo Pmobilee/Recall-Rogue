@@ -19,6 +19,9 @@
     oncastdirect?: (index: number) => void
   }
 
+  // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
+  const preloadedCardbackUrls = new Set<string>()
+
   type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
 
   let {
@@ -179,10 +182,11 @@
   // Preload cardback images for cards in hand
   $effect(() => {
     for (const [, url] of cardbackUrls) {
-      if (url) {
-        const img = new Image()
-        img.src = url
-      }
+      if (!url || preloadedCardbackUrls.has(url)) continue
+      preloadedCardbackUrls.add(url)
+      const img = new Image()
+      img.decoding = 'async'
+      img.src = url
     }
   })
 
@@ -255,7 +259,7 @@
     {@const xOffset = getXOffset(i, cards.length)}
     {@const domainColor = getDomainColor(card.domain)}
     {@const icon = TYPE_ICONS[card.cardType]}
-    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
+    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
@@ -378,7 +382,7 @@
     {@const isMechanic = cardAnim === 'mechanic'}
     {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const domainColor = getDomainColor(card.domain)}
-    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
+    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}

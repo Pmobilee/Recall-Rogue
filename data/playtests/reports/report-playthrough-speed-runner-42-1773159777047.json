@@ -1,0 +1,377 @@
+{
+  "playthroughId": "playthrough-speed-runner-42-1773159777047",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-10T16:34:20.567Z",
+  "issueCount": 17,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-1",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 21 encounter 2",
+      "description": "Enemy dealt 41 damage in a single enemy turn when player had 43 HP (95.3% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1253
+        ],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "damageReceived=41, playerHP_before=43, ratio=0.953"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Navigate to floor 21, encounter 2, turn 16",
+        "Observe enemy turn dealing 41 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-2",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 21 encounter 2",
+      "description": "Enemy dealt 169 damage in a single enemy turn when player had 80 HP (211.2% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          1273
+        ],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "damageReceived=169, playerHP_before=80, ratio=2.112"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Navigate to floor 21, encounter 2, turn 21",
+        "Observe enemy turn dealing 169 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-3",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "17 consecutive easy encounters (floors 1-6)",
+      "description": "Player maintained >90 HP across 17 consecutive encounters from floor 1 enc 0 to floor 6 enc 1. HP values: [100, 100, 100, 100, 98, 93, 95, 96, 91, 100, 100, 100, 98, 98, 100, 100, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "consecutiveEasyEncounters=17, hpValues=[100,100,100,100,98,93,95,96,91,100,100,100,98,98,100,100,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 1-6",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-4",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "6 consecutive easy encounters (floors 7-8)",
+      "description": "Player maintained >90 HP across 6 consecutive encounters from floor 7 enc 0 to floor 8 enc 2. HP values: [100, 100, 100, 100, 100, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 7,
+        "encounter": 0,
+        "metric": "consecutiveEasyEncounters=6, hpValues=[100,100,100,100,100,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 7-8",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-5",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "6 consecutive easy encounters (floors 9-11)",
+      "description": "Player maintained >90 HP across 6 consecutive encounters from floor 9 enc 1 to floor 11 enc 0. HP values: [93, 93, 100, 100, 92, 94]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 1,
+        "metric": "consecutiveEasyEncounters=6, hpValues=[93,93,100,100,92,94]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 9-11",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-6",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3 consecutive easy encounters (floors 11-12)",
+      "description": "Player maintained >90 HP across 3 consecutive encounters from floor 11 enc 2 to floor 12 enc 1. HP values: [100, 96, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 11,
+        "encounter": 2,
+        "metric": "consecutiveEasyEncounters=3, hpValues=[100,96,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 11-12",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-7",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "10 consecutive easy encounters (floors 14-17)",
+      "description": "Player maintained >90 HP across 10 consecutive encounters from floor 14 enc 1 to floor 17 enc 1. HP values: [98, 100, 98, 100, 100, 96, 100, 100, 100, 97]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 14,
+        "encounter": 1,
+        "metric": "consecutiveEasyEncounters=10, hpValues=[98,100,98,100,100,96,100,100,100,97]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 14-17",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-8",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "7 consecutive easy encounters (floors 18-20)",
+      "description": "Player maintained >90 HP across 7 consecutive encounters from floor 18 enc 1 to floor 20 enc 1. HP values: [100, 91, 98, 97, 100, 97, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 18,
+        "encounter": 1,
+        "metric": "consecutiveEasyEncounters=7, hpValues=[100,91,98,97,100,97,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floors 18-20",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-9",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated despite 89.0% accuracy",
+      "description": "Player was defeated on floor 21 with 89.0% overall accuracy (782 correct, 97 wrong). High accuracy should yield better survivability.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 21,
+        "encounter": 0,
+        "metric": "overallAccuracy=0.890, finalFloor=21, result=defeat"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through full run with high accuracy",
+        "Observe that good play still results in defeat"
+      ],
+      "suggestedFix": "Increase healing from correct answers or reduce enemy damage scaling in later floors"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-10",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 2 encounter 2 (crystal_guardian)",
+      "description": "Encounter took 4 turns to resolve, but the previous floor (1) averaged 1.7 turns. This is a 2.4x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "turnsToResolve=4, prevFloorAvg=1.7, ratio=2.40"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 1 (avg 1.7 turns)",
+        "Enter floor 2 encounter 2",
+        "Observe dramatic difficulty increase (4 turns)"
+      ],
+      "suggestedFix": "Review crystal_guardian stats — HP or damage may be disproportionately high for floor 2"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-11",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 5 encounter 2 (stone_sentinel)",
+      "description": "Encounter took 7 turns to resolve, but the previous floor (4) averaged 2.7 turns. This is a 2.6x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "encounter": 2,
+        "metric": "turnsToResolve=7, prevFloorAvg=2.7, ratio=2.63"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 4 (avg 2.7 turns)",
+        "Enter floor 5 encounter 2",
+        "Observe dramatic difficulty increase (7 turns)"
+      ],
+      "suggestedFix": "Review stone_sentinel stats — HP or damage may be disproportionately high for floor 5"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-12",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 9 encounter 2 (crystal_warden)",
+      "description": "Encounter took 11 turns to resolve, but the previous floor (8) averaged 3.0 turns. This is a 3.7x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turnsToResolve=11, prevFloorAvg=3.0, ratio=3.67"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 8 (avg 3.0 turns)",
+        "Enter floor 9 encounter 2",
+        "Observe dramatic difficulty increase (11 turns)"
+      ],
+      "suggestedFix": "Review crystal_warden stats — HP or damage may be disproportionately high for floor 9"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-13",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 12 encounter 2 (shadow_hydra)",
+      "description": "Encounter took 11 turns to resolve, but the previous floor (11) averaged 4.0 turns. This is a 2.8x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "turnsToResolve=11, prevFloorAvg=4.0, ratio=2.75"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 11 (avg 4.0 turns)",
+        "Enter floor 12 encounter 2",
+        "Observe dramatic difficulty increase (11 turns)"
+      ],
+      "suggestedFix": "Review shadow_hydra stats — HP or damage may be disproportionately high for floor 12"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-14",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 15 encounter 2 (knowledge_golem)",
+      "description": "Encounter took 19 turns to resolve, but the previous floor (14) averaged 6.0 turns. This is a 3.2x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 15,
+        "encounter": 2,
+        "metric": "turnsToResolve=19, prevFloorAvg=6.0, ratio=3.17"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 14 (avg 6.0 turns)",
+        "Enter floor 15 encounter 2",
+        "Observe dramatic difficulty increase (19 turns)"
+      ],
+      "suggestedFix": "Review knowledge_golem stats — HP or damage may be disproportionately high for floor 15"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-15",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 18 encounter 2 (crystal_warden)",
+      "description": "Encounter took 20 turns to resolve, but the previous floor (17) averaged 7.0 turns. This is a 2.9x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 18,
+        "encounter": 2,
+        "metric": "turnsToResolve=20, prevFloorAvg=7.0, ratio=2.86"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 17 (avg 7.0 turns)",
+        "Enter floor 18 encounter 2",
+        "Observe dramatic difficulty increase (20 turns)"
+      ],
+      "suggestedFix": "Review crystal_warden stats — HP or damage may be disproportionately high for floor 18"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-16",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 20 encounter 0 (crystal_golem)",
+      "description": "Encounter took 9 turns to resolve, but the previous floor (19) averaged 3.7 turns. This is a 2.5x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 20,
+        "encounter": 0,
+        "metric": "turnsToResolve=9, prevFloorAvg=3.7, ratio=2.45"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 19 (avg 3.7 turns)",
+        "Enter floor 20 encounter 0",
+        "Observe dramatic difficulty increase (9 turns)"
+      ],
+      "suggestedFix": "Review crystal_golem stats — HP or damage may be disproportionately high for floor 20"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-42-1773159777047-17",
+      "playthroughId": "playthrough-speed-runner-42-1773159777047",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 21 encounter 2 (the_curator)",
+      "description": "Encounter took 21 turns to resolve, but the previous floor (20) averaged 6.0 turns. This is a 3.5x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 21,
+        "encounter": 2,
+        "metric": "turnsToResolve=21, prevFloorAvg=6.0, ratio=3.50"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-42-1773159777047",
+        "Play through floor 20 (avg 6.0 turns)",
+        "Enter floor 21 encounter 2",
+        "Observe dramatic difficulty increase (21 turns)"
+      ],
+      "suggestedFix": "Review the_curator stats — HP or damage may be disproportionately high for floor 21"
+    }
+  ]
+}

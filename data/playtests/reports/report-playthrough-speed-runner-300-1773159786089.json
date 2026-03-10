@@ -1,0 +1,184 @@
+{
+  "playthroughId": "playthrough-speed-runner-300-1773159786089",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-10T16:34:20.570Z",
+  "issueCount": 8,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-1",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 12 encounter 2",
+      "description": "Enemy dealt 78 damage in a single enemy turn when player had 100 HP (78.0% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          535
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damageReceived=78, playerHP_before=100, ratio=0.780"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Navigate to floor 12, encounter 2, turn 6",
+        "Observe enemy turn dealing 78 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-2",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy damage spike on floor 12 encounter 2",
+      "description": "Enemy dealt 49 damage in a single enemy turn when player had 36 HP (136.1% of current HP)",
+      "evidence": {
+        "turnSeqs": [
+          551
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damageReceived=49, playerHP_before=36, ratio=1.361"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Navigate to floor 12, encounter 2, turn 10",
+        "Observe enemy turn dealing 49 damage"
+      ],
+      "suggestedFix": "Consider reducing enemy damage scaling or adding damage caps for single hits"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-3",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "32 consecutive easy encounters (floors 1-11)",
+      "description": "Player maintained >90 HP across 32 consecutive encounters from floor 1 enc 0 to floor 11 enc 1. HP values: [94, 100, 94, 100, 100, 100, 100, 100, 100, 93, 98, 97, 94, 100, 100, 100, 91, 100, 100, 100, 100, 98, 100, 100, 98, 100, 100, 100, 100, 100, 100, 100]",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "consecutiveEasyEncounters=32, hpValues=[94,100,94,100,100,100,100,100,100,93,98,97,94,100,100,100,91,100,100,100,100,98,100,100,98,100,100,100,100,100,100,100]"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through floors 1-11",
+        "Observe lack of challenge — player never drops below 90 HP"
+      ],
+      "suggestedFix": "Increase enemy damage or HP in early/mid floors to create more tension"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-4",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated despite 89.8% accuracy",
+      "description": "Player was defeated on floor 12 with 89.8% overall accuracy (333 correct, 38 wrong). High accuracy should yield better survivability.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 0,
+        "metric": "overallAccuracy=0.898, finalFloor=12, result=defeat"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through full run with high accuracy",
+        "Observe that good play still results in defeat"
+      ],
+      "suggestedFix": "Increase healing from correct answers or reduce enemy damage scaling in later floors"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-5",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 3 encounter 2 (void_weaver)",
+      "description": "Encounter took 8 turns to resolve, but the previous floor (2) averaged 2.3 turns. This is a 3.4x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turnsToResolve=8, prevFloorAvg=2.3, ratio=3.43"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through floor 2 (avg 2.3 turns)",
+        "Enter floor 3 encounter 2",
+        "Observe dramatic difficulty increase (8 turns)"
+      ],
+      "suggestedFix": "Review void_weaver stats — HP or damage may be disproportionately high for floor 3"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-6",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 6 encounter 2 (crystal_warden)",
+      "description": "Encounter took 11 turns to resolve, but the previous floor (5) averaged 2.0 turns. This is a 5.5x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turnsToResolve=11, prevFloorAvg=2.0, ratio=5.50"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through floor 5 (avg 2.0 turns)",
+        "Enter floor 6 encounter 2",
+        "Observe dramatic difficulty increase (11 turns)"
+      ],
+      "suggestedFix": "Review crystal_warden stats — HP or damage may be disproportionately high for floor 6"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-7",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 9 encounter 2 (the_archivist)",
+      "description": "Encounter took 15 turns to resolve, but the previous floor (8) averaged 4.7 turns. This is a 3.2x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turnsToResolve=15, prevFloorAvg=4.7, ratio=3.21"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through floor 8 (avg 4.7 turns)",
+        "Enter floor 9 encounter 2",
+        "Observe dramatic difficulty increase (15 turns)"
+      ],
+      "suggestedFix": "Review the_archivist stats — HP or damage may be disproportionately high for floor 9"
+    },
+    {
+      "id": "issue-playthrough-speed-runner-300-1773159786089-8",
+      "playthroughId": "playthrough-speed-runner-300-1773159786089",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike on floor 12 encounter 2 (knowledge_golem)",
+      "description": "Encounter took 10 turns to resolve, but the previous floor (11) averaged 3.3 turns. This is a 3.0x spike.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "turnsToResolve=10, prevFloorAvg=3.3, ratio=3.00"
+      },
+      "reproductionSteps": [
+        "Load playthrough playthrough-speed-runner-300-1773159786089",
+        "Play through floor 11 (avg 3.3 turns)",
+        "Enter floor 12 encounter 2",
+        "Observe dramatic difficulty increase (10 turns)"
+      ],
+      "suggestedFix": "Review knowledge_golem stats — HP or damage may be disproportionately high for floor 12"
+    }
+  ]
+}

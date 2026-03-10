@@ -456,6 +456,28 @@ export function load(): PlayerSave | null {
       // Existing players have already studied, so default to true
       parsedAny['hasCompletedInitialStudy'] = true
     }
+    // Relic system overhaul: mastery coins and relic unlocks
+    if (typeof parsedAny['masteryCoins'] !== 'number') {
+      // Retroactive coins: count Tier 3 (mastered) facts
+      const tier3Count = Array.isArray(parsedAny['reviewStates'])
+        ? (parsedAny['reviewStates'] as Record<string, unknown>[]).filter((rs) => {
+            const stability = rs['stability'] as number ?? 0
+            const reps = rs['reps'] as number ?? rs['repetitions'] as number ?? 0
+            return stability >= 21 && reps >= 5
+          }).length
+        : 0
+      parsedAny['masteryCoins'] = tier3Count
+      parsedAny['masteryCoinsAvailable'] = tier3Count
+    }
+    if (typeof parsedAny['masteryCoinsAvailable'] !== 'number') {
+      parsedAny['masteryCoinsAvailable'] = parsedAny['masteryCoins'] as number ?? 0
+    }
+    if (!Array.isArray(parsedAny['unlockedRelicIds'])) {
+      parsedAny['unlockedRelicIds'] = []
+    }
+    if (!Array.isArray(parsedAny['excludedRelicIds'])) {
+      parsedAny['excludedRelicIds'] = []
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -550,6 +572,12 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
 
     // Phase 59: Artifact Analyzer persistence
     pendingArtifacts: [],
+
+    // Relic system: mastery coins and unlocks
+    masteryCoins: 0,
+    masteryCoinsAvailable: 0,
+    unlockedRelicIds: [],
+    excludedRelicIds: [],
   }
 }
 

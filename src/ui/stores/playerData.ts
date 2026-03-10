@@ -15,6 +15,7 @@ import { applyStabilityBonusToFacts } from '../../services/runEarlyBoostControll
 type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
 function calculateKnowledgePoints(_stats: unknown, _mastered: number): number { return 0 }
 import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX, NEW_CARD_THROTTLE_RATIO, getAdaptiveNewCardLimit } from '../../data/balance'
+import { RELIC_BY_ID } from '../../data/relics/index'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 // hubLayout.ts archived — inline default hub state
@@ -693,6 +694,22 @@ export function prioritizeGraduatedRelicFact(factId: string): void {
           masteredAt: Date.now(),
         }
       }),
+    }
+  })
+  persistPlayer()
+}
+
+/**
+ * Awards one Mastery Coin to the player (earned when a card reaches Tier 3).
+ * Increments both the lifetime total and the spendable balance.
+ */
+export function awardMasteryCoin(): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      masteryCoins: (save.masteryCoins ?? 0) + 1,
+      masteryCoinsAvailable: (save.masteryCoinsAvailable ?? 0) + 1,
     }
   })
   persistPlayer()
@@ -1802,4 +1819,98 @@ export function awardBranchMilestone(
     sparkWeekStart: weekStart,
     awardedBranchMilestones: [...awarded, ...newMilestones],
   }
+}
+
+// =========================================================
+// Mastery Coin Management (continued)
+// =========================================================
+
+/**
+ * Spends the given amount of Mastery Coins from the player's available balance.
+ * Returns `false` if the player has insufficient coins (no mutation occurs).
+ *
+ * @param amount - Number of coins to deduct (must be > 0).
+ * @returns `true` if the spend succeeded, `false` otherwise.
+ */
+export function spendMasteryCoins(amount: number): boolean {
+  const save = get(playerSave)
+  if (!save) return false
+  const available = save.masteryCoinsAvailable ?? 0
+  if (amount <= 0 || available < amount) return false
+
+  playerSave.update((s) => {
+    if (!s) return s
+    return {
+      ...s,
+      masteryCoinsAvailable: (s.masteryCoinsAvailable ?? 0) - amount,
+    }
+  })
+  persistPlayer()
+  return true
+}
+
+/**
+ * Returns the player's current Mastery Coin balances.
+ *
+ * @returns An object with `lifetime` (total ever earned) and `available` (spendable) counts.
+ */
+export function getMasteryBalance(): { lifetime: number; available: number } {
+  const save = get(playerSave)
+  return {
+    lifetime: save?.masteryCoins ?? 0,
+    available: save?.masteryCoinsAvailable ?? 0,
+  }
+}
+
+/**
+ * Unlocks a relic by its ID, deducting the unlock cost from the player's
+ * available Mastery Coins. Returns `false` if the relic is already unlocked,
+ * the relic ID is unknown, or the player cannot afford the cost.
+ *
+ * @param relicId - The unique identifier of the relic to unlock.
+ * @returns `true` if the relic was successfully unlocked, `false` otherwise.
+ */
+export function unlockRelic(relicId: string): boolean {
+  const relic = RELIC_BY_ID[relicId]
+  if (!relic) return false
+
+  const save = get(playerSave)
+  if (!save) return false
+
+  const unlocked = save.unlockedRelicIds ?? []
+  if (unlocked.includes(relicId)) return false
+
+  if (!spendMasteryCoins(relic.unlockCost)) return false
+
+  playerSave.update((s) => {
+    if (!s) return s
+    return {
+      ...s,
+      unlockedRelicIds: [...(s.unlockedRelicIds ?? []), relicId],
+    }
+  })
+  persistPlayer()
+  return true
+}
+
+/**
+ * Toggles a relic's exclusion status. If the relic is currently excluded,
+ * it will be re-included (removed from the exclusion list). If it is not
+ * excluded, it will be added to the exclusion list. Persists after mutation.
+ *
+ * @param relicId - The unique identifier of the relic to toggle.
+ */
+export function toggleRelicExclusion(relicId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    const excluded = save.excludedRelicIds ?? []
+    const isExcluded = excluded.includes(relicId)
+    return {
+      ...save,
+      excludedRelicIds: isExcluded
+        ? excluded.filter((id) => id !== relicId)
+        : [...excluded, relicId],
+    }
+  })
+  persistPlayer()
 }

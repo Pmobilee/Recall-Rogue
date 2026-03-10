@@ -1,0 +1,127 @@
+{
+  "playthroughId": "playthrough-struggling-42-1773159786757",
+  "profileId": "struggling",
+  "analyzedAt": "2026-03-10T16:38:04.388Z",
+  "issueCount": 5,
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-42-1773159786757-001",
+      "playthroughId": "playthrough-struggling-42-1773159786757",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 27 dmg (51% of 53 HP) on floor 1",
+      "description": "On floor 1, encounter 1, turn 21 (seq 138), the enemy dealt 27 damage which is 51% of the player's 53 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          138
+        ],
+        "floor": 1,
+        "encounter": 1,
+        "metric": "Enemy dealt 27 dmg (51% of 53 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Turn 21"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773159786757-002",
+      "playthroughId": "playthrough-struggling-42-1773159786757",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Enemy dealt 38 dmg (100% of 38 HP) on floor 1",
+      "description": "On floor 1, encounter 1, turn 24 (seq 150), the enemy dealt 38 damage which is 100% of the player's 38 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          150
+        ],
+        "floor": 1,
+        "encounter": 1,
+        "metric": "Enemy dealt 38 dmg (100% of 38 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Turn 24"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773159786757-003",
+      "playthroughId": "playthrough-struggling-42-1773159786757",
+      "profileId": "struggling",
+      "category": "balance_too_hard",
+      "severity": "MEDIUM",
+      "title": "Player defeated on floor 1, encounter 1 (crystal_golem)",
+      "description": "Player was defeated on floor 1, encounter 1 against crystal_golem (common). Accuracy was 32% with 24 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 1,
+        "enemyId": "crystal_golem",
+        "enemyCategory": "common",
+        "accuracy": 0.3194444444444444,
+        "turnsToResolve": 24,
+        "metric": "Defeated on floor 1 with 32% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1, Enemy: crystal_golem"
+      ],
+      "suggestedFix": "Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles."
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773159786757-004",
+      "playthroughId": "playthrough-struggling-42-1773159786757",
+      "profileId": "struggling",
+      "category": "ux_unfun_moment",
+      "severity": "LOW",
+      "title": "HP crashed from 100 to 0 in floor 1 encounter 1",
+      "description": "During floor 1, encounter 1, player HP dropped from 100 to 0. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 1,
+        "hpStart": 100,
+        "hpEnd": 0,
+        "turnSeqs": [
+          45,
+          150
+        ],
+        "metric": "HP 100 → 0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Floor 1, Encounter 1"
+      ]
+    },
+    {
+      "id": "issue-playthrough-struggling-42-1773159786757-005",
+      "playthroughId": "playthrough-struggling-42-1773159786757",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (101 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 101,
+        "cardTypeCounts": {
+          "attack": 30,
+          "shield": 19,
+          "heal": 16,
+          "buff": 14,
+          "debuff": 11,
+          "utility": 5,
+          "regen": 6,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 101 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 42",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

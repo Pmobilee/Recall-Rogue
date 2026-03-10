@@ -1,0 +1,256 @@
+{
+  "playthroughId": "playthrough-story-beginner-100-1773159772427",
+  "profileId": "story-beginner",
+  "analyzedAt": "2026-03-10T16:46:41.777Z",
+  "issueCount": 10,
+  "issues": [
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-001",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 36 dmg (59% of 61 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 18 (seq 343), the enemy dealt 36 damage which is 59% of the player's 61 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          343
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 36 dmg (59% of 61 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 3, Encounter 2, Turn 18"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-002",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 39 dmg (91% of 43 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 19 (seq 347), the enemy dealt 39 damage which is 91% of the player's 43 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          347
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 39 dmg (91% of 43 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 3, Encounter 2, Turn 19"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-003",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy dealt 31 dmg (100% of 31 HP) on floor 3",
+      "description": "On floor 3, encounter 2, turn 20 (seq 351), the enemy dealt 31 damage which is 100% of the player's 31 HP before the hit. This exceeds the 50% threshold for a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          351
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 31 dmg (100% of 31 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 3, Encounter 2, Turn 20"
+      ],
+      "suggestedFix": "Cap single-hit enemy damage to 50% of player current HP or add damage-reduction mechanics."
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-004",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "6 consecutive easy encounters (floors 1-3)",
+      "description": "6 consecutive encounters where player ended with >90 HP remaining. Encounters: F1E2:93HP, F2E0:96HP, F2E1:100HP, F2E2:100HP, F3E0:97HP, F3E1:100HP. The game may not be challenging enough in this stretch.",
+      "evidence": {
+        "floors": [
+          1,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        "encounters": [
+          2,
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "hpValues": [
+          93,
+          96,
+          100,
+          100,
+          97,
+          100
+        ],
+        "metric": "6 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floors 1-3"
+      ],
+      "suggestedFix": "Consider scaling enemy HP or damage for this difficulty/profile combination."
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-005",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Player defeated on floor 3, encounter 2 (the_curator)",
+      "description": "Player was defeated on floor 3, encounter 2 against the_curator (boss). Accuracy was 77% with 20 turns played. Early defeat suggests difficulty may be too high for this profile.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "enemyId": "the_curator",
+        "enemyCategory": "boss",
+        "accuracy": 0.7666666666666667,
+        "turnsToResolve": 20,
+        "metric": "Defeated on floor 3 with 77% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 3, Encounter 2, Enemy: the_curator"
+      ],
+      "suggestedFix": "Reduce early floor enemy HP/damage or activate canary system earlier for struggling profiles."
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-006",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 2 enc 0: 13 turns vs prev floor avg 3.3",
+      "description": "Encounter 0 on floor 2 took 13 turns to resolve, which is more than 2x the previous floor's average of 3.3 turns. This indicates a sharp difficulty spike. Enemy: crystal_golem (common).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 0,
+        "turnsToResolve": 13,
+        "previousFloorAvg": 3.3,
+        "ratio": 3.9,
+        "enemyId": "crystal_golem",
+        "metric": "13 turns vs 3.3 avg (3.9x)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 2, Encounter 0, Enemy: crystal_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-007",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 2 enc 1: 11 turns vs prev floor avg 3.3",
+      "description": "Encounter 1 on floor 2 took 11 turns to resolve, which is more than 2x the previous floor's average of 3.3 turns. This indicates a sharp difficulty spike. Enemy: crystal_golem (common).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "turnsToResolve": 11,
+        "previousFloorAvg": 3.3,
+        "ratio": 3.3,
+        "enemyId": "crystal_golem",
+        "metric": "11 turns vs 3.3 avg (3.3x)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 2, Encounter 1, Enemy: crystal_golem"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-008",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Floor 2 enc 2: 12 turns vs prev floor avg 3.3",
+      "description": "Encounter 2 on floor 2 took 12 turns to resolve, which is more than 2x the previous floor's average of 3.3 turns. This indicates a sharp difficulty spike. Enemy: stone_sentinel (mini_boss).",
+      "evidence": {
+        "floor": 2,
+        "encounter": 2,
+        "turnsToResolve": 12,
+        "previousFloorAvg": 3.3,
+        "ratio": 3.6,
+        "enemyId": "stone_sentinel",
+        "metric": "12 turns vs 3.3 avg (3.6x)"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 2, Encounter 2, Enemy: stone_sentinel"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-009",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "HP crashed from 100 to 4 in floor 3 encounter 2",
+      "description": "During floor 3, encounter 2, player HP dropped from 100 to 4. Going from >70 to <20 in one encounter feels punishing and unfun.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "hpStart": 100,
+        "hpEnd": 4,
+        "turnSeqs": [
+          270,
+          347
+        ],
+        "metric": "HP 100 → 4"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Floor 3, Encounter 2"
+      ]
+    },
+    {
+      "id": "issue-playthrough-story-beginner-100-1773159772427-010",
+      "playthroughId": "playthrough-story-beginner-100-1773159772427",
+      "profileId": "story-beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type \"wild\" was never played during the entire run",
+      "description": "The card type \"wild\" had 0 plays across the entire run (249 total cards played). This may indicate the type is not appearing in decks, not being offered, or players are avoiding it.",
+      "evidence": {
+        "cardType": "wild",
+        "totalCardsPlayed": 249,
+        "cardTypeCounts": {
+          "attack": 89,
+          "shield": 46,
+          "heal": 36,
+          "buff": 25,
+          "debuff": 27,
+          "utility": 12,
+          "regen": 14,
+          "wild": 0
+        },
+        "metric": "0 plays of \"wild\" across 249 total cards"
+      },
+      "reproductionSteps": [
+        "Profile: story-beginner, Seed: 100",
+        "Check deck composition — does \"wild\" appear in the card pool?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+  "profileId": "veteran-expert",
+  "analyzedAt": "2026-03-10T16:34:22.532Z",
+  "issueCount": 14,
+  "issues": [
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-001",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 3 enc 2 turn 19",
+      "description": "Enemy dealt 39 damage (>36 = 50% of 72 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          173
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "39 dmg vs 72 HP (54.2%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 3, encounter 2",
+        "Reach turn 19",
+        "Observe enemy dealing 39 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-002",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 3 enc 2 turn 20",
+      "description": "Enemy dealt 35 damage (>26 = 50% of 53 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          177
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "35 dmg vs 53 HP (66.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 3, encounter 2",
+        "Reach turn 20",
+        "Observe enemy dealing 35 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-003",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 enc 2 turn 20",
+      "description": "Enemy dealt 46 damage (>27 = 50% of 54 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          552
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "46 dmg vs 54 HP (85.2%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 9, encounter 2",
+        "Reach turn 20",
+        "Observe enemy dealing 46 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-004",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 enc 2 turn 22",
+      "description": "Enemy dealt 28 damage (>13 = 50% of 26 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          560
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "28 dmg vs 26 HP (107.7%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 9, encounter 2",
+        "Reach turn 22",
+        "Observe enemy dealing 28 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-005",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_damage_spike",
+      "severity": "HIGH",
+      "title": "Damage spike on floor 9 enc 2 turn 24",
+      "description": "Enemy dealt 58 damage (>2 = 50% of 5 HP) in a single enemy turn.",
+      "evidence": {
+        "turnSeqs": [
+          568
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "58 dmg vs 5 HP (1160.0%)"
+      },
+      "reproductionSteps": [
+        "Play to floor 9, encounter 2",
+        "Reach turn 24",
+        "Observe enemy dealing 58 damage"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-006",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 1",
+      "description": "8 consecutive encounters with player HP remaining > 90, starting at floor 1. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 1,
+        "encounter": 0,
+        "metric": "8 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 1-1",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-007",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_too_easy",
+      "severity": "LOW",
+      "title": "3+ easy encounters starting floor 7",
+      "description": "8 consecutive encounters with player HP remaining > 90, starting at floor 7. Game may be too easy during this stretch.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 7,
+        "encounter": 0,
+        "metric": "8 encounters with HP > 90"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress through floors 7-7",
+        "Observe all encounters leave player above 90 HP"
+      ],
+      "suggestedFix": "Consider increasing enemy damage or HP in early/mid floors"
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-008",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "balance_attrition_death",
+      "severity": "MEDIUM",
+      "title": "Player defeated with 89.9% accuracy on floor 9",
+      "description": "Player died on floor 9 despite having 89.9% overall accuracy. This suggests the player was skilled but ground down by attrition rather than making strategic mistakes.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "defeat at 89.9% accuracy"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Play with ~90% accuracy",
+        "Observe defeat via HP attrition on floor 9"
+      ],
+      "suggestedFix": "Consider adding more healing opportunities or reducing cumulative damage on later floors"
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-009",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 3 enc 2 took 21 turns (prev avg: 3.3)",
+      "description": "Encounter 2 on floor 3 against the_curator took 21 turns to resolve, more than 2x the previous floor's average of 3.3 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "21 turns vs 3.3 prev avg (6.3x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 3",
+        "Face the_curator",
+        "Observe encounter takes 21 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-010",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 5 enc 0 took 7 turns (prev avg: 2.3)",
+      "description": "Encounter 0 on floor 5 against cave_bat took 7 turns to resolve, more than 2x the previous floor's average of 2.3 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 5,
+        "encounter": 0,
+        "metric": "7 turns vs 2.3 prev avg (3.0x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 5",
+        "Face cave_bat",
+        "Observe encounter takes 7 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-011",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 6 enc 2 took 9 turns (prev avg: 4.0)",
+      "description": "Encounter 2 on floor 6 against the_excavator took 9 turns to resolve, more than 2x the previous floor's average of 4.0 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "9 turns vs 4.0 prev avg (2.3x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 6",
+        "Face the_excavator",
+        "Observe encounter takes 9 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-012",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 8 enc 2 took 7 turns (prev avg: 3.3)",
+      "description": "Encounter 2 on floor 8 against stone_sentinel took 7 turns to resolve, more than 2x the previous floor's average of 3.3 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 8,
+        "encounter": 2,
+        "metric": "7 turns vs 3.3 prev avg (2.1x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 8",
+        "Face stone_sentinel",
+        "Observe encounter takes 7 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-013",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "progression_difficulty_spike",
+      "severity": "HIGH",
+      "title": "Difficulty spike: floor 9 enc 2 took 25 turns (prev avg: 4.7)",
+      "description": "Encounter 2 on floor 9 against the_curator took 25 turns to resolve, more than 2x the previous floor's average of 4.7 turns.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "25 turns vs 4.7 prev avg (5.4x)"
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Progress to floor 9",
+        "Face the_curator",
+        "Observe encounter takes 25 turns"
+      ]
+    },
+    {
+      "id": "issue-playthrough-veteran-expert-100-1773159813546-014",
+      "playthroughId": "playthrough-veteran-expert-100-1773159813546",
+      "profileId": "veteran-expert",
+      "category": "mechanic_unused",
+      "severity": "LOW",
+      "title": "Card type \"wild\" never played",
+      "description": "No cards of type \"wild\" were played during this run. This card type may be missing from the deck or not being offered.",
+      "evidence": {
+        "turnSeqs": [],
+        "floor": 0,
+        "encounter": 0,
+        "metric": "0 plays of type \"wild\""
+      },
+      "reproductionSteps": [
+        "Start a run with seed 100",
+        "Check deck composition for \"wild\" cards",
+        "Observe absence of \"wild\" card plays"
+      ]
+    }
+  ]
+}

@@ -914,8 +914,22 @@ export const MAX_AP_PER_TURN = 5;
 export const POST_ENCOUNTER_HEAL_PCT = 0.15;
 /** Extra healing fraction for Story/Explorer mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const EXPLORER_POST_ENCOUNTER_HEAL_BONUS = 0.10;
+/** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
+export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.10;
 /** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
-export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.75;
+export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
+
+/** Per-floor enemy damage scaling increment above floor 6. */
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.03;
+
+/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
+export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
+  1: 25,
+  2: 35,
+  3: 45,
+  4: 55,
+  endless: null,
+};
 
 // Speed scaling (timer in seconds by floor)
 export const FLOOR_TIMER: Array<{ maxFloor: number; seconds: number }> = [
@@ -974,7 +988,9 @@ export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
 
+/** @deprecated Use new relic system — no active relic cap. */
 export const MAX_ACTIVE_RELICS = 12;
+/** @deprecated Dormancy removed in relic overhaul. */
 export const DORMANCY_THRESHOLD = 0.7;
 
 export const ECHO = {
@@ -983,6 +999,30 @@ export const ECHO = {
   FSRS_STABILITY_BONUS: 2.0,
   MAX_ECHOES_PER_RUN: 15,
   INSERT_DELAY_CARDS: 3,
+} as const;
+
+// === RELIC SYSTEM ===
+
+/** Chance of random relic drop after regular encounters. */
+export const RELIC_DROP_CHANCE_REGULAR = 0.10;
+
+/** Number of relic choices presented at bosses and first mini-boss. */
+export const RELIC_BOSS_CHOICES = 3;
+
+/** Rarity weights for random relic drops and mini-boss awards. */
+export const RELIC_RARITY_WEIGHTS = {
+  common: 0.50,
+  uncommon: 0.30,
+  rare: 0.15,
+  legendary: 0.05,
+} as const;
+
+/** Rarity weights for boss relic choices (better quality). */
+export const RELIC_BOSS_RARITY_WEIGHTS = {
+  common: 0.25,
+  uncommon: 0.35,
+  rare: 0.25,
+  legendary: 0.15,
 } as const;
 
 /** Currency multiplier per difficulty mode. Applied at end-of-run. */

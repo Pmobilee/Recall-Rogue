@@ -4,6 +4,19 @@ import { pickWeightedType } from './cardTypeAllocator';
 
 /** Top-level category string → FactDomain mapping */
 const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
+  // Canonical snake_case (current DB format)
+  'language': 'language',
+  'general_knowledge': 'general_knowledge',
+  'natural_sciences': 'natural_sciences',
+  'space_astronomy': 'space_astronomy',
+  'geography': 'geography',
+  'history': 'history',
+  'mythology_folklore': 'mythology_folklore',
+  'animals_wildlife': 'animals_wildlife',
+  'human_body_health': 'human_body_health',
+  'food_cuisine': 'food_cuisine',
+  'art_architecture': 'art_architecture',
+  // Title Case (legacy facts)
   'Language': 'language',
   'General Knowledge': 'general_knowledge',
   'Natural Sciences': 'natural_sciences',
@@ -28,6 +41,7 @@ const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
 };
 
 const DEFAULT_DOMAIN: FactDomain = 'general_knowledge';
+const FACT_DOMAIN_CACHE = new Map<string, FactDomain>();
 
 /**
  * Resolves a Fact's knowledge domain from its category hierarchy.
@@ -39,25 +53,36 @@ const DEFAULT_DOMAIN: FactDomain = 'general_knowledge';
  * @returns The resolved FactDomain.
  */
 export function resolveDomain(fact: Fact): FactDomain {
+  const cacheKey = fact.id
+  if (cacheKey) {
+    const cached = FACT_DOMAIN_CACHE.get(cacheKey)
+    if (cached) return cached
+  }
+
+  let resolved = DEFAULT_DOMAIN
+
   // Try primary category first
   const primary = fact.category[0];
   if (primary && CATEGORY_TO_DOMAIN[primary]) {
-    return CATEGORY_TO_DOMAIN[primary];
-  }
-
-  // Try categoryL1 if present
-  if (fact.categoryL1 && CATEGORY_TO_DOMAIN[fact.categoryL1]) {
-    return CATEGORY_TO_DOMAIN[fact.categoryL1];
-  }
-
-  // Try all categories in the hierarchy
-  for (const cat of fact.category) {
-    if (CATEGORY_TO_DOMAIN[cat]) {
-      return CATEGORY_TO_DOMAIN[cat];
+    resolved = CATEGORY_TO_DOMAIN[primary]
+  } else if (fact.categoryL1 && CATEGORY_TO_DOMAIN[fact.categoryL1]) {
+    // Try categoryL1 if present
+    resolved = CATEGORY_TO_DOMAIN[fact.categoryL1]
+  } else {
+    // Try all categories in the hierarchy
+    for (const cat of fact.category) {
+      if (CATEGORY_TO_DOMAIN[cat]) {
+        resolved = CATEGORY_TO_DOMAIN[cat]
+        break
+      }
     }
   }
 
-  return DEFAULT_DOMAIN;
+  if (cacheKey) {
+    FACT_DOMAIN_CACHE.set(cacheKey, resolved)
+  }
+
+  return resolved;
 }
 
 /**

@@ -54,39 +54,55 @@ function toEntry(fact: Fact, state: ReviewState | null): LibraryFactEntry {
 export function buildDomainSummaries(facts: Fact[], reviewStates: ReviewState[]): LibraryDomainSummary[] {
   const stateByFact = new Map(reviewStates.map((state) => [state.factId, state]))
 
-  const domainMap = new Map<FactDomain, Fact[]>()
+  const domainMap = new Map<FactDomain, {
+    totalFacts: number
+    encounteredFacts: number
+    tier1Count: number
+    tier2aCount: number
+    tier2bCount: number
+    tier3Count: number
+  }>()
   for (const domain of getAllDomainMetadata()) {
-    domainMap.set(domain.id, [])
+    domainMap.set(domain.id, {
+      totalFacts: 0,
+      encounteredFacts: 0,
+      tier1Count: 0,
+      tier2aCount: 0,
+      tier2bCount: 0,
+      tier3Count: 0,
+    })
   }
 
   for (const fact of facts) {
     const domain = normalizeFactDomain(resolveDomain(fact))
-    const current = domainMap.get(domain)
-    if (current) current.push(fact)
-    else domainMap.set(domain, [fact])
+    const summary = domainMap.get(domain)
+    if (!summary) continue
+
+    summary.totalFacts += 1
+    const state = stateByFact.get(fact.id) ?? null
+    if (!state) continue
+
+    summary.encounteredFacts += 1
+    const tier = getCardTier(state)
+    if (tier === '1') summary.tier1Count += 1
+    else if (tier === '2a') summary.tier2aCount += 1
+    else if (tier === '2b') summary.tier2bCount += 1
+    else if (tier === '3') summary.tier3Count += 1
   }
 
   const summaries: LibraryDomainSummary[] = []
-  for (const [domain, domainFacts] of domainMap.entries()) {
-    const entries = domainFacts.map((fact) => toEntry(fact, stateByFact.get(fact.id) ?? null))
-    const encountered = entries.filter((entry) => entry.state !== null)
-
-    const tier1Count = entries.filter((entry) => entry.tier === '1').length
-    const tier2aCount = entries.filter((entry) => entry.tier === '2a').length
-    const tier2bCount = entries.filter((entry) => entry.tier === '2b').length
-    const tier3Count = entries.filter((entry) => entry.tier === '3').length
-
+  for (const [domain, stats] of domainMap.entries()) {
     summaries.push({
       domain,
-      totalFacts: domainFacts.length,
-      encounteredFacts: encountered.length,
-      tier1Count,
-      tier2aCount,
-      tier2bCount,
-      tier3Count,
-      completionPercent: Math.round((tier3Count / Math.max(1, domainFacts.length)) * 100),
-      masteryPercent: encountered.length > 0
-        ? Math.round(((tier2aCount + tier2bCount + tier3Count) / encountered.length) * 100)
+      totalFacts: stats.totalFacts,
+      encounteredFacts: stats.encounteredFacts,
+      tier1Count: stats.tier1Count,
+      tier2aCount: stats.tier2aCount,
+      tier2bCount: stats.tier2bCount,
+      tier3Count: stats.tier3Count,
+      completionPercent: Math.round((stats.tier3Count / Math.max(1, stats.totalFacts)) * 100),
+      masteryPercent: stats.encounteredFacts > 0
+        ? Math.round(((stats.tier2aCount + stats.tier2bCount + stats.tier3Count) / stats.encounteredFacts) * 100)
         : 0,
     })
   }
@@ -103,11 +119,15 @@ export function buildDomainEntries(
   sortBy: LibrarySortBy = 'tier',
 ): LibraryFactEntry[] {
   const stateByFact = new Map(reviewStates.map((state) => [state.factId, state]))
+  const normalizedDomain = normalizeFactDomain(domain)
+  const entries: LibraryFactEntry[] = []
 
-  const entries = facts
-    .filter((fact) => normalizeFactDomain(resolveDomain(fact)) === normalizeFactDomain(domain))
-    .map((fact) => toEntry(fact, stateByFact.get(fact.id) ?? null))
-    .filter((entry) => filter === 'all' || entry.tier === filter)
+  for (const fact of facts) {
+    if (normalizeFactDomain(resolveDomain(fact)) !== normalizedDomain) continue
+    const entry = toEntry(fact, stateByFact.get(fact.id) ?? null)
+    if (filter !== 'all' && entry.tier !== filter) continue
+    entries.push(entry)
+  }
 
   entries.sort((a, b) => {
     if (sortBy === 'name') return a.fact.statement.localeCompare(b.fact.statement)
