@@ -22,28 +22,6 @@ import { profileService } from '../services/profileService'
 export const SAVE_KEY = 'recall-rogue-save'
 export const SAVE_VERSION = 2
 
-// ============================================================
-// SAVE DURABILITY — APP BACKGROUND LISTENER (19.12)
-//
-// When the app is backgrounded (tab hidden or Capacitor sends the app to
-// background), we immediately trigger a cloud sync to prevent data loss
-// if the OS kills the process. This fires BEFORE the process is suspended.
-//
-// The import is dynamic and lazy to avoid a circular-dependency issue:
-// syncService → saveService → syncService would create a cycle. Using
-// import() at call time breaks the cycle because the module is only
-// resolved after both modules have finished initialising.
-// ============================================================
-if (typeof window !== 'undefined') {
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
-      // Trigger cloud sync on background — fire-and-forget; errors are swallowed
-      // inside syncService.pushToCloud() and must not propagate here.
-      import('./syncService').then(m => m.syncService.pushToCloud()).catch(() => {})
-    }
-  })
-}
-
 /**
  * Returns the localStorage key to use for the current player's save.
  * When profiles exist, delegates to profileService to get the namespaced key.

@@ -9,7 +9,7 @@ import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
-import { activeRunState, onEncounterComplete } from './gameFlowController';
+import { activeRunState } from './runStateStore';
 import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor } from './floorManager';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { recordCardPlay } from './runManager';
@@ -72,6 +72,22 @@ function ensureCombatStarted(): void {
 }
 
 export const activeTurnState = writable<TurnState | null>(null);
+
+type EncounterCompletionResult = 'victory' | 'defeat';
+let encounterCompleteHandler: ((result: EncounterCompletionResult) => void) | null = null;
+
+/**
+ * Registers the game-flow callback invoked when an encounter ends.
+ */
+export function registerEncounterCompleteHandler(
+  handler: (result: EncounterCompletionResult) => void,
+): void {
+  encounterCompleteHandler = handler;
+}
+
+function notifyEncounterComplete(result: EncounterCompletionResult): void {
+  encounterCompleteHandler?.(result);
+}
 
 let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
@@ -476,7 +492,7 @@ export function handlePlayCard(
     }
     setTimeout(() => {
       activeTurnState.set(null);
-      onEncounterComplete('victory');
+      notifyEncounterComplete('victory');
     }, 550);
   }
 }
@@ -546,7 +562,7 @@ export function handleEndTurn(): void {
     setTimeout(() => {
       activeTurnState.set(null);
       activeDeck = null;
-      onEncounterComplete('defeat');
+      notifyEncounterComplete('defeat');
     }, 550);
   }
 }

@@ -25,9 +25,11 @@ import {
   getActiveDeckCards,
   getActiveDeckFactIds,
   getRunPoolCards,
+  registerEncounterCompleteHandler,
   sellCardFromActiveDeck,
   startEncounterForRoom,
 } from './encounterBridge';
+import { activeRunState } from './runStateStore';
 import { onboardingState, incrementRunsCompleted, markOnboardingComplete, difficultyMode } from './cardPreferences';
 import { isSlowReader } from './cardPreferences';
 import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS } from '../data/balance';
@@ -97,7 +99,7 @@ export type GameFlowState =
   | 'runEnd';
 
 export const gameFlowState = writable<GameFlowState>('idle');
-export const activeRunState = writable<RunState | null>(null);
+export { activeRunState };
 export const activeRoomOptions = writable<RoomOption[]>([]);
 export const activeMysteryEvent = writable<MysteryEvent | null>(null);
 export const activeRunEndData = writable<RunEndData | null>(null);
@@ -680,6 +682,8 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   autoSaveRun('cardReward');
   openCardReward();
 }
+
+registerEncounterCompleteHandler(onEncounterComplete)
 
 export function onCardRewardSelected(card: Card): void {
   const run = get(activeRunState);
