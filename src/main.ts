@@ -28,6 +28,10 @@ import { initAccessibilityManager } from './services/accessibilityManager'
 import { initCardAudio } from './services/cardAudioManager'
 import { initErrorReporting } from './services/errorReporting'
 import { initCardbackManifest } from './ui/utils/cardbackManifest'
+import { syncService } from './services/syncService'
+import { save as persistRaw } from './services/saveService'
+import { analyticsService } from './services/analyticsService'
+import { rescheduleNotificationsFromPlayerState } from './services/gameFlowController'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -163,13 +167,11 @@ async function bootGame(): Promise<void> {
 
   // Pull cloud save on launch for authenticated users, then merge locally.
   try {
-    const { syncService } = await import('./services/syncService')
     const remote = await syncService.pullFromCloud()
     if (remote) {
       const local = get(playerSave)
       const merged = local ? syncService.fieldLevelMerge(local, remote) : remote
       playerSave.set(merged)
-      const { save: persistRaw } = await import('./services/saveService')
       persistRaw(merged)
     }
   } catch {
@@ -185,7 +187,6 @@ async function bootGame(): Promise<void> {
 
   // Track app_open analytics event
   const currentSave = get(playerSave)
-  const { analyticsService } = await import('./services/analyticsService')
   analyticsService.track({
     name: 'app_open',
     properties: {
@@ -199,7 +200,6 @@ async function bootGame(): Promise<void> {
   })
 
   // Reschedule local push notifications on every app open.
-  const { rescheduleNotificationsFromPlayerState } = await import('./services/gameFlowController')
   rescheduleNotificationsFromPlayerState()
 }
 

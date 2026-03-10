@@ -125,8 +125,8 @@ export default defineConfig({
           if (id.includes('EncounterManager') || id.includes('CombatOverlay')) return 'combat'
           // Heavy game data modules — only needed after game boot
           if (id.includes('/data/biomes') || id.includes('/data/fossils') || id.includes('/data/creatures') || id.includes('/data/relics') || id.includes('/data/premiumRecipes') || id.includes('/data/recipes') || id.includes('/data/hubFloors') || id.includes('/data/ambientStories')) return 'game-data'
-          // Capacitor native bridge — only needed on mobile
-          if (id.includes('node_modules/@capacitor')) return 'capacitor'
+          // Let Rollup place Capacitor modules naturally to avoid circular manual-chunk edges
+          // (observed: combat -> capacitor -> combat).
           // Dev panel is never loaded in production
           if (id.includes('DevPanel'))  return 'dev'
           // Phaser and sql.js are large; always split
