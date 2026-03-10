@@ -1,17 +1,7 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
 import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER } from '../data/balance';
 import { factsDB } from './factsDB';
-
-/**
- * Shuffles an array in place (Fisher-Yates). Returns the same reference.
- */
-function shuffle<T>(arr: T[]): T[] {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+import { shuffled } from './randomUtils';
 
 /**
  * Weighted shuffle biasing high-funScore facts toward the front.
@@ -59,7 +49,7 @@ function weightedFactShuffle(factIds: string[]): string[] {
  */
 export function createDeck(pool: Card[]): CardRunState {
   return {
-    drawPile: shuffle([...pool]),
+    drawPile: shuffled(pool),
     discardPile: [],
     hand: [],
     exhaustPile: [],
@@ -156,11 +146,7 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       // Weighted shuffle: facts with funScore >= 7 are 2x more likely to appear first
       shuffledFacts = weightedFactShuffle(factsToUse);
     } else {
-      shuffledFacts = [...factsToUse];
-      for (let i = shuffledFacts.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledFacts[i], shuffledFacts[j]] = [shuffledFacts[j], shuffledFacts[i]];
-      }
+      shuffledFacts = shuffled(factsToUse);
     }
 
     // Pair each drawn card slot with a random fact
@@ -244,7 +230,7 @@ export function exhaustCard(deck: CardRunState, cardId: string): Card {
 export function reshuffleDiscard(deck: CardRunState): void {
   deck.drawPile.push(...deck.discardPile);
   deck.discardPile = [];
-  shuffle(deck.drawPile);
+  deck.drawPile = shuffled(deck.drawPile);
 }
 
 /**

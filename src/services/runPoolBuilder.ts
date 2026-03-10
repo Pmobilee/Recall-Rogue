@@ -6,6 +6,7 @@ import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
+import { shuffled } from './randomUtils';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   general_knowledge: ['General Knowledge', 'Technology', 'Mathematics', 'Math'],
@@ -34,14 +35,6 @@ const FALLBACK_DOMAIN_ORDER: FactDomain[] = [
   'geography',
   'language',
 ];
-
-function shuffle<T>(arr: T[]): T[] {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 /** Weighted shuffle: items with higher weights are more likely to appear earlier. */
 function weightedShuffle<T extends { _weight: number }>(items: T[], count: number): T[] {
@@ -94,8 +87,8 @@ function stratifiedSample(facts: Fact[], target: number): Fact[] {
   const recentIds = getRecentFactIds();
   // Partition each bucket: non-recent (shuffled) first, then recent (shuffled) — so slicing prefers fresh facts
   const deprioritize = (arr: Fact[]) => {
-    const fresh = shuffle(arr.filter(f => !recentIds.has(f.id)));
-    const recent = shuffle(arr.filter(f => recentIds.has(f.id)));
+    const fresh = shuffled(arr.filter(f => !recentIds.has(f.id)));
+    const recent = shuffled(arr.filter(f => recentIds.has(f.id)));
     return [...fresh, ...recent];
   };
   const easy = deprioritize(facts.filter(f => (f.difficulty ?? 3) <= 2));
@@ -138,7 +131,7 @@ function stratifiedSample(facts: Fact[], target: number): Fact[] {
 }
 
 function pickRandomSubset<T>(items: T[], count: number): T[] {
-  return shuffle([...items]).slice(0, Math.max(0, count));
+  return shuffled(items).slice(0, Math.max(0, count));
 }
 
 function buildProbeOrdering(cards: Card[], domain: FactDomain): Card[] {
@@ -349,11 +342,11 @@ export function buildRunPool(
     const probeDomain = options.probeDomain ?? primaryDomain;
     const probe = buildProbeOrdering(pool, probeDomain);
     const probeIds = new Set(probe.map((card) => card.id));
-    const remaining = shuffle(pool.filter((card) => !probeIds.has(card.id)));
+    const remaining = shuffled(pool.filter((card) => !probeIds.has(card.id)));
     return [...probe, ...remaining];
   }
 
-  return shuffle(pool);
+  return shuffled(pool);
 }
 
 // Exported for unit testing only — not part of the public API.
