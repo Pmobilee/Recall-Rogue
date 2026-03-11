@@ -74,6 +74,10 @@ async function main() {
       args: ['--input', input, '--output', `${qaDir}/cross-domain-dedup.json`],
     },
     {
+      script: 'scripts/content-pipeline/qa/id-collision-gate.mjs',
+      args: ['--input', input, '--output', `${qaDir}/id-collision-gate.json`, '--strict'],
+    },
+    {
       script: 'scripts/content-pipeline/manual-ingest/run.mjs',
       args: ['validate', '--input', input, '--domain', 'general_knowledge', '--qa-dir', qaDir],
     },
@@ -127,6 +131,7 @@ async function main() {
         '--validation', `${qaDir}/manual-ingest-validation-report.json`,
         '--dedup', `${qaDir}/manual-ingest-dedup-report.json`,
         '--cross-domain', `${qaDir}/cross-domain-dedup.json`,
+        '--id-collision', `${qaDir}/id-collision-gate.json`,
         '--coverage', `${qaDir}/coverage-gate.json`,
         '--max-invalid-rate', String(args['gate-max-invalid-rate']),
         '--max-flagged-rate', String(args['gate-max-flagged-rate']),

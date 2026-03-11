@@ -52,7 +52,22 @@ describe('ascension modifiers', () => {
   })
 
   it('returns level metadata', () => {
-    const rule = getAscensionRule(10)
+    const rule = getAscensionRule(9)
     expect(rule?.name).toContain('Endurance')
+  })
+
+  it('maps reordered ascension levels 9-14 correctly', () => {
+    expect(getAscensionRule(9)?.name).toBe('Endurance')
+    expect(getAscensionRule(10)?.name).toBe('Fading Light')
+    expect(getAscensionRule(11)?.name).toBe('Relic Tax')
+    expect(getAscensionRule(12)?.name).toBe('Deep Knowledge')
+    expect(getAscensionRule(13)?.name).toBe('Glass Cannon')
+    expect(getAscensionRule(14)?.name).toBe('Combo Breaker')
+  })
+
+  it('comboResetsOnTurnEnd activates at level 14 (not 9)', () => {
+    expect(getAscensionModifiers(9).comboResetsOnTurnEnd).toBe(false)
+    expect(getAscensionModifiers(13).comboResetsOnTurnEnd).toBe(false)
+    expect(getAscensionModifiers(14).comboResetsOnTurnEnd).toBe(true)
   })
 })

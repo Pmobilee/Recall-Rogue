@@ -140,7 +140,16 @@ interface PwaInstallEvent {
 /** Fired once per session with Core Web Vitals measurements. */
 interface WebVitalsEvent {
   name: 'web_vitals'
-  properties: { lcp: number; fcp: number; cls: number; inp: number; ttfb: number }
+  properties: {
+    lcp: number
+    fcp: number
+    cls: number
+    inp: number
+    ttfb: number
+    input_delay_p95?: number
+    long_task_count?: number
+    long_task_max?: number
+  }
 }
 
 /** Fired the first time an experiment variant is assigned to a session. */

@@ -11,11 +11,31 @@
  *   ON_CORRECT_ANSWER, ON_CARD_SKIP, ON_FLOOR_ADVANCE, ON_ENCOUNTER_END
  */
 
+// ─── Turn Start ─────────────────────────────────────────────────────
+
+/** Effects resolved at the start of each player turn. */
+export interface TurnStartEffects {
+  /** Block granted at start of each turn (iron_buckler: +3). */
+  bonusBlock: number;
+}
+
+/**
+ * Resolve effects that fire at the start of every player turn.
+ *
+ * @param relicIds - Set of relic IDs the player currently holds.
+ * @returns Computed turn-start bonuses.
+ */
+export function resolveTurnStartEffects(relicIds: Set<string>): TurnStartEffects {
+  return {
+    bonusBlock: relicIds.has('iron_buckler') ? 3 : 0,
+  };
+}
+
 // ─── Encounter Start ────────────────────────────────────────────────
 
 /** Effects resolved at the beginning of each encounter. */
 export interface EncounterStartEffects {
-  /** Bonus block applied to player at encounter start (iron_buckler). */
+  /** Bonus block applied to player at encounter start. */
   bonusBlock: number;
   /** HP healed at encounter start (herbal_pouch). */
   bonusHeal: number;
@@ -33,10 +53,19 @@ export interface EncounterStartEffects {
  * @param relicIds - Set of relic IDs the player currently holds.
  * @returns Computed encounter-start bonuses.
  */
-export function resolveEncounterStartEffects(relicIds: Set<string>): EncounterStartEffects {
+export function resolveEncounterStartEffects(relicIds: Set<string>, playerHpPercent?: number): EncounterStartEffects {
+  let bonusHeal = 0;
+  let bonusBlock = 0;
+  if (relicIds.has('herbal_pouch')) {
+    if ((playerHpPercent ?? 0) > 0.8) {
+      bonusBlock = 3;
+    } else {
+      bonusHeal = 5;
+    }
+  }
   return {
-    bonusBlock: relicIds.has('iron_buckler') ? 5 : 0,
-    bonusHeal: relicIds.has('herbal_pouch') ? 3 : 0,
+    bonusBlock,
+    bonusHeal,
     bonusAP: relicIds.has('quicksilver') ? 1 : 0,
     freeFirstCard: relicIds.has('double_vision'),
     permanentForesight: relicIds.has('cartographers_lens'),
@@ -78,6 +107,8 @@ export interface AttackContext {
   cardTier: string;
   /** Number of consecutive correct answers this encounter (memory_palace via correct-answer tracking). */
   correctStreakThisEncounter: number;
+  /** Enemy's current HP as a fraction of max HP, 0..1 (executioners_axe). */
+  enemyHpPercent: number;
 }
 
 /**
@@ -104,29 +135,29 @@ export function resolveAttackModifiers(
     flatDamageBonus += 3;
   }
 
-  // war_drum — +1 damage per combo level this turn
+  // war_drum — +1 damage per combo level this turn (capped at +3)
   if (relicIds.has('war_drum')) {
-    flatDamageBonus += context.comboCount;
+    flatDamageBonus += Math.min(context.comboCount, 3);
   }
 
-  // memory_palace — 3 correct in a row: +3 damage to next attack
-  if (relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 3) {
-    flatDamageBonus += 3;
+  // memory_palace — 2 correct in a row: +4 damage to next attack
+  if (relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 2) {
+    flatDamageBonus += 4;
   }
 
-  // flame_brand — First attack each encounter +50% damage
+  // flame_brand — First attack each encounter +40% damage
   if (relicIds.has('flame_brand') && context.isFirstAttack) {
-    percentDamageBonus += 0.5;
-  }
-
-  // berserker_band — Below 40% HP: attacks +50% damage
-  if (relicIds.has('berserker_band') && context.playerHpPercent < 0.4) {
-    percentDamageBonus += 0.5;
-  }
-
-  // glass_cannon — Attacks +40% damage (cursed: damage-taken side is in resolveDamageTakenEffects)
-  if (relicIds.has('glass_cannon')) {
     percentDamageBonus += 0.4;
+  }
+
+  // berserker_band — Below 50% HP: attacks +40% damage
+  if (relicIds.has('berserker_band') && context.playerHpPercent < 0.5) {
+    percentDamageBonus += 0.4;
+  }
+
+  // glass_cannon — Attacks +35% damage (cursed: damage-taken side is in resolveDamageTakenEffects)
+  if (relicIds.has('glass_cannon')) {
+    percentDamageBonus += 0.35;
   }
 
   // crescendo_blade — Each consecutive correct attack: +10% damage (stacks)
@@ -134,14 +165,14 @@ export function resolveAttackModifiers(
     percentDamageBonus += 0.1 * context.consecutiveCorrectAttacks;
   }
 
-  // curiosity_gem — Tier 1 (Learning) cards +20% effect
+  // curiosity_gem — Tier 1 (Learning) cards +15% effect
   if (relicIds.has('curiosity_gem') && context.cardTier === 'learning') {
-    percentDamageBonus += 0.2;
+    percentDamageBonus += 0.15;
   }
 
-  // venom_fang — All attacks apply 1 poison for 2 turns
+  // venom_fang — All attacks apply 2 poison for 3 turns
   const applyPoison = relicIds.has('venom_fang')
-    ? { value: 1, turns: 2 }
+    ? { value: 2, turns: 3 }
     : null;
 
   // chain_lightning_rod — Multi-hit attacks get +2 extra hits
@@ -149,6 +180,11 @@ export function resolveAttackModifiers(
 
   // executioners_axe — Execute threshold 40% instead of 30%
   const executeThresholdOverride = relicIds.has('executioners_axe') ? 0.4 : null;
+
+  // executioners_axe — +3 flat damage when enemy below 30% HP
+  if (relicIds.has('executioners_axe') && context.enemyHpPercent < 0.3) {
+    flatDamageBonus += 3;
+  }
 
   return {
     flatDamageBonus,
@@ -177,8 +213,8 @@ export interface ShieldModifiers {
  */
 export function resolveShieldModifiers(relicIds: Set<string>): ShieldModifiers {
   return {
-    flatBlockBonus: relicIds.has('stone_wall') ? 2 : 0,
-    reflectDamage: relicIds.has('thorned_vest') ? 3 : 0,
+    flatBlockBonus: relicIds.has('stone_wall') ? 3 : 0,
+    reflectDamage: relicIds.has('thorned_vest') ? 2 : 0,
   };
 }
 
@@ -186,8 +222,10 @@ export function resolveShieldModifiers(relicIds: Set<string>): ShieldModifiers {
 
 /** Modifiers applied to heal effects. */
 export interface HealModifiers {
-  /** Percentage bonus to heal effectiveness (medic_kit: +15%). */
+  /** Percentage bonus to heal effectiveness (medic_kit: +20%). */
   percentBonus: number;
+  /** Flat block granted when any heal occurs (medic_kit: +3). */
+  blockOnHeal: number;
 }
 
 /**
@@ -198,7 +236,8 @@ export interface HealModifiers {
  */
 export function resolveHealModifiers(relicIds: Set<string>): HealModifiers {
   return {
-    percentBonus: relicIds.has('medic_kit') ? 0.15 : 0,
+    percentBonus: relicIds.has('medic_kit') ? 0.20 : 0,
+    blockOnHeal: relicIds.has('medic_kit') ? 3 : 0,
   };
 }
 
@@ -210,12 +249,16 @@ export interface DamageTakenEffects {
   flatReduction: number;
   /** Percentage increase to incoming damage (glass_cannon cursed effect: +15%). */
   percentIncrease: number;
-  /** Whether all block is doubled this hit (iron_resolve, below 25% HP). */
+  /** Whether all block is boosted by +50% this hit (iron_resolve, below 40% HP). */
   blockDoubled: boolean;
   /** Probability of dodging the attack entirely (phase_cloak: 20%). */
   dodgeChance: number;
-  /** Reflect a percentage of blocked damage back at attacker (mirror_shield); null if not held. */
+  /** Reflect a percentage of blocked damage back at attacker when any block absorbs damage (mirror_shield); null if not held. */
   reflectOnBlock: { percent: number } | null;
+  /** Thorned vest reflect: 2 normally, 4 if player had no block (thorned_vest redesign). */
+  thornReflect: number;
+  /** Percentage attack bonus when below HP threshold (iron_resolve: +15%). */
+  lowHpAttackBonus: number;
 }
 
 /** Context required to resolve damage-taken effects. */
@@ -224,7 +267,7 @@ export interface DamageTakenContext {
   playerHpPercent: number;
   /** Whether the player had any block before this hit. */
   hadBlock: boolean;
-  /** Whether block fully absorbed the incoming damage (mirror_shield). */
+  /** Whether block absorbed any of the incoming damage (mirror_shield). */
   blockAbsorbedAll: boolean;
 }
 
@@ -239,15 +282,21 @@ export function resolveDamageTakenEffects(
   relicIds: Set<string>,
   context: DamageTakenContext,
 ): DamageTakenEffects {
+  let thornReflect = 0;
+  if (relicIds.has('thorned_vest')) {
+    thornReflect = context.hadBlock ? 2 : 4;
+  }
   return {
-    flatReduction: relicIds.has('steel_skin') ? 1 : 0,
-    percentIncrease: relicIds.has('glass_cannon') ? 0.15 : 0,
-    blockDoubled: relicIds.has('iron_resolve') && context.playerHpPercent < 0.25,
+    flatReduction: relicIds.has('steel_skin') ? 2 : 0,
+    percentIncrease: relicIds.has('glass_cannon') ? 0.10 : 0,
+    blockDoubled: relicIds.has('iron_resolve') && context.playerHpPercent < 0.50,
     dodgeChance: relicIds.has('phase_cloak') ? 0.2 : 0,
     reflectOnBlock:
       relicIds.has('mirror_shield') && context.hadBlock && context.blockAbsorbedAll
-        ? { percent: 0.5 }
+        ? { percent: 0.3 }
         : null,
+    thornReflect,
+    lowHpAttackBonus: relicIds.has('iron_resolve') && context.playerHpPercent < 0.50 ? 0.15 : 0,
   };
 }
 
@@ -257,23 +306,33 @@ export function resolveDamageTakenEffects(
 export interface LethalSaveEffects {
   /** Whether last_breath triggers (once per encounter). */
   lastBreathSave: boolean;
-  /** Whether phoenix_feather triggers (once per run). */
+  /** Block granted when last_breath triggers. */
+  lastBreathBlock: number;
+  /** Damage bonus granted when last_breath triggers. */
+  lastBreathDamageBonus: number;
+  /** Whether phoenix_feather triggers (once per boss encounter). */
   phoenixSave: boolean;
   /** HP to restore as a fraction of max HP when phoenix triggers. */
   phoenixHealPercent: number;
+  /** Block granted when phoenix triggers. */
+  phoenixBlock: number;
+  /** Empower duration in turns when phoenix triggers. */
+  phoenixEmpowerTurns: number;
 }
 
 /** Context required to resolve lethal-save effects. */
 export interface LethalContext {
   /** Whether last_breath has already fired this encounter. */
   lastBreathUsedThisEncounter: boolean;
-  /** Whether phoenix_feather has already fired this run. */
-  phoenixUsedThisRun: boolean;
+  /** Whether phoenix_feather has already fired this encounter. */
+  phoenixUsedThisEncounter: boolean;
+  /** Whether the current encounter is a boss encounter. */
+  isBossEncounter: boolean;
 }
 
 /**
  * Resolve whether any relic can save the player from a killing blow.
- * Priority: last_breath first (encounter-scoped), then phoenix_feather (run-scoped).
+ * Priority: last_breath first (encounter-scoped), then phoenix_feather (boss-encounter-scoped).
  *
  * @param relicIds - Set of relic IDs the player currently holds.
  * @param context  - Usage history for once-per-scope relics.
@@ -286,16 +345,21 @@ export function resolveLethalEffects(
   const lastBreathSave =
     relicIds.has('last_breath') && !context.lastBreathUsedThisEncounter;
 
-  // Phoenix only fires if last_breath didn't already save
+  // Phoenix only fires if last_breath didn't already save, and only during boss encounters
   const phoenixSave =
     !lastBreathSave &&
     relicIds.has('phoenix_feather') &&
-    !context.phoenixUsedThisRun;
+    context.isBossEncounter &&
+    !context.phoenixUsedThisEncounter;
 
   return {
     lastBreathSave,
+    lastBreathBlock: lastBreathSave ? 8 : 0,
+    lastBreathDamageBonus: lastBreathSave ? 5 : 0,
     phoenixSave,
     phoenixHealPercent: phoenixSave ? 0.3 : 0,
+    phoenixBlock: phoenixSave ? 15 : 0,
+    phoenixEmpowerTurns: phoenixSave ? 2 : 0,
   };
 }
 
@@ -307,10 +371,12 @@ export interface TurnEndEffects {
   blockCarries: boolean;
   /** HP healed from blood_pact (25% of damage dealt this turn). */
   healFromDamage: number;
-  /** Bonus cards to draw next turn from afterimage (+1 if 3+ cards played). */
+  /** Bonus cards to draw next turn from afterimage. */
   bonusDrawNext: number;
-  /** HP lost per turn from blood_price (cursed). */
+  /** HP lost per turn from blood_price (cursed: 3 HP). */
   hpLoss: number;
+  /** Bonus AP to grant next turn from afterimage (+1 if perfect turn). */
+  bonusApFromAfterimage: number;
 }
 
 /** Context required to resolve turn-end effects. */
@@ -319,6 +385,8 @@ export interface TurnEndContext {
   damageDealtThisTurn: number;
   /** Number of cards played this turn (afterimage). */
   cardsPlayedThisTurn: number;
+  /** Whether this was a perfect turn (all answers correct) — for afterimage. */
+  isPerfectTurn: boolean;
 }
 
 /**
@@ -332,14 +400,18 @@ export function resolveTurnEndEffects(
   relicIds: Set<string>,
   context: TurnEndContext,
 ): TurnEndEffects {
+  const afterimageTriggers = relicIds.has('afterimage') && context.isPerfectTurn;
+  // If both afterimage + momentum_gem are held, afterimage grants +1 draw
+  // instead of +1 AP to prevent AP stacking to 5.
+  const afterimageAsDraw = afterimageTriggers && relicIds.has('momentum_gem');
   return {
     blockCarries: relicIds.has('fortress_wall'),
     healFromDamage: relicIds.has('blood_pact')
       ? Math.floor(context.damageDealtThisTurn * 0.25)
       : 0,
-    bonusDrawNext:
-      relicIds.has('afterimage') && context.cardsPlayedThisTurn >= 3 ? 1 : 0,
-    hpLoss: relicIds.has('blood_price') ? 2 : 0,
+    bonusDrawNext: afterimageAsDraw ? 1 : 0,
+    hpLoss: relicIds.has('blood_price') ? 3 : 0,
+    bonusApFromAfterimage: afterimageTriggers && !afterimageAsDraw ? 1 : 0,
   };
 }
 
@@ -359,9 +431,11 @@ export function resolvePerfectTurnBonus(relicIds: Set<string>): number {
 
 /** Effects resolved when the player answers a quiz question correctly. */
 export interface CorrectAnswerEffects {
-  /** HP healed per correct answer (scholars_hat: +1). */
+  /** HP healed per correct answer (scholars_hat: +2). */
   healHp: number;
-  /** Bonus damage to next attack from memory_palace (+3 after 3 correct in a row). */
+  /** Bonus damage to next attack from scholars_hat (+1 on correct). */
+  bonusDamage: number;
+  /** Bonus damage to next attack from memory_palace (+4 after 2 correct in a row). */
   memoryPalaceBonus: number;
 }
 
@@ -383,29 +457,50 @@ export function resolveCorrectAnswerEffects(
   context: CorrectAnswerContext,
 ): CorrectAnswerEffects {
   return {
-    healHp: relicIds.has('scholars_hat') ? 1 : 0,
+    healHp: relicIds.has('scholars_hat') ? 2 : 0,
+    bonusDamage: relicIds.has('scholars_hat') ? 1 : 0,
     memoryPalaceBonus:
-      relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 3
-        ? 3
+      relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 2
+        ? 4
         : 0,
+  };
+}
+
+/** Effects resolved when the player answers a quiz question incorrectly. */
+export interface WrongAnswerEffects {
+  /** HP healed per wrong answer (scholars_hat: +1). */
+  healHp: number;
+}
+
+/**
+ * Resolve effects that fire on a wrong quiz answer.
+ *
+ * @param relicIds - Set of relic IDs the player currently holds.
+ * @returns Computed wrong-answer effects.
+ */
+export function resolveWrongAnswerEffects(
+  relicIds: Set<string>,
+): WrongAnswerEffects {
+  return {
+    healHp: relicIds.has('scholars_hat') ? 1 : 0,
   };
 }
 
 // ─── Domain Mastery ─────────────────────────────────────────────────
 
 /**
- * Resolve the domain_mastery bonus: 5 consecutive same-domain correct answers
- * grants +100% to the next card.
+ * Resolve the domain_mastery bonus: 4 consecutive same-domain correct answers
+ * grants +75% to the next card.
  *
  * @param relicIds              - Set of relic IDs the player currently holds.
  * @param sameDomainCorrectStreak - Consecutive correct answers in the same domain.
- * @returns Percentage bonus multiplier (1.0 = +100%, 0 = no bonus).
+ * @returns Percentage bonus multiplier (0.75 = +75%, 0 = no bonus).
  */
 export function resolveDomainMasteryBonus(
   relicIds: Set<string>,
   sameDomainCorrectStreak: number,
 ): number {
-  return relicIds.has('domain_mastery') && sameDomainCorrectStreak >= 5 ? 1.0 : 0;
+  return relicIds.has('domain_mastery') && sameDomainCorrectStreak >= 4 ? 0.75 : 0;
 }
 
 // ─── Card Skip ──────────────────────────────────────────────────────
@@ -414,26 +509,41 @@ export function resolveDomainMasteryBonus(
  * Resolve bonus currency from skipping a card.
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Bonus currency per skipped card (scavengers_pouch: +1).
+ * @returns Bonus currency per skipped card (scavengers_pouch: +2).
  */
 export function resolveCardSkipCurrency(relicIds: Set<string>): number {
-  return relicIds.has('scavengers_pouch') ? 1 : 0;
+  return relicIds.has('scavengers_pouch') ? 2 : 0;
 }
 
 // ─── Floor Advance ──────────────────────────────────────────────────
 
+/** Effects resolved when advancing to the next floor. */
+export interface FloorAdvanceEffects {
+  /** HP to heal on floor advance (renewal_spring: 15% max HP). */
+  healHp: number;
+  /** Block to grant on floor advance (renewal_spring: 5 block if above 80% HP). */
+  bonusBlock: number;
+}
+
 /**
- * Resolve HP healed when advancing to the next floor.
+ * Resolve effects when advancing to the next floor.
  *
- * @param relicIds - Set of relic IDs the player currently holds.
- * @param maxHP    - Player's maximum HP (renewal_spring heals 10%).
- * @returns HP to heal on floor advance.
+ * @param relicIds      - Set of relic IDs the player currently holds.
+ * @param maxHP         - Player's maximum HP (renewal_spring heals 15%).
+ * @param currentHpPercent - Player's current HP as a fraction of max HP, 0..1.
+ * @returns Floor advance effects.
  */
 export function resolveFloorAdvanceHeal(
   relicIds: Set<string>,
   maxHP: number,
-): number {
-  return relicIds.has('renewal_spring') ? Math.floor(maxHP * 0.1) : 0;
+  currentHpPercent?: number,
+): FloorAdvanceEffects {
+  if (!relicIds.has('renewal_spring')) {
+    return { healHp: 0, bonusBlock: 0 };
+  }
+  const healHp = Math.floor(maxHP * 0.15);
+  const bonusBlock = (currentHpPercent ?? 0) > 0.8 ? 5 : 0;
+  return { healHp, bonusBlock };
 }
 
 // ─── Encounter End ──────────────────────────────────────────────────
@@ -468,7 +578,7 @@ export function resolveBaseDrawCount(relicIds: Set<string>): number {
 
 /**
  * Resolve the starting combo multiplier index.
- * Default combo starts at index 0 (1.0x); combo_ring starts at index 1 (1.15x).
+ * Default combo starts at index 0 (1.0x); combo_ring starts at index 1 (1.10x via COMBO_RING_START_MULTIPLIER).
  *
  * @param relicIds - Set of relic IDs the player currently holds.
  * @returns Starting combo index (0 or 1).
@@ -500,8 +610,9 @@ export function resolveSpeedBonusMultiplier(relicIds: Set<string>): number {
  * @returns Speed bonus threshold as a fraction (0.25, 0.30, or 0.15).
  */
 export function resolveSpeedBonusThreshold(relicIds: Set<string>): number {
-  if (relicIds.has('speed_reader')) return 0.15;
-  if (relicIds.has('speed_charm')) return 0.30;
+  if (relicIds.has('speed_reader')) return 0.20;
+  if (relicIds.has('sharp_eye')) return 0.35;
+  if (relicIds.has('speed_charm')) return 0.35;
   return 0.25;
 }
 
@@ -536,10 +647,10 @@ export function shouldEchoPlayFullPower(relicIds: Set<string>): boolean {
  * Resolve bonus max HP applied at run start.
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Bonus max HP (vitality_ring: +8).
+ * @returns Bonus max HP (vitality_ring: +15).
  */
 export function resolveMaxHpBonus(relicIds: Set<string>): number {
-  return relicIds.has('vitality_ring') ? 8 : 0;
+  return relicIds.has('vitality_ring') ? 15 : 0;
 }
 
 // ─── Card Reward Options ────────────────────────────────────────────

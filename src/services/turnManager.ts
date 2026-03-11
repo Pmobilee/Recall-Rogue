@@ -19,9 +19,50 @@ import {
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects } from './enemyManager';
 import { applyStatusEffect } from '../data/statusEffects';
-import { COMBO_MULTIPLIERS, PLAYER_START_HP, START_AP_PER_TURN, MAX_AP_PER_TURN } from '../data/balance';
+import {
+  COMBO_MULTIPLIERS,
+  PLAYER_START_HP,
+  START_AP_PER_TURN,
+  MAX_AP_PER_TURN,
+  ENRAGE_SEGMENTS,
+  ENRAGE_PHASE1_BONUS,
+  ENRAGE_PHASE2_BONUS,
+  ENRAGE_PHASE1_DURATION,
+  ENRAGE_LOW_HP_THRESHOLD,
+  ENRAGE_LOW_HP_BONUS,
+} from '../data/balance';
 import { MECHANICS_BY_TYPE } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
+import {
+  resolveDamageTakenEffects,
+  resolveLethalEffects,
+  resolvePerfectTurnBonus,
+  resolveTurnEndEffects,
+  resolveTurnStartEffects,
+  resolveComboStartValue,
+} from './relicEffectResolver';
+
+/**
+ * Calculate enrage bonus damage based on floor segment, turn number, and enemy HP.
+ * Deeper floors have tighter turn budgets. Enemies below 30% HP deal extra damage.
+ */
+export function getEnrageBonus(turnNumber: number, floor: number, enemyHpPercent: number): number {
+  const seg = ENRAGE_SEGMENTS.find(s => floor <= s.maxFloor) ?? ENRAGE_SEGMENTS[ENRAGE_SEGMENTS.length - 1];
+  let bonus = 0;
+  if (turnNumber >= seg.startTurn) {
+    const enrageTurns = turnNumber - seg.startTurn + 1;
+    if (enrageTurns <= ENRAGE_PHASE1_DURATION) {
+      bonus = enrageTurns * ENRAGE_PHASE1_BONUS;
+    } else {
+      bonus = ENRAGE_PHASE1_DURATION * ENRAGE_PHASE1_BONUS
+        + (enrageTurns - ENRAGE_PHASE1_DURATION) * ENRAGE_PHASE2_BONUS;
+    }
+  }
+  if (enemyHpPercent < ENRAGE_LOW_HP_THRESHOLD) {
+    bonus += ENRAGE_LOW_HP_BONUS;
+  }
+  return bonus;
+}
 
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
 
@@ -78,6 +119,7 @@ export interface TurnState {
   ascensionTier1OptionCount: number;
   ascensionForceHardQuestionFormats: boolean;
   ascensionPreventFlee: boolean;
+  ascensionComboResetsOnTurnEnd: boolean;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
@@ -205,6 +247,7 @@ export function startEncounter(
     ascensionTier1OptionCount: 3,
     ascensionForceHardQuestionFormats: false,
     ascensionPreventFlee: false,
+    ascensionComboResetsOnTurnEnd: false,
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
@@ -248,7 +291,7 @@ export function playCardAction(
     };
   }
 
-  turnState.baseComboCount = turnState.activeRelicIds.has('combo_ring') ? 1 : 0;
+  turnState.baseComboCount = resolveComboStartValue(turnState.activeRelicIds);
   if (turnState.comboCount < turnState.baseComboCount) turnState.comboCount = turnState.baseComboCount;
 
   const { deck, playerState, enemy } = turnState;
@@ -539,8 +582,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   if (intentResult.damage > 0) {
     let incomingDamage = intentResult.damage;
-    if (turnState.turnNumber >= 15) {
-      const enrageBonus = (turnState.turnNumber - 14) * 3;
+    const currentFloor = turnState.deck?.currentFloor ?? 1;
+    const enemyHpPercent = enemy.maxHP > 0 ? enemy.currentHP / enemy.maxHP : 1;
+    const enrageBonus = getEnrageBonus(turnState.turnNumber, currentFloor, enemyHpPercent);
+    if (enrageBonus > 0) {
       incomingDamage += enrageBonus;
     }
     const mode = get(difficultyMode);
@@ -559,8 +604,13 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ),
     );
 
-    if (turnState.activeRelicIds.has('glass_cannon')) {
-      incomingDamage = Math.round(incomingDamage * 1.10);
+    const damageTakenFx = resolveDamageTakenEffects(turnState.activeRelicIds, {
+      playerHpPercent: playerState.hp / playerState.maxHP,
+      hadBlock: playerState.shield > 0,
+      blockAbsorbedAll: false,
+    });
+    if (damageTakenFx.percentIncrease > 0) {
+      incomingDamage = Math.round(incomingDamage * (1 + damageTakenFx.percentIncrease));
       turnState.triggeredRelicId = 'glass_cannon';
     }
 
@@ -569,8 +619,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     damageDealt = incomingDamage;
     playerDefeated = damageResult.defeated;
 
-    if (shieldBefore > 0 && turnState.activeRelicIds.has('thorned_vest')) {
-      applyDamageToEnemy(enemy, 2);
+    if (damageTakenFx.thornReflect > 0) {
+      applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
       turnState.triggeredRelicId = 'thorned_vest';
     }
   }
@@ -586,11 +636,31 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     effectsApplied.push(effect);
   }
 
-  if (playerDefeated && turnState.activeRelicIds.has('last_breath') && !turnState.secondWindUsed) {
-    playerState.hp = 1;
-    playerDefeated = false;
-    turnState.secondWindUsed = true;
-    turnState.triggeredRelicId = 'last_breath';
+  if (playerDefeated) {
+    const lethalFx = resolveLethalEffects(turnState.activeRelicIds, {
+      lastBreathUsedThisEncounter: turnState.secondWindUsed,
+      phoenixUsedThisEncounter: false,
+      isBossEncounter: turnState.enemy?.template?.category === 'boss',
+    });
+    if (lethalFx.lastBreathSave) {
+      playerState.hp = 1;
+      playerDefeated = false;
+      turnState.secondWindUsed = true;
+      turnState.triggeredRelicId = 'last_breath';
+      if (lethalFx.lastBreathBlock > 0) {
+        applyShield(playerState, lethalFx.lastBreathBlock);
+      }
+      if (lethalFx.lastBreathDamageBonus > 0) {
+        turnState.buffNextCard += lethalFx.lastBreathDamageBonus;
+      }
+    } else if (lethalFx.phoenixSave) {
+      playerState.hp = Math.max(1, Math.round(playerState.maxHP * lethalFx.phoenixHealPercent));
+      playerDefeated = false;
+      turnState.triggeredRelicId = 'phoenix_feather';
+      if (lethalFx.phoenixBlock > 0) {
+        applyShield(playerState, lethalFx.phoenixBlock);
+      }
+    }
   }
 
   if (playerDefeated) {
@@ -667,22 +737,38 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
   }
 
-  if (turnState.activeRelicIds.has('momentum_gem') && turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
-    turnState.bonusApNextTurn += 1;
-    turnState.triggeredRelicId = 'momentum_gem';
+  if (turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
+    const perfectApBonus = resolvePerfectTurnBonus(turnState.activeRelicIds);
+    if (perfectApBonus > 0) {
+      turnState.bonusApNextTurn += perfectApBonus;
+      turnState.triggeredRelicId = 'momentum_gem';
+    }
   }
 
-  const carryShield = turnState.activeRelicIds.has('fortress_wall')
+  const turnEndFx = resolveTurnEndEffects(turnState.activeRelicIds, {
+    damageDealtThisTurn: turnState.damageDealtThisTurn,
+    cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
+    isPerfectTurn: turnState.isPerfectTurn,
+  });
+  const carryShield = turnEndFx.blockCarries
     ? playerState.shield
     : turnState.persistentShield;
-  if (turnState.activeRelicIds.has('fortress_wall')) turnState.triggeredRelicId = 'fortress_wall';
+  if (turnEndFx.blockCarries) turnState.triggeredRelicId = 'fortress_wall';
+
+  if (turnEndFx.bonusApFromAfterimage > 0) {
+    turnState.bonusApNextTurn += turnEndFx.bonusApFromAfterimage;
+    turnState.triggeredRelicId = 'afterimage';
+  }
 
   resetTurnState(playerState);
   playerState.shield = Math.max(0, carryShield);
   turnState.persistentShield = 0;
 
-  // comboCount intentionally NOT reset here — combo persists across turns
-  // and resets only on wrong answer (line 351) or explorer fizzle (line 327)
+  // Combo persists across turns, resets on wrong answer or explorer fizzle.
+  // Ascension 14+ (Combo Breaker): combo also resets on turn end.
+  if (turnState.ascensionComboResetsOnTurnEnd) {
+    turnState.comboCount = turnState.baseComboCount;
+  }
   turnState.cardsPlayedThisTurn = 0;
   turnState.cardsCorrectThisTurn = 0;
   turnState.isPerfectTurn = false;
@@ -707,6 +793,13 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   turnState.phase = 'player_action';
   turnState.turnLog = [];
+
+  // Turn-start relic effects (iron_buckler: +3 block per turn)
+  const turnStartFx = resolveTurnStartEffects(turnState.activeRelicIds);
+  if (turnStartFx.bonusBlock > 0) {
+    applyShield(playerState, turnStartFx.bonusBlock);
+    turnState.triggeredRelicId = 'iron_buckler';
+  }
 
   return {
     damageDealt,

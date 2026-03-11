@@ -26,6 +26,8 @@
   import { hasCardback } from '../utils/cardbackManifest'
   import { REVEAL_DURATION, TIER_UP_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
+  import { activeRunState } from '../../services/runStateStore'
+  import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
 
   interface Props {
     turnState: TurnState | null
@@ -92,6 +94,17 @@
   )
   let apCurrent = $derived(turnState?.apCurrent ?? 0)
   let apMax = $derived(turnState?.apMax ?? 0)
+
+  const run = $derived($activeRunState)
+  const expertModeActive = $derived(
+    (run?.deckMasteryPct ?? 0) >= 0.40
+  )
+  const expertModeLabel = $derived(
+    expertModeActive ? getMasteryScalingTier(run?.deckMasteryPct ?? 0) : null
+  )
+  const expertModeRewardMult = $derived(
+    expertModeActive ? getRewardMultiplier(run?.deckMasteryPct ?? 0) : 1.0
+  )
 
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
@@ -219,8 +232,14 @@
   let effectiveTimerSeconds = $derived.by(() => {
     if (!turnState || !committedPresentation || !committedQuizData) return 4
 
+    // Apply mastery difficulty boost (treat as higher floor for timer)
+    const masteryBoostFloors = run?.deckMasteryPct
+      ? getDifficultyBoostFloors(run.deckMasteryPct)
+      : 0;
+    const effectiveFloor = turnState.deck.currentFloor + masteryBoostFloors;
+
     const floorBase = committedPresentation.timerOverride
-      ?? (FLOOR_TIMER.find((entry) => turnState.deck.currentFloor <= entry.maxFloor)?.seconds ?? 4)
+      ?? (FLOOR_TIMER.find((entry) => effectiveFloor <= entry.maxFloor)?.seconds ?? 4)
 
     const allText = [committedQuizData.question, ...committedQuizData.answers].join(' ')
     const totalWords = allText.trim().split(/\s+/).filter(Boolean).length
@@ -835,6 +854,15 @@
   {:else}
     <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} />
 
+    {#if expertModeActive}
+      <div class="expert-badge" data-testid="expert-mode-badge">
+        <span class="expert-label">
+          {expertModeLabel === 'practiced' ? 'Practiced' : expertModeLabel === 'expert' ? 'Expert' : 'Mastered'}
+        </span>
+        <span class="expert-mult">{expertModeRewardMult}x Rewards</span>
+      </div>
+    {/if}
+
     {#if turnState && enemyName}
       <div class="enemy-name-header" style="color: {categoryColor}">
         {enemyName}
@@ -1342,5 +1370,28 @@
     0% { opacity: 0; }
     50% { opacity: 1; }
     100% { opacity: 0.7; }
+  }
+
+  .expert-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .expert-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #facc15;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .expert-mult {
+    font-size: 9px;
+    color: #cbd5e1;
   }
 </style>

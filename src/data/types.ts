@@ -1,5 +1,6 @@
 import type { InterestConfig } from './interestConfig'
 import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
+import type { StudyPreset, DeckMode } from './studyPreset'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
 export type FloorUpgradeTier = 0 | 1 | 2 | 3
@@ -856,6 +857,16 @@ export interface PlayerSave {
   unlockedRelicIds?: string[]
   /** Relic definition IDs the player has excluded from their run pool. */
   excludedRelicIds?: string[]
+
+  // Study Presets & Deck Builder
+  /** Saved study presets (max 10). */
+  studyPresets?: StudyPreset[]
+  /** Active deck mode for next run. */
+  activeDeckMode?: DeckMode
+  /** Last successful run's deck mode (for "repeat last run" default). */
+  lastRunDeckMode?: DeckMode
+  /** Per-domain category filters for the deck builder. */
+  categoryFilters?: Record<string, string[]>
 }
 
 /** Player statistics */

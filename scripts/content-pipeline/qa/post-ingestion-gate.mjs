@@ -33,6 +33,7 @@ async function main() {
     validation: 'data/generated/qa-reports/manual-ingest-validation-report.json',
     dedup: 'data/generated/qa-reports/manual-ingest-dedup-report.json',
     'cross-domain': 'data/generated/qa-reports/cross-domain-dedup.json',
+    'id-collision': 'data/generated/qa-reports/id-collision-gate.json',
     coverage: 'data/generated/qa-reports/coverage-gate.json',
     'max-invalid-rate': 0.03,
     'max-flagged-rate': 0.01,
@@ -47,6 +48,7 @@ async function main() {
   const validationPath = path.resolve(root, String(args.validation))
   const dedupPath = path.resolve(root, String(args.dedup))
   const crossDomainPath = path.resolve(root, String(args['cross-domain']))
+  const idCollisionPath = path.resolve(root, String(args['id-collision']))
   const coveragePath = path.resolve(root, String(args.coverage))
 
   const maxInvalidRate = Math.max(0, Math.min(1, Number(args['max-invalid-rate']) || 0.03))
@@ -62,17 +64,20 @@ async function main() {
   const validationExists = await exists(validationPath)
   const dedupExists = await exists(dedupPath)
   const crossDomainExists = await exists(crossDomainPath)
+  const idCollisionExists = await exists(idCollisionPath)
   const coverageExists = await exists(coveragePath)
 
   addCheck(checks, 'validation_report_exists', validationExists, validationExists, true, validationPath)
   addCheck(checks, 'dedup_report_exists', dedupExists, dedupExists, true, dedupPath)
   addCheck(checks, 'cross_domain_report_exists', crossDomainExists, crossDomainExists, true, crossDomainPath)
+  addCheck(checks, 'id_collision_report_exists', idCollisionExists, idCollisionExists, true, idCollisionPath)
   addCheck(checks, 'coverage_report_exists', coverageExists, coverageExists, true, coveragePath)
 
   let metrics = {
     validation: null,
     dedup: null,
     crossDomain: null,
+    idCollision: null,
     coverage: null,
   }
 
@@ -130,6 +135,20 @@ async function main() {
       'exact statement+answer duplicates across generated domain files',
     )
     metrics.crossDomain = { duplicates }
+  }
+
+  if (idCollisionExists) {
+    const idCollision = await readJson(idCollisionPath)
+    const duplicateIds = Number(idCollision?.summary?.duplicateIds || 0)
+    addCheck(
+      checks,
+      'id_collisions',
+      duplicateIds === 0,
+      duplicateIds,
+      0,
+      'duplicate fact IDs across generated JSONL files',
+    )
+    metrics.idCollision = { duplicateIds }
   }
 
   if (coverageExists) {

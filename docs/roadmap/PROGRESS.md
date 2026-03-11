@@ -7,7 +7,7 @@
 
 ## Current Status
 
-**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul). AR-32 mobile performance/snappiness pass is complete.
+**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul). AR-32 mobile performance/snappiness pass is complete. AR-33 mobile interaction frame-pacing pass is active.
 
 **Recent completed phases (March 9-10, 2026):**
 - AR-22 Global rename from "Arcane Recall" to "Recall Rogue" across all files.
@@ -50,6 +50,7 @@
 - **AR-17:** Worker fact generation engine tooling is complete and in active worker execution.
 - **AR-18:** Vocabulary tooling/UI wiring is complete; full corpus generation and themed visuals remain in progress.
 - **AR-19:** QA/promotion tooling is complete; production-scale worker output review, visual descriptions, and ComfyUI art passes remain in progress.
+- **AR-33:** Mobile interaction frame-pacing pass (combat drag + timer cadence optimization) is in progress. Spec: `docs/roadmap/phases/AR-33-MOBILE-INTERACTION-FRAME-PACING.md`.
 
 ---
 

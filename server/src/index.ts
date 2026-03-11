@@ -59,6 +59,16 @@ import { referralRoutes } from "./routes/referrals.js";
 
 /** Per-key hit counter with a rolling reset timestamp. */
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_PRUNE_INTERVAL_MS = 60_000;
+
+/** Removes expired rate-limit buckets to avoid unbounded in-memory growth. */
+function pruneRateLimitMap(now: number = Date.now()): void {
+  for (const [key, entry] of rateLimitMap) {
+    if (now > entry.resetAt) {
+      rateLimitMap.delete(key);
+    }
+  }
+}
 
 /**
  * Create a Fastify preHandler that rate-limits requests by (IP + route).
@@ -109,6 +119,19 @@ export async function buildApp() {
     logger: {
       level: config.isProduction ? "warn" : "info",
     },
+  });
+
+  // ── Security response headers ──────────────────────────────────────────────
+  fastify.addHook("onSend", async (_request, reply, payload) => {
+    reply.header("X-Content-Type-Options", "nosniff");
+    reply.header("X-Frame-Options", "DENY");
+    reply.header("Referrer-Policy", "strict-origin-when-cross-origin");
+    reply.header("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    // Browsers only honor HSTS over HTTPS; harmless if served behind TLS termination.
+    if (config.isProduction) {
+      reply.header("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    }
+    return payload;
   });
 
   // ── CORS ────────────────────────────────────────────────────────────────────
@@ -345,6 +368,9 @@ export async function buildApp() {
 
   // Prune stale co-op rooms every 30 minutes.
   setInterval(pruneStaleRooms, 30 * 60 * 1000);
+  // Prune stale in-memory rate-limit buckets every minute.
+  const rateLimitPruner = setInterval(pruneRateLimitMap, RATE_LIMIT_PRUNE_INTERVAL_MS);
+  rateLimitPruner.unref?.();
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {

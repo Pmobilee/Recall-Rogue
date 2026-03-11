@@ -14,12 +14,15 @@ Parse from the user's message (all optional):
 - `count`: number of runs PER profile (default: 1)
 - `mode`: "headless" (default) or "visual"
 - `skip-triage`: if present, skip the triage step (just run + analyze)
+- `ascension`: ascension level 0–20 (default: 0). Applied to all profiles in the batch.
 
 Examples:
 - `/playtest-suite` — run 4 profiles × 1 run each, analyze, triage, show leaderboard
 - `/playtest-suite profiles=beginner,expert floors=6` — just 2 profiles, 6 floors each
 - `/playtest-suite count=3 seed=42` — 3 runs per profile with deterministic seeds
 - `/playtest-suite profiles=all` — run all 6 profiles
+- `/playtest-suite ascension=10` — run all profiles at ascension level 10
+- `/playtest-suite profiles=expert ascension=5,10,15,20` — test expert at multiple ascension levels
 
 ## Pipeline Steps
 
@@ -27,8 +30,10 @@ Examples:
 For each profile in the list, spawn a background Agent worker:
 
 ```bash
-PLAYTEST_PROFILE={profile} PLAYTEST_SEED={seed} PLAYTEST_FLOORS={floors} npx vitest run tests/playtest/runners/run-headless.test.ts --reporter=verbose
+PLAYTEST_PROFILE={profile} PLAYTEST_SEED={seed} PLAYTEST_FLOORS={floors} PLAYTEST_ASCENSION={ascension} npx vitest run tests/playtest/runners/run-headless.test.ts --reporter=verbose
 ```
+
+If `ascension` contains commas (e.g., `ascension=0,5,10,15,20`), run each profile × ascension level combination as a separate simulation. This creates a matrix: profiles × ascension levels × seeds.
 
 Run ALL profiles in parallel using the Agent tool with `run_in_background: true`.
 Wait for all to complete.
@@ -102,12 +107,12 @@ Show the user:
 
 1. **Run Summary Table:**
 ```
-Profile      | Result  | Floor | Encounters | Accuracy | Max Combo
--------------|---------|-------|------------|----------|----------
-beginner     | defeat  |     2 |          4 |    48.1% |         2
-average      | defeat  |     5 |         13 |    72.3% |         3
-expert       | victory |    12 |         36 |    89.5% |         5
-struggling   | defeat  |     1 |          2 |    35.0% |         1
+Profile      | Asc | Result  | Floor | Encounters | Accuracy | Max Combo
+-------------|-----|---------|-------|------------|----------|----------
+beginner     |   0 | defeat  |     2 |          4 |    48.1% |         2
+expert       |   0 | victory |    24 |         72 |    89.5% |         5
+expert       |  10 | defeat  |    12 |         36 |    89.5% |         4
+expert       |  20 | defeat  |     6 |         18 |    89.5% |         3
 ```
 
 2. **Top Issues (from leaderboard):**
@@ -124,3 +129,6 @@ struggling   | defeat  |     1 |          2 |    35.0% |         1
 - Do NOT skip the analysis step — raw logs without analysis are not useful
 - The triage step is cumulative — it merges with previous leaderboard data
 - If `profiles=all`, use: beginner, average, expert, speed-runner, struggling, impatient
+- Ascension levels are cumulative: level 10 includes ALL modifiers from levels 1-10
+- Key ascension breakpoints for testing: 0 (base), 5 (smaller deck), 9 (combo reset), 14 (reduced HP), 17 (wrong answer damage), 20 (curator second phase)
+- When testing relics across ascension levels, defensive/sustain relics become more valuable at higher ascension

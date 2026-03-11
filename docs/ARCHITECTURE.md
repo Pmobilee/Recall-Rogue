@@ -152,6 +152,8 @@ These systems transfer from the mining codebase with minimal changes:
 | Combo counter | `src/ui/components/ComboCounter.svelte` | Built |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
 | Domain selection | `src/ui/components/DomainSelection.svelte` | Built |
+| Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
+| Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown for selecting study mode before runs |
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built |
 | Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built |
 | Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
@@ -163,6 +165,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Campfire pause screen | `src/ui/components/CampfirePause.svelte` | Built |
 | Special event overlay | `src/ui/components/SpecialEventOverlay.svelte` | Built |
 | Push notifications | `src/services/notificationService.ts` | Built |
+| Study preset CRUD | `src/services/studyPresetService.ts` | Built |
+| Preset pool builder | `src/services/presetPoolBuilder.ts` | Built — resolves study mode into domain + subcategory filters for run pool |
+| Mastery scaling | `src/services/masteryScalingService.ts` | Built — anti-cheat reward/timer scaling based on deck mastery % |
+| Study preset types | `src/data/studyPreset.ts` | Built — StudyPreset + DeckMode types |
 
 ### Implemented (Camp Hub Visual Overhaul)
 
@@ -210,9 +216,9 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 - `RelicPickupToast.svelte` — Brief toast for random relic drops
 - `RelicTray.svelte` — Combat HUD horizontal relic display (no dormancy)
 
-**Integration points**:
-- `encounterBridge.ts` — Builds `activeRelicIds` from `runRelics` at encounter start, applies encounter-start effects
-- `turnManager.ts` — Relic ID checks for combo, draw count, block carry, lethal save, perfect turn bonus
+**Integration points** (all combat-loop relic checks now delegate to `relicEffectResolver.ts` as the centralized source of truth):
+- `encounterBridge.ts` — Builds `activeRelicIds` from `runRelics` at encounter start; delegates encounter-start effects (herbal_pouch, quicksilver), draw count (swift_boots, blood_price), and combo start (combo_ring) to resolver
+- `turnManager.ts` — Delegates turn-start effects (iron_buckler: +3 block/turn), damage-taken effects (steel_skin, thorned_vest, glass_cannon, iron_resolve), lethal saves (last_breath, phoenix_feather), turn-end effects (fortress_wall, afterimage, blood_pact, blood_price), and perfect-turn bonuses (momentum_gem) to resolver
 - `cardEffectResolver.ts` — Per-card relic modifiers (attack bonus, strike bonus, echo power, chain lightning)
 - `gameFlowController.ts` — Relic acquisition flow after encounters, relic reward routing
 - `playerData.ts` — `awardMasteryCoin()`, `spendMasteryCoins()`, `unlockRelic()`, `toggleRelicExclusion()`
@@ -243,8 +249,10 @@ Archived systems include: mining grid, block breaking, fog of war, O2 system, mi
 ### Run Lifecycle
 
 ```
-Domain Selection (pick primary + secondary domain)
-  → RunPoolBuilder builds 120-fact pool (40% primary, 30% secondary, 30% SM-2 review)
+Study Mode Selection (hub dropdown: All Topics, saved preset, language, or Build New Deck)
+  → PresetPoolBuilder resolves selected mode into domain + subcategory filters
+  → MasteryScalingService calculates deck mastery % and applies reward/timer scaling
+  → RunPoolBuilder builds 120-fact pool from resolved domains (40/30/30 or preset-weighted)
   → DeckManager shuffles pool into draw pile
   → Floor 1 begins
 
@@ -287,6 +295,8 @@ Run End:
 | Card/deck state | DeckManager | Saved as part of run state |
 | SM-2 review data | playerData store | Persisted in PlayerSave |
 | Meta-progression | playerData store | Persisted in PlayerSave |
+| Study presets | studyPresetService | localStorage (up to 10 named presets) |
+| Selected study mode | gameFlowController | Saved per-run, previous mode remembered |
 | Settings | settings store | localStorage |
 
 Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
@@ -350,6 +360,9 @@ src/
     runSaveService.ts      — Save/resume active run to localStorage
     juiceManager.ts        — Game juice effects (haptics, sounds, particles)
     domainResolver.ts      — Maps fact categories to card domains/types
+    studyPresetService.ts  — Study preset CRUD (up to 10 named presets)
+    presetPoolBuilder.ts   — Resolves study mode into domain + subcategory filters
+    masteryScalingService.ts — Anti-cheat mastery scaling (reward multiplier + timer boost)
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
     components/
@@ -358,7 +371,9 @@ src/
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
       ComboCounter.svelte       — Knowledge combo display
       DamageNumber.svelte       — Floating damage numbers
-      DomainSelection.svelte    — Run-start domain picker
+      DomainSelection.svelte    — Run-start domain picker (legacy, replaced by StudyModeSelector for run setup)
+      DeckBuilder.svelte        — Study preset creation/editing (tab within Library screen)
+      StudyModeSelector.svelte  — Hub dropdown: All Topics, saved presets, languages, Build New Deck
       RoomSelectionOverlay.svelte — 3-door room chooser
       RestRoomOverlay.svelte    — Rest site (heal/upgrade)
       MysteryEventOverlay.svelte — Random event resolution
@@ -370,6 +385,7 @@ src/
     stores/                gameState, playerData, settings
   data/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types
+    studyPreset.ts         — StudyPreset, DeckMode types (preset selection + mastery scaling)
     enemies.ts             — Enemy template definitions
     balance.ts             — (extended with card combat constants)
     types.ts, biomes.ts, relics/ (types, starters, unlockable, index), saveState.ts, ...
@@ -429,4 +445,17 @@ playerData / saveService
 
 factsDB
   → public/facts.db (built by scripts/build-facts-db.mjs from src/data/seed/)
+
+StudyModeSelector.svelte (hub)
+  → services/studyPresetService (preset CRUD, up to 10 presets)
+  → data/studyPreset (StudyPreset, DeckMode types)
+
+presetPoolBuilder
+  → services/studyPresetService (resolve selected DeckMode)
+  → services/runPoolBuilder (feed resolved domain/subcategory filters)
+  → services/factsDB (query available facts for pool size warnings)
+
+masteryScalingService
+  → ui/stores/playerData (FSRS review states for mastery % calculation)
+  → data/balance (scaling tier thresholds, reward multipliers)
 ```

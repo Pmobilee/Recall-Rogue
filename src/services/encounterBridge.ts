@@ -35,6 +35,11 @@ import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
 } from './ascension';
+import {
+  resolveEncounterStartEffects,
+  resolveBaseDrawCount,
+  resolveComboStartValue,
+} from './relicEffectResolver';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -177,7 +182,7 @@ function syncCombatScene(turnState: TurnState): void {
       setTimeout(() => tryPush(retries - 1), 200);
     }
   };
-  tryPush(15);
+  tryPush(25);
 }
 
 export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
@@ -262,10 +267,9 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.apMax = Math.max(2, run.startingAp);
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
   turnState.activeRelicIds = runRelicIds;
-  turnState.baseComboCount = runRelicIds.has('combo_ring') ? 1 : 0;
+  turnState.baseComboCount = resolveComboStartValue(runRelicIds);
   turnState.comboCount = turnState.baseComboCount;
-  turnState.baseDrawCount = runRelicIds.has('swift_boots') ? 6 : 5;
-  if (runRelicIds.has('blood_price')) turnState.baseDrawCount += 2;
+  turnState.baseDrawCount = resolveBaseDrawCount(runRelicIds);
   turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
   turnState.ascensionLevel = run.ascensionLevel ?? 0;
@@ -280,6 +284,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.ascensionTier1OptionCount = ascensionModifiers.tier1OptionCount;
   turnState.ascensionForceHardQuestionFormats = ascensionModifiers.forceHardQuestionFormats;
   turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
+  turnState.ascensionComboResetsOnTurnEnd = ascensionModifiers.comboResetsOnTurnEnd;
 
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding && run.floor.currentFloor === 1 && run.floor.currentEncounter <= 2) {
@@ -287,15 +292,16 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     turnState.apCurrent = Math.min(turnState.apCurrent, 2);
   }
 
-  // Encounter-start relic hooks.
-  if (runRelicIds.has('iron_buckler')) {
-    turnState.playerState.shield += 5;
+  // Encounter-start relic hooks (resolved by relicEffectResolver).
+  const encounterStartFx = resolveEncounterStartEffects(runRelicIds);
+  if (encounterStartFx.bonusBlock > 0) {
+    turnState.playerState.shield += encounterStartFx.bonusBlock;
   }
-  if (runRelicIds.has('herbal_pouch')) {
-    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + 3);
+  if (encounterStartFx.bonusHeal > 0) {
+    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + encounterStartFx.bonusHeal);
   }
-  if (runRelicIds.has('quicksilver')) {
-    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + 1);
+  if (encounterStartFx.bonusAP > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + encounterStartFx.bonusAP);
   }
 
   turnState.activePassives = [];

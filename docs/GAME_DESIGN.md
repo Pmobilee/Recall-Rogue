@@ -188,7 +188,8 @@ Domains provide: content organization, visual identity (color tint), Knowledge L
 - General Knowledge — broad trivia, cross-domain surprising facts
 - Natural Sciences — biology, chemistry, physics, earth science
 - Geography — countries, capitals, landmarks, demographics
-  - **Flags of the World** — Geography sub-domain: 200+ sovereign state flags as pixel art quiz cards
+  - **Capitals** — Geography subcategory: ~195 world capital facts (selectable in Deck Builder)
+  - **Flags of the World** — Geography subcategory: ~194 sovereign state flags as emoji flag quiz cards (selectable in Deck Builder)
 - History — events, figures, dates, civilizations, wars, inventions
 
 **New knowledge domains (AR-16):**
@@ -400,60 +401,60 @@ Current flow:
 | ID | Name | Category | Effect |
 |----|------|----------|--------|
 | whetstone | Whetstone | Offensive | All attack cards +2 flat damage |
-| flame_brand | Flame Brand | Offensive | First attack each encounter +50% damage |
+| flame_brand | Flame Brand | Offensive | First attack each encounter +40% damage |
 | barbed_edge | Barbed Edge | Offensive | Strike-tagged mechanics +3 base damage |
 | war_drum | War Drum | Offensive | +1 damage per combo level this turn |
-| sharp_eye | Sharp Eye | Offensive | Speed bonus +75% instead of +50% |
-| iron_buckler | Iron Buckler | Defensive | Start each encounter with 5 block |
-| steel_skin | Steel Skin | Defensive | Take 1 less damage from all sources (min 1) |
-| thorned_vest | Thorned Vest | Defensive | When blocking, deal 3 damage back |
-| stone_wall | Stone Wall | Defensive | All shield cards +2 block |
-| herbal_pouch | Herbal Pouch | Sustain | Heal 3 HP at encounter start |
-| vitality_ring | Vitality Ring | Sustain | +8 max HP this run |
-| medic_kit | Medic Kit | Sustain | Heal cards +15% effectiveness |
-| last_breath | Last Breath | Sustain | Once/encounter: survive killing blow at 1 HP |
+| sharp_eye | Sharp Eye | Offensive | Speed bonus +75% instead of +50%, speed threshold widened to 35% |
+| iron_buckler | Iron Buckler | Defensive | +3 block at start of each turn |
+| steel_skin | Steel Skin | Defensive | Take 2 less damage from all sources (min 1) |
+| thorned_vest | Thorned Vest | Defensive | 2 reflect damage, 4 if no block |
+| stone_wall | Stone Wall | Defensive | All shield cards +3 block |
+| herbal_pouch | Herbal Pouch | Sustain | Heal 5 HP at encounter start; if >80% HP, +3 block instead |
+| vitality_ring | Vitality Ring | Sustain | +15 max HP this run |
+| medic_kit | Medic Kit | Sustain | Heal cards +20% effectiveness, +3 block on heal |
+| last_breath | Last Breath | Sustain | Once/encounter: survive killing blow at 1 HP, +8 block, +5 damage |
 | swift_boots | Swift Boots | Tactical | Draw 6 cards/turn instead of 5 |
 | combo_ring | Combo Ring | Tactical | Combo starts at 1.15x instead of 1.0x |
 | momentum_gem | Momentum Gem | Tactical | Perfect turn grants +1 AP next turn |
-| speed_charm | Speed Charm | Tactical | Speed bonus threshold 30% instead of 25% |
+| speed_charm | Speed Charm | Tactical | Speed bonus threshold 35% instead of 25%, fast answers heal 1 HP |
 | cartographers_lens | Cartographer's Lens | Tactical | Permanent foresight (see 2 enemy intents) |
-| scholars_hat | Scholar's Hat | Knowledge | Correct answers heal 1 HP |
-| memory_palace | Memory Palace | Knowledge | 3 correct in a row: +3 damage to next attack |
-| curiosity_gem | Curiosity Gem | Knowledge | Tier 1 (Learning) cards +20% effect |
+| scholars_hat | Scholar's Hat | Knowledge | Correct answers heal 2 HP and deal +1 damage; wrong answers heal 1 HP |
+| memory_palace | Memory Palace | Knowledge | 2 correct in a row: +4 damage to next attack |
+| curiosity_gem | Curiosity Gem | Knowledge | Tier 1 (Learning) cards +15% effect |
 | brain_booster | Brain Booster | Knowledge | Hints cost no currency |
 | gold_magnet | Gold Magnet | Economy | +25% currency from encounters |
 | lucky_coin | Lucky Coin | Economy | +2 flat currency per encounter |
-| scavengers_pouch | Scavenger's Pouch | Economy | +1 currency per skipped card |
+| scavengers_pouch | Scavenger's Pouch | Economy | +2 currency per skipped card |
 
 #### Unlockable Relics (25, Mastery Coin costs 25-70)
 
 | ID | Name | Cat | Effect | Rarity | Cost |
 |----|------|-----|--------|--------|------|
-| berserker_band | Berserker Band | Off | Below 40% HP: attacks +50% | Uncommon | 40 |
+| berserker_band | Berserker Band | Off | Below 50% HP: attacks +40% | Uncommon | 40 |
 | chain_lightning_rod | Chain Lightning Rod | Off | Multi-hit +2 extra hits | Rare | 50 |
-| venom_fang | Venom Fang | Off | Attacks apply 1 poison/2 turns | Uncommon | 35 |
+| venom_fang | Venom Fang | Off | Attacks apply 2 poison/3 turns | Uncommon | 35 |
 | crescendo_blade | Crescendo Blade | Off | Each correct attack: +10% dmg (stacks) | Uncommon | 45 |
-| executioners_axe | Executioner's Axe | Off | Execute threshold 40% (from 30%) | Rare | 50 |
+| executioners_axe | Executioner's Axe | Off | Execute threshold 40%; +3 attack below 30% enemy HP | Rare | 50 |
 | fortress_wall | Fortress Wall | Def | Block carries between turns | Uncommon | 45 |
-| mirror_shield | Mirror Shield | Def | Full block absorb: reflect 50% | Rare | 50 |
-| iron_resolve | Iron Resolve | Def | Below 25% HP: block doubled | Uncommon | 40 |
+| mirror_shield | Mirror Shield | Def | Block absorb: reflect 30% as true damage | Rare | 50 |
+| iron_resolve | Iron Resolve | Def | Below 50% HP: block +50%, attacks +15% | Uncommon | 40 |
 | phase_cloak | Phase Cloak | Def | 20% chance to dodge attacks | Rare | 60 |
 | blood_pact | Blood Pact | Sustain | Heal 25% of damage dealt/turn | Rare | 55 |
-| phoenix_feather | Phoenix Feather | Sustain | Once/run: resurrect at 30% HP | Rare | 70 |
-| renewal_spring | Renewal Spring | Sustain | Heal 10% max HP on floor advance | Uncommon | 35 |
+| phoenix_feather | Phoenix Feather | Sustain | Once/boss: resurrect at 30% HP, +15 block, Empower 2 turns | Rare | 70 |
+| renewal_spring | Renewal Spring | Sustain | Heal 15% max HP on floor advance; if >80% HP, +5 block | Uncommon | 35 |
 | quicksilver | Quicksilver | Tactical | Start encounters with +1 AP | Rare | 60 |
 | time_dilation | Time Dilation | Tactical | Quiz timer +3 seconds | Uncommon | 30 |
-| afterimage | Afterimage | Tactical | 3+ cards/turn: +1 draw next turn | Uncommon | 40 |
+| afterimage | Afterimage | Tactical | Perfect turn: +1 AP next turn (or +1 draw if momentum_gem also held) | Uncommon | 40 |
 | echo_lens | Echo Lens | Tactical | Echo cards at full power (1.0x) | Uncommon | 35 |
 | double_vision | Double Vision | Tactical | First card each encounter costs 0 AP | Rare | 55 |
 | polyglot_pendant | Polyglot Pendant | Knowledge | Secondary domain cards +25% damage | Uncommon | 40 |
-| eidetic_memory | Eidetic Memory | Knowledge | Facts correct 3+ times: +30% effect | Rare | 50 |
-| speed_reader | Speed Reader | Knowledge | Speed bonus at 15% of timer | Rare | 55 |
-| domain_mastery | Domain Mastery | Knowledge | 5 same-domain correct: next card +100% | Rare | 60 |
+| eidetic_memory | Eidetic Memory | Knowledge | Facts correct 3+ times: +25% effect | Rare | 50 |
+| speed_reader | Speed Reader | Knowledge | Speed bonus at 20% of timer | Rare | 55 |
+| domain_mastery | Domain Mastery | Knowledge | 4 same-domain correct: next card +75% | Rare | 60 |
 | prospectors_pick | Prospector's Pick | Economy | Card rewards have 4 options | Uncommon | 45 |
 | miser_ring | Miser's Ring | Economy | Run end: 10% currency → mastery coins | Uncommon | 50 |
-| glass_cannon | Glass Cannon | Cursed | Attacks +40% dmg, take +15% more | Uncommon | 25 |
-| blood_price | Blood Price | Cursed | +2 cards/turn, lose 2 HP/turn | Uncommon | 30 |
+| glass_cannon | Glass Cannon | Cursed | Attacks +35% dmg, take +10% more (+5% per wrong) | Uncommon | 25 |
+| blood_price | Blood Price | Cursed | +2 cards/turn +1 AP/turn, lose 3 HP/turn | Uncommon | 30 |
 
 ### Relic Archive (Hub Relic Shop)
 
@@ -617,7 +618,15 @@ Post-encounter rewards are presented as physical objects on an atmospheric altar
 
 1. Enemy HP ≤ 0 → Victory + card reward (type selection screen)
 2. Player HP ≤ 0 → Defeat, run ends with retreat penalties
-3. Turn 15+ → Enemy +3 dmg/turn (soft enrage)
+3. Segment-based enrage — turn budget tightens on deeper floors:
+   - Floors 1-6 (Shallow Depths): enrage from turn 9
+   - Floors 7-12 (Deep Caverns): enrage from turn 8
+   - Floors 13-18 (The Abyss): enrage from turn 7
+   - Floors 19-24 (The Archive): enrage from turn 6
+   - Floors 25+ (Endless): enrage from turn 5
+   - Phase 1: +2 dmg/turn for first 3 enrage turns
+   - Phase 2: +4 dmg/turn after 3 enrage turns (on top of phase 1 cap of 6)
+   - Desperate attack: enemies below 30% HP deal +3 bonus damage per turn
 
 ### Save/Resume System
 
@@ -832,7 +841,7 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | Lore Discovery | At 10/25/50/100 mastered facts: narrative connecting learned facts (see Section 13a) |
 | Bounty Quests | 1-2 bonus objectives per run (see Section 13b) |
 
-No overworld, no farming/crafting, no study mode, no prestige, no stamina.
+No overworld, no farming/crafting, no prestige, no stamina. Study presets (§26b) allow topic selection but are not a standalone study mode.
 
 ### 13a. Lore Discovery System
 
@@ -869,7 +878,7 @@ Research: Mobile users decide to keep an app within 7-30 seconds. Duolingo delay
 20-35s: Remaining AP. End Turn tooltip.
 35-60s: Second encounter. Minimal tooltips.
 ~2-3m:  Run ends. "Create account to save progress?" (skippable).
-Run 2:  Domain selection unlocks ("What are you curious about? Pick 2 to specialize in.").
+Run 2:  Study Mode selector unlocks on hub (dropdown near dungeon gate: All Topics, Build New Deck, etc.).
 Run 4:  Archetype selection unlocks (runs 1-3 auto-assign 'Balanced').
 ```
 
@@ -1341,7 +1350,7 @@ No pay-to-win. No premium currency. No gacha. Education (primary) + Games (secon
 
 ### Subscriber Category Filtering (Implemented)
 
-Arcane Pass subscribers gain access to fine-grained category filters within each domain. Free players select a domain (e.g., History); subscribers can drill down and toggle specific sub-categories (e.g., "WW2 only", "Ancient Rome only", "Turn off Medieval"). This applies to the run pool builder — filtered categories are excluded from fact selection during runs.
+Arcane Pass subscribers gain access to fine-grained category filters within each domain, beyond what study presets (§26b) offer. Free players can create study presets selecting domains and top-level subcategories (e.g., Geography > Capitals); subscribers can drill down further and toggle specific sub-categories within a domain (e.g., "WW2 only", "Ancient Rome only", "Turn off Medieval"). This applies to the run pool builder — filtered categories are excluded from fact selection during runs.
 
 **Design constraints:**
 - Minimum 1 sub-category must remain active per domain (can't empty the pool)
@@ -1365,7 +1374,7 @@ The between-runs hub is a full-screen interactive pixel art camp scene. A cave b
 
 | # | Sprite | Position | Action | Notes |
 |---|--------|----------|--------|-------|
-| 1 | Dungeon Gate | Top center | Start/Resume Run | Primary entry; `data-testid="btn-start-run"` |
+| 1 | Dungeon Gate | Top center | Start/Resume Run | Primary entry; `data-testid="btn-start-run"`. Study Mode dropdown (`StudyModeSelector.svelte`) positioned near gate for pre-run topic selection. |
 | 2 | Bookshelf | Mid-left | Library | Card collection and fact review |
 | 3 | Signpost | Mid-right | Settings | Game settings |
 | 4 | Anvil | Center-left | Relics | Opens Relic Archive (unlock/exclude relics via Mastery Coins) |
@@ -1399,7 +1408,7 @@ The between-runs hub is a full-screen interactive pixel art camp scene. A cave b
 
 ## 24. Anti-Features
 
-No chat/social. No AI-generated facts without human review. No PvP. No deck editing outside runs. No premium currency. No gacha. No overworld. No farming/crafting. No study mode. No prestige. No stamina. No cancel after commit. No domain-locked types.
+No chat/social. No AI-generated facts without human review. No PvP. No premium currency. No gacha. No overworld. No farming/crafting. No prestige. No stamina. No cancel after commit. No domain-locked types. Study presets configure which facts appear in runs but do not allow mid-run deck editing or card-by-card selection.
 
 ---
 
@@ -1440,6 +1449,8 @@ FSRS replaced SM-2 as Anki default 2023. Tracks Difficulty (1-10), Stability (da
 | FSRS review queue | 30% (~36 facts, only from previously engaged domains) |
 
 Players never see facts from domains they haven't opted into.
+
+**Study preset override:** When a study preset is selected (see §26b), the preset's domain + subcategory filters replace the primary/secondary split. `presetPoolBuilder.ts` resolves the preset into a weighted fact pool, maintaining the 30% FSRS review queue.
 
 ### Question Variety — Reducing Repetition
 
@@ -1515,6 +1526,85 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
   return '1';
 }
 ```
+
+---
+
+## 26b. Study Presets & Deck Builder
+
+### Study Presets (Custom Decks)
+
+Players can create up to 10 named **study presets**, each selecting any combination of domains and subcategories. Presets are managed in a **Deck Builder** tab within the Library screen.
+
+**Preset definition:**
+- Name (player-chosen, e.g., "Ancient History + Science")
+- Selected domains (any combination from the 16 available)
+- Selected subcategories within each domain (e.g., Geography > Capitals, Geography > Flags)
+- Stored locally, persisted across sessions
+
+**Types:** `StudyPreset` and `DeckMode` in `src/data/studyPreset.ts`. CRUD operations in `src/services/studyPresetService.ts`.
+
+### Study Mode Selector (Hub Screen)
+
+The hub screen includes a **Study Mode dropdown** near the dungeon gate, replacing the need to pick 2 domains each run.
+
+**Dropdown options:**
+- **All Topics** — general pool across all domains (default)
+- **Saved presets** — each named preset appears as an option
+- **Languages** — each enabled language domain
+- **Build New Deck** — opens the Deck Builder directly
+
+**Rules:**
+- Locked when a run is active (cannot change mid-run)
+- Previous run's mode is remembered as the default selection
+- UI component: `src/ui/components/StudyModeSelector.svelte`
+
+### Mastery Scaling (Anti-Cheat)
+
+When a player uses a custom deck with heavily mastered content, reward scaling prevents farming easy facts for leaderboard advantage.
+
+**At run start**, `masteryScalingService.ts` calculates the **deck mastery %** — the percentage of facts in the selected pool at tier 2b or 3 (Mastered/Deep Recall).
+
+| Mastery % | Label | Reward Multiplier | Timer Boost |
+|-----------|-------|-------------------|-------------|
+| < 40% | Normal | 1.0x | +0 virtual floors |
+| 40–60% | Practiced | 0.85x | +1 virtual floor |
+| 60–80% | Expert | 0.65x | +2 virtual floors |
+| 80–95% | Mastered | 0.40x | +4 virtual floors |
+
+- **Reward multiplier** reduces currency/XP earned at run end
+- **Timer boost** adds virtual floors to the timer calculation, making timers shorter (as if the player were deeper in the dungeon)
+- A transparent **"Expert Mode" badge** is shown in the combat HUD when mastery scaling is active (Practiced or above)
+
+### Pool Size Warnings
+
+If the selected study mode has too few facts, warnings are shown before run start:
+
+| Condition | Warning | Effect |
+|-----------|---------|--------|
+| < 40 facts available | "Small deck — no loot, no leaderboard" | Rewards and leaderboard submission disabled |
+| < 25% of facts unmastered | "Mostly mastered" | Same as above — practice mode only |
+
+Players can still play (practice mode) but run results do not count for rewards or leaderboards.
+
+### Leaderboard Eligibility by Deck Type
+
+| Study Mode | Leaderboard |
+|------------|-------------|
+| All Topics (general) | General leaderboard |
+| Single-domain preset | Domain-specific leaderboard |
+| Multi-domain preset | No leaderboard (too variable) |
+| Language | Language-specific leaderboard |
+
+### Geography Sub-Decks
+
+Geography has selectable subcategories that auto-appear in the Deck Builder:
+
+| Subcategory | Facts | Format |
+|-------------|-------|--------|
+| Capitals | ~195 | Standard knowledge MCQ |
+| Flags | ~194 | Emoji flags as visual prompts |
+
+Flag facts use Unicode emoji flags in questions and answers.
 
 ---
 
@@ -1913,12 +2003,12 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 | 6 | Iron Will | No flee from encounters |
 | 7 | Harsh Grading | Close-distractor answers more common |
 | 8 | Elite Surge | Mini-bosses gain boss-tier attacks |
-| 9 | Combo Breaker | Combo resets on turn end (not just on wrong answer) |
-| 10 | Endurance | Runs must reach floor 12+ to retreat with rewards |
-| 11 | Fading Light | Encounter 2 per floor has -2s timer |
-| 12 | Relic Tax | Boss relic choices reduced to 2 |
-| 13 | Deep Knowledge | All Tier 1 cards are 4-option MCQ (no easy 3-option) |
-| 14 | Glass Cannon | Player max HP reduced to 70 |
+| 9 | Endurance | Runs must reach floor 12+ to retreat with rewards |
+| 10 | Fading Light | Encounter 2 per floor has -2s timer |
+| 11 | Relic Tax | Boss relic choices reduced to 2 |
+| 12 | Deep Knowledge | All Tier 1 cards are 4-option MCQ (no easy 3-option) |
+| 13 | Glass Cannon | Player max HP reduced to 70 |
+| 14 | Combo Breaker | Combo resets on turn end (not just on wrong answer) |
 | 15 | Boss Rush | Bosses gain +25% HP |
 | 16 | No Echo | Echo mechanic disabled (wrong answers don't return) |
 | 17 | Scholar's Burden | Wrong answers deal 5 self-damage (all modes) |
@@ -2103,3 +2193,9 @@ data/playtests/
 | Playtest Profile | JSON config defining simulated player behavior: accuracy curve, reading speed, strategy level, engagement pattern. In tests/playtest/profiles/. |
 | Headless Playtest | Combat simulation using real game engine under Vitest + happy-dom. No browser/Phaser required. Driven by HeadlessCombatSimulator. |
 | Issue Leaderboard | Ranked list of game design issues found by automated playtesting. Scored by severity × frequency × profile breadth. In data/playtests/leaderboard.json. |
+| Study Preset | Named configuration selecting domains + subcategories for run pool building. Up to 10 per player. Managed in Deck Builder (Library tab). |
+| Deck Builder | UI tab within the Library screen for creating and editing study presets. |
+| Study Mode Selector | Hub dropdown near dungeon gate for choosing run topic: All Topics, saved presets, languages, or Build New Deck. |
+| Mastery Scaling | Anti-cheat system that reduces rewards and shortens timers when a deck's mastery % is high, preventing easy-fact farming. |
+| DeckMode | Type union representing the selected study mode: general (all topics), preset (saved configuration), or language. |
+| Pool Size Warning | Pre-run alert when the selected study mode yields < 40 facts or < 25% unmastered facts. Disables rewards and leaderboard. |

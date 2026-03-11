@@ -17,6 +17,8 @@ import zlib from 'node:zlib'
 const DIST = path.resolve(process.cwd(), 'dist/assets')
 const CHUNK_MAX_KB = 500
 const INITIAL_BUNDLE_MAX_KB = 400 // gzipped estimate
+const CSS_CHUNK_MAX_KB = 140
+const INITIAL_CSS_MAX_KB = 50 // gzipped estimate for app shell CSS
 const CHUNK_BUDGET_OVERRIDES = [
   // Phaser runtime is intentionally split into its own lazy chunk.
   { pattern: /phaser/i, maxKb: 1400, excludeFromInitial: true },
@@ -32,7 +34,9 @@ function resolveChunkBudget(fileName) {
 }
 
 const files = fs.readdirSync(DIST).filter(f => f.endsWith('.js'))
+const cssFiles = fs.readdirSync(DIST).filter(f => f.endsWith('.css'))
 let totalGzip = 0
+let totalCssGzip = 0
 let failed = false
 
 for (const file of files) {
@@ -53,6 +57,26 @@ const totalKb = Math.round(totalGzip / 1024)
 console.log(`\nInitial bundle (gzip estimate): ${totalKb} KB (limit: ${INITIAL_BUNDLE_MAX_KB} KB)`)
 if (totalKb > INITIAL_BUNDLE_MAX_KB) {
   console.error('FAILED: Initial bundle exceeds budget')
+  failed = true
+}
+
+console.log('\nCSS chunks:')
+for (const file of cssFiles) {
+  const raw = fs.readFileSync(path.join(DIST, file))
+  const gzipped = zlib.gzipSync(raw)
+  const rawKb = Math.round(raw.length / 1024)
+  const gzKb = Math.round(gzipped.length / 1024)
+  totalCssGzip += gzipped.length
+  const overLimit = rawKb > CSS_CHUNK_MAX_KB
+  const marker = overLimit ? ` [OVER LIMIT > ${CSS_CHUNK_MAX_KB}KB]` : ''
+  console.log(`  ${file}: ${rawKb} KB raw, ${gzKb} KB gzip${marker}`)
+  if (overLimit) failed = true
+}
+
+const totalCssKb = Math.round(totalCssGzip / 1024)
+console.log(`\nInitial CSS (gzip estimate): ${totalCssKb} KB (limit: ${INITIAL_CSS_MAX_KB} KB)`)
+if (totalCssKb > INITIAL_CSS_MAX_KB) {
+  console.error('FAILED: Initial CSS exceeds budget')
   failed = true
 }
 

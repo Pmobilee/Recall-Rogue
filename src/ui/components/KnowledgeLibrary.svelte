@@ -19,12 +19,16 @@
     type LoreFragment,
   } from '../../services/loreService'
   import { playerSave } from '../stores/playerData'
+  import DeckBuilder from './DeckBuilder.svelte'
 
   interface Props {
     onback: () => void
+    initialTab?: 'knowledge' | 'deckbuilder'
   }
 
-  let { onback }: Props = $props()
+  let { onback, initialTab }: Props = $props()
+
+  let activeTab = $state<'knowledge' | 'deckbuilder'>(initialTab ?? 'knowledge')
 
   let loading = $state(true)
   let allFacts = $state<Fact[]>([])
@@ -116,17 +120,32 @@
 
 <div class="library-overlay">
   <div class="library-topbar">
-    {#if selectedEntry}
+    {#if activeTab === 'knowledge' && selectedEntry}
       <button class="back-btn" onclick={() => (selectedEntry = null)}>Back</button>
-    {:else if selectedDomain}
+    {:else if activeTab === 'knowledge' && selectedDomain}
       <button class="back-btn" onclick={() => (selectedDomain = null)}>Back</button>
     {:else}
       <button class="back-btn" onclick={onback}>Back</button>
     {/if}
-    <h2>Knowledge Library</h2>
+    <h2>Library</h2>
   </div>
 
-  {#if loading}
+  <div class="library-tabs">
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'knowledge'}
+      onclick={() => { activeTab = 'knowledge'; selectedDomain = null; selectedEntry = null; }}
+    >Knowledge</button>
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'deckbuilder'}
+      onclick={() => { activeTab = 'deckbuilder'; selectedDomain = null; selectedEntry = null; }}
+    >Deck Builder</button>
+  </div>
+
+  {#if activeTab === 'deckbuilder'}
+    <DeckBuilder />
+  {:else if loading}
     <div class="loading">Loading facts...</div>
   {:else if selectedEntry}
     <section class="detail-card">
@@ -454,5 +473,32 @@
     color: #e2e8f0;
     line-height: 1.5;
     font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  .library-tabs {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 16px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #8b949e;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+  }
+
+  .tab-btn.active {
+    color: #e6edf3;
+    border-bottom-color: #16a34a;
   }
 </style>

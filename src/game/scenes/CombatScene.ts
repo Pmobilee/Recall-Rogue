@@ -129,6 +129,23 @@ export class CombatScene extends Phaser.Scene {
   // Lifecycle
   // ═════════════════════════════════════════════════════════
 
+  /** Preload combat assets (background + enemy sprites). */
+  preload(): void {
+    const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
+    const enemySprite = (name: string) => `assets/sprites/enemies/${name}${suffix}`
+
+    this.load.image('bg-combat', 'assets/backgrounds/combat/bg_combat_dungeon.webp')
+    this.load.image('enemy-cave_bat-idle', enemySprite('cave_bat_idle'))
+    this.load.image('enemy-cave_bat-hit', enemySprite('cave_bat_hit'))
+    this.load.image('enemy-cave_bat-death', enemySprite('cave_bat_death'))
+    this.load.image('enemy-crystal_golem-idle', enemySprite('crystal_golem_idle'))
+    this.load.image('enemy-crystal_golem-hit', enemySprite('crystal_golem_hit'))
+    this.load.image('enemy-crystal_golem-death', enemySprite('crystal_golem_death'))
+    this.load.image('enemy-the_excavator-idle', enemySprite('the_excavator_idle'))
+    this.load.image('enemy-the_excavator-hit', enemySprite('the_excavator_hit'))
+    this.load.image('enemy-the_excavator-death', enemySprite('the_excavator_death'))
+  }
+
   /** Create all game objects for the combat display zone. */
   create(): void {
     this.reduceMotion = isReduceMotionEnabled()

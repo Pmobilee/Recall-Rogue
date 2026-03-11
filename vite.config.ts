@@ -105,8 +105,14 @@ export default defineConfig({
     },
     watch: {
       ignored: [
-        '**/public/assets/cardbacks/**',
+        // Sprites & assets — absolute paths so chokidar reliably ignores public/
+        '**/public/**',
         '**/sprite-gen/**',
+        // Documentation
+        '**/docs/**',
+        '**/*.md',
+        // Playtest data & reports
+        '**/data/playtests/**',
       ],
     },
   },

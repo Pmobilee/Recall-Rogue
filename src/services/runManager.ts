@@ -14,6 +14,7 @@ import { selectRunBounties } from './bountyManager';
 import type { CanaryState } from './canaryService';
 import { createCanaryState, recordCanaryAnswer } from './canaryService';
 import { getAscensionModifiers, type AscensionModifiers } from './ascension';
+import { getRewardMultiplier } from './masteryScalingService';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -61,6 +62,10 @@ export interface RunState {
   firstMiniBossRelicAwarded: boolean;
   /** Whether the phoenix feather (once-per-run lethal save) has been used. */
   phoenixFeatherUsed: boolean;
+  /** Mastery percentage of the deck/pool at run start (0-1). */
+  deckMasteryPct?: number;
+  /** Whether rewards are disabled (e.g. pool too small). */
+  rewardsDisabled?: boolean;
 }
 
 export interface RunEndData {
@@ -196,9 +201,12 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
   const deathPenalty = reason === 'defeat' ? DEATH_PENALTY[segment] : 1.0;
   const mode = get(difficultyMode);
   const difficultyBonus = DIFFICULTY_REWARD_MULTIPLIER[mode] ?? 1.0;
-  const rewardMultiplier = deathPenalty * difficultyBonus;
+  const masteryRewardScale = (state.deckMasteryPct ?? 0) > 0
+    ? getRewardMultiplier(state.deckMasteryPct ?? 0)
+    : 1.0;
+  const rewardMultiplier = deathPenalty * difficultyBonus * masteryRewardScale;
   const completedBounties = state.bounties.filter((bounty) => bounty.completed).map((bounty) => bounty.name);
-  const rewardsSuppressed = reason === 'retreat' && state.retreatRewardLocked;
+  const rewardsSuppressed = (reason === 'retreat' && state.retreatRewardLocked) || state.rewardsDisabled;
   const bountyBonusCurrency = rewardsSuppressed ? 0 : completedBounties.length * 20;
   const baseCurrency = rewardsSuppressed ? 0 : (state.currency + bountyBonusCurrency);
   const currencyEarned = Math.floor(baseCurrency * rewardMultiplier);

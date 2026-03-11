@@ -206,4 +206,14 @@ export function validateProductionConfig(): void {
     );
     process.exit(1);
   }
+
+  const corsOrigins = Array.isArray(config.corsOrigin)
+    ? config.corsOrigin
+    : [config.corsOrigin];
+  if (corsOrigins.some((origin) => origin.trim() === "*")) {
+    console.error(
+      "[Config] FATAL: CORS_ORIGIN must not contain wildcard '*' in production"
+    );
+    process.exit(1);
+  }
 }

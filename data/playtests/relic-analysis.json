@@ -1,0 +1,5389 @@
+{
+  "generatedAt": "2026-03-11T02:37:54.858Z",
+  "totalConfigs": 100,
+  "totalRuns": 300,
+  "configMetrics": [
+    {
+      "configId": 1,
+      "label": "control-average",
+      "group": "A-controls",
+      "relics": [],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 2,
+      "label": "control-expert",
+      "group": "A-controls",
+      "relics": [],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 19,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 19.103951281260162,
+      "avgDamageTakenPerEncounter": 17.725925925925925,
+      "avgTurnsPerEncounter": 4.587301587301587,
+      "avgMaxCombo": 27.666666666666668,
+      "avgPerfectTurnRate": 0.00030693677102516884,
+      "avgBossTurns": 11.514285714285714,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8982248520710059,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.9101654846335697,
+          "maxCombo": 30
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 15,
+          "totalEncounters": 45,
+          "accuracy": 0.8947368421052632,
+          "maxCombo": 36
+        }
+      ]
+    },
+    {
+      "configId": 3,
+      "label": "control-struggling",
+      "group": "A-controls",
+      "relics": [],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 3.68560177325033,
+      "avgDamageTakenPerEncounter": 48.13333333333333,
+      "avgTurnsPerEncounter": 10.5,
+      "avgMaxCombo": 4.666666666666667,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 0,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.4295774647887324,
+          "maxCombo": 4
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 4,
+          "accuracy": 0.44545454545454544,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.43169398907103823,
+          "maxCombo": 4
+        }
+      ]
+    },
+    {
+      "configId": 4,
+      "label": "solo-whetstone",
+      "group": "B-solo-starter",
+      "relics": [
+        "whetstone"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.639847180006754,
+      "avgDamageTakenPerEncounter": 25.740740740740744,
+      "avgTurnsPerEncounter": 6.037037037037037,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0.0009950248756218905,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.6807228915662651,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.717741935483871,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7322580645161291,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 5,
+      "label": "solo-flame_brand",
+      "group": "B-solo-starter",
+      "relics": [
+        "flame_brand"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.5033333333333333,
+      "avgDpsPerEncounter": 13.778799001063431,
+      "avgDamageTakenPerEncounter": 15.518518518518519,
+      "avgTurnsPerEncounter": 4.6419753086419755,
+      "avgMaxCombo": 10,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 11.555555555555557,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7328990228013029,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7833935018050542,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7265822784810126,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 6,
+      "label": "solo-barbed_edge",
+      "group": "B-solo-starter",
+      "relics": [
+        "barbed_edge"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 7,
+      "label": "solo-war_drum",
+      "group": "B-solo-starter",
+      "relics": [
+        "war_drum"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.5252107279693486,
+      "avgDpsPerEncounter": 10.706461634047841,
+      "avgDamageTakenPerEncounter": 25.259259259259256,
+      "avgTurnsPerEncounter": 5.641975308641975,
+      "avgMaxCombo": 10,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 16.444444444444446,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7233502538071066,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7427385892116183,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 8,
+      "label": "solo-sharp_eye",
+      "group": "B-solo-starter",
+      "relics": [
+        "sharp_eye"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 9,
+      "label": "solo-iron_buckler",
+      "group": "B-solo-starter",
+      "relics": [
+        "iron_buckler"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.154278416347381,
+      "avgDamageTakenPerEncounter": 29.98148148148148,
+      "avgTurnsPerEncounter": 5.592592592592593,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 17.333333333333332,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7153846153846154,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 10,
+      "label": "solo-steel_skin",
+      "group": "B-solo-starter",
+      "relics": [
+        "steel_skin"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0.01,
+      "avgDpsPerEncounter": 9.504317111459969,
+      "avgDamageTakenPerEncounter": 34.09259259259259,
+      "avgTurnsPerEncounter": 5.7592592592592595,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0.0018832391713747645,
+      "avgBossTurns": 18.833333333333332,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7518796992481203,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7102803738317757,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7153846153846154,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 11,
+      "label": "solo-thorned_vest",
+      "group": "B-solo-starter",
+      "relics": [
+        "thorned_vest"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.637216056013047,
+      "avgDamageTakenPerEncounter": 29.148148148148152,
+      "avgTurnsPerEncounter": 5.592592592592593,
+      "avgMaxCombo": 9,
+      "avgPerfectTurnRate": 0.0046817064083338215,
+      "avgBossTurns": 18.5,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6592592592592592,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7381703470031545,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 12,
+      "label": "solo-stone_wall",
+      "group": "B-solo-starter",
+      "relics": [
+        "stone_wall"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.504317111459969,
+      "avgDamageTakenPerEncounter": 34.09259259259259,
+      "avgTurnsPerEncounter": 5.7592592592592595,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0.0018832391713747645,
+      "avgBossTurns": 18.833333333333332,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7518796992481203,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7102803738317757,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7153846153846154,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 13,
+      "label": "solo-herbal_pouch",
+      "group": "B-solo-starter",
+      "relics": [
+        "herbal_pouch"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.974345723182934,
+      "avgDamageTakenPerEncounter": 29,
+      "avgTurnsPerEncounter": 5.4259259259259265,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.833333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7071651090342679,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 14,
+      "label": "solo-vitality_ring",
+      "group": "B-solo-starter",
+      "relics": [
+        "vitality_ring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.072760044188614,
+      "avgDamageTakenPerEncounter": 31.203703703703706,
+      "avgTurnsPerEncounter": 5.648148148148148,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 17.833333333333332,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7102803738317757,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7218045112781954,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 15,
+      "label": "solo-medic_kit",
+      "group": "B-solo-starter",
+      "relics": [
+        "medic_kit"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.974345723182934,
+      "avgDamageTakenPerEncounter": 29,
+      "avgTurnsPerEncounter": 5.4259259259259265,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.833333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7071651090342679,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 16,
+      "label": "solo-last_breath",
+      "group": "B-solo-starter",
+      "relics": [
+        "last_breath"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.031755683929596,
+      "avgDamageTakenPerEncounter": 30.740740740740737,
+      "avgTurnsPerEncounter": 5.5,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.00409136546184739,
+      "avgBossTurns": 16.5,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7338709677419355,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7071651090342679,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7288135593220338,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 17,
+      "label": "solo-swift_boots",
+      "group": "B-solo-starter",
+      "relics": [
+        "swift_boots"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 18,
+      "label": "solo-combo_ring",
+      "group": "B-solo-starter",
+      "relics": [
+        "combo_ring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 10.249104462526303,
+      "avgDamageTakenPerEncounter": 33.04938271604939,
+      "avgTurnsPerEncounter": 6.34567901234568,
+      "avgMaxCombo": 13,
+      "avgPerfectTurnRate": 0.0010656121103882297,
+      "avgBossTurns": 19.666666666666664,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7261410788381742,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6709677419354839,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.775330396475771,
+          "maxCombo": 18
+        }
+      ]
+    },
+    {
+      "configId": 19,
+      "label": "solo-momentum_gem",
+      "group": "B-solo-starter",
+      "relics": [
+        "momentum_gem"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.10666666666666667,
+      "avgDpsPerEncounter": 9.193543256814175,
+      "avgDamageTakenPerEncounter": 34.00617283950617,
+      "avgTurnsPerEncounter": 7.395061728395061,
+      "avgMaxCombo": 12,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 20.777777777777775,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7122507122507122,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7447552447552448,
+          "maxCombo": 14
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6903765690376569,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 20,
+      "label": "solo-speed_charm",
+      "group": "B-solo-starter",
+      "relics": [
+        "speed_charm"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 21,
+      "label": "solo-cartographers_lens",
+      "group": "B-solo-starter",
+      "relics": [
+        "cartographers_lens"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 22,
+      "label": "solo-scholars_hat",
+      "group": "B-solo-starter",
+      "relics": [
+        "scholars_hat"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 9.331527866980661,
+      "avgDamageTakenPerEncounter": 34.81481481481482,
+      "avgTurnsPerEncounter": 5.987654320987654,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0.0018214936247723133,
+      "avgBossTurns": 20.666666666666668,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7162162162162162,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7352941176470589,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 23,
+      "label": "solo-memory_palace",
+      "group": "B-solo-starter",
+      "relics": [
+        "memory_palace"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.3133333333333333,
+      "avgDpsPerEncounter": 8.865540824915826,
+      "avgDamageTakenPerEncounter": 29.271604938271604,
+      "avgTurnsPerEncounter": 6.0740740740740735,
+      "avgMaxCombo": 8,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 16.88888888888889,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6644295302013423,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7367424242424242,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 24,
+      "label": "solo-curiosity_gem",
+      "group": "B-solo-starter",
+      "relics": [
+        "curiosity_gem"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.21839080459770113,
+      "avgDpsPerEncounter": 10.279061407631247,
+      "avgDamageTakenPerEncounter": 25.555555555555554,
+      "avgTurnsPerEncounter": 5.882716049382716,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 13.777777777777777,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.6909090909090909,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7346153846153847,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7484909456740443,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 25,
+      "label": "solo-brain_booster",
+      "group": "B-solo-starter",
+      "relics": [
+        "brain_booster"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 26,
+      "label": "solo-gold_magnet",
+      "group": "B-solo-starter",
+      "relics": [
+        "gold_magnet"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 27,
+      "label": "solo-lucky_coin",
+      "group": "B-solo-starter",
+      "relics": [
+        "lucky_coin"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 28,
+      "label": "solo-scavengers_pouch",
+      "group": "B-solo-starter",
+      "relics": [
+        "scavengers_pouch"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 29,
+      "label": "solo-berserker_band",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "berserker_band"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.233152157771244,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 30,
+      "label": "solo-chain_lightning_rod",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "chain_lightning_rod"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 31,
+      "label": "solo-venom_fang",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "venom_fang"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 32,
+      "label": "solo-crescendo_blade",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "crescendo_blade"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.11834026539909,
+      "avgDamageTakenPerEncounter": 30.641975308641975,
+      "avgTurnsPerEncounter": 5.802469135802469,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 16.88888888888889,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6711409395973155,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.755939524838013,
+          "maxCombo": 15
+        }
+      ]
+    },
+    {
+      "configId": 33,
+      "label": "solo-executioners_axe",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "executioners_axe"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 34,
+      "label": "solo-fortress_wall",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "fortress_wall"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.386464930799905,
+      "avgDamageTakenPerEncounter": 35.61111111111111,
+      "avgTurnsPerEncounter": 6.296296296296297,
+      "avgMaxCombo": 10.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 19,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7175792507204611,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7075471698113207,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7142857142857143,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 35,
+      "label": "solo-mirror_shield",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "mirror_shield"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 36,
+      "label": "solo-iron_resolve",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "iron_resolve"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 37,
+      "label": "solo-phase_cloak",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "phase_cloak"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.422442505947659,
+      "avgDamageTakenPerEncounter": 36.635802469135804,
+      "avgTurnsPerEncounter": 6.3765432098765435,
+      "avgMaxCombo": 12.333333333333334,
+      "avgPerfectTurnRate": 0.0028064844561908834,
+      "avgBossTurns": 20,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7237479806138933,
+          "maxCombo": 21
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7573529411764706,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7338403041825095,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 38,
+      "label": "solo-blood_pact",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "blood_pact"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.03333333333333333,
+      "avgDpsPerEncounter": 9.498921341049089,
+      "avgDamageTakenPerEncounter": 33.617283950617285,
+      "avgTurnsPerEncounter": 6.21604938271605,
+      "avgMaxCombo": 11.333333333333334,
+      "avgPerfectTurnRate": 0.0007423904974016332,
+      "avgBossTurns": 16.222222222222225,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7087087087087087,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7621722846441947,
+          "maxCombo": 16
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7391304347826086,
+          "maxCombo": 7
+        }
+      ]
+    },
+    {
+      "configId": 39,
+      "label": "solo-phoenix_feather",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "phoenix_feather"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 40,
+      "label": "solo-renewal_spring",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "renewal_spring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 41,
+      "label": "solo-quicksilver",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "quicksilver"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.959116041191512,
+      "avgDamageTakenPerEncounter": 28.685185185185187,
+      "avgTurnsPerEncounter": 6.481481481481482,
+      "avgMaxCombo": 11.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 20,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6993464052287581,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7260726072607261,
+          "maxCombo": 16
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7142857142857143,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 42,
+      "label": "solo-afterimage",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "afterimage"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 43,
+      "label": "solo-double_vision",
+      "group": "C-solo-unlockable",
+      "relics": [
+        "double_vision"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 44,
+      "label": "synergy-combo-damage",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "war_drum",
+        "combo_ring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.49333333333333335,
+      "avgDpsPerEncounter": 13.402492737560445,
+      "avgDamageTakenPerEncounter": 17.419753086419757,
+      "avgTurnsPerEncounter": 5.049382716049383,
+      "avgMaxCombo": 15.333333333333334,
+      "avgPerfectTurnRate": 0.0009980039920159682,
+      "avgBossTurns": 14.111111111111112,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7116279069767442,
+          "maxCombo": 20
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7905138339920948,
+          "maxCombo": 14
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7456359102244389,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 45,
+      "label": "synergy-correct-streaks",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "memory_palace",
+        "crescendo_blade"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.07894632600515,
+      "avgDamageTakenPerEncounter": 29.8641975308642,
+      "avgTurnsPerEncounter": 6.012345679012346,
+      "avgMaxCombo": 8,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 18,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6644295302013423,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7456310679611651,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 46,
+      "label": "synergy-domain-knowledge",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "eidetic_memory",
+        "polyglot_pendant"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 47,
+      "label": "synergy-domain-special",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "domain_mastery",
+        "polyglot_pendant"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 48,
+      "label": "synergy-block-stack",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "stone_wall",
+        "fortress_wall",
+        "iron_buckler"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 9.498856620465327,
+      "avgDamageTakenPerEncounter": 29.81481481481482,
+      "avgTurnsPerEncounter": 6.209876543209877,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 17.5,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7307692307692307,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 49,
+      "label": "synergy-heal-stack",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "herbal_pouch",
+        "scholars_hat",
+        "medic_kit",
+        "blood_pact"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.673469387755102,
+      "avgDpsPerEncounter": 9.64956494486453,
+      "avgDamageTakenPerEncounter": 30.456790123456788,
+      "avgTurnsPerEncounter": 6.703703703703703,
+      "avgMaxCombo": 11.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 19.11111111111111,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7461406518010292,
+          "maxCombo": 15
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7172413793103448,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 50,
+      "label": "synergy-speed-bonus",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "speed_charm",
+        "sharp_eye"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.976629837536011,
+      "avgDamageTakenPerEncounter": 28.314814814814813,
+      "avgTurnsPerEncounter": 5.407407407407407,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.0020576131687242796,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.710691823899371,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7217391304347827,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 51,
+      "label": "synergy-ap-economy",
+      "group": "D-synergy-pairs",
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.14666666666666667,
+      "avgDpsPerEncounter": 9.40575637632999,
+      "avgDamageTakenPerEncounter": 26.58641975308642,
+      "avgTurnsPerEncounter": 6.493827160493827,
+      "avgMaxCombo": 14,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 16.555555555555557,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7321937321937322,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7352941176470589,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7073170731707317,
+          "maxCombo": 13
+        }
+      ]
+    },
+    {
+      "configId": 52,
+      "label": "combo-immortality",
+      "group": "E-breaking-combos",
+      "relics": [
+        "last_breath",
+        "phoenix_feather"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.031755683929596,
+      "avgDamageTakenPerEncounter": 30.740740740740737,
+      "avgTurnsPerEncounter": 5.5,
+      "avgMaxCombo": 8.666666666666666,
+      "avgPerfectTurnRate": 0.00409136546184739,
+      "avgBossTurns": 16.5,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7338709677419355,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7071651090342679,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7288135593220338,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 53,
+      "label": "combo-glass-dodge",
+      "group": "E-breaking-combos",
+      "relics": [
+        "glass_cannon",
+        "phase_cloak"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 10.167702369315274,
+      "avgDamageTakenPerEncounter": 24,
+      "avgTurnsPerEncounter": 6.2592592592592595,
+      "avgMaxCombo": 13,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 21.11111111111111,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.6868932038834952,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7578347578347578,
+          "maxCombo": 18
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7183908045977011,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 54,
+      "label": "combo-draw-lifesteal",
+      "group": "E-breaking-combos",
+      "relics": [
+        "blood_price",
+        "blood_pact"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.006666666666666667,
+      "avgDpsPerEncounter": 9.294982078853048,
+      "avgDamageTakenPerEncounter": 27.12345679012346,
+      "avgTurnsPerEncounter": 5.62962962962963,
+      "avgMaxCombo": 10.333333333333334,
+      "avgPerfectTurnRate": 0.004115226337448559,
+      "avgBossTurns": 17,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.75,
+          "maxCombo": 16
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7272727272727273,
+          "maxCombo": 7
+        }
+      ]
+    },
+    {
+      "configId": 55,
+      "label": "combo-draw-avalanche",
+      "group": "E-breaking-combos",
+      "relics": [
+        "swift_boots",
+        "afterimage",
+        "blood_price"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.64773239779526,
+      "avgDamageTakenPerEncounter": 22.604938271604937,
+      "avgTurnsPerEncounter": 5.469135802469135,
+      "avgMaxCombo": 10,
+      "avgPerfectTurnRate": 0.0022222222222222222,
+      "avgBossTurns": 14,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7321428571428571,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7297794117647058,
+          "maxCombo": 15
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7339449541284404,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 56,
+      "label": "combo-ap-overflow",
+      "group": "E-breaking-combos",
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem",
+        "swift_boots"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.14666666666666667,
+      "avgDpsPerEncounter": 9.40575637632999,
+      "avgDamageTakenPerEncounter": 26.58641975308642,
+      "avgTurnsPerEncounter": 6.493827160493827,
+      "avgMaxCombo": 14,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 16.555555555555557,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7321937321937322,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7352941176470589,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7073170731707317,
+          "maxCombo": 13
+        }
+      ]
+    },
+    {
+      "configId": 57,
+      "label": "combo-multihit-mega",
+      "group": "E-breaking-combos",
+      "relics": [
+        "chain_lightning_rod",
+        "whetstone",
+        "war_drum",
+        "barbed_edge"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.5622895622895623,
+      "avgDpsPerEncounter": 11.454487831333468,
+      "avgDamageTakenPerEncounter": 24.37037037037037,
+      "avgTurnsPerEncounter": 5.320987654320988,
+      "avgMaxCombo": 11,
+      "avgPerfectTurnRate": 0.0021645021645021645,
+      "avgBossTurns": 14.777777777777779,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7252475247524752,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6864406779661016,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7518610421836228,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 58,
+      "label": "combo-invincible-tank",
+      "group": "E-breaking-combos",
+      "relics": [
+        "fortress_wall",
+        "stone_wall",
+        "iron_buckler",
+        "mirror_shield",
+        "iron_resolve"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 9.498856620465327,
+      "avgDamageTakenPerEncounter": 29.81481481481482,
+      "avgTurnsPerEncounter": 6.209876543209877,
+      "avgMaxCombo": 9.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 17.5,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7307692307692307,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 59,
+      "label": "combo-berserker-glass",
+      "group": "E-breaking-combos",
+      "relics": [
+        "berserker_band",
+        "glass_cannon",
+        "crescendo_blade"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 11.779000575763165,
+      "avgDamageTakenPerEncounter": 25.950617283950617,
+      "avgTurnsPerEncounter": 4.790123456790123,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 15,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7289719626168224,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6779661016949152,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7690217391304348,
+          "maxCombo": 13
+        }
+      ]
+    },
+    {
+      "configId": 60,
+      "label": "combo-max-sustain",
+      "group": "E-breaking-combos",
+      "relics": [
+        "scholars_hat",
+        "herbal_pouch",
+        "blood_pact",
+        "renewal_spring",
+        "medic_kit",
+        "vitality_ring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 7,
+      "avgHpPercent": 0.6419753086419754,
+      "avgDpsPerEncounter": 9.795706276122928,
+      "avgDamageTakenPerEncounter": 34.01234567901235,
+      "avgTurnsPerEncounter": 6.580246913580247,
+      "avgMaxCombo": 17.333333333333332,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 19.666666666666668,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7315315315315315,
+          "maxCombo": 33
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7172413793103448,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 61,
+      "label": "combo-max-offense",
+      "group": "E-breaking-combos",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "glass_cannon",
+        "barbed_edge",
+        "war_drum",
+        "crescendo_blade"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.7266666666666667,
+      "avgDpsPerEncounter": 21.086101637825774,
+      "avgDamageTakenPerEncounter": 12.59259259259259,
+      "avgTurnsPerEncounter": 3.271604938271605,
+      "avgMaxCombo": 11.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 8.555555555555555,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7761904761904762,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7867298578199052,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7850877192982456,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 62,
+      "label": "combo-combo-engine",
+      "group": "E-breaking-combos",
+      "relics": [
+        "combo_ring",
+        "war_drum",
+        "momentum_gem",
+        "sharp_eye",
+        "speed_charm"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 8,
+      "avgHpPercent": 0.5099999999999999,
+      "avgDpsPerEncounter": 13.54977981005645,
+      "avgDamageTakenPerEncounter": 19.462962962962962,
+      "avgTurnsPerEncounter": 4.7592592592592595,
+      "avgMaxCombo": 12,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 11.722222222222223,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7292307692307692,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.6959706959706959,
+          "maxCombo": 9
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7655367231638418,
+          "maxCombo": 16
+        }
+      ]
+    },
+    {
+      "configId": 63,
+      "label": "combo-max-defense",
+      "group": "E-breaking-combos",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "phase_cloak",
+        "thorned_vest",
+        "last_breath",
+        "phoenix_feather"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.34,
+      "avgDpsPerEncounter": 9.353406157177359,
+      "avgDamageTakenPerEncounter": 32.7283950617284,
+      "avgTurnsPerEncounter": 5.827160493827161,
+      "avgMaxCombo": 11.666666666666666,
+      "avgPerfectTurnRate": 0.0008888888888888888,
+      "avgBossTurns": 19.166666666666668,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6950354609929078,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7360178970917226,
+          "maxCombo": 18
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7338129496402878,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 64,
+      "label": "build-full-aggro",
+      "group": "F-full-builds",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "barbed_edge",
+        "war_drum",
+        "glass_cannon",
+        "berserker_band",
+        "chain_lightning_rod",
+        "crescendo_blade"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 0.6233333333333334,
+      "avgDpsPerEncounter": 37.257028064187914,
+      "avgDamageTakenPerEncounter": 12.138888888888891,
+      "avgTurnsPerEncounter": 2.888888888888889,
+      "avgMaxCombo": 15,
+      "avgPerfectTurnRate": 0.000462962962962963,
+      "avgBossTurns": 6,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9005424954792043,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8991304347826087,
+          "maxCombo": 21
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9096153846153846,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 65,
+      "label": "build-iron-fortress",
+      "group": "F-full-builds",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "thorned_vest",
+        "fortress_wall",
+        "mirror_shield",
+        "iron_resolve",
+        "phase_cloak"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 23,
+      "avgHpPercent": 0.6699999999999999,
+      "avgDpsPerEncounter": 18.960259546287467,
+      "avgDamageTakenPerEncounter": 17.608465608465607,
+      "avgTurnsPerEncounter": 5.159391534391534,
+      "avgMaxCombo": 20,
+      "avgPerfectTurnRate": 0.010611464790597352,
+      "avgBossTurns": 14.791666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8940329218106996,
+          "maxCombo": 19
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8987068965517241,
+          "maxCombo": 19
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8913282107574094,
+          "maxCombo": 22
+        }
+      ]
+    },
+    {
+      "configId": 66,
+      "label": "build-knowledge-scholar",
+      "group": "F-full-builds",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "curiosity_gem",
+        "domain_mastery",
+        "eidetic_memory",
+        "polyglot_pendant",
+        "speed_reader",
+        "sharp_eye"
+      ],
+      "baseProfile": "scholar-expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 13,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 15.74051414833589,
+      "avgDamageTakenPerEncounter": 20.500881834215168,
+      "avgTurnsPerEncounter": 4.867724867724868,
+      "avgMaxCombo": 19,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 11.841269841269842,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7952127659574468,
+          "maxCombo": 18
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.7965931863727455,
+          "maxCombo": 25
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.8137931034482758,
+          "maxCombo": 14
+        }
+      ]
+    },
+    {
+      "configId": 67,
+      "label": "build-sustain-god",
+      "group": "F-full-builds",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "medic_kit",
+        "last_breath",
+        "blood_pact",
+        "phoenix_feather",
+        "renewal_spring",
+        "scholars_hat"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.3333333333333333,
+      "avgFinalFloor": 23,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 19.637527188440412,
+      "avgDamageTakenPerEncounter": 20.031084656084655,
+      "avgTurnsPerEncounter": 4.968253968253968,
+      "avgMaxCombo": 31.666666666666668,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 12.964285714285714,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8853118712273642,
+          "maxCombo": 29
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.9090909090909091,
+          "maxCombo": 30
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9033203125,
+          "maxCombo": 36
+        }
+      ]
+    },
+    {
+      "configId": 68,
+      "label": "build-speed-demon",
+      "group": "F-full-builds",
+      "relics": [
+        "swift_boots",
+        "combo_ring",
+        "momentum_gem",
+        "afterimage",
+        "quicksilver",
+        "double_vision",
+        "sharp_eye",
+        "speed_charm"
+      ],
+      "baseProfile": "speed-runner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 0.63,
+      "avgDpsPerEncounter": 25.123834094102904,
+      "avgDamageTakenPerEncounter": 15.236111111111112,
+      "avgTurnsPerEncounter": 4.263888888888888,
+      "avgMaxCombo": 34,
+      "avgPerfectTurnRate": 0.00025819777949909634,
+      "avgBossTurns": 12.833333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9016083254493851,
+          "maxCombo": 47
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8885480572597138,
+          "maxCombo": 29
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8866666666666667,
+          "maxCombo": 26
+        }
+      ]
+    },
+    {
+      "configId": 69,
+      "label": "build-cursed-gambler",
+      "group": "F-full-builds",
+      "relics": [
+        "glass_cannon",
+        "blood_price",
+        "berserker_band",
+        "phase_cloak",
+        "blood_pact",
+        "last_breath"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 1,
+      "avgDpsPerEncounter": 23.905980413598694,
+      "avgDamageTakenPerEncounter": 18.72685185185185,
+      "avgTurnsPerEncounter": 4.347222222222222,
+      "avgMaxCombo": 28.666666666666668,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 10.583333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8997747747747747,
+          "maxCombo": 27
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8961625282167043,
+          "maxCombo": 32
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8904933814681107,
+          "maxCombo": 27
+        }
+      ]
+    },
+    {
+      "configId": 70,
+      "label": "build-balanced-best",
+      "group": "F-full-builds",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "herbal_pouch",
+        "swift_boots",
+        "scholars_hat",
+        "combo_ring",
+        "vitality_ring",
+        "last_breath"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 22,
+      "avgHpPercent": 0.6419753086419754,
+      "avgDpsPerEncounter": 21.820435614641145,
+      "avgDamageTakenPerEncounter": 17.21604938271605,
+      "avgTurnsPerEncounter": 4.327160493827161,
+      "avgMaxCombo": 22.666666666666668,
+      "avgPerfectTurnRate": 0.00043687199650502403,
+      "avgBossTurns": 10.305555555555555,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8979591836734694,
+          "maxCombo": 25
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 18,
+          "totalEncounters": 54,
+          "accuracy": 0.8946488294314381,
+          "maxCombo": 21
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9065628476084538,
+          "maxCombo": 22
+        }
+      ]
+    },
+    {
+      "configId": 71,
+      "label": "build-economy-engine",
+      "group": "F-full-builds",
+      "relics": [
+        "gold_magnet",
+        "lucky_coin",
+        "scavengers_pouch",
+        "prospectors_pick",
+        "miser_ring",
+        "swift_boots",
+        "vitality_ring",
+        "last_breath"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 19,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 19.126745285680585,
+      "avgDamageTakenPerEncounter": 18.70899470899471,
+      "avgTurnsPerEncounter": 4.631746031746032,
+      "avgMaxCombo": 27.666666666666668,
+      "avgPerfectTurnRate": 0.001104684584896441,
+      "avgBossTurns": 11.914285714285713,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8966745843230404,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.9104829210836278,
+          "maxCombo": 30
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 15,
+          "totalEncounters": 45,
+          "accuracy": 0.896421845574388,
+          "maxCombo": 36
+        }
+      ]
+    },
+    {
+      "configId": 72,
+      "label": "skill-offense-beginner",
+      "group": "G-skill-relic",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "baseProfile": "beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4.333333333333333,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 8.914534534534534,
+      "avgDamageTakenPerEncounter": 25.15740740740741,
+      "avgTurnsPerEncounter": 5.5555555555555545,
+      "avgMaxCombo": 5.333333333333333,
+      "avgPerfectTurnRate": 0.0008865248226950354,
+      "avgBossTurns": 14.166666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.5769230769230769,
+          "maxCombo": 4
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 4,
+          "totalEncounters": 12,
+          "accuracy": 0.48945147679324896,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.5160142348754448,
+          "maxCombo": 5
+        }
+      ]
+    },
+    {
+      "configId": 73,
+      "label": "skill-offense-average",
+      "group": "G-skill-relic",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.33,
+      "avgDpsPerEncounter": 17.364713141893926,
+      "avgDamageTakenPerEncounter": 14.962962962962962,
+      "avgTurnsPerEncounter": 3.987654320987654,
+      "avgMaxCombo": 13.333333333333334,
+      "avgPerfectTurnRate": 0.0010351966873706003,
+      "avgBossTurns": 10.555555555555555,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7508650519031141,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7795918367346939,
+          "maxCombo": 19
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7842465753424658,
+          "maxCombo": 9
+        }
+      ]
+    },
+    {
+      "configId": 74,
+      "label": "skill-offense-expert",
+      "group": "G-skill-relic",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 1,
+      "avgDpsPerEncounter": 30.893908075768376,
+      "avgDamageTakenPerEncounter": 11.930555555555557,
+      "avgTurnsPerEncounter": 3.319444444444444,
+      "avgMaxCombo": 21.666666666666668,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 8.541666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9045521292217328,
+          "maxCombo": 24
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8885542168674698,
+          "maxCombo": 20
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9208261617900172,
+          "maxCombo": 21
+        }
+      ]
+    },
+    {
+      "configId": 75,
+      "label": "skill-offense-struggling",
+      "group": "G-skill-relic",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2.6666666666666665,
+      "avgHpPercent": 0.5166666666666667,
+      "avgDpsPerEncounter": 5.417662285941856,
+      "avgDamageTakenPerEncounter": 31.759259259259256,
+      "avgTurnsPerEncounter": 8.62962962962963,
+      "avgMaxCombo": 4.333333333333333,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 8.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 6,
+          "accuracy": 0.3390804597701149,
+          "maxCombo": 3
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.3672316384180791,
+          "maxCombo": 3
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.3872340425531915,
+          "maxCombo": 7
+        }
+      ]
+    },
+    {
+      "configId": 76,
+      "label": "skill-defense-beginner",
+      "group": "G-skill-relic",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "fortress_wall"
+      ],
+      "baseProfile": "beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 3,
+      "avgHpPercent": 0.01,
+      "avgDpsPerEncounter": 4.153729980013927,
+      "avgDamageTakenPerEncounter": 79.94074074074074,
+      "avgTurnsPerEncounter": 12.07037037037037,
+      "avgMaxCombo": 6.333333333333333,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 6.166666666666667,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.5365344467640919,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 1,
+          "totalEncounters": 2,
+          "accuracy": 0.5483870967741935,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.4883720930232558,
+          "maxCombo": 5
+        }
+      ]
+    },
+    {
+      "configId": 77,
+      "label": "skill-defense-average",
+      "group": "G-skill-relic",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "fortress_wall"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.34,
+      "avgDpsPerEncounter": 9.696189853273852,
+      "avgDamageTakenPerEncounter": 30.59259259259259,
+      "avgTurnsPerEncounter": 5.506172839506173,
+      "avgMaxCombo": 10,
+      "avgPerfectTurnRate": 0.0019267822736030828,
+      "avgBossTurns": 16.333333333333332,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7322834645669292,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7668067226890757,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7372881355932204,
+          "maxCombo": 7
+        }
+      ]
+    },
+    {
+      "configId": 78,
+      "label": "skill-defense-expert",
+      "group": "G-skill-relic",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "fortress_wall"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 19,
+      "avgHpPercent": 0.01,
+      "avgDpsPerEncounter": 19.67355946765481,
+      "avgDamageTakenPerEncounter": 24.985185185185184,
+      "avgTurnsPerEncounter": 5.004232804232804,
+      "avgMaxCombo": 24,
+      "avgPerfectTurnRate": 0.001032553231321921,
+      "avgBossTurns": 14.857142857142856,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8959835221421215,
+          "maxCombo": 23
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.9090909090909091,
+          "maxCombo": 24
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 15,
+          "totalEncounters": 45,
+          "accuracy": 0.912568306010929,
+          "maxCombo": 25
+        }
+      ]
+    },
+    {
+      "configId": 79,
+      "label": "skill-defense-struggling",
+      "group": "G-skill-relic",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "fortress_wall"
+      ],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2,
+      "avgHpPercent": 0.012106782106782107,
+      "avgDpsPerEncounter": 3.5331721024507097,
+      "avgDamageTakenPerEncounter": 67.85000000000001,
+      "avgTurnsPerEncounter": 11.4,
+      "avgMaxCombo": 4.666666666666667,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 0,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.41875,
+          "maxCombo": 4
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 4,
+          "accuracy": 0.4482758620689655,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.4292929292929293,
+          "maxCombo": 4
+        }
+      ]
+    },
+    {
+      "configId": 80,
+      "label": "skill-knowledge-beginner",
+      "group": "G-skill-relic",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "combo_ring",
+        "momentum_gem"
+      ],
+      "baseProfile": "beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2.6666666666666665,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 5.023077251387111,
+      "avgDamageTakenPerEncounter": 52.88888888888889,
+      "avgTurnsPerEncounter": 10.055555555555555,
+      "avgMaxCombo": 6.333333333333333,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 13.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.5355450236966824,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.48863636363636365,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 4,
+          "accuracy": 0.5066666666666667,
+          "maxCombo": 6
+        }
+      ]
+    },
+    {
+      "configId": 81,
+      "label": "skill-knowledge-average",
+      "group": "G-skill-relic",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "combo_ring",
+        "momentum_gem"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.9033333333333333,
+      "avgDpsPerEncounter": 11.512350535831198,
+      "avgDamageTakenPerEncounter": 26.567901234567902,
+      "avgTurnsPerEncounter": 5.987654320987654,
+      "avgMaxCombo": 17.666666666666668,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 14.333333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7191011235955056,
+          "maxCombo": 24
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7325842696629213,
+          "maxCombo": 15
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7238979118329466,
+          "maxCombo": 14
+        }
+      ]
+    },
+    {
+      "configId": 82,
+      "label": "skill-knowledge-expert",
+      "group": "G-skill-relic",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "combo_ring",
+        "momentum_gem"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 23,
+      "avgHpPercent": 0.54,
+      "avgDpsPerEncounter": 23.02553847914759,
+      "avgDamageTakenPerEncounter": 16.550264550264547,
+      "avgTurnsPerEncounter": 4.360449735449735,
+      "avgMaxCombo": 26,
+      "avgPerfectTurnRate": 0.0002896032435563278,
+      "avgBossTurns": 11.541666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8956521739130435,
+          "maxCombo": 33
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.895,
+          "maxCombo": 18
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9075342465753424,
+          "maxCombo": 27
+        }
+      ]
+    },
+    {
+      "configId": 83,
+      "label": "skill-knowledge-struggling",
+      "group": "G-skill-relic",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "combo_ring",
+        "momentum_gem"
+      ],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 3,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 4.134444444444444,
+      "avgDamageTakenPerEncounter": 38.2962962962963,
+      "avgTurnsPerEncounter": 8.777777777777779,
+      "avgMaxCombo": 6.666666666666667,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 14.333333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.3532110091743119,
+          "maxCombo": 5
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.3849056603773585,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.419811320754717,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 84,
+      "label": "skill-sustain-beginner",
+      "group": "G-skill-relic",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "last_breath",
+        "renewal_spring"
+      ],
+      "baseProfile": "beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 3,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 4.1975718684624965,
+      "avgDamageTakenPerEncounter": 73.27407407407408,
+      "avgTurnsPerEncounter": 11.885185185185186,
+      "avgMaxCombo": 6.333333333333333,
+      "avgPerfectTurnRate": 0.0027548209366391185,
+      "avgBossTurns": 6,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.5399159663865546,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 1,
+          "totalEncounters": 2,
+          "accuracy": 0.5666666666666667,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.4883720930232558,
+          "maxCombo": 5
+        }
+      ]
+    },
+    {
+      "configId": 85,
+      "label": "skill-sustain-average",
+      "group": "G-skill-relic",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "last_breath",
+        "renewal_spring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 4,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 9.250434782608695,
+      "avgDamageTakenPerEncounter": 34.425925925925924,
+      "avgTurnsPerEncounter": 5.7407407407407405,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0.004597574908432299,
+      "avgBossTurns": 18.666666666666668,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7338709677419355,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7129629629629629,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7279411764705882,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 86,
+      "label": "skill-sustain-expert",
+      "group": "G-skill-relic",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "last_breath",
+        "renewal_spring"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 19,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 19.126745285680585,
+      "avgDamageTakenPerEncounter": 18.70899470899471,
+      "avgTurnsPerEncounter": 4.631746031746032,
+      "avgMaxCombo": 27.666666666666668,
+      "avgPerfectTurnRate": 0.001104684584896441,
+      "avgBossTurns": 11.914285714285713,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.8966745843230404,
+          "maxCombo": 17
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 21,
+          "totalEncounters": 63,
+          "accuracy": 0.9104829210836278,
+          "maxCombo": 30
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 15,
+          "totalEncounters": 45,
+          "accuracy": 0.896421845574388,
+          "maxCombo": 36
+        }
+      ]
+    },
+    {
+      "configId": 87,
+      "label": "skill-sustain-struggling",
+      "group": "G-skill-relic",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "last_breath",
+        "renewal_spring"
+      ],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 3.5235280151946817,
+      "avgDamageTakenPerEncounter": 63.38333333333333,
+      "avgTurnsPerEncounter": 11.266666666666666,
+      "avgMaxCombo": 4.666666666666667,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 0,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.41875,
+          "maxCombo": 4
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 4,
+          "accuracy": 0.4482758620689655,
+          "maxCombo": 6
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.4375,
+          "maxCombo": 4
+        }
+      ]
+    },
+    {
+      "configId": 88,
+      "label": "skill-cursed-beginner",
+      "group": "G-skill-relic",
+      "relics": [
+        "glass_cannon",
+        "blood_price"
+      ],
+      "baseProfile": "beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 3,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 6.182718446601942,
+      "avgDamageTakenPerEncounter": 33.050000000000004,
+      "avgTurnsPerEncounter": 8.046296296296296,
+      "avgMaxCombo": 6.333333333333333,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 14.333333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.5524475524475524,
+          "maxCombo": 4
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 2,
+          "totalEncounters": 5,
+          "accuracy": 0.5170068027210885,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 4,
+          "totalEncounters": 12,
+          "accuracy": 0.5185185185185185,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 89,
+      "label": "skill-cursed-average",
+      "group": "G-skill-relic",
+      "relics": [
+        "glass_cannon",
+        "blood_price"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 5,
+      "avgHpPercent": 0.32666666666666666,
+      "avgDpsPerEncounter": 10.853147406608826,
+      "avgDamageTakenPerEncounter": 24.061728395061724,
+      "avgTurnsPerEncounter": 5.234567901234567,
+      "avgMaxCombo": 11.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 15.555555555555555,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7414634146341463,
+          "maxCombo": 18
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.6869565217391305,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.7286821705426356,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 90,
+      "label": "skill-cursed-expert",
+      "group": "G-skill-relic",
+      "relics": [
+        "glass_cannon",
+        "blood_price"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 0.88,
+      "avgDpsPerEncounter": 24.506983477224804,
+      "avgDamageTakenPerEncounter": 14.782407407407407,
+      "avgTurnsPerEncounter": 4.143518518518518,
+      "avgMaxCombo": 28,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 9.583333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9156479217603912,
+          "maxCombo": 26
+        },
+        {
+          "seed": 1001,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8922077922077922,
+          "maxCombo": 32
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9,
+          "maxCombo": 26
+        }
+      ]
+    },
+    {
+      "configId": 91,
+      "label": "skill-cursed-struggling",
+      "group": "G-skill-relic",
+      "relics": [
+        "glass_cannon",
+        "blood_price"
+      ],
+      "baseProfile": "struggling",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 2.3333333333333335,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 4.6564229605356,
+      "avgDamageTakenPerEncounter": 37.541666666666664,
+      "avgTurnsPerEncounter": 7.976851851851852,
+      "avgMaxCombo": 3.3333333333333335,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 2,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 1,
+          "totalEncounters": 2,
+          "accuracy": 0.417910447761194,
+          "maxCombo": 3
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 8,
+          "accuracy": 0.3582089552238806,
+          "maxCombo": 3
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 3,
+          "totalEncounters": 9,
+          "accuracy": 0.4176470588235294,
+          "maxCombo": 4
+        }
+      ]
+    },
+    {
+      "configId": 92,
+      "label": "prog-new-offense",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "herbal_pouch"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 10.048065766267522,
+      "avgDamageTakenPerEncounter": 26.833333333333332,
+      "avgTurnsPerEncounter": 5.833333333333333,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 15.833333333333334,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.714765100671141,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7131474103585658,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7322580645161291,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 93,
+      "label": "prog-new-tactical",
+      "group": "H-progression",
+      "relics": [
+        "swift_boots",
+        "scholars_hat",
+        "combo_ring"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 8,
+      "avgHpPercent": 0.3333333333333333,
+      "avgDpsPerEncounter": 10.272077922077921,
+      "avgDamageTakenPerEncounter": 29.314814814814813,
+      "avgTurnsPerEncounter": 6.006172839506173,
+      "avgMaxCombo": 13.333333333333334,
+      "avgPerfectTurnRate": 0.0005649717514124294,
+      "avgBossTurns": 16.61111111111111,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.729490022172949,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.6855123674911661,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7685393258426966,
+          "maxCombo": 17
+        }
+      ]
+    },
+    {
+      "configId": 94,
+      "label": "prog-early-unlock",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "venom_fang",
+        "renewal_spring",
+        "time_dilation"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0,
+      "avgDpsPerEncounter": 10.046945945438853,
+      "avgDamageTakenPerEncounter": 26.555555555555554,
+      "avgTurnsPerEncounter": 5.814814814814814,
+      "avgMaxCombo": 9.333333333333334,
+      "avgPerfectTurnRate": 0.0009950248756218905,
+      "avgBossTurns": 15.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.714765100671141,
+          "maxCombo": 8
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.717741935483871,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "defeat",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7322580645161291,
+          "maxCombo": 10
+        }
+      ]
+    },
+    {
+      "configId": 95,
+      "label": "prog-mid-unlock",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "fortress_wall",
+        "blood_pact",
+        "afterimage",
+        "quicksilver"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.63,
+      "avgDpsPerEncounter": 10.875079604130809,
+      "avgDamageTakenPerEncounter": 25.691358024691358,
+      "avgTurnsPerEncounter": 6.185185185185186,
+      "avgMaxCombo": 14.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 15.111111111111112,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7339055793991416,
+          "maxCombo": 19
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.751984126984127,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7415966386554622,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 96,
+      "label": "prog-late-unlock",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "swift_boots",
+        "chain_lightning_rod",
+        "fortress_wall",
+        "phoenix_feather",
+        "quicksilver",
+        "blood_pact"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.63,
+      "avgDpsPerEncounter": 10.875079604130809,
+      "avgDamageTakenPerEncounter": 25.691358024691358,
+      "avgTurnsPerEncounter": 6.185185185185186,
+      "avgMaxCombo": 14.666666666666666,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 15.111111111111112,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7339055793991416,
+          "maxCombo": 19
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.751984126984127,
+          "maxCombo": 13
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7415966386554622,
+          "maxCombo": 12
+        }
+      ]
+    },
+    {
+      "configId": 97,
+      "label": "prog-all-starters",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "barbed_edge",
+        "war_drum",
+        "sharp_eye",
+        "iron_buckler",
+        "steel_skin",
+        "thorned_vest",
+        "stone_wall",
+        "herbal_pouch",
+        "vitality_ring",
+        "medic_kit",
+        "last_breath",
+        "swift_boots",
+        "combo_ring",
+        "momentum_gem",
+        "speed_charm",
+        "cartographers_lens",
+        "scholars_hat",
+        "memory_palace",
+        "curiosity_gem",
+        "brain_booster",
+        "gold_magnet",
+        "lucky_coin",
+        "scavengers_pouch"
+      ],
+      "baseProfile": "average",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 9,
+      "avgHpPercent": 0.8580246913580248,
+      "avgDpsPerEncounter": 20.708874458874458,
+      "avgDamageTakenPerEncounter": 10.209876543209877,
+      "avgTurnsPerEncounter": 3.1604938271604937,
+      "avgMaxCombo": 10.333333333333334,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 8.111111111111112,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7377777777777778,
+          "maxCombo": 12
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7783018867924528,
+          "maxCombo": 11
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 9,
+          "totalEncounters": 27,
+          "accuracy": 0.7142857142857143,
+          "maxCombo": 8
+        }
+      ]
+    },
+    {
+      "configId": 98,
+      "label": "prog-full-expert",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "swift_boots",
+        "combo_ring",
+        "flame_brand",
+        "fortress_wall",
+        "blood_pact",
+        "phoenix_feather"
+      ],
+      "baseProfile": "expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 24,
+      "avgHpPercent": 0.4633333333333334,
+      "avgDpsPerEncounter": 30.570046466470824,
+      "avgDamageTakenPerEncounter": 13.407407407407407,
+      "avgTurnsPerEncounter": 3.472222222222222,
+      "avgMaxCombo": 18.666666666666668,
+      "avgPerfectTurnRate": 0.00040551500405515005,
+      "avgBossTurns": 9,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9106382978723404,
+          "maxCombo": 22
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.9026275115919629,
+          "maxCombo": 20
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8842443729903537,
+          "maxCombo": 14
+        }
+      ]
+    },
+    {
+      "configId": 99,
+      "label": "prog-full-scholar",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "swift_boots",
+        "combo_ring",
+        "flame_brand",
+        "fortress_wall",
+        "blood_pact",
+        "phoenix_feather"
+      ],
+      "baseProfile": "scholar-expert",
+      "seedCount": 3,
+      "avgSurvivalRate": 0.6666666666666666,
+      "avgFinalFloor": 21,
+      "avgHpPercent": 0.6966666666666667,
+      "avgDpsPerEncounter": 24.59857454036977,
+      "avgDamageTakenPerEncounter": 15.616666666666665,
+      "avgTurnsPerEncounter": 3.989814814814815,
+      "avgMaxCombo": 17.666666666666668,
+      "avgPerfectTurnRate": 0.0006775067750677508,
+      "avgBossTurns": 10.066666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8001949317738791,
+          "maxCombo": 29
+        },
+        {
+          "seed": 1001,
+          "result": "defeat",
+          "finalFloor": 15,
+          "totalEncounters": 45,
+          "accuracy": 0.7938144329896907,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1002,
+          "result": "victory",
+          "finalFloor": 24,
+          "totalEncounters": 72,
+          "accuracy": 0.8050595238095238,
+          "maxCombo": 14
+        }
+      ]
+    },
+    {
+      "configId": 100,
+      "label": "prog-full-story",
+      "group": "H-progression",
+      "relics": [
+        "whetstone",
+        "iron_buckler",
+        "swift_boots",
+        "combo_ring",
+        "flame_brand",
+        "fortress_wall",
+        "blood_pact",
+        "phoenix_feather"
+      ],
+      "baseProfile": "story-beginner",
+      "seedCount": 3,
+      "avgSurvivalRate": 0,
+      "avgFinalFloor": 6,
+      "avgHpPercent": 0.8566666666666666,
+      "avgDpsPerEncounter": 15.009071038251369,
+      "avgDamageTakenPerEncounter": 13.666666666666666,
+      "avgTurnsPerEncounter": 3.814814814814815,
+      "avgMaxCombo": 8,
+      "avgPerfectTurnRate": 0,
+      "avgBossTurns": 10.666666666666666,
+      "seeds": [
+        {
+          "seed": 1000,
+          "result": "cash_out",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7471264367816092,
+          "maxCombo": 10
+        },
+        {
+          "seed": 1001,
+          "result": "cash_out",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.6510416666666666,
+          "maxCombo": 7
+        },
+        {
+          "seed": 1002,
+          "result": "cash_out",
+          "finalFloor": 6,
+          "totalEncounters": 18,
+          "accuracy": 0.7248322147651006,
+          "maxCombo": 7
+        }
+      ]
+    }
+  ],
+  "relicImpactRanking": [
+    {
+      "relicId": "flame_brand",
+      "survivalImpact": 1.25,
+      "dpsImpact": 0.5349634830041698,
+      "defenseImpact": 0.4519293655984303,
+      "floorImpact": 1.25,
+      "overallScore": 0.7456309495342001
+    },
+    {
+      "relicId": "war_drum",
+      "survivalImpact": 0.75,
+      "dpsImpact": 0.19270392428108074,
+      "defenseImpact": 0.10791366906474827,
+      "floorImpact": 0.75,
+      "overallScore": 0.3502058644486097
+    },
+    {
+      "relicId": "curiosity_gem",
+      "survivalImpact": 0.75,
+      "dpsImpact": 0.1450913754568651,
+      "defenseImpact": 0.09744931327665142,
+      "floorImpact": 0.75,
+      "overallScore": 0.33084689624450553
+    },
+    {
+      "relicId": "combo_ring",
+      "survivalImpact": 0.75,
+      "dpsImpact": 0.1417541603051744,
+      "defenseImpact": -0.1672116851972969,
+      "floorImpact": 0.75,
+      "overallScore": 0.2415141583692925
+    },
+    {
+      "relicId": "whetstone",
+      "survivalImpact": 0.5,
+      "dpsImpact": 0.07388266581935708,
+      "defenseImpact": 0.09090909090909073,
+      "floorImpact": 0.5,
+      "overallScore": 0.22159725224281593
+    },
+    {
+      "relicId": "blood_pact",
+      "survivalImpact": 0.5,
+      "dpsImpact": 0.05818347341550188,
+      "defenseImpact": -0.18726836712448233,
+      "floorImpact": 0.5,
+      "overallScore": 0.12363836876367318
+    },
+    {
+      "relicId": "momentum_gem",
+      "survivalImpact": 0.5,
+      "dpsImpact": 0.024164237938288934,
+      "defenseImpact": -0.20100283409635927,
+      "floorImpact": 0.5,
+      "overallScore": 0.10772046794730988
+    },
+    {
+      "relicId": "phase_cloak",
+      "survivalImpact": 0.5,
+      "dpsImpact": 0.04966370191042864,
+      "defenseImpact": -0.2938739917157185,
+      "floorImpact": 0.5,
+      "overallScore": 0.08526323673157006
+    },
+    {
+      "relicId": "memory_palace",
+      "survivalImpact": 0.25,
+      "dpsImpact": -0.012375358528839404,
+      "defenseImpact": -0.03379114889906261,
+      "floorImpact": 0.25,
+      "overallScore": 0.06794449752403266
+    },
+    {
+      "relicId": "crescendo_blade",
+      "survivalImpact": 0.25,
+      "dpsImpact": 0.015786595908245236,
+      "defenseImpact": -0.08218879441901028,
+      "floorImpact": 0.25,
+      "overallScore": 0.06119926716307831
+    },
+    {
+      "relicId": "scholars_hat",
+      "survivalImpact": 0.25,
+      "dpsImpact": 0.03953577632895526,
+      "defenseImpact": -0.22956180510137358,
+      "floorImpact": 0.25,
+      "overallScore": 0.01999132374252723
+    },
+    {
+      "relicId": "fortress_wall",
+      "survivalImpact": 0.25,
+      "dpsImpact": 0.04565578626737593,
+      "defenseImpact": -0.2576847612818835,
+      "floorImpact": 0.25,
+      "overallScore": 0.012657008328497477
+    },
+    {
+      "relicId": "berserker_band",
+      "survivalImpact": 0,
+      "dpsImpact": 0.02857668466650788,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0.009525561555502627
+    },
+    {
+      "relicId": "barbed_edge",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "sharp_eye",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "swift_boots",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "speed_charm",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "cartographers_lens",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "brain_booster",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "gold_magnet",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "lucky_coin",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "scavengers_pouch",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "chain_lightning_rod",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "venom_fang",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "executioners_axe",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "mirror_shield",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "iron_resolve",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "phoenix_feather",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "renewal_spring",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "afterimage",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "double_vision",
+      "survivalImpact": 0,
+      "dpsImpact": 0,
+      "defenseImpact": 0,
+      "floorImpact": 0,
+      "overallScore": 0
+    },
+    {
+      "relicId": "quicksilver",
+      "survivalImpact": 0,
+      "dpsImpact": -0.0019510436167551996,
+      "defenseImpact": -0.013080444735121115,
+      "floorImpact": 0,
+      "overallScore": -0.005010496117292105
+    },
+    {
+      "relicId": "herbal_pouch",
+      "survivalImpact": 0,
+      "dpsImpact": -0.0002544512132522768,
+      "defenseImpact": -0.0241988227599739,
+      "floorImpact": 0,
+      "overallScore": -0.008151091324408727
+    },
+    {
+      "relicId": "medic_kit",
+      "survivalImpact": 0,
+      "dpsImpact": -0.0002544512132522768,
+      "defenseImpact": -0.0241988227599739,
+      "floorImpact": 0,
+      "overallScore": -0.008151091324408727
+    },
+    {
+      "relicId": "iron_buckler",
+      "survivalImpact": 0,
+      "dpsImpact": 0.019790119680386933,
+      "defenseImpact": -0.05886200130804452,
+      "floorImpact": 0,
+      "overallScore": -0.013023960542552527
+    },
+    {
+      "relicId": "thorned_vest",
+      "survivalImpact": 0,
+      "dpsImpact": -0.03781082518337746,
+      "defenseImpact": -0.029431000654022446,
+      "floorImpact": 0,
+      "overallScore": -0.02241394194579997
+    },
+    {
+      "relicId": "last_breath",
+      "survivalImpact": 0,
+      "dpsImpact": 0.006141040389464953,
+      "defenseImpact": -0.08567691301504245,
+      "floorImpact": 0,
+      "overallScore": -0.026511957541859168
+    },
+    {
+      "relicId": "vitality_ring",
+      "survivalImpact": 0,
+      "dpsImpact": 0.010708941818078776,
+      "defenseImpact": -0.1020274689339439,
+      "floorImpact": 0,
+      "overallScore": -0.03043950903862171
+    },
+    {
+      "relicId": "steel_skin",
+      "survivalImpact": 0,
+      "dpsImpact": 0.058784564304681416,
+      "defenseImpact": -0.20405493786788742,
+      "floorImpact": 0,
+      "overallScore": -0.048423457854402
+    },
+    {
+      "relicId": "stone_wall",
+      "survivalImpact": 0,
+      "dpsImpact": 0.058784564304681416,
+      "defenseImpact": -0.20405493786788742,
+      "floorImpact": 0,
+      "overallScore": -0.048423457854402
+    }
+  ],
+  "synergyReport": [
+    {
+      "relics": [
+        "war_drum",
+        "combo_ring"
+      ],
+      "configId": 44,
+      "label": "synergy-combo-damage",
+      "synergyFactor": 1.2,
+      "verdict": "moderate"
+    },
+    {
+      "relics": [
+        "memory_palace",
+        "crescendo_blade"
+      ],
+      "configId": 45,
+      "label": "synergy-correct-streaks",
+      "synergyFactor": 0.53,
+      "verdict": "weak"
+    },
+    {
+      "relics": [
+        "eidetic_memory",
+        "polyglot_pendant"
+      ],
+      "configId": 46,
+      "label": "synergy-domain-knowledge",
+      "synergyFactor": 0,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "domain_mastery",
+        "polyglot_pendant"
+      ],
+      "configId": 47,
+      "label": "synergy-domain-special",
+      "synergyFactor": 0,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "stone_wall",
+        "fortress_wall",
+        "iron_buckler"
+      ],
+      "configId": 48,
+      "label": "synergy-block-stack",
+      "synergyFactor": -3.45,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "herbal_pouch",
+        "scholars_hat",
+        "medic_kit",
+        "blood_pact"
+      ],
+      "configId": 49,
+      "label": "synergy-heal-stack",
+      "synergyFactor": 1.96,
+      "verdict": "strong_synergy"
+    },
+    {
+      "relics": [
+        "speed_charm",
+        "sharp_eye"
+      ],
+      "configId": 50,
+      "label": "synergy-speed-bonus",
+      "synergyFactor": 0,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem"
+      ],
+      "configId": 51,
+      "label": "synergy-ap-economy",
+      "synergyFactor": 2.79,
+      "verdict": "game_breaking"
+    },
+    {
+      "relics": [
+        "last_breath",
+        "phoenix_feather"
+      ],
+      "configId": 52,
+      "label": "combo-immortality",
+      "synergyFactor": 1,
+      "verdict": "moderate"
+    },
+    {
+      "relics": [
+        "glass_cannon",
+        "phase_cloak"
+      ],
+      "configId": 53,
+      "label": "combo-glass-dodge",
+      "synergyFactor": 4.05,
+      "verdict": "game_breaking"
+    },
+    {
+      "relics": [
+        "blood_price",
+        "blood_pact"
+      ],
+      "configId": 54,
+      "label": "combo-draw-lifesteal",
+      "synergyFactor": 0.88,
+      "verdict": "weak"
+    },
+    {
+      "relics": [
+        "swift_boots",
+        "afterimage",
+        "blood_price"
+      ],
+      "configId": 55,
+      "label": "combo-draw-avalanche",
+      "synergyFactor": 0,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem",
+        "swift_boots"
+      ],
+      "configId": 56,
+      "label": "combo-ap-overflow",
+      "synergyFactor": 2.79,
+      "verdict": "game_breaking"
+    },
+    {
+      "relics": [
+        "chain_lightning_rod",
+        "whetstone",
+        "war_drum",
+        "barbed_edge"
+      ],
+      "configId": 57,
+      "label": "combo-multihit-mega",
+      "synergyFactor": 0.68,
+      "verdict": "weak"
+    },
+    {
+      "relics": [
+        "fortress_wall",
+        "stone_wall",
+        "iron_buckler",
+        "mirror_shield",
+        "iron_resolve"
+      ],
+      "configId": 58,
+      "label": "combo-invincible-tank",
+      "synergyFactor": -3.45,
+      "verdict": "anti_synergy"
+    },
+    {
+      "relics": [
+        "berserker_band",
+        "glass_cannon",
+        "crescendo_blade"
+      ],
+      "configId": 59,
+      "label": "combo-berserker-glass",
+      "synergyFactor": 3.04,
+      "verdict": "game_breaking"
+    },
+    {
+      "relics": [
+        "scholars_hat",
+        "herbal_pouch",
+        "blood_pact",
+        "renewal_spring",
+        "medic_kit",
+        "vitality_ring"
+      ],
+      "configId": 60,
+      "label": "combo-max-sustain",
+      "synergyFactor": 2.2,
+      "verdict": "game_breaking"
+    },
+    {
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "glass_cannon",
+        "barbed_edge",
+        "war_drum",
+        "crescendo_blade"
+      ],
+      "configId": 61,
+      "label": "combo-max-offense",
+      "synergyFactor": 0.76,
+      "verdict": "weak"
+    },
+    {
+      "relics": [
+        "combo_ring",
+        "war_drum",
+        "momentum_gem",
+        "sharp_eye",
+        "speed_charm"
+      ],
+      "configId": 62,
+      "label": "combo-combo-engine",
+      "synergyFactor": 0.87,
+      "verdict": "weak"
+    },
+    {
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "phase_cloak",
+        "thorned_vest",
+        "last_breath",
+        "phoenix_feather"
+      ],
+      "configId": 63,
+      "label": "combo-max-defense",
+      "synergyFactor": -5.13,
+      "verdict": "anti_synergy"
+    }
+  ],
+  "gameBreakingCombos": [
+    {
+      "configId": 64,
+      "label": "build-full-aggro",
+      "reason": "Trivial: avg 2.9 turns/enc"
+    },
+    {
+      "configId": 69,
+      "label": "build-cursed-gambler",
+      "reason": "Immortal: 100% survival at 100% HP"
+    },
+    {
+      "configId": 74,
+      "label": "skill-offense-expert",
+      "reason": "Immortal: 100% survival at 100% HP"
+    },
+    {
+      "configId": 90,
+      "label": "skill-cursed-expert",
+      "reason": "Immortal: 100% survival at 88% HP"
+    },
+    {
+      "configId": 91,
+      "label": "skill-cursed-struggling",
+      "reason": "Boss melted: avg 2.0 boss turns"
+    }
+  ],
+  "skillFairnessReport": [
+    {
+      "loadout": "Basic Offense",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "expertBenefit": 5,
+      "beginnerBenefit": 2.33,
+      "ratio": 2.14,
+      "verdict": "balanced"
+    },
+    {
+      "loadout": "Full Defense",
+      "relics": [
+        "iron_buckler",
+        "steel_skin",
+        "stone_wall",
+        "fortress_wall"
+      ],
+      "expertBenefit": 0,
+      "beginnerBenefit": 1,
+      "ratio": 0,
+      "verdict": "beginner_favored"
+    },
+    {
+      "loadout": "Knowledge Reward",
+      "relics": [
+        "scholars_hat",
+        "memory_palace",
+        "combo_ring",
+        "momentum_gem"
+      ],
+      "expertBenefit": 4,
+      "beginnerBenefit": 0.67,
+      "ratio": 6,
+      "verdict": "expert_favored"
+    },
+    {
+      "loadout": "Sustain",
+      "relics": [
+        "herbal_pouch",
+        "vitality_ring",
+        "last_breath",
+        "renewal_spring"
+      ],
+      "expertBenefit": 0,
+      "beginnerBenefit": 1,
+      "ratio": 0,
+      "verdict": "beginner_favored"
+    },
+    {
+      "loadout": "Cursed Risk",
+      "relics": [
+        "glass_cannon",
+        "blood_price"
+      ],
+      "expertBenefit": 5,
+      "beginnerBenefit": 1,
+      "ratio": 5,
+      "verdict": "expert_favored"
+    }
+  ],
+  "underpoweredRelics": [
+    "barbed_edge",
+    "sharp_eye",
+    "swift_boots",
+    "speed_charm",
+    "cartographers_lens",
+    "brain_booster",
+    "gold_magnet",
+    "lucky_coin",
+    "scavengers_pouch",
+    "chain_lightning_rod",
+    "venom_fang",
+    "executioners_axe",
+    "mirror_shield",
+    "iron_resolve",
+    "phoenix_feather",
+    "renewal_spring",
+    "afterimage",
+    "double_vision",
+    "quicksilver"
+  ],
+  "overpoweredRelics": [
+    "flame_brand",
+    "war_drum",
+    "curiosity_gem",
+    "combo_ring",
+    "whetstone",
+    "blood_pact",
+    "momentum_gem",
+    "phase_cloak"
+  ]
+}

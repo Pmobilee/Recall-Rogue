@@ -134,10 +134,10 @@ export function resolveCardEffect(
   let attackRelicMultiplier = 1;
   if (effectiveType === 'attack') {
     if (advanced.isFirstAttackThisEncounter && activeRelicIds.has('flame_brand')) {
-      attackRelicMultiplier *= 1.5;
+      attackRelicMultiplier *= 1.4;
     }
     if (activeRelicIds.has('glass_cannon')) {
-      attackRelicMultiplier *= 1.25;
+      attackRelicMultiplier *= 1.35;
     }
   }
 

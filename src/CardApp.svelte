@@ -101,7 +101,15 @@
     startNewRun()
   }
 
+  let libraryInitialTab = $state<'knowledge' | 'deckbuilder' | undefined>(undefined)
+
   function handleOpenLibrary(): void {
+    libraryInitialTab = undefined
+    transitionScreen('library')
+  }
+
+  function handleOpenDeckBuilder(): void {
+    libraryInitialTab = 'deckbuilder'
     transitionScreen('library')
   }
 
@@ -415,6 +423,7 @@
       onOpenLeaderboards={handleOpenLeaderboards}
       onOpenSocial={handleOpenSocial}
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
+      onOpenDeckBuilder={handleOpenDeckBuilder}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner" data-testid="active-run-banner">
@@ -614,7 +623,7 @@
   {/if}
 
   {#if $currentScreen === 'library'}
-    <KnowledgeLibrary onback={handleBackToMenu} />
+    <KnowledgeLibrary onback={handleBackToMenu} initialTab={libraryInitialTab} />
   {/if}
 
   {#if $currentScreen === 'settings'}

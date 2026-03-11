@@ -8,6 +8,7 @@
   import CampSpeechBubble from './CampSpeechBubble.svelte'
   import CampHudOverlay from './CampHudOverlay.svelte'
   import CampUpgradeModal from './CampUpgradeModal.svelte'
+  import StudyModeSelector from './StudyModeSelector.svelte'
 
   interface Props {
     streak: number
@@ -20,6 +21,7 @@
     onOpenLeaderboards: () => void
     onOpenSocial: () => void
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
+    onOpenDeckBuilder?: () => void
   }
 
   let {
@@ -33,6 +35,7 @@
     onOpenLeaderboards,
     onOpenSocial,
     onOpenRelicSanctum,
+    onOpenDeckBuilder,
   }: Props = $props()
 
   let showUpgradeModal = $state(false)
@@ -74,6 +77,14 @@
     decoding="async"
   />
 
+  <!-- Study Mode Selector — above dungeon gate -->
+  <div class="study-mode-container">
+    <StudyModeSelector
+      disabled={false}
+      onNavigateToDeckBuilder={onOpenDeckBuilder}
+    />
+  </div>
+
   <!-- 1. Dungeon Gate - Start Run -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('dungeon-gate')}
@@ -92,7 +103,7 @@
     zIndex={20}
     onclick={onOpenLibrary}
     hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
-    labelTop="55%" labelLeft="18%"
+    labelTop="29%" labelLeft="18%"
   />
 
   <!-- 3. Signpost - Settings -->
@@ -102,7 +113,7 @@
     zIndex={20}
     onclick={onOpenSettings}
     hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
-    labelTop="48%" labelLeft="84%"
+    labelTop="27%" labelLeft="84%"
   />
 
   <!-- 4. Anvil - Relics -->
@@ -112,7 +123,7 @@
     zIndex={20}
     onclick={handleRelicClick}
     hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
-    labelTop="65%" labelLeft="35%"
+    labelTop="52%" labelLeft="35%"
   />
 
   <!-- 5. Campfire - Decorative (no hitbox, no label) -->
@@ -130,17 +141,17 @@
     zIndex={18}
     onclick={onOpenProfile}
     hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
-    labelTop="67%" labelLeft="82%"
+    labelTop="42%" labelLeft="74%"
   />
 
-  <!-- 7. Character - Shop (social features) -->
+  <!-- 7. Character - Social -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('character')}
-    label="Shop"
+    label="Social"
     zIndex={25}
     onclick={onOpenSocial}
     hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
-    labelTop="71%" labelLeft="68%"
+    labelTop="57%" labelLeft="58%"
   />
 
   <!-- 8. Cat - Pet, shows speech bubble -->
@@ -173,14 +184,14 @@
     labelTop="96%" labelLeft="85%"
   />
 
-  <!-- 11. Treasure Chest - Customize (opens upgrade modal) -->
+  <!-- 11. Treasure Chest - Shop (opens upgrade modal) -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('treasure-chest')}
-    label="Customize"
+    label="Shop"
     zIndex={25}
     onclick={openUpgradeModal}
     hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
-    labelTop="99%" labelLeft="62%"
+    labelTop="84%" labelLeft="62%"
   />
 
   <!-- Pet speech bubble -->
@@ -214,6 +225,14 @@
     object-fit: fill;
     z-index: 0;
     image-rendering: pixelated;
+  }
+
+  .study-mode-container {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
   }
 
 </style>

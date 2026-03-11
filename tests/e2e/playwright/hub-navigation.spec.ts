@@ -8,7 +8,7 @@ test('hub nav reaches core destinations', async ({ page }) => {
   await expect(page.getByRole('region', { name: 'Camp hub' })).toBeVisible()
 
   await page.getByRole('button', { name: 'Library', exact: true }).click()
-  await expect(page.getByRole('heading', { name: 'Knowledge Library' })).toBeVisible({ timeout: 20_000 })
+  await expect(page.getByRole('heading', { name: 'Library' })).toBeVisible({ timeout: 20_000 })
   await page.getByRole('button', { name: 'Back', exact: true }).click()
 
   await page.getByRole('button', { name: 'Settings', exact: true }).click()

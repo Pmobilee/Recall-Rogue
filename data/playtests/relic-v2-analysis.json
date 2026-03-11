@@ -1,0 +1,5542 @@
+{
+  "generatedAt": "2026-03-11T03:41:04.718Z",
+  "totalLogs": 600,
+  "totalConfigs": 200,
+  "overallResults": {
+    "victory": 42,
+    "defeat": 496,
+    "cash_out": 62
+  },
+  "A_controlBaselines": {
+    "1": {
+      "configId": 1,
+      "profile": "average",
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "2": {
+      "configId": 2,
+      "profile": "average",
+      "ascensionLevel": 5,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.738,
+      "avgDamageTakenPerEnc": 24.642,
+      "avgAccuracy": 0.737,
+      "avgMaxCombo": 10.667,
+      "avgTurnsPerEncounter": 4.636,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      }
+    },
+    "3": {
+      "configId": 3,
+      "profile": "average",
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "4": {
+      "configId": 4,
+      "profile": "average",
+      "ascensionLevel": 15,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.164,
+      "avgDamageTakenPerEnc": 33.741,
+      "avgAccuracy": 0.732,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.519,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "5": {
+      "configId": 5,
+      "profile": "average",
+      "ascensionLevel": 20,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 2.333,
+      "avgTotalEncounters": 6.667,
+      "avgDPS": 9.995,
+      "avgDamageTakenPerEnc": 14.037,
+      "avgAccuracy": 0.68,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.37,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "6": {
+      "configId": 6,
+      "profile": "expert",
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0.333,
+      "avgFinalFloor": 22,
+      "avgTotalEncounters": 66,
+      "avgDPS": 19.547,
+      "avgDamageTakenPerEnc": 18.779,
+      "avgAccuracy": 0.894,
+      "avgMaxCombo": 21.333,
+      "avgTurnsPerEncounter": 5.167,
+      "results": {
+        "victory": 1,
+        "defeat": 2,
+        "cash_out": 0
+      }
+    },
+    "7": {
+      "configId": 7,
+      "profile": "expert",
+      "ascensionLevel": 5,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 17,
+      "avgTotalEncounters": 51,
+      "avgDPS": 20.991,
+      "avgDamageTakenPerEnc": 26.853,
+      "avgAccuracy": 0.897,
+      "avgMaxCombo": 25.333,
+      "avgTurnsPerEncounter": 3.896,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "8": {
+      "configId": 8,
+      "profile": "expert",
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 9,
+      "avgTotalEncounters": 27,
+      "avgDPS": 15.754,
+      "avgDamageTakenPerEnc": 25.185,
+      "avgAccuracy": 0.903,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.259,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "9": {
+      "configId": 9,
+      "profile": "expert",
+      "ascensionLevel": 15,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 10,
+      "avgTotalEncounters": 30,
+      "avgDPS": 15.509,
+      "avgDamageTakenPerEnc": 24.257,
+      "avgAccuracy": 0.903,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.525,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "10": {
+      "configId": 10,
+      "profile": "expert",
+      "ascensionLevel": 20,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 9,
+      "avgTotalEncounters": 27,
+      "avgDPS": 18.162,
+      "avgDamageTakenPerEnc": 23.694,
+      "avgAccuracy": 0.897,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 3.722,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "11": {
+      "configId": 11,
+      "profile": "struggling",
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 2,
+      "avgTotalEncounters": 5.667,
+      "avgDPS": 3.708,
+      "avgDamageTakenPerEnc": 48.556,
+      "avgAccuracy": 0.384,
+      "avgMaxCombo": 5.333,
+      "avgTurnsPerEncounter": 9.733,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "12": {
+      "configId": 12,
+      "profile": "struggling",
+      "ascensionLevel": 5,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 1.667,
+      "avgTotalEncounters": 4,
+      "avgDPS": 4.214,
+      "avgDamageTakenPerEnc": 51.517,
+      "avgAccuracy": 0.442,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 8.672,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "13": {
+      "configId": 13,
+      "profile": "struggling",
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 1.667,
+      "avgTotalEncounters": 4,
+      "avgDPS": 4.023,
+      "avgDamageTakenPerEnc": 57.189,
+      "avgAccuracy": 0.444,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 8.561,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "14": {
+      "configId": 14,
+      "profile": "struggling",
+      "ascensionLevel": 15,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 1.667,
+      "avgTotalEncounters": 4,
+      "avgDPS": 4.277,
+      "avgDamageTakenPerEnc": 41.783,
+      "avgAccuracy": 0.444,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 7.594,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    },
+    "15": {
+      "configId": 15,
+      "profile": "struggling",
+      "ascensionLevel": 20,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 1,
+      "avgTotalEncounters": 1.333,
+      "avgDPS": 3.931,
+      "avgDamageTakenPerEnc": 24.333,
+      "avgAccuracy": 0.347,
+      "avgMaxCombo": 2.333,
+      "avgTurnsPerEncounter": 5.333,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      }
+    }
+  },
+  "B_soloRelicImpactAsc0": [
+    {
+      "configId": 55,
+      "relic": "afterimage",
+      "seeds": 3,
+      "survivalRate": 0.667,
+      "victoryRate": 0,
+      "avgFinalFloor": 9,
+      "avgTotalEncounters": 27,
+      "avgDPS": 11.503,
+      "avgDamageTakenPerEnc": 19.531,
+      "avgAccuracy": 0.753,
+      "avgMaxCombo": 15.333,
+      "avgTurnsPerEncounter": 6.086,
+      "results": {
+        "victory": 0,
+        "defeat": 1,
+        "cash_out": 2
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 22.8,
+        "defense": 57.9,
+        "floor": 28.6,
+        "turnsPerEncounter": 2.4,
+        "overall": 4024.2
+      }
+    },
+    {
+      "configId": 30,
+      "relic": "combo_ring",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.699,
+      "avgDamageTakenPerEnc": 24.728,
+      "avgAccuracy": 0.753,
+      "avgMaxCombo": 15,
+      "avgTurnsPerEncounter": 5.13,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 24.9,
+        "defense": 24.7,
+        "floor": 0,
+        "turnsPerEncounter": 21.5,
+        "overall": 4014.8
+      }
+    },
+    {
+      "configId": 19,
+      "relic": "war_drum",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 10.84,
+      "avgDamageTakenPerEnc": 26.167,
+      "avgAccuracy": 0.746,
+      "avgMaxCombo": 12.667,
+      "avgTurnsPerEncounter": 5.309,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 15.7,
+        "defense": 17.9,
+        "floor": -14.3,
+        "turnsPerEncounter": 17.4,
+        "overall": 4010
+      }
+    },
+    {
+      "configId": 46,
+      "relic": "fortress_wall",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 10.589,
+      "avgDamageTakenPerEnc": 26.216,
+      "avgAccuracy": 0.745,
+      "avgMaxCombo": 13.333,
+      "avgTurnsPerEncounter": 5.772,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 13.1,
+        "defense": 17.6,
+        "floor": 0,
+        "turnsPerEncounter": 8,
+        "overall": 4009.2
+      }
+    },
+    {
+      "configId": 17,
+      "relic": "flame_brand",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 10.404,
+      "avgDamageTakenPerEnc": 26.667,
+      "avgAccuracy": 0.753,
+      "avgMaxCombo": 13.333,
+      "avgTurnsPerEncounter": 5.704,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 11.1,
+        "defense": 15.6,
+        "floor": 0,
+        "turnsPerEncounter": 9.3,
+        "overall": 4008
+      }
+    },
+    {
+      "configId": 36,
+      "relic": "curiosity_gem",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 10.202,
+      "avgDamageTakenPerEnc": 26.802,
+      "avgAccuracy": 0.742,
+      "avgMaxCombo": 12.667,
+      "avgTurnsPerEncounter": 6.302,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 8.9,
+        "defense": 15.1,
+        "floor": 0,
+        "turnsPerEncounter": -1.1,
+        "overall": 4007.2
+      }
+    },
+    {
+      "configId": 29,
+      "relic": "swift_boots",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 9.608,
+      "avgDamageTakenPerEnc": 26.247,
+      "avgAccuracy": 0.745,
+      "avgMaxCombo": 10.667,
+      "avgTurnsPerEncounter": 6.932,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 2.6,
+        "defense": 17.5,
+        "floor": 14.3,
+        "turnsPerEncounter": -10.1,
+        "overall": 4006
+      }
+    },
+    {
+      "configId": 50,
+      "relic": "blood_pact",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 9.582,
+      "avgDamageTakenPerEnc": 26.704,
+      "avgAccuracy": 0.749,
+      "avgMaxCombo": 12,
+      "avgTurnsPerEncounter": 6.784,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 2.3,
+        "defense": 15.5,
+        "floor": 14.3,
+        "turnsPerEncounter": -8.1,
+        "overall": 4005.3
+      }
+    },
+    {
+      "configId": 42,
+      "relic": "chain_lightning_rod",
+      "seeds": 3,
+      "survivalRate": 0.667,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 9.616,
+      "avgDamageTakenPerEnc": 26.914,
+      "avgAccuracy": 0.738,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.407,
+      "results": {
+        "victory": 0,
+        "defeat": 1,
+        "cash_out": 2
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 2.7,
+        "defense": 14.6,
+        "floor": 14.3,
+        "turnsPerEncounter": -2.7,
+        "overall": 4005.2
+      }
+    },
+    {
+      "configId": 44,
+      "relic": "crescendo_blade",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.969,
+      "avgDamageTakenPerEnc": 28.062,
+      "avgAccuracy": 0.736,
+      "avgMaxCombo": 9.667,
+      "avgTurnsPerEncounter": 6.407,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 6.4,
+        "defense": 9.9,
+        "floor": 0,
+        "turnsPerEncounter": -2.7,
+        "overall": 4004.8
+      }
+    },
+    {
+      "configId": 57,
+      "relic": "double_vision",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 9,
+      "avgTotalEncounters": 27,
+      "avgDPS": 10.094,
+      "avgDamageTakenPerEnc": 29,
+      "avgAccuracy": 0.751,
+      "avgMaxCombo": 14.667,
+      "avgTurnsPerEncounter": 6.667,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 7.8,
+        "defense": 6.3,
+        "floor": 28.6,
+        "turnsPerEncounter": -6.5,
+        "overall": 4004.2
+      }
+    },
+    {
+      "configId": 34,
+      "relic": "scholars_hat",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.484,
+      "avgDamageTakenPerEnc": 28.765,
+      "avgAccuracy": 0.73,
+      "avgMaxCombo": 10.333,
+      "avgTurnsPerEncounter": 7.037,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 1.3,
+        "defense": 7.2,
+        "floor": 0,
+        "turnsPerEncounter": -11.4,
+        "overall": 4002.5
+      }
+    },
+    {
+      "configId": 53,
+      "relic": "quicksilver",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 9.346,
+      "avgDamageTakenPerEnc": 29.852,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 9.667,
+      "avgTurnsPerEncounter": 6.074,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": -0.2,
+        "defense": 3.3,
+        "floor": -28.6,
+        "turnsPerEncounter": 2.7,
+        "overall": 4000.9
+      }
+    },
+    {
+      "configId": 28,
+      "relic": "last_breath",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.401,
+      "avgDamageTakenPerEnc": 33.556,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.296,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 0.4,
+        "defense": -8.1,
+        "floor": 0,
+        "turnsPerEncounter": -1,
+        "overall": 3997.7
+      }
+    },
+    {
+      "configId": 49,
+      "relic": "phase_cloak",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 8.456,
+      "avgDamageTakenPerEnc": 35.012,
+      "avgAccuracy": 0.705,
+      "avgMaxCombo": 11.333,
+      "avgTurnsPerEncounter": 6.969,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": -9.7,
+        "defense": -11.9,
+        "floor": -14.3,
+        "turnsPerEncounter": -10.5,
+        "overall": 3993.5
+      }
+    },
+    {
+      "configId": 64,
+      "relic": "glass_cannon",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 11.393,
+      "avgDamageTakenPerEnc": 23.025,
+      "avgAccuracy": 0.714,
+      "avgMaxCombo": 7.333,
+      "avgTurnsPerEncounter": 3.975,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 21.6,
+        "defense": 33.9,
+        "floor": -28.6,
+        "turnsPerEncounter": 56.9,
+        "overall": 16.6
+      }
+    },
+    {
+      "configId": 65,
+      "relic": "blood_price",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 11.745,
+      "avgDamageTakenPerEnc": 24.241,
+      "avgAccuracy": 0.75,
+      "avgMaxCombo": 14.333,
+      "avgTurnsPerEncounter": 5.241,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 25.4,
+        "defense": 27.2,
+        "floor": -28.6,
+        "turnsPerEncounter": 19,
+        "overall": 15.8
+      }
+    },
+    {
+      "configId": 16,
+      "relic": "whetstone",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 11.14,
+      "avgDamageTakenPerEnc": 24.463,
+      "avgAccuracy": 0.741,
+      "avgMaxCombo": 15,
+      "avgTurnsPerEncounter": 5.346,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 18.9,
+        "defense": 26.1,
+        "floor": 14.3,
+        "turnsPerEncounter": 16.6,
+        "overall": 13.5
+      }
+    },
+    {
+      "configId": 35,
+      "relic": "memory_palace",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 11.174,
+      "avgDamageTakenPerEnc": 26.031,
+      "avgAccuracy": 0.745,
+      "avgMaxCombo": 15.333,
+      "avgTurnsPerEncounter": 4.901,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 19.3,
+        "defense": 18.5,
+        "floor": -14.3,
+        "turnsPerEncounter": 27.2,
+        "overall": 11.3
+      }
+    },
+    {
+      "configId": 31,
+      "relic": "momentum_gem",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 9.76,
+      "avgDamageTakenPerEnc": 28.346,
+      "avgAccuracy": 0.751,
+      "avgMaxCombo": 15,
+      "avgTurnsPerEncounter": 6.562,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 4.2,
+        "defense": 8.8,
+        "floor": 14.3,
+        "turnsPerEncounter": -5,
+        "overall": 3.9
+      }
+    },
+    {
+      "configId": 41,
+      "relic": "berserker_band",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.464,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 1,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.3
+      }
+    },
+    {
+      "configId": 22,
+      "relic": "steel_skin",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.411,
+      "avgDamageTakenPerEnc": 30.79,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.5,
+        "defense": 0.2,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.2
+      }
+    },
+    {
+      "configId": 24,
+      "relic": "stone_wall",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.411,
+      "avgDamageTakenPerEnc": 30.79,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.5,
+        "defense": 0.2,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.2
+      }
+    },
+    {
+      "configId": 26,
+      "relic": "vitality_ring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.411,
+      "avgDamageTakenPerEnc": 30.79,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.5,
+        "defense": 0.2,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.2
+      }
+    },
+    {
+      "configId": 27,
+      "relic": "medic_kit",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.411,
+      "avgDamageTakenPerEnc": 30.79,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.5,
+        "defense": 0.2,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.2
+      }
+    },
+    {
+      "configId": 21,
+      "relic": "iron_buckler",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.364,
+      "avgDamageTakenPerEnc": 30.716,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0.4,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0.1
+      }
+    },
+    {
+      "configId": 18,
+      "relic": "barbed_edge",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 20,
+      "relic": "sharp_eye",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 25,
+      "relic": "herbal_pouch",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 32,
+      "relic": "speed_charm",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 33,
+      "relic": "cartographers_lens",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 37,
+      "relic": "brain_booster",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 38,
+      "relic": "gold_magnet",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 39,
+      "relic": "lucky_coin",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 40,
+      "relic": "scavengers_pouch",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 43,
+      "relic": "venom_fang",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 45,
+      "relic": "executioners_axe",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 47,
+      "relic": "mirror_shield",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 48,
+      "relic": "iron_resolve",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 51,
+      "relic": "phoenix_feather",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 52,
+      "relic": "renewal_spring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 54,
+      "relic": "time_dilation",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 56,
+      "relic": "echo_lens",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 58,
+      "relic": "polyglot_pendant",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 59,
+      "relic": "eidetic_memory",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 60,
+      "relic": "speed_reader",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 61,
+      "relic": "domain_mastery",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 62,
+      "relic": "prospectors_pick",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 63,
+      "relic": "miser_ring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.366,
+      "avgDamageTakenPerEnc": 30.84,
+      "avgAccuracy": 0.731,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 6.235,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 23,
+      "relic": "thorned_vest",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 9.537,
+      "avgDamageTakenPerEnc": 32.636,
+      "avgAccuracy": 0.735,
+      "avgMaxCombo": 9.667,
+      "avgTurnsPerEncounter": 6.216,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 1.8,
+        "defense": -5.5,
+        "floor": -14.3,
+        "turnsPerEncounter": 0.3,
+        "overall": -1.1
+      }
+    }
+  ],
+  "C_soloRelicImpactAsc10": [
+    {
+      "configId": 66,
+      "relic": "whetstone",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.911,
+      "avgDamageTakenPerEnc": 28.537,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.951,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 29.3,
+        "defense": 49.8,
+        "floor": 133.3,
+        "turnsPerEncounter": 19.7,
+        "overall": 4023.7
+      }
+    },
+    {
+      "configId": 96,
+      "relic": "fortress_wall",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 10.93,
+      "avgDamageTakenPerEnc": 29.741,
+      "avgAccuracy": 0.734,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.198,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 18.6,
+        "defense": 43.7,
+        "floor": 133.3,
+        "turnsPerEncounter": 14,
+        "overall": 4018.7
+      }
+    },
+    {
+      "configId": 105,
+      "relic": "afterimage",
+      "seeds": 3,
+      "survivalRate": 0.667,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.394,
+      "avgDamageTakenPerEnc": 31.605,
+      "avgAccuracy": 0.757,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 5.593,
+      "results": {
+        "victory": 0,
+        "defeat": 1,
+        "cash_out": 2
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": 23.7,
+        "defense": 35.2,
+        "floor": 133.3,
+        "turnsPerEncounter": 6,
+        "overall": 4017.6
+      }
+    },
+    {
+      "configId": 99,
+      "relic": "phase_cloak",
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 8.931,
+      "avgDamageTakenPerEnc": 39.241,
+      "avgAccuracy": 0.742,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6.488,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "impact": {
+        "survival": 9999.9,
+        "dps": -3.1,
+        "defense": 8.9,
+        "floor": 100,
+        "turnsPerEncounter": -8.7,
+        "overall": 4001.7
+      }
+    },
+    {
+      "configId": 114,
+      "relic": "glass_cannon",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 12.891,
+      "avgDamageTakenPerEnc": 25.926,
+      "avgAccuracy": 0.732,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 3.185,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 39.9,
+        "defense": 64.9,
+        "floor": 0,
+        "turnsPerEncounter": 86.1,
+        "overall": 31.4
+      }
+    },
+    {
+      "configId": 115,
+      "relic": "blood_price",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4.333,
+      "avgTotalEncounters": 13,
+      "avgDPS": 12.313,
+      "avgDamageTakenPerEnc": 29.683,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 4.582,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 33.7,
+        "defense": 44,
+        "floor": 44.4,
+        "turnsPerEncounter": 29.3,
+        "overall": 23.3
+      }
+    },
+    {
+      "configId": 92,
+      "relic": "chain_lightning_rod",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 10.173,
+      "avgDamageTakenPerEnc": 27.494,
+      "avgAccuracy": 0.719,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.679,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 10.4,
+        "defense": 55.5,
+        "floor": 133.3,
+        "turnsPerEncounter": 4.3,
+        "overall": 19.8
+      }
+    },
+    {
+      "configId": 69,
+      "relic": "war_drum",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 8,
+      "avgTotalEncounters": 24,
+      "avgDPS": 11.087,
+      "avgDamageTakenPerEnc": 30.549,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.519,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 20.4,
+        "defense": 39.9,
+        "floor": 166.7,
+        "turnsPerEncounter": 7.4,
+        "overall": 18.1
+      }
+    },
+    {
+      "configId": 103,
+      "relic": "quicksilver",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 10.842,
+      "avgDamageTakenPerEnc": 31.642,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 5.284,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 17.7,
+        "defense": 35.1,
+        "floor": 100,
+        "turnsPerEncounter": 12.1,
+        "overall": 15.8
+      }
+    },
+    {
+      "configId": 80,
+      "relic": "combo_ring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 10.751,
+      "avgDamageTakenPerEnc": 32.327,
+      "avgAccuracy": 0.734,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 5.296,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 16.7,
+        "defense": 32.2,
+        "floor": 100,
+        "turnsPerEncounter": 11.9,
+        "overall": 14.7
+      }
+    },
+    {
+      "configId": 85,
+      "relic": "memory_palace",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 10.388,
+      "avgDamageTakenPerEnc": 31.519,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.963,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 12.8,
+        "defense": 35.6,
+        "floor": 66.7,
+        "turnsPerEncounter": 19.4,
+        "overall": 14.5
+      }
+    },
+    {
+      "configId": 94,
+      "relic": "crescendo_blade",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 9.899,
+      "avgDamageTakenPerEnc": 34.593,
+      "avgAccuracy": 0.735,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.611,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 7.5,
+        "defense": 23.6,
+        "floor": 66.7,
+        "turnsPerEncounter": 5.6,
+        "overall": 9.3
+      }
+    },
+    {
+      "configId": 86,
+      "relic": "curiosity_gem",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5.667,
+      "avgTotalEncounters": 17,
+      "avgDPS": 9.992,
+      "avgDamageTakenPerEnc": 35.639,
+      "avgAccuracy": 0.738,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.782,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 8.5,
+        "defense": 19.9,
+        "floor": 88.9,
+        "turnsPerEncounter": 2.5,
+        "overall": 8.5
+      }
+    },
+    {
+      "configId": 73,
+      "relic": "thorned_vest",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 9.468,
+      "avgDamageTakenPerEnc": 36.37,
+      "avgAccuracy": 0.743,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.574,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 2.8,
+        "defense": 17.5,
+        "floor": 66.7,
+        "turnsPerEncounter": 6.3,
+        "overall": 6.1
+      }
+    },
+    {
+      "configId": 81,
+      "relic": "momentum_gem",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4,
+      "avgTotalEncounters": 12,
+      "avgDPS": 9.273,
+      "avgDamageTakenPerEnc": 36,
+      "avgAccuracy": 0.721,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 5.519,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.7,
+        "defense": 18.7,
+        "floor": 33.3,
+        "turnsPerEncounter": 7.4,
+        "overall": 5.8
+      }
+    },
+    {
+      "configId": 67,
+      "relic": "flame_brand",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4.667,
+      "avgTotalEncounters": 14,
+      "avgDPS": 9.354,
+      "avgDamageTakenPerEnc": 41.477,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6.009,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 1.5,
+        "defense": 3,
+        "floor": 55.6,
+        "turnsPerEncounter": -1.4,
+        "overall": 1.3
+      }
+    },
+    {
+      "configId": 91,
+      "relic": "berserker_band",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.465,
+      "avgDamageTakenPerEnc": 42.111,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 2.7,
+        "defense": 1.5,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 1.3
+      }
+    },
+    {
+      "configId": 107,
+      "relic": "double_vision",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5.667,
+      "avgTotalEncounters": 17,
+      "avgDPS": 9.446,
+      "avgDamageTakenPerEnc": 41.981,
+      "avgAccuracy": 0.751,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6.347,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 2.5,
+        "defense": 1.8,
+        "floor": 88.9,
+        "turnsPerEncounter": -6.6,
+        "overall": 1.3
+      }
+    },
+    {
+      "configId": 68,
+      "relic": "barbed_edge",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 70,
+      "relic": "sharp_eye",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 71,
+      "relic": "iron_buckler",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 75,
+      "relic": "herbal_pouch",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 78,
+      "relic": "last_breath",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 82,
+      "relic": "speed_charm",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 83,
+      "relic": "cartographers_lens",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 87,
+      "relic": "brain_booster",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 88,
+      "relic": "gold_magnet",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 89,
+      "relic": "lucky_coin",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 90,
+      "relic": "scavengers_pouch",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 93,
+      "relic": "venom_fang",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 95,
+      "relic": "executioners_axe",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 97,
+      "relic": "mirror_shield",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 98,
+      "relic": "iron_resolve",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 101,
+      "relic": "phoenix_feather",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 102,
+      "relic": "renewal_spring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 104,
+      "relic": "time_dilation",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 106,
+      "relic": "echo_lens",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 108,
+      "relic": "polyglot_pendant",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 109,
+      "relic": "eidetic_memory",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 110,
+      "relic": "speed_reader",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 111,
+      "relic": "domain_mastery",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 112,
+      "relic": "prospectors_pick",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 113,
+      "relic": "miser_ring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.212,
+      "avgDamageTakenPerEnc": 42.741,
+      "avgAccuracy": 0.727,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0,
+        "defense": 0,
+        "floor": 0,
+        "turnsPerEncounter": 0,
+        "overall": 0
+      }
+    },
+    {
+      "configId": 72,
+      "relic": "steel_skin",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.128,
+      "avgDamageTakenPerEnc": 43.963,
+      "avgAccuracy": 0.728,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": -0.9,
+        "defense": -2.8,
+        "floor": 0,
+        "turnsPerEncounter": -1.2,
+        "overall": -1.1
+      }
+    },
+    {
+      "configId": 74,
+      "relic": "stone_wall",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.128,
+      "avgDamageTakenPerEnc": 43.963,
+      "avgAccuracy": 0.728,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": -0.9,
+        "defense": -2.8,
+        "floor": 0,
+        "turnsPerEncounter": -1.2,
+        "overall": -1.1
+      }
+    },
+    {
+      "configId": 77,
+      "relic": "medic_kit",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.128,
+      "avgDamageTakenPerEnc": 43.963,
+      "avgAccuracy": 0.728,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": -0.9,
+        "defense": -2.8,
+        "floor": 0,
+        "turnsPerEncounter": -1.2,
+        "overall": -1.1
+      }
+    },
+    {
+      "configId": 79,
+      "relic": "swift_boots",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.075,
+      "avgDamageTakenPerEnc": 43.963,
+      "avgAccuracy": 0.728,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": -1.5,
+        "defense": -2.8,
+        "floor": 0,
+        "turnsPerEncounter": -1.2,
+        "overall": -1.3
+      }
+    },
+    {
+      "configId": 100,
+      "relic": "blood_pact",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.232,
+      "avgDamageTakenPerEnc": 45.926,
+      "avgAccuracy": 0.729,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.2,
+        "defense": -6.9,
+        "floor": 0,
+        "turnsPerEncounter": -1.2,
+        "overall": -2
+      }
+    },
+    {
+      "configId": 76,
+      "relic": "vitality_ring",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 8.926,
+      "avgDamageTakenPerEnc": 45.926,
+      "avgAccuracy": 0.726,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6.111,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": -3.1,
+        "defense": -6.9,
+        "floor": 0,
+        "turnsPerEncounter": -3,
+        "overall": -3
+      }
+    },
+    {
+      "configId": 84,
+      "relic": "scholars_hat",
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 3,
+      "avgTotalEncounters": 9,
+      "avgDPS": 9.236,
+      "avgDamageTakenPerEnc": 49,
+      "avgAccuracy": 0.732,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 6.111,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "impact": {
+        "survival": 0,
+        "dps": 0.3,
+        "defense": -12.8,
+        "floor": 0,
+        "turnsPerEncounter": -3,
+        "overall": -3.8
+      }
+    }
+  ],
+  "D_synergyAnalysis": [
+    {
+      "configId": 116,
+      "label": "rebal-glass-dodge-asc0",
+      "relics": [
+        "glass_cannon",
+        "phase_cloak"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 12.574,
+      "avgDamageTakenPerEnc": 30.099,
+      "avgAccuracy": 0.733,
+      "avgMaxCombo": 9.333,
+      "avgTurnsPerEncounter": 5.63,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 34.3,
+        "defense": 2.5,
+        "overall": 4011
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 11.9,
+        "defense": 22,
+        "overall": 4010.1
+      },
+      "synergyFactor": 1.082,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 117,
+      "label": "rebal-glass-dodge-asc10",
+      "relics": [
+        "glass_cannon",
+        "phase_cloak"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 13.087,
+      "avgDamageTakenPerEnc": 27.253,
+      "avgAccuracy": 0.706,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 4.012,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 42.1,
+        "defense": 56.8,
+        "overall": 4029.6
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 36.8,
+        "defense": 73.8,
+        "overall": 4033.1
+      },
+      "synergyFactor": 0.895,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 118,
+      "label": "rebal-berserker-glass-asc0",
+      "relics": [
+        "berserker_band",
+        "glass_cannon",
+        "crescendo_blade"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4,
+      "avgTotalEncounters": 12,
+      "avgDPS": 11.457,
+      "avgDamageTakenPerEnc": 21.926,
+      "avgAccuracy": 0.706,
+      "avgMaxCombo": 6.333,
+      "avgTurnsPerEncounter": 3.778,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 22.3,
+        "defense": 40.7,
+        "overall": 18.9
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 29,
+        "defense": 43.8,
+        "overall": 4021.8
+      },
+      "synergyFactor": 0.865,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 119,
+      "label": "rebal-berserker-glass-asc10",
+      "relics": [
+        "berserker_band",
+        "glass_cannon",
+        "crescendo_blade"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 13.7,
+      "avgDamageTakenPerEnc": 25.63,
+      "avgAccuracy": 0.715,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 3.426,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 48.7,
+        "defense": 66.8,
+        "overall": 34.6
+      },
+      "sumIndividualImpact": {
+        "survival": 0,
+        "dps": 50.1,
+        "defense": 90,
+        "overall": 42
+      },
+      "synergyFactor": 0.824
+    },
+    {
+      "configId": 120,
+      "label": "rebal-ap-overflow-asc0",
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 10.349,
+      "avgDamageTakenPerEnc": 24.025,
+      "avgAccuracy": 0.73,
+      "avgMaxCombo": 12,
+      "avgTurnsPerEncounter": 5.531,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 10.5,
+        "defense": 28.4,
+        "overall": 4011.6
+      },
+      "sumIndividualImpact": {
+        "survival": 19999.8,
+        "dps": 11.8,
+        "defense": 18.4,
+        "overall": 8009
+      },
+      "synergyFactor": 1.285,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 121,
+      "label": "rebal-ap-overflow-asc10",
+      "relics": [
+        "quicksilver",
+        "double_vision",
+        "momentum_gem"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4,
+      "avgTotalEncounters": 12,
+      "avgDPS": 10.044,
+      "avgDamageTakenPerEnc": 35.056,
+      "avgAccuracy": 0.712,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 4.926,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 9,
+        "defense": 21.9,
+        "overall": 9.3
+      },
+      "sumIndividualImpact": {
+        "survival": 0,
+        "dps": 20.9,
+        "defense": 55.6,
+        "overall": 22.9
+      },
+      "synergyFactor": 0.406
+    },
+    {
+      "configId": 122,
+      "label": "rebal-heal-stack-asc0",
+      "relics": [
+        "herbal_pouch",
+        "scholars_hat",
+        "medic_kit",
+        "blood_pact"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 9.485,
+      "avgDamageTakenPerEnc": 33.889,
+      "avgAccuracy": 0.729,
+      "avgMaxCombo": 9.333,
+      "avgTurnsPerEncounter": 7.148,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 1.3,
+        "defense": -9,
+        "overall": 3997.7
+      },
+      "sumIndividualImpact": {
+        "survival": 19999.8,
+        "dps": 4.1,
+        "defense": 22.9,
+        "overall": 8008
+      },
+      "synergyFactor": -0.289,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 123,
+      "label": "rebal-heal-stack-asc10",
+      "relics": [
+        "herbal_pouch",
+        "scholars_hat",
+        "medic_kit",
+        "blood_pact"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 4,
+      "avgTotalEncounters": 12,
+      "avgDPS": 9.464,
+      "avgDamageTakenPerEnc": 46.963,
+      "avgAccuracy": 0.735,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.667,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 2.7,
+        "defense": -9,
+        "overall": -1.9
+      },
+      "sumIndividualImpact": {
+        "survival": 0,
+        "dps": -0.4,
+        "defense": -22.5,
+        "overall": -6.9
+      },
+      "synergyFactor": 0.275
+    },
+    {
+      "configId": 124,
+      "label": "rebal-combo-damage-asc0",
+      "relics": [
+        "war_drum",
+        "combo_ring"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.793,
+      "avgDamageTakenPerEnc": 26.395,
+      "avgAccuracy": 0.739,
+      "avgMaxCombo": 11.667,
+      "avgTurnsPerEncounter": 4.728,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 25.9,
+        "defense": 16.8,
+        "overall": 12.8
+      },
+      "sumIndividualImpact": {
+        "survival": 19999.8,
+        "dps": 40.6,
+        "defense": 42.6,
+        "overall": 8024.9
+      },
+      "synergyFactor": 0.514,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 125,
+      "label": "rebal-combo-damage-asc10",
+      "relics": [
+        "war_drum",
+        "combo_ring"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 12.274,
+      "avgDamageTakenPerEnc": 31.667,
+      "avgAccuracy": 0.723,
+      "avgMaxCombo": 4,
+      "avgTurnsPerEncounter": 4.346,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 33.2,
+        "defense": 35,
+        "overall": 20.5
+      },
+      "sumIndividualImpact": {
+        "survival": 0,
+        "dps": 37.1,
+        "defense": 72.1,
+        "overall": 32.8
+      },
+      "synergyFactor": 0.625
+    },
+    {
+      "configId": 126,
+      "label": "rebal-block-anti-syn-asc0",
+      "relics": [
+        "stone_wall",
+        "fortress_wall",
+        "iron_buckler"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 1,
+      "victoryRate": 0,
+      "avgFinalFloor": 9,
+      "avgTotalEncounters": 27,
+      "avgDPS": 11.33,
+      "avgDamageTakenPerEnc": 19.074,
+      "avgAccuracy": 0.758,
+      "avgMaxCombo": 12.667,
+      "avgTurnsPerEncounter": 5.753,
+      "results": {
+        "victory": 0,
+        "defeat": 0,
+        "cash_out": 3
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 21,
+        "defense": 61.7,
+        "overall": 4024.8
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 13.6,
+        "defense": 18.2,
+        "overall": 4009.5
+      },
+      "synergyFactor": 2.604,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 127,
+      "label": "rebal-block-anti-syn-asc10",
+      "relics": [
+        "stone_wall",
+        "fortress_wall",
+        "iron_buckler"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 11.601,
+      "avgDamageTakenPerEnc": 32.111,
+      "avgAccuracy": 0.737,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 5.173,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 25.9,
+        "defense": 33.1,
+        "overall": 17.7
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 17.7,
+        "defense": 40.9,
+        "overall": 4017.5
+      },
+      "synergyFactor": 1.007,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 128,
+      "label": "rebal-draw-avalanche-asc0",
+      "relics": [
+        "swift_boots",
+        "afterimage",
+        "blood_price"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 7,
+      "avgTotalEncounters": 21,
+      "avgDPS": 12.056,
+      "avgDamageTakenPerEnc": 27.426,
+      "avgAccuracy": 0.738,
+      "avgMaxCombo": 12,
+      "avgTurnsPerEncounter": 5.407,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 28.7,
+        "defense": 12.4,
+        "overall": 12.3
+      },
+      "sumIndividualImpact": {
+        "survival": 19999.8,
+        "dps": 50.8,
+        "defense": 102.6,
+        "overall": 8045.9
+      },
+      "synergyFactor": 0.269,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 129,
+      "label": "rebal-draw-avalanche-asc10",
+      "relics": [
+        "swift_boots",
+        "afterimage",
+        "blood_price"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 12.662,
+      "avgDamageTakenPerEnc": 30.185,
+      "avgAccuracy": 0.725,
+      "avgMaxCombo": 5,
+      "avgTurnsPerEncounter": 5.228,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 37.5,
+        "defense": 41.6,
+        "overall": 4023.7
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 55.9,
+        "defense": 76.4,
+        "overall": 4039.7
+      },
+      "synergyFactor": 0.597,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 130,
+      "label": "rebal-offense-trio-asc0",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "ascensionLevel": 0,
+      "seeds": 3,
+      "survivalRate": 0.333,
+      "victoryRate": 0,
+      "avgFinalFloor": 5,
+      "avgTotalEncounters": 15,
+      "avgDPS": 12.042,
+      "avgDamageTakenPerEnc": 24.16,
+      "avgAccuracy": 0.744,
+      "avgMaxCombo": 9,
+      "avgTurnsPerEncounter": 4.284,
+      "results": {
+        "victory": 0,
+        "defeat": 2,
+        "cash_out": 1
+      },
+      "comboImpact": {
+        "survival": 9999.9,
+        "dps": 28.6,
+        "defense": 27.6,
+        "overall": 4016.8
+      },
+      "sumIndividualImpact": {
+        "survival": 19999.8,
+        "dps": 45.7,
+        "defense": 59.6,
+        "overall": 8031.5
+      },
+      "synergyFactor": 0.533,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    },
+    {
+      "configId": 131,
+      "label": "rebal-offense-trio-asc10",
+      "relics": [
+        "whetstone",
+        "flame_brand",
+        "war_drum"
+      ],
+      "ascensionLevel": 10,
+      "seeds": 3,
+      "survivalRate": 0,
+      "victoryRate": 0,
+      "avgFinalFloor": 6,
+      "avgTotalEncounters": 18,
+      "avgDPS": 12.779,
+      "avgDamageTakenPerEnc": 23.216,
+      "avgAccuracy": 0.72,
+      "avgMaxCombo": 3,
+      "avgTurnsPerEncounter": 3.87,
+      "results": {
+        "victory": 0,
+        "defeat": 3,
+        "cash_out": 0
+      },
+      "comboImpact": {
+        "survival": 0,
+        "dps": 38.7,
+        "defense": 84.1,
+        "overall": 36.8
+      },
+      "sumIndividualImpact": {
+        "survival": 9999.9,
+        "dps": 51.2,
+        "defense": 92.7,
+        "overall": 4043.1
+      },
+      "synergyFactor": 0.854,
+      "note": "Control baseline has 0% survival — synergy factor unreliable"
+    }
+  ],
+  "E_fullBuildPerformance": [
+    {
+      "build": "Aggro",
+      "ascensionResults": [
+        {
+          "configId": 132,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "barbed_edge",
+            "war_drum",
+            "glass_cannon",
+            "berserker_band",
+            "chain_lightning_rod",
+            "crescendo_blade"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 23,
+          "avgTotalEncounters": 69,
+          "avgDPS": 31.635,
+          "avgDamageTakenPerEnc": 10.681,
+          "avgAccuracy": 0.912,
+          "avgMaxCombo": 22,
+          "avgTurnsPerEncounter": 3.077,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 133,
+          "ascensionLevel": 5,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "barbed_edge",
+            "war_drum",
+            "glass_cannon",
+            "berserker_band",
+            "chain_lightning_rod",
+            "crescendo_blade"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 1,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 36.008,
+          "avgDamageTakenPerEnc": 15.282,
+          "avgAccuracy": 0.901,
+          "avgMaxCombo": 16,
+          "avgTurnsPerEncounter": 2.745,
+          "results": {
+            "victory": 3,
+            "defeat": 0,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 134,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "barbed_edge",
+            "war_drum",
+            "glass_cannon",
+            "berserker_band",
+            "chain_lightning_rod",
+            "crescendo_blade"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 17,
+          "avgTotalEncounters": 51,
+          "avgDPS": 29.578,
+          "avgDamageTakenPerEnc": 19.565,
+          "avgAccuracy": 0.892,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 2.87,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 135,
+          "ascensionLevel": 15,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "barbed_edge",
+            "war_drum",
+            "glass_cannon",
+            "berserker_band",
+            "chain_lightning_rod",
+            "crescendo_blade"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 16,
+          "avgTotalEncounters": 48,
+          "avgDPS": 29.218,
+          "avgDamageTakenPerEnc": 17.316,
+          "avgAccuracy": 0.9,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 2.809,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 136,
+          "ascensionLevel": 20,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "barbed_edge",
+            "war_drum",
+            "glass_cannon",
+            "berserker_band",
+            "chain_lightning_rod",
+            "crescendo_blade"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 12.667,
+          "avgTotalEncounters": 38,
+          "avgDPS": 32.59,
+          "avgDamageTakenPerEnc": 12.122,
+          "avgAccuracy": 0.879,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 2.359,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "build": "Fortress",
+      "ascensionResults": [
+        {
+          "configId": 137,
+          "ascensionLevel": 0,
+          "relics": [
+            "iron_buckler",
+            "steel_skin",
+            "stone_wall",
+            "thorned_vest",
+            "fortress_wall",
+            "mirror_shield",
+            "iron_resolve",
+            "phase_cloak"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 23.705,
+          "avgDamageTakenPerEnc": 16.463,
+          "avgAccuracy": 0.908,
+          "avgMaxCombo": 26,
+          "avgTurnsPerEncounter": 4.278,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 138,
+          "ascensionLevel": 5,
+          "relics": [
+            "iron_buckler",
+            "steel_skin",
+            "stone_wall",
+            "thorned_vest",
+            "fortress_wall",
+            "mirror_shield",
+            "iron_resolve",
+            "phase_cloak"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.333,
+          "victoryRate": 0.333,
+          "avgFinalFloor": 20,
+          "avgTotalEncounters": 60,
+          "avgDPS": 25.518,
+          "avgDamageTakenPerEnc": 27.044,
+          "avgAccuracy": 0.905,
+          "avgMaxCombo": 21.333,
+          "avgTurnsPerEncounter": 3.681,
+          "results": {
+            "victory": 1,
+            "defeat": 2,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 139,
+          "ascensionLevel": 10,
+          "relics": [
+            "iron_buckler",
+            "steel_skin",
+            "stone_wall",
+            "thorned_vest",
+            "fortress_wall",
+            "mirror_shield",
+            "iron_resolve",
+            "phase_cloak"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.333,
+          "victoryRate": 0.333,
+          "avgFinalFloor": 18,
+          "avgTotalEncounters": 54,
+          "avgDPS": 19.507,
+          "avgDamageTakenPerEnc": 31.322,
+          "avgAccuracy": 0.907,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 4.154,
+          "results": {
+            "victory": 1,
+            "defeat": 2,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 140,
+          "ascensionLevel": 15,
+          "relics": [
+            "iron_buckler",
+            "steel_skin",
+            "stone_wall",
+            "thorned_vest",
+            "fortress_wall",
+            "mirror_shield",
+            "iron_resolve",
+            "phase_cloak"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 13,
+          "avgTotalEncounters": 39,
+          "avgDPS": 18.828,
+          "avgDamageTakenPerEnc": 33.397,
+          "avgAccuracy": 0.904,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 3.984,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 141,
+          "ascensionLevel": 20,
+          "relics": [
+            "iron_buckler",
+            "steel_skin",
+            "stone_wall",
+            "thorned_vest",
+            "fortress_wall",
+            "mirror_shield",
+            "iron_resolve",
+            "phase_cloak"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 15,
+          "avgTotalEncounters": 45,
+          "avgDPS": 22.687,
+          "avgDamageTakenPerEnc": 25.751,
+          "avgAccuracy": 0.908,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 3.446,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "build": "Sustain",
+      "ascensionResults": [
+        {
+          "configId": 142,
+          "ascensionLevel": 0,
+          "relics": [
+            "herbal_pouch",
+            "vitality_ring",
+            "medic_kit",
+            "last_breath",
+            "blood_pact",
+            "phoenix_feather",
+            "renewal_spring",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 22,
+          "avgTotalEncounters": 66,
+          "avgDPS": 19.611,
+          "avgDamageTakenPerEnc": 19.603,
+          "avgAccuracy": 0.897,
+          "avgMaxCombo": 23.333,
+          "avgTurnsPerEncounter": 5.329,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 143,
+          "ascensionLevel": 5,
+          "relics": [
+            "herbal_pouch",
+            "vitality_ring",
+            "medic_kit",
+            "last_breath",
+            "blood_pact",
+            "phoenix_feather",
+            "renewal_spring",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 20,
+          "avgTotalEncounters": 60,
+          "avgDPS": 21.056,
+          "avgDamageTakenPerEnc": 34.027,
+          "avgAccuracy": 0.896,
+          "avgMaxCombo": 26.667,
+          "avgTurnsPerEncounter": 4.358,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 144,
+          "ascensionLevel": 10,
+          "relics": [
+            "herbal_pouch",
+            "vitality_ring",
+            "medic_kit",
+            "last_breath",
+            "blood_pact",
+            "phoenix_feather",
+            "renewal_spring",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 12,
+          "avgTotalEncounters": 36,
+          "avgDPS": 15.878,
+          "avgDamageTakenPerEnc": 34.488,
+          "avgAccuracy": 0.902,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 4.667,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 145,
+          "ascensionLevel": 15,
+          "relics": [
+            "herbal_pouch",
+            "vitality_ring",
+            "medic_kit",
+            "last_breath",
+            "blood_pact",
+            "phoenix_feather",
+            "renewal_spring",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 10,
+          "avgTotalEncounters": 30,
+          "avgDPS": 15.489,
+          "avgDamageTakenPerEnc": 30.643,
+          "avgAccuracy": 0.904,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 4.746,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 146,
+          "ascensionLevel": 20,
+          "relics": [
+            "herbal_pouch",
+            "vitality_ring",
+            "medic_kit",
+            "last_breath",
+            "blood_pact",
+            "phoenix_feather",
+            "renewal_spring",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 12,
+          "avgTotalEncounters": 36,
+          "avgDPS": 18.511,
+          "avgDamageTakenPerEnc": 32.151,
+          "avgAccuracy": 0.902,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 4.21,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "build": "Speed",
+      "ascensionResults": [
+        {
+          "configId": 147,
+          "ascensionLevel": 0,
+          "relics": [
+            "swift_boots",
+            "combo_ring",
+            "momentum_gem",
+            "afterimage",
+            "quicksilver",
+            "double_vision",
+            "sharp_eye",
+            "speed_charm"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 23,
+          "avgTotalEncounters": 69,
+          "avgDPS": 28.899,
+          "avgDamageTakenPerEnc": 15.674,
+          "avgAccuracy": 0.893,
+          "avgMaxCombo": 32.333,
+          "avgTurnsPerEncounter": 3.837,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 148,
+          "ascensionLevel": 5,
+          "relics": [
+            "swift_boots",
+            "combo_ring",
+            "momentum_gem",
+            "afterimage",
+            "quicksilver",
+            "double_vision",
+            "sharp_eye",
+            "speed_charm"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 1,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 31.1,
+          "avgDamageTakenPerEnc": 15.944,
+          "avgAccuracy": 0.897,
+          "avgMaxCombo": 33.333,
+          "avgTurnsPerEncounter": 3.287,
+          "results": {
+            "victory": 3,
+            "defeat": 0,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 149,
+          "ascensionLevel": 10,
+          "relics": [
+            "swift_boots",
+            "combo_ring",
+            "momentum_gem",
+            "afterimage",
+            "quicksilver",
+            "double_vision",
+            "sharp_eye",
+            "speed_charm"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 23,
+          "avgTotalEncounters": 69,
+          "avgDPS": 25.475,
+          "avgDamageTakenPerEnc": 30.991,
+          "avgAccuracy": 0.899,
+          "avgMaxCombo": 6,
+          "avgTurnsPerEncounter": 3.979,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 150,
+          "ascensionLevel": 15,
+          "relics": [
+            "swift_boots",
+            "combo_ring",
+            "momentum_gem",
+            "afterimage",
+            "quicksilver",
+            "double_vision",
+            "sharp_eye",
+            "speed_charm"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 18,
+          "avgTotalEncounters": 54,
+          "avgDPS": 26.081,
+          "avgDamageTakenPerEnc": 26.519,
+          "avgAccuracy": 0.904,
+          "avgMaxCombo": 6,
+          "avgTurnsPerEncounter": 3.807,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 151,
+          "ascensionLevel": 20,
+          "relics": [
+            "swift_boots",
+            "combo_ring",
+            "momentum_gem",
+            "afterimage",
+            "quicksilver",
+            "double_vision",
+            "sharp_eye",
+            "speed_charm"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 14,
+          "avgTotalEncounters": 42,
+          "avgDPS": 29.3,
+          "avgDamageTakenPerEnc": 17.651,
+          "avgAccuracy": 0.885,
+          "avgMaxCombo": 5.667,
+          "avgTurnsPerEncounter": 2.817,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "build": "Cursed",
+      "ascensionResults": [
+        {
+          "configId": 152,
+          "ascensionLevel": 0,
+          "relics": [
+            "glass_cannon",
+            "blood_price",
+            "berserker_band",
+            "phase_cloak",
+            "blood_pact",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.333,
+          "victoryRate": 0.333,
+          "avgFinalFloor": 23,
+          "avgTotalEncounters": 69,
+          "avgDPS": 28.461,
+          "avgDamageTakenPerEnc": 15.885,
+          "avgAccuracy": 0.896,
+          "avgMaxCombo": 27,
+          "avgTurnsPerEncounter": 3.74,
+          "results": {
+            "victory": 1,
+            "defeat": 2,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 153,
+          "ascensionLevel": 5,
+          "relics": [
+            "glass_cannon",
+            "blood_price",
+            "berserker_band",
+            "phase_cloak",
+            "blood_pact",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 1,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 32.889,
+          "avgDamageTakenPerEnc": 20.31,
+          "avgAccuracy": 0.899,
+          "avgMaxCombo": 24,
+          "avgTurnsPerEncounter": 3.213,
+          "results": {
+            "victory": 3,
+            "defeat": 0,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 154,
+          "ascensionLevel": 10,
+          "relics": [
+            "glass_cannon",
+            "blood_price",
+            "berserker_band",
+            "phase_cloak",
+            "blood_pact",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 17,
+          "avgTotalEncounters": 51,
+          "avgDPS": 25.111,
+          "avgDamageTakenPerEnc": 28.909,
+          "avgAccuracy": 0.892,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 3.458,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 155,
+          "ascensionLevel": 15,
+          "relics": [
+            "glass_cannon",
+            "blood_price",
+            "berserker_band",
+            "phase_cloak",
+            "blood_pact",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 14,
+          "avgTotalEncounters": 42,
+          "avgDPS": 24.864,
+          "avgDamageTakenPerEnc": 22.343,
+          "avgAccuracy": 0.881,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 3.273,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 156,
+          "ascensionLevel": 20,
+          "relics": [
+            "glass_cannon",
+            "blood_price",
+            "berserker_band",
+            "phase_cloak",
+            "blood_pact",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.333,
+          "victoryRate": 0.333,
+          "avgFinalFloor": 19,
+          "avgTotalEncounters": 57,
+          "avgDPS": 29.586,
+          "avgDamageTakenPerEnc": 23.422,
+          "avgAccuracy": 0.902,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 3.305,
+          "results": {
+            "victory": 1,
+            "defeat": 2,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "build": "Balanced",
+      "ascensionResults": [
+        {
+          "configId": 157,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch",
+            "swift_boots",
+            "scholars_hat",
+            "combo_ring",
+            "vitality_ring",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 1,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 23.576,
+          "avgDamageTakenPerEnc": 18.87,
+          "avgAccuracy": 0.905,
+          "avgMaxCombo": 34,
+          "avgTurnsPerEncounter": 4.463,
+          "results": {
+            "victory": 3,
+            "defeat": 0,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 158,
+          "ascensionLevel": 5,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch",
+            "swift_boots",
+            "scholars_hat",
+            "combo_ring",
+            "vitality_ring",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 24.889,
+          "avgDamageTakenPerEnc": 24.546,
+          "avgAccuracy": 0.903,
+          "avgMaxCombo": 22.333,
+          "avgTurnsPerEncounter": 4.083,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 159,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch",
+            "swift_boots",
+            "scholars_hat",
+            "combo_ring",
+            "vitality_ring",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 17,
+          "avgTotalEncounters": 51,
+          "avgDPS": 19.862,
+          "avgDamageTakenPerEnc": 33.309,
+          "avgAccuracy": 0.904,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 4.2,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 160,
+          "ascensionLevel": 15,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch",
+            "swift_boots",
+            "scholars_hat",
+            "combo_ring",
+            "vitality_ring",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 13,
+          "avgTotalEncounters": 39,
+          "avgDPS": 20.006,
+          "avgDamageTakenPerEnc": 31.968,
+          "avgAccuracy": 0.905,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 4.058,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 161,
+          "ascensionLevel": 20,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch",
+            "swift_boots",
+            "scholars_hat",
+            "combo_ring",
+            "vitality_ring",
+            "last_breath"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 13,
+          "avgTotalEncounters": 39,
+          "avgDPS": 22.554,
+          "avgDamageTakenPerEnc": 23.617,
+          "avgAccuracy": 0.888,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 3.404,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    }
+  ],
+  "F_skillFairness": [
+    {
+      "loadout": "Offense",
+      "profileResults": {
+        "beginner": {
+          "0": {
+            "configId": 162,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 4,
+            "avgTotalEncounters": 11.667,
+            "avgDPS": 5.833,
+            "avgDamageTakenPerEnc": 34.164,
+            "avgAccuracy": 0.495,
+            "avgMaxCombo": 5,
+            "avgTurnsPerEncounter": 8.37,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          },
+          "10": {
+            "configId": 163,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 4,
+            "avgTotalEncounters": 12,
+            "avgDPS": 6.947,
+            "avgDamageTakenPerEnc": 41.407,
+            "avgAccuracy": 0.509,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 7.667,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          }
+        },
+        "average": {
+          "0": {
+            "configId": 164,
+            "seeds": 3,
+            "survivalRate": 0.333,
+            "victoryRate": 0,
+            "avgFinalFloor": 5,
+            "avgTotalEncounters": 15,
+            "avgDPS": 12.042,
+            "avgDamageTakenPerEnc": 24.16,
+            "avgAccuracy": 0.744,
+            "avgMaxCombo": 9,
+            "avgTurnsPerEncounter": 4.284,
+            "results": {
+              "victory": 0,
+              "defeat": 2,
+              "cash_out": 1
+            },
+            "benefit": 4016.8
+          },
+          "10": {
+            "configId": 165,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 6,
+            "avgTotalEncounters": 18,
+            "avgDPS": 12.779,
+            "avgDamageTakenPerEnc": 23.216,
+            "avgAccuracy": 0.72,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 3.87,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": 36.8
+          }
+        },
+        "expert": {
+          "0": {
+            "configId": 166,
+            "seeds": 3,
+            "survivalRate": 0.667,
+            "victoryRate": 0.667,
+            "avgFinalFloor": 23,
+            "avgTotalEncounters": 69,
+            "avgDPS": 23.234,
+            "avgDamageTakenPerEnc": 14.859,
+            "avgAccuracy": 0.904,
+            "avgMaxCombo": 24.333,
+            "avgTurnsPerEncounter": 4.411,
+            "results": {
+              "victory": 2,
+              "defeat": 1,
+              "cash_out": 0
+            },
+            "benefit": 53.7
+          },
+          "10": {
+            "configId": 167,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 17,
+            "avgTotalEncounters": 51,
+            "avgDPS": 21.281,
+            "avgDamageTakenPerEnc": 27.534,
+            "avgAccuracy": 0.915,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 3.904,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": 8
+          }
+        }
+      },
+      "fairness": {
+        "asc0": {
+          "ratio": null,
+          "note": "N/A"
+        },
+        "asc10": {
+          "ratio": null,
+          "note": "N/A"
+        }
+      }
+    },
+    {
+      "loadout": "Defense",
+      "profileResults": {
+        "beginner": {
+          "0": {
+            "configId": 168,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 4.667,
+            "avgTotalEncounters": 13.333,
+            "avgDPS": 5.441,
+            "avgDamageTakenPerEnc": 42.892,
+            "avgAccuracy": 0.496,
+            "avgMaxCombo": 6.667,
+            "avgTurnsPerEncounter": 8.569,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          },
+          "10": {
+            "configId": 169,
+            "seeds": 3,
+            "survivalRate": 1,
+            "victoryRate": 0,
+            "avgFinalFloor": 6,
+            "avgTotalEncounters": 18,
+            "avgDPS": 7.13,
+            "avgDamageTakenPerEnc": 43.278,
+            "avgAccuracy": 0.51,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 8.278,
+            "results": {
+              "victory": 0,
+              "defeat": 0,
+              "cash_out": 3
+            },
+            "benefit": null
+          }
+        },
+        "average": {
+          "0": {
+            "configId": 170,
+            "seeds": 3,
+            "survivalRate": 1,
+            "victoryRate": 0,
+            "avgFinalFloor": 9,
+            "avgTotalEncounters": 27,
+            "avgDPS": 11.33,
+            "avgDamageTakenPerEnc": 19.074,
+            "avgAccuracy": 0.758,
+            "avgMaxCombo": 12.667,
+            "avgTurnsPerEncounter": 5.753,
+            "results": {
+              "victory": 0,
+              "defeat": 0,
+              "cash_out": 3
+            },
+            "benefit": 4024.8
+          },
+          "10": {
+            "configId": 171,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 7,
+            "avgTotalEncounters": 21,
+            "avgDPS": 11.519,
+            "avgDamageTakenPerEnc": 33.265,
+            "avgAccuracy": 0.732,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 5.204,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": 16
+          }
+        },
+        "expert": {
+          "0": {
+            "configId": 172,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 23,
+            "avgTotalEncounters": 69,
+            "avgDPS": 21.994,
+            "avgDamageTakenPerEnc": 20.378,
+            "avgAccuracy": 0.903,
+            "avgMaxCombo": 23.667,
+            "avgTurnsPerEncounter": 4.681,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": -38.6
+          },
+          "10": {
+            "configId": 173,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 12,
+            "avgTotalEncounters": 36,
+            "avgDPS": 17.451,
+            "avgDamageTakenPerEnc": 32.704,
+            "avgAccuracy": 0.907,
+            "avgMaxCombo": 3,
+            "avgTurnsPerEncounter": 4.346,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": -3.7
+          }
+        }
+      },
+      "fairness": {
+        "asc0": {
+          "ratio": null,
+          "note": "N/A"
+        },
+        "asc10": {
+          "ratio": null,
+          "note": "N/A"
+        }
+      }
+    },
+    {
+      "loadout": "Knowledge",
+      "profileResults": {
+        "beginner": {
+          "0": {
+            "configId": 174,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 4,
+            "avgTotalEncounters": 11,
+            "avgDPS": 5.592,
+            "avgDamageTakenPerEnc": 60.706,
+            "avgAccuracy": 0.5,
+            "avgMaxCombo": 7.333,
+            "avgTurnsPerEncounter": 11.415,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          },
+          "10": {
+            "configId": 175,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 3,
+            "avgTotalEncounters": 9,
+            "avgDPS": 7.246,
+            "avgDamageTakenPerEnc": 48.815,
+            "avgAccuracy": 0.532,
+            "avgMaxCombo": 4.333,
+            "avgTurnsPerEncounter": 6.444,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          }
+        },
+        "average": {
+          "0": {
+            "configId": 176,
+            "seeds": 3,
+            "survivalRate": 0.667,
+            "victoryRate": 0,
+            "avgFinalFloor": 9,
+            "avgTotalEncounters": 27,
+            "avgDPS": 12.304,
+            "avgDamageTakenPerEnc": 16.481,
+            "avgAccuracy": 0.743,
+            "avgMaxCombo": 13.333,
+            "avgTurnsPerEncounter": 5.259,
+            "results": {
+              "victory": 0,
+              "defeat": 1,
+              "cash_out": 2
+            },
+            "benefit": 4035.5
+          },
+          "10": {
+            "configId": 177,
+            "seeds": 3,
+            "survivalRate": 0.667,
+            "victoryRate": 0,
+            "avgFinalFloor": 8,
+            "avgTotalEncounters": 24,
+            "avgDPS": 12.964,
+            "avgDamageTakenPerEnc": 31.963,
+            "avgAccuracy": 0.725,
+            "avgMaxCombo": 5,
+            "avgTurnsPerEncounter": 4.833,
+            "results": {
+              "victory": 0,
+              "defeat": 1,
+              "cash_out": 2
+            },
+            "benefit": 4022.3
+          }
+        },
+        "expert": {
+          "0": {
+            "configId": 178,
+            "seeds": 3,
+            "survivalRate": 1,
+            "victoryRate": 1,
+            "avgFinalFloor": 24,
+            "avgTotalEncounters": 72,
+            "avgDPS": 24.447,
+            "avgDamageTakenPerEnc": 14.81,
+            "avgAccuracy": 0.907,
+            "avgMaxCombo": 24.667,
+            "avgTurnsPerEncounter": 4.204,
+            "results": {
+              "victory": 3,
+              "defeat": 0,
+              "cash_out": 0
+            },
+            "benefit": 95.7
+          },
+          "10": {
+            "configId": 179,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 21,
+            "avgTotalEncounters": 63,
+            "avgDPS": 22.296,
+            "avgDamageTakenPerEnc": 32.589,
+            "avgAccuracy": 0.9,
+            "avgMaxCombo": 5,
+            "avgTurnsPerEncounter": 4.141,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": 5.6
+          }
+        }
+      },
+      "fairness": {
+        "asc0": {
+          "ratio": null,
+          "note": "N/A"
+        },
+        "asc10": {
+          "ratio": null,
+          "note": "N/A"
+        }
+      }
+    },
+    {
+      "loadout": "Cursed",
+      "profileResults": {
+        "beginner": {
+          "0": {
+            "configId": 180,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 3.667,
+            "avgTotalEncounters": 10.667,
+            "avgDPS": 7.495,
+            "avgDamageTakenPerEnc": 27.505,
+            "avgAccuracy": 0.501,
+            "avgMaxCombo": 5,
+            "avgTurnsPerEncounter": 5.708,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          },
+          "10": {
+            "configId": 181,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 3,
+            "avgTotalEncounters": 9,
+            "avgDPS": 9.685,
+            "avgDamageTakenPerEnc": 32.778,
+            "avgAccuracy": 0.523,
+            "avgMaxCombo": 4,
+            "avgTurnsPerEncounter": 4.889,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": null
+          }
+        },
+        "average": {
+          "0": {
+            "configId": 182,
+            "seeds": 3,
+            "survivalRate": 0.333,
+            "victoryRate": 0,
+            "avgFinalFloor": 7,
+            "avgTotalEncounters": 21,
+            "avgDPS": 14.366,
+            "avgDamageTakenPerEnc": 21.611,
+            "avgAccuracy": 0.727,
+            "avgMaxCombo": 9.667,
+            "avgTurnsPerEncounter": 4.426,
+            "results": {
+              "victory": 0,
+              "defeat": 2,
+              "cash_out": 1
+            },
+            "benefit": 4028.8
+          },
+          "10": {
+            "configId": 183,
+            "seeds": 3,
+            "survivalRate": 0.667,
+            "victoryRate": 0,
+            "avgFinalFloor": 7,
+            "avgTotalEncounters": 21,
+            "avgDPS": 15.204,
+            "avgDamageTakenPerEnc": 24.395,
+            "avgAccuracy": 0.726,
+            "avgMaxCombo": 4,
+            "avgTurnsPerEncounter": 3.951,
+            "results": {
+              "victory": 0,
+              "defeat": 1,
+              "cash_out": 2
+            },
+            "benefit": 4042
+          }
+        },
+        "expert": {
+          "0": {
+            "configId": 184,
+            "seeds": 3,
+            "survivalRate": 0.667,
+            "victoryRate": 0.667,
+            "avgFinalFloor": 22,
+            "avgTotalEncounters": 66,
+            "avgDPS": 27.706,
+            "avgDamageTakenPerEnc": 12.804,
+            "avgAccuracy": 0.897,
+            "avgMaxCombo": 21.667,
+            "avgTurnsPerEncounter": 3.645,
+            "results": {
+              "victory": 2,
+              "defeat": 1,
+              "cash_out": 0
+            },
+            "benefit": 66.6
+          },
+          "10": {
+            "configId": 185,
+            "seeds": 3,
+            "survivalRate": 0,
+            "victoryRate": 0,
+            "avgFinalFloor": 19,
+            "avgTotalEncounters": 57,
+            "avgDPS": 24.971,
+            "avgDamageTakenPerEnc": 25.23,
+            "avgAccuracy": 0.898,
+            "avgMaxCombo": 4,
+            "avgTurnsPerEncounter": 3.589,
+            "results": {
+              "victory": 0,
+              "defeat": 3,
+              "cash_out": 0
+            },
+            "benefit": 17.5
+          }
+        }
+      },
+      "fairness": {
+        "asc0": {
+          "ratio": null,
+          "note": "N/A"
+        },
+        "asc10": {
+          "ratio": null,
+          "note": "N/A"
+        }
+      }
+    }
+  ],
+  "G_progressionFairness": [
+    {
+      "stage": "New Player (3 starters)",
+      "results": [
+        {
+          "configId": 186,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 7,
+          "avgTotalEncounters": 21,
+          "avgDPS": 10.96,
+          "avgDamageTakenPerEnc": 25.068,
+          "avgAccuracy": 0.737,
+          "avgMaxCombo": 13,
+          "avgTurnsPerEncounter": 5.265,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 187,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "herbal_pouch"
+          ],
+          "seeds": 3,
+          "survivalRate": 0,
+          "victoryRate": 0,
+          "avgFinalFloor": 6,
+          "avgTotalEncounters": 18,
+          "avgDPS": 11.42,
+          "avgDamageTakenPerEnc": 30.537,
+          "avgAccuracy": 0.723,
+          "avgMaxCombo": 3,
+          "avgTurnsPerEncounter": 4.963,
+          "results": {
+            "victory": 0,
+            "defeat": 3,
+            "cash_out": 0
+          }
+        }
+      ]
+    },
+    {
+      "stage": "Mid Unlock (6 relics)",
+      "results": [
+        {
+          "configId": 188,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "swift_boots",
+            "fortress_wall",
+            "blood_pact",
+            "afterimage"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 0,
+          "avgFinalFloor": 9,
+          "avgTotalEncounters": 27,
+          "avgDPS": 13.798,
+          "avgDamageTakenPerEnc": 16.914,
+          "avgAccuracy": 0.749,
+          "avgMaxCombo": 12.667,
+          "avgTurnsPerEncounter": 4.333,
+          "results": {
+            "victory": 0,
+            "defeat": 0,
+            "cash_out": 3
+          }
+        },
+        {
+          "configId": 189,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "iron_buckler",
+            "swift_boots",
+            "fortress_wall",
+            "blood_pact",
+            "afterimage"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 0,
+          "avgFinalFloor": 9,
+          "avgTotalEncounters": 27,
+          "avgDPS": 14.906,
+          "avgDamageTakenPerEnc": 19.531,
+          "avgAccuracy": 0.75,
+          "avgMaxCombo": 4,
+          "avgTurnsPerEncounter": 4.136,
+          "results": {
+            "victory": 0,
+            "defeat": 0,
+            "cash_out": 3
+          }
+        }
+      ]
+    },
+    {
+      "stage": "Full Collection Top 8",
+      "results": [
+        {
+          "configId": 190,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "war_drum",
+            "combo_ring",
+            "blood_pact",
+            "phase_cloak",
+            "curiosity_gem",
+            "momentum_gem"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 0,
+          "avgFinalFloor": 9,
+          "avgTotalEncounters": 27,
+          "avgDPS": 15.124,
+          "avgDamageTakenPerEnc": 11.741,
+          "avgAccuracy": 0.751,
+          "avgMaxCombo": 14.333,
+          "avgTurnsPerEncounter": 3.988,
+          "results": {
+            "victory": 0,
+            "defeat": 0,
+            "cash_out": 3
+          }
+        },
+        {
+          "configId": 191,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "war_drum",
+            "combo_ring",
+            "blood_pact",
+            "phase_cloak",
+            "curiosity_gem",
+            "momentum_gem"
+          ],
+          "seeds": 3,
+          "survivalRate": 1,
+          "victoryRate": 0,
+          "avgFinalFloor": 9,
+          "avgTotalEncounters": 27,
+          "avgDPS": 16.26,
+          "avgDamageTakenPerEnc": 26.395,
+          "avgAccuracy": 0.759,
+          "avgMaxCombo": 5,
+          "avgTurnsPerEncounter": 4.247,
+          "results": {
+            "victory": 0,
+            "defeat": 0,
+            "cash_out": 3
+          }
+        }
+      ]
+    },
+    {
+      "stage": "All Starters Top 8",
+      "results": [
+        {
+          "configId": 192,
+          "ascensionLevel": 0,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "war_drum",
+            "combo_ring",
+            "momentum_gem",
+            "curiosity_gem",
+            "iron_buckler",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0,
+          "avgFinalFloor": 9,
+          "avgTotalEncounters": 27,
+          "avgDPS": 14.605,
+          "avgDamageTakenPerEnc": 13.889,
+          "avgAccuracy": 0.745,
+          "avgMaxCombo": 12.333,
+          "avgTurnsPerEncounter": 4.173,
+          "results": {
+            "victory": 0,
+            "defeat": 1,
+            "cash_out": 2
+          }
+        },
+        {
+          "configId": 193,
+          "ascensionLevel": 10,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "war_drum",
+            "combo_ring",
+            "momentum_gem",
+            "curiosity_gem",
+            "iron_buckler",
+            "scholars_hat"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0,
+          "avgFinalFloor": 8,
+          "avgTotalEncounters": 24,
+          "avgDPS": 16.776,
+          "avgDamageTakenPerEnc": 25.228,
+          "avgAccuracy": 0.739,
+          "avgMaxCombo": 5,
+          "avgTurnsPerEncounter": 3.92,
+          "results": {
+            "victory": 0,
+            "defeat": 1,
+            "cash_out": 2
+          }
+        }
+      ]
+    },
+    {
+      "stage": "Endgame Build",
+      "results": [
+        {
+          "configId": 194,
+          "ascensionLevel": 15,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "combo_ring",
+            "blood_pact",
+            "phase_cloak",
+            "fortress_wall",
+            "scholars_hat",
+            "quicksilver"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.333,
+          "victoryRate": 0.333,
+          "avgFinalFloor": 21,
+          "avgTotalEncounters": 63,
+          "avgDPS": 22.446,
+          "avgDamageTakenPerEnc": 36.191,
+          "avgAccuracy": 0.906,
+          "avgMaxCombo": 5,
+          "avgTurnsPerEncounter": 4.618,
+          "results": {
+            "victory": 1,
+            "defeat": 2,
+            "cash_out": 0
+          }
+        },
+        {
+          "configId": 195,
+          "ascensionLevel": 20,
+          "relics": [
+            "whetstone",
+            "flame_brand",
+            "combo_ring",
+            "blood_pact",
+            "phase_cloak",
+            "fortress_wall",
+            "scholars_hat",
+            "quicksilver"
+          ],
+          "seeds": 3,
+          "survivalRate": 0.667,
+          "victoryRate": 0.667,
+          "avgFinalFloor": 24,
+          "avgTotalEncounters": 72,
+          "avgDPS": 26.819,
+          "avgDamageTakenPerEnc": 28.074,
+          "avgAccuracy": 0.901,
+          "avgMaxCombo": 5,
+          "avgTurnsPerEncounter": 3.87,
+          "results": {
+            "victory": 2,
+            "defeat": 1,
+            "cash_out": 0
+          }
+        }
+      ]
+    }
+  ],
+  "H_stressTests": {
+    "results": [
+      {
+        "configId": 196,
+        "ascensionLevel": 0,
+        "relics": [
+          "whetstone",
+          "iron_buckler",
+          "herbal_pouch",
+          "combo_ring",
+          "blood_pact",
+          "scholars_hat",
+          "vitality_ring",
+          "last_breath"
+        ],
+        "seeds": 3,
+        "survivalRate": 0.667,
+        "victoryRate": 0.667,
+        "avgFinalFloor": 24,
+        "avgTotalEncounters": 72,
+        "avgDPS": 23.641,
+        "avgDamageTakenPerEnc": 20.796,
+        "avgAccuracy": 0.904,
+        "avgMaxCombo": 33.667,
+        "avgTurnsPerEncounter": 4.574,
+        "results": {
+          "victory": 2,
+          "defeat": 1,
+          "cash_out": 0
+        },
+        "immortal": false,
+        "earlyDeath": false
+      },
+      {
+        "configId": 197,
+        "ascensionLevel": 5,
+        "relics": [
+          "whetstone",
+          "iron_buckler",
+          "herbal_pouch",
+          "combo_ring",
+          "blood_pact",
+          "scholars_hat",
+          "vitality_ring",
+          "last_breath"
+        ],
+        "seeds": 3,
+        "survivalRate": 0.333,
+        "victoryRate": 0.333,
+        "avgFinalFloor": 23,
+        "avgTotalEncounters": 69,
+        "avgDPS": 24.765,
+        "avgDamageTakenPerEnc": 25.017,
+        "avgAccuracy": 0.9,
+        "avgMaxCombo": 22.333,
+        "avgTurnsPerEncounter": 4.044,
+        "results": {
+          "victory": 1,
+          "defeat": 2,
+          "cash_out": 0
+        },
+        "immortal": false,
+        "earlyDeath": false
+      },
+      {
+        "configId": 198,
+        "ascensionLevel": 10,
+        "relics": [
+          "whetstone",
+          "iron_buckler",
+          "herbal_pouch",
+          "combo_ring",
+          "blood_pact",
+          "scholars_hat",
+          "vitality_ring",
+          "last_breath"
+        ],
+        "seeds": 3,
+        "survivalRate": 0,
+        "victoryRate": 0,
+        "avgFinalFloor": 18,
+        "avgTotalEncounters": 54,
+        "avgDPS": 19.897,
+        "avgDamageTakenPerEnc": 35.438,
+        "avgAccuracy": 0.901,
+        "avgMaxCombo": 4,
+        "avgTurnsPerEncounter": 4.204,
+        "results": {
+          "victory": 0,
+          "defeat": 3,
+          "cash_out": 0
+        },
+        "immortal": false,
+        "earlyDeath": false
+      },
+      {
+        "configId": 199,
+        "ascensionLevel": 15,
+        "relics": [
+          "whetstone",
+          "iron_buckler",
+          "herbal_pouch",
+          "combo_ring",
+          "blood_pact",
+          "scholars_hat",
+          "vitality_ring",
+          "last_breath"
+        ],
+        "seeds": 3,
+        "survivalRate": 0,
+        "victoryRate": 0,
+        "avgFinalFloor": 14,
+        "avgTotalEncounters": 42,
+        "avgDPS": 20.21,
+        "avgDamageTakenPerEnc": 36.946,
+        "avgAccuracy": 0.908,
+        "avgMaxCombo": 4,
+        "avgTurnsPerEncounter": 4.169,
+        "results": {
+          "victory": 0,
+          "defeat": 3,
+          "cash_out": 0
+        },
+        "immortal": false,
+        "earlyDeath": false
+      },
+      {
+        "configId": 200,
+        "ascensionLevel": 20,
+        "relics": [
+          "whetstone",
+          "iron_buckler",
+          "herbal_pouch",
+          "combo_ring",
+          "blood_pact",
+          "scholars_hat",
+          "vitality_ring",
+          "last_breath"
+        ],
+        "seeds": 3,
+        "survivalRate": 0,
+        "victoryRate": 0,
+        "avgFinalFloor": 16,
+        "avgTotalEncounters": 48,
+        "avgDPS": 22.769,
+        "avgDamageTakenPerEnc": 24.333,
+        "avgAccuracy": 0.898,
+        "avgMaxCombo": 4,
+        "avgTurnsPerEncounter": 3.475,
+        "results": {
+          "victory": 0,
+          "defeat": 3,
+          "cash_out": 0
+        },
+        "immortal": false,
+        "earlyDeath": false
+      }
+    ],
+    "immortalConfigs": [],
+    "earlyDeathConfigs": [],
+    "survivingHighAsc": [
+      {
+        "build": "Cursed",
+        "asc": 20,
+        "survivalRate": 0.333
+      }
+    ],
+    "failingAsc0": []
+  }
+}

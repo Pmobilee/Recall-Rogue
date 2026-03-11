@@ -78,7 +78,10 @@
   let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType))
   let domainIconPath = $derived(getDomainIconPath(card.domain))
 
-  let startTime = $state(Date.now())
+  const TIMER_UPDATE_INTERVAL_MS = 33
+
+  let startTime = $state(0)
+  let lastTimerUpdateMs = 0
   let elapsed = $state(0)
   let timerTotalMs = $state(1000)
   let timerFraction = $derived(Math.max(0, 1 - elapsed / timerTotalMs))
@@ -109,21 +112,27 @@
   let correctRevealTimeoutId: ReturnType<typeof setTimeout> | undefined
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
 
-  function timerTick(): void {
+  function timerTick(now: number): void {
     if (!timerEnabled || answersDisabled || timerExpired) return
-    elapsed = Date.now() - startTime
-    if (elapsed >= timerTotalMs) {
+    const nextElapsed = now - startTime
+    if (nextElapsed >= timerTotalMs) {
+      elapsed = timerTotalMs
       timerExpired = true
       answersDisabled = true
       onskip()
       return
+    }
+    if ((nextElapsed - lastTimerUpdateMs) >= TIMER_UPDATE_INTERVAL_MS) {
+      elapsed = nextElapsed
+      lastTimerUpdateMs = nextElapsed
     }
     rafId = requestAnimationFrame(timerTick)
   }
 
   $effect(() => {
     timerTotalMs = Math.max(1000, timerDuration * 1000)
-    startTime = Date.now()
+    startTime = performance.now()
+    lastTimerUpdateMs = 0
     elapsed = 0
     timerExpired = false
     showHintMenu = false
@@ -147,8 +156,12 @@
     selectedAnswerIndex = index
 
     const isCorrect = answers[index] === correctAnswer
+    const elapsedNow = timerEnabled
+      ? Math.min(timerTotalMs, Math.max(elapsed, performance.now() - startTime))
+      : elapsed
+    elapsed = elapsedNow
     const speedBonus = timerEnabled
-      ? elapsed < (timerTotalMs * speedBonusThreshold)
+      ? elapsedNow < (timerTotalMs * speedBonusThreshold)
       : false
     if (isCorrect && speedBonus) {
       showSpeedBonus = true

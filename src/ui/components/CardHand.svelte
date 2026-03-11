@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy, onMount } from 'svelte'
   import type { Card, FactDomain, CardType } from '../../data/card-types'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
@@ -89,20 +90,21 @@
     return (1 - Math.abs(normalized)) * 20
   }
 
-  function getCardSpacing(total: number): number {
-    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 390
-    const maxHandWidth = screenWidth * 0.88
+  let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * 571 / 1024) : 390)
+
+  const cardSpacing = $derived.by(() => {
+    const total = cards.length
     if (total <= 1) return 0
+    const maxHandWidth = viewportWidth * 0.82
     // 60% of card width overlap
-    const cardW = Math.min(screenWidth * 0.18, 85)
-    const overlapSpacing = cardW * 0.6
+    const cardW = viewportWidth * 0.22
+    const overlapSpacing = cardW * 0.55
     return Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1)))
-  }
+  })
 
   function getXOffset(index: number, total: number): number {
-    const cardVisibleWidth = getCardSpacing(total)
-    const totalWidth = cardVisibleWidth * (total - 1)
-    return -totalWidth / 2 + cardVisibleWidth * index
+    const totalWidth = cardSpacing * (total - 1)
+    return -totalWidth / 2 + cardSpacing * index
   }
 
   function getCardEffectText(card: Card): string {
@@ -154,6 +156,8 @@
   let dragScale = $derived(1 + Math.min(0.3, dragDeltaY / 200))
   let isDragPastThreshold = $derived(dragDeltaY > 60)
   let isDragPreview = $derived(dragDeltaY > 40)
+  let pendingDragPoint: { x: number; y: number } | null = null
+  let dragFrameId: number | null = null
 
   // Reactive version counter — incremented when new cardbacks arrive via SSE
   let cardbackVersion = $state(0)
@@ -164,6 +168,43 @@
     })
     return unsub
   })
+
+  onMount(() => {
+    const onResize = (): void => {
+      viewportWidth = Math.min(window.innerWidth, window.innerHeight * 571 / 1024)
+    }
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  })
+
+  onDestroy(() => {
+    if (dragFrameId !== null) {
+      cancelAnimationFrame(dragFrameId)
+      dragFrameId = null
+    }
+    pendingDragPoint = null
+  })
+
+  function flushDragFrame(): void {
+    dragFrameId = null
+    if (!dragState || !pendingDragPoint) return
+    dragState = {
+      ...dragState,
+      currentX: pendingDragPoint.x,
+      currentY: pendingDragPoint.y,
+    }
+    pendingDragPoint = null
+  }
+
+  function clearDragFrame(): void {
+    pendingDragPoint = null
+    if (dragFrameId !== null) {
+      cancelAnimationFrame(dragFrameId)
+      dragFrameId = null
+    }
+  }
 
   // Reactive cardback URL map — re-computed when cards change or new cardbacks arrive
   let cardbackUrls = $derived(
@@ -220,7 +261,10 @@
 
   function handlePointerMove(e: PointerEvent): void {
     if (!dragState || e.pointerId !== dragState.pointerId) return
-    dragState = { ...dragState, currentX: e.clientX, currentY: e.clientY }
+    pendingDragPoint = { x: e.clientX, y: e.clientY }
+    if (dragFrameId === null) {
+      dragFrameId = requestAnimationFrame(flushDragFrame)
+    }
     const totalMovement = Math.abs(e.clientX - dragState.startX) + Math.abs(dragState.startY - e.clientY)
     if (totalMovement > 10) {
       e.preventDefault()
@@ -229,6 +273,7 @@
 
   function handlePointerUp(e: PointerEvent): void {
     if (!dragState || e.pointerId !== dragState.pointerId) return
+    clearDragFrame()
     const deltaY = dragState.startY - e.clientY
     const deltaX = Math.abs(e.clientX - dragState.startX)
     const wasDrag = Math.abs(deltaY) > 20 || deltaX > 20
@@ -247,6 +292,12 @@
       onselectcard(index)
     }
     // Below threshold with movement: card returns to hand (no action)
+  }
+
+  function handlePointerCancel(e: PointerEvent): void {
+    if (!dragState || e.pointerId !== dragState.pointerId) return
+    clearDragFrame()
+    dragState = null
   }
 </script>
 
@@ -302,7 +353,7 @@
       class:card-mechanic={isMechanic}
       class:drag-ready={isDragPastThreshold && isDraggingThis}
       style="
-        {isRevealing || isMechanic ? '' : isDraggingThis ? `transform: translateX(${xOffset + cardDragX}px) translateY(${(isSelected ? -80 : -arcOffset) - cardDragRawY}px) rotate(0deg) scale(${cardDragScale});` : `transform: translateX(${xOffset}px) translateY(${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
+        {isRevealing || isMechanic ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         border-color: {domainColor};
         --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
@@ -314,6 +365,7 @@
       onpointerdown={(e) => handlePointerDown(e, i)}
       onpointermove={(e) => handlePointerMove(e)}
       onpointerup={(e) => handlePointerUp(e)}
+      onpointercancel={(e) => handlePointerCancel(e)}
       onpointerenter={(e) => handlePointerEnter(e, i)}
       onpointerleave={handlePointerLeave}
     >
@@ -440,14 +492,14 @@
 
 <style>
   .card-hand-container {
-    --card-w: min(18vw, 85px);
+    --card-w: calc(var(--gw, 390px) * 0.22);
     --card-h: calc(var(--card-w) * 1.5);
     position: absolute;
     bottom: 68px;
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);
-    height: 160px;
+    height: 200px;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -480,6 +532,7 @@
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     perspective: 800px;
+    will-change: transform, opacity;
   }
 
   .card-animating {

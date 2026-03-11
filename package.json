@@ -26,9 +26,11 @@
     "content:visuals:fill": "node scripts/content-pipeline/fill-missing-visual-descriptions.mjs",
     "content:autopilot": "node scripts/content-pipeline/autopilot.mjs",
     "content:generate:all": "node scripts/content-pipeline/generate/generate-all-domains.mjs",
+    "simulate:mass": "npx tsx scripts/mass-simulate.ts",
     "content:factcheck": "node scripts/content-pipeline/qa/source-fact-check.mjs",
     "content:qa": "node scripts/content-pipeline/qa/run-post-generation-qa.mjs",
     "content:qa:gameplay": "node scripts/content-pipeline/qa/gameplay-safety-check.mjs",
+    "content:qa:id-gate": "node scripts/content-pipeline/qa/id-collision-gate.mjs --strict",
     "content:qa:gate": "node scripts/content-pipeline/qa/post-ingestion-gate.mjs",
     "content:coverage:gate": "node scripts/content-pipeline/qa/coverage-gate.mjs",
     "content:promote": "node scripts/content-pipeline/qa/promote-approved-to-db.mjs",
@@ -64,7 +66,10 @@
     "i18n:validate": "node src/i18n/scripts/validate-locale.mjs",
     "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs",
     "analyze": "ANALYZE=true npm run build",
-    "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm"
+    "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm",
+    "verify:stability": "node scripts/critical-loop.mjs",
+    "security:audit": "node scripts/security-audit.mjs",
+    "verify:ship": "node scripts/verify-ship.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
@@ -94,5 +99,8 @@
     "phaser": "^3.90.0",
     "sql.js": "^1.14.0",
     "ts-fsrs": "^5.2.3"
+  },
+  "overrides": {
+    "tar": "7.5.11"
   }
 }

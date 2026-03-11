@@ -819,6 +819,29 @@ export const REVIEW_PROMPT_TRIGGERS = {
 } as const
 
 // ============================================================
+// STUDY PRESETS & DECK BUILDER
+// ============================================================
+
+/** Below this fact count: warn "no loot, no leaderboard" (soft limit). */
+export const MIN_FAIR_POOL_SIZE = 40;
+/** If fewer than this % of pool facts are unmastered: warn "mostly mastered". */
+export const MIN_NOVEL_FACTS_PCT = 0.25;
+/** Maximum number of saved study presets per player. */
+export const MAX_PRESETS = 10;
+/** Maximum character length for a preset name. */
+export const MAX_PRESET_NAME_LENGTH = 30;
+
+/** Mastery scaling thresholds and multipliers for anti-cheat. */
+export const MASTERY_SCALING = {
+  /** Mastery percentage thresholds (ascending). */
+  thresholds: [0.40, 0.60, 0.80, 0.95] as const,
+  /** Reward multipliers corresponding to each threshold band. */
+  rewardMultipliers: [1.0, 0.85, 0.65, 0.40] as const,
+  /** Extra virtual floors added to timer/difficulty at each band. */
+  difficultyBoostFloors: [0, 1, 2, 4] as const,
+};
+
+// ============================================================
 // CARD ROGUELITE BALANCE (CR-01)
 // ============================================================
 
@@ -983,6 +1006,38 @@ export const QA_LIMITS = {
 // Knowledge combo multipliers
 // Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.0x)
 export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
+
+/** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
+export const COMBO_RING_START_MULTIPLIER = 1.10;
+
+/** Segment-based enrage turn budgets. Enrage starts earlier in deeper floors. */
+export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
+  { maxFloor: 6, startTurn: 9 },        // Shallow Depths
+  { maxFloor: 12, startTurn: 8 },       // Deep Caverns
+  { maxFloor: 18, startTurn: 7 },       // The Abyss
+  { maxFloor: 24, startTurn: 6 },       // The Archive
+  { maxFloor: Infinity, startTurn: 5 }, // Endless
+];
+
+/** +2 damage per turn for the first 3 enrage turns. */
+export const ENRAGE_PHASE1_BONUS = 2;
+/** +4 damage per turn after 3 enrage turns. */
+export const ENRAGE_PHASE2_BONUS = 4;
+/** Number of turns at phase 1 bonus before escalating to phase 2. */
+export const ENRAGE_PHASE1_DURATION = 3;
+/** Enemy HP threshold below which they gain bonus damage (desperate attack). */
+export const ENRAGE_LOW_HP_THRESHOLD = 0.30;
+/** Bonus damage per turn when enemy is below HP threshold. */
+export const ENRAGE_LOW_HP_BONUS = 3;
+
+/** @deprecated Use ENRAGE_SEGMENTS instead. Kept for headless sim compatibility. */
+export const SOFT_ENRAGE_START_TURN = 10;
+/** @deprecated Use ENRAGE_SEGMENTS instead. */
+export const SOFT_ENRAGE_PHASE2_TURN = 15;
+/** @deprecated Use ENRAGE_PHASE1_BONUS instead. */
+export const SOFT_ENRAGE_PHASE1_BONUS = 2;
+/** @deprecated Use ENRAGE_PHASE2_BONUS instead. */
+export const SOFT_ENRAGE_PHASE2_BONUS = 5;
 
 // Speed bonus
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
