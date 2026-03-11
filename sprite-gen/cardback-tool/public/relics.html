@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Rogue — Relic Sprites</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a1a2e;
+    border-bottom: 2px solid #333;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    color: #4ecca3;
+    white-space: nowrap;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: #88aadd;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #446;
+    border-radius: 6px;
+    background: #1a2a4a;
+  }
+  .nav-link:hover { background: #2a3a5a; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid #444;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-sync { background: #2a2a4a; color: #aabbdd; border-color: #446; }
+  .btn-sync:hover:not(:disabled) { background: #3a3a5a; }
+
+  .btn-generate { background: #1a4a3a; color: #4ecca3; border-color: #2a6a4a; }
+  .btn-generate:hover:not(:disabled) { background: #2a5a4a; }
+
+  .btn-stop { background: #4a1a1a; color: #ff6666; border-color: #6a2a2a; }
+  .btn-stop:hover:not(:disabled) { background: #5a2a2a; }
+
+  .status-text { font-size: 0.8rem; color: #aaa; }
+
+  /* Filter bar */
+  .filters {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+  }
+  .filter-sep { color: #555; margin: 0 4px; }
+  .filter-btn {
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background: #222;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .filter-btn:hover { background: #333; color: #ddd; }
+  .filter-btn.active { background: #4ecca3; color: #0f0f1a; border-color: #4ecca3; }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .card {
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #4ecca3; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px 6px;
+    flex-wrap: wrap;
+  }
+  .card-icon { font-size: 1.3rem; }
+  .card-name { font-weight: 700; font-size: 0.9rem; flex: 1; min-width: 0; }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .badge-starter { background: #2a3a2a; color: #88cc88; }
+  .badge-unlock { background: #3a2a3a; color: #cc88cc; }
+
+  /* Category colors */
+  .badge-offensive { background: #3a1a1a; color: #cc4444; }
+  .badge-defensive { background: #1a2a3a; color: #4488cc; }
+  .badge-sustain { background: #1a3a1a; color: #44aa44; }
+  .badge-tactical { background: #2a2a3a; color: #aa88cc; }
+  .badge-knowledge { background: #3a3a1a; color: #ccaa44; }
+  .badge-economy { background: #3a2a1a; color: #cc8844; }
+  .badge-cursed { background: #2a1a2a; color: #aa44aa; }
+
+  /* Rarity colors */
+  .badge-common { background: #2a2a2a; color: #888; }
+  .badge-uncommon { background: #1a3a2a; color: #4ecca3; }
+  .badge-rare { background: #1a2a4a; color: #4488ff; }
+  .badge-legendary { background: #3a3a1a; color: #ffaa00; }
+
+  /* Status */
+  .badge-pending { background: #2a2a2a; color: #666; }
+  .badge-generating { background: #3a2a1a; color: #cc8800; animation: pulse 1.5s infinite; }
+  .badge-generated { background: #1a3a2a; color: #4ecca3; }
+  .badge-approved { background: #1a3a1a; color: #44cc44; }
+  .badge-rejected { background: #3a1a1a; color: #cc4444; }
+  .badge-error { background: #3a1a1a; color: #ff4444; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .card-image {
+    width: 128px;
+    height: 128px;
+    margin: 6px auto;
+    background: #111;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 0.75rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  .card-desc {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    color: #888;
+    cursor: pointer;
+    max-height: 2.6em;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    line-height: 1.3;
+  }
+  .card-desc.expanded { max-height: 200px; overflow: visible; }
+  .card-desc textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #111;
+    color: #ccc;
+    border: 1px solid #4ecca3;
+    border-radius: 4px;
+    padding: 6px;
+    font-size: 0.72rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 6px;
+    padding: 6px 12px 10px;
+    flex-wrap: wrap;
+  }
+  .card-actions .btn { padding: 4px 10px; font-size: 0.75rem; }
+
+  .btn-approve { background: #1a3a1a; color: #44cc44; border-color: #2a5a2a; }
+  .btn-approve:hover:not(:disabled) { background: #2a4a2a; }
+  .btn-reject { background: #3a1a1a; color: #cc4444; border-color: #5a2a2a; }
+  .btn-reject:hover:not(:disabled) { background: #4a2a2a; }
+  .btn-gen-single { background: #1a3a3a; color: #4ecca3; border-color: #2a5a5a; }
+  .btn-gen-single:hover:not(:disabled) { background: #2a4a4a; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 512px;
+    max-height: 512px;
+    image-rendering: pixelated;
+    border-radius: 8px;
+    border: 2px solid #4ecca3;
+  }
+  .lightbox-label {
+    position: absolute;
+    bottom: 40px;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+
+  .empty-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-left">
+      <h1>Recall Rogue &mdash; Relic Sprites</h1>
+      <a class="nav-link" href="/">Dashboard</a>
+      <a class="nav-link" href="/stylelab.html">Style Lab</a>
+      <a class="nav-link" href="/promptlab.html">Prompt Lab</a>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn btn-sync" onclick="syncToDB()">Sync to DB</button>
+    <button class="btn btn-generate" id="btnBatchGen" onclick="batchGenerate()">Generate All Pending</button>
+    <button class="btn btn-stop" id="btnBatchStop" onclick="batchStop()">Stop Batch</button>
+    <span class="status-text" id="statusText">Loading...</span>
+  </div>
+  <div class="filters" id="filterBar">
+    <span style="color:#666">Category:</span>
+    <button class="filter-btn active" data-group="cat" data-val="all">All</button>
+    <button class="filter-btn" data-group="cat" data-val="offensive">Offensive</button>
+    <button class="filter-btn" data-group="cat" data-val="defensive">Defensive</button>
+    <button class="filter-btn" data-group="cat" data-val="sustain">Sustain</button>
+    <button class="filter-btn" data-group="cat" data-val="tactical">Tactical</button>
+    <button class="filter-btn" data-group="cat" data-val="knowledge">Knowledge</button>
+    <button class="filter-btn" data-group="cat" data-val="economy">Economy</button>
+    <button class="filter-btn" data-group="cat" data-val="cursed">Cursed</button>
+    <span class="filter-sep">|</span>
+    <span style="color:#666">Rarity:</span>
+    <button class="filter-btn active" data-group="rar" data-val="all">All</button>
+    <button class="filter-btn" data-group="rar" data-val="common">Common</button>
+    <button class="filter-btn" data-group="rar" data-val="uncommon">Uncommon</button>
+    <button class="filter-btn" data-group="rar" data-val="rare">Rare</button>
+    <span class="filter-sep">|</span>
+    <span style="color:#666">Status:</span>
+    <button class="filter-btn active" data-group="sta" data-val="all">All</button>
+    <button class="filter-btn" data-group="sta" data-val="pending">Pending</button>
+    <button class="filter-btn" data-group="sta" data-val="generated">Generated</button>
+    <button class="filter-btn" data-group="sta" data-val="approved">Approved</button>
+    <button class="filter-btn" data-group="sta" data-val="rejected">Rejected</button>
+  </div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-label" id="lightboxLabel"></div>
+</div>
+
+<script>
+const RELICS = [
+  { id: 'whetstone', name: 'Whetstone', category: 'offensive', rarity: 'common', icon: '\u{1FAA8}', visualDescription: 'A rough grey whetstone with a faintly glowing blue edge, resting on a coiled leather strap. Tiny azure sparks drift from the sharpened surface. 32x32 pixel art, dark dungeon palette.', isStarter: true },
+  { id: 'flame_brand', name: 'Flame Brand', category: 'offensive', rarity: 'common', icon: '\u{1F525}', visualDescription: 'A small iron brand with a perpetually burning orange-red flame at its tip, heat shimmer distorting the air above it. Embers float around it. 32x32 pixel art.', isStarter: true },
+  { id: 'barbed_edge', name: 'Barbed Edge', category: 'offensive', rarity: 'common', icon: '\u2694\uFE0F', visualDescription: 'A short jagged blade fragment with cruel backward-facing barbs along both edges, dark crimson stains between the teeth. Faint red glow. 32x32 pixel art.', isStarter: true },
+  { id: 'war_drum', name: 'War Drum', category: 'offensive', rarity: 'common', icon: '\u{1F941}', visualDescription: 'A small hand drum with a taut hide surface, brass rivets around the rim, and two crossed drumsticks. Concentric golden sound waves ripple outward. 32x32 pixel art.', isStarter: true },
+  { id: 'sharp_eye', name: 'Sharp Eye', category: 'offensive', rarity: 'common', icon: '\u{1F441}\uFE0F', visualDescription: 'A polished amber eye-shaped gemstone with a slitted pupil that glows golden. Faint targeting reticle lines radiate from the center. 32x32 pixel art.', isStarter: true },
+  { id: 'iron_buckler', name: 'Iron Buckler', category: 'defensive', rarity: 'common', icon: '\u{1F6E1}\uFE0F', visualDescription: 'A small round iron buckler shield with a central boss, covered in dents and scratch marks. A faint blue protective shimmer around the edge. 32x32 pixel art.', isStarter: true },
+  { id: 'steel_skin', name: 'Steel Skin', category: 'defensive', rarity: 'common', icon: '\u{1F529}', visualDescription: 'A hexagonal metallic scale with a brushed steel texture and faint blue veins running through it. Subtle metallic sheen. 32x32 pixel art.', isStarter: true },
+  { id: 'thorned_vest', name: 'Thorned Vest', category: 'defensive', rarity: 'common', icon: '\u{1F335}', visualDescription: 'A leather vest fragment covered in sharp dark green thorns, with tiny drops of red at each thorn tip. Vine-like organic texture. 32x32 pixel art.', isStarter: true },
+  { id: 'stone_wall', name: 'Stone Wall', category: 'defensive', rarity: 'common', icon: '\u{1F9F1}', visualDescription: 'A rough-cut grey stone block with ancient runes carved into its face, emitting a soft teal glow. Cracks filled with luminous mortar. 32x32 pixel art.', isStarter: true },
+  { id: 'herbal_pouch', name: 'Herbal Pouch', category: 'sustain', rarity: 'common', icon: '\u{1F33F}', visualDescription: 'A small brown leather pouch tied with green twine, overflowing with dried herbs and small glowing leaves. A faint green healing aura. 32x32 pixel art.', isStarter: true },
+  { id: 'vitality_ring', name: 'Vitality Ring', category: 'sustain', rarity: 'common', icon: '\u{1F48D}', visualDescription: 'A smooth jade ring with a pulsing emerald core, tiny golden runes inscribed around the band. Soft green life energy radiates outward. 32x32 pixel art.', isStarter: true },
+  { id: 'medic_kit', name: 'Medic Kit', category: 'sustain', rarity: 'common', icon: '\u{1FA79}', visualDescription: 'A compact white box with a red cross emblem, slightly open to reveal glowing vials and bandage rolls inside. Clean medical aesthetic. 32x32 pixel art.', isStarter: true },
+  { id: 'last_breath', name: 'Last Breath', category: 'sustain', rarity: 'common', icon: '\u{1F480}', visualDescription: 'A cracked porcelain half-mask with one dark eye socket, wisps of pale blue soul-energy seeping from the cracks. Haunting and ethereal. 32x32 pixel art.', isStarter: true },
+  { id: 'swift_boots', name: 'Swift Boots', category: 'tactical', rarity: 'common', icon: '\u{1F462}', visualDescription: 'A pair of sleek brown leather boots with tiny silver wings on the ankles, leaving a faint blue motion trail. Light and swift appearance. 32x32 pixel art.', isStarter: true },
+  { id: 'combo_ring', name: 'Combo Ring', category: 'tactical', rarity: 'common', icon: '\u{1F4AB}', visualDescription: 'A silver signet ring with a musical note engraved on the face, surrounded by concentric golden ripple rings. Melodic energy. 32x32 pixel art.', isStarter: true },
+  { id: 'momentum_gem', name: 'Momentum Gem', category: 'tactical', rarity: 'common', icon: '\u2728', visualDescription: 'A faceted purple crystal that pulses with white lightning inside. Each facet reflects a tiny star. Intense concentrated energy. 32x32 pixel art.', isStarter: true },
+  { id: 'speed_charm', name: 'Speed Charm', category: 'tactical', rarity: 'common', icon: '\u26A1', visualDescription: 'A tiny golden hourglass pendant on a thin chain, the sand inside frozen mid-fall and glowing amber. Time distortion waves around it. 32x32 pixel art.', isStarter: true },
+  { id: 'cartographers_lens', name: "Cartographer's Lens", category: 'tactical', rarity: 'common', icon: '\u{1F50D}', visualDescription: 'A brass-rimmed magnifying lens with an intricate map etched into the glass. Through it, faint ghostly images of monsters are visible. 32x32 pixel art.', isStarter: true },
+  { id: 'scholars_hat', name: "Scholar's Hat", category: 'knowledge', rarity: 'common', icon: '\u{1F393}', visualDescription: "A tall pointed wizard's hat in deep blue with silver stars embroidered on it, a faint green healing glow emanating from the brim. 32x32 pixel art.", isStarter: true },
+  { id: 'memory_palace', name: 'Memory Palace', category: 'knowledge', rarity: 'common', icon: '\u{1F3DB}\uFE0F', visualDescription: 'A tiny crystalline palace structure with glowing windows, each window a different color. Three connected windows pulse gold simultaneously. 32x32 pixel art.', isStarter: true },
+  { id: 'curiosity_gem', name: 'Curiosity Gem', category: 'knowledge', rarity: 'common', icon: '\u{1F48E}', visualDescription: 'A rough uncut diamond with a swirling rainbow aurora inside, brightest at the core. Question marks float in the refracted light. 32x32 pixel art.', isStarter: true },
+  { id: 'brain_booster', name: 'Brain Booster', category: 'knowledge', rarity: 'common', icon: '\u{1F9E0}', visualDescription: 'A glowing cyan brain-shaped crystal on a small brass stand, with electric arcs jumping between the lobes. Scientific and arcane. 32x32 pixel art.', isStarter: true },
+  { id: 'gold_magnet', name: 'Gold Magnet', category: 'economy', rarity: 'common', icon: '\u{1F9F2}', visualDescription: 'A dark horseshoe magnet crackling with golden lightning, surrounded by orbiting gold coins caught in its pull. Magnetic field lines visible. 32x32 pixel art.', isStarter: true },
+  { id: 'lucky_coin', name: 'Lucky Coin', category: 'economy', rarity: 'common', icon: '\u{1FA99}', visualDescription: 'A gleaming gold coin spinning perpetually in mid-air, both faces showing a crown. Golden sparkles trail behind it. 32x32 pixel art.', isStarter: true },
+  { id: 'scavengers_pouch', name: "Scavenger's Pouch", category: 'economy', rarity: 'common', icon: '\u{1F45C}', visualDescription: "A patched brown leather pouch with a drawstring, bulging with miscellaneous treasures peeking out \u2014 a card edge, a gem, a feather. Warm golden glow inside. 32x32 pixel art.", isStarter: true },
+  { id: 'berserker_band', name: 'Berserker Band', category: 'offensive', rarity: 'uncommon', icon: '\u{1FA78}', visualDescription: 'A blood-red leather wristband with jagged metal studs, veins of crimson energy pulsing brighter as cracks appear. Berserker rage aura. 32x32 pixel art.', isStarter: false },
+  { id: 'chain_lightning_rod', name: 'Chain Lightning Rod', category: 'offensive', rarity: 'rare', icon: '\u26A1', visualDescription: 'A short copper rod topped with a crackling blue-white lightning ball, electric arcs branching in multiple directions. Intense electrical energy. 32x32 pixel art.', isStarter: false },
+  { id: 'venom_fang', name: 'Venom Fang', category: 'offensive', rarity: 'uncommon', icon: '\u{1F40D}', visualDescription: 'A curved translucent green fang dripping with toxic purple venom, small bubbles rising from the liquid. Poisonous sickly glow. 32x32 pixel art.', isStarter: false },
+  { id: 'crescendo_blade', name: 'Crescendo Blade', category: 'offensive', rarity: 'uncommon', icon: '\u{1F3B5}', visualDescription: 'A sleek silver blade with musical notation etched along its length, golden sound waves intensifying from hilt to tip. Musical energy crescendo. 32x32 pixel art.', isStarter: false },
+  { id: 'executioners_axe', name: "Executioner's Axe", category: 'offensive', rarity: 'rare', icon: '\u{1FA93}', visualDescription: "A heavy black iron axe head with a curved executioner's blade, the cutting edge glowing hot orange. Dark ominous presence. 32x32 pixel art.", isStarter: false },
+  { id: 'fortress_wall', name: 'Fortress Wall', category: 'defensive', rarity: 'uncommon', icon: '\u{1F3F0}', visualDescription: 'A miniature stone fortress tower with a glowing blue force-field dome around it. The walls shimmer with persistent energy that never fades. 32x32 pixel art.', isStarter: false },
+  { id: 'mirror_shield', name: 'Mirror Shield', category: 'defensive', rarity: 'rare', icon: '\u{1FA9E}', visualDescription: 'A perfectly reflective silver shield with a mirror surface showing a distorted angry face. Reflected energy beams bounce off its surface. 32x32 pixel art.', isStarter: false },
+  { id: 'iron_resolve', name: 'Iron Resolve', category: 'defensive', rarity: 'uncommon', icon: '\u2692\uFE0F', visualDescription: 'A chunk of dark iron with chain links fused into it, glowing with fierce orange determination. Cracks reveal an inner fire. 32x32 pixel art.', isStarter: false },
+  { id: 'phase_cloak', name: 'Phase Cloak', category: 'defensive', rarity: 'rare', icon: '\u{1F47B}', visualDescription: 'A tattered dark purple cloak with edges dissolving into shadow wisps. The fabric shimmers between visible and transparent. Ghostly and ethereal. 32x32 pixel art.', isStarter: false },
+  { id: 'blood_pact', name: 'Blood Pact', category: 'sustain', rarity: 'rare', icon: '\u{1FA78}', visualDescription: 'A rolled parchment sealed with a dark red wax skull stamp, blood droplets floating upward from the seal. Dark crimson magical aura. 32x32 pixel art.', isStarter: false },
+  { id: 'phoenix_feather', name: 'Phoenix Feather', category: 'sustain', rarity: 'rare', icon: '\u{1FAB6}', visualDescription: 'A magnificent orange-gold feather with flames dancing along its edges, radiating warmth and brilliant light. Sacred rebirth energy. 32x32 pixel art.', isStarter: false },
+  { id: 'renewal_spring', name: 'Renewal Spring', category: 'sustain', rarity: 'uncommon', icon: '\u26F2', visualDescription: 'A small crystal vial filled with swirling turquoise water, tiny bubbles rising inside. A miniature spring flows from the base. Refreshing blue glow. 32x32 pixel art.', isStarter: false },
+  { id: 'quicksilver', name: 'Quicksilver', category: 'tactical', rarity: 'rare', icon: '\u{1F4A7}', visualDescription: 'A glass sphere filled with swirling silver mercury that moves on its own. Lightning crackles where the mercury touches the glass. Kinetic silver energy. 32x32 pixel art.', isStarter: false },
+  { id: 'time_dilation', name: 'Time Dilation', category: 'tactical', rarity: 'uncommon', icon: '\u231B', visualDescription: 'An ornate brass hourglass with purple sand falling in slow motion, surrounded by clock hands spinning at different speeds. Time distortion ripples. 32x32 pixel art.', isStarter: false },
+  { id: 'afterimage', name: 'Afterimage', category: 'tactical', rarity: 'uncommon', icon: '\u{1F464}', visualDescription: 'A triangular mirror shard showing a ghostly translucent figure mid-motion, trailing blue afterimage copies. Speed lines and motion blur. 32x32 pixel art.', isStarter: false },
+  { id: 'echo_lens', name: 'Echo Lens', category: 'tactical', rarity: 'uncommon', icon: '\u{1F52E}', visualDescription: 'A round purple crystal lens with concentric ripple rings inside, ghostly card silhouettes visible through it at full opacity. Resonance waves. 32x32 pixel art.', isStarter: false },
+  { id: 'double_vision', name: 'Double Vision', category: 'tactical', rarity: 'rare', icon: '\u{1F453}', visualDescription: "A pair of round spectacles with one blue lens and one red lens, a golden '0' floating between them. Dual-vision energy shimmer. 32x32 pixel art.", isStarter: false },
+  { id: 'polyglot_pendant', name: 'Polyglot Pendant', category: 'knowledge', rarity: 'uncommon', icon: '\u{1F4FF}', visualDescription: 'A hexagonal silver pendant with rotating rings inscribed with symbols from many languages. Each ring glows a different color. Multilingual aura. 32x32 pixel art.', isStarter: false },
+  { id: 'eidetic_memory', name: 'Eidetic Memory', category: 'knowledge', rarity: 'rare', icon: '\u{1F4F8}', visualDescription: 'A glowing blue camera-like crystal with data streams flowing into it, stored memories visible as tiny bright dots orbiting inside. Digital recall energy. 32x32 pixel art.', isStarter: false },
+  { id: 'speed_reader', name: 'Speed Reader', category: 'knowledge', rarity: 'rare', icon: '\u{1F4D6}', visualDescription: 'An open book with pages turning themselves in a blur, glowing speed lines streaking across the text. Words fly off the pages. Lightning-fast knowledge. 32x32 pixel art.', isStarter: false },
+  { id: 'domain_mastery', name: 'Domain Mastery', category: 'knowledge', rarity: 'rare', icon: '\u{1F3C6}', visualDescription: 'A golden pentagon seal with a different domain symbol on each face, the active face blazing with white-hot energy. Mastery crown hovering above. 32x32 pixel art.', isStarter: false },
+  { id: 'prospectors_pick', name: "Prospector's Pick", category: 'economy', rarity: 'uncommon', icon: '\u26CF\uFE0F', visualDescription: 'A small iron pickaxe with a glowing amber tip that reveals hidden treasures. Four card silhouettes fan out behind it instead of three. Discovery energy. 32x32 pixel art.', isStarter: false },
+  { id: 'miser_ring', name: "Miser's Ring", category: 'economy', rarity: 'uncommon', icon: '\u{1F4B0}', visualDescription: 'A thick gold ring with a vault door face, tiny coins being absorbed into it and emerging as glowing purple mastery tokens. Alchemical transformation. 32x32 pixel art.', isStarter: false },
+  { id: 'glass_cannon', name: 'Glass Cannon', category: 'cursed', rarity: 'uncommon', icon: '\u{1F4A5}', visualDescription: 'A cannon made of cracked red glass with golden energy overflowing from the barrel, the base showing fracture lines. Beautiful but fragile. Dangerous power. 32x32 pixel art.', isStarter: false },
+  { id: 'blood_price', name: 'Blood Price', category: 'cursed', rarity: 'uncommon', icon: '\u{1FA78}', visualDescription: 'A dark parchment scroll dripping with blood-red ink, extra playing cards spilling from its unfurled edge. Dark red sacrificial energy aura. 32x32 pixel art.', isStarter: false },
+];
+
+/* ---- State ---- */
+let dbState = {};        // id -> { status, file_path, ... }
+let filters = { cat: 'all', rar: 'all', sta: 'all' };
+let batchPolling = null;
+
+/* ---- Init ---- */
+document.addEventListener('DOMContentLoaded', async () => {
+  setupFilters();
+  await syncToDB();
+  await refreshList();
+  startBatchPolling();
+});
+
+/* ---- API helpers ---- */
+async function api(method, path, body) {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(path, opts);
+  if (!res.ok) throw new Error(`${method} ${path} -> ${res.status}`);
+  return res.json();
+}
+
+/* ---- Sync embedded relics to DB ---- */
+async function syncToDB() {
+  try {
+    await api('POST', '/api/relics/sync', { relics: RELICS });
+  } catch (e) {
+    console.error('Sync failed:', e);
+  }
+}
+
+/* ---- Fetch list from DB and merge ---- */
+async function refreshList() {
+  try {
+    const rows = await api('GET', '/api/relics/list');
+    dbState = {};
+    for (const r of rows) dbState[r.id] = r;
+  } catch (e) {
+    console.error('List fetch failed:', e);
+  }
+  render();
+  updateStatus();
+}
+
+/* ---- Batch status polling ---- */
+function startBatchPolling() {
+  if (batchPolling) return;
+  batchPolling = setInterval(async () => {
+    try {
+      const s = await api('GET', '/api/relics/batch-status');
+      updateBatchUI(s);
+      if (s.generating > 0) await refreshList();
+    } catch (_) {}
+  }, 5000);
+}
+
+function updateBatchUI(s) {
+  const genCount = Object.values(dbState).filter(r => r.status === 'generated' || r.status === 'approved').length;
+  const total = RELICS.length;
+  const batchLabel = s.running ? `Batch: ${s.generated}/${s.total} (${s.pending} pending)` : 'Batch: idle';
+  document.getElementById('statusText').textContent = `${genCount}/${total} generated | ${batchLabel}`;
+  document.getElementById('btnBatchStop').style.display = s.running ? 'inline-block' : 'none';
+}
+
+async function updateStatus() {
+  try {
+    const s = await api('GET', '/api/relics/batch-status');
+    updateBatchUI(s);
+  } catch (_) {
+    const genCount = Object.values(dbState).filter(r => r.status === 'generated' || r.status === 'approved').length;
+    document.getElementById('statusText').textContent = `${genCount}/${RELICS.length} generated | Batch: idle`;
+  }
+}
+
+/* ---- Actions ---- */
+async function batchGenerate() {
+  try {
+    await api('POST', '/api/relics/batch-generate');
+    document.getElementById('btnBatchStop').style.display = 'inline-block';
+  } catch (e) { console.error('Batch generate failed:', e); }
+}
+
+async function batchStop() {
+  try {
+    await api('POST', '/api/relics/batch-stop');
+    document.getElementById('btnBatchStop').style.display = 'none';
+  } catch (e) { console.error('Batch stop failed:', e); }
+}
+
+async function generateOne(id) {
+  setCardStatus(id, 'generating');
+  try {
+    await api('POST', `/api/relics/generate/${id}`);
+    await refreshList();
+  } catch (e) {
+    console.error('Generate failed:', e);
+    setCardStatus(id, 'error');
+  }
+}
+
+async function reviewRelic(id, status) {
+  try {
+    await api('POST', `/api/relics/review/${id}`, { status });
+    dbState[id] = { ...dbState[id], status };
+    render();
+  } catch (e) { console.error('Review failed:', e); }
+}
+
+async function saveDescription(id, desc) {
+  try {
+    await api('POST', `/api/relics/update-description/${id}`, { visualDescription: desc });
+  } catch (e) { console.error('Save description failed:', e); }
+}
+
+function setCardStatus(id, status) {
+  if (!dbState[id]) dbState[id] = {};
+  dbState[id].status = status;
+  render();
+}
+
+/* ---- Filters ---- */
+function setupFilters() {
+  document.getElementById('filterBar').addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    const group = btn.dataset.group;
+    const val = btn.dataset.val;
+    filters[group] = val;
+    document.querySelectorAll(`.filter-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+}
+
+function passesFilter(relic) {
+  const db = dbState[relic.id] || {};
+  const status = db.status || 'pending';
+  if (filters.cat !== 'all' && relic.category !== filters.cat) return false;
+  if (filters.rar !== 'all' && relic.rarity !== filters.rar) return false;
+  if (filters.sta !== 'all' && status !== filters.sta) return false;
+  return true;
+}
+
+/* ---- Render ---- */
+function render() {
+  const grid = document.getElementById('grid');
+  const visible = RELICS.filter(passesFilter);
+  if (visible.length === 0) {
+    grid.innerHTML = '<div class="empty-msg">No relics match the current filters.</div>';
+    return;
+  }
+  grid.innerHTML = visible.map(r => cardHTML(r)).join('');
+}
+
+function cardHTML(relic) {
+  const db = dbState[relic.id] || {};
+  const status = db.status || 'pending';
+  const hasImage = status === 'generated' || status === 'approved' || status === 'rejected';
+  const imgUrl = `/api/relics/image/${relic.id}?t=${Date.now()}`;
+
+  const imgArea = hasImage
+    ? `<div class="card-image" onclick="openLightbox('${imgUrl}','${esc(relic.name)}')"><img src="${imgUrl}" alt="${esc(relic.name)}"></div>`
+    : `<div class="card-image"><span>No sprite</span></div>`;
+
+  const actions = [];
+  if (status === 'pending' || status === 'rejected' || status === 'error')
+    actions.push(`<button class="btn btn-gen-single" onclick="generateOne('${relic.id}')">Generate</button>`);
+  if (status === 'generated' || status === 'rejected')
+    actions.push(`<button class="btn btn-approve" onclick="reviewRelic('${relic.id}','approved')">Approve</button>`);
+  if (status === 'generated' || status === 'approved')
+    actions.push(`<button class="btn btn-reject" onclick="reviewRelic('${relic.id}','rejected')">Reject</button>`);
+
+  return `<div class="card" data-id="${relic.id}">
+    <div class="card-header">
+      <span class="card-icon">${relic.icon}</span>
+      <span class="card-name">${esc(relic.name)}</span>
+      <span class="badge badge-${relic.isStarter ? 'starter' : 'unlock'}">${relic.isStarter ? 'Starter' : 'Unlock'}</span>
+    </div>
+    <div class="card-header" style="padding-top:0">
+      <span class="badge badge-${relic.category}">${relic.category}</span>
+      <span class="badge badge-${relic.rarity}">${relic.rarity}</span>
+      <span class="badge badge-${status}">${status}</span>
+    </div>
+    ${imgArea}
+    <div class="card-desc" onclick="toggleDesc(this, '${relic.id}')" title="Click to edit">${esc(relic.visualDescription)}</div>
+    <div class="card-actions">${actions.join('')}</div>
+  </div>`;
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+/* ---- Description editing ---- */
+function toggleDesc(el, id) {
+  if (el.querySelector('textarea')) return;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded');
+    return;
+  }
+  el.classList.add('expanded');
+  const current = el.textContent.trim();
+  el.innerHTML = `<textarea>${esc(current)}</textarea>`;
+  const ta = el.querySelector('textarea');
+  ta.focus();
+  ta.addEventListener('blur', () => {
+    const newVal = ta.value.trim();
+    el.innerHTML = esc(newVal);
+    el.classList.remove('expanded');
+    if (newVal !== current) {
+      saveDescription(id, newVal);
+      const relic = RELICS.find(r => r.id === id);
+      if (relic) relic.visualDescription = newVal;
+    }
+  });
+  ta.addEventListener('click', (e) => e.stopPropagation());
+}
+
+/* ---- Lightbox ---- */
+function openLightbox(src, label) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxLabel').textContent = label;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

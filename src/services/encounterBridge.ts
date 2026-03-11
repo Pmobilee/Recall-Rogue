@@ -11,7 +11,7 @@ import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
 import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor } from './floorManager';
-import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
+import type { Card, CardRunState, CardType } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
   applyEchoStabilityBonus,
@@ -19,15 +19,12 @@ import {
   awardMasteryCoin,
   getReviewStateByFactId,
   playerSave,
-  setGraduatedRelicId,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, TIER3_PASSIVE, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
+import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
-import { deriveCardTypeForFactId } from './cardTypeAllocator';
-import type { ActiveRelic } from '../data/passiveRelics';
-import { assignRelicOnGraduation, buildActiveRelics, checkRelicDormancy } from './relicManager';
+import { RELIC_BY_ID } from '../data/relics/index';
 import { onboardingState, difficultyMode } from './cardPreferences';
 import { updateBounties } from './bountyManager';
 import { getCardTier } from './tierDerivation';
@@ -96,7 +93,6 @@ function notifyEncounterComplete(result: EncounterCompletionResult): void {
 
 let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
-let activeRelics: ActiveRelic[] = [];
 
 function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[] {
   const byType = new Map<CardType, Card[]>();
@@ -137,39 +133,6 @@ function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[
   return picked;
 }
 
-function factCardTypeResolver(factId: string): CardType | null {
-  const inPool = activeRunPool.find((card) => card.factId === factId);
-  if (inPool) return inPool.cardType;
-  const fact = factsDB.getById(factId);
-  if (!fact) return null;
-  return deriveCardTypeForFactId(fact.id);
-}
-
-function buildPassiveEffectsFromRelics(relics: ActiveRelic[]): PassiveEffect[] {
-  return relics
-    .filter((relic) => !relic.isDormant)
-    .map((relic) => ({
-      sourceFactId: relic.sourceFactId,
-      cardType: relic.definition.graduationType[0] ?? 'attack',
-      domain: 'natural_sciences',
-      value: TIER3_PASSIVE[relic.definition.graduationType[0] ?? 'attack'] ?? 1,
-    }));
-}
-
-function recomputeActiveRelics(): void {
-  const save = get(playerSave);
-  const reviewStates = save?.reviewStates ?? [];
-  const run = get(activeRunState);
-  const ascensionRelicCap = run?.ascensionModifiers.relicCap ?? getAscensionModifiers(0).relicCap;
-  activeRelics = buildActiveRelics(reviewStates, factCardTypeResolver, { maxActiveRelics: ascensionRelicCap });
-
-  const factStates = new Map<string, { retrievability: number }>();
-  for (const state of reviewStates) {
-    factStates.set(state.factId, { retrievability: state.retrievability ?? 1 });
-  }
-  checkRelicDormancy(activeRelics, factStates);
-}
-
 function syncCombatScene(turnState: TurnState): void {
   ensureCombatStarted();
   const pushDisplayData = () => {
@@ -193,13 +156,15 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.deck.currentEncounter,
       3,
     );
+    const run = get(activeRunState);
     scene.setRelics(
-      activeRelics
-        .filter((relic) => !relic.isDormant)
-        .map((relic) => ({
-          domain: relic.definition.category,
-          label: relic.definition.name,
-        })),
+      (run?.runRelics ?? []).map((rr) => {
+        const def = RELIC_BY_ID[rr.definitionId];
+        return {
+          domain: def?.category ?? 'tactical',
+          label: def?.name ?? rr.definitionId,
+        };
+      }),
     );
   };
 
@@ -249,7 +214,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     activeDeck = createDeck(starterDeck);
   }
 
-  recomputeActiveRelics();
+  // Build active relic IDs from run state
+  const runRelicIds = new Set<string>(
+    (run.runRelics ?? []).map((r) => r.definitionId)
+  );
 
   let templateId = enemyId;
   if (!templateId) {
@@ -293,13 +261,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.playerState.hp = run.playerHp;
   turnState.apMax = Math.max(2, run.startingAp);
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
-  turnState.activeRelics = activeRelics;
-  turnState.activeRelicIds = new Set(
-    activeRelics.filter((relic) => !relic.isDormant).map((relic) => relic.definition.id),
-  );
-  turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
+  turnState.activeRelicIds = runRelicIds;
+  turnState.baseComboCount = runRelicIds.has('combo_ring') ? 1 : 0;
   turnState.comboCount = turnState.baseComboCount;
-  turnState.baseDrawCount = turnState.activeRelicIds.has('quick_draw') ? 6 : 5;
+  turnState.baseDrawCount = runRelicIds.has('swift_boots') ? 6 : 5;
+  if (runRelicIds.has('blood_price')) turnState.baseDrawCount += 2;
   turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
   turnState.ascensionLevel = run.ascensionLevel ?? 0;
@@ -322,15 +288,17 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   }
 
   // Encounter-start relic hooks.
-  if (turnState.activeRelicIds.has('iron_skin')) {
-    turnState.playerState.shield += 4;
+  if (runRelicIds.has('iron_buckler')) {
+    turnState.playerState.shield += 5;
   }
-  if (turnState.activeRelicIds.has('natural_recovery')) {
-    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + 2);
+  if (runRelicIds.has('herbal_pouch')) {
+    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + 3);
+  }
+  if (runRelicIds.has('quicksilver')) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + 1);
   }
 
-  // Tier-3 passives (legacy CR-08 layer) still supported.
-  turnState.activePassives = buildPassiveEffectsFromRelics(activeRelics);
+  turnState.activePassives = [];
 
   activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
@@ -543,7 +511,7 @@ export function handleSkipCard(cardId: string): void {
   skipCard(turnState, cardId);
 
   const run = get(activeRunState);
-  if (run && turnState.activeRelicIds.has('scavenger')) {
+  if (run && turnState.activeRelicIds.has('scavengers_pouch')) {
     run.currency += 1;
     activeRunState.set(run);
   }
@@ -663,5 +631,4 @@ export function resetEncounterBridge(): void {
   activeTurnState.set(null);
   activeDeck = null;
   activeRunPool = [];
-  activeRelics = [];
 }

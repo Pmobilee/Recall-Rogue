@@ -44,6 +44,9 @@
     startScholarChallengeRun,
     openRelicSanctum,
     closeRelicSanctum,
+    activeRelicRewardOptions,
+    activeRelicPickup,
+    onRelicRewardSelected,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -86,6 +89,8 @@
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
   import SocialScreen from './ui/components/SocialScreen.svelte'
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
+  import RelicRewardScreen from './ui/components/RelicRewardScreen.svelte'
+  import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
 
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
@@ -160,6 +165,10 @@
 
   function handleCloseRelicSanctum(): void {
     closeRelicSanctum()
+  }
+
+  function handleRelicRewardSelect(relic: import('./data/relics/types').RelicDefinition): void {
+    onRelicRewardSelected(relic)
   }
 
   function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
@@ -640,6 +649,20 @@
 
   {#if $currentScreen === 'relicSanctum'}
     <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
+  {/if}
+
+  {#if $currentScreen === 'relicReward'}
+    <RelicRewardScreen
+      options={$activeRelicRewardOptions}
+      onselect={handleRelicRewardSelect}
+    />
+  {/if}
+
+  {#if $activeRelicPickup}
+    <RelicPickupToast
+      relic={$activeRelicPickup}
+      ondismiss={() => activeRelicPickup.set(null)}
+    />
   {/if}
 
   {#if showArcanePassModal}

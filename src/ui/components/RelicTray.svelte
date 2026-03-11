@@ -1,8 +1,13 @@
 <script lang="ts">
-  import type { ActiveRelic } from '../../data/passiveRelics'
+  interface DisplayRelic {
+    definitionId: string
+    name: string
+    description: string
+    initial: string
+  }
 
   interface Props {
-    relics: ActiveRelic[]
+    relics: DisplayRelic[]
     triggeredRelicId?: string | null
   }
 
@@ -11,16 +16,13 @@
 
 {#if relics.length > 0}
   <div class="relic-tray">
-    {#each relics as relic (relic.sourceFactId + relic.definition.id)}
+    {#each relics as relic (relic.definitionId)}
       <div
         class="relic"
-        class:dormant={relic.isDormant}
-        class:triggered={triggeredRelicId === relic.definition.id}
-        title={relic.isDormant
-          ? `${relic.definition.name}: Dormant — review the source fact to reactivate`
-          : `${relic.definition.name}: ${relic.definition.description}`}
+        class:triggered={triggeredRelicId === relic.definitionId}
+        title={`${relic.name}: ${relic.description}`}
       >
-        {relic.definition.name.charAt(0)}
+        {relic.initial}
       </div>
     {/each}
   </div>
@@ -52,13 +54,6 @@
     flex: 0 0 auto;
   }
 
-  .relic.dormant {
-    opacity: 0.5;
-    filter: grayscale(1);
-    border-color: #6C757D;
-    color: #ADB5BD;
-  }
-
   .relic.triggered {
     animation: relicPulse 280ms ease-out;
   }
@@ -69,4 +64,3 @@
     100% { transform: scale(1); }
   }
 </style>
-

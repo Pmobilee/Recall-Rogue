@@ -88,6 +88,15 @@ import {
 import { getCardTier } from './tierDerivation'
 import { shuffled } from './randomUtils'
 import { getAscensionModifiers } from './ascension';
+import type { RelicDefinition } from '../data/relics/types'
+import { STARTER_RELIC_IDS } from '../data/relics/index'
+import {
+  getEligibleRelicPool,
+  generateBossRelicChoices,
+  generateMiniBossRelicChoices,
+  generateRandomRelicDrop,
+  shouldDropRandomRelic,
+} from './relicAcquisitionService'
 
 export type GameFlowState =
   | 'idle'
@@ -101,6 +110,7 @@ export type GameFlowState =
   | 'treasureReward'
   | 'bossEncounter'
   | 'cardReward'
+  | 'relicReward'
   | 'retreatOrDelve'
   | 'shopRoom'
   | 'specialEvent'
@@ -118,6 +128,8 @@ export const activeShopCards = writable<Card[]>([]);
 export const activeSpecialEvent = writable<SpecialEvent | null>(null);
 export const activeMasteryChallenge = writable<MasteryChallengeQuestion | null>(null);
 export const campfireReturnScreen = writable<GameFlowState | null>(null);
+export const activeRelicRewardOptions = writable<RelicDefinition[]>([]);
+export const activeRelicPickup = writable<RelicDefinition | null>(null);
 
 let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
@@ -435,6 +447,8 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
+  activeRelicRewardOptions.set([]);
+  activeRelicPickup.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -659,6 +673,31 @@ export function onCardRewardReroll(type: Card['cardType']): void {
   });
 }
 
+/** Build the eligible relic pool for the current run. */
+function buildRelicPool(): RelicDefinition[] {
+  const run = get(activeRunState)
+  const save = get(playerSave)
+  if (!run || !save) return []
+  const unlockedIds = save.unlockedRelicIds ?? []
+  const excludedIds = save.excludedRelicIds ?? []
+  const heldIds = run.runRelics.map((r) => r.definitionId)
+  return getEligibleRelicPool(unlockedIds, excludedIds, heldIds)
+}
+
+/** Add a relic to the current run state. */
+function addRelicToRun(relic: RelicDefinition): void {
+  const run = get(activeRunState)
+  if (!run) return
+  run.runRelics.push({
+    definitionId: relic.id,
+    acquiredAtFloor: run.floor.currentFloor,
+    acquiredAtEncounter: run.floor.currentEncounter,
+    triggerCount: 0,
+  })
+  run.offeredRelicIds.add(relic.id)
+  activeRunState.set(run)
+}
+
 export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -707,10 +746,56 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     return;
   }
 
+  // Capture current encounter info BEFORE advancing
+  const justCompletedEncounter = run.floor.currentEncounter;
+  const justCompletedFloor = run.floor.currentFloor;
+  const wasMiniBoss = isMiniBossEncounter(justCompletedFloor, justCompletedEncounter);
+  const wasBoss = isBossFloor(justCompletedFloor) && justCompletedEncounter === run.floor.encountersPerFloor;
+
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;
   activeRunState.set(run);
   autoSaveRun('cardReward');
+
+  // Relic acquisition
+  if (wasBoss || wasMiniBoss) {
+    const pool = buildRelicPool();
+    if (pool.length > 0) {
+      if (wasMiniBoss && !run.firstMiniBossRelicAwarded) {
+        run.firstMiniBossRelicAwarded = true;
+        activeRunState.set(run);
+        const choices = generateMiniBossRelicChoices(pool);
+        if (choices.length > 0) {
+          activeRelicRewardOptions.set(choices);
+          gameFlowState.set('relicReward');
+          currentScreen.set('relicReward');
+          return;
+        }
+      } else if (wasBoss) {
+        const choices = generateBossRelicChoices(pool);
+        if (choices.length > 0) {
+          activeRelicRewardOptions.set(choices);
+          gameFlowState.set('relicReward');
+          currentScreen.set('relicReward');
+          return;
+        }
+      } else if (wasMiniBoss) {
+        const drop = generateRandomRelicDrop(pool);
+        if (drop) {
+          addRelicToRun(drop);
+          activeRelicPickup.set(drop);
+        }
+      }
+    }
+  } else if (shouldDropRandomRelic()) {
+    const pool = buildRelicPool();
+    const drop = generateRandomRelicDrop(pool);
+    if (drop) {
+      addRelicToRun(drop);
+      activeRelicPickup.set(drop);
+    }
+  }
+
   openCardReward();
 }
 
@@ -739,6 +824,12 @@ export function onCardRewardSelected(card: Card): void {
 export function onCardRewardSkipped(): void {
   activeCardRewardOptions.set([]);
   void proceedAfterReward();
+}
+
+export function onRelicRewardSelected(relic: RelicDefinition): void {
+  addRelicToRun(relic);
+  activeRelicRewardOptions.set([]);
+  openCardReward();
 }
 
 function openShopRoom(): void {
@@ -1001,6 +1092,8 @@ export function abandonActiveRun(): void {
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
+  activeRelicRewardOptions.set([]);
+  activeRelicPickup.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -1068,6 +1161,8 @@ export function returnToMenu(): void {
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
+  activeRelicRewardOptions.set([]);
+  activeRelicPickup.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -1088,6 +1183,8 @@ export function playAgain(): void {
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
+  activeRelicRewardOptions.set([]);
+  activeRelicPickup.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;

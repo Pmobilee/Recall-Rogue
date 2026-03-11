@@ -7,7 +7,6 @@ import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { CardEffectResult } from './cardEffectResolver';
-import type { ActiveRelic } from '../data/passiveRelics';
 import { drawHand, playCard as deckPlayCard } from './deckManager';
 import {
   createPlayerCombatState,
@@ -49,7 +48,6 @@ export interface TurnState {
   buffNextCard: number;
   lastCardType?: CardType;
   activePassives: PassiveEffect[];
-  activeRelics: ActiveRelic[];
   activeRelicIds: Set<string>;
   apCurrent: number;
   apMax: number;
@@ -102,14 +100,6 @@ export interface EnemyTurnResult {
   playerDefeated: boolean;
   nextEnemyIntent: string;
   turnState: TurnState;
-}
-
-function buildActiveRelicIds(relics: ActiveRelic[]): Set<string> {
-  return new Set(
-    relics
-      .filter((relic) => !relic.isDormant)
-      .map((relic) => relic.definition.id),
-  );
 }
 
 function getPassiveBonuses(passives: PassiveEffect[]): Partial<Record<CardType, number>> {
@@ -185,7 +175,6 @@ export function startEncounter(
     buffNextCard: 0,
     lastCardType: undefined,
     activePassives: [],
-    activeRelics: [],
     activeRelicIds: new Set<string>(),
     apCurrent: START_AP_PER_TURN,
     apMax: MAX_AP_PER_TURN,
@@ -259,8 +248,7 @@ export function playCardAction(
     };
   }
 
-  turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
-  turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
+  turnState.baseComboCount = turnState.activeRelicIds.has('combo_ring') ? 1 : 0;
   if (turnState.comboCount < turnState.baseComboCount) turnState.comboCount = turnState.baseComboCount;
 
   const { deck, playerState, enemy } = turnState;
@@ -430,7 +418,7 @@ export function playCardAction(
   }
 
   if ((effect.overhealToShield ?? 0) > 0) {
-    if (card.mechanicId === 'overheal' || turnState.activeRelicIds.has('overgrowth')) {
+    if (card.mechanicId === 'overheal') {
       applyShield(playerState, effect.overhealToShield ?? 0);
     }
   }
@@ -470,11 +458,6 @@ export function playCardAction(
     turnState.buffNextCard = effect.finalValue;
   } else {
     turnState.buffNextCard = 0;
-  }
-
-  if (effect.enemyDefeated && turnState.activeRelicIds.has('bloodlust')) {
-    healPlayer(playerState, 5);
-    turnState.triggeredRelicId = 'bloodlust';
   }
 
   turnState.comboCount += 1;
@@ -533,7 +516,6 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     };
   }
 
-  turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
   const { playerState, enemy, deck } = turnState;
 
   // Block decays each turn — enemy must re-defend to maintain it (STS-style)
@@ -587,9 +569,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     damageDealt = incomingDamage;
     playerDefeated = damageResult.defeated;
 
-    if (shieldBefore > 0 && turnState.activeRelicIds.has('retaliation')) {
+    if (shieldBefore > 0 && turnState.activeRelicIds.has('thorned_vest')) {
       applyDamageToEnemy(enemy, 2);
-      turnState.triggeredRelicId = 'retaliation';
+      turnState.triggeredRelicId = 'thorned_vest';
     }
   }
 
@@ -604,11 +586,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     effectsApplied.push(effect);
   }
 
-  if (playerDefeated && turnState.activeRelicIds.has('second_wind') && !turnState.secondWindUsed) {
+  if (playerDefeated && turnState.activeRelicIds.has('last_breath') && !turnState.secondWindUsed) {
     playerState.hp = 1;
     playerDefeated = false;
     turnState.secondWindUsed = true;
-    turnState.triggeredRelicId = 'second_wind';
+    turnState.triggeredRelicId = 'last_breath';
   }
 
   if (playerDefeated) {
@@ -685,15 +667,15 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
   }
 
-  if (turnState.activeRelicIds.has('momentum') && turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
+  if (turnState.activeRelicIds.has('momentum_gem') && turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
     turnState.bonusApNextTurn += 1;
-    turnState.triggeredRelicId = 'momentum';
+    turnState.triggeredRelicId = 'momentum_gem';
   }
 
-  const carryShield = turnState.activeRelicIds.has('fortress')
+  const carryShield = turnState.activeRelicIds.has('fortress_wall')
     ? playerState.shield
     : turnState.persistentShield;
-  if (turnState.activeRelicIds.has('fortress')) turnState.triggeredRelicId = 'fortress';
+  if (turnState.activeRelicIds.has('fortress_wall')) turnState.triggeredRelicId = 'fortress_wall';
 
   resetTurnState(playerState);
   playerState.shield = Math.max(0, carryShield);

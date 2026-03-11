@@ -31,12 +31,12 @@ Primary boot path:
 │  hit/fizzle animations, particles, tweens       │
 ├─────────────────────────────────────────────────┤
 │  Service Layer                                  │
-│  Quiz engine, SM-2 scheduler, facts DB,         │
-│  save/load, API client, audio, analytics        │
+│  Quiz engine, FSRS scheduler, facts DB,         │
+│  save/load, relic system, audio, analytics      │
 ├─────────────────────────────────────────────────┤
 │  Data Layer                                     │
 │  Types, balance constants, fact schemas,         │
-│  enemy definitions, card type mappings           │
+│  enemy definitions, relic catalogue, card types  │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -52,7 +52,7 @@ Primary boot path:
 ### Svelte UI Layer
 
 - **Bottom 45% of screen** (interaction zone): card hand (fanned arc), answer buttons, end turn
-- **Top 55% of screen** (display zone): enemy, HP bars, intent telegraph, floor counter, passive relics
+- **Top 55% of screen** (display zone): enemy, HP bars, intent telegraph, floor counter, relic tray
 - All interactive elements below the screen midpoint (thumb-reachable)
 - Touch targets: 48x48dp minimum, cards `min(18vw, 85px)` width with 1.5:1 aspect ratio, answer buttons full-width 56dp height
 - Card hand fans in a natural arc (low-high-low, center card highest) with 30° total spread and 20px max arc offset
@@ -113,7 +113,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | 100% |
 | SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | 100% |
 | Facts database | `factsDB.ts`, `public/facts.db` | 100% |
-| Artifact/loot system | `RelicManager.ts`, `CelebrationManager.ts` | 90% — artifacts become run rewards |
+| Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/` | Complete — 50 relics, mastery coins, in-run collection |
 | Audio manager | `AudioManager.ts`, `audioService.ts` | 100% |
 | Save/load | `SaveManager.ts`, `saveService.ts` | 100% |
 | Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | 100% |
@@ -189,6 +189,34 @@ These systems transfer from the mining codebase with minimal changes:
 | Passive tracking in TurnState | `src/services/turnManager.ts` (`activePassives`) | Built |
 | Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built — wild card branch now copies target type's `BASE_EFFECT` value |
 | Tier 3 extraction & SM-2 wiring | `src/services/encounterBridge.ts` | Built |
+
+### Relic System
+
+The relic system uses an STS-inspired economy replacing the old FSRS-tied passive relics.
+
+**Data layer** (`src/data/relics/`):
+- `types.ts` — `RelicDefinition`, `RunRelic`, `RelicRarity`, `RelicCategory`, `RelicTrigger`
+- `starters.ts` — 25 free starter relic definitions
+- `unlockable.ts` — 25 unlockable relic definitions
+- `index.ts` — barrel exports, `FULL_RELIC_CATALOGUE`, `RELIC_BY_ID`, `STARTER_RELIC_IDS`
+
+**Services**:
+- `relicEffectResolver.ts` — Pure functions resolving relic effects from `Set<string>` of held IDs. Hooks: encounter start, attack, shield, heal, damage taken, lethal, turn end, perfect turn, correct answer, card skip, draw count, combo start, speed bonus, echo, timer.
+- `relicAcquisitionService.ts` — In-run pool filtering, weighted random selection, boss/mini-boss choice generation, random drop logic.
+
+**UI components**:
+- `RelicCollectionScreen.svelte` — Hub screen (via Anvil) for browsing, unlocking, and excluding relics
+- `RelicRewardScreen.svelte` — Full-screen 1-of-3 relic choice (boss/first mini-boss)
+- `RelicPickupToast.svelte` — Brief toast for random relic drops
+- `RelicTray.svelte` — Combat HUD horizontal relic display (no dormancy)
+
+**Integration points**:
+- `encounterBridge.ts` — Builds `activeRelicIds` from `runRelics` at encounter start, applies encounter-start effects
+- `turnManager.ts` — Relic ID checks for combo, draw count, block carry, lethal save, perfect turn bonus
+- `cardEffectResolver.ts` — Per-card relic modifiers (attack bonus, strike bonus, echo power, chain lightning)
+- `gameFlowController.ts` — Relic acquisition flow after encounters, relic reward routing
+- `playerData.ts` — `awardMasteryCoin()`, `spendMasteryCoins()`, `unlockRelic()`, `toggleRelicExclusion()`
+- `saveService.ts` — Backward-compatible migration: retroactive mastery coins from Tier 3 facts
 
 ### Planned (P1)
 
@@ -303,7 +331,7 @@ src/
       BootScene.ts         — Asset loading
       CombatScene.ts       — Phaser combat display zone (enemy sprite, HP bars, animations; sceneReady guard pattern)
     managers/              QuizManager, StudyManager, SaveManager, AudioManager,
-                           RelicManager, CelebrationManager, GaiaManager,
+                           relicEffectResolver, CelebrationManager, GaiaManager,
                            AchievementManager, InventoryManager, CombatManager,
                            CompanionManager, EncounterManager
     systems/               ParticleSystem, ScreenShakeSystem, SessionTracker,
@@ -344,7 +372,7 @@ src/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types
     enemies.ts             — Enemy template definitions
     balance.ts             — (extended with card combat constants)
-    types.ts, biomes.ts, relics.ts, saveState.ts, ...
+    types.ts, biomes.ts, relics/ (types, starters, unlockable, index), saveState.ts, ...
   events/                  EventBus, types
   dev/                     presets, debug bridge
   _archived-mining/        ~38 mining-specific files (stubs at original paths)

@@ -16,6 +16,7 @@
   import DamageNumber from './DamageNumber.svelte'
   import ComboCounter from './ComboCounter.svelte'
   import RelicTray from './RelicTray.svelte'
+  import { RELIC_BY_ID } from '../../data/relics/index'
   import { juiceManager } from '../../services/juiceManager'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId } from '../stores/playerData'
@@ -78,7 +79,17 @@
   let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
-  let activeRelics = $derived(turnState?.activeRelics ?? [])
+  let displayRelics = $derived(
+    [...(turnState?.activeRelicIds ?? [])].map((id) => {
+      const def = RELIC_BY_ID[id];
+      return {
+        definitionId: id,
+        name: def?.name ?? id,
+        description: def?.description ?? '',
+        initial: (def?.name ?? id).charAt(0),
+      };
+    })
+  )
   let apCurrent = $derived(turnState?.apCurrent ?? 0)
   let apMax = $derived(turnState?.apMax ?? 0)
 
@@ -822,7 +833,7 @@
       {/if}
     </div>
   {:else}
-    <RelicTray relics={activeRelics} triggeredRelicId={turnState.triggeredRelicId} />
+    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} />
 
     {#if turnState && enemyName}
       <div class="enemy-name-header" style="color: {categoryColor}">

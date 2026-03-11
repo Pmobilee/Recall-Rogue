@@ -988,11 +988,6 @@ export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
 
-/** @deprecated Use new relic system — no active relic cap. */
-export const MAX_ACTIVE_RELICS = 12;
-/** @deprecated Dormancy removed in relic overhaul. */
-export const DORMANCY_THRESHOLD = 0.7;
-
 export const ECHO = {
   REAPPEARANCE_CHANCE: 0.70,
   POWER_MULTIPLIER: 0.70,

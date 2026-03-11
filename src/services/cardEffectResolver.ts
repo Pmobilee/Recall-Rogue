@@ -70,7 +70,7 @@ function getComboMultiplier(comboCount: number): number {
 
 function resolveEchoBase(card: Card, activeRelicIds: Set<string>): number {
   if (!card.isEcho) return card.baseEffectValue;
-  if (activeRelicIds.has('echo_chamber')) {
+  if (activeRelicIds.has('echo_lens')) {
     if (card.originalBaseEffectValue != null) return card.originalBaseEffectValue;
     return card.baseEffectValue / ECHO.POWER_MULTIPLIER;
   }
@@ -128,12 +128,12 @@ export function resolveCardEffect(
   const baseEffectValue = resolveEchoBase(card, activeRelicIds);
 
   const strikeTag = mechanic?.tags.includes('strike') ?? false;
-  const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('sharpened_edge') ? 3 : 0;
+  const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('barbed_edge') ? 3 : 0;
   const effectiveBase = baseEffectValue + sharpenedEdgeBonus;
 
   let attackRelicMultiplier = 1;
   if (effectiveType === 'attack') {
-    if (advanced.isFirstAttackThisEncounter && activeRelicIds.has('first_blood')) {
+    if (advanced.isFirstAttackThisEncounter && activeRelicIds.has('flame_brand')) {
       attackRelicMultiplier *= 1.5;
     }
     if (activeRelicIds.has('glass_cannon')) {
@@ -163,7 +163,7 @@ export function resolveCardEffect(
   const mechanicId = card.mechanicId ?? '';
   switch (mechanicId) {
     case 'multi_hit': {
-      const hits = (mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning') ? 1 : 0);
+      const hits = (mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
       applyAttackDamage(finalValue * hits);
       return result;
     }
@@ -195,7 +195,7 @@ export function resolveCardEffect(
     case 'parry': {
       result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
-      if (enemyIsAttacking || activeRelicIds.has('aegis')) result.parryDrawBonus = 1;
+      if (enemyIsAttacking) result.parryDrawBonus = 1;
       return result;
     }
     case 'brace': {

@@ -329,7 +329,7 @@ Facts get HARDER as they approach mastery. Bjork's desirable difficulties: harde
 | 1 | 1 | Learning | Stability <5d | 3-option MCQ, generous timer | 1.0x | Standard frame (bronze) |
 | 2a | 2a | Proven | Stability 5-15d, 3+ correct | 4-option MCQ OR reverse format | 1.3x | Silver tint |
 | 2b | 2b | Proven | Stability 15-30d, 5+ correct | 5-option close distractors OR fill-blank | 1.6x | Silver + glow |
-| 3 | 3 | Mastered | Pass Mastery Trial | Not asked — passive relic | Permanent | Gold frame, relic tray |
+| 3 | 3 | Mastered | Pass Mastery Trial | Not asked — earns Mastery Coin | Permanent | Gold frame |
 
 **Display Simplification:** Players see only 3 tiers: **Learning** (bronze), **Proven** (silver), and **Mastered** (gold). Internal tiers 2a/2b are both displayed as "Proven" — the sub-tier distinction is invisible to players. This reduces cognitive load while preserving the FSRS-driven difficulty escalation under the hood. Functions `getTierDisplayName()` and `getDisplayTier()` in `tierDerivation.ts` handle this mapping.
 
@@ -341,15 +341,15 @@ Fact at Tier 2b + stability >30d + 7 consecutive correct → qualifies.
 - 4-second timer (regardless of floor, no slow reader bonus)
 - 5 options with very close distractors
 - Hardest variant available
-- Correct → Tier 3, passive relic, celebration
+- Correct → Tier 3, Mastery Coin awarded, celebration
 - Incorrect → stays Tier 2b, FSRS stability decreases, must requalify
 
 ### Pool Exhaustion Prevention
 
-1. **FSRS decay:** Retrievability <0.7 → fact re-enters active pool as Tier 2a, relic goes dormant
+1. **FSRS decay:** Retrievability <0.7 → fact re-enters active pool as Tier 2a
 2. **Domain exhaustion prompt:** <10 unmastered facts → prompt to add new domain
 3. **Content expansion:** 10K+ facts per domain at launch across 10 knowledge domains + 6 language packs. Years of content depth.
-4. **Mastery Challenge events:** Rare Mystery room. Mastered fact, 3s timer, 5 distractors. Fail → Tier 2b, relic dormant
+4. **Mastery Challenge events:** Rare Mystery room. Mastered fact, 3s timer, 5 distractors. Fail → Tier 2b
 5. **Minimum active pool:** <15 active facts → Tier 2b facts re-enter as active cards
 
 ### Tier-Up Celebration Animations
@@ -372,58 +372,127 @@ When a correct answer causes a card to advance to a higher tier (consecutiveCorr
 
 ---
 
-## 6. Passive Relics (Tier 3)
+## 6. Relic System
 
-Relic type depends on card type at graduation. Specific passive randomly selected from pool. These create build-around strategies.
+Relics are permanent passive buffs collected during runs. The system replaces the old Tier 3 passive relic model with an STS-inspired relic economy.
 
-### Offensive Passives (Attack graduation)
+### Mastery Coins
 
-| Passive | Effect |
-|---------|--------|
-| First Blood | First attack each encounter +50% damage |
-| Chain Lightning | Multi-hit attacks get +1 extra hit |
-| Glass Cannon | All attacks +25% damage, take +10% more damage |
-| Bloodlust | Killing an enemy heals 5 HP |
-| Sharpened Edge | All Strike mechanics +3 base damage |
+When a fact reaches Tier 3 (passes Mastery Trial), the player earns 1 **Mastery Coin**. Coins are the permanent meta-currency for unlocking relics. Existing players receive retroactive coins for all Tier 3 facts on save migration.
 
-### Defensive Passives (Shield graduation)
+Mastered facts **do not** directly grant a relic anymore. The old "fact -> relic assignment/pool sprite pick" model is removed.
 
-| Passive | Effect |
-|---------|--------|
-| Iron Skin | Start each encounter with 4 block |
-| Retaliation | Blocking an attack deals 2 damage back |
-| Fortress | Block carries between turns (no reset) |
-| Last Stand | Below 20% HP, all block doubled |
-| Aegis | Parry always triggers draw bonus regardless of enemy action |
+Current flow:
+1. Pass Mastery Trial -> gain +1 Mastery Coin.
+2. Spend coins in the Hub relic shop.
+3. Unlocked relics are added to the eligible in-run relic pool.
 
-### Sustain Passives (Heal/Regen graduation)
+### Relic Catalogue
 
-| Passive | Effect |
-|---------|--------|
-| Second Wind | Once/encounter: survive killing blow at 1 HP |
-| Natural Recovery | Heal 2 HP at encounter start |
-| Overgrowth | Overhealing converts to temporary block |
-| Vitality | Max HP permanently +5 |
+50 relics total: 25 free starters (available to all players) + 25 unlockable (purchased with Mastery Coins).
 
-### Tactical Passives (Buff/Debuff/Utility/Wild graduation)
+**Categories:** Offensive, Defensive, Sustain, Tactical, Knowledge, Economy, Cursed.
+**Rarities:** Common, Uncommon, Rare, Legendary.
+**Data:** `src/data/relics/starters.ts` (25 free), `src/data/relics/unlockable.ts` (25 unlockable).
 
-| Passive | Effect |
-|---------|--------|
-| Combo Master | Combo starts at 1.15x instead of 1.0x |
-| Quick Draw | Draw 6 cards instead of 5 |
-| Momentum | Perfect turn (3/3 correct) → +1 AP next turn |
-| Scholar's Focus | Speed bonus threshold 30% instead of 25% |
-| Echo Chamber | Echo cards deal full power (not reduced) |
-| Scavenger | +1 currency per encounter per skipped card |
-| Foresight Mastery | Always see 2 turns of enemy intent |
-| Adaptation | After fizzle, next card +40% |
-| Synergy | 3 different types in 1 turn → +3 dmg, +3 block, +3 heal |
+#### Free Starters (25, cost 0)
 
-### Relic Rules
+| ID | Name | Category | Effect |
+|----|------|----------|--------|
+| whetstone | Whetstone | Offensive | All attack cards +2 flat damage |
+| flame_brand | Flame Brand | Offensive | First attack each encounter +50% damage |
+| barbed_edge | Barbed Edge | Offensive | Strike-tagged mechanics +3 base damage |
+| war_drum | War Drum | Offensive | +1 damage per combo level this turn |
+| sharp_eye | Sharp Eye | Offensive | Speed bonus +75% instead of +50% |
+| iron_buckler | Iron Buckler | Defensive | Start each encounter with 5 block |
+| steel_skin | Steel Skin | Defensive | Take 1 less damage from all sources (min 1) |
+| thorned_vest | Thorned Vest | Defensive | When blocking, deal 3 damage back |
+| stone_wall | Stone Wall | Defensive | All shield cards +2 block |
+| herbal_pouch | Herbal Pouch | Sustain | Heal 3 HP at encounter start |
+| vitality_ring | Vitality Ring | Sustain | +8 max HP this run |
+| medic_kit | Medic Kit | Sustain | Heal cards +15% effectiveness |
+| last_breath | Last Breath | Sustain | Once/encounter: survive killing blow at 1 HP |
+| swift_boots | Swift Boots | Tactical | Draw 6 cards/turn instead of 5 |
+| combo_ring | Combo Ring | Tactical | Combo starts at 1.15x instead of 1.0x |
+| momentum_gem | Momentum Gem | Tactical | Perfect turn grants +1 AP next turn |
+| speed_charm | Speed Charm | Tactical | Speed bonus threshold 30% instead of 25% |
+| cartographers_lens | Cartographer's Lens | Tactical | Permanent foresight (see 2 enemy intents) |
+| scholars_hat | Scholar's Hat | Knowledge | Correct answers heal 1 HP |
+| memory_palace | Memory Palace | Knowledge | 3 correct in a row: +3 damage to next attack |
+| curiosity_gem | Curiosity Gem | Knowledge | Tier 1 (Learning) cards +20% effect |
+| brain_booster | Brain Booster | Knowledge | Hints cost no currency |
+| gold_magnet | Gold Magnet | Economy | +25% currency from encounters |
+| lucky_coin | Lucky Coin | Economy | +2 flat currency per encounter |
+| scavengers_pouch | Scavenger's Pouch | Economy | +1 currency per skipped card |
 
-- Max 12 active relics per run
-- Excess: 12 most recently mastered (swap at Sanctum, P2)
-- Dormancy: FSRS retrievability <0.7 OR failed Mastery Challenge → grayed out, suspended
+#### Unlockable Relics (25, Mastery Coin costs 25-70)
+
+| ID | Name | Cat | Effect | Rarity | Cost |
+|----|------|-----|--------|--------|------|
+| berserker_band | Berserker Band | Off | Below 40% HP: attacks +50% | Uncommon | 40 |
+| chain_lightning_rod | Chain Lightning Rod | Off | Multi-hit +2 extra hits | Rare | 50 |
+| venom_fang | Venom Fang | Off | Attacks apply 1 poison/2 turns | Uncommon | 35 |
+| crescendo_blade | Crescendo Blade | Off | Each correct attack: +10% dmg (stacks) | Uncommon | 45 |
+| executioners_axe | Executioner's Axe | Off | Execute threshold 40% (from 30%) | Rare | 50 |
+| fortress_wall | Fortress Wall | Def | Block carries between turns | Uncommon | 45 |
+| mirror_shield | Mirror Shield | Def | Full block absorb: reflect 50% | Rare | 50 |
+| iron_resolve | Iron Resolve | Def | Below 25% HP: block doubled | Uncommon | 40 |
+| phase_cloak | Phase Cloak | Def | 20% chance to dodge attacks | Rare | 60 |
+| blood_pact | Blood Pact | Sustain | Heal 25% of damage dealt/turn | Rare | 55 |
+| phoenix_feather | Phoenix Feather | Sustain | Once/run: resurrect at 30% HP | Rare | 70 |
+| renewal_spring | Renewal Spring | Sustain | Heal 10% max HP on floor advance | Uncommon | 35 |
+| quicksilver | Quicksilver | Tactical | Start encounters with +1 AP | Rare | 60 |
+| time_dilation | Time Dilation | Tactical | Quiz timer +3 seconds | Uncommon | 30 |
+| afterimage | Afterimage | Tactical | 3+ cards/turn: +1 draw next turn | Uncommon | 40 |
+| echo_lens | Echo Lens | Tactical | Echo cards at full power (1.0x) | Uncommon | 35 |
+| double_vision | Double Vision | Tactical | First card each encounter costs 0 AP | Rare | 55 |
+| polyglot_pendant | Polyglot Pendant | Knowledge | Secondary domain cards +25% damage | Uncommon | 40 |
+| eidetic_memory | Eidetic Memory | Knowledge | Facts correct 3+ times: +30% effect | Rare | 50 |
+| speed_reader | Speed Reader | Knowledge | Speed bonus at 15% of timer | Rare | 55 |
+| domain_mastery | Domain Mastery | Knowledge | 5 same-domain correct: next card +100% | Rare | 60 |
+| prospectors_pick | Prospector's Pick | Economy | Card rewards have 4 options | Uncommon | 45 |
+| miser_ring | Miser's Ring | Economy | Run end: 10% currency → mastery coins | Uncommon | 50 |
+| glass_cannon | Glass Cannon | Cursed | Attacks +40% dmg, take +15% more | Uncommon | 25 |
+| blood_price | Blood Price | Cursed | +2 cards/turn, lose 2 HP/turn | Uncommon | 30 |
+
+### Relic Archive (Hub Relic Shop)
+
+The camp **Anvil** opens the **Relic Archive** screen (internally still routed as `relicSanctum` for backward compatibility):
+- Browse all 50 relics filtered by rarity/category
+- View full details: icon, name, rarity, description, dungeon backstory, effects
+- **Unlock** relics by spending Mastery Coins
+- **Exclude** relics from run pool (toggle)
+- Shows mastery coin balance and unlock progress
+
+Unlocking a relic does not equip it directly. It only makes that relic eligible for future in-run drops/reward choices.
+
+### In-Run Acquisition
+
+Relics are collected during runs. No active relic limit — all collected relics stay active.
+
+| Trigger | Relic Award |
+|---------|-------------|
+| First mini-boss of run (Floor 1, Enc 3) | Choose 1 of 3 relics (RelicRewardScreen) |
+| Subsequent mini-bosses | 1 random relic (toast notification) |
+| Boss encounters | Choose 1 of 3 relics (better rarity weights) |
+| Regular encounters | 10% chance random relic drop (toast notification) |
+
+**Rarity weights (regular):** Common 50%, Uncommon 30%, Rare 15%, Legendary 5%.
+**Rarity weights (boss):** Common 25%, Uncommon 35%, Rare 25%, Legendary 15%.
+
+Relics already held or previously offered in the run are excluded from the pool. Only unlocked (or starter) and non-excluded relics are eligible.
+
+### Combat Integration
+
+Relic effects are resolved by `relicEffectResolver.ts` — a centralized service with pure functions. The encounter bridge builds `activeRelicIds: Set<string>` from the run's collected relics at encounter start. Effect hooks fire at: encounter start, card play, turn end, damage taken, lethal, perfect turn, correct answer, card skip.
+
+### Relic Display
+
+During runs, collected relics appear in the **RelicTray** at the bottom of the combat screen (horizontal scroll, overflow badge). Tapping shows name + description tooltip. Trigger pulse animation on activation.
+
+### Dormancy
+
+Removed. Relics collected in a run stay active for the entire run. The old FSRS-based dormancy system no longer applies.
 
 ---
 
@@ -465,7 +534,7 @@ After encounters 1 and between floors, choose from 3 doors:
 | Sword | Combat | Standard encounter, card reward |
 | ? | Mystery | Random event (good, bad, or choice) |
 | Heart | Rest | Heal 30% HP OR upgrade one card (+25%) |
-| Chest | Treasure | Free card/relic, no combat |
+| Chest | Treasure | Free card, no combat |
 | Bag | Shop | Buy/remove cards with currency |
 
 **Reveal rules:**
@@ -574,7 +643,7 @@ Players can quit mid-run and resume later. Only ONE active run save at a time. S
 
 A cozy pause screen accessible via a pause button (top-right corner, CSS pseudo-element bars icon) during combat and room selection.
 
-**Displays:** Floor number, HP, deck size, relic count, accuracy percentage.
+**Displays:** Floor number, HP, deck size, relics collected, accuracy percentage.
 
 **Actions:**
 - **Resume Run** — returns to the previous screen
@@ -586,7 +655,7 @@ After defeating a boss, the player receives a card reward and then faces a speci
 
 | Event | Effect |
 |-------|--------|
-| Relic Forge | Choose 1 of 3 relic upgrades |
+| Relic Forge | Choose 1 of 3 relics from eligible pool |
 | Card Transform | Upgrade one card mechanic to next tier |
 | Deck Thin | Remove up to 2 cards from your deck |
 | Knowledge Spring | All facts answered correctly this run gain +1 day FSRS stability |
@@ -756,10 +825,10 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | System | Description |
 |--------|-------------|
 | Knowledge Library | All facts cataloged by domain + mastery; lore entries expand on mastery |
-| Passive Relics | Tier 3 = permanent run buffs (Section 6) |
+| Relic Archive | 50 relics unlocked via Mastery Coins, collected in runs (Section 6) |
 | Card Cosmetics | Milestone rewards; monetizable |
 | Domain Unlocking | Master 25 facts → new domain |
-| Streaks | Daily completion; 7d→card frame, 30d→rare relic, 100d→exclusive cosmetic, 365d→legendary. 1 freeze/week. |
+| Streaks | Daily completion; 7d→card frame, 30d→mastery coins, 100d→exclusive cosmetic, 365d→legendary. 1 freeze/week. |
 | Lore Discovery | At 10/25/50/100 mastered facts: narrative connecting learned facts (see Section 13a) |
 | Bounty Quests | 1-2 bonus objectives per run (see Section 13b) |
 
@@ -780,7 +849,7 @@ Mastery milestones (10th, 25th, 50th, 100th mastered fact) unlock a Lore Fragmen
 1-2 randomly selected per run, visible at start:
 
 - "Arcane Surge: Answer 5 Science facts correctly" → +1 card reward at next shop
-- "Flawless Descent: Complete 3 encounters without wrong answers" → Rare relic
+- "Flawless Descent: Complete 3 encounters without wrong answers" → Mastery Coins
 - "Deep Delve: Reach Floor 6" → 50% extra currency
 - "Speed Caster: Answer 10 facts in under 3 seconds each" → Card upgrade token
 - "Scholar's Path: Play cards from 4 different domains in one run" → Domain preview unlock
@@ -892,7 +961,7 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 **Top 55% (Display):** Enemy sprite, enemy HP bar, enemy name header (color-coded by category). No interactives. Top-third tap accuracy: 61%. Phaser renders the enemy sprite and HP bars; Svelte overlay renders the enemy name header, intent panel, floor info, and bounty strip.
 
-**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn, player HP bar (at 88% Y), relic tray (at 92% Y), bounty strip (bottom-right, above End Turn). Bottom-third accuracy: 96%.
+**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn, player HP bar (at 88% Y), relic tray (at 92% Y, horizontal scroll), bounty strip (bottom-right, above End Turn). Bottom-third accuracy: 96%.
 
 ### Touch Targets
 
@@ -1288,7 +1357,7 @@ Arcane Pass subscribers gain access to fine-grained category filters within each
 - One attempt is reserved per player per week; completion submits to leaderboard category `scholar_challenge` with `metadata.weekKey`.
 - Global leaderboard fetch supports week-key filtering with local fallback rows when offline/unavailable.
 
-### Camp Hub & Cosmetic Progression
+### Home Screen (Camp Hub) & Cosmetic Progression
 
 The between-runs hub is a full-screen interactive pixel art camp scene. A cave background image fills the viewport, with 11 positioned pixel art sprites serving as tappable navigation buttons. Each sprite maps to a game feature.
 
@@ -1299,20 +1368,22 @@ The between-runs hub is a full-screen interactive pixel art camp scene. A cave b
 | 1 | Dungeon Gate | Top center | Start/Resume Run | Primary entry; `data-testid="btn-start-run"` |
 | 2 | Bookshelf | Mid-left | Library | Card collection and fact review |
 | 3 | Signpost | Mid-right | Settings | Game settings |
-| 4 | Anvil | Center-left | Upgrades modal | Opens camp upgrade shop (element tiers, outfits, companions) |
+| 4 | Anvil | Center-left | Relics | Opens Relic Archive (unlock/exclude relics via Mastery Coins) |
 | 5 | Campfire | Dead center | Decorative | Streak visual; not clickable. Future: animation tiers based on streak |
 | 6 | Tent | Center-right | Profile | Player profile and stats |
-| 7 | Player Character | On top of tent | Customize | Opens upgrade modal (outfit/companion). Higher z-index than tent — visually overlaps |
+| 7 | Player Character | On top of tent | Shop | Opens social/shop screen (daily modes, competitive entries, pass/store access) |
 | 8 | Cat (Pet) | By campfire | "Grrr" popup | Speech bubble appears for 2s. Future: pet interactions and unlockable dialogue |
 | 9 | Journal (Book) | Foreground-left | Journal | Run history and adventurer's journal |
-| 10 | Quest Board | Foreground-right | Quests + Leaderboards | Community rankings |
-| 11 | Treasure Chest | Foreground-center | Social | Social features. Future: dedicated shop screen |
+| 10 | Quest Board | Foreground-right | Quests | Opens leaderboard/quest entry point |
+| 11 | Treasure Chest | Foreground-center | Customize | Opens Camp Upgrades modal (cosmetic tiers, outfits, companions) |
+
+**Run-resume affordance on Home:** If an active run save exists, a banner appears above the hub scene with **Resume** and **Abandon** actions (abandon shows a confirmation modal with run stats).
 
 **HUD overlays** (pinned to screen corners, not scene objects):
 - Top-left: Streak count pill (fire icon + number)
 - Top-right: Dust/currency balance pill (gem icon + number)
 
-**Camp upgrade modal** (accessed via Anvil or Character tap): Contains the element upgrade grid (Tent, Seating, Campfire, Decor — 4 tiers each), outfit selector (Scout, Warden, Scholar, Vanguard), and companion selector (Cat, Owl, Fox, Dragon Whelp with unlock costs).
+**Camp upgrade modal** (accessed via Treasure Chest): Contains the element upgrade grid (Tent, Seating, Campfire, Decor — 4 tiers each), outfit selector (Scout, Warden, Scholar, Vanguard), and companion selector (Cat, Owl, Fox, Dragon Whelp with unlock costs).
 
 **Sprite organization**: Each sprite lives in its own folder (`/public/assets/camp/sprites/{name}/`) with a `-base` suffix (e.g., `campfire-base.png`). Future cosmetic variants are added alongside (e.g., `campfire-tier2.png`, `campfire-streak5.png`). This supports visual upgrades where each element can have multiple sprite tiers.
 
@@ -1320,9 +1391,9 @@ The between-runs hub is a full-screen interactive pixel art camp scene. A cave b
 
 **Gold sink design:** Camp upgrades are the primary gold sink. Pricing scales exponentially per tier. No gameplay advantage — purely cosmetic progression that rewards consistent play.
 
-**Bottom nav bar**: A 6-button nav bar (Start, Library, Social, Settings, Profile, Journal) persists as a secondary navigation fallback below the camp scene.
+**Navigation model:** Primary home navigation is sprite-based. Dedicated screens use their own back controls to return to hub.
 
-**Desktop layout**: On screens wider than 430px, the game renders in a centered phone-sized column (430px max-width) with a black background outside. The edges of the game frame fade smoothly to black via gradient overlays. Drifting firefly particles animate in the dark area outside the frame. On mobile (< 430px), the game fills the full viewport width with sprites stretching to match. This letterboxing approach preserves the intended portrait layout on all devices.
+**Desktop/mobile layout:** The app renders in a centered portrait game column (`width: min(100vw, calc(100vh * 571 / 1024))`) with dark side gutters on wider displays. Firefly particles animate behind the game frame. On narrow/mobile screens, the hub fills the viewport width while preserving portrait-first interaction zones.
 
 ---
 
@@ -1845,7 +1916,7 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 | 9 | Combo Breaker | Combo resets on turn end (not just on wrong answer) |
 | 10 | Endurance | Runs must reach floor 12+ to retreat with rewards |
 | 11 | Fading Light | Encounter 2 per floor has -2s timer |
-| 12 | Relic Tax | Max 8 relics instead of 12 |
+| 12 | Relic Tax | Boss relic choices reduced to 2 |
 | 13 | Deep Knowledge | All Tier 1 cards are 4-option MCQ (no easy 3-option) |
 | 14 | Glass Cannon | Player max HP reduced to 70 |
 | 15 | Boss Rush | Bosses gain +25% HP |
@@ -2009,9 +2080,11 @@ data/playtests/
 | Retreat | End run voluntarily at checkpoint. Keep 100% rewards. |
 | FSRS | Free Spaced Repetition Scheduler. Replaces SM-2. Tracks difficulty, stability, retrievability. |
 | Stability | FSRS: days of memory stability. Drives tier promotion. |
-| Retrievability | FSRS: current recall probability (0-1). Below 0.7 = due for review / relic dormancy. |
-| Mastered | Fact that passed Mastery Trial. Becomes passive relic. |
-| Passive Relic | Tier 3 card: permanent buff, no hand slot, can go dormant. |
+| Retrievability | FSRS: current recall probability (0-1). Below 0.7 = due for review. |
+| Mastered | Fact that passed Mastery Trial. Awards 1 Mastery Coin. |
+| Relic | Permanent passive buff collected during runs. 50 total (25 free + 25 unlockable). No limit on active relics per run. |
+| Mastery Coin | Meta-currency earned by mastering facts (1 per Tier 3). Spent to unlock relics in the Relic Archive. |
+| Relic Archive | Hub screen (via Anvil) for browsing, unlocking, and configuring relics. Replaces old Relic Sanctum. |
 | Echo | Ghost card from wrong answer. 70% reappearance chance. Reduced power. |
 | Mastery Trial | Final exam: 4s timer, 5 close distractors. Pass = Tier 3. |
 | Mechanic | Specific behavior within a card type (Strike, Multi-Hit, Thorns, etc.). Assigned per-run. |
@@ -2025,7 +2098,7 @@ data/playtests/
 | Mastery Skin | Animated card back (WAN2.1 video) unlocked when a fact reaches Tier 2a+. Reverts to static art if FSRS retrievability decays below learned threshold. |
 | Ascension Mode | Post-launch difficulty system. 20 stacking levels of increasing challenge. Unlocks after first successful run. |
 | Campfire Pause | In-run pause screen showing run stats with resume/hub options. Saves run state. |
-| Special Event | Post-boss reward event (Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery). |
+| Special Event | Post-boss reward event (Relic Choice, Card Transform, Deck Thin, Knowledge Spring, Mystery). |
 | Push Notification | Local mobile notification for retention (streak risk, milestone, review due, win-back). Max 1/day. |
 | Playtest Profile | JSON config defining simulated player behavior: accuracy curve, reading speed, strategy level, engagement pattern. In tests/playtest/profiles/. |
 | Headless Playtest | Combat simulation using real game engine under Vitest + happy-dom. No browser/Phaser required. Driven by HeadlessCombatSimulator. |

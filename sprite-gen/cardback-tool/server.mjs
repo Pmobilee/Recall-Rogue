@@ -19,6 +19,7 @@ const HIRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/hires');
 const LOWRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/lowres');
 const STYLELAB_OUTPUT_DIR = resolve(__dirname, 'stylelab-output');
 const PROMPTLAB_OUTPUT_DIR = resolve(__dirname, 'promptlab-output');
+const RELIC_SPRITES_DIR = resolve(__dirname, 'relic-sprites-output');
 
 const PLAYTEST_DIR = resolve(PROJECT_ROOT, 'data/playtests');
 const PLAYTEST_LOGS_DIR = resolve(PLAYTEST_DIR, 'logs');
@@ -30,6 +31,7 @@ mkdirSync(HIRES_DIR, { recursive: true });
 mkdirSync(LOWRES_DIR, { recursive: true });
 mkdirSync(STYLELAB_OUTPUT_DIR, { recursive: true });
 mkdirSync(PROMPTLAB_OUTPUT_DIR, { recursive: true });
+mkdirSync(RELIC_SPRITES_DIR, { recursive: true });
 
 const MANIFEST_PATH = resolve(PROJECT_ROOT, 'public/assets/cardbacks/manifest.json');
 
@@ -100,6 +102,25 @@ db.exec(`
     created_at TEXT DEFAULT (datetime('now')),
     completed_at TEXT,
     UNIQUE(fact_id, strategy_id)
+  );
+`);
+
+// Relic sprites table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS relic_sprites (
+    relic_id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    rarity TEXT NOT NULL,
+    icon TEXT NOT NULL DEFAULT '',
+    visual_description TEXT NOT NULL DEFAULT '',
+    status TEXT DEFAULT 'pending',
+    file_path TEXT,
+    seed INTEGER,
+    comfyui_prompt_id TEXT,
+    generated_at TEXT,
+    reviewed_at TEXT,
+    generation_count INTEGER DEFAULT 0
   );
 `);
 
@@ -485,6 +506,21 @@ const stmtSelectPendingOrRejected = db.prepare(`
   WHERE status IN ('pending', 'rejected')
   ORDER BY domain, fact_id
 `);
+
+const stmtRelicsList = db.prepare(`SELECT * FROM relic_sprites ORDER BY category, name`);
+const stmtRelicGet = db.prepare(`SELECT * FROM relic_sprites WHERE relic_id = ?`);
+const stmtRelicUpsert = db.prepare(`
+  INSERT INTO relic_sprites (relic_id, name, category, rarity, icon, visual_description)
+  VALUES (@relic_id, @name, @category, @rarity, @icon, @visual_description)
+  ON CONFLICT(relic_id) DO UPDATE SET
+    name = @name, category = @category, rarity = @rarity, icon = @icon,
+    visual_description = @visual_description
+`);
+const stmtRelicUpdateDesc = db.prepare(`UPDATE relic_sprites SET visual_description = ? WHERE relic_id = ?`);
+const stmtRelicSetGenerating = db.prepare(`UPDATE relic_sprites SET status = 'generating', comfyui_prompt_id = ?, seed = ?, generation_count = generation_count + 1 WHERE relic_id = ?`);
+const stmtRelicSetGenerated = db.prepare(`UPDATE relic_sprites SET status = 'generated', file_path = ?, generated_at = datetime('now') WHERE relic_id = ?`);
+const stmtRelicSetStatus = db.prepare(`UPDATE relic_sprites SET status = ?, reviewed_at = datetime('now') WHERE relic_id = ?`);
+const stmtRelicSetError = db.prepare(`UPDATE relic_sprites SET status = 'error' WHERE relic_id = ?`);
 
 // --- Batch Controller ---
 class BatchController {
@@ -1669,6 +1705,154 @@ app.get('/api/playtest/report/:id', (req, res) => {
   } catch (e) {
     res.status(500).json({ error: 'Failed to read report' });
   }
+});
+
+// --- Relic Sprites API ---
+
+// List all relic sprites
+app.get('/api/relics/list', (req, res) => {
+  const rows = stmtRelicsList.all();
+  res.json(rows);
+});
+
+// Bulk upsert relics (called from frontend with full relic catalogue)
+app.post('/api/relics/sync', express.json({ limit: '1mb' }), (req, res) => {
+  const relics = req.body.relics;
+  if (!Array.isArray(relics)) return res.status(400).json({ error: 'relics array required' });
+  const upsertMany = db.transaction((items) => {
+    for (const r of items) {
+      stmtRelicUpsert.run({
+        relic_id: r.id,
+        name: r.name,
+        category: r.category,
+        rarity: r.rarity,
+        icon: r.icon || '',
+        visual_description: r.visualDescription || '',
+      });
+    }
+  });
+  upsertMany(relics);
+  res.json({ synced: relics.length });
+});
+
+// Update visual description for a single relic
+app.post('/api/relics/update-description/:id', express.json(), (req, res) => {
+  const { visualDescription } = req.body;
+  if (!visualDescription) return res.status(400).json({ error: 'visualDescription required' });
+  stmtRelicUpdateDesc.run(visualDescription, req.params.id);
+  res.json({ ok: true });
+});
+
+// Generate a relic sprite via ComfyUI
+app.post('/api/relics/generate/:id', express.json(), async (req, res) => {
+  const relic = stmtRelicGet.get(req.params.id);
+  if (!relic) return res.status(404).json({ error: 'Relic not found' });
+  if (!relic.visual_description) return res.status(400).json({ error: 'No visual description' });
+
+  try {
+    const seed = req.body.seed ?? Math.floor(Math.random() * 2 ** 32);
+    const promptId = await submitCardback(relic.visual_description, seed);
+    stmtRelicSetGenerating.run(promptId, seed, relic.relic_id);
+    res.json({ promptId, seed });
+
+    // Wait for completion in background
+    (async () => {
+      try {
+        const outputFiles = await waitForCompletion(promptId);
+        const rawPng = await readComfyUIOutput(outputFiles[0]);
+        // Save to relic sprites dir
+        const outPath = join(RELIC_SPRITES_DIR, `${relic.relic_id}.png`);
+        const { writeFile } = await import('fs/promises');
+        // Process with sharp: center crop to square, resize to 128x128 for display
+        const sharp = (await import('sharp')).default;
+        const processed = await sharp(rawPng)
+          .resize(128, 128, { fit: 'cover', position: 'centre', kernel: sharp.kernel.nearest })
+          .png({ compressionLevel: 9 })
+          .toBuffer();
+        await writeFile(outPath, processed);
+        stmtRelicSetGenerated.run(outPath, relic.relic_id);
+        console.log(`[relic] Generated sprite for ${relic.relic_id}`);
+      } catch (err) {
+        console.error(`[relic] Error generating ${relic.relic_id}:`, err.message);
+        stmtRelicSetError.run(relic.relic_id);
+      }
+    })();
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Serve a relic sprite image
+app.get('/api/relics/image/:id', (req, res) => {
+  const imgPath = join(RELIC_SPRITES_DIR, `${req.params.id}.png`);
+  if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });
+  res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(imgPath);
+});
+
+// Review a relic sprite (approve/reject)
+app.post('/api/relics/review/:id', express.json(), (req, res) => {
+  const { status } = req.body;
+  if (!['approved', 'rejected', 'pending'].includes(status)) {
+    return res.status(400).json({ error: 'status must be approved, rejected, or pending' });
+  }
+  stmtRelicSetStatus.run(status, req.params.id);
+  res.json({ ok: true });
+});
+
+// Batch generate all pending relics
+let relicBatchRunning = false;
+let relicBatchAbort = false;
+
+app.post('/api/relics/batch-generate', express.json(), async (req, res) => {
+  if (relicBatchRunning) return res.status(409).json({ error: 'Batch already running' });
+  relicBatchRunning = true;
+  relicBatchAbort = false;
+
+  const pendingRelics = db.prepare(`SELECT * FROM relic_sprites WHERE status IN ('pending', 'rejected', 'error') AND visual_description != '' ORDER BY category, name`).all();
+  res.json({ queued: pendingRelics.length });
+
+  (async () => {
+    for (const relic of pendingRelics) {
+      if (relicBatchAbort) break;
+      try {
+        const seed = Math.floor(Math.random() * 2 ** 32);
+        const promptId = await submitCardback(relic.visual_description, seed);
+        stmtRelicSetGenerating.run(promptId, seed, relic.relic_id);
+        const outputFiles = await waitForCompletion(promptId);
+        const rawPng = await readComfyUIOutput(outputFiles[0]);
+        const outPath = join(RELIC_SPRITES_DIR, `${relic.relic_id}.png`);
+        const { writeFile } = await import('fs/promises');
+        const sharp = (await import('sharp')).default;
+        const processed = await sharp(rawPng)
+          .resize(128, 128, { fit: 'cover', position: 'centre', kernel: sharp.kernel.nearest })
+          .png({ compressionLevel: 9 })
+          .toBuffer();
+        await writeFile(outPath, processed);
+        stmtRelicSetGenerated.run(outPath, relic.relic_id);
+        console.log(`[relic-batch] Generated ${relic.relic_id}`);
+      } catch (err) {
+        console.error(`[relic-batch] Error ${relic.relic_id}:`, err.message);
+        stmtRelicSetError.run(relic.relic_id);
+      }
+    }
+    relicBatchRunning = false;
+    console.log(`[relic-batch] Batch complete.`);
+  })();
+});
+
+app.post('/api/relics/batch-stop', (req, res) => {
+  relicBatchAbort = true;
+  res.json({ ok: true });
+});
+
+app.get('/api/relics/batch-status', (req, res) => {
+  const total = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE visual_description != ''`).get().c;
+  const generated = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status IN ('generated', 'approved')`).get().c;
+  const pending = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status IN ('pending', 'rejected', 'error') AND visual_description != ''`).get().c;
+  const generating = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status = 'generating'`).get().c;
+  res.json({ running: relicBatchRunning, total, generated, pending, generating });
 });
 
 // --- Start Server ---

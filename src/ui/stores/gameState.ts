@@ -28,6 +28,7 @@ export type Screen =
   | 'campfire'
   | 'masteryChallenge'
   | 'relicSanctum'
+  | 'relicReward'
   | 'onboarding'
   | 'ageSelection'
   | 'settings'
@@ -57,6 +58,7 @@ const VALID_SCREENS: Screen[] = [
   'campfire',
   'masteryChallenge',
   'relicSanctum',
+  'relicReward',
   'onboarding',
   'ageSelection',
   'settings',
