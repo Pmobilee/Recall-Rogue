@@ -1,1811 +1,3671 @@
 {
-  "generatedAt": "2026-03-10T09:08:59.001Z",
+  "generatedAt": "2026-03-11T15:29:07.369Z",
   "inputFiles": [
-    "data/generated/worker-output/space_astronomy.jsonl"
+    "data/generated/animals_wildlife.jsonl"
   ],
   "counts": {
-    "flagged": 200
+    "flagged": 183
   },
   "items": [
     {
-      "index": 61,
-      "id": "space_astronomy_gen_062",
-      "question": "How massive is the supermassive black hole Sagittarius A* at the center of our galaxy?",
+      "index": 113,
+      "id": "animal-mantis-shrimp-punch-114",
+      "question": "What speed can a mantis shrimp's strike reach?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 62,
-      "id": "space_astronomy_gen_063",
-      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "index": 114,
+      "id": "animal-archerfish-spit-115",
+      "question": "How do archerfish catch insects above the water?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 63,
-      "id": "space_astronomy_gen_064",
-      "question": "Which moon of Jupiter is believed to have more water than all of Earth's oceans?",
+      "index": 115,
+      "id": "animal-lyrebird-mimic-116",
+      "question": "What remarkable ability does the superb lyrebird possess?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 64,
-      "id": "space_astronomy_gen_065",
-      "question": "Where does the James Webb Space Telescope orbit?",
+      "index": 116,
+      "id": "animal-octopus-camouflage-117",
+      "question": "What cells allow octopuses to change their skin color almost instantly?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 65,
-      "id": "space_astronomy_gen_066",
-      "question": "How old is the cosmic microwave background radiation?",
+      "index": 117,
+      "id": "animal-pistol-shrimp-snap-118",
+      "question": "What extreme phenomenon does a pistol shrimp's claw snap produce?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 66,
-      "id": "space_astronomy_gen_067",
-      "question": "What percentage of the universe is made up of dark energy?",
+      "index": 118,
+      "id": "animal-cuttlefish-hypnosis-119",
+      "question": "Why do cuttlefish display pulsing color bands while hunting?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 67,
-      "id": "space_astronomy_gen_068",
-      "question": "What color are sunsets on Mars?",
+      "index": 119,
+      "id": "animal-harpy-eagle-grip-120",
+      "question": "How strong is a harpy eagle's grip?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 68,
-      "id": "space_astronomy_gen_069",
-      "question": "When were gravitational waves first directly detected?",
+      "index": 120,
+      "id": "animal-axolotl-regen-121",
+      "question": "What makes the axolotl unique among vertebrates?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 69,
-      "id": "space_astronomy_gen_070",
-      "question": "What is the most distant human-made object from Earth?",
+      "index": 121,
+      "id": "animal-peregrine-stoop-122",
+      "question": "What is the peregrine falcon's hunting dive called?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 70,
-      "id": "space_astronomy_gen_071",
-      "question": "What is unusual about a day on Venus compared to its year?",
+      "index": 122,
+      "id": "animal-horned-lizard-blood-123",
+      "question": "How does the Texas horned lizard defend itself?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 71,
-      "id": "space_astronomy_gen_072",
-      "question": "What is the name of the first aircraft to fly on another planet?",
+      "index": 123,
+      "id": "animal-dolphin-sleep-124",
+      "question": "How do dolphins manage to sleep without drowning?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 72,
-      "id": "space_astronomy_gen_073",
-      "question": "How tall are the Pillars of Creation in the Eagle Nebula?",
+      "index": 124,
+      "id": "animal-bombardier-beetle-125",
+      "question": "What does the bombardier beetle spray at predators?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 73,
-      "id": "space_astronomy_gen_074",
-      "question": "How many times does the ISS orbit Earth per day?",
+      "index": 125,
+      "id": "animal-tardigrade-survive-126",
+      "question": "What is the dormant survival state of a tardigrade called?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 74,
-      "id": "space_astronomy_gen_075",
-      "question": "Approximately how many stars are estimated to exist in the observable universe?",
+      "index": 126,
+      "id": "animal-electric-eel-voltage-127",
+      "question": "How much voltage can an electric eel generate?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 75,
-      "id": "space_astronomy_gen_076",
-      "question": "How thick are Saturn's rings on average?",
+      "index": 127,
+      "id": "animal-mimic-octopus-128",
+      "question": "How many species can the mimic octopus impersonate?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 76,
-      "id": "space_astronomy_gen_077",
-      "question": "What is a magnetar?",
+      "index": 128,
+      "id": "animal-wandering-albatross-wingspan-129",
+      "question": "What technique allows the wandering albatross to fly without flapping?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 77,
-      "id": "space_astronomy_gen_078",
-      "question": "In what year was the Hubble Space Telescope launched?",
+      "index": 129,
+      "id": "animal-naked-mole-rat-pain-130",
+      "question": "What molecule in naked mole-rats helps prevent cancer?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 78,
-      "id": "space_astronomy_gen_079",
-      "question": "Which moon of Saturn shoots water ice geysers into space?",
+      "index": 130,
+      "id": "animal-honeybee-waggle-131",
+      "question": "Who decoded the honeybee waggle dance?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 79,
-      "id": "space_astronomy_gen_080",
-      "question": "How does the total mass of the asteroid belt compare to the Moon?",
+      "index": 131,
+      "id": "animal-sperm-whale-click-132",
+      "question": "What is the loudest sound produced by any animal?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 80,
-      "id": "space_astronomy_gen_081",
-      "question": "How fast can the fastest known pulsars spin?",
+      "index": 132,
+      "id": "animal-glass-frog-transparent-133",
+      "question": "How do glass frogs become nearly invisible while sleeping?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 81,
-      "id": "space_astronomy_gen_082",
-      "question": "How long has Jupiter's Great Red Spot been observed?",
+      "index": 133,
+      "id": "animal-crow-tool-use-134",
+      "question": "What advanced cognitive ability do New Caledonian crows demonstrate with tools?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 82,
-      "id": "space_astronomy_gen_083",
-      "question": "In what year was the first exoplanet orbiting a Sun-like star discovered?",
+      "index": 134,
+      "id": "animal-box-jellyfish-venom-135",
+      "question": "How many people could the venom from a single Chironex fleckeri box jellyfish potentially kill?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 83,
-      "id": "space_astronomy_gen_084",
-      "question": "What is the shape of the Kuiper Belt object Arrokoth?",
+      "index": 135,
+      "id": "animal-pangolin-scales-136",
+      "question": "What are pangolin scales made of?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 84,
-      "id": "space_astronomy_gen_085",
-      "question": "What liquid fills the lakes and rivers on Saturn's moon Titan?",
+      "index": 136,
+      "id": "animal-vampire-bat-sharing-137",
+      "question": "What social behavior do vampire bats exhibit with food?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 85,
-      "id": "space_astronomy_gen_086",
-      "question": "In approximately how many years will the Andromeda Galaxy collide with the Milky Way?",
+      "index": 137,
+      "id": "animal-leafcutter-ant-farming-138",
+      "question": "What do leafcutter ants actually eat?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 86,
-      "id": "space_astronomy_gen_087",
-      "question": "What is the fastest human-made object ever built?",
+      "index": 138,
+      "id": "animal-sea-otter-tools-139",
+      "question": "Where do sea otters store the rocks they use as tools?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 87,
-      "id": "space_astronomy_gen_088",
-      "question": "What unusual substance is found in enormous quantities in the molecular cloud Sagittarius B2?",
+      "index": 139,
+      "id": "animal-humpback-whale-song-140",
+      "question": "How do humpback whale songs change over time?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 88,
-      "id": "space_astronomy_gen_089",
-      "question": "What fraction of star systems in our galaxy are binary or multiple star systems?",
+      "index": 140,
+      "id": "animal-platypus-electroreception-141",
+      "question": "How many electroreceptors does a platypus bill contain?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 89,
-      "id": "space_astronomy_gen_090",
-      "question": "What is the coldest known natural place in the universe?",
+      "index": 141,
+      "id": "animal-firefly-sync-142",
+      "question": "Why do some firefly species synchronize their flashes?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 90,
-      "id": "space_astronomy_gen_091",
-      "question": "What is the tallest volcano in the solar system?",
+      "index": 142,
+      "id": "animal-komodo-venom-143",
+      "question": "How do Komodo dragons primarily kill their prey?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 91,
-      "id": "space_astronomy_gen_092",
-      "question": "How many Earth-sized planets orbit the star TRAPPIST-1?",
+      "index": 143,
+      "id": "animal-arctic-tern-migration-144",
+      "question": "How far does an Arctic tern migrate each year?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 92,
-      "id": "space_astronomy_gen_093",
-      "question": "Where is most of Earth's gold believed to have originally been created?",
+      "index": 144,
+      "id": "animal-gecko-adhesion-145",
+      "question": "What molecular force allows geckos to walk on smooth surfaces?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 93,
-      "id": "space_astronomy_gen_094",
-      "question": "How many atoms are typically found per cubic centimeter in interstellar space?",
+      "index": 145,
+      "id": "animal-whale-shark-filter-146",
+      "question": "How much water can a whale shark filter per hour?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 94,
-      "id": "space_astronomy_gen_095",
-      "question": "In what year was the supernova that created the Crab Nebula recorded?",
+      "index": 146,
+      "id": "animal-anglerfish-fusion-147",
+      "question": "What happens to a male anglerfish after it finds a female?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 95,
-      "id": "space_astronomy_gen_096",
-      "question": "Which body in the solar system is the most volcanically active?",
+      "index": 147,
+      "id": "animal-chameleon-tongue-148",
+      "question": "How fast can a chameleon's tongue accelerate?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 96,
-      "id": "space_astronomy_gen_097",
-      "question": "What is the diameter of the observable universe?",
+      "index": 148,
+      "id": "animal-elephant-infrasound-149",
+      "question": "How do elephants detect infrasound communication through the ground?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 97,
-      "id": "space_astronomy_gen_098",
-      "question": "What effect can powerful solar flares have on Earth?",
+      "index": 149,
+      "id": "animal-monarch-migration-150",
+      "question": "How do monarch butterflies navigate during migration?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 98,
-      "id": "space_astronomy_gen_099",
-      "question": "How many confirmed exoplanets did the Kepler Space Telescope discover?",
+      "index": 150,
+      "id": "animal-blue-ringed-octopus-151",
+      "question": "What venom does the blue-ringed octopus carry?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 99,
-      "id": "space_astronomy_gen_100",
-      "question": "What is the scientific term for being stretched apart by a black hole's tidal forces?",
+      "index": 151,
+      "id": "animal-african-grey-parrot-152",
+      "question": "What historic question did Alex the African grey parrot famously ask?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 100,
-      "id": "space_astronomy_gen_101",
-      "question": "When was the Arecibo message transmitted into space?",
+      "index": 152,
+      "id": "animal-tuatara-third-eye-153",
+      "question": "What is the tuatara's third eye primarily used for?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 101,
-      "id": "space_astronomy_gen_102",
-      "question": "What is puzzling about the temperature of the Sun's corona?",
+      "index": 153,
+      "id": "animal-pistol-shrimp-goby-154",
+      "question": "How does the goby fish warn the pistol shrimp of danger?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 102,
-      "id": "space_astronomy_gen_103",
-      "question": "What is a rogue planet?",
+      "index": 154,
+      "id": "animal-hummingbird-hover-155",
+      "question": "How do hummingbirds generate lift differently from other birds?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 103,
-      "id": "space_astronomy_gen_104",
-      "question": "What did Apollo astronauts leave on the Moon that scientists still use today?",
+      "index": 155,
+      "id": "animal-cone-snail-venom-156",
+      "question": "What medical product has been derived from cone snail venom?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 104,
-      "id": "space_astronomy_gen_105",
-      "question": "What is the approximate weight of a sugar-cube-sized piece of white dwarf material?",
+      "index": 156,
+      "id": "animal-aye-aye-finger-157",
+      "question": "What is the aye-aye's unique feeding technique called?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 105,
-      "id": "space_astronomy_gen_106",
-      "question": "What is the Chandrasekhar limit?",
+      "index": 157,
+      "id": "animal-dolphins-names-158",
+      "question": "How long can dolphins remember another dolphin's signature whistle?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 106,
-      "id": "space_astronomy_gen_107",
-      "question": "How far from the Sun might the Oort Cloud extend?",
+      "index": 158,
+      "id": "animal-horseshoe-crab-blood-159",
+      "question": "Why is horseshoe crab blood medically important?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 107,
-      "id": "space_astronomy_gen_108",
-      "question": "How large is the star Betelgeuse compared to our Sun?",
+      "index": 159,
+      "id": "animal-spider-silk-strength-160",
+      "question": "How many types of silk can a spider produce?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 108,
-      "id": "space_astronomy_gen_109",
-      "question": "When was the famous Wow! signal detected?",
+      "index": 160,
+      "id": "animal-coelacanth-fossil-161",
+      "question": "In what year was the first living coelacanth discovered?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
-    },
-    {
-      "index": 109,
-      "id": "space_astronomy_gen_110",
-      "question": "What powers the extreme brightness of quasars?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 110,
-      "id": "space_astronomy_gen_111",
-      "question": "Why did NASA crash the Cassini spacecraft into Saturn?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 161,
-      "id": "space_astronomy_gen_112",
-      "question": "Which exoplanet orbits the closest star to our Sun?",
+      "id": "animal-draco-lizard-glide-162",
+      "question": "What supports the gliding membranes of Draco lizards?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 162,
-      "id": "space_astronomy_gen_113",
-      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "id": "animal-clownfish-sex-change-163",
+      "question": "What triggers a clownfish to change sex from male to female?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 163,
-      "id": "space_astronomy_gen_114",
-      "question": "Which moon of Jupiter is believed to have a subsurface ocean larger than Earth's oceans?",
+      "id": "animal-migratory-salmon-smell-164",
+      "question": "How do salmon find their exact birth river after years at sea?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 164,
-      "id": "space_astronomy_gen_115",
-      "question": "What was the name of the helicopter that achieved the first powered flight on Mars?",
+      "id": "animal-wolverine-strength-165",
+      "question": "What physical adaptation helps wolverines travel through deep snow?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 165,
-      "id": "space_astronomy_gen_116",
-      "question": "What type of light does the James Webb Space Telescope primarily observe?",
+      "id": "animal-oxpecker-symbiosis-166",
+      "question": "What makes the oxpecker-mammal relationship more complex than simple mutualism?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 166,
-      "id": "space_astronomy_gen_117",
-      "question": "Approximately what percentage of the universe's mass-energy is dark matter?",
+      "id": "animal-mata-mata-turtle-167",
+      "question": "How does the mata mata turtle capture prey?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 167,
-      "id": "space_astronomy_gen_118",
-      "question": "The total mass of the asteroid belt is less than what percentage of the Moon's mass?",
+      "id": "animal-dik-dik-tears-168",
+      "question": "What unusual feature helps dik-diks cool their brains in hot weather?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 168,
-      "id": "space_astronomy_gen_119",
-      "question": "Approximately how long does it take the ISS to orbit Earth once?",
+      "id": "animal-mantis-prayer-169",
+      "question": "How many eyes does a praying mantis have in total?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 169,
-      "id": "space_astronomy_gen_120",
-      "question": "Which rocket was the first orbital-class booster to land successfully for reuse?",
+      "id": "animal-deep-sea-bioluminescence-170",
+      "question": "What percentage of deep-sea creatures are bioluminescent?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 170,
-      "id": "space_astronomy_gen_121",
-      "question": "What solar phenomenon can release energy equivalent to millions of nuclear bombs?",
+      "id": "animal-camel-spider-speed-171",
+      "question": "What makes camel spiders different from true spiders?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 171,
-      "id": "space_astronomy_gen_122",
-      "question": "What is the closest large star-forming nebula visible to the naked eye?",
+      "id": "animal-paradise-flying-frog-172",
+      "question": "What enables Wallace's flying frog to glide?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 172,
-      "id": "space_astronomy_gen_123",
-      "question": "What type of galaxy has rotating arms where new stars form?",
+      "id": "animal-black-mamba-speed-173",
+      "question": "Why is the black mamba called 'black'?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 173,
-      "id": "space_astronomy_gen_124",
-      "question": "Which observatory first directly detected gravitational waves in 2015?",
+      "id": "animal-osprey-fishing-174",
+      "question": "What unique foot adaptation helps ospreys grip slippery fish?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 174,
-      "id": "space_astronomy_gen_125",
-      "question": "Which spacecraft is the most distant human-made object from Earth?",
+      "id": "animal-geographic-cone-snail-175",
+      "question": "How does the geography cone snail deliver its venom?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 175,
-      "id": "space_astronomy_gen_126",
-      "question": "What causes a star to become a red giant?",
+      "id": "animal-surinam-toad-birth-176",
+      "question": "Where do Surinam toad embryos develop?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 176,
-      "id": "space_astronomy_gen_127",
-      "question": "The cosmic microwave background is the afterglow of what event?",
+      "id": "animal-great-white-electroreception-177",
+      "question": "What are the electrical-sensing organs of sharks called?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 177,
-      "id": "space_astronomy_gen_128",
-      "question": "Which microscopic animal has survived exposure to the vacuum of space?",
+      "id": "animal-decorator-crab-178",
+      "question": "What happens to a decorator crab's camouflage when it molts?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 178,
-      "id": "space_astronomy_gen_129",
-      "question": "Approximately how much bone density can astronauts lose per month in microgravity?",
+      "id": "animal-superb-fairy-wren-password-179",
+      "question": "Why do fairy-wren mothers teach passwords to unhatched chicks?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 179,
-      "id": "space_astronomy_gen_130",
-      "question": "Which moon has a dense atmosphere and lakes of liquid methane?",
+      "id": "animal-star-nosed-mole-180",
+      "question": "How fast can the star-nosed mole identify and eat a prey item?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 180,
-      "id": "space_astronomy_gen_131",
-      "question": "What is the tallest known volcano in the solar system?",
+      "id": "animal-wood-frog-freeze-181",
+      "question": "What cryoprotectant do wood frogs use to survive freezing?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 181,
-      "id": "space_astronomy_gen_132",
-      "question": "In what year was the Hubble Space Telescope launched into orbit?",
+      "id": "animal-immortal-jellyfish-182",
+      "question": "What process allows the immortal jellyfish to reverse aging?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 182,
-      "id": "space_astronomy_gen_133",
-      "question": "Approximately how often is Halley's Comet visible from Earth?",
+      "id": "animal-oilbird-echolocation-183",
+      "question": "What makes the oilbird unusual among birds?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 183,
-      "id": "space_astronomy_gen_134",
-      "question": "Approximately what percentage of the universe's energy is dark energy?",
+      "id": "animal-greenland-shark-age-184",
+      "question": "How do scientists determine the age of Greenland sharks?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 184,
-      "id": "space_astronomy_gen_135",
-      "question": "Which Saturn moon ejects water ice geysers from its south pole?",
+      "id": "animal-portia-spider-planning-185",
+      "question": "What makes Portia spiders remarkable among arachnids?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 185,
-      "id": "space_astronomy_gen_136",
-      "question": "What is the minimum distance at which a moon can orbit without being torn apart by tidal forces called?",
+      "id": "animal-honey-badger-resilience-186",
+      "question": "What genetic adaptation gives honey badgers resistance to snake venom?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 186,
-      "id": "space_astronomy_gen_137",
-      "question": "Which exoplanet orbits the closest star to our Sun?",
+      "id": "animal-bowerbird-art-187",
+      "question": "What tool do some bowerbirds use to paint their bowers?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 187,
-      "id": "space_astronomy_gen_138",
-      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "id": "animal-japanese-macaque-bathing-188",
+      "question": "How did Japanese macaques first start bathing in hot springs?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 188,
-      "id": "space_astronomy_gen_139",
-      "question": "Which moon of Jupiter is believed to have a subsurface ocean with more water than Earth?",
+      "id": "animal-leafy-seadragon-189",
+      "question": "Who carries the eggs in leafy seadragon reproduction?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 189,
-      "id": "space_astronomy_gen_140",
-      "question": "At which Lagrange point does the James Webb Space Telescope orbit?",
+      "id": "animal-blanket-octopus-size-190",
+      "question": "What unusual weapon do male blanket octopuses use for defense?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 190,
-      "id": "space_astronomy_gen_141",
-      "question": "What percentage of the universe's total energy content is dark energy?",
+      "id": "animal-pangolin-tongue-191",
+      "question": "Where is a pangolin's tongue muscle anchored?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 191,
-      "id": "space_astronomy_gen_142",
-      "question": "The total mass of the asteroid belt is less than what percentage of the Moon's mass?",
+      "id": "animal-peacock-mantis-shrimp-vision-192",
+      "question": "How many types of color receptors do peacock mantis shrimp have?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 192,
-      "id": "space_astronomy_gen_143",
-      "question": "How long does it take the International Space Station to complete one orbit of Earth?",
+      "id": "animal-vampire-squid-fossils-193",
+      "question": "What does the vampire squid eat?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 193,
-      "id": "space_astronomy_gen_144",
-      "question": "Which rocket was the first orbital-class booster to successfully land for reuse?",
+      "id": "animal-fennec-fox-ears-194",
+      "question": "What dual purpose do the fennec fox's oversized ears serve?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 194,
-      "id": "space_astronomy_gen_145",
-      "question": "What solar phenomenon can release energy equivalent to millions of nuclear bombs?",
+      "id": "animal-immortal-lobster-195",
+      "question": "What enzyme allows lobsters to avoid typical aging?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 195,
-      "id": "space_astronomy_gen_146",
-      "question": "The Pillars of Creation are found in which nebula?",
+      "id": "animal-pangolin-walk-196",
+      "question": "Why do pangolins curl their front claws inward when walking?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 196,
-      "id": "space_astronomy_gen_147",
-      "question": "In approximately how many billion years will the Andromeda Galaxy collide with the Milky Way?",
+      "id": "animal-migratory-godwit-197",
+      "question": "How do bar-tailed godwits prepare for their non-stop migration?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 197,
-      "id": "space_astronomy_gen_148",
-      "question": "Which observatory first directly detected gravitational waves in 2015?",
+      "id": "animal-golden-poison-frog-198",
+      "question": "Where does the golden poison frog get its toxin?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 198,
-      "id": "space_astronomy_gen_149",
-      "question": "Which spacecraft is the most distant human-made object from Earth?",
+      "id": "animal-crows-funeral-199",
+      "question": "According to research, why do crows gather around dead crows?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 199,
-      "id": "space_astronomy_gen_150",
-      "question": "How large can a red giant star expand compared to the Sun's diameter?",
+      "id": "animal-cassowary-danger-200",
+      "question": "How fast can a cassowary run through dense rainforest?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 200,
-      "id": "space_astronomy_gen_151",
-      "question": "The Kuiper Belt begins at approximately which planet's orbit?",
+      "id": "animal-cleaner-wrasse-mirror-201",
+      "question": "What test did cleaner wrasse fish pass that was previously thought exclusive to large-brained animals?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 201,
-      "id": "space_astronomy_gen_152",
-      "question": "What is the name of the tallest known volcano in the solar system?",
+      "id": "animal-desert-rain-frog-202",
+      "question": "Where does the desert rain frog live?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 202,
-      "id": "space_astronomy_gen_153",
-      "question": "Approximately how many galaxies are estimated to exist in the observable universe?",
+      "id": "animal-jewel-wasp-zombie-203",
+      "question": "How does the jewel wasp control the cockroach's behavior?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 203,
-      "id": "space_astronomy_gen_154",
-      "question": "Which moon is the only one in the solar system with a thick atmosphere?",
+      "id": "animal-narwhal-tusk-204",
+      "question": "What is the narwhal's tusk actually made of?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 204,
-      "id": "space_astronomy_gen_155",
-      "question": "What type of neutron star has a magnetic field trillions of times stronger than Earth's?",
+      "id": "animal-leafbird-army-ants-205",
+      "question": "How do army ants create temporary shelters?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 205,
-      "id": "space_astronomy_gen_156",
-      "question": "About how many galaxies were revealed in the original Hubble Deep Field image?",
+      "id": "animal-slow-loris-toxic-206",
+      "question": "Where does the slow loris produce its venom?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 206,
-      "id": "space_astronomy_gen_157",
-      "question": "How far from the Sun does the Oort Cloud hypothetically extend?",
+      "id": "animal-octopus-three-hearts-207",
+      "question": "Why is octopus blood blue?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 207,
-      "id": "space_astronomy_gen_158",
-      "question": "What does the Drake Equation attempt to estimate?",
+      "id": "animal-epaulette-shark-walk-208",
+      "question": "How does the epaulette shark survive out of water?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 208,
-      "id": "space_astronomy_gen_159",
-      "question": "On which planet is a single day longer than its year?",
+      "id": "animal-pit-viper-infrared-209",
+      "question": "How sensitive are pit viper heat-sensing organs?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 209,
-      "id": "space_astronomy_gen_160",
-      "question": "The Cosmic Microwave Background dates to approximately how long after the Big Bang?",
+      "id": "animal-peacock-spider-dance-210",
+      "question": "What happens if a female peacock spider is unimpressed by a male's dance?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 210,
-      "id": "space_astronomy_gen_161",
-      "question": "Which moon of Saturn ejects geysers of water ice from its south pole?",
+      "id": "animal-salmon-shark-warm-211",
+      "question": "What blood vessel system allows salmon sharks to stay warm?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 211,
-      "id": "space_astronomy_gen_162",
-      "question": "What is the boundary around a black hole beyond which nothing can escape called?",
+      "id": "animal-spittlebug-jump-212",
+      "question": "What g-forces do froghoppers experience when jumping?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 212,
-      "id": "space_astronomy_gen_163",
-      "question": "Which spacecraft holds the record as the fastest human-made object?",
+      "id": "animal-tarsier-eye-213",
+      "question": "Why can't tarsiers move their eyes?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
-    },
-    {
-      "index": 213,
-      "id": "space_astronomy_gen_164",
-      "question": "What are rapidly rotating neutron stars that emit beams of radiation called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 214,
-      "id": "space_astronomy_gen_165",
-      "question": "In what year was the supernova that created the Crab Nebula recorded by Chinese astronomers?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 215,
-      "id": "space_astronomy_gen_166",
-      "question": "Saturn's rings are primarily composed of what material?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 216,
-      "id": "space_astronomy_gen_167",
-      "question": "What is the name of the paradox about the absence of evidence for extraterrestrial civilizations?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 217,
-      "id": "space_astronomy_gen_168",
-      "question": "A white dwarf is approximately the size of which celestial body?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 218,
-      "id": "space_astronomy_gen_169",
-      "question": "Approximately how many confirmed exoplanets did the Kepler Space Telescope discover?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 219,
-      "id": "space_astronomy_gen_170",
-      "question": "Which body in the solar system is the most volcanically active?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 220,
-      "id": "space_astronomy_gen_171",
-      "question": "Approximately what percentage of the universe is composed of dark matter?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 221,
-      "id": "space_astronomy_gen_172",
-      "question": "What is the maximum mass of a stable white dwarf, known as the Chandrasekhar limit?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 222,
-      "id": "space_astronomy_gen_173",
-      "question": "How many Earth-sized planets orbit the TRAPPIST-1 star?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 223,
-      "id": "space_astronomy_gen_174",
-      "question": "Approximately how many trillion kilometers is one light-year?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 224,
-      "id": "space_astronomy_gen_175",
-      "question": "Which moon in the solar system is larger than the planet Mercury?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 225,
-      "id": "space_astronomy_gen_176",
-      "question": "Which Apollo mission first landed humans on the Moon?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 226,
-      "id": "space_astronomy_gen_177",
-      "question": "What is the name of the supermassive black hole at the center of the Milky Way?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 227,
-      "id": "space_astronomy_gen_178",
-      "question": "What was the name of the helicopter that made the first powered flight on Mars?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 228,
-      "id": "space_astronomy_gen_179",
-      "question": "How many times per second can the fastest known neutron star rotate?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 229,
-      "id": "space_astronomy_gen_180",
-      "question": "For at least how many years has Jupiter's Great Red Spot storm been active?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 230,
-      "id": "space_astronomy_gen_181",
-      "question": "What is the region around a star where liquid water could exist on a planet called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 231,
-      "id": "space_astronomy_gen_182",
-      "question": "What is the term for the stretching of objects into thin shapes near a black hole?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 232,
-      "id": "space_astronomy_gen_183",
-      "question": "What is the name of NASA's program to return humans to the Moon?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 233,
-      "id": "space_astronomy_gen_184",
-      "question": "What powers the extreme luminosity of quasars?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 234,
-      "id": "space_astronomy_gen_185",
-      "question": "What is the minimum orbital distance before tidal forces tear a body apart called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 235,
-      "id": "space_astronomy_gen_186",
-      "question": "What is the exact speed of light in a vacuum?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 236,
-      "id": "space_astronomy_gen_187",
-      "question": "What does the Hertzsprung-Russell diagram plot stars by?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 237,
-      "id": "space_astronomy_gen_188",
-      "question": "What liquid fills the lakes and seas on Saturn's moon Titan?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 238,
-      "id": "space_astronomy_gen_189",
-      "question": "What triggers a Type Ia supernova?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 239,
-      "id": "space_astronomy_gen_190",
-      "question": "Which planet in our solar system is the smallest?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 240,
-      "id": "space_astronomy_gen_191",
-      "question": "In which galaxy was the first black hole ever directly imaged?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 241,
-      "id": "space_astronomy_gen_192",
-      "question": "What are massive bursts of magnetized plasma ejected from the Sun's corona called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 242,
-      "id": "space_astronomy_gen_193",
-      "question": "How many overlapping collapse craters form the caldera complex at the summit of Olympus Mons?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 243,
-      "id": "space_astronomy_gen_194",
-      "question": "In what year was the unexplained Wow! signal detected?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 244,
-      "id": "space_astronomy_gen_195",
-      "question": "Which planet has the fastest winds in the solar system?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 245,
-      "id": "space_astronomy_gen_196",
-      "question": "In what year was the Hubble Space Telescope launched into orbit?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 246,
-      "id": "space_astronomy_gen_197",
-      "question": "In what year was Pluto reclassified as a dwarf planet?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 247,
-      "id": "space_astronomy_gen_198",
-      "question": "What is the bending of light by gravity from a massive object called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 248,
-      "id": "space_astronomy_gen_199",
-      "question": "Which spacecraft visited the Kuiper Belt object Arrokoth in 2019?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 249,
-      "id": "space_astronomy_gen_200",
-      "question": "What type of galaxy is the Milky Way?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 250,
-      "id": "space_astronomy_gen_201",
-      "question": "What phenomenon describes light stretching to longer wavelengths as its source moves away?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 251,
-      "id": "space_astronomy_gen_202",
-      "question": "Which NASA spacecraft has been orbiting Jupiter since 2016?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 252,
-      "id": "space_astronomy_gen_203",
-      "question": "What are high-energy particles traveling through space at nearly the speed of light called?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
-    },
-    {
-      "index": 253,
-      "id": "space_astronomy_gen_204",
-      "question": "Approximately how hot is the Sun's corona?",
-      "errors": [
-        "missing_source_name"
-      ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 254,
-      "id": "space_astronomy_gen_205",
-      "question": "Which large moon orbits its planet in a retrograde direction, suggesting capture from the Kuiper Belt?",
+      "id": "animal-king-eider-deep-dive-251",
+      "question": "How deep can king eider ducks dive to find food?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 255,
-      "id": "space_astronomy_gen_206",
-      "question": "Are binary star systems more or less common than single star systems?",
+      "id": "animal-wombat-cube-poop-256",
+      "question": "What is unique about the shape of wombat droppings?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 256,
-      "id": "space_astronomy_gen_207",
-      "question": "What is the name of the heart-shaped ice plain on Pluto?",
+      "id": "animal-pistol-shrimp-plasma-257",
+      "question": "What extreme phenomenon does a pistol shrimp's claw snap create?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 257,
-      "id": "space_astronomy_gen_208",
-      "question": "Approximately how many times larger than the Sun's radius is UY Scuti?",
+      "id": "animal-lyrebird-chainsaw-258",
+      "question": "What vocal ability makes the superb lyrebird unique among birds?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 258,
-      "id": "space_astronomy_gen_209",
-      "question": "Approximately how many atoms per cubic centimeter exist in interstellar space?",
+      "id": "animal-sea-cucumber-eviscerate-259",
+      "question": "What extreme defense mechanism do sea cucumbers use when attacked?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 259,
-      "id": "space_astronomy_gen_210",
-      "question": "Which comet is responsible for the Perseid meteor shower?",
+      "id": "animal-hoatzin-claws-260",
+      "question": "What dinosaur-like feature do hoatzin chicks possess that other modern birds do not?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 260,
-      "id": "space_astronomy_gen_211",
-      "question": "What is the boundary where the solar wind meets the interstellar medium called?",
+      "id": "animal-mimic-poison-frog-261",
+      "question": "What is unique about the mimic poison frog's approach to mimicry?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 261,
-      "id": "space_astronomy_gen_212",
-      "question": "What unusual spin-orbit ratio does Mercury have with the Sun?",
+      "id": "animal-frigate-bird-inflate-262",
+      "question": "What do male frigatebirds inflate during courtship displays?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 262,
-      "id": "space_astronomy_gen_213",
-      "question": "What is unusual about the globular cluster Omega Centauri?",
+      "id": "animal-japanese-spider-crab-263",
+      "question": "What world record does the Japanese spider crab hold?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 263,
-      "id": "space_astronomy_gen_214",
-      "question": "What color are sunsets on Mars?",
+      "id": "animal-flying-fish-glide-264",
+      "question": "How far can a flying fish glide through the air?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 264,
-      "id": "space_astronomy_gen_215",
-      "question": "What did Apollo astronauts say lunar dust smelled like?",
+      "id": "animal-okapi-tongue-265",
+      "question": "What remarkable thing can an okapi do with its tongue?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 265,
-      "id": "space_astronomy_gen_216",
-      "question": "How much mass does the Sun lose per second through nuclear fusion?",
+      "id": "animal-coconut-crab-thief-266",
+      "question": "What is the coconut crab's claim to fame among land arthropods?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 266,
-      "id": "space_astronomy_gen_217",
-      "question": "Which exoplanet is theorized to have a diamond-rich interior?",
+      "id": "animal-vampire-finch-blood-267",
+      "question": "What unusual food source do 'vampire finches' on the Galapagos consume?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 267,
-      "id": "space_astronomy_gen_218",
-      "question": "What materials did Apollo 17 astronauts use to repair their lunar rover fender?",
+      "id": "animal-tardigrade-space-268",
+      "question": "What makes tardigrades' survival in outer space so remarkable?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 268,
-      "id": "space_astronomy_gen_219",
-      "question": "How does Europa's subsurface ocean compare to Earth's total ocean volume?",
+      "id": "animal-honey-ant-living-jar-269",
+      "question": "What role do 'replete' honeypot ants serve in their colony?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 269,
-      "id": "space_astronomy_gen_220",
-      "question": "How long could Apollo footprints last on the Moon?",
+      "id": "animal-cuttlefish-colorblind-270",
+      "question": "What is paradoxical about cuttlefish color-changing ability?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 270,
-      "id": "space_astronomy_gen_221",
-      "question": "How fast can the fastest known neutron star spin?",
+      "id": "animal-elephant-shrew-speed-271",
+      "question": "What surprising speed can elephant shrews reach?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 271,
-      "id": "space_astronomy_gen_222",
-      "question": "What flavor compound was found in the space cloud Sagittarius B2?",
+      "id": "animal-mimic-octopus-shapes-272",
+      "question": "How does the mimic octopus decide which animal to impersonate?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 272,
-      "id": "space_astronomy_gen_223",
-      "question": "What is the coldest known natural place in the universe?",
+      "id": "animal-hairy-frog-bone-claws-273",
+      "question": "How does the hairy frog create its defensive claws?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 273,
-      "id": "space_astronomy_gen_224",
-      "question": "Which planet in our solar system is less dense than water?",
+      "id": "animal-dragonfly-success-274",
+      "question": "What hunting success rate makes dragonflies the most efficient predators?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 274,
-      "id": "space_astronomy_gen_225",
-      "question": "Which planet has a day longer than its year?",
+      "id": "animal-alpine-ibex-dam-climbing-275",
+      "question": "Why do Alpine ibex climb nearly vertical dam walls in Italy?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 275,
-      "id": "space_astronomy_gen_226",
-      "question": "What is included on the Voyager Golden Records?",
+      "id": "animal-leaf-insect-sway-276",
+      "question": "How do leaf insects enhance their leaf camouflage beyond just shape and color?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 276,
-      "id": "space_astronomy_gen_227",
-      "question": "Are there more trees on Earth or stars in the Milky Way?",
+      "id": "animal-hognose-snake-drama-277",
+      "question": "What gives away the Eastern hognose snake's fake death performance?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 277,
-      "id": "space_astronomy_gen_228",
-      "question": "If the Sun were the size of a front door, what would Earth be?",
+      "id": "animal-mantis-shrimp-punch-speed-278",
+      "question": "How fast does the peacock mantis shrimp's punch accelerate?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 278,
-      "id": "space_astronomy_gen_229",
-      "question": "By how much would GPS positions drift per day without relativistic corrections?",
+      "id": "animal-axolotl-neoteny-279",
+      "question": "What happens if you give an axolotl thyroid hormone?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 279,
-      "id": "space_astronomy_gen_230",
-      "question": "What is the Great Attractor?",
+      "id": "animal-anglerfish-male-280",
+      "question": "What happens to a male deep-sea anglerfish when it finds a female?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 280,
-      "id": "space_astronomy_gen_231",
-      "question": "How much taller can astronauts grow in space?",
+      "id": "animal-bombardier-beetle-explosion-281",
+      "question": "What defense mechanism do bombardier beetles use?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 281,
-      "id": "space_astronomy_gen_232",
-      "question": "What unusual payload did SpaceX launch on the Falcon Heavy's maiden flight?",
+      "id": "animal-platypus-venom-282",
+      "question": "What is unusual about the pain caused by platypus venom?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
       "index": 282,
-      "id": "space_astronomy_gen_233",
-      "question": "How long does it take a photon to travel from the Sun's core to its surface?",
+      "id": "animal-harvestman-detach-leg-283",
+      "question": "What happens after a harvestman detaches its leg as a defense?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 283,
-      "id": "space_astronomy_gen_234",
-      "question": "Why can you not see the base of Olympus Mons from its peak?",
+      "index": 313,
+      "id": "animal-scaly-foot-snail-iron-314",
+      "question": "What makes the scaly-foot snail's shell unique among animals?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 284,
-      "id": "space_astronomy_gen_235",
-      "question": "What was Buzz Aldrin's mother's maiden name?",
+      "index": 314,
+      "id": "animal-alpine-ibex-dam-wall-315",
+      "question": "Why do Alpine ibex climb near-vertical dam walls?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 285,
-      "id": "space_astronomy_gen_236",
-      "question": "How many telescopes were combined to create the first black hole image?",
+      "index": 315,
+      "id": "animal-shoebill-stork-stare-316",
+      "question": "What surprising prey can shoebills hunt?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 286,
-      "id": "space_astronomy_gen_237",
-      "question": "What unusual geometric shape is the storm at Saturn's north pole?",
+      "index": 316,
+      "id": "animal-greater-honeyguide-beeswax-317",
+      "question": "What unique digestive ability does the greater honeyguide have?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 287,
-      "id": "space_astronomy_gen_238",
-      "question": "How long will the Arecibo message take to reach its target star cluster M13?",
+      "index": 319,
+      "id": "animal-red-tailed-hawk-vision-320",
+      "question": "How much sharper is a red-tailed hawk's vision compared to a human's?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 288,
-      "id": "space_astronomy_gen_239",
-      "question": "Why is the Pluto-Charon system sometimes called a 'double dwarf planet'?",
+      "index": 320,
+      "id": "animal-mimic-poisonfrog-dual-321",
+      "question": "What is unique about the mimic poison frog's colour patterns?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 289,
-      "id": "space_astronomy_gen_240",
-      "question": "How massive is the supermassive black hole TON 618?",
+      "index": 325,
+      "id": "animal-spotted-hyena-matriarch-326",
+      "question": "What is unique about spotted hyena social hierarchy?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 290,
-      "id": "space_astronomy_gen_241",
-      "question": "Approximately how much has the International Space Station cost to build?",
+      "index": 326,
+      "id": "animal-kakapo-boom-327",
+      "question": "How does the male kakapo amplify its boom call?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 291,
-      "id": "space_astronomy_gen_242",
-      "question": "How strong is a magnetar's magnetic field compared to Earth's?",
+      "index": 327,
+      "id": "animal-sperm-whale-sleep-vertical-328",
+      "question": "How do sperm whales sleep?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 292,
-      "id": "space_astronomy_gen_243",
-      "question": "What did the Hubble Deep Field image reveal in a tiny patch of seemingly empty sky?",
+      "index": 328,
+      "id": "animal-parrotfish-sand-329",
+      "question": "How do tropical white sand beaches form?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 293,
-      "id": "space_astronomy_gen_244",
-      "question": "What is the fastest human-made object ever built?",
+      "index": 329,
+      "id": "animal-pangolin-ant-count-330",
+      "question": "Where is a pangolin's tongue anchored inside its body?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 294,
-      "id": "space_astronomy_gen_245",
-      "question": "How much did a bag of Apollo Moon dust accidentally sell for at a government auction?",
+      "index": 330,
+      "id": "animal-flamingo-upside-down-331",
+      "question": "What is unusual about a flamingo's beak mechanism?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 295,
-      "id": "space_astronomy_gen_246",
-      "question": "On which moon could a human theoretically fly by flapping artificial wings?",
+      "index": 331,
+      "id": "animal-pistol-shrimp-colony-332",
+      "question": "What makes certain pistol shrimp species unique among marine animals?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 296,
-      "id": "space_astronomy_gen_247",
-      "question": "What is the largest known structure in the observable universe?",
+      "index": 332,
+      "id": "animal-dolphin-sponge-tool-333",
+      "question": "Why do some dolphins in Shark Bay wear sponges on their noses?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 297,
-      "id": "space_astronomy_gen_248",
-      "question": "Which planet has the most known major volcanoes in the solar system?",
+      "index": 333,
+      "id": "animal-secretary-bird-stomp-334",
+      "question": "How does the secretary bird kill venomous snakes?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 298,
-      "id": "space_astronomy_gen_249",
-      "question": "How long did the famous Wow! Signal last?",
+      "index": 334,
+      "id": "animal-cuttlefish-final-flash-335",
+      "question": "What remarkable display can male cuttlefish perform?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 299,
-      "id": "space_astronomy_gen_250",
-      "question": "What happens when two clean metal surfaces touch in space vacuum?",
+      "index": 335,
+      "id": "animal-naked-mole-rat-oxygen-336",
+      "question": "How do naked mole-rats survive without oxygen for 18 minutes?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 300,
-      "id": "space_astronomy_gen_251",
-      "question": "Why did NASA deliberately crash Cassini into Saturn?",
+      "index": 336,
+      "id": "animal-hoopoe-stink-defence-337",
+      "question": "How do hoopoe chicks defend themselves?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 301,
-      "id": "space_astronomy_gen_252",
-      "question": "Approximately how many galaxies are estimated to be in the observable universe?",
+      "index": 337,
+      "id": "animal-african-lungfish-aestivation-338",
+      "question": "How long can African lungfish survive without water?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 302,
-      "id": "space_astronomy_gen_253",
-      "question": "What is unusual about Uranus's axial tilt?",
+      "index": 338,
+      "id": "animal-bee-hummingbird-smallest-339",
+      "question": "How fast does a bee hummingbird's heart beat during flight?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 303,
-      "id": "space_astronomy_gen_254",
-      "question": "How much would a sugar-cube-sized piece of a neutron star weigh?",
+      "index": 339,
+      "id": "animal-electric-ray-stun-340",
+      "question": "How much voltage can an electric ray deliver?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 304,
-      "id": "space_astronomy_gen_255",
-      "question": "From how far away was the famous Pale Blue Dot photograph taken?",
+      "index": 340,
+      "id": "animal-capybara-babysitting-341",
+      "question": "What is unusual about capybara parenting?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 305,
-      "id": "space_astronomy_gen_256",
-      "question": "Where did the Big Bang happen?",
+      "index": 341,
+      "id": "animal-greater-roadrunner-snake-342",
+      "question": "How does the greater roadrunner kill rattlesnakes?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 306,
-      "id": "space_astronomy_gen_257",
-      "question": "Which of Saturn's moons resembles the Death Star due to its giant impact crater?",
+      "index": 342,
+      "id": "animal-gerenuk-standing-browse-343",
+      "question": "What is unique about how gerenuks feed?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 307,
-      "id": "space_astronomy_gen_258",
-      "question": "What do astronauts say space smells like?",
+      "index": 343,
+      "id": "animal-sea-cucumber-breathe-butt-344",
+      "question": "How do sea cucumbers breathe?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 308,
-      "id": "space_astronomy_gen_259",
-      "question": "When the Milky Way and Andromeda collide, what will happen to individual stars?",
+      "index": 344,
+      "id": "animal-stoat-hypnotic-dance-345",
+      "question": "What does the stoat's 'war dance' do to rabbits?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 309,
-      "id": "space_astronomy_gen_260",
-      "question": "What makes the Bootes Void unusual?",
+      "index": 345,
+      "id": "animal-greenland-shark-parasite-eye-346",
+      "question": "Why are most adult Greenland sharks blind?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     },
     {
-      "index": 310,
-      "id": "space_astronomy_gen_261",
-      "question": "How has Jupiter's Great Red Spot changed over time?",
+      "index": 346,
+      "id": "animal-flying-fox-pollinator-347",
+      "question": "Why are flying foxes essential to tropical ecosystems?",
       "errors": [
         "missing_source_name"
       ],
-      "attempts": 3
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 347,
+      "id": "animal-alpine-chough-altitude-348",
+      "question": "At what altitude have Alpine choughs been observed on Everest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 348,
+      "id": "animal-painted-turtle-winter-heart-349",
+      "question": "What happens to painted turtle hatchlings during their first winter?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 350,
+      "id": "animal-pistol-shrimp-louder-whale-351",
+      "question": "How loud is a pistol shrimp's claw snap?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 352,
+      "id": "animal-leafcutter-ant-antibiotics-353",
+      "question": "What do leafcutter ants actually do with the leaves they harvest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 353,
+      "id": "animal-sawfish-electroreception-354",
+      "question": "What can a sawfish's rostrum (saw) detect?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 354,
+      "id": "animal-african-wild-dog-vote-355",
+      "question": "How do African wild dogs decide to start a hunt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 355,
+      "id": "animal-pufferfish-art-356",
+      "question": "Why do male pufferfish build elaborate sand circles on the sea floor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 356,
+      "id": "animal-slow-loris-venom-elbow-357",
+      "question": "Where does the slow loris produce its venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 357,
+      "id": "animal-wood-ant-catapult-358",
+      "question": "How far can wood ants spray formic acid?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 358,
+      "id": "animal-raccoon-lock-picking-359",
+      "question": "How long can raccoons remember puzzle solutions?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 360,
+      "id": "animal-owl-silent-flight-361",
+      "question": "What makes owl flight nearly silent?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 361,
+      "id": "animal-cone-snail-insulin-weapon-362",
+      "question": "How do certain cone snails immobilize fish?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 363,
+      "id": "animal-migratory-locust-swarm-364",
+      "question": "How many locusts can a single square kilometre of a swarm contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 364,
+      "id": "animal-clownfish-hierarchy-365",
+      "question": "What happens when the female clownfish in a group dies?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 365,
+      "id": "animal-archer-fish-refraction-366",
+      "question": "What physics problem do archerfish instinctively solve when hunting?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 366,
+      "id": "animal-elephant-empathy-mourning-367",
+      "question": "What do elephants do when a family member dies?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 367,
+      "id": "animal-water-bear-radiation-368",
+      "question": "What protein do tardigrades use to survive extreme radiation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 368,
+      "id": "animal-harris-hawk-pack-hunt-369",
+      "question": "What makes Harris's hawks unique among raptors?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 369,
+      "id": "animal-glass-sponge-fiber-optics-370",
+      "question": "What remarkable property do glass sponge fibres have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 371,
+      "id": "animal-osprey-reversible-toe-371",
+      "question": "What foot adaptation makes ospreys unique among raptors?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 372,
+      "id": "animal-lyrebird-construction-sounds-372",
+      "question": "What is remarkable about the lyrebird's vocal abilities?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 373,
+      "id": "animal-honey-badger-thick-skin-373",
+      "question": "Why is the honey badger's skin so effective against predators?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 374,
+      "id": "animal-gentoo-penguin-proposal-374",
+      "question": "How do male gentoo penguins court females?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 375,
+      "id": "animal-crows-recognize-faces-375",
+      "question": "How long can crows remember and hold grudges against specific humans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 376,
+      "id": "animal-dragonfly-intercept-376",
+      "question": "What hunting technique makes dragonflies so successful?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
+    },
+    {
+      "index": 377,
+      "id": "animal-platypus-glow-biofluorescent-377",
+      "question": "What colour does platypus fur glow under ultraviolet light?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3,
+      "domain": "animals_wildlife",
+      "allowedCategoryL2": [
+        "mammals",
+        "birds",
+        "marine_life",
+        "insects_arachnids",
+        "reptiles_amphibians",
+        "behavior_intelligence",
+        "conservation",
+        "adaptations"
+      ]
     }
   ]
 }

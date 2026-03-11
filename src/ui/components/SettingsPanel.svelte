@@ -65,7 +65,7 @@
       : 'Disabled',
   )
 
-  const difficultyOptions: DifficultyMode[] = ['explorer', 'standard', 'scholar']
+  const difficultyOptions: DifficultyMode[] = ['relaxed', 'normal']
   const textSizeOptions: TextSize[] = ['small', 'medium', 'large']
 
   function setDifficulty(mode: DifficultyMode): void {
@@ -111,7 +111,7 @@
     <section class="settings-section">
       <h3>Difficulty</h3>
       {#if difficultyLocked}
-        <p class="difficulty-lock-note">Story Mode is active for your first {STORY_MODE_FORCED_RUNS} runs.</p>
+        <p class="difficulty-lock-note">Relaxed Mode is active for your first {STORY_MODE_FORCED_RUNS} runs.</p>
       {/if}
       <div class="chip-row">
         {#each difficultyOptions as mode}
@@ -119,7 +119,7 @@
             class="chip"
             class:selected={$difficultyMode === mode}
             onclick={() => setDifficulty(mode)}
-            disabled={difficultyLocked && mode !== 'explorer'}
+            disabled={difficultyLocked && mode !== 'relaxed'}
           >
             {formatDifficulty(mode)}
           </button>

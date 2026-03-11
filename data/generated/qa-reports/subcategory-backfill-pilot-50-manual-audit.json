@@ -1,0 +1,410 @@
+{
+  "generatedAt": "2026-03-11T13:15:05.115Z",
+  "pilotSize": 50,
+  "acceptedCount": 36,
+  "rejectedCount": 14,
+  "accepted": [
+    {
+      "id": "nsci-001",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "natural_sciences",
+      "assigned": "physics_mechanics",
+      "reason": "legacy",
+      "statement": "A bolt of lightning is five times hotter than the surface of the Sun"
+    },
+    {
+      "id": "nsci-003",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "natural_sciences",
+      "assigned": "physics_mechanics",
+      "reason": "legacy",
+      "statement": "Neptune has winds that travel faster than the speed of sound on Earth"
+    },
+    {
+      "id": "nsci-004",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "natural_sciences",
+      "assigned": "physics_mechanics",
+      "reason": "legacy",
+      "statement": "It rains diamonds on Neptune and Uranus"
+    },
+    {
+      "id": "nsci-005",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "natural_sciences",
+      "assigned": "physics_mechanics",
+      "reason": "legacy",
+      "statement": "A neutron star is so dense that a teaspoon of its material would weigh about a billion tonnes on Earth"
+    },
+    {
+      "id": "lsci-003",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "human_body_health",
+      "assigned": "genetics_dna",
+      "reason": "legacy",
+      "statement": "If you stretched out all the DNA in a single human body, it would reach from Earth to Pluto and back — multiple times"
+    },
+    {
+      "id": "hist-001",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "history",
+      "assigned": "medieval",
+      "reason": "legacy",
+      "statement": "Oxford University is older than the Aztec Empire"
+    },
+    {
+      "id": "hist-002",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "history",
+      "assigned": "modern_contemporary",
+      "reason": "legacy",
+      "statement": "The shortest war in recorded history lasted only 38 to 45 minutes — between Britain and Zanzibar in 1896"
+    },
+    {
+      "id": "hist-003",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "history",
+      "assigned": "ancient_classical",
+      "reason": "legacy",
+      "statement": "The Great Wall of China is NOT visible from space with the naked eye"
+    },
+    {
+      "id": "hist-004",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "history",
+      "assigned": "modern_contemporary",
+      "reason": "legacy",
+      "statement": "Napoleon Bonaparte was not particularly short — he was about average height for his time"
+    },
+    {
+      "id": "hist-005",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "history",
+      "assigned": "ancient_classical",
+      "reason": "legacy",
+      "statement": "The Library of Alexandria may have been destroyed gradually over centuries — not in a single dramatic fire"
+    },
+    {
+      "id": "geo-001",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "geography",
+      "assigned": "capitals_countries",
+      "reason": "legacy",
+      "statement": "Russia is so wide it spans 11 time zones — more than any other country on Earth."
+    },
+    {
+      "id": "geo-003",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "geography",
+      "assigned": "landforms_water",
+      "reason": "legacy",
+      "statement": "The Amazon River discharges more freshwater into the ocean than the next seven largest rivers combined."
+    },
+    {
+      "id": "geo-004",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "geography",
+      "assigned": "landforms_water",
+      "reason": "legacy",
+      "statement": "Mount Everest is the tallest mountain above sea level, but Mauna Kea in Hawaii is the tallest mountain measured from its base."
+    },
+    {
+      "id": "geo-005",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "geography",
+      "assigned": "landforms_water",
+      "reason": "legacy",
+      "statement": "The Sahara Desert is roughly the same size as the contiguous United States."
+    },
+    {
+      "id": "tech-001",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "general_knowledge",
+      "assigned": "inventions_tech",
+      "reason": "legacy",
+      "statement": "The first computer bug was a literal insect — a moth found trapped in a relay of the Harvard Mark II computer in 1947."
+    },
+    {
+      "id": "tech-002",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "general_knowledge",
+      "assigned": "inventions_tech",
+      "reason": "legacy",
+      "statement": "A single strand of fiber optic cable can carry more than 1 petabit of data per second — enough to stream every film ever made in under a minute."
+    },
+    {
+      "id": "tech-003",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "general_knowledge",
+      "assigned": "inventions_tech",
+      "reason": "legacy",
+      "statement": "The Apollo 11 guidance computer that landed humans on the Moon had 4 KB of RAM — about 100,000 times less memory than a modern smartphone."
+    },
+    {
+      "id": "tech-004",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "general_knowledge",
+      "assigned": "inventions_tech",
+      "reason": "legacy",
+      "statement": "The internet transmits approximately 5 exabytes of data every single day — more data than was created in all of human history up to the year 2003."
+    },
+    {
+      "id": "tech-005",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "general_knowledge",
+      "assigned": "inventions_tech",
+      "reason": "legacy",
+      "statement": "Velcro was invented in 1941 after Swiss engineer George de Mestral returned from a hike and noticed burdock burrs stuck to his dog's fur."
+    },
+    {
+      "id": "cult-001",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "art_architecture",
+      "assigned": "painting_visual",
+      "reason": "scored",
+      "statement": "The Mona Lisa has no eyebrows — Renaissance Florentine fashion dictated that shaved eyebrows were the height of elegance."
+    },
+    {
+      "id": "genet-victoriae-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "animals_wildlife",
+      "assigned": "mammals",
+      "reason": "scored",
+      "statement": "Giant forest genets are small carnivorous mammals found in African forests."
+    },
+    {
+      "id": "parnassius-apollo-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "animals_wildlife",
+      "assigned": "insects_arachnids",
+      "reason": "scored",
+      "statement": "Parnassius apollo is a butterfly species found in European mountain regions."
+    },
+    {
+      "id": "waffle-origin-france",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "food_cuisine",
+      "assigned": "european_cuisine",
+      "reason": "scored",
+      "statement": "Waffles originated in France as a batter-based food cooked between patterned plates."
+    },
+    {
+      "id": "labskaus-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "food_cuisine",
+      "assigned": "european_cuisine",
+      "reason": "scored",
+      "statement": "Labskaus is a hearty culinary specialty from Northern Germany and Scandinavia."
+    },
+    {
+      "id": "mille-feuille-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "food_cuisine",
+      "assigned": "baking_desserts",
+      "reason": "scored",
+      "statement": "Mille-feuille is a French pastry with layers of puff pastry and cream."
+    },
+    {
+      "id": "crêpe-001-france",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "food_cuisine",
+      "assigned": "baking_desserts",
+      "reason": "scored",
+      "statement": "Crêpes are very thin pancakes that originated in France."
+    },
+    {
+      "id": "cupid-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "mythology_folklore",
+      "assigned": "greek_roman",
+      "reason": "scored",
+      "statement": "Cupid is the Roman god of love, counterpart to Greek god Eros."
+    },
+    {
+      "id": "curupira-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "mythology_folklore",
+      "assigned": "creatures_monsters",
+      "reason": "scored",
+      "statement": "Curupira is a mythological forest guardian creature from Brazilian folklore."
+    },
+    {
+      "id": "loch-ness-monster-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "mythology_folklore",
+      "assigned": "creatures_monsters",
+      "reason": "scored",
+      "statement": "The Loch Ness Monster is a legendary creature from Scottish folklore inhabiting Loch Ness."
+    },
+    {
+      "id": "easter-bunny-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "mythology_folklore",
+      "assigned": "folk_legends",
+      "reason": "scored",
+      "statement": "The Easter Bunny is a folkloric figure symbolizing Easter and springtime renewal."
+    },
+    {
+      "id": "kubikajiri-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "mythology_folklore",
+      "assigned": "eastern_myths",
+      "reason": "scored",
+      "statement": "Kubikajiri is a Japanese yokai that bites off human heads from behind."
+    },
+    {
+      "id": "apx-001-satellite-power",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "space_astronomy",
+      "assigned": "satellites_tech",
+      "reason": "scored",
+      "statement": "Advanced Photovoltaic Experiment tested solar panel efficiency in orbital space."
+    },
+    {
+      "id": "a101-testflight-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "space_astronomy",
+      "assigned": "missions_spacecraft",
+      "reason": "scored",
+      "statement": "A-101 was an early German rocket test flight program."
+    },
+    {
+      "id": "A-103-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "space_astronomy",
+      "assigned": "missions_spacecraft",
+      "reason": "scored",
+      "statement": "A-103 was a Soviet test mission exploring spacecraft systems."
+    },
+    {
+      "id": "apollo-a104-test-1965",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "space_astronomy",
+      "assigned": "missions_spacecraft",
+      "reason": "scored",
+      "statement": "Apollo A-104 was an unmanned orbital test of Apollo spacecraft in 1965."
+    },
+    {
+      "id": "apollo-a105-boilerplate",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "space_astronomy",
+      "assigned": "missions_spacecraft",
+      "reason": "scored",
+      "statement": "A-105 was the final boilerplate test of an Apollo spacecraft."
+    }
+  ],
+  "rejected": [
+    {
+      "id": "nsci-002",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "natural_sciences",
+      "assigned": "",
+      "reason": "legacy",
+      "statement": "There are more possible iterations of a game of chess than there are atoms in the observable universe"
+    },
+    {
+      "id": "lsci-001",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "human_body_health",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "Tardigrades can survive the vacuum of space, intense radiation, and temperatures from near absolute zero to 150°C"
+    },
+    {
+      "id": "lsci-002",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "human_body_health",
+      "assigned": "",
+      "reason": "scored",
+      "statement": "Honey never spoils — archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible"
+    },
+    {
+      "id": "lsci-004",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "human_body_health",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "Trees in a forest communicate and share nutrients through underground fungal networks nicknamed the 'Wood Wide Web'"
+    },
+    {
+      "id": "lsci-005",
+      "file": "src/data/seed/facts-general-a.json",
+      "domain": "human_body_health",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "The mantis shrimp can punch with the acceleration of a bullet and sees colours humans cannot imagine"
+    },
+    {
+      "id": "geo-002",
+      "file": "src/data/seed/facts-general-b.json",
+      "domain": "geography",
+      "assigned": "",
+      "reason": "legacy",
+      "statement": "The Great Wall of China is NOT visible from space with the naked eye — it's a persistent myth."
+    },
+    {
+      "id": "cult-002",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "art_architecture",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "Beethoven composed his Ninth Symphony — including the famous 'Ode to Joy' — after he was completely deaf."
+    },
+    {
+      "id": "cult-003",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "art_architecture",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "The ancient Greeks believed music was so powerful that different musical modes could literally change a person's moral character."
+    },
+    {
+      "id": "cult-004",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "art_architecture",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "The Norse god Odin sacrificed one of his eyes to gain wisdom, then hung himself from a tree for nine days to learn the secret of writing."
+    },
+    {
+      "id": "cult-005",
+      "file": "src/data/seed/facts-general-c.json",
+      "domain": "art_architecture",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "Japan's 'Osechi Ryori' New Year food tradition assigns specific meanings to every dish — black beans represent health, herring roe represents fertility, and shrimp represent longevity because they curl like an old person's back."
+    },
+    {
+      "id": "senna-alata-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "animals_wildlife",
+      "assigned": "",
+      "reason": "scored",
+      "statement": "Senna alata is a tropical plant species with least concern conservation status."
+    },
+    {
+      "id": "leopard-cat-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "animals_wildlife",
+      "assigned": "",
+      "reason": "scored",
+      "statement": "Leopard cats are small wild felines native to Asia with spotted coats."
+    },
+    {
+      "id": "phaseolus-vulgaris-001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "animals_wildlife",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "Phaseolus vulgaris is a legume crop cultivated worldwide for food."
+    },
+    {
+      "id": "food_cuisine_hamburger_001",
+      "file": "src/data/seed/facts-generated.json",
+      "domain": "food_cuisine",
+      "assigned": "",
+      "reason": "fallback",
+      "statement": "The hamburger is an American sandwich made with a ground beef patty."
+    }
+  ]
+}

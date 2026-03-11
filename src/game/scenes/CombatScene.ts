@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
+import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -85,7 +86,7 @@ export class CombatScene extends Phaser.Scene {
   }
 
   // ── Game objects (created once, reused) ──────────────────
-  private enemySprite!: Phaser.GameObjects.Rectangle | Phaser.GameObjects.Image
+  private enemySpriteSystem!: EnemySpriteSystem
   private combatBackground!: Phaser.GameObjects.Image | Phaser.GameObjects.Rectangle
   private enemyNameText!: Phaser.GameObjects.Text
   private enemyHpBarBg!: Phaser.GameObjects.Rectangle
@@ -100,8 +101,6 @@ export class CombatScene extends Phaser.Scene {
   private flashRect!: Phaser.GameObjects.Rectangle
   private entryFadeRect!: Phaser.GameObjects.Rectangle
   private particles!: Phaser.GameObjects.Particles.ParticleEmitter
-  private enemyPlaceholderBorder!: Phaser.GameObjects.Rectangle | null
-  private enemyPlaceholderIcon!: Phaser.GameObjects.Text | null
   private enemyBlockBarFill!: Phaser.GameObjects.Rectangle
   private enemyBlockIcon!: Phaser.GameObjects.Text
   private enemyBlockText!: Phaser.GameObjects.Text
@@ -128,6 +127,11 @@ export class CombatScene extends Phaser.Scene {
   private reduceMotion = false
   private effectScale = 1
   private flashTween: Phaser.Tweens.Tween | null = null
+  private vignetteGfx!: Phaser.GameObjects.Graphics
+  private edgeGlowTop!: Phaser.GameObjects.Rectangle
+  private edgeGlowLeft!: Phaser.GameObjects.Rectangle
+  private edgeGlowRight!: Phaser.GameObjects.Rectangle
+  private edgeGlowTween: Phaser.Tweens.Tween | null = null
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -160,14 +164,8 @@ export class CombatScene extends Phaser.Scene {
 
     this.load.image('bg-combat', 'assets/backgrounds/combat/bg_combat_dungeon.webp')
     this.load.image('enemy-cave_bat-idle', enemySprite('cave_bat_idle'))
-    this.load.image('enemy-cave_bat-hit', enemySprite('cave_bat_hit'))
-    this.load.image('enemy-cave_bat-death', enemySprite('cave_bat_death'))
     this.load.image('enemy-crystal_golem-idle', enemySprite('crystal_golem_idle'))
-    this.load.image('enemy-crystal_golem-hit', enemySprite('crystal_golem_hit'))
-    this.load.image('enemy-crystal_golem-death', enemySprite('crystal_golem_death'))
     this.load.image('enemy-the_excavator-idle', enemySprite('the_excavator_idle'))
-    this.load.image('enemy-the_excavator-hit', enemySprite('the_excavator_hit'))
-    this.load.image('enemy-the_excavator-death', enemySprite('the_excavator_death'))
   }
 
   /** Create all game objects for the combat display zone. */
@@ -186,6 +184,33 @@ export class CombatScene extends Phaser.Scene {
     } else {
       this.combatBackground = this.add.rectangle(w / 2, h / 2, w, h, 0x0d1117)
     }
+
+    // ── Permanent vignette (dark edge fade) ──────────────
+    this.vignetteGfx = this.add.graphics().setDepth(1)
+    const vigSteps = 16
+    const vigInsetX = w * 0.15
+    const vigInsetY = h * 0.15
+    for (let i = 0; i < vigSteps; i++) {
+      const t = i / vigSteps
+      const alpha = 0.7 * Math.pow(1 - t, 2.5)
+      const offsetX = vigInsetX * t
+      const offsetY = vigInsetY * t
+      this.vignetteGfx.fillStyle(0x000000, alpha)
+      // Top edge
+      this.vignetteGfx.fillRect(0, offsetY, w, (vigInsetY - offsetY) / vigSteps + 1)
+      // Bottom edge
+      this.vignetteGfx.fillRect(0, h - offsetY - (vigInsetY - offsetY) / vigSteps - 1, w, (vigInsetY - offsetY) / vigSteps + 1)
+      // Left edge
+      this.vignetteGfx.fillRect(offsetX, 0, (vigInsetX - offsetX) / vigSteps + 1, h)
+      // Right edge
+      this.vignetteGfx.fillRect(w - offsetX - (vigInsetX - offsetX) / vigSteps - 1, 0, (vigInsetX - offsetX) / vigSteps + 1, h)
+    }
+
+    // ── Edge glow rectangles (event-driven) ──────────────
+    const glowThickness = 140
+    this.edgeGlowTop = this.add.rectangle(w / 2, glowThickness / 2, w, glowThickness, 0xff0000, 0).setDepth(2)
+    this.edgeGlowLeft = this.add.rectangle(glowThickness / 2, h / 2, glowThickness, h, 0xff0000, 0).setDepth(2)
+    this.edgeGlowRight = this.add.rectangle(w - glowThickness / 2, h / 2, glowThickness, h, 0xff0000, 0).setDepth(2)
 
     // ── Floor counter (top-left) ──────────────────────────
     this.floorCounterText = this.add.text(12, FLOOR_COUNTER_Y, this.floorLabel(), {
@@ -242,31 +267,12 @@ export class CombatScene extends Phaser.Scene {
       '', { fontFamily: 'monospace', fontSize: '10px', color: '#3498db' }
     ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
-    // ── Enemy sprite placeholder ──────────────────────────
+    // ── Enemy sprite system ─────────────────────────────
     const floorY = this.displayH * FLOOR_LINE_PCT
     const baseEnemySize = enemyDisplaySize('common')
     const enemyY = floorY - baseEnemySize / 2
     this.currentEnemyY = enemyY
-    this.enemySprite = this.add.rectangle(
-      w * ENEMY_X_PCT, enemyY,
-      baseEnemySize, baseEnemySize,
-      COLOR_COMMON,
-    ).setOrigin(0.5, 0.5).setDepth(5)
-
-    // Border outline for placeholder
-    this.enemyPlaceholderBorder = this.add.rectangle(
-      w * ENEMY_X_PCT, enemyY,
-      baseEnemySize + 10, baseEnemySize + 10,
-    ).setOrigin(0.5, 0.5).setStrokeStyle(2, 0xaaaaaa).setFillStyle(0x000000, 0)
-      .setDepth(4)
-
-    // "?" silhouette indicator
-    this.enemyPlaceholderIcon = this.add.text(w * ENEMY_X_PCT, enemyY, '?', {
-      fontFamily: 'monospace',
-      fontSize: '46px',
-      color: '#ffffff',
-      align: 'center',
-    }).setOrigin(0.5, 0.5).setAlpha(0.6).setDepth(6)
+    this.enemySpriteSystem = new EnemySpriteSystem(this)
 
     this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + baseEnemySize / 2 + 12, '', {
       fontFamily: 'monospace',
@@ -387,53 +393,15 @@ export class CombatScene extends Phaser.Scene {
     const enemyY = floorY - size / 2
     this.currentEnemyY = enemyY
 
-    // Reset enemy sprite for new encounter
+    // Setup enemy sprite/placeholder via EnemySpriteSystem
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
     const hasSprite = hasTexture(this, texture)
 
     if (hasSprite) {
-      if (!('setTexture' in this.enemySprite)) {
-        this.enemySprite.destroy()
-        this.enemySprite = this.add.image(enemyX, enemyY, texture)
-          .setDisplaySize(size, size)
-          .setDepth(5)
-      } else {
-        ;(this.enemySprite as Phaser.GameObjects.Image).setTexture(texture)
-        ;(this.enemySprite as Phaser.GameObjects.Image).setDisplaySize(size, size)
-      }
-    } else if ('setTexture' in this.enemySprite) {
-      this.enemySprite.destroy()
-      this.enemySprite = this.add.rectangle(
-        enemyX,
-        enemyY,
-        size,
-        size,
-        categoryColor(category),
-      ).setDepth(5)
+      this.enemySpriteSystem.setSprite(texture, size, enemyX, enemyY, category)
     } else {
-      this.enemySprite.setSize(size, size)
+      this.enemySpriteSystem.setPlaceholder(categoryColor(category), size, enemyX, enemyY, category)
     }
-
-    if ('setFillStyle' in this.enemySprite) {
-      this.enemySprite.setFillStyle(categoryColor(category))
-    }
-
-    // Show/hide placeholder border and icon based on whether real sprite exists
-    const borderColor = category === 'boss' ? 0xff4444 : category === 'elite' ? 0xffd700 : 0xaaaaaa
-    if (this.enemyPlaceholderBorder) {
-      this.enemyPlaceholderBorder.setVisible(!hasSprite)
-      this.enemyPlaceholderBorder.setStrokeStyle(2, borderColor)
-      this.enemyPlaceholderBorder.setSize(size + 10, size + 10)
-      this.enemyPlaceholderBorder.setPosition(enemyX, enemyY)
-    }
-    if (this.enemyPlaceholderIcon) {
-      this.enemyPlaceholderIcon.setVisible(!hasSprite)
-      this.enemyPlaceholderIcon.setPosition(enemyX, enemyY)
-    }
-
-    this.enemySprite.setAlpha(1)
-    this.enemySprite.setScale(1)
-    this.enemySprite.setPosition(enemyX, enemyY)
 
     this.enemyNameText.setText(name)
     this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + 12)
@@ -505,37 +473,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Play enemy hit reaction (flash white, slight knockback). */
   playEnemyHitReaction(): void {
-    const hitTexture = enemyTextureKey(this.currentEnemyId, 'hit')
-    const idleTexture = enemyTextureKey(this.currentEnemyId, 'idle')
-
-    if ('setTexture' in this.enemySprite && hasTexture(this, hitTexture)) {
-      ;(this.enemySprite as Phaser.GameObjects.Image).setTexture(hitTexture)
-      this.time.delayedCall(160, () => {
-        if (hasTexture(this, idleTexture) && 'setTexture' in this.enemySprite) {
-          ;(this.enemySprite as Phaser.GameObjects.Image).setTexture(idleTexture)
-        }
-      })
-    } else if ('setFillStyle' in this.enemySprite) {
-      this.enemySprite.setFillStyle(0xffffff)
-      this.time.delayedCall(110, () => {
-        if ('setFillStyle' in this.enemySprite) {
-          this.enemySprite.setFillStyle(categoryColor(this.currentEnemyCategory))
-        }
-      })
-    }
-
-    const origScaleX = this.enemySprite.scaleX
-    const origScaleY = this.enemySprite.scaleY
-    if (this.reduceMotion) return
-    this.cameras.main.shake(100, 0.0025 * this.effectScale, true)
-    this.tweens.add({
-      targets: this.enemySprite,
-      scaleX: origScaleX * 1.08,
-      scaleY: origScaleY * 1.08,
-      duration: 95,
-      yoyo: true,
-      ease: 'Sine.easeInOut',
-    })
+    this.enemySpriteSystem.playHit()
   }
 
   /** Alias used by newer encounter bridge hooks. */
@@ -545,51 +483,20 @@ export class CombatScene extends Phaser.Scene {
 
   /** Play enemy attack animation (lunge toward player). */
   playEnemyAttackAnimation(): void {
-    if (this.reduceMotion) return
-    const startY = this.currentEnemyY
-    const startScale = this.enemySprite.scaleX
-    this.tweens.add({
-      targets: this.enemySprite,
-      y: startY + 18,
-      scaleX: startScale * 1.12,
-      scaleY: startScale * 1.12,
-      duration: 140,
-      yoyo: true,
-      ease: 'Power2',
-    })
-    this.cameras.main.shake(130, 0.0034 * this.effectScale, true)
+    this.enemySpriteSystem.playAttack()
   }
 
   /** Play enemy death animation (fade out + scale down). Returns promise resolving on completion. */
   playEnemyDeathAnimation(): Promise<void> {
-    const deathTexture = enemyTextureKey(this.currentEnemyId, 'death')
-    if ('setTexture' in this.enemySprite && hasTexture(this, deathTexture)) {
-      ;(this.enemySprite as Phaser.GameObjects.Image).setTexture(deathTexture)
-    }
-    if (this.reduceMotion) {
-      this.enemySprite.setAlpha(0)
-      return Promise.resolve()
-    }
-    return new Promise<void>((resolve) => {
-      this.tweens.add({
-        targets: this.enemySprite,
-        alpha: 0,
-        scaleX: 0.15,
-        scaleY: 0.15,
-        y: this.enemySprite.y + 24,
-        duration: 520,
-        ease: 'Power2',
-        onComplete: () => resolve(),
-      })
-    })
+    return this.enemySpriteSystem.playDeath()
   }
 
   /** Play player damage flash (red tint across display zone). */
   playPlayerDamageFlash(): void {
     if (this.reduceMotion) return
-
     this.pulseFlash(COLOR_HP_RED, 0.15, 110)
-    this.cameras.main.shake(150, 0.004 * this.effectScale, true)
+    this.pulseEdgeGlow(COLOR_HP_RED, 0.35, 300)
+    this.cameras.main.shake(180, 0.006 * this.effectScale, true)
   }
 
   /** Play heal effect (green particles rising near player HP bar). */
@@ -598,6 +505,7 @@ export class CombatScene extends Phaser.Scene {
     const barX = this.scale.width - PLAYER_HP_BAR_X_OFFSET
     const barMidY = this.displayH * (PLAYER_HP_BAR_TOP_PCT + PLAYER_HP_BAR_BOTTOM_PCT) / 2
     this.burstParticles(12, barX, barMidY, COLOR_HP_GREEN)
+    this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
   }
 
   /** Flash the display zone white. */
@@ -617,13 +525,15 @@ export class CombatScene extends Phaser.Scene {
   /** Play a gold-tinted screen flash for perfect turn celebration. */
   playGoldFlash(): void {
     this.pulseFlash(0xFFD700, 0.2, 200)
+    this.pulseEdgeGlow(0xFFD700, 0.3, 300)
   }
 
   playPlayerAttackAnimation(): void {
     if (this.reduceMotion) return
+    const container = this.enemySpriteSystem.getContainer()
     this.tweens.add({
-      targets: this.enemySprite,
-      y: this.enemySprite.y - 8,
+      targets: container,
+      y: container.y - 8,
       duration: 110,
       yoyo: true,
       ease: 'Sine.easeOut',
@@ -633,19 +543,29 @@ export class CombatScene extends Phaser.Scene {
   playPlayerCastAnimation(): void {
     if (this.reduceMotion) return
     this.playScreenFlash(0.12)
+    this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
     this.burstParticles(14, this.scale.width / 2, this.displayH * 0.44, 0x8be4ff)
   }
 
   playPlayerBlockAnimation(): void {
     if (this.reduceMotion) return
     this.playScreenFlash(0.1)
+    this.pulseEdgeGlow(0x3498db, 0.3, 270)
     this.burstParticles(10, this.scale.width / 2, this.displayH * 0.47, 0x8fbfff)
+  }
+
+  /** Play blue flash when player block absorbs all incoming damage. */
+  playBlockAbsorbFlash(): void {
+    if (this.reduceMotion) return
+    this.pulseEdgeGlow(0x3498db, 0.25, 330)
+    this.cameras.main.shake(100, 0.003 * this.effectScale, true)
   }
 
   playPlayerVictoryAnimation(): void {
     if (this.reduceMotion) return
+    const container = this.enemySpriteSystem.getContainer()
     this.tweens.add({
-      targets: this.enemySprite,
+      targets: container,
       alpha: 0.2,
       duration: 140,
       yoyo: true,
@@ -655,7 +575,136 @@ export class CombatScene extends Phaser.Scene {
   playPlayerDefeatAnimation(): void {
     if (this.reduceMotion) return
     this.playPlayerDamageFlash()
-    this.cameras.main.shake(200, 0.005 * this.effectScale, true)
+    this.pulseEdgeGlow(COLOR_HP_RED, 0.5, 450)
+    this.cameras.main.shake(250, 0.007 * this.effectScale, true)
+  }
+
+  /** Play enemy defend animation — shimmering blue shield effect. */
+  playEnemyDefendAnimation(): void {
+    if (this.reduceMotion) return
+    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyY = this.currentEnemyY
+    const size = enemyDisplaySize(this.currentEnemyCategory)
+    const shieldRect = this.add.rectangle(enemyX, enemyY, size, size, 0x3498db, 0).setDepth(3)
+    this.tweens.add({
+      targets: shieldRect,
+      alpha: 0.4,
+      scaleX: 1.06,
+      scaleY: 1.06,
+      duration: 200,
+      yoyo: true,
+      ease: 'Sine.easeOut',
+      onComplete: () => { shieldRect.destroy() },
+    })
+    this.burstParticles(16, enemyX, enemyY, 0x3498db)
+    this.pulseEdgeGlow(0x3498db, 0.2, 375)
+  }
+
+  /** Play enemy heal animation — green healing energy rising upward. */
+  playEnemyHealAnimation(): void {
+    if (this.reduceMotion) return
+    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyY = this.currentEnemyY
+    const sprite = this.enemySpriteSystem.getContainer()
+    const origTintTop = sprite.list.length > 0
+      ? (sprite.list[0] as Phaser.GameObjects.Image | Phaser.GameObjects.Rectangle)
+      : null
+    if (origTintTop && 'setTint' in origTintTop) {
+      (origTintTop as Phaser.GameObjects.Image).setTint(0x44ff88)
+      this.time.delayedCall(200, () => {
+        if (origTintTop && 'clearTint' in origTintTop) {
+          (origTintTop as Phaser.GameObjects.Image).clearTint()
+        }
+      })
+    }
+    this.tweens.add({
+      targets: sprite,
+      scaleX: sprite.scaleX * 1.05,
+      scaleY: sprite.scaleY * 1.05,
+      duration: 200,
+      yoyo: true,
+      ease: 'Sine.easeOut',
+    })
+    if (this.particles) {
+      this.particles.setParticleTint(0x2ecc71)
+      this.particles.setParticleGravity(0, -80)
+      this.particles.explode(Math.max(1, Math.round(20 * this.effectScale)), enemyX, enemyY)
+      this.time.delayedCall(350, () => {
+        if (this.particles) this.particles.setParticleGravity(0, 50)
+      })
+    }
+    this.pulseEdgeGlow(0x2ecc71, 0.2, 375)
+    this.pulseFlash(0x2ecc71, 0.08, 150)
+  }
+
+  /** Play enemy buff animation — golden power surge. */
+  playEnemyBuffAnimation(): void {
+    if (this.reduceMotion) return
+    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyY = this.currentEnemyY
+    const sprite = this.enemySpriteSystem.getContainer()
+    this.tweens.add({
+      targets: sprite,
+      scaleX: sprite.scaleX * 1.1,
+      scaleY: sprite.scaleY * 1.1,
+      duration: 250,
+      yoyo: true,
+      ease: 'Power2',
+    })
+    const firstChild = sprite.list[0] as Phaser.GameObjects.Image | undefined
+    if (firstChild && 'setTint' in firstChild) {
+      firstChild.setTint(0xffd700)
+      this.time.delayedCall(250, () => {
+        if (firstChild && 'clearTint' in firstChild) firstChild.clearTint()
+      })
+    }
+    this.burstParticles(18, enemyX, enemyY, 0xFFD700)
+    this.pulseEdgeGlow(0xFFD700, 0.25, 300)
+    this.cameras.main.shake(80, 0.002 * this.effectScale, true)
+  }
+
+  /** Play enemy debuff animation — sinister purple energy targeting the player. */
+  playEnemyDebuffAnimation(): void {
+    if (this.reduceMotion) return
+    const sprite = this.enemySpriteSystem.getContainer()
+    const startY = sprite.y
+    this.tweens.add({
+      targets: sprite,
+      y: startY + 12,
+      duration: 150,
+      yoyo: true,
+      ease: 'Power2',
+    })
+    this.pulseFlash(0x9b59b6, 0.12, 180)
+    this.burstParticles(14, this.scale.width / 2, this.displayH * 0.85, 0x9b59b6)
+    this.pulseEdgeGlow(0x9b59b6, 0.3, 330)
+    this.cameras.main.shake(100, 0.002 * this.effectScale, true)
+  }
+
+  /** Play enemy multi-attack animation — three rapid lunges. */
+  playEnemyMultiAttackAnimation(): void {
+    if (this.reduceMotion) return
+    const startY = this.currentEnemyY
+    const sprite = this.enemySpriteSystem.getContainer()
+    const startScale = sprite.scaleX
+    for (let i = 0; i < 3; i++) {
+      this.time.delayedCall(i * 120, () => {
+        this.tweens.add({
+          targets: sprite,
+          y: startY + 14,
+          scaleX: startScale * 1.08,
+          scaleY: startScale * 1.08,
+          duration: 60,
+          yoyo: true,
+          ease: 'Power2',
+        })
+        this.cameras.main.shake(80, 0.003 * this.effectScale, true)
+      })
+    }
+    this.pulseEdgeGlow(0xe74c3c, 0.4, 450)
+    this.time.delayedCall(360, () => {
+      this.cameras.main.shake(180, 0.006 * this.effectScale, true)
+    })
   }
 
   // ═════════════════════════════════════════════════════════
@@ -666,22 +715,10 @@ export class CombatScene extends Phaser.Scene {
     this.entryFadeRect.setAlpha(1)
 
     const isBoss = this.currentEnemyCategory === 'boss'
-    const startScale = isBoss ? 0.76 : 0.86
     const fadeDuration = isBoss ? 560 : 380
 
-    this.enemySprite.setAlpha(this.reduceMotion ? 1 : 0.16)
-    this.enemySprite.setScale(this.reduceMotion ? 1 : startScale)
-
-    if (!this.reduceMotion) {
-      this.tweens.add({
-        targets: this.enemySprite,
-        alpha: 1,
-        scaleX: 1,
-        scaleY: 1,
-        duration: fadeDuration,
-        ease: isBoss ? 'Back.Out' : 'Quad.Out',
-      })
-    }
+    // Delegate sprite entry animation to EnemySpriteSystem
+    this.enemySpriteSystem.playEntry(isBoss)
 
     this.tweens.add({
       targets: this.entryFadeRect,
@@ -726,6 +763,31 @@ export class CombatScene extends Phaser.Scene {
         this.flashRect.setAlpha(0)
         this.flashRect.setFillStyle(0xFFFFFF, 0)
         this.flashTween = null
+      },
+    })
+  }
+
+  /** Flash colored glow at screen edges for combat feedback. */
+  private pulseEdgeGlow(color: number, peakAlpha: number, durationMs: number): void {
+    if (this.reduceMotion) return
+    if (this.edgeGlowTween) {
+      this.edgeGlowTween.stop()
+      this.edgeGlowTween = null
+    }
+    const rects = [this.edgeGlowTop, this.edgeGlowLeft, this.edgeGlowRight]
+    for (const r of rects) {
+      r.setFillStyle(color, 1)
+      r.setAlpha(0)
+    }
+    this.edgeGlowTween = this.tweens.add({
+      targets: rects,
+      alpha: peakAlpha,
+      duration: Math.max(40, Math.round(durationMs * 0.65)),
+      yoyo: true,
+      ease: 'Cubic.easeOut',
+      onComplete: () => {
+        for (const r of rects) r.setAlpha(0)
+        this.edgeGlowTween = null
       },
     })
   }
@@ -828,6 +890,7 @@ export class CombatScene extends Phaser.Scene {
   private onShutdown(): void {
     this.tweens.killAll()
     this.flashTween = null
+    this.enemySpriteSystem?.destroy()
   }
 
   /** Re-sync display on wake/resume. */

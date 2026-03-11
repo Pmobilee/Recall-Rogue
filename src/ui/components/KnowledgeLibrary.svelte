@@ -97,10 +97,15 @@
   onMount(() => {
     let active = true
 
+    if (factsDB.isReady()) {
+      allFacts = factsDB.getAll()
+      loreFragments = getUnlockedLoreFragments()
+      loading = false
+      return
+    }
+
     const load = async (): Promise<void> => {
-      if (!factsDB.isReady()) {
-        await factsDB.init()
-      }
+      await factsDB.init()
       if (!active) return
       allFacts = factsDB.getAll()
       loreFragments = getUnlockedLoreFragments()

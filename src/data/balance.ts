@@ -1,3 +1,5 @@
+import type { DifficultyMode } from '../services/cardPreferences'
+
 /** All tunable game balance numbers. Change here, affects everything. */
 export const BALANCE = {
   // === OXYGEN ===
@@ -858,11 +860,9 @@ export const POOL_REVIEW_PCT = 0.30;
 export const BASE_EFFECT: Record<string, number> = {
   attack: 10,
   shield: 8,
-  heal: 10,
   utility: 0,
   buff: 0,
   debuff: 0,
-  regen: 4,
   wild: 0,
 };
 
@@ -885,11 +885,9 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
 export const TIER3_PASSIVE_VALUE: Record<string, number> = {
   attack: 1,    // +1 flat damage to all attacks
   shield: 1,    // +1 flat block to all shields
-  heal: 1,      // +1 HP healed at turn start
   utility: 1,   // +1 extra card drawn at turn start (capped)
   buff: 2,      // +2% to next card buff baseline
   debuff: 1,    // +1 to debuff potency
-  regen: 1,     // +1 regen at turn start
   wild: 1,      // +1 to wild card effect
 };
 
@@ -935,10 +933,19 @@ export const MAX_AP_PER_TURN = 5;
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
 export const POST_ENCOUNTER_HEAL_PCT = 0.08;
-/** Extra healing fraction for Story/Explorer mode (additive with POST_ENCOUNTER_HEAL_PCT). */
-export const EXPLORER_POST_ENCOUNTER_HEAL_BONUS = 0.10;
+/** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
+export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.06;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
-export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.10;
+export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.15;
+/** Maximum HP percentage players can heal TO via post-encounter healing, by segment.
+ *  Players below this threshold heal normally; players above it gain nothing.
+ *  This creates late-game attrition so winners don't cruise at 99% HP. */
+export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
+  1: 1.0,    // Segment 1 (floors 1-6): no cap
+  2: 0.90,   // Segment 2 (floors 7-12): cap at 90%
+  3: 0.80,   // Segment 3 (floors 13-18): cap at 80%
+  4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
+};
 /** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
 
@@ -954,20 +961,32 @@ export const AUTO_CALIBRATE_ACCURACY_LOW = 50;
 /** Minimum answers in a domain for auto-calibration to trigger. */
 export const AUTO_CALIBRATE_MIN_ANSWERS = 5;
 
-/** Per-floor enemy damage scaling increment above floor 6. */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.05;
+// === CANARY ADAPTIVE DIFFICULTY ===
+/** Canary deep-assist enemy damage multiplier (severe struggling). */
+export const CANARY_DEEP_ASSIST_ENEMY_DMG_MULT = 0.65;
+/** Wrong answers on a floor to trigger deep assist. */
+export const CANARY_DEEP_ASSIST_WRONG_THRESHOLD = 5;
+/** Canary assist enemy damage multiplier (moderate struggling). */
+export const CANARY_ASSIST_ENEMY_DMG_MULT = 0.80;
+/** Wrong answers on a floor to trigger assist mode. */
+export const CANARY_ASSIST_WRONG_THRESHOLD = 3;
+/** Enemy damage multiplier for challenge mode (5+ correct streak). */
+export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
+/** Correct answer streak threshold to trigger challenge mode. */
+export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
-/** Enemy damage multiplier for floors 1-3 (training wheels). */
-export const FLOOR_DAMAGE_SCALE_EARLY = 0.90;
+/** Per-floor enemy damage scaling increment above floor 6. */
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.04;
+
 /** Enemy damage multiplier for floors 4-6 (base). */
-export const FLOOR_DAMAGE_SCALE_MID = 1.15;
+export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 25,
-  2: 42,
-  3: 55,
-  4: 70,
+  1: 30,
+  2: 35,
+  3: 45,
+  4: 55,
   endless: null,
 };
 
@@ -1021,8 +1040,8 @@ export const QA_LIMITS = {
 } as const;
 
 // Knowledge combo multipliers
-// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.0x)
-export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.3, 1.5, 2.0];
+// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 1.75x)
+export const COMBO_MULTIPLIERS = [1.0, 1.10, 1.25, 1.40, 1.75];
 
 /** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
 export const COMBO_RING_START_MULTIPLIER = 1.10;
@@ -1069,7 +1088,7 @@ export const ECHO = {
 } as const;
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
-export const FIZZLE_EFFECT_RATIO = 0.30;
+export const FIZZLE_EFFECT_RATIO = 0.20;
 
 // === RELIC SYSTEM ===
 
@@ -1096,10 +1115,9 @@ export const RELIC_BOSS_RARITY_WEIGHTS = {
 } as const;
 
 /** Currency multiplier per difficulty mode. Applied at end-of-run. */
-export const DIFFICULTY_REWARD_MULTIPLIER: Record<'explorer' | 'standard' | 'scholar', number> = {
-  explorer: 1.00,
-  standard: 1.00,
-  scholar: 1.20,
+export const DIFFICULTY_REWARD_MULTIPLIER: Record<DifficultyMode, number> = {
+  relaxed: 1.00,
+  normal: 1.00,
 };
 
 /** Reward retention on death, by segment. Retreat/victory keep 100%. */
@@ -1127,6 +1145,61 @@ export const SEGMENT_NAMES: Record<1 | 2 | 3 | 4, string> = {
   4: 'The Archive',
 };
 
+// === CARD UPGRADE SYSTEM ===
+/** Number of upgrade candidates shown at rest sites. */
+export const REST_UPGRADE_CANDIDATE_COUNT = 3;
+
+/** Post-mini-boss rest heal percentage (15% of max HP). */
+export const POST_MINI_BOSS_HEAL_PCT = 0.15;
+
+// === SHOP SYSTEM ===
+/** Number of relics available per shop visit. */
+export const SHOP_RELIC_COUNT = 3;
+/** Number of cards available per shop visit. */
+export const SHOP_CARD_COUNT = 3;
+
+/** Relic prices by rarity. */
+export const SHOP_RELIC_PRICE: Record<string, number> = {
+  common: 60,
+  uncommon: 100,
+  rare: 160,
+  legendary: 250,
+};
+
+/** Card prices by tier. */
+export const SHOP_CARD_PRICE: Record<string, number> = {
+  '1': 15,
+  '2a': 30,
+  '2b': 45,
+  '3': 75,
+};
+
+/** Floor discount for shop prices (3% per floor, max 40%). */
+export const SHOP_FLOOR_DISCOUNT_PER_FLOOR = 0.03;
+export const SHOP_MAX_DISCOUNT = 0.40;
+
+/** Number of food/consumable items offered per shop visit. */
+export const SHOP_FOOD_COUNT = 3;
+
+/** Food item definitions: healing percentage and base price. */
+export const SHOP_FOOD_ITEMS = {
+  ration: { healPct: 0.25, basePrice: 12 },   // 25% max HP heal
+  feast:  { healPct: 0.45, basePrice: 28 },    // 45% max HP heal
+  elixir: { healPct: 1.00, basePrice: 55 },    // Full heal
+} as const;
+
+// === RELIC SYNERGIES ===
+/** Perfect Storm synergy: minimum consecutive correct answers to activate. */
+export const PERFECT_STORM_STREAK_THRESHOLD = 10;
+/** Mastery Ascension synergy: minimum Tier 3 cards in deck to activate. */
+export const MASTERY_ASCENSION_MIN_T3_CARDS = 5;
+/** Mastery Ascension synergy: maximum flat damage bonus. */
+export const MASTERY_ASCENSION_MAX_BONUS = 8;
+/** Phoenix Rage synergy: turns of +50% damage after phoenix resurrect. */
+export const PHOENIX_RAGE_DAMAGE_TURNS = 5;
+/** Phoenix Rage synergy: turns of glass cannon penalty removal. */
+export const PHOENIX_RAGE_PENALTY_REMOVAL_TURNS = 3;
+
 // === FEATURE FLAGS ===
 
 /** When true, phase 2 mechanics are included in the card pool. */
@@ -1135,7 +1208,7 @@ export const ENABLE_PHASE2_MECHANICS = false;
 /** When true, language domains appear in the domain picker. */
 export const ENABLE_LANGUAGE_DOMAINS = false;
 
-/** Number of runs that force Story Mode (explorer) difficulty. */
+/** Number of runs that force Relaxed difficulty. */
 export const STORY_MODE_FORCED_RUNS = 1;
 
 /** Number of completed runs before archetype selection unlocks (auto-balanced until then). */
@@ -1145,3 +1218,66 @@ export const ARCHETYPE_UNLOCK_RUNS = 3;
 export const FACT_COOLDOWN_MIN = 1;
 /** Maximum encounter cooldown applied to a fact after it is answered. */
 export const FACT_COOLDOWN_MAX = 3;
+
+// === PARAMETER SWEEP: Balance Override System ===
+// Module-level mutable context for runtime balance overrides.
+// Used by the parameter sweep simulator to test different balance configurations
+// without modifying source code. Single-threaded safe (Node.js is synchronous).
+// When no overrides are set, all consumers fall back to their default constants.
+
+/** Overridable combat balance parameters for simulation sweeps. */
+export interface BalanceOverrides {
+  // Player
+  playerStartHP?: number;
+  handSize?: number;
+  startApPerTurn?: number;
+
+  // Card base effects
+  baseEffectAttack?: number;
+  baseEffectShield?: number;
+
+  // Combat
+  fizzleEffectRatio?: number;
+  comboMultipliers?: number[];
+
+  // Healing
+  postEncounterHealPct?: number;
+  relaxedPostEncounterHealBonus?: number;
+  postBossEncounterHealBonus?: number;
+  postEncounterHealCap?: Record<number, number>;
+
+  // Enemy scaling
+  floorDamageScalingPerFloor?: number;
+  enemyTurnDamageCap?: Record<number, number | null>;
+
+  // Enemy HP overrides keyed by enemy template id
+  enemyBaseHP?: Record<string, number>;
+
+  // Speed / enrage
+  speedBonusMultiplier?: number;
+  enragePhase1Bonus?: number;
+  enragePhase2Bonus?: number;
+}
+
+let _activeOverrides: BalanceOverrides | null = null;
+
+/** Set active balance overrides for the current simulation run. Pass null to clear. */
+export function setBalanceOverrides(overrides: BalanceOverrides | null): void {
+  _activeOverrides = overrides;
+}
+
+/** Get the current active balance overrides (null if none set). */
+export function getBalanceOverrides(): BalanceOverrides | null {
+  return _activeOverrides;
+}
+
+/** Get an override value if set, otherwise return the default constant. */
+export function getBalanceValue<K extends keyof BalanceOverrides>(
+  key: K,
+  defaultValue: NonNullable<BalanceOverrides[K]>,
+): NonNullable<BalanceOverrides[K]> {
+  if (_activeOverrides != null && _activeOverrides[key] !== undefined) {
+    return _activeOverrides[key] as NonNullable<BalanceOverrides[K]>;
+  }
+  return defaultValue;
+}

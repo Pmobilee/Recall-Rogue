@@ -5,6 +5,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { listJsonlFiles, loadJsonl, parseArgs, readJson, writeJson } from './shared.mjs'
+import { hasSubcategoryTaxonomy, isValidSubcategoryId, resolveFactTaxonomyDomain } from '../subcategory-taxonomy.mjs'
 
 const execFileAsync = promisify(execFile)
 const __filename = fileURLToPath(import.meta.url)
@@ -43,6 +44,20 @@ function normalizeFactShape(fact) {
   }
 }
 
+function taxonomyViolationForFact(fact) {
+  const domain = resolveFactTaxonomyDomain(fact, '')
+  if (!domain || !hasSubcategoryTaxonomy(domain)) return null
+  const categoryL2 = String(fact?.categoryL2 ?? '').trim()
+  if (isValidSubcategoryId(domain, categoryL2)) return null
+  return {
+    id: fact?.id || null,
+    domain,
+    categoryL2,
+    category: Array.isArray(fact?.category) ? fact.category.slice(0, 3) : fact?.category,
+    question: fact?.quizQuestion || fact?.statement || '',
+  }
+}
+
 async function main() {
   const args = parseArgs(process.argv, {
     input: 'data/generated',
@@ -75,14 +90,48 @@ async function main() {
 
   const files = await listJsonlFiles(inputDir)
   const merged = []
+  const taxonomyViolations = []
 
   for (const file of files) {
     // eslint-disable-next-line no-await-in-loop
     const rows = await loadJsonl(file)
     for (const row of rows) {
       if (approvedOnly && row?.status && row.status !== 'approved') continue
-      merged.push(normalizeFactShape(row))
+      const normalized = normalizeFactShape(row)
+      const violation = taxonomyViolationForFact(normalized)
+      if (violation) {
+        taxonomyViolations.push(violation)
+        continue
+      }
+      merged.push(normalized)
     }
+  }
+
+  if (taxonomyViolations.length > 0) {
+    const violationsByDomain = taxonomyViolations.reduce((acc, violation) => {
+      const key = violation.domain || 'unknown'
+      acc[key] = (acc[key] || 0) + 1
+      return acc
+    }, {})
+
+    const reportPath = path.resolve(root, 'data/generated/qa-reports/promote-approved-report.json')
+    await writeJson(reportPath, {
+      generatedAt: new Date().toISOString(),
+      inputDir,
+      scannedFiles: files.length,
+      promotedFacts: 0,
+      outputPath,
+      qaGateEnforced: enforceQaGate,
+      qaReportPath: enforceQaGate ? qaReportPath : null,
+      taxonomyValidation: {
+        pass: false,
+        violations: taxonomyViolations.length,
+        byDomain: violationsByDomain,
+        samples: taxonomyViolations.slice(0, 50),
+      },
+    })
+
+    throw new Error(`taxonomy categoryL2 validation failed during promotion (${taxonomyViolations.length} invalid rows)`)
   }
 
   await writeJson(outputPath, merged)
@@ -96,6 +145,7 @@ async function main() {
     outputPath,
     qaGateEnforced: enforceQaGate,
     qaReportPath: enforceQaGate ? qaReportPath : null,
+    taxonomyValidation: { pass: true, violations: 0 },
   })
 
   if (rebuildDb) {

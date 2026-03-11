@@ -43,7 +43,7 @@
     ],
     "category": [
       "History",
-      "Medieval History",
+      "medieval",
       "Universities"
     ],
     "rarity": "uncommon",
@@ -104,7 +104,10 @@
           "The Aztecs came first"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "Universities"
   },
   {
     "id": "hist-002",
@@ -150,7 +153,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Colonial Wars"
     ],
     "rarity": "uncommon",
@@ -209,7 +212,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Colonial Wars"
   },
   {
     "id": "hist-003",
@@ -255,7 +261,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Famous Myths"
     ],
     "rarity": "common",
@@ -314,7 +320,10 @@
           "1000+"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Famous Myths"
   },
   {
     "id": "hist-004",
@@ -360,7 +369,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Famous Myths"
     ],
     "rarity": "common",
@@ -421,7 +430,10 @@
           "Disputed by historians"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Famous Myths"
   },
   {
     "id": "hist-005",
@@ -467,7 +479,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Libraries"
     ],
     "rarity": "uncommon",
@@ -526,7 +538,10 @@
           "volcanic eruption"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Libraries"
   },
   {
     "id": "hist-006",
@@ -572,7 +587,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Corporate History"
     ],
     "rarity": "common",
@@ -630,7 +645,10 @@
           "clear"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Corporate History"
   },
   {
     "id": "hist-007",
@@ -676,7 +694,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Computing History"
     ],
     "rarity": "common",
@@ -735,7 +753,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Computing History"
   },
   {
     "id": "hist-008",
@@ -781,7 +802,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Roman Civilization"
     ],
     "rarity": "uncommon",
@@ -842,7 +863,10 @@
           "False - ammonia is toxic"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Roman Civilization"
   },
   {
     "id": "hist-009",
@@ -888,7 +912,7 @@
     ],
     "category": [
       "History",
-      "Medieval History",
+      "medieval",
       "Viking Age"
     ],
     "rarity": "common",
@@ -949,7 +973,10 @@
           "Only for ceremonies"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "Viking Age"
   },
   {
     "id": "hist-010",
@@ -995,7 +1022,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "French History"
     ],
     "rarity": "rare",
@@ -1054,7 +1081,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "French History"
   },
   {
     "id": "hist-011",
@@ -1100,7 +1130,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "early_modern",
       "British History"
     ],
     "rarity": "uncommon",
@@ -1159,7 +1189,10 @@
           "Fleet"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "early_modern",
+    "categoryL3": "British History"
   },
   {
     "id": "hist-012",
@@ -1205,7 +1238,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Egyptian Civilization"
     ],
     "rarity": "rare",
@@ -1266,7 +1299,10 @@
           "They understood fungal growth"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Egyptian Civilization"
   },
   {
     "id": "hist-013",
@@ -1312,7 +1348,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Roman Civilization"
     ],
     "rarity": "uncommon",
@@ -1371,7 +1407,10 @@
           "True"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Roman Civilization"
   },
   {
     "id": "hist-014",
@@ -1417,7 +1456,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Architecture"
     ],
     "rarity": "common",
@@ -1478,7 +1517,10 @@
           "False — it shrinks instead"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Architecture"
   },
   {
     "id": "hist-015",
@@ -1524,7 +1566,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Roman Civilization"
     ],
     "rarity": "uncommon",
@@ -1583,7 +1625,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Roman Civilization"
   },
   {
     "id": "hist-016",
@@ -1629,7 +1674,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Scientific History"
     ],
     "rarity": "rare",
@@ -1688,7 +1733,10 @@
           "True"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Scientific History"
   },
   {
     "id": "hist-017",
@@ -1734,7 +1782,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Egyptian Civilization"
     ],
     "rarity": "uncommon",
@@ -1795,7 +1843,10 @@
           "Modern archaeology proved it"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Egyptian Civilization"
   },
   {
     "id": "hist-018",
@@ -1841,7 +1892,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Mesopotamia"
     ],
     "rarity": "uncommon",
@@ -1900,7 +1951,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Mesopotamia"
   },
   {
     "id": "hist-019",
@@ -1946,7 +2000,7 @@
     ],
     "category": [
       "History",
-      "Ancient History",
+      "ancient_classical",
       "Inca Civilization"
     ],
     "rarity": "uncommon",
@@ -2005,7 +2059,10 @@
           "curacas"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "Inca Civilization"
   },
   {
     "id": "hist-020",
@@ -2051,7 +2108,7 @@
     ],
     "category": [
       "History",
-      "Medieval History",
+      "medieval",
       "Social History"
     ],
     "rarity": "rare",
@@ -2112,7 +2169,10 @@
           "False, Church reforms caused change"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "Social History"
   },
   {
     "id": "hist-021",
@@ -2158,7 +2218,7 @@
     ],
     "category": [
       "History",
-      "Modern History",
+      "modern_contemporary",
       "Scientific History"
     ],
     "rarity": "common",
@@ -2216,7 +2276,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "Scientific History"
   },
   {
     "id": "geo-001",
@@ -2262,7 +2325,7 @@
     ],
     "category": [
       "Geography",
-      "Countries",
+      "capitals_countries",
       "Time Zones"
     ],
     "rarity": "common",
@@ -2321,7 +2384,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "capitals_countries",
+    "categoryL3": "Time Zones"
   },
   {
     "id": "geo-002",
@@ -2367,7 +2433,7 @@
     ],
     "category": [
       "Geography",
-      "Landmarks",
+      "asia_oceania",
       "Myths"
     ],
     "rarity": "common",
@@ -2428,7 +2494,10 @@
           "False — it is the only visible structure"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "Myths"
   },
   {
     "id": "geo-003",
@@ -2474,7 +2543,7 @@
     ],
     "category": [
       "Geography",
-      "Rivers",
+      "landforms_water",
       "Hydrology"
     ],
     "rarity": "uncommon",
@@ -2533,7 +2602,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Hydrology"
   },
   {
     "id": "geo-004",
@@ -2579,7 +2651,7 @@
     ],
     "category": [
       "Geography",
-      "Mountains",
+      "landforms_water",
       "Measurement"
     ],
     "rarity": "uncommon",
@@ -2640,7 +2712,10 @@
           "Debatable"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Measurement"
   },
   {
     "id": "geo-005",
@@ -2678,7 +2753,7 @@
     ],
     "category": [
       "Geography",
-      "Deserts",
+      "landforms_water",
       "Scale"
     ],
     "rarity": "common",
@@ -2737,7 +2812,10 @@
           "True"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Scale"
   },
   {
     "id": "geo-006",
@@ -2783,7 +2861,7 @@
     ],
     "category": [
       "Geography",
-      "Countries",
+      "americas",
       "Hydrology"
     ],
     "rarity": "uncommon",
@@ -2841,7 +2919,10 @@
           "True"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "Hydrology"
   },
   {
     "id": "geo-007",
@@ -2887,7 +2968,7 @@
     ],
     "category": [
       "Geography",
-      "Oceans",
+      "landforms_water",
       "Scale"
     ],
     "rarity": "uncommon",
@@ -2946,7 +3027,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Scale"
   },
   {
     "id": "geo-008",
@@ -2992,7 +3076,7 @@
     ],
     "category": [
       "Geography",
-      "Countries",
+      "europe",
       "Microstates"
     ],
     "rarity": "common",
@@ -3051,7 +3135,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "Microstates"
   },
   {
     "id": "geo-009",
@@ -3097,7 +3184,7 @@
     ],
     "category": [
       "Geography",
-      "Landmarks",
+      "landforms_water",
       "Climate"
     ],
     "rarity": "uncommon",
@@ -3156,7 +3243,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Climate"
   },
   {
     "id": "geo-010",
@@ -3202,7 +3292,7 @@
     ],
     "category": [
       "Geography",
-      "Deserts",
+      "climate_biomes",
       "Climate"
     ],
     "rarity": "uncommon",
@@ -3263,7 +3353,10 @@
           "Namib is drier"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "Climate"
   },
   {
     "id": "geo-011",
@@ -3309,7 +3402,7 @@
     ],
     "category": [
       "Geography",
-      "Islands",
+      "landforms_water",
       "Countries"
     ],
     "rarity": "common",
@@ -3370,7 +3463,10 @@
           "Impossible"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Countries"
   },
   {
     "id": "geo-012",
@@ -3416,7 +3512,7 @@
     ],
     "category": [
       "Geography",
-      "Countries",
+      "africa",
       "Hemispheres"
     ],
     "rarity": "uncommon",
@@ -3475,7 +3571,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "Hemispheres"
   },
   {
     "id": "geo-013",
@@ -3521,7 +3620,7 @@
     ],
     "category": [
       "Geography",
-      "Rivers",
+      "landforms_water",
       "Records"
     ],
     "rarity": "common",
@@ -3582,7 +3681,10 @@
           "Brazil rejected the study"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Records"
   },
   {
     "id": "geo-014",
@@ -3628,7 +3730,7 @@
     ],
     "category": [
       "Geography",
-      "Cities",
+      "asia_oceania",
       "Population"
     ],
     "rarity": "common",
@@ -3726,7 +3828,10 @@
           }
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "Population"
   },
   {
     "id": "geo-015",
@@ -3772,7 +3877,7 @@
     ],
     "category": [
       "Geography",
-      "Cities",
+      "capitals_countries",
       "Borders"
     ],
     "rarity": "uncommon",
@@ -3833,7 +3938,10 @@
           "Only since 1899"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "capitals_countries",
+    "categoryL3": "Borders"
   },
   {
     "id": "geo-016",
@@ -3879,7 +3987,7 @@
     ],
     "category": [
       "Geography",
-      "Oceans",
+      "extreme_records",
       "Records"
     ],
     "rarity": "uncommon",
@@ -3938,7 +4046,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "Records"
   },
   {
     "id": "geo-017",
@@ -3984,7 +4095,7 @@
     ],
     "category": [
       "Geography",
-      "Deserts",
+      "climate_biomes",
       "Climate"
     ],
     "rarity": "rare",
@@ -4043,7 +4154,10 @@
           "True"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "Climate"
   },
   {
     "id": "geo-018",
@@ -4089,7 +4203,7 @@
     ],
     "category": [
       "Geography",
-      "Borders",
+      "americas",
       "Records"
     ],
     "rarity": "common",
@@ -4148,7 +4262,10 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "Records"
   },
   {
     "id": "geo-019",
@@ -4194,7 +4311,7 @@
     ],
     "category": [
       "Geography",
-      "Islands",
+      "landforms_water",
       "Climate"
     ],
     "rarity": "common",
@@ -4255,7 +4372,10 @@
           "Partially true"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "Climate"
   },
   {
     "id": "geo-020",
@@ -4301,7 +4421,7 @@
     ],
     "category": [
       "Geography",
-      "Climate",
+      "climate_biomes",
       "Earth Science"
     ],
     "rarity": "epic",
@@ -4362,6 +4482,9 @@
           "False"
         ]
       }
-    ]
+    ],
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "Earth Science"
   }
 ]

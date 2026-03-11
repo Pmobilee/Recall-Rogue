@@ -1,36 +1,1093 @@
 {
-  "generatedAt": "2026-03-10T09:08:59.001Z",
+  "generatedAt": "2026-03-11T15:29:19.791Z",
   "inputFiles": [
-    "data/generated/worker-output/space_astronomy.jsonl"
+    "data/generated/animals_wildlife.jsonl"
   ],
-  "domain": "space_astronomy",
-  "counts": {
-    "input": 311,
-    "valid": 111,
-    "invalid": 0,
-    "flagged": 200
+  "domain": "history",
+  "requireSubcategory": true,
+  "taxonomyDomain": "history",
+  "taxonomyDomainsEnforced": [
+    "history"
+  ],
+  "allowedCategoryL2": [
+    "ancient_classical",
+    "medieval",
+    "early_modern",
+    "modern_contemporary",
+    "world_wars",
+    "battles_military",
+    "people_leaders",
+    "social_cultural"
+  ],
+  "allowedCategoryL2ByDomain": {
+    "history": [
+      "ancient_classical",
+      "medieval",
+      "early_modern",
+      "modern_contemporary",
+      "world_wars",
+      "battles_military",
+      "people_leaders",
+      "social_cultural"
+    ]
   },
-  "invalid": [],
-  "topExamples": [
+  "counts": {
+    "input": 378,
+    "valid": 0,
+    "invalid": 378,
+    "flagged": 0
+  },
+  "invalid": [
     {
-      "id": "apx-001-satellite-power",
-      "question": "What did Advanced Photovoltaic Experiment test in space?"
+      "index": 0,
+      "id": "genet-victoriae-001",
+      "question": "What is a giant forest genet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
     },
     {
-      "id": "a101-testflight-001",
-      "question": "What was A-101 in rocket history?"
+      "index": 1,
+      "id": "parnassius-apollo-001",
+      "question": "What type of animal is Parnassius apollo?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
     },
     {
-      "id": "A-103-001",
-      "question": "What was the purpose of A-103?"
+      "index": 2,
+      "id": "senna-alata-001",
+      "question": "What is Senna alata?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
     },
     {
-      "id": "apollo-a104-test-1965",
-      "question": "What was Apollo A-104's primary purpose?"
+      "index": 3,
+      "id": "leopard-cat-001",
+      "question": "What is the scientific name of the leopard cat?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
     },
     {
-      "id": "apollo-a105-boilerplate",
-      "question": "What was A-105 in Apollo program history?"
+      "index": 4,
+      "id": "phaseolus-vulgaris-001",
+      "question": "What is Phaseolus vulgaris commonly known as?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 5,
+      "id": "serval-001",
+      "question": "What African wild cat has exceptionally long legs?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 6,
+      "id": "laetacara-curviceps-001",
+      "question": "What species is Laetacara curviceps?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 7,
+      "id": "baikal-seal-001",
+      "question": "What is the Baikal seal's primary habitat?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 8,
+      "id": "alpine-pika-001",
+      "question": "What family do Alpine pikas belong to?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 9,
+      "id": "red-fox-001",
+      "question": "What is the scientific name for red foxes?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 10,
+      "id": "mullus-barbatus-001",
+      "question": "What species is Mullus barbatus?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 11,
+      "id": "nannacara_aureocephalus_001",
+      "question": "What species is Nannacara aureocephalus?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 12,
+      "id": "pomegranate-001",
+      "question": "What type of plant is a pomegranate?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 13,
+      "id": "anim-wolverine-001",
+      "question": "What type of animal is the Wolverine?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 14,
+      "id": "anim-house-sparrow-002",
+      "question": "What type of animal is the House Sparrow?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 15,
+      "id": "anim-mallard-003",
+      "question": "What type of animal is the Mallard?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 16,
+      "id": "anim-eurasian-jay-004",
+      "question": "What type of animal is the Eurasian Jay?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 17,
+      "id": "anim-white-stork-005",
+      "question": "What type of animal is the White Stork?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 18,
+      "id": "anim-accipiter-gentilis-006",
+      "question": "What type of animal is the Accipiter gentilis?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 19,
+      "id": "anim-northern-raven-007",
+      "question": "What type of animal is the Northern Raven?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 20,
+      "id": "anim-european-nightjar-008",
+      "question": "What type of animal is the European Nightjar?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 21,
+      "id": "anim-canada-goose-009",
+      "question": "What type of animal is the Canada Goose?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 22,
+      "id": "anim-black-redstart-010",
+      "question": "What type of animal is the Black Redstart?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 23,
+      "id": "anim-arctic-tern-011",
+      "question": "What type of animal is the Arctic Tern?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 24,
+      "id": "anim-common-ringed-plover-012",
+      "question": "What type of animal is the Common Ringed Plover?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 25,
+      "id": "anim-atlantic-emperor-013",
+      "question": "What type of animal is the Atlantic emperor?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 26,
+      "id": "anim-lethrinus-reticulatus-014",
+      "question": "What type of animal is the Lethrinus reticulatus?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 27,
+      "id": "anim-lethrinus-enigmaticus-015",
+      "question": "What type of animal is the Lethrinus enigmaticus?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 28,
+      "id": "anim-spotted-wobbegong-016",
+      "question": "What type of animal is the spotted wobbegong?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 29,
+      "id": "anim-northern-wobbegong-017",
+      "question": "What type of animal is the northern wobbegong?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 30,
+      "id": "anim-ornate-wobbegong-018",
+      "question": "What type of animal is the ornate wobbegong?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 31,
+      "id": "anim-edible-nest-swiftlet-019",
+      "question": "What type of animal is the Edible-nest Swiftlet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 32,
+      "id": "anim-fulvous-breasted-woodpecker-020",
+      "question": "What type of animal is the Fulvous-breasted Woodpecker?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 33,
+      "id": "anim-dwarf-spotted-wobbegong-021",
+      "question": "What type of animal is the dwarf spotted wobbegong?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 34,
+      "id": "anim-necklace-carpetshark-022",
+      "question": "What type of animal is the necklace carpetshark?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 35,
+      "id": "anim-saddle-carpetshark-023",
+      "question": "What type of animal is the saddle carpetshark?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 36,
+      "id": "anim-ginger-carpetshark-024",
+      "question": "What type of animal is the ginger carpetshark?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 37,
+      "id": "anim-collared-carpetshark-025",
+      "question": "What type of animal is the Collared carpetshark?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 38,
+      "id": "anim-parascyllium-ferrugineum-026",
+      "question": "What type of animal is the Parascyllium ferrugineum?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 39,
+      "id": "anim-apus-pacificus-027",
+      "question": "What type of animal is the Apus pacificus?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 40,
+      "id": "anim-blue-tailed-bee-eater-028",
+      "question": "What type of animal is the Blue-tailed Bee-eater?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 41,
+      "id": "anim-rock-dove-029",
+      "question": "What type of animal is the Rock Dove?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 42,
+      "id": "anim-dwarf-sperm-whale-030",
+      "question": "What type of animal is the dwarf sperm whale?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 43,
+      "id": "anim-geoffroy-s-cat-031",
+      "question": "What type of animal is the Geoffroy's cat?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 44,
+      "id": "anim-rusty-spotted-genet-032",
+      "question": "What type of animal is the Rusty-spotted genet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 45,
+      "id": "anim-pardine-genet-033",
+      "question": "What type of animal is the Pardine genet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 46,
+      "id": "anim-angolan-genet-034",
+      "question": "What type of animal is the Angolan genet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 47,
+      "id": "anim-cape-genet-035",
+      "question": "What type of animal is the Cape Genet?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 48,
+      "id": "anim-eurasian-lynx-036",
+      "question": "What type of animal is the Eurasian lynx?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
+    },
+    {
+      "index": 49,
+      "id": "anim-wildcat-037",
+      "question": "What type of animal is the Wildcat?",
+      "errors": [
+        "domain_mismatch:animals_wildlife",
+        "invalid_or_missing_category_l2"
+      ],
+      "attempts": 1,
+      "domain": "history",
+      "allowedCategoryL2": [
+        "ancient_classical",
+        "medieval",
+        "early_modern",
+        "modern_contemporary",
+        "world_wars",
+        "battles_military",
+        "people_leaders",
+        "social_cultural"
+      ]
     }
-  ]
+  ],
+  "topExamples": []
 }

@@ -47,6 +47,14 @@ Scan the log's turns array and summary for these patterns:
 - **mechanic_unused** (LOW): A card type appears in 0 played cards across the entire run
 - **mechanic_broken** (CRITICAL): Card effect produces 0 damage/shield/heal when it shouldn't
 
+### Engagement Issues (when deepStats.engagement is present)
+- **engagement_boring_run** (MEDIUM): `engagementScore < 30` — run lacked meaningful decisions
+- **engagement_tedious_grind** (MEDIUM): `slogEncounters > 2` OR `deadTurnPct > 15%` — encounters drag
+- **engagement_too_easy** (LOW): `snowballEncounters` > 50% of total encounters — no challenge
+- **engagement_fact_staleness** (LOW): `factRepeatRate > 0.40` — too many repeated facts
+- **engagement_frustrating_streaks** (MEDIUM): `wrongStreakMax > 5` — too many wrong answers in a row
+- **engagement_low_fun** (HIGH): `funScore < 25` for expert or average profiles — run was not enjoyable
+
 ## Report Format
 
 Write JSON matching this schema:
@@ -56,6 +64,20 @@ Write JSON matching this schema:
   "profileId": "string",
   "analyzedAt": "ISO timestamp",
   "issueCount": 0,
+  "engagementSummary": {
+    "engagementScore": 0,
+    "funScore": 0,
+    "avgTurnsPerEncounter": 0,
+    "avgCardsPlayedPerEncounter": 0,
+    "deadTurnPct": 0,
+    "snowballEncounters": 0,
+    "slogEncounters": 0,
+    "correctStreakMax": 0,
+    "wrongStreakMax": 0,
+    "uniqueFactsSeen": 0,
+    "factRepeatRate": 0,
+    "accuracyTrend": 0
+  },
   "issues": [
     {
       "id": "issue-{playthroughId}-{seq}",
@@ -79,4 +101,4 @@ Write JSON matching this schema:
 ```
 
 ## Output
-Report a summary: total issues by severity (critical/high/medium/low), and list the top 3 most severe issues with their titles.
+Report a summary: total issues by severity (critical/high/medium/low), engagement scores (engagement/fun), and list the top 3 most severe issues with their titles.

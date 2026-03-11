@@ -63,6 +63,15 @@ ENEMY TURN:
   10. Next turn begins
 ```
 
+### Partial Fizzle Mechanic (Skill-Floor Narrowing)
+
+**Wrong answers no longer result in zero effect.** Instead, fizzled cards apply 20% of their base effect value. This includes:
+- Attack: 20% of damage (including lifetap healing)
+- Shield: 20% of block
+- Buff/Debuff/Utility: 20% of effect (scaled down)
+
+**No modifiers apply to fizzle damage:** Speed bonuses, combo multipliers, and relic bonuses do not affect fizzled effects — only the raw 20% base value applies. This narrows the skill gap between beginners (who fizzle more often) and experts (who don't), ensuring early-game mistakes aren't as punishing while preserving incentive for correct answers.
+
 ### Fact-Card Shuffling (Per-Draw Randomization)
 
 Card slots (type + mechanic + base effect) and facts (the questions to answer) are paired RANDOMLY each time a hand is drawn. The deck tracks card slots and facts as separate pools.
@@ -126,7 +135,6 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 
 **Speed bonus:** Answer in first 25% of the EFFECTIVE timer (after modifiers) → +50% effect.
 
-**Expert Mode (Scholar) override:** -2s from base per tier. Tier 2 cards require free recall (no multiple choice).
 
 ### Card Anatomy
 
@@ -169,13 +177,11 @@ Game builds 120-fact pool → assigns each fact a type from balanced distributio
 
 | Card Type | Pool % | Role |
 |-----------|--------|------|
-| Attack | ~30% | Primary damage |
-| Shield | ~25% | Block damage |
-| Heal | ~15% | Restore HP |
-| Buff | ~10% | Enhance next card |
-| Debuff | ~8% | Weaken enemy |
-| Utility | ~7% | Draw, scout, manipulate |
-| Regen | ~3% | Heal over time |
+| Attack | ~35% | Primary damage |
+| Shield | ~30% | Block damage |
+| Buff | ~12% | Enhance next card |
+| Debuff | ~10% | Weaken enemy |
+| Utility | ~8% | Draw, scout, manipulate |
 | Wild | ~5% | Copy/adapt (copies target type's BASE_EFFECT value) |
 
 ### Domain Role
@@ -224,31 +230,26 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
-| Strike | Flat damage | 8 |
+| Strike | Flat damage | 10 |
 | Multi-Hit | Damage X times (scales with buffs per hit) | 3 x 3 |
 | Heavy Strike | High damage, costs 2 AP | 14 |
 | Piercing | Damage, ignores enemy block | 6 |
 | Reckless | High damage + self-damage | 12 dmg, 3 self |
 | Execute | Damage + bonus if enemy <30% HP | 6 (+8 below 30%) |
+| Lifetap | Heal 20% of damage dealt this turn | 20% dmg |
 
 ### Shield Mechanics
 
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
-| Block | Flat block | 6 |
+| Block | Flat block | 8 |
 | Thorns | Block + reflect damage | 4 block + 2 reflect |
 | Fortify | Block that persists into next turn | 4 persistent |
 | Parry | Block + draw bonus if enemy attacks | 3 block + draw |
 | Brace | Block equal to enemy's telegraphed attack | Varies |
-
-### Heal Mechanics
-
-| Mechanic | Effect | Base Value |
-|----------|--------|------------|
-| Restore | Flat heal | 8 |
-| Cleanse | Heal + remove 1 debuff | 6 + cleanse |
-| Overheal | Heal, excess → temporary block | 7 (overflow) |
-| Lifetap | Heal % of damage dealt this turn | 30% turn dmg |
+| Cleanse | Block + remove 1 debuff | 6 + cleanse |
+| Overheal | Block, excess → temporary shield | 7 (overflow) |
+| Emergency | Large shield, only below 50% HP | 10 conditional |
 
 ### Buff Mechanics
 
@@ -276,13 +277,6 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 | Foresight | See enemy's next 2 intents | 2-turn vision |
 | Recycle | Return 1 card from discard to draw pile top | 1 reclaim |
 | Transmute | Transform 1 random hand card to different type | 1 transform |
-
-### Regen Mechanics
-
-| Mechanic | Effect | Base Value |
-|----------|--------|------------|
-| Sustained | X HP/turn for Y turns | 3/turn x 3 |
-| Emergency | Large heal, only below 50% HP | 10 conditional |
 | Immunity | Prevent next status damage instance | 1 shield |
 
 ### Wild Mechanics
@@ -290,7 +284,7 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
 | Mirror | Copy previous card's effect | Copy |
-| Adapt | Choose attack/shield/heal — copies target type's BASE_EFFECT | Varies (target type's base) |
+| Adapt | Choose attack/shield/buff/debuff/utility — copies target type's BASE_EFFECT | Varies (target type's base) |
 | Overclock | Double effect, draw 4 next turn instead of 5 | 2x, -1 draw |
 
 ### Mechanic Assignment Rules
@@ -327,16 +321,16 @@ Facts get HARDER as they approach mastery. Bjork's desirable difficulties: harde
 
 | Tier | Internal | Display Name | FSRS Trigger | Question Format | Power | Visual |
 |------|----------|-------------|-------------|----------------|-------|--------|
-| 1 | 1 | Learning | Stability <5d | 3-option MCQ, generous timer | 1.0x | Standard frame (bronze) |
-| 2a | 2a | Proven | Stability 5-15d, 3+ correct | 4-option MCQ OR reverse format | 1.3x | Silver tint |
-| 2b | 2b | Proven | Stability 15-30d, 5+ correct | 5-option close distractors OR fill-blank | 1.6x | Silver + glow |
+| 1 | 1 | Learning | Stability <2d | 3-option MCQ, generous timer | 1.0x | Standard frame (bronze) |
+| 2a | 2a | Proven | Stability ≥2d, 2+ correct | 4-option MCQ OR reverse format | 1.3x | Silver tint |
+| 2b | 2b | Proven | Stability ≥5d, 3+ correct | 5-option close distractors OR fill-blank | 1.6x | Silver + glow |
 | 3 | 3 | Mastered | Pass Mastery Trial | Not asked — earns Mastery Coin | Permanent | Gold frame |
 
 **Display Simplification:** Players see only 3 tiers: **Learning** (bronze), **Proven** (silver), and **Mastered** (gold). Internal tiers 2a/2b are both displayed as "Proven" — the sub-tier distinction is invisible to players. This reduces cognitive load while preserving the FSRS-driven difficulty escalation under the hood. Functions `getTierDisplayName()` and `getDisplayTier()` in `tierDerivation.ts` handle this mapping.
 
 ### Mastery Trial
 
-Fact at Tier 2b + stability ≥10d + 4 consecutive correct → qualifies.
+Fact at Tier 2b (stability ≥5d, 3+ consecutive correct) + additional stability ≥10d + 4 consecutive correct total → qualifies for Tier 3.
 
 - Golden card in hand
 - 4-second timer (regardless of floor, no slow reader bonus)
@@ -373,6 +367,64 @@ When a correct answer causes a card to advance to a higher tier (consecutiveCorr
 
 ---
 
+## 5.5. Combat Visuals & Enemy Sprites
+
+### Enemy Sprite Rendering
+
+Enemy sprites are rendered via the **EnemySpriteSystem**, a centralized Phaser system that encapsulates all enemy visual display and animation. The system uses a single static PNG texture per enemy (no hit/death variants) and applies procedural animations for idle, attack, hit, and death states.
+
+#### 3D Paper Cutout Effect
+
+Enemy sprites use a **layered container with 3D paper cutout effect**:
+1. **Shadow layer** — Offset dark copy (±4px) beneath the main sprite, creates depth illusion
+2. **Outline layer** — Pixelated black outline (4 cardinal-direction copies: ±4px), 1px thickness, enhances readability on complex backgrounds
+3. **Main sprite** — Layered on top, single PNG texture per enemy
+
+This effect works on both real enemy sprites and placeholder colored rectangles (for enemies without art assets).
+
+#### Idle Animation
+
+Gentle, non-intrusive continuous animation applied to all enemies:
+- **Vertical bob:** ±5px, 2.5s period (subtle breathing motion)
+- **Scale breathing:** 1.0 → 1.02 scale, 3s period (gentle expansion/contraction)
+- **Rotation wobble:** ±1° rotation, 4s period (gentle sway)
+
+These animations use Phaser tweens and combine for a living, present feel without distraction.
+
+#### Combat Animations
+
+**Attack:** Enemy leans forward (+10° rotation), lurches forward (+22px translate), scales up to 1.1x. Snaps back to idle with elastic spring (bounce easing).
+
+**Hit (wrong answer):** Enemy leans backward (−12° rotation), knockback (−15px translate), white screen flash (0.1s). Elastic spring-back to idle. Triggers haptic feedback (Heavy vibration).
+
+**Death:** Sequential state changes:
+1. **Red tint + jitter:** 0.3s, rapid micro-shakes (±2px)
+2. **Gray ash tint:** Fade from red to desaturated gray over 0.5s
+3. **Squish:** ScaleY → 0.3, squash-and-stretch collapse over 0.4s
+4. **Ash particle burst:** 15-20 particles (gray, drifting upward with alpha fade)
+5. **Fade out:** Full opacity → 0% over 0.5s, container disappears
+
+Total death sequence: ~2.5s. Plays immediately on enemy HP → 0.
+
+#### Placeholder Display
+
+Enemies without sprite assets display as **colored rectangles** with the same layered 3D effect (shadow + outline). A **"?" icon** (white, centered) indicates missing art. Colored rectangles use the enemy's domain color tint (e.g., "History" domain = brown tint).
+
+#### Enemy Display Sizes
+
+- **Common enemies:** 280px tall
+- **Elite enemies:** 340px tall
+- **Mini-bosses:** 340px tall
+- **Bosses:** 400px tall
+
+#### Performance & Accessibility
+
+**Reduced Motion:** When `prefers-reduced-motion` is active, all animations are disabled. Enemies display statically. Attack/hit/death states still show visually (no animation, instant transitions).
+
+**Device-Tier Scaling:** On low-end devices, particle count and tween complexity scale down to 0.65x (fewer particles, shorter durations, simpler easing). Determined by `performance.memory.jsHeapSizeLimit` check in `EnemySpriteSystem.ts`.
+
+---
+
 ## 6. Relic System
 
 Relics are permanent passive buffs collected during runs. The system replaces the old Tier 3 passive relic model with an STS-inspired relic economy.
@@ -402,7 +454,7 @@ Current flow:
 |----|------|----------|--------|
 | whetstone | Whetstone | Offensive | All attack cards +2 flat damage |
 | flame_brand | Flame Brand | Offensive | First attack each encounter +40% damage |
-| barbed_edge | Barbed Edge | Offensive | Strike-tagged mechanics +3 base damage |
+| barbed_edge | Barbed Edge | Offensive | Strike-tagged mechanics +2 base damage |
 | war_drum | War Drum | Offensive | +1 damage per combo level this turn |
 | sharp_eye | Sharp Eye | Offensive | Speed bonus +75% instead of +50%, speed threshold widened to 35% |
 | iron_buckler | Iron Buckler | Defensive | +3 block at start of each turn |
@@ -411,10 +463,10 @@ Current flow:
 | stone_wall | Stone Wall | Defensive | All shield cards +3 block |
 | herbal_pouch | Herbal Pouch | Sustain | Heal 5 HP at encounter start; if >80% HP, +3 block instead |
 | vitality_ring | Vitality Ring | Sustain | +15 max HP this run |
-| medic_kit | Medic Kit | Sustain | Heal cards +20% effectiveness, +3 block on heal |
+| medic_kit | Medic Kit | Sustain | Lifetap cards +20% effectiveness, heal effects +3 |
 | last_breath | Last Breath | Sustain | Once/encounter: survive killing blow at 1 HP, +8 block, +5 damage |
 | swift_boots | Swift Boots | Tactical | Draw 6 cards/turn instead of 5 |
-| combo_ring | Combo Ring | Tactical | Combo starts at 1.15x instead of 1.0x |
+| combo_ring | Combo Ring | Tactical | Combo starts at 1.10x instead of 1.0x |
 | momentum_gem | Momentum Gem | Tactical | Perfect turn grants +1 AP next turn |
 | speed_charm | Speed Charm | Tactical | Speed bonus threshold 35% instead of 25%, fast answers heal 1 HP |
 | cartographers_lens | Cartographer's Lens | Tactical | Permanent foresight (see 2 enemy intents) |
@@ -435,16 +487,16 @@ Current flow:
 | venom_fang | Venom Fang | Off | Attacks apply 2 poison/3 turns | Uncommon | 35 |
 | crescendo_blade | Crescendo Blade | Off | Each correct attack: +10% dmg (stacks) | Uncommon | 45 |
 | executioners_axe | Executioner's Axe | Off | Execute threshold 40%; +3 attack below 30% enemy HP | Rare | 50 |
-| fortress_wall | Fortress Wall | Def | Block carries between turns | Uncommon | 45 |
-| mirror_shield | Mirror Shield | Def | Block absorb: reflect 30% as true damage | Rare | 50 |
+| fortress_wall | Fortress Wall | Def | Block carries between turns (max 20) | Uncommon | 45 |
+| mirror_shield | Mirror Shield | Def | Block absorb: reflect 20% damage | Rare | 50 |
 | iron_resolve | Iron Resolve | Def | Below 50% HP: block +50%, attacks +15% | Uncommon | 40 |
 | phase_cloak | Phase Cloak | Def | 20% chance to dodge attacks | Rare | 60 |
-| blood_pact | Blood Pact | Sustain | Heal 25% of damage dealt/turn | Rare | 55 |
-| phoenix_feather | Phoenix Feather | Sustain | Once/boss: resurrect at 30% HP, +15 block, Empower 2 turns | Rare | 70 |
+| blood_pact | Blood Pact | Sustain | Heal 35% of damage dealt/turn | Rare | 40 |
+| phoenix_feather | Phoenix Feather | Sustain | Once/boss: resurrect at 35% HP, +15 block | Rare | 40 |
 | renewal_spring | Renewal Spring | Sustain | Heal 15% max HP on floor advance; if >80% HP, +5 block | Uncommon | 35 |
 | quicksilver | Quicksilver | Tactical | Start encounters with +1 AP | Rare | 60 |
 | time_dilation | Time Dilation | Tactical | Quiz timer +3 seconds | Uncommon | 30 |
-| afterimage | Afterimage | Tactical | Perfect turn: +1 AP next turn (or +1 draw if momentum_gem also held) | Uncommon | 40 |
+| afterimage | Afterimage | Tactical | Perfect turn: +1 card draw next turn | Uncommon | 40 |
 | echo_lens | Echo Lens | Tactical | Echo cards at full power (1.0x) | Uncommon | 35 |
 | double_vision | Double Vision | Tactical | First card each encounter costs 0 AP | Rare | 55 |
 | polyglot_pendant | Polyglot Pendant | Knowledge | Secondary domain cards +25% damage | Uncommon | 40 |
@@ -495,6 +547,38 @@ During runs, collected relics appear in the **RelicTray** at the bottom of the c
 
 Removed. Relics collected in a run stay active for the entire run. The old FSRS-based dormancy system no longer applies.
 
+### Hidden Relic Synergies
+
+Certain relic combinations trigger hidden synergies that provide subtle bonuses without explicit tooltips. Players discover these through experimentation and community sharing. Synergies are graded by rarity (Tier 1 = common pairs, Tier 3 = legendary triples).
+
+**Synergy Activation:**
+- Checked at encounter start via `relicSynergyResolver.detectActiveSynergies()`
+- Bonuses apply automatically during combat
+- Subtle visual feedback (golden flash, brief name callout) hints activation
+- No explicit tooltip explains the bonus — players must experiment
+
+**Synergy Catalogue:**
+
+| Synergy | Tier | Requirements | Hint |
+|---------|------|--------------|------|
+| Glass Berserker | 1 | glass_cannon + berserker_band | Natural stacking |
+| Immortal Puncher | 1 | blood_pact + berserker_band | Sustain at low HP |
+| Untouchable | 1 | fortress_wall + mirror_shield + stone_wall | Block stacking + reflect |
+| Crescendo Executioner | 2 | crescendo_blade + executioners_axe | Enhanced execute + crescendo |
+| Perpetual Motion | 2 | blood_price + blood_pact + quicksilver | Reduced cost, increased lifesteal |
+| Knowledge Engine | 2 | eidetic_memory + domain_mastery + scholars_hat | Enhanced knowledge bonuses |
+| Speed Demon | 2 | Any 2 of: speed_reader, sharp_eye, speed_charm | Enhanced speed mechanics |
+| Echo Master | 2 | echo_lens + combo_ring | Echo-combo synergy |
+| Phoenix Rage | 3 | phoenix_feather + glass_cannon + berserker_band | Post-resurrect power spike |
+| Perfect Storm | 3 | scholars_hat + memory_palace + domain_mastery | Streak-based bonus |
+| Mastery Ascension | 3 | 5+ Tier 3 cards in deck (no relic requirement) | Knowledge mastery reward |
+
+**Design Philosophy:**
+- Synergies reward observant players and deck experimentation
+- No relic is "useless" — every one has at least one hidden pair
+- Tier 3 synergies are rare (often requiring 3+ relics or specific deck composition)
+- Synergy bonuses never exceed 25% power increase — they feel like a pleasant surprise, not game-breaking
+
 ---
 
 ## 7. Run Structure
@@ -536,13 +620,52 @@ After encounters 1 and between floors, choose from 3 doors:
 | ? | Mystery | Random event (good, bad, or choice) |
 | Heart | Rest | Heal 30% HP OR upgrade one card (+25%) |
 | Chest | Treasure | Free card, no combat |
-| Bag | Shop | Buy/remove cards with currency |
+| Bag | Shop | Buy/sell cards + buy relics with currency |
 
 **Reveal rules:**
 - Combat rooms ALWAYS show the enemy type (risk assessment)
 - Mystery rooms ALWAYS hidden (that's the fun)
 - Rest, Treasure, Shop always clearly labeled
 - Each floor guarantees at least 1 combat option (prevents heal-stacking to avoid all facts)
+
+### Card Upgrade System (Rest Sites & Post-Mini-Boss)
+
+Cards can be upgraded at rest sites and post-mini-boss encounters, gaining a "+" suffix (e.g., "Strike+") and boosted numeric values. Upgrades do NOT replace mechanics — they enhance existing values.
+
+**How It Works:**
+1. Player enters Rest Room and selects **Upgrade Card** option
+2. 3 card candidates are offered, sorted by knowledge tier (Tier 2b > Tier 2a > Tier 1)
+3. Player taps one card → it gains `isUpgraded: true` and boosted values → returns to deck
+
+**Upgrade Bonuses Per Mechanic:**
+
+| Mechanic | Base | Upgraded | Change |
+|----------|------|----------|--------|
+| strike | 8 dmg | 11 dmg | +3 base |
+| multi_hit | 3×3 | 4×3 | +1 hit |
+| block | 6 | 8 | +2 |
+| thorns | 4/2 | 5/3 | +1/+1 |
+| restore | 8 | 11 | +3 |
+| cleanse | 6 | 8 | +2 |
+| empower | 30% | 40% | +10% |
+| quicken | +1 AP | +1 AP + draw 1 | adds draw |
+| weaken | 2 turns | 3 turns | +1 turn |
+| expose | 1 turn | 2 turns | +1 turn |
+| scout | draw 1 | draw 2 | +1 draw |
+| recycle | cycle 1 | cycle 1 + draw 1 | +1 draw |
+| sustained | 3 regen | 4 regen | +1 |
+| emergency | 4 burst | 6 burst | +2 |
+| mirror | 1.0x | 1.25x | +0.25 |
+| adapt | 1.0x | 1.25x | +0.25 |
+
+**Visual Indicator:** Upgraded cards display a subtle blue glow border in the hand.
+
+**Post-Mini-Boss Upgrade Flow:**
+- After defeating a mini-boss (encounter 3 on non-boss floors), player auto-heals 15% max HP
+- First mini-boss of the run → relic reward instead of upgrade
+- Mini-bosses 2+ → upgrade selection (pick 1 of 3 cards)
+
+This creates STS-style card scaling: early runs feel tight, but depth 6+ upgrades can snowball into powerful synergies.
 
 ### Deck Building Strategy
 
@@ -558,6 +681,47 @@ This gives players three levers for deck building:
 3. **Card removal/selling at shops** — Pruning weak cards
 
 Combined, these create STS-style deck building agency: "I'm thinning junk and doubling down on my shield strategy" is a legitimate play pattern.
+
+### Shop Enhancement System
+
+Shop rooms offer both buying and selling operations. Players gain gold currency from encounter victories, enabling progressive deck refinement.
+
+**Buy Side:**
+- 2 random relics available per shop visit
+- 2 random cards from player's eligible pool
+- Prices scale by rarity/tier with floor-based discounts
+
+**Relic Pricing:**
+| Rarity | Price |
+|--------|-------|
+| Common | 60g |
+| Uncommon | 100g |
+| Rare | 160g |
+| Legendary | 250g |
+
+**Card Pricing:**
+| Tier | Price |
+|------|-------|
+| Tier 1 (Learning) | 15g |
+| Tier 2a (Recall-a) | 30g |
+| Tier 2b (Recall-b) | 45g |
+| Tier 3 (Mastered) | 75g |
+
+**Floor Discount:** Shop prices decrease by 3% per floor (max 40% discount at floor 13+). Encourages late-run purchasing while maintaining early economy tension.
+
+**Sell Side:** (unchanged from existing system)
+- Remove unwanted cards from deck, gain gold
+- Useful for thinning weak cards and funding relic purchases
+
+**Gold Economy:**
+- Awarded after every encounter victory (scales with enemy difficulty)
+- Typical run nets ~800–2,200g across 24 floors
+- Early floors (1–6): favor combat/upgrades; shops are secondary
+- Mid floors (7–15): shops become primary resource sink (card/relic purchases)
+- Late floors (19–24): gold abundance enables strategic last-minute purchases
+
+**Strategic Interplay:**
+Shop purchasing creates a metagame tension: aggressive early runs might starve gold (1,000g for a Rare relic), while greedy farming wastes combat floor opportunities. This mirrors STS "greed vs. tempo" deck-building decisions.
 
 ### Card Reward System
 
@@ -680,10 +844,10 @@ Events are randomly selected from the pool after each boss fight.
 
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
-| Cave Bat | 19 | 6 (main), 9 (heavy) | Every turn. Teaches speed. |
-| Crystal Golem | 38 | 7 every 2 turns, 9 (heavy) | Gains block on off-turns via defend intent. Sustained damage. |
-| Toxic Spore | 15 | 5 + poison | Low HP, DOT. Teaches healing. |
-| Shadow Mimic | 24 | 7, copies last card | Punishes repetition. |
+| Cave Bat | 19 | 11 (main), 15 (heavy) | Every turn. Teaches speed. |
+| Crystal Golem | 38 | 12 every 2 turns | Gains block on off-turns via defend intent. Sustained damage. |
+| Toxic Spore | 15 | 10 + poison | Low HP, DOT. Teaches defensive play. |
+| Shadow Mimic | 24 | 12, copies last card (4×3 flurry) | Punishes repetition. |
 
 ### Elites
 
@@ -696,37 +860,37 @@ Events are randomly selected from the pool after each boss fight.
 
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
-| Crystal Guardian | 35 | 9 | Golem variant, gains block per turn |
-| Venomfang | 30 | 7 | Spider, applies poison on attack |
-| Stone Sentinel | 40 | 7 | Tanky — low attack, high HP |
-| Ember Drake | 32 | 7/10 | Glass cannon — 7 (fire breath), 10 (inferno blast) |
-| Shade Stalker | 28 | 8 | Copies player's last played card type |
-| Bone Collector | 36 | 7 | Heals 5 HP when player answers wrong |
+| Crystal Guardian | 52 | 11 | Golem variant, gains block per turn |
+| Venomfang | 45 | 10 | Spider, applies poison on attack |
+| Stone Sentinel | 60 | 10 | Tanky — low attack, high HP |
+| Ember Drake | 48 | 10/13 | Glass cannon — 10 (fire breath), 13 (inferno blast) |
+| Shade Stalker | 42 | 11 | Copies player's last played card type |
+| Bone Collector | 54 | 10 | Heals 5 HP when player answers wrong |
 
 ### Bosses (Every 3rd floor)
 
 | Boss | Floor | HP | Pattern |
 |------|-------|-----|---------|
-| The Excavator | 3 | 50 | 12 damage, escalating |
-| Magma Core | 6 | 55 | 8 + poison, phase 2 eruption at 40% HP |
+| The Excavator | 3 | 70 | 12 damage, phase 2 at 40% HP, escalating |
+| Magma Core | 6 | 75 | 8 + poison, phase 2 volcanic blast buffed at 40% HP |
 | The Archivist | 9 | 85 | 7 + shuffles hand, phase 2 at 50% HP |
 | Crystal Warden | 12 | 90 | 12 damage, status immunity, counter + heal |
 | Shadow Hydra | 15 | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
-| Void Weaver | 18 | 125 | 13 damage, hand disruption, debuffs |
-| Knowledge Golem | 21 | 140 | 15 damage, +5 bonus on wrong answers |
-| The Curator | 24 | 160 | 16 damage, all mechanics, phase 2 at 40% HP (final boss) |
+| Void Weaver | 18 | 140 | 18 damage, hand disruption, Void Storm multi-attack, debuffs |
+| Knowledge Golem | 21 | 120 | 17 damage, +5 bonus on wrong answers |
+| The Curator | 24 | 140 | 18 damage, all mechanics, phase 2 nerfed at 40% HP (final boss) |
 
 Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and max, 0 block (resets each turn).
 
 **Floor-based enemy damage scaling (AR-31, AR-32):** Enemy attack damage is multiplied by a floor-dependent factor via `getFloorDamageScaling(floor)` in `enemyManager.ts`:
 - Floors 1-3: 0.85x (reduced damage for onboarding)
 - Floors 4-6: 1.0x (baseline)
-- Floors 7+: +3% per floor above 6 (e.g., floor 10 = 1.12x) — controlled by `FLOOR_DAMAGE_SCALING_PER_FLOOR` in `balance.ts`
+- Floors 7+: +4% per floor above 6 (e.g., floor 10 = 1.16x) — controlled by `FLOOR_DAMAGE_SCALING_PER_FLOOR` in `balance.ts`
 
-**Post-encounter healing (AR-31, AR-32):** After each non-defeat encounter, the player heals 15% of max HP (`POST_ENCOUNTER_HEAL_PCT` in `balance.ts`). In Story Mode, an additional 10% is added (25% total, via `EXPLORER_POST_ENCOUNTER_HEAL_BONUS`). Boss and mini-boss encounters grant a further 10% bonus healing (`POST_BOSS_ENCOUNTER_HEAL_BONUS`), for 25% standard / 35% Story Mode after boss fights.
+**Post-encounter healing (AR-31, AR-32):** After each non-defeat encounter, the player heals 6% of max HP (`POST_ENCOUNTER_HEAL_PCT` in `balance.ts`). In Relaxed Mode, an additional 6% is added (12% total, via `RELAXED_POST_ENCOUNTER_HEAL_BONUS`). Boss and mini-boss encounters grant a further 15% bonus healing (`POST_BOSS_ENCOUNTER_HEAL_BONUS`), for 21% normal / 27% Relaxed Mode after boss fights.
 
 **Per-turn enemy damage cap (AR-32):** Enemy damage per turn is capped by segment via `ENEMY_TURN_DAMAGE_CAP` in `balance.ts`, applied in `executeEnemyIntent()`. This prevents spike deaths from high-strength buffed enemies:
-- Segment 1 (floors 1-6): 25 damage cap
+- Segment 1 (floors 1-6): 30 damage cap
 - Segment 2 (floors 7-12): 35 damage cap
 - Segment 3 (floors 13-18): 45 damage cap
 - Segment 4 (floors 19-24): 55 damage cap
@@ -743,12 +907,12 @@ Segment mapping is handled by `getSegmentForFloor()` in `enemyManager.ts`.
 | Consecutive Correct | Multiplier | Visual |
 |--------------------|------------|--------|
 | 1st | 1.0x | Normal |
-| 2nd | 1.15x | Slight glow |
-| 3rd | 1.3x | Particle ring |
-| 4th | 1.5x | Screen edge pulse |
-| 5th | 2.0x | Full celebration burst |
+| 2nd | 1.10x | Slight glow |
+| 3rd | 1.25x | Particle ring |
+| 4th | 1.40x | Screen edge pulse |
+| 5th | 1.75x | Full celebration burst |
 
-Resets on wrong answer. Persists across turns within encounter. With 3 AP, perfect turn = 3/3. Five consecutive across 2 turns = 2.0x.
+Resets on wrong answer. Persists across turns within encounter. With 3 AP, perfect turn = 3/3. Five consecutive across 2 turns = 1.75x.
 
 Strategic depth: play easy facts first to build combo (metacognitive awareness of own knowledge confidence), or hard facts first for base power. This mechanic literally cannot exist outside an educational card game.
 
@@ -768,15 +932,14 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 
 | Internal ID | Display Name | Timer | Wrong Penalty | Enemy Dmg | Reward Multiplier |
 |-------------|-------------|-------|--------------|-----------|-------------------|
-| explorer | Story Mode | None | 50% effect | -30% | 1.00x |
-| standard | Timed Mode | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
-| scholar | Expert Mode | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 1.20x |
+| relaxed | Relaxed | None | 50% effect | -30% | 1.00x |
+| normal | Normal | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
 
-**Story Mode forced for new players:** Run 1 automatically uses Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, all modes unlock. A startup reset clears any stuck explorer mode values from localStorage to ensure timers properly activate in Timed and Expert modes after the forced-explorer period ends.
+**Relaxed Mode forced for new players:** Run 1 automatically uses Relaxed Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, both modes unlock. A startup migration converts legacy localStorage values (`explorer`, `standard`, `scholar`) to the current mode names.
 
-**Difficulty unlock popup:** When the player completes their first run (`runsCompleted === 1`), the RunEndScreen displays a modal popup after a 1.5-second delay. The popup congratulates the player, explains the three difficulty modes (Story / Timed / Expert), and lets them choose. Timed Mode is pre-selected and marked as "Recommended". The selection is saved to `difficultyMode` in `cardPreferences.ts`. Players can always change their difficulty later in Settings.
+**Difficulty unlock popup:** When the player completes their first run (`runsCompleted === 1`), the RunEndScreen displays a modal popup after a 1.5-second delay. The popup congratulates the player, explains the two difficulty modes (Relaxed / Normal), and lets them choose. Normal is pre-selected and marked as "Recommended". The selection is saved to `difficultyMode` in `cardPreferences.ts`. Players can always change their difficulty later in Settings.
 
-**Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Story Mode and Timed Mode earn standard rewards; Expert Mode earns a 20% bonus.
+**Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Both Relaxed and Normal modes earn standard rewards (1.00x multiplier).
 
 ### Slow Reader Option
 
@@ -1010,7 +1173,7 @@ Data sourced from `turnState.enemy.template.category` (derived `enemyCategory`).
 
 ### Enemy Intent Display
 
-Color-coded intent panel shown in Svelte combat overlay. Floor info and intent are rendered in the Svelte overlay (not Phaser). Each intent type has a distinct background color for instant readability:
+**Simplified Panel:** Color-coded intent button shown in Svelte combat overlay at the top center of the screen. Each intent type has a distinct background color for instant readability. The panel displays only the telegraph name (e.g., "Venom Bite") and the numeric value (e.g., damage or block amount). No floor info or type label in the main panel.
 
 | Intent | Background | Icon | Label |
 |--------|-----------|------|-------|
@@ -1021,11 +1184,15 @@ Color-coded intent panel shown in Svelte combat overlay. Floor info and intent a
 | Debuff | Purple | 🔮 | DEBUFF |
 | Heal | Green | 💚 | HEAL |
 
-- **Primary label**: Telegraph text (e.g., "Venom Bite", "Petrified Shield") — tells the player what move is coming
-- **Subtitle**: Intent type label (e.g., "DEBUFF", "ATTACK") — reinforces the category
-- **Value always shown**: Damage, block, or effect amount displayed alongside the intent
-- Hidden during quiz (committed stage) to reduce visual noise
-- Data sourced from `turnState.enemy.nextIntent` (pre-rolled by enemyManager)
+- **Panel structure**: Icon + telegraph name + numeric value (e.g., "⚔️ Toxic Cloud 2")
+- **Interactive**: The intent panel is a tappable button
+- **Detail popup**: Tapping the panel opens a centered modal overlay with full breakdown of the intent:
+  - Header: Icon + intent name
+  - Body: Human-readable description (e.g., "Deals 15 damage", "Applies 2 poison for 3 turns", "Hits 3 times for 5 damage each")
+  - Dismiss: Tap anywhere outside the popup or the close button
+- **Visibility**: Hidden during quiz (committed stage) to reduce visual noise during answer selection
+- **Data sourced from**: `turnState.enemy.nextIntent` (pre-rolled by enemyManager)
+- **Component**: `CardCombatOverlay.svelte` lines 130 (state), 896–930 (panel + popup HTML), 1117–1290 (CSS)
 
 ### Enemy Block (Shield) System
 
@@ -1216,9 +1383,14 @@ Why critical: Wordle's entire viral success = one-a-day appointment. STS daily c
 
 ## 21. Canary System (Invisible Adaptive Difficulty)
 
-3+ wrong/floor: -2s timer, easier facts, -15% enemy dmg, hint more prominent. 5+ correct streak: tighter speed bonus, harder facts, elite variants.
+Graduated assist tiers based on performance within a floor:
 
-Invisible. Never announced. Never reduces educational rigor (answer count, format unchanged). Only game difficulty flexes. Research: Hunicke (2005) — invisible DDA preserves flow state.
+- **Deep Assist** (5+ wrong answers): 0.65x enemy damage, -2s timer, easier facts
+- **Assist** (3+ wrong answers): 0.80x enemy damage, -1s timer, modestly easier facts
+- **Neutral** (baseline): 1.0x enemy damage, standard timer, standard fact difficulty
+- **Challenge** (5+ correct streak): 1.1x enemy damage, tighter speed bonus, harder facts, elite variants
+
+Invisible. Never announced. Never reduces educational rigor (answer count, format unchanged). Only game difficulty flexes. Graduated tiers smooth the cold-start onboarding and protect against engagement collapse from frustration. Research: Hunicke (2005) — invisible DDA preserves flow state.
 
 ---
 
@@ -1997,7 +2169,7 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 |-------|----------|--------|
 | 1 | Tougher Enemies | All enemies +10% HP |
 | 2 | Aggressive Foes | All enemies +10% damage |
-| 3 | Fewer Heals | Heal cards 25% less effective |
+| 3 | Fewer Shields | Shield cards 20% less effective |
 | 4 | Shorter Fuse | Timer -1s base on all questions |
 | 5 | Thin Deck | Start with 12 cards instead of 15 |
 | 6 | Iron Will | No flee from encounters |

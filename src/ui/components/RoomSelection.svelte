@@ -46,17 +46,6 @@
     }
   }
 
-  function doorOffset(index: number, total: number): number {
-    if (total <= 1) return 0
-    const mid = (total - 1) / 2
-    return (index - mid) * 116
-  }
-
-  function doorTilt(index: number, total: number): number {
-    if (total <= 1) return 0
-    const mid = (total - 1) / 2
-    return (index - mid) * 10
-  }
 </script>
 
 <div class="room-selection-overlay" class:intro-visible={introVisible}>
@@ -84,7 +73,7 @@
           class="room-door"
           class:tapped={tappedIndex === i}
           class:dimmed={tappedIndex !== null && tappedIndex !== i}
-          style={`--door-border: ${getBorderColor(option.type)}; --door-offset: ${doorOffset(i, options.length)}px; --door-tilt: ${doorTilt(i, options.length)}deg;`}
+          style={`--door-border: ${getBorderColor(option.type)};`}
           data-testid="room-choice-{i}"
           onclick={() => handleTap(i)}
         >
@@ -94,8 +83,10 @@
             alt={`${option.label} door`}
             loading="lazy"
           />
-          <span class="room-label">{option.label}</span>
-          <span class="room-detail">{option.detail}</span>
+          <div class="door-info">
+            <span class="room-label">{option.label}</span>
+            <span class="room-detail">{option.detail}</span>
+          </div>
         </button>
       {/each}
     </div>
@@ -195,24 +186,19 @@
     z-index: 2;
     width: 100%;
     height: 100%;
-    perspective: 920px;
     display: grid;
-    place-items: end center;
+    place-items: center;
     padding-bottom: 28px;
   }
 
   .hallway-vanish-point {
     position: absolute;
-    top: 12%;
+    top: 0;
     left: 50%;
     width: min(580px, 98%);
     height: 60%;
     transform: translateX(-50%);
-    background:
-      linear-gradient(180deg, rgba(208, 171, 107, 0.2), rgba(37, 31, 26, 0.02)),
-      linear-gradient(140deg, rgba(255, 255, 255, 0.06), transparent 45%),
-      linear-gradient(220deg, rgba(255, 255, 255, 0.05), transparent 45%);
-    clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+    background: radial-gradient(ellipse at 50% 20%, rgba(208, 171, 107, 0.12), transparent 60%);
     opacity: 0.75;
   }
 
@@ -233,33 +219,29 @@
 
   .door-row {
     position: relative;
-    width: 100%;
-    height: min(360px, 52vh);
+    width: min(440px, 92%);
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+    justify-self: center;
+    z-index: 2;
   }
 
   .room-door {
-    position: absolute;
-    bottom: 0;
-    width: 132px;
-    height: 228px;
+    position: relative;
+    width: 100%;
+    height: 80px;
     background: linear-gradient(180deg, rgba(29, 42, 58, 0.9), rgba(11, 18, 26, 0.94));
     border: 2px solid var(--door-border);
-    border-radius: 10px;
+    border-radius: 12px;
     display: grid;
+    grid-template-columns: 68px 1fr;
     align-items: center;
-    justify-items: center;
-    gap: 6px;
+    gap: 12px;
     cursor: pointer;
+    padding: 10px 16px;
     transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
-    padding: 10px 8px 8px;
-    transform:
-      translateX(var(--door-offset))
-      rotateY(var(--door-tilt))
-      translateZ(0);
-    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.42);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
   .room-door::after {
@@ -275,20 +257,13 @@
   }
 
   .room-door:hover {
-    transform:
-      translateX(var(--door-offset))
-      rotateY(var(--door-tilt))
-      translateY(-6px)
-      scale(1.02);
+    transform: scale(1.02);
     filter: brightness(1.08);
   }
 
   .room-door.tapped {
-    transform:
-      translateX(var(--door-offset))
-      rotateY(var(--door-tilt))
-      translateY(-16px)
-      scale(1.08);
+    transform: scale(1.04);
+    filter: brightness(1.12);
   }
 
   .room-door.dimmed {
@@ -297,24 +272,30 @@
   }
 
   .door-sprite {
-    width: 96px;
-    height: 122px;
+    width: 48px;
+    height: 60px;
     object-fit: contain;
     image-rendering: pixelated;
   }
 
+  .door-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .room-label {
-    font-size: 13px;
+    font-size: 16px;
     color: #f1f5f9;
-    font-weight: 600;
-    text-align: center;
+    font-weight: 700;
+    text-align: left;
     line-height: 1.2;
   }
 
   .room-detail {
-    font-size: 11px;
+    font-size: 13px;
     color: #a8b5c4;
-    text-align: center;
+    text-align: left;
     line-height: 1.2;
   }
 
@@ -336,21 +317,22 @@
 
   @media (max-width: 560px) {
     .room-door {
-      width: 110px;
-      height: 200px;
+      height: 72px;
+      padding: 8px 12px;
+      grid-template-columns: 56px 1fr;
     }
 
     .door-sprite {
-      width: 78px;
-      height: 104px;
+      width: 42px;
+      height: 52px;
+    }
+
+    .room-label {
+      font-size: 14px;
     }
 
     .room-detail {
-      font-size: 10px;
-    }
-
-    .hallway-floor-grid {
-      height: 52%;
+      font-size: 11px;
     }
   }
 </style>

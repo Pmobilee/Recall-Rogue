@@ -19,6 +19,7 @@ import {
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects } from './enemyManager';
 import { applyStatusEffect } from '../data/statusEffects';
+import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
   COMBO_MULTIPLIERS,
   PLAYER_START_HP,
@@ -31,6 +32,7 @@ import {
   ENRAGE_LOW_HP_THRESHOLD,
   ENRAGE_LOW_HP_BONUS,
   FIZZLE_EFFECT_RATIO,
+  getBalanceValue,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
@@ -112,7 +114,7 @@ export interface TurnState {
   canaryQuestionBias: -1 | 0 | 1;
   ascensionLevel: number;
   ascensionEnemyDamageMultiplier: number;
-  ascensionHealCardMultiplier: number;
+  ascensionShieldCardMultiplier: number;
   ascensionWrongAnswerSelfDamage: number;
   ascensionBaseTimerPenaltySeconds: number;
   ascensionEncounterTimerPenaltySeconds: number;
@@ -125,6 +127,14 @@ export interface TurnState {
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
   encounterAnsweredFacts: string[];
+  /** Consecutive correct answers this entire encounter (for Perfect Storm synergy). */
+  consecutiveCorrectThisEncounter: number;
+  /** Number of Tier 3 (mastered) cards in deck at encounter start (for Mastery Ascension). */
+  tier3CardCount: number;
+  /** Turns remaining for Phoenix Rage damage bonus (+50%). 0 = inactive. */
+  phoenixRageTurnsRemaining: number;
+  /** Turns remaining for glass cannon penalty removal. 0 = inactive. */
+  glassPenaltyRemovedTurnsRemaining: number;
 }
 
 export interface PlayCardResult {
@@ -142,6 +152,8 @@ export interface EnemyTurnResult {
   effectsApplied: StatusEffect[];
   playerDefeated: boolean;
   nextEnemyIntent: string;
+  executedIntentType: 'attack' | 'multi_attack' | 'defend' | 'buff' | 'debuff' | 'heal' | 'none';
+  blockAbsorbedAll: boolean;
   turnState: TurnState;
 }
 
@@ -154,7 +166,7 @@ function getPassiveBonuses(passives: PassiveEffect[]): Partial<Record<CardType, 
 }
 
 function randomCardTypeDifferentFrom(type: CardType): CardType {
-  const all: CardType[] = ['attack', 'shield', 'heal', 'utility', 'buff', 'debuff', 'regen', 'wild'];
+  const all: CardType[] = ['attack', 'shield', 'utility', 'buff', 'debuff', 'wild'];
   const candidates = all.filter((candidate) => candidate !== type);
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
@@ -202,7 +214,7 @@ export function startEncounter(
   enemy: EnemyInstance,
   playerMaxHP?: number,
 ): TurnState {
-  const playerState = createPlayerCombatState(playerMaxHP ?? PLAYER_START_HP);
+  const playerState = createPlayerCombatState(playerMaxHP ?? getBalanceValue('playerStartHP', PLAYER_START_HP));
 
   const initialState: TurnState = {
     phase: 'player_action',
@@ -240,7 +252,7 @@ export function startEncounter(
     canaryQuestionBias: 0,
     ascensionLevel: 0,
     ascensionEnemyDamageMultiplier: 1,
-    ascensionHealCardMultiplier: 1,
+    ascensionShieldCardMultiplier: 1,
     ascensionWrongAnswerSelfDamage: 0,
     ascensionBaseTimerPenaltySeconds: 0,
     ascensionEncounterTimerPenaltySeconds: 0,
@@ -252,6 +264,10 @@ export function startEncounter(
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
+    consecutiveCorrectThisEncounter: 0,
+    tier3CardCount: 0,
+    phoenixRageTurnsRemaining: 0,
+    glassPenaltyRemovedTurnsRemaining: 0,
   };
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
@@ -353,15 +369,16 @@ export function playCardAction(
     }
 
     const mode = get(difficultyMode);
-    if (mode === 'explorer') {
+    if (mode === 'relaxed') {
       turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + apCost);
       const fizzledEffect = createNoEffect(card);
       turnState.comboCount = turnState.baseComboCount;
+      turnState.consecutiveCorrectThisEncounter = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
       turnState.turnLog.push({
         type: 'fizzle',
-        message: 'Explorer mode: card fizzled — AP refunded',
+        message: 'Relaxed mode: card fizzled — AP refunded',
         cardId,
       });
 
@@ -376,16 +393,14 @@ export function playCardAction(
       };
     }
 
-    if (mode === 'scholar') {
-      turnState.playerState.hp = Math.max(0, turnState.playerState.hp - 3);
-    }
 
     turnState.comboCount = turnState.baseComboCount;
+    turnState.consecutiveCorrectThisEncounter = 0;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
     // Partial fizzle: wrong answers still apply a fraction of the base effect
-    const fizzleBase = Math.round(card.baseEffectValue * FIZZLE_EFFECT_RATIO);
+    const fizzleBase = Math.round(card.baseEffectValue * getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO));
     const fizzledEffect: CardEffectResult = {
       ...createNoEffect(card),
       targetHit: true,
@@ -393,7 +408,7 @@ export function playCardAction(
       finalValue: fizzleBase,
       damageDealt: (card.cardType === 'attack' || card.cardType === 'wild') ? fizzleBase : 0,
       shieldApplied: card.cardType === 'shield' ? fizzleBase : 0,
-      healApplied: (card.cardType === 'heal' || card.cardType === 'regen') ? fizzleBase : 0,
+      healApplied: 0,
     };
 
     // Apply partial fizzle effects to game state
@@ -407,7 +422,7 @@ export function playCardAction(
 
     turnState.turnLog.push({
       type: 'fizzle',
-      message: `Card fizzled — wrong answer (${Math.round(FIZZLE_EFFECT_RATIO * 100)}% effect applied)`,
+      message: `Card fizzled — wrong answer (${Math.round(getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO) * 100)}% effect applied)`,
       cardId,
     });
 
@@ -454,6 +469,31 @@ export function playCardAction(
     turnState.pendingDrawCountOverride = 4;
   }
 
+  // Tier 3 synergy: Mastery Ascension — +1 flat damage per T3 card (min 5 T3 cards, max +8)
+  if (effect.damageDealt > 0) {
+    const masteryBonus = getMasteryAscensionBonus(turnState.tier3CardCount);
+    if (masteryBonus > 0) {
+      effect.damageDealt += masteryBonus;
+      effect.finalValue += masteryBonus;
+    }
+  }
+
+  // Tier 3 synergy: Phoenix Rage — +50% damage while active
+  if (effect.damageDealt > 0 && turnState.phoenixRageTurnsRemaining > 0) {
+    const phoenixRageBonus = Math.floor(effect.damageDealt * 0.5);
+    effect.damageDealt += phoenixRageBonus;
+    effect.finalValue += phoenixRageBonus;
+  }
+
+  // Tier 3 synergy: Perfect Storm — 10+ correct streak with all 3 knowledge relics → bonus damage
+  if (effect.damageDealt > 0 && turnState.consecutiveCorrectThisEncounter >= 10 &&
+      hasSynergy(turnState.activeRelicIds, 'perfect_storm')) {
+    // +50% bonus damage at 10+ streak
+    const stormBonus = Math.floor(effect.damageDealt * 0.5);
+    effect.damageDealt += stormBonus;
+    effect.finalValue += stormBonus;
+  }
+
   if (effect.damageDealt > 0) {
     const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
     effect.enemyDefeated = damageResult.defeated;
@@ -466,17 +506,17 @@ export function playCardAction(
   }
 
   if (effect.shieldApplied > 0) applyShield(playerState, effect.shieldApplied);
-
-  if (effect.healApplied > 0) healPlayer(playerState, effect.healApplied);
-  if (effect.healApplied > 0 && turnState.ascensionHealCardMultiplier !== 1) {
-    const adjustedHeal = Math.max(0, Math.round(effect.healApplied * turnState.ascensionHealCardMultiplier));
-    const delta = adjustedHeal - effect.healApplied;
+  if (effect.shieldApplied > 0 && turnState.ascensionShieldCardMultiplier !== 1) {
+    const adjustedShield = Math.max(0, Math.round(effect.shieldApplied * turnState.ascensionShieldCardMultiplier));
+    const delta = adjustedShield - effect.shieldApplied;
     if (delta !== 0) {
-      healPlayer(playerState, delta);
-      effect.healApplied = adjustedHeal;
-      effect.finalValue = adjustedHeal;
+      applyShield(playerState, delta);
+      effect.shieldApplied = adjustedShield;
+      effect.finalValue = adjustedShield;
     }
   }
+
+  if (effect.healApplied > 0) healPlayer(playerState, effect.healApplied);
 
   if ((effect.overhealToShield ?? 0) > 0) {
     if (card.mechanicId === 'overheal') {
@@ -524,6 +564,7 @@ export function playCardAction(
   turnState.comboCount += 1;
   turnState.cardsPlayedThisTurn += 1;
   turnState.cardsCorrectThisTurn += 1;
+  turnState.consecutiveCorrectThisEncounter += 1;
   turnState.isPerfectTurn = (
     turnState.cardsPlayedThisTurn > 0 &&
     turnState.cardsCorrectThisTurn === turnState.cardsPlayedThisTurn
@@ -573,6 +614,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       effectsApplied: [],
       playerDefeated: turnState.playerState.hp <= 0,
       nextEnemyIntent: turnState.enemy.nextIntent.telegraph,
+      executedIntentType: 'none',
+      blockAbsorbedAll: false,
       turnState,
     };
   }
@@ -593,8 +636,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   } else {
     intentResult = executeEnemyIntent(enemy);
   }
+  const executedIntentType = intentSkipped ? 'none' as const : enemy.nextIntent.type;
 
   let damageDealt = 0;
+  let blockAbsorbedAll = false;
   let playerDefeated = false;
   const effectsApplied: StatusEffect[] = [];
 
@@ -607,10 +652,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       incomingDamage += enrageBonus;
     }
     const mode = get(difficultyMode);
-    if (mode === 'explorer') {
+    if (mode === 'relaxed') {
       incomingDamage = Math.round(incomingDamage * 0.7);
-    } else if (mode === 'scholar') {
-      incomingDamage = Math.round(incomingDamage * 1.2);
     }
 
     incomingDamage = Math.max(
@@ -627,15 +670,16 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       hadBlock: playerState.shield > 0,
       blockAbsorbedAll: false,
     });
-    if (damageTakenFx.percentIncrease > 0) {
+    if (damageTakenFx.percentIncrease > 0 && turnState.glassPenaltyRemovedTurnsRemaining <= 0) {
       incomingDamage = Math.round(incomingDamage * (1 + damageTakenFx.percentIncrease));
       turnState.triggeredRelicId = 'glass_cannon';
     }
 
     const shieldBefore = playerState.shield;
     const damageResult = takeDamage(playerState, incomingDamage);
-    damageDealt = incomingDamage;
+    damageDealt = damageResult.actualDamage;
     playerDefeated = damageResult.defeated;
+    blockAbsorbedAll = shieldBefore > 0 && damageResult.actualDamage === 0;
 
     if (damageTakenFx.thornReflect > 0) {
       applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
@@ -678,6 +722,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       if (lethalFx.phoenixBlock > 0) {
         applyShield(playerState, lethalFx.phoenixBlock);
       }
+      // Tier 3: Phoenix Rage — activate bonus damage + remove glass penalty
+      if ((lethalFx as any).phoenixRageActive) {
+        turnState.phoenixRageTurnsRemaining = 5;
+        turnState.glassPenaltyRemovedTurnsRemaining = 3;
+      }
     }
   }
 
@@ -691,6 +740,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       effectsApplied,
       playerDefeated: true,
       nextEnemyIntent: enemy.nextIntent.telegraph,
+      executedIntentType,
+      blockAbsorbedAll,
       turnState,
     };
   }
@@ -706,6 +757,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       effectsApplied,
       playerDefeated: true,
       nextEnemyIntent: enemy.nextIntent.telegraph,
+      executedIntentType,
+      blockAbsorbedAll,
       turnState,
     };
   }
@@ -737,6 +790,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       effectsApplied,
       playerDefeated: false,
       nextEnemyIntent: enemy.nextIntent.telegraph,
+      executedIntentType,
+      blockAbsorbedAll,
       turnState,
     };
   }
@@ -750,8 +805,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   for (const passive of turnState.activePassives) {
-    if (passive.cardType === 'heal' || passive.cardType === 'regen') {
-      healPlayer(playerState, passive.value);
+    if (passive.cardType === 'shield') {
+      applyShield(playerState, passive.value);
     }
   }
 
@@ -801,6 +856,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.foresightTurnsRemaining -= 1;
   }
 
+  // Tier 3: Decrement Phoenix Rage counters
+  if (turnState.phoenixRageTurnsRemaining > 0) {
+    turnState.phoenixRageTurnsRemaining -= 1;
+  }
+  if (turnState.glassPenaltyRemovedTurnsRemaining > 0) {
+    turnState.glassPenaltyRemovedTurnsRemaining -= 1;
+  }
+
   rollNextIntent(enemy);
   turnState.turnNumber += 1;
 
@@ -824,6 +887,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     effectsApplied,
     playerDefeated: false,
     nextEnemyIntent: enemy.nextIntent.telegraph,
+    executedIntentType,
+    blockAbsorbedAll,
     turnState,
   };
 }
@@ -843,6 +908,7 @@ export function getHandSize(turnState: TurnState): number {
 }
 
 export function getComboMultiplier(comboCount: number): number {
-  const index = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
-  return COMBO_MULTIPLIERS[index];
+  const multipliers = getBalanceValue('comboMultipliers', COMBO_MULTIPLIERS);
+  const index = Math.min(comboCount, multipliers.length - 1);
+  return multipliers[index];
 }

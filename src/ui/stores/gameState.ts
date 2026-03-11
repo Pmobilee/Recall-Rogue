@@ -33,6 +33,8 @@ export type Screen =
   | 'ageSelection'
   | 'settings'
   | 'topicInterests'
+  | 'upgradeSelection'
+  | 'postMiniBossRest'
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
 
@@ -64,6 +66,8 @@ const VALID_SCREENS: Screen[] = [
   'ageSelection',
   'settings',
   'topicInterests',
+  'upgradeSelection',
+  'postMiniBossRest',
 ]
 
 const PERSISTABLE_SCREENS = new Set<Screen>([
@@ -116,3 +120,47 @@ if (typeof window !== 'undefined') {
     }
   })
 }
+
+// =========================================================
+// Screen transition overlay
+// =========================================================
+
+/** Controls the dark transition overlay shown during screen changes. */
+export const screenTransitionActive = singletonWritable<boolean>('screenTransitionActive', false)
+
+let _transitionTimer: ReturnType<typeof setTimeout> | null = null
+
+if (typeof window !== 'undefined') {
+  let _prevScreen: Screen | null = null
+  currentScreen.subscribe((screen) => {
+    if (_prevScreen !== null && screen !== _prevScreen) {
+      screenTransitionActive.set(true)
+      if (_transitionTimer) clearTimeout(_transitionTimer)
+      _transitionTimer = setTimeout(() => {
+        screenTransitionActive.set(false)
+      }, 350)
+    }
+    _prevScreen = screen
+  })
+}
+
+// =========================================================
+// Synergy flash (subtle UI feedback for hidden combos)
+// =========================================================
+
+/** Brief flash when a relic synergy activates. Cleared automatically after display. */
+export const synergyFlash = singletonWritable<string | null>('synergyFlash', null)
+
+// =========================================================
+// Post-combat reward reveal
+// =========================================================
+
+/** Data bundle for step-by-step reward reveal sequence. */
+export interface RewardBundle {
+  goldEarned: number
+  comboBonus: number
+  healAmount: number
+}
+
+/** Store holding current reward reveal state (gold → heal → card selection). */
+export const activeRewardBundle = singletonWritable<RewardBundle | null>('activeRewardBundle', null)

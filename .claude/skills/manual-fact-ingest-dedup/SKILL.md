@@ -13,7 +13,33 @@ Run the full content pipeline autonomously after a single user request. Do not a
 - Generate missing facts using Haiku sub-agents (not Sonnet/Opus) — fact generation is structured content work, not architecture. Haiku produces equivalent quality at ~10x lower cost.
 - Keep every new fact schema-valid and include a non-empty `visualDescription`.
 - Keep source attribution fields when available: `sourceRecordId`, `sourceName`, `sourceUrl`.
+- For canonical domains, `categoryL2` is mandatory and must be a valid taxonomy ID (never free-text labels).
 - Continue until QA passes and facts are promoted to DB, unless blocked by hard errors.
+
+## Category Taxonomy Enforcement (Mandatory)
+- Worker outputs must include `categoryL2` using IDs from `src/data/subcategoryTaxonomy.ts`.
+- Ingestion validation must run with `--require-subcategory true` (never set it to false).
+- For single-domain files:
+  ```bash
+  node scripts/content-pipeline/manual-ingest/run.mjs validate --input <worker-output> --domain <domain> --require-subcategory true
+  ```
+- For mixed directories or mixed-domain batches:
+  ```bash
+  node scripts/content-pipeline/manual-ingest/run.mjs validate --input <dir-or-file> --domain auto --require-subcategory true
+  ```
+- If `categoryL2` is missing/invalid, ingestion must fail and be corrected before dedup/finalize.
+- Promotion now has a hard taxonomy gate: if any canonical-domain row has missing/invalid `categoryL2`, `promote-approved-to-db` fails.
+
+## Existing Fact Reclassification (Trusted LLM Workers)
+Use GPT-5.1 mini-family workers in batches to fix all existing missing/invalid `categoryL2` values:
+```bash
+npm run content:subcategory:backfill:llm -- --model openai/gpt-5.1-codex-mini
+```
+- This runs domain-batched LLM classification and writes taxonomy IDs back into existing seed/generated fact stores.
+- Rebuild DB after completion:
+  ```bash
+  node scripts/build-facts-db.mjs
+  ```
 
 ## Source-Based Generation (Mandatory for new facts)
 Raw data lives in `data/raw/<domain>.json` — structured Wikidata/API dumps with minimal info (labels, dates, species names, etc.). These are **seeds**, not facts.

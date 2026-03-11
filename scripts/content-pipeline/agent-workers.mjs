@@ -5,6 +5,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { parseArgs as parseSharedArgs, readJson, writeJson } from './qa/shared.mjs'
+import { getSubcategoryDefs, toTaxonomyPromptBlock } from './subcategory-taxonomy.mjs'
 
 const execFileAsync = promisify(execFile)
 const __filename = fileURLToPath(import.meta.url)
@@ -180,6 +181,11 @@ async function countGeneratedFacts(generatedDir, domainKey) {
 }
 
 function workerPrompt(task) {
+  const taxonomyDefs = getSubcategoryDefs(task.domain)
+  const taxonomyBlock = taxonomyDefs.length > 0
+    ? toTaxonomyPromptBlock(task.domain)
+    : '- (no taxonomy available for this domain)'
+
   return [
     `# Claude Worker Task: ${task.domain}`,
     '',
@@ -198,7 +204,11 @@ function workerPrompt(task) {
     '- Use Claude worker reasoning and write JSONL output directly.',
     '- One JSON object per line, UTF-8, no markdown fences.',
     '- Keep all source attribution fields when available: sourceRecordId, sourceName, sourceUrl.',
-    '- Keep category aligned to domain key (array or string including the domain).',
+    '- categoryL2 is REQUIRED and must be one of the taxonomy IDs listed below for this domain.',
+    '- Keep category aligned to domain key and subcategory ID: category should include [domain, categoryL2].',
+    '',
+    '## Domain categoryL2 taxonomy (use ID values exactly)',
+    taxonomyBlock,
     '',
     '## Fact Schema Minimum',
     '- id (string)',
@@ -207,9 +217,27 @@ function workerPrompt(task) {
     '- correctAnswer (string)',
     '- variants (array, at least 2)',
     '- distractors (array, at least 4)',
+    '- categoryL2 (string taxonomy ID from list above)',
+    '',
+    '## Variant Rules (MANDATORY)',
+    '- Generate at least 3 variants per fact, each as: { "question": "...", "type": "forward|reverse|negative|fill_blank|true_false", "correctAnswer": "...", "distractors": ["a","b","c"] }',
+    '- Each variant MUST have its own correctAnswer that DIRECTLY answers its specific question (1-5 words)',
+    '- NEVER copy the base correctAnswer to a variant unless it genuinely answers the variant question',
+    '- Each variant needs exactly 3 plausible distractors',
+    '- forward: "What/Who/Where...?" → factual answer',
+    '- reverse: description → identify the subject (answer must be a NOUN)',
+    '- negative: "Which is NOT...?" → the FALSE claim (distractors are TRUE statements)',
+    '- fill_blank: "Sentence with _____." → missing word',
+    '- true_false: "Statement." → "True" or "False"',
+    '',
+    '## Bad vs Good Variant Examples',
+    '- BAD: Q "How long has X been used?" A "X is gluten-free" (answer doesn\'t match question)',
+    '- GOOD: Q "How long has X been used?" A "Over 4,000 years" (answer matches question)',
+    '- BAD: Q "What year did Y open?" A "Theobromine" (unrelated answer)',
+    '- GOOD: Q "What year did Y open?" A "1993" (directly answers the question)',
     '',
     '## Local Validation (optional before handoff)',
-    `node scripts/content-pipeline/manual-ingest/run.mjs validate --input ${task.workerOutputPath} --domain ${task.domain}`,
+    `node scripts/content-pipeline/manual-ingest/run.mjs validate --input ${task.workerOutputPath} --domain ${task.domain} --require-subcategory true`,
     '',
     '## Completion',
     `When done, ensure \`${task.workerOutputPath}\` exists and contains only valid JSONL facts.`,
@@ -562,6 +590,7 @@ async function cmdIngest(rawArgs) {
       '--domain', domain,
       '--target', rel(targetPath),
       '--qa-dir', rel(qaDir),
+      '--require-subcategory', 'true',
       '--auto-dedup-threshold', String(args['auto-dedup-threshold']),
       '--review-threshold', String(args['review-threshold']),
     ]

@@ -79,7 +79,7 @@ async function main() {
     },
     {
       script: 'scripts/content-pipeline/manual-ingest/run.mjs',
-      args: ['validate', '--input', input, '--domain', 'general_knowledge', '--qa-dir', qaDir],
+      args: ['validate', '--input', input, '--domain', 'auto', '--require-subcategory', 'true', '--qa-dir', qaDir],
     },
     {
       script: 'scripts/content-pipeline/manual-ingest/run.mjs',

@@ -13,6 +13,7 @@
   interface Props {
     streak: number
     lastRunSummary: RunSummary | null
+    hasActiveRunBanner: boolean
     onStartRun: () => void
     onOpenLibrary: () => void
     onOpenSettings: () => void
@@ -28,6 +29,7 @@
   let {
     streak,
     lastRunSummary,
+    hasActiveRunBanner,
     onStartRun,
     onOpenLibrary,
     onOpenSettings,
@@ -80,7 +82,7 @@
   />
 
   <!-- Study Mode Selector — above dungeon gate -->
-  <div class="study-mode-container">
+  <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
     <StudyModeSelector
       disabled={false}
       onNavigateToDeckBuilder={onOpenDeckBuilder}
@@ -176,17 +178,7 @@
     labelTop="86%" labelLeft="16%"
   />
 
-  <!-- 9.5. Scroll - Topics & Difficulty -->
-  {#if onOpenTopicInterests}
-    <CampSpriteButton
-      spriteUrl={getCampSpriteUrl('scroll')}
-      label="Topics"
-      zIndex={25}
-      onclick={onOpenTopicInterests}
-      hitTop="68%" hitLeft="32%" hitWidth="18%" hitHeight="8%"
-      labelTop="67%" labelLeft="41%"
-    />
-  {/if}
+  <!-- 9.5. Scroll - Topics & Difficulty (hidden: no scroll sprite asset yet) -->
 
   <!-- 10. Quest Board - Leaderboards -->
   <CampSpriteButton
@@ -249,6 +241,10 @@
     display: flex;
     justify-content: center;
     z-index: 30;
+  }
+
+  .study-mode-container.banner-offset {
+    top: calc(3% + 64px);
   }
 
 </style>

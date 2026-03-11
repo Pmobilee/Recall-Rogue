@@ -23,6 +23,13 @@ import {
   levenshteinSimilarity,
 } from '../../contentPipelineUtils.mjs'
 import {
+  normalizeTaxonomyDomain,
+  hasSubcategoryTaxonomy,
+  isValidSubcategoryId,
+  getSubcategoryIds,
+  resolveFactTaxonomyDomain,
+} from '../subcategory-taxonomy.mjs'
+import {
   compositeScore,
   exactDedupKey,
   generateCandidatePairs,
@@ -152,6 +159,13 @@ function setQaDir(value) {
 
 function nowIso() { return new Date().toISOString() }
 
+function inferDomainFromInputPath(inputPath) {
+  if (!inputPath) return null
+  const stem = path.basename(String(inputPath), path.extname(String(inputPath))).replaceAll('-', '_')
+  if (stem.startsWith('geography_')) return 'geography'
+  return normalizeTaxonomyDomain(stem)
+}
+
 // --- Default comparison targets (all generated + all seed) ---
 
 function defaultCompareTargets() {
@@ -176,9 +190,13 @@ function defaultCompareTargets() {
 function cmdValidate(args) {
   const inputPath = args.input
   if (!inputPath) { console.error('--input required'); process.exit(1) }
-  const domain = args.domain || 'general_knowledge'
+  const domain = args.domain || 'auto'
+  const requireSubcategory = args['require-subcategory'] !== false && args['require-subcategory'] !== 'false'
+  const requestedTaxonomyDomain = domain === 'auto' ? null : normalizeTaxonomyDomain(domain)
+  const inferredDomain = inferDomainFromInputPath(inputPath)
+  const taxonomyDomainsEnforced = new Set()
 
-  console.log(`[validate] input=${inputPath} domain=${domain}`)
+  console.log(`[validate] input=${inputPath} domain=${domain} requireSubcategory=${requireSubcategory}`)
   const raw = loadInput(inputPath)
   console.log(`  loaded ${raw.length} records`)
 
@@ -196,18 +214,47 @@ function cmdValidate(args) {
     let normalized = null
     let attempts = 0
     let lastErrors = []
+    let acceptedRecord = false
 
     // Try normalization up to 3 times with progressive relaxation
     for (let attempt = 0; attempt < 3; attempt++) {
       attempts++
       try {
-        normalized = normalizeFactInput(rec, { domain, verify: false })
+        const normalizationDomain = domain === 'auto'
+          ? (resolveFactTaxonomyDomain(rec, inferredDomain || '') || inferredDomain || 'general_knowledge')
+          : domain
+
+        normalized = normalizeFactInput(rec, { domain: normalizationDomain, verify: false })
+        const taxonomyDomain = resolveFactTaxonomyDomain(normalized, inferredDomain || '')
         const result = validateFactRecord(normalized)
-        if (result.valid) {
+        const taxonomyErrors = []
+        const enforcementDomain = requestedTaxonomyDomain || taxonomyDomain
+
+        if (requireSubcategory && requestedTaxonomyDomain && taxonomyDomain && taxonomyDomain !== requestedTaxonomyDomain) {
+          taxonomyDomainsEnforced.add(requestedTaxonomyDomain)
+          taxonomyErrors.push(`domain_mismatch:${taxonomyDomain}`)
+        }
+
+        if (requireSubcategory && hasSubcategoryTaxonomy(enforcementDomain)) {
+          taxonomyDomainsEnforced.add(enforcementDomain)
+          if (!isValidSubcategoryId(enforcementDomain, normalized.categoryL2)) {
+            taxonomyErrors.push('invalid_or_missing_category_l2')
+          }
+        }
+        const allErrors = [...result.errors, ...taxonomyErrors]
+
+        if (allErrors.length === 0) {
           valid.push({ fact: normalized, warnings: result.warnings })
+          acceptedRecord = true
           break
         }
-        lastErrors = result.errors
+        lastErrors = allErrors
+
+        // categoryL2 taxonomy errors are not auto-fixable in this stage
+        if (taxonomyErrors.length > 0) {
+          break
+        }
+
         // On retry, try to fix common issues
         if (attempt === 0 && result.errors.includes('variants_below_minimum') && !rec.variants) {
           // Auto-generate minimal variants from quizQuestion
@@ -230,7 +277,7 @@ function cmdValidate(args) {
       normalized = null
     }
 
-    if (!normalized || (attempts >= 3 && lastErrors.length > 0)) {
+    if (!acceptedRecord) {
       const entry = {
         index: i,
         id: rec.id || null,
@@ -238,15 +285,32 @@ function cmdValidate(args) {
         errors: lastErrors,
         attempts,
       }
+      const entryDomain = requestedTaxonomyDomain || resolveFactTaxonomyDomain(rec, inferredDomain || '')
+      if (requireSubcategory && hasSubcategoryTaxonomy(entryDomain)) {
+        entry.domain = entryDomain
+        entry.allowedCategoryL2 = getSubcategoryIds(entryDomain)
+      }
       if (attempts >= 3) flagged.push(entry)
       else invalid.push(entry)
     }
   }
 
+  const enforcedDomains = [...taxonomyDomainsEnforced]
+  const taxonomyDomain = enforcedDomains.length === 1 ? enforcedDomains[0] : null
+  const allowedCategoryL2 = taxonomyDomain ? getSubcategoryIds(taxonomyDomain) : []
+  const allowedCategoryL2ByDomain = Object.fromEntries(
+    enforcedDomains.map((entryDomain) => [entryDomain, getSubcategoryIds(entryDomain)]),
+  )
+
   const validationReport = {
     generatedAt: nowIso(),
     inputFiles: [inputPath],
     domain,
+    requireSubcategory,
+    taxonomyDomain,
+    taxonomyDomainsEnforced: enforcedDomains,
+    allowedCategoryL2,
+    allowedCategoryL2ByDomain,
     counts: {
       input: raw.length,
       valid: valid.length,
@@ -633,7 +697,8 @@ async function cmdBuildIndex(args) {
         console.log('')
         console.log('Options:')
         console.log('  --input <path>              Input JSON or JSONL file')
-        console.log('  --domain <name>             Domain name (default: general_knowledge)')
+        console.log('  --domain <name>             Domain name (default: auto)')
+        console.log('  --require-subcategory <bool> Require valid taxonomy categoryL2 during validate (default: true)')
         console.log('  --target <path>             Merge target file (default: data/generated/{domain}.jsonl)')
         console.log('  --compare-against <paths>   Comma-separated comparison files')
         console.log('  --auto-dedup-threshold <n>   Score above this = auto-duplicate (default: 0.92)')

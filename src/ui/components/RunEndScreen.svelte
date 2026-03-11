@@ -50,7 +50,7 @@
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
   let shareStatus = $state<'idle' | 'sharing' | 'done' | 'error'>('idle')
   let showDifficultyUnlock = $state(false)
-  let selectedDifficulty = $state<DifficultyMode>('standard')
+  let selectedDifficulty = $state<DifficultyMode>('normal')
 
   $effect(() => {
     if (isFirstRunComplete) {
@@ -209,28 +209,20 @@
         <div class="difficulty-options">
           <button
             class="diff-option"
-            class:diff-selected={selectedDifficulty === 'explorer'}
-            onclick={() => selectedDifficulty = 'explorer'}
+            class:diff-selected={selectedDifficulty === 'relaxed'}
+            onclick={() => selectedDifficulty = 'relaxed'}
           >
-            <span class="diff-name">📖 Story Mode</span>
+            <span class="diff-name">Relaxed</span>
             <span class="diff-detail">No timer — learn at your own pace</span>
           </button>
           <button
             class="diff-option"
-            class:diff-selected={selectedDifficulty === 'standard'}
-            onclick={() => selectedDifficulty = 'standard'}
+            class:diff-selected={selectedDifficulty === 'normal'}
+            onclick={() => selectedDifficulty = 'normal'}
           >
-            <span class="diff-name">⏱️ Timed Mode</span>
+            <span class="diff-name">Normal</span>
             <span class="diff-detail">Answer before time runs out — the intended experience</span>
             <span class="diff-recommended">Recommended</span>
-          </button>
-          <button
-            class="diff-option"
-            class:diff-selected={selectedDifficulty === 'scholar'}
-            onclick={() => selectedDifficulty = 'scholar'}
-          >
-            <span class="diff-name">🏆 Expert Mode</span>
-            <span class="diff-detail">Tighter timers, harder questions — 1.2× rewards</span>
           </button>
         </div>
 

@@ -11,6 +11,7 @@ Display the current state of playtest results without running new simulations.
 - `logs`: List recent playtest log files with summaries
 - `report <id>`: Show a specific analysis report
 - `log <id>`: Show details of a specific playthrough log
+- `engagement`: Show engagement and fun score summary across recent runs
 
 ## Steps
 
@@ -56,3 +57,23 @@ Display the current state of playtest results without running new simulations.
      1   |  1  | crystal_golem  | victory |     4 |      62 |    83.3% |     2
      1   |  2  | crystal_guardian| victory |     5 |      48 |    80.0% |     3
    ```
+
+### `engagement`: Show Engagement Summary
+1. List the 10 most recent logs in `data/playtests/logs/`
+2. For each, read the JSON and extract `summary.deepStats.engagement` (if present)
+3. Show:
+   ```
+   Engagement & Fun Scores — Recent Runs
+
+   Profile      | Seed  | Floor | Engagement | Fun  | Dead% | Slogs | Streaks (C/W) | Facts | Trend
+   -------------|-------|-------|------------|------|-------|-------|---------------|-------|------
+   expert       | 42    |    24 |         71 |   74 |  2.1% |     0 |        8 / 2  |   142 |  +0.05
+   average      | 42    |     8 |         55 |   52 |  5.3% |     1 |        5 / 4  |    87 |  +0.02
+   beginner     | 42    |     3 |         32 |   28 | 12.0% |     2 |        3 / 6  |    34 |  -0.08
+
+   Averages:        Engagement: 53/100 | Fun: 51/100
+
+   Runs with engagement < 30: 1 (beginner)
+   Runs with fun < 30: 1 (beginner)
+   ```
+4. If no runs have deepStats.engagement, tell the user to re-run playtests with deep mode enabled

@@ -1,0 +1,1297 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-11T14:23:42.720Z",
+    "totalRuns": 15300,
+    "seedsPerConfig": 300,
+    "floors": 24,
+    "elapsedMs": 40465,
+    "mode": "solo"
+  },
+  "controlBaselines": {
+    "control-novice-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 0,
+      "avgFinalFloor": 1.65,
+      "avgAccuracy": 0.40116824181751376,
+      "avgMaxCombo": 4.453333333333333,
+      "avgDPS": 4.441948607643959,
+      "avgDamageTakenPerEnc": 75.81097751322748,
+      "avgTurnsPerEncounter": 11.748824074074072,
+      "avgGoldEarned": 63.96333333333333,
+      "avgGoldSpent": 22.613333333333333,
+      "avgUpgrades": 0.36666666666666664,
+      "avgShopRelicsPurchased": 0.23,
+      "avgActiveSynergies": 0,
+      "avgFoodPurchased": 0.14333333333333334
+    },
+    "control-novice-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0,
+      "avgFinalFloor": 1.1866666666666668,
+      "avgAccuracy": 0.2955625588389971,
+      "avgMaxCombo": 3.1533333333333333,
+      "avgDPS": 3.6655776308153487,
+      "avgDamageTakenPerEnc": 81.20769973544975,
+      "avgTurnsPerEncounter": 11.951150793650791,
+      "avgGoldEarned": 26.843333333333334,
+      "avgGoldSpent": 5.8133333333333335,
+      "avgUpgrades": 0.04,
+      "avgShopRelicsPurchased": 0.03666666666666667,
+      "avgActiveSynergies": 0,
+      "avgFoodPurchased": 0.10666666666666667
+    },
+    "control-beginner-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 0,
+      "avgFinalFloor": 2.71,
+      "avgAccuracy": 0.5593422480638272,
+      "avgMaxCombo": 7.05,
+      "avgDPS": 6.289474743240462,
+      "avgDamageTakenPerEnc": 51.898528399070074,
+      "avgTurnsPerEncounter": 9.673471620971615,
+      "avgGoldEarned": 174.07,
+      "avgGoldSpent": 71.17,
+      "avgUpgrades": 1.4133333333333333,
+      "avgShopRelicsPurchased": 0.7666666666666667,
+      "avgActiveSynergies": 0,
+      "avgFoodPurchased": 0.09
+    },
+    "control-beginner-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0,
+      "avgFinalFloor": 1.9633333333333334,
+      "avgAccuracy": 0.4513606922976713,
+      "avgMaxCombo": 5.203333333333333,
+      "avgDPS": 5.07166356929578,
+      "avgDamageTakenPerEnc": 64.01750925925927,
+      "avgTurnsPerEncounter": 10.751239417989417,
+      "avgGoldEarned": 91.43666666666667,
+      "avgGoldSpent": 34.63,
+      "avgUpgrades": 0.44333333333333336,
+      "avgShopRelicsPurchased": 0.33666666666666667,
+      "avgActiveSynergies": 0,
+      "avgFoodPurchased": 0.2833333333333333
+    },
+    "control-casual-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 0.023333333333333334,
+      "avgFinalFloor": 8.033333333333333,
+      "avgAccuracy": 0.7231021668746236,
+      "avgMaxCombo": 12.326666666666666,
+      "avgDPS": 11.313003847935168,
+      "avgDamageTakenPerEnc": 30.234342083539982,
+      "avgTurnsPerEncounter": 7.146736705691041,
+      "avgGoldEarned": 1102.75,
+      "avgGoldSpent": 486.9866666666667,
+      "avgUpgrades": 6.453333333333333,
+      "avgShopRelicsPurchased": 6.316666666666666,
+      "avgActiveSynergies": 0.23666666666666666,
+      "avgFoodPurchased": 0.04666666666666667
+    },
+    "control-casual-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0.006666666666666667,
+      "avgFinalFloor": 3.723333333333333,
+      "avgAccuracy": 0.6106701090764881,
+      "avgMaxCombo": 8.17,
+      "avgDPS": 8.149162931664296,
+      "avgDamageTakenPerEnc": 38.247649686729076,
+      "avgTurnsPerEncounter": 8.1171245429762,
+      "avgGoldEarned": 325.87333333333333,
+      "avgGoldSpent": 172.57,
+      "avgUpgrades": 2.1566666666666667,
+      "avgShopRelicsPurchased": 2.14,
+      "avgActiveSynergies": 0.05333333333333334,
+      "avgFoodPurchased": 0.12666666666666668
+    },
+    "control-average-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 0.31,
+      "avgFinalFloor": 16.223333333333333,
+      "avgAccuracy": 0.8369096402040141,
+      "avgMaxCombo": 20.516666666666666,
+      "avgDPS": 17.067185237203564,
+      "avgDamageTakenPerEnc": 22.16168015143307,
+      "avgTurnsPerEncounter": 6.420161924797969,
+      "avgGoldEarned": 3136.3366666666666,
+      "avgGoldSpent": 1057.15,
+      "avgUpgrades": 15.073333333333334,
+      "avgShopRelicsPurchased": 14.673333333333334,
+      "avgActiveSynergies": 1.0133333333333334,
+      "avgFoodPurchased": 0.006666666666666667
+    },
+    "control-average-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0.11,
+      "avgFinalFloor": 8.716666666666667,
+      "avgAccuracy": 0.735171314688981,
+      "avgMaxCombo": 13.373333333333333,
+      "avgDPS": 12.12045816128316,
+      "avgDamageTakenPerEnc": 27.878632855601385,
+      "avgTurnsPerEncounter": 6.9062806232104474,
+      "avgGoldEarned": 1354.38,
+      "avgGoldSpent": 520.3166666666667,
+      "avgUpgrades": 6.87,
+      "avgShopRelicsPurchased": 6.8966666666666665,
+      "avgActiveSynergies": 0.35,
+      "avgFoodPurchased": 0.13333333333333333
+    },
+    "control-skilled-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 0.92,
+      "avgFinalFloor": 23.26,
+      "avgAccuracy": 0.8999065187887697,
+      "avgMaxCombo": 25.576666666666668,
+      "avgDPS": 26.12553742043714,
+      "avgDamageTakenPerEnc": 7.131268077601412,
+      "avgTurnsPerEncounter": 5.011124779541446,
+      "avgGoldEarned": 5380.123333333333,
+      "avgGoldSpent": 1999.5966666666666,
+      "avgUpgrades": 23.163333333333334,
+      "avgShopRelicsPurchased": 29.876666666666665,
+      "avgActiveSynergies": 3.486666666666667,
+      "avgFoodPurchased": 0
+    },
+    "control-skilled-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0.5133333333333333,
+      "avgFinalFloor": 17.993333333333332,
+      "avgAccuracy": 0.7989038567808481,
+      "avgMaxCombo": 17.43,
+      "avgDPS": 19.192972581693688,
+      "avgDamageTakenPerEnc": 14.179824514991191,
+      "avgTurnsPerEncounter": 5.9484036596119925,
+      "avgGoldEarned": 3594.9966666666664,
+      "avgGoldSpent": 1549.2433333333333,
+      "avgUpgrades": 17.30666666666667,
+      "avgShopRelicsPurchased": 22.316666666666666,
+      "avgActiveSynergies": 2.3466666666666667,
+      "avgFoodPurchased": 0.10333333333333333
+    },
+    "control-expert-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgAccuracy": 0.949712136656585,
+      "avgMaxCombo": 27.5,
+      "avgDPS": 35.64952458288948,
+      "avgDamageTakenPerEnc": 2.5461111111111094,
+      "avgTurnsPerEncounter": 3.7218055555555556,
+      "avgGoldEarned": 5794.53,
+      "avgGoldSpent": 2550.32,
+      "avgUpgrades": 24,
+      "avgShopRelicsPurchased": 38.47,
+      "avgActiveSynergies": 5.903333333333333,
+      "avgFoodPurchased": 0
+    },
+    "control-expert-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 0.9866666666666667,
+      "avgFinalFloor": 23.85,
+      "avgAccuracy": 0.8991659244392262,
+      "avgMaxCombo": 23.283333333333335,
+      "avgDPS": 32.0268797245589,
+      "avgDamageTakenPerEnc": 3.9195555555555566,
+      "avgTurnsPerEncounter": 4.130330246913577,
+      "avgGoldEarned": 5554.533333333334,
+      "avgGoldSpent": 2540.9,
+      "avgUpgrades": 23.833333333333332,
+      "avgShopRelicsPurchased": 38.20666666666666,
+      "avgActiveSynergies": 6.023333333333333,
+      "avgFoodPurchased": 0
+    },
+    "control-master-relaxed-asc0": {
+      "runs": 300,
+      "survivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgAccuracy": 0.9899929352697101,
+      "avgMaxCombo": 29.346666666666668,
+      "avgDPS": 42.66080539625159,
+      "avgDamageTakenPerEnc": 1.2187037037037043,
+      "avgTurnsPerEncounter": 3.1199074074074074,
+      "avgGoldEarned": 5802.47,
+      "avgGoldSpent": 2548.53,
+      "avgUpgrades": 24,
+      "avgShopRelicsPurchased": 38.49,
+      "avgActiveSynergies": 6.033333333333333,
+      "avgFoodPurchased": 0
+    },
+    "control-master-normal-asc0": {
+      "runs": 300,
+      "survivalRate": 1,
+      "avgFinalFloor": 24,
+      "avgAccuracy": 0.9499375677874038,
+      "avgMaxCombo": 25.393333333333334,
+      "avgDPS": 39.17374305004245,
+      "avgDamageTakenPerEnc": 1.9149537037037037,
+      "avgTurnsPerEncounter": 3.4150925925925906,
+      "avgGoldEarned": 5673.12,
+      "avgGoldSpent": 2557.4933333333333,
+      "avgUpgrades": 24,
+      "avgShopRelicsPurchased": 38.266666666666666,
+      "avgActiveSynergies": 6,
+      "avgFoodPurchased": 0
+    }
+  },
+  "soloRelicImpact": [
+    {
+      "relicId": "barbed_edge",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.63,
+        "avgFinalFloor": 19.6,
+        "avgAccuracy": 0.7901750586481683,
+        "avgMaxCombo": 17.43,
+        "avgDPS": 22.850450226458687,
+        "avgDamageTakenPerEnc": 16.655518518518512,
+        "avgTurnsPerEncounter": 5.116946208112877,
+        "avgGoldEarned": 3884.5,
+        "avgGoldSpent": 1231.3366666666666,
+        "avgUpgrades": 18.27,
+        "avgShopRelicsPurchased": 17.786666666666665,
+        "avgActiveSynergies": 1.4266666666666667,
+        "avgFoodPurchased": 0.03
+      },
+      "impact": {
+        "survival": 472.73,
+        "dps": 88.53,
+        "defense": 67.38,
+        "overall": 235.86
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "phoenix_feather",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.53,
+        "avgFinalFloor": 20.926666666666666,
+        "avgAccuracy": 0.793566422553984,
+        "avgMaxCombo": 21.483333333333334,
+        "avgDPS": 16.828837749225368,
+        "avgDamageTakenPerEnc": 31.744974347358855,
+        "avgTurnsPerEncounter": 7.459062566051965,
+        "avgGoldEarned": 4360.446666666667,
+        "avgGoldSpent": 1321.9166666666667,
+        "avgUpgrades": 16.5,
+        "avgShopRelicsPurchased": 19.08,
+        "avgActiveSynergies": 1.6366666666666667,
+        "avgFoodPurchased": 0.48
+      },
+      "impact": {
+        "survival": 381.82,
+        "dps": 38.85,
+        "defense": -12.18,
+        "overall": 160.73
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "fortress_wall",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.3933333333333333,
+        "avgFinalFloor": 14.053333333333333,
+        "avgAccuracy": 0.7598977466348728,
+        "avgMaxCombo": 15.69,
+        "avgDPS": 15.738461084809877,
+        "avgDamageTakenPerEnc": 18.38301851851852,
+        "avgTurnsPerEncounter": 6.371773809523813,
+        "avgGoldEarned": 2659.6133333333332,
+        "avgGoldSpent": 897.3366666666667,
+        "avgUpgrades": 12.826666666666666,
+        "avgShopRelicsPurchased": 12.516666666666667,
+        "avgActiveSynergies": 0.95,
+        "avgFoodPurchased": 0.06
+      },
+      "impact": {
+        "survival": 257.58,
+        "dps": 29.85,
+        "defense": 51.65,
+        "overall": 127.48
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "afterimage",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.36666666666666664,
+        "avgFinalFloor": 14.703333333333333,
+        "avgAccuracy": 0.7635131053801728,
+        "avgMaxCombo": 17.3,
+        "avgDPS": 15.920318763628238,
+        "avgDamageTakenPerEnc": 22.45094464579205,
+        "avgTurnsPerEncounter": 6.650944043114319,
+        "avgGoldEarned": 2834.3966666666665,
+        "avgGoldSpent": 923.9133333333333,
+        "avgUpgrades": 13.343333333333334,
+        "avgShopRelicsPurchased": 12.963333333333333,
+        "avgActiveSynergies": 0.9466666666666667,
+        "avgFoodPurchased": 0.02666666666666667
+      },
+      "impact": {
+        "survival": 233.33,
+        "dps": 31.35,
+        "defense": 24.18,
+        "overall": 109.99
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "iron_buckler",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.3,
+        "avgFinalFloor": 14.183333333333334,
+        "avgAccuracy": 0.7621142916395964,
+        "avgMaxCombo": 16.906666666666666,
+        "avgDPS": 14.567230038851664,
+        "avgDamageTakenPerEnc": 13.038195595727595,
+        "avgTurnsPerEncounter": 7.118936373787363,
+        "avgGoldEarned": 2685.1433333333334,
+        "avgGoldSpent": 894.9633333333334,
+        "avgUpgrades": 13.03,
+        "avgShopRelicsPurchased": 12.443333333333333,
+        "avgActiveSynergies": 0.8,
+        "avgFoodPurchased": 0.0033333333333333335
+      },
+      "impact": {
+        "survival": 172.73,
+        "dps": 20.19,
+        "defense": 113.82,
+        "overall": 109.29
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "thorned_vest",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.32666666666666666,
+        "avgFinalFloor": 14.56,
+        "avgAccuracy": 0.7660573803790515,
+        "avgMaxCombo": 16.803333333333335,
+        "avgDPS": 15.170719423020937,
+        "avgDamageTakenPerEnc": 22.069102383779047,
+        "avgTurnsPerEncounter": 6.102319992753454,
+        "avgGoldEarned": 2687.24,
+        "avgGoldSpent": 893.4833333333333,
+        "avgUpgrades": 12.643333333333333,
+        "avgShopRelicsPurchased": 12.633333333333333,
+        "avgActiveSynergies": 0.82,
+        "avgFoodPurchased": 0.09333333333333334
+      },
+      "impact": {
+        "survival": 196.97,
+        "dps": 25.17,
+        "defense": 26.32,
+        "overall": 94.24
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "mirror_shield",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.2966666666666667,
+        "avgFinalFloor": 14.126666666666667,
+        "avgAccuracy": 0.7623931147356173,
+        "avgMaxCombo": 16.78,
+        "avgDPS": 15.176007362033861,
+        "avgDamageTakenPerEnc": 24.465039416560636,
+        "avgTurnsPerEncounter": 6.722801807975118,
+        "avgGoldEarned": 2615.9133333333334,
+        "avgGoldSpent": 873.6833333333333,
+        "avgUpgrades": 11.63,
+        "avgShopRelicsPurchased": 12.27,
+        "avgActiveSynergies": 0.89,
+        "avgFoodPurchased": 0.21
+      },
+      "impact": {
+        "survival": 169.7,
+        "dps": 25.21,
+        "defense": 13.95,
+        "overall": 79.63
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "blood_price",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.26,
+        "avgFinalFloor": 12.29,
+        "avgAccuracy": 0.753039098235244,
+        "avgMaxCombo": 16.416666666666668,
+        "avgDPS": 15.34631588476322,
+        "avgDamageTakenPerEnc": 18.604289642456312,
+        "avgTurnsPerEncounter": 6.332581790123454,
+        "avgGoldEarned": 2219.8133333333335,
+        "avgGoldSpent": 771.95,
+        "avgUpgrades": 10.256666666666666,
+        "avgShopRelicsPurchased": 10.55,
+        "avgActiveSynergies": 0.73,
+        "avgFoodPurchased": 0.13666666666666666
+      },
+      "impact": {
+        "survival": 136.36,
+        "dps": 26.61,
+        "defense": 49.85,
+        "overall": 77.49
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "scholars_hat",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.2866666666666667,
+        "avgFinalFloor": 14.23,
+        "avgAccuracy": 0.7645596870896063,
+        "avgMaxCombo": 17.213333333333335,
+        "avgDPS": 14.53443160373101,
+        "avgDamageTakenPerEnc": 30.615353054980613,
+        "avgTurnsPerEncounter": 7.138570982140837,
+        "avgGoldEarned": 2628.01,
+        "avgGoldSpent": 889.52,
+        "avgUpgrades": 13.096666666666666,
+        "avgShopRelicsPurchased": 12.403333333333334,
+        "avgActiveSynergies": 0.8833333333333333,
+        "avgFoodPurchased": 0
+      },
+      "impact": {
+        "survival": 160.61,
+        "dps": 19.92,
+        "defense": -8.94,
+        "overall": 67.54
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "whetstone",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.25666666666666665,
+        "avgFinalFloor": 12.076666666666666,
+        "avgAccuracy": 0.7501033765071035,
+        "avgMaxCombo": 15.08,
+        "avgDPS": 14.822098019302505,
+        "avgDamageTakenPerEnc": 23.441669472502813,
+        "avgTurnsPerEncounter": 6.24532631874299,
+        "avgGoldEarned": 2161.9933333333333,
+        "avgGoldSpent": 753.51,
+        "avgUpgrades": 10.403333333333334,
+        "avgShopRelicsPurchased": 10.37,
+        "avgActiveSynergies": 0.7033333333333334,
+        "avgFoodPurchased": 0.07666666666666666
+      },
+      "impact": {
+        "survival": 133.33,
+        "dps": 22.29,
+        "defense": 18.93,
+        "overall": 65.7
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "war_drum",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.25333333333333335,
+        "avgFinalFloor": 12.136666666666667,
+        "avgAccuracy": 0.7508551532230786,
+        "avgMaxCombo": 14.823333333333334,
+        "avgDPS": 14.984612958425814,
+        "avgDamageTakenPerEnc": 23.177548616912638,
+        "avgTurnsPerEncounter": 6.236380940777872,
+        "avgGoldEarned": 2152.076666666667,
+        "avgGoldSpent": 758.5333333333333,
+        "avgUpgrades": 10.253333333333334,
+        "avgShopRelicsPurchased": 10.486666666666666,
+        "avgActiveSynergies": 0.6733333333333333,
+        "avgFoodPurchased": 0.12
+      },
+      "impact": {
+        "survival": 130.3,
+        "dps": 23.63,
+        "defense": 20.28,
+        "overall": 65.3
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "combo_ring",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.25333333333333335,
+        "avgFinalFloor": 12.053333333333333,
+        "avgAccuracy": 0.7496034459914216,
+        "avgMaxCombo": 16.226666666666667,
+        "avgDPS": 14.878757293310542,
+        "avgDamageTakenPerEnc": 23.833331378879755,
+        "avgTurnsPerEncounter": 6.4224608987193115,
+        "avgGoldEarned": 2217.26,
+        "avgGoldSpent": 758.2333333333333,
+        "avgUpgrades": 10.363333333333333,
+        "avgShopRelicsPurchased": 10.27,
+        "avgActiveSynergies": 0.81,
+        "avgFoodPurchased": 0.09
+      },
+      "impact": {
+        "survival": 130.3,
+        "dps": 22.76,
+        "defense": 16.97,
+        "overall": 64.04
+      },
+      "tier": "S"
+    },
+    {
+      "relicId": "executioners_axe",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.21666666666666667,
+        "avgFinalFloor": 11.486666666666666,
+        "avgAccuracy": 0.7499811117165095,
+        "avgMaxCombo": 14.773333333333333,
+        "avgDPS": 14.182551345454415,
+        "avgDamageTakenPerEnc": 23.897264816145196,
+        "avgTurnsPerEncounter": 6.448208505264737,
+        "avgGoldEarned": 1993.0866666666666,
+        "avgGoldSpent": 710.5433333333333,
+        "avgUpgrades": 9.823333333333334,
+        "avgShopRelicsPurchased": 9.866666666666667,
+        "avgActiveSynergies": 0.81,
+        "avgFoodPurchased": 0.1
+      },
+      "impact": {
+        "survival": 96.97,
+        "dps": 17.01,
+        "defense": 16.66,
+        "overall": 48.89
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "memory_palace",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.20333333333333334,
+        "avgFinalFloor": 11.783333333333333,
+        "avgAccuracy": 0.752349117864835,
+        "avgMaxCombo": 14.486666666666666,
+        "avgDPS": 14.596340612784015,
+        "avgDamageTakenPerEnc": 23.88520502645504,
+        "avgTurnsPerEncounter": 6.357176807760143,
+        "avgGoldEarned": 2041.86,
+        "avgGoldSpent": 725.99,
+        "avgUpgrades": 9.96,
+        "avgShopRelicsPurchased": 9.96,
+        "avgActiveSynergies": 0.5933333333333334,
+        "avgFoodPurchased": 0.08666666666666667
+      },
+      "impact": {
+        "survival": 84.85,
+        "dps": 20.43,
+        "defense": 16.72,
+        "overall": 45.08
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "glass_cannon",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.19,
+        "avgFinalFloor": 10.02,
+        "avgAccuracy": 0.7410268086383571,
+        "avgMaxCombo": 12.466666666666667,
+        "avgDPS": 16.439647045755557,
+        "avgDamageTakenPerEnc": 23.80592076442076,
+        "avgTurnsPerEncounter": 5.204037129537128,
+        "avgGoldEarned": 1606.63,
+        "avgGoldSpent": 612.9566666666667,
+        "avgUpgrades": 7.91,
+        "avgShopRelicsPurchased": 8.31,
+        "avgActiveSynergies": 0.65,
+        "avgFoodPurchased": 0.19333333333333333
+      },
+      "impact": {
+        "survival": 72.73,
+        "dps": 35.64,
+        "defense": 17.11,
+        "overall": 44.91
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "momentum_gem",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.21,
+        "avgFinalFloor": 10.76,
+        "avgAccuracy": 0.7454566522696979,
+        "avgMaxCombo": 14.906666666666666,
+        "avgDPS": 13.556431592311611,
+        "avgDamageTakenPerEnc": 25.211524868717294,
+        "avgTurnsPerEncounter": 6.729427379832183,
+        "avgGoldEarned": 1872.64,
+        "avgGoldSpent": 683.52,
+        "avgUpgrades": 9.096666666666666,
+        "avgShopRelicsPurchased": 9.17,
+        "avgActiveSynergies": 0.56,
+        "avgFoodPurchased": 0.1
+      },
+      "impact": {
+        "survival": 90.91,
+        "dps": 11.85,
+        "defense": 10.58,
+        "overall": 43.09
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "medic_kit",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.19,
+        "avgFinalFloor": 10.586666666666666,
+        "avgAccuracy": 0.7448687099313819,
+        "avgMaxCombo": 14.93,
+        "avgDPS": 12.946591939685192,
+        "avgDamageTakenPerEnc": 26.306920201407696,
+        "avgTurnsPerEncounter": 7.025939292757065,
+        "avgGoldEarned": 1832.2433333333333,
+        "avgGoldSpent": 638,
+        "avgUpgrades": 8.833333333333334,
+        "avgShopRelicsPurchased": 8.703333333333333,
+        "avgActiveSynergies": 0.6133333333333333,
+        "avgFoodPurchased": 0.09
+      },
+      "impact": {
+        "survival": 72.73,
+        "dps": 6.82,
+        "defense": 5.97,
+        "overall": 32.93
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "phase_cloak",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.19666666666666666,
+        "avgFinalFloor": 11.58,
+        "avgAccuracy": 0.749666747516517,
+        "avgMaxCombo": 15.43,
+        "avgDPS": 13.181632339634959,
+        "avgDamageTakenPerEnc": 30.008363601698555,
+        "avgTurnsPerEncounter": 7.201180816360214,
+        "avgGoldEarned": 2029.0933333333332,
+        "avgGoldSpent": 709.7966666666666,
+        "avgUpgrades": 9.79,
+        "avgShopRelicsPurchased": 9.803333333333333,
+        "avgActiveSynergies": 0.6633333333333333,
+        "avgFoodPurchased": 0.09666666666666666
+      },
+      "impact": {
+        "survival": 78.79,
+        "dps": 8.76,
+        "defense": -7.1,
+        "overall": 32.01
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "berserker_band",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.18666666666666668,
+        "avgFinalFloor": 10.916666666666666,
+        "avgAccuracy": 0.7468472834405244,
+        "avgMaxCombo": 14.83,
+        "avgDPS": 13.315921232654771,
+        "avgDamageTakenPerEnc": 26.873073840141565,
+        "avgTurnsPerEncounter": 6.840071299199025,
+        "avgGoldEarned": 1886.9066666666668,
+        "avgGoldSpent": 679.9266666666666,
+        "avgUpgrades": 8.583333333333334,
+        "avgShopRelicsPurchased": 9.083333333333334,
+        "avgActiveSynergies": 0.77,
+        "avgFoodPurchased": 0.15666666666666668
+      },
+      "impact": {
+        "survival": 69.7,
+        "dps": 9.86,
+        "defense": 3.74,
+        "overall": 31.96
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "blood_pact",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.19,
+        "avgFinalFloor": 11.223333333333333,
+        "avgAccuracy": 0.7492077160019635,
+        "avgMaxCombo": 15.383333333333333,
+        "avgDPS": 13.293044920663718,
+        "avgDamageTakenPerEnc": 29.90494860823834,
+        "avgTurnsPerEncounter": 7.06414641001697,
+        "avgGoldEarned": 1956.46,
+        "avgGoldSpent": 688.97,
+        "avgUpgrades": 9.733333333333333,
+        "avgShopRelicsPurchased": 9.266666666666667,
+        "avgActiveSynergies": 0.7033333333333334,
+        "avgFoodPurchased": 0.043333333333333335
+      },
+      "impact": {
+        "survival": 72.73,
+        "dps": 9.67,
+        "defense": -6.78,
+        "overall": 29.96
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "swift_boots",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.17,
+        "avgFinalFloor": 10.32,
+        "avgAccuracy": 0.7450294052202996,
+        "avgMaxCombo": 14.713333333333333,
+        "avgDPS": 12.816619813641159,
+        "avgDamageTakenPerEnc": 23.955037592629807,
+        "avgTurnsPerEncounter": 7.030388983826767,
+        "avgGoldEarned": 1729.07,
+        "avgGoldSpent": 636.45,
+        "avgUpgrades": 8.71,
+        "avgShopRelicsPurchased": 8.603333333333333,
+        "avgActiveSynergies": 0.52,
+        "avgFoodPurchased": 0.07
+      },
+      "impact": {
+        "survival": 54.55,
+        "dps": 5.74,
+        "defense": 16.38,
+        "overall": 28.45
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "chain_lightning_rod",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.17333333333333334,
+        "avgFinalFloor": 9.99,
+        "avgAccuracy": 0.7401205350798072,
+        "avgMaxCombo": 13.97,
+        "avgDPS": 13.29520529788571,
+        "avgDamageTakenPerEnc": 25.769095046392138,
+        "avgTurnsPerEncounter": 6.58424120082816,
+        "avgGoldEarned": 1653.29,
+        "avgGoldSpent": 602.2466666666667,
+        "avgUpgrades": 8.193333333333333,
+        "avgShopRelicsPurchased": 8.153333333333334,
+        "avgActiveSynergies": 0.43333333333333335,
+        "avgFoodPurchased": 0.11333333333333333
+      },
+      "impact": {
+        "survival": 57.58,
+        "dps": 9.69,
+        "defense": 8.19,
+        "overall": 28.39
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "last_breath",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.18666666666666668,
+        "avgFinalFloor": 10.573333333333334,
+        "avgAccuracy": 0.7450794841878341,
+        "avgMaxCombo": 14.803333333333333,
+        "avgDPS": 12.835153365442752,
+        "avgDamageTakenPerEnc": 29.587379874071345,
+        "avgTurnsPerEncounter": 7.046189920020471,
+        "avgGoldEarned": 1799.4666666666667,
+        "avgGoldSpent": 650.8466666666667,
+        "avgUpgrades": 8.29,
+        "avgShopRelicsPurchased": 8.83,
+        "avgActiveSynergies": 0.54,
+        "avgFoodPurchased": 0.27666666666666667
+      },
+      "impact": {
+        "survival": 69.7,
+        "dps": 5.9,
+        "defense": -5.78,
+        "overall": 27.92
+      },
+      "tier": "A"
+    },
+    {
+      "relicId": "crescendo_blade",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.16,
+        "avgFinalFloor": 9.37,
+        "avgAccuracy": 0.7377042663078176,
+        "avgMaxCombo": 13.09,
+        "avgDPS": 12.840627854495368,
+        "avgDamageTakenPerEnc": 26.09464283925952,
+        "avgTurnsPerEncounter": 6.656534787434785,
+        "avgGoldEarned": 1502.3833333333334,
+        "avgGoldSpent": 584.69,
+        "avgUpgrades": 7.556666666666667,
+        "avgShopRelicsPurchased": 7.766666666666667,
+        "avgActiveSynergies": 0.56,
+        "avgFoodPurchased": 0.1
+      },
+      "impact": {
+        "survival": 45.45,
+        "dps": 5.94,
+        "defense": 6.84,
+        "overall": 22.02
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "iron_resolve",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.16,
+        "avgFinalFloor": 9.946666666666667,
+        "avgAccuracy": 0.7420257951746654,
+        "avgMaxCombo": 14.153333333333334,
+        "avgDPS": 12.812047682421568,
+        "avgDamageTakenPerEnc": 27.170145684562353,
+        "avgTurnsPerEncounter": 6.896808978058977,
+        "avgGoldEarned": 1660.7033333333334,
+        "avgGoldSpent": 616.3666666666667,
+        "avgUpgrades": 7.8533333333333335,
+        "avgShopRelicsPurchased": 8.383333333333333,
+        "avgActiveSynergies": 0.5233333333333333,
+        "avgFoodPurchased": 0.12666666666666668
+      },
+      "impact": {
+        "survival": 45.45,
+        "dps": 5.71,
+        "defense": 2.61,
+        "overall": 20.68
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "curiosity_gem",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.15,
+        "avgFinalFloor": 9.76,
+        "avgAccuracy": 0.7397065006994968,
+        "avgMaxCombo": 13.636666666666667,
+        "avgDPS": 13.23240145281069,
+        "avgDamageTakenPerEnc": 25.980749145056276,
+        "avgTurnsPerEncounter": 6.566410794046347,
+        "avgGoldEarned": 1583.9533333333334,
+        "avgGoldSpent": 594.2633333333333,
+        "avgUpgrades": 8.043333333333333,
+        "avgShopRelicsPurchased": 7.97,
+        "avgActiveSynergies": 0.39666666666666667,
+        "avgFoodPurchased": 0.10333333333333333
+      },
+      "impact": {
+        "survival": 36.36,
+        "dps": 9.17,
+        "defense": 7.3,
+        "overall": 19.49
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "double_vision",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.14666666666666667,
+        "avgFinalFloor": 9.316666666666666,
+        "avgAccuracy": 0.7377407444871179,
+        "avgMaxCombo": 13.623333333333333,
+        "avgDPS": 12.717636667350014,
+        "avgDamageTakenPerEnc": 26.833050233994918,
+        "avgTurnsPerEncounter": 6.725018494205656,
+        "avgGoldEarned": 1518.81,
+        "avgGoldSpent": 562.9333333333333,
+        "avgUpgrades": 7.56,
+        "avgShopRelicsPurchased": 7.6066666666666665,
+        "avgActiveSynergies": 0.38666666666666666,
+        "avgFoodPurchased": 0.12333333333333334
+      },
+      "impact": {
+        "survival": 33.33,
+        "dps": 4.93,
+        "defense": 3.9,
+        "overall": 15.98
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "flame_brand",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.14333333333333334,
+        "avgFinalFloor": 9.26,
+        "avgAccuracy": 0.7358856428919551,
+        "avgMaxCombo": 13.676666666666666,
+        "avgDPS": 12.46766909362493,
+        "avgDamageTakenPerEnc": 27.154504193115773,
+        "avgTurnsPerEncounter": 6.826243331365366,
+        "avgGoldEarned": 1526.7766666666666,
+        "avgGoldSpent": 576.6666666666666,
+        "avgUpgrades": 7.35,
+        "avgShopRelicsPurchased": 7.753333333333333,
+        "avgActiveSynergies": 0.44666666666666666,
+        "avgFoodPurchased": 0.12666666666666668
+      },
+      "impact": {
+        "survival": 30.3,
+        "dps": 2.86,
+        "defense": 2.67,
+        "overall": 13.78
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "stone_wall",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.14333333333333334,
+        "avgFinalFloor": 9.206666666666667,
+        "avgAccuracy": 0.7367151215734193,
+        "avgMaxCombo": 14.026666666666667,
+        "avgDPS": 12.32852819506954,
+        "avgDamageTakenPerEnc": 27.182175183512147,
+        "avgTurnsPerEncounter": 6.980192272435021,
+        "avgGoldEarned": 1509.9366666666667,
+        "avgGoldSpent": 563.1433333333333,
+        "avgUpgrades": 7.43,
+        "avgShopRelicsPurchased": 7.493333333333333,
+        "avgActiveSynergies": 0.49,
+        "avgFoodPurchased": 0.09333333333333334
+      },
+      "impact": {
+        "survival": 30.3,
+        "dps": 1.72,
+        "defense": 2.56,
+        "overall": 13.4
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "venom_fang",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.13666666666666666,
+        "avgFinalFloor": 8.863333333333333,
+        "avgAccuracy": 0.7357820317951219,
+        "avgMaxCombo": 13.67,
+        "avgDPS": 12.29633286153404,
+        "avgDamageTakenPerEnc": 27.446186067019394,
+        "avgTurnsPerEncounter": 6.857310337810333,
+        "avgGoldEarned": 1408.9966666666667,
+        "avgGoldSpent": 535.54,
+        "avgUpgrades": 7.026666666666666,
+        "avgShopRelicsPurchased": 7.126666666666667,
+        "avgActiveSynergies": 0.4066666666666667,
+        "avgFoodPurchased": 0.14
+      },
+      "impact": {
+        "survival": 24.24,
+        "dps": 1.45,
+        "defense": 1.58,
+        "overall": 10.6
+      },
+      "tier": "B"
+    },
+    {
+      "relicId": "quicksilver",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.13,
+        "avgFinalFloor": 9.02,
+        "avgAccuracy": 0.7378042205495081,
+        "avgMaxCombo": 13.743333333333334,
+        "avgDPS": 12.655099241309369,
+        "avgDamageTakenPerEnc": 26.669828484833317,
+        "avgTurnsPerEncounter": 6.767194263576484,
+        "avgGoldEarned": 1431.3633333333332,
+        "avgGoldSpent": 553.04,
+        "avgUpgrades": 7.216666666666667,
+        "avgShopRelicsPurchased": 7.33,
+        "avgActiveSynergies": 0.41333333333333333,
+        "avgFoodPurchased": 0.13666666666666666
+      },
+      "impact": {
+        "survival": 18.18,
+        "dps": 4.41,
+        "defense": 4.53,
+        "overall": 9.96
+      },
+      "tier": "C"
+    },
+    {
+      "relicId": "vitality_ring",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.13333333333333333,
+        "avgFinalFloor": 9.476666666666667,
+        "avgAccuracy": 0.7401202510036574,
+        "avgMaxCombo": 14.256666666666666,
+        "avgDPS": 12.446001654223853,
+        "avgDamageTakenPerEnc": 28.551643085509173,
+        "avgTurnsPerEncounter": 6.945678481233126,
+        "avgGoldEarned": 1552.6366666666668,
+        "avgGoldSpent": 561.7333333333333,
+        "avgUpgrades": 7.77,
+        "avgShopRelicsPurchased": 7.523333333333333,
+        "avgActiveSynergies": 0.4,
+        "avgFoodPurchased": 0.08333333333333333
+      },
+      "impact": {
+        "survival": 21.21,
+        "dps": 2.69,
+        "defense": -2.36,
+        "overall": 8.58
+      },
+      "tier": "C"
+    },
+    {
+      "relicId": "steel_skin",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.12333333333333334,
+        "avgFinalFloor": 9.6,
+        "avgAccuracy": 0.7397843932069744,
+        "avgMaxCombo": 14.126666666666667,
+        "avgDPS": 12.54132615451665,
+        "avgDamageTakenPerEnc": 28.60460289681246,
+        "avgTurnsPerEncounter": 6.9469600492281005,
+        "avgGoldEarned": 1538.2366666666667,
+        "avgGoldSpent": 590.1533333333333,
+        "avgUpgrades": 7.89,
+        "avgShopRelicsPurchased": 7.723333333333334,
+        "avgActiveSynergies": 0.42,
+        "avgFoodPurchased": 0.08666666666666667
+      },
+      "impact": {
+        "survival": 12.12,
+        "dps": 3.47,
+        "defense": -2.54,
+        "overall": 5.13
+      },
+      "tier": "C"
+    },
+    {
+      "relicId": "speed_charm",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.11333333333333333,
+        "avgFinalFloor": 8.64,
+        "avgAccuracy": 0.7352526270124433,
+        "avgMaxCombo": 13.58,
+        "avgDPS": 12.059418636167539,
+        "avgDamageTakenPerEnc": 27.71992296347758,
+        "avgTurnsPerEncounter": 6.925463134885546,
+        "avgGoldEarned": 1349.5466666666666,
+        "avgGoldSpent": 519.7966666666666,
+        "avgUpgrades": 6.793333333333333,
+        "avgShopRelicsPurchased": 6.903333333333333,
+        "avgActiveSynergies": 0.51,
+        "avgFoodPurchased": 0.12333333333333334
+      },
+      "impact": {
+        "survival": 3.03,
+        "dps": -0.5,
+        "defense": 0.57,
+        "overall": 1.23
+      },
+      "tier": "C"
+    },
+    {
+      "relicId": "renewal_spring",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.11333333333333333,
+        "avgFinalFloor": 8.613333333333333,
+        "avgAccuracy": 0.735783030443072,
+        "avgMaxCombo": 13.526666666666667,
+        "avgDPS": 12.08257463069156,
+        "avgDamageTakenPerEnc": 28.103149385713696,
+        "avgTurnsPerEncounter": 6.919424460057633,
+        "avgGoldEarned": 1341.9633333333334,
+        "avgGoldSpent": 520.18,
+        "avgUpgrades": 6.89,
+        "avgShopRelicsPurchased": 6.843333333333334,
+        "avgActiveSynergies": 0.3466666666666667,
+        "avgFoodPurchased": 0.09
+      },
+      "impact": {
+        "survival": 3.03,
+        "dps": -0.31,
+        "defense": -0.8,
+        "overall": 0.88
+      },
+      "tier": "C"
+    },
+    {
+      "relicId": "sharp_eye",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.1,
+        "avgFinalFloor": 8.446666666666667,
+        "avgAccuracy": 0.7337064590478583,
+        "avgMaxCombo": 13.336666666666666,
+        "avgDPS": 11.98631739858077,
+        "avgDamageTakenPerEnc": 28.048831853744637,
+        "avgTurnsPerEncounter": 6.894107668250163,
+        "avgGoldEarned": 1312.0366666666666,
+        "avgGoldSpent": 512.1,
+        "avgUpgrades": 6.676666666666667,
+        "avgShopRelicsPurchased": 6.64,
+        "avgActiveSynergies": 0.46,
+        "avgFoodPurchased": 0.12333333333333334
+      },
+      "impact": {
+        "survival": -9.09,
+        "dps": -1.11,
+        "defense": -0.61,
+        "overall": -4.15
+      },
+      "tier": "D"
+    },
+    {
+      "relicId": "herbal_pouch",
+      "profile": "average",
+      "ascension": 0,
+      "metrics": {
+        "runs": 300,
+        "survivalRate": 0.09333333333333334,
+        "avgFinalFloor": 8.466666666666667,
+        "avgAccuracy": 0.7342681259102068,
+        "avgMaxCombo": 13.273333333333333,
+        "avgDPS": 12.018128962236332,
+        "avgDamageTakenPerEnc": 28.14329080111641,
+        "avgTurnsPerEncounter": 6.884844770932732,
+        "avgGoldEarned": 1296.6233333333332,
+        "avgGoldSpent": 514.2633333333333,
+        "avgUpgrades": 6.79,
+        "avgShopRelicsPurchased": 6.743333333333333,
+        "avgActiveSynergies": 0.4066666666666667,
+        "avgFoodPurchased": 0.13333333333333333
+      },
+      "impact": {
+        "survival": -15.15,
+        "dps": -0.84,
+        "defense": -0.94,
+        "overall": -6.6
+      },
+      "tier": "D"
+    }
+  ],
+  "comboAnalysis": [],
+  "buildPerformance": [],
+  "skillFairness": [],
+  "progressionCurve": [],
+  "flags": {
+    "overpowered": [
+      "barbed_edge",
+      "phoenix_feather",
+      "fortress_wall",
+      "afterimage",
+      "iron_buckler",
+      "thorned_vest",
+      "mirror_shield",
+      "blood_price",
+      "scholars_hat",
+      "whetstone",
+      "war_drum",
+      "combo_ring"
+    ],
+    "underpowered": [],
+    "brokenSynergies": [],
+    "immortality": []
+  }
+}

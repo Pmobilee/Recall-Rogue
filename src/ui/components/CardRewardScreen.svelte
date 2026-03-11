@@ -1,7 +1,9 @@
 <script lang="ts">
   import type { Card, CardType } from '../../data/card-types'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { getDetailedCardDescription } from '../../services/cardDescriptionService'
   import { getCardFramePath } from '../utils/domainAssets'
+  import { activeRewardBundle } from '../../ui/stores/gameState'
 
   interface Props {
     options: Card[]
@@ -14,6 +16,11 @@
   let collectLocked = $state(false)
   let collectingType = $state<CardType | null>(null)
   let hasPlayedIntroCue = $state(false)
+  let showSkipConfirm = $state(false)
+
+  // Reward reveal state
+  let rewardStep = $state<'gold' | 'heal' | 'card'>('gold')
+  let stepVisible = $state(false)
 
   interface AltarBiome {
     id: string
@@ -49,12 +56,6 @@
       { glyph: '🛡', label: 'Buckler', glow: '#90caf9' },
       { glyph: '🛡', label: 'Mirror Guard', glow: '#64b5f6' },
     ],
-    heal: [
-      { glyph: '🧪', label: 'Healing Flask', glow: '#8ef0a8' },
-      { glyph: '🌿', label: 'Herb Bundle', glow: '#7bffb2' },
-      { glyph: '🩹', label: 'Bandage Roll', glow: '#9effc7' },
-      { glyph: '🍵', label: 'Restorative Tea', glow: '#88ffb5' },
-    ],
     utility: [
       { glyph: '📜', label: 'Arc Scroll', glow: '#ffe082' },
       { glyph: '📘', label: 'Field Tome', glow: '#ffd54f' },
@@ -73,12 +74,6 @@
       { glyph: '🦂', label: 'Venom Fang', glow: '#ff8ab6' },
       { glyph: '🪤', label: 'Dread Trap', glow: '#f58bc0' },
     ],
-    regen: [
-      { glyph: '💧', label: 'Vital Drop', glow: '#6cf5e8' },
-      { glyph: '🫧', label: 'Renewal Bubble', glow: '#7dece5' },
-      { glyph: '🍃', label: 'Pulse Leaf', glow: '#80edba' },
-      { glyph: '🔄', label: 'Cycle Rune', glow: '#7fded5' },
-    ],
     wild: [
       { glyph: '💎', label: 'Prism Core', glow: '#ffd480' },
       { glyph: '🌠', label: 'Comet Shard', glow: '#ffd166' },
@@ -87,34 +82,28 @@
     ],
   }
 
-  const DECOR_TRINKETS: RewardIcon[] = [
-    { glyph: '🪙', label: 'Gold pile', glow: '#f8d56d' },
-    { glyph: '🧴', label: 'Potion flask', glow: '#8fe9ff' },
-    { glyph: '🏺', label: 'Ornate relic', glow: '#f8c4ff' },
-  ]
-
   const TYPE_DESCRIPTIONS: Record<CardType, string> = {
     attack: 'Deal direct damage to enemies.',
     shield: 'Gain block before enemy attacks.',
-    heal: 'Recover HP and stabilize your run.',
     buff: 'Increase output and combo pressure.',
     debuff: 'Reduce enemy tempo and threat.',
     utility: 'Tech effects for flexible turns.',
-    regen: 'Scale sustain over time.',
     wild: 'High-impact wildcard effect.',
   }
 
   let altarBiome = $state<AltarBiome>(ALTAR_BIOMES[0])
+  let lastOptionsRef = $state<Card[]>([])
+
+  // Derive reward bundle from store
+  let bundle = $derived($activeRewardBundle)
 
   function emptyIconMap(): Record<CardType, RewardIcon | null> {
     return {
       attack: null,
       shield: null,
-      heal: null,
       utility: null,
       buff: null,
       debuff: null,
-      regen: null,
       wild: null,
     }
   }
@@ -170,10 +159,6 @@
     return iconByType[option.cardType] ?? CARD_TYPE_ICON_POOL[option.cardType][0]
   }
 
-  function powerValue(option: Card): number {
-    return Math.round(option.baseEffectValue * option.effectMultiplier)
-  }
-
   function hoverType(cardType: CardType): void {
     if (collectLocked || selectedType === cardType) return
     playCardAudio('card-cast')
@@ -198,27 +183,71 @@
     }, 340)
   }
 
-  function skip(): void {
+  function handleSkipClick(): void {
     if (collectLocked) return
+    showSkipConfirm = true
+  }
+
+  function confirmSkip(): void {
+    showSkipConfirm = false
     onskip()
+  }
+
+  function cancelSkip(): void {
+    showSkipConfirm = false
+  }
+
+  function advanceStep(): void {
+    stepVisible = false
+    setTimeout(() => {
+      if (rewardStep === 'gold') {
+        if (bundle && bundle.healAmount > 0) {
+          rewardStep = 'heal'
+        } else {
+          rewardStep = 'card'
+        }
+      } else if (rewardStep === 'heal') {
+        rewardStep = 'card'
+      }
+      stepVisible = true
+    }, 200)
   }
 
   $effect(() => {
     if (options.length === 0) {
       selectedType = null
+      lastOptionsRef = []
       return
     }
+
+    // Only reset reward step when options actually change (new reward screen)
+    const isNewReward = options !== lastOptionsRef
+    if (isNewReward) {
+      lastOptionsRef = options
+      if (!bundle || (bundle.goldEarned === 0 && bundle.healAmount === 0)) {
+        rewardStep = 'card'
+      } else {
+        rewardStep = 'gold'
+      }
+      stepVisible = false
+      setTimeout(() => {
+        stepVisible = true
+      }, 100)
+
+      if (!hasPlayedIntroCue) {
+        playCardAudio('combo-3')
+        hasPlayedIntroCue = true
+      }
+      collectLocked = false
+      collectingType = null
+      showSkipConfirm = false
+      altarBiome = pickBiome(options)
+      iconByType = buildIconMap(options)
+    }
+
     if (selectedType === null || !options.some((option) => option.cardType === selectedType)) {
       selectedType = options[0]?.cardType ?? null
     }
-    if (!hasPlayedIntroCue) {
-      playCardAudio('combo-3')
-      hasPlayedIntroCue = true
-    }
-    collectLocked = false
-    collectingType = null
-    altarBiome = pickBiome(options)
-    iconByType = buildIconMap(options)
   })
 
   function isSelected(option: Card): boolean {
@@ -235,72 +264,96 @@
 </script>
 
 <div class="reward-screen">
-  <div class="spotlight-cone" aria-hidden="true"></div>
+  {#if rewardStep === 'gold' && bundle}
+    <div class="step-container" class:step-visible={stepVisible}>
+      <div class="step-icon">🪙</div>
+      <h1 class="step-title">Gold Earned</h1>
+      <div class="step-value gold-value">+{bundle.goldEarned}</div>
+      {#if bundle.comboBonus > 0}
+        <div class="step-bonus">+{bundle.comboBonus} combo bonus</div>
+      {/if}
+      <button class="step-continue" onclick={advanceStep}>Continue</button>
+    </div>
+  {:else if rewardStep === 'heal' && bundle}
+    <div class="step-container" class:step-visible={stepVisible}>
+      <div class="step-icon">💚</div>
+      <h1 class="step-title">HP Restored</h1>
+      <div class="step-value heal-value">+{bundle.healAmount} HP</div>
+      <button class="step-continue" onclick={advanceStep}>Continue</button>
+    </div>
+  {:else}
+    <div class="spotlight-cone" aria-hidden="true"></div>
 
-  <section class={`altar-shell biome-${altarBiome.id}`}>
-    <header class="altar-header">
-      <h1>Reward Altar</h1>
-      <p>{altarBiome.title} • {altarBiome.subtitle}</p>
-    </header>
+    <section class={`altar-shell biome-${altarBiome.id}`}>
+      <header class="altar-header">
+        <h1>Choose a Card</h1>
+        <p>{altarBiome.title} • {altarBiome.subtitle}</p>
+      </header>
 
-    <div class="altar-surface" style={`--focus-x: ${focusX()};`}>
-      <div class="altar-cloth"></div>
+      <div class="altar-surface" style={`--focus-x: ${focusX()};`}>
+        <div class="altar-cloth"></div>
 
-      <div class="altar-options">
-        {#each options as option (option.cardType)}
-          {@const icon = iconForOption(option)}
-          <button
-            class="altar-option"
-            class:selected={isSelected(option)}
-            class:shadowed={isShadowed(option)}
-            class:collecting={isCollecting(option)}
-            style={`--frame-image: url('${option.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(option.cardType)}'); --icon-glow: ${icon.glow};`}
-            onclick={() => selectType(option.cardType)}
-            onpointerenter={() => hoverType(option.cardType)}
-            disabled={collectLocked}
-            data-testid={`reward-type-${option.cardType}`}
-            aria-label={`Inspect ${option.cardType} reward`}
-          >
-            <span class="icon-glyph">{icon.glyph}</span>
-            <span class="icon-label">{icon.label}</span>
-            <span class="icon-type">{option.cardType.toUpperCase()}</span>
-            <span class="icon-power">Power {powerValue(option)}</span>
-          </button>
-        {/each}
+        <div class="altar-options">
+          {#each options as option (option.cardType)}
+            {@const icon = iconForOption(option)}
+            <button
+              class="altar-option"
+              class:selected={isSelected(option)}
+              class:shadowed={isShadowed(option)}
+              class:collecting={isCollecting(option)}
+              style={`--frame-image: url('${option.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(option.cardType)}'); --icon-glow: ${icon.glow};`}
+              onclick={() => selectType(option.cardType)}
+              onpointerenter={() => hoverType(option.cardType)}
+              disabled={collectLocked}
+              data-testid={`reward-type-${option.cardType}`}
+              aria-label={`Inspect ${option.cardType} reward`}
+            >
+              <span class="icon-glyph">{icon.glyph}</span>
+              <span class="icon-label">{icon.label}</span>
+            </button>
+          {/each}
+        </div>
       </div>
 
-      <div class="altar-trinkets" aria-hidden="true">
-        {#each DECOR_TRINKETS as trinket}
-          <span class="trinket" style={`--trinket-glow: ${trinket.glow};`} title={trinket.label}>{trinket.glyph}</span>
-        {/each}
-      </div>
+      <section class="inspect-panel">
+        <div class="inspect-kicker">Inspected Reward</div>
+        {#if selectedCard()}
+          {@const selected = selectedCard()!}
+          {@const selectedIcon = iconForOption(selected)}
+          <h2>{selectedIcon.label}</h2>
+          {#if selected.mechanicName}
+            <span class="inspect-mechanic-badge">{selected.mechanicName}</span>
+          {/if}
+          <p class="inspect-summary">{getDetailedCardDescription(selected)}</p>
+          <div class="inspect-meta">
+            <span>{altarBiome.ambience}</span>
+          </div>
+        {:else}
+          <h2>Inspect a reward icon</h2>
+          <p class="inspect-summary">Tap an icon on the altar to reveal details.</p>
+        {/if}
+      </section>
+    </section>
+
+    <div class="actions">
+      <button class="skip" onclick={handleSkipClick} disabled={collectLocked}>Skip</button>
+      <button class="accept" onclick={accept} disabled={!selectedCard() || collectLocked} data-testid="reward-accept">
+        {collectLocked ? 'Collecting...' : 'Accept'}
+      </button>
     </div>
 
-    <section class="inspect-panel">
-      <div class="inspect-kicker">Inspected Reward</div>
-      {#if selectedCard()}
-        {@const selected = selectedCard()!}
-        {@const selectedIcon = iconForOption(selected)}
-        <h2>{selectedIcon.label} • {selected.cardType.toUpperCase()}</h2>
-        <p class="inspect-summary">{TYPE_DESCRIPTIONS[selected.cardType]}</p>
-        <div class="inspect-meta">
-          <span>Power {powerValue(selected)}</span>
-          <span>{altarBiome.ambience}</span>
+    {#if showSkipConfirm}
+      <div class="skip-confirm-overlay">
+        <div class="skip-confirm-box">
+          <p>Skip this reward? You won't get another card.</p>
+          <div class="skip-confirm-buttons">
+            <button class="skip-confirm-btn skip-confirm-yes" onclick={confirmSkip}>Yes, Skip</button>
+            <button class="skip-confirm-btn skip-confirm-no" onclick={cancelSkip}>Cancel</button>
+          </div>
         </div>
-      {:else}
-        <h2>Inspect a reward icon</h2>
-        <p class="inspect-summary">Tap an icon on the altar to reveal details.</p>
-      {/if}
-
-    </section>
-  </section>
-
-  <div class="actions">
-    <button class="accept" onclick={accept} disabled={!selectedCard() || collectLocked} data-testid="reward-accept">
-      {collectLocked ? 'Collecting...' : 'Accept'}
-    </button>
-    <button class="skip" onclick={skip} disabled={collectLocked}>Skip</button>
-  </div>
+      </div>
+    {/if}
+  {/if}
 </div>
 
 <style>
@@ -317,6 +370,87 @@
     display: grid;
     gap: 14px;
     justify-items: center;
+  }
+
+  .step-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 250ms ease, transform 250ms ease;
+  }
+
+  .step-container.step-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .step-icon {
+    font-size: 64px;
+    filter: drop-shadow(0 0 20px rgba(255, 200, 50, 0.4));
+    animation: stepPulse 1.5s ease-in-out infinite;
+  }
+
+  .step-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #f8d779;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    margin: 0;
+  }
+
+  .step-value {
+    font-size: 48px;
+    font-weight: 900;
+    margin: 8px 0;
+  }
+
+  .gold-value {
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+
+  .heal-value {
+    color: #4ade80;
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+  }
+
+  .step-bonus {
+    font-size: 16px;
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .step-continue {
+    margin-top: 24px;
+    width: min(300px, 80%);
+    height: 52px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: 800;
+    background: linear-gradient(180deg, #4a5568, #2d3748);
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: transform 150ms ease;
+  }
+
+  .step-continue:hover {
+    transform: scale(1.02);
+  }
+
+  .step-continue:active {
+    transform: scale(0.98);
+  }
+
+  @keyframes stepPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
   }
 
   .spotlight-cone {
@@ -499,21 +633,6 @@
     letter-spacing: 0.25px;
   }
 
-  .icon-type {
-    margin-top: 2px;
-    color: #b7c8de;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.45px;
-  }
-
-  .icon-power {
-    margin-top: 4px;
-    font-size: 12px;
-    color: #88d8ff;
-    font-weight: 700;
-  }
-
   .altar-trinkets {
     display: flex;
     justify-content: center;
@@ -557,6 +676,18 @@
     margin: 0;
     font-size: 21px;
     color: #ffde8f;
+  }
+
+  .inspect-mechanic-badge {
+    display: inline-block;
+    background: rgba(40, 80, 120, 0.5);
+    border: 1px solid rgba(100, 160, 220, 0.4);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: #9ec8ff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
   }
 
   .inspect-summary {
@@ -613,6 +744,58 @@
   .altar-option:disabled {
     opacity: 0.56;
     cursor: not-allowed;
+  }
+
+  .skip-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skip-confirm-box {
+    background: #1f2937;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 20px 24px;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .skip-confirm-box p {
+    color: #f8fafc;
+    font-size: 15px;
+    margin: 0 0 16px;
+    line-height: 1.4;
+  }
+
+  .skip-confirm-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .skip-confirm-btn {
+    flex: 1;
+    height: 44px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .skip-confirm-yes {
+    background: #dc2626;
+    color: #fff;
+  }
+
+  .skip-confirm-no {
+    background: #374151;
+    color: #f8fafc;
   }
 
   @keyframes iconBob {
@@ -687,9 +870,4 @@
     }
   }
 
-  @media (max-width: 560px) {
-    .actions {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>

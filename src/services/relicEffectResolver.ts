@@ -11,6 +11,8 @@
  *   ON_CORRECT_ANSWER, ON_CARD_SKIP, ON_FLOOR_ADVANCE, ON_ENCOUNTER_END
  */
 
+import { hasSynergy } from './relicSynergyResolver';
+
 // ─── Turn Start ─────────────────────────────────────────────────────
 
 /** Effects resolved at the start of each player turn. */
@@ -130,9 +132,9 @@ export function resolveAttackModifiers(
     flatDamageBonus += 2;
   }
 
-  // barbed_edge — Strike-tagged mechanics +3 base damage
+  // barbed_edge — Strike-tagged mechanics +2 base damage
   if (relicIds.has('barbed_edge') && context.isStrikeTagged) {
-    flatDamageBonus += 3;
+    flatDamageBonus += 2;
   }
 
   // war_drum — +1 damage per combo level this turn (capped at +3)
@@ -165,6 +167,11 @@ export function resolveAttackModifiers(
     percentDamageBonus += 0.1 * context.consecutiveCorrectAttacks;
   }
 
+  // Crescendo Executioner synergy: crescendo rate +10% → +15% per stack
+  if (hasSynergy(relicIds, 'crescendo_executioner') && context.consecutiveCorrectAttacks > 0) {
+    percentDamageBonus += 0.05 * context.consecutiveCorrectAttacks;
+  }
+
   // curiosity_gem — Tier 1 (Learning) cards +15% effect
   if (relicIds.has('curiosity_gem') && context.cardTier === 'learning') {
     percentDamageBonus += 0.15;
@@ -184,6 +191,11 @@ export function resolveAttackModifiers(
   // executioners_axe — +5 flat damage when enemy below 30% HP
   if (relicIds.has('executioners_axe') && context.enemyHpPercent < 0.3) {
     flatDamageBonus += 5;
+  }
+
+  // Crescendo Executioner synergy: execute flat bonus doubled (+5 → +10)
+  if (hasSynergy(relicIds, 'crescendo_executioner') && context.enemyHpPercent < 0.3) {
+    flatDamageBonus += 5; // additional +5 on top of existing +5
   }
 
   return {
@@ -293,7 +305,7 @@ export function resolveDamageTakenEffects(
     dodgeChance: relicIds.has('phase_cloak') ? 0.2 : 0,
     reflectOnBlock:
       relicIds.has('mirror_shield') && context.hadBlock && context.blockAbsorbedAll
-        ? { percent: 0.3 }
+        ? { percent: 0.2 }
         : null,
     thornReflect,
     lowHpAttackBonus: relicIds.has('iron_resolve') && context.playerHpPercent < 0.50 ? 0.25 : 0,
@@ -318,6 +330,8 @@ export interface LethalSaveEffects {
   phoenixBlock: number;
   /** Empower duration in turns when phoenix triggers. */
   phoenixEmpowerTurns: number;
+  /** Whether Phoenix Rage synergy is active (grants +50% dmg and removes glass penalty). */
+  phoenixRageActive: boolean;
 }
 
 /** Context required to resolve lethal-save effects. */
@@ -351,14 +365,17 @@ export function resolveLethalEffects(
     relicIds.has('phoenix_feather') &&
     !context.phoenixUsedThisEncounter;
 
+  const phoenixRageActive = phoenixSave && hasSynergy(relicIds, 'phoenix_rage');
+
   return {
     lastBreathSave,
     lastBreathBlock: lastBreathSave ? 8 : 0,
     lastBreathDamageBonus: lastBreathSave ? 5 : 0,
     phoenixSave,
-    phoenixHealPercent: phoenixSave ? 0.5 : 0,
-    phoenixBlock: phoenixSave ? 20 : 0,
+    phoenixHealPercent: phoenixSave ? 0.35 : 0,
+    phoenixBlock: phoenixSave ? 15 : 0,
     phoenixEmpowerTurns: phoenixSave ? 2 : 0,
+    phoenixRageActive,
   };
 }
 
@@ -368,6 +385,8 @@ export function resolveLethalEffects(
 export interface TurnEndEffects {
   /** Whether block carries to the next turn instead of resetting (fortress_wall). */
   blockCarries: boolean;
+  /** Maximum block that can carry between turns (fortress_wall: 20, Infinity otherwise). */
+  blockCarryMax: number;
   /** HP healed from blood_pact (25% of damage dealt this turn). */
   healFromDamage: number;
   /** Bonus cards to draw next turn from afterimage. */
@@ -400,17 +419,15 @@ export function resolveTurnEndEffects(
   context: TurnEndContext,
 ): TurnEndEffects {
   const afterimageTriggers = relicIds.has('afterimage') && context.isPerfectTurn;
-  // If both afterimage + momentum_gem are held, afterimage grants +1 draw
-  // instead of +1 AP to prevent AP stacking to 5.
-  const afterimageAsDraw = afterimageTriggers && relicIds.has('momentum_gem');
   return {
     blockCarries: relicIds.has('fortress_wall'),
+    blockCarryMax: relicIds.has('fortress_wall') ? 20 : Infinity,
     healFromDamage: relicIds.has('blood_pact')
-      ? Math.floor(context.damageDealtThisTurn * 0.25)
+      ? Math.floor(context.damageDealtThisTurn * (hasSynergy(relicIds, 'perpetual_motion') ? 0.50 : 0.25))
       : 0,
-    bonusDrawNext: afterimageAsDraw ? 1 : 0,
-    hpLoss: relicIds.has('blood_price') ? 3 : 0,
-    bonusApFromAfterimage: afterimageTriggers && !afterimageAsDraw ? 1 : 0,
+    bonusDrawNext: afterimageTriggers ? 1 : 0,
+    hpLoss: relicIds.has('blood_price') ? (hasSynergy(relicIds, 'perpetual_motion') ? 1 : 3) : 0,
+    bonusApFromAfterimage: 0,
   };
 }
 
@@ -456,7 +473,7 @@ export function resolveCorrectAnswerEffects(
   context: CorrectAnswerContext,
 ): CorrectAnswerEffects {
   return {
-    healHp: relicIds.has('scholars_hat') ? 3 : 0,
+    healHp: relicIds.has('scholars_hat') ? (hasSynergy(relicIds, 'knowledge_engine') ? 5 : 3) : 0,
     bonusDamage: relicIds.has('scholars_hat') ? 2 : 0,
     memoryPalaceBonus:
       relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 2
@@ -577,25 +594,29 @@ export function resolveBaseDrawCount(relicIds: Set<string>): number {
 
 /**
  * Resolve the starting combo multiplier index.
- * Default combo starts at index 0 (1.0x); combo_ring starts at index 2 (1.25x).
+ * Default combo starts at index 0 (1.0x); combo_ring starts at index 2 (1.25x);
+ * echo_master synergy (echo_lens + combo_ring) starts even higher at index 3 (1.5x).
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Starting combo index (0 or 2).
+ * @returns Starting combo index (0, 2, or 3).
  */
 export function resolveComboStartValue(relicIds: Set<string>): number {
-  return relicIds.has('combo_ring') ? 2 : 0;
+  if (hasSynergy(relicIds, 'echo_master')) return 3; // start even higher
+  return relicIds.has('combo_ring') ? 1 : 0;
 }
 
 // ─── Speed Bonus ────────────────────────────────────────────────────
 
 /**
  * Resolve the speed bonus multiplier granted for fast answers.
- * Default is 1.5x (+50%); sharp_eye upgrades it to 1.75x (+75%).
+ * Default is 1.5x (+50%); sharp_eye upgrades it to 1.75x (+75%);
+ * speed_demon synergy (2 of speed_reader/sharp_eye/speed_charm) upgrades to 2.25x.
  *
  * @param relicIds - Set of relic IDs the player currently holds.
  * @returns Speed bonus multiplier.
  */
 export function resolveSpeedBonusMultiplier(relicIds: Set<string>): number {
+  if (hasSynergy(relicIds, 'speed_demon')) return 2.25;
   return relicIds.has('sharp_eye') ? 1.75 : 1.5;
 }
 
@@ -603,12 +624,13 @@ export function resolveSpeedBonusMultiplier(relicIds: Set<string>): number {
 
 /**
  * Resolve the timer percentage at which the speed bonus activates.
- * Default is 25% of timer remaining; speed_charm changes to 30%; speed_reader to 15%.
+ * Default is 25% of timer remaining; individual relics change it; speed_demon synergy sets to 40%.
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Speed bonus threshold as a fraction (0.25, 0.30, or 0.15).
+ * @returns Speed bonus threshold as a fraction (0.40 for synergy, 0.20-0.35 for individual).
  */
 export function resolveSpeedBonusThreshold(relicIds: Set<string>): number {
+  if (hasSynergy(relicIds, 'speed_demon')) return 0.40;
   if (relicIds.has('speed_reader')) return 0.20;
   if (relicIds.has('sharp_eye')) return 0.35;
   if (relicIds.has('speed_charm')) return 0.35;

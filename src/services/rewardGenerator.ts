@@ -3,14 +3,14 @@ import type { CardType } from '../data/card-types';
 import type { RewardArchetype } from './runManager';
 import { shuffled } from './randomUtils';
 
-const ALL_REWARD_TYPES: CardType[] = ['attack', 'shield', 'heal', 'buff', 'debuff', 'utility', 'regen', 'wild'];
+const ALL_REWARD_TYPES: CardType[] = ['attack', 'shield', 'buff', 'debuff', 'utility', 'wild'];
 
 const ARCHETYPE_WEIGHTS: Record<RewardArchetype, Partial<Record<CardType, number>>> = {
-  balanced: { attack: 1.2, shield: 1.1, heal: 1, buff: 0.9, debuff: 0.9, utility: 0.9, regen: 0.7, wild: 0.6 },
-  aggressive: { attack: 2.4, buff: 1.6, shield: 0.6, heal: 0.6, debuff: 0.4, utility: 0.4, regen: 0.3, wild: 0.8 },
-  defensive: { shield: 2.2, heal: 1.8, utility: 1, debuff: 0.9, attack: 0.6, buff: 0.5, regen: 1.2, wild: 0.6 },
-  control: { debuff: 2.2, utility: 1.9, shield: 0.9, heal: 0.8, buff: 0.7, attack: 0.5, regen: 0.6, wild: 0.8 },
-  hybrid: { attack: 1.4, shield: 1.4, heal: 1.2, buff: 1.1, debuff: 1.1, utility: 1.1, regen: 0.9, wild: 0.9 },
+  balanced: { attack: 1.2, shield: 1.1, buff: 0.9, debuff: 0.9, utility: 0.9, wild: 0.6 },
+  aggressive: { attack: 2.4, buff: 1.6, shield: 0.6, debuff: 0.4, utility: 0.4, wild: 0.8 },
+  defensive: { shield: 2.2, utility: 1, debuff: 0.9, attack: 0.6, buff: 0.5, wild: 0.6 },
+  control: { debuff: 2.2, utility: 1.9, shield: 0.9, buff: 0.7, attack: 0.5, wild: 0.8 },
+  hybrid: { attack: 1.4, shield: 1.4, buff: 1.1, debuff: 1.1, utility: 1.1, wild: 0.9 },
 };
 
 function filterEligible(

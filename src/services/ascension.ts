@@ -35,7 +35,7 @@ export interface AscensionModifiers {
   level: number;
   enemyHpMultiplier: number;
   enemyDamageMultiplier: number;
-  healCardMultiplier: number;
+  shieldCardMultiplier: number;
   timerBasePenaltySeconds: number;
   encounterTwoTimerPenaltySeconds: number;
   starterDeckSizeOverride: number | null;
@@ -65,7 +65,7 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     level: l,
     enemyHpMultiplier: l >= 1 ? 1.10 : 1.00,
     enemyDamageMultiplier: l >= 2 ? 1.10 : 1.00,
-    healCardMultiplier: l >= 3 ? 0.75 : 1.00,
+    shieldCardMultiplier: l >= 3 ? 0.80 : 1.00,
     timerBasePenaltySeconds: l >= 4 ? 1 : 0,
     encounterTwoTimerPenaltySeconds: l >= 10 ? 2 : 0,
     starterDeckSizeOverride: l >= 18 ? 10 : l >= 5 ? 12 : null,

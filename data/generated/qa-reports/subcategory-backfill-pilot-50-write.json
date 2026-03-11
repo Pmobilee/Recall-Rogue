@@ -1,0 +1,833 @@
+{
+  "generatedAt": "2026-03-11T13:05:37.553Z",
+  "mode": "write",
+  "options": {
+    "force": false,
+    "limit": null,
+    "perDomainLimit": 5,
+    "includeGenerated": true,
+    "includeSeed": true
+  },
+  "totals": {
+    "rows": 7682,
+    "updated": 50,
+    "kept": 0,
+    "legacy": 5,
+    "scored": 42,
+    "fallback": 3
+  },
+  "perDomain": {
+    "general_knowledge": {
+      "total": 720,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 715,
+      "bySubcategory": {
+        "records_firsts": 0,
+        "inventions_tech": 0,
+        "landmarks_wonders": 5,
+        "pop_culture": 0,
+        "words_language": 0,
+        "everyday_science": 0,
+        "oddities": 0
+      }
+    },
+    "natural_sciences": {
+      "total": 728,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 723,
+      "bySubcategory": {
+        "chemistry_elements": 0,
+        "materials_engineering": 3,
+        "biology_organisms": 0,
+        "physics_mechanics": 0,
+        "geology_earth": 1,
+        "botany_plants": 1,
+        "ecology_environment": 0
+      }
+    },
+    "space_astronomy": {
+      "total": 642,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 637,
+      "bySubcategory": {
+        "missions_spacecraft": 4,
+        "planets_moons": 0,
+        "stars_galaxies": 0,
+        "cosmology_universe": 0,
+        "satellites_tech": 1,
+        "exoplanets_astrobio": 0
+      }
+    },
+    "geography": {
+      "total": 1149,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 0,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 1144,
+      "bySubcategory": {
+        "capitals_countries": 5,
+        "africa": 0,
+        "asia_oceania": 0,
+        "europe": 0,
+        "americas": 0,
+        "landforms_water": 0,
+        "extreme_records": 0,
+        "climate_biomes": 0
+      }
+    },
+    "history": {
+      "total": 678,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 673,
+      "bySubcategory": {
+        "ancient_classical": 0,
+        "medieval": 0,
+        "early_modern": 0,
+        "modern_contemporary": 0,
+        "world_wars": 1,
+        "battles_military": 4,
+        "people_leaders": 0,
+        "social_cultural": 0
+      }
+    },
+    "mythology_folklore": {
+      "total": 786,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 781,
+      "bySubcategory": {
+        "greek_roman": 1,
+        "norse_celtic": 0,
+        "eastern_myths": 1,
+        "creatures_monsters": 2,
+        "creation_cosmology": 0,
+        "folk_legends": 1,
+        "gods_deities": 0
+      }
+    },
+    "animals_wildlife": {
+      "total": 756,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 4,
+      "fallback": 1,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 751,
+      "bySubcategory": {
+        "mammals": 1,
+        "birds": 0,
+        "marine_life": 0,
+        "insects_arachnids": 1,
+        "reptiles_amphibians": 0,
+        "behavior_intelligence": 0,
+        "conservation": 3,
+        "adaptations": 0
+      }
+    },
+    "human_body_health": {
+      "total": 697,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 692,
+      "bySubcategory": {
+        "anatomy_organs": 0,
+        "brain_neuro": 0,
+        "genetics_dna": 5,
+        "cardiovascular": 0,
+        "digestion_metabolism": 0,
+        "senses_perception": 0,
+        "immunity_disease": 0,
+        "medical_science": 0
+      }
+    },
+    "food_cuisine": {
+      "total": 792,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 4,
+      "fallback": 1,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 787,
+      "bySubcategory": {
+        "european_cuisine": 2,
+        "asian_cuisine": 0,
+        "world_cuisine": 1,
+        "baking_desserts": 2,
+        "fermentation_beverages": 0,
+        "food_history": 0,
+        "food_science": 0,
+        "ingredients_spices": 0
+      }
+    },
+    "art_architecture": {
+      "total": 734,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 4,
+      "fallback": 1,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 729,
+      "bySubcategory": {
+        "museums_institutions": 3,
+        "historic_buildings": 2,
+        "painting_visual": 0,
+        "sculpture_decorative": 0,
+        "modern_contemporary": 0,
+        "architectural_styles": 0,
+        "engineering_design": 0
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "type": "jsonl",
+      "totalRows": 378,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "type": "jsonl",
+      "totalRows": 357,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "type": "jsonl",
+      "totalRows": 396,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "type": "jsonl",
+      "totalRows": 350,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "type": "jsonl",
+      "totalRows": 195,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/geography-flags.jsonl",
+      "type": "jsonl",
+      "totalRows": 194,
+      "changedRows": 0
+    },
+    {
+      "path": "data/generated/geography.jsonl",
+      "type": "jsonl",
+      "totalRows": 370,
+      "changedRows": 0
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "type": "jsonl",
+      "totalRows": 328,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "type": "jsonl",
+      "totalRows": 338,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "type": "jsonl",
+      "totalRows": 393,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "type": "jsonl",
+      "totalRows": 354,
+      "changedRows": 5
+    },
+    {
+      "path": "data/generated/production-facts.jsonl",
+      "type": "jsonl",
+      "totalRows": 0,
+      "changedRows": 0
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "type": "jsonl",
+      "totalRows": 321,
+      "changedRows": 5
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "type": "json",
+      "totalRows": 40,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "type": "json",
+      "totalRows": 3585,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/tutorial.json",
+      "type": "json",
+      "totalRows": 1,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-n3.json",
+      "type": "json",
+      "totalRows": 400,
+      "changedRows": 0
+    }
+  ],
+  "samples": [
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "genet-victoriae-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Giant forest genets are small carnivorous mammals found in African forests."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "parnassius-apollo-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Parnassius apollo is a butterfly species found in European mountain regions."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "senna-alata-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Senna alata is a tropical plant species with least concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "leopard-cat-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Leopard cats are small wild felines native to Asia with spotted coats."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "phaseolus-vulgaris-001",
+      "domain": "animals_wildlife",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Phaseolus vulgaris is a legume crop cultivated worldwide for food."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "mfn-berlin-1810",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "Museum für Naturkunde opened in Berlin in 1810 as a natural history institution."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "qa-valencia-arts-sciences-001",
+      "domain": "art_architecture",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "The City of Arts and Sciences is a cultural complex in Valencia, Spain, completed in 1998."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "ushmm-founding-1993",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "The United States Holocaust Memorial Museum officially opened in Washington, D.C. in 1993."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "olavinlinna-castle-001",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "Olavinlinna Castle is a medieval fortress located in Savonlinna, Finland."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "q251672-chateau-borely-1778",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "Château Borély, founded in 1778, is a museum in France."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "waffle-origin-france",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Waffles originated in France as a batter-based food cooked between patterned plates."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food_cuisine_hamburger_001",
+      "domain": "food_cuisine",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "world_cuisine",
+      "statement": "The hamburger is an American sandwich made with a ground beef patty."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "labskaus-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Labskaus is a hearty culinary specialty from Northern Germany and Scandinavia."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "mille-feuille-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Mille-feuille is a French pastry with layers of puff pastry and cream."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "crêpe-001-france",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Crêpes are very thin pancakes that originated in France."
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "id": "fan-sin-temple-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Fan Sin Temple is a historic building located in Hong Kong, China."
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "id": "aqaba-church-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Aqaba Church is an ancient church building located in Aqaba, Jordan."
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "id": "q2873434-minerva-chalcidica",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Temple of Minerva Chalcidica is an ancient Roman building located in Rome."
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "id": "Q2882977-etemple-uruk",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "E-sara is an ancient temple located in the city of Uruk."
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "id": "Q2883612-baolun-ge",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Baolun ge is a historic temple located in Chengkan village, Huangshan, Anhui province, China."
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "id": "geo-cap-canada-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "capitals",
+      "toCategoryL2": "capitals_countries",
+      "statement": "The capital of Canada is Ottawa."
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "id": "geo-cap-japan-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "capitals",
+      "toCategoryL2": "capitals_countries",
+      "statement": "The capital of Japan is Tokyo."
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "id": "geo-cap-norway-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "capitals",
+      "toCategoryL2": "capitals_countries",
+      "statement": "The capital of Norway is Oslo."
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "id": "geo-cap-ireland-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "capitals",
+      "toCategoryL2": "capitals_countries",
+      "statement": "The capital of Ireland is Dublin."
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "id": "geo-cap-hungary-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "capitals",
+      "toCategoryL2": "capitals_countries",
+      "statement": "The capital of Hungary is Budapest."
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "id": "battle-marignano-1515",
+      "domain": "history",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "battles_military",
+      "statement": "The Battle of Marignano in 1515 was fought between Switzerland and France."
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "id": "battle-nieuwpoort-1600",
+      "domain": "history",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "battles_military",
+      "statement": "The Battle of Nieuwpoort was fought between Dutch and Spanish forces in Belgium."
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "id": "battle-jarama-1937",
+      "domain": "history",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "battles_military",
+      "statement": "The Battle of Jarama was a Spanish Civil War engagement in February 1937 near Madrid."
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "id": "hist-vlasenica-1943-001",
+      "domain": "history",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "world_wars",
+      "statement": "The 1943 Battle for Vlasenica was a Yugoslav People's Liberation Army operation."
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "id": "q4373-white-mountain-1620",
+      "domain": "history",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "battles_military",
+      "statement": "The Battle of White Mountain in 1620 ended the Bohemian phase of the Thirty Years' War."
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "id": "adgra2-gene-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "ADGRA2 is a protein-coding gene found in humans."
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "id": "polr2mp1-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "POLR2MP1 is a pseudogene found in human DNA."
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "id": "gprc5d-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GPRC5D is a protein-coding gene found in humans."
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "id": "gltp-gene-q5572626",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GLTP is a protein-coding gene found in human DNA."
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "id": "gpc4-protein-gene-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GPC4 is a protein-coding gene found in human cells."
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "id": "cupid-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "greek_roman",
+      "statement": "Cupid is the Roman god of love, counterpart to Greek god Eros."
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "id": "curupira-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "Curupira is a mythological forest guardian creature from Brazilian folklore."
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "id": "loch-ness-monster-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "The Loch Ness Monster is a legendary creature from Scottish folklore inhabiting Loch Ness."
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "id": "easter-bunny-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "folk_legends",
+      "statement": "The Easter Bunny is a folkloric figure symbolizing Easter and springtime renewal."
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "id": "kubikajiri-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "eastern_myths",
+      "statement": "Kubikajiri is a Japanese yokai that bites off human heads from behind."
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "id": "limestone-001",
+      "domain": "natural_sciences",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "geology_earth",
+      "statement": "Limestone is a sedimentary rock composed primarily of calcium carbonate."
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "id": "bronze-alloy-001",
+      "domain": "natural_sciences",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "materials_engineering",
+      "statement": "Bronze is a metal alloy made from copper and tin."
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "id": "bambuseae-001",
+      "domain": "natural_sciences",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "botany_plants",
+      "statement": "Bambuseae is a tribe of bamboo plants in the Bambusoideae subfamily."
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "id": "Q518350-copper-alloy-001",
+      "domain": "natural_sciences",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "materials_engineering",
+      "statement": "Copper-based alloys contain copper as their principal metal component."
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "id": "tool-steel-001",
+      "domain": "natural_sciences",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "materials_engineering",
+      "statement": "Tool steel is carbon and alloy steel designed for manufacturing cutting tools."
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "id": "apx-001-satellite-power",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "satellites_tech",
+      "statement": "Advanced Photovoltaic Experiment tested solar panel efficiency in orbital space."
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "id": "a101-testflight-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-101 was an early German rocket test flight program."
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "id": "A-103-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-103 was a Soviet test mission exploring spacecraft systems."
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "id": "apollo-a104-test-1965",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Apollo A-104 was an unmanned orbital test of Apollo spacecraft in 1965."
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "id": "apollo-a105-boilerplate",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-105 was the final boilerplate test of an Apollo spacecraft."
+    }
+  ]
+}

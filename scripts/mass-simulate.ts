@@ -13,46 +13,63 @@ import { writeFileSync } from 'node:fs';
 import { HeadlessCombatSimulator } from '../tests/playtest/core/headless-combat';
 import type { PlayerProfile, PlaythroughSummary, DeepRunStats } from '../tests/playtest/core/types';
 import { FULL_RELIC_CATALOGUE, STARTER_RELIC_IDS } from '../src/data/relics/index';
+import { setBalanceOverrides, type BalanceOverrides } from '../src/data/balance';
 
 // ─── Profile Presets ─────────────────────────────────────────────────────────
 
 const PROFILES: Record<string, PlayerProfile> = {
+  novice: {
+    id: 'novice', name: 'Novice (30)', description: 'Brand new player, learning the basics',
+    learningAbility: { baseAccuracy: 0.30, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.02, minAccuracy: 0.20, maxAccuracy: 0.50 },
+    readingSpeed: { category: 'slow', speedBonusProbability: 0.02 },
+    strategicSkill: { level: 'random', prioritizeShieldsBeforeAttacks: false, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.2 },
+    engagement: { skipProbability: 0.08, aggression: 'passive' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
   beginner: {
-    id: 'beginner', name: 'Beginner', description: 'New player',
-    learningAbility: { baseAccuracy: 0.5, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.5, maxAccuracy: 0.5 },
+    id: 'beginner', name: 'Beginner (45)', description: 'Early player, still learning',
+    learningAbility: { baseAccuracy: 0.45, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.015, minAccuracy: 0.30, maxAccuracy: 0.60 },
     readingSpeed: { category: 'slow', speedBonusProbability: 0.05 },
     strategicSkill: { level: 'random', prioritizeShieldsBeforeAttacks: false, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.3 },
     engagement: { skipProbability: 0.05, aggression: 'passive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
+  casual: {
+    id: 'casual', name: 'Casual (60)', description: 'Casual player, moderate knowledge',
+    learningAbility: { baseAccuracy: 0.60, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.01, minAccuracy: 0.45, maxAccuracy: 0.75 },
+    readingSpeed: { category: 'normal', speedBonusProbability: 0.10 },
+    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.35 },
+    engagement: { skipProbability: 0.05, aggression: 'balanced' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
   average: {
-    id: 'average', name: 'Average', description: 'Typical player',
-    learningAbility: { baseAccuracy: 0.7, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.01, minAccuracy: 0.6, maxAccuracy: 0.8 },
+    id: 'average', name: 'Average (70)', description: 'Typical player',
+    learningAbility: { baseAccuracy: 0.70, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.01, minAccuracy: 0.55, maxAccuracy: 0.85 },
     readingSpeed: { category: 'normal', speedBonusProbability: 0.15 },
     strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.4 },
     engagement: { skipProbability: 0.05, aggression: 'balanced' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
+  skilled: {
+    id: 'skilled', name: 'Skilled (80)', description: 'Good player with solid knowledge',
+    learningAbility: { baseAccuracy: 0.80, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.70, maxAccuracy: 0.90 },
+    readingSpeed: { category: 'fast', speedBonusProbability: 0.35 },
+    strategicSkill: { level: 'intermediate', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.35 },
+    engagement: { skipProbability: 0.03, aggression: 'balanced' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
   expert: {
-    id: 'expert', name: 'Expert', description: 'Highly skilled player',
-    learningAbility: { baseAccuracy: 0.9, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.85, maxAccuracy: 0.95 },
-    readingSpeed: { category: 'fast', speedBonusProbability: 0.6 },
+    id: 'expert', name: 'Expert (90)', description: 'Highly skilled player',
+    learningAbility: { baseAccuracy: 0.90, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.80, maxAccuracy: 0.95 },
+    readingSpeed: { category: 'fast', speedBonusProbability: 0.60 },
     strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.35 },
     engagement: { skipProbability: 0.02, aggression: 'aggressive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
-  struggling: {
-    id: 'struggling', name: 'Struggling', description: 'Low accuracy declining player',
-    learningAbility: { baseAccuracy: 0.4, accuracyCurve: 'declining', accuracyPerFloorDelta: -0.02, minAccuracy: 0.2, maxAccuracy: 0.5 },
-    readingSpeed: { category: 'slow', speedBonusProbability: 0.02 },
-    strategicSkill: { level: 'random', prioritizeShieldsBeforeAttacks: false, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.2 },
-    engagement: { skipProbability: 0.1, aggression: 'passive' },
-    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
-  },
-  'speed-runner': {
-    id: 'speed-runner', name: 'Speed Runner', description: 'Elite speed player',
-    learningAbility: { baseAccuracy: 0.9, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.85, maxAccuracy: 0.95 },
-    readingSpeed: { category: 'fast', speedBonusProbability: 0.9 },
+  master: {
+    id: 'master', name: 'Master (95)', description: 'Elite speed-runner',
+    learningAbility: { baseAccuracy: 0.95, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.90, maxAccuracy: 0.99 },
+    readingSpeed: { category: 'fast', speedBonusProbability: 0.90 },
     strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.3 },
     engagement: { skipProbability: 0.0, aggression: 'aggressive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
@@ -99,6 +116,8 @@ interface SimConfig {
   relics: string[];
   ascensionLevel: number;
   group: string;
+  difficultyMode?: 'relaxed' | 'normal';
+  balanceOverrides?: BalanceOverrides;
 }
 
 // ─── Aggregated Metrics ──────────────────────────────────────────────────────
@@ -112,6 +131,12 @@ interface AggregatedMetrics {
   avgDPS: number;
   avgDamageTakenPerEnc: number;
   avgTurnsPerEncounter: number;
+  avgGoldEarned: number;
+  avgGoldSpent: number;
+  avgUpgrades: number;
+  avgShopRelicsPurchased: number;
+  avgActiveSynergies: number;
+  avgFoodPurchased: number;
 }
 
 // ─── Accumulator ─────────────────────────────────────────────────────────────
@@ -127,6 +152,12 @@ class RunAccumulator {
     totalDPS: number;
     totalDamageTakenPerEnc: number;
     totalTurnsPerEnc: number;
+    totalGoldEarned: number;
+    totalGoldSpent: number;
+    totalUpgrades: number;
+    totalShopRelics: number;
+    totalActiveSynergies: number;
+    totalFoodPurchased: number;
   }> = new Map();
 
   /** Add a completed run's summary to the accumulator (streaming — no storage). */
@@ -144,6 +175,12 @@ class RunAccumulator {
         totalDPS: 0,
         totalDamageTakenPerEnc: 0,
         totalTurnsPerEnc: 0,
+        totalGoldEarned: 0,
+        totalGoldSpent: 0,
+        totalUpgrades: 0,
+        totalShopRelics: 0,
+        totalActiveSynergies: 0,
+        totalFoodPurchased: 0,
       };
       this.data.set(key, entry);
     }
@@ -168,6 +205,14 @@ class RunAccumulator {
     entry.totalDPS += totalTurns > 0 ? totalDamageDealt / totalTurns : 0;
     entry.totalDamageTakenPerEnc += totalEncs > 0 ? totalDamageTaken / totalEncs : 0;
     entry.totalTurnsPerEnc += totalEncs > 0 ? totalTurns / totalEncs : 0;
+
+    // Economy and upgrade stats
+    entry.totalGoldEarned += summary.goldEarned ?? 0;
+    entry.totalGoldSpent += summary.goldSpent ?? 0;
+    entry.totalUpgrades += summary.cardsUpgraded ?? 0;
+    entry.totalShopRelics += summary.shopRelicsPurchased ?? 0;
+    entry.totalActiveSynergies += (summary.activeSynergies?.length ?? 0);
+    entry.totalFoodPurchased += summary.shopFoodPurchased ?? 0;
   }
 
   /** Get all config labels. */
@@ -195,6 +240,12 @@ class RunAccumulator {
       avgDPS: entry.totalDPS / n,
       avgDamageTakenPerEnc: entry.totalDamageTakenPerEnc / n,
       avgTurnsPerEncounter: entry.totalTurnsPerEnc / n,
+      avgGoldEarned: entry.totalGoldEarned / n,
+      avgGoldSpent: entry.totalGoldSpent / n,
+      avgUpgrades: entry.totalUpgrades / n,
+      avgShopRelicsPurchased: entry.totalShopRelics / n,
+      avgActiveSynergies: entry.totalActiveSynergies / n,
+      avgFoodPurchased: entry.totalFoodPurchased / n,
     };
   }
 
@@ -261,6 +312,19 @@ interface DeepAnalysisOutput {
   cardTypeEffectiveness: CardTypeEffectiveness[];
   funFactorMetrics: FunFactorMetrics;
   relicCountScaling: RelicCountScaling[];
+  economyStats: {
+    avgGoldEarned: number;
+    avgGoldSpent: number;
+    avgGoldEfficiency: number;
+  };
+  upgradeStats: {
+    avgUpgradesPerRun: number;
+    upgradesByMechanic: Record<string, number>;
+  };
+  synergyStats: {
+    avgSynergiesPerRun: number;
+    synergyFrequency: Record<string, number>;
+  };
 }
 
 // ─── Deep Accumulator ───────────────────────────────────────────────────────
@@ -278,6 +342,14 @@ class DeepAccumulator {
   private minHpSum = 0;
 
   private relicCountStats = new Map<number, { runs: number; wins: number; floorSum: number; dpsSum: number }>();
+
+  private totalGoldEarned = 0;
+  private totalGoldSpent = 0;
+  private totalUpgrades = 0;
+  private upgradesByMechanic = new Map<string, number>();
+  private totalSynergies = 0;
+  private synergyFrequency = new Map<string, number>();
+  private totalFoodPurchased = 0;
 
   /** Add a completed run's deep stats to the accumulator. */
   addRun(summary: PlaythroughSummary, relicCount: number): void {
@@ -337,6 +409,26 @@ class DeepAccumulator {
     const totalDmg = ds.floorResults.reduce((sum, fr) => sum + fr.totalDamageDealt, 0);
     const totalTurns = ds.floorResults.reduce((sum, fr) => sum + fr.totalTurns, 0);
     rc.dpsSum += totalTurns > 0 ? totalDmg / totalTurns : 0;
+
+    // Economy stats
+    this.totalGoldEarned += ds.goldEarned ?? 0;
+    this.totalGoldSpent += ds.goldSpent ?? 0;
+
+    // Upgrade stats
+    this.totalUpgrades += (ds.upgradeHistory?.length ?? 0);
+    for (const upgrade of (ds.upgradeHistory ?? [])) {
+      this.upgradesByMechanic.set(upgrade.mechanicId, (this.upgradesByMechanic.get(upgrade.mechanicId) ?? 0) + 1);
+    }
+
+    // Synergy stats
+    const synergies = ds.synergyTimeline?.at(-1)?.synergies ?? [];
+    this.totalSynergies += synergies.length;
+    for (const synergyId of synergies) {
+      this.synergyFrequency.set(synergyId, (this.synergyFrequency.get(synergyId) ?? 0) + 1);
+    }
+
+    // Food stats
+    this.totalFoodPurchased += summary.shopFoodPurchased ?? 0;
   }
 
   /** Compute deep analysis results. */
@@ -411,7 +503,26 @@ class DeepAccumulator {
       });
     }
 
-    return { perFloorStats, perEnemyStats, cardTypeEffectiveness, funFactorMetrics, relicCountScaling };
+    const n = this.totalRuns || 1;
+
+    const economyStats = {
+      avgGoldEarned: round2(this.totalGoldEarned / n),
+      avgGoldSpent: round2(this.totalGoldSpent / n),
+      avgGoldEfficiency: round2(this.totalGoldEarned > 0 ? (this.totalGoldSpent / this.totalGoldEarned) * 100 : 0),
+      avgFoodPurchased: round2(this.totalFoodPurchased / n),
+    };
+
+    const upgradeStats = {
+      avgUpgradesPerRun: round2(this.totalUpgrades / n),
+      upgradesByMechanic: Object.fromEntries(this.upgradesByMechanic),
+    };
+
+    const synergyStats = {
+      avgSynergiesPerRun: round2(this.totalSynergies / n),
+      synergyFrequency: Object.fromEntries(this.synergyFrequency),
+    };
+
+    return { perFloorStats, perEnemyStats, cardTypeEffectiveness, funFactorMetrics, relicCountScaling, economyStats, upgradeStats, synergyStats };
   }
 }
 
@@ -420,16 +531,21 @@ class DeepAccumulator {
 function generateSoloConfigs(ascensionLevels: number[]): SimConfig[] {
   const configs: SimConfig[] = [];
 
-  // Control baselines: each profile with no relics
+  const DIFFICULTY_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
+
+  // Control baselines: each profile × each difficulty mode × each ascension
   for (const profileId of Object.keys(PROFILES)) {
-    for (const asc of ascensionLevels) {
-      configs.push({
-        label: `control-${profileId}-asc${asc}`,
-        profileId,
-        relics: [],
-        ascensionLevel: asc,
-        group: 'control',
-      });
+    for (const mode of DIFFICULTY_MODES) {
+      for (const asc of ascensionLevels) {
+        configs.push({
+          label: `control-${profileId}-${mode}-asc${asc}`,
+          profileId,
+          relics: [],
+          ascensionLevel: asc,
+          group: 'control',
+          difficultyMode: mode,
+        });
+      }
     }
   }
 
@@ -513,7 +629,7 @@ function generateBuildConfigs(ascensionLevels: number[]): SimConfig[] {
     },
     {
       name: 'Speed Demon',
-      profileId: 'speed-runner',
+      profileId: 'master',
       relics: ['swift_boots', 'combo_ring', 'momentum_gem', 'afterimage', 'quicksilver', 'double_vision', 'sharp_eye', 'speed_charm'],
     },
     {
@@ -571,32 +687,33 @@ function generateFairnessConfigs(ascensionLevels: number[]): SimConfig[] {
     { name: 'Cursed', relics: ['glass_cannon', 'blood_price'] },
   ];
 
-  const fairnessProfiles = ['beginner', 'average', 'expert', 'struggling'];
+  const fairnessProfiles = ['novice', 'beginner', 'casual', 'average', 'skilled', 'expert', 'master'];
+  const fairnessModes: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
   const configs: SimConfig[] = [];
 
   for (const profileId of fairnessProfiles) {
-    for (const asc of ascensionLevels) {
-      configs.push({
-        label: `control-${profileId}-asc${asc}`,
-        profileId,
-        relics: [],
-        ascensionLevel: asc,
-        group: 'control',
-      });
-    }
-  }
-
-  for (const loadout of loadouts) {
-    const slug = loadout.name.toLowerCase();
-    for (const profileId of fairnessProfiles) {
+    for (const mode of fairnessModes) {
       for (const asc of ascensionLevels) {
+        // control
         configs.push({
-          label: `fairness-${slug}-${profileId}-asc${asc}`,
+          label: `fairness-${profileId}-${mode}-control-asc${asc}`,
           profileId,
-          relics: loadout.relics,
+          relics: [],
           ascensionLevel: asc,
           group: 'fairness',
+          difficultyMode: mode,
         });
+        // each loadout
+        for (const loadout of loadouts) {
+          configs.push({
+            label: `fairness-${profileId}-${mode}-${loadout.name}-asc${asc}`,
+            profileId,
+            relics: loadout.relics,
+            ascensionLevel: asc,
+            group: 'fairness',
+            difficultyMode: mode,
+          });
+        }
       }
     }
   }
@@ -672,32 +789,31 @@ function generateCustomConfigs(
 
 function generateDeepConfigs(ascensionLevels: number[]): SimConfig[] {
   const configs: SimConfig[] = [];
-  const profile = 'average'; // deep mode uses average profile
 
-  for (const asc of ascensionLevels) {
-    // Control (0 relics)
-    configs.push({ label: `deep-control-${profile}-asc${asc}`, profileId: profile, relics: [], ascensionLevel: asc, group: 'deep' });
+  const DEEP_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
+  const DEEP_PROFILES = Object.keys(PROFILES);
 
-    // 1 relic (use top B-tier relics)
-    const topRelics = ['glass_cannon', 'combo_ring', 'whetstone'];
-    for (const r of topRelics) {
-      configs.push({ label: `deep-1relic-${r}-asc${asc}`, profileId: profile, relics: [r], ascensionLevel: asc, group: 'deep' });
+  for (const profileId of DEEP_PROFILES) {
+    for (const mode of DEEP_MODES) {
+      for (const asc of ascensionLevels) {
+        // Control (no relics)
+        configs.push({ label: `deep-control-${profileId}-${mode}-asc${asc}`, profileId, relics: [], ascensionLevel: asc, group: 'deep', difficultyMode: mode });
+
+        // 1-relic tests (top 3 combat relics)
+        for (const r of COMBAT_RELICS.slice(0, 3)) {
+          configs.push({ label: `deep-1relic-${r}-${profileId}-${mode}-asc${asc}`, profileId, relics: [r], ascensionLevel: asc, group: 'deep', difficultyMode: mode });
+        }
+
+        // Starter relics (3)
+        configs.push({ label: `deep-3relics-starter-${profileId}-${mode}-asc${asc}`, profileId, relics: ['whetstone', 'iron_buckler', 'herbal_pouch'], ascensionLevel: asc, group: 'deep', difficultyMode: mode });
+
+        // Mid-game (5)
+        configs.push({ label: `deep-5relics-mid-${profileId}-${mode}-asc${asc}`, profileId, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots'], ascensionLevel: asc, group: 'deep', difficultyMode: mode });
+
+        // Full build (8)
+        configs.push({ label: `deep-8relics-full-${profileId}-${mode}-asc${asc}`, profileId, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots', 'fortress_wall', 'blood_pact', 'afterimage'], ascensionLevel: asc, group: 'deep', difficultyMode: mode });
+      }
     }
-
-    // 3 relics (starter set)
-    configs.push({ label: `deep-3relics-starter-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch'], ascensionLevel: asc, group: 'deep' });
-
-    // 5 relics (mid-game)
-    configs.push({ label: `deep-5relics-mid-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots'], ascensionLevel: asc, group: 'deep' });
-
-    // 8 relics (full build)
-    configs.push({ label: `deep-8relics-full-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots', 'fortress_wall', 'blood_pact', 'afterimage'], ascensionLevel: asc, group: 'deep' });
-  }
-
-  // Also run with expert profile
-  for (const asc of ascensionLevels) {
-    configs.push({ label: `deep-control-expert-asc${asc}`, profileId: 'expert', relics: [], ascensionLevel: asc, group: 'deep' });
-    configs.push({ label: `deep-8relics-expert-asc${asc}`, profileId: 'expert', relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots', 'fortress_wall', 'blood_pact', 'afterimage'], ascensionLevel: asc, group: 'deep' });
   }
 
   return configs;
@@ -727,6 +843,8 @@ interface CliArgs {
   output: string | null;
   csv: string | null;
   quiet: boolean;
+  sweepMaxConfigs?: number;
+  sweepStrategy?: 'grid' | 'lhs' | 'random';
 }
 
 function parseArgs(argv: string[]): CliArgs {
@@ -782,6 +900,14 @@ function parseArgs(argv: string[]): CliArgs {
       case '--quiet':
         args.quiet = true;
         break;
+      case '--sweep-max-configs':
+        args.sweepMaxConfigs = parseInt(next, 10);
+        i++;
+        break;
+      case '--sweep-strategy':
+        args.sweepStrategy = next as any;
+        i++;
+        break;
       case '--help':
       case '-h':
         printUsage();
@@ -820,9 +946,9 @@ Modes:
   solo         Test each combat relic individually vs no-relic control
   combos       Test all C(N,2) relic pairs for synergy analysis
   builds       Test 6 predefined archetype builds
-  fairness     Test loadouts across beginner/average/expert/struggling
+  fairness     Test loadouts across all 7 profiles + 2 difficulty modes
   progression  Test progression stages (new player -> full collection)
-  sweep        Run all modes combined
+  sweep        Parameter sweep: test balance configurations and rank them
   custom       Custom relics and profiles
   deep         Deep analytics: per-floor stats, enemy stats, card effectiveness, fun factor
 
@@ -835,6 +961,8 @@ Options:
   --output path          Write JSON output to file
   --csv path             Write CSV output to file
   --quiet                Suppress progress output to stderr
+  --sweep-max-configs N  Max parameter combinations to test (default: 500)
+  --sweep-strategy S     Sampling: grid, lhs, random (default: lhs)
   --help, -h             Show this help message
 
 Examples:
@@ -948,7 +1076,8 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
     const metrics = accumulator.getMetrics(label);
     if (!metrics) continue;
 
-    const controlKey = `control-${config.profileId}-asc${config.ascensionLevel}`;
+    const dm = config.difficultyMode ?? 'normal';
+    const controlKey = `control-${config.profileId}-${dm}-asc${config.ascensionLevel}`;
     const control = controlBaselines[controlKey];
     if (!control) continue;
 
@@ -980,7 +1109,8 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
     const metrics = accumulator.getMetrics(label);
     if (!metrics) continue;
 
-    const controlKey = `control-${config.profileId}-asc${config.ascensionLevel}`;
+    const dm = config.difficultyMode ?? 'normal';
+    const controlKey = `control-${config.profileId}-${dm}-asc${config.ascensionLevel}`;
     const control = controlBaselines[controlKey];
     if (!control) continue;
 
@@ -1060,7 +1190,7 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
     const parts = label.split('-');
     // fairness-<loadout>-<profile>-asc<N>
     const loadoutName = parts[1];
-    const profileId = parts.slice(2, -1).join('-'); // handle multi-word profiles like speed-runner
+    const profileId = parts.slice(2, -1).join('-'); // handle multi-word profile names
 
     if (!fairnessLoadouts.has(loadoutName)) {
       fairnessLoadouts.set(loadoutName, new Map());
@@ -1429,6 +1559,315 @@ function printDeepSummary(deep: DeepAnalysisOutput): void {
   }
 }
 
+// ─── Parameter Sweep Mode ────────────────────────────────────────────────────
+
+/** Parameter range definition for sweep. */
+interface SweepParamRange {
+  key: keyof BalanceOverrides;
+  values: any[];
+}
+
+/** Default sweep parameters — the most impactful balance levers. */
+const DEFAULT_SWEEP_PARAMS: SweepParamRange[] = [
+  { key: 'baseEffectAttack', values: [8, 9, 10, 11, 12] },
+  { key: 'postEncounterHealPct', values: [0.04, 0.06, 0.08, 0.10, 0.12] },
+  { key: 'fizzleEffectRatio', values: [0.10, 0.15, 0.20, 0.25, 0.30] },
+  { key: 'floorDamageScalingPerFloor', values: [0.02, 0.03, 0.04, 0.05] },
+  { key: 'comboMultipliers', values: [
+    [1.0, 1.10, 1.25, 1.40, 1.75],
+    [1.0, 1.10, 1.20, 1.30, 1.50],
+    [1.0, 1.15, 1.30, 1.50, 2.00],
+  ]},
+  { key: 'playerStartHP', values: [80, 90, 100, 110] },
+  { key: 'postEncounterHealCap', values: [
+    { 1: 1.0, 2: 1.0, 3: 0.85, 4: 0.70 },
+    { 1: 1.0, 2: 0.95, 3: 0.80, 4: 0.60 },
+    { 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0 },
+  ]},
+];
+
+/** Generate Latin Hypercube samples for parameter sweep. */
+function generateLHS(params: SweepParamRange[], n: number, rng: () => number): BalanceOverrides[] {
+  const configs: BalanceOverrides[] = [];
+  const indexArrays = params.map(p => {
+    const indices: number[] = [];
+    for (let i = 0; i < n; i++) {
+      indices.push(i % p.values.length);
+    }
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    return indices;
+  });
+
+  for (let i = 0; i < n; i++) {
+    const overrides: BalanceOverrides = {};
+    for (let p = 0; p < params.length; p++) {
+      const param = params[p];
+      const valueIndex = indexArrays[p][i];
+      (overrides as any)[param.key] = param.values[valueIndex];
+    }
+    configs.push(overrides);
+  }
+  return configs;
+}
+
+/** Generate grid (Cartesian product) of all parameter values. */
+function generateGrid(params: SweepParamRange[]): BalanceOverrides[] {
+  let configs: BalanceOverrides[] = [{}];
+  for (const param of params) {
+    const expanded: BalanceOverrides[] = [];
+    for (const existing of configs) {
+      for (const value of param.values) {
+        expanded.push({ ...existing, [param.key]: value });
+      }
+    }
+    configs = expanded;
+  }
+  return configs;
+}
+
+/** Generate random parameter combinations. */
+function generateRandom(params: SweepParamRange[], n: number, rng: () => number): BalanceOverrides[] {
+  const configs: BalanceOverrides[] = [];
+  for (let i = 0; i < n; i++) {
+    const overrides: BalanceOverrides = {};
+    for (const param of params) {
+      (overrides as any)[param.key] = param.values[Math.floor(rng() * param.values.length)];
+    }
+    configs.push(overrides);
+  }
+  return configs;
+}
+
+interface SweepTargets {
+  survivalTargets: Record<string, [number, number]>;
+  turnsPerEncounterTarget: [number, number];
+}
+
+const SWEEP_TARGETS: SweepTargets = {
+  survivalTargets: {
+    casual: [0.15, 0.30],
+    average: [0.25, 0.40],
+    skilled: [0.50, 0.70],
+  },
+  turnsPerEncounterTarget: [4.0, 6.0],
+};
+
+function rangeScore(actual: number, min: number, max: number): number {
+  if (actual >= min && actual <= max) return 0;
+  if (actual < min) return (min - actual) / Math.max(max - min, 0.01);
+  return (actual - max) / Math.max(max - min, 0.01);
+}
+
+interface SweepResult {
+  rank: number;
+  overrides: BalanceOverrides;
+  compositeScore: number;
+  metricScores: {
+    survivalFit: number;
+    pacingFit: number;
+    foodFit: number;
+    goldEfficiencyFit: number;
+  };
+  profileMetrics: Record<string, {
+    survivalRate: number;
+    avgFinalFloor: number;
+    avgTurnsPerEncounter: number;
+    avgFoodPurchased: number;
+    avgGoldEarned: number;
+    avgGoldSpent: number;
+  }>;
+}
+
+function pearsonCorrelation(x: number[], y: number[]): number {
+  const n = x.length;
+  if (n < 3) return 0;
+  const meanX = x.reduce((a, b) => a + b, 0) / n;
+  const meanY = y.reduce((a, b) => a + b, 0) / n;
+  let num = 0, denX = 0, denY = 0;
+  for (let i = 0; i < n; i++) {
+    const dx = x[i] - meanX;
+    const dy = y[i] - meanY;
+    num += dx * dy;
+    denX += dx * dx;
+    denY += dy * dy;
+  }
+  const den = Math.sqrt(denX * denY);
+  return den > 0 ? Math.round((num / den) * 1000) / 1000 : 0;
+}
+
+function generateSweepConfigs(
+  maxConfigs: number,
+  strategy: 'grid' | 'lhs' | 'random',
+  profiles: string[],
+  ascensionLevels: number[],
+  difficultyModes: Array<'relaxed' | 'normal'>,
+): { configs: SimConfig[]; overrideSets: BalanceOverrides[] } {
+  const rng = () => Math.random();
+  const params = DEFAULT_SWEEP_PARAMS;
+
+  let overrideSets: BalanceOverrides[];
+  const totalGrid = params.reduce((acc, p) => acc * p.values.length, 1);
+
+  if (strategy === 'grid' && totalGrid <= maxConfigs) {
+    overrideSets = generateGrid(params);
+  } else if (strategy === 'lhs') {
+    overrideSets = generateLHS(params, Math.min(maxConfigs, totalGrid), rng);
+  } else {
+    overrideSets = generateRandom(params, maxConfigs, rng);
+  }
+
+  const configs: SimConfig[] = [];
+
+  for (const profileId of profiles) {
+    for (const asc of ascensionLevels) {
+      for (const dm of difficultyModes) {
+        configs.push({
+          label: `sweep-control-${profileId}-${dm}-asc${asc}`,
+          profileId,
+          relics: [],
+          ascensionLevel: asc,
+          group: 'sweep-control',
+          difficultyMode: dm,
+        });
+      }
+    }
+  }
+
+  for (let i = 0; i < overrideSets.length; i++) {
+    for (const profileId of profiles) {
+      for (const asc of ascensionLevels) {
+        for (const dm of difficultyModes) {
+          configs.push({
+            label: `sweep-${i}-${profileId}-${dm}-asc${asc}`,
+            profileId,
+            relics: [],
+            ascensionLevel: asc,
+            group: 'sweep',
+            difficultyMode: dm,
+            balanceOverrides: overrideSets[i],
+          });
+        }
+      }
+    }
+  }
+
+  return { configs, overrideSets };
+}
+
+function analyzeSweep(
+  accumulator: RunAccumulator,
+  overrideSets: BalanceOverrides[],
+  profiles: string[],
+  ascensionLevels: number[],
+  difficultyModes: Array<'relaxed' | 'normal'>,
+): { topConfigs: SweepResult[]; sensitivity: Record<string, number>; controlBaseline: Record<string, any> } {
+  const results: SweepResult[] = [];
+
+  for (let i = 0; i < overrideSets.length; i++) {
+    const profileMetrics: Record<string, any> = {};
+    for (const profileId of profiles) {
+      for (const asc of ascensionLevels) {
+        for (const dm of difficultyModes) {
+          const label = `sweep-${i}-${profileId}-${dm}-asc${asc}`;
+          const metrics = accumulator.getMetrics(label);
+          if (metrics) {
+            profileMetrics[`${profileId}-${dm}-asc${asc}`] = {
+              survivalRate: metrics.survivalRate,
+              avgFinalFloor: metrics.avgFinalFloor,
+              avgTurnsPerEncounter: metrics.avgTurnsPerEncounter,
+              avgFoodPurchased: metrics.avgFoodPurchased,
+              avgGoldEarned: metrics.avgGoldEarned,
+              avgGoldSpent: metrics.avgGoldSpent,
+            };
+          }
+        }
+      }
+    }
+
+    let survivalFit = 0;
+    let survivalCount = 0;
+    let pacingTotal = 0;
+    let pacingCount = 0;
+    let foodTotal = 0;
+    let goldEffTotal = 0;
+    let metricCount = 0;
+
+    for (const [key, m] of Object.entries(profileMetrics)) {
+      const profileId = key.split('-')[0];
+      const target = SWEEP_TARGETS.survivalTargets[profileId];
+      if (target) {
+        survivalFit += rangeScore(m.survivalRate, target[0], target[1]);
+        survivalCount++;
+      }
+      pacingTotal += rangeScore(m.avgTurnsPerEncounter, ...SWEEP_TARGETS.turnsPerEncounterTarget);
+      pacingCount++;
+      foodTotal += m.avgFoodPurchased;
+      if (m.avgGoldEarned > 0) {
+        goldEffTotal += m.avgGoldSpent / m.avgGoldEarned;
+      }
+      metricCount++;
+    }
+
+    const avgSurvivalFit = survivalCount > 0 ? survivalFit / survivalCount : 10;
+    const avgPacingFit = pacingCount > 0 ? pacingTotal / pacingCount : 10;
+    const avgFood = metricCount > 0 ? foodTotal / metricCount : 0;
+    const avgGoldEff = metricCount > 0 ? goldEffTotal / metricCount : 0;
+    const foodFit = rangeScore(avgFood, 1.0, 3.0);
+    const goldFit = rangeScore(avgGoldEff, 0.55, 0.80);
+
+    const compositeScore = avgSurvivalFit * 3.0 + avgPacingFit * 1.5 + foodFit * 1.0 + goldFit * 1.0;
+
+    results.push({
+      rank: 0,
+      overrides: overrideSets[i],
+      compositeScore: Math.round(compositeScore * 1000) / 1000,
+      metricScores: {
+        survivalFit: Math.round(avgSurvivalFit * 1000) / 1000,
+        pacingFit: Math.round(avgPacingFit * 1000) / 1000,
+        foodFit: Math.round(foodFit * 1000) / 1000,
+        goldEfficiencyFit: Math.round(goldFit * 1000) / 1000,
+      },
+      profileMetrics,
+    });
+  }
+
+  results.sort((a, b) => a.compositeScore - b.compositeScore);
+  results.forEach((r, i) => r.rank = i + 1);
+
+  const sensitivity: Record<string, number> = {};
+  const scores = results.map(r => r.compositeScore);
+
+  for (const param of DEFAULT_SWEEP_PARAMS) {
+    const values = results.map(r => {
+      const v = (r.overrides as any)[param.key];
+      return typeof v === 'number' ? v : 0;
+    });
+    if (values.some(v => v !== 0)) {
+      sensitivity[param.key] = pearsonCorrelation(values, scores);
+    }
+  }
+
+  const controlBaseline: Record<string, any> = {};
+  for (const profileId of profiles) {
+    for (const asc of ascensionLevels) {
+      for (const dm of difficultyModes) {
+        const label = `sweep-control-${profileId}-${dm}-asc${asc}`;
+        const metrics = accumulator.getMetrics(label);
+        if (metrics) controlBaseline[label] = metrics;
+      }
+    }
+  }
+
+  return {
+    topConfigs: results.slice(0, 20),
+    sensitivity,
+    controlBaseline,
+  };
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
@@ -1467,15 +1906,18 @@ async function main(): Promise<void> {
     case 'progression':
       configs = generateProgressionConfigs(ascensionLevels);
       break;
-    case 'sweep':
-      configs = [
-        ...generateSoloConfigs(ascensionLevels),
-        ...generateComboConfigs(ascensionLevels),
-        ...generateBuildConfigs(ascensionLevels),
-        ...generateFairnessConfigs(ascensionLevels),
-        ...generateProgressionConfigs(ascensionLevels),
-      ];
+    case 'sweep': {
+      const maxConfigs = args.sweepMaxConfigs ?? 500;
+      const strategy = args.sweepStrategy ?? 'lhs';
+      const sweepProfiles = ['casual', 'average', 'skilled'];
+      const DIFFICULTY_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
+      const sweepResult = generateSweepConfigs(maxConfigs, strategy, sweepProfiles, ascensionLevels, DIFFICULTY_MODES);
+      configs = sweepResult.configs;
+      (globalThis as any).__sweepOverrideSets = sweepResult.overrideSets;
+      (globalThis as any).__sweepProfiles = sweepProfiles;
+      (globalThis as any).__sweepDifficultyModes = DIFFICULTY_MODES;
       break;
+    }
     case 'custom':
       configs = generateCustomConfigs(args.relics, args.profiles, ascensionLevels);
       break;
@@ -1511,9 +1953,12 @@ async function main(): Promise<void> {
       ...baseProfile,
       initialRelics: config.relics,
       ascensionLevel: config.ascensionLevel,
+      difficultyMode: config.difficultyMode ?? baseProfile.difficultyMode,
       sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
     };
     profile.id = `mass-${config.group}-${config.label}`;
+
+    setBalanceOverrides(config.balanceOverrides ?? null);
 
     for (let s = 0; s < seedCount; s++) {
       const seed = baseSeed + s;
@@ -1531,6 +1976,8 @@ async function main(): Promise<void> {
         process.stderr.write(`\r  Progress: ${totalRuns.toLocaleString()} / ${totalSimulations.toLocaleString()} runs (${rate} runs/s)...`);
       }
     }
+
+    setBalanceOverrides(null);
   }
 
   const elapsedMs = Date.now() - startTime;
@@ -1541,6 +1988,58 @@ async function main(): Promise<void> {
 
   // Run analysis
   const analysis = runAnalysis(accumulator, mode);
+
+  // Sweep analysis
+  let sweepAnalysisOutput: any = null;
+  if (mode === 'sweep' && (globalThis as any).__sweepOverrideSets) {
+    const overrideSets = (globalThis as any).__sweepOverrideSets as BalanceOverrides[];
+    const sweepProfiles = (globalThis as any).__sweepProfiles as string[];
+    const sweepDiffModes = (globalThis as any).__sweepDifficultyModes as Array<'relaxed' | 'normal'>;
+    const sweepAnalysis = analyzeSweep(accumulator, overrideSets, sweepProfiles, ascensionLevels, sweepDiffModes);
+
+    if (!quiet) {
+      process.stderr.write('\n=== PARAMETER SWEEP RESULTS ===\n\n');
+      process.stderr.write(`Configs tested: ${overrideSets.length}\n`);
+      process.stderr.write(`Strategy: ${args.sweepStrategy ?? 'lhs'}\n\n`);
+
+      process.stderr.write('SENSITIVITY (Pearson r with composite score):\n');
+      const sortedSens = Object.entries(sweepAnalysis.sensitivity).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+      for (const [key, r] of sortedSens) {
+        process.stderr.write(`  ${key.padEnd(35)} r = ${r > 0 ? '+' : ''}${r.toFixed(3)}\n`);
+      }
+
+      process.stderr.write('\nTOP 10 CONFIGS:\n');
+      process.stderr.write('Rank  Score   SurvFit  Pacing  Food    GoldEff\n');
+      process.stderr.write('─'.repeat(60) + '\n');
+      for (const cfg of sweepAnalysis.topConfigs.slice(0, 10)) {
+        process.stderr.write(
+          `${String(cfg.rank).padStart(4)}  ${cfg.compositeScore.toFixed(3).padStart(6)}  ` +
+          `${cfg.metricScores.survivalFit.toFixed(2).padStart(7)}  ` +
+          `${cfg.metricScores.pacingFit.toFixed(2).padStart(6)}  ` +
+          `${cfg.metricScores.foodFit.toFixed(2).padStart(6)}  ` +
+          `${cfg.metricScores.goldEfficiencyFit.toFixed(2).padStart(7)}\n`
+        );
+      }
+
+      if (sweepAnalysis.topConfigs.length > 0) {
+        process.stderr.write('\nRECOMMENDED VALUES (from #1 config):\n');
+        for (const [k, v] of Object.entries(sweepAnalysis.topConfigs[0].overrides)) {
+          process.stderr.write(`  ${k}: ${JSON.stringify(v)}\n`);
+        }
+      }
+    }
+
+    sweepAnalysisOutput = {
+      totalConfigsTested: overrideSets.length,
+      strategy: args.sweepStrategy ?? 'lhs',
+      sweepParams: DEFAULT_SWEEP_PARAMS.map(p => p.key),
+      recommendation: sweepAnalysis.topConfigs[0]?.overrides ?? {},
+      topConfigs: sweepAnalysis.topConfigs,
+      sensitivity: sweepAnalysis.sensitivity,
+      controlBaseline: sweepAnalysis.controlBaseline,
+    };
+  }
+
   const meta: AnalysisOutput['meta'] = {
     generatedAt: new Date().toISOString(),
     totalRuns,
@@ -1550,7 +2049,7 @@ async function main(): Promise<void> {
     mode,
   };
 
-  const output: AnalysisOutput = { meta, ...analysis };
+  const output: AnalysisOutput = { meta, ...analysis, ...(sweepAnalysisOutput ? { sweepAnalysis: sweepAnalysisOutput } : {}) };
 
   // Attach deep analysis if available
   if (deepAccumulator) {

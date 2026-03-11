@@ -3,7 +3,7 @@ import { get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 import { MAX_ASCENSION_LEVEL } from './ascension'
 
-export type DifficultyMode = 'explorer' | 'standard' | 'scholar'
+export type DifficultyMode = 'relaxed' | 'normal'
 export type TextSize = 'small' | 'medium' | 'large'
 
 export interface OnboardingState {
@@ -61,7 +61,7 @@ function persistedWritable<T>(key: string, initial: T): Writable<T> {
   return store
 }
 
-export const difficultyMode = persistedWritable<DifficultyMode>('card:difficultyMode', 'standard')
+export const difficultyMode = persistedWritable<DifficultyMode>('card:difficultyMode', 'normal')
 export const isSlowReader = persistedWritable<boolean>('card:isSlowReader', false)
 export const textSize = persistedWritable<TextSize>('card:textSize', 'medium')
 export const highContrastMode = persistedWritable<boolean>('card:highContrastMode', false)
@@ -86,11 +86,10 @@ function sanitizeAscensionProfile(profile: AscensionProfile): AscensionProfile {
 
 ascensionProfile.update((profile) => sanitizeAscensionProfile(profile))
 
-/** Display names for difficulty modes (internal IDs unchanged for save compat). */
+/** Display names for difficulty modes. */
 export const DIFFICULTY_DISPLAY_NAMES: Record<DifficultyMode, string> = {
-  explorer: 'Story Mode',
-  standard: 'Timed Mode',
-  scholar: 'Expert Mode',
+  relaxed: 'Relaxed',
+  normal: 'Normal',
 };
 
 /** Returns the user-facing display name for a difficulty mode. */

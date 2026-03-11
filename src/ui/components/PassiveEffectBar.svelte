@@ -11,11 +11,9 @@
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
-    heal: '💚',
     utility: '⭐',
     buff: '⬆',
     debuff: '⬇',
-    regen: '➕',
     wild: '💎',
   }
 

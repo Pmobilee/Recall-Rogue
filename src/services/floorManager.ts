@@ -19,6 +19,7 @@ export interface FloorState {
   isBossFloor: boolean
   bossDefeated: boolean
   segment: 1 | 2 | 3 | 4
+  lastSlotWasEvent: boolean  // Track if last room was non-combat event
 }
 
 export interface RoomOption {
@@ -85,6 +86,14 @@ const ROOM_WEIGHTS_BY_SEGMENT: Record<1 | 2 | 3 | 4, RoomWeight[]> = {
     { type: 'treasure', weight: 10 },
     { type: 'shop', weight: 10 },
   ],
+}
+
+/** Chance of getting an event slot after a combat encounter, by segment. */
+const EVENT_CHANCE_BY_SEGMENT: Record<1 | 2 | 3 | 4, number> = {
+  1: 0.80,
+  2: 0.75,
+  3: 0.65,
+  4: 0.60,
 }
 
 // ============================================================
@@ -169,6 +178,7 @@ export function createFloorState(): FloorState {
     isBossFloor: isBossFloor(1),
     bossDefeated: false,
     segment: getSegment(1),
+    lastSlotWasEvent: false,
   }
 }
 
@@ -261,6 +271,44 @@ export function generateRoomOptions(floor: number): RoomOption[] {
   return options
 }
 
+/** Roll whether the next room selection should be an event (non-combat) slot. */
+export function shouldOfferEvent(floor: number): boolean {
+  const segment = getSegment(floor)
+  return Math.random() < EVENT_CHANCE_BY_SEGMENT[segment]
+}
+
+/**
+ * Generate 3 combat-only room options with distinct enemies.
+ */
+export function generateCombatRoomOptions(floor: number): RoomOption[] {
+  const usedIds = new Set<string>()
+  const options: RoomOption[] = []
+  for (let i = 0; i < 3; i++) {
+    let enemyId = pickCombatEnemy(floor)
+    let attempts = 0
+    while (usedIds.has(enemyId) && attempts < 10) {
+      enemyId = pickCombatEnemy(floor)
+      attempts++
+    }
+    usedIds.add(enemyId)
+    options.push(buildRoomOption('combat', floor, enemyId))
+  }
+  return options
+}
+
+/**
+ * Generate 3 non-combat (event) room options.
+ */
+export function generateEventRoomOptions(floor: number): RoomOption[] {
+  const segment = getSegment(floor)
+  const weights = ROOM_WEIGHTS_BY_SEGMENT[segment].filter(w => w.type !== 'combat')
+  const options: RoomOption[] = []
+  for (let i = 0; i < 3; i++) {
+    options.push(buildRoomOption(pickWeightedRoomType(weights), floor))
+  }
+  return options
+}
+
 /**
  * Pick a random combat enemy from the common pool for this floor's segment.
  * NOTE: Only call for encounters 1 and 2 (regular encounters).
@@ -301,6 +349,7 @@ export function advanceFloor(state: FloorState): void {
   state.eventsPerFloor = getEventsForFloor(state.currentFloor)
   state.isBossFloor = isBossFloor(state.currentFloor)
   state.bossDefeated = false
+  state.lastSlotWasEvent = false
 }
 
 // ============================================================
@@ -319,10 +368,10 @@ function pickWeightedRoomType(weights: RoomWeight[]): RoomType {
 }
 
 /** Build a RoomOption of the given type. */
-function buildRoomOption(type: RoomType, floor: number): RoomOption {
+function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: string): RoomOption {
   switch (type) {
     case 'combat': {
-      const enemyId = pickCombatEnemy(floor)
+      const enemyId = preselectedEnemyId ?? pickCombatEnemy(floor)
       const template = ENEMY_TEMPLATES.find(e => e.id === enemyId)
       return {
         type: 'combat',

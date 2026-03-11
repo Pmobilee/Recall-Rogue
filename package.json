@@ -23,6 +23,7 @@
     "content:workers:promote": "node scripts/content-pipeline/agent-workers.mjs promote",
     "content:workers:status": "node scripts/content-pipeline/agent-workers.mjs status",
     "content:workers:all": "node scripts/content-pipeline/agent-workers.mjs all",
+    "content:subcategory:backfill:llm": "node scripts/content-pipeline/llm-backfill-subcategories.mjs",
     "content:visuals:fill": "node scripts/content-pipeline/fill-missing-visual-descriptions.mjs",
     "content:autopilot": "node scripts/content-pipeline/autopilot.mjs",
     "content:generate:all": "node scripts/content-pipeline/generate/generate-all-domains.mjs",

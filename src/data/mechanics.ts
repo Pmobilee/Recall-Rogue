@@ -36,13 +36,13 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   { id: 'parry', name: 'Parry', type: 'shield', description: 'Block + draw if enemy attacks.', baseValue: 3, apCost: 1, maxPerPool: 0, secondaryValue: 1, tags: ['parry'], launchPhase: 2 },
   { id: 'brace', name: 'Brace', type: 'shield', description: 'Block equal to enemy telegraph.', baseValue: 0, apCost: 1, maxPerPool: 0, tags: ['brace'], launchPhase: 2 },
 
-  // Heal (phase 1)
-  { id: 'restore', name: 'Restore', type: 'heal', description: 'Heal HP.', baseValue: 8, apCost: 1, maxPerPool: 0, tags: ['heal'], launchPhase: 1 },
-  { id: 'cleanse', name: 'Cleanse', type: 'heal', description: 'Heal and cleanse debuffs.', baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['heal', 'cleanse'], launchPhase: 1 },
+  // Cleanse (utility phase 1)
+  { id: 'cleanse', name: 'Cleanse', type: 'utility', description: 'Remove all debuffs. Draw 1 card.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['cleanse'], launchPhase: 1 },
 
-  // Heal (phase 2)
-  { id: 'overheal', name: 'Overheal', type: 'heal', description: 'Excess healing becomes block.', baseValue: 7, apCost: 1, maxPerPool: 0, tags: ['heal', 'overheal'], launchPhase: 2 },
-  { id: 'lifetap', name: 'Lifetap', type: 'heal', description: 'Heal from this turn damage dealt.', baseValue: 30, apCost: 1, maxPerPool: 0, tags: ['lifetap'], launchPhase: 2 },
+  // Overheal (shield phase 2)
+  { id: 'overheal', name: 'Overheal', type: 'shield', description: 'Gain block. +50% if HP below half.', baseValue: 7, apCost: 1, maxPerPool: 0, tags: ['overheal'], launchPhase: 2 },
+  // Lifetap (attack phase 2)
+  { id: 'lifetap', name: 'Lifetap', type: 'attack', description: 'Deal damage. Heal 20% of damage dealt.', baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['lifetap'], launchPhase: 2 },
 
   // Buff (phase 1)
   { id: 'empower', name: 'Empower', type: 'buff', description: 'Buff next card.', baseValue: 30, apCost: 1, maxPerPool: 0, tags: ['buff'], launchPhase: 1 },
@@ -68,12 +68,11 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   { id: 'foresight', name: 'Foresight', type: 'utility', description: 'Reveal next two enemy intents.', baseValue: 2, apCost: 1, maxPerPool: 0, tags: ['foresight'], launchPhase: 2 },
   { id: 'transmute', name: 'Transmute', type: 'utility', description: 'Transform a random hand card type.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['transmute'], launchPhase: 2 },
 
-  // Regen (phase 1)
-  { id: 'sustained', name: 'Sustained', type: 'regen', description: 'Apply regen.', baseValue: 3, apCost: 1, maxPerPool: 0, tags: ['regen'], launchPhase: 1 },
-  { id: 'emergency', name: 'Emergency', type: 'regen', description: 'Burst sustain under pressure.', baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['regen', 'burst'], launchPhase: 1 },
+  // Emergency (shield phase 1)
+  { id: 'emergency', name: 'Emergency', type: 'shield', description: 'Gain block. Double if HP below 30%.', baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['emergency'], launchPhase: 1 },
 
-  // Regen (phase 2)
-  { id: 'immunity', name: 'Immunity', type: 'regen', description: 'Absorb next status-damage instance.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['immunity'], launchPhase: 2 },
+  // Immunity (utility phase 2)
+  { id: 'immunity', name: 'Immunity', type: 'utility', description: 'Absorb next status-damage instance.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['immunity'], launchPhase: 2 },
 
   // Wild (phase 1)
   { id: 'mirror', name: 'Mirror', type: 'wild', description: 'Copy previous card effect.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['copy'], launchPhase: 1 },
@@ -92,11 +91,9 @@ function getActiveMechanics(): MechanicDefinition[] {
 export const MECHANICS_BY_TYPE: Record<CardType, MechanicDefinition[]> = {
   attack: getActiveMechanics().filter(m => m.type === 'attack'),
   shield: getActiveMechanics().filter(m => m.type === 'shield'),
-  heal: getActiveMechanics().filter(m => m.type === 'heal'),
   utility: getActiveMechanics().filter(m => m.type === 'utility'),
   buff: getActiveMechanics().filter(m => m.type === 'buff'),
   debuff: getActiveMechanics().filter(m => m.type === 'debuff'),
-  regen: getActiveMechanics().filter(m => m.type === 'regen'),
   wild: getActiveMechanics().filter(m => m.type === 'wild'),
 };
 

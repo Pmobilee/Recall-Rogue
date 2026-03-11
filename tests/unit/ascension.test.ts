@@ -11,7 +11,7 @@ describe('ascension modifiers', () => {
     const level4 = getAscensionModifiers(4)
     expect(level4.enemyHpMultiplier).toBe(1.1)
     expect(level4.enemyDamageMultiplier).toBe(1.1)
-    expect(level4.healCardMultiplier).toBe(0.75)
+    expect(level4.shieldCardMultiplier).toBe(0.80)
     expect(level4.timerBasePenaltySeconds).toBe(1)
   })
 

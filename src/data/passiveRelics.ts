@@ -54,10 +54,10 @@ export const PASSIVE_RELIC_DEFINITIONS: PassiveRelicDefinition[] = [
   { id: 'aegis', name: 'Aegis', description: 'Parry always triggers draw bonus regardless of enemy action', category: 'defensive', graduationType: ['shield'], trigger: 'on_parry', value: 1, valueUnit: 'flag', maxPerRun: 1 },
 
   // Sustain
-  { id: 'second_wind', name: 'Second Wind', description: 'Once/encounter: survive killing blow at 1 HP', category: 'sustain', graduationType: ['heal', 'regen'], trigger: 'on_lethal', value: 1, valueUnit: 'HP', maxPerRun: 1 },
-  { id: 'natural_recovery', name: 'Natural Recovery', description: 'Heal 2 HP at encounter start', category: 'sustain', graduationType: ['heal', 'regen'], trigger: 'on_encounter_start', value: 2, valueUnit: 'HP', maxPerRun: 1 },
-  { id: 'overgrowth', name: 'Overgrowth', description: 'Overhealing converts to temporary block', category: 'sustain', graduationType: ['heal', 'regen'], trigger: 'on_overheal', value: 1, valueUnit: 'flag', maxPerRun: 1 },
-  { id: 'vitality', name: 'Vitality', description: 'Max HP permanently +5', category: 'sustain', graduationType: ['heal', 'regen'], trigger: 'permanent', value: 5, valueUnit: 'HP', maxPerRun: 3 },
+  { id: 'second_wind', name: 'Second Wind', description: 'Once/encounter: survive killing blow at 1 HP', category: 'sustain', graduationType: ['shield', 'utility'], trigger: 'on_lethal', value: 1, valueUnit: 'HP', maxPerRun: 1 },
+  { id: 'natural_recovery', name: 'Natural Recovery', description: 'Gain 2 block at encounter start', category: 'sustain', graduationType: ['shield', 'utility'], trigger: 'on_encounter_start', value: 2, valueUnit: 'block', maxPerRun: 1 },
+  { id: 'overgrowth', name: 'Overgrowth', description: 'Excess block carries to next turn', category: 'sustain', graduationType: ['shield', 'utility'], trigger: 'on_overheal', value: 1, valueUnit: 'flag', maxPerRun: 1 },
+  { id: 'vitality', name: 'Vitality', description: 'Max HP permanently +5', category: 'sustain', graduationType: ['shield', 'utility'], trigger: 'permanent', value: 5, valueUnit: 'HP', maxPerRun: 3 },
 
   // Tactical
   { id: 'combo_master', name: 'Combo Master', description: 'Combo starts at 1.15x instead of 1.0x', category: 'tactical', graduationType: ['buff', 'debuff', 'utility', 'wild'], trigger: 'permanent', value: 1, valueUnit: 'flag', maxPerRun: 1 },

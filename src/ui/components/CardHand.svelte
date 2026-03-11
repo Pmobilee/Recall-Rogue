@@ -40,11 +40,9 @@
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
-    heal: '💚',
     utility: '⭐',
     buff: '⬆',
     debuff: '⬇',
-    regen: '➕',
     wild: '💎',
   }
 
@@ -112,10 +110,8 @@
     switch (card.cardType) {
       case 'attack': return `Deal ${amount} damage`
       case 'shield': return `Gain ${amount} shield`
-      case 'heal': return `Recover ${amount} HP`
       case 'buff': return `Boost next (${amount})`
       case 'debuff': return `Debuff (${amount})`
-      case 'regen': return `Regen ${amount}`
       case 'utility': return `Utility (${amount})`
       case 'wild': return `Adaptive (${amount})`
       default: return `Effect ${amount}`
@@ -341,6 +337,7 @@
       class:tier-3={card.tier === '3'}
       class:echo-card={card.isEcho}
       class:trial-card={card.isMasteryTrial}
+      class:card-upgraded={card.isUpgraded}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-launch={cardAnim === 'launch'}
@@ -1299,6 +1296,13 @@
     50% { background: transparent; }
     70% { background: rgba(231, 76, 60, 0.4); box-shadow: 0 0 15px rgba(231, 76, 60, 0.5); }
     85% { background: transparent; box-shadow: none; }
+  }
+
+  /* ═══ UPGRADED CARD GLOW ═══ */
+
+  .card-upgraded {
+    box-shadow: 0 0 8px 2px rgba(52, 152, 219, 0.5), inset 0 0 4px rgba(52, 152, 219, 0.2);
+    border-color: #3498db !important;
   }
 
   /* ═══ REDUCED MOTION ═══ */

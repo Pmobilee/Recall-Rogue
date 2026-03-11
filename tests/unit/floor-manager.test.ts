@@ -14,6 +14,9 @@ import {
   advanceFloor,
   isMiniBossEncounter,
   getMiniBossForFloor,
+  shouldOfferEvent,
+  generateCombatRoomOptions,
+  generateEventRoomOptions,
 } from '../../src/services/floorManager'
 
 describe('FloorManager', () => {
@@ -345,6 +348,91 @@ describe('FloorManager', () => {
       const enemyId = pickCombatEnemy(1)
       expect(typeof enemyId).toBe('string')
       expect(enemyId.length).toBeGreaterThan(0)
+    })
+  })
+
+  describe('Room spam prevention', () => {
+    describe('shouldOfferEvent', () => {
+      it('respects event chance by segment', () => {
+        // Segment 1: 80% event chance
+        let events = 0
+        for (let i = 0; i < 200; i++) {
+          if (shouldOfferEvent(1)) events++
+        }
+        expect(events).toBeGreaterThan(140) // ~80% of 200
+        expect(events).toBeLessThan(170)
+
+        // Segment 4: 60% event chance
+        events = 0
+        for (let i = 0; i < 200; i++) {
+          if (shouldOfferEvent(20)) events++
+        }
+        expect(events).toBeGreaterThan(100) // ~60% of 200
+        expect(events).toBeLessThan(140)
+      })
+    })
+
+    describe('generateCombatRoomOptions', () => {
+      it('always returns exactly 3 options', () => {
+        const options = generateCombatRoomOptions(1)
+        expect(options).toHaveLength(3)
+      })
+
+      it('all options are combat rooms', () => {
+        const options = generateCombatRoomOptions(1)
+        for (const opt of options) {
+          expect(opt.type).toBe('combat')
+          expect(opt.enemyId).toBeTruthy()
+        }
+      })
+
+      it('generates distinct enemies when possible', () => {
+        const options = generateCombatRoomOptions(1)
+        const enemyIds = options.map(o => o.enemyId)
+        const uniqueIds = new Set(enemyIds)
+        // At least 2 should be distinct (or all same if only 1 enemy type exists, unlikely)
+        expect(uniqueIds.size).toBeGreaterThan(1)
+      })
+    })
+
+    describe('generateEventRoomOptions', () => {
+      it('always returns exactly 3 options', () => {
+        const options = generateEventRoomOptions(1)
+        expect(options).toHaveLength(3)
+      })
+
+      it('no options are combat rooms', () => {
+        for (let i = 0; i < 50; i++) {
+          const options = generateEventRoomOptions(1)
+          for (const opt of options) {
+            expect(opt.type).not.toBe('combat')
+          }
+        }
+      })
+
+      it('generates valid event room types (mystery, rest, treasure, shop)', () => {
+        const validTypes = new Set(['mystery', 'rest', 'treasure', 'shop'])
+        for (let i = 0; i < 100; i++) {
+          const options = generateEventRoomOptions(1)
+          for (const opt of options) {
+            expect(validTypes.has(opt.type)).toBe(true)
+          }
+        }
+      })
+    })
+
+    describe('FloorState.lastSlotWasEvent', () => {
+      it('initializes to false', () => {
+        const state = createFloorState()
+        expect(state.lastSlotWasEvent).toBe(false)
+      })
+
+      it('resets to false on floor advance', () => {
+        const state = createFloorState()
+        state.lastSlotWasEvent = true
+        advanceFloor(state)
+        expect(state.lastSlotWasEvent).toBe(false)
+      })
     })
   })
 })

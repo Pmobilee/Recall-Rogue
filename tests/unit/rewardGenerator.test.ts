@@ -55,7 +55,7 @@ describe('rewardGenerator', () => {
     const pool: Card[] = [
       card({ id: 'a', factId: 'a', cardType: 'attack' }),
       card({ id: 'b', factId: 'b', cardType: 'shield' }),
-      card({ id: 'c', factId: 'c', cardType: 'heal' }),
+      card({ id: 'c', factId: 'c', cardType: 'utility' }),
       card({ id: 'd', factId: 'd', cardType: 'buff' }),
       card({ id: 'e', factId: 'e', cardType: 'debuff' }),
     ]
@@ -70,7 +70,7 @@ describe('rewardGenerator', () => {
       card({ id: 'a', factId: 'a', cardType: 'attack' }),
       card({ id: 'b', factId: 'b', cardType: 'attack' }),
       card({ id: 'c', factId: 'c', cardType: 'shield' }),
-      card({ id: 'd', factId: 'd', cardType: 'heal' }),
+      card({ id: 'd', factId: 'd', cardType: 'utility' }),
     ]
 
     const current = [

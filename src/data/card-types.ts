@@ -1,7 +1,7 @@
 // === Card Type ===
 // Combat role used by card effects.
 
-export type CardType = 'attack' | 'shield' | 'heal' | 'utility' | 'buff' | 'debuff' | 'regen' | 'wild';
+export type CardType = 'attack' | 'shield' | 'utility' | 'buff' | 'debuff' | 'wild';
 
 // === Fact Domain ===
 // Normalized domain categories derived from the existing fact.category[] hierarchy
@@ -85,6 +85,10 @@ export interface Card {
   apCost?: number;
   /** Pre-echo base effect value used by Echo Chamber. */
   originalBaseEffectValue?: number;
+  /** True if this card has been upgraded at a rest site or post-mini-boss. */
+  isUpgraded?: boolean;
+  /** Per-card secondary value override (set on upgrade for mechanics like multi_hit). */
+  secondaryValue?: number;
 }
 
 // === Card Run State ===

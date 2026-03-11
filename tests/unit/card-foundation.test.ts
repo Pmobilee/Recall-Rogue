@@ -101,7 +101,7 @@ describe('domainResolver', () => {
     });
 
     it('returns a valid card type', () => {
-      const allTypes: CardType[] = ['attack', 'shield', 'heal', 'utility', 'buff', 'debuff', 'regen', 'wild'];
+      const allTypes: CardType[] = ['attack', 'shield', 'utility', 'buff', 'debuff', 'wild'];
       expect(allTypes).toContain(resolveCardType('history'));
     });
   });
@@ -206,7 +206,7 @@ describe('cardFactory', () => {
 
     it('keeps baseEffectValue independent of tier and marks mastery trials', () => {
       const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
-      expect(t1.baseEffectValue).toBe(8);
+      expect(t1.baseEffectValue).toBe(10);
       expect(t1.tier).toBe('1');
 
       resetCardIdCounter();
@@ -215,7 +215,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: false }),
         'attack',
       );
-      expect(t2bTrial.baseEffectValue).toBe(8);
+      expect(t2bTrial.baseEffectValue).toBe(10);
       expect(t2bTrial.tier).toBe('2b');
       expect(t2bTrial.isMasteryTrial).toBe(true);
 
@@ -225,7 +225,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: true }),
         'attack',
       );
-      expect(t3.baseEffectValue).toBe(8);
+      expect(t3.baseEffectValue).toBe(10);
       expect(t3.tier).toBe('3');
       expect(t3.isMasteryTrial).toBe(false);
     });

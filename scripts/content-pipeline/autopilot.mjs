@@ -254,6 +254,7 @@ async function buildVocabWorkerOutputs(args, report) {
       'full',
       '--input', rel(outputPath),
       '--domain', 'language',
+      '--require-subcategory', 'true',
       '--target', rel(targetPath),
       '--qa-dir', rel(ingestQaDir),
       '--auto-dedup-threshold', String(Number(args['auto-dedup-threshold'] ?? 0.95)),

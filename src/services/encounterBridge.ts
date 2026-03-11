@@ -21,7 +21,8 @@ import {
   playerSave,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, EXPLORER_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER } from '../data/balance';
+import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue } from '../data/balance';
+import { generateCurrencyReward, generateComboBonus } from './encounterRewards';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
 import { RELIC_BY_ID } from '../data/relics/index';
@@ -35,6 +36,7 @@ import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
 } from './ascension';
+import { activeRewardBundle } from '../ui/stores/gameState';
 import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
@@ -109,8 +111,8 @@ function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[
 
   const size = Math.max(9, Math.min(targetSize, runPool.length));
   const attackTarget = Math.max(1, Math.round(size * 0.4));
-  const shieldTarget = Math.max(1, Math.round(size * 0.33));
-  const healTarget = Math.max(1, size - attackTarget - shieldTarget);
+  const shieldTarget = Math.max(1, Math.round(size * 0.35));
+  const utilityTarget = Math.max(1, size - attackTarget - shieldTarget);
   const picked: Card[] = [];
   const used = new Set<string>();
 
@@ -127,7 +129,7 @@ function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[
 
   take('attack', attackTarget);
   take('shield', shieldTarget);
-  take('heal', healTarget);
+  take('utility', utilityTarget);
 
   for (const card of runPool) {
     if (picked.length >= size) break;
@@ -188,6 +190,11 @@ function syncCombatScene(turnState: TurnState): void {
 }
 
 export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
+  const existingTurn = get(activeTurnState);
+  if (existingTurn && existingTurn.result === null) {
+    console.warn('[encounterBridge] Encounter already active, ignoring duplicate start');
+    return false;
+  }
   const run = get(activeRunState);
   if (!run) return false;
   const ascensionModifiers = run.ascensionModifiers ?? getAscensionModifiers(run.ascensionLevel ?? 0);
@@ -281,7 +288,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.canaryQuestionBias = run.canary.questionBias;
   turnState.ascensionLevel = run.ascensionLevel ?? 0;
   turnState.ascensionEnemyDamageMultiplier = ascensionModifiers.enemyDamageMultiplier;
-  turnState.ascensionHealCardMultiplier = ascensionModifiers.healCardMultiplier;
+  turnState.ascensionShieldCardMultiplier = ascensionModifiers.shieldCardMultiplier;
   turnState.ascensionWrongAnswerSelfDamage = ascensionModifiers.wrongAnswerSelfDamage;
   turnState.ascensionBaseTimerPenaltySeconds = ascensionModifiers.timerBasePenaltySeconds;
   turnState.ascensionEncounterTimerPenaltySeconds = (
@@ -502,14 +509,39 @@ export function handlePlayCard(
     // Post-encounter healing: restore a percentage of max HP
     // Boss/mini-boss encounters grant bonus healing (AR-32)
     if (run) {
-      const isStoryMode = get(difficultyMode) === 'explorer';
+      const isRelaxedMode = get(difficultyMode) === 'relaxed';
       const enemyCategory = result.turnState.enemy.template.category;
       const isBossOrMiniBoss = enemyCategory === 'boss' || enemyCategory === 'mini_boss';
-      const healPct = POST_ENCOUNTER_HEAL_PCT
-        + (isStoryMode ? EXPLORER_POST_ENCOUNTER_HEAL_BONUS : 0)
-        + (isBossOrMiniBoss ? POST_BOSS_ENCOUNTER_HEAL_BONUS : 0);
+      const healPct = getBalanceValue('postEncounterHealPct', POST_ENCOUNTER_HEAL_PCT)
+        + (isRelaxedMode ? getBalanceValue('relaxedPostEncounterHealBonus', RELAXED_POST_ENCOUNTER_HEAL_BONUS) : 0)
+        + (isBossOrMiniBoss ? getBalanceValue('postBossEncounterHealBonus', POST_BOSS_ENCOUNTER_HEAL_BONUS) : 0);
       const healAmt = Math.round(run.playerMaxHp * healPct);
-      run.playerHp = Math.min(run.playerMaxHp, run.playerHp + healAmt);
+      const hpBefore = run.playerHp;
+      let hpAfterHeal = Math.min(run.playerMaxHp, run.playerHp + healAmt);
+
+      // Apply segment-based healing cap
+      const segment = run.floor.currentFloor <= 6 ? 1 : run.floor.currentFloor <= 12 ? 2 : run.floor.currentFloor <= 18 ? 3 : 4;
+      const healCapLookup = getBalanceValue('postEncounterHealCap', POST_ENCOUNTER_HEAL_CAP) as Record<1 | 2 | 3 | 4, number>;
+      const healCap = healCapLookup[segment] ?? 1.0;
+      const maxAllowedHp = Math.round(run.playerMaxHp * healCap);
+      run.playerHp = Math.min(hpAfterHeal, maxAllowedHp);
+      const actualHeal = run.playerHp - hpBefore;
+
+      // Award encounter currency
+      const currencyReward = generateCurrencyReward(
+        run.floor.currentFloor,
+        result.turnState.enemy.template.category,
+      );
+      const comboBonus = generateComboBonus(result.turnState.baseComboCount);
+      run.currency += currencyReward + comboBonus;
+
+      // Capture reward data for step-by-step reveal
+      activeRewardBundle.set({
+        goldEarned: currencyReward,
+        comboBonus,
+        healAmount: actualHeal,
+      });
+
       activeRunState.set(run);
     }
     setTimeout(() => {
@@ -556,9 +588,36 @@ export function handleEndTurn(): void {
 
   const scene = getCombatScene();
   if (scene) {
-    if (result.damageDealt > 0) {
-      scene.playEnemyAttackAnimation();
-      scene.playPlayerDamageFlash();
+    // Animate based on executed enemy intent type
+    switch (result.executedIntentType) {
+      case 'attack':
+        scene.playEnemyAttackAnimation()
+        if (result.blockAbsorbedAll) {
+          scene.playBlockAbsorbFlash()
+        } else if (result.damageDealt > 0) {
+          scene.playPlayerDamageFlash()
+        }
+        break
+      case 'multi_attack':
+        scene.playEnemyMultiAttackAnimation()
+        if (result.blockAbsorbedAll) {
+          scene.playBlockAbsorbFlash()
+        } else if (result.damageDealt > 0) {
+          scene.playPlayerDamageFlash()
+        }
+        break
+      case 'defend':
+        scene.playEnemyDefendAnimation()
+        break
+      case 'buff':
+        scene.playEnemyBuffAnimation()
+        break
+      case 'debuff':
+        scene.playEnemyDebuffAnimation()
+        break
+      case 'heal':
+        scene.playEnemyHealAnimation()
+        break
     }
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
     scene.updatePlayerBlock(result.turnState.playerState.shield, true);

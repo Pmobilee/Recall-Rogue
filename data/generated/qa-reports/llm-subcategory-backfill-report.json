@@ -1,0 +1,1594 @@
+{
+  "generatedAt": "2026-03-11T14:40:03.916Z",
+  "model": "openai/gpt-5.1-codex-mini",
+  "batchSize": 40,
+  "includeGenerated": true,
+  "includeSeed": true,
+  "dryRun": false,
+  "scannedRows": 8082,
+  "uniqueFactKeys": 4097,
+  "domainFilter": [
+    "general_knowledge",
+    "natural_sciences",
+    "space_astronomy",
+    "geography",
+    "history",
+    "mythology_folklore",
+    "animals_wildlife",
+    "human_body_health",
+    "food_cuisine",
+    "art_architecture"
+  ],
+  "totals": {
+    "alreadyValid": 66,
+    "autoPropagated": 0,
+    "llmCandidates": 4031,
+    "llmClassified": 4031,
+    "unresolved": 0,
+    "changedRows": 7600,
+    "batchesRun": 105
+  },
+  "byDomain": {
+    "general_knowledge": {
+      "alreadyValid": 10,
+      "autoPropagated": 0,
+      "llmCandidates": 360,
+      "llmClassified": 360,
+      "unresolved": 0,
+      "changedRows": 710
+    },
+    "natural_sciences": {
+      "alreadyValid": 9,
+      "autoPropagated": 0,
+      "llmCandidates": 365,
+      "llmClassified": 365,
+      "unresolved": 0,
+      "changedRows": 719
+    },
+    "space_astronomy": {
+      "alreadyValid": 5,
+      "autoPropagated": 0,
+      "llmCandidates": 316,
+      "llmClassified": 316,
+      "unresolved": 0,
+      "changedRows": 632
+    },
+    "geography": {
+      "alreadyValid": 9,
+      "autoPropagated": 0,
+      "llmCandidates": 770,
+      "llmClassified": 770,
+      "unresolved": 0,
+      "changedRows": 1140
+    },
+    "history": {
+      "alreadyValid": 10,
+      "autoPropagated": 0,
+      "llmCandidates": 340,
+      "llmClassified": 340,
+      "unresolved": 0,
+      "changedRows": 668
+    },
+    "mythology_folklore": {
+      "alreadyValid": 5,
+      "autoPropagated": 0,
+      "llmCandidates": 388,
+      "llmClassified": 388,
+      "unresolved": 0,
+      "changedRows": 776
+    },
+    "animals_wildlife": {
+      "alreadyValid": 2,
+      "autoPropagated": 0,
+      "llmCandidates": 376,
+      "llmClassified": 376,
+      "unresolved": 0,
+      "changedRows": 752
+    },
+    "human_body_health": {
+      "alreadyValid": 6,
+      "autoPropagated": 0,
+      "llmCandidates": 353,
+      "llmClassified": 353,
+      "unresolved": 0,
+      "changedRows": 691
+    },
+    "food_cuisine": {
+      "alreadyValid": 4,
+      "autoPropagated": 0,
+      "llmCandidates": 392,
+      "llmClassified": 392,
+      "unresolved": 0,
+      "changedRows": 784
+    },
+    "art_architecture": {
+      "alreadyValid": 6,
+      "autoPropagated": 0,
+      "llmCandidates": 371,
+      "llmClassified": 371,
+      "unresolved": 0,
+      "changedRows": 728
+    }
+  },
+  "unresolvedExamples": [],
+  "predictionSamples": [
+    {
+      "id": "q2900794-ein-gedi-temple",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Ancient temple site is a notable landmark/wonder."
+    },
+    {
+      "id": "guang-ming-temple-orlando",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Modern temple is a landmark building."
+    },
+    {
+      "id": "Q2919923-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Catholic temple is an architectural landmark."
+    },
+    {
+      "id": "bubasteion-alexandria-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Ancient Egyptian temple is a historical wonder."
+    },
+    {
+      "id": "Q2937495-capitolium-vetus",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Archaic Roman temple is a landmark structure."
+    },
+    {
+      "id": "Q3057828-antique-stairs",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Historic stone stairs are a notable landmark."
+    },
+    {
+      "id": "Q3074203-temple-trajan-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Roman temple ruin is a landmark site."
+    },
+    {
+      "id": "sukuh-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "15th-century temple is a cultural landmark."
+    },
+    {
+      "id": "Q3142437-temple-apollo-patroos",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Ancient Greek temple in Athens is a wonder."
+    },
+    {
+      "id": "q3162567-universel-murad-hassil",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "1969 building is an architectural landmark."
+    },
+    {
+      "id": "Q3218064-nanhua",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Buddhist temple is a cultural landmark."
+    },
+    {
+      "id": "q3271236-st-lawrence-macau",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Historic church is a notable landmark."
+    },
+    {
+      "id": "Q3309400-temple-jupiter-pompeii",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Pompeii's main temple is an ancient landmark."
+    },
+    {
+      "id": "q3320367-monastery-gabriel",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Serbian monastery is a religious landmark."
+    },
+    {
+      "id": "q3347155-jagannath-puri",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Hindu temple is a cultural landmark."
+    },
+    {
+      "id": "Q3412256-pudicitia",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Roman temple honours virtue as landmark."
+    },
+    {
+      "id": "prang-song-phi-nong-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Ancient Thai temple complex is a wonder."
+    },
+    {
+      "id": "Q3391358-gk-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Great Wall discussion focuses on famous landmark."
+    },
+    {
+      "id": "sharon-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Historic temple museum is a preserved landmark."
+    },
+    {
+      "id": "Q3465347-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Saraswati temple is a noteworthy landmark."
+    },
+    {
+      "id": "tal-qadi-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Megalithic temple is a landmark wonder."
+    },
+    {
+      "id": "Q3517517-ellesyia-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Rock-cut Egyptian temple is a wonder."
+    },
+    {
+      "id": "q3517521-hathor-memphis",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Memphis temple of Hathor is a historical landmark."
+    },
+    {
+      "id": "q3517516-temple-augustus-livia",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Roman temple in France is a landmark."
+    },
+    {
+      "id": "temple-isis-pompeii-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Pompeii's Temple of Isis is an archaeological landmark."
+    },
+    {
+      "id": "temple-isis-benevento-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Temple in Benevento is an ancient monument."
+    },
+    {
+      "id": "candi-belahan-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "11th-century temple is a heritage landmark."
+    },
+    {
+      "id": "temple-bel-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Temple of Bêl is a famous ancient site."
+    },
+    {
+      "id": "durga-temple-aihole-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Durga temple is a notable architectural landmark."
+    },
+    {
+      "id": "fiesole-temples-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Roman temples at Fiesole are landmark ruins."
+    },
+    {
+      "id": "Q3517581-hercules-gaditanus",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Temple dedicated to Hercules on Spanish coast is a landmark."
+    },
+    {
+      "id": "Q3517582-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Archaeological site in French chapel is a landmark."
+    },
+    {
+      "id": "Q3517583-mercury-temple",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Temple atop Puy de Dôme is iconic landmark."
+    },
+    {
+      "id": "Q3517593-monthu-temple",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Egyptian Temple of Monthu is archaeological landmark."
+    },
+    {
+      "id": "Q3517678-free-meeting-house",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Historic meeting house is a heritage landmark."
+    },
+    {
+      "id": "Q3517638-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Hindu temple in Réunion is a cultural landmark."
+    },
+    {
+      "id": "Q3517626-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Great Wall described as massive architectural landmark."
+    },
+    {
+      "id": "Q3517666-temple-du-gol",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "1852 Hindu temple in Réunion is a landmark."
+    },
+    {
+      "id": "Q3517620-shitetaung-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "16th-century Buddhist temple is a wonder."
+    },
+    {
+      "id": "gallo-roman-halatte-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.59,
+      "reason": "Gallo-Roman temple in France is a landmark."
+    },
+    {
+      "id": "gk-izernore-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "A notable ancient temple and landmark in Izernore, France."
+    },
+    {
+      "id": "Q3522649-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "An ancient Hindu temple site in Chennai, India."
+    },
+    {
+      "id": "Q3523674-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Bhadrachalam Temple is a historic landmark in Telangana."
+    },
+    {
+      "id": "q3537502-chennakesava-somanathapura",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Chennakesava Temple is a historic architectural landmark in Karnataka."
+    },
+    {
+      "id": "sri-srinivasa-perumal-temple-sg-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "19th-century Hindu temple landmark in Singapore."
+    },
+    {
+      "id": "dur-sharrukin-temples-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Dur-Sharrukin temples are important ancient Assyrian monuments."
+    },
+    {
+      "id": "Q3629734-temple-isis-rome",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Isis is a notable ancient building in Rome."
+    },
+    {
+      "id": "banke-bihari-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Historic Banke Bihari Temple is a religious landmark in Vrindavan."
+    },
+    {
+      "id": "transfig-krasnoyarsk-1910",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Transfiguration Church is a historic architectural landmark in Krasnoyarsk."
+    },
+    {
+      "id": "Q3583328-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Church of Saint Nicholas is a historic religious structure."
+    },
+    {
+      "id": "kollur-mookambika-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Goddess temple Kollur Mookambika is a regional landmark in Karnataka."
+    },
+    {
+      "id": "Q3595527-srirangapatna",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Sri Ranganathaswamy Temple is an ancient religious landmark in Srirangapatna."
+    },
+    {
+      "id": "Q3595240-mahalakshmi-temple",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Mahalakshmi Temple is a major Hindu landmark in Mumbai."
+    },
+    {
+      "id": "Q3555920-temple-hera-paestum",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Hera is a famous ancient Greek landmark in Italy."
+    },
+    {
+      "id": "Q3983167-temple-clitumnus",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Clitumnus is a medieval Italian landmark."
+    },
+    {
+      "id": "kukke-subramanya-temple-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Kukke Subramanya Temple is a notable landmark in Karnataka."
+    },
+    {
+      "id": "wiccan-church-q3674472",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.15,
+      "reason": "Religious community location though less a physical landmark."
+    },
+    {
+      "id": "sharada-peeth-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Sharada Peeth ruins are significant ancient landmark and center."
+    },
+    {
+      "id": "q3764808-salasar-balaji",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Salasar Balaji is a prominent Hindu temple landmark in Rajasthan."
+    },
+    {
+      "id": "Q3665210-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Certosa di Valmanera is a historic architectural landmark in Italy."
+    },
+    {
+      "id": "Q3906600-temple-jerusalem-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple in Jerusalem is a central religious landmark."
+    },
+    {
+      "id": "Q3657074-capitolium-minturnae",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Capitolium is an important ancient Roman temple landmark."
+    },
+    {
+      "id": "Q3983170-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Santa Maria del Colledestro is a historic Italian temple building."
+    },
+    {
+      "id": "Q3983174-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Oratorio di Santa Maria in Valle is a historic Italian religious landmark."
+    },
+    {
+      "id": "temple-c-selinus-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple C at Selinus is an ancient Greek landmark."
+    },
+    {
+      "id": "Q3983178-siena-building-1882",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.35,
+      "reason": "Historic building in Siena counts as architectural landmark."
+    },
+    {
+      "id": "Q3983181-temple-e-selinunte",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple E at Selinunte is a major Greek temple landmark."
+    },
+    {
+      "id": "Q3983183-tempio-evangelico",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Tempio Evangelico is a historic Italian Protestant landmark."
+    },
+    {
+      "id": "q3983185-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Tempio Evangelico Valdese is a historical religious landmark."
+    },
+    {
+      "id": "temple-f-selinunte-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple F at Selinunte is a Doric order landmark."
+    },
+    {
+      "id": "Q3983190-voghera-landmark",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Voghera is a historic city landmark in Lombardy."
+    },
+    {
+      "id": "temple-dioscuri-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Dioscuri in Agrigento is an ancient landmark."
+    },
+    {
+      "id": "dioscuri-temple-naples-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient Dioscuri Temple is a Roman landmark in Naples."
+    },
+    {
+      "id": "temple-concordia-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Concordia is a preserved ancient landmark in Agrigento."
+    },
+    {
+      "id": "Q3983204-fortuna-augusta",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Fortuna Augusta is a famous Pompeii landmark."
+    },
+    {
+      "id": "Q3983205-fortuna-muliebris",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Fortuna Muliebris is an ancient Roman landmark in Rome."
+    },
+    {
+      "id": "temple-pudicitia-patricia-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Pudicitia Patricia is a notable ancient Roman landmark."
+    },
+    {
+      "id": "q3983222-artemis-sardis",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Artemis at Sardis is a monumental landmark."
+    },
+    {
+      "id": "temple-salus-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Salus is an ancient Roman landmark."
+    },
+    {
+      "id": "Q3983226-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Athena is a major ancient Greek landmark in Sicily."
+    },
+    {
+      "id": "Q3983227-athena-temple",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient temple, a famous landmark in Sicily."
+    },
+    {
+      "id": "temple-athena-paestum-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient temple and architectural landmark in Paestum."
+    },
+    {
+      "id": "temple-athena-priene-001",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient Greek temple site marking a historical landmark in Turkey."
+    },
+    {
+      "id": "Q3983230-athena-alea-tegea",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient temple of Athena Alea, a historical landmark in Greece."
+    },
+    {
+      "id": "Q3983231-temple-athena-pergamum",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient archaeological temple site in Pergamum, Turkey."
+    },
+    {
+      "id": "gk-temple-of-bellona-091",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman temple landmark in Ostia."
+    },
+    {
+      "id": "gk-temple-of-hephaestus-092",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient temple building in Agrigento, a famous landmark."
+    },
+    {
+      "id": "gk-temple-of-heracles-093",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient Heracles temple in Agrigento recognized as landmark."
+    },
+    {
+      "id": "gk-temple-of-fides-094",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman temple building in Rome, architectural landmark."
+    },
+    {
+      "id": "gk-temple-of-flora-in-rome-095",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman temple in Rome, part of landmark heritage."
+    },
+    {
+      "id": "gk-temple-of-flora-096",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Cerreto Sannita Flora temple recognized archaeological landmark."
+    },
+    {
+      "id": "gk-temple-of-jupiter-097",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Jupiter in Cosa, notable ancient landmark."
+    },
+    {
+      "id": "gk-temple-of-jupiter-anxur-098",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Archaeological temple site in Terracina, Italy landmark."
+    },
+    {
+      "id": "gk-temple-of-janus-099",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman monument temple in Rome, historic landmark."
+    },
+    {
+      "id": "gk-karnak-temple-complex-100",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Karnak is iconic ancient Egyptian temple complex landmark."
+    },
+    {
+      "id": "gk-temple-of-claudius-101",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman temple ruins in Rome, cultural landmark."
+    },
+    {
+      "id": "gk-temple-of-bona-dea-102",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Bona Dea temple building in Rome, historical landmark."
+    },
+    {
+      "id": "gk-temple-of-hercules-victor-103",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple in Forum area, a notable landmark."
+    },
+    {
+      "id": "gk-yue-fei-temple-104",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Chinese temple dedicated to Yue Fei, cultural landmark."
+    },
+    {
+      "id": "gk-temple-of-apollo-sosianus-105",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Apollo Sosianus temple in Rome, archaeological landmark."
+    },
+    {
+      "id": "gk-temple-of-jupiter-optimus-maximus-106",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Famed Roman temple atop Capitoline Hill, landmark."
+    },
+    {
+      "id": "gk-temple-of-aphaea-107",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Greek temple on Aegina island, important landmark."
+    },
+    {
+      "id": "gk-west-mebon-108",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Cambodian landmark temple Ruins."
+    },
+    {
+      "id": "gk-po-nagar-109",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Po Nagar complex in Vietnam, cultural landmark."
+    },
+    {
+      "id": "gk-church-of-matrona-of-moscow-in-belgorod-110",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Religious building landmark in Belgorod."
+    },
+    {
+      "id": "gk-e-ninnu-111",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple in ancient Girsu, archaeological landmark."
+    },
+    {
+      "id": "gk-temple-of-anu-adad-112",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Iraqi temple landmark site."
+    },
+    {
+      "id": "gk-temple-of-edfu-113",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Edfu temple in Egypt, notable landmark."
+    },
+    {
+      "id": "gk-temple-of-earth-114",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Temple of Earth building in Beijing, recognized landmark."
+    },
+    {
+      "id": "gk-temple-of-apollo-grannus-115",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Bavarian archaeological temple site as landmark."
+    },
+    {
+      "id": "gk-temple-of-apollo-at-aegina-116",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Doric temple on Aegina, classical landmark."
+    },
+    {
+      "id": "gk-bongseonsa-117",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Korean temple site, cultural landmark."
+    },
+    {
+      "id": "gk-temple-of-hera-olympia-118",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Greek temple at Olympia, historic landmark."
+    },
+    {
+      "id": "gk-luohan-temple-119",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Chinese temple building recognized as landmark."
+    },
+    {
+      "id": "gk-bayon-120",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Bayon temple in Cambodia, world heritage landmark."
+    },
+    {
+      "id": "gk-temple-of-mars-ultor-121",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Roman temple from 42 BCE, significant landmark."
+    },
+    {
+      "id": "gk-temple-of-the-moon-122",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Beijing’s Temple of the Moon, cultural landmark."
+    },
+    {
+      "id": "gk-old-temple-of-athena-123",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Ancient temple on Acropolis, notable landmark."
+    },
+    {
+      "id": "gk-garni-temple-124",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Garni Temple sacred architecture, historical landmark."
+    },
+    {
+      "id": "gk-temple-of-antas-125",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.56,
+      "reason": "Antas temple in Sardinia, enduring landmark."
+    },
+    {
+      "id": "gk-eanna-126",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Eanna is a historic temple and architectural landmark in Uruk."
+    },
+    {
+      "id": "gk-na-tcha-temple-127",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Na Tcha Temple is a notable temple landmark in Macau, China."
+    },
+    {
+      "id": "gk-q723125-128",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "An archaeological site in Rhineland-Palatinate, Germany, representing a landmark."
+    },
+    {
+      "id": "gk-temple-of-vespasian-and-titus-129",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple at the Forum Romanum honoring emperors, a significant Roman landmark."
+    },
+    {
+      "id": "gk-dendera-temple-complex-130",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Egyptian temple complex recognized as a cultural landmark."
+    },
+    {
+      "id": "gk-sarmizegetusa-regia-131",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Dacian settlement of historical importance as a landmark."
+    },
+    {
+      "id": "gk-temple-of-faunus-132",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple dedicated to Faunus in Rome, a classical architectural landmark."
+    },
+    {
+      "id": "gk-temple-of-saturn-133",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple at Capitoline Hill in Rome, a prominent ancient landmark."
+    },
+    {
+      "id": "gk-temple-of-antoninus-and-faustina-134",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple in Rome later converted into a church, notable landmark."
+    },
+    {
+      "id": "gk-temple-of-vesta-135",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Monumental temple in Rome, important architectural landmark."
+    },
+    {
+      "id": "gk-mausi-maa-temple-136",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Indian temple building recognized as cultural heritage landmark."
+    },
+    {
+      "id": "gk-temple-of-augustus-137",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple in Pula, Croatia, famed architectural landmark."
+    },
+    {
+      "id": "gk-precinct-of-mut-138",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Egyptian temple precinct near Karnak, a historic landmark site."
+    },
+    {
+      "id": "gk-templo-mayor-139",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Main temple of Tenochtitlan, a major historical landmark."
+    },
+    {
+      "id": "gk-temple-of-the-sibyl-140",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple in Tivoli, Italy, representing a classical landmark."
+    },
+    {
+      "id": "gk-church-of-the-ascension-of-christ-on-vor-141",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Historic Russian church temple that serves as a cultural landmark."
+    },
+    {
+      "id": "gk-forum-temple-of-emporiae-142",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient forum temple, a significant cultural landmark."
+    },
+    {
+      "id": "gk-bhutnath-temple-and-images-143",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple complex in Madhya Pradesh valued as an architectural landmark."
+    },
+    {
+      "id": "gk-lakshmana-temple-144",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "10th-century Vishnu temple in Khajuraho, iconic heritage landmark."
+    },
+    {
+      "id": "gk-temple-of-mars-145",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Roman temple on the Appian Way, a historic landmark."
+    },
+    {
+      "id": "gk-nobel-week-lights-146",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.64,
+      "reason": "Light festival inspired by Nobel Prizes aligns with pop culture/community events."
+    },
+    {
+      "id": "gk-monastery-of-st-simeon-147",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Monastery recognized as cultural and architectural landmark."
+    },
+    {
+      "id": "gk-temple-of-hercules-musarum-148",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Roman temple dedicated to Hercules near Circus Flaminius."
+    },
+    {
+      "id": "gk-temple-of-jupiter-toro-149",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Roman temple in Italy, an important archaeological landmark."
+    },
+    {
+      "id": "gk-charters-towers-masonic-lodge-150",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Historic lodge in Queensland representing a heritage landmark."
+    },
+    {
+      "id": "gk-academy-award-for-best-film-editing-151",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.85,
+      "reason": "Annual Academy Award is a major pop culture and entertainment fact."
+    },
+    {
+      "id": "gk-ishtar-s-temple-in-ebla-152",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Mesopotamian temple dedicated to Ishtar, a landmark."
+    },
+    {
+      "id": "gk-temple-of-marquis-wu-baidicheng-153",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Chinese temple building regarded as cultural landmark."
+    },
+    {
+      "id": "gk-church-of-san-francisco-154",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Historic church in Mexico standing as architectural landmark."
+    },
+    {
+      "id": "gk-ancient-temple-siddheshwar-mahadeva-temp-155",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Hindu temple in Madhya Pradesh recognized as a religious landmark."
+    },
+    {
+      "id": "gk-banteay-samr-156",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple in Cambodia considered an important cultural landmark."
+    },
+    {
+      "id": "gk-zeus-sosipolis-temple-157",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Greek temple in Magnesia serving as a classic landmark."
+    },
+    {
+      "id": "gk-temple-of-vesta-158",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Roman temple in Tivoli, Italy, a historic landmark."
+    },
+    {
+      "id": "gk-academy-award-for-best-makeup-and-hairst-159",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.85,
+      "reason": "Academy Award for Best Makeup and Hairstyling is an entertainment award."
+    },
+    {
+      "id": "gk-academy-award-for-best-documentary-short-160",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.85,
+      "reason": "Academy Award for Best Documentary (Short Subject) is a film industry honor."
+    },
+    {
+      "id": "gk-academy-award-for-best-original-song-sco-161",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.85,
+      "reason": "Academy Award for Best Original Song Score is a cinematic award category."
+    },
+    {
+      "id": "gk-sapta-badri-162",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Building in India valued as a cultural and religious landmark."
+    },
+    {
+      "id": "gk-iraivan-temple-163",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Hindu temple in Hawaii, notable architectural landmark."
+    },
+    {
+      "id": "gk-temple-of-piety-164",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Temple building in Rome recognized as a cultural landmark."
+    },
+    {
+      "id": "gk-temple-of-simut-and-nin-ali-in-dur-untas-165",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.85,
+      "reason": "Ancient Elamite temple honoring gods, a historical landmark."
+    },
+    {
+      "id": "gk-ajanta-caves-166",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Historic Buddhist cave monuments are iconic heritage landmarks."
+    },
+    {
+      "id": "gk-saint-john-the-evangelist-church-arzamas-167",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "A notable religious building recognized as a cultural landmark."
+    },
+    {
+      "id": "gk-church-of-san-juan-parangaricutiro-168",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "A famous church ruin that qualifies as a landmark wonder."
+    },
+    {
+      "id": "gk-church-of-the-intercession-of-the-most-h-169",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Religious architecture tied to cultural heritage fits landmarks."
+    },
+    {
+      "id": "gk-church-of-all-saints-nizhny-novgorod-170",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Historic church recognized as part of architectural heritage."
+    },
+    {
+      "id": "gk-convento-de-las-m-nimas-de-jerez-de-la-f-171",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "A recognised convent serving as a cultural/architectural landmark."
+    },
+    {
+      "id": "gk-balkampet-yellamma-temple-172",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Temple identified as a cultural landmark and religious site."
+    },
+    {
+      "id": "gk-academy-honorary-award-173",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.49,
+      "reason": "Prestigious cinema award reflects pop culture and media domain."
+    },
+    {
+      "id": "gk-lenggu-monastery-174",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Tibetan monastery is a notable religious landmark."
+    },
+    {
+      "id": "gk-koe-thaung-temple-175",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Large Buddhist temple recognized as a heritage landmark."
+    },
+    {
+      "id": "gk-temple-of-minerva-176",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Ancient Roman temple is a historic monument and landmark."
+    },
+    {
+      "id": "gk-church-of-the-nativity-in-pridacha-177",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Historic church and cultural landmark in Voronezh."
+    },
+    {
+      "id": "gk-barcaldine-masonic-temple-178",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Heritage building preserved as a landmark site."
+    },
+    {
+      "id": "gk-pura-ulun-danu-batur-179",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Balinese Hindu temple is a celebrated cultural landmark."
+    },
+    {
+      "id": "gk-temple-of-apollo-at-didyma-180",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Ancient Greek sanctuary recognized as a wonderous site."
+    },
+    {
+      "id": "gk-church-of-the-ascension-181",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Historical Armenian church serves as a cultural monument."
+    },
+    {
+      "id": "gk-pilyangsa-temple-182",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Buddhist temple cited as a place of architectural interest."
+    },
+    {
+      "id": "gk-ashok-binayak-temple-183",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Hindu temple in Kathmandu is an important religious landmark."
+    },
+    {
+      "id": "gk-zhuqing-temple-184",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Buddhist temple standing as a cultural and architectural site."
+    },
+    {
+      "id": "gk-amada-185",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Egyptian archaeological site qualifies as a world heritage landmark."
+    },
+    {
+      "id": "gk-cairns-masonic-temple-186",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Historic site preserved for its cultural and architectural value."
+    },
+    {
+      "id": "gk-osireion-187",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Ancient Egyptian site recognized for archaeological importance."
+    },
+    {
+      "id": "gk-digos-conventual-priory-188",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Roman Catholic monastery recognized as spiritual landmark."
+    },
+    {
+      "id": "gk-ar-rahim-mosque-189",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Mosque cited as an architectural and religious landmark."
+    },
+    {
+      "id": "gk-temple-of-bellona-190",
+      "domain": "general_knowledge",
+      "categoryL2": "landmarks_wonders",
+      "confidence": 0.49,
+      "reason": "Ancient temple is an archaeological monument and landmark."
+    },
+    {
+      "id": "gk-etymology-salary-191",
+      "domain": "general_knowledge",
+      "categoryL2": "words_language",
+      "confidence": 0.49,
+      "reason": "Details the linguistic origin of the word 'salary.'"
+    },
+    {
+      "id": "gk-usain-bolt-record-192",
+      "domain": "general_knowledge",
+      "categoryL2": "records_firsts",
+      "confidence": 0.49,
+      "reason": "Describes a world record in athletics, fitting Records & Firsts."
+    },
+    {
+      "id": "gk-beatles-abbey-road-193",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.49,
+      "reason": "Music history and iconic media cover belong to pop culture."
+    },
+    {
+      "id": "gk-first-feature-film-194",
+      "domain": "general_knowledge",
+      "categoryL2": "records_firsts",
+      "confidence": 0.49,
+      "reason": "Identifies the first narrative feature film, a record milestone."
+    },
+    {
+      "id": "gk-first-computer-bug-195",
+      "domain": "general_knowledge",
+      "categoryL2": "inventions_tech",
+      "confidence": 0.49,
+      "reason": "Historic tech milestone in computing culture."
+    },
+    {
+      "id": "gk-nobel-prize-curie-196",
+      "domain": "general_knowledge",
+      "categoryL2": "everyday_science",
+      "confidence": 0.49,
+      "reason": "Science achievement knowledge fits everyday science domain."
+    },
+    {
+      "id": "gk-zipper-invention-197",
+      "domain": "general_knowledge",
+      "categoryL2": "inventions_tech",
+      "confidence": 0.49,
+      "reason": "Innovation in garment technology is an inventions fact."
+    },
+    {
+      "id": "gk-prime-number-two-198",
+      "domain": "general_knowledge",
+      "categoryL2": "everyday_science",
+      "confidence": 0.49,
+      "reason": "Mathematical fact fits everyday science category."
+    },
+    {
+      "id": "gk-dunning-kruger-199",
+      "domain": "general_knowledge",
+      "categoryL2": "everyday_science",
+      "confidence": 0.49,
+      "reason": "Psychology cognitive bias falls under everyday science knowledge."
+    },
+    {
+      "id": "gk-socrates-no-writings-200",
+      "domain": "general_knowledge",
+      "categoryL2": "oddities",
+      "confidence": 0.49,
+      "reason": "Surprising philosophical trivia best fits oddities."
+    },
+    {
+      "id": "gk-gdp-invented-201",
+      "domain": "general_knowledge",
+      "categoryL2": "everyday_science",
+      "confidence": 0.49,
+      "reason": "Economic measurement history aligns with everyday science."
+    },
+    {
+      "id": "gk-morse-code-sos-202",
+      "domain": "general_knowledge",
+      "categoryL2": "inventions_tech",
+      "confidence": 0.49,
+      "reason": "Communication protocol selection is a tech/milestone fact."
+    },
+    {
+      "id": "gk-wheel-invention-203",
+      "domain": "general_knowledge",
+      "categoryL2": "inventions_tech",
+      "confidence": 0.49,
+      "reason": "Ancient innovation in technology pertains to inventions category."
+    },
+    {
+      "id": "gk-coco-chanel-lbd-204",
+      "domain": "general_knowledge",
+      "categoryL2": "pop_culture",
+      "confidence": 0.49,
+      "reason": "Fashion milestone in popular culture falls under pop culture."
+    },
+    {
+      "id": "gk-ethiopian-calendar-205",
+      "domain": "general_knowledge",
+      "categoryL2": "everyday_science",
+      "confidence": 0.49,
+      "reason": "Calendar system detail corresponds to everyday science knowledge."
+    }
+  ],
+  "fileChanges": [
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "rows": 378
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "rows": 357
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "rows": 396
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "rows": 350
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "rows": 195
+    },
+    {
+      "path": "data/generated/geography-flags.jsonl",
+      "rows": 194
+    },
+    {
+      "path": "data/generated/geography.jsonl",
+      "rows": 370
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "rows": 328
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "rows": 338
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "rows": 393
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "rows": 354
+    },
+    {
+      "path": "data/generated/production-facts.jsonl",
+      "rows": 0
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "rows": 321
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "rows": 41
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "rows": 41
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "rows": 40
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "rows": 3585
+    },
+    {
+      "path": "src/data/seed/tutorial.json",
+      "rows": 1
+    },
+    {
+      "path": "src/data/seed/vocab-n3.json",
+      "rows": 400
+    }
+  ]
+}

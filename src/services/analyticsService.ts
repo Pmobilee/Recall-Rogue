@@ -284,6 +284,30 @@ interface ShopSellEvent {
   }
 }
 
+/** Fired when the player buys a relic from the shop. */
+interface ShopBuyRelicEvent {
+  name: 'shop_buy_relic'
+  properties: {
+    relic_id: string
+    price: number
+    rarity: string
+    floor: number
+    remaining_currency: number
+  }
+}
+
+/** Fired when the player buys a card from the shop. */
+interface ShopBuyCardEvent {
+  name: 'shop_buy_card'
+  properties: {
+    card_type: string
+    tier: string
+    price: number
+    floor: number
+    remaining_currency: number
+  }
+}
+
 interface RoomSelectedEvent {
   name: 'room_selected'
   properties: {
@@ -453,6 +477,8 @@ export type AnalyticsEvent =
   | CardTypeSelectedEvent
   | ShopVisitEvent
   | ShopSellEvent
+  | ShopBuyRelicEvent
+  | ShopBuyCardEvent
   | RoomSelectedEvent
   | CardPlayEvent
   | AnswerCorrectEvent

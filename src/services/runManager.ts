@@ -68,6 +68,10 @@ export interface RunState {
   rewardsDisabled?: boolean;
   /** Per-domain answer tracking for auto-calibration. */
   domainAccuracy: Record<string, { answered: number; correct: number }>;
+  /** Number of cards upgraded during this run. */
+  cardsUpgraded: number;
+  /** Deterministic seed for this run (used in all modes for fair multiplayer/daily comparisons). */
+  runSeed: number;
 }
 
 export interface RunEndData {
@@ -103,6 +107,7 @@ export function createRunState(
     ascensionLevel?: number;
   },
 ): RunState {
+  const runSeed = Math.floor(Math.random() * 0xFFFFFFFF);
   const bountyCount = Math.random() < 0.5 ? 1 : 2;
   const ascensionLevel = options?.ascensionLevel ?? 0;
   const ascensionModifiers = getAscensionModifiers(ascensionLevel);
@@ -149,6 +154,8 @@ export function createRunState(
     firstMiniBossRelicAwarded: false,
     phoenixFeatherUsed: false,
     domainAccuracy: {},
+    cardsUpgraded: 0,
+    runSeed,
   };
 }
 

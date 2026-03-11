@@ -1,0 +1,768 @@
+{
+  "generatedAt": "2026-03-11T13:16:54.119Z",
+  "mode": "dry_run",
+  "options": {
+    "force": false,
+    "limit": null,
+    "perDomainLimit": 5,
+    "minScore": 2,
+    "allowFallback": false,
+    "includeLegacyTop": false,
+    "includeGenerated": false,
+    "includeSeed": true
+  },
+  "totals": {
+    "rows": 3647,
+    "updated": 50,
+    "kept": 2,
+    "legacy": 14,
+    "scored": 58,
+    "fallback": 0
+  },
+  "perDomain": {
+    "general_knowledge": {
+      "total": 350,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 343,
+      "skippedLowConfidence": 2,
+      "bySubcategory": {
+        "records_firsts": 0,
+        "inventions_tech": 0,
+        "landmarks_wonders": 5,
+        "pop_culture": 0,
+        "words_language": 0,
+        "everyday_science": 0,
+        "oddities": 0
+      }
+    },
+    "natural_sciences": {
+      "total": 374,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 2,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 364,
+      "skippedLowConfidence": 3,
+      "bySubcategory": {
+        "chemistry_elements": 0,
+        "materials_engineering": 0,
+        "biology_organisms": 0,
+        "physics_mechanics": 5,
+        "geology_earth": 2,
+        "botany_plants": 0,
+        "ecology_environment": 0
+      }
+    },
+    "space_astronomy": {
+      "total": 321,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 10,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 311,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "missions_spacecraft": 9,
+        "planets_moons": 0,
+        "stars_galaxies": 0,
+        "cosmology_universe": 0,
+        "satellites_tech": 1,
+        "exoplanets_astrobio": 0
+      }
+    },
+    "geography": {
+      "total": 390,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 4,
+      "scored": 4,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 381,
+      "skippedLowConfidence": 1,
+      "bySubcategory": {
+        "capitals_countries": 3,
+        "africa": 0,
+        "asia_oceania": 0,
+        "europe": 0,
+        "americas": 1,
+        "landforms_water": 4,
+        "extreme_records": 0,
+        "climate_biomes": 0
+      }
+    },
+    "history": {
+      "total": 350,
+      "updated": 5,
+      "kept": 1,
+      "legacy": 5,
+      "scored": 4,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 340,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "ancient_classical": 3,
+        "medieval": 2,
+        "early_modern": 0,
+        "modern_contemporary": 5,
+        "world_wars": 0,
+        "battles_military": 0,
+        "people_leaders": 0,
+        "social_cultural": 0
+      }
+    },
+    "mythology_folklore": {
+      "total": 393,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 8,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 380,
+      "skippedLowConfidence": 5,
+      "bySubcategory": {
+        "greek_roman": 1,
+        "norse_celtic": 0,
+        "eastern_myths": 2,
+        "creatures_monsters": 4,
+        "creation_cosmology": 0,
+        "folk_legends": 1,
+        "gods_deities": 0
+      }
+    },
+    "animals_wildlife": {
+      "total": 378,
+      "updated": 5,
+      "kept": 1,
+      "legacy": 0,
+      "scored": 6,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 369,
+      "skippedLowConfidence": 2,
+      "bySubcategory": {
+        "mammals": 3,
+        "birds": 0,
+        "marine_life": 1,
+        "insects_arachnids": 1,
+        "reptiles_amphibians": 0,
+        "behavior_intelligence": 0,
+        "conservation": 2,
+        "adaptations": 0
+      }
+    },
+    "human_body_health": {
+      "total": 338,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 333,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "anatomy_organs": 0,
+        "brain_neuro": 0,
+        "genetics_dna": 5,
+        "cardiovascular": 0,
+        "digestion_metabolism": 0,
+        "senses_perception": 0,
+        "immunity_disease": 0,
+        "medical_science": 0
+      }
+    },
+    "food_cuisine": {
+      "total": 396,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 9,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 350,
+      "skippedLowConfidence": 37,
+      "bySubcategory": {
+        "european_cuisine": 3,
+        "asian_cuisine": 0,
+        "world_cuisine": 0,
+        "baking_desserts": 4,
+        "fermentation_beverages": 0,
+        "food_history": 2,
+        "food_science": 0,
+        "ingredients_spices": 0
+      }
+    },
+    "art_architecture": {
+      "total": 357,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 294,
+      "skippedLowConfidence": 58,
+      "bySubcategory": {
+        "museums_institutions": 4,
+        "historic_buildings": 1,
+        "painting_visual": 0,
+        "sculpture_decorative": 0,
+        "modern_contemporary": 0,
+        "architectural_styles": 0,
+        "engineering_design": 0
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 5
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 10
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "type": "json",
+      "totalRows": 40,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "type": "json",
+      "totalRows": 3585,
+      "changedRows": 35
+    },
+    {
+      "path": "src/data/seed/tutorial.json",
+      "type": "json",
+      "totalRows": 1,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-n3.json",
+      "type": "json",
+      "totalRows": 400,
+      "changedRows": 0
+    }
+  ],
+  "samples": [
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-006",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "geology",
+      "toCategoryL2": "geology_earth",
+      "statement": "Oxygen was not always a major component of Earth's atmosphere — it was once almost nonexistent"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-007",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "physics",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "Hot water can freeze faster than cold water under certain conditions — this is called the Mpemba effect"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-008",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "astronomy",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "The Voyager 1 spacecraft, launched in 1977, is now in interstellar space — the first human-made object to leave the solar system"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-009",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "physics",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "Sound cannot travel through space — space is a near-perfect vacuum"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-010",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "geology",
+      "toCategoryL2": "geology_earth",
+      "statement": "The Sahara Desert was a lush, green savanna with lakes and rivers only 6,000 years ago"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-006",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "modern history",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Coca-Cola was originally green"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-007",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "modern history",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The first computer bug was a literal bug — a moth found in a relay of the Harvard Mark II in 1947"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-008",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "ancient history",
+      "toCategoryL2": "ancient_classical",
+      "statement": "Ancient Romans used urine as mouthwash and toothpaste — it was an effective cleaning agent"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-009",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "medieval history",
+      "toCategoryL2": "medieval",
+      "statement": "The Vikings never wore horned helmets — that image was invented by a 19th-century costume designer"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-010",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "modern history",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The guillotine was last used in France in 1977 — the same year Star Wars was released"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-003",
+      "domain": "geography",
+      "reason": "scored",
+      "fromCategoryL2": "landforms water",
+      "fromCategorySecondary": "landforms water",
+      "toCategoryL2": "americas",
+      "statement": "The Amazon River discharges more freshwater into the ocean than the next seven largest rivers combined."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-006",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "countries",
+      "toCategoryL2": "capitals_countries",
+      "statement": "Canada has more lakes than all other countries combined, holding about 60% of the world's lake water."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-007",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "oceans",
+      "toCategoryL2": "landforms_water",
+      "statement": "The Pacific Ocean is larger than all of Earth's landmasses combined."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-008",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "countries",
+      "toCategoryL2": "capitals_countries",
+      "statement": "Vatican City is the world's smallest country, entirely surrounded by Rome, Italy — and it has its own army."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-009",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "landmarks",
+      "toCategoryL2": "landforms_water",
+      "statement": "The Dead Sea is so salty you cannot sink in it — and it gets saltier and smaller every year."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "senna-alata-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Senna alata is a tropical plant species with least concern conservation status."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "serval-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Servals are African wild cats with distinctive long legs and spotted coats."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "laetacara-curviceps-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Laetacara curviceps is a small freshwater fish species of least concern."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "baikal-seal-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Baikal seals are the only freshwater seal species in the world."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "alpine-pika-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Alpine pikas are small mammals in the Ochotonidae family found in mountainous regions."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "mfn-berlin-1810",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "Museum für Naturkunde opened in Berlin in 1810 as a natural history institution."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "olavinlinna-castle-001",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "Olavinlinna Castle is a medieval fortress located in Savonlinna, Finland."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "egyp-mus-leipzig-1874",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "The Egyptian Museum of the University of Leipzig was founded in 1874."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "art-the-new-collection-030",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "The New Collection is a museum established in 1925."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "art-sfax-museum-063",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "museums_institutions",
+      "statement": "The Sfax Archaeological Museum is located in Sfax, Tunisia, and houses artifacts from the region's ancient history."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "spatzle-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Spätzle is a type of egg noodle from France."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "tarta-santiago-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Tarta de Santiago is a medieval almond cake from Galicia, Spain."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "choc-cake-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Chocolate cake is a dessert made with cocoa or chocolate as primary flavoring."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "food-a-ure-018",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "aşure is a Armenian dessert from ancient Near East."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "food-pea-soup-046",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "pea soup is a thick soup usually made out of dried spl from Ancient Greece."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "fan-sin-temple-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Fan Sin Temple is a historic building located in Hong Kong, China."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "aqaba-church-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Aqaba Church is an ancient church building located in Aqaba, Jordan."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "q2873434-minerva-chalcidica",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Temple of Minerva Chalcidica is an ancient Roman building located in Rome."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "Q2883612-baolun-ge",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Baolun ge is a historic temple located in Chengkan village, Huangshan, Anhui province, China."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "guang-ming-temple-orlando",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "landmarks_wonders",
+      "statement": "Guang Ming Temple is a Buddhist temple in Orlando, Florida established in 2007."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "adgra2-gene-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "ADGRA2 is a protein-coding gene found in humans."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "polr2mp1-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "POLR2MP1 is a pseudogene found in human DNA."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "gprc5d-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GPRC5D is a protein-coding gene found in humans."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "gltp-gene-q5572626",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GLTP is a protein-coding gene found in human DNA."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "gpc4-protein-gene-001",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "genetics_dna",
+      "statement": "GPC4 is a protein-coding gene found in human cells."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "bahkauv-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "Bahkauv is a fearsome monster from Slavic mythology and folklore traditions."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "chupacabra-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "The Chupacabra is a legendary cryptid first reported in Puerto Rico."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "marid-islamic-jinn-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "eastern_myths",
+      "statement": "A Marid is a powerful rebellious jinn in Islamic mythology and folklore."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "baphomet-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "folk_legends",
+      "statement": "Baphomet is a claimed idol associated with the Knights Templar and modern occultism."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "myt-001-mongolian-death-worm",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "The Olgoi-Khorkhoi is a legendary cryptid from Mongolia's Gobi Desert."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "apollo-a001-abort-test",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-001 was Apollo's second abort test of the spacecraft system."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "saturn-sa1-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Saturn SA-1 was NASA's first uncrewed Apollo test flight in 1961."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "vanguard-slv1-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Vanguard SLV-1 was America's first failed satellite launch attempt in 1957."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "vanguard-slv5-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Vanguard SLV-5 was a failed rocket launch by the United States."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "vanguard-slv6-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Vanguard SLV-6 was a failed American rocket launch attempt."
+    }
+  ]
+}

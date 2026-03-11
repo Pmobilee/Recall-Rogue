@@ -42,7 +42,7 @@ Primary boot path:
 
 ### Phaser Layer
 
-- `CombatScene` — renders enemy sprite, enemy HP bars (with block overlay), hit/death animations, damage particles, screen flash. Intent, floor info, enemy name, and bounty strip have moved to the Svelte overlay.
+- `CombatScene` — renders enemy HP bars (with block overlay), damage particles, screen flash. Enemy sprites are rendered and animated via EnemySpriteSystem (3D paper cutout effect with procedural idle/attack/hit/death states). Intent, floor info, enemy name, and bounty strip have moved to the Svelte overlay.
 - `CombatScene` uses a `sceneReady` guard: a private boolean flag set `true` at end of `create()`. All public methods (`setEnemy`, `updateEnemyBlock`, `setEnemyIntent`, `updatePlayerHP`, `setFloorInfo`, `setRelics`) early-return if the scene is not yet ready, preventing race conditions when callers invoke display updates before Phaser objects exist.
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
@@ -99,7 +99,7 @@ Located in `src/services/`:
 Located in `src/data/`:
 
 - `types.ts` — PlayerSave, fact types (extend with card types)
-- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base damage/heal values), `POST_ENCOUNTER_HEAL_PCT` (15%), `EXPLORER_POST_ENCOUNTER_HEAL_BONUS` (10%), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (10%), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps)
+- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling
 - Card type mappings — `src/data/card-types.ts`
@@ -143,19 +143,21 @@ These systems transfer from the mining codebase with minimal changes:
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
-| CombatScene | `src/game/scenes/CombatScene.ts` | Built |
+| CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
+| Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates enemy rendering, 3D paper cutout effect (shadow + outline layers), idle/attack/hit/death animations, placeholder display for missing sprites |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
-| Card hand UI | `src/ui/components/CardHand.svelte` | Built |
+| Card hand UI | `src/ui/components/CardHand.svelte` | Built — added `.card-upgraded` CSS class (blue glow) |
 | Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built |
-| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built |
+| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element |
 | Combo counter | `src/ui/components/ComboCounter.svelte` | Built |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
 | Domain selection | `src/ui/components/DomainSelection.svelte` | Built |
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
 | Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown for selecting study mode before runs |
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built |
-| Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built |
+| Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built — wired upgrade button (removed "Coming soon" stub) |
+| Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | Complete redesign — buy relics + buy cards + sell sections |
 | Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
 | Run end overlay | `src/ui/components/RunEndOverlay.svelte` | Built |
 | Enemy templates | `src/data/enemies.ts` | Built |
@@ -195,6 +197,43 @@ These systems transfer from the mining codebase with minimal changes:
 | Passive tracking in TurnState | `src/services/turnManager.ts` (`activePassives`) | Built |
 | Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built — wild card branch now copies target type's `BASE_EFFECT` value |
 | Tier 3 extraction & SM-2 wiring | `src/services/encounterBridge.ts` | Built |
+
+### Implemented (P0.6 — Card Upgrades & Shop Enhancement)
+
+| System | File(s) | Status |
+|--------|---------|--------|
+| Card upgrade definitions | `src/services/cardUpgradeService.ts` | Built — UPGRADE_DEFS mapping mechanics → bonus values |
+| Card upgrade logic | `src/services/cardUpgradeService.ts` (upgradeCard, canUpgradeCard, getUpgradeCandidates, getUpgradePreview) | Built |
+| Shop inventory generation | `src/services/shopService.ts` | Built — generateShopRelics, calculateShopPrice, priceShopCards |
+| Hidden relic synergies | `src/services/relicSynergyResolver.ts` | Built — RELIC_SYNERGIES definitions, detectActiveSynergies, hasSynergy, Tier 3 bonus calculation |
+| Upgrade picker UI | `src/ui/components/UpgradeSelectionOverlay.svelte` | Built — 3 candidates with before/after preview, sorted by tier |
+| Post-mini-boss rest screen | `src/ui/components/PostMiniBossRestOverlay.svelte` | Built — auto-heal 15% + upgrade selection |
+
+#### Modified Files (P0.6)
+
+**Data Layer:**
+- `src/data/card-types.ts` — Added `isUpgraded?: boolean` and `secondaryValue?: number` to Card interface
+- `src/data/balance.ts` — Added upgrade, shop, and synergy constants (UPGRADE_DEFS, SHOP_PRICES, RELIC_SYNERGIES, SYNERGY_BONUSES)
+
+**Service Layer:**
+- `src/services/encounterBridge.ts` — Wired `generateCurrencyReward()` for gold after encounters; added `upgradeCardInActiveDeck()` handler
+- `src/services/gameFlowController.ts` — Added upgrade flow states, shop buy handlers, post-mini-boss rest routing
+- `src/services/relicEffectResolver.ts` — Integrated Tier 2 synergy bonus checks via `hasSynergy()` during effect resolution
+- `src/services/turnManager.ts` — Added Tier 3 synergy tracking: `consecutiveCorrectThisEncounter`, `tier3CardCount`, `phoenixRageTurnsRemaining`, `glassPenaltyRemovedTurnsRemaining`
+- `src/services/runManager.ts` — Added `cardsUpgraded: number` to RunState tracking
+- `src/services/cardEffectResolver.ts` — Updated multi_hit/reckless/execute to use per-card `secondaryValue`; quicken+ draws 1 extra card
+
+**UI Layer:**
+- `src/ui/stores/gameState.ts` — Added `upgradeSelection`, `postMiniBossRest` screens; added `synergyFlash` store for visual feedback
+- `src/ui/components/CardHand.svelte` — Added `.card-upgraded` CSS class (blue glow border)
+- `src/ui/components/RestRoomOverlay.svelte` — Wired upgrade button (removed "Coming soon" stub)
+- `src/ui/components/ShopRoomOverlay.svelte` — Complete redesign with buy relics, buy cards, and sell sections
+- `src/ui/components/CardCombatOverlay.svelte` — Added synergy flash UI element for visual feedback
+
+**Data Flow Additions:**
+- **Upgrade flow**: Rest Room → `openUpgradeSelection()` → UpgradeSelectionOverlay → `onUpgradeSelected(cardId)` → mutates card in deck → proceeds
+- **Shop buy flow**: Shop Room → `onShopBuyRelic(relicId)` / `onShopBuyCard(index)` → deducts gold, adds item → updates display
+- **Synergy detection**: `relicSynergyResolver.detectActiveSynergies()` called at encounter start → bonuses applied in `relicEffectResolver` (Tier 2) and `turnManager` (Tier 3)
 
 ### Relic System
 

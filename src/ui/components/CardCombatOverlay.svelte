@@ -1,5 +1,6 @@
 <script lang="ts">
   import { get } from 'svelte/store'
+  import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
   import { FLOOR_TIMER } from '../../data/balance'
@@ -28,6 +29,7 @@
   import { shuffled } from '../../services/randomUtils'
   import { activeRunState } from '../../services/runStateStore'
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
+  import { synergyFlash } from '../stores/gameState'
 
   interface Props {
     turnState: TurnState | null
@@ -70,13 +72,27 @@
   let animatingCards = $state<Card[]>([])
   let damageIdCounter = $state(0)
   let slowReaderEnabled = $state(false)
-  let currentDifficulty = $state<DifficultyMode>('standard')
+  let currentDifficulty = $state<DifficultyMode>('normal')
 
   // wowFactor overlay state
   let wowFactorText = $state<string | null>(null)
   let wowFactorVisible = $state(false)
   let wowFactorCount = $state(0)
   const WOW_FACTOR_MAX_PER_ENCOUNTER = 3
+
+  // Synergy flash: subtle pulse when a hidden combo activates
+  let synergyFlashText = $state<string | null>(null)
+  $effect(() => {
+    const val = $synergyFlash
+    if (val) {
+      synergyFlashText = val
+      const timer = setTimeout(() => {
+        synergyFlashText = null
+        synergyFlash.set(null)
+      }, 1500)
+      return () => clearTimeout(timer)
+    }
+  })
 
   let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
   let comboCount = $derived(turnState?.comboCount ?? 0)
@@ -111,6 +127,8 @@
   let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
   let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
   let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
+
+  let intentPopupOpen = $state(false)
 
   const CATEGORY_COLORS: Record<string, string> = {
     common: '#9ca3af',
@@ -226,7 +244,7 @@
       cardPlayStage === 'committed',
   )
 
-  let timerEnabled = $derived(currentDifficulty !== 'explorer')
+  let timerEnabled = $derived(currentDifficulty !== 'relaxed')
   let canaryQuestionBias = $derived(turnState?.canaryQuestionBias ?? 0)
 
   let effectiveTimerSeconds = $derived.by(() => {
@@ -251,10 +269,6 @@
     const ascensionPenalty = (turnState.ascensionBaseTimerPenaltySeconds ?? 0) + (turnState.ascensionEncounterTimerPenaltySeconds ?? 0)
     let timer = floorBase + wordBonus + slowReaderBonus - ascensionPenalty
 
-    if (currentDifficulty === 'scholar' && committedCard) {
-      const tierRank = committedCard.tier === '1' ? 0 : committedCard.tier === '2a' ? 1 : committedCard.tier === '2b' ? 2 : 3
-      timer = Math.max(2, timer - tierRank * 2)
-    }
 
     return Math.max(2, timer)
   })
@@ -882,21 +896,56 @@
     {/if}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
-      <div
+      <button
         class="enemy-intent-panel"
         style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
+        onclick={() => { intentPopupOpen = true }}
+        aria-label="View intent details"
       >
-        <div class="intent-main-row">
-          <span class="intent-icon">{intentDisplay.icon}</span>
-          <span class="intent-telegraph">{intentDisplay.telegraph || intentDisplay.label}</span>
-          {#if intentDisplay.text}
-            <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
-              class:intent-value-defend={intentDisplay.type === 'defend'}>{intentDisplay.text}</span>
-          {/if}
+        <span class="intent-icon">{intentDisplay.icon}</span>
+        <span class="intent-telegraph">{intentDisplay.telegraph || intentDisplay.label}</span>
+        {#if intentDisplay.text}
+          <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
+            class:intent-value-defend={intentDisplay.type === 'defend'}
+            class:intent-value-heal={intentDisplay.type === 'heal'}
+            class:intent-value-buff={intentDisplay.type === 'buff'}
+            class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
+        {/if}
+      </button>
+    {/if}
+
+    {#if intentPopupOpen && intentDisplay && enemyIntent}
+      <button
+        class="intent-popup-backdrop"
+        onclick={() => { intentPopupOpen = false }}
+        aria-label="Close intent details"
+      ></button>
+      <div class="intent-popup" role="dialog" aria-label="Intent details" onclick={() => { intentPopupOpen = false }}>
+        <div class="intent-popup-header" style="border-bottom-color: {intentDisplay.borderColor};">
+          <span class="intent-popup-icon">{intentDisplay.icon}</span>
+          <span class="intent-popup-name">{intentDisplay.telegraph || intentDisplay.label}</span>
         </div>
-        <div class="intent-sub-row">
-          <span class="intent-floor-info">Floor {currentFloor} · {currentEncounter}/3</span>
-          <span class="intent-type-label">{intentDisplay.label}</span>
+        <div class="intent-popup-body">
+          {#if enemyIntent.type === 'attack'}
+            <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> damage</p>
+          {:else if enemyIntent.type === 'multi_attack'}
+            <p>Hits <strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong> times for <strong class="popup-val-attack">{enemyIntent.value}</strong> damage each</p>
+            <p class="intent-popup-total">Total: {enemyIntent.value * (enemyIntent.hitCount ?? 2)} damage</p>
+          {:else if enemyIntent.type === 'defend'}
+            <p>Gains <strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
+          {:else if enemyIntent.type === 'buff'}
+            <p>Gains a buff</p>
+            {#if enemyIntent.statusEffect}
+              <p class="intent-popup-effect">+{enemyIntent.statusEffect.value} {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
+            {/if}
+          {:else if enemyIntent.type === 'debuff'}
+            <p>Applies a debuff to you</p>
+            {#if enemyIntent.statusEffect}
+              <p class="intent-popup-effect">{enemyIntent.statusEffect.value} {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
+            {/if}
+          {:else if enemyIntent.type === 'heal'}
+            <p>Heals for <strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
+          {/if}
         </div>
       </div>
     {/if}
@@ -986,6 +1035,12 @@
         </div>
       </div>
     {/if}
+  {/if}
+
+  {#if synergyFlashText}
+    <div class="synergy-flash" transition:fade={{ duration: 300 }}>
+      <span class="synergy-flash-icon">✦</span>
+    </div>
   {/if}
 </div>
 
@@ -1105,17 +1160,23 @@
     border: 1.5px solid;
     border-radius: 10px;
     padding: 6px 14px;
-    min-width: 140px;
-    max-width: 240px;
+    min-width: 100px;
+    max-width: 220px;
     backdrop-filter: blur(8px);
     animation: intent-fade-in 300ms ease-out;
-  }
-
-  .intent-main-row {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
     justify-content: center;
+    /* button reset */
+    font: inherit;
+    color: inherit;
+    outline: none;
+  }
+
+  .enemy-intent-panel:active {
+    transform: translateX(-50%) scale(0.96);
   }
 
   .intent-icon {
@@ -1151,12 +1212,94 @@
     color: #3b82f6;
   }
 
-  .intent-sub-row {
+  .intent-value-heal {
+    color: #22c55e;
+  }
+
+  .intent-value-buff {
+    color: #eab308;
+  }
+
+  .intent-value-debuff {
+    color: #a855f7;
+  }
+
+  .intent-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: default;
+  }
+
+  .intent-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 51;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1.5px solid rgba(148, 163, 184, 0.3);
+    border-radius: 14px;
+    padding: 16px 20px;
+    min-width: 220px;
+    max-width: 280px;
+    backdrop-filter: blur(12px);
+    animation: intent-fade-in 200ms ease-out;
+  }
+
+  .intent-popup-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 2px;
     gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  .intent-popup-icon {
+    font-size: 22px;
+  }
+
+  .intent-popup-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+
+  .intent-popup-body {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .intent-popup-body p {
+    margin: 0 0 4px;
+  }
+
+  .intent-popup-total {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 4px !important;
+  }
+
+  .intent-popup-effect {
+    color: #a78bfa;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .popup-val-attack {
+    color: #ef4444;
+  }
+
+  .popup-val-defend {
+    color: #3b82f6;
+  }
+
+  .popup-val-heal {
+    color: #22c55e;
   }
 
   .intent-enemy-name {
@@ -1165,19 +1308,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  .intent-floor-info {
-    font-size: 10px;
-    color: #94a3b8;
-    letter-spacing: 0.3px;
-  }
-
-  .intent-type-label {
-    font-size: 10px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
   }
 
   .enemy-name-header {
@@ -1410,5 +1540,30 @@
   .expert-mult {
     font-size: 9px;
     color: #cbd5e1;
+  }
+
+  .synergy-flash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    animation: synergy-pulse 1.5s ease-out forwards;
+  }
+
+  .synergy-flash-icon {
+    font-size: 4rem;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4);
+    opacity: 0;
+    animation: synergy-icon-fade 1.5s ease-out forwards;
+  }
+
+  @keyframes synergy-icon-fade {
+    0% { opacity: 0; transform: scale(0.5); }
+    15% { opacity: 1; transform: scale(1.2); }
+    30% { opacity: 1; transform: scale(1.0); }
+    100% { opacity: 0; transform: scale(1.5); }
   }
 </style>

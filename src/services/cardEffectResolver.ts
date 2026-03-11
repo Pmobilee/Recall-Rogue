@@ -11,6 +11,8 @@ import {
   ECHO,
   LEGACY_TIER_MULTIPLIER,
   TIER_MULTIPLIER,
+  getBalanceValue,
+  getBalanceOverrides,
 } from '../data/balance';
 import { isVulnerable } from '../data/statusEffects';
 import { getMechanicDefinition } from '../data/mechanics';
@@ -63,9 +65,20 @@ function getTierMultiplier(tier: Card['tier']): number {
   return LEGACY_TIER_MULTIPLIER[tier as 1 | 2 | 3] ?? 1.0;
 }
 
+/** Get base effect value for a card type, checking overrides first. */
+function getBaseEffect(cardType: string): number {
+  const overrides = getBalanceOverrides();
+  if (overrides) {
+    if (cardType === 'attack' && overrides.baseEffectAttack !== undefined) return overrides.baseEffectAttack;
+    if (cardType === 'shield' && overrides.baseEffectShield !== undefined) return overrides.baseEffectShield;
+  }
+  return BASE_EFFECT[cardType as keyof typeof BASE_EFFECT] ?? 0;
+}
+
 function getComboMultiplier(comboCount: number): number {
-  const comboIndex = Math.min(comboCount, COMBO_MULTIPLIERS.length - 1);
-  return COMBO_MULTIPLIERS[comboIndex] ?? 1;
+  const multipliers = getBalanceValue('comboMultipliers', COMBO_MULTIPLIERS);
+  const comboIndex = Math.min(comboCount, multipliers.length - 1);
+  return multipliers[comboIndex] ?? 1;
 }
 
 function resolveEchoBase(card: Card, activeRelicIds: Set<string>): number {
@@ -115,7 +128,8 @@ export function resolveCardEffect(
   if (card.cardType === 'wild' && card.mechanicId !== 'overclock') {
     effectiveType = lastCardType ?? 'attack';
     result.effectType = effectiveType;
-    card = { ...card, baseEffectValue: BASE_EFFECT[effectiveType] ?? card.baseEffectValue };
+    const baseValue = getBaseEffect(effectiveType);
+    card = { ...card, baseEffectValue: baseValue > 0 ? baseValue : card.baseEffectValue };
   }
 
   const focusAdjustedMultiplier = advanced.isFocusActive
@@ -163,7 +177,7 @@ export function resolveCardEffect(
   const mechanicId = card.mechanicId ?? '';
   switch (mechanicId) {
     case 'multi_hit': {
-      const hits = (mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
+      const hits = (card.secondaryValue ?? mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
       applyAttackDamage(finalValue * hits);
       return result;
     }
@@ -173,13 +187,13 @@ export function resolveCardEffect(
       return result;
     }
     case 'reckless': {
-      result.selfDamage = mechanic?.secondaryValue ?? 3;
+      result.selfDamage = card.secondaryValue ?? mechanic?.secondaryValue ?? 3;
       applyAttackDamage(finalValue);
       return result;
     }
     case 'execute': {
       const threshold = mechanic?.secondaryThreshold ?? 0.3;
-      const bonusBase = mechanic?.secondaryValue ?? 8;
+      const bonusBase = card.secondaryValue ?? mechanic?.secondaryValue ?? 8;
       const executeBonus = enemy.currentHP / enemy.maxHP < threshold
         ? Math.round(bonusBase * tierMultiplier * focusAdjustedMultiplier * comboMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier)
         : 0;
@@ -204,19 +218,21 @@ export function resolveCardEffect(
       return result;
     }
     case 'overheal': {
-      const targetHeal = finalValue + (passiveBonuses?.heal ?? 0);
-      const missingHp = Math.max(0, playerState.maxHP - playerState.hp);
-      result.healApplied = Math.min(targetHeal, missingHp);
-      result.overhealToShield = Math.max(0, targetHeal - missingHp);
+      const targetShield = finalValue + (passiveBonuses?.shield ?? 0);
+      const healthPercentage = playerState.hp / playerState.maxHP;
+      const bonusMultiplier = healthPercentage < 0.5 ? 1.5 : 1.0;
+      result.shieldApplied = Math.round(targetShield * bonusMultiplier);
       return result;
     }
     case 'lifetap': {
-      const turnDamage = advanced.damageDealtThisTurn ?? 0;
-      result.healApplied = Math.max(1, Math.floor(turnDamage * 0.30));
+      const damageFromCard = finalValue + (passiveBonuses?.attack ?? 0);
+      result.healApplied = Math.max(1, Math.floor(damageFromCard * 0.20));
+      applyAttackDamage(damageFromCard);
       return result;
     }
     case 'quicken': {
       result.grantsAp = 1;
+      if (card.isUpgraded) result.extraCardsDrawn = 1;
       result.finalValue = 1;
       return result;
     }
@@ -267,11 +283,6 @@ export function resolveCardEffect(
       result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
       break;
     }
-    case 'heal': {
-      const healVal = finalValue + (passiveBonuses?.heal ?? 0);
-      result.healApplied = Math.min(healVal, playerState.maxHP - playerState.hp);
-      break;
-    }
     case 'buff': {
       result.finalValue = finalValue + (passiveBonuses?.buff ?? 0);
       break;
@@ -291,18 +302,6 @@ export function resolveCardEffect(
           type: 'vulnerable',
           value: 1,
           turnsRemaining: 2,
-        });
-      }
-      break;
-    }
-    case 'regen': {
-      const regenFinal = finalValue + (passiveBonuses?.regen ?? 0);
-      const regenPerTurn = Math.ceil(regenFinal / 3);
-      if (regenPerTurn > 0) {
-        result.statusesApplied.push({
-          type: 'regen',
-          value: regenPerTurn,
-          turnsRemaining: 3,
         });
       }
       break;

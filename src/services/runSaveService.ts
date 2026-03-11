@@ -24,6 +24,8 @@ export interface RunSaveState {
   runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   /** Optional deterministic seed used by fixed-seed modes. */
   dailySeed?: number | null;
+  /** Run seed for standard and endless_depths modes (for fair replay and multiplayer comparison). */
+  runSeed?: number | null;
   /** Room options if paused at room selection. */
   roomOptions?: RoomOption[];
 }
@@ -80,6 +82,7 @@ export function saveActiveRun(state: {
   currentScreen: string;
   runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   dailySeed?: number | null;
+  runSeed?: number | null;
   roomOptions?: RoomOption[];
 }): void {
   const serialized: RunSaveState = {
@@ -89,6 +92,7 @@ export function saveActiveRun(state: {
     currentScreen: state.currentScreen,
     runMode: state.runMode,
     dailySeed: state.dailySeed ?? null,
+    runSeed: state.runSeed ?? null,
     roomOptions: state.roomOptions,
   };
   try {
@@ -104,6 +108,7 @@ export function loadActiveRun(): {
   currentScreen: string;
   runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge';
   dailySeed?: number | null;
+  runSeed?: number | null;
   roomOptions?: RoomOption[];
 } | null {
   try {
@@ -116,6 +121,7 @@ export function loadActiveRun(): {
       currentScreen: parsed.currentScreen,
       runMode: parsed.runMode,
       dailySeed: parsed.dailySeed ?? null,
+      runSeed: parsed.runSeed ?? null,
       roomOptions: parsed.roomOptions,
     };
   } catch {

@@ -48,21 +48,17 @@
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
-    heal: '💚',
     utility: '⭐',
     buff: '⬆',
     debuff: '⬇',
-    regen: '➕',
     wild: '💎',
   }
 
   const EFFECT_DESCRIPTIONS: Record<CardType, string> = {
     attack: 'Deal N Damage',
     shield: 'Block N Damage',
-    heal: 'Heal N HP',
     buff: 'Buff +N%',
     debuff: 'Apply Debuff',
-    regen: 'Regen N/turn',
     utility: 'Utility',
     wild: 'Adaptive',
   }

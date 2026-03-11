@@ -3,10 +3,11 @@
  */
 
 import { writable, get } from 'svelte/store';
-import { currentScreen } from '../ui/stores/gameState';
+import { currentScreen, activeRewardBundle } from '../ui/stores/gameState';
 import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
+import { healPlayer } from './runManager';
 import type { RoomOption, MysteryEvent } from './floorManager';
 import {
   generateRoomOptions,
@@ -16,9 +17,12 @@ import {
   getSegment,
   isBossFloor,
   isMiniBossEncounter,
+  generateCombatRoomOptions,
+  generateEventRoomOptions,
+  shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, REST_UPGRADE_CANDIDATE_COUNT, SHOP_RELIC_PRICE, SHOP_CARD_PRICE } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -98,6 +102,10 @@ import {
   generateRandomRelicDrop,
   shouldDropRandomRelic,
 } from './relicAcquisitionService'
+import type { UpgradePreview } from './cardUpgradeService';
+import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgradeService'
+import type { ShopInventory } from './shopService';
+import { generateShopRelics, priceShopCards } from './shopService';
 
 export type GameFlowState =
   | 'idle'
@@ -117,7 +125,9 @@ export type GameFlowState =
   | 'specialEvent'
   | 'campfire'
   | 'relicSanctum'
-  | 'runEnd';
+  | 'runEnd'
+  | 'upgradeSelection'
+  | 'postMiniBossRest';
 
 export const gameFlowState = writable<GameFlowState>('idle');
 export { activeRunState };
@@ -131,6 +141,8 @@ export const activeMasteryChallenge = writable<MasteryChallengeQuestion | null>(
 export const campfireReturnScreen = writable<GameFlowState | null>(null);
 export const activeRelicRewardOptions = writable<RelicDefinition[]>([]);
 export const activeRelicPickup = writable<RelicDefinition | null>(null);
+export const activeUpgradeCandidates = writable<Array<{ card: Card; preview: UpgradePreview }>>([]);
+export const activeShopInventory = writable<ShopInventory | null>(null);
 
 let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
@@ -456,6 +468,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeShopInventory.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -540,13 +553,10 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     persistPlayer();
   }
 
-  // Force Story Mode (explorer) for first N runs
+  // Force Relaxed Mode for first N runs
   const onboarding = get(onboardingState);
   if (onboarding.runsCompleted < STORY_MODE_FORCED_RUNS) {
-    difficultyMode.set('explorer');
-  } else if (get(difficultyMode) === 'explorer') {
-    // Reset from forced explorer after tutorial runs complete
-    difficultyMode.set('standard');
+    difficultyMode.set('relaxed');
   }
 
   const run = createRunState(pending.primary, pending.secondary, {
@@ -584,6 +594,10 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   });
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
   activeRunState.set(run);
+  // Activate deterministic random for standard and endless_depths runs
+  if (activeRunMode === 'standard' || activeRunMode === 'endless_depths') {
+    activateDeterministicRandom(run.runSeed);
+  }
   pendingDomainSelection = null;
   gameFlowState.set('combat');
   currentScreen.set('combat');
@@ -630,7 +644,23 @@ async function proceedAfterReward(): Promise<void> {
     return;
   }
 
-  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  // After event rooms, force combat. After combat rooms, roll for event.
+  if (run.floor.lastSlotWasEvent) {
+    // Coming from an event room — force combat options
+    activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+    // Reset slot type for next cycle
+    run.floor.lastSlotWasEvent = false;
+  } else {
+    // Coming from combat — roll for event
+    if (shouldOfferEvent(run.floor.currentFloor)) {
+      run.floor.lastSlotWasEvent = true;
+      activeRoomOptions.set(generateEventRoomOptions(run.floor.currentFloor));
+    } else {
+      run.floor.lastSlotWasEvent = false;
+      activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+    }
+  }
+  activeRunState.set(run);
   gameFlowState.set('roomSelection');
   currentScreen.set('roomSelection');
 }
@@ -808,6 +838,12 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     }
   }
 
+  // Post-mini-boss rest: heal + optional upgrade (for non-first mini-bosses)
+  if (wasMiniBoss && run.firstMiniBossRelicAwarded) {
+    openPostMiniBossRest();
+    return;
+  }
+
   openCardReward();
 }
 
@@ -829,12 +865,14 @@ export function onCardRewardSelected(card: Card): void {
     },
   });
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
   autoSaveRun('roomSelection');
   void proceedAfterReward();
 }
 
 export function onCardRewardSkipped(): void {
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
   void proceedAfterReward();
 }
 
@@ -847,15 +885,37 @@ export function onRelicRewardSelected(relic: RelicDefinition): void {
 function openShopRoom(): void {
   const run = get(activeRunState);
   if (!run) return;
-  const cards = shuffled(
+
+  // Existing sell cards
+  const sellCards = shuffled(
     [...getActiveDeckCards()].filter((card) => !card.isEcho),
   ).slice(0, 3);
-  activeShopCards.set(cards);
+  activeShopCards.set(sellCards);
+
+  // Generate buy inventory
+  const relicPool = buildRelicPool();
+  const shopRelics = generateShopRelics(run.floor.currentFloor, relicPool);
+
+  // Generate card reward options for buying
+  const cardRewardOptions = generateCardRewardOptionsByType(
+    getRunPoolCards() as any,
+    getActiveDeckFactIds(),
+    run.consumedRewardFactIds,
+    run.selectedArchetype,
+  );
+  const shopCards = priceShopCards(cardRewardOptions.slice(0, 2), run.floor.currentFloor);
+
+  const inventory: ShopInventory = {
+    relics: shopRelics,
+    cards: shopCards,
+  };
+  activeShopInventory.set(inventory);
+
   analyticsService.track({
     name: 'shop_visit',
     properties: {
       floor: run.floor.currentFloor,
-      options: cards.length,
+      options: sellCards.length,
       currency: run.currency,
     },
   });
@@ -883,11 +943,71 @@ export function onShopSell(cardId: string): void {
   });
 }
 
+/** Buy a relic from the shop. */
+export function onShopBuyRelic(relicId: string): boolean {
+  const run = get(activeRunState);
+  const inventory = get(activeShopInventory);
+  if (!run || !inventory) return false;
+
+  const item = inventory.relics.find(r => r.relic.id === relicId);
+  if (!item || run.currency < item.price) return false;
+
+  run.currency -= item.price;
+  addRelicToRun(item.relic);
+  inventory.relics = inventory.relics.filter(r => r.relic.id !== relicId);
+  activeShopInventory.set(inventory);
+  activeRunState.set(run);
+
+  analyticsService.track({
+    name: 'shop_buy_relic',
+    properties: {
+      relic_id: relicId,
+      price: item.price,
+      rarity: item.relic.rarity,
+      floor: run.floor.currentFloor,
+      remaining_currency: run.currency,
+    },
+  });
+  return true;
+}
+
+/** Buy a card from the shop. */
+export function onShopBuyCard(cardIndex: number): boolean {
+  const run = get(activeRunState);
+  const inventory = get(activeShopInventory);
+  if (!run || !inventory) return false;
+
+  const item = inventory.cards[cardIndex];
+  if (!item || run.currency < item.price) return false;
+
+  run.currency -= item.price;
+  run.consumedRewardFactIds.add(item.card.factId);
+  addRewardCardToActiveDeck(item.card);
+  inventory.cards.splice(cardIndex, 1);
+  activeShopInventory.set(inventory);
+  activeRunState.set(run);
+
+  analyticsService.track({
+    name: 'shop_buy_card',
+    properties: {
+      card_type: item.card.cardType,
+      tier: item.card.tier,
+      price: item.price,
+      floor: run.floor.currentFloor,
+      remaining_currency: run.currency,
+    },
+  });
+  return true;
+}
+
 export function onShopDone(): void {
   const run = get(activeRunState);
   if (!run) return;
   activeShopCards.set([]);
-  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  activeShopInventory.set(null);
+  run.floor.lastSlotWasEvent = true;
+  activeRunState.set(run);
+  activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('roomSelection');
   currentScreen.set('roomSelection');
 }
@@ -1017,9 +1137,16 @@ export function onRoomSelected(room: RoomOption): void {
       currentScreen.set('restRoom');
       break;
     case 'treasure':
-      gameFlowState.set('treasureReward');
-      currentScreen.set('combat');
-      break;
+      {
+        const treasureRun = get(activeRunState);
+        if (treasureRun) {
+          treasureRun.currency += 15;
+          treasureRun.floor.lastSlotWasEvent = true;
+          activeRunState.set(treasureRun);
+        }
+      }
+      openCardReward();
+      return;
     case 'shop':
       openShopRoom();
       break;
@@ -1101,6 +1228,7 @@ export function abandonActiveRun(): void {
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeShopInventory.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -1136,6 +1264,7 @@ function autoSaveRun(screen: string): void {
       currentScreen: screen,
       runMode: activeRunMode,
       dailySeed: activeDailySeed,
+      runSeed: (activeRunMode === 'standard' || activeRunMode === 'endless_depths') ? run.runSeed : null,
       roomOptions: get(activeRoomOptions),
     });
   } catch {
@@ -1143,12 +1272,101 @@ function autoSaveRun(screen: string): void {
   }
 }
 
+/** Prepare upgrade candidates and transition to upgrade selection screen. */
+export function openUpgradeSelection(): void {
+  const candidates = prepareUpgradeCandidates();
+  if (candidates.length === 0) {
+    onRestResolved();
+    return;
+  }
+  activeUpgradeCandidates.set(candidates);
+  gameFlowState.set('upgradeSelection');
+  currentScreen.set('upgradeSelection');
+}
+
+/** Prepare upgrade candidates from the active deck. */
+function prepareUpgradeCandidates(): Array<{ card: Card; preview: UpgradePreview }> {
+  const allCards = getActiveDeckCards();
+  const candidates = getUpgradeCandidates(allCards, REST_UPGRADE_CANDIDATE_COUNT);
+  return candidates.map(card => {
+    const preview = getUpgradePreview(card);
+    return { card, preview: preview! };
+  }).filter(c => c.preview != null);
+}
+
+/** Called when the player selects a card to upgrade. */
+export function onUpgradeSelected(cardId: string): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  // Find the card in the active deck and upgrade it
+  const allCards = getActiveDeckCards();
+  const card = allCards.find(c => c.id === cardId);
+  if (card) {
+    upgradeCard(card);
+    run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
+    activeRunState.set(run);
+  }
+
+  activeUpgradeCandidates.set([]);
+  onRestResolved();
+}
+
+/** Called when the player skips upgrade selection. */
+export function onUpgradeSkipped(): void {
+  activeUpgradeCandidates.set([]);
+  onRestResolved();
+}
+
+/** Opens the post-mini-boss rest overlay with heal + upgrade. */
+export function openPostMiniBossRest(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  // Apply the heal
+  const healAmount = Math.round(run.playerMaxHp * POST_MINI_BOSS_HEAL_PCT);
+  healPlayer(run, healAmount);
+  activeRunState.set(run);
+
+  // Prepare upgrade candidates
+  const candidates = prepareUpgradeCandidates();
+  activeUpgradeCandidates.set(candidates);
+  gameFlowState.set('postMiniBossRest');
+  currentScreen.set('postMiniBossRest');
+}
+
+/** Called when the player selects a card to upgrade from post-mini-boss rest. */
+export function onPostMiniBossUpgradeSelected(cardId: string): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  const allCards = getActiveDeckCards();
+  const card = allCards.find(c => c.id === cardId);
+  if (card) {
+    upgradeCard(card);
+    run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
+    activeRunState.set(run);
+  }
+
+  activeUpgradeCandidates.set([]);
+  // Continue to relic/card reward flow
+  openCardReward();
+}
+
+/** Called when the player skips upgrade from post-mini-boss rest. */
+export function onPostMiniBossUpgradeSkipped(): void {
+  activeUpgradeCandidates.set([]);
+  openCardReward();
+}
+
 export function onMysteryResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
   activeMysteryEvent.set(null)
   activeMasteryChallenge.set(null)
-  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  run.floor.lastSlotWasEvent = true;
+  activeRunState.set(run);
+  activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('roomSelection');
   currentScreen.set('roomSelection');
 }
@@ -1156,7 +1374,9 @@ export function onMysteryResolved(): void {
 export function onRestResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
-  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
+  run.floor.lastSlotWasEvent = true;
+  activeRunState.set(run);
+  activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('roomSelection');
   currentScreen.set('roomSelection');
 }
@@ -1170,6 +1390,7 @@ export function returnToMenu(): void {
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeShopInventory.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -1192,6 +1413,7 @@ export function playAgain(): void {
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeShopInventory.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -1205,7 +1427,7 @@ export function playAgain(): void {
   currentScreen.set('domainSelection');
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null, runSeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed
@@ -1218,10 +1440,16 @@ export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endl
     activateDeterministicRandom(dailySeed)
     return
   }
-  if (runMode === 'endless_depths') {
+  if (runMode === 'endless_depths' && typeof runSeed === 'number' && Number.isFinite(runSeed)) {
     activeRunMode = 'endless_depths'
     activeDailySeed = null
-    deactivateDeterministicRandom()
+    activateDeterministicRandom(runSeed)
+    return
+  }
+  if (runMode === 'standard' && typeof runSeed === 'number' && Number.isFinite(runSeed)) {
+    activeRunMode = 'standard'
+    activeDailySeed = null
+    activateDeterministicRandom(runSeed)
     return
   }
   activeRunMode = 'standard'

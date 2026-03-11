@@ -5,7 +5,7 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_EARLY, FLOOR_DAMAGE_SCALE_MID } from '../data/balance';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue } from '../data/balance';
 
 /**
  * Computes HP scaling factor for a given floor.
@@ -22,17 +22,11 @@ export function getFloorScaling(floor: number): number {
 /**
  * Computes damage scaling factor for a given floor.
  *
- * Floors 1-3: 90% damage (training wheels for new players).
- * Floors 4-6: 115% base damage.
- * Floors 7+: +5% per floor above 6.
- *
- * @param floor - The current floor number (1-indexed).
- * @returns The damage scaling multiplier.
+ * Floors 1-6 = 100% base, floors 7+ = 100% + 4% per floor above 6.
  */
 export function getFloorDamageScaling(floor: number): number {
-  if (floor <= 3) return FLOOR_DAMAGE_SCALE_EARLY;
   if (floor <= 6) return FLOOR_DAMAGE_SCALE_MID;
-  return FLOOR_DAMAGE_SCALE_MID + (floor - 6) * FLOOR_DAMAGE_SCALING_PER_FLOOR;
+  return FLOOR_DAMAGE_SCALE_MID + (floor - 6) * getBalanceValue('floorDamageScalingPerFloor', FLOOR_DAMAGE_SCALING_PER_FLOOR);
 }
 
 /**
@@ -223,7 +217,8 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
   // Apply per-turn damage cap by segment (AR-32)
   if (damage > 0) {
     const seg = getSegmentForFloor(enemy.floor);
-    const cap = ENEMY_TURN_DAMAGE_CAP[seg];
+    const capLookup = getBalanceValue('enemyTurnDamageCap', ENEMY_TURN_DAMAGE_CAP) as Record<1 | 2 | 3 | 4 | 'endless', number | null>;
+    const cap = capLookup[seg];
     if (cap != null) {
       damage = Math.min(damage, cap);
     }

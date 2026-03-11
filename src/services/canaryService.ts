@@ -1,4 +1,18 @@
-export type CanaryMode = 'neutral' | 'assist' | 'challenge'
+import {
+  CANARY_DEEP_ASSIST_ENEMY_DMG_MULT,
+  CANARY_DEEP_ASSIST_WRONG_THRESHOLD,
+  CANARY_ASSIST_ENEMY_DMG_MULT,
+  CANARY_ASSIST_WRONG_THRESHOLD,
+  CANARY_CHALLENGE_ENEMY_DMG_MULT,
+  CANARY_CHALLENGE_STREAK_THRESHOLD,
+} from '../data/balance'
+
+/**
+ * Canary adaptive difficulty system: invisible difficulty scaling based on performance.
+ * Graduated assist tiers help struggling players, while challenge mode rewards mastery.
+ */
+
+export type CanaryMode = 'neutral' | 'assist' | 'deep_assist' | 'challenge'
 
 export interface CanaryState {
   wrongAnswersThisFloor: number
@@ -9,31 +23,45 @@ export interface CanaryState {
 }
 
 function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): CanaryState {
-  if (correctStreak >= 5) {
+  // Check challenge mode first (high performance)
+  if (correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD) {
     return {
       wrongAnswersThisFloor,
       correctStreak,
       mode: 'challenge',
-      enemyDamageMultiplier: 1.1,
+      enemyDamageMultiplier: CANARY_CHALLENGE_ENEMY_DMG_MULT,
       questionBias: 1,
     }
   }
 
-  if (wrongAnswersThisFloor >= 3) {
+  // Check deep assist mode first (high difficulty) before assist, since 5 >= 3
+  if (wrongAnswersThisFloor >= CANARY_DEEP_ASSIST_WRONG_THRESHOLD) {
     return {
       wrongAnswersThisFloor,
       correctStreak,
-      mode: 'assist',
-      enemyDamageMultiplier: 0.85,
+      mode: 'deep_assist',
+      enemyDamageMultiplier: CANARY_DEEP_ASSIST_ENEMY_DMG_MULT,
       questionBias: -1,
     }
   }
 
+  // Check assist mode (moderate difficulty)
+  if (wrongAnswersThisFloor >= CANARY_ASSIST_WRONG_THRESHOLD) {
+    return {
+      wrongAnswersThisFloor,
+      correctStreak,
+      mode: 'assist',
+      enemyDamageMultiplier: CANARY_ASSIST_ENEMY_DMG_MULT,
+      questionBias: -1,
+    }
+  }
+
+  // Neutral mode (default)
   return {
     wrongAnswersThisFloor,
     correctStreak,
     mode: 'neutral',
-    enemyDamageMultiplier: 1,
+    enemyDamageMultiplier: 1.0,
     questionBias: 0,
   }
 }

@@ -40,7 +40,7 @@
         <span class="option-icon">{'\u2B06\uFE0F'}</span>
         <span class="option-label">Upgrade</span>
         <span class="option-detail">Boost one card</span>
-        <span class="option-preview">(Coming soon)</span>
+        <span class="option-preview">Enhance one card</span>
       </button>
     </div>
   </div>

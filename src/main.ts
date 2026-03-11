@@ -140,13 +140,17 @@ if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'tru
 // Initialize player save data
 const save = initPlayer('teen')
 
-// Fix stuck explorer difficulty mode from legacy bug (DD-V2-FIX):
-// If runsCompleted >= threshold but difficultyMode is still 'explorer', reset to 'standard'.
-// This runs at startup so users don't have to start a new run to escape explorer mode.
+// Migrate legacy difficulty values from old saves + enforce relaxed during forced runs
 {
   const _onb = get(onboardingState)
-  if (get(difficultyMode) === 'explorer' && _onb.runsCompleted >= STORY_MODE_FORCED_RUNS) {
-    difficultyMode.set('standard')
+  const currentMode = get(difficultyMode)
+  // Migrate legacy difficulty values from old saves
+  if (currentMode === ('explorer' as any) || currentMode === ('standard' as any) || currentMode === ('scholar' as any)) {
+    difficultyMode.set(currentMode === ('explorer' as any) ? 'relaxed' : 'normal')
+  }
+  // Force relaxed mode during the first N runs
+  if (_onb.runsCompleted < STORY_MODE_FORCED_RUNS) {
+    difficultyMode.set('relaxed')
   }
 }
 

@@ -1,0 +1,755 @@
+{
+  "generatedAt": "2026-03-11T13:06:31.072Z",
+  "mode": "write",
+  "options": {
+    "force": false,
+    "limit": null,
+    "perDomainLimit": 5,
+    "includeGenerated": false,
+    "includeSeed": true
+  },
+  "totals": {
+    "rows": 3708,
+    "updated": 50,
+    "kept": 0,
+    "legacy": 21,
+    "scored": 20,
+    "fallback": 9
+  },
+  "perDomain": {
+    "general_knowledge": {
+      "total": 370,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 0,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 365,
+      "bySubcategory": {
+        "records_firsts": 0,
+        "inventions_tech": 5,
+        "landmarks_wonders": 0,
+        "pop_culture": 0,
+        "words_language": 0,
+        "everyday_science": 0,
+        "oddities": 0
+      }
+    },
+    "natural_sciences": {
+      "total": 374,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 0,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 369,
+      "bySubcategory": {
+        "chemistry_elements": 0,
+        "materials_engineering": 0,
+        "biology_organisms": 0,
+        "physics_mechanics": 5,
+        "geology_earth": 0,
+        "botany_plants": 0,
+        "ecology_environment": 0
+      }
+    },
+    "space_astronomy": {
+      "total": 321,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 316,
+      "bySubcategory": {
+        "missions_spacecraft": 4,
+        "planets_moons": 0,
+        "stars_galaxies": 0,
+        "cosmology_universe": 0,
+        "satellites_tech": 1,
+        "exoplanets_astrobio": 0
+      }
+    },
+    "geography": {
+      "total": 390,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 0,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 385,
+      "bySubcategory": {
+        "capitals_countries": 1,
+        "africa": 0,
+        "asia_oceania": 0,
+        "europe": 0,
+        "americas": 0,
+        "landforms_water": 4,
+        "extreme_records": 0,
+        "climate_biomes": 0
+      }
+    },
+    "history": {
+      "total": 350,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 5,
+      "scored": 0,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 345,
+      "bySubcategory": {
+        "ancient_classical": 2,
+        "medieval": 1,
+        "early_modern": 0,
+        "modern_contemporary": 2,
+        "world_wars": 0,
+        "battles_military": 0,
+        "people_leaders": 0,
+        "social_cultural": 0
+      }
+    },
+    "mythology_folklore": {
+      "total": 393,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 5,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 388,
+      "bySubcategory": {
+        "greek_roman": 1,
+        "norse_celtic": 0,
+        "eastern_myths": 1,
+        "creatures_monsters": 2,
+        "creation_cosmology": 0,
+        "folk_legends": 1,
+        "gods_deities": 0
+      }
+    },
+    "animals_wildlife": {
+      "total": 378,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 4,
+      "fallback": 1,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 373,
+      "bySubcategory": {
+        "mammals": 1,
+        "birds": 0,
+        "marine_life": 0,
+        "insects_arachnids": 1,
+        "reptiles_amphibians": 0,
+        "behavior_intelligence": 0,
+        "conservation": 3,
+        "adaptations": 0
+      }
+    },
+    "human_body_health": {
+      "total": 359,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 1,
+      "scored": 1,
+      "fallback": 3,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 354,
+      "bySubcategory": {
+        "anatomy_organs": 3,
+        "brain_neuro": 0,
+        "genetics_dna": 1,
+        "cardiovascular": 0,
+        "digestion_metabolism": 0,
+        "senses_perception": 0,
+        "immunity_disease": 1,
+        "medical_science": 0
+      }
+    },
+    "food_cuisine": {
+      "total": 396,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 4,
+      "fallback": 1,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 391,
+      "bySubcategory": {
+        "european_cuisine": 2,
+        "asian_cuisine": 0,
+        "world_cuisine": 1,
+        "baking_desserts": 2,
+        "fermentation_beverages": 0,
+        "food_history": 0,
+        "food_science": 0,
+        "ingredients_spices": 0
+      }
+    },
+    "art_architecture": {
+      "total": 377,
+      "updated": 5,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 1,
+      "fallback": 4,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 372,
+      "bySubcategory": {
+        "museums_institutions": 0,
+        "historic_buildings": 4,
+        "painting_visual": 1,
+        "sculpture_decorative": 0,
+        "modern_contemporary": 0,
+        "architectural_styles": 0,
+        "engineering_design": 0
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 10
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 10
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "type": "json",
+      "totalRows": 40,
+      "changedRows": 10
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "type": "json",
+      "totalRows": 3585,
+      "changedRows": 20
+    },
+    {
+      "path": "src/data/seed/tutorial.json",
+      "type": "json",
+      "totalRows": 1,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-n3.json",
+      "type": "json",
+      "totalRows": 400,
+      "changedRows": 0
+    }
+  ],
+  "samples": [
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-001",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "physics",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "A bolt of lightning is five times hotter than the surface of the Sun"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-002",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "mathematics",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "There are more possible iterations of a game of chess than there are atoms in the observable universe"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-003",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "astronomy",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "Neptune has winds that travel faster than the speed of sound on Earth"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-004",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "astronomy",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "It rains diamonds on Neptune and Uranus"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "nsci-005",
+      "domain": "natural_sciences",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "astronomy",
+      "toCategoryL2": "physics_mechanics",
+      "statement": "A neutron star is so dense that a teaspoon of its material would weigh about a billion tonnes on Earth"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "lsci-001",
+      "domain": "human_body_health",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "biology",
+      "toCategoryL2": "anatomy_organs",
+      "statement": "Tardigrades can survive the vacuum of space, intense radiation, and temperatures from near absolute zero to 150°C"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "lsci-002",
+      "domain": "human_body_health",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "biology",
+      "toCategoryL2": "immunity_disease",
+      "statement": "Honey never spoils — archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "lsci-003",
+      "domain": "human_body_health",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "biology",
+      "toCategoryL2": "genetics_dna",
+      "statement": "If you stretched out all the DNA in a single human body, it would reach from Earth to Pluto and back — multiple times"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "lsci-004",
+      "domain": "human_body_health",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "ecology",
+      "toCategoryL2": "anatomy_organs",
+      "statement": "Trees in a forest communicate and share nutrients through underground fungal networks nicknamed the 'Wood Wide Web'"
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "id": "lsci-005",
+      "domain": "human_body_health",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "marine biology",
+      "toCategoryL2": "anatomy_organs",
+      "statement": "The mantis shrimp can punch with the acceleration of a bullet and sees colours humans cannot imagine"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-001",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "medieval history",
+      "toCategoryL2": "medieval",
+      "statement": "Oxford University is older than the Aztec Empire"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-002",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "modern history",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The shortest war in recorded history lasted only 38 to 45 minutes — between Britain and Zanzibar in 1896"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-003",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "ancient history",
+      "toCategoryL2": "ancient_classical",
+      "statement": "The Great Wall of China is NOT visible from space with the naked eye"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-004",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "modern history",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Napoleon Bonaparte was not particularly short — he was about average height for his time"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "hist-005",
+      "domain": "history",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "ancient history",
+      "toCategoryL2": "ancient_classical",
+      "statement": "The Library of Alexandria may have been destroyed gradually over centuries — not in a single dramatic fire"
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-001",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "countries",
+      "toCategoryL2": "capitals_countries",
+      "statement": "Russia is so wide it spans 11 time zones — more than any other country on Earth."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-002",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "landmarks",
+      "toCategoryL2": "landforms_water",
+      "statement": "The Great Wall of China is NOT visible from space with the naked eye — it's a persistent myth."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-003",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "rivers",
+      "toCategoryL2": "landforms_water",
+      "statement": "The Amazon River discharges more freshwater into the ocean than the next seven largest rivers combined."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-004",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "mountains",
+      "toCategoryL2": "landforms_water",
+      "statement": "Mount Everest is the tallest mountain above sea level, but Mauna Kea in Hawaii is the tallest mountain measured from its base."
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "id": "geo-005",
+      "domain": "geography",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "deserts",
+      "toCategoryL2": "landforms_water",
+      "statement": "The Sahara Desert is roughly the same size as the contiguous United States."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "tech-001",
+      "domain": "general_knowledge",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "computing",
+      "toCategoryL2": "inventions_tech",
+      "statement": "The first computer bug was a literal insect — a moth found trapped in a relay of the Harvard Mark II computer in 1947."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "tech-002",
+      "domain": "general_knowledge",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "engineering",
+      "toCategoryL2": "inventions_tech",
+      "statement": "A single strand of fiber optic cable can carry more than 1 petabit of data per second — enough to stream every film ever made in under a minute."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "tech-003",
+      "domain": "general_knowledge",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "space tech",
+      "toCategoryL2": "inventions_tech",
+      "statement": "The Apollo 11 guidance computer that landed humans on the Moon had 4 KB of RAM — about 100,000 times less memory than a modern smartphone."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "tech-004",
+      "domain": "general_knowledge",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "internet",
+      "toCategoryL2": "inventions_tech",
+      "statement": "The internet transmits approximately 5 exabytes of data every single day — more data than was created in all of human history up to the year 2003."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "tech-005",
+      "domain": "general_knowledge",
+      "reason": "legacy",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "inventions",
+      "toCategoryL2": "inventions_tech",
+      "statement": "Velcro was invented in 1941 after Swiss engineer George de Mestral returned from a hike and noticed burdock burrs stuck to his dog's fur."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "cult-001",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "art",
+      "toCategoryL2": "painting_visual",
+      "statement": "The Mona Lisa has no eyebrows — Renaissance Florentine fashion dictated that shaved eyebrows were the height of elegance."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "cult-002",
+      "domain": "art_architecture",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "music",
+      "toCategoryL2": "historic_buildings",
+      "statement": "Beethoven composed his Ninth Symphony — including the famous 'Ode to Joy' — after he was completely deaf."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "cult-003",
+      "domain": "art_architecture",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "music",
+      "toCategoryL2": "historic_buildings",
+      "statement": "The ancient Greeks believed music was so powerful that different musical modes could literally change a person's moral character."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "cult-004",
+      "domain": "art_architecture",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "mythology",
+      "toCategoryL2": "historic_buildings",
+      "statement": "The Norse god Odin sacrificed one of his eyes to gain wisdom, then hung himself from a tree for nine days to learn the secret of writing."
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "id": "cult-005",
+      "domain": "art_architecture",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": "traditions",
+      "toCategoryL2": "historic_buildings",
+      "statement": "Japan's 'Osechi Ryori' New Year food tradition assigns specific meanings to every dish — black beans represent health, herring roe represents fertility, and shrimp represent longevity because they curl like an old person"
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "genet-victoriae-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Giant forest genets are small carnivorous mammals found in African forests."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "parnassius-apollo-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Parnassius apollo is a butterfly species found in European mountain regions."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "senna-alata-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Senna alata is a tropical plant species with least concern conservation status."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "leopard-cat-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Leopard cats are small wild felines native to Asia with spotted coats."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "phaseolus-vulgaris-001",
+      "domain": "animals_wildlife",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Phaseolus vulgaris is a legume crop cultivated worldwide for food."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "waffle-origin-france",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Waffles originated in France as a batter-based food cooked between patterned plates."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "food_cuisine_hamburger_001",
+      "domain": "food_cuisine",
+      "reason": "fallback",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "world_cuisine",
+      "statement": "The hamburger is an American sandwich made with a ground beef patty."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "labskaus-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Labskaus is a hearty culinary specialty from Northern Germany and Scandinavia."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "mille-feuille-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Mille-feuille is a French pastry with layers of puff pastry and cream."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "crêpe-001-france",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Crêpes are very thin pancakes that originated in France."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "cupid-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "greek_roman",
+      "statement": "Cupid is the Roman god of love, counterpart to Greek god Eros."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "curupira-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "Curupira is a mythological forest guardian creature from Brazilian folklore."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "loch-ness-monster-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "creatures_monsters",
+      "statement": "The Loch Ness Monster is a legendary creature from Scottish folklore inhabiting Loch Ness."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "easter-bunny-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "folk_legends",
+      "statement": "The Easter Bunny is a folkloric figure symbolizing Easter and springtime renewal."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "kubikajiri-001",
+      "domain": "mythology_folklore",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "eastern_myths",
+      "statement": "Kubikajiri is a Japanese yokai that bites off human heads from behind."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "apx-001-satellite-power",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "satellites_tech",
+      "statement": "Advanced Photovoltaic Experiment tested solar panel efficiency in orbital space."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "a101-testflight-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-101 was an early German rocket test flight program."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "A-103-001",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-103 was a Soviet test mission exploring spacecraft systems."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "apollo-a104-test-1965",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "Apollo A-104 was an unmanned orbital test of Apollo spacecraft in 1965."
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "id": "apollo-a105-boilerplate",
+      "domain": "space_astronomy",
+      "reason": "scored",
+      "fromCategoryL2": null,
+      "fromCategorySecondary": null,
+      "toCategoryL2": "missions_spacecraft",
+      "statement": "A-105 was the final boilerplate test of an Apollo spacecraft."
+    }
+  ]
+}

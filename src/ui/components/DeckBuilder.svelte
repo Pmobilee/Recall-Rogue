@@ -18,9 +18,9 @@
   const MAX_PRESET_NAME_LENGTH = 30
   const MIN_FAIR_POOL_SIZE = 40
 
-  /** All non-language, non-comingSoon domains available for selection. */
+  /** All non-language domains available for selection. */
   const availableDomains: DomainMetadata[] = getAllDomainMetadata().filter(
-    (d) => d.id !== 'language' && !d.comingSoon,
+    (d) => d.id !== 'language',
   )
 
   let presets = $state<StudyPreset[]>(getPresets())
@@ -31,7 +31,7 @@
   let editorName = $state('')
   let editorSelections = $state<Record<string, string[]>>({})
   let expandedDomain = $state<string | null>(null)
-  let subcategoryCache = $state<Record<string, DomainSubcategoryInfo[]>>({})
+  let subcategoryCache: Record<string, DomainSubcategoryInfo[]> = {}
 
   /** Reactive fact count based on current editor selections. */
   const editorFactCount = $derived(getPresetFactCount(editorSelections))
@@ -125,19 +125,19 @@
   }
 
   /** Toggle a subcategory within a domain. */
-  function toggleSubcategory(domainId: string, subName: string): void {
+  function toggleSubcategory(domainId: string, subId: string): void {
     const subs = loadSubcategories(domainId)
     const current = editorSelections[domainId]
     if (current === undefined) return
 
     if (current.length === 0) {
       // Currently "all" — switch to all-except-this-one
-      const allNames = subs.map((s) => s.name).filter((n) => n !== subName)
-      editorSelections = { ...editorSelections, [domainId]: allNames }
+      const allIds = subs.map((s) => s.id).filter((id) => id !== subId)
+      editorSelections = { ...editorSelections, [domainId]: allIds }
     } else {
-      const isOn = current.includes(subName)
+      const isOn = current.includes(subId)
       if (isOn) {
-        const filtered = current.filter((n) => n !== subName)
+        const filtered = current.filter((id) => id !== subId)
         if (filtered.length === 0) {
           // No subcategories left — remove domain entirely
           const next = { ...editorSelections }
@@ -147,7 +147,7 @@
           editorSelections = { ...editorSelections, [domainId]: filtered }
         }
       } else {
-        const updated = [...current, subName]
+        const updated = [...current, subId]
         // If all subcategories are selected, switch to empty array (all)
         if (updated.length >= subs.length) {
           editorSelections = { ...editorSelections, [domainId]: [] }
@@ -159,11 +159,11 @@
   }
 
   /** Check if a subcategory is currently enabled. */
-  function isSubcategoryOn(domainId: string, subName: string): boolean {
+  function isSubcategoryOn(domainId: string, subId: string): boolean {
     const current = editorSelections[domainId]
     if (current === undefined) return false
     if (current.length === 0) return true // empty = all
-    return current.includes(subName)
+    return current.includes(subId)
   }
 </script>
 
@@ -217,12 +217,12 @@
 
           {#if expandedDomain === domain.id && isDomainSelected(domain.id)}
             <div class="subcategory-list" style="grid-column: 1 / -1;">
-              {#each loadSubcategories(domain.id) as sub (sub.name)}
+              {#each loadSubcategories(domain.id) as sub (sub.id)}
                 <label class="sub-check">
                   <input
                     type="checkbox"
-                    checked={isSubcategoryOn(domain.id, sub.name)}
-                    onchange={() => toggleSubcategory(domain.id, sub.name)}
+                    checked={isSubcategoryOn(domain.id, sub.id)}
+                    onchange={() => toggleSubcategory(domain.id, sub.id)}
                   />
                   <span>{sub.name} ({sub.count})</span>
                 </label>

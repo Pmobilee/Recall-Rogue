@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-03-11T13:28:07.435Z",
+  "model": "openai/gpt-5.1-codex-mini",
+  "batchSize": 10,
+  "includeGenerated": false,
+  "includeSeed": true,
+  "dryRun": true,
+  "scannedRows": 4108,
+  "uniqueFactKeys": 378,
+  "domainFilter": [
+    "animals_wildlife"
+  ],
+  "totals": {
+    "alreadyValid": 2,
+    "autoPropagated": 0,
+    "llmCandidates": 376,
+    "llmClassified": 10,
+    "unresolved": 0,
+    "changedRows": 10,
+    "batchesRun": 1
+  },
+  "byDomain": {
+    "animals_wildlife": {
+      "alreadyValid": 2,
+      "autoPropagated": 0,
+      "llmCandidates": 376,
+      "llmClassified": 10,
+      "unresolved": 0,
+      "changedRows": 10
+    }
+  },
+  "unresolvedExamples": [],
+  "predictionSamples": [
+    {
+      "id": "senna-alata-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "conservation",
+      "confidence": 0.73,
+      "reason": "Discusses conservation status of a tropical species, fitting conservation category."
+    },
+    {
+      "id": "leopard-cat-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "mammals",
+      "confidence": 0.88,
+      "reason": "Describes a wild feline species, clearly a mammal."
+    },
+    {
+      "id": "phaseolus-vulgaris-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "conservation",
+      "confidence": 0.51,
+      "reason": "Mentions global cultivation and species impact, so closest match is conservation."
+    },
+    {
+      "id": "serval-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "mammals",
+      "confidence": 0.86,
+      "reason": "Servals are African wild cats, a mammal species."
+    },
+    {
+      "id": "laetacara-curviceps-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "marine_life",
+      "confidence": 0.81,
+      "reason": "Freshwater fish species fits the marine life classification."
+    },
+    {
+      "id": "baikal-seal-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "mammals",
+      "confidence": 0.84,
+      "reason": "Seals are marine mammals, despite freshwater habitat."
+    },
+    {
+      "id": "alpine-pika-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "mammals",
+      "confidence": 0.85,
+      "reason": "Pikas are small mammals in the Ochotonidae family."
+    },
+    {
+      "id": "red-fox-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "mammals",
+      "confidence": 0.88,
+      "reason": "Red foxes are adaptively successful carnivorous mammals."
+    },
+    {
+      "id": "mullus-barbatus-001",
+      "domain": "animals_wildlife",
+      "categoryL2": "marine_life",
+      "confidence": 0.82,
+      "reason": "Red mullet is a marine fish species."
+    },
+    {
+      "id": "nannacara_aureocephalus_001",
+      "domain": "animals_wildlife",
+      "categoryL2": "marine_life",
+      "confidence": 0.78,
+      "reason": "Describes a small fish species, aligning with marine life."
+    }
+  ],
+  "fileChanges": []
+}

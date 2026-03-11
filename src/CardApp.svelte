@@ -3,7 +3,7 @@
   import { get } from 'svelte/store'
 
   let phaserContainer: HTMLDivElement
-  import { currentScreen } from './ui/stores/gameState'
+  import { currentScreen, screenTransitionActive } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
   import {
@@ -14,7 +14,9 @@
     activeRunEndData,
     activeRunState,
     activeShopCards,
+    activeShopInventory,
     activeSpecialEvent,
+    activeUpgradeCandidates,
     getCurrentDelvePenalty,
     onArchetypeSelected,
     onCardRewardSelected,
@@ -28,8 +30,15 @@
     onRoomSelected,
     onShopDone,
     onShopSell,
+    onShopBuyRelic,
+    onShopBuyCard,
     onSpecialEventResolved,
     openCampfire,
+    openUpgradeSelection,
+    onUpgradeSelected,
+    onUpgradeSkipped,
+    onPostMiniBossUpgradeSelected,
+    onPostMiniBossUpgradeSkipped,
     resumeFromCampfire,
     returnToHubFromCampfire,
     abandonActiveRun,
@@ -59,6 +68,7 @@
   import type { FactDomain } from './data/card-types'
   import type { MysteryEffect } from './services/floorManager'
   import { healPlayer } from './services/runManager'
+  import { POST_MINI_BOSS_HEAL_PCT } from './data/balance'
   import { isSlowReader, onboardingState } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
@@ -91,6 +101,8 @@
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
   import RelicRewardScreen from './ui/components/RelicRewardScreen.svelte'
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
+  import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
+  import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
@@ -259,7 +271,7 @@
   }
 
   function handleRestUpgrade(): void {
-    onRestResolved()
+    openUpgradeSelection()
   }
 
   function handleRewardSelected(card: import('./data/card-types').Card): void {
@@ -292,7 +304,7 @@
   function handleResumeActiveRun(): void {
     const saved = loadActiveRun()
     if (!saved) return
-    restoreRunMode(saved.runMode, saved.dailySeed)
+    restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
     activeRunState.set(saved.runState)
     if (saved.roomOptions && saved.roomOptions.length > 0) {
       activeRoomOptions.set(saved.roomOptions)
@@ -427,6 +439,7 @@
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
+      hasActiveRunBanner={showActiveRunBanner}
       onStartRun={handleStartRun}
       onOpenLibrary={handleOpenLibrary}
       onOpenSettings={handleOpenSettings}
@@ -514,7 +527,10 @@
     <ShopRoomOverlay
       cards={$activeShopCards}
       currency={$activeRunState?.currency ?? 0}
+      shopInventory={$activeShopInventory}
       onsell={onShopSell}
+      onbuyRelic={onShopBuyRelic}
+      onbuyCard={onShopBuyCard}
       ondone={onShopDone}
     />
   {/if}
@@ -610,6 +626,24 @@
       playerMaxHp={run?.playerMaxHp ?? 0}
       onheal={handleRestHeal}
       onupgrade={handleRestUpgrade}
+    />
+  {/if}
+
+  {#if $currentScreen === 'upgradeSelection'}
+    <UpgradeSelectionOverlay
+      candidates={$activeUpgradeCandidates}
+      onselect={onUpgradeSelected}
+      onskip={onUpgradeSkipped}
+    />
+  {/if}
+
+  {#if $currentScreen === 'postMiniBossRest'}
+    {@const run = $activeRunState}
+    <PostMiniBossRestOverlay
+      healAmount={Math.round((run?.playerMaxHp ?? 100) * POST_MINI_BOSS_HEAL_PCT)}
+      candidates={$activeUpgradeCandidates}
+      onselect={onPostMiniBossUpgradeSelected}
+      onskip={onPostMiniBossUpgradeSkipped}
     />
   {/if}
 
@@ -722,6 +756,9 @@
       <div class="toast-text">{gainedFactText}</div>
     </div>
   {/if}
+
+  <!-- Screen transition overlay -->
+  <div class="screen-transition" class:active={$screenTransitionActive}></div>
 </div>
 
 <style>
@@ -972,6 +1009,22 @@
   @keyframes toast-in {
     from { opacity: 0; transform: translateX(-50%) translateY(10px); }
     to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .screen-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #0a0e18;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease-out;
+  }
+
+  .screen-transition.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: none;
   }
 
 </style>

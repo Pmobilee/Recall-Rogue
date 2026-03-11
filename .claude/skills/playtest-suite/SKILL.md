@@ -62,6 +62,14 @@ For each log, scan for these issue patterns (at minimum):
 - `ux_unfun_moment` (LOW): Player HP drops from >70% to <20% within a single encounter
 - `mechanic_unused` (LOW): A card type appears in 0 `play_card` actions across the entire run
 
+**Engagement Issues** (when `summary.deepStats.engagement` is present):
+- `engagement_boring_run` (MEDIUM): `engagementScore < 30`
+- `engagement_tedious_grind` (MEDIUM): `slogEncounters > 2` OR `deadTurnPct > 15%`
+- `engagement_too_easy` (LOW): `snowballEncounters` > 50% of encounters
+- `engagement_fact_staleness` (LOW): `factRepeatRate > 0.40`
+- `engagement_frustrating_streaks` (MEDIUM): `wrongStreakMax > 5`
+- `engagement_low_fun` (HIGH): `funScore < 25` for expert or average profiles
+
 For each issue found, create a JSON object:
 ```json
 {
@@ -107,12 +115,11 @@ Show the user:
 
 1. **Run Summary Table:**
 ```
-Profile      | Asc | Result  | Floor | Encounters | Accuracy | Max Combo
--------------|-----|---------|-------|------------|----------|----------
-beginner     |   0 | defeat  |     2 |          4 |    48.1% |         2
-expert       |   0 | victory |    24 |         72 |    89.5% |         5
-expert       |  10 | defeat  |    12 |         36 |    89.5% |         4
-expert       |  20 | defeat  |     6 |         18 |    89.5% |         3
+Profile      | Asc | Result  | Floor | Accuracy | Max Combo | Engagement | Fun
+-------------|-----|---------|-------|----------|-----------|------------|-----
+beginner     |   0 | defeat  |     2 |    48.1% |         2 |         32 |  28
+expert       |   0 | victory |    24 |    89.5% |         5 |         71 |  74
+expert       |  10 | defeat  |    12 |    89.5% |         4 |         58 |  45
 ```
 
 2. **Top Issues (from leaderboard):**
@@ -122,7 +129,18 @@ expert       |  20 | defeat  |     6 |         18 |    89.5% |         3
 2 | MEDIUM   | Combo cap unreachable for low-accuracy  |    2 |   9.0 | beginner, struggling
 ```
 
-3. **Also mention:** `Run 'node tests/playtest/view-leaderboard.mjs' for the full ranked leaderboard`
+3. **Engagement Overview** (if deepStats available):
+```
+Avg Engagement Score: 55/100
+Avg Fun Score: 52/100
+Total Dead Turns: 8 (4.2%)
+Total Slog Encounters: 2
+Worst Wrong Streak: 6 (beginner, floor 4)
+Best Correct Streak: 8 (expert, floor 12)
+Fact Variety: 142 unique facts across all runs
+```
+
+4. **Also mention:** `Run 'node tests/playtest/view-leaderboard.mjs' for the full ranked leaderboard`
 
 ## Important Notes
 - Run simulations in PARALLEL (background agents or sequential bash commands)

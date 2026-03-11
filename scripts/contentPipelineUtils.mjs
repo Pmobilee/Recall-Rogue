@@ -2,6 +2,8 @@
  * Shared helpers for the content ingestion pipeline (AR-11).
  */
 
+import { normalizeTaxonomyDomain, isValidSubcategoryId } from './content-pipeline/subcategory-taxonomy.mjs'
+
 export const VALID_TYPES = new Set(['fact', 'vocabulary', 'grammar', 'phrase'])
 export const VALID_AGE_RATINGS = new Set(['kid', 'teen', 'adult'])
 
@@ -94,6 +96,19 @@ function normalizeCategory(value, fallbackDomain) {
     return text ? [text] : [fallback]
   }
   return [fallback]
+}
+
+function resolveCategoryL2(rawCategoryL2, category, domain) {
+  const canonicalDomain = normalizeTaxonomyDomain(domain || category?.[0] || '')
+  if (!canonicalDomain) return ''
+
+  const direct = cleanString(rawCategoryL2)
+  if (isValidSubcategoryId(canonicalDomain, direct)) return direct
+
+  const fromCategory = cleanString(Array.isArray(category) ? category[1] : '')
+  if (isValidSubcategoryId(canonicalDomain, fromCategory)) return fromCategory
+
+  return ''
 }
 
 function normalizeVariants(rawVariants, correctAnswer, distractors) {
@@ -239,6 +254,11 @@ export function normalizeFactInput(raw, options = {}) {
 
   const distractors = rawDistractors.length > 0 ? rawDistractors : fallbackDistractors
   const category = normalizeCategory(raw.category, domain)
+  const categoryL2 = resolveCategoryL2(raw.categoryL2, category, domain)
+  const normalizedCategory = category.length > 0 ? [...category] : [domain]
+  if (categoryL2) {
+    normalizedCategory[1] = categoryL2
+  }
   const acceptableAnswers = ensureArray(raw.acceptableAnswers ?? raw.variantAnswers)
     .map(cleanString)
     .filter(Boolean)
@@ -255,7 +275,7 @@ export function normalizeFactInput(raw, options = {}) {
     quizQuestion,
     correctAnswer,
     distractors,
-    category: category.length > 0 ? category : [domain],
+    category: normalizedCategory,
     rarity: cleanString(raw.rarity || 'common'),
     difficulty: normalizeDifficulty(raw.difficulty),
     funScore: normalizeDifficulty(raw.funScore ?? 6),
@@ -264,9 +284,9 @@ export function normalizeFactInput(raw, options = {}) {
     sourceUrl: cleanString(raw.sourceUrl ?? ''),
     acceptableAnswers: acceptableAnswers.length > 0 ? acceptableAnswers : [correctAnswer].filter(Boolean),
     variants: variants.length > 0 ? variants : undefined,
-    categoryL1: cleanString(raw.categoryL1 || category[0] || domain),
-    categoryL2: cleanString(raw.categoryL2 || category[1] || ''),
-    categoryL3: cleanString(raw.categoryL3 || category[2] || ''),
+    categoryL1: cleanString(raw.categoryL1 || normalizedCategory[0] || domain),
+    categoryL2,
+    categoryL3: cleanString(raw.categoryL3 || normalizedCategory[2] || ''),
     verifiedAt: options.verify ? nowIso() : (raw.verifiedAt ?? null),
     createdAt: cleanString(raw.createdAt || nowIso()),
   }
@@ -287,6 +307,21 @@ export function validateFactRecord(fact) {
 
   if (!Array.isArray(fact.acceptableAnswers) || fact.acceptableAnswers.length < 2) {
     warnings.push('variant_answers_below_recommended')
+  }
+
+  // Check for variants that copied the base answer without adapting it
+  if (Array.isArray(fact.variants)) {
+    const baseQ = (fact.quizQuestion || '').toLowerCase().trim()
+    const baseA = (fact.correctAnswer || '').toLowerCase().trim()
+    let copiedCount = 0
+    for (const v of fact.variants) {
+      const vq = (v.question || '').toLowerCase().trim()
+      const va = (v.correctAnswer || '').toLowerCase().trim()
+      if (va === baseA && vq !== baseQ) copiedCount++
+    }
+    if (copiedCount > 0) {
+      warnings.push(`variant_answer_copied_from_base:${copiedCount}`)
+    }
   }
 
   warnings.push(...flagDistractorQuality(fact))

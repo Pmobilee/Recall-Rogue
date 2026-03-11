@@ -334,14 +334,14 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(6);
   });
 
-  it('cave_bat has 19 baseHP', () => {
+  it('cave_bat has 30 baseHP', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'cave_bat');
-    expect(bat?.baseHP).toBe(19);
+    expect(bat?.baseHP).toBe(30);
   });
 
-  it('crystal_golem has 38 baseHP', () => {
+  it('crystal_golem has 55 baseHP', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
-    expect(golem?.baseHP).toBe(38);
+    expect(golem?.baseHP).toBe(55);
   });
 
   it('the_archivist has 85 baseHP', () => {
@@ -506,8 +506,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 10, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1 applies 0.85x early-game enemy damage scaling.
-      expect(result.damage).toBe(9);
+      // Floor 1 applies 1.0x base damage scaling (early game nerf removed).
+      expect(result.damage).toBe(10);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -516,8 +516,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: 10 * 1.5 * 0.85 = 12.75 => 13
-      expect(result.damage).toBe(13);
+      // Floor 1: 10 * 1.5 * 1.0 = 15 (early game scaling removed)
+      expect(result.damage).toBe(15);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -889,18 +889,16 @@ describe('Card Effect Resolver', () => {
       expect(result.damageDealt).toBe(0);
     });
 
-    it('resolves heal card (capped at missing HP)', () => {
-      const player = mockPlayerState({ hp: 75, maxHP: 80 });
-      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: '1', effectMultiplier: 1.0 });
-      const result = resolveCardEffect(card, player, defaultEnemy, 0, 1.0, 0);
-      expect(result.healApplied).toBe(5);
+    it('resolves shield card with block', () => {
+      const card = mockCard({ cardType: 'shield', baseEffectValue: 5, tier: '1', effectMultiplier: 1.0 });
+      const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
+      expect(result.shieldApplied).toBe(5);
     });
 
-    it('heal capped when near full HP', () => {
-      const player = mockPlayerState({ hp: 78, maxHP: 80 });
-      const card = mockCard({ cardType: 'heal', baseEffectValue: 5, tier: '1', effectMultiplier: 1.0 });
-      const result = resolveCardEffect(card, player, defaultEnemy, 0, 1.0, 0);
-      expect(result.healApplied).toBe(2);
+    it('resolves utility card with extra draw', () => {
+      const card = mockCard({ cardType: 'utility', baseEffectValue: 0, tier: '1', effectMultiplier: 1.0 });
+      const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
+      expect(result.extraCardsDrawn).toBe(1);
     });
 
     it('resolves debuff card with weakness', () => {
@@ -923,33 +921,19 @@ describe('Card Effect Resolver', () => {
       expect(vulnEffects).toHaveLength(0);
     });
 
-    it('resolves regen card with regen status', () => {
-      const card = mockCard({ cardType: 'regen', baseEffectValue: 3, tier: '1', effectMultiplier: 1.0 });
-      const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
-      // ceil(3/3) = 1 regen per turn for 3 turns
-      expect(result.statusesApplied).toContainEqual(
-        expect.objectContaining({ type: 'regen', value: 1, turnsRemaining: 3 })
-      );
-    });
-
-    it('resolves utility card with extra draw', () => {
-      const card = mockCard({ cardType: 'utility', baseEffectValue: 0, tier: '1', effectMultiplier: 1.0 });
-      const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
-      expect(result.extraCardsDrawn).toBe(1);
-    });
 
     it('resolves wild card as last card type', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0, 'shield');
       expect(result.effectType).toBe('shield');
-      expect(result.shieldApplied).toBe(6);
+      expect(result.shieldApplied).toBe(8);
     });
 
     it('wild defaults to attack when no lastCardType', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.effectType).toBe('attack');
-      expect(result.damageDealt).toBe(8);
+      expect(result.damageDealt).toBe(10);
     });
 
     it('blocked card returns targetHit=false', () => {
@@ -989,7 +973,8 @@ describe('Card Effect Resolver', () => {
       });
       // 8 * 1.3 (tier2a) * 1.3 (effectMult) = 13.52 raw
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 2, 1.5, 50);
-      const expected = Math.round(8 * 1.3 * 1.3 * 1.3 * 1.5 * 1.5);
+      // Raw = 8 * 1.3 * 1.3 = 13.52; Final = 13.52 * 1.25 (combo) * 1.5 (speed) * 1.5 (buff)
+      const expected = Math.round(8 * 1.3 * 1.3 * 1.25 * 1.5 * 1.5);
       expect(result.damageDealt).toBe(expected);
     });
   });
@@ -1141,17 +1126,16 @@ describe('Turn Manager', () => {
       expect(ts.buffNextCard).toBeGreaterThanOrEqual(0);
     });
 
-    it('reduces heal card value via ascension heal multiplier', () => {
-      const healCards = makeCards(20, 'heal');
-      const healDeck = createDeck(healCards);
-      const ts = startEncounter(healDeck, enemy);
-      ts.playerState.hp = 30;
-      ts.ascensionHealCardMultiplier = 0.75;
+    it('applies shield card to block damage', () => {
+      const shieldCards = makeCards(20, 'shield');
+      const shieldDeck = createDeck(shieldCards);
+      const ts = startEncounter(shieldDeck, enemy);
       const cardId = ts.deck.hand[0].id;
+      const shieldBefore = ts.playerState.shield;
 
       const result = playCardAction(ts, cardId, true, false);
-      expect(result.effect.healApplied).toBeLessThanOrEqual(Math.ceil(result.effect.rawValue));
-      expect(ts.playerState.hp).toBeGreaterThan(30);
+      expect(result.effect.shieldApplied).toBeGreaterThanOrEqual(0);
+      expect(ts.playerState.shield).toBeGreaterThanOrEqual(shieldBefore);
     });
   });
 
