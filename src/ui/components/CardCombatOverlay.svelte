@@ -54,6 +54,7 @@
     answers: string[]
     correctAnswer: string
     variantIndex: number
+    questionImageUrl?: string
   }
 
   let { turnState, activeBounties = [], onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -545,6 +546,7 @@
       answers: allAnswers,
       correctAnswer,
       variantIndex,
+      questionImageUrl: fact.imageUrl ?? undefined,
     }
   }
 
@@ -964,6 +966,7 @@
         question={committedQuizData.question}
         answers={committedQuizData.answers}
         correctAnswer={committedQuizData.correctAnswer}
+        questionImageUrl={committedQuizData.questionImageUrl}
         timerDuration={effectiveTimerSeconds}
         timerEnabled={timerEnabled}
         comboCount={turnState.comboCount}

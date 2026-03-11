@@ -18,60 +18,67 @@ import { setBalanceOverrides, type BalanceOverrides } from '../src/data/balance'
 // ─── Profile Presets ─────────────────────────────────────────────────────────
 
 const PROFILES: Record<string, PlayerProfile> = {
-  novice: {
-    id: 'novice', name: 'Novice (30)', description: 'Brand new player, learning the basics',
-    learningAbility: { baseAccuracy: 0.30, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.02, minAccuracy: 0.20, maxAccuracy: 0.50 },
-    readingSpeed: { category: 'slow', speedBonusProbability: 0.02 },
-    strategicSkill: { level: 'random', prioritizeShieldsBeforeAttacks: false, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.2 },
-    engagement: { skipProbability: 0.08, aggression: 'passive' },
-    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
-  },
-  beginner: {
-    id: 'beginner', name: 'Beginner (45)', description: 'Early player, still learning',
-    learningAbility: { baseAccuracy: 0.45, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.015, minAccuracy: 0.30, maxAccuracy: 0.60 },
+  // ── Knowledge × Mechanics Cross-Profiles ──
+  // Knowledge axis: fresh (47%), developing (57%), practiced (65%), studied (75%)
+  // Mechanics axis: newbie (basic), competent (intermediate), veteran (optimal)
+
+  // First-time player: new to facts AND game mechanics
+  first_timer: {
+    id: 'first_timer', name: 'First Timer (47%/newbie)', description: 'Brand new player, first run on a fresh domain',
+    learningAbility: { baseAccuracy: 0.47, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.35, maxAccuracy: 0.55 },
     readingSpeed: { category: 'slow', speedBonusProbability: 0.05 },
-    strategicSkill: { level: 'random', prioritizeShieldsBeforeAttacks: false, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.3 },
-    engagement: { skipProbability: 0.05, aggression: 'passive' },
+    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
+    engagement: { skipProbability: 0.03, aggression: 'passive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
-  casual: {
-    id: 'casual', name: 'Casual (60)', description: 'Casual player, moderate knowledge',
-    learningAbility: { baseAccuracy: 0.60, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.01, minAccuracy: 0.45, maxAccuracy: 0.75 },
-    readingSpeed: { category: 'normal', speedBonusProbability: 0.10 },
-    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.35 },
-    engagement: { skipProbability: 0.05, aggression: 'balanced' },
-    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
-  },
-  average: {
-    id: 'average', name: 'Average (70)', description: 'Typical player',
-    learningAbility: { baseAccuracy: 0.70, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.01, minAccuracy: 0.55, maxAccuracy: 0.85 },
+
+  // Experienced roguelite player trying a brand new domain — knows mechanics, bad at facts
+  new_domain: {
+    id: 'new_domain', name: 'New Domain (48%/veteran)', description: 'Experienced player, fresh domain with unknown facts',
+    learningAbility: { baseAccuracy: 0.48, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.35, maxAccuracy: 0.58 },
     readingSpeed: { category: 'normal', speedBonusProbability: 0.15 },
-    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, saveHealsForLowHP: false, hpThresholdForHeal: 0.4 },
-    engagement: { skipProbability: 0.05, aggression: 'balanced' },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
+    engagement: { skipProbability: 0.01, aggression: 'aggressive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
-  skilled: {
-    id: 'skilled', name: 'Skilled (80)', description: 'Good player with solid knowledge',
-    learningAbility: { baseAccuracy: 0.80, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.70, maxAccuracy: 0.90 },
-    readingSpeed: { category: 'fast', speedBonusProbability: 0.35 },
-    strategicSkill: { level: 'intermediate', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.35 },
+
+  // Regular player, few runs in — starting to learn both facts and mechanics
+  developing_newbie: {
+    id: 'developing_newbie', name: 'Developing/Newbie (55%/basic)', description: 'A few runs in, still learning both',
+    learningAbility: { baseAccuracy: 0.55, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.008, minAccuracy: 0.40, maxAccuracy: 0.65 },
+    readingSpeed: { category: 'slow', speedBonusProbability: 0.08 },
+    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
+    engagement: { skipProbability: 0.04, aggression: 'passive' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
+
+  // Regular player with some experience in both
+  regular: {
+    id: 'regular', name: 'Regular (58%/competent)', description: 'Typical player 10+ runs in, learning the ropes',
+    learningAbility: { baseAccuracy: 0.58, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.008, minAccuracy: 0.45, maxAccuracy: 0.70 },
+    readingSpeed: { category: 'normal', speedBonusProbability: 0.12 },
+    strategicSkill: { level: 'intermediate', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
     engagement: { skipProbability: 0.03, aggression: 'balanced' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
-  expert: {
-    id: 'expert', name: 'Expert (90)', description: 'Highly skilled player',
-    learningAbility: { baseAccuracy: 0.90, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.80, maxAccuracy: 0.95 },
-    readingSpeed: { category: 'fast', speedBonusProbability: 0.60 },
-    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.35 },
-    engagement: { skipProbability: 0.02, aggression: 'aggressive' },
+
+  // Practiced player with veteran game knowledge
+  dedicated: {
+    id: 'dedicated', name: 'Dedicated (65%/veteran)', description: '20+ runs, knows mechanics well, decent recall',
+    learningAbility: { baseAccuracy: 0.65, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.50, maxAccuracy: 0.75 },
+    readingSpeed: { category: 'normal', speedBonusProbability: 0.20 },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
+    engagement: { skipProbability: 0.02, aggression: 'balanced' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
-  master: {
-    id: 'master', name: 'Master (95)', description: 'Elite speed-runner',
-    learningAbility: { baseAccuracy: 0.95, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.90, maxAccuracy: 0.99 },
-    readingSpeed: { category: 'fast', speedBonusProbability: 0.90 },
-    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, saveHealsForLowHP: true, hpThresholdForHeal: 0.3 },
-    engagement: { skipProbability: 0.0, aggression: 'aggressive' },
+
+  // Well-studied player — best realistic outcome
+  scholar: {
+    id: 'scholar', name: 'Scholar (75%/veteran)', description: '50+ runs, strong knowledge, optimal play — realistic ceiling',
+    learningAbility: { baseAccuracy: 0.75, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.65, maxAccuracy: 0.82 },
+    readingSpeed: { category: 'fast', speedBonusProbability: 0.40 },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
+    engagement: { skipProbability: 0.01, aggression: 'aggressive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
 };
@@ -137,6 +144,9 @@ interface AggregatedMetrics {
   avgShopRelicsPurchased: number;
   avgActiveSynergies: number;
   avgFoodPurchased: number;
+  closeCallRate: number;
+  overkillRate: number;
+  avgMinHpReached: number;
 }
 
 // ─── Accumulator ─────────────────────────────────────────────────────────────
@@ -158,6 +168,9 @@ class RunAccumulator {
     totalShopRelics: number;
     totalActiveSynergies: number;
     totalFoodPurchased: number;
+    closeCallWins: number;
+    overkillWins: number;
+    totalMinHpReached: number;
   }> = new Map();
 
   /** Add a completed run's summary to the accumulator (streaming — no storage). */
@@ -181,6 +194,9 @@ class RunAccumulator {
         totalShopRelics: 0,
         totalActiveSynergies: 0,
         totalFoodPurchased: 0,
+        closeCallWins: 0,
+        overkillWins: 0,
+        totalMinHpReached: 0,
       };
       this.data.set(key, entry);
     }
@@ -213,6 +229,14 @@ class RunAccumulator {
     entry.totalShopRelics += summary.shopRelicsPurchased ?? 0;
     entry.totalActiveSynergies += (summary.activeSynergies?.length ?? 0);
     entry.totalFoodPurchased += summary.shopFoodPurchased ?? 0;
+
+    // Fun factor tracking
+    const ds = summary.deepStats;
+    if (ds) {
+      if (ds.funFactor.closeCallWin) entry.closeCallWins++;
+      if (ds.funFactor.overkillWin) entry.overkillWins++;
+      entry.totalMinHpReached += ds.funFactor.minHpReached;
+    }
   }
 
   /** Get all config labels. */
@@ -246,6 +270,9 @@ class RunAccumulator {
       avgShopRelicsPurchased: entry.totalShopRelics / n,
       avgActiveSynergies: entry.totalActiveSynergies / n,
       avgFoodPurchased: entry.totalFoodPurchased / n,
+      closeCallRate: entry.victories > 0 ? entry.closeCallWins / entry.victories : 0,
+      overkillRate: entry.victories > 0 ? entry.overkillWins / entry.victories : 0,
+      avgMinHpReached: entry.totalMinHpReached / n,
     };
   }
 
@@ -554,7 +581,7 @@ function generateSoloConfigs(ascensionLevels: number[]): SimConfig[] {
     for (const asc of ascensionLevels) {
       configs.push({
         label: `solo-${relic}-asc${asc}`,
-        profileId: 'average',
+        profileId: 'regular',
         relics: [relic],
         ascensionLevel: asc,
         group: 'solo',
@@ -573,7 +600,7 @@ function generateComboConfigs(ascensionLevels: number[]): SimConfig[] {
     for (const asc of ascensionLevels) {
       configs.push({
         label: `solo-${relic}-asc${asc}`,
-        profileId: 'average',
+        profileId: 'regular',
         relics: [relic],
         ascensionLevel: asc,
         group: 'solo',
@@ -584,8 +611,8 @@ function generateComboConfigs(ascensionLevels: number[]): SimConfig[] {
   // Control baseline
   for (const asc of ascensionLevels) {
     configs.push({
-      label: `control-average-asc${asc}`,
-      profileId: 'average',
+      label: `control-regular-asc${asc}`,
+      profileId: 'regular',
       relics: [],
       ascensionLevel: asc,
       group: 'control',
@@ -598,7 +625,7 @@ function generateComboConfigs(ascensionLevels: number[]): SimConfig[] {
       for (const asc of ascensionLevels) {
         configs.push({
           label: `combo-${COMBAT_RELICS[i]}+${COMBAT_RELICS[j]}-asc${asc}`,
-          profileId: 'average',
+          profileId: 'regular',
           relics: [COMBAT_RELICS[i], COMBAT_RELICS[j]],
           ascensionLevel: asc,
           group: 'combo',
@@ -614,32 +641,32 @@ function generateBuildConfigs(ascensionLevels: number[]): SimConfig[] {
   const builds: { name: string; profileId: string; relics: string[] }[] = [
     {
       name: 'Full Aggro',
-      profileId: 'expert',
+      profileId: 'dedicated',
       relics: ['whetstone', 'flame_brand', 'barbed_edge', 'war_drum', 'glass_cannon', 'berserker_band', 'chain_lightning_rod', 'crescendo_blade'],
     },
     {
       name: 'Iron Fortress',
-      profileId: 'expert',
+      profileId: 'dedicated',
       relics: ['iron_buckler', 'steel_skin', 'stone_wall', 'thorned_vest', 'fortress_wall', 'mirror_shield', 'iron_resolve', 'phase_cloak'],
     },
     {
       name: 'Sustain God',
-      profileId: 'expert',
+      profileId: 'dedicated',
       relics: ['herbal_pouch', 'vitality_ring', 'medic_kit', 'last_breath', 'blood_pact', 'phoenix_feather', 'renewal_spring', 'scholars_hat'],
     },
     {
       name: 'Speed Demon',
-      profileId: 'master',
+      profileId: 'scholar',
       relics: ['swift_boots', 'combo_ring', 'momentum_gem', 'afterimage', 'quicksilver', 'double_vision', 'sharp_eye', 'speed_charm'],
     },
     {
       name: 'Cursed Gambler',
-      profileId: 'expert',
+      profileId: 'dedicated',
       relics: ['glass_cannon', 'blood_price', 'berserker_band', 'phase_cloak', 'blood_pact', 'last_breath'],
     },
     {
       name: 'Balanced Best',
-      profileId: 'expert',
+      profileId: 'dedicated',
       relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'swift_boots', 'scholars_hat', 'combo_ring', 'vitality_ring', 'last_breath'],
     },
   ];
@@ -687,7 +714,7 @@ function generateFairnessConfigs(ascensionLevels: number[]): SimConfig[] {
     { name: 'Cursed', relics: ['glass_cannon', 'blood_price'] },
   ];
 
-  const fairnessProfiles = ['novice', 'beginner', 'casual', 'average', 'skilled', 'expert', 'master'];
+  const fairnessProfiles = ['first_timer', 'new_domain', 'developing_newbie', 'regular', 'dedicated', 'scholar'];
   const fairnessModes: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
   const configs: SimConfig[] = [];
 
@@ -732,8 +759,8 @@ function generateProgressionConfigs(ascensionLevels: number[]): SimConfig[] {
 
   for (const asc of ascensionLevels) {
     configs.push({
-      label: `control-average-asc${asc}`,
-      profileId: 'average',
+      label: `control-regular-asc${asc}`,
+      profileId: 'regular',
       relics: [],
       ascensionLevel: asc,
       group: 'control',
@@ -745,7 +772,7 @@ function generateProgressionConfigs(ascensionLevels: number[]): SimConfig[] {
     for (const asc of ascensionLevels) {
       configs.push({
         label: `progression-${slug}-asc${asc}`,
-        profileId: 'average',
+        profileId: 'regular',
         relics: stage.relics,
         ascensionLevel: asc,
         group: 'progression',
@@ -854,7 +881,7 @@ function parseArgs(argv: string[]): CliArgs {
     ascension: [0],
     floors: 24,
     relics: [],
-    profiles: ['average'],
+    profiles: ['regular'],
     output: null,
     csv: null,
     quiet: false,
@@ -886,7 +913,7 @@ function parseArgs(argv: string[]): CliArgs {
         i++;
         break;
       case '--profiles':
-        args.profiles = (next ?? 'average').split(',').map(s => s.trim()).filter(Boolean);
+        args.profiles = (next ?? 'regular').split(',').map(s => s.trim()).filter(Boolean);
         i++;
         break;
       case '--output':
@@ -1204,19 +1231,19 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
       profiles[pid] = m;
     }
 
-    // Fairness ratio: expert benefit / beginner benefit
-    const expertM = profiles['expert'];
-    const beginnerM = profiles['beginner'];
+    // Fairness ratio: dedicated benefit / developing_newbie benefit
+    const dedicatedM = profiles['dedicated'];
+    const developing_newbieM = profiles['developing_newbie'];
     let fairnessRatio = 1.0;
     let flag: string | null = null;
 
-    if (expertM && beginnerM) {
+    if (dedicatedM && developing_newbieM) {
       // Compare survival rates as the main benefit metric
-      const expertBenefit = expertM.survivalRate;
-      const beginnerBenefit = beginnerM.survivalRate;
-      fairnessRatio = beginnerBenefit > 0 ? expertBenefit / beginnerBenefit : 9999;
-      if (fairnessRatio > 3.0) flag = 'expert_favored';
-      else if (fairnessRatio < 0.33) flag = 'beginner_favored';
+      const dedicatedBenefit = dedicatedM.survivalRate;
+      const developing_newbieBenefit = developing_newbieM.survivalRate;
+      fairnessRatio = developing_newbieBenefit > 0 ? dedicatedBenefit / developing_newbieBenefit : 9999;
+      if (fairnessRatio > 3.0) flag = 'dedicated_favored';
+      else if (fairnessRatio < 0.33) flag = 'developing_newbie_favored';
     }
 
     skillFairness.push({
@@ -1570,18 +1597,20 @@ interface SweepParamRange {
 /** Default sweep parameters — the most impactful balance levers. */
 const DEFAULT_SWEEP_PARAMS: SweepParamRange[] = [
   { key: 'baseEffectAttack', values: [8, 9, 10, 11, 12] },
-  { key: 'postEncounterHealPct', values: [0.04, 0.06, 0.08, 0.10, 0.12] },
+  { key: 'baseEffectShield', values: [6, 7, 8, 9, 10] },
+  { key: 'postEncounterHealPct', values: [0.06, 0.08, 0.10, 0.12, 0.14] },
   { key: 'fizzleEffectRatio', values: [0.10, 0.15, 0.20, 0.25, 0.30] },
-  { key: 'floorDamageScalingPerFloor', values: [0.02, 0.03, 0.04, 0.05] },
+  { key: 'floorDamageScalingPerFloor', values: [0.02, 0.03, 0.04, 0.05, 0.06] },
   { key: 'comboMultipliers', values: [
     [1.0, 1.10, 1.25, 1.40, 1.75],
     [1.0, 1.10, 1.20, 1.30, 1.50],
     [1.0, 1.15, 1.30, 1.50, 2.00],
   ]},
-  { key: 'playerStartHP', values: [80, 90, 100, 110] },
+  { key: 'playerStartHP', values: [90, 100, 110, 120] },
   { key: 'postEncounterHealCap', values: [
-    { 1: 1.0, 2: 1.0, 3: 0.85, 4: 0.70 },
-    { 1: 1.0, 2: 0.95, 3: 0.80, 4: 0.60 },
+    { 1: 1.0, 2: 0.90, 3: 0.80, 4: 0.65 },
+    { 1: 1.0, 2: 0.95, 3: 0.85, 4: 0.75 },
+    { 1: 1.0, 2: 1.0, 3: 0.90, 4: 0.80 },
     { 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0 },
   ]},
 ];
@@ -1644,15 +1673,19 @@ function generateRandom(params: SweepParamRange[], n: number, rng: () => number)
 interface SweepTargets {
   survivalTargets: Record<string, [number, number]>;
   turnsPerEncounterTarget: [number, number];
+  closeCallTarget: [number, number];
+  overkillTarget: [number, number];
 }
 
 const SWEEP_TARGETS: SweepTargets = {
   survivalTargets: {
-    casual: [0.15, 0.30],
-    average: [0.25, 0.40],
-    skilled: [0.50, 0.70],
+    developing_newbie: [0.05, 0.15],
+    regular: [0.15, 0.30],
+    dedicated: [0.35, 0.55],
   },
-  turnsPerEncounterTarget: [4.0, 6.0],
+  turnsPerEncounterTarget: [3.5, 5.5],
+  closeCallTarget: [0.08, 0.15],
+  overkillTarget: [0.10, 0.20],
 };
 
 function rangeScore(actual: number, min: number, max: number): number {
@@ -1670,6 +1703,8 @@ interface SweepResult {
     pacingFit: number;
     foodFit: number;
     goldEfficiencyFit: number;
+    closeCallFit: number;
+    overkillFit: number;
   };
   profileMetrics: Record<string, {
     survivalRate: number;
@@ -1678,6 +1713,8 @@ interface SweepResult {
     avgFoodPurchased: number;
     avgGoldEarned: number;
     avgGoldSpent: number;
+    closeCallRate: number;
+    overkillRate: number;
   }>;
 }
 
@@ -1781,6 +1818,8 @@ function analyzeSweep(
               avgFoodPurchased: metrics.avgFoodPurchased,
               avgGoldEarned: metrics.avgGoldEarned,
               avgGoldSpent: metrics.avgGoldSpent,
+              closeCallRate: metrics.closeCallRate,
+              overkillRate: metrics.overkillRate,
             };
           }
         }
@@ -1811,6 +1850,22 @@ function analyzeSweep(
       metricCount++;
     }
 
+    // Aggregate fun factor metrics across all profiles in this config
+    let totalCloseCallRate = 0;
+    let totalOverkillRate = 0;
+    let funFactorCount = 0;
+    for (const [, m] of Object.entries(profileMetrics)) {
+      if (m.closeCallRate !== undefined) {
+        totalCloseCallRate += m.closeCallRate;
+        totalOverkillRate += m.overkillRate;
+        funFactorCount++;
+      }
+    }
+    const avgCloseCall = funFactorCount > 0 ? totalCloseCallRate / funFactorCount : 0;
+    const avgOverkill = funFactorCount > 0 ? totalOverkillRate / funFactorCount : 0;
+    const closeCallFit = rangeScore(avgCloseCall, ...SWEEP_TARGETS.closeCallTarget);
+    const overkillFit = rangeScore(avgOverkill, ...SWEEP_TARGETS.overkillTarget);
+
     const avgSurvivalFit = survivalCount > 0 ? survivalFit / survivalCount : 10;
     const avgPacingFit = pacingCount > 0 ? pacingTotal / pacingCount : 10;
     const avgFood = metricCount > 0 ? foodTotal / metricCount : 0;
@@ -1818,7 +1873,7 @@ function analyzeSweep(
     const foodFit = rangeScore(avgFood, 1.0, 3.0);
     const goldFit = rangeScore(avgGoldEff, 0.55, 0.80);
 
-    const compositeScore = avgSurvivalFit * 3.0 + avgPacingFit * 1.5 + foodFit * 1.0 + goldFit * 1.0;
+    const compositeScore = avgSurvivalFit * 3.0 + avgPacingFit * 1.5 + foodFit * 1.0 + goldFit * 1.0 + closeCallFit * 2.5 + overkillFit * 2.0;
 
     results.push({
       rank: 0,
@@ -1829,6 +1884,8 @@ function analyzeSweep(
         pacingFit: Math.round(avgPacingFit * 1000) / 1000,
         foodFit: Math.round(foodFit * 1000) / 1000,
         goldEfficiencyFit: Math.round(goldFit * 1000) / 1000,
+        closeCallFit: Math.round(closeCallFit * 1000) / 1000,
+        overkillFit: Math.round(overkillFit * 1000) / 1000,
       },
       profileMetrics,
     });
@@ -1909,7 +1966,7 @@ async function main(): Promise<void> {
     case 'sweep': {
       const maxConfigs = args.sweepMaxConfigs ?? 500;
       const strategy = args.sweepStrategy ?? 'lhs';
-      const sweepProfiles = ['casual', 'average', 'skilled'];
+      const sweepProfiles = ['developing_newbie', 'regular', 'dedicated'];
       const DIFFICULTY_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
       const sweepResult = generateSweepConfigs(maxConfigs, strategy, sweepProfiles, ascensionLevels, DIFFICULTY_MODES);
       configs = sweepResult.configs;
@@ -2009,15 +2066,17 @@ async function main(): Promise<void> {
       }
 
       process.stderr.write('\nTOP 10 CONFIGS:\n');
-      process.stderr.write('Rank  Score   SurvFit  Pacing  Food    GoldEff\n');
-      process.stderr.write('─'.repeat(60) + '\n');
+      process.stderr.write('Rank  Score   SurvFit  Pacing  Food    GoldEff  CloseCall  Overkill\n');
+      process.stderr.write('─'.repeat(80) + '\n');
       for (const cfg of sweepAnalysis.topConfigs.slice(0, 10)) {
         process.stderr.write(
           `${String(cfg.rank).padStart(4)}  ${cfg.compositeScore.toFixed(3).padStart(6)}  ` +
           `${cfg.metricScores.survivalFit.toFixed(2).padStart(7)}  ` +
           `${cfg.metricScores.pacingFit.toFixed(2).padStart(6)}  ` +
           `${cfg.metricScores.foodFit.toFixed(2).padStart(6)}  ` +
-          `${cfg.metricScores.goldEfficiencyFit.toFixed(2).padStart(7)}\n`
+          `${cfg.metricScores.goldEfficiencyFit.toFixed(2).padStart(7)}  ` +
+          `${cfg.metricScores.closeCallFit.toFixed(2).padStart(9)}  ` +
+          `${cfg.metricScores.overkillFit.toFixed(2).padStart(8)}\n`
         );
       }
 

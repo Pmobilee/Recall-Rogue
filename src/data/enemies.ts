@@ -11,7 +11,7 @@ export type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss';
 /** A single intent in an enemy's action pool. */
 export interface EnemyIntent {
   /** The action type this intent represents. */
-  type: 'attack' | 'defend' | 'buff' | 'debuff' | 'heal' | 'multi_attack';
+  type: 'attack' | 'defend' | 'buff' | 'debuff' | 'heal' | 'multi_attack' | 'charge';
   /** Base numeric value of the intent (damage, heal amount, etc.). */
   value: number;
   /** Weighted probability of this intent being selected. */
@@ -22,6 +22,8 @@ export interface EnemyIntent {
   statusEffect?: { type: StatusEffectType; value: number; turns: number };
   /** Number of hits for multi-attack intents. */
   hitCount?: number;
+  /** Whether this intent bypasses the per-turn damage cap (used for charged attacks). */
+  bypassDamageCap?: boolean;
 }
 
 /** Template definition for an enemy type. */
@@ -64,6 +66,10 @@ export interface EnemyInstance {
   phase: 1 | 2;
   /** The floor this enemy was spawned on. Used for damage scaling. */
   floor: number;
+  /** Whether the enemy is currently charging an attack. */
+  isCharging: boolean;
+  /** The base damage value of the pending charged attack. */
+  chargedDamage: number;
 }
 
 // ============================================================
@@ -95,7 +101,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
-      { type: 'attack', value: 12, weight: 1, telegraph: 'Shard barrage' },
+      { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Crystal Crush!' },
     ],
     description: 'A slow golem encrusted with resonating crystals.',
   },
@@ -144,6 +150,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 14, weight: 2, telegraph: 'Enraged thrash' },
       { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Frenzied bites', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Tremor', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+      { type: 'charge', value: 30, weight: 1, telegraph: 'Charging: Burrowing Devastation!' },
     ],
   },
 
@@ -181,6 +188,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 20, weight: 2, telegraph: 'Overdrive slam' },
       { type: 'multi_attack', value: 6, weight: 2, telegraph: 'Drill barrage', hitCount: 3 },
       { type: 'defend', value: 10, weight: 1, telegraph: 'Emergency plating' },
+      { type: 'charge', value: 35, weight: 1, telegraph: 'Charging: Overdrive Burst!' },
     ],
   },
 
@@ -285,6 +293,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 17, weight: 25, telegraph: 'Crushing knowledge' },
       { type: 'defend', value: 10, weight: 20, telegraph: 'Page shield' },
       { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'charge', value: 32, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
     description: 'An ancient construct built from compressed tomes. Deals bonus damage when knowledge fails — wrong answers empower it.',
   },
@@ -350,6 +359,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 2, telegraph: 'Heavy swing' },
       { type: 'defend', value: 10, weight: 3, telegraph: 'Fortify' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Harden', statusEffect: { type: 'strength', value: 1, turns: 3 } },
+      { type: 'charge', value: 28, weight: 1, telegraph: 'Charging: Seismic Slam!' },
     ],
     description: 'An ancient stone warrior. Slow but incredibly tough — a war of attrition.',
   },

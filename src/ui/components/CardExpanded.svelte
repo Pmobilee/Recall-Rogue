@@ -19,6 +19,7 @@
     showMasteryTrialHeader?: boolean
     highlightHint?: boolean
     allowCancel?: boolean
+    questionImageUrl?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -39,6 +40,7 @@
     showMasteryTrialHeader = false,
     highlightHint = false,
     allowCancel = true,
+    questionImageUrl,
     onanswer,
     onskip,
     oncancel,
@@ -271,6 +273,16 @@
   </div>
 
   <div class="card-effect-desc">{effectDescription}</div>
+  {#if questionImageUrl}
+    <div class="question-image-container">
+      <img
+        class="question-image"
+        src={questionImageUrl}
+        alt="Question illustration"
+        onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+      />
+    </div>
+  {/if}
   <div class="card-question">{question}</div>
   {#if firstLetterHint}
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
@@ -547,5 +559,21 @@
     background: #111827;
     color: #f8fafc;
     font-size: 11px;
+  }
+
+  .question-image-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px 12px 0;
+  }
+
+  .question-image {
+    max-height: 80px;
+    max-width: 120px;
+    object-fit: contain;
+    border: 2px solid #334155;
+    border-radius: 6px;
+    background: #fff;
+    padding: 4px;
   }
 </style>

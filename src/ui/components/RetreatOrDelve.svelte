@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
+
   interface Props {
     bossName: string
     segment: 1 | 2 | 3 | 4
@@ -27,40 +29,45 @@
     ondelve,
   }: Props = $props()
 
+  const bgUrl = getRandomRoomBg('crossroads')
+
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))
 </script>
 
 <div class="decision">
-  <h1>SEGMENT CLEARED</h1>
-  <p>You defeated {bossName}.</p>
+  <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
+  <div class="decision-content">
+    <h1>SEGMENT CLEARED</h1>
+    <p>You defeated {bossName}.</p>
 
-  <div class="stats">
-    <div>Rewards Earned: <strong>{currency}</strong></div>
-    <div>HP: <strong>{playerHp}/{playerMaxHp}</strong></div>
-    <div>Next Segment: <strong>{nextSegmentName}</strong></div>
-  </div>
+    <div class="stats">
+      <div>Rewards Earned: <strong>{currency}</strong></div>
+      <div>HP: <strong>{playerHp}/{playerMaxHp}</strong></div>
+      <div>Next Segment: <strong>{nextSegmentName}</strong></div>
+    </div>
 
-  <button class="retreat" onclick={onretreat}>
-    Retreat
-    <span>
+    <button class="retreat" onclick={onretreat}>
+      Retreat
+      <span>
+        {#if retreatRewardsLocked}
+          No rewards before Floor {retreatRewardsMinFloor ?? 12}
+        {:else}
+          Keep all {currency}
+        {/if}
+      </span>
+    </button>
+
+    <button class="delve" onclick={ondelve}>
+      Delve Deeper
+      <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
+    </button>
+
+    <div class="risk">
+      Enemies are stronger. Timer is shorter.
       {#if retreatRewardsLocked}
-        No rewards before Floor {retreatRewardsMinFloor ?? 12}
-      {:else}
-        Keep all {currency}
+        Retreat rewards are locked for this depth on current Ascension.
       {/if}
-    </span>
-  </button>
-
-  <button class="delve" onclick={ondelve}>
-    Delve Deeper
-    <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
-  </button>
-
-  <div class="risk">
-    Enemies are stronger. Timer is shorter.
-    {#if retreatRewardsLocked}
-      Retreat rewards are locked for this depth on current Ascension.
-    {/if}
+    </div>
   </div>
 </div>
 
@@ -68,7 +75,7 @@
   .decision {
     position: fixed;
     inset: 0;
-    background: #0D1117;
+    background: rgba(13, 17, 23, 0.65);
     color: #E6EDF3;
     display: flex;
     flex-direction: column;
@@ -76,6 +83,25 @@
     justify-content: center;
     padding: 24px 16px;
     z-index: 220;
+    gap: 12px;
+  }
+
+  .overlay-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .decision-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
   }
 

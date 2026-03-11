@@ -3,7 +3,7 @@ import type { Card, CardType, FactDomain } from '../data/card-types';
 import { normalizeFactDomain } from '../data/card-types';
 import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
-import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data/balance';
+import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_SUBCATEGORY_MAX_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
@@ -262,9 +262,45 @@ export function buildRunPool(
     const categoryFactsRaw = factsDB.getByCategory(categories, limit * 3)
       .filter(f => !excludedFactIds.has(f.id));
     const categoryFacts = applySubscriberSubcategoryFilter(normalized, categoryFactsRaw);
-    const stratified = stratifiedSample(categoryFacts, limit, distribution);
-    for (const fact of stratified) {
-      pushUnique(fact);
+
+    // --- Subcategory-balanced sampling ---
+    // Group facts by subcategory
+    const subcatGroups = new Map<string, Fact[]>();
+    for (const fact of categoryFacts) {
+      const subcat = normalizeSubcategoryLabel(factSubcategory(fact));
+      const group = subcatGroups.get(subcat) ?? [];
+      group.push(fact);
+      subcatGroups.set(subcat, group);
+    }
+
+    const subcatKeys = [...subcatGroups.keys()];
+    if (subcatKeys.length <= 1) {
+      // Only one subcategory — no balancing needed, use normal stratified sample
+      const stratified = stratifiedSample(categoryFacts, limit, distribution);
+      for (const fact of stratified) pushUnique(fact);
+    } else {
+      // Cap each subcategory at POOL_SUBCATEGORY_MAX_PCT of the limit
+      const maxPerSubcat = Math.max(1, Math.ceil(limit * POOL_SUBCATEGORY_MAX_PCT));
+
+      // First pass: take up to maxPerSubcat from each subcategory (stratified within each)
+      const remainingFacts: Fact[] = [];
+      for (const key of shuffled(subcatKeys)) {
+        const group = subcatGroups.get(key)!;
+        const stratified = stratifiedSample(group, maxPerSubcat, distribution);
+        for (const fact of stratified) pushUnique(fact);
+        // Collect unused facts for backfill
+        for (const fact of group) {
+          if (!addedIds.has(fact.id) && !excludedFactIds.has(fact.id)) {
+            remainingFacts.push(fact);
+          }
+        }
+      }
+
+      // Second pass: backfill from remaining facts if we haven't reached limit
+      if (selected.length < limit) {
+        const backfill = stratifiedSample(remainingFacts.filter(f => !addedIds.has(f.id)), limit - selected.length, distribution);
+        for (const fact of backfill) pushUnique(fact);
+      }
     }
 
     if (selected.length >= limit) return selected.slice(0, limit);

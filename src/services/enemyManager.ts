@@ -78,6 +78,8 @@ export function createEnemy(
     statusEffects: [],
     phase: 1,
     floor,
+    isCharging: false,
+    chargedDamage: 0,
   };
 }
 
@@ -85,11 +87,27 @@ export function createEnemy(
  * Rolls a new intent for the enemy from its current phase's intent pool.
  *
  * If the enemy is in phase 2 and has a phase2IntentPool, uses that pool.
+ * If the enemy is currently charging, returns a synthetic attack intent that fires the charged attack.
  *
  * @param enemy - The enemy instance (mutated in place).
  * @returns The newly rolled intent.
  */
 export function rollNextIntent(enemy: EnemyInstance): EnemyIntent {
+  // If charging, next turn automatically fires the charged attack
+  if (enemy.isCharging) {
+    const chargedIntent: EnemyIntent = {
+      type: 'attack',
+      value: enemy.chargedDamage,
+      weight: 1,
+      telegraph: 'Unleashing charged attack!',
+      bypassDamageCap: true,
+    };
+    enemy.nextIntent = chargedIntent;
+    enemy.isCharging = false;
+    enemy.chargedDamage = 0;
+    return chargedIntent;
+  }
+
   const pool = (enemy.phase === 2 && enemy.template.phase2IntentPool)
     ? enemy.template.phase2IntentPool
     : enemy.template.intentPool;
@@ -212,10 +230,18 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
       enemy.currentHP += enemyHealed;
       break;
     }
+    case 'charge': {
+      // No damage this turn — enemy is winding up
+      enemy.isCharging = true;
+      enemy.chargedDamage = intent.value;
+      damage = 0;
+      break;
+    }
   }
 
   // Apply per-turn damage cap by segment (AR-32)
-  if (damage > 0) {
+  // Charged attacks (marked with bypassDamageCap) bypass the cap
+  if (damage > 0 && !intent.bypassDamageCap) {
     const seg = getSegmentForFloor(enemy.floor);
     const capLookup = getBalanceValue('enemyTurnDamageCap', ENEMY_TURN_DAMAGE_CAP) as Record<1 | 2 | 3 | 4 | 'endless', number | null>;
     const cap = capLookup[seg];

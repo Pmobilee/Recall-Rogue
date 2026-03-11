@@ -1,27 +1,13 @@
 {
-  "generatedAt": "2026-03-11T15:28:21.604Z",
-  "inputDir": "/tmp/tmp.XocsYsyqiI",
-  "scannedFiles": 1,
-  "promotedFacts": 0,
-  "outputPath": "/tmp/promote-bad-smoke.json",
+  "generatedAt": "2026-03-11T15:34:12.648Z",
+  "inputDir": "/root/terra-miner/data/generated",
+  "scannedFiles": 13,
+  "promotedFacts": 3974,
+  "outputPath": "/root/terra-miner/src/data/seed/facts-generated.json",
   "qaGateEnforced": false,
   "qaReportPath": null,
   "taxonomyValidation": {
-    "pass": false,
-    "violations": 1,
-    "byDomain": {
-      "animals_wildlife": 1
-    },
-    "samples": [
-      {
-        "id": "bad-1",
-        "domain": "animals_wildlife",
-        "categoryL2": "",
-        "category": [
-          "Animals & Wildlife"
-        ],
-        "question": "x?"
-      }
-    ]
+    "pass": true,
+    "violations": 0
   }
 }

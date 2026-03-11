@@ -165,6 +165,10 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.deck.currentEncounter,
       3,
     );
+    scene.setBackground(
+      turnState.deck.currentFloor,
+      isBossFloor(turnState.deck.currentFloor)
+    );
     const run = get(activeRunState);
     scene.setRelics(
       (run?.runRelics ?? []).map((rr) => {

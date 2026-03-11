@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
+
   interface Props {
     playerHp: number
     playerMaxHp: number
@@ -7,13 +9,15 @@
   }
 
   let { playerHp, playerMaxHp, onheal, onupgrade }: Props = $props()
+  const bgUrl = getRandomRoomBg('rest')
 
   let healAmount = $derived(Math.round(playerMaxHp * 0.3))
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))
 </script>
 
 <div class="rest-overlay">
-  <div class="rest-card">
+  <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
+  <div class="rest-card" style="position: relative; z-index: 1;">
     <h2 class="rest-title">Rest Site</h2>
 
     <div class="hp-info">
@@ -50,12 +54,22 @@
   .rest-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(13, 17, 23, 0.95);
+    background: rgba(13, 17, 23, 0.65);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 200;
     padding: 16px;
+  }
+
+  .screen-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .rest-card {

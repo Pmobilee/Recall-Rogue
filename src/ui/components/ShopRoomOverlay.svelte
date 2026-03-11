@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
   import { getTierDisplayName } from '../../services/tierDerivation'
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -28,6 +29,7 @@
   }
 
   let { cards, currency, shopInventory, onsell, onbuyRelic, onbuyCard, ondone }: Props = $props()
+  const bgUrl = getRandomRoomBg('shop')
 
   const TYPE_ICONS: Record<string, string> = {
     attack: '⚔',

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
 
   interface Props {
     event: MysteryEvent | null
@@ -9,6 +10,8 @@
   }
 
   let { event, playerHp, playerMaxHp, onresolve }: Props = $props()
+
+  const bgUrl = getRandomRoomBg('mystery')
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
 
@@ -37,6 +40,7 @@
 
 {#if event}
   <div class="mystery-overlay">
+    <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
     <div class="mystery-card">
       <h2 class="event-name">{event.name}</h2>
       <span class="effect-icon">{effectIcon}</span>
@@ -74,12 +78,23 @@
   .mystery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(13, 17, 23, 0.95);
+    background: rgba(13, 17, 23, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 200;
     padding: 16px;
+    position: relative;
+  }
+
+  .overlay-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .mystery-card {
@@ -93,6 +108,8 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    position: relative;
+    z-index: 1;
   }
 
   .event-name {

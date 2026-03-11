@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import type { RoomOption } from '../../services/floorManager'
   import { getDoorSpritePath } from '../utils/domainAssets'
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
 
   interface Props {
     options: RoomOption[]
@@ -13,6 +14,7 @@
   }
 
   let { options, playerHp, playerMaxHp, currentFloor, encounterNumber, onselect }: Props = $props()
+  const bgUrl = getRandomRoomBg('hallway')
 
   let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
 
@@ -49,6 +51,7 @@
 </script>
 
 <div class="room-selection-overlay" class:intro-visible={introVisible}>
+  <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="hallway-backdrop" aria-hidden="true"></div>
 
   <header class="hud">
@@ -114,14 +117,24 @@
     transform: scale(1);
   }
 
+  .screen-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .hallway-backdrop {
     position: absolute;
     inset: 0;
     background:
       radial-gradient(circle at 50% 6%, rgba(255, 228, 175, 0.18), transparent 32%),
-      linear-gradient(180deg, rgba(10, 14, 20, 0.5), rgba(4, 7, 11, 0.88)),
-      url('/assets/backgrounds/rooms/bg_room_selection.png') center / cover no-repeat;
+      linear-gradient(180deg, rgba(10, 14, 20, 0.65), rgba(4, 7, 11, 0.88));
     filter: saturate(0.85) contrast(1.05);
+    z-index: 1;
   }
 
   .hud {

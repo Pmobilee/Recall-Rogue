@@ -194,8 +194,8 @@ Domains provide: content organization, visual identity (color tint), Knowledge L
 - General Knowledge — broad trivia, cross-domain surprising facts
 - Natural Sciences — biology, chemistry, physics, earth science
 - Geography — countries, capitals, landmarks, demographics
-  - **Capitals** — Geography subcategory: ~195 world capital facts (selectable in Deck Builder)
-  - **Flags of the World** — Geography subcategory: ~194 sovereign state flags as emoji flag quiz cards (selectable in Deck Builder)
+  - **Capitals** — Geography subcategory: ~215 world capital facts with bi-directional questions (country→capital and capital→country) (selectable in Deck Builder)
+  - **Flags of the World** — Geography subcategory: ~214 sovereign state flag facts with SVG flag images displayed in quiz questions (selectable in Deck Builder)
 - History — events, figures, dates, civilizations, wars, inventions
 
 **New knowledge domains (AR-16):**
@@ -845,7 +845,7 @@ Events are randomly selected from the pool after each boss fight.
 | Enemy | HP | Damage | Behavior |
 |-------|-----|--------|----------|
 | Cave Bat | 19 | 11 (main), 15 (heavy) | Every turn. Teaches speed. |
-| Crystal Golem | 38 | 12 every 2 turns | Gains block on off-turns via defend intent. Sustained damage. |
+| Crystal Golem | 38 | 12 every 2 turns | Gains block on off-turns via defend intent. Can charge for 25 dmg spike attack. |
 | Toxic Spore | 15 | 10 + poison | Low HP, DOT. Teaches defensive play. |
 | Shadow Mimic | 24 | 12, copies last card (4×3 flurry) | Punishes repetition. |
 
@@ -853,7 +853,7 @@ Events are randomly selected from the pool after each boss fight.
 
 | Enemy | HP | Special |
 |-------|-----|---------|
-| Ore Wyrm | 58 | Phase 2 doubles attack |
+| Ore Wyrm | 58 | Phase 2 doubles attack, can charge for 30 dmg spike. |
 | Fossil Guardian | 45 | Immune to history domain |
 
 ### Mini-Bosses (Encounter 3 on non-boss floors)
@@ -862,7 +862,7 @@ Events are randomly selected from the pool after each boss fight.
 |-------|-----|--------|----------|
 | Crystal Guardian | 52 | 11 | Golem variant, gains block per turn |
 | Venomfang | 45 | 10 | Spider, applies poison on attack |
-| Stone Sentinel | 60 | 10 | Tanky — low attack, high HP |
+| Stone Sentinel | 60 | 10 | Tanky — low attack, high HP. Can charge for 28 dmg spike. |
 | Ember Drake | 48 | 10/13 | Glass cannon — 10 (fire breath), 13 (inferno blast) |
 | Shade Stalker | 42 | 11 | Copies player's last played card type |
 | Bone Collector | 54 | 10 | Heals 5 HP when player answers wrong |
@@ -871,13 +871,13 @@ Events are randomly selected from the pool after each boss fight.
 
 | Boss | Floor | HP | Pattern |
 |------|-------|-----|---------|
-| The Excavator | 3 | 70 | 12 damage, phase 2 at 40% HP, escalating |
+| The Excavator | 3 | 70 | 12 damage, phase 2 at 40% HP, escalating. Phase 2 can charge for 35 dmg spike. |
 | Magma Core | 6 | 75 | 8 + poison, phase 2 volcanic blast buffed at 40% HP |
 | The Archivist | 9 | 85 | 7 + shuffles hand, phase 2 at 50% HP |
 | Crystal Warden | 12 | 90 | 12 damage, status immunity, counter + heal |
 | Shadow Hydra | 15 | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
 | Void Weaver | 18 | 140 | 18 damage, hand disruption, Void Storm multi-attack, debuffs |
-| Knowledge Golem | 21 | 120 | 17 damage, +5 bonus on wrong answers |
+| Knowledge Golem | 21 | 120 | 17 damage, +5 bonus on wrong answers. Can charge for 32 dmg spike. |
 | The Curator | 24 | 140 | 18 damage, all mechanics, phase 2 nerfed at 40% HP (final boss) |
 
 Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and max, 0 block (resets each turn).
@@ -897,6 +897,13 @@ Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and ma
 - Endless (floors 25+): no cap
 
 Segment mapping is handled by `getSegmentForFloor()` in `enemyManager.ts`.
+
+**Charge Attacks:** Select enemies can prepare a high-damage attack via a two-turn sequence:
+1. **Turn 1 — Charging intent:** Enemy uses a "Charging" action that deals 0 damage and telegraphs `"Charging: [attack name]!"` on the next turn's intent panel.
+2. **Turn 2 — Automatic release:** The telegraphed attack automatically fires, applying the charged damage value **without any damage cap applied** — charged attacks always penetrate segment caps. Charged damage is still modified by enemy strength status effects and floor damage scaling.
+3. **Strategy impact:** The 0-damage charging turn gives the player a free turn to build resources (draw bonus cards, apply status effects, heal via passives) before the spike. Creates dramatic tension and recoverable "close call" moments.
+
+**Charge intent design:** Typically 1.2–1.4x a standard attack for that enemy at that floor level. Crystal Golem charges 25 dmg (vs typical 12), Ore Wyrm phase 2 charges 30 dmg (vs typical 14), Stone Sentinel charges 28 dmg (vs typical 10). Selected enemies get 1–2 charge intents in their intent pools to ensure rarity without trivializing the mechanic.
 
 **Early mini-boss HP reduction (AR-31, AR-32):** Mini-bosses on floors 1-3 have their HP multiplied by 0.60x (`EARLY_MINI_BOSS_HP_MULTIPLIER` in `balance.ts`), making them less punishing during early progression.
 
@@ -1773,10 +1780,10 @@ Geography has selectable subcategories that auto-appear in the Deck Builder:
 
 | Subcategory | Facts | Format |
 |-------------|-------|--------|
-| Capitals | ~195 | Standard knowledge MCQ |
-| Flags | ~194 | Emoji flags as visual prompts |
+| Capitals | ~215 | Bi-directional MCQ (country→capital, capital→country) |
+| Flags | ~214 | SVG flag images displayed above question text |
 
-Flag facts use Unicode emoji flags in questions and answers.
+Flag facts include an `imageUrl` field pointing to `/assets/flags/flag-{slug}.svg`. When a fact has `imageUrl`, the quiz UI renders the image above the question text (max 80px tall, white background, rounded corners). 227 flag SVG files are extracted from the Anki community deck and served as static assets. The image has an error fallback that hides the `<img>` element if the SVG fails to load.
 
 ---
 
@@ -1789,7 +1796,8 @@ interface Fact {
   subdomain?: string;
   ageRating: 'all' | '10+' | '13+' | '16+' | '18+';
   baseDifficulty: 1 | 2 | 3 | 4 | 5;
-  variants: QuestionVariant[];    // min 2, target 4
+  variants: QuestionVariant[];    // min 2, target 5
+  imageUrl?: string;              // Optional image for quiz display (e.g., flag SVGs)
   // cardType and mechanic NOT on Fact — assigned per-run
 
   // Source verification (MANDATORY — see §22 and Content Accuracy below)

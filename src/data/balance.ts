@@ -853,13 +853,14 @@ export const DEFAULT_POOL_SIZE = 120;
 export const POOL_PRIMARY_PCT = 0.30;
 export const POOL_SECONDARY_PCT = 0.25;
 export const POOL_REVIEW_PCT = 0.30;
+export const POOL_SUBCATEGORY_MAX_PCT = 0.35;
 
 // Base effect values by card type
 // Uses Record<string, number> instead of Record<CardType, number> to avoid
 // circular imports (balance.ts should NOT import from card-types.ts).
 export const BASE_EFFECT: Record<string, number> = {
-  attack: 10,
-  shield: 8,
+  attack: 9,
+  shield: 6,
   utility: 0,
   buff: 0,
   debuff: 0,
@@ -924,7 +925,7 @@ export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [
 ];
 
 // Player defaults
-export const PLAYER_START_HP = 100;
+export const PLAYER_START_HP = 120;
 export const PLAYER_MAX_HP = 100;
 export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
@@ -932,7 +933,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.08;
+export const POST_ENCOUNTER_HEAL_PCT = 0.12;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.06;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -976,7 +977,7 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
 /** Per-floor enemy damage scaling increment above floor 6. */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.04;
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.05;
 
 /** Enemy damage multiplier for floors 4-6 (base). */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
@@ -1040,8 +1041,8 @@ export const QA_LIMITS = {
 } as const;
 
 // Knowledge combo multipliers
-// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 1.75x)
-export const COMBO_MULTIPLIERS = [1.0, 1.10, 1.25, 1.40, 1.75];
+// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.00x)
+export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.30, 1.50, 2.00];
 
 /** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
 export const COMBO_RING_START_MULTIPLIER = 1.10;
@@ -1088,7 +1089,7 @@ export const ECHO = {
 } as const;
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
-export const FIZZLE_EFFECT_RATIO = 0.20;
+export const FIZZLE_EFFECT_RATIO = 0.25;
 
 // === RELIC SYSTEM ===
 

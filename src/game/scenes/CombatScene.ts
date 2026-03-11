@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
+import { getRandomCombatBg } from '../../data/backgroundManifest'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -132,6 +133,7 @@ export class CombatScene extends Phaser.Scene {
   private edgeGlowLeft!: Phaser.GameObjects.Rectangle
   private edgeGlowRight!: Phaser.GameObjects.Rectangle
   private edgeGlowTween: Phaser.Tweens.Tween | null = null
+  private currentBgKey: string = ''
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -469,6 +471,48 @@ export class CombatScene extends Phaser.Scene {
       }).setOrigin(0.5, 0.5)
       this.relicContainer.add([bg, txt])
     })
+  }
+
+  /** Dynamically load and display a random combat background for the given floor. */
+  setBackground(floor: number, isBoss: boolean): void {
+    if (!this.sceneReady) return
+
+    const bgPath = getRandomCombatBg(floor, isBoss)
+    // Strip leading slash for Phaser's asset loader
+    const cleanPath = bgPath.startsWith('/') ? bgPath.slice(1) : bgPath
+    const bgKey = `bg-combat-${cleanPath.split('/').pop()?.replace('.webp', '') ?? 'default'}`
+
+    // If same texture already loaded, skip
+    if (bgKey === this.currentBgKey) return
+
+    // If texture already exists in cache, just swap
+    if (hasTexture(this, bgKey)) {
+      this._swapBackground(bgKey)
+      return
+    }
+
+    // Load new texture dynamically
+    this.load.image(bgKey, cleanPath)
+    this.load.once('complete', () => {
+      this._swapBackground(bgKey)
+    })
+    this.load.start()
+  }
+
+  private _swapBackground(bgKey: string): void {
+    this.currentBgKey = bgKey
+    const w = this.scale.width
+    const h = this.scale.height
+    if (this.combatBackground instanceof Phaser.GameObjects.Image) {
+      this.combatBackground.setTexture(bgKey)
+      this.combatBackground.setDisplaySize(w, h)
+    } else {
+      // Replace rectangle fallback with proper image
+      this.combatBackground.destroy()
+      this.combatBackground = this.add.image(w / 2, h / 2, bgKey)
+        .setDisplaySize(w, h)
+        .setDepth(0)
+    }
   }
 
   /** Play enemy hit reaction (flash white, slight knockback). */

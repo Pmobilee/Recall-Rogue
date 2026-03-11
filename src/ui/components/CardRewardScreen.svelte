@@ -4,6 +4,7 @@
   import { getDetailedCardDescription } from '../../services/cardDescriptionService'
   import { getCardFramePath } from '../utils/domainAssets'
   import { activeRewardBundle } from '../../ui/stores/gameState'
+  import { getRandomRoomBg } from '../../data/backgroundManifest'
 
   interface Props {
     options: Card[]
@@ -12,6 +13,9 @@
   }
 
   let { options, onselect, onskip }: Props = $props()
+
+  const bgUrl = getRandomRoomBg('treasure')
+
   let selectedType = $state<CardType | null>(null)
   let collectLocked = $state(false)
   let collectingType = $state<CardType | null>(null)
@@ -264,6 +268,7 @@
 </script>
 
 <div class="reward-screen">
+  <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   {#if rewardStep === 'gold' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
       <div class="step-icon">🪙</div>
@@ -370,6 +375,22 @@
     display: grid;
     gap: 14px;
     justify-items: center;
+    position: relative;
+  }
+
+  .overlay-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .reward-screen > :not(.overlay-bg) {
+    position: relative;
+    z-index: 1;
   }
 
   .step-container {

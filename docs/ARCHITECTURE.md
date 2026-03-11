@@ -7,7 +7,7 @@ Every card is a fact. Learning IS gameplay.
 ```
 Tech Stack: Vite 7 + Svelte 5 + TypeScript 5.9 + Phaser 3 + Capacitor (Android/iOS)
 Three game systems: Card Combat, Deck Building, Run Progression
-Data: sql.js fact database (723 facts, expandable to 20,000+)
+Data: sql.js fact database (4,537 facts, expandable to 20,000+)
 Persistence: localStorage (profile-namespaced), optional cloud sync
 ```
 
@@ -142,6 +142,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
+| Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
 | Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates enemy rendering, 3D paper cutout effect (shadow + outline layers), idle/attack/hit/death animations, placeholder display for missing sprites |
@@ -291,7 +292,7 @@ Archived systems include: mining grid, block breaking, fog of war, O2 system, mi
 Study Mode Selection (hub dropdown: All Topics, saved preset, language, or Build New Deck)
   → PresetPoolBuilder resolves selected mode into domain + subcategory filters
   → MasteryScalingService calculates deck mastery % and applies reward/timer scaling
-  → RunPoolBuilder builds 120-fact pool from resolved domains (40/30/30 or preset-weighted)
+  → RunPoolBuilder builds 120-fact pool from resolved domains (30/25/45 split, subcategory-balanced) or preset-weighted
   → DeckManager shuffles pool into draw pile
   → Floor 1 begins
 
@@ -392,8 +393,8 @@ src/
     turnManager.ts         — Turn-based encounter logic
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
-    runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
-    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`.
+    runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain)
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`. Implements charge mechanic: `isCharging` flag, `chargedDamage` storage, `bypassDamageCap` intent flag for automatic deferred attacks.
     floorManager.ts        — Floor/room/boss/mini-boss generation
     runManager.ts          — Run stats recording
     runSaveService.ts      — Save/resume active run to localStorage
@@ -424,6 +425,7 @@ src/
     stores/                gameState, playerData, settings
   data/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types
+    flagManifest.ts        — Maps 218 country names to flag SVG URLs; exports getFlagUrl(countryName), getFlagUrlBySlug(slug)
     studyPreset.ts         — StudyPreset, DeckMode types (preset selection + mastery scaling)
     enemies.ts             — Enemy template definitions
     balance.ts             — (extended with card combat constants)

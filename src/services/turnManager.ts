@@ -152,7 +152,7 @@ export interface EnemyTurnResult {
   effectsApplied: StatusEffect[];
   playerDefeated: boolean;
   nextEnemyIntent: string;
-  executedIntentType: 'attack' | 'multi_attack' | 'defend' | 'buff' | 'debuff' | 'heal' | 'none';
+  executedIntentType: 'attack' | 'multi_attack' | 'defend' | 'buff' | 'debuff' | 'heal' | 'charge' | 'none';
   blockAbsorbedAll: boolean;
   turnState: TurnState;
 }

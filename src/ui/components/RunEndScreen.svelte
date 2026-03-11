@@ -2,6 +2,7 @@
   import { shareRunSummaryCard } from '../../services/runShareService'
   import { analyticsService } from '../../services/analyticsService'
   import { difficultyMode, type DifficultyMode } from '../../services/cardPreferences'
+  import { getRandomScreenBg } from '../../data/backgroundManifest'
 
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
@@ -44,6 +45,8 @@
     onplayagain,
     onhome,
   }: Props = $props()
+
+  const bgUrl = $derived(getRandomScreenBg(result === 'victory' || result === 'retreat' ? 'victory' : 'defeat'))
 
   let isVictory = $derived(result === 'victory' || result === 'retreat')
   let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
@@ -113,6 +116,7 @@
 </script>
 
 <div class="run-end-overlay">
+  <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <h1 class="header" style="color: {headerColor}">{headerText}</h1>
 
   <div class="stats-list">
@@ -238,13 +242,29 @@
   .run-end-overlay {
     position: fixed;
     inset: 0;
-    background: #0D1117;
+    background: rgba(13, 17, 23, 0.6);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 24px 16px;
     z-index: 200;
+    position: relative;
+  }
+
+  .overlay-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .run-end-overlay > :not(.overlay-bg) {
+    position: relative;
+    z-index: 1;
   }
 
   .header {
