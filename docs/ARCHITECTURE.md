@@ -103,7 +103,8 @@ Located in `src/data/`:
 - `vocabulary.ts` — Language deck types: `LanguageConfig` (extended with `subdecks` and `options`), `LanguageDeckOption` interface, VocabularyFact schema extensions for targetLanguage, jlptLevel, reading, audioUrl
 - `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
-- Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling
+- Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling; `difficultyVariance` field (0.8–1.2x multiplier on HP and damage for common enemies). `EnemyTemplate` includes `rarity` (standard/uncommon/rare), `spawnWeight` (for weighted random selection), and `animArchetype` (one of 8 animation types: swooper, slammer, crawler, caster, floater, lurcher, striker, trembler).
+- Enemy animations — `src/data/enemyAnimations.ts` — Animation archetype configs (8 types). Defines `AnimConfig` interface with tween parameters and `getAnimConfig(archetype)` resolver. Pure data, no Phaser/Svelte imports.
 - Card type mappings — `src/data/card-types.ts`
 
 ## 3. Retained Systems
@@ -148,7 +149,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
-| Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates enemy rendering, 3D paper cutout effect (shadow + outline layers), idle/attack/hit/death animations, placeholder display for missing sprites |
+| Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates enemy rendering, 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`), placeholder display for missing sprites |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
 | Card hand UI | `src/ui/components/CardHand.svelte` | Built — added `.card-upgraded` CSS class (blue glow) |

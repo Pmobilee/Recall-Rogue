@@ -139,7 +139,19 @@
     mini_boss: '#a78bfa',
     boss: '#fbbf24',
   }
-  let categoryColor = $derived(CATEGORY_COLORS[enemyCategory] ?? '#9ca3af')
+
+  /** Rarity colors for common enemies. Uncommon=green, rare=gold. */
+  const RARITY_COLORS: Record<string, string> = {
+    uncommon: '#4ade80',
+    rare: '#fbbf24',
+  }
+
+  let enemyRarity = $derived(turnState?.enemy.template.rarity ?? undefined)
+  let categoryColor = $derived(
+    enemyCategory === 'common' && enemyRarity
+      ? (RARITY_COLORS[enemyRarity] ?? CATEGORY_COLORS[enemyCategory] ?? '#9ca3af')
+      : (CATEGORY_COLORS[enemyCategory] ?? '#9ca3af')
+  )
 
   const INTENT_ICONS: Record<string, string> = {
     attack: '⚔️',

@@ -56,19 +56,22 @@ function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
 /**
  * Creates a live enemy instance from a template, scaled to the given floor.
  *
- * HP = round(baseHP * getFloorScaling(floor)). The first intent is pre-rolled.
+ * HP = round(baseHP * getFloorScaling(floor) * hpMultiplier * difficultyVariance).
+ * The first intent is pre-rolled.
  *
  * @param template - The enemy template to instantiate.
  * @param floor - The current floor number for HP scaling.
+ * @param options - Optional {hpMultiplier, difficultyVariance}. Both default to 1.
  * @returns A fully initialized EnemyInstance.
  */
 export function createEnemy(
   template: EnemyTemplate,
   floor: number,
-  options?: { hpMultiplier?: number },
+  options?: { hpMultiplier?: number; difficultyVariance?: number },
 ): EnemyInstance {
   const hpMultiplier = options?.hpMultiplier ?? 1;
-  const scaledHP = Math.max(1, Math.round(template.baseHP * getFloorScaling(floor) * hpMultiplier));
+  const difficultyVariance = options?.difficultyVariance ?? 1;
+  const scaledHP = Math.max(1, Math.round(template.baseHP * getFloorScaling(floor) * hpMultiplier * difficultyVariance));
   return {
     template,
     currentHP: scaledHP,
@@ -80,6 +83,7 @@ export function createEnemy(
     floor,
     isCharging: false,
     chargedDamage: 0,
+    difficultyVariance,
   };
 }
 
@@ -237,6 +241,11 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
       damage = 0;
       break;
     }
+  }
+
+  // Apply difficulty variance for common enemies (0.8-1.2x)
+  if (damage > 0 && enemy.difficultyVariance !== 1) {
+    damage = Math.round(damage * enemy.difficultyVariance);
   }
 
   // Apply per-turn damage cap by segment (AR-32)

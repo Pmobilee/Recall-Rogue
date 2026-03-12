@@ -1,4 +1,5 @@
 @import './ui/styles/accessibility.css';
+@import './ui/styles/button-effects.css';
 
 /* desktop.css and rtl.css are loaded dynamically in main.ts — see CSS code-splitting */
 

@@ -4,6 +4,7 @@
 
 import type { StatusEffectType, StatusEffect } from './statusEffects';
 import type { FactDomain } from './card-types';
+import type { AnimArchetype } from './enemyAnimations';
 
 /** Enemy difficulty category. */
 export type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss';
@@ -51,6 +52,12 @@ export interface EnemyTemplate {
   phaseTransitionAt?: number;
   /** Pool of possible actions in phase 2. */
   phase2IntentPool?: EnemyIntent[];
+  /** Enemy rarity tier (common enemies only). Standard=most common, rare=least. */
+  rarity?: 'standard' | 'uncommon' | 'rare';
+  /** Spawn weight for weighted selection. Default 10. Standard=10, uncommon=5, rare=2. */
+  spawnWeight?: number;
+  /** Animation archetype controlling idle/attack/hit tween parameters. */
+  animArchetype?: AnimArchetype;
 }
 
 /** A live enemy instance in an encounter. */
@@ -75,6 +82,8 @@ export interface EnemyInstance {
   isCharging: boolean;
   /** The base damage value of the pending charged attack. */
   chargedDamage: number;
+  /** Difficulty variance multiplier applied to both HP and damage (0.8-1.2 for common enemies). */
+  difficultyVariance: number;
 }
 
 // ============================================================
@@ -97,6 +106,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'A common cave-dwelling bat. Quick but fragile.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'swooper',
   },
 
   {
@@ -111,6 +123,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Crystal Crush!' },
     ],
     description: 'A slow golem encrusted with resonating crystals.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'slammer',
   },
 
   {
@@ -125,6 +140,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
     description: 'A fungal growth that releases debilitating spores.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'caster',
   },
 
   {
@@ -139,6 +157,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'A shifting shadow that mimics the miner\'s movements.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   // ── ELITE (2) ──
@@ -162,6 +183,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Tremor', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'charge', value: 30, weight: 1, telegraph: 'Charging: Burrowing Devastation!' },
     ],
+    animArchetype: 'lurcher',
   },
 
   {
@@ -178,6 +200,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'An ancient guardian immune to history-domain knowledge.',
     immuneDomain: 'history',
+    animArchetype: 'trembler',
   },
 
   // ── BOSS (3) ──
@@ -202,6 +225,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 10, weight: 1, telegraph: 'Emergency plating' },
       { type: 'charge', value: 35, weight: 1, telegraph: 'Charging: Overdrive Burst!' },
     ],
+    animArchetype: 'slammer',
   },
 
   {
@@ -223,6 +247,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 7, weight: 1, telegraph: 'Magma rain', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 1, telegraph: 'Meltdown', statusEffect: { type: 'poison', value: 4, turns: 3 } },
     ],
+    animArchetype: 'trembler',
   },
 
   {
@@ -245,6 +270,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Backup restore' },
     ],
+    animArchetype: 'caster',
   },
 
   {
@@ -260,6 +286,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'heal', value: 8, weight: 1, telegraph: 'Crystalline mend' },
     ],
     description: 'A towering sentinel of living crystal. Immune to status effects, it guards the deep caverns with unwavering resolve.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -282,6 +309,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Toxic deluge', statusEffect: { type: 'poison', value: 4, turns: 3 } },
       { type: 'attack', value: 18, weight: 1, telegraph: 'Decapitation bite' },
     ],
+    animArchetype: 'lurcher',
   },
 
   {
@@ -298,6 +326,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 12, weight: 1, telegraph: 'Phase shift' },
     ],
     description: 'A being woven from the spaces between dimensions. Its attacks disrupt not just flesh, but thought itself.',
+    animArchetype: 'caster',
   },
 
   {
@@ -314,6 +343,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 32, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
     description: 'An ancient construct built from compressed tomes. Deals bonus damage when knowledge fails — wrong answers empower it.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -339,6 +369,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'heal', value: 10, weight: 1, telegraph: 'Archive restoration' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 3, turns: 5 } },
     ],
+    animArchetype: 'caster',
   },
 
   // ── MINI-BOSS (6) ──
@@ -355,6 +386,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Shard eruption' },
     ],
     description: 'A golem variant encased in protective crystal. Gains block every turn.',
+    animArchetype: 'trembler',
   },
 
   {
@@ -369,6 +401,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Rapid fangs', hitCount: 3 },
     ],
     description: 'A venomous spider lurking in the shadows. Its bites leave a lingering poison.',
+    animArchetype: 'crawler',
   },
 
   {
@@ -384,6 +417,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 28, weight: 1, telegraph: 'Charging: Seismic Slam!' },
     ],
     description: 'An ancient stone warrior. Slow but incredibly tough — a war of attrition.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -398,6 +432,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Scorching heat', statusEffect: { type: 'poison', value: 2, turns: 2 } },
     ],
     description: 'A small but ferocious drake. Glass cannon — hits hard but shatters easily.',
+    animArchetype: 'swooper',
   },
 
   {
@@ -412,6 +447,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'An enhanced shadow that copies the player\'s last played card type. More dangerous than its mimic cousin.',
+    animArchetype: 'striker',
   },
 
   {
@@ -427,6 +463,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow drain', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
     description: 'A skeletal scavenger that feeds on failure. Heals when the player answers wrong.',
+    animArchetype: 'lurcher',
   },
 
   // ── SHALLOW DEPTHS — COMMON (8 new) ──
@@ -443,6 +480,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 5, weight: 1, telegraph: 'Sliming' },
     ],
     description: 'A sluglike creature composed of wet clay. Slow and sticky.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   {
@@ -457,6 +497,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Root strike' },
     ],
     description: 'Animated roots that writhe with plant life. Strikes with tangled vines.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'crawler',
   },
 
   {
@@ -471,6 +514,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 2, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
     ],
     description: 'A metallic insect with a gleaming carapace. More defensive than aggressive.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'trembler',
   },
 
   {
@@ -485,6 +531,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Stone kick' },
     ],
     description: 'A mischievous imp made of pale limestone. Fast and aggressive.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'striker',
   },
 
   {
@@ -499,6 +548,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Puncture' },
     ],
     description: 'A venomous arachnid that weaves deadly traps. Strikes fast and often.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'crawler',
   },
 
   {
@@ -513,6 +565,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Sludge swing' },
     ],
     description: 'A shambling mass of peat and bog water. Regenerates from swampland.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   {
@@ -527,6 +582,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 7, weight: 1, telegraph: 'Cap strike' },
     ],
     description: 'A young fungal growth releasing toxic spores. Primarily a debuffer.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'caster',
   },
 
   {
@@ -541,6 +599,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Mandible crush' },
     ],
     description: 'An eyeless grub that hunts by vibration. Frenzied and relentless.',
+    rarity: 'rare',
+    spawnWeight: 2,
+    animArchetype: 'crawler',
   },
 
   // ── SHALLOW DEPTHS — MINI-BOSS (4 new) ──
@@ -558,6 +619,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 11, weight: 1, telegraph: 'Vine strike' },
     ],
     description: 'A massive root system given life. Mother to countless smaller plants.',
+    animArchetype: 'caster',
   },
 
   {
@@ -573,6 +635,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 1, telegraph: 'Iron slam' },
     ],
     description: 'A towering construct of iron beetles, powerful and unyielding.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -588,6 +651,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Curse strike' },
     ],
     description: 'A hag of the swamp, mistress of debuffs. Weakens all she encounters.',
+    animArchetype: 'caster',
   },
 
   {
@@ -603,6 +667,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 11, weight: 1, telegraph: 'Regal strike' },
     ],
     description: 'A regal fungus with a crown of caps. Rules its colony with poisonous grace.',
+    animArchetype: 'caster',
   },
 
   // ── SHALLOW DEPTHS — ELITE (1 new) ──
@@ -626,6 +691,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 6, weight: 2, telegraph: 'Rending claws', hitCount: 3 },
       { type: 'charge', value: 32, weight: 1, telegraph: 'Charging: Unstoppable rampage!' },
     ],
+    animArchetype: 'slammer',
   },
 
   // ── DEEP CAVERNS — COMMON (11 new) ──
@@ -642,6 +708,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Crawling strike' },
     ],
     description: 'A reptile made of dark basalt. Balanced between offense and defense.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'crawler',
   },
 
   {
@@ -656,6 +725,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 7, weight: 1, telegraph: 'Spectral touch' },
     ],
     description: 'A ghost-like being composed of crystallized salt. Weakens its targets.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'caster',
   },
 
   {
@@ -670,6 +742,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Ember strike' },
     ],
     description: 'A small demon carved from burning coal. Deals poison damage.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'striker',
   },
 
   {
@@ -684,6 +759,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Snap' },
     ],
     description: 'A stone wolf that hunts the deep caverns. Fast multi-hitter.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'striker',
   },
 
   {
@@ -698,6 +776,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Sulfur burst' },
     ],
     description: 'A toxic elemental born from sulfur vents. Applies multiple debuffs.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'floater',
   },
 
   {
@@ -712,6 +793,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'heal', value: 4, weight: 1, telegraph: 'Lava soak' },
     ],
     description: 'A bloated insect that feeds on magma flows. Heals from heat.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   {
@@ -726,6 +810,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Snap' },
     ],
     description: 'A deep-sea fish adapted to cave waters. Applies vulnerability.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'floater',
   },
 
   {
@@ -740,6 +827,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 7, weight: 1, telegraph: 'Pinch' },
     ],
     description: 'A crustacean in a geode shell. Defensive and stubborn.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'trembler',
   },
 
   {
@@ -754,6 +844,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Ethereal touch' },
     ],
     description: 'A ghost-like being composed of toxic gas. Applies poison and weakness.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'floater',
   },
 
   {
@@ -768,6 +861,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Tail swipe' },
     ],
     description: 'A small stone dragon that dwells among stalactites. Rapid attacker.',
+    rarity: 'rare',
+    spawnWeight: 2,
+    animArchetype: 'swooper',
   },
 
   {
@@ -782,6 +878,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'A flying insect wreathed in flame. Applies poison damage.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'swooper',
   },
 
   // ── DEEP CAVERNS — MINI-BOSS (4 new) ──
@@ -799,6 +898,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 11, weight: 1, telegraph: 'Queen\'s sting' },
     ],
     description: 'A regal crystalline being born from sulfur. Applies multiple poisons.',
+    animArchetype: 'caster',
   },
 
   {
@@ -813,6 +913,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 1, telegraph: 'Heavy strike' },
     ],
     description: 'An enormous golem of solid granite. Extremely durable.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -828,6 +929,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Predatory strike' },
     ],
     description: 'A cave predator that lurks in the depths. Aggressive and dangerous.',
+    animArchetype: 'striker',
   },
 
   {
@@ -843,6 +945,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Tail lash' },
     ],
     description: 'A large lizard made of lava. Combines attacks with fire debuffs.',
+    animArchetype: 'crawler',
   },
 
   // ── DEEP CAVERNS — ELITE (2 new) ──
@@ -866,6 +969,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Fang storm', hitCount: 3 },
       { type: 'charge', value: 32, weight: 1, telegraph: 'Charging: Molten eruption!' },
     ],
+    animArchetype: 'lurcher',
   },
 
   {
@@ -881,6 +985,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 13, weight: 1, telegraph: 'Titan strike' },
     ],
     description: 'A columnar giant made of basalt. Slow but extremely powerful.',
+    animArchetype: 'slammer',
   },
 
   // ── THE ABYSS — COMMON (11 new) ──
@@ -897,6 +1002,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Sharp strike' },
     ],
     description: 'A floating obsidian fragment that attacks in clusters.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'floater',
   },
 
   {
@@ -911,6 +1019,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Ooze strike' },
     ],
     description: 'A sentient blob of lava. Applies poison damage.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   {
@@ -925,6 +1036,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 1, weight: 1, telegraph: 'Crystalline surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'A being of pure crystal. Balanced offense and defense.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'caster',
   },
 
   {
@@ -939,6 +1053,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Raptor strike' },
     ],
     description: 'Animated dinosaur bones, fast and vicious.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'striker',
   },
 
   {
@@ -953,6 +1070,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Shell strike' },
     ],
     description: 'A beetle with a crystalline shell. Heavily defensive.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'trembler',
   },
 
   {
@@ -967,6 +1087,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Burn strike' },
     ],
     description: 'A magma centipede that leaves fire in its wake.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'crawler',
   },
 
   {
@@ -981,6 +1104,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'A bat with crystalline wings. Fast and sharp.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'swooper',
   },
 
   {
@@ -995,6 +1121,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Parasitic strike' },
     ],
     description: 'A dark parasite that weakens its host. Primarily a debuffer.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'crawler',
   },
 
   {
@@ -1009,6 +1138,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Ghostly touch' },
     ],
     description: 'A volcanic ghost made of ash. Applies vulnerability.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'caster',
   },
 
   {
@@ -1023,6 +1155,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Jelly strike' },
     ],
     description: 'A rainbow jellyfish that applies multiple debuffs.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'floater',
   },
 
   {
@@ -1037,6 +1172,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 1, weight: 1, telegraph: 'Ember surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'A skeleton wreathed in flame. Combines attacks with a strength buff.',
+    rarity: 'rare',
+    spawnWeight: 2,
+    animArchetype: 'striker',
   },
 
   // ── THE ABYSS — MINI-BOSS (4 new) ──
@@ -1053,6 +1191,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Obsidian blade' },
     ],
     description: 'A knight made of obsidian glass. Defensive and deadly.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -1068,6 +1207,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 1, telegraph: 'Hydra snap' },
     ],
     description: 'A three-headed serpent of crystal. Heals itself.',
+    animArchetype: 'lurcher',
   },
 
   {
@@ -1082,6 +1222,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Wyvern bite' },
     ],
     description: 'A fossil dragon that takes flight. Rapid and destructive.',
+    animArchetype: 'swooper',
   },
 
   {
@@ -1097,6 +1238,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 11, weight: 1, telegraph: 'Brood strike' },
     ],
     description: 'A massive lava spider. Spawns offspring and applies poison.',
+    animArchetype: 'crawler',
   },
 
   // ── THE ABYSS — ELITE (3 new) ──
@@ -1120,6 +1262,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 31, weight: 1, telegraph: 'Charging: Geode avalanche!' },
       { type: 'attack', value: 14, weight: 1, telegraph: 'Enraged strike' },
     ],
+    animArchetype: 'trembler',
   },
 
   {
@@ -1141,6 +1284,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 6, weight: 2, telegraph: 'Frenzy', hitCount: 4 },
       { type: 'attack', value: 14, weight: 1, telegraph: 'Devastating bite' },
     ],
+    animArchetype: 'lurcher',
   },
 
   {
@@ -1157,6 +1301,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'An undead mage of crystal. Immune to natural science knowledge. Applies multiple debuffs.',
     immuneDomain: 'natural_sciences',
+    animArchetype: 'caster',
   },
 
   // ── THE ARCHIVE — COMMON (11 new) ──
@@ -1173,6 +1318,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Wind strike' },
     ],
     description: 'An air elemental under extreme pressure. Applies vulnerability.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'floater',
   },
 
   {
@@ -1187,6 +1335,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Segmented strike' },
     ],
     description: 'An iron worm from the deepest core. Aggressive multi-hitter.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   {
@@ -1201,6 +1352,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 1, telegraph: 'Tentacle strike' },
     ],
     description: 'A glowing jellyfish from deep archives. Applies weakness.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'floater',
   },
 
   {
@@ -1215,6 +1369,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Mandible crunch' },
     ],
     description: 'A massive armored beetle. Highly defensive.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'trembler',
   },
 
   {
@@ -1229,6 +1386,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 1, weight: 1, telegraph: 'Heat surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'A demon from the Earth\'s mantle. Combines attacks with poison and buffs.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'striker',
   },
 
   {
@@ -1243,6 +1403,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Iron crush!' },
     ],
     description: 'A dense metal golem of pure iron. Heavily defensive.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'slammer',
   },
 
   {
@@ -1257,6 +1420,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Rune strike' },
     ],
     description: 'A floating tablet of runes. Applies weakness.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'floater',
   },
 
   {
@@ -1271,6 +1437,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'A paper moth that eats knowledge. Applies vulnerability.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'swooper',
   },
 
   {
@@ -1285,6 +1454,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 1, telegraph: 'Fang strike' },
     ],
     description: 'A spider that weaves runic webs. Applies poison.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'crawler',
   },
 
   {
@@ -1299,6 +1471,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Void fracture', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'A dark tentacle from the void. Applies weakness and vulnerability.',
+    rarity: 'rare',
+    spawnWeight: 2,
+    animArchetype: 'caster',
   },
 
   {
@@ -1313,6 +1488,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 6, weight: 1, telegraph: 'Bookmark shield' },
     ],
     description: 'A book creature that mimics its prey. Balanced attacker.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'lurcher',
   },
 
   // ── THE ARCHIVE — MINI-BOSS (7 new) ──
@@ -1335,6 +1513,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 16, weight: 2, telegraph: 'Enraged bite' },
       { type: 'multi_attack', value: 6, weight: 2, telegraph: 'Fury coil', hitCount: 4 },
     ],
+    animArchetype: 'lurcher',
   },
 
   {
@@ -1350,6 +1529,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'A magnetic angelic being made of iron. Balanced fighter.',
+    animArchetype: 'caster',
   },
 
   {
@@ -1364,6 +1544,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 13, weight: 2, telegraph: 'Crushing slam' },
     ],
     description: 'An ultra-dense golem under extreme pressure. Incredibly tanky.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -1379,6 +1560,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 11, weight: 1, telegraph: 'Glow strike' },
     ],
     description: 'A glowing butterfly queen. Primarily a debuffer and healer.',
+    animArchetype: 'floater',
   },
 
   {
@@ -1393,6 +1575,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Plate break', hitCount: 3 },
     ],
     description: 'A living earthquake manifest as stone. Aggressive and powerful.',
+    animArchetype: 'slammer',
   },
 
   {
@@ -1408,6 +1591,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 2, weight: 1, telegraph: 'Protective runes', statusEffect: { type: 'strength', value: 1, turns: 3 } },
     ],
     description: 'A guardian made of protective runes. Defensive and supportive.',
+    animArchetype: 'trembler',
   },
 
   {
@@ -1423,6 +1607,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'heal', value: 6, weight: 1, telegraph: 'Memory drain' },
     ],
     description: 'A ghostly librarian. Applies weakness and heals itself.',
+    animArchetype: 'caster',
   },
 
   // ── THE ARCHIVE — ELITE (2 new) ──
@@ -1447,6 +1632,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 7, weight: 2, telegraph: 'Magma storm', hitCount: 4 },
       { type: 'charge', value: 35, weight: 1, telegraph: 'Charging: Cataclysmic eruption!' },
     ],
+    animArchetype: 'swooper',
   },
 
   {
@@ -1469,5 +1655,6 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 33, weight: 2, telegraph: 'Charging: Ultimate core burst!' },
       { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Core explosion', hitCount: 3 },
     ],
+    animArchetype: 'caster',
   },
 ];

@@ -321,6 +321,7 @@ export function generateEventRoomOptions(floor: number): RoomOption[] {
 
 /**
  * Pick a random combat enemy from the common pool for this floor's region.
+ * Uses weighted selection based on spawnWeight (rarity system).
  * NOTE: Only call for encounters 1 and 2 (regular encounters).
  * Encounter 3 is always a mini-boss (via getMiniBossForFloor) or boss (via getBossForFloor).
  */
@@ -328,11 +329,21 @@ export function pickCombatEnemy(floor: number): string {
   const region = getRegionForFloor(floor)
   const regionEnemies = ENEMY_TEMPLATES.filter(e => e.category === 'common' && e.region === region)
   if (regionEnemies.length === 0) {
-    // Fallback to any common enemy
     const allCommon = ENEMY_TEMPLATES.filter(e => e.category === 'common')
-    return allCommon[Math.floor(Math.random() * allCommon.length)]?.id ?? 'cave_bat'
+    return weightedEnemyPick(allCommon)
   }
-  return regionEnemies[Math.floor(Math.random() * regionEnemies.length)].id
+  return weightedEnemyPick(regionEnemies)
+}
+
+/** Weighted random selection from an enemy pool using spawnWeight (default 10). */
+function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
+  const totalWeight = pool.reduce((sum, e) => sum + (e.spawnWeight ?? 10), 0)
+  let roll = Math.random() * totalWeight
+  for (const e of pool) {
+    roll -= (e.spawnWeight ?? 10)
+    if (roll <= 0) return e.id
+  }
+  return pool[pool.length - 1]?.id ?? 'cave_bat'
 }
 
 /** Generate a random mystery event. */

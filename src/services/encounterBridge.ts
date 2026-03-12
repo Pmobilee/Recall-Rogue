@@ -160,6 +160,7 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.enemy.currentHP,
       turnState.enemy.maxHP,
       turnState.enemy.template.id,
+      turnState.enemy.template.animArchetype,
     );
     scene.setEnemyIntent(
       turnState.enemy.nextIntent.telegraph,
@@ -330,7 +331,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   if (ascensionTemplate.category === 'mini_boss' && run.floor.currentFloor <= 3) {
     enemyHpMultiplier *= EARLY_MINI_BOSS_HP_MULTIPLIER;
   }
-  const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier });
+  // Roll difficulty variance for common enemies (0.8-1.2x HP and damage)
+  const difficultyVariance = ascensionTemplate.category === 'common'
+    ? 0.8 + Math.random() * 0.4
+    : 1.0;
+  const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   // Tick encounter cooldowns at the start of each new encounter

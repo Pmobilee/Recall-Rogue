@@ -84,11 +84,14 @@
     min-width: 48px;
     min-height: 48px;
     -webkit-tap-highlight-color: transparent;
+    transition: transform 100ms ease, box-shadow 100ms ease;
   }
 
   .sprite-hitbox:active {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    transform: scale(0.95);
+    box-shadow: 0 0 12px rgba(255, 200, 100, 0.5);
   }
 
   .sprite-label {

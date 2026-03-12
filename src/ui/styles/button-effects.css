@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════════════
+   Button VFX — 3D press-in, ripple, pulse, quiz animations
+   Import in app.css or individual components as needed.
+   ═══════════════════════════════════════════════════════ */
+
+/* 3D press-in effect — physical button depression */
+.btn-press {
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-press:active {
+  transform: translateY(3px) scale(0.97);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Ripple effect (CSS-only, no JS needed) */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 200ms;
+  pointer-events: none;
+}
+
+.btn-ripple:active::after {
+  opacity: 1;
+}
+
+/* Attention pulse for primary CTA buttons */
+.btn-pulse {
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 215, 0, 0);
+  }
+}
+
+/* Quiz answer stagger entrance */
+.quiz-answer-enter {
+  animation: quizSlideIn 200ms ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes quizSlideIn {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Correct answer flash + scale bounce */
+.quiz-answer-correct {
+  animation: quizCorrectBounce 300ms ease-out;
+}
+
+@keyframes quizCorrectBounce {
+  0% {
+    transform: scale(1);
+    background-color: inherit;
+  }
+  30% {
+    transform: scale(1.08);
+    background-color: rgba(46, 204, 113, 0.3);
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    background-color: inherit;
+  }
+}
+
+/* Wrong answer shake */
+.quiz-answer-wrong {
+  animation: quizWrongShake 300ms ease-out;
+}
+
+@keyframes quizWrongShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* Correct answer highlight (anti-shame — draws attention to learning moment) */
+.quiz-answer-highlight {
+  animation: quizHighlightPulse 600ms ease-in-out;
+}
+
+@keyframes quizHighlightPulse {
+  0% {
+    border-color: transparent;
+  }
+  30% {
+    border-color: rgba(52, 152, 219, 0.8);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+  }
+  100% {
+    border-color: rgba(52, 152, 219, 0.4);
+    box-shadow: none;
+  }
+}
+
+/* Camp sprite button press feedback */
+.sprite-press:active {
+  transform: scale(0.95);
+  transition: transform 100ms ease;
+}
+
+.sprite-press-glow:active {
+  box-shadow: 0 0 12px rgba(255, 200, 100, 0.5);
+  transition: box-shadow 100ms ease;
+}
+
+/* Reduced motion: suppress all animations */
+@media (prefers-reduced-motion: reduce) {
+  .btn-press:active {
+    transform: none;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  }
+  .btn-pulse {
+    animation: none;
+  }
+  .quiz-answer-enter {
+    animation: none;
+    opacity: 1;
+  }
+  .quiz-answer-correct,
+  .quiz-answer-wrong,
+  .quiz-answer-highlight {
+    animation: none;
+  }
+  .sprite-press:active {
+    transform: none;
+  }
+}
+
+/* Also support the app's .reduced-motion class */
+.reduced-motion .btn-press:active {
+  transform: none;
+}
+
+.reduced-motion .btn-pulse {
+  animation: none;
+}
+
+.reduced-motion .quiz-answer-enter {
+  animation: none;
+  opacity: 1;
+}
+
+.reduced-motion .quiz-answer-correct,
+.reduced-motion .quiz-answer-wrong,
+.reduced-motion .quiz-answer-highlight {
+  animation: none;
+}
+
+.reduced-motion .sprite-press:active {
+  transform: none;
+}

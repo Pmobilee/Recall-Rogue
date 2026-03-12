@@ -417,6 +417,61 @@ Enemies without sprite assets display as **colored rectangles** with the same la
 - **Mini-bosses:** 340px tall
 - **Bosses:** 400px tall
 
+### Enemy Rarity System
+
+Common enemies have rarity tiers affecting spawn frequency and visual distinction:
+
+| Rarity    | Spawn Weight | ~Distribution | Name Color |
+|-----------|-------------|---------------|------------|
+| Standard  | 10          | ~59%          | Gray #9ca3af |
+| Uncommon  | 5           | ~29%          | Green #4ade80 |
+| Rare      | 2           | ~12%          | Gold #fbbf24 |
+
+Per region: ~7 standard, 3 uncommon, 1 rare out of 11 common enemies.
+Selection uses weighted random (same pattern as intent selection).
+
+### Difficulty Variance
+
+Each common enemy instance spawns with a random difficulty multiplier (0.8–1.2x), affecting both HP and damage output. Non-common enemies always use 1.0x (no variance). This creates encounter-to-encounter variety even with the same enemy type.
+
+### Animation Archetypes
+
+Each enemy is assigned one of 8 animation archetypes that define idle, attack, and hit tween parameters:
+
+| Archetype  | Feel                  | Used By                         |
+|------------|-----------------------|---------------------------------|
+| Swooper    | Fast diagonal bob     | Bats, moths, drakes             |
+| Slammer    | Slow heavy breathe    | Golems, trolls, titans          |
+| Crawler    | Side-to-side sway     | Spiders, grubs, beetles         |
+| Caster     | Hovering float        | Imps, wraiths, elementals       |
+| Floater    | Large slow drift      | Jellyfish, sprites, phantoms    |
+| Lurcher    | Unsteady wobble       | Shamblers, slimes, worms        |
+| Striker    | Alert rapid stance    | Raptors, hounds, stalkers       |
+| Trembler   | Still with twitches   | Sentinels, scarabs, golems      |
+
+Config defined in `src/data/enemyAnimations.ts`, consumed by `EnemySpriteSystem`.
+
+### Enemy Size Tiers
+
+Enemy sprite size scales by category for visual impact hierarchy:
+
+| Category   | Size (px) | % of Boss |
+|------------|-----------|-----------|
+| Common     | 300       | 75%       |
+| Elite      | 340       | 85%       |
+| Mini-boss  | 340       | 85%       |
+| Boss       | 400       | 100%      |
+
+### Enemy Roster Summary
+
+88 total enemies across 4 dungeon regions:
+- **45 common** (11-12 per region, with rarity tiers)
+- **25 mini-boss** (6-7 per region)
+- **10 elite** (2-3 per region)
+- **8 boss** (2 per region)
+
+Regions: Shallow Depths (floors 1-6), Deep Caverns (7-12), The Abyss (13-18), The Archive (19-24).
+
 #### Performance & Accessibility
 
 **Reduced Motion:** When `prefers-reduced-motion` is active, all animations are disabled. Enemies display statically. Attack/hit/death states still show visually (no animation, instant transitions).

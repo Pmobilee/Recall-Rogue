@@ -96,6 +96,7 @@ function mockEnemyTemplate(overrides?: Partial<EnemyTemplate>): EnemyTemplate {
     id: 'test_enemy',
     name: 'Test Enemy',
     category: 'common',
+    region: 'shallow_depths',
     baseHP: 20,
     intentPool: [
       { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
@@ -116,6 +117,9 @@ function mockEnemyInstance(overrides?: Partial<EnemyInstance>): EnemyInstance {
     statusEffects: overrides?.statusEffects ?? [],
     phase: overrides?.phase ?? 1,
     floor: overrides?.floor ?? 1,
+    isCharging: overrides?.isCharging ?? false,
+    chargedDamage: overrides?.chargedDamage ?? 0,
+    difficultyVariance: overrides?.difficultyVariance ?? 1,
   };
 }
 
@@ -316,12 +320,12 @@ describe('Status Effects', () => {
 describe('Enemy Templates', () => {
   it('has 4 common enemies', () => {
     const common = ENEMY_TEMPLATES.filter(t => t.category === 'common');
-    expect(common).toHaveLength(4);
+    expect(common).toHaveLength(45);
   });
 
   it('has 2 elite enemies', () => {
     const elite = ENEMY_TEMPLATES.filter(t => t.category === 'elite');
-    expect(elite).toHaveLength(2);
+    expect(elite).toHaveLength(10);
   });
 
   it('has 8 boss enemies', () => {
@@ -331,7 +335,7 @@ describe('Enemy Templates', () => {
 
   it('has 6 mini-boss enemies', () => {
     const miniBoss = ENEMY_TEMPLATES.filter(t => t.category === 'mini_boss');
-    expect(miniBoss).toHaveLength(6);
+    expect(miniBoss).toHaveLength(25);
   });
 
   it('cave_bat has 30 baseHP', () => {

@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
+import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg } from '../../data/backgroundManifest'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
@@ -23,7 +24,7 @@ const PLAYER_HP_BAR_TOP_PCT = 0.35
 const PLAYER_HP_BAR_BOTTOM_PCT = 0.82
 
 /** Enemy first-person sprite sizes by enemy tier. */
-const ENEMY_SIZE_COMMON = 280
+const ENEMY_SIZE_COMMON = 300
 const ENEMY_SIZE_ELITE = 340
 const ENEMY_SIZE_BOSS = 400
 
@@ -383,6 +384,7 @@ export class CombatScene extends Phaser.Scene {
     hp: number,
     maxHP: number,
     enemyId?: string,
+    animArchetype?: AnimArchetype,
   ): void {
     if (!this.sceneReady) return
     this.currentEnemyHP = hp
@@ -404,6 +406,9 @@ export class CombatScene extends Phaser.Scene {
     } else {
       this.enemySpriteSystem.setPlaceholder(categoryColor(category), size, enemyX, enemyY, category)
     }
+
+    // Apply animation archetype config
+    this.enemySpriteSystem.setAnimConfig(animArchetype)
 
     this.enemyNameText.setText(name)
     this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + 12)

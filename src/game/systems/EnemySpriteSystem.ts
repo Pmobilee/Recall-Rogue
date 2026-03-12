@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
+import { getAnimConfig, type AnimConfig, type AnimArchetype } from '../../data/enemyAnimations'
 
 type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss'
 
@@ -26,11 +27,13 @@ export class EnemySpriteSystem {
   private breatheTween: Phaser.Tweens.Tween | null = null
   private wobbleTween: Phaser.Tweens.Tween | null = null
   private isAnimating = false
+  private baseX = 0
   private baseY = 0
   private reduceMotion: boolean
   private effectScale: number
   private hasRealTexture = false
   private jitterTimer: Phaser.Time.TimerEvent | null = null
+  private animConfig: AnimConfig = getAnimConfig()
 
   /**
    * Create a new EnemySpriteSystem.
@@ -68,6 +71,7 @@ export class EnemySpriteSystem {
     category: EnemyCategory
   ): void {
     this.destroyChildren()
+    this.baseX = x
     this.baseY = y
     this.hasRealTexture = true
 
@@ -120,6 +124,7 @@ export class EnemySpriteSystem {
     category: EnemyCategory
   ): void {
     this.destroyChildren()
+    this.baseX = x
     this.baseY = y
     this.hasRealTexture = false
 
@@ -178,6 +183,15 @@ export class EnemySpriteSystem {
   }
 
   /**
+   * Set the animation config for the current enemy based on archetype.
+   * Call this after setSprite/setPlaceholder and before startIdle.
+   * @param archetype Optional animation archetype identifier
+   */
+  public setAnimConfig(archetype?: AnimArchetype): void {
+    this.animConfig = getAnimConfig(archetype)
+  }
+
+  /**
    * Start idle animations (bobbing, breathing, wobbling).
    */
   public startIdle(): void {
@@ -185,11 +199,13 @@ export class EnemySpriteSystem {
 
     this.stopIdle()
 
+    const { idle } = this.animConfig
+
     // Bob tween: vertical oscillation
     this.idleBobTween = this.scene.tweens.add({
       targets: this.container,
-      y: this.baseY - 5,
-      duration: 1250,
+      y: this.baseY - idle.bobAmplitude,
+      duration: idle.bobDuration,
       yoyo: true,
       repeat: -1,
       ease: 'Sine.easeInOut',
@@ -198,9 +214,9 @@ export class EnemySpriteSystem {
     // Breathe tween: slight scale pulse
     this.breatheTween = this.scene.tweens.add({
       targets: this.container,
-      scaleX: 1.02,
-      scaleY: 1.02,
-      duration: 1500,
+      scaleX: idle.breatheScale,
+      scaleY: idle.breatheScale,
+      duration: idle.breatheDuration,
       yoyo: true,
       repeat: -1,
       ease: 'Sine.easeInOut',
@@ -210,8 +226,8 @@ export class EnemySpriteSystem {
     // Wobble tween: subtle rotation
     this.wobbleTween = this.scene.tweens.add({
       targets: this.container,
-      angle: 1,
-      duration: 2000,
+      angle: idle.wobbleAngle,
+      duration: idle.wobbleDuration,
       yoyo: true,
       repeat: -1,
       ease: 'Sine.easeInOut',
@@ -226,7 +242,7 @@ export class EnemySpriteSystem {
     this.idleBobTween?.pause()
     this.breatheTween?.pause()
     this.wobbleTween?.pause()
-    this.container.setPosition(this.container.x, this.baseY)
+    this.container.setPosition(this.baseX, this.baseY)
     this.container.setScale(1)
     this.container.setAngle(0)
   }
@@ -260,30 +276,33 @@ export class EnemySpriteSystem {
   public playAttack(): Promise<void> {
     if (this.reduceMotion) return Promise.resolve()
 
+    const { attack } = this.animConfig
     this.isAnimating = true
     this.stopIdle()
-    this.scene.cameras.main.shake(130, 0.0034 * this.effectScale, true)
+    this.scene.cameras.main.shake(130, attack.shakeIntensity * this.effectScale, true)
 
     return new Promise<void>((resolve) => {
       // Phase 1: lunge forward
       this.scene.tweens.add({
         targets: this.container,
-        angle: 10,
-        y: this.baseY + 22,
-        scaleX: 1.1,
-        scaleY: 1.1,
-        duration: 180,
+        angle: attack.rotation,
+        x: this.baseX + attack.lungeX,
+        y: this.baseY + attack.lungeY,
+        scaleX: attack.scale,
+        scaleY: attack.scale,
+        duration: attack.lungeDuration,
         ease: 'Power2',
         onComplete: () => {
           // Phase 2: spring back
           this.scene.tweens.add({
             targets: this.container,
             angle: 0,
+            x: this.baseX,
             y: this.baseY,
             scaleX: 1,
             scaleY: 1,
-            duration: 250,
-            ease: 'Back.easeOut',
+            duration: attack.returnDuration,
+            ease: attack.returnEase,
             onComplete: () => {
               this.isAnimating = false
               this.resumeIdle()
@@ -334,25 +353,29 @@ export class EnemySpriteSystem {
       })
     }
 
+    const { hit } = this.animConfig
+
     // Phase 1: knockback
     this.scene.tweens.add({
       targets: this.container,
-      angle: -12,
-      y: this.baseY - 15,
-      scaleX: 1.06,
-      scaleY: 1.06,
-      duration: 95,
+      angle: hit.rotation,
+      x: this.baseX + hit.knockbackX,
+      y: this.baseY + hit.knockbackY,
+      scaleX: hit.scale,
+      scaleY: hit.scale,
+      duration: hit.knockbackDuration,
       ease: 'Sine.easeOut',
       onComplete: () => {
         // Phase 2: spring back with elastic overshoot
         this.scene.tweens.add({
           targets: this.container,
           angle: 0,
+          x: this.baseX,
           y: this.baseY,
           scaleX: 1,
           scaleY: 1,
-          duration: 350,
-          ease: 'Elastic.easeOut',
+          duration: hit.returnDuration,
+          ease: hit.returnEase,
           onComplete: () => {
             this.isAnimating = false
             this.resumeIdle()
@@ -575,6 +598,7 @@ export class EnemySpriteSystem {
 
     // Reset state
     this.isAnimating = false
+    this.animConfig = getAnimConfig()
 
     // Clean up jitter timer
     if (this.jitterTimer) {
