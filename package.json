@@ -47,6 +47,8 @@
     "content:factcheck": "node scripts/content-pipeline/qa/source-fact-check.mjs",
     "content:qa": "node scripts/content-pipeline/qa/run-post-generation-qa.mjs",
     "content:qa:gameplay": "node scripts/content-pipeline/qa/gameplay-safety-check.mjs",
+    "content:qa:answer-check:workers": "node scripts/content-pipeline/qa/answer-check-worker-batches.mjs",
+    "content:qa:answer-check:db": "node scripts/content-pipeline/qa/answer-check-live-db.mjs",
     "content:qa:id-gate": "node scripts/content-pipeline/qa/id-collision-gate.mjs --strict",
     "content:qa:gate": "node scripts/content-pipeline/qa/post-ingestion-gate.mjs",
     "content:coverage:gate": "node scripts/content-pipeline/qa/coverage-gate.mjs",

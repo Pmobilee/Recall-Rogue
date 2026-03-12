@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-03-12T06:51:01.604Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 44500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 1,
+    "clear": 499,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "natsci-b05-005",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298261560,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

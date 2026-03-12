@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-03-12T06:51:01.895Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 45500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 5,
+    "clear": 495,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "nl-b03-197",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nl-top-052",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nl-top-053",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nl-top-106",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nl-top-126",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261850,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

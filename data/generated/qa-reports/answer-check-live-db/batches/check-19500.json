@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-03-12T06:50:54.316Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 19500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 1,
+    "clear": 499,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "gk-tulip-mania-229",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254270,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

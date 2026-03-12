@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-12T06:50:51.812Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 10500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 2,
+    "clear": 498,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "es-b09-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251771,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "es-b09-007",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251771,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

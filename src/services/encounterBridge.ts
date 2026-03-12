@@ -10,7 +10,7 @@ import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tic
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
-import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor } from './floorManager';
+import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor } from './floorManager';
 import type { Card, CardRunState, CardType } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
@@ -43,8 +43,14 @@ import {
   resolveComboStartValue,
 } from './relicEffectResolver';
 import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
-import { buildPresetRunPool, buildGeneralRunPool } from './presetPoolBuilder'
+import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
 import { calculateFunnessBoostFactor } from './funnessBoost';
+import {
+  calculateDeckMastery,
+  getCombinedPoolRewardMultiplier,
+  getNovelFactPercentage,
+  shouldSuppressRewardsForTinyPool,
+} from './masteryScalingService';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -221,22 +227,23 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       // New path: use preset/general pool builders
       const categoryFilters = save?.categoryFilters ?? undefined;
       if (run.deckMode.type === 'general') {
-        activeRunPool = buildGeneralRunPool(reviewStates, { categoryFilters, funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0) });
+        activeRunPool = buildGeneralRunPool(reviewStates, {
+          categoryFilters,
+          funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+        });
       } else if (run.deckMode.type === 'preset') {
         const dm = run.deckMode as { type: 'preset'; presetId: string };
         const preset = (save?.studyPresets ?? []).find(p => p.id === dm.presetId);
         const domainSelections = preset?.domainSelections ?? {};
-        activeRunPool = buildPresetRunPool(domainSelections, reviewStates, { categoryFilters, funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0) });
+        activeRunPool = buildPresetRunPool(domainSelections, reviewStates, {
+          categoryFilters,
+          funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+          includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
+        });
       } else {
-        // Language mode — use standard builder for now
-        const calibration = save?.calibrationState ?? createDefaultCalibrationState();
-        const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
-        const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
-        activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
-          probeRunNumber: run.primaryDomainRunNumber,
-          probeDomain: run.primaryDomain,
-          primaryDistribution,
-          secondaryDistribution,
+        // Language mode — strict language-only pool.
+        activeRunPool = buildLanguageRunPool(run.deckMode.languageCode, reviewStates, {
+          categoryFilters,
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
         });
       }
@@ -257,6 +264,20 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
       });
     }
+
+    const uniquePoolFactIds = [...new Set(activeRunPool.map((card) => card.factId))];
+    const deckMasteryPct = calculateDeckMastery(uniquePoolFactIds, reviewStates);
+    const poolNoveltyPct = getNovelFactPercentage(uniquePoolFactIds, reviewStates);
+    const poolRewardScale = getCombinedPoolRewardMultiplier(uniquePoolFactIds.length, poolNoveltyPct);
+    run.deckMasteryPct = deckMasteryPct;
+    run.poolFactCount = uniquePoolFactIds.length;
+    run.poolNoveltyPct = poolNoveltyPct;
+    run.poolRewardScale = poolRewardScale;
+    if (shouldSuppressRewardsForTinyPool(uniquePoolFactIds.length)) {
+      run.rewardsDisabled = true;
+    }
+    activeRunState.set(run);
+
     // Record pool fact IDs for recently-played deprioritization in future runs
     recordRunFacts(activeRunPool.map(c => c.factId));
     if (activeRunPool.length === 0) {
@@ -280,8 +301,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       templateId = getMiniBossForFloor(run.floor.currentFloor);
     } else {
       if (run.canary.mode === 'challenge' && Math.random() < 0.35) {
-        const eliteCandidates = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
-        templateId = eliteCandidates[Math.floor(Math.random() * eliteCandidates.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+        const region = getRegionForFloor(run.floor.currentFloor);
+        const eliteCandidates = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite' && enemyTemplate.region === region);
+        // Fallback to any elite if no region-specific ones available
+        const effectiveElites = eliteCandidates.length > 0 ? eliteCandidates : ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
+        templateId = effectiveElites[Math.floor(Math.random() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
       } else {
         templateId = pickCombatEnemy(run.floor.currentFloor);
       }

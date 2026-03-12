@@ -6,6 +6,7 @@
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
+  import { getDetailedCardDescription } from '../../services/cardDescriptionService'
 
   interface Props {
     cards: Card[]
@@ -13,6 +14,7 @@
     selectedIndex: number | null
     disabled: boolean
     apCurrent: number
+    comboMultiplier?: number
     cardAnimations?: Record<string, CardAnimPhase>
     tierUpTransitions?: Record<string, TierUpTransition>
     onselectcard: (index: number) => void
@@ -31,6 +33,7 @@
     selectedIndex,
     disabled,
     apCurrent,
+    comboMultiplier = 1,
     cardAnimations,
     tierUpTransitions = {},
     onselectcard,
@@ -105,21 +108,12 @@
     return -totalWidth / 2 + cardSpacing * index
   }
 
-  function getCardEffectText(card: Card): string {
-    const amount = Math.round(card.baseEffectValue * card.effectMultiplier)
-    switch (card.cardType) {
-      case 'attack': return `Deal ${amount} damage`
-      case 'shield': return `Gain ${amount} shield`
-      case 'buff': return `Boost next (${amount})`
-      case 'debuff': return `Debuff (${amount})`
-      case 'utility': return `Utility (${amount})`
-      case 'wild': return `Adaptive (${amount})`
-      default: return `Effect ${amount}`
-    }
+  function getEffectValue(card: Card): number {
+    return Math.round(card.baseEffectValue * card.effectMultiplier * comboMultiplier)
   }
 
-  function getEffectValue(card: Card): number {
-    return Math.round(card.baseEffectValue * card.effectMultiplier)
+  function isBoosted(): boolean {
+    return comboMultiplier > 1
   }
 
   function getTierBadge(card: Card): string {
@@ -372,7 +366,7 @@
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
           <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
           <div class="card-type-icon">{icon}</div>
-          <div class="card-effect-value">{effectVal}</div>
+          <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
 
           {#if tierBadge}
             <div class="card-tier-badge">{tierBadge}</div>
@@ -387,7 +381,7 @@
           {#if isSelected || (isDragPreview && isDraggingThis)}
             <div class="card-info-overlay">
               <div class="info-mechanic">{card.mechanicName ?? card.cardType}</div>
-              <div class="info-effect">{getCardEffectText(card)}</div>
+              <div class="info-effect">{getDetailedCardDescription(card)}</div>
               {#if isSelected && !isDraggingThis}
                 <div class="info-cast-hint">Tap or Swipe Up ↑</div>
               {/if}
@@ -456,7 +450,7 @@
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
           <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
           <div class="card-type-icon">{TYPE_ICONS[card.cardType]}</div>
-          <div class="card-effect-value">{effectVal}</div>
+          <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -687,6 +681,11 @@
     font-weight: 700;
     margin-top: 0.15em;
     line-height: 1;
+  }
+
+  .card-effect-value.boosted {
+    color: #4ade80;
+    text-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
   }
 
   .ap-badge {

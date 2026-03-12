@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-03-12T06:50:50.623Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 5500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 9,
+    "clear": 491,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "de-b09-008",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b09-029",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b09-033",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b09-046",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b09-049",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b10-032",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b11-017",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b11-038",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-b11-040",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250562,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

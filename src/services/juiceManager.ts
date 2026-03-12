@@ -26,6 +26,7 @@ export interface JuiceEvent {
   comboCount: number
   effectLabel?: string  // e.g. "HEAL 8", "SHIELD 15"
   isPerfectTurn?: boolean
+  cardType?: string
 }
 
 /** Callbacks registered by UI components to receive juice events */
@@ -79,14 +80,16 @@ class JuiceManager {
       this.callbacks.onDamageNumber?.(label, event.isCritical ?? false)
     }, 50)
 
-    // T+150ms: Enemy hit + particles
-    setTimeout(() => {
-      this.callbacks.onEnemyHit?.()
-      emitSound('enemy-hit')
-      const particleCount = event.isCritical ? 40 : 30
-      const tint = event.isCritical ? 0xFF4444 : 0xFFD700
-      this.callbacks.onParticleBurst?.(particleCount, tint)
-    }, 150)
+    // T+150ms: Enemy hit + particles (only for attack cards)
+    if (!event.cardType || event.cardType === 'attack') {
+      setTimeout(() => {
+        this.callbacks.onEnemyHit?.()
+        emitSound('enemy-hit')
+        const particleCount = event.isCritical ? 40 : 30
+        const tint = event.isCritical ? 0xFF4444 : 0xFFD700
+        this.callbacks.onParticleBurst?.(particleCount, tint)
+      }, 150)
+    }
 
     // Combo milestones
     if (event.comboCount >= 3) {

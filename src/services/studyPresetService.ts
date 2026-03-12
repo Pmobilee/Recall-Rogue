@@ -1,28 +1,9 @@
 import { get } from 'svelte/store';
 import { playerSave, persistPlayer } from '../ui/stores/playerData';
 import { factsDB } from './factsDB';
-import { resolveDomain } from './domainResolver';
 import type { StudyPreset } from '../data/studyPreset';
-import type { Fact } from '../data/types';
 import { MAX_PRESETS, MAX_PRESET_NAME_LENGTH, MIN_FAIR_POOL_SIZE } from '../data/balance';
-
-/**
- * Maps canonical domain IDs to the top-level category strings used in the facts DB.
- * A single domain may match multiple legacy category names.
- */
-const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
-  general_knowledge: ['General Knowledge', 'Technology', 'Mathematics', 'Math'],
-  natural_sciences: ['Natural Sciences', 'Science'],
-  space_astronomy: ['Space & Astronomy'],
-  history: ['History'],
-  geography: ['Geography'],
-  language: ['Language'],
-  mythology_folklore: ['Mythology & Folklore'],
-  animals_wildlife: ['Animals & Wildlife'],
-  human_body_health: ['Human Body & Health', 'Life Sciences', 'Medicine', 'Health'],
-  food_cuisine: ['Food & World Cuisine'],
-  art_architecture: ['Art & Architecture', 'Culture', 'Arts'],
-};
+import { factMatchesPresetSelection } from './presetSelectionService';
 
 /**
  * Generates a short random ID for a new preset.
@@ -30,18 +11,6 @@ const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
  */
 function generatePresetId(): string {
   return 'preset_' + Math.random().toString(36).slice(2, 10);
-}
-
-/**
- * Extracts the subcategory from a fact's category hierarchy.
- * Uses the second element of category array, falling back to categoryL2, then 'General'.
- */
-function getFactSubcategory(fact: Fact): string {
-  const second = fact.category[1]?.trim();
-  if (second) return second;
-  const l2 = (fact as Fact & { categoryL2?: string }).categoryL2?.trim();
-  if (l2) return l2;
-  return 'General';
 }
 
 /**
@@ -183,29 +152,10 @@ export function getPresetFactCount(domainSelections: Record<string, string[]>): 
   const domainIds = Object.keys(domainSelections);
   if (domainIds.length === 0) return 0;
 
-  // Build a set of allowed (domain, subcategory?) pairs for efficient filtering
-  const allowAllSubcats = new Set<string>();
-  const allowedSubcats = new Map<string, Set<string>>();
-
-  for (const domainId of domainIds) {
-    const subs = domainSelections[domainId]!;
-    if (subs.length === 0) {
-      allowAllSubcats.add(domainId);
-    } else {
-      allowedSubcats.set(domainId, new Set(subs));
-    }
-  }
-
   let count = 0;
   for (const fact of factsDB.getAll()) {
-    const domain = resolveDomain(fact);
-    if (allowAllSubcats.has(domain)) {
-      count++;
-    } else {
-      const subs = allowedSubcats.get(domain);
-      if (subs && subs.has(getFactSubcategory(fact))) {
-        count++;
-      }
+    if (factMatchesPresetSelection(fact, domainSelections)) {
+      count += 1;
     }
   }
 

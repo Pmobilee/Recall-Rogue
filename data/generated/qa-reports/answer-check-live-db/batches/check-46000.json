@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:51:02.039Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 46000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 21,
+    "clear": 479,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "nl-top-135",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nsci-001",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nsci-002",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nsci-005",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "nsci-no-muscles-in-fingers-289",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space-b02-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space-b02-007",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space-b02-014",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space-b02-017",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space-b02-018",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298261990,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

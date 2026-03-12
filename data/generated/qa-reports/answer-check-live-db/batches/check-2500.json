@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:49.928Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 2500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 10,
+    "clear": 490,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "art-b18-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b18-020",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b21-012",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b21-033",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b22-008",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b23-002",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b23-012",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-b24-004",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_080",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_097",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298249884,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

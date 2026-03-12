@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:54.606Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 20500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 52,
+    "clear": 448,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "health-diffuse-brain-injury-018",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "health-mouth-abnormality-024",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "health-rem-sleep-parasomnia-012",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-300-champions-546bce",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b01-002",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b01-015",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b01-021",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b01-028",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b01-030",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254554,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

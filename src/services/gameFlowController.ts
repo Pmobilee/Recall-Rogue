@@ -153,11 +153,13 @@ type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'schol
 let activeRunMode: ActiveRunMode = 'standard'
 let activeDailySeed: number | null = null
 let pendingDeckMode: DeckMode | null = null
+let pendingIncludeOutsideDueReviews = false
 
-export function startNewRun(): void {
+export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   pendingDeckMode = null
+  pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
   deactivateDeterministicRandom()
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding) {
@@ -270,6 +272,7 @@ export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: fa
 
   activeRunMode = 'daily_expedition'
   activeDailySeed = reservation.attempt.seed
+  pendingIncludeOutsideDueReviews = false
   activateDeterministicRandom(reservation.attempt.seed)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
@@ -310,6 +313,7 @@ export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: f
 
   activeRunMode = 'scholar_challenge'
   activeDailySeed = reservation.attempt.seed
+  pendingIncludeOutsideDueReviews = false
   activateDeterministicRandom(reservation.attempt.seed)
   pendingDomainSelection = {
     primary: reservation.attempt.primaryDomain,
@@ -337,6 +341,7 @@ export async function startEndlessDepthsRun(): Promise<{ ok: true } | { ok: fals
 
   activeRunMode = 'endless_depths'
   activeDailySeed = null
+  pendingIncludeOutsideDueReviews = false
   deactivateDeterministicRandom()
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
@@ -590,8 +595,10 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     earlyBoostActive,
     ascensionLevel: selectedAscensionLevel,
     deckMode: pendingDeckMode ?? undefined,
+    includeOutsideDueReviews: pendingIncludeOutsideDueReviews,
   });
   pendingDeckMode = null;
+  pendingIncludeOutsideDueReviews = false;
   analyticsService.track({
     name: 'domain_select',
     properties: {

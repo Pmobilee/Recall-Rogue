@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-03-12T06:50:57.022Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 29000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 1,
+    "clear": 499,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "ja-vocab-n1-2633",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298256975,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

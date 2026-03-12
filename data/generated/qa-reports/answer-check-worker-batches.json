@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-03-12T06:35:09.725Z",
+  "input": "data/generated/worker-output",
+  "outputDir": "data/generated/qa-reports/answer-check",
+  "mode": "check",
+  "issueColumn": "answerCheckIssue",
+  "perWorker": 50,
+  "requiredTags": [],
+  "tagMode": "any",
+  "reviewedDir": null,
+  "requireReviewed": false,
+  "totalCandidates": 100,
+  "totalTarget": 100,
+  "pass": true,
+  "workers": [
+    {
+      "worker": "haiku-1",
+      "modelLabel": "haiku-1 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check/assignments/haiku-1.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check/prompts/haiku-1.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check/reviewed/haiku-1.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check/haiku-1.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 0,
+      "cleared": 0,
+      "sampleIssues": [],
+      "notes": []
+    },
+    {
+      "worker": "haiku-2",
+      "modelLabel": "haiku-2 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check/assignments/haiku-2.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check/prompts/haiku-2.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check/reviewed/haiku-2.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check/haiku-2.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 6,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animal-galaxias-fasciatus-068",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-amandava-amandava-083",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-african-emerald-cuckoo-087",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-lonchura-ferruginosa-088",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-papilio-aristodemus-094",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "totals": {
+    "assigned": 100,
+    "flagged": 6,
+    "cleared": 0,
+    "reviewedApplied": 0,
+    "heuristicApplied": 100,
+    "missingReviewedWorkers": 0
+  }
+}

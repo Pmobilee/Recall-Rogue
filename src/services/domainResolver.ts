@@ -43,6 +43,16 @@ const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
 const DEFAULT_DOMAIN: FactDomain = 'general_knowledge';
 const FACT_DOMAIN_CACHE = new Map<string, FactDomain>();
 
+/** Geography subcategories that belong to the dedicated drill domain. */
+const GEOGRAPHY_DRILL_SUBS = new Set([
+  'capitals_countries',
+  'countries_capitals',
+  'major_capitals',
+  'south_american_capitals',
+  'central_american_capitals',
+  'african_capitals',
+])
+
 /**
  * Resolves a Fact's knowledge domain from its category hierarchy.
  *
@@ -75,6 +85,14 @@ export function resolveDomain(fact: Fact): FactDomain {
         resolved = CATEGORY_TO_DOMAIN[cat]
         break
       }
+    }
+  }
+
+  // Route geography drill subcategories (capitals, flags) to dedicated domain
+  if (resolved === 'geography') {
+    const sub = fact.categoryL2 ?? fact.category[1] ?? ''
+    if (GEOGRAPHY_DRILL_SUBS.has(sub)) {
+      resolved = 'geography_drill'
     }
   }
 

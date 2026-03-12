@@ -832,6 +832,20 @@ export const MIN_NOVEL_FACTS_PCT = 0.25;
 export const MAX_PRESETS = 10;
 /** Maximum character length for a preset name. */
 export const MAX_PRESET_NAME_LENGTH = 30;
+/** Reward multiplier tiers keyed by selected run-pool fact count. */
+export const POOL_SIZE_REWARD_MULTIPLIERS = [
+  { minFacts: 120, multiplier: 1.0 },
+  { minFacts: 80, multiplier: 0.9 },
+  { minFacts: 40, multiplier: 0.75 },
+  { minFacts: 20, multiplier: 0.55 },
+  { minFacts: 0, multiplier: 0.35 },
+] as const;
+/** Apply an extra modest reward reduction when novelty is very low. */
+export const LOW_NOVELTY_THRESHOLD = 0.2;
+/** Multiplier applied when novelty falls below LOW_NOVELTY_THRESHOLD. */
+export const LOW_NOVELTY_REWARD_MULTIPLIER = 0.9;
+/** Extremely tiny pools suppress rewards entirely to block farm loops. */
+export const TINY_POOL_REWARD_SUPPRESSION_THRESHOLD = 8;
 
 /** Mastery scaling thresholds and multipliers for anti-cheat. */
 export const MASTERY_SCALING = {
@@ -1042,7 +1056,9 @@ export const QA_LIMITS = {
 
 // Knowledge combo multipliers
 // Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.00x)
-export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.30, 1.50, 2.00];
+export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.30, 1.50, 1.75, 2.00];
+export const COMBO_HEAL_THRESHOLD = 6;
+export const COMBO_HEAL_AMOUNT = 1;
 
 /** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
 export const COMBO_RING_START_MULTIPLIER = 1.10;

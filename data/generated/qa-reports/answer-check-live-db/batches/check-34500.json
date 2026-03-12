@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-03-12T06:50:58.590Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 34500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 3,
+    "clear": 497,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "ja-vocab-n3-3212",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298258550,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-vocab-n3-3250",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298258550,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-vocab-n3-3265",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298258550,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

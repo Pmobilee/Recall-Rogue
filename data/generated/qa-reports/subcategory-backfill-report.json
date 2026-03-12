@@ -1,0 +1,1346 @@
+{
+  "generatedAt": "2026-03-12T07:11:45.013Z",
+  "mode": "write",
+  "options": {
+    "force": true,
+    "limit": null,
+    "perDomainLimit": null,
+    "minScore": 1,
+    "allowFallback": false,
+    "includeLegacyTop": false,
+    "includeGenerated": true,
+    "includeSeed": true
+  },
+  "totals": {
+    "rows": 14778,
+    "updated": 5046,
+    "kept": 0,
+    "legacy": 2439,
+    "scored": 11604,
+    "fallback": 0
+  },
+  "perDomain": {
+    "general_knowledge": {
+      "total": 992,
+      "updated": 335,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 912,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 80,
+      "bySubcategory": {
+        "records_firsts": 20,
+        "inventions_tech": 57,
+        "landmarks_wonders": 621,
+        "pop_culture": 38,
+        "words_language": 29,
+        "everyday_science": 133,
+        "oddities": 14
+      }
+    },
+    "natural_sciences": {
+      "total": 937,
+      "updated": 141,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 910,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 27,
+      "bySubcategory": {
+        "chemistry_elements": 311,
+        "materials_engineering": 121,
+        "biology_organisms": 174,
+        "physics_mechanics": 166,
+        "geology_earth": 68,
+        "botany_plants": 44,
+        "ecology_environment": 26
+      }
+    },
+    "space_astronomy": {
+      "total": 752,
+      "updated": 201,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 730,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 22,
+      "bySubcategory": {
+        "missions_spacecraft": 297,
+        "planets_moons": 116,
+        "stars_galaxies": 101,
+        "cosmology_universe": 76,
+        "satellites_tech": 107,
+        "exoplanets_astrobio": 33
+      }
+    },
+    "geography": {
+      "total": 2203,
+      "updated": 1158,
+      "kept": 0,
+      "legacy": 398,
+      "scored": 1762,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 43,
+      "bySubcategory": {
+        "capitals_countries": 1259,
+        "africa": 134,
+        "asia_oceania": 208,
+        "europe": 88,
+        "americas": 273,
+        "landforms_water": 134,
+        "extreme_records": 43,
+        "climate_biomes": 21
+      }
+    },
+    "history": {
+      "total": 1697,
+      "updated": 303,
+      "kept": 0,
+      "legacy": 194,
+      "scored": 1503,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "ancient_classical": 239,
+        "medieval": 69,
+        "early_modern": 136,
+        "modern_contemporary": 157,
+        "world_wars": 118,
+        "battles_military": 944,
+        "people_leaders": 0,
+        "social_cultural": 34
+      }
+    },
+    "mythology_folklore": {
+      "total": 1115,
+      "updated": 419,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 1115,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "greek_roman": 374,
+        "norse_celtic": 66,
+        "eastern_myths": 71,
+        "creatures_monsters": 230,
+        "creation_cosmology": 91,
+        "folk_legends": 239,
+        "gods_deities": 44
+      }
+    },
+    "animals_wildlife": {
+      "total": 2351,
+      "updated": 653,
+      "kept": 0,
+      "legacy": 1141,
+      "scored": 878,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 332,
+      "bySubcategory": {
+        "mammals": 366,
+        "birds": 751,
+        "marine_life": 377,
+        "insects_arachnids": 115,
+        "reptiles_amphibians": 148,
+        "behavior_intelligence": 35,
+        "conservation": 193,
+        "adaptations": 34
+      }
+    },
+    "human_body_health": {
+      "total": 1492,
+      "updated": 689,
+      "kept": 0,
+      "legacy": 706,
+      "scored": 786,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 0,
+      "bySubcategory": {
+        "anatomy_organs": 832,
+        "brain_neuro": 132,
+        "genetics_dna": 55,
+        "cardiovascular": 76,
+        "digestion_metabolism": 84,
+        "senses_perception": 55,
+        "immunity_disease": 228,
+        "medical_science": 30
+      }
+    },
+    "food_cuisine": {
+      "total": 1521,
+      "updated": 707,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 1359,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 162,
+      "bySubcategory": {
+        "european_cuisine": 179,
+        "asian_cuisine": 146,
+        "world_cuisine": 33,
+        "baking_desserts": 92,
+        "fermentation_beverages": 63,
+        "food_history": 611,
+        "food_science": 110,
+        "ingredients_spices": 125
+      }
+    },
+    "art_architecture": {
+      "total": 1718,
+      "updated": 440,
+      "kept": 0,
+      "legacy": 0,
+      "scored": 1649,
+      "fallback": 0,
+      "unresolvedDomain": 0,
+      "skippedByLimit": 0,
+      "skippedLowConfidence": 69,
+      "bySubcategory": {
+        "museums_institutions": 646,
+        "historic_buildings": 613,
+        "painting_visual": 147,
+        "sculpture_decorative": 50,
+        "modern_contemporary": 78,
+        "architectural_styles": 48,
+        "engineering_design": 67
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "type": "jsonl",
+      "totalRows": 378,
+      "changedRows": 41
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "type": "jsonl",
+      "totalRows": 357,
+      "changedRows": 48
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "type": "jsonl",
+      "totalRows": 396,
+      "changedRows": 58
+    },
+    {
+      "path": "data/generated/general_knowledge.jsonl",
+      "type": "jsonl",
+      "totalRows": 350,
+      "changedRows": 36
+    },
+    {
+      "path": "data/generated/geography-capitals.jsonl",
+      "type": "jsonl",
+      "totalRows": 195,
+      "changedRows": 30
+    },
+    {
+      "path": "data/generated/geography-flags.jsonl",
+      "type": "jsonl",
+      "totalRows": 194,
+      "changedRows": 34
+    },
+    {
+      "path": "data/generated/geography.jsonl",
+      "type": "jsonl",
+      "totalRows": 370,
+      "changedRows": 128
+    },
+    {
+      "path": "data/generated/history.jsonl",
+      "type": "jsonl",
+      "totalRows": 328,
+      "changedRows": 69
+    },
+    {
+      "path": "data/generated/human_body_health.jsonl",
+      "type": "jsonl",
+      "totalRows": 338,
+      "changedRows": 20
+    },
+    {
+      "path": "data/generated/mythology_folklore.jsonl",
+      "type": "jsonl",
+      "totalRows": 393,
+      "changedRows": 99
+    },
+    {
+      "path": "data/generated/natural_sciences.jsonl",
+      "type": "jsonl",
+      "totalRows": 354,
+      "changedRows": 59
+    },
+    {
+      "path": "data/generated/production-facts.jsonl",
+      "type": "jsonl",
+      "totalRows": 0,
+      "changedRows": 0
+    },
+    {
+      "path": "data/generated/space_astronomy.jsonl",
+      "type": "jsonl",
+      "totalRows": 321,
+      "changedRows": 77
+    },
+    {
+      "path": "data/generated/vocab-overnight-batch.jsonl",
+      "type": "jsonl",
+      "totalRows": 5042,
+      "changedRows": 311
+    },
+    {
+      "path": "src/data/seed/facts-general-a.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 1
+    },
+    {
+      "path": "src/data/seed/facts-general-b.json",
+      "type": "json",
+      "totalRows": 41,
+      "changedRows": 7
+    },
+    {
+      "path": "src/data/seed/facts-general-c.json",
+      "type": "json",
+      "totalRows": 40,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/facts-generated.json",
+      "type": "json",
+      "totalRows": 46657,
+      "changedRows": 4028
+    },
+    {
+      "path": "src/data/seed/tutorial.json",
+      "type": "json",
+      "totalRows": 1,
+      "changedRows": 0
+    }
+  ],
+  "samples": [
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "laetacara-curviceps-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Laetacara curviceps is a small freshwater fish species of least concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "mullus-barbatus-001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Mullus barbatus is a red mullet fish species with least concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "nannacara_aureocephalus_001",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Nannacara aureocephalus is a small fish species with least concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-atlantic-emperor-013",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Atlantic emperor (Lethrinus atlanticus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-lethrinus-reticulatus-014",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Lethrinus reticulatus (Lethrinus reticulatus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-lethrinus-enigmaticus-015",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Lethrinus enigmaticus (Lethrinus enigmaticus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-spotted-wobbegong-016",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The spotted wobbegong (Orectolobus maculatus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-northern-wobbegong-017",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The northern wobbegong (Orectolobus wardi) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-ornate-wobbegong-018",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The ornate wobbegong (Orectolobus ornatus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-dwarf-spotted-wobbegong-021",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The dwarf spotted wobbegong (Orectolobus parvimaculatus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-necklace-carpetshark-022",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The necklace carpetshark (Parascyllium variolatum) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-saddle-carpetshark-023",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The saddle carpetshark (Cirrhoscyllium japonicum) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-ginger-carpetshark-024",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The ginger carpetshark (Parascyllium sparsimaculatum) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-collared-carpetshark-025",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Collared carpetshark (Parascyllium collare) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-parascyllium-ferrugineum-026",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Parascyllium ferrugineum (Parascyllium ferrugineum) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "anim-mahi-mahi-039",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Mahi-mahi (Coryphaena hippurus) is classified as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-aequidens-chimantanus-066",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Aequidens chimantanus (Aequidens chimantanus) is a fish classified as Least Concern by conservation authorities."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-alburnoides-eichwaldii-067",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Alburnoides eichwaldii is the common name for Alburnoides eichwaldii, a species of fish with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-galaxias-fasciatus-068",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Known scientifically as Galaxias fasciatus, the Galaxias fasciatus is a fish currently listed as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-nephila-clavata-070",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "insects arachnids",
+      "fromCategorySecondary": "insects arachnids",
+      "toCategoryL2": "conservation",
+      "statement": "Nephila clavata is the common name for Nephila clavata, a species of arachnid with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-fringed-lipped-peninsula-carp-072",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Fringed-lipped Peninsula Carp, or Labeo fimbriatus, is a fish species that holds Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-tramitichromis-lituris-077",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Known scientifically as Tramitichromis lituris, the Tramitichromis lituris is a fish currently listed as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-tramea-insularis-090",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "insects arachnids",
+      "fromCategorySecondary": "insects arachnids",
+      "toCategoryL2": "conservation",
+      "statement": "Tramea insularis is the common name for Tramea insularis, a species of insect with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-spiny-blaasop-091",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Known scientifically as Tylerius spinosissimus, the spiny blaasop is a fish currently listed as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-largescale-yellowfish-093",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Largescale yellowfish is the common name for Labeobarbus marequensis, a species of fish with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-papilio-aristodemus-094",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "insects arachnids",
+      "fromCategorySecondary": "insects arachnids",
+      "toCategoryL2": "conservation",
+      "statement": "The Papilio aristodemus (Papilio aristodemus) is a insect classified as Least Concern by conservation authorities."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-monotrete-leiurus-097",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "The Monotrete leiurus, or Monotrete leiurus, is a fish species that holds Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-protobothrops-elegans-102",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "reptiles amphibians",
+      "fromCategorySecondary": "reptiles amphibians",
+      "toCategoryL2": "conservation",
+      "statement": "The Protobothrops elegans (Protobothrops elegans) is a reptile classified as Least Concern by conservation authorities."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-tauriphila-australis-110",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "insects arachnids",
+      "fromCategorySecondary": "insects arachnids",
+      "toCategoryL2": "conservation",
+      "statement": "Tauriphila australis is the common name for Tauriphila australis, a species of insect with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-roosterfish-111",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Roosterfish is the common name for Nematistius pectoralis, a species of fish with Least Concern conservation status."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-murray-cod-113",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "conservation",
+      "statement": "Known scientifically as Maccullochella peelii, the Murray cod is a fish currently listed as Least Concern."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-mantis-shrimp-punch-114",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "The mantis shrimp can strike with its club-like appendages at speeds up to 50 mph, generating forces comparable to a .22 caliber bullet."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-pistol-shrimp-snap-118",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "The pistol shrimp snaps its oversized claw so fast it creates a cavitation bubble that reaches temperatures of nearly 4,700°C — almost as hot as the sun's surface."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-cone-snail-venom-156",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "Cone snails fire venomous harpoon-like teeth at prey with lightning speed, and their complex venom contains hundreds of unique compounds, some of which are now used as powerful painkillers."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-decorator-crab-178",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "Decorator crabs attach sponges, algae, anemones, and even small venomous animals to hook-like hairs on their shells to create living camouflage suits."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-leafy-seadragon-189",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "The leafy seadragon has elaborate leaf-shaped appendages covering its body that serve no purpose for swimming — they exist solely as camouflage to mimic drifting seaweed."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-harbour-porpoise-echolocation-312",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "mammals",
+      "statement": "Harbour porpoises produce echolocation clicks at frequencies above 120 kHz — so high-pitched that they are inaudible to their main predator, the killer whale, which cannot hear above 100 kHz."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-sperm-whale-sleep-vertical-328",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "mammals",
+      "statement": "Sperm whales sleep vertically — they hang motionless in the water like enormous grey pillars, sometimes in groups, completely unconscious for about 10-15 minutes at a time."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-pistol-shrimp-colony-332",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Certain pistol shrimp species live in eusocial colonies inside sponges — with a single breeding queen, soldier castes, and worker divisions — making them the only known eusocial marine animal."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-cuttlefish-final-flash-335",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "adaptations",
+      "statement": "Male cuttlefish can split their body display in half — showing female-mimicking patterns on one side to fool a rival male, while flashing mating colours to a female on the other side simultaneously."
+    },
+    {
+      "path": "data/generated/animals_wildlife.jsonl",
+      "id": "animal-pistol-shrimp-louder-whale-351",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": "marine life",
+      "toCategoryL2": "mammals",
+      "statement": "The snap of a pistol shrimp's claw reaches 218 decibels — louder than a gunshot and even louder than a blue whale's call — making it one of the loudest sounds produced by any living creature."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-young-va-068",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "Young V&A, formerly the Bethnal Green Museum of Childhood, is a national museum in London that opened in 1872."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-spencer-museum-071",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The Spencer Museum of Art at the University of Kansas in Lawrence opened in 1928 and houses over 45,000 works."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-evoluon-072",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "architectural_styles",
+      "statement": "The Evoluon in Eindhoven, Netherlands, is a futuristic flying saucer-shaped building commissioned by Philips in 1966."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-arctic-antarctic-museum-074",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "historic_buildings",
+      "statement": "The Russian Arctic and Antarctic Museum in Saint Petersburg, founded in 1930, is the only museum in Russia dedicated to polar exploration."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-far-east-laken-076",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "historic_buildings",
+      "statement": "The Museums of the Far East in Laeken, Belgium, opened in 1921 and showcase Asian art in pavilions built for the 1910 World's Fair."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-national-building-museum-090",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "The National Building Museum in Washington, D.C. opened in 1985 inside the historic Pension Building, completed in 1887."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-holy-blood-bruges-099",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "architectural_styles",
+      "statement": "The Basilica of the Holy Blood in Bruges, Belgium, dates from 1157 and houses a venerated relic said to contain the blood of Jesus Christ."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-moma-nyc-100",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The Museum of Modern Art (MoMA) in New York City was founded in 1929 and houses one of the most influential modern art collections in the world."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-nai-rotterdam-102",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "architectural_styles",
+      "statement": "The Netherlands Architecture Institute (NAi) in Rotterdam, founded in 1988, housed the world's largest architecture archive."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-krippenmuseum-brixen-107",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The Krippenmuseum in Brixen (Bressanone), Italy, houses one of the world's largest collections of nativity scenes with over 5,000 figures."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art-galleria-continua-109",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Galleria Continua in San Gimignano, Tuscany, is a contemporary art gallery housed in a former medieval cinema and theater."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_070",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "historic_buildings",
+      "statement": "Islamic geometric art uses complex mathematical patterns that can tile infinitely without repeating, a concept Western mathematicians didn't formally describe until Roger Penrose's work in the 1970s."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_079",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Piet Mondrian's iconic grid paintings with primary colors were so influential that Yves Saint Laurent created a famous dress based on them in 1965, blurring the line between fine art and fashion forever."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_090",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "museums_institutions",
+      "statement": "The color wheel was invented by Isaac Newton in 1666 when he split white light through a prism and arranged the resulting spectrum into a circle, establishing the foundation of modern color theory."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_110",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": "modern contemporary",
+      "toCategoryL2": "engineering_design",
+      "statement": "Salvador Dalí designed the Chupa Chups lollipop logo in 1969, and his design has remained virtually unchanged for over 50 years, making it one of the most commercially successful works by a fine artist."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_115",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Pablo Picasso and Georges Braque co-founded Cubism around 1907, breaking objects into geometric fragments viewed from multiple angles simultaneously."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_116",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Salvador Dalí's The Persistence of Memory (1931) features melting clocks draped over a barren landscape, becoming one of Surrealism's most iconic images."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_122",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Han van Meegeren was a Dutch art forger who fooled experts with fake Vermeer paintings, only discovered when he was accused of selling national treasures to the Nazis."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_126",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "sculpture decorative",
+      "fromCategorySecondary": "sculpture decorative",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Donald Judd's minimalist sculptures, often consisting of identical metal boxes arranged in precise rows, challenged traditional ideas of what art could be."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_136",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "sculpture decorative",
+      "fromCategorySecondary": "sculpture decorative",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The Cloud Gate sculpture in Chicago, nicknamed 'The Bean,' is made of 168 stainless steel plates polished so seamlessly that no visible seams remain."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_140",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "architectural_styles",
+      "statement": "Georgia O'Keeffe's large-scale flower paintings, such as Jimson Weed (1932), were so oversized that viewers felt they were stepping inside the bloom."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_148",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "architectural_styles",
+      "statement": "The Baroque period's trompe-l'oeil ceiling paintings created the illusion that church ceilings opened up to the heavens, with figures seemingly floating above the viewer."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_152",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": "modern contemporary",
+      "toCategoryL2": "engineering_design",
+      "statement": "Piet Mondrian's abstract paintings of primary colors in a black grid, such as Composition with Red, Blue, and Yellow, were meant to express universal harmony."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_157",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Banksy is an anonymous British street artist whose identity remains unconfirmed despite creating some of the world's most recognizable graffiti art."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_167",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Hilma af Klint, a Swedish artist, created abstract paintings as early as 1906—years before Kandinsky, Mondrian, or Malevich, who are usually credited with inventing abstraction."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_168",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "engineering_design",
+      "statement": "The Leaning Tower of Pisa began tilting during construction in 1173 because it was built on soft clay soil on one side, and it took 199 years to complete."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_169",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "René Magritte's The Treachery of Images (1929) shows a pipe with the text 'Ceci n'est pas une pipe' (This is not a pipe), challenging the relationship between objects and their representations."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_170",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "architectural_styles",
+      "statement": "The ancient city of Petra in Jordan was carved directly into rose-colored sandstone cliffs by the Nabataean people over 2,000 years ago."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_171",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Jackson Pollock's drip paintings were created by laying canvas on the floor and flinging, dripping, and pouring paint from above, a technique called action painting."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_174",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "engineering_design",
+      "statement": "The ancient Inca city of Machu Picchu was built with stones cut so precisely that no mortar was needed, and a knife blade cannot fit between them."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_192",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "The Centre Pompidou in Paris was so controversial when it opened in 1977 that critics called it an 'oil refinery' and a 'catastrophe' — its inside-out design puts all the pipes, ducts, and escalators on the outside of th"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_193",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "The Mole Antonelliana in Turin, originally designed as a synagogue in 1863, grew so tall during construction that the Jewish community ran out of money — the city took it over, and it eventually became the world's talles"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_198",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "museums_institutions",
+      "statement": "Rembrandt went bankrupt in 1656 despite being one of the most famous painters in the Netherlands — he had a compulsive habit of buying art, curiosities, and exotic costumes at auction that he couldn't afford."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_200",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "engineering_design",
+      "statement": "Gaudi's Sagrada Familia generates so much tourist revenue that it is paying off 140 years of unpaid building permits to the city of Barcelona — a debt of 36 million euros finally settled in 2019."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_209",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "architectural_styles",
+      "statement": "Gustav Klimt's famous painting The Kiss uses real gold leaf — and the gold in the painting was inspired by the Byzantine mosaics Klimt saw during a trip to Ravenna, Italy, which blew his mind so thoroughly it changed his"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_221",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Picasso was questioned as a suspect in the 1911 theft of the Mona Lisa from the Louvre — his friend, poet Guillaume Apollinaire, had been arrested and named Picasso under interrogation."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_226",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "The Zeugma Mosaic Museum in Turkey contains the 'Gypsy Girl' mosaic — a 2nd-century Roman floor mosaic so hauntingly beautiful that it has been called the 'Mona Lisa of mosaics,' with eyes that seem to follow you around "
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_231",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "architectural_styles",
+      "statement": "Caravaggio killed a man in a street brawl in 1606 and spent the rest of his life on the run — he continued to paint masterpieces while fleeing across Italy, Malta, and Sicily before dying under mysterious circumstances a"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_236",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The color 'International Klein Blue' was patented by artist Yves Klein in 1960 — he literally owned a shade of blue, created using a special synthetic resin that makes pure ultramarine pigment appear to float in space."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_238",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historic buildings",
+      "fromCategorySecondary": "historic buildings",
+      "toCategoryL2": "engineering_design",
+      "statement": "The Leaning Tower of Pisa started tilting during construction in 1173 because its foundation is only 3 meters deep on soil that is softer on one side — and took 199 years to finish because builders kept pausing to let th"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_241",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": "modern contemporary",
+      "toCategoryL2": "engineering_design",
+      "statement": "Salvador Dalí designed the Chupa Chups lollipop logo in 1969 — and insisted it be placed on top of the wrapper rather than the side so it would always be visible, a design still used today."
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_243",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Frida Kahlo painted 55 self-portraits out of her 143 total paintings — she said 'I paint myself because I am so often alone and because I am the subject I know best.'"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_258",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "architectural_styles",
+      "statement": "Gustav Klimt's 'The Kiss' uses real gold leaf — the painting is partly covered in 23.5-karat gold, inspired by Byzantine mosaics Klimt saw on a trip to Ravenna, Italy, and marks the peak of his 'Golden Phase.'"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_261",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Jackson Pollock's drip paintings aren't random — physicists discovered they contain fractal patterns similar to those found in nature, and the fractal complexity increased consistently over his career, suggesting a deepl"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_278",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Henri Matisse created some of his most celebrated works — his paper cut-outs — in his 80s while bedridden, using scissors to 'paint with color' because he could no longer stand at an easel, calling it his 'second life.'"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_297",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": "modern contemporary",
+      "toCategoryL2": "engineering_design",
+      "statement": "Architect Zaha Hadid was called 'the greatest woman architect in the world today' — a title she rejected, saying 'I am an architect, not a woman architect.' She was the first woman to win the Pritzker Prize (architecture"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_303",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Georgia O'Keeffe's giant flower paintings were partly a response to male art critics who ignored women's art — she said 'I'll make them so big they can't ignore them,' and painted flowers at scales that forced viewers to"
+    },
+    {
+      "path": "data/generated/art_architecture.jsonl",
+      "id": "art_architecture_gen_305",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "museums institutions",
+      "fromCategorySecondary": "museums institutions",
+      "toCategoryL2": "engineering_design",
+      "statement": "Architect I.M. Pei's glass pyramid at the Louvre was so controversial when proposed in 1984 that 90% of Parisians opposed it — critics called it 'a scar on the face of Paris.' Today it is beloved and serves as the museum"
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "pancake-origin-us-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "Pancakes are a traditional breakfast food originating from the United States."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-pemmican-017",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "pemmican is a a mixture of tallow, dried meat, and som from North America."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-a-ure-018",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "aşure is a Armenian dessert from ancient Near East."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-dondurma-019",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "dondurma is a Turkish variety of ice cream from Turkey."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-fruit-salad-020",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "fruit salad is a dish consisting of various kinds of fruit, sometim."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-potato-pancake-021",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "potato pancake is a fried pancakes of grated or ground potato."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-falafel-027",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "falafel is a Egyptian fried bean dish from Egypt."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-salisbury-steak-029",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "Salisbury steak is a meat patty from United States."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-tzimmes-030",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "tzimmes is a Ashkenazi Jewish stew made from carrots and fruits."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-burrito-048",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "burrito is a Mexican dish consisting of a wheat flour from Mexico."
+    },
+    {
+      "path": "data/generated/food_cuisine.jsonl",
+      "id": "food-papa-a-la-hancaina-050",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_history",
+      "statement": "Papa a la Hancaina is a Peruvian appetizer of boiled yellow pota from Peru."
+    }
+  ]
+}

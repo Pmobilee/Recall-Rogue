@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:53.773Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 17500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 31,
+    "clear": 469,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "genknow-b01-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b01-014",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b01-017",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-002",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-003",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-005",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-006",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b02-009",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253719,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

@@ -1,6 +1,12 @@
 import type { ReviewState } from '../data/types';
 import type { DeckMode } from '../data/studyPreset';
-import { MASTERY_SCALING } from '../data/balance';
+import {
+  LOW_NOVELTY_REWARD_MULTIPLIER,
+  LOW_NOVELTY_THRESHOLD,
+  MASTERY_SCALING,
+  POOL_SIZE_REWARD_MULTIPLIERS,
+  TINY_POOL_REWARD_SUPPRESSION_THRESHOLD,
+} from '../data/balance';
 import { getCardTier } from './tierDerivation';
 import { getPresetById } from './studyPresetService';
 
@@ -66,6 +72,46 @@ export function getRewardMultiplier(masteryPct: number): number {
     }
   }
   return 1.0;
+}
+
+/**
+ * Returns the anti-farm reward multiplier based on selected pool size.
+ */
+export function getPoolSizeRewardMultiplier(poolFactCount: number): number {
+  const safeCount = Math.max(0, Math.floor(poolFactCount));
+  for (const tier of POOL_SIZE_REWARD_MULTIPLIERS) {
+    if (safeCount >= tier.minFacts) {
+      return tier.multiplier;
+    }
+  }
+  return 1.0;
+}
+
+/**
+ * Applies an extra modest reduction when novelty is very low.
+ */
+export function getNoveltyRewardMultiplier(novelFactPct: number): number {
+  if (novelFactPct < LOW_NOVELTY_THRESHOLD) {
+    return LOW_NOVELTY_REWARD_MULTIPLIER;
+  }
+  return 1.0;
+}
+
+/**
+ * Extremely tiny pools are not eligible for rewards (anti-farm failsafe).
+ */
+export function shouldSuppressRewardsForTinyPool(poolFactCount: number): boolean {
+  return Math.max(0, Math.floor(poolFactCount)) < TINY_POOL_REWARD_SUPPRESSION_THRESHOLD;
+}
+
+/**
+ * Combined pool-size and novelty multiplier.
+ */
+export function getCombinedPoolRewardMultiplier(
+  poolFactCount: number,
+  novelFactPct: number,
+): number {
+  return getPoolSizeRewardMultiplier(poolFactCount) * getNoveltyRewardMultiplier(novelFactPct);
 }
 
 /**

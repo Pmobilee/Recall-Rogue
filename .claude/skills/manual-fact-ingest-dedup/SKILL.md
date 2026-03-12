@@ -12,15 +12,15 @@ Run the full content pipeline autonomously: raw data → Haiku-processed facts �
 - **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that call `@anthropic-ai/sdk` or any external LLM API. ALL LLM work (fact generation, quality checks, transformations) MUST be done by spawning Haiku sub-agents via the Claude Code Agent tool (`model: "haiku"`). The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay true.
 - Keep every new fact schema-valid.
 - Every fact MUST have `_haikuProcessed: true` before DB insertion.
-- `categoryL2` is mandatory for canonical domains (use IDs from `src/data/subcategoryTaxonomy.ts`).
+- **`categoryL2` is mandatory for all knowledge facts** (use valid IDs from `src/data/subcategoryTaxonomy.ts` — 74 subcategories across 10 domains). Never use "general", "other", or empty values. After fact generation, run the subcategorization pipeline (see "DB Rebuild" section below).
 
 ## Current Database State
-- **33,766 facts** in `src/data/seed/facts-generated.json` (34,289 total in DB with seed files)
-- **~10,423 knowledge facts** across 10 domains
-- **~23,343 vocabulary facts** across 7 languages
+- **46,657 facts** in `src/data/seed/facts-generated.json` (46,780 total in DB with seed files)
+- **~10,546 knowledge facts** across 10 domains (all with valid `categoryL2` subcategories)
+- **~36,234 vocabulary facts** across 8 languages
 - **Knowledge domains**: animals_wildlife, general_knowledge, human_body_health, food_cuisine, geography, art_architecture, history, mythology_folklore, natural_sciences, space_astronomy
-- **Languages**: ko (7,686), es (5,575), de (4,778), it (1,924), fr (1,200), nl (1,131), cs (1,049) — Japanese pending Anki deck
-- **All 5 Anki decks fully exhausted**: Spanish, Korean, German, Dutch, Czech
+- **Languages**: ja (13,125), ko (7,686), es (5,575), de (4,778), it (1,924), fr (1,200), nl (1,131), cs (1,049)
+- **All 6 Anki decks fully exhausted**: Spanish, Korean, German, Dutch, Czech, Japanese (Full-Japanese-Study-Deck + JMdict)
 
 ## Mandatory Haiku Processing (All Facts)
 Every single fact that enters the database MUST be processed by a Haiku agent.
@@ -132,10 +132,41 @@ Always ensure:
 - `_haikuProcessed: true` and `_haikuProcessedAt` are set
 
 ## DB Rebuild
-```bash
-node scripts/build-facts-db.mjs
-```
-- Reads all `src/data/seed/*.json` files
+
+### Full Pipeline After Fact Generation
+
+After appending new knowledge facts to `src/data/seed/facts-generated.json`:
+
+1. **Backfill subcategories** (keyword-based classification):
+   ```bash
+   node scripts/content-pipeline/backfill-subcategories.mjs --write --force --min-score=1
+   ```
+
+2. **Extract remaining unclassified** (to identify scope):
+   ```bash
+   node scripts/content-pipeline/extract-unclassified.mjs
+   ```
+
+3. **Classify via Haiku agents** (if unclassified facts remain — use the `/subcategorize` skill)
+
+4. **Apply LLM classifications** (if step 3 was needed):
+   ```bash
+   node scripts/content-pipeline/apply-llm-classifications.mjs --write
+   ```
+
+5. **Rebuild the SQLite database**:
+   ```bash
+   node scripts/build-facts-db.mjs
+   ```
+
+6. **Verify valid subcategories**:
+   ```bash
+   node scripts/content-pipeline/count-invalid-l2.mjs
+   ```
+   Should return **0 invalid facts**. If any remain, re-run the subcategorization pipeline.
+
+### Database Rebuild Details
+- `build-facts-db.mjs` reads all `src/data/seed/*.json` files
 - Inserts into SQLite via sql.js
 - Output: `public/facts.db` + `public/seed-pack.json`
 - `normalizeFactShape()` auto-derives missing fields (type, explanation, rarity)
@@ -189,13 +220,20 @@ Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
 ## Key Files
 | File | Role |
 |------|------|
-| `src/data/seed/facts-generated.json` | Main generated facts file (32,172 facts) |
+| `src/data/seed/facts-generated.json` | Main generated facts file (46,657 facts) |
+| `src/data/seed/facts-general-a.json` | Seed facts subset A |
+| `src/data/seed/facts-general-b.json` | Seed facts subset B |
+| `src/data/seed/facts-general-c.json` | Seed facts subset C |
 | `src/data/seed/facts.json` | Hand-curated seed facts |
 | `scripts/build-facts-db.mjs` | Builds SQLite DB from seed files |
+| `scripts/content-pipeline/backfill-subcategories.mjs` | Keyword-based L2 classification |
+| `scripts/content-pipeline/extract-unclassified.mjs` | Extracts unclassified facts for LLM processing |
+| `scripts/content-pipeline/apply-llm-classifications.mjs` | Applies Haiku LLM classifications back to seed files |
+| `scripts/content-pipeline/count-invalid-l2.mjs` | Verifies 0 invalid subcategories |
 | `public/facts.db` | Runtime SQLite database |
 | `public/seed-pack.json` | Exported seed pack for distribution |
 | `data/raw/<domain>.json` | Wikidata raw exports (10 domains) |
 | `data/raw/mixed/<domain>.json` | Enriched Wikidata exports (preferred) |
 | `data/extracted/anki-*.json` | Pre-extracted Anki word lists |
 | `data/references/*.apkg` | Source Anki deck files |
-| `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs |
+| `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs (74 subcategories) |

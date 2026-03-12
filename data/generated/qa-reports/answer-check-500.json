@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-03-12T06:36:21.551Z",
+  "input": "data/generated/worker-output",
+  "outputDir": "data/generated/qa-reports/answer-check-500",
+  "mode": "check",
+  "issueColumn": "answerCheckIssue",
+  "perWorker": 500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "reviewedDir": null,
+  "requireReviewed": false,
+  "totalCandidates": 500,
+  "totalTarget": 500,
+  "pass": true,
+  "workers": [
+    {
+      "worker": "gpt-5.1-mini",
+      "modelLabel": "gpt-5.1-mini (subscription worker)",
+      "requested": 500,
+      "assigned": 500,
+      "assignmentPath": "data/generated/qa-reports/answer-check-500/assignments/gpt-5.1-mini.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-500/prompts/gpt-5.1-mini.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-500/reviewed/gpt-5.1-mini.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-500/gpt-5.1-mini.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 28,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animal-galaxias-fasciatus-068",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-amandava-amandava-083",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-african-emerald-cuckoo-087",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-lonchura-ferruginosa-088",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animal-papilio-aristodemus-094",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "totals": {
+    "assigned": 500,
+    "flagged": 28,
+    "cleared": 0,
+    "reviewedApplied": 0,
+    "heuristicApplied": 500,
+    "missingReviewedWorkers": 0
+  }
+}

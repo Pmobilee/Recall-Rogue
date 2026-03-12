@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:49.533Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 67,
+    "clear": 433,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "animals-b013-010",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b013-015",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b013-018",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b013-033",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b014-018",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b014-020",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b014-025",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b014-035",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b014-040",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b015-025",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298249490,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

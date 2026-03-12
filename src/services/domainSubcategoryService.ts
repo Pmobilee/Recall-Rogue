@@ -43,7 +43,12 @@ export function getDomainSubcategories(domain: FactDomain): DomainSubcategoryInf
       name: getSubcategoryLabel(canonical as CanonicalFactDomain, id),
       count,
     }))
-    .sort((left, right) => right.count - left.count || left.name.localeCompare(right.name))
+    .sort((left, right) => {
+      // "General" always sorts first
+      if (left.id === 'General' || left.name === 'General') return -1
+      if (right.id === 'General' || right.name === 'General') return 1
+      return right.count - left.count || left.name.localeCompare(right.name)
+    })
   _cache.set(canonical, result)
   return result
 }

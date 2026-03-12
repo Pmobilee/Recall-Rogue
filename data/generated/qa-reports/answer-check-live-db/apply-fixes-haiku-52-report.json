@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-03-12T07:50:21.392Z",
+  "command": "apply-fixes",
+  "dbPath": "public/facts.db",
+  "inputPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-52.jsonl",
+  "fixer": "haiku-52",
+  "dryRun": false,
+  "counts": {
+    "inputRows": 41,
+    "updated": 41,
+    "missing": 0,
+    "cleared": 41,
+    "keptFlagged": 0
+  }
+}

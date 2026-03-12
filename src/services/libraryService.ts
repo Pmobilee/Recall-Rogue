@@ -117,6 +117,7 @@ export function buildDomainEntries(
   reviewStates: ReviewState[],
   filter: LibraryTierFilter = 'all',
   sortBy: LibrarySortBy = 'tier',
+  subcategory?: string,
 ): LibraryFactEntry[] {
   const stateByFact = new Map(reviewStates.map((state) => [state.factId, state]))
   const normalizedDomain = normalizeFactDomain(domain)
@@ -124,6 +125,10 @@ export function buildDomainEntries(
 
   for (const fact of facts) {
     if (normalizeFactDomain(resolveDomain(fact)) !== normalizedDomain) continue
+    if (subcategory !== undefined) {
+      const factSubcategory = fact.categoryL2?.trim() || fact.category[1]?.trim() || 'General'
+      if (factSubcategory !== subcategory) continue
+    }
     const entry = toEntry(fact, stateByFact.get(fact.id) ?? null)
     if (filter !== 'all' && entry.tier !== filter) continue
     entries.push(entry)

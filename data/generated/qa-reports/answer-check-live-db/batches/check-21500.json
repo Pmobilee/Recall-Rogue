@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-03-12T06:50:54.918Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 21500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 3,
+    "clear": 497,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "hist-titanic-musicians",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254864,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "human_body_health_gen_114",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254864,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "human_body_health_gen_133",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298254864,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

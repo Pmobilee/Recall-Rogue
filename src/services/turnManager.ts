@@ -22,6 +22,8 @@ import { applyStatusEffect } from '../data/statusEffects';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
   COMBO_MULTIPLIERS,
+  COMBO_HEAL_THRESHOLD,
+  COMBO_HEAL_AMOUNT,
   PLAYER_START_HP,
   START_AP_PER_TURN,
   MAX_AP_PER_TURN,
@@ -70,7 +72,7 @@ export function getEnrageBonus(turnNumber: number, floor: number, enemyHpPercent
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
 
 export interface TurnLogEntry {
-  type: 'play' | 'skip' | 'fizzle' | 'blocked' | 'enemy_action' | 'status_tick' | 'draw' | 'victory' | 'defeat';
+  type: 'play' | 'skip' | 'fizzle' | 'blocked' | 'enemy_action' | 'status_tick' | 'draw' | 'victory' | 'defeat' | 'heal';
   message: string;
   value?: number;
   cardId?: string;
@@ -562,6 +564,17 @@ export function playCardAction(
   }
 
   turnState.comboCount += 1;
+
+  // Combo heal: at threshold+ consecutive correct, heal per correct answer
+  if (turnState.comboCount >= COMBO_HEAL_THRESHOLD) {
+    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + COMBO_HEAL_AMOUNT);
+    turnState.turnLog.push({
+      type: 'heal',
+      message: 'Combo heal! +1 HP',
+      value: COMBO_HEAL_AMOUNT,
+    });
+  }
+
   turnState.cardsPlayedThisTurn += 1;
   turnState.cardsCorrectThisTurn += 1;
   turnState.consecutiveCorrectThisEncounter += 1;

@@ -7,7 +7,11 @@
     "explanation": "Lightning superheats the narrow air channel it travels through almost instantaneously. The Sun's photosphere is hot, but lightning's extreme compression and electrical discharge briefly exceeds it by a large margin.",
     "quizQuestion": "How much hotter is lightning than the Sun's surface?",
     "correctAnswer": "Five times hotter",
-    "distractors": [],
+    "distractors": [
+      "About the same",
+      "Sun is five times hotter",
+      "Twice as hot"
+    ],
     "variants": [
       {
         "question": "How does lightning temperature compare to the Sun's surface?",
@@ -54,9 +58,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -86,7 +88,13 @@
     "explanation": "Claude Shannon estimated this in 1950. Even though chess has simple rules, the branching factor at each move creates astronomical combinations. This is why computers still cannot solve chess completely by brute force.",
     "quizQuestion": "More possible chess games or atoms in universe?",
     "correctAnswer": "Chess games",
-    "distractors": [],
+    "distractors": [
+      "draw (in competition)",
+      "belly, the stomach",
+      "Tringa stagnatilis",
+      "the cinema quarters",
+      "piece(s) of firewood (esp. chopped or split from logs)"
+    ],
     "variants": [
       {
         "question": "Which outnumbers the other: chess games or atoms?",
@@ -94,8 +102,7 @@
         "correctAnswer": "Chess games",
         "distractors": [
           "Atoms",
-          "They're equal",
-          "Plausible option 3"
+          "They're equal"
         ]
       },
       {
@@ -133,9 +140,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -165,7 +170,11 @@
     "explanation": "The speed of sound in Earth's atmosphere at sea level is about 1,235 km/h. Neptune's winds, despite it being the coldest major planet, are driven by internal heat and atmospheric dynamics that scientists still do not fully understand.",
     "quizQuestion": "How fast do Neptune's winds travel?",
     "correctAnswer": "2,100 km/h",
-    "distractors": [],
+    "distractors": [
+      "500 km/h",
+      "800 km/h",
+      "5,000 km/h"
+    ],
     "variants": [
       {
         "question": "What is Neptune's maximum wind speed?",
@@ -212,9 +221,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -244,7 +251,11 @@
     "explanation": "Scientists confirmed this through laboratory experiments replicating the extreme pressures inside ice giants. Temperatures of thousands of degrees and pressures millions of times greater than Earth's atmosphere cause carbon atoms to crystallise into diamonds.",
     "quizQuestion": "What unusual precipitation occurs inside Neptune and Uranus?",
     "correctAnswer": "Diamond rain",
-    "distractors": [],
+    "distractors": [
+      "Iron hail",
+      "Methane snow",
+      "Liquid helium"
+    ],
     "variants": [
       {
         "question": "What unusual precipitation occurs inside Neptune and Uranus?",
@@ -291,9 +302,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -323,7 +332,11 @@
     "explanation": "Neutron stars form when massive stars collapse. The gravity is so extreme that protons and electrons are forced to merge into neutrons, packed as densely as an atomic nucleus. A typical neutron star is 20 km across but contains more mass than the Sun.",
     "quizQuestion": "How much would a teaspoon of neutron star material weigh?",
     "correctAnswer": "About a billion tonnes",
-    "distractors": [],
+    "distractors": [
+      "About a million tonnes",
+      "About a trillion tonnes",
+      "About a thousand tonnes"
+    ],
     "variants": [
       {
         "question": "How much would a teaspoon of neutron star material weigh on Earth?",
@@ -370,9 +383,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -402,7 +413,11 @@
     "explanation": "Early Earth's atmosphere was rich in nitrogen, methane, and carbon dioxide. Cyanobacteria evolved oxygenic photosynthesis and began releasing oxygen as waste. To anaerobic life forms, this oxygen was toxic — it caused a mass extinction before complex life could even begin.",
     "quizQuestion": "What caused Earth's atmosphere to become oxygen-rich?",
     "correctAnswer": "Cyanobacteria",
-    "distractors": [],
+    "distractors": [
+      "Volcanic eruptions",
+      "Meteor impacts",
+      "Early algae"
+    ],
     "variants": [
       {
         "question": "Which organisms caused the Great Oxidation Event?",
@@ -457,7 +472,7 @@
     ],
     "category": [
       "Natural Sciences",
-      "geology_earth",
+      "botany_plants",
       "Earth History"
     ],
     "rarity": "uncommon",
@@ -468,7 +483,7 @@
     "gaiaComment": "Oxygen was pollution. Cyanobacteria killed everything and called it progress. Sound familiar?",
     "visualDescription": "A primordial Earth shrouded in thick purple-brown volcanic gases swirls with methane and ammonia clouds, while a tiny glowing oxygen molecule floats impossibly small and alone in the corner of the turbulent sky, vastly outnumbered by the roiling toxic atmosphere surrounding it.",
     "categoryL1": "Natural Sciences",
-    "categoryL2": "geology_earth",
+    "categoryL2": "botany_plants",
     "categoryL3": "Earth History",
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-11T00:00:00Z"
@@ -481,7 +496,11 @@
     "explanation": "The Mpemba effect is real but not universal. Proposed explanations include evaporation reducing mass, dissolved gases escaping, convection patterns, and hydrogen bond dynamics. It works reliably only under specific conditions, which is why it remained controversial for decades.",
     "quizQuestion": "What is the Mpemba effect?",
     "correctAnswer": "Hot water freezes faster than cold",
-    "distractors": [],
+    "distractors": [
+      "Cold water always",
+      "They freeze equally",
+      "It depends on container size"
+    ],
     "variants": [
       {
         "question": "Which freezes faster under certain conditions?",
@@ -528,9 +547,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],
@@ -560,7 +577,11 @@
     "explanation": "Voyager 1 crossed the heliopause — the boundary where the Sun's solar wind is overcome by interstellar medium — in 2012. It carries a Golden Record with sounds and images of Earth, intended as a message to any extraterrestrial intelligence that might find it.",
     "quizQuestion": "When did Voyager 1 enter interstellar space?",
     "correctAnswer": "2012",
-    "distractors": [],
+    "distractors": [
+      "1977",
+      "2001",
+      "2018"
+    ],
     "variants": [
       {
         "question": "When did Voyager 1 cross into interstellar space?",
@@ -607,9 +628,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],
@@ -639,7 +658,11 @@
     "explanation": "Sound is a mechanical wave that requires a medium — particles to compress and rarefy. The vacuum of space has far too few particles per cubic metre to transmit any sound wave at audible frequencies. Gas clouds in space can carry very low-frequency pressure waves, but nothing a human ear can detect.",
     "quizQuestion": "Why can't sound travel through outer space?",
     "correctAnswer": "Space lacks a medium for sound waves",
-    "distractors": [],
+    "distractors": [
+      "Sound waves freeze in cold",
+      "Gravity absorbs all sound",
+      "Radiation destroys sound waves"
+    ],
     "variants": [
       {
         "question": "Why is sound unable to propagate through space?",
@@ -718,7 +741,11 @@
     "explanation": "The African Humid Period, also called the Green Sahara, occurred due to shifts in Earth's orbital cycle (Milankovitch cycles) that brought monsoon rains deeper into Africa. The transition back to desert happened rapidly — possibly within centuries — due to vegetation feedbacks.",
     "quizQuestion": "What was the Sahara Desert like 6,000 years ago?",
     "correctAnswer": "Lush green savanna with lakes",
-    "distractors": [],
+    "distractors": [
+      "A frozen tundra",
+      "A volcanic wasteland",
+      "Even larger desert"
+    ],
     "variants": [
       {
         "question": "What was the Sahara Desert like 6,000 years ago?",
@@ -765,9 +792,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -797,7 +822,11 @@
     "explanation": "When water molecules arrange into ice crystals, they form a hexagonal lattice with more empty space between molecules than liquid water. This lower density makes ice float. Without this anomaly, lakes would freeze solid from the bottom up, wiping out aquatic life every winter.",
     "quizQuestion": "By approximately how much does water expand when freezing?",
     "correctAnswer": "About 9%",
-    "distractors": [],
+    "distractors": [
+      "About 3%",
+      "About 25%",
+      "About 50%"
+    ],
     "variants": [
       {
         "question": "By approximately how much does water expand when freezing?",
@@ -834,9 +863,7 @@
         "type": "fill_blank",
         "correctAnswer": "9",
         "distractors": [
-          "15",
-          "Plausible option 2",
-          "Plausible option 3"
+          "15"
         ]
       },
       {
@@ -876,7 +903,11 @@
     "explanation": "Earth's inner core reaches temperatures between 5,000°C and 6,000°C, maintained by residual heat from planetary formation and ongoing radioactive decay of uranium, thorium, and potassium. Despite the extreme heat, the inner core is solid due to immense pressure.",
     "quizQuestion": "Earth's core temperature compares to Sun's surface how?",
     "correctAnswer": "Approximately the same temperature",
-    "distractors": [],
+    "distractors": [
+      "Much cooler",
+      "Ten times hotter",
+      "Significantly colder"
+    ],
     "variants": [
       {
         "question": "Earth's core temperature compares to Sun's surface how?",
@@ -923,9 +954,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -955,7 +984,11 @@
     "explanation": "Venus's extremely slow retrograde rotation is thought to result from a collision early in solar system history or tidal locking interactions. Its thick atmosphere also rotates much faster than the planet itself, creating winds of up to 350 km/h.",
     "quizQuestion": "Why is a Venus day longer than its year?",
     "correctAnswer": "Extremely slow rotation",
-    "distractors": [],
+    "distractors": [
+      "Thick atmospheric winds",
+      "Retrograde orbit direction",
+      "Lack of a moon"
+    ],
     "variants": [
       {
         "question": "What makes a Venus day longer than its year?",
@@ -1002,9 +1035,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1034,7 +1065,11 @@
     "explanation": "Pierre Janssen and Norman Lockyer independently detected helium's spectral signature during a solar eclipse in 1868. Helium was isolated on Earth in 1895 by William Ramsay from uranium ore (cleveite), where radioactive decay produces helium as alpha particles.",
     "quizQuestion": "Where was helium first discovered?",
     "correctAnswer": "Sun's spectrum",
-    "distractors": [],
+    "distractors": [
+      "Neon",
+      "Argon",
+      "Hydrogen"
+    ],
     "variants": [
       {
         "question": "Which element was discovered in the Sun first?",
@@ -1081,9 +1116,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1113,7 +1146,11 @@
     "explanation": "Entangled particles share a quantum state. When you measure one, you instantly know the state of the other — even across the universe. This does not allow faster-than-light communication because the outcome is random; you cannot control what result you get to send a message.",
     "quizQuestion": "What did Einstein call quantum entanglement?",
     "correctAnswer": "Spooky action at a distance",
-    "distractors": [],
+    "distractors": [
+      "Invisible quantum force",
+      "Ghostly particle coupling",
+      "Hidden variable theory"
+    ],
     "variants": [
       {
         "question": "Einstein's famous name for quantum entanglement?",
@@ -1192,7 +1229,11 @@
     "explanation": "Medieval glass was made by spinning molten glass into discs, which were thicker at the edges — so glaziers placed the thicker edge downward for stability. True glass flow at room temperature requires geological timescales. The liquid-glass distinction is real but irrelevant to window thickness.",
     "quizQuestion": "Why are old medieval window panes thicker at bottom?",
     "correctAnswer": "Manufacturing placed thicker edges downward",
-    "distractors": [],
+    "distractors": [
+      "Glass flows downward slowly",
+      "Sunlight softens lower portions",
+      "Gravity compresses bottom glass"
+    ],
     "variants": [
       {
         "question": "Why did medieval glaziers place thick glass edges at bottom?",
@@ -1271,7 +1312,11 @@
     "explanation": "Carbon is the backbone of all organic molecules — DNA, proteins, fats, carbohydrates. The carbon in your body was forged in the cores of ancient stars that exploded as supernovae billions of years ago, seeding space with the elements of life.",
     "quizQuestion": "How much carbon does average adult contain?",
     "correctAnswer": "About 16 kg",
-    "distractors": [],
+    "distractors": [
+      "About 5 kg",
+      "About 50 kg",
+      "About 2 kg"
+    ],
     "variants": [
       {
         "question": "How much carbon in average adult body?",
@@ -1318,9 +1363,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1350,7 +1393,11 @@
     "explanation": "The universe's expansion means distant objects moved away while their light was travelling. Using the comoving distance — accounting for expansion — the observable universe's diameter is about 93 billion light-years. This is not contradicted by relativity because it is space itself expanding, not objects moving through space.",
     "quizQuestion": "What is the observable universe's approximate diameter?",
     "correctAnswer": "93 billion light-years",
-    "distractors": [],
+    "distractors": [
+      "13.8 billion light-years",
+      "1 trillion light-years",
+      "10 billion light-years"
+    ],
     "variants": [
       {
         "question": "What is the observable universe's approximate diameter?",
@@ -1429,7 +1476,11 @@
     "explanation": "Researchers at Goethe University Frankfurt used attosecond X-ray pulses to measure the photoionization process in hydrogen molecules. The 247 zeptosecond measurement represents the quantum mechanical traversal time of light across two atoms — approximately 0.000000000000000000000247 seconds.",
     "quizQuestion": "What is a zeptosecond in seconds?",
     "correctAnswer": "10^-21 seconds",
-    "distractors": [],
+    "distractors": [
+      "10^-12 seconds",
+      "10^-15 seconds",
+      "10^-9 seconds"
+    ],
     "variants": [
       {
         "question": "What is a zeptosecond?",
@@ -1477,8 +1528,7 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unmeasurable",
-          "Plausible option 3"
+          "Unmeasurable"
         ]
       }
     ],
@@ -1508,7 +1558,11 @@
     "explanation": "A rainbow forms at a specific angle (42°) from the antisolar point — the point directly opposite the Sun from your perspective. The full geometry is circular, but the ground intercepts the lower half. Pilots and people on tall mountains or above waterfalls sometimes see complete circles.",
     "quizQuestion": "What is a rainbow's complete geometric shape?",
     "correctAnswer": "Full circle",
-    "distractors": [],
+    "distractors": [
+      "Semicircle",
+      "Parabola",
+      "Ellipse"
+    ],
     "variants": [
       {
         "question": "What is a rainbow's complete geometric shape?",
@@ -1555,9 +1609,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1587,7 +1639,11 @@
     "explanation": "In their cryptobiotic tun state, tardigrades replace water in their cells with a sugar called trehalose, which forms a glass-like matrix that preserves their cellular machinery. They can survive radiation doses thousands of times lethal to humans and rehydrate after decades of dormancy.",
     "quizQuestion": "What sugar do tardigrades use for extreme survival?",
     "correctAnswer": "Trehalose",
-    "distractors": [],
+    "distractors": [
+      "Antifreeze proteins",
+      "Silica gel",
+      "Glycerol"
+    ],
     "variants": [
       {
         "question": "What do tardigrades replace water with to survive?",
@@ -1634,9 +1690,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1666,7 +1720,11 @@
     "explanation": "Honey's chemistry prevents spoilage: it has very low water content (below 20%), high acidity (pH 3.5–4.5), and bees add glucose oxidase which produces hydrogen peroxide. Together, these create an environment hostile to bacteria and fungi. Properly sealed honey is indefinitely shelf-stable.",
     "quizQuestion": "What makes honey resistant to spoilage?",
     "correctAnswer": "Low water, high acidity, hydrogen peroxide",
-    "distractors": [],
+    "distractors": [
+      "High sugar content alone",
+      "Wax coating by bees",
+      "Natural alcohol fermentation"
+    ],
     "variants": [
       {
         "question": "What combination prevents honey from spoiling?",
@@ -1745,7 +1803,11 @@
     "explanation": "Human DNA is coiled extraordinarily tightly inside cell nuclei using proteins called histones. The 46 chromosomes in each cell contain about 3 billion base pairs. Despite their tiny size, cells achieve this by supercoiling the DNA into chromatin fibres, fitting 2 metres into a space 0.006 mm across.",
     "quizQuestion": "How far would all human body DNA stretch if uncoiled?",
     "correctAnswer": "Pluto and back multiple times",
-    "distractors": [],
+    "distractors": [
+      "To the Moon and back",
+      "Around Earth once",
+      "To Mars and back"
+    ],
     "variants": [
       {
         "question": "How far would all human DNA stretch if uncoiled?",
@@ -1824,7 +1886,11 @@
     "explanation": "Mycorrhizal fungi form symbiotic relationships with tree roots, extending their reach dramatically. In exchange for sugars from photosynthesis, fungi provide water and minerals. Research by Suzanne Simard showed carbon-isotope labelled sugars moving between trees, proving active transfer through the network.",
     "quizQuestion": "What nickname describes underground fungal forest networks?",
     "correctAnswer": "The Wood Wide Web",
-    "distractors": [],
+    "distractors": [
+      "The Root Internet",
+      "The Forest Highway",
+      "The Fungal Grid"
+    ],
     "variants": [
       {
         "question": "What are underground fungal networks connecting trees called?",
@@ -1871,9 +1937,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1903,7 +1967,11 @@
     "explanation": "The mantis shrimp's dactyl clubs can strike at 23 m/s. The cavitation bubbles this creates collapse with enough force to stun or kill prey even on a miss. Its 16 photoreceptor types allow it to see ultraviolet, visible, and infrared light simultaneously, likely to process colour information rapidly rather than with enhanced discrimination.",
     "quizQuestion": "How many colour receptors does mantis shrimp have?",
     "correctAnswer": "Sixteen",
-    "distractors": [],
+    "distractors": [
+      "Three",
+      "Eight",
+      "Thirty-two"
+    ],
     "variants": [
       {
         "question": "How many colour receptors does mantis shrimp have?",
@@ -1940,9 +2008,7 @@
         "type": "fill_blank",
         "correctAnswer": "16",
         "distractors": [
-          "32",
-          "Plausible option 2",
-          "Plausible option 3"
+          "32"
         ]
       },
       {
@@ -1950,9 +2016,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1982,7 +2046,11 @@
     "explanation": "The Egyptian civilisation lasted over 3,000 years. Cleopatra VII, the famous last pharaoh, lived in what we now call the Ptolemaic period — a full 2,500 years after the Old Kingdom pyramids were built. This comparison illustrates how the ancient world's timeline is often compressed in our minds.",
     "quizQuestion": "Cleopatra lived closer to Moon landing or Great Pyramid?",
     "correctAnswer": "Moon landing",
-    "distractors": [],
+    "distractors": [
+      "Great Pyramid construction",
+      "Fall of Rome",
+      "Birth of Jesus"
+    ],
     "variants": [
       {
         "question": "Which event is closer in time to Cleopatra's death?",
@@ -2061,7 +2129,11 @@
     "explanation": "Shark ancestors appeared in the Silurian period. Early land plants evolved in the Devonian, and the first true trees appeared around 385 million years ago. Sharks survived all five major mass extinctions, outlasting dinosaurs, trilobites, and countless other lifeforms.",
     "quizQuestion": "Which existed first on Earth: sharks or trees?",
     "correctAnswer": "Sharks, 200 million years earlier",
-    "distractors": [],
+    "distractors": [
+      "Trees, by 100 million years",
+      "They evolved simultaneously",
+      "Trees, by 200 million years"
+    ],
     "variants": [
       {
         "question": "Which appeared on Earth first — sharks or trees?",
@@ -2098,9 +2170,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       },
       {
@@ -2140,7 +2210,11 @@
     "explanation": "Collective nouns for animals are often historical terms that reflect the animal's characteristics or behaviour. Flamingos get their pink colour from the carotenoid pigments in their food — shrimp and algae. A captive flamingo fed a plain diet will turn white.",
     "quizQuestion": "What is the collective noun for flamingos?",
     "correctAnswer": "Flamboyance",
-    "distractors": [],
+    "distractors": [
+      "Flock",
+      "Colony",
+      "Parade"
+    ],
     "variants": [
       {
         "question": "What is the collective noun for flamingos?",
@@ -2219,7 +2293,11 @@
     "explanation": "Clownfish live in strict social hierarchies. The largest individual is the breeding female; the second-largest is the breeding male. If the female dies, the male undergoes a complete sex change — becoming the new female — and the next fish in the hierarchy becomes the new breeding male.",
     "quizQuestion": "What would realistically happen to Marlin after Nemo's mother died?",
     "correctAnswer": "Change sex to become female",
-    "distractors": [],
+    "distractors": [
+      "Find a new mate immediately",
+      "Leave the anemone",
+      "Become infertile"
+    ],
     "variants": [
       {
         "question": "What would realistically happen to Marlin after Nemo's mother died?",
@@ -2257,8 +2335,7 @@
         "correctAnswer": "male",
         "distractors": [
           "female",
-          "genderless",
-          "Plausible option 3"
+          "genderless"
         ]
       },
       {
@@ -2266,9 +2343,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2298,7 +2373,11 @@
     "explanation": "Blue whales are the largest animals known to have ever existed. Their hearts pump approximately 220 litres of blood per beat. The slow heartbeat during dives is a form of physiological diving response that conserves oxygen for the brain and essential muscles.",
     "quizQuestion": "How much does a blue whale's heart weigh?",
     "correctAnswer": "About 180 kg",
-    "distractors": [],
+    "distractors": [
+      "About 50 kg",
+      "About 500 kg",
+      "About 20 kg"
+    ],
     "variants": [
       {
         "question": "A blue whale's heart weighs approximately how much?",
@@ -2377,7 +2456,11 @@
     "explanation": "Crows have a highly developed forebrain that enables face recognition, problem-solving, and social memory. They can communicate 'dangerous human' information to flock members who weren't present during the original encounter. This cultural transmission of knowledge is rare outside primates.",
     "quizQuestion": "What did crows remember about mask-wearing researchers?",
     "correctAnswer": "Remembered faces for years, taught offspring",
-    "distractors": [],
+    "distractors": [
+      "Ignored the mask completely",
+      "Attacked all nearby humans",
+      "Fled the territory"
+    ],
     "variants": [
       {
         "question": "What did trapped crows do years later when they saw the same mask?",
@@ -2414,9 +2497,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       },
       {
@@ -2456,7 +2537,11 @@
     "explanation": "The botanical definition of a berry is specific: fleshy fruit derived from a single ovary containing seeds embedded in the flesh. Bananas, watermelons, tomatoes, and cucumbers all qualify. Strawberries, raspberries, and blackberries fail this test by botanical standards.",
     "quizQuestion": "Which fruit is botanically classified as true berry?",
     "correctAnswer": "Banana",
-    "distractors": [],
+    "distractors": [
+      "Strawberry",
+      "Raspberry",
+      "Blackberry"
+    ],
     "variants": [
       {
         "question": "Which fruit is botanically a true berry?",
@@ -2493,9 +2578,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       },
       {
@@ -2535,7 +2618,11 @@
     "explanation": "All eukaryotic life shares core genetic sequences because the basic mechanisms of cellular life are ancient and conserved by evolution. Humans share roughly 85% of their genes with mice, 60% with fruit flies, and 60% with bananas. We share 99.9% with other humans, and about 98.7% with chimpanzees.",
     "quizQuestion": "What percentage of DNA do humans share with bananas?",
     "correctAnswer": "About 60%",
-    "distractors": [],
+    "distractors": [
+      "About 10%",
+      "About 30%",
+      "About 90%"
+    ],
     "variants": [
       {
         "question": "What percentage of DNA do humans share with bananas?",
@@ -2583,8 +2670,7 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Partially true",
-          "Plausible option 3"
+          "Partially true"
         ]
       }
     ],
@@ -2614,7 +2700,11 @@
     "explanation": "Jellyfish have no brain, no heart, and no blood. They use a diffuse nerve net for sensing and responding to the environment, and their 'blood' function is handled by the diffusion of nutrients through their jelly-like mesoglea. They have survived all five major mass extinctions.",
     "quizQuestion": "What organs do jellyfish completely lack?",
     "correctAnswer": "Brain, heart, blood",
-    "distractors": [],
+    "distractors": [
+      "Lungs, liver, kidneys",
+      "Muscles, nerves, skin",
+      "Eyes, ears, stomach"
+    ],
     "variants": [
       {
         "question": "What organs do jellyfish completely lack?",
@@ -2651,9 +2741,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       },
       {
@@ -2693,7 +2781,11 @@
     "explanation": "The Moon exerts tidal forces on Earth, transferring rotational energy from Earth to the Moon's orbit. This gradually slows Earth's rotation and pushes the Moon further away (currently 3.8 cm per year). Ancient corals and bivalves preserve daily growth rings that confirm historical day lengths.",
     "quizQuestion": "How long was a day during dinosaur times?",
     "correctAnswer": "About 22 hours",
-    "distractors": [],
+    "distractors": [
+      "Exactly 24 hours",
+      "About 18 hours",
+      "About 30 hours"
+    ],
     "variants": [
       {
         "question": "How long was a day during dinosaur times?",
@@ -2772,7 +2864,11 @@
     "explanation": "Research published in 2018 revealed that wombat intestines have two regions of differing stiffness in the final section, which causes faeces to form into cubes rather than cylinders. Wombats use these distinctive droppings as territorial markers — the flat sides stop them rolling away.",
     "quizQuestion": "What unique shape do wombat droppings have?",
     "correctAnswer": "Cubic",
-    "distractors": [],
+    "distractors": [
+      "Spherical",
+      "Cylindrical",
+      "Flat discs"
+    ],
     "variants": [
       {
         "question": "What shape are wombat faeces?",
@@ -2849,7 +2945,11 @@
     "explanation": "Research by William Parker at Duke University showed the appendix's structure — a blind-ended tube covered in immune tissue — is ideal for sheltering beneficial bacterial populations. After illnesses that flush the intestines, bacteria from the appendix repopulate the gut. The appendix is also active in foetal immune function.",
     "quizQuestion": "What function does the appendix serve?",
     "correctAnswer": "Reservoir for beneficial gut bacteria",
-    "distractors": [],
+    "distractors": [
+      "Produces digestive enzymes",
+      "Filters toxins from food",
+      "Absorbs water from intestines"
+    ],
     "variants": [
       {
         "question": "What recently discovered function does the appendix serve?",
@@ -2928,7 +3028,11 @@
     "explanation": "Electric eels (Electrophorus electricus and related species) are knifefish — a group more closely related to catfish than to true eels. They evolved three separate electric organs from modified muscle tissue. The high-voltage discharge is used for stunning prey; lower voltages are used for navigation and communication.",
     "quizQuestion": "What animal group is the electric eel most closely related to?",
     "correctAnswer": "Catfish",
-    "distractors": [],
+    "distractors": [
+      "True eels",
+      "Sharks",
+      "Lampreys"
+    ],
     "variants": [
       {
         "question": "Electric eels are knifefish most closely related to which group?",
@@ -2976,8 +3080,7 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Partially true",
-          "Plausible option 3"
+          "Partially true"
         ]
       }
     ],
@@ -3007,7 +3110,11 @@
     "explanation": "The gene for the Tas1r2 taste receptor — which in humans and most mammals detects sweet tastes — is a non-functional pseudogene in cats. This is true of all felids, not just domestic cats. It likely evolved away because a purely meat-based diet offers no benefit from detecting sugars.",
     "quizQuestion": "Why can't cats taste sweetness?",
     "correctAnswer": "Lack functional sweet taste receptor gene",
-    "distractors": [],
+    "distractors": [
+      "Saliva neutralizes sugar molecules",
+      "Tongue papillae block sweet receptors",
+      "Brain cannot process sweet signals"
+    ],
     "variants": [
       {
         "question": "Why can't cats taste sweetness?",
@@ -3086,7 +3193,11 @@
     "explanation": "Hemocyanin is less efficient at oxygen transport than the iron-based hemoglobin found in vertebrates. The additional hearts compensate. The blue colour appears because copper oxidises blue, unlike iron which oxidises red. Hemocyanin works better than hemoglobin in cold, low-oxygen environments like the deep sea.",
     "quizQuestion": "Why is octopus blood blue instead of red?",
     "correctAnswer": "Contains copper-based hemocyanin",
-    "distractors": [],
+    "distractors": [
+      "Iron-based hemoglobin",
+      "Chlorophyll absorption",
+      "Bioluminescent proteins"
+    ],
     "variants": [
       {
         "question": "Why is octopus blood blue?",
@@ -3133,9 +3244,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],
@@ -3165,7 +3274,11 @@
     "explanation": "Axolotls (Ambystoma mexicanum) are paedomorphic salamanders that retain juvenile traits including extraordinary regenerative capacity. Their cells can dedifferentiate — reverting to stem-cell-like states — and then redifferentiate into the correct cell types for the missing structure. Scientists are studying this to understand human wound healing.",
     "quizQuestion": "What can axolotls regenerate throughout their lives?",
     "correctAnswer": "Limbs, heart tissue, brain tissue",
-    "distractors": [],
+    "distractors": [
+      "Eyes and entire spinal cord",
+      "Organs and skeletal structure",
+      "Skin and internal organs"
+    ],
     "variants": [
       {
         "question": "What can axolotls regenerate throughout their lives?",
@@ -3212,9 +3325,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],

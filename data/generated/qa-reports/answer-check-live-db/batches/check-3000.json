@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:50.053Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 3000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 10,
+    "clear": 490,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "art_architecture_gen_210",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_211",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_252",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_263",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art_architecture_gen_290",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-b01-013",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-b01-067",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-b01-087",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-b01-090",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-b01-220",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298250002,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

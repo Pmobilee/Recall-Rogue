@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:53.896Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 18000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 19,
+    "clear": 481,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "genknow-b11-005",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b11-006",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b11-010",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b11-011",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b15-001",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b16-006",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b16-008",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b16-009",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b16-013",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "genknow-b17-021",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298253850,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

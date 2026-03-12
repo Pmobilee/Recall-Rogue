@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T07:01:15.920Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 50000,
+  "offset": 0,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 46780,
+    "flagged": 2591,
+    "clear": 44189,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "animal-barn-swallow-range-293",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animal-mantis-prayer-169",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animal-spider-silk-strength-160",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animal-surinam-toad-birth-176",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b01-003",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b01-010",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b01-030",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b01-043",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b011-005",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-b011-020",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298874972,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

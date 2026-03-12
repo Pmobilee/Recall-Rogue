@@ -5,7 +5,7 @@
 
 import type { FactDomain } from '../data/card-types'
 import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL, MAX_FLOORS } from '../data/balance'
-import { ENEMY_TEMPLATES } from '../data/enemies'
+import { ENEMY_TEMPLATES, type EnemyRegion } from '../data/enemies'
 
 // ============================================================
 // Types
@@ -154,15 +154,24 @@ const BOSS_MAP: Record<number, string> = {
   24: 'the_curator',
 }
 
-/** Mini-boss pool IDs, used for encounter 3 on non-boss floors. */
-const MINI_BOSS_POOL = [
-  'crystal_guardian',
-  'venomfang',
-  'stone_sentinel',
-  'ember_drake',
-  'shade_stalker',
-  'bone_collector',
-]
+/** Maps a floor number to its dungeon region for enemy selection. */
+export function getRegionForFloor(floor: number): EnemyRegion {
+  if (floor <= 6) return 'shallow_depths'
+  if (floor <= 12) return 'deep_caverns'
+  if (floor <= 18) return 'the_abyss'
+  return 'the_archive'
+}
+
+/** Mini-boss pools per region. */
+const MINI_BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
+  shallow_depths: ['venomfang', 'bone_collector', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
+  deep_caverns: ['crystal_guardian', 'stone_sentinel', 'sulfur_queen', 'granite_colossus', 'deep_lurker', 'lava_salamander'],
+  the_abyss: ['ember_drake', 'shade_stalker', 'obsidian_knight', 'quartz_hydra', 'fossil_wyvern', 'magma_broodmother'],
+  the_archive: ['primordial_wyrm', 'iron_archon', 'pressure_colossus', 'biolume_monarch', 'tectonic_titan', 'glyph_warden', 'archive_specter'],
+}
+
+/** Mini-boss pool IDs, used for encounter 3 on non-boss floors. Flat fallback for tests. */
+const MINI_BOSS_POOL = Object.values(MINI_BOSS_POOL_BY_REGION).flat()
 
 // ============================================================
 // Exported functions
@@ -233,12 +242,13 @@ export function isMiniBossEncounter(floor: number, encounter: number): boolean {
 
 /**
  * Get the mini-boss enemy template ID for a given floor.
- * Picks from the mini-boss pool based on floor number for variety.
+ * Picks from the region-appropriate mini-boss pool for variety.
  */
 export function getMiniBossForFloor(floor: number): string {
-  // Use floor number to deterministically pick, with some randomness
-  const idx = Math.floor(Math.random() * MINI_BOSS_POOL.length)
-  return MINI_BOSS_POOL[idx]
+  const region = getRegionForFloor(floor)
+  const pool = MINI_BOSS_POOL_BY_REGION[region]
+  const idx = Math.floor(Math.random() * pool.length)
+  return pool[idx]
 }
 
 /** Get the timer duration in seconds for a given floor. */
@@ -310,15 +320,19 @@ export function generateEventRoomOptions(floor: number): RoomOption[] {
 }
 
 /**
- * Pick a random combat enemy from the common pool for this floor's segment.
+ * Pick a random combat enemy from the common pool for this floor's region.
  * NOTE: Only call for encounters 1 and 2 (regular encounters).
  * Encounter 3 is always a mini-boss (via getMiniBossForFloor) or boss (via getBossForFloor).
  */
 export function pickCombatEnemy(floor: number): string {
-  const commonEnemies = ENEMY_TEMPLATES.filter(e => e.category === 'common')
-  if (commonEnemies.length === 0) return 'cave_bat' // fallback
-  const idx = Math.floor(Math.random() * commonEnemies.length)
-  return commonEnemies[idx].id
+  const region = getRegionForFloor(floor)
+  const regionEnemies = ENEMY_TEMPLATES.filter(e => e.category === 'common' && e.region === region)
+  if (regionEnemies.length === 0) {
+    // Fallback to any common enemy
+    const allCommon = ENEMY_TEMPLATES.filter(e => e.category === 'common')
+    return allCommon[Math.floor(Math.random() * allCommon.length)]?.id ?? 'cave_bat'
+  }
+  return regionEnemies[Math.floor(Math.random() * regionEnemies.length)].id
 }
 
 /** Generate a random mystery event. */
@@ -372,12 +386,11 @@ function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: str
   switch (type) {
     case 'combat': {
       const enemyId = preselectedEnemyId ?? pickCombatEnemy(floor)
-      const template = ENEMY_TEMPLATES.find(e => e.id === enemyId)
       return {
         type: 'combat',
         icon: '\u2694\uFE0F', // ⚔️
-        label: template?.name ?? 'Unknown Enemy',
-        detail: `HP: ${template?.baseHP ?? '?'}`,
+        label: 'Combat',
+        detail: 'Enemy encounter',
         enemyId,
         hidden: false,
       }

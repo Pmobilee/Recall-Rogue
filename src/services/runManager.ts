@@ -69,6 +69,14 @@ export interface RunState {
   rewardsDisabled?: boolean;
   /** Active deck mode for this run (general/preset/language). */
   deckMode?: DeckMode;
+  /** Anti-farm reward scale derived from selected pool size/novelty. */
+  poolRewardScale?: number;
+  /** Novel-fact ratio in the selected pool (0-1). */
+  poolNoveltyPct?: number;
+  /** Unique fact count in the selected pool. */
+  poolFactCount?: number;
+  /** Whether outside-due reviews were merged for this run. */
+  includeOutsideDueReviews?: boolean;
   /** Per-domain answer tracking for auto-calibration. */
   domainAccuracy: Record<string, { answered: number; correct: number }>;
   /** Number of cards upgraded during this run. */
@@ -111,6 +119,10 @@ export function createRunState(
     deckMode?: DeckMode;
     deckMasteryPct?: number;
     rewardsDisabled?: boolean;
+    poolRewardScale?: number;
+    poolNoveltyPct?: number;
+    poolFactCount?: number;
+    includeOutsideDueReviews?: boolean;
   },
 ): RunState {
   const runSeed = Math.floor(Math.random() * 0xFFFFFFFF);
@@ -165,6 +177,10 @@ export function createRunState(
     deckMode: options?.deckMode,
     deckMasteryPct: options?.deckMasteryPct,
     rewardsDisabled: options?.rewardsDisabled,
+    poolRewardScale: options?.poolRewardScale ?? 1,
+    poolNoveltyPct: options?.poolNoveltyPct,
+    poolFactCount: options?.poolFactCount,
+    includeOutsideDueReviews: options?.includeOutsideDueReviews ?? false,
   };
 }
 
@@ -231,7 +247,8 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
   const masteryRewardScale = (state.deckMasteryPct ?? 0) > 0
     ? getRewardMultiplier(state.deckMasteryPct ?? 0)
     : 1.0;
-  const rewardMultiplier = deathPenalty * difficultyBonus * masteryRewardScale;
+  const poolRewardScale = state.poolRewardScale ?? 1.0;
+  const rewardMultiplier = deathPenalty * difficultyBonus * masteryRewardScale * poolRewardScale;
   const completedBounties = state.bounties.filter((bounty) => bounty.completed).map((bounty) => bounty.name);
   const rewardsSuppressed = (reason === 'retreat' && state.retreatRewardLocked) || state.rewardsDisabled;
   const bountyBonusCurrency = rewardsSuppressed ? 0 : completedBounties.length * 20;

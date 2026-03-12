@@ -3,6 +3,7 @@
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
+  import { getComboMultiplier } from '../../services/turnManager'
   import { FLOOR_TIMER } from '../../data/balance'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
@@ -97,6 +98,7 @@
 
   let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
   let comboCount = $derived(turnState?.comboCount ?? 0)
+  let comboMultiplier = $derived(getComboMultiplier(comboCount))
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
   let displayRelics = $derived(
     [...(turnState?.activeRelicIds ?? [])].map((id) => {
@@ -696,6 +698,7 @@
         comboCount: 0,
         effectLabel: undefined,
         isPerfectTurn: false,
+        cardType: card.cardType,
       })
 
       setTimeout(() => {
@@ -738,6 +741,7 @@
             comboCount: nextCombo,
             effectLabel: effectLabel,
             isPerfectTurn: willBePerfect,
+            cardType: card.cardType,
           })
         }, REVEAL_DURATION)
 
@@ -752,6 +756,7 @@
               comboCount: nextCombo,
               effectLabel: effectLabel,
               isPerfectTurn: willBePerfect,
+              cardType: card.cardType,
             })
           }, REVEAL_DURATION + TIER_UP_DURATION)
         }
@@ -795,6 +800,7 @@
             comboCount: nextCombo,
             effectLabel: effectLabel,
             isPerfectTurn: willBePerfect,
+            cardType: card.cardType,
           })
         }, mechanicStartDelay)
 
@@ -899,58 +905,43 @@
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       <button
-        class="enemy-intent-panel"
+        class="enemy-intent-bubble"
+        class:intent-expanded={intentPopupOpen}
         style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
-        onclick={() => { intentPopupOpen = true }}
+        onclick={() => { intentPopupOpen = !intentPopupOpen }}
         aria-label="View intent details"
       >
-        <span class="intent-icon">{intentDisplay.icon}</span>
-        <span class="intent-telegraph">{intentDisplay.telegraph || intentDisplay.label}</span>
-        {#if intentDisplay.text}
-          <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
-            class:intent-value-defend={intentDisplay.type === 'defend'}
-            class:intent-value-heal={intentDisplay.type === 'heal'}
-            class:intent-value-buff={intentDisplay.type === 'buff'}
-            class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
+        <div class="intent-bubble-summary">
+          <span class="intent-icon">{intentDisplay.icon}</span>
+          {#if intentDisplay.text}
+            <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
+              class:intent-value-defend={intentDisplay.type === 'defend'}
+              class:intent-value-heal={intentDisplay.type === 'heal'}
+              class:intent-value-buff={intentDisplay.type === 'buff'}
+              class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
+          {/if}
+        </div>
+        {#if intentPopupOpen && enemyIntent}
+          <div class="intent-bubble-detail">
+            {#if enemyIntent.type === 'attack'}
+              <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> dmg</p>
+            {:else if enemyIntent.type === 'multi_attack'}
+              <p><strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong>x <strong class="popup-val-attack">{enemyIntent.value}</strong> dmg</p>
+            {:else if enemyIntent.type === 'defend'}
+              <p>+<strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
+            {:else if enemyIntent.type === 'buff'}
+              <p>Buff</p>
+            {:else if enemyIntent.type === 'debuff'}
+              <p>Debuff</p>
+            {:else if enemyIntent.type === 'heal'}
+              <p>+<strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
+            {/if}
+          </div>
         {/if}
+        <div class="intent-bubble-tail"></div>
       </button>
     {/if}
 
-    {#if intentPopupOpen && intentDisplay && enemyIntent}
-      <button
-        class="intent-popup-backdrop"
-        onclick={() => { intentPopupOpen = false }}
-        aria-label="Close intent details"
-      ></button>
-      <div class="intent-popup" role="dialog" aria-label="Intent details" onclick={() => { intentPopupOpen = false }}>
-        <div class="intent-popup-header" style="border-bottom-color: {intentDisplay.borderColor};">
-          <span class="intent-popup-icon">{intentDisplay.icon}</span>
-          <span class="intent-popup-name">{intentDisplay.telegraph || intentDisplay.label}</span>
-        </div>
-        <div class="intent-popup-body">
-          {#if enemyIntent.type === 'attack'}
-            <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> damage</p>
-          {:else if enemyIntent.type === 'multi_attack'}
-            <p>Hits <strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong> times for <strong class="popup-val-attack">{enemyIntent.value}</strong> damage each</p>
-            <p class="intent-popup-total">Total: {enemyIntent.value * (enemyIntent.hitCount ?? 2)} damage</p>
-          {:else if enemyIntent.type === 'defend'}
-            <p>Gains <strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
-          {:else if enemyIntent.type === 'buff'}
-            <p>Gains a buff</p>
-            {#if enemyIntent.statusEffect}
-              <p class="intent-popup-effect">+{enemyIntent.statusEffect.value} {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
-            {/if}
-          {:else if enemyIntent.type === 'debuff'}
-            <p>Applies a debuff to you</p>
-            {#if enemyIntent.statusEffect}
-              <p class="intent-popup-effect">{enemyIntent.statusEffect.value} {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
-            {/if}
-          {:else if enemyIntent.type === 'heal'}
-            <p>Heals for <strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
-          {/if}
-        </div>
-      </div>
-    {/if}
 
     {#if cardPlayStage === 'selected' && selectedCard}
       <button
@@ -1008,6 +999,7 @@
       {cardAnimations}
       {tierUpTransitions}
       apCurrent={apCurrent}
+      {comboMultiplier}
       disabled={turnState.phase !== 'player_action' || cardPlayStage === 'committed'}
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
@@ -1104,14 +1096,40 @@
 
   .ap-orb.ap-active {
     background: radial-gradient(circle at 40% 35%, #ff4444, #991111);
-    box-shadow: 0 0 12px 4px rgba(255, 50, 50, 0.6), 0 0 24px 8px rgba(255, 50, 50, 0.3);
-    animation: ap-pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 10px 3px rgba(255, 140, 0, 0.5);
+    animation: none;
+    overflow: visible;
+  }
+
+  .ap-orb.ap-active::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255, 140, 0, 0.5),
+      rgba(255, 179, 71, 0.3),
+      transparent 40%,
+      rgba(255, 140, 0, 0.4) 60%,
+      rgba(255, 100, 0, 0.5) 80%,
+      transparent 90%,
+      rgba(255, 140, 0, 0.5)
+    );
+    filter: blur(3px);
+    animation: ap-fire-rotate 3s linear infinite;
+    z-index: -1;
+    pointer-events: none;
   }
 
   .ap-orb.ap-empty {
     background: radial-gradient(circle at 40% 35%, #666666, #333333);
     box-shadow: none;
     animation: none;
+  }
+
+  .ap-orb.ap-empty::before {
+    display: none;
   }
 
   .ap-number {
@@ -1122,26 +1140,29 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   }
 
-  @keyframes ap-pulse {
-    0%, 100% { box-shadow: 0 0 12px 4px rgba(255, 50, 50, 0.6), 0 0 24px 8px rgba(255, 50, 50, 0.3); }
-    50% { box-shadow: 0 0 20px 8px rgba(255, 50, 50, 0.8), 0 0 32px 12px rgba(255, 50, 50, 0.4); }
+  @keyframes ap-fire-rotate {
+    from { transform: rotate(0deg) scale(0.97); }
+    25% { transform: rotate(90deg) scale(1.03); }
+    50% { transform: rotate(180deg) scale(0.97); }
+    75% { transform: rotate(270deg) scale(1.03); }
+    to { transform: rotate(360deg) scale(0.97); }
   }
 
   .bounty-strip {
     position: absolute;
-    right: 12px;
+    right: 8px;
     bottom: 68px;
     z-index: 8;
-    min-width: 146px;
-    max-width: 220px;
-    background: rgba(15, 23, 35, 0.92);
-    border: 1px solid #475569;
-    border-radius: 10px;
-    padding: 6px 8px;
+    min-width: 120px;
+    max-width: 180px;
+    background: rgba(15, 23, 35, 0.55);
+    border: 1px solid rgba(71, 85, 105, 0.4);
+    border-radius: 8px;
+    padding: 4px 6px;
     display: grid;
-    gap: 4px;
-    color: #dce7f6;
-    font-size: 11px;
+    gap: 2px;
+    color: rgba(220, 231, 246, 0.7);
+    font-size: 9px;
   }
 
   .bounty-line {
@@ -1154,46 +1175,70 @@
     color: #facc15;
   }
 
-  .enemy-intent-panel {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
+  .enemy-intent-bubble {
+    position: fixed;
+    top: 16%;
+    right: 52%;
     z-index: 12;
     border: 1.5px solid;
-    border-radius: 10px;
-    padding: 6px 14px;
-    min-width: 100px;
-    max-width: 220px;
+    border-radius: 12px;
+    padding: 6px 10px;
     backdrop-filter: blur(8px);
-    animation: intent-fade-in 300ms ease-out;
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    justify-content: center;
-    /* button reset */
+    gap: 4px;
     font: inherit;
     color: inherit;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.2s ease;
+    transform-origin: bottom right;
   }
 
-  .enemy-intent-panel:active {
-    transform: translateX(-50%) scale(0.96);
+  .enemy-intent-bubble:active {
+    transform: scale(0.95);
+  }
+
+  .enemy-intent-bubble.intent-expanded {
+    transform: scale(1.3);
+    padding: 8px 14px;
+  }
+
+  .intent-bubble-summary {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .intent-bubble-detail {
+    font-size: 11px;
+    color: #e2e8f0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .intent-bubble-detail p {
+    margin: 2px 0 0;
+  }
+
+  .intent-bubble-tail {
+    position: absolute;
+    bottom: -6px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid;
+    border-top-color: inherit;
+    opacity: 0.7;
   }
 
   .intent-icon {
     font-size: 16px;
     line-height: 1;
-  }
-
-  .intent-telegraph {
-    font-size: 13px;
-    font-weight: 600;
-    color: #e2e8f0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .intent-value {
@@ -1227,72 +1272,6 @@
     color: #a855f7;
   }
 
-  .intent-popup-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    cursor: default;
-  }
-
-  .intent-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 51;
-    background: rgba(15, 23, 42, 0.95);
-    border: 1.5px solid rgba(148, 163, 184, 0.3);
-    border-radius: 14px;
-    padding: 16px 20px;
-    min-width: 220px;
-    max-width: 280px;
-    backdrop-filter: blur(12px);
-    animation: intent-fade-in 200ms ease-out;
-  }
-
-  .intent-popup-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-  }
-
-  .intent-popup-icon {
-    font-size: 22px;
-  }
-
-  .intent-popup-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #f1f5f9;
-  }
-
-  .intent-popup-body {
-    color: #cbd5e1;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .intent-popup-body p {
-    margin: 0 0 4px;
-  }
-
-  .intent-popup-total {
-    color: #94a3b8;
-    font-size: 12px;
-    margin-top: 4px !important;
-  }
-
-  .intent-popup-effect {
-    color: #a78bfa;
-    font-size: 13px;
-    font-style: italic;
-  }
-
   .popup-val-attack {
     color: #ef4444;
   }
@@ -1315,14 +1294,21 @@
 
   .enemy-name-header {
     position: fixed;
-    top: 38vh;
+    top: 4vh;
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    text-shadow:
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000,
+      0 0 8px rgba(0, 0, 0, 0.9);
     white-space: nowrap;
     pointer-events: none;
   }
@@ -1331,7 +1317,6 @@
     from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
     to { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
-
 
   .card-backdrop {
     position: fixed;
@@ -1393,8 +1378,10 @@
   .end-turn-btn {
     position: absolute;
     left: 12px;
-    right: 12px;
     bottom: 12px;
+    width: auto;
+    min-width: 110px;
+    padding: 0 20px;
     height: 48px;
     background: #1f2937;
     color: #f8fafc;

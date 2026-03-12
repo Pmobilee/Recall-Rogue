@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:51.129Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 7500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 26,
+    "clear": 474,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "de-fin2-036",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-059",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-076",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-094",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-100",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-101",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-112",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-114",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-124",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "de-fin2-128",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298251072,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

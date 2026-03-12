@@ -100,6 +100,7 @@ Located in `src/services/`:
 Located in `src/data/`:
 
 - `types.ts` — PlayerSave, fact types (extend with card types)
+- `vocabulary.ts` — Language deck types: `LanguageConfig` (extended with `subdecks` and `options`), `LanguageDeckOption` interface, VocabularyFact schema extensions for targetLanguage, jlptLevel, reading, audioUrl
 - `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling
@@ -174,6 +175,9 @@ These systems transfer from the mining codebase with minimal changes:
 | Preset pool builder | `src/services/presetPoolBuilder.ts` | Built — resolves study mode into domain + subcategory filters for run pool |
 | Mastery scaling | `src/services/masteryScalingService.ts` | Built — anti-cheat reward/timer scaling based on deck mastery % |
 | Study preset types | `src/data/studyPreset.ts` | Built — StudyPreset + DeckMode types |
+| Deck options service | `src/services/deckOptionsService.ts` | Built — Persisted store for language-specific display options (furigana, romaji) |
+| Furigana display | `src/ui/FuriganaText.svelte` | Built — Ruby annotation component for Japanese text |
+| Deck options panel | `src/ui/DeckOptionsPanel.svelte` | Built — Toggle UI for language-specific display options |
 
 ### Implemented (Camp Hub Visual Overhaul)
 
@@ -541,3 +545,101 @@ All facts MUST pass through Haiku agent processing:
 - **Haiku transform**: Question/answers/variants/scoring via Agent tool
 - **QA enforcement**: Blocklist check, format validation, `_haikuProcessed: true` flag required
 - **No external APIs**: All processing uses Claude Code Agent tool, never `@anthropic-ai/sdk`
+
+## 13.5. Japanese Language Content Pipeline
+
+Parallel pipeline for extracting and merging JLPT-structured Japanese facts (vocabulary, kanji, grammar, kana).
+
+### Source Files
+
+- `data/references/full-japanese-study-deck/` — Cloned FJSD repo with:
+  - Vocab IDs mapped to JLPT levels (N5–N1)
+  - `kanji-info.json` — radical mappings, stroke count, JLPT assignment
+  - `grammar.json` — grammar patterns, JLPT levels, example sentences
+  - `kana.json` — hiragana, katakana, extended kana (dakuten, handakuten)
+- `data/references/jmdict/jmdict-eng.json` — JMdict English dictionary (215,611 entries, CC-BY-SA 4.0)
+- `data/raw/japanese/` — Extracted per-subdeck JSON files:
+  - `vocabulary.json` — 10,013 vocab facts with JLPT level, part-of-speech, example sentence
+  - `kanji.json` — 2,096 kanji facts with radical, stroke count, JLPT assignment
+  - `grammar.json` — 644 grammar pattern facts with JLPT level
+  - `kana.json` — 372 kana facts (hiragana, katakana, extended)
+
+### Extraction Script
+
+**File:** `scripts/content-pipeline/vocab/extract-fjsd-japanese.mjs`
+
+**Input:** FJSD repo + JMdict dictionary
+**Output:** `data/raw/japanese/*.json` per subdeck
+
+**Process:**
+1. Read FJSD vocab list → parse JLPT level assignments
+2. Cross-reference JMdict for English meanings and example sentences
+3. Normalize schema to Quiz fact structure: question, answers (3 options), explanation, fun score, difficulty
+4. Separate into 4 subdecks (vocabulary, kanji, grammar, kana) per JLPT level
+5. Write to `data/raw/japanese/*.json`
+
+### Merge Script
+
+**File:** `scripts/content-pipeline/vocab/merge-japanese-facts.mjs`
+
+**Input:** `data/raw/japanese/*.json` per subdeck
+**Output:** Facts appended to `src/data/seed/facts-generated.json`
+
+**Process:**
+1. Read all `data/raw/japanese/*.json` files
+2. For each fact:
+   - Add `targetLanguage: 'ja'`, `subdeck: 'vocabulary'|'kanji'|'grammar'|'kana'`
+   - Include `jlptLevel` (N5–N1)
+   - Generate `visualDescription` using Japanese cultural theming (see GAME_DESIGN.md § 21.5)
+   - Create Tier 1 and reverse Tier 2 variants (if applicable)
+3. Append to `src/data/seed/facts-generated.json`
+
+### Database Build
+
+**File:** `scripts/build-facts-db.mjs` (unchanged)
+
+**Input:** `src/data/seed/facts-generated.json` (now includes 13,125 Japanese facts)
+**Output:** `public/facts.db` + `seed-pack.json`
+
+**Indexing:** Facts indexed by:
+- `id` (unique)
+- `targetLanguage` = 'ja'
+- `subdeck` ∈ {vocabulary, kanji, grammar, kana}
+- `jlptLevel` ∈ {N5, N4, N3, N2, N1}
+
+Enables filtered queries: `SELECT * FROM facts WHERE targetLanguage='ja' AND jlptLevel='N5'`
+
+### Data Flow Diagram
+
+```
+FJSD repo (vocab.json, kanji-info.json, grammar.json, kana.json)
++ JMdict (jmdict-eng.json, 215K entries)
+  ↓
+extract-fjsd-japanese.mjs
+  ├→ Parse vocab IDs + JLPT mapping
+  ├→ Cross-reference JMdict meanings
+  ├→ Normalize to Quiz schema
+  └→ data/raw/japanese/
+     ├→ vocabulary.json (10,013)
+     ├→ kanji.json (2,096)
+     ├→ grammar.json (644)
+     └→ kana.json (372)
+  ↓
+merge-japanese-facts.mjs
+  ├→ Add targetLanguage='ja', subdeck, jlptLevel
+  ├→ Generate cultural visualDescriptions
+  ├→ Create Tier 1/2 variants
+  └→ src/data/seed/facts-generated.json (13,125 appended)
+  ↓
+build-facts-db.mjs
+  ├→ Normalize schemas (correctAnswer, distractors)
+  ├→ Index by language, subdeck, JLPT level
+  └→ public/facts.db (13,125 Japanese facts searchable)
+```
+
+### Versioning & Updates
+
+- FJSD repo pinned to specific commit for reproducibility
+- JMdict updated quarterly; version stored in `seed-pack.json` metadata
+- Re-run extraction scripts to refresh; `merge-japanese-facts.mjs` deduplicates by ID
+- Build cache: clear `public/facts.db` before rebuild if sources changed

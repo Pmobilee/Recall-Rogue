@@ -44,11 +44,20 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
   },
   geography: {
     id: 'geography',
-    displayName: 'Geography',
-    shortName: 'Geo',
+    displayName: 'General Geography',
+    shortName: 'General Geography',
     colorTint: '#F59E0B',
     icon: '🗺️',
-    description: 'Countries, capitals, maps, landmarks, and physical features.',
+    description: 'Regional geography, landforms, climate, and world facts.',
+    ageDefault: 'kid',
+  },
+  geography_drill: {
+    id: 'geography_drill',
+    displayName: 'Capitals & Flags',
+    shortName: 'Capitals & Flags',
+    colorTint: '#D97706',
+    icon: '🏳️',
+    description: 'Learn every capital city and flag in the world.',
     ageDefault: 'kid',
   },
   history: {

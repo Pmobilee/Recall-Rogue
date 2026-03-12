@@ -11,6 +11,7 @@ export const CANONICAL_FACT_DOMAINS = [
   'natural_sciences',
   'space_astronomy',
   'geography',
+  'geography_drill',
   'history',
   'mythology_folklore',
   'animals_wildlife',

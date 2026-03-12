@@ -16,6 +16,7 @@ import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
 import { funScoreWeight } from './funnessBoost';
+import { factMatchesDomainSelection, factMatchesPresetSelection } from './presetSelectionService';
 
 /** Maps domain IDs to the category strings used in the facts DB. */
 const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
@@ -24,6 +25,7 @@ const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
   space_astronomy: ['Space & Astronomy'],
   history: ['History'],
   geography: ['Geography'],
+  geography_drill: ['Geography'],
   language: ['Language'],
   mythology_folklore: ['Mythology & Folklore'],
   animals_wildlife: ['Animals & Wildlife'],
@@ -194,15 +196,13 @@ function normalizeSubcategoryLabel(value: string): string {
   return value.trim().toLowerCase();
 }
 
-/**
- * Filter facts by subcategory selections.
- * Falls back to the unfiltered set if filtering yields zero results.
- */
-function applySubcategoryFilter(facts: Fact[], subcategories: string[]): Fact[] {
-  if (subcategories.length === 0) return facts;
-  const allowed = new Set(subcategories.map(normalizeSubcategoryLabel));
-  const filtered = facts.filter((f) => allowed.has(normalizeSubcategoryLabel(factSubcategory(f))));
-  return filtered.length > 0 ? filtered : facts;
+/** Filter facts by a single domain key and its selected subcategory tokens. */
+function applyDomainSelectionFilter(
+  facts: Fact[],
+  domainKey: string,
+  subcategories: string[],
+): Fact[] {
+  return facts.filter((fact) => factMatchesDomainSelection(fact, domainKey, subcategories));
 }
 
 /**
@@ -219,8 +219,7 @@ function applyCategoryFilters(
   const enabled = categoryFilters[key];
   if (!Array.isArray(enabled) || enabled.length === 0) return facts;
   const allowed = new Set(enabled.map(normalizeSubcategoryLabel));
-  const filtered = facts.filter((f) => allowed.has(normalizeSubcategoryLabel(factSubcategory(f))));
-  return filtered.length > 0 ? filtered : facts;
+  return facts.filter((f) => allowed.has(normalizeSubcategoryLabel(factSubcategory(f))));
 }
 
 // ── Main pool builder ────────────────────────────────────────────
@@ -248,6 +247,7 @@ export function buildPresetRunPool(
     poolSize?: number;
     categoryFilters?: Record<string, string[]>;
     funnessBoostFactor?: number;
+    includeOutsideDueReviews?: boolean;
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -265,15 +265,21 @@ export function buildPresetRunPool(
   const domainFacts: Map<string, Fact[]> = new Map();
 
   for (const domain of domains) {
-    const normalized = normalizeFactDomain(domain as FactDomain);
-    const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
-    let facts = factsDB.getByCategory(categories, contentTarget * 3);
+    const isLanguageDomain = domain.startsWith('language:');
+    let facts: Fact[] = [];
 
-    // Apply preset subcategory filter
-    facts = applySubcategoryFilter(facts, domainSelections[domain]);
+    if (isLanguageDomain) {
+      const languageCode = String(domain.slice('language:'.length)).trim().toLowerCase();
+      facts = factsDB.getAll().filter((fact) => String(fact.language || '').trim().toLowerCase() === languageCode);
+    } else {
+      const normalized = normalizeFactDomain(domain as FactDomain);
+      const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
+      facts = factsDB.getByCategory(categories, contentTarget * 3);
+      facts = applyCategoryFilters(normalized, facts, options?.categoryFilters);
+    }
 
-    // Apply external category filters
-    facts = applyCategoryFilters(normalized, facts, options?.categoryFilters);
+    // Apply preset subcategory/token filter for this domain key.
+    facts = applyDomainSelectionFilter(facts, domain, domainSelections[domain] ?? []);
 
     domainFacts.set(domain, facts);
   }
@@ -309,9 +315,25 @@ export function buildPresetRunPool(
   const DAY_MS = 86_400_000;
   const WEEK_MS = 7 * DAY_MS;
 
-  const reviewCandidates = allReviewStates.filter((state) => !usedFactIds.has(state.factId));
+  const reviewCandidates = allReviewStates.filter((state) => {
+    if (usedFactIds.has(state.factId)) return false;
+    const fact = factsDB.getById(state.factId);
+    if (!fact) return false;
+    return factMatchesPresetSelection(fact, domainSelections);
+  });
 
-  const weightedReviews = reviewCandidates.map((r) => ({
+  const includeOutsideDueReviews = options?.includeOutsideDueReviews ?? false;
+  const outsideDueCandidates = includeOutsideDueReviews
+    ? allReviewStates.filter((state) => {
+      if (usedFactIds.has(state.factId)) return false;
+      if (state.nextReviewAt > now) return false;
+      const fact = factsDB.getById(state.factId);
+      if (!fact) return false;
+      return !factMatchesPresetSelection(fact, domainSelections);
+    })
+    : [];
+
+  const weightedReviews = [...reviewCandidates, ...outsideDueCandidates].map((r) => ({
     ...r,
     _weight: r.nextReviewAt <= now ? 3.0
       : r.nextReviewAt <= now + DAY_MS ? 2.0
@@ -335,10 +357,17 @@ export function buildPresetRunPool(
 
   if (pool.length < poolSize) {
     const shortage = poolSize - pool.length;
-    const fillerFacts = factsDB.getRandom(shortage + 20)
+    const fillerCandidates = factsDB
+      .getAll()
       .filter((fact) => !usedFactIds.has(fact.id))
-      .slice(0, shortage);
-    pool.push(...fillerFacts.map((fact) => createCard(fact, stateByFactId.get(fact.id))));
+      .filter((fact) => factMatchesPresetSelection(fact, domainSelections));
+    const fillerFacts = stratifiedSample(fillerCandidates, shortage, options?.funnessBoostFactor);
+    for (const fact of fillerFacts) {
+      if (usedFactIds.has(fact.id)) continue;
+      pool.push(createCard(fact, stateByFactId.get(fact.id)));
+      usedFactIds.add(fact.id);
+      if (pool.length >= poolSize) break;
+    }
   }
 
   pool = pool.slice(0, poolSize);
@@ -369,11 +398,33 @@ export function buildGeneralRunPool(
     poolSize?: number;
     categoryFilters?: Record<string, string[]>;
     funnessBoostFactor?: number;
+    includeOutsideDueReviews?: boolean;
   },
 ): Card[] {
   const domainSelections: Record<string, string[]> = {};
   for (const domain of NON_LANGUAGE_DOMAINS) {
     domainSelections[domain] = [];
   }
+  return buildPresetRunPool(domainSelections, allReviewStates, options);
+}
+
+/**
+ * Build a run pool for a single language mode (e.g. language:ja).
+ */
+export function buildLanguageRunPool(
+  languageCode: string,
+  allReviewStates: ReviewState[],
+  options?: {
+    poolSize?: number;
+    categoryFilters?: Record<string, string[]>;
+    funnessBoostFactor?: number;
+    includeOutsideDueReviews?: boolean;
+  },
+): Card[] {
+  const normalizedCode = String(languageCode || '').trim().toLowerCase();
+  if (!normalizedCode) return [];
+  const domainSelections: Record<string, string[]> = {
+    [`language:${normalizedCode}`]: [],
+  };
   return buildPresetRunPool(domainSelections, allReviewStates, options);
 }

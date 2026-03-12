@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-03-12T06:51:02.177Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 46500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 280,
+    "flagged": 4,
+    "clear": 276,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "space-s3-3-031",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298262133,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space_astronomy_gen_065",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773298262133,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space_astronomy_gen_259",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298262133,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "space_astronomy_gen_267",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773298262133,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

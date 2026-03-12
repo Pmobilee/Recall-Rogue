@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:53.025Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 15000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 255,
+    "clear": 245,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "food-b16-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-002",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-003",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-005",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-006",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-007",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-008",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-009",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "food-b16-010",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298252978,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

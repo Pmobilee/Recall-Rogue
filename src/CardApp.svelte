@@ -72,9 +72,11 @@
   import { isSlowReader, onboardingState } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
-  import { playerSave } from './ui/stores/playerData'
+  import { getDueReviews, playerSave } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
   import { factsDB } from './services/factsDB'
+  import { getPresetById } from './services/studyPresetService'
+  import { collectMatchingFactIds } from './services/presetSelectionService'
 
   import DomainSelection from './ui/components/DomainSelection.svelte'
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
@@ -114,8 +116,42 @@
     currentScreen.set(nextScreen)
   }
 
-  function handleStartRun(): void {
-    startNewRun()
+  let showOutsideDuePrompt = $state(false)
+  let outsideDueCount = $state(0)
+
+  async function maybePromptOutsideDueReviews(): Promise<boolean> {
+    const save = get(playerSave)
+    const deckMode = save?.activeDeckMode
+    if (!deckMode || deckMode.type !== 'preset') return false
+
+    const preset = getPresetById(deckMode.presetId)
+    if (!preset) return false
+
+    if (!factsDB.isReady()) {
+      try {
+        await factsDB.init()
+      } catch {
+        return false
+      }
+    }
+
+    const selectedFactIds = collectMatchingFactIds(factsDB.getAll(), preset.domainSelections)
+    const outsideDue = getDueReviews().filter((state) => !selectedFactIds.has(state.factId))
+    if (outsideDue.length === 0) return false
+
+    outsideDueCount = outsideDue.length
+    showOutsideDuePrompt = true
+    return true
+  }
+
+  async function handleStartRun(): Promise<void> {
+    if (await maybePromptOutsideDueReviews()) return
+    startNewRun({ includeOutsideDueReviews: false })
+  }
+
+  function handleOutsideDueChoice(includeOutsideDueReviews: boolean): void {
+    showOutsideDuePrompt = false
+    startNewRun({ includeOutsideDueReviews })
   }
 
   function handleKnowledgeLevelSelect(level: KnowledgeLevel): void {
@@ -456,6 +492,19 @@
         <span>Run in progress</span>
         <button type="button" class="banner-resume-btn" data-testid="btn-resume-run" onclick={handleResumeActiveRun}>Resume</button>
         <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
+      </div>
+    {/if}
+    {#if showOutsideDuePrompt}
+      <div class="abandon-confirm-overlay" role="dialog" aria-modal="true" aria-label="Outside deck reviews prompt">
+        <div class="abandon-confirm-modal">
+          <h3>Deck Review Option</h3>
+          <p class="outside-due-text">Add to-review cards from other decks to the card pool?</p>
+          <p class="outside-due-count">{outsideDueCount} due card{outsideDueCount === 1 ? '' : 's'} outside this deck.</p>
+          <div class="abandon-confirm-buttons">
+            <button class="abandon-btn-cancel" onclick={() => handleOutsideDueChoice(false)}>Keep Deck Only</button>
+            <button class="abandon-btn-confirm" onclick={() => handleOutsideDueChoice(true)}>Add Due Cards</button>
+          </div>
+        </div>
       </div>
     {/if}
     {#if showAbandonConfirm}
@@ -947,6 +996,19 @@
     font-weight: bold;
     margin: 12px 0;
     font-size: 14px;
+  }
+
+  .outside-due-text {
+    color: #e2e8f0;
+    margin: 10px 0 6px;
+    font-size: 14px;
+  }
+
+  .outside-due-count {
+    color: #fbbf24;
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 600;
   }
 
   .abandon-confirm-buttons {

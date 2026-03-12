@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:55.594Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 24000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 26,
+    "clear": 474,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "it-b07-488",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b07-493",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-additional-024",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-additional-044",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-additional-047",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-n1-043",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-n1-049",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-n1-055",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-n1-060",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "ja-grammar-n1-082",
+      "issue": "truncated answer",
+      "needsFix": 1,
+      "checkedAt": 1773298255551,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

@@ -16,6 +16,7 @@ const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   space_astronomy: ['Space & Astronomy'],
   history: ['History'],
   geography: ['Geography'],
+  geography_drill: ['Geography'],
   language: ['Language'],
   mythology_folklore: ['Mythology & Folklore'],
   animals_wildlife: ['Animals & Wildlife'],

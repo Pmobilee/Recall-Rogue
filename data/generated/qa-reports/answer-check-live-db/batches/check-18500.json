@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:54.019Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 18500,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 75,
+    "clear": 425,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "geo-b01-180",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b01-181",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b01-195",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-001",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-002",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-003",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-005",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-006",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "geo-b02-007",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298253973,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

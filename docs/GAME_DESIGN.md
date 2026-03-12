@@ -623,7 +623,7 @@ After encounters 1 and between floors, choose from 3 doors:
 | Bag | Shop | Buy/sell cards + buy relics with currency |
 
 **Reveal rules:**
-- Combat rooms ALWAYS show the enemy type (risk assessment)
+- Combat rooms show only "Combat - Enemy encounter" without revealing the specific enemy type or HP. The enemy identity is revealed when the encounter begins, adding an element of surprise.
 - Mystery rooms ALWAYS hidden (that's the fun)
 - Rest, Treasure, Shop always clearly labeled
 - Each floor guarantees at least 1 combat option (prevents heal-stacking to avoid all facts)
@@ -911,15 +911,20 @@ Segment mapping is handled by `getSegmentForFloor()` in `enemyManager.ts`.
 
 ## 9. Knowledge Combo
 
-| Consecutive Correct | Multiplier | Visual |
-|--------------------|------------|--------|
-| 1st | 1.0x | Normal |
-| 2nd | 1.10x | Slight glow |
-| 3rd | 1.25x | Particle ring |
-| 4th | 1.40x | Screen edge pulse |
-| 5th | 1.75x | Full celebration burst |
+| Consecutive Correct | Multiplier | Visual | Bonus |
+|--------------------|------------|--------|-------|
+| 0-1 (base) | 1.0x | Normal | — |
+| 2nd | 1.15x | Slight glow | — |
+| 3rd | 1.30x | Particle ring | — |
+| 4th | 1.50x | Screen edge pulse | — |
+| 5th | 1.75x | Bright flash | — |
+| 6th+ | 2.00x | Full celebration burst | +1 HP heal per correct answer (capped at max HP) |
 
-Resets on wrong answer. Persists across turns within encounter. With 3 AP, perfect turn = 3/3. Five consecutive across 2 turns = 1.75x.
+Resets on wrong answer. Persists across turns within encounter. With 3 AP, perfect turn = 3/3. Six consecutive across 2 turns = 2.0x multiplier plus 1 HP heal.
+
+**Combo Heal:** At 6+ consecutive correct answers, the player heals 1 HP per correct answer (afterwards). Healing caps at max HP. This rewards sustained accuracy with a survival bonus, creating a powerful incentive to maintain streaks.
+
+**UI Display:** Card hand displays effective (post-multiplier) card values in green with a glow effect when combo multiplier > 1, so players can always see what their card will actually do after combo scaling applies.
 
 Strategic depth: play easy facts first to build combo (metacognitive awareness of own knowledge confidence), or hard facts first for base power. This mechanic literally cannot exist outside an educational card game.
 
@@ -1398,6 +1403,125 @@ Graduated assist tiers based on performance within a floor:
 - **Challenge** (5+ correct streak): 1.1x enemy damage, tighter speed bonus, harder facts, elite variants
 
 Invisible. Never announced. Never reduces educational rigor (answer count, format unchanged). Only game difficulty flexes. Graduated tiers smooth the cold-start onboarding and protect against engagement collapse from frustration. Research: Hunicke (2005) — invisible DDA preserves flow state.
+
+---
+
+## 21.5. Japanese Language Decks (JLPT N5–N1)
+
+**Data sources:** Full-Japanese-Study-Deck (GitHub) + JMdict (215,611 entries)
+
+Japanese language learning integrates 4 specialized subdecks totaling **13,125 facts** across JLPT proficiency levels (N5 beginner → N1 expert). Players select Japanese as a study domain at run start (`StudyModeSelector`), and the run pool builder routes them to Japanese facts via language-specific domain resolution.
+
+### Vocabulary Subdeck (10,013 facts)
+
+JLPT level distribution:
+- **N5** (beginner): 822 facts
+- **N4** (intermediate-low): 774 facts
+- **N3** (intermediate): 3,347 facts
+- **N2** (advanced): 1,242 facts
+- **N1** (master): 3,828 facts
+
+Quiz format (Tier 1): "What does '食べる' (たべる) mean in English?" with furigana ruby annotations above kanji. Answers: [to eat / to drink / to see].
+
+Tier 2 reverse: "How do you say 'to eat' in Japanese?" Answers: [食べる / 飲む / 見る].
+
+### Kanji Subdeck (2,096 facts)
+
+Radical-based kanji learning with JLPT distribution:
+- **N5**: 79 facts
+- **N4**: 164 facts
+- **N3**: 546 facts
+- **N2**: 189 facts
+- **N1**: 1,118 facts
+
+Quiz format (Tier 1): "What does the kanji '日' mean?" Answers: [sun/day / moon / fire].
+
+Includes mnemonic explanation (e.g., "日 (square shape) = sun in enclosed space"). Tier 2 reverse: "Write the kanji for 'sun'" (production mode).
+
+### Grammar Subdeck (644 facts)
+
+Grammatical patterns with 6 JLPT levels:
+- **N5**: 16 facts
+- **N4**: 32 facts
+- **N3**: 142 facts
+- **N2**: 252 facts
+- **N1**: 144 facts
+- **Additional**: 58 facts (non-level-specific)
+
+Quiz format (Tier 1): "What does the grammar pattern '〜が' mean?" Answers: [marks the subject / indicates possession / marks an object].
+
+Includes usage examples and sentence context.
+
+### Kana Subdeck (372 facts)
+
+Hiragana and katakana recognition:
+- **Hiragana**: 71 facts (basic + dakuten variants)
+- **Katakana**: 71 facts (basic + dakuten variants)
+- **Extended**: 230 facts (less common, compound kana)
+
+Quiz format (Tier 1): "What is the romaji reading for 'あ'?" Answers: [a / i / u].
+
+Reverse Tier 2: "Write the hiragana for 'a'".
+
+### Display Options Panel (`DeckOptionsPanel.svelte`)
+
+Language-specific settings accessible from **Knowledge Library** screen via a gear icon.
+
+**Current Japanese toggles** (extensible via `LanguageDeckOption` interface):
+- **Furigana display** (default: ON) — shows ruby annotations (phonetic guide) above kanji
+- **Romaji display** (default: OFF) — displays romanized Japanese alongside native script
+
+Settings persisted in localStorage (`card:deckOptions`), keyed by `targetLanguage`.
+
+### Implementation Files
+
+**Services:**
+- `src/services/deckOptionsService.ts` — Persisted store for language-specific display options (furigana, romaji toggles). Exports `getDeckOptions(language)`, `setDeckOption(language, key, value)`, `toggleDeckOption(language, key)`.
+
+**UI Components:**
+- `src/ui/FuriganaText.svelte` — Ruby annotation component. Accepts `text: string` (kanji) and `furigana: string[]` (phonetic readings). Renders HTML `<ruby>` tags for mobile accessibility.
+- `src/ui/DeckOptionsPanel.svelte` — Modal toggle UI for language-specific options. Dispatches `options-changed` event on change.
+- Modified `src/ui/components/CardExpanded.svelte` — Reads deck options store; conditionally renders furigana/romaji based on toggle state.
+
+**Data Types:**
+- `src/types/vocabulary.ts` — Updated with:
+  - `LanguageDeckOption` interface: `{ key: string; value: boolean; label: string; }`
+  - `LanguageConfig` extended with `subdecks: Subdeck[]` and `options: LanguageDeckOption[]`
+
+**Content Pipeline:**
+- `scripts/content-pipeline/vocab/extract-fjsd-japanese.mjs` — Extracts 13,125 Japanese facts from Full-Japanese-Study-Deck repo (vocab IDs, kanji-info, grammar, kana) and JMdict (meaning lookups). Outputs to `data/raw/japanese/{vocabulary,kanji,grammar,kana}.json`.
+- `scripts/content-pipeline/vocab/merge-japanese-facts.mjs` — Merges extracted facts per subdeck into `src/data/seed/facts-generated.json` with proper schema (targetLanguage, subdeck, jlptLevel, visualization_description for card backs).
+
+### Data Sources
+
+**Files:**
+- `data/references/full-japanese-study-deck/` — Cloned FJSD repo with structured JLPT vocab IDs, kanji-info.json (radical mappings), grammar.json, and kana.json.
+- `data/references/jmdict/jmdict-eng.json` — JMdict English dictionary (215,611 entries, CC-BY-SA 4.0).
+- `data/raw/japanese/` — Extracted facts per subdeck and JLPT level.
+
+### Data Flow
+
+```
+FJSD repo (vocab IDs, kanji-info, grammar, kana)
++ JMdict (meanings)
+  ↓
+extract-fjsd-japanese.mjs
+  → data/raw/japanese/vocabulary.json
+  → data/raw/japanese/kanji.json
+  → data/raw/japanese/grammar.json
+  → data/raw/japanese/kana.json
+  ↓
+merge-japanese-facts.mjs
+  → src/data/seed/facts-generated.json (appended)
+  ↓
+build-facts-db.mjs
+  → public/facts.db (13,125 Japanese facts indexed)
+  → seed-pack.json (includes Japanese metadata)
+```
+
+### JLPT Level Gating (Future)
+
+Reserve option: lock Tier 2+ cards to N3+ levels (e.g., N5 players see only N5-selected kanji in production challenges). Controlled via `requireMinJLPTForProduction = false` in `balance.ts` at launch.
 
 ---
 

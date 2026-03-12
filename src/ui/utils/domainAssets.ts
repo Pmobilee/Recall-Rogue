@@ -6,6 +6,7 @@ export const DOMAIN_ICON_PATHS: Record<FactDomain, string> = {
   space_astronomy: '/assets/sprites/icons/icon_science.webp',
   history: '/assets/sprites/icons/icon_history.webp',
   geography: '/assets/sprites/icons/icon_geography.webp',
+  geography_drill: '/assets/sprites/icons/icon_geography.webp',
   language: '/assets/sprites/icons/icon_language.webp',
   mythology_folklore: '/assets/sprites/icons/icon_arts.webp',
   animals_wildlife: '/assets/sprites/icons/icon_medicine.webp',

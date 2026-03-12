@@ -11,6 +11,7 @@
   import { notifySuccess, notifyError, tapLight } from '../../services/hapticService'
   import KidWowStars from './KidWowStars.svelte'
   import { getWowScore } from '../../services/wowScore'
+  import FuriganaText from '../FuriganaText.svelte'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -58,6 +59,22 @@
 
   const isDev = import.meta.env.DEV
 
+  /** Parse a Japanese quiz question to extract the target word for furigana display.
+   *  Expects format: "What does '食べる' (たべる) mean..." or "What does '食べる' mean..."
+   *  Returns { before, word, reading, after } or null if not a parseable Japanese question.
+   */
+  function parseJapaneseQuestion(question: string, factPronunciation?: string): { before: string; word: string; reading: string; after: string } | null {
+    // Match text between single quotes, optionally followed by reading in parentheses
+    const match = question.match(/^(.*?)'([^']+)'(?:\s*\(([^)]+)\))?\s*(.*)$/)
+    if (!match) return null
+    return {
+      before: match[1],
+      word: match[2],
+      reading: match[3] || factPronunciation || '',
+      after: match[4]
+    }
+  }
+
   let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', showMnemonic = false, mnemonic = '', layerChallengeProgress, onAnswer, onStudyResponse, onClose }: Props = $props()
 
   let selectedAnswer = $state<string | null>(null)
@@ -76,6 +93,11 @@
     if (isCorrect) return CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)]
     if (mode === 'layer') return `Not quite! -${BALANCE.LAYER_ENTRANCE_WRONG_O2_COST} O2`
     return WRONG_PHRASES[Math.floor(Math.random() * WRONG_PHRASES.length)]
+  })
+
+  const japaneseParts = $derived.by(() => {
+    if (fact.language !== 'ja' || !fact.pronunciation) return null
+    return parseJapaneseQuestion(fact.quizQuestion, fact.pronunciation)
   })
 
   const resultClass = $derived.by(() => {
@@ -296,7 +318,13 @@
       </div>
     {/if}
 
-    <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
+    {#if japaneseParts}
+      <p class="question" data-testid="quiz-question">
+        {japaneseParts.before}<FuriganaText text={japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
+      </p>
+    {:else}
+      <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
+    {/if}
 
     {#if mode === 'gate'}
       <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>

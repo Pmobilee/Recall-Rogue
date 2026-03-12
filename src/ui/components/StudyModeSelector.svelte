@@ -1,12 +1,9 @@
 <script lang="ts">
-  import { get } from 'svelte/store'
   import { playerSave, persistPlayer } from '../stores/playerData'
-  import { getPresets } from '../../services/studyPresetService'
-  import { getAllDomainMetadata } from '../../data/domainMetadata'
   import { ENABLE_LANGUAGE_DOMAINS } from '../../data/balance'
   import type { DeckMode } from '../../data/studyPreset'
-  import { hasActiveRun } from '../../services/runSaveService'
   import { languageService } from '../../services/languageService'
+  import OverflowLabel from './OverflowLabel.svelte'
 
   interface Props {
     disabled?: boolean
@@ -17,7 +14,7 @@
 
   let showModal = $state(false)
 
-  const presets = $derived(getPresets())
+  const presets = $derived($playerSave?.studyPresets ?? [])
   const currentMode: DeckMode = $derived($playerSave?.activeDeckMode ?? { type: 'general' })
   const languages = $derived(languageService.getSupportedLanguages())
 
@@ -100,7 +97,7 @@
   {disabled}
 >
   <span class="sms-pill-icon" aria-hidden="true">{pillIcon}</span>
-  <span class="sms-pill-label">{pillLabel}</span>
+  <OverflowLabel text={pillLabel} className="sms-pill-label" />
   {#if disabled}
     <span class="sms-pill-lock" aria-hidden="true">{'\u{1F512}'}</span>
   {:else}
@@ -134,7 +131,10 @@
       >
         <span class="sms-item-check">{isSelected({ type: 'general' }) ? '\u{2713}' : ''}</span>
         <div class="sms-item-content">
-          <span class="sms-item-name">{'\u{1F4DA}'} All Topics</span>
+          <span class="sms-item-name">
+            <span class="sms-item-emoji" aria-hidden="true">{'\u{1F4DA}'}</span>
+            <OverflowLabel text="All Topics" className="sms-item-name-text" />
+          </span>
           <span class="sms-item-desc">Study from all knowledge domains</span>
         </div>
       </button>
@@ -152,7 +152,10 @@
           >
             <span class="sms-item-check">{isSelected(mode) ? '\u{2713}' : ''}</span>
             <div class="sms-item-content">
-              <span class="sms-item-name">{'\u{1F4CB}'} {preset.name}</span>
+              <span class="sms-item-name">
+                <span class="sms-item-emoji" aria-hidden="true">{'\u{1F4CB}'}</span>
+                <OverflowLabel text={preset.name} className="sms-item-name-text" />
+              </span>
               <span class="sms-item-desc">{preset.cachedFactCount} facts</span>
             </div>
           </button>
@@ -172,7 +175,10 @@
           >
             <span class="sms-item-check">{isSelected(mode) ? '\u{2713}' : ''}</span>
             <div class="sms-item-content">
-              <span class="sms-item-name">{'\u{1F5E3}'} {lang.name}</span>
+              <span class="sms-item-name">
+                <span class="sms-item-emoji" aria-hidden="true">{'\u{1F5E3}'}</span>
+                <OverflowLabel text={lang.name} className="sms-item-name-text" />
+              </span>
               <span class="sms-item-desc">{lang.nativeName}</span>
             </div>
           </button>
@@ -187,7 +193,10 @@
       >
         <span class="sms-item-check"></span>
         <div class="sms-item-content">
-          <span class="sms-item-name">+ Build New Deck</span>
+          <span class="sms-item-name">
+            <span class="sms-item-emoji" aria-hidden="true">+</span>
+            <OverflowLabel text="Build New Deck" className="sms-item-name-text" />
+          </span>
           <span class="sms-item-desc">Create a custom study preset</span>
         </div>
       </button>
@@ -227,10 +236,9 @@
     font-size: 14px;
   }
 
-  .sms-pill-label {
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  :global(.sms-pill-label) {
+    width: min(140px, 42vw);
+    min-width: 0;
   }
 
   .sms-pill-chevron {
@@ -335,11 +343,21 @@
   }
 
   .sms-item-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
     font-size: calc(14px * var(--text-scale, 1));
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  }
+
+  :global(.sms-item-name-text) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .sms-item-emoji {
+    flex-shrink: 0;
   }
 
   .sms-item-desc {

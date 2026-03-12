@@ -12,6 +12,7 @@
     type LibrarySortBy,
     type LibraryTierFilter,
   } from '../../services/libraryService'
+  import { getDomainSubcategories, type DomainSubcategoryInfo } from '../../services/domainSubcategoryService'
   import {
     getMasteredFactCount,
     getUnlockedLoreFragments,
@@ -34,6 +35,7 @@
   let allFacts = $state<Fact[]>([])
   let selectedDomain = $state<FactDomain | null>(null)
   let selectedEntry = $state<LibraryFactEntry | null>(null)
+  let selectedSubcategory = $state<string | null>(null)
   let tierFilter = $state<LibraryTierFilter>('all')
   let sortBy = $state<LibrarySortBy>('tier')
   let loreFragments = $state<LoreFragment[]>([])
@@ -48,10 +50,14 @@
     loading ? [] : buildDomainSummaries(allFacts, reviewStates),
   )
 
+  const domainSubcategories = $derived(
+    selectedDomain ? getDomainSubcategories(selectedDomain) : [],
+  )
+
   const domainEntries = $derived(
     loading || !selectedDomain
       ? []
-      : buildDomainEntries(selectedDomain, allFacts, reviewStates, tierFilter, sortBy),
+      : buildDomainEntries(selectedDomain, allFacts, reviewStates, tierFilter, sortBy, selectedSubcategory ?? undefined),
   )
 
   function labelDomain(domain: FactDomain): string {
@@ -128,7 +134,7 @@
     {#if activeTab === 'knowledge' && selectedEntry}
       <button class="back-btn" onclick={() => (selectedEntry = null)}>Back</button>
     {:else if activeTab === 'knowledge' && selectedDomain}
-      <button class="back-btn" onclick={() => (selectedDomain = null)}>Back</button>
+      <button class="back-btn" onclick={() => { selectedDomain = null; selectedSubcategory = null; }}>Back</button>
     {:else}
       <button class="back-btn" onclick={onback}>Back</button>
     {/if}
@@ -185,6 +191,23 @@
     </section>
   {:else if selectedDomain}
     <section class="domain-section">
+      {#if domainSubcategories.length > 1}
+        <div class="subcategory-bar">
+          <button
+            class="sub-chip"
+            class:active={selectedSubcategory === null}
+            onclick={() => { selectedSubcategory = null }}
+          >All</button>
+          {#each domainSubcategories as sub (sub.id)}
+            <button
+              class="sub-chip"
+              class:active={selectedSubcategory === sub.id}
+              onclick={() => { selectedSubcategory = sub.id }}
+            >{sub.name} <span class="sub-count">({sub.count})</span></button>
+          {/each}
+        </div>
+      {/if}
+
       <div class="filters">
         <label>
           Tier
@@ -243,7 +266,7 @@
 
       <div class="domain-grid">
         {#each domainSummaries as summary}
-          <button class="domain-card" onclick={() => (selectedDomain = summary.domain)}>
+          <button class="domain-card" onclick={() => { selectedDomain = summary.domain; selectedSubcategory = null; }}>
             <div class="domain-row">
               <strong>{getDomainMetadata(summary.domain).shortName}</strong>
               <span>{summary.tier3Count}/{summary.totalFacts}</span>
@@ -505,5 +528,37 @@
   .tab-btn.active {
     color: #e6edf3;
     border-bottom-color: #16a34a;
+  }
+
+  .subcategory-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+
+  .sub-chip {
+    padding: 4px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(30, 41, 59, 0.6);
+    color: #94a3b8;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    font-family: inherit;
+  }
+
+  .sub-chip.active {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+    color: #e2e8f0;
+  }
+
+  .sub-count {
+    opacity: 0.6;
+    font-size: 10px;
   }
 </style>

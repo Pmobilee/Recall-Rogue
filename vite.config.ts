@@ -65,6 +65,27 @@ function structuredDataPlugin(): Plugin {
   }
 }
 
+/**
+ * Strips hires cardback images from the production build.
+ * These are ComfyUI sprite-gen output used only during development;
+ * production serves lowres/ exclusively (see cardbackManifest.ts).
+ */
+function excludeHiresCardbacks(): Plugin {
+  return {
+    name: 'exclude-hires-cardbacks',
+    closeBundle: {
+      sequential: true,
+      async handler() {
+        const { rm } = await import('fs/promises')
+        const { resolve } = await import('path')
+        const hiresDir = resolve('dist/assets/cardbacks/hires')
+        await rm(hiresDir, { recursive: true, force: true }).catch(() => {})
+        console.log('[build] Stripped hires cardbacks from dist (dev-only assets)')
+      },
+    },
+  }
+}
+
 // Conditionally import visualizer for bundle analysis (DD-V2-218)
 // Run: ANALYZE=true npm run build (or npm run analyze)
 let visualizerPlugin: Plugin | null = null
@@ -89,6 +110,7 @@ export default defineConfig({
     svelte(),
     cspInjectPlugin(),
     structuredDataPlugin(),
+    excludeHiresCardbacks(),
     ...(visualizerPlugin ? [visualizerPlugin] : []),
   ],
   base: process.env.VITE_ASSET_BASE_URL || '/',
@@ -136,7 +158,7 @@ export default defineConfig({
           // Combat system — only needed during mine encounters
           if (id.includes('EncounterManager') || id.includes('CombatOverlay')) return 'combat'
           // Heavy game data modules — only needed after game boot
-          if (id.includes('/data/biomes') || id.includes('/data/fossils') || id.includes('/data/creatures') || id.includes('/data/relics') || id.includes('/data/premiumRecipes') || id.includes('/data/recipes') || id.includes('/data/hubFloors') || id.includes('/data/ambientStories')) return 'game-data'
+          if (id.includes('/data/biomes') || id.includes('/data/creatures') || id.includes('/data/relics')) return 'game-data'
           // Let Rollup place Capacitor modules naturally to avoid circular manual-chunk edges
           // (observed: combat -> capacitor -> combat).
           // Dev panel is never loaded in production

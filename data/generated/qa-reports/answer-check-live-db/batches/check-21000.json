@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:54.776Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 21000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 333,
+    "clear": 167,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "hist-b12-016",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-017",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-018",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-019",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-020",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-021",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-022",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-023",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-024",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "hist-b12-025",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298254714,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

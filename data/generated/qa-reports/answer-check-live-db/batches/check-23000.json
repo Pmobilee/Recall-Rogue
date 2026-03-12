@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T06:50:55.331Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 23000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 116,
+    "clear": 384,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "it-b04-956",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b04-965",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-004",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-044",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-046",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-049",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-051",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-052",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-054",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "it-b06-055",
+      "issue": "answer appears directly in question",
+      "needsFix": 1,
+      "checkedAt": 1773298255275,
+      "checkedBy": "gpt-5.1-mini"
+    }
+  ]
+}

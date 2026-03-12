@@ -1,0 +1,2053 @@
+{
+  "generatedAt": "2026-03-12T07:01:39.254Z",
+  "input": "data/generated/qa-reports/answer-check-live-db/flagged-all.jsonl",
+  "outputDir": "data/generated/qa-reports/answer-check-fix-workers",
+  "mode": "recheck",
+  "issueColumn": "answerCheckIssue",
+  "perWorker": 50,
+  "requiredTags": [],
+  "tagMode": "any",
+  "reviewedDir": null,
+  "requireReviewed": false,
+  "totalCandidates": 2591,
+  "totalTarget": 2600,
+  "pass": true,
+  "workers": [
+    {
+      "worker": "haiku-01",
+      "modelLabel": "haiku-01 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-01.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-01.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-01.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-01.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animal-barn-swallow-range-293",
+          "issue": "question expects numeric/date answer"
+        },
+        {
+          "id": "animal-mantis-prayer-169",
+          "issue": "question expects numeric/date answer"
+        },
+        {
+          "id": "animal-spider-silk-strength-160",
+          "issue": "question expects numeric/date answer"
+        },
+        {
+          "id": "animal-surinam-toad-birth-176",
+          "issue": "location question has non-location style answer"
+        },
+        {
+          "id": "animals-b01-003",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-02",
+      "modelLabel": "haiku-02 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-02.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-02.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-02.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-02.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b019-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b019-030",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b019-043",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b02-025",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b02-045",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-03",
+      "modelLabel": "haiku-03 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-03.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-03.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-03.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-03.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b11-015",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b11-016",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b11-017",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b11-018",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b11-021",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-04",
+      "modelLabel": "haiku-04 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-04.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-04.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-04.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-04.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b12-034",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b12-035",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b12-036",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b12-037",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b12-040",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-05",
+      "modelLabel": "haiku-05 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-05.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-05.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-05.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-05.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b13-021",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b13-022",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b13-023",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b13-024",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b13-025",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-06",
+      "modelLabel": "haiku-06 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-06.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-06.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-06.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-06.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b14-035",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b14-036",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b14-039",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b14-040",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b14-041",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-07",
+      "modelLabel": "haiku-07 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-07.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-07.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-07.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-07.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b15-026",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b15-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b15-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b15-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b15-038",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-08",
+      "modelLabel": "haiku-08 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-08.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-08.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-08.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-08.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b16-007",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b16-008",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b16-009",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b16-010",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b16-011",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-09",
+      "modelLabel": "haiku-09 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-09.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-09.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-09.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-09.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b17-001",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-002",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-003",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-004",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-007",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-10",
+      "modelLabel": "haiku-10 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-10.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-10.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-10.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-10.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b17-061",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-062",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-069",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-070",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b17-085",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-11",
+      "modelLabel": "haiku-11 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-11.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-11.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-11.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-11.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b18-045",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b18-046",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b18-048",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b18-049",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b18-050",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-12",
+      "modelLabel": "haiku-12 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-12.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-12.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-12.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-12.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b19-049",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b19-050",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b19-053",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b19-054",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b19-057",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-13",
+      "modelLabel": "haiku-13 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-13.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-13.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-13.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-13.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "animals-b20-043",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b20-044",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b20-049",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b20-050",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "animals-b20-051",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-14",
+      "modelLabel": "haiku-14 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-14.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-14.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-14.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-14.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "cs-b04-099",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "cs-b04-152",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "cs-b04-153",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "cs-b04-154",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b01-231",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-15",
+      "modelLabel": "haiku-15 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-15.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-15.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-15.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-15.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "de-b13-058",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b13-111",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b13-114",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b13-143",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b13-184",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-16",
+      "modelLabel": "haiku-16 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-16.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-16.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-16.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-16.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "de-b17-084",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b17-090",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b17-101",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b17-124",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-b17-182",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-17",
+      "modelLabel": "haiku-17 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-17.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-17.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-17.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-17.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "de-fin4-123",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-fin4-152",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-fin4-161",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-fin5-020",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "de-fin5-028",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-18",
+      "modelLabel": "haiku-18 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-18.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-18.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-18.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-18.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "es-b01-147",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b01-171",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b01-220",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b01-243",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b02-030",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-19",
+      "modelLabel": "haiku-19 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-19.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-19.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-19.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-19.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "es-b05-176",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b05-230",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b05-246",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b09-004",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b09-007",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-20",
+      "modelLabel": "haiku-20 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-20.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-20.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-20.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-20.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "es-b15-128",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b15-147",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b15-153",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b15-197",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b15-224",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-21",
+      "modelLabel": "haiku-21 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-21.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-21.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-21.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-21.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "es-b19-041",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b19-048",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b19-049",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b19-058",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-b19-061",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-22",
+      "modelLabel": "haiku-22 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-22.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-22.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-22.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-22.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "es-fin3-114",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-fin3-118",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-fin3-121",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-fin3-127",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "es-fin3-128",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-23",
+      "modelLabel": "haiku-23 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-23.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-23.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-23.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-23.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b01-001",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b01-002",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b01-003",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b01-004",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b01-005",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-24",
+      "modelLabel": "haiku-24 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-24.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-24.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-24.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-24.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b02-008",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b02-009",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b02-010",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b02-011",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b02-012",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-25",
+      "modelLabel": "haiku-25 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-25.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-25.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-25.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-25.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b03-016",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b03-017",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b03-018",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b03-019",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b03-020",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-26",
+      "modelLabel": "haiku-26 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-26.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-26.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-26.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-26.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b04-023",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b04-024",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b04-025",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b04-026",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b04-027",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-27",
+      "modelLabel": "haiku-27 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-27.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-27.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-27.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-27.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b05-033",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b05-034",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b05-035",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b05-036",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b05-037",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-28",
+      "modelLabel": "haiku-28 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-28.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-28.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-28.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-28.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b17-006",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b17-007",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b17-008",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b17-009",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b17-010",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-29",
+      "modelLabel": "haiku-29 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-29.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-29.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-29.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-29.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b18-026",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b18-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b18-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b18-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b18-030",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-30",
+      "modelLabel": "haiku-30 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-30.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-30.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-30.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-30.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b20-012",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b20-013",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b20-014",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b20-015",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b20-016",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-31",
+      "modelLabel": "haiku-31 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-31.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-31.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-31.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-31.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b21-021",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b21-022",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b21-023",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b21-024",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b21-025",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-32",
+      "modelLabel": "haiku-32 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-32.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-32.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-32.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-32.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "food-b22-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b22-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b22-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b22-030",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "food-b22-031",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-33",
+      "modelLabel": "haiku-33 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-33.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-33.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-33.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-33.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "fr-b06-413",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b06-415",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b06-416",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b06-418",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b06-419",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-34",
+      "modelLabel": "haiku-34 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-34.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-34.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-34.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-34.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "fr-b07-478",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b07-480",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b07-483",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b07-484",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "fr-b07-485",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-35",
+      "modelLabel": "haiku-35 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-35.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-35.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-35.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-35.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "genknow-b16-009",
+          "issue": "location question has non-location style answer"
+        },
+        {
+          "id": "genknow-b16-013",
+          "issue": "location question has non-location style answer"
+        },
+        {
+          "id": "genknow-b17-021",
+          "issue": "location question has non-location style answer"
+        },
+        {
+          "id": "genknow-b18-008",
+          "issue": "location question has non-location style answer"
+        },
+        {
+          "id": "genknow-b19-002",
+          "issue": "location question has non-location style answer"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-36",
+      "modelLabel": "haiku-36 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-36.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-36.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-36.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-36.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "geo-b02-037",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "geo-b02-038",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "geo-b02-039",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "geo-b02-040",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "geo-b02-041",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-37",
+      "modelLabel": "haiku-37 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-37.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-37.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-37.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-37.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b01-039",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b08-001",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b08-006",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b08-010",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b08-012",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-38",
+      "modelLabel": "haiku-38 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-38.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-38.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-38.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-38.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b12-024",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b12-025",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b12-026",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b12-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b12-028",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-39",
+      "modelLabel": "haiku-39 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-39.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-39.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-39.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-39.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b13-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b13-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b13-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b13-030",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b13-031",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-40",
+      "modelLabel": "haiku-40 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-40.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-40.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-40.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-40.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b15-012",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b15-013",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b15-014",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b15-015",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b15-016",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-41",
+      "modelLabel": "haiku-41 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-41.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-41.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-41.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-41.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b16-034",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b17-001",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b17-002",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b17-003",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b17-004",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-42",
+      "modelLabel": "haiku-42 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-42.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-42.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-42.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-42.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b18-025",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b18-026",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b18-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b18-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b18-029",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-43",
+      "modelLabel": "haiku-43 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-43.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-43.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-43.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-43.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b19-027",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b19-028",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b19-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b19-030",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b19-031",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-44",
+      "modelLabel": "haiku-44 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-44.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-44.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-44.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-44.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "hist-b20-029",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b20-030",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b20-031",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b20-032",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "hist-b20-033",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-45",
+      "modelLabel": "haiku-45 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-45.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-45.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-45.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-45.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "it-b02-414",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b02-416",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b02-417",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b02-428",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b02-439",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-46",
+      "modelLabel": "haiku-46 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-46.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-46.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-46.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-46.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "it-b04-846",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b04-851",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b04-852",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b04-856",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b04-857",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-47",
+      "modelLabel": "haiku-47 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-47.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-47.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-47.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-47.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "it-b06-077",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-078",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-079",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-080",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-081",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-48",
+      "modelLabel": "haiku-48 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-48.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-48.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-48.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-48.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "it-b06-127",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-128",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-129",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-130",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b06-131",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-49",
+      "modelLabel": "haiku-49 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-49.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-49.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-49.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-49.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "it-b07-319",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b07-320",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b07-327",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b07-381",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "it-b07-398",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-50",
+      "modelLabel": "haiku-50 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-50.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-50.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-50.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-50.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "ja-vocab-n3-3212",
+          "issue": "truncated answer"
+        },
+        {
+          "id": "ja-vocab-n3-3250",
+          "issue": "truncated answer"
+        },
+        {
+          "id": "ja-vocab-n3-3265",
+          "issue": "truncated answer"
+        },
+        {
+          "id": "ja-vocab-n4-068",
+          "issue": "truncated answer"
+        },
+        {
+          "id": "ja-vocab-n4-070",
+          "issue": "truncated answer"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-51",
+      "modelLabel": "haiku-51 (subscription worker)",
+      "requested": 50,
+      "assigned": 50,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-51.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-51.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-51.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-51.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 50,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "myth-b13-034",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b13-035",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b13-037",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b14-001",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b14-002",
+          "issue": "answer appears directly in question"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "worker": "haiku-52",
+      "modelLabel": "haiku-52 (subscription worker)",
+      "requested": 50,
+      "assigned": 41,
+      "assignmentPath": "data/generated/qa-reports/answer-check-fix-workers/assignments/haiku-52.jsonl",
+      "promptPath": "data/generated/qa-reports/answer-check-fix-workers/prompts/haiku-52.md",
+      "reviewedPath": "data/generated/qa-reports/answer-check-fix-workers/reviewed/haiku-52.jsonl",
+      "outputPath": "data/generated/qa-reports/answer-check-fix-workers/haiku-52.jsonl",
+      "reviewSource": "heuristic",
+      "reviewedFileFound": false,
+      "reviewedRows": 0,
+      "pass": true,
+      "flagged": 41,
+      "cleared": 0,
+      "sampleIssues": [
+        {
+          "id": "myth-b20-017",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b20-018",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "myth-b20-019",
+          "issue": "answer appears directly in question"
+        },
+        {
+          "id": "mythology_folklore_gen_192",
+          "issue": "question expects numeric/date answer"
+        },
+        {
+          "id": "mythology_folklore_gen_199",
+          "issue": "question expects numeric/date answer"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "totals": {
+    "assigned": 2591,
+    "flagged": 2591,
+    "cleared": 0,
+    "reviewedApplied": 0,
+    "heuristicApplied": 2591,
+    "missingReviewedWorkers": 0
+  }
+}

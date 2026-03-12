@@ -34,7 +34,6 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'exoplanets_astrobio', label: 'Exoplanets & Astrobiology', description: 'Habitable zones, SETI, extremophiles, exoplanet discoveries' },
   ],
   geography: [
-    { id: 'capitals_countries', label: 'Capitals & Countries', description: 'Capital cities, country facts, flags, populations' },
     { id: 'africa', label: 'Africa', description: 'Geography facts specifically about Africa' },
     { id: 'asia_oceania', label: 'Asia & Oceania', description: 'Asia, Australia, Pacific islands' },
     { id: 'europe', label: 'Europe', description: 'European geography facts' },
@@ -42,6 +41,14 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'landforms_water', label: 'Landforms & Water', description: 'Mountains, rivers, lakes, islands, deserts, oceans, caves' },
     { id: 'extreme_records', label: 'Records & Extremes', description: 'Highest, deepest, largest, smallest, hottest, driest' },
     { id: 'climate_biomes', label: 'Climate & Biomes', description: 'Weather patterns, climate zones, biomes' },
+  ],
+  geography_drill: [
+    { id: 'capitals_countries', label: 'Capital Cities', description: 'Capital city of each country' },
+    { id: 'countries_capitals', label: 'Countries by Capital', description: 'Identify the country from its capital' },
+    { id: 'major_capitals', label: 'Major World Capitals', description: 'Most important capital cities' },
+    { id: 'south_american_capitals', label: 'South American Capitals', description: 'Capital cities of South America' },
+    { id: 'central_american_capitals', label: 'Central American Capitals', description: 'Capital cities of Central America' },
+    { id: 'african_capitals', label: 'African Capitals', description: 'Capital cities of Africa' },
   ],
   history: [
     { id: 'ancient_classical', label: 'Ancient & Classical', description: 'Pre-500 AD: Egypt, Greece, Rome, Persia, Mesopotamia' },

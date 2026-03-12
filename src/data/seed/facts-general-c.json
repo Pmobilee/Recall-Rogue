@@ -7,7 +7,11 @@
     "explanation": "On September 9, 1947, engineers at Harvard found a moth trapped in Relay 70 of the Mark II Aiken Relay Calculator. They taped it into the logbook with the note 'First actual case of bug being found.' Grace Hopper's team popularized the term, and the logbook is preserved at the Smithsonian.",
     "quizQuestion": "What insect was found in the Harvard Mark II computer?",
     "correctAnswer": "A moth",
-    "distractors": [],
+    "distractors": [
+      "A beetle in a vacuum tube",
+      "A spider in a relay",
+      "A fly in a capacitor"
+    ],
     "variants": [
       {
         "question": "What insect caused the first computer bug in 1947?",
@@ -54,9 +58,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -86,7 +88,11 @@
     "explanation": "Researchers at Japan's National Institute of Information and Communications Technology achieved 1.02 petabits per second over a single fiber strand in 2022 using wavelength-division multiplexing across thousands of channels. A petabit is one quadrillion bits. This capacity doubles roughly every two years, mirroring Moore's Law for networking.",
     "quizQuestion": "What enables one fiber optic strand to carry multiple data channels?",
     "correctAnswer": "Wavelength-division multiplexing",
-    "distractors": [],
+    "distractors": [
+      "Time-division multiplexing",
+      "Frequency-shift keying",
+      "Quantum entanglement routing"
+    ],
     "variants": [
       {
         "question": "How does a single fiber optic strand transmit multiple data channels simultaneously?",
@@ -165,7 +171,11 @@
     "explanation": "The Apollo Guidance Computer (AGC) had 4,096 bytes of erasable core rope memory and 72 KB of fixed rope memory. It ran at 2 MHz and weighed 70 pounds. Despite these constraints, it successfully guided the spacecraft to a lunar landing with less computing power than a modern pocket calculator. The software was literally woven by hand into rope memory.",
     "quizQuestion": "How much RAM did Apollo 11's guidance computer have?",
     "correctAnswer": "4 kilobytes",
-    "distractors": [],
+    "distractors": [
+      "64 kilobytes",
+      "1 megabyte",
+      "256 kilobytes"
+    ],
     "variants": [
       {
         "question": "Apollo 11's guidance computer had how much RAM?",
@@ -212,9 +222,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -244,7 +252,11 @@
     "explanation": "As of the mid-2020s, global internet traffic exceeds 5 exabytes (5 billion gigabytes) per day, driven by video streaming, social media, cloud computing, and IoT devices. This figure was roughly 100 gigabytes per day in 1992. The exponential growth follows a pattern known as Nielsen's Law, which predicts that high-end network bandwidth grows by 50% per year.",
     "quizQuestion": "How much data transmits daily via internet mid-2020s?",
     "correctAnswer": "5 exabytes",
-    "distractors": [],
+    "distractors": [
+      "5 petabytes",
+      "50 exabytes",
+      "500 terabytes"
+    ],
     "variants": [
       {
         "question": "Daily internet traffic in mid-2020s equals?",
@@ -291,9 +303,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -323,7 +333,11 @@
     "explanation": "George de Mestral examined the burdock burrs under a microscope and discovered they had tiny hooks that caught on loops of fabric and hair. He spent 14 years perfecting a nylon version and patented Velcro in 1955. The name comes from the French words velours (velvet) and crochet (hook). NASA adopted it extensively for zero-gravity environments.",
     "quizQuestion": "What inspired George de Mestral to invent Velcro?",
     "correctAnswer": "Burdock burrs on his dog",
-    "distractors": [],
+    "distractors": [
+      "Gecko feet",
+      "Spider webs",
+      "Ivy vines"
+    ],
     "variants": [
       {
         "question": "What natural object inspired Velcro's invention?",
@@ -370,9 +384,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -402,7 +414,11 @@
     "explanation": "Atlas uses model predictive control, where it simulates hundreds of possible futures every millisecond and picks the best trajectory. Its hydraulic system and 28 degrees of freedom allow it to generate forces similar to a human athlete. The robot weighs 89 kg but can clear obstacles and recover from stumbles that would floor a human gymnast. Boston Dynamics transitioned Atlas to electric actuators in 2024.",
     "quizQuestion": "What control technique keeps Atlas robot balanced during acrobatics?",
     "correctAnswer": "Model predictive control",
-    "distractors": [],
+    "distractors": [
+      "Gyroscopic stabilization",
+      "Fuzzy logic control",
+      "Proportional-integral-derivative control"
+    ],
     "variants": [
       {
         "question": "How does Atlas maintain balance during complex parkour moves?",
@@ -449,9 +465,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -481,7 +495,11 @@
     "explanation": "Large language models like GPT-4 learn statistical patterns across vast text corpora but do not inherently understand logical or arithmetic operations. They predict the most likely next token, which fails for tasks requiring precise computation. This is why modern LLMs use tool-calling to invoke calculators and code interpreters for math, rather than computing directly. The gap between apparent fluency and genuine reasoning is called the 'stochastic parrot' problem.",
     "quizQuestion": "Why do LLMs fail basic arithmetic despite massive training?",
     "correctAnswer": "They predict text, not compute",
-    "distractors": [],
+    "distractors": [
+      "Lack math textbooks in training",
+      "GPU hardware cannot calculate",
+      "Backpropagation destroys numerical precision"
+    ],
     "variants": [
       {
         "question": "Why do large language models struggle with basic arithmetic?",
@@ -560,7 +578,11 @@
     "explanation": "Graphene was first isolated in 2004 by Andre Geim and Konstantin Novoselov at the University of Manchester using ordinary Scotch tape to peel layers off graphite. It has a tensile strength of 130 GPa compared to steel's 0.4 GPa. It conducts electricity better than copper and heat better than diamond. The discoverers won the 2010 Nobel Prize in Physics for this work.",
     "quizQuestion": "How was graphene first isolated in laboratory?",
     "correctAnswer": "Scotch tape peeling graphite",
-    "distractors": [],
+    "distractors": [
+      "Chemical vapor deposition",
+      "Laser ablation of carbon",
+      "Electrochemical exfoliation"
+    ],
     "variants": [
       {
         "question": "What simple method first isolated graphene in laboratory?",
@@ -607,9 +629,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -639,7 +659,11 @@
     "explanation": "Voyager 1 crossed into interstellar space in 2012 and continues to transmit data at about 160 bits per second — vastly slower than dial-up internet. NASA's Deep Space Network uses antennas up to 70 meters wide to detect signals that arrive 22 hours after transmission and are 10 billion times weaker than a digital watch battery. The spacecraft is powered by plutonium-238 radioisotope thermoelectric generators.",
     "quizQuestion": "What powers Voyager 1 after 45+ years in space?",
     "correctAnswer": "Plutonium-238 radioisotope thermoelectric generators",
-    "distractors": [],
+    "distractors": [
+      "Solar panels optimized for deep space",
+      "Hydrogen fuel cells",
+      "Lithium-ion battery packs"
+    ],
     "variants": [
       {
         "question": "What type of power source keeps Voyager 1 operating in deep space?",
@@ -686,9 +710,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -718,7 +740,11 @@
     "explanation": "Tim Berners-Lee submitted his proposal 'Information Management: A Proposal' to CERN management in March 1989. His supervisor Mike Sendall wrote 'vague but exciting' on the cover before approving further work. Berners-Lee invented HTTP, HTML, and URLs simultaneously and deliberately made the Web royalty-free so it could be universally adopted. The first website went live at CERN on December 20, 1990.",
     "quizQuestion": "Why did Tim Berners-Lee invent the World Wide Web?",
     "correctAnswer": "Help physicists share documents",
-    "distractors": [],
+    "distractors": [
+      "Enable military communications",
+      "Connect university libraries",
+      "Replace postal mail"
+    ],
     "variants": [
       {
         "question": "What was Tim Berners-Lee's original purpose for the Web?",
@@ -765,9 +791,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -797,7 +821,11 @@
     "explanation": "In 2019, Google's 53-qubit Sycamore processor completed a random circuit sampling task in 200 seconds. IBM disputed the comparison and argued the classical estimate should be 2.5 days with improved algorithms. Quantum computers exploit superposition and entanglement so each qubit can represent 0 and 1 simultaneously, allowing exponentially parallel computation for specific problem types. They are not universally faster than classical computers.",
     "quizQuestion": "What quantum property lets qubits represent 0 and 1 simultaneously?",
     "correctAnswer": "Superposition",
-    "distractors": [],
+    "distractors": [
+      "Entanglement",
+      "Coherence",
+      "Tunneling"
+    ],
     "variants": [
       {
         "question": "What quantum property allows qubits to be 0 and 1 at once?",
@@ -876,7 +904,11 @@
     "explanation": "Webb's 18 hexagonal mirror segments are coated with a layer of gold just 100 nanometers thick using a vacuum deposition process. Gold was chosen because it reflects infrared light exceptionally well. The mirror spans 6.5 meters in diameter and must operate at -233°C (-387°F) — colder than the surface of Pluto — to detect faint infrared heat from the most distant objects in the universe.",
     "quizQuestion": "Why is JWST's mirror coated in gold?",
     "correctAnswer": "Reflects infrared light well",
-    "distractors": [],
+    "distractors": [
+      "Resists corrosion in vacuum",
+      "Lighter than aluminum",
+      "Stays rigid when cold"
+    ],
     "variants": [
       {
         "question": "Why was gold chosen for JWST's mirror coating?",
@@ -923,9 +955,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -955,7 +985,11 @@
     "explanation": "At low temperatures, the viscosity of the liquid electrolyte in lithium-ion cells increases, slowing ion transport between anode and cathode. Additionally, lithium plating can occur on graphite anodes below 0°C, permanently reducing capacity. Solid-state batteries, which use a solid ceramic electrolyte, are being developed to mitigate this effect. Battery management systems in EVs use resistive heating to pre-warm packs before discharge.",
     "quizQuestion": "Why do EV batteries lose range in cold weather?",
     "correctAnswer": "Lithium ions move slower",
-    "distractors": [],
+    "distractors": [
+      "Separator membrane freezes solid",
+      "Electrodes contract and separate",
+      "Battery management system shuts down"
+    ],
     "variants": [
       {
         "question": "Why do EV batteries lose range in cold weather?",
@@ -993,8 +1027,7 @@
         "correctAnswer": "40",
         "distractors": [
           "10",
-          "75",
-          "Plausible option 3"
+          "75"
         ]
       },
       {
@@ -1002,9 +1035,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1034,7 +1065,11 @@
     "explanation": "Elon Musk published the Hyperloop Alpha paper in 2013, proposing pods levitated by air bearings inside low-pressure steel tubes, eliminating most aerodynamic drag and rolling friction. The tubes would be pumped to about 1/1000th atmospheric pressure. Multiple companies pursued prototypes, with Virgin Hyperloop completing a human test ride in 2020 at 172 km/h. Safety, tube integrity, and evacuation procedures remain major engineering challenges.",
     "quizQuestion": "What enables Hyperloop pods to exceed 1,000 km/h?",
     "correctAnswer": "Near-vacuum tubes reduce drag",
-    "distractors": [],
+    "distractors": [
+      "Superconducting magnetic levitation",
+      "Rocket boosters between stations",
+      "Electromagnetic catapults launch pods"
+    ],
     "variants": [
       {
         "question": "What makes Hyperloop pods faster than commercial airliners?",
@@ -1072,8 +1107,7 @@
         "correctAnswer": "35",
         "distractors": [
           "120",
-          "90",
-          "Plausible option 3"
+          "90"
         ]
       },
       {
@@ -1081,9 +1115,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1113,7 +1145,11 @@
     "explanation": "GPS satellites orbit at 20,200 km altitude and travel at 14,000 km/h. Special relativity predicts their clocks run slower than Earth's by 7 microseconds per day due to velocity, while general relativity predicts the clocks run faster by 45 microseconds per day due to weaker gravity at altitude. The net gain of 38 microseconds per day, if uncorrected, would cause GPS errors of about 10 km daily. Satellite clocks are pre-adjusted before launch to compensate.",
     "quizQuestion": "How many microseconds per day do GPS clocks gain due to relativity?",
     "correctAnswer": "38 microseconds",
-    "distractors": [],
+    "distractors": [
+      "7 microseconds",
+      "45 microseconds",
+      "100 microseconds"
+    ],
     "variants": [
       {
         "question": "GPS satellite clocks gain how many microseconds daily from relativistic effects?",
@@ -1160,9 +1196,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1192,7 +1226,11 @@
     "explanation": "Chuck Hull invented stereolithography (SLA) — the first 3D printing process — to reduce the time needed to create plastic prototype parts from weeks to hours. He filed the patent in 1984 and co-founded 3D Systems in 1986. The process uses a UV laser to cure liquid photopolymer resin layer by layer. Modern 3D printing encompasses fused deposition modeling, selective laser sintering, and bioprinting of living tissue.",
     "quizQuestion": "Why did Chuck Hull invent 3D printing in 1983?",
     "correctAnswer": "Quickly prototype plastic furniture parts",
-    "distractors": [],
+    "distractors": [
+      "Manufacturing dental implants",
+      "Producing prosthetic limbs",
+      "Creating circuit boards"
+    ],
     "variants": [
       {
         "question": "What problem did Chuck Hull's stereolithography solve?",
@@ -1239,9 +1277,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1271,7 +1307,11 @@
     "explanation": "The Falcon 9 booster uses a combination of grid fins for aerodynamic steering during atmospheric reentry, cold-gas nitrogen thrusters for attitude control in vacuum, and its Merlin engine — throttled to as low as 40% thrust — for the landing burn. The first successful landing occurred on December 21, 2015. As of 2025, Falcon 9 boosters have been reused up to 25 times, reducing launch costs by roughly 30% compared to expendable rockets.",
     "quizQuestion": "What steers Falcon 9 during atmospheric reentry landing?",
     "correctAnswer": "Grid fins",
-    "distractors": [],
+    "distractors": [
+      "Deployable parachutes",
+      "Differential engine thrust",
+      "Delta wing flaps"
+    ],
     "variants": [
       {
         "question": "What steers the Falcon 9 booster during atmospheric reentry?",
@@ -1318,9 +1358,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1350,7 +1388,11 @@
     "explanation": "Modern wind turbine blades are shaped like airplane wings and generate lift, causing rotation rather than being pushed by wind pressure. A blade 80 meters long rotating at 12 RPM has its tip moving at 320 km/h (200 mph). The blades are pitched — rotated around their long axis — by computer-controlled systems to optimize power output and prevent overspeeding in gusts. The largest offshore turbines have blades exceeding 107 meters and can power 20,000 homes.",
     "quizQuestion": "How do wind turbine blades generate rotational force?",
     "correctAnswer": "Aerodynamic lift like airplane wings",
-    "distractors": [],
+    "distractors": [
+      "Wind pushes against flat blade face",
+      "Vortices behind blade pull it",
+      "Magnus effect from spinning creates force"
+    ],
     "variants": [
       {
         "question": "How do modern wind turbine blades generate rotational force?",
@@ -1397,9 +1439,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1429,57 +1469,43 @@
     "explanation": "The Antikythera mechanism was discovered in 1901 inside a Roman-era shipwreck and spent decades poorly understood. X-ray tomography in 2006 revealed 37 bronze gears modeling the Saros eclipse cycle, the Metonic cycle of moon phases, and even the Olympic Games schedule. It was sophisticated enough to account for the Moon's elliptical orbit. Nothing of comparable mechanical complexity appeared again in Europe until medieval cathedral clocks 1,400 years later.",
     "quizQuestion": "How many interlocking gears did the Antikythera mechanism contain?",
     "correctAnswer": "37",
-    "distractors": [],
+    "distractors": [
+      "correction",
+      "viewing",
+      "balance",
+      "rotation, rotate",
+      "Boys' Day celebration (May 5)"
+    ],
     "variants": [
       {
         "question": "How many bronze gears were in the Antikythera mechanism?",
         "type": "forward",
         "correctAnswer": "37",
-        "distractors": [
-          "Plausible option 1",
-          "Plausible option 2",
-          "Plausible option 3"
-        ]
+        "distractors": []
       },
       {
         "question": "What is an ancient 37-gear device that predicted eclipses?",
         "type": "reverse",
         "correctAnswer": "Antikythera mechanism",
-        "distractors": [
-          "Plausible option 1",
-          "Plausible option 2",
-          "Plausible option 3"
-        ]
+        "distractors": []
       },
       {
         "question": "Which is NOT true about the Antikythera mechanism?",
         "type": "negative",
         "correctAnswer": "Built during the Renaissance",
-        "distractors": [
-          "Plausible option 1",
-          "Plausible option 2",
-          "Plausible option 3"
-        ]
+        "distractors": []
       },
       {
         "question": "The ancient device recovered from a Mediterranean shipwreck in 1901 is what?",
         "type": "fill_blank",
         "correctAnswer": "Antikythera mechanism",
-        "distractors": [
-          "Plausible option 1",
-          "Plausible option 2",
-          "Plausible option 3"
-        ]
+        "distractors": []
       },
       {
         "question": "The Antikythera mechanism predicted astronomical events nearly 2,100 years ago.",
         "type": "true_false",
         "correctAnswer": "True",
-        "distractors": [
-          "Plausible option 1",
-          "Plausible option 2",
-          "Plausible option 3"
-        ]
+        "distractors": []
       }
     ],
     "category": [
@@ -1508,7 +1534,11 @@
     "explanation": "In the 1980s and 1990s, researchers noticed that bacteria had clustered repeating DNA sequences — CRISPRs — interspersed with viral DNA fragments. Jennifer Doudna and Emmanuelle Charpentier demonstrated in 2012 that the CRISPR-Cas9 system could be reprogrammed to cut any DNA sequence with a guide RNA. This won the 2020 Nobel Prize in Chemistry. CRISPR therapies have since been approved for sickle cell disease, the first human genetic cure.",
     "quizQuestion": "CRISPR-Cas9 gene editing was inspired by what?",
     "correctAnswer": "Bacterial immune system",
-    "distractors": [],
+    "distractors": [
+      "Plant gene silencing",
+      "White blood cell DNA repair",
+      "Fungal restriction enzymes"
+    ],
     "variants": [
       {
         "question": "CRISPR-Cas9 gene editing was inspired by what?",
@@ -1555,9 +1585,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1587,7 +1615,11 @@
     "explanation": "In 15th-century Florence, plucked or shaved eyebrows were considered a mark of high social status and beauty. Leonardo da Vinci painted Lisa Gherardini according to the fashion of her time. Many viewers across centuries interpreted the missing brows as intentional artistic ambiguity rather than period-accurate style.",
     "quizQuestion": "Why does the Mona Lisa lack eyebrows?",
     "correctAnswer": "Shaved eyebrows were fashionable",
-    "distractors": [],
+    "distractors": [
+      "Eyebrows faded from age",
+      "Leonardo left it unfinished",
+      "Subject had hair loss condition"
+    ],
     "variants": [
       {
         "question": "Why is the Mona Lisa depicted without eyebrows?",
@@ -1634,9 +1666,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1666,7 +1696,11 @@
     "explanation": "By the time Beethoven completed the Ninth Symphony in 1824, he had been profoundly deaf for over a decade. At its Vienna premiere, he stood on stage conducting from memory while the actual conductor led the orchestra. When the audience gave a thunderous standing ovation, Beethoven had to be turned around by a soloist because he couldn't hear the applause.",
     "quizQuestion": "What condition did Beethoven have composing his Ninth Symphony?",
     "correctAnswer": "Completely deaf",
-    "distractors": [],
+    "distractors": [
+      "Blind in one eye",
+      "Severe arthritis",
+      "Partially paralyzed"
+    ],
     "variants": [
       {
         "question": "What physical condition did Beethoven have composing his Ninth Symphony?",
@@ -1713,9 +1747,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1745,7 +1777,11 @@
     "explanation": "Greek music theory included the concept of 'ethos,' meaning that each musical mode (Dorian, Phrygian, Lydian, etc.) had a specific emotional and moral effect on listeners. The Dorian mode was considered noble and warlike, while the Lydian was considered soft and effeminate. Plato argued in 'The Republic' that the state should control which modes citizens could hear to maintain civic virtue.",
     "quizQuestion": "What could different musical modes change in ancient Greeks?",
     "correctAnswer": "Moral character and emotions",
-    "distractors": [],
+    "distractors": [
+      "Physical strength and endurance",
+      "Ability to predict futures",
+      "Connection to the gods"
+    ],
     "variants": [
       {
         "question": "What did ancient Greeks believe musical modes could change?",
@@ -1792,9 +1828,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],
@@ -1824,7 +1858,11 @@
     "explanation": "According to Norse mythology, Odin gave his eye to the giant Mimir in exchange for a drink from the Well of Wisdom. Later, seeking the runes (the Norse writing system), he stabbed himself with his spear and hung upside down from Yggdrasil, the world tree, for nine days and nights with no food or water. At the end, the runes revealed themselves to him. The Norse valued self-sacrifice for knowledge above almost all other virtues.",
     "quizQuestion": "What did Odin sacrifice for wisdom from the Well?",
     "correctAnswer": "One of his eyes",
-    "distractors": [],
+    "distractors": [
+      "His right hand",
+      "His golden spear",
+      "His eight-legged horse"
+    ],
     "variants": [
       {
         "question": "What did Odin sacrifice to gain wisdom?",
@@ -1871,9 +1909,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1903,7 +1939,11 @@
     "explanation": "Osechi Ryori is the traditional Japanese New Year cuisine served in stacked lacquer boxes called 'jubako.' The tradition dates back over a millennium, originating in Heian-period court culture. Each food item carries symbolic meaning: datemaki (rolled omelette) symbolizes scholarship, konbu seaweed represents joy ('yorokobu'), and lotus root's holes symbolize an unobstructed view of the future.",
     "quizQuestion": "Why do shrimp symbolize longevity in Osechi Ryori?",
     "correctAnswer": "They curl like elderly people's backs",
-    "distractors": [],
+    "distractors": [
+      "They live 100 years in folklore",
+      "Their red color means fortune",
+      "They regenerate their claws"
+    ],
     "variants": [
       {
         "question": "In Osechi Ryori, shrimp symbolize longevity because of what physical trait?",
@@ -1950,9 +1990,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -1982,7 +2020,11 @@
     "explanation": "When Gustave Eiffel built his tower for the 1889 World's Fair, Parisians mostly hated it, calling it an 'iron monster' and the 'blight of Paris.' It was granted a 20-year permit, set to be demolished in 1909. Eiffel strategically allowed military and meteorological researchers to use it as a radio transmitter, making it indispensable. In 1909, the French military extended its lease indefinitely, saving it from destruction.",
     "quizQuestion": "What saved the Eiffel Tower from 1909 demolition?",
     "correctAnswer": "Radio antenna utility",
-    "distractors": [],
+    "distractors": [
+      "Public petition by Parisians",
+      "Tourism revenue became too high",
+      "Government declared it national monument"
+    ],
     "variants": [
       {
         "question": "What saved the Eiffel Tower from being demolished in 1909?",
@@ -2059,7 +2101,11 @@
     "explanation": "In the summer of 1816, the eruption of Mount Tambora in Indonesia had caused 'The Year Without a Summer,' blanketing Europe in ash and cold. Mary Godwin (later Shelley), Percy Shelley, Lord Byron, and John Polidori were trapped indoors at Villa Diodati in Switzerland. Byron proposed a ghost story contest. Mary, then 18, conceived her story after a waking dream about a scientist animating dead matter. Published in 1818, 'Frankenstein' is widely regarded as the first true science fiction novel.",
     "quizQuestion": "What volcanic event inspired Mary Shelley to write Frankenstein?",
     "correctAnswer": "Mount Tambora eruption caused cold summer",
-    "distractors": [],
+    "distractors": [
+      "A Swiss glacier collapse",
+      "Iceland's Katla volcano erupted",
+      "Mediterranean volcanic activity"
+    ],
     "variants": [
       {
         "question": "What volcanic event inspired Mary Shelley to write Frankenstein?",
@@ -2106,9 +2152,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2138,7 +2182,11 @@
     "explanation": "Mesoamerican civilizations including the Olmec, Maya, and Aztec consumed cacao as 'xocolatl,' a cold frothy drink made with water, chili peppers, cornmeal, and cacao paste. It was used in religious rituals, as currency, and as an energy drink for warriors. When cacao reached Europe in the 1500s, Spanish colonizers began sweetening it with sugar, which transformed it into the sweet treat we know today. Cacao beans were so valuable the Aztecs used them as currency.",
     "quizQuestion": "How did Aztecs originally consume chocolate?",
     "correctAnswer": "Cold, bitter, spicy drink",
-    "distractors": [],
+    "distractors": [
+      "Warm sweetened porridge",
+      "Solid bars with berries",
+      "Baked ceremonial flatbread"
+    ],
     "variants": [
       {
         "question": "How did the Aztecs originally consume chocolate?",
@@ -2185,9 +2233,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2217,7 +2263,11 @@
     "explanation": "The Flavian Amphitheatre (Colosseum), completed in 80 CE, featured a massive awning system called the velarium that could shade up to two-thirds of the 50,000-seat arena. It was made of linen and operated through a complex system of ropes, winches, and masts built into the upper rim. Because of the extreme complexity of rigging required, the Roman Emperor assigned a detachment of sailors from the Misenum fleet — the same fleet that patrolled the Mediterranean — to operate it permanently.",
     "quizQuestion": "Who operated the Colosseum's retractable fabric roof?",
     "correctAnswer": "Roman navy sailors",
-    "distractors": [],
+    "distractors": [
+      "Enslaved workers permanently stationed there",
+      "Specialized craftsmen called velarii",
+      "Roman legionary engineers"
+    ],
     "variants": [
       {
         "question": "Who operated the Colosseum's retractable shade covering?",
@@ -2264,9 +2314,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2296,7 +2344,11 @@
     "explanation": "On December 28, 1895, the Lumière brothers — Auguste and Louis — screened ten short films at the Grand Café in Paris, including 'La Sortie de l'Usine Lumière à Lyon' (Workers Leaving the Lumière Factory). Audiences were reportedly terrified by 'L'Arrivée d'un train en gare de La Ciotat' (Train Arriving at a Station), with legend holding that people fled thinking a real train would burst through the screen. While historians debate how widespread the panic was, contemporary accounts confirm genuine audience shock and alarm at the moving images.",
     "quizQuestion": "What film subject reportedly terrified the first paying audience?",
     "correctAnswer": "Train arriving at station",
-    "distractors": [],
+    "distractors": [
+      "Workers leaving factory",
+      "Ocean waves crashing",
+      "Galloping cavalry charge"
+    ],
     "variants": [
       {
         "question": "What early film subject caused viewers to panic at first screenings?",
@@ -2343,9 +2395,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2375,7 +2425,11 @@
     "explanation": "At the ancient Olympic Games, married women were prohibited from attending under penalty of death — they would be thrown from the Typaean Rock. However, Kallipateira (also called Pherenike), from the famous Diagorid athletic family of Rhodes, dressed as a male trainer to watch her son Peisirodos compete. When he won, she leaped the fence in excitement, exposing her identity. The judges spared her because her father, brothers, and son were all Olympic champions. They then passed a rule requiring all trainers to appear naked to prevent future disguises.",
     "quizQuestion": "What rule did ancient Olympics create after discovering a disguised woman?",
     "correctAnswer": "Trainers appear naked to prove male",
-    "distractors": [],
+    "distractors": [
+      "Women allowed in separate section",
+      "All spectators must register before entering",
+      "Guards check for disguises at gates"
+    ],
     "variants": [
       {
         "question": "After a woman disguised as trainer was discovered, what new Olympic rule was created?",
@@ -2422,9 +2476,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2454,7 +2506,11 @@
     "explanation": "Archaeological evidence including surviving textiles, illuminated manuscripts, and tapestries shows that medieval Europeans of all classes wore brightly dyed clothing in reds, greens, blues, yellows, and purples. Natural dyes from weld (yellow), woad (blue), and madder (red) were inexpensive and widely available. Only the very poorest would wear undyed wool. The muted brown aesthetic in most medieval films came from early Hollywood's costume budgets and has persisted despite being historically inaccurate.",
     "quizQuestion": "What colors did medieval European peasants typically wear?",
     "correctAnswer": "Bright, vivid colors",
-    "distractors": [],
+    "distractors": [
+      "Drab browns and grays",
+      "Only black or white",
+      "Dark earth tones"
+    ],
     "variants": [
       {
         "question": "What colors did medieval peasants wear daily?",
@@ -2501,9 +2557,7 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True",
-          "Plausible option 2",
-          "Plausible option 3"
+          "True"
         ]
       }
     ],
@@ -2533,7 +2587,11 @@
     "explanation": "Shah Jahan commissioned the Taj Mahal in 1631 as a mausoleum for his beloved wife Mumtaz Mahal, who died in childbirth. The project employed 20,000 craftsmen and artisans for 22 years and used materials from across Asia. The legend about architect Ustad Ahmad Lahauri having his hands amputated to prevent him from replicating the design appears in Persian and Mughal accounts, though historians debate its literal accuracy. Shah Jahan himself was later imprisoned in Agra Fort by his own son Aurangzeb, where he could see the Taj Mahal from his window until his death.",
     "quizQuestion": "Why did Shah Jahan commission the Taj Mahal?",
     "correctAnswer": "Mausoleum for wife Mumtaz Mahal",
-    "distractors": [],
+    "distractors": [
+      "Victory monument after conquest",
+      "To prove Mughal superiority",
+      "Personal meditation retreat"
+    ],
     "variants": [
       {
         "question": "Why did Shah Jahan build the Taj Mahal?",
@@ -2580,9 +2638,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2612,7 +2668,11 @@
     "explanation": "William Shakespeare's plays and poems are the earliest recorded source of approximately 1,700 English words. Scholars track these through the Oxford English Dictionary, which records earliest known usage. Shakespeare coined words by combining existing words, adding prefixes and suffixes, converting nouns to verbs and vice versa. Beyond individual words, he also originated hundreds of phrases including 'break the ice,' 'heart of gold,' 'wild goose chase,' and 'all that glitters is not gold.'",
     "quizQuestion": "How many English words did Shakespeare invent that we still use?",
     "correctAnswer": "Over 1,700",
-    "distractors": [],
+    "distractors": [
+      "Around 50",
+      "Roughly 500",
+      "More than 3,000"
+    ],
     "variants": [
       {
         "question": "Approximately how many words still in use today did Shakespeare invent?",
@@ -2659,9 +2719,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2691,7 +2749,11 @@
     "explanation": "Egyptian wigs served both practical and social purposes. Shaving the head prevented lice and kept people cool in the desert heat. Wigs were then worn for appearances, ceremonies, and daily life among the upper classes. Wealthy Egyptians wore thick, heavy wigs of real human hair scented with beeswax and perfumed resin. The poor wore wigs of wool or plant fiber. Elaborate braiding patterns and wig styles evolved over centuries and could indicate a person's profession, region, and rank.",
     "quizQuestion": "Why did wealthy Egyptians shave heads then wear wigs?",
     "correctAnswer": "Hygiene and displaying social status",
-    "distractors": [],
+    "distractors": [
+      "Priests mandated shaving as religious rite",
+      "Real hair attracted scorpions in desert",
+      "Wigs were gifts from the pharaoh"
+    ],
     "variants": [
       {
         "question": "Why did wealthy ancient Egyptians shave their heads then wear wigs?",
@@ -2770,7 +2832,11 @@
     "explanation": "Linguist Guy Deutscher and philosopher William Gladstone (also a prime minister) noticed that ancient Greek texts, including Homer's epics, never use a word meaning 'blue.' The sky is 'bronze,' the sea is 'wine-dark' or 'violet.' Across many ancient languages — Egyptian, Hebrew, Chinese — blue appears very late or not at all. Neurological research suggests that without a linguistic category for a color, the brain has more difficulty distinguishing it. Ancient Egyptians, who made blue dye, were among the first to have a dedicated blue word.",
     "quizQuestion": "Why did Homer describe the sea as 'wine-dark' instead of blue?",
     "correctAnswer": "Ancient Greek lacked a word for blue",
-    "distractors": [],
+    "distractors": [
+      "Homer was colorblind",
+      "The sea was actually purple-tinted",
+      "Wine symbolized divine power"
+    ],
     "variants": [
       {
         "question": "Why did Homer call the sea 'wine-dark' rather than blue?",
@@ -2817,9 +2883,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2849,7 +2913,11 @@
     "explanation": "George Lucas pitched 'Star Wars' to United Artists, Universal, and several other studios, all of whom rejected it as too strange and uncommercial. Only 20th Century Fox agreed, largely because of the success of Lucas's 'American Graffiti.' Lucas sacrificed his $500,000 director's salary but retained merchandising rights and rights to produce sequels. When the film became a phenomenon in 1977, those retained rights eventually made him a billionaire. Disney purchased Lucasfilm in 2012 for $4.05 billion.",
     "quizQuestion": "What did George Lucas sacrifice for Star Wars sequel rights?",
     "correctAnswer": "His director's fee",
-    "distractors": [],
+    "distractors": [
+      "His box office profit share",
+      "His screenplay copyright",
+      "His writer credit"
+    ],
     "variants": [
       {
         "question": "What did George Lucas give up for Star Wars sequel rights?",
@@ -2896,9 +2964,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -2928,7 +2994,11 @@
     "explanation": "The Mahabharata, composed somewhere between 400 BCE and 400 CE and attributed to the sage Vyasa, contains approximately 1.8 million words across 100,000 couplets. It encompasses the entire story of the Kurukshetra War between the Pandava and Kaurava dynasties, along with the Bhagavad Gita, extensive philosophical treatises, and hundreds of embedded sub-stories. The poem famously states of itself: 'What is here is found elsewhere. What is not here is found nowhere.'",
     "quizQuestion": "How long is the Mahabharata compared to Iliad and Odyssey?",
     "correctAnswer": "Ten times longer",
-    "distractors": [],
+    "distractors": [
+      "Five times longer",
+      "Twice as long",
+      "About the same"
+    ],
     "variants": [
       {
         "question": "How much longer is the Mahabharata than Homer's epics combined?",
@@ -2975,9 +3045,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -3007,7 +3075,11 @@
     "explanation": "Ancient Greeks celebrated the birthdays of gods rather than humans. For Artemis, goddess of the moon and hunt, worshippers brought round honey cakes called 'amphiphontes' (literally 'shining on both sides') decorated with lit candles to her temple, creating the appearance of a glowing moon. The smoke from extinguished candles was believed to carry prayers to the gods. The tradition of birthday cakes spread through European culture gradually, becoming personalized for individual birthdays during the medieval period.",
     "quizQuestion": "What ancient Greek ritual inspired the birthday candle tradition?",
     "correctAnswer": "Offerings to Artemis at her temple",
-    "distractors": [],
+    "distractors": [
+      "Apollo, god of the sun",
+      "Demeter, goddess of harvest",
+      "Hera, queen of the gods"
+    ],
     "variants": [
       {
         "question": "Round honey cakes lit with candles were offerings to which Greek goddess?",
@@ -3054,9 +3126,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],
@@ -3086,7 +3156,11 @@
     "explanation": "The earliest high-heeled shoes, dating to around 1000 CE, appear in Persian cavalry illustrations. When Persian diplomats visited Europe in the late 1500s, European aristocratic men adopted the style as a symbol of status and masculinity. By the 1600s, high heels signified military readiness and social rank among European men. Women only began adopting the style in the early 1600s to appear more masculine. Heels became feminized only in the 18th century as Enlightenment rationalism made them seem impractical and frivolous for men.",
     "quizQuestion": "Why were high heels originally invented?",
     "correctAnswer": "To grip stirrups while shooting arrows",
-    "distractors": [],
+    "distractors": [
+      "To appear taller in battle",
+      "To keep feet dry in mud",
+      "To signal military rank"
+    ],
     "variants": [
       {
         "question": "Why did Persian cavalry soldiers wear high heels?",
@@ -3133,9 +3207,7 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "Plausible option 2",
-          "Plausible option 3"
+          "False"
         ]
       }
     ],

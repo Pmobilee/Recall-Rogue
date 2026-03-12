@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-03-12T06:50:59.025Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.1-mini",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 500,
+  "offset": 36000,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 500,
+    "flagged": 0,
+    "clear": 500,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": []
+}

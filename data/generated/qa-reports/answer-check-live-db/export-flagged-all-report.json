@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-03-12T07:01:28.529Z",
+  "command": "export-flagged",
+  "dbPath": "public/facts.db",
+  "status": "approved",
+  "limit": 100000,
+  "offset": 0,
+  "requiredTags": [],
+  "tagMode": "any",
+  "exported": 2591,
+  "outputPath": "data/generated/qa-reports/answer-check-live-db/flagged-all.jsonl"
+}
