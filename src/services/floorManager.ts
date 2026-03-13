@@ -20,6 +20,7 @@ export interface FloorState {
   bossDefeated: boolean
   segment: 1 | 2 | 3 | 4
   lastSlotWasEvent: boolean  // Track if last room was non-combat event
+  actMap?: import('./mapGenerator').ActMap  // Slay the Spire-style map for this act
 }
 
 export interface RoomOption {
@@ -419,7 +420,7 @@ function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: str
         type: 'rest',
         icon: '\u2764\uFE0F', // ❤️
         label: 'Rest Site',
-        detail: 'Rest or Upgrade',
+        detail: '',
         hidden: false,
       }
     case 'treasure':
@@ -427,7 +428,7 @@ function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: str
         type: 'treasure',
         icon: '\uD83C\uDF81', // 🎁
         label: 'Treasure',
-        detail: 'Free card reward',
+        detail: '',
         hidden: false,
       }
     case 'shop':
@@ -435,7 +436,7 @@ function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: str
         type: 'shop',
         icon: '\uD83D\uDED2', // 🛒
         label: 'Shop',
-        detail: 'Buy/remove cards',
+        detail: '',
         hidden: false,
       }
   }

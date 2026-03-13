@@ -22,7 +22,7 @@
   } from '../../services/presetSelectionService'
   import { playerSave, persistPlayer } from '../stores/playerData'
 
-  const MAX_PRESETS = 10
+  const MAX_PRESETS = 50
   const MAX_PRESET_NAME_LENGTH = 30
   const MIN_FAIR_POOL_SIZE = 40
 

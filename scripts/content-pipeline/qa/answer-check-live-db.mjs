@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import fssync from 'node:fs'
 import path from 'node:path'
 import { createRequire } from 'node:module'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseArgs, writeJson, normalizeText, isPlaceholderDistractor, parseDistractorsColumn } from './shared.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -62,11 +62,12 @@ function rowMatchesTags(row, requiredTags, tagMode) {
   return requiredTags.some((tag) => set.has(tag))
 }
 
-function baseHeuristicIssues(row) {
+export function baseHeuristicIssues(row) {
   const issues = []
   const question = String(row?.quiz_question || row?.quizQuestion || '').trim()
   const answer = String(row?.correct_answer || row?.correctAnswer || '').trim()
   const type = String(row?.type || '').trim().toLowerCase()
+  const language = String(row?.language || '').trim().toLowerCase()
   const qLower = question.toLowerCase()
 
   if (!question) issues.push('missing question')
@@ -76,6 +77,22 @@ function baseHeuristicIssues(row) {
 
   if (question === 'What does this mean?') {
     issues.push('vague vocab question')
+  }
+
+  if (type === 'vocabulary' && /^what is the [a-z][a-z\s-]{1,24} word for\b/i.test(question)) {
+    issues.push('templated vocab prompt')
+  }
+
+  if (type === 'vocabulary' && language && /^what does .+ mean\??$/i.test(question)) {
+    issues.push('low-context vocab prompt')
+  }
+
+  if (/^fill in the blank[:\s]/i.test(question)) {
+    const promptBody = question.replace(/^fill in the blank[:\s]*/i, '').trim()
+    const bodyWordCount = promptBody.split(/\s+/).filter(Boolean).length
+    if (bodyWordCount < 6 || /_{3,}/.test(promptBody) && bodyWordCount < 10) {
+      issues.push('low-context cloze prompt')
+    }
   }
 
   if (type && type !== 'vocabulary' && question && question.length < 20) {
@@ -105,7 +122,7 @@ function baseHeuristicIssues(row) {
   return [...new Set(issues)]
 }
 
-function distractorHeuristicIssues(row) {
+export function distractorHeuristicIssues(row) {
   const issues = []
   const distractors = parseDistractorsColumn(row.distractors)
   const answer = String(row?.correct_answer || row?.correctAnswer || '').trim()
@@ -146,6 +163,21 @@ function distractorHeuristicIssues(row) {
   const tooShort = realDistractors.filter(d => d.trim().length <= 1)
   if (tooShort.length > 0) {
     issues.push(`${tooShort.length} empty/single-char distractors`)
+  }
+
+  const answerLength = answer.trim().length
+  const distractorLengths = realDistractors
+    .map((entry) => entry.trim().length)
+    .filter((length) => length > 0)
+  const lengthPool = answerLength > 0 ? [answerLength, ...distractorLengths] : distractorLengths
+  if (lengthPool.length >= 3) {
+    const minLen = Math.min(...lengthPool)
+    const maxLen = Math.max(...lengthPool)
+    const ratio = minLen > 0 ? maxLen / minLen : Number.POSITIVE_INFINITY
+    const delta = maxLen - minLen
+    if (ratio >= 3.5 && delta >= 18) {
+      issues.push('severe distractor length spread')
+    }
   }
 
   // Semantic mismatch: question asks for "common name" but distractors are Latin binomials
@@ -212,6 +244,8 @@ function ensureAnswerCheckColumns(db) {
 function rowToAssignment(row) {
   return {
     id: row.id,
+    type: row.type,
+    language: row.language,
     statement: row.statement,
     quizQuestion: row.quiz_question,
     correctAnswer: row.correct_answer,
@@ -243,6 +277,7 @@ function selectFacts(db, { status, limit, offset }) {
     return db
       .prepare(`
         SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+               type, language,
                distractors, variants,
                answer_check_issue, answer_check_needs_fix
         FROM facts
@@ -256,6 +291,7 @@ function selectFacts(db, { status, limit, offset }) {
   return db
     .prepare(`
       SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+             type, language,
              distractors, variants,
              answer_check_issue, answer_check_needs_fix
       FROM facts
@@ -270,6 +306,7 @@ function selectFlaggedFacts(db, { status, limit, offset }) {
     return db
       .prepare(`
         SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+               type, language,
                distractors, variants,
                answer_check_issue, answer_check_needs_fix, answer_check_checked_at
         FROM facts
@@ -283,6 +320,7 @@ function selectFlaggedFacts(db, { status, limit, offset }) {
   return db
     .prepare(`
       SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+             type, language,
              distractors, variants,
              answer_check_issue, answer_check_needs_fix, answer_check_checked_at
       FROM facts
@@ -504,10 +542,14 @@ async function cmdExportFlagged(rawArgs) {
   const filtered = rows.filter((row) => rowMatchesTags(row, requiredTags, tagMode))
   const outputRows = filtered.map((row) => ({
     id: row.id,
+    type: row.type,
+    language: row.language,
     statement: row.statement,
     quizQuestion: row.quiz_question,
     correctAnswer: row.correct_answer,
     explanation: row.explanation,
+    distractors: parseDistractorsColumn(row.distractors),
+    variants: row.variants ? (() => { try { return JSON.parse(String(row.variants)) } catch { return [] } })() : [],
     tags: parseTagsJson(row.tags),
     answerCheckIssue: String(row.answer_check_issue || ''),
   }))
@@ -823,7 +865,10 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error('[answer-check-live-db] failed:', error instanceof Error ? error.message : error)
-  process.exit(1)
-})
+const invokedPath = process.argv[1] ? pathToFileURL(path.resolve(process.argv[1])).href : ''
+if (invokedPath === import.meta.url) {
+  main().catch((error) => {
+    console.error('[answer-check-live-db] failed:', error instanceof Error ? error.message : error)
+    process.exit(1)
+  })
+}

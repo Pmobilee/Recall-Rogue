@@ -53,6 +53,7 @@
     "content:qa:fix:llm:distractors": "node scripts/content-pipeline/qa/llm-fact-quality-fix.mjs distractors",
     "content:qa:id-gate": "node scripts/content-pipeline/qa/id-collision-gate.mjs --strict",
     "content:qa:gate": "node scripts/content-pipeline/qa/post-ingestion-gate.mjs",
+    "content:qa:sweep": "node scripts/content-pipeline/qa/quality-sweep-db.mjs",
     "content:coverage:gate": "node scripts/content-pipeline/qa/coverage-gate.mjs",
     "content:promote": "node scripts/content-pipeline/qa/promote-approved-to-db.mjs",
     "content:manual:validate": "node scripts/content-pipeline/manual-ingest/run.mjs validate",
@@ -117,6 +118,7 @@
     "@capacitor/ios": "^8.1.0",
     "@capacitor/splash-screen": "^8.0.1",
     "@capacitor/status-bar": "^8.0.1",
+    "better-sqlite3": "^12.6.2",
     "phaser": "^3.90.0",
     "sql.js": "^1.14.0",
     "ts-fsrs": "^5.2.3"

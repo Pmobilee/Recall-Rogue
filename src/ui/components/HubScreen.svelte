@@ -103,7 +103,7 @@
 </script>
 
 <section class="camp-hub" aria-label="Camp hub">
-  <CampHudOverlay {streak} {dustBalance} />
+  <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
 
   <img
     class="camp-bg"

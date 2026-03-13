@@ -1,0 +1,4156 @@
+{
+  "createdAt": "2026-03-13T16:17:57.940Z",
+  "dbPath": "public/facts.db",
+  "totalRows": 46780,
+  "groups": {
+    "knowledge-animals_wildlife": {
+      "rows": 1686,
+      "batches": 34
+    },
+    "knowledge-art_architecture": {
+      "rows": 1381,
+      "batches": 28
+    },
+    "knowledge-food_cuisine": {
+      "rows": 1125,
+      "batches": 23
+    },
+    "knowledge-general_knowledge": {
+      "rows": 665,
+      "batches": 14
+    },
+    "knowledge-geography": {
+      "rows": 1122,
+      "batches": 23
+    },
+    "knowledge-history": {
+      "rows": 1369,
+      "batches": 28
+    },
+    "knowledge-human_body_health": {
+      "rows": 1175,
+      "batches": 24
+    },
+    "knowledge-mythology_folklore": {
+      "rows": 722,
+      "batches": 15
+    },
+    "knowledge-natural_sciences": {
+      "rows": 870,
+      "batches": 18
+    },
+    "knowledge-space_astronomy": {
+      "rows": 431,
+      "batches": 9
+    },
+    "vocab-cs": {
+      "rows": 1049,
+      "batches": 11
+    },
+    "vocab-de": {
+      "rows": 4778,
+      "batches": 48
+    },
+    "vocab-es": {
+      "rows": 5575,
+      "batches": 56
+    },
+    "vocab-fr": {
+      "rows": 966,
+      "batches": 10
+    },
+    "vocab-it": {
+      "rows": 1924,
+      "batches": 20
+    },
+    "vocab-ja": {
+      "rows": 13125,
+      "batches": 132
+    },
+    "vocab-ko": {
+      "rows": 7686,
+      "batches": 77
+    },
+    "vocab-nl": {
+      "rows": 1131,
+      "batches": 12
+    }
+  },
+  "batches": [
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 0,
+      "file": "batches/knowledge-animals_wildlife/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 1,
+      "file": "batches/knowledge-animals_wildlife/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 2,
+      "file": "batches/knowledge-animals_wildlife/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 3,
+      "file": "batches/knowledge-animals_wildlife/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 4,
+      "file": "batches/knowledge-animals_wildlife/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 5,
+      "file": "batches/knowledge-animals_wildlife/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 6,
+      "file": "batches/knowledge-animals_wildlife/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 7,
+      "file": "batches/knowledge-animals_wildlife/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 8,
+      "file": "batches/knowledge-animals_wildlife/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 9,
+      "file": "batches/knowledge-animals_wildlife/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 10,
+      "file": "batches/knowledge-animals_wildlife/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 11,
+      "file": "batches/knowledge-animals_wildlife/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 12,
+      "file": "batches/knowledge-animals_wildlife/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 13,
+      "file": "batches/knowledge-animals_wildlife/batch-013.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 14,
+      "file": "batches/knowledge-animals_wildlife/batch-014.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 15,
+      "file": "batches/knowledge-animals_wildlife/batch-015.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 16,
+      "file": "batches/knowledge-animals_wildlife/batch-016.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 17,
+      "file": "batches/knowledge-animals_wildlife/batch-017.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 18,
+      "file": "batches/knowledge-animals_wildlife/batch-018.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 19,
+      "file": "batches/knowledge-animals_wildlife/batch-019.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 20,
+      "file": "batches/knowledge-animals_wildlife/batch-020.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 21,
+      "file": "batches/knowledge-animals_wildlife/batch-021.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 22,
+      "file": "batches/knowledge-animals_wildlife/batch-022.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 23,
+      "file": "batches/knowledge-animals_wildlife/batch-023.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 24,
+      "file": "batches/knowledge-animals_wildlife/batch-024.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 25,
+      "file": "batches/knowledge-animals_wildlife/batch-025.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 26,
+      "file": "batches/knowledge-animals_wildlife/batch-026.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 27,
+      "file": "batches/knowledge-animals_wildlife/batch-027.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 28,
+      "file": "batches/knowledge-animals_wildlife/batch-028.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 29,
+      "file": "batches/knowledge-animals_wildlife/batch-029.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 30,
+      "file": "batches/knowledge-animals_wildlife/batch-030.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 31,
+      "file": "batches/knowledge-animals_wildlife/batch-031.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 32,
+      "file": "batches/knowledge-animals_wildlife/batch-032.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-animals_wildlife",
+      "index": 33,
+      "file": "batches/knowledge-animals_wildlife/batch-033.jsonl",
+      "rows": 36,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 0,
+      "file": "batches/knowledge-art_architecture/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 1,
+      "file": "batches/knowledge-art_architecture/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 2,
+      "file": "batches/knowledge-art_architecture/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 3,
+      "file": "batches/knowledge-art_architecture/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 4,
+      "file": "batches/knowledge-art_architecture/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 5,
+      "file": "batches/knowledge-art_architecture/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 6,
+      "file": "batches/knowledge-art_architecture/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 7,
+      "file": "batches/knowledge-art_architecture/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 8,
+      "file": "batches/knowledge-art_architecture/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 9,
+      "file": "batches/knowledge-art_architecture/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 10,
+      "file": "batches/knowledge-art_architecture/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 11,
+      "file": "batches/knowledge-art_architecture/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 12,
+      "file": "batches/knowledge-art_architecture/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 13,
+      "file": "batches/knowledge-art_architecture/batch-013.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 14,
+      "file": "batches/knowledge-art_architecture/batch-014.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 15,
+      "file": "batches/knowledge-art_architecture/batch-015.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 16,
+      "file": "batches/knowledge-art_architecture/batch-016.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 17,
+      "file": "batches/knowledge-art_architecture/batch-017.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 18,
+      "file": "batches/knowledge-art_architecture/batch-018.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 19,
+      "file": "batches/knowledge-art_architecture/batch-019.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 20,
+      "file": "batches/knowledge-art_architecture/batch-020.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 21,
+      "file": "batches/knowledge-art_architecture/batch-021.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 22,
+      "file": "batches/knowledge-art_architecture/batch-022.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 23,
+      "file": "batches/knowledge-art_architecture/batch-023.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 24,
+      "file": "batches/knowledge-art_architecture/batch-024.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 25,
+      "file": "batches/knowledge-art_architecture/batch-025.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 26,
+      "file": "batches/knowledge-art_architecture/batch-026.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-art_architecture",
+      "index": 27,
+      "file": "batches/knowledge-art_architecture/batch-027.jsonl",
+      "rows": 31,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 0,
+      "file": "batches/knowledge-food_cuisine/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 1,
+      "file": "batches/knowledge-food_cuisine/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 2,
+      "file": "batches/knowledge-food_cuisine/batch-002.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 3,
+      "file": "batches/knowledge-food_cuisine/batch-003.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 4,
+      "file": "batches/knowledge-food_cuisine/batch-004.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 5,
+      "file": "batches/knowledge-food_cuisine/batch-005.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 6,
+      "file": "batches/knowledge-food_cuisine/batch-006.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 7,
+      "file": "batches/knowledge-food_cuisine/batch-007.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 8,
+      "file": "batches/knowledge-food_cuisine/batch-008.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 9,
+      "file": "batches/knowledge-food_cuisine/batch-009.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 10,
+      "file": "batches/knowledge-food_cuisine/batch-010.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 11,
+      "file": "batches/knowledge-food_cuisine/batch-011.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 12,
+      "file": "batches/knowledge-food_cuisine/batch-012.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 13,
+      "file": "batches/knowledge-food_cuisine/batch-013.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 14,
+      "file": "batches/knowledge-food_cuisine/batch-014.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 15,
+      "file": "batches/knowledge-food_cuisine/batch-015.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 16,
+      "file": "batches/knowledge-food_cuisine/batch-016.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 17,
+      "file": "batches/knowledge-food_cuisine/batch-017.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 18,
+      "file": "batches/knowledge-food_cuisine/batch-018.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 19,
+      "file": "batches/knowledge-food_cuisine/batch-019.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 20,
+      "file": "batches/knowledge-food_cuisine/batch-020.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 21,
+      "file": "batches/knowledge-food_cuisine/batch-021.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-food_cuisine",
+      "index": 22,
+      "file": "batches/knowledge-food_cuisine/batch-022.jsonl",
+      "rows": 25,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 0,
+      "file": "batches/knowledge-general_knowledge/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 1,
+      "file": "batches/knowledge-general_knowledge/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 2,
+      "file": "batches/knowledge-general_knowledge/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 3,
+      "file": "batches/knowledge-general_knowledge/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 4,
+      "file": "batches/knowledge-general_knowledge/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 5,
+      "file": "batches/knowledge-general_knowledge/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 6,
+      "file": "batches/knowledge-general_knowledge/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 7,
+      "file": "batches/knowledge-general_knowledge/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 8,
+      "file": "batches/knowledge-general_knowledge/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 9,
+      "file": "batches/knowledge-general_knowledge/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 10,
+      "file": "batches/knowledge-general_knowledge/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 11,
+      "file": "batches/knowledge-general_knowledge/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 12,
+      "file": "batches/knowledge-general_knowledge/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-general_knowledge",
+      "index": 13,
+      "file": "batches/knowledge-general_knowledge/batch-013.jsonl",
+      "rows": 15,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 0,
+      "file": "batches/knowledge-geography/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 1,
+      "file": "batches/knowledge-geography/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 2,
+      "file": "batches/knowledge-geography/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 3,
+      "file": "batches/knowledge-geography/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 4,
+      "file": "batches/knowledge-geography/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 5,
+      "file": "batches/knowledge-geography/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 6,
+      "file": "batches/knowledge-geography/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 7,
+      "file": "batches/knowledge-geography/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 8,
+      "file": "batches/knowledge-geography/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 9,
+      "file": "batches/knowledge-geography/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 10,
+      "file": "batches/knowledge-geography/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 11,
+      "file": "batches/knowledge-geography/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 12,
+      "file": "batches/knowledge-geography/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 13,
+      "file": "batches/knowledge-geography/batch-013.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 14,
+      "file": "batches/knowledge-geography/batch-014.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 15,
+      "file": "batches/knowledge-geography/batch-015.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 16,
+      "file": "batches/knowledge-geography/batch-016.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 17,
+      "file": "batches/knowledge-geography/batch-017.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 18,
+      "file": "batches/knowledge-geography/batch-018.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 19,
+      "file": "batches/knowledge-geography/batch-019.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 20,
+      "file": "batches/knowledge-geography/batch-020.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 21,
+      "file": "batches/knowledge-geography/batch-021.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-geography",
+      "index": 22,
+      "file": "batches/knowledge-geography/batch-022.jsonl",
+      "rows": 22,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 0,
+      "file": "batches/knowledge-history/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 1,
+      "file": "batches/knowledge-history/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 2,
+      "file": "batches/knowledge-history/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 3,
+      "file": "batches/knowledge-history/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 4,
+      "file": "batches/knowledge-history/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 5,
+      "file": "batches/knowledge-history/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 6,
+      "file": "batches/knowledge-history/batch-006.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 7,
+      "file": "batches/knowledge-history/batch-007.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 8,
+      "file": "batches/knowledge-history/batch-008.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 9,
+      "file": "batches/knowledge-history/batch-009.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 10,
+      "file": "batches/knowledge-history/batch-010.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 11,
+      "file": "batches/knowledge-history/batch-011.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 12,
+      "file": "batches/knowledge-history/batch-012.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 13,
+      "file": "batches/knowledge-history/batch-013.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 14,
+      "file": "batches/knowledge-history/batch-014.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 15,
+      "file": "batches/knowledge-history/batch-015.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 16,
+      "file": "batches/knowledge-history/batch-016.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 17,
+      "file": "batches/knowledge-history/batch-017.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 18,
+      "file": "batches/knowledge-history/batch-018.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 19,
+      "file": "batches/knowledge-history/batch-019.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 20,
+      "file": "batches/knowledge-history/batch-020.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 21,
+      "file": "batches/knowledge-history/batch-021.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 22,
+      "file": "batches/knowledge-history/batch-022.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 23,
+      "file": "batches/knowledge-history/batch-023.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 24,
+      "file": "batches/knowledge-history/batch-024.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 25,
+      "file": "batches/knowledge-history/batch-025.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 26,
+      "file": "batches/knowledge-history/batch-026.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-history",
+      "index": 27,
+      "file": "batches/knowledge-history/batch-027.jsonl",
+      "rows": 19,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 0,
+      "file": "batches/knowledge-human_body_health/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 1,
+      "file": "batches/knowledge-human_body_health/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 2,
+      "file": "batches/knowledge-human_body_health/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 3,
+      "file": "batches/knowledge-human_body_health/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 4,
+      "file": "batches/knowledge-human_body_health/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 5,
+      "file": "batches/knowledge-human_body_health/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 6,
+      "file": "batches/knowledge-human_body_health/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 7,
+      "file": "batches/knowledge-human_body_health/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 8,
+      "file": "batches/knowledge-human_body_health/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 9,
+      "file": "batches/knowledge-human_body_health/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 10,
+      "file": "batches/knowledge-human_body_health/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 11,
+      "file": "batches/knowledge-human_body_health/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 12,
+      "file": "batches/knowledge-human_body_health/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 13,
+      "file": "batches/knowledge-human_body_health/batch-013.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 14,
+      "file": "batches/knowledge-human_body_health/batch-014.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 15,
+      "file": "batches/knowledge-human_body_health/batch-015.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 16,
+      "file": "batches/knowledge-human_body_health/batch-016.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 17,
+      "file": "batches/knowledge-human_body_health/batch-017.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 18,
+      "file": "batches/knowledge-human_body_health/batch-018.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 19,
+      "file": "batches/knowledge-human_body_health/batch-019.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 20,
+      "file": "batches/knowledge-human_body_health/batch-020.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 21,
+      "file": "batches/knowledge-human_body_health/batch-021.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 22,
+      "file": "batches/knowledge-human_body_health/batch-022.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-human_body_health",
+      "index": 23,
+      "file": "batches/knowledge-human_body_health/batch-023.jsonl",
+      "rows": 25,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 0,
+      "file": "batches/knowledge-mythology_folklore/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 1,
+      "file": "batches/knowledge-mythology_folklore/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 2,
+      "file": "batches/knowledge-mythology_folklore/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 3,
+      "file": "batches/knowledge-mythology_folklore/batch-003.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 4,
+      "file": "batches/knowledge-mythology_folklore/batch-004.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 5,
+      "file": "batches/knowledge-mythology_folklore/batch-005.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 6,
+      "file": "batches/knowledge-mythology_folklore/batch-006.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 7,
+      "file": "batches/knowledge-mythology_folklore/batch-007.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 8,
+      "file": "batches/knowledge-mythology_folklore/batch-008.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 9,
+      "file": "batches/knowledge-mythology_folklore/batch-009.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 10,
+      "file": "batches/knowledge-mythology_folklore/batch-010.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 11,
+      "file": "batches/knowledge-mythology_folklore/batch-011.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 12,
+      "file": "batches/knowledge-mythology_folklore/batch-012.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 13,
+      "file": "batches/knowledge-mythology_folklore/batch-013.jsonl",
+      "rows": 50,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-mythology_folklore",
+      "index": 14,
+      "file": "batches/knowledge-mythology_folklore/batch-014.jsonl",
+      "rows": 22,
+      "status": "pending"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 0,
+      "file": "batches/knowledge-natural_sciences/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 1,
+      "file": "batches/knowledge-natural_sciences/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 2,
+      "file": "batches/knowledge-natural_sciences/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 3,
+      "file": "batches/knowledge-natural_sciences/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 4,
+      "file": "batches/knowledge-natural_sciences/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 5,
+      "file": "batches/knowledge-natural_sciences/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 6,
+      "file": "batches/knowledge-natural_sciences/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 7,
+      "file": "batches/knowledge-natural_sciences/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 8,
+      "file": "batches/knowledge-natural_sciences/batch-008.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 9,
+      "file": "batches/knowledge-natural_sciences/batch-009.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 10,
+      "file": "batches/knowledge-natural_sciences/batch-010.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 11,
+      "file": "batches/knowledge-natural_sciences/batch-011.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 12,
+      "file": "batches/knowledge-natural_sciences/batch-012.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 13,
+      "file": "batches/knowledge-natural_sciences/batch-013.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 14,
+      "file": "batches/knowledge-natural_sciences/batch-014.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 15,
+      "file": "batches/knowledge-natural_sciences/batch-015.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 16,
+      "file": "batches/knowledge-natural_sciences/batch-016.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-natural_sciences",
+      "index": 17,
+      "file": "batches/knowledge-natural_sciences/batch-017.jsonl",
+      "rows": 20,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 0,
+      "file": "batches/knowledge-space_astronomy/batch-000.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 1,
+      "file": "batches/knowledge-space_astronomy/batch-001.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 2,
+      "file": "batches/knowledge-space_astronomy/batch-002.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 3,
+      "file": "batches/knowledge-space_astronomy/batch-003.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 4,
+      "file": "batches/knowledge-space_astronomy/batch-004.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 5,
+      "file": "batches/knowledge-space_astronomy/batch-005.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 6,
+      "file": "batches/knowledge-space_astronomy/batch-006.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 7,
+      "file": "batches/knowledge-space_astronomy/batch-007.jsonl",
+      "rows": 50,
+      "status": "applied"
+    },
+    {
+      "group": "knowledge-space_astronomy",
+      "index": 8,
+      "file": "batches/knowledge-space_astronomy/batch-008.jsonl",
+      "rows": 31,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 0,
+      "file": "batches/vocab-cs/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 1,
+      "file": "batches/vocab-cs/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 2,
+      "file": "batches/vocab-cs/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 3,
+      "file": "batches/vocab-cs/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 4,
+      "file": "batches/vocab-cs/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 5,
+      "file": "batches/vocab-cs/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 6,
+      "file": "batches/vocab-cs/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 7,
+      "file": "batches/vocab-cs/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 8,
+      "file": "batches/vocab-cs/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 9,
+      "file": "batches/vocab-cs/batch-009.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-cs",
+      "index": 10,
+      "file": "batches/vocab-cs/batch-010.jsonl",
+      "rows": 49,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 0,
+      "file": "batches/vocab-de/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 1,
+      "file": "batches/vocab-de/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 2,
+      "file": "batches/vocab-de/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 3,
+      "file": "batches/vocab-de/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 4,
+      "file": "batches/vocab-de/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 5,
+      "file": "batches/vocab-de/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 6,
+      "file": "batches/vocab-de/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 7,
+      "file": "batches/vocab-de/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 8,
+      "file": "batches/vocab-de/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 9,
+      "file": "batches/vocab-de/batch-009.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 10,
+      "file": "batches/vocab-de/batch-010.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 11,
+      "file": "batches/vocab-de/batch-011.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 12,
+      "file": "batches/vocab-de/batch-012.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 13,
+      "file": "batches/vocab-de/batch-013.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 14,
+      "file": "batches/vocab-de/batch-014.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 15,
+      "file": "batches/vocab-de/batch-015.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 16,
+      "file": "batches/vocab-de/batch-016.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 17,
+      "file": "batches/vocab-de/batch-017.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 18,
+      "file": "batches/vocab-de/batch-018.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 19,
+      "file": "batches/vocab-de/batch-019.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 20,
+      "file": "batches/vocab-de/batch-020.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 21,
+      "file": "batches/vocab-de/batch-021.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 22,
+      "file": "batches/vocab-de/batch-022.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 23,
+      "file": "batches/vocab-de/batch-023.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 24,
+      "file": "batches/vocab-de/batch-024.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 25,
+      "file": "batches/vocab-de/batch-025.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 26,
+      "file": "batches/vocab-de/batch-026.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 27,
+      "file": "batches/vocab-de/batch-027.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 28,
+      "file": "batches/vocab-de/batch-028.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 29,
+      "file": "batches/vocab-de/batch-029.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 30,
+      "file": "batches/vocab-de/batch-030.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 31,
+      "file": "batches/vocab-de/batch-031.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 32,
+      "file": "batches/vocab-de/batch-032.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 33,
+      "file": "batches/vocab-de/batch-033.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 34,
+      "file": "batches/vocab-de/batch-034.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 35,
+      "file": "batches/vocab-de/batch-035.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 36,
+      "file": "batches/vocab-de/batch-036.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 37,
+      "file": "batches/vocab-de/batch-037.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-de",
+      "index": 38,
+      "file": "batches/vocab-de/batch-038.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 39,
+      "file": "batches/vocab-de/batch-039.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 40,
+      "file": "batches/vocab-de/batch-040.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 41,
+      "file": "batches/vocab-de/batch-041.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 42,
+      "file": "batches/vocab-de/batch-042.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 43,
+      "file": "batches/vocab-de/batch-043.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 44,
+      "file": "batches/vocab-de/batch-044.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 45,
+      "file": "batches/vocab-de/batch-045.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 46,
+      "file": "batches/vocab-de/batch-046.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-de",
+      "index": 47,
+      "file": "batches/vocab-de/batch-047.jsonl",
+      "rows": 78,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 0,
+      "file": "batches/vocab-es/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 1,
+      "file": "batches/vocab-es/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 2,
+      "file": "batches/vocab-es/batch-002.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 3,
+      "file": "batches/vocab-es/batch-003.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 4,
+      "file": "batches/vocab-es/batch-004.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 5,
+      "file": "batches/vocab-es/batch-005.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 6,
+      "file": "batches/vocab-es/batch-006.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 7,
+      "file": "batches/vocab-es/batch-007.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 8,
+      "file": "batches/vocab-es/batch-008.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 9,
+      "file": "batches/vocab-es/batch-009.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 10,
+      "file": "batches/vocab-es/batch-010.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 11,
+      "file": "batches/vocab-es/batch-011.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 12,
+      "file": "batches/vocab-es/batch-012.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 13,
+      "file": "batches/vocab-es/batch-013.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 14,
+      "file": "batches/vocab-es/batch-014.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 15,
+      "file": "batches/vocab-es/batch-015.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 16,
+      "file": "batches/vocab-es/batch-016.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 17,
+      "file": "batches/vocab-es/batch-017.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 18,
+      "file": "batches/vocab-es/batch-018.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 19,
+      "file": "batches/vocab-es/batch-019.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 20,
+      "file": "batches/vocab-es/batch-020.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 21,
+      "file": "batches/vocab-es/batch-021.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 22,
+      "file": "batches/vocab-es/batch-022.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 23,
+      "file": "batches/vocab-es/batch-023.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 24,
+      "file": "batches/vocab-es/batch-024.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 25,
+      "file": "batches/vocab-es/batch-025.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 26,
+      "file": "batches/vocab-es/batch-026.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 27,
+      "file": "batches/vocab-es/batch-027.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 28,
+      "file": "batches/vocab-es/batch-028.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 29,
+      "file": "batches/vocab-es/batch-029.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 30,
+      "file": "batches/vocab-es/batch-030.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 31,
+      "file": "batches/vocab-es/batch-031.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 32,
+      "file": "batches/vocab-es/batch-032.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 33,
+      "file": "batches/vocab-es/batch-033.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 34,
+      "file": "batches/vocab-es/batch-034.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 35,
+      "file": "batches/vocab-es/batch-035.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 36,
+      "file": "batches/vocab-es/batch-036.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 37,
+      "file": "batches/vocab-es/batch-037.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-es",
+      "index": 38,
+      "file": "batches/vocab-es/batch-038.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 39,
+      "file": "batches/vocab-es/batch-039.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 40,
+      "file": "batches/vocab-es/batch-040.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 41,
+      "file": "batches/vocab-es/batch-041.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 42,
+      "file": "batches/vocab-es/batch-042.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 43,
+      "file": "batches/vocab-es/batch-043.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 44,
+      "file": "batches/vocab-es/batch-044.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 45,
+      "file": "batches/vocab-es/batch-045.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 46,
+      "file": "batches/vocab-es/batch-046.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 47,
+      "file": "batches/vocab-es/batch-047.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 48,
+      "file": "batches/vocab-es/batch-048.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 49,
+      "file": "batches/vocab-es/batch-049.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 50,
+      "file": "batches/vocab-es/batch-050.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 51,
+      "file": "batches/vocab-es/batch-051.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 52,
+      "file": "batches/vocab-es/batch-052.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 53,
+      "file": "batches/vocab-es/batch-053.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 54,
+      "file": "batches/vocab-es/batch-054.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-es",
+      "index": 55,
+      "file": "batches/vocab-es/batch-055.jsonl",
+      "rows": 75,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 0,
+      "file": "batches/vocab-fr/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 1,
+      "file": "batches/vocab-fr/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 2,
+      "file": "batches/vocab-fr/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 3,
+      "file": "batches/vocab-fr/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 4,
+      "file": "batches/vocab-fr/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 5,
+      "file": "batches/vocab-fr/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 6,
+      "file": "batches/vocab-fr/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 7,
+      "file": "batches/vocab-fr/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 8,
+      "file": "batches/vocab-fr/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-fr",
+      "index": 9,
+      "file": "batches/vocab-fr/batch-009.jsonl",
+      "rows": 66,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 0,
+      "file": "batches/vocab-it/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 1,
+      "file": "batches/vocab-it/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 2,
+      "file": "batches/vocab-it/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 3,
+      "file": "batches/vocab-it/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 4,
+      "file": "batches/vocab-it/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 5,
+      "file": "batches/vocab-it/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 6,
+      "file": "batches/vocab-it/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 7,
+      "file": "batches/vocab-it/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 8,
+      "file": "batches/vocab-it/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 9,
+      "file": "batches/vocab-it/batch-009.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 10,
+      "file": "batches/vocab-it/batch-010.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 11,
+      "file": "batches/vocab-it/batch-011.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 12,
+      "file": "batches/vocab-it/batch-012.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 13,
+      "file": "batches/vocab-it/batch-013.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 14,
+      "file": "batches/vocab-it/batch-014.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 15,
+      "file": "batches/vocab-it/batch-015.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 16,
+      "file": "batches/vocab-it/batch-016.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 17,
+      "file": "batches/vocab-it/batch-017.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 18,
+      "file": "batches/vocab-it/batch-018.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-it",
+      "index": 19,
+      "file": "batches/vocab-it/batch-019.jsonl",
+      "rows": 24,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 0,
+      "file": "batches/vocab-ja/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 1,
+      "file": "batches/vocab-ja/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 2,
+      "file": "batches/vocab-ja/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 3,
+      "file": "batches/vocab-ja/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 4,
+      "file": "batches/vocab-ja/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 5,
+      "file": "batches/vocab-ja/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 6,
+      "file": "batches/vocab-ja/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 7,
+      "file": "batches/vocab-ja/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 8,
+      "file": "batches/vocab-ja/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 9,
+      "file": "batches/vocab-ja/batch-009.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 10,
+      "file": "batches/vocab-ja/batch-010.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 11,
+      "file": "batches/vocab-ja/batch-011.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 12,
+      "file": "batches/vocab-ja/batch-012.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 13,
+      "file": "batches/vocab-ja/batch-013.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 14,
+      "file": "batches/vocab-ja/batch-014.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 15,
+      "file": "batches/vocab-ja/batch-015.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 16,
+      "file": "batches/vocab-ja/batch-016.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 17,
+      "file": "batches/vocab-ja/batch-017.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 18,
+      "file": "batches/vocab-ja/batch-018.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 19,
+      "file": "batches/vocab-ja/batch-019.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 20,
+      "file": "batches/vocab-ja/batch-020.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 21,
+      "file": "batches/vocab-ja/batch-021.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 22,
+      "file": "batches/vocab-ja/batch-022.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 23,
+      "file": "batches/vocab-ja/batch-023.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 24,
+      "file": "batches/vocab-ja/batch-024.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 25,
+      "file": "batches/vocab-ja/batch-025.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 26,
+      "file": "batches/vocab-ja/batch-026.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 27,
+      "file": "batches/vocab-ja/batch-027.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 28,
+      "file": "batches/vocab-ja/batch-028.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 29,
+      "file": "batches/vocab-ja/batch-029.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 30,
+      "file": "batches/vocab-ja/batch-030.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 31,
+      "file": "batches/vocab-ja/batch-031.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 32,
+      "file": "batches/vocab-ja/batch-032.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 33,
+      "file": "batches/vocab-ja/batch-033.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 34,
+      "file": "batches/vocab-ja/batch-034.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 35,
+      "file": "batches/vocab-ja/batch-035.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 36,
+      "file": "batches/vocab-ja/batch-036.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 37,
+      "file": "batches/vocab-ja/batch-037.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 38,
+      "file": "batches/vocab-ja/batch-038.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 39,
+      "file": "batches/vocab-ja/batch-039.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 40,
+      "file": "batches/vocab-ja/batch-040.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 41,
+      "file": "batches/vocab-ja/batch-041.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 42,
+      "file": "batches/vocab-ja/batch-042.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 43,
+      "file": "batches/vocab-ja/batch-043.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 44,
+      "file": "batches/vocab-ja/batch-044.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 45,
+      "file": "batches/vocab-ja/batch-045.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 46,
+      "file": "batches/vocab-ja/batch-046.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 47,
+      "file": "batches/vocab-ja/batch-047.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 48,
+      "file": "batches/vocab-ja/batch-048.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 49,
+      "file": "batches/vocab-ja/batch-049.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 50,
+      "file": "batches/vocab-ja/batch-050.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 51,
+      "file": "batches/vocab-ja/batch-051.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 52,
+      "file": "batches/vocab-ja/batch-052.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 53,
+      "file": "batches/vocab-ja/batch-053.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 54,
+      "file": "batches/vocab-ja/batch-054.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 55,
+      "file": "batches/vocab-ja/batch-055.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 56,
+      "file": "batches/vocab-ja/batch-056.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 57,
+      "file": "batches/vocab-ja/batch-057.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 58,
+      "file": "batches/vocab-ja/batch-058.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 59,
+      "file": "batches/vocab-ja/batch-059.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 60,
+      "file": "batches/vocab-ja/batch-060.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 61,
+      "file": "batches/vocab-ja/batch-061.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 62,
+      "file": "batches/vocab-ja/batch-062.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 63,
+      "file": "batches/vocab-ja/batch-063.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 64,
+      "file": "batches/vocab-ja/batch-064.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 65,
+      "file": "batches/vocab-ja/batch-065.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 66,
+      "file": "batches/vocab-ja/batch-066.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 67,
+      "file": "batches/vocab-ja/batch-067.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 68,
+      "file": "batches/vocab-ja/batch-068.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 69,
+      "file": "batches/vocab-ja/batch-069.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 70,
+      "file": "batches/vocab-ja/batch-070.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 71,
+      "file": "batches/vocab-ja/batch-071.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 72,
+      "file": "batches/vocab-ja/batch-072.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 73,
+      "file": "batches/vocab-ja/batch-073.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 74,
+      "file": "batches/vocab-ja/batch-074.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 75,
+      "file": "batches/vocab-ja/batch-075.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 76,
+      "file": "batches/vocab-ja/batch-076.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 77,
+      "file": "batches/vocab-ja/batch-077.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 78,
+      "file": "batches/vocab-ja/batch-078.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 79,
+      "file": "batches/vocab-ja/batch-079.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 80,
+      "file": "batches/vocab-ja/batch-080.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 81,
+      "file": "batches/vocab-ja/batch-081.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 82,
+      "file": "batches/vocab-ja/batch-082.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 83,
+      "file": "batches/vocab-ja/batch-083.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 84,
+      "file": "batches/vocab-ja/batch-084.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 85,
+      "file": "batches/vocab-ja/batch-085.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 86,
+      "file": "batches/vocab-ja/batch-086.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 87,
+      "file": "batches/vocab-ja/batch-087.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 88,
+      "file": "batches/vocab-ja/batch-088.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 89,
+      "file": "batches/vocab-ja/batch-089.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 90,
+      "file": "batches/vocab-ja/batch-090.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 91,
+      "file": "batches/vocab-ja/batch-091.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 92,
+      "file": "batches/vocab-ja/batch-092.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 93,
+      "file": "batches/vocab-ja/batch-093.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 94,
+      "file": "batches/vocab-ja/batch-094.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 95,
+      "file": "batches/vocab-ja/batch-095.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 96,
+      "file": "batches/vocab-ja/batch-096.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 97,
+      "file": "batches/vocab-ja/batch-097.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 98,
+      "file": "batches/vocab-ja/batch-098.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 99,
+      "file": "batches/vocab-ja/batch-099.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 100,
+      "file": "batches/vocab-ja/batch-100.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 101,
+      "file": "batches/vocab-ja/batch-101.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 102,
+      "file": "batches/vocab-ja/batch-102.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 103,
+      "file": "batches/vocab-ja/batch-103.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 104,
+      "file": "batches/vocab-ja/batch-104.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 105,
+      "file": "batches/vocab-ja/batch-105.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 106,
+      "file": "batches/vocab-ja/batch-106.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 107,
+      "file": "batches/vocab-ja/batch-107.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 108,
+      "file": "batches/vocab-ja/batch-108.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 109,
+      "file": "batches/vocab-ja/batch-109.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 110,
+      "file": "batches/vocab-ja/batch-110.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 111,
+      "file": "batches/vocab-ja/batch-111.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 112,
+      "file": "batches/vocab-ja/batch-112.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 113,
+      "file": "batches/vocab-ja/batch-113.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 114,
+      "file": "batches/vocab-ja/batch-114.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 115,
+      "file": "batches/vocab-ja/batch-115.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 116,
+      "file": "batches/vocab-ja/batch-116.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 117,
+      "file": "batches/vocab-ja/batch-117.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 118,
+      "file": "batches/vocab-ja/batch-118.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 119,
+      "file": "batches/vocab-ja/batch-119.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 120,
+      "file": "batches/vocab-ja/batch-120.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 121,
+      "file": "batches/vocab-ja/batch-121.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 122,
+      "file": "batches/vocab-ja/batch-122.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 123,
+      "file": "batches/vocab-ja/batch-123.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 124,
+      "file": "batches/vocab-ja/batch-124.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 125,
+      "file": "batches/vocab-ja/batch-125.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 126,
+      "file": "batches/vocab-ja/batch-126.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 127,
+      "file": "batches/vocab-ja/batch-127.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 128,
+      "file": "batches/vocab-ja/batch-128.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 129,
+      "file": "batches/vocab-ja/batch-129.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 130,
+      "file": "batches/vocab-ja/batch-130.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ja",
+      "index": 131,
+      "file": "batches/vocab-ja/batch-131.jsonl",
+      "rows": 25,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 0,
+      "file": "batches/vocab-ko/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 1,
+      "file": "batches/vocab-ko/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 2,
+      "file": "batches/vocab-ko/batch-002.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 3,
+      "file": "batches/vocab-ko/batch-003.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 4,
+      "file": "batches/vocab-ko/batch-004.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 5,
+      "file": "batches/vocab-ko/batch-005.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 6,
+      "file": "batches/vocab-ko/batch-006.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 7,
+      "file": "batches/vocab-ko/batch-007.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 8,
+      "file": "batches/vocab-ko/batch-008.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 9,
+      "file": "batches/vocab-ko/batch-009.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 10,
+      "file": "batches/vocab-ko/batch-010.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 11,
+      "file": "batches/vocab-ko/batch-011.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 12,
+      "file": "batches/vocab-ko/batch-012.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 13,
+      "file": "batches/vocab-ko/batch-013.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 14,
+      "file": "batches/vocab-ko/batch-014.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 15,
+      "file": "batches/vocab-ko/batch-015.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 16,
+      "file": "batches/vocab-ko/batch-016.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 17,
+      "file": "batches/vocab-ko/batch-017.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 18,
+      "file": "batches/vocab-ko/batch-018.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 19,
+      "file": "batches/vocab-ko/batch-019.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 20,
+      "file": "batches/vocab-ko/batch-020.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 21,
+      "file": "batches/vocab-ko/batch-021.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 22,
+      "file": "batches/vocab-ko/batch-022.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 23,
+      "file": "batches/vocab-ko/batch-023.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 24,
+      "file": "batches/vocab-ko/batch-024.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 25,
+      "file": "batches/vocab-ko/batch-025.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 26,
+      "file": "batches/vocab-ko/batch-026.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 27,
+      "file": "batches/vocab-ko/batch-027.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 28,
+      "file": "batches/vocab-ko/batch-028.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 29,
+      "file": "batches/vocab-ko/batch-029.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 30,
+      "file": "batches/vocab-ko/batch-030.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 31,
+      "file": "batches/vocab-ko/batch-031.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 32,
+      "file": "batches/vocab-ko/batch-032.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 33,
+      "file": "batches/vocab-ko/batch-033.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 34,
+      "file": "batches/vocab-ko/batch-034.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 35,
+      "file": "batches/vocab-ko/batch-035.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 36,
+      "file": "batches/vocab-ko/batch-036.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 37,
+      "file": "batches/vocab-ko/batch-037.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 38,
+      "file": "batches/vocab-ko/batch-038.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 39,
+      "file": "batches/vocab-ko/batch-039.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 40,
+      "file": "batches/vocab-ko/batch-040.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 41,
+      "file": "batches/vocab-ko/batch-041.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 42,
+      "file": "batches/vocab-ko/batch-042.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 43,
+      "file": "batches/vocab-ko/batch-043.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 44,
+      "file": "batches/vocab-ko/batch-044.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 45,
+      "file": "batches/vocab-ko/batch-045.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 46,
+      "file": "batches/vocab-ko/batch-046.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 47,
+      "file": "batches/vocab-ko/batch-047.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 48,
+      "file": "batches/vocab-ko/batch-048.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 49,
+      "file": "batches/vocab-ko/batch-049.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 50,
+      "file": "batches/vocab-ko/batch-050.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 51,
+      "file": "batches/vocab-ko/batch-051.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 52,
+      "file": "batches/vocab-ko/batch-052.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 53,
+      "file": "batches/vocab-ko/batch-053.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 54,
+      "file": "batches/vocab-ko/batch-054.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 55,
+      "file": "batches/vocab-ko/batch-055.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 56,
+      "file": "batches/vocab-ko/batch-056.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 57,
+      "file": "batches/vocab-ko/batch-057.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 58,
+      "file": "batches/vocab-ko/batch-058.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 59,
+      "file": "batches/vocab-ko/batch-059.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 60,
+      "file": "batches/vocab-ko/batch-060.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 61,
+      "file": "batches/vocab-ko/batch-061.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 62,
+      "file": "batches/vocab-ko/batch-062.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 63,
+      "file": "batches/vocab-ko/batch-063.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 64,
+      "file": "batches/vocab-ko/batch-064.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 65,
+      "file": "batches/vocab-ko/batch-065.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 66,
+      "file": "batches/vocab-ko/batch-066.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 67,
+      "file": "batches/vocab-ko/batch-067.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 68,
+      "file": "batches/vocab-ko/batch-068.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 69,
+      "file": "batches/vocab-ko/batch-069.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 70,
+      "file": "batches/vocab-ko/batch-070.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 71,
+      "file": "batches/vocab-ko/batch-071.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 72,
+      "file": "batches/vocab-ko/batch-072.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 73,
+      "file": "batches/vocab-ko/batch-073.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 74,
+      "file": "batches/vocab-ko/batch-074.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 75,
+      "file": "batches/vocab-ko/batch-075.jsonl",
+      "rows": 100,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-ko",
+      "index": 76,
+      "file": "batches/vocab-ko/batch-076.jsonl",
+      "rows": 86,
+      "status": "pending"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 0,
+      "file": "batches/vocab-nl/batch-000.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 1,
+      "file": "batches/vocab-nl/batch-001.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 2,
+      "file": "batches/vocab-nl/batch-002.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 3,
+      "file": "batches/vocab-nl/batch-003.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 4,
+      "file": "batches/vocab-nl/batch-004.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 5,
+      "file": "batches/vocab-nl/batch-005.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 6,
+      "file": "batches/vocab-nl/batch-006.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 7,
+      "file": "batches/vocab-nl/batch-007.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 8,
+      "file": "batches/vocab-nl/batch-008.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 9,
+      "file": "batches/vocab-nl/batch-009.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 10,
+      "file": "batches/vocab-nl/batch-010.jsonl",
+      "rows": 100,
+      "status": "applied"
+    },
+    {
+      "group": "vocab-nl",
+      "index": 11,
+      "file": "batches/vocab-nl/batch-011.jsonl",
+      "rows": 31,
+      "status": "applied"
+    }
+  ],
+  "lastAppliedAt": "2026-03-13T17:20:14.279Z"
+}

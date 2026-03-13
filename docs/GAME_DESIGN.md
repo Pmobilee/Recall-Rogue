@@ -160,13 +160,57 @@ Timers adapt to BOTH floor depth AND question length. Slow readers should feel u
 **Speed bonus:** Answer in first 25% of the EFFECTIVE timer (after modifiers) → +50% effect.
 
 
-### Card Anatomy
+### Card Anatomy & Frame System
 
-**Front (always visible):** Card name (thematic), mechanic name + effect description (e.g. "Multi-Hit: 3x3 dmg"), effect value, difficulty stars (1-3), domain color tint.
+Cards now use hand-crafted PNG card frames per mechanic, providing visual coherence and thematic reinforcement.
 
-**Back (commit only):** Question text, answer options (3/4/5 by tier), timer bar, hint button.
+#### Card Frame Assets
 
-**Quiz panel wireframe (appears above card hand when committed):**
+**30 hand-crafted card frames (PNG → WebP pipeline)** grouped by 6 mechanic categories:
+
+| Category | Frames | Visuals |
+|----------|--------|---------|
+| Attack (golden slash) | 5 | Golden energy, dynamic slash, scene of combat |
+| Defence (blue shield) | 5 | Blue crystalline shield, protective aura |
+| Buff (golden radiate) | 5 | Golden light, uplifting glow, expansion effect |
+| Debuff (purple tendrils) | 5 | Purple decay, withering vines, dissolution |
+| Utility (prismatic) | 5 | Rainbow shimmer, transformative energy |
+| Wild (morphic) | 5 | Chaotic transformation, multiple forms |
+
+Each frame includes:
+- **Title area:** Card name (thematic) in top-left
+- **Pixel art scene:** Mechanic-specific 2D scene illustrating the card's effect
+- **Gemstone badge:** Top-left corner, colored by AP cost, holds AP value as overlay
+- **Parchment text area:** Bottom third, card description text:
+  - Grey text = base effect
+  - Green text = buffed effect
+  - Red text = debuffed effect
+
+#### Card Animation Sequence
+
+After answering correctly, cards execute a 5-phase animation sequence:
+
+| Phase | Duration | Description | Audio |
+|-------|----------|-------------|-------|
+| **Reveal** | 250ms | Card flips to cardback; reveal animation |  |
+| **Swoosh** | 250ms | Type-specific effect plays (slash, pulse, tendrils, etc.) | Archetype-matched synth sound |
+| **Impact** | 300ms | 3D directional movement toward impact zone; particles/screen shake | Impact sfx |
+| **Discard** | 200ms | Card minimizes and flies to discard pile in bottom-right | Whoosh sfx |
+| **Total** | ~1000ms | Full animation lifecycle |  |
+
+**Animation archetypes:**
+- **Attack:** Golden slash + lunge forward
+- **Shield:** Blue pulse + rise/expand
+- **Buff:** Golden radiate + expand outward
+- **Debuff:** Purple tendrils + dissolve inward
+- **Utility:** Prismatic shimmer + morph shape
+- **Wild:** Multi-color flash + adaptive motion
+
+**Wrong answers:** Fizzle animation (400ms) — violent shake, sparks, fade out
+
+**Discard pile indicator:** Bottom-right of combat HUD shows growing card pile count as cards are discarded.
+
+#### Quiz panel wireframe (appears above card hand when committed)
 ```
 ┌────────────────────────┐
 │  What is the hardest   │
@@ -822,34 +866,43 @@ Each floor has 3 encounters: encounters 1-2 are regular combat (common enemies),
 
 Kahneman & Tversky's prospect theory: loss aversion at ~2x. At 20% risk (Segment 1), most players push. At 65% risk (Segment 4), only confident players continue. Escalating risk matches escalating reward. Never exceed 65% loss — total wipeout causes quit behavior on mobile.
 
-### Encounter Loop (Per Floor)
+### Dungeon Map (Act Map)
 
-Each floor has 3 encounters with the following flow:
-1. **Encounter 1** (regular enemy) → card reward → **room selection** (3 doors)
-2. **Encounter 2** (regular enemy from chosen room) → card reward → **auto-start encounter 3** (no room selection)
-3. **Encounter 3** (mini-boss on normal floors, full boss on boss floors) → card reward → floor transition
-   - On boss floors: card reward → **special event** → **retreat-or-delve** checkpoint
-   - On normal floors: advance to next floor → room selection for floor N+1
+Each act uses a scrollable vertical map with branching paths, similar to Slay the Spire. The full map is visible from the start — no fog of war.
 
-Room selection only appears between encounters 1→2 and between floors. Encounter 3 is always the floor's climactic fight.
+**Map structure:**
+- 15 rows per act, with 3–5 nodes per row
+- Paths branch and merge using a non-crossing edge rule (STS-style)
+- Row 0: always 3 combat nodes (start options)
+- Row 12: forced elite row (all nodes are elite/mini-boss)
+- Row 13: pre-boss row (rest or shop only)
+- Row 14: single boss node (all paths converge)
 
-### Room Selection
+**Node types:**
 
-After encounters 1 and between floors, choose from 3 doors:
-
-| Icon | Room | Description |
+| Icon | Node | Description |
 |------|------|-------------|
 | Sword | Combat | Standard encounter, card reward |
+| ! | Elite | Harder enemy, guaranteed relic drop |
+| Skull | Boss | Act boss, triggers retreat-or-delve checkpoint |
 | ? | Mystery | Random event (good, bad, or choice) |
-| Heart | Rest | Heal 30% HP OR upgrade one card (+25%) |
+| Heart | Rest | Heal 30% HP OR upgrade one card |
 | Chest | Treasure | Free card, no combat |
 | Bag | Shop | Buy/sell cards + buy relics with currency |
 
-**Reveal rules:**
-- Combat rooms show only "Combat - Enemy encounter" without revealing the specific enemy type or HP. The enemy identity is revealed when the encounter begins, adding an element of surprise.
-- Mystery rooms ALWAYS hidden (that's the fun)
-- Rest, Treasure, Shop always clearly labeled
-- Each floor guarantees at least 1 combat option (prevents heal-stacking to avoid all facts)
+**Generation rules:**
+- Map generated deterministically from the run seed (same seed = same map)
+- Room distribution weighted by segment: more combat early, more variety (rest/shop/mystery) later
+- Guaranteed at least 1 rest node and 1 shop node per act
+- After clearing a node, only directly connected next-row nodes are selectable
+- Boss defeated → special event → retreat-or-delve checkpoint
+- Retreat → hub; Delve → new act map generated for the next segment
+
+**Player interaction:**
+1. After `onArchetypeSelected()`, an ActMap is generated and the `dungeonMap` screen appears
+2. Player taps a node to navigate to it (combat/rest/shop/mystery/etc.)
+3. After the encounter reward screen, player returns to the dungeon map
+4. Locked nodes (not reachable from current position) are visually dimmed
 
 ### Card Upgrade System (Rest Sites & Post-Mini-Boss)
 
@@ -1028,7 +1081,7 @@ Players can quit mid-run and resume later. Only ONE active run save at a time. S
 **Auto-save triggers:**
 - After every encounter victory (before card reward)
 - After card reward selection
-- After room selection (before encounter starts)
+- After selecting a map node (before encounter starts)
 - When player enters campfire/pause screen
 - When app goes to background
 
@@ -1043,7 +1096,7 @@ Players can quit mid-run and resume later. Only ONE active run save at a time. S
 
 ### Campfire Pause Screen
 
-A cozy pause screen accessible via a pause button (top-right corner, CSS pseudo-element bars icon) during combat and room selection.
+A cozy pause screen accessible via a pause button (top-right corner, CSS pseudo-element bars icon) during combat and the dungeon map.
 
 **Displays:** Floor number, HP, deck size, relics collected, accuracy percentage.
 

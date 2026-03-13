@@ -1,15 +1,16 @@
 ---
 name: manual-fact-ingest-dedup
-description: Autonomous end-to-end content factory. Generates knowledge facts from Wikidata raw data and vocabulary from Anki decks, all via Haiku sub-agents. Handles normalization, dedup, and DB rebuild.
+description: Autonomous end-to-end content factory. Generates knowledge facts from Wikidata raw data and vocabulary from Anki decks, via Sonnet sub-agents for quality work and Haiku for mechanical transforms. Handles normalization, dedup, and DB rebuild.
 ---
 
 # manual-fact-ingest-dedup
 
 ## Mission
-Run the full content pipeline autonomously: raw data → Haiku-processed facts → universal normalizer → deduplicated DB.
+Run the full content pipeline autonomously: raw data → Sonnet-processed facts → universal normalizer → deduplicated DB.
 
 ## Non-Negotiable Rules
-- **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that call `@anthropic-ai/sdk` or any external LLM API. ALL LLM work (fact generation, quality checks, transformations) MUST be done by spawning Haiku sub-agents via the Claude Code Agent tool (`model: "haiku"`). The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay true.
+- **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that call `@anthropic-ai/sdk` or any external LLM API. ALL LLM work MUST be done by spawning sub-agents via the Claude Code Agent tool. The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay true.
+- **Model selection**: Use **Sonnet** (`model: "sonnet"`) for all quality-critical work: fact generation, question writing, distractor generation, category verification, quality assessment. Use **Haiku** (`model: "haiku"`) ONLY for mechanical transforms: format normalization, counting, simple reclassification of clearly-labeled items. Sonnet produces significantly better distractor quality, preserves answer specificity, handles foreign-language diacritics correctly, and generates semantically coherent quiz content.
 - Keep every new fact schema-valid.
 - Every fact MUST have `_haikuProcessed: true` before DB insertion.
 - **`categoryL2` is mandatory for all knowledge facts** (use valid IDs from `src/data/subcategoryTaxonomy.ts` — 74 subcategories across 10 domains). Never use "general", "other", or empty values. After fact generation, run the subcategorization pipeline (see "DB Rebuild" section below).
@@ -22,14 +23,14 @@ Run the full content pipeline autonomously: raw data → Haiku-processed facts �
 - **Languages**: ja (13,125), ko (7,686), es (5,575), de (4,778), it (1,924), fr (1,200), nl (1,131), cs (1,049)
 - **All 6 Anki decks fully exhausted**: Spanish, Korean, German, Dutch, Czech, Japanese (Full-Japanese-Study-Deck + JMdict)
 
-## Mandatory Haiku Processing (All Facts)
-Every single fact that enters the database MUST be processed by a Haiku agent.
+## Mandatory Sonnet Processing (All Facts)
+Every single fact that enters the database MUST be processed by a **Sonnet** agent (`model: "sonnet"`).
 
-### What Haiku agents must do for each fact:
+### What Sonnet agents must do for each fact:
 1. **Assess worth** — Is this fact interesting/educational enough for a quiz game? Reject boring/trivial/too-obscure facts.
 2. **Write/rewrite quiz question** — Clear, concise, 10-20 words, ends with ?
 3. **Write correct answer** — Short (1-5 words), definitive
-4. **Generate 8 plausible distractors** — Same type as correct answer, domain-appropriate. BLOCKLIST (auto-stripped at build time): "Alternative option N", "Unknown option N", "Not applicable", "Invalid answer", "Unrelated concept", "Incorrect claim", "False statement", "Similar concept", "Related term", "Alternative word", "Different word", "Misleading choice", "Incorrect term", "Unrelated option", "Alternative theory", "Related concept", "Other meaning", "Alternative sense", "Another option", "Additional meaning", "Related idea", "Unknown", "Other", "None of the above", "All of the above", "N/A", "...", "", single-character answers, or any generic/placeholder text. The build script (`build-facts-db.mjs`) auto-strips these, but Haiku agents should never generate them.
+4. **Generate 8 plausible distractors** — Same type as correct answer, domain-appropriate. BLOCKLIST (auto-stripped at build time): "Alternative option N", "Unknown option N", "Not applicable", "Invalid answer", "Unrelated concept", "Incorrect claim", "False statement", "Similar concept", "Related term", "Alternative word", "Different word", "Misleading choice", "Incorrect term", "Unrelated option", "Alternative theory", "Related concept", "Other meaning", "Alternative sense", "Another option", "Additional meaning", "Related idea", "Unknown", "Other", "None of the above", "All of the above", "N/A", "...", "", single-character answers, or any generic/placeholder text. The build script (`build-facts-db.mjs`) auto-strips these, but Sonnet agents should never generate them.
 5. **Write explanation** — Engaging 1-2 sentences
 6. **Generate 2+ variants** — Different question angles (forward, reverse, fill_blank)
 7. **Mark as processed** — Set `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
@@ -39,9 +40,9 @@ Every single fact that enters the database MUST be processed by a Haiku agent.
 ### Pipeline
 ```
 1. Read raw Wikidata entries from data/raw/mixed/<domain>.json (preferred) or data/raw/<domain>.json
-2. Chunk entries into batches of 40-50 per Haiku agent
+2. Chunk entries into batches of 40-50 per Sonnet agent
 3. Write input chunks to /tmp/<session>/<domain>-input-bNN-M.json
-4. Spawn parallel Haiku agents (5-7 at a time) via Claude Code Agent tool
+4. Spawn parallel Sonnet agents (5-7 at a time) via Claude Code Agent tool (`model: "sonnet"`)
 5. Each agent transforms entries into quiz facts, writes output to /tmp/<session>/<domain>-bNN-output-M.json
 6. Collect all output files, run universal normalizer to handle schema variants
 7. Append normalized facts to src/data/seed/facts-generated.json
@@ -69,7 +70,7 @@ Every single fact that enters the database MUST be processed by a Haiku agent.
    - Fields \x1f-separated; typically: field[0]=foreign word, field[1]=English meaning
    - Pre-extracted files in data/extracted/anki-*.json
 2. Chunk extracted words into batches of 40-50
-3. Spawn Haiku agents to transform word+meaning pairs into vocab quiz facts
+3. Spawn Sonnet agents to transform word+meaning pairs into vocab quiz facts
 4. Normalize and append to facts-generated.json
 5. Rebuild DB
 ```
@@ -96,14 +97,14 @@ Every single fact that enters the database MUST be processed by a Haiku agent.
 
 ### Method B: From Training Knowledge (for languages without Anki decks)
 ```
-1. Spawn Haiku agents with prompt: "Generate 50 [Language] vocabulary quiz facts"
+1. Spawn Sonnet agents with prompt: "Generate 50 [Language] vocabulary quiz facts"
 2. Agent generates word+meaning pairs from training knowledge
 3. Used for: French (fr), Italian (it), and any future language without Anki source
 4. Same normalization and append process
 ```
 
 ## Universal Output Normalizer
-Haiku agents independently choose different output schemas. MUST normalize before merging. Known schema variants:
+Sub-agents independently choose different output schemas. MUST normalize before merging. Known schema variants:
 
 | Variant | correctAnswer field | Distractors field |
 |---------|-------------------|-------------------|
@@ -125,7 +126,7 @@ Haiku agents independently choose different output schemas. MUST normalize befor
 Always ensure:
 - `correctAnswer` is a plain string (not an object)
 - `distractors` are plain strings (not objects with `.text`)
-- At least 8 distractors (if any facts have <8, spawn Haiku agents to generate domain-appropriate replacements — see "Distractor Quality Rules")
+- At least 8 distractors (if any facts have <8, spawn Sonnet agents to generate domain-appropriate replacements — see "Distractor Quality Rules")
 - `difficulty` is integer 1-5
 - `funScore` is integer 1-10
 - `category` is an array
@@ -147,7 +148,7 @@ After appending new knowledge facts to `src/data/seed/facts-generated.json`:
    node scripts/content-pipeline/extract-unclassified.mjs
    ```
 
-3. **Classify via Haiku agents** (if unclassified facts remain — use the `/subcategorize` skill)
+3. **Classify via Sonnet agents** (if unclassified facts remain — use the `/subcategorize` skill)
 
 4. **Apply LLM classifications** (if step 3 was needed):
    ```bash
@@ -159,13 +160,13 @@ After appending new knowledge facts to `src/data/seed/facts-generated.json`:
    node scripts/build-facts-db.mjs
    ```
 
-6. **Strip placeholder distractors** (safety net — should be no-ops if Haiku agents are well-behaved):
+6. **Strip placeholder distractors** (safety net — should be no-ops if Sonnet agents are well-behaved):
    ```bash
    node scripts/content-pipeline/strip-placeholder-distractors.mjs
    ```
 
-7. **Generate missing distractors via Haiku agents** (NEVER use mine-distractors.mjs — it produces cross-subcategory garbage):
-   - If any facts have <8 distractors after step 1, spawn Haiku agents to generate domain-appropriate distractors
+7. **Generate missing distractors via Sonnet agents** (NEVER use mine-distractors.mjs — it produces cross-subcategory garbage):
+   - If any facts have <8 distractors after step 1, spawn Sonnet agents to generate domain-appropriate distractors
    - See "Distractor Quality Rules — MANDATORY" section below for requirements
 
 8. **Rebuild the SQLite database** (again, to include regenerated distractors):
@@ -220,7 +221,7 @@ Recommended:
 
 Distractors (wrong answers for quiz questions) must NEVER be pulled from `correct_answer` values of other facts in the same domain/subcategory. This approach produces semantically nonsensical garbage — a bird species name as a distractor for a bird behavior question, a random capital for a flag question, etc. On March 12, 2026 we had to strip 58,359 garbage distractors produced this way.
 
-**MANDATORY:** ALL distractors MUST be generated by an LLM (GPT-5.2+ or Haiku agent) that reads the specific question, understands what's being asked, and produces plausible wrong answers that:
+**MANDATORY:** ALL distractors MUST be generated by an LLM (Sonnet agent) that reads the specific question, understands what's being asked, and produces plausible wrong answers that:
 - Are semantically coherent with what the question asks
 - Match the format and length of the correct answer
 - Are factually WRONG but plausible to a student
@@ -321,13 +322,39 @@ Generated facts often lack fields the DB expects. These are auto-derived during 
 - **`rarity`** — derived from `difficulty`: 1-2 = common, 3 = uncommon, 4 = rare, 5 = epic
 
 ### Distractor blocklist enforcement
-Invalid distractors are auto-stripped by `build-facts-db.mjs` using the `isPlaceholderDistractor()` regex from `scripts/content-pipeline/qa/shared.mjs`. This catches all placeholder patterns (see full list in shared.mjs). After build, spawn Haiku agents to generate domain-appropriate replacements for any facts left with <8 distractors.
+Invalid distractors are auto-stripped by `build-facts-db.mjs` using the `isPlaceholderDistractor()` regex from `scripts/content-pipeline/qa/shared.mjs`. This catches all placeholder patterns (see full list in shared.mjs). After build, spawn Sonnet agents to generate domain-appropriate replacements for any facts left with <8 distractors.
 
 ### Quality gate enforcement
 Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
 - Schema validity
 - Distractor blocklist
 - Dedup check for duplicate `id` and similar `quizQuestion` text
+
+## Post-Ingestion Quality Sweep
+
+After any major DB changes (batch ingestion, migration, format changes), run the full quality sweep:
+
+```bash
+# Export all rows as domain-grouped batches
+node scripts/content-pipeline/qa/quality-sweep-db.mjs export --db public/facts.db
+
+# Process via Sonnet workers (orchestrator handles batching and parallelism)
+# See manifest at data/generated/quality-sweep/manifest.json
+
+# Apply validated results
+node scripts/content-pipeline/qa/quality-sweep-db.mjs apply --db public/facts.db
+
+# Verify convergence
+node scripts/content-pipeline/qa/quality-sweep-db.mjs verify --db public/facts.db
+```
+
+### Known Issue Types to Avoid During Ingestion
+These issues were discovered in the March 2026 quality audit of 46,780 facts:
+- **Templated vocab prompts** (7,083 found): "What is the X word for Y?" — write natural questions instead
+- **Severe distractor length spread** (8,987 found): distractors must match answer format/length
+- **Low-context vocab prompts**: "What does X mean?" needs usage context, part of speech, or example
+- **Vague questions**: never generate "What does this mean?" without the foreign word in the question
+- **Miscategorized facts**: verify category_l1 and category_l2 against `subcategory-taxonomy.mjs`
 
 ## Key Files
 | File | Role |
@@ -340,7 +367,7 @@ Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
 | `scripts/build-facts-db.mjs` | Builds SQLite DB from seed files |
 | `scripts/content-pipeline/backfill-subcategories.mjs` | Keyword-based L2 classification |
 | `scripts/content-pipeline/extract-unclassified.mjs` | Extracts unclassified facts for LLM processing |
-| `scripts/content-pipeline/apply-llm-classifications.mjs` | Applies Haiku LLM classifications back to seed files |
+| `scripts/content-pipeline/apply-llm-classifications.mjs` | Applies LLM classifications back to seed files |
 | `scripts/content-pipeline/count-invalid-l2.mjs` | Verifies 0 invalid subcategories |
 | `public/facts.db` | Runtime SQLite database |
 | `public/seed-pack.json` | Exported seed pack for distribution |
@@ -350,5 +377,5 @@ Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
 | `data/references/*.apkg` | Source Anki deck files |
 | `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs (74 subcategories) |
 | `scripts/content-pipeline/strip-placeholder-distractors.mjs` | Strips placeholder/garbage distractors from seed file |
-| `scripts/content-pipeline/_DEPRECATED_mine-distractors.mjs` | DEPRECATED — use Haiku agents instead to generate domain-appropriate distractors |
+| `scripts/content-pipeline/_DEPRECATED_mine-distractors.mjs` | DEPRECATED — use Sonnet agents instead to generate domain-appropriate distractors |
 | `scripts/content-pipeline/qa/shared.mjs` | Shared utilities including `isPlaceholderDistractor()` regex |

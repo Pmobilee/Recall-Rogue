@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import { get } from 'svelte/store'
 
   let phaserContainer: HTMLDivElement
@@ -8,6 +8,7 @@
     screenTransitionActive,
     screenTransitionDirection,
     screenTransitionLoading,
+    holdScreenTransition,
     releaseScreenTransition,
     activeRewardBundle,
     activeRewardRevealStep,
@@ -66,6 +67,8 @@
     activeRelicRewardOptions,
     activeRelicPickup,
     onRelicRewardSelected,
+    onMapNodeSelected,
+    gameFlowState,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -89,6 +92,7 @@
   import { factsDB } from './services/factsDB'
   import { getPresetById } from './services/studyPresetService'
   import { collectMatchingFactIds } from './services/presetSelectionService'
+  import { resumeCombatWithFallback } from './services/combatResumeService'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -116,6 +120,7 @@
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
+  import DungeonMap from './ui/components/DungeonMap.svelte'
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
@@ -259,6 +264,10 @@
 
   async function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): Promise<void> {
     onArchetypeSelected(archetype)
+    // If run has a dungeon map, onArchetypeSelected already navigated to dungeonMap — no encounter to start
+    const run = get(activeRunState)
+    if (run?.floor.actMap) return
+    // Legacy path: start encounter directly (no map)
     void ensurePhaserBooted()
     try {
       if (!(await startEncounterForRoom())) {
@@ -278,9 +287,13 @@
 
   async function handleOnboardingBegin(slowReader: boolean, _languageCode: string | null): Promise<void> {
     isSlowReader.set(slowReader)
-    languageService.disableLanguageMode()
-    onDomainsSelected('natural_sciences', 'history')
+    // Use placeholder domains — the pool builder uses deckMode (set in startNewRun), not these
+    onDomainsSelected('general_knowledge', 'general_knowledge')
     onArchetypeSelected('balanced')
+    // If run has a dungeon map, onArchetypeSelected already navigated to dungeonMap — no encounter to start
+    const run = get(activeRunState)
+    if (run?.floor.actMap) return
+    // Legacy path: start encounter directly (no map)
     void ensurePhaserBooted()
     try {
       if (!(await startEncounterForRoom())) {
@@ -317,6 +330,36 @@
         releaseScreenTransition()
         currentScreen.set('hub')
         activeRunState.set(null)
+      }
+    }
+  }
+
+  async function handleMapNodeSelect(nodeId: string): Promise<void> {
+    const run = get(activeRunState)
+    if (!run?.floor.actMap) return
+    const node = run.floor.actMap.nodes[nodeId]
+    if (!node) return
+
+    // Update map state (node selection, floor derivation, analytics)
+    onMapNodeSelected(nodeId)
+
+    // Combat-type nodes: CardApp owns the full combat start sequence
+    if (node.type === 'combat' || node.type === 'elite' || node.type === 'boss') {
+      void ensurePhaserBooted()
+      gameFlowState.set('combat')
+      holdScreenTransition()
+      currentScreen.set('combat')
+      try {
+        if (!(await startEncounterForRoom(node.enemyId))) {
+          releaseScreenTransition()
+          currentScreen.set('dungeonMap')
+        } else {
+          autoSaveRun('combat')
+        }
+      } catch (err) {
+        console.error('[CardApp] Failed to start map node encounter', err)
+        releaseScreenTransition()
+        currentScreen.set('dungeonMap')
       }
     }
   }
@@ -376,7 +419,7 @@
     onSpecialEventResolved()
   }
 
-  function handleResumeActiveRun(): void {
+  async function handleResumeActiveRun(): Promise<void> {
     const saved = loadActiveRun()
     if (!saved) return
     restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
@@ -388,18 +431,40 @@
     if (saved.roomOptions && saved.roomOptions.length > 0) {
       activeRoomOptions.set(saved.roomOptions)
     }
-    // Navigate to the saved screen or default to room selection
+    // Navigate to the saved screen or default to dungeon map / room selection
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
-    let targetScreen = screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection')
+    const hasMap = Boolean(saved.runState.floor?.actMap)
+    const mapOrRoom = hasMap ? 'dungeonMap' : 'roomSelection'
+    let targetScreen = screen === 'campfire' ? mapOrRoom : (screen || mapOrRoom)
     if (targetScreen === 'cardReward' && (saved.cardRewardOptions?.length ?? 0) === 0) {
+      targetScreen = mapOrRoom
+    }
+    // If navigating to dungeonMap but no actMap exists, fall back to room selection
+    if (targetScreen === 'dungeonMap' && !saved.runState.floor?.actMap) {
       targetScreen = 'roomSelection'
+      activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
     }
     // If navigating to roomSelection but no room options exist, regenerate them
     if (targetScreen === 'roomSelection' && (!saved.roomOptions || saved.roomOptions.length === 0)) {
       activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
     }
     if (screen === 'combat') {
-      void ensurePhaserBooted()
+      // Make Phaser container visible before combat re-init.
+      currentScreen.set('combat')
+      await tick()
+      targetScreen = await resumeCombatWithFallback({
+        floor: saved.runState.floor.currentFloor,
+        ensurePhaserBooted,
+        startEncounter: () => startEncounterForRoom(),
+        hasTurnState: () => get(activeTurnState) !== null,
+        onCombatResumed: () => {
+          autoSaveRun('combat')
+        },
+        onFallbackRoomSelection: (floor) => {
+          activeRoomOptions.set(generateCombatRoomOptions(floor))
+        },
+        logger: console,
+      })
     }
     currentScreen.set(targetScreen)
     hasRunSave = false
@@ -595,7 +660,6 @@
   {#if $currentScreen === 'combat'}
     <CardCombatOverlay
       turnState={$activeTurnState}
-      activeBounties={$activeRunState?.bounties ?? []}
       onplaycard={handlePlayCard}
       onskipcard={handleSkipCard}
       onendturn={handleEndTurn}
@@ -693,6 +757,25 @@
         type="button"
         class="pause-btn"
         data-testid="btn-pause-room"
+        onclick={handlePause}
+        aria-label="Pause"
+      ><span class="pause-icon" aria-hidden="true"></span></button>
+    {/if}
+  {/if}
+
+  {#if $currentScreen === 'dungeonMap'}
+    {@const run = $activeRunState}
+    {#if run?.floor.actMap}
+      <DungeonMap
+        map={run.floor.actMap}
+        playerHp={run.playerHp}
+        playerMaxHp={run.playerMaxHp}
+        onNodeSelect={handleMapNodeSelect}
+      />
+      <button
+        type="button"
+        class="pause-btn"
+        data-testid="btn-pause-map"
         onclick={handlePause}
         aria-label="Pause"
       ><span class="pause-icon" aria-hidden="true"></span></button>

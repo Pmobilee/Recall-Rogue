@@ -1,16 +1,18 @@
 <script lang="ts">
+  import { getComboDisplayText } from '../utils/comboDisplay'
+
   interface Props {
-    count: number  // 0-5, 0-1 = hidden
+    count: number
+    multiplier: number
     isPerfectTurn?: boolean
   }
 
-  let { count, isPerfectTurn = false }: Props = $props()
+  let { count, multiplier, isPerfectTurn = false }: Props = $props()
 
   let displayText = $derived(
-    isPerfectTurn ? 'PERFECT!' :
-    count >= 2 ? `${count}x` : ''
+    getComboDisplayText(count, multiplier, isPerfectTurn)
   )
-  let visible = $derived(count >= 2)
+  let visible = $derived(isPerfectTurn || count >= 1)
   // Track previous count without causing effect loops
   let animKey = $state(0)
   let showBreak = $state(false)
@@ -21,10 +23,10 @@
   $effect(() => {
     const c = count  // Read count reactively
     // Use untrack for the writes to avoid re-triggering
-    if (c >= 2 && c !== _prevCount) {
+    if (c >= 1 && c !== _prevCount) {
       animKey = animKey + 1
     }
-    if (_prevCount > 1 && c === 0) {
+    if (_prevCount > 0 && c === 0) {
       showBreak = true
       setTimeout(() => { showBreak = false }, 200)
     }
@@ -63,6 +65,7 @@
   {#key animKey}
     <div
       class="combo-counter"
+      class:combo-1={count === 1}
       class:combo-2={count === 2}
       class:combo-3={count === 3}
       class:combo-4={count === 4}
@@ -90,8 +93,8 @@
 <style>
   .combo-counter {
     position: absolute;
-    right: 10px;
-    bottom: 64px;
+    right: 12px;
+    bottom: calc(42px + var(--safe-bottom, 0px));
     z-index: 18;
     pointer-events: none;
     animation: comboSlamIn 220ms ease-out;
@@ -103,6 +106,11 @@
     text-shadow: 0 0 6px rgba(250, 204, 21, 0.35);
     opacity: 0.9;
   }
+  .combo-1 .combo-text {
+    font-size: 13px;
+    text-shadow: 0 0 4px rgba(250, 204, 21, 0.25);
+  }
+
   /* Tier 2 (1.15x): subtle pulse */
   .combo-2 .combo-text {
     font-size: 14px;

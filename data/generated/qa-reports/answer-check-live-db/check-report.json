@@ -1,92 +1,92 @@
 {
-  "generatedAt": "2026-03-12T13:38:59.928Z",
+  "generatedAt": "2026-03-13T15:41:16.808Z",
   "command": "check",
   "dbPath": "public/facts.db",
-  "checker": "gpt-5.1-mini",
-  "dryRun": true,
+  "checker": "gpt-5.2-quality-audit",
+  "dryRun": false,
   "fromInput": null,
   "reviewedFile": null,
   "status": "approved",
-  "limit": 500,
-  "offset": 500,
+  "limit": 50000,
+  "offset": 0,
   "requiredTags": [],
   "tagMode": "any",
   "counts": {
-    "scanned": 500,
-    "flagged": 293,
-    "clear": 207,
+    "scanned": 46780,
+    "flagged": 15260,
+    "clear": 31520,
     "reviewedOverrides": 0
   },
   "sampleFlagged": [
     {
-      "id": "animals-b013-010",
-      "issue": "answer appears directly in question",
+      "id": "anim-collared-carpetshark-025",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-014",
-      "issue": "distractor identical to correct answer",
+      "id": "anim-dwarf-spotted-wobbegong-021",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-015",
-      "issue": "answer appears directly in question",
+      "id": "anim-ginger-carpetshark-024",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-016",
-      "issue": "distractor identical to correct answer",
+      "id": "anim-ornate-wobbegong-018",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-017",
-      "issue": "distractor identical to correct answer",
+      "id": "anim-parascyllium-ferrugineum-026",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-018",
-      "issue": "answer appears directly in question",
+      "id": "anim-saddle-carpetshark-023",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-019",
-      "issue": "distractor identical to correct answer",
+      "id": "anim-spotted-wobbegong-016",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-031",
-      "issue": "distractor identical to correct answer",
+      "id": "animal-barn-swallow-range-293",
+      "issue": "question expects numeric/date answer",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-032",
-      "issue": "distractor identical to correct answer",
+      "id": "animal-crimson-rosella-colour-291",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     },
     {
-      "id": "animals-b013-033",
-      "issue": "answer appears directly in question",
+      "id": "animal-deep-sea-bioluminescence-170",
+      "issue": "severe distractor length spread",
       "needsFix": 1,
-      "checkedAt": 1773322739920,
-      "checkedBy": "gpt-5.1-mini"
+      "checkedAt": 1773416476350,
+      "checkedBy": "gpt-5.2-quality-audit"
     }
   ]
 }

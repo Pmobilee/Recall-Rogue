@@ -584,6 +584,8 @@ class FactsDB {
         d => typeof d === 'string' ? d : (d as { text: string }).text ?? String(d)
       ),
       category:        JSON.parse(String(row['category'])) as string[],
+      categoryL1:      optStr('category_l1'),
+      categoryL2:      optStr('category_l2'),
       rarity:          String(row['rarity']) as Rarity,
       difficulty:      Number(row['difficulty']),
       funScore:        Number(row['fun_score']),

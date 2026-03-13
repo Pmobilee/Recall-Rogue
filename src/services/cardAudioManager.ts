@@ -12,6 +12,12 @@ export type CardAudioCue =
   | 'turn-chime'
   | 'combo-3'
   | 'combo-5'
+  | 'card-swoosh-attack'
+  | 'card-swoosh-shield'
+  | 'card-swoosh-buff'
+  | 'card-swoosh-debuff'
+  | 'card-swoosh-wild'
+  | 'card-discard'
 
 const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'correct-impact': 'quiz_correct',
@@ -24,6 +30,12 @@ const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'turn-chime': 'collect',
   'combo-3': 'streak_milestone',
   'combo-5': 'mastery_fullscreen',
+  'card-swoosh-attack': 'card_swoosh_attack',
+  'card-swoosh-shield': 'card_swoosh_shield',
+  'card-swoosh-buff': 'card_swoosh_buff',
+  'card-swoosh-debuff': 'card_swoosh_debuff',
+  'card-swoosh-wild': 'card_swoosh_wild',
+  'card-discard': 'card_discard',
 }
 
 function readValue<T>(key: string, fallback: T): T {

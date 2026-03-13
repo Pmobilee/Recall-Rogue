@@ -13,8 +13,10 @@
   let { disabled = false, onNavigateToDeckBuilder }: Props = $props()
 
   let showModal = $state(false)
+  const MAX_CUSTOM_DECKS = 50
 
   const presets = $derived($playerSave?.studyPresets ?? [])
+  const visiblePresets = $derived(presets.slice(0, MAX_CUSTOM_DECKS))
   const currentMode: DeckMode = $derived($playerSave?.activeDeckMode ?? { type: 'general' })
   const languages = $derived(languageService.getSupportedLanguages())
 
@@ -121,7 +123,7 @@
       <div class="sms-handle" aria-hidden="true"></div>
 
       <!-- General section -->
-      <div class="sms-section-header">Study Mode</div>
+      <div class="sms-section-header">General</div>
 
       <button
         type="button"
@@ -135,14 +137,28 @@
             <span class="sms-item-emoji" aria-hidden="true">{'\u{1F4DA}'}</span>
             <OverflowLabel text="All Topics" className="sms-item-name-text" />
           </span>
-          <span class="sms-item-desc">Study from all knowledge domains</span>
+          <span class="sms-item-desc">Core general-knowledge domains only (no extra packs)</span>
         </div>
       </button>
 
-      <!-- Presets section -->
-      {#if presets.length > 0}
-        <div class="sms-section-header">My Presets</div>
-        {#each presets as preset (preset.id)}
+      <!-- Custom Decks section -->
+      <div class="sms-section-header">Custom Decks</div>
+      <button
+        type="button"
+        class="sms-item sms-build-new"
+        onclick={handleBuildNewDeck}
+      >
+        <span class="sms-item-check"></span>
+        <div class="sms-item-content">
+          <span class="sms-item-name">
+            <span class="sms-item-emoji" aria-hidden="true">+</span>
+            <OverflowLabel text="Build Custom Deck" className="sms-item-name-text" />
+          </span>
+          <span class="sms-item-desc">Create a new custom deck</span>
+        </div>
+      </button>
+      {#if visiblePresets.length > 0}
+        {#each visiblePresets as preset (preset.id)}
           {@const mode = { type: 'preset' as const, presetId: preset.id }}
           <button
             type="button"
@@ -160,6 +176,11 @@
             </div>
           </button>
         {/each}
+      {:else}
+        <div class="sms-empty">No custom decks yet.</div>
+      {/if}
+      {#if presets.length > MAX_CUSTOM_DECKS}
+        <div class="sms-limit-note">Showing first {MAX_CUSTOM_DECKS} custom decks.</div>
       {/if}
 
       <!-- Languages section -->
@@ -184,22 +205,6 @@
           </button>
         {/each}
       {/if}
-
-      <!-- Build new deck -->
-      <button
-        type="button"
-        class="sms-item sms-build-new"
-        onclick={handleBuildNewDeck}
-      >
-        <span class="sms-item-check"></span>
-        <div class="sms-item-content">
-          <span class="sms-item-name">
-            <span class="sms-item-emoji" aria-hidden="true">+</span>
-            <OverflowLabel text="Build New Deck" className="sms-item-name-text" />
-          </span>
-          <span class="sms-item-desc">Create a custom study preset</span>
-        </div>
-      </button>
     </div>
   </div>
 {/if}
@@ -379,5 +384,12 @@
 
   .sms-build-new .sms-item-name {
     color: #63b3ed;
+  }
+
+  .sms-empty,
+  .sms-limit-note {
+    margin: 6px 2px 10px;
+    color: #8b949e;
+    font-size: calc(11px * var(--text-scale, 1));
   }
 </style>

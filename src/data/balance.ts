@@ -829,7 +829,7 @@ export const MIN_FAIR_POOL_SIZE = 40;
 /** If fewer than this % of pool facts are unmastered: warn "mostly mastered". */
 export const MIN_NOVEL_FACTS_PCT = 0.25;
 /** Maximum number of saved study presets per player. */
-export const MAX_PRESETS = 10;
+export const MAX_PRESETS = 50;
 /** Maximum character length for a preset name. */
 export const MAX_PRESET_NAME_LENGTH = 30;
 /** Reward multiplier tiers keyed by selected run-pool fact count. */
@@ -1217,10 +1217,32 @@ export const PHOENIX_RAGE_DAMAGE_TURNS = 5;
 /** Phoenix Rage synergy: turns of glass cannon penalty removal. */
 export const PHOENIX_RAGE_PENALTY_REMOVAL_TURNS = 3;
 
+// === DUNGEON MAP ===
+export const MAP_CONFIG = {
+  ROWS_PER_ACT: 15,
+  MIN_NODES_PER_ROW: 3,
+  MAX_NODES_PER_ROW: 5,
+  START_PATHS: 3,
+  BRANCH_CHANCE: 0.3,
+  MERGE_CHANCE: 0.2,
+  ELITE_MIN_ROW: 5,
+  REST_MIN_ROW: 4,
+  SHOP_MIN_ROW: 4,
+  FORCED_ELITE_ROW: 12,    // all nodes on this row are elite
+  PRE_BOSS_ROW: 13,        // rest or shop, paths converge
+  BOSS_ROW: 14,            // single boss node
+  ROOM_DISTRIBUTION: {
+    1: { combat: 0.45, elite: 0.08, mystery: 0.18, rest: 0.12, treasure: 0.10, shop: 0.07 },
+    2: { combat: 0.40, elite: 0.10, mystery: 0.18, rest: 0.12, treasure: 0.10, shop: 0.10 },
+    3: { combat: 0.38, elite: 0.12, mystery: 0.18, rest: 0.14, treasure: 0.08, shop: 0.10 },
+    4: { combat: 0.35, elite: 0.12, mystery: 0.18, rest: 0.15, treasure: 0.10, shop: 0.10 },
+  } as Record<1 | 2 | 3 | 4, Record<string, number>>,
+} as const
+
 // === FEATURE FLAGS ===
 
 /** When true, phase 2 mechanics are included in the card pool. */
-export const ENABLE_PHASE2_MECHANICS = false;
+export const ENABLE_PHASE2_MECHANICS = true;
 
 /** When true, language domains appear in the domain picker. */
 export const ENABLE_LANGUAGE_DOMAINS = true;

@@ -2,12 +2,13 @@
   interface Props {
     streak: number
     dustBalance: number
+    hasActiveRunBanner?: boolean
   }
 
-  let { streak, dustBalance }: Props = $props()
+  let { streak, dustBalance, hasActiveRunBanner = false }: Props = $props()
 </script>
 
-<div class="hud-overlay" aria-label="Camp HUD">
+<div class="hud-overlay" class:banner-offset={hasActiveRunBanner} aria-label="Camp HUD">
   <div class="hud-pill hud-left">
     <span class="hud-icon">&#x1F525;</span>
     <span class="hud-value">{streak}</span>
@@ -61,5 +62,10 @@
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     line-height: 1;
+  }
+
+  .hud-overlay.banner-offset .hud-pill {
+    top: calc(56px + var(--safe-top));
+    transition: top 200ms ease;
   }
 </style>

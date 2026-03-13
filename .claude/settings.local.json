@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx svelte-check --tsconfig ./tsconfig.app.json)",
+      "Bash(/opt/comfyui-env/bin/python -c \":*)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(ls dist/assets/*.png)",
+      "Bash(grep -o 'data:image/png[^\"\"]*' dist/assets/index-*.js)",
+      "Bash(/opt/comfyui-env/bin/python sprite-gen/scripts/generate_blocks.py)",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_install",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_run_code",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(PLAYWRIGHT_CHROMIUM_SANDBOX=false npx playwright screenshot --browser chromium --no-sandbox http://localhost:5173 /tmp/game-debug.png)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(PLAYWRIGHT_CHROMIUM_SANDBOX=false npx playwright screenshot --browser chromium http://localhost:5173 /tmp/game-screenshot.png)",
+      "Bash(playwright --version)",
+      "Read(//usr/**)",
+      "Bash(curl -s http://localhost:5173/src/game/scenes/MineScene.ts)",
+      "Bash(curl -s http://localhost:5173/src/game/systems/MineGenerator.ts)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run build)",
+      "Bash(grep -r \"TILE_SIZE\" /root/terra-miner/src/data/*.ts)",
+      "Bash(tailscale status)",
+      "Bash(tailscale ip -4)",
+      "Bash(npx vitest run)",
+      "Bash(ls docs/*.md)",
+      "Bash(xargs sed -i -e 's/RECALL ROGUE/RECALL ROGUE/g' -e 's/Recall Rogue/Recall Rogue/g' -e 's/recall-rogue/recall-rogue/g' -e 's/recall_rogue/recall_rogue/g' -e 's/recallRogue/recallRogue/g' -e 's/RecallRogue/RecallRogue/g' -e 's/RECALL ROGUE/RECALL ROGUE/g' -e 's/Recall-Rogue/Recall-Rogue/g' -e 's/Recall Rogue/Recall Rogue/g' -e 's/recall-rogue/recall-rogue/g' -e 's/recall_rogue/recall_rogue/g' -e 's/recallRogue/recallRogue/g' -e 's/RecallRogue/RecallRogue/g')",
+      "Bash(npx vitest run tests/unit/factSelection.test.ts)",
+      "Bash(wc -l /root/terra-miner/data/generated/worker-output/*.jsonl)",
+      "Bash(python3 -c \":*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

@@ -34,9 +34,12 @@ const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
   art_architecture: ['Art & Architecture', 'Culture', 'Arts'],
 };
 
-/** Non-language domains for "general" mode. */
-const NON_LANGUAGE_DOMAINS: CanonicalFactDomain[] = CANONICAL_FACT_DOMAINS.filter(
-  (d) => d !== 'language',
+/**
+ * Domains included by "All Topics" (core general-knowledge only).
+ * Extra packs like language/vocab and geography packs are excluded.
+ */
+const GENERAL_MODE_DOMAINS: CanonicalFactDomain[] = CANONICAL_FACT_DOMAINS.filter(
+  (d) => d !== 'language' && d !== 'geography' && d !== 'geography_drill',
 );
 
 // ── Recent-fact deduplication ─────────────────────────────────────
@@ -385,7 +388,7 @@ export function buildPresetRunPool(
 }
 
 /**
- * Build a run pool for "General Knowledge" mode (all non-language domains).
+ * Build a run pool for "General Knowledge" mode (core domains only).
  * Each domain is included with no subcategory filter (empty array = all).
  *
  * @param allReviewStates - All review states for the player.
@@ -402,7 +405,7 @@ export function buildGeneralRunPool(
   },
 ): Card[] {
   const domainSelections: Record<string, string[]> = {};
-  for (const domain of NON_LANGUAGE_DOMAINS) {
+  for (const domain of GENERAL_MODE_DOMAINS) {
     domainSelections[domain] = [];
   }
   return buildPresetRunPool(domainSelections, allReviewStates, options);

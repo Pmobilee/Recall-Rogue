@@ -25,20 +25,18 @@
   import { getReviewStateByFactId } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
   import { getCardTier } from '../../services/tierDerivation'
-  import type { ActiveBounty } from '../../services/bountyManager'
   import { playCardAudio } from '../../services/cardAudioManager'
-  import { hasCardback } from '../utils/cardbackManifest'
-  import { REVEAL_DURATION, TIER_UP_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
   import { activeRunState } from '../../services/runStateStore'
   import { getIntentIconPath } from '../utils/iconAssets'
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
   import { synergyFlash } from '../stores/gameState'
+  import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
 
   interface Props {
     turnState: TurnState | null
-    activeBounties?: ActiveBounty[]
     onplaycard: (
       cardId: string,
       correct: boolean,
@@ -62,7 +60,7 @@
     questionImageUrl?: string
   }
 
-  let { turnState, activeBounties = [], onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
+  let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
 
   let cardPlayStage = $state<CardPlayStage>('hand')
   let selectedIndex = $state<number | null>(null)
@@ -332,6 +330,14 @@
     !selectedCard || !turnState || Math.max(1, selectedCard.apCost ?? 1) > turnState.apCurrent,
   )
 
+  let playerHpCurrent = $derived(turnState?.playerState.hp ?? 0)
+  let playerHpMax = $derived(turnState?.playerState.maxHP ?? 1)
+  let playerShield = $derived(turnState?.playerState.shield ?? 0)
+  let playerHpRatio = $derived(playerHpMax > 0 ? Math.max(0, Math.min(1, playerHpCurrent / playerHpMax)) : 0)
+  let playerHpColor = $derived(
+    playerHpRatio > 0.5 ? '#2ecc71' : playerHpRatio > 0.25 ? '#f59e0b' : '#ef4444'
+  )
+
   let onboardingTip = $derived.by(() => {
     const state = get(onboardingState)
     if (state.hasCompletedOnboarding) return null
@@ -533,7 +539,7 @@
 
     // Vocab cards use the legacy 3-variant system (forward/reverse/fill-blank)
     // Knowledge facts with a variants array use the new N-variant system
-    const hasVariantsArray = fact.type !== 'vocabulary' && fact.variants && fact.variants.length > 0
+    const hasVariantsArray = fact.type !== 'vocabulary' && Array.isArray(fact.variants) && fact.variants.length > 0
     const forceHardFormats = turnState?.ascensionForceHardQuestionFormats === true
     const variantPool = hasVariantsArray
       ? (() => {
@@ -545,7 +551,7 @@
         return preferred.length > 0 ? preferred : variants
       })()
       : []
-    const variantCount = hasVariantsArray ? variantPool.length : 3
+    const variantCount = getQuestionVariantCount(hasVariantsArray, variantPool.length)
     const lastVariant = getReviewStateByFactId(card.factId)?.lastVariantIndex ?? -1
 
     let variantIndex = 0
@@ -587,11 +593,7 @@
       correctAnswer = fact.correctAnswer
       distractorSource = fact.distractors
 
-      if (variantIndex === 2 || forceHardFormats) {
-        question = `Fill in the blank: ${fact.statement.replace(fact.correctAnswer, '_____')}`
-      } else {
-        question = fact.quizQuestion
-      }
+      question = getNonCuratedQuestion(fact.quizQuestion)
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
@@ -734,7 +736,6 @@
 
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
     if (!committedCard) return
-    // Capture card data before animation (onplaycard will remove card from hand)
     const card = committedCard
     const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
@@ -742,20 +743,15 @@
     const effectLabel = `${card.cardType.toUpperCase()} ${effectVal}`
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
-
-    // Determine hit count for multi-hit mechanics
     const hitCount = card.mechanicId === 'multi_hit' ? 3 : undefined
-
-    // Capture before resetCardFlow nulls it
     const quizVariantIndex = committedQuizData?.variantIndex
     const previousReviewState = getReviewStateByFactId(card.factId)
     const previousTier = previousReviewState ? getCardTier(previousReviewState) : null
 
-    // Reset card flow immediately (hides quiz panel)
     resetCardFlow()
 
     if (!isCorrect) {
-      // Wrong answer: buffer card for animation, then remove from hand immediately
+      // Wrong answer: fizzle (unchanged)
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
       onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex)
@@ -775,121 +771,83 @@
         animatingCards = animatingCards.filter(c => c.id !== cardId)
       }, 400)
     } else {
-      // Show wowFactor overlay for Learning-tier cards with a wowFactor
       showWowFactor(card)
 
-      // Correct answer: reveal → mechanic → launch sequence
-      const hasBack = hasCardback(card.factId)
+      // Correct answer: new 5-phase animation sequence
+      animatingCards = [...animatingCards, card]
+      onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
 
-      if (hasBack) {
-        // Buffer card for animation, call onplaycard immediately
-        animatingCards = [...animatingCards, card]
-        cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
-        onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
-        const nextReviewState = getReviewStateByFactId(card.factId)
-        const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
-        const tierUpTransition = getTierUpTransition(previousTier, nextTier)
-        if (tierUpTransition) {
-          tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
-        }
-        const celebrationDelay = tierUpTransition ? TIER_UP_DURATION : 0
-
-        setTimeout(() => {
-          if (tierUpTransition) {
-            // Phase 2: Tier-up celebration
-            cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
-            return
-          }
-          // Phase 2: Mechanic animation (400-900ms)
-          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
-
-          juiceManager.fire({
-            type: 'correct',
-            damage: effectVal,
-            isCritical: speedBonus,
-            comboCount: nextCombo,
-            effectLabel: effectLabel,
-            isPerfectTurn: willBePerfect,
-            cardType: card.cardType,
-            hitCount,
-          })
-        }, REVEAL_DURATION)
-
-        if (tierUpTransition) {
-          setTimeout(() => {
-            cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
-
-            juiceManager.fire({
-              type: 'correct',
-              damage: effectVal,
-              isCritical: speedBonus,
-              comboCount: nextCombo,
-              effectLabel: effectLabel,
-              isPerfectTurn: willBePerfect,
-              cardType: card.cardType,
-              hitCount,
-            })
-          }, REVEAL_DURATION + TIER_UP_DURATION)
-        }
-
-        setTimeout(() => {
-          // Phase 3: Launch
-          cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
-        }, REVEAL_DURATION + celebrationDelay + MECHANIC_DURATION)
-
-        setTimeout(() => {
-          // Cleanup
-          cardAnimations = { ...cardAnimations, [cardId]: null }
-          tierUpTransitions = Object.fromEntries(
-            Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
-          ) as Record<string, TierUpTransition>
-          animatingCards = animatingCards.filter(c => c.id !== cardId)
-        }, REVEAL_DURATION + celebrationDelay + MECHANIC_DURATION + LAUNCH_DURATION)
-      } else {
-        // No cardback: buffer card, call onplaycard immediately
-        animatingCards = [...animatingCards, card]
-        onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
-        const nextReviewState = getReviewStateByFactId(card.factId)
-        const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
-        const tierUpTransition = getTierUpTransition(previousTier, nextTier)
-        if (tierUpTransition) {
-          tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
-          cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
-        } else {
-          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
-        }
-
-        const mechanicStartDelay = tierUpTransition ? TIER_UP_DURATION : 0
-
-        setTimeout(() => {
-          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
-
-          juiceManager.fire({
-            type: 'correct',
-            damage: effectVal,
-            isCritical: speedBonus,
-            comboCount: nextCombo,
-            effectLabel: effectLabel,
-            isPerfectTurn: willBePerfect,
-            cardType: card.cardType,
-            hitCount,
-          })
-        }, mechanicStartDelay)
-
-        setTimeout(() => {
-          // Launch
-          cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
-        }, mechanicStartDelay + MECHANIC_DURATION)
-
-        setTimeout(() => {
-          // Cleanup
-          cardAnimations = { ...cardAnimations, [cardId]: null }
-          tierUpTransitions = Object.fromEntries(
-            Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
-          ) as Record<string, TierUpTransition>
-          animatingCards = animatingCards.filter(c => c.id !== cardId)
-        }, mechanicStartDelay + MECHANIC_DURATION + LAUNCH_DURATION)
+      // Determine tier-up
+      const nextReviewState = getReviewStateByFactId(card.factId)
+      const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
+      const tierUpTransition = getTierUpTransition(previousTier, nextTier)
+      if (tierUpTransition) {
+        tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
       }
+      const tierDelay = tierUpTransition ? TIER_UP_DURATION : 0
+
+      // Phase 1: Reveal (flip to cardback)
+      cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+
+      // Phase 1.5 (optional): Tier-up celebration
+      if (tierUpTransition) {
+        setTimeout(() => {
+          cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
+        }, REVEAL_DURATION)
+      }
+
+      // Phase 2: Swoosh (type-specific effect + juice + sound)
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: 'swoosh' }
+
+        // Play type-specific swoosh sound
+        const swooshCues: Record<string, Parameters<typeof playCardAudio>[0]> = {
+          attack: 'card-swoosh-attack',
+          shield: 'card-swoosh-shield',
+          buff: 'card-swoosh-buff',
+          debuff: 'card-swoosh-debuff',
+          wild: 'card-swoosh-wild',
+          utility: 'card-swoosh-wild',
+        }
+        const swooshCue = swooshCues[card.cardType]
+        if (swooshCue) playCardAudio(swooshCue)
+
+        juiceManager.fire({
+          type: 'correct',
+          damage: effectVal,
+          isCritical: speedBonus,
+          comboCount: nextCombo,
+          effectLabel: effectLabel,
+          isPerfectTurn: willBePerfect,
+          cardType: card.cardType,
+          hitCount,
+        })
+      }, REVEAL_DURATION + tierDelay)
+
+      // Phase 3: Impact (3D lunge / rise / tendrils + scene camera shake)
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: 'impact' }
+        // Sync with Phaser scene for extra impact feel
+        const scene = getCombatScene()
+        if (scene && card.cardType === 'attack') {
+          scene.cameras?.main?.shake(150, 0.006)
+        }
+      }, REVEAL_DURATION + tierDelay + SWOOSH_DURATION)
+
+      // Phase 4: Discard (minimize to pile)
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: 'discard' }
+        playCardAudio('card-discard')
+      }, REVEAL_DURATION + tierDelay + SWOOSH_DURATION + IMPACT_DURATION)
+
+      // Cleanup
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: null }
+        tierUpTransitions = Object.fromEntries(
+          Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
+        ) as Record<string, TierUpTransition>
+        animatingCards = animatingCards.filter(c => c.id !== cardId)
+      }, REVEAL_DURATION + tierDelay + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION)
     }
 
     answeredThisTurn += 1
@@ -931,10 +889,6 @@
     showEndTurnConfirm = false
   }
 
-  function bountyLabel(bounty: ActiveBounty): string {
-    const progress = Math.min(bounty.progress, bounty.target)
-    return `${bounty.name}: ${progress}/${bounty.target}`
-  }
 </script>
 
 <div class="card-combat-overlay" class:near-death-tension={isNearDeath}>
@@ -977,14 +931,6 @@
         <span class="pile-count">{discardPileCount}</span>
       </button>
     </div>
-
-    {#if activeBounties.length > 0}
-      <div class="bounty-strip" aria-label="Bounty progress">
-        {#each activeBounties.slice(0, 2) as bounty (bounty.id)}
-          <div class="bounty-line" class:done={bounty.completed}>{bountyLabel(bounty)}</div>
-        {/each}
-      </div>
-    {/if}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       <button
@@ -1083,7 +1029,23 @@
       <div class="screen-edge-pulse" style="pointer-events: none;"></div>
     {/if}
 
-    <ComboCounter count={comboCount} {isPerfectTurn} />
+    <div class="player-status-strip" aria-label="Player health and block">
+      {#if playerShield > 0}
+        <div class="player-block-badge">
+          <span class="player-block-icon">🛡️</span>
+          <span class="player-block-value">{playerShield}</span>
+        </div>
+      {/if}
+      <div class="player-hp-text" style="color: {playerHpColor};">{playerHpCurrent}/{playerHpMax}</div>
+      <div class="player-hp-track">
+        <div
+          class="player-hp-fill"
+          style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
+        ></div>
+      </div>
+    </div>
+
+    <ComboCounter count={comboCount} multiplier={comboMultiplier} {isPerfectTurn} />
 
     <CardHand
       cards={handCards}
@@ -1121,6 +1083,16 @@
             <button class="confirm-btn confirm-cancel" onclick={cancelEndTurn}>Cancel</button>
           </div>
         </div>
+      </div>
+    {/if}
+
+    {#if turnState}
+      <div class="discard-pile-indicator" data-testid="discard-pile">
+        <div class="discard-pile-icon">
+          <div class="discard-card-stack"></div>
+          <div class="discard-card-stack"></div>
+        </div>
+        <span class="discard-count">{turnState.deck.discardPile.length}</span>
       </div>
     {/if}
   {/if}
@@ -1237,6 +1209,8 @@
   }
 
   .ap-number {
+    position: relative;
+    z-index: 2;
     font-family: monospace;
     font-size: 18px;
     font-weight: 900;
@@ -1250,33 +1224,6 @@
     50% { transform: rotate(180deg) scale(0.97); }
     75% { transform: rotate(270deg) scale(1.03); }
     to { transform: rotate(360deg) scale(0.97); }
-  }
-
-  .bounty-strip {
-    position: absolute;
-    right: 8px;
-    bottom: 68px;
-    z-index: 8;
-    min-width: 120px;
-    max-width: 180px;
-    background: rgba(15, 23, 35, 0.55);
-    border: 1px solid rgba(71, 85, 105, 0.4);
-    border-radius: 8px;
-    padding: 4px 6px;
-    display: grid;
-    gap: 2px;
-    color: rgba(220, 231, 246, 0.7);
-    font-size: 9px;
-  }
-
-  .bounty-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .bounty-line.done {
-    color: #facc15;
   }
 
   .deck-pile-strip {
@@ -1327,47 +1274,53 @@
   }
 
   .enemy-intent-bubble {
+    --intent-expanded-width: 148px;
     position: fixed;
-    top: calc((58vh * 0.12) - 20px + var(--safe-top));
-    left: max(8px, calc(50vw - 236px));
+    top: calc(12px + var(--safe-top));
+    left: calc(100vw - max((100vw - 500px) / 2, 0px) - var(--intent-expanded-width));
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
-    padding: 10px 14px;
+    width: 72px;
+    padding: 10px 10px;
     backdrop-filter: blur(8px);
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 4px;
     font: inherit;
     color: inherit;
     outline: none;
+    overflow: hidden;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.2s ease;
-    transform-origin: top left;
+    transition: width 220ms cubic-bezier(0.22, 1, 0.36, 1), padding 160ms ease;
   }
 
   .enemy-intent-bubble:active {
-    transform: scale(0.95);
+    filter: brightness(0.92);
   }
 
   .enemy-intent-bubble.intent-expanded {
-    transform: scale(1.18);
-    padding: 12px 16px;
+    width: var(--intent-expanded-width);
+    padding: 10px 12px;
   }
 
   .intent-bubble-summary {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 7px;
+    width: 100%;
   }
 
   .intent-bubble-detail {
     font-size: 11px;
     color: #e2e8f0;
-    text-align: center;
-    white-space: nowrap;
+    text-align: left;
+    white-space: normal;
+    width: 100%;
+    line-height: 1.25;
   }
 
   .intent-bubble-detail p {
@@ -1634,6 +1587,72 @@
     color: #f8fafc;
   }
 
+  .player-status-strip {
+    position: absolute;
+    left: 138px;
+    right: 10px;
+    bottom: calc(14px + var(--safe-bottom, 0px));
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+  }
+
+  .player-block-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 26px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(125, 211, 252, 0.7);
+    background: rgba(8, 26, 48, 0.9);
+    color: #7dd3fc;
+    font-weight: 800;
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  }
+
+  .player-block-icon {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .player-block-value {
+    line-height: 1;
+  }
+
+  .player-hp-text {
+    min-width: 68px;
+    font-family: '"Press Start 2P', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    text-shadow:
+      -2px 0 #000,
+      2px 0 #000,
+      0 -2px #000,
+      0 2px #000;
+  }
+
+  .player-hp-track {
+    flex: 1;
+    height: 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(100, 116, 139, 0.7);
+    background: rgba(15, 23, 42, 0.82);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+
+  .player-hp-fill {
+    height: 100%;
+    min-width: 2px;
+    border-radius: 999px;
+    transition: width 160ms ease, background 160ms ease;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
   .wow-factor-overlay {
     position: absolute;
     bottom: calc(45vh + 8px);
@@ -1734,5 +1753,49 @@
     15% { opacity: 1; transform: scale(1.2); }
     30% { opacity: 1; transform: scale(1.0); }
     100% { opacity: 0; transform: scale(1.5); }
+  }
+
+  .discard-pile-indicator {
+    position: fixed;
+    bottom: calc(68px + 4vh);
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    z-index: 15;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .discard-pile-icon {
+    width: 24px;
+    height: 32px;
+    position: relative;
+  }
+
+  .discard-card-stack {
+    position: absolute;
+    width: 20px;
+    height: 28px;
+    border: 1.5px solid rgba(148, 163, 184, 0.6);
+    border-radius: 3px;
+    background: rgba(30, 41, 59, 0.7);
+  }
+
+  .discard-card-stack:first-child {
+    top: 0;
+    left: 0;
+  }
+
+  .discard-card-stack:last-child {
+    top: 2px;
+    left: 3px;
+  }
+
+  .discard-count {
+    font-size: 10px;
+    color: rgba(148, 163, 184, 0.8);
+    font-weight: 600;
   }
 </style>

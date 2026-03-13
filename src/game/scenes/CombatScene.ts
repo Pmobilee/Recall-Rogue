@@ -15,6 +15,7 @@ const FLOOR_COUNTER_Y = 16
 const INTENT_ICON_OFFSET_Y = -40
 const RELIC_TRAY_Y_PCT = 0.92
 const FLOOR_LINE_PCT = 0.73
+const ENEMY_Y_OFFSET_RATIO = 0.25
 
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
@@ -23,8 +24,9 @@ const ENEMY_HP_BAR_H = 12
 /** Player HP bar dimensions (vertical, right side). */
 const PLAYER_HP_BAR_WIDTH = 16
 const PLAYER_HP_BAR_X_OFFSET = 24
-const PLAYER_HP_BAR_TOP_PCT = 0.45
-const PLAYER_HP_BAR_BOTTOM_PCT = 0.92
+const PLAYER_HP_BAR_TOP_PCT = 0.56
+const PLAYER_HP_BAR_BOTTOM_PCT = 0.88
+const USE_OVERLAY_PLAYER_HUD = true
 
 /** Enemy first-person sprite sizes by enemy tier. */
 const ENEMY_SIZE_COMMON = 300
@@ -63,6 +65,10 @@ function playerHpColor(ratio: number): number {
   return COLOR_HP_RED
 }
 
+function colorToCssHex(color: number): string {
+  return `#${color.toString(16).padStart(6, '0')}`
+}
+
 function enemyTextureKey(enemyId: string, state: 'idle' | 'hit' | 'death'): string {
   return `enemy-${enemyId}-${state}`
 }
@@ -99,7 +105,9 @@ export class CombatScene extends Phaser.Scene {
   private enemyHpText!: Phaser.GameObjects.Text
   private playerHpBarBg!: Phaser.GameObjects.Graphics
   private playerHpBarFill!: Phaser.GameObjects.Graphics
-  private playerHpText!: Phaser.GameObjects.Text
+  private playerHpCurrentText!: Phaser.GameObjects.Text
+  private playerHpSlashText!: Phaser.GameObjects.Text
+  private playerHpMaxText!: Phaser.GameObjects.Text
   private intentText!: Phaser.GameObjects.Text
   private floorCounterText!: Phaser.GameObjects.Text
   private relicContainer!: Phaser.GameObjects.Container
@@ -276,9 +284,11 @@ export class CombatScene extends Phaser.Scene {
     )
 
     this.enemyHpText = this.add.text(w / 2, enemyHpY, '', {
-      fontFamily: 'monospace',
-      fontSize: '10px',
+      fontFamily: '"Press Start 2P", monospace',
+      fontSize: '8px',
       color: '#ffffff',
+      stroke: '#000000',
+      strokeThickness: 3,
       align: 'center',
     }).setOrigin(0.5, 0.5)
 
@@ -301,7 +311,7 @@ export class CombatScene extends Phaser.Scene {
     // ── Enemy sprite system ─────────────────────────────
     const floorY = this.displayH * FLOOR_LINE_PCT
     const baseEnemySize = enemyDisplaySize('common')
-    const enemyY = floorY - baseEnemySize / 2
+    const enemyY = floorY - baseEnemySize / 2 + baseEnemySize * ENEMY_Y_OFFSET_RATIO
     this.currentEnemyY = enemyY
     this.enemySpriteSystem = new EnemySpriteSystem(this)
 
@@ -333,12 +343,34 @@ export class CombatScene extends Phaser.Scene {
       PLAYER_HP_BAR_WIDTH, this.playerBarMaxH, 8
     )
 
-    this.playerHpText = this.add.text(barX, barBottom + 14, `${this.currentPlayerHP}`, {
-      fontFamily: 'monospace',
-      fontSize: '11px',
-      color: '#ffffff',
+    const initialHpRatio = this.currentPlayerMaxHP > 0 ? this.currentPlayerHP / this.currentPlayerMaxHP : 0
+    const hpColorCss = colorToCssHex(playerHpColor(initialHpRatio))
+    this.playerHpCurrentText = this.add.text(barX, barTop - 22, `${this.currentPlayerHP}`, {
+      fontFamily: '"Press Start 2P", monospace',
+      fontSize: '8px',
+      color: hpColorCss,
+      stroke: '#000000',
+      strokeThickness: 3,
       align: 'center',
-    }).setOrigin(0.5, 0).setDepth(8)
+    }).setOrigin(0.5, 1).setDepth(8)
+
+    this.playerHpSlashText = this.add.text(barX, barTop - 12, '/', {
+      fontFamily: '"Press Start 2P", monospace',
+      fontSize: '8px',
+      color: hpColorCss,
+      stroke: '#000000',
+      strokeThickness: 3,
+      align: 'center',
+    }).setOrigin(0.5, 1).setDepth(8)
+
+    this.playerHpMaxText = this.add.text(barX, barTop - 2, `${this.currentPlayerMaxHP}`, {
+      fontFamily: '"Press Start 2P", monospace',
+      fontSize: '8px',
+      color: hpColorCss,
+      stroke: '#000000',
+      strokeThickness: 3,
+      align: 'center',
+    }).setOrigin(0.5, 1).setDepth(8)
 
     // ── Critical health pulse overlay (behind player HP bar) ──
     this.criticalPulseRect = this.add.rectangle(
@@ -348,16 +380,29 @@ export class CombatScene extends Phaser.Scene {
     ).setDepth(7).setVisible(false)
 
     // ── Player block icon (above HP bar) ────────────────────
-    this.playerBlockIcon = this.add.text(barX, barTop - 16, '\u{1F6E1}\u{FE0F}', {
+    this.playerBlockIcon = this.add.text(barX - 52, barTop - 15, '\u{1F6E1}\u{FE0F}', {
       fontSize: '16px',
     }).setOrigin(0.5, 0.5).setVisible(false).setDepth(12)
 
-    this.playerBlockText = this.add.text(barX, barTop - 16, '', {
-      fontFamily: 'monospace',
-      fontSize: '10px',
-      color: '#ffffff',
+    this.playerBlockText = this.add.text(barX - 42, barTop - 15, '', {
+      fontFamily: '"Press Start 2P", monospace',
+      fontSize: '9px',
+      color: '#7dd3fc',
       align: 'center',
-    }).setOrigin(0.5, 0.5).setVisible(false).setDepth(13)
+      stroke: '#000000',
+      strokeThickness: 3,
+    }).setOrigin(0, 0.5).setVisible(false).setDepth(13)
+
+    if (USE_OVERLAY_PLAYER_HUD) {
+      this.playerHpBarBg.setVisible(false)
+      this.playerHpBarFill.setVisible(false)
+      this.playerHpCurrentText.setVisible(false)
+      this.playerHpSlashText.setVisible(false)
+      this.playerHpMaxText.setVisible(false)
+      this.playerBlockIcon.setVisible(false)
+      this.playerBlockText.setVisible(false)
+      this.criticalPulseRect.setVisible(false)
+    }
 
     // ── Relic tray container ──────────────────────────────
     this.relicContainer = this.add.container(w / 2, this.displayH * RELIC_TRAY_Y_PCT)
@@ -437,7 +482,7 @@ export class CombatScene extends Phaser.Scene {
     const size = enemyDisplaySize(category)
     const enemyX = this.scale.width * ENEMY_X_PCT
     const floorY = this.displayH * FLOOR_LINE_PCT
-    const enemyY = floorY - size / 2
+    const enemyY = floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
     this.currentEnemyY = enemyY
 
     // Clear status effects from previous encounter
@@ -738,7 +783,9 @@ export class CombatScene extends Phaser.Scene {
   playHealEffect(): void {
     if (this.reduceMotion) return
     const barX = this.scale.width - PLAYER_HP_BAR_X_OFFSET
-    const barMidY = this.displayH * (PLAYER_HP_BAR_TOP_PCT + PLAYER_HP_BAR_BOTTOM_PCT) / 2
+    const barTop = this.scale.height * PLAYER_HP_BAR_TOP_PCT
+    const barBottom = this.scale.height * PLAYER_HP_BAR_BOTTOM_PCT
+    const barMidY = (barTop + barBottom) / 2
     this.burstParticles(12, barX, barMidY, COLOR_HP_GREEN)
     this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
   }
@@ -1281,7 +1328,8 @@ export class CombatScene extends Phaser.Scene {
       ? this.currentPlayerHP / this.currentPlayerMaxHP
       : 0
     const targetH = Math.max(1, ratio * this.playerBarMaxH)
-    const color = this.currentPlayerBlock > 0 ? 0x3498db : playerHpColor(ratio)
+    const color = playerHpColor(ratio)
+    const colorCss = colorToCssHex(color)
     const w = this.scale.width
     const h = this.scale.height
     const barX = w - PLAYER_HP_BAR_X_OFFSET
@@ -1290,6 +1338,12 @@ export class CombatScene extends Phaser.Scene {
 
     const previousRatio = this.previousPlayerHpRatio
     this.previousPlayerHpRatio = ratio
+    const nearDeath = ratio > 0 && ratio < 0.25
+
+    if (USE_OVERLAY_PLAYER_HUD) {
+      this.setNearDeathTension(nearDeath)
+      return
+    }
 
     // ── Heal overshoot bounce ───────────────────────────────
     if (animate && ratio > previousRatio && !this.reduceMotion) {
@@ -1316,7 +1370,7 @@ export class CombatScene extends Phaser.Scene {
         )
       })
 
-      this.playerHpText.setText(`${this.currentPlayerHP}`)
+      this.setPlayerHpLabel(colorCss)
       return // Skip normal redraw below since we handled it
     }
 
@@ -1347,21 +1401,34 @@ export class CombatScene extends Phaser.Scene {
       PLAYER_HP_BAR_WIDTH, targetH, 8
     )
 
-    this.playerHpText.setText(`${this.currentPlayerHP}`)
+    this.setPlayerHpLabel(colorCss)
 
     // Activate/deactivate near-death tension
-    const nearDeath = ratio > 0 && ratio < 0.25
     this.setNearDeathTension(nearDeath)
   }
 
   /** Refresh player block icon and text visibility. */
   private refreshPlayerBlock(animate: boolean): void {
+    if (USE_OVERLAY_PLAYER_HUD) {
+      this.playerBlockIcon.setVisible(false)
+      this.playerBlockText.setVisible(false)
+      return
+    }
     const hasBlock = this.currentPlayerBlock > 0
     this.playerBlockIcon.setVisible(hasBlock)
     this.playerBlockText.setVisible(hasBlock)
     if (hasBlock) {
       this.playerBlockText.setText(`${this.currentPlayerBlock}`)
     }
+  }
+
+  private setPlayerHpLabel(colorCss: string): void {
+    if (USE_OVERLAY_PLAYER_HUD) return
+    this.playerHpCurrentText.setText(`${this.currentPlayerHP}`)
+    this.playerHpCurrentText.setColor(colorCss)
+    this.playerHpSlashText.setColor(colorCss)
+    this.playerHpMaxText.setText(`${this.currentPlayerMaxHP}`)
+    this.playerHpMaxText.setColor(colorCss)
   }
 
   /** Update status effect visuals on enemy. */

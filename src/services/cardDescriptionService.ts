@@ -143,3 +143,62 @@ export function getMechanicTag(card: Card): string {
   if (mechanic) return mechanic.name;
   return card.cardType.charAt(0).toUpperCase() + card.cardType.slice(1);
 }
+
+/**
+ * Get a short parchment-friendly description for card effect display.
+ * Returns compact text like "8 dmg", "6 block", "+30% next", etc.
+ * Designed to fit in the card frame parchment area.
+ */
+export function getShortCardDescription(card: Card): string {
+  const power = Math.round(card.baseEffectValue * card.effectMultiplier);
+  const mechanic = getMechanicDefinition(card.mechanicId);
+
+  if (!mechanic) {
+    switch (card.cardType) {
+      case 'attack': return `${power} damage`;
+      case 'shield': return `${power} block`;
+      case 'buff': return `+${power}%`;
+      case 'debuff': return `${power} turns`;
+      case 'utility': return `Draw ${power}`;
+      case 'wild': return 'Wild effect';
+      default: return '';
+    }
+  }
+
+  const secondary = card.secondaryValue ?? mechanic.secondaryValue;
+
+  switch (mechanic.id) {
+    case 'strike': return `${power} damage`;
+    case 'multi_hit': return `${power}×${secondary ?? 3} hits`;
+    case 'heavy_strike': return `${power} damage`;
+    case 'piercing': return `${power} pierce`;
+    case 'reckless': return `${power} dmg, ${secondary ?? 3} self`;
+    case 'execute': return `${power}+${secondary ?? 8} <30%`;
+    case 'block': return `${power} block`;
+    case 'thorns': return `${power} block +${secondary ?? 2} reflect`;
+    case 'fortify': return `${power} persistent`;
+    case 'parry': return `${power} block +draw`;
+    case 'brace': return 'Match telegraph';
+    case 'cleanse': return 'Purge debuffs';
+    case 'overheal': return `${power} block +50%`;
+    case 'lifetap': return `${power} drain`;
+    case 'emergency': return `${power} block ×2`;
+    case 'immunity': return 'Absorb status';
+    case 'empower': return `Next +${power}%`;
+    case 'quicken': return '+1 AP';
+    case 'double_strike': return `2× at ${power}%`;
+    case 'focus': return 'Boost difficulty';
+    case 'weaken': return `Weak ${power}t`;
+    case 'expose': return `Vuln ${power}t`;
+    case 'slow': return 'Skip action';
+    case 'hex': return `${power} poison ×${secondary ?? 3}`;
+    case 'scout': return `Draw ${power}`;
+    case 'recycle': return 'Cycle card';
+    case 'foresight': return `See ${power} intents`;
+    case 'transmute': return 'Transform card';
+    case 'mirror': return 'Copy last';
+    case 'adapt': return 'Adapt effect';
+    case 'overclock': return '2× effect −1 draw';
+    default: return mechanic.name;
+  }
+}

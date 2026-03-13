@@ -71,19 +71,21 @@ export function resolveDomain(fact: Fact): FactDomain {
 
   let resolved = DEFAULT_DOMAIN
 
-  // Try primary category first
-  const primary = fact.category[0];
-  if (primary && CATEGORY_TO_DOMAIN[primary]) {
-    resolved = CATEGORY_TO_DOMAIN[primary]
-  } else if (fact.categoryL1 && CATEGORY_TO_DOMAIN[fact.categoryL1]) {
-    // Try categoryL1 if present
+  // categoryL1 is the authoritative domain field — check it first.
+  // The legacy category[] array often has subcategory strings (e.g. "language_vocab")
+  // that don't map to a domain, causing 17k+ facts to mis-resolve.
+  if (fact.categoryL1 && CATEGORY_TO_DOMAIN[fact.categoryL1]) {
     resolved = CATEGORY_TO_DOMAIN[fact.categoryL1]
   } else {
-    // Try all categories in the hierarchy
-    for (const cat of fact.category) {
-      if (CATEGORY_TO_DOMAIN[cat]) {
-        resolved = CATEGORY_TO_DOMAIN[cat]
-        break
+    const primary = fact.category[0]
+    if (primary && CATEGORY_TO_DOMAIN[primary]) {
+      resolved = CATEGORY_TO_DOMAIN[primary]
+    } else {
+      for (const cat of fact.category) {
+        if (CATEGORY_TO_DOMAIN[cat]) {
+          resolved = CATEGORY_TO_DOMAIN[cat]
+          break
+        }
       }
     }
   }

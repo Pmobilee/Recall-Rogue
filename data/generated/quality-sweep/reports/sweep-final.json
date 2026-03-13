@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-03-13T16:56:58.773Z",
+  "command": "verify",
+  "dbPath": "public/facts.db",
+  "counts": {
+    "total": 46780,
+    "flagged": 14499,
+    "clear": 32281,
+    "flaggedPct": 30.99,
+    "clearPct": 69.01
+  },
+  "topIssues": [
+    {
+      "issue": "severe distractor length spread",
+      "count": 8247
+    },
+    {
+      "issue": "low-context vocab prompt",
+      "count": 6318
+    },
+    {
+      "issue": "1 duplicate distractors",
+      "count": 492
+    },
+    {
+      "issue": "answer appears directly in question",
+      "count": 433
+    },
+    {
+      "issue": "vague vocab question",
+      "count": 286
+    },
+    {
+      "issue": "question too short",
+      "count": 177
+    },
+    {
+      "issue": "1 empty/single-char distractors",
+      "count": 175
+    },
+    {
+      "issue": "templated vocab prompt",
+      "count": 129
+    },
+    {
+      "issue": "5 empty/single-char distractors",
+      "count": 126
+    },
+    {
+      "issue": "8 scientific-name distractors for common-name question",
+      "count": 83
+    },
+    {
+      "issue": "4 empty/single-char distractors",
+      "count": 65
+    },
+    {
+      "issue": "2 empty/single-char distractors",
+      "count": 56
+    },
+    {
+      "issue": "truncated answer",
+      "count": 47
+    },
+    {
+      "issue": "3 empty/single-char distractors",
+      "count": 39
+    },
+    {
+      "issue": "question expects numeric/date answer",
+      "count": 28
+    },
+    {
+      "issue": "location question has non-location style answer",
+      "count": 27
+    },
+    {
+      "issue": "7 scientific-name distractors for common-name question",
+      "count": 23
+    },
+    {
+      "issue": "4 scientific-name distractors for common-name question",
+      "count": 15
+    },
+    {
+      "issue": "1 scientific-name distractors for common-name question",
+      "count": 14
+    },
+    {
+      "issue": "5 scientific-name distractors for common-name question",
+      "count": 13
+    }
+  ],
+  "preSweeepComparison": null
+}

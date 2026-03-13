@@ -12,7 +12,9 @@ Run answer checks and fixes directly on the live facts database (not file-only a
 - NEVER use any external model gateway or API script.
 - NEVER use SDK-based direct model API calls.
 - ALWAYS spawn workers directly from subscription models (Codex/Claude worker execution).
-- If running under Anthropic/Claude subscriptions, ALWAYS use Haiku workers by default (cheap tier).
+- Use **Sonnet workers** (`model: "sonnet"`) for all fact quality work: rewrites, distractor generation, category verification, question improvement.
+- Haiku workers (`model: "haiku"`) are acceptable ONLY for: simple heuristic checking, format validation, counting, and mechanical transforms.
+- Sonnet produces significantly better results for: preserving answer specificity, matching distractor format/length, foreign-language diacritics, and semantic coherence.
 
 ## Live DB Rule
 - Default live DB path: `public/facts.db`
@@ -85,6 +87,22 @@ The `check` command now also validates distractors:
 - **Semantic randomness (vocab)**: Distractors must be from the same semantic field as the correct answer, not random unrelated words.
 - **Nonsense templates**: "Xing process", "Act of X", "To X" pattern distractors are auto-flagged.
 
+### Question & Answer Quality Checks (automatic in `check`)
+The `check` command also validates question and answer quality:
+- **Templated vocab prompt**: "What is the X word for Y?" pattern questions — rewrite more naturally
+- **Low-context vocab prompt**: "What does X mean?" with no usage context — add part of speech, example, or semantic hint
+- **Vague vocab question**: literally "What does this mean?" with no foreign word shown — the word MUST appear in the question
+- **Question too short**: knowledge facts with <15 word questions that lack sufficient context
+- **Severe distractor length spread**: max/min character length ratio ≥3.5x AND absolute delta ≥18 chars
+- **Truncated answer**: answer ends with "..." — complete from statement/explanation or shorten to complete phrase
+- **Answer appears directly in question**: answer text found verbatim in question (normalized, ≥5 chars)
+- **Question expects numeric/date answer**: "how many/what year/when" but answer is non-numeric text
+
+### Category & Subcategory Checks
+- **Miscategorized fact**: category_l1 does not match the fact's actual domain (e.g., war history fact in Art & Architecture)
+- **Invalid subcategory**: category_l2 is not a valid ID from the domain's taxonomy in `subcategory-taxonomy.mjs`
+- **Geography protection**: facts must NOT be moved in/out of the geography domain, and `capitals_countries` subcategory must not be changed (breaks geography_drill deck routing)
+
 ## Tagged Fact Variants
 Use `--tags` and `--tag-mode` with `check` or `export-flagged`.
 
@@ -131,3 +149,42 @@ Facts failing these checks should be flagged with `answer_check_issue: "format_m
 - `check` updates DB flags immediately.
 - `export-flagged` reads DB flags and creates worker-fix payloads.
 - `apply-fixes` writes corrections to DB and clears `answer_check_issue`/`answer_check_needs_fix` when fixed.
+
+## Full-Database Quality Sweep
+
+For comprehensive review of ALL facts (not just flagged), use the quality sweep script:
+
+### 1) Export all rows as domain-grouped batches
+```bash
+node scripts/content-pipeline/qa/quality-sweep-db.mjs export \
+  --db public/facts.db \
+  --output-dir data/generated/quality-sweep/batches/
+```
+
+### 2) Process batches via Sonnet workers
+The orchestrator reads pending batches from the manifest, spawns Sonnet sub-agents (`model: "sonnet"`), and writes validated results. Batches are grouped by domain/language for optimal prompt context.
+
+- Vocab batches: 100 rows each (simpler content)
+- Knowledge batches: 50 rows each (complex content + category verification)
+- ~574 total batches, resumable via `data/generated/quality-sweep/manifest.json`
+
+### 3) Apply validated results to DB
+```bash
+node scripts/content-pipeline/qa/quality-sweep-db.mjs apply \
+  --db public/facts.db \
+  --input-dir data/generated/quality-sweep/results/
+```
+
+### 4) Verify convergence
+```bash
+node scripts/content-pipeline/qa/quality-sweep-db.mjs verify \
+  --db public/facts.db
+```
+
+### What the sweep fixes per row
+- **quizQuestion**: templated, vague, low-context, too-short, answer-in-question
+- **correctAnswer**: truncated, self-referencing, broken
+- **distractors**: length spread, duplicates, empties, placeholders, semantic mismatches, format mismatches
+- **explanation**: broken or truncated
+- **category_l1**: verify correct domain assignment
+- **category_l2**: verify valid subcategory from domain taxonomy

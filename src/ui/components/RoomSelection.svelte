@@ -92,7 +92,6 @@
           />
           <div class="door-info">
             <span class="room-label">{option.label}</span>
-            <span class="room-detail">{option.detail}</span>
           </div>
         </button>
       {/each}
@@ -319,13 +318,6 @@
     line-height: 1.2;
   }
 
-  .room-detail {
-    font-size: 13px;
-    color: #a8b5c4;
-    text-align: left;
-    line-height: 1.2;
-  }
-
   @keyframes hallwayShimmer {
     0%,
     34% {
@@ -364,8 +356,5 @@
       font-size: 14px;
     }
 
-    .room-detail {
-      font-size: 11px;
-    }
   }
 </style>

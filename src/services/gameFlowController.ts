@@ -109,6 +109,7 @@ import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgr
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
+import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
 
 export type GameFlowState =
   | 'idle'
@@ -116,6 +117,7 @@ export type GameFlowState =
   | 'archetypeSelection'
   | 'combat'
   | 'roomSelection'
+  | 'dungeonMap'
   | 'mysteryEvent'
   | 'masteryChallenge'
   | 'restRoom'
@@ -160,18 +162,17 @@ let pendingIncludeOutsideDueReviews = false
 export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): void {
   activeRunMode = 'standard'
   activeDailySeed = null
-  pendingDeckMode = null
   pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
   deactivateDeterministicRandom()
+  // Always set deck mode from hub selector, even for onboarding flow
+  const save = get(playerSave);
+  pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding) {
     gameFlowState.set('idle');
     currentScreen.set('onboarding');
     return;
   }
-  // Always use deck mode from hub selector (defaults to "general" = all topics)
-  const save = get(playerSave);
-  pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
   // Placeholder domains (pool builder uses deckMode, not these)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
 
@@ -632,20 +633,50 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     },
   });
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
+  // Generate the initial ActMap for the first segment
+  run.floor.actMap = generateActMap(run.floor.segment, run.runSeed);
   activeRunState.set(run);
   // Activate deterministic random for standard and endless_depths runs
   if (activeRunMode === 'standard' || activeRunMode === 'endless_depths') {
     activateDeterministicRandom(run.runSeed);
   }
   pendingDomainSelection = null;
-  gameFlowState.set('combat');
-  holdScreenTransition();
-  currentScreen.set('combat');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 async function proceedAfterReward(): Promise<void> {
   const run = get(activeRunState);
   if (!run) return;
+
+  // === Map-based progression (actMap flow) ===
+  if (run.floor.actMap) {
+    const currentNodeId = run.floor.actMap.currentNodeId;
+    const currentNode = currentNodeId ? run.floor.actMap.nodes[currentNodeId] : null;
+
+    if (currentNode?.type === 'boss') {
+      // Boss node defeated — trigger special event → retreat/delve
+      if (!pendingSpecialEvent) {
+        pendingSpecialEvent = true;
+        const event = rollSpecialEvent();
+        activeSpecialEvent.set(event);
+        gameFlowState.set('specialEvent');
+        currentScreen.set('specialEvent');
+        return;
+      }
+      pendingSpecialEvent = false;
+      gameFlowState.set('retreatOrDelve');
+      currentScreen.set('retreatOrDelve');
+      return;
+    }
+
+    // Non-boss node cleared — return to dungeon map
+    gameFlowState.set('dungeonMap');
+    currentScreen.set('dungeonMap');
+    autoSaveRun('dungeonMap');
+    return;
+  }
+  // === End map-based progression ===
 
   const floorToResolve = pendingClearedFloor || run.floor.currentFloor;
   if (pendingFloorCompleted) {
@@ -1128,10 +1159,11 @@ export function onDelve(): void {
   }
   run.canary = resetCanaryFloor(run.canary);
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
+  // Generate a new act map for the next segment (seed offset by segment for deterministic but varied maps)
+  run.floor.actMap = generateActMap(run.floor.segment, run.runSeed + run.floor.segment);
   activeRunState.set(run);
-  activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
-  gameFlowState.set('roomSelection');
-  currentScreen.set('roomSelection');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 export function getCurrentDelvePenalty(): number {
@@ -1140,6 +1172,61 @@ export function getCurrentDelvePenalty(): number {
   const nextFloor = run.floor.currentFloor + 1;
   const segment = getSegment(nextFloor);
   return DEATH_PENALTY[segment];
+}
+
+/**
+ * Called when the player taps a node on the dungeon map.
+ * Updates map state, derives floor scaling, and routes to the appropriate room.
+ * For combat/elite/boss nodes, only updates map state — the caller (CardApp)
+ * handles Phaser boot and encounter start to avoid race conditions.
+ */
+export function onMapNodeSelected(nodeId: string): void {
+  const run = get(activeRunState);
+  if (!run || !run.floor.actMap) return;
+
+  const node = run.floor.actMap.nodes[nodeId];
+  if (!node) return;
+
+  // Select the node on the map (marks it 'current', unlocks children, locks siblings)
+  selectMapNode(run.floor.actMap, nodeId);
+
+  // Derive equivalent floor number for difficulty scaling
+  const derivedFloor = deriveFloorFromNode(run.floor.actMap, node);
+  run.floor.currentFloor = derivedFloor;
+  run.floor.segment = getSegment(derivedFloor);
+
+  // Mark boss floor if this is a boss node
+  if (node.type === 'boss') {
+    run.floor.isBossFloor = true;
+  }
+
+  activeRunState.set(run);
+
+  // Track analytics
+  analyticsService.track({
+    name: 'room_selected',
+    properties: {
+      room: node.type,
+      floor: run.floor.currentFloor,
+      encounter: run.floor.currentEncounter,
+    },
+  });
+
+  // For combat-type nodes, DON'T call onRoomSelected — the caller handles
+  // Phaser boot + encounter start to avoid the "encounter already active" race.
+  if (node.type === 'combat' || node.type === 'elite' || node.type === 'boss') {
+    return;
+  }
+
+  // Non-combat nodes: route via onRoomSelected
+  const room: RoomOption = {
+    type: node.type as RoomOption['type'],
+    icon: '',
+    label: node.type,
+    detail: '',
+    hidden: false,
+  };
+  onRoomSelected(room);
 }
 
 export function onRoomSelected(room: RoomOption): void {
@@ -1267,6 +1354,8 @@ export function returnToHubFromCampfire(): void {
   // Save run state so player can resume later
   autoSaveRun('campfire');
   deactivateDeterministicRandom()
+  resetEncounterBridge()
+  activeRunState.set(null);
   campfireReturnScreen.set(null);
   gameFlowState.set('idle');
   currentScreen.set('hub');

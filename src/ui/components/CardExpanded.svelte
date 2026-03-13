@@ -353,13 +353,17 @@
 <style>
   .card-expanded {
     position: fixed;
-    bottom: calc(45vh - 20px);
+    top: calc(10vh + var(--safe-top));
+    bottom: calc(10vh + var(--safe-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     width: 320px;
-    max-width: calc(100vw - 24px);
-    max-height: 55vh;
+    max-width: min(560px, calc(100vw - 24px));
+    max-height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     background:
       linear-gradient(rgba(14, 20, 30, 0.95), rgba(14, 20, 30, 0.97)),
       var(--card-frame-image) center / cover no-repeat,
@@ -368,6 +372,12 @@
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     z-index: 20;
     animation: slide-up 200ms ease-out;
+  }
+
+  .card-expanded::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
 
   @keyframes slide-up {

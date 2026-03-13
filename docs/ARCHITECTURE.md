@@ -23,7 +23,7 @@ Primary boot path:
 ```
 ┌─────────────────────────────────────────────────┐
 │  Svelte UI Layer                                │
-│  Card hand, answer buttons, room selection,     │
+│  Card hand, answer buttons, dungeon map,         │
 │  post-run summary, domain picker, menus         │
 ├─────────────────────────────────────────────────┤
 │  Phaser Layer                                   │
@@ -45,6 +45,7 @@ Primary boot path:
 - `CombatScene` — renders enemy HP bars (with block overlay), damage particles, screen flash. Enemy sprites are rendered and animated via EnemySpriteSystem (3D paper cutout effect with procedural idle/attack/hit/death states). Intent, floor info, enemy name, and bounty strip have moved to the Svelte overlay.
 - `CombatScene` uses a `sceneReady` guard: a private boolean flag set `true` at end of `create()`. All public methods (`setEnemy`, `updateEnemyBlock`, `setEnemyIntent`, `updatePlayerHP`, `setFloorInfo`, `setRelics`) early-return if the scene is not yet ready, preventing race conditions when callers invoke display updates before Phaser objects exist.
 - **Enemy Sprite Pipeline** (`scripts/process-enemy-sprites.mjs`): Sharp-based script processes source PNGs from `data/generated/enemies/{zone}/{tier}/` into mobile-ready sprites with 4 output files per enemy: `{name}_idle.png`, `{name}_idle.webp`, `{name}_idle_1x.png`, `{name}_idle_1x.webp` in `public/assets/sprites/enemies/`. Resolution tiers: Standard (common=256px, elite/miniboss=320px, boss=384px longest edge) and 1x low-end (half size). Sprite keys auto-generated via `scripts/gen-sprite-keys.mjs` following `enemy-{id}-idle` pattern. All 88 enemy sprites preloaded at CombatScene startup via loop over ENEMY_TEMPLATES. Only idle textures used; hit/death animations are fully procedural (tweens + particles).
+- **Card Frame Asset Pipeline** (`scripts/process-cardframes.mjs`): Sharp-based script processes source card frame PNGs from `data/generated/CARDFRAMES/Unedited/` (organized by mechanic category: Attack, Defence, Buff, Debuff, Utility, Wild) into mobile-ready frames with dual-resolution variants (hires `.webp` + lowres `_1x.webp`) in `public/assets/cardframes/`. Output structure: `{mechanic}-{frameIndex}.webp` and `{mechanic}-{frameIndex}_1x.webp`. Device-tier selection: Standard devices load hires, low-end devices load lowres. Frame preloading handled by `cardFrameManifest.ts` at hand initialization.
 - **Sprite Display**: EnemySpriteSystem preserves texture aspect ratio, constraining longest edge to displaySize. Standard devices get `.webp`, low-end devices get `_1x.webp`. Layered 3D paper-cutout effect (shadow + outlines + main sprite) applied to both real sprites and placeholder colored rectangles.
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
@@ -66,18 +67,30 @@ Primary boot path:
 
 #### Card Animation State Machine
 
-After answering a quiz, cards go through a multi-phase CSS animation sequence. State: `CardAnimPhase = 'reveal' | 'mechanic' | 'launch' | 'fizzle' | null`.
+After answering a quiz, cards go through a 5-phase animation sequence using hand-crafted PNG card frames. State: `CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'fizzle' | null`.
 
-- **Reveal** (400ms): Card enlarges to ~1.8x, centers, CSS 3D `rotateY(180deg)` flip to show cardback art. Skipped if no cardback art available.
-- **Mechanic** (500ms): One of 31 mechanic-specific `@keyframes` animations plays (slash, glow, ripple, etc.). Juice effects fire here.
-- **Launch** (300ms): Card flies upward, removed from DOM.
-- **Fizzle** (400ms, wrong answers only): Shake + fade out.
+**Correct answers:**
+- **Reveal** (250ms): Card flips to cardback using CSS 3D `rotateY(180deg)` transformation.
+- **Swoosh** (250ms): Type-specific animation plays (attack=golden slash+lunge, shield=blue pulse+rise, buff=golden radiate+expand, debuff=purple tendrils+dissolve, utility=prismatic shimmer+morph, wild=multi-color flash). Archetype-matched synthesized sound triggers.
+- **Impact** (300ms): 3D directional movement toward target (enemy or center); particles and screen shake effects fire.
+- **Discard** (200ms): Card minimizes and flies to discard pile indicator in bottom-right; discard pile count increments.
+
+**Wrong answers:**
+- **Fizzle** (400ms): Violent shake + sparks + fade out, no multi-phase sequence.
+
+**Card frame system:**
+- 30 hand-crafted PNG frames (hires + lowres WebP variants) grouped by 6 mechanic categories (Attack, Defence, Buff, Debuff, Utility, Wild)
+- Frame structure: title area, pixel art scene, gemstone AP cost badge, parchment text area (grey=base, green=buffed, red=debuffed)
+- Card rendering in `CardHand.svelte` uses frame images instead of programmatic CSS styling
+- Dynamic card description text (`getShortCardDescription()`) displays in parchment area
 
 **Animation buffer pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive copies with animation CSS classes. Cards are cleaned from the buffer after animation completes via `setTimeout`. This prevents cards from disappearing mid-animation when the hand state updates.
 
 **Cardback discovery**: `cardbackManifest.ts` uses `import.meta.glob` at build time to discover which facts have cardback WebP images in `/public/assets/cardbacks/lowres/`. Images are preloaded via Svelte `$effect` when cards enter the hand.
 
-**Reduced motion**: `@media (prefers-reduced-motion: reduce)` replaces flip + mechanic animations with a simple fade + color flash.
+**Card frame manifest**: `cardFrameManifest.ts` provides runtime URLs for card frame images, managing hires/lowres variants based on device capabilities.
+
+**Reduced motion**: `@media (prefers-reduced-motion: reduce)` replaces flip + multi-phase animations with a simple fade + color flash.
 
 #### Asset Preloading Gate
 
@@ -96,7 +109,7 @@ Every screen preloads its background images behind the transition overlay before
 
 **Combat scene:** `gameFlowController.ts` holds the transition before `currentScreen.set('combat')`. `CombatScene.setBackground()` returns a `Promise<void>` that resolves when the per-encounter background loads. `encounterBridge.ts` chains `releaseScreenTransition()` on that promise.
 
-**Screens with preloading:** HubScreen (12 camp images), RoomSelection, RestRoomOverlay, ShopRoomOverlay, MysteryEventOverlay, CardRewardScreen, RetreatOrDelve, RunEndScreen, CombatScene.
+**Screens with preloading:** HubScreen (12 camp images), DungeonMap, RestRoomOverlay, ShopRoomOverlay, MysteryEventOverlay, CardRewardScreen, RetreatOrDelve, RunEndScreen, CombatScene.
 
 ### Service Layer
 
@@ -108,7 +121,7 @@ Located in `src/services/`:
 | SM-2 scheduler | `sm2.ts` | EXISTS — reuse, add tier derivation |
 | Facts database | `factsDB.ts` | EXISTS — reuse, extend schema |
 | Save/load | `saveService.ts` | EXISTS — reuse |
-| Audio | `audioService.ts` | EXISTS — reuse |
+| Audio | `audioService.ts` | Built — 6 new synthesized sounds for card animation archetypes (golden slash, blue pulse, golden radiate, purple tendrils, prismatic shimmer, fizzle); impact and discard SFX |
 | Analytics | `analyticsService.ts` | EXISTS — reuse |
 | API client | `apiClient.ts` | EXISTS — reuse |
 | Profile mgmt | `profileService.ts` | EXISTS — reuse |
@@ -123,7 +136,8 @@ Located in `src/data/`:
 - `types.ts` — PlayerSave, fact types (extend with card types)
 - `vocabulary.ts` — Language deck types: `LanguageConfig` (extended with `subdecks` and `options`), `LanguageDeckOption` interface, VocabularyFact schema extensions for targetLanguage, jlptLevel, reading, audioUrl
 - `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
-- `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
+- `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState); includes ActMap in run save state
+- Map types (`src/services/mapGenerator.ts`) — `ActMap` (rows, edges, completed nodes, current node), `MapNode` (id, row, col, type: combat|elite|boss|mystery|rest|treasure|shop, connections)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number` field for floor-based damage scaling; `difficultyVariance` field (0.8–1.2x multiplier on HP and damage for common enemies). `EnemyTemplate` includes `rarity` (standard/uncommon/rare), `spawnWeight` (for weighted random selection), and `animArchetype` (one of 8 animation types: swooper, slammer, crawler, caster, floater, lurcher, striker, trembler).
 - Enemy animations — `src/data/enemyAnimations.ts` — Animation archetype configs (8 types). Defines `AnimConfig` interface with tween parameters and `getAnimConfig(archetype)` resolver. Pure data, no Phaser/Svelte imports.
 - Card type mappings — `src/data/card-types.ts`
@@ -167,13 +181,16 @@ These systems transfer from the mining codebase with minimal changes:
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
+| Card frame manifest | `src/ui/utils/cardFrameManifest.ts` | Built — runtime manifest for 30 card frame image URLs grouped by mechanic category |
+| Card description service | `src/services/cardDescriptionService.ts` | Built — `getShortCardDescription()` for parchment text rendering |
+| Card frame processor | `scripts/process-cardframes.mjs` | Built — asset pipeline script to crop/resize/convert card frame PNGs to WebP (hires + lowres variants) |
 | Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
-| Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
+| Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built — 5-phase animation system with archetype-specific effects and synthesized audio |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
 | Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates all 88 enemy rendering with sharp-processed PNG assets. 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`). Aspect-ratio-preserving scaling, device-tier texture selection (.webp vs _1x.webp), placeholder display for missing sprites. |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
-| Card hand UI | `src/ui/components/CardHand.svelte` | Built — added `.card-upgraded` CSS class (blue glow) |
+| Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering now uses hand-crafted PNG card frame images instead of programmatic UI; supports hires/lowres variants based on device capabilities |
 | Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built |
 | Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element |
 | Combo counter | `src/ui/components/ComboCounter.svelte` | Built |
@@ -181,7 +198,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Domain selection | `src/ui/components/DomainSelection.svelte` | Deprecated — no longer used in run flow; removed from gameFlowController.playAgain() |
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
 | Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown for selecting study mode before runs |
-| Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built |
+| Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built — preserved as fallback for pre-map saves |
+| Dungeon map | `src/ui/components/DungeonMap.svelte` | Built — scrollable vertical act map with SVG paths and HTML nodes |
+| Map node | `src/ui/components/MapNode.svelte` | Built — 44px circle node button, type-coded by icon/color |
+| Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers |
 | Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built — wired upgrade button (removed "Coming soon" stub) |
 | Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | Complete redesign — buy relics + buy cards + sell sections |
 | Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
@@ -356,7 +376,7 @@ Combat Loop (per encounter):
   5. Repeat until enemy HP = 0 or player HP = 0
 
 Between Encounters:
-  → Room selection (3 choices: enemy, mystery, rest, shop, elite)
+  → Return to Dungeon Map → player selects next node (combat, elite, mystery, rest, shop, treasure)
   → Card reward (pick 1 of 3 new cards)
 
 Segment Checkpoint (every 3 floors):
@@ -441,13 +461,14 @@ src/
     entities/              Player, Boss, Creature
   services/
     encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). Applies post-encounter healing (with boss/mini-boss bonus) and early mini-boss HP reduction.
-    gameFlowController.ts  — Screen routing + run lifecycle
+    gameFlowController.ts  — Screen routing + run lifecycle; routes to 'dungeonMap' after archetype selection
     turnManager.ts         — Turn-based encounter logic
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain)
     enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`. Implements charge mechanic: `isCharging` flag, `chargedDamage` storage, `bypassDamageCap` intent flag for automatic deferred attacks.
     floorManager.ts        — Floor/room/boss/mini-boss generation
+    mapGenerator.ts        — Act map generation: ActMap/MapNode types, generateActMap() (seed-deterministic, 15 rows, 3-5 nodes/row, non-crossing edges), selectMapNode(), reachability helpers
     runManager.ts          — Run stats recording
     runSaveService.ts      — Save/resume active run to localStorage
     juiceManager.ts        — Game juice effects (haptics, sounds, particles)
@@ -458,15 +479,17 @@ src/
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
     components/
-      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, 3-phase card animation orchestration (reveal→mechanic→launch) via setTimeout chains and animatingCards buffer pattern
-      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), green glow on playable cards, AP cost badges, tap-to-select + tap/swipe-to-cast, touch drag with opacity fade, dual-face card DOM (front/back with backface-visibility), 31 @keyframes mechanic animations, animatingCards buffer rendering, cardback preloading, reduced-motion support
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, discard pile counter, 5-phase card animation orchestration (reveal→swoosh→impact→discard) with per-archetype SFX via setTimeout chains and animatingCards buffer pattern
+      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), hand-crafted PNG card frame images (mechanic-themed), card description text overlay (grey=base, green=buffed, red=debuffed), AP cost gemstone badge, green glow on playable cards, tap-to-select + tap/swipe-to-cast, touch drag with scale transform, animatingCards buffer rendering for smooth animation decoupling, cardback preloading, reduced-motion support
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
       ComboCounter.svelte       — Knowledge combo display
       DamageNumber.svelte       — Floating damage numbers
       DomainSelection.svelte    — Run-start domain picker (legacy, replaced by StudyModeSelector for run setup)
       DeckBuilder.svelte        — Study preset creation/editing (tab within Library screen)
       StudyModeSelector.svelte  — Hub dropdown: All Topics, saved presets, languages, Build New Deck
-      RoomSelectionOverlay.svelte — 3-door room chooser
+      DungeonMap.svelte         — Scrollable vertical act map (SVG paths + HTML node buttons)
+      MapNode.svelte            — Individual map node (44px circle, type-coded by icon/color)
+      RoomSelectionOverlay.svelte — 3-door room chooser (legacy fallback for pre-map saves)
       RestRoomOverlay.svelte    — Rest site (heal/upgrade)
       MysteryEventOverlay.svelte — Random event resolution
       RunEndOverlay.svelte      — Post-run summary
@@ -477,7 +500,8 @@ src/
       HubAmbientEffects.ts   — Camp sprite CSS micro-animations (breathe, sway, spark)
     utils/
       cardbackManifest.ts    — Build-time manifest (import.meta.glob) for cardback WebP images; exports hasCardback(factId), getCardbackUrl(factId)
-      mechanicAnimations.ts  — Maps 31 mechanic IDs to CSS animation classes; exports timing constants (REVEAL_DURATION=400, MECHANIC_DURATION=500, LAUNCH_DURATION=300), CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()
+      cardFrameManifest.ts   — Runtime manifest for 30 card frame image URLs grouped by mechanic category; device-tier variant selection (hires WebP vs lowres); exports getCardFrameUrl(mechanic, index)
+      mechanicAnimations.ts  — 5-phase animation system: reveal (250ms) → swoosh (250ms with archetype SFX) → impact (300ms) → discard (200ms). Archetype mappings (attack=slash, shield=pulse, buff=radiate, debuff=tendrils, utility=shimmer, wild=morph); exports PHASE_DURATIONS, CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()
     stores/                gameState, playerData, settings
   data/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types
@@ -528,7 +552,8 @@ encounterBridge
 
 gameFlowController
   → services/floorManager (room generation)
-  → ui/stores/gameState (currentScreen)
+  → services/mapGenerator (ActMap generation, node selection)
+  → ui/stores/gameState (currentScreen — routes to 'dungeonMap' after archetype selection)
   → data/balance (run parameters)
 
 CardCombatOverlay.svelte

@@ -36,6 +36,12 @@ export type SoundName =
   | 'item_pickup'
   | 'oxygen_low'
   | 'oxygen_critical'
+  | 'card_swoosh_attack'
+  | 'card_swoosh_shield'
+  | 'card_swoosh_buff'
+  | 'card_swoosh_debuff'
+  | 'card_swoosh_wild'
+  | 'card_discard'
 
 // Webkit-prefixed AudioContext fallback for older iOS Safari.
 type AnyAudioContext = AudioContext
@@ -215,6 +221,90 @@ function playOxygenWarning(ctx: AnyAudioContext, master: GainNode): void {
   scheduleOscillator(ctx, master, 150, 'sine', 0.55, 0.15, now + 0.22)
 }
 
+/** Card swoosh attack — Rising metallic whoosh with sawtooth oscillator. */
+function playCardSwooshAttack(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+
+  osc.type = 'sawtooth'
+  osc.frequency.setValueAtTime(400, now)
+  osc.frequency.exponentialRampToValueAtTime(1200, now + 0.15)
+
+  gain.gain.setValueAtTime(0.15, now)
+  gain.gain.exponentialRampToValueAtTime(0.05, now + 0.15)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15 + 0.05)
+
+  osc.connect(gain)
+  gain.connect(master)
+
+  osc.start(now)
+  osc.stop(now + 0.2)
+}
+
+/** Card swoosh shield — Crystalline barrier chime with dual sine oscillators. */
+function playCardSwooshShield(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleOscillator(ctx, master, 800, 'sine', 0.12, 0.2, now)
+  scheduleOscillator(ctx, master, 1600, 'sine', 0.12, 0.2, now)
+}
+
+/** Card swoosh buff — Ascending power hum with triangle oscillator. */
+function playCardSwooshBuff(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+
+  osc.type = 'triangle'
+  osc.frequency.setValueAtTime(300, now)
+  osc.frequency.exponentialRampToValueAtTime(900, now + 0.2)
+
+  gain.gain.setValueAtTime(0.12, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.2)
+
+  osc.connect(gain)
+  gain.connect(master)
+
+  osc.start(now)
+  osc.stop(now + 0.2)
+}
+
+/** Card swoosh debuff — Descending curse whisper with sawtooth and noise. */
+function playCardSwooshDebuff(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+
+  osc.type = 'sawtooth'
+  osc.frequency.setValueAtTime(600, now)
+  osc.frequency.exponentialRampToValueAtTime(150, now + 0.2)
+
+  gain.gain.setValueAtTime(0.12, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.2)
+
+  osc.connect(gain)
+  gain.connect(master)
+
+  osc.start(now)
+  osc.stop(now + 0.2)
+
+  scheduleNoiseBurst(ctx, master, 0.04, 0.1, now)
+}
+
+/** Card swoosh wild — Prismatic shimmer arpeggio with 4 rapid sine notes. */
+function playCardSwooshWild(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const notes = [523.25, 659.25, 783.99, 1046.5] // C5, E5, G5, C6
+  notes.forEach((freq, i) => {
+    scheduleOscillator(ctx, master, freq, 'sine', 0.08, 0.035, now + i * 0.035)
+  })
+}
+
+/** Card discard — Soft thunk with low sine and fast decay. */
+function playCardDiscard(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleOscillator(ctx, master, 100, 'sine', 0.1, 0.08)
+}
+
 // ---------------------------------------------------------------------------
 // Sound dispatch map
 // ---------------------------------------------------------------------------
@@ -316,6 +406,12 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
     scheduleOscillator(ctx, m, 330, 'square', 0.12, 0.15, 0.2)
     scheduleOscillator(ctx, m, 330, 'square', 0.12, 0.15, 0.4)
   },
+  card_swoosh_attack: playCardSwooshAttack,
+  card_swoosh_shield: playCardSwooshShield,
+  card_swoosh_buff: playCardSwooshBuff,
+  card_swoosh_debuff: playCardSwooshDebuff,
+  card_swoosh_wild: playCardSwooshWild,
+  card_discard: playCardDiscard,
 }
 
 // ---------------------------------------------------------------------------

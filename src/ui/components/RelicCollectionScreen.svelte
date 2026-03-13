@@ -100,10 +100,11 @@
 <section class="relic-screen" aria-label="Relic Archive">
   <!-- Header -->
   <header class="header">
-    <button type="button" class="back-btn" onclick={onBack} aria-label="Go back">
+    <button type="button" class="back-btn" onclick={onBack} aria-label="Go back to camp">
       <span aria-hidden="true">&larr;</span>
+      <span>Camp</span>
     </button>
-    <h2>Relic Archive</h2>
+    <h2 class="header-title">Relic Archive</h2>
     <div class="coin-display" aria-label="Mastery Coins">
       <span class="coin-icon" aria-hidden="true">&#9889;</span>
       <span class="coin-amount">{balance.available}</span>
@@ -320,14 +321,16 @@
 
   /* ── header ── */
   .header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 8px;
   }
 
-  .header h2 {
+  .header-title {
     margin: 0;
-    flex: 1;
+    justify-self: center;
+    text-align: center;
     color: #fde68a;
     font-size: calc(20px * var(--text-scale, 1));
     font-weight: 800;
@@ -335,17 +338,18 @@
   }
 
   .back-btn {
-    min-width: 44px;
     min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 14px;
     border-radius: 10px;
-    border: 1px solid rgba(148, 163, 184, 0.40);
-    background: rgba(30, 41, 59, 0.85);
-    color: #e2e8f0;
-    font-size: calc(18px * var(--text-scale, 1));
+    border: 1px solid rgba(74, 222, 128, 0.50);
+    background: rgba(21, 128, 61, 0.35);
+    color: #bbf7d0;
+    font-weight: 700;
+    font-size: calc(13px * var(--text-scale, 1));
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .coin-display {
@@ -356,6 +360,7 @@
     border-radius: 999px;
     background: rgba(120, 53, 15, 0.50);
     border: 1px solid rgba(250, 204, 21, 0.45);
+    justify-self: end;
   }
 
   .coin-icon {

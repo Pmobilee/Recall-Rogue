@@ -1,95 +1,56 @@
-/** Card flip duration (ms) */
-export const REVEAL_DURATION = 400;
+import type { CardType } from '../../data/card-types';
 
-/** Mechanic animation duration (ms) */
-export const MECHANIC_DURATION = 500;
+/** Card flip to cardback duration (ms) */
+export const REVEAL_DURATION = 250;
 
-/** Existing launch fly-up (ms) */
-export const LAUNCH_DURATION = 300;
+/** Type-specific swoosh effect duration (ms) */
+export const SWOOSH_DURATION = 250;
+
+/** 3D impact / directional movement duration (ms) */
+export const IMPACT_DURATION = 300;
+
+/** Minimize to discard pile duration (ms) */
+export const DISCARD_DURATION = 200;
 
 /** Tier-up celebration duration (ms) */
 export const TIER_UP_DURATION = 600;
 
 /** Animation phase for card play sequence */
-export type CardAnimPhase = 'reveal' | 'tier-up' | 'mechanic' | 'launch' | 'fizzle' | null;
+export type CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'tier-up' | 'fizzle' | null;
 
-/** Maps mechanic IDs to their CSS animation class names */
-const MECHANIC_ANIM_MAP: Record<string, string> = {
-  // Attack
-  strike: 'mech-strike',
-  multi_hit: 'mech-multi-hit',
-  heavy_strike: 'mech-heavy-strike',
-  piercing: 'mech-piercing',
-  reckless: 'mech-reckless',
-  execute: 'mech-execute',
-
-  // Shield
-  block: 'mech-block',
-  thorns: 'mech-thorns',
-  fortify: 'mech-fortify',
-  parry: 'mech-parry',
-  brace: 'mech-brace',
-
-  // Heal
-  restore: 'mech-restore',
-  cleanse: 'mech-cleanse',
-  overheal: 'mech-overheal',
-  lifetap: 'mech-lifetap',
-
-  // Buff
-  empower: 'mech-empower',
-  quicken: 'mech-quicken',
-  double_strike: 'mech-double-strike',
-  focus: 'mech-focus',
-
-  // Debuff
-  weaken: 'mech-weaken',
-  expose: 'mech-expose',
-  slow: 'mech-slow',
-  hex: 'mech-hex',
-
-  // Utility
-  scout: 'mech-scout',
-  recycle: 'mech-recycle',
-  foresight: 'mech-foresight',
-  transmute: 'mech-transmute',
-
-  // Regen
-  sustained: 'mech-sustained',
-  emergency: 'mech-emergency',
-  immunity: 'mech-immunity',
-
-  // Wild
-  mirror: 'mech-mirror',
-  adapt: 'mech-adapt',
-  overclock: 'mech-overclock',
-};
-
-/** Maps card types to their default fallback animation class */
-const TYPE_FALLBACK_MAP: Record<string, string> = {
-  attack: 'mech-strike',
-  shield: 'mech-block',
-  heal: 'mech-restore',
-  buff: 'mech-empower',
-  debuff: 'mech-weaken',
-  utility: 'mech-scout',
-  regen: 'mech-sustained',
-  wild: 'mech-mirror',
-};
+/** Visual archetype determines which CSS animation set to use */
+export type CardAnimArchetype = 'attack' | 'shield' | 'buff' | 'debuff' | 'utility' | 'wild';
 
 /**
- * Returns the CSS animation class for a given mechanic ID.
- * Falls back to empty string if the mechanic is unknown or undefined.
+ * Maps a card type to its visual animation archetype.
+ * Shield/utility share similar calmer animations.
  */
-export function getMechanicAnimClass(mechanicId: string | undefined): string {
-  if (!mechanicId) return '';
-  return MECHANIC_ANIM_MAP[mechanicId] ?? '';
+export function getCardAnimArchetype(cardType: CardType): CardAnimArchetype {
+  switch (cardType) {
+    case 'attack': return 'attack';
+    case 'shield': return 'shield';
+    case 'buff': return 'buff';
+    case 'debuff': return 'debuff';
+    case 'utility': return 'utility';
+    case 'wild': return 'wild';
+    default: return 'attack';
+  }
 }
 
 /**
- * Returns a fallback animation class based on card type,
- * used when the mechanic ID is unknown.
+ * Returns the CSS class suffix for a given card type during a given animation phase.
+ * E.g., getAnimClass('attack', 'swoosh') → 'card-swoosh card-swoosh-attack'
  */
-export function getTypeFallbackAnimClass(cardType: string): string {
-  return TYPE_FALLBACK_MAP[cardType] ?? '';
+export function getAnimClass(cardType: CardType, phase: CardAnimPhase): string {
+  if (!phase) return '';
+  const archetype = getCardAnimArchetype(cardType);
+  switch (phase) {
+    case 'reveal': return 'card-reveal';
+    case 'swoosh': return `card-swoosh card-swoosh-${archetype}`;
+    case 'impact': return `card-impact card-impact-${archetype}`;
+    case 'discard': return 'card-discard';
+    case 'tier-up': return 'card-tier-up';
+    case 'fizzle': return 'card-fizzle';
+    default: return '';
+  }
 }

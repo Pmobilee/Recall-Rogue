@@ -28,6 +28,7 @@ import { initAccessibilityManager } from './services/accessibilityManager'
 import { initCardAudio } from './services/cardAudioManager'
 import { initErrorReporting } from './services/errorReporting'
 import { initCardbackManifest } from './ui/utils/cardbackManifest'
+import { initCardFrameManifest } from './ui/utils/cardFrameManifest'
 import { syncService } from './services/syncService'
 import { save as persistRaw } from './services/saveService'
 import { analyticsService } from './services/analyticsService'
@@ -131,6 +132,7 @@ initScoreSubmissionQueue()
 
 // Start loading cardback manifest in background (enables live reload in dev)
 initCardbackManifest()
+initCardFrameManifest()
 
 // Launch error capture in production (or when explicitly enabled in dev).
 if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'true') {

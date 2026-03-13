@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-03-13T17:20:14.280Z",
+  "command": "apply",
+  "dbPath": "public/facts.db",
+  "outputDir": "data/generated/quality-sweep",
+  "fixer": "quality-sweep",
+  "dryRun": false,
+  "counts": {
+    "batchesFound": 319,
+    "batchesProcessed": 319,
+    "applied": 21310,
+    "rejected": 1588,
+    "missing": 378
+  },
+  "topRejectionReasons": [
+    {
+      "reason": "distractors field is not an array",
+      "count": 997
+    },
+    {
+      "reason": "1 duplicate distractors",
+      "count": 230
+    },
+    {
+      "reason": "at least one distractor matches the correct answer",
+      "count": 63
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 to \"capitals_countries\" from \"americas…",
+      "count": 46
+    },
+    {
+      "reason": "answer too short: \"Austria\" vs original \"museum in Austria\"",
+      "count": 16
+    },
+    {
+      "reason": "answer too short: \"Plant\" vs original \"Other Animals\"",
+      "count": 15
+    },
+    {
+      "reason": "answer too short: \"Germany\" vs original \"museum in Germany\"",
+      "count": 14
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 to \"capitals_countries\" from \"africa\"",
+      "count": 10
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 to \"capitals_countries\" from \"asia_oce…",
+      "count": 7
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 from \"capitals_countries\" to \"africa\"",
+      "count": 6
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 from \"capitals_countries\" to \"europe\"",
+      "count": 5
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"sample\"",
+      "count": 5
+    },
+    {
+      "reason": "geography l2 protection: cannot change l2 from \"capitals_countries\" to \"asia_oce…",
+      "count": 4
+    },
+    {
+      "reason": "2 duplicate distractors",
+      "count": 3
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"alternative\"",
+      "count": 3
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"unknown\"",
+      "count": 3
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"invalid\"",
+      "count": 3
+    },
+    {
+      "reason": "answer too short: \"Germany\" vs original \"Museum in Germany\"",
+      "count": 2
+    },
+    {
+      "reason": "answer too short: \"Libya\" vs original \"temple/altar/polytheist building(s) in Li…",
+      "count": 2
+    },
+    {
+      "reason": "answer too short: \"obligation\" vs original \"obligation, liability, reliability\"",
+      "count": 2
+    }
+  ]
+}
