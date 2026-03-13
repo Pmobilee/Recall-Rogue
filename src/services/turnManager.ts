@@ -7,7 +7,7 @@ import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { CardEffectResult } from './cardEffectResolver';
-import { drawHand, playCard as deckPlayCard } from './deckManager';
+import { discardHand, drawHand, playCard as deckPlayCard } from './deckManager';
 import {
   createPlayerCombatState,
   applyShield,
@@ -879,6 +879,15 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   rollNextIntent(enemy);
   turnState.turnNumber += 1;
+
+  const discardedAtTurnEnd = discardHand(deck);
+  if (discardedAtTurnEnd.length > 0) {
+    turnState.turnLog.push({
+      type: 'draw',
+      message: `Discarded ${discardedAtTurnEnd.length} unplayed card${discardedAtTurnEnd.length === 1 ? '' : 's'}`,
+      value: discardedAtTurnEnd.length,
+    });
+  }
 
   const drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
   turnState.pendingDrawCountOverride = null;

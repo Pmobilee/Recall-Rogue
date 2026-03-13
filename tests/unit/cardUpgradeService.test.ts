@@ -61,7 +61,7 @@ describe('cardUpgradeService', () => {
     })
 
     it('returns true for various known mechanics', () => {
-      const mechanics = ['strike', 'multi_hit', 'block', 'thorns', 'restore', 'cleanse']
+      const mechanics = ['strike', 'multi_hit', 'block', 'thorns', 'scout', 'cleanse']
       for (const mechId of mechanics) {
         const card = makeCard({ mechanicId: mechId, isUpgraded: false })
         expect(canUpgradeCard(card)).toBe(true)
@@ -90,38 +90,43 @@ describe('cardUpgradeService', () => {
       const card = makeCard({ mechanicId: 'block', baseEffectValue: 6 })
       upgradeCard(card)
 
-      expect(card.baseEffectValue).toBe(8) // 6 + 2
+      expect(card.baseEffectValue).toBe(9) // 6 + 3
     })
 
-    it('increases baseEffectValue by correct delta for restore', () => {
-      const card = makeCard({ mechanicId: 'restore', baseEffectValue: 8 })
+    it('reduces AP cost for scout upgrade', () => {
+      const card = makeCard({ mechanicId: 'scout', apCost: 1, baseEffectValue: 1 })
       upgradeCard(card)
 
-      expect(card.baseEffectValue).toBe(11) // 8 + 3
+      expect(card.apCost).toBe(0) // 1 + (-1) = 0
+      expect(card.baseEffectValue).toBe(1) // unchanged
     })
 
-    it('updates secondaryValue for multi_hit', () => {
-      const card = makeCard({ mechanicId: 'multi_hit', baseEffectValue: 3, secondaryValue: 3 })
+    it('reduces AP cost for multi_hit', () => {
+      const card = makeCard({ mechanicId: 'multi_hit', apCost: 2, baseEffectValue: 4, secondaryValue: 3 })
       upgradeCard(card)
 
-      expect(card.secondaryValue).toBe(4) // 3 + 1
+      expect(card.apCost).toBe(1) // 2 + (-1) = 1
+      expect(card.baseEffectValue).toBe(4) // unchanged (baseValueDelta: 0)
+      expect(card.secondaryValue).toBe(3) // unchanged (no secondaryValueDelta)
     })
 
-    it('updates secondaryValue for thorns', () => {
-      const card = makeCard({ mechanicId: 'thorns', baseEffectValue: 4, secondaryValue: 2 })
+    it('updates secondaryValue and AP for thorns', () => {
+      const card = makeCard({ mechanicId: 'thorns', apCost: 2, baseEffectValue: 6, secondaryValue: 2 })
       upgradeCard(card)
 
-      expect(card.baseEffectValue).toBe(5) // 4 + 1
+      expect(card.baseEffectValue).toBe(6) // unchanged (baseValueDelta: 0)
       expect(card.secondaryValue).toBe(3) // 2 + 1
+      expect(card.apCost).toBe(1) // 2 + (-1) = 1
     })
 
     it('handles missing secondary value by deriving from mechanic definition', () => {
-      const card = makeCard({ mechanicId: 'thorns', baseEffectValue: 4 })
+      const card = makeCard({ mechanicId: 'thorns', apCost: 2, baseEffectValue: 6 })
       delete card.secondaryValue
       upgradeCard(card)
 
       // Should derive secondaryValue from mechanic definition and add delta
       expect(card.secondaryValue).toBe(3) // (2 from mechanic def) + 1
+      expect(card.apCost).toBe(1) // AP reduction applied
     })
 
     it('appends + even if mechanicName is missing', () => {
@@ -161,19 +166,21 @@ describe('cardUpgradeService', () => {
       expect(preview!.secondaryDelta).toBeUndefined()
     })
 
-    it('returns preview with secondary delta for multi_hit', () => {
+    it('returns preview with AP reduction for multi_hit', () => {
       const card = makeCard({
         mechanicId: 'multi_hit',
-        baseEffectValue: 3,
+        apCost: 2,
+        baseEffectValue: 4,
         mechanicName: 'Multi-Hit',
       })
       const preview = getUpgradePreview(card)
 
       expect(preview).not.toBeNull()
       expect(preview!.upgradedName).toBe('Multi-Hit+')
-      expect(preview!.currentBaseValue).toBe(3)
-      expect(preview!.newBaseValue).toBe(3)
-      expect(preview!.secondaryDelta).toBe(1)
+      expect(preview!.currentBaseValue).toBe(4)
+      expect(preview!.newBaseValue).toBe(4)
+      expect(preview!.currentApCost).toBe(2)
+      expect(preview!.newApCost).toBe(1)
     })
 
     it('returns preview with addTag for quicken', () => {
@@ -231,7 +238,7 @@ describe('cardUpgradeService', () => {
       const deck: Card[] = [
         makeCard({ id: '1', mechanicId: 'strike', isUpgraded: true }),
         makeCard({ id: '2', mechanicId: 'block', isUpgraded: false }),
-        makeCard({ id: '3', mechanicId: 'restore', isUpgraded: false }),
+        makeCard({ id: '3', mechanicId: 'scout', isUpgraded: false }),
       ]
       const candidates = getUpgradeCandidates(deck, 10)
 
@@ -307,6 +314,61 @@ describe('cardUpgradeService', () => {
       const candidates = getUpgradeCandidates(deck, 3)
 
       expect(candidates).toHaveLength(3)
+    })
+  })
+
+  describe('AP cost upgrades', () => {
+    it('applies apCostDelta correctly for heavy_strike', () => {
+      const card = makeCard({ mechanicId: 'heavy_strike', apCost: 3, baseEffectValue: 20 })
+      upgradeCard(card)
+
+      expect(card.apCost).toBe(2) // 3 + (-1) = 2
+      expect(card.baseEffectValue).toBe(20) // unchanged
+      expect(card.isUpgraded).toBe(true)
+    })
+
+    it('does not reduce AP below 0', () => {
+      const card = makeCard({ mechanicId: 'scout', apCost: 0, baseEffectValue: 1 })
+      upgradeCard(card)
+
+      expect(card.apCost).toBe(0) // already at 0, Math.max(0, ...) prevents negative
+    })
+
+    it('preview includes AP cost change for AP-reduction upgrades', () => {
+      const card = makeCard({ mechanicId: 'heavy_strike', apCost: 3, baseEffectValue: 20, mechanicName: 'Heavy Strike' })
+      const preview = getUpgradePreview(card)
+
+      expect(preview).not.toBeNull()
+      expect(preview!.currentApCost).toBe(3)
+      expect(preview!.newApCost).toBe(2)
+    })
+
+    it('preview does not include AP change for value-only upgrades', () => {
+      const card = makeCard({ mechanicId: 'strike', apCost: 1, baseEffectValue: 8, mechanicName: 'Strike' })
+      const preview = getUpgradePreview(card)
+
+      expect(preview).not.toBeNull()
+      expect(preview!.currentApCost).toBeUndefined()
+      expect(preview!.newApCost).toBeUndefined()
+    })
+
+    it('quicken upgrade adds draw tag but no AP change (already 0)', () => {
+      const card = makeCard({ mechanicId: 'quicken', apCost: 0, baseEffectValue: 1, mechanicName: 'Quicken' })
+      upgradeCard(card)
+
+      expect(card.isUpgraded).toBe(true)
+      expect(card.apCost).toBe(0) // stays at 0
+    })
+
+    it('both apCostDelta and value changes apply for thorns', () => {
+      const card = makeCard({ mechanicId: 'thorns', apCost: 2, baseEffectValue: 6, secondaryValue: 2, mechanicName: 'Thorns' })
+      const preview = getUpgradePreview(card)
+
+      expect(preview!.currentApCost).toBe(2)
+      expect(preview!.newApCost).toBe(1)
+      expect(preview!.secondaryDelta).toBe(1)
+      expect(preview!.currentBaseValue).toBe(6)
+      expect(preview!.newBaseValue).toBe(6) // baseValueDelta: 0
     })
   })
 })

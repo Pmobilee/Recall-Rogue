@@ -243,6 +243,24 @@ These systems transfer from the mining codebase with minimal changes:
 | Upgrade picker UI | `src/ui/components/UpgradeSelectionOverlay.svelte` | Built — 3 candidates with before/after preview, sorted by tier |
 | Post-mini-boss rest screen | `src/ui/components/PostMiniBossRestOverlay.svelte` | Built — auto-heal 15% + upgrade selection |
 
+#### Variable AP Costs (P0.6.5)
+
+Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates meaningful resource allocation decisions.
+
+**Data Layer Changes:**
+- `src/data/card-types.ts` — Card interface extended with `apCost: number` and `MechanicUpgrade` interface extended with `apCostDelta?: number` for AP reduction upgrades
+- `src/data/balance.ts` — UPGRADE_DEFS extended with `apCostDelta` field for Heavy Strike and other 2-3 AP cards
+
+**Service Layer:**
+- `src/services/cardUpgradeService.ts` — `upgradeCard()` applies AP cost reduction via `Math.max(0, card.apCost + apCostDelta)`; `getUpgradePreview()` includes `currentApCost` and `newApCost` fields
+- `src/services/turnManager.ts` — `hasPlayableCards` no longer guarded by `apCurrent > 0` check; 0-AP cards (like Quicken) are always playable
+- `src/services/turnManager.ts` — `playCard()` now subtracts variable AP: `apCurrent -= Math.max(0, card.apCost)`
+
+**UI Layer:**
+- `src/ui/components/CardHand.svelte` — AP cost badges now show green for 0 AP, blue for 1 AP, orange for 2 AP, red for 3 AP; applied per-card via `getApBadgeColor()` utility
+- `src/ui/components/CardCombatOverlay.svelte` — AP cost preview updated in card info overlay, shows cost in addition to effect description
+- `src/ui/components/UpgradeSelectionOverlay.svelte` — Upgrade preview cards show current and new AP cost side-by-side
+
 #### Modified Files (P0.6)
 
 **Data Layer:**

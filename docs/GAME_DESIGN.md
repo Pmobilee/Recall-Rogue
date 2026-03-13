@@ -109,11 +109,35 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 
 ### Action Points (Turn Economy)
 
-**3 AP per turn. Each commit costs 1 AP. Skip is free.**
+**3 AP per turn. Cards cost 0, 1, 2, or 3 AP. Skip is free.**
 
 Why 3/5: STS gives 3 energy with 5 cards. Balatro gives 4 plays with 8 cards. Ratio must be <1 for meaningful choice.
 
 AP scaling: Base 3, hard cap 4 (only via specific passives or rare events).
+
+#### Variable AP Costs
+
+Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates resource allocation tension — "one big play or two small plays?" decisions.
+
+**AP Cost Distribution (base, pre-upgrade):**
+- **0 AP:** Quicken (free AP gain). When activated, grants +1 AP this turn.
+- **1 AP:** Most cards (Strike, Block, Emergency, Scout, Recycle, Cleanse, Empower, Weaken, Expose, Mirror, Adapt, Piercing, Reckless, Execute, Parry, Brace, Focus, Hex, Foresight, Transmute, Immunity)
+- **2 AP:** Multi-Hit, Thorns, Lifetap, Fortify, Overheal, Double Strike, Slow, Overclock
+- **3 AP:** Heavy Strike (consumes entire turn for 20 damage)
+
+**AP Cost as Upgrade Axis:**
+Many 2-3 AP cards can have their AP cost reduced by 1 via upgrade, creating meaningful upgrade decisions. Example: upgrade Heavy Strike from 3→2 AP (transformative resource unlock) vs upgrade Strike for +3 damage (incremental). This makes upgrades more interesting — not just about power creep, but about opening new strategic possibilities.
+
+**Upgraded AP distribution:**
+- 0 AP: 7 cards (Scout+, Recycle+, Cleanse+, Foresight+, Immunity+, plus base Quicken)
+- 1 AP: 16 cards (most upgrades keep 1 AP)
+- 2 AP: 1 card (Heavy Strike+, reduced from 3→2)
+
+**AP Badge Colors:**
+- Green (#059669): 0 AP (free)
+- Blue (#1e40af): 1 AP (standard)
+- Orange (#d97706): 2 AP (heavy)
+- Red (#dc2626): 3 AP (full turn)
 
 ### Dynamic Timer System
 
@@ -856,6 +880,12 @@ Cards can be upgraded at rest sites and post-mini-boss encounters, gaining a "+"
 | emergency | 4 burst | 6 burst | +2 |
 | mirror | 1.0x | 1.25x | +0.25 |
 | adapt | 1.0x | 1.25x | +0.25 |
+| heavy_strike | 3 AP, 20 dmg | 2 AP, 20 dmg | AP cost -1 |
+
+**Upgrade Axes:**
+Upgrades fall into two categories:
+1. **Value boosts** — increased damage, healing, duration, or card draws (e.g., Strike 8→11 dmg)
+2. **AP cost reduction** — reduced AP cost for 2-3 AP cards (e.g., Heavy Strike 3 AP→2 AP). This creates more interesting upgrade decisions: "Do I want more damage on my standard cards, or unlock a resource-efficient heavy hitter?"
 
 **Visual Indicator:** Upgraded cards display a subtle blue glow border in the hand.
 

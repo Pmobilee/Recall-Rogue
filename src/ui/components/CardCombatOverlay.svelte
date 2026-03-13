@@ -122,6 +122,8 @@
   )
   let apCurrent = $derived(turnState?.apCurrent ?? 0)
   let apMax = $derived(turnState?.apMax ?? 0)
+  let drawPileCount = $derived(turnState?.deck.drawPile.length ?? 0)
+  let discardPileCount = $derived(turnState?.deck.discardPile.length ?? 0)
 
   const run = $derived($activeRunState)
   const expertModeActive = $derived(
@@ -141,6 +143,16 @@
   let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
 
   let intentPopupOpen = $state(false)
+
+  function pileTooltip(label: string, cards: Card[], fromTop = true): string {
+    if (cards.length === 0) return `${label}: empty`
+    const ordered = fromTop ? [...cards].reverse() : cards
+    const preview = ordered
+      .slice(0, 3)
+      .map((card) => card.mechanicName ?? card.cardType)
+      .join(', ')
+    return `${label}: ${cards.length} cards\n${fromTop ? 'Top' : 'Newest'}: ${preview}`
+  }
 
   const CATEGORY_COLORS: Record<string, string> = {
     common: '#9ca3af',
@@ -217,6 +229,16 @@
     }
     if (enemyIntent.type === 'defend') {
       return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
+    }
+    if (enemyIntent.type === 'buff') {
+      const effectName = enemyIntent.statusEffect?.type ?? 'strength'
+      const effectLabel = effectName.charAt(0).toUpperCase() + effectName.slice(1)
+      return { icon, text: effectLabel, type: enemyIntent.type, label, color, borderColor, telegraph }
+    }
+    if (enemyIntent.type === 'debuff') {
+      const effectName = enemyIntent.statusEffect?.type ?? 'weakness'
+      const effectLabel = effectName.charAt(0).toUpperCase() + effectName.slice(1)
+      return { icon, text: effectLabel, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
   })
@@ -945,6 +967,17 @@
       <span class="ap-number">{apCurrent}</span>
     </div>
 
+    <div class="deck-pile-strip" aria-label="Draw and discard piles">
+      <button class="pile-chip draw-chip" type="button" title={pileTooltip('Draw pile', turnState.deck.drawPile, true)} aria-label="Draw pile: {drawPileCount}">
+        <span class="pile-label">DRAW</span>
+        <span class="pile-count">{drawPileCount}</span>
+      </button>
+      <button class="pile-chip discard-chip" type="button" title={pileTooltip('Discard pile', turnState.deck.discardPile, true)} aria-label="Discard pile: {discardPileCount}">
+        <span class="pile-label">DISCARD</span>
+        <span class="pile-count">{discardPileCount}</span>
+      </button>
+    </div>
+
     {#if activeBounties.length > 0}
       <div class="bounty-strip" aria-label="Bounty progress">
         {#each activeBounties.slice(0, 2) as bounty (bounty.id)}
@@ -976,17 +1009,25 @@
         {#if intentPopupOpen && enemyIntent}
           <div class="intent-bubble-detail">
             {#if enemyIntent.type === 'attack'}
-              <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> dmg</p>
+              <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> damage</p>
             {:else if enemyIntent.type === 'multi_attack'}
-              <p><strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong>x <strong class="popup-val-attack">{enemyIntent.value}</strong> dmg</p>
+              <p>Hits <strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong> times for <strong class="popup-val-attack">{enemyIntent.value}</strong> each</p>
             {:else if enemyIntent.type === 'defend'}
-              <p>+<strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
+              <p>Gains <strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
             {:else if enemyIntent.type === 'buff'}
-              <p>Buff</p>
+              {#if enemyIntent.statusEffect}
+                <p>Gains <strong class="popup-val-buff">{enemyIntent.statusEffect.value}</strong> {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
+              {:else}
+                <p>+<strong class="popup-val-buff">{enemyIntent.value}</strong> strength</p>
+              {/if}
             {:else if enemyIntent.type === 'debuff'}
-              <p>Debuff</p>
+              {#if enemyIntent.statusEffect}
+                <p>Applies <strong class="popup-val-debuff">{enemyIntent.statusEffect.value}</strong> {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
+              {:else}
+                <p>Applies <strong class="popup-val-debuff">{enemyIntent.value}</strong> weakness</p>
+              {/if}
             {:else if enemyIntent.type === 'heal'}
-              <p>+<strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
+              <p>Heals <strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
             {/if}
           </div>
         {/if}
@@ -1145,7 +1186,7 @@
 
   .ap-orb {
     position: absolute;
-    left: 16px;
+    left: 40px;
     top: calc(10px + var(--safe-top));
     z-index: 8;
     width: 44px;
@@ -1238,14 +1279,61 @@
     color: #facc15;
   }
 
+  .deck-pile-strip {
+    position: absolute;
+    left: 8px;
+    bottom: 68px;
+    display: grid;
+    gap: 6px;
+    z-index: 8;
+  }
+
+  .pile-chip {
+    min-width: 88px;
+    border: 1px solid rgba(99, 102, 241, 0.45);
+    border-radius: 9px;
+    background: rgba(10, 18, 30, 0.8);
+    color: #e2e8f0;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: inherit;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .draw-chip {
+    border-color: rgba(59, 130, 246, 0.55);
+  }
+
+  .discard-chip {
+    border-color: rgba(236, 72, 153, 0.55);
+  }
+
+  .pile-label {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+  }
+
+  .pile-count {
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: #f8fafc;
+  }
+
   .enemy-intent-bubble {
     position: fixed;
-    top: calc(16% + var(--safe-top));
-    right: 65%;
+    top: calc((58vh * 0.12) - 20px + var(--safe-top));
+    left: max(8px, calc(50vw - 236px));
     z-index: 12;
-    border: 1.5px solid;
-    border-radius: 12px;
-    padding: 6px 10px;
+    border: 2px solid;
+    border-radius: 14px;
+    padding: 10px 14px;
     backdrop-filter: blur(8px);
     cursor: pointer;
     display: flex;
@@ -1257,7 +1345,7 @@
     outline: none;
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.2s ease;
-    transform-origin: bottom right;
+    transform-origin: top left;
   }
 
   .enemy-intent-bubble:active {
@@ -1265,14 +1353,14 @@
   }
 
   .enemy-intent-bubble.intent-expanded {
-    transform: scale(1.3);
-    padding: 8px 14px;
+    transform: scale(1.18);
+    padding: 12px 16px;
   }
 
   .intent-bubble-summary {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 7px;
   }
 
   .intent-bubble-detail {
@@ -1288,20 +1376,20 @@
 
   .intent-bubble-tail {
     position: absolute;
-    bottom: -6px;
-    right: 8px;
+    top: -6px;
+    left: 8px;
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid;
-    border-top-color: inherit;
+    border-bottom: 6px solid;
+    border-bottom-color: inherit;
     opacity: 0.7;
   }
 
   .intent-icon-img {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2em;
+    height: 2em;
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -1313,12 +1401,12 @@
   }
 
   .intent-value {
-    font-size: 16px;
+    font-size: 19px;
     font-weight: 800;
     color: #e2e8f0;
-    min-width: 24px;
+    min-width: 32px;
     text-align: center;
-    padding: 1px 6px;
+    padding: 2px 8px;
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.3);
   }
@@ -1353,6 +1441,14 @@
 
   .popup-val-heal {
     color: #22c55e;
+  }
+
+  .popup-val-buff {
+    color: #eab308;
+  }
+
+  .popup-val-debuff {
+    color: #a855f7;
   }
 
   .intent-enemy-name {

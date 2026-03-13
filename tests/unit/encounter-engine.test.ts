@@ -930,14 +930,14 @@ describe('Card Effect Resolver', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0, 'shield');
       expect(result.effectType).toBe('shield');
-      expect(result.shieldApplied).toBe(8);
+      expect(result.shieldApplied).toBe(6);
     });
 
     it('wild defaults to attack when no lastCardType', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 0, 1.0, 0);
       expect(result.effectType).toBe('attack');
-      expect(result.damageDealt).toBe(10);
+      expect(result.damageDealt).toBe(9);
     });
 
     it('blocked card returns targetHit=false', () => {
@@ -977,8 +977,8 @@ describe('Card Effect Resolver', () => {
       });
       // 8 * 1.3 (tier2a) * 1.3 (effectMult) = 13.52 raw
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 2, 1.5, 50);
-      // Raw = 8 * 1.3 * 1.3 = 13.52; Final = 13.52 * 1.25 (combo) * 1.5 (speed) * 1.5 (buff)
-      const expected = Math.round(8 * 1.3 * 1.3 * 1.25 * 1.5 * 1.5);
+      // Raw = 8 * 1.3 * 1.3 = 13.52; Final = 13.52 * 1.30 (combo) * 1.5 (speed) * 1.5 (buff)
+      const expected = Math.round(8 * 1.3 * 1.3 * 1.30 * 1.5 * 1.5);
       expect(result.damageDealt).toBe(expected);
     });
   });

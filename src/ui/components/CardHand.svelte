@@ -6,6 +6,7 @@
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getDetailedCardDescription } from '../../services/cardDescriptionService'
+  import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
 
   interface Props {
     cards: Card[]
@@ -38,15 +39,6 @@
     onselectcard,
     oncastdirect,
   }: Props = $props()
-
-  const TYPE_ICONS: Record<CardType, string> = {
-    attack: '⚔',
-    shield: '🛡',
-    utility: '⭐',
-    buff: '⬆',
-    debuff: '⬇',
-    wild: '💎',
-  }
 
   interface TierUpVisualSignature {
     hue: number
@@ -111,6 +103,16 @@
     return Math.round(card.baseEffectValue * card.effectMultiplier * comboMultiplier)
   }
 
+  function shouldShowFrontValue(card: Card): boolean {
+    if (card.cardType === 'attack' || card.cardType === 'shield') return true
+    const mechanicId = (card.mechanicId ?? '').toLowerCase()
+    const mechanicName = (card.mechanicName ?? '').toLowerCase()
+    return mechanicId.includes('heal')
+      || mechanicId.includes('regen')
+      || mechanicName.includes('heal')
+      || mechanicName.includes('regen')
+  }
+
   function isBoosted(): boolean {
     return comboMultiplier > 1
   }
@@ -129,6 +131,14 @@
   }
 
   let hoveredIndex = $state<number | null>(null)
+  let typeIconAttemptIndex = $state<Record<CardType, number>>({
+    attack: 0,
+    shield: 0,
+    utility: 0,
+    buff: 0,
+    debuff: 0,
+    wild: 0,
+  })
 
   let dragState = $state<{
     cardIndex: number
@@ -288,6 +298,22 @@
     clearDragFrame()
     dragState = null
   }
+
+  function getCardTypeIconSrc(type: CardType): string | null {
+    const options = getCardTypeIconCandidates(type)
+    const index = typeIconAttemptIndex[type] ?? 0
+    return options[index] ?? null
+  }
+
+  function markTypeIconFailed(type: CardType): void {
+    const options = getCardTypeIconCandidates(type)
+    const current = typeIconAttemptIndex[type] ?? 0
+    if (current >= options.length) return
+    typeIconAttemptIndex = {
+      ...typeIconAttemptIndex,
+      [type]: current + 1,
+    }
+  }
 </script>
 
 <div class="card-hand-container" role="group" aria-label="Card hand">
@@ -298,8 +324,9 @@
     {@const arcOffset = getArcOffset(i, cards.length)}
     {@const xOffset = getXOffset(i, cards.length)}
     {@const domainColor = getDomainColor(card.domain)}
-    {@const icon = TYPE_ICONS[card.cardType]}
     {@const effectVal = getEffectValue(card)}
+    {@const showFrontValue = shouldShowFrontValue(card)}
+    {@const iconSrc = getCardTypeIconSrc(card.cardType)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
     {@const apCost = Math.max(1, card.apCost ?? 1)}
@@ -361,10 +388,24 @@
           {#if cardbackUrl}
             <img class="card-front-bg" src={cardbackUrl} alt="" />
           {/if}
-          <div class="ap-badge">{apCost}</div>
+          <div class="ap-badge" class:ap-free={apCost === 0} class:ap-heavy={apCost === 2} class:ap-full-turn={apCost >= 3}>{apCost}</div>
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
-          <div class="card-type-icon">{icon}</div>
-          <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
+          <div class="card-type-icon">
+            {#if iconSrc}
+              <img
+                class="card-type-icon-img"
+                src={iconSrc}
+                alt=""
+                onerror={() => markTypeIconFailed(card.cardType)}
+              />
+            {:else}
+              <span class="card-type-icon-fallback">{getCardTypeEmoji(card.cardType)}</span>
+            {/if}
+          </div>
+          <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
+          {#if showFrontValue}
+            <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
+          {/if}
 
           {#if tierBadge}
             <div class="card-tier-badge">{tierBadge}</div>
@@ -424,6 +465,8 @@
     {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const domainColor = getDomainColor(card.domain)}
     {@const effectVal = getEffectValue(card)}
+    {@const showFrontValue = shouldShowFrontValue(card)}
+    {@const iconSrc = getCardTypeIconSrc(card.cardType)}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
@@ -446,8 +489,22 @@
             <img class="card-front-bg" src={cardbackUrl} alt="" />
           {/if}
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
-          <div class="card-type-icon">{TYPE_ICONS[card.cardType]}</div>
-          <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
+          <div class="card-type-icon">
+            {#if iconSrc}
+              <img
+                class="card-type-icon-img"
+                src={iconSrc}
+                alt=""
+                onerror={() => markTypeIconFailed(card.cardType)}
+              />
+            {:else}
+              <span class="card-type-icon-fallback">{getCardTypeEmoji(card.cardType)}</span>
+            {/if}
+          </div>
+          <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
+          {#if showFrontValue}
+            <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
+          {/if}
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -509,7 +566,7 @@
     align-items: center;
     padding: 0;
     overflow: visible;
-    transition: transform 0.15s ease-out, opacity 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
     animation: card-fan-in 300ms ease-out both;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;
@@ -611,19 +668,21 @@
     padding: 0;
     overflow: hidden;
     position: relative;
+    justify-content: flex-start;
   }
 
   .card-front-bg {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    inset: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    object-fit: contain;
+    object-position: center center;
     border-radius: 6px;
-    opacity: 0.25;
+    opacity: 0.42;
     z-index: 0;
     pointer-events: none;
-    filter: brightness(0.7) saturate(0.8);
+    filter: brightness(0.82) saturate(0.95);
   }
 
   .card-back {
@@ -636,8 +695,10 @@
   .cardback-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center center;
     border-radius: 6px;
+    background: #0b1220;
   }
 
   /* Reveal phase: card centers and enlarges */
@@ -672,20 +733,59 @@
   }
 
   .card-type-icon {
-    font-size: calc(var(--card-w) * 0.25);
-    margin-top: 0.3em;
+    width: calc(var(--card-w) * 0.24);
+    height: calc(var(--card-w) * 0.24);
+    margin-top: 0.35em;
     line-height: 1;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-type-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .card-type-icon-fallback {
+    font-size: calc(var(--card-w) * 0.22);
+  }
+
+  .card-front-name {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 28%;
+    z-index: 1;
+    text-align: center;
+    font-size: calc(var(--card-w) * 0.11);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #f8fafc;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    line-height: 1.2;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .card-effect-value {
-    font-size: calc(var(--card-w) * 0.32);
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    font-size: calc(var(--card-w) * 0.30);
     font-weight: 700;
-    margin-top: 0.15em;
     line-height: 1;
-    position: relative;
     z-index: 1;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
   }
 
   .card-effect-value.boosted {
@@ -709,6 +809,21 @@
     justify-content: center;
     border: 1.5px solid #3b82f6;
     z-index: 2;
+  }
+
+  .ap-badge.ap-free {
+    background: #059669;
+    border-color: #10b981;
+  }
+
+  .ap-badge.ap-heavy {
+    background: #d97706;
+    border-color: #f59e0b;
+  }
+
+  .ap-badge.ap-full-turn {
+    background: #dc2626;
+    border-color: #ef4444;
   }
 
   .card-tier-badge {

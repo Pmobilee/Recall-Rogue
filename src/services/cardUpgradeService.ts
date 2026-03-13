@@ -16,26 +16,45 @@ export interface MechanicUpgrade {
   secondaryValueDelta?: number;
   /** Optional new tag granted on upgrade (e.g., quicken+ adds 'draw'). */
   addTag?: string;
+  /** AP cost change on upgrade. Negative = cheaper. */
+  apCostDelta?: number;
 }
 
-/** Upgrade definitions for each Phase 1 mechanic. */
+/** Upgrade definitions for each Phase 1 and Phase 2 mechanic. */
 export const UPGRADE_DEFS: Record<string, MechanicUpgrade> = {
-  strike:    { baseValueDelta: 3 },                           // 8 → 11 dmg
-  multi_hit: { baseValueDelta: 0, secondaryValueDelta: 1 },   // 3 hits → 4 hits
-  block:     { baseValueDelta: 2 },                           // 6 → 8 block
-  thorns:    { baseValueDelta: 1, secondaryValueDelta: 1 },   // 4+2 → 5+3
-  restore:   { baseValueDelta: 3 },                           // 8 → 11 heal
-  cleanse:   { baseValueDelta: 2 },                           // 6 → 8 heal
-  empower:   { baseValueDelta: 10 },                          // 30% → 40%
-  quicken:   { baseValueDelta: 0, addTag: 'draw' },           // +1 AP → +1 AP + draw 1
-  weaken:    { baseValueDelta: 1 },                           // 2 → 3 turns
-  expose:    { baseValueDelta: 1 },                           // 1 → 2 turns
-  scout:     { baseValueDelta: 1 },                           // draw 1 → draw 2
-  recycle:   { baseValueDelta: 1 },                           // cycle 1 → cycle 1 + draw 1
-  sustained: { baseValueDelta: 1 },                           // 3 → 4 regen
-  emergency: { baseValueDelta: 2 },                           // 4 → 6 burst
-  mirror:    { baseValueDelta: 0.25 },                        // 1.0 → 1.25 multiplier
-  adapt:     { baseValueDelta: 0.25 },                        // 1.0 → 1.25 multiplier
+  // Phase 1
+  strike:    { baseValueDelta: 3 },                                    // 8→11
+  multi_hit: { baseValueDelta: 0, apCostDelta: -1 },                  // AP 2→1
+  block:     { baseValueDelta: 3 },                                    // 6→9
+  thorns:    { baseValueDelta: 0, secondaryValueDelta: 1, apCostDelta: -1 }, // AP 2→1, reflect +1
+  emergency: { baseValueDelta: 2 },                                    // 4→6
+  scout:     { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
+  recycle:   { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
+  cleanse:   { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
+  empower:   { baseValueDelta: 15 },                                   // 30→45%
+  quicken:   { baseValueDelta: 0, addTag: 'draw' },                   // +draw (stays 0 AP)
+  weaken:    { baseValueDelta: 1 },                                    // 2→3 turns
+  expose:    { baseValueDelta: 1 },                                    // 1→2 turns
+  mirror:    { baseValueDelta: 0.25 },                                 // 1.0→1.25x
+  adapt:     { baseValueDelta: 0.25 },                                 // 1.0→1.25x
+  // Phase 2
+  heavy_strike:  { baseValueDelta: 0, apCostDelta: -1 },              // AP 3→2
+  piercing:      { baseValueDelta: 3 },                                // 6→9
+  reckless:      { baseValueDelta: 3 },                                // 12→15
+  execute:       { baseValueDelta: 0, secondaryValueDelta: 4 },       // bonus 8→12
+  lifetap:       { baseValueDelta: 1, apCostDelta: -1 },              // AP 2→1, 8→9
+  fortify:       { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  parry:         { baseValueDelta: 2 },                                // 3→5
+  brace:         { baseValueDelta: 3 },                                // +3 flat bonus
+  overheal:      { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  double_strike: { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  focus:         { baseValueDelta: 20 },                               // 130→150 (1.3x→1.5x)
+  slow:          { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  hex:           { baseValueDelta: 1 },                                // 3→4/turn
+  foresight:     { baseValueDelta: 0, apCostDelta: -1 },              // AP 1→0
+  transmute:     { baseValueDelta: 1 },                                // transform 1→2
+  immunity:      { baseValueDelta: 0, apCostDelta: -1 },              // AP 1→0
+  overclock:     { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
 };
 
 /**
@@ -67,6 +86,11 @@ export function upgradeCard(card: Card): Card {
     card.secondaryValue = currentSecondary + upgrade.secondaryValueDelta;
   }
 
+  // Apply AP cost delta if present
+  if (upgrade.apCostDelta != null) {
+    card.apCost = Math.max(0, (card.apCost ?? 1) + upgrade.apCostDelta);
+  }
+
   card.mechanicName = (card.mechanicName ?? '') + '+';
   card.isUpgraded = true;
   return card;
@@ -79,6 +103,8 @@ export interface UpgradePreview {
   newBaseValue: number;
   secondaryDelta?: number;
   addTag?: string;
+  currentApCost?: number;
+  newApCost?: number;
 }
 
 /**
@@ -88,13 +114,20 @@ export function getUpgradePreview(card: Card): UpgradePreview | null {
   const upgrade = UPGRADE_DEFS[card.mechanicId ?? ''];
   if (!upgrade) return null;
 
-  return {
+  const preview: UpgradePreview = {
     upgradedName: (card.mechanicName ?? '') + '+',
     currentBaseValue: card.baseEffectValue,
     newBaseValue: card.baseEffectValue + upgrade.baseValueDelta,
     secondaryDelta: upgrade.secondaryValueDelta,
     addTag: upgrade.addTag,
   };
+
+  if (upgrade.apCostDelta != null) {
+    preview.currentApCost = card.apCost ?? 1;
+    preview.newApCost = Math.max(0, (card.apCost ?? 1) + upgrade.apCostDelta);
+  }
+
+  return preview;
 }
 
 /** Tier priority for sorting upgrade candidates (higher tier = more desirable). */
