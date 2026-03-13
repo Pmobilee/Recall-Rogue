@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Distractor Gen"
+  short_description: "GPT-5.2 distractor generation for facts DB"
+  default_prompt: "Use $llm-distractor-gen to generate and apply high-quality distractors for flagged facts in public/facts.db."

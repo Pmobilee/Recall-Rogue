@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-03-12T17:18:44.779Z",
+  "command": "vague-vocab",
+  "dbPath": "public/facts.db",
+  "model": "gpt-5.2",
+  "status": "approved",
+  "limit": 1,
+  "offset": 0,
+  "concurrency": 1,
+  "counts": {
+    "selected": 1,
+    "fixed": 1,
+    "failed": 0
+  },
+  "sampleFailures": []
+}

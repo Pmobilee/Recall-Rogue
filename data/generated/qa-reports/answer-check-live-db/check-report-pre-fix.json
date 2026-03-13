@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T17:10:53.662Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.2-quality-audit",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 50000,
+  "offset": 0,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 46780,
+    "flagged": 6402,
+    "clear": 40378,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "A-103-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "H1-4-gene-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q256200-charlier-museum-1844",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q2883612-baolun-ge",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q2919923-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q2937495-capitolium-vetus",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3057828-antique-stairs",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3074203-temple-trajan-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3142437-temple-apollo-patroos",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773335452791,
+      "checkedBy": "gpt-5.2-quality-audit"
+    }
+  ]
+}

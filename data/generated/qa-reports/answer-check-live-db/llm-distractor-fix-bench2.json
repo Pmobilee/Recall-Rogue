@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-03-12T17:23:00.483Z",
+  "command": "distractors",
+  "dbPath": "public/facts.db",
+  "model": "gpt-5.2",
+  "status": "approved",
+  "limit": 80,
+  "offset": 40,
+  "concurrency": 60,
+  "strictGlobal": true,
+  "counts": {
+    "selected": 80,
+    "attempted": 80,
+    "fixed": 79,
+    "failed": 1,
+    "strictRelaxed": 9
+  },
+  "sampleFailures": [
+    {
+      "ok": false,
+      "id": "animal-brant-goose-eelgrass-236",
+      "reason": "insufficient distractors (0)"
+    }
+  ]
+}

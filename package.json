@@ -49,6 +49,8 @@
     "content:qa:gameplay": "node scripts/content-pipeline/qa/gameplay-safety-check.mjs",
     "content:qa:answer-check:workers": "node scripts/content-pipeline/qa/answer-check-worker-batches.mjs",
     "content:qa:answer-check:db": "node scripts/content-pipeline/qa/answer-check-live-db.mjs",
+    "content:qa:fix:llm": "node scripts/content-pipeline/qa/llm-fact-quality-fix.mjs run-all",
+    "content:qa:fix:llm:distractors": "node scripts/content-pipeline/qa/llm-fact-quality-fix.mjs distractors",
     "content:qa:id-gate": "node scripts/content-pipeline/qa/id-collision-gate.mjs --strict",
     "content:qa:gate": "node scripts/content-pipeline/qa/post-ingestion-gate.mjs",
     "content:coverage:gate": "node scripts/content-pipeline/qa/coverage-gate.mjs",

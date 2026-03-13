@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-03-12T17:24:35.519Z",
+  "command": "distractors",
+  "dbPath": "public/facts.db",
+  "model": "gpt-5.2",
+  "status": "approved",
+  "limit": 120,
+  "offset": 120,
+  "concurrency": 120,
+  "strictGlobal": true,
+  "counts": {
+    "selected": 120,
+    "attempted": 120,
+    "fixed": 120,
+    "failed": 0,
+    "strictRelaxed": 3
+  },
+  "sampleFailures": []
+}

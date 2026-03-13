@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T17:23:09.789Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.2-quality-audit",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 50000,
+  "offset": 0,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 46780,
+    "flagged": 6285,
+    "clear": 40495,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "Q3391358-gk-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983183-tempio-evangelico",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983190-voghera-landmark",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983204-fortuna-augusta",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983205-fortuna-muliebris",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983226-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983227-athena-temple",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983230-athena-alea-tegea",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q3983231-temple-athena-pergamum",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    },
+    {
+      "id": "Q518350-copper-alloy-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336188928,
+      "checkedBy": "gpt-5.2-quality-audit"
+    }
+  ]
+}

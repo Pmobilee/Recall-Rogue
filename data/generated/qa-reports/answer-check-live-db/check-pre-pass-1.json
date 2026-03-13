@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-03-12T17:32:20.599Z",
+  "command": "check",
+  "dbPath": "public/facts.db",
+  "checker": "gpt-5.2-fix-1-pre-pass-1",
+  "dryRun": false,
+  "fromInput": null,
+  "reviewedFile": null,
+  "status": "approved",
+  "limit": 50000,
+  "offset": 0,
+  "requiredTags": [],
+  "tagMode": "any",
+  "counts": {
+    "scanned": 46780,
+    "flagged": 6397,
+    "clear": 40383,
+    "reviewedOverrides": 0
+  },
+  "sampleFlagged": [
+    {
+      "id": "Q2919923-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q2937495-capitolium-vetus",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3057828-antique-stairs",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3074203-temple-trajan-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3142437-temple-apollo-patroos",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3218064-nanhua",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3309400-temple-jupiter-pompeii",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3391358-gk-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3412256-pudicitia",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    },
+    {
+      "id": "Q3465347-001",
+      "issue": "no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773336739361,
+      "checkedBy": "gpt-5.2-fix-1-pre-pass-1"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-03-12T17:21:27.687Z",
+  "command": "distractors",
+  "dbPath": "public/facts.db",
+  "model": "gpt-5.2",
+  "status": "approved",
+  "limit": 40,
+  "offset": 0,
+  "concurrency": 20,
+  "strictGlobal": true,
+  "counts": {
+    "selected": 40,
+    "attempted": 40,
+    "fixed": 39,
+    "failed": 1,
+    "strictRelaxed": 9
+  },
+  "sampleFailures": [
+    {
+      "ok": false,
+      "id": "Q3391358-gk-001",
+      "reason": "insufficient distractors (0)"
+    }
+  ]
+}

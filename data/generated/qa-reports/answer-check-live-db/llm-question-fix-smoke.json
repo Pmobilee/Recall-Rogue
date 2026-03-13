@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-03-12T17:19:03.582Z",
+  "command": "rewrite-questions",
+  "dbPath": "public/facts.db",
+  "model": "gpt-5.2",
+  "status": "approved",
+  "limit": 1,
+  "offset": 0,
+  "concurrency": 1,
+  "minLength": 20,
+  "counts": {
+    "selected": 1,
+    "fixed": 1,
+    "failed": 0
+  },
+  "sampleFailures": []
+}
