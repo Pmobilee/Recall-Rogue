@@ -14,6 +14,43 @@ const REPORTS_DIR = path.join(__dirname, 'reports');
 const LOGS_DIR = path.join(__dirname, 'logs');
 const OUTPUT_PATH = path.join(__dirname, 'leaderboard.json');
 
+function parseArgs(argv) {
+  const args = {
+    reportListPath: null,
+    outputPath: OUTPUT_PATH,
+    campaignId: null,
+    runCount: null,
+    headlessCount: null,
+    visualCount: null,
+  };
+
+  for (let i = 2; i < argv.length; i++) {
+    const arg = argv[i];
+    const next = argv[i + 1];
+    if (arg === '--report-list' && next) {
+      args.reportListPath = next;
+      i++;
+    } else if (arg === '--output' && next) {
+      args.outputPath = next;
+      i++;
+    } else if (arg === '--campaign-id' && next) {
+      args.campaignId = next;
+      i++;
+    } else if (arg === '--run-count' && next) {
+      args.runCount = Number(next);
+      i++;
+    } else if (arg === '--headless-count' && next) {
+      args.headlessCount = Number(next);
+      i++;
+    } else if (arg === '--visual-count' && next) {
+      args.visualCount = Number(next);
+      i++;
+    }
+  }
+
+  return args;
+}
+
 // ── Floor bucket helpers ──────────────────────────────────────────
 function floorToBucket(floor) {
   if (floor == null) return 'global';
@@ -154,14 +191,24 @@ function loadLogMetadata() {
 
 // ── Main ──────────────────────────────────────────────────────────
 function main() {
+  const cli = parseArgs(process.argv);
+
   // 0. Load log metadata (settings, summaries) keyed by playthroughId
   const logMeta = loadLogMetadata();
   console.log(`Loaded metadata for ${logMeta.size} log files`);
 
   // 1. Read all report files
-  const files = fs.readdirSync(REPORTS_DIR)
-    .filter(f => f.endsWith('.json'))
-    .sort();
+  let files = fs.readdirSync(REPORTS_DIR)
+    .filter(f => f.endsWith('.json'));
+  if (cli.reportListPath) {
+    const selected = fs.readFileSync(cli.reportListPath, 'utf8')
+      .split(/\r?\n/)
+      .map(s => s.trim())
+      .filter(Boolean);
+    const set = new Set(selected);
+    files = files.filter(f => set.has(f));
+  }
+  files.sort();
 
   console.log(`Found ${files.length} report files`);
 
@@ -254,8 +301,13 @@ function main() {
         seed: meta ? meta.rngSeed : null,
         difficultyMode: settings.difficultyMode || 'standard',
         archetype: settings.archetype || 'balanced',
+        domain: settings.domain || 'general_knowledge',
         result: summary.result || null,
         floor: summary.finalFloor || null,
+        accuracy: typeof summary.overallAccuracy === 'number'
+          ? Number((summary.overallAccuracy * 100).toFixed(1))
+          : null,
+        maxCombo: typeof summary.maxCombo === 'number' ? summary.maxCombo : null,
       });
     }
 
@@ -267,6 +319,8 @@ function main() {
       description: pickBestDescription(group.issues),
       frequency,
       affectedProfiles: profiles,
+      // Backward-compat key used by older dashboard clients.
+      profiles,
       affectedSettings: {
         difficultyModes: [...settingsModes].sort(),
         archetypes: [...settingsArchetypes].sort(),
@@ -301,11 +355,16 @@ function main() {
     updatedAt: new Date().toISOString(),
     totalPlaythroughs: reports.length,
     totalIssues: leaderboardIssues.length,
+    campaignId: cli.campaignId || undefined,
+    runCount: Number.isFinite(cli.runCount) ? cli.runCount : undefined,
+    headlessCount: Number.isFinite(cli.headlessCount) ? cli.headlessCount : undefined,
+    visualCount: Number.isFinite(cli.visualCount) ? cli.visualCount : undefined,
+    generatedAt: new Date().toISOString(),
     issues: leaderboardIssues,
   };
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(leaderboard, null, 2) + '\n', 'utf8');
-  console.log(`\nLeaderboard written to ${OUTPUT_PATH}`);
+  fs.writeFileSync(cli.outputPath, JSON.stringify(leaderboard, null, 2) + '\n', 'utf8');
+  console.log(`\nLeaderboard written to ${cli.outputPath}`);
   console.log(`  Total playthroughs: ${leaderboard.totalPlaythroughs}`);
   console.log(`  Total deduplicated issues: ${leaderboard.totalIssues}`);
   console.log(`\nTop 10 issues by score:`);

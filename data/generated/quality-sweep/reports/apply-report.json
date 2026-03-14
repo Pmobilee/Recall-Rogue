@@ -1,29 +1,25 @@
 {
-  "generatedAt": "2026-03-13T17:20:14.280Z",
+  "generatedAt": "2026-03-14T08:49:35.995Z",
   "command": "apply",
   "dbPath": "public/facts.db",
   "outputDir": "data/generated/quality-sweep",
   "fixer": "quality-sweep",
   "dryRun": false,
   "counts": {
-    "batchesFound": 319,
-    "batchesProcessed": 319,
-    "applied": 21310,
-    "rejected": 1588,
-    "missing": 378
+    "batchesFound": 581,
+    "batchesProcessed": 581,
+    "applied": 42954,
+    "rejected": 784,
+    "missing": 1397
   },
   "topRejectionReasons": [
     {
-      "reason": "distractors field is not an array",
-      "count": 997
-    },
-    {
       "reason": "1 duplicate distractors",
-      "count": 230
+      "count": 272
     },
     {
       "reason": "at least one distractor matches the correct answer",
-      "count": 63
+      "count": 76
     },
     {
       "reason": "geography l2 protection: cannot change l2 to \"capitals_countries\" from \"americas…",
@@ -46,6 +42,18 @@
       "count": 10
     },
     {
+      "reason": "1 placeholder/garbage distractors: \"sample\"",
+      "count": 10
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"unknown\"",
+      "count": 10
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"unrelated\"",
+      "count": 9
+    },
+    {
       "reason": "geography l2 protection: cannot change l2 to \"capitals_countries\" from \"asia_oce…",
       "count": 7
     },
@@ -54,11 +62,23 @@
       "count": 6
     },
     {
+      "reason": "1 placeholder/garbage distractors: \"alternative\"",
+      "count": 6
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"misleading\"",
+      "count": 6
+    },
+    {
       "reason": "geography l2 protection: cannot change l2 from \"capitals_countries\" to \"europe\"",
       "count": 5
     },
     {
-      "reason": "1 placeholder/garbage distractors: \"sample\"",
+      "reason": "2 duplicate distractors",
+      "count": 5
+    },
+    {
+      "reason": "1 placeholder/garbage distractors: \"invalid\"",
       "count": 5
     },
     {
@@ -66,32 +86,12 @@
       "count": 4
     },
     {
-      "reason": "2 duplicate distractors",
+      "reason": "1 placeholder/garbage distractors: \"Sample\"",
       "count": 3
     },
     {
-      "reason": "1 placeholder/garbage distractors: \"alternative\"",
+      "reason": "1 placeholder/garbage distractors: \"incorrect\"",
       "count": 3
-    },
-    {
-      "reason": "1 placeholder/garbage distractors: \"unknown\"",
-      "count": 3
-    },
-    {
-      "reason": "1 placeholder/garbage distractors: \"invalid\"",
-      "count": 3
-    },
-    {
-      "reason": "answer too short: \"Germany\" vs original \"Museum in Germany\"",
-      "count": 2
-    },
-    {
-      "reason": "answer too short: \"Libya\" vs original \"temple/altar/polytheist building(s) in Li…",
-      "count": 2
-    },
-    {
-      "reason": "answer too short: \"obligation\" vs original \"obligation, liability, reliability\"",
-      "count": 2
     }
   ]
 }

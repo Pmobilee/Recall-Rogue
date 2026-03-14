@@ -39,6 +39,9 @@ Useful dev URL flags:
 | `npm run build` | Audit sprites/assets, build `facts.db`, produce production bundle |
 | `npm run typecheck` | Run `svelte-check` on app sources |
 | `npm run check` | App typecheck + node config typecheck |
+| `npm run playtest:dashboard` | Start the playtest issue dashboard server on port 5175 |
+| `npm run playtest:campaign -- --runs 200 --parallel 5 --campaign-id <id> --seed-base <n>` | Run reproducible playtest campaign (headless+visual) |
+| `npm run playtest:leaderboard:validate` | Validate leaderboard schema and drilldown fields |
 | `npx vitest run` | Run unit tests |
 | `node tests/e2e/01-app-loads.cjs` | Smoke E2E with diagnostics |
 | `npm run analyze` | Build with bundle visualizer (if plugin installed) |
@@ -69,6 +72,8 @@ docs/                Architecture and operational documentation
 - Playwright test runner: `npx playwright test`
 
 See `docs/TESTING-GUIDE.md` for full workflows and selectors.
+
+Playtest dashboard docs: `docs/PLAYTEST-DASHBOARD.md` (`http://localhost:5175/playtest`).
 
 ## Deployment notes
 

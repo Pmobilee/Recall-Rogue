@@ -9,6 +9,15 @@ A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phase
 - **Backend**: Fastify + TypeScript (planned), containerized for portable hosting
 - **Data**: Quiz facts served via API, cached locally for offline play
 
+## Playtest Dashboard
+- Start command (repo root): `npm run playtest:dashboard`
+- URL: `http://localhost:5175/playtest`
+- Backing data: `data/playtests/leaderboard.json`, `data/playtests/logs/`, `data/playtests/reports/`
+- API: `/api/playtest/leaderboard`, `/api/playtest/logs`, `/api/playtest/reports`
+- Details: `docs/PLAYTEST-DASHBOARD.md`
+- Campaign runner: `npm run playtest:campaign -- --runs 200 --parallel 5 --campaign-id <id> --seed-base <n>`
+- Investigation flow: leaderboard entry -> `runBreakdown` context -> `/api/playtest/report/:id` -> `/api/playtest/log/:id`
+
 ## Directory Structure
 ```
 src/game/          — Phaser scenes, entities, game systems

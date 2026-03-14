@@ -18,12 +18,12 @@ A full quality sweep of all 46,780 facts in `public/facts.db`. Every row is run 
 
 ---
 
-## Current Progress (as of 2026-03-14, session 2)
+## Current Progress (as of 2026-03-14, session 3)
 
-- **314/582 batches complete** (54%), wave 1 of session 2 running (10 agents, 171 batches)
-- **21,061 rows applied** to facts.db (45% of all 46,780)
+- **430/582 batches complete** (73.9%), processing in 10-batch waves
+- **27,355 rows applied** to facts.db (58% of all 46,780)
 - **Backup**: `public/facts.db.pre-sweep-backup` (original before any sweep changes)
-- Heuristic flagged rows: started at 15,260, now ~14,499 (remaining flags mostly in unprocessed batches)
+- Heuristic flagged rows: started at 15,260, down proportionally as batches complete
 - **Bug fix applied**: `domainResolver.ts` now checks `categoryL1` first (was causing 17k facts to mis-resolve to general_knowledge)
 - **Bug fix applied**: `factsDB.ts` `rowToFact()` now parses `category_l1`/`category_l2` from DB (was returning undefined)
 
@@ -33,24 +33,24 @@ A full quality sweep of all 46,780 facts in `public/facts.db`. Every row is run 
 |-------|------|-------|--------|
 | knowledge-animals_wildlife | 34 | 34 | COMPLETE |
 | knowledge-art_architecture | 28 | 28 | COMPLETE |
-| knowledge-food_cuisine | 2 | 23 | WAVE 1 RUNNING (21 remaining) |
+| knowledge-food_cuisine | 23 | 23 | COMPLETE |
 | knowledge-general_knowledge | 14 | 14 | COMPLETE |
 | knowledge-geography | 23 | 23 | COMPLETE |
-| knowledge-history | 6 | 28 | WAVE 1 RUNNING (22 remaining) |
-| knowledge-human_body_health | 18 | 24 | WAVE 1 RUNNING (6 remaining) |
-| knowledge-mythology_folklore | 3 | 15 | WAVE 1 RUNNING (12 remaining) |
-| knowledge-natural_sciences | 16 | 18 | WAVE 1 RUNNING (2 remaining) |
+| knowledge-history | 28 | 28 | COMPLETE |
+| knowledge-human_body_health | 24 | 24 | COMPLETE |
+| knowledge-mythology_folklore | 15 | 15 | COMPLETE |
+| knowledge-natural_sciences | 18 | 18 | COMPLETE |
 | knowledge-space_astronomy | 9 | 9 | COMPLETE |
 | vocab-cs | 11 | 11 | COMPLETE |
-| vocab-de | 35 | 48 | WAVE 1 RUNNING (12 remaining, batches 36-47) |
-| vocab-es | 23 | 56 | WAVE 1 RUNNING (33 remaining, batches 2-37) |
+| vocab-de | 48 | 48 | COMPLETE |
+| vocab-es | 40 | 56 | 16 remaining |
 | vocab-fr | 10 | 10 | COMPLETE |
 | vocab-it | 20 | 20 | COMPLETE |
-| vocab-ja | 34 | 132 | WAVE 1 RUNNING (batches 22-51), WAVE 2 NEEDED (batches 52-131) |
-| vocab-ko | 15 | 77 | WAVE 1 RUNNING (batches 2-31), WAVE 2 NEEDED (batches 32-76) |
+| vocab-ja | 51 | 132 | 81 remaining |
+| vocab-ko | 22 | 77 | 55 remaining |
 | vocab-nl | 12 | 12 | COMPLETE |
 
-**After wave 1 completes, remaining for wave 2:** vocab-ja batches 52-131 (80), vocab-ko batches 32-76 (45) = ~125 batches
+**Remaining 152 batches:** vocab-es (16), vocab-ko (55), vocab-ja (81)
 
 ---
 

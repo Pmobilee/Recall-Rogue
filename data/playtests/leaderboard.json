@@ -1,6 +1,714 @@
 {
-  "updatedAt": "2026-03-11T12:00:00.000Z",
-  "totalPlaythroughs": 0,
-  "totalIssues": 0,
-  "issues": []
+  "updatedAt": "2026-03-14T05:04:44.214Z",
+  "totalPlaythroughs": 5,
+  "totalIssues": 10,
+  "campaignId": "smoke-campaign-postmove",
+  "runCount": 5,
+  "headlessCount": 4,
+  "visualCount": 1,
+  "generatedAt": "2026-03-14T05:04:44.214Z",
+  "issues": [
+    {
+      "canonicalId": "progression_difficulty_spike_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (10 vs 4.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "average",
+        "beginner"
+      ],
+      "profiles": [
+        "average",
+        "beginner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 93001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "cash_out",
+          "floor": 9,
+          "accuracy": 76.1,
+          "maxCombo": 8
+        },
+        {
+          "profileId": "beginner",
+          "seed": 93000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "defeat",
+          "floor": 3,
+          "accuracy": 52,
+          "maxCombo": 5
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.018Z",
+      "lastSeen": "2026-03-14T05:04:44.020Z",
+      "rank": 1,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-93001-1773464647594",
+        "playthrough-beginner-93000-1773464647590"
+      ],
+      "bestEvidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=10, prevAvg=4.00"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 93001"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_easy_early",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "36 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "frequency": 4,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "expert",
+        "speed-runner"
+      ],
+      "profiles": [
+        "average",
+        "beginner",
+        "expert",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 93001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "cash_out",
+          "floor": 9,
+          "accuracy": 76.1,
+          "maxCombo": 8
+        },
+        {
+          "profileId": "beginner",
+          "seed": 93000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "defeat",
+          "floor": 3,
+          "accuracy": 52,
+          "maxCombo": 5
+        },
+        {
+          "profileId": "expert",
+          "seed": 93002,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 90.7,
+          "maxCombo": 16
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 93003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 90.1,
+          "maxCombo": 13
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.018Z",
+      "lastSeen": "2026-03-14T05:04:44.023Z",
+      "rank": 2,
+      "score": 6,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-93001-1773464647594",
+        "playthrough-beginner-93000-1773464647590",
+        "playthrough-expert-93002-1773464647594",
+        "playthrough-speed-runner-93003-1773464647594"
+      ],
+      "bestEvidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          11,
+          11,
+          11,
+          12,
+          12,
+          12
+        ],
+        "metric": "hp=[120, 116, 120, 118, 120, 120, 107, 119, 120, 107, 120, 114, 120, 120, 120, 118, 118, 76, 110, 108, 108, 108, 108, 102, 111, 111, 115, 120, 111, 111, 120, 111, 111, 111, 111, 115]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 93001"
+      ]
+    },
+    {
+      "canonicalId": "mechanic_unused_global",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "frequency": 4,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "expert",
+        "speed-runner"
+      ],
+      "profiles": [
+        "average",
+        "beginner",
+        "expert",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 93001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "cash_out",
+          "floor": 9,
+          "accuracy": 76.1,
+          "maxCombo": 8
+        },
+        {
+          "profileId": "beginner",
+          "seed": 93000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "defeat",
+          "floor": 3,
+          "accuracy": 52,
+          "maxCombo": 5
+        },
+        {
+          "profileId": "expert",
+          "seed": 93002,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 90.7,
+          "maxCombo": 16
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 93003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 90.1,
+          "maxCombo": 13
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.018Z",
+      "lastSeen": "2026-03-14T05:04:44.023Z",
+      "rank": 3,
+      "score": 6,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-93001-1773464647594",
+        "playthrough-beginner-93000-1773464647590",
+        "playthrough-expert-93002-1773464647594",
+        "playthrough-speed-runner-93003-1773464647594"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 93001"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_early",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 43 (100% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "beginner"
+      ],
+      "profiles": [
+        "beginner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "beginner",
+          "seed": 93000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "defeat",
+          "floor": 3,
+          "accuracy": 52,
+          "maxCombo": 5
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.018Z",
+      "lastSeen": "2026-03-14T05:04:44.018Z",
+      "rank": 4,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-beginner-93000-1773464647590"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          207
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=25, ratio=0.833"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000",
+        "Floor 3 Encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 8 encounter 2 (5 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "speed-runner"
+      ],
+      "profiles": [
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "speed-runner",
+          "seed": 93003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 90.1,
+          "maxCombo": 13
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.023Z",
+      "lastSeen": "2026-03-14T05:04:44.023Z",
+      "rank": 5,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-speed-runner-93003-1773464647594"
+      ],
+      "bestEvidence": {
+        "floor": 8,
+        "encounter": 2,
+        "metric": "turns=5, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 93003"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 5 encounter 2 (8 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "average"
+      ],
+      "profiles": [
+        "average"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 93001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "cash_out",
+          "floor": 9,
+          "accuracy": 76.1,
+          "maxCombo": 8
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.020Z",
+      "lastSeen": "2026-03-14T05:04:44.020Z",
+      "rank": 6,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-93001-1773464647594"
+      ],
+      "bestEvidence": {
+        "floor": 5,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 93001"
+      ]
+    },
+    {
+      "canonicalId": "visual_start_run_unavailable_global",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 100",
+      "description": "Start Run button not found",
+      "frequency": 1,
+      "affectedProfiles": [
+        "visual-worker"
+      ],
+      "profiles": [
+        "visual-worker"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": null,
+          "seed": null,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": null,
+          "floor": null,
+          "accuracy": null,
+          "maxCombo": null
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.019Z",
+      "lastSeen": "2026-03-14T05:04:44.019Z",
+      "rank": 7,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "visual-playthrough-593000-1773464646265"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=100"
+      },
+      "reproductionSteps": [
+        "Visual seed: 593000",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_hard_early",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 3 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "beginner"
+      ],
+      "profiles": [
+        "beginner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "beginner",
+          "seed": 93000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "defeat",
+          "floor": 3,
+          "accuracy": 52,
+          "maxCombo": 5
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.018Z",
+      "lastSeen": "2026-03-14T05:04:44.018Z",
+      "rank": 8,
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-beginner-93000-1773464647590"
+      ],
+      "bestEvidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "enemy=the_archivist, accuracy=0.438"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ]
+    },
+    {
+      "canonicalId": "visual_hub_stuck_global",
+      "category": "visual_hub_stuck",
+      "severity": "medium",
+      "title": "Visual run remained on hub only",
+      "description": "No non-hub screen transitions were observed during the visual run.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "visual-worker"
+      ],
+      "profiles": [
+        "visual-worker"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": null,
+          "seed": null,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": null,
+          "floor": null,
+          "accuracy": null,
+          "maxCombo": null
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.019Z",
+      "lastSeen": "2026-03-14T05:04:44.019Z",
+      "rank": 9,
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "visual-playthrough-593000-1773464646265"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "steps=121, nonHub=0"
+      },
+      "reproductionSteps": [
+        "Visual seed: 593000",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_easy_mid_early",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "18 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "average"
+      ],
+      "profiles": [
+        "average"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 93001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": "cash_out",
+          "floor": 9,
+          "accuracy": 76.1,
+          "maxCombo": 8
+        }
+      ],
+      "firstSeen": "2026-03-14T05:04:44.020Z",
+      "lastSeen": "2026-03-14T05:04:44.020Z",
+      "rank": 10,
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-93001-1773464647594"
+      ],
+      "bestEvidence": {
+        "floor": 4,
+        "encounter": 0,
+        "floors": [
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9,
+          9
+        ],
+        "metric": "hp=[76, 80, 94, 120, 103, 111, 120, 115, 102, 97, 108, 87, 103, 108, 90, 91, 97, 108]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 93001"
+      ]
+    }
+  ]
 }
