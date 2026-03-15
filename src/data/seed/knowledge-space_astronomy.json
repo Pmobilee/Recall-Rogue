@@ -8308,5 +8308,1588 @@
     "acceptableAnswers": [],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mars-001-olympus-mons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Olympus Mons on Mars is the tallest volcano in the solar system, standing approximately 22 km high.",
+    "quizQuestion": "How tall is Olympus Mons, the tallest volcano in the solar system?",
+    "correctAnswer": "22 km (13.6 miles)",
+    "distractors": [
+      "8.8 km",
+      "15 km",
+      "5 km",
+      "30 km",
+      "11 km",
+      "18 km",
+      "25 km",
+      "3 km"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Olympus Mons formed because Mars lacks tectonic plates. Lava piled up over billions of years in one spot, creating a shield volcano of staggering proportions. At 22 km high and 600 km wide, it dwarfs Earth's Mauna Kea and Everest combined.",
+    "wowFactor": "Olympus Mons is so colossal its base would cover the entire state of Arizona — and its summit pokes above most of Mars's thin atmosphere!",
+    "variants": [
+      {
+        "question": "On which planet is Olympus Mons located?",
+        "type": "reverse",
+        "distractors": [
+          "Venus",
+          "Io",
+          "Jupiter",
+          "Mercury"
+        ],
+        "answer": "Mars"
+      },
+      {
+        "question": "Olympus Mons is nearly _____ times the height of Mount Everest.",
+        "type": "fill_blank",
+        "distractors": [
+          "two",
+          "five",
+          "ten",
+          "eight"
+        ],
+        "answer": "three"
+      },
+      {
+        "question": "Which feature makes Olympus Mons unique in the solar system?",
+        "type": "forward",
+        "distractors": [
+          "It is an active volcano",
+          "It is underwater",
+          "It spans two planets"
+        ],
+        "answer": "It is the tallest known volcano"
+      },
+      {
+        "question": "Olympus Mons is so wide that someone standing at its center cannot see its rim.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which planet hosts the tallest mountain in the solar system?",
+        "type": "context",
+        "distractors": [
+          "Venus",
+          "Saturn",
+          "Pluto"
+        ],
+        "answer": "Mars"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA / USGS",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/mars/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art bird's-eye view of the massive Olympus Mons caldera on a rusty red Martian surface, with a tiny size comparison silhouette of Mount Everest in the corner.",
+    "tags": [
+      "mars",
+      "olympus mons",
+      "volcano",
+      "solar system records",
+      "planets"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mars-002-water-evidence",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars has strong geological evidence of ancient liquid water, including dried riverbeds, mineral deposits, and polar ice caps.",
+    "quizQuestion": "Which feature provides evidence that liquid water once flowed on Mars?",
+    "correctAnswer": "Ancient dried riverbeds (valley networks)",
+    "distractors": [
+      "Active ocean currents",
+      "Ongoing volcanic eruptions",
+      "Lightning storms",
+      "Magnetic pole reversals",
+      "Dense cloud cover",
+      "Tidal forces from Phobos",
+      "Present-day rainfall",
+      "Subsurface geysers"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Valley networks, outflow channels, and mineral evidence (jarosite, hematite spherules) indicate Mars hosted liquid water roughly 3.5 billion years ago. Today water exists only as ice in the polar caps and possibly as briny sub-surface liquid detected by radar.",
+    "wowFactor": "Mars may have had oceans deeper than the Mediterranean Sea for over a billion years — it was once a blue planet, not red!",
+    "variants": [
+      {
+        "question": "What mineral found on Mars can only form in the presence of liquid water?",
+        "type": "forward",
+        "distractors": [
+          "Diamond",
+          "Quartz",
+          "Feldspar"
+        ],
+        "answer": "Jarosite and hematite"
+      },
+      {
+        "question": "Mars currently has water in what form at its poles?",
+        "type": "context",
+        "distractors": [
+          "Liquid lakes",
+          "Steam clouds",
+          "Brine rivers"
+        ],
+        "answer": "Ice"
+      },
+      {
+        "question": "Mars never had liquid water on its surface.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "The Mars rover Opportunity found _____, proof of past wet conditions.",
+        "type": "fill_blank",
+        "distractors": [
+          "gold nuggets",
+          "fossils",
+          "rubber deposits"
+        ],
+        "answer": "hematite concretions called blueberries"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Mars Exploration Program",
+    "sourceUrl": "https://mars.nasa.gov/mars-exploration/science/water-on-mars/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split scene: left side shows an ancient blue Martian ocean with rocky shores, right side shows the same terrain today as dry red cracked riverbeds with ice at the horizon.",
+    "tags": [
+      "mars",
+      "water",
+      "geology",
+      "astrobiology",
+      "ancient history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mars-003-red-color",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars appears red because its surface is covered with iron oxide (rust), giving it the nickname 'The Red Planet.'",
+    "quizQuestion": "What chemical compound causes Mars to appear red?",
+    "correctAnswer": "Iron oxide (rust)",
+    "distractors": [
+      "Sulfur dioxide",
+      "Carbon monoxide",
+      "Silicon dioxide",
+      "Nitrogen compounds",
+      "Methane crystals",
+      "Copper sulfate",
+      "Red clay minerals",
+      "Potassium permanganate"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Fine iron oxide (Fe2O3) dust coats Mars's surface and fills its thin atmosphere. The iron-rich rocks oxidized over billions of years, likely when Mars had a more substantial atmosphere. Periodic global dust storms spread this red dust everywhere.",
+    "wowFactor": "Mars's rusted surface tells us it once had an oxygen-rich atmosphere — ancient Martian air literally rusted the whole planet!",
+    "variants": [
+      {
+        "question": "What is the common name for iron oxide, the compound that colors Mars red?",
+        "type": "forward",
+        "distractors": [
+          "Sand",
+          "Ash",
+          "Blood"
+        ],
+        "answer": "Rust"
+      },
+      {
+        "question": "Which planet is nicknamed The Red Planet?",
+        "type": "reverse",
+        "distractors": [
+          "Jupiter",
+          "Saturn",
+          "Pluto"
+        ],
+        "answer": "Mars"
+      },
+      {
+        "question": "Mars gets its color from iron in its soil reacting with _____ over billions of years.",
+        "type": "fill_blank",
+        "distractors": [
+          "nitrogen",
+          "hydrogen",
+          "helium"
+        ],
+        "answer": "oxygen"
+      },
+      {
+        "question": "Iron oxide on Mars makes it appear red when viewed from space.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Solar System Exploration",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/mars/in-depth/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art close-up of red Martian soil with tiny rusted iron particles magnified in a bubble inset showing Fe2O3 crystals. A red dust storm swirls across the background.",
+    "tags": [
+      "mars",
+      "iron oxide",
+      "color",
+      "atmosphere",
+      "geology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-saturn-001-rings-composition",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Saturn's rings are composed primarily of ice particles, rocky debris, and dust, ranging in size from tiny grains to chunks as large as houses.",
+    "quizQuestion": "What are Saturn's rings primarily made of?",
+    "correctAnswer": "Ice particles and rocky debris",
+    "distractors": [
+      "Liquid methane",
+      "Compressed gas",
+      "Iron filings",
+      "Solidified hydrogen",
+      "Asteroid dust only",
+      "Diamond shards",
+      "Carbon dioxide snow",
+      "Molten rock droplets"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Saturn's iconic rings consist mainly of water ice (~90–95%) with traces of rocky material and dust. Particles range from micrometers to tens of meters in size. The rings are geologically young (100–400 million years old), possibly formed from a destroyed moon or captured comet.",
+    "wowFactor": "Saturn's rings stretch nearly the distance from Earth to the Moon — yet they're only about 10 meters thick in places, thinner than a 3-story building!",
+    "variants": [
+      {
+        "question": "Saturn's rings were first observed in 1610 by which scientist?",
+        "type": "reverse",
+        "distractors": [
+          "Isaac Newton",
+          "Tycho Brahe",
+          "Johannes Kepler"
+        ],
+        "answer": "Galileo Galilei"
+      },
+      {
+        "question": "Which planet in our solar system has the most prominent ring system?",
+        "type": "context",
+        "distractors": [
+          "Uranus",
+          "Neptune",
+          "Jupiter"
+        ],
+        "answer": "Saturn"
+      },
+      {
+        "question": "Saturn's rings extend up to _____ km from the planet's center.",
+        "type": "fill_blank",
+        "distractors": [
+          "50,000",
+          "1,000,000",
+          "100,000"
+        ],
+        "answer": "282,000"
+      },
+      {
+        "question": "Saturn's rings are entirely solid, like a continuous disk.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "The individual particles in Saturn's main rings are mostly composed of what?",
+        "type": "forward",
+        "distractors": [
+          "Silicate rock",
+          "Iron ore",
+          "Carbon soot"
+        ],
+        "answer": "Water ice"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Cassini Mission",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/saturn/rings/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of Saturn's rings showing ice chunk particles of varying sizes floating in orbit, with labels for A-ring and B-ring. Saturn's golden sphere glows in the background.",
+    "tags": [
+      "saturn",
+      "rings",
+      "ice",
+      "planets",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-saturn-002-density-water",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Saturn is the only planet in our solar system with an average density less than that of water — it would float if placed in a large enough ocean.",
+    "quizQuestion": "Which planet in our solar system is less dense than water?",
+    "correctAnswer": "Saturn",
+    "distractors": [
+      "Jupiter",
+      "Uranus",
+      "Neptune",
+      "Mars",
+      "Venus",
+      "Mercury",
+      "Earth",
+      "Pluto"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Saturn's bulk is 75% hydrogen and 25% helium — the same ingredients as the Sun. Its average density is only 687 kg/m³ vs water's 1,000 kg/m³. Despite being 95 Earth-masses, its enormous volume makes it fluffy. No other planet in our solar system shares this property.",
+    "wowFactor": "Saturn is 95 times more massive than Earth, yet it's so gaseous it would float on water — a planet-sized rubber duck!",
+    "variants": [
+      {
+        "question": "Saturn's average density is 0.69 g/cm³ while water's is 1.0 g/cm³. What does this mean?",
+        "type": "forward",
+        "distractors": [
+          "Saturn would sink faster than lead",
+          "Saturn would dissolve",
+          "Saturn would compress water"
+        ],
+        "answer": "Saturn would float in water"
+      },
+      {
+        "question": "Saturn is made mostly of what element, contributing to its low density?",
+        "type": "context",
+        "distractors": [
+          "Iron and nickel",
+          "Carbon and nitrogen",
+          "Silicon and oxygen"
+        ],
+        "answer": "Hydrogen and helium"
+      },
+      {
+        "question": "Saturn's density is about _____ times less than Earth's.",
+        "type": "fill_blank",
+        "distractors": [
+          "two",
+          "fifteen",
+          "three"
+        ],
+        "answer": "eight"
+      },
+      {
+        "question": "Saturn would float in a bathtub large enough to hold it.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Solar System Exploration",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/saturn/in-depth/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Saturn with its rings floating on top of a cartoon ocean, water level clearly beneath the gas giant. Bubbles rise from beneath it, fish look bewildered.",
+    "tags": [
+      "saturn",
+      "density",
+      "planets",
+      "physics",
+      "solar system records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-saturn-003-cassini",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "The Cassini spacecraft orbited Saturn from 2004 to 2017 and made groundbreaking discoveries including active geysers on the moon Enceladus.",
+    "quizQuestion": "What major discovery did the Cassini spacecraft make about Saturn's moon Enceladus?",
+    "correctAnswer": "Active water geysers erupting from its south pole",
+    "distractors": [
+      "A dense oxygen atmosphere",
+      "Active volcanoes like Io",
+      "A global magnetic field",
+      "Large impact craters filled with ice",
+      "A ring system of its own",
+      "A surface temperature above freezing",
+      "Subsurface diamond deposits",
+      "Living microorganisms"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Cassini-Huygens orbited Saturn for 13 years and executed 294 orbits. It discovered Enceladus has a global subsurface ocean with active hydrothermal vents ejecting water vapor rich in organic compounds. The mission ended with a dramatic Grand Finale, plunging into Saturn to prevent contaminating Enceladus or Titan.",
+    "wowFactor": "Cassini flew through Enceladus's geysers — literally tasting alien ocean water — and found complex organic chemicals, hydrogen, and salt!",
+    "variants": [
+      {
+        "question": "In what year did the Cassini spacecraft end its mission by plunging into Saturn?",
+        "type": "forward",
+        "distractors": [
+          "2004",
+          "2010",
+          "2022"
+        ],
+        "answer": "2017"
+      },
+      {
+        "question": "Which NASA mission orbited Saturn and discovered water vapor plumes on Enceladus?",
+        "type": "reverse",
+        "distractors": [
+          "Voyager 1",
+          "Pioneer 11",
+          "New Horizons"
+        ],
+        "answer": "Cassini"
+      },
+      {
+        "question": "Cassini's Grand Finale involved deliberately crashing into Saturn to avoid contaminating its _____ moons.",
+        "type": "fill_blank",
+        "distractors": [
+          "volcanic",
+          "newly discovered",
+          "colonized"
+        ],
+        "answer": "potentially habitable"
+      },
+      {
+        "question": "Cassini was a joint mission between NASA and the European Space Agency.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The discovery of Enceladus's geysers made it a top candidate for what research area?",
+        "type": "context",
+        "distractors": [
+          "Human colonization",
+          "Mining operations",
+          "Weather station placement"
+        ],
+        "answer": "Extraterrestrial life research"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Cassini Mission",
+    "sourceUrl": "https://solarsystem.nasa.gov/missions/cassini/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the Cassini spacecraft flying through white geysers erupting from Enceladus's icy south pole, with Saturn's rings visible in the background.",
+    "tags": [
+      "cassini",
+      "saturn",
+      "enceladus",
+      "space missions",
+      "NASA",
+      "astrobiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-voyager-001-golden-record",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "Both Voyager probes carry a Golden Record — a gold-plated copper disk containing sounds, music, and images meant to represent humanity to any extraterrestrials who find it.",
+    "quizQuestion": "What is the purpose of the Golden Record carried by the Voyager spacecraft?",
+    "correctAnswer": "A message to potential extraterrestrial civilizations",
+    "distractors": [
+      "A spacecraft data recorder",
+      "A power source backup",
+      "Navigation data storage",
+      "Communication relay for Earth",
+      "Scientific instrument calibration disk",
+      "Commemorative plaque for mission controllers",
+      "Solar energy converter",
+      "Radiation shield component"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Launched in 1977, both Voyager 1 and 2 carry identical Golden Records produced under Carl Sagan's direction. The 12-inch gold-plated copper disks hold 115 images, sounds of Earth, music from multiple cultures, and greetings in 55 languages. A stylus and playback instructions are encoded in binary on the cover.",
+    "wowFactor": "The Golden Record contains the brainwaves of Ann Druyan recorded while she thought about the history of civilization — alien minds could literally listen to human thoughts!",
+    "variants": [
+      {
+        "question": "Who chaired the committee that selected the contents of the Voyager Golden Record?",
+        "type": "reverse",
+        "distractors": [
+          "Neil Armstrong",
+          "Stephen Hawking",
+          "James Webb"
+        ],
+        "answer": "Carl Sagan"
+      },
+      {
+        "question": "The Golden Record contains greetings in how many different languages?",
+        "type": "forward",
+        "distractors": [
+          "12 languages",
+          "200 languages",
+          "7 languages"
+        ],
+        "answer": "55 languages"
+      },
+      {
+        "question": "The Golden Record includes music from many different cultures, including Bach and Chuck Berry.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Golden Record was designed to survive for at least _____ years in space.",
+        "type": "fill_blank",
+        "distractors": [
+          "one hundred",
+          "one million",
+          "ten thousand"
+        ],
+        "answer": "one billion"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Voyager Mission",
+    "sourceUrl": "https://voyager.jpl.nasa.gov/golden-record/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the gold-plated disk with engraved diagram cover showing a pulsar map and human figures. Cosmic stars in the background, the Voyager probe visible in the corner.",
+    "tags": [
+      "voyager",
+      "golden record",
+      "carl sagan",
+      "NASA",
+      "SETI",
+      "space history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-voyager-002-interstellar",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "Voyager 1 became the first human-made object to enter interstellar space in 2012, having crossed the heliopause — the boundary of the Sun's influence.",
+    "quizQuestion": "What boundary did Voyager 1 cross in 2012 to become the first object in interstellar space?",
+    "correctAnswer": "The heliopause",
+    "distractors": [
+      "The Kuiper Belt outer edge",
+      "The Oort Cloud",
+      "The magnetopause",
+      "The asteroid belt boundary",
+      "The solar wind termination line",
+      "The ecliptic plane crossing",
+      "The interplanetary medium boundary",
+      "The cosmic background radiation zone"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The heliopause is the outermost boundary of the heliosphere, where solar wind pressure is balanced by the interstellar medium. Voyager 1 confirmed it crossed this boundary on August 25, 2012, when it detected an abrupt increase in cosmic ray density. Radio signals now take over 22 hours to reach Earth.",
+    "wowFactor": "A 1977 machine built with less computing power than a modern smoke detector is sending signals from beyond the solar system — and we're still receiving them!",
+    "variants": [
+      {
+        "question": "In what year did Voyager 1 enter interstellar space?",
+        "type": "forward",
+        "distractors": [
+          "1990",
+          "2000",
+          "2020"
+        ],
+        "answer": "2012"
+      },
+      {
+        "question": "How far from Earth is Voyager 1 approximately as of the 2020s?",
+        "type": "context",
+        "distractors": [
+          "1 billion km",
+          "100,000 km",
+          "500 million km"
+        ],
+        "answer": "Over 23 billion km"
+      },
+      {
+        "question": "Voyager 1 was launched in which year?",
+        "type": "reverse",
+        "distractors": [
+          "1969",
+          "1985",
+          "1999"
+        ],
+        "answer": "1977"
+      },
+      {
+        "question": "Voyager 1 still communicates with Earth despite being in interstellar space.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Voyager Mission",
+    "sourceUrl": "https://voyager.jpl.nasa.gov/mission/interstellar-mission/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Voyager 1 crossing a glowing boundary line labeled Heliopause, with solar wind particles on one side and denser cosmic rays on the other, stars thickening beyond.",
+    "tags": [
+      "voyager",
+      "interstellar",
+      "heliopause",
+      "NASA",
+      "space exploration",
+      "milestones"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-voyager-003-pale-blue-dot",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "In 1990, Voyager 1 took the 'Pale Blue Dot' photograph of Earth from 6 billion km away, showing our planet as a tiny speck of light in the vastness of space.",
+    "quizQuestion": "What famous photograph was taken by Voyager 1 in 1990 showing Earth from 6 billion km away?",
+    "correctAnswer": "The Pale Blue Dot",
+    "distractors": [
+      "Earthrise",
+      "The Blue Marble",
+      "A Portrait of Earth",
+      "The Distant Earth",
+      "Dot in the Dark",
+      "The Solar Family Portrait",
+      "Home from Afar",
+      "The Cosmic Perspective"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "At Carl Sagan's request, NASA commanded Voyager 1 to turn its camera back on February 14, 1990. Earth appeared as a 0.12-pixel speck suspended in a lens-flare sunbeam. The image became the centerpiece of Sagan's humbling meditation on humanity's place in the cosmos. It was broadcast to an estimated 600 million viewers.",
+    "wowFactor": "Earth fills only 0.12 pixels in the Pale Blue Dot photo — every human who ever lived, every war, every empire, contained in a fraction of one pixel.",
+    "variants": [
+      {
+        "question": "Who famously gave a speech about the Pale Blue Dot, calling Earth 'a mote of dust suspended in a sunbeam'?",
+        "type": "reverse",
+        "distractors": [
+          "Neil deGrasse Tyson",
+          "Stephen Hawking",
+          "Buzz Aldrin"
+        ],
+        "answer": "Carl Sagan"
+      },
+      {
+        "question": "The Pale Blue Dot photo was taken as Voyager 1 was about to leave the _____ system.",
+        "type": "fill_blank",
+        "distractors": [
+          "Milky Way",
+          "Kuiper",
+          "Oort"
+        ],
+        "answer": "solar"
+      },
+      {
+        "question": "Earth appears as a tiny bright dot in the Pale Blue Dot photo partly because of what optical effect?",
+        "type": "forward",
+        "distractors": [
+          "Earth's atmosphere glowing",
+          "Radioactive emissions",
+          "Ocean reflection"
+        ],
+        "answer": "Sunlight scattering in the camera lens"
+      },
+      {
+        "question": "The Pale Blue Dot photograph shows multiple planets in the same series of images.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Voyager Mission / Carl Sagan",
+    "sourceUrl": "https://voyager.jpl.nasa.gov/mission/science/pale-blue-dot/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art recreation of the Pale Blue Dot: deep black space with sunbeam bands crossing the frame, a single glowing blue-white pixel labeled 'Earth' nearly invisible against the dark.",
+    "tags": [
+      "voyager",
+      "pale blue dot",
+      "carl sagan",
+      "Earth",
+      "photography",
+      "perspective"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-apollo11-001-moon-landing",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "Apollo 11 was the first crewed mission to land on the Moon, touching down in the Sea of Tranquility on July 20, 1969.",
+    "quizQuestion": "On which lunar region did Apollo 11 land on July 20, 1969?",
+    "correctAnswer": "Sea of Tranquility (Mare Tranquillitatis)",
+    "distractors": [
+      "Sea of Storms",
+      "Ocean of Storms",
+      "Sea of Serenity",
+      "Tycho Crater",
+      "Copernicus Crater",
+      "Fra Mauro Highlands",
+      "Sea of Crisis",
+      "Hadley Rille"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Apollo 11 launched July 16, 1969, and the lunar module Eagle touched down July 20. Armstrong and Aldrin spent 2 hours 31 minutes on the surface collecting samples and deploying experiments. They returned with 21.5 kg of lunar material. The mission fulfilled Kennedy's 1961 challenge to land on the Moon before the decade's end.",
+    "wowFactor": "Apollo 11 launched with less computing power than a modern USB flash drive — the guidance computer had just 4KB of RAM and 72KB of storage!",
+    "variants": [
+      {
+        "question": "Who were the three crew members of Apollo 11?",
+        "type": "forward",
+        "distractors": [
+          "John Glenn, Gus Grissom, and Alan Shepard",
+          "Pete Conrad, Alan Bean, and Dick Gordon",
+          "Jim Lovell, Fred Haise, and Jack Swigert"
+        ],
+        "answer": "Neil Armstrong, Buzz Aldrin, and Michael Collins"
+      },
+      {
+        "question": "How long did Armstrong and Aldrin spend on the lunar surface during Apollo 11?",
+        "type": "context",
+        "distractors": [
+          "24 hours",
+          "6 hours",
+          "30 minutes"
+        ],
+        "answer": "About 2.5 hours"
+      },
+      {
+        "question": "Michael Collins orbited the Moon alone in the _____ module while Armstrong and Aldrin landed.",
+        "type": "fill_blank",
+        "distractors": [
+          "lunar",
+          "service",
+          "orbital"
+        ],
+        "answer": "command"
+      },
+      {
+        "question": "Apollo 11 was the first mission to bring Moon rocks back to Earth.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Apollo Program",
+    "sourceUrl": "https://www.nasa.gov/mission_pages/apollo/apollo-11.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the lunar module Eagle on the Moon's cratered surface, Earth visible as a blue marble in the black sky above. Two spacesuit-clad figures plant the American flag nearby.",
+    "tags": [
+      "apollo 11",
+      "moon landing",
+      "NASA",
+      "Neil Armstrong",
+      "1969",
+      "space history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-apollo11-002-armstrongs-words",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Neil Armstrong's first words upon stepping on the Moon were: 'That's one small step for [a] man, one giant leap for mankind.'",
+    "quizQuestion": "What were Neil Armstrong's famous first words as he stepped onto the lunar surface?",
+    "correctAnswer": "That's one small step for [a] man, one giant leap for mankind.",
+    "distractors": [
+      "Houston, the Eagle has landed.",
+      "We came in peace for all mankind.",
+      "One small step for man, one giant leap for America.",
+      "The Moon is beautiful and silent.",
+      "I have walked where no human has walked before.",
+      "This is truly the high frontier.",
+      "We are the first, and may not be the last.",
+      "A dream realized by a generation of dreamers."
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Armstrong's words were pre-planned but he omitted the article 'a' before 'man', making it grammatically ambiguous. Audio analysis and Armstrong's later statements suggest the 'a' was present but lost in transmission static. The phrase was broadcast to an estimated 600 million viewers worldwide.",
+    "wowFactor": "Armstrong spent months crafting that one sentence — 15 words for the most-watched moment in human history — and still flubbed a single syllable on live broadcast!",
+    "variants": [
+      {
+        "question": "Armstrong intended to say 'one small step for a man' — what word did he likely omit due to radio static?",
+        "type": "forward",
+        "distractors": [
+          "'my'",
+          "'the'",
+          "'our'"
+        ],
+        "answer": "the article 'a'"
+      },
+      {
+        "question": "What was the radio call sign of the Apollo 11 lunar module?",
+        "type": "reverse",
+        "distractors": [
+          "Columbia",
+          "Falcon",
+          "Challenger"
+        ],
+        "answer": "Eagle"
+      },
+      {
+        "question": "Armstrong stepped onto the Moon at _____ UTC on July 20, 1969.",
+        "type": "fill_blank",
+        "distractors": [
+          "12:00",
+          "18:00",
+          "09:30"
+        ],
+        "answer": "02:56"
+      },
+      {
+        "question": "Neil Armstrong was the mission commander of Apollo 11.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Apollo Program",
+    "sourceUrl": "https://www.nasa.gov/mission_pages/apollo/apollo-11.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Neil Armstrong's booted foot pressing into grey lunar dust, his reflection visible in his helmet visor. Earth hangs in the black sky above, the Eagle lander in the background.",
+    "tags": [
+      "neil armstrong",
+      "apollo 11",
+      "moon",
+      "quotes",
+      "space history",
+      "astronauts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-apollo11-003-1969-context",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Apollo 11's 1969 Moon landing was achieved just 66 years after the Wright Brothers' first powered flight in 1903, highlighting humanity's extraordinary speed of technological progress.",
+    "quizQuestion": "How many years passed between the Wright Brothers' first flight (1903) and Apollo 11's Moon landing (1969)?",
+    "correctAnswer": "66 years",
+    "distractors": [
+      "100 years",
+      "50 years",
+      "40 years",
+      "80 years",
+      "30 years",
+      "75 years",
+      "55 years",
+      "90 years"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Wright Brothers flew 120 feet in 12 seconds in December 1903. Sixty-six years later, Apollo 11 traveled 384,000 km to the Moon. Kennedy's 1961 speech set a 9-year deadline met with 5 months to spare, driven by Cold War competition with the Soviet Union.",
+    "wowFactor": "From Kitty Hawk's 12-second hop to the Moon in 66 years. The child who watched the Wright Brothers fly at age 10 could have watched Moon landings on TV at age 76!",
+    "variants": [
+      {
+        "question": "Who challenged NASA to land on the Moon by the end of the 1960s?",
+        "type": "reverse",
+        "distractors": [
+          "President Eisenhower",
+          "President Nixon",
+          "President Johnson"
+        ],
+        "answer": "President John F. Kennedy"
+      },
+      {
+        "question": "The Space Race that culminated in Apollo 11 was driven by what broader geopolitical conflict?",
+        "type": "context",
+        "distractors": [
+          "World War II",
+          "The Korean War",
+          "The Vietnam War"
+        ],
+        "answer": "The Cold War"
+      },
+      {
+        "question": "Apollo 11 was watched live by approximately _____ million people worldwide.",
+        "type": "fill_blank",
+        "distractors": [
+          "10",
+          "2,000",
+          "50"
+        ],
+        "answer": "600"
+      },
+      {
+        "question": "The Apollo program successfully landed on the Moon six times in total.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA History Division",
+    "sourceUrl": "https://history.nasa.gov/ap11ann/kippsphotos/apollo.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split timeline: left shows a biplane over sand dunes in 1903, right shows Apollo 11 landing on the Moon in 1969, connected by a bold arrow labeled '66 years.'",
+    "tags": [
+      "apollo 11",
+      "space race",
+      "history",
+      "1969",
+      "technology",
+      "JFK",
+      "Wright Brothers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-iss-001-orbit-altitude",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_technology",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_technology",
+    "categoryL3": "",
+    "statement": "The International Space Station orbits Earth at an altitude of approximately 400 km (248 miles) and travels at 7.66 km/s, completing one orbit every 90 minutes.",
+    "quizQuestion": "At approximately what altitude does the International Space Station orbit Earth?",
+    "correctAnswer": "400 km (248 miles)",
+    "distractors": [
+      "1,000 km",
+      "100 km",
+      "36,000 km",
+      "200 km",
+      "800 km",
+      "150 km",
+      "2,000 km",
+      "600 km"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The ISS maintains a low Earth orbit averaging 400 km altitude. Residual atmosphere creates slight drag requiring periodic reboost burns. At 7.66 km/s orbital velocity it orbits every ~92 minutes, meaning astronauts see 16 sunrises and sunsets daily. It is visible to the naked eye at dawn and dusk.",
+    "wowFactor": "The ISS travels so fast it circles Earth in 90 minutes — ISS crew experience 16 sunrises and sunsets every single day!",
+    "variants": [
+      {
+        "question": "How many times does the ISS orbit Earth every day?",
+        "type": "forward",
+        "distractors": [
+          "Once",
+          "6 times",
+          "50 times"
+        ],
+        "answer": "About 16 times"
+      },
+      {
+        "question": "At what speed does the ISS travel to maintain its orbit?",
+        "type": "context",
+        "distractors": [
+          "1,000 km/h",
+          "3,000 km/h",
+          "100,000 km/h"
+        ],
+        "answer": "About 27,600 km/h (17,150 mph)"
+      },
+      {
+        "question": "The ISS is visible to the naked eye from Earth as a fast-moving _____ light.",
+        "type": "fill_blank",
+        "distractors": [
+          "blinking red",
+          "slow orange",
+          "faint blue"
+        ],
+        "answer": "bright white"
+      },
+      {
+        "question": "The ISS must periodically boost its orbit because atmospheric drag gradually lowers its altitude.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA ISS Program",
+    "sourceUrl": "https://www.nasa.gov/international-space-station/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the ISS with solar panel wings extended, orbiting above a curved Earth horizon with city lights visible below. A small sunrise glow appears at the edge of the planet.",
+    "tags": [
+      "ISS",
+      "orbit",
+      "space station",
+      "NASA",
+      "low Earth orbit"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-iss-002-continuous-habitation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "The International Space Station has been continuously inhabited by humans since November 2, 2000, when Expedition 1 arrived.",
+    "quizQuestion": "When did continuous human habitation of the International Space Station begin?",
+    "correctAnswer": "November 2, 2000",
+    "distractors": [
+      "July 4, 1998",
+      "January 1, 2001",
+      "April 12, 1991",
+      "December 25, 1999",
+      "October 15, 2003",
+      "March 20, 1995",
+      "September 11, 2001",
+      "June 7, 2004"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Expedition 1 docked on November 2, 2000, and since that day humans have permanently inhabited low Earth orbit without a single gap. The station has hosted over 270 people from 20 countries. Continuous habitation required meticulous logistics between five partner agencies.",
+    "wowFactor": "Humans have lived continuously in space since 2000 — an entire generation has grown up knowing there are ALWAYS humans living off Earth right now!",
+    "variants": [
+      {
+        "question": "Who were the crew of Expedition 1 that first inhabited the ISS?",
+        "type": "forward",
+        "distractors": [
+          "John Glenn and two cosmonauts",
+          "The Apollo 11 crew",
+          "Chris Hadfield and two NASA astronauts"
+        ],
+        "answer": "Bill Shepherd, Yuri Gidzenko, and Sergei Krikalev"
+      },
+      {
+        "question": "Continuous habitation of the ISS has lasted more than how many years as of 2026?",
+        "type": "context",
+        "distractors": [
+          "10 years",
+          "5 years",
+          "50 years"
+        ],
+        "answer": "25 years"
+      },
+      {
+        "question": "The ISS is jointly operated by _____ national space agencies including NASA, Roscosmos, ESA, JAXA, and CSA.",
+        "type": "fill_blank",
+        "distractors": [
+          "two",
+          "fifteen",
+          "one"
+        ],
+        "answer": "five"
+      },
+      {
+        "question": "The ISS has never been unoccupied since Expedition 1 arrived in 2000.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA ISS Program",
+    "sourceUrl": "https://www.nasa.gov/international-space-station/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art calendar showing November 2, 2000 circled in gold, with an unbroken chain of astronaut silhouettes stretching from that date to a present-day ISS floating in orbit.",
+    "tags": [
+      "ISS",
+      "space station",
+      "habitation",
+      "space history",
+      "astronauts",
+      "Expedition 1"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-iss-003-size",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_technology",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_technology",
+    "categoryL3": "",
+    "statement": "The International Space Station is the largest human-made structure in space, with a mass of about 420,000 kg and a habitable volume equivalent to a six-bedroom house.",
+    "quizQuestion": "What is the approximate mass of the International Space Station?",
+    "correctAnswer": "420,000 kg (925,000 lbs)",
+    "distractors": [
+      "10,000 kg",
+      "1,000,000 kg",
+      "50,000 kg",
+      "200,000 kg",
+      "5,000 kg",
+      "800,000 kg",
+      "150,000 kg",
+      "2,500,000 kg"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The ISS measures 109 m wide (solar array tip to tip) by 73 m long. Its pressurized volume of 932 m³ provides 388 m³ of habitable space — comparable to a six-bedroom house. Construction required 42 assembly missions between 1998 and 2011 with over 1,000 hours of EVAs.",
+    "wowFactor": "Building the ISS took 13 years, 42 assembly flights, and over 1,000 hours of spacewalks — the largest engineering project in human history conducted 400 km above Earth!",
+    "variants": [
+      {
+        "question": "The ISS solar panels span approximately how wide from tip to tip?",
+        "type": "forward",
+        "distractors": [
+          "20 meters",
+          "500 meters",
+          "60 meters"
+        ],
+        "answer": "About 109 meters (357 feet)"
+      },
+      {
+        "question": "Which statement accurately compares the ISS to a familiar structure?",
+        "type": "context",
+        "distractors": [
+          "It is taller than the Eiffel Tower",
+          "It is as long as the Great Wall",
+          "It weighs more than an aircraft carrier"
+        ],
+        "answer": "Its solar arrays span wider than a US football field"
+      },
+      {
+        "question": "The ISS was assembled in orbit over a period of approximately _____ years.",
+        "type": "fill_blank",
+        "distractors": [
+          "two",
+          "thirty",
+          "five"
+        ],
+        "answer": "thirteen"
+      },
+      {
+        "question": "The ISS is larger than a football field when measuring its full solar panel span.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA ISS Program",
+    "sourceUrl": "https://www.nasa.gov/international-space-station/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art side-view of the full ISS with all solar panels extended, overlaid with a scaled American football field to show relative size. Labels point to the main truss, lab modules, and crew quarters.",
+    "tags": [
+      "ISS",
+      "space station",
+      "engineering",
+      "size",
+      "NASA",
+      "construction"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-neutron-001-density",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "A neutron star packs the mass of 1–3 Suns into a sphere only about 20 km in diameter, making it so dense that a sugar-cube-sized sample would weigh about 1 billion tons.",
+    "quizQuestion": "What is the approximate diameter of a typical neutron star?",
+    "correctAnswer": "About 20 km (12 miles)",
+    "distractors": [
+      "About 1,000 km",
+      "About 1 km",
+      "About 200 km",
+      "About 100 km",
+      "About 10,000 km",
+      "About 0.1 km",
+      "About 50 km",
+      "About 500 km"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "When a massive star exhausts its fuel, the core collapses in milliseconds under gravity. Electrons and protons merge into neutrons packed to nuclear density (~10^14 g/cm3). The resulting neutron star has 1–3 solar masses squeezed into a 20 km sphere — the density of an atomic nucleus scaled to the size of a city.",
+    "wowFactor": "Neutron stars are so dense that if you dropped an object from 1 meter above the surface, it would hit at 2 million km/h — 0.2% the speed of light!",
+    "variants": [
+      {
+        "question": "What force holds a neutron star together against its enormous gravity?",
+        "type": "forward",
+        "distractors": [
+          "Magnetic field pressure",
+          "Nuclear fusion",
+          "Electrostatic repulsion"
+        ],
+        "answer": "Neutron degeneracy pressure"
+      },
+      {
+        "question": "Neutron stars form from the collapse of what type of stellar event?",
+        "type": "reverse",
+        "distractors": [
+          "A nova explosion",
+          "A solar flare",
+          "A planetary nebula"
+        ],
+        "answer": "A core-collapse supernova"
+      },
+      {
+        "question": "Neutron star matter is so dense that a teaspoon of it would weigh approximately _____ on Earth.",
+        "type": "fill_blank",
+        "distractors": [
+          "1 gram",
+          "1 ton",
+          "1,000 kg"
+        ],
+        "answer": "10 million tons"
+      },
+      {
+        "question": "Neutron stars are denser than white dwarf stars.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "A neutron star is composed almost entirely of which subatomic particle?",
+        "type": "context",
+        "distractors": [
+          "Protons",
+          "Electrons",
+          "Quarks"
+        ],
+        "answer": "Neutrons"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "ESA / NASA Chandra X-ray Observatory",
+    "sourceUrl": "https://chandra.harvard.edu/xray_sources/neutron_star.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art scale comparison: a glowing blue-white neutron star 20 km wide next to a city skyline for scale, with a massive Sun silhouette faded in the background to show the mass comparison.",
+    "tags": [
+      "neutron stars",
+      "density",
+      "stellar physics",
+      "supernovae",
+      "stars"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-neutron-002-pulsars",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Pulsars are rapidly rotating neutron stars that emit beams of electromagnetic radiation — when the beam sweeps past Earth, astronomers detect regular pulses, like a cosmic lighthouse.",
+    "quizQuestion": "What causes the regular radio pulses observed from a pulsar?",
+    "correctAnswer": "A rotating neutron star's beam sweeping past Earth",
+    "distractors": [
+      "Regular nuclear explosions on the star's surface",
+      "Orbiting companion stars eclipsing the pulsar",
+      "Periodic magnetic field reversals",
+      "Pulsations in the star's radius",
+      "Tidal interactions with nearby planets",
+      "Binary star orbital resonance",
+      "Oscillations in a surrounding nebula",
+      "Gravitational waves from two merging bodies"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Pulsars result from the combination of extreme rotation and strong magnetic fields in neutron stars. As the star rotates, magnetic poles emit focused beams of radio waves. If the beam aligns with Earth, we detect a regular pulse — as stable as atomic clocks. Millisecond pulsars rotate up to 716 times per second, spun up by accreting matter from a companion star.",
+    "wowFactor": "The Crab Pulsar spins 30 times per second — and it's the remnant of a supernova explosion that Chinese astronomers recorded in 1054 AD, visible in daylight for 23 days!",
+    "variants": [
+      {
+        "question": "Who discovered the first pulsar (PSR B1919+21) in 1967?",
+        "type": "reverse",
+        "distractors": [
+          "Edwin Hubble",
+          "Carl Sagan",
+          "Albert Einstein"
+        ],
+        "answer": "Jocelyn Bell Burnell"
+      },
+      {
+        "question": "The first pulsars were nicknamed 'LGM' — what did LGM stand for?",
+        "type": "forward",
+        "distractors": [
+          "Low-Gravity Magnetars",
+          "Light-Generating Mechanism",
+          "Lateral Galactic Mass"
+        ],
+        "answer": "Little Green Men"
+      },
+      {
+        "question": "The fastest-spinning pulsars (millisecond pulsars) can rotate up to _____ times per second.",
+        "type": "fill_blank",
+        "distractors": [
+          "10",
+          "2",
+          "100,000"
+        ],
+        "answer": "700"
+      },
+      {
+        "question": "Pulsars are so regular in their timing that they can be used as cosmic clocks.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NRAO / ESA",
+    "sourceUrl": "https://www.nrao.edu/pr/2002/pulsarbasics/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art top-down view of a blue-white neutron star with two sweeping beam cones of light rotating from its magnetic poles, like lighthouse beams cutting through dark space.",
+    "tags": [
+      "pulsars",
+      "neutron stars",
+      "radio astronomy",
+      "Jocelyn Bell",
+      "stars",
+      "rotation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-neutron-003-teaspoon-weight",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomical_records",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronomical_records",
+    "categoryL3": "",
+    "statement": "A teaspoon of neutron star material would weigh approximately 10 million tons on Earth — roughly the mass of all humans on Earth combined.",
+    "quizQuestion": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+    "correctAnswer": "10 million tons",
+    "distractors": [
+      "1 kilogram",
+      "1 ton",
+      "1,000 tons",
+      "1 billion tons",
+      "100 grams",
+      "1 trillion tons",
+      "1 million grams",
+      "500 kg"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Neutron star density of ~6.7 x 10^14 g/cm3 means a single teaspoon (5 cm3) contains roughly 3.3 billion tonnes. This extreme density arises because gravity merges electrons and protons into neutrons packed as tightly as atomic nuclei. Only hypothetical quark stars or black holes represent denser states of matter.",
+    "wowFactor": "Ten million tons in a teaspoon — that's the mass of Mount Everest squeezed into a coffee cup, and yet it's just physics following its own rules!",
+    "variants": [
+      {
+        "question": "Neutron star material has roughly the same density as what?",
+        "type": "forward",
+        "distractors": [
+          "A white dwarf star",
+          "A black hole singularity",
+          "A grain of sand"
+        ],
+        "answer": "An atomic nucleus"
+      },
+      {
+        "question": "What is the approximate density of neutron star material in grams per cubic centimeter?",
+        "type": "context",
+        "distractors": [
+          "About 1,000 g/cm3",
+          "About 1 g/cm3",
+          "About 1 million g/cm3"
+        ],
+        "answer": "About 100 trillion g/cm3"
+      },
+      {
+        "question": "If the Sun were compressed to neutron star density, it would fit inside a sphere _____ km across.",
+        "type": "fill_blank",
+        "distractors": [
+          "1,000",
+          "1",
+          "100,000"
+        ],
+        "answer": "20"
+      },
+      {
+        "question": "Neutron star matter is the densest form of stable matter currently known to science.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Chandra X-ray Observatory",
+    "sourceUrl": "https://chandra.harvard.edu/xray_sources/neutron_star.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tiny silver teaspoon filled with glowing blue neutron-star matter, with a scale showing it outweighing a mountain range on the other side of a balance. Stars fill the background.",
+    "tags": [
+      "neutron stars",
+      "density",
+      "extreme physics",
+      "astronomical records",
+      "stars"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

@@ -10437,5 +10437,1215 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "libraries",
+    "statement": "The oldest known library is the Library of Ashurbanipal in Nineveh, Iraq, dating to around 668 BCE.",
+    "quizQuestion": "Which ancient library, dating to ~668 BCE, is considered the oldest known library in the world?",
+    "correctAnswer": "Library of Ashurbanipal",
+    "distractors": [
+      "Library of Alexandria",
+      "Library of Pergamon",
+      "Royal Library of Babel",
+      "Library of Athens",
+      "Library of Carthage",
+      "Temple Library of Nippur",
+      "House of Wisdom in Baghdad",
+      "Great Library of Memphis"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "King Ashurbanipal of Assyria systematically collected and copied texts from across his empire. The library at Nineveh (modern-day Mosul area, Iraq) is recognized as the oldest surviving organized library, predating the famous Library of Alexandria by several centuries.",
+    "wowFactor": "This royal library held over 30,000 clay tablets, including the Epic of Gilgamesh — the world's oldest written story.",
+    "variants": [
+      {
+        "question": "Where was the Library of Ashurbanipal, the oldest known library, located?",
+        "type": "context",
+        "answer": "Nineveh, Assyria (modern Iraq)"
+      },
+      {
+        "question": "Approximately when was the Library of Ashurbanipal founded?",
+        "type": "forward",
+        "answer": "668 BCE"
+      },
+      {
+        "question": "The Library of Ashurbanipal stored its texts on what medium?",
+        "type": "reverse",
+        "answer": "Clay tablets"
+      },
+      {
+        "question": "True or false: The Library of Alexandria predates the Library of Ashurbanipal.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "British Museum / Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dimly lit stone chamber with shelves of clay tablets bearing cuneiform script",
+    "tags": [
+      "library",
+      "ancient",
+      "mesopotamia",
+      "ashurbanipal",
+      "clay tablets"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "libraries",
+    "statement": "The Library of Alexandria, founded around 300 BCE in Egypt, aimed to collect all the world's knowledge in one place.",
+    "quizQuestion": "In which ancient city was the famous Library of Alexandria located?",
+    "correctAnswer": "Alexandria, Egypt",
+    "distractors": [
+      "Athens, Greece",
+      "Rome, Italy",
+      "Carthage, North Africa",
+      "Babylon, Mesopotamia",
+      "Memphis, Egypt",
+      "Corinth, Greece",
+      "Syracuse, Sicily",
+      "Antioch, Syria"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Founded under Ptolemy I Soter and expanded under Ptolemy II Philadelphus in Alexandria, Egypt, the library was part of a larger research institution called the Mouseion. It employed famous scholars including Euclid, Archimedes (as a visitor), and Eratosthenes, who calculated Earth's circumference there.",
+    "wowFactor": "Scholars estimate it held between 400,000 and 700,000 scrolls — more text than most people would read in a thousand lifetimes.",
+    "variants": [
+      {
+        "question": "Who founded the Library of Alexandria?",
+        "type": "forward",
+        "answer": "Ptolemy I Soter"
+      },
+      {
+        "question": "Which famous scholar calculated Earth's circumference while working at the Library of Alexandria?",
+        "type": "context",
+        "answer": "Eratosthenes"
+      },
+      {
+        "question": "Approximately how many scrolls did the Library of Alexandria hold at its peak?",
+        "type": "reverse",
+        "answer": "400,000 to 700,000"
+      },
+      {
+        "question": "True or false: The Library of Alexandria was part of a larger research institution called the Mouseion.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grand marble hall with towering scroll shelves and robed scholars at reading tables",
+    "tags": [
+      "library",
+      "alexandria",
+      "ancient egypt",
+      "ptolemy",
+      "scrolls"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "libraries",
+    "statement": "The US Library of Congress is the largest library in the world, holding over 170 million items on approximately 1,350 miles of bookshelves.",
+    "quizQuestion": "Which library holds the title of the largest library in the world by number of items?",
+    "correctAnswer": "US Library of Congress",
+    "distractors": [
+      "British Library",
+      "Bibliothèque nationale de France",
+      "Russian State Library",
+      "New York Public Library",
+      "Vatican Apostolic Library",
+      "Harvard University Library",
+      "Library of Alexandria",
+      "National Diet Library of Japan"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Founded in 1800, the Library of Congress in Washington D.C. serves as the research arm of the US Congress and the de facto national library. Its collection spans books, maps, photographs, films, audio recordings, and digital content in 470 languages.",
+    "wowFactor": "If you read one item per minute nonstop, it would take you over 300 years to get through everything in the Library of Congress.",
+    "variants": [
+      {
+        "question": "In what city is the US Library of Congress located?",
+        "type": "forward",
+        "answer": "Washington D.C."
+      },
+      {
+        "question": "Approximately how many items does the US Library of Congress hold?",
+        "type": "reverse",
+        "answer": "Over 170 million"
+      },
+      {
+        "question": "When was the US Library of Congress founded?",
+        "type": "context",
+        "answer": "1800"
+      },
+      {
+        "question": "True or false: The Library of Congress serves as the research arm of the US Congress.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Library of Congress official statistics",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ornate domed reading room with gallery-level bookshelves stretching to the ceiling",
+    "tags": [
+      "library",
+      "world record",
+      "usa",
+      "washington dc",
+      "largest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-olympics-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "sports_history",
+    "statement": "The ancient Olympic Games were first held in Olympia, Greece, in 776 BCE and were dedicated to the god Zeus.",
+    "quizQuestion": "In what year were the ancient Olympic Games first held?",
+    "correctAnswer": "776 BCE",
+    "distractors": [
+      "490 BCE",
+      "1000 BCE",
+      "500 BCE",
+      "600 BCE",
+      "404 BCE",
+      "323 BCE",
+      "850 BCE",
+      "700 BCE"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The ancient Olympics took place every four years at Olympia in the Elis region of Greece. Only freeborn Greek men could compete, and a sacred truce halted all wars during the games. The games continued for over 1,000 years until Emperor Theodosius I banned them in 393 CE.",
+    "wowFactor": "Athletes competed completely naked — the word 'gymnasium' literally means 'place of naked exercise' in Greek.",
+    "variants": [
+      {
+        "question": "The ancient Olympic Games were dedicated to which Greek god?",
+        "type": "forward",
+        "answer": "Zeus"
+      },
+      {
+        "question": "In which region of Greece were the ancient Olympics held?",
+        "type": "context",
+        "answer": "Olympia, Elis"
+      },
+      {
+        "question": "Who was allowed to compete in the ancient Olympic Games?",
+        "type": "reverse",
+        "answer": "Freeborn Greek men only"
+      },
+      {
+        "question": "True or false: A sacred truce halted all wars during the ancient Olympic Games.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Nudity mention is historical/academic context, appropriate for teen+",
+    "visualDescription": "A stone athletic track framed by Greek columns under a blue Mediterranean sky",
+    "tags": [
+      "olympics",
+      "ancient greece",
+      "zeus",
+      "sports",
+      "776 bce"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-olympics-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "sports_history",
+    "statement": "The modern Olympic Games were revived in Athens, Greece, in 1896, largely due to the efforts of Pierre de Coubertin.",
+    "quizQuestion": "In what year were the first modern Olympic Games held?",
+    "correctAnswer": "1896",
+    "distractors": [
+      "1900",
+      "1904",
+      "1888",
+      "1892",
+      "1884",
+      "1908",
+      "1876",
+      "1912"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "French educator Pierre de Coubertin was the driving force behind reviving the Olympics, founding the International Olympic Committee (IOC) in 1894. The first modern Summer Games were held in Athens, Greece in 1896, featuring 9 sports and 43 events. Coubertin hoped sport would promote international peace and understanding.",
+    "wowFactor": "The 1896 Athens Games had 14 nations and 241 athletes. Today the Olympics attract over 200 nations and 10,000 athletes.",
+    "variants": [
+      {
+        "question": "Who is credited with reviving the modern Olympic Games?",
+        "type": "forward",
+        "answer": "Pierre de Coubertin"
+      },
+      {
+        "question": "Where were the first modern Olympic Games held in 1896?",
+        "type": "context",
+        "answer": "Athens, Greece"
+      },
+      {
+        "question": "What organization did Pierre de Coubertin found in 1894 to oversee the Olympics?",
+        "type": "reverse",
+        "answer": "International Olympic Committee (IOC)"
+      },
+      {
+        "question": "True or false: The 1896 Athens Olympics featured athletes from over 50 nations.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "International Olympic Committee",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stone Panathenaic stadium filled with spectators, athletes parading in national dress",
+    "tags": [
+      "olympics",
+      "1896",
+      "athens",
+      "coubertin",
+      "modern games"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-olympics-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "sports_records",
+    "statement": "Usain Bolt holds the world record in the 100m sprint at 9.58 seconds, set at the 2009 World Championships in Berlin.",
+    "quizQuestion": "What is Usain Bolt's world record time for the 100m sprint?",
+    "correctAnswer": "9.58 seconds",
+    "distractors": [
+      "9.69 seconds",
+      "9.72 seconds",
+      "9.63 seconds",
+      "9.74 seconds",
+      "9.81 seconds",
+      "9.55 seconds",
+      "9.79 seconds",
+      "9.84 seconds"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Jamaican sprinter Usain Bolt set the world record of 9.58 seconds in the 100m at the 2009 IAAF World Championships in Berlin, Germany. He also holds the 200m world record (19.19 seconds). Bolt won 8 Olympic gold medals across the 2008, 2012, and 2016 Games, establishing himself as the fastest human in recorded history.",
+    "wowFactor": "Bolt's top speed during that race was approximately 44.72 km/h (27.8 mph) — faster than any other human ever recorded.",
+    "variants": [
+      {
+        "question": "At which event did Usain Bolt set his 100m world record of 9.58 seconds?",
+        "type": "forward",
+        "answer": "2009 IAAF World Championships in Berlin"
+      },
+      {
+        "question": "Which country does Usain Bolt represent?",
+        "type": "context",
+        "answer": "Jamaica"
+      },
+      {
+        "question": "How many Olympic gold medals did Usain Bolt win in total?",
+        "type": "reverse",
+        "answer": "8"
+      },
+      {
+        "question": "True or false: Usain Bolt also holds the world record in the 200m sprint.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "World Athletics (IAAF)",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A powerful sprinter mid-stride at the finish line, number bib blurring with speed",
+    "tags": [
+      "olympics",
+      "usain bolt",
+      "world record",
+      "100m",
+      "sprint",
+      "jamaica"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-alphabet-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "writing_systems",
+    "statement": "The Phoenician alphabet, developed around 1050 BCE, is the ancestor of nearly all modern alphabets used in the world today.",
+    "quizQuestion": "Which ancient writing system is considered the ancestor of nearly all modern alphabets?",
+    "correctAnswer": "Phoenician alphabet",
+    "distractors": [
+      "Sumerian cuneiform",
+      "Egyptian hieroglyphics",
+      "Linear B script",
+      "Proto-Sinaitic script",
+      "Aramaic alphabet",
+      "Greek alphabet",
+      "Etruscan alphabet",
+      "Ugaritic alphabet"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Phoenician alphabet was a consonantal writing system (abjad) of 22 letters developed by the Phoenicians, a seafaring civilization based in modern Lebanon. It spread through Mediterranean trade routes and evolved into the Greek alphabet, which in turn gave rise to the Latin alphabet (used in English), Cyrillic, Hebrew, Arabic, and many others.",
+    "wowFactor": "Every letter you're reading right now traces back to Phoenician merchants who needed a quick way to record trade deals 3,000 years ago.",
+    "variants": [
+      {
+        "question": "Approximately when was the Phoenician alphabet developed?",
+        "type": "forward",
+        "answer": "Around 1050 BCE"
+      },
+      {
+        "question": "The Phoenician alphabet had how many letters?",
+        "type": "reverse",
+        "answer": "22"
+      },
+      {
+        "question": "What modern country is located where ancient Phoenicia once existed?",
+        "type": "context",
+        "answer": "Lebanon"
+      },
+      {
+        "question": "True or false: The Phoenician alphabet included vowel letters.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A carved stone with angular Phoenician letters, set against a coastal Mediterranean backdrop",
+    "tags": [
+      "alphabet",
+      "phoenician",
+      "writing",
+      "language",
+      "ancient"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-alphabet-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "writing_systems",
+    "statement": "Linguists have identified approximately 300 distinct alphabets and writing systems that have been used throughout human history.",
+    "quizQuestion": "Approximately how many distinct alphabets and writing systems have linguists identified throughout human history?",
+    "correctAnswer": "Around 300",
+    "distractors": [
+      "Around 50",
+      "Around 1,000",
+      "Around 150",
+      "Around 30",
+      "Around 500",
+      "Around 75",
+      "Around 700",
+      "Around 25"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Linguists categorize writing systems into alphabets (letters for consonants and vowels), abjads (only consonants, like Arabic and Hebrew), abugidas (consonant-vowel units, like Devanagari), syllabaries (syllable symbols, like Japanese hiragana), and logographic systems (word symbols, like Chinese characters). The exact count varies by definition and source.",
+    "wowFactor": "Of the ~7,000 languages spoken today, only about 23 are written in scripts used by 90% of the world's population.",
+    "variants": [
+      {
+        "question": "What do linguists call a writing system that uses only consonant symbols, like Arabic or Hebrew?",
+        "type": "forward",
+        "answer": "Abjad"
+      },
+      {
+        "question": "Which writing system type uses symbols for consonant-vowel combinations, like Devanagari?",
+        "type": "context",
+        "answer": "Abugida"
+      },
+      {
+        "question": "What type of writing system uses separate symbols for whole words or morphemes, like Chinese characters?",
+        "type": "reverse",
+        "answer": "Logographic"
+      },
+      {
+        "question": "True or false: About 23 writing systems account for 90% of the world's written communication today.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Unicode Consortium / Omniglot",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A mosaic of colorful script samples from different world writing systems arranged on parchment",
+    "tags": [
+      "alphabet",
+      "writing systems",
+      "linguistics",
+      "language",
+      "scripts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-alphabet-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "modern_language",
+    "statement": "The emoji 😂 (Face With Tears of Joy) was named Oxford Dictionaries' Word of the Year in 2015 and is the most-used emoji globally.",
+    "quizQuestion": "Which emoji was named Oxford Dictionaries' Word of the Year in 2015?",
+    "correctAnswer": "😂 Face With Tears of Joy",
+    "distractors": [
+      "❤️ Red Heart",
+      "🔥 Fire",
+      "✨ Sparkles",
+      "🎉 Party Popper",
+      "😊 Smiling Face",
+      "👍 Thumbs Up",
+      "😭 Loudly Crying Face",
+      "🙏 Folded Hands"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Emojis are pictographic symbols that have become a universal visual language, originating from Japan in 1999 (created by Shigetaka Kurita for NTT DoCoMo). The Unicode Consortium standardizes and approves new emojis globally. Oxford University Press controversially chose 😂 as its 2015 Word of the Year, marking the first non-word to receive the honor.",
+    "wowFactor": "In 2021, Apple's emoji keyboard processed over 5 billion emoji sends per day on iMessage alone — that's more daily 'words' than many languages have total speakers.",
+    "variants": [
+      {
+        "question": "Who invented the first emoji set, in 1999?",
+        "type": "forward",
+        "answer": "Shigetaka Kurita"
+      },
+      {
+        "question": "Which organization standardizes and approves new emojis globally?",
+        "type": "context",
+        "answer": "Unicode Consortium"
+      },
+      {
+        "question": "In which country were the first emojis created?",
+        "type": "reverse",
+        "answer": "Japan"
+      },
+      {
+        "question": "True or false: The 2015 Oxford Word of the Year was the first non-word to receive the honor.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Oxford University Press / Unicode Consortium",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An oversized emoji symbol radiating light above a modern cityscape at night",
+    "tags": [
+      "emoji",
+      "language",
+      "oxford",
+      "word of the year",
+      "unicode"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-chess-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "games",
+    "statement": "Chess originated in India around the 6th century CE as a game called Chaturanga, representing the four divisions of an ancient army.",
+    "quizQuestion": "What was the ancient Indian precursor to chess called, developed around the 6th century CE?",
+    "correctAnswer": "Chaturanga",
+    "distractors": [
+      "Shatranj",
+      "Wei Qi",
+      "Liubo",
+      "Pachisi",
+      "Chatrang",
+      "Ashtapada",
+      "Mancala",
+      "Senet"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Chaturanga (Sanskrit for 'four divisions') was an early chess variant played in the Gupta Empire of India. It had pieces representing infantry, cavalry, elephants, and chariots — corresponding to the modern pawn, knight, bishop, and rook. The game spread to Persia as Chatrang/Shatranj, then to the Arab world, and finally reached Europe by the 9th century.",
+    "wowFactor": "The word 'checkmate' comes from the Persian/Arabic phrase 'shah mat' — meaning 'the king is helpless' or 'the king is dead.'",
+    "variants": [
+      {
+        "question": "What does 'Chaturanga' mean in Sanskrit?",
+        "type": "forward",
+        "answer": "Four divisions"
+      },
+      {
+        "question": "In which ancient Indian empire did Chaturanga originate?",
+        "type": "context",
+        "answer": "Gupta Empire"
+      },
+      {
+        "question": "What is the origin language of the word 'checkmate'?",
+        "type": "reverse",
+        "answer": "Persian/Arabic (shah mat)"
+      },
+      {
+        "question": "True or false: Chess reached Europe before it spread to the Arab world.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ornate carved chess pieces on a wooden board in an ancient Indian palace setting",
+    "tags": [
+      "chess",
+      "india",
+      "chaturanga",
+      "history",
+      "board game"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-chess-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "miscellaneous_oddities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "miscellaneous_oddities",
+    "categoryL3": "mathematics",
+    "statement": "The number of possible unique chess games is estimated at 10^120, a figure known as the Shannon Number — vastly exceeding the number of atoms in the observable universe.",
+    "quizQuestion": "What is the name given to the estimated number (10^120) of possible unique chess games?",
+    "correctAnswer": "Shannon Number",
+    "distractors": [
+      "Turing Number",
+      "Kasparov Constant",
+      "Fibonacci Sequence",
+      "Erdős Number",
+      "Ramsey Number",
+      "Graham's Number",
+      "Planck Constant",
+      "Avogadro Number"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Claude Shannon calculated in 1950 that the number of possible chess games is approximately 10^120. This is derived from an average of about 30 legal moves per position and an average game length of 40 moves per player. By contrast, the observable universe contains roughly 10^80 atoms, making chess combinatorially more complex than the physical universe.",
+    "wowFactor": "There are more possible chess games than there are atoms in the observable universe (estimated at ~10^80). Chess is literally more complex than reality.",
+    "variants": [
+      {
+        "question": "Who calculated the Shannon Number for chess in 1950?",
+        "type": "forward",
+        "answer": "Claude Shannon"
+      },
+      {
+        "question": "Approximately how many atoms are in the observable universe, for comparison to the Shannon Number?",
+        "type": "context",
+        "answer": "About 10^80"
+      },
+      {
+        "question": "What is the approximate value of the Shannon Number?",
+        "type": "reverse",
+        "answer": "10^120"
+      },
+      {
+        "question": "True or false: The number of possible chess games exceeds the estimated number of atoms in the observable universe.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Shannon, Claude (1950). 'Programming a Computer for Playing Chess'",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing chess board suspended in a starfield with mathematical formulas drifting in the background",
+    "tags": [
+      "chess",
+      "shannon number",
+      "mathematics",
+      "combinatorics",
+      "universe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-chess-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "artificial_intelligence",
+    "statement": "In 1997, IBM's Deep Blue became the first computer to defeat a reigning world chess champion in a match, beating Garry Kasparov 3.5–2.5.",
+    "quizQuestion": "Which computer defeated world chess champion Garry Kasparov in 1997, becoming the first to beat a reigning champion in a match?",
+    "correctAnswer": "Deep Blue",
+    "distractors": [
+      "Stockfish",
+      "AlphaZero",
+      "Deep Thought",
+      "HAL 9000",
+      "Chess Master Pro",
+      "Fritz",
+      "Hydra",
+      "Komodo"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "IBM's Deep Blue supercomputer defeated world chess champion Garry Kasparov in a six-game match in May 1997, winning 3.5 to 2.5. This was a rematch — Kasparov had beaten an earlier version of Deep Blue in 1996. The 1997 victory was considered a landmark moment in artificial intelligence history. Deep Blue could evaluate 200 million positions per second.",
+    "wowFactor": "Kasparov accused IBM of cheating and demanded a rematch. IBM instead dismantled Deep Blue — ensuring its record would never be challenged.",
+    "variants": [
+      {
+        "question": "Which company created the chess computer Deep Blue?",
+        "type": "forward",
+        "answer": "IBM"
+      },
+      {
+        "question": "What was the final score when Deep Blue defeated Kasparov in 1997?",
+        "type": "reverse",
+        "answer": "3.5 to 2.5"
+      },
+      {
+        "question": "Approximately how many chess positions per second could Deep Blue evaluate?",
+        "type": "context",
+        "answer": "200 million"
+      },
+      {
+        "question": "True or false: Kasparov had beaten an earlier version of Deep Blue in 1996, before losing the 1997 rematch.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "IBM Research / ESPN",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tense chess match between a human player and a glowing computer terminal in a darkened hall",
+    "tags": [
+      "chess",
+      "deep blue",
+      "kasparov",
+      "ibm",
+      "ai",
+      "1997"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-calendar-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "calendar_history",
+    "statement": "The Gregorian calendar was introduced by Pope Gregory XIII in 1582, replacing the Julian calendar which had accumulated a 10-day error over centuries.",
+    "quizQuestion": "Who introduced the Gregorian calendar in 1582?",
+    "correctAnswer": "Pope Gregory XIII",
+    "distractors": [
+      "Julius Caesar",
+      "Pope Clement VII",
+      "King Philip II of Spain",
+      "Pope Innocent III",
+      "Nicolaus Copernicus",
+      "Emperor Charles V",
+      "Pope Urban VIII",
+      "Galileo Galilei"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Julian calendar (introduced by Julius Caesar in 45 BCE) calculated the year as 365.25 days — slightly too long. This 11-minute annual error accumulated to 10 days by the 16th century, causing the spring equinox to drift away from its calendar date. Pope Gregory XIII reformed the calendar to correct this, and it is now the international civil standard.",
+    "wowFactor": "When Catholic countries adopted the Gregorian calendar in October 1582, they went to sleep on October 4th and woke up on October 15th — 10 days simply vanished.",
+    "variants": [
+      {
+        "question": "Which calendar did the Gregorian calendar replace in 1582?",
+        "type": "forward",
+        "answer": "Julian calendar"
+      },
+      {
+        "question": "How many days had the Julian calendar drifted by when the Gregorian calendar was introduced?",
+        "type": "reverse",
+        "answer": "10 days"
+      },
+      {
+        "question": "Who introduced the Julian calendar that the Gregorian calendar later replaced?",
+        "type": "context",
+        "answer": "Julius Caesar"
+      },
+      {
+        "question": "True or false: The Gregorian calendar is now the international civil standard.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A papal chamber with clerics studying a large ornate calendar on the wall",
+    "tags": [
+      "calendar",
+      "gregorian",
+      "pope gregory",
+      "julian calendar",
+      "1582"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-calendar-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "calendar_rules",
+    "statement": "A leap year occurs every 4 years, except for years divisible by 100 — unless they are also divisible by 400, in which case they are leap years.",
+    "quizQuestion": "Under the Gregorian calendar, which of the following is a leap year?",
+    "correctAnswer": "2000",
+    "distractors": [
+      "1900",
+      "1800",
+      "1700",
+      "2100",
+      "2200",
+      "1600 (trick: also correct but 2000 is the primary test case)",
+      "1500",
+      "2300"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Gregorian calendar adds a leap day (February 29) every 4 years to account for the extra ~6 hours in the solar year beyond 365 days. The century exception (no leap day in 1700, 1800, 1900) and the 400-year correction (2000 was a leap year) keep the calendar precisely aligned. Without this rule, the year 2000 would have been skipped, and many computer systems were incorrectly programmed for this (Y2K precursor).",
+    "wowFactor": "The year 1900 was NOT a leap year, but 2000 was. This quirk means the Gregorian calendar only needs a 1-day correction every 3,333 years.",
+    "variants": [
+      {
+        "question": "Under the Gregorian calendar, a century year is a leap year only if it is divisible by what number?",
+        "type": "forward",
+        "answer": "400"
+      },
+      {
+        "question": "In the Gregorian calendar, which month receives the extra day in a leap year?",
+        "type": "context",
+        "answer": "February"
+      },
+      {
+        "question": "True or false: The year 1900 was a leap year under the Gregorian calendar.",
+        "type": "true_false",
+        "answer": "False"
+      },
+      {
+        "question": "How many days does February have in a standard (non-leap) year?",
+        "type": "reverse",
+        "answer": "28"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A calendar open to February with the 29th date highlighted in glowing gold",
+    "tags": [
+      "calendar",
+      "leap year",
+      "gregorian",
+      "february",
+      "divisible by 400"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-calendar-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "calendar_history",
+    "statement": "When Britain and its colonies adopted the Gregorian calendar in 1752, they had to skip 11 days — going directly from September 2 to September 14.",
+    "quizQuestion": "When Britain adopted the Gregorian calendar in 1752, how many days were skipped?",
+    "correctAnswer": "11 days",
+    "distractors": [
+      "10 days",
+      "7 days",
+      "13 days",
+      "14 days",
+      "9 days",
+      "12 days",
+      "15 days",
+      "8 days"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Britain was one of the last major nations to switch from the Julian to the Gregorian calendar, finally making the change in 1752 — 170 years after Catholic countries adopted it. By then, the Julian calendar had drifted 11 days (not 10, as an extra day accumulated). The American colonies, still British at the time, also made the switch. George Washington was actually born on February 11, 1731, but later celebrated on February 22 under the new calendar.",
+    "wowFactor": "Riots reportedly broke out with people demanding 'Give us our 11 days back!' — though historians debate whether this actually happened or is a myth.",
+    "variants": [
+      {
+        "question": "In 1752 Britain, what date immediately followed September 2 when switching to the Gregorian calendar?",
+        "type": "forward",
+        "answer": "September 14"
+      },
+      {
+        "question": "How many years after Catholic countries adopted the Gregorian calendar did Britain finally switch?",
+        "type": "context",
+        "answer": "170 years"
+      },
+      {
+        "question": "George Washington's original birth date was February 11, but it is now celebrated on what date after the calendar switch?",
+        "type": "reverse",
+        "answer": "February 22"
+      },
+      {
+        "question": "True or false: The American colonies switched from the Julian to the Gregorian calendar at the same time as Britain in 1752.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Royal Astronomical Society / Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cobblestone street with agitated townspeople and calendar pages flying through the air",
+    "tags": [
+      "calendar",
+      "britain",
+      "1752",
+      "missing days",
+      "gregorian reform"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-compass-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "navigation",
+    "statement": "The magnetic compass was invented in China during the Han Dynasty (around 200 BCE–200 CE), originally used for feng shui divination before being applied to navigation.",
+    "quizQuestion": "In which ancient civilization was the magnetic compass invented?",
+    "correctAnswer": "China",
+    "distractors": [
+      "Ancient Greece",
+      "Ancient Egypt",
+      "Mesopotamia",
+      "Phoenicia",
+      "Rome",
+      "Persia",
+      "India",
+      "Viking Scandinavia"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The earliest compass-like devices appeared in China during the Han Dynasty, using lodestone (a naturally magnetized iron oxide mineral). Early Chinese compasses pointed south and were used for geomancy (feng shui) to align buildings with the earth's energy. The magnetic compass was adapted for maritime navigation in China by around the 11th century CE, and reached Europe via Arab traders by the 12th-13th centuries.",
+    "wowFactor": "The first compasses were spoons carved from lodestone (naturally magnetic rock) that were balanced on a polished bronze plate — they pointed south, not north.",
+    "variants": [
+      {
+        "question": "What was the original use of the magnetic compass in ancient China before it was used for navigation?",
+        "type": "forward",
+        "answer": "Feng shui divination (geomancy)"
+      },
+      {
+        "question": "What mineral were the earliest Chinese compasses made from?",
+        "type": "reverse",
+        "answer": "Lodestone (naturally magnetized iron oxide)"
+      },
+      {
+        "question": "Which direction did early Chinese compasses point?",
+        "type": "context",
+        "answer": "South"
+      },
+      {
+        "question": "True or false: The magnetic compass was invented during China's Han Dynasty.",
+        "type": "true_false",
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Needham, J. 'Science and Civilisation in China' / Encyclopaedia Britannica",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bronze divination plate with a carved lodestone spoon compass in an ancient Chinese palace",
+    "tags": [
+      "compass",
+      "china",
+      "invention",
+      "han dynasty",
+      "navigation",
+      "lodestone"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-compass-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "navigation",
+    "statement": "Magnetic north (where a compass points) and true north (the geographic North Pole) are different locations, currently about 500 km apart in northern Canada.",
+    "quizQuestion": "What is the term for the angular difference between magnetic north (compass north) and true north?",
+    "correctAnswer": "Magnetic declination",
+    "distractors": [
+      "Magnetic variation only",
+      "Polar offset",
+      "True bearing",
+      "Grid convergence",
+      "Azimuth error",
+      "Declination angle",
+      "Compass deviation",
+      "Isogonic error"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "True north is the direction toward Earth's geographic North Pole — the axis of rotation. Magnetic north is where a compass needle points, determined by Earth's magnetic field generated by molten iron in the outer core. The difference between them is called 'magnetic declination' and varies by location. Navigators must account for this difference or risk significant course errors over long distances.",
+    "wowFactor": "Magnetic north is not fixed — it moves up to 55 km per year. It has drifted from northern Canada into the Arctic Ocean and is slowly heading toward Siberia.",
+    "variants": [
+      {
+        "question": "What causes the difference between magnetic north and true north?",
+        "type": "forward",
+        "answer": "Earth's magnetic field is generated by molten iron in the outer core, not at the geographic poles"
+      },
+      {
+        "question": "Approximately how far apart are magnetic north and true north currently?",
+        "type": "reverse",
+        "answer": "About 500 km"
+      },
+      {
+        "question": "In which direction is magnetic north currently drifting?",
+        "type": "context",
+        "answer": "Toward Siberia (Russia)"
+      },
+      {
+        "question": "True or false: Magnetic north is a fixed location that does not move.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NOAA / British Geological Survey",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A nautical chart with diverging arrows marking magnetic north and true north, compass rose in the corner",
+    "tags": [
+      "compass",
+      "magnetic north",
+      "true north",
+      "magnetic declination",
+      "navigation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-compass-003",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "transportation",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "transportation",
+    "categoryL3": "navigation",
+    "statement": "Before GPS, sailors used 'dead reckoning' with compass, known speed, and elapsed time to estimate their position — a technique used successfully by Polynesian navigators 3,000 years ago.",
+    "quizQuestion": "What is the navigation technique of estimating position from known speed, direction, and time called?",
+    "correctAnswer": "Dead reckoning",
+    "distractors": [
+      "Celestial navigation",
+      "Triangulation",
+      "GPS positioning",
+      "Waypoint tracking",
+      "Latitude sailing",
+      "Star fixing",
+      "Inertial navigation",
+      "Chart piloting"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Dead reckoning is the process of calculating current position based on a known starting point, direction (compass bearing), speed, and elapsed time. Polynesian wayfinders used a sophisticated system of celestial navigation, reading star rise/set points, ocean swell patterns, current temperatures, and wildlife behavior to navigate without instruments. They colonized Hawaii, New Zealand, Easter Island, and islands across the Pacific between 1500 BCE and 1200 CE.",
+    "wowFactor": "Polynesian navigators colonized islands across 10 million square miles of open Pacific Ocean using stars, ocean swells, bird behavior, and cloud patterns — no compass needed.",
+    "variants": [
+      {
+        "question": "Which ancient seafarers are renowned for colonizing the Pacific Ocean using non-instrument navigation techniques?",
+        "type": "forward",
+        "answer": "Polynesian navigators"
+      },
+      {
+        "question": "Approximately how large an area of ocean did Polynesian navigators colonize using traditional wayfinding?",
+        "type": "context",
+        "answer": "10 million square miles"
+      },
+      {
+        "question": "Name two natural cues Polynesian navigators used to find their way across the Pacific Ocean.",
+        "type": "reverse",
+        "answer": "Stars and ocean swells (also: bird behavior, cloud patterns, current temperatures)"
+      },
+      {
+        "question": "True or false: Polynesian navigators primarily used magnetic compasses to colonize the Pacific.",
+        "type": "true_false",
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Gladwin, T. 'East is a Big Bird' / National Geographic",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A traditional outrigger canoe on a moonlit ocean, navigator silhouetted against a glowing star-filled sky",
+    "tags": [
+      "compass",
+      "navigation",
+      "polynesian",
+      "dead reckoning",
+      "pacific ocean",
+      "wayfinding"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

@@ -10457,5 +10457,1638 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-eth-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities_settlements",
+    "categoryL1": "Geography",
+    "categoryL2": "cities_settlements",
+    "categoryL3": "Ethiopia",
+    "statement": "Ethiopia is widely regarded as the birthplace of coffee, where wild Coffea arabica plants were first discovered in the Kaffa region.",
+    "quizQuestion": "In which country did wild coffee plants originate, giving the world its first coffee?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Yemen",
+      "Brazil",
+      "Colombia",
+      "Kenya",
+      "Saudi Arabia",
+      "Indonesia",
+      "Vietnam",
+      "India"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia",
+      "Kaffa region, Ethiopia"
+    ],
+    "explanation": "Wild Coffea arabica plants grow in Ethiopia's Kaffa highlands. Local legend holds that a goat herder named Kaldi noticed his goats became energetic after eating the berries, leading to the discovery of coffee around 850 CE. Yemen later cultivated and traded coffee, giving rise to the Arabic-origin myth.",
+    "wowFactor": "The world's most popular beverage traces its roots to Ethiopian highland goats — every cup of coffee began in Africa!",
+    "variants": [
+      {
+        "question": "The Kaffa region, believed to be coffee's place of origin, is located in which country?",
+        "type": "context",
+        "distractors": [
+          "Yemen",
+          "Sudan",
+          "Kenya"
+        ],
+        "answer": "Ethiopia"
+      },
+      {
+        "question": "Coffee (Coffea arabica) was first discovered growing wild in ___________.",
+        "type": "fill_blank",
+        "distractors": [
+          "Yemen",
+          "Brazil",
+          "Colombia"
+        ],
+        "answer": "Ethiopia"
+      },
+      {
+        "question": "Ethiopia is NOT the birthplace of coffee.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Which African nation's highlands gave the world the coffee plant?",
+        "type": "forward",
+        "distractors": [
+          "Kenya",
+          "Tanzania",
+          "Uganda"
+        ],
+        "answer": "Ethiopia"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "National Geographic / Botanical History",
+    "sourceUrl": "https://www.nationalgeographic.com/culture/article/coffee",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lush green Ethiopian highland with wild coffee trees bearing red cherries, mist-covered mountains in the background, morning light filtering through the forest canopy.",
+    "tags": [
+      "coffee",
+      "Ethiopia",
+      "Africa",
+      "origin",
+      "Kaffa",
+      "agriculture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-eth-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "political_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "political_geography",
+    "categoryL3": "Ethiopia",
+    "statement": "Ethiopia is one of the world's oldest nations and the only African country never colonised by a European power, having repelled Italy at the Battle of Adwa in 1896.",
+    "quizQuestion": "Which African country defeated Italy at the Battle of Adwa in 1896, remaining uncolonised?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Liberia",
+      "Egypt",
+      "Sudan",
+      "Senegal",
+      "Somalia",
+      "Tanzania",
+      "Ghana",
+      "Mozambique"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia",
+      "Abyssinia"
+    ],
+    "explanation": "At the Battle of Adwa on 1 March 1896, Emperor Menelik II's forces defeated a 17,000-strong Italian army, making Ethiopia a symbol of African resistance to colonialism. Liberia also avoided colonisation due to its founding by freed American slaves, but Ethiopia's military victory made it uniquely iconic.",
+    "wowFactor": "In 1896, Ethiopia handed a European colonial army its worst defeat in African history — the ripple shocked the whole continent!",
+    "variants": [
+      {
+        "question": "Where was the decisive 1896 battle that secured Ethiopia's independence from Italy?",
+        "type": "context",
+        "distractors": [
+          "Axum",
+          "Addis Ababa",
+          "Harar"
+        ],
+        "answer": "Adwa"
+      },
+      {
+        "question": "Ethiopia defeated __________ at the Battle of Adwa in 1896.",
+        "type": "fill_blank",
+        "distractors": [
+          "France",
+          "Britain",
+          "Portugal"
+        ],
+        "answer": "Italy"
+      },
+      {
+        "question": "Ethiopia was colonised by a European power during the Scramble for Africa.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Which nation is famous for being the only mainland African country to resist European colonisation (apart from brief occupation)?",
+        "type": "forward",
+        "distractors": [
+          "Liberia",
+          "South Africa",
+          "Egypt"
+        ],
+        "answer": "Ethiopia"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/event/Battle-of-Adwa",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Colonialism is a sensitive historical topic; factually accurate and culturally significant.",
+    "visualDescription": "Pixel art depicting Ethiopian warriors in traditional battle dress standing victorious on a hillside, mountains of Adwa in the background, morning sky, Ethiopian flag colours prominent.",
+    "tags": [
+      "Ethiopia",
+      "colonialism",
+      "Africa",
+      "Battle of Adwa",
+      "independence",
+      "Menelik II"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-eth-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "Ethiopia",
+    "statement": "Lalibela, in northern Ethiopia, is home to eleven medieval rock-hewn churches carved directly into volcanic rock, built in the 12th–13th centuries.",
+    "quizQuestion": "Which Ethiopian town is famous for its eleven churches carved entirely out of solid rock in the 12th century?",
+    "correctAnswer": "Lalibela",
+    "distractors": [
+      "Axum",
+      "Harar",
+      "Gondar",
+      "Addis Ababa",
+      "Dire Dawa",
+      "Jimma",
+      "Petra",
+      "Mekelle"
+    ],
+    "acceptableAnswers": [
+      "Lalibela",
+      "Roha"
+    ],
+    "explanation": "King Lalibela ordered the churches built in the late 12th century, reportedly to create a 'New Jerusalem' in Africa. Craftsmen excavated deep trenches into volcanic rock and then carved the churches downward, leaving them still attached to the bedrock. They remain active places of worship and a major pilgrimage site.",
+    "wowFactor": "These churches were carved top-down INTO the earth — builders started from the roof and dug 15 metres down to create the floor!",
+    "variants": [
+      {
+        "question": "How many rock-hewn churches are located in Lalibela, Ethiopia?",
+        "type": "forward",
+        "distractors": [
+          "Seven",
+          "Three",
+          "Fourteen"
+        ],
+        "answer": "Eleven"
+      },
+      {
+        "question": "Lalibela's rock-hewn churches were carved from __________ rock.",
+        "type": "fill_blank",
+        "distractors": [
+          "Sandstone",
+          "Marble",
+          "Limestone"
+        ],
+        "answer": "Volcanic"
+      },
+      {
+        "question": "Lalibela's churches were built above ground using conventional construction techniques.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "UNESCO lists Lalibela's rock-hewn churches as a World Heritage Site in which country?",
+        "type": "context",
+        "distractors": [
+          "Eritrea",
+          "Sudan",
+          "Kenya"
+        ],
+        "answer": "Ethiopia"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "UNESCO World Heritage",
+    "sourceUrl": "https://whc.unesco.org/en/list/18",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a large cross-shaped church carved deep into red volcanic rock, visible roof at ground level, tourists and pilgrims surrounding the pit opening, bright blue sky above.",
+    "tags": [
+      "Lalibela",
+      "Ethiopia",
+      "rock churches",
+      "UNESCO",
+      "medieval",
+      "pilgrimage",
+      "Africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ken-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "Kenya",
+    "statement": "The Great Rift Valley runs through Kenya from north to south, forming a dramatic geological trench that also contains several of East Africa's deepest lakes.",
+    "quizQuestion": "Which major geological feature runs north to south through Kenya, forming deep lakes and volcanic highlands?",
+    "correctAnswer": "Great Rift Valley",
+    "distractors": [
+      "Congo Basin",
+      "Nile River Valley",
+      "Zambezi Trough",
+      "Ethiopian Highlands",
+      "Limpopo Valley",
+      "Niger Delta",
+      "Okavango Basin",
+      "Cape Fold Belt"
+    ],
+    "acceptableAnswers": [
+      "Great Rift Valley",
+      "East African Rift",
+      "Gregory Rift"
+    ],
+    "explanation": "The East African Rift (Great Rift Valley) is a 6,000-km active continental rift that stretches from the Afar Triangle in Ethiopia to Mozambique. In Kenya it averages 50 km wide and up to 900 m deep, hosting lakes, volcanoes, and some of the earliest human fossils ever found.",
+    "wowFactor": "Africa is literally tearing itself apart — in about 50 million years, a new ocean will separate East Africa from the rest of the continent!",
+    "variants": [
+      {
+        "question": "The Great Rift Valley is evidence of which geological process happening beneath East Africa?",
+        "type": "context",
+        "distractors": [
+          "Subduction",
+          "Volcanic island arc formation",
+          "Glacial erosion"
+        ],
+        "answer": "Continental rifting"
+      },
+      {
+        "question": "Kenya's Great Rift Valley contains Lake Turkana, the world's largest __________ lake.",
+        "type": "fill_blank",
+        "distractors": [
+          "Volcanic",
+          "Freshwater",
+          "Saline"
+        ],
+        "answer": "Desert"
+      },
+      {
+        "question": "The Great Rift Valley is gradually splitting Africa into two separate land masses.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which country does the Great Rift Valley pass through as it runs from the Afar Triangle to Mozambique?",
+        "type": "forward",
+        "distractors": [
+          "Nigeria",
+          "Ghana",
+          "Angola"
+        ],
+        "answer": "Kenya"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "USGS / National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/science/article/east-africa-rift",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of a vast green valley flanked by steep escarpments, a bright blue lake glinting in the floor, smoke rising from a distant volcano, Kenya savanna colours.",
+    "tags": [
+      "Kenya",
+      "Great Rift Valley",
+      "geology",
+      "Africa",
+      "tectonics",
+      "lakes"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ken-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities_settlements",
+    "categoryL1": "Geography",
+    "categoryL2": "cities_settlements",
+    "categoryL3": "Kenya",
+    "statement": "Kenya dominates long-distance running, with athletes from the Kalenjin people of the Rift Valley highlands winning a disproportionate share of global marathon titles.",
+    "quizQuestion": "Which ethnic group from Kenya's Rift Valley highlands is famed for producing most of the world's greatest marathon runners?",
+    "correctAnswer": "Kalenjin",
+    "distractors": [
+      "Kikuyu",
+      "Luo",
+      "Masai",
+      "Amhara",
+      "Zulu",
+      "Yoruba",
+      "Oromo",
+      "Hausa"
+    ],
+    "acceptableAnswers": [
+      "Kalenjin",
+      "Kalenjin people"
+    ],
+    "explanation": "The Kalenjin ethnic cluster from Kenya's highlands around Eldoret (altitude ~2,000 m) have won around 40% of all major international distance running medals since 1968. Researchers cite altitude adaptation, slender lower-limb biomechanics, running barefoot as children, and strong communal running culture as contributing factors.",
+    "wowFactor": "One Kenyan ethnic group — roughly 5 million people — has won more world-class marathons than the entire population of the USA combined!",
+    "variants": [
+      {
+        "question": "The Kalenjin people live predominantly in which region of Kenya?",
+        "type": "context",
+        "distractors": [
+          "Coastal lowlands",
+          "Lake Victoria basin",
+          "Nairobi metro area"
+        ],
+        "answer": "Rift Valley highlands"
+      },
+      {
+        "question": "Scientists suggest Kalenjin runners benefit partly from high-altitude training and distinctively __________ lower legs.",
+        "type": "fill_blank",
+        "distractors": [
+          "Muscular",
+          "Short",
+          "Dense"
+        ],
+        "answer": "Slender"
+      },
+      {
+        "question": "Kenya has produced more Olympic marathon champions than any other single nation.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which country is home to Eliud Kipchoge, the first human to run a marathon in under two hours?",
+        "type": "forward",
+        "distractors": [
+          "Ethiopia",
+          "Tanzania",
+          "Uganda"
+        ],
+        "answer": "Kenya"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "BBC Sport / Scientific American",
+    "sourceUrl": "https://www.scientificamerican.com/article/kenya-running/",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Cultural and ethnic generalisation handled carefully; based on documented athletic dominance.",
+    "visualDescription": "Pixel art of a lone Kenyan runner on a highland dirt road at dawn, red earth path, acacia trees, orange sunrise horizon, running vest in green and red Kenyan colours.",
+    "tags": [
+      "Kenya",
+      "Kalenjin",
+      "marathon",
+      "running",
+      "Rift Valley",
+      "athletics",
+      "Africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ken-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "Kenya",
+    "statement": "Kenya's Maasai Mara reserve hosts the Great Wildebeest Migration, the world's largest overland animal migration, each year between July and October.",
+    "quizQuestion": "Which Kenyan wildlife reserve hosts the world's largest overland animal migration — the Great Wildebeest Migration?",
+    "correctAnswer": "Maasai Mara",
+    "distractors": [
+      "Serengeti",
+      "Kruger National Park",
+      "Amboseli",
+      "Tsavo",
+      "Samburu",
+      "Hwange",
+      "Okavango Delta",
+      "Ngorongoro Crater"
+    ],
+    "acceptableAnswers": [
+      "Maasai Mara",
+      "Masai Mara",
+      "Maasai Mara National Reserve"
+    ],
+    "explanation": "Each year 1.5 million wildebeest, plus hundreds of thousands of zebras and gazelles, circuit 1,800 km between the Serengeti (Tanzania) and Maasai Mara (Kenya). The Mara River crossing — where crocodiles ambush the herds — is the most spectacular wildlife event on Earth.",
+    "wowFactor": "1.5 million wildebeest crossing a crocodile-infested river — the sheer chaos makes it the greatest wildlife spectacle on the planet!",
+    "variants": [
+      {
+        "question": "The Great Wildebeest Migration crosses from Tanzania's Serengeti into Kenya's Maasai Mara, crossing which river?",
+        "type": "context",
+        "distractors": [
+          "Tana River",
+          "Athi River",
+          "Nile River"
+        ],
+        "answer": "Mara River"
+      },
+      {
+        "question": "Approximately how many wildebeest participate in the Great Migration each year?",
+        "type": "forward",
+        "distractors": [
+          "500,000",
+          "3 million",
+          "250,000"
+        ],
+        "answer": "1.5 million"
+      },
+      {
+        "question": "The Great Wildebeest Migration visits the Maasai Mara between July and __________ each year.",
+        "type": "fill_blank",
+        "distractors": [
+          "February",
+          "May",
+          "December"
+        ],
+        "answer": "October"
+      },
+      {
+        "question": "The Great Wildebeest Migration is considered the world's largest overland animal migration.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Kenya Wildlife Service",
+    "sourceUrl": "https://www.kws.go.ke/content/maasai-mara-national-reserve",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of thousands of wildebeest splashing across a muddy river, a crocodile lunging from below, acacia savanna on both banks, dramatic storm clouds overhead.",
+    "tags": [
+      "Kenya",
+      "Maasai Mara",
+      "wildebeest",
+      "migration",
+      "wildlife",
+      "safari",
+      "Africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-lby-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "Libya",
+    "statement": "Over 90% of Libya's total land area is covered by the Sahara Desert, making it one of the most desert-dominated nations on Earth.",
+    "quizQuestion": "Approximately what percentage of Libya's land area is covered by the Sahara Desert?",
+    "correctAnswer": "Over 90%",
+    "distractors": [
+      "About 50%",
+      "Around 70%",
+      "Roughly 40%",
+      "Nearly 60%",
+      "About 25%",
+      "Over 80%",
+      "Less than 30%",
+      "Approximately 65%"
+    ],
+    "acceptableAnswers": [
+      "Over 90%",
+      "90%",
+      "More than 90%",
+      "About 90%"
+    ],
+    "explanation": "Libya's total area is about 1.76 million km², but more than 90% is Saharan desert or semi-desert. The population is concentrated along the narrow Mediterranean coastal strip (the Jefara Plain) and in a few inland oases. Libya holds parts of the Libyan Desert, the most arid sub-region of the Sahara.",
+    "wowFactor": "Libya is bigger than Alaska — and more than 90% of it is one of the harshest deserts on Earth!",
+    "variants": [
+      {
+        "question": "Which North African country has one of the highest desert-to-total-land ratios in the world?",
+        "type": "forward",
+        "distractors": [
+          "Morocco",
+          "Tunisia",
+          "Algeria"
+        ],
+        "answer": "Libya"
+      },
+      {
+        "question": "Libya's tiny coastal strip along the Mediterranean is the country's only non-desert region.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The __________ Desert covers more than 90% of Libya's territory.",
+        "type": "fill_blank",
+        "distractors": [
+          "Arabian",
+          "Namib",
+          "Gobi"
+        ],
+        "answer": "Sahara"
+      },
+      {
+        "question": "Libya's Sahara is part of which larger landmass's desert belt?",
+        "type": "context",
+        "distractors": [
+          "Asia",
+          "Middle East",
+          "Arabian Peninsula"
+        ],
+        "answer": "Africa"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "CIA World Factbook",
+    "sourceUrl": "https://www.cia.gov/the-world-factbook/countries/libya/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of vast golden sand dunes stretching to the horizon under a scorching white-blue sky, a tiny oasis with palm trees in the foreground, no settlements in sight.",
+    "tags": [
+      "Libya",
+      "Sahara",
+      "desert",
+      "North Africa",
+      "climate",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-lby-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities_settlements",
+    "categoryL1": "Geography",
+    "categoryL2": "cities_settlements",
+    "categoryL3": "Libya",
+    "statement": "Leptis Magna, near modern Khoms in Libya, is one of the best-preserved Roman cities in the world, and was the birthplace of Emperor Septimius Severus.",
+    "quizQuestion": "Which ancient Roman city, considered one of the best-preserved in the world, is located in modern-day Libya?",
+    "correctAnswer": "Leptis Magna",
+    "distractors": [
+      "Carthage",
+      "Timgad",
+      "Volubilis",
+      "Cyrene",
+      "Sabratha",
+      "Pompeii",
+      "Dougga",
+      "Thuburbo Majus"
+    ],
+    "acceptableAnswers": [
+      "Leptis Magna",
+      "Lepcis Magna",
+      "Lpqy"
+    ],
+    "explanation": "Leptis Magna was a major city of the Roman Empire on the Mediterranean coast. It reached its zenith under Emperor Septimius Severus (born there in 145 CE), who lavished it with grand public buildings. Drifting Saharan sand buried much of the city after its decline, preserving colonnaded streets, a forum, basilica, and amphitheatre in extraordinary condition.",
+    "wowFactor": "Sahara sand accidentally performed better conservation work than most museums — burying Leptis Magna so perfectly that 2,000-year-old mosaics still have their colour!",
+    "variants": [
+      {
+        "question": "Leptis Magna was the birthplace of which Roman Emperor?",
+        "type": "context",
+        "distractors": [
+          "Augustus",
+          "Hadrian",
+          "Trajan"
+        ],
+        "answer": "Septimius Severus"
+      },
+      {
+        "question": "Leptis Magna is located in which modern North African country?",
+        "type": "forward",
+        "distractors": [
+          "Tunisia",
+          "Algeria",
+          "Morocco"
+        ],
+        "answer": "Libya"
+      },
+      {
+        "question": "Leptis Magna's exceptional preservation is partly due to being buried under __________ for centuries.",
+        "type": "fill_blank",
+        "distractors": [
+          "Volcanic ash",
+          "Floodwater",
+          "Dense forest"
+        ],
+        "answer": "Sand"
+      },
+      {
+        "question": "Leptis Magna is a UNESCO World Heritage Site.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "UNESCO World Heritage",
+    "sourceUrl": "https://whc.unesco.org/en/list/183",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of tall Roman marble columns standing along a colonnaded street, golden desert sand drifting between them, Mediterranean blue sky and sea visible in the background.",
+    "tags": [
+      "Libya",
+      "Leptis Magna",
+      "Roman",
+      "ancient",
+      "UNESCO",
+      "Septimius Severus",
+      "archaeology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-lby-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "Libya",
+    "statement": "Libya holds the largest proven oil reserves in Africa and relies on petroleum for over 95% of its export revenues.",
+    "quizQuestion": "Which African country holds the continent's largest proven oil reserves?",
+    "correctAnswer": "Libya",
+    "distractors": [
+      "Nigeria",
+      "Angola",
+      "Algeria",
+      "South Africa",
+      "Gabon",
+      "Sudan",
+      "Equatorial Guinea",
+      "Republic of the Congo"
+    ],
+    "acceptableAnswers": [
+      "Libya"
+    ],
+    "explanation": "Libya's proven oil reserves are approximately 48 billion barrels — the largest in Africa, just ahead of Nigeria (~37 billion) and Algeria. The oil fields are concentrated beneath the Libyan Desert. Despite oil wealth, political instability since 2011 has severely limited production.",
+    "wowFactor": "Libya's desert sits on top of more oil than Nigeria — the most petroleum-soaked sand dunes on the African continent!",
+    "variants": [
+      {
+        "question": "Libya's oil wealth places it in what economic category despite its small population?",
+        "type": "context",
+        "distractors": [
+          "Low income",
+          "Subsistence economy",
+          "Agricultural economy"
+        ],
+        "answer": "Upper-middle income"
+      },
+      {
+        "question": "Oil makes up over __________ % of Libya's export revenues.",
+        "type": "fill_blank",
+        "distractors": [
+          "50",
+          "70",
+          "30"
+        ],
+        "answer": "95"
+      },
+      {
+        "question": "Nigeria has larger proven oil reserves than Libya.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Libya's oil fields are concentrated beneath which terrain?",
+        "type": "forward",
+        "distractors": [
+          "Mediterranean coast",
+          "Atlas Mountains",
+          "Nile Delta"
+        ],
+        "answer": "Sahara Desert"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "BP Statistical Review of World Energy / OPEC",
+    "sourceUrl": "https://www.opec.org/opec_web/en/about_us/168.htm",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Energy politics can be sensitive; fact is geologically objective.",
+    "visualDescription": "Pixel art of oil derricks silhouetted against a blazing sunset over flat Saharan sand, pipelines running to the horizon, glowing amber sky.",
+    "tags": [
+      "Libya",
+      "oil",
+      "petroleum",
+      "Africa",
+      "energy",
+      "geo records",
+      "natural resources"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-mor-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities_settlements",
+    "categoryL1": "Geography",
+    "categoryL2": "cities_settlements",
+    "categoryL3": "Morocco",
+    "statement": "The medina of Fes el-Bali in Morocco is a UNESCO World Heritage Site and home to the world's oldest continuously operating university, the University of al-Qarawiyyin, founded in 859 CE.",
+    "quizQuestion": "Which Moroccan city is home to al-Qarawiyyin, widely considered the world's oldest continuously operating university?",
+    "correctAnswer": "Fes",
+    "distractors": [
+      "Marrakech",
+      "Casablanca",
+      "Rabat",
+      "Tangier",
+      "Meknes",
+      "Agadir",
+      "Ouarzazate",
+      "Essaouira"
+    ],
+    "acceptableAnswers": [
+      "Fes",
+      "Fez",
+      "Fès"
+    ],
+    "explanation": "Al-Qarawiyyin was founded in 859 CE by Fatima al-Fihri, a woman from a wealthy Tunisian family, making it predates Bologna (1088) and Oxford (c.1096) by over two centuries. Fes's medina is one of the world's largest car-free urban centres, with over 9,000 narrow lanes.",
+    "wowFactor": "The world's oldest university was founded by a woman in 9th-century Morocco — and it's still operating today!",
+    "variants": [
+      {
+        "question": "Al-Qarawiyyin university in Fes was founded in which century?",
+        "type": "context",
+        "distractors": [
+          "11th century",
+          "7th century",
+          "13th century"
+        ],
+        "answer": "9th century (859 CE)"
+      },
+      {
+        "question": "The medina (old city) of Fes is one of the world's largest __________ urban areas.",
+        "type": "fill_blank",
+        "distractors": [
+          "Modern",
+          "Industrial",
+          "Grid-planned"
+        ],
+        "answer": "Car-free"
+      },
+      {
+        "question": "Al-Qarawiyyin in Fes is older than any European university.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Fes el-Bali, one of the world's most intact medieval cities, is listed as a UNESCO World Heritage Site.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "UNESCO World Heritage / Guinness World Records",
+    "sourceUrl": "https://whc.unesco.org/en/list/170",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a narrow Moroccan medina alley with blue and white tiled walls, arched doorways, a glimpse of a minaret above, golden lanterns hanging between buildings.",
+    "tags": [
+      "Morocco",
+      "Fes",
+      "al-Qarawiyyin",
+      "UNESCO",
+      "medieval",
+      "university",
+      "medina"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-mor-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "Morocco",
+    "statement": "Morocco is the only African country that borders both the Atlantic Ocean and the Mediterranean Sea, and its Sahara dunes at Merzouga are among the continent's most dramatic.",
+    "quizQuestion": "Which African country borders both the Atlantic Ocean and the Mediterranean Sea while also touching the Sahara Desert?",
+    "correctAnswer": "Morocco",
+    "distractors": [
+      "Tunisia",
+      "Algeria",
+      "Libya",
+      "Mauritania",
+      "Egypt",
+      "Senegal",
+      "Western Sahara",
+      "Gambia"
+    ],
+    "acceptableAnswers": [
+      "Morocco",
+      "Kingdom of Morocco",
+      "Al-Maghrib"
+    ],
+    "explanation": "Morocco's northern coast faces the Mediterranean while its western flank stretches along the Atlantic. Its southern desert frontier includes the Erg Chebbi dunes near Merzouga (150 m high). This triple geographic identity — Atlantic nation, Mediterranean nation, and Sahara nation — makes Morocco uniquely diverse within Africa.",
+    "wowFactor": "Morocco spans three completely different worlds: cold Atlantic surf, warm Mediterranean beaches, and scorching Saharan dunes — all in one country!",
+    "variants": [
+      {
+        "question": "Morocco's Sahara frontier is centred near which town famous for its star-shaped dunes?",
+        "type": "context",
+        "distractors": [
+          "Zagora",
+          "Ouarzazate",
+          "Tinghir"
+        ],
+        "answer": "Merzouga"
+      },
+      {
+        "question": "Morocco borders two major bodies of water: the Atlantic Ocean and the __________ Sea.",
+        "type": "fill_blank",
+        "distractors": [
+          "Red",
+          "Black",
+          "Caspian"
+        ],
+        "answer": "Mediterranean"
+      },
+      {
+        "question": "Tunisia, not Morocco, is the only African country with both Atlantic and Mediterranean coastlines.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Which continent's only nation to touch both the Atlantic and Mediterranean while bordering the Sahara is Morocco?",
+        "type": "forward",
+        "distractors": [
+          "Europe",
+          "Asia",
+          "South America"
+        ],
+        "answer": "Africa"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "National Geographic Atlas",
+    "sourceUrl": "https://www.nationalgeographic.com/travel/destination/morocco",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split scene: left side shows crashing Atlantic waves on a rocky shore, centre shows the Strait of Gibraltar, right side shows towering orange Sahara sand dunes at sunset.",
+    "tags": [
+      "Morocco",
+      "Sahara",
+      "Atlantic",
+      "Mediterranean",
+      "Africa",
+      "geography",
+      "Merzouga"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-mor-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "Morocco",
+    "statement": "The Strait of Gibraltar, separating Morocco from Spain, is only 14 km wide at its narrowest point and connects the Atlantic Ocean to the Mediterranean Sea.",
+    "quizQuestion": "What is the approximate minimum width of the Strait of Gibraltar, separating Morocco from Spain?",
+    "correctAnswer": "14 km",
+    "distractors": [
+      "50 km",
+      "100 km",
+      "5 km",
+      "30 km",
+      "200 km",
+      "75 km",
+      "1 km",
+      "500 km"
+    ],
+    "acceptableAnswers": [
+      "14 km",
+      "14 kilometres",
+      "14.3 km",
+      "about 14 km"
+    ],
+    "explanation": "The Strait of Gibraltar is 58 km long and narrows to just 14.3 km between Punta Marroquí in Spain and Punta Cires in Morocco. It carries up to 100,000 commercial ships per year and is one of the world's most strategically important waterways. On a clear day, the Spanish coast is fully visible from the Moroccan shore.",
+    "wowFactor": "Two continents separated by just 14 km of water — you can literally see Europe from Morocco on a clear day!",
+    "variants": [
+      {
+        "question": "The Strait of Gibraltar lies between Morocco and which European country?",
+        "type": "forward",
+        "distractors": [
+          "Portugal",
+          "France",
+          "Italy"
+        ],
+        "answer": "Spain"
+      },
+      {
+        "question": "The Strait of Gibraltar connects the Atlantic Ocean to the __________ Sea.",
+        "type": "fill_blank",
+        "distractors": [
+          "Black",
+          "Red",
+          "Caspian"
+        ],
+        "answer": "Mediterranean"
+      },
+      {
+        "question": "On a clear day, you can see Spain from Morocco across the Strait of Gibraltar.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Strait of Gibraltar is considered the boundary between which two continents?",
+        "type": "context",
+        "distractors": [
+          "Asia and Africa",
+          "Europe and Asia",
+          "North and South America"
+        ],
+        "answer": "Europe and Africa"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Strait-of-Gibraltar",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art view across a narrow blue strait with white-capped waves, Morocco's cliffs on the near shore and the faint Spanish coastline visible across the water under a hazy sky.",
+    "tags": [
+      "Morocco",
+      "Gibraltar",
+      "strait",
+      "Atlantic",
+      "Mediterranean",
+      "Spain",
+      "borders"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-jpn-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "Japan",
+    "statement": "Japan's archipelago consists of approximately 6,852 islands, of which only about 430 are inhabited, with the four main islands — Honshu, Hokkaido, Kyushu, and Shikoku — accounting for 97% of the land area.",
+    "quizQuestion": "Approximately how many islands make up the Japanese archipelago?",
+    "correctAnswer": "6,852",
+    "distractors": [
+      "1,200",
+      "500",
+      "14,000",
+      "3,000",
+      "300",
+      "10,000",
+      "800",
+      "2,500"
+    ],
+    "acceptableAnswers": [
+      "6,852",
+      "approximately 6852",
+      "about 6,852",
+      "6852"
+    ],
+    "explanation": "Japan's official island count (as of a 2023 government resurvey) stands at 14,125, but the traditional figure is 6,852. Honshu (227,960 km²) is the largest, containing Tokyo, Osaka, and Kyoto. Only ~430 islands are inhabited; the rest are too small, remote, or rocky for permanent settlement.",
+    "wowFactor": "Japan is so stretched out as an island chain that its northernmost point is closer to Russia than to its southernmost tip!",
+    "variants": [
+      {
+        "question": "What is Japan's largest island, home to Tokyo?",
+        "type": "forward",
+        "distractors": [
+          "Hokkaido",
+          "Kyushu",
+          "Shikoku"
+        ],
+        "answer": "Honshu"
+      },
+      {
+        "question": "Japan's four main islands account for approximately __________ % of its total land area.",
+        "type": "fill_blank",
+        "distractors": [
+          "75",
+          "50",
+          "85"
+        ],
+        "answer": "97"
+      },
+      {
+        "question": "Japan has more than 6,000 islands in its archipelago.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which of Japan's main islands is the northernmost?",
+        "type": "context",
+        "distractors": [
+          "Honshu",
+          "Kyushu",
+          "Shikoku"
+        ],
+        "answer": "Hokkaido"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Japan Coast Guard / Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Japan",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art top-down view of a curved island chain in deep blue Pacific water, small green islands of varying sizes stretching in a long arc, one large island dominating the centre.",
+    "tags": [
+      "Japan",
+      "islands",
+      "archipelago",
+      "Honshu",
+      "Hokkaido",
+      "Asia",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-jpn-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "Japan",
+    "statement": "Mount Fuji is Japan's tallest mountain at 3,776 metres and is an active stratovolcano that last erupted in 1707.",
+    "quizQuestion": "What is the height of Mount Fuji, Japan's tallest peak and a sacred active volcano?",
+    "correctAnswer": "3,776 metres",
+    "distractors": [
+      "5,895 metres",
+      "2,500 metres",
+      "4,100 metres",
+      "8,848 metres",
+      "1,900 metres",
+      "6,200 metres",
+      "3,000 metres",
+      "4,500 metres"
+    ],
+    "acceptableAnswers": [
+      "3,776 metres",
+      "3776 m",
+      "3,776 m",
+      "3776 metres"
+    ],
+    "explanation": "Mount Fuji (富士山) is a nearly perfectly symmetrical stratovolcano that last erupted in the Hōei eruption of December 1707. Over 300,000 people climb it each summer. It is a UNESCO World Heritage Cultural Site (not natural, due to its profound influence on Japanese art) and is visible from Tokyo on clear days, 100 km away.",
+    "wowFactor": "Mount Fuji is so symmetrical it looks computer-generated — and it's an active volcano that could erupt again any time!",
+    "variants": [
+      {
+        "question": "In which year did Mount Fuji last erupt?",
+        "type": "context",
+        "distractors": [
+          "1923",
+          "1850",
+          "1600"
+        ],
+        "answer": "1707"
+      },
+      {
+        "question": "Mount Fuji is classified as which type of volcano?",
+        "type": "forward",
+        "distractors": [
+          "Shield volcano",
+          "Caldera",
+          "Cinder cone"
+        ],
+        "answer": "Stratovolcano"
+      },
+      {
+        "question": "Mount Fuji stands on the boundary of Shizuoka and __________ prefectures.",
+        "type": "fill_blank",
+        "distractors": [
+          "Kanagawa",
+          "Nagano",
+          "Tokyo"
+        ],
+        "answer": "Yamanashi"
+      },
+      {
+        "question": "Mount Fuji is Japan's highest mountain.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "UNESCO / Japan Meteorological Agency",
+    "sourceUrl": "https://whc.unesco.org/en/list/1418",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the iconic Mount Fuji snow-capped cone rising above pink cherry blossom trees, clear blue sky, a calm lake in the foreground reflecting the mountain.",
+    "tags": [
+      "Japan",
+      "Mount Fuji",
+      "volcano",
+      "mountains",
+      "Asia",
+      "UNESCO",
+      "Honshu"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-jpn-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "Japan",
+    "statement": "Japan has a population density of approximately 334 people per km², making it one of the most densely populated large countries in the world, with over 90% of its people living in urban areas.",
+    "quizQuestion": "Approximately what percentage of Japan's population lives in urban areas?",
+    "correctAnswer": "Over 90%",
+    "distractors": [
+      "About 50%",
+      "Around 70%",
+      "Less than 40%",
+      "Roughly 60%",
+      "About 30%",
+      "Nearly 80%",
+      "Under 20%",
+      "Approximately 45%"
+    ],
+    "acceptableAnswers": [
+      "Over 90%",
+      "More than 90%",
+      "About 91%",
+      "91%"
+    ],
+    "explanation": "Japan has around 125 million people packed into 377,975 km² (roughly the size of California). The Greater Tokyo metropolitan area alone holds ~37 million people — the world's largest megacity. Despite this, Japan is also 68% forested, as mountains concentrate its population into narrow coastal plains.",
+    "wowFactor": "Japan is 68% forest — yet it's one of the most urbanised nations on Earth because everyone lives in the same narrow coastal strips!",
+    "variants": [
+      {
+        "question": "Japan's Greater Tokyo Area, home to about 37 million people, is the world's largest __________ area.",
+        "type": "fill_blank",
+        "distractors": [
+          "Industrial",
+          "Agricultural",
+          "Coastal"
+        ],
+        "answer": "Metropolitan"
+      },
+      {
+        "question": "Japan's population density is approximately 334 people per km².",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which Japanese city is the most populated metropolitan area on Earth?",
+        "type": "forward",
+        "distractors": [
+          "Osaka",
+          "Kyoto",
+          "Hiroshima"
+        ],
+        "answer": "Tokyo"
+      },
+      {
+        "question": "Japan's high urbanisation means its rural countryside is experiencing rapid what?",
+        "type": "context",
+        "distractors": [
+          "Industrial growth",
+          "Agricultural expansion",
+          "Deforestation"
+        ],
+        "answer": "Depopulation"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "World Bank / Japan Statistics Bureau",
+    "sourceUrl": "https://www.stat.go.jp/english/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of a dense Japanese city grid with neon signs and packed streets transitioning abruptly at the edge into forested mountains, contrast of green and urban grey.",
+    "tags": [
+      "Japan",
+      "population",
+      "urbanisation",
+      "Tokyo",
+      "density",
+      "Asia",
+      "megacity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-aus-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "Australia",
+    "statement": "Australia's Great Barrier Reef is the world's largest coral reef system, stretching over 2,300 km along Queensland's coast and visible from space.",
+    "quizQuestion": "How long is Australia's Great Barrier Reef, the world's largest coral reef system?",
+    "correctAnswer": "Over 2,300 km",
+    "distractors": [
+      "500 km",
+      "1,000 km",
+      "800 km",
+      "4,000 km",
+      "200 km",
+      "1,500 km",
+      "300 km",
+      "3,000 km"
+    ],
+    "acceptableAnswers": [
+      "Over 2,300 km",
+      "2,300 km",
+      "about 2,300 km",
+      "2300 km"
+    ],
+    "explanation": "The Great Barrier Reef covers 344,400 km² and comprises over 2,900 individual reefs and 900 islands. It is the world's largest structure made by living organisms and hosts over 1,500 fish species, 4,000 mollusc species, and six of the world's seven sea turtle species. Climate change-driven bleaching events are its greatest current threat.",
+    "wowFactor": "The Great Barrier Reef is so massive that it is one of the few biological structures visible from space — a living wall 2,300 km long!",
+    "variants": [
+      {
+        "question": "The Great Barrier Reef runs along the coast of which Australian state?",
+        "type": "context",
+        "distractors": [
+          "New South Wales",
+          "Western Australia",
+          "Northern Territory"
+        ],
+        "answer": "Queensland"
+      },
+      {
+        "question": "The Great Barrier Reef can be seen from __________ with the naked eye.",
+        "type": "fill_blank",
+        "distractors": [
+          "The Moon",
+          "Aircraft at 1,000 m",
+          "Only underwater"
+        ],
+        "answer": "Space"
+      },
+      {
+        "question": "The Great Barrier Reef is the world's largest structure made by living organisms.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which body of water lies between the Great Barrier Reef and the Australian mainland?",
+        "type": "forward",
+        "distractors": [
+          "Tasman Sea",
+          "Timor Sea",
+          "Indian Ocean"
+        ],
+        "answer": "Coral Sea"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Great Barrier Reef Marine Park Authority / UNESCO",
+    "sourceUrl": "https://www.gbrmpa.gov.au/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art underwater view of the Great Barrier Reef from above the water's surface, vibrant coral formations in turquoise shallows, colourful fish visible, bright Australian sun above.",
+    "tags": [
+      "Australia",
+      "Great Barrier Reef",
+      "coral",
+      "UNESCO",
+      "marine",
+      "natural wonder",
+      "Queensland"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-aus-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "Australia",
+    "statement": "Australia's outback — the vast semi-arid and arid interior — covers approximately 70% of the continent and is one of the world's most sparsely inhabited regions.",
+    "quizQuestion": "Approximately what proportion of Australia's land area does the remote outback interior cover?",
+    "correctAnswer": "About 70%",
+    "distractors": [
+      "About 20%",
+      "Around 40%",
+      "Less than 10%",
+      "Roughly 50%",
+      "Over 90%",
+      "About 30%",
+      "Nearly 85%",
+      "Around 15%"
+    ],
+    "acceptableAnswers": [
+      "About 70%",
+      "70%",
+      "roughly 70%",
+      "approximately 70%"
+    ],
+    "explanation": "Australia is the world's driest inhabited continent. About 70% of its 7.7 million km² is classified as arid or semi-arid outback. The outback has fewer than 1 person per 10 km² on average. Uluru (formerly Ayers Rock) sits at the red heart of this interior and is one of the world's most iconic desert landmarks.",
+    "wowFactor": "Australia is so empty in the middle that there are road trains (trucks with 4 trailers) because you might not see another vehicle for 600 km!",
+    "variants": [
+      {
+        "question": "What is the famous Uluru (Ayers Rock) landform located in Australia's outback?",
+        "type": "forward",
+        "distractors": [
+          "A volcanic crater",
+          "A mesa plateau",
+          "A salt lake"
+        ],
+        "answer": "A sandstone monolith"
+      },
+      {
+        "question": "Australia's outback is mainly classified as __________ or semi-arid climate.",
+        "type": "fill_blank",
+        "distractors": [
+          "Tropical",
+          "Temperate",
+          "Polar"
+        ],
+        "answer": "Arid"
+      },
+      {
+        "question": "Most of Australia's population lives in the coastal cities, not the outback interior.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which Australian state has the largest share of outback territory?",
+        "type": "context",
+        "distractors": [
+          "Queensland",
+          "South Australia",
+          "New South Wales"
+        ],
+        "answer": "Western Australia"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Geoscience Australia",
+    "sourceUrl": "https://www.ga.gov.au/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a vast flat red desert stretching to the horizon under a blazing blue sky, a lonely dirt track bisecting the frame, a distant red monolith silhouette, no vegetation.",
+    "tags": [
+      "Australia",
+      "outback",
+      "arid",
+      "desert",
+      "Uluru",
+      "geography",
+      "climate"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-aus-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "Australia",
+    "statement": "Australia has more unique species than almost any other nation — including the world's only egg-laying mammals (monotremes) and its own order of pouched mammals (marsupials), which evolved in isolation for over 45 million years.",
+    "quizQuestion": "What term describes the egg-laying mammals unique to Australia and New Guinea, such as the platypus and echidna?",
+    "correctAnswer": "Monotremes",
+    "distractors": [
+      "Marsupials",
+      "Placentals",
+      "Insectivores",
+      "Rodentia",
+      "Lagomorphs",
+      "Chiroptera",
+      "Xenarthra",
+      "Afrotheria"
+    ],
+    "acceptableAnswers": [
+      "Monotremes",
+      "Monotreme",
+      "egg-laying mammals"
+    ],
+    "explanation": "Monotremes (platypus and four echidna species) are the only surviving egg-laying mammals. Australia also has ~160 marsupial species (compared to just 1 opossum in North America). When European naturalists first sent platypus specimens to Britain in 1799, scientists initially suspected the specimens were a hoax.",
+    "wowFactor": "When Europeans first saw a platypus, they thought it was a taxidermy prank — a beaver's bill stitched onto an otter!",
+    "variants": [
+      {
+        "question": "The platypus is classified as which type of mammal?",
+        "type": "forward",
+        "distractors": [
+          "Marsupial",
+          "Placental mammal",
+          "Rodent"
+        ],
+        "answer": "Monotreme"
+      },
+      {
+        "question": "Australia's unique wildlife evolved in isolation after the continent separated from __________ about 45 million years ago.",
+        "type": "fill_blank",
+        "distractors": [
+          "Asia",
+          "Africa",
+          "South America"
+        ],
+        "answer": "Antarctica / Gondwana"
+      },
+      {
+        "question": "Monotremes are the only mammals in the world that lay eggs.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which Australian mammal is unique for having a duck-like bill, webbed feet, and venomous spurs?",
+        "type": "context",
+        "distractors": [
+          "Echidna",
+          "Wombat",
+          "Quoll"
+        ],
+        "answer": "Platypus"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Australian Museum / National Geographic",
+    "sourceUrl": "https://australian.museum/learn/animals/mammals/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a platypus swimming in a clear blue stream, its duck-bill searching the riverbed, dappled light through eucalyptus trees, Australian bush setting.",
+    "tags": [
+      "Australia",
+      "monotremes",
+      "platypus",
+      "echidna",
+      "wildlife",
+      "marsupials",
+      "unique species"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

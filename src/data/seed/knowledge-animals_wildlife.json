@@ -11385,5 +11385,1690 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-zebra-stripe-confusion",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Zebra stripes create an optical illusion called motion dazzle, making it hard for predators to single out one individual from a running herd.",
+    "quizQuestion": "What effect do zebra stripes have on predators?",
+    "correctAnswer": "Motion dazzle confusion",
+    "distractors": [
+      "Camouflage in tall grass",
+      "Warning coloration signal",
+      "Temperature regulation",
+      "Attract potential mates",
+      "Species recognition signal",
+      "Repel biting insects",
+      "Mimic other animals",
+      "Deter rival zebras"
+    ],
+    "acceptableAnswers": [
+      "Motion dazzle confusion",
+      "Dazzle camouflage",
+      "Optical confusion"
+    ],
+    "explanation": "When zebras run together in a herd, their stripes create a visual effect called motion dazzle. This makes it extremely difficult for predators like lions to focus on and isolate a single animal, as the stripes blend into a confusing flickering blur.",
+    "wowFactor": "A lion literally cannot lock onto one zebra when the whole herd bolts — the stripes merge into a moving blur that defeats the predator's targeting system.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Zebra stripes create an optical illusion called _____ dazzle that confuses predators.",
+        "answer": "Motion",
+        "distractors": [
+          "Mirror",
+          "Flash",
+          "Speed",
+          "Color"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Zebra stripes primarily exist to camouflage them in grass. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "analogy",
+        "question": "Zebra stripes are to predator confusion as a school of fish is to...",
+        "answer": "Collective predator evasion",
+        "distractors": [
+          "Individual speed",
+          "Territorial marking",
+          "Finding food",
+          "Attracting mates"
+        ]
+      },
+      {
+        "type": "why",
+        "question": "Why is it harder to catch one zebra from a running herd than one alone?",
+        "answer": "Stripes blur into an indistinct mass",
+        "distractors": [
+          "Zebras run faster in groups",
+          "Herd members block the predator",
+          "Loud noise distracts lions",
+          "Dust clouds hide individuals"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Zebra",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zebra",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A herd of zebras sprinting across an African plain, their black-and-white stripes blurring into a dazzling optical illusion as a lion watches from behind scrub brush.",
+    "tags": [
+      "zebra",
+      "stripes",
+      "predator",
+      "motion dazzle",
+      "herd behavior",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-zebra-herd-structure",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Plains zebra herds are led by a single stallion who guards a family group called a harem, while bachelor males form their own separate groups.",
+    "quizQuestion": "What is a zebra's family group led by one stallion called?",
+    "correctAnswer": "Harem",
+    "distractors": [
+      "Pack",
+      "Pride",
+      "Colony",
+      "Troop",
+      "Band",
+      "Clan",
+      "Pod",
+      "Mob"
+    ],
+    "acceptableAnswers": [
+      "Harem",
+      "harem group"
+    ],
+    "explanation": "Plains zebra society revolves around the harem — a stable family unit of one dominant stallion, several mares, and their foals. Stallions without harems form bachelor groups and will challenge dominant males for the chance to take over a harem.",
+    "wowFactor": "Bachelor zebra stallions literally practice fighting each other in all-male groups while waiting for a chance to challenge a harem leader — it's like a years-long tournament.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A zebra family group controlled by one dominant male is called a _____.",
+        "answer": "Harem",
+        "distractors": [
+          "Pride",
+          "Herd",
+          "Pack",
+          "Troop"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Male zebras without families live alone. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "How is a zebra herd structure most similar to a lion pride?",
+        "answer": "Both are led by a dominant male protecting females",
+        "distractors": [
+          "Both migrate seasonally",
+          "Both are purely matriarchal",
+          "Both have no fixed leader",
+          "Both include multiple adult males"
+        ]
+      },
+      {
+        "type": "consequence",
+        "question": "What happens to a young zebra stallion before he can lead his own family group?",
+        "answer": "He joins a bachelor group",
+        "distractors": [
+          "He leaves Africa entirely",
+          "He leads the main herd temporarily",
+          "He fights the alpha immediately",
+          "He lives alone for years"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Plains zebra",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plains_zebra",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dominant zebra stallion standing guard over a group of mares and foals grazing on the Serengeti, with a separate cluster of younger bachelor males visible in the distance.",
+    "tags": [
+      "zebra",
+      "harem",
+      "herd",
+      "stallion",
+      "social structure",
+      "savanna"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-zebra-unique-stripes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Every zebra's stripe pattern is completely unique — no two zebras have the same arrangement of stripes, similar to human fingerprints.",
+    "quizQuestion": "What makes each zebra's stripe pattern unique among individuals?",
+    "correctAnswer": "No two patterns are identical",
+    "distractors": [
+      "Stripes change with age",
+      "Patterns reflect diet",
+      "Males have more stripes",
+      "Stripes encode family group",
+      "Color shifts seasonally",
+      "Width increases over time",
+      "Patterns vary by region only",
+      "Foals copy their mother's pattern"
+    ],
+    "acceptableAnswers": [
+      "No two patterns are identical",
+      "Each pattern is unique",
+      "Unique like fingerprints"
+    ],
+    "explanation": "Just as human fingerprints are unique to each individual, every zebra has a completely distinct stripe pattern. Researchers use this to identify individual zebras in the wild without tagging. The patterns form during embryonic development and remain fixed for life.",
+    "wowFactor": "Wildlife researchers can identify hundreds of individual zebras by memorizing their stripe patterns — no ear tags or GPS collars needed. It's the original biometric ID system.",
+    "variants": [
+      {
+        "type": "analogy",
+        "question": "A zebra's stripe pattern is to identity as a human's _____ is to identity.",
+        "answer": "Fingerprint",
+        "distractors": [
+          "Height",
+          "Hair color",
+          "Voice",
+          "Eye color"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Zebras from the same family share identical stripe patterns. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "application",
+        "question": "How do researchers identify individual zebras in the wild without tagging them?",
+        "answer": "By photographing their unique stripe patterns",
+        "distractors": [
+          "By measuring exact body weight",
+          "By checking tooth wear patterns",
+          "By recording distinct vocalizations",
+          "By mapping ear notch shapes"
+        ]
+      },
+      {
+        "type": "when",
+        "question": "When does a zebra's unique stripe pattern first develop?",
+        "answer": "During embryonic development",
+        "distractors": [
+          "At birth when exposed to light",
+          "During the first year of life",
+          "After the first molting season",
+          "When reaching sexual maturity"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Zebra",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zebra",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of two zebras side by side showing clearly different stripe widths, spacings, and swirl patterns on their rumps, with a researcher photographing them in the background.",
+    "tags": [
+      "zebra",
+      "stripes",
+      "unique pattern",
+      "identification",
+      "biometric",
+      "fingerprint"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-polar-bear-fur-transparency",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Polar bear fur is not white — each individual hair is actually transparent and hollow, scattering light to appear white against the snowy background.",
+    "quizQuestion": "What color is a polar bear's individual fur strand actually?",
+    "correctAnswer": "Transparent",
+    "distractors": [
+      "Pure white",
+      "Pale yellow",
+      "Light gray",
+      "Cream colored",
+      "Silver",
+      "Off-white",
+      "Albino pink",
+      "Faint blue"
+    ],
+    "acceptableAnswers": [
+      "Transparent",
+      "Clear",
+      "Colorless"
+    ],
+    "explanation": "Each polar bear hair is a colorless, transparent hollow tube that scatters and reflects visible light, making the coat appear white. This is the same principle that makes snow look white even though water is clear. Their skin underneath is actually black.",
+    "wowFactor": "Polar bears have black skin under that 'white' fur — the hollow transparent hairs act like tiny fiber optics, and the whole coat is essentially a light-scattering illusion.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Polar bear fur appears white because the hollow transparent hairs _____ light.",
+        "answer": "Scatter",
+        "distractors": [
+          "Absorb",
+          "Reflect UV",
+          "Emit",
+          "Filter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A polar bear's skin underneath its fur is white. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "analogy",
+        "question": "Polar bear fur appearing white is most similar to which other optical phenomenon?",
+        "answer": "Snow appearing white despite water being clear",
+        "distractors": [
+          "A mirror reflecting all light",
+          "A prism splitting light into colors",
+          "Dark asphalt absorbing heat",
+          "A black hole trapping light"
+        ]
+      },
+      {
+        "type": "why",
+        "question": "Why does a polar bear's coat appear white in sunlight?",
+        "answer": "Transparent hollow hairs scatter light in all directions",
+        "distractors": [
+          "White pigment fills each hair shaft",
+          "Skin reflects light through the coat",
+          "Hairs contain microscopic ice crystals",
+          "UV light activates white color cells"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Polar bear",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polar_bear",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A polar bear against a bright Arctic backdrop with a diagram inset showing a magnified transparent hollow fur strand next to a cross-section revealing black skin beneath the coat.",
+    "tags": [
+      "polar bear",
+      "fur",
+      "transparent",
+      "optics",
+      "arctic",
+      "black skin"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-polar-bear-marathon-swim",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_records",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_records",
+    "categoryL3": "",
+    "statement": "Polar bears are remarkable long-distance swimmers and have been documented swimming continuously for over 9 days and more than 700 kilometers across open Arctic water.",
+    "quizQuestion": "How far can a polar bear swim non-stop across open ocean?",
+    "correctAnswer": "Over 700 km",
+    "distractors": [
+      "About 50 km",
+      "Up to 200 km",
+      "Roughly 100 km",
+      "Around 400 km",
+      "Just 30 km",
+      "About 1,500 km",
+      "Only 10 km",
+      "Nearly 300 km"
+    ],
+    "acceptableAnswers": [
+      "Over 700 km",
+      "700+ kilometers",
+      "More than 700 km"
+    ],
+    "explanation": "Scientists tracked a female polar bear who swam continuously for 9 days over 687 km of open water in the Beaufort Sea. Polar bears use their large front paws like paddles and can sustain this effort using stored body fat, though such marathon swims are becoming more common — and dangerous — as sea ice retreats.",
+    "wowFactor": "A polar bear once swam for nine straight days across open Arctic water — the equivalent of swimming from New York to Philadelphia without stopping, at sea.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A polar bear's main swimming propulsion comes from its large front _____.",
+        "answer": "Paws",
+        "distractors": [
+          "Tail",
+          "Hind legs",
+          "Body roll",
+          "Webbed feet"
+        ]
+      },
+      {
+        "type": "duration",
+        "question": "How many days did the record-documented polar bear swim continuously?",
+        "answer": "9 days",
+        "distractors": [
+          "2 days",
+          "24 hours",
+          "4 days",
+          "3 weeks"
+        ]
+      },
+      {
+        "type": "consequence",
+        "question": "Why are ultra-long polar bear swims becoming more frequent today?",
+        "answer": "Sea ice is retreating due to climate change",
+        "distractors": [
+          "Bears are evolving larger bodies",
+          "Food sources moved further away",
+          "Ocean currents push bears offshore",
+          "Overpopulation forces bears to migrate"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "Which physical feature most enables polar bears to sustain marathon ocean swims?",
+        "answer": "Dense body fat reserves",
+        "distractors": [
+          "Waterproof ear canals",
+          "Oversized heart chambers",
+          "Salt-filtering kidneys",
+          "Specialized gill-like structures"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Polar bear",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polar_bear",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A polar bear powering through choppy dark Arctic water, its muscular front paws churning like paddles with vast grey ocean stretching to the horizon and no ice in sight.",
+    "tags": [
+      "polar bear",
+      "swimming",
+      "endurance",
+      "arctic",
+      "climate change",
+      "record"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-polar-bear-hypercarnivore",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Polar bears are the only bears classified as hypercarnivores, deriving over 70% of their diet from animal flesh — primarily ringed and bearded seals.",
+    "quizQuestion": "What percentage of a polar bear's diet must come from meat to be a hypercarnivore?",
+    "correctAnswer": "Over 70%",
+    "distractors": [
+      "Over 30%",
+      "Over 50%",
+      "Over 90%",
+      "Over 40%",
+      "Over 20%",
+      "100%",
+      "Over 60%",
+      "Over 80%"
+    ],
+    "acceptableAnswers": [
+      "Over 70%",
+      "More than 70%",
+      "70%+"
+    ],
+    "explanation": "Unlike brown or black bears that are omnivores eating berries, roots, and insects, polar bears are classified as hypercarnivores — at least 70% of their caloric intake comes from animal prey. They rely almost exclusively on seals, particularly targeting the calorie-dense blubber layer.",
+    "wowFactor": "Polar bears eat almost nothing but seal blubber — and they specifically prefer the fat over the meat, leaving the carcass for Arctic foxes waiting nearby.",
+    "variants": [
+      {
+        "type": "comparison",
+        "question": "How does a polar bear's diet differ most from a brown bear's diet?",
+        "answer": "Polar bears eat almost exclusively meat; brown bears are omnivores",
+        "distractors": [
+          "Polar bears eat more fish than brown bears",
+          "Brown bears are also hypercarnivores",
+          "Polar bears eat more plants in summer",
+          "Brown bears eat seals too when available"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polar bears prefer eating seal _____ over the meat for its caloric density.",
+        "answer": "Blubber",
+        "distractors": [
+          "Organs",
+          "Skin",
+          "Bones",
+          "Brain"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "All bear species are classified as hypercarnivores. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "which",
+        "question": "Which seal species is the primary prey of polar bears?",
+        "answer": "Ringed seal",
+        "distractors": [
+          "Leopard seal",
+          "Harp seal",
+          "Weddell seal",
+          "Harbor seal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Polar bear",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polar_bear",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A polar bear crouched beside a breathing hole in Arctic sea ice, waiting motionlessly to ambush a ringed seal, its white fur blending with the snow around the dark water opening.",
+    "tags": [
+      "polar bear",
+      "hypercarnivore",
+      "diet",
+      "seals",
+      "blubber",
+      "arctic predator"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-dolphin-unihemispheric-sleep",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Dolphins sleep with only half their brain at a time — one hemisphere rests while the other stays alert, allowing them to keep swimming and breathing at the surface.",
+    "quizQuestion": "How do dolphins sleep without drowning?",
+    "correctAnswer": "Half brain sleeps at a time",
+    "distractors": [
+      "They hold their breath for hours",
+      "They float still at the surface",
+      "They breathe automatically like fish",
+      "They anchor to the seafloor",
+      "Pod members watch while others rest",
+      "They sleep entirely between breaths",
+      "They slow their heart to a crawl",
+      "They don't need to sleep"
+    ],
+    "acceptableAnswers": [
+      "Half brain sleeps at a time",
+      "Unihemispheric sleep",
+      "One brain hemisphere at a time"
+    ],
+    "explanation": "Dolphins practice unihemispheric slow-wave sleep — one brain hemisphere enters a sleep state while the other remains conscious enough to control breathing, surface when needed, and stay alert for predators. After a period, the hemispheres switch roles.",
+    "wowFactor": "Dolphins literally have a sleeping brain and an awake brain running simultaneously — one eye stays open watching for sharks while the other is closed in deep sleep.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Sleeping with only one brain hemisphere at a time is called _____ sleep.",
+        "answer": "Unihemispheric",
+        "distractors": [
+          "Paradoxical",
+          "Partial",
+          "REM-lite",
+          "Biphasic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "During unihemispheric sleep, one of a dolphin's eyes stays open. True or false?",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "which",
+        "question": "Which other animal is also known to use unihemispheric sleep?",
+        "answer": "Migratory birds",
+        "distractors": [
+          "Humans under extreme stress",
+          "Sharks",
+          "Sea turtles",
+          "Manatees"
+        ]
+      },
+      {
+        "type": "why",
+        "question": "Why must dolphins keep one brain hemisphere awake even while resting?",
+        "answer": "To consciously control breathing at the surface",
+        "distractors": [
+          "To navigate using echolocation",
+          "To maintain constant body temperature",
+          "To digest food continuously",
+          "To communicate with pod members"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Dolphin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dolphin",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bottlenose dolphin floating just below the surface at dusk, one eye open and alert, its body still except for a gentle tail movement keeping it near the water's surface.",
+    "tags": [
+      "dolphin",
+      "sleep",
+      "unihemispheric",
+      "brain",
+      "consciousness",
+      "breathing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-dolphin-echolocation-resolution",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Dolphins produce echolocation clicks up to 1,000 times per second, which are focused by a fatty organ in their forehead called the melon before bouncing off objects.",
+    "quizQuestion": "What organ in a dolphin's forehead focuses echolocation clicks?",
+    "correctAnswer": "The melon",
+    "distractors": [
+      "The blowhole",
+      "The rostrum",
+      "The acoustic lobe",
+      "The sonar gland",
+      "The click sac",
+      "The narial plug",
+      "The vestibular bulge",
+      "The petrosal bone"
+    ],
+    "acceptableAnswers": [
+      "The melon",
+      "Melon",
+      "melon organ"
+    ],
+    "explanation": "The melon is a lens-shaped mass of specialized fat in a dolphin's forehead that acts like an acoustic lens, focusing outgoing echolocation clicks into a directional beam. The returning echoes are received through the dolphin's lower jaw, which channels sound to the inner ear.",
+    "wowFactor": "Dolphins can detect objects smaller than a golf ball from 100 meters away using their sonar — and they can tell the difference between hollow and solid objects, making their echolocation more precise than any human-made sonar.",
+    "variants": [
+      {
+        "type": "how_many",
+        "question": "How many echolocation clicks per second can a dolphin produce at maximum?",
+        "answer": "1,000 clicks per second",
+        "distractors": [
+          "10 per second",
+          "100 per second",
+          "10,000 per second",
+          "50 per second"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Returning echolocation echoes are received by the dolphin through its lower _____.",
+        "answer": "Jaw",
+        "distractors": [
+          "Ear canal",
+          "Skull",
+          "Teeth",
+          "Blowhole"
+        ]
+      },
+      {
+        "type": "analogy",
+        "question": "A dolphin's melon acts like a _____ for sound waves.",
+        "answer": "Lens",
+        "distractors": [
+          "Mirror",
+          "Amplifier",
+          "Receiver",
+          "Filter"
+        ]
+      },
+      {
+        "type": "capability",
+        "question": "What can a dolphin distinguish about an object using echolocation that passive hearing cannot?",
+        "answer": "Whether it is hollow or solid",
+        "distractors": [
+          "Its exact color",
+          "Whether it is alive or dead",
+          "Its temperature",
+          "Its chemical composition"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Dolphin echolocation",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dolphin_echolocation",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Underwater diagram of a dolphin with visible sound wave lines projecting from its rounded melon forehead and reflecting off a fish, with return echo lines running along the lower jaw back to the ear.",
+    "tags": [
+      "dolphin",
+      "echolocation",
+      "melon",
+      "sonar",
+      "hearing",
+      "forehead"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-dolphin-mirror-self-recognition",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Bottlenose dolphins pass the mirror self-recognition test, understanding they are looking at their own reflection — a cognitive ability shared with only a handful of species including great apes and elephants.",
+    "quizQuestion": "Which test demonstrates a dolphin can recognize itself in a mirror?",
+    "correctAnswer": "Mirror self-recognition test",
+    "distractors": [
+      "Delayed gratification test",
+      "Object permanence trial",
+      "Tool use assessment",
+      "Social mimicry test",
+      "Reversal learning task",
+      "Causal understanding probe",
+      "Numerical ordering trial",
+      "Symbolic language test"
+    ],
+    "acceptableAnswers": [
+      "Mirror self-recognition test",
+      "Mirror test",
+      "MSR test"
+    ],
+    "explanation": "When researchers placed a mark on a dolphin's body and showed it a mirror, the dolphin examined the mark on its own body — not looking for another dolphin. This indicates self-awareness: knowing the reflection is 'me.' Only humans, great apes, elephants, magpies, and some fish share this ability.",
+    "wowFactor": "Dolphins understand mirrors — they use them to check body parts they can't normally see, like the inside of their mouths, suggesting a sense of self that most animals never develop.",
+    "variants": [
+      {
+        "type": "which_animals",
+        "question": "Which of these animals also passes the mirror self-recognition test?",
+        "answer": "Elephants",
+        "distractors": [
+          "Dogs",
+          "Horses",
+          "Octopuses",
+          "Crows"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "When a dolphin is shown a mirror, it attempts to interact with another dolphin it thinks it sees. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "what_does_it_mean",
+        "question": "What does passing the mirror self-recognition test indicate about an animal's cognition?",
+        "answer": "The animal has self-awareness",
+        "distractors": [
+          "The animal can see in UV light",
+          "The animal has episodic memory",
+          "The animal understands cause and effect",
+          "The animal can plan for the future"
+        ]
+      },
+      {
+        "type": "experiment",
+        "question": "In the mirror test, what is placed on the dolphin's body before it sees the mirror?",
+        "answer": "A mark or spot it cannot normally see",
+        "distractors": [
+          "A piece of food",
+          "A temporary net",
+          "A tracking tag",
+          "Another dolphin's scent"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Mirror test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mirror_test",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bottlenose dolphin investigating its own reflection in an underwater mirror panel, tilting sideways to examine a chalk mark on its flank, with researchers observing through an aquarium window.",
+    "tags": [
+      "dolphin",
+      "intelligence",
+      "self-awareness",
+      "mirror test",
+      "cognition",
+      "self-recognition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-eagle-vision-acuity",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_records",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_records",
+    "categoryL3": "",
+    "statement": "Eagles have vision approximately 4–8 times more powerful than humans and can spot a rabbit from nearly 3 kilometers away, aided by two foveas per eye compared to our one.",
+    "quizQuestion": "How many foveas does each eagle eye contain compared to one in humans?",
+    "correctAnswer": "Two foveas",
+    "distractors": [
+      "One fovea",
+      "Three foveas",
+      "Four foveas",
+      "Five foveas",
+      "No fovea at all",
+      "A single enlarged fovea",
+      "Six foveas",
+      "Half a fovea"
+    ],
+    "acceptableAnswers": [
+      "Two foveas",
+      "Two",
+      "2 foveas"
+    ],
+    "explanation": "Humans have one fovea per eye — a high-density region of cone cells for sharp central vision. Eagles have two foveas: one for sharp forward vision and one for sharp lateral vision. This, combined with larger pupils and more photoreceptors per square millimeter, gives eagles extraordinary visual acuity.",
+    "wowFactor": "An eagle perched atop a 3-story building could read newspaper headlines on the ground — their two-fovea eye design gives them a built-in telephoto lens for hunting.",
+    "variants": [
+      {
+        "type": "distance",
+        "question": "From what maximum distance can an eagle spot a rabbit on the ground?",
+        "answer": "Nearly 3 km",
+        "distractors": [
+          "500 meters",
+          "10 km",
+          "1 km",
+          "100 meters"
+        ]
+      },
+      {
+        "type": "magnification",
+        "question": "How many times sharper is eagle vision compared to human vision?",
+        "answer": "4 to 8 times sharper",
+        "distractors": [
+          "2 times sharper",
+          "10 times sharper",
+          "50 times sharper",
+          "Equal to humans"
+        ]
+      },
+      {
+        "type": "what_is",
+        "question": "What is the fovea — the structure eagles have two of per eye?",
+        "answer": "A dense cluster of cone cells for sharp focus",
+        "distractors": [
+          "A lens that filters UV light",
+          "A pupil-dilation muscle",
+          "A color-blind region of the retina",
+          "An eyelid for underwater vision"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Eagles can see into the ultraviolet spectrum, which humans cannot detect. True or false?",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Eagle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eagle",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An extreme close-up of a bald eagle's amber eye showing the convex lens and dense photoreceptor structure, with a vast landscape in the background where a tiny rabbit is visible in the grass.",
+    "tags": [
+      "eagle",
+      "vision",
+      "fovea",
+      "acuity",
+      "raptor",
+      "eyesight",
+      "hunting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-eagle-dive-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_records",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_records",
+    "categoryL3": "",
+    "statement": "The golden eagle is one of the fastest birds of prey, capable of diving at speeds exceeding 240 km/h when stooping on prey — using folded wings to minimize drag.",
+    "quizQuestion": "How fast can a golden eagle dive when stooping on prey?",
+    "correctAnswer": "Over 240 km/h",
+    "distractors": [
+      "About 80 km/h",
+      "Around 120 km/h",
+      "Up to 150 km/h",
+      "Nearly 200 km/h",
+      "About 300 km/h",
+      "Around 60 km/h",
+      "Over 400 km/h",
+      "Approximately 100 km/h"
+    ],
+    "acceptableAnswers": [
+      "Over 240 km/h",
+      "240+ km/h",
+      "More than 240 km/h"
+    ],
+    "explanation": "When a golden eagle locks onto prey and enters a stoop — a steep, controlled dive — it folds its wings tight against its body to become aerodynamically streamlined. This allows it to reach speeds over 240 km/h, making it one of the fastest animals on Earth during a dive.",
+    "wowFactor": "A golden eagle diving at full speed hits prey with the force of a car crash — the kinetic energy from that 240 km/h stoop is enough to kill prey much larger than itself on impact.",
+    "variants": [
+      {
+        "type": "what_is",
+        "question": "What is the name for an eagle's steep, high-speed hunting dive?",
+        "answer": "A stoop",
+        "distractors": [
+          "A plunge",
+          "A strike",
+          "A swoop",
+          "A lunge"
+        ]
+      },
+      {
+        "type": "why",
+        "question": "Why does an eagle fold its wings during a high-speed dive?",
+        "answer": "To reduce aerodynamic drag",
+        "distractors": [
+          "To aim more precisely",
+          "To protect wing feathers",
+          "To trigger hunting instincts",
+          "To slow itself for a safe landing"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "Which bird holds the speed record above even the golden eagle in a dive?",
+        "answer": "Peregrine falcon",
+        "distractors": [
+          "Harpy eagle",
+          "Osprey",
+          "Goshawk",
+          "Merlin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Eagles reach top speed by flapping rapidly during a dive rather than folding their wings. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Golden eagle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Golden_eagle",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden eagle in a full stoop dive, wings folded tightly against its brown and gold body, hurtling downward through a blue sky toward a mountain meadow far below.",
+    "tags": [
+      "eagle",
+      "speed",
+      "stoop",
+      "dive",
+      "golden eagle",
+      "raptor",
+      "hunting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-eagle-national-symbol-count",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Eagles appear on the national emblems of more countries than any other animal — over 25 nations use an eagle as their official national symbol or coat of arms.",
+    "quizQuestion": "How many countries use an eagle as their national symbol?",
+    "correctAnswer": "Over 25 nations",
+    "distractors": [
+      "About 5 nations",
+      "Exactly 10 nations",
+      "Around 15 nations",
+      "Only 3 nations",
+      "Nearly 50 nations",
+      "About 8 nations",
+      "Just 2 nations",
+      "Over 60 nations"
+    ],
+    "acceptableAnswers": [
+      "Over 25 nations",
+      "25+ countries",
+      "More than 25 countries"
+    ],
+    "explanation": "Eagles symbolize power, freedom, and divine authority across many cultures. More than 25 countries feature eagles on their national emblems including the USA (bald eagle), Mexico (golden eagle), Germany (black eagle), Poland (white eagle), and Russia (double-headed eagle). No other animal appears on as many national symbols.",
+    "wowFactor": "The eagle is the world's most popular national symbol — used by more countries than lions, dragons, or any other creature. Civilizations on every continent independently chose the eagle to represent supreme power.",
+    "variants": [
+      {
+        "type": "which_country",
+        "question": "Which country features a golden eagle devouring a serpent on its national flag?",
+        "answer": "Mexico",
+        "distractors": [
+          "USA",
+          "Germany",
+          "Egypt",
+          "Russia"
+        ]
+      },
+      {
+        "type": "which_eagle",
+        "question": "Which eagle species is the national bird of the United States?",
+        "answer": "Bald eagle",
+        "distractors": [
+          "Golden eagle",
+          "Harpy eagle",
+          "Bateleur eagle",
+          "Sea eagle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The lion appears on more national symbols than any other animal. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "what_do_they_represent",
+        "question": "What qualities have made eagles the most common animal on national emblems?",
+        "answer": "Power, freedom, and divine authority",
+        "distractors": [
+          "Loyalty, intelligence, and speed",
+          "Patience, stealth, and longevity",
+          "Fertility, wisdom, and protection",
+          "Courage, cunning, and endurance"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Eagle as symbol",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eagle_(heraldry)",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grid montage of national emblems from the USA, Mexico, Germany, Poland, and Egypt — each featuring a different eagle species in heraldic postures, surrounded by their national colors.",
+    "tags": [
+      "eagle",
+      "national symbol",
+      "heraldry",
+      "cultural",
+      "countries",
+      "emblem"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-elephant-trunk-muscles",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "An elephant's trunk contains over 40,000 individual muscle units but no bones at all — making it one of the most dexterous appendages in the animal kingdom.",
+    "quizQuestion": "How many muscle units does an elephant's trunk contain?",
+    "correctAnswer": "Over 40,000",
+    "distractors": [
+      "About 500",
+      "Around 2,000",
+      "Roughly 10,000",
+      "Nearly 20,000",
+      "About 5,000",
+      "Over 100,000",
+      "Exactly 1,000",
+      "About 3,000"
+    ],
+    "acceptableAnswers": [
+      "Over 40,000",
+      "40,000+",
+      "More than 40,000"
+    ],
+    "explanation": "An elephant's trunk is a fusion of the nose and upper lip, composed of over 40,000 separate muscle fascicles but zero bones or cartilage. This gives it extraordinary flexibility and strength simultaneously — a trunk can uproot a tree and also pick up a single grain of rice.",
+    "wowFactor": "An elephant's trunk can uproot a full-grown tree AND pick up a single coin from the ground with the same appendage — it has more muscle units than the entire human body has muscles.",
+    "variants": [
+      {
+        "type": "comparison",
+        "question": "How does an elephant's trunk grip a small object compared to gripping a large log?",
+        "answer": "It uses different muscle unit combinations for each task",
+        "distractors": [
+          "It uses a suction cup on the tip for small objects",
+          "It cannot grip objects smaller than a melon",
+          "It uses only the tip muscles for both",
+          "It switches to using tusks for heavy objects"
+        ]
+      },
+      {
+        "type": "anatomy",
+        "question": "What body parts does an elephant's trunk anatomically fuse together?",
+        "answer": "The nose and upper lip",
+        "distractors": [
+          "The upper lip and lower jaw",
+          "The nose and cheek",
+          "The snout and tongue",
+          "The nostril and chin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "An elephant's trunk contains a central bone running its full length. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "capacity",
+        "question": "Approximately how many liters of water can an adult elephant's trunk hold?",
+        "answer": "About 8 liters",
+        "distractors": [
+          "About 1 liter",
+          "About 20 liters",
+          "About 50 liters",
+          "About 3 liters"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Elephant trunk",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Elephant#Trunk",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An African elephant using the tip of its trunk to delicately pick up a single apple from the ground, while its massive body towers overhead, showing the contrast between its size and the fine motor control.",
+    "tags": [
+      "elephant",
+      "trunk",
+      "muscles",
+      "dexterity",
+      "anatomy",
+      "strength"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-elephant-matriarch-memory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Elephant herds are led by a matriarch whose memory of distant water sources, migration routes, and past threats can be the difference between a herd's survival and death during droughts.",
+    "quizQuestion": "Who leads an elephant herd and holds critical survival knowledge?",
+    "correctAnswer": "The matriarch",
+    "distractors": [
+      "The oldest bull male",
+      "The strongest young adult",
+      "A rotating leadership",
+      "The largest female's mate",
+      "The herd collectively decides",
+      "The youngest mother",
+      "A designated scout elephant",
+      "The fastest runner"
+    ],
+    "acceptableAnswers": [
+      "The matriarch",
+      "Matriarch",
+      "The oldest female"
+    ],
+    "explanation": "Elephant herds are exclusively led by the oldest and largest female — the matriarch. Her decades of accumulated memory include locations of water sources used during past droughts, migration routes across vast distances, recognition of hundreds of individual elephants and their family histories, and knowledge of which predators and humans pose real threats.",
+    "wowFactor": "When a matriarch elephant dies, her entire herd loses irreplaceable knowledge — herds that lose their matriarch have significantly higher death rates during droughts because no one remembers where the emergency water is.",
+    "variants": [
+      {
+        "type": "consequence",
+        "question": "What happens to a herd's survival rate when it loses its matriarch?",
+        "answer": "It decreases significantly, especially during droughts",
+        "distractors": [
+          "It stays the same since all elephants have equal memory",
+          "It improves as a younger leader takes over",
+          "It only affects calves, not adults",
+          "It increases as males now join the herd"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Male elephants typically remain in the herd and share leadership duties with the matriarch. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "what_does_she_remember",
+        "question": "Which type of memory is MOST critical for a matriarch during drought conditions?",
+        "answer": "Locations of distant water sources",
+        "distractors": [
+          "Identities of rival herd matriarchs",
+          "Migration routes to breeding grounds",
+          "Family trees of all known elephants",
+          "Locations of salt licks and minerals"
+        ]
+      },
+      {
+        "type": "how_selected",
+        "question": "How is the matriarch of an elephant herd determined?",
+        "answer": "She is the oldest and largest female",
+        "distractors": [
+          "She wins a competitive challenge",
+          "She is chosen by the previous matriarch",
+          "She is the most recent mother in the group",
+          "She is elected by group consensus"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Elephant",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Elephant",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A large, weathered matriarch elephant leading her herd across cracked dry savanna toward a distant waterhole, younger females and calves following in her dusty wake under a blazing sun.",
+    "tags": [
+      "elephant",
+      "matriarch",
+      "memory",
+      "herd",
+      "leadership",
+      "drought survival"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-elephant-infrasound-communication",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Elephants communicate using infrasound calls as low as 14 Hz — far below human hearing — that can travel through both air and ground for distances exceeding 10 kilometers.",
+    "quizQuestion": "What frequency range do elephants use to communicate over long distances?",
+    "correctAnswer": "As low as 14 Hz",
+    "distractors": [
+      "Around 1,000 Hz",
+      "Between 200–400 Hz",
+      "Above 20,000 Hz",
+      "Around 440 Hz",
+      "Between 500–1,000 Hz",
+      "About 5,000 Hz",
+      "Around 100 Hz",
+      "Between 2,000–4,000 Hz"
+    ],
+    "acceptableAnswers": [
+      "As low as 14 Hz",
+      "14 Hz",
+      "Infrasound below 20 Hz"
+    ],
+    "explanation": "Human hearing begins at about 20 Hz. Elephants produce rumbles as low as 14 Hz — pure infrasound — that pass through the ground as seismic waves as well as through air. Other elephants detect these ground vibrations through the sensitive nerve endings in their feet and trunks, allowing herds separated by many kilometers to coordinate.",
+    "wowFactor": "Elephants feel long-distance messages through their feet — seismic ground vibrations carrying infrasound rumbles travel faster and farther through soil than through air, giving elephants an underground communication network.",
+    "variants": [
+      {
+        "type": "how_received",
+        "question": "How do elephants detect ground-traveling infrasound vibrations sent by distant herd members?",
+        "answer": "Through nerve endings in their feet and trunks",
+        "distractors": [
+          "Through their ear flaps pressed against the ground",
+          "Through bone conduction in their tusks",
+          "Through vibration-sensitive trunk hairs",
+          "Through their broad flat foot pads alone"
+        ]
+      },
+      {
+        "type": "distance",
+        "question": "How far can an elephant's infrasound calls travel to reach other elephants?",
+        "answer": "Over 10 kilometers",
+        "distractors": [
+          "About 500 meters",
+          "Around 2 km",
+          "Up to 50 km",
+          "Only 100 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Humans can hear the infrasound rumbles elephants use for long-distance communication. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "What advantage does ground-transmitted infrasound have over air-transmitted sound for elephants?",
+        "answer": "It travels faster and further through soil",
+        "distractors": [
+          "It cannot be heard by predators",
+          "It carries more complex information",
+          "It works only at night when air is still",
+          "It is amplified by the elephant's skull"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Elephant communication",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Elephant#Communication",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elephant standing still with its trunk lowered to the ground, feet spread wide, detecting seismic vibrations depicted as rippling wave lines traveling underground from a distant herd visible on the horizon.",
+    "tags": [
+      "elephant",
+      "infrasound",
+      "communication",
+      "seismic",
+      "long distance",
+      "hearing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-penguin-swim-speed-record",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_records",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_records",
+    "categoryL3": "",
+    "statement": "Gentoo penguins are the fastest swimming birds on Earth, reaching speeds of up to 36 km/h underwater — faster than most Olympic swimmers by a factor of four.",
+    "quizQuestion": "Which penguin species holds the record as the fastest swimming bird?",
+    "correctAnswer": "Gentoo penguin",
+    "distractors": [
+      "Emperor penguin",
+      "Chinstrap penguin",
+      "African penguin",
+      "King penguin",
+      "Adélie penguin",
+      "Macaroni penguin",
+      "Rockhopper penguin",
+      "Little blue penguin"
+    ],
+    "acceptableAnswers": [
+      "Gentoo penguin",
+      "Gentoo"
+    ],
+    "explanation": "The gentoo penguin can sustain speeds of 36 km/h underwater, using its stiff, flipper-like wings as high-efficiency propellers. Their streamlined torpedo bodies and dense bones — unusual for birds — help them dive and maneuver to catch fast-moving fish and squid deep beneath the surface.",
+    "wowFactor": "A gentoo penguin swims four times faster than Michael Phelps in a sprint — and it can keep that up while chasing fish that are also trying to escape.",
+    "variants": [
+      {
+        "type": "speed",
+        "question": "How fast can a gentoo penguin swim at its maximum recorded speed?",
+        "answer": "36 km/h",
+        "distractors": [
+          "5 km/h",
+          "15 km/h",
+          "50 km/h",
+          "25 km/h"
+        ]
+      },
+      {
+        "type": "why_fast",
+        "question": "What physical feature most helps penguins swim so fast compared to other birds?",
+        "answer": "Stiff flipper-like wings that act as propellers",
+        "distractors": [
+          "Hollow bones that reduce weight in water",
+          "Webbed feet providing powerful kicks",
+          "Special feathers that seal against water",
+          "A rudder-like tail for steering"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "How do penguin bones differ from most other birds in a way that aids diving?",
+        "answer": "They are dense rather than hollow",
+        "distractors": [
+          "They are more numerous than other birds'",
+          "They contain air chambers for buoyancy",
+          "They are made of a different calcium compound",
+          "They are fused to reduce joint drag"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Emperor penguins are faster swimmers than gentoo penguins. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Gentoo penguin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gentoo_penguin",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gentoo penguin rocketing through clear turquoise water with its wings fully extended like propeller blades, streaming bubbles behind it as it chases a school of silver fish in the deep.",
+    "tags": [
+      "penguin",
+      "gentoo",
+      "swimming",
+      "speed",
+      "record",
+      "underwater",
+      "birds"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-penguin-emperor-incubation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Male emperor penguins incubate a single egg on their feet for 65 days in Antarctic winter temperatures reaching -60°C, eating nothing the entire time while females hunt at sea.",
+    "quizQuestion": "How long does a male emperor penguin incubate its egg without eating?",
+    "correctAnswer": "65 days",
+    "distractors": [
+      "10 days",
+      "30 days",
+      "90 days",
+      "120 days",
+      "14 days",
+      "45 days",
+      "7 days",
+      "180 days"
+    ],
+    "acceptableAnswers": [
+      "65 days",
+      "About 65 days",
+      "Over 2 months"
+    ],
+    "explanation": "Emperor penguins breed in the depths of Antarctic winter. After the female lays the egg, the male balances it on his feet under a warm brood pouch and stands in place for 65 days through blizzards and -60°C cold, losing nearly half his body weight. The female returns just as the egg hatches, having fattened up at sea.",
+    "wowFactor": "Emperor penguin fathers fast for over two months in the coldest place on Earth — by the time the egg hatches, a male has lost up to 45% of his body weight and has eaten nothing since autumn.",
+    "variants": [
+      {
+        "type": "temperature",
+        "question": "What is the extreme minimum temperature an emperor penguin male endures while incubating?",
+        "answer": "-60°C",
+        "distractors": [
+          "-5°C",
+          "-20°C",
+          "-40°C",
+          "-100°C"
+        ]
+      },
+      {
+        "type": "where",
+        "question": "Where on its body does a male emperor penguin balance the egg during incubation?",
+        "answer": "On its feet under a warm brood pouch",
+        "distractors": [
+          "In a nest of packed ice and feathers",
+          "Buried under its breast feathers",
+          "In a shared communal pile of eggs",
+          "Between its flippers while sitting"
+        ]
+      },
+      {
+        "type": "what_happens",
+        "question": "What is the female emperor penguin doing while the male incubates the egg for 65 days?",
+        "answer": "Feeding at sea to rebuild her energy reserves",
+        "distractors": [
+          "Defending the colony's territory from seals",
+          "Finding and building a nest site",
+          "Resting in a warmer coastal area",
+          "Hunting alongside other females in pairs"
+        ]
+      },
+      {
+        "type": "weight_loss",
+        "question": "Approximately how much of his body weight does a male emperor penguin lose during the 65-day incubation fast?",
+        "answer": "Up to 45%",
+        "distractors": [
+          "About 5%",
+          "Around 15%",
+          "Nearly 25%",
+          "Over 70%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Emperor penguin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A huddle of male emperor penguins standing motionless in a blizzard, each with an egg balanced on its feet under a thick feathered belly pouch, surrounded by swirling Antarctic snow and darkness.",
+    "tags": [
+      "penguin",
+      "emperor",
+      "incubation",
+      "fasting",
+      "antarctica",
+      "parenting",
+      "winter"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-penguin-monogamy-reunion",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Many penguin species are serially monogamous and reunite with the same partner each breeding season — finding each other among thousands of identical-looking birds by recognizing a unique vocal call.",
+    "quizQuestion": "How do penguins reunite with their mate among thousands of other penguins?",
+    "correctAnswer": "By recognizing unique vocal calls",
+    "distractors": [
+      "By scent marking their partner",
+      "By remembering their partner's exact nest location",
+      "By their partner's unique eye color",
+      "By bill shape recognition",
+      "By memorizing flipper stripe patterns",
+      "By following the same annual migration path",
+      "By UV markings visible only to penguins",
+      "By recognizing their partner's walk pattern"
+    ],
+    "acceptableAnswers": [
+      "By recognizing unique vocal calls",
+      "Unique calls",
+      "Vocalizations"
+    ],
+    "explanation": "In massive penguin colonies of tens of thousands, mates find each other through unique individual vocalizations. Each penguin has a distinct call signature, and partners memorize each other's calls. After months apart — the female at sea, the male incubating — they locate each other by calling and listening in the dense crowd.",
+    "wowFactor": "A penguin can find its single specific partner somewhere in a colony of 50,000 identical-looking birds by their voice alone — like picking out your best friend's voice in a packed stadium.",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Penguins can recognize their mate visually from a distance in a large colony. True or false?",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "what_is",
+        "question": "What does 'serially monogamous' mean in the context of penguin mating?",
+        "answer": "They pair with the same mate each season but may change partners between years",
+        "distractors": [
+          "They mate with one partner for their entire lifetime",
+          "They have multiple partners in a single season",
+          "They choose a new mate each breeding season",
+          "They pair for life and never separate"
+        ]
+      },
+      {
+        "type": "which_species",
+        "question": "Which penguin species is most famous for lifelong faithful pair bonds returning year after year?",
+        "answer": "Adélie penguin",
+        "distractors": [
+          "Little blue penguin",
+          "Chinstrap penguin",
+          "Galápagos penguin",
+          "African penguin"
+        ]
+      },
+      {
+        "type": "comparison",
+        "question": "Finding a mate by voice in a penguin colony is most similar to which human ability?",
+        "answer": "Recognizing a friend's voice in a noisy crowd",
+        "distractors": [
+          "Reading someone's name tag at a party",
+          "Matching faces in a photo lineup",
+          "Finding someone by their height in a crowd",
+          "Identifying a person by their footsteps"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia — Penguin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Penguin",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pair of Adélie penguins facing each other in a densely packed colony, beaks open in matching calls, surrounded by thousands of indistinguishable other penguins stretching to the horizon.",
+    "tags": [
+      "penguin",
+      "monogamy",
+      "vocal recognition",
+      "mating",
+      "colony",
+      "pair bond"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

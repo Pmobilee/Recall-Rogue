@@ -8488,5 +8488,1627 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-davinci-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Leonardo da Vinci's Vitruvian Man (c.1490) illustrates the ideal human body proportions described by the ancient Roman architect Vitruvius.",
+    "quizQuestion": "What ancient Roman architect's writings inspired Leonardo da Vinci's Vitruvian Man?",
+    "correctAnswer": "Vitruvius",
+    "distractors": [
+      "Michelangelo",
+      "Pliny the Elder",
+      "Palladio",
+      "Bramante",
+      "Pythagoras",
+      "Archimedes",
+      "Alberti",
+      "Filippo Brunelleschi"
+    ],
+    "acceptableAnswers": [
+      "Vitruvius of Rome",
+      "Marcus Vitruvius Pollio"
+    ],
+    "explanation": "Vitruvius wrote in De Architectura that a man with arms and legs extended fits perfectly within both a circle and a square. Da Vinci visualized this in ink and metalpoint, showing two superimposed positions of the same figure. The drawing remains in the Gallerie dell'Accademia in Venice.",
+    "wowFactor": "Da Vinci crammed geometry, anatomy, and ancient philosophy onto a single notebook page — and it still sells more museum merchandise than almost any artwork in history.",
+    "variants": [
+      {
+        "question": "In which Italian city is Leonardo's Vitruvian Man currently held?",
+        "type": "forward",
+        "distractors": [
+          "Florence",
+          "Milan",
+          "Rome"
+        ],
+        "answer": "Venice"
+      },
+      {
+        "question": "The Vitruvian Man demonstrates that the ideal human body fits inside both a circle and a ___.",
+        "type": "fill_blank",
+        "distractors": [
+          "triangle",
+          "pentagon",
+          "hexagon"
+        ],
+        "answer": "square"
+      },
+      {
+        "question": "Which discipline did Leonardo primarily use the Vitruvian Man to explore?",
+        "type": "context",
+        "distractors": [
+          "Architectural engineering",
+          "Military fortification",
+          "Botanical classification"
+        ],
+        "answer": "Human anatomy and proportion"
+      },
+      {
+        "question": "Da Vinci drew the Vitruvian Man as a pure work of fine art with no scientific purpose.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Gallerie dell'Accademia, Venice",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Leonardo da Vinci",
+      "Vitruvian Man",
+      "Renaissance",
+      "anatomy",
+      "proportion",
+      "Vitruvius"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-davinci-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Leonardo da Vinci's The Last Supper (1495–1498), painted on the refectory wall of Santa Maria delle Grazie in Milan, depicts the moment Jesus announces that one of his disciples will betray him.",
+    "quizQuestion": "In which Italian city is Leonardo da Vinci's The Last Supper located?",
+    "correctAnswer": "Milan",
+    "distractors": [
+      "Rome",
+      "Florence",
+      "Venice",
+      "Naples",
+      "Turin",
+      "Bologna",
+      "Siena",
+      "Padua"
+    ],
+    "acceptableAnswers": [
+      "Milano",
+      "Santa Maria delle Grazie"
+    ],
+    "explanation": "Unlike most murals, da Vinci used tempera and oil on a dry plaster wall rather than true fresco. The technique made it vivid but fragile, and it began deteriorating within decades. The painting survived a 1943 Allied bombing because the wall was protected by sandbags.",
+    "wowFactor": "Da Vinci took three years to paint it — yet Napoleon's troops later used the room as a stable and blasted a door through the bottom, cutting off Jesus's feet.",
+    "variants": [
+      {
+        "question": "What moment does The Last Supper depict according to the Gospel of John?",
+        "type": "forward",
+        "distractors": [
+          "The washing of feet",
+          "The breaking of bread",
+          "The resurrection"
+        ],
+        "answer": "Jesus announcing a disciple will betray him"
+      },
+      {
+        "question": "Why did The Last Supper begin deteriorating faster than a standard fresco?",
+        "type": "context",
+        "distractors": [
+          "He used water-soluble pigments",
+          "The wall was too thin",
+          "Sunlight bleached the colours"
+        ],
+        "answer": "Da Vinci painted on dry plaster with tempera and oil, not wet plaster"
+      },
+      {
+        "question": "The Last Supper is painted on the wall of which type of room?",
+        "type": "forward",
+        "distractors": [
+          "A chapel",
+          "A throne room",
+          "A library"
+        ],
+        "answer": "A refectory (dining hall)"
+      },
+      {
+        "question": "Napoleon's soldiers damaged The Last Supper by converting the room into a stable.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Santa Maria delle Grazie, Milan",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Leonardo da Vinci",
+      "The Last Supper",
+      "Renaissance",
+      "Milan",
+      "mural",
+      "tempera"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-davinci-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Among Leonardo da Vinci's inventions sketched in his notebooks were a solar power concentrator, an armoured vehicle resembling a tank, and a rudimentary hang glider — all designed in the 15th century.",
+    "quizQuestion": "Which of these inventions did Leonardo da Vinci design in his 15th-century notebooks?",
+    "correctAnswer": "An armoured vehicle resembling a tank",
+    "distractors": [
+      "A working steam locomotive",
+      "An electric telegraph",
+      "A mechanical printing press",
+      "A functional cannon",
+      "A hot air balloon",
+      "A submarine with propeller",
+      "A powered automobile",
+      "A clockwork calculator"
+    ],
+    "acceptableAnswers": [
+      "A tank-like armoured vehicle",
+      "Armoured car"
+    ],
+    "explanation": "Da Vinci filled over 13,000 pages of notebooks with diagrams. His ornithopter drew inspiration from bird wings; his armoured car was circular with angled plates and could theoretically rotate; his solar concentrator used mirrors to focus sunlight to heat water. None were built in his lifetime.",
+    "wowFactor": "Leonardo designed a flying machine, a tank, and a solar furnace 400 years before any of them were built. His notebooks were so far ahead of their time that most of his ideas weren't discovered by the wider world until the 19th century.",
+    "variants": [
+      {
+        "question": "Approximately how many pages of notebooks did Leonardo da Vinci fill with diagrams and writings?",
+        "type": "forward",
+        "distractors": [
+          "About 500 pages",
+          "Around 3,000 pages",
+          "More than 50,000 pages"
+        ],
+        "answer": "Over 13,000 pages"
+      },
+      {
+        "question": "What prevented Leonardo's inventions from being built during his lifetime?",
+        "type": "context",
+        "distractors": [
+          "He kept all designs secret from craftsmen",
+          "The Church banned mechanical innovation",
+          "He destroyed his notebooks before death"
+        ],
+        "answer": "The technology and materials of the era couldn't realise his designs"
+      },
+      {
+        "question": "Leonardo's flying machine design was inspired by the wings of which animal?",
+        "type": "forward",
+        "distractors": [
+          "Bats",
+          "Dragonflies",
+          "Flying squirrels"
+        ],
+        "answer": "Birds"
+      },
+      {
+        "question": "Leonardo da Vinci's notebooks were widely studied and published during his own lifetime.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Leonardo da Vinci's Codices (Codex Atlanticus, Codex Madrid)",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Leonardo da Vinci",
+      "inventions",
+      "Renaissance",
+      "notebooks",
+      "engineering",
+      "tank",
+      "flying machine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-tolstoy-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Leo Tolstoy's War and Peace (1869) follows five aristocratic families across twelve years of Russian history, including Napoleon's 1812 invasion, and contains over 580 named characters.",
+    "quizQuestion": "Approximately how many named characters appear in Tolstoy's War and Peace?",
+    "correctAnswer": "Over 580",
+    "distractors": [
+      "Around 50",
+      "Nearly 200",
+      "About 100",
+      "Roughly 1,200",
+      "Fewer than 30",
+      "Exactly 365",
+      "More than 2,000",
+      "About 400"
+    ],
+    "acceptableAnswers": [
+      "580+",
+      "Around 580",
+      "More than 580"
+    ],
+    "explanation": "Published serially in the Russian Messenger from 1865–1867 before appearing as a book in 1869, War and Peace blends fictional families like the Bolkonskys and Rostovs with real historical figures including Napoleon and General Kutuzov. At roughly 580,000 words in English translation, it remains one of the longest novels ever written.",
+    "wowFactor": "War and Peace is so long that Tolstoy's wife Sofia hand-copied the entire manuscript seven times — once for each major revision — because typewriters didn't exist yet.",
+    "variants": [
+      {
+        "question": "What historical event forms the backdrop of War and Peace?",
+        "type": "forward",
+        "distractors": [
+          "The Crimean War",
+          "The French Revolution",
+          "The Russo-Turkish War"
+        ],
+        "answer": "Napoleon's 1812 invasion of Russia"
+      },
+      {
+        "question": "Who hand-copied Tolstoy's War and Peace manuscript multiple times?",
+        "type": "reverse",
+        "distractors": [
+          "His editor",
+          "His eldest son",
+          "A hired scribe"
+        ],
+        "answer": "His wife Sofia"
+      },
+      {
+        "question": "In which publication was War and Peace first serialised?",
+        "type": "forward",
+        "distractors": [
+          "St. Petersburg Gazette",
+          "The Contemporary",
+          "Moscow Times"
+        ],
+        "answer": "The Russian Messenger"
+      },
+      {
+        "question": "War and Peace was published as a complete book before it appeared in serialised form.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "War and Peace, Leo Tolstoy (1869)",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Tolstoy",
+      "War and Peace",
+      "Russian literature",
+      "Napoleon",
+      "1812",
+      "novel"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-tolstoy-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Tolstoy's philosophy of nonviolent resistance directly inspired Mahatma Gandhi and, through Gandhi, Martin Luther King Jr. — making a 19th-century Russian novelist a foundational influence on two of history's greatest civil rights movements.",
+    "quizQuestion": "Which political philosopher was most directly inspired by Tolstoy's writings on nonviolent resistance?",
+    "correctAnswer": "Mahatma Gandhi",
+    "distractors": [
+      "Vladimir Lenin",
+      "Karl Marx",
+      "Friedrich Nietzsche",
+      "Mao Zedong",
+      "Leon Trotsky",
+      "Nelson Mandela",
+      "Marcus Aurelius",
+      "Jean-Paul Sartre"
+    ],
+    "acceptableAnswers": [
+      "Gandhi",
+      "Mohandas Gandhi",
+      "Mohandas Karamchand Gandhi"
+    ],
+    "explanation": "Tolstoy developed a philosophy called Tolstoyanism: rejection of state authority, nonviolent resistance to evil, and simple agrarian living. Gandhi read Tolstoy's The Kingdom of God Is Within You while in South Africa and called it a transformative experience. King later cited Gandhi — and therefore indirectly Tolstoy — as crucial to his own thinking.",
+    "wowFactor": "Gandhi wrote to Tolstoy directly and they exchanged letters. Tolstoy's final letter was written to Gandhi just months before Tolstoy's death in 1910.",
+    "variants": [
+      {
+        "question": "What is the name of Tolstoy's key philosophical work that influenced Gandhi?",
+        "type": "forward",
+        "distractors": [
+          "What Is Art?",
+          "Confession",
+          "Anna Karenina"
+        ],
+        "answer": "The Kingdom of God Is Within You"
+      },
+      {
+        "question": "What did Tolstoy call his personal philosophy combining nonviolence and simple agrarian living?",
+        "type": "forward",
+        "distractors": [
+          "Pacifism",
+          "Anarchism",
+          "Christian Socialism"
+        ],
+        "answer": "Tolstoyanism"
+      },
+      {
+        "question": "Gandhi and Tolstoy exchanged personal letters. When did this correspondence end?",
+        "type": "context",
+        "distractors": [
+          "After Gandhi returned to India in 1915",
+          "Before the Boer War in 1899",
+          "When Gandhi was imprisoned in 1908"
+        ],
+        "answer": "Shortly before Tolstoy died in 1910"
+      },
+      {
+        "question": "Tolstoy's philosophy rejected state authority and promoted nonviolent resistance.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Tolstoy-Gandhi correspondence; The Kingdom of God Is Within You (1894)",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Tolstoy",
+      "Gandhi",
+      "nonviolence",
+      "philosophy",
+      "Tolstoyanism",
+      "civil rights"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-tolstoy-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "In his later years, Tolstoy renounced his aristocratic wealth and copyright to his works, gave away his estate, and at age 82 secretly fled his home on foot — dying at a rural train station ten days later.",
+    "quizQuestion": "At what age did Leo Tolstoy secretly flee his home and die shortly afterward?",
+    "correctAnswer": "82",
+    "distractors": [
+      "63",
+      "74",
+      "91",
+      "55",
+      "68",
+      "45",
+      "79",
+      "88"
+    ],
+    "acceptableAnswers": [
+      "Eighty-two",
+      "Age 82"
+    ],
+    "explanation": "Tolstoy grew increasingly convinced that owning property was morally wrong. His marriage to Sofia was strained by his desire to give away everything. On the night of 28 October 1910, he slipped out secretly with his doctor. He developed pneumonia and died on 20 November 1910 at Astapovo station, surrounded by journalists and a crowd that had gathered to witness the scene.",
+    "wowFactor": "The most famous writer in Russia abandoned his mansion in the middle of the night at age 82 and was found dying in a railway stationmaster's cottage. Reporters camped outside while he lay unconscious.",
+    "variants": [
+      {
+        "question": "Where did Leo Tolstoy die in 1910?",
+        "type": "forward",
+        "distractors": [
+          "At his Yasnaya Polyana estate",
+          "In a Moscow hospital",
+          "On a ship crossing the Black Sea"
+        ],
+        "answer": "At a rural railway station (Astapovo)"
+      },
+      {
+        "question": "What did Tolstoy do with the copyright to his works in his final years?",
+        "type": "forward",
+        "distractors": [
+          "He sold it to the government",
+          "He left it to the Orthodox Church",
+          "He passed it to his eldest son"
+        ],
+        "answer": "He renounced it, making his works free for anyone to publish"
+      },
+      {
+        "question": "What illness caused Tolstoy's death days after his escape from home?",
+        "type": "forward",
+        "distractors": [
+          "A stroke",
+          "Typhoid fever",
+          "Heart failure"
+        ],
+        "answer": "Pneumonia"
+      },
+      {
+        "question": "Tolstoy died peacefully in his home surrounded by his family.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Tolstoy biographical records; Astapovo station, November 1910",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Tolstoy",
+      "death",
+      "Astapovo",
+      "renunciation",
+      "aristocracy",
+      "philosophy",
+      "1910"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-kahlo-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Frida Kahlo painted 55 of her 143 known works as self-portraits, often depicting herself with unibrow, facial hair, and traditional Tehuana dress — intentionally reclaiming Indigenous Mexican identity in her art.",
+    "quizQuestion": "What physical circumstance led Frida Kahlo to begin painting self-portraits?",
+    "correctAnswer": "She was bedridden after a bus crash with only a mirror above her bed",
+    "distractors": [
+      "She was rejected from art school and painted herself in protest",
+      "Her artist husband Diego Rivera requested portraits of her",
+      "She went blind in one eye and could only see her reflection clearly",
+      "She was imprisoned and only had access to a mirror and paints",
+      "She found photographs of herself too expensive to commission",
+      "Her therapist recommended self-portraiture as emotional therapy",
+      "A gallery owner specifically commissioned self-portrait studies from her",
+      "She lost the use of her right hand and could only use her left for close work"
+    ],
+    "acceptableAnswers": [
+      "A bus accident left her bedridden with a mirror overhead",
+      "Recovery from a traffic accident"
+    ],
+    "explanation": "In 1925, Kahlo was in a near-fatal bus accident that broke her spinal column, collarbone, ribs, and pelvis. During her long recovery, her parents installed a canopy mirror over her bed. She began painting herself, later saying: 'I paint myself because I am so often alone and because I am the subject I know best.' Her Tehuana dress was also a political statement, celebrating pre-colonial Mexican culture.",
+    "wowFactor": "Frida started painting herself because she was bedridden after a bus crash and all she could see in the mirror above her bed was herself. Her self-portraits were literally painted from necessity.",
+    "variants": [
+      {
+        "question": "What fraction of Frida Kahlo's known works are self-portraits?",
+        "type": "forward",
+        "distractors": [
+          "Nearly all of them (over 90%)",
+          "Less than a tenth",
+          "Exactly half"
+        ],
+        "answer": "About a third (55 out of 143)"
+      },
+      {
+        "question": "What did Frida Kahlo's traditional Tehuana dress represent in her artwork?",
+        "type": "context",
+        "distractors": [
+          "Her Catholic religious devotion",
+          "Her Communist political allegiance",
+          "Her rejection of European fashion"
+        ],
+        "answer": "A celebration of pre-colonial Mexican Indigenous identity"
+      },
+      {
+        "question": "In what year was Kahlo involved in the bus crash that led to her self-portraits?",
+        "type": "forward",
+        "distractors": [
+          "1917",
+          "1932",
+          "1940"
+        ],
+        "answer": "1925"
+      },
+      {
+        "question": "Frida Kahlo primarily painted self-portraits because she was commissioned to by galleries.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Frida Kahlo Museum, Mexico City; Frida Kahlo biographical records",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Frida Kahlo",
+      "self-portrait",
+      "bus crash",
+      "Mexico",
+      "Tehuana",
+      "disability",
+      "identity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-kahlo-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "André Breton proclaimed Frida Kahlo a Surrealist, but she rejected the label, saying: 'I never painted dreams. I painted my own reality.'",
+    "quizQuestion": "How did Frida Kahlo respond to André Breton calling her a Surrealist?",
+    "correctAnswer": "She rejected the label, saying she painted her own reality, not dreams",
+    "distractors": [
+      "She embraced it and joined the Paris Surrealist movement",
+      "She sued him for misrepresenting her work",
+      "She thanked him and dedicated her next painting to him",
+      "She moved to Paris to work alongside Breton and Dalí",
+      "She publicly praised the classification and used it in interviews",
+      "She accepted the label only after his death",
+      "She said nothing publicly and used the term on her own gallery notes",
+      "She asked Diego Rivera to respond on her behalf"
+    ],
+    "acceptableAnswers": [
+      "She rejected it",
+      "She denied being a Surrealist",
+      "She said she painted reality not dreams"
+    ],
+    "explanation": "André Breton visited Mexico in 1938 and was enchanted by Kahlo's imagery. He wrote an essay calling her a 'pure surrealist' and arranged her first solo exhibition in New York. Kahlo, however, consistently denied the label, arguing that her fantastical images came not from dreams or the unconscious but from her lived physical and emotional pain. Most art historians now classify her work as magical realism or as its own category.",
+    "wowFactor": "The father of Surrealism flew to Mexico, saw her work, and immediately declared her one of his movement's greatest artists — and she promptly told him he was wrong.",
+    "variants": [
+      {
+        "question": "Who was André Breton?",
+        "type": "reverse",
+        "distractors": [
+          "A Mexican muralist",
+          "A New York gallery curator",
+          "A French Impressionist painter"
+        ],
+        "answer": "The founder of the Surrealist movement"
+      },
+      {
+        "question": "Where was Frida Kahlo's first solo exhibition, arranged by Breton?",
+        "type": "forward",
+        "distractors": [
+          "Paris",
+          "Mexico City",
+          "London"
+        ],
+        "answer": "New York"
+      },
+      {
+        "question": "How do most contemporary art historians classify Kahlo's style?",
+        "type": "forward",
+        "distractors": [
+          "Strictly Surrealist",
+          "Post-Impressionist",
+          "Abstract Expressionist"
+        ],
+        "answer": "Magical realism or as its own independent category"
+      },
+      {
+        "question": "Frida Kahlo was happy to be called a Surrealist throughout her career.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "André Breton's essay on Kahlo (1938); Frida Kahlo interviews",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Frida Kahlo",
+      "Surrealism",
+      "André Breton",
+      "magical realism",
+      "identity",
+      "art movements"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-kahlo-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Frida Kahlo and Diego Rivera married twice — they divorced in 1939 and remarried in 1940 — and their relationship was defined by mutual affairs, political collaboration, and fierce creative rivalry.",
+    "quizQuestion": "How many times did Frida Kahlo and Diego Rivera get married to each other?",
+    "correctAnswer": "Twice",
+    "distractors": [
+      "Once",
+      "Three times",
+      "They never officially married",
+      "Four times",
+      "They were engaged but never wed",
+      "Five times",
+      "Once, but had a common-law second union",
+      "They married once and separated legally but never divorced"
+    ],
+    "acceptableAnswers": [
+      "2",
+      "Two times"
+    ],
+    "explanation": "Rivera and Kahlo met when she showed him her work at age 21 and he was already a famous muralist. They were nicknamed 'the elephant and the dove' due to their size difference. Both were members of the Mexican Communist Party. Kahlo had affairs with women including Josephine Baker and men including Trotsky. Rivera had affairs including with Kahlo's sister Cristina. Despite the chaos, each considered the other their greatest artistic partner.",
+    "wowFactor": "When Diego Rivera had an affair with Kahlo's own sister, Kahlo retaliated by having an affair with Leon Trotsky, who was living as a political exile in their home. This was not a calm household.",
+    "variants": [
+      {
+        "question": "What nickname was given to the Kahlo-Rivera couple based on their physical size difference?",
+        "type": "forward",
+        "distractors": [
+          "The lion and the lamb",
+          "The bear and the butterfly",
+          "The giant and the sparrow"
+        ],
+        "answer": "The elephant and the dove"
+      },
+      {
+        "question": "Which political exile lived in Kahlo and Rivera's home and had an affair with Kahlo?",
+        "type": "forward",
+        "distractors": [
+          "Joseph Stalin",
+          "Vladimir Lenin",
+          "Mao Zedong"
+        ],
+        "answer": "Leon Trotsky"
+      },
+      {
+        "question": "In what year did Kahlo and Rivera first divorce?",
+        "type": "forward",
+        "distractors": [
+          "1929",
+          "1944",
+          "1952"
+        ],
+        "answer": "1939"
+      },
+      {
+        "question": "Frida Kahlo and Diego Rivera were members of the Mexican Communist Party.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "adult",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Frida Kahlo and Diego Rivera biographical records",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Frida Kahlo",
+      "Diego Rivera",
+      "marriage",
+      "divorce",
+      "Trotsky",
+      "Mexico",
+      "communism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-picasso-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Pablo Picasso co-founded Cubism with Georges Braque around 1907–1908, developing a style that depicted subjects from multiple viewpoints simultaneously on a flat canvas.",
+    "quizQuestion": "Who co-founded Cubism with Pablo Picasso?",
+    "correctAnswer": "Georges Braque",
+    "distractors": [
+      "Henri Matisse",
+      "Salvador Dalí",
+      "Paul Gauguin",
+      "Paul Cézanne",
+      "Marcel Duchamp",
+      "Fernand Léger",
+      "Juan Gris",
+      "Wassily Kandinsky"
+    ],
+    "acceptableAnswers": [
+      "Braque",
+      "G. Braque"
+    ],
+    "explanation": "Analytical Cubism (1908–1912) broke subjects into geometric fragments, abandoning single-point perspective. Synthetic Cubism (1912 onward) introduced collage elements. Picasso's Les Demoiselles d'Avignon (1907) is considered the proto-Cubist breakthrough. The movement was heavily influenced by Paul Cézanne's late work and African art that Picasso encountered at Paris's Trocadéro museum.",
+    "wowFactor": "Picasso and Braque worked so closely together that they sometimes couldn't tell whose paintings were whose. They jokingly called themselves Orville and Wilbur — after the Wright Brothers, two inventors solving a problem together.",
+    "variants": [
+      {
+        "question": "What Picasso painting of 1907 is considered the proto-Cubist breakthrough?",
+        "type": "forward",
+        "distractors": [
+          "Guernica",
+          "Weeping Woman",
+          "Girl Before a Mirror"
+        ],
+        "answer": "Les Demoiselles d'Avignon"
+      },
+      {
+        "question": "Which art from outside Europe heavily influenced the development of Cubism?",
+        "type": "context",
+        "distractors": [
+          "Japanese ukiyo-e prints",
+          "Persian miniature painting",
+          "Ancient Egyptian hieroglyphics"
+        ],
+        "answer": "African art (masks and sculpture)"
+      },
+      {
+        "question": "What is the key visual principle of Cubism?",
+        "type": "forward",
+        "distractors": [
+          "Extreme distortion of colour",
+          "Complete abstraction with no recognisable forms",
+          "Photographic realism in broken brushstrokes"
+        ],
+        "answer": "Showing subjects from multiple viewpoints simultaneously"
+      },
+      {
+        "question": "Picasso and Braque's early Cubist canvases were so similar that they sometimes couldn't distinguish each other's work.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "MoMA Cubism collection; Picasso biographical records",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Picasso",
+      "Cubism",
+      "Georges Braque",
+      "art movements",
+      "Les Demoiselles d'Avignon",
+      "African art"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-picasso-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Picasso's Guernica (1937) was painted as a response to the Nazi and Fascist aerial bombing of the Basque town of Guernica during the Spanish Civil War, and measures approximately 3.5 by 7.8 metres.",
+    "quizQuestion": "What event directly inspired Picasso to paint Guernica in 1937?",
+    "correctAnswer": "The Nazi and Fascist bombing of the Basque town of Guernica",
+    "distractors": [
+      "The assassination of Spanish Prime Minister José Canalejas",
+      "The fall of the Spanish Republic to Franco's forces",
+      "The execution of Spanish poet Federico García Lorca",
+      "The Allied invasion of North Africa",
+      "The German occupation of Paris",
+      "The firebombing of Madrid during the siege",
+      "The death of Picasso's close friend Guillaume Apollinaire",
+      "The collapse of the Spanish Socialist government in 1933"
+    ],
+    "acceptableAnswers": [
+      "Bombing of Guernica",
+      "Nazi bombing of a Basque town",
+      "The Condor Legion bombing"
+    ],
+    "explanation": "Germany's Condor Legion and Italy's Aviazione Legionaria bombed Guernica on 26 April 1937, killing hundreds of civilians. The Spanish Republican government commissioned Picasso, then living in Paris, to paint something for the 1937 Paris International Exposition. He completed Guernica in about five weeks. The painting was kept in New York's MoMA for decades because Picasso refused to allow it to return to Spain while Franco was in power. It returned to Spain in 1981.",
+    "wowFactor": "When a Nazi officer asked Picasso: 'Did you do this?' while looking at a photo of Guernica, Picasso replied: 'No — you did.' It's one of history's most devastating one-line comebacks.",
+    "variants": [
+      {
+        "question": "Where was Guernica when Picasso refused to let it return to Spain?",
+        "type": "forward",
+        "distractors": [
+          "The Prado, Madrid",
+          "The Louvre, Paris",
+          "The Tate Modern, London"
+        ],
+        "answer": "MoMA, New York"
+      },
+      {
+        "question": "What was Picasso's famous one-line reply when a Nazi officer asked if he had made Guernica?",
+        "type": "forward",
+        "distractors": [
+          "'Ask your general'",
+          "'It is Spain's wound, not mine'",
+          "'Art answers questions that war asks'"
+        ],
+        "answer": "'No — you did'"
+      },
+      {
+        "question": "In what year did Guernica finally return to Spain from New York?",
+        "type": "forward",
+        "distractors": [
+          "1955",
+          "1965",
+          "1975"
+        ],
+        "answer": "1981"
+      },
+      {
+        "question": "Picasso painted Guernica while living in Spain at the time of the bombing.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Museo Reina Sofía, Madrid; historical records of Guernica bombing, April 1937",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Picasso",
+      "Guernica",
+      "Spanish Civil War",
+      "Nazi bombing",
+      "Basque Country",
+      "anti-war art"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-picasso-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Picasso created an estimated 20,000 to 30,000 works across his 75-year career, making him one of the most prolific artists in history.",
+    "quizQuestion": "Approximately how many works did Pablo Picasso create across his 75-year career?",
+    "correctAnswer": "20,000 to 30,000",
+    "distractors": [
+      "About 500",
+      "Fewer than 1,000",
+      "Around 3,000",
+      "Exactly 10,000",
+      "More than 100,000",
+      "Approximately 5,000",
+      "Around 50,000",
+      "Nearly 8,000"
+    ],
+    "acceptableAnswers": [
+      "Around 20,000",
+      "Tens of thousands",
+      "20,000-30,000 works"
+    ],
+    "explanation": "Picasso worked continuously from childhood until his death at 91 in 1973. His output included approximately 1,885 paintings, 1,228 sculptures, 2,880 ceramics, 12,000 drawings, and 100,000 prints and engravings. He never retired. His last work was dated the day before he died. Auction estimates of his total output's value exceed $800 million.",
+    "wowFactor": "If Picasso had sold every work he ever made for just $1 each, he would have been a millionaire many times over purely from volume. He actually averaged one major work every single day of his adult life.",
+    "variants": [
+      {
+        "question": "How old was Picasso when he died in 1973?",
+        "type": "forward",
+        "distractors": [
+          "72",
+          "84",
+          "65"
+        ],
+        "answer": "91"
+      },
+      {
+        "question": "Which medium made up the largest number of Picasso's works?",
+        "type": "forward",
+        "distractors": [
+          "Oil paintings",
+          "Sculptures",
+          "Ceramics"
+        ],
+        "answer": "Prints and engravings (around 100,000)"
+      },
+      {
+        "question": "When was Picasso's last dated work completed?",
+        "type": "context",
+        "distractors": [
+          "Several years before his death",
+          "On the day of his death",
+          "Two weeks before his death"
+        ],
+        "answer": "The day before he died"
+      },
+      {
+        "question": "Picasso retired from active art-making in the final decade of his life.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Picasso Administration; auction house records; Musée Picasso, Paris",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Picasso",
+      "prolific",
+      "output",
+      "career",
+      "paintings",
+      "sculpture",
+      "ceramics",
+      "prints"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-vangogh-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Vincent van Gogh painted The Starry Night (1889) while voluntarily committed to the Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence, France.",
+    "quizQuestion": "Where was Vincent van Gogh living when he painted The Starry Night?",
+    "correctAnswer": "Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence",
+    "distractors": [
+      "The Yellow House in Arles",
+      "Auvers-sur-Oise, near Paris",
+      "His family home in Nuenen, Netherlands",
+      "A studio in Antwerp, Belgium",
+      "A boarding house in The Hague",
+      "A hospital in Amsterdam",
+      "The artist commune in Pont-Aven, Brittany",
+      "Paul Gauguin's studio in Paris"
+    ],
+    "acceptableAnswers": [
+      "Saint-Rémy asylum",
+      "Saint-Paul-de-Mausole",
+      "An asylum in the south of France"
+    ],
+    "explanation": "Van Gogh checked himself into Saint-Paul-de-Mausole in May 1889 after the ear-cutting incident. He had a room with a window overlooking a wheat field and hills. He wrote to his brother Theo about the night sky he could see, but The Starry Night's specific swirling forms were painted during the day from imagination. The painting now hangs in MoMA, New York, having been sold just once in van Gogh's lifetime — to his brother Theo.",
+    "wowFactor": "Van Gogh painted The Starry Night from memory, not by looking out the window, even though his room did have a window. He also wasn't allowed out at night. The entire scene is invented.",
+    "variants": [
+      {
+        "question": "The Starry Night now hangs in which museum?",
+        "type": "forward",
+        "distractors": [
+          "The Van Gogh Museum, Amsterdam",
+          "The Louvre, Paris",
+          "The Uffizi Gallery, Florence"
+        ],
+        "answer": "MoMA, New York"
+      },
+      {
+        "question": "Did van Gogh paint The Starry Night by looking directly out of his asylum window at night?",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Who received The Starry Night as a gift from Vincent van Gogh?",
+        "type": "forward",
+        "distractors": [
+          "Paul Gauguin",
+          "His friend Émile Bernard",
+          "His doctor at the asylum"
+        ],
+        "answer": "His brother Theo van Gogh"
+      },
+      {
+        "question": "In what year did van Gogh enter Saint-Paul-de-Mausole asylum?",
+        "type": "forward",
+        "distractors": [
+          "1885",
+          "1891",
+          "1887"
+        ],
+        "answer": "1889"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "MoMA, New York; Van Gogh letters to Theo van Gogh",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Van Gogh",
+      "The Starry Night",
+      "asylum",
+      "Saint-Rémy",
+      "Post-Impressionism",
+      "mental health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-vangogh-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Van Gogh's famous ear incident occurred on 23 December 1888 in Arles, France — but historians now believe he may have severed only the lower part of his ear lobe, not the entire ear.",
+    "quizQuestion": "What do historians now believe about van Gogh's famous 'ear incident' in 1888?",
+    "correctAnswer": "He likely severed only the lower part of his ear lobe, not the entire ear",
+    "distractors": [
+      "He faked the wound to avoid arrest",
+      "He was not involved — it was Gauguin alone who caused the injury",
+      "He cut off his ear deliberately as a protest against Gauguin leaving",
+      "He cut off both ears and the story was changed to one ear",
+      "The entire story is a fabrication invented by Gauguin",
+      "He accidentally severed it while cleaning a scalpel",
+      "The wound was caused by a bullet, not a blade",
+      "He cut off the complete ear, exactly as traditionally reported"
+    ],
+    "acceptableAnswers": [
+      "Only part of his earlobe",
+      "Just the lower lobe",
+      "A partial cut, not the whole ear"
+    ],
+    "explanation": "The widely repeated story is that van Gogh cut off his ear entirely and delivered it to a woman named Rachel at a local brothel. However, Paul Gauguin's fencing sword was also found near the scene, and some historians argue Gauguin may have accidentally cut it during a confrontation before fleeing. Medical records from Dr. Felix Rey describe a wound consistent with the lower portion of the ear only. The full ear story may be partially mythologised.",
+    "wowFactor": "The doctor who treated van Gogh's ear wound left a written description. It matched a partial severing of the ear lobe, not the whole ear. Centuries of art history books have been slightly wrong about this.",
+    "variants": [
+      {
+        "question": "To whom did van Gogh allegedly deliver his severed ear fragment?",
+        "type": "forward",
+        "distractors": [
+          "Paul Gauguin himself",
+          "His landlord in Arles",
+          "His brother Theo"
+        ],
+        "answer": "A woman named Rachel at a local brothel"
+      },
+      {
+        "question": "In which French city did the ear incident take place?",
+        "type": "forward",
+        "distractors": [
+          "Paris",
+          "Marseille",
+          "Saint-Rémy"
+        ],
+        "answer": "Arles"
+      },
+      {
+        "question": "What alternative explanation do some historians offer for van Gogh's ear wound?",
+        "type": "context",
+        "distractors": [
+          "Van Gogh was attacked by a thief",
+          "A jealous art dealer slashed him",
+          "He was hit by a carriage wheel"
+        ],
+        "answer": "Gauguin may have accidentally cut it with his fencing sword during a confrontation"
+      },
+      {
+        "question": "Medical records from van Gogh's treating physician support the claim that his entire ear was removed.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Martin Bailey, Studio of the South (2016); Dr. Felix Rey's medical records",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Van Gogh",
+      "ear",
+      "Arles",
+      "Gauguin",
+      "art history myths",
+      "1888",
+      "medical records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-vangogh-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "Post-Impressionism was not a movement artists joined — it is a term coined by British art critic Roger Fry in 1910 to describe van Gogh, Gauguin, and Cézanne's work after Impressionism.",
+    "quizQuestion": "Who coined the term 'Post-Impressionism' to describe the work of van Gogh, Gauguin, and Cézanne?",
+    "correctAnswer": "Roger Fry, a British art critic",
+    "distractors": [
+      "Vincent van Gogh himself",
+      "Charles Baudelaire",
+      "Émile Zola",
+      "Paul Gauguin",
+      "John Ruskin",
+      "Walter Sickert",
+      "Gustave Courbet",
+      "Théodore Duret"
+    ],
+    "acceptableAnswers": [
+      "Roger Fry",
+      "Roger Eliot Fry"
+    ],
+    "explanation": "Roger Fry coined 'Post-Impressionism' as a title for an 1910 London exhibition he curated at the Grafton Gallery. He needed an umbrella term for a diverse group of artists who had moved beyond Impressionism in different directions: van Gogh's emotional brushwork, Cézanne's geometric foundations, Gauguin's symbolic colour. The artists themselves never used the term, and it was mocked by London critics when first introduced.",
+    "wowFactor": "Van Gogh never called himself a Post-Impressionist. He died in 1890 — twenty years before Roger Fry invented the term. None of the artists it describes were alive to agree or disagree with it.",
+    "variants": [
+      {
+        "question": "In what year was the term 'Post-Impressionism' first used in public?",
+        "type": "forward",
+        "distractors": [
+          "1886",
+          "1895",
+          "1920"
+        ],
+        "answer": "1910"
+      },
+      {
+        "question": "For which London exhibition did Roger Fry coin the term Post-Impressionism?",
+        "type": "forward",
+        "distractors": [
+          "A show at the National Gallery",
+          "The Royal Academy Summer Exhibition",
+          "A Tate Gallery retrospective"
+        ],
+        "answer": "An exhibition at the Grafton Gallery"
+      },
+      {
+        "question": "Did the artists described as Post-Impressionists use that term for themselves?",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Which of these three artists is most associated with geometric foundations in Post-Impressionism?",
+        "type": "forward",
+        "distractors": [
+          "Vincent van Gogh",
+          "Paul Gauguin",
+          "Georges Seurat"
+        ],
+        "answer": "Paul Cézanne"
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Roger Fry, Grafton Gallery Exhibition catalogue (1910); art history records",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "Van Gogh",
+      "Post-Impressionism",
+      "Roger Fry",
+      "art movements",
+      "Cézanne",
+      "Gauguin",
+      "art criticism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beatles-001",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "The Beatles' Abbey Road album cover (1969) — showing the four members crossing a zebra crossing outside EMI Studios — was photographed by Iain Macmillan standing on a stepladder in the middle of the road, with a police officer holding back traffic.",
+    "quizQuestion": "How long did photographer Iain Macmillan have to shoot the Abbey Road album cover?",
+    "correctAnswer": "Ten minutes",
+    "distractors": [
+      "Two hours",
+      "All afternoon",
+      "Thirty minutes",
+      "A full day",
+      "One hour",
+      "Forty-five minutes",
+      "Three hours",
+      "A week of scheduled sessions"
+    ],
+    "acceptableAnswers": [
+      "About 10 minutes",
+      "10 minutes",
+      "Around ten minutes"
+    ],
+    "explanation": "Abbey Road was recorded at EMI Studios on Abbey Road, St. John's Wood, London. The photo shoot took place on the morning of 8 August 1969. Paul McCartney is barefoot in the image, which spawned the famous 'Paul is dead' conspiracy theory. The crossing itself was given Grade II listed building status by Historic England in 2010, recognising its cultural significance.",
+    "wowFactor": "Macmillan was given just ten minutes to shoot the cover. He took six frames. The one chosen is the fifth. The Beatles walked back and forth while he shot from the ladder. It is now the most visited zebra crossing in the world.",
+    "variants": [
+      {
+        "question": "Which Beatle is barefoot in the Abbey Road crossing photograph?",
+        "type": "forward",
+        "distractors": [
+          "John Lennon",
+          "George Harrison",
+          "Ringo Starr"
+        ],
+        "answer": "Paul McCartney"
+      },
+      {
+        "question": "Which of Macmillan's six frames was used for the Abbey Road cover?",
+        "type": "forward",
+        "distractors": [
+          "The first frame",
+          "The third frame",
+          "The sixth frame"
+        ],
+        "answer": "The fifth frame"
+      },
+      {
+        "question": "What conspiracy theory was fuelled by Paul McCartney's appearance on the Abbey Road cover?",
+        "type": "context",
+        "distractors": [
+          "That The Beatles were secretly four different people",
+          "That John Lennon had already quit the band",
+          "That the album was recorded by session musicians"
+        ],
+        "answer": "The 'Paul is dead' conspiracy theory"
+      },
+      {
+        "question": "The Abbey Road zebra crossing was given listed building status in 2010.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "EMI Archives; Historic England Grade II listing (2010)",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "The Beatles",
+      "Abbey Road",
+      "album cover",
+      "Iain Macmillan",
+      "zebra crossing",
+      "Paul McCartney",
+      "London"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beatles-002",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "The Beatles appeared on The Ed Sullivan Show on 9 February 1964, watched by an estimated 73 million American viewers — the largest television audience in US history at that time.",
+    "quizQuestion": "How many Americans watched The Beatles' first Ed Sullivan Show appearance in February 1964?",
+    "correctAnswer": "Approximately 73 million",
+    "distractors": [
+      "About 5 million",
+      "Around 20 million",
+      "Roughly 40 million",
+      "Nearly 10 million",
+      "Over 100 million",
+      "About 30 million",
+      "Around 50 million",
+      "Fewer than 15 million"
+    ],
+    "acceptableAnswers": [
+      "73 million",
+      "About 73 million Americans"
+    ],
+    "explanation": "The appearance is credited as the launch of the 'British Invasion' of American pop music. It came just three months after the assassination of President Kennedy, and cultural historians argue America was hungry for something joyful. Beatlemania had already swept the UK but the Sullivan show made it a transatlantic phenomenon. The Beatles performed 'All My Loving', 'Till There Was You', 'She Loves You', 'I Saw Her Standing There', and 'I Want to Hold Your Hand'.",
+    "wowFactor": "The night The Beatles appeared on Ed Sullivan, US crime rates reportedly dropped to near zero in cities across the country. Even criminals stayed home to watch.",
+    "variants": [
+      {
+        "question": "What is the term used to describe The Beatles' influence on American popular music after the Ed Sullivan appearance?",
+        "type": "forward",
+        "distractors": [
+          "Beatlemania US",
+          "The Liverpool Effect",
+          "Anglo Pop Surge"
+        ],
+        "answer": "The British Invasion"
+      },
+      {
+        "question": "The Beatles' Ed Sullivan debut occurred how many months after President Kennedy's assassination?",
+        "type": "context",
+        "distractors": [
+          "One week",
+          "One year",
+          "Six months"
+        ],
+        "answer": "Three months"
+      },
+      {
+        "question": "Which of these songs did The Beatles NOT perform on the Ed Sullivan Show in February 1964?",
+        "type": "negative",
+        "distractors": [
+          "She Loves You",
+          "I Want to Hold Your Hand",
+          "All My Loving"
+        ],
+        "answer": "Let It Be"
+      },
+      {
+        "question": "The Beatles' Ed Sullivan appearance set a record for the largest US TV audience up to that point.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "CBS Ed Sullivan Show archives; Nielsen ratings records, February 1964",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "The Beatles",
+      "Ed Sullivan Show",
+      "1964",
+      "British Invasion",
+      "television",
+      "American pop culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beatles-003",
+    "type": "knowledge",
+    "domain": "",
+    "subdomain": "",
+    "categoryL1": "",
+    "categoryL2": "",
+    "categoryL3": "",
+    "statement": "The Beatles officially broke up in 1970, but the legal dissolution of their partnership was not completed until 1975 — and the final split was largely triggered by disagreements over management following Brian Epstein's death in 1967.",
+    "quizQuestion": "What event in 1967 most directly triggered the internal management conflicts that led to The Beatles' breakup?",
+    "correctAnswer": "The death of their manager Brian Epstein",
+    "distractors": [
+      "John Lennon's marriage to Yoko Ono",
+      "The commercial failure of Magical Mystery Tour",
+      "George Harrison's departure for India with Maharishi Mahesh Yogi",
+      "The release of the White Album and its critical reception",
+      "Ringo Starr's temporary resignation from the band",
+      "Paul McCartney's secret marriage to Linda Eastman",
+      "The closure of the Apple Boutique in London",
+      "John Lennon's public opposition to the Vietnam War"
+    ],
+    "acceptableAnswers": [
+      "Brian Epstein's death",
+      "The death of Brian Epstein",
+      "Losing their manager Brian Epstein"
+    ],
+    "explanation": "Brian Epstein, their manager, died of a drug overdose in August 1967. Without him, the band fractured over who should manage them. John, George, and Ringo wanted Allen Klein; Paul wanted Lee and John Eastman (his future father-in-law). Paul sued the other three in December 1970, asking a court to appoint a receiver. The case was settled in 1975. Lennon, Harrison, and Starr later agreed Klein had mismanaged them.",
+    "wowFactor": "John Lennon filed to dissolve the Beatles' partnership in December 1970 — but the other three kept it in court for five years. During that entire time, Paul McCartney was legally prevented from pursuing some of his solo projects freely.",
+    "variants": [
+      {
+        "question": "In what year did Paul McCartney file the lawsuit that legally began the Beatles' breakup?",
+        "type": "forward",
+        "distractors": [
+          "1968",
+          "1972",
+          "1969"
+        ],
+        "answer": "1970"
+      },
+      {
+        "question": "Who did Paul McCartney want to manage The Beatles after Brian Epstein died?",
+        "type": "forward",
+        "distractors": [
+          "Allen Klein",
+          "George Martin",
+          "Phil Spector"
+        ],
+        "answer": "Lee and John Eastman (his future father-in-law)"
+      },
+      {
+        "question": "In what year was The Beatles' legal dissolution finally completed?",
+        "type": "forward",
+        "distractors": [
+          "1971",
+          "1973",
+          "1978"
+        ],
+        "answer": "1975"
+      },
+      {
+        "question": "John, George, and Ringo eventually agreed that their chosen manager Allen Klein had done a good job.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Beatles biographical records; McCartney v. Lennon, Harrison, Starr & Apple Corps Ltd (1970–1975)",
+    "sourceUrl": "",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "",
+    "tags": [
+      "The Beatles",
+      "breakup",
+      "Brian Epstein",
+      "Allen Klein",
+      "management",
+      "1967",
+      "1970",
+      "dissolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

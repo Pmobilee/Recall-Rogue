@@ -1137,50 +1137,51 @@
     "categoryL1": "Human Body & Health",
     "categoryL2": "immunity_disease",
     "categoryL3": "",
-    "statement": "Antibodies are Y-shaped proteins made by B cells that recognize and neutralize specific pathogens like bacteria and viruses.",
-    "quizQuestion": "What shape are antibody proteins produced by the immune system?",
-    "correctAnswer": "Y-shaped",
+    "statement": "Antibodies are Y-shaped proteins produced by B cells that bind specifically to antigens on pathogens, neutralizing them or marking them for destruction.",
+    "quizQuestion": "What is the shape and function of antibodies in the immune system?",
+    "correctAnswer": "Y-shaped proteins that bind to and neutralize antigens",
     "distractors": [
-      "X-shaped",
-      "Spiral-shaped",
-      "Ring-shaped",
-      "Star-shaped",
-      "T-shaped",
-      "Globular",
-      "Chain-shaped",
-      "T-shaped"
+      "Circular proteins that absorb pathogens",
+      "T-cells that directly kill bacteria",
+      "Round proteins that block blood flow to infections",
+      "Linear chains that break down viruses chemically",
+      "Stem cells that replace damaged tissue",
+      "Enzymes that digest foreign DNA",
+      "Hormones that raise body temperature",
+      "Platelets that trap invaders in clots"
     ],
     "acceptableAnswers": [
-      "Y-shaped",
-      "Y shape",
-      "Y"
+      "Y-shaped proteins that bind to and neutralize antigens",
+      "Y-shaped proteins",
+      "Proteins that bind antigens",
+      "Proteins that neutralize pathogens"
     ],
-    "explanation": "Antibodies (immunoglobulins) are glycoproteins with a characteristic Y-shape: two identical heavy chains and two identical light chains held together by disulfide bonds. The two tips of the Y (Fab regions) contain the antigen-binding sites, which are uniquely shaped to recognize specific molecular patterns on pathogens. The base of the Y (Fc region) recruits immune effector cells.",
-    "wowFactor": "The human immune system can produce roughly 10 billion different antibody shapes — one custom-fitted for virtually every possible pathogen that has ever existed.",
+    "explanation": "Each antibody's two tips are uniquely shaped to lock onto one specific antigen — like a key and lock. Once bound, antibodies neutralize threats directly (blocking viral entry into cells) or flag them for phagocytes to devour. B cells can produce thousands of different antibodies, and after an infection, memory B cells persist for decades, enabling rapid response to future exposure.",
+    "wowFactor": "Your body can produce billions of unique antibody shapes — even for pathogens that have never existed yet. This diversity is generated randomly by genetic reshuffling every time a B cell matures.",
     "variants": [
       {
         "type": "forward",
-        "question": "Antibodies produced by B cells are described as having what distinctive shape?",
-        "answer": "Y-shaped",
+        "question": "What shape are antibodies and what do they do?",
+        "answer": "Y-shaped proteins that bind to and neutralize antigens",
         "distractors": [
-          "X-shaped",
-          "Ring-shaped",
-          "Star-shaped"
+          "Circular proteins that absorb pathogens",
+          "T-cells that kill bacteria directly",
+          "Stem cells that replace damaged tissue"
         ]
       },
       {
         "type": "reverse",
-        "question": "B cells produce Y-shaped proteins called what to fight pathogens?",
-        "answer": "Antibodies",
+        "question": "Which immune cells produce Y-shaped antibody proteins?",
+        "answer": "B cells",
         "distractors": [
-          "Antigens",
-          "Cytokines",
-          "Enzymes"
+          "T cells",
+          "Macrophages",
+          "Neutrophils"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: Antibodies are Y-shaped proteins that target specific pathogens.",
+        "question": "True or false: Antibodies are Y-shaped proteins that bind specifically to antigens on pathogens.",
         "answer": "True",
         "distractors": [
           "False"
@@ -1188,33 +1189,36 @@
       },
       {
         "type": "fill_blank",
-        "question": "Antibodies are ___ shaped proteins that recognize and neutralize specific pathogens.",
+        "question": "Antibodies are ___ -shaped proteins produced by B cells to neutralize pathogens.",
         "answer": "Y",
         "distractors": [
+          "circular",
           "X",
-          "T",
-          "O"
+          "linear"
         ]
       }
     ],
-    "difficulty": 3,
-    "funScore": 7,
-    "noveltyScore": 7,
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
     "ageRating": "kid",
-    "rarity": "common",
-    "sourceName": "Wikipedia",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Antibody",
+    "rarity": "uncommon",
     "contentVolatility": "timeless",
+    "sourceName": "Khan Academy",
+    "sourceUrl": "https://www.khanacademy.org/science/ap-biology/natural-selection/immunity/a/the-immune-system",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A glowing Y-shaped protein molecule latching onto a spiky virus particle, immune cells rallying in the background, pixel art style.",
+    "visualDescription": "A pixel-art glowing Y-shaped antibody protein locking onto a spiked virus particle, surrounded by other Y-shapes in formation, B cell in the background emitting them like a factory, blue and white color scheme.",
     "tags": [
       "immune system",
       "antibodies",
       "B cells",
+      "antigens",
       "immunity",
       "pathogens"
-    ]
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "health-immune-memory",
@@ -9699,6 +9703,1546 @@
       "respiration",
       "physiology",
       "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-kidneys-gfr",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Healthy kidneys filter about 200 liters of blood per day, producing roughly 1–2 liters of urine from that process.",
+    "quizQuestion": "Approximately how much blood do the kidneys filter each day?",
+    "correctAnswer": "200 liters",
+    "distractors": [
+      "5 liters",
+      "50 liters",
+      "500 liters",
+      "1,000 liters",
+      "20 liters",
+      "100 liters",
+      "10 liters",
+      "2 liters"
+    ],
+    "acceptableAnswers": [
+      "200 liters",
+      "About 200 liters",
+      "Around 200 liters",
+      "200 L"
+    ],
+    "explanation": "The kidneys filter the entire blood supply roughly 400 times per day. All that filtered blood — about 200 liters — passes through the nephrons, which reclaim most water, glucose, and electrolytes. Only 1–2 liters end up as urine. This relentless filtration keeps blood chemistry precisely balanced.",
+    "wowFactor": "Your kidneys filter 200 liters of blood every day — that's more than a full bathtub — yet produce only about a liter of urine from all that work.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much blood do the kidneys filter in a single day?",
+        "answer": "200 liters",
+        "distractors": [
+          "5 liters",
+          "50 liters",
+          "1,000 liters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organ filters approximately 200 liters of blood per day?",
+        "answer": "The kidneys",
+        "distractors": [
+          "The liver",
+          "The spleen",
+          "The pancreas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The kidneys filter approximately 200 liters of blood each day.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Healthy kidneys filter about ___ liters of blood per day.",
+        "answer": "200",
+        "distractors": [
+          "50",
+          "500",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "National Kidney Foundation",
+    "sourceUrl": "https://www.kidney.org/kidney-topics/how-kidneys-work",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two pixel-art kidneys glowing blue as streams of blood pass through them, a large counter showing '200 L' with a bathtub comparison nearby, dark body silhouette background.",
+    "tags": [
+      "kidneys",
+      "filtration",
+      "blood",
+      "anatomy",
+      "urine",
+      "nephron"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-kidneys-stones",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Most kidney stones are made of calcium oxalate crystals that form when urine becomes too concentrated, allowing minerals to solidify.",
+    "quizQuestion": "What is the most common chemical composition of kidney stones?",
+    "correctAnswer": "Calcium oxalate",
+    "distractors": [
+      "Uric acid",
+      "Calcium phosphate",
+      "Struvite",
+      "Sodium chloride",
+      "Cystine",
+      "Iron sulfate",
+      "Magnesium carbonate",
+      "Potassium nitrate"
+    ],
+    "acceptableAnswers": [
+      "Calcium oxalate",
+      "Calcium oxalate crystals"
+    ],
+    "explanation": "About 80% of kidney stones are calcium oxalate. They form when urine lacks sufficient water to dilute minerals, causing them to crystallize. Dehydration, high-oxalate diets (spinach, nuts), and low citrate levels all increase risk. Small stones often pass on their own; larger ones may require ultrasonic lithotripsy to break them apart.",
+    "wowFactor": "Kidney stones can grow as large as a golf ball inside the kidney — silent until they start moving, which many people describe as the worst pain of their lives.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Most kidney stones are composed of which mineral compound?",
+        "answer": "Calcium oxalate",
+        "distractors": [
+          "Uric acid",
+          "Struvite",
+          "Cystine"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Calcium oxalate crystals are the main component of which painful medical condition?",
+        "answer": "Kidney stones",
+        "distractors": [
+          "Gallstones",
+          "Bone spurs",
+          "Gout crystals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most kidney stones are made primarily of calcium oxalate.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About 80% of kidney stones are made of ___ oxalate.",
+        "answer": "calcium",
+        "distractors": [
+          "uric",
+          "sodium",
+          "magnesium"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Mayo Clinic",
+    "sourceUrl": "https://www.mayoclinic.org/diseases-conditions/kidney-stones/symptoms-causes/syc-20355755",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Medical topic; factual and educational",
+    "visualDescription": "A pixel-art cross-section kidney with sharp crystalline stones of varying sizes glowing yellow-orange inside, a dehydration meter in the corner running low, dark medical style.",
+    "tags": [
+      "kidneys",
+      "kidney stones",
+      "calcium oxalate",
+      "urology",
+      "crystals",
+      "dehydration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-kidneys-transplant",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_discoveries",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_discoveries",
+    "categoryL3": "",
+    "statement": "The first successful kidney transplant in history was performed in 1954 between identical twins by surgeon Joseph Murray, who later won the Nobel Prize for the work.",
+    "quizQuestion": "When was the first successful kidney transplant performed?",
+    "correctAnswer": "1954",
+    "distractors": [
+      "1967",
+      "1948",
+      "1972",
+      "1963",
+      "1940",
+      "1980",
+      "1935",
+      "1960"
+    ],
+    "acceptableAnswers": [
+      "1954",
+      "In 1954"
+    ],
+    "explanation": "On December 23, 1954, Joseph Murray and his team at Peter Bent Brigham Hospital in Boston transplanted a kidney between identical twins Richard and Ronald Herrick. Because the twins were genetically identical, rejection was avoided. Richard lived eight more years. Murray's insights into transplant immunology earned him the 1990 Nobel Prize in Physiology or Medicine.",
+    "wowFactor": "The surgeon who performed the first kidney transplant won the Nobel Prize 36 years later — and the donor twin survived the procedure to father two children.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Joseph Murray perform the first successful kidney transplant?",
+        "answer": "1954",
+        "distractors": [
+          "1967",
+          "1940",
+          "1972"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Joseph Murray won the Nobel Prize for pioneering what medical procedure in 1954?",
+        "answer": "Kidney transplant",
+        "distractors": [
+          "Heart transplant",
+          "Bone marrow transplant",
+          "Liver transplant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The first successful kidney transplant was performed in 1954.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first successful kidney transplant was performed in ___ between identical twins.",
+        "answer": "1954",
+        "distractors": [
+          "1967",
+          "1948",
+          "1963"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Nobel Prize Organization",
+    "sourceUrl": "https://www.nobelprize.org/prizes/medicine/1990/murray/facts/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art hospital operating room scene from the 1950s with two tables side by side, glowing surgical lights, and a Nobel Prize medallion floating above, vintage pixel style.",
+    "tags": [
+      "kidneys",
+      "transplant",
+      "Joseph Murray",
+      "Nobel Prize",
+      "medical history",
+      "1954"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscles-count",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The human body contains approximately 600 skeletal muscles, though the total muscle count including smooth and cardiac muscle exceeds 650.",
+    "quizQuestion": "Approximately how many muscles are in the human body?",
+    "correctAnswer": "Over 600",
+    "distractors": [
+      "About 100",
+      "About 200",
+      "About 400",
+      "About 1,000",
+      "About 50",
+      "Exactly 300",
+      "About 2,000",
+      "About 800"
+    ],
+    "acceptableAnswers": [
+      "Over 600",
+      "More than 600",
+      "About 600",
+      "Around 650",
+      "600"
+    ],
+    "explanation": "Anatomists count roughly 640–650 named skeletal muscles. The exact number depends on how subdivisions are counted. Add the single cardiac muscle and hundreds of smooth muscle tissues lining organs and blood vessels and the functional total is even higher. Just smiling uses about 12 muscles.",
+    "wowFactor": "You have over 600 muscles — and just to take one step forward, your brain coordinates more than 200 of them simultaneously.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many muscles does the human body have?",
+        "answer": "Over 600",
+        "distractors": [
+          "About 100",
+          "About 200",
+          "About 1,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The human body's 600-plus structures that contract to produce movement are called what?",
+        "answer": "Muscles",
+        "distractors": [
+          "Tendons",
+          "Ligaments",
+          "Nerves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human body has more than 600 muscles.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human body contains approximately ___ skeletal muscles.",
+        "answer": "600",
+        "distractors": [
+          "200",
+          "1,000",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_muscles_of_the_human_body",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art human body silhouette with hundreds of colored muscle groups lit up in different hues, a counter reading '600+' glowing beside it.",
+    "tags": [
+      "muscles",
+      "skeletal muscle",
+      "anatomy",
+      "human body",
+      "movement"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscles-strongest",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The masseter — the jaw muscle — is considered the strongest muscle in the human body relative to its size, capable of exerting over 200 pounds of force on the molars.",
+    "quizQuestion": "Which muscle is considered the strongest relative to its size in the human body?",
+    "correctAnswer": "The masseter (jaw muscle)",
+    "distractors": [
+      "The biceps",
+      "The quadriceps",
+      "The gluteus maximus",
+      "The heart",
+      "The deltoid",
+      "The trapezius",
+      "The calf muscle (gastrocnemius)",
+      "The tongue"
+    ],
+    "acceptableAnswers": [
+      "The masseter",
+      "Masseter",
+      "Jaw muscle",
+      "The jaw muscle"
+    ],
+    "explanation": "Pound for pound, the masseter generates more force than any other muscle. During chewing it exerts about 55 lbs of force on incisors and up to 200 lbs on molars. If we measure by total force regardless of size, the gluteus maximus (buttocks) wins. If we count the uterus during childbirth, that's a strong contender for sustained force over time.",
+    "wowFactor": "Your jaw muscle can bite down with over 200 pounds of force — strong enough to crack a walnut shell with your molars without even trying hard.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the strongest muscle relative to its size in the human body?",
+        "answer": "The masseter (jaw muscle)",
+        "distractors": [
+          "The biceps",
+          "The gluteus maximus",
+          "The heart"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The masseter, capable of exerting 200 lbs of force, is which type of muscle?",
+        "answer": "Jaw muscle",
+        "distractors": [
+          "Neck muscle",
+          "Chest muscle",
+          "Eye muscle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The masseter (jaw muscle) is the strongest muscle relative to its size.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the strongest muscle relative to its size, generating over 200 lbs of bite force.",
+        "answer": "masseter",
+        "distractors": [
+          "biceps",
+          "quadriceps",
+          "gluteus maximus"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Scientific American",
+    "sourceUrl": "https://www.scientificamerican.com/article/what-is-the-strongest-muscle/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art face in cross-section showing a glowing red masseter muscle on the jaw with a force meter reading '200 LBS' in bold, comic-style intensity lines radiating outward.",
+    "tags": [
+      "muscles",
+      "masseter",
+      "jaw",
+      "strongest muscle",
+      "anatomy",
+      "bite force"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscles-voluntary",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Skeletal muscles are voluntary (consciously controlled), while smooth and cardiac muscles are involuntary (they operate without conscious thought).",
+    "quizQuestion": "Which type of muscle operates without conscious control?",
+    "correctAnswer": "Smooth and cardiac muscle",
+    "distractors": [
+      "Skeletal muscle",
+      "Only skeletal muscle",
+      "All muscles are voluntary",
+      "Striated muscle only",
+      "Biceps and triceps",
+      "Tongue and eye muscles",
+      "All muscles are involuntary",
+      "Only cardiac muscle"
+    ],
+    "acceptableAnswers": [
+      "Smooth and cardiac muscle",
+      "Cardiac and smooth muscle",
+      "Involuntary muscles",
+      "Smooth muscle and cardiac muscle"
+    ],
+    "explanation": "Smooth muscle lines organs like the stomach, intestines, and blood vessels — it contracts automatically to move food and regulate blood flow. Cardiac muscle is unique: it's striated like skeletal muscle but involuntary like smooth muscle, firing rhythmically driven by the heart's own pacemaker. Skeletal muscles are the only ones you consciously flex.",
+    "wowFactor": "Your heart has been beating without a single conscious command from you since before you were born — cardiac muscle is so automatic it can keep beating even briefly disconnected from the nervous system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Smooth and cardiac muscles are examples of what kind of muscle control?",
+        "answer": "Involuntary",
+        "distractors": [
+          "Voluntary",
+          "Semi-voluntary",
+          "Reflex-only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Involuntary muscle that lines the walls of the stomach and intestines is called what?",
+        "answer": "Smooth muscle",
+        "distractors": [
+          "Cardiac muscle",
+          "Skeletal muscle",
+          "Striated muscle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Skeletal muscles are voluntary while cardiac muscle is involuntary.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ muscles are under conscious control, while smooth and cardiac muscles are not.",
+        "answer": "Skeletal",
+        "distractors": [
+          "Cardiac",
+          "Smooth",
+          "Striated"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Khan Academy",
+    "sourceUrl": "https://www.khanacademy.org/science/ap-biology/human-biology/muscles/a/types-of-muscle-tissue",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three pixel-art muscle fiber diagrams side by side — skeletal (striped, labeled 'VOLUNTARY'), smooth (wavy, labeled 'INVOLUNTARY'), cardiac (striped + branching, labeled 'INVOLUNTARY') — glowing in different colors.",
+    "tags": [
+      "muscles",
+      "voluntary",
+      "involuntary",
+      "cardiac",
+      "smooth muscle",
+      "skeletal muscle"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-teeth-enamel",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Tooth enamel is the hardest substance in the human body, rating 5 on the Mohs scale — harder than steel, though brittle.",
+    "quizQuestion": "What is the hardest substance produced by the human body?",
+    "correctAnswer": "Tooth enamel",
+    "distractors": [
+      "Bone",
+      "Fingernails",
+      "Cartilage",
+      "Dentin",
+      "Tendons",
+      "Keratin",
+      "Calcium deposits",
+      "Skull bone"
+    ],
+    "acceptableAnswers": [
+      "Tooth enamel",
+      "Enamel",
+      "Dental enamel"
+    ],
+    "explanation": "Enamel is 96% hydroxyapatite — a crystalline calcium phosphate mineral. Its Mohs hardness of ~5 makes it harder than iron (4.5) and steel (4–4.5), though steel is tougher because it bends rather than fractures. Unlike bone, enamel contains no living cells, so once damaged it cannot regenerate — lost enamel is gone forever.",
+    "wowFactor": "Tooth enamel is harder than steel — but unlike bone, your body can never repair it. Once it chips or dissolves from acid, it's gone forever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which substance in the human body is the hardest?",
+        "answer": "Tooth enamel",
+        "distractors": [
+          "Bone",
+          "Dentin",
+          "Cartilage"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The hardest biological substance the human body makes, rated 5 on the Mohs scale, is called what?",
+        "answer": "Tooth enamel",
+        "distractors": [
+          "Bone mineral",
+          "Keratin",
+          "Calcium carbonate"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tooth enamel is the hardest substance in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tooth ___ is the hardest substance produced by the human body.",
+        "answer": "enamel",
+        "distractors": [
+          "dentin",
+          "bone",
+          "calcium"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Dental Association",
+    "sourceUrl": "https://www.ada.org/en/member-center/oral-health-topics/tooth-anatomy",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A giant pixel-art molar with the enamel layer glowing bright white and crystalline, a Mohs hardness scale bar beside it showing level 5, harder than a steel sword icon nearby.",
+    "tags": [
+      "teeth",
+      "enamel",
+      "hardest substance",
+      "Mohs scale",
+      "human body",
+      "dental"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-teeth-baby-adult",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Humans grow two sets of teeth: 20 baby (deciduous) teeth starting around 6 months, and 32 adult (permanent) teeth that replace them by early adulthood.",
+    "quizQuestion": "How many teeth does an adult human have in a full set?",
+    "correctAnswer": "32",
+    "distractors": [
+      "20",
+      "28",
+      "36",
+      "24",
+      "40",
+      "16",
+      "30",
+      "34"
+    ],
+    "acceptableAnswers": [
+      "32",
+      "Thirty-two",
+      "32 teeth"
+    ],
+    "explanation": "The full adult set includes 8 incisors, 4 canines, 8 premolars, and 12 molars (including 4 wisdom teeth). Many adults end up with 28 if wisdom teeth are removed. Baby teeth number 20 and begin falling out around age 6. The transition from baby to permanent teeth takes roughly 6 years.",
+    "wowFactor": "Adults can have up to 32 teeth — but most people have their 4 wisdom teeth pulled, leaving 28. Wisdom teeth are evolutionary leftovers from ancestors who needed extra molars to chew raw plants.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many teeth are in a complete adult human set (including wisdom teeth)?",
+        "answer": "32",
+        "distractors": [
+          "20",
+          "28",
+          "36"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A child's full set of baby teeth numbers how many?",
+        "answer": "20",
+        "distractors": [
+          "32",
+          "28",
+          "24"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A full adult human set of teeth includes 32 teeth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Humans grow ___ baby teeth, which are eventually replaced by 32 adult teeth.",
+        "answer": "20",
+        "distractors": [
+          "16",
+          "28",
+          "32"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Dental Association",
+    "sourceUrl": "https://www.ada.org/en/member-center/oral-health-topics/tooth-eruption-the-teeth",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two rows of pixel-art teeth: a small set of 20 glowing baby teeth above, and a larger set of 32 permanent teeth below, with arrows showing the transition from milk to adult, colorful and friendly style.",
+    "tags": [
+      "teeth",
+      "deciduous",
+      "baby teeth",
+      "adult teeth",
+      "dental",
+      "32 teeth"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-teeth-wisdom",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Wisdom teeth are third molars that typically emerge between ages 17–25; many people have them removed because modern jaws are too small to accommodate them without crowding.",
+    "quizQuestion": "Why are wisdom teeth so commonly removed in modern humans?",
+    "correctAnswer": "Modern jaws are too small to fit them without crowding",
+    "distractors": [
+      "They are always infected at birth",
+      "They contain no enamel",
+      "They grow backwards",
+      "They cause blindness if left in",
+      "They are vestigial and dissolve on their own",
+      "They replace another molar when removed",
+      "They are made of dentin only",
+      "They always cause cancer"
+    ],
+    "acceptableAnswers": [
+      "Modern jaws are too small to fit them without crowding",
+      "The jaw is too small",
+      "They cause crowding",
+      "Not enough room in the jaw"
+    ],
+    "explanation": "Human jaws shrank over thousands of years as our diet shifted from tough raw plants to cooked, processed food — reducing the jaw workout that drove jaw growth. Yet our genes still code for a full ancestral molar count. The result: third molars often become impacted (stuck under the gumline) or push other teeth out of alignment, making extraction the most common oral surgery.",
+    "wowFactor": "Wisdom teeth exist because our ancestors needed extra grinding power for raw, gritty food. As cooking softened our diet, our jaws shrank — but the teeth didn't get the memo.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the main reason wisdom teeth are frequently extracted?",
+        "answer": "Modern jaws are too small to fit them without crowding",
+        "distractors": [
+          "They contain no enamel",
+          "They always become infected",
+          "They grow in reverse"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Third molars that typically emerge between ages 17–25 are commonly called what?",
+        "answer": "Wisdom teeth",
+        "distractors": [
+          "Baby teeth",
+          "Canines",
+          "Premolars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wisdom teeth are often removed because modern human jaws are too small to accommodate them.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wisdom teeth are ___ molars that erupt between ages 17 and 25.",
+        "answer": "third",
+        "distractors": [
+          "first",
+          "second",
+          "fourth"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Association of Oral and Maxillofacial Surgeons",
+    "sourceUrl": "https://www.aaoms.org/conditions-and-treatments/wisdom-teeth",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art jaw x-ray view showing four impacted wisdom teeth wedged sideways at the back corners, glowing orange warning signs above each, evolutionary timeline fading in the background.",
+    "tags": [
+      "teeth",
+      "wisdom teeth",
+      "third molars",
+      "impacted",
+      "jaw",
+      "evolution",
+      "dental"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-abo",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The ABO blood type system classifies blood into four groups — A, B, AB, and O — based on which antigens are present on the surface of red blood cells.",
+    "quizQuestion": "What does the ABO blood type system classify blood by?",
+    "correctAnswer": "Antigens on red blood cell surfaces",
+    "distractors": [
+      "Antibodies in white blood cells",
+      "Oxygen-carrying capacity",
+      "The pH of the plasma",
+      "Iron content of hemoglobin",
+      "White blood cell count",
+      "Platelet shape",
+      "Blood viscosity",
+      "Protein markers in plasma"
+    ],
+    "acceptableAnswers": [
+      "Antigens on red blood cell surfaces",
+      "Surface antigens on red blood cells",
+      "Red blood cell antigens",
+      "Antigens on RBCs"
+    ],
+    "explanation": "The ABO system was discovered by Karl Landsteiner in 1901, earning him the Nobel Prize. Type A has A antigens; type B has B antigens; type AB has both; type O has neither. Mismatched transfusions trigger a deadly immune attack because the body produces antibodies against foreign antigens. This discovery made safe blood transfusion possible for the first time.",
+    "wowFactor": "Before 1901, blood transfusions were a deadly gamble — no one knew why some worked and some killed. Karl Landsteiner's discovery of blood types turned random death into a routine procedure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The ABO blood type system is based on which biological markers?",
+        "answer": "Antigens on red blood cell surfaces",
+        "distractors": [
+          "Antibodies in plasma",
+          "White blood cell count",
+          "Iron in hemoglobin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A, B, AB, and O are the four groups of which blood classification system?",
+        "answer": "The ABO system",
+        "distractors": [
+          "The Rh system",
+          "The MNS system",
+          "The Kell system"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The ABO blood system classifies blood based on antigens on red blood cell surfaces.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ blood type system classifies humans into groups A, B, AB, and O.",
+        "answer": "ABO",
+        "distractors": [
+          "Rh",
+          "MNS",
+          "Kell"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Red Cross",
+    "sourceUrl": "https://www.redcrossblood.org/donate-blood/blood-types.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Four pixel-art red blood cells labeled A, B, AB, O with different colored spiky antigen markers on their surfaces, arranged in a 2x2 grid on a dark red background.",
+    "tags": [
+      "blood types",
+      "ABO system",
+      "antigens",
+      "red blood cells",
+      "transfusion",
+      "Karl Landsteiner"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-universal-donor",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Blood type O-negative is called the universal donor because it can be transfused into patients of any blood type without causing an immune reaction.",
+    "quizQuestion": "Which blood type is known as the universal donor?",
+    "correctAnswer": "O-negative",
+    "distractors": [
+      "AB-positive",
+      "O-positive",
+      "A-negative",
+      "B-negative",
+      "AB-negative",
+      "A-positive",
+      "B-positive",
+      "Type O only (not negative)"
+    ],
+    "acceptableAnswers": [
+      "O-negative",
+      "O negative",
+      "Type O negative",
+      "O-"
+    ],
+    "explanation": "O-negative red blood cells carry no A, B, or Rh antigens, so any recipient's immune system won't attack them. This makes O-negative critical in emergencies when there's no time to type a patient's blood. Only about 7% of people have O-negative blood, making donations precious. AB-positive is the universal recipient — that blood type can accept from anyone.",
+    "wowFactor": "O-negative blood can be given to absolutely anyone in an emergency — it's why trauma centers keep it in stock at all times, ready before doctors even know who the patient is.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What blood type is the universal donor, compatible with all recipients?",
+        "answer": "O-negative",
+        "distractors": [
+          "AB-positive",
+          "O-positive",
+          "A-negative"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The universal donor blood type has no A, B, or Rh antigens — what type is it?",
+        "answer": "O-negative",
+        "distractors": [
+          "O-positive",
+          "AB-negative",
+          "A-negative"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: O-negative blood is the universal donor because it lacks A, B, and Rh antigens.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blood type ___ is called the universal donor because it can be given to any patient.",
+        "answer": "O-negative",
+        "distractors": [
+          "AB-positive",
+          "A-negative",
+          "O-positive"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Red Cross",
+    "sourceUrl": "https://www.redcrossblood.org/donate-blood/blood-types.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art blood bag labeled 'O-' glowing gold with a universal symbol on it, surrounded by silhouettes of four different people representing all blood types receiving from it, dark medical background.",
+    "tags": [
+      "blood types",
+      "O-negative",
+      "universal donor",
+      "transfusion",
+      "emergency medicine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-rh-factor",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The Rh factor is a protein on red blood cells — people who have it are Rh-positive; those who lack it are Rh-negative. It matters most during pregnancy when an Rh-negative mother carries an Rh-positive baby.",
+    "quizQuestion": "What does the 'positive' or 'negative' in a blood type (e.g., A-positive) indicate?",
+    "correctAnswer": "Whether the Rh protein is present on red blood cells",
+    "distractors": [
+      "Whether the blood has high or low iron",
+      "Whether the person is immune to infections",
+      "Whether the blood clots quickly or slowly",
+      "Whether the blood is oxygenated",
+      "Whether the person has type 1 or type 2 blood",
+      "Whether the donor has antibodies or not",
+      "Whether the blood is acidic or alkaline",
+      "Whether the person has rare platelets"
+    ],
+    "acceptableAnswers": [
+      "Whether the Rh protein is present on red blood cells",
+      "Presence or absence of the Rh factor",
+      "Rh factor presence",
+      "The Rh antigen"
+    ],
+    "explanation": "The Rh system was named after rhesus monkeys, in whose blood it was first studied. About 85% of humans are Rh-positive. During pregnancy, if an Rh-negative mother's blood mixes with an Rh-positive baby's blood, the mother may develop anti-Rh antibodies that attack future Rh-positive pregnancies — a condition called hemolytic disease of the newborn, preventable with Rh immunoglobulin (RhoGAM) injections.",
+    "wowFactor": "An Rh-negative mother's body can essentially declare war on her own Rh-positive baby during pregnancy — a medical emergency that went unexplained and often fatal until the 1960s.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In blood typing, what does the Rh factor refer to?",
+        "answer": "A protein on the surface of red blood cells",
+        "distractors": [
+          "A white blood cell enzyme",
+          "Plasma acidity",
+          "Clotting speed"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "If someone is Rh-negative, what does that mean about their red blood cells?",
+        "answer": "They lack the Rh surface protein",
+        "distractors": [
+          "They have extra Rh protein",
+          "They have no antigens at all",
+          "They have both A and Rh antigens"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A person labeled 'Rh-positive' has the Rh protein on their red blood cells.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The '+' or '−' after a blood type indicates the presence or absence of the ___ factor.",
+        "answer": "Rh",
+        "distractors": [
+          "ABO",
+          "MNS",
+          "Kell"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "National Institutes of Health",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/rh-incompatibility",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions pregnancy complications; factual and educational",
+    "visualDescription": "A pixel-art red blood cell split in two: the left half glowing green with spiky Rh proteins labeled '+', the right half bare and blue labeled '−', a pregnant silhouette in the background for context.",
+    "tags": [
+      "blood types",
+      "Rh factor",
+      "Rh-negative",
+      "Rh-positive",
+      "pregnancy",
+      "hemolytic disease"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-immune-fever",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Fever is a deliberate immune response that raises body temperature to slow bacterial growth and accelerate immune cell activity — it is a feature, not a flaw.",
+    "quizQuestion": "Why does the immune system deliberately raise body temperature during infection (fever)?",
+    "correctAnswer": "To slow bacterial growth and boost immune cell activity",
+    "distractors": [
+      "To kill viruses instantly with heat",
+      "To signal the brain to release painkillers",
+      "To increase red blood cell production",
+      "To dehydrate and flush out toxins through sweat alone",
+      "To lower blood pressure around the infection",
+      "To trigger sleep as a defense mechanism",
+      "To stop the heart from overworking",
+      "To stimulate the thyroid gland"
+    ],
+    "acceptableAnswers": [
+      "To slow bacterial growth and boost immune cell activity",
+      "To inhibit bacteria and speed up immune response",
+      "Slows pathogens, speeds up white blood cells"
+    ],
+    "explanation": "Pyrogens — molecules released by immune cells — signal the hypothalamus to raise the body's thermostat. Most bacteria and viruses replicate best at 37°C (98.6°F). A fever of 38–40°C makes their enzymes less efficient. Meanwhile, higher temperatures accelerate T-cell proliferation and phagocyte activity. Mild fevers are generally beneficial; very high fevers (above 41°C) become dangerous to the host.",
+    "wowFactor": "When you have a fever, your body isn't broken — it's waging deliberate biological warfare. The heat is a weapon aimed at bacteria that can barely function at higher temperatures.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What biological purpose does a fever serve during an infection?",
+        "answer": "To slow bacterial growth and boost immune cell activity",
+        "distractors": [
+          "To kill viruses with direct heat",
+          "To increase red blood cell production",
+          "To stimulate the thyroid"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which part of the brain controls body temperature and triggers fever?",
+        "answer": "The hypothalamus",
+        "distractors": [
+          "The cerebellum",
+          "The brain stem",
+          "The amygdala"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fever is an intentional immune response designed to slow bacterial growth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The immune system raises body temperature during a fever to slow ___ growth and boost white blood cell activity.",
+        "answer": "bacterial",
+        "distractors": [
+          "red blood cell",
+          "platelet",
+          "bone marrow"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Harvard Health Publishing",
+    "sourceUrl": "https://www.health.harvard.edu/staying-healthy/fever-not-always-an-enemy",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art human silhouette glowing orange-red with a thermometer reading 39°C, tiny bacteria icons slowing down and wilting, and white blood cells speeding up around them.",
+    "tags": [
+      "immune system",
+      "fever",
+      "bacteria",
+      "hypothalamus",
+      "immune response",
+      "pyrogens"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-immune-vaccination",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Edward Jenner developed the first vaccine in 1796 by using cowpox material to protect against the far more deadly smallpox, founding the science of immunology.",
+    "quizQuestion": "Who is credited with creating the first vaccine, and what disease did it target?",
+    "correctAnswer": "Edward Jenner; smallpox",
+    "distractors": [
+      "Louis Pasteur; rabies",
+      "Alexander Fleming; influenza",
+      "Robert Koch; tuberculosis",
+      "Jonas Salk; polio",
+      "Joseph Lister; typhoid",
+      "Marie Curie; cholera",
+      "Rudolf Virchow; measles",
+      "Paul Ehrlich; tetanus"
+    ],
+    "acceptableAnswers": [
+      "Edward Jenner; smallpox",
+      "Jenner; smallpox",
+      "Edward Jenner for smallpox"
+    ],
+    "explanation": "In 1796, Jenner noticed milkmaids who caught cowpox rarely got smallpox, which killed 30% of its victims. He inoculated 8-year-old James Phipps with cowpox fluid and later exposed him to smallpox — the boy didn't get sick. The word 'vaccine' comes from 'vacca' (Latin for cow). Smallpox was declared eradicated in 1980 — the only human disease ever fully eliminated.",
+    "wowFactor": "The entire field of vaccination started with a country doctor noticing that milkmaids had nice skin — their cowpox exposure protected them from smallpox. That observation would eventually save hundreds of millions of lives.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who created the first vaccine and in what year?",
+        "answer": "Edward Jenner in 1796",
+        "distractors": [
+          "Louis Pasteur in 1885",
+          "Jonas Salk in 1955",
+          "Robert Koch in 1882"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The first vaccine, developed in 1796, protected against which disease?",
+        "answer": "Smallpox",
+        "distractors": [
+          "Rabies",
+          "Polio",
+          "Cholera"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edward Jenner created the first vaccine in 1796 using cowpox to protect against smallpox.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edward Jenner created the first vaccine in 1796 to protect against ___.",
+        "answer": "smallpox",
+        "distractors": [
+          "polio",
+          "rabies",
+          "cholera"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "World Health Organization",
+    "sourceUrl": "https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-smallpox-vaccination",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art scene of a 1790s doctor (Edward Jenner) carefully applying a substance to a child's arm with a quill, a cow visible through the window, and a glowing 'SMALLPOX DEFEATED' banner in the distance.",
+    "tags": [
+      "immune system",
+      "vaccination",
+      "Edward Jenner",
+      "smallpox",
+      "cowpox",
+      "medical history",
+      "immunology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-hormones-adrenaline",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Adrenaline (epinephrine) is a hormone released by the adrenal glands during stress, instantly raising heart rate, dilating airways, and flooding muscles with blood to prepare for fight or flight.",
+    "quizQuestion": "Which glands release adrenaline during a fight-or-flight response?",
+    "correctAnswer": "The adrenal glands",
+    "distractors": [
+      "The pituitary gland",
+      "The thyroid gland",
+      "The pancreas",
+      "The hypothalamus",
+      "The thymus gland",
+      "The salivary glands",
+      "The pineal gland",
+      "The ovaries or testes"
+    ],
+    "acceptableAnswers": [
+      "The adrenal glands",
+      "Adrenal glands",
+      "Adrenal medulla"
+    ],
+    "explanation": "The adrenal glands sit atop the kidneys. Their inner layer (medulla) secretes adrenaline (epinephrine) and noradrenaline within seconds of a threat stimulus. Adrenaline binds receptors throughout the body: pupils dilate, heart rate jumps, digestion pauses, and muscles get a surge of glucose. This ancient wiring evolved for predator encounters but fires the same way during a scary movie.",
+    "wowFactor": "In a genuine adrenaline surge, people have lifted cars off trapped family members — the hormone temporarily overrides your body's normal limits on muscular force to prevent self-damage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which glands produce adrenaline (epinephrine)?",
+        "answer": "The adrenal glands",
+        "distractors": [
+          "The pituitary gland",
+          "The thyroid gland",
+          "The pancreas"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Adrenaline raises heart rate and dilates airways — this reaction is called what?",
+        "answer": "Fight-or-flight response",
+        "distractors": [
+          "Rest-and-digest response",
+          "Thermoregulation",
+          "Homeostasis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Adrenaline is released by the adrenal glands and triggers the fight-or-flight response.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ glands, located on top of the kidneys, release adrenaline during stress.",
+        "answer": "adrenal",
+        "distractors": [
+          "pituitary",
+          "thyroid",
+          "pineal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Cleveland Clinic",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/adrenaline-epinephrine",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art human silhouette with two glowing orange triangular adrenal glands above each kidney pulsing, lightning bolt icons shooting from them toward the heart and muscles, red speed lines everywhere.",
+    "tags": [
+      "hormones",
+      "adrenaline",
+      "epinephrine",
+      "adrenal glands",
+      "fight-or-flight",
+      "stress response"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-hormones-insulin",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_nutrition",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_nutrition",
+    "categoryL3": "",
+    "statement": "Insulin is a hormone produced by the pancreas that allows cells to absorb glucose from the bloodstream; without it, blood sugar rises dangerously — the basis of diabetes.",
+    "quizQuestion": "Which organ produces insulin to regulate blood sugar?",
+    "correctAnswer": "The pancreas",
+    "distractors": [
+      "The liver",
+      "The kidneys",
+      "The adrenal glands",
+      "The thyroid",
+      "The pituitary gland",
+      "The spleen",
+      "The stomach",
+      "The small intestine"
+    ],
+    "acceptableAnswers": [
+      "The pancreas",
+      "Pancreas",
+      "Islets of Langerhans in the pancreas"
+    ],
+    "explanation": "Beta cells in the pancreatic islets of Langerhans detect rising blood glucose after eating and secrete insulin. Insulin acts like a key that unlocks cell membranes, letting glucose enter and either be used for energy or stored as glycogen. In Type 1 diabetes, immune cells destroy the beta cells; in Type 2, cells become resistant to insulin's signal. Insulin was first isolated in 1921 by Frederick Banting and Charles Best.",
+    "wowFactor": "Before insulin was isolated in 1921, Type 1 diabetes was a death sentence — children wasted away within months of diagnosis. Banting and Best's discovery was so urgent they worked through the night, and Banting gave his Nobel Prize money to his lab partner.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which organ secretes insulin to control blood glucose levels?",
+        "answer": "The pancreas",
+        "distractors": [
+          "The liver",
+          "The kidneys",
+          "The adrenal glands"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Insufficient insulin production or resistance to it leads to which disease?",
+        "answer": "Diabetes",
+        "distractors": [
+          "Hyperthyroidism",
+          "Addison's disease",
+          "Cushing's syndrome"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Insulin is produced by the pancreas and enables cells to absorb glucose from the blood.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ produces insulin, allowing body cells to absorb and use glucose.",
+        "answer": "pancreas",
+        "distractors": [
+          "liver",
+          "kidney",
+          "thyroid"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "American Diabetes Association",
+    "sourceUrl": "https://www.diabetes.org/diabetes/medication-management/insulin",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References diabetes; factual and educational",
+    "visualDescription": "A pixel-art pancreas glowing gold, releasing insulin keys that unlock glucose molecules floating in a bloodstream, cell doors opening to let glucose in, warm amber color palette.",
+    "tags": [
+      "hormones",
+      "insulin",
+      "pancreas",
+      "blood sugar",
+      "glucose",
+      "diabetes",
+      "endocrine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-hormones-growth",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Human growth hormone (HGH) is secreted by the pituitary gland and is released primarily during deep sleep, stimulating bone growth, muscle development, and cell repair.",
+    "quizQuestion": "When is the majority of human growth hormone (HGH) released?",
+    "correctAnswer": "During deep sleep",
+    "distractors": [
+      "During intense exercise only",
+      "Right after eating a meal",
+      "In the early morning upon waking",
+      "Continuously throughout the day",
+      "Only during childhood years",
+      "During periods of stress",
+      "After exposure to sunlight",
+      "During fever"
+    ],
+    "acceptableAnswers": [
+      "During deep sleep",
+      "While sleeping",
+      "During slow-wave sleep",
+      "At night during deep sleep"
+    ],
+    "explanation": "The pituitary gland releases most of the day's HGH in pulses during slow-wave (deep) sleep, particularly in the first few hours. HGH stimulates the liver to produce IGF-1, which drives bone lengthening at growth plates during childhood and muscle protein synthesis throughout life. Adults still need HGH for cell regeneration and metabolism — 'sleeping your way to growth' is literally true.",
+    "wowFactor": "Most of your growth hormone is released while you sleep — this is literally why children are told to sleep enough to grow. Chronic sleep deprivation can stunt growth in adolescents.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which gland secretes human growth hormone (HGH)?",
+        "answer": "The pituitary gland",
+        "distractors": [
+          "The thyroid gland",
+          "The adrenal glands",
+          "The hypothalamus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The pituitary gland's growth hormone is released mainly during which state?",
+        "answer": "Deep sleep",
+        "distractors": [
+          "Intense exercise",
+          "Fasting",
+          "After eating"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most human growth hormone is released during deep sleep.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human growth hormone is primarily released by the ___ gland during deep sleep.",
+        "answer": "pituitary",
+        "distractors": [
+          "adrenal",
+          "thyroid",
+          "pineal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Cleveland Clinic",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/human-growth-hormone",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art sleeping figure in bed with a glowing pituitary gland at the center of the brain pulsing, streams of growth hormone icons flowing outward to bones and muscles in the body, moonlit room atmosphere.",
+    "tags": [
+      "hormones",
+      "growth hormone",
+      "HGH",
+      "pituitary gland",
+      "sleep",
+      "bone growth",
+      "endocrine"
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"

@@ -704,50 +704,50 @@
     "categoryL1": "Natural Sciences",
     "categoryL2": "biology_organisms",
     "categoryL3": "",
-    "statement": "DNA has a double helix structure, discovered by Watson and Crick with Franklin's X-ray data in 1953.",
-    "quizQuestion": "What is the shape of DNA's molecular structure?",
-    "correctAnswer": "Double helix",
+    "statement": "The double helix structure of DNA was discovered in 1953 by James Watson and Francis Crick, using X-ray crystallography data produced by Rosalind Franklin.",
+    "quizQuestion": "Who is credited with discovering the double helix structure of DNA in 1953?",
+    "correctAnswer": "Watson and Crick",
     "distractors": [
-      "Single helix",
-      "Ladder",
-      "Ring",
-      "Zigzag chain",
-      "Sphere",
-      "Flat sheet",
-      "Triple helix",
-      "Triple helix"
+      "Rosalind Franklin and Maurice Wilkins",
+      "Linus Pauling and Robert Corey",
+      "Gregor Mendel and Charles Darwin",
+      "Marie Curie and Pierre Curie",
+      "Frederick Sanger and Paul Berg",
+      "Alexander Fleming and Howard Florey",
+      "Barbara McClintock and Alfred Hershey",
+      "Max Perutz and John Kendrew"
     ],
     "acceptableAnswers": [
-      "double helix",
-      "double-helix structure",
-      "twisted ladder"
+      "Watson and Crick",
+      "James Watson and Francis Crick",
+      "Crick and Watson"
     ],
-    "explanation": "In 1953, James Watson and Francis Crick published the double helix structure of DNA, using critical X-ray crystallography data produced by Rosalind Franklin. The structure — two intertwined strands with base pairs connecting them — explained how genetic information is stored and copied.",
-    "wowFactor": "If you uncoiled all the DNA from a single human cell, it would stretch about 2 meters long — yet it fits inside a nucleus smaller than a grain of sand.",
+    "explanation": "Watson and Crick's 1953 paper in Nature proposed the double helix model of DNA. Their model was critically informed by Rosalind Franklin's 'Photo 51' X-ray diffraction image, which they accessed without her direct knowledge — a significant ethical controversy in science history.",
+    "wowFactor": "Rosalind Franklin's Photo 51 — the X-ray image that cracked the DNA structure — was shown to Watson without her permission. She died before the Nobel Prize was awarded; the Nobel is never given posthumously.",
     "variants": [
       {
         "type": "forward",
-        "question": "What is the shape of a DNA molecule?",
-        "answer": "Double helix",
+        "question": "Who is credited with discovering the double helix structure of DNA in 1953?",
+        "answer": "Watson and Crick",
         "distractors": [
-          "Single helix",
-          "Flat ladder",
-          "Ring"
+          "Rosalind Franklin and Maurice Wilkins",
+          "Linus Pauling and Robert Corey",
+          "Gregor Mendel and Charles Darwin"
         ]
       },
       {
         "type": "reverse",
-        "question": "Who discovered the double helix structure of DNA in 1953?",
-        "answer": "Watson and Crick",
+        "question": "What did Rosalind Franklin's 'Photo 51' reveal that helped Watson and Crick determine DNA's structure?",
+        "answer": "The X-ray diffraction pattern of DNA",
         "distractors": [
-          "Darwin and Mendel",
-          "Franklin and Wilkins",
-          "Pauling and Corey"
+          "The sequence of DNA base pairs",
+          "The location of the phosphate backbone",
+          "The number of chromosomes in human cells"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: DNA has a double helix structure.",
+        "question": "True or false: Watson and Crick discovered the double helix structure of DNA in 1953.",
         "answer": "True",
         "distractors": [
           "False"
@@ -755,33 +755,38 @@
       },
       {
         "type": "fill_blank",
-        "question": "DNA's molecular structure is a double ___.",
-        "answer": "helix",
+        "question": "Watson and Crick's 1953 discovery described DNA as a ___ structure.",
+        "answer": "double helix",
         "distractors": [
+          "triple helix",
           "ladder",
-          "ring",
-          "spiral"
+          "spiral strand"
         ]
       }
     ],
     "difficulty": 2,
-    "funScore": 7,
-    "noveltyScore": 7,
+    "funScore": 9,
+    "noveltyScore": 8,
     "ageRating": "teen",
-    "rarity": "common",
-    "sourceName": "Wikipedia",
-    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "rarity": "uncommon",
     "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Discovery_of_the_structure_of_DNA",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A glowing blue-white double helix strand of DNA in pixel art, twisting upward with colored base pair rungs connecting the two strands.",
+    "visualDescription": "Pixel art of a glowing blue DNA double helix floating in a dark lab, two scientists in white coats looking up at it from below, with molecular models on a desk beside them.",
     "tags": [
       "DNA",
       "double helix",
+      "Watson",
+      "Crick",
+      "Rosalind Franklin",
       "biology",
       "genetics",
-      "Watson and Crick"
-    ]
+      "1953"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "science-dna-bases",
@@ -1135,54 +1140,54 @@
     "id": "science-photosynthesis-equation",
     "type": "knowledge",
     "domain": "Natural Sciences",
-    "subdomain": "botany_plants",
+    "subdomain": "biology_organisms",
     "categoryL1": "Natural Sciences",
-    "categoryL2": "botany_plants",
+    "categoryL2": "biology_organisms",
     "categoryL3": "",
-    "statement": "Photosynthesis converts carbon dioxide and water into glucose and oxygen using light energy.",
-    "quizQuestion": "What does photosynthesis convert into glucose and oxygen?",
-    "correctAnswer": "CO2 and water",
+    "statement": "Photosynthesis converts carbon dioxide and water into glucose and oxygen using light energy: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂.",
+    "quizQuestion": "What are the main products of photosynthesis?",
+    "correctAnswer": "Glucose and oxygen",
     "distractors": [
-      "Oxygen and glucose",
-      "Nitrogen and water",
-      "Glucose and sunlight",
-      "Water and sugar",
-      "CO2 and oxygen",
-      "Minerals and sunlight",
-      "Water and nitrogen",
-      "CO2 and nitrogen"
+      "Carbon dioxide and water",
+      "Starch and nitrogen",
+      "ATP and carbon dioxide",
+      "Water and chlorophyll",
+      "Glucose and nitrogen",
+      "Cellulose and oxygen",
+      "Fructose and carbon monoxide",
+      "Oxygen and nitrogen"
     ],
     "acceptableAnswers": [
-      "carbon dioxide and water",
-      "CO2 and H2O",
-      "water and carbon dioxide"
+      "Glucose and oxygen",
+      "Sugar and oxygen",
+      "C6H12O6 and O2"
     ],
-    "explanation": "Photosynthesis: 6CO2 + 6H2O + light energy → C6H12O6 + 6O2. Plants absorb CO2 through tiny pores (stomata), take up water through roots, and use sunlight energy to drive the reaction in chloroplasts. The glucose produced is used for energy and growth.",
-    "wowFactor": "All the oxygen in Earth's atmosphere was produced by photosynthesis — before photosynthetic life evolved, Earth had almost no free oxygen at all.",
+    "explanation": "Photosynthesis has two stages: the light-dependent reactions in the thylakoid membrane (capturing energy to make ATP and NADPH) and the Calvin cycle in the stroma (using that energy to fix CO₂ into glucose). The net equation is 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.",
+    "wowFactor": "Every breath of oxygen you take was produced by photosynthesis — and the carbon in your body was once CO₂ in the air, captured by a plant and passed up the food chain to you.",
     "variants": [
       {
         "type": "forward",
-        "question": "What raw materials does photosynthesis combine to make glucose?",
-        "answer": "CO2 and water",
+        "question": "What are the main products of photosynthesis?",
+        "answer": "Glucose and oxygen",
         "distractors": [
-          "Oxygen and glucose",
-          "Nitrogen and water",
-          "Minerals and sunlight"
+          "Carbon dioxide and water",
+          "Starch and nitrogen",
+          "ATP and carbon dioxide"
         ]
       },
       {
         "type": "reverse",
-        "question": "What is the gas released as a byproduct of photosynthesis?",
-        "answer": "Oxygen",
+        "question": "What two raw materials does a plant take in for photosynthesis?",
+        "answer": "Carbon dioxide and water",
         "distractors": [
-          "Carbon dioxide",
-          "Nitrogen",
-          "Hydrogen"
+          "Glucose and oxygen",
+          "Nitrogen and sunlight",
+          "Chlorophyll and minerals"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: Photosynthesis converts CO2 and water into glucose and oxygen.",
+        "question": "True or false: Photosynthesis produces glucose and oxygen as its main outputs.",
         "answer": "True",
         "distractors": [
           "False"
@@ -1190,12 +1195,12 @@
       },
       {
         "type": "fill_blank",
-        "question": "Photosynthesis uses light to convert CO2 and water into glucose and ___.",
-        "answer": "oxygen",
+        "question": "The equation for photosynthesis is 6CO₂ + 6H₂O + light → ___ + 6O₂.",
+        "answer": "C₆H₁₂O₆ (glucose)",
         "distractors": [
-          "nitrogen",
-          "carbon dioxide",
-          "hydrogen"
+          "6CO₂",
+          "6H₂O",
+          "6ATP"
         ]
       }
     ],
@@ -1204,105 +1209,114 @@
     "noveltyScore": 6,
     "ageRating": "kid",
     "rarity": "common",
+    "contentVolatility": "timeless",
     "sourceName": "Wikipedia",
     "sourceUrl": "https://en.wikipedia.org/wiki/Photosynthesis",
-    "contentVolatility": "timeless",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A cartoon leaf in pixel art with sunlight arrows entering it, CO2 bubbles going in, and O2 bubbles and glucose symbols coming out.",
+    "visualDescription": "Pixel art of a large green leaf cross-section with sunlight arrows hitting the top surface, CO₂ molecules entering from the sides, and glucose molecules and O₂ bubbles exiting from the bottom.",
     "tags": [
       "photosynthesis",
+      "glucose",
+      "oxygen",
+      "CO2",
       "plants",
       "biology",
-      "oxygen",
-      "glucose"
-    ]
+      "chemistry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "science-photosynthesis-chlorophyll",
     "type": "knowledge",
     "domain": "Natural Sciences",
-    "subdomain": "botany_plants",
+    "subdomain": "biology_organisms",
     "categoryL1": "Natural Sciences",
-    "categoryL2": "botany_plants",
+    "categoryL2": "biology_organisms",
     "categoryL3": "",
-    "statement": "Chlorophyll is the green pigment in plant cells that absorbs light energy for photosynthesis.",
-    "quizQuestion": "What pigment in plants absorbs light energy for photosynthesis?",
-    "correctAnswer": "Chlorophyll",
+    "statement": "Chlorophyll is the green pigment in plant cells that absorbs light energy — primarily red and blue wavelengths — to power photosynthesis.",
+    "quizQuestion": "Why do most plants appear green?",
+    "correctAnswer": "Chlorophyll reflects green light while absorbing red and blue",
     "distractors": [
-      "Melanin",
-      "Carotene",
-      "Hemoglobin",
-      "Anthocyanin",
-      "Xanthophyll",
-      "Lycopene",
-      "Retinal",
-      "Xanthophyll"
+      "Plants emit green bioluminescence",
+      "Chlorophyll absorbs green light and reflects everything else",
+      "The cell walls are naturally green in color",
+      "Plants absorb all colors of light equally",
+      "Green wavelengths are produced during photosynthesis",
+      "Chloroplasts produce a green dye as a byproduct",
+      "Sunlight is filtered to green tones through leaves",
+      "Green is the most energetic light wavelength"
     ],
     "acceptableAnswers": [
-      "chlorophyll",
-      "chlorophyl"
+      "Chlorophyll reflects green light while absorbing red and blue",
+      "Chlorophyll reflects green light",
+      "Chlorophyll absorbs red and blue but reflects green"
     ],
-    "explanation": "Chlorophyll, found in chloroplasts, absorbs primarily red and blue light while reflecting green — which is why plants appear green. It is the molecule that captures light energy and uses it to power the chemical reactions of photosynthesis.",
-    "wowFactor": "Chlorophyll is why plants are green — it absorbs red and blue light for energy but reflects the green light right back at your eyes.",
+    "explanation": "Chlorophyll absorbs red (~660–700 nm) and blue (~430–450 nm) wavelengths most efficiently, reflecting green light (~500–560 nm) — which is why we see plants as green. Different accessory pigments (carotenoids, anthocyanins) explain the reds and yellows seen in autumn leaves.",
+    "wowFactor": "Chlorophyll is remarkably similar in molecular structure to hemoglobin in your blood — the only difference is that chlorophyll has a magnesium atom at its center, while hemoglobin uses iron.",
     "variants": [
       {
         "type": "forward",
-        "question": "What green pigment absorbs light energy for photosynthesis?",
-        "answer": "Chlorophyll",
+        "question": "Why do most plants appear green?",
+        "answer": "Chlorophyll reflects green light while absorbing red and blue",
         "distractors": [
-          "Melanin",
-          "Carotene",
-          "Hemoglobin"
+          "Chlorophyll absorbs green light and reflects everything else",
+          "Plants emit green bioluminescence",
+          "The cell walls are naturally green in color"
         ]
       },
       {
         "type": "reverse",
-        "question": "Why do chlorophyll-containing leaves appear green?",
-        "answer": "Chlorophyll reflects green light",
+        "question": "Which metal atom sits at the center of the chlorophyll molecule?",
+        "answer": "Magnesium",
         "distractors": [
-          "Chlorophyll absorbs green light",
-          "Leaves contain green water",
-          "Cells have a green membrane"
+          "Iron",
+          "Copper",
+          "Zinc"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: Chlorophyll is the pigment that gives plants their green color.",
-        "answer": "True",
+        "question": "True or false: Chlorophyll absorbs green light and reflects red and blue wavelengths.",
+        "answer": "False",
         "distractors": [
-          "False"
+          "True"
         ]
       },
       {
         "type": "fill_blank",
-        "question": "___ is the green pigment in plant cells that absorbs light for photosynthesis.",
-        "answer": "Chlorophyll",
+        "question": "Chlorophyll gives plants their green color by ___ green light while absorbing red and blue wavelengths.",
+        "answer": "reflecting",
         "distractors": [
-          "Melanin",
-          "Carotene",
-          "Anthocyanin"
+          "absorbing",
+          "emitting",
+          "filtering"
         ]
       }
     ],
-    "difficulty": 2,
-    "funScore": 6,
-    "noveltyScore": 6,
-    "ageRating": "kid",
-    "rarity": "common",
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
     "sourceName": "Wikipedia",
     "sourceUrl": "https://en.wikipedia.org/wiki/Chlorophyll",
-    "contentVolatility": "timeless",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A cross-section of a plant cell in pixel art with bright green chloroplasts glowing, sunlight beams entering from above.",
+    "visualDescription": "Pixel art of a chlorophyll molecule diagram with a central magnesium atom highlighted in green, surrounded by a complex ring structure, overlaid on a cross-section of a leaf cell.",
     "tags": [
-      "chlorophyll",
       "photosynthesis",
+      "chlorophyll",
+      "green",
+      "light absorption",
       "plants",
-      "pigment",
-      "biology"
-    ]
+      "biology",
+      "pigment"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "science-photosynthesis-location",
@@ -1829,50 +1843,50 @@
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
     "categoryL3": "",
-    "statement": "Lightning is a massive electrical discharge caused by charge separation within storm clouds.",
-    "quizQuestion": "What natural phenomenon is caused by electrical discharge in storm clouds?",
-    "correctAnswer": "Lightning",
+    "statement": "Lightning is a massive electrostatic discharge caused by charge separation in storm clouds, carrying a typical peak current of around 20,000 amperes and lasting only 0.2 seconds.",
+    "quizQuestion": "What causes lightning to form in storm clouds?",
+    "correctAnswer": "Charge separation between ice crystals and water droplets in the cloud",
     "distractors": [
-      "Thunder",
-      "Aurora",
-      "Hail",
-      "Tornado",
-      "Fog",
-      "Rainbow",
-      "Snow",
-      "Wind"
+      "Friction between the cloud and the ground below",
+      "Solar radiation ionizing the upper atmosphere",
+      "Hot air rising too fast and igniting",
+      "Collisions between raindrops building up heat",
+      "Magnetic field reversals inside thunderstorms",
+      "The cloud being hit by cosmic rays from space",
+      "Static electricity conducted upward from tall buildings",
+      "Nitrogen gas exploding under cloud pressure"
     ],
     "acceptableAnswers": [
-      "lightning",
-      "a lightning bolt",
-      "lightning strike"
+      "Charge separation between ice crystals and water droplets in the cloud",
+      "Electrostatic charge separation inside the cloud",
+      "Charge separation in the storm cloud"
     ],
-    "explanation": "In a thunderstorm, turbulence causes ice crystals and water droplets to collide, building up charge — positive at the top, negative at the bottom. When the charge difference is large enough, a massive discharge occurs, briefly heating the air to about 30,000 K — hotter than the Sun's surface.",
-    "wowFactor": "A single lightning bolt heats the surrounding air to about 30,000 K — five times hotter than the surface of the Sun — for a fraction of a second.",
+    "explanation": "Inside a cumulonimbus cloud, ice crystals and water droplets collide, stripping electrons. Lighter positive charges accumulate at the top; heavier negative charges sink to the bottom. When the electric field between cloud and ground becomes large enough, the insulating air breaks down and a lightning bolt discharges.",
+    "wowFactor": "A single lightning bolt heats the surrounding air to about 30,000 K (five times hotter than the Sun's surface) — this superheated air expands explosively, creating the shock wave we hear as thunder.",
     "variants": [
       {
         "type": "forward",
-        "question": "What natural phenomenon results from electrical discharge in storm clouds?",
-        "answer": "Lightning",
+        "question": "What causes lightning to form in storm clouds?",
+        "answer": "Charge separation between ice crystals and water droplets in the cloud",
         "distractors": [
-          "Thunder",
-          "Aurora",
-          "Tornado"
+          "Friction between the cloud and the ground below",
+          "Solar radiation ionizing the upper atmosphere",
+          "Hot air rising too fast and igniting"
         ]
       },
       {
         "type": "reverse",
-        "question": "What causes the sound of thunder we hear after lightning?",
-        "answer": "Rapid air expansion from heat",
+        "question": "How hot does the air around a lightning bolt get?",
+        "answer": "About 30,000 K (five times the Sun's surface temperature)",
         "distractors": [
-          "Clouds colliding",
-          "Electrical sound waves",
-          "Rain hitting the ground"
+          "About 1,000°C (hotter than lava)",
+          "About 6,000 K (the same as the Sun's surface)",
+          "About 500°C (the same as a welding arc)"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: Lightning is caused by electrical discharge in storm clouds.",
+        "question": "True or false: Lightning forms due to charge separation inside storm clouds.",
         "answer": "True",
         "distractors": [
           "False"
@@ -1880,33 +1894,37 @@
       },
       {
         "type": "fill_blank",
-        "question": "___ is a massive electrical discharge caused by charge separation in storm clouds.",
-        "answer": "Lightning",
+        "question": "Lightning is caused by the breakdown of the insulating air when ___ between the cloud and ground becomes too large.",
+        "answer": "the electric field",
         "distractors": [
-          "Thunder",
-          "Aurora",
-          "Hail"
+          "the temperature difference",
+          "the magnetic field",
+          "the air pressure"
         ]
       }
     ],
-    "difficulty": 2,
-    "funScore": 8,
-    "noveltyScore": 7,
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
     "ageRating": "kid",
-    "rarity": "common",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
     "sourceName": "Wikipedia",
     "sourceUrl": "https://en.wikipedia.org/wiki/Lightning",
-    "contentVolatility": "timeless",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A dramatic pixel art storm scene with jagged lightning bolts forking from dark clouds to the ground, rain falling, and city silhouettes below.",
+    "visualDescription": "Pixel art of a dramatic storm cloud split to show its interior: positive charges (blue +) floating near the top, negative charges (red -) heavy at the bottom, with a bright jagged lightning bolt discharging to the ground below.",
     "tags": [
       "lightning",
       "electricity",
-      "storms",
-      "atmosphere",
-      "physics"
-    ]
+      "static electricity",
+      "thunderstorm",
+      "physics",
+      "weather",
+      "charge separation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "science-diamond-hardness",
@@ -7779,6 +7797,1274 @@
       "Plinian",
       "Hawaii",
       "magma"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-newton-apple-myth",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "The story of an apple falling and inspiring Newton's theory of gravity is a simplification — Newton did observe falling objects, but the 'apple hit his head' version is a myth.",
+    "quizQuestion": "What is historically inaccurate about the popular apple story and Isaac Newton?",
+    "correctAnswer": "An apple never hit Newton on the head",
+    "distractors": [
+      "Newton never owned an apple tree",
+      "Newton lived in a city with no orchards",
+      "Newton already knew about gravity before 1666",
+      "The story was invented by Einstein",
+      "Newton was indoors when he conceived gravity",
+      "No apple tree stood at Woolsthorpe Manor",
+      "The apple story was written by Hooke, not Newton",
+      "Newton himself denied ever seeing any apple"
+    ],
+    "acceptableAnswers": [
+      "An apple never hit Newton on the head",
+      "The apple hitting his head is a myth",
+      "The apple didn't strike him"
+    ],
+    "explanation": "The tale was popularized after Newton's death. Voltaire and William Stukeley both recorded versions where an apple fell near Newton (not on him), prompting reflection on why objects fall toward Earth. The 'hit on the head' embellishment came later.",
+    "wowFactor": "The actual apple tree at Woolsthorpe Manor still stands today — and cuttings from it have been planted at institutions worldwide as a symbol of scientific curiosity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is historically inaccurate about the popular apple story and Isaac Newton?",
+        "answer": "An apple never hit Newton on the head",
+        "distractors": [
+          "Newton never owned an apple tree",
+          "Newton was indoors when he conceived gravity",
+          "The story was invented by Einstein"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where was Newton when he allegedly observed the apple that prompted his gravity insights?",
+        "answer": "Woolsthorpe Manor (his family home)",
+        "distractors": [
+          "Cambridge University",
+          "The Royal Society in London",
+          "Oxford Botanical Gardens"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: An apple literally struck Isaac Newton on the head, inspiring his theory of gravity.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The popular story says Newton discovered gravity after an apple ___ — but the 'hit on the head' detail is a myth.",
+        "answer": "fell from a tree",
+        "distractors": [
+          "was thrown at him",
+          "exploded",
+          "disappeared"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Royal Society Archives / Stukeley Memoirs",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Isaac_Newton%27s_apple_tree",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Newton sitting under a large apple tree at Woolsthorpe Manor, an apple falling nearby to the ground, with a thought bubble showing the Earth and Moon.",
+    "tags": [
+      "newton",
+      "gravity",
+      "myth",
+      "apple",
+      "history of science",
+      "scientific discoveries"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-newton-principia",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Isaac Newton published 'Philosophiae Naturalis Principia Mathematica' in 1687, laying out the laws of motion and universal gravitation.",
+    "quizQuestion": "In what year did Newton publish the Principia Mathematica?",
+    "correctAnswer": "1687",
+    "distractors": [
+      "1666",
+      "1700",
+      "1543",
+      "1712",
+      "1675",
+      "1642",
+      "1695",
+      "1600"
+    ],
+    "acceptableAnswers": [
+      "1687",
+      "sixteen eighty-seven"
+    ],
+    "explanation": "Newton's Principia (1687) defined the three laws of motion and the law of universal gravitation. It unified terrestrial and celestial mechanics under a single mathematical framework, transforming physics and launching the scientific revolution's peak.",
+    "wowFactor": "The Principia was largely funded by Edmond Halley (of Halley's Comet fame) because the Royal Society had run out of money — science history almost lost it to budget cuts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Newton publish the Principia Mathematica?",
+        "answer": "1687",
+        "distractors": [
+          "1666",
+          "1700",
+          "1675"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What did Newton's Principia Mathematica primarily establish?",
+        "answer": "Laws of motion and universal gravitation",
+        "distractors": [
+          "The heliocentric model",
+          "The laws of thermodynamics",
+          "The theory of evolution"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Newton's Principia Mathematica was published in 1687.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Newton published 'Philosophiae Naturalis Principia Mathematica' in ___, unifying terrestrial and celestial mechanics.",
+        "answer": "1687",
+        "distractors": [
+          "1666",
+          "1543",
+          "1700"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an old leather-bound book open on a wooden desk, a quill pen beside it, with the title 'Principia' visible and equations floating above the pages.",
+    "tags": [
+      "newton",
+      "principia",
+      "physics",
+      "laws of motion",
+      "gravity",
+      "1687",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-newton-prism-light",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Isaac Newton used a glass prism to demonstrate that white light is composed of all the colors of the visible spectrum.",
+    "quizQuestion": "What did Newton prove using a glass prism and white light?",
+    "correctAnswer": "White light contains all colors of the spectrum",
+    "distractors": [
+      "Light travels faster than sound",
+      "Glass slows light to half its speed",
+      "Colors are illusions created by the eye",
+      "Prisms create new colors from energy",
+      "Red light bends more than violet light",
+      "White light is a single pure wavelength",
+      "Light is made of tiny particles with color",
+      "The prism adds color to colorless light"
+    ],
+    "acceptableAnswers": [
+      "White light contains all colors of the spectrum",
+      "White light is made of all colors",
+      "White light disperses into a rainbow"
+    ],
+    "explanation": "In 1666, Newton passed sunlight through a prism and saw it split into the full visible spectrum (ROYGBIV). He then recombined the colors with a second prism to recover white light — proving the colors were already in the light, not added by the glass.",
+    "wowFactor": "Newton actually invented the word 'spectrum' for this experiment — before him, there wasn't even a word for the rainbow of colors light produces.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Newton prove using a glass prism and white light?",
+        "answer": "White light contains all colors of the spectrum",
+        "distractors": [
+          "Glass creates new colors from energy",
+          "Colors are illusions created by the eye",
+          "Red light bends more than violet light"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What happens when Newton recombined the spectrum colors with a second prism?",
+        "answer": "White light was restored",
+        "distractors": [
+          "A new color was created",
+          "The light disappeared",
+          "Red light was separated out"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Newton showed that white light is a mixture of all visible colors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Newton split white light into the full visible ___ using a glass prism.",
+        "answer": "spectrum",
+        "distractors": [
+          "shadow",
+          "wavelength",
+          "frequency"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Opticks",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a triangular glass prism on a dark surface with a beam of white light entering one side and a rainbow spectrum fanning out the other, casting colored bands on a wall.",
+    "tags": [
+      "newton",
+      "prism",
+      "light",
+      "spectrum",
+      "optics",
+      "physics",
+      "color"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-darwin-origin-species",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Charles Darwin published 'On the Origin of Species' in 1859, introducing the theory of evolution by natural selection.",
+    "quizQuestion": "In what year did Darwin publish 'On the Origin of Species'?",
+    "correctAnswer": "1859",
+    "distractors": [
+      "1831",
+      "1882",
+      "1776",
+      "1871",
+      "1905",
+      "1845",
+      "1900",
+      "1837"
+    ],
+    "acceptableAnswers": [
+      "1859",
+      "eighteen fifty-nine"
+    ],
+    "explanation": "Darwin's book, published November 24, 1859, sold out its first print run on the day of release. It presented natural selection as the mechanism driving evolution, supported by years of field observation and comparison of species across continents.",
+    "wowFactor": "Darwin sat on his theory for over 20 years, afraid of controversy — he only published when Alfred Russel Wallace independently arrived at the same idea and Darwin risked being scooped.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Darwin publish 'On the Origin of Species'?",
+        "answer": "1859",
+        "distractors": [
+          "1831",
+          "1871",
+          "1882"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the central mechanism of evolution that Darwin proposed in 'On the Origin of Species'?",
+        "answer": "Natural selection",
+        "distractors": [
+          "Genetic mutation",
+          "Sexual selection",
+          "Artificial breeding"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Darwin's 'On the Origin of Species' was published in 1859.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin published 'On the Origin of Species' in ___, introducing natural selection.",
+        "answer": "1859",
+        "distractors": [
+          "1831",
+          "1871",
+          "1905"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a weathered book with a tree of life branching diagram on its cover, resting on a wooden ship deck with ocean waves behind.",
+    "tags": [
+      "darwin",
+      "evolution",
+      "natural selection",
+      "1859",
+      "biology",
+      "origin of species"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-darwin-galapagos",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Darwin's observations of finches and tortoises on the Galápagos Islands provided key evidence for his theory of evolution by natural selection.",
+    "quizQuestion": "Which island chain's wildlife most influenced Darwin's development of evolutionary theory?",
+    "correctAnswer": "The Galápagos Islands",
+    "distractors": [
+      "The Hawaiian Islands",
+      "The Canary Islands",
+      "The Falkland Islands",
+      "The Azores",
+      "Sri Lanka",
+      "Madagascar",
+      "The Maldives",
+      "The Faroe Islands"
+    ],
+    "acceptableAnswers": [
+      "The Galápagos Islands",
+      "Galápagos",
+      "Galapagos Islands"
+    ],
+    "explanation": "During the voyage of HMS Beagle (1831–1836), Darwin noted that finches on different Galápagos islands had beaks adapted to different food sources. He later realized these variations represented adaptation to local conditions — a key pillar of natural selection.",
+    "wowFactor": "Darwin didn't even realize the finches were all closely related until the ornithologist John Gould told him back in London — Darwin had labeled them as different bird families entirely.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which island chain's wildlife most influenced Darwin's development of evolutionary theory?",
+        "answer": "The Galápagos Islands",
+        "distractors": [
+          "The Hawaiian Islands",
+          "The Canary Islands",
+          "Madagascar"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What physical feature of Galápagos finches did Darwin observe that hinted at adaptation?",
+        "answer": "Their differently shaped beaks",
+        "distractors": [
+          "Their different wing spans",
+          "Their varying body sizes",
+          "Their distinct plumage colors"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Darwin's observations in the Galápagos Islands informed his theory of evolution.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin observed ___ with differently shaped beaks on the Galápagos Islands, which became key evidence for natural selection.",
+        "answer": "finches",
+        "distractors": [
+          "parrots",
+          "penguins",
+          "tortoises"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Darwin%27s_finches",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of four finches perched on a branch, each with a distinctly shaped beak — pointed, thick, curved, and long — with a tropical island and volcano visible in the background.",
+    "tags": [
+      "darwin",
+      "galapagos",
+      "finches",
+      "evolution",
+      "natural selection",
+      "adaptation",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-darwin-natural-selection",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Natural selection is the process by which organisms with traits better suited to their environment survive and reproduce more successfully, passing those traits to offspring.",
+    "quizQuestion": "What is the core principle of natural selection?",
+    "correctAnswer": "Organisms with beneficial traits survive and reproduce more",
+    "distractors": [
+      "Organisms intentionally mutate to survive",
+      "The strongest individual always outlives the weakest",
+      "Evolution proceeds at a constant rate for all species",
+      "Traits acquired in a lifetime are passed to offspring",
+      "Populations grow until all resources are consumed",
+      "Mutations always improve an organism's fitness",
+      "Only sexual reproduction drives evolution",
+      "Species remain unchanged unless humans intervene"
+    ],
+    "acceptableAnswers": [
+      "Organisms with beneficial traits survive and reproduce more",
+      "Survival of the fittest",
+      "Favorable traits are inherited by offspring"
+    ],
+    "explanation": "Natural selection works through four conditions: variation exists in a population, some variations affect survival, survivors reproduce and pass traits on, and this shifts the population over generations. 'Survival of the fittest' — a phrase coined by Herbert Spencer — means 'best suited', not 'strongest'.",
+    "wowFactor": "Natural selection can happen fast enough to observe in a human lifetime — bacteria evolve antibiotic resistance in days, and Darwin's finches measurably shifted beak shape within decades after drought.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the core principle of natural selection?",
+        "answer": "Organisms with beneficial traits survive and reproduce more",
+        "distractors": [
+          "Organisms intentionally mutate to survive",
+          "Traits acquired in a lifetime are passed to offspring",
+          "The strongest individual always outlives the weakest"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who coined the phrase 'survival of the fittest' to describe natural selection?",
+        "answer": "Herbert Spencer",
+        "distractors": [
+          "Charles Darwin",
+          "Thomas Huxley",
+          "Gregor Mendel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In natural selection, organisms deliberately change to better survive their environment.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In natural selection, organisms with ___ traits are more likely to survive and pass those traits to offspring.",
+        "answer": "beneficial",
+        "distractors": [
+          "random",
+          "acquired",
+          "dominant"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Natural_selection",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of two populations of moths on a tree trunk — light-colored moths blending into bark, dark ones visibly standing out — with a bird approaching the visible dark moths.",
+    "tags": [
+      "darwin",
+      "natural selection",
+      "evolution",
+      "survival of the fittest",
+      "adaptation",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-dna-base-pairs",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "DNA uses four nitrogen bases — Adenine, Thymine, Guanine, and Cytosine — and they always pair as A-T and G-C in the double helix.",
+    "quizQuestion": "In DNA base pairing, which base always pairs with Adenine?",
+    "correctAnswer": "Thymine",
+    "distractors": [
+      "Guanine",
+      "Cytosine",
+      "Uracil",
+      "Adenine itself",
+      "Phosphate",
+      "Ribose",
+      "Histidine",
+      "Leucine"
+    ],
+    "acceptableAnswers": [
+      "Thymine",
+      "T"
+    ],
+    "explanation": "Chargaff's rules state that A pairs with T (2 hydrogen bonds) and G pairs with C (3 hydrogen bonds). This complementary base pairing is what allows DNA to be copied accurately — each strand serves as a template for the other.",
+    "wowFactor": "The reason G-C bonds are stronger than A-T bonds is that G-C form three hydrogen bonds while A-T form only two — which means DNA-rich in G-C is harder to 'unzip' and more thermally stable.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In DNA base pairing, which base always pairs with Adenine?",
+        "answer": "Thymine",
+        "distractors": [
+          "Guanine",
+          "Cytosine",
+          "Uracil"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In DNA, Guanine always pairs with which base?",
+        "answer": "Cytosine",
+        "distractors": [
+          "Adenine",
+          "Thymine",
+          "Uracil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In DNA, Adenine pairs with Thymine and Guanine pairs with Cytosine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In DNA, the four bases pair as A-___ and G-C.",
+        "answer": "T",
+        "distractors": [
+          "C",
+          "G",
+          "U"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nucleobase",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art close-up of a DNA double helix with colored base pairs bridging the two strands: red A-T pairs and blue G-C pairs alternating along the ladder rungs.",
+    "tags": [
+      "DNA",
+      "base pairs",
+      "adenine",
+      "thymine",
+      "guanine",
+      "cytosine",
+      "genetics",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-dna-human-genome",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "The Human Genome Project completed its first draft in 2000 and finished in 2003, sequencing the approximately 3 billion base pairs that make up human DNA.",
+    "quizQuestion": "Approximately how many base pairs make up the human genome?",
+    "correctAnswer": "3 billion",
+    "distractors": [
+      "3 million",
+      "30 billion",
+      "300 million",
+      "100 million",
+      "3 trillion",
+      "46 million",
+      "1 billion",
+      "10 billion"
+    ],
+    "acceptableAnswers": [
+      "3 billion",
+      "approximately 3 billion",
+      "~3 billion",
+      "3.2 billion"
+    ],
+    "explanation": "The human genome contains about 3.2 billion base pairs spread across 23 pairs of chromosomes. Only about 1–2% of this encodes proteins (genes); the rest was once called 'junk DNA' but is now known to contain regulatory regions and other functional elements.",
+    "wowFactor": "If you stretched out all the DNA in a single human cell end to end, it would be about 2 meters long — yet it all fits inside a nucleus that is just 6 micrometers wide.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many base pairs make up the human genome?",
+        "answer": "3 billion",
+        "distractors": [
+          "3 million",
+          "300 million",
+          "30 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "When was the Human Genome Project fully completed?",
+        "answer": "2003",
+        "distractors": [
+          "1997",
+          "2000",
+          "2010"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human genome contains approximately 3 billion base pairs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Human Genome Project revealed that human DNA contains approximately ___ base pairs.",
+        "answer": "3 billion",
+        "distractors": [
+          "3 million",
+          "1 trillion",
+          "30 billion"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_Genome_Project",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a computer terminal displaying a scrolling readout of ATCG sequences, with a DNA double helix reflected in the screen and scientists celebrating in the background.",
+    "tags": [
+      "DNA",
+      "human genome",
+      "genome project",
+      "base pairs",
+      "genetics",
+      "biology",
+      "2003"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-photosynthesis-oxygen",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "The oxygen released during photosynthesis comes from the splitting of water molecules, not from carbon dioxide.",
+    "quizQuestion": "Where does the oxygen released during photosynthesis come from?",
+    "correctAnswer": "The splitting of water molecules",
+    "distractors": [
+      "The breakdown of carbon dioxide",
+      "The decomposition of glucose",
+      "The release of stored oxygen from chlorophyll",
+      "The reaction between CO₂ and sunlight",
+      "Nitrogen fixation in the roots",
+      "ATP breakdown in mitochondria",
+      "The oxidation of glucose",
+      "Mineral absorption through roots"
+    ],
+    "acceptableAnswers": [
+      "The splitting of water molecules",
+      "Water (H₂O)",
+      "Photolysis of water"
+    ],
+    "explanation": "During the light-dependent reactions, photosystem II splits water molecules (photolysis: 2H₂O → 4H⁺ + 4e⁻ + O₂). The oxygen released is a byproduct — the electrons and protons are what the plant actually uses to drive ATP synthesis.",
+    "wowFactor": "This means that every molecule of O₂ you breathe was once part of a water molecule — photosynthesis is literally converting water into breathable air.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does the oxygen released during photosynthesis come from?",
+        "answer": "The splitting of water molecules",
+        "distractors": [
+          "The breakdown of carbon dioxide",
+          "The decomposition of glucose",
+          "Nitrogen fixation in the roots"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for the light-driven splitting of water that produces oxygen in photosynthesis?",
+        "answer": "Photolysis",
+        "distractors": [
+          "Hydrolysis",
+          "Oxidative phosphorylation",
+          "Glycolysis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The oxygen produced in photosynthesis comes from splitting water molecules, not CO₂.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In photosynthesis, oxygen is released as a byproduct of the splitting of ___ molecules during the light reactions.",
+        "answer": "water",
+        "distractors": [
+          "CO₂",
+          "glucose",
+          "chlorophyll"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Light-dependent_reactions",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a thylakoid membrane cross-section with water molecules entering, being split by light energy, and O₂ bubbles rising upward while electrons flow down a chain of glowing proteins.",
+    "tags": [
+      "photosynthesis",
+      "oxygen",
+      "photolysis",
+      "water",
+      "light reactions",
+      "plants",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-gravity-newton-vs-einstein",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Newton described gravity as a force acting between masses, while Einstein's General Relativity describes gravity as the curvature of spacetime caused by mass and energy.",
+    "quizQuestion": "How does Einstein's description of gravity differ from Newton's?",
+    "correctAnswer": "Einstein describes gravity as spacetime curvature, not a force",
+    "distractors": [
+      "Einstein says gravity is stronger than Newton predicted",
+      "Einstein proved gravity does not exist at the atomic scale",
+      "Einstein replaced gravity with electromagnetic force",
+      "Einstein showed gravity only works above the speed of sound",
+      "Einstein described gravity as a particle called the graviton",
+      "Einstein said gravity is the same for all masses, unlike Newton",
+      "Einstein proved gravity works instantly across any distance",
+      "Einstein replaced Newton's law entirely with E=mc²"
+    ],
+    "acceptableAnswers": [
+      "Einstein describes gravity as spacetime curvature, not a force",
+      "Einstein's gravity is spacetime curvature",
+      "General Relativity treats gravity as curved spacetime"
+    ],
+    "explanation": "Newton's law of universal gravitation works perfectly for everyday scales. Einstein's 1915 General Theory of Relativity showed that mass warps the geometry of spacetime, and what we call gravity is objects following straight paths (geodesics) through curved spacetime — explaining phenomena Newton's model couldn't, like light bending around the Sun.",
+    "wowFactor": "GPS satellites require Einstein's corrections to work accurately — without General Relativity, GPS would drift by about 10 km per day due to the time dilation caused by both speed and altitude.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does Einstein's description of gravity differ from Newton's?",
+        "answer": "Einstein describes gravity as spacetime curvature, not a force",
+        "distractors": [
+          "Einstein replaced gravity with electromagnetic force",
+          "Einstein described gravity as a particle called the graviton",
+          "Einstein showed gravity only works above the speed of sound"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is a key prediction of Einstein's General Relativity that Newton's gravity could NOT explain?",
+        "answer": "Light bending around massive objects",
+        "distractors": [
+          "Objects falling at the same rate in a vacuum",
+          "The Moon orbiting the Earth",
+          "Tides caused by the Moon's gravity"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Einstein's General Relativity describes gravity as the curvature of spacetime.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In Einstein's General Relativity, gravity is caused by the ___ of spacetime by mass and energy.",
+        "answer": "curvature",
+        "distractors": [
+          "expansion",
+          "vibration",
+          "compression"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/General_relativity",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a heavy sphere sitting on a stretched grid of spacetime, bending the grid into a funnel shape, with a smaller ball rolling along the curved surface toward it.",
+    "tags": [
+      "gravity",
+      "Newton",
+      "Einstein",
+      "general relativity",
+      "spacetime",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-gravity-gravitational-waves",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Gravitational waves — ripples in spacetime caused by violent cosmic events — were first directly detected by LIGO in September 2015, confirming a key prediction of Einstein's General Relativity.",
+    "quizQuestion": "What instrument first directly detected gravitational waves in 2015?",
+    "correctAnswer": "LIGO",
+    "distractors": [
+      "The Hubble Space Telescope",
+      "CERN's Large Hadron Collider",
+      "The James Webb Space Telescope",
+      "The Arecibo Observatory",
+      "The Chandra X-ray Observatory",
+      "The Event Horizon Telescope",
+      "The Very Large Array",
+      "The Fermi Gamma-ray Space Telescope"
+    ],
+    "acceptableAnswers": [
+      "LIGO",
+      "Laser Interferometer Gravitational-Wave Observatory"
+    ],
+    "explanation": "LIGO detected gravitational waves from the merger of two black holes ~1.3 billion light-years away. The signal was a chirp lasting 0.2 seconds, during which the two black holes spiraled inward and merged, releasing energy equivalent to three solar masses as gravitational waves.",
+    "wowFactor": "The gravitational waves LIGO detected stretched and compressed the 4 km detector arms by a distance 1,000 times smaller than a proton — the most precise measurement ever made by humans.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What instrument first directly detected gravitational waves in 2015?",
+        "answer": "LIGO",
+        "distractors": [
+          "The Hubble Space Telescope",
+          "CERN's Large Hadron Collider",
+          "The Event Horizon Telescope"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What cosmic event produced the gravitational waves that LIGO first detected in 2015?",
+        "answer": "The merger of two black holes",
+        "distractors": [
+          "A supernova explosion",
+          "The collision of two neutron stars",
+          "A gamma-ray burst"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gravitational waves were first directly detected by LIGO in 2015.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first direct detection of gravitational waves in 2015 confirmed a key prediction of Einstein's ___.",
+        "answer": "General Relativity",
+        "distractors": [
+          "Special Relativity",
+          "Quantum Mechanics",
+          "Newtonian gravity"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/LIGO",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of two massive black holes spiraling toward each other in deep space, ripple rings spreading outward in spacetime, with a distant laser interferometer on Earth at the bottom of the scene.",
+    "tags": [
+      "gravitational waves",
+      "LIGO",
+      "black holes",
+      "general relativity",
+      "Einstein",
+      "physics",
+      "space"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-gravity-black-holes",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "A black hole's gravity is so extreme that not even light can escape from within its event horizon — the boundary of no return.",
+    "quizQuestion": "What is the name for the boundary around a black hole from which nothing, not even light, can escape?",
+    "correctAnswer": "Event horizon",
+    "distractors": [
+      "Schwarzschild radius boundary",
+      "Singularity",
+      "Accretion disc",
+      "Photon sphere",
+      "Gravitational lens",
+      "Roche limit",
+      "Lagrange point",
+      "Stellar corona"
+    ],
+    "acceptableAnswers": [
+      "Event horizon",
+      "the event horizon"
+    ],
+    "explanation": "The event horizon is the point at which escape velocity equals the speed of light. Inside it, all paths through spacetime lead to the singularity. Stephen Hawking showed that black holes can slowly evaporate via 'Hawking radiation' — quantum effects that allow energy to escape even from beyond the event horizon.",
+    "wowFactor": "The first-ever image of a black hole's event horizon was captured in 2019 by the Event Horizon Telescope — a network of radio telescopes spanning the entire Earth, photographing the black hole at the center of the M87 galaxy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name for the boundary around a black hole from which nothing, not even light, can escape?",
+        "answer": "Event horizon",
+        "distractors": [
+          "Singularity",
+          "Accretion disc",
+          "Photon sphere"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for Stephen Hawking's prediction that black holes slowly emit radiation and lose mass?",
+        "answer": "Hawking radiation",
+        "distractors": [
+          "Gravitational lensing",
+          "Tidal disruption",
+          "Spaghettification"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Light can escape from a black hole if it is angled correctly toward the edge of the event horizon.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the boundary of a black hole beyond which not even light can escape.",
+        "answer": "event horizon",
+        "distractors": [
+          "singularity",
+          "accretion disc",
+          "photon sphere"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_hole",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive black hole with a bright orange accretion disk swirling around it, stars being dragged inward, and a glowing ring marking the event horizon boundary.",
+    "tags": [
+      "black holes",
+      "event horizon",
+      "gravity",
+      "general relativity",
+      "space",
+      "physics",
+      "Hawking radiation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-franklin-kite",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Benjamin Franklin's famous kite experiment in 1752 demonstrated that lightning is electrical in nature by drawing a spark from storm clouds to a metal key on the kite string.",
+    "quizQuestion": "What did Benjamin Franklin prove with his 1752 kite experiment?",
+    "correctAnswer": "Lightning is electrical",
+    "distractors": [
+      "Electricity can travel through wet string",
+      "Metal attracts rain clouds",
+      "Thunder produces static electricity",
+      "Kites can safely ground electrical storms",
+      "Air conducts electricity in storms",
+      "Lightning is hotter than the Sun's surface",
+      "Franklin invented the battery with this experiment",
+      "Electricity requires metal to flow"
+    ],
+    "acceptableAnswers": [
+      "Lightning is electrical",
+      "Lightning is a form of electricity",
+      "Lightning is an electrical discharge"
+    ],
+    "explanation": "Franklin flew a kite with a metal key attached during a thunderstorm. Electrical charge from the storm clouds traveled down the wet string, and a spark jumped from the key to Franklin's knuckle. This proved lightning was electrical and led directly to the invention of the lightning rod — still used today.",
+    "wowFactor": "Franklin was incredibly lucky to survive this experiment — several other scientists who tried to replicate it with direct lightning strikes (not just static buildup) were killed. Franklin had used wet string, not a direct lightning strike.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Benjamin Franklin prove with his 1752 kite experiment?",
+        "answer": "Lightning is electrical",
+        "distractors": [
+          "Franklin invented the battery with this experiment",
+          "Thunder produces static electricity",
+          "Metal attracts rain clouds"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What practical invention did Franklin develop as a direct result of his kite experiment?",
+        "answer": "The lightning rod",
+        "distractors": [
+          "The electric motor",
+          "The telegraph",
+          "The capacitor"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Franklin's kite experiment proved that lightning is a form of electricity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Franklin attached a metal ___ to his kite string, which collected a spark during the 1752 storm experiment.",
+        "answer": "key",
+        "distractors": [
+          "rod",
+          "coin",
+          "wire"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kite_experiment",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Benjamin Franklin standing in a stormy night, flying a kite with a metal key on the string, while sparks arc from the key to his hand, with dark storm clouds crackling above.",
+    "tags": [
+      "Franklin",
+      "kite experiment",
+      "lightning",
+      "electricity",
+      "history of science",
+      "1752",
+      "lightning rod"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-ac-dc",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "The 'War of Currents' in the 1880s–1890s pitted Thomas Edison's direct current (DC) against Nikola Tesla and George Westinghouse's alternating current (AC). AC won and became the global standard for power transmission.",
+    "quizQuestion": "Why did alternating current (AC) win over direct current (DC) as the standard for long-distance power transmission?",
+    "correctAnswer": "AC can be stepped up to high voltages for efficient long-distance transmission",
+    "distractors": [
+      "AC is safer than DC at all voltages",
+      "DC cannot power electric motors",
+      "AC travels faster than DC along wires",
+      "Edison's DC system was patented and unavailable",
+      "AC produces no heat when transmitted",
+      "DC loses all its energy over one mile",
+      "Tesla proved AC was invented first",
+      "AC uses less copper wire than DC systems"
+    ],
+    "acceptableAnswers": [
+      "AC can be stepped up to high voltages for efficient long-distance transmission",
+      "AC can be transformed to high voltage for transmission",
+      "Transformers work with AC but not DC"
+    ],
+    "explanation": "AC's key advantage is that transformers can step it up to very high voltages (reducing current, and therefore energy loss) for long-distance transmission, then step it back down for safe household use. DC at the time could not be efficiently transformed, limiting Edison's system to small distribution areas.",
+    "wowFactor": "Edison mounted a public campaign against AC by electrocuting animals (including an elephant named Topsy) to show how 'dangerous' AC was. He also helped develop the first electric chair — using AC — to associate Tesla's current with death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did alternating current (AC) win over direct current (DC) as the standard for long-distance power transmission?",
+        "answer": "AC can be stepped up to high voltages for efficient long-distance transmission",
+        "distractors": [
+          "AC is safer than DC at all voltages",
+          "AC travels faster than DC along wires",
+          "DC loses all its energy over one mile"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who championed alternating current (AC) against Edison's direct current during the War of Currents?",
+        "answer": "Nikola Tesla and George Westinghouse",
+        "distractors": [
+          "Thomas Edison and J.P. Morgan",
+          "James Watt and Michael Faraday",
+          "Heinrich Hertz and Alessandro Volta"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Direct current (DC) became the global standard for long-distance power transmission after the War of Currents.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "AC power won the War of Currents because ___ can convert it to high voltage for efficient long-distance transmission.",
+        "answer": "transformers",
+        "distractors": [
+          "capacitors",
+          "resistors",
+          "generators"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/War_of_currents",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen: on the left, Edison's DC power station with short range arcs, on the right Tesla's AC pylons stretching over a horizon with transformers stepping voltage up, both under a stormy sky.",
+    "tags": [
+      "electricity",
+      "AC",
+      "DC",
+      "Tesla",
+      "Edison",
+      "War of Currents",
+      "power transmission",
+      "history of science"
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"

@@ -9952,5 +9952,1715 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-curry-origin-india",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Curry traces its origins to the Indian subcontinent, where complex spice blends have been used in cooking for over 4,000 years.",
+    "quizQuestion": "On which subcontinent did curry originate?",
+    "correctAnswer": "Indian subcontinent",
+    "distractors": [
+      "Arabian Peninsula",
+      "East Africa",
+      "Southeast Asia",
+      "Central Asia",
+      "Persia",
+      "Sri Lanka",
+      "Ottoman Empire",
+      "Mesopotamia"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Curry spice blends predate the Roman Empire — humans were perfecting masalas millennia before Julius Caesar was born!",
+    "wowFactor": "Curry spice blends predate the Roman Empire — humans were perfecting masalas millennia before Julius Caesar was born!",
+    "variants": [
+      {
+        "question": "Where did curry as a spiced dish tradition originate?",
+        "type": "forward",
+        "distractors": [
+          "Arabian Peninsula",
+          "Southeast Asian archipelago",
+          "East African coast"
+        ],
+        "answer": "Indian subcontinent"
+      },
+      {
+        "question": "Spice blends for curry have been used in cooking in India for how long?",
+        "type": "reverse",
+        "distractors": [
+          "About 500 years",
+          "Roughly 1,000 years",
+          "Around 2,500 years"
+        ],
+        "answer": "Over 4,000 years"
+      },
+      {
+        "question": "Which is NOT considered a homeland of curry cuisine traditions?",
+        "type": "negative",
+        "distractors": [
+          "India",
+          "Sri Lanka",
+          "Bangladesh"
+        ],
+        "answer": "Scandinavia"
+      },
+      {
+        "question": "Curry originates from the _____ subcontinent.",
+        "type": "fill_blank",
+        "distractors": [
+          "African",
+          "Arabian",
+          "Iberian"
+        ],
+        "answer": "Indian"
+      },
+      {
+        "question": "Curry has origins stretching back over 4,000 years on the Indian subcontinent.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curry",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A clay pot bubbling with deep golden-orange curry sits on a stone hearth in an ancient Indian kitchen. Turmeric, cumin, and coriander seeds are scattered on the floor in vivid pixel art. Warm amber candlelight glows from terracotta oil lamps.",
+    "tags": [
+      "curry",
+      "India",
+      "spices",
+      "food history",
+      "Asian cuisine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-curry-garam-masala",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Garam masala — meaning 'warm spice blend' — is a foundational curry spice mix used across South Asia, typically combining coriander, cumin, cardamom, cloves, and black pepper.",
+    "quizQuestion": "What does 'garam masala' translate to in English?",
+    "correctAnswer": "Warm spice blend",
+    "distractors": [
+      "Hot pepper sauce",
+      "Cold curry paste",
+      "Sweet dessert mix",
+      "Bitter herb powder",
+      "Sour tamarind blend",
+      "Aromatic salt mixture",
+      "Dried flower seasoning",
+      "Smoked wood spice"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Garam masala literally means 'warm spice blend' — referring not to heat but to the Ayurvedic concept of spices that warm the body from within!",
+    "wowFactor": "Garam masala literally means 'warm spice blend' — referring not to heat but to the Ayurvedic concept of spices that warm the body from within!",
+    "variants": [
+      {
+        "question": "Which spice is NOT typically in garam masala?",
+        "type": "negative",
+        "distractors": [
+          "Cumin",
+          "Cardamom",
+          "Cloves"
+        ],
+        "answer": "Vanilla"
+      },
+      {
+        "question": "What language does 'garam masala' come from?",
+        "type": "forward",
+        "distractors": [
+          "Tamil",
+          "Bengali",
+          "Swahili"
+        ],
+        "answer": "Hindi/Urdu"
+      },
+      {
+        "question": "Garam masala means 'warm spice _____'.",
+        "type": "fill_blank",
+        "distractors": [
+          "water",
+          "oil",
+          "paste"
+        ],
+        "answer": "blend"
+      },
+      {
+        "question": "Garam masala is used as a foundational spice mix in South Asian cooking.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which cuisine most commonly uses garam masala?",
+        "type": "forward",
+        "distractors": [
+          "Japanese",
+          "Mexican",
+          "Ethiopian"
+        ],
+        "answer": "South Asian"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Garam_masala",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A wooden spice board holds small piles of coriander seeds, whole cardamom pods, black pepper, dried cloves, and cumin in warm earth tones. A mortar and pestle sits in the center. Rich pixel art with deep browns, greens, and cream tones.",
+    "tags": [
+      "garam masala",
+      "spices",
+      "India",
+      "curry",
+      "ingredients"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-curry-regional-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Curry has hundreds of regional varieties across Asia: Thai curries use coconut milk and lemongrass, Japanese curry is mild and sweet, while British 'tikka masala' became so popular it was once called England's unofficial national dish.",
+    "quizQuestion": "Which type of curry is known for using coconut milk and lemongrass?",
+    "correctAnswer": "Thai curry",
+    "distractors": [
+      "Indian curry",
+      "Japanese curry",
+      "British curry",
+      "Sri Lankan curry",
+      "Indonesian rendang",
+      "Malaysian laksa",
+      "Burmese mohinga",
+      "Cambodian amok"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Chicken tikka masala was so beloved in Britain it was once called England's unofficial national dish — a South Asian immigrant creation that conquered a nation!",
+    "wowFactor": "Chicken tikka masala was so beloved in Britain it was once called England's unofficial national dish — a South Asian immigrant creation that conquered a nation!",
+    "variants": [
+      {
+        "question": "Japanese curry is generally described as what compared to Indian curry?",
+        "type": "forward",
+        "distractors": [
+          "Fiery and sour",
+          "Dry and smoky",
+          "Bitter and herbal"
+        ],
+        "answer": "Mild and sweet"
+      },
+      {
+        "question": "Which dish was once nicknamed England's unofficial national dish?",
+        "type": "reverse",
+        "distractors": [
+          "Fish and chips",
+          "Yorkshire pudding",
+          "Beef Wellington"
+        ],
+        "answer": "Chicken tikka masala"
+      },
+      {
+        "question": "Which ingredient distinguishes Thai curries from Indian curries?",
+        "type": "forward",
+        "distractors": [
+          "Tomato paste",
+          "Yogurt",
+          "Tahini"
+        ],
+        "answer": "Coconut milk"
+      },
+      {
+        "question": "Coconut milk and lemongrass are signature ingredients in Thai curry.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Thai curry uses _____ and lemongrass as defining ingredients.",
+        "type": "fill_blank",
+        "distractors": [
+          "heavy cream",
+          "beef broth",
+          "soy sauce"
+        ],
+        "answer": "coconut milk"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curry",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Three bowls in a row — a vibrant green Thai curry with coconut cream swirls, a deep orange Indian curry with a naan wedge, and a smooth brown Japanese curry over white rice — sit on a wooden table with small flag pins. Pixel art with vivid contrasting colors.",
+    "tags": [
+      "curry",
+      "Thai cuisine",
+      "Japanese cuisine",
+      "British cuisine",
+      "regional food"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-dim-sum-yum-cha",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Dim sum is traditionally served as part of 'yum cha' — Cantonese for 'drink tea' — where small portions of food accompany tea in teahouses called yum cha houses.",
+    "quizQuestion": "What does 'yum cha' mean in Cantonese?",
+    "correctAnswer": "Drink tea",
+    "distractors": [
+      "Eat well",
+      "Morning meal",
+      "Share food",
+      "Taste heart",
+      "Hot pot",
+      "Boil soup",
+      "Pour water",
+      "Red ceremony"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Yum cha — 'drink tea' — began as a rest stop tradition along the ancient Silk Road, where travelers would stop at teahouses for tea and small bites!",
+    "wowFactor": "Yum cha — 'drink tea' — began as a rest stop tradition along the ancient Silk Road, where travelers would stop at teahouses for tea and small bites!",
+    "variants": [
+      {
+        "question": "Dim sum is traditionally paired with which beverage?",
+        "type": "forward",
+        "distractors": [
+          "Rice wine",
+          "Coconut water",
+          "Plum juice"
+        ],
+        "answer": "Tea"
+      },
+      {
+        "question": "Which dialect does the phrase 'yum cha' come from?",
+        "type": "reverse",
+        "distractors": [
+          "Mandarin",
+          "Hokkien",
+          "Shanghainese"
+        ],
+        "answer": "Cantonese"
+      },
+      {
+        "question": "Yum cha translates to 'drink _____' in Cantonese.",
+        "type": "fill_blank",
+        "distractors": [
+          "soup",
+          "wine",
+          "broth"
+        ],
+        "answer": "tea"
+      },
+      {
+        "question": "Yum cha is the practice of eating dim sum while drinking tea.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which cuisine tradition does dim sum belong to?",
+        "type": "forward",
+        "distractors": [
+          "Szechuan",
+          "Shandong",
+          "Hunan"
+        ],
+        "answer": "Cantonese"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A round bamboo steamer basket opens to reveal delicate shrimp dumplings (har gow) with translucent wrappers. A porcelain teapot and small cups sit nearby on a red lacquered table. The teahouse background is filled with warm lantern light in detailed pixel art.",
+    "tags": [
+      "dim sum",
+      "yum cha",
+      "Cantonese",
+      "tea",
+      "Chinese cuisine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-dim-sum-steaming",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Many dim sum dishes are cooked by steaming inside bamboo baskets stacked in towers, a technique that produces delicate, moist dumplings without added fat.",
+    "quizQuestion": "What cooking method produces the delicate moist texture characteristic of dim sum dumplings?",
+    "correctAnswer": "Steaming",
+    "distractors": [
+      "Deep frying",
+      "Grilling",
+      "Boiling in broth",
+      "Pressure cooking",
+      "Oven roasting",
+      "Smoking over chips",
+      "Sous vide sealing",
+      "Stone-fired baking"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Bamboo steamers are ingeniously stackable — a single pot of boiling water can cook an entire tower of different dim sum dishes simultaneously!",
+    "wowFactor": "Bamboo steamers are ingeniously stackable — a single pot of boiling water can cook an entire tower of different dim sum dishes simultaneously!",
+    "variants": [
+      {
+        "question": "Dim sum baskets are traditionally made from which material?",
+        "type": "forward",
+        "distractors": [
+          "Wicker",
+          "Metal wire",
+          "Ceramic clay"
+        ],
+        "answer": "Bamboo"
+      },
+      {
+        "question": "What is the main benefit of steaming dim sum rather than frying?",
+        "type": "reverse",
+        "distractors": [
+          "Faster cooking time",
+          "Crispier texture",
+          "Stronger flavor"
+        ],
+        "answer": "No added fat"
+      },
+      {
+        "question": "Steaming dim sum produces dumplings that are _____ and moist.",
+        "type": "fill_blank",
+        "distractors": [
+          "crunchy",
+          "dense",
+          "thick"
+        ],
+        "answer": "delicate"
+      },
+      {
+        "question": "Bamboo steamers can be stacked in towers to cook multiple dim sum dishes at once.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which is NOT a common dim sum cooking method?",
+        "type": "negative",
+        "distractors": [
+          "Steaming",
+          "Pan-frying",
+          "Baking"
+        ],
+        "answer": "Deep frying in lard"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Three tiered bamboo steamer baskets stacked on a wok filled with billowing white steam. The top basket is open, revealing glistening white siu mai dumplings topped with orange roe. Warm kitchen light glows in detailed pixel art.",
+    "tags": [
+      "dim sum",
+      "steaming",
+      "bamboo",
+      "dumplings",
+      "cooking technique"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-dim-sum-cantonese-tradition",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Dim sum originated in Cantonese teahouses along the ancient Silk Road, where weary travelers stopped for tea and snacks. The phrase 'dim sum' itself means 'touch the heart' in Cantonese.",
+    "quizQuestion": "What does 'dim sum' mean in Cantonese?",
+    "correctAnswer": "Touch the heart",
+    "distractors": [
+      "Small bites",
+      "Morning snack",
+      "Hot dish",
+      "Tea ceremony",
+      "Little treasure",
+      "Warm welcome",
+      "Silk basket",
+      "Jade feast"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Dim sum means 'touch the heart' — these tiny dishes were designed to be emotionally comforting, not just filling, dating back to Silk Road rest stops!",
+    "wowFactor": "Dim sum means 'touch the heart' — these tiny dishes were designed to be emotionally comforting, not just filling, dating back to Silk Road rest stops!",
+    "variants": [
+      {
+        "question": "Where did the dim sum tradition originate?",
+        "type": "forward",
+        "distractors": [
+          "Imperial Beijing banquet halls",
+          "Shanghainese night markets",
+          "Tokyo ramen shops"
+        ],
+        "answer": "Cantonese teahouses"
+      },
+      {
+        "question": "Dim sum teahouses historically served which type of traveler?",
+        "type": "reverse",
+        "distractors": [
+          "Sea merchants",
+          "Military soldiers",
+          "Temple pilgrims"
+        ],
+        "answer": "Silk Road travelers"
+      },
+      {
+        "question": "Dim sum means 'touch the _____' in Cantonese.",
+        "type": "fill_blank",
+        "distractors": [
+          "hand",
+          "spirit",
+          "tongue"
+        ],
+        "answer": "heart"
+      },
+      {
+        "question": "The phrase 'dim sum' translates to 'touch the heart' in Cantonese.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Along which ancient trade route did dim sum teahouse culture develop?",
+        "type": "forward",
+        "distractors": [
+          "Spice Route",
+          "Amber Road",
+          "Incense Route"
+        ],
+        "answer": "Silk Road"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Cantonese teahouse at a dusty Silk Road crossroads. Camel caravans rest outside while travelers inside sip tea and share bamboo baskets of small dumplings by lantern light. Warm gold and terracotta pixel art tones.",
+    "tags": [
+      "dim sum",
+      "Cantonese",
+      "Silk Road",
+      "tea culture",
+      "etymology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-ramen-japanese-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen is a Japanese noodle soup dish that likely originated from Chinese wheat noodle dishes introduced to Japan in the late 19th century, evolving into a distinctly Japanese cuisine by the mid-20th century.",
+    "quizQuestion": "From which country's noodle traditions did ramen most likely evolve?",
+    "correctAnswer": "China",
+    "distractors": [
+      "Korea",
+      "Japan",
+      "Vietnam",
+      "Mongolia",
+      "Taiwan",
+      "Thailand",
+      "Manchuria",
+      "Philippines"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Ramen only became a distinctly 'Japanese' food in the mid-1900s — before that it was considered a foreign Chinese dish sold by street vendors!",
+    "wowFactor": "Ramen only became a distinctly 'Japanese' food in the mid-1900s — before that it was considered a foreign Chinese dish sold by street vendors!",
+    "variants": [
+      {
+        "question": "In which country is ramen considered a national noodle dish?",
+        "type": "forward",
+        "distractors": [
+          "South Korea",
+          "Vietnam",
+          "Taiwan"
+        ],
+        "answer": "Japan"
+      },
+      {
+        "question": "Ramen evolved into a distinctly Japanese cuisine by approximately which century?",
+        "type": "reverse",
+        "distractors": [
+          "12th century",
+          "17th century",
+          "Early 19th century"
+        ],
+        "answer": "Mid-20th century"
+      },
+      {
+        "question": "Ramen evolved from _____ wheat noodle dishes.",
+        "type": "fill_blank",
+        "distractors": [
+          "Korean",
+          "Mongolian",
+          "Filipino"
+        ],
+        "answer": "Chinese"
+      },
+      {
+        "question": "Ramen has Chinese culinary roots that evolved into a Japanese dish.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which ingredient is always the base of any bowl of ramen?",
+        "type": "forward",
+        "distractors": [
+          "Miso paste",
+          "Soy sauce",
+          "Sesame oil"
+        ],
+        "answer": "Broth"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A steaming ceramic bowl of ramen with curly yellow noodles, a soft-boiled egg halved to show an orange yolk, sliced chashu pork, nori seaweed, and bamboo shoots in rich brown broth. Dark wooden table with chopsticks beside it. Warm pixel art glow.",
+    "tags": [
+      "ramen",
+      "Japan",
+      "noodles",
+      "Chinese influence",
+      "food history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-ramen-broth-types",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen is categorized by its broth into four main regional styles: shoyu (soy sauce), shio (salt), miso, and tonkotsu (pork bone) — each with distinct flavor profiles and regional origins across Japan.",
+    "quizQuestion": "Which ramen broth is made by simmering pork bones for many hours to create a rich, creamy white soup?",
+    "correctAnswer": "Tonkotsu",
+    "distractors": [
+      "Shoyu (soy sauce)",
+      "Miso",
+      "Shio (salt)",
+      "Dashi (fish stock)",
+      "Chicken paitan",
+      "Torigara (chicken bone)",
+      "Niboshi (dried sardine)",
+      "Kombu (kelp)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Tonkotsu broth requires 12+ hours of boiling pork bones at a rolling boil — the pressure emulsifies the collagen into an impossibly rich, milky white soup!",
+    "wowFactor": "Tonkotsu broth requires 12+ hours of boiling pork bones at a rolling boil — the pressure emulsifies the collagen into an impossibly rich, milky white soup!",
+    "variants": [
+      {
+        "question": "Which ramen style uses miso paste as its broth base?",
+        "type": "forward",
+        "distractors": [
+          "Shoyu ramen",
+          "Shio ramen",
+          "Tonkotsu ramen"
+        ],
+        "answer": "Miso ramen"
+      },
+      {
+        "question": "The word 'shio' in ramen refers to which ingredient?",
+        "type": "reverse",
+        "distractors": [
+          "Soy sauce",
+          "Sesame",
+          "Seaweed"
+        ],
+        "answer": "Salt"
+      },
+      {
+        "question": "Tonkotsu ramen gets its white creamy broth from simmered pork _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "fat",
+          "skin",
+          "organs"
+        ],
+        "answer": "bones"
+      },
+      {
+        "question": "There are four main ramen broth styles: shoyu, shio, miso, and tonkotsu.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which ramen broth style uses soy sauce as its primary seasoning?",
+        "type": "forward",
+        "distractors": [
+          "Shio",
+          "Tonkotsu",
+          "Tsukemen"
+        ],
+        "answer": "Shoyu"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Four ramen bowls arranged in a 2x2 grid, each a different color — amber shoyu, clear shio, dark miso, and creamy white tonkotsu — each with different toppings, neatly labeled. Bright pixel art on a dark slate background.",
+    "tags": [
+      "ramen",
+      "tonkotsu",
+      "shoyu",
+      "miso",
+      "broth",
+      "Japanese cuisine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-ramen-instant-invention",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Instant ramen was invented in 1958 by Momofuku Ando of Nissin Foods in Japan, making it one of the most consumed foods in history — over 100 billion servings are eaten worldwide each year.",
+    "quizQuestion": "Who invented instant ramen in 1958?",
+    "correctAnswer": "Momofuku Ando",
+    "distractors": [
+      "Yoshida Hiroshi",
+      "Sato Kenji",
+      "Tanaka Yuki",
+      "Akio Morita",
+      "Soichiro Honda",
+      "Konosuke Matsushita",
+      "Masaru Ibuka",
+      "Isadore Sharp"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Momofuku Ando invented instant ramen at age 48 after WWII food shortages — he was inspired by watching people queue in the cold for a single bowl of ramen!",
+    "wowFactor": "Momofuku Ando invented instant ramen at age 48 after WWII food shortages — he was inspired by watching people queue in the cold for a single bowl of ramen!",
+    "variants": [
+      {
+        "question": "Which company did the inventor of instant ramen found?",
+        "type": "forward",
+        "distractors": [
+          "Maruchan",
+          "Sapporo Ichiban",
+          "Myojo Foods"
+        ],
+        "answer": "Nissin Foods"
+      },
+      {
+        "question": "Approximately how many servings of instant ramen are consumed globally each year?",
+        "type": "reverse",
+        "distractors": [
+          "About 1 billion",
+          "Around 10 billion",
+          "Nearly 50 billion"
+        ],
+        "answer": "Over 100 billion"
+      },
+      {
+        "question": "Instant ramen was invented in _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "1945",
+          "1972",
+          "1934"
+        ],
+        "answer": "1958"
+      },
+      {
+        "question": "Momofuku Ando invented instant ramen in Japan.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Instant ramen is considered one of the most consumed foods in history.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Food History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Instant_noodle",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A retro 1958 Japanese kitchen laboratory where a man in a white coat holds up a block of dried noodles triumphantly. A boiling pot and packets of powder surround him. Bright retro colors and pixelated vintage packaging design on the wall.",
+    "tags": [
+      "instant ramen",
+      "Momofuku Ando",
+      "Nissin",
+      "food invention",
+      "Japan"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pad-thai-wwii-nationalism",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Pad Thai was promoted by the Thai government in the 1930s–40s as a nationalist dish to unify the country and reduce rice consumption during wartime — it was deliberately created as Thailand's 'national noodle dish'.",
+    "quizQuestion": "Why did the Thai government promote Pad Thai as a national dish in the 1930s–40s?",
+    "correctAnswer": "To reduce rice consumption and promote national unity",
+    "distractors": [
+      "To celebrate a royal wedding",
+      "To attract foreign tourists",
+      "Because it was the king's favorite",
+      "To compete with Chinese noodle dishes",
+      "To reduce wheat imports from Japan",
+      "As part of a Buddhist dietary campaign",
+      "To replace street food banned in Bangkok",
+      "As an economic recovery plan after flooding"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Pad Thai is literally government-invented propaganda food! Thailand's dictator in the 1940s created it to encourage nationalism and reduce rice shortages — making it one of history's most successful pieces of culinary nation-branding!",
+    "wowFactor": "Pad Thai is literally government-invented propaganda food! Thailand's dictator in the 1940s created it to encourage nationalism and reduce rice shortages — making it one of history's most successful pieces of culinary nation-branding!",
+    "variants": [
+      {
+        "question": "Pad Thai was created to reduce the consumption of which staple food?",
+        "type": "forward",
+        "distractors": [
+          "Cassava",
+          "Bread",
+          "Corn"
+        ],
+        "answer": "Rice"
+      },
+      {
+        "question": "Which Thai leader most strongly promoted Pad Thai as a national symbol in the 1940s?",
+        "type": "reverse",
+        "distractors": [
+          "King Bhumibol",
+          "Thaksin Shinawatra",
+          "King Chulalongkorn"
+        ],
+        "answer": "Plaek Phibunsongkhram"
+      },
+      {
+        "question": "Pad Thai was deliberately created as Thailand's 'national _____ dish'.",
+        "type": "fill_blank",
+        "distractors": [
+          "rice",
+          "soup",
+          "curry"
+        ],
+        "answer": "noodle"
+      },
+      {
+        "question": "Pad Thai was invented by the Thai government as a nationalist dish during wartime.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The government-led promotion of Pad Thai occurred during which global conflict?",
+        "type": "forward",
+        "distractors": [
+          "World War I",
+          "The Korean War",
+          "The Cold War"
+        ],
+        "answer": "World War II"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Food History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A 1940s Thai government propaganda poster in pixel art shows a smiling Thai family gathered around a wok of Pad Thai noodles, with a Thai flag in the background. Bold vintage typography frames the scene in red, white, and blue.",
+    "tags": [
+      "Pad Thai",
+      "Thailand",
+      "food history",
+      "nationalism",
+      "WWII"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pad-thai-rice-noodles",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Pad Thai is made with sen lek — flat rice noodles — stir-fried with eggs, tofu or shrimp, bean sprouts, and scallions, then seasoned with fish sauce, tamarind paste, and sugar.",
+    "quizQuestion": "What type of noodle is used in authentic Pad Thai?",
+    "correctAnswer": "Flat rice noodles (sen lek)",
+    "distractors": [
+      "Glass (mung bean) noodles",
+      "Egg noodles",
+      "Wheat ramen noodles",
+      "Soba buckwheat noodles",
+      "Udon wheat noodles",
+      "Vermicelli rice sticks",
+      "Shirataki konjac noodles",
+      "Kelp seaweed noodles"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Tamarind — a pod fruit native to Africa — is what gives Pad Thai its signature sour-sweet tang, making this 'Thai' dish dependent on an African ingredient!",
+    "wowFactor": "Tamarind — a pod fruit native to Africa — is what gives Pad Thai its signature sour-sweet tang, making this 'Thai' dish dependent on an African ingredient!",
+    "variants": [
+      {
+        "question": "Which sauce gives Pad Thai its distinctive sour-sweet flavor base?",
+        "type": "forward",
+        "distractors": [
+          "Oyster sauce",
+          "Hoisin sauce",
+          "Black bean paste"
+        ],
+        "answer": "Tamarind paste"
+      },
+      {
+        "question": "Which ingredient provides the salty umami depth in Pad Thai?",
+        "type": "reverse",
+        "distractors": [
+          "Soy sauce",
+          "Shrimp paste",
+          "Miso"
+        ],
+        "answer": "Fish sauce"
+      },
+      {
+        "question": "Pad Thai is cooked using which method?",
+        "type": "forward",
+        "distractors": [
+          "Simmering",
+          "Steaming",
+          "Deep frying"
+        ],
+        "answer": "Stir-frying"
+      },
+      {
+        "question": "Authentic Pad Thai uses flat rice noodles called sen lek.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Pad Thai noodles are made from _____, not wheat.",
+        "type": "fill_blank",
+        "distractors": [
+          "mung bean",
+          "taro",
+          "cassava"
+        ],
+        "answer": "rice"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A sizzling wok filled with amber-colored flat rice noodles, whole shrimp, bright green scallions, and bean sprouts mid-toss. A cut lime and small bowl of crushed peanuts sit beside it. Bright Thai street food market in the background. Vivid pixel art.",
+    "tags": [
+      "Pad Thai",
+      "rice noodles",
+      "tamarind",
+      "Thai cuisine",
+      "stir fry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pad-thai-tamarind",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Tamarind paste is the key souring agent in Pad Thai, contributing a uniquely sweet-sour flavor. Tamarind is derived from the seed pod of the tamarind tree, originally native to tropical Africa.",
+    "quizQuestion": "What ingredient gives Pad Thai its signature sweet-sour flavor?",
+    "correctAnswer": "Tamarind paste",
+    "distractors": [
+      "Lime juice",
+      "Lemon juice",
+      "White vinegar",
+      "Fish sauce",
+      "Fermented black garlic",
+      "Plum sauce",
+      "Kokum extract",
+      "Kaffir lime leaves"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Tamarind traveled from Africa to Asia thousands of years ago via trade routes, and today it's the soul of Pad Thai, Indian chutneys, and Mexican candies — the most well-traveled souring agent in the world!",
+    "wowFactor": "Tamarind traveled from Africa to Asia thousands of years ago via trade routes, and today it's the soul of Pad Thai, Indian chutneys, and Mexican candies — the most well-traveled souring agent in the world!",
+    "variants": [
+      {
+        "question": "Where is the tamarind tree originally native to?",
+        "type": "forward",
+        "distractors": [
+          "South America",
+          "Southeast Asia",
+          "South Asia"
+        ],
+        "answer": "Tropical Africa"
+      },
+      {
+        "question": "Tamarind paste is made from which part of the tamarind plant?",
+        "type": "reverse",
+        "distractors": [
+          "Tree bark",
+          "Leaves",
+          "Roots"
+        ],
+        "answer": "Seed pods"
+      },
+      {
+        "question": "Tamarind contributes a _____ flavor to Pad Thai.",
+        "type": "fill_blank",
+        "distractors": [
+          "salty-bitter",
+          "spicy-smoky",
+          "nutty-sweet"
+        ],
+        "answer": "sweet-sour"
+      },
+      {
+        "question": "Tamarind is the primary souring agent used in authentic Pad Thai.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which of these could substitute for tamarind's sourness in a pinch?",
+        "type": "forward",
+        "distractors": [
+          "Orange zest",
+          "Rice vinegar alone",
+          "Lemon curd"
+        ],
+        "answer": "Lime juice with brown sugar"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Ingredients",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tamarind",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A tamarind pod split open showing sticky dark brown pulp and seeds, placed next to a small dish of smooth tamarind paste. A Thai mortar and pestle sits behind. Jungle-green background with warm earthy tones in detailed pixel art.",
+    "tags": [
+      "tamarind",
+      "Pad Thai",
+      "souring agent",
+      "Thai cuisine",
+      "Africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-biryani-mughal-origins",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Biryani is a fragrant layered rice dish that traces its origins to the Mughal Empire of the Indian subcontinent (1526–1857), where Persian-influenced court cuisine merged with local Indian spices.",
+    "quizQuestion": "Which empire is credited with developing biryani on the Indian subcontinent?",
+    "correctAnswer": "Mughal Empire",
+    "distractors": [
+      "British Raj",
+      "Ottoman Empire",
+      "Maurya Empire",
+      "Maratha Confederacy",
+      "Timurid dynasty",
+      "Safavid Persia",
+      "Chola dynasty",
+      "Delhi Sultanate"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Biryani was literally royal banquet food — Mughal emperors employed hundreds of kitchen staff and biryani was a centerpiece dish of their legendary feasts!",
+    "wowFactor": "Biryani was literally royal banquet food — Mughal emperors employed hundreds of kitchen staff and biryani was a centerpiece dish of their legendary feasts!",
+    "variants": [
+      {
+        "question": "Biryani combines Persian cooking traditions with which regional cuisine?",
+        "type": "forward",
+        "distractors": [
+          "Arab",
+          "Turkish",
+          "Central Asian"
+        ],
+        "answer": "Indian"
+      },
+      {
+        "question": "The Mughal Empire that created biryani ruled the Indian subcontinent from approximately which years?",
+        "type": "reverse",
+        "distractors": [
+          "800–1200",
+          "1000–1400",
+          "1200–1500"
+        ],
+        "answer": "1526–1857"
+      },
+      {
+        "question": "Biryani emerged from _____ court cuisine merged with Indian spices.",
+        "type": "fill_blank",
+        "distractors": [
+          "Chinese-influenced",
+          "Arab-influenced",
+          "Turkish-influenced"
+        ],
+        "answer": "Persian-influenced"
+      },
+      {
+        "question": "Biryani has its origins in the Mughal Empire of South Asia.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Biryani is considered a dish belonging to which broad culinary tradition?",
+        "type": "forward",
+        "distractors": [
+          "East Asian",
+          "North African",
+          "Mediterranean"
+        ],
+        "answer": "South Asian"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Food History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A grand copper pot on a royal Mughal court table is opened to reveal a mountain of saffron-golden rice layered with caramelized onions and whole spices. Jewel-toned cushions and ornate lanterns fill the background in lush pixel art.",
+    "tags": [
+      "biryani",
+      "Mughal Empire",
+      "India",
+      "Persian cuisine",
+      "food history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-biryani-dum-cooking",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Authentic biryani is cooked 'dum' style — the pot is sealed with dough or a tight lid and slow-cooked over low heat, allowing steam to circulate and cook the layered rice and meat simultaneously.",
+    "quizQuestion": "What does 'dum' style cooking involve in biryani preparation?",
+    "correctAnswer": "Slow cooking in a sealed pot",
+    "distractors": [
+      "Frying in ghee",
+      "Boiling in water",
+      "Grilling over charcoal",
+      "Pressure cooking fast",
+      "Baking in a tandoor oven",
+      "Steaming in bamboo",
+      "Open-flame smoking",
+      "Stone-pot fermentation"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Dum cooking seals the pot with actual dough that becomes bread during cooking — so even the seal is edible and often eaten by the cooks as a reward!",
+    "wowFactor": "Dum cooking seals the pot with actual dough that becomes bread during cooking — so even the seal is edible and often eaten by the cooks as a reward!",
+    "variants": [
+      {
+        "question": "How is the biryani pot traditionally sealed for dum cooking?",
+        "type": "forward",
+        "distractors": [
+          "Wax paper",
+          "Banana leaves alone",
+          "A stone weight"
+        ],
+        "answer": "Dough or a tight lid"
+      },
+      {
+        "question": "In dum-style biryani, what cooks the rice and meat simultaneously?",
+        "type": "reverse",
+        "distractors": [
+          "Direct flame below",
+          "A water bath",
+          "Heated oil vapors"
+        ],
+        "answer": "Circulating steam"
+      },
+      {
+        "question": "Dum cooking seals the pot with _____ to trap steam.",
+        "type": "fill_blank",
+        "distractors": [
+          "wax",
+          "clay",
+          "foil"
+        ],
+        "answer": "dough"
+      },
+      {
+        "question": "Dum biryani is cooked over high heat to create a crispy crust.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "The dum cooking method traps steam to cook biryani from what direction?",
+        "type": "forward",
+        "distractors": [
+          "Only from below",
+          "Only from the sides",
+          "Only from above"
+        ],
+        "answer": "Both above and below simultaneously"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Techniques",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A large clay pot with a ring of dough sealing its lid sits on glowing embers. A plume of fragrant steam escapes a small crack. Saffron-orange glow emanates from within. A royal kitchen setting with spice jars visible in warm pixel art.",
+    "tags": [
+      "biryani",
+      "dum cooking",
+      "Indian cuisine",
+      "cooking technique",
+      "sealed pot"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-biryani-regional-styles",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "India has dozens of regional biryani styles, including Hyderabadi (slow-cooked with raw meat), Lucknowi (with pre-cooked meat), Kolkata (Bengali spices, potatoes), and Malabar (coconut and cashews).",
+    "quizQuestion": "Which Indian biryani style is known for being slow-cooked with raw (uncooked) meat in the dum method?",
+    "correctAnswer": "Hyderabadi biryani",
+    "distractors": [
+      "Lucknowi biryani",
+      "Kolkata biryani",
+      "Malabar biryani",
+      "Sindhi biryani",
+      "Ambur biryani",
+      "Thalassery biryani",
+      "Dindigul biryani",
+      "Bhatkali biryani"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Kolkata biryani includes potatoes because during a 19th-century famine, the nawab's cooks stretched the expensive meat by adding potatoes — and it became so beloved it stayed in the recipe forever!",
+    "wowFactor": "Kolkata biryani includes potatoes because during a 19th-century famine, the nawab's cooks stretched the expensive meat by adding potatoes — and it became so beloved it stayed in the recipe forever!",
+    "variants": [
+      {
+        "question": "Which biryani style incorporates potatoes and Bengali spice blends?",
+        "type": "forward",
+        "distractors": [
+          "Lucknowi biryani",
+          "Malabar biryani",
+          "Sindhi biryani"
+        ],
+        "answer": "Kolkata biryani"
+      },
+      {
+        "question": "Malabar biryani is distinctive for including which two ingredients?",
+        "type": "reverse",
+        "distractors": [
+          "Pomegranate and almonds",
+          "Saffron and pistachios",
+          "Cardamom and raisins"
+        ],
+        "answer": "Coconut and cashews"
+      },
+      {
+        "question": "Lucknowi biryani uses _____ meat, pre-cooked before layering with rice.",
+        "type": "fill_blank",
+        "distractors": [
+          "raw",
+          "smoked",
+          "dried"
+        ],
+        "answer": "pre-cooked"
+      },
+      {
+        "question": "Hyderabadi biryani is cooked using raw meat sealed in a pot with rice.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Kolkata biryani is unique among Indian biryani styles for containing which unexpected ingredient?",
+        "type": "forward",
+        "distractors": [
+          "Bread",
+          "Noodles",
+          "Banana blossoms"
+        ],
+        "answer": "Potatoes"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A map of India with four glowing regions highlighted — Hyderabad, Lucknow, Kolkata, and Kerala — each with a small bowl of their distinctive biryani floating above them. Rich jewel tones and detailed pixel art textures.",
+    "tags": [
+      "biryani",
+      "Hyderabadi",
+      "Kolkata",
+      "regional cuisine",
+      "India"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pho-pronunciation",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Pho is pronounced 'fuh' (rhyming with 'duh') not 'foe' — the word comes from the Vietnamese pronunciation which is closer to the French 'feu' in pot-au-feu, reflecting French colonial culinary influence.",
+    "quizQuestion": "How is the Vietnamese soup 'pho' correctly pronounced in English?",
+    "correctAnswer": "Fuh (rhymes with duh)",
+    "distractors": [
+      "Foe (rhymes with toe)",
+      "Fo (rhymes with go)",
+      "Faw (rhymes with law)",
+      "Fuu (like 'foo')",
+      "Phew (like disgust)",
+      "Few (rhymes with dew)",
+      "Feu (like French 'fire')",
+      "Poh (like Portuguese)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Most English speakers mispronounce pho as 'foe' — it's actually 'fuh', and the name likely came from French colonizers' 'pot-au-feu', making this Vietnamese soup a Franco-Vietnamese linguistic hybrid!",
+    "wowFactor": "Most English speakers mispronounce pho as 'foe' — it's actually 'fuh', and the name likely came from French colonizers' 'pot-au-feu', making this Vietnamese soup a Franco-Vietnamese linguistic hybrid!",
+    "variants": [
+      {
+        "question": "Which French dish is thought to have influenced the name 'pho'?",
+        "type": "forward",
+        "distractors": [
+          "Bouillabaisse",
+          "Vichyssoise",
+          "Cassoulet"
+        ],
+        "answer": "Pot-au-feu"
+      },
+      {
+        "question": "The name 'pho' is thought to derive from which colonizing country's cuisine?",
+        "type": "reverse",
+        "distractors": [
+          "China",
+          "Britain",
+          "Portugal"
+        ],
+        "answer": "France"
+      },
+      {
+        "question": "Pho rhymes with the English word '_____ '.",
+        "type": "fill_blank",
+        "distractors": [
+          "foe",
+          "toe",
+          "go"
+        ],
+        "answer": "duh"
+      },
+      {
+        "question": "Pho is correctly pronounced 'fuh' not 'foe'.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The word 'pho' is believed to be derived from the French word found in 'pot-au-_____ '.",
+        "type": "fill_blank",
+        "distractors": [
+          "pot",
+          "boeuf",
+          "pain"
+        ],
+        "answer": "feu"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Linguistics",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pho",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A chalkboard menu at a Vietnamese restaurant shows the word 'PHO' with a large red arrow pointing to the phonetic 'fuh', surrounded by question marks from confused cartoon customers. Retro font with bright pixel art colors.",
+    "tags": [
+      "pho",
+      "pronunciation",
+      "Vietnam",
+      "French influence",
+      "etymology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pho-beef-vs-chicken",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Pho comes in two main varieties: pho bo (beef pho) and pho ga (chicken pho). Beef pho broth is simmered for 6–12 hours with charred onion and ginger plus spices like star anise, cinnamon, and cloves.",
+    "quizQuestion": "What is the Vietnamese name for chicken pho?",
+    "correctAnswer": "Pho ga",
+    "distractors": [
+      "Pho bo",
+      "Pho tom (shrimp pho)",
+      "Pho rau (vegetable pho)",
+      "Pho chay (vegetarian pho)",
+      "Pho hai san (seafood pho)",
+      "Pho kho (dry pho)",
+      "Pho suon (spare rib pho)",
+      "Pho vit (duck pho)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Beef pho broth is simmered for up to 12 hours, but the secret weapon is charring the onions and ginger directly over flame first — creating deep caramelized flavors that no quick recipe can replicate!",
+    "wowFactor": "Beef pho broth is simmered for up to 12 hours, but the secret weapon is charring the onions and ginger directly over flame first — creating deep caramelized flavors that no quick recipe can replicate!",
+    "variants": [
+      {
+        "question": "What is the Vietnamese name for beef pho?",
+        "type": "forward",
+        "distractors": [
+          "Pho kho",
+          "Pho hai",
+          "Pho chay"
+        ],
+        "answer": "Pho bo"
+      },
+      {
+        "question": "How long is beef pho broth typically simmered to develop its flavor?",
+        "type": "reverse",
+        "distractors": [
+          "30 minutes",
+          "2–3 hours",
+          "24+ hours"
+        ],
+        "answer": "6–12 hours"
+      },
+      {
+        "question": "Beef pho broth is flavored with star anise, cinnamon, and _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "chili",
+          "cumin",
+          "turmeric"
+        ],
+        "answer": "cloves"
+      },
+      {
+        "question": "Beef pho broth uses charred onion and ginger as aromatic foundations.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which spice is NOT a traditional flavoring in beef pho broth?",
+        "type": "negative",
+        "distractors": [
+          "Star anise",
+          "Cinnamon",
+          "Cloves"
+        ],
+        "answer": "Lemongrass"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Culinary Reference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pho",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Two steaming bowls side by side — pho bo with dark amber broth, thin beef slices, and herbs on the left, and lighter pho ga with pale golden broth and shredded chicken on the right. A basket of fresh basil, bean sprouts, and lime wedges sits between them. Warm pixel art glow.",
+    "tags": [
+      "pho",
+      "pho bo",
+      "pho ga",
+      "Vietnam",
+      "broth",
+      "star anise"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pho-vietnamese-soup",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Pho originated in northern Vietnam in the early 20th century, likely in the Nam Dinh province, and was influenced by both Chinese rice noodle soups and French colonial pot-au-feu beef broth traditions.",
+    "quizQuestion": "In which country did pho originate?",
+    "correctAnswer": "Vietnam",
+    "distractors": [
+      "China",
+      "Thailand",
+      "Cambodia",
+      "Laos",
+      "Myanmar",
+      "France",
+      "Malaysia",
+      "Indonesia"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Pho is a culinary mashup born from French colonialism — the Vietnamese adopted beef from French settlers (who brought cattle culture) and combined it with their noodle soup tradition to create one of the world's most beloved soups!",
+    "wowFactor": "Pho is a culinary mashup born from French colonialism — the Vietnamese adopted beef from French settlers (who brought cattle culture) and combined it with their noodle soup tradition to create one of the world's most beloved soups!",
+    "variants": [
+      {
+        "question": "Pho is thought to have originated in which Vietnamese province?",
+        "type": "forward",
+        "distractors": [
+          "Ho Chi Minh City",
+          "Da Nang",
+          "Hue"
+        ],
+        "answer": "Nam Dinh"
+      },
+      {
+        "question": "Two culinary traditions that influenced pho's creation were Chinese noodle soups and _____ beef broths.",
+        "type": "fill_blank",
+        "distractors": [
+          "Khmer",
+          "Japanese",
+          "Mongolian"
+        ],
+        "answer": "French colonial"
+      },
+      {
+        "question": "Pho developed in northern Vietnam in approximately which century?",
+        "type": "reverse",
+        "distractors": [
+          "14th century",
+          "17th century",
+          "19th century"
+        ],
+        "answer": "Early 20th century"
+      },
+      {
+        "question": "Pho originated in northern Vietnam and was influenced by French colonial cuisine.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Which of these is NOT believed to have influenced the creation of pho?",
+        "type": "negative",
+        "distractors": [
+          "Chinese noodle soups",
+          "French pot-au-feu",
+          "Vietnamese herb traditions"
+        ],
+        "answer": "Japanese miso broth tradition"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Food History",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pho",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A vintage early-1900s Vietnamese street stall in Nam Dinh with a vendor ladling soup from a giant steaming pot into a clay bowl. French colonial architecture visible in the background. Warm sepia-tinged pixel art with hints of green herbs and amber broth.",
+    "tags": [
+      "pho",
+      "Vietnam",
+      "Nam Dinh",
+      "French influence",
+      "food history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]
