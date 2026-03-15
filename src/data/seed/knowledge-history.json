@@ -11311,5 +11311,1611 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-viking-navigation",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "viking_age",
+    "statement": "Vikings navigated the open ocean using a 'sunstone' (sólarsteinn), a crystal likely made of Iceland spar, to locate the sun on overcast days.",
+    "quizQuestion": "What natural tool did Vikings use to navigate when the sun was hidden by clouds?",
+    "correctAnswer": "Sunstone",
+    "distractors": [
+      "Lodestone compass",
+      "Astrolabe",
+      "Star chart",
+      "Rune staff",
+      "Whale-bone sextant",
+      "Iron needle",
+      "Sand clock",
+      "Signal mirror"
+    ],
+    "acceptableAnswers": [
+      "Sunstone",
+      "sólarsteinn",
+      "Iceland spar",
+      "solar stone"
+    ],
+    "explanation": "Iceland spar (calcite crystal) acts as a polarizing filter. When rotated, the crystal reveals the sun's position through cloud cover by splitting light into two beams that equalize when aligned with the sun's direction. Archaeologists found such a crystal on a 16th-century English ship wreck, supporting the historical accounts.",
+    "wowFactor": "Vikings may have crossed the Atlantic to North America centuries before Columbus — guided by a crystal that detects sunlight through fog, a trick not rediscovered by scientists until the 20th century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What natural tool did Vikings use to navigate when the sun was hidden by clouds?",
+        "answer": "Sunstone",
+        "distractors": [
+          "Lodestone compass",
+          "Astrolabe",
+          "Star chart"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Viking navigation crystal called a 'sólarsteinn' is believed to have been made of which mineral?",
+        "answer": "Iceland spar (calcite)",
+        "distractors": [
+          "Magnetite",
+          "Quartz",
+          "Obsidian"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vikings used a crystal called a sunstone to find the sun's position on cloudy days.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Vikings used a ___ to navigate the ocean when the sun was obscured by clouds.",
+        "answer": "sunstone",
+        "distractors": [
+          "lodestone",
+          "rune stone",
+          "astrolabe"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sunstone_(medieval)",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Viking sailor on the prow of a longship holding a glowing translucent crystal up to a grey overcast sky, sea mist around him, ravens circling overhead.",
+    "tags": [
+      "Vikings",
+      "navigation",
+      "sunstone",
+      "medieval",
+      "Norse"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-viking-vinland",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "viking_age",
+    "statement": "Around 1000 AD, Norse explorer Leif Erikson established a settlement at L'Anse aux Meadows in Newfoundland, Canada — the earliest confirmed European presence in the Americas.",
+    "quizQuestion": "Where is the only confirmed Viking settlement in North America located?",
+    "correctAnswer": "L'Anse aux Meadows, Newfoundland",
+    "distractors": [
+      "Cape Cod, Massachusetts",
+      "Baffin Island, Nunavut",
+      "Greenland's west coast",
+      "Labrador, Canada",
+      "Nova Scotia, Canada",
+      "Iceland",
+      "The Faroe Islands",
+      "Maine, USA"
+    ],
+    "acceptableAnswers": [
+      "L'Anse aux Meadows",
+      "Newfoundland",
+      "L'Anse aux Meadows, Newfoundland",
+      "Vinland"
+    ],
+    "explanation": "L'Anse aux Meadows was excavated in the 1960s by Norwegian archaeologists Helge and Anne Stine Ingstad. The site contains the remains of eight Norse-style buildings and artifacts including a cloak pin of a type only made in Scandinavia. It predates Columbus's 1492 voyage by roughly 500 years.",
+    "wowFactor": "Europeans reached America 500 years before Columbus — and the evidence was hiding in plain sight in a Canadian fishing village until a Norwegian couple started digging in 1960.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where is the only confirmed Viking settlement in North America located?",
+        "answer": "L'Anse aux Meadows, Newfoundland",
+        "distractors": [
+          "Cape Cod, Massachusetts",
+          "Baffin Island, Nunavut",
+          "Nova Scotia, Canada"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Norse explorer is credited with reaching North America around 1000 AD?",
+        "answer": "Leif Erikson",
+        "distractors": [
+          "Erik the Red",
+          "Ragnar Lothbrok",
+          "Harald Hardrada"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vikings established a confirmed settlement in North America about 500 years before Columbus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The confirmed Viking settlement in North America, called ___, is located in Newfoundland, Canada.",
+        "answer": "L'Anse aux Meadows",
+        "distractors": [
+          "Vinland Bay",
+          "Eriksonhavn",
+          "Norstead"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/L%27Anse_aux_Meadows",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Reconstructed Norse longhouses with sod roofs on a rocky windswept Newfoundland coastline, a Viking longship beached nearby, Northern Lights faintly visible in the dusk sky.",
+    "tags": [
+      "Vikings",
+      "Leif Erikson",
+      "North America",
+      "L'Anse aux Meadows",
+      "exploration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-viking-runes",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "viking_age",
+    "statement": "The runic alphabet used by Vikings, called the Elder Futhark, consisted of 24 characters and was gradually replaced by the Younger Futhark of only 16 characters during the Viking Age.",
+    "quizQuestion": "How many characters did the Younger Futhark — the runic alphabet used during the Viking Age — contain?",
+    "correctAnswer": "16",
+    "distractors": [
+      "24",
+      "20",
+      "26",
+      "18",
+      "32",
+      "12",
+      "28",
+      "22"
+    ],
+    "acceptableAnswers": [
+      "16",
+      "sixteen"
+    ],
+    "explanation": "Paradoxically, the Younger Futhark was adopted just as Norse language was growing more complex, meaning multiple sounds shared a single rune. Runic inscriptions served many purposes: memorials, trade, magic, and property marking. The word 'rune' itself means 'secret' or 'whisper' in Old Norse.",
+    "wowFactor": "Vikings simplified their alphabet right when their language got more complicated — so one rune could mean multiple completely different sounds. Reading Viking texts was basically a puzzle even for other Vikings.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many characters did the Younger Futhark runic alphabet contain?",
+        "answer": "16",
+        "distractors": [
+          "24",
+          "20",
+          "26"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of the runic alphabet used by the Vikings?",
+        "answer": "Younger Futhark",
+        "distractors": [
+          "Elder Futhark",
+          "Ogham",
+          "Anglo-Saxon Futhorc"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Younger Futhark had fewer characters than the Elder Futhark it replaced.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Viking-era runic script known as the Younger ___ contained only 16 characters.",
+        "answer": "Futhark",
+        "distractors": [
+          "Alphabet",
+          "Script",
+          "Rune-set"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Younger_Futhark",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Carved runic inscription on a large weathered standing stone in a misty Nordic forest, each rune filled with faded red pigment, ravens perched on top.",
+    "tags": [
+      "Vikings",
+      "runes",
+      "Futhark",
+      "writing",
+      "Norse"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-castle-concentric",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "medieval_castles",
+    "statement": "Concentric castles, popularized in Europe after the Crusades, featured multiple rings of defensive walls so that attackers who breached the outer wall faced an even taller inner wall and would be trapped in a killing zone.",
+    "quizQuestion": "What was the strategic purpose of the 'killing zone' between the outer and inner walls of a concentric castle?",
+    "correctAnswer": "To trap and attack enemies who breached the outer wall",
+    "distractors": [
+      "To store siege weapons and catapults",
+      "To house livestock and food supplies",
+      "To allow defenders to retreat safely",
+      "To conceal a hidden escape tunnel",
+      "To flood with water from the moat",
+      "To hold prisoners of war",
+      "To park supply wagons overnight",
+      "To conduct archery tournaments"
+    ],
+    "acceptableAnswers": [
+      "To trap and attack enemies who breached the outer wall",
+      "Trap attackers between walls",
+      "Create a killing ground for breaching enemies"
+    ],
+    "explanation": "Beaumaris Castle in Wales, begun in 1295, is considered the finest example of concentric design. Defenders on the inner wall could fire over the heads of defenders on the outer wall, creating overlapping fields of fire. King Edward I built it to control Welsh resistance — though it was never fully completed.",
+    "wowFactor": "Concentric castles were essentially a two-layer trap: enemy soldiers who fought their way through the outer wall suddenly found themselves surrounded on all sides, with nowhere to go and defenders above them on every wall.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the strategic purpose of the 'killing zone' between the walls of a concentric castle?",
+        "answer": "To trap and attack enemies who breached the outer wall",
+        "distractors": [
+          "To store siege weapons",
+          "To house livestock",
+          "To allow defender retreat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Beaumaris Castle in Wales is considered the finest example of which castle design?",
+        "answer": "Concentric design",
+        "distractors": [
+          "Motte-and-bailey design",
+          "Tower keep design",
+          "Cliff-top design"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Concentric castles use multiple rings of walls where each inner ring is taller than the outer.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In a concentric castle, enemies who broke through the outer wall found themselves trapped in a ___ zone between two walls.",
+        "answer": "killing",
+        "distractors": [
+          "safe",
+          "neutral",
+          "storage"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Concentric_castle",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bird's-eye view of Beaumaris Castle in Wales, its perfectly symmetrical rings of stone walls and moat clearly visible, grey Welsh sky above, tiny medieval figures patrolling the battlements.",
+    "tags": [
+      "medieval castles",
+      "concentric design",
+      "Beaumaris",
+      "fortification",
+      "Crusades"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-castle-moat",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "medieval_castles",
+    "statement": "Medieval castle moats were not simply filled with water — many 'dry moats' relied on depth and steep sides alone, and some wet moats were deliberately kept shallow to prevent drowning defenders who fell in during sorties.",
+    "quizQuestion": "What type of moat relied solely on depth and steep sides rather than water for defense?",
+    "correctAnswer": "Dry moat",
+    "distractors": [
+      "Wet moat",
+      "Flooded ditch",
+      "Salt moat",
+      "Barbican moat",
+      "Counterscarp moat",
+      "Tidal moat",
+      "Inner bailey moat",
+      "Palisade ditch"
+    ],
+    "acceptableAnswers": [
+      "Dry moat",
+      "dry ditch",
+      "dry fosse"
+    ],
+    "explanation": "Dry moats were common in areas where the water table was too low to maintain a wet moat, or where castle builders wanted to avoid the maintenance costs of water. The Tower of London famously had its moat drained in 1843 after it was identified as a health hazard breeding disease.",
+    "wowFactor": "The Tower of London's legendary moat was drained in 1843 — not by enemies, but by public health officials who decided the stagnant water was killing more Londoners than it was stopping invaders.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of moat relied solely on depth and steep sides rather than water?",
+        "answer": "Dry moat",
+        "distractors": [
+          "Wet moat",
+          "Salt moat",
+          "Tidal moat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the Tower of London's moat drained for public health reasons?",
+        "answer": "1843",
+        "distractors": [
+          "1666",
+          "1750",
+          "1900"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Not all medieval castle moats were filled with water — dry moats used depth and steep sides alone.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A ___ moat used steep sides and depth rather than water to deter attackers.",
+        "answer": "dry",
+        "distractors": [
+          "wet",
+          "stone",
+          "hidden"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moat",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section illustration of a medieval castle wall with a wide deep dry moat in front, sheer stone-cut sides, ladders pulled up, archers at the battlements above.",
+    "tags": [
+      "medieval castles",
+      "moat",
+      "fortification",
+      "Tower of London",
+      "defense"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-castle-daily-life",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_medieval",
+    "categoryL1": "History",
+    "categoryL2": "ancient_medieval",
+    "categoryL3": "medieval_castles",
+    "statement": "Medieval castle residents typically shared the great hall for meals, entertainment, and even sleeping, with only the lord and lady enjoying the relative privacy of a separate solar chamber.",
+    "quizQuestion": "What was the name of the private upper-floor chamber in a medieval castle reserved for the lord and lady?",
+    "correctAnswer": "Solar",
+    "distractors": [
+      "The donjon",
+      "The garderobe",
+      "The buttery",
+      "The undercroft",
+      "The great hall",
+      "The bailey",
+      "The keep",
+      "The barbican"
+    ],
+    "acceptableAnswers": [
+      "Solar",
+      "solar chamber",
+      "the solar"
+    ],
+    "explanation": "The word 'solar' comes from the Latin 'solarium' (sun room) because these upper chambers often had larger windows to catch sunlight. Privacy was a luxury in medieval castles — most knights, servants, and household staff ate, worked, and slept in communal spaces. The lord's solar was both a status symbol and a genuine retreat.",
+    "wowFactor": "In medieval castles, even wealthy knights slept in a shared hall — privacy was such a rare luxury that the lord's private room was literally named after the sun because it was considered a bright, blessed privilege.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the private upper-floor chamber in a medieval castle reserved for the lord and lady called?",
+        "answer": "Solar",
+        "distractors": [
+          "The donjon",
+          "The garderobe",
+          "The buttery"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In a medieval castle, which room was used for communal meals, entertainment, and sleeping by most residents?",
+        "answer": "The great hall",
+        "distractors": [
+          "The solar",
+          "The chapel",
+          "The undercroft"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In medieval castles, the 'solar' was a private chamber for the lord and lady derived from the Latin word for sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The private upper chamber of a medieval castle, called the ___, got its name from the Latin word for sun.",
+        "answer": "solar",
+        "distractors": [
+          "keep",
+          "garderobe",
+          "donjon"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Solar_(room)",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A warm sunlit upper chamber in a medieval castle with tapestries on the walls, a lord and lady seated at a small table near a window overlooking the courtyard below, a canopied bed visible in the corner.",
+    "tags": [
+      "medieval castles",
+      "daily life",
+      "solar",
+      "great hall",
+      "medieval"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-silk-road-routes",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "trade_economics",
+    "categoryL1": "History",
+    "categoryL2": "trade_economics",
+    "categoryL3": "silk_road",
+    "statement": "The Silk Road was not a single road but a network of overland and maritime trade routes stretching roughly 4,000 miles from China to the Mediterranean, active from around 130 BCE to 1453 CE.",
+    "quizQuestion": "Approximately how many miles long was the overland Silk Road trade network from China to the Mediterranean?",
+    "correctAnswer": "4,000 miles",
+    "distractors": [
+      "1,000 miles",
+      "2,000 miles",
+      "6,000 miles",
+      "8,000 miles",
+      "500 miles",
+      "10,000 miles",
+      "3,000 miles",
+      "12,000 miles"
+    ],
+    "acceptableAnswers": [
+      "4,000 miles",
+      "4000 miles",
+      "about 4000 miles",
+      "roughly 4,000 miles"
+    ],
+    "explanation": "The Silk Road connected China with Central Asia, Persia, Arabia, East Africa, and the Mediterranean world. It was named by German geographer Ferdinand von Richthofen in 1877 — the ancient traders themselves had no single name for it. The routes carried not just silk but spices, glassware, metals, religion, disease, and ideas.",
+    "wowFactor": "The name 'Silk Road' was invented by a German geographer in 1877 — the actual ancient merchants who walked it for 1,500 years never called it that. They probably just called it 'the road to profit.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many miles long was the Silk Road network from China to the Mediterranean?",
+        "answer": "4,000 miles",
+        "distractors": [
+          "2,000 miles",
+          "6,000 miles",
+          "1,000 miles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who coined the term 'Silk Road' in 1877?",
+        "answer": "Ferdinand von Richthofen",
+        "distractors": [
+          "Marco Polo",
+          "Genghis Khan",
+          "Alexander von Humboldt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Silk Road was a single continuous road connecting China to the Mediterranean.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Silk Road was active from around 130 BCE until ___ CE, when the Ottoman conquest of Constantinople disrupted trade.",
+        "answer": "1453",
+        "distractors": [
+          "1066",
+          "1215",
+          "1776"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Silk_Road",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vast ancient map showing the Silk Road network stretching from China across Central Asia and Persia to Rome, with illustrated camel caravans at key waypoints, golden route lines glowing.",
+    "tags": [
+      "Silk Road",
+      "trade routes",
+      "China",
+      "Mediterranean",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-silk-road-cultural-exchange",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "trade_economics",
+    "categoryL1": "History",
+    "categoryL2": "trade_economics",
+    "categoryL3": "silk_road",
+    "statement": "The Silk Road transmitted Buddhism from India to China, papermaking technology from China to the Arab world, and the Black Death pandemic from Central Asia to Europe — all as byproducts of trade.",
+    "quizQuestion": "Which deadly pandemic spread westward along the Silk Road from Central Asia to Europe in the 14th century?",
+    "correctAnswer": "The Black Death",
+    "distractors": [
+      "The Spanish Flu",
+      "Smallpox",
+      "Cholera",
+      "Typhus",
+      "Malaria",
+      "Yellow Fever",
+      "Bubonic plague of Justinian",
+      "Measles pandemic"
+    ],
+    "acceptableAnswers": [
+      "The Black Death",
+      "Black Death",
+      "bubonic plague",
+      "the plague"
+    ],
+    "explanation": "The Black Death killed an estimated 30–60% of Europe's population between 1347 and 1351. It is believed to have originated in Central Asia and traveled west along Silk Road trade routes, reaching the Black Sea ports in 1343 before spreading to Europe via Genoese trading ships. One of history's deadliest consequences of globalization.",
+    "wowFactor": "The Silk Road connected the world so efficiently that a plague in Central Asia managed to kill half of Europe within a decade — the ancient world's version of a viral pandemic spreading through global trade networks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which pandemic spread westward along the Silk Road from Central Asia to Europe in the 14th century?",
+        "answer": "The Black Death",
+        "distractors": [
+          "The Spanish Flu",
+          "Smallpox",
+          "Cholera"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Buddhism spread from India to China primarily through which ancient trade network?",
+        "answer": "The Silk Road",
+        "distractors": [
+          "The Spice Route",
+          "The Trans-Saharan Route",
+          "The Amber Road"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Silk Road helped spread Buddhism, papermaking technology, and the Black Death across continents.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Black Death traveled west along the Silk Road and killed an estimated 30–60% of ___'s population.",
+        "answer": "Europe",
+        "distractors": [
+          "Asia",
+          "Africa",
+          "China"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_Death",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References pandemic disease and mass death — appropriate for teens and adults.",
+    "visualDescription": "A stylized medieval map showing rats and trade ships moving along the Silk Road from Central Asia into Europe, plague doctors in beaked masks visible in the Mediterranean cities at the western end.",
+    "tags": [
+      "Silk Road",
+      "Black Death",
+      "cultural exchange",
+      "trade",
+      "pandemic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-silk-road-marco-polo",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "trade_economics",
+    "categoryL1": "History",
+    "categoryL2": "trade_economics",
+    "categoryL3": "silk_road",
+    "statement": "Marco Polo traveled the Silk Road to China between 1271 and 1295, spending 17 years in the service of Kublai Khan and dictating his accounts from a Genoese prison cell after returning to Europe.",
+    "quizQuestion": "Where did Marco Polo dictate the account of his travels to China, which became 'The Travels of Marco Polo'?",
+    "correctAnswer": "A Genoese prison cell",
+    "distractors": [
+      "The Vatican in Rome",
+      "His family home in Venice",
+      "Kublai Khan's court in Beijing",
+      "A Venetian palace",
+      "A monastery in Florence",
+      "A trading post in Persia",
+      "The court of the French king",
+      "A ship bound for Venice"
+    ],
+    "acceptableAnswers": [
+      "A Genoese prison cell",
+      "prison",
+      "a prison in Genoa",
+      "Genoa prison"
+    ],
+    "explanation": "Marco Polo was captured during a battle between Venice and Genoa in 1298 and dictated his memoirs to fellow prisoner Rustichello da Pisa. The resulting book, 'Il Milione' (The Travels of Marco Polo), introduced Europeans to the wealth of Asia and inspired later explorers including Christopher Columbus, who carried an annotated copy on his voyages.",
+    "wowFactor": "The book that inspired Christopher Columbus to sail west was written by a man dictating from a prison cell, describing a world so rich and exotic that many Europeans dismissed it as fiction — they called Marco Polo 'Il Milione' meaning 'the man of a million lies.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did Marco Polo dictate his famous travel account?",
+        "answer": "A Genoese prison cell",
+        "distractors": [
+          "His family home in Venice",
+          "The Vatican in Rome",
+          "Kublai Khan's court"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many years did Marco Polo spend in the service of Kublai Khan during his travels?",
+        "answer": "17 years",
+        "distractors": [
+          "5 years",
+          "10 years",
+          "25 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Christopher Columbus carried an annotated copy of Marco Polo's travels on his voyages.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marco Polo spent 17 years in the service of ___ Khan during his journey along the Silk Road.",
+        "answer": "Kublai",
+        "distractors": [
+          "Genghis",
+          "Timur",
+          "Ögedei"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Marco Polo in a dimly lit Genoese prison cell, candlelight illuminating him as he gestures dramatically while a scribe writes at a small table, a narrow barred window showing a Venetian-style harbor beyond.",
+    "tags": [
+      "Marco Polo",
+      "Silk Road",
+      "Kublai Khan",
+      "exploration",
+      "Venice"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-industrial-steam",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "science_technology_history",
+    "categoryL1": "History",
+    "categoryL2": "science_technology_history",
+    "categoryL3": "industrial_revolution",
+    "statement": "James Watt's improved steam engine, patented in 1769, introduced a separate condenser that made it four times more fuel-efficient than earlier models, making it practical to power factories and locomotives.",
+    "quizQuestion": "What key innovation in James Watt's 1769 steam engine dramatically improved its fuel efficiency?",
+    "correctAnswer": "A separate condenser",
+    "distractors": [
+      "A rotary crankshaft",
+      "A pressurized boiler",
+      "A coal-gas injector",
+      "A flywheel governor",
+      "A double-acting piston",
+      "An iron cylinder lining",
+      "A feedback regulator valve",
+      "A water cooling jacket"
+    ],
+    "acceptableAnswers": [
+      "A separate condenser",
+      "separate condenser",
+      "the condenser"
+    ],
+    "explanation": "Earlier Newcomen steam engines wasted enormous amounts of energy by heating and cooling the same cylinder repeatedly. Watt's insight was to move the condensing process to a separate, always-cold chamber. He partnered with manufacturer Matthew Boulton, and their engines powered the Industrial Revolution. The SI unit of power, the watt, is named in his honor.",
+    "wowFactor": "James Watt came up with the idea for the separate condenser while on a Sunday walk in Glasgow — one afternoon stroll led directly to the engine that powered the Industrial Revolution and changed the entire world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What key innovation in James Watt's 1769 steam engine dramatically improved its fuel efficiency?",
+        "answer": "A separate condenser",
+        "distractors": [
+          "A rotary crankshaft",
+          "A pressurized boiler",
+          "A flywheel governor"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The SI unit of power known as the 'watt' is named after which Industrial Revolution inventor?",
+        "answer": "James Watt",
+        "distractors": [
+          "George Stephenson",
+          "Richard Arkwright",
+          "Thomas Newcomen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: James Watt's improved steam engine was roughly four times more fuel-efficient than the earlier Newcomen design.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "James Watt patented his improved steam engine in ___, introducing a separate condenser that revolutionized industry.",
+        "answer": "1769",
+        "distractors": [
+          "1750",
+          "1785",
+          "1800"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/James_Watt",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "James Watt in 18th-century coat and wig, examining a gleaming brass steam engine in a Georgian workshop, blueprints spread across a wooden table, steam rising from the engine's condenser.",
+    "tags": [
+      "Industrial Revolution",
+      "steam engine",
+      "James Watt",
+      "invention",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-industrial-factories",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "science_technology_history",
+    "categoryL1": "History",
+    "categoryL2": "science_technology_history",
+    "categoryL3": "industrial_revolution",
+    "statement": "Richard Arkwright's Cromford Mill, opened in 1771 in Derbyshire, England, is considered the world's first modern factory — it operated 24 hours a day using water-powered spinning frames and a disciplined shift workforce.",
+    "quizQuestion": "What is considered the world's first modern factory, opened by Richard Arkwright in 1771?",
+    "correctAnswer": "Cromford Mill",
+    "distractors": [
+      "Boulton's Soho Manufactory",
+      "Wedgwood's Etruria Works",
+      "Spinning Jenny Mill, Manchester",
+      "Quarry Bank Mill, Cheshire",
+      "New Lanark Mills, Scotland",
+      "Lowther Colliery, Whitehaven",
+      "Darby's Coalbrookdale Furnace",
+      "Hargreaves Cotton Mill, Blackburn"
+    ],
+    "acceptableAnswers": [
+      "Cromford Mill",
+      "Arkwright's mill",
+      "Cromford"
+    ],
+    "explanation": "Cromford Mill introduced the concept of factory discipline: workers arrived on time, worked set shifts, and operated machines at the pace the machines demanded — not at their own pace. This was a radical shift from cottage industries. Today it is a UNESCO World Heritage Site.",
+    "wowFactor": "Before Arkwright's mill, people mostly worked when they felt like it at home. Cromford Mill invented the concept of the 'shift' — starting and stopping at a bell — and factory discipline spread worldwide from a small Derbyshire village.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is considered the world's first modern factory, opened by Richard Arkwright in 1771?",
+        "answer": "Cromford Mill",
+        "distractors": [
+          "Boulton's Soho Manufactory",
+          "New Lanark Mills",
+          "Quarry Bank Mill"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who opened the world's first modern factory at Cromford, Derbyshire in 1771?",
+        "answer": "Richard Arkwright",
+        "distractors": [
+          "James Watt",
+          "Josiah Wedgwood",
+          "Matthew Boulton"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cromford Mill operated 24 hours a day using water-powered machinery and shift workers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cromford Mill in ___ is considered the world's first modern factory and is now a UNESCO World Heritage Site.",
+        "answer": "Derbyshire",
+        "distractors": [
+          "Manchester",
+          "Yorkshire",
+          "Lancashire"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cromford_Mill",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cromford Mill at night, lit up with candlelight from every window, water wheel churning the river alongside it, workers in period clothing arriving for the night shift along a cobbled path.",
+    "tags": [
+      "Industrial Revolution",
+      "factories",
+      "Arkwright",
+      "Cromford Mill",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-industrial-child-labor",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "science_technology_history",
+    "categoryL1": "History",
+    "categoryL2": "science_technology_history",
+    "categoryL3": "industrial_revolution",
+    "statement": "The UK's Factory Act of 1833 was the first effective child labor law, prohibiting children under 9 from working in textile mills and limiting children aged 9–13 to nine hours of work per day.",
+    "quizQuestion": "What was the minimum working age set by Britain's Factory Act of 1833 for textile mills?",
+    "correctAnswer": "9 years old",
+    "distractors": [
+      "5 years old",
+      "7 years old",
+      "12 years old",
+      "14 years old",
+      "10 years old",
+      "6 years old",
+      "8 years old",
+      "16 years old"
+    ],
+    "acceptableAnswers": [
+      "9 years old",
+      "9",
+      "nine"
+    ],
+    "explanation": "Before the 1833 Act, children as young as 5 or 6 worked 16-hour days in cotton mills. The Act also established factory inspectors to enforce the law — a radical idea at the time. 'Climbing boys' as young as 3 or 4 continued to sweep chimneys until the Chimney Sweepers Act of 1875.",
+    "wowFactor": "Before 1833, British factories employed children as young as 5 for 16-hour days. The law that stopped this was only passed because industrialists needed workers who could read, and exhausted 9-year-olds couldn't stay awake in the new compulsory schools.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the minimum working age in British textile mills set by the Factory Act of 1833?",
+        "answer": "9 years old",
+        "distractors": [
+          "7 years old",
+          "12 years old",
+          "5 years old"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The UK's Factory Act of 1833 restricted children aged 9–13 to how many working hours per day in textile mills?",
+        "answer": "Nine hours",
+        "distractors": [
+          "Six hours",
+          "Twelve hours",
+          "Sixteen hours"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Britain's Factory Act of 1833 banned children under 9 from working in textile mills.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The UK Factory Act of ___ was Britain's first effective child labor law, banning children under 9 from textile mills.",
+        "answer": "1833",
+        "distractors": [
+          "1800",
+          "1850",
+          "1875"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Factory_Act_1833",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References child labor and difficult working conditions — appropriate for all ages as a historical topic.",
+    "visualDescription": "A Victorian-era textile mill interior, large spinning machines filling the floor, a child worker in ragged clothes tending a spinning frame, harsh gaslight overhead, a factory inspector in top hat arriving at the door.",
+    "tags": [
+      "Industrial Revolution",
+      "child labor",
+      "Factory Act 1833",
+      "Victorian",
+      "social reform"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-french-revolution-bastille",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "revolutions_politics",
+    "categoryL1": "History",
+    "categoryL2": "revolutions_politics",
+    "categoryL3": "french_revolution",
+    "statement": "When Parisians stormed the Bastille prison on July 14, 1789, they found only seven prisoners inside — but the fortress had come to symbolize royal tyranny, making its fall a defining moment of the French Revolution.",
+    "quizQuestion": "How many prisoners were actually found inside the Bastille when it was stormed on July 14, 1789?",
+    "correctAnswer": "Seven",
+    "distractors": [
+      "Hundreds",
+      "Fifty",
+      "Zero",
+      "Twenty",
+      "Two",
+      "One hundred and twelve",
+      "Thirty",
+      "Three hundred"
+    ],
+    "acceptableAnswers": [
+      "Seven",
+      "7",
+      "seven prisoners"
+    ],
+    "explanation": "The seven prisoners included four forgers, two 'lunatics,' and a dissolute nobleman. The Bastille's governor, Marquis de Launay, was killed by the mob and his head paraded on a pike. July 14 is now celebrated as Bastille Day — France's national holiday. The prison was demolished within months.",
+    "wowFactor": "The revolution's most iconic moment — storming the terrifying royal prison — yielded exactly seven prisoners, two of whom were there for being mentally ill. The Bastille was mostly empty. France changed forever over a nearly empty jail.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many prisoners were actually found inside the Bastille when it was stormed in 1789?",
+        "answer": "Seven",
+        "distractors": [
+          "Hundreds",
+          "Fifty",
+          "Twenty"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What date is celebrated as Bastille Day, France's national holiday?",
+        "answer": "July 14",
+        "distractors": [
+          "July 4",
+          "August 26",
+          "September 21"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: When the Bastille was stormed in 1789, only seven prisoners were found inside.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Bastille was stormed on July 14, ___, an event that became the defining moment of the French Revolution.",
+        "answer": "1789",
+        "distractors": [
+          "1776",
+          "1799",
+          "1793"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Storming_of_the_Bastille",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References mob violence — appropriate for teens studying history.",
+    "visualDescription": "The stone towers of the Bastille fortress surrounded by a surging crowd of Parisian citizens with pikes and muskets, cannon smoke rising, the drawbridge beginning to lower, a blood-red sunset sky behind.",
+    "tags": [
+      "French Revolution",
+      "Bastille",
+      "1789",
+      "Bastille Day",
+      "France"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-french-revolution-guillotine",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "revolutions_politics",
+    "categoryL1": "History",
+    "categoryL2": "revolutions_politics",
+    "categoryL3": "french_revolution",
+    "statement": "The guillotine was adopted by the French Republic in 1792 as a supposedly humane execution method — its designer, Dr. Joseph-Ignace Guillotin, actually opposed the death penalty and never wanted his name attached to the device.",
+    "quizQuestion": "What was the ironic personal position of Dr. Joseph-Ignace Guillotin, the man whose name became attached to the execution device?",
+    "correctAnswer": "He actually opposed the death penalty",
+    "distractors": [
+      "He invented it to punish traitors more efficiently",
+      "He volunteered to be its first test subject",
+      "He personally operated it during the Reign of Terror",
+      "He was executed by it during the Revolution",
+      "He designed it as a surgical tool, not an execution device",
+      "He was a royalist who secretly sabotaged it",
+      "He publicly advocated for more public executions",
+      "He named it after himself as a mark of pride"
+    ],
+    "acceptableAnswers": [
+      "He actually opposed the death penalty",
+      "He opposed the death penalty",
+      "He was against capital punishment"
+    ],
+    "explanation": "Guillotin proposed the device as a more equal and painless alternative to methods that varied by social class (noblemen were beheaded, commoners were hanged). He argued it would make executions humane and hoped it would lead to abolition. During the Reign of Terror (1793–94), the guillotine killed approximately 17,000 people officially. Guillotin's family later petitioned to have the device renamed.",
+    "wowFactor": "The man whose name became synonymous with decapitation was actually an abolitionist who hoped his 'humane' device would make the death penalty so equal and quick that France would abandon it entirely. It had the opposite effect.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the ironic personal position of Dr. Joseph-Ignace Guillotin regarding the device that bears his name?",
+        "answer": "He actually opposed the death penalty",
+        "distractors": [
+          "He invented it to punish traitors",
+          "He named it after himself proudly",
+          "He operated it during the Terror"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many people were officially executed by guillotine during the Reign of Terror in France?",
+        "answer": "17,000",
+        "distractors": [
+          "1,000",
+          "5,000",
+          "50,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dr. Guillotin actually opposed the death penalty and never wanted his name on the execution device.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "France officially adopted the guillotine in ___ as a supposedly equal and humane method of execution.",
+        "answer": "1792",
+        "distractors": [
+          "1789",
+          "1799",
+          "1804"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guillotine",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "References executions and capital punishment — appropriate for teens studying French Revolutionary history.",
+    "visualDescription": "The guillotine silhouetted against a stormy Paris sky, a large crowd gathered in the town square, sans-culottes in tricolor cockades looking on, the blade glinting in overcast light.",
+    "tags": [
+      "French Revolution",
+      "guillotine",
+      "Reign of Terror",
+      "Guillotin",
+      "execution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-french-revolution-napoleon",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "revolutions_politics",
+    "categoryL1": "History",
+    "categoryL2": "revolutions_politics",
+    "categoryL3": "french_revolution",
+    "statement": "Napoleon Bonaparte ended the French Revolution by seizing power in the coup of 18 Brumaire on November 9, 1799, declaring himself First Consul and effectively ending the Republic he had sworn to protect.",
+    "quizQuestion": "What was Napoleon's title when he took power in the 1799 coup that ended the French Revolution?",
+    "correctAnswer": "First Consul",
+    "distractors": [
+      "Emperor of France",
+      "President of the Republic",
+      "Director of France",
+      "General of the Republic",
+      "Prime Minister of France",
+      "Supreme Commander",
+      "Regent of France",
+      "Chancellor of France"
+    ],
+    "acceptableAnswers": [
+      "First Consul",
+      "First Consul of France"
+    ],
+    "explanation": "Napoleon's coup abolished the Directory (a five-man executive) and replaced it with a Consulate, with Napoleon as First Consul holding most executive power. He became Emperor five years later in 1804. The coup's name comes from the French Revolutionary calendar — 18 Brumaire Year VIII — symbolizing how he used the Revolution's own systems to destroy it.",
+    "wowFactor": "Napoleon took power on a date named after fog — '18 Brumaire' means 'the 18th day of the foggy month' in the French Revolutionary calendar. He dismantled the Republic using the Revolution's own invented months.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Napoleon's title when he first seized power in the 1799 coup?",
+        "answer": "First Consul",
+        "distractors": [
+          "Emperor of France",
+          "President of the Republic",
+          "Director of France"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On what date (in the French Revolutionary calendar) did Napoleon's coup of 18 Brumaire occur?",
+        "answer": "November 9, 1799",
+        "distractors": [
+          "July 14, 1789",
+          "August 10, 1792",
+          "January 21, 1793"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Napoleon first declared himself Emperor of France in the 1799 coup that ended the Revolution.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Napoleon became ___ after his 1799 coup, then formally declared himself Emperor five years later in 1804.",
+        "answer": "First Consul",
+        "distractors": [
+          "President",
+          "Director",
+          "Chancellor"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/18_Brumaire",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Napoleon Bonaparte in his general's uniform striding through the Council of Five Hundred chamber during the coup, deputies in Republican robes backing away, tricolor banners falling from the walls.",
+    "tags": [
+      "French Revolution",
+      "Napoleon",
+      "coup",
+      "18 Brumaire",
+      "First Consul"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ww1-trench-warfare",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "wars_conflicts",
+    "categoryL1": "History",
+    "categoryL2": "wars_conflicts",
+    "categoryL3": "world_war_one",
+    "statement": "The Western Front in WWI stretched approximately 440 miles from the Belgian coast to Switzerland, and the total length of trenches dug by all sides exceeded 25,000 miles — enough to circle the Earth.",
+    "quizQuestion": "Approximately how many total miles of trenches were dug by all sides during WWI?",
+    "correctAnswer": "25,000 miles",
+    "distractors": [
+      "440 miles",
+      "1,000 miles",
+      "5,000 miles",
+      "10,000 miles",
+      "50,000 miles",
+      "2,500 miles",
+      "100,000 miles",
+      "500 miles"
+    ],
+    "acceptableAnswers": [
+      "25,000 miles",
+      "25000 miles",
+      "about 25,000 miles",
+      "enough to circle the Earth"
+    ],
+    "explanation": "The Western Front trench network was a complex system including front-line trenches, support trenches, reserve trenches, communication trenches, and supply lines. Conditions were brutal: standing water, rats, lice, mud, and shell craters. The average life expectancy of a new officer on the Western Front was six weeks.",
+    "wowFactor": "WWI troops dug so many trenches that if you laid them end to end they would wrap around the entire Earth — and soldiers spent years living in that underground world while advancing sometimes just yards per battle.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many total miles of trenches were dug by all sides during WWI?",
+        "answer": "25,000 miles",
+        "distractors": [
+          "440 miles",
+          "5,000 miles",
+          "10,000 miles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long was the Western Front trench line stretching from the Belgian coast to Switzerland?",
+        "answer": "440 miles",
+        "distractors": [
+          "1,000 miles",
+          "200 miles",
+          "2,500 miles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The total length of WWI trenches on all sides exceeded 25,000 miles, enough to circle the Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Western Front in WWI stretched approximately ___ miles from the Belgian coast to Switzerland.",
+        "answer": "440",
+        "distractors": [
+          "100",
+          "1,000",
+          "2,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trench_warfare",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References war and difficult wartime conditions — appropriate for all educational ages.",
+    "visualDescription": "A wide view of the Western Front at dusk, the zigzag pattern of trenches stretching to the horizon in both directions, barbed wire silhouetted against an orange sky, soldiers in steel helmets at their posts.",
+    "tags": [
+      "WWI",
+      "trench warfare",
+      "Western Front",
+      "World War One",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ww1-causes",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "wars_conflicts",
+    "categoryL1": "History",
+    "categoryL2": "wars_conflicts",
+    "categoryL3": "world_war_one",
+    "statement": "WWI was triggered by the assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on June 28, 1914, by Gavrilo Princip — but the underlying causes included militarism, alliances, imperialism, and nationalism (MAIN).",
+    "quizQuestion": "Who assassinated Archduke Franz Ferdinand in Sarajevo in 1914, triggering the chain of events that led to WWI?",
+    "correctAnswer": "Gavrilo Princip",
+    "distractors": [
+      "Kaiser Wilhelm II",
+      "Dragutin Dimitrijević",
+      "Mehmed V",
+      "Ferdinand's own bodyguard",
+      "Nikola Pašić",
+      "Count Berchtold",
+      "Vladimir Lenin",
+      "Tsar Nicholas II"
+    ],
+    "acceptableAnswers": [
+      "Gavrilo Princip",
+      "Princip"
+    ],
+    "explanation": "Princip was a 19-year-old Bosnian Serb nationalist and member of the Black Hand secret society. The assassination succeeded on a second attempt — Princip had given up and stopped at a deli when the Archduke's car made a wrong turn and stalled directly in front of him. The accidental opportunity killed the man whose death started a world war.",
+    "wowFactor": "WWI may have started because of a wrong turn: Gavrilo Princip had already given up on the assassination and stopped for a sandwich when the Archduke's car accidentally stalled right in front of him. He shot from point-blank range.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who assassinated Archduke Franz Ferdinand in Sarajevo in 1914, sparking WWI?",
+        "answer": "Gavrilo Princip",
+        "distractors": [
+          "Kaiser Wilhelm II",
+          "Dragutin Dimitrijević",
+          "Mehmed V"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The acronym MAIN stands for the four underlying causes of WWI — what does the 'A' stand for?",
+        "answer": "Alliances",
+        "distractors": [
+          "Austria",
+          "Armies",
+          "Annexation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gavrilo Princip was a 19-year-old Bosnian Serb nationalist when he assassinated Franz Ferdinand.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Archduke Franz Ferdinand was assassinated in ___, triggering the July Crisis that led to WWI.",
+        "answer": "Sarajevo",
+        "distractors": [
+          "Vienna",
+          "Belgrade",
+          "Budapest"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References political assassination — appropriate for teens studying WWI history.",
+    "visualDescription": "The Archduke's open-top car on a narrow Sarajevo street, cobblestones and Austro-Hungarian-era buildings on either side, a dramatic moment frozen in time with the crowd turning in alarm.",
+    "tags": [
+      "WWI",
+      "Franz Ferdinand",
+      "Gavrilo Princip",
+      "assassination",
+      "Sarajevo"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ww1-versailles",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "wars_conflicts",
+    "categoryL1": "History",
+    "categoryL2": "wars_conflicts",
+    "categoryL3": "world_war_one",
+    "statement": "The Treaty of Versailles (1919) forced Germany to accept sole blame for WWI under Article 231, the 'war guilt clause,' pay 132 billion gold marks in reparations, and surrender 13% of its territory.",
+    "quizQuestion": "What was the name of the clause in the Treaty of Versailles that assigned sole blame for WWI to Germany?",
+    "correctAnswer": "The war guilt clause (Article 231)",
+    "distractors": [
+      "The reparations clause",
+      "The disarmament clause",
+      "The territorial clause",
+      "The sovereignty clause",
+      "The armistice clause",
+      "The indemnity clause",
+      "The League of Nations clause",
+      "The self-determination clause"
+    ],
+    "acceptableAnswers": [
+      "The war guilt clause",
+      "Article 231",
+      "war guilt clause",
+      "Kriegsschuldfrage"
+    ],
+    "explanation": "The 132 billion gold marks in reparations was equivalent to roughly $442 billion in 2021 dollars. Germany made its final reparations payment in October 2010 — 91 years after the treaty. Many historians argue the humiliating terms of Versailles directly contributed to the rise of Hitler and WWII.",
+    "wowFactor": "Germany finished paying off WWI reparations in 2010 — meaning Germany was still paying for a war that started in 1914 nearly a century later. The Treaty of Versailles cast such a long shadow it arguably caused WWII.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of the Treaty of Versailles clause that assigned sole blame for WWI to Germany?",
+        "answer": "The war guilt clause (Article 231)",
+        "distractors": [
+          "The reparations clause",
+          "The disarmament clause",
+          "The territorial clause"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year did Germany make its final reparations payment required by the Treaty of Versailles?",
+        "answer": "2010",
+        "distractors": [
+          "1945",
+          "1953",
+          "1990"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Treaty of Versailles required Germany to pay 132 billion gold marks in WWI reparations.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Under the Treaty of Versailles, Germany was forced to surrender ___% of its pre-war territory.",
+        "answer": "13",
+        "distractors": [
+          "5",
+          "25",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Hall of Mirrors at Versailles during the 1919 peace conference, diplomats in formal attire seated around a vast table, chandeliers blazing overhead, defeated German delegates at the far end signing the treaty.",
+    "tags": [
+      "WWI",
+      "Treaty of Versailles",
+      "war guilt clause",
+      "reparations",
+      "Germany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

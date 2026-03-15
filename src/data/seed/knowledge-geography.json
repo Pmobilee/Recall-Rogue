@@ -12090,5 +12090,1535 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-brazil-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Brazil",
+    "statement": "The Amazon rainforest, located largely in Brazil, contains over 10% of all species on Earth.",
+    "quizQuestion": "Approximately what fraction of all Earth's species is found in the Amazon rainforest?",
+    "correctAnswer": "10%",
+    "distractors": [
+      "1%",
+      "25%",
+      "50%",
+      "5%",
+      "40%",
+      "3%",
+      "75%",
+      "15%"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Amazon rainforest spans 5.5 million km² and Brazil holds approximately 60% of it. Its biodiversity is unmatched — it houses roughly 10% of all species on Earth, including 40,000 plant species, 1,300 bird species, and 3,000 types of fish.",
+    "wowFactor": "Brazil's Amazon is so vast it generates its own rainfall — called 'flying rivers' — that water the rest of South America.",
+    "variants": [
+      {
+        "question": "What percentage of all species on Earth does the Amazon rainforest contain?",
+        "type": "forward",
+        "distractors": [
+          "About 1%",
+          "About 25%",
+          "About 50%"
+        ],
+        "answer": "About 10%"
+      },
+      {
+        "question": "The Amazon rainforest is famous for containing what fraction of global biodiversity?",
+        "type": "context",
+        "distractors": [
+          "Around 1% of all species",
+          "Around 30% of all species",
+          "Around 50% of all species"
+        ],
+        "answer": "Around 10% of all species"
+      },
+      {
+        "question": "The Amazon rainforest contains over 10% of all species on Earth.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Amazon contains _____ of all species on Earth.",
+        "type": "fill_blank",
+        "distractors": [
+          "over 50%",
+          "over 1%",
+          "over 75%"
+        ],
+        "answer": "over 10%"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "WWF / IUCN",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art lush green Amazon rainforest canopy with colorful toucans, jaguars, and winding rivers under golden sunlight.",
+    "tags": [
+      "amazon",
+      "rainforest",
+      "biodiversity",
+      "brazil",
+      "south-america"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-brazil-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Brazil",
+    "statement": "Brazil is the largest country in South America, covering nearly half the continent's total land area.",
+    "quizQuestion": "How many South American countries does Brazil NOT share a border with?",
+    "correctAnswer": "Two (Chile and Ecuador)",
+    "distractors": [
+      "One (Peru)",
+      "Three (Chile, Ecuador, Bolivia)",
+      "Zero — it borders all of them",
+      "Four countries",
+      "One (Colombia)",
+      "Five countries",
+      "Three (Peru, Venezuela, Guyana)",
+      "One (Argentina)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Brazil covers 8.51 million km², making it the 5th largest country in the world and the largest in South America. It accounts for approximately 47% of South America's land area and borders 10 of the continent's 12 sovereign nations.",
+    "wowFactor": "Brazil is so large it shares a border with every South American country except Chile and Ecuador.",
+    "variants": [
+      {
+        "question": "Which South American countries does Brazil NOT border?",
+        "type": "forward",
+        "distractors": [
+          "Peru and Bolivia",
+          "Argentina and Uruguay",
+          "Colombia and Venezuela"
+        ],
+        "answer": "Chile and Ecuador"
+      },
+      {
+        "question": "Brazil shares a border with how many South American countries?",
+        "type": "forward",
+        "distractors": [
+          "8",
+          "12",
+          "6"
+        ],
+        "answer": "10"
+      },
+      {
+        "question": "Brazil borders every South American country except Chile and Ecuador.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Brazil does NOT share a border with _____ and _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Peru and Bolivia",
+          "Argentina and Paraguay",
+          "Uruguay and Colombia"
+        ],
+        "answer": "Chile and Ecuador"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "CIA World Factbook",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art map of South America with Brazil highlighted in green and neighboring countries in muted colors.",
+    "tags": [
+      "brazil",
+      "borders",
+      "south-america",
+      "largest-country",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-brazil-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Brazil",
+    "statement": "Brazil's Rio Carnival is the world's largest carnival, attracting over 2 million people per day during its peak.",
+    "quizQuestion": "Approximately how many people attend Rio Carnival per day at its peak?",
+    "correctAnswer": "2 million",
+    "distractors": [
+      "500,000",
+      "5 million",
+      "10 million",
+      "1 million",
+      "100,000",
+      "250,000",
+      "4 million",
+      "750,000"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Rio de Janeiro's Carnival is held annually before Lent and draws an estimated 2 million street revelers per day — making it the largest party on Earth by attendance. The famous Sambadrome parade lasts multiple nights, with samba schools competing on floats that sometimes cost over $1 million to construct.",
+    "wowFactor": "Rio's Carnival parade floats can be six stories tall and cost over $1 million USD each to build.",
+    "variants": [
+      {
+        "question": "How many people attend Rio de Janeiro's Carnival per day at its peak?",
+        "type": "forward",
+        "distractors": [
+          "About 500,000",
+          "About 5 million",
+          "About 200,000"
+        ],
+        "answer": "About 2 million"
+      },
+      {
+        "question": "Rio Carnival is considered the world's largest carnival. How many daily attendees does it draw?",
+        "type": "context",
+        "distractors": [
+          "Over 10 million per day",
+          "Over 500,000 per day",
+          "About 1 million per day"
+        ],
+        "answer": "Over 2 million per day"
+      },
+      {
+        "question": "Rio Carnival attracts over 2 million people per day during its peak.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "At its peak, Rio Carnival draws _____ people per day.",
+        "type": "fill_blank",
+        "distractors": [
+          "over 10 million",
+          "about 500,000",
+          "over 5 million"
+        ],
+        "answer": "over 2 million"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Guinness World Records",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art vibrant Carnival parade with colorful samba dancers, feathered costumes, and enormous glittering floats under night lights.",
+    "tags": [
+      "brazil",
+      "carnival",
+      "festival",
+      "rio-de-janeiro",
+      "culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-india-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Asia",
+    "categoryL1": "Geography",
+    "categoryL2": "Asia",
+    "categoryL3": "India",
+    "statement": "India surpassed China in 2023 to become the world's most populous country, with over 1.4 billion people.",
+    "quizQuestion": "In what year did India overtake China to become the world's most populous country?",
+    "correctAnswer": "2023",
+    "distractors": [
+      "2020",
+      "2025",
+      "2018",
+      "2030",
+      "2015",
+      "2010",
+      "2028",
+      "2022"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "In 2023, United Nations data confirmed India overtook China as the world's most populous nation, reaching approximately 1.428 billion people. India's population is projected to continue growing through the 2060s while China's population is declining.",
+    "wowFactor": "India adds roughly 1 million people to its population every 2 weeks — more than the entire population of Cyprus.",
+    "variants": [
+      {
+        "question": "When did India surpass China to become the most populous country?",
+        "type": "forward",
+        "distractors": [
+          "2020",
+          "2018",
+          "2025"
+        ],
+        "answer": "2023"
+      },
+      {
+        "question": "India became the world's most populous country in 2023, overtaking which country?",
+        "type": "reverse",
+        "distractors": [
+          "United States",
+          "Russia",
+          "Indonesia"
+        ],
+        "answer": "China"
+      },
+      {
+        "question": "India surpassed China in 2023 to become the world's most populous country.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "India overtook _____ to become the world's most populous nation in 2023.",
+        "type": "fill_blank",
+        "distractors": [
+          "the United States",
+          "Russia",
+          "Indonesia"
+        ],
+        "answer": "China"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "United Nations Population Division",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art crowded colorful Indian street market with bustling crowds, spice vendors, and the Indian flag flying above.",
+    "tags": [
+      "india",
+      "population",
+      "demographics",
+      "most-populous",
+      "asia"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-india-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Asia",
+    "categoryL1": "Geography",
+    "categoryL2": "Asia",
+    "categoryL3": "India",
+    "statement": "The Himalayas, home to Mount Everest, run along India's northern border and contain the world's highest peaks.",
+    "quizQuestion": "How many of the world's 14 peaks above 8,000 meters are located in the Himalayas?",
+    "correctAnswer": "10",
+    "distractors": [
+      "14",
+      "7",
+      "5",
+      "12",
+      "3",
+      "8",
+      "All 14",
+      "6"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Himalayan mountain range stretches over 2,400 km along India's northern borders with Nepal, Bhutan, and China. It contains 10 of the world's 14 peaks over 8,000 meters, including Mount Everest (8,849 m). The range continues to grow because the Indian tectonic plate is still pushing northward into the Eurasian plate at roughly 5 cm per year.",
+    "wowFactor": "The Himalayas are still rising by about 5 millimeters per year as the Indian tectonic plate slowly collides with Asia.",
+    "variants": [
+      {
+        "question": "How many of the world's highest peaks (above 8,000 m) are in the Himalayas?",
+        "type": "forward",
+        "distractors": [
+          "All 14",
+          "7",
+          "5"
+        ],
+        "answer": "10"
+      },
+      {
+        "question": "The Himalayas contain 10 of the world's 14 peaks above 8,000 meters.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Himalayas are still growing because the Indian plate is colliding with which other plate?",
+        "type": "context",
+        "distractors": [
+          "Pacific plate",
+          "African plate",
+          "Arabian plate"
+        ],
+        "answer": "Eurasian plate"
+      },
+      {
+        "question": "The Himalayas contain _____ of the world's 14 peaks above 8,000 meters.",
+        "type": "fill_blank",
+        "distractors": [
+          "all 14",
+          "7",
+          "5"
+        ],
+        "answer": "10"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "National Geographic / Geological Survey of India",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art dramatic snow-capped Himalayan peaks with prayer flags, blue sky, and a yak on a mountain trail.",
+    "tags": [
+      "himalayas",
+      "india",
+      "mountains",
+      "mount-everest",
+      "tectonic-plates"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-india-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Asia",
+    "categoryL1": "Geography",
+    "categoryL2": "Asia",
+    "categoryL3": "India",
+    "statement": "India has 22 officially recognized languages in its constitution, but over 19,500 distinct dialects and mother tongues.",
+    "quizQuestion": "How many languages does India's constitution officially recognize?",
+    "correctAnswer": "22",
+    "distractors": [
+      "10",
+      "50",
+      "100",
+      "15",
+      "7",
+      "30",
+      "5",
+      "45"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "India's constitution recognizes 22 'scheduled languages,' but the 2011 census recorded 19,569 distinct mother tongues. Major language families present include Indo-Aryan, Dravidian, Austro-Asiatic, and Tibeto-Burman. Hindi is the most widely spoken, but it is the native language of only about 44% of the population.",
+    "wowFactor": "A child crossing from one Indian state to another may encounter a language as different from their own as Spanish is from Russian.",
+    "variants": [
+      {
+        "question": "How many languages are officially recognized in India's constitution?",
+        "type": "forward",
+        "distractors": [
+          "10",
+          "50",
+          "100"
+        ],
+        "answer": "22"
+      },
+      {
+        "question": "India officially recognizes 22 languages in its constitution.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Beyond its 22 official languages, how many distinct mother tongues did India's 2011 census record?",
+        "type": "context",
+        "distractors": [
+          "Over 1,000",
+          "Over 500",
+          "Over 5,000"
+        ],
+        "answer": "Over 19,500"
+      },
+      {
+        "question": "India's constitution officially recognizes _____ languages.",
+        "type": "fill_blank",
+        "distractors": [
+          "10",
+          "50",
+          "100"
+        ],
+        "answer": "22"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Constitution of India / Census of India 2011",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art colorful Indian language scripts arranged in a mosaic pattern over an Indian map silhouette.",
+    "tags": [
+      "india",
+      "languages",
+      "diversity",
+      "linguistics",
+      "culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-russia-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "Russia",
+    "statement": "Russia is the world's largest country by area, spanning 11 time zones and covering 17.1 million km².",
+    "quizQuestion": "How many time zones does Russia span?",
+    "correctAnswer": "11",
+    "distractors": [
+      "7",
+      "9",
+      "6",
+      "13",
+      "12",
+      "4",
+      "8",
+      "15"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Russia covers 17,098,242 km² — nearly twice the size of the next largest country, Canada. It spans 11 time zones from Kaliningrad (UTC+2) to the Chukotka region (UTC+12). This means the country spans roughly 9,000 km east to west — equivalent to flying from New York to Moscow and back.",
+    "wowFactor": "Russia is so wide that when it's Monday morning in the east, it's still Sunday in the far west of the country.",
+    "variants": [
+      {
+        "question": "How many time zones are there within Russia?",
+        "type": "forward",
+        "distractors": [
+          "7",
+          "9",
+          "24"
+        ],
+        "answer": "11"
+      },
+      {
+        "question": "Russia spans 11 time zones and is the world's largest country by area.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Russia covers approximately how many square kilometers?",
+        "type": "context",
+        "distractors": [
+          "10 million km²",
+          "9 million km²",
+          "24 million km²"
+        ],
+        "answer": "17.1 million km²"
+      },
+      {
+        "question": "Russia spans _____ time zones.",
+        "type": "fill_blank",
+        "distractors": [
+          "7",
+          "9",
+          "24"
+        ],
+        "answer": "11"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "CIA World Factbook",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art map of Russia spanning an enormous landmass with a clock showing multiple time zones and snow-covered taiga forest.",
+    "tags": [
+      "russia",
+      "largest-country",
+      "time-zones",
+      "geography",
+      "area"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-russia-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "Russia",
+    "statement": "Lake Baikal in Russia is the world's deepest lake and holds about 20% of the world's unfrozen fresh surface water.",
+    "quizQuestion": "Approximately what fraction of the world's unfrozen fresh surface water is held in Lake Baikal?",
+    "correctAnswer": "20%",
+    "distractors": [
+      "5%",
+      "50%",
+      "10%",
+      "1%",
+      "35%",
+      "75%",
+      "3%",
+      "15%"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Located in Siberia, Lake Baikal reaches a maximum depth of 1,642 meters — making it the deepest lake on Earth. It holds approximately 23,615 km³ of water, representing about 20% of all liquid fresh surface water on the planet. The lake is also ancient, estimated to be 25-30 million years old.",
+    "wowFactor": "Lake Baikal is so deep that all five Great Lakes of North America could fit inside it with room to spare.",
+    "variants": [
+      {
+        "question": "What percentage of the world's liquid fresh surface water does Lake Baikal contain?",
+        "type": "forward",
+        "distractors": [
+          "About 5%",
+          "About 50%",
+          "About 10%"
+        ],
+        "answer": "About 20%"
+      },
+      {
+        "question": "Lake Baikal holds about 20% of the world's unfrozen fresh surface water.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Lake Baikal is the world's deepest lake. How deep does it go?",
+        "type": "context",
+        "distractors": [
+          "542 meters",
+          "980 meters",
+          "2,300 meters"
+        ],
+        "answer": "1,642 meters"
+      },
+      {
+        "question": "Lake Baikal holds approximately _____ of the world's unfrozen fresh surface water.",
+        "type": "fill_blank",
+        "distractors": [
+          "5%",
+          "50%",
+          "1%"
+        ],
+        "answer": "20%"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "UNESCO / Russian Academy of Sciences",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art crystalline blue Lake Baikal surrounded by Siberian taiga with an ice sheet shimmering under moonlight.",
+    "tags": [
+      "lake-baikal",
+      "russia",
+      "freshwater",
+      "deepest-lake",
+      "siberia"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-russia-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "Russia",
+    "statement": "The Trans-Siberian Railway is the world's longest railway, stretching 9,289 km from Moscow to Vladivostok.",
+    "quizQuestion": "What is the approximate length of the Trans-Siberian Railway?",
+    "correctAnswer": "9,289 km",
+    "distractors": [
+      "5,000 km",
+      "15,000 km",
+      "7,000 km",
+      "12,000 km",
+      "3,000 km",
+      "6,500 km",
+      "11,000 km",
+      "4,500 km"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Completed in 1916, the Trans-Siberian Railway spans 9,289 km connecting Moscow in the west to Vladivostok on the Pacific coast. The journey crosses 8 time zones, passes through 87 cities and towns, and traverses the world's longest continuous rail stretch through Siberia. It remains the world's longest uninterrupted railway.",
+    "wowFactor": "A complete journey on the Trans-Siberian Railway takes about 6 days without stopping — and passes through 8 time zones.",
+    "variants": [
+      {
+        "question": "How long is the Trans-Siberian Railway?",
+        "type": "forward",
+        "distractors": [
+          "About 5,000 km",
+          "About 15,000 km",
+          "About 7,000 km"
+        ],
+        "answer": "About 9,289 km"
+      },
+      {
+        "question": "The Trans-Siberian Railway connects Moscow to which Pacific city?",
+        "type": "reverse",
+        "distractors": [
+          "St. Petersburg",
+          "Novosibirsk",
+          "Irkutsk"
+        ],
+        "answer": "Vladivostok"
+      },
+      {
+        "question": "The Trans-Siberian Railway is 9,289 km long and is the world's longest railway.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Trans-Siberian Railway runs from Moscow to _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Beijing",
+          "Tokyo",
+          "Novosibirsk"
+        ],
+        "answer": "Vladivostok"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Russian Railways (RZD)",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art red steam locomotive crossing a vast Siberian snow plain with pine forests and distant mountains.",
+    "tags": [
+      "trans-siberian-railway",
+      "russia",
+      "longest-railway",
+      "siberia",
+      "transport"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-antarctica-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Polar Regions",
+    "categoryL1": "Geography",
+    "categoryL2": "Polar Regions",
+    "categoryL3": "Antarctica",
+    "statement": "Antarctica has no permanent human residents — the only people there are rotating scientific researchers.",
+    "quizQuestion": "How many people permanently reside in Antarctica?",
+    "correctAnswer": "None — only rotating researchers",
+    "distractors": [
+      "About 1,000",
+      "About 5,000",
+      "About 500",
+      "About 100",
+      "About 10,000",
+      "About 50",
+      "About 250",
+      "About 2,500"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Antarctic Treaty of 1959, now signed by 54 nations, designates Antarctica as a scientific preserve free from military activity and territorial claims. Approximately 1,000–5,000 rotating researchers live there temporarily across around 70 research stations, but no one is born there or permanently resides on the continent.",
+    "wowFactor": "Antarctica is the only continent with no native human population, no government, and no permanent residents — it's governed by an international treaty signed by 54 countries.",
+    "variants": [
+      {
+        "question": "What is the permanent population of Antarctica?",
+        "type": "forward",
+        "distractors": [
+          "About 1,000",
+          "About 5,000",
+          "About 100"
+        ],
+        "answer": "Zero — no permanent residents"
+      },
+      {
+        "question": "Antarctica has no permanent human residents.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "How many nations have signed the Antarctic Treaty?",
+        "type": "context",
+        "distractors": [
+          "12",
+          "30",
+          "100"
+        ],
+        "answer": "54"
+      },
+      {
+        "question": "Antarctica has _____ permanent human residents.",
+        "type": "fill_blank",
+        "distractors": [
+          "1,000",
+          "500",
+          "10,000"
+        ],
+        "answer": "no"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Antarctic Treaty Secretariat",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art vast white Antarctic ice shelf under aurora australis with a small research station and penguins nearby.",
+    "tags": [
+      "antarctica",
+      "polar",
+      "no-residents",
+      "antarctic-treaty",
+      "science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-antarctica-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Polar Regions",
+    "categoryL1": "Geography",
+    "categoryL2": "Polar Regions",
+    "categoryL3": "Antarctica",
+    "statement": "Antarctica's ice sheet holds about 70% of Earth's fresh water and if fully melted would raise sea levels by approximately 60 meters.",
+    "quizQuestion": "If Antarctica's ice sheet completely melted, by approximately how much would global sea levels rise?",
+    "correctAnswer": "About 60 meters",
+    "distractors": [
+      "About 6 meters",
+      "About 600 meters",
+      "About 20 meters",
+      "About 1 meter",
+      "About 10 meters",
+      "About 100 meters",
+      "About 3 meters",
+      "About 40 meters"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Antarctic ice sheet is 2.6 km thick on average and stores approximately 26.5 million km³ of ice — around 70% of Earth's total fresh water. If it melted entirely, global sea levels would rise by approximately 58–60 meters, submerging most of the world's coastal cities. The ice also compresses the bedrock beneath it by up to 900 meters.",
+    "wowFactor": "Antarctica's ice sheet is so heavy it has pushed the continent's bedrock 900 meters below sea level in places — a phenomenon called glacial isostatic depression.",
+    "variants": [
+      {
+        "question": "How much would sea levels rise if all of Antarctica's ice melted?",
+        "type": "forward",
+        "distractors": [
+          "About 6 meters",
+          "About 600 meters",
+          "About 20 meters"
+        ],
+        "answer": "About 60 meters"
+      },
+      {
+        "question": "Antarctica's ice sheet holds approximately what fraction of Earth's fresh water?",
+        "type": "forward",
+        "distractors": [
+          "About 10%",
+          "About 30%",
+          "About 50%"
+        ],
+        "answer": "About 70%"
+      },
+      {
+        "question": "A full melt of Antarctica's ice sheet would raise sea levels by about 60 meters.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Antarctica's ice holds about _____ of Earth's total fresh water.",
+        "type": "fill_blank",
+        "distractors": [
+          "10%",
+          "30%",
+          "50%"
+        ],
+        "answer": "70%"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "British Antarctic Survey / IPCC",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Antarctic glacier calving into dark ocean with a scale bar showing a 60-meter rise swallowing a coastal city silhouette.",
+    "tags": [
+      "antarctica",
+      "ice-sheet",
+      "sea-level-rise",
+      "freshwater",
+      "climate"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-antarctica-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Polar Regions",
+    "categoryL1": "Geography",
+    "categoryL2": "Polar Regions",
+    "categoryL3": "Antarctica",
+    "statement": "The ozone hole over Antarctica is caused by chlorofluorocarbons (CFCs) and is largest during the Southern Hemisphere's spring.",
+    "quizQuestion": "What chemical compounds are primarily responsible for the ozone hole over Antarctica?",
+    "correctAnswer": "Chlorofluorocarbons (CFCs)",
+    "distractors": [
+      "Carbon dioxide (CO₂)",
+      "Methane (CH₄)",
+      "Sulfur dioxide (SO₂)",
+      "Nitrogen oxides (NOₓ)",
+      "Ozone (O₃) itself",
+      "Water vapor",
+      "Carbon monoxide (CO)",
+      "Hydrofluorocarbons (HFCs)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Antarctic ozone hole is a seasonal thinning of stratospheric ozone that occurs each spring (September–November in the Southern Hemisphere). It is caused primarily by chlorofluorocarbons (CFCs) — industrial chemicals that release chlorine atoms when struck by UV light. These atoms catalytically destroy ozone molecules. Following the 1987 Montreal Protocol banning CFCs, the hole has been slowly recovering and is projected to return to 1980 levels by around 2066.",
+    "wowFactor": "The ozone hole over Antarctica can grow larger than the entire North American continent — about 24 million km² at its peak.",
+    "variants": [
+      {
+        "question": "What type of chemicals primarily caused the ozone hole over Antarctica?",
+        "type": "forward",
+        "distractors": [
+          "Carbon dioxide",
+          "Methane",
+          "Nitrogen oxides"
+        ],
+        "answer": "Chlorofluorocarbons (CFCs)"
+      },
+      {
+        "question": "When is the Antarctic ozone hole largest each year?",
+        "type": "context",
+        "distractors": [
+          "Northern Hemisphere summer",
+          "During Antarctic winter",
+          "Year-round, with no seasonal variation"
+        ],
+        "answer": "Southern Hemisphere spring (September–November)"
+      },
+      {
+        "question": "The ozone hole over Antarctica is caused by CFCs and is largest during Southern Hemisphere spring.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The Antarctic ozone hole is primarily caused by _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "carbon dioxide",
+          "methane",
+          "nitrogen oxides"
+        ],
+        "answer": "chlorofluorocarbons (CFCs)"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA / NOAA / Montreal Protocol",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art satellite view of Antarctica with a purple ozone hole visible overhead and UV rays piercing through the gap.",
+    "tags": [
+      "antarctica",
+      "ozone-hole",
+      "CFCs",
+      "atmosphere",
+      "environment"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-amazon-river-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Amazon River",
+    "statement": "The Amazon River discharges approximately 20% of all the freshwater that flows into the world's oceans.",
+    "quizQuestion": "Approximately what percentage of all global river freshwater discharge into the ocean comes from the Amazon River?",
+    "correctAnswer": "About 20%",
+    "distractors": [
+      "About 5%",
+      "About 50%",
+      "About 10%",
+      "About 1%",
+      "About 30%",
+      "About 40%",
+      "About 3%",
+      "About 15%"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Amazon River has the largest discharge volume of any river on Earth, pumping approximately 209,000 m³ of water per second into the Atlantic Ocean at its mouth. This represents roughly 20% of all freshwater discharged by rivers globally. The plume of freshwater it creates extends hundreds of kilometers into the Atlantic, lowering salinity visibly from space.",
+    "wowFactor": "The Amazon releases so much freshwater into the Atlantic that the ocean remains noticeably less salty up to 160 km from shore.",
+    "variants": [
+      {
+        "question": "What fraction of all river water flowing into the oceans comes from the Amazon?",
+        "type": "forward",
+        "distractors": [
+          "About 5%",
+          "About 50%",
+          "About 10%"
+        ],
+        "answer": "About 20%"
+      },
+      {
+        "question": "The Amazon River discharges about 20% of all the world's river freshwater into the oceans.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "How far from the Amazon's mouth can reduced ocean salinity still be detected?",
+        "type": "context",
+        "distractors": [
+          "About 5 km offshore",
+          "About 50 km offshore",
+          "Over 1,000 km offshore"
+        ],
+        "answer": "Up to 160 km offshore"
+      },
+      {
+        "question": "The Amazon accounts for about _____ of all freshwater discharged by rivers into oceans.",
+        "type": "fill_blank",
+        "distractors": [
+          "5%",
+          "50%",
+          "1%"
+        ],
+        "answer": "20%"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "USGS / Woods Hole Oceanographic Institution",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Amazon River delta spreading into a deep blue Atlantic Ocean with a freshwater plume visible in lighter blue.",
+    "tags": [
+      "amazon-river",
+      "freshwater",
+      "discharge",
+      "south-america",
+      "rivers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-amazon-river-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Amazon River",
+    "statement": "Whether the Amazon or the Nile is the world's longest river is debated — measurements depend on where each river's source is defined.",
+    "quizQuestion": "Why is there scientific debate over whether the Amazon or the Nile is the world's longest river?",
+    "correctAnswer": "The measurement depends on where each river's source is defined",
+    "distractors": [
+      "They are exactly the same length",
+      "The Nile changes length seasonally",
+      "New tributaries of the Amazon are still being discovered",
+      "Satellites give different results each year",
+      "The Amazon's length is classified by Brazil",
+      "Different instruments give wildly different readings",
+      "The Amazon flows both directions depending on the season",
+      "The Nile's source is underground"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Amazon is traditionally listed as the world's second-longest river at about 6,400 km, behind the Nile at 6,650 km. However, 2007 Brazilian Geographic Institute research, using a newly identified Andean source, measured the Amazon at 6,992 km — making it potentially longer. The debate hinges on which headwater tributary counts as the 'true source,' a question that has no universal scientific consensus.",
+    "wowFactor": "In 2007, a Brazilian expedition claimed the Amazon is actually longer than the Nile after identifying a more distant source, but this remains scientifically contested.",
+    "variants": [
+      {
+        "question": "What makes the Amazon vs. Nile 'longest river' debate unresolved?",
+        "type": "forward",
+        "distractors": [
+          "They are exactly equal in length",
+          "Neither river has been fully measured",
+          "The Amazon shrinks every year"
+        ],
+        "answer": "The source location depends on which headwater tributary you count"
+      },
+      {
+        "question": "In 2007, a Brazilian study claimed the Amazon was actually longer than the Nile.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "What length did the 2007 Brazilian study measure the Amazon at?",
+        "type": "context",
+        "distractors": [
+          "About 5,000 km",
+          "About 8,000 km",
+          "About 6,400 km"
+        ],
+        "answer": "About 6,992 km"
+      },
+      {
+        "question": "The Amazon vs. Nile length debate exists because the answer depends on where _____ is defined.",
+        "type": "fill_blank",
+        "distractors": [
+          "the mouth of the river",
+          "the river begins flowing",
+          "the river crosses a national border"
+        ],
+        "answer": "each river's source"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Brazilian Geographic Institute (IBGE) / National Geographic",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen showing the Amazon and Nile rivers with question marks over both, maps side by side with a measuring tape.",
+    "tags": [
+      "amazon-river",
+      "nile",
+      "longest-river",
+      "debate",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-amazon-river-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "South America",
+    "categoryL1": "Geography",
+    "categoryL2": "South America",
+    "categoryL3": "Amazon River",
+    "statement": "The Amazon River basin is home to the greatest biodiversity on Earth, housing around 10% of all known species.",
+    "quizQuestion": "Approximately how many fish species are found in the Amazon River basin?",
+    "correctAnswer": "About 2,200",
+    "distractors": [
+      "About 200",
+      "About 10,000",
+      "About 500",
+      "About 50",
+      "About 5,000",
+      "About 100",
+      "About 1,000",
+      "About 8,000"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Amazon basin spans roughly 7 million km² across 9 countries and contains an estimated 10% of all species on Earth, including approximately 2.5 million insect species, 40,000 plant species, 2,200 fish species, and 1,300 bird species. A single hectare of Amazon forest can hold 400–600 tree species — compared to around 50 for all of Europe.",
+    "wowFactor": "A single hectare of Amazon rainforest can contain more tree species than are found in the entire United Kingdom.",
+    "variants": [
+      {
+        "question": "How many fish species live in the Amazon River basin?",
+        "type": "forward",
+        "distractors": [
+          "About 200",
+          "About 10,000",
+          "About 500"
+        ],
+        "answer": "About 2,200"
+      },
+      {
+        "question": "The Amazon basin contains around 10% of all known species on Earth.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "How many tree species can a single hectare of Amazon forest contain?",
+        "type": "context",
+        "distractors": [
+          "About 10 species",
+          "About 50 species",
+          "Over 1,000 species"
+        ],
+        "answer": "Up to 400–600 species"
+      },
+      {
+        "question": "The Amazon basin houses approximately _____ of all known species on Earth.",
+        "type": "fill_blank",
+        "distractors": [
+          "1%",
+          "30%",
+          "50%"
+        ],
+        "answer": "10%"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "WWF / IUCN",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Amazon river cross-section showing colorful fish underwater, macaws above the canopy, and a jaguar on the bank.",
+    "tags": [
+      "amazon-river",
+      "biodiversity",
+      "species",
+      "rainforest",
+      "south-america"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sahara-001",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Africa",
+    "categoryL1": "Geography",
+    "categoryL2": "Africa",
+    "categoryL3": "Sahara Desert",
+    "statement": "The Sahara Desert was once a green, humid savanna with rivers and lakes, roughly 5,000–11,000 years ago.",
+    "quizQuestion": "Approximately when did the Sahara last experience a significantly wetter, greener climate?",
+    "correctAnswer": "Around 5,000–11,000 years ago",
+    "distractors": [
+      "Around 1 million years ago",
+      "Around 500 years ago",
+      "Around 50,000 years ago",
+      "Around 100,000 years ago",
+      "Around 10 million years ago",
+      "Around 1,000 years ago",
+      "Around 200,000 years ago",
+      "Around 20,000 years ago"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "During the 'African Humid Period' or 'Green Sahara' (approximately 11,000–5,000 years ago), the Sahara experienced a significantly wetter climate due to changes in Earth's orbital precession that shifted monsoon patterns northward. Rivers and lakes filled the region, and the area supported savanna ecosystems with large mammals. Cave paintings from sites like Tassili n'Ajjer in Algeria depict this lost world.",
+    "wowFactor": "Cave paintings in the Sahara depict hippos, giraffes, and crocodiles — animals that require abundant water — proving the desert was once lush grassland.",
+    "variants": [
+      {
+        "question": "When did the 'Green Sahara' period last occur?",
+        "type": "forward",
+        "distractors": [
+          "About 1 million years ago",
+          "About 50,000 years ago",
+          "About 500 years ago"
+        ],
+        "answer": "About 5,000–11,000 years ago"
+      },
+      {
+        "question": "What evidence proves the Sahara was once green and humid?",
+        "type": "context",
+        "distractors": [
+          "Fossil dinosaurs found in the sand",
+          "Ancient Roman records of Saharan rivers",
+          "Satellite images from the 1800s"
+        ],
+        "answer": "Cave paintings of hippos, giraffes, and crocodiles"
+      },
+      {
+        "question": "The Sahara Desert was once a green, humid savanna approximately 5,000–11,000 years ago.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The 'Green Sahara' ended approximately _____ years ago.",
+        "type": "fill_blank",
+        "distractors": [
+          "500",
+          "50,000",
+          "1,000,000"
+        ],
+        "answer": "5,000"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Nature / Paleoclimatology Research",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-scene showing the Sahara as a lush green savanna with hippos and rivers contrasted against today's barren golden sand dunes.",
+    "tags": [
+      "sahara",
+      "green-sahara",
+      "climate",
+      "africa",
+      "paleoclimate"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sahara-002",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Africa",
+    "categoryL1": "Geography",
+    "categoryL2": "Africa",
+    "categoryL3": "Sahara Desert",
+    "statement": "The Sahara Desert is roughly the same size as the contiguous United States, covering about 9.2 million km².",
+    "quizQuestion": "Approximately how large is the Sahara Desert?",
+    "correctAnswer": "About 9.2 million km²",
+    "distractors": [
+      "About 1 million km²",
+      "About 50 million km²",
+      "About 3 million km²",
+      "About 20 million km²",
+      "About 500,000 km²",
+      "About 5 million km²",
+      "About 15 million km²",
+      "About 2 million km²"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Sahara covers approximately 9.2 million km², making it the world's largest hot desert and the third-largest desert overall (after Antarctica and the Arctic). This is roughly equal to the area of the contiguous 48 US states (~8 million km²). It spans 11 countries across northern Africa.",
+    "wowFactor": "You could fit all of Europe inside the Sahara and still have room for India.",
+    "variants": [
+      {
+        "question": "How large is the Sahara Desert?",
+        "type": "forward",
+        "distractors": [
+          "About 1 million km²",
+          "About 50 million km²",
+          "About 3 million km²"
+        ],
+        "answer": "About 9.2 million km²"
+      },
+      {
+        "question": "The Sahara Desert is roughly the same size as the contiguous United States.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "How many African countries does the Sahara span?",
+        "type": "context",
+        "distractors": [
+          "3",
+          "20",
+          "5"
+        ],
+        "answer": "11"
+      },
+      {
+        "question": "The Sahara covers approximately _____ million km².",
+        "type": "fill_blank",
+        "distractors": [
+          "1.2",
+          "50",
+          "3"
+        ],
+        "answer": "9.2"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "CIA World Factbook / National Geographic",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art size comparison graphic showing a Sahara silhouette overlaid on a United States map, both in warm golden tones.",
+    "tags": [
+      "sahara",
+      "size",
+      "desert",
+      "africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sahara-003",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Africa",
+    "categoryL1": "Geography",
+    "categoryL2": "Africa",
+    "categoryL3": "Sahara Desert",
+    "statement": "The Sahara can experience temperature extremes ranging from above 50°C (122°F) in summer to below freezing at night in winter.",
+    "quizQuestion": "What is the approximate daytime high temperature the Sahara Desert can reach in summer?",
+    "correctAnswer": "Above 50°C (122°F)",
+    "distractors": [
+      "About 30°C (86°F)",
+      "About 40°C (104°F)",
+      "About 60°C (140°F)",
+      "About 20°C (68°F)",
+      "About 45°C (113°F)",
+      "About 35°C (95°F)",
+      "About 55°C (131°F) consistently",
+      "About 25°C (77°F)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Deserts are defined by lack of precipitation, not necessarily heat. The Sahara's extreme aridity means it has little atmospheric moisture to retain heat, causing dramatic temperature swings. Daytime highs routinely exceed 50°C (122°F) in summer, while at high elevations and in winter, nighttime temperatures can drop below 0°C. Snow has even fallen in the Sahara several times, including in Ain Sefra, Algeria in 2018.",
+    "wowFactor": "Snow has fallen in the Sahara multiple times in recorded history — most recently in 2018, when snowfall dusted the town of Ain Sefra in Algeria.",
+    "variants": [
+      {
+        "question": "What maximum temperature can the Sahara reach during summer days?",
+        "type": "forward",
+        "distractors": [
+          "About 30°C (86°F)",
+          "About 40°C (104°F)",
+          "About 20°C (68°F)"
+        ],
+        "answer": "Above 50°C (122°F)"
+      },
+      {
+        "question": "Snow has been recorded falling in the Sahara Desert.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Why does the Sahara experience such extreme cold at night despite being a hot desert?",
+        "type": "context",
+        "distractors": [
+          "Cold ocean currents cool the desert nightly",
+          "Underground rivers chill the surface",
+          "The Sahara is at very high altitude throughout"
+        ],
+        "answer": "Low atmospheric moisture means heat escapes rapidly after sunset"
+      },
+      {
+        "question": "Sahara summer daytime temperatures can exceed _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "30°C (86°F)",
+          "40°C (104°F)",
+          "20°C (68°F)"
+        ],
+        "answer": "50°C (122°F)"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "World Meteorological Organization / National Geographic",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split scene: blazing Sahara sun with thermometer at 50°C on the left, and snow-dusted dunes under a cold night sky on the right.",
+    "tags": [
+      "sahara",
+      "temperature",
+      "extremes",
+      "desert",
+      "climate"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

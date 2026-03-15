@@ -13070,5 +13070,1613 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-rhinoceros-horn-keratin",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Rhinoceros horns are made entirely of keratin, the same protein found in human fingernails and hair.",
+    "quizQuestion": "What protein makes up a rhino's horn?",
+    "correctAnswer": "Keratin",
+    "distractors": [
+      "Bone",
+      "Ivory",
+      "Chitin",
+      "Collagen",
+      "Calcium",
+      "Cartilage",
+      "Enamel",
+      "Dentin"
+    ],
+    "acceptableAnswers": [
+      "keratin"
+    ],
+    "explanation": "Unlike elephant tusks which are ivory (dentine), rhino horns are solid keratin — the same fibrous protein in your fingernails. This is why rhino horn has zero medicinal value despite being worth more than gold on black markets.",
+    "wowFactor": "Rhino horns are essentially giant compressed fingernails — if you lost one, it would slowly grow back.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Rhino horns are made of the same material as human fingernails.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Rhino horns are made of _____, not bone or ivory.",
+        "answer": "keratin",
+        "distractors": [
+          "collagen",
+          "ivory",
+          "chitin"
+        ]
+      },
+      {
+        "type": "analogy",
+        "question": "A rhino horn is to keratin as an elephant tusk is to ___?",
+        "answer": "Ivory (dentine)",
+        "distractors": [
+          "Keratin",
+          "Bone",
+          "Enamel"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which body part shares its material with a rhino horn?",
+        "answer": "Human fingernail",
+        "distractors": [
+          "Human tooth",
+          "Fish scale",
+          "Turtle shell"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "WWF — Rhino Horn Use",
+    "sourceUrl": "https://www.worldwildlife.org/stories/rhinoceros-horn-use",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a white rhino's large curved horn, with texture showing compressed fibrous layers, natural savanna background",
+    "tags": [
+      "rhinoceros",
+      "keratin",
+      "horn",
+      "mammals",
+      "anatomy",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-rhinoceros-near-threatened",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "The white rhino is the most numerous rhino species with ~15,000 left; the Javan rhino is critically endangered with fewer than 80 individuals.",
+    "quizQuestion": "Which rhino species has fewer than 80 individuals left?",
+    "correctAnswer": "Javan rhino",
+    "distractors": [
+      "White rhino",
+      "Black rhino",
+      "Indian rhino",
+      "Sumatran rhino",
+      "Northern rhino",
+      "Southern rhino",
+      "African rhino"
+    ],
+    "acceptableAnswers": [
+      "javan rhino",
+      "javan rhinoceros"
+    ],
+    "explanation": "The Javan rhino (Rhinoceros sondaicus) survives only in Ujung Kulon National Park, Indonesia — the single remaining population is fewer than 80 animals. The Sumatran rhino is also critically endangered with under 80 individuals.",
+    "wowFactor": "The entire global population of Javan rhinos could fit inside a single large movie theater — that's how close to extinction they are.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "All five rhino species are currently endangered or critically endangered.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which rhino species is most numerous, with about 15,000 remaining?",
+        "answer": "White rhino",
+        "distractors": [
+          "Black rhino",
+          "Indian rhino",
+          "Javan rhino"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "The Javan rhino survives only in _____ National Park, Indonesia.",
+        "answer": "Ujung Kulon",
+        "distractors": [
+          "Komodo",
+          "Borneo",
+          "Sumatra"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How many rhino species exist?",
+        "answer": "Five",
+        "distractors": [
+          "Three",
+          "Two",
+          "Seven"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "IUCN Red List — Rhinocerotidae",
+    "sourceUrl": "https://www.iucnredlist.org/search?taxonomies=100380&searchType=species",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Javan rhino in dense jungle undergrowth, single-horned silhouette visible through tropical foliage, Indonesia",
+    "tags": [
+      "rhinoceros",
+      "endangered",
+      "javan rhino",
+      "conservation",
+      "extinction",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-rhinoceros-thick-skin-folds",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Rhinoceros skin can be up to 5 cm thick and has deep folds that trap mud, acting as both sunscreen and insect repellent.",
+    "quizQuestion": "What do rhinos use mud for besides cooling down?",
+    "correctAnswer": "Sunscreen & bug repellent",
+    "distractors": [
+      "Camouflage",
+      "Communication",
+      "Territory marking",
+      "Waterproofing",
+      "Attracting mates",
+      "Wound healing",
+      "Salt intake"
+    ],
+    "acceptableAnswers": [
+      "sunscreen",
+      "insect repellent",
+      "sun protection",
+      "bug repellent"
+    ],
+    "explanation": "Rhino skin folds trap mud which dries to form a protective crust. This crust blocks UV radiation (acting as sunscreen) and suffocates parasitic insects and biting flies. Despite its impressive thickness, rhino skin is actually sensitive and prone to sunburn.",
+    "wowFactor": "Rhino skin is thicker than your hand is wide — yet it still sunburns without a daily mud bath.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Rhino skin is so tough it cannot be sunburned.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How thick can rhinoceros skin reach?",
+        "answer": "5 cm",
+        "distractors": [
+          "1 cm",
+          "2 cm",
+          "10 cm"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Rhino skin is sensitive despite being up to _____ cm thick.",
+        "answer": "5",
+        "distractors": [
+          "1",
+          "10",
+          "2"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What dual purpose does dried mud serve on a rhino's skin?",
+        "answer": "Sunscreen and insect repellent",
+        "distractors": [
+          "Camouflage and warmth",
+          "Hydration and cooling",
+          "Scent marking and signaling"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "San Diego Zoo — Rhinoceros",
+    "sourceUrl": "https://animals.sandiegozoo.org/animals/rhinoceros",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rhino wallowing in a muddy watering hole, thick grey skin with deep skin folds clearly visible, coated in drying brown mud",
+    "tags": [
+      "rhinoceros",
+      "skin",
+      "mud",
+      "adaptation",
+      "sunscreen",
+      "mammals",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-squirrel-spatial-memory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Grey squirrels can remember the locations of thousands of buried nuts across large areas, retrieving them months later.",
+    "quizQuestion": "How many buried nut locations can a squirrel remember?",
+    "correctAnswer": "Thousands",
+    "distractors": [
+      "Dozens",
+      "Hundreds",
+      "Ten",
+      "About fifty",
+      "Around 500",
+      "Only a few",
+      "None — they smell them"
+    ],
+    "acceptableAnswers": [
+      "thousands",
+      "thousands of locations"
+    ],
+    "explanation": "Grey squirrels use sophisticated spatial memory to cache and retrieve up to 10,000 food items per season. Research shows they remember specific locations with remarkable accuracy — and they also use deceptive caching behaviors if they think they're being watched.",
+    "wowFactor": "Squirrels fake burying nuts if they spot another animal watching — they've mastered the art of deception to protect their food.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Squirrels find their buried nuts mainly by smell, not memory.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What behavior do squirrels perform when watched by rivals while caching food?",
+        "answer": "Fake-bury the nut",
+        "distractors": [
+          "Eat the nut immediately",
+          "Chase the rival away",
+          "Abandon the cache site"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Grey squirrels can cache up to _____ food items per season.",
+        "answer": "10,000",
+        "distractors": [
+          "1,000",
+          "500",
+          "100"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which cognitive ability do squirrels rely on most for food retrieval?",
+        "answer": "Spatial memory",
+        "distractors": [
+          "Smell alone",
+          "Visual landmarks only",
+          "Social cues from other squirrels"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Princeton University — Squirrel Spatial Memory Study",
+    "sourceUrl": "https://www.princeton.edu/news/squirrels",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grey squirrel burying an acorn in autumn leaves, nose pointed down, front paws digging into soil surrounded by fallen oak leaves",
+    "tags": [
+      "squirrel",
+      "memory",
+      "spatial memory",
+      "caching",
+      "mammals",
+      "cognition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-squirrel-tail-functions",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "A squirrel's bushy tail serves as a blanket, a parachute for falls, a sunshade, and a communication flag.",
+    "quizQuestion": "Which function does a squirrel's tail NOT perform?",
+    "correctAnswer": "Storing food",
+    "distractors": [
+      "Balance while leaping",
+      "Warmth during sleep",
+      "Breaking a fall",
+      "Signaling danger",
+      "Shading from sun",
+      "Communication",
+      "Cooling the body"
+    ],
+    "acceptableAnswers": [
+      "storing food",
+      "food storage"
+    ],
+    "explanation": "Squirrel tails are remarkably multi-functional: they wrap around the body as a blanket in winter, act as a parachute/rudder during leaps, shield from rain and sun, and twitch rapidly to signal alarm to other squirrels. The one thing tails don't do is store food — that goes underground.",
+    "wowFactor": "A falling squirrel spreads its bushy tail like a parachute, which is why squirrels often survive falls from tree canopy heights.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "A squirrel's tail can act as a blanket to keep it warm while sleeping.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How does a squirrel use its tail to communicate alarm?",
+        "answer": "Rapid twitching",
+        "distractors": [
+          "Puffing it up large",
+          "Dragging it on the ground",
+          "Wrapping it around the body"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "When falling, a squirrel spreads its tail like a _____.",
+        "answer": "parachute",
+        "distractors": [
+          "sail",
+          "wing",
+          "glider"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "In cold weather, squirrels use their tails as what?",
+        "answer": "A blanket",
+        "distractors": [
+          "A pillow",
+          "A food cache",
+          "A nest builder"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "National Wildlife Federation — Eastern Gray Squirrel",
+    "sourceUrl": "https://www.nwf.org/Educational-Resources/Wildlife-Guide/Mammals/Eastern-Gray-Squirrel",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grey squirrel in mid-leap between tree branches, bushy tail fully flared acting as a stabilizer, autumn forest backdrop",
+    "tags": [
+      "squirrel",
+      "tail",
+      "adaptation",
+      "communication",
+      "mammals",
+      "behavior"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-squirrel-200-species",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "There are over 200 species of squirrels worldwide, ranging from tiny African pygmy squirrels to giant Indian flying squirrels with 1.2 m wingspans.",
+    "quizQuestion": "Roughly how many squirrel species exist worldwide?",
+    "correctAnswer": "Over 200",
+    "distractors": [
+      "About 20",
+      "Around 50",
+      "Fewer than 10",
+      "About 100",
+      "More than 500",
+      "Exactly 12",
+      "Around 75"
+    ],
+    "acceptableAnswers": [
+      "over 200",
+      "200+",
+      "more than 200"
+    ],
+    "explanation": "The family Sciuridae contains 285+ species including tree squirrels, ground squirrels, flying squirrels, prairie dogs, chipmunks, and marmots. The African pygmy squirrel is just 7 cm long while the Indian giant flying squirrel can glide over 400 meters.",
+    "wowFactor": "Flying squirrels don't actually fly — they glide using a skin membrane called a patagium, and can travel over 400 meters in a single glide.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Prairie dogs and chipmunks are both members of the squirrel family.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is the skin membrane called that allows flying squirrels to glide?",
+        "answer": "Patagium",
+        "distractors": [
+          "Patagia",
+          "Gliding membrane",
+          "Wing web"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "The family _____ contains all squirrel species, including marmots and prairie dogs.",
+        "answer": "Sciuridae",
+        "distractors": [
+          "Muridae",
+          "Rodentia",
+          "Castoridae"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which animal is NOT in the squirrel family?",
+        "answer": "Beaver",
+        "distractors": [
+          "Chipmunk",
+          "Prairie dog",
+          "Marmot"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Smithsonian's National Zoo — Squirrels",
+    "sourceUrl": "https://nationalzoo.si.edu/animals/squirrels",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A collage of three squirrel extremes: tiny African pygmy squirrel on a finger, common grey squirrel on a branch, giant Indian flying squirrel gliding between trees",
+    "tags": [
+      "squirrel",
+      "species diversity",
+      "flying squirrel",
+      "sciuridae",
+      "mammals",
+      "wildlife"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-whale-blue-whale-largest",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Marine Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Marine Life",
+    "categoryL3": "",
+    "statement": "The blue whale is the largest animal ever known to exist, reaching up to 33 meters long and weighing up to 200 tonnes.",
+    "quizQuestion": "What is the largest animal that has ever existed?",
+    "correctAnswer": "Blue whale",
+    "distractors": [
+      "Sperm whale",
+      "T. rex",
+      "Megalodon",
+      "Elephant",
+      "Colossal squid",
+      "Brachiosaurus",
+      "Fin whale"
+    ],
+    "acceptableAnswers": [
+      "blue whale",
+      "blue whale (Balaenoptera musculus)"
+    ],
+    "explanation": "At up to 33 m (110 ft) and 200 tonnes, the blue whale outweighs every dinosaur and any other animal in Earth's history. Its heart alone weighs about 180 kg and is the size of a small car. A human could crawl through its aorta.",
+    "wowFactor": "A blue whale's heart is the size of a small car, and a human could actually crawl through its largest artery.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Blue whales are heavier than any dinosaur that ever lived.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How much can a blue whale's heart weigh?",
+        "answer": "About 180 kg",
+        "distractors": [
+          "About 10 kg",
+          "About 50 kg",
+          "Over 500 kg"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Blue whales can reach up to _____ metres in length.",
+        "answer": "33",
+        "distractors": [
+          "15",
+          "20",
+          "50"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is the maximum known weight of a blue whale?",
+        "answer": "200 tonnes",
+        "distractors": [
+          "50 tonnes",
+          "100 tonnes",
+          "500 tonnes"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NOAA Fisheries — Blue Whale",
+    "sourceUrl": "https://www.fisheries.noaa.gov/species/blue-whale",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An aerial view of a blue whale surfacing next to a research boat, illustrating the enormous scale difference — whale is several times longer than the vessel",
+    "tags": [
+      "whale",
+      "blue whale",
+      "largest animal",
+      "marine mammals",
+      "ocean",
+      "size"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-whale-songs-humpback",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Marine Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Marine Life",
+    "categoryL3": "",
+    "statement": "Male humpback whales sing complex songs that can last up to 20 hours and travel thousands of kilometers through the ocean.",
+    "quizQuestion": "How long can a humpback whale song last?",
+    "correctAnswer": "Up to 20 hours",
+    "distractors": [
+      "About 5 minutes",
+      "Up to 1 hour",
+      "About 2 hours",
+      "Up to 48 hours",
+      "Just a few seconds",
+      "Around 6 hours",
+      "Exactly 10 minutes"
+    ],
+    "acceptableAnswers": [
+      "up to 20 hours",
+      "20 hours",
+      "hours"
+    ],
+    "explanation": "Only male humpbacks sing, and their songs evolve over time — all males in a population sing the same song, which gradually changes across years. Songs travel up to 10,000 km through deep ocean channels called the SOFAR channel. The function is primarily believed to be mate attraction or male competition.",
+    "wowFactor": "All humpback males in the same ocean basin sing the exact same evolving song — like a living cultural tradition transmitted across thousands of kilometres.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Both male and female humpback whales sing complex songs.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How far can humpback whale songs travel through the ocean?",
+        "answer": "Thousands of kilometres",
+        "distractors": [
+          "Only a few metres",
+          "Up to 10 km",
+          "About 100 km"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "All humpback males in the same ocean basin sing the _____ evolving song.",
+        "answer": "same",
+        "distractors": [
+          "different",
+          "unique",
+          "inherited"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is the primary believed purpose of humpback whale song?",
+        "answer": "Mate attraction or male competition",
+        "distractors": [
+          "Navigation",
+          "Echolocation",
+          "Warning predators"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NOAA — Humpback Whale Communication",
+    "sourceUrl": "https://www.fisheries.noaa.gov/feature-story/sounds-humpback-whales",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A humpback whale photographed underwater, mouth closed, floating vertically in clear blue water, sound waves illustrated radiating outward",
+    "tags": [
+      "whale",
+      "humpback",
+      "song",
+      "communication",
+      "marine mammals",
+      "behavior"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-whale-migration-grey-whale",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Marine Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Marine Life",
+    "categoryL3": "",
+    "statement": "Grey whales make the longest migration of any mammal, traveling up to 20,000 km round-trip between Arctic feeding grounds and Mexican lagoons.",
+    "quizQuestion": "Which whale makes the longest mammal migration?",
+    "correctAnswer": "Grey whale",
+    "distractors": [
+      "Humpback whale",
+      "Blue whale",
+      "Sperm whale",
+      "Orca",
+      "Minke whale",
+      "Bowhead whale",
+      "Beluga whale"
+    ],
+    "acceptableAnswers": [
+      "grey whale",
+      "gray whale"
+    ],
+    "explanation": "Grey whales migrate 10,000–20,000 km each way between their Arctic summer feeding grounds in the Bering Sea and winter breeding lagoons in Baja California, Mexico. This 20,000 km round trip is the longest migration of any known mammal.",
+    "wowFactor": "Grey whales navigate over 20,000 km each year — equivalent to traveling halfway around the Earth — without GPS, maps, or rest stops.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "The grey whale's annual migration is the longest of any mammal.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Where do grey whales go to breed in winter?",
+        "answer": "Lagoons in Baja California, Mexico",
+        "distractors": [
+          "Hawaiian Islands",
+          "Caribbean Sea",
+          "Gulf of Mexico"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Grey whales feed in the _____ Sea during summer.",
+        "answer": "Bering",
+        "distractors": [
+          "Arctic",
+          "Beaufort",
+          "Chukchi"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How far do grey whales travel on their round-trip migration?",
+        "answer": "Up to 20,000 km",
+        "distractors": [
+          "About 500 km",
+          "Around 5,000 km",
+          "Over 50,000 km"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NOAA Fisheries — Gray Whale",
+    "sourceUrl": "https://www.fisheries.noaa.gov/species/gray-whale",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grey whale breaching near a coastline, barnacle-encrusted mottled grey skin visible, misty ocean horizon with cliffs in background",
+    "tags": [
+      "whale",
+      "grey whale",
+      "migration",
+      "marine mammals",
+      "ocean",
+      "long distance"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-cheetah-fastest-land-animal",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "The cheetah is the fastest land animal, reaching speeds of up to 112 km/h in bursts and accelerating from 0 to 100 km/h in about 3 seconds.",
+    "quizQuestion": "What is the top speed a cheetah can reach?",
+    "correctAnswer": "112 km/h",
+    "distractors": [
+      "80 km/h",
+      "60 km/h",
+      "150 km/h",
+      "95 km/h",
+      "200 km/h",
+      "70 km/h",
+      "130 km/h"
+    ],
+    "acceptableAnswers": [
+      "112 km/h",
+      "112 kph",
+      "about 112 km/h",
+      "up to 112 km/h"
+    ],
+    "explanation": "Cheetahs can reach 112 km/h (70 mph) in short sprints of 400–500 m. Their acceleration of 0–100 km/h in ~3 seconds rivals high-performance sports cars. Adaptations include a flexible spine acting as a spring, enlarged heart and lungs, and semi-retractable claws for traction.",
+    "wowFactor": "A cheetah accelerates faster than a Ferrari — 0 to 100 km/h in about 3 seconds, using its spine as a giant spring with every stride.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "A cheetah can accelerate from 0 to 100 km/h faster than most sports cars.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What body part acts as a spring to boost a cheetah's stride length?",
+        "answer": "Flexible spine",
+        "distractors": [
+          "Long tail",
+          "Semi-retractable claws",
+          "Enlarged ribcage"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "A cheetah's sprint is typically only _____ to 500 metres long.",
+        "answer": "400",
+        "distractors": [
+          "100",
+          "1000",
+          "200"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which feature gives cheetahs extra traction during high-speed runs?",
+        "answer": "Semi-retractable claws",
+        "distractors": [
+          "Fully retracted claws",
+          "Padded feet",
+          "Wide paw spread"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Smithsonian's National Zoo — Cheetah",
+    "sourceUrl": "https://nationalzoo.si.edu/animals/cheetah",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cheetah in full sprint across open savanna, all four feet off the ground simultaneously, dust kicking up, motion blur on background",
+    "tags": [
+      "cheetah",
+      "speed",
+      "fastest land animal",
+      "mammals",
+      "africa",
+      "big cats"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-cheetah-cannot-roar",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Unlike lions and leopards, cheetahs cannot roar — instead they chirp, purr, and make bird-like chirping calls to communicate.",
+    "quizQuestion": "What sound can cheetahs make that lions cannot?",
+    "correctAnswer": "Purr",
+    "distractors": [
+      "Roar",
+      "Growl",
+      "Howl",
+      "Bark",
+      "Hiss loudly",
+      "Trumpet",
+      "Cough-roar"
+    ],
+    "acceptableAnswers": [
+      "purr",
+      "purring"
+    ],
+    "explanation": "Cheetahs lack the modified hyoid bone that allows lions, tigers, leopards, and jaguars to roar. Instead, they belong to the purring cats (Acinonyx), and can purr continuously on both the inhale and exhale. They also produce chirps, yelps, and high-pitched bleats that sound remarkably like birds.",
+    "wowFactor": "A cheetah sounds more like a bird than a lion — its chirp call is so high-pitched that researchers first thought they were hearing birds when studying them in the wild.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Cheetahs can roar like lions and tigers.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What bone structure allows lions to roar but cheetahs cannot?",
+        "answer": "Modified hyoid bone",
+        "distractors": [
+          "Enlarged larynx",
+          "Extra vocal cords",
+          "Fused jaw joint"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Cheetahs can purr continuously on both the inhale and the _____.",
+        "answer": "exhale",
+        "distractors": [
+          "swallow",
+          "pause",
+          "jump"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which big cats CAN roar? (choose the correct group)",
+        "answer": "Lions, tigers, leopards, and jaguars",
+        "distractors": [
+          "Lions, cheetahs, and pumas",
+          "All big cats",
+          "Leopards, cheetahs, and snow leopards"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Cheetah Conservation Fund",
+    "sourceUrl": "https://cheetah.org/learn/about-cheetahs/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cheetah with mouth open in a chirp call, showing small delicate teeth and narrow jaw, contrasted with an inset of a roaring lion for comparison",
+    "tags": [
+      "cheetah",
+      "roar",
+      "purr",
+      "big cats",
+      "vocalization",
+      "mammals",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-cheetah-hunting-success-rate",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Cheetahs have a hunting success rate of about 50–58%, the highest of any large African predator, but often lose kills to larger predators.",
+    "quizQuestion": "What is a cheetah's approximate hunting success rate?",
+    "correctAnswer": "About 50–58%",
+    "distractors": [
+      "About 10%",
+      "Around 25%",
+      "Over 90%",
+      "About 5%",
+      "Around 70%",
+      "Less than 1%",
+      "Exactly 33%"
+    ],
+    "acceptableAnswers": [
+      "50-58%",
+      "about 50%",
+      "around 50%",
+      "50 to 58 percent"
+    ],
+    "explanation": "Despite being elite hunters, cheetahs are surprisingly vulnerable: they must rest for 20–30 minutes after a sprint to cool down before eating, during which lions, hyenas, and vultures frequently steal their kill. They lose an estimated 10–15% of their kills to scavengers.",
+    "wowFactor": "After a kill, a cheetah must rest for 30 minutes because its body overheats — during that window, lions or hyenas often steal the meal.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Cheetahs have a lower hunting success rate than lions.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Why must a cheetah rest after a sprint before eating its kill?",
+        "answer": "Its body overheats and needs to cool down",
+        "distractors": [
+          "It needs to locate its prey again",
+          "It must mark territory first",
+          "Its claws need to retract safely"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Cheetahs lose approximately _____ percent of their kills to scavengers.",
+        "answer": "10–15",
+        "distractors": [
+          "50",
+          "1",
+          "80"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which animals most commonly steal cheetah kills?",
+        "answer": "Lions and hyenas",
+        "distractors": [
+          "Leopards and jackals",
+          "Wild dogs and baboons",
+          "Crocodiles and vultures"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "African Wildlife Foundation — Cheetah",
+    "sourceUrl": "https://www.awf.org/wildlife-conservation/cheetah",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A panting cheetah resting beside a fresh kill on open savanna, looking over its shoulder warily as vultures circle in the sky above",
+    "tags": [
+      "cheetah",
+      "hunting",
+      "predator",
+      "success rate",
+      "africa",
+      "mammals",
+      "food chain"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gorilla-dna-similarity",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Gorillas share approximately 98.3% of their DNA with humans, making them our second-closest living relatives after chimpanzees.",
+    "quizQuestion": "What percentage of DNA do gorillas share with humans?",
+    "correctAnswer": "98.3%",
+    "distractors": [
+      "75%",
+      "90%",
+      "50%",
+      "99.9%",
+      "85%",
+      "95%",
+      "70%"
+    ],
+    "acceptableAnswers": [
+      "98.3%",
+      "about 98%",
+      "98 percent"
+    ],
+    "explanation": "Humans and gorillas share ~98.3% of their DNA sequence. Chimpanzees are even closer at ~98.7%. Gorillas diverged from the human lineage about 8–10 million years ago. Despite the similarity, the 1.7% difference affects thousands of genes relating to brain size, immune function, and bipedalism.",
+    "wowFactor": "Gorillas and humans share 98.3% of DNA — more than a lion shares with a house cat, which only share about 95%.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Gorillas are humans' closest living relatives.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which ape is most closely related to humans?",
+        "answer": "Chimpanzee",
+        "distractors": [
+          "Gorilla",
+          "Orangutan",
+          "Bonobo (tie with chimp)"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Gorillas diverged from the human lineage approximately _____ million years ago.",
+        "answer": "8–10",
+        "distractors": [
+          "1",
+          "50",
+          "100"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What percentage of DNA do chimpanzees share with humans?",
+        "answer": "About 98.7%",
+        "distractors": [
+          "About 80%",
+          "About 50%",
+          "Exactly 100%"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "National Human Genome Research Institute",
+    "sourceUrl": "https://www.genome.gov/27527584/comparison-of-human-and-great-ape-dna",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A western lowland gorilla looking directly at the camera with intelligent eyes, facial details showing expressive eyebrows and leathery nose — distinctly humanlike features",
+    "tags": [
+      "gorilla",
+      "DNA",
+      "evolution",
+      "primates",
+      "humans",
+      "genetics",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gorilla-silverback-dominance",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "A male gorilla is called a silverback when he matures, around age 12, developing a distinctive silver-grey saddle of hair across his back.",
+    "quizQuestion": "At what age does a male gorilla become a silverback?",
+    "correctAnswer": "Around 12 years old",
+    "distractors": [
+      "At birth",
+      "Around 5 years old",
+      "Around 3 years old",
+      "After 20 years",
+      "At exactly 18 years",
+      "Around 25 years old",
+      "At 8 years old"
+    ],
+    "acceptableAnswers": [
+      "around 12",
+      "12 years old",
+      "age 12",
+      "about 12"
+    ],
+    "explanation": "Male gorillas are called blackbacks until about age 12, when they begin growing a distinctive silver-grey saddle of hair. A silverback leads a troop of 5–30 gorillas and is the dominant protector, arbitrator of disputes, and sole breeding male. A silverback's arm span can reach 2.7 m.",
+    "wowFactor": "A silverback gorilla's arm span of 2.7 m is wider than a standard doorway — they can reach across a room without moving their feet.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Only the dominant male in a gorilla troop develops a silver back.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is a young adult male gorilla (before silverback) called?",
+        "answer": "Blackback",
+        "distractors": [
+          "Silverback",
+          "Juvenile",
+          "Beta male"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "A silverback gorilla's arm span can reach up to _____ metres.",
+        "answer": "2.7",
+        "distractors": [
+          "1.2",
+          "4.0",
+          "2.0"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is the typical size range of a gorilla troop led by a silverback?",
+        "answer": "5 to 30 individuals",
+        "distractors": [
+          "2 to 5 individuals",
+          "50 to 100 individuals",
+          "Exactly 10 individuals"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "WWF — Mountain Gorilla",
+    "sourceUrl": "https://www.worldwildlife.org/species/mountain-gorilla",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A mature male silverback gorilla standing upright, showing the distinctive silver-grey saddle of hair across his broad back, surrounded by jungle foliage",
+    "tags": [
+      "gorilla",
+      "silverback",
+      "primates",
+      "dominance",
+      "social structure",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gorilla-tool-use",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Mammals",
+    "categoryL3": "",
+    "statement": "Wild gorillas use tools such as sticks to gauge water depth before crossing, and branches as bridges or walking supports.",
+    "quizQuestion": "What tool do gorillas use to measure water depth before crossing?",
+    "correctAnswer": "A stick",
+    "distractors": [
+      "A stone",
+      "A leaf",
+      "Their hands",
+      "A bone",
+      "A vine",
+      "A palm frond",
+      "Another gorilla"
+    ],
+    "acceptableAnswers": [
+      "a stick",
+      "stick",
+      "branch",
+      "a branch"
+    ],
+    "explanation": "Wild gorillas were first documented using tools in 2005 in the Republic of Congo. A female gorilla used a stick to test the depth of a swampy pool before wading in. Other documented tool uses include using a log as a bridge and a branch as a stabilizing support while foraging. This was a landmark discovery because gorillas were the last great ape group to be observed using tools in the wild.",
+    "wowFactor": "Gorillas were the last great apes confirmed to use tools in the wild — the discovery in 2005 shocked primatologists who had studied them for decades.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Gorillas were the first great ape documented using tools in the wild.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "When was wild gorilla tool use first documented?",
+        "answer": "2005",
+        "distractors": [
+          "1960",
+          "1990",
+          "2015"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Wild gorilla tool use was first documented in the Republic of _____.",
+        "answer": "Congo",
+        "distractors": [
+          "Rwanda",
+          "Uganda",
+          "Cameroon"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which was the LAST great ape confirmed using tools in the wild?",
+        "answer": "Gorilla",
+        "distractors": [
+          "Chimpanzee",
+          "Orangutan",
+          "Bonobo"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wild Gorilla Tool Use — PLOS Biology 2005",
+    "sourceUrl": "https://doi.org/10.1371/journal.pbio.0030380",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gorilla standing in shallow swamp water, holding a long stick vertically and probing the depth ahead, dense Congo rainforest behind",
+    "tags": [
+      "gorilla",
+      "tool use",
+      "primates",
+      "cognition",
+      "intelligence",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-shark-electroreception-ampullae",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Ocean Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Ocean Life",
+    "categoryL3": "",
+    "statement": "Sharks can detect the weak electrical fields produced by the heartbeats of prey using gel-filled pores called the ampullae of Lorenzini.",
+    "quizQuestion": "What organ lets sharks detect the electrical fields of prey?",
+    "correctAnswer": "Ampullae of Lorenzini",
+    "distractors": [
+      "Lateral line only",
+      "Electroplaques",
+      "Lorenzini gland",
+      "Electroreceptors",
+      "Sensory pits",
+      "Olfactory bulb",
+      "Nasal organ"
+    ],
+    "acceptableAnswers": [
+      "ampullae of lorenzini",
+      "ampullae",
+      "lorenzini"
+    ],
+    "explanation": "The ampullae of Lorenzini are jelly-filled canals on a shark's snout that detect electric fields as weak as 5 nanovolts per centimetre — roughly the electric field produced by a single AA battery 1,600 km away. This sense, called electroreception, helps sharks find prey hidden under sand or in murky water.",
+    "wowFactor": "Sharks can detect electric fields a billion times weaker than what humans can feel — equivalent to sensing a single AA battery from 1,600 km away.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "The ampullae of Lorenzini are found on a shark's tail.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How sensitive are the ampullae of Lorenzini?",
+        "answer": "Can detect 5 nanovolts per centimetre",
+        "distractors": [
+          "Can detect only strong electrical charges",
+          "Require direct contact",
+          "Are only useful in clear water"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "The ampullae of Lorenzini are filled with a special _____.",
+        "answer": "jelly (gel)",
+        "distractors": [
+          "oil",
+          "salt water",
+          "mucus"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What is the name for the biological ability to detect electric fields?",
+        "answer": "Electroreception",
+        "distractors": [
+          "Mechanoreception",
+          "Chemoreception",
+          "Magnetoreception"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Smithsonian Ocean — Shark Senses",
+    "sourceUrl": "https://ocean.si.edu/ocean-life/sharks-rays/shark-senses",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a great white shark's snout showing the small dark pore openings of the ampullae of Lorenzini scattered across pale skin near the nostrils",
+    "tags": [
+      "shark",
+      "electroreception",
+      "ampullae of lorenzini",
+      "senses",
+      "ocean",
+      "fish",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-shark-swimming-myth-busted",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Ocean Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Ocean Life",
+    "categoryL3": "",
+    "statement": "Most shark species CAN stop swimming and rest on the ocean floor — only a few obligate ram ventilators like the great white must keep moving to breathe.",
+    "quizQuestion": "Which sharks MUST keep swimming to breathe?",
+    "correctAnswer": "Obligate ram ventilators",
+    "distractors": [
+      "All sharks",
+      "Only nurse sharks",
+      "Only whale sharks",
+      "Every ocean shark",
+      "Bottom-dwelling sharks",
+      "Deep water species",
+      "Freshwater sharks"
+    ],
+    "acceptableAnswers": [
+      "obligate ram ventilators",
+      "great white",
+      "mako shark",
+      "ram ventilators"
+    ],
+    "explanation": "The myth that all sharks must swim constantly or die applies only to obligate ram ventilators — species like great white, mako, and salmon sharks that lack the ability to pump water over their gills. Most sharks, including nurse sharks, wobbegongs, and even whale sharks can rest motionless. Nurse sharks are often found lying still on the seafloor.",
+    "wowFactor": "Nurse sharks can sleep on the seafloor for hours — the 'sharks must swim to survive' myth is only true for about 25 species out of over 500.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "All sharks must swim continuously or they will die.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Which shark is commonly observed resting motionless on the seafloor?",
+        "answer": "Nurse shark",
+        "distractors": [
+          "Great white shark",
+          "Mako shark",
+          "Hammerhead shark"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "Great white sharks must keep moving because they are _____ ram ventilators.",
+        "answer": "obligate",
+        "distractors": [
+          "facultative",
+          "passive",
+          "active"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "Approximately how many of 500+ shark species are obligate swimmers?",
+        "answer": "About 25",
+        "distractors": [
+          "All 500+",
+          "About 250",
+          "Fewer than 5"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Florida Museum — Shark Research",
+    "sourceUrl": "https://www.floridamuseum.ufl.edu/shark-research/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A nurse shark lying completely still on a sandy ocean floor, camouflaged among coral rubble, small fish swimming casually past it",
+    "tags": [
+      "shark",
+      "myths",
+      "nurse shark",
+      "great white",
+      "breathing",
+      "ocean",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-shark-ancient-lineage",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "Ocean Life",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Ocean Life",
+    "categoryL3": "",
+    "statement": "Sharks are older than trees — they first appeared around 450 million years ago, predating the earliest land forests by about 90 million years.",
+    "quizQuestion": "Roughly how old is the shark lineage in millions of years?",
+    "correctAnswer": "About 450 million years",
+    "distractors": [
+      "About 65 million years",
+      "Around 200 million years",
+      "About 100 million years",
+      "Around 10 million years",
+      "Over 1 billion years",
+      "About 300 million years",
+      "Around 50 million years"
+    ],
+    "acceptableAnswers": [
+      "450 million years",
+      "about 450 million years",
+      "450 mya"
+    ],
+    "explanation": "Sharks have survived all five of Earth's mass extinction events, including the Permian extinction that wiped out 96% of marine species. The earliest trees (Archaeopteris) evolved around 360 million years ago, meaning sharks predate forests by ~90 million years. Modern sharks are largely similar to their Devonian ancestors — they're an example of extreme evolutionary success.",
+    "wowFactor": "Sharks predate trees, flowers, dinosaurs, and even most land animals — they existed before the coal forests that would eventually become modern fossil fuels.",
+    "variants": [
+      {
+        "type": "true-false",
+        "question": "Sharks are older than the earliest land trees.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "How many of Earth's mass extinction events have sharks survived?",
+        "answer": "All five",
+        "distractors": [
+          "None — they evolved after",
+          "Two",
+          "Only the most recent one"
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "question": "The geological period when sharks first appeared was the _____.",
+        "answer": "Ordovician/Devonian",
+        "distractors": [
+          "Jurassic",
+          "Cretaceous",
+          "Cambrian"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "question": "What does sharks' survival of all five mass extinctions indicate?",
+        "answer": "Extreme evolutionary success and adaptability",
+        "distractors": [
+          "That they are immune to climate change",
+          "That oceans never changed",
+          "That they haven't evolved at all"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Natural History Museum — Shark Evolution",
+    "sourceUrl": "https://www.nhm.ac.uk/discover/shark-evolution.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A shark silhouette superimposed over a geological time scale infographic, with markers showing sharks appearing before dinosaurs, trees, and flowering plants — deep ocean blue background",
+    "tags": [
+      "shark",
+      "ancient",
+      "evolution",
+      "paleontology",
+      "ocean",
+      "mass extinction",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

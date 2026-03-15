@@ -11246,5 +11246,1715 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-neuroplasticity-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Neuroplasticity is the brain's ability to reorganize itself by forming new neural connections throughout life.",
+    "quizQuestion": "What is the brain's ability to form new neural connections called?",
+    "correctAnswer": "Neuroplasticity",
+    "distractors": [
+      "Memory loss",
+      "Brain hardening",
+      "Skull expansion",
+      "Synaptic pruning",
+      "Neurogenesis",
+      "Cerebral lateralization",
+      "Long-term potentiation only",
+      "Axonal myelination exclusively"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your brain is physically reshaping itself right now as you read this!",
+    "wowFactor": "Your brain is physically reshaping itself right now as you read this!",
+    "variants": [
+      {
+        "question": "Which term describes the brain rewiring itself after injury?",
+        "type": "forward",
+        "distractors": [
+          "Neurogenesis",
+          "Synaptic pruning",
+          "Cerebral dominance"
+        ],
+        "answer": "Neuroplasticity"
+      },
+      {
+        "question": "Neuroplasticity allows the brain to do what?",
+        "type": "reverse",
+        "distractors": [
+          "Increase skull size",
+          "Reduce oxygen need",
+          "Generate new bones"
+        ],
+        "answer": "Form new neural connections"
+      },
+      {
+        "question": "Which is NOT an example of neuroplasticity?",
+        "type": "negative",
+        "distractors": [
+          "Learning a new skill",
+          "Stroke recovery",
+          "Mastering a language"
+        ],
+        "answer": "Bone marrow regeneration"
+      },
+      {
+        "question": "The brain's ability to reorganize and form new connections is called _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Homeostasis",
+          "Chemotaxis",
+          "Apoptosis"
+        ],
+        "answer": "Neuroplasticity"
+      },
+      {
+        "question": "Neuroplasticity means the brain can change and adapt throughout life.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3368933/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A glowing pixel-art brain with bright threads of light shooting between neurons, forming new glowing connections. Electric blue and gold sparks show active rewiring on a dark neural background.",
+    "tags": [
+      "brain",
+      "neuroplasticity",
+      "neurons",
+      "learning",
+      "adaptation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-memory-types-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Long-term memory is divided into declarative (explicit) memory and non-declarative (implicit) memory.",
+    "quizQuestion": "What are the two main categories of long-term memory?",
+    "correctAnswer": "Declarative and non-declarative",
+    "distractors": [
+      "Short-term only",
+      "Visual and auditory",
+      "Fast and slow",
+      "Episodic and semantic",
+      "Procedural and priming",
+      "Working and sensory",
+      "Hippocampal and amygdalar",
+      "Associative and non-associative"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "You have two separate memory systems — one for facts, one for skills — stored in different brain regions!",
+    "wowFactor": "You have two separate memory systems — one for facts, one for skills — stored in different brain regions!",
+    "variants": [
+      {
+        "question": "Which type of memory stores facts and events you can consciously recall?",
+        "type": "forward",
+        "distractors": [
+          "Procedural memory",
+          "Priming memory",
+          "Conditioned reflexes"
+        ],
+        "answer": "Declarative memory"
+      },
+      {
+        "question": "Knowing how to ride a bike without thinking about it is an example of what memory type?",
+        "type": "reverse",
+        "distractors": [
+          "Episodic memory",
+          "Semantic memory",
+          "Working memory"
+        ],
+        "answer": "Non-declarative (implicit) memory"
+      },
+      {
+        "question": "Which is NOT a subcategory of declarative memory?",
+        "type": "negative",
+        "distractors": [
+          "Episodic memory",
+          "Semantic memory",
+          "Autobiographical memory"
+        ],
+        "answer": "Procedural memory"
+      },
+      {
+        "question": "Memory of personal life events is stored as _____ memory.",
+        "type": "fill_blank",
+        "distractors": [
+          "Sensory",
+          "Priming",
+          "Motor"
+        ],
+        "answer": "Episodic"
+      },
+      {
+        "question": "Procedural memory is a type of declarative (explicit) memory.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557445/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A split pixel-art brain: the left glows with books and text bubbles representing explicit facts, the right shows a bicycle and musical notes for implicit skills. Gold dividing line runs down the center.",
+    "tags": [
+      "memory",
+      "brain",
+      "declarative",
+      "procedural",
+      "cognition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-sleep-memory-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "During sleep, the brain consolidates memories by replaying and transferring information from the hippocampus to the cortex.",
+    "quizQuestion": "What memory process happens in the brain during sleep?",
+    "correctAnswer": "Memory consolidation",
+    "distractors": [
+      "Forgetting old data",
+      "Creating new sensory input",
+      "Physical muscle training",
+      "Synaptic pruning only",
+      "Cortisol spike",
+      "Glymphatic system activation",
+      "Sharp-wave ripple suppression",
+      "Thalamic gating reversal"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your brain literally replays your day while you sleep to lock in what you learned!",
+    "wowFactor": "Your brain literally replays your day while you sleep to lock in what you learned!",
+    "variants": [
+      {
+        "question": "Which brain structure sends memories to the cortex during sleep?",
+        "type": "forward",
+        "distractors": [
+          "Amygdala",
+          "Cerebellum",
+          "Thalamus"
+        ],
+        "answer": "Hippocampus"
+      },
+      {
+        "question": "Why is sleep essential for learning new information?",
+        "type": "reverse",
+        "distractors": [
+          "It grows new neurons only",
+          "It clears all old memories",
+          "It speeds up reflexes"
+        ],
+        "answer": "It consolidates memories"
+      },
+      {
+        "question": "Which brain process does NOT primarily occur during sleep?",
+        "type": "negative",
+        "distractors": [
+          "Memory consolidation",
+          "Waste clearance",
+          "Growth hormone release"
+        ],
+        "answer": "Conscious decision-making"
+      },
+      {
+        "question": "Memory consolidation transfers information from the hippocampus to the _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Cerebellum",
+          "Brain stem",
+          "Pituitary gland"
+        ],
+        "answer": "Cortex"
+      },
+      {
+        "question": "Sleeping after studying helps consolidate memories more effectively.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.nature.com/articles/nrn1861",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art sleeping person with a transparent brain showing a glowing hippocampus firing memory sparks outward to the surrounding cortex. Blue dream-cloud bubbles float above the pillow.",
+    "tags": [
+      "sleep",
+      "memory",
+      "hippocampus",
+      "consolidation",
+      "brain"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-fracture-repair-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Bone fracture healing occurs in four overlapping stages: hematoma formation, soft callus, hard callus, and bone remodeling.",
+    "quizQuestion": "What is the first stage of bone fracture healing?",
+    "correctAnswer": "Hematoma formation",
+    "distractors": [
+      "Skin scabbing",
+      "Muscle contraction",
+      "Nerve firing",
+      "Cartilage softening",
+      "Calcium leaching",
+      "Fibrous tissue overgrowth",
+      "Periosteal stripping",
+      "Endochondral ossification failure"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "A broken bone actually builds itself back — often stronger than before — using its own blood clot as a scaffold!",
+    "wowFactor": "A broken bone actually builds itself back — often stronger than before — using its own blood clot as a scaffold!",
+    "variants": [
+      {
+        "question": "Which stage of fracture repair involves cartilage replacing the blood clot?",
+        "type": "forward",
+        "distractors": [
+          "Remodeling stage",
+          "Hematoma stage",
+          "Ossification plateau"
+        ],
+        "answer": "Soft callus stage"
+      },
+      {
+        "question": "In bone healing, what does the hard callus eventually become?",
+        "type": "reverse",
+        "distractors": [
+          "Scar tissue",
+          "Cartilage forever",
+          "Marrow only"
+        ],
+        "answer": "Mature bone tissue"
+      },
+      {
+        "question": "Which is NOT one of the four stages of bone fracture healing?",
+        "type": "negative",
+        "distractors": [
+          "Hematoma formation",
+          "Hard callus",
+          "Bone remodeling"
+        ],
+        "answer": "Nerve regeneration phase"
+      },
+      {
+        "question": "The final stage of bone fracture healing is bone _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Dissolving",
+          "Calcifying",
+          "Softening"
+        ],
+        "answer": "Remodeling"
+      },
+      {
+        "question": "A blood clot forms at a fracture site before bone repair begins.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK507825/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art cross-section of a bone mid-repair: a glowing blood clot on the left, soft pink cartilage in the center, and solid white hard callus on the right. Osteoblast cells shaped like tiny workers hammer the new bone into place.",
+    "tags": [
+      "bone",
+      "fracture",
+      "healing",
+      "callus",
+      "osteoblast"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-calcium-bones-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "About 99% of the body's calcium is stored in bones and teeth, where it provides structural strength.",
+    "quizQuestion": "What percentage of your body's calcium is stored in bones and teeth?",
+    "correctAnswer": "99%",
+    "distractors": [
+      "50%",
+      "25%",
+      "10%",
+      "75%",
+      "85%",
+      "90%",
+      "95%",
+      "97%"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your skeleton is basically a giant calcium bank that the rest of your body makes withdrawals from!",
+    "wowFactor": "Your skeleton is basically a giant calcium bank that the rest of your body makes withdrawals from!",
+    "variants": [
+      {
+        "question": "Where is the vast majority of the body's calcium located?",
+        "type": "forward",
+        "distractors": [
+          "Blood and lymph",
+          "Muscles only",
+          "Kidneys and liver"
+        ],
+        "answer": "Bones and teeth"
+      },
+      {
+        "question": "What mineral makes up the primary structural component of bones?",
+        "type": "reverse",
+        "distractors": [
+          "Iron",
+          "Potassium",
+          "Magnesium"
+        ],
+        "answer": "Calcium"
+      },
+      {
+        "question": "Which is NOT a function of calcium in the body?",
+        "type": "negative",
+        "distractors": [
+          "Bone strength",
+          "Muscle contraction",
+          "Nerve signaling"
+        ],
+        "answer": "Carrying oxygen in blood"
+      },
+      {
+        "question": "The body stores about _____ of its calcium in bones and teeth.",
+        "type": "fill_blank",
+        "distractors": [
+          "50%",
+          "75%",
+          "40%"
+        ],
+        "answer": "99%"
+      },
+      {
+        "question": "Most of the body's calcium is found in the bloodstream.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art skeleton glowing with crystalline white and pale gold light. Small calcium mineral icons shaped like hexagons float around the bones. A tiny blood vessel in the corner shows only 1% marker.",
+    "tags": [
+      "calcium",
+      "bones",
+      "minerals",
+      "skeleton",
+      "nutrition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-osteoporosis-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Osteoporosis is a disease where decreased bone density makes bones fragile and more likely to fracture.",
+    "quizQuestion": "What condition causes bones to become porous and fragile due to low density?",
+    "correctAnswer": "Osteoporosis",
+    "distractors": [
+      "Arthritis",
+      "Anemia",
+      "Diabetes",
+      "Rickets",
+      "Osteomyelitis",
+      "Paget's disease",
+      "Osteogenesis imperfecta",
+      "Hyperparathyroidism"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Osteoporosis can make bones so fragile that even a sneeze can cause a vertebral fracture!",
+    "wowFactor": "Osteoporosis can make bones so fragile that even a sneeze can cause a vertebral fracture!",
+    "variants": [
+      {
+        "question": "Osteoporosis is most common in which population group?",
+        "type": "forward",
+        "distractors": [
+          "Teen boys",
+          "Infants",
+          "Adult men under 40"
+        ],
+        "answer": "Postmenopausal women"
+      },
+      {
+        "question": "Which mineral deficiency is the primary driver of osteoporosis?",
+        "type": "reverse",
+        "distractors": [
+          "Iron",
+          "Sodium",
+          "Zinc"
+        ],
+        "answer": "Calcium"
+      },
+      {
+        "question": "Which is NOT a risk factor for osteoporosis?",
+        "type": "negative",
+        "distractors": [
+          "Low calcium diet",
+          "Smoking",
+          "Low estrogen levels"
+        ],
+        "answer": "Regular weight-bearing exercise"
+      },
+      {
+        "question": "Osteoporosis literally means 'porous _____'.",
+        "type": "fill_blank",
+        "distractors": [
+          "Tissue",
+          "Skin",
+          "Cartilage"
+        ],
+        "answer": "Bone"
+      },
+      {
+        "question": "Osteoporosis increases the risk of fractures from minor falls.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.bones.nih.gov/health-info/bone/osteoporosis/overview",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art side-by-side comparison: a dense healthy bone cross-section in solid white vs. a porous osteoporotic bone with visible honeycombed holes in pale grey. A tiny sneeze cloud causes a crack in the fragile bone.",
+    "tags": [
+      "osteoporosis",
+      "bone density",
+      "fracture",
+      "calcium",
+      "aging"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-stomach-acid-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The stomach produces hydrochloric acid with a pH between 1.5 and 3.5, making it highly acidic enough to dissolve metal.",
+    "quizQuestion": "What is the approximate pH of stomach acid?",
+    "correctAnswer": "1.5 to 3.5",
+    "distractors": [
+      "pH 7 (neutral)",
+      "pH 12 (alkaline)",
+      "pH 8",
+      "pH 5 to 6",
+      "pH 6 to 7",
+      "pH 4 to 5",
+      "pH 3.5 to 5",
+      "pH 0.5 to 1"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your stomach acid is strong enough to dissolve a razor blade — yet your stomach lining survives by producing fresh mucus every two weeks!",
+    "wowFactor": "Your stomach acid is strong enough to dissolve a razor blade — yet your stomach lining survives by producing fresh mucus every two weeks!",
+    "variants": [
+      {
+        "question": "What acid is produced by the stomach for digestion?",
+        "type": "forward",
+        "distractors": [
+          "Sulfuric acid",
+          "Citric acid",
+          "Acetic acid"
+        ],
+        "answer": "Hydrochloric acid"
+      },
+      {
+        "question": "A pH of 2 in the stomach indicates what condition?",
+        "type": "reverse",
+        "distractors": [
+          "Alkaline state",
+          "Neutral digestion",
+          "Low enzyme activity"
+        ],
+        "answer": "Highly acidic environment"
+      },
+      {
+        "question": "Which substance does the stomach use to protect its own lining from acid?",
+        "type": "negative",
+        "distractors": [
+          "Mucus layer",
+          "Bicarbonate buffer",
+          "Pepsin inhibitor"
+        ],
+        "answer": "Bile salts"
+      },
+      {
+        "question": "Stomach acid has a pH of approximately _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "7",
+          "5",
+          "9"
+        ],
+        "answer": "2"
+      },
+      {
+        "question": "Stomach acid is strong enough to dissolve certain metals.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK507793/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art stomach cross-section with bright green acid bubbling inside. A tiny razor blade drops in and starts dissolving. The stomach wall glows with a protective mucus shimmer in blue-white.",
+    "tags": [
+      "stomach",
+      "acid",
+      "pH",
+      "digestion",
+      "hydrochloric acid"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-gut-bacteria-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The human gut contains approximately 38 trillion bacteria, roughly equal to the total number of human cells in the body.",
+    "quizQuestion": "Approximately how many bacteria live in the human gut?",
+    "correctAnswer": "38 trillion",
+    "distractors": [
+      "500",
+      "1 million",
+      "1 billion",
+      "5 trillion",
+      "10 trillion",
+      "1 trillion",
+      "100 trillion",
+      "10 billion"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "You are only about half human — your gut alone hosts as many bacteria as you have body cells!",
+    "wowFactor": "You are only about half human — your gut alone hosts as many bacteria as you have body cells!",
+    "variants": [
+      {
+        "question": "The number of gut bacteria is roughly equal to the number of what in the body?",
+        "type": "forward",
+        "distractors": [
+          "Red blood cells only",
+          "Neurons",
+          "Platelets"
+        ],
+        "answer": "Human cells"
+      },
+      {
+        "question": "What is the collective name for all microorganisms living in the gut?",
+        "type": "reverse",
+        "distractors": [
+          "Enteric nervous system",
+          "Lymphatic flora",
+          "Intestinal enzymes"
+        ],
+        "answer": "Gut microbiome"
+      },
+      {
+        "question": "Which is NOT a proven benefit of a healthy gut microbiome?",
+        "type": "negative",
+        "distractors": [
+          "Stronger immune response",
+          "Better mood regulation",
+          "Improved digestion"
+        ],
+        "answer": "Improved night vision"
+      },
+      {
+        "question": "The human gut contains roughly _____ bacteria.",
+        "type": "fill_blank",
+        "distractors": [
+          "1 thousand",
+          "5 billion",
+          "100 million"
+        ],
+        "answer": "38 trillion"
+      },
+      {
+        "question": "Gut bacteria outnumber human cells by 10 to 1.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.cell.com/cell/fulltext/S0092-8674(16)31305-6",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art intestine cross-section packed with colorful rod-shaped and round bacteria in green, purple, and orange. A counter in the corner ticks up to '38 TRILLION'. A tiny human figure stands next to a matching crowd of bacteria for scale.",
+    "tags": [
+      "gut bacteria",
+      "microbiome",
+      "digestion",
+      "trillions",
+      "health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-intestine-length-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The small intestine is approximately 6 to 7 meters long in a living adult, while the large intestine is about 1.5 meters long.",
+    "quizQuestion": "How long is the small intestine in an adult?",
+    "correctAnswer": "About 6 to 7 meters",
+    "distractors": [
+      "50 centimeters",
+      "1 meter",
+      "20 meters",
+      "3 meters",
+      "4 meters",
+      "10 meters",
+      "5 meters",
+      "8 meters"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your small intestine is longer than a midsize car — and it fits inside your belly by coiling tightly!",
+    "wowFactor": "Your small intestine is longer than a midsize car — and it fits inside your belly by coiling tightly!",
+    "variants": [
+      {
+        "question": "Which part of the intestinal tract is longer?",
+        "type": "forward",
+        "distractors": [
+          "Large intestine",
+          "Rectum",
+          "Duodenum only"
+        ],
+        "answer": "Small intestine"
+      },
+      {
+        "question": "Approximately how long is the large intestine in adults?",
+        "type": "reverse",
+        "distractors": [
+          "6 meters",
+          "10 meters",
+          "0.5 meters"
+        ],
+        "answer": "About 1.5 meters"
+      },
+      {
+        "question": "Which is NOT a section of the small intestine?",
+        "type": "negative",
+        "distractors": [
+          "Duodenum",
+          "Jejunum",
+          "Ileum"
+        ],
+        "answer": "Cecum"
+      },
+      {
+        "question": "The small intestine in an adult is approximately _____ long.",
+        "type": "fill_blank",
+        "distractors": [
+          "1 meter",
+          "20 meters",
+          "50 centimeters"
+        ],
+        "answer": "6 to 7 meters"
+      },
+      {
+        "question": "Despite its name, the small intestine is longer than the large intestine.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.kenhub.com/en/library/anatomy/small-intestine",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art abdominal cavity showing tightly coiled pink intestines labeled 'small intestine — 7m' with a scale marker. A smaller frame shows the wider large intestine at '1.5m' beside it. Both glow warmly against a dark red background.",
+    "tags": [
+      "intestine",
+      "digestion",
+      "anatomy",
+      "small intestine",
+      "length"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-nerve-speed-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The fastest nerve signals in the human body travel at up to 120 meters per second along large myelinated motor neurons.",
+    "quizQuestion": "How fast can the fastest nerve signals travel in the human body?",
+    "correctAnswer": "Up to 120 meters per second",
+    "distractors": [
+      "1 meter per second",
+      "299,792 km/s (speed of light)",
+      "0.5 meters per second",
+      "10 meters per second",
+      "50 meters per second",
+      "340 meters per second",
+      "80 meters per second",
+      "100 meters per second"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your fastest nerve fibers transmit signals faster than a Formula 1 car at top speed!",
+    "wowFactor": "Your fastest nerve fibers transmit signals faster than a Formula 1 car at top speed!",
+    "variants": [
+      {
+        "question": "Which type of nerve fiber conducts signals the fastest?",
+        "type": "forward",
+        "distractors": [
+          "Unmyelinated C fibers",
+          "Small B fibers",
+          "Autonomic fibers"
+        ],
+        "answer": "Large myelinated A-alpha fibers"
+      },
+      {
+        "question": "What structural feature allows nerve impulses to jump quickly between nodes?",
+        "type": "reverse",
+        "distractors": [
+          "Dendrite branching",
+          "Axon length",
+          "Neuron cell body size"
+        ],
+        "answer": "Myelin sheath"
+      },
+      {
+        "question": "Which type of nerve signal travels the slowest?",
+        "type": "negative",
+        "distractors": [
+          "A-alpha motor fibers",
+          "A-beta touch fibers",
+          "A-gamma spindle fibers"
+        ],
+        "answer": "Unmyelinated C fibers (pain/temperature)"
+      },
+      {
+        "question": "The fastest nerve signals travel at up to _____ meters per second.",
+        "type": "fill_blank",
+        "distractors": [
+          "5",
+          "340",
+          "1"
+        ],
+        "answer": "120"
+      },
+      {
+        "question": "Myelination of nerve fibers increases signal conduction speed.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK442034/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art nerve fiber cross-section showing a thick myelinated axon with glowing nodes of Ranvier. Electric blue pulses leap between each node like lightning. A speed meter in the corner reads '120 m/s'.",
+    "tags": [
+      "nerves",
+      "nerve speed",
+      "myelin",
+      "action potential",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-phantom-limb-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Phantom limb syndrome is the sensation that an amputated or missing limb is still present and often painful.",
+    "quizQuestion": "What is phantom limb syndrome?",
+    "correctAnswer": "Feeling sensations in an amputated limb",
+    "distractors": [
+      "Feeling pain in an existing limb",
+      "Growing a new limb",
+      "Temporary numbness",
+      "Paralysis after surgery",
+      "Sensitivity to cold only",
+      "Residual limb stump pain",
+      "Cortical remapping without sensation",
+      "Prosthetic feedback syndrome"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your brain can generate vivid pain in a hand that doesn't exist anymore — and a mirror can trick it into stopping!",
+    "wowFactor": "Your brain can generate vivid pain in a hand that doesn't exist anymore — and a mirror can trick it into stopping!",
+    "variants": [
+      {
+        "question": "Which brain region reorganizes itself and contributes to phantom limb pain?",
+        "type": "forward",
+        "distractors": [
+          "Cerebellum",
+          "Occipital lobe",
+          "Olfactory bulb"
+        ],
+        "answer": "Somatosensory cortex"
+      },
+      {
+        "question": "Phantom limb pain is treated using what novel visual therapy?",
+        "type": "reverse",
+        "distractors": [
+          "Laser therapy",
+          "Ice bath immersion",
+          "Acupuncture only"
+        ],
+        "answer": "Mirror box therapy"
+      },
+      {
+        "question": "Which is NOT a common phantom limb sensation?",
+        "type": "negative",
+        "distractors": [
+          "Burning pain",
+          "Tingling",
+          "Movement sensation"
+        ],
+        "answer": "Seeing the limb externally"
+      },
+      {
+        "question": "Phantom limb sensations are generated by the _____, not the missing limb.",
+        "type": "fill_blank",
+        "distractors": [
+          "Stump tissue",
+          "Spinal cord only",
+          "Nerve endings in skin"
+        ],
+        "answer": "Brain"
+      },
+      {
+        "question": "People with amputations can experience pain in a limb that no longer exists.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3268359/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art figure with one glowing translucent arm extending beyond the visible stump. The ghost arm pulses red with pain signals. A small mirror box device sits nearby with a reflected arm inside it.",
+    "tags": [
+      "phantom limb",
+      "pain",
+      "amputation",
+      "neuroscience",
+      "brain plasticity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-pain-gate-theory-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The gate control theory of pain proposes that the spinal cord contains a neural 'gate' that can block or allow pain signals to reach the brain.",
+    "quizQuestion": "What does gate control theory explain about pain?",
+    "correctAnswer": "A spinal gate can block or allow pain signals",
+    "distractors": [
+      "Pain only exists in the brain",
+      "All pain is imaginary",
+      "Pain signals always reach the brain",
+      "Pain is proportional to tissue damage",
+      "Pain receptors can be permanently closed",
+      "Emotional state has no effect on pain",
+      "Only C fibers transmit gated signals",
+      "The gate is located in the dorsal horn substantia gelatinosa"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "When you rub a bump, you're literally closing a 'gate' in your spinal cord to block the pain signal — and it actually works!",
+    "wowFactor": "When you rub a bump, you're literally closing a 'gate' in your spinal cord to block the pain signal — and it actually works!",
+    "variants": [
+      {
+        "question": "Who proposed the gate control theory of pain in 1965?",
+        "type": "forward",
+        "distractors": [
+          "Pavlov and Skinner",
+          "Darwin and Huxley",
+          "Freud and Jung"
+        ],
+        "answer": "Melzack and Wall"
+      },
+      {
+        "question": "Why does rubbing an injured area reduce pain according to gate control theory?",
+        "type": "reverse",
+        "distractors": [
+          "It releases endorphins only",
+          "It numbs nerve endings permanently",
+          "It reduces inflammation directly"
+        ],
+        "answer": "Touch signals close the pain gate"
+      },
+      {
+        "question": "Which is NOT a factor that can close the pain gate according to the theory?",
+        "type": "negative",
+        "distractors": [
+          "Distraction",
+          "Rubbing the area",
+          "Positive emotions"
+        ],
+        "answer": "Focusing intensely on the pain"
+      },
+      {
+        "question": "The gate control theory locates the pain gate in the _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Brain stem",
+          "Thalamus",
+          "Frontal lobe"
+        ],
+        "answer": "Spinal cord"
+      },
+      {
+        "question": "Gate control theory explains why rubbing an injury can temporarily reduce pain.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1380271/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art cross-section of the spinal cord with two nerve fiber tracks: one red pain fiber approaching a glowing gate, and one blue touch fiber pushing the gate closed. Brain silhouette above shows a blocked signal.",
+    "tags": [
+      "pain",
+      "gate control theory",
+      "spinal cord",
+      "neuroscience",
+      "Melzack"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-rem-sleep-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "A typical night of sleep contains 4 to 6 REM cycles, with each REM period getting longer as the night progresses — the final one can last up to an hour.",
+    "quizQuestion": "How many REM cycles does a person typically have in one night?",
+    "correctAnswer": "4 to 6",
+    "distractors": [
+      "1",
+      "10 to 12",
+      "0 (no REM in healthy adults)",
+      "2 to 3",
+      "7 to 9",
+      "3 to 4",
+      "5 to 7",
+      "Exactly 5"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "You dream for up to 2 hours every night — and your brain paralyzes your body so you can't act them out!",
+    "wowFactor": "You dream for up to 2 hours every night — and your brain paralyzes your body so you can't act them out!",
+    "variants": [
+      {
+        "question": "What does REM stand for in the context of sleep?",
+        "type": "forward",
+        "distractors": [
+          "Rapid Energy Metabolism",
+          "Rhythmic Electrical Modulation",
+          "Regulated Endocrine Mechanism"
+        ],
+        "answer": "Rapid Eye Movement"
+      },
+      {
+        "question": "During which sleep stage do most vivid dreams occur?",
+        "type": "reverse",
+        "distractors": [
+          "Stage 1 NREM",
+          "Slow-wave deep sleep",
+          "Sleep onset stage"
+        ],
+        "answer": "REM sleep"
+      },
+      {
+        "question": "Which is NOT a characteristic of REM sleep?",
+        "type": "negative",
+        "distractors": [
+          "Eyes move rapidly",
+          "Brain activity is high",
+          "Dreams are most vivid"
+        ],
+        "answer": "Muscle activity is at its peak"
+      },
+      {
+        "question": "REM sleep periods get _____ as the night progresses.",
+        "type": "fill_blank",
+        "distractors": [
+          "Shorter",
+          "Identical",
+          "Less frequent"
+        ],
+        "answer": "Longer"
+      },
+      {
+        "question": "The body is temporarily paralyzed during REM sleep.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.sleepfoundation.org/stages-of-sleep/rem-sleep",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art sleeping figure with a transparent overlay showing eye movement arrows darting left and right. The brain glows orange and yellow — as active as waking state. A cycle counter shows 'REM 4/5' in glowing digits.",
+    "tags": [
+      "REM",
+      "sleep",
+      "dreams",
+      "sleep cycles",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-circadian-rhythm-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The circadian rhythm is a roughly 24-hour internal biological clock regulated by the suprachiasmatic nucleus (SCN) in the brain's hypothalamus.",
+    "quizQuestion": "Which brain structure acts as the master clock for the circadian rhythm?",
+    "correctAnswer": "Suprachiasmatic nucleus (SCN)",
+    "distractors": [
+      "Pineal gland",
+      "Stomach",
+      "Heart",
+      "Amygdala",
+      "Pituitary gland",
+      "Hippocampus",
+      "Dorsal raphe nucleus",
+      "Ventrolateral preoptic nucleus"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "A tiny cluster of just 20,000 neurons in your brain coordinates the timing of every cell in your body — even your liver has its own clock!",
+    "wowFactor": "A tiny cluster of just 20,000 neurons in your brain coordinates the timing of every cell in your body — even your liver has its own clock!",
+    "variants": [
+      {
+        "question": "The circadian rhythm primarily synchronizes to what environmental signal?",
+        "type": "forward",
+        "distractors": [
+          "Temperature changes",
+          "Meal times only",
+          "Social interactions"
+        ],
+        "answer": "Light and darkness"
+      },
+      {
+        "question": "Which hormone rises at night to promote sleep as part of the circadian cycle?",
+        "type": "reverse",
+        "distractors": [
+          "Cortisol",
+          "Insulin",
+          "Adrenaline"
+        ],
+        "answer": "Melatonin"
+      },
+      {
+        "question": "Which condition is NOT directly caused by disruption of the circadian rhythm?",
+        "type": "negative",
+        "distractors": [
+          "Jet lag",
+          "Shift work disorder",
+          "Delayed sleep phase syndrome"
+        ],
+        "answer": "Appendicitis"
+      },
+      {
+        "question": "The circadian rhythm repeats approximately every _____ hours.",
+        "type": "fill_blank",
+        "distractors": [
+          "12",
+          "48",
+          "8"
+        ],
+        "answer": "24"
+      },
+      {
+        "question": "Blue light from screens at night can suppress melatonin and disrupt circadian rhythm.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms.aspx",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art brain cutout with a glowing gold dot labeled SCN in the hypothalamus. Radiating clock hands extend outward showing a 24-hour cycle. A sun rises on the left and a moon sets on the right with melatonin droplets falling.",
+    "tags": [
+      "circadian rhythm",
+      "sleep",
+      "SCN",
+      "melatonin",
+      "biological clock"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-wakefulness-record-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The scientifically documented record for voluntarily going without sleep is 11 days and 25 minutes (264.4 hours), set by Randy Gardner in 1964.",
+    "quizQuestion": "Who holds the scientifically documented record for the longest time without sleep?",
+    "correctAnswer": "Randy Gardner",
+    "distractors": [
+      "Peter Tripp",
+      "Michael Jordan",
+      "Neil Armstrong",
+      "Tony Wright",
+      "Robert McDonald",
+      "Maureen Weston",
+      "Al Herpin",
+      "Valentina Tereshkova"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "After 11 days awake, Randy Gardner started hallucinating that he was a famous football player — sleep deprivation mimics psychosis!",
+    "wowFactor": "After 11 days awake, Randy Gardner started hallucinating that he was a famous football player — sleep deprivation mimics psychosis!",
+    "variants": [
+      {
+        "question": "How long did Randy Gardner stay awake in his 1964 record attempt?",
+        "type": "forward",
+        "distractors": [
+          "7 days",
+          "14 days",
+          "5 days"
+        ],
+        "answer": "11 days and 25 minutes"
+      },
+      {
+        "question": "What year was the Randy Gardner wakefulness record set?",
+        "type": "reverse",
+        "distractors": [
+          "1972",
+          "1958",
+          "1980"
+        ],
+        "answer": "1964"
+      },
+      {
+        "question": "Which effect is NOT documented in extreme sleep deprivation studies?",
+        "type": "negative",
+        "distractors": [
+          "Hallucinations",
+          "Paranoia",
+          "Severe cognitive impairment"
+        ],
+        "answer": "Increased bone density"
+      },
+      {
+        "question": "Randy Gardner's record was approximately _____ hours of wakefulness.",
+        "type": "fill_blank",
+        "distractors": [
+          "120",
+          "48",
+          "336"
+        ],
+        "answer": "264"
+      },
+      {
+        "question": "Going without sleep for more than a week can cause hallucinations.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://stanforddailyarchive.com/2012/04/04/the-sleep-deprived-teen-who-changed-medicine/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art teen boy slumped at a table with dark circles under wide-open eyes. A digital stopwatch above reads '264:25:00'. Wavy hallucination effects in purple surround his head. A sleep researcher in a white coat takes notes beside him.",
+    "tags": [
+      "sleep deprivation",
+      "record",
+      "wakefulness",
+      "Randy Gardner",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-scurvy-vitamin-c-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "Scurvy is caused by a deficiency of vitamin C (ascorbic acid), which is essential for synthesizing collagen.",
+    "quizQuestion": "Which vitamin deficiency causes scurvy?",
+    "correctAnswer": "Vitamin C",
+    "distractors": [
+      "Vitamin D",
+      "Vitamin A",
+      "Vitamin E",
+      "Vitamin K",
+      "Vitamin B1 (thiamine)",
+      "Vitamin B3 (niacin)",
+      "Vitamin B6",
+      "Folic acid (B9)"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Sailors once died from something citrus fruits could cure — the British Navy saved thousands of lives just by adding lime juice to rations!",
+    "wowFactor": "Sailors once died from something citrus fruits could cure — the British Navy saved thousands of lives just by adding lime juice to rations!",
+    "variants": [
+      {
+        "question": "Why does vitamin C deficiency cause scurvy's symptoms like bleeding gums?",
+        "type": "forward",
+        "distractors": [
+          "Bone marrow shuts down",
+          "Red blood cells cannot form",
+          "Iron cannot be absorbed"
+        ],
+        "answer": "Collagen cannot be synthesized without vitamin C"
+      },
+      {
+        "question": "Scurvy was historically common among which group?",
+        "type": "reverse",
+        "distractors": [
+          "Desert nomads",
+          "Arctic researchers",
+          "Medieval monks"
+        ],
+        "answer": "Sailors on long voyages"
+      },
+      {
+        "question": "Which symptom is NOT associated with scurvy?",
+        "type": "negative",
+        "distractors": [
+          "Bleeding gums",
+          "Loose teeth",
+          "Poor wound healing"
+        ],
+        "answer": "Night blindness"
+      },
+      {
+        "question": "Scurvy results from a deficiency in vitamin _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "D",
+          "B12",
+          "K"
+        ],
+        "answer": "C"
+      },
+      {
+        "question": "Eating citrus fruits can prevent and cure scurvy.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK493187/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art pirate ship scene: a pale sailor with bleeding gums and loose teeth in the foreground. A lime wedge glows with a golden healing aura in his hand. A collagen molecule chain is illustrated below in bright orange.",
+    "tags": [
+      "scurvy",
+      "vitamin C",
+      "collagen",
+      "nutrition",
+      "deficiency"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-vitamin-d-sunlight-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The human body synthesizes vitamin D when UVB rays from sunlight convert 7-dehydrocholesterol in the skin into vitamin D3.",
+    "quizQuestion": "How does the body produce vitamin D?",
+    "correctAnswer": "UVB sunlight converts a skin compound into vitamin D3",
+    "distractors": [
+      "Eating sunflower seeds",
+      "Breathing fresh air",
+      "Exercise alone",
+      "UVA light only",
+      "Digesting calcium",
+      "Converting cholesterol without UV",
+      "Photolysis of provitamin D in blood",
+      "Hepatic 25-hydroxylation only"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Your skin is a solar panel that manufactures a hormone disguised as a vitamin every time you step into sunlight!",
+    "wowFactor": "Your skin is a solar panel that manufactures a hormone disguised as a vitamin every time you step into sunlight!",
+    "variants": [
+      {
+        "question": "Which type of UV radiation triggers vitamin D synthesis in the skin?",
+        "type": "forward",
+        "distractors": [
+          "UVA",
+          "Infrared",
+          "Visible blue light"
+        ],
+        "answer": "UVB"
+      },
+      {
+        "question": "What skin compound is converted into vitamin D3 by sunlight?",
+        "type": "reverse",
+        "distractors": [
+          "Melanin",
+          "Keratin",
+          "Collagen"
+        ],
+        "answer": "7-dehydrocholesterol"
+      },
+      {
+        "question": "Which vitamin D function is NOT proven by scientific evidence?",
+        "type": "negative",
+        "distractors": [
+          "Supports calcium absorption",
+          "Promotes bone health",
+          "Supports immune function"
+        ],
+        "answer": "Directly cures depression by itself"
+      },
+      {
+        "question": "Vitamin D is sometimes called the _____ vitamin because sunlight triggers its production.",
+        "type": "fill_blank",
+        "distractors": [
+          "Winter",
+          "Ocean",
+          "Air"
+        ],
+        "answer": "Sunshine"
+      },
+      {
+        "question": "Sunscreen significantly reduces vitamin D synthesis in the skin.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art person standing in bright sunlight with their arm extended. UVB rays (labeled) pierce the skin layer shown in cross-section. A molecular transformation graphic shows 7-DHC converting to glowing vitamin D3 molecules.",
+    "tags": [
+      "vitamin D",
+      "sunlight",
+      "UVB",
+      "skin",
+      "nutrition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-b12-deficiency-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "Vitamin B12 deficiency can cause megaloblastic anemia, peripheral neuropathy, and irreversible neurological damage if untreated.",
+    "quizQuestion": "What serious condition can result from untreated vitamin B12 deficiency?",
+    "correctAnswer": "Irreversible neurological damage",
+    "distractors": [
+      "Sunburn",
+      "Tooth decay",
+      "Hair loss only",
+      "Rickets",
+      "Scurvy",
+      "Iron-deficiency anemia",
+      "Subacute combined degeneration",
+      "Pernicious anemia only"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "B12 deficiency can silently destroy your nervous system for years before symptoms appear — and some damage can never be reversed!",
+    "wowFactor": "B12 deficiency can silently destroy your nervous system for years before symptoms appear — and some damage can never be reversed!",
+    "variants": [
+      {
+        "question": "Which dietary group is most at risk of vitamin B12 deficiency?",
+        "type": "forward",
+        "distractors": [
+          "People who eat fish regularly",
+          "Those eating high-fat diets",
+          "People with high fruit intake"
+        ],
+        "answer": "Strict vegans"
+      },
+      {
+        "question": "Why does B12 deficiency cause nerve damage?",
+        "type": "reverse",
+        "distractors": [
+          "B12 carries oxygen to nerves",
+          "B12 prevents nerve inflammation only",
+          "B12 activates pain receptors"
+        ],
+        "answer": "B12 is essential for maintaining myelin sheaths"
+      },
+      {
+        "question": "Which food is NOT a good source of vitamin B12?",
+        "type": "negative",
+        "distractors": [
+          "Beef liver",
+          "Clams",
+          "Eggs"
+        ],
+        "answer": "Broccoli"
+      },
+      {
+        "question": "B12 deficiency can cause _____ anemia, producing abnormally large red blood cells.",
+        "type": "fill_blank",
+        "distractors": [
+          "Microcytic",
+          "Hemolytic",
+          "Aplastic"
+        ],
+        "answer": "Megaloblastic"
+      },
+      {
+        "question": "Vitamin B12 is found naturally in significant amounts in plant-based foods.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "curated",
+    "sourceUrl": "https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art nerve fiber cross-section showing a degraded, patchy myelin sheath in faded grey, compared to a healthy bright white one beside it. A vitamin B12 molecule (labeled with cobalt atom highlighted) floats nearby with a warning icon.",
+    "tags": [
+      "vitamin B12",
+      "deficiency",
+      "neuropathy",
+      "anemia",
+      "nutrition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

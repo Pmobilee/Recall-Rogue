@@ -11647,5 +11647,1593 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-internet-arpanet-origin",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "internet",
+    "statement": "The internet traces its origins to ARPANET, a U.S. Defense Department network that first transmitted data between computers in 1969.",
+    "quizQuestion": "In what year did ARPANET first successfully transmit data between two computers?",
+    "correctAnswer": "1969",
+    "distractors": [
+      "1972",
+      "1965",
+      "1975",
+      "1967",
+      "1971",
+      "1980",
+      "1958",
+      "1983"
+    ],
+    "acceptableAnswers": [
+      "1969"
+    ],
+    "explanation": "On October 29, 1969, the first ARPANET message was sent from UCLA to Stanford Research Institute. The system crashed after the first two letters 'LO' of 'LOGIN', but successfully completed shortly after.",
+    "wowFactor": "The very first internet message ever sent was 'LO' — the system crashed before it could finish typing 'LOGIN', making the world's first internet transmission accidentally poetic.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of the U.S. Defense Department network that preceded the modern internet?",
+        "answer": "ARPANET",
+        "distractors": [
+          "MILNET",
+          "DARPANET",
+          "USANET"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "ARPANET was developed by which U.S. government department?",
+        "answer": "Department of Defense",
+        "distractors": [
+          "Department of Energy",
+          "NASA",
+          "Department of Commerce"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: ARPANET first transmitted data in 1969.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The internet's predecessor, ___, first transmitted data in 1969.",
+        "answer": "ARPANET",
+        "distractors": [
+          "MILNET",
+          "USENET",
+          "BITNET"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ARPANET",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Retro pixel art computer terminal with glowing green text showing 'LO' on screen, connected by dotted lines to another terminal across a dark digital landscape.",
+    "tags": [
+      "internet",
+      "ARPANET",
+      "technology",
+      "history",
+      "1969"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-internet-berners-lee-www",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "internet",
+    "statement": "Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, proposing a system of hyperlinked documents accessible over the internet.",
+    "quizQuestion": "Who invented the World Wide Web in 1989?",
+    "correctAnswer": "Tim Berners-Lee",
+    "distractors": [
+      "Bill Gates",
+      "Steve Jobs",
+      "Vint Cerf",
+      "Bob Kahn",
+      "Alan Turing",
+      "Linus Torvalds",
+      "Dennis Ritchie",
+      "Marc Andreessen"
+    ],
+    "acceptableAnswers": [
+      "Tim Berners-Lee",
+      "Berners-Lee"
+    ],
+    "explanation": "Tim Berners-Lee, a British scientist at CERN, proposed the Web in 1989 and built the first website by 1991. He created HTTP, HTML, and URLs — the three pillars of the Web.",
+    "wowFactor": "Tim Berners-Lee gave the World Wide Web away for free. He deliberately chose not to patent it, saying the Web would only work if it was royalty-free and open to everyone.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was Tim Berners-Lee working when he invented the World Wide Web?",
+        "answer": "CERN",
+        "distractors": [
+          "MIT",
+          "Stanford",
+          "Bell Labs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tim Berners-Lee is credited with inventing which foundational internet technology?",
+        "answer": "World Wide Web",
+        "distractors": [
+          "Email",
+          "TCP/IP",
+          "The internet itself"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tim Berners-Lee invented the World Wide Web at CERN in 1989.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The World Wide Web was invented by ___ while working at CERN.",
+        "answer": "Tim Berners-Lee",
+        "distractors": [
+          "Vint Cerf",
+          "Bill Gates",
+          "Marc Andreessen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art scientist at a glowing CERN terminal weaving a luminous web of hyperlinks stretching across a globe-shaped network map.",
+    "tags": [
+      "internet",
+      "WWW",
+      "Tim Berners-Lee",
+      "CERN",
+      "invention"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-internet-undersea-cables",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "internet",
+    "statement": "Over 95% of international internet traffic travels through a network of more than 400 undersea fiber-optic cables spanning roughly 1.3 million kilometers.",
+    "quizQuestion": "What percentage of international internet traffic travels through undersea fiber-optic cables?",
+    "correctAnswer": "Over 95%",
+    "distractors": [
+      "About 60%",
+      "About 70%",
+      "About 40%",
+      "About 80%",
+      "About 50%",
+      "Nearly 100% via satellite",
+      "About 30%",
+      "About 85%"
+    ],
+    "acceptableAnswers": [
+      "Over 95%",
+      "95%",
+      "more than 95%"
+    ],
+    "explanation": "Despite the prominence of satellites in popular imagination, almost all intercontinental data — including internet, phone, and financial transactions — is carried by undersea fiber-optic cables. Satellites handle less than 5%.",
+    "wowFactor": "The entire global internet relies on cables laid on the ocean floor, and they are regularly gnawed on by sharks. Shark bites are a genuine documented threat to undersea internet infrastructure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many kilometers of undersea fiber-optic cable carry the world's internet traffic?",
+        "answer": "About 1.3 million kilometers",
+        "distractors": [
+          "About 500,000 kilometers",
+          "About 100,000 kilometers",
+          "About 5 million kilometers"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What technology carries over 95% of international internet traffic?",
+        "answer": "Undersea fiber-optic cables",
+        "distractors": [
+          "Satellites",
+          "Radio towers",
+          "Microwave relay stations"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Satellites carry the majority of international internet traffic.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Over ___% of international internet traffic travels through undersea fiber-optic cables.",
+        "answer": "95",
+        "distractors": [
+          "60",
+          "75",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "TeleGeography",
+    "sourceUrl": "https://www.telegeography.com/telecom-resources/submarine-cable-faqs/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section pixel art of an ocean floor with glowing fiber-optic cables snaking between continents, a curious pixelated shark circling nearby.",
+    "tags": [
+      "internet",
+      "undersea cables",
+      "fiber optic",
+      "infrastructure",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-numbers-zero-origin",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "mathematics_logic",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "mathematics_logic",
+    "categoryL3": "numbers",
+    "statement": "The concept of zero as a number (not just a placeholder) was developed in India, with mathematician Brahmagupta formalizing its arithmetic rules in 628 CE.",
+    "quizQuestion": "Which mathematician first formalized arithmetic rules for zero in 628 CE?",
+    "correctAnswer": "Brahmagupta",
+    "distractors": [
+      "Aryabhata",
+      "Al-Khwarizmi",
+      "Fibonacci",
+      "Euclid",
+      "Archimedes",
+      "Pythagoras",
+      "Bhaskara",
+      "Apollonius"
+    ],
+    "acceptableAnswers": [
+      "Brahmagupta"
+    ],
+    "explanation": "Brahmagupta's text Brahmasphutasiddhanta (628 CE) was the first to define rules for arithmetic with zero, including addition, subtraction, multiplication — though he incorrectly stated 0÷0=0.",
+    "wowFactor": "Before zero became a number, ancient Romans had no symbol for nothing — making advanced calculations nearly impossible. The number zero was revolutionary enough that the Catholic Church initially opposed it as dangerous Eastern mysticism.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country was zero first formalized as a number with arithmetic rules?",
+        "answer": "India",
+        "distractors": [
+          "Arabia",
+          "Greece",
+          "Egypt"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Brahmagupta's 628 CE text Brahmasphutasiddhanta was the first to formally define rules for which number?",
+        "answer": "Zero",
+        "distractors": [
+          "Negative numbers",
+          "Fractions",
+          "Irrational numbers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The ancient Romans had a numeral symbol for zero.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The mathematician ___ first formalized arithmetic rules for zero in 628 CE.",
+        "answer": "Brahmagupta",
+        "distractors": [
+          "Aryabhata",
+          "Al-Khwarizmi",
+          "Fibonacci"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brahmagupta",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Indian mathematician in pixel art style inscribing a glowing zero symbol onto a stone tablet, surrounded by mathematical symbols floating in candlelight.",
+    "tags": [
+      "zero",
+      "mathematics",
+      "Brahmagupta",
+      "India",
+      "numbers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-numbers-infinity",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "mathematics_logic",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "mathematics_logic",
+    "categoryL3": "numbers",
+    "statement": "Georg Cantor proved in the 1870s–1880s that there are different sizes of infinity, and that some infinite sets are strictly larger than others.",
+    "quizQuestion": "Who proved that some infinities are larger than other infinities?",
+    "correctAnswer": "Georg Cantor",
+    "distractors": [
+      "David Hilbert",
+      "Kurt Gödel",
+      "Gottfried Leibniz",
+      "Blaise Pascal",
+      "Emmy Noether",
+      "Carl Friedrich Gauss",
+      "Henri Poincaré",
+      "Bernhard Riemann"
+    ],
+    "acceptableAnswers": [
+      "Georg Cantor",
+      "Cantor"
+    ],
+    "explanation": "Cantor developed set theory and showed via his diagonal argument that the infinity of real numbers (uncountable) is strictly larger than the infinity of natural numbers (countable), fundamentally reshaping mathematics.",
+    "wowFactor": "Cantor's discovery that there are different sizes of infinity was so mind-bending that his contemporary mathematicians called it 'a disease' and a 'grave error.' His work drove him to multiple mental breakdowns.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Georg Cantor prove about infinity?",
+        "answer": "That there are different sizes of infinity",
+        "distractors": [
+          "That infinity has no mathematical meaning",
+          "That infinity equals the largest possible number",
+          "That all infinite sets are the same size"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which type of infinity is strictly larger: countable (natural numbers) or uncountable (real numbers)?",
+        "answer": "Uncountable (real numbers)",
+        "distractors": [
+          "Countable (natural numbers)",
+          "They are identical in size",
+          "Neither — infinity has no size"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Georg Cantor proved that all infinite sets are the same size.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ proved in the 1870s that some infinities are larger than others.",
+        "answer": "Georg Cantor",
+        "distractors": [
+          "David Hilbert",
+          "Kurt Gödel",
+          "Bernhard Riemann"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Georg_Cantor",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art mathematician staring into an infinite fractal vortex, nested infinity symbols glowing in increasing sizes receding into darkness.",
+    "tags": [
+      "infinity",
+      "mathematics",
+      "Georg Cantor",
+      "set theory",
+      "numbers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-numbers-imaginary",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "mathematics_logic",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "mathematics_logic",
+    "categoryL3": "numbers",
+    "statement": "Imaginary numbers, defined as square roots of negative numbers, were named 'imaginary' by René Descartes as an insult — yet they are essential to physics and engineering.",
+    "quizQuestion": "Who coined the dismissive term 'imaginary numbers'?",
+    "correctAnswer": "René Descartes",
+    "distractors": [
+      "Leonhard Euler",
+      "Carl Friedrich Gauss",
+      "Gerolamo Cardano",
+      "Isaac Newton",
+      "Gottfried Leibniz",
+      "Blaise Pascal",
+      "Pierre de Fermat",
+      "John Wallis"
+    ],
+    "acceptableAnswers": [
+      "René Descartes",
+      "Descartes"
+    ],
+    "explanation": "Descartes used the term 'imaginaires' in 1637 to mock numbers that seemed impossible. Euler later gave 'i' its symbol. Today imaginary numbers are indispensable in electrical engineering, quantum mechanics, and signal processing.",
+    "wowFactor": "Imaginary numbers — invented as a mathematical curiosity — turned out to be the secret language of quantum mechanics. Without them, your smartphone, MRI machines, and GPS satellites would literally not function.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the imaginary unit 'i' defined as?",
+        "answer": "The square root of negative one",
+        "distractors": [
+          "The square root of zero",
+          "An infinitely large number",
+          "A placeholder for unknown variables"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Imaginary numbers are essential to which field of modern physics?",
+        "answer": "Quantum mechanics",
+        "distractors": [
+          "Thermodynamics",
+          "Classical mechanics",
+          "Fluid dynamics"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The term 'imaginary numbers' was originally meant as a compliment.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ coined the dismissive term 'imaginary numbers' in 1637.",
+        "answer": "René Descartes",
+        "distractors": [
+          "Leonhard Euler",
+          "Carl Friedrich Gauss",
+          "Isaac Newton"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Imaginary_number",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art chalkboard showing √-1 = i glowing in electric blue, with quantum wave functions spiraling outward from the symbol.",
+    "tags": [
+      "imaginary numbers",
+      "mathematics",
+      "Descartes",
+      "complex numbers",
+      "quantum mechanics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-maps-mercator-distortion",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "geography_exploration",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "geography_exploration",
+    "categoryL3": "maps",
+    "statement": "The Mercator projection, used on most standard world maps, severely distorts land sizes near the poles — making Greenland appear as large as Africa, though Africa is 14 times bigger.",
+    "quizQuestion": "How many times larger is Africa than Greenland in reality?",
+    "correctAnswer": "14 times",
+    "distractors": [
+      "3 times",
+      "7 times",
+      "5 times",
+      "20 times",
+      "2 times",
+      "10 times",
+      "30 times",
+      "50 times"
+    ],
+    "acceptableAnswers": [
+      "14 times",
+      "about 14 times",
+      "14x"
+    ],
+    "explanation": "The Mercator projection preserves angles (useful for navigation) but inflates areas near the poles. Greenland looks comparable to Africa on most maps, but Africa (30.4M km²) is about 14 times the area of Greenland (2.2M km²).",
+    "wowFactor": "The Mercator map has shaped Western perception of world power for centuries — European countries near the poles appear larger and more prominent than equatorial nations that are actually far bigger.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the main distortion problem with the Mercator map projection?",
+        "answer": "It inflates the size of land near the poles",
+        "distractors": [
+          "It distorts the shapes of continents",
+          "It places Europe in the center incorrectly",
+          "It shrinks the size of equatorial regions"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Mercator projection was originally designed for what practical purpose?",
+        "answer": "Navigation at sea",
+        "distractors": [
+          "Political boundary drawing",
+          "Population mapping",
+          "Climate visualization"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: On a Mercator map, Greenland appears roughly the same size as Africa.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Africa is approximately ___ times larger than Greenland despite appearing similar in size on Mercator maps.",
+        "answer": "14",
+        "distractors": [
+          "3",
+          "7",
+          "30"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mercator_projection",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art maps: a distorted Mercator Greenland towering next to a shrunken Africa, then their true relative sizes flipped dramatically.",
+    "tags": [
+      "maps",
+      "Mercator",
+      "projection",
+      "geography",
+      "distortion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-maps-oldest-map",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "geography_exploration",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "geography_exploration",
+    "categoryL3": "maps",
+    "statement": "The Babylonian Map of the World, dating to around 600 BCE and inscribed on a clay tablet, is considered one of the oldest surviving world maps.",
+    "quizQuestion": "Approximately when was the Babylonian Map of the World created?",
+    "correctAnswer": "600 BCE",
+    "distractors": [
+      "3000 BCE",
+      "1200 BCE",
+      "200 BCE",
+      "1500 BCE",
+      "100 CE",
+      "500 BCE",
+      "2500 BCE",
+      "800 BCE"
+    ],
+    "acceptableAnswers": [
+      "600 BCE",
+      "around 600 BCE",
+      "circa 600 BCE"
+    ],
+    "explanation": "The Babylonian Map of the World (Imago Mundi) was inscribed on a clay tablet around 600 BCE and depicts Babylon at the center surrounded by a circular ocean, with mythical regions beyond it.",
+    "wowFactor": "On the oldest surviving world map, Babylon is at the center of everything — surrounded by ocean — and beyond the ocean lie seven triangular islands described as fantastical realms inhabited by mythical creatures.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What material was the Babylonian Map of the World inscribed on?",
+        "answer": "Clay tablet",
+        "distractors": [
+          "Papyrus scroll",
+          "Stone slab",
+          "Animal hide"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which city is depicted at the center of the Babylonian Map of the World?",
+        "answer": "Babylon",
+        "distractors": [
+          "Ur",
+          "Nineveh",
+          "Memphis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Babylonian Map of the World shows the Earth as flat, surrounded by a circular ocean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Babylonian Map of the World dates to approximately ___ BCE.",
+        "answer": "600",
+        "distractors": [
+          "3000",
+          "200",
+          "1200"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Babylonian_Map_of_the_World",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art ancient clay tablet showing a circular world map with Babylon at the center, surrounded by ocean waves and strange triangular landmasses, illuminated by torchlight.",
+    "tags": [
+      "maps",
+      "Babylon",
+      "ancient history",
+      "cartography",
+      "oldest map"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-maps-gps",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "maps",
+    "statement": "GPS (Global Positioning System) was developed by the U.S. military and became fully operational in 1995, relying on a constellation of at least 24 satellites to determine location.",
+    "quizQuestion": "In what year did the GPS system become fully operational?",
+    "correctAnswer": "1995",
+    "distractors": [
+      "1983",
+      "2000",
+      "1990",
+      "1987",
+      "1998",
+      "1975",
+      "2003",
+      "1993"
+    ],
+    "acceptableAnswers": [
+      "1995"
+    ],
+    "explanation": "GPS was developed by the U.S. Department of Defense starting in the 1970s. It reached full operational capability on April 27, 1995, with 24 satellites providing global coverage. Civilian use was opened fully in 2000.",
+    "wowFactor": "GPS satellites must account for Einstein's theory of relativity — satellite clocks run faster than ground clocks due to weaker gravity at altitude. Without relativistic corrections, your GPS position would drift by 10 km per day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many satellites does GPS require at minimum to function globally?",
+        "answer": "24 satellites",
+        "distractors": [
+          "12 satellites",
+          "6 satellites",
+          "48 satellites"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "GPS satellite clocks must be corrected for which phenomenon to maintain accuracy?",
+        "answer": "Relativity",
+        "distractors": [
+          "Atmospheric drag",
+          "Solar wind",
+          "Magnetic field variation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: GPS was originally developed for military use.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "GPS became fully operational in ___, relying on a constellation of at least 24 satellites.",
+        "answer": "1995",
+        "distractors": [
+          "1983",
+          "2000",
+          "1990"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Global_Positioning_System",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Earth surrounded by a halo of GPS satellites, blue signal beams triangulating down to a tiny pixel navigator on the ground below.",
+    "tags": [
+      "GPS",
+      "satellites",
+      "navigation",
+      "maps",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-paper-chinese-invention",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "paper",
+    "statement": "Paper was invented in China around 105 CE by Cai Lun, a Han dynasty court official, who created it from bark, hemp, rags, and fishnets.",
+    "quizQuestion": "Who is credited with inventing paper in China around 105 CE?",
+    "correctAnswer": "Cai Lun",
+    "distractors": [
+      "Bi Sheng",
+      "Zhang Heng",
+      "Confucius",
+      "Sun Tzu",
+      "Ts'ai Lun (different romanization — same person)",
+      "Emperor Qin Shi Huang",
+      "Liu Bao",
+      "Shen Kuo"
+    ],
+    "acceptableAnswers": [
+      "Cai Lun",
+      "Ts'ai Lun"
+    ],
+    "explanation": "Cai Lun, a eunuch official in the Han court, refined the papermaking process around 105 CE using plant-based fibers. His technique spread along the Silk Road and reached Europe by the 12th century.",
+    "wowFactor": "Before Cai Lun's paper, the Chinese wrote on silk (expensive) and bamboo strips (heavy). A single government document could weigh kilograms — Cai Lun's invention literally lightened the burden of bureaucracy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Cai Lun use to make the first paper?",
+        "answer": "Bark, hemp, rags, and fishnets",
+        "distractors": [
+          "Sand, clay, and animal fat",
+          "Dried lotus leaves and reeds",
+          "Compressed bamboo pulp"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Paper was invented in which ancient civilization?",
+        "answer": "China",
+        "distractors": [
+          "Egypt",
+          "Mesopotamia",
+          "India"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Paper was invented in China during the Han dynasty.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Paper was invented around 105 CE by ___, a Han dynasty court official.",
+        "answer": "Cai Lun",
+        "distractors": [
+          "Bi Sheng",
+          "Zhang Heng",
+          "Emperor Qin Shi Huang"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cai_Lun",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Han dynasty court official in pixel art pressing plant fibers into a flat sheet, surrounded by old silk scrolls and bamboo strip tablets.",
+    "tags": [
+      "paper",
+      "China",
+      "Cai Lun",
+      "invention",
+      "Han dynasty"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-paper-papyrus-vs-paper",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "paper",
+    "statement": "Despite the similar name, papyrus and paper are fundamentally different: papyrus is made from strips of the papyrus plant woven together, while paper is made from pulped and matted fibers.",
+    "quizQuestion": "What is the key difference in how papyrus and paper are made?",
+    "correctAnswer": "Papyrus uses woven plant strips; paper uses pulped matted fibers",
+    "distractors": [
+      "Papyrus is made from wood pulp; paper from reeds",
+      "Papyrus is bleached cotton; paper is unbleached hemp",
+      "Papyrus uses ground minerals; paper uses dried plant sap",
+      "There is no fundamental difference in manufacturing",
+      "Papyrus is made by pressing clay; paper by drying ink",
+      "Papyrus is animal-based; paper is always wood-based",
+      "Papyrus uses animal glue; paper uses starch",
+      "Papyrus is made from crushed seeds; paper from dried leaves"
+    ],
+    "acceptableAnswers": [
+      "Papyrus uses woven plant strips; paper uses pulped matted fibers",
+      "Papyrus is woven strips; paper is pulped fibers"
+    ],
+    "explanation": "Papyrus is created by slicing the papyrus plant into strips, laying them in overlapping layers, and pressing. True paper involves breaking plant material into individual fibers, suspending them in water, then draining and drying the mat.",
+    "wowFactor": "The word 'paper' actually comes from 'papyrus' — but they are made so differently that papyrus is technically not paper at all. Egyptian papyrus documents survived 4,000+ years; many modern papers can't last 200.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What plant is traditional papyrus made from?",
+        "answer": "The papyrus plant (Cyperus papyrus)",
+        "distractors": [
+          "Bamboo",
+          "Hemp",
+          "Cotton"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The word 'paper' is derived from the name of which ancient writing material?",
+        "answer": "Papyrus",
+        "distractors": [
+          "Parchment",
+          "Vellum",
+          "Bamboo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Papyrus and paper are made using the same basic process.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'paper' comes from '___, an ancient Egyptian writing material.",
+        "answer": "papyrus",
+        "distractors": [
+          "parchment",
+          "vellum",
+          "bamboo"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Papyrus",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split scene: Egyptian scribe weaving papyrus strips on one side, Chinese craftsman pulping plant fibers in a vat on the other.",
+    "tags": [
+      "paper",
+      "papyrus",
+      "Egypt",
+      "writing materials",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-paper-recycling",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "environment_sustainability",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "environment_sustainability",
+    "categoryL3": "paper",
+    "statement": "Recycling one ton of paper saves approximately 17 mature trees, 7,000 gallons of water, and 3 cubic yards of landfill space.",
+    "quizQuestion": "How many mature trees does recycling one ton of paper save?",
+    "correctAnswer": "17 trees",
+    "distractors": [
+      "5 trees",
+      "50 trees",
+      "3 trees",
+      "100 trees",
+      "8 trees",
+      "30 trees",
+      "2 trees",
+      "25 trees"
+    ],
+    "acceptableAnswers": [
+      "17 trees",
+      "approximately 17 trees",
+      "17"
+    ],
+    "explanation": "Paper recycling reduces the need for virgin wood pulp. One ton of recycled paper saves roughly 17 trees, 7,000 gallons of water, 380 gallons of oil, and 4,100 kWh of electricity compared to virgin paper production.",
+    "wowFactor": "If every American recycled their newspapers for a year, it would save about 250 million trees — roughly equivalent to planting a forest larger than the entire state of Florida.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many gallons of water does recycling one ton of paper save?",
+        "answer": "7,000 gallons",
+        "distractors": [
+          "500 gallons",
+          "100,000 gallons",
+          "1,000 gallons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Recycling one ton of paper saves approximately 17 trees AND reduces what resource?",
+        "answer": "Landfill space (and water and energy)",
+        "distractors": [
+          "Only carbon emissions",
+          "Petroleum used in ink only",
+          "Nuclear energy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Recycling one ton of paper saves approximately 17 mature trees.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Recycling one ton of paper saves approximately ___ mature trees.",
+        "answer": "17",
+        "distractors": [
+          "5",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "EPA",
+    "sourceUrl": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/paper-and-paperboard-material-specific-data",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art recycling bin overflowing with paper, 17 pixelated trees sprouting from the top in a burst of green leaves.",
+    "tags": [
+      "paper",
+      "recycling",
+      "environment",
+      "trees",
+      "sustainability"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-fire-human-control",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "prehistory_evolution",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "prehistory_evolution",
+    "categoryL3": "fire",
+    "statement": "Evidence suggests early humans first controlled fire approximately 1 million years ago, based on burnt bone and plant ash found at Wonderwerk Cave in South Africa.",
+    "quizQuestion": "Approximately how long ago did early humans first control fire, based on evidence at Wonderwerk Cave?",
+    "correctAnswer": "1 million years ago",
+    "distractors": [
+      "10,000 years ago",
+      "500,000 years ago",
+      "2 million years ago",
+      "100,000 years ago",
+      "200,000 years ago",
+      "5 million years ago",
+      "300,000 years ago",
+      "50,000 years ago"
+    ],
+    "acceptableAnswers": [
+      "1 million years ago",
+      "about 1 million years ago",
+      "1,000,000 years ago"
+    ],
+    "explanation": "Burned bone fragments and plant ash at Wonderwerk Cave (South Africa) date to approximately 1 million years ago, suggesting Homo erectus had mastered fire by this point — cooking food, providing warmth, and protection from predators.",
+    "wowFactor": "Controlling fire is thought to be the single most important technology in human evolution. Cooked food provides more calories and requires less chewing — which likely allowed our brains to grow larger over generations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country is Wonderwerk Cave, where 1-million-year-old fire evidence was found?",
+        "answer": "South Africa",
+        "distractors": [
+          "Kenya",
+          "Ethiopia",
+          "Tanzania"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which early human species is most associated with the first controlled use of fire?",
+        "answer": "Homo erectus",
+        "distractors": [
+          "Homo sapiens",
+          "Homo habilis",
+          "Australopithecus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Early humans first controlled fire approximately 1 million years ago.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Burnt bones and ash at Wonderwerk Cave suggest fire control began approximately ___ years ago.",
+        "answer": "1 million",
+        "distractors": [
+          "100,000",
+          "500,000",
+          "10,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wonderwerk_Cave",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art early human crouching before a small fire in a cave, flickering orange light revealing cave wall silhouettes of ancient animals.",
+    "tags": [
+      "fire",
+      "prehistory",
+      "Homo erectus",
+      "Wonderwerk Cave",
+      "human evolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-fire-combustion-chemistry",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "natural_sciences",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "natural_sciences",
+    "categoryL3": "fire",
+    "statement": "Fire is a rapid chemical reaction (combustion) requiring three components: fuel, oxygen, and heat — known as the 'fire triangle.' Remove any one and the fire goes out.",
+    "quizQuestion": "What are the three components of the 'fire triangle'?",
+    "correctAnswer": "Fuel, oxygen, and heat",
+    "distractors": [
+      "Carbon, hydrogen, and nitrogen",
+      "Wood, air, and spark",
+      "Fuel, water, and heat",
+      "Oxygen, carbon dioxide, and heat",
+      "Fuel, light, and temperature",
+      "Hydrogen, oxygen, and pressure",
+      "Combustion, friction, and mass",
+      "Flame, smoke, and fuel"
+    ],
+    "acceptableAnswers": [
+      "Fuel, oxygen, and heat",
+      "heat, fuel, and oxygen",
+      "oxygen, heat, and fuel"
+    ],
+    "explanation": "The fire triangle is a model for understanding fire: fuel provides combustible material, oxygen enables the chemical reaction, and heat initiates and sustains it. Fire suppression removes one element — water removes heat, CO2 removes oxygen.",
+    "wowFactor": "Fire is essentially a self-sustaining chain reaction — the heat it produces ignites more fuel, which produces more heat. Chemically, what you see as 'flame' is actually superheated gas glowing as it releases energy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does a CO2 fire extinguisher put out a fire?",
+        "answer": "By removing oxygen",
+        "distractors": [
+          "By removing heat",
+          "By removing fuel",
+          "By adding water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the visible flame in a fire actually made of?",
+        "answer": "Superheated glowing gas",
+        "distractors": [
+          "Burning solid particles",
+          "Plasma",
+          "Concentrated light"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fire can continue burning without a fuel source as long as oxygen and heat are present.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The fire triangle's three components are fuel, heat, and ___.",
+        "answer": "oxygen",
+        "distractors": [
+          "carbon dioxide",
+          "nitrogen",
+          "water"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Combustion",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art fire triangle diagram with glowing labels — a torch for fuel, wind swirl for oxygen, sun for heat — a flame burning at the center where they meet.",
+    "tags": [
+      "fire",
+      "combustion",
+      "chemistry",
+      "fire triangle",
+      "science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-fire-cultural-significance",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "mythology_culture",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "mythology_culture",
+    "categoryL3": "fire",
+    "statement": "In Greek mythology, the Titan Prometheus stole fire from the gods and gave it to humanity, for which Zeus punished him by chaining him to a rock where an eagle ate his liver daily for eternity.",
+    "quizQuestion": "In Greek myth, who stole fire from the gods and gave it to humanity?",
+    "correctAnswer": "Prometheus",
+    "distractors": [
+      "Hephaestus",
+      "Hermes",
+      "Odysseus",
+      "Hercules",
+      "Icarus",
+      "Achilles",
+      "Orpheus",
+      "Epimetheus"
+    ],
+    "acceptableAnswers": [
+      "Prometheus"
+    ],
+    "explanation": "Prometheus (meaning 'forethought') is the Titan hero of Greek mythology who defied Zeus by stealing fire and giving it to mortals, enabling civilization. His eternal punishment — liver regrowth and daily consumption by an eagle — reflects his immortal nature.",
+    "wowFactor": "The ancient Greeks chose liver regeneration as Prometheus's endless torture for a scientifically accurate reason — the liver is the only human organ that can actually regenerate itself. They somehow knew this 2,500 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Zeus's punishment for Prometheus stealing fire?",
+        "answer": "Chained to a rock while an eagle ate his liver daily",
+        "distractors": [
+          "Banishment to the Underworld forever",
+          "Turned into a star in the night sky",
+          "Forced to carry the sky on his shoulders"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Prometheus is a Titan in Greek mythology — what does his name mean?",
+        "answer": "Forethought",
+        "distractors": [
+          "Fire-bringer",
+          "Light-maker",
+          "God-stealer"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In Greek mythology, Prometheus stole fire from the gods and gave it to humanity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Greek Titan ___ stole fire from the gods to give to humanity.",
+        "answer": "Prometheus",
+        "distractors": [
+          "Hephaestus",
+          "Hermes",
+          "Epimetheus"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prometheus",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Titan chained to a mountain peak, cradling a stolen flame in one hand, a giant eagle descending from stormclouds above.",
+    "tags": [
+      "fire",
+      "mythology",
+      "Prometheus",
+      "Greek mythology",
+      "culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-clocks-sundials",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "clocks",
+    "statement": "Sundials are among humanity's oldest timekeeping devices, with the earliest known examples dating to ancient Egypt around 1500 BCE. They measure time by tracking the shadow cast by the sun.",
+    "quizQuestion": "Approximately when were the earliest known sundials used in ancient Egypt?",
+    "correctAnswer": "1500 BCE",
+    "distractors": [
+      "3000 BCE",
+      "500 BCE",
+      "100 CE",
+      "5000 BCE",
+      "200 BCE",
+      "800 BCE",
+      "1000 CE",
+      "3500 BCE"
+    ],
+    "acceptableAnswers": [
+      "1500 BCE",
+      "around 1500 BCE",
+      "circa 1500 BCE"
+    ],
+    "explanation": "An ancient Egyptian shadow clock (T-shaped bar with a crossbar) from around 1500 BCE is one of the earliest known timekeeping devices. Sundials work by casting the shadow of a gnomon onto a marked surface.",
+    "wowFactor": "A sundial needs to be calibrated to your exact latitude to show the correct time — a sundial from Egypt will give wrong times in London. Yet sundials were the world's primary timekeeping tool for over 3,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the pointed part of a sundial that casts a shadow called?",
+        "answer": "Gnomon",
+        "distractors": [
+          "Stylus",
+          "Index",
+          "Meridian"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sundials are useless for timekeeping under what condition?",
+        "answer": "At night or on a cloudy day",
+        "distractors": [
+          "When it is raining lightly",
+          "In hot weather",
+          "When the wind is blowing"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The same sundial design can accurately tell time at any location on Earth.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The earliest known sundials date to ancient Egypt, approximately ___ BCE.",
+        "answer": "1500",
+        "distractors": [
+          "3000",
+          "500",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sundial",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Egyptian sundial casting a crisp shadow across hour markings in desert sunlight, the Nile shimmering in the background.",
+    "tags": [
+      "clocks",
+      "sundial",
+      "Egypt",
+      "timekeeping",
+      "ancient history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-clocks-pendulum",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "clocks",
+    "statement": "Christiaan Huygens invented the pendulum clock in 1656, which was the most accurate timekeeping device of its era — accurate to within one minute per day.",
+    "quizQuestion": "Who invented the pendulum clock in 1656?",
+    "correctAnswer": "Christiaan Huygens",
+    "distractors": [
+      "Galileo Galilei",
+      "Isaac Newton",
+      "Robert Hooke",
+      "John Harrison",
+      "Tycho Brahe",
+      "Johannes Kepler",
+      "Gottfried Leibniz",
+      "Christian Doppler"
+    ],
+    "acceptableAnswers": [
+      "Christiaan Huygens",
+      "Huygens"
+    ],
+    "explanation": "Dutch scientist Christiaan Huygens patented the first pendulum clock in 1656, inspired by Galileo's earlier observations of pendulum motion. The clock reduced timekeeping error from minutes per hour to about one minute per day.",
+    "wowFactor": "Galileo observed that a pendulum's period depends only on its length — not how wide it swings. He designed a pendulum clock on his deathbed but never built it. Huygens built it instead, launching 200 years of pendulum clock dominance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What property of a pendulum did Galileo discover that made pendulum clocks possible?",
+        "answer": "Its period depends only on length, not swing width",
+        "distractors": [
+          "Its period depends on the weight of the bob",
+          "It always swings exactly once per second",
+          "Its speed increases with temperature"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How accurate was the pendulum clock compared to earlier mechanical clocks?",
+        "answer": "Accurate to about one minute per day (vs. minutes per hour)",
+        "distractors": [
+          "Accurate to one second per day",
+          "Accurate to one hour per week",
+          "It was actually less accurate"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Christiaan Huygens invented the pendulum clock in 1656.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The pendulum clock was invented in 1656 by ___.",
+        "answer": "Christiaan Huygens",
+        "distractors": [
+          "Galileo Galilei",
+          "Isaac Newton",
+          "John Harrison"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pendulum_clock",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art tall grandfather clock with a gleaming pendulum mid-swing, Roman numeral face glowing in a candlelit 17th-century study.",
+    "tags": [
+      "clocks",
+      "pendulum",
+      "Huygens",
+      "timekeeping",
+      "invention"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-clocks-atomic-accuracy",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "technology_inventions",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "technology_inventions",
+    "categoryL3": "clocks",
+    "statement": "Modern atomic clocks are so accurate they would only lose or gain one second every 300 million years, making them the most precise timekeeping devices ever built.",
+    "quizQuestion": "How often would a modern atomic clock lose or gain one second?",
+    "correctAnswer": "Every 300 million years",
+    "distractors": [
+      "Every 1,000 years",
+      "Every 10,000 years",
+      "Every 1 million years",
+      "Every 100 years",
+      "Every 1 billion years",
+      "Every 10 million years",
+      "Every 500 years",
+      "Every 50 million years"
+    ],
+    "acceptableAnswers": [
+      "Every 300 million years",
+      "Once every 300 million years",
+      "300 million years"
+    ],
+    "explanation": "Atomic clocks measure time using the vibrations of cesium-133 atoms, which oscillate exactly 9,192,631,770 times per second. This precision defines the SI second itself. GPS satellites use atomic clocks to achieve meter-level location accuracy.",
+    "wowFactor": "The definition of one second is literally 9,192,631,770 vibrations of a cesium atom — not a fraction of the day. Time is now defined by atoms, not by the Earth's rotation, which is gradually slowing down.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What atom is used in the most common type of atomic clock?",
+        "answer": "Cesium-133",
+        "distractors": [
+          "Hydrogen",
+          "Rubidium",
+          "Uranium"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The international definition of one second is based on what?",
+        "answer": "Vibrations of a cesium-133 atom",
+        "distractors": [
+          "A fraction of Earth's rotation",
+          "The period of a standard pendulum",
+          "The speed of light over a fixed distance"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Atomic clocks would only lose one second every 300 million years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Atomic clocks use the vibrations of ___ atoms to keep time.",
+        "answer": "cesium-133",
+        "distractors": [
+          "hydrogen",
+          "rubidium",
+          "uranium"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NIST",
+    "sourceUrl": "https://www.nist.gov/pml/time-and-frequency-division/time-realization/primary-frequency-standards",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art atomic clock chamber with a cesium atom glowing at the center, its vibration waves radiating outward to a digital display showing precision time.",
+    "tags": [
+      "clocks",
+      "atomic clock",
+      "cesium",
+      "timekeeping",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

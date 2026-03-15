@@ -10110,5 +10110,1558 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beethoven-deafness-001",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Music",
+    "categoryL3": "",
+    "statement": "Beethoven began losing his hearing in his late twenties and was almost completely deaf by age 44, yet he composed some of his greatest works — including the Ninth Symphony — entirely without hearing them.",
+    "quizQuestion": "At approximately what age was Beethoven almost completely deaf?",
+    "correctAnswer": "44",
+    "distractors": [
+      "32",
+      "55",
+      "60",
+      "37",
+      "50",
+      "48",
+      "40",
+      "46"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Beethoven's hearing loss began around 1796 and is thought to have been caused by lead poisoning, typhus, or autoimmune disease. Rather than abandon music, he adapted by using a special ear trumpet, pressing a rod against his piano, and ultimately composing through pure musical imagination trained over decades of hearing.",
+    "wowFactor": "He pressed a rod between his teeth and touched it to the piano lid to feel vibrations — turning his jaw into a hearing device.",
+    "variants": [
+      {
+        "question": "Around what age did Beethoven first begin losing his hearing?",
+        "type": "forward",
+        "distractors": [
+          "Early forties",
+          "His teenage years",
+          "After age 50"
+        ],
+        "answer": "Late twenties (around 26–28)"
+      },
+      {
+        "question": "Beethoven composed his Ninth Symphony while in what condition?",
+        "type": "context",
+        "distractors": [
+          "Completely blind",
+          "Suffering from paralysis",
+          "In exile from Vienna"
+        ],
+        "answer": "Almost completely deaf"
+      },
+      {
+        "question": "Beethoven was almost completely deaf by age ___.",
+        "type": "fill_blank",
+        "distractors": [
+          "32",
+          "55",
+          "50"
+        ],
+        "answer": "44"
+      },
+      {
+        "question": "Beethoven composed major works after losing most of his hearing.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Ludwig-van-Beethoven",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art portrait of a wild-haired composer hunched over a grand piano in a candlelit Viennese study, pressing a wooden rod to the instrument's lid, musical score scattered around.",
+    "tags": [
+      "beethoven",
+      "deafness",
+      "classical music",
+      "composer",
+      "disability"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beethoven-ninth-symphony-002",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Music",
+    "categoryL3": "",
+    "statement": "Beethoven's Ninth Symphony, completed in 1824, was the first symphony by a major composer to include a full choral finale — its final movement sets Friedrich Schiller's poem 'Ode to Joy' for soloists and chorus.",
+    "quizQuestion": "What literary text does the final movement of Beethoven's Ninth Symphony set to music?",
+    "correctAnswer": "Schiller's 'Ode to Joy'",
+    "distractors": [
+      "Goethe's 'Faust'",
+      "Homer's 'Iliad'",
+      "Dante's 'Inferno'",
+      "Byron's 'Childe Harold'",
+      "Heine's 'Lorelei'",
+      "Klopstock's 'Resurrection Ode'",
+      "Schiller's 'William Tell'",
+      "Hölderlin's 'Hyperion'"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Ninth was revolutionary on multiple fronts: no symphony had ever used vocal soloists and a full chorus before. The 'Ode to Joy' theme is now the official anthem of the European Union. Beethoven reportedly had to be turned around by a soloist to see the audience's ovation, since his back was to them and he was completely deaf.",
+    "wowFactor": "At the premiere, Beethoven was turned to face the audience after the finale ended — he couldn't hear the thunderous applause and had no idea the crowd was going wild.",
+    "variants": [
+      {
+        "question": "In what year was Beethoven's Ninth Symphony completed?",
+        "type": "forward",
+        "distractors": [
+          "1808",
+          "1817",
+          "1830"
+        ],
+        "answer": "1824"
+      },
+      {
+        "question": "Beethoven's Ninth was the first major symphony to include what unusual element?",
+        "type": "forward",
+        "distractors": [
+          "An electric organ",
+          "A jazz improvisation section",
+          "A spoken narrator"
+        ],
+        "answer": "A full choral finale with soloists"
+      },
+      {
+        "question": "The 'Ode to Joy' theme is now the official anthem of which organisation?",
+        "type": "context",
+        "distractors": [
+          "The United Nations",
+          "NATO",
+          "The Council of Europe"
+        ],
+        "answer": "The European Union"
+      },
+      {
+        "question": "Beethoven's Ninth Symphony finale sets Schiller's 'Ode to Joy' for soloists and chorus.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Symphony-No-9-in-D-Minor-Op-125",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art concert hall scene with a deaf composer turning around to see a standing ovation, orchestra and choir behind him, candlelit baroque theatre, dramatic moment.",
+    "tags": [
+      "beethoven",
+      "ninth symphony",
+      "ode to joy",
+      "choral",
+      "schiller",
+      "EU anthem"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-beethoven-romanticism-003",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Music",
+    "categoryL3": "",
+    "statement": "Beethoven is considered the pivotal bridge between the Classical and Romantic eras — his later works shattered the formal restraint of Haydn and Mozart, pioneering emotional intensity and personal expression that defined Romanticism.",
+    "quizQuestion": "What musical era follows the Classical era that Beethoven's later works helped pioneer?",
+    "correctAnswer": "Romanticism",
+    "distractors": [
+      "Baroque",
+      "Impressionism",
+      "Modernism",
+      "Renaissance polyphony",
+      "Serialism",
+      "Minimalism",
+      "Late Classicism",
+      "Sturm und Drang"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Classical composers like Haydn and Mozart prized formal balance and elegance. Beethoven stretched those forms to their limits — his 'Eroica' Symphony (1804) was nearly twice as long as any previous symphony and used dissonance and emotional drama that shocked audiences. This opened the door for Romantics like Berlioz, Wagner, and Brahms.",
+    "wowFactor": "Beethoven tore up his dedication of the Third Symphony ('Eroica') to Napoleon after hearing he'd crowned himself Emperor — the manuscript still shows the violent erasure marks.",
+    "variants": [
+      {
+        "question": "Which symphony did Beethoven originally dedicate to Napoleon before angrily rescinding the dedication?",
+        "type": "forward",
+        "distractors": [
+          "Fifth Symphony",
+          "Sixth Symphony ('Pastoral')",
+          "Seventh Symphony"
+        ],
+        "answer": "Third Symphony ('Eroica')"
+      },
+      {
+        "question": "Beethoven bridged the Classical era and which subsequent era?",
+        "type": "reverse",
+        "distractors": [
+          "Baroque era",
+          "Impressionist era",
+          "Modern era"
+        ],
+        "answer": "Romantic era"
+      },
+      {
+        "question": "Beethoven's 'Eroica' Symphony shocked audiences partly because it was roughly ___ as long as a typical symphony of its time.",
+        "type": "fill_blank",
+        "distractors": [
+          "Three times",
+          "Half",
+          "The same length"
+        ],
+        "answer": "Twice"
+      },
+      {
+        "question": "Beethoven's later works helped define the transition from Classical to Romantic music.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Ludwig-van-Beethoven/The-transitional-years",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen: elegant Viennese Classical concert hall on the left, storm-swept Romantic mountainscape on the right, a composer figure standing at the threshold between both worlds.",
+    "tags": [
+      "beethoven",
+      "romanticism",
+      "classical music",
+      "eroica",
+      "napoleon",
+      "musical transition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-dante-divine-comedy-004",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "Dante Alighieri's 'Divine Comedy,' written between 1308 and 1320, is an epic poem depicting a journey through Hell (Inferno), Purgatory (Purgatorio), and Heaven (Paradiso), guided first by the Roman poet Virgil and then by Beatrice.",
+    "quizQuestion": "Who guides Dante through Hell and Purgatory in the 'Divine Comedy'?",
+    "correctAnswer": "Virgil",
+    "distractors": [
+      "Beatrice",
+      "Ovid",
+      "Homer",
+      "Saint Peter",
+      "Saint Bernard of Clairvaux",
+      "Socrates",
+      "Statius",
+      "Lucan"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The 'Divine Comedy' is arguably the greatest literary work of the Middle Ages. Its Italian was so influential that it effectively standardised the Tuscan dialect as the basis for modern Italian. The poem contains 14,233 lines and is meticulously structured: each realm has 33 cantos (plus one introductory), and every number carries symbolic Christian meaning.",
+    "wowFactor": "Dante placed several of his living political enemies in Hell while writing the poem — essentially publishing the world's most creative revenge fantasy.",
+    "variants": [
+      {
+        "question": "What are the three realms Dante visits in the 'Divine Comedy', in order?",
+        "type": "forward",
+        "distractors": [
+          "Earth, Hell, Heaven",
+          "Purgatory, Hell, Paradise",
+          "Limbo, Purgatory, Heaven"
+        ],
+        "answer": "Hell, Purgatory, Heaven"
+      },
+      {
+        "question": "Who guides Dante through Paradise in the 'Divine Comedy'?",
+        "type": "forward",
+        "distractors": [
+          "Virgil",
+          "Saint Peter",
+          "The Virgin Mary"
+        ],
+        "answer": "Beatrice"
+      },
+      {
+        "question": "Dante's 'Divine Comedy' was written in which language?",
+        "type": "context",
+        "distractors": [
+          "Latin",
+          "French",
+          "Occitan"
+        ],
+        "answer": "Italian (Tuscan dialect)"
+      },
+      {
+        "question": "Dante's 'Divine Comedy' depicts a journey through Hell, Purgatory, and Heaven.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/The-Divine-Comedy",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art scene of two robed figures descending a spiral stone staircase into a fiery abyss, one with laurel wreath leading, tormented souls visible in the flames below.",
+    "tags": [
+      "dante",
+      "divine comedy",
+      "inferno",
+      "purgatorio",
+      "paradiso",
+      "virgil",
+      "medieval literature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-dante-florence-exile-005",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "In 1302, Dante Alighieri was exiled from Florence on trumped-up charges of corruption and barratry — a banishment he never reversed, dying in Ravenna in 1321 without ever returning to his home city.",
+    "quizQuestion": "In what city did Dante Alighieri die in exile in 1321?",
+    "correctAnswer": "Ravenna",
+    "distractors": [
+      "Venice",
+      "Rome",
+      "Milan",
+      "Verona",
+      "Bologna",
+      "Padua",
+      "Ferrara",
+      "Lucca"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Dante was caught up in a vicious factional war between the 'Black' and 'White' Guelph factions of Florence. When the Blacks seized power, they exiled the White Guelph Dante and sentenced him to death in absentia. This exile — which he called 'the bread of another is bitter, and hard the path up and down another's stair' — profoundly shaped the 'Divine Comedy.'",
+    "wowFactor": "Florence sentenced Dante to be burned alive if he ever returned — yet today the city has a magnificent shrine to him and considers him its greatest son.",
+    "variants": [
+      {
+        "question": "In what year was Dante exiled from Florence?",
+        "type": "forward",
+        "distractors": [
+          "1295",
+          "1310",
+          "1315"
+        ],
+        "answer": "1302"
+      },
+      {
+        "question": "What political factions were fighting in Florence that led to Dante's exile?",
+        "type": "context",
+        "distractors": [
+          "Guelphs and Ghibellines",
+          "Medicis and Sforzas",
+          "Borgias and Orsinis"
+        ],
+        "answer": "Black and White Guelphs"
+      },
+      {
+        "question": "Dante was exiled from Florence on charges of ___.",
+        "type": "fill_blank",
+        "distractors": [
+          "Heresy and witchcraft",
+          "Murder and treason",
+          "Debt and desertion"
+        ],
+        "answer": "Corruption and barratry"
+      },
+      {
+        "question": "Dante Alighieri died in Florence after eventually being allowed to return from exile.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Dante-Alighieri/Exile-from-Florence",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a lone robed poet standing outside walled medieval Florence at dusk, looking back at the city gates that are closed to him, a scroll under his arm.",
+    "tags": [
+      "dante",
+      "florence",
+      "exile",
+      "ravenna",
+      "guelphs",
+      "medieval politics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-dante-terza-rima-006",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "Dante wrote the 'Divine Comedy' in terza rima — an interlocking three-line rhyme scheme (ABA BCB CDC…) he invented, which chains each stanza to the next and creates an unbroken forward momentum across the entire 14,233-line poem.",
+    "quizQuestion": "What is the name of the interlocking rhyme scheme Dante used in the 'Divine Comedy'?",
+    "correctAnswer": "Terza rima",
+    "distractors": [
+      "Sonnet form",
+      "Ottava rima",
+      "Heroic couplets",
+      "Villanelle",
+      "Rhyme royal",
+      "Spenserian stanza",
+      "Canzone",
+      "Sestina"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "In terza rima, the middle line of each three-line stanza provides two of the three rhymes for the next stanza, creating a continuous interlocking chain. This formal invention reflected Dante's theological vision: the Trinity underlies everything — three realms, 33 cantos each, and a rhyme scheme built on the number three. Poets from Petrarch to Shelley ('Ode to the West Wind') borrowed the form.",
+    "wowFactor": "Terza rima's interlocking rhyme means you can't remove a single stanza without breaking the chain — it's structurally like a poem-sized zipper.",
+    "variants": [
+      {
+        "question": "What rhyme pattern does terza rima follow?",
+        "type": "forward",
+        "distractors": [
+          "ABAB CDCD",
+          "AABB CCDD",
+          "AAB BBB CCB"
+        ],
+        "answer": "ABA BCB CDC (interlocking)"
+      },
+      {
+        "question": "Dante's terza rima scheme reflects which theological concept through its use of three-line stanzas?",
+        "type": "context",
+        "distractors": [
+          "The Three Virtues (Faith, Hope, Charity)",
+          "The Three Fates",
+          "The Three Graces"
+        ],
+        "answer": "The Holy Trinity"
+      },
+      {
+        "question": "Shelley borrowed terza rima for which famous ode?",
+        "type": "context",
+        "distractors": [
+          "'Ode to a Nightingale'",
+          "'Ode to Autumn'",
+          "'Ode on a Grecian Urn'"
+        ],
+        "answer": "'Ode to the West Wind'"
+      },
+      {
+        "question": "Terza rima is a rhyme scheme Dante invented for the 'Divine Comedy'.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/art/terza-rima",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art manuscript page with illuminated interlocking ABA BCB chain pattern visible in the text, quill pen in the foreground, candlelight illuminating the parchment.",
+    "tags": [
+      "dante",
+      "terza rima",
+      "rhyme scheme",
+      "divine comedy",
+      "poetry form",
+      "italian literature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-homer-iliad-odyssey-007",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "Homer is the ancient Greek poet traditionally credited with composing the 'Iliad' — a 24-book epic about the Trojan War — and the 'Odyssey' — a 24-book epic about Odysseus's ten-year journey home.",
+    "quizQuestion": "How many books does each of Homer's epics — the 'Iliad' and the 'Odyssey' — contain?",
+    "correctAnswer": "24",
+    "distractors": [
+      "12",
+      "36",
+      "20",
+      "18",
+      "30",
+      "22",
+      "25",
+      "26"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The 'Iliad' and 'Odyssey' are the oldest surviving works of Western literature, composed around the 8th century BCE. Together they contain over 27,000 lines of dactylic hexameter verse. They were so central to Greek education that scholars called Homer simply 'the Poet,' the way medieval Europeans might say 'the Philosopher' to mean Aristotle.",
+    "wowFactor": "The 'Iliad' was used as a literal field manual by Alexander the Great, who reportedly slept with a copy annotated by Aristotle under his pillow alongside a dagger.",
+    "variants": [
+      {
+        "question": "The 'Iliad' is an epic poem about which ancient conflict?",
+        "type": "forward",
+        "distractors": [
+          "The Persian Wars",
+          "The Peloponnesian War",
+          "The Macedonian conquest of Persia"
+        ],
+        "answer": "The Trojan War"
+      },
+      {
+        "question": "What is the subject of Homer's 'Odyssey'?",
+        "type": "forward",
+        "distractors": [
+          "Achilles's wrath during the Trojan War",
+          "Aeneas's founding of Rome",
+          "Heracles's twelve labours"
+        ],
+        "answer": "Odysseus's ten-year journey home after the Trojan War"
+      },
+      {
+        "question": "Alexander the Great famously treated Homer's ___ like a military field manual.",
+        "type": "fill_blank",
+        "distractors": [
+          "Odyssey",
+          "Theogony",
+          "Aeneid"
+        ],
+        "answer": "Iliad"
+      },
+      {
+        "question": "Homer's 'Iliad' and 'Odyssey' each contain 24 books.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Homer-Greek-poet",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split scene: left side shows Greek warriors besieging a walled city with a wooden horse, right side shows a sailor on a raft amid sea monsters and whirlpools.",
+    "tags": [
+      "homer",
+      "iliad",
+      "odyssey",
+      "trojan war",
+      "odysseus",
+      "ancient greek literature",
+      "epic poetry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-homer-blind-poet-008",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "Ancient tradition holds that Homer was blind, a belief so persistent that the Greeks often depicted him as a blind wandering bard — though modern scholars debate whether Homer was one person, several, or a legendary figure.",
+    "quizQuestion": "How many ancient Greek cities claimed to be the birthplace of Homer?",
+    "correctAnswer": "Seven",
+    "distractors": [
+      "Three",
+      "Two",
+      "Ten",
+      "Five",
+      "Twelve",
+      "Four",
+      "Six",
+      "Eight"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The 'Homeric Question' — whether Homer was a real single person — has occupied scholars for centuries. The ancient world almost universally believed in a blind Homer, and at least seven cities claimed to be his birthplace. Modern linguistic analysis suggests the epics may have evolved over generations of oral poets, but the image of a lone blind bard remains culturally iconic.",
+    "wowFactor": "The Greeks explained Homer's blindness as a gift exchange: the Muses took his physical sight and gave him in return perfect inner vision to see all of history and myth.",
+    "variants": [
+      {
+        "question": "Ancient tradition held that Homer was which of the following?",
+        "type": "forward",
+        "distractors": [
+          "Mute",
+          "Deaf",
+          "An exile like Dante"
+        ],
+        "answer": "Blind"
+      },
+      {
+        "question": "What is the 'Homeric Question'?",
+        "type": "context",
+        "distractors": [
+          "Whether the Trojan War actually happened",
+          "Which dialect Homer used",
+          "Whether the Iliad or Odyssey was written first"
+        ],
+        "answer": "Whether Homer was a single real person or a composite of many poets"
+      },
+      {
+        "question": "Greek myth explained Homer's blindness as the price paid for receiving perfect ___ from the Muses.",
+        "type": "fill_blank",
+        "distractors": [
+          "Immortality",
+          "The gift of prophecy",
+          "Superhuman memory"
+        ],
+        "answer": "Inner vision / poetic sight"
+      },
+      {
+        "question": "Modern scholars are unanimous that Homer was a single real person.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Homer-Greek-poet",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a white-bearded blind bard in ancient robes holding a lyre, surrounded by seated Greek citizens listening intently beneath a colonnaded temple at sunset.",
+    "tags": [
+      "homer",
+      "blind poet",
+      "homeric question",
+      "ancient greece",
+      "oral tradition",
+      "bard"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-homer-oral-tradition-009",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Literature",
+    "categoryL3": "",
+    "statement": "Homer's epics originated in oral tradition — performed from memory by aoidos (singer-poets) and later rhapsodes who recited them at festivals, using formulaic phrases and repeated epithets ('rosy-fingered Dawn', 'swift-footed Achilles') as memory aids.",
+    "quizQuestion": "What term describes the repeated stock phrases like 'swift-footed Achilles' used by Homeric oral poets as memory tools?",
+    "correctAnswer": "Homeric epithets (formulaic phrases)",
+    "distractors": [
+      "Kennings",
+      "Metaphors",
+      "Similes",
+      "Apostrophes",
+      "Periphrases",
+      "Litotes",
+      "Prolepses",
+      "Tmesis"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Milman Parry's 20th-century fieldwork with Yugoslav oral poets proved that long oral epics are composed through formulaic diction — stock phrases of the right metrical length slotted into dactylic hexameter lines. This 'oral-formulaic theory' transformed understanding of Homer: phrases like 'wine-dark sea' weren't poetic accidents but functional memory tools. The epics were written down around 700–650 BCE.",
+    "wowFactor": "Oral poets memorised tens of thousands of lines by using hundreds of ready-made phrase-slots they could swap in and out — the ancient equivalent of cut-and-paste templates.",
+    "variants": [
+      {
+        "question": "What scholar's fieldwork with Yugoslav oral poets proved Homer's epics used formulaic composition?",
+        "type": "context",
+        "distractors": [
+          "Karl Lachmann",
+          "Friedrich Wolf",
+          "Gregory Nagy"
+        ],
+        "answer": "Milman Parry"
+      },
+      {
+        "question": "What were the professional oral reciters of Homer's epics at Greek festivals called?",
+        "type": "forward",
+        "distractors": [
+          "Aoidos",
+          "Citharodes",
+          "Tragedians"
+        ],
+        "answer": "Rhapsodes"
+      },
+      {
+        "question": "Homer's epithets like 'wine-dark sea' served primarily as ___ for oral performance.",
+        "type": "fill_blank",
+        "distractors": [
+          "Decorative flourishes",
+          "Religious invocations",
+          "Stage directions"
+        ],
+        "answer": "Memory aids (metrical formulae)"
+      },
+      {
+        "question": "Homer's epics were originally composed and transmitted through oral performance before being written down.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/oral-poetry/Homer-and-oral-poetry",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a Greek bard at a torch-lit outdoor festival, gesturing dramatically before a seated crowd, mouth open mid-recitation, Doric columns flanking the scene.",
+    "tags": [
+      "homer",
+      "oral tradition",
+      "formulaic epithets",
+      "rhapsodes",
+      "milman parry",
+      "dactylic hexameter"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-warhol-pop-art-010",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Visual Art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Visual Art",
+    "categoryL3": "",
+    "statement": "Andy Warhol was the leading figure of Pop Art — a 1960s movement that elevated mass-produced commercial imagery (soup cans, celebrity photos, newspaper ads) to the status of fine art, deliberately blurring the line between 'high' and 'low' culture.",
+    "quizQuestion": "What art movement did Andy Warhol lead in the 1960s that elevated commercial imagery to fine art?",
+    "correctAnswer": "Pop Art",
+    "distractors": [
+      "Abstract Expressionism",
+      "Surrealism",
+      "Cubism",
+      "Minimalism",
+      "Neo-Dada",
+      "Photorealism",
+      "Fluxus",
+      "Post-Painterly Abstraction"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Pop Art emerged in the 1950s–60s in Britain and America as a reaction against Abstract Expressionism's intense personal emotion. Warhol took it furthest: silk-screened Brillo boxes stacked like supermarket stock, Marilyn Monroe's face repeated 50 times in garish colours, electric chairs as wallpaper. He argued that art was everywhere in consumer culture — you just had to look.",
+    "wowFactor": "Warhol's goal was to make art that was completely unemotional — he wanted to be a machine. He literally said: 'I want to be a machine.'",
+    "variants": [
+      {
+        "question": "Pop Art emerged as a reaction against which preceding art movement?",
+        "type": "context",
+        "distractors": [
+          "Impressionism",
+          "Fauvism",
+          "Baroque painting"
+        ],
+        "answer": "Abstract Expressionism"
+      },
+      {
+        "question": "Andy Warhol famously said he wanted to be a ___.",
+        "type": "fill_blank",
+        "distractors": [
+          "God",
+          "Camera",
+          "Superstar"
+        ],
+        "answer": "Machine"
+      },
+      {
+        "question": "Pop Art deliberately blurred the line between 'high' art and which other cultural sphere?",
+        "type": "forward",
+        "distractors": [
+          "Religious iconography",
+          "Political propaganda",
+          "Folk and craft traditions"
+        ],
+        "answer": "Mass commercial / consumer culture"
+      },
+      {
+        "question": "Andy Warhol was the leading figure of Pop Art in the 1960s.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Museum of Modern Art (MoMA)",
+    "sourceUrl": "https://www.moma.org/artists/6246",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a silver-haired artist in dark sunglasses silk-screening a grid of brightly coloured celebrity portraits in a busy New York studio.",
+    "tags": [
+      "andy warhol",
+      "pop art",
+      "1960s",
+      "commercial art",
+      "consumer culture",
+      "silk-screen"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-warhol-campbells-soup-011",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Visual Art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Visual Art",
+    "categoryL3": "",
+    "statement": "Andy Warhol's '32 Campbell's Soup Cans' (1962) depicted every variety of Campbell's soup available at the time, displayed on a shelf like a supermarket — a work that shocked critics but sold out and made him internationally famous.",
+    "quizQuestion": "How many canvases make up Andy Warhol's 'Campbell's Soup Cans' series (1962)?",
+    "correctAnswer": "32",
+    "distractors": [
+      "10",
+      "50",
+      "20",
+      "24",
+      "40",
+      "28",
+      "36",
+      "30"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Warhol exhibited all 32 canvases at a Los Angeles gallery in 1962, where they were initially mocked. A neighbouring gallerist put actual soup cans in his window with a sign reading 'Buy the Real Thing for 29¢.' But Warhol had the last laugh — the series became one of the most recognised artworks of the 20th century, and a set sold at auction for $77.2 million.",
+    "wowFactor": "Warhol ate Campbell's tomato soup for lunch nearly every day for twenty years, which is why he chose it — the repetition in his life became the repetition in his art.",
+    "variants": [
+      {
+        "question": "In what year did Warhol first exhibit his 'Campbell's Soup Cans' series?",
+        "type": "forward",
+        "distractors": [
+          "1958",
+          "1965",
+          "1970"
+        ],
+        "answer": "1962"
+      },
+      {
+        "question": "Why did Warhol choose Campbell's soup as his subject?",
+        "type": "context",
+        "distractors": [
+          "He was paid by Campbell's to advertise it",
+          "He found the label's typography beautiful",
+          "He wanted to mock American consumerism specifically"
+        ],
+        "answer": "He ate it for lunch almost every day for twenty years"
+      },
+      {
+        "question": "What did a neighbouring gallerist do in response to Warhol's soup can exhibition?",
+        "type": "context",
+        "distractors": [
+          "Organised a protest outside the gallery",
+          "Filed a lawsuit against Warhol",
+          "Bought all 32 paintings immediately"
+        ],
+        "answer": "Put real soup cans in the window with a 'Buy the Real Thing' sign"
+      },
+      {
+        "question": "Warhol's 'Campbell's Soup Cans' depicted only the tomato soup variety.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "MoMA",
+    "sourceUrl": "https://www.moma.org/collection/works/79809",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art grid of 32 red-and-white soup cans arranged in neat rows on a white gallery wall, each label slightly different, studio lights casting sharp shadows.",
+    "tags": [
+      "andy warhol",
+      "campbell's soup",
+      "pop art",
+      "1962",
+      "silk-screen",
+      "supermarket art"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-warhol-factory-012",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Visual Art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Visual Art",
+    "categoryL3": "",
+    "statement": "Andy Warhol's studio, known as 'The Factory,' was a silver-painted loft in Manhattan that became the hub of 1960s New York counterculture — a gathering place for artists, celebrities, drag queens, musicians, and socialites.",
+    "quizQuestion": "What was the name of Andy Warhol's famous Manhattan studio that became a 1960s cultural hub?",
+    "correctAnswer": "The Factory",
+    "distractors": [
+      "The Studio",
+      "The Loft",
+      "The Workshop",
+      "The Foundry",
+      "The Atelier",
+      "The Silver Room",
+      "The Warehouse",
+      "The Pavilion"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Warhol opened the original Factory at 231 East 47th Street in 1963, decorated in silver paint and aluminum foil by artist Billy Name. It was a genuine creative factory: Warhol produced silk-screens, films, and the Velvet Underground records there. The silver aesthetic reflected Warhol's concept of art production as industrial — glamorous, repetitive, and mechanical.",
+    "wowFactor": "Edie Sedgwick once accidentally set her hair on fire at The Factory during filming and Warhol kept the cameras rolling — he used the footage.",
+    "variants": [
+      {
+        "question": "What color was The Factory's signature interior décor?",
+        "type": "forward",
+        "distractors": [
+          "Black",
+          "White",
+          "Gold"
+        ],
+        "answer": "Silver (paint and aluminum foil)"
+      },
+      {
+        "question": "Which band did Warhol manage and produce at The Factory?",
+        "type": "context",
+        "distractors": [
+          "The Doors",
+          "The Stooges",
+          "The New York Dolls"
+        ],
+        "answer": "The Velvet Underground"
+      },
+      {
+        "question": "The Factory was located in which city?",
+        "type": "forward",
+        "distractors": [
+          "Los Angeles",
+          "Chicago",
+          "San Francisco"
+        ],
+        "answer": "New York City (Manhattan)"
+      },
+      {
+        "question": "The Factory was Andy Warhol's studio and served as a major hub of 1960s counterculture.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Andy-Warhol",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a silver-foil-covered loft interior with silk-screen prints on the walls, camera crew filming, fashionable figures mingling, velvet rope at the entrance.",
+    "tags": [
+      "andy warhol",
+      "the factory",
+      "new york",
+      "counterculture",
+      "velvet underground",
+      "1960s"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-parthenon-golden-ratio-013",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Architecture",
+    "categoryL3": "",
+    "statement": "The Parthenon on Athens' Acropolis, completed in 438 BCE, was designed by architects Ictinus and Callicrates with proportions so mathematically refined that its façade approximates the golden ratio (φ ≈ 1.618) in multiple dimensions.",
+    "quizQuestion": "Who were the two architects primarily responsible for designing the Parthenon?",
+    "correctAnswer": "Ictinus and Callicrates",
+    "distractors": [
+      "Phidias and Praxiteles",
+      "Vitruvius and Apollodorus",
+      "Pericles and Themistocles",
+      "Mnesicles and Callicrates",
+      "Hippodamus and Ictinus",
+      "Hermogenes and Pytheos",
+      "Libon and Callicrates",
+      "Ictinus and Mnesicles"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The golden ratio (φ) appears in the Parthenon's width-to-height ratio and in the spacing of its columns. More remarkably, the architects introduced systematic optical corrections called 'entasis': columns bulge slightly in the middle, the stylobate (floor) curves upward, and corner columns are thicker — all to compensate for optical illusions that would otherwise make a perfectly straight building look distorted.",
+    "wowFactor": "The Parthenon has no true straight lines — every horizontal surface curves upward in the centre and every column leans subtly inward to trick the eye into perceiving perfection.",
+    "variants": [
+      {
+        "question": "In what year was the Parthenon completed?",
+        "type": "forward",
+        "distractors": [
+          "480 BCE",
+          "400 BCE",
+          "510 BCE"
+        ],
+        "answer": "438 BCE"
+      },
+      {
+        "question": "What mathematical ratio do the Parthenon's façade proportions approximate?",
+        "type": "forward",
+        "distractors": [
+          "Pi (π ≈ 3.14)",
+          "The square root of 2",
+          "The Fibonacci ratio 5:3"
+        ],
+        "answer": "The golden ratio (φ ≈ 1.618)"
+      },
+      {
+        "question": "The slight bulge built into Parthenon columns to correct optical distortion is called ___.",
+        "type": "fill_blank",
+        "distractors": [
+          "Stylobate",
+          "Triglyphs",
+          "Fluting"
+        ],
+        "answer": "Entasis"
+      },
+      {
+        "question": "The Parthenon contains no perfectly straight horizontal lines — they all curve subtly.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Parthenon",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the Parthenon on the Acropolis at golden hour, columns glowing amber, subtle golden ratio grid overlay visible, the curved stylobate exaggerated for effect.",
+    "tags": [
+      "parthenon",
+      "golden ratio",
+      "athens",
+      "ictinus",
+      "callicrates",
+      "greek architecture",
+      "optical illusion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-parthenon-optical-illusions-014",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Architecture",
+    "categoryL3": "",
+    "statement": "The Parthenon is riddled with deliberate optical illusions: its floor (stylobate) curves upward by 60mm at the centre, its columns tilt slightly inward, corner columns are thicker, and all columns bulge (entasis) — yet the building appears perfectly regular to the human eye.",
+    "quizQuestion": "By approximately how many millimetres does the Parthenon's stylobate (floor) curve upward at its centre?",
+    "correctAnswer": "60mm",
+    "distractors": [
+      "5mm",
+      "500mm",
+      "1 metre",
+      "120mm",
+      "30mm",
+      "150mm",
+      "65mm",
+      "55mm"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Greek architects discovered that a perfectly geometric building appears distorted to human perception — straight horizontal lines look like they sag in the middle, and perfectly vertical columns look like they lean outward. The Parthenon's 'corrections' are so subtle (the floor curve is less than the width of a hand) that they went unnoticed by scholars until the 19th century, when precise measurements revealed the building's profound geometric cunning.",
+    "wowFactor": "If you extended the Parthenon's slightly angled columns into the sky, they would all meet at a single point roughly 2.4 kilometres above the ground.",
+    "variants": [
+      {
+        "question": "What happens to the Parthenon's columns if their slight inward angles are extended upward?",
+        "type": "context",
+        "distractors": [
+          "They form a perfect dome",
+          "They remain parallel",
+          "They create a triangle 500m high"
+        ],
+        "answer": "They converge at a point about 2.4 km above the ground"
+      },
+      {
+        "question": "Why do the corner columns of the Parthenon appear thicker than interior columns?",
+        "type": "forward",
+        "distractors": [
+          "They support more weight from the roof structure",
+          "They are taller and need extra girth",
+          "They are a later Roman addition"
+        ],
+        "answer": "They were built thicker to compensate for optical thinning against the open sky"
+      },
+      {
+        "question": "The Parthenon's subtle optical corrections were not discovered by scholars until the ___ century.",
+        "type": "fill_blank",
+        "distractors": [
+          "17th",
+          "15th",
+          "20th"
+        ],
+        "answer": "19th"
+      },
+      {
+        "question": "The Parthenon's floor and columns are perfectly straight and vertical.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "legendary",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Parthenon",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art architectural cross-section of the Parthenon with exaggerated guide lines showing floor curvature, column tilt, and bulge — all converging at a distant vanishing point high above.",
+    "tags": [
+      "parthenon",
+      "optical illusion",
+      "entasis",
+      "stylobate",
+      "greek architecture",
+      "optical correction"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-parthenon-doric-columns-015",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Architecture",
+    "categoryL3": "",
+    "statement": "The Parthenon uses the Doric order of architecture — the oldest and most austere of the three classical Greek orders — featuring 46 outer columns with no bases, plain capitals, and a frieze of alternating triglyphs and metopes carved with mythological battle scenes.",
+    "quizQuestion": "How many outer columns does the Parthenon have in its Doric colonnade?",
+    "correctAnswer": "46",
+    "distractors": [
+      "32",
+      "60",
+      "24",
+      "40",
+      "52",
+      "36",
+      "44",
+      "48"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The three Greek architectural orders are Doric (simplest), Ionic (with scrolled capitals), and Corinthian (ornate acanthus capitals). Doric columns have no base and a plain circular capital (echinus + abacus). The Parthenon's exterior is entirely Doric, but uniquely its interior frieze uses Ionic style — a deliberate architectural hybrid reflecting the prestige of the building.",
+    "wowFactor": "The Parthenon's 92 metope carvings show four simultaneous mythological battles — Gods vs Titans, Greeks vs Amazons, Greeks vs Trojans, and Lapiths vs Centaurs — the ancient Greek equivalent of a cinematic universe crossover.",
+    "variants": [
+      {
+        "question": "What are the three classical Greek architectural orders, from simplest to most ornate?",
+        "type": "forward",
+        "distractors": [
+          "Ionic, Doric, Corinthian",
+          "Doric, Corinthian, Ionic",
+          "Corinthian, Ionic, Doric"
+        ],
+        "answer": "Doric, Ionic, Corinthian"
+      },
+      {
+        "question": "How many metope carvings decorate the Parthenon's exterior frieze?",
+        "type": "forward",
+        "distractors": [
+          "46",
+          "64",
+          "108"
+        ],
+        "answer": "92"
+      },
+      {
+        "question": "The Parthenon's exterior uses the Doric order, but its interior frieze unusually uses the ___ order.",
+        "type": "fill_blank",
+        "distractors": [
+          "Corinthian",
+          "Composite",
+          "Tuscan"
+        ],
+        "answer": "Ionic"
+      },
+      {
+        "question": "The Parthenon's metope carvings depict four different mythological battle scenes.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Parthenon",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art close-up of a Doric column capital with surrounding frieze showing carved battle scene between Lapiths and Centaurs, bold geometric triglyph pattern above.",
+    "tags": [
+      "parthenon",
+      "doric order",
+      "columns",
+      "metopes",
+      "triglyphs",
+      "greek architecture",
+      "mythology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-cinema-lumiere-brothers-016",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Cinema",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Cinema",
+    "categoryL3": "",
+    "statement": "The Lumière brothers, Auguste and Louis, invented the Cinématographe — a combined camera, printer, and projector — and held the world's first public paying cinema screening in Paris on 28 December 1895.",
+    "quizQuestion": "On what date did the Lumière brothers hold the world's first public paying cinema screening?",
+    "correctAnswer": "28 December 1895",
+    "distractors": [
+      "4 July 1896",
+      "1 January 1900",
+      "15 March 1894",
+      "22 October 1895",
+      "14 February 1896",
+      "3 November 1895",
+      "20 December 1895",
+      "10 January 1896"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Cinématographe weighed only 5 kg (compared to Edison's 500 kg Kinetoscope) and could both record and project, making it portable and commercially viable. The December 1895 screening at the Grand Café on the Boulevard des Capucines showed ten short films to 33 paying customers — each ticket cost 1 franc. Within weeks, the venue was selling out nightly.",
+    "wowFactor": "At the first Lumière screening, a film of a train arriving at a station reportedly caused audience members to leap from their seats in panic, convinced the train was about to crush them.",
+    "variants": [
+      {
+        "question": "What was the name of the Lumière brothers' invention used for the first cinema screening?",
+        "type": "forward",
+        "distractors": [
+          "Kinetoscope",
+          "Zoetrope",
+          "Bioscope"
+        ],
+        "answer": "Cinématographe"
+      },
+      {
+        "question": "In what Paris venue did the Lumières hold their first public cinema screening?",
+        "type": "context",
+        "distractors": [
+          "The Eiffel Tower exhibition hall",
+          "Moulin Rouge",
+          "The Louvre auditorium"
+        ],
+        "answer": "Grand Café on Boulevard des Capucines"
+      },
+      {
+        "question": "The Lumières' first public screening reportedly caused some audience members to flee in panic at which film?",
+        "type": "forward",
+        "distractors": [
+          "Workers leaving a factory",
+          "A baby being fed",
+          "A boat in a harbour"
+        ],
+        "answer": "A train arriving at a station (L'Arrivée d'un train)"
+      },
+      {
+        "question": "The world's first public paying cinema screening was held on 28 December 1895.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Auguste-and-Louis-Lumiere",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a candlelit Parisian café basement with a flickering projected image of a train on a white sheet, audience members in Victorian dress recoiling in shock.",
+    "tags": [
+      "lumiere brothers",
+      "cinema",
+      "1895",
+      "cinematographe",
+      "first screening",
+      "film history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-cinema-first-screening-1895-017",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Cinema",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Cinema",
+    "categoryL3": "",
+    "statement": "The first Lumière public screening in December 1895 showed ten short films, including 'Workers Leaving the Lumière Factory,' 'The Gardener' (a comedy about a garden hose), and 'L'Arrivée d'un train' — establishing both documentary and fiction as cinema's founding genres.",
+    "quizQuestion": "What did the Lumière brothers reportedly say about the long-term future of cinema?",
+    "correctAnswer": "It is 'an invention without a future'",
+    "distractors": [
+      "'It will replace theatre within ten years'",
+      "'This will be the greatest art form of the 20th century'",
+      "'We must patent this immediately or Edison will steal it'",
+      "'It is too expensive to ever be commercially viable'",
+      "'Only scientists and educators will find it useful'",
+      "'The public will tire of it after a season'",
+      "'It needs sound before it can become an industry'",
+      "'Only moving portraits will have lasting appeal'"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The ten films at the Grand Café ranged from 40 to 50 seconds each. 'Workers Leaving the Factory' is considered the first true film. 'The Gardener' introduced narrative comedy. The Lumières saw cinema as a novelty fair attraction, not an art form. They were spectacularly wrong: within 5 years, permanent cinemas existed worldwide, and by 1900 the film industry was commercially dominant.",
+    "wowFactor": "The Lumières thought cinema was 'an invention without a future' — they sold the Cinématographe patent within two years and went back to manufacturing photographic products.",
+    "variants": [
+      {
+        "question": "What is the title of the very first film shown at the Lumières' 1895 screening?",
+        "type": "forward",
+        "distractors": [
+          "L'Arrivée d'un train",
+          "The Gardener",
+          "Baby's Breakfast"
+        ],
+        "answer": "Workers Leaving the Lumière Factory"
+      },
+      {
+        "question": "How long were the films shown at the Lumières' first public cinema screening?",
+        "type": "forward",
+        "distractors": [
+          "About 10 minutes each",
+          "About 5 minutes each",
+          "About 2 minutes each"
+        ],
+        "answer": "About 40 to 50 seconds each"
+      },
+      {
+        "question": "After selling the Cinématographe patent, what industry did the Lumières return to?",
+        "type": "context",
+        "distractors": [
+          "Stage theatre production",
+          "Scientific instrument making",
+          "Newspaper publishing"
+        ],
+        "answer": "Photographic products manufacturing"
+      },
+      {
+        "question": "The Lumière brothers believed cinema would have no lasting commercial future.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Auguste-and-Louis-Lumiere",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Victorian inventors' workshop with a Cinématographe on a tripod, reels of film on a desk, posters of early film scenes on the wall, two suited brothers examining a film strip.",
+    "tags": [
+      "lumiere brothers",
+      "cinema",
+      "1895",
+      "first film",
+      "workers leaving factory",
+      "film history",
+      "invention without future"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-cinema-silent-films-018",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "Cinema",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "Cinema",
+    "categoryL3": "",
+    "statement": "Silent films dominated cinema from 1895 to 1927 — they were never truly 'silent,' but accompanied by live piano, organ, or full orchestra, and used intertitle cards for dialogue, with acting styles evolving from broad pantomime to nuanced naturalism.",
+    "quizQuestion": "What 1927 film is credited with introducing synchronised sound dialogue and ending the silent film era?",
+    "correctAnswer": "The Jazz Singer",
+    "distractors": [
+      "Metropolis",
+      "Citizen Kane",
+      "Sunrise",
+      "The General",
+      "Wings",
+      "Don Juan",
+      "The Lights of New York",
+      "Show Boat"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The silent era lasted about 32 years and produced masterpieces: Chaplin's 'The Kid' (1921), Murnau's 'Nosferatu' (1922), Eisenstein's 'Battleship Potemkin' (1925), Keaton's 'The General' (1926). The transition to sound ('talkies') was rapid: by 1930, nearly all studios had converted. Silent film required globally legible acting because no translation was needed — it was cinema's first truly universal language.",
+    "wowFactor": "When 'The Jazz Singer' (1927) introduced synchronised sound, it did not just add dialogue — it wiped out thousands of careers, because many beloved silent stars had voices the public found wrong or foreign-accented.",
+    "variants": [
+      {
+        "question": "Silent films were always performed without any accompanying music.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "What written device did silent films use to convey dialogue or narration?",
+        "type": "forward",
+        "distractors": [
+          "Subtitles projected separately",
+          "A narrator speaking in the cinema",
+          "Printed programmes handed out"
+        ],
+        "answer": "Intertitle cards"
+      },
+      {
+        "question": "Which of these is NOT a masterpiece of the silent film era?",
+        "type": "negative",
+        "distractors": [
+          "Nosferatu (1922)",
+          "Battleship Potemkin (1925)",
+          "The General (1926)"
+        ],
+        "answer": "Citizen Kane (1941)"
+      },
+      {
+        "question": "The transition from silent films to 'talkies' was largely complete by approximately what year?",
+        "type": "forward",
+        "distractors": [
+          "1935",
+          "1940",
+          "1925"
+        ],
+        "answer": "1930"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/art/silent-film",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a 1920s cinema interior with a pianist at the front, flickering black-and-white projected image of a Chaplin-style tramp figure on screen, audience in period dress watching.",
+    "tags": [
+      "silent films",
+      "cinema history",
+      "jazz singer",
+      "talkies",
+      "charlie chaplin",
+      "intertitles",
+      "1927"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

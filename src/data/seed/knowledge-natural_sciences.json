@@ -9068,5 +9068,1584 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-speed-value-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Light & Optics",
+    "statement": "Light travels at approximately 299,792 kilometers per second in a vacuum.",
+    "quizQuestion": "Approximately how fast does light travel in a vacuum?",
+    "correctAnswer": "299,792 km/s",
+    "distractors": [
+      "150,000 km/s",
+      "500,000 km/s",
+      "1,080,000 km/h",
+      "186,000 km/s",
+      "340 km/s",
+      "3,000 km/s",
+      "270,000 km/s",
+      "310,000 km/s"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The speed of light in a vacuum (c) is exactly 299,792,458 m/s. It is a universal constant and forms the basis of Einstein's special relativity — nothing with mass can reach this speed.",
+    "wowFactor": "In one second, light could circle Earth more than 7 times.",
+    "variants": [
+      {
+        "question": "What is the speed of light in a vacuum?",
+        "type": "forward",
+        "distractors": [
+          "150,000 km/s",
+          "186,000 km/s",
+          "310,000 km/s"
+        ],
+        "answer": "299,792 km/s"
+      },
+      {
+        "question": "Which physical constant is approximately 299,792 km/s?",
+        "type": "reverse",
+        "distractors": [
+          "The speed of sound",
+          "Escape velocity",
+          "The Hubble constant"
+        ],
+        "answer": "The speed of light"
+      },
+      {
+        "question": "Light travels at 299,792 km/s in ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "water",
+          "glass",
+          "Earth's atmosphere"
+        ],
+        "answer": "a vacuum"
+      },
+      {
+        "question": "Which statement about the speed of light is NOT true?",
+        "type": "negative",
+        "distractors": [
+          "Light travels at ~299,792 km/s in a vacuum.",
+          "Nothing with mass can reach light speed.",
+          "The speed of light is a universal constant."
+        ],
+        "answer": "Light travels faster through water than through a vacuum."
+      },
+      {
+        "question": "True or false: nothing with mass can travel as fast as light.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NIST / Special Relativity",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing beam of white-gold light streaks through deep space past stars, leaving a motion-blur trail. Pixel art style, 64x64.",
+    "tags": [
+      "speed of light",
+      "physics",
+      "constants",
+      "relativity",
+      "light"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-speed-fastest-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Relativity",
+    "statement": "Nothing in the universe can travel faster than light in a vacuum — this is a fundamental law of physics.",
+    "quizQuestion": "According to special relativity, what is the universal speed limit?",
+    "correctAnswer": "The speed of light",
+    "distractors": [
+      "The speed of sound",
+      "Escape velocity",
+      "The speed of gravity waves",
+      "Twice the speed of light",
+      "Planck speed",
+      "Tachyon velocity",
+      "The speed of neutrinos",
+      "The speed of a quantum entanglement signal"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Einstein's special relativity established that as an object with mass accelerates toward c (light speed), it requires infinite energy. This makes exceeding light speed physically impossible for matter or information.",
+    "wowFactor": "Even information itself cannot travel faster than light, meaning instant cosmic communication is impossible.",
+    "variants": [
+      {
+        "question": "What is the maximum speed anything can travel in the universe?",
+        "type": "forward",
+        "distractors": [
+          "Twice the speed of light",
+          "Escape velocity",
+          "Planck speed"
+        ],
+        "answer": "The speed of light"
+      },
+      {
+        "question": "Special relativity forbids any object with mass from reaching ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "escape velocity",
+          "orbital speed",
+          "terminal velocity"
+        ],
+        "answer": "the speed of light"
+      },
+      {
+        "question": "Which statement is NOT consistent with special relativity?",
+        "type": "negative",
+        "distractors": [
+          "Nothing with mass can reach the speed of light.",
+          "Information cannot travel faster than light.",
+          "Light speed is a universal constant."
+        ],
+        "answer": "A spacecraft with enough fuel can exceed the speed of light."
+      },
+      {
+        "question": "Why can't matter travel at light speed according to Einstein?",
+        "type": "context",
+        "distractors": [
+          "It would freeze in time",
+          "It would become invisible",
+          "It would lose all momentum"
+        ],
+        "answer": "It would require infinite energy"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Einstein's Special Relativity (1905)",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rocket ship with a red X over it approaches a bright light cone, pixel art, dark space background.",
+    "tags": [
+      "speed of light",
+      "special relativity",
+      "physics",
+      "Einstein",
+      "universal speed limit"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-year-distance-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Astronomy",
+    "statement": "A light-year is the distance light travels in one year — about 9.46 trillion kilometers.",
+    "quizQuestion": "What does a light-year measure?",
+    "correctAnswer": "Distance",
+    "distractors": [
+      "Time",
+      "Speed",
+      "Energy",
+      "Brightness of stars",
+      "Age of a star",
+      "Mass of a galaxy",
+      "Gravitational pull",
+      "Redshift magnitude"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Despite its name, a light-year is a unit of distance, not time. It equals approximately 9.46 × 10^12 km or 63,241 astronomical units. Astronomers use it because space is so vast that other units become unwieldy.",
+    "wowFactor": "Our nearest star, Proxima Centauri, is 4.24 light-years away — a trip at airplane speed would take 4.7 million years.",
+    "variants": [
+      {
+        "question": "A light-year is a unit of what?",
+        "type": "forward",
+        "distractors": [
+          "Time",
+          "Speed",
+          "Mass"
+        ],
+        "answer": "Distance"
+      },
+      {
+        "question": "Which astronomical unit equals the distance light travels in one Earth year?",
+        "type": "reverse",
+        "distractors": [
+          "A parsec",
+          "An astronomical unit",
+          "A kiloparsec"
+        ],
+        "answer": "A light-year"
+      },
+      {
+        "question": "Approximately how many kilometers is one light-year?",
+        "type": "forward",
+        "distractors": [
+          "1 billion km",
+          "384,000 km",
+          "150 million km"
+        ],
+        "answer": "9.46 trillion km"
+      },
+      {
+        "question": "True or false: a light-year is a unit of time.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "A light-year equals the distance light travels in ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "one second",
+          "one hour",
+          "one century"
+        ],
+        "answer": "one year"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "IAU / Astronomy fundamentals",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny Earth on the left, a distant star glowing on the right, a dotted light beam connecting them labeled '1 light-year'. Pixel art, space background.",
+    "tags": [
+      "light-year",
+      "astronomy",
+      "distance",
+      "space",
+      "units"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-water-h2o-formula-004",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Chemistry",
+    "categoryL3": "Molecules",
+    "statement": "Water is composed of two hydrogen atoms bonded to one oxygen atom, giving it the chemical formula H₂O.",
+    "quizQuestion": "What is the chemical formula for water?",
+    "correctAnswer": "H₂O",
+    "distractors": [
+      "HO₂",
+      "H₂O₂",
+      "OH",
+      "H₃O",
+      "H₂SO₄",
+      "CO₂",
+      "NaOH",
+      "HCl"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The H-O-H bond angle is ~104.5°, making water a polar molecule. This polarity drives nearly all of water's unusual properties: high surface tension, capillary action, ability to dissolve salts, and expansion when frozen.",
+    "wowFactor": "This simple 3-atom molecule has more bizarre anomalies than almost any other substance in nature.",
+    "variants": [
+      {
+        "question": "Which chemical formula represents water?",
+        "type": "forward",
+        "distractors": [
+          "H₂O₂",
+          "HO₂",
+          "H₃O"
+        ],
+        "answer": "H₂O"
+      },
+      {
+        "question": "The molecule H₂O is the chemical formula for ____.",
+        "type": "reverse",
+        "distractors": [
+          "Hydrogen peroxide",
+          "Hydrochloric acid",
+          "Ammonia"
+        ],
+        "answer": "Water"
+      },
+      {
+        "question": "How many hydrogen atoms does one water molecule contain?",
+        "type": "forward",
+        "distractors": [
+          "1",
+          "3",
+          "4"
+        ],
+        "answer": "2"
+      },
+      {
+        "question": "Water (H₂O) consists of hydrogen and ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "nitrogen",
+          "carbon",
+          "helium"
+        ],
+        "answer": "oxygen"
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "General Chemistry",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing water molecule with a large red oxygen sphere and two small white hydrogen spheres, pixel art, blue background.",
+    "tags": [
+      "water",
+      "H2O",
+      "chemistry",
+      "molecules",
+      "formula"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-water-universal-solvent-005",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Chemistry",
+    "categoryL3": "Water Science",
+    "statement": "Water is called the 'universal solvent' because it dissolves more substances than any other liquid.",
+    "quizQuestion": "Why is water called the 'universal solvent'?",
+    "correctAnswer": "It dissolves more substances than any other liquid",
+    "distractors": [
+      "It has no taste or smell",
+      "It is the most abundant liquid on Earth",
+      "It boils at 100°C",
+      "It can dissolve all substances including oils",
+      "It forms hydrogen bonds with everything",
+      "It has the highest surface tension of all liquids",
+      "It can dissolve gases but not solids",
+      "It has a neutral pH of exactly 7"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Water's polar nature (partial positive charge on H, partial negative on O) allows it to surround and separate ions and polar molecules. It dissolves salts, sugars, acids, bases, and gases — underpinning all biological processes. It cannot dissolve nonpolar molecules like oils.",
+    "wowFactor": "Water's polarity lets it pry apart ionic compounds like salt one ion at a time — making it the engine of biochemistry.",
+    "variants": [
+      {
+        "question": "What nickname is given to water because it dissolves more substances than any other liquid?",
+        "type": "reverse",
+        "distractors": [
+          "The perfect solvent",
+          "The polar liquid",
+          "The ionic solution"
+        ],
+        "answer": "The universal solvent"
+      },
+      {
+        "question": "Water can dissolve salts because it is a ____ molecule.",
+        "type": "fill_blank",
+        "distractors": [
+          "nonpolar",
+          "neutral",
+          "covalent"
+        ],
+        "answer": "polar"
+      },
+      {
+        "question": "Which statement about water as a solvent is NOT true?",
+        "type": "negative",
+        "distractors": [
+          "Water dissolves more substances than any other liquid.",
+          "Water is polar, which enables it to dissolve ionic compounds.",
+          "Water is essential to biological chemistry because of its solvent properties."
+        ],
+        "answer": "Water dissolves all substances, including oils and fats."
+      },
+      {
+        "question": "Water's solvent power comes from its ____.",
+        "type": "context",
+        "distractors": [
+          "High boiling point",
+          "Transparency",
+          "Neutrality"
+        ],
+        "answer": "Polarity"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Chemistry / Biochemistry fundamentals",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clear water drop dissolving colorful salt crystals, ionic particles floating free, pixel art, blue-teal background.",
+    "tags": [
+      "water",
+      "solvent",
+      "chemistry",
+      "polarity",
+      "biochemistry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-water-ice-floats-006",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Chemistry",
+    "categoryL3": "Water Science",
+    "statement": "Ice floats on liquid water because it is less dense than water — a rare property among solids and their liquid forms.",
+    "quizQuestion": "Why does ice float on liquid water?",
+    "correctAnswer": "Ice is less dense than liquid water",
+    "distractors": [
+      "Ice is lighter because it contains less hydrogen",
+      "Ice freezes air inside it, making it buoyant",
+      "Water molecules escape when frozen, reducing mass",
+      "Ice has stronger covalent bonds that repel water",
+      "Frozen water has a higher surface tension",
+      "The hydrogen bonds in ice trap heat that reduces density",
+      "Ice is more dense but surface tension holds it up",
+      "Solid water is more viscous and resists sinking"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Most substances contract and become denser when they freeze. Water is anomalous: hydrogen bonds in ice form a hexagonal lattice, pushing molecules further apart, making ice ~9% less dense than liquid water. This insulating ice layer is why aquatic life survives winter.",
+    "wowFactor": "If ice sank, lakes would freeze from the bottom up and most aquatic life would be wiped out each winter.",
+    "variants": [
+      {
+        "question": "What property of ice allows it to float on liquid water?",
+        "type": "forward",
+        "distractors": [
+          "Ice has trapped air pockets",
+          "Ice repels water molecules",
+          "Ice has a higher surface tension"
+        ],
+        "answer": "Ice is less dense than liquid water"
+      },
+      {
+        "question": "When water freezes, what happens to its density?",
+        "type": "forward",
+        "distractors": [
+          "It increases",
+          "It stays the same",
+          "It doubles"
+        ],
+        "answer": "It decreases"
+      },
+      {
+        "question": "The hexagonal lattice structure of ice causes water to ____ when it freezes.",
+        "type": "fill_blank",
+        "distractors": [
+          "contract",
+          "dissolve",
+          "sublimate"
+        ],
+        "answer": "expand"
+      },
+      {
+        "question": "True or false: Most solids are less dense than their liquid form.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "The ecological benefit of ice floating is that ____.",
+        "type": "context",
+        "distractors": [
+          "It evaporates faster in spring",
+          "It absorbs more solar radiation",
+          "It prevents algae from growing in winter"
+        ],
+        "answer": "It insulates lakes so aquatic life survives winter"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Physical Chemistry / Ecology",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art iceberg floating on blue water, fish swimming safely below, snowflake lattice pattern inside the ice.",
+    "tags": [
+      "ice",
+      "water",
+      "density",
+      "anomaly",
+      "hydrogen bonds",
+      "aquatic life"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-atoms-mostly-empty-007",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Atomic Structure",
+    "statement": "Atoms are mostly empty space — the nucleus is so small relative to the atom that if an atom were the size of a football stadium, the nucleus would be a marble on the field.",
+    "quizQuestion": "What makes up most of the volume of an atom?",
+    "correctAnswer": "Empty space",
+    "distractors": [
+      "The nucleus",
+      "Protons and neutrons",
+      "Electrons spinning around the nucleus",
+      "The electron cloud occupying dense orbits",
+      "Quarks in constant motion",
+      "Gluons binding the protons",
+      "The strong nuclear force field",
+      "Virtual particle pairs"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "An atom's diameter is about 0.1 nanometers, but the nucleus is ~100,000 times smaller. Electrons occupy a diffuse cloud around it. The apparent 'solidity' of matter results from electron repulsion, not physical contact between atoms.",
+    "wowFactor": "Solid matter feels solid only because of electromagnetic forces — not because atoms actually touch.",
+    "variants": [
+      {
+        "question": "If an atom were the size of a football stadium, the nucleus would be roughly the size of ____.",
+        "type": "forward",
+        "distractors": [
+          "A basketball",
+          "A car",
+          "A coin"
+        ],
+        "answer": "A marble"
+      },
+      {
+        "question": "Solid matter feels solid due to ____.",
+        "type": "context",
+        "distractors": [
+          "Atoms physically touching each other",
+          "The weight of the nucleus",
+          "Gravity between atomic cores"
+        ],
+        "answer": "Electromagnetic repulsion between electrons"
+      },
+      {
+        "question": "The nucleus of an atom is roughly ____ times smaller than the atom itself.",
+        "type": "forward",
+        "distractors": [
+          "10",
+          "1,000",
+          "1,000,000"
+        ],
+        "answer": "100,000"
+      },
+      {
+        "question": "True or false: atoms are mostly empty space.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Atomic physics / Rutherford model",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vast dark space inside an atom with a tiny glowing nucleus in the center and faint electron trails far away, pixel art.",
+    "tags": [
+      "atoms",
+      "empty space",
+      "nucleus",
+      "physics",
+      "matter"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-atoms-electron-cloud-008",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Quantum Mechanics",
+    "statement": "Electrons do not orbit the nucleus in fixed paths — they exist in probabilistic 'clouds' called orbitals where they are most likely to be found.",
+    "quizQuestion": "What is the correct modern description of how electrons exist around an atom's nucleus?",
+    "correctAnswer": "In probabilistic clouds called orbitals",
+    "distractors": [
+      "In fixed circular orbits like planets around the sun",
+      "Embedded inside the nucleus",
+      "Stationary at fixed distances from the nucleus",
+      "In elliptical orbits determined by their charge",
+      "Oscillating back and forth across the nucleus",
+      "In layered shells with exactly 2, 8, 18 electrons per shell",
+      "Attached to specific protons via magnetic fields",
+      "In standing wave rings around the nucleus"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "The Bohr model (electrons in fixed circular orbits) is a useful simplification but incorrect. Quantum mechanics describes electrons via wave functions. Orbitals are regions of 3D space where there is a ~90% probability of finding the electron. Shapes vary: s-orbitals are spherical, p-orbitals are dumbbell-shaped.",
+    "wowFactor": "An electron has no definite location until measured — it exists in a quantum superposition of positions.",
+    "variants": [
+      {
+        "question": "What are electron orbitals?",
+        "type": "forward",
+        "distractors": [
+          "Fixed circular paths around the nucleus",
+          "Slots inside the nucleus for electrons",
+          "Magnetic force lines electrons follow"
+        ],
+        "answer": "Regions of probability where electrons are likely to be found"
+      },
+      {
+        "question": "The Bohr model of the atom is oversimplified because ____.",
+        "type": "context",
+        "distractors": [
+          "It ignores gravity between electrons",
+          "It assumes the nucleus is hollow",
+          "It predicts electrons travel faster than light"
+        ],
+        "answer": "Electrons don't travel in fixed circular orbits"
+      },
+      {
+        "question": "Quantum mechanics describes electron positions using ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "force vectors",
+          "magnetic rings",
+          "circular paths"
+        ],
+        "answer": "wave functions"
+      },
+      {
+        "question": "True or false: an electron has a definite position at all times.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Quantum Mechanics / Schrödinger equation",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing nucleus surrounded by fuzzy, probabilistic electron clouds in s and p orbital shapes, pixel art, deep blue background.",
+    "tags": [
+      "electrons",
+      "orbitals",
+      "quantum mechanics",
+      "atoms",
+      "wave function"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-atoms-nuclear-forces-009",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Physics",
+    "categoryL3": "Nuclear Physics",
+    "statement": "The strong nuclear force holds the nucleus together and is the most powerful fundamental force in nature — about 100 times stronger than electromagnetism.",
+    "quizQuestion": "What holds the protons and neutrons together inside an atomic nucleus?",
+    "correctAnswer": "The strong nuclear force",
+    "distractors": [
+      "Gravity",
+      "Electromagnetism",
+      "The weak nuclear force",
+      "Coulomb attraction between neutrons and protons",
+      "Magnetic attraction between proton spins",
+      "Van der Waals forces at nuclear scale",
+      "Higgs field pressure",
+      "Quark–lepton coupling"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Protons are positively charged and repel each other — the electromagnetic force should tear the nucleus apart. The strong nuclear force (carried by gluons, acting on quarks) overcomes this at very short ranges (~1 femtometer). The residual strong force also binds protons to neutrons. Nuclear energy and bombs exploit this by releasing the energy stored in this force.",
+    "wowFactor": "Without the strong force, every atomic nucleus would instantly explode due to the repulsion of positively charged protons.",
+    "variants": [
+      {
+        "question": "Which is the strongest of the four fundamental forces?",
+        "type": "forward",
+        "distractors": [
+          "Gravity",
+          "Electromagnetism",
+          "The weak nuclear force"
+        ],
+        "answer": "The strong nuclear force"
+      },
+      {
+        "question": "Without the strong nuclear force, atomic nuclei would ____.",
+        "type": "context",
+        "distractors": [
+          "Collapse under gravity",
+          "Absorb all nearby electrons",
+          "Drift apart due to neutron decay"
+        ],
+        "answer": "Explode due to proton-proton repulsion"
+      },
+      {
+        "question": "The strong nuclear force acts over a range of about ____.",
+        "type": "forward",
+        "distractors": [
+          "1 nanometer",
+          "1 angstrom",
+          "1 micrometer"
+        ],
+        "answer": "1 femtometer (10⁻¹⁵ m)"
+      },
+      {
+        "question": "The particles that carry the strong force between quarks are called ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "photons",
+          "bosons",
+          "neutrinos"
+        ],
+        "answer": "gluons"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Particle Physics / Standard Model",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art atomic nucleus with protons (red) and neutrons (blue) bound together by glowing green force lines (gluons).",
+    "tags": [
+      "strong nuclear force",
+      "nucleus",
+      "gluons",
+      "quarks",
+      "fundamental forces"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-evolution-natural-selection-010",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Biology",
+    "categoryL3": "Evolution",
+    "statement": "Natural selection is the process by which organisms with traits better suited to their environment survive and reproduce more successfully, passing those traits to offspring.",
+    "quizQuestion": "What is the primary mechanism of evolution according to Darwin?",
+    "correctAnswer": "Natural selection",
+    "distractors": [
+      "Genetic mutation alone",
+      "Lamarckian inheritance of acquired traits",
+      "Random species transformation",
+      "Genetic drift in small populations",
+      "Sexual selection only",
+      "Epigenetic inheritance",
+      "Horizontal gene transfer",
+      "Punctuated equilibrium"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Proposed by Charles Darwin in 1859 in 'On the Origin of Species,' natural selection requires: (1) heritable variation in traits, (2) differential survival/reproduction tied to those traits, (3) passing favorable traits to offspring. Over generations, populations shift. It is the engine of evolution.",
+    "wowFactor": "Darwin came up with natural selection before anyone knew genes existed — he got the mechanism right without the molecular blueprint.",
+    "variants": [
+      {
+        "question": "Which book did Charles Darwin publish in 1859 that introduced natural selection?",
+        "type": "reverse",
+        "distractors": [
+          "The Descent of Man",
+          "Principles of Geology",
+          "Natural History of Creation"
+        ],
+        "answer": "On the Origin of Species"
+      },
+      {
+        "question": "Natural selection requires that favorable traits be ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "visible",
+          "dominant",
+          "structural"
+        ],
+        "answer": "heritable"
+      },
+      {
+        "question": "In natural selection, 'fitness' refers to ____.",
+        "type": "context",
+        "distractors": [
+          "Physical strength",
+          "Longevity",
+          "Intelligence"
+        ],
+        "answer": "Reproductive success"
+      },
+      {
+        "question": "True or false: Natural selection always favors the largest individuals in a population.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Darwin, On the Origin of Species (1859)",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Evolution may conflict with some religious beliefs; factually sound.",
+    "visualDescription": "A pixel art sequence of creatures gradually changing shape across generations, arrows pointing forward, green jungle background.",
+    "tags": [
+      "evolution",
+      "natural selection",
+      "Darwin",
+      "biology",
+      "survival of the fittest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-evolution-common-ancestor-011",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Biology",
+    "categoryL3": "Evolution",
+    "statement": "All life on Earth shares a common ancestor — a single-celled organism that lived roughly 3.8 billion years ago, often called LUCA (Last Universal Common Ancestor).",
+    "quizQuestion": "What term describes the single ancestral organism from which all life on Earth descended?",
+    "correctAnswer": "LUCA (Last Universal Common Ancestor)",
+    "distractors": [
+      "The Cambrian Seed",
+      "Primordial Soup",
+      "Adam Organism",
+      "Proto-eukaryote",
+      "Archean nucleus",
+      "Ur-organism",
+      "Cenancestor",
+      "Progenote"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Evidence from molecular biology shows that all living organisms use DNA/RNA, the same genetic code, and similar cellular machinery (ribosomes, ATP synthase). This strongly supports universal common descent. LUCA was likely a prokaryote. The tree of life branches into three domains: Bacteria, Archaea, and Eukarya.",
+    "wowFactor": "You and a mushroom share a more recent common ancestor than either of you does with most bacteria.",
+    "variants": [
+      {
+        "question": "LUCA stands for ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "Least Understood Carbon Agent",
+          "Living Universal Cell Ancestor",
+          "Last Unicellular Carbon Atom"
+        ],
+        "answer": "Last Universal Common Ancestor"
+      },
+      {
+        "question": "Approximately how long ago did LUCA, the common ancestor of all life, live?",
+        "type": "forward",
+        "distractors": [
+          "500 million years ago",
+          "65 million years ago",
+          "1 billion years ago"
+        ],
+        "answer": "3.8 billion years ago"
+      },
+      {
+        "question": "Which of the following is evidence that all life shares a common ancestor?",
+        "type": "context",
+        "distractors": [
+          "All organisms have identical body plans",
+          "All life requires sunlight",
+          "All organisms live in water"
+        ],
+        "answer": "All life uses the same genetic code and DNA/RNA"
+      },
+      {
+        "question": "True or false: all living organisms share the same basic genetic code.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Molecular Biology / Universal Common Descent",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Common descent may conflict with some religious beliefs; scientifically well-supported.",
+    "visualDescription": "A pixel art tree of life with a glowing single-celled root branching into animals, fungi, plants, and bacteria.",
+    "tags": [
+      "LUCA",
+      "common ancestor",
+      "evolution",
+      "biology",
+      "tree of life"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-evolution-antibiotic-resistance-012",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Biology",
+    "categoryL3": "Microbiology",
+    "statement": "Antibiotic resistance is a real-time example of natural selection — bacteria that survive antibiotics reproduce, passing on their resistance genes.",
+    "quizQuestion": "Antibiotic resistance in bacteria is an example of which process?",
+    "correctAnswer": "Natural selection",
+    "distractors": [
+      "Bacteria learning to dodge antibiotics consciously",
+      "Genetic engineering by pharmaceutical companies",
+      "Spontaneous generation",
+      "Epigenetic adaptation to environment",
+      "Horizontal gene transfer only",
+      "Lamarckian inheritance",
+      "Phenotypic plasticity",
+      "Sympatric speciation"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "When antibiotics kill most bacteria in an infection, a few resistant individuals (due to random mutations) survive. These reproduce rapidly, passing resistance. Overuse and incomplete courses of antibiotics accelerate this. Drug-resistant bacteria (like MRSA) now kill hundreds of thousands per year globally.",
+    "wowFactor": "By taking incomplete courses of antibiotics, patients accidentally train bacteria to survive future treatments — selection pressure in action.",
+    "variants": [
+      {
+        "question": "Why do bacteria become antibiotic resistant over time?",
+        "type": "forward",
+        "distractors": [
+          "Bacteria absorb the antibiotic into their DNA",
+          "Antibiotics teach bacteria how to resist them",
+          "Resistant bacteria are created by mutation during treatment"
+        ],
+        "answer": "Bacteria with resistance mutations survive and reproduce more"
+      },
+      {
+        "question": "Not completing an antibiotic course contributes to drug resistance because ____.",
+        "type": "context",
+        "distractors": [
+          "The remaining antibiotics mutate the bacteria",
+          "Partial doses chemically strengthen bacteria",
+          "Bacteria share immunity with healthy cells"
+        ],
+        "answer": "Surviving bacteria are the most resistant ones and they reproduce"
+      },
+      {
+        "question": "MRSA is an example of a ____ bacterium.",
+        "type": "fill_blank",
+        "distractors": [
+          "genetically engineered",
+          "lab-created",
+          "naturally harmless"
+        ],
+        "answer": "drug-resistant"
+      },
+      {
+        "question": "True or false: antibiotic resistance is an example of evolution happening in real time.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "WHO / CDC / Microbiology",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Medical content; factually accurate and relevant to public health.",
+    "visualDescription": "A pixel art petri dish with most bacteria dead (gray) and a few glowing green resistant bacteria reproducing with arrows.",
+    "tags": [
+      "antibiotic resistance",
+      "natural selection",
+      "evolution",
+      "bacteria",
+      "MRSA",
+      "public health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-tectonics-continental-drift-013",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Plate Tectonics",
+    "statement": "Continental drift is the slow movement of Earth's tectonic plates, causing continents to shift position over millions of years.",
+    "quizQuestion": "Who first proposed the theory of continental drift?",
+    "correctAnswer": "Alfred Wegener",
+    "distractors": [
+      "Charles Darwin",
+      "Isaac Newton",
+      "Albert Einstein",
+      "James Hutton",
+      "Harry Hess",
+      "Marie Tharp",
+      "Arthur Holmes",
+      "J. Tuzo Wilson"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Alfred Wegener proposed continental drift in 1912, noting that the continents' coastlines fit together like puzzle pieces and that identical fossils appeared on opposite sides of the Atlantic. The theory was initially rejected; it was vindicated in the 1960s when seafloor spreading was discovered. Today, GPS satellites can measure plate movement directly.",
+    "wowFactor": "North America and Europe are drifting apart at about the same rate your fingernails grow — 2.5 cm per year.",
+    "variants": [
+      {
+        "question": "In what year did Alfred Wegener propose continental drift?",
+        "type": "forward",
+        "distractors": [
+          "1859",
+          "1969",
+          "1950"
+        ],
+        "answer": "1912"
+      },
+      {
+        "question": "At approximately what rate do North America and Europe drift apart?",
+        "type": "forward",
+        "distractors": [
+          "1 meter per year",
+          "10 cm per decade",
+          "1 cm per century"
+        ],
+        "answer": "2.5 cm per year"
+      },
+      {
+        "question": "What evidence did Wegener use to support continental drift?",
+        "type": "context",
+        "distractors": [
+          "GPS satellite measurements",
+          "Seismic data from subduction zones",
+          "Volcanic eruption patterns"
+        ],
+        "answer": "Matching coastlines and identical fossils across oceans"
+      },
+      {
+        "question": "Continental drift was confirmed in the 1960s by the discovery of ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "deep ocean trenches",
+          "mid-ocean fossils",
+          "polar ice cores"
+        ],
+        "answer": "seafloor spreading"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wegener (1912) / USGS",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art globe with continents slowly drifting apart, arrows showing movement directions, geological time label.",
+    "tags": [
+      "continental drift",
+      "Wegener",
+      "plate tectonics",
+      "geology",
+      "seafloor spreading"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-tectonics-pangaea-014",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Plate Tectonics",
+    "statement": "About 335 million years ago, all of Earth's continents were joined into a single supercontinent called Pangaea.",
+    "quizQuestion": "What was the name of the supercontinent that included all of Earth's landmasses about 335 million years ago?",
+    "correctAnswer": "Pangaea",
+    "distractors": [
+      "Gondwana",
+      "Laurasia",
+      "Atlantis",
+      "Rodinia",
+      "Tethys",
+      "Vaalbara",
+      "Columbia (Nuna)",
+      "Kenorland"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Pangaea began breaking apart around 175 million years ago. Before Pangaea, there was an even older supercontinent called Rodinia (~1.1 billion years ago). The breakup of Pangaea drove the evolution of many species by creating geographic isolation. The southern portion, Gondwana, separated before the northern portion, Laurasia.",
+    "wowFactor": "Pangaea means 'All Earth' in Greek — dinosaurs that lived early in its breakup could have walked from what is now Antarctica to North America.",
+    "variants": [
+      {
+        "question": "Pangaea began breaking apart approximately how many million years ago?",
+        "type": "forward",
+        "distractors": [
+          "65 million years ago",
+          "500 million years ago",
+          "1 billion years ago"
+        ],
+        "answer": "175 million years ago"
+      },
+      {
+        "question": "'Pangaea' is derived from Greek words meaning ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "First Land",
+          "Ancient Ocean",
+          "Original Continent"
+        ],
+        "answer": "All Earth"
+      },
+      {
+        "question": "The southern portion of Pangaea that separated first is called ____.",
+        "type": "forward",
+        "distractors": [
+          "Laurasia",
+          "Rodinia",
+          "Tethys"
+        ],
+        "answer": "Gondwana"
+      },
+      {
+        "question": "True or false: Pangaea was the very first supercontinent in Earth's history.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Geology / Paleogeography",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art ancient globe showing Pangaea as one unified landmass surrounded by the Panthalassa ocean, warm earth tones.",
+    "tags": [
+      "Pangaea",
+      "supercontinent",
+      "plate tectonics",
+      "geology",
+      "Gondwana",
+      "Laurasia"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-tectonics-mid-ocean-ridges-015",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Plate Tectonics",
+    "statement": "Mid-ocean ridges are underwater mountain ranges where tectonic plates pull apart and new ocean floor is created from rising magma.",
+    "quizQuestion": "What geological process occurs at mid-ocean ridges?",
+    "correctAnswer": "Seafloor spreading — new oceanic crust is created",
+    "distractors": [
+      "Oceanic crust is destroyed and recycled",
+      "Earthquakes cause ocean floor to collapse",
+      "Tectonic plates grind sideways past each other",
+      "Subduction of dense plates into the mantle",
+      "Hot spot volcanoes puncture the ocean floor",
+      "Convergent boundary uplift forms underwater mountains",
+      "Salt diapirs push the sea floor upward",
+      "Isostatic rebound of thinned oceanic lithosphere"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "At divergent plate boundaries beneath oceans, magma from the mantle wells up, cools, and forms new oceanic crust in a process called seafloor spreading. This was the key evidence that confirmed Wegener's continental drift theory in the 1960s. The East Pacific Rise and Mid-Atlantic Ridge are the most studied examples.",
+    "wowFactor": "The Mid-Atlantic Ridge is the longest mountain range on Earth — it stretches over 16,000 km but is almost entirely underwater.",
+    "variants": [
+      {
+        "question": "The Mid-Atlantic Ridge is an example of what type of tectonic boundary?",
+        "type": "forward",
+        "distractors": [
+          "Convergent boundary",
+          "Transform fault",
+          "Subduction zone"
+        ],
+        "answer": "Divergent boundary"
+      },
+      {
+        "question": "How long is the Mid-Atlantic Ridge approximately?",
+        "type": "forward",
+        "distractors": [
+          "1,000 km",
+          "5,000 km",
+          "30,000 km"
+        ],
+        "answer": "Over 16,000 km"
+      },
+      {
+        "question": "Seafloor spreading occurs when ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "oceanic plates collide and one subducts under the other",
+          "transform faults cause plates to slide sideways",
+          "volcanic hot spots burn through the oceanic plate"
+        ],
+        "answer": "magma rises and creates new oceanic crust at divergent boundaries"
+      },
+      {
+        "question": "True or false: the Mid-Atlantic Ridge is mostly above sea level.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "USGS / Oceanography",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art cross-section of the ocean floor with a glowing mid-ocean ridge, magma rising from below, new crust forming at the center.",
+    "tags": [
+      "mid-ocean ridge",
+      "seafloor spreading",
+      "plate tectonics",
+      "Mid-Atlantic Ridge",
+      "geology",
+      "divergent boundary"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-climate-greenhouse-effect-016",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Climate Science",
+    "statement": "The greenhouse effect is the process by which certain atmospheric gases trap heat from the sun, warming Earth's surface.",
+    "quizQuestion": "What is the greenhouse effect?",
+    "correctAnswer": "Atmospheric gases trapping heat and warming Earth's surface",
+    "distractors": [
+      "The hole in the ozone layer letting in more sunlight",
+      "Sunlight directly heating the atmosphere",
+      "Hot air rising from greenhouse buildings warming cities",
+      "Clouds reflecting sunlight back to Earth",
+      "Earth's magnetic field trapping solar radiation",
+      "Albedo effect from ice reflecting less heat into space",
+      "Methane oxidation releasing heat in the stratosphere",
+      "Aerosol scattering causing radiative forcing"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Sunlight passes through the atmosphere and warms Earth's surface. The surface emits infrared radiation, but greenhouse gases (CO₂, water vapor, methane, N₂O) absorb and re-emit this radiation, preventing heat from escaping to space. This natural process is essential for life; anthropogenic enhancement (from burning fossil fuels) is the driver of current climate change.",
+    "wowFactor": "Without any greenhouse effect, Earth's average temperature would be about -18°C — too cold for most life. Too much, and it becomes Venus.",
+    "variants": [
+      {
+        "question": "Which gases are the main contributors to the greenhouse effect?",
+        "type": "forward",
+        "distractors": [
+          "Oxygen, nitrogen, and argon",
+          "Ozone, hydrogen, and helium",
+          "Sulfur dioxide, xenon, and neon"
+        ],
+        "answer": "CO₂, water vapor, and methane"
+      },
+      {
+        "question": "Without any greenhouse effect, Earth's average temperature would be about ____.",
+        "type": "forward",
+        "distractors": [
+          "0°C",
+          "-50°C",
+          "10°C"
+        ],
+        "answer": "-18°C"
+      },
+      {
+        "question": "The enhanced greenhouse effect from human activity is primarily caused by ____.",
+        "type": "context",
+        "distractors": [
+          "Nuclear power plants",
+          "Urban heat islands",
+          "Deforestation of tropical forests"
+        ],
+        "answer": "Burning fossil fuels"
+      },
+      {
+        "question": "Greenhouse gases warm Earth by absorbing and re-emitting ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "ultraviolet light",
+          "visible light",
+          "X-rays"
+        ],
+        "answer": "infrared radiation"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "IPCC / NASA Climate",
+    "sourceUrl": "",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Climate change is scientifically settled; some political sensitivity.",
+    "visualDescription": "A pixel art Earth wrapped in a glowing layer of atmospheric gas, sun rays entering and infrared rays trapped inside, warm orange tones.",
+    "tags": [
+      "greenhouse effect",
+      "climate change",
+      "CO2",
+      "atmosphere",
+      "global warming",
+      "Earth science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-climate-jet-stream-017",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Meteorology",
+    "statement": "The jet stream is a fast-flowing ribbon of air in the upper atmosphere that influences weather patterns across entire continents.",
+    "quizQuestion": "What is the jet stream?",
+    "correctAnswer": "A fast-flowing ribbon of air in the upper atmosphere that steers weather systems",
+    "distractors": [
+      "A current of water in the upper ocean",
+      "The stream of solar wind hitting Earth's magnetosphere",
+      "Hot air rising from the equator in a continuous stream",
+      "A band of high-pressure air circling the equator",
+      "The Hadley Cell circulation in the tropics",
+      "A narrow band of cold ocean water following the trade winds",
+      "Stratospheric ozone wind circulation at the poles",
+      "Mesospheric noctilucent cloud band circulation"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Jet streams form at the boundaries between cold polar air and warmer mid-latitude air, at altitudes of about 9–16 km. They flow from west to east and can reach speeds of 400 km/h. The polar jet stream steers weather systems and storm tracks. Climate change is causing the jet stream to wobble more (wavy meanders), linked to more extreme weather events.",
+    "wowFactor": "Pilots flying east can shave hours off transatlantic flights by riding the jet stream — sometimes reaching ground speeds of over 800 km/h.",
+    "variants": [
+      {
+        "question": "At approximately what altitude does the jet stream flow?",
+        "type": "forward",
+        "distractors": [
+          "1–3 km",
+          "20–30 km (stratosphere)",
+          "50+ km (mesosphere)"
+        ],
+        "answer": "9–16 km (upper troposphere)"
+      },
+      {
+        "question": "In which direction does the polar jet stream primarily flow?",
+        "type": "forward",
+        "distractors": [
+          "East to west",
+          "North to south",
+          "South to north"
+        ],
+        "answer": "West to east"
+      },
+      {
+        "question": "Jet streams form at the boundary between ____.",
+        "type": "fill_blank",
+        "distractors": [
+          "the ocean surface and the lower atmosphere",
+          "the tropopause and the stratosphere",
+          "tropical air and equatorial doldrums"
+        ],
+        "answer": "cold polar air and warmer mid-latitude air"
+      },
+      {
+        "question": "True or false: The jet stream flows from east to west in the Northern Hemisphere.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NOAA / Atmospheric Science",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art globe with a glowing wavy band of fast-moving air circling at high altitude, weather systems swirling below it.",
+    "tags": [
+      "jet stream",
+      "atmosphere",
+      "weather",
+      "meteorology",
+      "aviation",
+      "wind"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-climate-coriolis-effect-018",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Earth Science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Earth Science",
+    "categoryL3": "Meteorology",
+    "statement": "The Coriolis effect is the deflection of moving air and water caused by Earth's rotation — it makes storms spin counterclockwise in the Northern Hemisphere and clockwise in the Southern Hemisphere.",
+    "quizQuestion": "In which direction do hurricanes spin in the Northern Hemisphere due to the Coriolis effect?",
+    "correctAnswer": "Counterclockwise",
+    "distractors": [
+      "Clockwise",
+      "They don't spin — they move in straight lines",
+      "Randomly, depending on the storm's origin",
+      "Clockwise, same as in the Southern Hemisphere",
+      "Spiral inward without rotation",
+      "In a figure-eight pattern due to Earth's tilt",
+      "Counterclockwise, but only above 45°N latitude",
+      "Clockwise in summer and counterclockwise in winter"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "As Earth rotates, objects moving across its surface are deflected — to the right in the Northern Hemisphere, to the left in the Southern. This shapes the rotation of hurricanes (counterclockwise in N. Hemisphere), typhoons, and anticyclones. It also drives global wind patterns like trade winds. The deflection is too small to affect bathtub drains — that's a popular myth.",
+    "wowFactor": "The myth that toilets drain in opposite directions in each hemisphere is false — the Coriolis effect is too weak to control a toilet. It only matters for storms hundreds of kilometers wide.",
+    "variants": [
+      {
+        "question": "What causes the Coriolis effect?",
+        "type": "forward",
+        "distractors": [
+          "Gravity from the moon",
+          "Differential heating of the atmosphere",
+          "The tilt of Earth's axis"
+        ],
+        "answer": "Earth's rotation"
+      },
+      {
+        "question": "In the Southern Hemisphere, hurricanes (cyclones) spin ____.",
+        "type": "forward",
+        "distractors": [
+          "Counterclockwise",
+          "They don't spin",
+          "Randomly"
+        ],
+        "answer": "Clockwise"
+      },
+      {
+        "question": "The Coriolis effect deflects moving air to the ____ in the Northern Hemisphere.",
+        "type": "fill_blank",
+        "distractors": [
+          "left",
+          "downward",
+          "upward"
+        ],
+        "answer": "right"
+      },
+      {
+        "question": "True or false: The Coriolis effect causes toilets to drain in opposite directions in each hemisphere.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Atmospheric Science / NOAA",
+    "sourceUrl": "",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art globe split in two halves — left Northern Hemisphere with counterclockwise hurricane, right Southern Hemisphere with clockwise cyclone.",
+    "tags": [
+      "Coriolis effect",
+      "weather",
+      "hurricanes",
+      "Earth rotation",
+      "meteorology",
+      "wind patterns"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

@@ -877,52 +877,51 @@
     "subdomain": "planets_moons",
     "categoryL1": "Space & Astronomy",
     "categoryL2": "planets_moons",
-    "categoryL3": "",
-    "statement": "Jupiter's Great Red Spot is a persistent storm that has raged for at least 350 years.",
-    "quizQuestion": "What is Jupiter's Great Red Spot?",
-    "correctAnswer": "A giant storm",
+    "categoryL3": "gas_giants",
+    "statement": "Jupiter's Great Red Spot is a storm that has been raging for at least 350 years.",
+    "quizQuestion": "What is the Great Red Spot on Jupiter?",
+    "correctAnswer": "A giant persistent storm",
     "distractors": [
-      "A volcano",
+      "A volcanic caldera",
       "An impact crater",
-      "An ocean",
-      "A mountain range",
-      "A magnetic pole",
-      "A moon shadow",
-      "A region of rock",
-      "A frozen sea"
+      "A polar ice cap",
+      "A magnetic anomaly",
+      "A dust storm",
+      "A lava field",
+      "A large ocean",
+      "A mineral deposit"
     ],
     "acceptableAnswers": [
-      "a storm",
-      "a giant hurricane",
-      "an anticyclonic storm",
-      "a massive storm"
+      "A massive storm",
+      "A storm system",
+      "A giant anticyclone"
     ],
-    "explanation": "The Great Red Spot is an anticyclonic storm larger than Earth that has been observed continuously since at least the 1600s. Wind speeds within it reach about 430 km/h. It has been slowly shrinking over recent decades.",
-    "wowFactor": "The Great Red Spot storm is so large that Earth could fit inside it with room to spare — and it may have been raging for centuries.",
+    "explanation": "The Great Red Spot is an anticyclonic storm in Jupiter's southern hemisphere, wider than Earth itself. It has been continuously observed since at least 1665, making it the longest-known storm in the solar system.",
+    "wowFactor": "The Great Red Spot is so large that two or three Earths could fit inside it — yet it has been slowly shrinking over the past century.",
     "variants": [
       {
         "type": "forward",
-        "question": "What is the Great Red Spot on Jupiter?",
-        "answer": "A giant storm",
+        "question": "What is Jupiter's Great Red Spot?",
+        "answer": "A giant persistent storm",
         "distractors": [
-          "A volcano",
           "An impact crater",
-          "A mountain range"
+          "A volcanic region",
+          "A polar vortex"
         ]
       },
       {
         "type": "reverse",
-        "question": "On which planet would you find the Great Red Spot?",
+        "question": "Which planet hosts the solar system's longest-known active storm?",
         "answer": "Jupiter",
         "distractors": [
           "Saturn",
-          "Mars",
-          "Neptune"
+          "Neptune",
+          "Uranus"
         ]
       },
       {
         "type": "true_false",
-        "question": "True or false: Jupiter's Great Red Spot is a centuries-old storm.",
+        "question": "True or false: Jupiter's Great Red Spot is a storm that has lasted for hundreds of years.",
         "answer": "True",
         "distractors": [
           "False"
@@ -930,33 +929,35 @@
       },
       {
         "type": "fill_blank",
-        "question": "Jupiter's Great Red Spot is a giant ___ that has lasted hundreds of years.",
+        "question": "Jupiter's Great Red Spot is a giant ___ that has lasted for centuries.",
         "answer": "storm",
         "distractors": [
           "crater",
-          "ocean",
-          "volcano"
+          "volcano",
+          "ocean"
         ]
       }
     ],
     "difficulty": 2,
-    "funScore": 9,
-    "noveltyScore": 8,
+    "funScore": 8,
+    "noveltyScore": 7,
     "ageRating": "kid",
     "rarity": "uncommon",
-    "sourceName": "Wikipedia",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Red_Spot",
     "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/jupiter/overview/",
     "sensitivityLevel": 0,
     "sensitivityNote": null,
-    "visualDescription": "A close-up pixel art view of Jupiter's surface showing swirling orange clouds and a massive deep-red oval storm the size of a planet.",
+    "visualDescription": "A swirling orange and cream gas giant with a giant rust-red oval storm dominating the lower hemisphere, seen from deep space.",
     "tags": [
       "jupiter",
-      "Great Red Spot",
+      "great red spot",
       "storm",
-      "planets",
+      "gas giant",
       "solar system"
-    ]
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   },
   {
     "id": "space-jupiter-moons",
@@ -9888,6 +9889,1511 @@
       "extreme physics",
       "astronomical records",
       "stars"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-jupiter-95-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "gas_giants",
+    "statement": "Jupiter has 95 confirmed moons, more than any other planet in the solar system.",
+    "quizQuestion": "How many confirmed moons does Jupiter have?",
+    "correctAnswer": "95",
+    "distractors": [
+      "4",
+      "27",
+      "146",
+      "67",
+      "12",
+      "83",
+      "53",
+      "200"
+    ],
+    "acceptableAnswers": [
+      "95 moons",
+      "ninety-five"
+    ],
+    "explanation": "As of 2023, Jupiter has 95 confirmed moons — the most of any planet. The four largest (Io, Europa, Ganymede, Callisto) are called the Galilean moons, discovered by Galileo Galilei in 1610.",
+    "wowFactor": "Ganymede, Jupiter's largest moon, is bigger than the planet Mercury — and even has its own magnetic field.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many confirmed moons orbit Jupiter?",
+        "answer": "95",
+        "distractors": [
+          "27",
+          "67",
+          "146"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet holds the record for the most confirmed moons in the solar system?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jupiter has more confirmed moons than any other planet.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jupiter has ___ confirmed moons, the most of any planet in the solar system.",
+        "answer": "95",
+        "distractors": [
+          "27",
+          "67",
+          "146"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA/IAU",
+    "sourceUrl": "https://solarsystem.nasa.gov/moons/jupiter-moons/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jupiter's massive striped globe surrounded by a swarm of small orbiting moons of varying sizes, set against a star-filled black space.",
+    "tags": [
+      "jupiter",
+      "moons",
+      "galilean moons",
+      "solar system",
+      "gas giant"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-jupiter-largest-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "gas_giants",
+    "statement": "Jupiter is the largest planet in the solar system, with a mass greater than all other planets combined.",
+    "quizQuestion": "Which is the largest planet in our solar system?",
+    "correctAnswer": "Jupiter",
+    "distractors": [
+      "Saturn",
+      "Neptune",
+      "Uranus",
+      "Earth",
+      "Sun",
+      "Mars",
+      "Venus",
+      "Mercury"
+    ],
+    "acceptableAnswers": [
+      "Jupiter"
+    ],
+    "explanation": "Jupiter's diameter is about 11 times Earth's, and its mass is 2.5 times that of all other planets combined. Despite being a gas giant with no solid surface, it dominates the solar system's planetary mass.",
+    "wowFactor": "Jupiter is so massive it doesn't actually orbit the Sun — both Jupiter and the Sun orbit a common point called the barycenter, which lies just outside the Sun's surface.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the largest planet in the solar system?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Neptune",
+          "Uranus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Jupiter's mass exceeds which of the following?",
+        "answer": "All other planets combined",
+        "distractors": [
+          "Earth's mass only",
+          "Saturn's mass only",
+          "The mass of all moons combined"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jupiter's mass is greater than all other planets in the solar system combined.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the largest planet in the solar system.",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Neptune",
+          "Uranus"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/jupiter/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An enormous banded gas giant dwarfing tiny neighboring planets, its orange and cream cloud belts vivid against the void of space.",
+    "tags": [
+      "jupiter",
+      "largest planet",
+      "solar system",
+      "gas giant",
+      "mass"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-venus-hottest-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Venus is the hottest planet in the solar system, with surface temperatures reaching 465°C (869°F).",
+    "quizQuestion": "Which planet has the highest surface temperature in the solar system?",
+    "correctAnswer": "Venus",
+    "distractors": [
+      "Mercury",
+      "Earth",
+      "Mars",
+      "Jupiter",
+      "Sun",
+      "Saturn",
+      "Pluto",
+      "Neptune"
+    ],
+    "acceptableAnswers": [
+      "Venus"
+    ],
+    "explanation": "Although Mercury is closer to the Sun, Venus is hotter due to its dense atmosphere of carbon dioxide that traps heat in a runaway greenhouse effect. Surface temperatures on Venus average around 465°C — hot enough to melt lead.",
+    "wowFactor": "Venus's surface is so hot that a spacecraft landed there in 1982 lasted only 127 minutes before being destroyed by the heat and pressure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet is the hottest in the solar system?",
+        "answer": "Venus",
+        "distractors": [
+          "Mercury",
+          "Mars",
+          "Jupiter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What causes Venus to be hotter than Mercury despite being farther from the Sun?",
+        "answer": "A runaway greenhouse effect",
+        "distractors": [
+          "Volcanic eruptions",
+          "Tidal heating from moons",
+          "Proximity to asteroid belts"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Venus is hotter than Mercury even though Mercury is closer to the Sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the hottest planet in the solar system due to its thick carbon dioxide atmosphere.",
+        "answer": "Venus",
+        "distractors": [
+          "Mercury",
+          "Mars",
+          "Earth"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/venus/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pale yellowish-white planet shrouded entirely in thick cloud layers, glowing with a faint orange haze suggesting hellish temperatures beneath.",
+    "tags": [
+      "venus",
+      "hottest planet",
+      "greenhouse effect",
+      "solar system",
+      "temperature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-venus-retrograde-rotation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Venus rotates in the opposite direction to most planets — a phenomenon called retrograde rotation.",
+    "quizQuestion": "What makes Venus's rotation unusual compared to most planets?",
+    "correctAnswer": "It rotates in the opposite (retrograde) direction",
+    "distractors": [
+      "It rotates faster than any other planet",
+      "It does not rotate at all",
+      "It rotates at a 90-degree tilt",
+      "It rotates in the same direction as the Sun",
+      "It has no axial tilt",
+      "It rotates twice per orbit",
+      "It spins due to magnetic forces",
+      "Its rotation matches its orbital period exactly"
+    ],
+    "acceptableAnswers": [
+      "Retrograde rotation",
+      "It spins backwards",
+      "It rotates in reverse"
+    ],
+    "explanation": "Venus rotates from east to west (retrograde), the opposite direction of Earth and most other planets. This means the Sun rises in the west and sets in the east on Venus. Its rotation is also extremely slow — a Venusian day is longer than its year.",
+    "wowFactor": "On Venus, a single day lasts longer than a full year — it takes 243 Earth days to rotate once, but only 225 Earth days to orbit the Sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does Venus's rotation differ from most planets?",
+        "answer": "It rotates in the opposite (retrograde) direction",
+        "distractors": [
+          "It rotates faster than any planet",
+          "It does not rotate",
+          "It rotates at a 90-degree tilt"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which planet does the Sun rise in the west and set in the east?",
+        "answer": "Venus",
+        "distractors": [
+          "Uranus",
+          "Mercury",
+          "Mars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Venus rotates in the opposite direction to Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus exhibits ___ rotation, meaning it spins in the opposite direction to most planets.",
+        "answer": "retrograde",
+        "distractors": [
+          "prograde",
+          "tidal",
+          "axial"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/venus/in-depth/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pale cloud-swathed globe with an arrow indicator curving right-to-left (west), contrasting with an Earth globe beside it curving left-to-right (east).",
+    "tags": [
+      "venus",
+      "retrograde rotation",
+      "rotation",
+      "solar system",
+      "unusual"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-venus-sister-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Venus is often called Earth's 'sister planet' because it is nearly the same size and mass as Earth.",
+    "quizQuestion": "Why is Venus nicknamed Earth's 'sister planet'?",
+    "correctAnswer": "It is nearly the same size and mass as Earth",
+    "distractors": [
+      "It has liquid water on its surface",
+      "It has a similar rotation speed to Earth",
+      "It has one large moon like Earth",
+      "It has the same axial tilt as Earth",
+      "It orbits the Sun in the same time as Earth",
+      "It has oxygen in its atmosphere",
+      "It formed at the same time as Earth's moon",
+      "It has a similar average surface temperature"
+    ],
+    "acceptableAnswers": [
+      "Similar size and mass",
+      "Same size as Earth",
+      "Nearly identical mass and diameter to Earth"
+    ],
+    "explanation": "Venus has a diameter of about 12,104 km, compared to Earth's 12,742 km, and its mass is about 82% of Earth's. Despite these similarities in size, Venus has a wildly different atmosphere, temperature, and surface environment.",
+    "wowFactor": "Venus and Earth are so similar in size that scientists once believed Venus might be a tropical paradise — before probes revealed it's actually a hellish 465°C acid-rain world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is Venus called Earth's sister planet?",
+        "answer": "It is nearly the same size and mass as Earth",
+        "distractors": [
+          "It has liquid water",
+          "It has a similar day length",
+          "It has one large moon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet is most similar to Earth in size and mass?",
+        "answer": "Venus",
+        "distractors": [
+          "Mars",
+          "Mercury",
+          "Saturn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Venus is called Earth's sister planet primarily because of its similar size and mass.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus is called Earth's ___ planet because they are nearly the same size and mass.",
+        "answer": "sister",
+        "distractors": [
+          "twin",
+          "mirror",
+          "shadow"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/venus/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Venus and Earth side-by-side in space, one pale and cloud-covered, one blue and green, nearly identical in size but strikingly different in appearance.",
+    "tags": [
+      "venus",
+      "sister planet",
+      "earth",
+      "size",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mercury-closest-to-sun",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Mercury is the closest planet to the Sun, orbiting at an average distance of about 57.9 million kilometers.",
+    "quizQuestion": "Which planet is closest to the Sun?",
+    "correctAnswer": "Mercury",
+    "distractors": [
+      "Venus",
+      "Earth",
+      "Mars",
+      "Jupiter",
+      "Saturn",
+      "Pluto",
+      "Neptune",
+      "Uranus"
+    ],
+    "acceptableAnswers": [
+      "Mercury"
+    ],
+    "explanation": "Mercury orbits the Sun at an average distance of about 57.9 million km — roughly 0.39 astronomical units (AU). It completes one orbit in just 88 Earth days, the fastest of any planet.",
+    "wowFactor": "Despite being closest to the Sun, Mercury is not the hottest planet — it lacks a thick atmosphere to retain heat, so temperatures plunge to -180°C at night.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet is nearest to the Sun?",
+        "answer": "Mercury",
+        "distractors": [
+          "Venus",
+          "Earth",
+          "Mars"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mercury orbits the Sun in approximately how many Earth days?",
+        "answer": "88 days",
+        "distractors": [
+          "24 days",
+          "165 days",
+          "365 days"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mercury is the closest planet to the Sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the closest planet to the Sun.",
+        "answer": "Mercury",
+        "distractors": [
+          "Venus",
+          "Mars",
+          "Earth"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/mercury/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small grey cratered world orbiting close to a blazing yellow star, its surface pocked and barren, with the Sun looming enormous in the background.",
+    "tags": [
+      "mercury",
+      "closest to sun",
+      "solar system",
+      "orbit",
+      "inner planets"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mercury-temperature-swings",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Mercury experiences the most extreme temperature swings of any planet, ranging from 430°C during the day to -180°C at night.",
+    "quizQuestion": "Which planet has the most extreme temperature difference between day and night?",
+    "correctAnswer": "Mercury",
+    "distractors": [
+      "Venus",
+      "Mars",
+      "The Moon",
+      "Pluto",
+      "Earth",
+      "Uranus",
+      "Neptune",
+      "Jupiter"
+    ],
+    "acceptableAnswers": [
+      "Mercury"
+    ],
+    "explanation": "Mercury's lack of a substantial atmosphere means it cannot retain heat. Dayside temperatures reach about 430°C while the nightside plunges to -180°C — a swing of over 600°C. This is the largest temperature variation of any body in the solar system.",
+    "wowFactor": "Mercury's temperature swings are so extreme that frozen water ice exists in permanently shadowed polar craters just a few hundred kilometers from the Sun-scorched surface.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes Mercury's extreme temperature swings between day and night?",
+        "answer": "Lack of a substantial atmosphere",
+        "distractors": [
+          "Its small size",
+          "Its proximity to Jupiter",
+          "Its slow orbit"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how hot does Mercury's surface get during the day?",
+        "answer": "430°C",
+        "distractors": [
+          "100°C",
+          "600°C",
+          "250°C"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mercury experiences temperature swings of over 600°C between day and night.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mercury swings from 430°C during the day to ___ at night due to its thin atmosphere.",
+        "answer": "-180°C",
+        "distractors": [
+          "-50°C",
+          "0°C",
+          "-90°C"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/mercury/in-depth/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A barren grey planet split by a sharp line, one side glowing orange-red in fierce sunlight and the other side plunged into icy blue-black darkness.",
+    "tags": [
+      "mercury",
+      "temperature",
+      "extreme",
+      "atmosphere",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-mercury-smallest-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "terrestrial_planets",
+    "statement": "Mercury is the smallest planet in the solar system, with a diameter of about 4,879 kilometers.",
+    "quizQuestion": "Which is the smallest planet in our solar system?",
+    "correctAnswer": "Mercury",
+    "distractors": [
+      "Mars",
+      "Pluto",
+      "Venus",
+      "Earth",
+      "Uranus",
+      "Neptune",
+      "Saturn",
+      "Jupiter"
+    ],
+    "acceptableAnswers": [
+      "Mercury"
+    ],
+    "explanation": "Mercury has a diameter of 4,879 km, making it the smallest planet. It's only slightly larger than Earth's Moon (3,474 km). Its small size and proximity to the Sun make it difficult to observe from Earth.",
+    "wowFactor": "Mercury is smaller than two of Jupiter's moons — Ganymede and Callisto — yet is still officially a full planet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the smallest planet in the solar system?",
+        "answer": "Mercury",
+        "distractors": [
+          "Mars",
+          "Pluto",
+          "Venus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mercury is only slightly larger than which natural satellite of Earth?",
+        "answer": "Earth's Moon",
+        "distractors": [
+          "Titan",
+          "Europa",
+          "Deimos"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mercury is the smallest planet in the solar system.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the smallest of the eight planets in the solar system.",
+        "answer": "Mercury",
+        "distractors": [
+          "Mars",
+          "Pluto",
+          "Venus"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://solarsystem.nasa.gov/planets/mercury/overview/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny grey pockmarked sphere dwarfed by a nearby Earth for scale, orbiting close to a colossal yellow Sun.",
+    "tags": [
+      "mercury",
+      "smallest planet",
+      "solar system",
+      "size",
+      "diameter"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-armstrong-first-moonwalk",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_exploration",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_exploration",
+    "categoryL3": "moon_missions",
+    "statement": "Neil Armstrong became the first human to walk on the Moon on July 20, 1969, during the Apollo 11 mission.",
+    "quizQuestion": "When did Neil Armstrong become the first human to walk on the Moon?",
+    "correctAnswer": "July 20, 1969",
+    "distractors": [
+      "July 20, 1965",
+      "October 4, 1957",
+      "April 12, 1961",
+      "July 20, 1972",
+      "August 5, 1969",
+      "December 14, 1972",
+      "May 25, 1961",
+      "January 31, 1971"
+    ],
+    "acceptableAnswers": [
+      "July 1969",
+      "1969",
+      "July 20th, 1969"
+    ],
+    "explanation": "At 10:56 PM EDT on July 20, 1969, Neil Armstrong descended the Apollo 11 Lunar Module Eagle and became the first person to set foot on the Moon. Buzz Aldrin joined him 19 minutes later. Michael Collins orbited above in the Command Module.",
+    "wowFactor": "Armstrong and Aldrin spent just 2 hours and 31 minutes on the lunar surface during their moonwalk, yet it was watched live by an estimated 600 million people — about 20% of Earth's population.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Neil Armstrong first walk on the Moon?",
+        "answer": "1969",
+        "distractors": [
+          "1965",
+          "1972",
+          "1957"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of the NASA mission during which Neil Armstrong walked on the Moon?",
+        "answer": "Apollo 11",
+        "distractors": [
+          "Apollo 13",
+          "Gemini 7",
+          "Mercury Atlas 6"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong walked on the Moon in 1969 as part of the Apollo 11 mission.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neil Armstrong walked on the Moon on July 20, ___, during the Apollo 11 mission.",
+        "answer": "1969",
+        "distractors": [
+          "1965",
+          "1972",
+          "1961"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://www.nasa.gov/mission_pages/apollo/apollo-11.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An astronaut in a white spacesuit planting a boot into grey lunar dust, the black void of space and a distant blue Earth visible overhead.",
+    "tags": [
+      "neil armstrong",
+      "moon landing",
+      "apollo 11",
+      "1969",
+      "space exploration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-armstrong-one-small-step",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_exploration",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_exploration",
+    "categoryL3": "moon_missions",
+    "statement": "Neil Armstrong's first words upon stepping onto the Moon were: 'That's one small step for [a] man, one giant leap for mankind.'",
+    "quizQuestion": "What famous phrase did Neil Armstrong say when he first stepped onto the Moon?",
+    "correctAnswer": "One small step for man, one giant leap for mankind",
+    "distractors": [
+      "The Eagle has landed",
+      "To infinity and beyond",
+      "We have liftoff",
+      "Houston, we have a problem",
+      "Ad astra per aspera",
+      "I have stepped into the future",
+      "One small step for Earth, one giant leap for the stars",
+      "This is for all humanity"
+    ],
+    "acceptableAnswers": [
+      "That's one small step for man, one giant leap for mankind",
+      "One small step for a man, one giant leap for mankind",
+      "One small step, one giant leap"
+    ],
+    "explanation": "Armstrong intended to say 'one small step for a man' but the 'a' was either not spoken or lost in transmission. The phrase was broadcast live to hundreds of millions of listeners and became one of the most famous quotes in human history.",
+    "wowFactor": "Audio analysis in 2006 found evidence that Armstrong did say 'a man' but the word was masked by static — he maintained until his death that he did say it as intended.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Complete Neil Armstrong's famous Moon quote: 'That's one small step for man, one giant leap for...'",
+        "answer": "mankind",
+        "distractors": [
+          "the future",
+          "America",
+          "science"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who spoke the phrase 'one small step for man, one giant leap for mankind'?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "Yuri Gagarin",
+          "John Glenn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong said 'one small step for man, one giant leap for mankind' upon first stepping onto the Moon.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Armstrong said: 'That's one small step for man, one giant leap for ___.'",
+        "answer": "mankind",
+        "distractors": [
+          "America",
+          "humanity",
+          "the universe"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA",
+    "sourceUrl": "https://www.nasa.gov/mission_pages/apollo/apollo-11.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grainy black-and-white image of a spacesuited figure descending a ladder toward grey lunar soil, a small radio dish in the background.",
+    "tags": [
+      "neil armstrong",
+      "moon landing",
+      "quotes",
+      "apollo 11",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-armstrong-civilian-test-pilot",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_exploration",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_exploration",
+    "categoryL3": "astronauts",
+    "statement": "Before joining NASA, Neil Armstrong was a civilian test pilot who flew over 900 different aircraft.",
+    "quizQuestion": "What was Neil Armstrong's career before becoming an astronaut?",
+    "correctAnswer": "Civilian test pilot",
+    "distractors": [
+      "Military general",
+      "Fighter pilot in active combat",
+      "Commercial airline pilot",
+      "Naval officer",
+      "Air Force instructor",
+      "Aerospace engineer only",
+      "Rocket scientist at a university",
+      "Meteorologist"
+    ],
+    "acceptableAnswers": [
+      "Test pilot",
+      "Experimental test pilot",
+      "Research pilot"
+    ],
+    "explanation": "Armstrong was a naval aviator during the Korean War but became a civilian test pilot at the NACA (predecessor to NASA) at Edwards Air Force Base. He flew experimental aircraft including the X-15 rocket plane to the edge of space before becoming an astronaut in 1962.",
+    "wowFactor": "Armstrong flew the X-15 to 63 km altitude — technically crossing the US definition of space at 50 miles — making him arguably an astronaut even before the Apollo program.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of pilot was Neil Armstrong before he became a NASA astronaut?",
+        "answer": "Civilian test pilot",
+        "distractors": [
+          "Military bomber pilot",
+          "Commercial airline captain",
+          "Coast Guard pilot"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Armstrong flew which experimental rocket plane to the edge of space before joining NASA?",
+        "answer": "X-15",
+        "distractors": [
+          "SR-71 Blackbird",
+          "F-104 Starfighter",
+          "Bell X-1"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong was a civilian test pilot before becoming an astronaut.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Before NASA, Armstrong worked as a ___ test pilot, flying over 900 types of aircraft.",
+        "answer": "civilian",
+        "distractors": [
+          "military",
+          "commercial",
+          "cargo"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA Biography",
+    "sourceUrl": "https://www.nasa.gov/astronautprofiles/armstrong",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A young man in an orange pressure suit sitting in the cockpit of a sleek rocket-powered experimental aircraft on a desert tarmac under a bright blue sky.",
+    "tags": [
+      "neil armstrong",
+      "test pilot",
+      "X-15",
+      "NASA",
+      "space exploration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-jwst-infrared",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "telescopes_observatories",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "telescopes_observatories",
+    "categoryL3": "space_telescopes",
+    "statement": "The James Webb Space Telescope observes the universe in infrared light, allowing it to see through dust clouds and observe the earliest galaxies.",
+    "quizQuestion": "In what type of light does the James Webb Space Telescope primarily observe?",
+    "correctAnswer": "Infrared",
+    "distractors": [
+      "Visible light",
+      "X-ray",
+      "Ultraviolet",
+      "Radio waves",
+      "Gamma rays",
+      "Microwave",
+      "Optical only",
+      "Gamma and X-ray combined"
+    ],
+    "acceptableAnswers": [
+      "Infrared light",
+      "Near-infrared",
+      "Infrared and mid-infrared"
+    ],
+    "explanation": "JWST observes primarily in near- to mid-infrared wavelengths (0.6–28 micrometers). Infrared light penetrates dust clouds that block visible light, and the universe's expansion redshifts light from the earliest galaxies into the infrared, making JWST uniquely suited to study cosmic origins.",
+    "wowFactor": "JWST can detect the heat signature of a bumblebee at the distance of the Moon — its infrared sensitivity is so extreme it had to be chilled to -233°C to prevent its own heat from blinding it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of light does the James Webb Space Telescope primarily use to observe the universe?",
+        "answer": "Infrared",
+        "distractors": [
+          "Ultraviolet",
+          "Visible light",
+          "X-ray"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does JWST use infrared light rather than visible light?",
+        "answer": "To see through dust clouds and detect redshifted light from distant galaxies",
+        "distractors": [
+          "Because its mirror is too small for optical imaging",
+          "Because solar panels block visible wavelengths",
+          "Because it orbits in permanent darkness"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The James Webb Space Telescope observes in infrared light.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The James Webb Space Telescope observes in ___ light, enabling it to see through dust and detect ancient galaxies.",
+        "answer": "infrared",
+        "distractors": [
+          "ultraviolet",
+          "visible",
+          "gamma"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA/ESA/CSA JWST",
+    "sourceUrl": "https://webb.nasa.gov/content/about/index.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden hexagonal mirror array telescope floating in cold black space, bathed in faint infrared hues, its sunshield spread like a kite below it.",
+    "tags": [
+      "james webb space telescope",
+      "JWST",
+      "infrared",
+      "telescope",
+      "space exploration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-jwst-l2-orbit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "telescopes_observatories",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "telescopes_observatories",
+    "categoryL3": "space_telescopes",
+    "statement": "The James Webb Space Telescope operates from the L2 Lagrange point, about 1.5 million kilometers from Earth.",
+    "quizQuestion": "At which special orbital location does the James Webb Space Telescope operate?",
+    "correctAnswer": "The L2 Lagrange point",
+    "distractors": [
+      "Low Earth orbit",
+      "The Moon's orbit",
+      "The L4 Lagrange point",
+      "Geostationary orbit",
+      "The asteroid belt",
+      "In orbit around Mars",
+      "The L1 Lagrange point",
+      "High Earth orbit"
+    ],
+    "acceptableAnswers": [
+      "L2",
+      "Second Lagrange point",
+      "Lagrange point 2"
+    ],
+    "explanation": "JWST orbits around the Sun-Earth L2 Lagrange point, a gravitationally stable location about 1.5 million km directly 'behind' Earth from the Sun's perspective. This keeps Earth, Sun, and Moon always on the same side, allowing its sunshield to block all their heat and light simultaneously.",
+    "wowFactor": "L2 is so far from Earth that if JWST had a problem, no spacecraft exists that could reach it for repairs — unlike Hubble, which was serviced by Space Shuttle astronauts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far from Earth does the James Webb Space Telescope orbit?",
+        "answer": "About 1.5 million kilometers",
+        "distractors": [
+          "About 400 km (like the ISS)",
+          "About 384,000 km (the Moon's distance)",
+          "About 150 million km (1 AU)"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does JWST orbit at the L2 Lagrange point rather than in low Earth orbit?",
+        "answer": "To keep Sun, Earth, and Moon always on the same side for stable cooling",
+        "distractors": [
+          "To avoid satellite interference",
+          "Because its rocket could not reach low Earth orbit",
+          "To reduce communication delays"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The James Webb Space Telescope orbits at the L2 Lagrange point, about 1.5 million km from Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "JWST operates from the ___ Lagrange point, about 1.5 million km from Earth.",
+        "answer": "L2",
+        "distractors": [
+          "L1",
+          "L4",
+          "L5"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA JWST",
+    "sourceUrl": "https://webb.nasa.gov/content/about/orbit.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram showing Earth and the Sun connected by a gravitational field line, with JWST floating at the distant L2 point in cool shadow, 1.5 million km from Earth.",
+    "tags": [
+      "james webb space telescope",
+      "JWST",
+      "L2",
+      "Lagrange point",
+      "orbit"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-jwst-deepest-images",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "telescopes_observatories",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "telescopes_observatories",
+    "categoryL3": "space_telescopes",
+    "statement": "The James Webb Space Telescope has produced the deepest and sharpest infrared images of the distant universe ever captured.",
+    "quizQuestion": "What record did the James Webb Space Telescope set with its first science images?",
+    "correctAnswer": "Deepest and sharpest infrared images of the distant universe",
+    "distractors": [
+      "First direct image of a black hole",
+      "First photograph of the Sun's core",
+      "Fastest data transmission from space",
+      "Largest mirror ever launched into orbit",
+      "First detection of sound waves in space",
+      "First image of a planet outside our galaxy",
+      "Highest-resolution map of Mars",
+      "First video captured in deep space"
+    ],
+    "acceptableAnswers": [
+      "Deepest infrared images ever",
+      "Sharpest images of the early universe",
+      "Deepest images of the universe"
+    ],
+    "explanation": "JWST's first science images, released in July 2022, included the deepest infrared image of the universe ever taken, showing galaxy cluster SMACS 0723 as it appeared 4.6 billion years ago. Its images resolve galaxies formed just a few hundred million years after the Big Bang.",
+    "wowFactor": "JWST detected galaxies from just 300 million years after the Big Bang — a time so early in cosmic history that astronomers previously had no idea what galaxies looked like then.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did JWST release its first official science images?",
+        "answer": "July 2022",
+        "distractors": [
+          "December 2021",
+          "March 2023",
+          "January 2020"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "JWST's first deep field image showed galaxy cluster SMACS 0723 as it looked how long ago?",
+        "answer": "4.6 billion years ago",
+        "distractors": [
+          "500 million years ago",
+          "13.8 billion years ago",
+          "1 billion years ago"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: JWST produced the deepest infrared images of the distant universe ever captured.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "JWST produced the deepest and sharpest ___ images of the distant universe ever taken.",
+        "answer": "infrared",
+        "distractors": [
+          "ultraviolet",
+          "X-ray",
+          "optical"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "NASA JWST",
+    "sourceUrl": "https://webb.nasa.gov/content/webbLaunch/deliveringOnPromise.html",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A breathtaking infrared image showing thousands of tiny glowing galaxies of orange, yellow, and white scattered across a deep black field, with gravitational lensing arcs curving around a bright central cluster.",
+    "tags": [
+      "james webb space telescope",
+      "JWST",
+      "deep field",
+      "galaxies",
+      "infrared"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-cmb-big-bang-afterglow",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "big_bang",
+    "statement": "The Cosmic Microwave Background (CMB) is the afterglow of the Big Bang — ancient light released when the universe cooled enough for atoms to form, about 380,000 years after the Big Bang.",
+    "quizQuestion": "What is the Cosmic Microwave Background (CMB)?",
+    "correctAnswer": "The afterglow of the Big Bang",
+    "distractors": [
+      "Radiation from the center of the Milky Way",
+      "Light emitted by the first stars",
+      "Static noise from Earth's atmosphere",
+      "Radiation from distant black holes",
+      "The glow of dark matter",
+      "Leftover light from supernovae",
+      "Radiation from the edge of the solar system",
+      "Energy released by neutron star collisions"
+    ],
+    "acceptableAnswers": [
+      "Leftover radiation from the Big Bang",
+      "Relic radiation from the Big Bang",
+      "Background radiation from the early universe"
+    ],
+    "explanation": "About 380,000 years after the Big Bang, the universe cooled enough for protons and electrons to combine into neutral hydrogen atoms in an event called recombination. The universe became transparent, and the light released at that moment has been traveling and cooling ever since — we detect it today as the CMB.",
+    "wowFactor": "The CMB fills every corner of the universe — right now, millions of CMB photons are passing through your body every second, survivors of a journey that started 13.8 billion years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What cosmic event produced the Cosmic Microwave Background radiation?",
+        "answer": "The Big Bang",
+        "distractors": [
+          "The formation of the first stars",
+          "The collision of the Milky Way and Andromeda",
+          "The explosion of a hypernova"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how long after the Big Bang was the Cosmic Microwave Background released?",
+        "answer": "380,000 years",
+        "distractors": [
+          "13.8 billion years",
+          "1 second",
+          "1 million years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Cosmic Microwave Background is ancient light released shortly after the Big Bang.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Cosmic Microwave Background is the ___ of the Big Bang, still detectable across the entire universe.",
+        "answer": "afterglow",
+        "distractors": [
+          "echo",
+          "shockwave",
+          "remnant debris"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "ESA Planck Mission",
+    "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An oval map of the entire sky covered in a patchwork of muted blues and oranges showing tiny temperature fluctuations — the 13.8-billion-year-old light of the cosmic microwave background.",
+    "tags": [
+      "CMB",
+      "cosmic microwave background",
+      "big bang",
+      "cosmology",
+      "early universe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-cmb-discovered-1965",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "big_bang",
+    "statement": "The Cosmic Microwave Background was accidentally discovered in 1965 by Arno Penzias and Robert Wilson using a microwave antenna, earning them a Nobel Prize.",
+    "quizQuestion": "Who accidentally discovered the Cosmic Microwave Background in 1965?",
+    "correctAnswer": "Arno Penzias and Robert Wilson",
+    "distractors": [
+      "Edwin Hubble and Milton Humason",
+      "Fred Hoyle and Hermann Bondi",
+      "Carl Sagan and Frank Drake",
+      "Georges Lemaître and Alexander Friedmann",
+      "Stephen Hawking and Roger Penrose",
+      "Vera Rubin and Kent Ford",
+      "Alan Guth and Andrei Linde",
+      "Albert Einstein and Arthur Eddington"
+    ],
+    "acceptableAnswers": [
+      "Penzias and Wilson",
+      "Wilson and Penzias",
+      "Arno Penzias and Bob Wilson"
+    ],
+    "explanation": "In 1965, radio astronomers Arno Penzias and Robert Wilson were using a large horn antenna at Bell Labs in New Jersey when they detected a persistent low-level microwave hiss coming equally from all directions. Nearby cosmologists realized this was the predicted relic radiation from the Big Bang. Penzias and Wilson were awarded the 1978 Nobel Prize in Physics.",
+    "wowFactor": "Penzias and Wilson initially thought the mysterious hiss was caused by pigeon droppings on their antenna — they cleaned it, shooed away the birds, and the signal remained. It was the Big Bang.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was the Cosmic Microwave Background discovered?",
+        "answer": "1965",
+        "distractors": [
+          "1929",
+          "1948",
+          "1972"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Penzias and Wilson initially thought their mysterious antenna signal was caused by what?",
+        "answer": "Pigeon droppings on the antenna",
+        "distractors": [
+          "Interference from a nuclear test",
+          "A faulty amplifier",
+          "Radiation from the Milky Way's center"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Cosmic Microwave Background was discovered accidentally in 1965.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Cosmic Microwave Background was accidentally discovered in ___ by Penzias and Wilson.",
+        "answer": "1965",
+        "distractors": [
+          "1929",
+          "1948",
+          "1979"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Nobel Prize Foundation",
+    "sourceUrl": "https://www.nobelprize.org/prizes/physics/1978/summary/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two scientists in 1960s workwear craning their necks up at a massive white horn-shaped antenna against a grey sky, a notepad in hand, puzzled expressions on their faces.",
+    "tags": [
+      "CMB",
+      "Penzias",
+      "Wilson",
+      "1965",
+      "Nobel Prize",
+      "cosmology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-cmb-2-7-kelvin",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "big_bang",
+    "statement": "The Cosmic Microwave Background has a temperature of approximately 2.7 Kelvin (-270.45°C), just barely above absolute zero.",
+    "quizQuestion": "What is the current temperature of the Cosmic Microwave Background?",
+    "correctAnswer": "About 2.7 Kelvin",
+    "distractors": [
+      "0 Kelvin",
+      "100 Kelvin",
+      "273 Kelvin",
+      "10 Kelvin",
+      "1,000 Kelvin",
+      "4 Kelvin",
+      "0.001 Kelvin",
+      "30 Kelvin"
+    ],
+    "acceptableAnswers": [
+      "2.7 K",
+      "2.725 K",
+      "approximately 3 Kelvin",
+      "-270°C"
+    ],
+    "explanation": "The CMB started as extremely hot plasma shortly after the Big Bang. As the universe expanded over 13.8 billion years, this radiation cooled to its current temperature of 2.725 K — just 2.725 degrees above absolute zero. This precise value was a key prediction of Big Bang cosmology, confirmed by the COBE satellite in 1990.",
+    "wowFactor": "The CMB is so uniform in temperature that the variation across the entire sky is less than 0.001% — yet those tiny fluctuations seeded all the galaxies, stars, and planets we see today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many degrees above absolute zero is the Cosmic Microwave Background?",
+        "answer": "About 2.7 degrees (2.7 Kelvin)",
+        "distractors": [
+          "About 100 degrees",
+          "About 273 degrees",
+          "Exactly 0 degrees"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why has the CMB cooled to 2.7 Kelvin since the Big Bang?",
+        "answer": "Because the universe has been expanding and cooling for 13.8 billion years",
+        "distractors": [
+          "Because it lost energy to dark matter",
+          "Because it was absorbed by the Milky Way",
+          "Because it collided with other radiation fields"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Cosmic Microwave Background currently has a temperature of about 2.7 Kelvin.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Cosmic Microwave Background has a temperature of approximately ___ Kelvin, close to absolute zero.",
+        "answer": "2.7",
+        "distractors": [
+          "100",
+          "0",
+          "273"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "ESA Planck / NASA COBE",
+    "sourceUrl": "https://lambda.gsfc.nasa.gov/product/cobe/",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A thermometer floating in deep space reading barely above absolute zero, surrounded by a faint glow representing CMB photons — the ancient cold light of the universe's birth.",
+    "tags": [
+      "CMB",
+      "cosmic microwave background",
+      "temperature",
+      "Kelvin",
+      "cosmology",
+      "big bang"
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"

@@ -11662,5 +11662,1613 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-tea-origin-china",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "tea",
+    "statement": "Tea originated in China, where legend attributes its discovery to Emperor Shen Nong around 2737 BCE when leaves from a wild bush fell into his boiling water.",
+    "quizQuestion": "Which country is considered the birthplace of tea?",
+    "correctAnswer": "China",
+    "distractors": [
+      "India",
+      "Japan",
+      "Sri Lanka",
+      "England",
+      "Turkey",
+      "Kenya",
+      "Taiwan"
+    ],
+    "acceptableAnswers": [
+      "China",
+      "Ancient China"
+    ],
+    "explanation": "Tea has been consumed in China for thousands of years. Camellia sinensis, the tea plant, is native to East Asia and was cultivated and traded by China long before other nations encountered it. Today China remains the world's largest producer.",
+    "wowFactor": "A single leaf accidentally falling into boiling water gave the world its second most consumed beverage—4,700 years of unbroken obsession started with a happy accident.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did tea originate?",
+        "answer": "China",
+        "distractors": [
+          "India",
+          "Japan",
+          "Sri Lanka"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "China is credited as the birthplace of which beverage?",
+        "answer": "Tea",
+        "distractors": [
+          "Coffee",
+          "Beer",
+          "Wine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tea originated in India.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tea originated in ___, where it has been consumed for nearly 5,000 years.",
+        "answer": "China",
+        "distractors": [
+          "India",
+          "Japan",
+          "Sri Lanka"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tea",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Chinese emperor in flowing robes watches a leaf spiral into a steaming bronze cauldron under a lush green tea bush, pixel art style.",
+    "tags": [
+      "tea",
+      "China",
+      "beverages",
+      "origins",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-tea-consumed-rank",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "tea",
+    "statement": "Tea is the most consumed beverage in the world after water, with approximately 3 billion cups drunk every day globally.",
+    "quizQuestion": "What is the most consumed beverage in the world after water?",
+    "correctAnswer": "Tea",
+    "distractors": [
+      "Coffee",
+      "Beer",
+      "Milk",
+      "Juice",
+      "Soda",
+      "Wine",
+      "Kombucha"
+    ],
+    "acceptableAnswers": [
+      "Tea",
+      "Green tea",
+      "Black tea"
+    ],
+    "explanation": "Tea is consumed in virtually every country on Earth. Green tea, black tea, white tea, and oolong all come from Camellia sinensis. The global daily consumption of approximately 3 billion cups makes it the undisputed second most popular beverage after water.",
+    "wowFactor": "3 billion cups of tea are drunk every single day—that's nearly one cup for every person on Earth, every 24 hours.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which beverage ranks second globally after water in consumption?",
+        "answer": "Tea",
+        "distractors": [
+          "Coffee",
+          "Beer",
+          "Milk"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tea holds what global ranking among beverages, second only to water?",
+        "answer": "Most consumed",
+        "distractors": [
+          "Third most consumed",
+          "Fourth most consumed",
+          "Most caffeinated"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee is consumed more than tea globally (excluding water).",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After water, ___ is the most consumed beverage on Earth.",
+        "answer": "Tea",
+        "distractors": [
+          "Coffee",
+          "Beer",
+          "Milk"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tea",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map dotted with tiny steaming teacups from Tokyo to London to Mumbai, showing billions of cups in pixel art style.",
+    "tags": [
+      "tea",
+      "beverages",
+      "global consumption",
+      "statistics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-tea-processing-types",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "tea",
+    "statement": "All tea types—green, white, oolong, and black—come from the same plant (Camellia sinensis) but differ based on how the leaves are processed and oxidized.",
+    "quizQuestion": "What determines whether Camellia sinensis leaves become green tea, oolong, or black tea?",
+    "correctAnswer": "Level of oxidation during processing",
+    "distractors": [
+      "The species of tea plant used",
+      "The altitude where the plant grows",
+      "The color of the soil",
+      "The season of harvest only",
+      "Whether leaves are dried in sunlight or shade",
+      "The region of origin",
+      "The age of the tea plant"
+    ],
+    "acceptableAnswers": [
+      "Level of oxidation during processing",
+      "Oxidation level",
+      "How much the leaves are oxidized",
+      "Processing and oxidation"
+    ],
+    "explanation": "Green tea is unoxidized (leaves are heated quickly after picking), oolong is partially oxidized, and black tea is fully oxidized. White tea uses young buds with minimal processing. The same plant species produces all major tea types—only the processing method changes.",
+    "wowFactor": "Green tea and black tea are chemically different beverages made from identical leaves—the transformation happens entirely through controlled oxidation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Green, oolong, and black tea all come from the same plant. What makes them different?",
+        "answer": "Level of oxidation during processing",
+        "distractors": [
+          "Different plant species",
+          "Growing region",
+          "Harvest season"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Oxidation level during processing is what differentiates which types of drink?",
+        "answer": "Green, oolong, and black teas",
+        "distractors": [
+          "Coffee roast types",
+          "Wine varietals",
+          "Beer styles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Green tea and black tea come from different species of plants.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All major tea types come from Camellia sinensis and differ only in their level of ___ during processing.",
+        "answer": "Oxidation",
+        "distractors": [
+          "Fermentation",
+          "Roasting",
+          "Drying"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tea_processing",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art jars showing the same green Camellia sinensis leaf transforming through stages—bright green, golden oolong, deep black—with oxidation meter bars beneath each.",
+    "tags": [
+      "tea",
+      "processing",
+      "oxidation",
+      "green tea",
+      "black tea",
+      "oolong"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-olive-oil-mediterranean",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "oils_fats",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "oils_fats",
+    "categoryL3": "olive oil",
+    "statement": "Olive oil has been a cornerstone of Mediterranean cuisine for over 7,000 years, with ancient olive cultivation evidence found in what is now modern-day Israel and Palestine.",
+    "quizQuestion": "Which region of the world has been synonymous with olive oil production for over 7,000 years?",
+    "correctAnswer": "Mediterranean",
+    "distractors": [
+      "Sub-Saharan Africa",
+      "Southeast Asia",
+      "South America",
+      "East Asia",
+      "Northern Europe",
+      "Central America",
+      "Scandinavia"
+    ],
+    "acceptableAnswers": [
+      "Mediterranean",
+      "Mediterranean region",
+      "Middle East",
+      "Near East"
+    ],
+    "explanation": "Olive cultivation began in the ancient Near East / Mediterranean region approximately 7,000 years ago. Greece, Spain, and Italy now produce the majority of global olive oil. The olive tree was so central to ancient Mediterranean societies that it featured prominently in Greek, Roman, and Hebrew religious texts.",
+    "wowFactor": "Olive trees live for thousands of years—some trees in the Mediterranean are still producing fruit that they sprouted from the same roots as when ancient Romans were pressing oil beneath them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Olive oil production has been central to which region's cuisine and trade for millennia?",
+        "answer": "Mediterranean",
+        "distractors": [
+          "Southeast Asia",
+          "Northern Europe",
+          "Sub-Saharan Africa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Mediterranean region is historically most associated with the production of which oil?",
+        "answer": "Olive oil",
+        "distractors": [
+          "Palm oil",
+          "Coconut oil",
+          "Sesame oil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olive oil production originated in Southeast Asia.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Olive oil has been produced in the ___ region for over 7,000 years.",
+        "answer": "Mediterranean",
+        "distractors": [
+          "Southeast Asian",
+          "Northern European",
+          "East Asian"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olive_oil",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Greek hillside with silver-leafed olive trees, stone press, and terracotta amphoras filled with golden oil under a bright Mediterranean sun, pixel art style.",
+    "tags": [
+      "olive oil",
+      "Mediterranean",
+      "history",
+      "cuisine",
+      "agriculture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-olive-oil-cold-press",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "oils_fats",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "oils_fats",
+    "categoryL3": "olive oil",
+    "statement": "Extra virgin olive oil is produced by cold pressing—mechanically extracting oil from olives without heat or chemical solvents—preserving its flavor and health-beneficial polyphenols.",
+    "quizQuestion": "What extraction method is used to produce extra virgin olive oil?",
+    "correctAnswer": "Cold pressing (mechanical extraction without heat)",
+    "distractors": [
+      "Steam distillation",
+      "Chemical solvent extraction",
+      "High-temperature refining",
+      "Centrifugal boiling",
+      "Freeze-drying and reconstitution",
+      "Fermentation and separation",
+      "Acid hydrolysis"
+    ],
+    "acceptableAnswers": [
+      "Cold pressing",
+      "Cold press",
+      "Mechanical cold pressing",
+      "Cold extraction"
+    ],
+    "explanation": "Extra virgin olive oil must be extracted by purely mechanical means (cold pressing) at temperatures below 27°C (81°F), with no chemical processing. This preserves polyphenols, antioxidants, and flavor compounds. Lower grades like 'pure' or 'light' olive oil are chemically refined.",
+    "wowFactor": "The word 'virgin' in olive oil is a legal certification—not marketing. It means the oil was extracted without a single drop of chemical solvent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How is extra virgin olive oil extracted from olives?",
+        "answer": "Cold pressing without heat or chemicals",
+        "distractors": [
+          "Chemical solvent extraction",
+          "Steam distillation",
+          "High-temperature refining"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cold pressing without chemicals or heat produces which premium grade of oil?",
+        "answer": "Extra virgin olive oil",
+        "distractors": [
+          "Pure olive oil",
+          "Light olive oil",
+          "Refined olive oil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Extra virgin olive oil is chemically refined at high temperatures.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Extra virgin olive oil is produced by ___ pressing, with no heat or chemical solvents.",
+        "answer": "Cold",
+        "distractors": [
+          "Hot",
+          "Steam",
+          "Pressure"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olive_oil#Production",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stone millstone crushing olives into a golden stream of oil flowing into a wooden vat, thermometer showing cool temperature, pixel art style.",
+    "tags": [
+      "olive oil",
+      "cold press",
+      "extra virgin",
+      "production",
+      "food science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-olive-oil-ancient-uses",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "oils_fats",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "oils_fats",
+    "categoryL3": "olive oil",
+    "statement": "In ancient Greece and Rome, olive oil was used not only for cooking but also as lamp fuel, skin moisturizer, soap, perfume base, and to anoint religious figures and athletes.",
+    "quizQuestion": "In ancient Greece and Rome, olive oil was used for which purposes BEYOND cooking?",
+    "correctAnswer": "Lamp fuel, skin care, soap, and religious anointing",
+    "distractors": [
+      "Only cooking and medicine",
+      "Ink production and writing",
+      "Textile dyeing and waterproofing fabric",
+      "Weapon preservation and metalworking",
+      "Currency and tax payment only",
+      "Grain preservation and pest control",
+      "Building mortar and construction"
+    ],
+    "acceptableAnswers": [
+      "Lamp fuel, skin care, soap, and religious anointing",
+      "Lamp fuel, moisturizer, soap, anointing",
+      "Multiple uses beyond cooking including lamps and anointing"
+    ],
+    "explanation": "Olive oil was the Swiss Army knife of antiquity. Greeks and Romans burned it in clay lamps, rubbed it on their bodies after bathing, used it as a base for perfumes, made soap from it, and anointed kings, priests, and athletes. The word 'Christ' literally means 'anointed one' (with oil).",
+    "wowFactor": "The word 'Christ' means 'the anointed one'—referring to the ancient practice of pouring olive oil over royalty and priests as a sacred ritual.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Ancient Greeks and Romans used olive oil for what non-culinary purpose?",
+        "answer": "Lighting lamps and anointing people",
+        "distractors": [
+          "Writing and ink",
+          "Dyeing textiles",
+          "Preserving metal weapons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lamp fuel, skin moisturizer, and religious anointing were ancient uses of which substance?",
+        "answer": "Olive oil",
+        "distractors": [
+          "Beeswax",
+          "Animal fat",
+          "Sesame oil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In ancient Rome, olive oil was used as lamp fuel.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient Greeks and Romans used olive oil as lamp fuel, skin moisturizer, and for ___ figures.",
+        "answer": "Anointing",
+        "distractors": [
+          "Embalming",
+          "Tattooing",
+          "Crowning"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olive_oil#History",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Greek scene showing olive oil lamp burning, athlete being rubbed with oil, and high priest holding amphora aloft in ceremony, pixel art style.",
+    "tags": [
+      "olive oil",
+      "ancient history",
+      "Greece",
+      "Rome",
+      "anointing",
+      "lamp fuel"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-spices-silk-road",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "spices_herbs",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "spices_herbs",
+    "categoryL3": "spice trade",
+    "statement": "The Silk Road was a network of trade routes connecting China to the Mediterranean that was used for over 1,500 years to transport spices, silk, and other goods, shaping world history.",
+    "quizQuestion": "Which ancient trade network was used to transport spices from Asia to Europe for over 1,500 years?",
+    "correctAnswer": "Silk Road",
+    "distractors": [
+      "Amber Route",
+      "Spice Route",
+      "Trade Wind Corridor",
+      "Incense Road",
+      "Mongol Highway",
+      "Imperial Canal",
+      "Persian Royal Road"
+    ],
+    "acceptableAnswers": [
+      "Silk Road",
+      "The Silk Road",
+      "Silk Routes"
+    ],
+    "explanation": "The Silk Road (active roughly 200 BCE–1450 CE) was a vast network of overland and maritime trade routes connecting East Asia to the Mediterranean. Spices like pepper, cinnamon, and cardamom were among the most valuable commodities traded, driving exploration and geopolitical conflict for millennia.",
+    "wowFactor": "Spices were once so valuable that black pepper was used as currency and warriors were paid in it. The desire to control spice trade routes directly triggered the Age of Exploration.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the ancient trade network connecting China to the Mediterranean called?",
+        "answer": "Silk Road",
+        "distractors": [
+          "Amber Route",
+          "Incense Road",
+          "Persian Royal Road"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Silk Road was primarily used to trade which valuable commodities from Asia to Europe?",
+        "answer": "Spices and silk",
+        "distractors": [
+          "Gold and weapons",
+          "Grain and livestock",
+          "Textiles and dyes only"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Silk Road connected China to the Mediterranean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ancient ___ Road carried spices from Asia to Europe for over 1,500 years.",
+        "answer": "Silk",
+        "distractors": [
+          "Spice",
+          "Amber",
+          "Incense"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Silk_Road",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Camel caravan crossing a desert with bales of spice and silk, mountains in the distance, pixel art style map with dotted trade route from China to Rome.",
+    "tags": [
+      "spices",
+      "Silk Road",
+      "trade",
+      "history",
+      "Asia",
+      "Mediterranean"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-spices-saffron-expensive",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "spices_herbs",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "spices_herbs",
+    "categoryL3": "saffron",
+    "statement": "Saffron is the world's most expensive spice by weight, derived from the stigmas of Crocus sativus flowers—each flower produces only three stigmas, requiring about 75,000 flowers to make 500 grams.",
+    "quizQuestion": "Which spice is the most expensive in the world by weight?",
+    "correctAnswer": "Saffron",
+    "distractors": [
+      "Vanilla",
+      "Cardamom",
+      "Black truffle",
+      "Long pepper",
+      "Pink Himalayan salt",
+      "Sumac",
+      "White pepper"
+    ],
+    "acceptableAnswers": [
+      "Saffron",
+      "Crocus saffron"
+    ],
+    "explanation": "Saffron costs $1,000–$10,000 per kilogram. Each Crocus sativus flower has only three stigmas (threads), which must be hand-harvested in the morning before the flower wilts. It takes roughly 75,000 flowers to produce 500 grams. Iran produces approximately 90% of the world's saffron.",
+    "wowFactor": "To make one pound of saffron, workers must hand-pick the tiny threads from roughly 75,000 individual flowers—all harvested in a single 2-week window per year.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the world's most expensive spice by weight?",
+        "answer": "Saffron",
+        "distractors": [
+          "Vanilla",
+          "Cardamom",
+          "Black truffle"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Saffron comes from the stigmas of which plant?",
+        "answer": "Crocus sativus",
+        "distractors": [
+          "Vanilla planifolia",
+          "Curcuma longa",
+          "Piper nigrum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vanilla is more expensive than saffron by weight.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Saffron, the world's most expensive spice, is harvested from the ___ of Crocus sativus flowers.",
+        "answer": "Stigmas",
+        "distractors": [
+          "Petals",
+          "Roots",
+          "Seeds"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Saffron",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up pixel art of purple crocus flowers with glowing red-gold stigma threads being carefully plucked by hand at dawn, a tiny pile of saffron weighing on golden scales.",
+    "tags": [
+      "saffron",
+      "spices",
+      "expensive",
+      "Iran",
+      "Crocus sativus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-spices-chili-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "spices_herbs",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "spices_herbs",
+    "categoryL3": "chili pepper",
+    "statement": "Chili peppers originated in the Americas and were unknown to the rest of the world until Christopher Columbus brought them to Europe in 1493, after which they spread globally within decades.",
+    "quizQuestion": "Where did chili peppers originate before spreading globally after 1493?",
+    "correctAnswer": "The Americas",
+    "distractors": [
+      "India",
+      "Sub-Saharan Africa",
+      "Southeast Asia",
+      "China",
+      "The Middle East",
+      "Central Africa",
+      "Southern Europe"
+    ],
+    "acceptableAnswers": [
+      "The Americas",
+      "South America",
+      "Central America",
+      "Mesoamerica",
+      "New World"
+    ],
+    "explanation": "Chili peppers (genus Capsicum) are native to the Americas and were cultivated there for at least 6,000 years before European contact. Columbus brought them to Europe in 1493. Within 50 years, they had spread to Asia, Africa, and the Middle East—permanently transforming cuisines from India to Korea to Ethiopia.",
+    "wowFactor": "Before 1493, Thai food had no chili heat. Korean kimchi wasn't red. Indian curry had no capsaicin burn. Chili peppers remade half the world's cuisines in under 100 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which continent did chili peppers originate?",
+        "answer": "The Americas",
+        "distractors": [
+          "Asia",
+          "Africa",
+          "Europe"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Americas are the origin of which now globally ubiquitous spice?",
+        "answer": "Chili peppers",
+        "distractors": [
+          "Black pepper",
+          "Ginger",
+          "Cumin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chili peppers originated in India.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chili peppers, now used in cuisines worldwide, originally came from ___.",
+        "answer": "The Americas",
+        "distractors": [
+          "Asia",
+          "Africa",
+          "The Middle East"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chili_pepper",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map showing red chili pepper icons radiating from the Americas to India, Korea, Ethiopia, and China with 1493 date stamp, pixel art style.",
+    "tags": [
+      "chili pepper",
+      "Capsicum",
+      "Americas",
+      "Columbus",
+      "spice trade",
+      "Columbian exchange"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-cheese-oldest-food",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "cheese",
+    "statement": "Cheese is one of the oldest prepared foods in human history, with archaeological evidence of cheesemaking found in Polish pottery dating back approximately 7,500 years.",
+    "quizQuestion": "Approximately how far back does archaeological evidence for cheesemaking date?",
+    "correctAnswer": "7,500 years",
+    "distractors": [
+      "500 years",
+      "2,000 years",
+      "10,000 years",
+      "1,200 years",
+      "3,000 years",
+      "15,000 years",
+      "800 years"
+    ],
+    "acceptableAnswers": [
+      "7,500 years",
+      "About 7,500 years ago",
+      "Over 7,000 years"
+    ],
+    "explanation": "Residues of milk fat found in perforated pottery shards from Poland (dated to ~5,500 BCE) represent the oldest direct evidence of cheesemaking. The Neolithic farmers who made this cheese discovered that stored milk naturally curdled and that the solids—when dried—could be preserved and transported, a revelation that changed human diet forever.",
+    "wowFactor": "Humans have been making cheese longer than written language has existed—ancient cheese residue in Polish pottery predates the earliest known writing by over 2,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Archaeological evidence of cheesemaking in Polish pottery dates back approximately how many years?",
+        "answer": "7,500 years",
+        "distractors": [
+          "2,000 years",
+          "3,000 years",
+          "10,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Polish Neolithic pottery dated to 5,500 BCE contains residue of which ancient food product?",
+        "answer": "Cheese",
+        "distractors": [
+          "Bread",
+          "Wine",
+          "Beer"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cheese is one of the oldest prepared foods, with evidence dating back 7,500 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Evidence of cheesemaking found in Neolithic Polish pottery dates back approximately ___ years.",
+        "answer": "7,500",
+        "distractors": [
+          "2,000",
+          "3,000",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cheese#History",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Neolithic farmer beside a clay pot with white curds draining through holes, primitive hut in background, European forest setting, pixel art style.",
+    "tags": [
+      "cheese",
+      "history",
+      "Neolithic",
+      "oldest food",
+      "archaeology",
+      "dairy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-cheese-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "cheese",
+    "statement": "There are an estimated 1,800 to 2,000 distinct named varieties of cheese worldwide, with France alone producing over 1,000 types recognized under its national cheese tradition.",
+    "quizQuestion": "Approximately how many distinct named varieties of cheese exist worldwide?",
+    "correctAnswer": "Around 1,800 to 2,000",
+    "distractors": [
+      "About 50",
+      "Around 200",
+      "Roughly 500",
+      "Over 5,000",
+      "Exactly 12",
+      "Approximately 3,500",
+      "Around 100"
+    ],
+    "acceptableAnswers": [
+      "Around 1,800 to 2,000",
+      "Approximately 2,000",
+      "Nearly 2,000",
+      "1,800–2,000"
+    ],
+    "explanation": "Cheese variety is staggering in its scope. Estimates vary, but most authorities cite 1,800–2,000 distinct named varieties globally. France is legendary for its fromage culture, with the famous maxim attributed to Charles de Gaulle: 'How can anyone govern a nation that has two hundred and forty-six varieties of cheese?'—actually an undercount.",
+    "wowFactor": "Charles de Gaulle complained that France was ungovernable because of its 246 cheese varieties—but he dramatically undercounted. France alone has over 1,000.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many distinct named cheese varieties exist worldwide?",
+        "answer": "Around 1,800–2,000",
+        "distractors": [
+          "Around 200",
+          "Roughly 500",
+          "Over 5,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "France produces over 1,000 types of what food product under its national tradition?",
+        "answer": "Cheese",
+        "distractors": [
+          "Wine",
+          "Bread",
+          "Sausage"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: There are fewer than 500 named varieties of cheese worldwide.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "France alone is said to produce over ___ named varieties of cheese.",
+        "answer": "1,000",
+        "distractors": [
+          "50",
+          "200",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_cheeses",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Deli counter overflowing with hundreds of labeled cheese wheels—soft, hard, blue, orange, white—behind a bewildered shopkeeper, pixel art style.",
+    "tags": [
+      "cheese",
+      "varieties",
+      "France",
+      "dairy",
+      "food culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-cheese-blue-mold",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "cheese",
+    "statement": "Blue cheeses like Roquefort, Gorgonzola, and Stilton get their distinctive blue-green veins from Penicillium mold cultures intentionally introduced during production.",
+    "quizQuestion": "What creates the blue-green veins in blue cheeses like Roquefort and Stilton?",
+    "correctAnswer": "Penicillium mold",
+    "distractors": [
+      "Food coloring dye",
+      "Copper mineral deposits",
+      "Algae infusions",
+      "Oxidized iron in milk",
+      "Chlorophyll from herbs",
+      "Ash from charcoal rind",
+      "Yeast fermentation byproducts"
+    ],
+    "acceptableAnswers": [
+      "Penicillium mold",
+      "Penicillium",
+      "Penicillium roqueforti",
+      "Intentional mold cultures"
+    ],
+    "explanation": "Blue cheeses are inoculated with Penicillium roqueforti or Penicillium glaucum—the same genus as the mold Alexander Fleming used to discover penicillin. Cheesemakers pierce the cheese with needles to create air channels where the mold can grow, producing the characteristic blue-green veins and sharp, tangy flavor.",
+    "wowFactor": "The mold that gives Roquefort its flavor is a close relative of the mold that gave us penicillin—arguably history's most important antibiotic was hiding in smelly French cheese all along.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which mold is responsible for the blue-green veins in Roquefort cheese?",
+        "answer": "Penicillium",
+        "distractors": [
+          "Aspergillus",
+          "Rhizopus",
+          "Mucor"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Penicillium mold is deliberately introduced during the making of which cheese type?",
+        "answer": "Blue cheese",
+        "distractors": [
+          "Brie",
+          "Gouda",
+          "Mozzarella"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The blue veins in blue cheese come from Penicillium mold cultures.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blue cheeses get their characteristic veins from ___ mold cultures.",
+        "answer": "Penicillium",
+        "distractors": [
+          "Aspergillus",
+          "Yeast",
+          "Algae"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blue_cheese",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a blue cheese wheel with glowing blue-green mold veins and tiny Penicillium spores magnified beside it, pixel art style.",
+    "tags": [
+      "blue cheese",
+      "Penicillium",
+      "mold",
+      "Roquefort",
+      "fermentation",
+      "dairy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-rice-feeds-world",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "grains_staples",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "grains_staples",
+    "categoryL3": "rice",
+    "statement": "Rice provides more than 20% of all calories consumed by humans worldwide and is the primary staple food for more than half of the global population, especially in Asia.",
+    "quizQuestion": "Approximately what fraction of the global population relies on rice as their primary staple food?",
+    "correctAnswer": "More than half",
+    "distractors": [
+      "About one quarter",
+      "Less than 10%",
+      "Nearly all people",
+      "Roughly one third",
+      "About one tenth",
+      "Exactly 20%",
+      "Fewer than one billion people"
+    ],
+    "acceptableAnswers": [
+      "More than half",
+      "Over half",
+      "Half the world",
+      "More than 50%",
+      "About 3.5 billion people"
+    ],
+    "explanation": "Rice (Oryza sativa) is the staple crop for more than 3.5 billion people—primarily in Asia, where countries like China, India, Bangladesh, Japan, and Indonesia depend on it as a daily dietary cornerstone. It provides approximately 20–25% of all human caloric intake globally and 50–80% of calories in some Asian diets.",
+    "wowFactor": "Rice feeds half the people on Earth every single day. Remove it from the global food supply and billions would face immediate famine—no other single crop comes close in global caloric importance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much of the world's population depends on rice as a primary staple food?",
+        "answer": "More than half",
+        "distractors": [
+          "About one quarter",
+          "Roughly one third",
+          "Less than 10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Rice provides approximately what percentage of total global caloric intake?",
+        "answer": "About 20%",
+        "distractors": [
+          "About 5%",
+          "About 50%",
+          "About 10%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rice is the primary staple food for more than half of the world's population.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rice is the primary staple food for more than ___ of humanity, especially in Asia.",
+        "answer": "Half",
+        "distractors": [
+          "A quarter",
+          "A third",
+          "10%"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with Asia lit up gold, a massive bowl of white rice in the center, with population figures flowing into it, pixel art style.",
+    "tags": [
+      "rice",
+      "staple food",
+      "Asia",
+      "global food",
+      "calories",
+      "agriculture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-rice-paddy-cultivation",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "grains_staples",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "grains_staples",
+    "categoryL3": "rice",
+    "statement": "Paddy cultivation—growing rice in flooded fields called paddies—was developed in China approximately 7,000–9,000 years ago and remains the dominant rice farming method today.",
+    "quizQuestion": "What term describes the flooded field method used to grow most of the world's rice?",
+    "correctAnswer": "Paddy cultivation",
+    "distractors": [
+      "Terrace drip farming",
+      "Dry-land rotation",
+      "Hydroponic seeding",
+      "Furrow irrigation planting",
+      "Bog agriculture",
+      "Swamp clearing cultivation",
+      "Silt mound planting"
+    ],
+    "acceptableAnswers": [
+      "Paddy cultivation",
+      "Paddy farming",
+      "Wetland rice cultivation",
+      "Flooded field cultivation",
+      "Paddy field farming"
+    ],
+    "explanation": "Paddy rice cultivation involves flooding fields to a depth of a few inches, transplanting young rice seedlings, and draining before harvest. The flooded environment suppresses weeds and creates a suitable habitat for rice to grow. This method was developed in the Yangtze River valley of China and has spread across Asia over thousands of years.",
+    "wowFactor": "Rice paddies don't just grow food—they're entire managed ecosystems. Flooded paddies support fish, frogs, and insects while also capturing more carbon than most other agricultural fields.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the term for growing rice in deliberately flooded fields?",
+        "answer": "Paddy cultivation",
+        "distractors": [
+          "Drip irrigation farming",
+          "Dry-land farming",
+          "Hydroponic farming"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Paddy cultivation of rice originated in which country's river valley approximately 9,000 years ago?",
+        "answer": "China",
+        "distractors": [
+          "India",
+          "Vietnam",
+          "Thailand"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most rice in the world is grown in flooded paddy fields.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rice grown in flooded fields is called ___ rice, a technique originating in China.",
+        "answer": "Paddy",
+        "distractors": [
+          "Marsh",
+          "Bog",
+          "Swamp"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paddy_field",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tiered green rice paddies reflecting blue sky on a Chinese mountainside, farmers in conical hats planting seedlings in shallow water, pixel art style.",
+    "tags": [
+      "rice",
+      "paddy",
+      "agriculture",
+      "China",
+      "flooded fields",
+      "farming"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-rice-wild-vs-cultivated",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "grains_staples",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "grains_staples",
+    "categoryL3": "rice",
+    "statement": "Wild rice is not a true rice—it belongs to a different genus (Zizania) than cultivated Asian rice (Oryza sativa)—and was a staple of Indigenous peoples of the Great Lakes region of North America.",
+    "quizQuestion": "Wild rice sold in supermarkets is NOT the same species as cultivated rice. What genus does wild rice belong to?",
+    "correctAnswer": "Zizania",
+    "distractors": [
+      "Oryza",
+      "Triticum",
+      "Zea",
+      "Hordeum",
+      "Sorghum",
+      "Panicum",
+      "Setaria"
+    ],
+    "acceptableAnswers": [
+      "Zizania",
+      "Zizania aquatica",
+      "Different genus from Oryza"
+    ],
+    "explanation": "Wild rice (Zizania) is actually an aquatic grass native to the Great Lakes region of North America, traditionally harvested by Ojibwe and Menominee peoples. Despite its name, it is not closely related to cultivated rice (Oryza sativa). Its dark color, nutty flavor, and chewy texture result from its distinct genetic origin.",
+    "wowFactor": "The 'wild rice' in your salad is more closely related to bamboo than it is to the white rice in your sushi. The name 'rice' is a marketing legacy from European settlers who saw Indigenous peoples harvesting it from canoes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Wild rice belongs to which genus, different from cultivated rice (Oryza)?",
+        "answer": "Zizania",
+        "distractors": [
+          "Triticum",
+          "Zea",
+          "Panicum"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Zizania is the genus of which North American food plant traditionally harvested by Indigenous peoples?",
+        "answer": "Wild rice",
+        "distractors": [
+          "Corn",
+          "Quinoa",
+          "Millet"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wild rice and cultivated Asian rice belong to the same genus.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Despite its name, wild rice belongs to the genus ___, not Oryza like cultivated rice.",
+        "answer": "Zizania",
+        "distractors": [
+          "Sorghum",
+          "Panicum",
+          "Triticum"
+        ]
+      }
+    ],
+    "difficulty": 7,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wild_rice",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split pixel art scene: left shows dark wild rice stalks growing from a North American lake with a canoe; right shows Asian rice paddy with white grains, with a taxonomic label separating the two.",
+    "tags": [
+      "wild rice",
+      "Zizania",
+      "Oryza",
+      "Indigenous",
+      "Great Lakes",
+      "botany",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-fermentation-ancient-technique",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "fermentation",
+    "statement": "Fermentation is one of humanity's oldest food preservation techniques, with evidence of fermented beverages (rice wine) dating back 9,000 years to China, predating the invention of writing.",
+    "quizQuestion": "How old is the earliest known evidence of human fermentation (rice wine residues in China)?",
+    "correctAnswer": "About 9,000 years",
+    "distractors": [
+      "About 500 years",
+      "Around 2,000 years",
+      "Approximately 4,000 years",
+      "Roughly 1,200 years",
+      "Just 300 years",
+      "Around 6,000 years",
+      "Approximately 20,000 years"
+    ],
+    "acceptableAnswers": [
+      "About 9,000 years",
+      "Approximately 9,000 years",
+      "Around 7000 BCE",
+      "At least 7,000–9,000 years old"
+    ],
+    "explanation": "Chemical analysis of pottery from Jiahu, China (~7000 BCE) revealed residues of fermented rice, honey, and fruit—a mixed fermented beverage estimated to be 9,000 years old. This represents the earliest direct chemical evidence of human fermentation. The same analysis, conducted by archaeochemist Patrick McGovern, showed our ancestors were brewing alcohol long before settled agriculture fully developed.",
+    "wowFactor": "Humans were deliberately fermenting alcoholic beverages 4,000 years before Egyptians built the pyramids—raising the philosophical question of whether civilization was built around fermentation, not the other way around.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The earliest chemical evidence of human fermentation dates back approximately how far?",
+        "answer": "About 9,000 years",
+        "distractors": [
+          "About 2,000 years",
+          "About 4,000 years",
+          "About 6,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Jiahu pottery in China provided the earliest evidence of what ancient process?",
+        "answer": "Fermentation",
+        "distractors": [
+          "Bread baking",
+          "Cheese making",
+          "Oil pressing"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Evidence of fermentation predates ancient Egyptian civilization.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The earliest fermented beverage evidence—rice wine residue from China—is approximately ___ years old.",
+        "answer": "9,000",
+        "distractors": [
+          "2,000",
+          "4,000",
+          "6,000"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_fermentation",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Chinese clay pot with glowing liquid inside and tiny yeast bubbles rising, pyramid silhouette tiny in background with 9000 BCE date stamp, pixel art style.",
+    "tags": [
+      "fermentation",
+      "ancient history",
+      "China",
+      "rice wine",
+      "Jiahu",
+      "oldest technique"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-fermentation-types",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "fermentation",
+    "statement": "Yogurt, kimchi, sourdough bread, sauerkraut, beer, wine, cheese, and miso are all produced through fermentation—microorganisms like bacteria and yeast converting sugars into acids, gases, or alcohol.",
+    "quizQuestion": "Yogurt, kimchi, sourdough bread, and beer are all produced by which ancient food process?",
+    "correctAnswer": "Fermentation",
+    "distractors": [
+      "Dehydration",
+      "Pasteurization",
+      "Distillation",
+      "Hydrolysis",
+      "Emulsification",
+      "Caramelization",
+      "Osmotic curing"
+    ],
+    "acceptableAnswers": [
+      "Fermentation",
+      "Microbial fermentation",
+      "Lacto-fermentation",
+      "Yeast fermentation"
+    ],
+    "explanation": "Fermentation is a metabolic process where microorganisms (bacteria, yeast, molds) convert carbohydrates into organic acids, alcohols, or gases. Lactic acid bacteria create yogurt, kimchi, and sourdough. Yeast ferments sugars into alcohol for beer and wine. The process both preserves food and creates complex flavors impossible to achieve otherwise.",
+    "wowFactor": "Bread, beer, cheese, wine, yogurt, chocolate, coffee, and soy sauce all share one invisible creator: microbial fermentation. Before refrigerators, this was how humanity kept food from killing them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process do yogurt, kimchi, beer, and sourdough all have in common?",
+        "answer": "Fermentation",
+        "distractors": [
+          "Pasteurization",
+          "Dehydration",
+          "Distillation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Fermentation involves microorganisms converting sugars into acids, gases, or what else?",
+        "answer": "Alcohol",
+        "distractors": [
+          "Proteins",
+          "Vitamins",
+          "Fats"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Yogurt and kimchi are both produced through fermentation.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bacteria and yeast convert sugars during ___, producing yogurt, kimchi, beer, and sourdough.",
+        "answer": "Fermentation",
+        "distractors": [
+          "Distillation",
+          "Pasteurization",
+          "Dehydration"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fermentation_in_food_processing",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grid of fermented foods—glowing yogurt jar, bubbling kimchi pot, frothing beer mug, sourdough loaf—each with tiny microbe sprites swarming around them, pixel art style.",
+    "tags": [
+      "fermentation",
+      "yogurt",
+      "kimchi",
+      "beer",
+      "sourdough",
+      "food science",
+      "microbiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-fermentation-kimchi-beer",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "dairy_fermented",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "dairy_fermented",
+    "categoryL3": "fermentation",
+    "statement": "Kimchi, the Korean fermented cabbage dish, has been made for over 3,000 years and contains Lactobacillus bacteria that produce lactic acid, giving it its sour flavor and acting as a natural preservative.",
+    "quizQuestion": "What type of bacteria is responsible for the sour flavor and preservation of kimchi?",
+    "correctAnswer": "Lactobacillus",
+    "distractors": [
+      "Saccharomyces",
+      "E. coli",
+      "Salmonella",
+      "Clostridium",
+      "Streptococcus",
+      "Penicillium",
+      "Aspergillus"
+    ],
+    "acceptableAnswers": [
+      "Lactobacillus",
+      "Lactic acid bacteria",
+      "LAB"
+    ],
+    "explanation": "Kimchi fermentation is driven primarily by Lactobacillus species—the same family of lactic acid bacteria that ferment yogurt, sauerkraut, and sourdough. These bacteria consume sugars and produce lactic acid, which lowers the pH, preventing harmful bacterial growth and creating the characteristic sour, tangy flavor of kimchi.",
+    "wowFactor": "The same bacteria that make yogurt creamy also make kimchi sour and safe to eat months later. Lactobacillus is arguably the most useful microorganism in human food history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which bacteria gives kimchi its sour flavor through lactic acid fermentation?",
+        "answer": "Lactobacillus",
+        "distractors": [
+          "Saccharomyces",
+          "Clostridium",
+          "Aspergillus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lactobacillus bacteria are the primary fermenting agents in which Korean dish?",
+        "answer": "Kimchi",
+        "distractors": [
+          "Bibimbap",
+          "Bulgogi",
+          "Japchae"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kimchi is fermented using yeast, like beer.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kimchi's sour flavor comes from ___ acid produced by Lactobacillus bacteria.",
+        "answer": "Lactic",
+        "distractors": [
+          "Citric",
+          "Acetic",
+          "Tartaric"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kimchi",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Large clay onggi pots of bubbling kimchi half-buried in Korean earth, with magnified Lactobacillus bacteria glowing around the lid, pixel art style.",
+    "tags": [
+      "kimchi",
+      "Lactobacillus",
+      "fermentation",
+      "Korea",
+      "lactic acid",
+      "food science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]
