@@ -8203,5 +8203,1754 @@
       "plating",
       "Bocuse"
     ]
+  },
+  {
+    "id": "food-pizza-origin-city",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "Italian cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Italian cuisine",
+    "categoryL3": "",
+    "statement": "Modern pizza originated in Naples, Italy, where flatbreads with toppings were sold as street food to the poor in the 18th century.",
+    "quizQuestion": "In which Italian city did modern pizza originate?",
+    "correctAnswer": "Naples",
+    "distractors": [
+      "Rome",
+      "Milan",
+      "Florence",
+      "Venice"
+    ],
+    "acceptableAnswers": [
+      "Naples",
+      "Napoli"
+    ],
+    "explanation": "Neapolitan pizza emerged among the working class of Naples. The city still holds a protected designation for 'Vera Pizza Napoletana'.",
+    "wowFactor": "Pizza was originally considered 'poor people's food' in Naples — wealthy visitors would sneak into poorer neighborhoods to try it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did modern pizza originate?",
+        "answer": "Naples",
+        "distractors": [
+          "Rome",
+          "Milan",
+          "Florence"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pizza originated in Rome.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Neapolitan pizzaiolo stretching dough by hand near a wood-fired oven in a rustic kitchen.",
+    "tags": [
+      "pizza",
+      "Naples",
+      "Italy",
+      "origin",
+      "street food"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pizza-margherita-queen",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "Italian cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Italian cuisine",
+    "categoryL3": "",
+    "statement": "Pizza Margherita was reportedly created in 1889 for Queen Margherita of Savoy, with toppings representing the Italian flag: red tomato, white mozzarella, green basil.",
+    "quizQuestion": "Which Italian queen inspired the creation of Pizza Margherita?",
+    "correctAnswer": "Queen Margherita of Savoy",
+    "distractors": [
+      "Queen Isabella of Castile",
+      "Queen Victoria",
+      "Queen Maria Carolina of Austria"
+    ],
+    "acceptableAnswers": [
+      "Queen Margherita",
+      "Margherita of Savoy",
+      "Queen Margherita of Savoy"
+    ],
+    "explanation": "In 1889, pizzaiolo Raffaele Esposito made three pizzas for the visiting queen. She preferred the one with tomato, mozzarella, and basil — the future Margherita.",
+    "wowFactor": "The patriotic red-white-green color scheme was deliberate — Esposito was celebrating Italy's recent unification.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who inspired Pizza Margherita?",
+        "answer": "Queen Margherita of Savoy",
+        "distractors": [
+          "Queen Isabella",
+          "Queen Victoria",
+          "Maria Carolina"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pizza Margherita is named after an Italian queen.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza_Margherita",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A classic Margherita pizza fresh from a wood-fired oven, bright red tomato, white mozzarella, green basil.",
+    "tags": [
+      "pizza",
+      "Margherita",
+      "Italy",
+      "queen",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pizza-us-consumption",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food culture",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "food culture",
+    "categoryL3": "",
+    "statement": "Americans consume approximately 3 billion pizzas per year — about 23 pounds of pizza per person annually.",
+    "quizQuestion": "Approximately how many pizzas do Americans eat per year?",
+    "correctAnswer": "3 billion",
+    "distractors": [
+      "500 million",
+      "1 billion",
+      "10 billion",
+      "100 million"
+    ],
+    "acceptableAnswers": [
+      "3 billion",
+      "about 3 billion"
+    ],
+    "explanation": "The US is the world's largest pizza market. Pizza accounts for more than 10% of all food service sales in the country.",
+    "wowFactor": "40% of Americans eat pizza at least once a week — making pizza the most popular single food in the US.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many pizzas do Americans eat per year?",
+        "answer": "3 billion",
+        "distractors": [
+          "1 billion",
+          "10 billion",
+          "500 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Americans eat more than 2 billion pizzas per year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A montage of pizza boxes stacked ceiling-high in a warehouse, comically towering over a small delivery person.",
+    "tags": [
+      "pizza",
+      "USA",
+      "consumption",
+      "statistics",
+      "food culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pizza-mozzarella-buffalo",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "Italian cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Italian cuisine",
+    "categoryL3": "",
+    "statement": "Traditional Neapolitan pizza uses mozzarella di bufala — mozzarella made from the milk of water buffalo, not cows.",
+    "quizQuestion": "What animal's milk is used in traditional mozzarella di bufala?",
+    "correctAnswer": "Water buffalo",
+    "distractors": [
+      "Cow",
+      "Goat",
+      "Sheep",
+      "Camel"
+    ],
+    "acceptableAnswers": [
+      "water buffalo",
+      "buffalo",
+      "bufala"
+    ],
+    "explanation": "Water buffalo have been raised in southern Italy for centuries. Their milk produces a richer, creamier mozzarella than cow's milk.",
+    "wowFactor": "True mozzarella di bufala has a tangy flavor and melts differently from cow mozzarella — purists say it cannot be substituted.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What milk is in authentic mozzarella di bufala?",
+        "answer": "Water buffalo",
+        "distractors": [
+          "Cow",
+          "Goat",
+          "Sheep"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mozzarella di bufala is made from water buffalo milk.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mozzarella_di_bufala_campana",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A water buffalo wading in a southern Italian marsh, with fresh mozzarella balls floating in brine nearby.",
+    "tags": [
+      "pizza",
+      "mozzarella",
+      "buffalo",
+      "Italy",
+      "cheese"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pizza-space-station",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food culture",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "food culture",
+    "categoryL3": "",
+    "statement": "In 2001, Pizza Hut delivered a pizza to the International Space Station, becoming the first company to deliver food to space.",
+    "quizQuestion": "Which pizza chain made the first pizza delivery to the International Space Station?",
+    "correctAnswer": "Pizza Hut",
+    "distractors": [
+      "Domino's",
+      "Papa John's",
+      "Little Caesars",
+      "DiGiorno"
+    ],
+    "acceptableAnswers": [
+      "Pizza Hut"
+    ],
+    "explanation": "Pizza Hut paid the Russian space agency to send a vacuum-sealed salami pizza to cosmonaut Yuri Usachov aboard the ISS in 2001.",
+    "wowFactor": "The delivery reportedly cost over $1 million in marketing — making it the most expensive pizza delivery in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who delivered pizza to the ISS in 2001?",
+        "answer": "Pizza Hut",
+        "distractors": [
+          "Domino's",
+          "Papa John's",
+          "Little Caesars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A pizza was once delivered to the International Space Station.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza_Hut",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Pizza Hut box floating in zero gravity inside the ISS, astronaut reaching for a slice.",
+    "tags": [
+      "pizza",
+      "space",
+      "ISS",
+      "Pizza Hut",
+      "delivery",
+      "weird facts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-sushi-narezushi-origins",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "japanese_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Japanese Cuisine",
+    "categoryL3": "",
+    "statement": "The original form of sushi, narezushi, fermented whole fish for years inside rice — and the rice was thrown away.",
+    "quizQuestion": "In ancient narezushi, what happened to the rice used for fermentation?",
+    "correctAnswer": "It was discarded — only the fermented fish was eaten",
+    "distractors": [
+      "It was eaten as a side dish with the fish",
+      "It was used to make rice wine",
+      "It was dried and stored for winter",
+      "It was fed to animals",
+      "It was fermented separately into vinegar",
+      "It was made into a sauce for the fish",
+      "It was mixed with the fish and eaten together",
+      "It was pressed into cakes and sold at market"
+    ],
+    "acceptableAnswers": [
+      "the rice was discarded",
+      "rice was thrown away",
+      "only the fish was eaten"
+    ],
+    "explanation": "Narezushi, the oldest form of sushi, originated in Southeast Asia as a preservation technique. Fish was packed in rice with salt and left to ferment for months or even years. The lactic acid fermentation preserved the fish safely. The rice became a soggy, pungent mash during this process and was considered waste — only the cured fish was consumed. This technique spread to Japan around the 8th century.",
+    "wowFactor": "Modern sushi evolved from a food preservation technique where the rice was literally garbage. The thing we love most — the seasoned rice — started as fermentation packing material.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Sushi and the Globalisation of a Japanese Food — Barak Kushner",
+    "sourceUrl": "https://www.cambridge.org/core/journals/modern-asian-studies/article/sushi",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient clay pot filled with layered fish and rice in fermentation, set in a Japanese village food preparation scene",
+    "tags": [
+      "sushi",
+      "narezushi",
+      "fermentation",
+      "Japanese food history",
+      "food origins"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-sushi-rice-vinegar-revolution",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "japanese_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Japanese Cuisine",
+    "categoryL3": "",
+    "statement": "In the Edo period, chefs began adding rice vinegar directly to cooked rice, bypassing years of fermentation and creating recognisably modern sushi.",
+    "quizQuestion": "What ingredient revolutionised sushi preparation in the Edo period by replacing years of fermentation?",
+    "correctAnswer": "Rice vinegar added directly to cooked rice",
+    "distractors": [
+      "Soy sauce mixed into the rice",
+      "Salt cured fish brine",
+      "Sake used to season the rice",
+      "Mirin stirred into hot rice",
+      "Dried kelp dashi mixed with rice",
+      "Citrus juice added during cooking",
+      "Pickled ginger pressed into the rice",
+      "Plum vinegar imported from China"
+    ],
+    "acceptableAnswers": [
+      "rice vinegar",
+      "vinegar",
+      "adding vinegar to rice"
+    ],
+    "explanation": "The introduction of rice vinegar as a direct seasoning — rather than relying on natural lactic fermentation — drastically reduced preparation time from years to hours. This 'hayazushi' (fast sushi) emerged in the Edo period and allowed chefs to control flavour precisely. The vinegared rice became the defining element of the dish, shifting the focus from preserved fish to the harmony of fish and seasoned rice.",
+    "wowFactor": "One culinary shortcut — pouring vinegar on rice instead of waiting years — transformed an ancient preservation method into the world's most iconic Japanese dish.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "On Food and Cooking — Harold McGee",
+    "sourceUrl": "https://www.harpercollins.com/products/on-food-and-cooking-harold-mcgee",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Edo-period Japanese chef seasoning a wooden tub of hot rice with rice vinegar, steam rising in a traditional kitchen",
+    "tags": [
+      "sushi",
+      "Edo period",
+      "rice vinegar",
+      "Japanese cuisine",
+      "food history",
+      "hayazushi"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-sushi-nigiri-street-food",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "japanese_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Japanese Cuisine",
+    "categoryL3": "",
+    "statement": "Nigirizushi originated as fast food sold from street stalls in 1820s Tokyo (then called Edo).",
+    "quizQuestion": "Where did nigirizushi (hand-pressed sushi) originate?",
+    "correctAnswer": "Street stalls in 1820s Tokyo (Edo)",
+    "distractors": [
+      "Imperial palace kitchens in Kyoto",
+      "Osaka fish markets in the 1700s",
+      "Fishing villages in Hokkaido",
+      "Buddhist temple vegetarian cuisine",
+      "Samurai household cooking in the 1600s",
+      "Portuguese-influenced Nagasaki restaurants",
+      "Chinese-Japanese fusion cookhouses in 1900s Tokyo",
+      "Geisha house banquets of the 19th century"
+    ],
+    "acceptableAnswers": [
+      "1820s Edo",
+      "1820s Tokyo",
+      "Edo street stalls",
+      "Tokyo street food"
+    ],
+    "explanation": "Nigirizushi — the familiar hand-pressed mound of vinegared rice topped with a slice of fish — was invented by Tokyo chef Hanaya Yohei around 1824. He sold it from an open-air stall (yatai) along the Sumida River. It was finger food: cheap, quick, and eaten standing up. The fish used was often marinated in soy or vinegar because there was no refrigeration. This Edo-mae (Tokyo Bay) style became the template for modern sushi.",
+    "wowFactor": "The sushi served in the world's most expensive Michelin-starred restaurants is essentially the same format as cheap street food sold by a Tokyo stall keeper 200 years ago.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "The Story of Sushi — Trevor Corson",
+    "sourceUrl": "https://www.harpercollins.com/products/the-story-of-sushi-trevor-corson",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A busy 1820s Edo street scene with a wooden sushi yatai stall, chef pressing nigiri by hand for customers in kimono",
+    "tags": [
+      "sushi",
+      "nigirizushi",
+      "Edo",
+      "Tokyo",
+      "street food",
+      "Japanese food history",
+      "Hanaya Yohei"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-sushi-wasabi-antibacterial",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "japanese_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Japanese Cuisine",
+    "categoryL3": "",
+    "statement": "Wasabi is placed between fish and rice in traditional sushi not just for flavour, but as an antibacterial agent.",
+    "quizQuestion": "What is the practical food-safety purpose of placing wasabi between the fish and rice in traditional sushi?",
+    "correctAnswer": "It acts as an antibacterial agent to inhibit microbial growth",
+    "distractors": [
+      "It prevents the rice from sticking to the fish",
+      "It adds moisture to keep the fish fresh-looking",
+      "It balances the acidity of the vinegared rice",
+      "It masks the smell of less fresh fish",
+      "It is purely decorative, placed there by tradition",
+      "It provides a heat layer to warm the fish",
+      "It helps the fish adhere to the rice ball",
+      "It signals to the chef how spicy the customer wants it"
+    ],
+    "acceptableAnswers": [
+      "antibacterial",
+      "antimicrobial",
+      "kills bacteria",
+      "prevents bacterial growth"
+    ],
+    "explanation": "Wasabi (Wasabia japonica) contains isothiocyanates — potent antimicrobial compounds that inhibit bacterial and fungal growth. Before refrigeration, placing wasabi between raw fish and rice served a genuine food-safety function, slowing spoilage. The compound also gives wasabi its distinctive burning sensation. Most 'wasabi' served outside Japan is actually dyed horseradish paste — which lacks the same isothiocyanate profile.",
+    "wowFactor": "Most wasabi served in restaurants worldwide is fake — it's green-dyed horseradish. Real wasabi loses its antibacterial potency within 15 minutes of being grated.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Agricultural and Food Chemistry — Isothiocyanates in Wasabi",
+    "sourceUrl": "https://pubs.acs.org/doi/10.1021/jf049394n",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a nigiri piece showing the green wasabi layer between white rice and translucent salmon, anatomically labelled",
+    "tags": [
+      "sushi",
+      "wasabi",
+      "antibacterial",
+      "food safety",
+      "isothiocyanates",
+      "Japanese cuisine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-sushi-conveyor-belt-invention",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "japanese_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "Japanese Cuisine",
+    "categoryL3": "",
+    "statement": "Conveyor belt sushi (kaiten-zushi) was invented in 1958 by Yoshiaki Shiraishi, inspired by watching beer bottles on a brewery conveyor.",
+    "quizQuestion": "What inspired the invention of conveyor belt sushi in 1958?",
+    "correctAnswer": "Watching beer bottles travelling on a brewery conveyor belt",
+    "distractors": [
+      "Watching factory assembly lines for electronics",
+      "An automated noodle delivery system in China",
+      "A hospital medication trolley system",
+      "A toy train set running around a restaurant",
+      "A luggage carousel at Osaka airport",
+      "A revolving display case in a department store",
+      "Textile looms in a weaving factory",
+      "A vending machine prototype at a trade fair"
+    ],
+    "acceptableAnswers": [
+      "beer brewery conveyor",
+      "brewery conveyor belt",
+      "beer bottles on a conveyor",
+      "Asahi brewery conveyor"
+    ],
+    "explanation": "Yoshiaki Shiraishi, a sushi chef struggling with the slow pace of his restaurant, visited the Asahi brewery in Osaka and watched beer bottles moving on a conveyor belt. The idea struck him: what if the sushi came to the customer instead? He spent years developing the system and opened his first kaiten-zushi restaurant, Mawaru Genroku Sushi, in Higashiosaka in 1958. The concept eventually spread worldwide and revolutionised affordable sushi dining.",
+    "wowFactor": "Shiraishi's simple observation took him years to patent and implement — he had to design entirely new conveyor systems that kept food at the right temperature as it circled the restaurant.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Kaiten-zushi — Japan Patent Office Historical Record",
+    "sourceUrl": "https://www.jpo.go.jp/e/index.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1958 Japanese sushi restaurant interior with the first prototype conveyor belt system, Yoshiaki Shiraishi at the counter",
+    "tags": [
+      "sushi",
+      "kaiten-zushi",
+      "conveyor belt",
+      "invention",
+      "Yoshiaki Shiraishi",
+      "Japanese food history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-coffee-ethiopia-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Coffee was first cultivated in Ethiopia's Kaffa region around 850 CE.",
+    "quizQuestion": "In which country and region was coffee first cultivated?",
+    "correctAnswer": "Ethiopia's Kaffa region",
+    "distractors": [
+      "Yemen's highlands",
+      "Brazil's rainforest",
+      "Colombia's Andes",
+      "Turkey's Anatolia",
+      "India's Kerala",
+      "Java in Indonesia",
+      "Arabia's peninsula"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia",
+      "Kaffa region",
+      "Ethiopia's Kaffa region"
+    ],
+    "explanation": "Coffee's origin traces to the Kaffa region of Ethiopia, where legend says a goat herder named Kaldi noticed his goats energized after eating coffee berries around 850 CE. Cultivation later spread to Arabia.",
+    "wowFactor": "The word 'coffee' likely comes from 'Kaffa' — the Ethiopian region where coffee was born.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country and region was coffee first cultivated?",
+        "answer": "Ethiopia's Kaffa region",
+        "distractors": [
+          "Yemen's highlands",
+          "Brazil's rainforest",
+          "Colombia's Andes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What crop originated in Ethiopia's Kaffa region around 850 CE?",
+        "answer": "Coffee",
+        "distractors": [
+          "Tea",
+          "Cocoa",
+          "Vanilla"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee was first cultivated in Ethiopia.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Coffee was first cultivated in Ethiopia's ___ region around 850 CE.",
+        "answer": "Kaffa",
+        "distractors": [
+          "Tigray",
+          "Harrar",
+          "Sidama"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_coffee",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A goat herder in ancient Ethiopia watching energetic goats near red coffee berries on lush bushes, dramatic highland landscape behind him.",
+    "tags": [
+      "coffee",
+      "Ethiopia",
+      "Kaffa",
+      "history",
+      "food_history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-coffee-maillard-roasting",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Roasted coffee contains over 800 volatile aroma compounds — more than wine's roughly 200.",
+    "quizQuestion": "How many volatile aroma compounds does roasted coffee contain compared to wine?",
+    "correctAnswer": "Over 800 — more than wine's ~200",
+    "distractors": [
+      "About 50 — fewer than wine",
+      "The same as wine (~200)",
+      "Around 400 — twice wine's count",
+      "Only 10 — far fewer than wine",
+      "Over 2,000 — ten times wine",
+      "About 100 — half of wine",
+      "Exactly 800 — equal to wine"
+    ],
+    "acceptableAnswers": [
+      "Over 800",
+      "800+",
+      "more than 800"
+    ],
+    "explanation": "The Maillard reaction and caramelization during roasting transform green coffee beans into a complex mixture of over 800 volatile compounds responsible for coffee's distinctive aroma, far exceeding wine's ~200 compounds.",
+    "wowFactor": "Coffee's aroma alone contains more chemical complexity than most perfumes — it's one of the most chemically complex smells humans regularly encounter.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many volatile aroma compounds does roasted coffee contain?",
+        "answer": "Over 800",
+        "distractors": [
+          "About 50",
+          "Around 200",
+          "About 400"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What chemical reaction during coffee roasting creates its complex aroma?",
+        "answer": "Maillard reaction",
+        "distractors": [
+          "Fermentation",
+          "Oxidation",
+          "Hydrolysis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Roasted coffee has more aroma compounds than wine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Roasted coffee contains over ___ volatile aroma compounds, compared to wine's ~200.",
+        "answer": "800",
+        "distractors": [
+          "100",
+          "50",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coffee_roasting",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dark roasted coffee beans surrounded by a swirling constellation of golden aroma molecules, steam rising in complex curling patterns against a black background.",
+    "tags": [
+      "coffee",
+      "aroma",
+      "Maillard reaction",
+      "food science",
+      "roasting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-coffee-ottoman-ban-1511",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "The Governor of Mecca banned coffee in 1511, making it one of the earliest food prohibitions in history.",
+    "quizQuestion": "In 1511, what city's governor issued one of history's first bans on coffee?",
+    "correctAnswer": "Mecca",
+    "distractors": [
+      "Constantinople",
+      "Cairo",
+      "Baghdad",
+      "Jerusalem",
+      "Alexandria",
+      "Damascus",
+      "Medina"
+    ],
+    "acceptableAnswers": [
+      "Mecca",
+      "Mecca's governor"
+    ],
+    "explanation": "Khair Beg, the Governor of Mecca, banned coffee in 1511, believing it stimulated radical thinking and political debate in coffeehouses. The ban was short-lived — the Sultan of Cairo overruled it within months.",
+    "wowFactor": "Coffee was considered so dangerous to social order that it was banned in Mecca — the holiest city in Islam — just decades after it first appeared.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In 1511, what city's governor issued one of history's first bans on coffee?",
+        "answer": "Mecca",
+        "distractors": [
+          "Constantinople",
+          "Cairo",
+          "Baghdad"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why did the Governor of Mecca ban coffee in 1511?",
+        "answer": "It stimulated radical political debate",
+        "distractors": [
+          "It caused illness",
+          "It was too expensive",
+          "It was non-halal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee was banned in Mecca in 1511.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In 1511, the governor of ___ banned coffee, fearing it incited political debate.",
+        "answer": "Mecca",
+        "distractors": [
+          "Cairo",
+          "Baghdad",
+          "Constantinople"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_coffee",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Ottoman official in ornate robes pointing at a bustling coffeehouse, scribes writing a proclamation while patrons look alarmed at their cups.",
+    "tags": [
+      "coffee",
+      "Ottoman",
+      "Mecca",
+      "ban",
+      "history",
+      "food_history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-coffee-decaf-swiss-water",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "The Swiss Water Process removes 99.9% of caffeine using only water — no chemicals required.",
+    "quizQuestion": "What does the Swiss Water Process use to remove 99.9% of caffeine from coffee beans?",
+    "correctAnswer": "Only water",
+    "distractors": [
+      "Chemical solvents",
+      "Carbon dioxide gas",
+      "Steam under pressure",
+      "Alcohol solution",
+      "Salt brine",
+      "Charcoal filtration with chemicals",
+      "Nitrogen gas"
+    ],
+    "acceptableAnswers": [
+      "Water",
+      "only water",
+      "just water"
+    ],
+    "explanation": "The Swiss Water Process, developed in the 1930s, uses hot water to extract caffeine from green coffee beans. The water is then filtered through activated charcoal to remove only the caffeine molecules, creating caffeine-free 'flavour charged water' for re-use.",
+    "wowFactor": "Swiss Water Process decaf uses the same water repeatedly — each batch makes the water better at preserving coffee flavour while stripping caffeine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the Swiss Water Process use to remove caffeine from coffee?",
+        "answer": "Only water",
+        "distractors": [
+          "Chemical solvents",
+          "Carbon dioxide",
+          "Steam pressure"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of caffeine does the Swiss Water Process remove?",
+        "answer": "99.9%",
+        "distractors": [
+          "50%",
+          "75%",
+          "90%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Swiss Water Process removes caffeine using only water without chemicals.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Swiss Water Process removes ___% of caffeine using only water.",
+        "answer": "99.9",
+        "distractors": [
+          "50",
+          "75",
+          "90"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Swiss_Water_Process",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Green coffee beans submerged in crystal-clear water in gleaming Swiss laboratory equipment, caffeine molecules floating away while flavour compounds remain.",
+    "tags": [
+      "coffee",
+      "decaf",
+      "Swiss Water Process",
+      "food science",
+      "caffeine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-chocolate-aztec-origin",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "americas_cuisine",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "americas_cuisine",
+    "categoryL3": "food_history",
+    "statement": "The Aztecs drank 'xocolatl,' a bitter cold drink made from cacao, water, chili peppers, and spices — completely unlike modern sweet chocolate.",
+    "quizQuestion": "What was the Aztec chocolate drink 'xocolatl' made of?",
+    "correctAnswer": "Cacao, water, chili, and spices",
+    "distractors": [
+      "Cacao, milk, and sugar",
+      "Ground cacao and hot water only",
+      "Cacao beans and fermented corn"
+    ],
+    "acceptableAnswers": [
+      "cacao and chili",
+      "bitter cacao drink",
+      "xocolatl with spices"
+    ],
+    "explanation": "The Aztec drink 'xocolatl' (from which 'chocolate' derives) was a frothy, bitter cold beverage made from ground cacao, water, chili peppers, and spices like vanilla and achiote. It was reserved for royalty and warriors and was nothing like the sweet chocolate we know today. Spanish conquistadors added sugar and milk after bringing cacao to Europe.",
+    "wowFactor": "The Aztec emperor Montezuma reportedly drank 50 cups of xocolatl a day from golden goblets, which were discarded after a single use.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the Aztec chocolate drink 'xocolatl' made of?",
+        "answer": "Cacao, water, chili, and spices",
+        "distractors": [
+          "Cacao, milk, and sugar",
+          "Ground cacao and hot water only",
+          "Cacao beans and fermented corn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Aztec chocolate drink xocolatl was sweet and similar to modern hot chocolate.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chocolate",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "An Aztec warrior pouring frothy xocolatl from a height to create foam",
+    "tags": [
+      "chocolate",
+      "Aztec",
+      "xocolatl",
+      "food history",
+      "cacao"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-chocolate-cacao-fermentation",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "food_production",
+    "statement": "Cacao beans must be fermented for 5–7 days after harvesting. This fermentation process develops the complex flavor compounds that become chocolate.",
+    "quizQuestion": "How long must cacao beans be fermented to develop chocolate flavor?",
+    "correctAnswer": "5–7 days",
+    "distractors": [
+      "24 hours",
+      "2–3 weeks",
+      "1–2 days"
+    ],
+    "acceptableAnswers": [
+      "5 to 7 days",
+      "about a week",
+      "5-7 days"
+    ],
+    "explanation": "Fresh cacao beans taste nothing like chocolate — they're bitter and astringent. After harvest, the beans (with surrounding white pulp) are piled and covered for 5–7 days. Yeasts and bacteria break down the pulp, generating heat up to 125°F. This kills the bean embryo and triggers chemical reactions that form hundreds of flavor precursors essential to chocolate taste.",
+    "wowFactor": "Without fermentation, chocolate would taste like nothing — the process creates over 600 flavor compounds that roasting then unlocks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long must cacao beans be fermented to develop chocolate flavor?",
+        "answer": "5–7 days",
+        "distractors": [
+          "24 hours",
+          "2–3 weeks",
+          "1–2 days"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fresh unfermented cacao beans taste just like chocolate.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chocolate",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Cacao pods split open with white pulpy beans ready for fermentation",
+    "tags": [
+      "chocolate",
+      "cacao",
+      "fermentation",
+      "food science",
+      "production"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-chocolate-swiss-milk-invention",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "inventions",
+    "statement": "Daniel Peter invented milk chocolate in 1875 using condensed milk developed by his neighbor Henri Nestlé, after years of failed attempts with liquid milk.",
+    "quizQuestion": "Who invented milk chocolate in 1875?",
+    "correctAnswer": "Daniel Peter",
+    "distractors": [
+      "Henri Nestlé",
+      "Rodolphe Lindt",
+      "John Cadbury"
+    ],
+    "acceptableAnswers": [
+      "Daniel Peter",
+      "Daniel Peter with Henri Nestlé"
+    ],
+    "explanation": "Swiss chocolatier Daniel Peter spent eight years trying to mix chocolate with milk, but liquid milk caused the chocolate to seize and mold. His breakthrough came using condensed milk invented by neighbor Henri Nestlé. Peter and Nestlé later merged their companies. Milk chocolate's creamy sweetness transformed chocolate from a luxury bitter treat into a mass-market product.",
+    "wowFactor": "It took Daniel Peter 8 years of failed experiments before the condensed milk breakthrough — he nearly went bankrupt in the process.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented milk chocolate in 1875?",
+        "answer": "Daniel Peter",
+        "distractors": [
+          "Henri Nestlé",
+          "Rodolphe Lindt",
+          "John Cadbury"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Milk chocolate was invented using condensed milk rather than fresh liquid milk.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Milk_chocolate",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A bar of milk chocolate with Nestlé branding on a Swiss mountain background",
+    "tags": [
+      "chocolate",
+      "milk chocolate",
+      "Switzerland",
+      "food history",
+      "Daniel Peter",
+      "Nestlé"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-chocolate-theobromine-toxicity",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "nutrition",
+    "statement": "Chocolate contains theobromine, which is toxic to dogs and cats but harmless to humans because we metabolize it 10 times faster than dogs do.",
+    "quizQuestion": "Why is chocolate dangerous for dogs but safe for humans?",
+    "correctAnswer": "Dogs metabolize theobromine much more slowly",
+    "distractors": [
+      "Chocolate contains caffeine that only affects dogs",
+      "Dogs lack the enzyme to digest cocoa butter",
+      "Humans have a protective stomach acid dogs lack"
+    ],
+    "acceptableAnswers": [
+      "dogs metabolize theobromine slowly",
+      "theobromine toxicity",
+      "slower theobromine metabolism"
+    ],
+    "explanation": "Chocolate contains theobromine, a stimulant similar to caffeine. Humans metabolize it in about 6-10 hours, but dogs (and cats) metabolize it extremely slowly — the half-life in dogs is 17.5 hours. This causes dangerous accumulation leading to vomiting, seizures, and potentially death. Dark chocolate and baking chocolate are most dangerous; white chocolate contains almost none.",
+    "wowFactor": "It would take about 40 Hershey's Kisses to kill a 10-pound dog — but just one ounce of dark chocolate can cause symptoms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is chocolate dangerous for dogs but safe for humans?",
+        "answer": "Dogs metabolize theobromine much more slowly",
+        "distractors": [
+          "Chocolate contains caffeine that only affects dogs",
+          "Dogs lack the enzyme to digest cocoa butter",
+          "Humans have a protective stomach acid dogs lack"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chocolate is toxic to dogs because of a compound called theobromine.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theobromine_poisoning",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A sad dog next to a piece of chocolate with a red X symbol",
+    "tags": [
+      "chocolate",
+      "theobromine",
+      "dogs",
+      "toxicity",
+      "food science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-wine-terroir-001",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "wine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "wine",
+    "categoryL3": "",
+    "statement": "Terroir refers to the complete natural environment — soil, climate, topography, and microorganisms — that gives wine its distinctive regional character, with no direct English translation.",
+    "quizQuestion": "What French concept describes the complete natural environment that gives a wine its regional character?",
+    "correctAnswer": "Terroir",
+    "distractors": [
+      "Cru",
+      "Appellation",
+      "Millésime",
+      "Provenance",
+      "Vinage",
+      "Géologie",
+      "Microclimate",
+      "Domaine"
+    ],
+    "acceptableAnswers": [
+      "terroir"
+    ],
+    "explanation": "Terroir (from the French 'terre' — earth) encompasses soil type, drainage, elevation, slope orientation, rainfall, temperature, sunlight hours, and even the microorganisms in the soil. Two vineyards a few meters apart can produce distinctly different wines due to terroir differences. This concept is so fundamental to wine that French law (Appellation d'Origine Contrôlée) protects terroir designations for regions like Bordeaux and Burgundy.",
+    "wowFactor": "Two Burgundy vineyards separated by just a dirt path can produce wines worth 10 times the price difference — purely due to soil composition!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Terroir refers only to the soil type of a vineyard, not climate or other factors.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "Wine Spectator",
+    "sourceUrl": "https://www.winespectator.com/articles/what-is-terroir",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "A vineyard cross-section showing soil layers, vine roots, and climate elements with 'terroir' label",
+    "tags": [
+      "wine",
+      "terroir",
+      "French",
+      "viticulture",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-wine-resveratrol-002",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "wine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "wine",
+    "categoryL3": "",
+    "statement": "Red wine contains resveratrol, a polyphenol found in grape skins with antioxidant properties, but the amount in wine is too small to deliver meaningful health benefits without other risks.",
+    "quizQuestion": "What is the main antioxidant compound found in red wine grape skins?",
+    "correctAnswer": "Resveratrol",
+    "distractors": [
+      "Quercetin",
+      "Lycopene",
+      "Anthocyanin",
+      "Tannin",
+      "Catechin",
+      "Flavonoid",
+      "Polyphenol",
+      "Curcumin"
+    ],
+    "acceptableAnswers": [
+      "resveratrol"
+    ],
+    "explanation": "Resveratrol is a stilbenoid polyphenol produced by grape vines as a defense against fungi and UV radiation. It's concentrated in grape skins, so red wine (which ferments with skins) contains more than white wine. Lab studies showed health benefits at high doses, but you'd need to drink hundreds of glasses per day to match effective doses — and the alcohol would be lethal. The 'red wine is healthy' narrative is largely based on misinterpretation of epidemiological studies.",
+    "wowFactor": "To get the dose of resveratrol used in lab studies, you'd need to drink 667 glasses of wine per day — and survive the attempt!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Drinking moderate amounts of red wine provides meaningful resveratrol health benefits.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Why do red wines contain more resveratrol than white wines?",
+        "answer": "Red wine ferments with grape skins, which contain resveratrol",
+        "distractors": [
+          "Red grapes have more sugar",
+          "White wine is filtered to remove it",
+          "Red wine ages longer in barrels"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "Harvard Health",
+    "sourceUrl": "https://www.health.harvard.edu/heart-health/is-red-wine-good-for-your-heart",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Molecular structure of resveratrol beside a glass of red wine and a red grape cluster",
+    "tags": [
+      "wine",
+      "resveratrol",
+      "antioxidants",
+      "health",
+      "polyphenol"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-wine-oldest-003",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "wine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "wine",
+    "categoryL3": "",
+    "statement": "The oldest confirmed wine production site dates to around 6,000 BCE in the South Caucasus region (modern-day Georgia), where large clay vessels (qvevri) were used for fermentation.",
+    "quizQuestion": "Where is the oldest confirmed evidence of wine production, dating to around 6,000 BCE?",
+    "correctAnswer": "Georgia (South Caucasus region)",
+    "distractors": [
+      "Ancient Egypt",
+      "Mesopotamia (modern Iraq)",
+      "Ancient Greece",
+      "Ancient Rome",
+      "The Indus Valley",
+      "Ancient China",
+      "Ancient Persia (modern Iran)",
+      "The Phoenician coast (modern Lebanon)"
+    ],
+    "acceptableAnswers": [
+      "Georgia",
+      "South Caucasus"
+    ],
+    "explanation": "Archaeological sites in the Caucasus, particularly in Georgia, have yielded the world's oldest wine residues — tartaric acid, malic acid, and other wine biomarkers found inside large ceramic vessels called qvevri, dating to around 6,000-5,800 BCE. Georgia still makes wine in traditional qvevri today, and the tradition is on UNESCO's intangible cultural heritage list. Some researchers also claim evidence from Armenia around the same period.",
+    "wowFactor": "Humans have been making wine for 8,000 years — and Georgia still uses the same clay pot method that ancient winemakers pioneered!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The oldest evidence of wine production was found in ancient Egypt.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What are the large clay vessels traditionally used for Georgian wine fermentation called?",
+        "answer": "Qvevri",
+        "distractors": [
+          "Amphorae",
+          "Pithos",
+          "Dolium"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "PNAS",
+    "sourceUrl": "https://www.pnas.org/doi/10.1073/pnas.1714728114",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient clay qvevri vessels buried in Georgian earth, with vineyard hills in the background",
+    "tags": [
+      "wine",
+      "Georgia",
+      "history",
+      "ancient",
+      "archaeology",
+      "fermentation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pasta-durum-004",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "pasta",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "pasta",
+    "categoryL3": "",
+    "statement": "Authentic dried pasta is made from durum wheat semolina, which has higher protein content and gluten strength than regular flour, giving pasta its firm 'al dente' texture when cooked.",
+    "quizQuestion": "What type of wheat is used to make authentic Italian dried pasta?",
+    "correctAnswer": "Durum wheat (semolina)",
+    "distractors": [
+      "Bread wheat (hard red wheat)",
+      "Soft wheat (flour)",
+      "Spelt",
+      "Emmer wheat",
+      "Einkorn wheat",
+      "Whole wheat",
+      "Kamut wheat",
+      "Barley"
+    ],
+    "acceptableAnswers": [
+      "durum wheat",
+      "semolina",
+      "durum semolina"
+    ],
+    "explanation": "Durum wheat (Triticum durum) is a hard variety with very high protein (13-15%) and a starchy endosperm called semolina when coarsely ground. Its high gluten content makes pasta dough strong enough to be extruded through bronze dies and dried without crumbling. This gluten network also creates the firm bite (al dente) that Italian pasta is famous for. Pasta made from soft wheat becomes mushy when cooked.",
+    "wowFactor": "Pasta's perfect texture depends on a specific wheat that's so hard it can't even be used for bread — it's almost exclusively grown for pasta!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Authentic dried pasta is made from the same wheat used for bread.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "International Pasta Organisation",
+    "sourceUrl": "https://www.internationalpasta.org/index.aspx",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grains of golden durum wheat semolina beside dry spaghetti, showing the connection from grain to pasta",
+    "tags": [
+      "pasta",
+      "durum wheat",
+      "semolina",
+      "Italian cuisine",
+      "cooking"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pasta-shapes-005",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "pasta",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "pasta",
+    "categoryL3": "",
+    "statement": "There are over 350 distinct pasta shapes in Italy, and each shape is traditionally paired with specific sauces — the pairing is based on how well the shape captures, holds, or complements the sauce texture.",
+    "quizQuestion": "Approximately how many distinct pasta shapes exist in Italy?",
+    "correctAnswer": "Over 350",
+    "distractors": [
+      "About 20",
+      "About 50",
+      "About 100",
+      "About 200",
+      "About 500",
+      "About 1000",
+      "About 150",
+      "About 75"
+    ],
+    "acceptableAnswers": [
+      "350",
+      "more than 350",
+      "hundreds"
+    ],
+    "explanation": "Italian pasta tradition includes over 350 codified shapes, each with regional origins and preferred sauce pairings. Ribbed penne and rigatoni trap chunky meat sauces; flat tagliatelle pairs with bolognese because the rougher surface holds the sauce; delicate angel hair (capellini) works only with light oil-based sauces. The shape-sauce pairing is taken seriously in Italian cooking, and serving spaghetti with bolognese is technically incorrect (tagliatelle is traditional).",
+    "wowFactor": "Serving spaghetti bolognese is actually wrong — in Italy, bolognese belongs on tagliatelle. The pasta shape genuinely matters!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Pasta shape and sauce pairing is purely aesthetic with no functional basis.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which pasta shape is traditionally correct for bolognese sauce in Italy?",
+        "answer": "Tagliatelle",
+        "distractors": [
+          "Spaghetti",
+          "Penne",
+          "Rigatoni"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Academia Barilla",
+    "sourceUrl": "https://www.academiabarilla.it/en/italian-food-academy/pasta-types/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grid of 20+ different pasta shapes labeled, showing the variety from spaghetti to conchiglie to farfalle",
+    "tags": [
+      "pasta",
+      "Italian cuisine",
+      "shapes",
+      "sauce pairing",
+      "cooking"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-pasta-origin-006",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "pasta",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "pasta",
+    "categoryL3": "",
+    "statement": "Despite the popular legend, Marco Polo did NOT bring pasta to Italy from China — pasta was already documented in Italy before his 1295 return, and Chinese noodles use different wheat with a different texture.",
+    "quizQuestion": "Is it true that Marco Polo brought pasta to Italy from China?",
+    "correctAnswer": "No — pasta was already in Italy before Marco Polo returned, and Chinese noodles are a separate tradition",
+    "distractors": [
+      "Yes — Marco Polo documented bringing noodle recipes from China in 1295",
+      "Yes — Italian pasta evolved directly from Chinese lo mein noodles",
+      "Partially true — he brought the idea but not the exact recipe",
+      "Yes — Arab traders using the Silk Road brought it to Italy through Marco Polo",
+      "Yes — genetic analysis of Italian and Chinese wheat confirms a shared origin",
+      "Yes — his cook adapted the Chinese recipe and it spread through Venice",
+      "Possibly — historians are uncertain and both claims have equal evidence",
+      "Yes — his diaries contain pasta recipes he copied from Chinese chefs"
+    ],
+    "acceptableAnswers": [
+      "no",
+      "myth",
+      "false"
+    ],
+    "explanation": "A 1154 document from Arab geographer al-Idrisi describes pasta being made in Sicily, and a 1279 Genoese document (predating Marco Polo's return) mentions a basket of pasta in an estate inventory. The Marco Polo pasta legend likely originated from a 1929 Macaroni Journal article. Chinese noodles are made from soft wheat and have a different texture and tradition from Italian pasta made with durum semolina.",
+    "wowFactor": "The Marco Polo pasta story was invented by an American trade magazine in 1929 — and somehow became 'historical fact'!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Marco Polo brought pasta from China to Italy after his travels in the 13th century.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian Magazine",
+    "sourceUrl": "https://www.smithsonianmag.com/arts-culture/did-marco-polo-really-bring-pasta-to-italy-from-china-15564180/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Marco Polo portrait with a 'myth busted' stamp, beside a medieval Italian pasta document",
+    "tags": [
+      "pasta",
+      "Marco Polo",
+      "myth",
+      "history",
+      "Italian cuisine",
+      "China"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-bread-oldest-007",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "bread",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "bread",
+    "categoryL3": "",
+    "statement": "The oldest known bread was found in Jordan and dates to approximately 14,400 years ago — predating agriculture by about 4,000 years, suggesting bread-making drove the development of farming.",
+    "quizQuestion": "How old is the oldest known evidence of bread-making?",
+    "correctAnswer": "About 14,400 years old (found in Jordan)",
+    "distractors": [
+      "About 5,000 years old (ancient Egypt)",
+      "About 10,000 years old (start of agriculture)",
+      "About 7,000 years old (Mesopotamia)",
+      "About 20,000 years old (Upper Paleolithic)",
+      "About 3,000 years old (ancient Greece)",
+      "About 8,000 years old (Neolithic revolution)",
+      "About 25,000 years old (early modern humans)",
+      "About 2,000 years old (Roman Empire)"
+    ],
+    "acceptableAnswers": [
+      "14,400 years",
+      "14400 years old"
+    ],
+    "explanation": "In 2018, archaeologists excavating a site called Shubayqa 1 in northeastern Jordan found charred flatbread crumbs dating to 14,400 years ago, made by hunter-gatherers of the Natufian culture. This predates agriculture by about 4,000 years. This discovery supports the hypothesis that bread-making was so important that it may have been a motivation for deliberately cultivating wild grasses — leading to the agricultural revolution.",
+    "wowFactor": "Bread is so old that hunter-gatherers were baking it 4,000 years before they even invented farming — bread may have caused agriculture!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The oldest known bread predates the invention of agriculture.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "In which country was the oldest known bread discovered?",
+        "answer": "Jordan",
+        "distractors": [
+          "Egypt",
+          "Iraq",
+          "Turkey"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "PNAS",
+    "sourceUrl": "https://www.pnas.org/doi/10.1073/pnas.1801071115",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Charred ancient bread fragments in an archaeological dig alongside wheat stalks and a Natufian stone grinding tool",
+    "tags": [
+      "bread",
+      "archaeology",
+      "Natufian",
+      "history",
+      "agriculture",
+      "Jordan"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-bread-sourdough-008",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "bread",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "bread",
+    "categoryL3": "",
+    "statement": "Sourdough bread rises through wild yeast and bacteria naturally present in flour and environment — no commercial yeast is added. The 'starter' is a living culture that can be kept alive for decades or longer.",
+    "quizQuestion": "What makes sourdough bread rise, unlike commercial bread?",
+    "correctAnswer": "Wild yeast and lactic acid bacteria naturally present in the flour and environment",
+    "distractors": [
+      "A special type of baking powder",
+      "Commercial yeast added in smaller quantities",
+      "Chemical reaction between vinegar and baking soda",
+      "Fermented milk bacteria added to the dough",
+      "Air naturally trapped during kneading",
+      "Carbon dioxide gas dissolved in acidic water",
+      "Enzymatic breakdown of gluten creates air pockets",
+      "Salt reacting with the wheat proteins"
+    ],
+    "acceptableAnswers": [
+      "wild yeast",
+      "natural fermentation",
+      "starter culture"
+    ],
+    "explanation": "Sourdough relies on a symbiotic culture of wild Saccharomyces cerevisiae (yeast) and lactic acid bacteria, especially Lactobacillus species. The yeast produces CO2 that makes the bread rise, while the bacteria produce lactic and acetic acids giving sourdough its characteristic tang. Sourdough starters can survive for extraordinary lengths — bakeries claim starters over 100 years old, with some reportedly dating back 150+ years.",
+    "wowFactor": "Some sourdough starters have been continuously fed for over 150 years — you're eating bread made with a culture older than your great-grandparents!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Sourdough bread requires commercial yeast to rise properly.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What gives sourdough bread its characteristic sour flavor?",
+        "answer": "Lactic and acetic acids produced by bacteria",
+        "distractors": [
+          "Vinegar added during mixing",
+          "Special sour wheat varieties",
+          "Extended cold fermentation only"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Scientific American",
+    "sourceUrl": "https://www.scientificamerican.com/article/the-science-of-sourdough/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bubbling sourdough starter in a jar beside a freshly baked loaf with open crumb structure",
+    "tags": [
+      "bread",
+      "sourdough",
+      "fermentation",
+      "yeast",
+      "bacteria",
+      "cooking"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-bread-maillard-009",
+    "type": "knowledge",
+    "domain": "food_cuisine",
+    "subdomain": "bread",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "bread",
+    "categoryL3": "",
+    "statement": "Bread's golden-brown crust forms through the Maillard reaction — a chemical process between amino acids and sugars at high temperatures that creates hundreds of flavor compounds and the distinctive baked aroma.",
+    "quizQuestion": "What chemical reaction creates bread's golden-brown crust and baked aroma?",
+    "correctAnswer": "The Maillard reaction",
+    "distractors": [
+      "Caramelization",
+      "Oxidation",
+      "Pyrolysis",
+      "Dextrinization",
+      "Gelatinization",
+      "Fermentation",
+      "Hydrolysis",
+      "Enzymatic browning"
+    ],
+    "acceptableAnswers": [
+      "Maillard reaction",
+      "Maillard"
+    ],
+    "explanation": "The Maillard reaction was discovered by French chemist Louis-Camille Maillard in 1912. It occurs between amino acids and reducing sugars at around 140-165°C (280-330°F), producing hundreds of different flavor, aroma, and color compounds. It's responsible for browning in bread, seared meat, roasted coffee, and fried foods. Distinct from caramelization (which involves only sugars at higher temperatures), the Maillard reaction creates complex, savory flavors alongside the brown color.",
+    "wowFactor": "That incredible baked bread smell comes from over 500 different flavor compounds all created in the same chemical reaction!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Bread's brown crust is created by the same process as caramelized sugar.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "At what approximate temperature does the Maillard reaction occur in baking?",
+        "answer": "Around 140-165°C (280-330°F)",
+        "distractors": [
+          "Above 200°C",
+          "Below 100°C",
+          "At exactly 100°C (boiling point)"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Science of Cooking",
+    "sourceUrl": "https://www.scienceofcooking.com/maillard_reaction.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of bread showing white interior and golden-brown crust, with molecular diagram of Maillard reaction",
+    "tags": [
+      "bread",
+      "Maillard reaction",
+      "chemistry",
+      "baking",
+      "cooking science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

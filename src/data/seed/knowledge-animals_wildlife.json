@@ -9533,5 +9533,1857 @@
       "selective breeding",
       "Carassius auratus"
     ]
+  },
+  {
+    "id": "animals-horse-sleep-standing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Horses can sleep standing up thanks to a 'stay apparatus' in their legs that locks joints without muscle effort.",
+    "quizQuestion": "How are horses able to sleep while standing up?",
+    "correctAnswer": "A stay apparatus locks their leg joints",
+    "distractors": [
+      "Extremely strong leg muscles hold them up",
+      "They only doze briefly and never truly sleep standing",
+      "Their hooves grip the ground like clamps"
+    ],
+    "acceptableAnswers": [
+      "stay apparatus",
+      "locking leg joints",
+      "passive leg-locking mechanism"
+    ],
+    "explanation": "The equine stay apparatus is a system of tendons and ligaments that passively locks the legs, allowing horses to rest without falling.",
+    "wowFactor": "Horses only need to lie down for REM sleep — about 2–3 hours per day — and can get all other rest standing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How can horses sleep standing up?",
+        "answer": "A stay apparatus locks their leg joints",
+        "distractors": [
+          "Strong muscles hold them",
+          "They only nap briefly",
+          "Hooves grip the ground"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Horses have a passive leg-locking mechanism that lets them rest standing up.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stay_apparatus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A horse dozing in a sunny stable, standing with eyes half-closed, weight shifted to one hip.",
+    "tags": [
+      "horse",
+      "sleep",
+      "anatomy",
+      "stay apparatus",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-horse-teeth-age",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A horse's age can be estimated by examining its teeth, since the angle and wear patterns change predictably over time.",
+    "quizQuestion": "What body part is traditionally used to estimate a horse's age?",
+    "correctAnswer": "Its teeth",
+    "distractors": [
+      "Its hooves",
+      "Its mane length",
+      "Its eye color"
+    ],
+    "acceptableAnswers": [
+      "teeth",
+      "its teeth",
+      "dental wear"
+    ],
+    "explanation": "The phrase 'don't look a gift horse in the mouth' refers to this practice — examining a horse's teeth reveals its age and condition.",
+    "wowFactor": "This is the origin of the saying 'don't look a gift horse in the mouth' — checking teeth was how you valued a horse.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What body part reveals a horse's age?",
+        "answer": "Its teeth",
+        "distractors": [
+          "Its hooves",
+          "Its mane",
+          "Its eyes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A horse's age can be estimated by examining its teeth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse_teeth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A veterinarian gently lifts a horse's lip to inspect large yellowed teeth, horse calm in a barn.",
+    "tags": [
+      "horse",
+      "teeth",
+      "age",
+      "veterinary",
+      "idiom"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-horse-domestication-history",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Horses were first domesticated around 3500 BCE on the Eurasian steppes, transforming human civilization through transport and warfare.",
+    "quizQuestion": "Approximately when were horses first domesticated?",
+    "correctAnswer": "Around 3500 BCE",
+    "distractors": [
+      "Around 10000 BCE",
+      "Around 1000 BCE",
+      "Around 500 CE"
+    ],
+    "acceptableAnswers": [
+      "3500 BCE",
+      "around 3500 BCE",
+      "about 3500 BC",
+      "5500 years ago"
+    ],
+    "explanation": "Genetic and archaeological evidence points to the Pontic-Caspian steppe as the origin of horse domestication circa 3500 BCE.",
+    "wowFactor": "Horse domestication spread with explosive speed — within centuries, horse-riding cultures swept across Eurasia.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When were horses first domesticated?",
+        "answer": "Around 3500 BCE",
+        "distractors": [
+          "10000 BCE",
+          "1000 BCE",
+          "500 CE"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where were horses first domesticated?",
+        "answer": "The Eurasian steppes",
+        "distractors": [
+          "Ancient Egypt",
+          "Mesopotamia",
+          "China"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Horses were domesticated before cattle.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Domestication_of_the_horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient steppe rider on horseback silhouetted against a vast golden grassland at sunset.",
+    "tags": [
+      "horse",
+      "domestication",
+      "history",
+      "Bronze Age",
+      "steppe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-horse-speed-record",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "The fastest recorded speed for a horse is 70.76 km/h (43.97 mph), set by Winning Brew in a Quarter Horse race in 2008.",
+    "quizQuestion": "What is the fastest recorded speed for a horse?",
+    "correctAnswer": "70.76 km/h (43.97 mph)",
+    "distractors": [
+      "55 km/h (34 mph)",
+      "88 km/h (55 mph)",
+      "60 km/h (37 mph)"
+    ],
+    "acceptableAnswers": [
+      "70.76 km/h",
+      "about 70 km/h",
+      "43.97 mph",
+      "about 44 mph"
+    ],
+    "explanation": "Winning Brew, a Quarter Horse, set the Guinness World Record for fastest horse speed over two furlongs in 2008.",
+    "wowFactor": "Quarter Horses are sprinting specialists — they can beat Thoroughbreds over short distances despite losing in longer races.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the fastest recorded speed for a horse?",
+        "answer": "70.76 km/h",
+        "distractors": [
+          "55 km/h",
+          "88 km/h",
+          "60 km/h"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The fastest horse speed record exceeds 70 km/h.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Guinness World Records",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A racehorse at full gallop on a track, hooves barely touching dirt, jockey low on its neck.",
+    "tags": [
+      "horse",
+      "speed",
+      "record",
+      "Quarter Horse",
+      "racing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-tiger-solitary-hunter",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "big_cats",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Big Cats",
+    "categoryL3": "",
+    "statement": "Tigers can leap up to 10 metres in a single bound when hunting prey.",
+    "quizQuestion": "How far can a tiger leap in a single bound?",
+    "correctAnswer": "Up to 10 metres",
+    "distractors": [
+      "Up to 4 metres",
+      "Up to 6 metres",
+      "Up to 15 metres",
+      "Up to 20 metres",
+      "Up to 3 metres",
+      "Up to 8 metres",
+      "Up to 12 metres",
+      "Up to 25 metres"
+    ],
+    "acceptableAnswers": [
+      "10 metres",
+      "10 meters",
+      "10m",
+      "ten metres"
+    ],
+    "explanation": "Tigers are explosive sprinters and leapers. Their powerful hindquarters allow them to cover up to 10 metres in a single bound, making them highly effective ambush predators. Despite this, they tire quickly and rely on stealth rather than sustained pursuit.",
+    "wowFactor": "A tiger's single leap can clear the length of a double-decker bus.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "World Wildlife Fund — Tiger",
+    "sourceUrl": "https://www.worldwildlife.org/species/tiger",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Bengal tiger mid-leap through tall grass, muscles fully extended, mouth open, claws splayed",
+    "tags": [
+      "tiger",
+      "big cats",
+      "locomotion",
+      "predator",
+      "hunting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-tiger-stripe-fingerprint",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "big_cats",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Big Cats",
+    "categoryL3": "",
+    "statement": "Every tiger's stripe pattern is unique, much like human fingerprints.",
+    "quizQuestion": "What makes each tiger's stripe pattern unique?",
+    "correctAnswer": "Each pattern is individual, like a fingerprint",
+    "distractors": [
+      "Stripes change colour with age",
+      "Stripes are inherited identically from the mother",
+      "Stripe patterns are shared within family groups",
+      "Stripes vary only by subspecies, not individuals",
+      "Stripes are determined entirely by diet",
+      "All tigers in a region share the same pattern",
+      "Stripe width changes seasonally",
+      "Stripes are symmetrical and identical on both sides"
+    ],
+    "acceptableAnswers": [
+      "unique like fingerprints",
+      "individually unique",
+      "no two are the same"
+    ],
+    "explanation": "Just as no two human fingerprints are alike, no two tigers share the same stripe pattern. Researchers and conservationists use these patterns to identify individuals in the wild, making photo-ID catalogues possible without capturing the animals.",
+    "wowFactor": "Wildlife researchers can identify tigers from camera-trap photos the same way police identify criminals from fingerprint databases.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian's National Zoo — Tiger",
+    "sourceUrl": "https://nationalzoo.si.edu/animals/tiger",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of two tigers side by side, their stripe patterns highlighted in contrasting colours to show the differences",
+    "tags": [
+      "tiger",
+      "big cats",
+      "identification",
+      "stripes",
+      "wildlife conservation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-tiger-endangered-wild-count",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "big_cats",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Big Cats",
+    "categoryL3": "",
+    "statement": "Fewer than 4,000 wild tigers remain on Earth today.",
+    "quizQuestion": "Approximately how many tigers remain in the wild?",
+    "correctAnswer": "Fewer than 4,000",
+    "distractors": [
+      "Around 10,000",
+      "Around 25,000",
+      "Fewer than 500",
+      "Around 50,000",
+      "Around 7,500",
+      "Fewer than 100",
+      "Around 15,000",
+      "Around 1 million"
+    ],
+    "acceptableAnswers": [
+      "less than 4000",
+      "under 4,000",
+      "approximately 3,900",
+      "fewer than four thousand"
+    ],
+    "explanation": "Wild tiger populations have declined by over 95% in the past century due to habitat loss, poaching, and prey depletion. Once numbering over 100,000, wild tigers now occupy less than 7% of their historical range. Conservation efforts have shown some recent success, with populations slowly recovering in a few areas.",
+    "wowFactor": "There are more tigers living in captivity in the United States alone than there are wild tigers on the entire planet.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "WWF — Tiger Species",
+    "sourceUrl": "https://www.worldwildlife.org/species/tiger",
+    "contentVolatility": "dynamic",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lone tiger standing in sparse forest, surrounded by empty habitat stretching to the horizon, emphasising isolation",
+    "tags": [
+      "tiger",
+      "endangered",
+      "conservation",
+      "wildlife",
+      "extinction risk"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-tiger-nocturnal-vision",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "big_cats",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Big Cats",
+    "categoryL3": "",
+    "statement": "Tigers can see approximately 6 times better in the dark than humans.",
+    "quizQuestion": "How much better can tigers see in the dark compared to humans?",
+    "correctAnswer": "About 6 times better",
+    "distractors": [
+      "About 2 times better",
+      "About 10 times better",
+      "About the same as humans",
+      "About 20 times better",
+      "About 3 times better",
+      "About 50 times better",
+      "About 100 times better",
+      "About 1.5 times better"
+    ],
+    "acceptableAnswers": [
+      "6x better",
+      "six times better",
+      "six times more",
+      "6 times"
+    ],
+    "explanation": "Tigers have a tapetum lucidum — a reflective layer behind the retina that bounces light back through the photoreceptors, effectively doubling the use of available light. Combined with a high density of rod cells, this gives them exceptional low-light vision, critical for their largely nocturnal and crepuscular hunting habits.",
+    "wowFactor": "The eerie 'eyeshine' you see when light hits a tiger's eyes at night is the tapetum lucidum reflecting light — the same adaptation that makes cats' eyes glow in headlights.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic — Tiger",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/tiger",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiger's eyes glowing green in darkness, reflecting a torch beam, highlighting the tapetum lucidum effect",
+    "tags": [
+      "tiger",
+      "night vision",
+      "senses",
+      "tapetum lucidum",
+      "nocturnal"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-tiger-largest-subspecies",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "big_cats",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "Big Cats",
+    "categoryL3": "",
+    "statement": "The Siberian (Amur) tiger is the world's largest wild cat, with males weighing up to 300 kg.",
+    "quizQuestion": "Which tiger subspecies is the largest wild cat in the world?",
+    "correctAnswer": "Siberian (Amur) tiger",
+    "distractors": [
+      "Bengal tiger",
+      "Sumatran tiger",
+      "South China tiger",
+      "Indochinese tiger",
+      "Malayan tiger",
+      "African lion",
+      "Jaguar",
+      "Caspian tiger"
+    ],
+    "acceptableAnswers": [
+      "Amur tiger",
+      "Siberian tiger",
+      "Amur/Siberian tiger",
+      "Panthera tigris altaica"
+    ],
+    "explanation": "The Siberian or Amur tiger (Panthera tigris altaica) is the largest subspecies of tiger and the largest wild cat species on Earth. Males can weigh up to 300 kg and measure over 3 metres in length. They live in the Russian Far East and northeastern China, adapted to extremely cold climates.",
+    "wowFactor": "A Siberian tiger is so large it can take down and drag away a prey animal heavier than itself — including brown bears.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "WWF — Amur Tiger",
+    "sourceUrl": "https://www.worldwildlife.org/species/amur-tiger",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive Siberian tiger standing in snow, thick winter coat, its bulk dwarfing the surrounding pine trees",
+    "tags": [
+      "tiger",
+      "Siberian tiger",
+      "Amur tiger",
+      "big cats",
+      "largest wild cat"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-pig-intelligence-mirror",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Pigs can recognize their own reflection in a mirror, demonstrating self-awareness.",
+    "quizQuestion": "Which farm animal has been shown to pass the mirror self-recognition test?",
+    "correctAnswer": "Pig",
+    "distractors": [
+      "Cow",
+      "Sheep",
+      "Chicken",
+      "Goat",
+      "Horse",
+      "Duck",
+      "Rabbit"
+    ],
+    "acceptableAnswers": [
+      "Pig",
+      "pig",
+      "pigs"
+    ],
+    "explanation": "Pigs can use mirrors to find food they can't directly see, and some studies suggest they recognize themselves — placing them among the cognitively elite animals alongside dolphins and great apes.",
+    "wowFactor": "Pigs are considered smarter than dogs and even 3-year-old human children by some cognitive benchmarks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which farm animal has been shown to pass the mirror self-recognition test?",
+        "answer": "Pig",
+        "distractors": [
+          "Cow",
+          "Sheep",
+          "Chicken"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A pig passing the mirror test demonstrates what trait?",
+        "answer": "Self-awareness",
+        "distractors": [
+          "Color vision",
+          "Echolocation",
+          "Pack behavior"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pigs have demonstrated mirror self-recognition ability.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs can recognize themselves in a ___, suggesting self-awareness.",
+        "answer": "mirror",
+        "distractors": [
+          "puddle",
+          "window",
+          "camera"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pig_intelligence",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A curious pink pig stands before a large mirror in a barn, looking intently at its own reflection with bright intelligent eyes.",
+    "tags": [
+      "pig",
+      "intelligence",
+      "self-awareness",
+      "mirror test",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-pig-domestication-age",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Pigs were domesticated approximately 9,000 years ago, independently in the Near East and China.",
+    "quizQuestion": "Approximately how many years ago were pigs first domesticated?",
+    "correctAnswer": "9,000 years ago",
+    "distractors": [
+      "3,000 years ago",
+      "5,000 years ago",
+      "15,000 years ago",
+      "20,000 years ago",
+      "1,000 years ago",
+      "12,000 years ago",
+      "7,000 years ago"
+    ],
+    "acceptableAnswers": [
+      "9,000 years ago",
+      "9000 years ago",
+      "about 9,000 years ago"
+    ],
+    "explanation": "Archaeological evidence shows pigs were independently domesticated in the Near East (Anatolia) and China around 9,000 years ago, making them one of the first livestock animals.",
+    "wowFactor": "Pig domestication happened twice simultaneously on opposite ends of Asia — a remarkable coincidence of human ingenuity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many years ago were pigs first domesticated?",
+        "answer": "9,000 years ago",
+        "distractors": [
+          "5,000 years ago",
+          "15,000 years ago",
+          "3,000 years ago"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which two regions were pigs independently domesticated?",
+        "answer": "Near East and China",
+        "distractors": [
+          "Africa and Europe",
+          "India and Egypt",
+          "Greece and Persia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pigs were domesticated in two separate locations independently.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs were domesticated approximately ___ years ago.",
+        "answer": "9,000",
+        "distractors": [
+          "5,000",
+          "15,000",
+          "3,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Domestic_pig",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split-scene showing ancient farmers in the Near East and China each tending to wild boars being tamed, set against ochre desert and lush river landscapes.",
+    "tags": [
+      "pig",
+      "domestication",
+      "history",
+      "Near East",
+      "China",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-pig-sweat-glands",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Pigs have almost no sweat glands and wallow in mud to regulate their body temperature.",
+    "quizQuestion": "Why do pigs wallow in mud?",
+    "correctAnswer": "To cool down — they can't sweat",
+    "distractors": [
+      "To find food",
+      "To clean themselves",
+      "To mark territory",
+      "To protect against insects only",
+      "To exercise",
+      "For social bonding",
+      "To soften their skin"
+    ],
+    "acceptableAnswers": [
+      "To cool down",
+      "They can't sweat",
+      "Temperature regulation",
+      "They have no sweat glands"
+    ],
+    "explanation": "Pigs lack functional sweat glands, so they rely on wallowing in mud or water to cool their bodies. The mud also protects their skin from sunburn and parasites.",
+    "wowFactor": "Despite the stereotype, pigs actually prefer to keep clean — they only wallow because they physically cannot sweat.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do pigs wallow in mud?",
+        "answer": "To cool down — they can't sweat",
+        "distractors": [
+          "To clean themselves",
+          "To find food",
+          "To mark territory"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What physical limitation forces pigs to wallow in mud?",
+        "answer": "No sweat glands",
+        "distractors": [
+          "No fur",
+          "Thick skin",
+          "Poor circulation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pigs wallow in mud because they cannot sweat.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs wallow in mud because they lack functional ___ glands.",
+        "answer": "sweat",
+        "distractors": [
+          "oil",
+          "scent",
+          "salt"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Domestic_pig",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A happy pink pig rolling contentedly in cool brown mud on a sunny farm day, snout raised skyward with visible joy.",
+    "tags": [
+      "pig",
+      "mud",
+      "thermoregulation",
+      "sweat glands",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-pig-snout-magnetism",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "A pig's snout can detect odors up to 1 meter underground, which is why pigs are used for truffle hunting.",
+    "quizQuestion": "How deep underground can a pig's snout detect odors?",
+    "correctAnswer": "1 meter",
+    "distractors": [
+      "10 cm",
+      "50 cm",
+      "3 meters",
+      "5 meters",
+      "30 cm",
+      "2 meters",
+      "25 cm"
+    ],
+    "acceptableAnswers": [
+      "1 meter",
+      "one meter",
+      "about 1 meter",
+      "1 m"
+    ],
+    "explanation": "Pigs have an extraordinary sense of smell and can sniff out truffles — a prized fungus — buried up to a meter underground. This made them the traditional truffle-hunting animal before dogs largely replaced them.",
+    "wowFactor": "Pigs find truffles so appealing they have to be restrained from eating the very fungi they find — they love the smell themselves.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How deep underground can a pig's snout detect odors?",
+        "answer": "1 meter",
+        "distractors": [
+          "10 cm",
+          "3 meters",
+          "50 cm"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What prized food item are pigs traditionally trained to find underground?",
+        "answer": "Truffles",
+        "distractors": [
+          "Mushrooms",
+          "Potatoes",
+          "Carrots"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pigs can smell truffles buried up to 1 meter underground.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs can detect odors ___ meter(s) underground, useful for hunting truffles.",
+        "answer": "1",
+        "distractors": [
+          "0.1",
+          "3",
+          "5"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Truffle_hog",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spotted pig in a French forest, snout pressed to the ground beneath oak trees, sniffing out a hidden black truffle while a farmer watches eagerly.",
+    "tags": [
+      "pig",
+      "snout",
+      "smell",
+      "truffle",
+      "hunting",
+      "animal_behaviors"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-camel-water-storage",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "desert_animals",
+    "statement": "Camel humps store fat, not water. The fat can be metabolized for energy and water, allowing camels to survive without drinking for weeks.",
+    "quizQuestion": "What do camel humps actually store?",
+    "correctAnswer": "Fat",
+    "distractors": [
+      "Water",
+      "Muscle tissue",
+      "Salt reserves"
+    ],
+    "acceptableAnswers": [
+      "Fat",
+      "fat reserves",
+      "fatty tissue"
+    ],
+    "explanation": "Contrary to popular belief, camel humps store fat (up to 80 lbs), not water. When metabolized, this fat yields energy and water, enabling camels to survive weeks without food or water in desert conditions.",
+    "wowFactor": "A camel's hump can shrink and flop to one side when depleted, then refill after eating.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do camel humps actually store?",
+        "answer": "Fat",
+        "distractors": [
+          "Water",
+          "Muscle tissue",
+          "Salt reserves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Camel humps store water.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A camel with a full hump standing in a desert landscape",
+    "tags": [
+      "camel",
+      "desert",
+      "mammals",
+      "adaptation",
+      "hump"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-camel-humps",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "desert_animals",
+    "statement": "Dromedary camels have one hump, while Bactrian camels have two humps. Dromedaries are found in the Middle East and Africa; Bactrians in Central Asia.",
+    "quizQuestion": "How many humps does a Dromedary camel have?",
+    "correctAnswer": "One",
+    "distractors": [
+      "Two",
+      "Three",
+      "None"
+    ],
+    "acceptableAnswers": [
+      "One",
+      "1",
+      "one hump"
+    ],
+    "explanation": "The two living camel species differ by hump count: Dromedary (Arabian camel) has one hump and thrives in hot deserts; Bactrian has two humps and survives cold Central Asian winters. A handy mnemonic: D looks like 1 hump, B looks like 2 humps.",
+    "wowFactor": "The Bactrian camel can survive temperatures ranging from -40°F to 104°F.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many humps does a Dromedary camel have?",
+        "answer": "One",
+        "distractors": [
+          "Two",
+          "Three",
+          "None"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which camel species has two humps?",
+        "answer": "Bactrian",
+        "distractors": [
+          "Dromedary",
+          "Arabian",
+          "Wild Bactrian"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side comparison of a one-humped dromedary and two-humped Bactrian camel",
+    "tags": [
+      "camel",
+      "dromedary",
+      "bactrian",
+      "mammals",
+      "desert"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-camel-desert-adaptation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "desert_animals",
+    "statement": "A thirsty camel can drink up to 30 gallons (113 liters) of water in just 13 minutes, rehydrating faster than any other mammal.",
+    "quizQuestion": "How much water can a thirsty camel drink in about 13 minutes?",
+    "correctAnswer": "30 gallons",
+    "distractors": [
+      "5 gallons",
+      "10 gallons",
+      "50 gallons"
+    ],
+    "acceptableAnswers": [
+      "30 gallons",
+      "about 30 gallons",
+      "113 liters"
+    ],
+    "explanation": "Camels can consume up to 30 gallons (113 liters) of water in about 13 minutes. Their oval-shaped red blood cells (unique among mammals) allow blood to continue flowing even when dehydrated, and expand to absorb large amounts of water without bursting.",
+    "wowFactor": "Camel red blood cells are oval-shaped — the only mammal with non-circular red blood cells — allowing them to handle extreme hydration changes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much water can a thirsty camel drink in about 13 minutes?",
+        "answer": "30 gallons",
+        "distractors": [
+          "5 gallons",
+          "10 gallons",
+          "50 gallons"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A camel can drink 30 gallons of water in about 13 minutes.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A camel drinking from a desert watering hole",
+    "tags": [
+      "camel",
+      "desert",
+      "adaptation",
+      "water",
+      "rehydration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-camel-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_records",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_records",
+    "categoryL3": "desert_animals",
+    "statement": "Camels can sprint at up to 40 mph (65 km/h), and camel racing is so popular in Qatar that robot jockeys have replaced human riders.",
+    "quizQuestion": "What replaced human jockeys in modern professional camel racing?",
+    "correctAnswer": "Robot jockeys",
+    "distractors": [
+      "Child jockeys",
+      "Remote-controlled saddles",
+      "Drone herders"
+    ],
+    "acceptableAnswers": [
+      "Robot jockeys",
+      "robots",
+      "robotic jockeys"
+    ],
+    "explanation": "Camel racing is a major sport in the Middle East. After bans on child jockeys, Qatar and UAE developed lightweight robot jockeys controlled remotely by trainers alongside the track. Camels can maintain 25 mph for an hour and sprint at 40 mph.",
+    "wowFactor": "Qatar spent over $2 million developing robot camel jockeys to replace the banned use of child riders.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What replaced human jockeys in modern professional camel racing?",
+        "answer": "Robot jockeys",
+        "distractors": [
+          "Child jockeys",
+          "Remote-controlled saddles",
+          "Drone herders"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Camels can sprint faster than 35 mph.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel_racing",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A camel racing with a robot jockey on its back",
+    "tags": [
+      "camel",
+      "speed",
+      "robot",
+      "racing",
+      "Qatar"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bat-echolocation",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "bats",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "bats",
+    "categoryL3": "",
+    "statement": "Bats use echolocation to navigate and hunt in complete darkness by emitting ultrasonic pulses and listening for echoes.",
+    "quizQuestion": "What navigation system do bats use to hunt in the dark?",
+    "correctAnswer": "Echolocation",
+    "distractors": [
+      "Infrared vision",
+      "Magnetic sensing",
+      "Electroreception",
+      "Night vision",
+      "Whisker sensing",
+      "Sonar from eyes",
+      "Heat detection",
+      "Chemical trails"
+    ],
+    "acceptableAnswers": [
+      "echolocation",
+      "biosonar"
+    ],
+    "explanation": "Bats emit high-frequency sound pulses through their mouths or noses. The echoes that bounce back tell them the size, shape, distance, and even texture of objects. Some bats can detect objects as thin as a human hair in total darkness.",
+    "wowFactor": "A bat's echolocation is so precise it can detect a wire thinner than a human hair while flying at full speed in pitch darkness!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Bats are blind and rely entirely on echolocation to navigate.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What do bats emit to echolocate their prey?",
+        "answer": "Ultrasonic pulses",
+        "distractors": [
+          "Infrared beams",
+          "Laser light",
+          "Radio waves"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/bats",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bat in flight with sound wave arcs emanating from its mouth, showing echolocation in action",
+    "tags": [
+      "bats",
+      "echolocation",
+      "navigation",
+      "mammals",
+      "sound"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bat-only-flying-mammal",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "bats",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "bats",
+    "categoryL3": "",
+    "statement": "Bats are the only mammals capable of sustained, powered flight — their wings are actually modified hand and arm bones covered in skin.",
+    "quizQuestion": "What makes bats unique among all mammals?",
+    "correctAnswer": "They are the only mammals capable of true powered flight",
+    "distractors": [
+      "They are the only nocturnal mammals",
+      "They are the only mammals that use echolocation",
+      "They are the only mammals that hibernate",
+      "They are the only mammals that hang upside down",
+      "They are the only venomous mammals",
+      "They are the only mammals without fur",
+      "They are the only mammals that live in caves",
+      "They are the only egg-laying mammals"
+    ],
+    "acceptableAnswers": [
+      "only flying mammals",
+      "true flight"
+    ],
+    "explanation": "While flying squirrels and colugos glide, bats are the only mammals with wings capable of powered, sustained flight. A bat's wing is anatomically a stretched hand — its fingers form the wing's framework. Bats comprise about 20% of all mammal species on Earth.",
+    "wowFactor": "A bat's wing is basically a giant webbed hand — those fingers you see stretching the wing membrane are actual elongated finger bones!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Flying squirrels and bats are both capable of true powered flight.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What percentage of all mammal species are bats?",
+        "answer": "About 20%",
+        "distractors": [
+          "About 5%",
+          "About 40%",
+          "About 1%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Bat Conservation International",
+    "sourceUrl": "https://www.batcon.org/about-bats/bat-facts/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up diagram of a bat wing showing elongated finger bones beneath the membrane",
+    "tags": [
+      "bats",
+      "mammals",
+      "flight",
+      "wings",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bat-vampire-blood-anticoagulant",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "bats",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "bats",
+    "categoryL3": "",
+    "statement": "Vampire bat saliva contains an anticoagulant called draculin that keeps blood flowing during feeding — and is now being researched as a stroke treatment.",
+    "quizQuestion": "What is the name of the anticoagulant found in vampire bat saliva?",
+    "correctAnswer": "Draculin",
+    "distractors": [
+      "Heparin",
+      "Vampirin",
+      "Batsolin",
+      "Coagulin",
+      "Sanguinase",
+      "Noctulin",
+      "Bloodstop",
+      "Chiroptin"
+    ],
+    "acceptableAnswers": [
+      "draculin"
+    ],
+    "explanation": "Vampire bats (Desmodus rotundus) feed on blood and have evolved a saliva rich in the anticoagulant protein draculin. This prevents clotting while they feed. Researchers have been studying draculin as a potential clot-dissolving treatment for stroke patients, since it can break up clots without the side effects of current drugs.",
+    "wowFactor": "A stroke treatment derived from vampire bat spit — and it's actually called draculin. Science wins again!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The anticoagulant in vampire bat saliva is being researched as a potential stroke treatment.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Why do vampire bats have anticoagulants in their saliva?",
+        "answer": "To keep blood flowing while they feed",
+        "distractors": [
+          "To digest blood faster",
+          "To numb their prey",
+          "To prevent infection"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Science Daily",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2019/09/190905130847.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "A vampire bat close-up showing its teeth, with a molecular structure diagram of draculin alongside",
+    "tags": [
+      "bats",
+      "vampire bat",
+      "draculin",
+      "anticoagulant",
+      "medicine",
+      "blood"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bat-longevity",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "bats",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "bats",
+    "categoryL3": "",
+    "statement": "Bats can live remarkably long lives for their size — the Brandt's bat holds the record at over 40 years, defying the usual body-size/lifespan relationship in mammals.",
+    "quizQuestion": "What is remarkable about bats' lifespan compared to other small mammals of similar size?",
+    "correctAnswer": "Bats live far longer than expected for their body size",
+    "distractors": [
+      "Bats live shorter lives than expected for their body size",
+      "Bats live exactly as long as predicted by body size",
+      "Bats have the shortest lifespan of all mammals",
+      "Bats live longer only because they hibernate",
+      "Bats reproduce faster than other small mammals",
+      "Bats have lower metabolic rates than all other mammals",
+      "Bats grow larger than their body size suggests",
+      "Bats are immune to all diseases"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "In mammals, larger body size typically correlates with longer lifespan. A mouse lives about 2 years; a bat of similar weight lives 20-40 years. The Brandt's bat (Myotis brandtii) holds the record with documented individuals living over 40 years — 10 times the lifespan predicted by its body mass. Bats' unusual longevity is linked to their ability to enter torpor and their exceptional DNA repair mechanisms.",
+    "wowFactor": "A bat the size of a mouse can live for 40 years — that's like a person living to 800!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which bat species holds the record for the longest documented bat lifespan?",
+        "answer": "Brandt's bat",
+        "distractors": [
+          "Vampire bat",
+          "Fruit bat",
+          "Horseshoe bat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Bats live much longer than other mammals of similar body size.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Nature",
+    "sourceUrl": "https://www.nature.com/articles/nature03836",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small bat hanging upside down, with a timeline beneath showing its surprisingly long lifespan",
+    "tags": [
+      "bats",
+      "longevity",
+      "lifespan",
+      "mammals",
+      "aging"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-mosquito-deadliest-animal",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "mosquitoes",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mosquitoes",
+    "categoryL3": "",
+    "statement": "Mosquitoes are the deadliest animals on Earth, responsible for over 700,000 human deaths per year through diseases like malaria, dengue, and Zika.",
+    "quizQuestion": "What animal is responsible for the most human deaths each year?",
+    "correctAnswer": "Mosquito",
+    "distractors": [
+      "Shark",
+      "Snake",
+      "Lion",
+      "Crocodile",
+      "Hippopotamus",
+      "Box jellyfish",
+      "Human",
+      "Tsetse fly"
+    ],
+    "acceptableAnswers": [
+      "mosquitoes"
+    ],
+    "explanation": "Mosquitoes kill more people than any other animal — over 700,000 per year. They transmit malaria (400,000+ deaths/year), dengue fever (25,000 deaths/year), yellow fever, Zika, West Nile virus, and more. By comparison, sharks kill fewer than 10 people per year. Humans are actually second on the deadliest animal list at about 475,000 deaths/year.",
+    "wowFactor": "The deadliest creature on Earth isn't a shark, lion, or even another human — it's an insect you can crush with a finger.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many people do mosquitoes kill per year?",
+        "answer": "Over 700,000",
+        "distractors": [
+          "About 10,000",
+          "About 100,000",
+          "About 5 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Sharks kill more humans per year than mosquitoes.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "WHO",
+    "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A mosquito magnified, looming over a world map showing regions affected by mosquito-borne disease",
+    "tags": [
+      "mosquito",
+      "deadliest animal",
+      "malaria",
+      "disease",
+      "insects"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-mosquito-females-bite",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "mosquitoes",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mosquitoes",
+    "categoryL3": "",
+    "statement": "Only female mosquitoes bite humans — they need blood's protein to develop their eggs. Male mosquitoes feed exclusively on nectar.",
+    "quizQuestion": "Why do only female mosquitoes bite humans?",
+    "correctAnswer": "They need blood protein to develop their eggs",
+    "distractors": [
+      "Females need blood for energy to fly",
+      "Males lack the mouthparts to pierce skin",
+      "Females are larger and need more nutrition",
+      "Males feed on other insects instead",
+      "Females need iron from blood for survival",
+      "Only females have the enzyme to digest blood",
+      "Males hibernate during feeding season",
+      "Females must drink blood to survive winter"
+    ],
+    "acceptableAnswers": [
+      "egg development",
+      "protein for eggs"
+    ],
+    "explanation": "Female mosquitoes require the proteins in blood (particularly albumin) to produce and develop their eggs. Without a blood meal, they cannot reproduce. Male mosquitoes have proboscises too, but they're adapted for sucking plant nectar and lack the ability to pierce skin. Both sexes feed on sugar for energy.",
+    "wowFactor": "Every mosquito bite is an act of motherhood — the female is just collecting protein to make her eggs!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Both male and female mosquitoes bite humans.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What do male mosquitoes feed on?",
+        "answer": "Nectar",
+        "distractors": [
+          "Blood",
+          "Other insects",
+          "Tree sap"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "CDC",
+    "sourceUrl": "https://www.cdc.gov/mosquitoes/mosquito-bites/index.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A female mosquito feeding on skin, with a diagram comparing male and female mosquito mouthparts",
+    "tags": [
+      "mosquito",
+      "female",
+      "blood",
+      "reproduction",
+      "insects"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-mosquito-malaria-parasite",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "mosquitoes",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mosquitoes",
+    "categoryL3": "",
+    "statement": "Malaria is caused by Plasmodium parasites, not a virus or bacterium — mosquitoes are just the carrier. The parasite invades and destroys red blood cells.",
+    "quizQuestion": "What type of organism causes malaria?",
+    "correctAnswer": "A parasite (Plasmodium)",
+    "distractors": [
+      "A virus",
+      "A bacterium",
+      "A fungus",
+      "A prion",
+      "A toxin produced by mosquitoes",
+      "A worm",
+      "A spirochete",
+      "A rickettsial organism"
+    ],
+    "acceptableAnswers": [
+      "parasite",
+      "Plasmodium",
+      "protozoan"
+    ],
+    "explanation": "Malaria is caused by Plasmodium parasites (a type of single-celled protozoan), transmitted through the bite of infected Anopheles mosquitoes. The parasite has a complex lifecycle, spending time in both the mosquito and the human host. Inside humans, it invades liver cells first, then red blood cells, causing the characteristic cycles of fever, chills, and anemia.",
+    "wowFactor": "Malaria's parasite is so sophisticated it has a two-host lifecycle — replicating in mosquitoes AND in human liver and blood cells!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Malaria is caused by a virus.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which genus of parasite causes malaria?",
+        "answer": "Plasmodium",
+        "distractors": [
+          "Trypanosoma",
+          "Leishmania",
+          "Toxoplasma"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "WHO",
+    "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/malaria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Diagram of Plasmodium parasite lifecycle between mosquito and human host, with red blood cells",
+    "tags": [
+      "mosquito",
+      "malaria",
+      "Plasmodium",
+      "parasite",
+      "disease"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-octopus-three-hearts",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "cephalopods",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cephalopods",
+    "categoryL3": "",
+    "statement": "Octopuses have three hearts: two branchial hearts pump blood through the gills, while one systemic heart pumps oxygenated blood to the rest of the body.",
+    "quizQuestion": "How many hearts does an octopus have?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "One",
+      "Two",
+      "Four",
+      "Five",
+      "Six",
+      "Eight",
+      "None — they use a different pumping system",
+      "It varies by species"
+    ],
+    "acceptableAnswers": [
+      "3"
+    ],
+    "explanation": "Octopuses have three hearts — two branchial (gill) hearts that pump blue blood through the gills for oxygenation, and one systemic heart that pumps the oxygenated blood to the rest of the body. Interestingly, the systemic heart stops beating when an octopus swims, which is why they prefer crawling — it's less exhausting!",
+    "wowFactor": "An octopus has three hearts, and its heart literally stops when it swims — which is why octopuses prefer to crawl!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "An octopus has three hearts.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What happens to an octopus's systemic heart when it swims?",
+        "answer": "It stops beating",
+        "distractors": [
+          "It beats faster",
+          "It reverses direction",
+          "It splits into two"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/invertebrates/facts/octopus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Octopus anatomy diagram showing three heart locations and blood circulation paths",
+    "tags": [
+      "octopus",
+      "hearts",
+      "anatomy",
+      "cephalopod",
+      "circulatory system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-octopus-blue-blood",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "cephalopods",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cephalopods",
+    "categoryL3": "",
+    "statement": "Octopus blood is blue because it uses copper-based hemocyanin to carry oxygen, rather than the iron-based hemoglobin that makes human blood red.",
+    "quizQuestion": "Why is octopus blood blue?",
+    "correctAnswer": "It uses copper-based hemocyanin instead of iron-based hemoglobin",
+    "distractors": [
+      "It contains a blue pigment for camouflage",
+      "Blue blood indicates the blood is de-oxygenated",
+      "Octopuses have iron deficiency making their blood blue",
+      "Blue blood is a result of cold-water adaptation",
+      "Their blood contains cobalt instead of iron",
+      "Blue blood helps absorb more light underwater",
+      "Their diet of crustaceans pigments the blood",
+      "Blue blood helps regulate body temperature"
+    ],
+    "acceptableAnswers": [
+      "hemocyanin",
+      "copper in blood"
+    ],
+    "explanation": "While human blood uses hemoglobin (iron-based, making it red), octopuses use hemocyanin, a copper-containing protein. When oxygenated, hemocyanin turns blue. Hemocyanin is actually less efficient at carrying oxygen than hemoglobin at normal temperatures, but works better in cold, low-oxygen environments like the deep ocean.",
+    "wowFactor": "Octopus blood is literally blue — and it runs through THREE hearts pumping copper-rich fluid through their bodies!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Octopus blood is blue because it contains copper.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What is the name of the oxygen-carrying protein in octopus blood?",
+        "answer": "Hemocyanin",
+        "distractors": [
+          "Hemoglobin",
+          "Myoglobin",
+          "Chlorophyll"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Scientific American",
+    "sourceUrl": "https://www.scientificamerican.com/article/why-does-octopus-blood-turn-blue/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split image comparing red human blood cells and blue octopus hemocyanin molecules",
+    "tags": [
+      "octopus",
+      "blood",
+      "hemocyanin",
+      "copper",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-octopus-camouflage-chromatophores",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "cephalopods",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cephalopods",
+    "categoryL3": "",
+    "statement": "Octopuses change color and texture in milliseconds using chromatophores (pigment cells), iridophores (light-reflecting cells), and papillae (skin bumps) — despite being colorblind.",
+    "quizQuestion": "What cells do octopuses use to rapidly change their skin color?",
+    "correctAnswer": "Chromatophores",
+    "distractors": [
+      "Melanocytes",
+      "Photoreceptors",
+      "Pigmentocytes",
+      "Iridocytes",
+      "Camouflage cells",
+      "Keratinocytes",
+      "Cephalocytes",
+      "Mimicry cells"
+    ],
+    "acceptableAnswers": [
+      "chromatophores",
+      "chromatophore cells"
+    ],
+    "explanation": "Octopuses have thousands of chromatophores — elastic sacs filled with pigment that they can expand or contract via muscles to reveal or hide color. They also have iridophores that reflect light to create iridescent effects, and can raise papillae (bumps) on their skin to mimic textures. Remarkably, they do all this while being colorblind — they may perceive color through light sensitivity in their skin itself.",
+    "wowFactor": "Octopuses are colorblind yet create perfect color camouflage — scientists think they might 'see' color through their skin!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Octopuses are colorblind despite being able to change color perfectly.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What do octopuses raise on their skin to mimic surface textures?",
+        "answer": "Papillae",
+        "distractors": [
+          "Chromatophores",
+          "Scales",
+          "Suckers"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Science",
+    "sourceUrl": "https://www.science.org/content/article/colorblind-octopuses-might-see-color-through-their-skin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An octopus mid-camouflage on a rocky seafloor, with close-up inset of chromatophore cells expanding",
+    "tags": [
+      "octopus",
+      "camouflage",
+      "chromatophores",
+      "color change",
+      "cephalopod"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "animals-octopus-nine-brains",
+    "type": "knowledge",
+    "domain": "animals_wildlife",
+    "subdomain": "cephalopods",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cephalopods",
+    "categoryL3": "",
+    "statement": "Octopuses have nine brains: one central brain and eight mini-brains in each arm. Each arm can taste, touch, and act semi-independently of the central brain.",
+    "quizQuestion": "How many brains does an octopus have?",
+    "correctAnswer": "Nine (one central plus one in each arm)",
+    "distractors": [
+      "One central brain only",
+      "Two (one central, one secondary)",
+      "Three",
+      "Eight (one per arm)",
+      "Five",
+      "Twelve",
+      "Four (one per two arms)",
+      "Sixteen"
+    ],
+    "acceptableAnswers": [
+      "9",
+      "nine"
+    ],
+    "explanation": "Two-thirds of an octopus's neurons are located in its arms, not its central brain. Each arm has a 'mini-brain' (a ganglion cluster) that allows it to process sensory information and control movements independently. An octopus arm can continue to react to stimuli and even try to put food in the mouth for up to an hour after being severed from the body.",
+    "wowFactor": "A severed octopus arm can still try to feed the octopus for an hour — because it has its own brain and doesn't know it's detached!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Most of an octopus's neurons are located in its arms rather than its central brain.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What fraction of an octopus's neurons are in its arms?",
+        "answer": "Two-thirds",
+        "distractors": [
+          "One-third",
+          "One-half",
+          "One-quarter"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Current Biology",
+    "sourceUrl": "https://www.cell.com/current-biology/fulltext/S0960-9822(11)01165-7",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Octopus with glowing brain nodes in each arm and central brain lit up, showing distributed intelligence",
+    "tags": [
+      "octopus",
+      "brain",
+      "intelligence",
+      "neuroscience",
+      "cephalopod"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

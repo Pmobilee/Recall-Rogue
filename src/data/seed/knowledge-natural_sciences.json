@@ -6016,5 +6016,1771 @@
       "soil",
       "crop rotation"
     ]
+  },
+  {
+    "id": "science-earth-orbital-period",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "astronomy",
+    "categoryL3": "Earth",
+    "statement": "Earth completes one orbit around the Sun in approximately 365.25 days — the extra 0.25 day is why we add a leap day every four years.",
+    "quizQuestion": "Why do we add a leap day every four years?",
+    "correctAnswer": "Earth's orbit takes ~365.25 days, so a quarter-day accumulates each year",
+    "distractors": [
+      "The Sun's gravity slows Earth slightly each year",
+      "The Moon's gravity adds a day every four years",
+      "Our calendar inherited a Roman error that must be corrected"
+    ],
+    "acceptableAnswers": [
+      "365.25 days",
+      "the extra quarter day",
+      "fractional orbital period"
+    ],
+    "explanation": "Earth's precise orbital period is 365.2422 days. The Gregorian calendar adjusts with leap years — and also skips them on century years unless divisible by 400.",
+    "wowFactor": "The rule is: add a leap year every 4 years, EXCEPT every 100 years, EXCEPT every 400 years — fine-tuning 2,000 years of calendar drift.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do we have leap years?",
+        "answer": "Earth's orbit takes ~365.25 days",
+        "distractors": [
+          "The Sun slows Earth each year",
+          "Moon adds a day every 4 years",
+          "Fixing a Roman calendar error"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's orbital period is exactly 365 days.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Earth%27s_orbit",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth tracing a glowing elliptical orbit around the Sun with a tiny calendar floating nearby.",
+    "tags": [
+      "Earth",
+      "orbit",
+      "leap year",
+      "calendar",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-earth-core-temperature",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology",
+    "categoryL3": "Earth",
+    "statement": "Earth's inner core reaches temperatures of about 5,100–6,000°C (9,200–10,800°F) — similar to the surface of the Sun.",
+    "quizQuestion": "How hot is Earth's inner core?",
+    "correctAnswer": "About 5,000–6,000°C",
+    "distractors": [
+      "About 1,000°C",
+      "About 500°C",
+      "About 20,000°C",
+      "About 100°C"
+    ],
+    "acceptableAnswers": [
+      "5000–6000°C",
+      "about 5000°C",
+      "about 6000°C",
+      "similar to the Sun's surface"
+    ],
+    "explanation": "The inner core is solid iron-nickel under immense pressure. Its temperature is estimated at 5,100–6,000°C — comparable to the Sun's photosphere.",
+    "wowFactor": "Earth's core is as hot as the surface of the Sun, yet it's solid — kept that way by the crushing pressure of 5,150 km of rock above it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How hot is Earth's inner core?",
+        "answer": "About 5,000–6,000°C",
+        "distractors": [
+          "1,000°C",
+          "20,000°C",
+          "500°C"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's core is comparable in temperature to the surface of the Sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Earth%27s_inner_core",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cutaway diagram of Earth showing the glowing orange inner core surrounded by layers of mantle and crust.",
+    "tags": [
+      "Earth",
+      "core",
+      "temperature",
+      "geology",
+      "planet"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-earth-magnetic-field",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geophysics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geophysics",
+    "categoryL3": "Earth",
+    "statement": "Earth's magnetic field is generated by the movement of liquid iron in the outer core, and it protects life by deflecting harmful solar radiation.",
+    "quizQuestion": "What generates Earth's magnetic field?",
+    "correctAnswer": "Movement of liquid iron in the outer core",
+    "distractors": [
+      "Rotation of the solid inner core",
+      "The Moon's gravitational pull on Earth's mantle",
+      "Electrical currents in the upper atmosphere"
+    ],
+    "acceptableAnswers": [
+      "liquid iron in the outer core",
+      "convection in the outer core",
+      "molten iron outer core"
+    ],
+    "explanation": "The 'geodynamo' — convecting liquid iron in Earth's outer core — generates electric currents that produce the magnetic field. Without it, solar wind would strip our atmosphere.",
+    "wowFactor": "Earth's magnetic poles wander and occasionally flip — the last full reversal was about 780,000 years ago and a new one may be coming.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What generates Earth's magnetic field?",
+        "answer": "Movement of liquid iron in the outer core",
+        "distractors": [
+          "Rotation of the inner core",
+          "The Moon's gravity",
+          "Atmospheric electricity"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's magnetic field is generated by its outer core.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Earth%27s_magnetic_field",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth surrounded by curving magnetic field lines deflecting streams of solar wind particles.",
+    "tags": [
+      "Earth",
+      "magnetic field",
+      "geodynamo",
+      "outer core",
+      "solar wind"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-earth-atmosphere-composition",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "atmospheric science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "atmospheric science",
+    "categoryL3": "Earth",
+    "statement": "Earth's atmosphere is about 78% nitrogen and 21% oxygen, with the remaining 1% consisting of argon, carbon dioxide, and trace gases.",
+    "quizQuestion": "What is the most abundant gas in Earth's atmosphere?",
+    "correctAnswer": "Nitrogen (78%)",
+    "distractors": [
+      "Oxygen (21%)",
+      "Carbon dioxide",
+      "Argon",
+      "Water vapor"
+    ],
+    "acceptableAnswers": [
+      "nitrogen",
+      "N2",
+      "nitrogen gas"
+    ],
+    "explanation": "Many people assume oxygen is most abundant because we breathe it, but nitrogen dominates at 78%. Oxygen is 21%, argon ~0.93%, CO2 ~0.04%.",
+    "wowFactor": "The nitrogen in Earth's atmosphere mostly came from ancient volcanic outgassing over billions of years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas makes up most of Earth's atmosphere?",
+        "answer": "Nitrogen (78%)",
+        "distractors": [
+          "Oxygen",
+          "Carbon dioxide",
+          "Argon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nitrogen makes up more than 75% of Earth's atmosphere.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pie chart of Earth's atmosphere superimposed on a photo of blue sky, with nitrogen slice dominant.",
+    "tags": [
+      "Earth",
+      "atmosphere",
+      "nitrogen",
+      "oxygen",
+      "science",
+      "chemistry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-earth-deepest-point",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "oceanography",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "oceanography",
+    "categoryL3": "Earth",
+    "statement": "The Challenger Deep in the Mariana Trench is the deepest known point on Earth at about 11,034 meters (36,201 feet) below sea level.",
+    "quizQuestion": "What is the deepest known point on Earth?",
+    "correctAnswer": "Challenger Deep in the Mariana Trench",
+    "distractors": [
+      "Puerto Rico Trench",
+      "Java Trench",
+      "Tonga Trench",
+      "Philippine Trench"
+    ],
+    "acceptableAnswers": [
+      "Challenger Deep",
+      "Mariana Trench",
+      "Challenger Deep in the Mariana Trench"
+    ],
+    "explanation": "Challenger Deep is located in the western Pacific Ocean. Fewer humans have visited it than have walked on the Moon.",
+    "wowFactor": "If Mount Everest were placed at the bottom of Challenger Deep, there would still be over 2 km of water above it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the deepest point on Earth?",
+        "answer": "Challenger Deep",
+        "distractors": [
+          "Puerto Rico Trench",
+          "Java Trench",
+          "Tonga Trench"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which ocean trench is Challenger Deep located?",
+        "answer": "Mariana Trench",
+        "distractors": [
+          "Puerto Rico Trench",
+          "Java Trench",
+          "Philippine Trench"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Challenger_Deep",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section showing the Mariana Trench's V-shaped depth, with a submarine at the very bottom surrounded by darkness.",
+    "tags": [
+      "Earth",
+      "Challenger Deep",
+      "Mariana Trench",
+      "ocean",
+      "deepest",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-sun-hydrogen-composition",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Astronomy",
+    "categoryL3": "",
+    "statement": "The Sun is approximately 73% hydrogen and 25% helium by mass, with the remaining 2% comprising all other elements.",
+    "quizQuestion": "What percentage of the Sun's mass is hydrogen?",
+    "correctAnswer": "About 73%",
+    "distractors": [
+      "About 50%",
+      "About 90%",
+      "About 60%",
+      "About 40%",
+      "About 99%",
+      "About 25%",
+      "About 80%",
+      "About 35%"
+    ],
+    "acceptableAnswers": [
+      "73%",
+      "about 73%",
+      "approximately 73 percent",
+      "73 percent"
+    ],
+    "explanation": "The Sun's composition by mass is approximately 73% hydrogen, 25% helium, and 2% heavier elements (including oxygen, carbon, neon, iron, and others). Nuclear fusion in the Sun's core converts hydrogen into helium, releasing enormous energy. Over the Sun's lifetime, the helium proportion has been gradually increasing. When the Sun eventually runs low on hydrogen fuel in about 5 billion years, it will expand into a red giant.",
+    "wowFactor": "The Sun converts 4 million tonnes of hydrogen into energy every single second. Despite this, it has enough hydrogen fuel to continue for another 5 billion years.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NASA Solar System Exploration — The Sun",
+    "sourceUrl": "https://solarsystem.nasa.gov/solar-system/sun/in-depth/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pie chart showing the Sun's composition — 73% hydrogen in yellow, 25% helium in orange, 2% other elements in red — with the Sun in the background",
+    "tags": [
+      "Sun",
+      "hydrogen",
+      "helium",
+      "solar composition",
+      "astronomy",
+      "nuclear fusion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-sun-core-temperature",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Astronomy",
+    "categoryL3": "",
+    "statement": "The Sun's core reaches a temperature of approximately 15 million degrees Celsius, hot enough to sustain nuclear fusion.",
+    "quizQuestion": "What is the approximate temperature at the Sun's core?",
+    "correctAnswer": "About 15 million °C",
+    "distractors": [
+      "About 5,500 °C",
+      "About 1 million °C",
+      "About 100 million °C",
+      "About 500,000 °C",
+      "About 1 billion °C",
+      "About 50,000 °C",
+      "About 5 million °C",
+      "About 10 billion °C"
+    ],
+    "acceptableAnswers": [
+      "15 million degrees",
+      "15 million °C",
+      "15,000,000 °C",
+      "approximately 15 million degrees Celsius"
+    ],
+    "explanation": "The Sun's core temperature is approximately 15 million °C (27 million °F), which is the temperature required to sustain proton-proton chain nuclear fusion — the primary energy source of Sun-like stars. In contrast, the Sun's visible surface (photosphere) is only about 5,500 °C. The Sun's outer atmosphere (corona) paradoxically reaches temperatures of 1–3 million °C, much hotter than the surface — a phenomenon known as the 'coronal heating problem' that scientists are still investigating.",
+    "wowFactor": "The Sun's corona (outer atmosphere) is actually hotter than its surface — a mystery that has puzzled astrophysicists for decades. The surface is 5,500°C; the corona is up to 3 million°C.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NASA — Sun Fact Sheet",
+    "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cutaway diagram of the Sun showing core, radiative zone, convective zone, and surface, with temperature labels at each layer",
+    "tags": [
+      "Sun",
+      "core temperature",
+      "nuclear fusion",
+      "astronomy",
+      "solar physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-sun-diameter-earth-comparison",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Astronomy",
+    "categoryL3": "",
+    "statement": "The Sun's diameter is approximately 109 times wider than Earth's.",
+    "quizQuestion": "How many times wider is the Sun compared to Earth?",
+    "correctAnswer": "About 109 times wider",
+    "distractors": [
+      "About 10 times wider",
+      "About 50 times wider",
+      "About 1,000 times wider",
+      "About 300 times wider",
+      "About 25 times wider",
+      "About 500 times wider",
+      "About 1 million times wider",
+      "About 75 times wider"
+    ],
+    "acceptableAnswers": [
+      "109 times",
+      "about 109 times",
+      "approximately 109 times wider",
+      "109x"
+    ],
+    "explanation": "The Sun has a diameter of approximately 1,392,700 km, while Earth's diameter is about 12,742 km — making the Sun roughly 109 times wider. In terms of volume, about 1.3 million Earths could fit inside the Sun. Despite its enormous size, the Sun is a medium-sized star (a G-type main sequence star, also called a yellow dwarf); some stars are hundreds of times larger.",
+    "wowFactor": "If the Sun were the size of a standard front door (2 metres tall), Earth would be about the size of a large marble (1.8 cm) — and it would be located almost 200 metres away.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NASA — Sun Fact Sheet",
+    "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Scale comparison showing the Sun as a large orange sphere alongside 109 small blue Earth spheres arranged in a row across its diameter",
+    "tags": [
+      "Sun",
+      "Earth",
+      "size comparison",
+      "diameter",
+      "astronomy",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-sun-sunspot-temperature",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Astronomy",
+    "categoryL3": "",
+    "statement": "Sunspots appear dark because they are approximately 1,500 °C cooler than the surrounding solar surface.",
+    "quizQuestion": "Why do sunspots appear darker than the rest of the Sun's surface?",
+    "correctAnswer": "They are about 1,500 °C cooler than the surrounding surface",
+    "distractors": [
+      "They are holes in the solar surface that reveal the darker interior",
+      "They are regions of higher density that block light",
+      "They are shadow areas caused by solar flares",
+      "They reflect light away from Earth",
+      "They are areas where magnetic field blocks radiation from escaping",
+      "They are patches of cooled material falling from the corona",
+      "They consist of a different, darker chemical element",
+      "They are craters from asteroid impacts"
+    ],
+    "acceptableAnswers": [
+      "cooler than surroundings",
+      "1,500°C cooler",
+      "lower temperature",
+      "they are cooler"
+    ],
+    "explanation": "Sunspots are temporary phenomena on the Sun's photosphere appearing as dark spots. They form where intense magnetic field activity inhibits convection, preventing hot plasma from rising to the surface. A typical sunspot has a temperature of approximately 3,500–4,000 °C, compared to the surrounding photosphere's 5,500 °C — making them about 1,500 °C cooler. They look black only by contrast; a sunspot placed against a dark sky would glow brilliantly. Sunspot activity follows an approximately 11-year cycle.",
+    "wowFactor": "A sunspot only looks black because of contrast — an isolated sunspot would actually shine 10 times brighter than the full Moon if viewed against a dark sky.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NASA — Sunspots and Solar Cycles",
+    "sourceUrl": "https://www.nasa.gov/mission_pages/sunearth/solar-events-news/Does-the-Solar-Cycle-Affect-Earths-Climate.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up telescope image of the solar surface showing dark sunspot clusters surrounded by bright granular photosphere texture",
+    "tags": [
+      "Sun",
+      "sunspots",
+      "solar physics",
+      "temperature",
+      "magnetic field",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-sun-light-travel-time",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "astronomy",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "Astronomy",
+    "categoryL3": "",
+    "statement": "Sunlight takes approximately 8 minutes and 20 seconds to travel from the Sun to Earth.",
+    "quizQuestion": "How long does it take sunlight to travel from the Sun to Earth?",
+    "correctAnswer": "About 8 minutes and 20 seconds",
+    "distractors": [
+      "About 1 second",
+      "About 1 minute",
+      "About 30 minutes",
+      "About 24 hours",
+      "About 1 hour",
+      "About 3 seconds",
+      "About 4 hours",
+      "About 1 year"
+    ],
+    "acceptableAnswers": [
+      "8 minutes",
+      "8 minutes 20 seconds",
+      "roughly 8 minutes",
+      "about 8 minutes"
+    ],
+    "explanation": "Light travels at 299,792 km per second (the speed of light, c). The average distance from the Sun to Earth is approximately 149.6 million km (1 Astronomical Unit). At light speed, this journey takes about 499 seconds — approximately 8 minutes and 20 seconds. This means when you look at the Sun, you are seeing it as it was over 8 minutes ago. If the Sun suddenly vanished, Earth would not 'know' for more than 8 minutes.",
+    "wowFactor": "The light hitting your skin right now left the Sun over 8 minutes ago — but it took those photons up to 100,000 years to travel from the Sun's core to its surface before that final 8-minute sprint to Earth.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NASA — Distance to the Sun",
+    "sourceUrl": "https://solarsystem.nasa.gov/solar-system/sun/by-the-numbers/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An infographic showing the Sun on the left and Earth on the right, a beam of light between them with '8 minutes 20 seconds' labelled along the path",
+    "tags": [
+      "Sun",
+      "light speed",
+      "Earth",
+      "astronomy",
+      "solar system",
+      "distance"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-moon-giant-impact-formation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "The Moon is thought to have formed when a Mars-sized body called Theia collided with the early Earth about 4.5 billion years ago.",
+    "quizQuestion": "According to the leading scientific theory, how did the Moon form?",
+    "correctAnswer": "A Mars-sized body called Theia collided with early Earth",
+    "distractors": [
+      "It was captured from another solar system",
+      "It broke off from Earth due to centrifugal force",
+      "It condensed from a cloud of gas and dust independently",
+      "It was pulled from Jupiter's orbit",
+      "Two asteroids fused together near Earth",
+      "It was ejected from the Sun",
+      "It formed from leftover material from Earth's formation"
+    ],
+    "acceptableAnswers": [
+      "Giant impact hypothesis",
+      "Theia collided with Earth",
+      "impact with Theia"
+    ],
+    "explanation": "The Giant Impact Hypothesis proposes that around 4.5 billion years ago, a protoplanet named Theia (roughly the size of Mars) collided with the young Earth. The resulting debris coalesced in orbit to form the Moon.",
+    "wowFactor": "The Moon may contain parts of a planet that no longer exists — Theia was completely absorbed by Earth and the Moon during the collision.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to the leading scientific theory, how did the Moon form?",
+        "answer": "A Mars-sized body called Theia collided with early Earth",
+        "distractors": [
+          "Captured from another system",
+          "Broke off due to centrifugal force",
+          "Formed independently from a gas cloud"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name of the hypothetical body that struck Earth to form the Moon?",
+        "answer": "Theia",
+        "distractors": [
+          "Ceres",
+          "Vesta",
+          "Eris"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon is thought to have formed from a collision between Earth and a Mars-sized body called Theia.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon formed about 4.5 billion years ago when a body called ___ collided with early Earth.",
+        "answer": "Theia",
+        "distractors": [
+          "Ceres",
+          "Vesta",
+          "Eris"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Giant-impact_hypothesis",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dramatic space collision: a red-orange planet-sized body crashing into the young molten Earth, sending glowing debris into space that swirls into a ring forming the Moon.",
+    "tags": [
+      "Moon",
+      "formation",
+      "Theia",
+      "giant impact",
+      "geology",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-moon-tidal-locking-dark-side",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "The Moon is tidally locked to Earth, meaning the same side always faces our planet.",
+    "quizQuestion": "Why do we always see the same side of the Moon from Earth?",
+    "correctAnswer": "The Moon is tidally locked — it rotates at the same rate it orbits Earth",
+    "distractors": [
+      "The Moon doesn't rotate at all",
+      "Earth's gravity holds one side still",
+      "The Moon's dark side is always facing away from the Sun",
+      "A large crater on one side weighs it down",
+      "The Moon orbits too fast to show the other side",
+      "The dark side is invisible to human eyes",
+      "The Moon's magnetic field aligns it"
+    ],
+    "acceptableAnswers": [
+      "Tidal locking",
+      "tidally locked",
+      "it rotates once per orbit"
+    ],
+    "explanation": "Tidal locking occurs when Earth's gravitational pull has slowed the Moon's rotation until it matches the Moon's orbital period (about 27.3 days). As a result, the same hemisphere always faces Earth — though 'dark side' is a misnomer since both sides receive sunlight.",
+    "wowFactor": "The 'dark side of the Moon' isn't actually dark — it gets just as much sunlight as the near side. We just never see it from Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do we always see the same side of the Moon from Earth?",
+        "answer": "The Moon is tidally locked — it rotates at the same rate it orbits",
+        "distractors": [
+          "The Moon doesn't rotate",
+          "Earth's gravity holds one side still",
+          "The dark side faces away from the Sun"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What term describes the Moon's synchronised rotation with its orbit around Earth?",
+        "answer": "Tidal locking",
+        "distractors": [
+          "Orbital resonance",
+          "Gravitational lock",
+          "Synchronous orbit"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon is tidally locked, so the same face always points toward Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon is ___ locked to Earth, meaning the same side always faces us.",
+        "answer": "tidally",
+        "distractors": [
+          "magnetically",
+          "gravitationally",
+          "orbitally"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tidal_locking",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Moon orbiting Earth in a diagram showing the same face always pointing toward Earth, an arrow showing its rotation matching its orbital period.",
+    "tags": [
+      "Moon",
+      "tidal locking",
+      "orbit",
+      "dark side",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-moon-tidal-force-bulge",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "The Moon's gravity creates two tidal bulges on Earth's oceans simultaneously — one facing the Moon and one on the opposite side.",
+    "quizQuestion": "How many ocean tidal bulges does the Moon's gravity create on Earth?",
+    "correctAnswer": "Two — one facing the Moon and one on the opposite side",
+    "distractors": [
+      "One — only on the side facing the Moon",
+      "Four — one on each side",
+      "Three — one large and two small",
+      "None — the Sun causes tides, not the Moon",
+      "One — only on the far side",
+      "Six — corresponding to time zones",
+      "Two — both on the same side"
+    ],
+    "acceptableAnswers": [
+      "Two",
+      "two tidal bulges"
+    ],
+    "explanation": "The Moon's gravity pulls the ocean toward it on the near side, creating one bulge. On Earth's far side, inertia (centrifugal effect) creates a second bulge. As Earth rotates, different locations pass through these bulges, causing roughly two high tides per day.",
+    "wowFactor": "The tides on the side of Earth facing AWAY from the Moon are caused by inertia, not by the Moon pulling the water — which is why we get two high tides daily.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many ocean tidal bulges does the Moon's gravity create on Earth?",
+        "answer": "Two",
+        "distractors": [
+          "One",
+          "Four",
+          "Three"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What causes the tidal bulge on the side of Earth facing AWAY from the Moon?",
+        "answer": "Inertia/centrifugal effect",
+        "distractors": [
+          "The Moon pulling the water",
+          "The Sun's gravity",
+          "Earth's rotation speed"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon creates two ocean tidal bulges on Earth simultaneously.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon creates ___ tidal bulges on Earth's oceans, causing two high tides per day.",
+        "answer": "two",
+        "distractors": [
+          "one",
+          "four",
+          "three"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tide",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth viewed from space with two obvious bulges in its ocean layer — one directly facing the Moon and one on the opposite side — Moon visible to the right.",
+    "tags": [
+      "Moon",
+      "tides",
+      "tidal bulge",
+      "gravity",
+      "ocean",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-moon-average-distance-km",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "The average distance from Earth to the Moon is approximately 384,400 kilometres.",
+    "quizQuestion": "What is the average distance from Earth to the Moon?",
+    "correctAnswer": "384,400 km",
+    "distractors": [
+      "100,000 km",
+      "1 million km",
+      "50,000 km",
+      "750,000 km",
+      "200,000 km",
+      "600,000 km",
+      "2 million km"
+    ],
+    "acceptableAnswers": [
+      "384,400 km",
+      "384,400 kilometres",
+      "about 384,000 km",
+      "roughly 385,000 km"
+    ],
+    "explanation": "The Moon's distance varies as it follows an elliptical orbit, ranging from about 356,500 km (perigee) to 406,700 km (apogee). The average distance is 384,400 km, a figure first measured precisely through radar ranging.",
+    "wowFactor": "You could fit all the other planets in the solar system — Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune — in the gap between Earth and the Moon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the average distance from Earth to the Moon?",
+        "answer": "384,400 km",
+        "distractors": [
+          "100,000 km",
+          "1 million km",
+          "50,000 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for the Moon's closest point to Earth in its orbit?",
+        "answer": "Perigee",
+        "distractors": [
+          "Apogee",
+          "Perihelion",
+          "Aphelion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon is on average about 384,400 km from Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The average distance from Earth to the Moon is approximately ___ km.",
+        "answer": "384,400",
+        "distractors": [
+          "100,000",
+          "1,000,000",
+          "50,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scale diagram showing Earth and Moon with a ruler-style distance marker between them showing 384,400 km, the lunar orbit as a dotted ellipse.",
+    "tags": [
+      "Moon",
+      "distance",
+      "384400 km",
+      "astronomy",
+      "orbit"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-math-pi-constant",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "constants",
+    "statement": "Pi (π) is the ratio of a circle's circumference to its diameter, approximately 3.14159. It is an irrational number that never repeats or terminates.",
+    "quizQuestion": "What does pi (π) represent mathematically?",
+    "correctAnswer": "The ratio of a circle's circumference to its diameter",
+    "distractors": [
+      "The ratio of a circle's area to its radius",
+      "The ratio of diameter to circumference",
+      "The square root of a circle's area"
+    ],
+    "acceptableAnswers": [
+      "circumference divided by diameter",
+      "ratio of circumference to diameter",
+      "C/d"
+    ],
+    "explanation": "Pi (π) is defined as the ratio of a circle's circumference (C) to its diameter (d): π = C/d. This constant is approximately 3.14159265... and continues infinitely without repeating (it's irrational, and additionally transcendental — not the root of any polynomial with rational coefficients). Pi appears throughout mathematics, physics, and engineering far beyond circular geometry, from quantum mechanics to probability theory.",
+    "wowFactor": "Pi has been calculated to over 100 trillion digits — and there's still no pattern. Somewhere in pi's digits is your phone number, your birthday, and every other finite sequence of numbers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does pi (π) represent mathematically?",
+        "answer": "The ratio of a circle's circumference to its diameter",
+        "distractors": [
+          "The ratio of a circle's area to its radius",
+          "The ratio of diameter to circumference",
+          "The square root of a circle's area"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pi is a repeating decimal that eventually shows a pattern.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pi",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "The symbol π in large text beside a circle with circumference and diameter labeled",
+    "tags": [
+      "pi",
+      "mathematics",
+      "circles",
+      "constants",
+      "geometry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-math-zero-invention",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "math_history",
+    "statement": "The Indian mathematician Brahmagupta formally defined zero as a number and its arithmetic rules in 628 CE — a breakthrough that transformed mathematics and enabled modern computing.",
+    "quizQuestion": "Who first formally defined zero as a number with arithmetic rules?",
+    "correctAnswer": "Brahmagupta",
+    "distractors": [
+      "Al-Khwarizmi",
+      "Fibonacci",
+      "Pythagoras"
+    ],
+    "acceptableAnswers": [
+      "Brahmagupta",
+      "the Indian mathematician Brahmagupta"
+    ],
+    "explanation": "While earlier cultures used placeholder zeros (Babylonian, Mayan), the Indian mathematician Brahmagupta in his 628 CE work 'Brahmasphutasiddhanta' was the first to treat zero as a genuine number with defined rules: n + 0 = n, n − 0 = n, n × 0 = 0. He also worked on negative numbers. This concept reached Europe via Arab mathematicians, enabling algebra, calculus, and ultimately digital computers (which operate on 0s and 1s).",
+    "wowFactor": "Without zero, our entire number system, algebra, and all digital technology would be impossible — yet for most of human history, civilizations got by without it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who first formally defined zero as a number with arithmetic rules?",
+        "answer": "Brahmagupta",
+        "distractors": [
+          "Al-Khwarizmi",
+          "Fibonacci",
+          "Pythagoras"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The concept of zero as a number was first formalized in ancient India.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/0#History",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Sanskrit manuscript showing early zero symbols",
+    "tags": [
+      "zero",
+      "mathematics",
+      "Brahmagupta",
+      "India",
+      "history of math"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-math-prime-numbers",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "number_theory",
+    "statement": "Prime numbers are divisible only by 1 and themselves. Around 300 BCE, Euclid proved there are infinitely many primes — a proof that still stands as a model of mathematical elegance.",
+    "quizQuestion": "Which ancient mathematician first proved that prime numbers are infinite?",
+    "correctAnswer": "Euclid",
+    "distractors": [
+      "Pythagoras",
+      "Archimedes",
+      "Eratosthenes"
+    ],
+    "acceptableAnswers": [
+      "Euclid",
+      "Euclid of Alexandria"
+    ],
+    "explanation": "In his 'Elements' (~300 BCE), Euclid gave an elegant proof by contradiction: assume there's a finite list of all primes. Multiply them together and add 1 — this new number is either prime itself (contradicting the complete list) or divisible by a prime not on the list (also a contradiction). Therefore, no finite list of primes can be complete. This proof is still used in mathematics textbooks 2,300 years later.",
+    "wowFactor": "The largest known prime number (as of 2024) has 41 million digits — and mathematicians are still searching for larger ones using distributed computing projects.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ancient mathematician first proved that prime numbers are infinite?",
+        "answer": "Euclid",
+        "distractors": [
+          "Pythagoras",
+          "Archimedes",
+          "Eratosthenes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: There are infinitely many prime numbers.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Euclid's Elements",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prime_number",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A sequence of prime numbers 2, 3, 5, 7, 11, 13... extending to infinity",
+    "tags": [
+      "prime numbers",
+      "Euclid",
+      "mathematics",
+      "infinity",
+      "number theory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-math-golden-ratio",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "constants",
+    "statement": "The golden ratio (φ ≈ 1.618) appears throughout nature — in sunflower seeds, nautilus shells, and pinecones — because Fibonacci sequence spirals converge to it.",
+    "quizQuestion": "What is the approximate value of the golden ratio (φ)?",
+    "correctAnswer": "1.618",
+    "distractors": [
+      "2.718",
+      "3.14159",
+      "1.414"
+    ],
+    "acceptableAnswers": [
+      "1.618",
+      "phi",
+      "approximately 1.618",
+      "1.61803"
+    ],
+    "explanation": "The golden ratio φ = (1 + √5)/2 ≈ 1.61803... is the ratio where a/b = (a+b)/a. It's intimately connected to the Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21...) — dividing consecutive Fibonacci numbers gives increasingly accurate approximations of φ. Natural systems often grow in Fibonacci spirals (sunflowers, nautilus shells, pinecone scales) because this pattern allows the most efficient packing and growth. Whether humans find it aesthetically pleasing is more debated than pop-science suggests.",
+    "wowFactor": "The number of spirals in a sunflower's seed head is always two consecutive Fibonacci numbers — most commonly 34 and 55 — which is why no seeds are ever wasted.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the approximate value of the golden ratio (φ)?",
+        "answer": "1.618",
+        "distractors": [
+          "2.718",
+          "3.14159",
+          "1.414"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The golden ratio is connected to the Fibonacci sequence.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Golden_ratio",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A golden ratio spiral overlay on a nautilus shell cross-section",
+    "tags": [
+      "golden ratio",
+      "phi",
+      "Fibonacci",
+      "mathematics",
+      "nature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-einstein-mass-energy-equivalence",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "physics",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "physics",
+    "categoryL3": "",
+    "statement": "Einstein's E=mc² means that mass and energy are interchangeable — a tiny amount of mass contains enormous energy (c² = 9×10¹⁶ joules per kilogram), which is why nuclear reactions release so much power.",
+    "quizQuestion": "What does the 'c' in Einstein's equation E=mc² represent?",
+    "correctAnswer": "The speed of light (approximately 3×10⁸ meters per second)",
+    "distractors": [
+      "A universal gravitational constant",
+      "The heat capacity of mass",
+      "The coefficient of energy conversion",
+      "Planck's constant",
+      "The charge of an electron",
+      "Coulomb's constant",
+      "The speed of sound",
+      "The speed of mass conversion"
+    ],
+    "acceptableAnswers": [
+      "speed of light",
+      "c = speed of light"
+    ],
+    "explanation": "E=mc² states that energy (E) equals mass (m) times the speed of light squared (c²). Since c ≈ 3×10⁸ m/s, c² ≈ 9×10¹⁶ J/kg — meaning 1 gram of matter converted entirely to energy would release about 90 trillion joules (equivalent to ~21 kilotons of TNT — like a nuclear bomb). Nuclear reactions only convert a tiny fraction of mass to energy, but that tiny fraction is still enormous. Einstein published this as part of special relativity in 1905.",
+    "wowFactor": "One paperclip completely converted to energy would release as much energy as a nuclear bomb — E=mc² tells us matter is frozen energy!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "In E=mc², the 'c' stands for the speed of sound.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "In what year did Einstein publish his special relativity paper containing E=mc²?",
+        "answer": "1905",
+        "distractors": [
+          "1915",
+          "1895",
+          "1920"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Einstein Archive",
+    "sourceUrl": "https://www.einstein-online.info/en/explanations/special-relativity/energy-mass-equivalence/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "E=mc² equation chalk-written on blackboard with visual comparison of tiny mass versus enormous energy explosion",
+    "tags": [
+      "Einstein",
+      "E=mc²",
+      "special relativity",
+      "physics",
+      "mass-energy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-einstein-photoelectric-effect",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "physics",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "physics",
+    "categoryL3": "",
+    "statement": "Einstein won his 1921 Nobel Prize in Physics not for relativity, but for explaining the photoelectric effect — showing that light consists of discrete packets of energy called photons.",
+    "quizQuestion": "What scientific discovery earned Einstein the Nobel Prize in Physics in 1921?",
+    "correctAnswer": "Explaining the photoelectric effect by demonstrating that light comes in discrete packets called photons",
+    "distractors": [
+      "Developing the theory of special relativity",
+      "Developing the theory of general relativity",
+      "Proving that atoms exist using Brownian motion",
+      "Inventing the Einstein refrigerator",
+      "Calculating the size of atoms",
+      "Predicting gravitational waves",
+      "Developing quantum mechanics",
+      "Discovering nuclear fission"
+    ],
+    "acceptableAnswers": [
+      "photoelectric effect",
+      "photons"
+    ],
+    "explanation": "Einstein's 1905 paper on the photoelectric effect explained that light (when shining on metal) can eject electrons only if the light's frequency is above a threshold — regardless of intensity. This only made sense if light came in quantized packets (photons) with energy proportional to frequency. This was a foundational contribution to quantum mechanics, explaining why light sometimes acts like particles. He published this in his famous 'Annus Mirabilis' papers of 1905, the same year as special relativity — but the Nobel was for the photoelectric effect.",
+    "wowFactor": "The man famous for relativity won his Nobel Prize for something completely different — photons, which became the basis of modern electronics and solar panels!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Einstein won the Nobel Prize for his theory of relativity.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What are the discrete packets of light energy that Einstein proposed?",
+        "answer": "Photons",
+        "distractors": [
+          "Electrons",
+          "Quarks",
+          "Neutrinos"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Nobel Prize Foundation",
+    "sourceUrl": "https://www.nobelprize.org/prizes/physics/1921/einstein/facts/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Light hitting metal surface, electrons ejecting, with photon energy diagram — Nobel Prize medal beside it",
+    "tags": [
+      "Einstein",
+      "Nobel Prize",
+      "photoelectric effect",
+      "photons",
+      "quantum mechanics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-einstein-brain-preserved",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "physics",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "physics",
+    "categoryL3": "",
+    "statement": "After Einstein's death in 1955, the pathologist Thomas Harvey removed his brain without permission and kept it for decades, eventually slicing it into 240 pieces. Studies found unusual features but no clear evidence of exceptional genius.",
+    "quizQuestion": "What happened to Einstein's brain after his death?",
+    "correctAnswer": "Pathologist Thomas Harvey removed it without permission and kept it for 43 years",
+    "distractors": [
+      "It was buried with his body as he requested",
+      "It was donated to Princeton University immediately",
+      "It was cremated along with the rest of his body",
+      "It was preserved by NASA for research",
+      "It was given to the Smithsonian Institution",
+      "It was donated to a German university",
+      "It was preserved in the Weizmann Institute in Israel",
+      "It was buried in a secret location to prevent grave robbing"
+    ],
+    "acceptableAnswers": [
+      "Thomas Harvey kept it",
+      "Harvey removed it"
+    ],
+    "explanation": "When Einstein died at Princeton Hospital in April 1955, pathologist Thomas Harvey performed the autopsy and removed the brain, claiming he had obtained or would obtain permission from family. He kept it in jars and boxes for 43 years, moving it around the country with him. He shared pieces with various researchers. Studies in the 1980s-2000s noted some unusual features (more glial cells, different parietal lobe proportions) but nothing that definitively explained Einstein's genius. Harvey returned remaining pieces to Princeton in 1998.",
+    "wowFactor": "Einstein's brain traveled across America in jars for 43 years in the trunk of a pathologist's car — the greatest scientific relic of the 20th century, treated as a road trip souvenir!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Einstein's brain was taken without his permission after his death.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Smithsonian Magazine",
+    "sourceUrl": "https://www.smithsonianmag.com/history/the-long-strange-journey-of-einsteins-brain-29247902/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Einstein's brain photographed in a jar beside his famous portrait, with a road map showing Harvey's travels",
+    "tags": [
+      "Einstein",
+      "brain",
+      "Thomas Harvey",
+      "weird history",
+      "science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-periodic-table-mendeleev-prediction",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Mendeleev was so confident in his 1869 periodic table that he left gaps for undiscovered elements and predicted their properties — all three elements he predicted (gallium, scandium, germanium) were discovered within 17 years, matching his predictions exactly.",
+    "quizQuestion": "What did Mendeleev do in his 1869 periodic table that was especially bold?",
+    "correctAnswer": "He left gaps for undiscovered elements and predicted their atomic weights and properties",
+    "distractors": [
+      "He invented new names for all known elements",
+      "He arranged elements alphabetically instead of by weight",
+      "He classified elements into only 4 categories",
+      "He predicted that atoms could be split",
+      "He claimed all matter was made of only 8 elements",
+      "He proposed that electrons controlled chemical bonds",
+      "He organized elements by electron count before electrons were discovered",
+      "He discovered 12 new elements himself before publishing"
+    ],
+    "acceptableAnswers": [
+      "predicted undiscovered elements",
+      "left gaps"
+    ],
+    "explanation": "Dmitri Mendeleev published his periodic table in 1869, arranging elements by atomic weight. Where the sequence required a gap to maintain the pattern, he left spaces and predicted the missing element's properties: atomic weight, density, valence, likely compounds. His three predictions ('eka-aluminum,' 'eka-boron,' 'eka-silicon') were discovered as gallium (1875), scandium (1879), and germanium (1886), all with properties remarkably close to Mendeleev's predictions. This validated the periodic law and established pattern-based scientific prediction.",
+    "wowFactor": "Mendeleev predicted undiscovered elements with such precision that when they were found years later, chemists checked his predictions first — and he was right every time!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Mendeleev's periodic table had gaps left for elements that hadn't been discovered yet.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "In what year did Mendeleev publish his periodic table?",
+        "answer": "1869",
+        "distractors": [
+          "1850",
+          "1890",
+          "1905"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Royal Society of Chemistry",
+    "sourceUrl": "https://www.rsc.org/periodic-table/history/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mendeleev's original periodic table with highlighted gaps beside discovery photos of gallium, scandium, and germanium",
+    "tags": [
+      "periodic table",
+      "Mendeleev",
+      "chemistry",
+      "elements",
+      "prediction"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-periodic-table-element-118",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Element 118, oganesson, is the heaviest known element on the periodic table — it was synthesized in 2002 by bombarding californium with calcium ions, and only a few atoms have ever been produced.",
+    "quizQuestion": "What is the heaviest element currently on the periodic table?",
+    "correctAnswer": "Oganesson (element 118)",
+    "distractors": [
+      "Uranium (element 92)",
+      "Plutonium (element 94)",
+      "Californium (element 98)",
+      "Meitnerium (element 109)",
+      "Flerovium (element 114)",
+      "Copernicium (element 112)",
+      "Tennessine (element 117)",
+      "Nihonium (element 113)"
+    ],
+    "acceptableAnswers": [
+      "oganesson",
+      "element 118"
+    ],
+    "explanation": "Oganesson (Og, atomic number 118) was first synthesized in 2002 at the Joint Institute for Nuclear Research (JINR) in Dubna, Russia. Scientists bombarded californium-249 with calcium-48 ions, producing approximately 5 atoms over several experiments. It's named after Yuri Oganessian, a pioneer of superheavy element research. With a half-life of less than a millisecond, oganesson barely exists long enough to detect — its chemical properties are essentially unknown.",
+    "wowFactor": "The heaviest known element was invented by humans — only about 5 atoms of oganesson have ever existed, and each lasted less than a millisecond!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Uranium is the heaviest element on the periodic table.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Who is the heaviest periodic table element (oganesson) named after?",
+        "answer": "Yuri Oganessian, a Russian nuclear physicist",
+        "distractors": [
+          "Marie Curie",
+          "Albert Einstein",
+          "Dmitri Mendeleev"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "IUPAC",
+    "sourceUrl": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Periodic table with element 118 highlighted at the far right, showing its synthesis diagram with particle accelerator",
+    "tags": [
+      "periodic table",
+      "oganesson",
+      "chemistry",
+      "elements",
+      "nuclear"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-periodic-table-organizing-principle",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Elements in the same column (group) of the periodic table have the same number of outer electrons and share similar chemical properties — this electron configuration is the actual organizing principle, not atomic weight as Mendeleev originally thought.",
+    "quizQuestion": "What is the actual organizing principle behind elements sharing properties in the same column of the periodic table?",
+    "correctAnswer": "Elements in the same column have the same number of valence (outer) electrons",
+    "distractors": [
+      "Elements in the same column have the same atomic mass",
+      "Elements in the same column have the same number of protons",
+      "Elements in the same column were discovered in the same era",
+      "Elements in the same column have similar physical appearances",
+      "Elements in the same column react with water in the same way by coincidence",
+      "Elements in the same column are all metals or all non-metals",
+      "Elements in the same column have the same number of neutrons",
+      "Elements in the same column exist at the same state at room temperature"
+    ],
+    "acceptableAnswers": [
+      "valence electrons",
+      "outer electrons",
+      "same number of outer electrons"
+    ],
+    "explanation": "Mendeleev organized by atomic weight, but modern understanding explains the periodicity through electron shell configuration. Elements in a group (column) share the same number of valence electrons — the electrons in the outermost shell that participate in bonding. Lithium, sodium, potassium, and francium (all in Group 1) each have 1 valence electron and are all reactive metals that form +1 ions. Helium, neon, argon (Group 18) all have full outer shells — making them noble gases that barely react at all.",
+    "wowFactor": "The periodic table's pattern is really a map of electron arrangements — chemistry is almost entirely determined by just the outermost electrons of each atom!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Mendeleev organized the periodic table based on electron configuration.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Khan Academy Chemistry",
+    "sourceUrl": "https://www.khanacademy.org/science/ap-chemistry-beta/x2eef969c74e0d802:atomic-structure-and-properties/x2eef969c74e0d802:periodic-table/a/electron-configuration-periodic-table",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Periodic table with Group 1 and Group 18 highlighted, showing electron configuration diagrams for each column",
+    "tags": [
+      "periodic table",
+      "electrons",
+      "chemistry",
+      "valence",
+      "groups"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-volcano-ring-of-fire",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "geology",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "geology",
+    "categoryL3": "",
+    "statement": "The 'Ring of Fire' encircling the Pacific Ocean contains 75% of the world's active volcanoes and is responsible for about 90% of all earthquakes — it marks where tectonic plates meet and subduct.",
+    "quizQuestion": "What percentage of the world's active volcanoes are found in the Ring of Fire?",
+    "correctAnswer": "About 75%",
+    "distractors": [
+      "About 25%",
+      "About 50%",
+      "About 90%",
+      "About 100%",
+      "About 10%",
+      "About 40%",
+      "About 60%",
+      "About 30%"
+    ],
+    "acceptableAnswers": [
+      "75%",
+      "about 75 percent"
+    ],
+    "explanation": "The Ring of Fire is a horseshoe-shaped zone about 40,000 km long encircling the Pacific Ocean. It includes the coasts of North and South America (including the Andes and Cascades), across to Japan, the Philippines, and New Zealand. It marks where the Pacific Plate and other oceanic plates subduct under continental plates. As oceanic crust sinks into the mantle, it melts and produces magma that rises, creating volcanoes. The Ring contains about 450 active volcanoes (75% of the world's total) and generates ~90% of earthquakes.",
+    "wowFactor": "Three-quarters of all Earth's volcanoes ring a single ocean — the Pacific is literally circled by a necklace of fire!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Ring of Fire encircles the Atlantic Ocean.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What causes the volcanoes in the Ring of Fire?",
+        "answer": "Oceanic plates subducting under continental plates",
+        "distractors": [
+          "Hotspots from deep mantle plumes",
+          "Rifting apart of continental plates",
+          "Asteroid impacts melting the crust"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "USGS",
+    "sourceUrl": "https://www.usgs.gov/programs/VHP/ring-fire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of the Pacific Ocean with Ring of Fire highlighted in red, showing active volcanoes as orange dots",
+    "tags": [
+      "volcanoes",
+      "Ring of Fire",
+      "Pacific",
+      "geology",
+      "earthquakes",
+      "tectonic plates"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-volcano-yellowstone-supervolcano",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "geology",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "geology",
+    "categoryL3": "",
+    "statement": "Yellowstone National Park sits atop a supervolcano that last erupted 640,000 years ago — if it erupted again at full scale, it would blanket half the United States in ash and trigger a volcanic winter.",
+    "quizQuestion": "When did Yellowstone's supervolcano last have a major eruption?",
+    "correctAnswer": "About 640,000 years ago",
+    "distractors": [
+      "About 10,000 years ago",
+      "About 1 million years ago",
+      "About 100,000 years ago",
+      "About 5 million years ago",
+      "About 2,000 years ago",
+      "About 300,000 years ago",
+      "About 50,000 years ago",
+      "About 10 million years ago"
+    ],
+    "acceptableAnswers": [
+      "640,000 years ago",
+      "640,000 years"
+    ],
+    "explanation": "Yellowstone sits on a hotspot above a mantle plume that has fueled three major eruptions: 2.1 million years ago (Huckleberry Ridge), 1.3 million years ago (Mesa Falls), and 640,000 years ago (Lava Creek). The caldera visible in Yellowstone is 72 × 55 km — the collapsed remnant of the last eruption. A full-scale eruption would eject 1,000 km³ of material, blanket North America in ash, disrupt agriculture globally, and potentially trigger a volcanic winter. Scientists monitor Yellowstone closely, but probability of eruption in the near future is low.",
+    "wowFactor": "Yellowstone is essentially a volcano the size of a city — and Yellowstone Lake sits in its caldera, where tourists camp just above a magma chamber!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Yellowstone National Park sits atop a supervolcano.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What feature of Yellowstone's landscape is actually the collapsed remnant of its last eruption?",
+        "answer": "The Yellowstone caldera (72 × 55 km basin)",
+        "distractors": [
+          "Old Faithful geyser",
+          "Yellowstone Lake",
+          "The Grand Canyon of the Yellowstone"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "USGS Yellowstone Volcano Observatory",
+    "sourceUrl": "https://www.usgs.gov/volcanoes/yellowstone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Satellite view of Yellowstone with caldera outlined, alongside a size comparison showing it dwarfing major cities",
+    "tags": [
+      "Yellowstone",
+      "supervolcano",
+      "geology",
+      "USA",
+      "volcanoes"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-volcano-eruption-types",
+    "type": "knowledge",
+    "domain": "natural_sciences",
+    "subdomain": "geology",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "geology",
+    "categoryL3": "",
+    "statement": "Volcanic eruption styles range from gentle Hawaiian lava flows to explosive Plinian eruptions that blast ash 45 km into the stratosphere — the difference depends on magma viscosity and gas content.",
+    "quizQuestion": "What primarily determines whether a volcanic eruption is gentle or explosive?",
+    "correctAnswer": "Magma viscosity and dissolved gas content",
+    "distractors": [
+      "The volcano's height and age",
+      "The temperature of the magma alone",
+      "Whether the volcano is on an ocean island or continent",
+      "The time since the last eruption",
+      "Whether the magma contains iron or silicon",
+      "The depth of the magma chamber",
+      "The number of tectonic plates involved",
+      "Whether it's day or night when eruption occurs"
+    ],
+    "acceptableAnswers": [
+      "magma viscosity and gas",
+      "viscosity",
+      "gas content"
+    ],
+    "explanation": "Low-viscosity basaltic magma (from Hawaii) allows dissolved gases to escape gradually, producing effusive lava flows. High-viscosity silica-rich magma (from stratovolcanoes) traps gases under pressure — when it reaches the surface, gases suddenly escape, explosively fragmenting magma into ash and pyroclasts. The most violent eruption type (Plinian, named after Pliny the Elder who died at Pompeii) can send ash 45 km into the stratosphere, where it circulates globally and can cause years of cooling. Pompeii (79 AD) and Pinatubo (1991) were Plinian eruptions.",
+    "wowFactor": "Pompeii's destruction and global climate effects from Pinatubo both came from the same mechanism — magma too thick to let its gas escape quietly!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Hawaiian volcanic eruptions and the eruption that destroyed Pompeii have the same style.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What type of eruption is named after the Roman naturalist who died observing the 79 AD Vesuvius eruption?",
+        "answer": "Plinian eruption (named after Pliny the Elder)",
+        "distractors": [
+          "Hawaiian eruption",
+          "Strombolian eruption",
+          "Vulcanian eruption"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "USGS",
+    "sourceUrl": "https://www.usgs.gov/programs/VHP/types-volcanic-eruptions",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side comparison of Hawaiian lava flow vs. Plinian ash column eruption, with viscosity scale below",
+    "tags": [
+      "volcanoes",
+      "eruption types",
+      "geology",
+      "Plinian",
+      "Hawaii",
+      "magma"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

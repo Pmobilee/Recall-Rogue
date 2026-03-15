@@ -6628,5 +6628,1865 @@
       "Arjuna",
       "Hinduism"
     ]
+  },
+  {
+    "id": "art-academy-awards-founding-year",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "film",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "film",
+    "categoryL3": "awards",
+    "statement": "The Academy Awards were first held in 1929, honoring films from 1927–1928.",
+    "quizQuestion": "In what year were the first Academy Awards held?",
+    "correctAnswer": "1929",
+    "distractors": [
+      "1935",
+      "1922",
+      "1945",
+      "1950"
+    ],
+    "acceptableAnswers": [
+      "1929"
+    ],
+    "explanation": "The 1st Academy Awards ceremony was held on May 16, 1929, at the Hollywood Roosevelt Hotel, lasting only 15 minutes.",
+    "wowFactor": "The first Oscars ceremony lasted just 15 minutes — winners were announced three months in advance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When were the first Academy Awards held?",
+        "answer": "1929",
+        "distractors": [
+          "1935",
+          "1922",
+          "1945"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The first Academy Awards were held in the 1920s.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Awards",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Black-and-white photo of the 1929 Hollywood Roosevelt Hotel lobby glittering with early film stars.",
+    "tags": [
+      "Academy Awards",
+      "Oscars",
+      "film",
+      "history",
+      "1929"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-academy-awards-oscar-nickname",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "film",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "film",
+    "categoryL3": "awards",
+    "statement": "The Academy Award statuette is commonly known as 'Oscar,' a nickname that became official in 1939.",
+    "quizQuestion": "What is the common nickname for the Academy Award statuette?",
+    "correctAnswer": "Oscar",
+    "distractors": [
+      "Emmy",
+      "Golden Guy",
+      "The Knight",
+      "Trophy"
+    ],
+    "acceptableAnswers": [
+      "Oscar",
+      "the Oscar"
+    ],
+    "explanation": "The nickname 'Oscar' is attributed to several people including Bette Davis and Margaret Herrick, who supposedly said it resembled her uncle Oscar.",
+    "wowFactor": "Nobody is sure who first called it 'Oscar' — both Bette Davis and an Academy librarian are credited with the nickname.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Academy Award statuette called?",
+        "answer": "Oscar",
+        "distractors": [
+          "Emmy",
+          "Golden Guy",
+          "The Knight"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Academy Award trophy is nicknamed 'Oscar'.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Award_statuette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gold-plated Oscar statuette gleaming under bright lights on a red velvet podium.",
+    "tags": [
+      "Oscar",
+      "Academy Awards",
+      "statuette",
+      "film",
+      "nickname"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-academy-awards-most-wins-film",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "film",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "film",
+    "categoryL3": "awards",
+    "statement": "Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Academy Awards — the most ever for a single film.",
+    "quizQuestion": "What is the record number of Academy Awards won by a single film?",
+    "correctAnswer": "11",
+    "distractors": [
+      "9",
+      "13",
+      "8",
+      "14"
+    ],
+    "acceptableAnswers": [
+      "11",
+      "eleven"
+    ],
+    "explanation": "Three films share the record of 11 wins: Ben-Hur, Titanic, and Return of the King. Each also had 11+ nominations.",
+    "wowFactor": "Return of the King won all 11 categories it was nominated for — a perfect sweep never matched before or since.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Oscars did the record-holding films win?",
+        "answer": "11",
+        "distractors": [
+          "9",
+          "13",
+          "8"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which film swept all its Oscar nominations in 2003?",
+        "answer": "The Lord of the Rings: The Return of the King",
+        "distractors": [
+          "Titanic",
+          "Ben-Hur",
+          "Schindler's List"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Awards_records_and_statistics",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A shelf displaying 11 gleaming Oscar statuettes side by side, dramatic spotlights above.",
+    "tags": [
+      "Academy Awards",
+      "Oscars",
+      "Ben-Hur",
+      "Titanic",
+      "Lord of the Rings",
+      "record"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-academy-awards-first-televised",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "film",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "film",
+    "categoryL3": "awards",
+    "statement": "The Academy Awards were first broadcast on television in 1953, reaching a nationwide audience for the first time.",
+    "quizQuestion": "In what year were the Academy Awards first broadcast on television?",
+    "correctAnswer": "1953",
+    "distractors": [
+      "1960",
+      "1948",
+      "1965",
+      "1970"
+    ],
+    "acceptableAnswers": [
+      "1953"
+    ],
+    "explanation": "The 25th Academy Awards in 1953 was the first to be televised, airing on NBC and dramatically expanding the ceremony's audience.",
+    "wowFactor": "TV rights transformed the Oscars from a Hollywood insiders' dinner into a global cultural event overnight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When were the Oscars first televised?",
+        "answer": "1953",
+        "distractors": [
+          "1960",
+          "1948",
+          "1965"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Academy Awards were first televised in the 1950s.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/25th_Academy_Awards",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1950s family gathered around a boxy black-and-white television watching a glamorous awards ceremony.",
+    "tags": [
+      "Academy Awards",
+      "Oscars",
+      "television",
+      "1953",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-academy-awards-statuette-material",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "film",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "film",
+    "categoryL3": "awards",
+    "statement": "The Oscar statuette is made of solid tin and antimony, then plated with copper, nickel, silver, and finally 24-karat gold.",
+    "quizQuestion": "What precious metal coats the outside of the Oscar statuette?",
+    "correctAnswer": "24-karat gold",
+    "distractors": [
+      "Pure gold",
+      "Silver",
+      "Platinum",
+      "Bronze"
+    ],
+    "acceptableAnswers": [
+      "24-karat gold",
+      "gold",
+      "24k gold"
+    ],
+    "explanation": "Despite its golden appearance, the Oscar is not solid gold. It's a base alloy plated through several layers, finishing with 24-karat gold.",
+    "wowFactor": "During WWII, Oscars were made of painted plaster because metals were rationed — winners later exchanged them for the real thing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What coats the outside of the Oscar statuette?",
+        "answer": "24-karat gold",
+        "distractors": [
+          "Silver",
+          "Platinum",
+          "Bronze"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Oscar statuette is made of solid gold.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Award_statuette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of an Oscar statuette's golden surface catching light, with a jeweler's loupe beside it.",
+    "tags": [
+      "Oscar",
+      "statuette",
+      "gold",
+      "materials",
+      "Academy Awards"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-doctor-who-original-run-length",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "television",
+    "categoryL1": "Art & Culture",
+    "categoryL2": "Television",
+    "categoryL3": "",
+    "statement": "Doctor Who's original run spanned 26 years, from 1963 to 1989.",
+    "quizQuestion": "How long did Doctor Who's original uninterrupted run last?",
+    "correctAnswer": "26 years (1963–1989)",
+    "distractors": [
+      "10 years (1963–1973)",
+      "15 years (1963–1978)",
+      "20 years (1963–1983)",
+      "30 years (1963–1993)",
+      "18 years (1971–1989)",
+      "12 years (1963–1975)",
+      "35 years (1963–1998)",
+      "8 years (1963–1971)"
+    ],
+    "acceptableAnswers": [
+      "26 years",
+      "1963 to 1989",
+      "1963–1989"
+    ],
+    "explanation": "Doctor Who first aired on BBC One on 23 November 1963, the day after President Kennedy's assassination. The show ran continuously until it was put on 'indefinite hiatus' in 1989, totalling 26 seasons. It was revived in 2005 and has continued since, making the gap between the classic and modern eras 16 years.",
+    "wowFactor": "Doctor Who premiered the day after JFK was assassinated — its first broadcast was almost cancelled and had to be repeated the following week because the nation was glued to news coverage.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "BBC — Doctor Who History",
+    "sourceUrl": "https://www.bbc.co.uk/doctorwho/classic/history",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vintage BBC studio set from 1960s Doctor Who, with the TARDIS console in the centre and period-appropriate set dressing",
+    "tags": [
+      "Doctor Who",
+      "BBC",
+      "television",
+      "science fiction",
+      "classic TV"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-doctor-who-tardis-police-box-design",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "television",
+    "categoryL1": "Art & Culture",
+    "categoryL2": "Television",
+    "categoryL3": "",
+    "statement": "The TARDIS design is based on a real 1929 Metropolitan Police telephone box.",
+    "quizQuestion": "What real-world object is the TARDIS design based on?",
+    "correctAnswer": "A 1929 Metropolitan Police telephone box",
+    "distractors": [
+      "A Victorian post box",
+      "A London red telephone box",
+      "A 1950s American phone booth",
+      "A railway signal box",
+      "A wartime air-raid shelter",
+      "A Giles Gilbert Scott kiosk design",
+      "A 1930s BBC broadcast van",
+      "A Victorian gas lamp housing"
+    ],
+    "acceptableAnswers": [
+      "Metropolitan Police box",
+      "police box",
+      "police telephone box",
+      "Metropolitan Police telephone box"
+    ],
+    "explanation": "The TARDIS's iconic blue police box appearance was chosen for the show because police boxes were a common sight on British streets in 1963. The prop was designed by BBC designer Peter Brachacki. The story goes that the TARDIS's chameleon circuit — which should disguise it as local surroundings — broke in 1960s London, permanently locking its appearance as a police box.",
+    "wowFactor": "The BBC actually owns the trademark to the police box design as an image — meaning the Metropolitan Police cannot use their own historical design without BBC permission.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "BBC — TARDIS Design History",
+    "sourceUrl": "https://www.bbc.co.uk/doctorwho/classic/tardis",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side comparison of a real 1929 Metropolitan Police blue telephone box and the TARDIS prop",
+    "tags": [
+      "Doctor Who",
+      "TARDIS",
+      "BBC",
+      "police box",
+      "design history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-doctor-who-regeneration-invented",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "television",
+    "categoryL1": "Art & Culture",
+    "categoryL2": "Television",
+    "categoryL3": "",
+    "statement": "The concept of regeneration was invented in 1966 to replace the ailing William Hartnell as the First Doctor.",
+    "quizQuestion": "Why was the concept of regeneration invented for Doctor Who?",
+    "correctAnswer": "To replace the ill actor William Hartnell with a new actor",
+    "distractors": [
+      "To allow the show to change genre each season",
+      "It was planned from the very first episode",
+      "To save money on makeup for an ageing cast",
+      "To compete with American shows that changed lead actors",
+      "Because the BBC contract system required rotating lead roles",
+      "To explain why the Doctor could travel through time",
+      "To introduce the concept of Time Lord biology",
+      "At the request of writer Terrance Dicks"
+    ],
+    "acceptableAnswers": [
+      "to replace William Hartnell",
+      "because William Hartnell was ill",
+      "Hartnell was sick and had to be replaced"
+    ],
+    "explanation": "William Hartnell, the First Doctor, suffered from arteriosclerosis which increasingly affected his memory and performance. Script editor Gerry Davis and producer Innes Lloyd devised the regeneration concept — originally called 'renewal' — as a storytelling device to replace him. Patrick Troughton took over as the Second Doctor in 1966, setting a precedent that has kept the show running for over six decades.",
+    "wowFactor": "The decision to replace a lead actor rather than end the show is considered one of the most brilliant creative solutions in television history — turning a crisis into a feature.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Doctor Who: The Unfolding Text — Tulloch & Alvarado",
+    "sourceUrl": "https://www.bbc.co.uk/doctorwho/classic/history/regeneration",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "William Hartnell's aged face dissolving into Patrick Troughton's younger face in a swirl of light — the first regeneration in 1966",
+    "tags": [
+      "Doctor Who",
+      "regeneration",
+      "William Hartnell",
+      "Patrick Troughton",
+      "BBC",
+      "television history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-doctor-who-guinness-longest-scifi",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "television",
+    "categoryL1": "Art & Culture",
+    "categoryL2": "Television",
+    "categoryL3": "",
+    "statement": "Doctor Who holds the Guinness World Record for the longest-running science fiction television series.",
+    "quizQuestion": "What Guinness World Record does Doctor Who hold?",
+    "correctAnswer": "Longest-running science fiction TV series",
+    "distractors": [
+      "Most watched sci-fi series of all time",
+      "Most episodes of any drama series",
+      "Highest viewership for a sci-fi finale",
+      "Most alien characters ever depicted",
+      "Longest single episode in TV history",
+      "Most spin-off shows from a single series",
+      "Largest cast across all seasons",
+      "Most countries to broadcast a single drama"
+    ],
+    "acceptableAnswers": [
+      "longest-running sci-fi show",
+      "longest sci-fi TV series",
+      "longest running science fiction television show"
+    ],
+    "explanation": "Doctor Who holds the Guinness World Record as the longest-running science fiction television series, a record it has held since the 1990s. Including both the classic era (1963–1989) and the revived series (2005–present), it has accumulated over 800 episodes across more than 60 years, with no other sci-fi series coming close to its combined total.",
+    "wowFactor": "Doctor Who has been broadcast in more than 50 countries and has been translated into dozens of languages — all starting from a shoestring BBC budget in 1963.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Guinness World Records — Doctor Who",
+    "sourceUrl": "https://www.guinnessworldrecords.com/world-records/longest-running-science-fiction-tv-series",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Guinness World Records certificate displayed next to the TARDIS prop on a BBC stage set",
+    "tags": [
+      "Doctor Who",
+      "Guinness World Records",
+      "television",
+      "science fiction",
+      "longest running"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-doctor-who-bbc-wiped-episodes",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "television",
+    "categoryL1": "Art & Culture",
+    "categoryL2": "Television",
+    "categoryL3": "",
+    "statement": "The BBC deliberately destroyed over 97 Doctor Who episodes in the 1960s–70s to reuse expensive videotape.",
+    "quizQuestion": "Why did the BBC destroy over 97 Doctor Who episodes?",
+    "correctAnswer": "To reuse the expensive videotape they were recorded on",
+    "distractors": [
+      "To prevent competitors from broadcasting old episodes",
+      "Due to a warehouse fire in 1974",
+      "Because the actors' contracts required it",
+      "To prevent embarrassing early production quality being seen",
+      "Because the BBC had no archive storage policy",
+      "By accident during a building move",
+      "To comply with union regulations on broadcast rights",
+      "Because the show's creator requested the originals destroyed"
+    ],
+    "acceptableAnswers": [
+      "to reuse videotape",
+      "tape was expensive and reused",
+      "the videotape was reused"
+    ],
+    "explanation": "In the 1960s and 70s, the BBC operated a routine policy of wiping and junking broadcast recordings. Videotape was extremely expensive, and the BBC had no concept of an archive — programmes were considered disposable after their initial broadcast. Over 97 episodes from the Hartnell and Troughton eras were deliberately wiped. Recovery efforts — including finds in dusty foreign broadcaster archives — have since recovered some episodes, but many remain missing.",
+    "wowFactor": "Some missing episodes were found in a Nigerian TV station's storage room in 2013 — they had been forgotten there since the BBC sent copies in the 1960s.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "BBC — Missing Doctor Who Episodes",
+    "sourceUrl": "https://www.bbc.co.uk/doctorwho/classic/missingepisodes",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A BBC technician in 1960s clothing operating a reel-to-reel videotape machine, with stacks of tapes labelled for reuse",
+    "tags": [
+      "Doctor Who",
+      "BBC",
+      "missing episodes",
+      "wiped recordings",
+      "television history",
+      "archive"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-shakespeare-globe-theatre",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "famous_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "famous_buildings",
+    "categoryL3": "",
+    "statement": "The reconstructed Globe Theatre in London stands about 230 metres from the original 1599 site.",
+    "quizQuestion": "How far is the rebuilt Globe Theatre from the original 1599 site?",
+    "correctAnswer": "About 230 metres",
+    "distractors": [
+      "On the exact same spot",
+      "500 metres",
+      "1 kilometre",
+      "50 metres",
+      "2 kilometres",
+      "100 metres",
+      "5 kilometres"
+    ],
+    "acceptableAnswers": [
+      "230 metres",
+      "about 230 metres",
+      "230 meters"
+    ],
+    "explanation": "Shakespeare's Globe was rebuilt in 1997 as Shakespeare's Globe Theatre, located approximately 230 metres from where the original stood in Southwark, London. The original was demolished in 1644.",
+    "wowFactor": "The reconstructed Globe used traditional Elizabethan building methods and is the only thatched roof permitted in London since the Great Fire of 1666.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far is the rebuilt Globe Theatre from the original 1599 site?",
+        "answer": "About 230 metres",
+        "distractors": [
+          "On the exact same spot",
+          "1 kilometre",
+          "500 metres"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year did Shakespeare's original Globe Theatre open?",
+        "answer": "1599",
+        "distractors": [
+          "1564",
+          "1603",
+          "1623"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The current Globe Theatre stands on the exact site of the original 1599 theatre.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The rebuilt Globe Theatre is approximately ___ metres from the original site.",
+        "answer": "230",
+        "distractors": [
+          "500",
+          "50",
+          "1000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shakespeare%27s_Globe",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The round thatched Globe Theatre on the South Bank of the Thames, crowds of Elizabethan-costumed visitors gathered outside under a cloudy London sky.",
+    "tags": [
+      "Shakespeare",
+      "Globe Theatre",
+      "London",
+      "theatre",
+      "famous_buildings"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-shakespeare-invented-words",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_history_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_history_movements",
+    "categoryL3": "",
+    "statement": "Shakespeare invented or first recorded over 1,700 words in the English language.",
+    "quizQuestion": "Approximately how many English words did Shakespeare invent or first record?",
+    "correctAnswer": "Over 1,700",
+    "distractors": [
+      "About 50",
+      "Around 300",
+      "More than 5,000",
+      "Fewer than 100",
+      "About 700",
+      "Exactly 1,000",
+      "Over 10,000"
+    ],
+    "acceptableAnswers": [
+      "1,700",
+      "over 1,700",
+      "1700",
+      "more than 1,700"
+    ],
+    "explanation": "Shakespeare coined or first used words like 'bedroom', 'lonely', 'generous', 'gloomy', 'fashionable', and 'swagger'. His plays are among the earliest recorded uses of over 1,700 English words.",
+    "wowFactor": "Every time you say 'bedroom', 'lonely', or 'generous', you're using a word Shakespeare gave the English language.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many English words did Shakespeare invent or first record?",
+        "answer": "Over 1,700",
+        "distractors": [
+          "About 300",
+          "More than 5,000",
+          "About 50"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which word is an example of one Shakespeare invented?",
+        "answer": "Bedroom",
+        "distractors": [
+          "House",
+          "King",
+          "Battle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Shakespeare invented or first recorded over 1,700 English words.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Shakespeare invented or first recorded over ___ English words.",
+        "answer": "1,700",
+        "distractors": [
+          "100",
+          "500",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shakespeare%27s_influence_on_the_English_language",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Shakespeare at a candlelit desk quill in hand, surrounded by floating glowing words like 'bedroom', 'lonely', 'swagger' emerging from his manuscripts.",
+    "tags": [
+      "Shakespeare",
+      "English language",
+      "words",
+      "vocabulary",
+      "literature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-shakespeare-lost-years",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_history_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_history_movements",
+    "categoryL3": "",
+    "statement": "There are seven undocumented 'lost years' in Shakespeare's life, from around age 21 to 28.",
+    "quizQuestion": "What are Shakespeare's 'lost years'?",
+    "correctAnswer": "Seven undocumented years between ages 21 and 28",
+    "distractors": [
+      "His childhood before age 10",
+      "Years spent in prison",
+      "Time living abroad in Italy",
+      "His final years in retirement",
+      "Years he stopped writing",
+      "A period of mental illness",
+      "Time spent at sea"
+    ],
+    "acceptableAnswers": [
+      "Seven undocumented years",
+      "ages 21 to 28",
+      "undocumented years between 21 and 28"
+    ],
+    "explanation": "Historians have no documentation of Shakespeare's activities between roughly 1585 (when his twins were baptized) and 1592 (when he first appears in London theatre records). Theories include teaching, travelling, and working for a law firm.",
+    "wowFactor": "The most famous writer in the English language essentially vanished from the historical record for seven years — no one knows what he was doing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are Shakespeare's 'lost years'?",
+        "answer": "Seven undocumented years between ages 21 and 28",
+        "distractors": [
+          "His childhood",
+          "Final years in retirement",
+          "Time in prison"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At approximately what age did Shakespeare's 'lost years' begin?",
+        "answer": "21",
+        "distractors": [
+          "14",
+          "35",
+          "18"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Historians have no documentation of Shakespeare's life for about 7 years in his twenties.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Shakespeare's 'lost years' span approximately ___ undocumented years.",
+        "answer": "seven",
+        "distractors": [
+          "two",
+          "twenty",
+          "one"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lost_years_(Shakespeare)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A shadowy silhouette of a young man walking into fog on an Elizabethan road, question marks floating in the mist, a quill left behind.",
+    "tags": [
+      "Shakespeare",
+      "lost years",
+      "biography",
+      "mystery",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-shakespeare-first-folio",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "museums_institutions",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "museums_institutions",
+    "categoryL3": "",
+    "statement": "The 1623 First Folio saved 18 of Shakespeare's plays from being lost forever.",
+    "quizQuestion": "How many of Shakespeare's plays would have been lost if the 1623 First Folio had not been published?",
+    "correctAnswer": "18",
+    "distractors": [
+      "3",
+      "7",
+      "36",
+      "All of them",
+      "5",
+      "25",
+      "10"
+    ],
+    "acceptableAnswers": [
+      "18",
+      "eighteen"
+    ],
+    "explanation": "The First Folio, published in 1623 by Shakespeare's colleagues John Heminges and Henry Condell, collected 36 plays. Of these, 18 had never been printed before and would have been lost without this effort.",
+    "wowFactor": "Macbeth, The Tempest, Twelfth Night, and As You Like It all exist today only because two friends decided to preserve Shakespeare's work after his death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many of Shakespeare's plays would have been lost if the 1623 First Folio had not been published?",
+        "answer": "18",
+        "distractors": [
+          "7",
+          "36",
+          "3"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the First Folio of Shakespeare's works published?",
+        "answer": "1623",
+        "distractors": [
+          "1599",
+          "1616",
+          "1650"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Without the First Folio, 18 of Shakespeare's plays would have been lost.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The First Folio of ___ saved 18 plays from being lost forever.",
+        "answer": "Shakespeare",
+        "distractors": [
+          "Marlowe",
+          "Jonson",
+          "Chaucer"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/First_Folio",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ornate leather-bound book open on a wooden table, its pages glowing gold, with ghostly play titles like 'Macbeth' and 'The Tempest' rising from the text.",
+    "tags": [
+      "Shakespeare",
+      "First Folio",
+      "books",
+      "history",
+      "literature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-michael-jackson-thriller-sales",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "music",
+    "statement": "Michael Jackson's 'Thriller' (1982) is the best-selling album of all time with over 70 million copies sold worldwide.",
+    "quizQuestion": "What is the best-selling album of all time?",
+    "correctAnswer": "Thriller by Michael Jackson",
+    "distractors": [
+      "Back in Black by AC/DC",
+      "The Dark Side of the Moon by Pink Floyd",
+      "Led Zeppelin IV"
+    ],
+    "acceptableAnswers": [
+      "Thriller",
+      "Thriller by Michael Jackson",
+      "Michael Jackson's Thriller"
+    ],
+    "explanation": "Released in November 1982, Michael Jackson's 'Thriller' has sold an estimated 70 million copies worldwide, making it the best-selling album ever. Produced by Quincy Jones, it spawned seven Top 10 singles and won a record 8 Grammy Awards.",
+    "wowFactor": "Thriller spent 37 weeks at #1 on the Billboard 200 and its title track music video had a budget of $500,000 — unprecedented for the era.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the best-selling album of all time?",
+        "answer": "Thriller by Michael Jackson",
+        "distractors": [
+          "Back in Black by AC/DC",
+          "The Dark Side of the Moon by Pink Floyd",
+          "Led Zeppelin IV"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michael Jackson's Thriller has sold over 70 million copies worldwide.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thriller_(album)",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Michael Jackson's Thriller album cover with gold lettering",
+    "tags": [
+      "Michael Jackson",
+      "Thriller",
+      "album",
+      "music",
+      "record"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-michael-jackson-moonwalk-origin",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "music",
+    "statement": "Michael Jackson first performed the moonwalk publicly on May 16, 1983, during a Motown 25 TV special while singing 'Billie Jean'.",
+    "quizQuestion": "When did Michael Jackson first publicly perform the moonwalk?",
+    "correctAnswer": "1983 at Motown 25",
+    "distractors": [
+      "1979 at the Grammy Awards",
+      "1982 during the Thriller video",
+      "1985 during the Victory tour"
+    ],
+    "acceptableAnswers": [
+      "1983",
+      "Motown 25",
+      "1983 at Motown 25"
+    ],
+    "explanation": "On May 16, 1983, Michael Jackson performed 'Billie Jean' on the NBC special 'Motown 25: Yesterday, Today and Forever.' He wore his signature fedora and glove, debuting the backslide (moonwalk) to a worldwide TV audience. The move became an instant cultural phenomenon.",
+    "wowFactor": "Jackson later said he only rehearsed the moonwalk for a few hours before the performance, after seeing a similar move in a 1943 Cab Calloway film.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which TV special did Michael Jackson first publicly perform the moonwalk?",
+        "answer": "Motown 25",
+        "distractors": [
+          "Soul Train",
+          "American Bandstand",
+          "The Ed Sullivan Show"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michael Jackson first performed the moonwalk at Motown 25 in 1983.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moonwalk_(dance)",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Michael Jackson mid-moonwalk in his white socks and black loafers",
+    "tags": [
+      "Michael Jackson",
+      "moonwalk",
+      "dance",
+      "Motown",
+      "1983"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-michael-jackson-cultural-impact",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_history_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_history_movements",
+    "categoryL3": "music",
+    "statement": "Michael Jackson was the first Black artist to receive heavy rotation on MTV, breaking the network's de facto color barrier in 1983 with 'Billie Jean'.",
+    "quizQuestion": "What barrier did Michael Jackson break at MTV in 1983?",
+    "correctAnswer": "He became the first Black artist in heavy rotation",
+    "distractors": [
+      "He became the first artist to direct his own video",
+      "He was the first artist to premiere a video at midnight",
+      "He became the first solo artist to have three #1 singles"
+    ],
+    "acceptableAnswers": [
+      "first Black artist in heavy rotation",
+      "broke the color barrier at MTV",
+      "first Black artist on MTV"
+    ],
+    "explanation": "When MTV launched in 1981, it primarily played rock music videos and rarely aired Black artists. CBS Records president Walter Yetnikoff threatened to pull all CBS artists if MTV didn't air 'Billie Jean.' After relenting, the video became a sensation and opened MTV to Black artists including Prince and Whitney Houston.",
+    "wowFactor": "MTV's programming director initially rejected 'Billie Jean' calling it 'not rock and roll enough' — a decision that would have altered music history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What barrier did Michael Jackson break at MTV in 1983?",
+        "answer": "He became the first Black artist in heavy rotation",
+        "distractors": [
+          "He became the first artist to direct his own video",
+          "He was the first artist to premiere a video at midnight",
+          "He became the first solo artist to have three #1 singles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michael Jackson was among the first Black artists to receive heavy rotation on MTV.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Michael_Jackson",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "MTV logo with Michael Jackson's Billie Jean video playing",
+    "tags": [
+      "Michael Jackson",
+      "MTV",
+      "race",
+      "music history",
+      "civil rights"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-michael-jackson-billie-jean-glove",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "music",
+    "statement": "Michael Jackson wore a single rhinestone glove because he wanted one hand to catch stage lights and be visible from the back row of arenas.",
+    "quizQuestion": "Why did Michael Jackson wear only one rhinestone glove?",
+    "correctAnswer": "To be visible from the back of large arenas",
+    "distractors": [
+      "To hide a hand condition",
+      "For asymmetrical fashion statement",
+      "To signal song changes to his band"
+    ],
+    "acceptableAnswers": [
+      "visibility in arenas",
+      "to be seen from far away",
+      "arena visibility"
+    ],
+    "explanation": "Jackson deliberately wore one glove covered in 1,200 hand-sewn Swarovski crystals so that when he raised his hand, it would catch the light and be visible even from the nosebleed seats of a large arena. The single glove became one of pop culture's most iconic fashion statements.",
+    "wowFactor": "The glove Jackson wore at the Motown 25 performance sold at auction in 2009 for $190,373.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did Michael Jackson wear only one rhinestone glove?",
+        "answer": "To be visible from the back of large arenas",
+        "distractors": [
+          "To hide a hand condition",
+          "For asymmetrical fashion statement",
+          "To signal song changes to his band"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michael Jackson wore one glove primarily as a fashion statement with no practical purpose.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Various sources",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Michael_Jackson",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Michael Jackson's iconic single rhinestone glove on a black background",
+    "tags": [
+      "Michael Jackson",
+      "glove",
+      "fashion",
+      "performance",
+      "iconic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-music-oldest-instrument",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "music",
+    "categoryL1": "art_architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "The oldest known musical instruments are flutes carved from bird bone and mammoth ivory, found in Germany and dated to approximately 40,000 years ago.",
+    "quizQuestion": "What are the oldest known musical instruments, and approximately how old are they?",
+    "correctAnswer": "Bone and ivory flutes, about 40,000 years old",
+    "distractors": [
+      "Drums made from animal skin, about 10,000 years old",
+      "Stone percussion instruments, about 100,000 years old",
+      "Reed pipes made from grass, about 20,000 years old",
+      "Shell horns from coastal settlements, about 15,000 years old",
+      "Wooden lyres from ancient Egypt, about 5,000 years old",
+      "Clay whistles, about 30,000 years old",
+      "Rattles made from dried gourds, about 50,000 years old",
+      "Bronze bells from China, about 25,000 years old"
+    ],
+    "acceptableAnswers": [
+      "flutes from 40,000 years ago",
+      "bone flutes"
+    ],
+    "explanation": "Archaeologists found flutes made from vulture and swan bones, and also from mammoth ivory, in the Swabian Jura region of Germany. Dating to around 40,000 years ago, these instruments suggest music was part of early modern human culture shortly after they arrived in Europe. The flutes have multiple finger holes and could produce a full range of notes.",
+    "wowFactor": "Humans were playing complex flute music 40,000 years ago — long before writing, agriculture, or civilization!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The oldest known musical instruments are drums from ancient Egypt.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Where were the oldest known musical instruments discovered?",
+        "answer": "Germany (Swabian Jura)",
+        "distractors": [
+          "Egypt",
+          "China",
+          "Greece"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Nature",
+    "sourceUrl": "https://www.nature.com/articles/nature08169",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient bone flute fragments displayed in a museum case, with artist reconstruction of early human playing it",
+    "tags": [
+      "music",
+      "flute",
+      "prehistoric",
+      "archaeology",
+      "oldest instruments"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-music-universal-language",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "music",
+    "categoryL1": "art_architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "Research has shown that certain musical emotions — happiness, sadness, fear — are recognized cross-culturally, but the idea that music is a 'universal language' is contested because scales, rhythms, and harmonics vary enormously between cultures.",
+    "quizQuestion": "What has research found about emotional recognition in music across cultures?",
+    "correctAnswer": "Some basic emotions like happiness and sadness are recognized cross-culturally in music",
+    "distractors": [
+      "Music is completely culture-specific with no universal elements",
+      "All musical scales are recognized identically across all cultures",
+      "Rhythm but not melody is recognized across cultures",
+      "Only Western music has universally recognized emotional content",
+      "Music has no measurable emotional content — it's purely learned",
+      "Tempo alone determines whether music is happy or sad universally",
+      "All cultures use the same seven-note scale system",
+      "Music is genetically programmed with identical meaning in all humans"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Studies by researchers including Samuel Mehr and colleagues found that people from isolated societies (like the Tsimane in Bolivia) could identify some basic emotional properties of Western music. However, significant cultural variation exists in scales, rhythms, harmonics, and emotional associations. The claim that music is a 'universal language' is an oversimplification — it has universal elements but also profound cultural specificity.",
+    "wowFactor": "Even isolated Amazonian tribes can recognize happy vs. sad Western music — but they often find our harmony strange and dissonant!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Music is a completely universal language understood identically by all human cultures.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Science",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.aax0868",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with musical notes, showing diverse instruments from different cultures converging at a central point",
+    "tags": [
+      "music",
+      "culture",
+      "emotion",
+      "universal language",
+      "psychology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-music-sound-science",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "music",
+    "categoryL1": "art_architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "Music is organized sound — pitch is determined by the frequency of vibrations (Hz), while timbre is the quality that makes a violin sound different from a flute even on the same note.",
+    "quizQuestion": "What physical property determines the pitch of a musical note?",
+    "correctAnswer": "The frequency of sound wave vibrations (measured in Hz)",
+    "distractors": [
+      "The amplitude (loudness) of the sound wave",
+      "The speed at which sound travels through air",
+      "The wavelength of the sound as perceived by the ear",
+      "The number of overtones present in the sound",
+      "The temperature of the air when the sound is made",
+      "The resonance of the instrument's body",
+      "The attack and decay envelope of the note",
+      "The timbre of the instrument producing the sound"
+    ],
+    "acceptableAnswers": [
+      "frequency",
+      "Hz",
+      "vibration frequency"
+    ],
+    "explanation": "Pitch is determined by the frequency of a sound wave — how many times per second the air pressure oscillates. Middle A is 440 Hz (440 oscillations per second). Timbre (tone quality) is determined by the mix of overtones — a violin and flute both playing A440 sound different because they produce different combinations of harmonics alongside the fundamental frequency.",
+    "wowFactor": "Middle A at 440 Hz means the air is vibrating 440 times every single second — and your ear detects that as a specific pitch!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the standard frequency of the musical note 'Middle A'?",
+        "answer": "440 Hz",
+        "distractors": [
+          "220 Hz",
+          "880 Hz",
+          "392 Hz"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Timbre is what makes a violin and flute sound different even when playing the same note.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Physics of Music",
+    "sourceUrl": "https://www.physicsclassroom.com/class/sound/Lesson-4/Musical-Scales",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Sound wave diagram showing frequency differences between high and low pitch, with musical notes overlaid",
+    "tags": [
+      "music",
+      "physics",
+      "frequency",
+      "pitch",
+      "timbre",
+      "sound"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-music-mozart-effect-debunked",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "music",
+    "categoryL1": "art_architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "The 'Mozart Effect' — the idea that listening to Mozart makes babies smarter — was based on a misunderstood 1993 study and has been repeatedly debunked by subsequent research.",
+    "quizQuestion": "What did follow-up research find about the 'Mozart Effect' claim that Mozart makes babies smarter?",
+    "correctAnswer": "It was debunked — the original study was misinterpreted and results don't replicate",
+    "distractors": [
+      "The Mozart Effect was confirmed to be real and permanent",
+      "Only classical music after 1750 has the intelligence-boosting effect",
+      "The effect works only for children under 6 months",
+      "The effect is real but limited to spatial reasoning tasks",
+      "The effect is enhanced by playing Mozart in the womb",
+      "Mozart specifically works better than other classical composers",
+      "The effect requires 30 minutes of daily listening to manifest",
+      "It was confirmed to increase IQ by an average of 8 points"
+    ],
+    "acceptableAnswers": [
+      "debunked",
+      "not real",
+      "myth"
+    ],
+    "explanation": "The original 1993 study showed a temporary improvement in one spatial reasoning task (paper-folding) in college students who had just listened to Mozart for 10 minutes. The effect lasted about 10-15 minutes. This was blown into the myth that playing Mozart to babies increases intelligence. Subsequent research found no lasting effect, and a 2010 meta-analysis confirmed the Mozart Effect for babies is unfounded. Music education, however, does appear to have real cognitive benefits.",
+    "wowFactor": "Millions of parents played Mozart to their babies based on a study that didn't even involve babies — and it only lasted 10 minutes!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Mozart Effect — that listening to Mozart permanently raises intelligence — has been scientifically confirmed.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "The original 1993 Mozart Effect study was conducted on which subjects?",
+        "answer": "College students, not babies",
+        "distractors": [
+          "Newborn infants",
+          "Pregnant women",
+          "Toddlers aged 2-3"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Nature",
+    "sourceUrl": "https://www.nature.com/articles/364611a0",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Baby with headphones next to a Mozart portrait, with a red X through a 'smart baby' chart — debunking imagery",
+    "tags": [
+      "music",
+      "Mozart",
+      "myth",
+      "intelligence",
+      "psychology",
+      "debunked"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-2001-odyssey-no-dialogue",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "film",
+    "categoryL1": "art_architecture",
+    "categoryL2": "film",
+    "categoryL3": "",
+    "statement": "Stanley Kubrick's 2001: A Space Odyssey (1968) contains only 88 lines of dialogue across its 149-minute runtime, with the first 25 minutes having no dialogue at all.",
+    "quizQuestion": "How many minutes into 2001: A Space Odyssey does the first dialogue occur?",
+    "correctAnswer": "About 25 minutes",
+    "distractors": [
+      "Immediately — the film opens with dialogue",
+      "After 5 minutes",
+      "After 45 minutes",
+      "After 1 hour",
+      "After 10 minutes",
+      "The film has no dialogue at all",
+      "After 15 minutes",
+      "After the intermission"
+    ],
+    "acceptableAnswers": [
+      "25 minutes",
+      "25 min"
+    ],
+    "explanation": "2001: A Space Odyssey begins with a black screen and Also Sprach Zarathustra, then 'The Dawn of Man' sequence with apes — entirely without dialogue for the first 25 minutes. The film uses silence and music to tell its story, with HAL 9000 delivering some of cinema's most memorable lines despite the sparse dialogue overall. Kubrick famously believed images and music could communicate more powerfully than words.",
+    "wowFactor": "One of cinema's greatest films has barely any talking — and its most memorable character is a computer voice!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "2001: A Space Odyssey begins with 25 minutes of no dialogue.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Film analysis",
+    "sourceUrl": "https://www.imdb.com/title/tt0062622/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The iconic 2001 Star Gate sequence in rainbow colors against a black void",
+    "tags": [
+      "2001 Space Odyssey",
+      "Kubrick",
+      "film",
+      "dialogue",
+      "cinema"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-2001-odyssey-special-effects",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "film",
+    "categoryL1": "art_architecture",
+    "categoryL2": "film",
+    "categoryL3": "",
+    "statement": "2001: A Space Odyssey's groundbreaking special effects were created entirely without computers — using front projection, practical sets, and painstaking photography achieved 58 years before modern CGI.",
+    "quizQuestion": "How were the special effects in 2001: A Space Odyssey (1968) created?",
+    "correctAnswer": "Entirely with practical effects and photography — no computers were used",
+    "distractors": [
+      "Early computer-generated imagery from NASA",
+      "Mainly miniatures supplemented by early digital compositing",
+      "Actual footage filmed in space by NASA astronauts",
+      "Rotoscoping over NASA footage",
+      "Stop-motion animation with painted backdrops",
+      "Early green screen technology developed for the film",
+      "IBM computers programmed by Kubrick himself",
+      "Hand-painted cels composited frame by frame"
+    ],
+    "acceptableAnswers": [
+      "practical effects",
+      "no CGI"
+    ],
+    "explanation": "Kubrick and effects supervisor Douglas Trumbull achieved all of 2001's space visuals through front projection, slit-scan photography (for the Star Gate), carefully scaled models, and extraordinary attention to lighting. The film's depiction of zero gravity, the lunar surface, and space travel was so convincing that some conspiracy theorists have claimed Kubrick faked the Moon landings. The film won an Academy Award for its effects in 1969.",
+    "wowFactor": "2001's space sequences look better than many modern blockbusters — all done without a single computer in 1968!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "2001: A Space Odyssey used early computer-generated imagery for its special effects.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What photographic technique created the psychedelic Star Gate sequence in 2001?",
+        "answer": "Slit-scan photography",
+        "distractors": [
+          "Time-lapse photography",
+          "Holographic projection",
+          "Forced perspective"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "American Cinematographer",
+    "sourceUrl": "https://www.imdb.com/title/tt0062622/trivia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Behind-the-scenes shot of 2001's rotating centrifuge set alongside the finished filmed scene",
+    "tags": [
+      "2001 Space Odyssey",
+      "Kubrick",
+      "special effects",
+      "practical effects",
+      "film history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-2001-odyssey-nasa-endorsement",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "film",
+    "categoryL1": "art_architecture",
+    "categoryL2": "film",
+    "categoryL3": "",
+    "statement": "NASA and the aerospace industry provided technical consultations for 2001: A Space Odyssey, and the film's realistic depiction of spaceflight influenced actual space program design.",
+    "quizQuestion": "What was NASA's relationship to the production of 2001: A Space Odyssey?",
+    "correctAnswer": "NASA and aerospace companies provided technical consultation for the film",
+    "distractors": [
+      "NASA sued Kubrick for misrepresenting spaceflight",
+      "NASA funded the film as a propaganda piece",
+      "NASA had no involvement and publicly criticized the film",
+      "Kubrick rejected all NASA input to maintain artistic control",
+      "NASA provided actual rocket footage for the film",
+      "NASA secretly filmed parts of the movie for their archive",
+      "NASA banned the film for revealing classified space plans",
+      "NASA created the film to prepare the public for Moon landing"
+    ],
+    "acceptableAnswers": [
+      "NASA consulted",
+      "technical consultants"
+    ],
+    "explanation": "Kubrick worked with aerospace companies including Boeing and NASA to ensure technical accuracy. The film's depictions of zero-gravity (floating stewardesses, zero-g toilet instructions) and spacecraft design influenced how NASA subsequently communicated with the public about space travel. Kubrick even asked NASA for assurances that there was no extraterrestrial life before starting, not wanting to accidentally copy reality.",
+    "wowFactor": "Kubrick asked NASA to confirm aliens didn't exist before making a film about aliens — to avoid plagiarizing reality!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "NASA provided technical consultation for 2001: A Space Odyssey.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "The Making of Kubrick's 2001",
+    "sourceUrl": "https://www.imdb.com/title/tt0062622/trivia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split image of the 2001 film's Discovery One spacecraft and a real NASA concept spacecraft drawing from the same era",
+    "tags": [
+      "2001 Space Odyssey",
+      "Kubrick",
+      "NASA",
+      "space program",
+      "film history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-mona-lisa-theft-1911",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "visual_art",
+    "categoryL1": "art_architecture",
+    "categoryL2": "visual_art",
+    "categoryL3": "",
+    "statement": "The Mona Lisa was stolen from the Louvre in 1911 by an Italian handyman named Vincenzo Peruggia, who had hidden inside the museum overnight and walked out with the painting under his coat.",
+    "quizQuestion": "Who stole the Mona Lisa from the Louvre in 1911?",
+    "correctAnswer": "Vincenzo Peruggia, an Italian handyman",
+    "distractors": [
+      "Pablo Picasso, who was briefly a suspect",
+      "A German spy during WWI",
+      "An Argentine art dealer",
+      "An anonymous French anarchist",
+      "A disgruntled former Louvre employee",
+      "A British nobleman for private collection",
+      "American robbers working for J.P. Morgan",
+      "A group of art students as a protest"
+    ],
+    "acceptableAnswers": [
+      "Vincenzo Peruggia",
+      "Peruggia"
+    ],
+    "explanation": "Vincenzo Peruggia worked at the Louvre as a handyman, helping install glass cases over paintings. On August 21, 1911, he hid in the museum overnight, removed the painting from the wall, tucked it under his coat, and walked out. The theft was not noticed for 28 hours. The painting remained hidden in his Paris apartment for two years. Pablo Picasso was among those briefly suspected. Peruggia was caught in 1913 when he tried to sell it to a Florence art dealer.",
+    "wowFactor": "The Mona Lisa spent 2 years stuffed under a Paris apartment bed — and the thief thought he was doing Italy a patriotic favor!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Mona Lisa was stolen from the Louvre in 1911 and wasn't recovered for two years.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "How long was the Mona Lisa missing after its 1911 theft?",
+        "answer": "Two years",
+        "distractors": [
+          "Two weeks",
+          "Six months",
+          "Five years"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Smithsonian Magazine",
+    "sourceUrl": "https://www.smithsonianmag.com/arts-culture/the-theft-that-made-the-mona-lisa-a-masterpiece-16406234/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Mona Lisa in her Louvre frame, with an empty wall beside her and a headline 'Stolen' from 1911",
+    "tags": [
+      "Mona Lisa",
+      "Louvre",
+      "theft",
+      "Peruggia",
+      "art history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-mona-lisa-smile-science",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "visual_art",
+    "categoryL1": "art_architecture",
+    "categoryL2": "visual_art",
+    "categoryL3": "",
+    "statement": "The Mona Lisa's enigmatic smile is partly explained by peripheral vision science — it appears to smile when viewed in peripheral vision but less so when looked at directly, due to how different retinal cells process detail.",
+    "quizQuestion": "Why does the Mona Lisa's smile appear to change depending on where you look?",
+    "correctAnswer": "Peripheral vision processes coarser information, making the smile appear more pronounced when not looked at directly",
+    "distractors": [
+      "Da Vinci used a special paint that reflects light differently from different angles",
+      "The canvas has been shown to move slightly in the frame",
+      "The smile is actually painted in two layers with different expressions",
+      "The effect is purely psychological projection with no optical basis",
+      "The Louvre's lighting creates an optical illusion of movement",
+      "Da Vinci used mirrors to distort the painted expression",
+      "The smile is barely visible and only seems real due to art training",
+      "It's an artifact of aging paint that changed the original expression"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Research published in Science (2000) and follow-ups explain the effect via how the eye processes detail. Foveal (central) vision sees high-contrast detail — which shows neutral features. Peripheral vision uses magnocellular pathways that process low spatial frequencies, detecting shadows in the cheeks and corners of the mouth that read as a smile. This switching between the two perceptions creates the illusion of an expression that changes as you look around the painting.",
+    "wowFactor": "Look directly at the Mona Lisa's mouth and the smile disappears — your peripheral vision was filling in the expression all along!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Mona Lisa's changing smile is related to how the human eye's peripheral vs. central vision works.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 7,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Science",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.290.5500.2259",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of the Mona Lisa's smile with eye diagram showing peripheral vs. foveal vision paths",
+    "tags": [
+      "Mona Lisa",
+      "da Vinci",
+      "smile",
+      "optical illusion",
+      "vision science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-mona-lisa-size",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "visual_art",
+    "categoryL1": "art_architecture",
+    "categoryL2": "visual_art",
+    "categoryL3": "",
+    "statement": "The Mona Lisa is surprisingly small — just 77 × 53 cm (about the size of a large poster) — and many visitors are disappointed to find it's a modestly-sized panel painting, not a large canvas.",
+    "quizQuestion": "What are the approximate dimensions of the Mona Lisa?",
+    "correctAnswer": "77 × 53 cm (about the size of a large poster)",
+    "distractors": [
+      "2 × 1.5 meters (about the size of a door)",
+      "1.5 × 1 meter (about the size of a large mirror)",
+      "50 × 30 cm (about the size of a sheet of paper)",
+      "3 × 2 meters (about the size of a billboard section)",
+      "1 × 0.8 meters (about the size of a wide TV screen)",
+      "45 × 35 cm (about the size of a laptop screen)",
+      "4 × 3 meters (monumental scale)",
+      "90 × 70 cm (about the size of a small door)"
+    ],
+    "acceptableAnswers": [
+      "77 by 53 cm",
+      "about 77x53"
+    ],
+    "explanation": "The Mona Lisa measures 77 cm × 53 cm and was painted on poplar wood, not canvas. It's protected by bulletproof glass and kept in controlled conditions. The small size shocks visitors who expect a grand painting, since its fame suggests a monumental work. By contrast, the painting directly opposite in the Louvre — Paolo Veronese's Wedding at Cana — is 6.77 × 9.94 meters, dwarfing the Mona Lisa entirely.",
+    "wowFactor": "Visitors who trek to see the Mona Lisa are often stunned — it's barely bigger than a large poster, hanging in a massive gallery!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Mona Lisa is painted on canvas.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What material was the Mona Lisa painted on?",
+        "answer": "Poplar wood",
+        "distractors": [
+          "Canvas",
+          "Silk",
+          "Copper"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Louvre Museum",
+    "sourceUrl": "https://www.louvre.fr/en/explore/the-palace/the-mona-lisa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Person standing beside the Mona Lisa in the Louvre showing how small the painting is relative to an adult",
+    "tags": [
+      "Mona Lisa",
+      "Louvre",
+      "size",
+      "painting",
+      "da Vinci"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-mona-lisa-da-vinci-identity",
+    "type": "knowledge",
+    "domain": "art_architecture",
+    "subdomain": "visual_art",
+    "categoryL1": "art_architecture",
+    "categoryL2": "visual_art",
+    "categoryL3": "",
+    "statement": "The Mona Lisa is believed to depict Lisa Gherardini, wife of Florentine merchant Francesco del Giocondo — which is why it's also called La Gioconda (or La Joconde in French).",
+    "quizQuestion": "Who is generally believed to be the subject depicted in the Mona Lisa?",
+    "correctAnswer": "Lisa Gherardini, wife of Florentine merchant Francesco del Giocondo",
+    "distractors": [
+      "Isabella d'Este, Marchioness of Mantua",
+      "Cecilia Gallerani, da Vinci's patron's mistress",
+      "Beatrice d'Este, Duchess of Milan",
+      "Catherine Sforza, a noblewoman of the era",
+      "An anonymous Florentine noblewoman",
+      "Da Vinci's mother Caterina",
+      "A self-portrait of Leonardo da Vinci as a woman",
+      "Lucrezia Crivelli, another da Vinci subject"
+    ],
+    "acceptableAnswers": [
+      "Lisa Gherardini",
+      "Lisa del Giocondo"
+    ],
+    "explanation": "Art historian Giorgio Vasari identified the sitter as Lisa di Antonio Maria Gherardini in 1550. Records show Francesco del Giocondo commissioned the portrait around 1503 to celebrate the birth of their second son. The painting's Italian name, La Gioconda (meaning 'the joyful one' or a pun on her husband's name), supports this identification. Some scholars have suggested alternative subjects, but the Gherardini theory is the consensus.",
+    "wowFactor": "The world's most famous painting is just a portrait of a Florentine merchant's wife, painted to celebrate a new baby!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Mona Lisa is also known as La Gioconda.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Why is the Mona Lisa also called La Gioconda?",
+        "answer": "It's a reference to the husband's surname (del Giocondo) and means 'the joyful one'",
+        "distractors": [
+          "It was da Vinci's nickname for it",
+          "It refers to the city of Florence",
+          "It was named after the gallery that first displayed it"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Louvre Museum",
+    "sourceUrl": "https://www.louvre.fr/en/explore/the-palace/the-mona-lisa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split image of the Mona Lisa and a renaissance-era Florentine street, connecting the painting to its historical context",
+    "tags": [
+      "Mona Lisa",
+      "da Vinci",
+      "Lisa Gherardini",
+      "La Gioconda",
+      "Renaissance",
+      "portraiture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

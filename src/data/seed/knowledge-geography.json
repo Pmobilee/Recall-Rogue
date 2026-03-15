@@ -8805,5 +8805,1657 @@
       "Kalenjin",
       "athletics"
     ]
+  },
+  {
+    "id": "geo-france-capital",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "France",
+    "statement": "Paris is the capital and largest city of France, home to roughly 2.1 million people in the city proper.",
+    "quizQuestion": "What is the capital of France?",
+    "correctAnswer": "Paris",
+    "distractors": [
+      "Lyon",
+      "Marseille",
+      "Bordeaux",
+      "Nice"
+    ],
+    "acceptableAnswers": [
+      "Paris"
+    ],
+    "explanation": "Paris has been the capital of France since the 10th century. The greater Paris metropolitan area is home to over 12 million people.",
+    "wowFactor": "Paris is one of the most visited cities on Earth, receiving over 30 million tourists per year.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the capital of France?",
+        "answer": "Paris",
+        "distractors": [
+          "Lyon",
+          "Marseille",
+          "Bordeaux"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Paris is the capital of France.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 3,
+    "noveltyScore": 2,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paris",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Eiffel Tower rising above the Parisian skyline at golden hour.",
+    "tags": [
+      "France",
+      "Paris",
+      "capital",
+      "Europe",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-france-highest-peak",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "France",
+    "statement": "Mont Blanc, at 4,808 meters (15,774 ft), is the highest peak in France and the highest mountain in the Alps.",
+    "quizQuestion": "What is the highest mountain in France?",
+    "correctAnswer": "Mont Blanc",
+    "distractors": [
+      "Mont Ventoux",
+      "Puy de Dôme",
+      "Monte Viso",
+      "Pic du Midi"
+    ],
+    "acceptableAnswers": [
+      "Mont Blanc"
+    ],
+    "explanation": "Mont Blanc straddles the French-Italian border. It is the highest peak in the Alps and the second highest in Europe (after the Caucasus peaks).",
+    "wowFactor": "Mont Blanc's summit has shrunk by about 2 meters over the past decade due to melting glacier ice from climate change.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is France's highest mountain?",
+        "answer": "Mont Blanc",
+        "distractors": [
+          "Mont Ventoux",
+          "Puy de Dôme",
+          "Monte Viso"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the highest peak in the Alps?",
+        "answer": "Mont Blanc",
+        "distractors": [
+          "Matterhorn",
+          "Eiger",
+          "Monte Rosa"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mont_Blanc",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mont Blanc's snow-capped summit gleaming white against a brilliant blue sky, Alpine glaciers below.",
+    "tags": [
+      "France",
+      "Mont Blanc",
+      "Alps",
+      "mountains",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-france-longest-river",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "France",
+    "statement": "The Loire River, at 1,012 km (629 miles), is the longest river entirely within France.",
+    "quizQuestion": "What is the longest river in France?",
+    "correctAnswer": "The Loire",
+    "distractors": [
+      "The Seine",
+      "The Rhône",
+      "The Garonne",
+      "The Rhine"
+    ],
+    "acceptableAnswers": [
+      "Loire",
+      "the Loire",
+      "Loire River"
+    ],
+    "explanation": "The Loire flows from the Massif Central to the Atlantic Ocean. It is famous for its châteaux and UNESCO World Heritage valley.",
+    "wowFactor": "The Loire Valley has so many Renaissance castles — over 300 — it's nicknamed 'the Garden of France.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the longest river entirely in France?",
+        "answer": "The Loire",
+        "distractors": [
+          "The Seine",
+          "The Rhône",
+          "The Garonne"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Seine is the longest river in France.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Loire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The wide Loire River reflecting a Renaissance château on its green banks under a cloudy sky.",
+    "tags": [
+      "France",
+      "Loire",
+      "rivers",
+      "geography",
+      "Europe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-france-overseas-territory-timezone",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "political geography",
+    "categoryL1": "Geography",
+    "categoryL2": "political geography",
+    "categoryL3": "France",
+    "statement": "France has the most time zones of any country — 12 in total — due to its overseas territories spread across the globe.",
+    "quizQuestion": "Which country has the most time zones in the world?",
+    "correctAnswer": "France",
+    "distractors": [
+      "Russia",
+      "United States",
+      "China",
+      "Australia"
+    ],
+    "acceptableAnswers": [
+      "France"
+    ],
+    "explanation": "France's 12 time zones span from UTC−10 (French Polynesia) to UTC+12 (Wallis and Futuna). Russia has 11, the US has 11.",
+    "wowFactor": "France spans more longitudes than any other country — its territory touches every ocean except the Arctic.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country has the most time zones?",
+        "answer": "France",
+        "distractors": [
+          "Russia",
+          "United States",
+          "China"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France has more time zones than Russia.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Time_in_France",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map showing France's many scattered territories highlighted in blue across every ocean.",
+    "tags": [
+      "France",
+      "time zones",
+      "geography",
+      "overseas territories",
+      "surprising facts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-france-mediterranean-coastline",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "Europe",
+    "categoryL1": "Geography",
+    "categoryL2": "Europe",
+    "categoryL3": "France",
+    "statement": "France has coastline on both the Atlantic Ocean and the Mediterranean Sea, making it one of very few European countries to touch two major bodies of water.",
+    "quizQuestion": "Which two major bodies of water border mainland France?",
+    "correctAnswer": "The Atlantic Ocean and the Mediterranean Sea",
+    "distractors": [
+      "The Atlantic and the North Sea",
+      "The Mediterranean and the Black Sea",
+      "The Atlantic and the Baltic Sea"
+    ],
+    "acceptableAnswers": [
+      "Atlantic Ocean and Mediterranean Sea",
+      "Atlantic and Mediterranean",
+      "Atlantic Ocean and the Mediterranean"
+    ],
+    "explanation": "France's Atlantic coast runs from the English Channel to the Spanish border. The Mediterranean coast includes the French Riviera.",
+    "wowFactor": "The French Riviera (Côte d'Azur) on the Mediterranean is one of the most expensive stretches of coastline in the world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which two seas border mainland France?",
+        "answer": "The Atlantic Ocean and the Mediterranean Sea",
+        "distractors": [
+          "Atlantic and North Sea",
+          "Mediterranean and Black Sea",
+          "Atlantic and Baltic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France has coastline on the Mediterranean Sea.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/France",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of France with blue shading on both the western Atlantic coast and the southern Mediterranean coast.",
+    "tags": [
+      "France",
+      "Atlantic",
+      "Mediterranean",
+      "coastline",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-spain-highest-peak",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "iberian_peninsula",
+    "categoryL1": "Geography",
+    "categoryL2": "Iberian Peninsula",
+    "categoryL3": "",
+    "statement": "Spain's highest peak is Mount Teide on the Canary Island of Tenerife, standing at 3,718 metres above sea level.",
+    "quizQuestion": "What is the highest mountain in Spain, and where is it located?",
+    "correctAnswer": "Mount Teide, on the island of Tenerife",
+    "distractors": [
+      "Mulhacén, in the Sierra Nevada",
+      "Pico de Aneto, in the Pyrenees",
+      "Maladeta, in the Pyrenees",
+      "Monte Perdido, in the Pyrenees",
+      "La Palma volcano, in the Canary Islands",
+      "Sierra de Gredos, in Castile",
+      "Pico de Europa, in Cantabria",
+      "Montserrat, near Barcelona"
+    ],
+    "acceptableAnswers": [
+      "Mount Teide",
+      "Teide",
+      "Pico del Teide",
+      "Teide on Tenerife"
+    ],
+    "explanation": "Mount Teide (Pico del Teide) is a stratovolcano on the island of Tenerife in the Canary Islands, an autonomous community of Spain. At 3,718 metres it is Spain's highest point and the third tallest volcano on Earth measured from its oceanic base. It is a UNESCO World Heritage Site and one of the most visited national parks in the world. Many travellers are surprised that Spain's highest peak is not on the Iberian mainland.",
+    "wowFactor": "Mount Teide is the world's third largest volcano by volume from its ocean floor base — larger than most of the Andes when measured this way.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Instituto Geográfico Nacional de España",
+    "sourceUrl": "https://www.ign.es/web/ign/portal",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mount Teide rising above the clouds on Tenerife, its volcanic cone snow-capped against a blue sky with the Atlantic Ocean visible below",
+    "tags": [
+      "Spain",
+      "Teide",
+      "Tenerife",
+      "geography",
+      "highest mountain",
+      "Canary Islands",
+      "volcano"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-spain-river-longest",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "iberian_peninsula",
+    "categoryL1": "Geography",
+    "categoryL2": "Iberian Peninsula",
+    "categoryL3": "",
+    "statement": "The Tagus (Tajo) River is the longest river on the Iberian Peninsula at 1,007 km, flowing through Spain and Portugal before reaching the Atlantic.",
+    "quizQuestion": "What is the longest river on the Iberian Peninsula?",
+    "correctAnswer": "The Tagus (Tajo/Tejo) River",
+    "distractors": [
+      "The Ebro River",
+      "The Douro (Duero) River",
+      "The Guadiana River",
+      "The Guadalquivir River",
+      "The Minho River",
+      "The Segura River",
+      "The Jucar River",
+      "The Sil River"
+    ],
+    "acceptableAnswers": [
+      "Tagus",
+      "Tajo",
+      "Tejo",
+      "Tagus River"
+    ],
+    "explanation": "The Tagus (known as Tajo in Spanish and Tejo in Portuguese) stretches 1,007 km from its source in the Montes Universales in Aragon, Spain, flowing westward through Spain and Portugal before emptying into the Atlantic at Lisbon. It passes through Toledo and is central to Spanish and Portuguese history. Lisbon is built on its wide estuary.",
+    "wowFactor": "The Tagus flows through the heart of Lisbon — one of Europe's oldest capital cities sits directly on the river's estuary, so wide it was historically mistaken for the open sea by arriving sailors.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Confederación Hidrográfica del Tajo",
+    "sourceUrl": "https://www.chtajo.es",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of the Iberian Peninsula with the Tagus River highlighted in blue from its source in eastern Spain to its mouth at Lisbon, Portugal",
+    "tags": [
+      "Spain",
+      "Portugal",
+      "Tagus",
+      "Tajo",
+      "rivers",
+      "geography",
+      "Iberian Peninsula"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-spain-climate-zones",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "iberian_peninsula",
+    "categoryL1": "Geography",
+    "categoryL2": "Iberian Peninsula",
+    "categoryL3": "",
+    "statement": "Spain has the second largest area of Mediterranean climate in the world, after Australia.",
+    "quizQuestion": "Which country has the largest Mediterranean climate area in the world, followed by Spain?",
+    "correctAnswer": "Australia",
+    "distractors": [
+      "Italy",
+      "Greece",
+      "South Africa",
+      "California, USA",
+      "Chile",
+      "Turkey",
+      "Morocco",
+      "France"
+    ],
+    "acceptableAnswers": [
+      "Australia",
+      "Australia is first, Spain second"
+    ],
+    "explanation": "Mediterranean climate zones are characterised by hot dry summers and mild wet winters. Despite being named after the Mediterranean Sea region, the largest single continuous expanse of this climate type is found in southwestern Australia (including the area around Perth). Spain's combination of coastal and inland zones gives it the second largest such area globally. Spain's geography is unusually diverse, containing six distinct climate zones including oceanic, semi-arid, and alpine.",
+    "wowFactor": "The Mediterranean climate is one of Earth's rarest — it covers less than 5% of the planet's land surface but supports some of its highest biodiversity hotspots.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "World Atlas of Climate Regions — IPCC Reference",
+    "sourceUrl": "https://www.ipcc.ch/report/ar6/wg1/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map with Mediterranean climate zones highlighted in orange — large patches in southwestern Australia and Spain clearly visible",
+    "tags": [
+      "Spain",
+      "climate",
+      "Mediterranean",
+      "Australia",
+      "geography",
+      "climate zones"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-spain-two-sea-coasts",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "iberian_peninsula",
+    "categoryL1": "Geography",
+    "categoryL2": "Iberian Peninsula",
+    "categoryL3": "",
+    "statement": "Spain is one of only a few countries bordered by both the Atlantic Ocean and the Mediterranean Sea.",
+    "quizQuestion": "Spain is unusual in being bordered by which two major bodies of water?",
+    "correctAnswer": "The Atlantic Ocean and the Mediterranean Sea",
+    "distractors": [
+      "The Atlantic Ocean and the North Sea",
+      "The Mediterranean Sea and the Bay of Biscay only",
+      "The Atlantic Ocean and the Black Sea",
+      "The Mediterranean and the Adriatic Sea",
+      "The Atlantic and the Caribbean Sea",
+      "The Pacific and the Atlantic",
+      "The Bay of Biscay and the Mediterranean only",
+      "The North Atlantic and the South Atlantic"
+    ],
+    "acceptableAnswers": [
+      "Atlantic Ocean and Mediterranean Sea",
+      "Atlantic and Mediterranean",
+      "both the Atlantic and Mediterranean"
+    ],
+    "explanation": "Spain's coastline stretches approximately 4,964 km and touches both the Atlantic Ocean (to the north and northwest) and the Mediterranean Sea (to the east and southeast), with the Strait of Gibraltar connecting them at Spain's southern tip. This exceptional geographic position gave Spain strategic and commercial advantages during the Age of Exploration, as it could access Atlantic trade routes while maintaining Mediterranean connections.",
+    "wowFactor": "From certain hilltops in southern Spain on a clear day, you can see both the Atlantic Ocean and the Mediterranean Sea simultaneously — one on each side of the Strait of Gibraltar.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Instituto Geográfico Nacional de España",
+    "sourceUrl": "https://www.ign.es/web/ign/portal",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Spain showing its Atlantic coastline in the north and west and Mediterranean coastline in the east, with the Strait of Gibraltar clearly marked",
+    "tags": [
+      "Spain",
+      "Atlantic Ocean",
+      "Mediterranean Sea",
+      "geography",
+      "coastline",
+      "Strait of Gibraltar"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-spain-exclave-ceuta",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "iberian_peninsula",
+    "categoryL1": "Geography",
+    "categoryL2": "Iberian Peninsula",
+    "categoryL3": "",
+    "statement": "Ceuta and Melilla are two Spanish cities located on the northern coast of Africa, making them part of the EU on the African continent.",
+    "quizQuestion": "Where are the Spanish territories of Ceuta and Melilla located?",
+    "correctAnswer": "On the northern coast of Africa (Morocco)",
+    "distractors": [
+      "In the Canary Islands off West Africa",
+      "On islands in the western Mediterranean",
+      "In the Balearic Islands",
+      "On the southern coast of mainland Spain",
+      "In the Strait of Gibraltar",
+      "On the Moroccan Atlantic coast",
+      "In a disputed zone along the Pyrenees",
+      "On the island of Madeira"
+    ],
+    "acceptableAnswers": [
+      "Africa",
+      "northern Morocco",
+      "North Africa",
+      "on the African continent"
+    ],
+    "explanation": "Ceuta and Melilla are autonomous cities of Spain situated on the northern African coast, geographically within Morocco. They are the only EU member state territories on the African continent. Both were part of Spain long before Morocco existed as a nation-state — Ceuta has been Spanish since 1668 and Melilla since 1497. They represent one of the EU's only land borders with an African country and are significant migration crossing points.",
+    "wowFactor": "Ceuta and Melilla are the European Union's only land borders with Africa — making them geopolitical curiosities and major focal points for Mediterranean migration.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Instituto Nacional de Estadística — Ceuta and Melilla",
+    "sourceUrl": "https://www.ine.es",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map showing Spain and Morocco with Ceuta and Melilla highlighted as Spanish enclaves on the African coast, just south of the Strait of Gibraltar",
+    "tags": [
+      "Spain",
+      "Ceuta",
+      "Melilla",
+      "Africa",
+      "geography",
+      "exclave",
+      "EU territory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-egypt-nile-length",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "The Nile River flows northward through Egypt and empties into the Mediterranean Sea.",
+    "quizQuestion": "Into which body of water does the Nile River empty?",
+    "correctAnswer": "Mediterranean Sea",
+    "distractors": [
+      "Red Sea",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Black Sea",
+      "Caspian Sea",
+      "Aegean Sea",
+      "Arabian Sea"
+    ],
+    "acceptableAnswers": [
+      "Mediterranean Sea",
+      "the Mediterranean"
+    ],
+    "explanation": "The Nile flows northward through northeastern Africa, forming a vast delta before emptying into the Mediterranean Sea near Alexandria, Egypt. It is the longest river in Africa and one of the world's longest.",
+    "wowFactor": "The Nile is one of the few major rivers in the world that flows northward — the opposite direction most people expect rivers to flow.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Into which body of water does the Nile River empty?",
+        "answer": "Mediterranean Sea",
+        "distractors": [
+          "Red Sea",
+          "Atlantic Ocean",
+          "Indian Ocean"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which major river empties into the Mediterranean Sea via a large delta in Egypt?",
+        "answer": "Nile",
+        "distractors": [
+          "Congo",
+          "Zambezi",
+          "Niger"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nile River flows into the Mediterranean Sea.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Nile River empties into the ___ Sea.",
+        "answer": "Mediterranean",
+        "distractors": [
+          "Red",
+          "Black",
+          "Arabian"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Nile River's vast green delta visible from space, fanning out into the deep blue Mediterranean Sea, Egypt's desert on either side.",
+    "tags": [
+      "Nile",
+      "Egypt",
+      "river",
+      "Mediterranean",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-egypt-suez-canal-length",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "political_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "political_geography",
+    "categoryL3": "",
+    "statement": "The Suez Canal connects the Mediterranean Sea to the Red Sea and is 193 kilometres long.",
+    "quizQuestion": "What two bodies of water does the Suez Canal connect?",
+    "correctAnswer": "Mediterranean Sea and Red Sea",
+    "distractors": [
+      "Atlantic Ocean and Pacific Ocean",
+      "Red Sea and Indian Ocean",
+      "Black Sea and Caspian Sea",
+      "Mediterranean Sea and Black Sea",
+      "Persian Gulf and Red Sea",
+      "Atlantic Ocean and Indian Ocean",
+      "North Sea and Baltic Sea"
+    ],
+    "acceptableAnswers": [
+      "Mediterranean and Red Sea",
+      "Mediterranean Sea and Red Sea"
+    ],
+    "explanation": "The Suez Canal, opened in 1869, cuts through Egypt to connect the Mediterranean Sea to the Red Sea. At 193 km long, it allows ships to travel between Europe and Asia without rounding Africa.",
+    "wowFactor": "Before the Suez Canal, ships had to travel an extra 7,000 km around Africa — the canal cut the London-to-Mumbai route by about 43%.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What two bodies of water does the Suez Canal connect?",
+        "answer": "Mediterranean Sea and Red Sea",
+        "distractors": [
+          "Atlantic and Pacific",
+          "Red Sea and Indian Ocean",
+          "Black Sea and Caspian Sea"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how long is the Suez Canal?",
+        "answer": "193 kilometres",
+        "distractors": [
+          "50 kilometres",
+          "500 kilometres",
+          "1,000 kilometres"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Suez Canal connects the Mediterranean Sea to the Red Sea.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Suez Canal connects the Mediterranean Sea to the ___ Sea.",
+        "answer": "Red",
+        "distractors": [
+          "Black",
+          "Caspian",
+          "Arabian"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive container ship navigating through the Suez Canal, desert on both sides, with the Mediterranean blue on one end and the Red Sea on the other.",
+    "tags": [
+      "Suez Canal",
+      "Egypt",
+      "Mediterranean",
+      "Red Sea",
+      "shipping"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-egypt-sinai-two-continents",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "Egypt's Sinai Peninsula lies in Asia, making Egypt a transcontinental country spanning Africa and Asia.",
+    "quizQuestion": "What makes Egypt a transcontinental country?",
+    "correctAnswer": "The Sinai Peninsula lies in Asia while the rest is in Africa",
+    "distractors": [
+      "It borders both the Atlantic and Indian Oceans",
+      "Its Nile delta extends into Europe",
+      "Cairo is technically in Asia",
+      "It has islands in the Mediterranean",
+      "The Suez Canal runs through two continents",
+      "Its Red Sea coast is considered part of Arabia",
+      "Egypt spans three continents"
+    ],
+    "acceptableAnswers": [
+      "Sinai Peninsula is in Asia",
+      "territory on both Africa and Asia",
+      "Sinai in Asia"
+    ],
+    "explanation": "The Suez Canal acts as the boundary between Africa and Asia. Egypt's Sinai Peninsula is east of the Suez Canal, placing it geographically in Asia, while mainland Egypt is in Africa — making Egypt one of a handful of transcontinental countries.",
+    "wowFactor": "You can literally walk from Africa to Asia within Egypt — just cross the Suez Canal to the Sinai Peninsula.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes Egypt a transcontinental country?",
+        "answer": "The Sinai Peninsula lies in Asia while the rest is in Africa",
+        "distractors": [
+          "Its Nile delta extends into Europe",
+          "Cairo is technically in Asia",
+          "It borders both major oceans"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Egyptian territory lies in Asia rather than Africa?",
+        "answer": "Sinai Peninsula",
+        "distractors": [
+          "Nile Delta",
+          "Western Desert",
+          "Eastern Desert"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Egypt has territory on both the African and Asian continents.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Egypt's ___ Peninsula lies in Asia, making it a transcontinental country.",
+        "answer": "Sinai",
+        "distractors": [
+          "Nile",
+          "Red Sea",
+          "Western"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Egypt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Egypt with the Sinai Peninsula highlighted in a different colour, the Suez Canal clearly marking the boundary between Africa and Asia.",
+    "tags": [
+      "Egypt",
+      "Sinai",
+      "transcontinental",
+      "Asia",
+      "Africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-africa-size",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "continents",
+    "statement": "Africa is the world's second-largest continent, covering approximately 30.3 million square kilometers — about 20% of Earth's total land area.",
+    "quizQuestion": "What is Africa's rank among the world's continents by size?",
+    "correctAnswer": "Second largest",
+    "distractors": [
+      "Largest",
+      "Third largest",
+      "Fourth largest"
+    ],
+    "acceptableAnswers": [
+      "second largest",
+      "2nd largest",
+      "second biggest"
+    ],
+    "explanation": "Africa covers 30.37 million km², making it the second-largest continent after Asia (44.6 million km²). Africa is larger than the combination of China, India, the contiguous USA, and all of Europe — something that's hard to tell from most map projections, which significantly distort Africa's actual size.",
+    "wowFactor": "The Mercator projection makes Africa look about the same size as Greenland, when in reality Africa is 14 times larger than Greenland.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Africa's rank among the world's continents by size?",
+        "answer": "Second largest",
+        "distractors": [
+          "Largest",
+          "Third largest",
+          "Fourth largest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa is the world's largest continent by land area.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A true-scale map of Africa showing its enormous land area",
+    "tags": [
+      "Africa",
+      "continent",
+      "geography",
+      "size",
+      "land area"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-africa-countries",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "political_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "political_geography",
+    "categoryL3": "continents",
+    "statement": "Africa has 54 sovereign countries — more than any other continent — and is home to about 1.4 billion people speaking over 2,000 distinct languages.",
+    "quizQuestion": "How many sovereign countries are there in Africa?",
+    "correctAnswer": "54",
+    "distractors": [
+      "44",
+      "63",
+      "38"
+    ],
+    "acceptableAnswers": [
+      "54",
+      "fifty-four"
+    ],
+    "explanation": "Africa's 54 internationally recognized sovereign states include both tiny nations like Seychelles (115 islands) and vast countries like Algeria (largest by area). The continent's political borders were largely drawn by European colonial powers during the 1884–85 Berlin Conference, often ignoring ethnic and linguistic boundaries — a legacy that has contributed to many post-independence conflicts.",
+    "wowFactor": "Africa's 2,000+ languages represent roughly one-third of all the world's languages, with Nigeria alone having over 500 distinct languages.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many sovereign countries are there in Africa?",
+        "answer": "54",
+        "distractors": [
+          "44",
+          "63",
+          "38"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa has more sovereign countries than any other continent.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A political map of Africa showing all 54 countries in different colors",
+    "tags": [
+      "Africa",
+      "countries",
+      "nations",
+      "political geography",
+      "languages"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-africa-sahara",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "deserts",
+    "statement": "The Sahara Desert is the world's largest hot desert at 9.2 million square kilometers — about the same size as the contiguous United States.",
+    "quizQuestion": "What is the world's largest hot desert?",
+    "correctAnswer": "The Sahara",
+    "distractors": [
+      "The Arabian Desert",
+      "The Gobi Desert",
+      "The Great Victoria Desert"
+    ],
+    "acceptableAnswers": [
+      "Sahara",
+      "the Sahara",
+      "Sahara Desert"
+    ],
+    "explanation": "The Sahara covers approximately 9.2 million km² across 11 North African countries. Despite its reputation as all sand dunes, about 75% of the Sahara is rocky plateau (hamada) — sand dunes (ergs) cover only about 25%. The Sahara was actually a lush savanna as recently as 5,000 years ago due to changes in Earth's axial tilt.",
+    "wowFactor": "The Sahara was green and populated with hippos, crocodiles, and giraffes just 5,000–11,000 years ago during the 'Green Sahara' period.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the world's largest hot desert?",
+        "answer": "The Sahara",
+        "distractors": [
+          "The Arabian Desert",
+          "The Gobi Desert",
+          "The Great Victoria Desert"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antarctica is the world's largest desert (counting cold deserts).",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Vast orange sand dunes of the Sahara stretching to the horizon",
+    "tags": [
+      "Sahara",
+      "desert",
+      "Africa",
+      "geography",
+      "climate"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-africa-great-rift-valley",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "geology",
+    "statement": "The Great Rift Valley is a 6,000 km geological fault system running through Africa where tectonic plates are splitting apart, and is considered the 'cradle of humankind.'",
+    "quizQuestion": "Why is the Great Rift Valley called the 'cradle of humankind'?",
+    "correctAnswer": "The oldest human fossils and tools were found there",
+    "distractors": [
+      "The first human language developed there",
+      "It has the world's oldest living trees",
+      "The largest human population has always lived there"
+    ],
+    "acceptableAnswers": [
+      "oldest human fossils found there",
+      "earliest humans lived there",
+      "human evolution occurred there"
+    ],
+    "explanation": "The Great Rift Valley stretches from Syria through East Africa to Mozambique. In its Ethiopian and Kenyan sections, archaeologists have found some of the most important early human fossils, including 'Lucy' (Australopithecus afarensis, 3.2 million years old) and Homo habilis remains. The rift's lakes created diverse ecosystems that may have driven human evolution. In millions of years, East Africa will split off as a new continent.",
+    "wowFactor": "The Great Rift Valley is literally tearing Africa in two — in about 50 million years, the East African plate will become a separate island continent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is the Great Rift Valley called the 'cradle of humankind'?",
+        "answer": "The oldest human fossils and tools were found there",
+        "distractors": [
+          "The first human language developed there",
+          "It has the world's oldest living trees",
+          "The largest human population has always lived there"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Rift Valley is still actively widening as tectonic plates separate.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/East_African_Rift",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Aerial view of the Great Rift Valley with steep escarpments and a lake below",
+    "tags": [
+      "Africa",
+      "Great Rift Valley",
+      "geology",
+      "human evolution",
+      "Lucy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-algeria-largest-african-country",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Algeria is the largest country in Africa and the Arab world, with an area of about 2.38 million km² — nearly four times the size of France.",
+    "quizQuestion": "Which country is the largest in Africa by land area?",
+    "correctAnswer": "Algeria",
+    "distractors": [
+      "Sudan",
+      "Democratic Republic of Congo",
+      "Libya",
+      "Egypt",
+      "Ethiopia",
+      "Nigeria",
+      "South Africa",
+      "Tanzania"
+    ],
+    "acceptableAnswers": [
+      "Algeria"
+    ],
+    "explanation": "Algeria covers approximately 2.38 million square kilometers, making it the largest country in Africa (since South Sudan's independence moved Sudan to second place) and the largest in the Arab world. Despite its enormous size, about 90% of Algerians live on the northern 12% of the country — the fertile Mediterranean coast. The vast majority of Algerian territory is covered by the Sahara Desert.",
+    "wowFactor": "Algeria is so large that 90% of its people crowd into just 12% of the land — the rest is Sahara Desert bigger than all of Western Europe!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Algeria is the largest country in Africa by land area.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Approximately what percentage of Algeria's population lives in the northern part of the country?",
+        "answer": "About 90%",
+        "distractors": [
+          "About 50%",
+          "About 30%",
+          "About 70%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "World Bank",
+    "sourceUrl": "https://data.worldbank.org/country/algeria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Africa with Algeria shaded in a bold color, dominating the northern portion with visible size comparison",
+    "tags": [
+      "Algeria",
+      "Africa",
+      "geography",
+      "largest country",
+      "Sahara"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-algeria-sahara-coverage",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "About 85% of Algeria's territory is covered by the Sahara Desert, including the Ahaggar Mountains — a rugged highland range in the central Sahara that reaches over 3,000 meters elevation.",
+    "quizQuestion": "What percentage of Algeria's territory is covered by the Sahara Desert?",
+    "correctAnswer": "About 85%",
+    "distractors": [
+      "About 50%",
+      "About 60%",
+      "About 70%",
+      "About 95%",
+      "About 40%",
+      "About 30%",
+      "About 75%",
+      "About 100%"
+    ],
+    "acceptableAnswers": [
+      "85%",
+      "around 85 percent"
+    ],
+    "explanation": "The Sahara covers approximately 85% of Algeria, making it largely uninhabitable. The Algerian Sahara includes diverse terrain: vast sand seas (ergs), rocky plateaus (regs), and the Ahaggar (Hoggar) Mountains in the south, which reach 2,908 m at Tahat peak. These mountains support some vegetation and are home to the Tuareg people. Only the Tell Atlas region in the north has the Mediterranean climate supporting most of the population and agriculture.",
+    "wowFactor": "Algeria has mountains in the Sahara taller than any peak in the Alps — but they're surrounded by 2,000 km of desert in every direction!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Algeria's Sahara region contains mountain ranges over 2,500 meters tall.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopedia Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Algeria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Satellite image of Algeria showing tan Sahara covering most of the country with green coastal strip in the north",
+    "tags": [
+      "Algeria",
+      "Sahara Desert",
+      "geography",
+      "Africa",
+      "Ahaggar Mountains"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-algeria-mediterranean-coast",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Algeria has a 1,200 km Mediterranean coastline and is separated from Spain by just 200 km of sea — making it one of Africa's closest countries to Europe.",
+    "quizQuestion": "What geographic feature separates Algeria from Spain?",
+    "correctAnswer": "The Mediterranean Sea — about 200 km of water",
+    "distractors": [
+      "The Strait of Gibraltar",
+      "The Atlas Mountains",
+      "The Sahara Desert",
+      "The Atlantic Ocean",
+      "The Pyrenees Mountains",
+      "The Red Sea",
+      "The Strait of Sicily",
+      "There is no water — they share a land border"
+    ],
+    "acceptableAnswers": [
+      "Mediterranean Sea",
+      "Mediterranean"
+    ],
+    "explanation": "Algeria's 1,200 km coastline faces the Mediterranean Sea, and at the closest point (near the Balearic Islands), Spain is only about 200 km away. This proximity has made the central Mediterranean a major route for migration. Algeria also borders Morocco, Tunisia, Libya, Niger, Mali, and Mauritania. Algiers, the capital, is one of the Mediterranean's larger cities and was an important Ottoman port before French colonization in 1830.",
+    "wowFactor": "Algeria is so close to Europe that you could theoretically kayak from Africa to Spain — just 200 km of Mediterranean to cross!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many kilometers is Algeria's Mediterranean coastline?",
+        "answer": "About 1,200 km",
+        "distractors": [
+          "About 400 km",
+          "About 3,000 km",
+          "About 700 km"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "CIA World Factbook",
+    "sourceUrl": "https://www.cia.gov/the-world-factbook/countries/algeria/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map showing Algeria's Mediterranean coast, with Spain visible to the north across the sea",
+    "tags": [
+      "Algeria",
+      "Mediterranean",
+      "geography",
+      "Africa",
+      "Europe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-south-africa-three-capitals",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "South Africa is one of the only countries with three capital cities: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial) — a result of a post-Boer War compromise between British and Afrikaner factions.",
+    "quizQuestion": "How many capitals does South Africa have, and why?",
+    "correctAnswer": "Three capitals — a post-Boer War compromise between Afrikaner and British factions",
+    "distractors": [
+      "One capital — Johannesburg, the largest city",
+      "Two capitals — one for each major ethnic group",
+      "One capital — Pretoria (executive functions only)",
+      "Four capitals — one for each province's historical claim",
+      "Three capitals — due to apartheid-era administrative divisions",
+      "Two capitals — one pre-apartheid and one post-apartheid",
+      "Five capitals — one per historical colonial territory",
+      "One capital — Cape Town as the historic seat of government"
+    ],
+    "acceptableAnswers": [
+      "three capitals",
+      "3 capitals"
+    ],
+    "explanation": "After the Second Boer War (1899-1902), the peace settlement required balancing power between British colonies and Afrikaner republics. Pretoria (former capital of the Transvaal Republic) became the executive capital (government offices). Cape Town (center of British colonial power) became the legislative capital (Parliament). Bloemfontein (former capital of the Orange Free State) became the judicial capital (Supreme Court of Appeal). This three-way split was a political compromise that persists to this day.",
+    "wowFactor": "South Africa has three capitals because they couldn't agree on one — so they split the government between cities 1,400 km apart!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "South Africa has three capital cities.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which city is South Africa's legislative capital, where Parliament meets?",
+        "answer": "Cape Town",
+        "distractors": [
+          "Pretoria",
+          "Johannesburg",
+          "Bloemfontein"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "South African Government",
+    "sourceUrl": "https://www.gov.za/about-government/government-system/capital-cities",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of South Africa with three capital cities marked and connected by dotted lines, showing their geographic spread",
+    "tags": [
+      "South Africa",
+      "capitals",
+      "Pretoria",
+      "Cape Town",
+      "Bloemfontein",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-south-africa-table-mountain",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Table Mountain in Cape Town is one of the oldest mountains on Earth, at approximately 600 million years old, and hosts over 2,200 plant species — more than in the entire British Isles.",
+    "quizQuestion": "What is remarkable about the plant diversity on Table Mountain?",
+    "correctAnswer": "It has over 2,200 plant species — more than in the entire British Isles",
+    "distractors": [
+      "It's entirely covered in one species of fynbos",
+      "It has no native plants — only introduced species",
+      "It has 500 plant species, fewer than any comparable mountain",
+      "It contains species found nowhere else on Earth",
+      "Its plants have adapted to produce their own water",
+      "It has more plant species than the Amazon rainforest per km²",
+      "Its plants are entirely carnivorous due to poor soil",
+      "It has exactly 100 unique plant species"
+    ],
+    "acceptableAnswers": [
+      "over 2,200 species",
+      "more than British Isles"
+    ],
+    "explanation": "Table Mountain and the surrounding Cape Peninsula contain part of the Cape Floristic Region, one of Earth's six floral kingdoms and a biodiversity hotspot. Over 2,200 plant species grow in this area, including many endemic to a small region. The British Isles, with an area roughly 50 times larger, have only about 1,500 native plant species. Table Mountain is also one of the New Seven Wonders of Nature.",
+    "wowFactor": "A single flat-topped mountain holds more plant species than all of Great Britain and Ireland combined — and fits on a city's doorstep!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Table Mountain's plant diversity exceeds that of the entire British Isles.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Approximately how old is Table Mountain?",
+        "answer": "About 600 million years",
+        "distractors": [
+          "About 10 million years",
+          "About 100 million years",
+          "About 1 billion years"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Table Mountain National Park",
+    "sourceUrl": "https://www.sanparks.org/parks/table_mountain/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Table Mountain with its flat top above Cape Town, showing dense fynbos vegetation on the slopes",
+    "tags": [
+      "South Africa",
+      "Table Mountain",
+      "Cape Town",
+      "biodiversity",
+      "plants",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-south-africa-gold-mining",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "South Africa has produced more than one-third of all gold ever mined in human history, mostly from the Witwatersrand basin — the world's largest known gold deposit, discovered in 1886.",
+    "quizQuestion": "What fraction of all gold ever mined in human history has come from South Africa?",
+    "correctAnswer": "About one-third of all gold ever mined",
+    "distractors": [
+      "About 1%",
+      "About 5%",
+      "About 10%",
+      "About 50%",
+      "About 70%",
+      "About 15%",
+      "About 25%",
+      "About 90%"
+    ],
+    "acceptableAnswers": [
+      "one-third",
+      "1/3",
+      "about 33%"
+    ],
+    "explanation": "The Witwatersrand (meaning 'Ridge of White Waters' in Afrikaans) is a 320 km rocky ridge in South Africa containing the world's largest known gold deposits. Discovered in 1886, it triggered a gold rush that transformed Johannesburg from farmland to city within years. South Africa dominated global gold production through most of the 20th century, producing over one-third of all gold ever mined. While other countries have surpassed South Africa in recent annual production, the Witwatersrand remains a defining geological formation.",
+    "wowFactor": "One geological formation in South Africa — the Witwatersrand — single-handedly created about a third of all the gold ever possessed by humans!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "South Africa contains the world's largest known gold deposits.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "In what year was the Witwatersrand gold deposit discovered?",
+        "answer": "1886",
+        "distractors": [
+          "1820",
+          "1910",
+          "1950"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "World Gold Council",
+    "sourceUrl": "https://www.gold.org/about-gold/gold-supply/gold-mining",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section diagram of the Witwatersrand gold reef showing underground mining operations extending kilometers deep",
+    "tags": [
+      "South Africa",
+      "gold",
+      "Witwatersrand",
+      "mining",
+      "geology",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-nigeria-most-populous",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Nigeria is Africa's most populous country with over 220 million people and is projected to become the world's third most populous country by 2050, surpassing the United States.",
+    "quizQuestion": "Which African country is the most populous, with over 220 million people?",
+    "correctAnswer": "Nigeria",
+    "distractors": [
+      "South Africa",
+      "Ethiopia",
+      "Egypt",
+      "Democratic Republic of Congo",
+      "Tanzania",
+      "Kenya",
+      "Sudan",
+      "Ghana"
+    ],
+    "acceptableAnswers": [
+      "Nigeria"
+    ],
+    "explanation": "Nigeria has a population of approximately 220+ million people (2023), making it the most populous country in Africa and the seventh most populous in the world. With one of the world's highest birth rates, the UN projects Nigeria will surpass the United States to become the world's third most populous country by 2050, with a projected population of 400+ million. Lagos alone has an estimated 15-20 million people in its metropolitan area, making it one of the world's largest cities.",
+    "wowFactor": "Nigeria will likely surpass the entire United States in population by 2050 — Africa's giant is growing faster than almost any country on Earth!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Nigeria is projected to surpass the United States in population by 2050.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UN Population Division",
+    "sourceUrl": "https://population.un.org/wpp/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Africa with Nigeria highlighted and a population growth chart showing Nigeria's trajectory to 2050",
+    "tags": [
+      "Nigeria",
+      "Africa",
+      "population",
+      "geography",
+      "demographics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-nigeria-oil-production",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Nigeria is Africa's largest oil producer and holds the continent's largest crude oil reserves, yet despite being oil-rich, widespread energy poverty affects about 43% of the population who lack access to electricity.",
+    "quizQuestion": "What is Nigeria's position in African oil production?",
+    "correctAnswer": "Nigeria is Africa's largest oil producer with the continent's largest crude oil reserves",
+    "distractors": [
+      "Nigeria is Africa's second-largest oil producer after Libya",
+      "Nigeria ranks third in Africa for oil production",
+      "Nigeria was once a large producer but reserves are depleted",
+      "Nigeria produces mostly refined petroleum, not crude oil",
+      "Nigeria ranks first in natural gas but not crude oil",
+      "Nigeria's oil industry was nationalized and production dropped",
+      "Nigeria's oil is mainly in the north near the Sahara",
+      "Nigeria's oil production is entirely managed by foreign companies"
+    ],
+    "acceptableAnswers": [
+      "largest in Africa",
+      "Africa's top oil producer"
+    ],
+    "explanation": "Nigeria's Niger Delta region contains Africa's largest oil reserves, discovered in 1956. Nigeria is a founding OPEC member and typically produces 1.4-2 million barrels of crude oil per day. Despite this oil wealth, Nigeria faces severe energy poverty — about 43% of Nigerians (roughly 90 million people) lack access to electricity. This paradox of resource abundance and development challenges ('resource curse') is well-documented in Nigeria's economic history.",
+    "wowFactor": "Africa's biggest oil exporter has 90 million people without electricity — it's a cautionary tale about how oil wealth doesn't automatically become prosperity!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Despite being Africa's largest oil producer, many Nigerians still lack access to electricity.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "World Bank",
+    "sourceUrl": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=NG",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Nigeria's Niger Delta with oil platforms, alongside a split image of Lagos power outage contrast",
+    "tags": [
+      "Nigeria",
+      "oil",
+      "Africa",
+      "energy",
+      "OPEC",
+      "economics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-nigeria-lagos-vs-abuja",
+    "type": "knowledge",
+    "domain": "geography",
+    "subdomain": "africa",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Lagos is Nigeria's largest city and commercial capital, but Abuja — a purpose-built planned city — replaced it as the political capital in 1991, similar to how Canberra replaced Sydney as Australia's capital.",
+    "quizQuestion": "What is the capital of Nigeria, and when did it replace Lagos?",
+    "correctAnswer": "Abuja, which became capital in 1991, replacing Lagos",
+    "distractors": [
+      "Lagos remains the capital to this day",
+      "Kano, which became capital in 1960",
+      "Ibadan, which has been capital since independence",
+      "Port Harcourt, replaced Lagos in 1975",
+      "Enugu, the capital since 1960",
+      "Abuja became capital in 1960 at independence",
+      "Lagos remains capital and Abuja is only the economic center",
+      "Kaduna, a new city built as capital in 1970"
+    ],
+    "acceptableAnswers": [
+      "Abuja",
+      "Abuja in 1991"
+    ],
+    "explanation": "Lagos was Nigeria's capital at independence (1960) but was considered poorly located (coastal, prone to flooding, difficult to defend), ethnically associated with the Yoruba southwest, and logistically challenged. In 1976, General Murtala Mohammed announced plans to move the capital to a centrally-located, planned city — Abuja. Construction took years, and the federal government formally moved to Abuja in 1991. Lagos remains larger and the commercial center, with an estimated 15-25 million people in its metro area vs. Abuja's ~3.5 million.",
+    "wowFactor": "Nigeria's capital was deliberately moved to make it more geographically and ethnically neutral — brand-new Abuja was built from scratch in the 1980s!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Lagos is the capital of Nigeria.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Why was Nigeria's capital moved from Lagos to Abuja?",
+        "answer": "Abuja was more centrally located and considered more ethnically neutral",
+        "distractors": [
+          "Lagos flooded and was uninhabitable",
+          "International pressure required a new capital",
+          "Lagos was sold to become an independent city-state"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Abuja",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Nigeria showing Lagos on the coast and Abuja in the center, connected by an arrow showing the capital transfer",
+    "tags": [
+      "Nigeria",
+      "Lagos",
+      "Abuja",
+      "capital city",
+      "Africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

@@ -8028,5 +8028,1679 @@
       "human body",
       "ameloblasts"
     ]
+  },
+  {
+    "id": "health-biology-cell-count",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cell biology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cell biology",
+    "categoryL3": "",
+    "statement": "The human body contains approximately 37 trillion cells, each performing specialized functions to keep you alive.",
+    "quizQuestion": "Approximately how many cells are in the human body?",
+    "correctAnswer": "37 trillion",
+    "distractors": [
+      "1 trillion",
+      "100 billion",
+      "7 trillion",
+      "200 trillion"
+    ],
+    "acceptableAnswers": [
+      "37 trillion",
+      "about 37 trillion"
+    ],
+    "explanation": "A 2013 study estimated ~37.2 trillion human cells. Red blood cells are the most numerous (about 70% of the total).",
+    "wowFactor": "Your body also contains roughly 38 trillion bacterial cells — you're outnumbered by your own microbiome.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many cells are in the human body?",
+        "answer": "37 trillion",
+        "distractors": [
+          "1 trillion",
+          "100 billion",
+          "200 trillion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human body contains more than 30 trillion cells.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_body",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A microscopic view of densely packed colorful human cells, each glowing in different hues.",
+    "tags": [
+      "human body",
+      "cells",
+      "biology",
+      "anatomy",
+      "scale"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-biology-dna-length",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "",
+    "statement": "If the DNA from a single human cell were uncoiled and stretched out, it would be about 2 meters (6.5 feet) long.",
+    "quizQuestion": "How long would the DNA from a single human cell be if fully stretched out?",
+    "correctAnswer": "About 2 meters",
+    "distractors": [
+      "About 1 centimeter",
+      "About 10 meters",
+      "About 1 millimeter",
+      "About 50 centimeters"
+    ],
+    "acceptableAnswers": [
+      "2 meters",
+      "about 2 meters",
+      "6 feet",
+      "6.5 feet"
+    ],
+    "explanation": "The human genome contains ~3 billion base pairs of DNA. Packed tightly into a nucleus just 6 micrometers wide, it stretches to ~2 meters when uncoiled.",
+    "wowFactor": "If all the DNA from your body's cells were laid end to end, it would stretch about 70 times the distance from Earth to the Sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is the DNA in one human cell if uncoiled?",
+        "answer": "About 2 meters",
+        "distractors": [
+          "1 centimeter",
+          "10 meters",
+          "50 centimeters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The DNA in a single cell is longer than 1 meter.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing DNA double helix dramatically unspooling from a tiny cell nucleus, stretching across a dark background.",
+    "tags": [
+      "DNA",
+      "genetics",
+      "human body",
+      "biology",
+      "scale"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-biology-heart-beats",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiology",
+    "categoryL3": "",
+    "statement": "The average human heart beats about 100,000 times per day — roughly 2.5 billion beats in a 70-year lifetime.",
+    "quizQuestion": "Approximately how many times does the human heart beat per day?",
+    "correctAnswer": "About 100,000 times",
+    "distractors": [
+      "About 10,000 times",
+      "About 1 million times",
+      "About 50,000 times",
+      "About 500,000 times"
+    ],
+    "acceptableAnswers": [
+      "100,000 times",
+      "about 100,000",
+      "one hundred thousand"
+    ],
+    "explanation": "At a resting rate of ~70 beats per minute, the heart beats ~100,800 times per day. The average heart pumps about 2,000 gallons of blood daily.",
+    "wowFactor": "In a 70-year lifetime, your heart beats about 2.5 billion times — without a break or replacement.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many times does the heart beat per day?",
+        "answer": "About 100,000 times",
+        "distractors": [
+          "10,000 times",
+          "1 million times",
+          "50,000 times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human heart beats more than 50,000 times per day.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart_rate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing human heart beating with visible pulse waves, surrounded by flowing red and blue blood vessels.",
+    "tags": [
+      "heart",
+      "heartbeat",
+      "human body",
+      "cardiology",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-biology-brain-neurons",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "neuroscience",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "neuroscience",
+    "categoryL3": "",
+    "statement": "The human brain contains approximately 86 billion neurons, each potentially connected to thousands of others via synapses.",
+    "quizQuestion": "Approximately how many neurons does the human brain contain?",
+    "correctAnswer": "About 86 billion",
+    "distractors": [
+      "About 100 million",
+      "About 1 trillion",
+      "About 10 billion",
+      "About 1 billion"
+    ],
+    "acceptableAnswers": [
+      "86 billion",
+      "about 86 billion",
+      "roughly 86 billion"
+    ],
+    "explanation": "A 2009 study by Azevedo et al. established ~86 billion neurons (not 100 billion as often stated). The brain has ~85 billion non-neuronal cells in addition.",
+    "wowFactor": "The connections between neurons in one brain may outnumber the stars in the Milky Way galaxy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many neurons are in the human brain?",
+        "answer": "About 86 billion",
+        "distractors": [
+          "100 million",
+          "1 trillion",
+          "10 billion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human brain contains more than 80 billion neurons.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_brain",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing cross-section of the brain with neurons lit up like stars in a galaxy, synaptic connections sparkling.",
+    "tags": [
+      "brain",
+      "neurons",
+      "neuroscience",
+      "human body",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-biology-small-intestine-length",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy",
+    "categoryL3": "",
+    "statement": "The human small intestine is about 6–7 meters (20–23 feet) long — roughly four times the height of an average adult.",
+    "quizQuestion": "How long is the human small intestine?",
+    "correctAnswer": "About 6–7 meters (20–23 feet)",
+    "distractors": [
+      "About 1 meter",
+      "About 20 meters",
+      "About 50 centimeters",
+      "About 3 meters"
+    ],
+    "acceptableAnswers": [
+      "6–7 meters",
+      "6 to 7 meters",
+      "about 6 meters",
+      "about 7 meters",
+      "20 feet"
+    ],
+    "explanation": "Despite being 'small,' the small intestine is the longest part of the digestive tract. Its inner lining, covered with villi and microvilli, has a surface area of ~32 square meters.",
+    "wowFactor": "Unfolded, the inner lining of the small intestine would cover a tennis court — all packed into your abdomen.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is the human small intestine?",
+        "answer": "About 6–7 meters",
+        "distractors": [
+          "1 meter",
+          "20 meters",
+          "3 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The small intestine is longer than the large intestine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Small_intestine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of the human torso showing the tightly coiled small intestine highlighted in orange.",
+    "tags": [
+      "small intestine",
+      "digestion",
+      "human body",
+      "anatomy",
+      "scale"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-neutrophil-lifespan",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "immunology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "Immunology",
+    "categoryL3": "",
+    "statement": "Neutrophils — the most common white blood cells — survive only about 8 hours after entering the bloodstream.",
+    "quizQuestion": "How long do neutrophils typically survive in the bloodstream?",
+    "correctAnswer": "About 8 hours",
+    "distractors": [
+      "About 120 days",
+      "About 3 weeks",
+      "About 1 month",
+      "About 2 days",
+      "About 1 year",
+      "About 30 minutes",
+      "About 5 days",
+      "About 10 years"
+    ],
+    "acceptableAnswers": [
+      "8 hours",
+      "eight hours",
+      "around 8 hours",
+      "less than a day"
+    ],
+    "explanation": "Neutrophils are the most abundant type of white blood cell (making up 50–70% of all white blood cells) and form the first line of immune defence, engulfing and destroying pathogens. Despite their critical role, they have an extraordinarily short lifespan — approximately 8 hours in the bloodstream. To compensate, the human body produces roughly 100 billion neutrophils per day from bone marrow, making them one of the most rapidly produced cells in biology.",
+    "wowFactor": "Your body replaces its entire neutrophil army roughly every 8 hours. By the time you finish a night's sleep, you have an almost completely new set of these frontline immune soldiers.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Janeway's Immunobiology, 9th edition",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK27162/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A microscopic view of neutrophils engulfing bacteria in blood, with a clock overlay showing the 8-hour lifespan countdown",
+    "tags": [
+      "neutrophil",
+      "white blood cells",
+      "immune system",
+      "immunology",
+      "human body",
+      "cell biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-blind-spot-discovery",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "neuroscience",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "Neuroscience",
+    "categoryL3": "",
+    "statement": "The human eye's blind spot was discovered in 1668 by French physicist Edme Mariotte.",
+    "quizQuestion": "Who discovered the human eye's blind spot, and when?",
+    "correctAnswer": "Edme Mariotte, in 1668",
+    "distractors": [
+      "René Descartes, in 1637",
+      "Isaac Newton, in 1672",
+      "Galileo Galilei, in 1610",
+      "Andreas Vesalius, in 1543",
+      "William Harvey, in 1628",
+      "Antonie van Leeuwenhoek, in 1674",
+      "Robert Hooke, in 1665",
+      "Herman von Helmholtz, in 1851"
+    ],
+    "acceptableAnswers": [
+      "Edme Mariotte",
+      "Mariotte",
+      "1668"
+    ],
+    "explanation": "Edme Mariotte discovered the blind spot (scotoma) of the human eye in 1668 while investigating optic nerve anatomy. The blind spot is the region of the retina where the optic nerve exits the eye — there are no photoreceptors here, so that part of the visual field is technically invisible. The brain fills in the gap so seamlessly that we don't notice it in normal vision. It can be demonstrated by closing one eye and moving a dot in and out of the blind spot region.",
+    "wowFactor": "Your brain completely fabricates the image in your blind spot — it invents visual information from the surrounding context. You've been looking at fictional pixels your whole life and never knew.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Mariotte, E. (1668). Nouvelle découverte touchant la vuë. Académie des Sciences, Paris.",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1312218/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of the human eye showing the optic disc (blind spot) location on the retina, with a ray of light failing to detect the photoreceptor gap",
+    "tags": [
+      "blind spot",
+      "eye",
+      "vision",
+      "Edme Mariotte",
+      "neuroscience",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-rem-sleep-discovery",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "neuroscience",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "Neuroscience",
+    "categoryL3": "",
+    "statement": "REM (Rapid Eye Movement) sleep was discovered in 1953 by researchers Eugene Aserinsky and Nathaniel Kleitman.",
+    "quizQuestion": "Who discovered REM sleep and in what year?",
+    "correctAnswer": "Eugene Aserinsky and Nathaniel Kleitman, 1953",
+    "distractors": [
+      "Sigmund Freud and Josef Breuer, 1895",
+      "Carl Jung, 1912",
+      "Hans Berger, 1929",
+      "William Dement, 1960",
+      "Allan Hobson, 1975",
+      "Frederic Bremer, 1935",
+      "Ivan Pavlov, 1910",
+      "Wilder Penfield, 1950"
+    ],
+    "acceptableAnswers": [
+      "Aserinsky and Kleitman",
+      "Aserinsky and Kleitman in 1953",
+      "1953"
+    ],
+    "explanation": "Eugene Aserinsky, a graduate student working with sleep researcher Nathaniel Kleitman at the University of Chicago, discovered REM sleep in 1953 when he noticed that sleeping subjects showed periods of rapid eye movements under closed lids. He and Kleitman connected this to dreaming by waking subjects during REM phases and finding they reported vivid dreams. The discovery revolutionised sleep science and our understanding of consciousness, memory consolidation, and mental health.",
+    "wowFactor": "REM sleep was discovered almost by accident — Aserinsky almost abandoned the research because he thought the eye movement detection equipment was broken. His 'error' turned out to be one of the most important discoveries in neuroscience.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Aserinsky, E. & Kleitman, N. (1953). Regularly occurring periods of eye motility during sleep. Science, 118(3062), 273–274.",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.118.3062.273",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1950s sleep laboratory with a subject connected to EEG electrodes, technicians monitoring eye movement tracings on paper rolls",
+    "tags": [
+      "REM sleep",
+      "sleep science",
+      "neuroscience",
+      "Aserinsky",
+      "Kleitman",
+      "discovery",
+      "dreams"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-stomach-acid-ph",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "digestive_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "Digestive System",
+    "categoryL3": "",
+    "statement": "Stomach acid has a pH of 1.5 to 3.5 — acidic enough to dissolve some metals and kill most bacteria.",
+    "quizQuestion": "What is the approximate pH range of human stomach acid?",
+    "correctAnswer": "1.5 to 3.5",
+    "distractors": [
+      "6.0 to 7.0",
+      "4.5 to 5.5",
+      "7.4 (neutral)",
+      "8.0 to 9.0",
+      "5.0 to 6.5",
+      "0.1 to 0.5",
+      "3.5 to 5.0",
+      "2.5 to 4.5"
+    ],
+    "acceptableAnswers": [
+      "1.5 to 3.5",
+      "pH 1.5–3.5",
+      "between 1.5 and 3.5",
+      "around 2"
+    ],
+    "explanation": "Gastric acid (primarily hydrochloric acid, HCl) maintains a pH of approximately 1.5 to 3.5, making it highly acidic — similar in strength to the acid in a car battery. This extreme acidity is essential for activating digestive enzymes, denaturing proteins, and killing ingested pathogens. The stomach lining is protected by a thick layer of mucus; if this protection breaks down, the acid attacks the stomach wall itself, causing ulcers.",
+    "wowFactor": "Your stomach acid is strong enough to dissolve razor blades over time — yet the mucus lining your stomach walls protects you from digesting yourself every single day.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Guyton and Hall Textbook of Medical Physiology, 14th ed.",
+    "sourceUrl": "https://www.elsevier.com/books/guyton-and-hall-textbook-of-medical-physiology/hall/978-0-323-59712-8",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of the human stomach showing the acid environment with pH scale overlay, mucus lining highlighted in green",
+    "tags": [
+      "stomach acid",
+      "pH",
+      "digestion",
+      "hydrochloric acid",
+      "human body",
+      "chemistry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-smallpox-vaccine-first",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "medical_history",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "Medical History",
+    "categoryL3": "",
+    "statement": "Edward Jenner created the world's first vaccine in 1796, using cowpox material to immunise against smallpox.",
+    "quizQuestion": "Who created the world's first vaccine, and what disease did it protect against?",
+    "correctAnswer": "Edward Jenner, against smallpox (using cowpox)",
+    "distractors": [
+      "Louis Pasteur, against rabies",
+      "Robert Koch, against tuberculosis",
+      "Jonas Salk, against polio",
+      "Alexander Fleming, against bacterial infections",
+      "Joseph Lister, against surgical infections",
+      "John Snow, against cholera",
+      "Ignaz Semmelweis, against childbed fever",
+      "Paul Ehrlich, against syphilis"
+    ],
+    "acceptableAnswers": [
+      "Edward Jenner",
+      "Jenner",
+      "1796",
+      "smallpox vaccine"
+    ],
+    "explanation": "In 1796, English physician Edward Jenner observed that milkmaids who caught cowpox seemed immune to smallpox. He tested his theory by inoculating 8-year-old James Phipps with cowpox material taken from a milkmaid's blister, then exposing him to smallpox — the boy did not develop the disease. Jenner coined the term 'vaccine' from the Latin 'vacca' (cow). His work led directly to the global smallpox vaccination programme that eradicated the disease in 1980 — the only human infectious disease ever fully eradicated.",
+    "wowFactor": "The word 'vaccine' literally means 'of the cow' — every vaccine ever administered in human history carries a name derived from Edward Jenner's experiment with a cow-based treatment in 1796.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Jenner, E. (1798). An Inquiry into the Causes and Effects of the Variolae Vaccinae",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1200696/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Edward Jenner in 18th-century physician's clothing administering the cowpox inoculation to young James Phipps, 1796",
+    "tags": [
+      "vaccine",
+      "Edward Jenner",
+      "smallpox",
+      "cowpox",
+      "medical history",
+      "immunisation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-skeleton-206-bones",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Adult humans have 206 bones, down from approximately 270 at birth as many bones fuse during childhood.",
+    "quizQuestion": "How many bones does an adult human have?",
+    "correctAnswer": "206",
+    "distractors": [
+      "212",
+      "196",
+      "270",
+      "180",
+      "300",
+      "150",
+      "230"
+    ],
+    "acceptableAnswers": [
+      "206",
+      "two hundred and six"
+    ],
+    "explanation": "Babies are born with around 270 soft, flexible bones. As we grow, many of these fuse together. By adulthood, we end up with exactly 206 bones. The process of fusion is complete by around age 25.",
+    "wowFactor": "You were born with 64 more bones than you have now — they fused together as you grew up.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bones does an adult human have?",
+        "answer": "206",
+        "distractors": [
+          "270",
+          "180",
+          "212"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many bones does a newborn baby have?",
+        "answer": "270",
+        "distractors": [
+          "206",
+          "100",
+          "350"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Adult humans have 206 bones.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Adult humans have ___ bones, compared to about 270 at birth.",
+        "answer": "206",
+        "distractors": [
+          "300",
+          "150",
+          "180"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skeleton",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A detailed human skeleton illustration with all 206 bones labeled, glowing joints where bones fused during childhood highlighted in yellow.",
+    "tags": [
+      "skeleton",
+      "bones",
+      "anatomy",
+      "human body",
+      "206"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-skin-largest-organ",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The skin is the body's largest organ, covering approximately 2 square metres in an average adult.",
+    "quizQuestion": "What is the largest organ in the human body?",
+    "correctAnswer": "Skin",
+    "distractors": [
+      "Liver",
+      "Brain",
+      "Lungs",
+      "Heart",
+      "Intestines",
+      "Stomach",
+      "Kidneys"
+    ],
+    "acceptableAnswers": [
+      "Skin",
+      "the skin"
+    ],
+    "explanation": "The skin (or integumentary system) covers the entire external surface of the body, typically about 1.5–2 square metres in an adult. It serves as a barrier against pathogens, regulates temperature, and provides sensory input.",
+    "wowFactor": "Your skin renews itself completely about once a month — the skin you have today is not the same skin you had 30 days ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the largest organ in the human body?",
+        "answer": "Skin",
+        "distractors": [
+          "Liver",
+          "Brain",
+          "Lungs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how much area does adult human skin cover?",
+        "answer": "About 2 square metres",
+        "distractors": [
+          "0.5 square metres",
+          "5 square metres",
+          "10 square metres"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The skin is the largest organ in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the largest organ in the human body, covering about 2 square metres.",
+        "answer": "skin",
+        "distractors": [
+          "liver",
+          "brain",
+          "lungs"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of human skin showing multiple layers, illustrated as a colourful scientific infographic with scale showing 2 square metres.",
+    "tags": [
+      "skin",
+      "largest organ",
+      "anatomy",
+      "human body",
+      "integumentary"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-skin-renewal-cycle",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The outer layer of skin (epidermis) renews itself every 27 days, shedding about 30,000 dead cells per hour.",
+    "quizQuestion": "How often does the outer layer of human skin (epidermis) completely renew itself?",
+    "correctAnswer": "Every 27 days",
+    "distractors": [
+      "Every year",
+      "Every 6 months",
+      "Every 7 days",
+      "Every 90 days",
+      "Every 2 years",
+      "Every 3 months",
+      "Every 14 days"
+    ],
+    "acceptableAnswers": [
+      "27 days",
+      "every 27 days",
+      "about once a month"
+    ],
+    "explanation": "The epidermis constantly produces new skin cells from the bottom layer that migrate upward over about 27 days, during which they flatten and eventually shed as dead flakes. We shed around 30,000–40,000 dead skin cells every hour.",
+    "wowFactor": "About 1.5 kg of dead skin cells fall off your body every year — making up a significant portion of household dust.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How often does the outer layer of human skin completely renew itself?",
+        "answer": "Every 27 days",
+        "distractors": [
+          "Every 7 days",
+          "Every 90 days",
+          "Every year"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many dead skin cells does a human shed per hour?",
+        "answer": "30,000",
+        "distractors": [
+          "100",
+          "1,000",
+          "1 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Human skin renews itself completely approximately every 27 days.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The epidermis renews itself every ___ days, shedding about 30,000 cells per hour.",
+        "answer": "27",
+        "distractors": [
+          "7",
+          "90",
+          "365"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epidermis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A microscopic view of skin cell layers with new cells forming at the base and old cells floating away at the top, a monthly calendar showing the 27-day cycle.",
+    "tags": [
+      "skin",
+      "epidermis",
+      "renewal",
+      "cells",
+      "anatomy",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-skeleton-femur-strongest",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "human_records",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The femur (thigh bone) is the longest and strongest bone in the human body, capable of withstanding forces up to 30 times body weight.",
+    "quizQuestion": "Which is the longest and strongest bone in the human body?",
+    "correctAnswer": "Femur (thigh bone)",
+    "distractors": [
+      "Tibia",
+      "Humerus",
+      "Spine",
+      "Pelvis",
+      "Skull",
+      "Radius",
+      "Fibula"
+    ],
+    "acceptableAnswers": [
+      "Femur",
+      "thigh bone",
+      "femur (thigh bone)"
+    ],
+    "explanation": "The femur runs from the hip to the knee and is both the longest bone and the strongest, capable of withstanding compressive forces of up to 30 times a person's body weight. Despite its strength, it can still fracture in severe trauma.",
+    "wowFactor": "Your thigh bone is stronger than concrete — it can handle 30 times your body weight before breaking.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the longest and strongest bone in the human body?",
+        "answer": "Femur (thigh bone)",
+        "distractors": [
+          "Tibia",
+          "Humerus",
+          "Spine"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many times body weight can the femur withstand as a force?",
+        "answer": "Up to 30 times",
+        "distractors": [
+          "2 times",
+          "5 times",
+          "100 times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The femur is both the longest and strongest bone in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the longest and strongest bone in the human body.",
+        "answer": "femur",
+        "distractors": [
+          "tibia",
+          "humerus",
+          "radius"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A detailed illustration of the femur bone isolated on white, with force arrows showing 30x body weight compression, compared to a block of concrete beside it.",
+    "tags": [
+      "femur",
+      "skeleton",
+      "strongest bone",
+      "anatomy",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-eye-color-genetics",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "genetics",
+    "statement": "Eye color is primarily determined by the OCA2 gene, which controls melanin production. Brown is dominant over blue — two blue-eyed parents almost always produce blue-eyed children.",
+    "quizQuestion": "Which gene is primarily responsible for determining eye color?",
+    "correctAnswer": "OCA2",
+    "distractors": [
+      "HERC2",
+      "MC1R",
+      "BRCA1"
+    ],
+    "acceptableAnswers": [
+      "OCA2",
+      "OCA2 gene"
+    ],
+    "explanation": "The OCA2 gene controls how much melanin (brown pigment) is produced in the iris. More melanin = brown eyes; less = green or hazel; very little = blue. The nearby HERC2 gene acts as a switch for OCA2. Despite being recessive, blue eyes can skip generations. All blue-eyed people are thought to share a single common ancestor who lived 6,000–10,000 years ago when a mutation reduced OCA2 activity.",
+    "wowFactor": "All blue-eyed people on Earth share a single common ancestor who lived between 6,000 and 10,000 years ago — before that, all humans had brown eyes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which gene is primarily responsible for determining eye color?",
+        "answer": "OCA2",
+        "distractors": [
+          "HERC2",
+          "MC1R",
+          "BRCA1"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Brown eye color is genetically dominant over blue.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eye_color",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Close-up collage of human eyes in brown, green, and blue",
+    "tags": [
+      "eyes",
+      "genetics",
+      "eye color",
+      "OCA2",
+      "melanin"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-eye-pupil-dilation",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "anatomy",
+    "statement": "The pupil dilates (opens wider) in dim light to let in more light, and constricts (shrinks) in bright light to protect the sensitive retina.",
+    "quizQuestion": "What happens to your pupil when you walk into a dark room?",
+    "correctAnswer": "It dilates (gets larger)",
+    "distractors": [
+      "It constricts (gets smaller)",
+      "It stays the same size",
+      "It changes color temporarily"
+    ],
+    "acceptableAnswers": [
+      "dilates",
+      "gets larger",
+      "opens wider",
+      "expands"
+    ],
+    "explanation": "The pupil's size is controlled by two muscles in the iris: the sphincter muscle (which constricts it) and the dilator muscle (which widens it). In dim light, the dilator contracts to open the pupil up to 8mm, letting in maximum light. In bright light, the sphincter contracts to shrink it to as small as 2mm, preventing retinal damage. This pupillary light reflex happens in under a second. Pupils also dilate with attraction, interest, and certain drugs.",
+    "wowFactor": "Pupils dilate when you see someone you're attracted to — and people rate photos of faces with dilated pupils as more attractive without knowing why.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What happens to your pupil when you walk into a dark room?",
+        "answer": "It dilates (gets larger)",
+        "distractors": [
+          "It constricts (gets smaller)",
+          "It stays the same size",
+          "It changes color temporarily"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pupils get smaller (constrict) in dim light to improve focus.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pupil",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of an eye showing a fully dilated pupil vs a constricted pupil side by side",
+    "tags": [
+      "eye",
+      "pupil",
+      "dilation",
+      "vision",
+      "light"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-ear-smallest-bone",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "ear",
+    "statement": "The stapes (stirrup bone) in the middle ear is the smallest bone in the human body, measuring only about 3 mm — smaller than a grain of rice.",
+    "quizQuestion": "What is the smallest bone in the human body?",
+    "correctAnswer": "The stapes (stirrup bone)",
+    "distractors": [
+      "The incus (anvil bone)",
+      "The malleus (hammer bone)",
+      "The patella (kneecap)"
+    ],
+    "acceptableAnswers": [
+      "stapes",
+      "stirrup bone",
+      "the stapes"
+    ],
+    "explanation": "The stapes (Latin for 'stirrup') is one of three ossicles (tiny bones) in the middle ear, along with the malleus (hammer) and incus (anvil). Together they form the ossicular chain that transmits sound vibrations from the eardrum to the inner ear. The stapes connects to the oval window, the entrance to the fluid-filled cochlea. At about 3mm long and weighing 1.9–4.3mg, it's the smallest and lightest bone in the body.",
+    "wowFactor": "The three bones of the middle ear (malleus, incus, stapes) are fully grown at birth — they're the only bones in your body that don't grow after you're born.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the smallest bone in the human body?",
+        "answer": "The stapes (stirrup bone)",
+        "distractors": [
+          "The incus (anvil bone)",
+          "The malleus (hammer bone)",
+          "The patella (kneecap)"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The smallest bone in the human body is found in the ear.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stapes",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Magnified view of the tiny stapes bone next to a grain of rice for scale",
+    "tags": [
+      "stapes",
+      "ear",
+      "bone",
+      "anatomy",
+      "smallest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-ear-balance-inner",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "ear",
+    "statement": "The inner ear's vestibular system — three fluid-filled semicircular canals — detects head rotation and movement, giving you your sense of balance.",
+    "quizQuestion": "Which part of the body primarily controls your sense of balance?",
+    "correctAnswer": "The inner ear (vestibular system)",
+    "distractors": [
+      "The cerebellum only",
+      "The soles of your feet",
+      "Your eyes"
+    ],
+    "acceptableAnswers": [
+      "inner ear",
+      "vestibular system",
+      "semicircular canals"
+    ],
+    "explanation": "The vestibular system in the inner ear consists of three semicircular canals (detecting rotational movement) and two otolith organs — the utricle (horizontal movement) and saccule (vertical movement). Hair cells within these structures detect fluid movement when you rotate or accelerate. The brain combines this with visual information and proprioception (body position sense) to maintain balance. Spinning until dizzy disrupts this fluid, causing disorientation.",
+    "wowFactor": "The vestibular system is so sensitive it can detect head rotations as small as 0.5 degrees — and it begins working before birth, at around 16 weeks of fetal development.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which part of the body primarily controls your sense of balance?",
+        "answer": "The inner ear (vestibular system)",
+        "distractors": [
+          "The cerebellum only",
+          "The soles of your feet",
+          "Your eyes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Your sense of balance is controlled primarily by the inner ear.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vestibular_system",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Diagram of the inner ear showing the three semicircular canals",
+    "tags": [
+      "ear",
+      "balance",
+      "vestibular system",
+      "inner ear",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-rbc-lifespan",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "blood",
+    "categoryL1": "human_body_health",
+    "categoryL2": "blood",
+    "categoryL3": "",
+    "statement": "Red blood cells live for approximately 120 days before being broken down by the spleen and liver, and your body produces about 2.4 million new red blood cells every second to replace them.",
+    "quizQuestion": "How long does a red blood cell typically live?",
+    "correctAnswer": "About 120 days",
+    "distractors": [
+      "About 7 days",
+      "About 30 days",
+      "About 1 year",
+      "About 60 days",
+      "About 2 years",
+      "About 10 years",
+      "About 24 hours",
+      "About 6 months"
+    ],
+    "acceptableAnswers": [
+      "120 days",
+      "about 4 months"
+    ],
+    "explanation": "Red blood cells (erythrocytes) are produced in bone marrow and circulate for about 120 days before being flagged for destruction. They lack nuclei and mitochondria (unusual for human cells), which limits repair mechanisms. Old or damaged red blood cells are removed primarily by the spleen and liver. To maintain the roughly 25 trillion red blood cells in the body, the bone marrow produces about 2.4 million new ones every second — about 200 billion per day.",
+    "wowFactor": "Your body makes 2.4 million new red blood cells every single second — and destroys the same number. Your blood is constantly being rebuilt!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Red blood cells have nuclei and can repair themselves.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Where are old red blood cells broken down?",
+        "answer": "The spleen and liver",
+        "distractors": [
+          "The kidneys",
+          "The bone marrow",
+          "The lymph nodes"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Institutes of Health",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK259/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Red blood cells flowing through a vessel, with a timeline showing their 120-day lifespan before being recycled",
+    "tags": [
+      "blood",
+      "red blood cells",
+      "biology",
+      "human body",
+      "lifespan"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-wbc-types",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "blood",
+    "categoryL1": "human_body_health",
+    "categoryL2": "blood",
+    "categoryL3": "",
+    "statement": "White blood cells come in 5 major types (neutrophils, eosinophils, basophils, lymphocytes, monocytes), each with different immune roles, and white blood cells are vastly outnumbered by red blood cells at a ratio of about 1:700.",
+    "quizQuestion": "What is the approximate ratio of white blood cells to red blood cells in human blood?",
+    "correctAnswer": "About 1 white blood cell for every 700 red blood cells",
+    "distractors": [
+      "About 1:1 — equal numbers",
+      "About 1:10",
+      "About 1:100",
+      "About 1:50",
+      "About 1:5,000",
+      "About 1:10,000",
+      "About 10:1 — more white than red",
+      "About 1:200"
+    ],
+    "acceptableAnswers": [
+      "1:700",
+      "1 to 700"
+    ],
+    "explanation": "Normal blood contains approximately 4.5-11 million red blood cells per microliter, but only 4,000-11,000 white blood cells per microliter — a ratio of about 1:700 to 1:1,000. Despite being far fewer, white blood cells (leukocytes) are critical for immune defense. The five types serve distinct roles: neutrophils fight bacteria, eosinophils combat parasites and allergies, basophils release histamine, lymphocytes include T-cells and B-cells for adaptive immunity, and monocytes mature into macrophages.",
+    "wowFactor": "For every white blood cell protecting you from disease, there are 700 red blood cells carrying oxygen — your immune army is tiny but mighty!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "White blood cells outnumber red blood cells in human blood.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which white blood cell type is the most abundant in normal blood?",
+        "answer": "Neutrophils",
+        "distractors": [
+          "Lymphocytes",
+          "Monocytes",
+          "Basophils"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "MedlinePlus",
+    "sourceUrl": "https://medlineplus.gov/ency/article/003643.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blood sample diagram showing proportions of red blood cells, white blood cells, and platelets with labels",
+    "tags": [
+      "blood",
+      "white blood cells",
+      "immune system",
+      "biology",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-blood-cell-division",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "blood",
+    "categoryL1": "human_body_health",
+    "categoryL2": "blood",
+    "categoryL3": "",
+    "statement": "All blood cells originate from hematopoietic stem cells in bone marrow — a single stem cell can give rise to any type of blood cell, and this process (hematopoiesis) produces about 500 billion blood cells daily.",
+    "quizQuestion": "Where are blood cells produced in the human body?",
+    "correctAnswer": "In bone marrow, from hematopoietic stem cells",
+    "distractors": [
+      "In the spleen",
+      "In the thymus",
+      "In the liver",
+      "In the lymph nodes",
+      "In the kidneys",
+      "In the heart",
+      "In the intestines",
+      "In the lungs"
+    ],
+    "acceptableAnswers": [
+      "bone marrow",
+      "in bone marrow"
+    ],
+    "explanation": "Hematopoiesis (blood cell formation) occurs primarily in red bone marrow, found in the cavities of flat bones (sternum, ribs, skull, pelvis) and the ends of long bones. Hematopoietic stem cells (HSCs) are multipotent — each one can differentiate into any of the blood cell lineages: red blood cells, platelets (from megakaryocytes), or any of the five white blood cell types. About 500 billion blood cells are produced and destroyed daily, making it one of the body's most active tissues. This process can be disrupted by leukemia (uncontrolled white cell production).",
+    "wowFactor": "A single stem cell in your bone marrow can become ANY type of blood cell — it's nature's most flexible factory, running 24/7 at 500 billion cells per day!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Blood cells are primarily produced in the spleen.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "MedlinePlus",
+    "sourceUrl": "https://medlineplus.gov/stemcells.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bone marrow cross-section diagram showing hematopoietic stem cells branching into different blood cell types",
+    "tags": [
+      "blood",
+      "bone marrow",
+      "stem cells",
+      "hematopoiesis",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-liver-functions",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "liver",
+    "categoryL1": "human_body_health",
+    "categoryL2": "liver",
+    "categoryL3": "",
+    "statement": "The liver performs over 500 distinct functions, including detoxification, protein synthesis, bile production, glucose regulation, vitamin storage, and immune function — making it the body's most metabolically complex organ.",
+    "quizQuestion": "Approximately how many distinct functions does the human liver perform?",
+    "correctAnswer": "Over 500",
+    "distractors": [
+      "About 5",
+      "About 20",
+      "About 50",
+      "About 100",
+      "About 1,000",
+      "About 10",
+      "About 3",
+      "About 200"
+    ],
+    "acceptableAnswers": [
+      "500",
+      "more than 500",
+      "over 500"
+    ],
+    "explanation": "The liver is the body's metabolic hub, performing over 500 documented functions. Key roles include: detoxifying blood from the gut, producing bile for fat digestion, synthesizing plasma proteins (albumin, clotting factors), regulating blood glucose (glycogen storage/release), storing vitamins A, D, E, K and B12, converting ammonia to urea, metabolizing drugs and alcohol, and producing cholesterol. No artificial liver device can replicate all these functions — liver failure is rapidly fatal without transplant.",
+    "wowFactor": "No machine has ever replicated all 500+ liver functions — it's the most complex chemical factory in the known universe, running inside your body!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "An artificial machine can fully replace all liver functions if the organ fails.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "British Liver Trust",
+    "sourceUrl": "https://britishlivertrust.org.uk/information-and-support/about-your-liver/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Liver diagram with arrows pointing to icons representing 10+ major functions: detox, bile, proteins, glucose etc.",
+    "tags": [
+      "liver",
+      "functions",
+      "metabolism",
+      "human body",
+      "organ"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-liver-alcohol",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "liver",
+    "categoryL1": "human_body_health",
+    "categoryL2": "liver",
+    "categoryL3": "",
+    "statement": "The liver processes alcohol at a fixed rate of roughly one standard drink per hour — no amount of water, coffee, or food can speed this up. Only time eliminates alcohol from the body.",
+    "quizQuestion": "How does the liver process alcohol in the human body?",
+    "correctAnswer": "At a fixed rate of about one standard drink per hour — nothing can speed this up",
+    "distractors": [
+      "Faster if you drink coffee or eat food afterward",
+      "At a variable rate depending on body weight only",
+      "The kidneys process most alcohol, not the liver",
+      "Faster if you exercise vigorously after drinking",
+      "Only the stomach processes alcohol before it reaches blood",
+      "At 2-3 drinks per hour for adults",
+      "The liver converts all alcohol instantly upon consumption",
+      "Only cold water significantly speeds alcohol metabolism"
+    ],
+    "acceptableAnswers": [
+      "one drink per hour",
+      "fixed rate"
+    ],
+    "explanation": "The liver uses the enzyme alcohol dehydrogenase (ADH) to convert ethanol to acetaldehyde, then acetaldehyde dehydrogenase (ALDH) to convert acetaldehyde to acetic acid. This system processes alcohol at a rate of roughly 10-15 grams of pure ethanol per hour — approximately one standard drink (12 oz beer, 5 oz wine, 1.5 oz spirits). This rate is fixed regardless of eating, drinking coffee, exercising, or taking a cold shower. These methods may make you feel more alert, but blood alcohol concentration drops only through time.",
+    "wowFactor": "No matter what you do — coffee, water, exercise, cold shower — only time removes alcohol from your blood. Your liver runs at its own fixed speed!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Drinking coffee speeds up how fast the liver processes alcohol.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "adult",
+    "rarity": "common",
+    "sourceName": "NIAAA",
+    "sourceUrl": "https://www.niaaa.nih.gov/alcohols-effects-health/alcohol-topics/alcohol-facts-and-statistics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "Liver diagram with alcohol molecule being broken down step by step, with a clock showing the fixed hourly rate",
+    "tags": [
+      "liver",
+      "alcohol",
+      "metabolism",
+      "human body",
+      "health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-lungs-surface-area",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "lungs",
+    "categoryL1": "human_body_health",
+    "categoryL2": "lungs",
+    "categoryL3": "",
+    "statement": "The total surface area of the human lungs is approximately 70 square meters — roughly the size of a tennis court — achieved by about 600 million tiny air sacs called alveoli.",
+    "quizQuestion": "What is the approximate total surface area of human lungs?",
+    "correctAnswer": "About 70 square meters — the size of a tennis court",
+    "distractors": [
+      "About 1 square meter",
+      "About 5 square meters",
+      "About 10 square meters",
+      "About 200 square meters",
+      "About 500 square meters",
+      "About 0.5 square meters",
+      "About 30 square meters",
+      "About 1,000 square meters"
+    ],
+    "acceptableAnswers": [
+      "70 square meters",
+      "about 70 m²"
+    ],
+    "explanation": "The lungs contain approximately 600 million alveoli — tiny, grape-like air sacs where gas exchange occurs. Each alveolus is about 0.2-0.3 mm in diameter and is surrounded by capillaries. Their combined surface area is about 70 m² (some estimates range from 50-100 m²). This enormous surface area packed into the chest cavity allows oxygen to diffuse rapidly into blood and carbon dioxide to diffuse out. At rest, the lungs cycle about 6 liters of air per minute.",
+    "wowFactor": "Your lungs contain a tennis court's worth of surface area folded up into your chest — nature's origami at its finest!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The surface area of human lungs is roughly the size of a tennis court.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Approximately how many alveoli does the human lung contain?",
+        "answer": "About 600 million",
+        "distractors": [
+          "About 1 million",
+          "About 10 million",
+          "About 6 billion"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "American Lung Association",
+    "sourceUrl": "https://www.lung.org/lung-health-diseases/how-lungs-work",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lung cross-section magnifying progressively from bronchioles to alveoli clusters, with a tennis court size comparison",
+    "tags": [
+      "lungs",
+      "alveoli",
+      "surface area",
+      "anatomy",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-lungs-oxygen-exchange",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "lungs",
+    "categoryL1": "human_body_health",
+    "categoryL2": "lungs",
+    "categoryL3": "",
+    "statement": "Gas exchange in the lungs happens through passive diffusion — oxygen dissolves into the thin layer of fluid on alveolar walls and crosses a 0.2-micrometer membrane into blood, driven purely by concentration gradients, not pumping.",
+    "quizQuestion": "How does oxygen move from air in the lungs into the bloodstream?",
+    "correctAnswer": "Passive diffusion through concentration gradients across the thin alveolar membrane",
+    "distractors": [
+      "Active transport pumped by the heart's pressure",
+      "Chemical binding directly in the airways",
+      "Osmosis through water-filled channels",
+      "Absorption by specialized mucus lining",
+      "Active transport by specialized lung cells",
+      "Capillary suction created by heart pumping",
+      "Mechanical compression forcing oxygen into blood",
+      "Catalytic conversion by enzymes in the alveoli"
+    ],
+    "acceptableAnswers": [
+      "passive diffusion",
+      "diffusion"
+    ],
+    "explanation": "The alveolar-capillary membrane is only about 0.2 micrometers (0.0002 mm) thick — one of the thinnest tissue barriers in the body. Oxygen from inhaled air is at higher concentration in the alveoli than in venous blood returning from the body. It simply diffuses down this concentration gradient, dissolving into the thin fluid layer and crossing the membrane into red blood cells where hemoglobin binds it. CO2 diffuses in the opposite direction simultaneously. No pumping or active transport is needed — the heart's role is only to deliver blood to and from the lungs, not to drive the gas exchange itself.",
+    "wowFactor": "You don't actually 'pump' oxygen into your blood — it just seeps across a membrane 300 times thinner than a human hair all by itself!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The heart pumps oxygen into the blood inside the lungs.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Physiology textbook",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology/pages/22-5-transport-of-gases",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Alveolus cross-section showing oxygen molecules diffusing across ultra-thin membrane into capillary blood cells",
+    "tags": [
+      "lungs",
+      "oxygen",
+      "diffusion",
+      "gas exchange",
+      "physiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-lungs-breathing-rate",
+    "type": "knowledge",
+    "domain": "human_body_health",
+    "subdomain": "lungs",
+    "categoryL1": "human_body_health",
+    "categoryL2": "lungs",
+    "categoryL3": "",
+    "statement": "A normal adult breathes 12-20 times per minute at rest, taking in about 0.5 liters per breath — processing roughly 10,000 liters of air per day. During intense exercise, this can rise to 40-60 breaths per minute.",
+    "quizQuestion": "How many times per minute does a normal adult breathe at rest?",
+    "correctAnswer": "12-20 breaths per minute",
+    "distractors": [
+      "1-5 breaths per minute",
+      "5-10 breaths per minute",
+      "25-35 breaths per minute",
+      "40-60 breaths per minute",
+      "60-80 breaths per minute",
+      "About 30 breaths per minute",
+      "About 100 breaths per minute",
+      "About 5 breaths per minute"
+    ],
+    "acceptableAnswers": [
+      "12-20",
+      "12 to 20 breaths per minute"
+    ],
+    "explanation": "Resting respiratory rate (RR) is 12-20 breaths/minute for adults; children breathe faster. Each resting breath draws in about 500 mL (0.5 L) of air — called tidal volume. Total air processed daily is ~10,000 liters. During intense exercise, rate rises to 40-60 breaths/minute and tidal volume increases dramatically, bringing total ventilation up to 150 liters/minute. Respiratory rate is an important vital sign — elevated rate (tachypnea) can indicate infection, heart failure, or metabolic acidosis.",
+    "wowFactor": "You process 10,000 liters of air every day without thinking — that's about the volume of a large SUV's cargo space, cycled through your lungs daily!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how much air does an adult process through their lungs per day?",
+        "answer": "About 10,000 liters",
+        "distractors": [
+          "About 100 liters",
+          "About 1,000 liters",
+          "About 100,000 liters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A normal adult breathes about 60 times per minute at rest.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "American Lung Association",
+    "sourceUrl": "https://www.lung.org/lung-health-diseases/how-lungs-work",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lungs with breath counter showing 12-20 breaths per minute, with exercise comparison showing increased rate",
+    "tags": [
+      "lungs",
+      "breathing",
+      "respiration",
+      "physiology",
+      "human body"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

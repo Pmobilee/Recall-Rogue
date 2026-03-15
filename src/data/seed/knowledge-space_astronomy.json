@@ -6456,5 +6456,1857 @@
       "orion",
       "star names"
     ]
+  },
+  {
+    "id": "space-hubble-galaxy-classification",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomy history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronomy history",
+    "categoryL3": "",
+    "statement": "Edwin Hubble developed the Hubble sequence — the standard system for classifying galaxies into elliptical, spiral, barred spiral, and irregular types.",
+    "quizQuestion": "What classification system for galaxies did Edwin Hubble create?",
+    "correctAnswer": "The Hubble sequence (tuning fork diagram)",
+    "distractors": [
+      "The Messier catalog",
+      "The Herzsprung-Russell diagram",
+      "The Shapley-Curtis scale",
+      "The Hertzsprung sequence"
+    ],
+    "acceptableAnswers": [
+      "Hubble sequence",
+      "tuning fork diagram",
+      "galaxy classification system"
+    ],
+    "explanation": "Hubble published his galaxy classification in 1926. His 'tuning fork' diagram organizing galaxies by shape is still used by astronomers today.",
+    "wowFactor": "Hubble classified galaxies using photographic plates taken with a 100-inch telescope — the same images that revealed the universe's expansion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Edwin Hubble create to classify galaxies?",
+        "answer": "The Hubble sequence",
+        "distractors": [
+          "The Messier catalog",
+          "The HR diagram",
+          "The Shapley scale"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edwin Hubble created a system for classifying galaxies.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hubble_sequence",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Hubble tuning fork diagram showing elliptical, spiral, and barred spiral galaxies branching from a single point.",
+    "tags": [
+      "Hubble",
+      "galaxies",
+      "classification",
+      "astronomy",
+      "Hubble sequence"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-hubble-andromeda-proof",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomy history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronomy history",
+    "categoryL3": "",
+    "statement": "In 1923, Edwin Hubble identified individual Cepheid variable stars in the Andromeda nebula, proving it was a separate galaxy far beyond the Milky Way.",
+    "quizQuestion": "What did Hubble prove in 1923 by observing Cepheid stars in Andromeda?",
+    "correctAnswer": "Andromeda is a separate galaxy beyond the Milky Way",
+    "distractors": [
+      "Andromeda is part of the Milky Way",
+      "Cepheid stars are the largest in the universe",
+      "The Milky Way is the only galaxy",
+      "Stars form from nebulae within our galaxy only"
+    ],
+    "acceptableAnswers": [
+      "Andromeda is a separate galaxy",
+      "galaxies exist beyond the Milky Way",
+      "the universe contains more than one galaxy"
+    ],
+    "explanation": "Before Hubble, many astronomers believed all nebulae were inside the Milky Way. His Andromeda measurements settled the 'Great Debate' about the scale of the universe.",
+    "wowFactor": "Before 1923, humanity thought the Milky Way was the entire universe. Hubble's single observation revealed we were just one galaxy among billions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Hubble prove about Andromeda in 1923?",
+        "answer": "It is a separate galaxy beyond the Milky Way",
+        "distractors": [
+          "It's part of the Milky Way",
+          "It's the closest nebula",
+          "It contains no stars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hubble proved Andromeda was a separate galaxy in 1923.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edwin_Hubble",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1920s photographic plate of Andromeda with one star circled in red — Hubble's key Cepheid discovery.",
+    "tags": [
+      "Hubble",
+      "Andromeda",
+      "galaxies",
+      "Cepheid",
+      "astronomy",
+      "discovery"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-hubble-football-boxer",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "biography",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "biography",
+    "categoryL3": "",
+    "statement": "Before becoming a famous astronomer, Edwin Hubble was a semi-professional boxer who reportedly turned down a professional contract.",
+    "quizQuestion": "What sport did Edwin Hubble nearly pursue as a profession before becoming an astronomer?",
+    "correctAnswer": "Boxing",
+    "distractors": [
+      "Baseball",
+      "American football",
+      "Tennis",
+      "Swimming"
+    ],
+    "acceptableAnswers": [
+      "boxing",
+      "boxing career"
+    ],
+    "explanation": "Hubble was an outstanding athlete at the University of Chicago. He reportedly turned down an offer to fight world heavyweight champion Jack Johnson.",
+    "wowFactor": "The man who discovered the expanding universe was almost a professional boxer — he was reportedly offered a fight against the world heavyweight champion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What sport did Hubble nearly pursue professionally?",
+        "answer": "Boxing",
+        "distractors": [
+          "Baseball",
+          "Football",
+          "Tennis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edwin Hubble was a semi-professional boxer before becoming an astronomer.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edwin_Hubble",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split image: on the left, a young Hubble in boxing gloves; on the right, an older Hubble peering through a telescope.",
+    "tags": [
+      "Hubble",
+      "boxing",
+      "biography",
+      "astronomy",
+      "surprising facts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-hubble-telescope-namesake",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space exploration",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space exploration",
+    "categoryL3": "",
+    "statement": "The Hubble Space Telescope, launched in 1990 and still operating, is named after Edwin Hubble in recognition of his transformative contributions to astronomy.",
+    "quizQuestion": "When was the Hubble Space Telescope launched?",
+    "correctAnswer": "1990",
+    "distractors": [
+      "1975",
+      "2000",
+      "1985",
+      "1969"
+    ],
+    "acceptableAnswers": [
+      "1990",
+      "April 1990"
+    ],
+    "explanation": "The HST was launched April 24, 1990 aboard Space Shuttle Discovery. Despite an initial mirror flaw, it became one of the most productive scientific instruments ever built.",
+    "wowFactor": "The Hubble was almost a catastrophic failure — its mirror was ground to the wrong shape, and astronauts had to perform spacewalk surgery to fix it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When was the Hubble Space Telescope launched?",
+        "answer": "1990",
+        "distractors": [
+          "1975",
+          "2000",
+          "1985"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Hubble Space Telescope was launched before the year 2000.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Hubble Space Telescope floating above Earth with its solar panels extended, stars in the background.",
+    "tags": [
+      "Hubble",
+      "telescope",
+      "space exploration",
+      "1990",
+      "NASA"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-galileo-moons-of-jupiter",
+    "type": "knowledge",
+    "domain": "space_astronomy",
+    "subdomain": "history_of_astronomy",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "History of Astronomy",
+    "categoryL3": "",
+    "statement": "Galileo Galilei discovered four of Jupiter's moons in January 1610, now called the Galilean moons: Io, Europa, Ganymede, and Callisto.",
+    "quizQuestion": "What did Galileo Galilei discover about Jupiter in 1610?",
+    "correctAnswer": "Four moons orbiting Jupiter (Io, Europa, Ganymede, Callisto)",
+    "distractors": [
+      "Jupiter's Great Red Spot storm",
+      "Jupiter's ring system",
+      "That Jupiter rotates faster than any other planet",
+      "Jupiter's magnetic field",
+      "The distance from Jupiter to the Sun",
+      "That Jupiter is made of gas, not solid rock",
+      "Five previously unknown planets near Jupiter",
+      "That Jupiter has an atmosphere"
+    ],
+    "acceptableAnswers": [
+      "four moons of Jupiter",
+      "the Galilean moons",
+      "Io, Europa, Ganymede, Callisto",
+      "Jupiter's moons"
+    ],
+    "explanation": "Using an improved telescope of his own design, Galileo observed Jupiter between 7–15 January 1610 and noted four 'stars' that changed position relative to Jupiter night after night. He correctly deduced they were orbiting Jupiter — the first observation of bodies orbiting something other than Earth or the Sun. This was a direct challenge to the geocentric model of the universe. The four moons — Io, Europa, Ganymede, and Callisto — are still called the Galilean moons and can be seen with basic binoculars.",
+    "wowFactor": "You can see Galileo's exact discovery yourself tonight with any pair of binoculars. Jupiter's four large moons are visible as tiny points of light, just as he saw them in 1610.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Galileo, Sidereus Nuncius (1610); NASA — Galilean Moons",
+    "sourceUrl": "https://solarsystem.nasa.gov/moons/jupiter-moons/galilean-moons/overview/",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A telescopic view of Jupiter flanked by four small dots representing Io, Europa, Ganymede and Callisto, modelled on Galileo's 1610 observation sketches",
+    "tags": [
+      "Galileo",
+      "Jupiter",
+      "moons",
+      "Galilean moons",
+      "astronomy history",
+      "1610"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-galileo-house-arrest",
+    "type": "knowledge",
+    "domain": "space_astronomy",
+    "subdomain": "history_of_astronomy",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "History of Astronomy",
+    "categoryL3": "",
+    "statement": "After his 1633 Inquisition trial, Galileo spent the remaining 9 years of his life under house arrest.",
+    "quizQuestion": "How many years did Galileo spend under house arrest after his Inquisition trial?",
+    "correctAnswer": "9 years (until his death in 1642)",
+    "distractors": [
+      "1 year",
+      "3 years",
+      "20 years",
+      "He was imprisoned in a cell, not house arrest",
+      "He was acquitted and released immediately",
+      "5 years",
+      "He died during the trial",
+      "15 years"
+    ],
+    "acceptableAnswers": [
+      "9 years",
+      "nine years",
+      "until his death",
+      "1633 to 1642"
+    ],
+    "explanation": "Galileo was tried by the Roman Inquisition in 1633 for his book Dialogue Concerning the Two Chief World Systems, which supported the Copernican (heliocentric) model. Found 'vehemently suspect of heresy', he was forced to recant and sentenced to indefinite imprisonment, later commuted to house arrest at his villa in Arcetri near Florence. He remained there, increasingly blind, until his death on 8 January 1642. Even under house arrest, he continued to write — his final book, Two New Sciences, was smuggled out of Italy for publication.",
+    "wowFactor": "Even under house arrest and going blind, Galileo wrote his most important physics work — Two New Sciences — which laid the groundwork for Newton's laws of motion.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Galileo: A Life — James Reston Jr.",
+    "sourceUrl": "https://www.cambridge.org/core/journals/british-journal-for-the-history-of-science",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ageing, nearly blind Galileo at his desk in the Villa Arcetri, writing by candlelight, with iron-barred windows and a telescope visible in the corner",
+    "tags": [
+      "Galileo",
+      "house arrest",
+      "Inquisition",
+      "1633",
+      "astronomy history",
+      "science vs religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-galileo-phases-of-venus",
+    "type": "knowledge",
+    "domain": "space_astronomy",
+    "subdomain": "history_of_astronomy",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "History of Astronomy",
+    "categoryL3": "",
+    "statement": "Galileo's observation of Venus going through phases — like the Moon — proved that Venus orbits the Sun, not Earth.",
+    "quizQuestion": "What did Galileo's observation of Venus's phases prove about the solar system?",
+    "correctAnswer": "That Venus orbits the Sun, contradicting the geocentric model",
+    "distractors": [
+      "That Venus has an atmosphere",
+      "That Venus is larger than Earth",
+      "That Venus has its own moons",
+      "That Venus rotates on its axis",
+      "That Venus is closer to Earth than the Moon",
+      "That Venus is the same size as the Moon",
+      "That Venus emits its own light",
+      "That Venus has volcanic activity"
+    ],
+    "acceptableAnswers": [
+      "Venus orbits the Sun",
+      "heliocentric model",
+      "Venus goes around the Sun",
+      "contradicts geocentrism"
+    ],
+    "explanation": "In 1610, Galileo observed that Venus showed a full range of phases — from thin crescent to nearly full — just as the Moon does. This was impossible under the Ptolemaic geocentric model, in which Venus would always appear as a crescent because it was positioned between Earth and the Sun. The complete phases proved Venus must orbit the Sun, passing through positions where we see it lit from different angles. This was one of the most powerful observational arguments against geocentrism ever made.",
+    "wowFactor": "The phases of Venus are one of the most beautiful examples of an observation directly disproving a theory — visible through a telescope that Galileo built himself with lenses he ground by hand.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Galileo, Sidereus Nuncius and later correspondence (1610)",
+    "sourceUrl": "https://www.ias.edu/sites/default/files/sns/files/Galileo-Phases-Venus.pdf",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sequence of telescopic drawings showing Venus at different phases from crescent to gibbous, with orbital diagrams explaining why each phase occurs",
+    "tags": [
+      "Galileo",
+      "Venus",
+      "phases",
+      "heliocentric",
+      "geocentric",
+      "astronomy history",
+      "Copernicus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-galileo-birthplace-pisa",
+    "type": "knowledge",
+    "domain": "space_astronomy",
+    "subdomain": "history_of_astronomy",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "History of Astronomy",
+    "categoryL3": "",
+    "statement": "Galileo Galilei was born in Pisa in 1564 — the same year William Shakespeare was born.",
+    "quizQuestion": "In what year was Galileo Galilei born, and who else was born in that year?",
+    "correctAnswer": "1564 — the same year as William Shakespeare",
+    "distractors": [
+      "1543 — the year Copernicus published his heliocentric theory",
+      "1571 — the same year as Johannes Kepler",
+      "1600 — the same year Giordano Bruno was executed",
+      "1550 — the same year as Tycho Brahe's famous observation",
+      "1642 — the same year Isaac Newton was born",
+      "1610 — the year of his Jupiter observations",
+      "1473 — the same year as Copernicus",
+      "1571 — the year of the Battle of Lepanto"
+    ],
+    "acceptableAnswers": [
+      "1564",
+      "same year as Shakespeare",
+      "1564 like Shakespeare"
+    ],
+    "explanation": "Galileo Galilei was born on 15 February 1564 in Pisa, in the Duchy of Florence. William Shakespeare was born on approximately 23 April 1564 in Stratford-upon-Avon, England. The coincidence that two of the most transformative figures of Western culture — one in science, one in literature — were born in the same year is a notable historical footnote. Both also died in the same year: 1642 for Galileo, 1616 for Shakespeare — though Isaac Newton was born the year Galileo died.",
+    "wowFactor": "Galileo and Shakespeare were born in the same year, 1564. The year Galileo died, 1642, Isaac Newton was born — as if the universe needed continuous coverage of scientific genius.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Stillman Drake, Galileo: A Very Short Introduction",
+    "sourceUrl": "https://global.oup.com/academic/product/galileo-9780192854568",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split portrait: Galileo on the left in Italian Renaissance scholar dress, Shakespeare on the right in Elizabethan attire, both dated 1564 beneath",
+    "tags": [
+      "Galileo",
+      "Pisa",
+      "1564",
+      "Shakespeare",
+      "history of science",
+      "Renaissance"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-galileo-church-rehabilitation",
+    "type": "knowledge",
+    "domain": "space_astronomy",
+    "subdomain": "history_of_astronomy",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "History of Astronomy",
+    "categoryL3": "",
+    "statement": "The Catholic Church formally rehabilitated Galileo in 1992 — 350 years after his death — acknowledging that the Inquisition had erred.",
+    "quizQuestion": "In what year did the Catholic Church formally rehabilitate Galileo and admit the Inquisition had erred?",
+    "correctAnswer": "1992",
+    "distractors": [
+      "1822",
+      "1900",
+      "1950",
+      "1945",
+      "2000",
+      "1865",
+      "1750",
+      "2005"
+    ],
+    "acceptableAnswers": [
+      "1992",
+      "in 1992",
+      "the year 1992"
+    ],
+    "explanation": "Pope John Paul II formally rehabilitated Galileo on 31 October 1992, following a 13-year investigation by a Pontifical Commission. The statement acknowledged that the theologians who condemned Galileo in 1633 had failed to distinguish between the biblical text and its scientific interpretation. This came 350 years after Galileo's death in 1642. The Church had removed the Dialogue from its Index of Forbidden Books in 1835 and had informally signalled acceptance of heliocentrism much earlier, but the 1992 statement was the most explicit formal acknowledgement of error.",
+    "wowFactor": "It took the Catholic Church 359 years to admit it was wrong about Galileo — making it arguably the slowest institutional apology in history.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Pope John Paul II, Address to the Pontifical Academy of Sciences, 31 October 1992",
+    "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/speeches/1992/october/documents/hf_jp-ii_spe_19921031_accademia-scienze.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pope John Paul II addressing the Pontifical Academy of Sciences in 1992, with a portrait of Galileo visible in the background",
+    "tags": [
+      "Galileo",
+      "Catholic Church",
+      "rehabilitation",
+      "1992",
+      "Inquisition",
+      "history of science",
+      "Pope John Paul II"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-copernicus-heliocentric-publish",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Copernicus published his heliocentric model in 1543 — the same year he died.",
+    "quizQuestion": "In what year did Copernicus publish his heliocentric model of the solar system?",
+    "correctAnswer": "1543",
+    "distractors": [
+      "1492",
+      "1610",
+      "1500",
+      "1620",
+      "1400",
+      "1560",
+      "1687"
+    ],
+    "acceptableAnswers": [
+      "1543"
+    ],
+    "explanation": "Nicolaus Copernicus published De revolutionibus orbium coelestium (On the Revolutions of the Celestial Spheres) in 1543, proposing that the Sun, not Earth, was at the center of the solar system. He died the same year, reportedly receiving the first printed copy on his deathbed.",
+    "wowFactor": "Copernicus delayed publishing his heliocentric theory for decades out of fear of ridicule — then died the same day he finally saw it in print.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Copernicus publish his heliocentric model?",
+        "answer": "1543",
+        "distractors": [
+          "1492",
+          "1610",
+          "1620"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the Latin title of Copernicus' 1543 book proposing the heliocentric model?",
+        "answer": "De revolutionibus orbium coelestium",
+        "distractors": [
+          "Principia Mathematica",
+          "Dialogue Concerning the Two World Systems",
+          "Astronomia Nova"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus published his heliocentric model in 1543, the year he died.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus published his heliocentric model in ___, the same year he died.",
+        "answer": "1543",
+        "distractors": [
+          "1492",
+          "1610",
+          "1500"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elderly Copernicus on his deathbed holding the first printed copy of De revolutionibus, the heliocentric solar system diagram visible on the open pages.",
+    "tags": [
+      "Copernicus",
+      "heliocentric",
+      "1543",
+      "astronomy",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-copernicus-canon-law",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "biography",
+    "categoryL3": "",
+    "statement": "Copernicus was a Church canon, and astronomy was just his hobby — he was never a professional astronomer.",
+    "quizQuestion": "What was Copernicus' actual profession, for which he was paid?",
+    "correctAnswer": "Church canon (canon law administrator)",
+    "distractors": [
+      "Professional astronomer",
+      "University professor of astronomy",
+      "Royal court mathematician",
+      "Physician to the king",
+      "Military engineer",
+      "Cathedral architect",
+      "Navigator for trade ships"
+    ],
+    "acceptableAnswers": [
+      "Church canon",
+      "canon",
+      "canon law",
+      "Catholic canon"
+    ],
+    "explanation": "Copernicus worked as a canon (administrator) of the Roman Catholic Church in Frombork, Poland. He managed Church estates, practised medicine, and performed ecclesiastical duties. Astronomy was his intellectual passion pursued privately.",
+    "wowFactor": "The man who overthrew Earth's central place in the universe did it as a hobby — he spent most of his working life managing Church property.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Copernicus' actual profession?",
+        "answer": "Church canon",
+        "distractors": [
+          "Professional astronomer",
+          "University professor",
+          "Royal mathematician"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which country did Copernicus spend most of his life as a Church canon?",
+        "answer": "Poland",
+        "distractors": [
+          "Germany",
+          "Italy",
+          "Austria"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus was a Church canon and astronomy was his hobby rather than his profession.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus was a Church ___ by profession; astronomy was his intellectual hobby.",
+        "answer": "canon",
+        "distractors": [
+          "bishop",
+          "deacon",
+          "monk"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Copernicus in clerical robes at a desk cluttered with Church documents, a secret astronomy diagram half-hidden beneath the papers, night sky visible through a Gothic window.",
+    "tags": [
+      "Copernicus",
+      "Church canon",
+      "biography",
+      "astronomy",
+      "Poland"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-copernicus-earth-third-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Copernicus correctly determined that Earth is the third planet from the Sun.",
+    "quizQuestion": "What did Copernicus correctly determine about Earth's position in the solar system?",
+    "correctAnswer": "Earth is the third planet from the Sun",
+    "distractors": [
+      "Earth is the closest planet to the Sun",
+      "Earth is the second planet from the Sun",
+      "Earth is the fourth planet from the Sun",
+      "Earth is at the center of the solar system",
+      "Earth orbits the Moon",
+      "The Sun orbits Earth",
+      "Earth and Mars are the same distance from the Sun"
+    ],
+    "acceptableAnswers": [
+      "Third from the Sun",
+      "third planet",
+      "Earth is third"
+    ],
+    "explanation": "In his heliocentric model, Copernicus correctly ordered the known planets: Mercury, Venus, Earth (third), Mars, Jupiter, Saturn. This placement of Earth as the third planet was a major insight, correctly derived from observational data.",
+    "wowFactor": "Copernicus worked out Earth's correct position in the solar system in the 1500s using nothing but naked-eye observations and mathematics.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Copernicus correctly determine about Earth's position?",
+        "answer": "Earth is the third planet from the Sun",
+        "distractors": [
+          "Earth is second from the Sun",
+          "Earth is fourth from the Sun",
+          "Earth is at the center"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In Copernicus' heliocentric model, which planet did he correctly place second from the Sun?",
+        "answer": "Venus",
+        "distractors": [
+          "Mercury",
+          "Mars",
+          "Earth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus correctly identified Earth as the third planet from the Sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus correctly determined Earth is the ___ planet from the Sun.",
+        "answer": "third",
+        "distractors": [
+          "second",
+          "fourth",
+          "first"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 16th-century diagram showing the Sun at center with planets orbiting in order, Earth clearly marked as the third ring out from the Sun.",
+    "tags": [
+      "Copernicus",
+      "Earth",
+      "third planet",
+      "heliocentric",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-copernicus-asteroid-named",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomical_records",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_exploration",
+    "categoryL3": "",
+    "statement": "Asteroid 1322 Coppernicus (spelled with double p) is named in honour of Nicolaus Copernicus.",
+    "quizQuestion": "What is the number designation of the asteroid named after Copernicus?",
+    "correctAnswer": "1322",
+    "distractors": [
+      "42",
+      "2001",
+      "1543",
+      "399",
+      "100",
+      "5000",
+      "786"
+    ],
+    "acceptableAnswers": [
+      "1322",
+      "1322 Coppernicus"
+    ],
+    "explanation": "Asteroid 1322 Coppernicus was discovered in 1933 and named in honour of Nicolaus Copernicus. Notably, the asteroid's name uses the latinized double-p spelling 'Coppernicus', distinguishing it from the Polish spelling.",
+    "wowFactor": "The asteroid named after Copernicus spells his name wrong on purpose — using the old Latin spelling 'Coppernicus' with two p's.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the number designation of the asteroid named after Copernicus?",
+        "answer": "1322",
+        "distractors": [
+          "1543",
+          "42",
+          "2001"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What space object bears the name 1322 Coppernicus?",
+        "answer": "An asteroid",
+        "distractors": [
+          "A moon of Jupiter",
+          "A crater on Mars",
+          "A star in Orion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: There is an asteroid named after Nicolaus Copernicus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Asteroid ___ Coppernicus is named in honour of Nicolaus Copernicus.",
+        "answer": "1322",
+        "distractors": [
+          "1543",
+          "42",
+          "399"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1322_Coppernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rocky asteroid tumbling through space with the designation '1322' glowing on its surface, a faint portrait of Copernicus in the starfield behind.",
+    "tags": [
+      "Copernicus",
+      "asteroid",
+      "1322",
+      "named objects",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-bruno-burned-at-stake",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "history_of_astronomy",
+    "statement": "Giordano Bruno was burned at the stake by the Roman Inquisition on February 17, 1600, in Campo de' Fiori, Rome, for heresy — becoming a martyr for free thought.",
+    "quizQuestion": "How was Giordano Bruno executed in 1600?",
+    "correctAnswer": "Burned at the stake",
+    "distractors": [
+      "Beheaded",
+      "Drowned",
+      "Poisoned"
+    ],
+    "acceptableAnswers": [
+      "burned at the stake",
+      "burned alive",
+      "execution by fire"
+    ],
+    "explanation": "After seven years of inquisition imprisonment, Giordano Bruno was convicted of heresy for his pantheistic beliefs, denial of the Trinity, and claims about infinite worlds. He refused to recant, reportedly saying 'Perhaps you pronounce this sentence against me with greater fear than I receive it.' He was burned alive in Rome's Campo de' Fiori on February 17, 1600. Today, a bronze statue of Bruno marks the exact spot where he died.",
+    "wowFactor": "Bruno's execution was not specifically for his astronomical ideas — the Inquisition's main concerns were his denials of the Virgin Birth and Trinity, not his infinite universe theory.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How was Giordano Bruno executed in 1600?",
+        "answer": "Burned at the stake",
+        "distractors": [
+          "Beheaded",
+          "Drowned",
+          "Poisoned"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Giordano Bruno was executed by the Roman Inquisition in 1600.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Giordano_Bruno#Trial_and_execution",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "mild",
+    "sensitivityNote": "Historical execution content; appropriate for teen audiences",
+    "visualDescription": "Giordano Bruno at Campo de' Fiori, Rome, with the Inquisition in the background",
+    "tags": [
+      "Giordano Bruno",
+      "Inquisition",
+      "execution",
+      "heresy",
+      "martyrdom"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-bruno-legacy-statue",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "history_of_astronomy",
+    "statement": "A bronze statue of Giordano Bruno was erected in 1889 at the exact site of his execution in Rome's Campo de' Fiori, where he stands hooded and defiant to this day.",
+    "quizQuestion": "Where was a statue of Giordano Bruno erected in 1889?",
+    "correctAnswer": "At the site of his execution in Campo de' Fiori, Rome",
+    "distractors": [
+      "In his hometown of Nola, Italy",
+      "In front of the Vatican",
+      "At the University of Oxford"
+    ],
+    "acceptableAnswers": [
+      "Campo de' Fiori",
+      "where he was executed",
+      "site of his execution in Rome"
+    ],
+    "explanation": "In 1889, 289 years after his execution, a bronze statue of Giordano Bruno was unveiled at Campo de' Fiori in Rome despite strong Vatican opposition. Sculpted by Ettore Ferrari, it shows Bruno in his friar's hood, gaze directed defiantly toward the Vatican. The unveiling was celebrated by freethinkers, atheists, and scientists worldwide. The statue remains a gathering point for secular ceremonies and debates about science and religious freedom.",
+    "wowFactor": "The Vatican still hasn't officially rehabilitated Bruno — unlike Galileo, who was pardoned in 1992. Bruno's case remains theologically complicated because his heresy wasn't just astronomical.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was a statue of Giordano Bruno erected in 1889?",
+        "answer": "At the site of his execution in Campo de' Fiori, Rome",
+        "distractors": [
+          "In his hometown of Nola, Italy",
+          "In front of the Vatican",
+          "At the University of Oxford"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A statue of Giordano Bruno stands at the exact spot where he was executed.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Giordano_Bruno#Legacy",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "The bronze statue of Giordano Bruno in Campo de' Fiori, Rome, at dusk",
+    "tags": [
+      "Giordano Bruno",
+      "statue",
+      "Campo de Fiori",
+      "Rome",
+      "legacy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-bruno-lunar-crater",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "moon",
+    "statement": "There is a lunar crater named Bruno (36 km wide) on the far side of the Moon. It may be one of the youngest large impact craters on the Moon, possibly formed just 700–1000 years ago.",
+    "quizQuestion": "What is notable about the Moon's crater named after Giordano Bruno?",
+    "correctAnswer": "It may be one of the youngest large craters, possibly formed 700–1000 years ago",
+    "distractors": [
+      "It is the largest crater on the Moon",
+      "It was the first crater discovered by telescope",
+      "It is on the near side and visible to the naked eye"
+    ],
+    "acceptableAnswers": [
+      "one of the youngest craters",
+      "possibly only 700-1000 years old",
+      "youngest large lunar crater"
+    ],
+    "explanation": "Bruno crater (22.9°N, 102.8°E) is a 36 km impact crater on the Moon's far side. Several scientists have proposed it could be geologically very young — possibly formed around 1178 CE based on a Canterbury monk's account of seeing a 'flaming torch' on the Moon's limb. If confirmed, this would make it the youngest large crater we can date. However, this hypothesis remains controversial; the crater shows fresh ejecta rays but precise dating is difficult.",
+    "wowFactor": "In 1178, five Canterbury monks reported seeing the Moon 'split in two' with fire and sparks — some astronomers think they witnessed the Bruno crater impact event.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is notable about the Moon's crater named after Giordano Bruno?",
+        "answer": "It may be one of the youngest large craters, possibly formed 700–1000 years ago",
+        "distractors": [
+          "It is the largest crater on the Moon",
+          "It was the first crater discovered by telescope",
+          "It is on the near side and visible to the naked eye"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: There is a lunar crater named after Giordano Bruno.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bruno_(crater)",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Lunar surface photograph of Bruno crater on the Moon's far side",
+    "tags": [
+      "Giordano Bruno",
+      "Moon",
+      "crater",
+      "lunar",
+      "impact"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-brahe-gold-nose",
+    "type": "knowledge",
+    "statement": "Tycho Brahe wore a prosthetic nose made of brass (possibly gold-silver alloy) after losing his real nose in a 1566 duel.",
+    "wowFactor": "The greatest naked-eye astronomer in history navigated the stars with a metal nose he glued on every morning!",
+    "explanation": "In 1566, a duel between Tycho Brahe and his third cousin Manderup Parsberg over a mathematical dispute resulted in Tycho losing the bridge of his nose. He wore a prosthetic for the rest of his life. Modern X-ray analysis of his exhumed remains in 2010 found traces of brass and gold alloy, not solid gold as legend claimed.",
+    "quizQuestion": "What material was Tycho Brahe's famous prosthetic nose primarily made of?",
+    "correctAnswer": "Brass",
+    "distractors": [
+      "Solid gold",
+      "Silver",
+      "Ivory",
+      "Copper",
+      "Carved bone",
+      "Painted clay",
+      "Pewter",
+      "Iron"
+    ],
+    "variants": [
+      {
+        "question": "Tycho Brahe lost part of his nose in what kind of incident?",
+        "type": "forward",
+        "distractors": [
+          "A mining accident",
+          "A laboratory explosion",
+          "A riding fall"
+        ],
+        "answer": "A duel"
+      },
+      {
+        "question": "Which famous astronomer is known for wearing a prosthetic nose?",
+        "type": "reverse",
+        "distractors": [
+          "Johannes Kepler",
+          "Galileo Galilei",
+          "Christiaan Huygens"
+        ],
+        "answer": "Tycho Brahe"
+      },
+      {
+        "question": "Tycho Brahe's prosthetic nose was made of solid gold.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Tycho Brahe replaced the bridge of his _____ with a metal prosthetic after a 1566 duel.",
+        "type": "fill_blank",
+        "distractors": [
+          "ear",
+          "finger",
+          "jaw"
+        ],
+        "answer": "nose"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "rarity": "rare",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "teen",
+    "sourceName": "Historical record / X-ray analysis 2010",
+    "contentVolatility": "timeless",
+    "tags": [
+      "tycho-brahe",
+      "history-of-astronomy",
+      "renaissance-science",
+      "duel",
+      "prosthetics"
+    ],
+    "visualDescription": "Renaissance astronomer with a distinctive brass-coloured prosthetic nose, ornate collar and doublet, astronomical instruments on a table beside him",
+    "noveltyScore": 9,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-brahe-observations",
+    "type": "knowledge",
+    "statement": "Tycho Brahe's naked-eye star catalogue was so precise it allowed Kepler to derive his laws of planetary motion.",
+    "wowFactor": "Before telescopes existed, one man's obsessive precision measurements unlocked the mathematical laws governing the entire solar system!",
+    "explanation": "Tycho Brahe (1546–1601) measured stellar and planetary positions to within 1–2 arcminutes using giant mural quadrants and sextants — an unprecedented accuracy for naked-eye observation. After Tycho's death, Johannes Kepler used this data to derive the three laws of planetary motion, which later helped Newton formulate universal gravitation.",
+    "quizQuestion": "Whose observational data did Johannes Kepler use to derive his laws of planetary motion?",
+    "correctAnswer": "Tycho Brahe",
+    "distractors": [
+      "Galileo Galilei",
+      "Nicolaus Copernicus",
+      "Giovanni Cassini",
+      "Edmund Halley",
+      "Ole Rømer",
+      "Christiaan Huygens",
+      "John Flamsteed",
+      "Pierre-Simon Laplace"
+    ],
+    "variants": [
+      {
+        "question": "What made Tycho Brahe's astronomical observations historically remarkable?",
+        "type": "forward",
+        "distractors": [
+          "He was the first to use a telescope",
+          "He observed from space",
+          "He used photography to record stars"
+        ],
+        "answer": "Their unprecedented accuracy without a telescope"
+      },
+      {
+        "question": "Tycho Brahe's star catalogue enabled which scientist to derive laws of planetary motion?",
+        "type": "forward",
+        "distractors": [
+          "Isaac Newton",
+          "Galileo Galilei",
+          "Edmund Halley"
+        ],
+        "answer": "Johannes Kepler"
+      },
+      {
+        "question": "Tycho Brahe used a telescope to achieve his precise measurements.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Tycho Brahe measured stellar positions to within 1–2 _____, an extraordinary pre-telescope accuracy.",
+        "type": "fill_blank",
+        "distractors": [
+          "degrees",
+          "arcseconds",
+          "light-minutes"
+        ],
+        "answer": "arcminutes"
+      },
+      {
+        "question": "Which instrument type did Tycho Brahe use for his precise naked-eye measurements?",
+        "type": "context",
+        "distractors": [
+          "Refracting telescopes",
+          "Radio dishes",
+          "Armillary spheres only"
+        ],
+        "answer": "Mural quadrants and sextants"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "teen",
+    "sourceName": "Historical astronomy records",
+    "contentVolatility": "timeless",
+    "tags": [
+      "tycho-brahe",
+      "kepler",
+      "naked-eye-astronomy",
+      "planetary-motion",
+      "renaissance-science"
+    ],
+    "visualDescription": "Large-scale Renaissance observatory interior with huge brass measurement instruments, astronomer taking precise readings, star charts covering the walls",
+    "noveltyScore": 7,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-brahe-death-mystery",
+    "type": "knowledge",
+    "statement": "Tycho Brahe's death in 1601 remained mysterious for centuries; 2010 analysis found no mercury poisoning, supporting a bladder rupture explanation.",
+    "wowFactor": "For 400 years people thought Kepler might have poisoned him — turns out Tycho probably just refused to leave a royal banquet to use the bathroom!",
+    "explanation": "Tycho Brahe died on 24 October 1601, eleven days after attending a banquet in Prague. Contemporary accounts suggest he refused to leave the table to relieve himself, which may have caused a bladder infection or rupture. For centuries, theories of mercury poisoning circulated — even implicating Kepler. In 2010, his exhumed remains were tested and showed no lethal mercury levels, largely ruling out poisoning.",
+    "quizQuestion": "What did 2010 analysis of Tycho Brahe's exhumed remains largely rule out as the cause of his death?",
+    "correctAnswer": "Mercury poisoning",
+    "distractors": [
+      "Bladder rupture",
+      "Plague",
+      "Stabbing",
+      "Lead poisoning",
+      "Arsenic poisoning",
+      "Heart attack",
+      "Kidney failure",
+      "Smallpox"
+    ],
+    "variants": [
+      {
+        "question": "One popular historical theory blamed who for possibly poisoning Tycho Brahe?",
+        "type": "forward",
+        "distractors": [
+          "Rudolf II",
+          "King Frederick II",
+          "Galileo Galilei"
+        ],
+        "answer": "Johannes Kepler"
+      },
+      {
+        "question": "According to contemporary accounts, what likely caused Tycho Brahe's bladder problems the night of his death?",
+        "type": "context",
+        "distractors": [
+          "Drinking poisoned wine",
+          "A sword wound from a duel",
+          "An allergic reaction to food"
+        ],
+        "answer": "Refusing to leave a royal banquet to relieve himself"
+      },
+      {
+        "question": "Tycho Brahe's remains were exhumed and tested in 2010.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Tycho Brahe died in _____, eleven days after a royal banquet.",
+        "type": "fill_blank",
+        "distractors": [
+          "1576",
+          "1620",
+          "1595"
+        ],
+        "answer": "1601"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "rarity": "rare",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageRating": "teen",
+    "sourceName": "Jacobsen et al. 2010 exhumation study",
+    "contentVolatility": "timeless",
+    "tags": [
+      "tycho-brahe",
+      "death-mystery",
+      "forensic-history",
+      "kepler",
+      "renaissance-science"
+    ],
+    "visualDescription": "Renaissance banquet hall with elaborate table setting, a courtly figure in distress, Prague castle architecture visible through arched windows",
+    "noveltyScore": 9,
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves historical death and murder theories — appropriate for teen+",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-huygens-saturn-rings",
+    "type": "knowledge",
+    "statement": "Christiaan Huygens was the first to correctly explain Saturn's rings as a flat disc of material surrounding the planet, in 1655.",
+    "wowFactor": "Galileo thought Saturn had two companion planets — it took Huygens to realize the 'companions' were actually a ring system unlike anything in the solar system!",
+    "explanation": "Galileo first observed Saturn's strange appearance in 1610 but could not explain it — he thought the planet had two companion blobs. Christiaan Huygens, with a better telescope he built himself, published in 1659 (using observations from 1655) that Saturn was 'surrounded by a thin flat ring, nowhere touching, inclined to the ecliptic.' This was the correct explanation, overturning decades of confusion.",
+    "quizQuestion": "Who was the first person to correctly identify Saturn's rings as a surrounding disc of material?",
+    "correctAnswer": "Christiaan Huygens",
+    "distractors": [
+      "Galileo Galilei",
+      "Giovanni Cassini",
+      "Johannes Kepler",
+      "Tycho Brahe",
+      "Edmund Halley",
+      "Robert Hooke",
+      "Ole Rømer",
+      "William Herschel"
+    ],
+    "variants": [
+      {
+        "question": "Galileo misidentified Saturn's rings as what when he first observed them?",
+        "type": "forward",
+        "distractors": [
+          "A comet tail",
+          "An atmospheric halo",
+          "A binary planet system"
+        ],
+        "answer": "Two companion blobs or moons"
+      },
+      {
+        "question": "In which year did Huygens first observe Saturn's ring system with his improved telescope?",
+        "type": "forward",
+        "distractors": [
+          "1610",
+          "1672",
+          "1705"
+        ],
+        "answer": "1655"
+      },
+      {
+        "question": "Galileo was the first to correctly explain Saturn's rings.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Huygens described Saturn as 'surrounded by a thin flat _____, nowhere touching.'",
+        "type": "fill_blank",
+        "distractors": [
+          "cloud",
+          "shell",
+          "halo"
+        ],
+        "answer": "ring"
+      },
+      {
+        "question": "Huygens published his correct description of Saturn's rings in what year?",
+        "type": "forward",
+        "distractors": [
+          "1655",
+          "1665",
+          "1643"
+        ],
+        "answer": "1659"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "sourceName": "Huygens, Systema Saturnium (1659)",
+    "contentVolatility": "timeless",
+    "tags": [
+      "christiaan-huygens",
+      "saturn",
+      "planetary-rings",
+      "17th-century-astronomy",
+      "telescope"
+    ],
+    "visualDescription": "17th-century observatory scene with a long brass refractor telescope aimed at Saturn with its iconic rings clearly visible, charts and instruments surrounding the astronomer",
+    "noveltyScore": 8,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-huygens-pendulum-clock",
+    "type": "knowledge",
+    "statement": "Christiaan Huygens invented the pendulum clock in 1656, dramatically improving the accuracy of timekeeping and enabling precise longitude measurements at sea.",
+    "wowFactor": "A single invention by an astronomer revolutionized navigation, science, and daily life — without an accurate clock, sailors were essentially lost at sea!",
+    "explanation": "In 1656, Huygens built the first practical pendulum clock, based on Galileo's earlier observations of pendulum isochronism. His invention reduced timekeeping error from minutes per day (with existing wheel clocks) to about 10 seconds per day. This precision was crucial for astronomy and for attempts to solve the longitude problem, which required accurate clocks to compare local time with a reference time.",
+    "quizQuestion": "What timekeeping device did Christiaan Huygens invent in 1656?",
+    "correctAnswer": "Pendulum clock",
+    "distractors": [
+      "Marine chronometer",
+      "Atomic clock",
+      "Water clock",
+      "Spring-balance clock",
+      "Astrolabe",
+      "Quartz clock",
+      "Sandglass timer",
+      "Sundial"
+    ],
+    "variants": [
+      {
+        "question": "Huygens's 1656 clock invention reduced daily timekeeping error to approximately what?",
+        "type": "forward",
+        "distractors": [
+          "1 second per day",
+          "1 minute per day",
+          "1 hour per day"
+        ],
+        "answer": "10 seconds per day"
+      },
+      {
+        "question": "Huygens based his pendulum clock on which earlier scientist's observations of pendulum motion?",
+        "type": "context",
+        "distractors": [
+          "Isaac Newton",
+          "René Descartes",
+          "Tycho Brahe"
+        ],
+        "answer": "Galileo Galilei"
+      },
+      {
+        "question": "The pendulum clock was invented in the 17th century.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Huygens's pendulum clock improved timekeeping precision essential for solving the _____ problem at sea.",
+        "type": "fill_blank",
+        "distractors": [
+          "latitude",
+          "navigation",
+          "compass"
+        ],
+        "answer": "longitude"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_technology",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid",
+    "sourceName": "Huygens, Horologium (1658); Horologium Oscillatorium (1673)",
+    "contentVolatility": "timeless",
+    "tags": [
+      "christiaan-huygens",
+      "pendulum-clock",
+      "timekeeping",
+      "longitude",
+      "17th-century-science"
+    ],
+    "visualDescription": "Elegant tall pendulum clock with visible swinging brass pendulum, 17th-century workshop surroundings with lenses, compasses, and celestial globes",
+    "noveltyScore": 7,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "space_technology",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-huygens-titan",
+    "type": "knowledge",
+    "statement": "Christiaan Huygens discovered Titan, Saturn's largest moon, in 1655 — the first moon of Saturn ever identified.",
+    "wowFactor": "Titan is the only moon in the solar system with a thick atmosphere — and Huygens spotted it with a telescope he ground himself 370 years ago!",
+    "explanation": "On 25 March 1655, Christiaan Huygens observed a small point of light near Saturn that moved with the planet and returned to the same relative position after 16 days. He correctly identified it as a moon, which was later named Titan. Titan is Saturn's largest moon and is notable for being the only moon in the solar system with a dense, nitrogen-rich atmosphere and surface liquids (methane lakes).",
+    "quizQuestion": "Which moon of Saturn did Christiaan Huygens discover in 1655?",
+    "correctAnswer": "Titan",
+    "distractors": [
+      "Enceladus",
+      "Rhea",
+      "Iapetus",
+      "Dione",
+      "Tethys",
+      "Mimas",
+      "Hyperion",
+      "Phoebe"
+    ],
+    "variants": [
+      {
+        "question": "Titan is unique among solar system moons for having what feature?",
+        "type": "forward",
+        "distractors": [
+          "A global magnetic field",
+          "An active volcano visible from Earth",
+          "A perfectly circular orbit"
+        ],
+        "answer": "A thick nitrogen-rich atmosphere"
+      },
+      {
+        "question": "In what year did Huygens discover Titan?",
+        "type": "forward",
+        "distractors": [
+          "1610",
+          "1672",
+          "1781"
+        ],
+        "answer": "1655"
+      },
+      {
+        "question": "Titan was the first moon of Saturn ever discovered.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "Titan orbits Saturn and completes one revolution every _____ days.",
+        "type": "fill_blank",
+        "distractors": [
+          "7",
+          "30",
+          "45"
+        ],
+        "answer": "16"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "sourceName": "Huygens observation records, March 1655",
+    "contentVolatility": "timeless",
+    "tags": [
+      "christiaan-huygens",
+      "titan",
+      "saturn-moons",
+      "17th-century-astronomy",
+      "planetary-discovery"
+    ],
+    "visualDescription": "Saturn with its rings and a large orange moon (Titan) orbiting it, viewed through a period telescope eyepiece, overlaid with 17th-century star chart markings",
+    "noveltyScore": 8,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-black-hole-event-horizon",
+    "type": "knowledge",
+    "statement": "The event horizon of a black hole is the boundary beyond which nothing — not even light — can escape the gravitational pull.",
+    "wowFactor": "The event horizon isn't a physical surface you could touch — it's a mathematical point of no return where the escape velocity equals the speed of light itself!",
+    "explanation": "The event horizon is defined as the spherical boundary around a black hole at which the escape velocity equals the speed of light (c). Inside this boundary, the curvature of spacetime is so extreme that all paths in spacetime lead inward — there is no trajectory, even for light, that leads outward. For a non-rotating (Schwarzschild) black hole, the event horizon radius is the Schwarzschild radius: r = 2GM/c².",
+    "quizQuestion": "What is the name for the boundary around a black hole from which nothing, including light, can escape?",
+    "correctAnswer": "Event horizon",
+    "distractors": [
+      "Schwarzschild radius",
+      "Photon sphere",
+      "Singularity",
+      "Accretion disc",
+      "Ergosphere",
+      "Roche limit",
+      "Hill sphere",
+      "Chandrasekhar limit"
+    ],
+    "variants": [
+      {
+        "question": "At the event horizon of a black hole, the escape velocity equals what?",
+        "type": "forward",
+        "distractors": [
+          "Twice the speed of light",
+          "The speed of sound",
+          "Zero — it is the point of infinite gravity"
+        ],
+        "answer": "The speed of light"
+      },
+      {
+        "question": "The Schwarzschild radius gives the size of what boundary for a non-rotating black hole?",
+        "type": "forward",
+        "distractors": [
+          "The photon sphere",
+          "The accretion disc inner edge",
+          "The singularity"
+        ],
+        "answer": "The event horizon"
+      },
+      {
+        "question": "The event horizon of a black hole is a physical solid surface.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "The event horizon is defined as the boundary where the escape _____ equals the speed of light.",
+        "type": "fill_blank",
+        "distractors": [
+          "mass",
+          "pressure",
+          "temperature"
+        ],
+        "answer": "velocity"
+      },
+      {
+        "question": "Which formula gives the Schwarzschild radius (event horizon size) for a non-rotating black hole?",
+        "type": "context",
+        "distractors": [
+          "r = GM/c²",
+          "r = 4GM/c²",
+          "r = GM/c"
+        ],
+        "answer": "r = 2GM/c²"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "sourceName": "General Relativity; Schwarzschild (1916)",
+    "contentVolatility": "timeless",
+    "tags": [
+      "black-holes",
+      "event-horizon",
+      "general-relativity",
+      "cosmology",
+      "Schwarzschild"
+    ],
+    "visualDescription": "Black circular void surrounded by a glowing orange-white accretion disc, light visibly bending in an arc around the dark region, deep space starfield background",
+    "noveltyScore": 8,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-black-hole-hawking-radiation",
+    "type": "knowledge",
+    "statement": "Hawking radiation is the theoretical thermal radiation predicted to be emitted by black holes due to quantum effects near the event horizon, causing them to slowly evaporate over immense timescales.",
+    "wowFactor": "Black holes aren't truly eternal — Stephen Hawking showed that quantum mechanics forces them to slowly leak energy until they vanish, possibly ending in a final explosion!",
+    "explanation": "In 1974, Stephen Hawking predicted that black holes are not perfectly black. Near the event horizon, quantum fluctuations create virtual particle-antiparticle pairs; occasionally one particle escapes while the other falls in. The escaping particle carries energy away from the black hole, causing it to lose mass over time. For stellar-mass black holes this process is inconceivably slow — evaporation would take far longer than the current age of the universe.",
+    "quizQuestion": "What is the name for the theoretical radiation that causes black holes to slowly lose mass and eventually evaporate?",
+    "correctAnswer": "Hawking radiation",
+    "distractors": [
+      "Cherenkov radiation",
+      "Synchrotron radiation",
+      "Unruh radiation",
+      "Cosmic background radiation",
+      "Gravitational waves",
+      "Bremsstrahlung radiation",
+      "Penrose process",
+      "Hawking-Bekenstein entropy flux"
+    ],
+    "variants": [
+      {
+        "question": "Hawking radiation arises from quantum fluctuations near what boundary of a black hole?",
+        "type": "forward",
+        "distractors": [
+          "The singularity",
+          "The photon sphere",
+          "The accretion disc"
+        ],
+        "answer": "The event horizon"
+      },
+      {
+        "question": "Who predicted that black holes emit thermal radiation and will eventually evaporate?",
+        "type": "reverse",
+        "distractors": [
+          "Albert Einstein",
+          "Richard Feynman",
+          "Kip Thorne"
+        ],
+        "answer": "Stephen Hawking"
+      },
+      {
+        "question": "Hawking radiation has been directly observed from an astrophysical black hole.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      },
+      {
+        "question": "Hawking radiation is created when virtual particle pairs form near the event horizon and one particle _____ while the other falls in.",
+        "type": "fill_blank",
+        "distractors": [
+          "annihilates",
+          "accelerates",
+          "orbits"
+        ],
+        "answer": "escapes"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "rarity": "rare",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageRating": "teen",
+    "sourceName": "Hawking, S. W. (1974). 'Black hole explosions?' Nature, 248, 30–31.",
+    "contentVolatility": "timeless",
+    "tags": [
+      "black-holes",
+      "hawking-radiation",
+      "quantum-gravity",
+      "stephen-hawking",
+      "cosmology"
+    ],
+    "visualDescription": "Dark black hole with a subtle luminous fringe at its edge suggesting Hawking radiation, quantum particle pair creation illustrated as twin glowing specks at the boundary, deep black backdrop",
+    "noveltyScore": 9,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-black-hole-first-image",
+    "type": "knowledge",
+    "statement": "In April 2019, the Event Horizon Telescope collaboration released the first-ever direct image of a black hole — the supermassive black hole at the centre of galaxy M87.",
+    "wowFactor": "To image something 55 million light-years away, scientists linked eight radio observatories across the world to create a virtual telescope the size of Earth!",
+    "explanation": "On 10 April 2019, the Event Horizon Telescope (EHT) project released an image of the black hole at the centre of Messier 87 (M87*), located 55 million light-years away in the Virgo cluster. The image showed a bright ring of hot plasma surrounding a dark central shadow — the black hole's 'shadow' cast against the surrounding accretion disc. The EHT achieved its resolution by combining data from eight radio telescope sites across Earth using very-long-baseline interferometry (VLBI).",
+    "quizQuestion": "The first direct image of a black hole, released in 2019, showed the black hole at the centre of which galaxy?",
+    "correctAnswer": "M87",
+    "distractors": [
+      "The Milky Way",
+      "Andromeda (M31)",
+      "Centaurus A",
+      "NGC 1277",
+      "Messier 104 (Sombrero Galaxy)",
+      "Cygnus A",
+      "NGC 4889",
+      "IC 1101"
+    ],
+    "variants": [
+      {
+        "question": "What telescope network captured the first image of a black hole in 2019?",
+        "type": "forward",
+        "distractors": [
+          "Hubble Space Telescope",
+          "Very Large Array",
+          "James Webb Space Telescope"
+        ],
+        "answer": "Event Horizon Telescope"
+      },
+      {
+        "question": "The 2019 black hole image was produced by linking telescope observatories across Earth to form what kind of instrument?",
+        "type": "context",
+        "distractors": [
+          "A single giant space telescope",
+          "A chain of orbital satellites",
+          "A deep-sea radio receiver array"
+        ],
+        "answer": "A virtual telescope the size of Earth (VLBI array)"
+      },
+      {
+        "question": "The first image of a black hole was released on 10 April 2019.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      },
+      {
+        "question": "The black hole imaged in 2019 is located approximately _____ million light-years from Earth.",
+        "type": "fill_blank",
+        "distractors": [
+          "26",
+          "100",
+          "2.5"
+        ],
+        "answer": "55"
+      },
+      {
+        "question": "What did the bright ring in the 2019 black hole image represent?",
+        "type": "context",
+        "distractors": [
+          "The surface of the black hole glowing",
+          "Stars orbiting the black hole",
+          "Hawking radiation emissions"
+        ],
+        "answer": "Hot plasma in the accretion disc around the black hole"
+      }
+    ],
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronomical_records",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "kid",
+    "sourceName": "Event Horizon Telescope Collaboration (2019). ApJL, 875, L1.",
+    "contentVolatility": "timeless",
+    "tags": [
+      "black-holes",
+      "Event-Horizon-Telescope",
+      "M87",
+      "first-image",
+      "VLBI",
+      "space-milestones"
+    ],
+    "visualDescription": "Iconic glowing orange-amber ring of plasma with a dark circular void at centre, recreated in pixel art style against pure black deep space background",
+    "noveltyScore": 9,
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomical_records",
+    "categoryL3": "",
+    "acceptableAnswers": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

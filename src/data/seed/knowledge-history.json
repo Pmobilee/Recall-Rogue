@@ -8535,5 +8535,1575 @@
       "political theory",
       "1899"
     ]
+  },
+  {
+    "id": "history-plato-allegory-cave",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "philosophy",
+    "categoryL1": "History",
+    "categoryL2": "philosophy",
+    "categoryL3": "ancient Greece",
+    "statement": "Plato's Allegory of the Cave, found in 'The Republic,' describes prisoners who mistake shadows on a wall for reality — a metaphor for philosophical enlightenment.",
+    "quizQuestion": "In which of Plato's works does the Allegory of the Cave appear?",
+    "correctAnswer": "The Republic",
+    "distractors": [
+      "The Symposium",
+      "Phaedo",
+      "Meno",
+      "Timaeus"
+    ],
+    "acceptableAnswers": [
+      "The Republic",
+      "Republic"
+    ],
+    "explanation": "In Book VII of The Republic, Socrates describes chained prisoners seeing only shadows, then the journey out of the cave as the philosophical ascent toward truth.",
+    "wowFactor": "The allegory is over 2,400 years old but still used in film theory, AI ethics, and cognitive science discussions today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does Plato's Allegory of the Cave appear?",
+        "answer": "The Republic",
+        "distractors": [
+          "The Symposium",
+          "Phaedo",
+          "Meno"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Allegory of the Cave appears in Plato's The Republic.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Allegory_of_the_cave",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Chained figures in a dark cave watching flickering shadows on a stone wall, a bright opening far behind them.",
+    "tags": [
+      "Plato",
+      "philosophy",
+      "allegory",
+      "cave",
+      "The Republic",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-plato-academy-founded",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "philosophy",
+    "categoryL1": "History",
+    "categoryL2": "philosophy",
+    "categoryL3": "ancient Greece",
+    "statement": "Plato founded the Academy in Athens around 387 BCE — one of the first institutions of higher learning in the Western world.",
+    "quizQuestion": "What institution did Plato found in Athens around 387 BCE?",
+    "correctAnswer": "The Academy",
+    "distractors": [
+      "The Lyceum",
+      "The Stoa",
+      "The Gymnasium",
+      "The Agora"
+    ],
+    "acceptableAnswers": [
+      "The Academy",
+      "Academy"
+    ],
+    "explanation": "The Academy operated for nearly 900 years until 529 CE. The Lyceum was founded by Aristotle, Plato's most famous student.",
+    "wowFactor": "Plato's Academy survived the Roman conquest, various emperors, and philosophical upheavals — lasting almost a millennium.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Plato found in Athens?",
+        "answer": "The Academy",
+        "distractors": [
+          "The Lyceum",
+          "The Stoa",
+          "The Agora"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who founded the Academy in Athens?",
+        "answer": "Plato",
+        "distractors": [
+          "Aristotle",
+          "Socrates",
+          "Pythagoras"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platonic_Academy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Philosophers gathered in a sun-drenched olive grove in ancient Athens, scrolls spread on stone benches.",
+    "tags": [
+      "Plato",
+      "Academy",
+      "Athens",
+      "ancient Greece",
+      "education",
+      "philosophy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-plato-student-of-socrates",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "philosophy",
+    "categoryL1": "History",
+    "categoryL2": "philosophy",
+    "categoryL3": "ancient Greece",
+    "statement": "Plato was a student of Socrates and later the teacher of Aristotle, forming the most famous philosophical chain in Western history.",
+    "quizQuestion": "Who was Plato's most famous teacher?",
+    "correctAnswer": "Socrates",
+    "distractors": [
+      "Aristotle",
+      "Pythagoras",
+      "Heraclitus",
+      "Parmenides"
+    ],
+    "acceptableAnswers": [
+      "Socrates"
+    ],
+    "explanation": "The Socrates-Plato-Aristotle chain is sometimes called the 'Big Three' of ancient Greek philosophy. Much of what we know of Socrates comes through Plato's dialogues.",
+    "wowFactor": "Socrates never wrote anything down — everything we know about his ideas comes from Plato's writings.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who taught Plato?",
+        "answer": "Socrates",
+        "distractors": [
+          "Aristotle",
+          "Pythagoras",
+          "Heraclitus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was Socrates' most famous student?",
+        "answer": "Plato",
+        "distractors": [
+          "Aristotle",
+          "Xenophon",
+          "Alcibiades"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plato",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three Greek busts in a row: Socrates, Plato, and Aristotle, each in white marble.",
+    "tags": [
+      "Plato",
+      "Socrates",
+      "Aristotle",
+      "philosophy",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-plato-theory-of-forms",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "philosophy",
+    "categoryL1": "History",
+    "categoryL2": "philosophy",
+    "categoryL3": "ancient Greece",
+    "statement": "Plato's Theory of Forms holds that the physical world is an imperfect copy of a higher realm of perfect, eternal 'Forms' or 'Ideas.'",
+    "quizQuestion": "What does Plato's Theory of Forms claim about the physical world?",
+    "correctAnswer": "It is an imperfect copy of a higher realm of perfect Forms",
+    "distractors": [
+      "It is the only true reality",
+      "It was created by a divine craftsman called the Demiurge alone",
+      "Physical objects have no connection to abstract concepts"
+    ],
+    "acceptableAnswers": [
+      "imperfect copy of Forms",
+      "shadow of perfect Forms",
+      "imperfect reflection of a higher reality"
+    ],
+    "explanation": "For Plato, a 'beautiful' horse is beautiful because it participates in the Form of Beauty — an eternal, unchanging perfect concept.",
+    "wowFactor": "Plato's Forms influenced Christian theology, medieval philosophy, and modern mathematics — the idea of 'perfect circles' owes him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the core claim of Plato's Theory of Forms?",
+        "answer": "The physical world is an imperfect copy of perfect eternal Forms",
+        "distractors": [
+          "Physical reality is the only truth",
+          "Forms are just human inventions",
+          "The world has no underlying order"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Plato believed the physical world was less real than a realm of perfect Forms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theory_of_forms",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A translucent perfect circle floating above a rough hand-drawn circle on paper, symbolizing ideal vs. physical.",
+    "tags": [
+      "Plato",
+      "Theory of Forms",
+      "philosophy",
+      "metaphysics",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-plato-atlantis-origin",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "mythology & legend",
+    "categoryL1": "History",
+    "categoryL2": "mythology & legend",
+    "categoryL3": "",
+    "statement": "The legend of Atlantis originates entirely from Plato's dialogues 'Timaeus' and 'Critias,' written around 360 BCE — no earlier source exists.",
+    "quizQuestion": "Who first wrote about the legendary lost city of Atlantis?",
+    "correctAnswer": "Plato",
+    "distractors": [
+      "Homer",
+      "Herodotus",
+      "Aristotle",
+      "Virgil"
+    ],
+    "acceptableAnswers": [
+      "Plato"
+    ],
+    "explanation": "Plato described Atlantis as a naval power that sank into the ocean 9,000 years before his time. Most historians regard it as a literary invention.",
+    "wowFactor": "Every Atlantis myth, movie, and conspiracy theory traces back to just two dialogues by one philosopher — Plato invented it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented the legend of Atlantis?",
+        "answer": "Plato",
+        "distractors": [
+          "Homer",
+          "Herodotus",
+          "Aristotle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Atlantis legend originates from Plato's writings.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atlantis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A ruined ancient city sinking beneath stylized ocean waves, columns and temples disappearing into the sea.",
+    "tags": [
+      "Plato",
+      "Atlantis",
+      "legend",
+      "mythology",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-caesar-rubicon-crossing",
+    "type": "knowledge",
+    "domain": "history",
+    "subdomain": "ancient_rome",
+    "categoryL1": "History",
+    "categoryL2": "Ancient Rome",
+    "categoryL3": "",
+    "statement": "Julius Caesar crossed the Rubicon River in January 49 BC with his army, an act of treason that triggered the Roman Civil War.",
+    "quizQuestion": "What did Caesar's crossing of the Rubicon River in 49 BC trigger?",
+    "correctAnswer": "The Roman Civil War against the Senate and Pompey",
+    "distractors": [
+      "The conquest of Gaul",
+      "The assassination of Pompey",
+      "The fall of the Roman Republic immediately",
+      "The Third Punic War",
+      "A treaty with Germanic tribes",
+      "The Social War between Italian allies",
+      "The Spartacus slave revolt",
+      "The invasion of Britain"
+    ],
+    "acceptableAnswers": [
+      "the Roman Civil War",
+      "civil war",
+      "war with the Senate",
+      "war against Pompey"
+    ],
+    "explanation": "Roman law forbade any general from bringing his army across the Rubicon, a small river in northern Italy that marked the boundary between the Roman province of Cisalpine Gaul and Italy proper. Crossing with an army constituted an act of war against Rome itself. When Caesar crossed it on January 10, 49 BC, reportedly saying 'the die is cast' (alea iacta est), he forced a confrontation with the Senate and his former ally Pompey, beginning a civil war that transformed Rome from a republic into an empire.",
+    "wowFactor": "The phrase 'crossing the Rubicon' has entered all European languages as a metaphor for making a point of no return — all from a general crossing a stream probably no wider than a street.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Julius Caesar — Adrian Goldsworthy; Suetonius, Life of Julius Caesar",
+    "sourceUrl": "https://www.cambridge.org/core/journals/journal-of-roman-studies",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Caesar on horseback leading his legion across a shallow river at dusk, soldiers' torches reflecting in the water, legionary standards raised",
+    "tags": [
+      "Caesar",
+      "Rubicon",
+      "Roman Republic",
+      "civil war",
+      "ancient Rome",
+      "49 BC"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-caesar-ides-of-march",
+    "type": "knowledge",
+    "domain": "history",
+    "subdomain": "ancient_rome",
+    "categoryL1": "History",
+    "categoryL2": "Ancient Rome",
+    "categoryL3": "",
+    "statement": "Julius Caesar was stabbed 23 times by a group of senators on the Ides of March (March 15), 44 BC.",
+    "quizQuestion": "How many times was Julius Caesar stabbed during his assassination?",
+    "correctAnswer": "23 times",
+    "distractors": [
+      "3 times",
+      "7 times",
+      "12 times",
+      "33 times",
+      "60 times",
+      "1 time",
+      "15 times",
+      "44 times"
+    ],
+    "acceptableAnswers": [
+      "23",
+      "twenty-three times",
+      "23 stab wounds"
+    ],
+    "explanation": "On March 15, 44 BC — the Ides of March in the Roman calendar — Julius Caesar was assassinated in the Theatre of Pompey in Rome by a group of up to 60 senators calling themselves the Liberatores. He was stabbed 23 times. A post-mortem examination by physician Antistius reportedly found that only one wound was fatal. The conspirators, led by Brutus and Cassius, believed they were saving the Republic, but his death instead triggered further civil war and the rise of Caesar's heir Octavian (Augustus).",
+    "wowFactor": "The first post-mortem examination in recorded history was performed on Julius Caesar's body. The physician Antistius concluded only one of 23 stab wounds was fatal.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Suetonius, Life of Julius Caesar; Plutarch, Life of Caesar",
+    "sourceUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0132",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Caesar collapsed on the steps of the Theatre of Pompey, senators in togas surrounding him with drawn daggers, March 15 44 BC",
+    "tags": [
+      "Caesar",
+      "assassination",
+      "Ides of March",
+      "Brutus",
+      "ancient Rome",
+      "44 BC"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-caesar-gallic-wars-duration",
+    "type": "knowledge",
+    "domain": "history",
+    "subdomain": "ancient_rome",
+    "categoryL1": "History",
+    "categoryL2": "Ancient Rome",
+    "categoryL3": "",
+    "statement": "Julius Caesar's Gallic Wars lasted 8 years (58–50 BC), conquering the territory of modern-day France, Belgium, and parts of Switzerland and Germany.",
+    "quizQuestion": "How long did Julius Caesar's Gallic Wars campaign last?",
+    "correctAnswer": "8 years (58–50 BC)",
+    "distractors": [
+      "3 years (55–52 BC)",
+      "2 years (58–56 BC)",
+      "12 years (60–48 BC)",
+      "5 years (58–53 BC)",
+      "20 years (70–50 BC)",
+      "4 years (52–48 BC)",
+      "1 year in a single decisive campaign",
+      "15 years (65–50 BC)"
+    ],
+    "acceptableAnswers": [
+      "8 years",
+      "eight years",
+      "58 to 50 BC",
+      "58–50 BC"
+    ],
+    "explanation": "Caesar's Gallic Wars (Bellum Gallicum) began in 58 BC when he intervened in Gallic tribal conflicts and ended in 50 BC with the complete subjugation of Gaul. The campaigns covered modern France, Belgium, Switzerland, and parts of Germany and the Netherlands, and included two expeditions to Britain. Caesar documented the wars himself in his 'Commentarii de Bello Gallico', which remains a Latin learning text today. The conquest added vast wealth and territory to Rome.",
+    "wowFactor": "Caesar wrote his Gallic Wars commentaries himself — partly as brilliant political propaganda sent back to Rome. He wrote in the third person ('Caesar did this…') to make himself sound objective and heroic simultaneously.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Caesar, Commentarii de Bello Gallico",
+    "sourceUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0002",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Gaul (modern France) with Caesar's campaign routes marked in red, Roman legionary symbols along the path of conquest",
+    "tags": [
+      "Caesar",
+      "Gallic Wars",
+      "Rome",
+      "Gaul",
+      "ancient Rome",
+      "military history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-caesar-epilepsy-sacred-disease",
+    "type": "knowledge",
+    "domain": "history",
+    "subdomain": "ancient_rome",
+    "categoryL1": "History",
+    "categoryL2": "Ancient Rome",
+    "categoryL3": "",
+    "statement": "Julius Caesar suffered from epilepsy, which Romans called the 'sacred disease', believing it was a sign of divine favour.",
+    "quizQuestion": "What did the Romans call epilepsy, and what did they believe it signified?",
+    "correctAnswer": "The 'sacred disease' — believed to be a sign of divine favour or contact with the gods",
+    "distractors": [
+      "The 'cursed affliction' — believed to be punishment from the gods",
+      "The 'falling sickness' — seen as purely physical and ignoble",
+      "The 'warrior's malady' — common among battle-hardened soldiers",
+      "The 'lunar disease' — thought to be caused by the moon",
+      "The 'Gallic fever' — contracted during foreign campaigns",
+      "The 'senator's burden' — a stress illness of leadership",
+      "The 'Martian fit' — sacred to the god of war",
+      "The 'prophetic trance' — associated with oracles"
+    ],
+    "acceptableAnswers": [
+      "sacred disease",
+      "morbus sacer",
+      "divine favour",
+      "contact with the gods"
+    ],
+    "explanation": "Ancient Romans and Greeks called epilepsy the morbus sacer (sacred disease), believing seizures indicated contact with the divine. This association meant epilepsy was not purely a stigma — it could also confer an aura of special status. Whether Caesar truly had epilepsy is debated by modern scholars; some argue his symptoms described in ancient sources (including falling fits and sudden absences) could indicate a different neurological condition. Shakespeare dramatised Caesar's fits in Julius Caesar.",
+    "wowFactor": "Caesar's supposed epilepsy may have actually helped his political career — Romans who believed he experienced divine visions during seizures saw it as evidence of special favour from the gods.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Plutarch, Life of Caesar; Suetonius, Life of Julius Caesar",
+    "sourceUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0132",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman fresco depicting Julius Caesar in a senator's toga, with a subtle aura suggesting divine connection, Roman medical instruments beside him",
+    "tags": [
+      "Caesar",
+      "epilepsy",
+      "sacred disease",
+      "ancient Rome",
+      "medicine history",
+      "Roman religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-caesar-calendar-reform",
+    "type": "knowledge",
+    "domain": "history",
+    "subdomain": "ancient_rome",
+    "categoryL1": "History",
+    "categoryL2": "Ancient Rome",
+    "categoryL3": "",
+    "statement": "Julius Caesar reformed the Roman calendar in 46 BC, creating the Julian calendar with a 365.25-day year and introducing leap years.",
+    "quizQuestion": "What calendar did Julius Caesar introduce in 46 BC, and what was its key innovation?",
+    "correctAnswer": "The Julian calendar, with a 365.25-day year and regular leap years",
+    "distractors": [
+      "The Gregorian calendar, used to this day",
+      "The lunar calendar, replacing the solar one",
+      "The Egyptian calendar, adopted wholesale from Egypt",
+      "A decimal calendar with 10 months",
+      "The Republican calendar with 355 days",
+      "A calendar based on the movements of Mars",
+      "The Hebrew calendar adapted for Roman use",
+      "A purely administrative calendar without astronomical basis"
+    ],
+    "acceptableAnswers": [
+      "Julian calendar",
+      "365.25-day year",
+      "365 days with leap years",
+      "Julian calendar with leap years"
+    ],
+    "explanation": "The old Roman Republican calendar had drifted months out of alignment with the seasons due to political manipulation and neglect. In 46 BC Caesar, advised by Alexandrian astronomer Sosigenes, reformed it to align with the solar year. The Julian calendar introduced a 365-day year with a leap day every four years (accounting for the extra 0.25 day), effective January 1, 45 BC. It was used throughout Europe for over 1,600 years until the Gregorian reform of 1582. The months July (Julius) and August (Augustus) are named for Caesar and his heir.",
+    "wowFactor": "46 BC was the longest year in Roman history — Caesar added 90 extra days to fix the calendar drift before the new system launched, making that year 445 days long. Romans called it the 'Year of Confusion'.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Suetonius, Life of Julius Caesar; Pliny the Elder, Natural History",
+    "sourceUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0132",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman stone calendar tablet being chiselled by craftsmen, with Julius Caesar gesturing approval and an astronomer's star charts visible",
+    "tags": [
+      "Caesar",
+      "Julian calendar",
+      "calendar reform",
+      "46 BC",
+      "leap year",
+      "ancient Rome",
+      "time"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-socrates-socratic-method-elenchus",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Socrates developed the elenchus, a method of inquiry that exposes contradictions through systematic questioning.",
+    "quizQuestion": "What is the name of Socrates' method of philosophical inquiry through systematic questioning?",
+    "correctAnswer": "Elenchus (Socratic method)",
+    "distractors": [
+      "Dialectic synthesis",
+      "Rhetoric",
+      "Empiricism",
+      "Syllogism",
+      "Deduction",
+      "Inductive reasoning",
+      "Aporia"
+    ],
+    "acceptableAnswers": [
+      "Elenchus",
+      "Socratic method",
+      "elenchus"
+    ],
+    "explanation": "The elenchus (from Greek: ἔλεγχος) is Socrates' method of questioning interlocutors to expose contradictions in their beliefs. He would ask someone to define a concept (justice, courage, piety), then systematically show their definition was flawed.",
+    "wowFactor": "Socrates claimed to know nothing — yet by asking questions alone, he made Athens' most respected men look foolish.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of Socrates' method of philosophical inquiry through systematic questioning?",
+        "answer": "Elenchus",
+        "distractors": [
+          "Rhetoric",
+          "Syllogism",
+          "Dialectic synthesis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What philosophical concept does the Socratic elenchus aim to expose?",
+        "answer": "Contradictions in beliefs",
+        "distractors": [
+          "Mathematical truths",
+          "Scientific laws",
+          "Religious dogma"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Socratic method involves exposing contradictions through questioning.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Socrates' method of questioning to expose contradictions is called the ___.",
+        "answer": "elenchus",
+        "distractors": [
+          "syllogism",
+          "rhetoric",
+          "dialectic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Socratic_method",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Socrates surrounded by Athenian citizens in the agora, raising a finger to make a point while listeners look thoughtful and uncertain, marble columns behind.",
+    "tags": [
+      "Socrates",
+      "elenchus",
+      "Socratic method",
+      "philosophy",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-socrates-trial-399bc-hemlock",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "In 399 BCE, Socrates was condemned to death by a jury of 500 Athenian citizens and executed by drinking hemlock.",
+    "quizQuestion": "How was Socrates executed after being condemned by 500 Athenian jurors?",
+    "correctAnswer": "Drinking hemlock",
+    "distractors": [
+      "Beheading",
+      "Crucifixion",
+      "Stoning",
+      "Drowning",
+      "Exile from Athens",
+      "Strangulation",
+      "Burning"
+    ],
+    "acceptableAnswers": [
+      "Hemlock",
+      "drinking hemlock",
+      "hemlock poison"
+    ],
+    "explanation": "Socrates was tried in 399 BCE on charges of impiety and corrupting the youth of Athens. A jury of 500 citizens voted 280–220 to convict him, then sentenced him to death. He calmly drank a cup of hemlock poison, surrounded by his friends and students.",
+    "wowFactor": "Socrates could have escaped — his friends arranged it. He chose death, saying fleeing would betray his principles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How was Socrates executed after being condemned by 500 Athenian jurors?",
+        "answer": "Drinking hemlock",
+        "distractors": [
+          "Beheading",
+          "Crucifixion",
+          "Stoning"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was Socrates officially charged with at his trial in 399 BCE?",
+        "answer": "Impiety and corrupting youth",
+        "distractors": [
+          "Treason",
+          "Murder",
+          "Theft"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Socrates was executed by drinking hemlock poison.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Socrates was condemned by a jury of ___ Athenian citizens in 399 BCE.",
+        "answer": "500",
+        "distractors": [
+          "12",
+          "100",
+          "1000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trial_of_Socrates",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References execution, appropriate for teen+",
+    "visualDescription": "Socrates serenely raising a cup of hemlock in a prison cell, surrounded by grieving friends and students, last rays of sunlight through a barred window.",
+    "tags": [
+      "Socrates",
+      "trial",
+      "hemlock",
+      "Athens",
+      "399 BCE",
+      "philosophy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-socrates-wife-xanthippe-reputation",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Socrates' wife Xanthippe was famous in antiquity for her sharp temper.",
+    "quizQuestion": "What was Socrates' wife Xanthippe known for in ancient Greece?",
+    "correctAnswer": "Her sharp temper",
+    "distractors": [
+      "Her wisdom and philosophy",
+      "Her political influence",
+      "Her artistic talent",
+      "Her business acumen",
+      "Her religious devotion",
+      "Her beauty",
+      "Her military advice"
+    ],
+    "acceptableAnswers": [
+      "Sharp temper",
+      "bad temper",
+      "difficult personality"
+    ],
+    "explanation": "Xanthippe became proverbial in ancient Greece for being difficult and sharp-tongued. Ancient sources describe arguments between her and Socrates, though modern scholars note these accounts may reflect male biases about wives of philosophers.",
+    "wowFactor": "Socrates reportedly said living with Xanthippe was like a horseman who trains with a wild horse — if you can handle her, you can handle anyone.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Socrates' wife Xanthippe known for in ancient Greece?",
+        "answer": "Her sharp temper",
+        "distractors": [
+          "Her wisdom",
+          "Her political influence",
+          "Her artistic talent"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of Socrates' wife?",
+        "answer": "Xanthippe",
+        "distractors": [
+          "Aspasia",
+          "Pericles",
+          "Cleonice"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Socrates' wife Xanthippe was known in antiquity for her sharp temper.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Socrates' wife ___ was famous in antiquity for her sharp temper.",
+        "answer": "Xanthippe",
+        "distractors": [
+          "Aspasia",
+          "Diotima",
+          "Pericles"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Xanthippe",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Athenian woman gesturing emphatically at a calm bearded philosopher in a Greek household, pottery and olive branches visible in the background.",
+    "tags": [
+      "Socrates",
+      "Xanthippe",
+      "biography",
+      "ancient Greece",
+      "philosophy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-socrates-oracle-delphi-wisest",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "The Oracle of Delphi declared Socrates the wisest man in Greece; he interpreted this as meaning he alone knew how little he knew.",
+    "quizQuestion": "What did Socrates conclude after the Oracle of Delphi declared him the wisest man?",
+    "correctAnswer": "He was wise only because he knew he knew nothing",
+    "distractors": [
+      "He became overconfident in his knowledge",
+      "He refused to believe the oracle",
+      "He traveled to find a wiser man successfully",
+      "He declared himself a god",
+      "He stopped questioning others",
+      "He wrote down his wisdom",
+      "He claimed the oracle was wrong"
+    ],
+    "acceptableAnswers": [
+      "He knew he knew nothing",
+      "aware of his own ignorance",
+      "Socratic ignorance"
+    ],
+    "explanation": "When Socrates heard the Oracle's declaration, he was puzzled. He interviewed those considered wise, found they only believed they were wise, and concluded: 'I know that I know nothing' — meaning his wisdom lay in recognizing his own ignorance.",
+    "wowFactor": "The most famous philosophical quote about ignorance came from a man who spent his life trying to prove an oracle wrong — and failed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Socrates conclude after the Oracle of Delphi declared him the wisest man?",
+        "answer": "He was wise only because he knew he knew nothing",
+        "distractors": [
+          "He became overconfident",
+          "He refused to believe the oracle",
+          "He found a wiser man"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient institution declared Socrates the wisest man in Greece?",
+        "answer": "The Oracle of Delphi",
+        "distractors": [
+          "The Athenian Senate",
+          "The Academy",
+          "The Olympic Council"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Socrates interpreted the Oracle's declaration by concluding he knew nothing.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Socrates' famous quote 'I know that I know ___' describes his interpretation of the Oracle's wisdom.",
+        "answer": "nothing",
+        "distractors": [
+          "everything",
+          "little",
+          "more than others"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Socrates",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Socrates standing before the smoking tripod at Delphi's temple, looking puzzled at a scroll declaring him wisest, Greek mountains and temple columns behind.",
+    "tags": [
+      "Socrates",
+      "Oracle of Delphi",
+      "wisdom",
+      "ignorance",
+      "philosophy",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-alexander-empire-size",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "military_history",
+    "statement": "Alexander the Great built an empire of approximately 5.2 million square kilometers in just 13 years (336–323 BCE), making it the largest empire in the ancient world at that time.",
+    "quizQuestion": "In how many years did Alexander the Great conquer his vast empire?",
+    "correctAnswer": "About 13 years",
+    "distractors": [
+      "About 30 years",
+      "About 5 years",
+      "About 40 years"
+    ],
+    "acceptableAnswers": [
+      "13 years",
+      "thirteen years",
+      "about 13 years"
+    ],
+    "explanation": "Alexander became king of Macedon in 336 BCE at age 20 and died in 323 BCE at age 32. In those 13 years, his campaigns stretched from Greece through Persia, Egypt, Central Asia, and into the Indian subcontinent — covering about 5.2 million km². He never lost a battle in his military career, defeating vastly larger armies through superior tactics.",
+    "wowFactor": "Alexander never lost a single battle despite frequently being outnumbered — at the Battle of Gaugamela he faced a Persian army estimated at 250,000 with only 47,000 troops.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In how many years did Alexander the Great conquer his vast empire?",
+        "answer": "About 13 years",
+        "distractors": [
+          "About 30 years",
+          "About 5 years",
+          "About 40 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alexander the Great built his empire in under 15 years.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A map showing Alexander the Great's empire stretching from Greece to India",
+    "tags": [
+      "Alexander the Great",
+      "empire",
+      "ancient history",
+      "military",
+      "conquest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-alexander-death-mystery",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "historical_figures",
+    "categoryL1": "History",
+    "categoryL2": "historical_figures",
+    "categoryL3": "ancient_civilizations",
+    "statement": "Alexander the Great died at age 32 in Babylon in 323 BCE. The cause of his death remains debated — theories include typhoid fever, excessive alcohol, poisoning, or Guillain-Barré syndrome.",
+    "quizQuestion": "How old was Alexander the Great when he died?",
+    "correctAnswer": "32",
+    "distractors": [
+      "28",
+      "40",
+      "45"
+    ],
+    "acceptableAnswers": [
+      "32",
+      "thirty-two",
+      "age 32"
+    ],
+    "explanation": "Alexander died on June 10 or 11, 323 BCE in the palace of Nebuchadnezzar II in Babylon, shortly after a prolonged fever and deteriorating condition. Modern theories include typhoid fever complicated by other infections, alcoholic liver disease, or Guillain-Barré syndrome (which could explain why his body reportedly showed no decomposition for 6 days after death — possibly he was in a coma, not dead).",
+    "wowFactor": "Alexander's body reportedly showed no signs of decomposition for 6 days — some historians now think he may have been buried alive, still in a coma from Guillain-Barré syndrome.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old was Alexander the Great when he died?",
+        "answer": "32",
+        "distractors": [
+          "28",
+          "40",
+          "45"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The exact cause of Alexander the Great's death is still debated by historians.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great#Death",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Alexander the Great lying on his deathbed in Babylon surrounded by his generals",
+    "tags": [
+      "Alexander the Great",
+      "death",
+      "mystery",
+      "Babylon",
+      "ancient history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-alexander-legacy",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "cultural_history",
+    "statement": "Alexander the Great founded over 20 cities named Alexandria across his empire, spreading Greek culture (Hellenism) from Egypt to India, fundamentally changing world civilization.",
+    "quizQuestion": "How many cities did Alexander the Great found and name after himself?",
+    "correctAnswer": "Over 20",
+    "distractors": [
+      "3",
+      "7",
+      "50 or more"
+    ],
+    "acceptableAnswers": [
+      "over 20",
+      "more than 20",
+      "about 20"
+    ],
+    "explanation": "Alexander founded cities — typically named Alexandria — throughout his conquests as strategic garrisons and cultural centers. The most famous, Alexandria in Egypt, became the greatest city in the world and home to the legendary Library of Alexandria. This network of Greek cities spread Hellenistic culture (Greek language, philosophy, art, and religion) across the Middle East, Central Asia, and South Asia, profoundly influencing the development of Roman, Byzantine, Islamic, and medieval European civilization.",
+    "wowFactor": "The Library of Alexandria, founded in Alexander's namesake city, at its peak held 400,000–700,000 scrolls — the ancient world's entire accumulated knowledge.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many cities did Alexander the Great found and name after himself?",
+        "answer": "Over 20",
+        "distractors": [
+          "3",
+          "7",
+          "50 or more"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alexander the Great named several cities after himself.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great#Legacy",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A map showing the 20+ cities named Alexandria scattered across Alexander's empire",
+    "tags": [
+      "Alexander the Great",
+      "Alexandria",
+      "Hellenism",
+      "legacy",
+      "ancient history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-augustus-month-naming",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "roman_history",
+    "statement": "The month of August is named after the Roman emperor Augustus, who was given this honor by the Senate in 8 BC.",
+    "quizQuestion": "Which month of the year is named after the Roman emperor Augustus?",
+    "correctAnswer": "August",
+    "distractors": [
+      "July",
+      "January",
+      "March",
+      "April",
+      "June",
+      "September",
+      "October",
+      "February"
+    ],
+    "acceptableAnswers": [
+      "August"
+    ],
+    "explanation": "The Roman Senate renamed the month Sextilis to 'Augustus' in 8 BC to honor the emperor. Previously, Julius Caesar had renamed Quintilis to 'Julius' (July). Both months were adjusted to 31 days — and a day was famously removed from February to balance the calendar, giving us the 28-day February still used today.",
+    "wowFactor": "August used to be called 'Sextilis' before Augustus got his name slapped on it — and the Senate stole a day from February to make August as long as Julius Caesar's July.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which calendar month is named after the emperor Augustus?",
+        "answer": "August",
+        "distractors": [
+          "July",
+          "January",
+          "March"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The month of August was renamed from 'Sextilis' to honor which Roman emperor?",
+        "answer": "Augustus",
+        "distractors": [
+          "Julius Caesar",
+          "Nero",
+          "Tiberius"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The month of August is named after the Roman emperor Augustus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Roman Senate renamed the month Sextilis '___ ' to honor the first emperor.",
+        "answer": "Augustus",
+        "distractors": [
+          "Julius",
+          "Tiberius",
+          "Caesar"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/August",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Roman calendar carved in stone with the month August highlighted in gold, emperor bust in corner, pixel art.",
+    "tags": [
+      "Augustus",
+      "August",
+      "calendar",
+      "Roman Empire",
+      "month naming"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-roman-empire-peak-size",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "roman_history",
+    "statement": "The Roman Empire reached its greatest territorial extent under Emperor Trajan around 117 AD, covering approximately 5 million square kilometers.",
+    "quizQuestion": "Under which Roman emperor did the Roman Empire reach its greatest territorial extent?",
+    "correctAnswer": "Trajan",
+    "distractors": [
+      "Augustus",
+      "Julius Caesar",
+      "Hadrian",
+      "Nero",
+      "Constantine",
+      "Diocletian",
+      "Marcus Aurelius",
+      "Tiberius"
+    ],
+    "acceptableAnswers": [
+      "Trajan"
+    ],
+    "explanation": "Emperor Trajan (98–117 AD) expanded Rome's borders to their furthest reach by conquering Dacia (modern Romania) and Mesopotamia (modern Iraq). At its peak around 117 AD the empire covered roughly 5 million km², stretching from Scotland to Persia. Trajan's successor Hadrian immediately abandoned Mesopotamia, recognizing the empire had over-extended — and instead built Hadrian's Wall to fix Rome's northern boundary.",
+    "wowFactor": "At its peak under Trajan, the Roman Empire was so vast that a messenger dispatched from Hadrian's Wall in Scotland would take weeks to reach Rome — yet the same coins, law code, and Latin language applied everywhere.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which emperor led Rome to its greatest territorial size around 117 AD?",
+        "answer": "Trajan",
+        "distractors": [
+          "Augustus",
+          "Julius Caesar",
+          "Hadrian"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Roman Empire reached its largest extent — about 5 million km² — under which emperor?",
+        "answer": "Trajan",
+        "distractors": [
+          "Augustus",
+          "Nero",
+          "Constantine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Roman Empire was at its largest under Emperor Trajan around 117 AD.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Roman Empire reached its greatest territorial extent under Emperor ___ around 117 AD.",
+        "answer": "Trajan",
+        "distractors": [
+          "Augustus",
+          "Hadrian",
+          "Nero"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trajan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stone-carved map showing Roman Empire at peak extent, Emperor Trajan pointing to conquered Dacia territory, pixel art.",
+    "tags": [
+      "Roman Empire",
+      "Trajan",
+      "peak size",
+      "117 AD",
+      "territorial expansion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ancient-egypt-pyramid-workforce",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "egyptian_history",
+    "statement": "The Great Pyramid of Giza was built around 2560 BC by an estimated 20,000–30,000 skilled paid workers, not slaves as long believed.",
+    "quizQuestion": "Approximately how many workers built the Great Pyramid of Giza?",
+    "correctAnswer": "20,000 to 30,000",
+    "distractors": [
+      "100,000 slaves",
+      "500,000 people",
+      "Only 5,000 workers",
+      "About 1 million laborers",
+      "Fewer than 1,000 priests",
+      "Exactly 10,000 workers",
+      "About 50,000 soldiers",
+      "Under 500 craftsmen"
+    ],
+    "acceptableAnswers": [
+      "20,000 to 30,000",
+      "20,000–30,000",
+      "About 20,000",
+      "Around 25,000"
+    ],
+    "explanation": "Archaeological discoveries near Giza — including worker villages, bakeries, breweries, and medical facilities — show the pyramid builders were organized, well-fed, paid laborers, not slaves. Estimates put the workforce at 20,000–30,000. The 'slave' theory was popularized by the ancient Greek historian Herodotus and has been definitively disproven by modern archaeology.",
+    "wowFactor": "Workers who built the pyramids left graffiti on stone blocks calling their teams names like 'Friends of Khufu' and 'Drunkards of Menkaure' — they weren't slaves, they were organized crews with team pride and a sense of humor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many workers are estimated to have built the Great Pyramid of Giza?",
+        "answer": "20,000 to 30,000",
+        "distractors": [
+          "100,000 slaves",
+          "500,000 people",
+          "Only 5,000 workers"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Modern archaeology shows the Great Pyramid was built by 20,000–30,000 paid workers, not which group as previously believed?",
+        "answer": "Slaves",
+        "distractors": [
+          "Priests",
+          "Soldiers",
+          "Foreigners"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Modern archaeology shows the Great Pyramid was built by slaves.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Pyramid was built by an estimated ___ skilled workers, not slaves.",
+        "answer": "20,000–30,000",
+        "distractors": [
+          "100,000",
+          "500,000",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Egyptian_pyramid_construction_techniques",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Partially built Great Pyramid with teams of workers hauling stone blocks on ramps, worker camp with bakery visible at base, pixel art.",
+    "tags": [
+      "Ancient Egypt",
+      "pyramids",
+      "Great Pyramid",
+      "Giza",
+      "construction",
+      "workers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ancient-egypt-hieroglyphs",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "egyptian_history",
+    "statement": "Egyptian hieroglyphics were deciphered in 1822 by Jean-François Champollion using the Rosetta Stone, which bore the same text in three scripts.",
+    "quizQuestion": "Who deciphered ancient Egyptian hieroglyphics in 1822?",
+    "correctAnswer": "Jean-François Champollion",
+    "distractors": [
+      "Napoleon Bonaparte",
+      "Howard Carter",
+      "Giovanni Belzoni",
+      "Thomas Young",
+      "Arthur Evans",
+      "Heinrich Schliemann",
+      "Flinders Petrie",
+      "William Jones"
+    ],
+    "acceptableAnswers": [
+      "Jean-François Champollion",
+      "Champollion"
+    ],
+    "explanation": "Hieroglyphics had been undecipherable for over 1,400 years after falling out of use around 400 AD. The Rosetta Stone (196 BC), discovered in 1799 during Napoleon's Egyptian campaign, bore the same priestly decree in three scripts: hieroglyphics, Demotic, and Ancient Greek. French scholar Champollion, building on Thomas Young's partial work, cracked the code in 1822 by recognizing that hieroglyphs represent both sounds and concepts.",
+    "wowFactor": "Champollion taught himself Coptic as a teenager specifically to decode hieroglyphics — and when he finally succeeded in 1822, he reportedly collapsed unconscious for five days from the sheer excitement of the breakthrough.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which scholar deciphered Egyptian hieroglyphics in 1822?",
+        "answer": "Jean-François Champollion",
+        "distractors": [
+          "Thomas Young",
+          "Howard Carter",
+          "Napoleon Bonaparte"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Jean-François Champollion used which archaeological object to decipher Egyptian hieroglyphics?",
+        "answer": "The Rosetta Stone",
+        "distractors": [
+          "The Book of the Dead",
+          "The Narmer Palette",
+          "The Papyrus of Ani"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Egyptian hieroglyphics were deciphered by Champollion in 1822 using the Rosetta Stone.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jean-François Champollion deciphered Egyptian hieroglyphics in ___ using the Rosetta Stone.",
+        "answer": "1822",
+        "distractors": [
+          "1799",
+          "1850",
+          "1900"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jean-Fran%C3%A7ois_Champollion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Scholar hunched over the Rosetta Stone with scrolls open, hieroglyph-covered walls surrounding him, candles flickering, pixel art.",
+    "tags": [
+      "Ancient Egypt",
+      "hieroglyphics",
+      "Champollion",
+      "Rosetta Stone",
+      "decipherment",
+      "1822"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-ancient-egypt-nile-civilization",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "egyptian_history",
+    "statement": "Ancient Egyptian civilization depended entirely on the Nile's annual flood, which deposited fertile silt on desert banks and made agriculture possible.",
+    "quizQuestion": "What annual natural event made agriculture possible in ancient Egypt and sustained its civilization?",
+    "correctAnswer": "The Nile's annual flood",
+    "distractors": [
+      "Desert rains from the Sahara",
+      "Underground spring networks",
+      "Trade caravans bringing grain",
+      "Oasis irrigation systems",
+      "Mediterranean sea breezes",
+      "Canals from the Red Sea",
+      "Monsoon winds from Arabia",
+      "Artificial reservoirs built by pharaohs"
+    ],
+    "acceptableAnswers": [
+      "The Nile's annual flood",
+      "Annual flooding of the Nile",
+      "Nile flood",
+      "Inundation of the Nile"
+    ],
+    "explanation": "Every year between June and September, the Nile flooded its banks — an event the Egyptians called Akhet (Inundation). The floodwaters deposited black silt on otherwise barren desert, creating the narrow strip of fertile farmland the Egyptians called 'kemet' (black land). This sliver of fertility, less than 5% of Egypt's total area, supported 3,000 years of one of history's greatest civilizations. Egyptians developed the first 365-day calendar partly to predict the flood.",
+    "wowFactor": "95% of ancient Egypt was barren, lifeless desert — the entire civilization balanced on a thin ribbon of mud left by the Nile each year. Take away the flood, and Egypt vanishes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What annual Nile event made agriculture possible in ancient Egypt?",
+        "answer": "The annual flood",
+        "distractors": [
+          "Sahara rains",
+          "Oasis irrigation",
+          "Sea trade routes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Nile's annual flood deposited what material that enabled Egyptian farming in the desert?",
+        "answer": "Fertile silt",
+        "distractors": [
+          "Sand",
+          "Clay",
+          "Salt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ancient Egyptian civilization depended on the Nile's annual flood for agriculture.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient Egyptians called their land 'kemet' (black land) because the Nile's flood deposited rich ___ each year.",
+        "answer": "silt",
+        "distractors": [
+          "sand",
+          "clay",
+          "minerals"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile#Ancient_Egypt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Nile river overflowing its banks onto brown desert turning green with crops, pyramids and palm trees on the horizon, pixel art.",
+    "tags": [
+      "Ancient Egypt",
+      "Nile",
+      "flood",
+      "agriculture",
+      "silt",
+      "kemet",
+      "civilization"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

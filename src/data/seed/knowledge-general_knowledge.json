@@ -8815,5 +8815,1627 @@
       "factories",
       "history"
     ]
+  },
+  {
+    "id": "general-book-most-translated",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "literature",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "literature",
+    "categoryL3": "",
+    "statement": "The Bible is the most translated book in history, available in over 3,000 languages and dialects.",
+    "quizQuestion": "What is the most translated book in human history?",
+    "correctAnswer": "The Bible",
+    "distractors": [
+      "Don Quixote",
+      "The Quran",
+      "Harry Potter",
+      "The Little Prince"
+    ],
+    "acceptableAnswers": [
+      "The Bible",
+      "Bible"
+    ],
+    "explanation": "The Bible has been fully or partially translated into over 3,000 languages. The New Testament alone exists in more than 1,500 languages.",
+    "wowFactor": "Bible translation missions have helped preserve dozens of endangered languages that might otherwise have been lost.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the most translated book ever?",
+        "answer": "The Bible",
+        "distractors": [
+          "Don Quixote",
+          "The Quran",
+          "Harry Potter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Bible is available in over 3,000 languages.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bible_translations",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious content, treat with sensitivity",
+    "visualDescription": "A globe surrounded by open Bibles in many different scripts and languages.",
+    "tags": [
+      "books",
+      "Bible",
+      "translation",
+      "languages",
+      "literature"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-book-isbn-system",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "publishing",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "publishing",
+    "categoryL3": "",
+    "statement": "The ISBN (International Standard Book Number) system was introduced in 1970 to give every book a unique identifier for commercial use.",
+    "quizQuestion": "What does ISBN stand for?",
+    "correctAnswer": "International Standard Book Number",
+    "distractors": [
+      "International System of Book Notation",
+      "Indexed Serial Book Name",
+      "International Standard Book Notation"
+    ],
+    "acceptableAnswers": [
+      "International Standard Book Number"
+    ],
+    "explanation": "ISBN was developed from a 9-digit Standard Book Number created by Gordon Foster in 1966 and adopted internationally in 1970.",
+    "wowFactor": "The final digit of an ISBN is a 'check digit' calculated from all the others — a built-in error-detection system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does ISBN stand for?",
+        "answer": "International Standard Book Number",
+        "distractors": [
+          "International System Book Notation",
+          "Indexed Serial Book Name",
+          "International Standard Book Notation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: ISBN stands for International Standard Book Number.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 4,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ISBN",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A barcode on the back of a book with the letters ISBN clearly visible above it.",
+    "tags": [
+      "books",
+      "ISBN",
+      "publishing",
+      "identifier",
+      "standards"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-book-longest-novel",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "literature",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "literature",
+    "categoryL3": "",
+    "statement": "Proust's 'In Search of Lost Time' is often cited as the world's longest novel at approximately 1.5 million words across 7 volumes.",
+    "quizQuestion": "Which novel is often cited as the longest ever written?",
+    "correctAnswer": "In Search of Lost Time by Marcel Proust",
+    "distractors": [
+      "War and Peace by Tolstoy",
+      "Les Misérables by Hugo",
+      "Infinite Jest by Wallace",
+      "Clarissa by Richardson"
+    ],
+    "acceptableAnswers": [
+      "In Search of Lost Time",
+      "Remembrance of Things Past",
+      "À la recherche du temps perdu",
+      "Proust's novel"
+    ],
+    "explanation": "Proust's 7-volume masterwork contains approximately 1.5 million words — more than twice the length of War and Peace.",
+    "wowFactor": "Proust wrote much of it in a cork-lined room to block out noise — and it took him 13 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is often considered the world's longest novel?",
+        "answer": "In Search of Lost Time by Proust",
+        "distractors": [
+          "War and Peace",
+          "Les Misérables",
+          "Infinite Jest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Proust's novel is longer than War and Peace.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/In_Search_of_Lost_Time",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Seven thick volumes of Proust stacked on a library shelf, dwarfing nearby books.",
+    "tags": [
+      "books",
+      "Proust",
+      "longest novel",
+      "literature",
+      "French"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-money-lydian-coin",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "economics_history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "Economics & History",
+    "categoryL3": "",
+    "statement": "The first standardised coins were minted in the kingdom of Lydia around 600 BCE, made from electrum — a natural gold-silver alloy.",
+    "quizQuestion": "Where were the world's first standardised coins minted, and what metal were they made from?",
+    "correctAnswer": "Lydia, made from electrum (natural gold-silver alloy)",
+    "distractors": [
+      "China, made from cast bronze",
+      "Egypt, made from pure gold",
+      "Babylon, made from silver",
+      "Greece, made from copper",
+      "India, made from stamped silver",
+      "Persia, made from pure gold",
+      "Rome, made from bronze and copper",
+      "Mesopotamia, made from clay tokens"
+    ],
+    "acceptableAnswers": [
+      "Lydia",
+      "Lydian coins",
+      "electrum",
+      "gold-silver alloy"
+    ],
+    "explanation": "The Lydian kingdom, located in modern-day western Turkey, produced the world's first official, standardised coins around 600 BCE under King Alyattes (and possibly earlier). These coins were made from electrum, a naturally occurring gold-silver alloy found in the local Pactolus River. They were stamped with a lion's head emblem as a guarantee of weight and purity. This innovation replaced the cumbersome process of weighing lumps of metal for each transaction.",
+    "wowFactor": "Lydia's last king was the legendarily wealthy Croesus — from whom we get the phrase 'rich as Croesus'. His wealth came directly from the same Pactolus River gold that funded the first coins.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Herodotus, Histories, Book I; British Museum — Lydian Coinage",
+    "sourceUrl": "https://www.britishmuseum.org/collection/galleries/money",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Lydian electrum coin showing a lion's head stamp, displayed on a dark museum background with scale reference",
+    "tags": [
+      "money",
+      "coins",
+      "Lydia",
+      "electrum",
+      "currency history",
+      "ancient history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-money-zimbabwe-hyperinflation",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "economics_history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "Economics & History",
+    "categoryL3": "",
+    "statement": "During Zimbabwe's 2008 hyperinflation crisis, the government printed a 100 trillion dollar banknote.",
+    "quizQuestion": "What was the highest denomination banknote ever printed by Zimbabwe during its 2008 hyperinflation?",
+    "correctAnswer": "100 trillion dollars",
+    "distractors": [
+      "1 billion dollars",
+      "100 billion dollars",
+      "1 trillion dollars",
+      "50 trillion dollars",
+      "500 trillion dollars",
+      "1 quadrillion dollars",
+      "10 trillion dollars",
+      "100 million dollars"
+    ],
+    "acceptableAnswers": [
+      "100 trillion dollar note",
+      "one hundred trillion dollars",
+      "Z$100 trillion"
+    ],
+    "explanation": "Zimbabwe experienced one of the worst hyperinflation episodes in history, peaking at an estimated 89.7 sextillion percent per month in November 2008. The Reserve Bank of Zimbabwe printed increasingly absurd denominations to keep pace with price rises. The 100 trillion dollar note — worth a few US dollars at issue — became globally famous as a symbol of monetary collapse. Zimbabwe eventually abandoned its currency in 2009 in favour of foreign currencies.",
+    "wowFactor": "At peak hyperinflation, prices doubled every 24 hours in Zimbabwe. A loaf of bread cost more in the afternoon than it did in the morning.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Reserve Bank of Zimbabwe; IMF Report 2009",
+    "sourceUrl": "https://www.imf.org/en/Publications/WP/Issues/2016/12/31/Zimbabwe-Lessons-from-the-Hyperinflation-Experience-22547",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A crisp Zimbabwe 100 trillion dollar banknote displayed on a flat surface, showing the denomination in large numerals",
+    "tags": [
+      "money",
+      "Zimbabwe",
+      "hyperinflation",
+      "banknote",
+      "economics",
+      "currency collapse"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-money-wampum-legal-tender",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "economics_history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "Economics & History",
+    "categoryL3": "",
+    "statement": "Wampum — shell bead strings made by Native Americans — was declared legal tender in Massachusetts in 1637.",
+    "quizQuestion": "When did Massachusetts make wampum shell beads official legal tender?",
+    "correctAnswer": "1637",
+    "distractors": [
+      "1492",
+      "1776",
+      "1700",
+      "1620",
+      "1690",
+      "1750",
+      "1800",
+      "1533"
+    ],
+    "acceptableAnswers": [
+      "1637",
+      "in 1637",
+      "the year 1637"
+    ],
+    "explanation": "Wampum — cylindrical beads crafted from white and purple quahog clam shells by Algonquian peoples — was used extensively in trade by both Indigenous peoples and European colonists in 17th-century North America. The Massachusetts Bay Colony formally recognised it as legal tender in 1637, with specific exchange rates set. It remained in use because coinage was scarce in the colonies. The law was eventually repealed in 1661 as coin supplies improved.",
+    "wowFactor": "Wampum beads weren't random shells — their value was based on colour and the labour intensity of production. Purple beads were twice the value of white ones because purple shell was rarer and harder to work.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wampum: A History of Indian Money — Matthew Bahar",
+    "sourceUrl": "https://www.americanantiquarian.org/proceedings/44517533.pdf",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Strings of white and purple wampum shell beads arranged on a wooden surface, with a colonial-era Massachusetts document in the background",
+    "tags": [
+      "money",
+      "wampum",
+      "Massachusetts",
+      "Native American",
+      "colonial America",
+      "legal tender",
+      "currency"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-money-rai-stones",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "economics_history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "Economics & History",
+    "categoryL3": "",
+    "statement": "The Yap islanders of Micronesia used giant limestone discs — some up to 4 metres wide — as currency, and ownership could transfer without moving the stone.",
+    "quizQuestion": "What unusual feature of Yapese rai stone currency allowed ownership to transfer without moving the stone?",
+    "correctAnswer": "Ownership was tracked by oral community consensus — everyone simply agreed who owned it",
+    "distractors": [
+      "Stones were marked with the owner's name carved into them",
+      "Coloured flags were placed beside stones to denote ownership",
+      "A central register was kept by the village chief",
+      "Stones were painted different colours for each owner",
+      "The position of the stone was changed slightly to indicate transfer",
+      "A system of knotted strings recorded ownership",
+      "Transfer required a ceremony witnessed by priests",
+      "Stones were broken and a piece given to the new owner"
+    ],
+    "acceptableAnswers": [
+      "oral community consensus",
+      "community memory",
+      "everyone knew who owned it",
+      "oral record"
+    ],
+    "explanation": "The rai stones of Yap (Federated States of Micronesia) are among history's most remarkable currencies. Quarried from limestone deposits on Palau, some weigh several tonnes. Ownership could change hands without any physical movement — the entire community simply remembered and acknowledged who owned each stone. In one famous case, a stone dropped into the sea during transport was still considered valid currency because everyone knew it existed.",
+    "wowFactor": "Economists cite rai stones as an early example of what we now call 'socially shared ledger' — the same conceptual basis as blockchain. The stone at the bottom of the sea still 'worked' as money.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "The Island of Stone Money — William Henry Furness III (1910)",
+    "sourceUrl": "https://www.jstor.org/stable/25090419",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive circular limestone rai stone standing upright in a Yapese village, taller than the people standing beside it",
+    "tags": [
+      "money",
+      "Yap",
+      "rai stones",
+      "currency",
+      "Micronesia",
+      "unusual money",
+      "economics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-money-us-penny-costs-more",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "economics_history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "Economics & History",
+    "categoryL3": "",
+    "statement": "The US one-cent coin costs approximately 3 cents to produce — meaning it costs three times its face value to make.",
+    "quizQuestion": "How much does it cost the US Mint to produce one penny?",
+    "correctAnswer": "About 3 cents",
+    "distractors": [
+      "About 0.5 cents",
+      "Exactly 1 cent",
+      "About 1.5 cents",
+      "About 5 cents",
+      "About 10 cents",
+      "About 2 cents",
+      "About 0.1 cents",
+      "About 8 cents"
+    ],
+    "acceptableAnswers": [
+      "3 cents",
+      "about 3 cents",
+      "approximately 3 cents",
+      "more than 2 cents"
+    ],
+    "explanation": "The US Mint reports the cost of producing a one-cent coin (penny) significantly exceeds its face value, hovering around 3 cents in recent years due to the cost of zinc, copper plating, manufacturing, and distribution. This means the US government loses money on every penny made. Despite this, lobbying from the zinc industry and public sentiment have kept the penny in circulation, costing taxpayers tens of millions of dollars annually.",
+    "wowFactor": "The US loses around $85 million per year just by continuing to make pennies. Canada abolished its penny in 2013 — and prices did not go up as feared.",
+    "variants": [],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "US Mint Annual Report — Cost of Pennies",
+    "sourceUrl": "https://www.usmint.gov/about/production-sales-figures",
+    "contentVolatility": "dynamic",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A single US penny magnified to show copper-zinc composition, next to a cost breakdown infographic showing 3 cents in production costs",
+    "tags": [
+      "money",
+      "penny",
+      "US Mint",
+      "economics",
+      "coin production",
+      "currency"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-euro-physical-launch-date",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "money_economics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "money_economics",
+    "categoryL3": "",
+    "statement": "Euro coins and banknotes entered circulation on January 1, 2002.",
+    "quizQuestion": "When did euro coins and banknotes first enter circulation?",
+    "correctAnswer": "January 1, 2002",
+    "distractors": [
+      "January 1, 1999",
+      "January 1, 2000",
+      "January 1, 2001",
+      "June 1, 2002",
+      "January 1, 2003",
+      "December 31, 2001",
+      "March 1, 2002"
+    ],
+    "acceptableAnswers": [
+      "January 1, 2002",
+      "1 January 2002",
+      "Jan 1, 2002",
+      "2002"
+    ],
+    "explanation": "While the euro was introduced as an accounting currency on January 1, 1999, physical coins and banknotes only entered circulation three years later on January 1, 2002, replacing national currencies in 12 countries simultaneously.",
+    "wowFactor": "On January 1, 2002, twelve countries switched currencies at once — the largest currency changeover in history, involving 14.5 billion banknotes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did euro coins and banknotes first enter circulation?",
+        "answer": "January 1, 2002",
+        "distractors": [
+          "January 1, 1999",
+          "January 1, 2000",
+          "January 1, 2001"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the euro introduced as an accounting currency (before physical notes)?",
+        "answer": "1999",
+        "distractors": [
+          "2002",
+          "2000",
+          "1997"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Physical euro banknotes and coins were first used in 2002.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Euro coins and banknotes entered circulation on January 1, ___.",
+        "answer": "2002",
+        "distractors": [
+          "1999",
+          "2000",
+          "2001"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Euro",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cascade of shiny new euro coins and crisp banknotes falling against a backdrop of European flags, crowds celebrating the first day of euro circulation.",
+    "tags": [
+      "euro",
+      "currency",
+      "2002",
+      "European Union",
+      "money"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-euro-coin-national-reverse",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "money_economics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "money_economics",
+    "categoryL3": "",
+    "statement": "Each eurozone country designs its own national image for the reverse side of euro coins.",
+    "quizQuestion": "What is unique about the reverse side of euro coins from different countries?",
+    "correctAnswer": "Each country designs its own national image",
+    "distractors": [
+      "They are all identical",
+      "The reverse shows the country's flag",
+      "They are blank on the reverse",
+      "The reverse shows the year only",
+      "Each country uses a different colour",
+      "The reverse shows a map of Europe",
+      "They show the founding date of each country"
+    ],
+    "acceptableAnswers": [
+      "Each country designs its own reverse",
+      "national designs",
+      "different national images"
+    ],
+    "explanation": "Euro coins have a common design on one side (the value side) but each country creates its own design for the reverse. For example, German coins feature the eagle, French coins the Sower, and Spanish coins King Felipe VI.",
+    "wowFactor": "A German euro coin is legal tender in Portugal — so you might have a coin from another country in your pocket without knowing it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is unique about the reverse side of euro coins from different countries?",
+        "answer": "Each country designs its own national image",
+        "distractors": [
+          "They are all identical",
+          "They show the country's flag",
+          "They are blank"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which side of euro coins is standardised across all eurozone countries?",
+        "answer": "The value (front) side",
+        "distractors": [
+          "The reverse side",
+          "Both sides",
+          "Neither side"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Every eurozone country has a unique national design on the reverse of its coins.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Each eurozone country designs its own ___ side of euro coins.",
+        "answer": "reverse",
+        "distractors": [
+          "front",
+          "edge",
+          "value"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Euro_coins",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spread of euro coins showing different national reverses — German eagle, French Sower, Spanish king — all with the same common value side.",
+    "tags": [
+      "euro",
+      "coins",
+      "national design",
+      "European Union",
+      "numismatics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-euro-eurozone-member-count",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "money_economics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "money_economics",
+    "categoryL3": "",
+    "statement": "As of 2024, 20 countries use the euro as their official currency.",
+    "quizQuestion": "How many countries were in the eurozone as of 2024?",
+    "correctAnswer": "20",
+    "distractors": [
+      "12",
+      "15",
+      "27",
+      "32",
+      "17",
+      "25",
+      "10"
+    ],
+    "acceptableAnswers": [
+      "20",
+      "twenty"
+    ],
+    "explanation": "The eurozone expanded from the original 12 countries in 2002 to 20 members as of January 2023 when Croatia joined. The EU itself has 27 members, but not all use the euro.",
+    "wowFactor": "Seven EU countries — including Poland, Sweden, and Hungary — are in the EU but still use their own national currencies, not the euro.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many countries were in the eurozone as of 2024?",
+        "answer": "20",
+        "distractors": [
+          "12",
+          "27",
+          "15"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country most recently joined the eurozone before 2024?",
+        "answer": "Croatia",
+        "distractors": [
+          "Bulgaria",
+          "Romania",
+          "Sweden"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: As of 2024, 20 countries use the euro as their official currency.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "As of 2024, ___ countries are members of the eurozone.",
+        "answer": "20",
+        "distractors": [
+          "12",
+          "27",
+          "15"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eurozone",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Europe with 20 countries highlighted in gold showing eurozone members, the Euro symbol prominently displayed over the continent.",
+    "tags": [
+      "euro",
+      "eurozone",
+      "European Union",
+      "countries",
+      "currency"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-euro-500-note-discontinued",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "money_economics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "money_economics",
+    "categoryL3": "",
+    "statement": "The €500 banknote was discontinued in 2019 due to its widespread use in money laundering and criminal activity.",
+    "quizQuestion": "Why was the €500 banknote discontinued in 2019?",
+    "correctAnswer": "Its widespread use in money laundering",
+    "distractors": [
+      "Printing costs were too high",
+      "Not enough demand from the public",
+      "Security features were compromised",
+      "It was too large to fit in wallets",
+      "Counterfeiting concerns",
+      "EU policy requiring smaller denominations",
+      "Digital payments made it obsolete"
+    ],
+    "acceptableAnswers": [
+      "Money laundering",
+      "criminal activity",
+      "used in crime"
+    ],
+    "explanation": "The European Central Bank stopped issuing €500 notes in 2019 because they were disproportionately used in criminal transactions. Known as the 'Bin Laden' by bank workers due to everyone knowing about it but rarely seeing it, the notes remain legal tender.",
+    "wowFactor": "The €500 note was called 'the Bin Laden' by European bankers — everyone knew it existed, but you almost never saw one in normal life.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why was the €500 banknote discontinued in 2019?",
+        "answer": "Its widespread use in money laundering",
+        "distractors": [
+          "Too expensive to print",
+          "Not enough demand",
+          "Security breach"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What nickname did European bank workers give the €500 note?",
+        "answer": "The Bin Laden",
+        "distractors": [
+          "The Big One",
+          "The Ghost",
+          "The Phantom"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The €500 note was discontinued partly because it was commonly used in criminal transactions.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The €500 note was discontinued in ___ due to its use in money laundering.",
+        "answer": "2019",
+        "distractors": [
+          "2009",
+          "2015",
+          "2022"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/500_euro_note",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References criminal activity, appropriate for teen+",
+    "visualDescription": "A purple €500 banknote with a red cross through it against a background of shadowy figures, representing the note's discontinuation.",
+    "tags": [
+      "euro",
+      "500 euro",
+      "money laundering",
+      "ECB",
+      "banknote"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-honey-never-spoils",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "miscellaneous_oddities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "miscellaneous_oddities",
+    "categoryL3": "food_facts",
+    "statement": "Honey never spoils. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still perfectly edible.",
+    "quizQuestion": "How old is the oldest honey ever found that was still edible?",
+    "correctAnswer": "About 3,000 years old",
+    "distractors": [
+      "About 100 years old",
+      "About 500 years old",
+      "About 10,000 years old"
+    ],
+    "acceptableAnswers": [
+      "3000 years",
+      "three thousand years",
+      "about 3,000 years"
+    ],
+    "explanation": "Honey's combination of low moisture content, acidic pH (3–4.5), and natural hydrogen peroxide production creates an inhospitable environment for bacteria and microorganisms. Egyptian tomb honey discovered by archaeologists has been tasted and found perfectly good. As long as honey is stored sealed and dry, it can last indefinitely.",
+    "wowFactor": "Honey found in King Tutankhamun's tomb was reportedly still edible after 3,300 years — making it the world's oldest snack food.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is the oldest honey ever found that was still edible?",
+        "answer": "About 3,000 years old",
+        "distractors": [
+          "About 100 years old",
+          "About 500 years old",
+          "About 10,000 years old"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Honey can last thousands of years without spoiling if kept sealed.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Honey",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Egyptian honey jar beside a modern jar of honey",
+    "tags": [
+      "honey",
+      "preservation",
+      "Egypt",
+      "food science",
+      "shelf life"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-honey-egyptian-tombs",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "ancient_history",
+    "statement": "Ancient Egyptians placed honey in pharaohs' tombs as an offering for the afterlife, believing it to be a sacred food of the gods.",
+    "quizQuestion": "Why did ancient Egyptians place honey in pharaohs' tombs?",
+    "correctAnswer": "As an offering for the afterlife",
+    "distractors": [
+      "To preserve the mummy's body",
+      "To ward off tomb robbers",
+      "As payment for tomb builders"
+    ],
+    "acceptableAnswers": [
+      "afterlife offering",
+      "for the afterlife",
+      "food for the gods"
+    ],
+    "explanation": "Honey held special religious significance in ancient Egypt — it was considered the food of the gods and was associated with Ra, the sun god. Egyptians placed honey jars in pharaohs' tombs to nourish them in the afterlife. Beekeeping was practiced in Egypt as early as 2400 BCE, and honey was also used in religious rituals, medicine, and embalming.",
+    "wowFactor": "Ancient Egyptians paid taxes in honey — and beekeepers held such high social status they were exempt from forced labor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did ancient Egyptians place honey in pharaohs' tombs?",
+        "answer": "As an offering for the afterlife",
+        "distractors": [
+          "To preserve the mummy's body",
+          "To ward off tomb robbers",
+          "As payment for tomb builders"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ancient Egyptians considered honey sacred and placed it in pharaohs' tombs.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Honey",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Egyptian tomb interior with golden honey jars among other offerings",
+    "tags": [
+      "honey",
+      "Egypt",
+      "pharaoh",
+      "tomb",
+      "afterlife",
+      "ancient"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-honey-bee-production",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "nature_facts",
+    "statement": "A single honeybee produces only about 1/12 of a teaspoon of honey in its entire lifetime of roughly 6 weeks.",
+    "quizQuestion": "How much honey does a single bee produce in its lifetime?",
+    "correctAnswer": "About 1/12 of a teaspoon",
+    "distractors": [
+      "About 1 teaspoon",
+      "About 1 tablespoon",
+      "About half a cup"
+    ],
+    "acceptableAnswers": [
+      "1/12 teaspoon",
+      "one-twelfth of a teaspoon",
+      "less than a teaspoon"
+    ],
+    "explanation": "Worker honeybees live only about 6 weeks during the summer season. In that time, each bee visits up to 1,500 flowers per day and travels around 500 miles total. Despite this incredible effort, each bee produces just 1/12 teaspoon of honey. It takes about 556 worker bees to gather enough nectar to make a single pound of honey.",
+    "wowFactor": "To make one pound of honey, bees must visit approximately 2 million flowers and fly over 55,000 miles — roughly twice around the Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much honey does a single bee produce in its lifetime?",
+        "answer": "About 1/12 of a teaspoon",
+        "distractors": [
+          "About 1 teaspoon",
+          "About 1 tablespoon",
+          "About half a cup"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A single bee produces about one full teaspoon of honey in its lifetime.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Honey_bee",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of a bee on a honeycomb with a tiny drop of honey",
+    "tags": [
+      "honey",
+      "bee",
+      "production",
+      "nature",
+      "insects"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-honey-medical-use",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "medicine",
+    "statement": "Honey has been used as a wound dressing for over 4,000 years. Today, Manuka honey is licensed as a medical-grade wound treatment in hospitals.",
+    "quizQuestion": "Which type of honey is used as a licensed medical wound treatment today?",
+    "correctAnswer": "Manuka honey",
+    "distractors": [
+      "Raw clover honey",
+      "Buckwheat honey",
+      "Acacia honey"
+    ],
+    "acceptableAnswers": [
+      "Manuka honey",
+      "Manuka",
+      "medical grade honey"
+    ],
+    "explanation": "Honey's antibacterial properties (from hydrogen peroxide, low pH, and osmotic effect) have been exploited medically for millennia — Egyptian papyri from 2000 BCE describe honey wound dressings. New Zealand's Manuka honey, made from tea tree flowers, has exceptionally high levels of methylglyoxal (MGO), giving it potent antibacterial activity effective against antibiotic-resistant bacteria like MRSA. It's now FDA-approved and used in hospitals globally.",
+    "wowFactor": "Manuka honey is effective against MRSA (the antibiotic-resistant 'superbug') when many pharmaceutical antibiotics fail.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which type of honey is used as a licensed medical wound treatment today?",
+        "answer": "Manuka honey",
+        "distractors": [
+          "Raw clover honey",
+          "Buckwheat honey",
+          "Acacia honey"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Honey has been used as a wound treatment for thousands of years and is still used medically today.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Honey#Medicine",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A jar of Manuka honey with a medical bandage beside it",
+    "tags": [
+      "honey",
+      "Manuka",
+      "medicine",
+      "antibacterial",
+      "wound healing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-photography-invention-date",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "photography",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "photography",
+    "categoryL3": "",
+    "statement": "Photography was invented in 1826-1827 by French inventor Joseph Nicéphore Niépce, who created the world's first permanent photograph using an 8-hour exposure.",
+    "quizQuestion": "Who invented photography, and approximately when?",
+    "correctAnswer": "Joseph Nicéphore Niépce, around 1826-1827",
+    "distractors": [
+      "Louis Daguerre, in 1839",
+      "William Henry Fox Talbot, in 1841",
+      "Thomas Edison, in 1880",
+      "George Eastman, in 1888",
+      "Eadweard Muybridge, in 1872",
+      "Henry Cartier-Bresson, in 1930",
+      "Charles Nègre, in 1851",
+      "Gustave Le Gray, in 1850"
+    ],
+    "acceptableAnswers": [
+      "Niépce",
+      "Joseph Nicéphore Niépce"
+    ],
+    "explanation": "Joseph Nicéphore Niépce created the world's first surviving photograph, 'View from the Window at Le Gras,' around 1826-27. The exposure took approximately 8 hours (possibly longer). Niépce later partnered with Louis Daguerre, who popularized photography with the daguerreotype process (1839) — which is why Daguerre is often mistakenly credited as the inventor. Daguerre's process made photography practical with exposures of minutes rather than hours.",
+    "wowFactor": "The world's first photograph required an 8-hour exposure — that's why you can see the sun on both sides of the street in the same image!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Louis Daguerre invented photography.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What was the exposure time for the world's first photograph?",
+        "answer": "About 8 hours",
+        "distractors": [
+          "About 30 seconds",
+          "About 1 minute",
+          "About 24 hours"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Smithsonian",
+    "sourceUrl": "https://www.si.edu/spotlight/the-birth-of-photography",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Replica of the world's first photograph 'View from the Window at Le Gras' showing a hazy rooftop scene",
+    "tags": [
+      "photography",
+      "Niépce",
+      "invention",
+      "history",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-photography-first-photograph",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "photography",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "photography",
+    "categoryL3": "",
+    "statement": "The first photograph of a person is Louis Daguerre's 1838 'Boulevard du Temple' — the street appears empty because people moved during the 10-minute exposure, except one man who stood still getting his shoes shined.",
+    "quizQuestion": "Why does the first photograph of a person, taken in 1838, show only one man on a busy Paris street?",
+    "correctAnswer": "Everyone else moved during the long exposure time, so only the stationary shoe-shine man was captured",
+    "distractors": [
+      "Daguerre cleared the street for the photograph",
+      "The other people hid from the camera as it was new technology",
+      "It was taken early morning before the street was populated",
+      "The photo was staged with one paid model",
+      "Other people were out of frame, not in the street",
+      "The equipment could only capture one person at a time",
+      "People who moved were removed from the photo in post-processing",
+      "The Paris police required streets to be cleared for photography"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Louis Daguerre took the daguerreotype 'Boulevard du Temple' from his studio window in 1838 or 1839. At the time, daguerreotype exposures took 5-15 minutes. The busy boulevard would have had many pedestrians and carriages, but they all moved during the exposure and left no trace on the plate. Only one man — who stood still for several minutes while having his shoes polished — appears in the image. It's the earliest known photograph of a living person.",
+    "wowFactor": "The first photo of a human was only possible because he was standing still for a shoe shine — while an entire busy Paris street invisibly rushed past him!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The first photograph of a person was taken in a studio setting.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Metropolitan Museum of Art",
+    "sourceUrl": "https://www.metmuseum.org/art/collection/search/283315",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Daguerre's Boulevard du Temple daguerreotype showing an empty Paris street with one lone figure on the left",
+    "tags": [
+      "photography",
+      "Daguerre",
+      "history",
+      "first photograph",
+      "Paris"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-photography-camera-obscura",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "photography",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "photography",
+    "categoryL3": "",
+    "statement": "The camera obscura — a dark box with a pinhole that projects an upside-down image — was known to ancient Greek and Arab scholars and used by Renaissance painters, but it was not until the 19th century that scientists discovered how to permanently record its image.",
+    "quizQuestion": "What optical principle preceded and led to the invention of photography?",
+    "correctAnswer": "The camera obscura — a dark box projecting an inverted image through a pinhole",
+    "distractors": [
+      "The microscope lens system developed in the 1600s",
+      "The magic lantern used for projecting slides",
+      "The stereoscope invented for 3D viewing",
+      "The kaleidoscope optical principle",
+      "The zoetrope for creating moving images",
+      "The heliograph sun-printing process",
+      "The daguerreotype plate chemistry",
+      "The spectroscope for analyzing light"
+    ],
+    "acceptableAnswers": [
+      "camera obscura"
+    ],
+    "explanation": "The camera obscura (Latin: 'dark room') was documented by Arab scholar Ibn al-Haytham in the 11th century and ancient Greeks before him. Light enters a small hole, projecting an inverted image of the scene outside. By the Renaissance, artists like Vermeer and Canaletto likely used portable versions to trace architectural scenes. The challenge was making the projected image permanent — solved by Niépce using bitumen of Judea (a light-sensitive substance) in the 1820s.",
+    "wowFactor": "Renaissance masters may have traced their perfect cityscapes using ancient 'camera' technology — 400 years before Niépce figured out how to make the image stick!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The camera obscura was a 19th-century invention that directly led to photography.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "History of Photography",
+    "sourceUrl": "https://www.britannica.com/technology/camera-obscura",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Renaissance artist using a portable camera obscura tent, tracing an inverted projected image of a cityscape",
+    "tags": [
+      "photography",
+      "camera obscura",
+      "optics",
+      "history",
+      "Renaissance"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-language-most-spoken",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "language",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "language",
+    "categoryL3": "",
+    "statement": "English has the most speakers of any language when counting both native and second-language speakers (~1.5 billion), but Mandarin Chinese has more native speakers (~950 million).",
+    "quizQuestion": "Which language has the most total speakers worldwide (including native and second-language speakers)?",
+    "correctAnswer": "English (about 1.5 billion total speakers)",
+    "distractors": [
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi",
+      "Arabic",
+      "French",
+      "Russian",
+      "Portuguese"
+    ],
+    "acceptableAnswers": [
+      "English"
+    ],
+    "explanation": "As of recent estimates: English has approximately 1.5 billion total speakers (380 million native + over 1 billion second-language speakers). Mandarin Chinese has around 950 million total speakers but ~920 million are native speakers. Spanish (~560 million total), Hindi (~600 million total), and Arabic (~420 million total) follow. The ranking differs significantly depending on whether you count native speakers only or total speakers.",
+    "wowFactor": "English wins the 'most spoken language' contest purely through second-language speakers — more people learned it than were born into it!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Mandarin Chinese has more total speakers than English worldwide.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which language has more native speakers — English or Mandarin?",
+        "answer": "Mandarin Chinese",
+        "distractors": [
+          "English",
+          "They are equal",
+          "Spanish"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Ethnologue",
+    "sourceUrl": "https://www.ethnologue.com/guides/ethnologue200",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with language bubbles showing relative speaker counts for top world languages",
+    "tags": [
+      "language",
+      "English",
+      "Mandarin",
+      "linguistics",
+      "global"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-language-longest-word",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "language",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "language",
+    "categoryL3": "",
+    "statement": "The longest word in a major dictionary is the 45-letter 'pneumonoultramicroscopicsilicovolcanoconiosis' — a lung disease caused by inhaling very fine silica dust from volcanoes.",
+    "quizQuestion": "What is the longest word in major English dictionaries, at 45 letters?",
+    "correctAnswer": "Pneumonoultramicroscopicsilicovolcanoconiosis",
+    "distractors": [
+      "Antidisestablishmentarianism",
+      "Floccinaucinihilipilification",
+      "Supercalifragilisticexpialidocious",
+      "Hippopotomonstrosesquippedaliophobia",
+      "Pseudopseudohypoparathyroidism",
+      "Spectrophotofluorometrically",
+      "Dichlorodifluoromethane",
+      "Methylenedioxymethamphetamine"
+    ],
+    "acceptableAnswers": [
+      "pneumonoultramicroscopicsilicovolcanoconiosis"
+    ],
+    "explanation": "This 45-letter word was coined in 1935 by Everett K. Smith, president of the National Puzzlers' League, specifically to be the longest word. It names a lung disease caused by inhaling very fine silicate dust — essentially a synonym for silicosis. While it appears in major dictionaries, it's technically a fabricated word rather than a naturally evolved medical term. The actual medical community uses 'silicosis' or 'pneumoconiosis' instead.",
+    "wowFactor": "The longest English dictionary word was literally invented to BE the longest word — it's a competitive prank, not a real medical term anyone uses!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many letters are in 'pneumonoultramicroscopicsilicovolcanoconiosis'?",
+        "answer": "45",
+        "distractors": [
+          "35",
+          "52",
+          "28"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The longest English dictionary word is a disease that doctors regularly diagnose using that full name.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Merriam-Webster",
+    "sourceUrl": "https://www.merriam-webster.com/words-at-play/longest-word",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The word 'pneumonoultramicroscopicsilicovolcanoconiosis' written in tiny letters stretching across a wide banner",
+    "tags": [
+      "language",
+      "longest word",
+      "English",
+      "trivia",
+      "wordplay"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-language-families",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "language",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "language",
+    "categoryL3": "",
+    "statement": "There are approximately 7,000 languages spoken in the world today, grouped into about 142 language families. Half of all human languages are spoken by fewer than 10,000 people each.",
+    "quizQuestion": "Approximately how many languages are spoken in the world today?",
+    "correctAnswer": "About 7,000",
+    "distractors": [
+      "About 100",
+      "About 500",
+      "About 2,000",
+      "About 5,000",
+      "About 10,000",
+      "About 15,000",
+      "About 50,000",
+      "About 200"
+    ],
+    "acceptableAnswers": [
+      "7000",
+      "~7,000",
+      "around 7000"
+    ],
+    "explanation": "Ethnologue (2023) documents about 7,168 languages currently spoken. They're organized into ~142 language families — the largest being Indo-European (which includes English, Spanish, French, Hindi, Russian) and Sino-Tibetan (Mandarin, Tibetan). About 40% of the world's languages have fewer than 1,000 speakers each. Linguists estimate one language dies approximately every 2 weeks.",
+    "wowFactor": "A language disappears every 2 weeks — over half of today's 7,000 languages could be extinct by 2100!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many language families group the world's 7,000 languages?",
+        "answer": "About 142",
+        "distractors": [
+          "About 20",
+          "About 500",
+          "About 7,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Roughly half of the world's languages are spoken by fewer than 10,000 people each.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Ethnologue",
+    "sourceUrl": "https://www.ethnologue.com/guides/how-many-languages",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map color-coded by language family, showing linguistic diversity concentrated in specific regions",
+    "tags": [
+      "language",
+      "linguistics",
+      "world languages",
+      "language families",
+      "diversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-timezone-inventor",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "time_zones",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "time_zones",
+    "categoryL3": "",
+    "statement": "Standard time zones were proposed by Scottish-Canadian engineer Sandford Fleming in 1879 and adopted internationally at the 1884 International Meridian Conference in Washington D.C.",
+    "quizQuestion": "Who proposed the worldwide system of standard time zones?",
+    "correctAnswer": "Sandford Fleming, a Scottish-Canadian engineer, in 1879",
+    "distractors": [
+      "Sir Isaac Newton",
+      "Benjamin Franklin",
+      "Charles Darwin",
+      "James Watt",
+      "Alexander Graham Bell",
+      "Thomas Edison",
+      "George Washington",
+      "Napoleon Bonaparte"
+    ],
+    "acceptableAnswers": [
+      "Sandford Fleming",
+      "Fleming"
+    ],
+    "explanation": "Before standard time zones, each city set its clocks by local solar noon — meaning Boston time was 12 minutes behind New York time. This chaos became critical with railway scheduling. Sandford Fleming missed a train due to a printing error in a timetable and proposed dividing the world into 24 hourly zones in 1879. His system was adopted at the 1884 International Meridian Conference in Washington D.C., with Greenwich as the prime meridian.",
+    "wowFactor": "The entire world's time zone system was invented because one man missed his train — and decided to fix time itself in response!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Time zones were adopted internationally at a conference in 1884.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Where was the 1884 International Meridian Conference held?",
+        "answer": "Washington D.C.",
+        "distractors": [
+          "London",
+          "Paris",
+          "New York"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Smithsonian",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/the-invention-of-time-zones-180957484/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Portrait of Sandford Fleming beside a globe divided into 24 time zone slices, with a railway timetable",
+    "tags": [
+      "time zones",
+      "Sandford Fleming",
+      "history",
+      "geography",
+      "time"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-timezone-how-many",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "time_zones",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "time_zones",
+    "categoryL3": "",
+    "statement": "Despite there being only 24 hours in a day, the world has 38 or more distinct time zones — because countries like India (UTC+5:30), Nepal (UTC+5:45), and others use fractional offsets.",
+    "quizQuestion": "How many distinct time zones does the world actually have?",
+    "correctAnswer": "38 or more, due to fractional hour offsets used by some countries",
+    "distractors": [
+      "Exactly 24, one per hour",
+      "12, one per half-day",
+      "25",
+      "36",
+      "48",
+      "60",
+      "100",
+      "Exactly 12, divided by hemisphere"
+    ],
+    "acceptableAnswers": [
+      "38",
+      "more than 24",
+      "over 38"
+    ],
+    "explanation": "Standard time zones would be 24 (one per hour), but many countries use offsets that aren't whole hours. India uses UTC+5:30 (half-hour offset), Nepal uses UTC+5:45 (45-minute offset), parts of Australia use UTC+9:30 and UTC+10:30, and Newfoundland uses UTC-3:30. This brings the total to around 38-40 distinct time zones depending on what you count, including territories and special administrative regions.",
+    "wowFactor": "Nepal's time zone is UTC+5:45 — it's offset by 15 minutes from every neighboring country, purely as an act of national distinctiveness!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The world has exactly 24 time zones, one for each hour of the day.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What unusual time zone does Nepal use?",
+        "answer": "UTC+5:45 (45-minute offset)",
+        "distractors": [
+          "UTC+5:00",
+          "UTC+6:00",
+          "UTC+5:30"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "timeanddate.com",
+    "sourceUrl": "https://www.timeanddate.com/time/current-number-time-zones.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map showing 38+ time zones with fractional offsets highlighted in different colors",
+    "tags": [
+      "time zones",
+      "geography",
+      "time",
+      "Nepal",
+      "India"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "general-timezone-international-date-line",
+    "type": "knowledge",
+    "domain": "general_knowledge",
+    "subdomain": "time_zones",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "time_zones",
+    "categoryL3": "",
+    "statement": "The International Date Line runs roughly along the 180° meridian in the Pacific Ocean, where crossing it eastward subtracts a day and westward adds a day — Kiribati moved it to keep its islands in the same calendar day.",
+    "quizQuestion": "What happens when you cross the International Date Line traveling westward?",
+    "correctAnswer": "You gain a day — the calendar moves forward by one day",
+    "distractors": [
+      "You lose a day — the calendar moves backward by one day",
+      "Nothing — you simply change time zones",
+      "Time freezes at midnight for 24 hours",
+      "You gain 12 hours but no day change",
+      "You jump to the same time but the next week",
+      "Your clock changes by exactly 12 hours",
+      "You enter a different time zone with a one-hour change",
+      "You cross into a new hemisphere where time runs differently"
+    ],
+    "acceptableAnswers": [
+      "gain a day",
+      "calendar advances"
+    ],
+    "explanation": "The International Date Line (IDL) is an imaginary line at approximately 180° longitude. Crossing it westbound (e.g., from California to Japan) moves you forward one calendar day. Eastbound crossing moves you back a day. The line is not straight — it deviates around countries to avoid splitting nations across two dates. In 1995, Kiribati moved the IDL east of its islands so all of Kiribati would share the same date (previously, its eastern islands were a day behind its western islands).",
+    "wowFactor": "A country literally moved the International Date Line to keep its islands from being on different calendar days — Kiribati rewrote time geography!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Crossing the International Date Line heading east adds a day to the calendar.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which country moved the International Date Line in 1995 to keep its islands in the same calendar day?",
+        "answer": "Kiribati",
+        "distractors": [
+          "Fiji",
+          "Samoa",
+          "Tonga"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.org/encyclopedia/international-date-line/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of the Pacific Ocean showing the International Date Line zigzagging around island nations",
+    "tags": [
+      "time zones",
+      "International Date Line",
+      "Kiribati",
+      "geography",
+      "time"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]

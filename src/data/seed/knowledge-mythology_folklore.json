@@ -9144,5 +9144,1587 @@
       "battle",
       "eye of horus"
     ]
+  },
+  {
+    "id": "myth-ambrose-bees-cradle",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "Christian saints",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Christian saints",
+    "categoryL3": "",
+    "statement": "According to legend, a swarm of bees settled on the infant Ambrose's face and left without harming him, foretelling his gift of eloquence.",
+    "quizQuestion": "What sign foretold Ambrose's future eloquence, according to legend?",
+    "correctAnswer": "A swarm of bees settled harmlessly on his face as an infant",
+    "distractors": [
+      "A dove landed on his shoulder at baptism",
+      "He spoke in full sentences at birth",
+      "Lightning struck a nearby tree without harming him"
+    ],
+    "acceptableAnswers": [
+      "bees settled on his face",
+      "a bee swarm",
+      "bees on his face"
+    ],
+    "explanation": "The bee legend is a recurring symbol of eloquence in medieval hagiography. Honey symbolized sweet speech; the sting, sharp wit.",
+    "wowFactor": "The symbol of bees and honey for eloquence appears in legends about Plato, Pindar, and Ambrose — the ancient world associated bees with divine speech.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What omen marked Ambrose's birth?",
+        "answer": "Bees settled on his face",
+        "distractors": [
+          "A dove appeared",
+          "He spoke in sentences",
+          "Lightning struck nearby"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A bee swarm is the legendary sign of Ambrose's gift of speech.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ambrose",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious legend",
+    "visualDescription": "A calm baby surrounded by a golden cloud of bees, sunlight streaming through a stone window.",
+    "tags": [
+      "Ambrose",
+      "bees",
+      "legend",
+      "saints",
+      "eloquence",
+      "hagiography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-ambrose-patron-beekeepers",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "Christian saints",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Christian saints",
+    "categoryL3": "",
+    "statement": "Saint Ambrose is the patron saint of beekeepers and candlemakers, owing to the bee legend associated with his infancy.",
+    "quizQuestion": "Saint Ambrose is the patron saint of which occupation?",
+    "correctAnswer": "Beekeepers",
+    "distractors": [
+      "Blacksmiths",
+      "Fishermen",
+      "Scholars",
+      "Farmers"
+    ],
+    "acceptableAnswers": [
+      "beekeepers",
+      "beekeeping",
+      "beekeeper"
+    ],
+    "explanation": "Ambrose's patronage of beekeepers comes directly from the infant bee legend. He is also patron of candle makers due to wax's connection to bees.",
+    "wowFactor": "Ambrose is one of the few saints whose patronage connects directly to a specific birth legend rather than how he died.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who is the patron saint of beekeepers?",
+        "answer": "Saint Ambrose",
+        "distractors": [
+          "Saint Patrick",
+          "Saint Francis",
+          "Saint George"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ambrose is the patron saint of beekeepers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ambrose",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious content",
+    "visualDescription": "Saint Ambrose in bishop's robes with golden bees flying around a hive at his feet.",
+    "tags": [
+      "Ambrose",
+      "patron saint",
+      "beekeepers",
+      "Catholic",
+      "saints"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-ambrose-forced-bishop",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "Christian saints",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Christian saints",
+    "categoryL3": "",
+    "statement": "Ambrose was acclaimed Bishop of Milan by a popular crowd in 374 CE despite not yet being baptized — he was a catechumen, not even a full Christian.",
+    "quizQuestion": "What was unusual about Ambrose's appointment as Bishop of Milan in 374 CE?",
+    "correctAnswer": "He had not yet been baptized when appointed",
+    "distractors": [
+      "He was a pagan general with no Christian background",
+      "He refused the position for ten years",
+      "He was a woman disguised as a man"
+    ],
+    "acceptableAnswers": [
+      "not yet baptized",
+      "unbaptized",
+      "catechumen"
+    ],
+    "explanation": "Ambrose was a Roman governor mediating a church election dispute when the crowd spontaneously declared him bishop. He was baptized, ordained, and consecrated within one week.",
+    "wowFactor": "Ambrose went from unbaptized civilian to bishop in 8 days — one of the fastest ecclesiastical rises in church history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was unusual about Ambrose becoming bishop?",
+        "answer": "He hadn't been baptized yet",
+        "distractors": [
+          "He was a pagan",
+          "He refused for years",
+          "He was a woman"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ambrose was not yet baptized when the crowd elected him bishop.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ambrose",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious history",
+    "visualDescription": "A surprised Roman official in robes being lifted by a cheering crowd in an ancient basilica.",
+    "tags": [
+      "Ambrose",
+      "bishop",
+      "Milan",
+      "church history",
+      "unusual",
+      "saints"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-ambrose-theodosius-penance",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "Christian saints",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Christian saints",
+    "categoryL3": "",
+    "statement": "Bishop Ambrose famously forced Emperor Theodosius I to do public penance in 390 CE for ordering a massacre of 7,000 civilians in Thessalonica.",
+    "quizQuestion": "Which Roman emperor did Bishop Ambrose famously force to do public penance?",
+    "correctAnswer": "Emperor Theodosius I",
+    "distractors": [
+      "Emperor Constantine",
+      "Emperor Julian the Apostate",
+      "Emperor Valentinian II",
+      "Emperor Honorius"
+    ],
+    "acceptableAnswers": [
+      "Theodosius",
+      "Theodosius I",
+      "Emperor Theodosius"
+    ],
+    "explanation": "After the Thessalonica massacre, Ambrose barred Theodosius from receiving communion until he publicly humiliated himself — a stunning assertion of church authority over imperial power.",
+    "wowFactor": "This moment is seen as the birth of the church's power over secular rulers — one bishop forced the most powerful man on Earth to kneel.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which emperor did Ambrose force to do public penance?",
+        "answer": "Theodosius I",
+        "distractors": [
+          "Constantine",
+          "Julian",
+          "Valentinian II"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ambrose once barred a Roman emperor from church until he did penance.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Massacre_of_Thessalonica",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious and political history",
+    "visualDescription": "A stern bishop in robes blocking the doors of a cathedral while a crowned emperor kneels before him.",
+    "tags": [
+      "Ambrose",
+      "Theodosius",
+      "church and state",
+      "penance",
+      "history",
+      "saints"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-ambrose-hymns-congregation",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "Christian saints",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Christian saints",
+    "categoryL3": "",
+    "statement": "Ambrose pioneered congregational hymn-singing in the Western church, introducing antiphonal chanting that became the foundation of Ambrosian chant.",
+    "quizQuestion": "What musical innovation did Ambrose introduce to the Western church?",
+    "correctAnswer": "Congregational hymn-singing and antiphonal chanting",
+    "distractors": [
+      "The pipe organ",
+      "Gregorian chant",
+      "Polyphonic singing",
+      "Sacred drama and oratorio"
+    ],
+    "acceptableAnswers": [
+      "congregational hymn singing",
+      "antiphonal chanting",
+      "Ambrosian chant",
+      "communal hymns"
+    ],
+    "explanation": "Ambrose wrote Latin hymns to be sung by the congregation — previously, singing was mostly solo or clergy-only. This shaped all Western Christian music.",
+    "wowFactor": "Some of the hymns Ambrose wrote around 380 CE are still sung in churches today — among the oldest continuously used hymns in Christianity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What musical practice did Ambrose introduce?",
+        "answer": "Congregational hymn-singing",
+        "distractors": [
+          "Pipe organ",
+          "Gregorian chant",
+          "Polyphony"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ambrose is credited with introducing congregational singing to Western Christianity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ambrosian_chant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious content",
+    "visualDescription": "A stone medieval basilica interior, congregation singing in unison by candlelight, bishop leading from the altar.",
+    "tags": [
+      "Ambrose",
+      "hymns",
+      "music",
+      "church history",
+      "Ambrosian chant",
+      "Christianity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-shankara-crocodile-renunciation",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "hindu_philosophy",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Hindu Philosophy",
+    "categoryL3": "",
+    "statement": "According to tradition, Adi Shankara convinced his mother to permit him to become a monk by having a crocodile seize his leg in the river — a crisis she could only resolve by giving her blessing.",
+    "quizQuestion": "How did Adi Shankara reportedly obtain his mother's permission to become a monk?",
+    "correctAnswer": "A crocodile seized his leg in the river; his mother gave her blessing to save him",
+    "distractors": [
+      "He went on a hunger strike until she agreed",
+      "He had a vision of Shiva that his mother witnessed",
+      "He debated her with scripture until she relented",
+      "A wandering saint appeared and advised her to let him go",
+      "He faked his own death and reappeared as a sannyasi",
+      "He composed a hymn so moving she could not refuse",
+      "He received a royal commission that required monastic status",
+      "His guru's disciples arrived and formally requested him"
+    ],
+    "acceptableAnswers": [
+      "crocodile seized his leg",
+      "crocodile grabbed him",
+      "crocodile incident"
+    ],
+    "explanation": "One of the most famous biographical episodes of Adi Shankara (788–820 CE) describes how he longed to become a wandering monk (sannyasi) but was his widowed mother's only son. While bathing in the Purna River, a crocodile seized his leg. Shankara called out that he was dying and begged his mother to grant him apat-sannyasa (emergency renunciation) so he could die as a monk. She consented, and the crocodile immediately released him. Shankara took formal vows and later ensured he returned to perform his mother's funeral rites — an obligation he had promised to fulfil.",
+    "wowFactor": "Shankara's crocodile story raises a philosophical paradox: was the renunciation valid if achieved under duress? Later commentators debated whether 'emergency monkhood' was spiritually binding — Shankara insisted it was.",
+    "variants": [],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Madhaviya Shankara Digvijaya (traditional biography)",
+    "sourceUrl": "https://www.advaita-vedanta.org/avhp/shankara-life.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A young Shankara standing waist-deep in a river, a crocodile gripping his leg, his elderly mother on the bank in distress, hands raised in blessing",
+    "tags": [
+      "Adi Shankara",
+      "renunciation",
+      "sannyasa",
+      "Hindu philosophy",
+      "hagiography",
+      "Vedanta"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-shankara-mandana-mishra-debate",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "hindu_philosophy",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Hindu Philosophy",
+    "categoryL3": "",
+    "statement": "In a legendary 15-day debate, Adi Shankara challenged the scholar Mandana Mishra — and Mandana's own wife, Ubhaya Bharati, served as the judge.",
+    "quizQuestion": "Who served as the judge in the famous 15-day debate between Adi Shankara and Mandana Mishra?",
+    "correctAnswer": "Ubhaya Bharati, Mandana Mishra's wife",
+    "distractors": [
+      "The king of the region",
+      "A neutral Brahmin council",
+      "Shankara's own guru Govindapada",
+      "The goddess Saraswati through an oracle",
+      "An elder sage from the Himalayas",
+      "A panel of students from both teachers",
+      "The poet Kumarila Bhatta",
+      "A royal court committee"
+    ],
+    "acceptableAnswers": [
+      "Ubhaya Bharati",
+      "Mandana Mishra's wife",
+      "Bharati"
+    ],
+    "explanation": "Adi Shankara famously sought out Mandana Mishra, the greatest champion of the Mimamsa (ritual action) school of Hindu philosophy, to debate the supremacy of Advaita Vedanta. Both agreed that the loser would become the winner's disciple. When asked who should judge, Shankara suggested Mandana's wife Ubhaya Bharati — a scholar herself — knowing her reputation for impartiality. She agreed to serve as judge and wore garlands around both debaters' necks that would wilt when one of them began to lose the argument. The debate lasted 15 days; Mandana Mishra conceded and became Shankara's disciple (Sureshvaracharya).",
+    "wowFactor": "A debate where a wife judged her own husband's intellectual defeat — and accepted that verdict — is remarkable in any culture. Ubhaya Bharati then challenged Shankara to a second debate on conjugal love, which Shankara had to temporarily leave to research.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Madhaviya Shankara Digvijaya; Anantanand Rambachan, The Limits of Scripture",
+    "sourceUrl": "https://www.advaita-vedanta.org/avhp/shankara-life.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A formal debate scene in an ancient Indian court — two scholars facing each other with garlands around their necks, a composed woman seated between them as judge",
+    "tags": [
+      "Adi Shankara",
+      "Mandana Mishra",
+      "Ubhaya Bharati",
+      "Vedanta",
+      "debate",
+      "Hindu philosophy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-shankara-vyasa-avatar",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "hindu_philosophy",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Hindu Philosophy",
+    "categoryL3": "",
+    "statement": "Adi Shankara is traditionally venerated as an avatar of Shiva, sent to restore Vedic dharma and Advaita philosophy.",
+    "quizQuestion": "Which deity is Adi Shankara traditionally considered an avatar of?",
+    "correctAnswer": "Shiva",
+    "distractors": [
+      "Vishnu",
+      "Brahma",
+      "Indra",
+      "Krishna",
+      "Skanda (Murugan)",
+      "Ganesha",
+      "Surya",
+      "Varuna"
+    ],
+    "acceptableAnswers": [
+      "Shiva",
+      "Lord Shiva",
+      "Maheshvara"
+    ],
+    "explanation": "Adi Shankara is widely regarded by his followers as a partial avatar (amsha-avatara) of Shiva, specifically sent to counteract the spread of Buddhism and Mimamsa ritualism and to restore the non-dualist (Advaita) interpretation of the Upanishads. Several traditional biographies, particularly the Madhaviya Shankara Digvijaya, describe his divine origin and miraculous birth. His philosophical project — establishing the identity of the individual self (atman) with ultimate reality (Brahman) — is often framed as Shiva's own teaching.",
+    "wowFactor": "Shankara is said to have lived only 32 years yet commentated on the entire triple canon of Vedanta (Upanishads, Bhagavad Gita, Brahma Sutras) and walked the entire subcontinent on foot multiple times.",
+    "variants": [],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Madhaviya Shankara Digvijaya; Swami Tapasyananda, Shankara-Dig-Vijaya",
+    "sourceUrl": "https://www.advaita-vedanta.org/avhp/shankara-life.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A devotional painting of Adi Shankara in saffron robes with a radiant halo, Shiva's crescent moon motif subtly incorporated in the background",
+    "tags": [
+      "Adi Shankara",
+      "Shiva",
+      "avatar",
+      "Advaita Vedanta",
+      "Hindu philosophy",
+      "hagiography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-shankara-body-swap-erotic-knowledge",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "hindu_philosophy",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "Hindu Philosophy",
+    "categoryL3": "",
+    "statement": "In the legend of the Mandana Mishra debate, Adi Shankara temporarily entered a dead king's body to acquire experiential knowledge of conjugal love so he could answer Ubhaya Bharati's challenge.",
+    "quizQuestion": "Why did Adi Shankara reportedly enter a dead king's body in traditional accounts?",
+    "correctAnswer": "To gain firsthand knowledge of conjugal love so he could answer Ubhaya Bharati's debate challenge",
+    "distractors": [
+      "To avoid assassination by the king's rivals",
+      "To access the king's memory of military strategy",
+      "To heal the king as a demonstration of his powers",
+      "To retrieve a sacred text the king had hidden",
+      "To experience royal authority and then renounce it",
+      "To prove to his disciples that death is an illusion",
+      "To gain royal backing for founding his monasteries",
+      "To understand statecraft for advising kings on dharma"
+    ],
+    "acceptableAnswers": [
+      "to learn conjugal love",
+      "to answer Ubhaya Bharati's challenge",
+      "erotic knowledge for the debate",
+      "kama shastra for the debate"
+    ],
+    "explanation": "After Mandana Mishra lost the debate to Shankara, his wife Ubhaya Bharati challenged Shankara with questions on kama shastra (erotic science) — a domain the celibate monk could not address from personal experience. Shankara requested a 30-day pause and used his yogic ability of parakaya pravesha (entering another body) to temporarily inhabit the body of recently deceased King Amaruka. After experiencing conjugal life and gaining the knowledge needed, he returned to his own body and answered Ubhaya Bharati's questions. This episode is recounted in the Madhaviya Shankara Digvijaya.",
+    "wowFactor": "This story poses a razor-sharp philosophical paradox: did the body-swapping monk compromise his monastic vows? Traditional interpreters argue no — the experience was of the king's body, not Shankara's own self.",
+    "variants": [],
+    "difficulty": 5,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Madhaviya Shankara Digvijaya, Chapters 10–11",
+    "sourceUrl": "https://www.advaita-vedanta.org/avhp/shankara-life.html",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An illustrated scene from an Indian manuscript showing Shankara's soul as light leaving his meditating body and entering a royal funeral chamber",
+    "tags": [
+      "Adi Shankara",
+      "parakaya pravesha",
+      "Ubhaya Bharati",
+      "body swap",
+      "kama shastra",
+      "Hindu philosophy",
+      "legend"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-norse-yggdrasil-nine-realms",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "creation_cosmology",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "creation_cosmology",
+    "categoryL3": "",
+    "statement": "In Norse mythology, Yggdrasil is a sacred ash tree that connects the nine realms of existence.",
+    "quizQuestion": "What is Yggdrasil in Norse mythology?",
+    "correctAnswer": "A sacred ash tree connecting the nine realms",
+    "distractors": [
+      "A giant sea serpent",
+      "The hammer of Thor",
+      "Odin's eight-legged horse",
+      "A rainbow bridge",
+      "The hall of slain warriors",
+      "A well of wisdom",
+      "The wolf that chases the sun"
+    ],
+    "acceptableAnswers": [
+      "A sacred ash tree",
+      "the world tree",
+      "Yggdrasil is the world tree"
+    ],
+    "explanation": "Yggdrasil is the immense sacred ash tree in Norse cosmology whose branches and roots connect the nine worlds, including Asgard (realm of gods), Midgard (realm of humans), and Helheim (realm of the dead).",
+    "wowFactor": "Odin hung himself from Yggdrasil for nine days to gain the knowledge of runes — the Norse god of wisdom sacrificed himself to himself.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Yggdrasil in Norse mythology?",
+        "answer": "A sacred ash tree connecting the nine realms",
+        "distractors": [
+          "A giant sea serpent",
+          "Thor's hammer",
+          "The rainbow bridge"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many realms does Yggdrasil connect in Norse mythology?",
+        "answer": "Nine",
+        "distractors": [
+          "Three",
+          "Seven",
+          "Twelve"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Yggdrasil is the sacred ash tree that connects the nine realms in Norse mythology.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In Norse mythology, ___ is the sacred ash tree connecting the nine realms.",
+        "answer": "Yggdrasil",
+        "distractors": [
+          "Bifrost",
+          "Valhalla",
+          "Asgard"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yggdrasil",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An enormous ash tree reaching into stormy skies, its roots plunging into multiple worlds — icy Niflheim below, golden Asgard in its highest branches, and Midgard in the middle.",
+    "tags": [
+      "Norse mythology",
+      "Yggdrasil",
+      "nine realms",
+      "world tree",
+      "cosmology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-norse-ragnarok-wolf-odin",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "gods_deities",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "gods_deities",
+    "categoryL3": "",
+    "statement": "At Ragnarök, the wolf Fenrir breaks free from his chains and swallows Odin.",
+    "quizQuestion": "According to Norse mythology, what fate does Odin meet at Ragnarök?",
+    "correctAnswer": "He is swallowed by the wolf Fenrir",
+    "distractors": [
+      "He is slain by Loki",
+      "He drowns in the World Serpent's poison",
+      "He burns in Surtr's fire",
+      "He is struck by Thor's hammer",
+      "He falls into Hel",
+      "He is torn apart by frost giants",
+      "He sacrifices himself on Yggdrasil"
+    ],
+    "acceptableAnswers": [
+      "Swallowed by Fenrir",
+      "eaten by Fenrir",
+      "killed by Fenrir"
+    ],
+    "explanation": "At Ragnarök (the twilight of the gods), Fenrir — the monstrous wolf son of Loki — breaks free from his magical chains and swallows Odin whole. Odin's son Víðarr then avenges him by killing Fenrir.",
+    "wowFactor": "Odin, the all-knowing god who can see the future, knew exactly how he would die at Ragnarök — and still couldn't change it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to Norse mythology, what fate does Odin meet at Ragnarök?",
+        "answer": "He is swallowed by the wolf Fenrir",
+        "distractors": [
+          "He is slain by Loki",
+          "He burns in Surtr's fire",
+          "He drowns in the World Serpent's venom"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Norse monster swallows Odin at Ragnarök?",
+        "answer": "Fenrir",
+        "distractors": [
+          "Jörmungandr",
+          "Nidhogg",
+          "Surtr"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: At Ragnarök, Odin is swallowed by the wolf Fenrir.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At Ragnarök, the wolf ___ breaks free and swallows Odin.",
+        "answer": "Fenrir",
+        "distractors": [
+          "Jörmungandr",
+          "Nidhogg",
+          "Skoll"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ragnar%C3%B6k",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An enormous black wolf with glowing red eyes breaking free from golden chains amid apocalyptic storms, Odin in armour raising his spear in defiance.",
+    "tags": [
+      "Norse mythology",
+      "Ragnarök",
+      "Fenrir",
+      "Odin",
+      "gods"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-norse-thor-hammer-return",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "gods_deities",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "gods_deities",
+    "categoryL3": "",
+    "statement": "Mjolnir's unusually short handle was an accident: Loki bit the dwarf Brokkr's arm during the forging, causing the shaft to be too short.",
+    "quizQuestion": "Why does Thor's hammer Mjolnir have an unusually short handle?",
+    "correctAnswer": "Loki bit the dwarf Brokkr's arm during the forging",
+    "distractors": [
+      "Thor broke the original handle in battle",
+      "The dwarves ran out of metal",
+      "Odin ordered it shortened",
+      "A giant smashed the forge",
+      "A fire spirit cursed the hammer",
+      "Thor's grip was too strong",
+      "The magic required a shorter shaft"
+    ],
+    "acceptableAnswers": [
+      "Loki sabotaged the forging",
+      "Loki bit Brokkr",
+      "Loki interfered with the smiths"
+    ],
+    "explanation": "In Norse mythology, the dwarves Sindri and Brokkr were forging Mjolnir while Loki (in fly form) bit Brokkr on the eyelid to sabotage the work. Brokkr kept pumping the bellows without pausing, but the momentary flinch caused the handle to come out too short.",
+    "wowFactor": "The most famous weapon in Norse mythology only exists in its iconic one-handed form because Loki couldn't resist ruining a good thing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why does Thor's hammer Mjolnir have an unusually short handle?",
+        "answer": "Loki bit the dwarf Brokkr's arm during the forging",
+        "distractors": [
+          "Thor broke the original handle",
+          "The dwarves ran out of metal",
+          "Odin ordered it shortened"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What form did Loki take when he sabotaged the forging of Mjolnir?",
+        "answer": "A fly",
+        "distractors": [
+          "A snake",
+          "A wolf",
+          "A raven"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mjolnir's short handle was caused by Loki sabotaging its forging.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mjolnir got its short handle when ___ bit the dwarf Brokkr during forging.",
+        "answer": "Loki",
+        "distractors": [
+          "Odin",
+          "Thor",
+          "Heimdall"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mj%C3%B6lnir",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two dwarves at a fiery forge hammering a glowing hammer, a tiny fly buzzing at one dwarf's arm causing him to flinch, the hammer's handle visibly too short.",
+    "tags": [
+      "Norse mythology",
+      "Thor",
+      "Mjolnir",
+      "Loki",
+      "hammer",
+      "dwarves"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-norse-valhalla-einherjar",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "gods_deities",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "gods_deities",
+    "categoryL3": "",
+    "statement": "The Einherjar are warriors slain in battle who feast and train in Valhalla every day to prepare for Ragnarök.",
+    "quizQuestion": "What are the Einherjar in Norse mythology?",
+    "correctAnswer": "Warriors who died in battle and train in Valhalla for Ragnarök",
+    "distractors": [
+      "Odin's two ravens",
+      "The nine realms' guardians",
+      "Valkyries who choose the slain",
+      "Loki's monstrous children",
+      "Dwarven master smiths",
+      "The frost giants of Jotunheim",
+      "Gods who survived Ragnarök"
+    ],
+    "acceptableAnswers": [
+      "Warriors in Valhalla",
+      "slain warriors training for Ragnarök",
+      "the chosen warriors in Valhalla"
+    ],
+    "explanation": "The Einherjar ('those who fight alone') are warriors chosen by the Valkyries after death in battle. They spend their afterlife in Valhalla feasting with Odin and fighting each other daily, their wounds healing each night, until they must fight at Ragnarök.",
+    "wowFactor": "In Valhalla, the Einherjar fight each other to the death every day — then their wounds heal and they feast together each night.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are the Einherjar in Norse mythology?",
+        "answer": "Warriors who died in battle and train in Valhalla for Ragnarök",
+        "distractors": [
+          "Odin's ravens",
+          "Valkyries",
+          "Loki's children"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what hall do the Einherjar feast and train in Norse mythology?",
+        "answer": "Valhalla",
+        "distractors": [
+          "Asgard",
+          "Helheim",
+          "Niflheim"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Einherjar are dead warriors who train in Valhalla for Ragnarök.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ are slain warriors who feast and train in Valhalla to prepare for Ragnarök.",
+        "answer": "Einherjar",
+        "distractors": [
+          "Valkyries",
+          "Aesir",
+          "Vanir"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Einherjar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Armoured Norse warriors feasting at long tables in Valhalla's golden hall, some nursing fresh wounds while others laugh and raise drinking horns, Odin on his throne.",
+    "tags": [
+      "Norse mythology",
+      "Valhalla",
+      "Einherjar",
+      "Ragnarök",
+      "warriors"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-zeus-cyclopes-forge",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "gods_olympians",
+    "statement": "The Cyclopes — one-eyed giants — forged Zeus's thunderbolts as a reward after Zeus freed them from imprisonment in Tartarus during the Titanomachy.",
+    "quizQuestion": "According to Greek myth, who forged Zeus's thunderbolts?",
+    "correctAnswer": "The Cyclopes",
+    "distractors": [
+      "Hephaestus alone",
+      "The Titans",
+      "Prometheus"
+    ],
+    "acceptableAnswers": [
+      "the Cyclopes",
+      "Cyclopes",
+      "one-eyed giants"
+    ],
+    "explanation": "In Greek mythology, the Cyclopes (Brontes, Steropes, and Arges) were master craftsmen imprisoned by Cronus. When Zeus freed them from Tartarus to fight the Titans, the Cyclopes repaid him by forging divine weapons: thunderbolts for Zeus, a trident for Poseidon, and a helm of invisibility for Hades. Hephaestus, the god of the forge, later assisted but did not originally create the thunderbolts. The Cyclopes of Homer's Odyssey (like Polyphemus) are a different, more primitive group.",
+    "wowFactor": "The Cyclopes also made Poseidon's trident and Hades's helmet of invisibility during the same forging session — a veritable divine armory.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to Greek myth, who forged Zeus's thunderbolts?",
+        "answer": "The Cyclopes",
+        "distractors": [
+          "Hephaestus alone",
+          "The Titans",
+          "Prometheus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Zeus's thunderbolts were forged by the Cyclopes as a reward for Zeus freeing them.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Hesiod's Theogony",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cyclopes",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "A Cyclops at a fiery forge hammering a glowing thunderbolt",
+    "tags": [
+      "Zeus",
+      "Cyclopes",
+      "thunderbolt",
+      "Greek mythology",
+      "Titans"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-zeus-kronos-overthrow",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "creation_myths",
+    "statement": "Zeus overthrew Cronus by giving him an emetic potion that caused him to vomit up Zeus's five siblings — Hestia, Demeter, Hera, Hades, and Poseidon — whom Cronus had swallowed whole.",
+    "quizQuestion": "How did Zeus free his siblings from Cronus?",
+    "correctAnswer": "He gave Cronus a potion that made him vomit them up",
+    "distractors": [
+      "He cut open Cronus's stomach with a sword",
+      "He tricked Cronus into releasing them during a feast",
+      "He used thunderbolts to shatter Cronus's body"
+    ],
+    "acceptableAnswers": [
+      "emetic potion",
+      "potion to vomit",
+      "made him regurgitate them"
+    ],
+    "explanation": "According to Hesiod, Cronus (Kronos) had been warned his children would overthrow him, so he swallowed each child at birth. When Zeus was born, his mother Rhea hid him in Crete and gave Cronus a rock wrapped in swaddling clothes instead. Once grown, Zeus (guided by Gaia and Metis) gave Cronus a mixture of mustard and wine that made him regurgitate his swallowed children in reverse order: first the rock, then Hestia, Demeter, Hera, Hades, and Poseidon. Together they then fought and defeated the Titans.",
+    "wowFactor": "The rock Cronus vomited up was believed to be at Delphi — the ancient Greeks displayed it there, anointed with oil, as a sacred object.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Zeus free his siblings from Cronus?",
+        "answer": "He gave Cronus a potion that made him vomit them up",
+        "distractors": [
+          "He cut open Cronus's stomach with a sword",
+          "He tricked Cronus into releasing them during a feast",
+          "He used thunderbolts to shatter Cronus's body"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cronus swallowed his children because he feared they would overthrow him.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Hesiod's Theogony",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cronus",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "Zeus giving a cup to Cronus, who is depicted swallowing a god-sized figure",
+    "tags": [
+      "Zeus",
+      "Cronus",
+      "Greek mythology",
+      "Titanomachy",
+      "Olympians"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-zeus-transformations",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "gods_olympians",
+    "statement": "Zeus famously transformed into various animals and figures to pursue his romantic interests: a bull for Europa, a swan for Leda, a shower of gold for Danaë, and an eagle for Ganymede.",
+    "quizQuestion": "What animal did Zeus transform into to abduct Europa in Greek mythology?",
+    "correctAnswer": "A bull",
+    "distractors": [
+      "A swan",
+      "An eagle",
+      "A golden ram"
+    ],
+    "acceptableAnswers": [
+      "a bull",
+      "bull",
+      "white bull"
+    ],
+    "explanation": "Zeus's many transformations for romantic pursuits are a recurring theme in Greek mythology: He became a white bull to carry off Europa (founding the Cretan civilization); a swan to seduce Leda (whose eggs hatched Helen of Troy and Castor and Pollux); a shower of golden rain for Danaë (mother of Perseus); and an eagle to abduct Ganymede as his cupbearer on Olympus. These myths were frequently depicted in ancient and Renaissance art.",
+    "wowFactor": "Leda's encounter with Zeus-as-swan produced eggs from which hatched Helen of Troy — whose face 'launched a thousand ships' and started the Trojan War.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What animal did Zeus transform into to abduct Europa in Greek mythology?",
+        "answer": "A bull",
+        "distractors": [
+          "A swan",
+          "An eagle",
+          "A golden ram"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Zeus transformed into a swan to seduce which figure in Greek mythology?",
+        "answer": "Leda",
+        "distractors": [
+          "Europa",
+          "Danaë",
+          "Alcmene"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Ovid's Metamorphoses",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zeus",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "mild",
+    "sensitivityNote": "Mythological content involving transformation and pursuit; appropriate for teen audiences",
+    "visualDescription": "Zeus as a majestic white bull at the water's edge with Europa",
+    "tags": [
+      "Zeus",
+      "transformation",
+      "Europa",
+      "Leda",
+      "Greek mythology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-zeus-olympic-games",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "religious_practices",
+    "statement": "The ancient Olympic Games were held every four years at Olympia in honor of Zeus, beginning in 776 BCE and continuing for over 1,000 years until 393 CE.",
+    "quizQuestion": "In whose honor were the ancient Olympic Games held?",
+    "correctAnswer": "Zeus",
+    "distractors": [
+      "Apollo",
+      "Poseidon",
+      "Heracles (Hercules)"
+    ],
+    "acceptableAnswers": [
+      "Zeus",
+      "Zeus, king of the gods"
+    ],
+    "explanation": "The ancient Olympics were a pan-Hellenic religious festival held every four years at Olympia in the western Peloponnese, dedicated to Zeus. The site included Zeus's great temple, which housed the 40-foot gold-and-ivory Statue of Zeus — one of the Seven Wonders of the Ancient World. Athletes from all Greek city-states competed, and wars were suspended during the games. The Roman emperor Theodosius I abolished the games in 393 CE as pagan religious practices.",
+    "wowFactor": "The ancient Olympics included a 'pentathlon' featuring discus, javelin, long jump, running, and wrestling — and victors received only an olive wreath, yet were treated like gods back home.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In whose honor were the ancient Olympic Games held?",
+        "answer": "Zeus",
+        "distractors": [
+          "Apollo",
+          "Poseidon",
+          "Heracles (Hercules)"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The ancient Olympic Games were held in honor of Zeus.",
+        "answer": "True",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ancient_Olympic_Games",
+    "contentVolatility": "stable",
+    "sensitivityLevel": "none",
+    "sensitivityNote": null,
+    "visualDescription": "The Temple of Zeus at Olympia with Olympic flames and athletes competing",
+    "tags": [
+      "Zeus",
+      "Olympics",
+      "ancient Greece",
+      "religion",
+      "sports"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-hera-peacock",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "The peacock is sacred to Hera, queen of the Greek gods, because she placed the 100 eyes of the slain giant Argus Panoptes into its tail feathers — creating the bird's distinctive eye pattern.",
+    "quizQuestion": "Why is the peacock sacred to the Greek goddess Hera?",
+    "correctAnswer": "She placed the 100 eyes of the slain giant Argus Panoptes into its tail feathers",
+    "distractors": [
+      "The peacock was Hera's personal chariot animal",
+      "Zeus transformed a nymph Hera loved into a peacock",
+      "The peacock guarded Hera's temple at Olympia",
+      "Hera created the peacock to spy on Zeus's affairs",
+      "The peacock was a gift from the Titan Prometheus to Hera",
+      "Hera chose the peacock as her symbol for its beauty matching hers",
+      "The peacock was originally Iris, Hera's messenger",
+      "Hera transformed the monster Typhon into a peacock"
+    ],
+    "acceptableAnswers": [
+      "Argus Panoptes",
+      "eyes of Argus"
+    ],
+    "explanation": "Argus Panoptes was a giant with 100 eyes who never slept entirely — some eyes always watched. Hera used him to guard Io (a woman Zeus had transformed into a cow to hide his infidelity). Zeus sent Hermes to kill Argus, who lulled all 100 eyes to sleep with music and stories before decapitating him. Hera, mourning her faithful servant, took his 100 eyes and placed them in the tail of her sacred peacock, the bird that had pulled her chariot.",
+    "wowFactor": "Every 'eye' on a peacock's feather represents one of Argus's 100 original eyes — Hera memorialized her killed spy in the most beautiful way possible!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The eye-like patterns on peacock feathers represent the 100 eyes of Argus Panoptes in Greek mythology.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Who killed the hundred-eyed giant Argus Panoptes?",
+        "answer": "Hermes",
+        "distractors": [
+          "Hercules",
+          "Apollo",
+          "Zeus himself"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Ovid, Metamorphoses",
+    "sourceUrl": "https://www.theoi.com/Gigante/GigantesArgos.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Peacock with tail fully spread, each eye-spot surrounded by a small mythological illustration of Argus",
+    "tags": [
+      "Hera",
+      "peacock",
+      "Argus Panoptes",
+      "Greek mythology",
+      "Zeus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-hera-jealousy-io",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "Hera transformed the priestess Io into a white cow after discovering Zeus's affair with her — then sent the gadfly Oestrus to torment Io across the world, driving her all the way to Egypt.",
+    "quizQuestion": "What did Hera do to Io after discovering Zeus's affair with her?",
+    "correctAnswer": "She transformed Io into a white cow and sent a gadfly to torment her across the world",
+    "distractors": [
+      "Hera turned Io into a stone statue",
+      "Hera sent Io to Tartarus as punishment",
+      "Hera transformed Io into a nightingale",
+      "Hera exiled Io from Greece forever",
+      "Hera killed Io with a thunderbolt",
+      "Hera made Io immortal and bound her to a rock",
+      "Hera blinded Io for her role in the affair",
+      "Hera transformed Io into a spider"
+    ],
+    "acceptableAnswers": [
+      "cow",
+      "white cow and gadfly"
+    ],
+    "explanation": "Zeus fell in love with Io, priestess of Hera at Argos, and turned her into a white cow himself to hide the affair when Hera approached. But Hera wasn't fooled — she asked Zeus to give her the beautiful cow as a gift, then set the 100-eyed Argus to guard Io. After Hermes killed Argus, Hera sent the gadfly Oestrus to sting Io continuously, driving her across Greece, through Asia Minor, across the sea (named the Bosporus — 'cow ford' — by this myth) and eventually to Egypt, where Zeus restored her human form. She later became an Egyptian goddess (identified with Isis).",
+    "wowFactor": "The Bosphorus strait connecting Europe to Asia gets its name from the Greek myth of Io — it means 'cow ford' because Io swam across it as a cow!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "The Bosphorus strait is named after Io's crossing as a cow in Greek mythology.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What insect did Hera send to torment Io?",
+        "answer": "A gadfly",
+        "distractors": [
+          "A hornet",
+          "A bee",
+          "A scorpion"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Aeschylus, Prometheus Bound",
+    "sourceUrl": "https://www.theoi.com/Heroine/Io.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": null,
+    "visualDescription": "White cow fleeing across a map showing her route from Greece through Asia Minor to Egypt",
+    "tags": [
+      "Hera",
+      "Io",
+      "Zeus",
+      "Greek mythology",
+      "jealousy",
+      "transformation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-hera-goddess-marriage",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "Hera was the goddess of marriage and family, and her sacred symbols included the pomegranate (fertility), the cuckoo (her original form), and the diadem (crown) — and she was worshipped as protector of legitimate wives.",
+    "quizQuestion": "What was Hera the goddess of in Greek mythology?",
+    "correctAnswer": "Marriage, family, and the protection of legitimate wives",
+    "distractors": [
+      "Love and beauty",
+      "Harvest and fertility of crops",
+      "The sea and sailors",
+      "The moon and hunting",
+      "Wisdom and crafts",
+      "The underworld and death",
+      "War and strategy",
+      "Fire and the hearth"
+    ],
+    "acceptableAnswers": [
+      "marriage",
+      "marriage and family"
+    ],
+    "explanation": "Hera was Zeus's wife and queen of Olympus, primarily worshipped as goddess of marriage and the protection of married women. Her epithets include 'Gamelia' (of marriage) and 'Teleia' (of fulfillment/completion in marriage). The pomegranate symbolized her role in fertility and marriage. The cuckoo appears in the myth of Zeus's courtship — he transformed into a cuckoo to make Hera take pity on it, then resumed his form. Her perpetual jealousy and revenge against Zeus's mistresses made her the embodiment of the wronged wife in Greek literature.",
+    "wowFactor": "The queen of the gods who presided over marriage spent most of mythology being cheated on — and took out her anger on everyone but the actual cheater!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Hera was the Greek goddess of love and beauty.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Theoi Greek Mythology",
+    "sourceUrl": "https://www.theoi.com/Olympios/Hera.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Hera seated on her throne with crown, peacock beside her and pomegranate in hand",
+    "tags": [
+      "Hera",
+      "marriage",
+      "Greek mythology",
+      "Olympus",
+      "goddess"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-poseidon-trident",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "Poseidon's trident was forged by the Cyclopes and could shake the earth, calm or stir the seas, create new islands, and bring forth springs of water — it was the symbol of his dominion over all water.",
+    "quizQuestion": "Who forged Poseidon's trident in Greek mythology?",
+    "correctAnswer": "The Cyclopes",
+    "distractors": [
+      "Hephaestus, the smith god",
+      "The Titans",
+      "Heracles in the underworld",
+      "Prometheus",
+      "The sea nymph Thetis",
+      "Poseidon forged it himself",
+      "The sea serpent Typhon",
+      "Daedalus, the great craftsman"
+    ],
+    "acceptableAnswers": [
+      "Cyclopes",
+      "the Cyclops"
+    ],
+    "explanation": "The Cyclopes are master craftsmen in Greek mythology who also forged Zeus's thunderbolts and Hades' helm of invisibility. When the Olympians freed the Cyclopes from Tartarus during the Titanomachy (war against the Titans), the Cyclopes crafted powerful weapons as gifts: Zeus received his thunderbolts, Poseidon received his trident, and Hades received a helmet that made him invisible. With his trident, Poseidon could create earthquakes, part seas, create islands, and bring forth freshwater springs.",
+    "wowFactor": "The same craftsmen who made Zeus's thunderbolts made Poseidon's trident and Hades' invisibility helmet — a divine weapons factory that shaped all of Olympian mythology!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Hephaestus forged Poseidon's trident.",
+        "answer": "False",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What weapon did the Cyclopes forge for Hades, alongside Zeus's thunderbolts and Poseidon's trident?",
+        "answer": "A helm of invisibility",
+        "distractors": [
+          "A sword of darkness",
+          "A shield of death",
+          "A bow that never misses"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Theoi Greek Mythology",
+    "sourceUrl": "https://www.theoi.com/Olympios/Poseidon.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Poseidon brandishing his trident, with Cyclopes forging weapons in the background",
+    "tags": [
+      "Poseidon",
+      "trident",
+      "Cyclopes",
+      "Greek mythology",
+      "weapons"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-poseidon-earth-shaker",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "One of Poseidon's most common epithets was 'Enosichthon' or 'Earth-Shaker' — the ancient Greeks attributed earthquakes to Poseidon striking the ground with his trident, especially when wrathful.",
+    "quizQuestion": "What natural disaster did the ancient Greeks attribute to Poseidon?",
+    "correctAnswer": "Earthquakes",
+    "distractors": [
+      "Volcanic eruptions",
+      "Floods and tsunamis only",
+      "Droughts and drying seas",
+      "Lightning strikes near water",
+      "Tidal waves only",
+      "Solar eclipses over water",
+      "Whirlpools and sea storms only",
+      "Tsunamis caused by sea monsters"
+    ],
+    "acceptableAnswers": [
+      "earthquakes",
+      "seismic activity"
+    ],
+    "explanation": "Poseidon ruled three domains: the sea, horses, and earthquakes. The Greeks lived in a seismically active region (Greece sits on multiple tectonic fault lines) and attributed ground shaking to Poseidon's wrath. His epithet 'Enosichthon' means literally 'earth-shaker.' He was said to trigger earthquakes by striking the ground with his trident in anger. The connection between sea, earthquakes, and tsunamis (which follow submarine earthquakes) made Poseidon the logical deity for all three.",
+    "wowFactor": "The ancient Greeks who lived in one of Europe's most earthquake-prone regions had a perfectly logical explanation: Poseidon is angry and hitting the ground!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Poseidon was the Greek god of earthquakes as well as the sea.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "What does Poseidon's epithet 'Enosichthon' mean?",
+        "answer": "Earth-Shaker",
+        "distractors": [
+          "Sea-Lord",
+          "Wave-Maker",
+          "Storm-Bringer"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Theoi Greek Mythology",
+    "sourceUrl": "https://www.theoi.com/Olympios/Poseidon.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Poseidon striking the sea floor with his trident, causing shockwaves that become an earthquake on land above",
+    "tags": [
+      "Poseidon",
+      "earthquakes",
+      "Greek mythology",
+      "Earth-Shaker",
+      "natural disasters"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-hades-cerberus",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "Cerberus, the three-headed dog guarding the entrance to Hades, was the offspring of Typhon and Echidna. He allowed the dead to enter freely but prevented anyone from leaving — until Hercules dragged him out as his 12th labor.",
+    "quizQuestion": "How many heads did Cerberus, the guard dog of the Underworld, have?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "One",
+      "Two",
+      "Four",
+      "Five",
+      "Seven",
+      "Fifty",
+      "Twelve",
+      "One hundred"
+    ],
+    "acceptableAnswers": [
+      "three heads",
+      "3"
+    ],
+    "explanation": "Cerberus (Greek: Kerberos) was the monstrous dog guarding the entrance to the Underworld, born to Typhon (monster) and Echidna (half-woman, half-serpent). He had three heads (in most accounts; Homer mentioned fifty, some said one hundred), a serpent for a tail, and snakes growing from his back. His function was guardian — he welcomed the dead in but prevented the living from entering or the dead from leaving. Hercules' 12th labor was to capture Cerberus alive and bring him to the surface; he did so by wrestling him into submission.",
+    "wowFactor": "Hercules wrestled the three-headed guardian of Hell with his bare hands as his final labor — and then had to return the dog afterward!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Cerberus prevented the dead from leaving the Underworld.",
+        "answer": "True",
+        "distractors": []
+      },
+      {
+        "type": "forward",
+        "question": "Which hero captured Cerberus as one of his legendary labors?",
+        "answer": "Hercules (Heracles)",
+        "distractors": [
+          "Odysseus",
+          "Theseus",
+          "Perseus"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Theoi Greek Mythology",
+    "sourceUrl": "https://www.theoi.com/Ther/KuonKerberos.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three-headed Cerberus at the gate of the Underworld, with ghostly figures passing by him",
+    "tags": [
+      "Hades",
+      "Cerberus",
+      "Greek mythology",
+      "underworld",
+      "Hercules"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-hades-ruler-underworld",
+    "type": "knowledge",
+    "domain": "mythology_folklore",
+    "subdomain": "greek_mythology",
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "greek_mythology",
+    "categoryL3": "",
+    "statement": "Hades was not an evil god of death in Greek mythology — he was the grim but just ruler of the dead, maintaining order in the Underworld. Unlike later depictions, he was rarely worshipped through fear alone and was also called Pluto ('wealthy one').",
+    "quizQuestion": "Why was Hades also called 'Pluto' in Greek mythology?",
+    "correctAnswer": "Pluto means 'wealthy one' — Hades ruled all underground riches including minerals and the harvests that come from earth",
+    "distractors": [
+      "Pluto was a Latin translation of 'ruler of darkness'",
+      "Pluto referred to his silver armor",
+      "Pluto meant 'invisible one,' referring to his helmet",
+      "The Romans renamed him after their king of the dead",
+      "Pluto referred to the plutonic fires of Tartarus",
+      "Pluto was his name before he became ruler of the dead",
+      "Pluto meant 'patient one' because he waited for all souls",
+      "Pluto referred to his dark chariot pulled by black horses"
+    ],
+    "acceptableAnswers": [
+      "wealthy one",
+      "Pluto means wealthy"
+    ],
+    "explanation": "Hades (also Plouton, Latinized as Pluto) was feared partly because saying his name was considered bad luck — he was often called 'Pluto' (the wealthy, plentiful one) as a euphemism. His wealth came from underground: gemstones, metals, minerals, and the grain that grows from earth. He was not inherently evil, but stern and unavoidable — he accepted all dead souls impartially. Unlike Olympian gods, he was rarely worshipped directly; people avoided invoking him unnecessarily.",
+    "wowFactor": "People were so afraid to say Hades' name that they invented a nickname for him — and the dwarf planet Pluto is named after that nickname!",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "Hades was considered an evil deity in ancient Greek religion.",
+        "answer": "False",
+        "distractors": []
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Theoi Greek Mythology",
+    "sourceUrl": "https://www.theoi.com/Khthonios/Haides.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Hades on his throne in the Underworld, grim but regal, with gems and gold surrounding his realm",
+    "tags": [
+      "Hades",
+      "Pluto",
+      "Greek mythology",
+      "underworld",
+      "death",
+      "wealth"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
   }
 ]
