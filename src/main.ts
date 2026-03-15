@@ -152,7 +152,7 @@ const save = initPlayer('teen')
   }
   // Force relaxed mode during the first N runs
   if (_onb.runsCompleted < STORY_MODE_FORCED_RUNS) {
-    difficultyMode.set('relaxed')
+    difficultyMode.set('normal')
   }
 }
 

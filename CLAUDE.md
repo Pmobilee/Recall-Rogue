@@ -179,6 +179,26 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 
 ## Roadmap Workflow — MANDATORY
 
+### 🚨 THE #1 RULE: AR DOCS BEFORE CODE 🚨
+
+**EVERY non-trivial task MUST have an AR phase doc BEFORE any code is written.** This is the single most important workflow rule in this project. Agents consistently violate it and it causes chaos.
+
+**What requires an AR doc (EVERYTHING except trivial fixes):**
+- New features or mechanics
+- Multi-file changes
+- Content pipeline batches
+- Balance adjustments
+- UI/UX modifications
+- Refactors
+- Any task with more than 2-3 discrete steps
+
+**What does NOT require an AR doc (trivial fixes only):**
+- Single-line bug fix
+- Typo correction
+- Simple config value change
+
+**The workflow is: AR doc → user review → implement → check off TODOs → move to completed. NEVER skip steps 1-2.**
+
 ### Phase Documents = Source of Truth
 - **`docs/roadmap/phases/`** = active/pending work. If a doc is here, it's not done.
 - **`docs/roadmap/completed/`** = finished work. Moved here when all sub-steps pass.

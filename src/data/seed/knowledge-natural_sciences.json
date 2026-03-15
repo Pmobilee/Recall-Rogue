@@ -12225,5 +12225,2418 @@
       "particle accelerator",
       "radioactive"
     ]
+  },
+  {
+    "id": "science-science-falsifiability",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Karl Popper proposed that a scientific theory must be falsifiable — capable of being proven wrong by experiment.",
+    "quizQuestion": "What makes a theory truly scientific according to Popper?",
+    "correctAnswer": "Falsifiability",
+    "distractors": [
+      "Repeatability",
+      "Peer review",
+      "Mathematical proof",
+      "Consensus",
+      "Complexity",
+      "Predictability",
+      "Publication",
+      "Originality"
+    ],
+    "acceptableAnswers": [
+      "falsifiability",
+      "falsifiable",
+      "can be disproven"
+    ],
+    "explanation": "Karl Popper argued that science advances by trying to disprove theories, not confirm them. A claim that cannot possibly be proven wrong is not science — it's faith or metaphysics. This criterion separates astronomy from astrology.",
+    "wowFactor": "Science is defined not by what it proves, but by what it's willing to admit it could get wrong.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What criterion did Popper say distinguishes science from non-science?",
+        "answer": "Falsifiability",
+        "distractors": [
+          "Repeatability",
+          "Consensus",
+          "Peer review"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Falsifiability is a criterion proposed by which philosopher of science?",
+        "answer": "Karl Popper",
+        "distractors": [
+          "Thomas Kuhn",
+          "Francis Bacon",
+          "Immanuel Kant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "According to Popper, a theory that cannot be disproven is more scientific.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Popper argued that scientific theories must be ___ — open to disproof.",
+        "answer": "falsifiable",
+        "distractors": [
+          "reproducible",
+          "mathematical",
+          "published"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Falsifiability",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scientist at a chalkboard drawing a large X through a crumbling tower of equations, with question marks floating around in pixel art style.",
+    "tags": [
+      "science",
+      "philosophy of science",
+      "Popper",
+      "epistemology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-science-peer-review",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "The scientific method requires hypotheses to be tested by controlled experiments and results to be reproducible by independent researchers.",
+    "quizQuestion": "What is required for a scientific result to be accepted?",
+    "correctAnswer": "Reproducibility",
+    "distractors": [
+      "Novelty",
+      "Peer approval",
+      "Government funding",
+      "Publication speed",
+      "Sample size",
+      "Author fame",
+      "Computer modeling",
+      "Institutional backing"
+    ],
+    "acceptableAnswers": [
+      "reproducibility",
+      "reproducible",
+      "replication",
+      "replicability"
+    ],
+    "explanation": "Science builds on results that other researchers can replicate independently. A finding that only one lab can produce may be an error, a fluke, or even fraud. This requirement for reproducibility is what makes science self-correcting over time.",
+    "wowFactor": "Science is the only system of knowledge designed to catch and correct its own mistakes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What property must scientific results have to be accepted by the community?",
+        "answer": "Reproducibility",
+        "distractors": [
+          "Novelty",
+          "Complexity",
+          "Peer approval"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The ability to replicate an experiment's result is called what?",
+        "answer": "Reproducibility",
+        "distractors": [
+          "Falsifiability",
+          "Validity",
+          "Reliability"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A scientific result that cannot be reproduced by other researchers is considered reliable.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Scientific findings must be ___ by independent researchers to be trusted.",
+        "answer": "reproducible",
+        "distractors": [
+          "published",
+          "funded",
+          "approved"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scientific_method",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two pixel art scientists in separate labs each running identical glowing experiments, with matching data readouts floating above their equipment.",
+    "tags": [
+      "science",
+      "scientific method",
+      "reproducibility",
+      "research"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-science-paradigm-shift",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Thomas Kuhn argued that science progresses not by gradual accumulation but through sudden 'paradigm shifts' where entire frameworks are replaced.",
+    "quizQuestion": "What term did Thomas Kuhn coin for a revolution in scientific thinking?",
+    "correctAnswer": "Paradigm shift",
+    "distractors": [
+      "Theory change",
+      "Epistemic break",
+      "Scientific leap",
+      "Knowledge jump",
+      "Model collapse",
+      "Conceptual flip",
+      "Discovery burst",
+      "Axiom reset"
+    ],
+    "acceptableAnswers": [
+      "paradigm shift",
+      "paradigm shifts",
+      "paradigm change"
+    ],
+    "explanation": "Kuhn showed that science doesn't just add new facts — occasionally, an anomaly grows so large that the entire framework collapses and is replaced. Copernicus replacing geocentrism, Einstein replacing Newtonian mechanics — these were paradigm shifts.",
+    "wowFactor": "The most important scientific revolutions don't add to the map — they throw it away and draw a new one.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Thomas Kuhn introduced what concept to describe scientific revolutions?",
+        "answer": "Paradigm shift",
+        "distractors": [
+          "Theory collapse",
+          "Epistemic break",
+          "Discovery burst"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 'paradigm shift' in science was a concept introduced by whom?",
+        "answer": "Thomas Kuhn",
+        "distractors": [
+          "Karl Popper",
+          "Francis Bacon",
+          "Auguste Comte"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Kuhn argued that science advances only through slow, gradual accumulation of facts.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kuhn called a revolution in scientific frameworks a ___ shift.",
+        "answer": "paradigm",
+        "distractors": [
+          "theory",
+          "knowledge",
+          "discovery"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive pixel art globe shattering and reassembling into a new shape, with startled scientists watching from below, papers flying everywhere.",
+    "tags": [
+      "science",
+      "paradigm shift",
+      "Kuhn",
+      "history of science",
+      "epistemology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-aristotle-spontaneous-generation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Aristotle proposed that some animals arise spontaneously from mud, dung, or decaying matter — a theory called spontaneous generation.",
+    "quizQuestion": "What did Aristotle believe about the origin of some small animals?",
+    "correctAnswer": "Spontaneous generation",
+    "distractors": [
+      "Divine creation",
+      "Egg hatching",
+      "Spore dispersal",
+      "Soil budding",
+      "Panspermia",
+      "Asexual budding",
+      "Cellular division",
+      "Metamorphosis"
+    ],
+    "acceptableAnswers": [
+      "spontaneous generation",
+      "spontaneous generation from matter",
+      "arising from mud"
+    ],
+    "explanation": "Aristotle observed maggots appearing on meat and fish emerging after floods, concluding that life could arise directly from non-living matter. This idea dominated biology for almost 2,000 years until Pasteur disproved it with his swan-neck flask experiments in 1859.",
+    "wowFactor": "For nearly 2,000 years, educated people believed flies literally grew out of rotting meat — because Aristotle said so.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Aristotle's belief that life could arise from non-living matter is called what?",
+        "answer": "Spontaneous generation",
+        "distractors": [
+          "Abiogenesis",
+          "Divine creation",
+          "Panspermia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who first formally proposed the theory of spontaneous generation of animals?",
+        "answer": "Aristotle",
+        "distractors": [
+          "Plato",
+          "Hippocrates",
+          "Galen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aristotle correctly explained that maggots hatch from fly eggs laid on meat.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aristotle believed some animals arose by ___ generation from mud or decay.",
+        "answer": "spontaneous",
+        "distractors": [
+          "asexual",
+          "divine",
+          "chemical"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spontaneous_generation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art Aristotle staring at a mud puddle while tiny fish and frogs visibly pop into existence from the muck around him.",
+    "tags": [
+      "Aristotle",
+      "biology",
+      "spontaneous generation",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-aristotle-four-causes",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Aristotle's 'four causes' framework provided the first systematic attempt to explain WHY things happen — material, formal, efficient, and final causes.",
+    "quizQuestion": "How many 'causes' did Aristotle identify to explain natural phenomena?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "One",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "four",
+      "4"
+    ],
+    "explanation": "Aristotle asked why anything is the way it is, identifying four answers: what it's made of (material), its shape or form (formal), what caused it (efficient), and what purpose it serves (final). This teleological thinking dominated science until Newton and Galileo replaced 'why' with 'how'.",
+    "wowFactor": "Aristotle asked 'what is it for?' — a question modern physics refuses to answer, but that every engineer still asks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Aristotle's framework for explaining nature involved how many types of causes?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 'final cause' in Aristotle's framework refers to what?",
+        "answer": "Purpose or function",
+        "distractors": [
+          "Origin of matter",
+          "Shape of form",
+          "Agent of change"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aristotle's four causes include a 'final cause' meaning the purpose something serves.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aristotle's ___ causes framework is the first systematic explanation of natural change.",
+        "answer": "four",
+        "distractors": [
+          "five",
+          "three",
+          "seven"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Four_causes",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art stone tablet divided into four quadrants labeled with symbols for matter, form, motion, and purpose, glowing with ancient Greek text.",
+    "tags": [
+      "Aristotle",
+      "philosophy of science",
+      "causation",
+      "natural philosophy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-aristotle-biology-classification",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Aristotle classified over 500 animal species in his Historia Animalium, distinguishing blooded from bloodless animals — 2,000 years before Linnaeus.",
+    "quizQuestion": "Aristotle divided animals into which two major groups in his classification?",
+    "correctAnswer": "Blooded and bloodless",
+    "distractors": [
+      "Warm and cold",
+      "Land and sea",
+      "Wild and tame",
+      "Large and small",
+      "Egg and live birth",
+      "Flying and crawling",
+      "Predator and prey",
+      "Simple and complex"
+    ],
+    "acceptableAnswers": [
+      "blooded and bloodless",
+      "with blood and without blood",
+      "enhaima and anaima"
+    ],
+    "explanation": "Aristotle's distinction roughly corresponds to modern vertebrates (blooded) and invertebrates (bloodless). His observations were so careful that 19th-century biologists confirmed many of his anatomical descriptions, including the reproductive anatomy of dogfish sharks.",
+    "wowFactor": "Aristotle's shark anatomy was so accurate it wasn't verified until 1842 — a 2,200-year gap between observation and confirmation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What were Aristotle's two primary animal divisions in Historia Animalium?",
+        "answer": "Blooded and bloodless",
+        "distractors": [
+          "Land and sea",
+          "Warm and cold",
+          "Wild and tame"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Aristotle's 'blooded animals' roughly correspond to which modern category?",
+        "answer": "Vertebrates",
+        "distractors": [
+          "Invertebrates",
+          "Mammals only",
+          "Insects"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aristotle classified more than 500 animal species in his biological works.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aristotle's Historia ___ documented over 500 animal species with detailed observations.",
+        "answer": "Animalium",
+        "distractors": [
+          "Botanica",
+          "Physica",
+          "Natura"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_Animals",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Aristotle in a coastal tide pool examining a cuttlefish with a scroll in hand, surrounded by sketches of animals pinned to stone walls.",
+    "tags": [
+      "Aristotle",
+      "biology",
+      "taxonomy",
+      "animal classification",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-physics-quantum-tunneling",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Quantum tunneling allows particles to pass through energy barriers they classically could not overcome, making nuclear fusion in stars possible.",
+    "quizQuestion": "What quantum effect allows particles to pass through impossible energy barriers?",
+    "correctAnswer": "Quantum tunneling",
+    "distractors": [
+      "Wave interference",
+      "Quantum entanglement",
+      "Superposition",
+      "Spin coupling",
+      "Field resonance",
+      "Heisenberg escape",
+      "Planck jumping",
+      "Energy borrowing"
+    ],
+    "acceptableAnswers": [
+      "quantum tunneling",
+      "tunneling",
+      "tunnel effect"
+    ],
+    "explanation": "At quantum scales, particles behave as probability waves — allowing a small chance they'll 'appear' on the other side of a barrier without enough energy to go over it. Without tunneling, the Sun's core would be too cold for fusion, and the Sun would not shine.",
+    "wowFactor": "The Sun shines because particles cheat classical physics by quantum tunneling through barriers they have no right to cross.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which quantum effect is essential for nuclear fusion in stars?",
+        "answer": "Quantum tunneling",
+        "distractors": [
+          "Superposition",
+          "Entanglement",
+          "Wave collapse"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Quantum tunneling makes fusion possible by allowing particles to pass through what?",
+        "answer": "Energy barriers",
+        "distractors": [
+          "Magnetic fields",
+          "Gravitational wells",
+          "Electron shells"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Without quantum tunneling, the Sun's core would be too cold to sustain nuclear fusion.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Particles can pass through energy barriers they lack energy to cross via quantum ___.",
+        "answer": "tunneling",
+        "distractors": [
+          "jumping",
+          "splitting",
+          "superposition"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Quantum_tunnelling",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing pixel art proton phasing ghost-like through a solid red energy wall inside a blazing yellow star core, leaving a trail of probability ripples.",
+    "tags": [
+      "physics",
+      "quantum mechanics",
+      "tunneling",
+      "nuclear fusion",
+      "stars"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-physics-speed-of-light-constant",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "The speed of light in a vacuum is exactly 299,792,458 meters per second — now used to define the meter itself.",
+    "quizQuestion": "What is the speed of light in a vacuum, in meters per second?",
+    "correctAnswer": "299,792,458 m/s",
+    "distractors": [
+      "300,000,000 m/s",
+      "186,000 miles/s",
+      "3×10^8 km/s",
+      "299,000,000 m/s",
+      "280,000,000 m/s",
+      "310,000,000 m/s",
+      "3×10^10 m/s",
+      "2.99×10^9 m/s"
+    ],
+    "acceptableAnswers": [
+      "299792458",
+      "299,792,458",
+      "~3×10^8 m/s",
+      "approximately 300 million m/s"
+    ],
+    "explanation": "The speed of light (c) is so precisely known that since 1983 the meter is defined as the distance light travels in 1/299,792,458 of a second. This means the speed of light is now a definition, not a measurement — it cannot change by experiment.",
+    "wowFactor": "The meter is literally defined by how fast light travels — so the speed of light can never be 'measured' to be different anymore.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What constant is now used to officially define the length of one meter?",
+        "answer": "Speed of light",
+        "distractors": [
+          "Planck's constant",
+          "Boltzmann constant",
+          "Electron charge"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Since 1983, the meter is defined using which fundamental constant?",
+        "answer": "Speed of light",
+        "distractors": [
+          "Mass of proton",
+          "Earth's radius",
+          "Second's duration"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The meter is now defined based on the speed of light in a vacuum.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The speed of light, c, is exactly 299,792,___ meters per second.",
+        "answer": "458",
+        "distractors": [
+          "000",
+          "100",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Speed_of_light",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art ruler dissolving into a beam of light stretching to the horizon, with the number 299,792,458 glowing in the air alongside it.",
+    "tags": [
+      "physics",
+      "speed of light",
+      "constants",
+      "units of measurement"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-physics-entropy",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "The second law of thermodynamics states that entropy — disorder — always increases in a closed system, giving time its arrow.",
+    "quizQuestion": "What law of thermodynamics says disorder always increases in a closed system?",
+    "correctAnswer": "Second law",
+    "distractors": [
+      "First law",
+      "Third law",
+      "Zeroth law",
+      "Fourth law",
+      "Newton's third law",
+      "Boyle's law",
+      "Ohm's law",
+      "Faraday's law"
+    ],
+    "acceptableAnswers": [
+      "second law",
+      "second law of thermodynamics",
+      "2nd law"
+    ],
+    "explanation": "Entropy is the measure of disorder or unavailable energy in a system. The second law says it can only stay the same or increase — never spontaneously decrease. This is why ice melts in warm rooms but warm rooms never spontaneously produce ice, and why time only moves forward.",
+    "wowFactor": "The reason time has a direction — why you can't un-scramble an egg — is literally a law of physics called entropy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which law of thermodynamics explains why disorder always increases?",
+        "answer": "Second law",
+        "distractors": [
+          "First law",
+          "Third law",
+          "Zeroth law"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The concept of entropy is central to which law of thermodynamics?",
+        "answer": "Second law",
+        "distractors": [
+          "First law",
+          "Third law",
+          "Fourth law"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The second law of thermodynamics allows entropy to spontaneously decrease in an isolated system.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The second law of thermodynamics states that ___ always increases in a closed system.",
+        "answer": "entropy",
+        "distractors": [
+          "energy",
+          "temperature",
+          "pressure"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Second_law_of_thermodynamics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art perfectly organized desk slowly dissolving into a chaotic mess of papers and coffee cups, with an arrow labeled 'TIME' pointing right.",
+    "tags": [
+      "physics",
+      "thermodynamics",
+      "entropy",
+      "second law",
+      "time"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-astronomy-cosmic-microwave-background",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "The Cosmic Microwave Background (CMB) is the faint glow of radiation left over from 380,000 years after the Big Bang, still detectable today.",
+    "quizQuestion": "What is the leftover radiation from the early universe called?",
+    "correctAnswer": "Cosmic Microwave Background",
+    "distractors": [
+      "Dark matter haze",
+      "Stellar radiation fog",
+      "Gamma ray residue",
+      "Quantum background noise",
+      "Relic radiation field",
+      "Big Bang echo",
+      "Infrared fossil glow",
+      "Universal static"
+    ],
+    "acceptableAnswers": [
+      "cosmic microwave background",
+      "CMB",
+      "microwave background radiation"
+    ],
+    "explanation": "Before 380,000 years after the Big Bang, the universe was so hot that atoms couldn't form, making it opaque to light. When it cooled enough for hydrogen to form, light escaped — and that ancient light, now stretched to microwave wavelengths, bathes the universe uniformly. Accidentally discovered in 1965 as TV antenna static.",
+    "wowFactor": "The static on old analog TVs included photons from the birth of the universe — ancient cosmic light becoming TV fuzz.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Faint microwave radiation permeating the universe, a relic of the Big Bang, is called what?",
+        "answer": "Cosmic Microwave Background",
+        "distractors": [
+          "Dark matter radiation",
+          "Stellar background glow",
+          "Gamma ray fossil"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The CMB was accidentally discovered by Penzias and Wilson when they found unexplained what?",
+        "answer": "Antenna noise",
+        "distractors": [
+          "Gamma ray bursts",
+          "Infrared glow",
+          "Radio pulses"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Cosmic Microwave Background is radiation left over from the early universe.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ Microwave Background is a faint glow left from 380,000 years after the Big Bang.",
+        "answer": "Cosmic",
+        "distractors": [
+          "Stellar",
+          "Galactic",
+          "Solar"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cosmic_microwave_background",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art deep space view showing a faint uniform glow across the entire sky, with a small vintage TV in the foreground showing static, both glowing the same subtle gold.",
+    "tags": [
+      "astronomy",
+      "cosmology",
+      "CMB",
+      "Big Bang",
+      "radiation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-astronomy-stellar-parallax",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Ancient Babylonian astronomers tracked planetary motions as early as 1200 BCE, creating the first systematic astronomical records in history.",
+    "quizQuestion": "Which ancient civilization created the first systematic astronomical records?",
+    "correctAnswer": "Babylonians",
+    "distractors": [
+      "Egyptians",
+      "Greeks",
+      "Chinese",
+      "Mayans",
+      "Indians",
+      "Sumerians",
+      "Romans",
+      "Persians"
+    ],
+    "acceptableAnswers": [
+      "babylonians",
+      "babylon",
+      "babylonian"
+    ],
+    "explanation": "Babylonian astronomers recorded planetary positions on clay tablets, identifying cycles such as the Saros cycle of eclipses. Their data was so precise that later Greek astronomers, including Hipparchus, used Babylonian records to measure the precession of the equinoxes.",
+    "wowFactor": "Babylonian astronomers were so precise that their 800-year-old clay tablet records helped Greeks discover Earth wobbles on its axis.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who made the first known systematic records of planetary positions?",
+        "answer": "Babylonians",
+        "distractors": [
+          "Egyptians",
+          "Greeks",
+          "Chinese"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Saros cycle for predicting eclipses was first identified by which civilization?",
+        "answer": "Babylonians",
+        "distractors": [
+          "Egyptians",
+          "Romans",
+          "Greeks"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The ancient Babylonians created detailed astronomical records over 3,000 years ago.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ astronomers from 1200 BCE created the first systematic records of planetary motion.",
+        "answer": "Babylonian",
+        "distractors": [
+          "Egyptian",
+          "Greek",
+          "Roman"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Babylonian_astronomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art Babylonian astronomer on a stepped ziggurat at night, marking planetary positions on a clay tablet under a star-filled sky.",
+    "tags": [
+      "astronomy",
+      "Babylonia",
+      "history of astronomy",
+      "ancient science",
+      "planetary motion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-astronomy-dark-energy",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Dark energy, a mysterious force making up ~68% of the universe, was discovered in 1998 when supernovae showed the universe is accelerating in its expansion.",
+    "quizQuestion": "What percentage of the universe is estimated to be dark energy?",
+    "correctAnswer": "About 68%",
+    "distractors": [
+      "About 27%",
+      "About 5%",
+      "About 50%",
+      "About 90%",
+      "About 40%",
+      "About 15%",
+      "About 80%",
+      "About 33%"
+    ],
+    "acceptableAnswers": [
+      "68%",
+      "about 68%",
+      "~68%",
+      "68 percent"
+    ],
+    "explanation": "In 1998, astronomers measuring distant Type Ia supernovae expected to find the universe's expansion slowing due to gravity — instead, they found it speeding up. Something unknown was pushing space apart: dark energy. The Nobel Prize in Physics 2011 was awarded for this discovery.",
+    "wowFactor": "The universe is 68% made of something we cannot detect, measure, or explain — we only know it exists because galaxies are flying apart faster than they should.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mysterious component makes up approximately 68% of the universe?",
+        "answer": "Dark energy",
+        "distractors": [
+          "Dark matter",
+          "Normal matter",
+          "Antimatter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Dark energy was discovered in 1998 through observations of which stellar explosions?",
+        "answer": "Type Ia supernovae",
+        "distractors": [
+          "Neutron star mergers",
+          "Gamma ray bursts",
+          "Quasar emissions"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The discovery of dark energy showed the universe's expansion is accelerating, not slowing.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dark ___ makes up about 68% of the universe and is causing its accelerating expansion.",
+        "answer": "energy",
+        "distractors": [
+          "matter",
+          "force",
+          "mass"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dark_energy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art pie chart of the universe floating in space: a tiny blue slice labeled 'normal matter', medium gray for dark matter, and a vast purple region labeled 'dark energy'.",
+    "tags": [
+      "astronomy",
+      "cosmology",
+      "dark energy",
+      "universe",
+      "expansion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-newton-inverse-square-law",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Newton's law of universal gravitation states that gravitational force decreases with the square of the distance between two objects.",
+    "quizQuestion": "How does gravitational force change as distance between objects doubles?",
+    "correctAnswer": "Decreases to one quarter",
+    "distractors": [
+      "Decreases by half",
+      "Decreases by one third",
+      "Stays the same",
+      "Doubles",
+      "Quadruples",
+      "Decreases to one eighth",
+      "Decreases to one sixth",
+      "Triples"
+    ],
+    "acceptableAnswers": [
+      "decreases to one quarter",
+      "becomes one quarter",
+      "drops to 1/4",
+      "four times weaker"
+    ],
+    "explanation": "Newton's inverse square law means if you double the distance between two objects, gravity becomes 1/4 as strong. Triple the distance and it's 1/9 as strong. This relationship governs everything from satellite orbits to why the Sun's gravity still holds distant Neptune in orbit.",
+    "wowFactor": "Double your distance from Earth and gravity doesn't halve — it shrinks to a quarter. Distance is devastatingly expensive in space travel.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In Newton's gravity law, force decreases with the ___ of the distance.",
+        "answer": "Square",
+        "distractors": [
+          "Cube",
+          "Square root",
+          "Double"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "If two masses are moved 3× further apart, gravity becomes how many times weaker?",
+        "answer": "9 times weaker",
+        "distractors": [
+          "3 times weaker",
+          "6 times weaker",
+          "27 times weaker"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "According to Newton, doubling the distance between two objects makes gravity four times weaker.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Newton's inverse ___ law means gravity falls off with the square of distance.",
+        "answer": "square",
+        "distractors": [
+          "cube",
+          "root",
+          "power"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art two planets at different distances with arrows showing gravitational pull, the farther pair's arrows visibly much shorter and thinner.",
+    "tags": [
+      "Newton",
+      "physics",
+      "gravity",
+      "inverse square law",
+      "mechanics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-newton-calculus",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "",
+    "statement": "Newton invented calculus independently from Leibniz in the 1660s, calling it 'the method of fluxions', to solve problems about changing quantities.",
+    "quizQuestion": "What did Newton call his invention of calculus?",
+    "correctAnswer": "Method of fluxions",
+    "distractors": [
+      "Theory of fluents",
+      "Method of tangents",
+      "Differential algebra",
+      "Infinitesimal method",
+      "Theory of limits",
+      "Flux calculus",
+      "Flowing mathematics",
+      "Rate method"
+    ],
+    "acceptableAnswers": [
+      "method of fluxions",
+      "fluxions",
+      "the method of fluxions"
+    ],
+    "explanation": "Newton developed calculus to describe motion and change mathematically — rates of change (derivatives) and accumulation (integrals). He and Leibniz invented it independently, sparking one of history's most bitter priority disputes. Modern calculus notation comes from Leibniz, not Newton.",
+    "wowFactor": "Modern calculus uses Leibniz's symbols (dy/dx), not Newton's — so every time you write a derivative, you're using notation from Newton's rival.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Newton's name for his invention of calculus was the 'method of' what?",
+        "answer": "Fluxions",
+        "distractors": [
+          "Fluents",
+          "Tangents",
+          "Differentials"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose calculus notation do modern mathematicians use instead of Newton's?",
+        "answer": "Leibniz",
+        "distractors": [
+          "Euler",
+          "Gauss",
+          "Descartes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Newton and Leibniz invented calculus independently in the 17th century.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Newton invented calculus in the 1660s, calling it the method of ___.",
+        "answer": "fluxions",
+        "distractors": [
+          "fluents",
+          "tangents",
+          "infinitesimals"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Newton and Leibniz back-to-back at separate desks both furiously writing the same calculus equations, surrounded by flying papers labeled dy/dx and 'fluxions'.",
+    "tags": [
+      "Newton",
+      "calculus",
+      "mathematics",
+      "Leibniz",
+      "history of math"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-chemistry-noble-gases-unreactive",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Noble gases like helium, neon, and argon are chemically inert because their outermost electron shells are completely full.",
+    "quizQuestion": "Why are noble gases almost completely unreactive?",
+    "correctAnswer": "Full outer electron shells",
+    "distractors": [
+      "High atomic mass",
+      "Stable nuclear spin",
+      "No proton charge",
+      "Low temperature",
+      "No neutrons",
+      "Positive ion state",
+      "Solid at room temp",
+      "Metallic bonding"
+    ],
+    "acceptableAnswers": [
+      "full outer electron shells",
+      "complete valence shells",
+      "full valence electrons",
+      "complete octet"
+    ],
+    "explanation": "Chemical reactions involve atoms sharing or transferring electrons to fill their outermost shells. Noble gases already have full shells (8 electrons, or 2 for helium), so they have no chemical incentive to react. Chemists were so certain noble gases were completely inert that first noble gas compound XeF2 in 1962 was a shock.",
+    "wowFactor": "Scientists were so sure noble gases couldn't react that the 1962 creation of xenon difluoride was considered scientifically impossible — until it wasn't.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Noble gases are unreactive because they have complete what?",
+        "answer": "Electron shells",
+        "distractors": [
+          "Nuclear charge",
+          "Atomic mass",
+          "Isotope stability"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which group of elements was long thought to form no chemical compounds whatsoever?",
+        "answer": "Noble gases",
+        "distractors": [
+          "Alkali metals",
+          "Halogens",
+          "Transition metals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Noble gases are unreactive because their outermost electron shells are completely filled.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Noble gases have full ___ shells, making them chemically inert under most conditions.",
+        "answer": "electron",
+        "distractors": [
+          "nuclear",
+          "proton",
+          "neutron"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Noble_gas",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art atom with glowing blue outer electron shell completely filled, surrounded by rejected reaction arrows bouncing away, with neon sign colors.",
+    "tags": [
+      "chemistry",
+      "noble gases",
+      "electron shells",
+      "reactivity",
+      "periodic table"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-chemistry-avogadro-number",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "One mole of any substance contains exactly 6.022 × 10²³ particles — Avogadro's number — making atoms countable in bulk.",
+    "quizQuestion": "How many particles are in one mole of a substance?",
+    "correctAnswer": "6.022 × 10²³",
+    "distractors": [
+      "6.022 × 10²⁰",
+      "6.022 × 10²⁶",
+      "3.011 × 10²³",
+      "1.602 × 10¹⁹",
+      "9.109 × 10³¹",
+      "6.674 × 10²³",
+      "1.000 × 10²³",
+      "2.998 × 10²³"
+    ],
+    "acceptableAnswers": [
+      "6.022×10^23",
+      "6.022e23",
+      "avogadro's number",
+      "602,200,000,000,000,000,000,000"
+    ],
+    "explanation": "Avogadro's number (6.022 × 10²³) is so enormous it's hard to visualize — if you stacked Avogadro's number of sheets of paper, the pile would reach from Earth to the Sun and back 2.5 million times. It's what allows chemists to weigh out amounts of substance instead of counting individual atoms.",
+    "wowFactor": "Avogadro's number is so large that if every star in the observable universe had a planet with 8 billion people, each counting atoms nonstop, they still couldn't finish in the age of the universe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Avogadro's number (6.022 × 10²³) defines how many particles are in one what?",
+        "answer": "Mole",
+        "distractors": [
+          "Gram",
+          "Liter",
+          "Kilogram"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name for the number 6.022 × 10²³ used in chemistry?",
+        "answer": "Avogadro's number",
+        "distractors": [
+          "Boltzmann's number",
+          "Planck's constant",
+          "Faraday's constant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "One mole of carbon atoms contains exactly 6.022 × 10²³ atoms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "One ___ of any substance contains 6.022 × 10²³ particles by definition.",
+        "answer": "mole",
+        "distractors": [
+          "gram",
+          "liter",
+          "kilogram"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Avogadro_constant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art balance scale with a tiny single glowing atom on one side and a massive pile of atoms labeled '6.022×10²³' overflowing from the other.",
+    "tags": [
+      "chemistry",
+      "Avogadro",
+      "mole",
+      "atoms",
+      "measurement"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-chemistry-chirality",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Chirality means a molecule and its mirror image cannot be superimposed — like left and right hands — and the two versions can have completely different effects in biology.",
+    "quizQuestion": "Two molecules that are mirror images of each other but can't overlap are called what?",
+    "correctAnswer": "Enantiomers",
+    "distractors": [
+      "Isomers",
+      "Isotopes",
+      "Polymorphs",
+      "Resonance forms",
+      "Allotropes",
+      "Conformers",
+      "Diastereomers",
+      "Tautomers"
+    ],
+    "acceptableAnswers": [
+      "enantiomers",
+      "chiral molecules",
+      "mirror image molecules"
+    ],
+    "explanation": "Chiral molecules come in left-handed (L) and right-handed (D) forms. One form of carvone smells like spearmint, the other like caraway seeds. Thalidomide's tragedy in the 1950s came because one enantiomer was a useful sedative while the other caused severe birth defects — a lesson that chiral purity in drugs is life-or-death.",
+    "wowFactor": "The thalidomide disaster killed thousands because one mirror-image molecule was medicine and the other was poison — same atoms, opposite hand, devastating difference.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are mirror-image molecules that cannot be superimposed called?",
+        "answer": "Enantiomers",
+        "distractors": [
+          "Isomers",
+          "Allotropes",
+          "Diastereomers"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The thalidomide tragedy demonstrated that two versions of a chiral drug can have what?",
+        "answer": "Opposite biological effects",
+        "distractors": [
+          "Same therapeutic value",
+          "Identical toxicity",
+          "Equal metabolism rates"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Two enantiomers of the same molecule can have completely different effects in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chiral molecules exist as ___ that are non-superimposable mirror images of each other.",
+        "answer": "enantiomers",
+        "distractors": [
+          "isotopes",
+          "allotropes",
+          "isomers"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chirality_(chemistry)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art two identical-looking molecules facing each other like mirror reflections, one glowing green (medicine), one glowing red (toxic), connected by a mirror line.",
+    "tags": [
+      "chemistry",
+      "chirality",
+      "enantiomers",
+      "pharmaceuticals",
+      "molecular structure"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-star-main-sequence",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Stars spend most of their life on the 'main sequence', fusing hydrogen into helium in their cores to produce energy and resist gravitational collapse.",
+    "quizQuestion": "What fuel does a main-sequence star burn in its core?",
+    "correctAnswer": "Hydrogen",
+    "distractors": [
+      "Helium",
+      "Carbon",
+      "Oxygen",
+      "Iron",
+      "Nitrogen",
+      "Lithium",
+      "Deuterium",
+      "Uranium"
+    ],
+    "acceptableAnswers": [
+      "hydrogen",
+      "hydrogen gas",
+      "H"
+    ],
+    "explanation": "A star is a constant tug-of-war between gravity pulling inward and the pressure from nuclear fusion pushing outward. For most of its life, a star converts hydrogen to helium. When hydrogen runs out, the star expands into a red giant and begins fusing helium — eventually collapsing and dispersing heavier elements into space.",
+    "wowFactor": "Every atom heavier than iron in your body was forged in a star that exploded before the Sun was born — you are literally made of stardust.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nuclear fuel do main-sequence stars burn to produce energy?",
+        "answer": "Hydrogen",
+        "distractors": [
+          "Helium",
+          "Carbon",
+          "Oxygen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "When a star exhausts its hydrogen fuel, it expands into what type of star?",
+        "answer": "Red giant",
+        "distractors": [
+          "White dwarf",
+          "Neutron star",
+          "Black hole"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Main-sequence stars like the Sun produce energy by fusing hydrogen into helium.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Stars spend most of their life on the main sequence fusing ___ into helium.",
+        "answer": "hydrogen",
+        "distractors": [
+          "carbon",
+          "helium",
+          "nitrogen"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Main_sequence",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section pixel art star showing a blazing white core with hydrogen arrows fusing into helium, surrounded by concentric glowing layers of plasma.",
+    "tags": [
+      "stars",
+      "nuclear fusion",
+      "main sequence",
+      "astronomy",
+      "stellar evolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-star-neutron-star-density",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "A neutron star is so dense that a teaspoon of its material would weigh about 10 million tons — as much as a mountain.",
+    "quizQuestion": "How much would a teaspoon of neutron star material weigh on Earth?",
+    "correctAnswer": "About 10 million tons",
+    "distractors": [
+      "About 1,000 tons",
+      "About 1 million tons",
+      "About 1 billion tons",
+      "About 100,000 tons",
+      "About 10,000 tons",
+      "About 500 million tons",
+      "About 100 tons",
+      "About 50 million tons"
+    ],
+    "acceptableAnswers": [
+      "10 million tons",
+      "about 10 million tons",
+      "~10 million tonnes",
+      "ten million tons"
+    ],
+    "explanation": "When a massive star collapses, its core is crushed so intensely that protons and electrons merge into neutrons. The result is a city-sized ball of pure neutron matter, compressed to densities approaching atomic nuclei. Neutron stars rotate up to 716 times per second, emitting precise radio pulses used as cosmic clocks.",
+    "wowFactor": "A neutron star spins 716 times per second and is so precise that its pulses are used as natural atomic clocks accurate to a millionth of a second.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A neutron star is so dense that a teaspoon of its material weighs how much?",
+        "answer": "~10 million tons",
+        "distractors": [
+          "~1,000 tons",
+          "~1 million tons",
+          "~1 billion tons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The fastest spinning neutron stars, called pulsars, can rotate how many times per second?",
+        "answer": "Over 700 times",
+        "distractors": [
+          "About 10 times",
+          "About 60 times",
+          "About 100 times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A neutron star is denser than an atomic nucleus.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A teaspoon of ___ star material weighs about 10 million tons due to extreme density.",
+        "answer": "neutron",
+        "distractors": [
+          "white dwarf",
+          "black hole",
+          "red giant"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neutron_star",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art tiny city-sized sphere glowing blue-white in space, with a massive mountain sitting beside a tiny spoon for scale comparison.",
+    "tags": [
+      "stars",
+      "neutron stars",
+      "density",
+      "pulsars",
+      "astrophysics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-star-color-temperature",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "A star's color directly reveals its surface temperature: blue-white stars are hotter than 10,000K, while red stars are cooler at 3,000K.",
+    "quizQuestion": "What does a star's color indicate about it?",
+    "correctAnswer": "Surface temperature",
+    "distractors": [
+      "Its age only",
+      "Its distance",
+      "Its composition",
+      "Its size",
+      "Its rotation speed",
+      "Its magnetic field",
+      "Its brightness",
+      "Its metallicity"
+    ],
+    "acceptableAnswers": [
+      "surface temperature",
+      "temperature",
+      "how hot it is"
+    ],
+    "explanation": "Stars glow like heated metal — the hotter they are, the bluer they appear. Our Sun is a yellow-white G-type star at about 5,778 K. The hottest blue stars (O-type) can reach 50,000 K but live only millions of years, while cool red dwarf stars can last trillions of years — far longer than the current age of the universe.",
+    "wowFactor": "The coolest red dwarf stars will outlive the universe itself — they'll still be burning long after every galaxy has gone dark.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What physical property of a star is revealed by its color?",
+        "answer": "Surface temperature",
+        "distractors": [
+          "Distance",
+          "Age",
+          "Magnetic field"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A blue-white star is hotter or cooler than a red star?",
+        "answer": "Hotter",
+        "distractors": [
+          "Cooler",
+          "The same temperature",
+          "It depends on size"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Blue stars are hotter than red stars.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A star's ___ temperature determines whether it appears blue, yellow, or red.",
+        "answer": "surface",
+        "distractors": [
+          "core",
+          "average",
+          "minimum"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stellar_classification",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art row of stars from left to right: blazing blue, yellow-white, orange, deep red — with temperature numbers glowing beneath each one.",
+    "tags": [
+      "stars",
+      "stellar classification",
+      "color",
+      "temperature",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-darwin-coral-reef-formation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Darwin correctly theorized how coral atolls form: volcanic islands slowly sink while coral reefs keep growing upward, leaving a ring-shaped atoll.",
+    "quizQuestion": "What geological process did Darwin correctly explain involving coral atolls?",
+    "correctAnswer": "Volcanic island subsidence",
+    "distractors": [
+      "Earthquake uplift",
+      "Sea level rise",
+      "Tidal erosion",
+      "Lava reef building",
+      "Continental drift",
+      "Sediment accumulation",
+      "Storm wave action",
+      "Mantle upwelling"
+    ],
+    "acceptableAnswers": [
+      "volcanic island subsidence",
+      "island sinking",
+      "subsidence theory",
+      "sinking volcano theory"
+    ],
+    "explanation": "Darwin noticed that fringing reefs become barrier reefs become atolls — all stages of the same process. As a volcanic island slowly sinks into the ocean floor over millions of years, corals continue growing upward toward sunlight. The island eventually disappears, leaving only the ring of living reef — an atoll. This was confirmed by drilling in the 1950s.",
+    "wowFactor": "Darwin figured out how atolls form just by thinking about it on the voyage — 120 years before drilling confirmed he was exactly right.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Darwin theorized that coral atolls form as volcanic islands do what?",
+        "answer": "Slowly sink",
+        "distractors": [
+          "Rapidly erode",
+          "Rise above sea level",
+          "Break apart"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Darwin's coral reef theory was confirmed when drilling revealed what beneath atolls?",
+        "answer": "Volcanic rock foundations",
+        "distractors": [
+          "Sediment layers only",
+          "Coral all the way down",
+          "Ocean floor basalt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Darwin proposed that atolls form as volcanic islands gradually subside below the ocean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin's atoll theory states that coral grows upward as the volcanic island slowly ___.",
+        "answer": "sinks",
+        "distractors": [
+          "erodes",
+          "grows",
+          "moves"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Darwin%27s_coral_reef_hypothesis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three-stage pixel art: a tall volcano with fringing coral, then a shrinking island with barrier reef, then a flat ocean with only a glowing ring-shaped atoll.",
+    "tags": [
+      "Darwin",
+      "geology",
+      "coral reefs",
+      "atolls",
+      "volcanic islands",
+      "subsidence"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-darwin-sexual-selection",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Darwin proposed sexual selection as a mechanism where traits that improve mating success — like peacock tails — can evolve even if they reduce survival.",
+    "quizQuestion": "What Darwinian mechanism explains why peacocks have extravagant tails despite survival costs?",
+    "correctAnswer": "Sexual selection",
+    "distractors": [
+      "Natural selection",
+      "Genetic drift",
+      "Kin selection",
+      "Runaway mutation",
+      "Camouflage pressure",
+      "Predation escape",
+      "Group advantage",
+      "Resource competition"
+    ],
+    "acceptableAnswers": [
+      "sexual selection",
+      "mate selection",
+      "sexual selection theory"
+    ],
+    "explanation": "Darwin was puzzled that peacock tails are energetically costly and make males more visible to predators — the opposite of what survival selection would produce. His answer: females choose mates based on extravagant displays. Sexual selection drives traits that handicap survival but signal genetic fitness, shaping everything from bird song to deer antlers.",
+    "wowFactor": "The peacock's ridiculous tail exists because peahens found it sexy — Darwin realized beauty itself is an evolutionary force as powerful as survival.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Darwin's theory explaining costly ornamental traits through mate choice is called what?",
+        "answer": "Sexual selection",
+        "distractors": [
+          "Natural selection",
+          "Kin selection",
+          "Genetic drift"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sexual selection theory explains why which bird evolved extravagant, survival-costly tail feathers?",
+        "answer": "Peacock",
+        "distractors": [
+          "Flamingo",
+          "Eagle",
+          "Hummingbird"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Darwin argued that traits harmful to survival can still evolve if they improve mating success.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin's ___ selection theory explains ornamental traits that improve mating but reduce survival.",
+        "answer": "sexual",
+        "distractors": [
+          "natural",
+          "artificial",
+          "kin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sexual_selection",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art peacock with an enormous glowing tail fan on display, while a peahen watches intently and a fox in the background eyes the conspicuous prey.",
+    "tags": [
+      "Darwin",
+      "sexual selection",
+      "evolution",
+      "peacock",
+      "mate choice",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-goethe-color-theory",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Goethe's Theory of Colors (1810) challenged Newton by arguing that colors arise from the interaction of light and darkness, not from light alone.",
+    "quizQuestion": "What did Goethe argue caused colors in his 1810 Theory of Colors?",
+    "correctAnswer": "Interaction of light and darkness",
+    "distractors": [
+      "Refraction of white light",
+      "Wavelengths of photons",
+      "Spectral decomposition",
+      "Prism diffraction",
+      "Pigment absorption",
+      "Electromagnetic waves",
+      "Quantum color states",
+      "Eye sensitivity only"
+    ],
+    "acceptableAnswers": [
+      "interaction of light and darkness",
+      "light and dark interaction",
+      "light meeting darkness"
+    ],
+    "explanation": "Newton showed colors are components of white light; Goethe disagreed, arguing that darkness is not merely absence of light but an active participant in creating color. While physically wrong about the optics, Goethe's phenomenological approach influenced artists enormously, and his observations about human color perception were genuinely ahead of their time.",
+    "wowFactor": "Goethe vs Newton over color theory: the poet was scientifically wrong about physics but right about how humans actually perceive color — a distinction that took 200 years to appreciate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Goethe's Theory of Colors argued that colors result from the interaction of light and what?",
+        "answer": "Darkness",
+        "distractors": [
+          "Matter",
+          "Prisms",
+          "The eye"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Goethe's color theory in 1810 directly challenged the optics work of which scientist?",
+        "answer": "Newton",
+        "distractors": [
+          "Descartes",
+          "Huygens",
+          "Faraday"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Goethe's Theory of Colors proposed that colors arise from the interaction of light and darkness.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goethe published his Theory of ___ in 1810, challenging Newton's prism experiments.",
+        "answer": "Colors",
+        "distractors": [
+          "Light",
+          "Vision",
+          "Nature"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theory_of_Colours",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Goethe with a color wheel in one hand and a prism in the other, light and shadow swirling dramatically around him, Newton's portrait frowning in the background.",
+    "tags": [
+      "Goethe",
+      "color theory",
+      "optics",
+      "Newton",
+      "history of science",
+      "perception"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-goethe-plant-morphology",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Goethe proposed that all plant organs — petals, stamens, sepals, leaves — are transformations of a single archetypal organ he called the Urpflanze.",
+    "quizQuestion": "What did Goethe call his concept of the ideal ancestral plant form?",
+    "correctAnswer": "Urpflanze",
+    "distractors": [
+      "Ur-form",
+      "Archeplant",
+      "Proto-flora",
+      "Root-form",
+      "Grundpflanze",
+      "Stammbaum",
+      "Weltpflanze",
+      "Keimling"
+    ],
+    "acceptableAnswers": [
+      "urpflanze",
+      "ur-pflanze",
+      "primordial plant",
+      "archetypal plant"
+    ],
+    "explanation": "Goethe's insight was that a plant's petals, leaves, stamens, and sepals are all variations of the same fundamental organ — the leaf — transformed for different purposes. This concept of homology (structural equivalence across different forms) became foundational to modern evolutionary morphology and developmental biology.",
+    "wowFactor": "Goethe anticipated evolutionary developmental biology (evo-devo) by 150 years — his poetic idea that petals are modified leaves is now confirmed molecular biology.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Goethe called his archetypal plant concept, where all plant organs are modified leaves, what?",
+        "answer": "Urpflanze",
+        "distractors": [
+          "Ur-form",
+          "Grundpflanze",
+          "Stammbaum"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Goethe's Urpflanze concept anticipated which field of modern biology?",
+        "answer": "Evolutionary developmental biology",
+        "distractors": [
+          "Molecular genetics",
+          "Cell biology",
+          "Microbiology"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Goethe proposed that petals, stamens, and leaves are all transformations of a single organ.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goethe proposed that all plant organs are variations of a single ___ form called Urpflanze.",
+        "answer": "archetypal",
+        "distractors": [
+          "genetic",
+          "chemical",
+          "cellular"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Urpflanze",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art diagram showing a single green leaf transforming in sequence into a petal, stamen, sepal, and root, all connected by glowing golden arrows.",
+    "tags": [
+      "Goethe",
+      "plant morphology",
+      "Urpflanze",
+      "homology",
+      "evolutionary biology",
+      "evo-devo"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-venus-retrograde-rotation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Venus rotates backwards compared to most planets — on Venus, the Sun rises in the west and sets in the east.",
+    "quizQuestion": "In which direction does the Sun rise on Venus compared to Earth?",
+    "correctAnswer": "The west",
+    "distractors": [
+      "The east",
+      "Due north",
+      "Due south",
+      "Directly overhead",
+      "The northeast",
+      "The southwest",
+      "The northwest",
+      "Below the horizon"
+    ],
+    "acceptableAnswers": [
+      "the west",
+      "west",
+      "from the west"
+    ],
+    "explanation": "Venus has retrograde rotation — it spins clockwise when viewed from above the solar system's north pole, opposite to most planets. Additionally, a Venus day (243 Earth days) is longer than its year (225 Earth days), meaning Venus rotates slower than it orbits, creating the bizarre situation where a day lasts longer than a year.",
+    "wowFactor": "On Venus, a day is longer than a year — and the Sun rises in the west. It's the most baffling calendar in the solar system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Venus rotates in which direction relative to most planets in the solar system?",
+        "answer": "Retrograde (backwards)",
+        "distractors": [
+          "Prograde (normal)",
+          "No rotation",
+          "Tilted 90°"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet has a day longer than its year AND the Sun rising in the west?",
+        "answer": "Venus",
+        "distractors": [
+          "Uranus",
+          "Mercury",
+          "Mars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "On Venus, the Sun rises in the west because Venus rotates in the opposite direction to Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus has ___ rotation, causing the Sun to rise in the west instead of the east.",
+        "answer": "retrograde",
+        "distractors": [
+          "prograde",
+          "axial",
+          "polar"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Venus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Venus with a sunrise glowing on its western horizon, a clock showing a day longer than a year, arrows circling backwards compared to Earth nearby.",
+    "tags": [
+      "Venus",
+      "planets",
+      "retrograde rotation",
+      "solar system",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-venus-surface-temperature",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Venus has the hottest planetary surface in the solar system at 465°C (869°F) — hotter than Mercury despite being twice as far from the Sun.",
+    "quizQuestion": "Why is Venus hotter than Mercury despite being further from the Sun?",
+    "correctAnswer": "Runaway greenhouse effect",
+    "distractors": [
+      "Volcanic heating",
+      "Core radiation",
+      "Thicker mantle",
+      "Tidal heating",
+      "Solar wind absorption",
+      "Albedo difference",
+      "Orbital eccentricity",
+      "Atmospheric friction"
+    ],
+    "acceptableAnswers": [
+      "runaway greenhouse effect",
+      "greenhouse effect",
+      "dense CO2 atmosphere",
+      "thick atmosphere"
+    ],
+    "explanation": "Venus's atmosphere is 96.5% carbon dioxide, creating a runaway greenhouse effect that traps virtually all solar heat. Mercury, with no atmosphere, loses heat at night — its night side reaches -180°C. Venus stays at ~465°C everywhere, day and night, pole to equator, making it a textbook warning about what unchecked greenhouse warming can do.",
+    "wowFactor": "Venus is a cautionary tale: once Earth-like, it triggered a runaway greenhouse effect and became a 465°C hell — and it's still happening right now.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What effect makes Venus hotter than Mercury despite being farther from the Sun?",
+        "answer": "Runaway greenhouse effect",
+        "distractors": [
+          "Volcanic heating",
+          "Core radiation",
+          "Tidal heating"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Venus's atmosphere is approximately 96.5% which gas, causing its extreme temperature?",
+        "answer": "Carbon dioxide",
+        "distractors": [
+          "Nitrogen",
+          "Methane",
+          "Sulfur dioxide"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Venus is hotter than Mercury because of a runaway greenhouse effect from its CO2 atmosphere.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus's surface temperature of 465°C is maintained by a runaway ___ effect.",
+        "answer": "greenhouse",
+        "distractors": [
+          "volcanic",
+          "nuclear",
+          "tidal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atmosphere_of_Venus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Venus cross-section showing thick orange-yellow clouds trapping heat arrows in a closed loop, red thermometer maxed out at 465°C glowing beside the planet.",
+    "tags": [
+      "Venus",
+      "greenhouse effect",
+      "climate",
+      "planets",
+      "atmosphere",
+      "CO2"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-venus-phosphine-mystery",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "In 2020, astronomers claimed to detect phosphine in Venus's clouds, which on Earth is only produced by life or industrial processes — sparking a biosignature debate.",
+    "quizQuestion": "What gas detected in Venus's clouds in 2020 sparked a biosignature controversy?",
+    "correctAnswer": "Phosphine",
+    "distractors": [
+      "Methane",
+      "Oxygen",
+      "Ammonia",
+      "Hydrogen sulfide",
+      "Acetylene",
+      "Ethane",
+      "Sulfur dioxide",
+      "Carbon monoxide"
+    ],
+    "acceptableAnswers": [
+      "phosphine",
+      "PH3",
+      "phosphine gas"
+    ],
+    "explanation": "Phosphine (PH3) on Earth is produced by anaerobic bacteria or industrial chemistry. Its apparent detection in Venus's clouds by Greaves et al. (2020) electrified the astrobiology community because no known geological or chemical process should produce it there. Subsequent reanalysis disputed the detection, but the debate highlighted Venus's cloud layer (50-60 km altitude, temperate zone) as a potential habitat.",
+    "wowFactor": "For a week in September 2020, scientists worldwide seriously considered that clouds of Venus might harbor microbial life — a claim still not fully resolved.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas was controversially detected in Venus's atmosphere in 2020, suggesting possible biology?",
+        "answer": "Phosphine",
+        "distractors": [
+          "Methane",
+          "Ammonia",
+          "Oxygen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On Earth, phosphine is only produced by what sources that made its Venusian detection controversial?",
+        "answer": "Life or industry",
+        "distractors": [
+          "Volcanic eruptions",
+          "Lightning strikes",
+          "UV photolysis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The 2020 phosphine detection on Venus remains a fully confirmed and accepted discovery.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Astronomers controversially detected ___ in Venus's clouds in 2020, a gas linked to biology.",
+        "answer": "phosphine",
+        "distractors": [
+          "methane",
+          "oxygen",
+          "ammonia"
+        ]
+      }
+    ],
+    "difficulty": 7,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phosphine_on_Venus",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art radio telescope dish aimed at a glowing Venus, with phosphine molecules hovering in its yellow clouds, a question mark the size of a moon looming nearby.",
+    "tags": [
+      "Venus",
+      "astrobiology",
+      "phosphine",
+      "biosignatures",
+      "exoplanet science",
+      "discovery"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

@@ -65,8 +65,8 @@
 <style>
   .map-node {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     border-radius: 50%;
     border: 2.5px solid var(--node-color);
     background: linear-gradient(135deg, #0f1520, #1a2235);
@@ -92,13 +92,13 @@
 
   /* --- visited --- */
   .map-node.state-visited {
-    opacity: 0.4;
+    opacity: 0.25;
     filter: grayscale(1);
   }
 
   /* --- locked --- */
   .map-node.state-locked {
-    opacity: 0.25;
+    opacity: 0.7;
     border-style: dashed;
   }
 
@@ -141,7 +141,7 @@
   }
 
   .node-icon {
-    font-size: 20px;
+    font-size: calc(20px * var(--layout-scale, 1));
     line-height: 1;
     /* Prevent emoji colour bleed on some Android renderers */
     display: block;
@@ -149,14 +149,14 @@
 
   .visited-check {
     position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 16px;
-    height: 16px;
+    top: calc(-4px * var(--layout-scale, 1));
+    right: calc(-4px * var(--layout-scale, 1));
+    width: calc(16px * var(--layout-scale, 1));
+    height: calc(16px * var(--layout-scale, 1));
     border-radius: 50%;
     background: #2ECC71;
     color: #fff;
-    font-size: 9px;
+    font-size: calc(9px * var(--layout-scale, 1));
     font-weight: 700;
     display: flex;
     align-items: center;

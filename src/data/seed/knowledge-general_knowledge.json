@@ -14815,5 +14815,2240 @@
       "Lord Kelvin",
       "thermodynamics"
     ]
+  },
+  {
+    "id": "general-catholic-church-member-count",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "The Catholic Church is the world's largest Christian denomination with over 1.3 billion members.",
+    "quizQuestion": "How many members does the Catholic Church have?",
+    "correctAnswer": "Over 1.3 billion",
+    "distractors": [
+      "Over 500 million",
+      "Over 800 million",
+      "Over 2 billion",
+      "Over 900 million",
+      "Over 1 trillion",
+      "Over 600 million",
+      "Over 400 million",
+      "Over 1.8 billion"
+    ],
+    "acceptableAnswers": [
+      "1.3 billion",
+      "over 1.3 billion",
+      "1.3 billion members"
+    ],
+    "explanation": "With over 1.3 billion baptized members worldwide, the Catholic Church is the single largest Christian denomination on Earth. That's roughly 1 in 6 people on the planet. The Church operates in nearly every country and has existed for about 2,000 years.",
+    "wowFactor": "One in every six humans on Earth is a baptized Catholic.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many members does the Catholic Church have worldwide?",
+        "answer": "Over 1.3 billion",
+        "distractors": [
+          "Over 500 million",
+          "Over 800 million",
+          "Over 2 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organization has over 1.3 billion members globally?",
+        "answer": "Catholic Church",
+        "distractors": [
+          "Sunni Islam",
+          "Protestant Church",
+          "Orthodox Church"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Catholic Church has more than 1 billion members worldwide.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Catholic Church has over ___ billion members worldwide.",
+        "answer": "1.3",
+        "distractors": [
+          "0.5",
+          "2",
+          "0.8"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Catholic_Church",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grand cathedral with golden spires under a blue sky, a globe beside it with crosses dotting every continent in pixel art style.",
+    "tags": [
+      "religion",
+      "christianity",
+      "catholicism",
+      "world records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-catholic-church-pope-election",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "The Pope is elected by a conclave of cardinals who are locked in the Sistine Chapel until a new Pope is chosen.",
+    "quizQuestion": "Where are cardinals locked to elect a new Pope?",
+    "correctAnswer": "Sistine Chapel",
+    "distractors": [
+      "St. Peter's Basilica",
+      "Vatican Library",
+      "Castel Sant'Angelo",
+      "St. John Lateran",
+      "Palazzo Apostolico",
+      "Vatican Gardens",
+      "Papal Apartments",
+      "Domus Sanctae Marthae"
+    ],
+    "acceptableAnswers": [
+      "sistine chapel",
+      "the sistine chapel"
+    ],
+    "explanation": "When a Pope dies or resigns, the College of Cardinals is locked inside the Sistine Chapel for a conclave — from the Latin 'cum clave' meaning 'with key.' They vote until a candidate wins two-thirds of votes, signaled to the world by white smoke from a chimney.",
+    "wowFactor": "Cardinals are literally locked in and cannot leave until they elect a Pope — sometimes for weeks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where are cardinals confined to elect a new Pope?",
+        "answer": "Sistine Chapel",
+        "distractors": [
+          "St. Peter's Basilica",
+          "Vatican Library",
+          "Castel Sant'Angelo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What famous chapel hosts the papal election conclave?",
+        "answer": "Sistine Chapel",
+        "distractors": [
+          "St. Paul's Chapel",
+          "King's Chapel",
+          "Westminster Abbey"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Cardinals are locked inside the Sistine Chapel until they elect a new Pope.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cardinals are locked in the ___ Chapel to elect a new Pope.",
+        "answer": "Sistine",
+        "distractors": [
+          "Vatican",
+          "Papal",
+          "Roman"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Papal_conclave",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the iconic Sistine Chapel interior with cardinals in red robes seated in rows, a small chimney puffing white smoke above the roof.",
+    "tags": [
+      "pope",
+      "conclave",
+      "sistine chapel",
+      "vatican",
+      "election"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-catholic-church-first-university",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "The Catholic Church founded most of the world's earliest universities, including Bologna, Oxford, and Paris.",
+    "quizQuestion": "Which institution founded most of the world's first universities?",
+    "correctAnswer": "Catholic Church",
+    "distractors": [
+      "Ottoman Empire",
+      "Roman Empire",
+      "British Crown",
+      "Greek city-states",
+      "Mongol Empire",
+      "Byzantine Empire",
+      "Holy Roman Empire",
+      "Arab Caliphate"
+    ],
+    "acceptableAnswers": [
+      "catholic church",
+      "the catholic church",
+      "church"
+    ],
+    "explanation": "The Catholic Church was the primary sponsor and creator of European universities from the 11th century onward. Bologna (1088), Paris (~1150), and Oxford (~1167) were all founded under Church authority. By 1500, nearly all major European universities had Catholic origins.",
+    "wowFactor": "Without the Catholic Church, there might be no Oxford, Harvard, or modern university system at all.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which institution founded early universities like Bologna and Oxford?",
+        "answer": "Catholic Church",
+        "distractors": [
+          "British Crown",
+          "Roman Empire",
+          "Ottoman Empire"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The University of Bologna, founded in 1088, was established under which organization?",
+        "answer": "Catholic Church",
+        "distractors": [
+          "Roman Republic",
+          "Byzantine Empire",
+          "Papal States"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Catholic Church founded many of the world's first universities.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Catholic ___ founded many of the world's earliest universities.",
+        "answer": "Church",
+        "distractors": [
+          "Empire",
+          "State",
+          "Order"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Catholic_Church_and_education",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a medieval stone university building with pointed arches, monks carrying scrolls, and a cross atop the tower under a warm sunset.",
+    "tags": [
+      "education",
+      "universities",
+      "history",
+      "medieval",
+      "catholicism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-ancient-alexandria",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "",
+    "statement": "The ancient Library of Alexandria aimed to collect every book in the world and once held an estimated 400,000 scrolls.",
+    "quizQuestion": "How many scrolls did the Library of Alexandria hold at its peak?",
+    "correctAnswer": "400,000 scrolls",
+    "distractors": [
+      "10,000 scrolls",
+      "50,000 scrolls",
+      "1 million scrolls",
+      "100,000 scrolls",
+      "25,000 scrolls",
+      "2 million scrolls",
+      "75,000 scrolls",
+      "200,000 scrolls"
+    ],
+    "acceptableAnswers": [
+      "400000 scrolls",
+      "400,000",
+      "400000",
+      "400,000 scrolls",
+      "about 400,000"
+    ],
+    "explanation": "The Library of Alexandria in Egypt, founded around 300 BCE, was the ancient world's greatest center of knowledge. At its height, it may have held up to 400,000 to 700,000 scrolls — essentially attempting to collect all written knowledge in existence. Ships docking at Alexandria were required to surrender any scrolls aboard for copying.",
+    "wowFactor": "Ships arriving in Alexandria were legally required to hand over their books for copying — the world's first copyright grab.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many scrolls did ancient Alexandria's library hold?",
+        "answer": "400,000 scrolls",
+        "distractors": [
+          "10,000 scrolls",
+          "50,000 scrolls",
+          "1 million scrolls"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient library aimed to hold every book in the world?",
+        "answer": "Library of Alexandria",
+        "distractors": [
+          "Library of Pergamon",
+          "Imperial Library of China",
+          "Library of Baghdad"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Library of Alexandria held over 100,000 scrolls at its peak.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Library of ___ aimed to collect every book in the ancient world.",
+        "answer": "Alexandria",
+        "distractors": [
+          "Rome",
+          "Athens",
+          "Babylon"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a grand Egyptian library with tall columns, papyrus scrolls lining stone shelves, scholars in white robes reading under oil lamps at dusk.",
+    "tags": [
+      "library",
+      "alexandria",
+      "ancient history",
+      "knowledge",
+      "scrolls"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-largest-world",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "",
+    "statement": "The Library of Congress in Washington D.C. is the world's largest library, holding over 170 million items.",
+    "quizQuestion": "What is the world's largest library?",
+    "correctAnswer": "Library of Congress",
+    "distractors": [
+      "British Library",
+      "New York Public Library",
+      "Bibliothèque nationale",
+      "Russian State Library",
+      "Harvard Library",
+      "Shanghai Library",
+      "Vatican Library",
+      "Library of Alexandria"
+    ],
+    "acceptableAnswers": [
+      "library of congress",
+      "the library of congress",
+      "us library of congress"
+    ],
+    "explanation": "The Library of Congress in Washington D.C. holds over 170 million items across 838 miles of bookshelves — enough shelf space to stretch from New York City to Chicago and back. It was founded in 1800 and originally housed in the Capitol building.",
+    "wowFactor": "The Library of Congress has 838 miles of bookshelves — long enough to stretch from New York to Chicago and back.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which library is considered the largest in the world?",
+        "answer": "Library of Congress",
+        "distractors": [
+          "British Library",
+          "New York Public Library",
+          "Harvard Library"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The world's largest library with 170 million items is located in which city?",
+        "answer": "Washington D.C.",
+        "distractors": [
+          "New York",
+          "London",
+          "Paris"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Library of Congress is the world's largest library.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Library of ___ in Washington D.C. is the world's largest library.",
+        "answer": "Congress",
+        "distractors": [
+          "America",
+          "Nations",
+          "Columbia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Library_of_Congress",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a grand neoclassical building with white columns and an American flag, rows of bookshelves extending into darkness inside.",
+    "tags": [
+      "library",
+      "world records",
+      "washington dc",
+      "books",
+      "congress"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-library-first-public",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_discoveries",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_discoveries",
+    "categoryL3": "",
+    "statement": "The first free public library in the United States opened in Peterborough, New Hampshire in 1833.",
+    "quizQuestion": "Where did the first free public library in the US open?",
+    "correctAnswer": "Peterborough, NH",
+    "distractors": [
+      "Boston, MA",
+      "Philadelphia, PA",
+      "New York, NY",
+      "Baltimore, MD",
+      "Charleston, SC",
+      "Richmond, VA",
+      "Albany, NY",
+      "Providence, RI"
+    ],
+    "acceptableAnswers": [
+      "peterborough",
+      "peterborough nh",
+      "peterborough new hampshire",
+      "new hampshire"
+    ],
+    "explanation": "On April 9, 1833, the town of Peterborough, New Hampshire opened what is widely considered the first free public library in the United States, funded by tax dollars and open to all residents. Before this, most libraries were subscription-based or only for wealthy members.",
+    "wowFactor": "Before 1833, you had to pay a membership fee to borrow books — public libraries for everyone were a radical democratic idea.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which US state did the first free public library open in 1833?",
+        "answer": "New Hampshire",
+        "distractors": [
+          "Massachusetts",
+          "Pennsylvania",
+          "New York"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Peterborough, New Hampshire is known for being home to what American first?",
+        "answer": "First free public library",
+        "distractors": [
+          "First post office",
+          "First public school",
+          "First newspaper"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The first free public library in the US opened before the Civil War.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first free public library in the US opened in Peterborough, ___ in 1833.",
+        "answer": "New Hampshire",
+        "distractors": [
+          "Massachusetts",
+          "Vermont",
+          "Maine"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Peterborough_Town_Library",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a quaint 1800s New England building with wooden shelves of books, a sign reading 'Free Library' and townspeople entering through a green door.",
+    "tags": [
+      "library",
+      "history",
+      "usa",
+      "famous firsts",
+      "new hampshire"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-bengali-language-rank",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "Bengali is the 7th most spoken language in the world, with over 230 million native speakers.",
+    "quizQuestion": "Approximately how many native speakers does Bengali have?",
+    "correctAnswer": "230 million",
+    "distractors": [
+      "50 million",
+      "100 million",
+      "500 million",
+      "400 million",
+      "75 million",
+      "150 million",
+      "300 million",
+      "600 million"
+    ],
+    "acceptableAnswers": [
+      "230 million",
+      "over 230 million",
+      "~230 million"
+    ],
+    "explanation": "Bengali, spoken primarily in Bangladesh and the Indian state of West Bengal, is among the most widely spoken languages on Earth. With over 230 million native speakers, it outranks languages like French, German, and Japanese. It's the official language of Bangladesh and one of India's 22 scheduled languages.",
+    "wowFactor": "Bengali has more native speakers than French and German combined — yet many people have never heard of it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many native speakers does Bengali have?",
+        "answer": "230 million",
+        "distractors": [
+          "50 million",
+          "100 million",
+          "500 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which language has over 230 million native speakers in South Asia?",
+        "answer": "Bengali",
+        "distractors": [
+          "Hindi",
+          "Tamil",
+          "Urdu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Bengali has more native speakers than French.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bengali is spoken by over ___ million native speakers worldwide.",
+        "answer": "230",
+        "distractors": [
+          "50",
+          "100",
+          "400"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bengali_language",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a colorful market in Dhaka with Bengali script on signs, a woman in a saree reading a book, and lush greenery in the background.",
+    "tags": [
+      "bengali",
+      "language",
+      "bangladesh",
+      "india",
+      "linguistics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-bengali-national-anthem",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "Bengali poet Rabindranath Tagore wrote national anthems for two different countries: India and Bangladesh.",
+    "quizQuestion": "Which poet wrote national anthems for both India and Bangladesh?",
+    "correctAnswer": "Rabindranath Tagore",
+    "distractors": [
+      "Kazi Nazrul Islam",
+      "Michael Madhusudan Dutt",
+      "Bankim Chandra Chatterjee",
+      "Subramania Bharati",
+      "Mirza Ghalib",
+      "Allama Iqbal",
+      "Jibanananda Das",
+      "Farrukh Musaev"
+    ],
+    "acceptableAnswers": [
+      "rabindranath tagore",
+      "tagore",
+      "rabindranath"
+    ],
+    "explanation": "Rabindranath Tagore is the only person in history to have written national anthems for two separate nations. He wrote 'Jana Gana Mana' for India (adopted 1950) and 'Amar Sonar Bangla' for Bangladesh (adopted 1971). Tagore also won the Nobel Prize in Literature in 1913.",
+    "wowFactor": "Rabindranath Tagore is the only person ever to have written the national anthems of two different countries.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who wrote national anthems for both India and Bangladesh?",
+        "answer": "Rabindranath Tagore",
+        "distractors": [
+          "Kazi Nazrul Islam",
+          "Mirza Ghalib",
+          "Allama Iqbal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Rabindranath Tagore uniquely wrote national anthems for which two countries?",
+        "answer": "India and Bangladesh",
+        "distractors": [
+          "India and Pakistan",
+          "Bangladesh and Sri Lanka",
+          "India and Nepal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Rabindranath Tagore wrote national anthems for two different countries.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rabindranath ___ is the only person to have written national anthems for two countries.",
+        "answer": "Tagore",
+        "distractors": [
+          "Nehru",
+          "Gandhi",
+          "Iqbal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rabindranath_Tagore",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an elderly bearded poet in a white dhoti writing at a wooden desk, two flags — Indian tricolor and Bangladeshi green-red — displayed behind him.",
+    "tags": [
+      "tagore",
+      "bengali",
+      "national anthem",
+      "india",
+      "bangladesh",
+      "famous firsts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-old-testament-books-count",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "The Old Testament contains 39 books in Protestant tradition but 46 books in Catholic tradition.",
+    "quizQuestion": "How many books does the Protestant Old Testament contain?",
+    "correctAnswer": "39 books",
+    "distractors": [
+      "27 books",
+      "46 books",
+      "52 books",
+      "30 books",
+      "66 books",
+      "24 books",
+      "73 books",
+      "33 books"
+    ],
+    "acceptableAnswers": [
+      "39",
+      "39 books",
+      "thirty-nine"
+    ],
+    "explanation": "The Protestant Old Testament has 39 books, while the Catholic Old Testament has 46 — the extra 7 are called the Deuterocanonical books (or Apocrypha by Protestants). These include books like Tobit, Judith, and Maccabees. This difference dates to the Protestant Reformation in the 16th century.",
+    "wowFactor": "Catholics and Protestants have been using different versions of the Old Testament for 500 years — most people never know there's a difference.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many books are in the Protestant Old Testament?",
+        "answer": "39 books",
+        "distractors": [
+          "27 books",
+          "46 books",
+          "52 books"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Catholic Old Testament has 46 books; how many does the Protestant version have?",
+        "answer": "39 books",
+        "distractors": [
+          "40 books",
+          "33 books",
+          "52 books"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Catholics and Protestants use identical versions of the Old Testament.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Protestant Old Testament has ___ books, while the Catholic version has 46.",
+        "answer": "39",
+        "distractors": [
+          "27",
+          "52",
+          "33"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Old_Testament",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Touches on religious differences between Christian denominations",
+    "visualDescription": "Pixel art of two ancient leather-bound Bibles side by side, one labeled Protestant with 39 scrolls, one Catholic with 46, glowing on a stone altar.",
+    "tags": [
+      "old testament",
+      "bible",
+      "christianity",
+      "protestant",
+      "catholic",
+      "books"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-old-testament-oldest-writing",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "The oldest complete manuscript of the Old Testament, the Codex Sinaiticus, was discovered at a monastery in 1844.",
+    "quizQuestion": "When was the Codex Sinaiticus, the oldest complete Old Testament, discovered?",
+    "correctAnswer": "1844",
+    "distractors": [
+      "1200",
+      "1350",
+      "1492",
+      "1750",
+      "1900",
+      "1066",
+      "1600",
+      "1776"
+    ],
+    "acceptableAnswers": [
+      "1844",
+      "in 1844"
+    ],
+    "explanation": "The Codex Sinaiticus, dating to the 4th century AD, is the oldest surviving complete manuscript of the Christian Bible. It was discovered by German scholar Constantin von Tischendorf in 1844 at St. Catherine's Monastery in the Sinai Peninsula — reportedly found in a wastepaper basket. It's now split between four institutions across the world.",
+    "wowFactor": "The world's oldest Bible was reportedly found in a monastery's wastepaper basket in 1844.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was the Codex Sinaiticus discovered at St. Catherine's Monastery?",
+        "answer": "1844",
+        "distractors": [
+          "1200",
+          "1492",
+          "1750"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Codex Sinaiticus, discovered in 1844, is the oldest complete manuscript of which text?",
+        "answer": "Christian Bible",
+        "distractors": [
+          "Quran",
+          "Torah",
+          "Book of Mormon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The oldest complete Bible manuscript was discovered in the 19th century.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Codex ___ is the oldest surviving complete Christian Bible, discovered in 1844.",
+        "answer": "Sinaiticus",
+        "distractors": [
+          "Vaticanus",
+          "Alexandrinus",
+          "Ephraemi"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Codex_Sinaiticus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a monk in a desert monastery holding an ancient yellowed manuscript, sand dunes visible through an arched stone window at golden hour.",
+    "tags": [
+      "old testament",
+      "bible",
+      "manuscript",
+      "archaeology",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-shia-islam-founding",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "Shia Islam began with a dispute over who should succeed the Prophet Muhammad as leader of the Muslim community in 632 AD.",
+    "quizQuestion": "What event in 632 AD led to the founding of Shia Islam?",
+    "correctAnswer": "Succession dispute",
+    "distractors": [
+      "Muhammad's birth",
+      "The Battle of Tours",
+      "The Crusades",
+      "Muhammad's first revelation",
+      "The fall of Baghdad",
+      "The Battle of Yarmouk",
+      "The founding of Mecca",
+      "The Ottoman conquest"
+    ],
+    "acceptableAnswers": [
+      "succession dispute",
+      "dispute over succession",
+      "leadership dispute"
+    ],
+    "explanation": "When the Prophet Muhammad died in 632 AD without clearly naming a successor, the Muslim community split. Those who believed leadership should pass to Muhammad's cousin and son-in-law Ali ibn Abi Talib became known as Shia (from 'Shiat Ali,' meaning 'partisans of Ali'). This political dispute evolved into distinct theological traditions.",
+    "wowFactor": "A 1,400-year-old succession dispute still divides 1.8 billion Muslims into Sunni and Shia branches today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What triggered the founding of Shia Islam in 632 AD?",
+        "answer": "Succession dispute",
+        "distractors": [
+          "Military defeat",
+          "Theological argument",
+          "Trade conflict"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Shia Islam's name derives from 'Shiat Ali,' meaning what?",
+        "answer": "Partisans of Ali",
+        "distractors": [
+          "Followers of Muhammad",
+          "Children of Mecca",
+          "Defenders of Islam"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Shia Islam began as a dispute over who should lead Muslims after Muhammad's death.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Shia Islam began as a dispute over the ___ of the Prophet Muhammad.",
+        "answer": "succession",
+        "distractors": [
+          "teachings",
+          "birth",
+          "pilgrimage"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shia_Islam",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Describes historical religious schism; may be sensitive to devout Muslims",
+    "visualDescription": "Pixel art of an ancient desert city at sunset with two groups of robed figures separated by a wide path, torches burning at either side of a great mosque.",
+    "tags": [
+      "shia islam",
+      "religion",
+      "history",
+      "muhammad",
+      "succession"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-shia-islam-population",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "Shia Muslims make up 10–15% of the world's Muslim population, concentrated in Iran, Iraq, and Azerbaijan.",
+    "quizQuestion": "What percentage of Muslims worldwide are Shia?",
+    "correctAnswer": "10–15%",
+    "distractors": [
+      "50%",
+      "30–40%",
+      "1–2%",
+      "25%",
+      "60%",
+      "45%",
+      "5%",
+      "75%"
+    ],
+    "acceptableAnswers": [
+      "10-15%",
+      "10 to 15 percent",
+      "about 15%",
+      "15%",
+      "10%"
+    ],
+    "explanation": "Shia Muslims represent about 10–15% of the global Muslim population, or roughly 150–200 million people. They are the majority in Iran (~90–95%), Iraq (~60–65%), and Azerbaijan (~65–75%). The split between Sunni and Shia has shaped politics and conflicts in the Middle East for centuries.",
+    "wowFactor": "Iran's 1979 Islamic Revolution transformed a historically minority branch of Islam into a dominant world geopolitical force.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What portion of Muslims worldwide follow Shia Islam?",
+        "answer": "10–15%",
+        "distractors": [
+          "50%",
+          "30–40%",
+          "1–2%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country has the highest proportion of Shia Muslims at about 90%?",
+        "answer": "Iran",
+        "distractors": [
+          "Iraq",
+          "Saudi Arabia",
+          "Pakistan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Shia Muslims are a minority within global Islam, making up less than 20% of Muslims.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Shia Muslims make up about ___% of the world's Muslim population.",
+        "answer": "10–15",
+        "distractors": [
+          "50",
+          "30",
+          "5"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shia_Islam",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses religious demographics",
+    "visualDescription": "Pixel art of a world map with Iran, Iraq, and Azerbaijan glowing in green, surrounded by a crescent moon and star symbol above a crowd of worshippers.",
+    "tags": [
+      "shia islam",
+      "religion",
+      "demographics",
+      "iran",
+      "middle east"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-new-year-oldest-celebration",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "",
+    "statement": "The world's oldest recorded New Year celebration took place in ancient Mesopotamia over 4,000 years ago.",
+    "quizQuestion": "Where was the world's oldest recorded New Year celebration?",
+    "correctAnswer": "Ancient Mesopotamia",
+    "distractors": [
+      "Ancient Egypt",
+      "Ancient Greece",
+      "Ancient Rome",
+      "Ancient China",
+      "Ancient India",
+      "Ancient Persia",
+      "Ancient Maya",
+      "Ancient Carthage"
+    ],
+    "acceptableAnswers": [
+      "ancient mesopotamia",
+      "mesopotamia",
+      "babylon",
+      "babylonia"
+    ],
+    "explanation": "The Babylonians of ancient Mesopotamia (modern-day Iraq) celebrated the New Year during a festival called Akitu, dating back over 4,000 years. It was held in late March to coincide with the spring equinox and lasted 11 days, involving rituals to renew the king's divine mandate. This is the earliest known annual New Year celebration.",
+    "wowFactor": "Humans have been throwing New Year parties for over 4,000 years — and they lasted 11 days in ancient Babylon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was the oldest recorded New Year celebration held 4,000 years ago?",
+        "answer": "Ancient Mesopotamia",
+        "distractors": [
+          "Ancient Egypt",
+          "Ancient Rome",
+          "Ancient China"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The ancient Babylonian New Year festival was called what?",
+        "answer": "Akitu",
+        "distractors": [
+          "Saturnalia",
+          "Nowruz",
+          "Lupercalia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The world's oldest New Year celebration is over 4,000 years old.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ancient ___ celebrated the world's oldest known New Year festival called Akitu.",
+        "answer": "Babylonians",
+        "distractors": [
+          "Egyptians",
+          "Romans",
+          "Greeks"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akitu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a ziggurat temple in ancient Mesopotamia at night, fireworks-like sparks lighting the sky, crowds in ancient robes dancing around fire pits.",
+    "tags": [
+      "new year",
+      "babylon",
+      "mesopotamia",
+      "ancient history",
+      "celebrations"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-new-year-date-variety",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "",
+    "statement": "Different cultures celebrate New Year on at least 7 different dates throughout the year, from January to September.",
+    "quizQuestion": "How many different New Year dates exist across world cultures?",
+    "correctAnswer": "At least 7 dates",
+    "distractors": [
+      "Only 1 date",
+      "Only 2 dates",
+      "Only 3 dates",
+      "Over 20 dates",
+      "4 dates",
+      "5 dates",
+      "6 dates",
+      "12 dates"
+    ],
+    "acceptableAnswers": [
+      "at least 7",
+      "7 or more",
+      "many dates",
+      "multiple dates"
+    ],
+    "explanation": "While January 1 is the most widely used New Year date, many cultures celebrate on different days: Chinese New Year (January–February), Persian Nowruz (March 20), Ethiopian New Year (September 11), Islamic New Year (varies by lunar calendar), Jewish Rosh Hashanah (September–October), and others. The concept of 'New Year' is culturally relative.",
+    "wowFactor": "It's technically someone's New Year almost every month — humans have never agreed on when the year actually starts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many different cultural New Year dates exist worldwide?",
+        "answer": "At least 7 dates",
+        "distractors": [
+          "Only 1 date",
+          "Only 2 dates",
+          "Only 3 dates"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Persian New Year, Nowruz, is celebrated on which date?",
+        "answer": "March 20",
+        "distractors": [
+          "January 1",
+          "February 5",
+          "April 1"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Different cultures celebrate New Year on different dates throughout the year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Persian New Year is called ___ and is celebrated on March 20.",
+        "answer": "Nowruz",
+        "distractors": [
+          "Akitu",
+          "Diwali",
+          "Eid"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/New_Year",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a calendar with multiple dates highlighted in gold and red, surrounded by lanterns, fireworks, and cultural symbols from China, Persia, and Ethiopia.",
+    "tags": [
+      "new year",
+      "calendar",
+      "culture",
+      "traditions",
+      "diversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-new-year-times-square",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "calendar_time",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "calendar_time",
+    "categoryL3": "",
+    "statement": "The Times Square New Year's Eve ball drop tradition began in 1907 and uses a ball covered in 2,688 crystals.",
+    "quizQuestion": "In what year did the Times Square ball drop tradition begin?",
+    "correctAnswer": "1907",
+    "distractors": [
+      "1887",
+      "1924",
+      "1950",
+      "1899",
+      "1900",
+      "1945",
+      "1970",
+      "1865"
+    ],
+    "acceptableAnswers": [
+      "1907",
+      "in 1907"
+    ],
+    "explanation": "The first New Year's Eve ball drop at Times Square in New York City happened on December 31, 1907, replacing fireworks that had been banned due to fire safety concerns. The original ball weighed 700 pounds and was decorated with 100 light bulbs. Today's ball weighs 11,875 pounds and is covered in 2,688 Waterford crystals.",
+    "wowFactor": "The Times Square ball weighs nearly 12,000 pounds — about the weight of a large elephant dropping 70 feet at midnight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did the Times Square New Year's ball drop tradition start?",
+        "answer": "1907",
+        "distractors": [
+          "1887",
+          "1924",
+          "1950"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many crystals cover the modern Times Square New Year's Eve ball?",
+        "answer": "2,688 crystals",
+        "distractors": [
+          "500 crystals",
+          "1,000 crystals",
+          "10,000 crystals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Times Square ball drop tradition began in the early 20th century.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Times Square New Year's Eve ball drop tradition started in ___.",
+        "answer": "1907",
+        "distractors": [
+          "1950",
+          "1887",
+          "1924"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Times_Square_Ball",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a glittering crystal ball descending over a neon-lit Times Square at night, crowds of tiny pixel people cheering below, fireworks bursting around it.",
+    "tags": [
+      "new year",
+      "times square",
+      "new york",
+      "ball drop",
+      "tradition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-commonwealth-member-count",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "",
+    "statement": "The Commonwealth of Nations has 56 member states and represents about 2.5 billion people — one-third of the world's population.",
+    "quizQuestion": "How many member states does the Commonwealth of Nations have?",
+    "correctAnswer": "56 members",
+    "distractors": [
+      "20 members",
+      "30 members",
+      "100 members",
+      "45 members",
+      "72 members",
+      "15 members",
+      "80 members",
+      "38 members"
+    ],
+    "acceptableAnswers": [
+      "56",
+      "56 members",
+      "56 member states",
+      "fifty-six"
+    ],
+    "explanation": "The Commonwealth of Nations is a voluntary association of 56 countries, mostly former territories of the British Empire. Together, its members span every inhabited continent and represent about 2.5 billion people — roughly a third of humanity. Notably, Mozambique and Rwanda are members despite having no historical British ties.",
+    "wowFactor": "One-third of all humans on Earth live in Commonwealth countries — and two of them were never even part of the British Empire.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many countries are members of the Commonwealth of Nations?",
+        "answer": "56 members",
+        "distractors": [
+          "20 members",
+          "30 members",
+          "100 members"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What fraction of the world's population lives in Commonwealth countries?",
+        "answer": "One-third",
+        "distractors": [
+          "One-fifth",
+          "One-half",
+          "One-quarter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Commonwealth of Nations has more than 50 member states.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Commonwealth of Nations has ___ member states representing about 2.5 billion people.",
+        "answer": "56",
+        "distractors": [
+          "30",
+          "100",
+          "45"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Commonwealth_of_Nations",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a world map with 56 countries highlighted in blue, the Commonwealth flag with a gold globe at center, surrounded by national flags in a circle.",
+    "tags": [
+      "commonwealth",
+      "world records",
+      "british empire",
+      "geopolitics",
+      "countries"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-commonwealth-non-british",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "world_records",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "world_records",
+    "categoryL3": "",
+    "statement": "Mozambique and Rwanda are members of the Commonwealth of Nations despite never having been part of the British Empire.",
+    "quizQuestion": "Which African country joined the Commonwealth without any British colonial history?",
+    "correctAnswer": "Mozambique",
+    "distractors": [
+      "South Africa",
+      "Kenya",
+      "Tanzania",
+      "Ghana",
+      "Nigeria",
+      "Egypt",
+      "Ethiopia",
+      "Sudan"
+    ],
+    "acceptableAnswers": [
+      "mozambique",
+      "rwanda",
+      "both mozambique and rwanda"
+    ],
+    "explanation": "Mozambique, a former Portuguese colony, joined the Commonwealth in 1995. Rwanda, a former Belgian and German colony, joined in 2009. Both were admitted due to regional ties and economic benefits. Their membership shows the Commonwealth has evolved far beyond its British colonial origins.",
+    "wowFactor": "Mozambique was a Portuguese colony — yet it joined the 'British' Commonwealth, making the club far more interesting than its name suggests.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which African country, once a Portuguese colony, is a Commonwealth member?",
+        "answer": "Mozambique",
+        "distractors": [
+          "Angola",
+          "Kenya",
+          "Tanzania"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What makes Mozambique and Rwanda unusual among Commonwealth of Nations members?",
+        "answer": "No British colonial history",
+        "distractors": [
+          "They are island nations",
+          "They are landlocked",
+          "They never had monarchy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "All Commonwealth of Nations members were once part of the British Empire.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___, a former Portuguese colony, joined the Commonwealth of Nations in 1995.",
+        "answer": "Mozambique",
+        "distractors": [
+          "Angola",
+          "Guinea",
+          "Congo"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Commonwealth_of_Nations",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a map of Africa with Mozambique and Rwanda highlighted in gold against blue, a Commonwealth flag planted between them on rolling green hills.",
+    "tags": [
+      "commonwealth",
+      "mozambique",
+      "rwanda",
+      "history",
+      "british empire",
+      "oddities"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-airport-busiest",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "transportation",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "transportation",
+    "categoryL3": "",
+    "statement": "Hartsfield-Jackson Atlanta International Airport is the world's busiest airport by passenger traffic, handling over 100 million passengers per year.",
+    "quizQuestion": "What is the world's busiest airport by passenger traffic?",
+    "correctAnswer": "Atlanta Airport",
+    "distractors": [
+      "Heathrow Airport",
+      "Dubai Airport",
+      "Beijing Airport",
+      "O'Hare Airport",
+      "Tokyo Haneda",
+      "Los Angeles Airport",
+      "Frankfurt Airport",
+      "JFK Airport"
+    ],
+    "acceptableAnswers": [
+      "atlanta airport",
+      "hartsfield-jackson",
+      "atlanta",
+      "atlanta international"
+    ],
+    "explanation": "Hartsfield-Jackson Atlanta International Airport has held the title of world's busiest airport by passenger count for most years since 1998. It serves as a major Delta Airlines hub and handles over 100 million passengers annually — that's more than 270,000 people every single day passing through one airport.",
+    "wowFactor": "Atlanta's airport handles more passengers per year than the entire population of Germany.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which airport is consistently the world's busiest by passenger traffic?",
+        "answer": "Atlanta Airport",
+        "distractors": [
+          "Heathrow Airport",
+          "Dubai Airport",
+          "Beijing Airport"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hartsfield-Jackson is the world's busiest airport, located in which US city?",
+        "answer": "Atlanta",
+        "distractors": [
+          "Chicago",
+          "Dallas",
+          "Los Angeles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Atlanta's airport handles over 100 million passengers per year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hartsfield-___ Atlanta International Airport is the world's busiest.",
+        "answer": "Jackson",
+        "distractors": [
+          "Johnson",
+          "Jefferson",
+          "Jenkins"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hartsfield%E2%80%93Jackson_Atlanta_International_Airport",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive airport terminal at sunset with planes lined up on tarmac, a crowd of pixel travelers with suitcases streaming through glass doors.",
+    "tags": [
+      "airport",
+      "transportation",
+      "world records",
+      "atlanta",
+      "aviation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-airport-oldest",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "transportation",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "transportation",
+    "categoryL3": "",
+    "statement": "College Park Airport in Maryland, opened in 1909, is the world's oldest continuously operating airport.",
+    "quizQuestion": "What is the world's oldest continuously operating airport?",
+    "correctAnswer": "College Park Airport",
+    "distractors": [
+      "Heathrow Airport",
+      "Kitty Hawk Airfield",
+      "O'Hare Airport",
+      "Croydon Airport",
+      "Le Bourget Airport",
+      "Tempelhof Airport",
+      "Farnborough Airport",
+      "Wright-Patterson"
+    ],
+    "acceptableAnswers": [
+      "college park airport",
+      "college park",
+      "college park airfield"
+    ],
+    "explanation": "College Park Airport in Maryland, USA opened on October 7, 1909 — just six years after the Wright Brothers' first flight. Wilbur Wright himself trained military officers there. It still operates today as a small general aviation airport, making it the oldest continuously operating airport in the world at over 115 years old.",
+    "wowFactor": "The world's oldest airport was opened by Wilbur Wright himself in 1909 — just six years after the first flight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the world's oldest continuously operating airport, opened in 1909?",
+        "answer": "College Park Airport",
+        "distractors": [
+          "Heathrow Airport",
+          "Le Bourget Airport",
+          "Croydon Airport"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "College Park Airport, the world's oldest, is located in which US state?",
+        "answer": "Maryland",
+        "distractors": [
+          "North Carolina",
+          "Ohio",
+          "Virginia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The world's oldest airport was opened in the early 1900s.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "College ___ Airport in Maryland, opened in 1909, is the world's oldest operating airport.",
+        "answer": "Park",
+        "distractors": [
+          "Hill",
+          "Gate",
+          "Town"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/College_Park_Airport",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a small early 1900s airfield with a biplane on grass, a wooden hangar, and Wilbur Wright in old-fashioned goggles and coat watching a plane take off.",
+    "tags": [
+      "airport",
+      "aviation history",
+      "famous firsts",
+      "wright brothers",
+      "maryland"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-airport-highest-altitude",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "transportation",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "transportation",
+    "categoryL3": "",
+    "statement": "Daocheng Yading Airport in China is the world's highest commercial airport at 4,411 meters (14,472 feet) above sea level.",
+    "quizQuestion": "Where is the world's highest commercial airport located?",
+    "correctAnswer": "Daocheng, China",
+    "distractors": [
+      "Lhasa, Tibet",
+      "Kathmandu, Nepal",
+      "Lukla, Nepal",
+      "Cusco, Peru",
+      "La Paz, Bolivia",
+      "Quito, Ecuador",
+      "Addis Ababa, Ethiopia",
+      "Kabul, Afghanistan"
+    ],
+    "acceptableAnswers": [
+      "daocheng china",
+      "daocheng",
+      "china",
+      "sichuan china"
+    ],
+    "explanation": "Daocheng Yading Airport in Sichuan province, China sits at 4,411 meters (14,472 feet) above sea level, making it the world's highest commercial airport. Opened in 2013, it serves the remote Daocheng Yading nature reserve. Aircraft require special performance calculations at this altitude due to thin air reducing engine thrust and lift.",
+    "wowFactor": "This Chinese airport sits higher than the summit of Mont Blanc — planes landing there are already above most of Europe's mountains.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country has the world's highest commercial airport at 4,411 meters elevation?",
+        "answer": "China",
+        "distractors": [
+          "Nepal",
+          "Peru",
+          "Bolivia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Daocheng Yading Airport, the world's highest commercial airport, is in which province of China?",
+        "answer": "Sichuan",
+        "distractors": [
+          "Tibet",
+          "Yunnan",
+          "Qinghai"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The world's highest commercial airport is located in China.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Daocheng Yading Airport in China sits at ___ meters above sea level, the world's highest.",
+        "answer": "4,411",
+        "distractors": [
+          "2,000",
+          "3,000",
+          "5,500"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Daocheng_Yading_Airport",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tiny airport runway perched on a high Tibetan plateau, snow-capped mountains towering in the background, a small plane touching down in thin blue air.",
+    "tags": [
+      "airport",
+      "world records",
+      "china",
+      "altitude",
+      "aviation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-sunni-islam-majority",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "Sunni Islam is the world's largest religious denomination, with approximately 1.5 billion followers worldwide.",
+    "quizQuestion": "How many followers does Sunni Islam have worldwide?",
+    "correctAnswer": "About 1.5 billion",
+    "distractors": [
+      "About 500 million",
+      "About 800 million",
+      "About 2.5 billion",
+      "About 300 million",
+      "About 1 billion",
+      "About 200 million",
+      "About 3 billion",
+      "About 750 million"
+    ],
+    "acceptableAnswers": [
+      "1.5 billion",
+      "about 1.5 billion",
+      "1.5 billion followers"
+    ],
+    "explanation": "Sunni Muslims make up about 85–90% of all Muslims worldwide, totaling approximately 1.5 billion people. This makes Sunni Islam not just the largest branch of Islam, but the single largest religious denomination anywhere on Earth. Sunnis follow the Sunnah — the recorded sayings and actions of the Prophet Muhammad.",
+    "wowFactor": "Sunni Islam is the single largest religious denomination on Earth — larger than any branch of Christianity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many Sunni Muslims are there worldwide?",
+        "answer": "About 1.5 billion",
+        "distractors": [
+          "About 500 million",
+          "About 800 million",
+          "About 2.5 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which religious denomination has approximately 1.5 billion followers, making it Earth's largest?",
+        "answer": "Sunni Islam",
+        "distractors": [
+          "Roman Catholicism",
+          "Shia Islam",
+          "Protestantism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Sunni Islam is the largest single religious denomination in the world.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sunni Islam has approximately ___ billion followers, making it Earth's largest denomination.",
+        "answer": "1.5",
+        "distractors": [
+          "0.5",
+          "3",
+          "0.8"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sunni_Islam",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses religious demographics",
+    "visualDescription": "Pixel art of a grand mosque at dawn with a crescent moon above, thousands of tiny worshippers in white forming prayer rows stretching to the horizon.",
+    "tags": [
+      "sunni islam",
+      "religion",
+      "demographics",
+      "world records",
+      "islam"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-sunni-hadith",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "famous_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "famous_firsts",
+    "categoryL3": "",
+    "statement": "Sunni Islam's name comes from the Arabic word 'Sunnah,' meaning the traditions and practices of the Prophet Muhammad.",
+    "quizQuestion": "What does 'Sunni' mean in Arabic?",
+    "correctAnswer": "Traditions/practices",
+    "distractors": [
+      "Followers of peace",
+      "Children of God",
+      "People of the book",
+      "Defenders of faith",
+      "Servants of Allah",
+      "Path of truth",
+      "Way of prayer",
+      "Chosen ones"
+    ],
+    "acceptableAnswers": [
+      "traditions",
+      "practices",
+      "traditions and practices",
+      "sunnah"
+    ],
+    "explanation": "The word 'Sunni' derives from 'Sunnah,' which refers to the recorded traditions, sayings, and practices of the Prophet Muhammad. Sunnis believe the Sunnah — alongside the Quran — is the authoritative guide for Islamic life. It was compiled into collections called Hadith, with Al-Bukhari's collection being the most respected.",
+    "wowFactor": "The name 'Sunni' literally means 'people of the tradition' — they named their entire denomination after the practice of recording Muhammad's habits.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the Arabic word 'Sunnah,' root of 'Sunni,' mean?",
+        "answer": "Traditions/practices",
+        "distractors": [
+          "Holy warriors",
+          "People of peace",
+          "Children of faith"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sunni Islam derives its name from what Arabic concept?",
+        "answer": "Sunnah",
+        "distractors": [
+          "Salah",
+          "Zakat",
+          "Shahada"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The name 'Sunni' comes from the Arabic word for the traditions of the Prophet Muhammad.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sunni Islam takes its name from 'Sunnah,' meaning the ___ of Prophet Muhammad.",
+        "answer": "traditions",
+        "distractors": [
+          "prayers",
+          "battles",
+          "revelations"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sunni_Islam",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses religious terminology",
+    "visualDescription": "Pixel art of an ancient Islamic scholar writing in Arabic script by candlelight, shelves of hadith manuscripts behind him in a domed study.",
+    "tags": [
+      "sunni islam",
+      "language",
+      "arabic",
+      "religion",
+      "etymology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-torah-first-printed",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "The Torah is written in Biblical Hebrew and is one of the oldest continuously-read texts still in active religious use.",
+    "quizQuestion": "In what language is the Torah written?",
+    "correctAnswer": "Biblical Hebrew",
+    "distractors": [
+      "Aramaic",
+      "Ancient Greek",
+      "Latin",
+      "Ancient Egyptian",
+      "Phoenician",
+      "Sanskrit",
+      "Persian",
+      "Akkadian"
+    ],
+    "acceptableAnswers": [
+      "biblical hebrew",
+      "hebrew",
+      "ancient hebrew"
+    ],
+    "explanation": "The Torah is written in Biblical Hebrew, a form of Hebrew dating back over 3,000 years. Remarkably, modern Israeli Hebrew evolved directly from this ancient language — making it one of the few languages successfully revived after millennia. Jews worldwide still read the original Hebrew text, not a translation, during weekly synagogue services.",
+    "wowFactor": "The Torah is read in a language that's 3,000 years old — and millions of people can still speak it conversationally today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which ancient language is the Torah written?",
+        "answer": "Biblical Hebrew",
+        "distractors": [
+          "Aramaic",
+          "Ancient Greek",
+          "Latin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What 3,000-year-old language was successfully revived and is used to read the Torah today?",
+        "answer": "Hebrew",
+        "distractors": [
+          "Latin",
+          "Aramaic",
+          "Sanskrit"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Torah is written in Biblical Hebrew.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Torah is written in Biblical ___, one of the world's oldest continuously used languages.",
+        "answer": "Hebrew",
+        "distractors": [
+          "Greek",
+          "Aramaic",
+          "Arabic"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Torah",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious text reference",
+    "visualDescription": "Pixel art of an ornate Torah scroll unrolled on a wooden podium, Hebrew letters glowing in gold, a Star of David carved into the wooden ark behind it.",
+    "tags": [
+      "torah",
+      "hebrew",
+      "judaism",
+      "language",
+      "religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-torah-five-books",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "The Torah consists of exactly five books: Genesis, Exodus, Leviticus, Numbers, and Deuteronomy.",
+    "quizQuestion": "How many books make up the Torah?",
+    "correctAnswer": "Five books",
+    "distractors": [
+      "Three books",
+      "Seven books",
+      "Ten books",
+      "Twelve books",
+      "Forty books",
+      "One book",
+      "Twenty-four books",
+      "Eight books"
+    ],
+    "acceptableAnswers": [
+      "five",
+      "5",
+      "five books",
+      "5 books"
+    ],
+    "explanation": "The Torah — also called the Pentateuch in Greek — consists of exactly five books attributed to Moses: Genesis (Bereshit), Exodus (Shemot), Leviticus (Vayikra), Numbers (Bamidbar), and Deuteronomy (Devarim). The Greek word 'Pentateuch' literally means 'five containers,' referring to the scroll cases. These same five books also form the beginning of both the Christian Old Testament and are foundational to Jewish law.",
+    "wowFactor": "The entire foundation of Jewish law — centuries of debate and commentary — rests on just five ancient books.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many books comprise the Torah?",
+        "answer": "Five books",
+        "distractors": [
+          "Three books",
+          "Seven books",
+          "Ten books"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The five books of the Torah are collectively known by what Greek name?",
+        "answer": "Pentateuch",
+        "distractors": [
+          "Hexateuch",
+          "Decalogue",
+          "Apocrypha"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Torah is made up of exactly five books.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Torah has five books, which is why it's also called the ___ in Greek.",
+        "answer": "Pentateuch",
+        "distractors": [
+          "Hexateuch",
+          "Apocrypha",
+          "Decalogue"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Torah",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious text reference",
+    "visualDescription": "Pixel art of five ancient scrolls in ornate silver cases arranged side by side on a velvet cloth, each with a Hebrew letter label, glowing warmly in candlelight.",
+    "tags": [
+      "torah",
+      "judaism",
+      "pentateuch",
+      "religion",
+      "bible"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-torah-annual-reading",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_words",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_words",
+    "categoryL3": "",
+    "statement": "Jewish communities read the entire Torah aloud in synagogue every year on a fixed weekly cycle, finishing and restarting on Simchat Torah.",
+    "quizQuestion": "On which Jewish holiday is the annual Torah reading cycle completed and restarted?",
+    "correctAnswer": "Simchat Torah",
+    "distractors": [
+      "Yom Kippur",
+      "Passover",
+      "Rosh Hashanah",
+      "Hanukkah",
+      "Purim",
+      "Shavuot",
+      "Sukkot",
+      "Tisha B'Av"
+    ],
+    "acceptableAnswers": [
+      "simchat torah",
+      "simhat torah"
+    ],
+    "explanation": "Every week in synagogue, a specific Torah portion (called a 'parasha') is read aloud in Hebrew. The 54 portions are carefully divided so the entire Torah is read once per year, completing on the holiday of Simchat Torah (meaning 'Joy of the Torah'). Immediately after finishing, the reading cycle restarts from the beginning — symbolizing that Torah study is never truly finished.",
+    "wowFactor": "Jews have read the same five books out loud every single week for thousands of years, finishing and starting over in an unbroken chain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which Jewish holiday is the annual Torah reading cycle completed and restarted?",
+        "answer": "Simchat Torah",
+        "distractors": [
+          "Yom Kippur",
+          "Passover",
+          "Hanukkah"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Simchat Torah means what in Hebrew?",
+        "answer": "Joy of the Torah",
+        "distractors": [
+          "End of the Torah",
+          "Gift of Scripture",
+          "Day of Reading"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Torah is read in its entirety in synagogue over the course of one year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Torah is divided into 54 weekly portions called a '___,' read aloud every Sabbath.",
+        "answer": "parasha",
+        "distractors": [
+          "kiddush",
+          "mitzvah",
+          "havdalah"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Simchat_Torah",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious practice reference",
+    "visualDescription": "Pixel art of a joyful synagogue scene with Torah scrolls being held aloft, dancing figures in prayer shawls, a star-filled night sky visible through high windows.",
+    "tags": [
+      "torah",
+      "judaism",
+      "simchat torah",
+      "tradition",
+      "religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

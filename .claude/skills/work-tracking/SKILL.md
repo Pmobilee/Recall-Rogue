@@ -3,6 +3,24 @@ name: work-tracking
 description: Enforces AR-based work tracking for all implementation tasks. Ensures every session has a phase doc before any code is touched. Always active — check before starting any implementation work.
 ---
 
+# 🚨🚨🚨 THIS IS THE MOST IMPORTANT RULE IN THE ENTIRE PROJECT 🚨🚨🚨
+#
+# EVERY non-trivial task MUST have an AR phase doc BEFORE any code is written.
+# This means: new features, multi-file changes, content batches, refactors,
+# balance changes, UI updates — EVERYTHING that takes more than 2 minutes.
+#
+# The AR doc goes in `docs/roadmap/phases/AR-NN-SHORT-NAME.md` and contains:
+# - Overview of what's being done and why
+# - Numbered TODO checklist with acceptance criteria per item
+# - Files affected table
+# - Verification gate (typecheck, build, tests)
+#
+# When ALL TODOs are checked off → move to `docs/roadmap/completed/`
+#
+# AGENTS: You are the #1 violator of this rule. DO NOT start coding without
+# checking if an AR doc exists. If it doesn't exist, CREATE ONE FIRST.
+# 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+
 # Work Tracking Enforcement
 
 ## ⛔ ABSOLUTE BLOCKER — READ THIS FIRST ⛔

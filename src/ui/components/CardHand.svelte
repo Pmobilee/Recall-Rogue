@@ -8,6 +8,8 @@
   import { getCardFrameUrl, onCardFrameReady } from '../utils/cardFrameManifest'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
+  import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
+  import { audioManager } from '../../services/audioService'
 
   interface Props {
     cards: Card[]
@@ -72,7 +74,7 @@
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
-    const spread = 30
+    const spread = 39
     const step = spread / (total - 1)
     return -spread / 2 + step * index
   }
@@ -81,10 +83,10 @@
     if (total <= 1) return 0
     const mid = (total - 1) / 2
     const normalized = (index - mid) / mid
-    return (1 - Math.abs(normalized)) * 30
+    return (1 - Math.abs(normalized)) * 55
   }
 
-  let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * 571 / 1024) : 390)
+  let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO) : BASE_WIDTH)
 
   const cardSpacing = $derived.by(() => {
     const total = cards.length
@@ -174,7 +176,7 @@
 
   onMount(() => {
     const onResize = (): void => {
-      viewportWidth = Math.min(window.innerWidth, window.innerHeight * 571 / 1024)
+      viewportWidth = Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO)
     }
     window.addEventListener('resize', onResize, { passive: true })
     return () => {
@@ -257,6 +259,19 @@
       img.decoding = 'async'
       img.src = url
     }
+  })
+
+  // Track card count to detect newly dealt cards and play staggered deal sounds
+  let prevCardCount = $state(cards.length)
+  $effect(() => {
+    const newCount = cards.length
+    const added = newCount - prevCardCount
+    if (added > 0) {
+      for (let i = 0; i < added; i++) {
+        setTimeout(() => audioManager.playSound('card_deal'), i * 80)
+      }
+    }
+    prevCardCount = newCount
   })
 
   function handlePointerEnter(e: PointerEvent, index: number): void {
@@ -399,7 +414,7 @@
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         {cardFrameUrl ? '' : `border-color: ${domainColor};`}
-        animation-delay: {i * 50}ms;
+        animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
       "
@@ -570,11 +585,11 @@
     --card-w: calc(var(--gw, 390px) * 0.30);
     --card-h: calc(var(--card-w) * 1.42);
     position: absolute;
-    bottom: calc(40px + 12vh);
+    bottom: calc(calc(48px * var(--layout-scale, 1)) + 8vh);
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);
-    height: 280px;
+    height: calc(280px * var(--layout-scale, 1));
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -727,7 +742,7 @@
     z-index: 50;
     /* Start at bottom center of hand area */
     left: 50%;
-    bottom: 40px;
+    bottom: calc(40px * var(--layout-scale, 1));
     transform: translateX(-50%);
     will-change: transform, opacity;
   }
@@ -902,14 +917,14 @@
 
   .ap-badge {
     position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 20px;
-    height: 20px;
+    top: calc(-4px * var(--layout-scale, 1));
+    right: calc(-4px * var(--layout-scale, 1));
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     border-radius: 50%;
     background: #1e40af;
     color: white;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -934,10 +949,10 @@
   }
 
   .card-tier-badge {
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     margin-top: auto;
-    margin-bottom: 3px;
+    margin-bottom: calc(3px * var(--layout-scale, 1));
     color: #c0c0c0;
     position: relative;
     z-index: 1;
@@ -953,26 +968,26 @@
 
   .trial-badge {
     position: absolute;
-    top: 5px;
-    right: 3px;
-    font-size: 7px;
+    top: calc(5px * var(--layout-scale, 1));
+    right: calc(3px * var(--layout-scale, 1));
+    font-size: calc(7px * var(--layout-scale, 1));
     font-weight: 800;
     background: rgba(241, 196, 15, 0.9);
     color: #1a1a1a;
     border-radius: 3px;
-    padding: 1px 3px;
+    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
   }
 
   .echo-badge {
     position: absolute;
-    top: 5px;
-    left: 3px;
-    font-size: 7px;
+    top: calc(5px * var(--layout-scale, 1));
+    left: calc(3px * var(--layout-scale, 1));
+    font-size: calc(7px * var(--layout-scale, 1));
     font-weight: 800;
     color: #d1d5db;
     background: rgba(31, 41, 55, 0.8);
     border-radius: 3px;
-    padding: 1px 3px;
+    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
   }
 
 
@@ -980,7 +995,10 @@
   @keyframes card-fan-in {
     from {
       opacity: 0;
-      transform: translateX(0) translateY(60px) rotate(0deg);
+      transform: translateX(120px) translateY(30px) rotate(15deg) scale(0.8);
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -1298,7 +1316,7 @@
   }
   @keyframes discardMinimize {
     0% { opacity: 0.5; }
-    100% { transform: translate(30vw, 40vh) scale(0.12); opacity: 0; }
+    100% { transform: translate(-30vw, 40vh) scale(0.12); opacity: 0; }
   }
 
   /* ═══ UPGRADED CARD GLOW ═══ */

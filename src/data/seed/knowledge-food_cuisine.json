@@ -14940,5 +14940,1890 @@
       "liver",
       "spice types"
     ]
+  },
+  {
+    "id": "food-beer-ancient-origins",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Beer is one of the world's oldest beverages, with evidence of brewing dating back over 13,000 years.",
+    "quizQuestion": "How many years ago did humans first brew beer?",
+    "correctAnswer": "13,000 years ago",
+    "distractors": [
+      "5,000 years ago",
+      "2,000 years ago",
+      "8,000 years ago",
+      "20,000 years ago",
+      "1,000 years ago",
+      "500 years ago",
+      "3,500 years ago",
+      "10,000 years ago"
+    ],
+    "acceptableAnswers": [
+      "13,000 years ago",
+      "13000 years ago",
+      "over 13,000 years"
+    ],
+    "explanation": "Archaeological evidence from the Raqefet Cave in Israel suggests humans were brewing beer-like beverages around 13,000 years ago, even before widespread agriculture. This predates many ancient civilizations and suggests beer may have actually motivated early grain cultivation.",
+    "wowFactor": "Beer may be older than farming itself — early humans might have grown grain just to brew it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far back does beer brewing evidence date?",
+        "answer": "13,000 years",
+        "distractors": [
+          "5,000 years",
+          "2,000 years",
+          "8,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Beer brewing evidence from 13,000 years ago was found where?",
+        "answer": "Raqefet Cave, Israel",
+        "distractors": [
+          "Egypt pyramids",
+          "Mesopotamia ruins",
+          "China river valley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Beer brewing predates widespread agriculture by thousands of years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Evidence of beer brewing dates back over ___ years, before widespread agriculture.",
+        "answer": "13,000",
+        "distractors": [
+          "5,000",
+          "2,000",
+          "8,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Beer",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient cave dwellers grinding grain into stone vessels beside a glowing fire, with crude pottery fermentation jars in a torchlit limestone cave.",
+    "tags": [
+      "beer",
+      "fermentation",
+      "ancient history",
+      "archaeology",
+      "beverages"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-beer-ingredients",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Hops were only added to beer recipes around the 9th century, replacing a bitter herb mixture called gruit.",
+    "quizQuestion": "What bitter herb blend did hops replace in medieval beer?",
+    "correctAnswer": "Gruit",
+    "distractors": [
+      "Wormwood blend",
+      "Juniper mix",
+      "Yarrow spice",
+      "Bog myrtle brew",
+      "Heather ale",
+      "Mugwort herb",
+      "Meadowsweet mix",
+      "Betony leaf"
+    ],
+    "acceptableAnswers": [
+      "gruit",
+      "grut",
+      "gruyt"
+    ],
+    "explanation": "Before hops became the dominant bittering agent in beer, medieval European brewers used gruit — a blend of herbs like bog myrtle, yarrow, and wild rosemary. Monasteries often held monopolies on gruit sales, making it both a culinary and political commodity.",
+    "wowFactor": "Medieval beer had no hops — instead monasteries controlled a secret herb blend that made them wealthy and powerful.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What herb mixture did medieval brewers use before hops?",
+        "answer": "Gruit",
+        "distractors": [
+          "Wormwood blend",
+          "Juniper mix",
+          "Yarrow spice"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Gruit was replaced in beer recipes by which ingredient around the 9th century?",
+        "answer": "Hops",
+        "distractors": [
+          "Barley malt",
+          "Rye grain",
+          "Wheat flour"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Hops have been used in beer since ancient Egyptian times.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Medieval brewers used ___ instead of hops to bitter their beer.",
+        "answer": "gruit",
+        "distractors": [
+          "wormwood",
+          "juniper",
+          "yarrow"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Beer",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A robed medieval monk stirring a giant wooden brewing vat, surrounded by dried herbs hanging from stone ceiling, candlelight flickering in a monastery cellar.",
+    "tags": [
+      "beer",
+      "medieval",
+      "hops",
+      "gruit",
+      "fermentation",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-beer-space",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Japanese brewery Sapporo produced beer using barley grown from seeds that had orbited Earth on the ISS for space farming research.",
+    "quizQuestion": "Which company brewed beer from barley grown after orbiting the ISS?",
+    "correctAnswer": "Sapporo",
+    "distractors": [
+      "Asahi",
+      "Kirin",
+      "Suntory",
+      "Budweiser",
+      "Heineken",
+      "Corona",
+      "Guinness",
+      "Carlsberg"
+    ],
+    "acceptableAnswers": [
+      "sapporo"
+    ],
+    "explanation": "Sapporo Breweries partnered with space research teams to grow barley from seeds returned from the International Space Station. The resulting 'Space Barley Beer' was brewed in limited quantities as a proof-of-concept for future space agriculture and off-planet food production.",
+    "wowFactor": "You could drink beer brewed from ingredients that traveled to space — Sapporo literally made astronaut beer.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Japanese brewery made beer from ISS-orbited barley seeds?",
+        "answer": "Sapporo",
+        "distractors": [
+          "Asahi",
+          "Kirin",
+          "Suntory"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sapporo's Space Barley Beer used grain seeds that had done what?",
+        "answer": "Orbited the ISS",
+        "distractors": [
+          "Been frozen for 100 years",
+          "Grown underwater",
+          "Survived a volcano"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Sapporo brewery has brewed beer from barley seeds that orbited Earth on the ISS.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sapporo's ___ beer used barley from seeds that had orbited Earth on the space station.",
+        "answer": "Space Barley",
+        "distractors": [
+          "Zero Gravity",
+          "Cosmic",
+          "Orbital"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sapporo_Breweries",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of the ISS orbiting Earth with golden barley floating in zero gravity inside a module, then cut to a gleaming amber beer glass on a Tokyo rooftop.",
+    "tags": [
+      "beer",
+      "sapporo",
+      "space",
+      "ISS",
+      "japan",
+      "innovation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-curry-no-single-recipe",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "India has no single dish called 'curry' — the term is a British invention to describe hundreds of distinct regional spiced dishes.",
+    "quizQuestion": "Who invented the blanket term 'curry' for all Indian spiced dishes?",
+    "correctAnswer": "The British",
+    "distractors": [
+      "The Portuguese",
+      "The Mughals",
+      "The Dutch",
+      "The French",
+      "The Persians",
+      "The Americans",
+      "The Chinese",
+      "The Ottomans"
+    ],
+    "acceptableAnswers": [
+      "the british",
+      "british",
+      "british colonists",
+      "british empire"
+    ],
+    "explanation": "In India, dishes are known by specific regional names — rogan josh, saag, korma, vindaloo, dal, and hundreds more. British colonizers lumped all spiced Indian dishes under 'curry' as a simplification, which is why curry powder (a British invention) doesn't exist in traditional Indian cooking.",
+    "wowFactor": "'Curry' is basically a colonial shorthand that flattened hundreds of distinct Indian dishes into one word — Indian cooks find it baffling.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented the generic term 'curry' to describe all Indian spiced dishes?",
+        "answer": "British colonizers",
+        "distractors": [
+          "Portuguese traders",
+          "Mughal emperors",
+          "French chefs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does 'curry powder' not exist in traditional Indian cooking?",
+        "answer": "It's a British invention",
+        "distractors": [
+          "Spices were too expensive",
+          "Powder form wasn't possible",
+          "Indians prefer fresh herbs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Indian cuisine has one unified dish called curry that is made the same way across the country.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ invented the catch-all term 'curry' for hundreds of distinct Indian spiced dishes.",
+        "answer": "British",
+        "distractors": [
+          "Portuguese",
+          "Mughals",
+          "French"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curry",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian-era British officer looking perplexed at an Indian bazaar filled with dozens of different spiced dishes, each labeled with a complex regional name.",
+    "tags": [
+      "curry",
+      "british",
+      "colonialism",
+      "india",
+      "food history",
+      "misconceptions"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-curry-japan",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Japanese curry was introduced via the British Navy in the 1870s and is now milder and sweeter than Indian curries, often served with rice.",
+    "quizQuestion": "How did curry reach Japan in the 1870s?",
+    "correctAnswer": "Via the British Navy",
+    "distractors": [
+      "Via Indian traders",
+      "Via Portuguese ships",
+      "Via Chinese merchants",
+      "Via Dutch sailors",
+      "Via American soldiers",
+      "Via French diplomats",
+      "Via Silk Road",
+      "Via Korean settlers"
+    ],
+    "acceptableAnswers": [
+      "via the british navy",
+      "through the british navy",
+      "the british navy",
+      "british navy"
+    ],
+    "explanation": "When Japan opened to Western influence in the Meiji era, British naval officers brought curry to Japan. Japanese cooks adapted it significantly — making it sweeter, thicker, and milder — creating a unique style that is now one of Japan's most popular everyday meals, rivaling sushi in frequency.",
+    "wowFactor": "Japanese curry is so different from Indian curry that Indians often don't recognize it — it traveled through Britain first and transformed completely.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How was curry introduced to Japan during the Meiji era?",
+        "answer": "Via the British Navy",
+        "distractors": [
+          "Via Indian traders",
+          "Via Portuguese ships",
+          "Via Chinese cooks"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Japanese curry differs from Indian curry because it was adapted to be what?",
+        "answer": "Milder and sweeter",
+        "distractors": [
+          "Spicier and thinner",
+          "Sourer and saltier",
+          "Hotter and chunkier"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Japan adopted curry directly from Indian traders in the 1870s.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Japanese curry arrived via the ___ in the 1870s during the Meiji era.",
+        "answer": "British Navy",
+        "distractors": [
+          "Indian merchants",
+          "Chinese traders",
+          "Portuguese ships"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_curry",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Meiji-era Japanese naval officer eating from a steaming bowl of thick brown curry over white rice, with a British warship visible through a porthole.",
+    "tags": [
+      "curry",
+      "japan",
+      "meiji",
+      "british navy",
+      "food history",
+      "asian cuisine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-dimsum-yumcha",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Dim sum is traditionally served during yum cha — a Cantonese tea-drinking ritual where small plates accompany multiple rounds of tea.",
+    "quizQuestion": "What tea-drinking ritual is dim sum traditionally served during?",
+    "correctAnswer": "Yum cha",
+    "distractors": [
+      "Gong fu cha",
+      "Chado",
+      "Senchado",
+      "Cha qi",
+      "Gaiwan tea",
+      "Oolong ritual",
+      "Dim cha",
+      "Zen tea"
+    ],
+    "acceptableAnswers": [
+      "yum cha",
+      "yumcha",
+      "dim cha"
+    ],
+    "explanation": "Yum cha literally means 'drink tea' in Cantonese, and dim sum means 'touch the heart.' The tradition began along the ancient Silk Road where weary travelers would rest at teahouses, and small bites of food began to accompany the tea. Today yum cha is a social institution in Cantonese culture.",
+    "wowFactor": "Dim sum literally means 'touch the heart' — these tiny bites were designed to complement tea, not replace a meal.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does 'yum cha' literally mean in Cantonese?",
+        "answer": "Drink tea",
+        "distractors": [
+          "Touch heart",
+          "Small bite",
+          "Share food"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does 'dim sum' literally mean in Cantonese?",
+        "answer": "Touch the heart",
+        "distractors": [
+          "Drink tea",
+          "Small plate",
+          "Rice dumpling"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Dim sum originated as food served alongside tea at Silk Road teahouses.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dim sum is traditionally served during ___, a Cantonese tea-drinking ritual.",
+        "answer": "yum cha",
+        "distractors": [
+          "gong fu cha",
+          "chado",
+          "senchado"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bustling Cantonese teahouse with bamboo steamer baskets stacked high, families sharing dumplings and sipping tea from delicate porcelain cups.",
+    "tags": [
+      "dim sum",
+      "yum cha",
+      "cantonese",
+      "tea",
+      "china",
+      "dumplings"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-dimsum-cart-tradition",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "The dim sum cart tradition — where servers wheel food through the restaurant — originated in Hong Kong restaurants in the early 20th century.",
+    "quizQuestion": "Where did the rolling cart style of dim sum service originate?",
+    "correctAnswer": "Hong Kong",
+    "distractors": [
+      "Guangzhou",
+      "Shanghai",
+      "Beijing",
+      "Singapore",
+      "Macau",
+      "Taipei",
+      "Chengdu",
+      "Shenzhen"
+    ],
+    "acceptableAnswers": [
+      "hong kong"
+    ],
+    "explanation": "While dim sum itself originated in Guangdong province, the iconic wheeled cart service was a Hong Kong innovation that allowed customers to see and choose dishes as they were carried through the restaurant. Today many restaurants use tablets for ordering, but traditional cart service remains beloved.",
+    "wowFactor": "The rolling cart that makes dim sum so fun was a Hong Kong invention — before that, you had to shout your order.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which city pioneered the rolling cart service style for dim sum?",
+        "answer": "Hong Kong",
+        "distractors": [
+          "Guangzhou",
+          "Shanghai",
+          "Beijing"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hong Kong's dim sum cart innovation let customers do what?",
+        "answer": "See and choose dishes",
+        "distractors": [
+          "Cook their own food",
+          "Order by phone",
+          "Pay per minute"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The rolling cart dim sum service style originated in ancient China during the Tang dynasty.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The iconic dim sum cart service where servers wheel food through the room originated in ___.",
+        "answer": "Hong Kong",
+        "distractors": [
+          "Guangzhou",
+          "Shanghai",
+          "Beijing"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cheerful server in qipao pushes a bamboo-stacked cart through a bustling Hong Kong restaurant, with steaming dumplings peeking from open baskets.",
+    "tags": [
+      "dim sum",
+      "hong kong",
+      "cart service",
+      "cantonese",
+      "restaurant culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-ramen-chinese-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen originated from Chinese wheat noodle dishes brought to Japan by Chinese immigrants in the late 19th century, not a native Japanese creation.",
+    "quizQuestion": "Ramen noodles came to Japan from which country's culinary tradition?",
+    "correctAnswer": "China",
+    "distractors": [
+      "Korea",
+      "Vietnam",
+      "Mongolia",
+      "Thailand",
+      "Malaysia",
+      "Taiwan",
+      "Philippines",
+      "India"
+    ],
+    "acceptableAnswers": [
+      "china",
+      "chinese"
+    ],
+    "explanation": "Ramen's ancestor is the Chinese lamian (hand-pulled noodle), and early versions in Japan were sold from Chinese food carts. The word 'ramen' itself is the Japanese pronunciation of the Chinese characters for 'pulled noodle.' Japan transformed it into something uniquely its own over the 20th century.",
+    "wowFactor": "Ramen is actually Japanese for 'Chinese pulled noodle' — Japan turned an immigrant food into its most beloved national dish.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What Chinese noodle is considered ramen's ancestor?",
+        "answer": "Lamian",
+        "distractors": [
+          "Lo mein",
+          "Udon",
+          "Soba"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The word 'ramen' is the Japanese pronunciation of Chinese characters meaning what?",
+        "answer": "Pulled noodle",
+        "distractors": [
+          "Wheat broth",
+          "Pork soup",
+          "Spice noodle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ramen is a dish that originated in Japan with no Chinese influence.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramen derives from Chinese ___ noodles brought to Japan by immigrants in the 1800s.",
+        "answer": "lamian",
+        "distractors": [
+          "lo mein",
+          "udon",
+          "soba"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century Chinese street vendor pulling long noodles by hand near a Japanese harbor, Meiji-era Japanese workers watching curiously around the cart.",
+    "tags": [
+      "ramen",
+      "china",
+      "japan",
+      "history",
+      "noodles",
+      "immigration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-padthai-nationalist-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Pad Thai was invented in the 1930s as a government campaign to reduce rice consumption and promote Thai national identity during wheat shortage.",
+    "quizQuestion": "Why did the Thai government promote pad Thai in the 1930s?",
+    "correctAnswer": "To reduce rice consumption",
+    "distractors": [
+      "To fight malnutrition",
+      "To boost fishing industry",
+      "To replace Chinese food",
+      "To export noodles",
+      "To honor the king",
+      "To compete with Vietnam",
+      "To use surplus eggs",
+      "To modernize cooking"
+    ],
+    "acceptableAnswers": [
+      "to reduce rice consumption",
+      "reduce rice consumption",
+      "rice shortage campaign"
+    ],
+    "explanation": "Thai Prime Minister Phibun promoted pad Thai through a nationalistic campaign that discouraged Chinese noodle shops and encouraged Thais to eat this new dish. Rice was being rationed, and pad Thai's rice noodles used less grain. The government even distributed free noodle carts to entrepreneurs.",
+    "wowFactor": "Thailand's most famous dish was literally engineered by the government in the 1930s as wartime propaganda — it's a political invention, not ancient tradition.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who promoted the creation of pad Thai in the 1930s?",
+        "answer": "Thai PM Phibun",
+        "distractors": [
+          "King Bhumibol",
+          "Chinese merchants",
+          "Buddhist monks"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pad Thai's rice noodles were promoted over plain rice for what practical reason?",
+        "answer": "They used less grain",
+        "distractors": [
+          "They tasted better",
+          "They were cheaper",
+          "They lasted longer"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pad Thai is an ancient Thai dish that dates back centuries.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pad Thai was created in the ___ as a Thai government campaign to reduce rice consumption.",
+        "answer": "1930s",
+        "distractors": [
+          "1800s",
+          "1950s",
+          "1960s"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1930s Thai government poster showing a smiling family eating pad Thai noodles with noodle carts being handed out to street vendors by officials.",
+    "tags": [
+      "pad thai",
+      "thailand",
+      "nationalism",
+      "1930s",
+      "food history",
+      "government"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-biryani-mughal-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Biryani likely originated in Persia and was brought to the Indian subcontinent by Mughal emperors in the 16th century.",
+    "quizQuestion": "Which empire introduced biryani to India in the 16th century?",
+    "correctAnswer": "Mughal Empire",
+    "distractors": [
+      "Ottoman Empire",
+      "Maratha Empire",
+      "Gupta Empire",
+      "Delhi Sultanate",
+      "British Empire",
+      "Maurya Empire",
+      "Persian Empire",
+      "Timurid dynasty"
+    ],
+    "acceptableAnswers": [
+      "mughal empire",
+      "mughals",
+      "the mughals",
+      "mughal"
+    ],
+    "explanation": "The word 'biryani' likely derives from the Persian 'birian' (fried before cooking) or 'birinj' (rice). Mughal royal courts refined the dish with saffron, dried fruits, and dum cooking technique — slow-cooking rice and meat in a sealed pot. Each Mughal city developed its own regional variant.",
+    "wowFactor": "Biryani's name comes from Persian, its technique from Mughal royalty, and its spice combinations from Indian street cooks — it's a three-culture mashup.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The word 'biryani' likely derives from a Persian word meaning what?",
+        "answer": "Fried before cooking",
+        "distractors": [
+          "Mixed spices",
+          "Royal rice",
+          "Layered grain"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Biryani uses which slow-cooking technique where rice and meat cook in a sealed pot?",
+        "answer": "Dum cooking",
+        "distractors": [
+          "Steaming",
+          "Tandoor roasting",
+          "Open-fire boiling"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Biryani was invented in India with no outside culinary influences.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Biryani was brought to India by the ___ in the 16th century and refined with saffron.",
+        "answer": "Mughals",
+        "distractors": [
+          "Ottomans",
+          "British",
+          "Persians"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Mughal emperor's royal kitchen with ornate spice jars, saffron threads floating over a sealed clay pot, servants tending to aromatic biryani over embers.",
+    "tags": [
+      "biryani",
+      "mughal",
+      "india",
+      "persia",
+      "rice",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-biryani-dum-technique",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "In dum biryani, the pot is sealed with dough during the final cooking stage to trap steam, ensuring the rice cooks perfectly in its own vapor.",
+    "quizQuestion": "What seals a biryani pot during the dum cooking method?",
+    "correctAnswer": "Dough",
+    "distractors": [
+      "Banana leaf",
+      "Aluminum foil",
+      "Clay lid",
+      "Wax seal",
+      "Rice paste",
+      "Butter seal",
+      "Salt crust",
+      "Wet cloth"
+    ],
+    "acceptableAnswers": [
+      "dough",
+      "bread dough",
+      "wheat dough",
+      "atta dough"
+    ],
+    "explanation": "The dum method (from Persian 'dam,' meaning breath or steam) involves layering partially cooked rice over marinated meat, then sealing the pot with flour dough. The steam created inside finishes cooking both the rice and meat simultaneously, infusing each grain with the aromatic spices below.",
+    "wowFactor": "Biryani cooks itself — once sealed with dough, the pot becomes its own pressure cooker, and rice absorbs every molecule of aromatic steam.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the Persian word 'dum' mean, referring to biryani's cooking method?",
+        "answer": "Steam or breath",
+        "distractors": [
+          "Slow cook",
+          "Sealed heat",
+          "Slow fire"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In dum biryani, the dough seal is used to trap what inside the pot?",
+        "answer": "Steam",
+        "distractors": [
+          "Saffron smoke",
+          "Charcoal heat",
+          "Herb aroma"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Biryani's dum method seals the cooking pot with a dough crust to trap steam.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dum biryani seals the pot with ___ dough to trap steam during the final cooking stage.",
+        "answer": "flour",
+        "distractors": [
+          "banana",
+          "clay",
+          "rice"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Indian cook sealing a large clay pot with white dough strips, aromatic steam rising as saffron-yellow rice and spiced lamb cook inside.",
+    "tags": [
+      "biryani",
+      "dum cooking",
+      "technique",
+      "india",
+      "steam",
+      "clay pot"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-pho-broth-complexity",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Authentic pho broth requires charring onions and ginger over open flame and simmering beef bones for 6-12 hours to develop its complex flavor.",
+    "quizQuestion": "How long must beef bones simmer for authentic pho broth?",
+    "correctAnswer": "6-12 hours",
+    "distractors": [
+      "30 minutes",
+      "1-2 hours",
+      "24-48 hours",
+      "3-4 hours",
+      "20 minutes",
+      "2-3 days",
+      "15 minutes",
+      "4-5 hours"
+    ],
+    "acceptableAnswers": [
+      "6-12 hours",
+      "six to twelve hours",
+      "at least 6 hours"
+    ],
+    "explanation": "The complexity of pho broth comes from three steps: charring onion and ginger directly over flame to add smokiness, blanching beef bones to remove impurities, then slow-simmering for up to 12 hours with star anise, cinnamon, cloves, and coriander seeds. The charring step is what distinguishes pho from other bone broths.",
+    "wowFactor": "The secret to pho is literally burning the vegetables on purpose — charred onion and ginger add a smoky depth that separates it from all other soups.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unusual step gives authentic pho broth its smoky flavor?",
+        "answer": "Charring onion and ginger",
+        "distractors": [
+          "Adding smoke oil",
+          "Burning star anise",
+          "Toasting rice"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which spices are added during pho's long bone broth simmer?",
+        "answer": "Star anise, cinnamon, cloves",
+        "distractors": [
+          "Cumin, turmeric, chili",
+          "Ginger, galangal, lemon",
+          "Basil, mint, cilantro"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Authentic pho broth requires charring onions and ginger over an open flame.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Authentic pho broth simmers beef bones for ___ to develop its complex flavor.",
+        "answer": "6-12 hours",
+        "distractors": [
+          "30 minutes",
+          "24-48 hours",
+          "3-4 hours"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pho",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Vietnamese cook holding onion halves directly over a gas flame until charred black, beside a massive stockpot of simmering beef bones and star anise.",
+    "tags": [
+      "pho",
+      "broth",
+      "technique",
+      "vietnam",
+      "charring",
+      "slow cooking"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-pho-north-south",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Northern Vietnamese pho (pho Bac) is served plain with simple garnishes, while Southern pho (pho Nam) comes with a huge plate of bean sprouts, herbs, and sauces.",
+    "quizQuestion": "Which Vietnamese pho style comes with bean sprouts, herbs, and hoisin sauce?",
+    "correctAnswer": "Southern pho",
+    "distractors": [
+      "Northern pho",
+      "Central pho",
+      "Hanoi pho",
+      "Mountain pho",
+      "Street pho",
+      "Royal pho",
+      "Original pho",
+      "Colonial pho"
+    ],
+    "acceptableAnswers": [
+      "southern pho",
+      "pho nam",
+      "pho saigon",
+      "southern style pho"
+    ],
+    "explanation": "Hanoi's pho Bac is minimalist — clear broth, rice noodles, beef, scallions, and little else. Ho Chi Minh City's pho Nam reflects the south's abundance with a platter of bean sprouts, fresh basil, lime, jalapeños, and the famous option to add hoisin sauce or sriracha. Northerners often consider the southern version modified beyond recognition.",
+    "wowFactor": "Hanoi and Ho Chi Minh City wage a cultural cold war over pho — northern purists are horrified by southern pho loaded with bean sprouts and hoisin.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Pho Bac originates from which Vietnamese city?",
+        "answer": "Hanoi",
+        "distractors": [
+          "Ho Chi Minh City",
+          "Hue",
+          "Da Nang"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Southern Vietnamese pho differs from northern pho by including what additional items?",
+        "answer": "Bean sprouts and herbs",
+        "distractors": [
+          "More beef",
+          "Thicker noodles",
+          "Stronger broth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Northern and southern Vietnamese pho are served identically with the same garnishes.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ pho is served with a large plate of bean sprouts, basil, and hoisin sauce.",
+        "answer": "Southern",
+        "distractors": [
+          "Northern",
+          "Central",
+          "Hanoi"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pho",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split screen: a minimal Hanoi pho bowl with clear broth versus a Ho Chi Minh City pho bowl surrounded by a vibrant plate of herbs, sprouts, and chili.",
+    "tags": [
+      "pho",
+      "vietnam",
+      "regional",
+      "hanoi",
+      "ho chi minh",
+      "traditions"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-croissant-austrian-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "The croissant is based on the Austrian kipferl — a crescent pastry that was introduced to France by Austrian-born Marie Antoinette or Viennese baker August Zang.",
+    "quizQuestion": "The croissant evolved from which Austrian crescent pastry?",
+    "correctAnswer": "Kipferl",
+    "distractors": [
+      "Rugelach",
+      "Buchteln",
+      "Strudel",
+      "Germknödel",
+      "Apfelstrudel",
+      "Palatschinken",
+      "Topfenstrudel",
+      "Krapfen"
+    ],
+    "acceptableAnswers": [
+      "kipferl",
+      "kipfel"
+    ],
+    "explanation": "The Austrian kipferl is a dense crescent-shaped pastry that predates the flaky French croissant by centuries. The transformation into the laminated dough croissant we know today happened in early 19th-century Paris, likely at Boulangerie Viennoise founded by Austrian baker August Zang, who introduced Viennese baking techniques to France.",
+    "wowFactor": "France's most iconic pastry is actually Austrian — croissants were born when a Viennese baker opened a shop in Paris and French bakers copied his technique.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Austrian baker opened a Paris bakery that inspired the French croissant?",
+        "answer": "August Zang",
+        "distractors": [
+          "Marie Antoinette",
+          "Franz Josef",
+          "Empress Sisi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The kipferl, ancestor of the croissant, is a dense crescent pastry from which country?",
+        "answer": "Austria",
+        "distractors": [
+          "Germany",
+          "Poland",
+          "Hungary"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The croissant is a pastry that was invented in France with no foreign influence.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The croissant evolved from the Austrian ___, a dense crescent pastry.",
+        "answer": "kipferl",
+        "distractors": [
+          "strudel",
+          "krapfen",
+          "buchteln"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Croissant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Austrian baker in 1840s Paris presenting crescent-shaped pastries to astonished French boulangerie customers, with Vienna's Schönbrunn Palace in a thought bubble.",
+    "tags": [
+      "croissant",
+      "austria",
+      "france",
+      "kipferl",
+      "history",
+      "pastry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-croissant-butter-content",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "A traditional French butter croissant contains up to 25% of its weight in butter — a single croissant uses roughly 25-30 grams of pure butter.",
+    "quizQuestion": "What percentage of a traditional French croissant's weight is butter?",
+    "correctAnswer": "Up to 25%",
+    "distractors": [
+      "Up to 5%",
+      "Up to 10%",
+      "Up to 50%",
+      "Up to 15%",
+      "Up to 40%",
+      "Up to 3%",
+      "Up to 60%",
+      "Up to 75%"
+    ],
+    "acceptableAnswers": [
+      "up to 25%",
+      "25%",
+      "25 percent",
+      "about 25 percent"
+    ],
+    "explanation": "The ratio of butter to dough is what distinguishes a true 'croissant au beurre' (butter croissant) from a standard curved bread roll. French law actually requires butter croissants to be straight-shaped, while curved croissants may legally contain margarine — a detail French bakers take very seriously.",
+    "wowFactor": "In France, the shape of a croissant legally tells you what's inside: straight means pure butter, curved means it might have margarine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In France, what shape must a pure butter croissant legally be?",
+        "answer": "Straight",
+        "distractors": [
+          "Crescent curved",
+          "Circular",
+          "Square-tipped"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "French curved croissants may legally contain what instead of butter?",
+        "answer": "Margarine",
+        "distractors": [
+          "Vegetable oil",
+          "Lard",
+          "Shortening"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In France, the shape of a croissant indicates whether it contains butter or margarine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A traditional French butter croissant contains up to ___% of its weight in butter.",
+        "answer": "25",
+        "distractors": [
+          "5",
+          "50",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Croissant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A French bakery display with two types of croissants labeled: straight ones marked 'beurre' and curved ones marked 'ordinaire,' a stern baker pointing at the signs.",
+    "tags": [
+      "croissant",
+      "butter",
+      "france",
+      "law",
+      "baking",
+      "margarine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-baguette-unesco",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "In 2022, the French baguette was added to UNESCO's list of Intangible Cultural Heritage, recognizing its role in French identity and social life.",
+    "quizQuestion": "In what year did the French baguette become UNESCO Intangible Cultural Heritage?",
+    "correctAnswer": "2022",
+    "distractors": [
+      "2010",
+      "2015",
+      "2019",
+      "2005",
+      "2018",
+      "2000",
+      "2023",
+      "2016"
+    ],
+    "acceptableAnswers": [
+      "2022"
+    ],
+    "explanation": "UNESCO recognized the baguette not just as bread but as a cultural institution — the ritual of buying fresh bread daily, the boulangerie as a community gathering point, and the artisanal craft of the boulangers. France has around 35,000 artisan bakeries and consumes roughly 30 million baguettes per day.",
+    "wowFactor": "France eats 30 million baguettes every single day — that's roughly one for every two people, bought fresh twice daily.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many baguettes does France consume daily?",
+        "answer": "30 million",
+        "distractors": [
+          "1 million",
+          "5 million",
+          "100 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "UNESCO added the baguette to its cultural heritage list recognizing France's how many artisan bakeries?",
+        "answer": "35,000 bakeries",
+        "distractors": [
+          "5,000 bakeries",
+          "100,000 bakeries",
+          "1,000 bakeries"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The French baguette was added to UNESCO's Intangible Cultural Heritage list in 2022.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In 2022, the ___ baguette became UNESCO Intangible Cultural Heritage.",
+        "answer": "French",
+        "distractors": [
+          "German",
+          "Italian",
+          "Spanish"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baguette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Parisian street scene with hundreds of people carrying baguettes under their arms, a UNESCO plaque mounted on a classic boulangerie storefront.",
+    "tags": [
+      "baguette",
+      "france",
+      "UNESCO",
+      "heritage",
+      "culture",
+      "bread"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-baguette-decree-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The baguette's long thin shape was partly popularized by an 1920 law forbidding bakers from starting work before 4 AM, making longer bread easier to bake quickly.",
+    "quizQuestion": "What 1920s law influenced the baguette's elongated shape?",
+    "correctAnswer": "4 AM work ban",
+    "distractors": [
+      "Flour rationing law",
+      "Bakery tax reform",
+      "Bread weight law",
+      "Wheat import law",
+      "Boulangerie closure law",
+      "Heat regulation act",
+      "Night curfew law",
+      "Fire safety decree"
+    ],
+    "acceptableAnswers": [
+      "4 am work ban",
+      "4am work ban",
+      "early morning work ban",
+      "law banning early work"
+    ],
+    "explanation": "A 1920 French decree prohibited bakery workers from starting before 4 AM. Round loaves needed hours to prove (rise) and bake — but the baguette's thin shape could proof and bake in just 30-40 minutes, making it possible to have fresh bread ready for morning customers. The law effectively made the baguette France's dominant bread form.",
+    "wowFactor": "A labor protection law accidentally created the baguette — bakers couldn't start early enough for round loaves, so thin bread that bakes fast won out.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why could baguettes be baked faster than round loaves?",
+        "answer": "Their thin shape bakes in 30-40 minutes",
+        "distractors": [
+          "They use less flour",
+          "They proof in cold air",
+          "They have more yeast"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 1920 French law banning bakers from working before 4 AM indirectly promoted which bread shape?",
+        "answer": "Long thin baguette",
+        "distractors": [
+          "Round boule",
+          "Square pain de mie",
+          "Flat focaccia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The baguette's long thin shape was partly influenced by a 1920 law restricting early morning bakery work.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A 1920 French law banned bakers from starting before ___ AM, favoring fast-baking thin baguettes.",
+        "answer": "4",
+        "distractors": [
+          "6",
+          "2",
+          "8"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baguette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1920s French baker looking at a clock showing 4 AM, choosing between a round loaf needing hours and long baguettes that bake quickly before customers arrive.",
+    "tags": [
+      "baguette",
+      "france",
+      "labor law",
+      "history",
+      "bread shape",
+      "1920s"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-baguette-scoring",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Baguettes are slashed with diagonal cuts called 'grigne' before baking — this controls where the bread expands to prevent random cracking.",
+    "quizQuestion": "What is the French term for the diagonal slashes on a baguette?",
+    "correctAnswer": "Grigne",
+    "distractors": [
+      "Coulage",
+      "Entaille",
+      "Scarification",
+      "Incision",
+      "Coupure",
+      "Fente",
+      "Balafre",
+      "Rayure"
+    ],
+    "acceptableAnswers": [
+      "grigne",
+      "grignes"
+    ],
+    "explanation": "The grigne (from 'grincer,' to grin or show teeth) is made with a razor-sharp lame blade in a swift angled motion. A properly scored baguette opens along these lines as it bakes, creating the signature ribbed crust. Experienced bakers can identify each other's style by the specific angle and depth of their grigne.",
+    "wowFactor": "Every baker's baguette slash pattern is like a signature — experienced bread judges can identify a baker just by how they cut their loaves.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What sharp tool is used to make the grigne slashes on a baguette?",
+        "answer": "Lame blade",
+        "distractors": [
+          "Chef's knife",
+          "Serrated knife",
+          "Bread scissors"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The grigne slashes on a baguette serve what functional purpose during baking?",
+        "answer": "Control where bread expands",
+        "distractors": [
+          "Decorate the crust",
+          "Let steam escape faster",
+          "Mark the baker's identity"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The diagonal slashes on a baguette, called grigne, control where the bread expands during baking.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The diagonal pre-bake cuts on a baguette are called ___ in French.",
+        "answer": "grigne",
+        "distractors": [
+          "coulage",
+          "incision",
+          "fente"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baguette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A French baker's hands making precise diagonal cuts with a curved lame blade on a pale raw baguette, the scored pattern glowing golden after baking.",
+    "tags": [
+      "baguette",
+      "grigne",
+      "technique",
+      "scoring",
+      "bread",
+      "baking"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-paella-valencian-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Authentic Valencian paella contains chicken, rabbit, and snails — not seafood — which was a later coastal adaptation of the original farmland dish.",
+    "quizQuestion": "What meat is in the original Valencian paella, not seafood?",
+    "correctAnswer": "Chicken and rabbit",
+    "distractors": [
+      "Lamb and pork",
+      "Duck and chorizo",
+      "Beef and veal",
+      "Turkey and ham",
+      "Goat and fish",
+      "Shrimp and pork",
+      "Crab and chicken",
+      "Pork and beans"
+    ],
+    "acceptableAnswers": [
+      "chicken and rabbit",
+      "rabbit and chicken",
+      "chicken, rabbit, and snails"
+    ],
+    "explanation": "Original paella from Valencia's Albufera wetlands was a field worker's meal made with whatever animals could be caught nearby: chicken, rabbit, and sometimes snails, plus green beans and butter beans. Seafood paella (paella de marisco) developed later in coastal areas. Valencians are famously protective of what can be called 'authentic' paella.",
+    "wowFactor": "Valencians are so protective of their paella that the regional government published an official recipe — and it has NO seafood whatsoever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the protein in authentic Valencian paella besides chicken?",
+        "answer": "Rabbit",
+        "distractors": [
+          "Shrimp",
+          "Chorizo",
+          "Duck"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Paella de marisco (seafood paella) was a later adaptation developed in which Spanish regions?",
+        "answer": "Coastal areas",
+        "distractors": [
+          "Inland farms",
+          "Mountain villages",
+          "River valleys"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The original Valencian paella recipe includes seafood as the primary protein.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Authentic Valencian paella contains chicken, ___, and snails — not seafood.",
+        "answer": "rabbit",
+        "distractors": [
+          "shrimp",
+          "chorizo",
+          "pork"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paella",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Spanish farmer cooking a flat iron paella pan over open wood fire in a Valencia wetland, with chicken and rabbit visible beside flat green bean pods.",
+    "tags": [
+      "paella",
+      "valencia",
+      "spain",
+      "rabbit",
+      "chicken",
+      "authentic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-paella-socarrat",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The most prized part of paella is the socarrat — a caramelized crust of toasted rice that forms on the pan's bottom during the final cooking stage.",
+    "quizQuestion": "What is the caramelized rice crust on the bottom of a paella called?",
+    "correctAnswer": "Socarrat",
+    "distractors": [
+      "Tapas",
+      "Coxinha",
+      "Cruncha",
+      "Fideua",
+      "Caldero",
+      "Gratin",
+      "Crostini",
+      "Soccarat"
+    ],
+    "acceptableAnswers": [
+      "socarrat",
+      "soccarat"
+    ],
+    "explanation": "Socarrat forms when the liquid is absorbed and the fire is kept high, allowing the bottom layer of rice to caramelize and toast without burning. It produces a nutty, slightly smoky flavor with a satisfying crunch. In Valencia, serving paella without socarrat is considered a failure — skilled cooks listen for the specific sizzling sound that signals it's forming.",
+    "wowFactor": "The best part of paella is the burned bottom — socarrat is intentionally charred rice that Valencians fight over at the table.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do skilled paella cooks know when socarrat is forming?",
+        "answer": "By the sizzling sound",
+        "distractors": [
+          "By the color change",
+          "By a rice smell",
+          "By smoke rising"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Socarrat is the most prized part of paella — what is it exactly?",
+        "answer": "Caramelized bottom crust",
+        "distractors": [
+          "Top browned layer",
+          "Crispy seafood bits",
+          "Toasted saffron crust"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Socarrat — the toasted caramelized rice crust — is considered the best part of a paella.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The caramelized toasted rice crust at the bottom of a perfect paella is called ___.",
+        "answer": "socarrat",
+        "distractors": [
+          "tapas",
+          "fideua",
+          "caldero"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paella",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wide flat paella pan with golden rice, the camera angled to show the dark crackling socarrat crust underneath, Valencian family watching eagerly.",
+    "tags": [
+      "paella",
+      "socarrat",
+      "spain",
+      "technique",
+      "rice crust",
+      "valencian"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-paella-saffron",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Paella gets its signature yellow color from saffron, the world's most expensive spice by weight, requiring 75,000 crocus flowers to produce one pound.",
+    "quizQuestion": "How many crocus flowers are needed to produce one pound of saffron?",
+    "correctAnswer": "75,000 flowers",
+    "distractors": [
+      "1,000 flowers",
+      "10,000 flowers",
+      "500,000 flowers",
+      "5,000 flowers",
+      "200,000 flowers",
+      "25,000 flowers",
+      "150,000 flowers",
+      "1 million flowers"
+    ],
+    "acceptableAnswers": [
+      "75,000 flowers",
+      "75000 flowers",
+      "about 75,000"
+    ],
+    "explanation": "Saffron comes from the stigmas of the Crocus sativus flower — each flower has only three stigmas, which must be hand-picked in the morning when flowers bloom. The labor-intensive harvest explains why saffron can cost $5,000-$10,000 per pound. In paella, saffron provides not just color but a unique floral, slightly metallic flavor.",
+    "wowFactor": "The spice that colors your paella yellow costs more than gold by weight — saffron requires hand-picking 75,000 flowers for just one pound.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many stigmas does each saffron crocus flower produce?",
+        "answer": "3 stigmas",
+        "distractors": [
+          "1 stigma",
+          "10 stigmas",
+          "50 stigmas"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Paella's signature yellow color comes from saffron, which can cost how much per pound?",
+        "answer": "$5,000-$10,000",
+        "distractors": [
+          "$50-$100",
+          "$500-$1,000",
+          "$50,000+"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Saffron, which gives paella its yellow color, requires 75,000 crocus flowers per pound.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Paella's yellow color comes from ___, the world's most expensive spice by weight.",
+        "answer": "saffron",
+        "distractors": [
+          "turmeric",
+          "paprika",
+          "annatto"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Saffron",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Spanish farmer hand-picking tiny red saffron stigmas from purple crocus flowers at dawn, with a tiny pile of precious saffron threads worth more than gold.",
+    "tags": [
+      "paella",
+      "saffron",
+      "spain",
+      "spice",
+      "expensive",
+      "crocus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

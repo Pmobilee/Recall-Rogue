@@ -102,7 +102,6 @@ function weightedPick(dist: Record<string, number>, rng: () => number): string {
 /**
  * Decide how many nodes each row will contain.
  * Rows 0..11 branch/merge organically.
- * Row 12 (FORCED_ELITE) converges to 3.
  * Row 13 (PRE_BOSS) has 2–3 nodes.
  * Row 14 (BOSS) is always 1 node.
  */
@@ -114,7 +113,6 @@ function generateRowSizes(rng: () => number): number[] {
     MAX_NODES_PER_ROW,
     BRANCH_CHANCE,
     MERGE_CHANCE,
-    FORCED_ELITE_ROW,
     PRE_BOSS_ROW,
     BOSS_ROW,
   } = MAP_CONFIG
@@ -123,10 +121,6 @@ function generateRowSizes(rng: () => number): number[] {
   sizes[0] = START_PATHS
 
   for (let r = 1; r < ROWS_PER_ACT; r++) {
-    if (r === FORCED_ELITE_ROW) {
-      sizes[r] = 3
-      continue
-    }
     if (r === PRE_BOSS_ROW) {
       sizes[r] = rng() < 0.5 ? 2 : 3
       continue
@@ -272,7 +266,8 @@ function assignRoomTypes(
     ELITE_MIN_ROW,
     REST_MIN_ROW,
     SHOP_MIN_ROW,
-    FORCED_ELITE_ROW,
+    ELITE_MIN_COUNT,
+    ELITE_MAX_COUNT,
     PRE_BOSS_ROW,
     BOSS_ROW,
     ROOM_DISTRIBUTION,
@@ -286,10 +281,6 @@ function assignRoomTypes(
 
       if (r === 0) {
         node.type = 'combat'
-        continue
-      }
-      if (r === FORCED_ELITE_ROW && FORCED_ELITE_ROW >= 0) {
-        node.type = 'elite'
         continue
       }
       if (r === PRE_BOSS_ROW) {
@@ -346,6 +337,44 @@ function assignRoomTypes(
     )
     if (candidates.length > 0) {
       candidates[Math.floor(rng() * candidates.length)].type = 'shop'
+    }
+  }
+
+  // Guarantee ELITE_MIN_COUNT–ELITE_MAX_COUNT elites in eligible rows
+  const eliteNodes = Object.values(nodes).filter(
+    n => n.type === 'elite' && n.row >= ELITE_MIN_ROW && n.row <= 11,
+  )
+  let eliteCount = eliteNodes.length
+
+  // Too few elites — convert some combat nodes to elite
+  if (eliteCount < ELITE_MIN_COUNT) {
+    const candidates = Object.values(nodes).filter(
+      n => n.type === 'combat' && n.row >= ELITE_MIN_ROW && n.row <= 11,
+    )
+    // Shuffle candidates using rng
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]]
+    }
+    for (const c of candidates) {
+      if (eliteCount >= ELITE_MIN_COUNT) break
+      c.type = 'elite'
+      eliteCount++
+    }
+  }
+
+  // Too many elites — convert excess back to combat
+  if (eliteCount > ELITE_MAX_COUNT) {
+    // Shuffle elite nodes for random removal
+    const shuffledElites = [...eliteNodes]
+    for (let i = shuffledElites.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffledElites[i], shuffledElites[j]] = [shuffledElites[j], shuffledElites[i]]
+    }
+    for (const e of shuffledElites) {
+      if (eliteCount <= ELITE_MAX_COUNT) break
+      e.type = 'combat'
+      eliteCount--
     }
   }
 }

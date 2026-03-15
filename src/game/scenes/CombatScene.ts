@@ -6,6 +6,7 @@ import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
+import { BASE_WIDTH } from '../../data/layout'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -171,6 +172,7 @@ export class CombatScene extends Phaser.Scene {
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
+  private scaleFactor: number = 1
 
   // ═════════════════════════════════════════════════════════
   // Lifecycle
@@ -212,6 +214,7 @@ export class CombatScene extends Phaser.Scene {
     this.effectScale = getDeviceTier() === 'low-end' ? 0.65 : 1
     const w = this.scale.width
     const h = this.scale.height
+    this.scaleFactor = w / BASE_WIDTH
     this.displayH = h * DISPLAY_ZONE_HEIGHT_PCT
 
     // ── Combat background ─────────────────────────────────
@@ -226,7 +229,7 @@ export class CombatScene extends Phaser.Scene {
     this.vignetteGfx.fillRect(0, 0, sideVignetteW, h)
     this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0, 0.52, 0, 0.52)
     this.vignetteGfx.fillRect(w - sideVignetteW, 0, sideVignetteW, h)
-    this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.18, 0.18, 0, 0)
+    this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.08, 0.08, 0, 0)
     this.vignetteGfx.fillRect(0, 0, w, topVignetteH)
 
     // ── Near-death tension vignette (hidden by default) ──
@@ -251,41 +254,43 @@ export class CombatScene extends Phaser.Scene {
     this.edgeGlowRight = this.add.graphics().setDepth(2).setAlpha(0)
 
     // ── Floor counter (top-left) ──────────────────────────
-    this.floorCounterText = this.add.text(12, FLOOR_COUNTER_Y, this.floorLabel(), {
+    this.floorCounterText = this.add.text(12, Math.round(FLOOR_COUNTER_Y * this.scaleFactor), this.floorLabel(), {
       fontFamily: 'monospace',
-      fontSize: '13px',
+      fontSize: `${Math.round(13 * this.scaleFactor)}px`,
       color: '#cccccc',
     })
     this.floorCounterText.setVisible(false)
 
     // ── Enemy intent ──────────────────────────────────────
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
-    this.intentText = this.add.text(w / 2, enemyHpY + INTENT_ICON_OFFSET_Y, '', {
+    this.intentText = this.add.text(w / 2, enemyHpY + Math.round(INTENT_ICON_OFFSET_Y * this.scaleFactor), '', {
       fontFamily: 'monospace',
-      fontSize: '16px',
+      fontSize: `${Math.round(16 * this.scaleFactor)}px`,
       color: '#ff9999',
       align: 'center',
     }).setOrigin(0.5, 1)
     this.intentText.setVisible(false)
 
     // ── Enemy HP bar ──────────────────────────────────────
+    const scaledEnemyHpBarW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledEnemyHpBarH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
     this.enemyHpBarBg = this.add.graphics().setDepth(10)
     this.enemyHpBarBg.fillStyle(COLOR_BAR_BG, 1)
     this.enemyHpBarBg.fillRoundedRect(
-      w / 2 - ENEMY_HP_BAR_W / 2, enemyHpY - ENEMY_HP_BAR_H / 2,
-      ENEMY_HP_BAR_W, ENEMY_HP_BAR_H, 6
+      w / 2 - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
+      scaledEnemyHpBarW, scaledEnemyHpBarH, 6
     )
 
     this.enemyHpBarFill = this.add.graphics().setDepth(11)
     this.enemyHpBarFill.fillStyle(COLOR_HP_RED, 1)
     this.enemyHpBarFill.fillRoundedRect(
-      w / 2 - ENEMY_HP_BAR_W / 2, enemyHpY - ENEMY_HP_BAR_H / 2,
-      ENEMY_HP_BAR_W, ENEMY_HP_BAR_H, 6
+      w / 2 - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
+      scaledEnemyHpBarW, scaledEnemyHpBarH, 6
     )
 
     this.enemyHpText = this.add.text(w / 2, enemyHpY, '', {
       fontFamily: '"Press Start 2P", monospace',
-      fontSize: '8px',
+      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
       color: '#ffffff',
       stroke: '#000000',
       strokeThickness: 3,
@@ -299,32 +304,34 @@ export class CombatScene extends Phaser.Scene {
     this.enemyBlockBarFill = this.add.graphics().setDepth(12)
 
     this.enemyBlockIcon = this.add.text(
-      w / 2 - ENEMY_HP_BAR_W / 2 - 20, enemyHpY,
-      '🛡️', { fontSize: '14px' }
+      w / 2 - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor), enemyHpY,
+      '🛡️', { fontSize: `${Math.round(14 * this.scaleFactor)}px` }
     ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
     this.enemyBlockText = this.add.text(
-      w / 2 - ENEMY_HP_BAR_W / 2 - 20, enemyHpY + 12,
-      '', { fontFamily: 'monospace', fontSize: '10px', color: '#3498db' }
+      w / 2 - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor), enemyHpY + Math.round(12 * this.scaleFactor),
+      '', { fontFamily: 'monospace', fontSize: `${Math.round(10 * this.scaleFactor)}px`, color: '#3498db' }
     ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
     // ── Enemy sprite system ─────────────────────────────
     const floorY = this.displayH * FLOOR_LINE_PCT
-    const baseEnemySize = enemyDisplaySize('common')
+    const baseEnemySize = Math.round(enemyDisplaySize('common') * this.scaleFactor)
     const enemyY = floorY - baseEnemySize / 2 + baseEnemySize * ENEMY_Y_OFFSET_RATIO
     this.currentEnemyY = enemyY
     this.enemySpriteSystem = new EnemySpriteSystem(this)
 
-    this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + baseEnemySize / 2 + 12, '', {
+    this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + baseEnemySize / 2 + Math.round(12 * this.scaleFactor), '', {
       fontFamily: 'monospace',
-      fontSize: '13px',
+      fontSize: `${Math.round(13 * this.scaleFactor)}px`,
       color: '#ffffff',
       align: 'center',
     }).setOrigin(0.5, 0).setDepth(7)
     this.enemyNameText.setVisible(false)
 
     // ── Player HP bar (vertical, right side) ─────────────────
-    const barX = w - PLAYER_HP_BAR_X_OFFSET
+    const scaledPlayerHpBarWidth = Math.round(PLAYER_HP_BAR_WIDTH * this.scaleFactor)
+    const scaledPlayerHpBarXOffset = Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+    const barX = w - scaledPlayerHpBarXOffset
     const barTop = h * PLAYER_HP_BAR_TOP_PCT
     const barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
     this.playerBarMaxH = barBottom - barTop
@@ -332,40 +339,40 @@ export class CombatScene extends Phaser.Scene {
     this.playerHpBarBg = this.add.graphics().setDepth(8)
     this.playerHpBarBg.fillStyle(COLOR_BAR_BG, 1)
     this.playerHpBarBg.fillRoundedRect(
-      barX - PLAYER_HP_BAR_WIDTH / 2, barTop,
-      PLAYER_HP_BAR_WIDTH, this.playerBarMaxH, 8
+      barX - scaledPlayerHpBarWidth / 2, barTop,
+      scaledPlayerHpBarWidth, this.playerBarMaxH, 8
     )
 
     this.playerHpBarFill = this.add.graphics().setDepth(8)
     this.playerHpBarFill.fillStyle(COLOR_HP_GREEN, 1)
     this.playerHpBarFill.fillRoundedRect(
-      barX - PLAYER_HP_BAR_WIDTH / 2, barTop,
-      PLAYER_HP_BAR_WIDTH, this.playerBarMaxH, 8
+      barX - scaledPlayerHpBarWidth / 2, barTop,
+      scaledPlayerHpBarWidth, this.playerBarMaxH, 8
     )
 
     const initialHpRatio = this.currentPlayerMaxHP > 0 ? this.currentPlayerHP / this.currentPlayerMaxHP : 0
     const hpColorCss = colorToCssHex(playerHpColor(initialHpRatio))
-    this.playerHpCurrentText = this.add.text(barX, barTop - 22, `${this.currentPlayerHP}`, {
+    this.playerHpCurrentText = this.add.text(barX, barTop - Math.round(22 * this.scaleFactor), `${this.currentPlayerHP}`, {
       fontFamily: '"Press Start 2P", monospace',
-      fontSize: '8px',
+      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
       strokeThickness: 3,
       align: 'center',
     }).setOrigin(0.5, 1).setDepth(8)
 
-    this.playerHpSlashText = this.add.text(barX, barTop - 12, '/', {
+    this.playerHpSlashText = this.add.text(barX, barTop - Math.round(12 * this.scaleFactor), '/', {
       fontFamily: '"Press Start 2P", monospace',
-      fontSize: '8px',
+      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
       strokeThickness: 3,
       align: 'center',
     }).setOrigin(0.5, 1).setDepth(8)
 
-    this.playerHpMaxText = this.add.text(barX, barTop - 2, `${this.currentPlayerMaxHP}`, {
+    this.playerHpMaxText = this.add.text(barX, barTop - Math.round(2 * this.scaleFactor), `${this.currentPlayerMaxHP}`, {
       fontFamily: '"Press Start 2P", monospace',
-      fontSize: '8px',
+      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
       strokeThickness: 3,
@@ -375,18 +382,18 @@ export class CombatScene extends Phaser.Scene {
     // ── Critical health pulse overlay (behind player HP bar) ──
     this.criticalPulseRect = this.add.rectangle(
       barX, (barTop + barBottom) / 2,
-      PLAYER_HP_BAR_WIDTH + 12, this.playerBarMaxH + 12,
+      scaledPlayerHpBarWidth + Math.round(12 * this.scaleFactor), this.playerBarMaxH + Math.round(12 * this.scaleFactor),
       COLOR_HP_RED, 0
     ).setDepth(7).setVisible(false)
 
     // ── Player block icon (above HP bar) ────────────────────
-    this.playerBlockIcon = this.add.text(barX - 52, barTop - 15, '\u{1F6E1}\u{FE0F}', {
-      fontSize: '16px',
+    this.playerBlockIcon = this.add.text(barX - Math.round(52 * this.scaleFactor), barTop - Math.round(15 * this.scaleFactor), '\u{1F6E1}\u{FE0F}', {
+      fontSize: `${Math.round(16 * this.scaleFactor)}px`,
     }).setOrigin(0.5, 0.5).setVisible(false).setDepth(12)
 
-    this.playerBlockText = this.add.text(barX - 42, barTop - 15, '', {
+    this.playerBlockText = this.add.text(barX - Math.round(42 * this.scaleFactor), barTop - Math.round(15 * this.scaleFactor), '', {
       fontFamily: '"Press Start 2P", monospace',
-      fontSize: '9px',
+      fontSize: `${Math.round(9 * this.scaleFactor)}px`,
       color: '#7dd3fc',
       align: 'center',
       stroke: '#000000',
@@ -479,7 +486,7 @@ export class CombatScene extends Phaser.Scene {
     this.currentEnemyMaxHP = maxHP
     this.currentEnemyId = enemyId ?? this.currentEnemyId
     this.currentEnemyCategory = category
-    const size = enemyDisplaySize(category)
+    const size = Math.round(enemyDisplaySize(category) * this.scaleFactor)
     const enemyX = this.scale.width * ENEMY_X_PCT
     const floorY = this.displayH * FLOOR_LINE_PCT
     const enemyY = floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
@@ -502,7 +509,7 @@ export class CombatScene extends Phaser.Scene {
     this.enemySpriteSystem.setAnimConfig(animArchetype)
 
     this.enemyNameText.setText(name)
-    this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + 12)
+    this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + Math.round(12 * this.scaleFactor))
     this.refreshEnemyHpBar(false)
     this.playEncounterEntry()
 
@@ -782,7 +789,7 @@ export class CombatScene extends Phaser.Scene {
   /** Play heal effect (green particles rising near player HP bar). */
   playHealEffect(): void {
     if (this.reduceMotion) return
-    const barX = this.scale.width - PLAYER_HP_BAR_X_OFFSET
+    const barX = this.scale.width - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
     const barTop = this.scale.height * PLAYER_HP_BAR_TOP_PCT
     const barBottom = this.scale.height * PLAYER_HP_BAR_BOTTOM_PCT
     const barMidY = (barTop + barBottom) / 2
@@ -1060,17 +1067,19 @@ export class CombatScene extends Phaser.Scene {
       ? predictedDamage / this.currentEnemyMaxHP
       : 0
 
-    const currentW = Math.max(1, ratio * ENEMY_HP_BAR_W)
-    const damageW = Math.min(currentW, damageRatio * ENEMY_HP_BAR_W)
+    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    const currentW = Math.max(1, ratio * scaledW)
+    const damageW = Math.min(currentW, damageRatio * scaledW)
     const w = this.scale.width
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
-    const startX = w / 2 - ENEMY_HP_BAR_W / 2 + currentW - damageW
+    const startX = w / 2 - scaledW / 2 + currentW - damageW
 
     this.damagePreviewGfx.clear()
     this.damagePreviewGfx.fillStyle(0xaa3333, 0.3)
     this.damagePreviewGfx.fillRoundedRect(
-      startX, enemyHpY - ENEMY_HP_BAR_H / 2,
-      damageW, ENEMY_HP_BAR_H, 6
+      startX, enemyHpY - scaledH / 2,
+      damageW, scaledH, 6
     )
   }
 
@@ -1090,15 +1099,17 @@ export class CombatScene extends Phaser.Scene {
 
     const w = this.scale.width
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
-    const barLeft = w / 2 - ENEMY_HP_BAR_W / 2
+    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    const barLeft = w / 2 - scaledW / 2
     const color = attackColor ?? 0xe74c3c
 
     // Create 6 fragments
     const fragmentCount = 6
     for (let i = 0; i < fragmentCount; i++) {
-      const fragW = ENEMY_HP_BAR_W / fragmentCount + Math.random() * 4
-      const fragH = ENEMY_HP_BAR_H + Math.random() * 4
-      const fragX = barLeft + (ENEMY_HP_BAR_W / fragmentCount) * i
+      const fragW = scaledW / fragmentCount + Math.random() * 4
+      const fragH = scaledH + Math.random() * 4
+      const fragX = barLeft + (scaledW / fragmentCount) * i
       const fragY = enemyHpY
 
       const frag = this.add.rectangle(fragX, fragY, fragW, fragH, color, 0.8)
@@ -1280,7 +1291,9 @@ export class CombatScene extends Phaser.Scene {
     const ratio = this.currentEnemyMaxHP > 0
       ? this.currentEnemyHP / this.currentEnemyMaxHP
       : 0
-    const targetW = Math.max(1, ratio * ENEMY_HP_BAR_W)
+    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    const targetW = Math.max(1, ratio * scaledW)
     const color = this.currentEnemyBlock > 0 ? 0x3498db : COLOR_HP_RED
     const w = this.scale.width
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
@@ -1289,8 +1302,8 @@ export class CombatScene extends Phaser.Scene {
     this.enemyHpBarFill.clear()
     this.enemyHpBarFill.fillStyle(color, 1)
     this.enemyHpBarFill.fillRoundedRect(
-      w / 2 - ENEMY_HP_BAR_W / 2, enemyHpY - ENEMY_HP_BAR_H / 2,
-      targetW, ENEMY_HP_BAR_H, 6
+      w / 2 - scaledW / 2, enemyHpY - scaledH / 2,
+      targetW, scaledH, 6
     )
 
     this.enemyHpText.setText(`${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
@@ -1306,7 +1319,9 @@ export class CombatScene extends Phaser.Scene {
     if (hasBlock) {
       this.enemyBlockText.setText(`${this.currentEnemyBlock}`)
       const blockRatio = Math.min(1, this.currentEnemyBlock / this.currentEnemyMaxHP)
-      const targetW = Math.max(1, blockRatio * ENEMY_HP_BAR_W)
+      const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+      const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+      const targetW = Math.max(1, blockRatio * scaledW)
       const w = this.scale.width
       const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
 
@@ -1314,8 +1329,8 @@ export class CombatScene extends Phaser.Scene {
       this.enemyBlockBarFill.clear()
       this.enemyBlockBarFill.fillStyle(0x3498db, 0.6)
       this.enemyBlockBarFill.fillRoundedRect(
-        w / 2 - ENEMY_HP_BAR_W / 2, enemyHpY - ENEMY_HP_BAR_H / 2,
-        targetW, ENEMY_HP_BAR_H, 6
+        w / 2 - scaledW / 2, enemyHpY - scaledH / 2,
+        targetW, scaledH, 6
       )
     } else {
       this.enemyBlockBarFill.clear()
@@ -1332,7 +1347,8 @@ export class CombatScene extends Phaser.Scene {
     const colorCss = colorToCssHex(color)
     const w = this.scale.width
     const h = this.scale.height
-    const barX = w - PLAYER_HP_BAR_X_OFFSET
+    const barX = w - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+    const scaledBarW = Math.round(PLAYER_HP_BAR_WIDTH * this.scaleFactor)
     const barTop = h * PLAYER_HP_BAR_TOP_PCT
     const barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
 
@@ -1353,8 +1369,8 @@ export class CombatScene extends Phaser.Scene {
       this.playerHpBarFill.clear()
       this.playerHpBarFill.fillStyle(COLOR_HP_GREEN, 1)
       this.playerHpBarFill.fillRoundedRect(
-        barX - PLAYER_HP_BAR_WIDTH / 2, barBottom - overshootH,
-        PLAYER_HP_BAR_WIDTH, overshootH, 8
+        barX - scaledBarW / 2, barBottom - overshootH,
+        scaledBarW, overshootH, 8
       )
 
       // Brief green flash at edges
@@ -1365,8 +1381,8 @@ export class CombatScene extends Phaser.Scene {
         this.playerHpBarFill.clear()
         this.playerHpBarFill.fillStyle(color, 1)
         this.playerHpBarFill.fillRoundedRect(
-          barX - PLAYER_HP_BAR_WIDTH / 2, barBottom - targetH,
-          PLAYER_HP_BAR_WIDTH, targetH, 8
+          barX - scaledBarW / 2, barBottom - targetH,
+          scaledBarW, targetH, 8
         )
       })
 
@@ -1397,8 +1413,8 @@ export class CombatScene extends Phaser.Scene {
     this.playerHpBarFill.clear()
     this.playerHpBarFill.fillStyle(color, 1)
     this.playerHpBarFill.fillRoundedRect(
-      barX - PLAYER_HP_BAR_WIDTH / 2, barBottom - targetH,
-      PLAYER_HP_BAR_WIDTH, targetH, 8
+      barX - scaledBarW / 2, barBottom - targetH,
+      scaledBarW, targetH, 8
     )
 
     this.setPlayerHpLabel(colorCss)

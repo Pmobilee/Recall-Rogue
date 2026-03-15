@@ -301,7 +301,7 @@
   }
 
   .study-mode-container.banner-offset {
-    top: calc(3% + 64px + var(--safe-top));
+    top: calc(3% + calc(64px * var(--layout-scale, 1)) + var(--safe-top));
   }
 
   .campfire-sparkle-burst {
@@ -317,14 +317,14 @@
 
   .sparkle-particle {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: calc(5px * var(--layout-scale, 1));
+    height: calc(5px * var(--layout-scale, 1));
     background: #ffd700;
     border-radius: 50%;
     box-shadow: 0 0 6px #ffa500, 0 0 12px #ff8c00;
     animation: sparkle-burst 600ms ease-out forwards;
     --angle: calc(var(--i) * 45deg);
-    --dist: calc(30px + var(--i) * 5px);
+    --dist: calc((30px + var(--i) * 5px) * var(--layout-scale, 1));
   }
 
   @keyframes sparkle-burst {
@@ -335,7 +335,7 @@
     100% {
       transform: translate(
         calc(cos(var(--angle)) * var(--dist)),
-        calc(sin(var(--angle)) * var(--dist) - 20px)
+        calc(sin(var(--angle)) * var(--dist) - calc(20px * var(--layout-scale, 1)))
       ) scale(0);
       opacity: 0;
     }

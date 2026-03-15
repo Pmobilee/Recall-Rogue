@@ -303,41 +303,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: calc(24px + var(--safe-top)) 16px;
+    padding: calc(calc(24px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1));
     z-index: 200;
     overflow-y: auto;
   }
 
   .back-btn {
     position: absolute;
-    top: calc(16px + var(--safe-top));
-    left: 16px;
+    top: calc(calc(16px * var(--layout-scale, 1)) + var(--safe-top));
+    left: calc(16px * var(--layout-scale, 1));
     background: none;
     border: none;
     color: #8b949e;
     font-size: 16px;
     cursor: pointer;
-    padding: 8px;
+    padding: calc(8px * var(--layout-scale, 1));
     min-height: 44px;
   }
 
   .title {
-    font-size: 20px;
+    font-size: calc(20px * var(--layout-scale, 1));
     color: #e6edf3;
-    margin: 16px 0 4px;
+    margin: calc(16px * var(--layout-scale, 1)) 0 4px;
     text-align: center;
   }
 
   .subtitle {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #8b949e;
-    margin: 0 0 24px;
+    margin: 0 0 calc(24px * var(--layout-scale, 1));
     text-align: center;
   }
   .subtitle-pass {
-    margin-top: -16px;
-    margin-bottom: 20px;
-    font-size: 12px;
+    margin-top: calc(-16px * var(--layout-scale, 1));
+    margin-bottom: calc(20px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
   }
   .subtitle-pass.locked {
     color: #94a3b8;
@@ -345,9 +345,9 @@
 
   .ascension-panel {
     width: 100%;
-    max-width: 520px;
-    margin: 0 0 16px;
-    padding: 10px 12px;
+    max-width: calc(520px * var(--layout-scale, 1));
+    margin: 0 0 calc(16px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     border: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 10px;
     background: rgba(15, 23, 35, 0.7);
@@ -357,12 +357,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   .ascension-title {
-    font-size: 13px;
+    font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 700;
     color: #f8fafc;
     letter-spacing: 0.4px;
@@ -370,16 +370,16 @@
   }
 
   .ascension-unlock {
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #a8b3c4;
     text-align: right;
   }
 
   .ascension-controls {
     display: grid;
-    grid-template-columns: 40px 1fr 40px;
+    grid-template-columns: calc(40px * var(--layout-scale, 1)) 1fr calc(40px * var(--layout-scale, 1));
     align-items: center;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .ascension-step {
@@ -388,7 +388,7 @@
     border: 1px solid rgba(148, 163, 184, 0.5);
     background: #1f2b3a;
     color: #e2e8f0;
-    font-size: 18px;
+    font-size: calc(18px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
   }
@@ -406,27 +406,27 @@
 
   .ascension-level strong {
     color: #facc15;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
   }
 
   .ascension-level small {
     color: #cbd5e1;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     line-height: 1.3;
   }
 
   .domain-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     width: 100%;
-    max-width: 520px;
-    margin-bottom: 24px;
+    max-width: calc(520px * var(--layout-scale, 1));
+    margin-bottom: calc(24px * var(--layout-scale, 1));
   }
 
   .domain-card {
     width: 100%;
-    min-height: 88px;
+    min-height: calc(88px * var(--layout-scale, 1));
     background: #1e2d3d;
     border: 2px solid rgba(148, 163, 184, 0.4);
     border-radius: 10px;
@@ -434,11 +434,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     cursor: pointer;
     transition: transform 0.1s, border-color 0.15s;
     position: relative;
-    padding: 8px;
+    padding: calc(8px * var(--layout-scale, 1));
   }
 
   .domain-card:not(.locked):hover {
@@ -451,16 +451,16 @@
   }
 
   .domain-icon-wrap {
-    width: 30px;
-    height: 30px;
+    width: calc(30px * var(--layout-scale, 1));
+    height: calc(30px * var(--layout-scale, 1));
     display: grid;
     place-items: center;
     position: relative;
   }
 
   .domain-icon-img {
-    width: 24px;
-    height: 24px;
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
   }
@@ -470,11 +470,11 @@
     inset: 0;
     display: grid;
     place-items: center;
-    font-size: 18px;
+    font-size: calc(18px * var(--layout-scale, 1));
   }
 
   .domain-name {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #e6edf3;
     text-align: center;
     line-height: 1.2;
@@ -490,19 +490,19 @@
 
   .selection-label {
     position: absolute;
-    top: 4px;
-    right: 6px;
-    font-size: 9px;
+    top: calc(4px * var(--layout-scale, 1));
+    right: calc(6px * var(--layout-scale, 1));
+    font-size: calc(9px * var(--layout-scale, 1));
     color: #e2e8f0;
     font-weight: 700;
     letter-spacing: 0.4px;
   }
   .selected-filters {
     width: 100%;
-    max-width: 520px;
+    max-width: calc(520px * var(--layout-scale, 1));
     display: grid;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: calc(8px * var(--layout-scale, 1));
+    margin-bottom: calc(12px * var(--layout-scale, 1));
   }
   .selected-filter-btn {
     min-height: 40px;
@@ -510,7 +510,7 @@
     border: 1px solid rgba(148, 163, 184, 0.45);
     background: rgba(30, 41, 59, 0.78);
     color: #dbeafe;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 600;
     cursor: pointer;
   }
@@ -520,13 +520,13 @@
   }
 
   .start-btn {
-    width: 220px;
-    height: 56px;
+    width: calc(220px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     background: #16a34a;
     border: none;
     border-radius: 12px;
     color: #fff;
-    font-size: 18px;
+    font-size: calc(18px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
     transition: opacity 0.15s, transform 0.1s;
@@ -550,69 +550,69 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .filter-modal {
-    width: min(520px, 100%);
+    width: min(calc(520px * var(--layout-scale, 1)), 100%);
     max-height: 84vh;
     overflow-y: auto;
     border-radius: 12px;
     background: linear-gradient(180deg, #111827, #1f2937);
     border: 1px solid rgba(148, 163, 184, 0.45);
-    padding: 14px;
+    padding: calc(14px * var(--layout-scale, 1));
     color: #e2e8f0;
   }
 
   .filter-modal h2 {
     margin: 0;
-    font-size: 16px;
+    font-size: calc(16px * var(--layout-scale, 1));
   }
 
   .filter-modal p {
-    margin: 6px 0 10px;
-    font-size: 12px;
+    margin: calc(6px * var(--layout-scale, 1)) 0 calc(10px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #cbd5e1;
   }
 
   .filter-list {
     display: grid;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .filter-item {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     border: 1px solid rgba(148, 163, 184, 0.25);
     border-radius: 8px;
-    padding: 7px;
-    font-size: 12px;
+    padding: calc(7px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
   }
 
   .count {
     color: #93c5fd;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
   }
 
   .filter-error {
-    margin: 8px 0 0;
+    margin: calc(8px * var(--layout-scale, 1)) 0 0;
     color: #fca5a5;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
   }
 
   .filter-actions {
-    margin-top: 12px;
+    margin-top: calc(12px * var(--layout-scale, 1));
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .btn-ghost,
   .btn-save {
     min-height: 38px;
-    padding: 0 10px;
+    padding: 0 calc(10px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid rgba(148, 163, 184, 0.4);
     background: rgba(30, 41, 59, 0.85);

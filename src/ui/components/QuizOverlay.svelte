@@ -550,113 +550,113 @@
   .pop-quiz-header {
     text-align: center;
     color: #4ecca3;
-    font-size: 0.9rem;
+    font-size: calc(0.9rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: calc(2px * var(--layout-scale, 1));
     text-transform: uppercase;
-    margin-top: 0.25rem;
+    margin-top: calc(0.25rem * var(--layout-scale, 1));
     opacity: 0.85;
   }
 
   .pop-quiz-sub {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.8rem;
+    font-size: calc(0.8rem * var(--layout-scale, 1));
     font-style: italic;
-    letter-spacing: 0.5px;
-    margin-top: -0.5rem;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    margin-top: calc(-0.5rem * var(--layout-scale, 1));
     opacity: 0.8;
   }
 
   .pop-quiz-reward {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    margin-top: -0.4rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    margin-top: calc(-0.4rem * var(--layout-scale, 1));
   }
 
   .gate-progress {
     text-align: center;
     color: var(--color-warning);
-    font-size: 0.9rem;
+    font-size: calc(0.9rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 0.25rem;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    margin-top: calc(0.25rem * var(--layout-scale, 1));
   }
 
   .artifact-appraisal-header {
     text-align: center;
     color: #e94560;
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 0.25rem;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    margin-top: calc(0.25rem * var(--layout-scale, 1));
   }
 
   .artifact-appraisal-hint {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    margin-top: -0.4rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    margin-top: calc(-0.4rem * var(--layout-scale, 1));
     font-style: italic;
   }
 
   .layer-entrance-header {
     text-align: center;
     color: #9966ff;
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 0.25rem;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    margin-top: calc(0.25rem * var(--layout-scale, 1));
   }
 
   .layer-entrance-hint {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    margin-top: -0.4rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    margin-top: calc(-0.4rem * var(--layout-scale, 1));
     font-style: italic;
   }
 
   .question {
-    margin-top: 0.5rem;
+    margin-top: calc(0.5rem * var(--layout-scale, 1));
     color: var(--color-warning);
-    font-size: 1.1rem;
+    font-size: calc(1.1rem * var(--layout-scale, 1));
     line-height: 1.4;
     text-align: center;
   }
 
   .attempts {
     color: var(--color-text-dim);
-    font-size: 0.95rem;
+    font-size: calc(0.95rem * var(--layout-scale, 1));
     text-align: center;
   }
 
   .choices {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
+    gap: calc(0.7rem * var(--layout-scale, 1));
   }
 
   .choice-button {
     min-height: 48px;
     border: 2px solid var(--color-primary);
     border-radius: 999px;
-    padding: 0.75rem 1rem;
+    padding: calc(0.75rem * var(--layout-scale, 1)) calc(1rem * var(--layout-scale, 1));
     background: var(--color-bg);
     color: var(--color-text);
     font: inherit;
-    font-size: 1rem;
+    font-size: calc(1rem * var(--layout-scale, 1));
     text-align: center;
     cursor: pointer;
     transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
     /* Always flex so key-badge is visible */
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: calc(0.5rem * var(--layout-scale, 1));
   }
 
   .choice-button:active:not(:disabled) {
@@ -697,12 +697,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
-    font-size: 0.7rem;
-    margin-right: 8px;
+    font-size: calc(0.7rem * var(--layout-scale, 1));
+    margin-right: calc(8px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
@@ -713,8 +713,8 @@
   }
 
   .result-text {
-    min-height: 1.4rem;
-    font-size: 1rem;
+    min-height: calc(1.4rem * var(--layout-scale, 1));
+    font-size: calc(1rem * var(--layout-scale, 1));
     text-align: center;
     font-weight: 700;
   }
@@ -731,20 +731,20 @@
     background: rgba(78, 205, 196, 0.08);
     border-left: 3px solid #4ecdc4;
     border-radius: 6px;
-    padding: 10px 14px;
-    margin-top: 12px;
-    font-size: 0.85rem;
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    margin-top: calc(12px * var(--layout-scale, 1));
+    font-size: calc(0.85rem * var(--layout-scale, 1));
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .memory-tip-label {
     color: #4ecdc4;
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
+    font-size: calc(0.8rem * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
     text-transform: uppercase;
   }
 
@@ -757,30 +757,30 @@
   .consistency-penalty-warning {
     text-align: center;
     color: #ff6b35;
-    font-size: 0.82rem;
+    font-size: calc(0.82rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
     border: 1px solid #ff6b35;
     border-radius: 6px;
-    padding: 6px 10px;
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     background: rgba(255, 107, 53, 0.08);
-    margin-top: -4px;
+    margin-top: calc(-4px * var(--layout-scale, 1));
   }
 
   /* 3-button study response row */
   .study-response-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: calc(0.5rem * var(--layout-scale, 1));
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: calc(1rem * var(--layout-scale, 1));
   }
 
   .btn-study {
-    padding: 0.5rem 1rem;
+    padding: calc(0.5rem * var(--layout-scale, 1)) calc(1rem * var(--layout-scale, 1));
     border: none;
     border-radius: 6px;
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * var(--layout-scale, 1));
     cursor: pointer;
     font-weight: bold;
   }
@@ -793,13 +793,13 @@
   .gaia-reaction {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     border-radius: 8px;
     border-left: 3px solid var(--color-primary);
     background: rgba(78, 100, 205, 0.1);
-    font-size: 0.82rem;
-    margin-top: -4px;
+    font-size: calc(0.82rem * var(--layout-scale, 1));
+    margin-top: calc(-4px * var(--layout-scale, 1));
     font-family: 'Courier New', monospace;
   }
 
@@ -814,8 +814,8 @@
   }
 
   .gaia-reaction-sprite {
-    width: 28px;
-    height: 28px;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     flex-shrink: 0;
@@ -824,7 +824,7 @@
 
   .gaia-reaction-name {
     color: #22d9d9;
-    font-size: 0.68rem;
+    font-size: calc(0.68rem * var(--layout-scale, 1));
     font-weight: 700;
     letter-spacing: 0.04em;
     flex-shrink: 0;
@@ -841,9 +841,9 @@
     border: none;
     color: var(--color-text-dim);
     font: inherit;
-    font-size: 0.75rem;
+    font-size: calc(0.75rem * var(--layout-scale, 1));
     cursor: pointer;
-    padding: 0.25rem 0.5rem;
+    padding: calc(0.25rem * var(--layout-scale, 1)) calc(0.5rem * var(--layout-scale, 1));
     min-height: 44px;
     text-decoration: underline;
     opacity: 0.7;
@@ -857,24 +857,24 @@
   .fact-art-wrapper {
     display: flex;
     justify-content: center;
-    margin: 8px 0 12px;
+    margin: calc(8px * var(--layout-scale, 1)) 0 calc(12px * var(--layout-scale, 1));
   }
 
   /** Tap-to-continue button shown after a wrong answer */
   .got-it-btn {
     align-self: center;
-    margin-top: 0.5rem;
-    padding: 0.75rem 2rem;
+    margin-top: calc(0.5rem * var(--layout-scale, 1));
+    padding: calc(0.75rem * var(--layout-scale, 1)) calc(2rem * var(--layout-scale, 1));
     background: linear-gradient(135deg, #c85c5c, #a04040);
     border: none;
     border-radius: 8px;
     color: #fff;
     font-family: monospace;
-    font-size: 0.95rem;
+    font-size: calc(0.95rem * var(--layout-scale, 1));
     font-weight: bold;
     cursor: pointer;
     min-height: 48px;
-    min-width: 160px;
+    min-width: calc(160px * var(--layout-scale, 1));
     letter-spacing: 0.02em;
     transition: transform 0.1s, filter 0.1s;
     animation: fadeIn 0.3s ease-out;
@@ -890,14 +890,14 @@
 
   .dev-skip-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: calc(8px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
     background: rgba(255, 50, 50, 0.8);
     color: white;
     border: 1px solid #ff6666;
-    padding: 4px 10px;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     font-family: 'Press Start 2P', monospace;
-    font-size: 0.55rem;
+    font-size: calc(0.55rem * var(--layout-scale, 1));
     cursor: pointer;
     border-radius: 4px;
     z-index: 100;
@@ -907,12 +907,12 @@
   .gaia-mnemonic-bubble {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    padding: 10px 12px;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(100, 200, 255, 0.1);
     border: 1px solid rgba(100, 200, 255, 0.25);
     border-radius: 10px;
-    margin-bottom: 0.25rem;
+    margin-bottom: calc(0.25rem * var(--layout-scale, 1));
     animation: mnemonic-fade-in 400ms ease-out;
   }
 
@@ -923,7 +923,7 @@
   }
 
   .mnemonic-text {
-    font-size: 0.82rem;
+    font-size: calc(0.82rem * var(--layout-scale, 1));
     color: #b0d4f1;
     line-height: 1.4;
   }
@@ -942,24 +942,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    margin-top: -0.25rem;
+    gap: calc(6px * var(--layout-scale, 1));
+    margin-top: calc(-0.25rem * var(--layout-scale, 1));
   }
 
   .layer-progress-text {
-    font-size: 0.78rem;
+    font-size: calc(0.78rem * var(--layout-scale, 1));
     color: #bb99ff;
-    letter-spacing: 0.5px;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
   }
 
   .layer-progress-bar {
     display: flex;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .layer-progress-pip {
-    width: 28px;
-    height: 6px;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(6px * var(--layout-scale, 1));
     border-radius: 3px;
     background: rgba(153, 102, 255, 0.2);
     border: 1px solid rgba(153, 102, 255, 0.3);
@@ -976,19 +976,19 @@
   .artifact-boost-header {
     text-align: center;
     color: #ffd369;
-    font-size: 0.9rem;
+    font-size: calc(0.9rem * var(--layout-scale, 1));
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
     text-transform: uppercase;
-    margin-top: 0.25rem;
+    margin-top: calc(0.25rem * var(--layout-scale, 1));
   }
 
   .artifact-boost-hint {
     text-align: center;
     color: var(--color-text-dim);
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-    margin-top: -0.4rem;
+    font-size: calc(0.82rem * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    margin-top: calc(-0.4rem * var(--layout-scale, 1));
     font-style: italic;
   }
 </style>

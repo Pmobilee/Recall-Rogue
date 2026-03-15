@@ -2,6 +2,10 @@ import type { Card, CardRunState, DeckStats } from '../data/card-types';
 import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX } from '../data/balance';
 import { factsDB } from './factsDB';
 import { shuffled } from './randomUtils';
+import { writable } from 'svelte/store';
+
+/** Emitted whenever the discard pile is reshuffled into the draw pile. */
+export const reshuffleEvent = writable<{ cardCount: number; timestamp: number } | null>(null);
 
 function normalizeFactKeyPart(value: string | undefined): string {
   return (value ?? '')
@@ -76,9 +80,19 @@ function weightedFactShuffle(factIds: string[]): string[] {
  * @param pool - The card pool produced by buildRunPool.
  * @returns A fully initialized CardRunState.
  */
+/** Crypto-safe Fisher-Yates shuffle (immune to seeded Math.random override). */
+function trueShuffled<T>(items: readonly T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export function createDeck(pool: Card[]): CardRunState {
   return {
-    drawPile: shuffled(pool),
+    drawPile: trueShuffled(pool),
     discardPile: [],
     hand: [],
     exhaustPile: [],
@@ -335,9 +349,11 @@ export function exhaustCard(deck: CardRunState, cardId: string): Card {
  * @param deck - The current deck state (mutated in place).
  */
 export function reshuffleDiscard(deck: CardRunState): void {
+  const count = deck.discardPile.length;
   deck.drawPile.push(...deck.discardPile);
   deck.discardPile = [];
-  deck.drawPile = shuffled(deck.drawPile);
+  deck.drawPile = trueShuffled(deck.drawPile);
+  reshuffleEvent.set({ cardCount: count, timestamp: Date.now() });
 }
 
 /**

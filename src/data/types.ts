@@ -131,6 +131,8 @@ export interface Fact {
   language?: string           // e.g., "ja"
   pronunciation?: string      // Reading/IPA
   exampleSentence?: string
+  fullDefinition?: string     // Extended dictionary-style definition (vocab facts)
+  cognate?: string            // Cognate word in another language (vocab facts)
 
   // Media (future)
   imageUrl?: string

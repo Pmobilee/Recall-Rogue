@@ -1,0 +1,2017 @@
+[
+  {
+    "id": "space-callisto-discovery-galileo",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Callisto was discovered by Galileo Galilei in 1610, one of the four Galilean moons of Jupiter.",
+    "quizQuestion": "Who discovered Callisto alongside three other Jovian moons in 1610?",
+    "correctAnswer": "Galileo Galilei",
+    "distractors": [
+      "Giovanni Cassini",
+      "Christiaan Huygens",
+      "Edmond Halley",
+      "Simon Marius",
+      "Ole Rømer",
+      "Johann Bode",
+      "William Herschel",
+      "James Bradley"
+    ],
+    "acceptableAnswers": ["galileo galilei", "galileo"],
+    "explanation": "Galileo discovered all four Galilean moons — Io, Europa, Ganymede, and Callisto — in January 1610 using his improved telescope. Simon Marius independently discovered them around the same time and proposed the names, which are now used today.",
+    "wowFactor": "Galileo's discovery of moons orbiting Jupiter was the first proof that not everything in the sky revolved around Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who discovered Callisto in 1610?",
+        "answer": "Galileo Galilei",
+        "distractors": ["Giovanni Cassini", "Christiaan Huygens", "Simon Marius"]
+      },
+      {
+        "type": "reverse",
+        "question": "Callisto is one of four moons discovered by Galileo orbiting which planet?",
+        "answer": "Jupiter",
+        "distractors": ["Saturn", "Uranus", "Neptune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Callisto was discovered by Galileo Galilei in 1610.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Callisto is one of the four ___ moons of Jupiter.",
+        "answer": "Galilean",
+        "distractors": ["Cassini", "Herschelian", "Voyager"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Callisto_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A heavily cratered grey-brown moon surface seen from close orbit, with Jupiter's swirling cloud bands filling the horizon in the background.",
+    "tags": ["callisto", "jupiter", "moons", "galileo", "discovery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-callisto-no-magnetic-field",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Callisto is the only large moon of Jupiter that lies outside Jupiter's main radiation belts, making it the safest for future human missions.",
+    "quizQuestion": "Which Galilean moon is safest for humans due to low radiation exposure?",
+    "correctAnswer": "Callisto",
+    "distractors": [
+      "Ganymede",
+      "Europa",
+      "Io",
+      "Titan",
+      "Enceladus",
+      "Triton",
+      "Rhea",
+      "Dione"
+    ],
+    "acceptableAnswers": ["callisto"],
+    "explanation": "Callisto orbits far enough from Jupiter that it sits outside the intense radiation belts that bombard the inner Galilean moons. NASA has studied Callisto as a potential base for crewed missions to the Jovian system because of this reduced radiation environment.",
+    "wowFactor": "NASA seriously considered Callisto as a human outpost — it's the most hospitable spot in the entire Jovian system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Galilean moon has the lowest radiation from Jupiter's belts?",
+        "answer": "Callisto",
+        "distractors": ["Ganymede", "Europa", "Io"]
+      },
+      {
+        "type": "true_false",
+        "question": "Callisto orbits outside Jupiter's main radiation belts.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Callisto is considered the safest Galilean moon for humans due to low ___.",
+        "answer": "Radiation",
+        "distractors": ["Gravity", "Temperature", "Atmosphere"]
+      },
+      {
+        "type": "reverse",
+        "question": "Why is Callisto considered safer than Europa or Io for human missions?",
+        "answer": "Lower radiation",
+        "distractors": ["Warmer surface", "Has oxygen", "Has liquid water"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Callisto_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An astronaut in a spacesuit standing on Callisto's cratered surface with Jupiter looming huge in the dark sky, showing radiation belt diagrams overlaid as data readouts.",
+    "tags": ["callisto", "jupiter", "radiation", "human missions", "space exploration"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-callisto-ancient-surface",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Callisto has the most heavily cratered surface in the solar system, with no signs of recent geological activity.",
+    "quizQuestion": "Which moon has the most heavily cratered surface in the solar system?",
+    "correctAnswer": "Callisto",
+    "distractors": [
+      "The Moon",
+      "Ganymede",
+      "Rhea",
+      "Mimas",
+      "Oberon",
+      "Iapetus",
+      "Mercury",
+      "Umbriel"
+    ],
+    "acceptableAnswers": ["callisto"],
+    "explanation": "Callisto's surface is estimated to be about 4 billion years old, making it one of the oldest surfaces in the solar system. Unlike Ganymede or Europa, Callisto has no internal heat to drive volcanic activity or resurfacing, so every impact crater remains preserved.",
+    "wowFactor": "Callisto's surface is basically a fossil — it hasn't changed in 4 billion years, like a geological time capsule.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes Callisto's surface unique compared to other Galilean moons?",
+        "answer": "Most craters, no activity",
+        "distractors": ["Active volcanoes", "Liquid water oceans", "Thick atmosphere"]
+      },
+      {
+        "type": "true_false",
+        "question": "Callisto shows signs of active geological resurfacing.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Callisto's ancient surface has remained largely unchanged for about ___ billion years.",
+        "answer": "4",
+        "distractors": ["1", "2", "10"]
+      },
+      {
+        "type": "reverse",
+        "question": "The most heavily cratered moon in the solar system is?",
+        "answer": "Callisto",
+        "distractors": ["The Moon", "Mercury", "Ganymede"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Callisto_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up view of Callisto's grey surface densely packed with overlapping craters of all sizes, looking like a crumpled ball of foil with no smooth plains or volcanic flows.",
+    "tags": ["callisto", "craters", "geology", "ancient surface", "solar system"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-titan-atmosphere-nitrogen",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Titan is the only moon in the solar system with a dense atmosphere, composed mainly of nitrogen like Earth's.",
+    "quizQuestion": "Which moon has a thick nitrogen atmosphere similar to Earth's?",
+    "correctAnswer": "Titan",
+    "distractors": [
+      "Ganymede",
+      "Callisto",
+      "Triton",
+      "Europa",
+      "Io",
+      "Enceladus",
+      "Rhea",
+      "Miranda"
+    ],
+    "acceptableAnswers": ["titan"],
+    "explanation": "Titan's atmosphere is about 1.5 times as dense as Earth's at the surface and is composed of roughly 95% nitrogen with methane making up most of the rest. The thick haze of organic molecules gives Titan its distinctive orange color when viewed from space.",
+    "wowFactor": "Titan is the only place besides Earth with stable liquid on its surface — except it's lakes of liquid methane, not water.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Titan's atmosphere mainly composed of?",
+        "answer": "Nitrogen",
+        "distractors": ["Oxygen", "Carbon dioxide", "Methane"]
+      },
+      {
+        "type": "reverse",
+        "question": "Titan is the only moon with a dense atmosphere orbiting which planet?",
+        "answer": "Saturn",
+        "distractors": ["Jupiter", "Uranus", "Neptune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Titan is the only moon in the solar system with a dense atmosphere.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Titan's thick atmosphere gives it an orange color from ___ molecules.",
+        "answer": "Organic",
+        "distractors": ["Iron oxide", "Sulfur", "Ice crystal"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titan_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Saturn's moon Titan as seen from space, showing its thick orange haze layer wrapping the entire sphere like a fuzzy tangerine, with Saturn's rings faintly visible in the far background.",
+    "tags": ["titan", "saturn", "atmosphere", "nitrogen", "moons"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-titan-methane-lakes",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Titan has lakes and seas of liquid methane on its surface, making it the only world beyond Earth with stable surface liquids.",
+    "quizQuestion": "What liquid fills Titan's lakes and seas?",
+    "correctAnswer": "Liquid methane",
+    "distractors": [
+      "Liquid water",
+      "Liquid nitrogen",
+      "Liquid ethanol",
+      "Liquid ammonia",
+      "Liquid hydrogen",
+      "Liquid carbon dioxide",
+      "Liquid sulfur",
+      "Liquid helium"
+    ],
+    "acceptableAnswers": ["liquid methane", "methane"],
+    "explanation": "Titan's average surface temperature is around -179°C (-290°F), cold enough for methane to exist as a liquid. The largest sea, Kraken Mare, is larger than the Caspian Sea on Earth. The Cassini spacecraft mapped these lakes and seas in detail using radar.",
+    "wowFactor": "On Titan it rains methane, rivers of methane carve canyons, and you'd drown in a methane sea — the most alien version of Earth's water cycle.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Titan's lakes contain liquid methane — what is Titan a moon of?",
+        "answer": "Saturn",
+        "distractors": ["Jupiter", "Uranus", "Neptune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Titan has lakes of liquid water on its surface.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Titan is the only world besides Earth with stable ___ on its surface.",
+        "answer": "Surface liquids",
+        "distractors": ["Atmosphere", "Magnetic field", "Tectonic plates"]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name of Titan's largest sea, bigger than the Caspian Sea?",
+        "answer": "Kraken Mare",
+        "distractors": ["Ligeia Mare", "Punga Mare", "Ontario Lacus"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titan_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dark orange shoreline on Titan with still liquid methane reflecting the hazy amber sky, smooth dark liquid stretching to the horizon under thick smoggy clouds.",
+    "tags": ["titan", "saturn", "methane", "lakes", "Kraken Mare"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-titan-huygens-probe",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "space_missions",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "space_missions",
+    "categoryL3": "",
+    "statement": "The Huygens probe landed on Titan in 2005, becoming the most distant landing of any spacecraft.",
+    "quizQuestion": "What probe landed on Titan in 2005, the farthest landing ever achieved?",
+    "correctAnswer": "Huygens",
+    "distractors": [
+      "Cassini",
+      "Voyager 1",
+      "New Horizons",
+      "Pioneer 10",
+      "Galileo probe",
+      "MESSENGER",
+      "Philae",
+      "Mars Pathfinder"
+    ],
+    "acceptableAnswers": ["huygens", "huygens probe"],
+    "explanation": "The Huygens probe was released by the Cassini orbiter and parachuted through Titan's atmosphere, transmitting data for about 72 minutes after landing. It revealed river channels, rounded pebbles of water ice, and a landscape shaped by hydrocarbon rain.",
+    "wowFactor": "Huygens descended for 2.5 hours through Titan's thick smog and sent back audio — you can actually listen to the wind on another moon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which probe made the farthest planetary landing in 2005 on Titan?",
+        "answer": "Huygens",
+        "distractors": ["Cassini", "Galileo probe", "Philae"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Huygens probe landed on Titan — which mission delivered it there?",
+        "answer": "Cassini",
+        "distractors": ["Voyager 2", "New Horizons", "Pioneer 11"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Huygens probe landed on Titan in 2005.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Huygens descended through Titan's atmosphere by ___ before landing.",
+        "answer": "Parachute",
+        "distractors": ["Rocket burn", "Airbags", "Heat shield only"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Huygens_(spacecraft)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small disc-shaped probe descending under an orange parachute through Titan's thick amber smog, with the ground below showing dark drainage channels and rounded pale pebbles.",
+    "tags": ["titan", "huygens", "cassini", "landing", "space missions"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-enceladus-water-geysers",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Enceladus shoots water vapor geysers from its south pole, feeding material directly into Saturn's E ring.",
+    "quizQuestion": "Which Saturn moon shoots water geysers from its south pole?",
+    "correctAnswer": "Enceladus",
+    "distractors": [
+      "Titan",
+      "Rhea",
+      "Dione",
+      "Tethys",
+      "Mimas",
+      "Iapetus",
+      "Phoebe",
+      "Hyperion"
+    ],
+    "acceptableAnswers": ["enceladus"],
+    "explanation": "Cassini discovered in 2005 that Enceladus has over 100 geysers erupting from 'tiger stripe' fractures near its south pole. These plumes contain water vapor, ice particles, salts, and organic molecules — and they supply Saturn's E ring with fresh material.",
+    "wowFactor": "Enceladus is literally spraying its internal ocean into space — and Cassini flew through those plumes and tasted them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does Enceladus shoot from its south polar tiger stripe fractures?",
+        "answer": "Water geysers",
+        "distractors": ["Lava jets", "Methane plumes", "Carbon dioxide jets"]
+      },
+      {
+        "type": "reverse",
+        "question": "Enceladus's geysers directly feed which of Saturn's rings?",
+        "answer": "E ring",
+        "distractors": ["A ring", "B ring", "F ring"]
+      },
+      {
+        "type": "true_false",
+        "question": "Enceladus has water geysers erupting from its south polar region.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The tiger stripe fractures on Enceladus's south pole emit geysers of water ___ and ice.",
+        "answer": "Vapor",
+        "distractors": ["Lava", "Methane", "Nitrogen"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enceladus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Enceladus's brilliant white south pole with glittering blue-white water geyser plumes arching into black space, the parallel tiger stripe fractures glowing faintly beneath them.",
+    "tags": ["enceladus", "saturn", "geysers", "water", "E ring"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-enceladus-subsurface-ocean",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Enceladus harbors a global subsurface liquid water ocean beneath its icy shell, making it a top candidate for extraterrestrial life.",
+    "quizQuestion": "Which moon has a confirmed global subsurface ocean under its ice?",
+    "correctAnswer": "Enceladus",
+    "distractors": [
+      "Titan",
+      "Callisto",
+      "Dione",
+      "Rhea",
+      "Mimas",
+      "Iapetus",
+      "Tethys",
+      "Miranda"
+    ],
+    "acceptableAnswers": ["enceladus"],
+    "explanation": "Gravity measurements by Cassini confirmed that Enceladus has a global ocean of liquid water about 10 km deep beneath its icy crust. The geyser plumes contain molecular hydrogen, suggesting hydrothermal vent activity on the ocean floor — conditions similar to where life may have first appeared on Earth.",
+    "wowFactor": "The geyser plumes contain molecular hydrogen — a sign of active seafloor vents on Enceladus. Life's fuel, ready to go.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What evidence suggests Enceladus might harbor life?",
+        "answer": "Subsurface liquid ocean",
+        "distractors": ["Oxygen atmosphere", "Thick ice surface", "Methane rain"]
+      },
+      {
+        "type": "true_false",
+        "question": "Enceladus has a global liquid water ocean beneath its icy shell.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Enceladus geyser plumes contain molecular ___, hinting at hydrothermal vents.",
+        "answer": "Hydrogen",
+        "distractors": ["Oxygen", "Methane", "Nitrogen"]
+      },
+      {
+        "type": "reverse",
+        "question": "Enceladus's subsurface ocean is kept liquid mainly by what energy source?",
+        "answer": "Tidal heating",
+        "distractors": ["Solar radiation", "Radioactive decay", "Atmospheric pressure"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enceladus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section diagram of Enceladus showing the rocky core at center, surrounding global liquid ocean with tiny glowing hydrothermal vents, topped by an ice shell with geyser plumes erupting upward.",
+    "tags": ["enceladus", "saturn", "subsurface ocean", "life", "astrobiology"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-mimas-death-star-crater",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mimas has a giant impact crater called Herschel that gives it a striking resemblance to the Death Star from Star Wars.",
+    "quizQuestion": "Which Saturn moon resembles the Death Star due to its giant crater?",
+    "correctAnswer": "Mimas",
+    "distractors": [
+      "Tethys",
+      "Dione",
+      "Rhea",
+      "Iapetus",
+      "Hyperion",
+      "Phoebe",
+      "Janus",
+      "Enceladus"
+    ],
+    "acceptableAnswers": ["mimas"],
+    "explanation": "The Herschel crater on Mimas is 139 km wide — about one-third of the moon's diameter. The impact that formed it was so powerful it nearly shattered Mimas. The uncanny resemblance to the Death Star was noted after Voyager 1 photographed it in 1980.",
+    "wowFactor": "The Herschel crater is so huge relative to Mimas that scientists believe a slightly bigger impact would have broken the moon apart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of Mimas's enormous impact crater?",
+        "answer": "Herschel",
+        "distractors": ["Cassini", "Galileo", "Odysseus"]
+      },
+      {
+        "type": "reverse",
+        "question": "Mimas resembles the Death Star — what fictional franchise is this a reference to?",
+        "answer": "Star Wars",
+        "distractors": ["Star Trek", "Doctor Who", "Dune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Mimas is sometimes called the Death Star moon because of the Herschel crater.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mimas's Herschel crater is about one-___ of the moon's entire diameter.",
+        "answer": "Third",
+        "distractors": ["Half", "Quarter", "Fifth"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mimas_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small grey moon in space with a massive circular crater dominating its face, complete with a central peak tower, unmistakably shaped like the Death Star battle station.",
+    "tags": ["mimas", "saturn", "Herschel crater", "Death Star", "Star Wars"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-mimas-pac-man-thermal-map",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Cassini's thermal map of Mimas revealed a Pac-Man shaped heat signature, with the leading hemisphere warmer than expected.",
+    "quizQuestion": "What famous video game shape appeared on Mimas's Cassini thermal map?",
+    "correctAnswer": "Pac-Man",
+    "distractors": [
+      "Space Invader",
+      "Tetris block",
+      "Mario mushroom",
+      "Death Star",
+      "Smiley face",
+      "Atari logo",
+      "Pong paddle",
+      "Donkey Kong barrel"
+    ],
+    "acceptableAnswers": ["pac-man", "pac man", "pacman"],
+    "explanation": "In 2010, Cassini's infrared spectrometer revealed that Mimas has an unusual heat pattern. The warm region forms a Pac-Man shape, thought to be caused by the different thermal properties of compacted versus fluffy ice in the leading hemisphere.",
+    "wowFactor": "A moon that looks like the Death Star also has a Pac-Man heat map — Mimas is the solar system's most accidentally pop-culture moon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What spacecraft revealed Mimas's Pac-Man shaped heat map?",
+        "answer": "Cassini",
+        "distractors": ["Voyager 1", "New Horizons", "Galileo"]
+      },
+      {
+        "type": "true_false",
+        "question": "Mimas has a Pac-Man shaped thermal signature discovered by Cassini.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mimas's unusual heat map resembles ___, a classic arcade game character.",
+        "answer": "Pac-Man",
+        "distractors": ["Mario", "Space Invader", "Donkey Kong"]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year did Cassini reveal Mimas's Pac-Man heat signature?",
+        "answer": "2010",
+        "distractors": ["2005", "2015", "2001"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mimas_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A thermal false-color map of Mimas showing the warm leading hemisphere in bright yellow and orange forming an unmistakable Pac-Man shape against the cooler blue-purple trailing side.",
+    "tags": ["mimas", "saturn", "Pac-Man", "thermal map", "Cassini"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-iapetus-two-tone-coloring",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Iapetus has a striking two-toned appearance: one hemisphere is pitch black and the other is bright white, a mystery that puzzled astronomers for centuries.",
+    "quizQuestion": "Which Saturn moon has one jet-black hemisphere and one bright white hemisphere?",
+    "correctAnswer": "Iapetus",
+    "distractors": [
+      "Rhea",
+      "Dione",
+      "Tethys",
+      "Hyperion",
+      "Mimas",
+      "Enceladus",
+      "Phoebe",
+      "Janus"
+    ],
+    "acceptableAnswers": ["iapetus"],
+    "explanation": "The dark region of Iapetus is called Cassini Regio, named after Giovanni Cassini who discovered the moon in 1671 and noticed its strange brightness variation. The leading hemisphere is as dark as coal while the trailing side is nearly as bright as snow — scientists now think the dark material is a combination of carbon-rich dust swept up from space and thermal processing of ice.",
+    "wowFactor": "Giovanni Cassini discovered Iapetus's brightness variation in 1671 and was so puzzled he thought it was two different moons on different sides of Saturn.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the dark region on Iapetus's leading hemisphere?",
+        "answer": "Cassini Regio",
+        "distractors": ["Odysseus Chasma", "Herschel crater", "Kraken Mare"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered Iapetus's two-toned nature in 1671?",
+        "answer": "Giovanni Cassini",
+        "distractors": ["Galileo Galilei", "William Herschel", "Christiaan Huygens"]
+      },
+      {
+        "type": "true_false",
+        "question": "Iapetus has one extremely dark hemisphere and one extremely bright hemisphere.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iapetus's dark leading hemisphere is called ___ Regio.",
+        "answer": "Cassini",
+        "distractors": ["Galileo", "Herschel", "Titan"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iapetus_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Iapetus viewed from space showing a dramatic half-and-half coloring — the left hemisphere a stark coal black and the right hemisphere a brilliant icy white, like a yin-yang sphere.",
+    "tags": ["iapetus", "saturn", "two-toned", "Cassini Regio", "discovery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-iapetus-equatorial-ridge",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Iapetus has a mysterious equatorial mountain ridge up to 20 km tall that circles its entire mid-section like a walnut seam.",
+    "quizQuestion": "Which Saturn moon has a 20 km tall ridge running along its equator?",
+    "correctAnswer": "Iapetus",
+    "distractors": [
+      "Titan",
+      "Rhea",
+      "Enceladus",
+      "Mimas",
+      "Dione",
+      "Tethys",
+      "Hyperion",
+      "Phoebe"
+    ],
+    "acceptableAnswers": ["iapetus"],
+    "explanation": "The equatorial ridge on Iapetus is one of the most puzzling features in the solar system. It runs almost 1,300 km and reaches heights of 10–20 km — nearly twice the height of Mount Everest. No definitive explanation exists for how it formed; theories include ancient ring material that fell onto the moon.",
+    "wowFactor": "Iapetus has a mountain range running perfectly around its equator like the seam of a walnut — and nobody knows why it's there.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall is Iapetus's equatorial ridge at its maximum?",
+        "answer": "20 km",
+        "distractors": ["5 km", "50 km", "2 km"]
+      },
+      {
+        "type": "true_false",
+        "question": "Iapetus has a mountain ridge running along its equator that is taller than Mount Everest.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iapetus's equatorial ridge gives it the appearance of a giant walnut or ___.",
+        "answer": "Seamed sphere",
+        "distractors": ["Cracked egg", "Soccer ball", "Ringed planet"]
+      },
+      {
+        "type": "reverse",
+        "question": "One theory for Iapetus's equatorial ridge is that it formed from ancient ___ material falling onto the surface.",
+        "answer": "Ring",
+        "distractors": ["Volcanic", "Meteor", "Tidal"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iapetus_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A closeup of Iapetus's surface showing the dramatic equatorial mountain ridge running across the boundary between dark and light terrain, the steep peaks casting long shadows on the icy plains below.",
+    "tags": ["iapetus", "saturn", "equatorial ridge", "mountains", "mystery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-dione-wispy-terrain",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Dione has bright 'wispy terrain' on its trailing hemisphere — actually ice cliffs formed by ancient fractures rather than surface frost.",
+    "quizQuestion": "Dione's 'wispy terrain' was revealed by Cassini to be what kind of feature?",
+    "correctAnswer": "Ice cliffs",
+    "distractors": [
+      "Frost deposits",
+      "Dust clouds",
+      "Gas vents",
+      "Volcanic flows",
+      "Snow drifts",
+      "Crystal caverns",
+      "Methane fog",
+      "Salt flats"
+    ],
+    "acceptableAnswers": ["ice cliffs", "cliffs"],
+    "explanation": "Before Cassini arrived, Voyager images showed bright streaks on Dione's trailing side that were thought to be frost or ice deposits. Cassini's high-resolution images revealed them to be sheer ice cliffs and scarps created by ancient tectonic fracturing, some hundreds of meters tall.",
+    "wowFactor": "What looked like wispy clouds from a distance turned out to be enormous ice cliffs — Cassini rewrote what we thought we knew about Dione.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spacecraft revealed Dione's wispy terrain was ice cliffs, not frost?",
+        "answer": "Cassini",
+        "distractors": ["Voyager 1", "Voyager 2", "Galileo"]
+      },
+      {
+        "type": "reverse",
+        "question": "Dione's ice cliffs were formed by ancient what?",
+        "answer": "Tectonic fracturing",
+        "distractors": ["Volcanic eruptions", "Meteor impacts", "Ice sublimation"]
+      },
+      {
+        "type": "true_false",
+        "question": "Dione's wispy terrain was originally thought to be frost deposits.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dione's bright wispy terrain is located on its ___ hemisphere.",
+        "answer": "Trailing",
+        "distractors": ["Leading", "Northern", "Southern"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dione_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The trailing hemisphere of Dione showing bright white streaks and ice scarps slashing across the grey cratered surface, the wispy bright lines clearly resolving into sharp cliff edges at higher resolution.",
+    "tags": ["dione", "saturn", "ice cliffs", "Cassini", "terrain"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-triton-retrograde-orbit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Triton is the only large moon in the solar system that orbits its planet in the opposite direction to the planet's rotation (retrograde).",
+    "quizQuestion": "Which large moon orbits its planet in retrograde, opposite to its planet's spin?",
+    "correctAnswer": "Triton",
+    "distractors": [
+      "Titan",
+      "Ganymede",
+      "Callisto",
+      "Europa",
+      "Io",
+      "Charon",
+      "Rhea",
+      "Oberon"
+    ],
+    "acceptableAnswers": ["triton"],
+    "explanation": "Triton orbits Neptune backwards — in the opposite direction to Neptune's rotation. This strongly suggests Triton was not formed in place but was a Kuiper Belt object captured by Neptune's gravity long ago. Its retrograde orbit means tidal forces are slowly decelerating it, and it will eventually crash into Neptune in about 3.6 billion years.",
+    "wowFactor": "Triton is doomed — its retrograde orbit means it's slowly spiraling inward and will either crash into Neptune or be torn apart into a new ring system in 3.6 billion years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Triton's retrograde orbit suggests it was once a captured what?",
+        "answer": "Kuiper Belt object",
+        "distractors": ["Asteroid", "Comet", "Dwarf planet"]
+      },
+      {
+        "type": "reverse",
+        "question": "In how many billion years is Triton expected to crash into or be torn apart by Neptune?",
+        "answer": "3.6 billion",
+        "distractors": ["1 billion", "10 billion", "500 million"]
+      },
+      {
+        "type": "true_false",
+        "question": "Triton orbits Neptune in the opposite direction to Neptune's rotation.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Triton is the only large moon with a ___ orbit around its planet.",
+        "answer": "Retrograde",
+        "distractors": ["Prograde", "Elliptical", "Polar"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Triton_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Triton seen from space with arrows showing its orbital path going backward (retrograde) against Neptune's rotation, with Neptune's blue sphere and faint rings visible in the background.",
+    "tags": ["triton", "neptune", "retrograde", "Kuiper Belt", "orbit"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-triton-nitrogen-geysers",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Triton has active nitrogen geysers that shoot dark plumes several kilometers into its thin atmosphere, discovered by Voyager 2 in 1989.",
+    "quizQuestion": "What type of geysers does Triton have, discovered by Voyager 2?",
+    "correctAnswer": "Nitrogen geysers",
+    "distractors": [
+      "Water geysers",
+      "Methane geysers",
+      "Carbon dioxide geysers",
+      "Sulfur geysers",
+      "Ammonia geysers",
+      "Cryovolcanoes",
+      "Steam vents",
+      "Lava fountains"
+    ],
+    "acceptableAnswers": ["nitrogen geysers", "nitrogen"],
+    "explanation": "Voyager 2 observed dark streaks on Triton's surface caused by nitrogen geysers erupting from beneath the frozen nitrogen surface. The plumes rise about 8 km into the atmosphere and are carried downwind, depositing dark carbon-rich material. This makes Triton one of very few geologically active bodies in the outer solar system.",
+    "wowFactor": "Triton is the coldest known active body in the solar system at -235°C — yet it still has geysers. Cold enough to freeze nitrogen solid, but still erupting.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spacecraft discovered Triton's nitrogen geysers in 1989?",
+        "answer": "Voyager 2",
+        "distractors": ["Voyager 1", "Cassini", "New Horizons"]
+      },
+      {
+        "type": "true_false",
+        "question": "Triton has active nitrogen geysers discovered by Voyager 2.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Triton's nitrogen geysers rise about ___ km into its atmosphere.",
+        "answer": "8",
+        "distractors": ["1", "50", "100"]
+      },
+      {
+        "type": "reverse",
+        "question": "Triton is notable for being among the coldest geologically active bodies at roughly what temperature?",
+        "answer": "-235°C",
+        "distractors": ["-100°C", "-50°C", "-179°C"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Triton_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Triton's pale pinkish surface spotted with dark plume streaks left by nitrogen geysers, a dark geyser column rising into the thin haze above the frozen methane-snow landscape.",
+    "tags": ["triton", "neptune", "nitrogen geysers", "Voyager 2", "active geology"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-charon-pluto-binary",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Charon is so large relative to Pluto that the two orbit their shared center of gravity (barycenter) located in the space between them, making them a binary system.",
+    "quizQuestion": "Why are Pluto and Charon considered a binary system?",
+    "correctAnswer": "They orbit a shared barycenter",
+    "distractors": [
+      "Charon orbits Pluto's center",
+      "They have the same size",
+      "They share the same atmosphere",
+      "Both have liquid water oceans",
+      "They both have ring systems",
+      "Both are composed of ice",
+      "They spin at identical rates",
+      "Both were captured together"
+    ],
+    "acceptableAnswers": ["they orbit a shared barycenter", "shared barycenter", "barycenter between them"],
+    "explanation": "Charon's mass is about 12% of Pluto's — an unusually high ratio compared to any other moon-planet pair. Because of this, the barycenter of the Pluto-Charon system lies outside Pluto's surface, in empty space between them. Both objects orbit this external point, making them a true binary dwarf planet system.",
+    "wowFactor": "Pluto and Charon technically don't orbit each other — they both orbit an empty point in space between them. That's what makes them a binary, not just a planet-moon pair.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where is the barycenter of the Pluto-Charon system located?",
+        "answer": "Between them in space",
+        "distractors": ["Inside Pluto", "Inside Charon", "At Pluto's surface"]
+      },
+      {
+        "type": "reverse",
+        "question": "Charon's mass is roughly what percentage of Pluto's mass?",
+        "answer": "12%",
+        "distractors": ["50%", "1%", "30%"]
+      },
+      {
+        "type": "true_false",
+        "question": "Pluto and Charon orbit a shared center of gravity located in the space between them.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pluto and Charon are called a ___ system because both orbit an external barycenter.",
+        "answer": "Binary",
+        "distractors": ["Ternary", "Double", "Tidal"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Charon_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pluto and Charon shown side by side with an orbital diagram illustrating both bodies circling a point in empty space between them, the barycenter marked with a glowing dot.",
+    "tags": ["charon", "pluto", "binary system", "barycenter", "dwarf planet"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-charon-red-polar-cap",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Charon has a dark reddish polar cap called Mordor Macula, believed to be made of organic compounds escaped from Pluto's atmosphere.",
+    "quizQuestion": "What is the red polar cap on Charon named?",
+    "correctAnswer": "Mordor Macula",
+    "distractors": [
+      "Tombaugh Regio",
+      "Cthulhu Macula",
+      "Sputnik Planitia",
+      "Cassini Regio",
+      "Viking Terra",
+      "Herschel Regio",
+      "Galileo Planitia",
+      "Voyager Macula"
+    ],
+    "acceptableAnswers": ["mordor macula", "mordor"],
+    "explanation": "New Horizons revealed a distinctive dark reddish region at Charon's north pole in 2015. Scientists believe it forms when methane escaping from Pluto's thin atmosphere gets trapped by Charon's cold pole in winter, then converted into complex organic compounds called tholins by UV radiation and cosmic rays.",
+    "wowFactor": "Charon's red polar cap is built from Pluto's own escaped atmosphere — Pluto is literally painting its moon red.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which mission revealed Charon's red Mordor Macula polar cap?",
+        "answer": "New Horizons",
+        "distractors": ["Voyager 2", "Cassini", "Galileo"]
+      },
+      {
+        "type": "reverse",
+        "question": "What material is Charon's Mordor Macula thought to be made of?",
+        "answer": "Tholins",
+        "distractors": ["Carbon dioxide ice", "Iron oxide", "Sulfur deposits"]
+      },
+      {
+        "type": "true_false",
+        "question": "Charon's red polar cap is thought to form from methane escaped from Pluto's atmosphere.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Charon's dark red polar cap, Mordor Macula, was revealed by the ___ spacecraft in 2015.",
+        "answer": "New Horizons",
+        "distractors": ["Cassini", "Voyager 2", "Dawn"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Charon_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Charon's surface showing a large rusty-red cap at the north pole starkly contrasting with the grey-brown cratered terrain below, with Pluto's pink-tinged face visible nearby in space.",
+    "tags": ["charon", "pluto", "Mordor Macula", "tholins", "New Horizons"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-phobos-doomed-orbit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Phobos is spiraling toward Mars and will either crash into it or break apart into a ring in about 50 million years.",
+    "quizQuestion": "What fate awaits Phobos in roughly 50 million years?",
+    "correctAnswer": "Crash into Mars or form a ring",
+    "distractors": [
+      "Escape Mars's gravity",
+      "Merge with Deimos",
+      "Become a comet",
+      "Collide with the Sun",
+      "Be captured by Jupiter",
+      "Break into asteroids",
+      "Freeze solid",
+      "Drift into the asteroid belt"
+    ],
+    "acceptableAnswers": ["crash into mars or form a ring", "crash into mars", "form a ring"],
+    "explanation": "Phobos orbits only 6,000 km above Mars's surface — closer than any other moon to its planet — and tidal forces are pulling it inward by about 1.8 meters every century. In approximately 50 million years, it will reach the Roche limit where Mars's tidal forces will shred it apart, either creating a temporary ring or crashing fragments into the surface.",
+    "wowFactor": "Phobos orbits Mars so low and fast that it rises in the west and sets in the east twice per Martian day — and it's falling faster every year.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far above Mars's surface does Phobos orbit?",
+        "answer": "6,000 km",
+        "distractors": ["60,000 km", "600 km", "384,000 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "Phobos is so low-orbiting that it rises in which direction as seen from Mars's surface?",
+        "answer": "West",
+        "distractors": ["East", "North", "South"]
+      },
+      {
+        "type": "true_false",
+        "question": "Phobos is slowly spiraling toward Mars due to tidal forces.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Phobos's orbit decreases by about 1.8 meters per ___ due to tidal deceleration.",
+        "answer": "Century",
+        "distractors": ["Year", "Decade", "Million years"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phobos_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A potato-shaped grey moon very close above Mars's rusty red surface with crater tracks visible, orbital decay trajectory arrows drawn spiraling downward toward the planet.",
+    "tags": ["phobos", "mars", "doomed orbit", "tidal forces", "ring"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-phobos-fastest-orbit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Phobos completes an orbit around Mars in just 7 hours 39 minutes — faster than Mars rotates, making it the fastest-orbiting moon relative to its planet's day.",
+    "quizQuestion": "How long does Phobos take to orbit Mars — shorter than a Martian day?",
+    "correctAnswer": "7 hours 39 minutes",
+    "distractors": [
+      "24 hours",
+      "12 hours",
+      "3 days",
+      "48 hours",
+      "1 hour",
+      "30 hours",
+      "6 days",
+      "14 hours"
+    ],
+    "acceptableAnswers": ["7 hours 39 minutes", "7.5 hours", "about 8 hours"],
+    "explanation": "A Martian day is about 24 hours 37 minutes long. Phobos completes nearly three full orbits in that time, making it unique as a moon that orbits faster than its planet rotates. This also means Phobos appears to move backward across the Martian sky, rising in the west and setting in the east.",
+    "wowFactor": "Phobos orbits Mars three times a day — standing on Mars you'd watch a moon rise in the west and set in the east twice before midnight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many times does Phobos orbit Mars in a single Martian day?",
+        "answer": "About 3 times",
+        "distractors": ["Once", "Twice", "Six times"]
+      },
+      {
+        "type": "true_false",
+        "question": "Phobos orbits Mars faster than Mars completes one rotation.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Phobos's orbit takes only about 7 hours, meaning from Mars it rises in the ___ and sets in the east.",
+        "answer": "West",
+        "distractors": ["East", "North", "South"]
+      },
+      {
+        "type": "reverse",
+        "question": "What property makes Phobos unique among solar system moons?",
+        "answer": "Orbits faster than planet's day",
+        "distractors": ["Has water geysers", "Retrograde orbit", "Has a ring"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phobos_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Time-lapse view from Mars's surface of Phobos rising in the west and moving quickly across the dusky pink sky, completing its arc in just a few hours while stars barely move.",
+    "tags": ["phobos", "mars", "orbit", "fastest moon", "rising west"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-deimos-smooth-surface",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Deimos has a remarkably smooth surface because craters are buried under a deep layer of loose regolith and dust.",
+    "quizQuestion": "Why does Deimos appear unusually smooth compared to Phobos?",
+    "correctAnswer": "Craters buried under regolith",
+    "distractors": [
+      "Volcanic resurfacing",
+      "No meteor impacts",
+      "Ice covering the surface",
+      "Wind erosion",
+      "Recent formation",
+      "Tidal smoothing",
+      "Water erosion",
+      "Dense atmosphere"
+    ],
+    "acceptableAnswers": ["craters buried under regolith", "regolith burial", "buried craters"],
+    "explanation": "Unlike the battered, grooved surface of Phobos, Deimos looks relatively smooth because its shallow craters are filled and blanketed by regolith — loose fragmented rock and dust. The low gravity on Deimos (just 0.003 g) means ejecta from impacts can travel far and settle across the surface, gradually smoothing it out.",
+    "wowFactor": "Gravity on Deimos is so weak that if you jumped off a building, you'd escape into space — and ejecta from any impact spreads across the whole moon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How strong is Deimos's surface gravity compared to Earth?",
+        "answer": "0.003 g",
+        "distractors": ["0.1 g", "0.5 g", "0.38 g"]
+      },
+      {
+        "type": "reverse",
+        "question": "Deimos and Phobos orbit Mars — which is the outer, smaller moon?",
+        "answer": "Deimos",
+        "distractors": ["Phobos", "Both are the same size", "Neither orbits Mars"]
+      },
+      {
+        "type": "true_false",
+        "question": "Deimos has a smoother surface than Phobos because craters are buried in regolith.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Deimos's low ___ means impact ejecta spreads widely and smooths the surface.",
+        "answer": "Gravity",
+        "distractors": ["Temperature", "Atmosphere", "Magnetic field"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deimos_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small lumpy potato-shaped moon with a much smoother, more featureless surface than expected, only a few shallow depressions visible, floating against the black of space with Mars's rust-colored limb in the corner.",
+    "tags": ["deimos", "mars", "smooth surface", "regolith", "low gravity"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-ariel-brightest-uranian-moon",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Ariel is the brightest of Uranus's five major moons and has extensive valleys and canyons suggesting relatively recent geological activity.",
+    "quizQuestion": "Which Uranian moon is the brightest and has the most extensive canyons?",
+    "correctAnswer": "Ariel",
+    "distractors": [
+      "Titania",
+      "Oberon",
+      "Umbriel",
+      "Miranda",
+      "Triton",
+      "Ganymede",
+      "Callisto",
+      "Rhea"
+    ],
+    "acceptableAnswers": ["ariel"],
+    "explanation": "Ariel's bright surface is covered in grabens — broad, flat-floored valleys formed by tectonic stretching — which suggests geological activity at some point in its past. Its high reflectivity is thought to result from relatively fresh water ice deposited by geological processes. All our data about Ariel comes from Voyager 2's 1986 flyby.",
+    "wowFactor": "Everything we know about Ariel came from a single few-hours flyby by Voyager 2 in 1986 — we've never returned to Uranus since.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spacecraft gave us all our data about Ariel's surface in 1986?",
+        "answer": "Voyager 2",
+        "distractors": ["Cassini", "New Horizons", "Galileo"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ariel's bright surface is thought to result from fresh deposits of what material?",
+        "answer": "Water ice",
+        "distractors": ["Methane frost", "Sulfur", "Carbon dioxide"]
+      },
+      {
+        "type": "true_false",
+        "question": "Ariel is the brightest of Uranus's major moons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ariel's flat-floored valleys formed by tectonic stretching are called ___.",
+        "answer": "Grabens",
+        "distractors": ["Calderas", "Chasmas", "Rilles"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ariel_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ariel's bright icy surface crisscrossed by wide flat-bottomed canyons (grabens), the fresh white terrain contrasting with darker inter-canyon regions, with Uranus's cyan disc visible distantly.",
+    "tags": ["ariel", "uranus", "moons", "grabens", "Voyager 2"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-umbriel-dark-surface",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Umbriel is the darkest of Uranus's major moons, with an unusually low reflectivity and a mysterious bright ring in its Wunda crater.",
+    "quizQuestion": "Which Uranian moon is the darkest and has a mysterious bright ring in Wunda crater?",
+    "correctAnswer": "Umbriel",
+    "distractors": [
+      "Oberon",
+      "Ariel",
+      "Miranda",
+      "Titania",
+      "Phoebe",
+      "Callisto",
+      "Iapetus",
+      "Rhea"
+    ],
+    "acceptableAnswers": ["umbriel"],
+    "explanation": "Umbriel is notably darker than the other Uranian moons, suggesting its surface is coated in a dark material possibly deposited by impacts from carbonaceous asteroids. The Wunda crater near its equator has a puzzling bright ring or deposit on its floor that contrasts sharply with the otherwise dark surface — its composition is unknown.",
+    "wowFactor": "Umbriel's entire surface is mysteriously dark except for one bright ring in a single crater — and nobody knows what it's made of.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the crater with a mysterious bright feature on Umbriel?",
+        "answer": "Wunda",
+        "distractors": ["Herschel", "Odysseus", "Mezentius"]
+      },
+      {
+        "type": "true_false",
+        "question": "Umbriel is the darkest of Uranus's five major moons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Umbriel's dark surface may be coated in material from ___ asteroid impacts.",
+        "answer": "Carbonaceous",
+        "distractors": ["Iron-rich", "Silicate", "Icy"]
+      },
+      {
+        "type": "reverse",
+        "question": "Umbriel orbits which planet?",
+        "answer": "Uranus",
+        "distractors": ["Saturn", "Neptune", "Jupiter"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Umbriel_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dark grey moon with a uniformly dusky surface, one crater near the equator standing out with a bright circular ring on its floor glowing against the dark terrain.",
+    "tags": ["umbriel", "uranus", "dark moon", "Wunda crater", "mystery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-titania-largest-uranian-moon",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Titania is the largest moon of Uranus and features Messina Chasmata, one of the longest canyon systems in the solar system.",
+    "quizQuestion": "Which is the largest moon of Uranus?",
+    "correctAnswer": "Titania",
+    "distractors": [
+      "Oberon",
+      "Ariel",
+      "Umbriel",
+      "Miranda",
+      "Triton",
+      "Ganymede",
+      "Callisto",
+      "Rhea"
+    ],
+    "acceptableAnswers": ["titania"],
+    "explanation": "Titania has a diameter of about 1,578 km and is the eighth-largest moon in the solar system. Its surface shows evidence of geological activity — the Messina Chasmata fault system stretches over 1,500 km and is up to 75 km wide. Like all Uranian moons known well, nearly all data comes from Voyager 2's brief 1986 flyby.",
+    "wowFactor": "Titania has a canyon system 1,500 km long that was only photographed for a few hours by Voyager 2 in 1986 — and we haven't looked since.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the large canyon system on Titania?",
+        "answer": "Messina Chasmata",
+        "distractors": ["Odysseus Chasma", "Ithaca Chasma", "Valles Marineris"]
+      },
+      {
+        "type": "reverse",
+        "question": "Titania is the largest moon of Uranus — roughly how large is it in diameter?",
+        "answer": "1,578 km",
+        "distractors": ["500 km", "5,000 km", "400 km"]
+      },
+      {
+        "type": "true_false",
+        "question": "Titania is the largest of Uranus's moons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Titania is ranked the ___ largest moon in the entire solar system.",
+        "answer": "Eighth",
+        "distractors": ["First", "Fourth", "Fifteenth"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titania_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Titania's grey-brown icy surface seen close up, slashed by the wide Messina Chasmata canyon system running across the frame, walls casting long shadows across the cratered plains.",
+    "tags": ["titania", "uranus", "largest moon", "Messina Chasmata", "canyons"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-miranda-cliffs-verona-rupes",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Miranda has Verona Rupes, the tallest known cliff in the solar system at about 20 km high — ten times taller than Earth's Grand Canyon.",
+    "quizQuestion": "Which moon has Verona Rupes, the tallest cliff in the solar system?",
+    "correctAnswer": "Miranda",
+    "distractors": [
+      "Ariel",
+      "Titania",
+      "Oberon",
+      "Umbriel",
+      "Iapetus",
+      "Tethys",
+      "Callisto",
+      "Dione"
+    ],
+    "acceptableAnswers": ["miranda"],
+    "explanation": "Verona Rupes on Miranda is an ice cliff approximately 20 km (65,000 ft) tall, making it the tallest known cliff in the solar system. Because Miranda's gravity is so low, an object falling off the edge would take about 10 minutes to reach the bottom. Miranda's patchwork surface is thought to result from it being shattered by a massive impact and reassembled.",
+    "wowFactor": "If you jumped off Verona Rupes cliff on Miranda, you'd fall for 10 minutes before hitting the bottom — and probably survive, because gravity is so weak.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall is Miranda's Verona Rupes cliff?",
+        "answer": "About 20 km",
+        "distractors": ["1 km", "200 km", "5 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "Miranda is a moon of which planet?",
+        "answer": "Uranus",
+        "distractors": ["Saturn", "Neptune", "Jupiter"]
+      },
+      {
+        "type": "true_false",
+        "question": "Verona Rupes on Miranda is the tallest known cliff in the solar system.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Falling off Miranda's Verona Rupes cliff would take about ___ minutes due to low gravity.",
+        "answer": "10",
+        "distractors": ["1", "60", "30"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Miranda_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The dramatic towering face of Verona Rupes cliff on Miranda, a sheer vertical ice wall dropping 20 km into shadow below, the chaotic fractured terrain of Miranda stretching away above it.",
+    "tags": ["miranda", "uranus", "Verona Rupes", "tallest cliff", "solar system records"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-rhea-possible-ring",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Rhea may have its own faint ring system, which would make it the first moon ever found to have rings around it.",
+    "quizQuestion": "Which Saturn moon may have its own ring system, a solar system first?",
+    "correctAnswer": "Rhea",
+    "distractors": [
+      "Titan",
+      "Iapetus",
+      "Dione",
+      "Tethys",
+      "Mimas",
+      "Enceladus",
+      "Hyperion",
+      "Phoebe"
+    ],
+    "acceptableAnswers": ["rhea"],
+    "explanation": "In 2008, Cassini scientists reported evidence from electron and plasma data suggesting Rhea has a faint ring system of solid material orbiting it — which would be the first ring system ever discovered around a moon. However, later Cassini flyby images did not reveal the rings optically, and the evidence remains debated.",
+    "wowFactor": "Rhea might be the only moon with its own rings — but despite years of searching, Cassini never got a clear picture of them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What data from Cassini suggested Rhea might have rings around it?",
+        "answer": "Electron and plasma data",
+        "distractors": ["Infrared images", "Gravity measurements", "Radio signals"]
+      },
+      {
+        "type": "reverse",
+        "question": "Rhea is the second-largest moon of which planet?",
+        "answer": "Saturn",
+        "distractors": ["Uranus", "Jupiter", "Neptune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Rhea has confirmed rings that have been photographed by Cassini.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "If Rhea has rings, it would be the first ___ ever known to have its own ring system.",
+        "answer": "Moon",
+        "distractors": ["Planet", "Asteroid", "Comet"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rhea_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Saturn's moon Rhea against the blackness of space with faint ghostly ring-like arcs subtly visible around it, depicted as a tentative dashed diagram overlaying the icy grey moon.",
+    "tags": ["rhea", "saturn", "rings", "moon rings", "Cassini"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-tethys-ithaca-chasma",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Tethys has Ithaca Chasma, a canyon about 2,000 km long and up to 100 km wide that stretches nearly three-quarters of the way around the moon.",
+    "quizQuestion": "Which Saturn moon has Ithaca Chasma, a canyon spanning 3/4 of its circumference?",
+    "correctAnswer": "Tethys",
+    "distractors": [
+      "Rhea",
+      "Dione",
+      "Iapetus",
+      "Mimas",
+      "Enceladus",
+      "Titan",
+      "Phoebe",
+      "Hyperion"
+    ],
+    "acceptableAnswers": ["tethys"],
+    "explanation": "Ithaca Chasma is one of the largest canyon systems in the solar system relative to its moon's size — it runs about 2,000 km long, up to 100 km wide, and 3–5 km deep. Scientists think it formed when Tethys's interior water ocean froze and expanded, cracking the crust. It is also geographically related to the giant Odysseus crater on the opposite side.",
+    "wowFactor": "Ithaca Chasma wraps nearly all the way around Tethys — it formed because the entire moon's interior froze and the expanding ice cracked the shell like a freezing water balloon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is Ithaca Chasma on Tethys?",
+        "answer": "About 2,000 km",
+        "distractors": ["100 km", "500 km", "10,000 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ithaca Chasma on Tethys likely formed because the moon's interior water did what?",
+        "answer": "Froze and expanded",
+        "distractors": ["Melted and collapsed", "Evaporated", "Was blasted by impacts"]
+      },
+      {
+        "type": "true_false",
+        "question": "Ithaca Chasma on Tethys spans nearly three-quarters of the moon's circumference.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tethys's canyon Ithaca Chasma is up to ___ km wide.",
+        "answer": "100",
+        "distractors": ["10", "1,000", "5"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tethys_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tethys's bright icy surface with the enormous Ithaca Chasma canyon slashing across it in a great arc, deep shadowed walls visible on one side, Odysseus crater's circular rim seen on the opposite limb.",
+    "tags": ["tethys", "saturn", "Ithaca Chasma", "canyon", "geology"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hyperion-chaotic-rotation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Hyperion tumbles chaotically through space with no stable rotation axis, making its orientation completely unpredictable — the first moon observed to do so.",
+    "quizQuestion": "Which Saturn moon has completely chaotic, unpredictable rotation?",
+    "correctAnswer": "Hyperion",
+    "distractors": [
+      "Phoebe",
+      "Janus",
+      "Mimas",
+      "Epimetheus",
+      "Iapetus",
+      "Tethys",
+      "Rhea",
+      "Dione"
+    ],
+    "acceptableAnswers": ["hyperion"],
+    "explanation": "Most moons are tidally locked to their planets and rotate at a steady rate. Hyperion is an exception — its irregular, elongated shape combined with gravitational tugs from Titan result in chaotic rotation. Its axis of spin changes direction unpredictably, and it was the first solar system body confirmed to be in chaotic rotation.",
+    "wowFactor": "Hyperion is so chaotically tumbling that it's impossible to predict which side will face Saturn even a few weeks in advance — it's the most disorderly moon we know of.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes Hyperion's chaotic rotation?",
+        "answer": "Irregular shape and Titan's gravity",
+        "distractors": ["No internal heat", "Impact damage", "No solid core"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hyperion was the first body confirmed in chaotic rotation — which moon's gravity helps cause this?",
+        "answer": "Titan",
+        "distractors": ["Rhea", "Dione", "Enceladus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Hyperion rotates chaotically with a completely unpredictable orientation.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hyperion was the first solar system body confirmed to be in ___ rotation.",
+        "answer": "Chaotic",
+        "distractors": ["Retrograde", "Polar", "Synchronous"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperion_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An irregularly shaped, sponge-textured moon with deep holes and pits tumbling at an odd angle in space, motion blur arrows showing random spin axes, Saturn's rings faintly behind it.",
+    "tags": ["hyperion", "saturn", "chaotic rotation", "irregular moon", "first discovery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hyperion-sponge-surface",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Hyperion has an unusual sponge-like surface texture with deep sharp-edged pits, thought to result from low-density material that barely compresses when hit by meteorites.",
+    "quizQuestion": "Why does Hyperion have a sponge-like surface with deep sharp-edged pits?",
+    "correctAnswer": "Low-density material barely compresses",
+    "distractors": [
+      "Volcanic venting",
+      "Tidal flexing",
+      "Methane sublimation",
+      "Ice evaporation",
+      "Acid erosion",
+      "Wind carving",
+      "Magnetic sculpting",
+      "Tectonic stretching"
+    ],
+    "acceptableAnswers": ["low-density material barely compresses", "low density", "porous low density ice"],
+    "explanation": "Hyperion's very low density (about 0.55 g/cm³) suggests it is mostly empty space — a loosely packed rubble pile of ice and rock. When meteorites strike such a porous body, the impact energy is absorbed without much compression or melting, leaving sharp-edged pits rather than rounded craters. Cassini images revealed this extraordinary sponge-like texture in detail.",
+    "wowFactor": "Hyperion is so porous that it's less dense than water — it would float in a large enough ocean.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Hyperion's density is about 0.55 g/cm³ — what does this imply about its composition?",
+        "answer": "Mostly empty space",
+        "distractors": ["Solid iron core", "Dense rock", "Liquid interior"]
+      },
+      {
+        "type": "true_false",
+        "question": "Hyperion's sponge-like surface is created because it is a very low-density porous body.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At 0.55 g/cm³, Hyperion is less dense than ___ and would float in it.",
+        "answer": "Water",
+        "distractors": ["Rock", "Ice", "Air"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hyperion's porous sponge texture was revealed in detail by which spacecraft?",
+        "answer": "Cassini",
+        "distractors": ["Voyager 2", "New Horizons", "Galileo"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperion_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Extreme close-up of Hyperion's bizarre surface showing perfectly sharp-edged pit craters clustered together like a sea sponge or Swiss cheese, the deep shadows emphasizing the unusual texture.",
+    "tags": ["hyperion", "saturn", "sponge surface", "low density", "porous"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-phoebe-captured-kuiper-belt",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Phoebe is thought to be a captured Kuiper Belt object, orbiting Saturn in the opposite direction to all its regular moons.",
+    "quizQuestion": "Phoebe orbits Saturn in which direction, unlike Saturn's regular moons?",
+    "correctAnswer": "Retrograde",
+    "distractors": [
+      "Prograde",
+      "Polar",
+      "Equatorial",
+      "Elliptical spiral",
+      "Stationary",
+      "Oscillating",
+      "Clockwise overhead",
+      "Synchronous"
+    ],
+    "acceptableAnswers": ["retrograde"],
+    "explanation": "Phoebe's retrograde, highly inclined orbit strongly suggests it was not formed around Saturn but was captured from the outer solar system — likely from the Kuiper Belt. Its dark, carbon-rich surface and the existence of Saturn's 'Phoebe ring' — a huge diffuse ring of Phoebe's ejected dust — both support this captured origin.",
+    "wowFactor": "Phoebe created Saturn's largest ring, the Phoebe ring, which is 300 times wider than Saturn itself — but it's so dark and diffuse that it was only discovered in 2009.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the enormous diffuse ring created by Phoebe's ejected dust?",
+        "answer": "Phoebe ring",
+        "distractors": ["F ring", "E ring", "A ring"]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was Saturn's enormous but faint Phoebe ring discovered?",
+        "answer": "2009",
+        "distractors": ["1980", "1997", "2015"]
+      },
+      {
+        "type": "true_false",
+        "question": "Phoebe is thought to be a captured Kuiper Belt object based on its retrograde orbit.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Phoebe ring is about ___ times wider than Saturn itself.",
+        "answer": "300",
+        "distractors": ["10", "1,000", "5"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phoebe_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Phoebe shown as a dark, heavily cratered irregular body orbiting far from Saturn in the retrograde direction, a faint enormous diffuse ring halo around Saturn hinted at in the background.",
+    "tags": ["phoebe", "saturn", "retrograde", "Kuiper Belt", "Phoebe ring"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-janus-epimetheus-shared-orbit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Janus and Epimetheus share nearly the same orbit around Saturn and swap orbital positions every four years to avoid colliding.",
+    "quizQuestion": "How often do Janus and Epimetheus swap their orbital positions around Saturn?",
+    "correctAnswer": "Every four years",
+    "distractors": [
+      "Every year",
+      "Every decade",
+      "Every century",
+      "Every six months",
+      "Every 20 years",
+      "Every 50 years",
+      "Every Saturnian orbit",
+      "Every other day"
+    ],
+    "acceptableAnswers": ["every four years", "every 4 years"],
+    "explanation": "Janus and Epimetheus are co-orbital moons, separated by only about 50 km in orbital altitude. Because the inner moon orbits slightly faster than the outer one, they gradually approach each other. When they get close, they gravitationally exchange momentum and swap orbits — the inner one moves out and the outer one moves in — preventing a collision. This swap happens approximately every 4 years.",
+    "wowFactor": "Janus and Epimetheus play an eternal game of orbital musical chairs — every 4 years they swap places to avoid crashing into each other, in a perfectly choreographed gravitational dance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What happens when Janus and Epimetheus approach each other in their shared orbit?",
+        "answer": "They swap orbital positions",
+        "distractors": ["They collide", "They merge", "One escapes Saturn's gravity"]
+      },
+      {
+        "type": "reverse",
+        "question": "Janus shares its orbit with Epimetheus — how far apart are their orbital altitudes?",
+        "answer": "About 50 km",
+        "distractors": ["1,000 km", "10 km", "500,000 km"]
+      },
+      {
+        "type": "true_false",
+        "question": "Janus and Epimetheus swap orbital positions around Saturn every four years.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Janus and Epimetheus are called ___ moons because they share the same orbital path.",
+        "answer": "Co-orbital",
+        "distractors": ["Binary", "Trojan", "Resonant"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Janus_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two small potato-shaped moons orbiting very close together around Saturn, orbital path arrows showing them approaching each other then swapping inner/outer positions in a graceful gravitational exchange.",
+    "tags": ["janus", "epimetheus", "saturn", "co-orbital", "orbital swap"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-oberon-dark-craters",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Oberon, the second-largest Uranian moon, has craters with dark floors believed to be deposits of carbon-rich material released during impacts.",
+    "quizQuestion": "What fills the dark crater floors on Oberon, the second-largest moon of Uranus?",
+    "correctAnswer": "Carbon-rich material",
+    "distractors": [
+      "Frozen methane",
+      "Sulfur deposits",
+      "Iron oxides",
+      "Liquid water",
+      "Dark tholins",
+      "Silicate lava",
+      "Ammonia ice",
+      "Volcanic ash"
+    ],
+    "acceptableAnswers": ["carbon-rich material", "carbonaceous material"],
+    "explanation": "Oberon has some of the most heavily cratered terrain among Uranian moons, with dark material filling many crater floors. Scientists believe this material is a mixture of carbon-rich compounds excavated from the interior by impacts or deposited by carbonaceous asteroids. Oberon has a 6 km tall mountain on its limb that may be the central peak of a large impact basin.",
+    "wowFactor": "Oberon has a mountain taller than Everest visible on its horizon, hinting at a massive hidden impact basin we've never fully imaged.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Oberon has a mountain roughly how tall visible on its limb in Voyager images?",
+        "answer": "6 km",
+        "distractors": ["100 m", "60 km", "600 m"]
+      },
+      {
+        "type": "reverse",
+        "question": "Oberon is the second-largest moon of Uranus — which is the largest?",
+        "answer": "Titania",
+        "distractors": ["Ariel", "Miranda", "Umbriel"]
+      },
+      {
+        "type": "true_false",
+        "question": "Oberon's dark crater floors are thought to contain carbon-rich material.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Oberon and Titania were the first moons of Uranus to be discovered, found by William ___ in 1787.",
+        "answer": "Herschel",
+        "distractors": ["Galileo", "Cassini", "Bode"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oberon_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Oberon's grey-brown icy surface covered in ancient craters, many with dark black floor material, and a tall triangular mountain peak rising from the moon's curved horizon at upper right.",
+    "tags": ["oberon", "uranus", "dark craters", "carbonaceous", "William Herschel"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

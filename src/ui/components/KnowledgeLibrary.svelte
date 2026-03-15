@@ -304,7 +304,7 @@
     background: linear-gradient(180deg, #081225 0%, #121f33 100%);
     color: #e2e8f0;
     z-index: 260;
-    padding: 14px;
+    padding: calc(14px * var(--layout-scale, 1));
     overflow: auto;
   }
 
@@ -314,8 +314,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 8px 0;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) 0;
     background: linear-gradient(180deg, #081225, rgba(8, 18, 37, 0.9));
     z-index: 2;
   }
@@ -332,11 +332,11 @@
     color: #e2e8f0;
     min-height: 48px;
     border-radius: 10px;
-    padding: 0 14px;
+    padding: 0 calc(14px * var(--layout-scale, 1));
   }
 
   .loading {
-    margin-top: 20px;
+    margin-top: calc(20px * var(--layout-scale, 1));
     color: #cbd5e1;
   }
 
@@ -344,8 +344,8 @@
   .domain-section,
   .detail-card {
     display: grid;
-    gap: 12px;
-    margin-top: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
+    margin-top: calc(12px * var(--layout-scale, 1));
   }
 
   .mastery-strip,
@@ -353,7 +353,7 @@
     background: rgba(15, 23, 42, 0.72);
     border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 12px;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
   }
 
@@ -361,7 +361,7 @@
   .domain-grid,
   .fact-list {
     display: grid;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .lore-card,
@@ -373,12 +373,12 @@
     color: #e2e8f0;
     text-align: left;
     min-height: 48px;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .lore-card span {
     display: block;
-    margin-top: 6px;
+    margin-top: calc(6px * var(--layout-scale, 1));
     color: #bfdbfe;
     font-size: calc(11px * var(--text-scale, 1));
   }
@@ -391,8 +391,8 @@
   }
 
   .progress-bg {
-    height: 12px;
-    margin-top: 8px;
+    height: calc(12px * var(--layout-scale, 1));
+    margin-top: calc(8px * var(--layout-scale, 1));
     background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     overflow: hidden;
@@ -405,7 +405,7 @@
 
   .domain-meta,
   .fact-meta {
-    margin-top: 8px;
+    margin-top: calc(8px * var(--layout-scale, 1));
     color: #bfdbfe;
     font-size: calc(11px * var(--text-scale, 1));
   }
@@ -418,30 +418,30 @@
   .filters {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   label {
     display: grid;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
     color: #cbd5e1;
   }
 
   select {
-    min-height: 40px;
+    min-height: calc(40px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid #334155;
     background: #0f172a;
     color: #e2e8f0;
-    padding: 0 8px;
+    padding: 0 calc(8px * var(--layout-scale, 1));
   }
 
   .detail-card {
     background: rgba(15, 23, 42, 0.76);
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 14px;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .detail-card h3 {
@@ -458,15 +458,15 @@
   .detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
   }
 
   .variant-list {
     margin: 0;
-    padding-left: 18px;
+    padding-left: calc(18px * var(--layout-scale, 1));
     display: grid;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     color: #dbeafe;
     font-size: calc(12px * var(--text-scale, 1));
   }
@@ -477,17 +477,17 @@
     background: rgba(3, 6, 14, 0.78);
     display: grid;
     place-items: center;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .lore-modal article {
-    width: min(520px, 100%);
+    width: min(calc(520px * var(--layout-scale, 1)), 100%);
     border-radius: 14px;
     border: 1px solid rgba(148, 163, 184, 0.4);
     background: #0f172a;
-    padding: 14px;
+    padding: calc(14px * var(--layout-scale, 1));
     display: grid;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .lore-modal h3 {
@@ -507,19 +507,19 @@
     display: flex;
     gap: 0;
     width: 100%;
-    max-width: 520px;
-    margin: 0 auto 16px;
+    max-width: calc(520px * var(--layout-scale, 1));
+    margin: 0 auto calc(16px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(148, 163, 184, 0.3);
   }
 
   .tab-btn {
     flex: 1;
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
     color: #8b949e;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 600;
     cursor: pointer;
     min-height: 44px;
@@ -533,18 +533,18 @@
   .subcategory-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    padding: 8px 0;
-    margin-bottom: 8px;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) 0;
+    margin-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   .sub-chip {
-    padding: 4px 10px;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 14px;
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(30, 41, 59, 0.6);
     color: #94a3b8;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     cursor: pointer;
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
@@ -559,6 +559,6 @@
 
   .sub-count {
     opacity: 0.6;
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
   }
 </style>

@@ -592,7 +592,7 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   // Force Relaxed Mode for first N runs
   const onboarding = get(onboardingState);
   if (onboarding.runsCompleted < STORY_MODE_FORCED_RUNS) {
-    difficultyMode.set('relaxed');
+    difficultyMode.set('normal');
   }
 
   const run = createRunState(pending.primary, pending.secondary, {

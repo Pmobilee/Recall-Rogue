@@ -1,0 +1,822 @@
+[
+  {
+    "id": "health-Q1074-001",
+    "qid": "Q1074",
+    "label": "skin",
+    "subcategory": "anatomy_organs",
+    "question": "What is the largest organ in the human body?",
+    "correct_answer": "Skin",
+    "distractors": ["Liver", "Lung", "Brain", "Intestine", "Muscle", "Heart", "Kidney"],
+    "extra_distractor": "Stomach",
+    "hint": "It covers your entire exterior",
+    "funFact": "The skin accounts for about 15% of total body weight in adults.",
+    "funScore": 72,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Which organ covers the entire outer surface of the body?",
+        "correct_answer": "Skin",
+        "distractors": ["Fascia", "Peritoneum", "Pleura", "Endothelium", "Mucosa", "Cornea", "Dermis"]
+      },
+      {
+        "question": "How many layers does human skin have?",
+        "correct_answer": "Three",
+        "distractors": ["Two", "Four", "Five", "Six", "One", "Seven", "Eight"]
+      },
+      {
+        "question": "What protein makes skin waterproof?",
+        "correct_answer": "Keratin",
+        "distractors": ["Collagen", "Elastin", "Melanin", "Fibrin", "Actin", "Myosin", "Albumin"]
+      },
+      {
+        "question": "What pigment gives human skin its color?",
+        "correct_answer": "Melanin",
+        "distractors": ["Keratin", "Hemoglobin", "Carotene", "Bilirubin", "Elastin", "Collagen", "Actin"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["skin", "anatomy", "integumentary system", "organ"],
+    "difficulty": "easy",
+    "source": "Wikidata Q1074"
+  },
+  {
+    "id": "health-Q1074-002",
+    "qid": "Q1074",
+    "label": "skin",
+    "subcategory": "anatomy_organs",
+    "question": "How often does human skin completely replace itself?",
+    "correct_answer": "Every 2–4 weeks",
+    "distractors": ["Every year", "Every 6 months", "Every week", "Every 2 years", "Every day", "Every decade", "Every 3 months"],
+    "extra_distractor": "Every 5 years",
+    "hint": "Cells shed and regrow faster than you think",
+    "funFact": "Humans shed about 30,000–40,000 dead skin cells every hour.",
+    "funScore": 78,
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "How many dead skin cells does the body shed per hour?",
+        "correct_answer": "30,000–40,000",
+        "distractors": ["100", "1,000", "5,000", "100,000", "500,000", "10,000", "1 million"]
+      },
+      {
+        "question": "Which skin layer is the outermost?",
+        "correct_answer": "Epidermis",
+        "distractors": ["Dermis", "Hypodermis", "Subcutis", "Fascia", "Endodermis", "Periosteum", "Cortex"]
+      },
+      {
+        "question": "What glands in skin help regulate body temperature?",
+        "correct_answer": "Sweat glands",
+        "distractors": ["Sebaceous glands", "Salivary glands", "Mammary glands", "Adrenal glands", "Thyroid glands", "Lacrimal glands", "Pituitary glands"]
+      },
+      {
+        "question": "Which vitamin does skin produce when exposed to sunlight?",
+        "correct_answer": "Vitamin D",
+        "distractors": ["Vitamin A", "Vitamin C", "Vitamin E", "Vitamin K", "Vitamin B12", "Vitamin B6", "Vitamin B2"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["skin", "cell renewal", "epidermis"],
+    "difficulty": "medium",
+    "source": "Wikidata Q1074"
+  },
+  {
+    "id": "health-Q9614-001",
+    "qid": "Q9614",
+    "label": "tongue",
+    "subcategory": "senses_perception",
+    "question": "How many taste buds does the average human tongue have?",
+    "correct_answer": "About 10,000",
+    "distractors": ["About 100", "About 1,000", "About 50,000", "About 500", "About 100,000", "About 200", "About 5,000"],
+    "extra_distractor": "About 25,000",
+    "hint": "More than you might expect on such a small organ",
+    "funFact": "Taste buds are replaced every 10–14 days, making taste perception constantly refreshed.",
+    "funScore": 70,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "How often are taste buds replaced?",
+        "correct_answer": "Every 10–14 days",
+        "distractors": ["Every day", "Every year", "Every month", "Every 6 months", "Every 2 years", "Every week", "Every hour"]
+      },
+      {
+        "question": "Which part of the tongue contains taste buds?",
+        "correct_answer": "Papillae",
+        "distractors": ["Frenulum", "Uvula", "Epiglottis", "Tonsils", "Fauces", "Velum", "Glottis"]
+      },
+      {
+        "question": "What is the primary muscle of the tongue called?",
+        "correct_answer": "Genioglossus",
+        "distractors": ["Orbicularis", "Masseter", "Buccinator", "Mylohyoid", "Digastric", "Sternohyoid", "Platysma"]
+      },
+      {
+        "question": "How many basic tastes can human taste buds detect?",
+        "correct_answer": "Five",
+        "distractors": ["Three", "Four", "Six", "Two", "Seven", "Eight", "Ten"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["tongue", "taste", "senses", "anatomy"],
+    "difficulty": "medium",
+    "source": "Wikidata Q9614"
+  },
+  {
+    "id": "health-Q9614-002",
+    "qid": "Q9614",
+    "label": "tongue",
+    "subcategory": "senses_perception",
+    "question": "What is the fifth basic taste alongside sweet, sour, salty, and bitter?",
+    "correct_answer": "Umami",
+    "distractors": ["Spicy", "Fatty", "Metallic", "Astringent", "Pungent", "Chalky", "Watery"],
+    "extra_distractor": "Cooling",
+    "hint": "It's associated with savory foods like meat and mushrooms",
+    "funFact": "Umami was identified by Japanese chemist Kikunae Ikeda in 1908 by isolating glutamate from seaweed broth.",
+    "funScore": 75,
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Which chemical compound is responsible for umami taste?",
+        "correct_answer": "Glutamate",
+        "distractors": ["Sucrose", "Citric acid", "Capsaicin", "Tannin", "Quinine", "Acetic acid", "Lactate"]
+      },
+      {
+        "question": "Is the tongue the only organ involved in taste perception?",
+        "correct_answer": "No",
+        "distractors": ["Yes", "Mostly", "Entirely", "Only with smell", "Only children", "Depends on age", "Only adults"]
+      },
+      {
+        "question": "Which sense works most closely with taste to create flavor?",
+        "correct_answer": "Smell",
+        "distractors": ["Sight", "Touch", "Hearing", "Balance", "Temperature", "Proprioception", "Pain"]
+      },
+      {
+        "question": "What percentage of flavor perception depends on smell?",
+        "correct_answer": "About 80%",
+        "distractors": ["About 10%", "About 20%", "About 50%", "About 90%", "About 5%", "About 30%", "About 60%"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["taste", "tongue", "umami", "senses"],
+    "difficulty": "medium",
+    "source": "Wikidata Q9614"
+  },
+  {
+    "id": "health-Q35831-001",
+    "qid": "Q35831",
+    "label": "sleep",
+    "subcategory": "brain_neuroscience",
+    "question": "How many hours of sleep do most adults need per night?",
+    "correct_answer": "7–9 hours",
+    "distractors": ["4–5 hours", "10–12 hours", "3–4 hours", "5–6 hours", "12–14 hours", "2–3 hours", "6 hours exactly"],
+    "extra_distractor": "15 hours",
+    "hint": "Public health guidelines are specific on this",
+    "funFact": "The CDC classifies sleeping less than 7 hours per night as a public health problem in the United States.",
+    "funScore": 60,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What stage of sleep is associated with dreaming?",
+        "correct_answer": "REM sleep",
+        "distractors": ["NREM stage 1", "NREM stage 2", "NREM stage 3", "Light sleep", "Deep sleep", "Delta sleep", "Theta sleep"]
+      },
+      {
+        "question": "What hormone promotes sleep when darkness falls?",
+        "correct_answer": "Melatonin",
+        "distractors": ["Cortisol", "Adrenaline", "Serotonin", "Dopamine", "Oxytocin", "Insulin", "Ghrelin"]
+      },
+      {
+        "question": "How many sleep cycles does the average adult complete per night?",
+        "correct_answer": "4–6 cycles",
+        "distractors": ["1–2 cycles", "8–10 cycles", "2–3 cycles", "10–12 cycles", "7–8 cycles", "1 cycle only", "20 cycles"]
+      },
+      {
+        "question": "How long does one complete sleep cycle typically last?",
+        "correct_answer": "About 90 minutes",
+        "distractors": ["About 30 minutes", "About 3 hours", "About 15 minutes", "About 45 minutes", "About 2 hours", "About 4 hours", "About 20 minutes"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["sleep", "brain", "neuroscience", "health"],
+    "difficulty": "easy",
+    "source": "Wikidata Q35831"
+  },
+  {
+    "id": "health-Q35831-002",
+    "qid": "Q35831",
+    "label": "sleep",
+    "subcategory": "brain_neuroscience",
+    "question": "What brain process primarily occurs during deep sleep?",
+    "correct_answer": "Memory consolidation",
+    "distractors": ["Dreaming", "Problem solving", "Hormone suppression", "Appetite regulation", "Vision processing", "Language learning only", "Emotional blocking"],
+    "extra_distractor": "Bone growth only",
+    "hint": "This process converts short-term memories into long-term ones",
+    "funFact": "During deep sleep, the brain's glymphatic system flushes out toxic waste products including amyloid-beta, linked to Alzheimer's disease.",
+    "funScore": 82,
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What system clears toxic waste from the brain during sleep?",
+        "correct_answer": "Glymphatic system",
+        "distractors": ["Lymphatic system", "Immune system", "Cardiovascular system", "Cerebrospinal fluid only", "Blood-brain barrier", "Nervous system", "Endocrine system"]
+      },
+      {
+        "question": "Sleep deprivation increases risk of which serious condition?",
+        "correct_answer": "Heart disease",
+        "distractors": ["Color blindness", "Taller height", "Stronger bones", "Lower blood pressure", "Better memory", "Faster metabolism", "Improved vision"]
+      },
+      {
+        "question": "What part of the brain regulates the sleep-wake cycle?",
+        "correct_answer": "Hypothalamus",
+        "distractors": ["Cerebellum", "Frontal lobe", "Brainstem only", "Amygdala", "Hippocampus", "Corpus callosum", "Pituitary gland"]
+      },
+      {
+        "question": "During which sleep stage does the body repair muscles?",
+        "correct_answer": "Deep NREM sleep",
+        "distractors": ["REM sleep", "Light sleep only", "Stage 1 sleep", "Stage 2 sleep", "Waking state", "Microsleep", "Hypnagogic state"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["sleep", "memory", "brain", "glymphatic"],
+    "difficulty": "hard",
+    "source": "Wikidata Q35831"
+  },
+  {
+    "id": "health-Q35831-003",
+    "qid": "Q35831",
+    "label": "sleep",
+    "subcategory": "brain_neuroscience",
+    "question": "What acronym describes the rapid eye movement sleep stage?",
+    "correct_answer": "REM",
+    "distractors": ["NREM", "SWS", "EEG", "PSG", "SOL", "TST", "AHI"],
+    "extra_distractor": "WASO",
+    "hint": "Eyes literally move quickly during this stage",
+    "funFact": "REM sleep was discovered in 1953 by Nathaniel Kleitman and Eugene Aserinsky at the University of Chicago.",
+    "funScore": 55,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "In which sleep stage does eye movement occur rapidly?",
+        "correct_answer": "REM sleep",
+        "distractors": ["NREM stage 1", "NREM stage 2", "Slow-wave sleep", "Stage N3", "Hypnagogic sleep", "Delta sleep", "Light sleep"]
+      },
+      {
+        "question": "What happens to muscle tone during REM sleep?",
+        "correct_answer": "It is paralyzed",
+        "distractors": ["It increases greatly", "It stays the same", "It doubles in strength", "It becomes twitchy only", "It disappears partially", "It activates fully", "It slows slightly"]
+      },
+      {
+        "question": "Who co-discovered REM sleep in 1953?",
+        "correct_answer": "Nathaniel Kleitman",
+        "distractors": ["Sigmund Freud", "Carl Jung", "Ivan Pavlov", "Wilhelm Wundt", "Charles Sherrington", "William James", "Hermann von Helmholtz"]
+      },
+      {
+        "question": "How much of total sleep time is typically spent in REM?",
+        "correct_answer": "About 20–25%",
+        "distractors": ["About 5%", "About 50%", "About 75%", "About 10%", "About 90%", "About 1%", "About 40%"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["sleep", "REM", "brain", "dreams"],
+    "difficulty": "easy",
+    "source": "Wikidata Q35831"
+  },
+  {
+    "id": "health-Q17147-001",
+    "qid": "Q17147",
+    "label": "egg",
+    "subcategory": "genetics_dna",
+    "question": "What is the human female reproductive cell called?",
+    "correct_answer": "Ovum",
+    "distractors": ["Sperm", "Zygote", "Blastocyst", "Embryo", "Gamete", "Oocyte only", "Follicle"],
+    "extra_distractor": "Corpus luteum",
+    "hint": "Latin for egg",
+    "funFact": "The human ovum is the largest cell in the body at about 0.1 mm in diameter — just visible to the naked eye.",
+    "funScore": 68,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "How large is the human egg cell in diameter?",
+        "correct_answer": "About 0.1 mm",
+        "distractors": ["About 1 mm", "About 0.001 mm", "About 5 mm", "About 0.5 mm", "About 10 mm", "About 0.01 mm", "About 2 mm"]
+      },
+      {
+        "question": "How many chromosomes does a human egg cell contain?",
+        "correct_answer": "23",
+        "distractors": ["46", "12", "48", "24", "22", "92", "16"]
+      },
+      {
+        "question": "Where are human egg cells produced?",
+        "correct_answer": "Ovaries",
+        "distractors": ["Uterus", "Fallopian tubes", "Cervix", "Endometrium", "Vagina", "Placenta", "Hypothalamus"]
+      },
+      {
+        "question": "How many eggs is a human female born with?",
+        "correct_answer": "About 1–2 million",
+        "distractors": ["About 100", "About 10,000", "About 500 billion", "About 1,000", "About 50 million", "About 100 billion", "About 500"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["egg", "ovum", "reproduction", "genetics"],
+    "difficulty": "medium",
+    "source": "Wikidata Q17147"
+  },
+  {
+    "id": "health-Q17147-002",
+    "qid": "Q17147",
+    "label": "egg",
+    "subcategory": "genetics_dna",
+    "question": "How long can a human egg survive after ovulation?",
+    "correct_answer": "12–24 hours",
+    "distractors": ["1 week", "72 hours", "1 month", "5 days", "1 hour only", "3 days", "2 weeks"],
+    "extra_distractor": "6 months",
+    "hint": "This window is much shorter than sperm survival",
+    "funFact": "In contrast to the egg's 12–24 hour window, sperm can survive in the female reproductive tract for up to 5 days.",
+    "funScore": 74,
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "How long can sperm survive inside the female reproductive tract?",
+        "correct_answer": "Up to 5 days",
+        "distractors": ["Up to 1 day", "Up to 1 hour", "Up to 1 month", "Up to 2 weeks", "Up to 10 days", "Up to 1 year", "Up to 3 hours"]
+      },
+      {
+        "question": "What is the fertilized egg called immediately after conception?",
+        "correct_answer": "Zygote",
+        "distractors": ["Blastocyst", "Embryo", "Fetus", "Morula", "Oocyte", "Gamete", "Ovum"]
+      },
+      {
+        "question": "Where does fertilization of the egg typically occur?",
+        "correct_answer": "Fallopian tube",
+        "distractors": ["Uterus", "Ovary", "Vagina", "Cervix", "Placenta", "Endometrium", "Vulva"]
+      },
+      {
+        "question": "What process releases an egg from the ovary each month?",
+        "correct_answer": "Ovulation",
+        "distractors": ["Menstruation", "Implantation", "Fertilization", "Gestation", "Oogenesis only", "Meiosis only", "Mitosis"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["egg", "ovum", "fertility", "reproduction"],
+    "difficulty": "medium",
+    "source": "Wikidata Q17147"
+  },
+  {
+    "id": "health-Q9103-001",
+    "qid": "Q9103",
+    "label": "female breast",
+    "subcategory": "anatomy_organs",
+    "question": "What gland in the breast produces milk?",
+    "correct_answer": "Mammary gland",
+    "distractors": ["Sebaceous gland", "Sweat gland", "Adrenal gland", "Thyroid gland", "Pituitary gland", "Salivary gland", "Lacrimal gland"],
+    "extra_distractor": "Lymph gland",
+    "hint": "Gives mammals their scientific class name",
+    "funFact": "The word 'mammal' comes from the Latin 'mamma,' meaning breast, because milk production defines the class.",
+    "funScore": 65,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Which hormone stimulates milk production in the breast?",
+        "correct_answer": "Prolactin",
+        "distractors": ["Estrogen", "Progesterone", "Testosterone", "Cortisol", "Oxytocin", "Insulin", "Adrenaline"]
+      },
+      {
+        "question": "What hormone triggers milk let-down during breastfeeding?",
+        "correct_answer": "Oxytocin",
+        "distractors": ["Prolactin", "Estrogen", "Progesterone", "Cortisol", "Melatonin", "Dopamine", "Serotonin"]
+      },
+      {
+        "question": "What tissue makes up most of the female breast volume?",
+        "correct_answer": "Adipose tissue",
+        "distractors": ["Muscle tissue", "Connective tissue", "Lymph tissue", "Glandular tissue", "Nerve tissue", "Cartilage", "Bone marrow"]
+      },
+      {
+        "question": "Breast cancer is the most common cancer in which group?",
+        "correct_answer": "Women worldwide",
+        "distractors": ["Men worldwide", "Children only", "Elderly men", "Teenage girls", "Post-menopausal men", "Athletes only", "Infants"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["breast", "mammary gland", "anatomy", "lactation"],
+    "difficulty": "easy",
+    "source": "Wikidata Q9103"
+  },
+  {
+    "id": "health-Q9103-002",
+    "qid": "Q9103",
+    "label": "female breast",
+    "subcategory": "anatomy_organs",
+    "question": "What is the first milk produced after childbirth called?",
+    "correct_answer": "Colostrum",
+    "distractors": ["Foremilk", "Hindmilk", "Transitional milk", "Mature milk", "Whey", "Casein", "Lactose solution"],
+    "extra_distractor": "Liquid gold",
+    "hint": "Rich in antibodies and produced only in the first days",
+    "funFact": "Colostrum contains 10–100 times more immunoglobulins than mature breast milk, giving newborns immediate immune protection.",
+    "funScore": 80,
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Colostrum is especially rich in which type of molecule?",
+        "correct_answer": "Immunoglobulins",
+        "distractors": ["Carbohydrates", "Saturated fats", "Vitamin D only", "Iron supplements", "Calcium salts", "Potassium ions", "Sodium chloride"]
+      },
+      {
+        "question": "How soon after birth is colostrum produced?",
+        "correct_answer": "Immediately",
+        "distractors": ["After 1 week", "After 3 days only", "After 1 month", "After 24 hours", "After 2 weeks", "After 6 months", "After weaning"]
+      },
+      {
+        "question": "The breast tissue connects to which chest muscle?",
+        "correct_answer": "Pectoralis major",
+        "distractors": ["Latissimus dorsi", "Deltoid", "Trapezius", "Serratus anterior", "Rectus abdominis", "Intercostals", "Subscapularis"]
+      },
+      {
+        "question": "At what age do breast self-exams become recommended?",
+        "correct_answer": "Around age 20",
+        "distractors": ["Around age 50", "Around age 10", "After menopause only", "Around age 40", "Around age 60", "Around age 30 only", "At any age after puberty"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["breast", "colostrum", "lactation", "immunity"],
+    "difficulty": "hard",
+    "source": "Wikidata Q9103"
+  },
+  {
+    "id": "health-Q5264-001",
+    "qid": "Q5264",
+    "label": "Hippocrates",
+    "subcategory": "medical_discoveries",
+    "question": "Hippocrates is known as the father of which field?",
+    "correct_answer": "Medicine",
+    "distractors": ["Surgery", "Pharmacy", "Dentistry", "Nursing", "Psychiatry", "Anatomy", "Pathology"],
+    "extra_distractor": "Genetics",
+    "hint": "All physicians take an oath named after him",
+    "funFact": "The Hippocratic Oath, still recited by medical graduates, established ethics that separated medicine from magic and religion.",
+    "funScore": 60,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "In which ancient civilization did Hippocrates practice medicine?",
+        "correct_answer": "Ancient Greece",
+        "distractors": ["Ancient Egypt", "Ancient Rome", "Ancient Persia", "Ancient China", "Mesopotamia", "Ancient India", "Ancient Babylon"]
+      },
+      {
+        "question": "What oath do medical doctors swear, named after Hippocrates?",
+        "correct_answer": "Hippocratic Oath",
+        "distractors": ["Nightingale Pledge", "Geneva Declaration", "Galenic Promise", "Aesculapian Vow", "Paracelsian Oath", "Vesalian Code", "Galen's Promise"]
+      },
+      {
+        "question": "What principle central to the Hippocratic Oath means 'do no harm'?",
+        "correct_answer": "Primum non nocere",
+        "distractors": ["Carpe diem", "Veni vidi vici", "Corpus sanum", "Tabula rasa", "In vitro", "Ex vivo", "Post mortem"]
+      },
+      {
+        "question": "Approximately when did Hippocrates live?",
+        "correct_answer": "460–370 BC",
+        "distractors": ["1000–900 BC", "100–200 AD", "1200–1100 BC", "50 BC–50 AD", "500–600 AD", "300–400 AD", "200–300 BC"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["Hippocrates", "medicine", "history", "medical ethics"],
+    "difficulty": "easy",
+    "source": "Wikidata Q5264"
+  },
+  {
+    "id": "health-Q5264-002",
+    "qid": "Q5264",
+    "label": "Hippocrates",
+    "subcategory": "medical_discoveries",
+    "question": "What did Hippocrates argue caused disease, rejecting supernatural explanations?",
+    "correct_answer": "Natural causes",
+    "distractors": ["Evil spirits", "Divine punishment", "Bad karma", "Astrological alignment", "Witchcraft", "Demonic possession", "Ancestral curses"],
+    "extra_distractor": "Imbalanced humors",
+    "hint": "He was revolutionary for his era in linking disease to the physical world",
+    "funFact": "Hippocrates described symptoms of tuberculosis, epilepsy, and liver disease with remarkable accuracy for 400 BC.",
+    "funScore": 76,
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What four bodily fluids did Hippocratic medicine consider fundamental?",
+        "correct_answer": "The four humors",
+        "distractors": ["Blood and lymph only", "Bile and water only", "Saliva and mucus only", "Urine and sweat only", "Plasma and serum", "Tears and milk", "Pus and phlegm only"]
+      },
+      {
+        "question": "On which Greek island was Hippocrates born?",
+        "correct_answer": "Cos",
+        "distractors": ["Crete", "Rhodes", "Lesbos", "Samos", "Corfu", "Santorini", "Mykonos"]
+      },
+      {
+        "question": "What collection of ancient medical texts is attributed to Hippocrates?",
+        "correct_answer": "Hippocratic Corpus",
+        "distractors": ["Galen's Works", "Avicenna's Canon", "Papyrus Ebers", "Edwin Smith Papyrus", "De Medicina", "Dioscorides' Materia Medica", "Pliny's Natural History"]
+      },
+      {
+        "question": "What did Hippocrates recommend as important for patient recovery?",
+        "correct_answer": "Diet and rest",
+        "distractors": ["Bloodletting only", "Prayer and fasting", "Surgery always", "Herbal poisons", "Cold baths only", "Amputation", "Trepanation"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["Hippocrates", "medicine history", "natural causes", "ancient Greece"],
+    "difficulty": "hard",
+    "source": "Wikidata Q5264"
+  },
+  {
+    "id": "health-Q7365-001",
+    "qid": "Q7365",
+    "label": "muscle",
+    "subcategory": "anatomy_organs",
+    "question": "What is the strongest muscle in the human body relative to its size?",
+    "correct_answer": "Masseter (jaw)",
+    "distractors": ["Bicep", "Quadricep", "Gluteus maximus", "Heart", "Soleus", "Deltoid", "Trapezius"],
+    "extra_distractor": "Diaphragm",
+    "hint": "Used for chewing, it can exert enormous bite force",
+    "funFact": "The masseter can exert up to 200 pounds (890 N) of force on the molars, making it the strongest muscle per unit area.",
+    "funScore": 83,
+    "rarity": "rare",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What is the largest muscle in the human body?",
+        "correct_answer": "Gluteus maximus",
+        "distractors": ["Quadricep", "Latissimus dorsi", "Trapezius", "Pectoralis major", "Hamstring", "Sartorius", "Soleus"]
+      },
+      {
+        "question": "What protein is responsible for muscle contraction?",
+        "correct_answer": "Actin and myosin",
+        "distractors": ["Collagen and elastin", "Keratin and fibrin", "Hemoglobin only", "Tubulin and dynein", "Titin only", "Troponin only", "Fibronectin"]
+      },
+      {
+        "question": "How many muscles are in the human body?",
+        "correct_answer": "About 600",
+        "distractors": ["About 100", "About 1,000", "About 200", "About 50", "About 2,000", "About 10,000", "About 300"]
+      },
+      {
+        "question": "What type of muscle works involuntarily to pump the heart?",
+        "correct_answer": "Cardiac muscle",
+        "distractors": ["Smooth muscle", "Skeletal muscle", "Voluntary muscle", "Striated muscle", "Fast-twitch muscle", "Slow-twitch muscle", "Sphincter muscle"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["muscle", "anatomy", "masseter", "strength"],
+    "difficulty": "hard",
+    "source": "Wikidata Q7365"
+  },
+  {
+    "id": "health-Q7365-002",
+    "qid": "Q7365",
+    "label": "muscle",
+    "subcategory": "anatomy_organs",
+    "question": "What fuel do muscles primarily use during intense exercise?",
+    "correct_answer": "Glucose (glycogen)",
+    "distractors": ["Fat only", "Protein", "Water", "Oxygen alone", "Calcium", "Sodium", "Potassium"],
+    "extra_distractor": "ATP only",
+    "hint": "Stored in the liver and muscles as a polysaccharide",
+    "funFact": "During maximum exertion, muscles can consume ATP at 1,000 times the resting rate, exhausting glycogen stores in minutes.",
+    "funScore": 70,
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What molecule directly powers muscle contraction?",
+        "correct_answer": "ATP",
+        "distractors": ["ADP", "Glucose", "Oxygen", "Creatine only", "Lactate", "NADH", "Glycogen directly"]
+      },
+      {
+        "question": "Lactic acid buildup in muscles causes which sensation?",
+        "correct_answer": "Burning pain",
+        "distractors": ["Cooling relief", "Numbness", "Itching", "Tingling only", "Increased strength", "Relaxation", "Electrical shock"]
+      },
+      {
+        "question": "What condition describes muscle soreness 24–72 hours after exercise?",
+        "correct_answer": "DOMS",
+        "distractors": ["Cramp", "Strain", "Sprain", "Torn ligament", "Tendinitis", "Myositis", "Bursitis"]
+      },
+      {
+        "question": "Which mineral is essential for muscle contraction?",
+        "correct_answer": "Calcium",
+        "distractors": ["Iron", "Zinc", "Magnesium only", "Fluoride", "Iodine", "Copper", "Selenium"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["muscle", "exercise", "physiology", "energy"],
+    "difficulty": "medium",
+    "source": "Wikidata Q7365"
+  },
+  {
+    "id": "health-Q7365-003",
+    "qid": "Q7365",
+    "label": "muscle",
+    "subcategory": "anatomy_organs",
+    "question": "What is the smallest muscle in the human body?",
+    "correct_answer": "Stapedius",
+    "distractors": ["Lumbricals", "Corrugator supercilii", "Arrector pili", "Orbicularis oculi", "Risorius", "Nasalis", "Procerus"],
+    "extra_distractor": "Palmaris brevis",
+    "hint": "Found in the middle ear, it protects hearing from loud sounds",
+    "funFact": "The stapedius muscle is just 1.27 mm long and stabilizes the smallest bone in the body — the stapes — in the middle ear.",
+    "funScore": 88,
+    "rarity": "epic",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Where is the stapedius muscle located?",
+        "correct_answer": "Middle ear",
+        "distractors": ["Inner ear", "Eye socket", "Throat", "Nose", "Fingertip", "Tongue base", "Eardrum surface"]
+      },
+      {
+        "question": "What is the longest muscle in the human body?",
+        "correct_answer": "Sartorius",
+        "distractors": ["Bicep femoris", "Rectus femoris", "Iliotibial band", "Quadricep", "Hamstring", "Adductor longus", "Gracilis"]
+      },
+      {
+        "question": "What are the two types of skeletal muscle fibers?",
+        "correct_answer": "Fast-twitch and slow-twitch",
+        "distractors": ["Red and white only", "Large and small", "Cardiac and smooth", "Voluntary and involuntary", "Thick and thin", "Striated and smooth", "Deep and superficial"]
+      },
+      {
+        "question": "Which muscle type lines the walls of internal organs?",
+        "correct_answer": "Smooth muscle",
+        "distractors": ["Cardiac muscle", "Skeletal muscle", "Striated muscle", "Voluntary muscle", "Fast-twitch muscle", "Hypertrophied muscle", "Isotonic muscle"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["muscle", "anatomy", "stapedius", "ear"],
+    "difficulty": "hard",
+    "source": "Wikidata Q7365"
+  },
+  {
+    "id": "health-Q1566-001",
+    "qid": "Q1566",
+    "label": "tobacco",
+    "subcategory": "immunity_disease",
+    "question": "What addictive chemical in tobacco causes dependence?",
+    "correct_answer": "Nicotine",
+    "distractors": ["Caffeine", "Alcohol", "Morphine", "Codeine", "Aspirin", "Menthol", "Benzene"],
+    "extra_distractor": "Tar",
+    "hint": "It stimulates dopamine release in the brain",
+    "funFact": "Nicotine reaches the brain within 10 seconds of inhaling cigarette smoke, making tobacco one of the fastest-acting addictive substances.",
+    "funScore": 58,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Smoking is the leading preventable cause of death in which country?",
+        "correct_answer": "United States",
+        "distractors": ["China", "India", "Russia", "Brazil", "Japan", "Germany", "France"]
+      },
+      {
+        "question": "Tobacco smoke contains approximately how many chemicals?",
+        "correct_answer": "Over 7,000",
+        "distractors": ["About 10", "About 100", "About 500", "About 10,000 only", "About 50", "About 200", "About 2,000"]
+      },
+      {
+        "question": "Tobacco use is the leading cause of which disease?",
+        "correct_answer": "Lung cancer",
+        "distractors": ["Diabetes", "Osteoporosis", "Color blindness", "Kidney stones", "Appendicitis", "Cataracts only", "Tinnitus"]
+      },
+      {
+        "question": "Which tobacco product is considered smokeless but still harmful?",
+        "correct_answer": "Chewing tobacco",
+        "distractors": ["Cigar", "Cigarette", "Pipe tobacco", "E-cigarette only", "Hookah", "Clove cigarette", "Bidis"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["tobacco", "nicotine", "cancer", "addiction"],
+    "difficulty": "easy",
+    "source": "Wikidata Q1566"
+  },
+  {
+    "id": "health-Q1566-002",
+    "qid": "Q1566",
+    "label": "tobacco",
+    "subcategory": "immunity_disease",
+    "question": "How many people does tobacco kill globally each year?",
+    "correct_answer": "About 8 million",
+    "distractors": ["About 100,000", "About 500,000", "About 1 million", "About 50 million", "About 100 million", "About 3 million", "About 10,000"],
+    "extra_distractor": "About 20 million",
+    "hint": "One of the deadliest public health crises globally",
+    "funFact": "Of the 8 million tobacco-related deaths per year, about 1.2 million are non-smokers dying from secondhand smoke exposure.",
+    "funScore": 72,
+    "rarity": "uncommon",
+    "contentVolatility": "current",
+    "variants": [
+      {
+        "question": "What is secondhand smoke also called?",
+        "correct_answer": "Passive smoking",
+        "distractors": ["Active smoking", "Sidestream smoking only", "Indoor pollution", "Ambient smoking", "Filtered smoking", "Involuntary breathing", "Residual smoking"]
+      },
+      {
+        "question": "Smoking during pregnancy increases risk of what condition?",
+        "correct_answer": "Low birth weight",
+        "distractors": ["Overweight baby", "Early puberty", "Increased IQ", "Stronger immune system", "Earlier walking", "Faster growth", "Better eyesight"]
+      },
+      {
+        "question": "What percentage of lung cancer cases are caused by tobacco?",
+        "correct_answer": "About 85%",
+        "distractors": ["About 10%", "About 25%", "About 50%", "About 100%", "About 5%", "About 30%", "About 60%"]
+      },
+      {
+        "question": "Which organ does tobacco chewing most directly damage?",
+        "correct_answer": "Mouth and throat",
+        "distractors": ["Liver only", "Kidneys only", "Heart only", "Lungs only", "Stomach only", "Intestines only", "Eyes only"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["tobacco", "mortality", "public health", "smoking"],
+    "difficulty": "medium",
+    "source": "Wikidata Q1566"
+  },
+  {
+    "id": "health-Q5880-001",
+    "qid": "Q5880",
+    "label": "vagina",
+    "subcategory": "anatomy_organs",
+    "question": "What is the pH of a healthy vaginal environment?",
+    "correct_answer": "3.8–4.5 (acidic)",
+    "distractors": ["7.4 (neutral)", "8–9 (alkaline)", "6–7 (slightly acidic)", "1–2 (very acidic)", "9–10 (basic)", "5–6 only", "7–8 only"],
+    "extra_distractor": "2–3 (gastric acid level)",
+    "hint": "This acidity protects against harmful bacteria",
+    "funFact": "The acidic vaginal environment is maintained by Lactobacillus bacteria, which produce lactic acid and inhibit pathogen growth.",
+    "funScore": 75,
+    "rarity": "uncommon",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "Which type of bacteria maintains healthy vaginal pH?",
+        "correct_answer": "Lactobacillus",
+        "distractors": ["E. coli", "Staphylococcus", "Streptococcus", "Candida", "Bifidobacterium", "Clostridium", "Bacteroides"]
+      },
+      {
+        "question": "The vagina connects the uterus to which external structure?",
+        "correct_answer": "Vulva",
+        "distractors": ["Urethra", "Cervix externally", "Fallopian tube", "Ovary", "Clitoris directly", "Labia majora only", "Perineum only"]
+      },
+      {
+        "question": "What separates the vagina from the uterus?",
+        "correct_answer": "Cervix",
+        "distractors": ["Fallopian tube", "Endometrium", "Myometrium", "Fundus", "Placenta", "Perimetrium", "Ovary"]
+      },
+      {
+        "question": "What tissue lines the vaginal walls?",
+        "correct_answer": "Stratified squamous epithelium",
+        "distractors": ["Columnar epithelium", "Cuboidal epithelium", "Ciliated epithelium", "Simple squamous epithelium", "Transitional epithelium", "Pseudostratified epithelium", "Keratinized epithelium"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["vagina", "anatomy", "pH", "microbiome"],
+    "difficulty": "hard",
+    "source": "Wikidata Q5880"
+  },
+  {
+    "id": "health-Q5880-002",
+    "qid": "Q5880",
+    "label": "vagina",
+    "subcategory": "anatomy_organs",
+    "question": "What is the average length of the vaginal canal at rest?",
+    "correct_answer": "7–10 cm",
+    "distractors": ["1–2 cm", "20–25 cm", "15–20 cm", "2–3 cm", "30 cm", "50 cm", "12–15 cm"],
+    "extra_distractor": "5 cm exactly",
+    "hint": "Roughly the length of a finger",
+    "funFact": "The vagina can expand significantly during childbirth due to the rugae — ridged folds that allow stretching — and hormonal changes.",
+    "funScore": 65,
+    "rarity": "common",
+    "contentVolatility": "timeless",
+    "variants": [
+      {
+        "question": "What ridged folds allow the vagina to expand during childbirth?",
+        "correct_answer": "Rugae",
+        "distractors": ["Villi", "Papillae", "Cilia", "Microvilli", "Trabeculae", "Crypts", "Sinuses"]
+      },
+      {
+        "question": "What does the vaginal canal serve as during childbirth?",
+        "correct_answer": "Birth canal",
+        "distractors": ["Hormone producer", "Egg storage site", "Sperm destroyer", "Nutrient absorber", "Amniotic sac", "Placenta site", "Umbilical connector"]
+      },
+      {
+        "question": "What common vaginal infection is caused by Candida yeast?",
+        "correct_answer": "Yeast infection",
+        "distractors": ["Bacterial vaginosis", "Trichomoniasis", "Chlamydia", "Gonorrhea", "Herpes", "HPV infection", "Syphilis"]
+      },
+      {
+        "question": "What is the Pap smear test designed to detect?",
+        "correct_answer": "Cervical cancer cells",
+        "distractors": ["Ovarian cysts", "Uterine fibroids", "Vaginal yeast", "Fallopian blockage", "Endometriosis only", "Kidney disease", "Bladder infection"]
+      }
+    ],
+    "domain": "human_body_health",
+    "tags": ["vagina", "anatomy", "childbirth", "health"],
+    "difficulty": "medium",
+    "source": "Wikidata Q5880"
+  }
+]

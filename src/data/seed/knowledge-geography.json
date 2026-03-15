@@ -15113,5 +15113,2565 @@
       "extreme",
       "climbing"
     ]
+  },
+  {
+    "id": "geo-ethiopia-oldest-independent",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Ethiopia is one of the oldest independent nations in the world, never colonized except for a brief Italian occupation from 1936 to 1941.",
+    "quizQuestion": "Which African country was never fully colonized?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Liberia",
+      "Egypt",
+      "Sudan",
+      "Morocco",
+      "Tunisia",
+      "Ghana",
+      "Kenya",
+      "Somalia"
+    ],
+    "acceptableAnswers": [
+      "ethiopia"
+    ],
+    "explanation": "Ethiopia successfully repelled Italian invasion at the Battle of Adwa in 1896, becoming a symbol of African resistance. Italy briefly occupied it from 1936–1941 but this was never accepted internationally as colonization.",
+    "wowFactor": "Ethiopia fought off European colonizers 50 years before most of Africa even tried.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which African country remained independent during the colonial era?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Liberia",
+          "Egypt",
+          "Sudan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ethiopia is famous for what historical achievement?",
+        "answer": "Resisting colonization",
+        "distractors": [
+          "Inventing coffee",
+          "Building pyramids",
+          "Longest coastline"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ethiopia was never colonized by a European power at all.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ethiopia defeated Italy at the Battle of ___ in 1896.",
+        "answer": "Adwa",
+        "distractors": [
+          "Mombasa",
+          "Khartoum",
+          "Tripoli"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ethiopia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ethiopian warriors in colorful robes raising spears in victory over retreating Italian soldiers on a dramatic mountain battlefield under a blazing sun",
+    "tags": [
+      "ethiopia",
+      "africa",
+      "colonialism",
+      "history",
+      "independence"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ethiopia-lake-tana",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "Lake Tana in Ethiopia is the source of the Blue Nile, which supplies about 80% of the Nile River's total water volume.",
+    "quizQuestion": "Which lake in Ethiopia is the source of the Blue Nile?",
+    "correctAnswer": "Lake Tana",
+    "distractors": [
+      "Lake Victoria",
+      "Lake Turkana",
+      "Lake Malawi",
+      "Lake Chad",
+      "Lake Tanganyika",
+      "Lake Volta",
+      "Lake Kariba",
+      "Lake Nasser"
+    ],
+    "acceptableAnswers": [
+      "lake tana",
+      "tana"
+    ],
+    "explanation": "Lake Tana sits at 1,788 meters above sea level in the Ethiopian Highlands. The Blue Nile flows out of it and carries nutrient-rich sediment that historically made the Nile Delta so agriculturally productive.",
+    "wowFactor": "Without an Ethiopian lake, ancient Egyptian civilization might never have flourished.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does the Blue Nile begin?",
+        "answer": "Lake Tana",
+        "distractors": [
+          "Lake Victoria",
+          "Lake Chad",
+          "Lake Turkana"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Tana is significant because it is the source of what river?",
+        "answer": "Blue Nile",
+        "distractors": [
+          "White Nile",
+          "Congo River",
+          "Niger River"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Blue Nile supplies the majority of the Nile's water volume.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Blue Nile originates at Lake ___ in Ethiopia.",
+        "answer": "Tana",
+        "distractors": [
+          "Victoria",
+          "Turkana",
+          "Malawi"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Tana",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast highland lake shimmering blue at sunrise, reed papyrus boats drifting near the shore, mountains reflected in still water as the Blue Nile begins its journey",
+    "tags": [
+      "ethiopia",
+      "blue nile",
+      "lake tana",
+      "rivers",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ethiopia-great-rift-valley",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "",
+    "statement": "The East African Rift Valley runs through Ethiopia, slowly splitting the African continent apart at about 7 mm per year.",
+    "quizQuestion": "What geological feature is slowly splitting Africa apart through Ethiopia?",
+    "correctAnswer": "East African Rift",
+    "distractors": [
+      "Mid-Atlantic Ridge",
+      "Mariana Trench",
+      "Sahara Fault",
+      "Congo Basin",
+      "Horn Fracture Zone",
+      "Afar Triangle",
+      "Red Sea Rift",
+      "Indian Ocean Ridge"
+    ],
+    "acceptableAnswers": [
+      "east african rift",
+      "rift valley",
+      "great rift valley"
+    ],
+    "explanation": "The East African Rift is an active continental rift where tectonic plates are pulling apart. In millions of years, eastern Africa — including the Horn — may become a new island continent.",
+    "wowFactor": "Ethiopia is literally tearing itself apart, and in 10 million years it could be an island.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which tectonic feature runs through Ethiopia, splitting Africa?",
+        "answer": "East African Rift",
+        "distractors": [
+          "Mid-Atlantic Ridge",
+          "Mariana Trench",
+          "Sahara Fault"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The East African Rift is significant because it is doing what to Africa?",
+        "answer": "Splitting it apart",
+        "distractors": [
+          "Pushing it north",
+          "Forming a plateau",
+          "Causing tsunamis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The East African Rift is splitting Africa apart at several millimeters per year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The East African Rift is splitting Africa apart at about ___ mm per year.",
+        "answer": "7",
+        "distractors": [
+          "70",
+          "0.7",
+          "700"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/East_African_Rift",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Deep dramatic rift valley carved through Ethiopian highlands, sheer red rock walls dropping hundreds of meters, a river glinting far below between cracked tectonic plates",
+    "tags": [
+      "ethiopia",
+      "rift valley",
+      "tectonics",
+      "geology",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ethiopia-highest-peak",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "",
+    "statement": "Ras Dashen, at 4,550 meters, is Ethiopia's highest peak and the fourth highest mountain in Africa.",
+    "quizQuestion": "What is the highest mountain in Ethiopia?",
+    "correctAnswer": "Ras Dashen",
+    "distractors": [
+      "Mount Kenya",
+      "Kilimanjaro",
+      "Mount Elgon",
+      "Simien Peak",
+      "Mount Meru",
+      "Bale Mountains",
+      "Toubkal",
+      "Mount Stanley"
+    ],
+    "acceptableAnswers": [
+      "ras dashen",
+      "ras dejen"
+    ],
+    "explanation": "Ras Dashen towers over the Simien Mountains of northern Ethiopia. The Simien Mountains are a UNESCO World Heritage Site known for dramatic escarpments and endemic wildlife like the gelada baboon.",
+    "wowFactor": "Ras Dashen is so tall it sits above the clouds and hosts its own unique ecosystem of endemic species found nowhere else on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Ethiopia's highest mountain?",
+        "answer": "Ras Dashen",
+        "distractors": [
+          "Mount Kenya",
+          "Mount Elgon",
+          "Mount Meru"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ras Dashen is the highest peak in which country?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Kenya",
+          "Sudan",
+          "Somalia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ras Dashen is the highest mountain in all of Africa.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ras Dashen is located in the ___ Mountains of Ethiopia.",
+        "answer": "Simien",
+        "distractors": [
+          "Bale",
+          "Atlas",
+          "Drakensberg"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ras_Dashen",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Rugged Ethiopian highland peak rising above jagged escarpments, gelada baboons perched on clifftops, mist swirling between rocky pinnacles in the Simien Mountains",
+    "tags": [
+      "ethiopia",
+      "ras dashen",
+      "mountains",
+      "simien",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-kenya-equator",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "Kenya straddles the equator, giving it a diverse climate that ranges from tropical coast to snow-capped mountain peaks within a few hundred kilometers.",
+    "quizQuestion": "Which line of latitude runs directly through Kenya?",
+    "correctAnswer": "The equator",
+    "distractors": [
+      "Tropic of Cancer",
+      "Tropic of Capricorn",
+      "Arctic Circle",
+      "Antarctic Circle",
+      "Prime Meridian",
+      "International Date Line",
+      "30th parallel",
+      "45th parallel"
+    ],
+    "acceptableAnswers": [
+      "the equator",
+      "equator",
+      "0 degrees latitude"
+    ],
+    "explanation": "Kenya's position on the equator means it experiences two rainy seasons per year and warm temperatures year-round. Yet Mount Kenya, just south of the equator, has permanent glaciers — a rare combination.",
+    "wowFactor": "Kenya has glaciers on the equator — you can literally stand at 0° latitude and see snow.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which geographic line passes through Kenya?",
+        "answer": "The equator",
+        "distractors": [
+          "Tropic of Cancer",
+          "Tropic of Capricorn",
+          "Prime Meridian"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The equator passes through which East African country with a snow-capped mountain?",
+        "answer": "Kenya",
+        "distractors": [
+          "Ethiopia",
+          "Tanzania",
+          "Uganda"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Kenya has glaciers despite being crossed by the equator.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kenya straddles the ___, giving it two rainy seasons per year.",
+        "answer": "equator",
+        "distractors": [
+          "Tropic of Cancer",
+          "prime meridian",
+          "30th parallel"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kenya",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dramatic Kenyan landscape showing equatorial savanna in the foreground with zebras grazing, and the snow-dusted peak of Mount Kenya rising impossibly in the misty background",
+    "tags": [
+      "kenya",
+      "equator",
+      "geography",
+      "mount kenya",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-kenya-great-migration",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "",
+    "statement": "The Maasai Mara in Kenya hosts part of the Great Migration, where over 1.5 million wildebeest cross from Tanzania each year.",
+    "quizQuestion": "Where in Kenya do 1.5 million wildebeest migrate each year?",
+    "correctAnswer": "Maasai Mara",
+    "distractors": [
+      "Amboseli",
+      "Tsavo",
+      "Samburu",
+      "Aberdare",
+      "Nairobi Park",
+      "Lake Nakuru",
+      "Serengeti",
+      "Ngorongoro"
+    ],
+    "acceptableAnswers": [
+      "maasai mara",
+      "masai mara",
+      "mara"
+    ],
+    "explanation": "The Great Migration is one of Earth's greatest wildlife spectacles. Wildebeest, zebras, and gazelles follow seasonal rains in a 800-km circuit between the Serengeti and Maasai Mara, crossing crocodile-filled rivers.",
+    "wowFactor": "The wildebeest crossing is so massive that crocodiles gorge themselves for weeks and then don't need to eat for months.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Kenyan reserve hosts the Great Migration?",
+        "answer": "Maasai Mara",
+        "distractors": [
+          "Amboseli",
+          "Tsavo",
+          "Samburu"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Maasai Mara in Kenya is famous for which annual wildlife event?",
+        "answer": "Great Migration",
+        "distractors": [
+          "Penguin breeding",
+          "Elephant stampede",
+          "Flamingo nesting"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Over a million wildebeest cross into Kenya's Maasai Mara each year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Migration sees over 1.5 million ___ cross into the Maasai Mara.",
+        "answer": "wildebeest",
+        "distractors": [
+          "elephants",
+          "zebras",
+          "buffalo"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maasai_Mara",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Massive herd of wildebeest churning through a brown river under an African sky, crocodiles lurking in the foam, thousands more animals queued on a dusty Kenyan riverbank",
+    "tags": [
+      "kenya",
+      "maasai mara",
+      "great migration",
+      "wildlife",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-kenya-rift-valley-lakes",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "Kenya's Rift Valley contains several alkaline lakes famous for hosting millions of flamingos, including Lake Nakuru and Lake Bogoria.",
+    "quizQuestion": "Which Kenyan Rift Valley lake is famous for its millions of flamingos?",
+    "correctAnswer": "Lake Nakuru",
+    "distractors": [
+      "Lake Turkana",
+      "Lake Victoria",
+      "Lake Baringo",
+      "Lake Naivasha",
+      "Lake Magadi",
+      "Lake Elementaita",
+      "Lake Bogoria",
+      "Lake Chad"
+    ],
+    "acceptableAnswers": [
+      "lake nakuru",
+      "nakuru"
+    ],
+    "explanation": "Lake Nakuru's alkaline waters are rich in cyanobacteria, the primary food source for lesser flamingos. At peak times, over two million flamingos can cover the lake's shores in a pink blanket.",
+    "wowFactor": "Lake Nakuru turns bright pink with two million flamingos — it looks like someone spilled paint on the savanna.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Kenyan lake turns pink with millions of flamingos?",
+        "answer": "Lake Nakuru",
+        "distractors": [
+          "Lake Turkana",
+          "Lake Victoria",
+          "Lake Baringo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Nakuru is famous for hosting huge flocks of which bird?",
+        "answer": "Flamingos",
+        "distractors": [
+          "Pelicans",
+          "Storks",
+          "Herons"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lake Nakuru is an alkaline lake located in Kenya's Rift Valley.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lake Nakuru's alkaline waters are rich in ___, the flamingos' food source.",
+        "answer": "cyanobacteria",
+        "distractors": [
+          "algae",
+          "plankton",
+          "krill"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Nakuru",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Kenyan lake completely blanketed in bright pink flamingos, thousands wading in shallow alkaline water, acacia trees framing the scene on a golden savanna hillside",
+    "tags": [
+      "kenya",
+      "lake nakuru",
+      "flamingos",
+      "rift valley",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-libya-sahara-coverage",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "About 90% of Libya is covered by the Sahara Desert, making it one of the most arid countries on Earth.",
+    "quizQuestion": "Approximately what percentage of Libya is covered by desert?",
+    "correctAnswer": "90%",
+    "distractors": [
+      "50%",
+      "60%",
+      "70%",
+      "75%",
+      "80%",
+      "95%",
+      "40%",
+      "85%"
+    ],
+    "acceptableAnswers": [
+      "90%",
+      "90 percent",
+      "ninety percent"
+    ],
+    "explanation": "Libya's vast Saharan interior is largely uninhabitable. Most of its population clusters along the narrow Mediterranean coastal strip, which receives the country's scarce rainfall.",
+    "wowFactor": "Libya is 90% desert — the entire population of 7 million people clings to a thin coastal strip.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of Libya is covered by the Sahara Desert?",
+        "answer": "90%",
+        "distractors": [
+          "50%",
+          "70%",
+          "60%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which North African country is almost entirely covered by the Sahara?",
+        "answer": "Libya",
+        "distractors": [
+          "Tunisia",
+          "Morocco",
+          "Egypt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Most of Libya's population lives inland in the Sahara Desert.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About ___% of Libya is covered by the Sahara Desert.",
+        "answer": "90",
+        "distractors": [
+          "50",
+          "70",
+          "80"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Libya",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Endless golden Sahara dunes stretching to the horizon in Libya, a lone camel caravan silhouetted at sunset, the vast empty desert dwarfing everything beneath a blazing orange sky",
+    "tags": [
+      "libya",
+      "sahara",
+      "desert",
+      "north africa",
+      "arid"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-libya-largest-country",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "",
+    "statement": "Libya is the 4th largest country in Africa by area, covering about 1.76 million square kilometers.",
+    "quizQuestion": "By area, Libya ranks how among African nations?",
+    "correctAnswer": "4th largest",
+    "distractors": [
+      "1st largest",
+      "2nd largest",
+      "3rd largest",
+      "5th largest",
+      "6th largest",
+      "7th largest",
+      "10th largest",
+      "8th largest"
+    ],
+    "acceptableAnswers": [
+      "4th largest",
+      "fourth largest",
+      "4th"
+    ],
+    "explanation": "Libya's area of 1.76 million km² places it behind Algeria, Democratic Republic of Congo, and Sudan. Despite its size, its population is only about 7 million — one of Africa's lowest population densities.",
+    "wowFactor": "Libya is larger than France, Germany, Italy, Spain and Portugal combined — yet almost nobody lives there.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Libya's rank by area among African countries?",
+        "answer": "4th largest",
+        "distractors": [
+          "1st largest",
+          "2nd largest",
+          "3rd largest"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Algeria is Africa's largest country. What rank is Libya?",
+        "answer": "4th",
+        "distractors": [
+          "2nd",
+          "3rd",
+          "6th"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Libya is the largest country in Africa by area.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Libya covers about 1.76 million ___ kilometers.",
+        "answer": "square",
+        "distractors": [
+          "cubic",
+          "linear",
+          "nautical"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Libya",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Africa with Libya highlighted in gold, its enormous territory dwarfing neighboring countries, Mediterranean coastline gleaming to the north, golden Sahara filling the interior",
+    "tags": [
+      "libya",
+      "area",
+      "africa",
+      "size",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-libya-ancient-roman-ruins",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities_settlements",
+    "categoryL1": "Geography",
+    "categoryL2": "cities_settlements",
+    "categoryL3": "",
+    "statement": "Libya contains Leptis Magna, one of the best-preserved Roman cities in the world, a UNESCO World Heritage Site on the Mediterranean coast.",
+    "quizQuestion": "Which ancient Roman city in Libya is one of the world's best preserved?",
+    "correctAnswer": "Leptis Magna",
+    "distractors": [
+      "Pompeii",
+      "Carthage",
+      "Sabratha",
+      "Cyrene",
+      "Apollonia",
+      "Dougga",
+      "Jerash",
+      "Timgad"
+    ],
+    "acceptableAnswers": [
+      "leptis magna",
+      "lepcis magna"
+    ],
+    "explanation": "Leptis Magna was a major Roman city that flourished under Emperor Septimius Severus, himself a Libyan. Its theater, market, and forum have been preserved by desert sands for nearly 2,000 years.",
+    "wowFactor": "The Sahara sand acted like a time capsule — burying Leptis Magna so perfectly that its columns still stand after 2,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Roman city in Libya is remarkably well-preserved?",
+        "answer": "Leptis Magna",
+        "distractors": [
+          "Pompeii",
+          "Carthage",
+          "Cyrene"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Leptis Magna is located in which North African country?",
+        "answer": "Libya",
+        "distractors": [
+          "Tunisia",
+          "Morocco",
+          "Egypt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Leptis Magna is a UNESCO World Heritage Site in Libya.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Leptis Magna flourished under Roman Emperor ___ Severus, who was Libyan.",
+        "answer": "Septimius",
+        "distractors": [
+          "Julius",
+          "Augustus",
+          "Marcus"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leptis_Magna",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Majestic Roman columns and arches of Leptis Magna gleaming white under a blazing Libyan sun, marble paving stones stretching toward the blue Mediterranean sea in the distance",
+    "tags": [
+      "libya",
+      "leptis magna",
+      "roman",
+      "archaeology",
+      "unesco"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sudan-nile-confluence",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "The Blue Nile and White Nile converge at Khartoum, Sudan, to form the main Nile River that flows north to Egypt.",
+    "quizQuestion": "In which Sudanese city do the Blue and White Nile rivers meet?",
+    "correctAnswer": "Khartoum",
+    "distractors": [
+      "Omdurman",
+      "Port Sudan",
+      "Kassala",
+      "Wad Madani",
+      "Atbara",
+      "Juba",
+      "Cairo",
+      "Aswan"
+    ],
+    "acceptableAnswers": [
+      "khartoum"
+    ],
+    "explanation": "At Khartoum, the sediment-laden Blue Nile (which gives the river most of its water) and the clearer White Nile join in a visible two-tone confluence you can see from the air. From here, the unified Nile flows 3,000 km to the Mediterranean.",
+    "wowFactor": "At Khartoum, you can literally see the Blue and White Nile as two distinct colored streams merging — they don't fully mix for miles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where do the Blue Nile and White Nile merge?",
+        "answer": "Khartoum",
+        "distractors": [
+          "Omdurman",
+          "Cairo",
+          "Aswan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Khartoum is notable geographically because it is at the junction of what?",
+        "answer": "Blue and White Nile",
+        "distractors": [
+          "Niger and Congo",
+          "Zambezi tributaries",
+          "Red Sea canals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Blue Nile and White Nile merge at Khartoum in Sudan.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The two Nile tributaries merge at ___, Sudan's capital.",
+        "answer": "Khartoum",
+        "distractors": [
+          "Omdurman",
+          "Kassala",
+          "Atbara"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Khartoum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Aerial view of Khartoum showing two rivers meeting, one muddy blue and one pale green, flowing side by side without fully mixing, city buildings lining both sandy riverbanks",
+    "tags": [
+      "sudan",
+      "khartoum",
+      "nile",
+      "blue nile",
+      "white nile"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sudan-nubian-pyramids",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_wonders",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_wonders",
+    "categoryL3": "",
+    "statement": "Sudan has more ancient pyramids than Egypt, with over 200 Nubian pyramids built by the Kushite kingdoms near Meroe.",
+    "quizQuestion": "Which country has more ancient pyramids than Egypt?",
+    "correctAnswer": "Sudan",
+    "distractors": [
+      "Libya",
+      "Ethiopia",
+      "Tunisia",
+      "Morocco",
+      "Algeria",
+      "Nigeria",
+      "Kenya",
+      "Somalia"
+    ],
+    "acceptableAnswers": [
+      "sudan"
+    ],
+    "explanation": "The Kushite Kingdom of Meroe built over 200 steep, narrow pyramids between 700 BCE and 350 CE. They differ from Egyptian pyramids in their sharper angles and smaller bases. Most tourists still don't know they exist.",
+    "wowFactor": "Sudan has more pyramids than Egypt — and most people have never heard of them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which African country has more pyramids than Egypt?",
+        "answer": "Sudan",
+        "distractors": [
+          "Libya",
+          "Ethiopia",
+          "Tunisia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sudan's ancient Nubian pyramids were built by which kingdom?",
+        "answer": "Kushite kingdom",
+        "distractors": [
+          "Ottoman Empire",
+          "Roman Empire",
+          "Persian Empire"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Sudan has more ancient pyramids than Egypt.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sudan's 200+ pyramids are located near the ancient city of ___.",
+        "answer": "Meroe",
+        "distractors": [
+          "Khartoum",
+          "Luxor",
+          "Thebes"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nubian_pyramids",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dozens of steep narrow Nubian pyramids rising from the Sudanese desert sand at sunset, sharper and more pointed than Egyptian ones, glowing orange against a deep purple sky",
+    "tags": [
+      "sudan",
+      "pyramids",
+      "nubia",
+      "meroe",
+      "archaeology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-sudan-largest-country",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "",
+    "statement": "Before South Sudan's independence in 2011, Sudan was the largest country in Africa by land area.",
+    "quizQuestion": "Before 2011, which country was the largest in Africa by area?",
+    "correctAnswer": "Sudan",
+    "distractors": [
+      "Algeria",
+      "Libya",
+      "DR Congo",
+      "Egypt",
+      "Ethiopia",
+      "Niger",
+      "Mali",
+      "Chad"
+    ],
+    "acceptableAnswers": [
+      "sudan"
+    ],
+    "explanation": "Sudan lost that title when South Sudan declared independence in 2011 — the world's newest country. Algeria is now Africa's largest nation. The split was one of the largest territorial changes in modern African history.",
+    "wowFactor": "Sudan used to be the size of Western Europe, then lost a quarter of its territory in a single day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country was Africa's largest before South Sudan's independence?",
+        "answer": "Sudan",
+        "distractors": [
+          "Algeria",
+          "Libya",
+          "DR Congo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sudan is notable for splitting into two countries. When did this happen?",
+        "answer": "2011",
+        "distractors": [
+          "1994",
+          "2001",
+          "2005"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Sudan is still the largest country in Africa today.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sudan lost its 'largest in Africa' title when ___ gained independence in 2011.",
+        "answer": "South Sudan",
+        "distractors": [
+          "Eritrea",
+          "Djibouti",
+          "Somalia"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sudan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Political map of northeast Africa with Sudan's former vast territory highlighted, a dotted line showing the 2011 split creating South Sudan, the Nile snaking through both territories",
+    "tags": [
+      "sudan",
+      "south sudan",
+      "africa",
+      "size",
+      "political geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-drc-congo-river",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "The Congo River in the DRC is the world's deepest river, reaching depths of over 220 meters in some sections.",
+    "quizQuestion": "What is the world's deepest river?",
+    "correctAnswer": "Congo River",
+    "distractors": [
+      "Amazon River",
+      "Nile River",
+      "Yangtze River",
+      "Mississippi River",
+      "Niger River",
+      "Zambezi River",
+      "Mekong River",
+      "Danube River"
+    ],
+    "acceptableAnswers": [
+      "congo river",
+      "the congo",
+      "congo"
+    ],
+    "explanation": "The Congo River's exceptional depth is caused by its narrow channel forcing water into canyon-like sections. It is also the second largest river in the world by discharge volume, after only the Amazon.",
+    "wowFactor": "The Congo River is so deep that new species have been discovered in its depths — fish that never see sunlight living in a river.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the world's deepest river?",
+        "answer": "Congo River",
+        "distractors": [
+          "Amazon River",
+          "Nile River",
+          "Yangtze River"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Congo River is notable for being the deepest river. How deep does it reach?",
+        "answer": "Over 220 meters",
+        "distractors": [
+          "Over 50 meters",
+          "Over 100 meters",
+          "Over 500 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Congo River is the world's deepest river at over 220 meters.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Congo River is the world's deepest river at over ___ meters deep.",
+        "answer": "220",
+        "distractors": [
+          "50",
+          "100",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Congo_River",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Massive Congo River flowing through dense tropical rainforest, dark green water rushing through a narrow gorge where depth is impossible to fathom, mist rising from the jungle banks",
+    "tags": [
+      "drc",
+      "congo river",
+      "deepest river",
+      "africa",
+      "rivers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-drc-congo-rainforest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "The DRC contains the Congo Rainforest, the world's second largest tropical rainforest, covering about 2 million square kilometers.",
+    "quizQuestion": "Which country contains the world's second largest tropical rainforest?",
+    "correctAnswer": "DR Congo",
+    "distractors": [
+      "Brazil",
+      "Indonesia",
+      "Peru",
+      "Colombia",
+      "Venezuela",
+      "Bolivia",
+      "Cameron",
+      "Gabon"
+    ],
+    "acceptableAnswers": [
+      "dr congo",
+      "democratic republic of congo",
+      "drc",
+      "congo"
+    ],
+    "explanation": "The Congo Basin rainforest is second only to the Amazon. It is home to gorillas, okapis, forest elephants, and thousands of species found nowhere else. It also plays a critical role in regulating global climate.",
+    "wowFactor": "The Congo rainforest absorbs so much CO₂ it's sometimes called the 'lungs of Africa' — and it's bigger than all of Western Europe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which African country contains the world's second largest rainforest?",
+        "answer": "DR Congo",
+        "distractors": [
+          "Cameroon",
+          "Gabon",
+          "Brazil"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Congo Basin Rainforest is the second largest in the world. Which is the largest?",
+        "answer": "Amazon",
+        "distractors": [
+          "Borneo forest",
+          "Daintree forest",
+          "Tongass forest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Congo Rainforest is larger than the Amazon Rainforest.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Congo Basin rainforest covers about ___ million square kilometers.",
+        "answer": "2",
+        "distractors": [
+          "5",
+          "0.5",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Congo_rainforest",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lush Congo jungle canopy stretching to the horizon, shafts of sunlight piercing dense green foliage, a mountain gorilla visible through the mist among massive tropical trees",
+    "tags": [
+      "drc",
+      "congo",
+      "rainforest",
+      "tropical",
+      "biodiversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-drc-equator-crossing",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "The Democratic Republic of the Congo is one of only two countries in the world where the equator crosses both hemispheres of the country.",
+    "quizQuestion": "Which country is crossed by the equator AND has territory in both hemispheres?",
+    "correctAnswer": "DR Congo",
+    "distractors": [
+      "Brazil",
+      "Kenya",
+      "Indonesia",
+      "Ecuador",
+      "Colombia",
+      "Uganda",
+      "Gabon",
+      "Somalia"
+    ],
+    "acceptableAnswers": [
+      "dr congo",
+      "democratic republic of congo",
+      "drc",
+      "congo"
+    ],
+    "explanation": "The DRC's territory extends both north and south of the equator, giving it two distinct rainy seasons that alternate between its northern and southern regions. This helps sustain its extraordinary biodiversity.",
+    "wowFactor": "The DRC gets rain almost year-round somewhere in the country because the equator divides it — when the north is dry, the south is wet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which large African country spans both sides of the equator?",
+        "answer": "DR Congo",
+        "distractors": [
+          "Kenya",
+          "Uganda",
+          "Gabon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The DRC has two rainy seasons because of what geographical feature?",
+        "answer": "The equator",
+        "distractors": [
+          "Atlantic winds",
+          "Congo River",
+          "Mountain ranges"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The equator passes through the Democratic Republic of the Congo.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The DRC has territory in both ___ hemispheres due to the equator.",
+        "answer": "northern and southern",
+        "distractors": [
+          "eastern and western",
+          "tropical and polar",
+          "coastal and inland"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Central Africa with the equator line drawn across the DRC dividing its lush green territory, Congo River winding through dense rainforest visible on both sides of the invisible line",
+    "tags": [
+      "drc",
+      "equator",
+      "hemispheres",
+      "geography",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-morocco-atlas-mountains",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "",
+    "statement": "Morocco's Atlas Mountains stretch over 2,500 km across three countries and include Toubkal, the highest peak in North Africa at 4,167 meters.",
+    "quizQuestion": "What is the highest peak in North Africa, located in Morocco?",
+    "correctAnswer": "Mount Toubkal",
+    "distractors": [
+      "Mount Atlas",
+      "Jebel Musa",
+      "Ras Dashen",
+      "Mount Cameroon",
+      "Jebel Akhdar",
+      "High Sahara Peak",
+      "Tahat Peak",
+      "Emi Koussi"
+    ],
+    "acceptableAnswers": [
+      "mount toubkal",
+      "toubkal",
+      "jbel toubkal"
+    ],
+    "explanation": "Toubkal towers over Morocco's High Atlas range and is often snow-capped in winter. From its summit you can see the Sahara Desert to the south and the Atlantic Ocean to the west on a clear day.",
+    "wowFactor": "From Toubkal's summit you can see both the Sahara Desert and the Atlantic Ocean at the same time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the highest mountain in North Africa?",
+        "answer": "Mount Toubkal",
+        "distractors": [
+          "Mount Atlas",
+          "Jebel Musa",
+          "Tahat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mount Toubkal is the highest peak in North Africa. In which country is it?",
+        "answer": "Morocco",
+        "distractors": [
+          "Algeria",
+          "Libya",
+          "Tunisia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Mount Toubkal is higher than 4,000 meters above sea level.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Morocco's Mount Toubkal is the highest peak in ___ Africa.",
+        "answer": "North",
+        "distractors": [
+          "West",
+          "East",
+          "Sub-Saharan"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Toubkal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Snow-dusted peak of Toubkal rising above brown Atlas Mountain ridges, Sahara sands visible in the hazy distance, Moroccan Berber villages clinging to lower slopes below the treeline",
+    "tags": [
+      "morocco",
+      "toubkal",
+      "atlas mountains",
+      "north africa",
+      "peaks"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-morocco-sahara-meets-ocean",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "Morocco is the only country in the world where the Sahara Desert meets the Atlantic Ocean, creating a dramatic landscape contrast.",
+    "quizQuestion": "Which country is where the Sahara Desert meets the Atlantic Ocean?",
+    "correctAnswer": "Morocco",
+    "distractors": [
+      "Mauritania",
+      "Western Sahara",
+      "Libya",
+      "Algeria",
+      "Senegal",
+      "Tunisia",
+      "Egypt",
+      "Somalia"
+    ],
+    "acceptableAnswers": [
+      "morocco"
+    ],
+    "explanation": "Along Morocco's southern Atlantic coastline, sand dunes roll directly into the ocean waves — a geological spectacle unique on Earth. The cold Canary Current keeps the Atlantic coast cooler than you'd expect at such a latitude.",
+    "wowFactor": "In Morocco you can stand with one foot in the Atlantic Ocean and watch the Sahara Desert dunes extend behind you to the horizon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does the Sahara Desert uniquely meet the Atlantic Ocean?",
+        "answer": "Morocco",
+        "distractors": [
+          "Mauritania",
+          "Algeria",
+          "Senegal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Morocco is geographically unique because which two features meet there?",
+        "answer": "Sahara and Atlantic",
+        "distractors": [
+          "Nile and Red Sea",
+          "Atlas and Nile",
+          "Mediterranean and Congo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Morocco is where the Sahara Desert meets the Atlantic Ocean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Morocco's Atlantic coast stays cooler than expected due to the cold ___ Current.",
+        "answer": "Canary",
+        "distractors": [
+          "Gulf",
+          "Benguela",
+          "Humboldt"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Morocco",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Sahara sand dunes rolling directly into crashing Atlantic waves on the Moroccan coast, camels silhouetted against a sunset where golden desert meets dark blue ocean",
+    "tags": [
+      "morocco",
+      "sahara",
+      "atlantic ocean",
+      "geography",
+      "unique"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-morocco-argan-trees",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "Morocco is the only place in the world where argan trees grow naturally, producing argan oil exclusively found in the country's southwestern region.",
+    "quizQuestion": "Which country is the only natural habitat of the argan tree?",
+    "correctAnswer": "Morocco",
+    "distractors": [
+      "Algeria",
+      "Tunisia",
+      "Libya",
+      "Mauritania",
+      "Spain",
+      "Portugal",
+      "Senegal",
+      "Mali"
+    ],
+    "acceptableAnswers": [
+      "morocco"
+    ],
+    "explanation": "The argan tree (Argania spinosa) is endemic to a UNESCO-protected biosphere in southwestern Morocco. Its oil is used in cooking, cosmetics, and medicine. Goats famously climb the trees to eat the fruits.",
+    "wowFactor": "Morocco has goats that climb trees — argan trees — and the oil from the fruit these goats eat is prized as a luxury cosmetic worldwide.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country do argan trees grow exclusively?",
+        "answer": "Morocco",
+        "distractors": [
+          "Algeria",
+          "Tunisia",
+          "Spain"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Morocco is the world's only source of argan oil. What unusual animal helps spread argan seeds?",
+        "answer": "Goats",
+        "distractors": [
+          "Camels",
+          "Monkeys",
+          "Birds"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Argan trees are endemic to Morocco and found nowhere else naturally.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Morocco's argan tree forests are a UNESCO-protected ___ reserve.",
+        "answer": "biosphere",
+        "distractors": [
+          "wildlife",
+          "forest",
+          "marine"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Argania",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Short gnarled argan trees with goats perched improbably in their branches against a Moroccan countryside backdrop, golden argan fruits hanging among silvery leaves under bright sun",
+    "tags": [
+      "morocco",
+      "argan",
+      "endemic",
+      "trees",
+      "unique"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-tunisia-northernmost-africa",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "",
+    "statement": "Tunisia's Cape Angela (Ras ben Sakka) is the northernmost point of mainland Africa, projecting into the Mediterranean Sea.",
+    "quizQuestion": "What is the northernmost point of mainland Africa?",
+    "correctAnswer": "Cape Angela",
+    "distractors": [
+      "Cape Bon",
+      "Cape Spartel",
+      "Cape Verde",
+      "Cape of Good Hope",
+      "Ras Hafun",
+      "Cape Guardafui",
+      "Point Almadies",
+      "Cape Juby"
+    ],
+    "acceptableAnswers": [
+      "cape angela",
+      "ras ben sakka",
+      "cape ras ben sakka"
+    ],
+    "explanation": "Cape Angela in northern Tunisia sits at 37.5°N latitude — farther north than parts of Spain and only about 140 km from Sicily. This makes Tunisia Africa's closest country to Europe.",
+    "wowFactor": "The northern tip of Africa is only 140 km from Sicily — you could almost see Europe from Tunisia on a clear day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which cape in Tunisia is Africa's northernmost point?",
+        "answer": "Cape Angela",
+        "distractors": [
+          "Cape Bon",
+          "Cape Spartel",
+          "Cape Verde"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cape Angela (Africa's northernmost point) is in which country?",
+        "answer": "Tunisia",
+        "distractors": [
+          "Morocco",
+          "Libya",
+          "Algeria"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The northernmost point of mainland Africa is in Tunisia.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cape Angela in Tunisia is only about ___ km from Sicily, Italy.",
+        "answer": "140",
+        "distractors": [
+          "500",
+          "1000",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cape_Angela",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Rocky cape jutting into deep blue Mediterranean waters, white foam crashing on limestone cliffs, the faint silhouette of Sicilian mountains barely visible on the horizon at Africa's northern tip",
+    "tags": [
+      "tunisia",
+      "cape angela",
+      "northernmost",
+      "africa",
+      "mediterranean"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-tunisia-chott-el-djerid",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_landforms",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_landforms",
+    "categoryL3": "",
+    "statement": "Tunisia's Chott el-Djerid is the largest salt flat in the Sahara Desert, covering about 7,500 km² and appearing to shimmer with mirages.",
+    "quizQuestion": "What is the largest salt flat in the Sahara Desert?",
+    "correctAnswer": "Chott el-Djerid",
+    "distractors": [
+      "Salar de Uyuni",
+      "Bonneville Salt Flats",
+      "Makgadikgadi Pan",
+      "Etosha Pan",
+      "Chott el Fedjadj",
+      "Sebkhet Tah",
+      "Rann of Kutch",
+      "Dasht-e Kavir"
+    ],
+    "acceptableAnswers": [
+      "chott el-djerid",
+      "chott el djerid",
+      "chott djerid"
+    ],
+    "explanation": "Chott el-Djerid is a seasonal salt lake that dries to a blinding white crust in summer, creating intense heat mirages. It was famously used as a filming location for Tatooine in the Star Wars films.",
+    "wowFactor": "The deserts of Tunisia doubled as the planet Tatooine in Star Wars — Luke Skywalker's home was a real Tunisian salt flat.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Sahara's largest salt flat, located in Tunisia?",
+        "answer": "Chott el-Djerid",
+        "distractors": [
+          "Salar de Uyuni",
+          "Makgadikgadi Pan",
+          "Bonneville Flats"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tunisia's Chott el-Djerid became famous as a filming location for which movie franchise?",
+        "answer": "Star Wars",
+        "distractors": [
+          "Mad Max",
+          "Indiana Jones",
+          "Lawrence of Arabia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Chott el-Djerid is larger than 7,000 square kilometers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chott el-Djerid was used as the filming location for ___ in Star Wars.",
+        "answer": "Tatooine",
+        "distractors": [
+          "Hoth",
+          "Jakku",
+          "Naboo"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chott_el-Djerid",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blinding white salt flat stretching to the horizon in Tunisia, heat mirages creating ghostly shimmering lakes, cracked salt crust glittering under an intense desert sun with not a shadow in sight",
+    "tags": [
+      "tunisia",
+      "chott el-djerid",
+      "salt flat",
+      "sahara",
+      "star wars"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ghana-prime-meridian",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "Ghana is one of the few countries crossed by both the equator and the Prime Meridian (0° longitude), making it near the geographic center of Earth's coordinate system.",
+    "quizQuestion": "Which African country lies near 0° latitude AND 0° longitude?",
+    "correctAnswer": "Ghana",
+    "distractors": [
+      "Nigeria",
+      "Ivory Coast",
+      "Togo",
+      "Benin",
+      "Burkina Faso",
+      "Senegal",
+      "Sierra Leone",
+      "Cameroon"
+    ],
+    "acceptableAnswers": [
+      "ghana"
+    ],
+    "explanation": "The intersection of the equator and Prime Meridian (the 'null point' at 0°N, 0°E) lies in the Gulf of Guinea south of Ghana. Ghana is the country closest to this exact geographic center of Earth's coordinate system.",
+    "wowFactor": "The geographic '0,0' point of Earth — where the equator meets the Prime Meridian — lies in the ocean just off Ghana's coast.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country is closest to where the equator meets the Prime Meridian?",
+        "answer": "Ghana",
+        "distractors": [
+          "Nigeria",
+          "Ivory Coast",
+          "Togo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ghana is notable geographically because it lies near the intersection of what?",
+        "answer": "Equator and Prime Meridian",
+        "distractors": [
+          "Tropic and Arctic",
+          "Two rivers",
+          "Two tectonic plates"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Prime Meridian passes through Ghana.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ghana lies where the equator and ___ Meridian nearly intersect.",
+        "answer": "Prime",
+        "distractors": [
+          "International Date",
+          "180th",
+          "Greenwich Mean"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ghana",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Globe zoomed in on West Africa with two glowing coordinate lines crossing near Ghana's coast, the nation outlined in gold at the intersection of Earth's entire mapping system",
+    "tags": [
+      "ghana",
+      "prime meridian",
+      "equator",
+      "coordinates",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-ghana-lake-volta",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "Lake Volta in Ghana is the world's largest man-made lake by surface area, covering about 8,500 km² — roughly 3.6% of Ghana's total area.",
+    "quizQuestion": "Which man-made lake by surface area is the world's largest?",
+    "correctAnswer": "Lake Volta",
+    "distractors": [
+      "Lake Nasser",
+      "Lake Kariba",
+      "Hoover Dam Lake",
+      "Three Gorges",
+      "Lake Mead",
+      "Lake Bratsk",
+      "Tucurui Reservoir",
+      "Lake Ataturk"
+    ],
+    "acceptableAnswers": [
+      "lake volta",
+      "volta"
+    ],
+    "explanation": "Lake Volta was created by the Akosombo Dam, completed in 1965. It flooded 740 towns and villages and displaced 78,000 people. The dam provides most of Ghana's hydroelectric power.",
+    "wowFactor": "Building Lake Volta required moving 78,000 people and flooding entire towns — and it still holds the record for world's largest man-made lake.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the world's largest man-made lake by surface area?",
+        "answer": "Lake Volta",
+        "distractors": [
+          "Lake Nasser",
+          "Lake Kariba",
+          "Lake Mead"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Volta in Ghana was created by which dam?",
+        "answer": "Akosombo Dam",
+        "distractors": [
+          "Aswan Dam",
+          "Kariba Dam",
+          "Hoover Dam"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lake Volta is the world's largest man-made lake by surface area.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lake Volta covers about ___% of Ghana's total land area.",
+        "answer": "3.6",
+        "distractors": [
+          "10",
+          "0.5",
+          "25"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Volta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast shimmering Lake Volta spreading to the horizon in Ghana, fishing boats dotting the surface, the Akosombo Dam's concrete wall visible at one end, tropical vegetation lining the shores",
+    "tags": [
+      "ghana",
+      "lake volta",
+      "man-made lake",
+      "akosombo",
+      "records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-angola-benguela-current",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans_rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans_rivers",
+    "categoryL3": "",
+    "statement": "The Benguela Current, one of the world's most productive ocean upwelling systems, flows northward along Angola's Atlantic coast bringing cold nutrient-rich waters.",
+    "quizQuestion": "Which ocean current flows along Angola's Atlantic coast?",
+    "correctAnswer": "Benguela Current",
+    "distractors": [
+      "Canary Current",
+      "Guinea Current",
+      "Agulhas Current",
+      "Mozambique Current",
+      "Humboldt Current",
+      "California Current",
+      "Somali Current",
+      "North Equatorial Current"
+    ],
+    "acceptableAnswers": [
+      "benguela current",
+      "benguela"
+    ],
+    "explanation": "The Benguela Current flows northward from Antarctica along southern Africa's Atlantic coast. Its cold upwelling water is extraordinarily rich in nutrients, supporting one of the most productive fishing grounds on Earth.",
+    "wowFactor": "The Benguela Current creates fish so plentiful off Angola's coast that seabirds from thousands of kilometers away fly there just to feed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ocean current flows along Angola's Atlantic coast?",
+        "answer": "Benguela Current",
+        "distractors": [
+          "Canary Current",
+          "Agulhas Current",
+          "Guinea Current"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Benguela Current is notable because its cold water creates what?",
+        "answer": "Rich fishing grounds",
+        "distractors": [
+          "Tropical storms",
+          "Desert coastline",
+          "Deep sea trenches"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Benguela Current flows southward along Angola's coast.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Benguela Current originates from cold waters near ___.",
+        "answer": "Antarctica",
+        "distractors": [
+          "Greenland",
+          "North Pole",
+          "Arctic Ocean"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Benguela_Current",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cold blue-green Atlantic waters churning with upwelling nutrients off the Angolan coast, fishing boats packed with silver fish, seabirds wheeling in massive flocks above rich ocean waters",
+    "tags": [
+      "angola",
+      "benguela current",
+      "ocean",
+      "atlantic",
+      "fishing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-angola-namib-desert",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "The Namib Desert, the world's oldest desert at about 55 million years old, extends into southern Angola from Namibia.",
+    "quizQuestion": "Which is the world's oldest desert, extending into southern Angola?",
+    "correctAnswer": "Namib Desert",
+    "distractors": [
+      "Sahara",
+      "Atacama",
+      "Gobi",
+      "Arabian",
+      "Kalahari",
+      "Patagonian",
+      "Syrian Desert",
+      "Great Victoria"
+    ],
+    "acceptableAnswers": [
+      "namib desert",
+      "namib"
+    ],
+    "explanation": "The Namib Desert has existed for at least 55 million years, making it the world's oldest. Despite its extreme aridity, it hosts unique species like the welwitschia plant, which can live for over 2,000 years.",
+    "wowFactor": "A plant in Angola's Namib Desert — the welwitschia — can live for 2,000 years in one of Earth's oldest deserts, with only two leaves its entire life.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is considered the world's oldest desert?",
+        "answer": "Namib Desert",
+        "distractors": [
+          "Sahara",
+          "Atacama",
+          "Gobi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Namib Desert is about 55 million years old. Which plant there can live for 2,000 years?",
+        "answer": "Welwitschia",
+        "distractors": [
+          "Baobab",
+          "Acacia",
+          "Date palm"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Namib Desert is the world's oldest desert.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Namib Desert has existed for about ___ million years.",
+        "answer": "55",
+        "distractors": [
+          "5",
+          "100",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Namib",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Namib Desert dunes glowing orange at dawn, a strange flat welwitschia plant growing from cracked desert sand, the Atlantic Ocean fog drifting over impossibly tall red dunes in the distance",
+    "tags": [
+      "angola",
+      "namib desert",
+      "oldest desert",
+      "welwitschia",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-angola-cabinda-exclave",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "political_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "political_geography",
+    "categoryL3": "",
+    "statement": "Angola's Cabinda province is a geographic exclave, separated from the rest of Angola by the Democratic Republic of the Congo's territory.",
+    "quizQuestion": "Angola's Cabinda province is separated from mainland Angola by which country?",
+    "correctAnswer": "DR Congo",
+    "distractors": [
+      "Republic of Congo",
+      "Zambia",
+      "Namibia",
+      "Gabon",
+      "Cameroon",
+      "Tanzania",
+      "Zimbabwe",
+      "Mozambique"
+    ],
+    "acceptableAnswers": [
+      "dr congo",
+      "democratic republic of congo",
+      "drc",
+      "congo"
+    ],
+    "explanation": "Cabinda is an oil-rich enclave north of the Congo River, physically separated from Angola by a thin strip of DRC territory. It produces a significant portion of Angola's oil wealth despite being disconnected from the mainland.",
+    "wowFactor": "Angola has a piece of itself that's completely cut off from the rest of Angola — you'd have to cross another country just to get there.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country separates Angola's Cabinda exclave from mainland Angola?",
+        "answer": "DR Congo",
+        "distractors": [
+          "Republic of Congo",
+          "Zambia",
+          "Namibia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cabinda is an exclave of which African country?",
+        "answer": "Angola",
+        "distractors": [
+          "DR Congo",
+          "Republic of Congo",
+          "Gabon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Cabinda is physically connected to the rest of Angola.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cabinda is an oil-rich ___ separated from mainland Angola by the DRC.",
+        "answer": "exclave",
+        "distractors": [
+          "island",
+          "peninsula",
+          "enclave"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cabinda_Province",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Central Africa showing Angola's main territory and the detached Cabinda exclave to the north, separated by a narrow strip of DR Congo territory, with the Atlantic Ocean to the west",
+    "tags": [
+      "angola",
+      "cabinda",
+      "exclave",
+      "political geography",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-somalia-longest-coastline",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "",
+    "statement": "Somalia has the longest coastline in mainland Africa at approximately 3,333 km, stretching along the Indian Ocean and Gulf of Aden.",
+    "quizQuestion": "Which African country has the longest coastline on the mainland?",
+    "correctAnswer": "Somalia",
+    "distractors": [
+      "South Africa",
+      "Mozambique",
+      "Tanzania",
+      "Kenya",
+      "Libya",
+      "Egypt",
+      "Morocco",
+      "Madagascar"
+    ],
+    "acceptableAnswers": [
+      "somalia"
+    ],
+    "explanation": "Somalia's 3,333-km coastline wraps around the Horn of Africa, bordering both the Indian Ocean and Gulf of Aden. This geographic position historically made it a key hub for Indian Ocean trade routes.",
+    "wowFactor": "Somalia's coastline is longer than the entire US East Coast — yet most people couldn't name a single Somali city.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which African mainland country has the longest coastline?",
+        "answer": "Somalia",
+        "distractors": [
+          "South Africa",
+          "Mozambique",
+          "Morocco"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Somalia has Africa's longest coastline. Approximately how long is it?",
+        "answer": "3,333 km",
+        "distractors": [
+          "1,000 km",
+          "5,000 km",
+          "800 km"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Somalia has the longest coastline in mainland Africa.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Somalia's coast borders the Indian Ocean and the Gulf of ___.",
+        "answer": "Aden",
+        "distractors": [
+          "Oman",
+          "Arabia",
+          "Bengal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Somalia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Somalia's long horn-shaped coastline from above, turquoise Indian Ocean waters meeting sandy beaches, the Horn of Africa jutting dramatically into the sea with a fishing dhow in the foreground",
+    "tags": [
+      "somalia",
+      "coastline",
+      "africa",
+      "records",
+      "horn of africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-somalia-horn-of-africa",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "physical_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "physical_geography",
+    "categoryL3": "",
+    "statement": "Somalia occupies the Horn of Africa, the easternmost point of the African continent, positioned at the entrance to the Red Sea and Gulf of Aden.",
+    "quizQuestion": "What geographic feature does Somalia occupy at Africa's easternmost point?",
+    "correctAnswer": "Horn of Africa",
+    "distractors": [
+      "Cape of Good Hope",
+      "Gulf of Guinea",
+      "Malay Peninsula",
+      "Iberian Peninsula",
+      "Sinai Peninsula",
+      "Arabian Peninsula",
+      "Cape Verde",
+      "Cape Guardafui"
+    ],
+    "acceptableAnswers": [
+      "horn of africa",
+      "the horn"
+    ],
+    "explanation": "The Horn of Africa — shared by Somalia, Ethiopia, Djibouti, and Eritrea — juts into the Indian Ocean between the Gulf of Aden and the Somali Sea. Its strategic position has made it vital for global shipping throughout history.",
+    "wowFactor": "Somalia sits at one of the most strategically important geography points on Earth — every ship between Europe and Asia must pass near it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Somalia occupies which peninsula-like region of Africa?",
+        "answer": "Horn of Africa",
+        "distractors": [
+          "Cape of Good Hope",
+          "Gulf of Guinea coast",
+          "Cape Verde"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Horn of Africa is the easternmost projection of which continent?",
+        "answer": "Africa",
+        "distractors": [
+          "Asia",
+          "Europe",
+          "Antarctica"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Somalia is located on the Horn of Africa, the continent's easternmost point.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Horn of Africa sits at the entrance to the Red Sea and Gulf of ___.",
+        "answer": "Aden",
+        "distractors": [
+          "Oman",
+          "Bengal",
+          "Arabia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horn_of_Africa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Satellite view of the Horn of Africa jutting eastward into blue Indian Ocean waters, Somalia's long coastline curving around the tip, cargo ships visible as tiny dots navigating the strategic waterway",
+    "tags": [
+      "somalia",
+      "horn of africa",
+      "easternmost",
+      "africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "geo-somalia-ras-hafun",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geo_records",
+    "categoryL1": "Geography",
+    "categoryL2": "geo_records",
+    "categoryL3": "",
+    "statement": "Ras Hafun in Somalia is the easternmost point of mainland Africa, a rocky peninsula extending into the Indian Ocean.",
+    "quizQuestion": "What is the easternmost point of mainland Africa?",
+    "correctAnswer": "Ras Hafun",
+    "distractors": [
+      "Cape Guardafui",
+      "Ras Xaafuun",
+      "Cape Agulhas",
+      "Cape Angela",
+      "Point Almadies",
+      "Ras ben Sakka",
+      "Cape Juby",
+      "Cape Spartel"
+    ],
+    "acceptableAnswers": [
+      "ras hafun",
+      "ras xaafuun",
+      "cape hafun"
+    ],
+    "explanation": "Ras Hafun (also spelled Xaafuun) sits at 51.4°E longitude in northeastern Somalia. It is a barren, windswept peninsula where the clear blue Indian Ocean meets one of Earth's most isolated coastlines.",
+    "wowFactor": "The easternmost point of Africa — Ras Hafun — is one of the most remote places on Earth, reachable only by sea or rough desert tracks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the easternmost point of mainland Africa?",
+        "answer": "Ras Hafun",
+        "distractors": [
+          "Cape Agulhas",
+          "Cape Angela",
+          "Cape Guardafui"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ras Hafun, Africa's easternmost point, is located in which country?",
+        "answer": "Somalia",
+        "distractors": [
+          "Ethiopia",
+          "Kenya",
+          "Djibouti"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ras Hafun in Somalia is Africa's easternmost mainland point.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ras Hafun is a rocky ___ extending into the Indian Ocean.",
+        "answer": "peninsula",
+        "distractors": [
+          "island",
+          "cape",
+          "delta"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ras_Hafun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Barren rocky peninsula jutting into crystal blue Indian Ocean waters under a blazing sun, no vegetation, just red-orange rock meeting impossibly clear water at Africa's farthest eastern tip",
+    "tags": [
+      "somalia",
+      "ras hafun",
+      "easternmost",
+      "africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

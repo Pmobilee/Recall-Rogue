@@ -1,0 +1,1920 @@
+[
+  {
+    "id": "health-dog-therapy-healing",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Therapy dogs can lower cortisol levels and reduce blood pressure in hospital patients within minutes of interaction.",
+    "quizQuestion": "What hormone do therapy dogs help reduce?",
+    "correctAnswer": "Cortisol",
+    "distractors": [
+      "Insulin",
+      "Adrenaline",
+      "Serotonin",
+      "Testosterone",
+      "Melatonin",
+      "Dopamine",
+      "Estrogen",
+      "Oxytocin"
+    ],
+    "acceptableAnswers": [
+      "cortisol",
+      "stress hormone"
+    ],
+    "explanation": "Interacting with therapy dogs triggers the release of oxytocin and suppresses cortisol, the body's primary stress hormone. Studies show blood pressure and heart rate drop measurably within minutes of petting a dog. Hospitals now use certified therapy dogs to reduce patient anxiety before surgery.",
+    "wowFactor": "A five-minute dog cuddle can chemically rewire your stress response faster than most medications.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What stress hormone do therapy dogs help lower?",
+        "answer": "Cortisol",
+        "distractors": [
+          "Insulin",
+          "Adrenaline",
+          "Testosterone"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cortisol is reduced by interaction with which therapy animal?",
+        "answer": "Dog",
+        "distractors": [
+          "Cat",
+          "Rabbit",
+          "Horse"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Therapy dogs can reduce cortisol levels in hospital patients.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Therapy dogs help lower ___ levels, reducing patient stress.",
+        "answer": "cortisol",
+        "distractors": [
+          "insulin",
+          "adrenaline",
+          "dopamine"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Animal-assisted_therapy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Friendly golden retriever wearing a therapy vest visiting a hospital bed patient, pixel art warm lighting, 16-bit style medical setting with heart monitors",
+    "tags": [
+      "therapy",
+      "cortisol",
+      "stress",
+      "dogs"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-dog-allergy-dander",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Dog allergies are caused by the protein Can f 1 found in dog saliva, urine, and dander, not by fur itself.",
+    "quizQuestion": "What protein causes dog allergies in humans?",
+    "correctAnswer": "Can f 1",
+    "distractors": [
+      "Fel d 1",
+      "Ova 1",
+      "Col a 1",
+      "Phl p 1",
+      "Der p 1",
+      "Bos d 4",
+      "Alt a 1"
+    ],
+    "acceptableAnswers": [
+      "can f 1",
+      "canine protein",
+      "canis familiaris 1"
+    ],
+    "explanation": "Many people believe dog fur causes allergies, but the real culprit is Can f 1, a protein secreted in saliva and shed with skin flakes called dander. There is no truly hypoallergenic dog breed — all dogs produce this protein. The protein becomes airborne and triggers immune responses in sensitive individuals.",
+    "wowFactor": "You're not allergic to dog fur — you're allergic to invisible proteins in dog spit coating every surface of their body.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which protein is the main cause of dog allergies?",
+        "answer": "Can f 1",
+        "distractors": [
+          "Fel d 1",
+          "Der p 1",
+          "Ova 1"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Can f 1 is the allergen found in which animal?",
+        "answer": "Dog",
+        "distractors": [
+          "Cat",
+          "Horse",
+          "Rabbit"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Dog fur itself is the primary cause of dog allergies.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dog allergies are triggered by the protein ___ in saliva and dander.",
+        "answer": "Can f 1",
+        "distractors": [
+          "Fel d 1",
+          "Ova 1",
+          "Der p 1"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dog_allergy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Microscopic pixel art view of floating dander particles labeled with protein symbols, dog silhouette in background, 16-bit science lab style",
+    "tags": [
+      "allergy",
+      "immune",
+      "dander",
+      "protein"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-dog-rabies-zoonosis",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Rabies, transmitted primarily through dog bites, kills nearly 59,000 people annually and is almost always fatal once symptoms appear.",
+    "quizQuestion": "How many people die annually from rabies worldwide?",
+    "correctAnswer": "59,000",
+    "distractors": [
+      "10,000",
+      "120,000",
+      "5,000",
+      "250,000",
+      "30,000",
+      "75,000",
+      "200,000"
+    ],
+    "acceptableAnswers": [
+      "59000",
+      "59,000",
+      "about 59000",
+      "nearly 59000"
+    ],
+    "explanation": "Dogs are responsible for 99% of rabies deaths in humans globally. The virus attacks the central nervous system and is virtually 100% fatal once clinical symptoms appear. Post-exposure prophylaxis (PEP) — a series of vaccines after a bite — can prevent infection if given promptly before symptoms develop.",
+    "wowFactor": "Rabies is arguably the most lethal virus known to medicine — with a near-perfect kill rate once it reaches your brain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What animal transmits 99% of rabies deaths to humans?",
+        "answer": "Dog",
+        "distractors": [
+          "Bat",
+          "Wolf",
+          "Fox"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Rabies kills approximately how many people per year globally?",
+        "answer": "59,000",
+        "distractors": [
+          "10,000",
+          "250,000",
+          "30,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Rabies is almost always fatal once clinical symptoms appear.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rabies transmitted by dogs kills approximately ___ people each year.",
+        "answer": "59,000",
+        "distractors": [
+          "10,000",
+          "120,000",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rabies",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art warning poster showing dog bite danger, vaccine syringe glowing green, world map with danger zones highlighted in red, 16-bit style",
+    "tags": [
+      "rabies",
+      "zoonosis",
+      "dogs",
+      "vaccine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cat-toxoplasmosis-brain",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Toxoplasma gondii, a parasite from cat feces, infects about one-third of all humans and may subtly alter behavior and personality.",
+    "quizQuestion": "What parasite from cats may infect a third of humanity?",
+    "correctAnswer": "Toxoplasma gondii",
+    "distractors": [
+      "Cryptosporidium",
+      "Giardia lamblia",
+      "Toxocara cati",
+      "Bartonella",
+      "Campylobacter",
+      "Listeria",
+      "Borrelia"
+    ],
+    "acceptableAnswers": [
+      "toxoplasma gondii",
+      "toxoplasma",
+      "toxoplasmosis parasite"
+    ],
+    "explanation": "Toxoplasma gondii can only sexually reproduce inside cats, but it infects virtually all warm-blooded animals including humans. Studies suggest latent infection correlates with subtle behavioral shifts — including increased risk-taking in infected men. Pregnant women are advised to avoid cleaning litter boxes as the parasite can cause severe fetal harm.",
+    "wowFactor": "A single-celled parasite from cat poop may be quietly living in a third of human brains right now, possibly influencing your decisions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which parasite from cat feces infects about one-third of humans?",
+        "answer": "Toxoplasma gondii",
+        "distractors": [
+          "Giardia",
+          "Cryptosporidium",
+          "Toxocara"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Toxoplasma gondii can only sexually reproduce inside which animal?",
+        "answer": "Cat",
+        "distractors": [
+          "Dog",
+          "Rat",
+          "Bird"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Toxoplasma gondii may subtly alter human behavior in infected individuals.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The parasite ___ from cat feces infects roughly one-third of all humans.",
+        "answer": "Toxoplasma gondii",
+        "distractors": [
+          "Giardia lamblia",
+          "Cryptosporidium",
+          "Bartonella"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Toxoplasmosis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Microscopic pixel art of Toxoplasma parasite glowing inside a brain cell, cat silhouette visible in background through a window, eerie green lighting",
+    "tags": [
+      "parasite",
+      "cat",
+      "brain",
+      "zoonosis"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cat-fel-d1-allergy",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Cat allergies are caused by Fel d 1, a protein in cat saliva and sebaceous glands — not fur — affecting up to 20% of adults.",
+    "quizQuestion": "What protein causes most cat allergies in humans?",
+    "correctAnswer": "Fel d 1",
+    "distractors": [
+      "Can f 1",
+      "Ova 1",
+      "Alt a 1",
+      "Der p 1",
+      "Phl p 1",
+      "Bos d 4",
+      "Col a 1"
+    ],
+    "acceptableAnswers": [
+      "fel d 1",
+      "felis domesticus 1",
+      "cat allergen"
+    ],
+    "explanation": "Fel d 1 is produced primarily in cat saliva and skin glands. When cats groom themselves, the protein coats their fur and becomes airborne as it dries, making it extraordinarily pervasive. Cat allergen can persist in a home for months after the cat has left, clinging to furniture, walls, and clothing.",
+    "wowFactor": "Cat allergy protein is so sticky and airborne it can be detected in homes that have never had a cat, carried in on clothing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which protein is the primary cat allergen affecting humans?",
+        "answer": "Fel d 1",
+        "distractors": [
+          "Can f 1",
+          "Der p 1",
+          "Alt a 1"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Fel d 1 is the main allergen produced by which common pet?",
+        "answer": "Cat",
+        "distractors": [
+          "Dog",
+          "Rabbit",
+          "Guinea pig"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Cat allergies are primarily caused by cat fur rather than a specific protein.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cat allergies are triggered by the protein ___, not by fur itself.",
+        "answer": "Fel d 1",
+        "distractors": [
+          "Can f 1",
+          "Der p 1",
+          "Ova 1"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cat_allergy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cat grooming itself with glowing protein particles floating off its fur, microscope inset showing Fel d 1 molecules, 16-bit pastel science style",
+    "tags": [
+      "allergy",
+      "cat",
+      "immune",
+      "protein"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cat-purr-healing",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Cat purring at 25-50 Hz may promote bone density and healing, potentially explaining why cats recover quickly from injuries.",
+    "quizQuestion": "At what frequency range do cats purr?",
+    "correctAnswer": "25-50 Hz",
+    "distractors": [
+      "100-150 Hz",
+      "5-10 Hz",
+      "200-300 Hz",
+      "75-100 Hz",
+      "10-20 Hz",
+      "300-400 Hz",
+      "150-200 Hz"
+    ],
+    "acceptableAnswers": [
+      "25-50 hz",
+      "25 to 50 hz",
+      "25–50 hz"
+    ],
+    "explanation": "Research suggests vibrations in the 25–50 Hz range stimulate bone growth and repair. Cat purring falls precisely in this therapeutic window, leading scientists to hypothesize it serves a self-healing function. Some researchers even propose vibrational therapy devices inspired by cat purring for human fracture recovery.",
+    "wowFactor": "Cats may have evolved purring partly as a built-in bone-healing mechanism — essentially a biological ultrasound device.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What therapeutic frequency range does cat purring fall within?",
+        "answer": "25-50 Hz",
+        "distractors": [
+          "100-150 Hz",
+          "5-10 Hz",
+          "200-300 Hz"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Bone-healing vibrations of 25-50 Hz are produced naturally by which animal?",
+        "answer": "Cat",
+        "distractors": [
+          "Dog",
+          "Dolphin",
+          "Horse"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Cat purring vibrations may promote bone density and healing.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cat purring at ___ Hz may promote bone growth and recovery.",
+        "answer": "25-50",
+        "distractors": [
+          "100-150",
+          "5-10",
+          "200-300"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Purring",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cat purring with sound wave rings glowing around it in bone-white color, x-ray style bone in background showing healing, cozy 16-bit room",
+    "tags": [
+      "healing",
+      "vibration",
+      "cat",
+      "bones"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-stomach-acid",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "Human stomach acid has a pH of 1.5-3.5, strong enough to dissolve razor blades, yet the stomach lining regenerates every 3-4 days.",
+    "quizQuestion": "What pH range does human stomach acid have?",
+    "correctAnswer": "1.5 to 3.5",
+    "distractors": [
+      "4.0 to 6.0",
+      "7.0 to 7.5",
+      "0.5 to 1.0",
+      "5.0 to 7.0",
+      "6.5 to 7.5",
+      "3.5 to 5.0",
+      "8.0 to 9.0"
+    ],
+    "acceptableAnswers": [
+      "1.5 to 3.5",
+      "1.5-3.5",
+      "ph 1.5-3.5",
+      "between 1.5 and 3.5"
+    ],
+    "explanation": "Hydrochloric acid in the stomach is powerful enough to dissolve metal, yet the stomach protects itself with a thick mucus lining. The epithelial cells lining the stomach are replaced every three to four days to survive the harsh environment. If the mucus barrier breaks down, the result is a painful peptic ulcer.",
+    "wowFactor": "Your stomach produces acid corrosive enough to dissolve metal — and rebuilds its entire lining every four days just to survive.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the pH range of human stomach acid?",
+        "answer": "1.5 to 3.5",
+        "distractors": [
+          "4.0 to 6.0",
+          "7.0 to 7.5",
+          "5.0 to 7.0"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A pH of 1.5-3.5 describes which digestive fluid?",
+        "answer": "Stomach acid",
+        "distractors": [
+          "Bile",
+          "Saliva",
+          "Pancreatic juice"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Human stomach acid is strong enough to dissolve metal.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human stomach acid has a pH of ___, strong enough to dissolve metal.",
+        "answer": "1.5 to 3.5",
+        "distractors": [
+          "4.0 to 6.0",
+          "7.0 to 7.5",
+          "5.0 to 7.0"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_acid",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of stomach with glowing acid pool, ph meter reading 2.0, stomach wall cells regenerating in green sparkles, 16-bit biology textbook style",
+    "tags": [
+      "stomach",
+      "digestion",
+      "acid",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-bone-strength",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Human bone is four times stronger than concrete by weight, with the femur capable of supporting 30 times body weight before fracturing.",
+    "quizQuestion": "How many times stronger than concrete is human bone?",
+    "correctAnswer": "Four times",
+    "distractors": [
+      "Twice",
+      "Eight times",
+      "Equal strength",
+      "Ten times",
+      "Three times",
+      "Six times",
+      "Twelve times"
+    ],
+    "acceptableAnswers": [
+      "four times",
+      "4 times",
+      "4x",
+      "four"
+    ],
+    "explanation": "Bone's remarkable strength-to-weight ratio comes from its composite structure — hydroxyapatite mineral crystals embedded in flexible collagen fibers. This combination provides rigidity without brittleness, similar to fiberglass. The femur, the body's largest bone, can withstand forces of over 1,700 pounds before breaking.",
+    "wowFactor": "The skeleton inside you is four times stronger than reinforced concrete — engineering that no human-made material has yet replicated at equivalent weight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many times stronger than concrete is human bone by weight?",
+        "answer": "Four times",
+        "distractors": [
+          "Twice",
+          "Equal",
+          "Ten times"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Human bone is four times stronger than which common building material?",
+        "answer": "Concrete",
+        "distractors": [
+          "Steel",
+          "Wood",
+          "Plastic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Human bone is stronger than concrete by weight.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human bone is ___ stronger than concrete pound for pound.",
+        "answer": "four times",
+        "distractors": [
+          "twice",
+          "equally",
+          "ten times"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art comparison of bone cross-section vs concrete block side by side, bone glowing gold showing crystal lattice structure, strength meter showing 4x, 16-bit style",
+    "tags": [
+      "bone",
+      "strength",
+      "anatomy",
+      "skeleton"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-nerve-speed",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuroscience",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuroscience",
+    "categoryL3": "",
+    "statement": "Nerve impulses travel at up to 120 meters per second — faster than a Formula 1 car — through myelinated nerve fibers.",
+    "quizQuestion": "How fast can nerve impulses travel in the human body?",
+    "correctAnswer": "120 m/s",
+    "distractors": [
+      "10 m/s",
+      "50 m/s",
+      "200 m/s",
+      "1 m/s",
+      "75 m/s",
+      "300 m/s",
+      "5 m/s"
+    ],
+    "acceptableAnswers": [
+      "120 m/s",
+      "120 meters per second",
+      "up to 120 m/s"
+    ],
+    "explanation": "The speed of nerve conduction depends on the diameter of the fiber and whether it is wrapped in a myelin sheath. Fast motor neurons carrying commands to muscles can reach 120 m/s (432 km/h). Unmyelinated pain fibers travel much slower at 0.5–2 m/s, which is why you feel the impact of stubbing your toe before the full pain arrives.",
+    "wowFactor": "Your brain communicates faster than a Formula 1 car — nerve signals race at 432 km/h through highways of fat wrapped around your neurons.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the maximum speed of nerve impulses in humans?",
+        "answer": "120 m/s",
+        "distractors": [
+          "10 m/s",
+          "50 m/s",
+          "200 m/s"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A signal speed of 120 m/s describes which biological transmission system?",
+        "answer": "Nerve impulse",
+        "distractors": [
+          "Blood flow",
+          "Hormone signal",
+          "Lymph flow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Nerve impulses can travel faster than a Formula 1 race car.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Myelinated nerve impulses travel at up to ___ meters per second.",
+        "answer": "120",
+        "distractors": [
+          "50",
+          "10",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nerve_conduction_velocity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art neuron with glowing signal pulse racing along myelin sheath like a comet, speed lines and mph counter in corner, electric blue 16-bit style",
+    "tags": [
+      "neurons",
+      "speed",
+      "nervous-system",
+      "myelin"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-human-microbiome-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "The human gut microbiome contains roughly 38 trillion bacterial cells — approximately equal to the total number of human cells in the body.",
+    "quizQuestion": "How many bacterial cells live in the human gut?",
+    "correctAnswer": "38 trillion",
+    "distractors": [
+      "1 trillion",
+      "100 trillion",
+      "10 billion",
+      "500 billion",
+      "5 trillion",
+      "200 trillion",
+      "1 billion"
+    ],
+    "acceptableAnswers": [
+      "38 trillion",
+      "about 38 trillion",
+      "roughly 38 trillion"
+    ],
+    "explanation": "For decades scientists believed bacteria outnumbered human cells 10:1, but updated research from 2016 revised this to roughly 1:1, with about 38 trillion bacterial cells matching 37 trillion human cells. The gut microbiome weighs about 200 grams and profoundly affects digestion, immunity, and even mental health through the gut-brain axis.",
+    "wowFactor": "You are as much bacteria as you are human — the microbial residents of your gut match your own cell count almost exactly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bacterial cells approximately inhabit the human gut?",
+        "answer": "38 trillion",
+        "distractors": [
+          "1 trillion",
+          "100 trillion",
+          "10 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "38 trillion is the approximate count of which human body residents?",
+        "answer": "Gut bacteria",
+        "distractors": [
+          "Red blood cells",
+          "Neurons",
+          "Skin cells"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Bacterial cells in the gut roughly equal the total number of human cells.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The gut microbiome contains roughly ___ bacterial cells, equal to human cell count.",
+        "answer": "38 trillion",
+        "distractors": [
+          "1 trillion",
+          "100 trillion",
+          "500 billion"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gut_microbiota",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art intestine cross-section swarming with colorful bacteria of all shapes, human cell and bacteria cell side by side showing equal size, 16-bit biology style",
+    "tags": [
+      "microbiome",
+      "bacteria",
+      "gut",
+      "immunity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cattle-insulin-history",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Before synthetic insulin, diabetics relied on insulin extracted from cattle and pig pancreases — a treatment that saved millions of lives from 1922 onward.",
+    "quizQuestion": "Which animal provided insulin for diabetics before synthetic versions?",
+    "correctAnswer": "Cattle and pigs",
+    "distractors": [
+      "Horses",
+      "Sheep",
+      "Chickens",
+      "Rabbits",
+      "Fish",
+      "Monkeys",
+      "Dogs"
+    ],
+    "acceptableAnswers": [
+      "cattle and pigs",
+      "cows and pigs",
+      "bovine and porcine",
+      "beef and pork"
+    ],
+    "explanation": "Frederick Banting and Charles Best discovered insulin in 1921, initially extracting it from dog pancreases before switching to cattle and pig sources for mass production. Bovine insulin differs from human insulin by only three amino acids, making it largely compatible. Recombinant DNA technology replaced animal-sourced insulin in the 1980s, but bovine insulin remains in use in some countries.",
+    "wowFactor": "For 60 years, the difference between life and death for diabetics came from slaughterhouse pancreases of cows and pigs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Before synthetic insulin, which animals provided insulin for diabetics?",
+        "answer": "Cattle and pigs",
+        "distractors": [
+          "Horses",
+          "Sheep",
+          "Rabbits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cattle-derived insulin was used to treat which metabolic disease?",
+        "answer": "Diabetes",
+        "distractors": [
+          "Thyroid disease",
+          "Addison's disease",
+          "Obesity"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Insulin extracted from cattle was used to treat diabetes before synthetic insulin existed.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Before synthetic insulin, diabetics used insulin from ___ pancreases.",
+        "answer": "cattle and pigs",
+        "distractors": [
+          "horse",
+          "sheep",
+          "chicken"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Insulin_(medication)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art 1920s lab scene with scientist extracting insulin from pancreas, syringe glowing gold, diabetic patient visible in hospital bed background, sepia 16-bit style",
+    "tags": [
+      "insulin",
+      "diabetes",
+      "cattle",
+      "medical-history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cattle-milk-calcium",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "One cup of cow's milk provides about 300 mg of calcium — roughly 30% of the adult recommended daily intake for bone health.",
+    "quizQuestion": "How much calcium is in one cup of cow's milk?",
+    "correctAnswer": "300 mg",
+    "distractors": [
+      "100 mg",
+      "500 mg",
+      "150 mg",
+      "600 mg",
+      "50 mg",
+      "750 mg",
+      "200 mg"
+    ],
+    "acceptableAnswers": [
+      "300 mg",
+      "about 300 mg",
+      "300 milligrams"
+    ],
+    "explanation": "Cow's milk contains calcium in a highly bioavailable form, aided by vitamin D and lactose which enhance absorption in the gut. Calcium is essential for bone mineralization, muscle contraction, and nerve function. Adults need about 1,000 mg daily, making three servings of dairy an efficient way to meet requirements.",
+    "wowFactor": "A single glass of milk delivers nearly a third of your daily calcium — the mineral holding your entire skeleton together.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much calcium does one cup of cow's milk contain?",
+        "answer": "300 mg",
+        "distractors": [
+          "100 mg",
+          "500 mg",
+          "150 mg"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "300 mg of calcium per cup comes from which common beverage?",
+        "answer": "Cow's milk",
+        "distractors": [
+          "Orange juice",
+          "Soy milk",
+          "Almond milk"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "One cup of cow's milk provides about 30% of daily calcium needs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "One cup of milk contains roughly ___ mg of calcium, 30% of daily needs.",
+        "answer": "300",
+        "distractors": [
+          "100",
+          "500",
+          "150"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Milk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art glass of milk with calcium crystal structure glowing inside, bone x-ray in background showing strong density, 16-bit nutrition label floating beside glass",
+    "tags": [
+      "calcium",
+      "milk",
+      "nutrition",
+      "bones"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-cattle-bovine-serum",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Fetal bovine serum (FBS), derived from unborn cattle, is a critical ingredient in growing human cells for medical research and vaccine production.",
+    "quizQuestion": "What bovine product is essential for laboratory cell culture?",
+    "correctAnswer": "Fetal bovine serum",
+    "distractors": [
+      "Bovine insulin",
+      "Cattle bile",
+      "Bovine albumin",
+      "Cow colostrum",
+      "Bovine thrombin",
+      "Cattle plasma",
+      "Bovine casein"
+    ],
+    "acceptableAnswers": [
+      "fetal bovine serum",
+      "fbs",
+      "bovine serum"
+    ],
+    "explanation": "Fetal bovine serum contains a cocktail of growth factors, proteins, and hormones that allow human and animal cells to survive and multiply in laboratory conditions. It is used in producing vaccines, cancer therapies, and nearly all cell biology research. Approximately 800,000 liters of FBS are produced globally each year from cattle slaughterhouses.",
+    "wowFactor": "Nearly every vaccine ever developed in a lab relied on blood from unborn cows — cattle are silent partners in virtually all modern medicine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What cattle-derived product is essential for growing cells in laboratories?",
+        "answer": "Fetal bovine serum",
+        "distractors": [
+          "Bovine insulin",
+          "Cattle bile",
+          "Bovine albumin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Fetal bovine serum is derived from unborn animals of which species?",
+        "answer": "Cattle",
+        "distractors": [
+          "Pigs",
+          "Sheep",
+          "Horses"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Fetal bovine serum from cattle is used in vaccine production and cell research.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is a cattle-derived ingredient essential for growing cells in medical labs.",
+        "answer": "Fetal bovine serum",
+        "distractors": [
+          "Bovine insulin",
+          "Cattle bile",
+          "Cow colostrum"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fetal_bovine_serum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art laboratory petri dish with glowing human cells multiplying, bovine serum vial labeled FBS glowing gold, microscope and cattle silhouette in background, 16-bit science style",
+    "tags": [
+      "cell-culture",
+      "vaccine",
+      "cattle",
+      "laboratory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-apple-pectin-cholesterol",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "Apples contain pectin, a soluble fiber that binds cholesterol in the gut and can reduce LDL cholesterol levels by up to 10%.",
+    "quizQuestion": "What soluble fiber in apples helps lower cholesterol?",
+    "correctAnswer": "Pectin",
+    "distractors": [
+      "Inulin",
+      "Guar gum",
+      "Psyllium",
+      "Cellulose",
+      "Hemicellulose",
+      "Beta-glucan",
+      "Chitin"
+    ],
+    "acceptableAnswers": [
+      "pectin",
+      "apple pectin"
+    ],
+    "explanation": "Pectin forms a gel-like substance in the digestive tract that binds to cholesterol molecules, preventing their reabsorption into the bloodstream. Regular consumption of apples has been shown in studies to reduce LDL (bad) cholesterol by up to 10% over several weeks. This mechanism partly explains the folk wisdom behind 'an apple a day.'",
+    "wowFactor": "The jelly-like fiber in apples physically grabs cholesterol in your intestines and drags it out of your body before it can enter your blood.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which fiber in apples binds cholesterol and reduces LDL levels?",
+        "answer": "Pectin",
+        "distractors": [
+          "Inulin",
+          "Cellulose",
+          "Beta-glucan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pectin, a cholesterol-binding fiber, is found abundantly in which fruit?",
+        "answer": "Apple",
+        "distractors": [
+          "Banana",
+          "Orange",
+          "Grape"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The soluble fiber pectin in apples can reduce LDL cholesterol.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apples contain ___, a soluble fiber that binds and removes cholesterol.",
+        "answer": "pectin",
+        "distractors": [
+          "inulin",
+          "cellulose",
+          "guar gum"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pectin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art apple cross-section with glowing pectin fibers shown as golden webs, cholesterol molecules being trapped and pulled down, 16-bit digestive system background",
+    "tags": [
+      "fiber",
+      "cholesterol",
+      "apple",
+      "nutrition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-apple-quercetin-inflammation",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Apple skin contains quercetin, a flavonoid antioxidant that reduces inflammation and may protect against neurodegenerative diseases.",
+    "quizQuestion": "What anti-inflammatory flavonoid is found in apple skin?",
+    "correctAnswer": "Quercetin",
+    "distractors": [
+      "Resveratrol",
+      "Lycopene",
+      "Anthocyanin",
+      "Curcumin",
+      "Lutein",
+      "Kaempferol",
+      "Catechin"
+    ],
+    "acceptableAnswers": [
+      "quercetin"
+    ],
+    "explanation": "Quercetin is concentrated in the skin of apples and acts as a powerful antioxidant that neutralizes free radicals and modulates inflammatory pathways. Research suggests quercetin may cross the blood-brain barrier and reduce neuroinflammation linked to Alzheimer's and Parkinson's diseases. Eating apples with the skin provides significantly more quercetin than peeled apples.",
+    "wowFactor": "The skin you might peel off an apple contains a brain-protecting compound that researchers are studying as a defense against Alzheimer's.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which flavonoid in apple skin reduces inflammation and may protect the brain?",
+        "answer": "Quercetin",
+        "distractors": [
+          "Resveratrol",
+          "Lycopene",
+          "Curcumin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Quercetin, an anti-inflammatory flavonoid, is concentrated in the skin of which fruit?",
+        "answer": "Apple",
+        "distractors": [
+          "Grape",
+          "Tomato",
+          "Blueberry"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Apple skin contains quercetin, which may protect against neurodegenerative diseases.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apple skin contains ___, a flavonoid that fights inflammation and neurodegeneration.",
+        "answer": "quercetin",
+        "distractors": [
+          "resveratrol",
+          "lycopene",
+          "anthocyanin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Quercetin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art apple with skin glowing purple-gold, brain in background protected by a shield, antioxidant molecules sparkling like stars, 16-bit science illustration style",
+    "tags": [
+      "antioxidant",
+      "brain",
+      "apple",
+      "inflammation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-apple-gut-microbiome",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "A single medium apple contains about 100 million bacteria on its surface and inside, contributing diverse microbes to the gut microbiome.",
+    "quizQuestion": "How many bacteria does a medium apple contain?",
+    "correctAnswer": "100 million",
+    "distractors": [
+      "1 million",
+      "1 billion",
+      "10,000",
+      "500 million",
+      "100,000",
+      "10 million",
+      "5 billion"
+    ],
+    "acceptableAnswers": [
+      "100 million",
+      "about 100 million",
+      "roughly 100 million"
+    ],
+    "explanation": "A 2019 study found that a typical apple harbors roughly 100 million bacteria, both on the surface and in the flesh and seeds. Organic apples show more diverse microbial communities than conventionally grown ones. These bacteria survive partial digestion and can inoculate the gut with new species, potentially enriching microbiome diversity.",
+    "wowFactor": "Every apple you eat delivers 100 million live bacteria to your gut — it's a microbiome supplement in fruit form.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many bacteria does a medium apple contain?",
+        "answer": "100 million",
+        "distractors": [
+          "1 million",
+          "1 billion",
+          "10,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "100 million bacteria per serving is found in which common fruit?",
+        "answer": "Apple",
+        "distractors": [
+          "Orange",
+          "Banana",
+          "Pear"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A medium apple contains approximately 100 million bacteria.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A medium apple harbors about ___ bacteria, enriching the gut microbiome.",
+        "answer": "100 million",
+        "distractors": [
+          "1 million",
+          "1 billion",
+          "500 million"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apple",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art apple cross-section teeming with colorful tiny bacteria of all shapes, gut microbiome diagram in background, 16-bit microscope view inset, bright science illustration",
+    "tags": [
+      "microbiome",
+      "bacteria",
+      "apple",
+      "gut"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-death-livor-mortis",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Livor mortis — the purple discoloration after death — begins within 1-2 hours as blood pools by gravity to dependent body parts.",
+    "quizQuestion": "What is the term for post-death purple skin discoloration?",
+    "correctAnswer": "Livor mortis",
+    "distractors": [
+      "Rigor mortis",
+      "Algor mortis",
+      "Pallor mortis",
+      "Putrefaction",
+      "Mummification",
+      "Decomposition",
+      "Hemostasis"
+    ],
+    "acceptableAnswers": [
+      "livor mortis",
+      "lividity",
+      "livor"
+    ],
+    "explanation": "After the heart stops, blood is no longer circulated and slowly pools in the lowest parts of the body due to gravity, creating a dark purple-red staining called livor mortis. It begins appearing 1-2 hours after death and becomes fixed at 8-12 hours. Forensic scientists use its pattern and fixation to estimate time of death and whether a body was moved after death.",
+    "wowFactor": "The purple patches on a corpse form a gravity-powered map that tells forensic scientists exactly how long someone has been dead.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process causes purple skin discoloration after death?",
+        "answer": "Livor mortis",
+        "distractors": [
+          "Rigor mortis",
+          "Algor mortis",
+          "Pallor mortis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Livor mortis is caused by which force acting on blood after death?",
+        "answer": "Gravity",
+        "distractors": [
+          "Temperature",
+          "Bacteria",
+          "Decomposition"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Livor mortis begins within 1-2 hours of death as blood pools by gravity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ causes purple discoloration after death as blood pools in dependent areas.",
+        "answer": "Livor mortis",
+        "distractors": [
+          "Rigor mortis",
+          "Algor mortis",
+          "Pallor mortis"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Livor_mortis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art forensic diagram of body outline showing purple pooling zones at bottom, gravity arrows pointing down, clock showing 2 hours, clinical 16-bit illustration style",
+    "tags": [
+      "death",
+      "forensics",
+      "livor-mortis",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-death-rigor-mortis",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Rigor mortis causes muscles to stiffen after death due to ATP depletion — it begins 2-6 hours after death and resolves within 48-72 hours.",
+    "quizQuestion": "What causes muscle stiffening in rigor mortis?",
+    "correctAnswer": "ATP depletion",
+    "distractors": [
+      "Calcium buildup",
+      "Protein decay",
+      "Lactic acid",
+      "Cell freezing",
+      "Nerve damage",
+      "Blood pooling",
+      "Enzyme release"
+    ],
+    "acceptableAnswers": [
+      "atp depletion",
+      "lack of atp",
+      "loss of atp",
+      "depletion of atp"
+    ],
+    "explanation": "When cells die, they can no longer produce ATP (adenosine triphosphate), the molecule that powers the separation of actin and myosin filaments in muscle. Without ATP, these proteins lock together, causing the characteristic stiffness of rigor mortis. The process is temporary — as proteins begin to decompose, the stiffness resolves naturally over the following days.",
+    "wowFactor": "Death freezes muscles because your cells run out of fuel — without ATP, every muscle in your body locks simultaneously like a biological engine seizing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What molecular depletion causes rigor mortis muscle stiffening?",
+        "answer": "ATP depletion",
+        "distractors": [
+          "Calcium buildup",
+          "Lactic acid",
+          "Protein decay"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "ATP depletion after death causes which well-known post-mortem condition?",
+        "answer": "Rigor mortis",
+        "distractors": [
+          "Livor mortis",
+          "Algor mortis",
+          "Decomposition"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Rigor mortis is caused by ATP depletion preventing muscle relaxation.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rigor mortis occurs because cells can no longer produce ___ after death.",
+        "answer": "ATP",
+        "distractors": [
+          "calcium",
+          "lactic acid",
+          "collagen"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rigor_mortis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art diagram of muscle fiber with actin and myosin locked together, ATP molecule shown depleted with red X, timeline showing 6 hours and 48 hours markers, 16-bit clinical style",
+    "tags": [
+      "rigor-mortis",
+      "ATP",
+      "muscles",
+      "death"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-death-cell-survival",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "After clinical death, brain neurons begin dying within 4-6 minutes without oxygen, while skin cells can survive up to 24 hours.",
+    "quizQuestion": "How long after death can skin cells survive?",
+    "correctAnswer": "Up to 24 hours",
+    "distractors": [
+      "1 hour",
+      "4-6 minutes",
+      "48 hours",
+      "30 minutes",
+      "72 hours",
+      "2 hours",
+      "12 minutes"
+    ],
+    "acceptableAnswers": [
+      "up to 24 hours",
+      "24 hours",
+      "about 24 hours"
+    ],
+    "explanation": "Different cell types have vastly different tolerances for oxygen deprivation. Brain neurons, being metabolically intense, begin irreversible damage within 4-6 minutes — which is why CPR must be started immediately. In contrast, skin cells and other somatic cells have lower metabolic demands and can remain viable for harvesting for transplant purposes up to 24 hours post-death.",
+    "wowFactor": "Your brain starts dying in four minutes without oxygen, but the skin on your hand might still be alive a full day after your heart stops.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can skin cells survive after clinical death?",
+        "answer": "Up to 24 hours",
+        "distractors": [
+          "1 hour",
+          "4-6 minutes",
+          "48 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Up to 24 hours of survival post-death is a property of which cell type?",
+        "answer": "Skin cells",
+        "distractors": [
+          "Brain neurons",
+          "Heart cells",
+          "Liver cells"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Skin cells can survive up to 24 hours after clinical death.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Brain neurons die within 4-6 minutes without oxygen, but skin cells survive up to ___.",
+        "answer": "24 hours",
+        "distractors": [
+          "1 hour",
+          "48 hours",
+          "30 minutes"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Death",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split diagram: left side shows brain cells with red X at 4 minutes timer, right side shows skin cells still glowing green at 24 hour timer, 16-bit medical illustration",
+    "tags": [
+      "cell-death",
+      "oxygen",
+      "brain",
+      "skin"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-snake-ace-inhibitor",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "ACE inhibitors, among the world's most prescribed blood pressure drugs, were developed from the venom of the Brazilian lancehead snake.",
+    "quizQuestion": "Which class of blood pressure drugs came from snake venom?",
+    "correctAnswer": "ACE inhibitors",
+    "distractors": [
+      "Beta blockers",
+      "Calcium blockers",
+      "Diuretics",
+      "ARBs",
+      "Statins",
+      "Alpha blockers",
+      "Vasodilators"
+    ],
+    "acceptableAnswers": [
+      "ace inhibitors",
+      "ace inhibitor",
+      "angiotensin converting enzyme inhibitors"
+    ],
+    "explanation": "In the 1940s, Brazilian scientist Maurício Rocha e Silva noticed that Bothrops jararaca venom caused a dramatic drop in blood pressure. This led to the isolation of bradykinin and eventually the development of captopril, the first ACE inhibitor, approved in 1981. ACE inhibitors are now prescribed to hundreds of millions worldwide for hypertension and heart failure.",
+    "wowFactor": "The most commonly prescribed blood pressure pill in history was invented by studying a Brazilian pit viper's ability to kill prey by crashing their blood pressure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What blood pressure drug class was developed from Brazilian lancehead snake venom?",
+        "answer": "ACE inhibitors",
+        "distractors": [
+          "Beta blockers",
+          "Diuretics",
+          "Statins"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "ACE inhibitors for blood pressure were derived from the venom of which snake?",
+        "answer": "Brazilian lancehead",
+        "distractors": [
+          "King cobra",
+          "Black mamba",
+          "Rattlesnake"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "ACE inhibitors, common blood pressure drugs, were developed from snake venom.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ were developed from Brazilian lancehead venom and treat high blood pressure.",
+        "answer": "ACE inhibitors",
+        "distractors": [
+          "Beta blockers",
+          "Diuretics",
+          "Statins"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ACE_inhibitor",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Brazilian lancehead snake coiled around a blood pressure medication bottle, venom drop transforming into pill capsule, heart with lowered pressure gauge in background",
+    "tags": [
+      "venom",
+      "blood-pressure",
+      "snake",
+      "medicine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-snake-tirofiban-antiplatelet",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Tirofiban, a drug preventing dangerous blood clots during heart attacks, was derived from saw-scaled viper venom proteins.",
+    "quizQuestion": "Tirofiban, a heart-attack drug, was derived from which source?",
+    "correctAnswer": "Viper venom",
+    "distractors": [
+      "Plant extract",
+      "Fungal compound",
+      "Synthetic origin",
+      "Marine sponge",
+      "Coral extract",
+      "Bacterial toxin",
+      "Insect venom"
+    ],
+    "acceptableAnswers": [
+      "viper venom",
+      "saw-scaled viper venom",
+      "snake venom",
+      "viper"
+    ],
+    "explanation": "The saw-scaled viper (Echis carinatus) produces disintegrin proteins called echistatin that prevent blood platelets from clumping. Scientists used this as a template to create tirofiban (Aggrastat), a drug used in hospital cardiac catheterization labs to prevent blood clots during heart attacks and cardiac procedures. It demonstrates how deadly venoms contain precise molecular tools that medicine can repurpose.",
+    "wowFactor": "A snake that causes internal hemorrhaging gave scientists the blueprint for a drug that saves heart attack victims in emergency rooms worldwide.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Tirofiban, an antiplatelet heart drug, was derived from which source?",
+        "answer": "Viper venom",
+        "distractors": [
+          "Plant extract",
+          "Marine sponge",
+          "Synthetic origin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Saw-scaled viper venom proteins inspired which class of heart medications?",
+        "answer": "Antiplatelet drugs",
+        "distractors": [
+          "Blood pressure drugs",
+          "Cholesterol drugs",
+          "Blood thinners"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Tirofiban, used during heart attacks, was derived from viper venom.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The heart drug tirofiban was developed from ___ proteins.",
+        "answer": "viper venom",
+        "distractors": [
+          "plant extract",
+          "marine sponge",
+          "bacterial toxin"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tirofiban",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art viper coiled beside hospital IV drip bag, molecular protein structure connecting snake fang to drug molecule, cardiac monitor in background, 16-bit medical thriller style",
+    "tags": [
+      "venom",
+      "heart",
+      "snake",
+      "cardiovascular"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-snake-antivenom-process",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Antivenom is made by injecting small doses of snake venom into horses or sheep, then harvesting antibodies from their blood.",
+    "quizQuestion": "Which animals are most commonly used to produce antivenom?",
+    "correctAnswer": "Horses and sheep",
+    "distractors": [
+      "Cows and goats",
+      "Rabbits and mice",
+      "Pigs and dogs",
+      "Camels and llamas",
+      "Donkeys and mules",
+      "Monkeys and baboons",
+      "Chickens and ducks"
+    ],
+    "acceptableAnswers": [
+      "horses and sheep",
+      "horses",
+      "sheep",
+      "equine and ovine"
+    ],
+    "explanation": "Antivenom production begins with milking venom from snakes and then injecting gradually increasing doses into large animals, typically horses. The animals' immune systems produce antibodies against the venom proteins. Blood is then drawn, and the antibody-rich serum is purified and bottled as antivenom. The process takes months and is expensive, contributing to global antivenom shortages.",
+    "wowFactor": "Every antivenom vial in an emergency room represents months of work immunizing horses against the very toxins designed to kill — animals are the unsung heroes of snakebite medicine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which animals are primarily used to manufacture antivenom?",
+        "answer": "Horses and sheep",
+        "distractors": [
+          "Cows and goats",
+          "Rabbits and mice",
+          "Camels and llamas"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Horses injected with small venom doses produce which life-saving medical product?",
+        "answer": "Antivenom",
+        "distractors": [
+          "Insulin",
+          "Antibiotics",
+          "Blood thinner"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Antivenom is made by injecting snake venom into horses and harvesting their antibodies.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Antivenom is produced from antibodies harvested from ___ injected with diluted venom.",
+        "answer": "horses and sheep",
+        "distractors": [
+          "cows and goats",
+          "rabbits and mice",
+          "pigs and dogs"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antivenom",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art horse in stable being gently injected with tiny venom dose, glowing antibodies flowing through veins, antivenom vials being filled in lab background, 16-bit medical illustration",
+    "tags": [
+      "antivenom",
+      "snake",
+      "antibodies",
+      "medicine"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

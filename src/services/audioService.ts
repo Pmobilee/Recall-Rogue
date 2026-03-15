@@ -42,6 +42,7 @@ export type SoundName =
   | 'card_swoosh_debuff'
   | 'card_swoosh_wild'
   | 'card_discard'
+  | 'card_deal'
 
 // Webkit-prefixed AudioContext fallback for older iOS Safari.
 type AnyAudioContext = AudioContext
@@ -305,6 +306,39 @@ function playCardDiscard(ctx: AnyAudioContext, master: GainNode): void {
   scheduleOscillator(ctx, master, 100, 'sine', 0.1, 0.08)
 }
 
+/**
+ * Card deal — Short papery flop sound using a shaped noise burst through a bandpass filter.
+ * Simulates the satisfying slap of a card landing on a surface.
+ */
+function playCardDeal(ctx: AnyAudioContext, dest: GainNode): void {
+  const now = ctx.currentTime
+  // Short noise burst shaped with strong exponential decay (card slap)
+  const bufferSize = Math.ceil(ctx.sampleRate * 0.06)
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
+  const data = buffer.getChannelData(0)
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 8)
+  }
+  const noise = ctx.createBufferSource()
+  noise.buffer = buffer
+
+  // Bandpass filter for papery, card-like quality
+  const filter = ctx.createBiquadFilter()
+  filter.type = 'bandpass'
+  filter.frequency.value = 2000
+  filter.Q.value = 0.8
+
+  const gain = ctx.createGain()
+  gain.gain.setValueAtTime(0.25, now)
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06)
+
+  noise.connect(filter)
+  filter.connect(gain)
+  gain.connect(dest)
+  noise.start(now)
+  noise.stop(now + 0.06)
+}
+
 // ---------------------------------------------------------------------------
 // Sound dispatch map
 // ---------------------------------------------------------------------------
@@ -412,6 +446,7 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   card_swoosh_debuff: playCardSwooshDebuff,
   card_swoosh_wild: playCardSwooshWild,
   card_discard: playCardDiscard,
+  card_deal: playCardDeal,
 }
 
 // ---------------------------------------------------------------------------

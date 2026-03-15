@@ -96,15 +96,21 @@ export class EnemySpriteSystem {
       dw = displaySize * (tw / th)
     }
 
+    // Scale shadow and outline offsets proportionally to displaySize (base design: 300px)
+    const scaleFactor = displaySize / 300
+    const shadowX = Math.round(4 * scaleFactor)
+    const shadowY = Math.round(5 * scaleFactor)
+    const outlineO = Math.max(1, Math.round(2 * scaleFactor))
+
     // Create shadow
     this.shadowSprite = this.scene.add
-      .image(4, 5, textureKey)
+      .image(shadowX, shadowY, textureKey)
       .setDisplaySize(dw, dh)
       .setTint(0x000000)
       .setAlpha(0.25)
 
     // Create 4 outline sprites at cardinal offsets
-    const outlineOffsets: [number, number][] = [[-2, 0], [2, 0], [0, -2], [0, 2]]
+    const outlineOffsets: [number, number][] = [[-outlineO, 0], [outlineO, 0], [0, -outlineO], [0, outlineO]]
     for (const [ox, oy] of outlineOffsets) {
       const outline = this.scene.add
         .image(ox, oy, textureKey)
@@ -149,14 +155,20 @@ export class EnemySpriteSystem {
     this.baseY = y
     this.hasRealTexture = false
 
+    // Scale shadow and outline offsets proportionally to size (base design: 300px)
+    const scaleFactor = size / 300
+    const shadowX = Math.round(4 * scaleFactor)
+    const shadowY = Math.round(5 * scaleFactor)
+    const outlineO = Math.max(1, Math.round(2 * scaleFactor))
+
     // Create shadow rect
     this.shadowRect = this.scene.add
-      .rectangle(4, 5, size, size, 0x000000)
+      .rectangle(shadowX, shadowY, size, size, 0x000000)
       .setOrigin(0.5, 0.5)
       .setAlpha(0.25)
 
     // Create 4 outline rects at cardinal offsets
-    const outlineOffsets: [number, number][] = [[-2, 0], [2, 0], [0, -2], [0, 2]]
+    const outlineOffsets: [number, number][] = [[-outlineO, 0], [outlineO, 0], [0, -outlineO], [0, outlineO]]
     for (const [ox, oy] of outlineOffsets) {
       const outline = this.scene.add
         .rectangle(ox, oy, size, size, 0x000000)

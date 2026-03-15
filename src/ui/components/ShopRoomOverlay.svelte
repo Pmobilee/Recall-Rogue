@@ -170,61 +170,61 @@
     z-index: 220;
     background: linear-gradient(180deg, #101214 0%, #1f2329 100%);
     color: #e6edf3;
-    padding: calc(20px + var(--safe-top)) 16px 28px;
+    padding: calc((20px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
     display: grid;
     align-content: start;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
   h1 {
-    margin: 4px 0 0;
-    font-size: 24px;
+    margin: calc(4px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(24px * var(--layout-scale, 1));
     color: #f1c40f;
     letter-spacing: 0.8px;
   }
 
   .gold {
-    font-size: 18px;
+    font-size: calc(18px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f9d56e;
-    margin-top: 2px;
+    margin-top: calc(2px * var(--layout-scale, 1));
   }
 
   .section-header {
-    margin-top: 8px;
-    font-size: 16px;
+    margin-top: calc(8px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--layout-scale, 1));
     font-weight: 700;
     color: #e6edf3;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 1px solid #3b434f;
-    padding-bottom: 4px;
+    padding-bottom: calc(4px * var(--layout-scale, 1));
   }
 
   .subsection-label {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 600;
     color: #8b949e;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-top: 4px;
+    margin-top: calc(4px * var(--layout-scale, 1));
   }
 
   .card-list {
     display: grid;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .card-item {
     border: 1px solid #3b434f;
     border-radius: 12px;
     background: rgba(13, 17, 23, 0.82);
-    padding: 10px 12px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .relic-item {
@@ -234,13 +234,13 @@
   .meta {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     min-width: 0;
     flex: 1;
   }
 
   .icon {
-    font-size: 20px;
+    font-size: calc(20px * var(--layout-scale, 1));
     line-height: 1;
     flex-shrink: 0;
   }
@@ -256,13 +256,13 @@
 
   .text {
     display: grid;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
     min-width: 0;
   }
 
   .name {
     font-weight: 700;
-    font-size: 13px;
+    font-size: calc(13px * var(--layout-scale, 1));
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -270,7 +270,7 @@
 
   .sub {
     color: #9ba4ad;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -282,7 +282,7 @@
     border: 1px solid #f1c40f;
     background: #6b4f00;
     color: #f9d56e;
-    padding: 0 10px;
+    padding: 0 calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
     cursor: pointer;
@@ -307,14 +307,14 @@
     border: 1px solid #2f914f;
     background: #1f6d39;
     color: #f0fff4;
-    padding: 0 10px;
+    padding: 0 calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
   .done {
-    margin-top: 8px;
+    margin-top: calc(8px * var(--layout-scale, 1));
     min-height: 50px;
     border-radius: 10px;
     border: 1px solid #4b5563;
@@ -324,11 +324,11 @@
   }
 
   .empty {
-    margin-top: 10px;
+    margin-top: calc(10px * var(--layout-scale, 1));
     border-radius: 12px;
     border: 1px solid #3b434f;
     background: rgba(13, 17, 23, 0.82);
-    padding: 14px 12px;
+    padding: calc(14px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     color: #9ba4ad;
   }
 </style>

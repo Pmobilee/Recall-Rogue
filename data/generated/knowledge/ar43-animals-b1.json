@@ -1,0 +1,2313 @@
+[
+  {
+    "id": "animals-animalia-heterotrophy",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "All animals are heterotrophs, meaning they must consume other organisms to obtain energy.",
+    "quizQuestion": "How do all animals obtain their energy?",
+    "correctAnswer": "By consuming other organisms",
+    "distractors": [
+      "By photosynthesis",
+      "By absorbing sunlight",
+      "By chemosynthesis",
+      "From soil nutrients",
+      "By absorbing minerals",
+      "From atmospheric CO2",
+      "By absorbing water",
+      "From air alone"
+    ],
+    "acceptableAnswers": [
+      "by consuming other organisms",
+      "eating other organisms",
+      "consuming other life"
+    ],
+    "explanation": "Unlike plants, animals cannot produce their own food from sunlight. Every animal — from a sponge to a blue whale — must eat other organisms to survive. This fundamental trait defines the animal kingdom.",
+    "wowFactor": "Every single animal on Earth, no exceptions, must eat something else to stay alive.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What feeding strategy do all animals share?",
+        "answer": "Heterotrophy",
+        "distractors": [
+          "Autotrophy",
+          "Chemotrophy",
+          "Lithotrophy"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Heterotrophy is the universal energy strategy of which kingdom?",
+        "answer": "Animalia",
+        "distractors": [
+          "Plantae",
+          "Fungi",
+          "Protista"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "All animals must consume other organisms to get energy.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Animals are ___, meaning they must eat other organisms for energy.",
+        "answer": "heterotrophs",
+        "distractors": [
+          "autotrophs",
+          "lithotrophs",
+          "chemotrophs"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Animal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vibrant pixel art collage showing a lion eating, a whale swallowing fish, and a frog catching a fly, all under the banner 'Kingdom Animalia'.",
+    "tags": [
+      "animalia",
+      "biology",
+      "heterotrophy",
+      "animal_kingdom"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-animalia-multicellular",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "The animal kingdom contains over 1.5 million described species, more than any other kingdom of multicellular life.",
+    "quizQuestion": "Roughly how many described animal species exist?",
+    "correctAnswer": "Over 1.5 million",
+    "distractors": [
+      "Over 500 thousand",
+      "Over 5 million",
+      "About 100 thousand",
+      "Over 10 million",
+      "About 300 thousand",
+      "Over 3 million",
+      "About 750 thousand",
+      "Over 20 million"
+    ],
+    "acceptableAnswers": [
+      "over 1.5 million",
+      "1.5 million",
+      "more than 1.5 million"
+    ],
+    "explanation": "Scientists have formally described more than 1.5 million animal species, but estimates suggest 8–10 million may actually exist. Insects alone account for over a million of the known species.",
+    "wowFactor": "We've named 1.5 million animals but may have missed 7 million more still hiding on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many animal species have scientists formally described?",
+        "answer": "Over 1.5 million",
+        "distractors": [
+          "Over 5 million",
+          "About 300 thousand",
+          "About 750 thousand"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which kingdom has over 1.5 million described species?",
+        "answer": "Animalia",
+        "distractors": [
+          "Plantae",
+          "Fungi",
+          "Bacteria"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The animal kingdom has over 1.5 million described species.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Scientists have described over ___ animal species on Earth.",
+        "answer": "1.5 million",
+        "distractors": [
+          "500 thousand",
+          "5 million",
+          "100 thousand"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Animal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art museum display case packed with tiny animal silhouettes — insects, fish, birds, mammals — with a sign reading '1,500,000+ Species'.",
+    "tags": [
+      "animalia",
+      "biodiversity",
+      "species_count",
+      "animal_kingdom"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-animalia-nervous-system",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "animal_behaviors",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "animal_behaviors",
+    "categoryL3": "",
+    "statement": "Most animals possess a nervous system that allows them to sense their environment and coordinate body movements.",
+    "quizQuestion": "What system allows most animals to sense and react to their environment?",
+    "correctAnswer": "Nervous system",
+    "distractors": [
+      "Digestive system",
+      "Endocrine system",
+      "Immune system",
+      "Circulatory system",
+      "Lymphatic system",
+      "Respiratory system",
+      "Reproductive system",
+      "Skeletal system"
+    ],
+    "acceptableAnswers": [
+      "nervous system",
+      "the nervous system"
+    ],
+    "explanation": "A nervous system lets animals detect stimuli — heat, light, pressure, chemicals — and respond rapidly. Even simple animals like jellyfish have a basic nerve net, while humans have a highly centralized brain and spinal cord.",
+    "wowFactor": "Jellyfish have no brain yet still hunt, flee predators, and navigate currents using a ghost-like nerve net.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What lets animals sense their environment and move coordinately?",
+        "answer": "Nervous system",
+        "distractors": [
+          "Immune system",
+          "Digestive system",
+          "Endocrine system"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The nervous system is a defining feature of which kingdom?",
+        "answer": "Animalia",
+        "distractors": [
+          "Plantae",
+          "Fungi",
+          "Monera"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Most animals have a nervous system to sense their environment.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Animals use their ___ system to detect stimuli and coordinate movement.",
+        "answer": "nervous",
+        "distractors": [
+          "immune",
+          "digestive",
+          "circulatory"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Animal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art jellyfish glowing with electric-blue neural networks threading through its translucent body, drifting in a dark ocean.",
+    "tags": [
+      "animalia",
+      "nervous_system",
+      "biology",
+      "animal_behaviors"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gray-wolf-pack",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Gray wolves live in family groups called packs, typically led by a breeding pair known as the alpha pair.",
+    "quizQuestion": "What is a family group of gray wolves called?",
+    "correctAnswer": "A pack",
+    "distractors": [
+      "A pride",
+      "A herd",
+      "A clan",
+      "A colony",
+      "A troop",
+      "A pod",
+      "A gang",
+      "A mob"
+    ],
+    "acceptableAnswers": [
+      "a pack",
+      "pack"
+    ],
+    "explanation": "Wolf packs are tightly bonded family units, usually 5–10 individuals, led by the breeding alpha pair. Pack members cooperate in hunting, raising pups, and defending territory — a level of teamwork rivaling human societies.",
+    "wowFactor": "A wolf pack is essentially a family business: every member has a role, and the pups are the whole pack's shared responsibility.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What social group do gray wolves form with their family?",
+        "answer": "A pack",
+        "distractors": [
+          "A pride",
+          "A herd",
+          "A troop"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wolves are famous for forming a social group called a what?",
+        "answer": "Pack",
+        "distractors": [
+          "Pride",
+          "Pod",
+          "Colony"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Gray wolves live in family groups called packs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gray wolves travel and hunt together in a family group called a ___.",
+        "answer": "pack",
+        "distractors": [
+          "pride",
+          "herd",
+          "clan"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gray_wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art winter forest scene with five gray wolves running in formation through snow, their breath misting in cold blue moonlight.",
+    "tags": [
+      "wolf",
+      "gray_wolf",
+      "pack",
+      "social_behavior",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gray-wolf-howl",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Gray wolves howl to communicate with pack members, with howls audible up to 10 miles away in open terrain.",
+    "quizQuestion": "How far can a gray wolf's howl be heard in open terrain?",
+    "correctAnswer": "Up to 10 miles",
+    "distractors": [
+      "Up to 1 mile",
+      "Up to 3 miles",
+      "Up to 5 miles",
+      "Up to 15 miles",
+      "Up to 20 miles",
+      "Up to half a mile",
+      "Up to 25 miles",
+      "Up to 2 miles"
+    ],
+    "acceptableAnswers": [
+      "up to 10 miles",
+      "10 miles",
+      "ten miles"
+    ],
+    "explanation": "Wolf howls can carry 6–10 miles across open landscape. Each wolf's howl is unique — pack members recognize individuals by voice, using howls to reunite after hunts, warn rivals, or simply check in with distant family.",
+    "wowFactor": "A wolf's howl is a long-distance phone call — each wolf has its own voice signature recognizable to the whole pack.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a wolf howl travel in open terrain?",
+        "answer": "Up to 10 miles",
+        "distractors": [
+          "Up to 3 miles",
+          "Up to 1 mile",
+          "Up to 20 miles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's howl can be heard up to 10 miles away?",
+        "answer": "Gray wolf",
+        "distractors": [
+          "Coyote",
+          "Fox",
+          "Hyena"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A gray wolf's howl can be heard up to 10 miles away in open terrain.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In open terrain, a wolf's howl can travel up to ___ miles.",
+        "answer": "10",
+        "distractors": [
+          "3",
+          "5",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gray_wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lone gray wolf on a snowy hilltop, head raised in a howl under a full moon, sound waves radiating outward in golden pixel rings across a dark forest valley.",
+    "tags": [
+      "wolf",
+      "howling",
+      "communication",
+      "mammals",
+      "sound"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gray-wolf-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Gray wolves can run at speeds up to 37 mph and sustain a trot of 5 mph for hours when pursuing prey.",
+    "quizQuestion": "What is the top running speed of a gray wolf?",
+    "correctAnswer": "37 mph",
+    "distractors": [
+      "20 mph",
+      "25 mph",
+      "30 mph",
+      "45 mph",
+      "50 mph",
+      "15 mph",
+      "55 mph",
+      "60 mph"
+    ],
+    "acceptableAnswers": [
+      "37 mph",
+      "37 miles per hour",
+      "about 37 mph"
+    ],
+    "explanation": "Wolves are built for endurance, not just speed. At a sprint they hit 37 mph, but their real hunting superpower is sustaining a 5 mph trot for hours — exhausting prey that burns out trying to escape.",
+    "wowFactor": "Wolves don't outrun prey — they outlast it, trotting patiently for hours until their target collapses from exhaustion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the top sprint speed of a gray wolf?",
+        "answer": "37 mph",
+        "distractors": [
+          "25 mph",
+          "50 mph",
+          "20 mph"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which predator can sprint at 37 mph and trot for hours?",
+        "answer": "Gray wolf",
+        "distractors": [
+          "Coyote",
+          "Hyena",
+          "African wild dog"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Gray wolves can run at speeds up to 37 mph.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gray wolves can sprint up to ___ mph when chasing prey.",
+        "answer": "37",
+        "distractors": [
+          "25",
+          "50",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gray_wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gray wolf mid-sprint across a snowy tundra, legs fully extended, snow exploding beneath its paws, a herd of elk visible in the distant pixel art horizon.",
+    "tags": [
+      "wolf",
+      "speed",
+      "hunting",
+      "endurance",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-gray-wolf-territory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Gray wolf pack territories can range from 50 to over 1,000 square miles depending on prey availability.",
+    "quizQuestion": "What determines the size of a wolf pack's territory?",
+    "correctAnswer": "Prey availability",
+    "distractors": [
+      "Pack size only",
+      "Water sources",
+      "Forest density",
+      "Competitor wolf packs",
+      "Seasonal weather",
+      "Mountain ranges",
+      "Human settlements",
+      "River boundaries"
+    ],
+    "acceptableAnswers": [
+      "prey availability",
+      "food availability",
+      "prey density"
+    ],
+    "explanation": "Wolf territories expand or shrink based on how much food is available. In prey-rich Yellowstone, packs hold compact territories; in sparse Canadian wilderness, a single pack may patrol 1,000+ square miles to find enough elk or caribou.",
+    "wowFactor": "Some wolf packs patrol territories bigger than Rhode Island — all just to find enough food for the family.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mainly determines a wolf pack's territory size?",
+        "answer": "Prey availability",
+        "distractors": [
+          "Pack size",
+          "Forest density",
+          "Water sources"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wolf pack territories of 50–1,000 sq miles are shaped by what factor?",
+        "answer": "Prey availability",
+        "distractors": [
+          "Pack hierarchy",
+          "River barriers",
+          "Climate zone"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Gray wolf territories can exceed 1,000 square miles in prey-scarce areas.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wolf pack territory size is primarily determined by ___ availability.",
+        "answer": "prey",
+        "distractors": [
+          "water",
+          "shelter",
+          "competitor"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gray_wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A top-down pixel art map showing a vast snowy wilderness with wolf paw prints tracing a thousand-mile patrol loop around mountains, rivers, and forests.",
+    "tags": [
+      "wolf",
+      "territory",
+      "habitat",
+      "ecology",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bears-hibernation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Bears undergo winter dormancy called torpor, during which their heart rate drops from 40–70 bpm to just 8–12 bpm.",
+    "quizQuestion": "What is a bear's heart rate during winter torpor?",
+    "correctAnswer": "8–12 bpm",
+    "distractors": [
+      "1–2 bpm",
+      "20–25 bpm",
+      "30–35 bpm",
+      "40–50 bpm",
+      "55–65 bpm",
+      "70–80 bpm",
+      "3–5 bpm",
+      "15–20 bpm"
+    ],
+    "acceptableAnswers": [
+      "8-12 bpm",
+      "8 to 12 bpm",
+      "about 8-12 bpm"
+    ],
+    "explanation": "During winter torpor, a bear's heart rate plummets from a normal 40–70 beats per minute down to just 8–12. Body temperature drops only slightly, which is why bears can wake quickly if disturbed — unlike true hibernators like ground squirrels.",
+    "wowFactor": "A sleeping bear's heart beats only 8 times a minute — slower than most humans' resting rate — yet it can be awake and aggressive within seconds.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How slow does a bear's heart beat during winter torpor?",
+        "answer": "8–12 bpm",
+        "distractors": [
+          "20–25 bpm",
+          "1–2 bpm",
+          "30–35 bpm"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's heart rate drops to 8–12 bpm during winter dormancy?",
+        "answer": "Bear",
+        "distractors": [
+          "Ground squirrel",
+          "Hedgehog",
+          "Bat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A bear's heart rate drops to just 8–12 bpm during winter torpor.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "During winter torpor, a bear's heart rate drops to just ___ beats per minute.",
+        "answer": "8–12",
+        "distractors": [
+          "1–2",
+          "20–25",
+          "30–35"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art brown bear curled in a snowy den, a glowing heart monitor beside it showing a slow 8 bpm blip, icicles hanging at the cave entrance.",
+    "tags": [
+      "bears",
+      "hibernation",
+      "torpor",
+      "heart_rate",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bears-eight-species",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "There are eight living species of bears, ranging from the giant panda to the sun bear, the world's smallest bear.",
+    "quizQuestion": "How many living bear species exist worldwide?",
+    "correctAnswer": "Eight",
+    "distractors": [
+      "Four",
+      "Six",
+      "Ten",
+      "Twelve",
+      "Three",
+      "Five",
+      "Seven",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "eight",
+      "8",
+      "eight species"
+    ],
+    "explanation": "The eight bear species are: brown bear, American black bear, polar bear, giant panda, Asiatic black bear, sun bear, spectacled bear, and sloth bear. They inhabit every continent except Africa, Antarctica, and Australia.",
+    "wowFactor": "The giant panda and the sun bear are both 'bears' — yet one eats almost nothing but bamboo and the other weighs less than a large dog.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bear species are alive today?",
+        "answer": "Eight",
+        "distractors": [
+          "Six",
+          "Four",
+          "Ten"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The family Ursidae contains exactly how many living species?",
+        "answer": "Eight",
+        "distractors": [
+          "Six",
+          "Four",
+          "Twelve"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "There are exactly eight living species of bears.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The bear family Ursidae contains ___ living species.",
+        "answer": "eight",
+        "distractors": [
+          "six",
+          "four",
+          "ten"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Eight pixel art bear portraits in a grid — polar, brown, panda, sun, sloth, spectacled, American black, and Asiatic black — each with a tiny habitat flag below.",
+    "tags": [
+      "bears",
+      "ursidae",
+      "species_count",
+      "mammals",
+      "diversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bears-polar-diet",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Polar bears are the most carnivorous of all bear species, relying almost entirely on ringed and bearded seals for nutrition.",
+    "quizQuestion": "What is the polar bear's primary prey?",
+    "correctAnswer": "Ringed and bearded seals",
+    "distractors": [
+      "Arctic fish",
+      "Walruses",
+      "Beluga whales",
+      "Caribou",
+      "Arctic foxes",
+      "Snow geese",
+      "Narwhals",
+      "Lemmings"
+    ],
+    "acceptableAnswers": [
+      "ringed and bearded seals",
+      "seals",
+      "ringed seals"
+    ],
+    "explanation": "Polar bears depend almost entirely on seals, particularly ringed seals, for the high-fat diet they need to survive Arctic winters. They hunt by waiting at seal breathing holes in the ice — sometimes for hours — then striking with explosive speed.",
+    "wowFactor": "A polar bear can smell a seal's breathing hole through three feet of solid ice — from up to a mile away.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do polar bears primarily hunt for food?",
+        "answer": "Seals",
+        "distractors": [
+          "Arctic fish",
+          "Walruses",
+          "Caribou"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ringed and bearded seals are the primary prey of which bear?",
+        "answer": "Polar bear",
+        "distractors": [
+          "Brown bear",
+          "Sloth bear",
+          "Sun bear"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Polar bears rely almost entirely on seals for nutrition.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polar bears are the most ___ of all bear species, eating almost only seals.",
+        "answer": "carnivorous",
+        "distractors": [
+          "omnivorous",
+          "herbivorous",
+          "insectivorous"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polar_bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art polar bear crouched motionless at a circular seal breathing hole in blue-white Arctic ice, one massive paw raised and ready to strike.",
+    "tags": [
+      "polar_bear",
+      "bears",
+      "diet",
+      "hunting",
+      "Arctic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-bears-black-bear-color",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Despite their name, American black bears can be black, brown, cinnamon, blonde, or even white, depending on their location.",
+    "quizQuestion": "Can American black bears be colors other than black?",
+    "correctAnswer": "Yes, including brown and blonde",
+    "distractors": [
+      "No, only black",
+      "Only black or brown",
+      "Only black or white",
+      "Only two colors",
+      "No, only grey",
+      "Only in Alaska",
+      "Only juveniles vary",
+      "Only in winter"
+    ],
+    "acceptableAnswers": [
+      "yes",
+      "yes, including brown and blonde",
+      "yes, multiple colors"
+    ],
+    "explanation": "American black bears show remarkable color variation. In the eastern US they're mostly black, but western populations range from cinnamon to blonde. The rare 'Kermode bear' in British Columbia is actually a white-furred black bear, nicknamed the 'spirit bear.'",
+    "wowFactor": "The 'spirit bear' — a pure white black bear — exists in British Columbia, considered sacred by Indigenous peoples for thousands of years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What colors can an American black bear's fur actually be?",
+        "answer": "Black, brown, or blonde",
+        "distractors": [
+          "Only black",
+          "Only black or grey",
+          "Only two shades"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bear species can appear white, brown, or black in different populations?",
+        "answer": "American black bear",
+        "distractors": [
+          "Brown bear",
+          "Asiatic black bear",
+          "Sun bear"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "American black bears can have blonde or cinnamon-colored fur.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "American black bears can be black, brown, cinnamon, or even ___ in color.",
+        "answer": "white",
+        "distractors": [
+          "red",
+          "grey",
+          "orange"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/American_black_bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Four pixel art bears side by side in a forest — jet black, cinnamon brown, golden blonde, and ghostly white — all labeled 'American Black Bear'.",
+    "tags": [
+      "black_bear",
+      "bears",
+      "color_variation",
+      "spirit_bear",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-goat-stomach",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Goats are ruminants with four-chambered stomachs, allowing them to digest tough plant material by re-chewing regurgitated cud.",
+    "quizQuestion": "How many stomach chambers does a goat have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "One",
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "four",
+      "4",
+      "four chambers"
+    ],
+    "explanation": "Like cows and sheep, goats have four stomach chambers: the rumen, reticulum, omasum, and abomasum. Food is first stored and fermented in the rumen, then regurgitated as cud, chewed again, and passed forward for full digestion — a brilliant solution for extracting maximum nutrition from poor-quality plants.",
+    "wowFactor": "A goat basically eats its food twice — chewing cud lets it extract nutrition from plants that would pass straight through a single-stomached animal.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many chambers are in a goat's stomach?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ruminants like goats have how many stomach chambers?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Five"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Goats have four stomach chambers and re-chew their food as cud.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats are ruminants with ___ stomach chambers.",
+        "answer": "four",
+        "distractors": [
+          "two",
+          "three",
+          "five"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art diagram of a goat with a glowing cross-section revealing four labeled stomach chambers in yellow, orange, green, and red.",
+    "tags": [
+      "goat",
+      "ruminant",
+      "digestion",
+      "stomach",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-goat-pupils",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Goats have rectangular, horizontal pupils that give them a nearly 340-degree field of vision to detect approaching predators.",
+    "quizQuestion": "What shape are a goat's pupils?",
+    "correctAnswer": "Rectangular and horizontal",
+    "distractors": [
+      "Round",
+      "Vertical slits",
+      "Diamond-shaped",
+      "Oval and vertical",
+      "Circular",
+      "Star-shaped",
+      "Triangular",
+      "Crescent-shaped"
+    ],
+    "acceptableAnswers": [
+      "rectangular",
+      "rectangular and horizontal",
+      "horizontal rectangle"
+    ],
+    "explanation": "Goats' eerie horizontal rectangular pupils may look unnatural, but they provide a panoramic 320–340 degree field of view. Even more strangely, when a goat lowers its head to graze, its eyes rotate to keep the pupils level with the ground — maintaining that wide defensive scan.",
+    "wowFactor": "When goats lower their heads to eat, their eyes physically rotate to stay level — they never lose their 340-degree predator watch.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is unusual about a goat's pupil shape?",
+        "answer": "Rectangular and horizontal",
+        "distractors": [
+          "Round",
+          "Vertical slits",
+          "Diamond-shaped"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which farm animal has rectangular horizontal pupils for wide-angle vision?",
+        "answer": "Goat",
+        "distractors": [
+          "Cow",
+          "Horse",
+          "Sheep"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Goats have rectangular horizontal pupils giving nearly 340-degree vision.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats have ___ horizontal pupils giving them nearly 340-degree vision.",
+        "answer": "rectangular",
+        "distractors": [
+          "round",
+          "vertical",
+          "oval"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An extreme close-up pixel art of a goat's golden eye with a stark black horizontal rectangular pupil, the wide landscape reflected in its iris.",
+    "tags": [
+      "goat",
+      "pupils",
+      "vision",
+      "anatomy",
+      "weird_biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-goat-domestication",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Goats were among the first animals domesticated by humans, with evidence of domestication dating back about 10,000 years in the Zagros Mountains.",
+    "quizQuestion": "Where were goats first domesticated approximately 10,000 years ago?",
+    "correctAnswer": "The Zagros Mountains",
+    "distractors": [
+      "The Nile Valley",
+      "The Indus Valley",
+      "Mesopotamia plains",
+      "The Yangtze River",
+      "The Andes Mountains",
+      "The Sahara region",
+      "The Yellow River",
+      "The Alps"
+    ],
+    "acceptableAnswers": [
+      "the zagros mountains",
+      "zagros mountains",
+      "zagros"
+    ],
+    "explanation": "Around 10,000 BCE in the Zagros Mountains of modern-day Iran and Iraq, humans began domesticating wild bezoar ibex into the domestic goat. This made goats one of humanity's oldest animal companions — predating most other livestock.",
+    "wowFactor": "Goats were tamed before cows, horses, or pigs — your morning dairy habit traces back 10,000 years to the mountains of ancient Iran.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where were goats first domesticated about 10,000 years ago?",
+        "answer": "The Zagros Mountains",
+        "distractors": [
+          "The Nile Valley",
+          "The Indus Valley",
+          "The Andes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Zagros Mountains are the origin site of which domestic animal?",
+        "answer": "Goat",
+        "distractors": [
+          "Cow",
+          "Horse",
+          "Pig"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Goats were first domesticated approximately 10,000 years ago in the Zagros Mountains.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats were domesticated about 10,000 years ago in the ___ Mountains.",
+        "answer": "Zagros",
+        "distractors": [
+          "Andes",
+          "Alps",
+          "Himalayan"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art ancient hillside scene showing a Neolithic herder with early domesticated goats on a rocky Zagros mountain slope, a village of mud-brick huts in the valley below.",
+    "tags": [
+      "goat",
+      "domestication",
+      "history",
+      "zagros",
+      "agriculture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-donkey-endurance",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Donkeys are known for exceptional endurance and can carry up to 30% of their body weight over long distances in harsh terrain.",
+    "quizQuestion": "What percentage of its body weight can a donkey carry over long distances?",
+    "correctAnswer": "Up to 30%",
+    "distractors": [
+      "Up to 10%",
+      "Up to 20%",
+      "Up to 40%",
+      "Up to 50%",
+      "Up to 60%",
+      "Up to 15%",
+      "Up to 75%",
+      "Up to 5%"
+    ],
+    "acceptableAnswers": [
+      "up to 30%",
+      "30 percent",
+      "about 30%"
+    ],
+    "explanation": "Donkeys evolved in arid African highlands and developed extraordinary efficiency for load-carrying. Unlike horses, donkeys can safely carry up to 30% of their own weight over long mountain trails — making them irreplaceable in regions where vehicles can't go.",
+    "wowFactor": "Donkeys are still the most reliable 'vehicle' in over 40 countries — GPS can't navigate mountain trails where a donkey walks confidently.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What load can a donkey safely carry relative to its body weight?",
+        "answer": "Up to 30%",
+        "distractors": [
+          "Up to 10%",
+          "Up to 50%",
+          "Up to 20%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which working animal can carry up to 30% of its body weight?",
+        "answer": "Donkey",
+        "distractors": [
+          "Horse",
+          "Mule",
+          "Camel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Donkeys can carry up to 30% of their body weight over long distances.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A donkey can safely carry up to ___% of its own body weight.",
+        "answer": "30",
+        "distractors": [
+          "10",
+          "50",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Donkey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art donkey loaded with colorful sacks ascending a steep rocky mountain trail, sure-footed on a narrow path with a deep canyon below.",
+    "tags": [
+      "donkey",
+      "load_bearing",
+      "endurance",
+      "working_animals",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-donkey-memory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Donkeys have exceptional long-term memory and can remember places and other donkeys they encountered up to 25 years earlier.",
+    "quizQuestion": "How far back can a donkey's memory reach?",
+    "correctAnswer": "Up to 25 years",
+    "distractors": [
+      "Up to 1 year",
+      "Up to 5 years",
+      "Up to 10 years",
+      "Up to 15 years",
+      "Up to 2 years",
+      "About 6 months",
+      "Up to 30 years",
+      "About 3 years"
+    ],
+    "acceptableAnswers": [
+      "up to 25 years",
+      "25 years",
+      "twenty-five years"
+    ],
+    "explanation": "Research has shown that donkeys can recall specific locations, routes, and even other individual donkeys after 25 years of separation. This remarkable memory was critical for survival in wild desert environments where water sources are rare and widely spaced.",
+    "wowFactor": "A donkey can reunite with a friend it hasn't seen in 25 years and still recognize them — that's longer than most humans maintain friendships.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can a donkey remember other donkeys or places it's visited?",
+        "answer": "Up to 25 years",
+        "distractors": [
+          "Up to 5 years",
+          "Up to 1 year",
+          "Up to 10 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which working animal can remember specific locations for up to 25 years?",
+        "answer": "Donkey",
+        "distractors": [
+          "Horse",
+          "Mule",
+          "Camel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Donkeys can remember places and companions for up to 25 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Donkeys can remember other donkeys and locations for up to ___ years.",
+        "answer": "25",
+        "distractors": [
+          "5",
+          "10",
+          "15"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Donkey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art donkey standing in a desert, a thought bubble showing a memory of the same waterhole from decades ago with a younger version of itself and another donkey.",
+    "tags": [
+      "donkey",
+      "memory",
+      "intelligence",
+      "cognition",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-donkey-stubbornness",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A donkey's legendary 'stubbornness' is actually a strong self-preservation instinct — they refuse tasks they sense are genuinely dangerous.",
+    "quizQuestion": "What actually causes a donkey's reputation for stubbornness?",
+    "correctAnswer": "Self-preservation instinct",
+    "distractors": [
+      "Low intelligence",
+      "Fear of water",
+      "Poor training",
+      "Laziness",
+      "Herd instinct",
+      "Territorial behavior",
+      "Dominance displays",
+      "Poor eyesight"
+    ],
+    "acceptableAnswers": [
+      "self-preservation instinct",
+      "self preservation",
+      "survival instinct"
+    ],
+    "explanation": "Unlike horses, which can be scared into dangerous situations, donkeys assess risk independently and simply refuse if they judge something unsafe. This evolved as a survival trait: in the wild, a wrong step on a rocky cliff is fatal. What looks like stubbornness is actually cautious intelligence.",
+    "wowFactor": "Donkeys are smarter than horses in one key way: they won't follow a human off a cliff — even if you really insist.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the real reason donkeys appear stubborn?",
+        "answer": "Self-preservation instinct",
+        "distractors": [
+          "Low intelligence",
+          "Laziness",
+          "Poor training"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's 'stubbornness' is actually intelligent self-preservation?",
+        "answer": "Donkey",
+        "distractors": [
+          "Mule",
+          "Horse",
+          "Goat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A donkey's stubbornness is actually a self-preservation instinct, not laziness.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A donkey's reputation for stubbornness is really a ___ instinct.",
+        "answer": "self-preservation",
+        "distractors": [
+          "herding",
+          "territorial",
+          "dominance"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Donkey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art donkey planting all four hooves firmly at the edge of a crumbling cliff trail, a confused farmer pulling its lead rope, mountains falling away below.",
+    "tags": [
+      "donkey",
+      "intelligence",
+      "behavior",
+      "stubbornness",
+      "self_preservation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-donkey-bray",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A donkey's bray call can reach 110 decibels and is audible up to 60 miles away in desert conditions.",
+    "quizQuestion": "How far can a donkey's bray be heard in desert conditions?",
+    "correctAnswer": "Up to 60 miles",
+    "distractors": [
+      "Up to 5 miles",
+      "Up to 10 miles",
+      "Up to 20 miles",
+      "Up to 30 miles",
+      "Up to 1 mile",
+      "Up to 100 miles",
+      "Up to 45 miles",
+      "Up to 3 miles"
+    ],
+    "acceptableAnswers": [
+      "up to 60 miles",
+      "60 miles",
+      "sixty miles"
+    ],
+    "explanation": "At 110 decibels, a donkey's bray is one of the loudest sounds made by any land mammal. In open desert where wild ancestors needed to communicate across enormous distances to find mates or warn rivals, this piercing call could carry an astonishing 60 miles.",
+    "wowFactor": "A donkey's bray is louder than a chainsaw and can cross 60 miles of desert — it evolved as a megaphone in one of Earth's quietest landscapes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a donkey's bray travel in desert conditions?",
+        "answer": "Up to 60 miles",
+        "distractors": [
+          "Up to 10 miles",
+          "Up to 5 miles",
+          "Up to 30 miles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's call can reach 110 decibels and travel 60 miles?",
+        "answer": "Donkey",
+        "distractors": [
+          "Camel",
+          "Horse",
+          "Mule"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A donkey's bray can reach 110 decibels and be heard 60 miles away in desert.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In desert conditions, a donkey's bray can be heard up to ___ miles away.",
+        "answer": "60",
+        "distractors": [
+          "10",
+          "30",
+          "5"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Donkey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art donkey mid-bray against an orange desert sunset, concentric sound rings radiating outward across miles of sand dunes into the horizon.",
+    "tags": [
+      "donkey",
+      "bray",
+      "sound",
+      "communication",
+      "desert"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-reptilia-cold-blooded",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "Reptiles are ectothermic, meaning they regulate body temperature by absorbing heat from their external environment rather than generating it internally.",
+    "quizQuestion": "How do reptiles regulate their body temperature?",
+    "correctAnswer": "From external heat sources",
+    "distractors": [
+      "By internal metabolism",
+      "By rapid breathing",
+      "By sweating",
+      "By shivering",
+      "Through blood cooling",
+      "By burrowing only",
+      "Through fur insulation",
+      "By panting"
+    ],
+    "acceptableAnswers": [
+      "from external heat sources",
+      "from the environment",
+      "ectothermically",
+      "external sources"
+    ],
+    "explanation": "Reptiles are ectotherms — their body temperature matches their surroundings. To warm up, they bask in sunlight; to cool down, they seek shade or burrow. This makes them highly efficient since they don't burn calories heating their bodies, but it also limits their activity in cold weather.",
+    "wowFactor": "A reptile lying in the sun isn't lazy — it's literally recharging its energy systems; without that warmth, it can barely move.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does it mean that reptiles are ectothermic?",
+        "answer": "They get heat from environment",
+        "distractors": [
+          "They generate own heat",
+          "They sweat to cool down",
+          "They shiver to warm up"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ectothermic animals that regulate temperature via sunbathing include which class?",
+        "answer": "Reptilia",
+        "distractors": [
+          "Mammalia",
+          "Aves",
+          "Amphibia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Reptiles are ectothermic, relying on external sources to regulate body temperature.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Reptiles are ___, regulating body temperature from their environment.",
+        "answer": "ectothermic",
+        "distractors": [
+          "endothermic",
+          "homeothermic",
+          "poikilothermic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reptile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art lizard basking on a sun-warmed rock in golden morning light, arrows showing heat flowing from the rock into its body, a thermometer beside it reading 'warm'.",
+    "tags": [
+      "reptiles",
+      "ectotherm",
+      "cold_blooded",
+      "thermoregulation",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-reptilia-scales",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "Reptile scales are made of keratin, the same protein that forms human fingernails and bird feathers.",
+    "quizQuestion": "What protein makes up reptile scales?",
+    "correctAnswer": "Keratin",
+    "distractors": [
+      "Chitin",
+      "Collagen",
+      "Calcium",
+      "Elastin",
+      "Fibrin",
+      "Actin",
+      "Myosin",
+      "Carotenoid"
+    ],
+    "acceptableAnswers": [
+      "keratin"
+    ],
+    "explanation": "Reptile scales, human fingernails, bird feathers, and rhinoceros horns are all built from keratin — a tough, fibrous structural protein. In reptiles, keratin scales prevent water loss, protect against abrasion, and in some species provide camouflage coloration.",
+    "wowFactor": "Your fingernails and a rattlesnake's scales are made of exactly the same protein — keratin — just shaped very differently.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What protein are reptile scales made from?",
+        "answer": "Keratin",
+        "distractors": [
+          "Chitin",
+          "Collagen",
+          "Calcium"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Keratin is the protein found in reptile scales, bird feathers, and what else?",
+        "answer": "Human fingernails",
+        "distractors": [
+          "Human teeth",
+          "Fish bones",
+          "Insect wings"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Reptile scales and human fingernails are both made of keratin.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Reptile scales are made of ___, the same protein as human fingernails.",
+        "answer": "keratin",
+        "distractors": [
+          "chitin",
+          "collagen",
+          "elastin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reptile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art split-panel: a snake with glistening scales on the left, a close-up human fingernail on the right, connected by a glowing label reading 'KERATIN'.",
+    "tags": [
+      "reptiles",
+      "keratin",
+      "scales",
+      "biology",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-reptilia-oldest-living",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "The oldest known living reptile is Jonathan, a Seychelles giant tortoise born around 1832, making him over 190 years old.",
+    "quizQuestion": "What species is Jonathan, the world's oldest known living reptile?",
+    "correctAnswer": "Seychelles giant tortoise",
+    "distractors": [
+      "Galápagos tortoise",
+      "Nile crocodile",
+      "Aldabra giant tortoise",
+      "Komodo dragon",
+      "Leatherback sea turtle",
+      "American alligator",
+      "Saltwater crocodile",
+      "Tuatara"
+    ],
+    "acceptableAnswers": [
+      "seychelles giant tortoise",
+      "giant tortoise",
+      "tortoise"
+    ],
+    "explanation": "Jonathan, a Seychelles giant tortoise living on the island of Saint Helena, was born around 1832 and is the oldest verified living land animal. He has outlived multiple British governors, seen World War I and II, and still grazes the grounds of Plantation House.",
+    "wowFactor": "Jonathan the tortoise was already middle-aged when Darwin published 'On the Origin of Species' in 1859 — he may have met Darwin's contemporaries.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What species is Jonathan, the oldest known living land animal?",
+        "answer": "Seychelles giant tortoise",
+        "distractors": [
+          "Galápagos tortoise",
+          "Nile crocodile",
+          "Komodo dragon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Jonathan, born around 1832, is a record-breaking individual of which species?",
+        "answer": "Seychelles giant tortoise",
+        "distractors": [
+          "Aldabra tortoise",
+          "American alligator",
+          "Leatherback turtle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Jonathan the Seychelles giant tortoise is over 190 years old.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jonathan, born circa 1832, is a ___ giant tortoise and the world's oldest land animal.",
+        "answer": "Seychelles",
+        "distractors": [
+          "Galápagos",
+          "Aldabra",
+          "Leatherback"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jonathan_(tortoise)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art ancient tortoise on a lush green lawn, a timeline ribbon behind him showing historical events — the Civil War, WWI, WWII, and the moon landing — as he slowly plods forward.",
+    "tags": [
+      "reptiles",
+      "tortoise",
+      "jonathan",
+      "longevity",
+      "records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-reptilia-tuatara",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "The tuatara of New Zealand is the sole survivor of an ancient reptile order and has a third eye on top of its head, called the parietal eye.",
+    "quizQuestion": "What unique feature does the tuatara have on top of its head?",
+    "correctAnswer": "A parietal third eye",
+    "distractors": [
+      "A heat pit organ",
+      "A dorsal fin",
+      "A sensory horn",
+      "A crest ridge",
+      "A venom gland",
+      "A sonar organ",
+      "A scent gland",
+      "A photophore"
+    ],
+    "acceptableAnswers": [
+      "a parietal third eye",
+      "parietal eye",
+      "third eye"
+    ],
+    "explanation": "The tuatara has a parietal eye — a light-sensitive organ on top of its skull visible in hatchlings but covered with scales in adults. This primitive 'third eye' detects light and dark cycles, helping regulate circadian rhythms and seasonal behavior. The tuatara is the last surviving member of an order that was abundant during the age of dinosaurs.",
+    "wowFactor": "The tuatara is a living fossil that walked beside dinosaurs 200 million years ago — and it literally has a third eye on its head.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unusual structure does the tuatara have on top of its skull?",
+        "answer": "A parietal third eye",
+        "distractors": [
+          "A heat pit",
+          "A venom gland",
+          "A sensory horn"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The parietal eye, a light-sensitive organ on the skull, belongs to which reptile?",
+        "answer": "Tuatara",
+        "distractors": [
+          "Iguana",
+          "Komodo dragon",
+          "Chameleon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The tuatara has a parietal eye — a third light-sensitive organ on top of its head.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The tuatara has a ___ eye on top of its head that detects light and dark.",
+        "answer": "parietal",
+        "distractors": [
+          "heat",
+          "compound",
+          "sonar"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tuatara",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art tuatara on a mossy New Zealand rock, a glowing golden third eye visible on top of its scaly head, ancient fern forest surrounding it.",
+    "tags": [
+      "tuatara",
+      "reptiles",
+      "parietal_eye",
+      "living_fossil",
+      "new_zealand"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-wild-boar-tusks",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Male wild boars grow continuously curved tusks throughout their lives, using them for rooting, combat, and defense against predators.",
+    "quizQuestion": "Do wild boar tusks ever stop growing?",
+    "correctAnswer": "No, they grow continuously",
+    "distractors": [
+      "Yes, at 2 years",
+      "Yes, at maturity",
+      "Yes, at 5 years",
+      "Yes, seasonally",
+      "Yes, in winter",
+      "Yes, after first molt",
+      "Yes, at age 3",
+      "Yes, at age 7"
+    ],
+    "acceptableAnswers": [
+      "no, they grow continuously",
+      "no",
+      "they never stop growing"
+    ],
+    "explanation": "Wild boar tusks — actually elongated canine teeth — never stop growing throughout a male's lifetime. They curve outward and upward, self-sharpen against each other, and can reach 25 cm (10 inches) in old males. Boars use them to dig up roots, fight rivals, and slash at predators.",
+    "wowFactor": "Wild boar tusks are self-sharpening swords that never stop growing — upper and lower tusks grind against each other to maintain a razor edge.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long do wild boar tusks continue to grow?",
+        "answer": "Their entire lifetime",
+        "distractors": [
+          "Until age 2",
+          "Until maturity",
+          "Until age 5"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has tusks that grow continuously and self-sharpen throughout life?",
+        "answer": "Wild boar",
+        "distractors": [
+          "Warthog",
+          "Peccary",
+          "Hippopotamus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Wild boar tusks grow continuously throughout the animal's entire life.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wild boar tusks grow ___ throughout the animal's life and self-sharpen.",
+        "answer": "continuously",
+        "distractors": [
+          "seasonally",
+          "until maturity",
+          "in bursts"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wild_boar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art male wild boar in dense underbrush, curved ivory tusks gleaming as it raises its bristled head, fallen leaves scattered around its powerful forelegs.",
+    "tags": [
+      "wild_boar",
+      "tusks",
+      "teeth",
+      "anatomy",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-wild-boar-intelligence",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Wild boars and domestic pigs are considered among the most intelligent non-primate land mammals, capable of learning tasks comparable to dogs.",
+    "quizQuestion": "How does pig intelligence compare to that of dogs?",
+    "correctAnswer": "Comparable or superior",
+    "distractors": [
+      "Much lower",
+      "Slightly lower",
+      "Dogs are far smarter",
+      "Dogs learn 3x faster",
+      "Pigs can't learn tasks",
+      "Similar to cattle",
+      "Slightly better than sheep",
+      "Similar to chickens"
+    ],
+    "acceptableAnswers": [
+      "comparable or superior",
+      "comparable",
+      "similar or superior",
+      "at least equal"
+    ],
+    "explanation": "Studies show pigs can recognize themselves in mirrors, solve multi-step puzzles, use joysticks to move cursors on screens, and demonstrate empathy. In many learning benchmarks, pigs outperform dogs. They form complex social bonds and can even deceive other pigs to hoard food.",
+    "wowFactor": "Pigs have been trained to play video games with joysticks — and they actually get better with practice, just like human gamers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does pig intelligence compare to dogs in learning tasks?",
+        "answer": "Comparable or superior",
+        "distractors": [
+          "Much lower",
+          "Slightly lower",
+          "Far below dogs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animals can outperform dogs in problem-solving and mirror self-recognition?",
+        "answer": "Pigs",
+        "distractors": [
+          "Sheep",
+          "Cows",
+          "Goats"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pigs are considered as intelligent as or smarter than dogs in many learning tests.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs are considered among the most intelligent non-primate ___ mammals.",
+        "answer": "land",
+        "distractors": [
+          "domestic",
+          "hoofed",
+          "herbivorous"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pig_intelligence",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art pig sitting at a tiny computer, operating a joystick with its snout to move a cursor on screen, a score counter ticking upward in the corner.",
+    "tags": [
+      "wild_boar",
+      "pig",
+      "intelligence",
+      "cognition",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-wild-boar-invasive",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Wild boars are one of the world's most invasive species, now found on every continent except Antarctica, causing billions in agricultural damage annually.",
+    "quizQuestion": "Wild boars now inhabit how many continents?",
+    "correctAnswer": "Six (all except Antarctica)",
+    "distractors": [
+      "Three continents",
+      "Four continents",
+      "Five continents",
+      "Only Europe and Asia",
+      "Only two continents",
+      "All seven continents",
+      "Only their native range",
+      "Just four regions"
+    ],
+    "acceptableAnswers": [
+      "six",
+      "six continents",
+      "all except antarctica",
+      "every continent except antarctica"
+    ],
+    "explanation": "Originally native to Eurasia and North Africa, wild boars were introduced worldwide by humans for food and hunting. They now range across Europe, Asia, Africa, North America, South America, and Australia — where they cause severe ecological damage, destroy crops, and threaten native wildlife.",
+    "wowFactor": "Wild boars cause over $1.5 billion in agricultural damage per year in the US alone — a pig that humans spread globally and now can't stop.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On how many continents do wild boars now live?",
+        "answer": "Six",
+        "distractors": [
+          "Three",
+          "Four",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal is found on six continents and causes billions in crop damage?",
+        "answer": "Wild boar",
+        "distractors": [
+          "Feral cat",
+          "Brown rat",
+          "Red fox"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Wild boars are found on every continent except Antarctica.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wild boars are invasive on every continent except ___.",
+        "answer": "Antarctica",
+        "distractors": [
+          "Australia",
+          "South America",
+          "Africa"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wild_boar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art world map with wild boar silhouettes stamped in red across every continent except the white ice of Antarctica, invasion arrows spreading outward from Eurasia.",
+    "tags": [
+      "wild_boar",
+      "invasive_species",
+      "ecology",
+      "global_spread",
+      "mammals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "animals-wild-boar-mud-bathing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Wild boars and pigs wallow in mud not for fun, but to regulate body temperature, since they cannot sweat through their skin.",
+    "quizQuestion": "Why do wild boars wallow in mud?",
+    "correctAnswer": "To cool down — they can't sweat",
+    "distractors": [
+      "To attract mates",
+      "To mark territory",
+      "To clean parasites",
+      "For fun",
+      "To strengthen skin",
+      "To camouflage",
+      "To find truffles",
+      "To soften ground"
+    ],
+    "acceptableAnswers": [
+      "to cool down",
+      "they can't sweat",
+      "temperature regulation",
+      "to cool down — they can't sweat"
+    ],
+    "explanation": "Unlike most mammals, pigs and boars have very few sweat glands and cannot cool themselves by sweating. Mud wallowing solves this: wet mud evaporates slowly, cooling the skin. It also coats the body in a protective layer against sunburn, biting insects, and skin parasites.",
+    "wowFactor": "Pigs can't sweat — so when you see one rolling in mud, it's doing exactly what a marathon runner does when they sweat: cooling down by evaporation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do wild boars wallow in mud to stay cool?",
+        "answer": "They cannot sweat",
+        "distractors": [
+          "They overheat easily",
+          "For camouflage only",
+          "To attract mates"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mud wallowing solves what physiological problem unique to pigs and boars?",
+        "answer": "Inability to sweat",
+        "distractors": [
+          "Lack of fur",
+          "Poor eyesight",
+          "Thin skin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Wild boars wallow in mud because they cannot cool themselves by sweating.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Boars wallow in mud to cool down because they cannot ___.",
+        "answer": "sweat",
+        "distractors": [
+          "pant",
+          "burrow",
+          "molt"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wild_boar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art wild boar half-submerged in a brown mud wallow, steaming heat lines rising from its body, a blue thermometer showing it cooling from red to cool blue.",
+    "tags": [
+      "wild_boar",
+      "pig",
+      "thermoregulation",
+      "mud",
+      "behavior"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

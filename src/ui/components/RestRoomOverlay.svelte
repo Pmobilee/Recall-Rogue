@@ -65,10 +65,10 @@
     inset: 0;
     background: rgba(13, 17, 23, 0.65);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     z-index: 200;
-    padding: 16px;
+    padding: 0 calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
   }
 
   .screen-bg {
@@ -84,38 +84,40 @@
   .rest-card {
     background: #161B22;
     border: 2px solid #2ECC71;
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 340px;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: calc(24px * var(--layout-scale, 1));
+    padding-top: calc(60px * var(--layout-scale, 1) + var(--safe-top, 0px));
+    max-width: calc(340px * var(--layout-scale, 1));
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
   }
 
   .rest-title {
-    font-size: 20px;
+    font-size: calc(20px * var(--layout-scale, 1));
     color: #2ECC71;
     margin: 0;
   }
 
   .rest-choice-caption {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #9adab4;
-    margin: -6px 0 0;
+    margin: calc(-6px * var(--layout-scale, 1)) 0 0;
     text-align: center;
     font-weight: 700;
   }
 
   .hp-info {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #8B949E;
   }
 
   .option-cards {
     display: flex;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     width: 100%;
   }
 
@@ -124,11 +126,11 @@
     background: #1E2D3D;
     border: 2px solid #484F58;
     border-radius: 8px;
-    padding: 16px 8px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     cursor: pointer;
     transition: transform 0.1s, border-color 0.15s;
   }
@@ -163,25 +165,25 @@
   }
 
   .option-icon {
-    font-size: 28px;
+    font-size: calc(28px * var(--layout-scale, 1));
   }
 
   .option-label {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #E6EDF3;
     font-weight: 700;
   }
 
   .option-detail {
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #8B949E;
     text-align: center;
   }
 
   .option-preview {
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     color: #6E7681;
     text-align: center;
-    margin-top: 4px;
+    margin-top: calc(4px * var(--layout-scale, 1));
   }
 </style>

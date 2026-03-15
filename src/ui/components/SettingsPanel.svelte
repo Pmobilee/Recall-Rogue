@@ -93,6 +93,7 @@
       <button class="back-btn" onclick={onback}>Back</button>
     </div>
 
+    {#if false}
     <section class="settings-section">
       <h3>Difficulty</h3>
       {#if difficultyLocked}
@@ -111,6 +112,7 @@
         {/each}
       </div>
     </section>
+    {/if}
 
     <section class="settings-section">
       <h3>Accessibility</h3>
@@ -275,9 +277,9 @@
     border: none;
     background: #111c2b;
     color: #e2e8f0;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
     display: grid;
-    gap: 14px;
+    gap: calc(14px * var(--layout-scale, 1));
   }
 
   .settings-header {
@@ -292,7 +294,7 @@
   }
 
   h3 {
-    margin: 0 0 10px;
+    margin: 0 0 calc(10px * var(--layout-scale, 1));
     font-size: calc(14px * var(--text-scale, 1));
     letter-spacing: 0.4px;
     color: #93c5fd;
@@ -302,21 +304,21 @@
     background: rgba(15, 23, 42, 0.76);
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 12px;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .chip-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: calc(8px * var(--layout-scale, 1));
+    margin-bottom: calc(10px * var(--layout-scale, 1));
   }
 
   .chip {
     border: 1px solid #334155;
     background: #1f2c42;
     color: #cbd5e1;
-    padding: 10px 12px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     min-height: 48px;
     border-radius: 10px;
     font-size: calc(12px * var(--text-scale, 1));
@@ -336,7 +338,7 @@
   .difficulty-lock-note {
     font-size: calc(11px * var(--text-scale, 1));
     color: #f59e0b;
-    margin: 0 0 8px;
+    margin: 0 0 calc(8px * var(--layout-scale, 1));
     line-height: 1.3;
   }
 
@@ -346,7 +348,7 @@
     color: #e5e7eb;
     min-height: 48px;
     border-radius: 10px;
-    padding: 0 14px;
+    padding: 0 calc(14px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
   }
 
@@ -355,19 +357,19 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     min-height: 48px;
     font-size: calc(12px * var(--text-scale, 1));
     color: #dbeafe;
   }
 
   .slider-row {
-    grid-template-columns: 130px 1fr auto;
+    grid-template-columns: calc(130px * var(--layout-scale, 1)) 1fr auto;
   }
 
   input[type='checkbox'] {
-    width: 20px;
-    height: 20px;
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
   }
 
   input[type='range'] {
@@ -375,7 +377,7 @@
   }
 
   strong {
-    min-width: 52px;
+    min-width: calc(52px * var(--layout-scale, 1));
     text-align: right;
     color: #f8fafc;
   }

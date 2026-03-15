@@ -52,9 +52,39 @@ export function invalidateVocabDistractorCache(): void {
 }
 
 /**
+ * Filters a candidate pool to facts whose correctAnswer length falls within
+ * [lenMin, lenMax]. This prevents players from trivially guessing the correct
+ * answer by choosing the longest or shortest option — a common pattern when
+ * distractor answers are much shorter or longer than the target.
+ *
+ * Bounds: lenMin = max(2, floor(targetLen * 0.4)), lenMax = ceil(targetLen * 2.5)
+ *
+ * @param candidates - Candidate facts to filter
+ * @param targetLen  - Length of the correct answer for the target fact
+ * @returns Subset of candidates whose answer length is within the bounds
+ */
+function filterByLength(candidates: Fact[], targetLen: number): Fact[] {
+  const lenMin = Math.max(2, Math.floor(targetLen * 0.4))
+  const lenMax = Math.ceil(targetLen * 2.5)
+  return candidates.filter(c => {
+    const len = c.correctAnswer.length
+    return len >= lenMin && len <= lenMax
+  })
+}
+
+/**
  * Returns runtime-generated distractors for a vocabulary fact.
  * Picks correctAnswer values from other vocab facts in the same language,
  * preferring facts at similar difficulty levels (±1 first, then ±2+).
+ *
+ * Length-matching is applied to avoid giving away the answer via answer length.
+ * Candidates whose correctAnswer length falls outside
+ * [max(2, floor(targetLen * 0.4)), ceil(targetLen * 2.5)] are deprioritised.
+ * The selection order is:
+ *   1. Length-matched candidates from the close (difficulty ±1) pool
+ *   2. Length-matched candidates from the far (difficulty ±2+) pool
+ *   3. Unfiltered close pool (length relaxed, fallback)
+ *   4. Unfiltered far pool (length relaxed, fallback)
  *
  * Designed so that POS-tag or semantic-bin filtering can be layered on top
  * in a future pass without changing this function's signature.
@@ -74,6 +104,7 @@ export function getVocabDistractors(fact: Fact, count: number = BALANCE.QUIZ_DIS
 
   const targetDifficulty = fact.difficulty ?? 1
   const targetAnswer = fact.correctAnswer
+  const targetLen = targetAnswer.length
 
   const close: Fact[] = []
   const far: Fact[] = []
@@ -91,26 +122,36 @@ export function getVocabDistractors(fact: Fact, count: number = BALANCE.QUIZ_DIS
   const shuffledClose = shuffled(close)
   const shuffledFar = shuffled(far)
 
+  // Build length-filtered variants for preferred selection
+  const lengthClose = filterByLength(shuffledClose, targetLen)
+  const lengthFar = filterByLength(shuffledFar, targetLen)
+
   const results: string[] = []
   const seen = new Set<string>()
 
-  for (const candidate of shuffledClose) {
-    if (results.length >= count) break
-    const answer = candidate.correctAnswer
-    if (!seen.has(answer)) {
-      seen.add(answer)
-      results.push(answer)
+  // Helper to drain candidates into results up to count
+  function drain(candidates: Fact[]): void {
+    for (const candidate of candidates) {
+      if (results.length >= count) break
+      const answer = candidate.correctAnswer
+      if (!seen.has(answer)) {
+        seen.add(answer)
+        results.push(answer)
+      }
     }
   }
 
-  for (const candidate of shuffledFar) {
-    if (results.length >= count) break
-    const answer = candidate.correctAnswer
-    if (!seen.has(answer)) {
-      seen.add(answer)
-      results.push(answer)
-    }
-  }
+  // Pass 1: length-matched close pool
+  drain(lengthClose)
+
+  // Pass 2: length-matched far pool
+  if (results.length < count) drain(lengthFar)
+
+  // Pass 3: fallback — unfiltered close pool (relaxes length constraint)
+  if (results.length < count) drain(shuffledClose)
+
+  // Pass 4: fallback — unfiltered far pool (relaxes length constraint)
+  if (results.length < count) drain(shuffledFar)
 
   return results
 }

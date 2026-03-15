@@ -26,6 +26,8 @@
   import type { CombatScene } from '../../game/scenes/CombatScene'
   import { getCardTier } from '../../services/tierDerivation'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { reshuffleEvent } from '../../services/deckManager'
+  import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
@@ -101,6 +103,32 @@
         synergyFlash.set(null)
       }, 1500)
       return () => clearTimeout(timer)
+    }
+  })
+
+  // Deck reshuffle animation state
+  let showReshuffle = $state(false)
+  let reshuffleCardCount = $state(0)
+
+  $effect(() => {
+    const event = $reshuffleEvent
+    if (event && event.cardCount > 0) {
+      reshuffleCardCount = event.cardCount
+      showReshuffle = true
+      // Play staggered flop sounds for each card (max 15)
+      const soundCount = Math.min(event.cardCount, 15)
+      const timers: ReturnType<typeof setTimeout>[] = []
+      for (let i = 0; i < soundCount; i++) {
+        timers.push(setTimeout(() => audioManager.playSound('card_deal'), i * 60))
+      }
+      // Auto-hide after animation completes
+      const hideTimer = setTimeout(() => {
+        showReshuffle = false
+      }, soundCount * 60 + 400)
+      return () => {
+        timers.forEach(clearTimeout)
+        clearTimeout(hideTimer)
+      }
     }
   })
 
@@ -962,16 +990,12 @@
       <span class="ap-number">{apCurrent}</span>
     </div>
 
-    <div class="deck-pile-strip" aria-label="Draw and discard piles">
-      <button class="pile-chip draw-chip" type="button" title={pileTooltip('Draw pile', turnState.deck.drawPile, true)} aria-label="Draw pile: {drawPileCount}">
-        <span class="pile-label">DRAW</span>
-        <span class="pile-count">{drawPileCount}</span>
-      </button>
-      <button class="pile-chip discard-chip" type="button" title={pileTooltip('Discard pile', turnState.deck.discardPile, true)} aria-label="Discard pile: {discardPileCount}">
-        <span class="pile-label">DISCARD</span>
-        <span class="pile-count">{discardPileCount}</span>
-      </button>
-    </div>
+    <button class="deck-pile draw-pile" type="button" title={pileTooltip('Draw pile', turnState.deck.drawPile, true)} aria-label="Draw pile: {drawPileCount}">
+      <span class="deck-pile-count">{drawPileCount}</span>
+    </button>
+    <button class="deck-pile discard-pile" type="button" title={pileTooltip('Discard pile', turnState.deck.discardPile, true)} aria-label="Discard pile: {discardPileCount}">
+      <span class="deck-pile-count">{discardPileCount}</span>
+    </button>
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       <button
@@ -1123,6 +1147,20 @@
       <span class="synergy-flash-icon">✦</span>
     </div>
   {/if}
+
+  {#if showReshuffle}
+    <div class="reshuffle-overlay">
+      <div class="reshuffle-text">Reshuffling...</div>
+      <div class="reshuffle-cards">
+        {#each Array(Math.min(reshuffleCardCount, 12)) as _, i}
+          <div
+            class="reshuffle-card"
+            style="animation-delay: {i * 60}ms"
+          ></div>
+        {/each}
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -1179,11 +1217,11 @@
 
   .ap-orb {
     position: absolute;
-    left: 12px;
-    bottom: calc(40px + 12vh + 280px + 8px);
+    left: calc(16px * var(--layout-scale, 1));
+    bottom: calc(calc(48px * var(--layout-scale, 1)) + 8vh + calc(280px * var(--layout-scale, 1)));
     z-index: 8;
-    width: 44px;
-    height: 44px;
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1232,11 +1270,18 @@
   .ap-number {
     position: relative;
     z-index: 2;
-    font-family: monospace;
-    font-size: 18px;
-    font-weight: 900;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: calc(22px * var(--layout-scale, 1));
+    font-weight: 800;
     color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 4px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @keyframes ap-fire-rotate {
@@ -1247,69 +1292,60 @@
     to { transform: rotate(360deg) scale(0.97); }
   }
 
-  .deck-pile-strip {
+  .deck-pile {
     position: absolute;
-    left: 8px;
-    bottom: 68px;
-    display: grid;
-    gap: 6px;
     z-index: 8;
-  }
-
-  .pile-chip {
-    min-width: 88px;
-    border: 1px solid rgba(99, 102, 241, 0.45);
-    border-radius: 9px;
-    background: rgba(10, 18, 30, 0.8);
-    color: #e2e8f0;
-    padding: 6px 8px;
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(68px * var(--layout-scale, 1));
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    font-family: inherit;
+    justify-content: center;
     cursor: default;
     -webkit-tap-highlight-color: transparent;
+    font-family: inherit;
+    border: 2px solid;
+    background: rgba(10, 18, 30, 0.85);
+    backdrop-filter: blur(6px);
   }
 
-  .draw-chip {
-    border-color: rgba(59, 130, 246, 0.55);
+  .draw-pile {
+    left: calc(8px * var(--layout-scale, 1));
+    top: calc(calc(50px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    border-color: rgba(39, 174, 96, 0.7);
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.2);
   }
 
-  .discard-chip {
-    border-color: rgba(236, 72, 153, 0.55);
+  .discard-pile {
+    right: calc(8px * var(--layout-scale, 1));
+    bottom: calc(24px * var(--layout-scale, 1));
+    border-color: rgba(230, 126, 34, 0.7);
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.2);
   }
 
-  .pile-label {
-    font-size: 10px;
-    letter-spacing: 0.8px;
-    font-weight: 700;
-  }
-
-  .pile-count {
-    min-width: 20px;
-    text-align: center;
-    font-size: 14px;
+  .deck-pile-count {
+    font-size: calc(20px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f8fafc;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   }
 
   .enemy-intent-bubble {
-    --intent-expanded-width: 148px;
+    --intent-expanded-width: calc(200px * var(--layout-scale, 1));
     position: fixed;
-    top: calc(12px + var(--safe-top));
-    left: calc(max((100vw - 500px) / 2, 0px) + 8px);
+    top: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-top));
+    left: calc(max((100vw - 500px) / 2, 0px) + calc(8px * var(--layout-scale, 1)));
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
-    width: 72px;
-    padding: 10px 10px;
+    width: calc(72px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     font: inherit;
     color: inherit;
     outline: none;
@@ -1324,7 +1360,7 @@
 
   .enemy-intent-bubble.intent-expanded {
     width: var(--intent-expanded-width);
-    padding: 10px 12px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
   }
 
   .intent-bubble-summary {
@@ -1336,12 +1372,13 @@
   }
 
   .intent-bubble-detail {
-    font-size: 11px;
-    color: #e2e8f0;
+    font-size: calc(14px * var(--layout-scale, 1));
+    color: #f1f5f9;
     text-align: left;
     white-space: normal;
     width: 100%;
-    line-height: 1.25;
+    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   .intent-bubble-detail p {
@@ -1350,8 +1387,8 @@
 
   .intent-bubble-tail {
     position: absolute;
-    top: -6px;
-    left: 8px;
+    top: calc(-6px * var(--layout-scale, 1));
+    left: calc(8px * var(--layout-scale, 1));
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
@@ -1441,7 +1478,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
-    font-size: 16px;
+    font-size: calc(16px * var(--layout-scale, 1));
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -1479,58 +1516,59 @@
   .onboarding-tip {
     position: absolute;
     z-index: 25;
-    max-width: 220px;
+    max-width: calc(220px * var(--layout-scale, 1));
     background: rgba(6, 8, 16, 0.92);
     color: #f4f7fb;
     border: 1px solid rgba(241, 196, 15, 0.5);
     border-radius: 8px;
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     line-height: 1.3;
   }
 
   .tip-hand {
-    bottom: 178px;
+    bottom: calc(178px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
   }
 
   .tip-cast {
-    bottom: 320px;
+    bottom: calc(320px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
   }
 
   .tip-answer {
-    bottom: 360px;
+    bottom: calc(360px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
   }
 
   .tip-endturn {
-    bottom: 180px;
+    bottom: calc(180px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
   }
 
   .tip-ap {
-    top: 60px;
-    left: 16px;
+    top: calc(60px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
   }
 
   .end-turn-btn {
     position: absolute;
-    left: 12px;
-    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(calc(40px * var(--layout-scale, 1)) + 8vh + calc(280px * var(--layout-scale, 1)));
     width: auto;
-    min-width: 110px;
-    padding: 0 20px;
+    min-width: calc(110px * var(--layout-scale, 1));
+    padding: 0 calc(20px * var(--layout-scale, 1));
     height: 48px;
     background: #1f2937;
     color: #f8fafc;
     border: none;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
     z-index: 5;
@@ -1612,33 +1650,33 @@
 
   .player-status-strip {
     position: absolute;
-    left: 138px;
-    right: 10px;
-    bottom: calc(14px + var(--safe-bottom, 0px));
+    left: calc(138px * var(--layout-scale, 1));
+    right: calc(10px * var(--layout-scale, 1));
+    bottom: calc(calc(14px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     z-index: 8;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     pointer-events: none;
   }
 
   .player-block-badge {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    min-height: 26px;
-    padding: 0 8px;
+    gap: calc(4px * var(--layout-scale, 1));
+    min-height: calc(26px * var(--layout-scale, 1));
+    padding: 0 calc(8px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid rgba(125, 211, 252, 0.7);
     background: rgba(8, 26, 48, 0.9);
     color: #7dd3fc;
     font-weight: 800;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   }
 
   .player-block-icon {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     line-height: 1;
   }
 
@@ -1647,9 +1685,9 @@
   }
 
   .player-hp-text {
-    min-width: 68px;
+    min-width: calc(68px * var(--layout-scale, 1));
     font-family: '"Press Start 2P', monospace;
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     letter-spacing: 0.2px;
     text-shadow:
       -2px 0 #000,
@@ -1678,18 +1716,18 @@
 
   .wow-factor-overlay {
     position: absolute;
-    bottom: calc(45vh + 8px);
-    left: 12px;
-    right: 12px;
+    bottom: calc(45vh + calc(8px * var(--layout-scale, 1)));
+    left: calc(12px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
     z-index: 12;
     text-align: center;
-    font-size: 15px;
+    font-size: calc(15px * var(--layout-scale, 1));
     font-weight: 600;
     color: #f0c860;
     background: rgba(10, 8, 20, 0.75);
     border: 1px solid rgba(240, 200, 96, 0.25);
     border-radius: 10px;
-    padding: 10px 14px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     line-height: 1.4;
     pointer-events: none;
     opacity: 0;
@@ -1732,8 +1770,8 @@
 
   .expert-badge {
     position: absolute;
-    top: calc(6px + var(--safe-top));
-    right: 6px;
+    top: calc(calc(6px * var(--layout-scale, 1)) + var(--safe-top));
+    right: calc(6px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -1742,14 +1780,14 @@
     pointer-events: none;
   }
   .expert-label {
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     color: #facc15;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
   .expert-mult {
-    font-size: 9px;
+    font-size: calc(9px * var(--layout-scale, 1));
     color: #cbd5e1;
   }
 
@@ -1820,5 +1858,60 @@
     font-size: 10px;
     color: rgba(148, 163, 184, 0.8);
     font-weight: 600;
+  }
+
+  .reshuffle-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+
+  .reshuffle-text {
+    font-size: calc(18px * var(--layout-scale, 1));
+    color: #f8fafc;
+    font-weight: 700;
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    letter-spacing: 1px;
+  }
+
+  .reshuffle-cards {
+    display: flex;
+    gap: calc(4px * var(--layout-scale, 1));
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: calc(300px * var(--layout-scale, 1));
+  }
+
+  .reshuffle-card {
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(50px * var(--layout-scale, 1));
+    border-radius: 4px;
+    background: linear-gradient(135deg, #1a2332, #2a3442);
+    border: 1px solid rgba(230, 126, 34, 0.5);
+    opacity: 0;
+    animation: reshuffleCardMove 300ms ease-out forwards;
+  }
+
+  @keyframes reshuffleCardMove {
+    0% {
+      opacity: 0;
+      transform: translateX(calc(-40px * var(--layout-scale, 1))) scale(0.7);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(calc(10px * var(--layout-scale, 1))) scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      border-color: rgba(39, 174, 96, 0.5);
+      background: linear-gradient(135deg, #1a2332, #1a3025);
+    }
   }
 </style>

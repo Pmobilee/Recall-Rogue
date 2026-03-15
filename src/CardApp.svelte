@@ -93,6 +93,7 @@
   import { getPresetById } from './services/studyPresetService'
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
+  import { BASE_WIDTH } from './data/layout'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -549,6 +550,14 @@
     }
   })
 
+  function updateLayoutScale(): void {
+    const container = document.querySelector('.card-app') as HTMLElement | null
+    if (!container) return
+    const w = container.clientWidth || window.innerWidth
+    const scale = Math.max(0.8, Math.min(1.4, w / BASE_WIDTH))
+    document.documentElement.style.setProperty('--layout-scale', String(scale))
+  }
+
   onMount(() => {
     const onInteraction = (): void => {
       handleUserInteraction()
@@ -559,9 +568,13 @@
     window.addEventListener('pointerdown', onInteraction, { once: true })
     window.addEventListener('keydown', onInteraction, { once: true })
 
+    updateLayoutScale()
+    window.addEventListener('resize', updateLayoutScale)
+
     return () => {
       window.removeEventListener('pointerdown', onInteraction)
       window.removeEventListener('keydown', onInteraction)
+      window.removeEventListener('resize', updateLayoutScale)
     }
   })
 </script>
@@ -950,7 +963,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(100vw, calc(100vh * 571 / 1024));
+    width: min(100vw, calc(100vh * 571 / 1024)); /* GAME_ASPECT_RATIO: 9/16 ≈ 0.5625, legacy: 571/1024 ≈ 0.5576 */
     background: #0d1117;
     overflow: hidden;
   }
@@ -985,7 +998,7 @@
     transform: translateX(-50%);
     width: 100%;
     max-width: 500px;
-    height: 100vh;
+    height: 100dvh;
     display: none;
   }
 
@@ -995,15 +1008,15 @@
 
   .pause-btn {
     position: fixed;
-    top: calc(8px + var(--safe-top));
-    right: 8px;
-    width: 36px;
-    height: 36px;
+    top: calc(8px * var(--layout-scale, 1) + var(--safe-top));
+    right: calc(8px * var(--layout-scale, 1));
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid rgba(148, 163, 184, 0.4);
     background: rgba(15, 23, 42, 0.85);
     color: #cbd5e1;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-family: monospace;
     font-weight: 700;
     z-index: 150;
@@ -1016,31 +1029,34 @@
 
   .pause-icon {
     display: flex;
-    gap: 3px;
+    gap: calc(3px * var(--layout-scale, 1));
     align-items: center;
     justify-content: center;
   }
   .pause-icon::before,
   .pause-icon::after {
     content: '';
-    width: 3px;
-    height: 14px;
+    width: calc(3px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
     background: currentColor;
     border-radius: 1px;
   }
 
   .active-run-banner {
     position: fixed;
-    top: var(--safe-top);
+    top: 0;
     left: 0;
     right: 0;
     z-index: 250;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 10px 16px;
-    background: linear-gradient(180deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+    gap: calc(10px * var(--layout-scale, 1));
+    padding-top: calc(calc(10px * var(--layout-scale, 1)) + var(--safe-top));
+    padding-bottom: calc(10px * var(--layout-scale, 1));
+    padding-left: calc(16px * var(--layout-scale, 1));
+    padding-right: calc(16px * var(--layout-scale, 1));
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.08));
     border-bottom: 1px solid rgba(245, 158, 11, 0.3);
     color: #fbbf24;
     font-size: calc(13px * var(--text-scale, 1));
@@ -1084,8 +1100,8 @@
     background: #1a1a2e;
     border: 2px solid #e74c3c;
     border-radius: 12px;
-    padding: 24px;
-    max-width: 320px;
+    padding: calc(24px * var(--layout-scale, 1));
+    max-width: calc(320px * var(--layout-scale, 1));
     width: 90%;
     text-align: center;
   }
@@ -1174,14 +1190,14 @@
 
   .fact-gained-toast {
     position: fixed;
-    bottom: 100px;
+    bottom: calc(100px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
     width: min(340px, calc(100vw - 32px));
     background: linear-gradient(180deg, #1a2332, #0f1923);
     border: 1px solid rgba(99, 179, 237, 0.4);
     border-radius: 12px;
-    padding: 14px 16px;
+    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     z-index: 500;
     animation: toast-in 0.3s ease-out;
   }

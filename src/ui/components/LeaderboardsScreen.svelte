@@ -45,11 +45,11 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: 16px 16px 96px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
     background: linear-gradient(180deg, #101320 0%, #1a1f2f 100%);
     color: #e2e8f0;
     display: grid;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .header {
@@ -69,7 +69,7 @@
     border: 1px solid #4b5563;
     background: #1f2937;
     color: #dbeafe;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
   }
 
   .helper {
@@ -80,21 +80,21 @@
 
   .rows {
     display: grid;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .row {
     display: grid;
-    grid-template-columns: 54px minmax(0, 1fr) auto;
+    grid-template-columns: calc(54px * var(--layout-scale, 1)) minmax(0, 1fr) auto;
     grid-template-areas:
       'rank name streak'
       'rank name gold'
       'rank name floor';
-    gap: 4px 10px;
+    gap: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 12px;
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.8);
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
     align-items: center;
   }
 

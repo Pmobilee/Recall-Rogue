@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "playwright": {
-      "command": "npx",
-      "args": ["-y", "@playwright/mcp", "--caps", "vision", "--config", "/root/terra-miner/.playwright-mcp-config.json"]
+      "command": "/Users/damion/.local/share/fnm/node-versions/v22.22.0/installation/bin/npx",
+      "args": ["-y", "@playwright/mcp@latest"]
     },
     "playwright-test": {
       "command": "npx",

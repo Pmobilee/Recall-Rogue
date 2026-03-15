@@ -112,7 +112,7 @@
     align-items: center;
     justify-content: center;
     z-index: 200;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .overlay-bg {
@@ -129,30 +129,30 @@
     background: #161B22;
     border: 2px solid #9B59B6;
     border-radius: 12px;
-    padding: 24px;
-    max-width: 340px;
+    padding: calc(24px * var(--layout-scale, 1));
+    max-width: calc(340px * var(--layout-scale, 1));
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     position: relative;
     z-index: 1;
   }
 
   .event-name {
-    font-size: 18px;
+    font-size: calc(18px * var(--layout-scale, 1));
     color: #9B59B6;
     margin: 0;
     text-align: center;
   }
 
   .effect-icon {
-    font-size: 48px;
+    font-size: calc(48px * var(--layout-scale, 1));
   }
 
   .event-desc {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #C9D1D9;
     text-align: center;
     line-height: 1.5;
@@ -160,26 +160,26 @@
   }
 
   .hp-info {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #8B949E;
   }
 
   .choice-buttons {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
-    margin-top: 8px;
+    margin-top: calc(8px * var(--layout-scale, 1));
   }
 
   .choice-btn {
     width: 100%;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     background: #1E2D3D;
     border: 1px solid #484F58;
     border-radius: 8px;
     color: #E6EDF3;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     cursor: pointer;
     transition: background 0.15s;
   }
@@ -190,16 +190,16 @@
 
   .continue-btn {
     width: 100%;
-    padding: 14px;
+    padding: calc(14px * var(--layout-scale, 1));
     background: #9B59B6;
     border: none;
     border-radius: 8px;
     color: #fff;
-    font-size: 16px;
+    font-size: calc(16px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.1s;
-    margin-top: 8px;
+    margin-top: calc(8px * var(--layout-scale, 1));
   }
 
   .continue-btn:hover {
@@ -207,8 +207,8 @@
   }
 
   .mystery-icon-img {
-    width: 3rem;
-    height: 3rem;
+    width: calc(3rem * var(--layout-scale, 1));
+    height: calc(3rem * var(--layout-scale, 1));
     image-rendering: pixelated;
     display: inline-block;
   }
@@ -229,8 +229,8 @@
   }
 
   .card-reveal-inner {
-    width: 180px;
-    height: 260px;
+    width: calc(180px * var(--layout-scale, 1));
+    height: calc(260px * var(--layout-scale, 1));
     border-radius: 14px;
     background: linear-gradient(145deg, #2a1f4e, #1a1040);
     border: 3px solid #c084fc;
@@ -247,21 +247,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .reveal-icon {
-    font-size: 64px;
+    font-size: calc(64px * var(--layout-scale, 1));
     animation: revealPulse 600ms ease-in-out 200ms;
   }
 
   .reveal-text {
     font-family: var(--font-pixel);
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #e9d5ff;
     text-shadow:
-      -2px 0 #000, 2px 0 #000, 0 -2px #000, 0 2px #000;
-    letter-spacing: 1px;
+      calc(-2px * var(--layout-scale, 1)) 0 #000, calc(2px * var(--layout-scale, 1)) 0 #000, 0 calc(-2px * var(--layout-scale, 1)) #000, 0 calc(2px * var(--layout-scale, 1)) #000;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
   }
 
   @keyframes cardWaveReveal {

@@ -13050,5 +13050,2214 @@
     ],
     "sensitivityLevel": 0,
     "noveltyScore": 5
+  },
+  {
+    "id": "space-william-herschel-uranus-discovery",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "William Herschel discovered Uranus in 1781, the first planet found with a telescope.",
+    "quizQuestion": "Who discovered Uranus using a telescope in 1781?",
+    "correctAnswer": "William Herschel",
+    "distractors": [
+      "Giovanni Cassini",
+      "Edmond Halley",
+      "Charles Messier",
+      "Johann Bode",
+      "James Bradley",
+      "Alexis Bouvard",
+      "Pierre Méchain",
+      "Johann Encke"
+    ],
+    "acceptableAnswers": [
+      "william herschel",
+      "herschel"
+    ],
+    "explanation": "On March 13, 1781, William Herschel spotted Uranus through his homemade telescope, initially thinking it was a comet. It was the first planet discovered in recorded history — all others were known to ancient astronomers. Herschel originally wanted to name it 'Georgium Sidus' after King George III.",
+    "wowFactor": "Herschel doubled the size of the known solar system in a single night with a telescope he built himself.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who discovered Uranus in 1781?",
+        "answer": "William Herschel",
+        "distractors": [
+          "Giovanni Cassini",
+          "Edmond Halley",
+          "Johann Bode"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What planet did William Herschel discover in 1781?",
+        "answer": "Uranus",
+        "distractors": [
+          "Neptune",
+          "Saturn",
+          "Jupiter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "William Herschel discovered Uranus using a telescope he built himself.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "William Herschel discovered ___ in 1781, the first telescopically found planet.",
+        "answer": "Uranus",
+        "distractors": [
+          "Neptune",
+          "Saturn",
+          "Pluto"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/William_Herschel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An 18th-century astronomer peering through a large handmade reflecting telescope at night, with a pale blue-green planet visible in the eyepiece lens, candle-lit notebook nearby.",
+    "tags": [
+      "uranus",
+      "planets",
+      "telescope",
+      "18th century",
+      "discovery"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-william-herschel-infrared-discovery",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronomical_records",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronomical_records",
+    "categoryL3": "",
+    "statement": "William Herschel discovered infrared radiation in 1800 by measuring heat beyond the red end of the solar spectrum.",
+    "quizQuestion": "What type of radiation did William Herschel discover in 1800?",
+    "correctAnswer": "Infrared radiation",
+    "distractors": [
+      "Ultraviolet radiation",
+      "X-ray radiation",
+      "Microwave radiation",
+      "Gamma radiation",
+      "Radio waves",
+      "Cosmic rays",
+      "Visible light spectrum",
+      "Thermal neutrons"
+    ],
+    "acceptableAnswers": [
+      "infrared radiation",
+      "infrared",
+      "infrared light"
+    ],
+    "explanation": "Herschel placed thermometers beyond the red end of a prism-split sunbeam and found the temperature still rose — proving invisible heat rays existed. This serendipitous discovery founded the entire field of infrared astronomy. His son John later extended the work to ultraviolet.",
+    "wowFactor": "Herschel discovered an invisible form of light by sticking a thermometer past the edge of a rainbow — and accidentally founded infrared astronomy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Herschel discover beyond the red end of the solar spectrum?",
+        "answer": "Infrared radiation",
+        "distractors": [
+          "Ultraviolet radiation",
+          "X-rays",
+          "Radio waves"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered infrared radiation in 1800?",
+        "answer": "William Herschel",
+        "distractors": [
+          "Isaac Newton",
+          "Thomas Young",
+          "Michael Faraday"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Herschel discovered infrared radiation while experimenting with sunlight and prisms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Herschel discovered ___ in 1800 by measuring heat past the red end of sunlight.",
+        "answer": "infrared radiation",
+        "distractors": [
+          "ultraviolet radiation",
+          "radio waves",
+          "x-rays"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/William_Herschel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scientist splitting sunlight through a glass prism onto a table, with thermometers arranged in the colorful rainbow band and one thermometer glowing hot just beyond the red edge.",
+    "tags": [
+      "infrared",
+      "light",
+      "spectrum",
+      "physics",
+      "herschel"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-william-herschel-star-catalogs",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "William Herschel catalogued over 2,400 nebulae and star clusters, vastly expanding knowledge of deep sky objects.",
+    "quizQuestion": "Roughly how many nebulae did William Herschel catalog?",
+    "correctAnswer": "Over 2,400",
+    "distractors": [
+      "Over 500",
+      "Over 1,000",
+      "Over 5,000",
+      "About 200",
+      "About 800",
+      "Over 10,000",
+      "About 100",
+      "Over 3,500"
+    ],
+    "acceptableAnswers": [
+      "over 2400",
+      "over 2,400",
+      "2400",
+      "2,400"
+    ],
+    "explanation": "Working with his sister Caroline, Herschel conducted systematic sweeps of the entire sky and catalogued 2,414 nebulae and star clusters in three major catalogs. This work formed the basis of John Dreyer's New General Catalogue (NGC), still used by astronomers today.",
+    "wowFactor": "Herschel and his sister Caroline mapped 2,400 deep sky objects — the catalog they built still has the same numbers astronomers use today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many nebulae did Herschel catalog during his sky surveys?",
+        "answer": "Over 2,400",
+        "distractors": [
+          "Over 500",
+          "Over 1,000",
+          "About 200"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What famous catalog system is based on Herschel's nebula surveys?",
+        "answer": "NGC (New General Catalogue)",
+        "distractors": [
+          "Messier Catalogue",
+          "Hipparcos Catalog",
+          "Henry Draper Catalog"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "William Herschel's sister Caroline assisted him in cataloguing nebulae and star clusters.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "William Herschel catalogued over 2,400 ___ and star clusters during his sky surveys.",
+        "answer": "nebulae",
+        "distractors": [
+          "comets",
+          "asteroids",
+          "planets"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/William_Herschel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brother and sister working by candlelight in an observatory, the sister writing in a large leather ledger while the brother calls out observations from a massive telescope pointed at a starfield.",
+    "tags": [
+      "nebulae",
+      "star clusters",
+      "NGC",
+      "deep sky",
+      "catalogs"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-william-herschel-milky-way-shape",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "William Herschel was first to attempt mapping the shape of the Milky Way galaxy by counting stars in different directions.",
+    "quizQuestion": "Who first tried to map the Milky Way by counting stars?",
+    "correctAnswer": "William Herschel",
+    "distractors": [
+      "Edmond Halley",
+      "Giovanni Cassini",
+      "Charles Messier",
+      "Johann Bode",
+      "Friedrich Bessel",
+      "James Bradley",
+      "Nicholas de Lacaille",
+      "John Flamsteed"
+    ],
+    "acceptableAnswers": [
+      "william herschel",
+      "herschel"
+    ],
+    "explanation": "Herschel counted stars in 683 different directions across the sky to deduce the three-dimensional structure of our galaxy. He concluded the Milky Way was a flattened disk with the Sun near the center — wrong about the Sun's position, but the disk shape was correct. This was the first scientific attempt at galactic cartography.",
+    "wowFactor": "Herschel tried to map an entire galaxy from inside it — like making a map of a city while blindfolded in the middle of it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who made the first attempt to map the shape of the Milky Way?",
+        "answer": "William Herschel",
+        "distractors": [
+          "Charles Messier",
+          "Edmond Halley",
+          "Friedrich Bessel"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What method did Herschel use to map the Milky Way?",
+        "answer": "Counting stars in different directions",
+        "distractors": [
+          "Measuring stellar parallax",
+          "Photographing nebulae",
+          "Tracking planet orbits"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Herschel correctly placed the Sun at the center of the Milky Way in his galaxy map.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Herschel mapped the Milky Way by ___ in 683 different sky directions.",
+        "answer": "counting stars",
+        "distractors": [
+          "measuring parallax",
+          "photographing nebulae",
+          "timing eclipses"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/William_Herschel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of a lens-shaped galaxy glowing with millions of stars, with a scientist standing at a telescope in the middle marking tally counts on a chart.",
+    "tags": [
+      "milky way",
+      "galaxy",
+      "star counting",
+      "galactic structure",
+      "mapping"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-mikhail-lomonosov-venus-atmosphere",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mikhail Lomonosov discovered Venus has an atmosphere during the 1761 transit of Venus across the Sun.",
+    "quizQuestion": "Who discovered Venus has an atmosphere during its 1761 solar transit?",
+    "correctAnswer": "Mikhail Lomonosov",
+    "distractors": [
+      "James Cook",
+      "Edmond Halley",
+      "William Herschel",
+      "Giovanni Cassini",
+      "Johann Lambert",
+      "Charles Messier",
+      "Nicolas de Lacaille",
+      "Alexis Clairaut"
+    ],
+    "acceptableAnswers": [
+      "mikhail lomonosov",
+      "lomonosov"
+    ],
+    "explanation": "During the rare 1761 transit of Venus, Lomonosov noticed a faint luminous arc around Venus as it crossed the Sun's edge — correctly identifying it as atmospheric refraction. This was the first evidence any planet other than Earth had an atmosphere. His discovery went largely unrecognized for over a century.",
+    "wowFactor": "Lomonosov spotted a faint glow around Venus during a solar transit and became the first person to prove another planet had an atmosphere — in 1761.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Lomonosov discover about Venus during the 1761 transit?",
+        "answer": "Venus has an atmosphere",
+        "distractors": [
+          "Venus has clouds",
+          "Venus has moons",
+          "Venus rotates backwards"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was first to detect an atmosphere on another planet?",
+        "answer": "Mikhail Lomonosov",
+        "distractors": [
+          "William Herschel",
+          "James Cook",
+          "Giovanni Cassini"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lomonosov discovered Venus's atmosphere by observing a luminous arc during a solar transit.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lomonosov discovered that Venus has an ___ during the 1761 transit of Venus.",
+        "answer": "atmosphere",
+        "distractors": [
+          "ocean",
+          "moon",
+          "magnetic field"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mikhail_Lomonosov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Russian scientist at a telescope watching a small dark circle crossing the blazing sun, with a faint glowing ring visible around the circle's edge in the solar disc.",
+    "tags": [
+      "venus",
+      "atmosphere",
+      "transit of venus",
+      "lomonosov",
+      "18th century"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-mikhail-lomonosov-meteor-theory",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Mikhail Lomonosov proposed that shooting stars were atmospheric phenomena, not celestial objects falling from space.",
+    "quizQuestion": "What did Lomonosov incorrectly believe about shooting stars?",
+    "correctAnswer": "They were atmospheric",
+    "distractors": [
+      "They were comets",
+      "They were volcanic",
+      "They were electrical",
+      "They were planetary debris",
+      "They were solar particles",
+      "They were magnetic",
+      "They were lunar fragments",
+      "They were stellar dust"
+    ],
+    "acceptableAnswers": [
+      "they were atmospheric",
+      "atmospheric phenomena",
+      "atmospheric"
+    ],
+    "explanation": "Lomonosov incorrectly theorized that meteors were caused by electrical discharges in the upper atmosphere, similar to lightning. While wrong, this shows how even brilliant scientists of the era underestimated the size and nature of space. His work on Venus's atmosphere remains his lasting astronomical contribution.",
+    "wowFactor": "Even scientific geniuses get things spectacularly wrong — Lomonosov thought shooting stars were just fancy lightning.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Lomonosov wrongly believe caused shooting stars?",
+        "answer": "Atmospheric electricity",
+        "distractors": [
+          "Lunar debris",
+          "Solar wind",
+          "Volcanic eruptions"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What phenomenon did Lomonosov incorrectly explain as an atmospheric effect?",
+        "answer": "Shooting stars (meteors)",
+        "distractors": [
+          "Auroras",
+          "Eclipses",
+          "Comets"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lomonosov was correct that shooting stars are caused by the atmosphere, not space debris.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lomonosov incorrectly proposed that shooting stars were ___ phenomena, not space debris.",
+        "answer": "atmospheric",
+        "distractors": [
+          "volcanic",
+          "magnetic",
+          "solar"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mikhail_Lomonosov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A streak of light blazing across a night sky above a Russian city, with a scientist watching from a window and drawing diagrams of clouds and lightning bolts in his notebook.",
+    "tags": [
+      "meteors",
+      "shooting stars",
+      "lomonosov",
+      "history of science",
+      "misconceptions"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-mikhail-lomonosov-sun-layers",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Lomonosov proposed that the Sun was surrounded by an atmosphere similar to Earth's in the 18th century.",
+    "quizQuestion": "What did Lomonosov propose surrounded the Sun, similar to Earth?",
+    "correctAnswer": "An atmosphere",
+    "distractors": [
+      "A magnetic field",
+      "A ring system",
+      "An ocean of fire",
+      "A layer of clouds",
+      "A corona of ice",
+      "A belt of comets",
+      "A shell of gas",
+      "A dust envelope"
+    ],
+    "acceptableAnswers": [
+      "an atmosphere",
+      "atmosphere"
+    ],
+    "explanation": "Based on his 1761 Venus observations and general reasoning by analogy, Lomonosov suggested the Sun possessed an atmosphere comparable to Earth's. While the Sun does have an outer atmosphere called the corona and chromosphere, his reasoning was more philosophical than scientific — yet surprisingly directional.",
+    "wowFactor": "Lomonosov guessed the Sun had an atmosphere in 1761, and he was kind of right — the Sun's corona is technically its outer atmosphere.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Lomonosov suggest the Sun has, similar to Earth?",
+        "answer": "An atmosphere",
+        "distractors": [
+          "A magnetic field",
+          "Ring system",
+          "Water clouds"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 18th-century scientist proposed the Sun had an atmosphere?",
+        "answer": "Mikhail Lomonosov",
+        "distractors": [
+          "William Herschel",
+          "Edmond Halley",
+          "James Bradley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lomonosov's guess that the Sun has an atmosphere was somewhat correct — the corona is the Sun's outer atmosphere.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lomonosov proposed that the Sun was surrounded by an ___, much like Earth.",
+        "answer": "atmosphere",
+        "distractors": [
+          "magnetic field",
+          "ring system",
+          "dust cloud"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mikhail_Lomonosov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of the Sun showing a glowing orange corona layer surrounding the blazing yellow core, with an 18th-century scientist sketching it next to a globe of Earth for comparison.",
+    "tags": [
+      "sun",
+      "solar atmosphere",
+      "corona",
+      "lomonosov",
+      "18th century"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-svante-arrhenius-panspermia",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Svante Arrhenius proposed panspermia in 1903, suggesting life could travel through space on light pressure from stars.",
+    "quizQuestion": "Which scientist proposed panspermia — life traveling through space on starlight?",
+    "correctAnswer": "Svante Arrhenius",
+    "distractors": [
+      "Fred Hoyle",
+      "Francis Crick",
+      "Hermann von Helmholtz",
+      "Louis Pasteur",
+      "Charles Darwin",
+      "Thomas Huxley",
+      "William Thomson",
+      "Carl Sagan"
+    ],
+    "acceptableAnswers": [
+      "svante arrhenius",
+      "arrhenius"
+    ],
+    "explanation": "Arrhenius called his hypothesis 'radiopanspermia' — proposing that microscopic spores could be propelled across interstellar space by radiation pressure from stars. He calculated that bacteria-sized particles could survive the journey and seed life on other planets. The idea remains scientifically debated today.",
+    "wowFactor": "Arrhenius proposed that life surfs the galaxy on beams of starlight — your ancestors might be alien hitchhikers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What theory did Arrhenius propose in 1903 about life traveling through space?",
+        "answer": "Panspermia",
+        "distractors": [
+          "Abiogenesis",
+          "Spontaneous generation",
+          "Stellar evolution"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the theory that life can travel between planets on radiation pressure called?",
+        "answer": "Panspermia",
+        "distractors": [
+          "Abiogenesis",
+          "Astrobiology",
+          "Xenogenesis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Arrhenius proposed that life could travel through space carried by radiation pressure from stars.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Arrhenius proposed ___ — the idea that life spores could travel through space on starlight.",
+        "answer": "panspermia",
+        "distractors": [
+          "abiogenesis",
+          "evolution",
+          "stellar seeding"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Svante_Arrhenius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Glowing spores drifting through dark space on beams of golden starlight between two planets, with a comet streak in the background and microscopic life forms visible inside the glowing particles.",
+    "tags": [
+      "panspermia",
+      "life",
+      "astrobiology",
+      "arrhenius",
+      "origin of life"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-svante-arrhenius-greenhouse-effect",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Svante Arrhenius calculated in 1896 that doubling atmospheric CO₂ would raise Earth's temperature by 5-6°C.",
+    "quizQuestion": "Who first calculated that doubling CO₂ would warm Earth significantly?",
+    "correctAnswer": "Svante Arrhenius",
+    "distractors": [
+      "John Tyndall",
+      "Joseph Fourier",
+      "James Hansen",
+      "Charles Keeling",
+      "Guy Callendar",
+      "Roger Revelle",
+      "Gilbert Plass",
+      "Eunice Newton Foote"
+    ],
+    "acceptableAnswers": [
+      "svante arrhenius",
+      "arrhenius"
+    ],
+    "explanation": "Arrhenius spent a year performing laborious hand calculations to determine that CO₂ in the atmosphere acts as a heat trap. His estimate of 5-6°C warming per CO₂ doubling is remarkably close to modern climate model projections of 2.5-4°C. He even considered the warming might make Arctic regions more hospitable — not foreseeing it as a catastrophe.",
+    "wowFactor": "In 1896, Arrhenius predicted climate change with paper calculations alone — and he was right to within a few degrees.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What temperature rise did Arrhenius predict from doubling CO₂?",
+        "answer": "5-6°C",
+        "distractors": [
+          "1-2°C",
+          "10-12°C",
+          "0.5-1°C"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who first published a calculation linking atmospheric CO₂ to planetary warming in 1896?",
+        "answer": "Svante Arrhenius",
+        "distractors": [
+          "John Tyndall",
+          "Joseph Fourier",
+          "Charles Keeling"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Arrhenius's 1896 estimate that doubling CO₂ raises temperature 5-6°C is close to modern climate science projections.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Arrhenius calculated in 1896 that doubling ___ in the atmosphere would warm Earth by 5-6°C.",
+        "answer": "CO₂",
+        "distractors": [
+          "methane",
+          "oxygen",
+          "nitrogen"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Svante_Arrhenius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scientist surrounded by mountains of paper calculations, with a diagram of Earth wrapped in a glowing CO₂ blanket, arrows showing heat being trapped in the atmosphere.",
+    "tags": [
+      "greenhouse effect",
+      "CO2",
+      "climate",
+      "arrhenius",
+      "earth science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-svante-arrhenius-habitability",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "exoplanets",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "exoplanets",
+    "categoryL3": "",
+    "statement": "Arrhenius speculated that Mars and Venus might be habitable, populated by lower life forms suited to extreme conditions.",
+    "quizQuestion": "Which planets did Arrhenius speculate might harbor lower life forms?",
+    "correctAnswer": "Mars and Venus",
+    "distractors": [
+      "Jupiter and Saturn",
+      "Mercury and Mars",
+      "Venus and Jupiter",
+      "Saturn and Uranus",
+      "Neptune and Mars",
+      "Mercury and Venus",
+      "Jupiter and Mars",
+      "Uranus and Neptune"
+    ],
+    "acceptableAnswers": [
+      "mars and venus",
+      "venus and mars"
+    ],
+    "explanation": "In 1903, Arrhenius published a book 'Die Verbreitung des Lebens im Weltenraum' where he argued that Mars was a cold desert world, Venus a tropical swamp, and both might support primitive life. He was partly right about Mars being cold and partly wrong about Venus — which is actually an inferno at 465°C.",
+    "wowFactor": "Arrhenius imagined Venus as a tropical swamp planet teeming with life — it turned out to be a 465°C acid hellscape instead.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which solar system planets did Arrhenius think might harbor life?",
+        "answer": "Mars and Venus",
+        "distractors": [
+          "Jupiter and Saturn",
+          "Mercury and Mars",
+          "Saturn and Uranus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What did Arrhenius believe Venus's surface environment was like?",
+        "answer": "A tropical swamp",
+        "distractors": [
+          "A frozen desert",
+          "A barren rock",
+          "An ocean world"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Arrhenius's prediction that Venus was a tropical swamp proved correct.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Arrhenius speculated that Venus was a tropical ___, but it turned out to be a 465°C hellscape.",
+        "answer": "swamp",
+        "distractors": [
+          "ocean",
+          "forest",
+          "desert"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Svante_Arrhenius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side by side pixel art: a red dusty Mars with small creatures, and a green swampy Venus with tropical plants — but a thermometer on Venus reads 465°C and everything is on fire.",
+    "tags": [
+      "mars",
+      "venus",
+      "habitability",
+      "arrhenius",
+      "astrobiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-aryabhata-earth-rotation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "In 499 CE, Aryabhata proposed that the Earth rotates on its axis daily, not the stars moving around it.",
+    "quizQuestion": "Which ancient astronomer proposed Earth rotates on its axis in 499 CE?",
+    "correctAnswer": "Aryabhata",
+    "distractors": [
+      "Brahmagupta",
+      "Hipparchus",
+      "Ptolemy",
+      "Varahamihira",
+      "Bhaskara",
+      "Pingala",
+      "Kanada",
+      "Nagarjuna"
+    ],
+    "acceptableAnswers": [
+      "aryabhata",
+      "āryabhaṭa"
+    ],
+    "explanation": "Over a millennium before Copernicus, Aryabhata wrote in the Aryabhatiya that the apparent westward motion of stars was caused by Earth's own eastward rotation — like watching trees appear to move backwards from a moving boat. European astronomers wouldn't reach this conclusion until the 16th century. He also calculated the sidereal day as 23 hours, 56 minutes, 4 seconds — accurate to within a second.",
+    "wowFactor": "Aryabhata figured out Earth spins on its axis in 499 CE — over 1,000 years before Copernicus, and accurate to within one second.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Aryabhata correctly propose about Earth's motion in 499 CE?",
+        "answer": "Earth rotates on its axis",
+        "distractors": [
+          "Earth orbits the Sun",
+          "Earth has a moon",
+          "Earth is spherical"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long before Copernicus did Aryabhata propose Earth's axial rotation?",
+        "answer": "Over 1,000 years",
+        "distractors": [
+          "500 years",
+          "200 years",
+          "100 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aryabhata calculated the length of the sidereal day accurate to within one second.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aryabhata proposed in 499 CE that Earth ___ on its axis, explaining the apparent movement of stars.",
+        "answer": "rotates",
+        "distractors": [
+          "orbits",
+          "oscillates",
+          "wobbles"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aryabhata",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Indian scholar sitting cross-legged under a star-filled sky, holding a scroll covered in Sanskrit calculations, with a spinning globe in front of him and stars staying stationary behind it.",
+    "tags": [
+      "earth rotation",
+      "aryabhata",
+      "ancient astronomy",
+      "india",
+      "499 CE"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-aryabhata-eclipse-shadow",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Aryabhata correctly explained that lunar eclipses are caused by Earth's shadow falling on the Moon.",
+    "quizQuestion": "Who first correctly explained lunar eclipses as Earth's shadow on the Moon?",
+    "correctAnswer": "Aryabhata",
+    "distractors": [
+      "Brahmagupta",
+      "Ptolemy",
+      "Hipparchus",
+      "Al-Battani",
+      "Varahamihira",
+      "Al-Biruni",
+      "Bhaskara I",
+      "Kanada"
+    ],
+    "acceptableAnswers": [
+      "aryabhata",
+      "āryabhaṭa"
+    ],
+    "explanation": "In the Aryabhatiya (499 CE), Aryabhata refuted the mythological explanations of eclipses (such as demons swallowing the Moon) and correctly explained both solar and lunar eclipses using geometry and Earth's shadow. He even calculated eclipse durations using the relative sizes and distances of the Sun, Moon, and Earth.",
+    "wowFactor": "While others blamed demons for eating the Moon during eclipses, Aryabhata used geometry to calculate exactly how long Earth's shadow would cover it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Aryabhata correctly explain lunar eclipses?",
+        "answer": "Earth's shadow on the Moon",
+        "distractors": [
+          "Moon blocking the Sun",
+          "Demon swallowing Moon",
+          "Moon entering Earth's orbit"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What astronomical event did Aryabhata explain using Earth's shadow?",
+        "answer": "Lunar eclipses",
+        "distractors": [
+          "Solar eclipses",
+          "Meteor showers",
+          "Planetary conjunctions"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aryabhata correctly explained lunar eclipses are caused by Earth's shadow — not mythological demons.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aryabhata explained that lunar eclipses occur when ___ falls on the Moon.",
+        "answer": "Earth's shadow",
+        "distractors": [
+          "the Sun's corona",
+          "Venus's shadow",
+          "a comet's tail"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aryabhata",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram showing the Sun, Earth, and Moon in a line, with Earth's conical shadow stretching across space and engulfing the Moon in darkness, with Sanskrit text on a scroll nearby.",
+    "tags": [
+      "lunar eclipse",
+      "earth shadow",
+      "aryabhata",
+      "ancient astronomy",
+      "499 CE"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-aryabhata-pi-calculation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Aryabhata calculated π (pi) as 3.1416 — accurate to four decimal places — in 499 CE for astronomical calculations.",
+    "quizQuestion": "How accurately did Aryabhata calculate π in 499 CE?",
+    "correctAnswer": "4 decimal places",
+    "distractors": [
+      "2 decimal places",
+      "6 decimal places",
+      "1 decimal place",
+      "8 decimal places",
+      "3 decimal places",
+      "10 decimal places",
+      "5 decimal places",
+      "No decimals"
+    ],
+    "acceptableAnswers": [
+      "4 decimal places",
+      "four decimal places",
+      "3.1416"
+    ],
+    "explanation": "Aryabhata wrote that a circle of diameter 20,000 has a circumference of 62,832 — giving π ≈ 3.14159, accurate to four decimal places. He even noted this value was only 'approximate', showing a sophisticated understanding of mathematical limits. This precision wasn't exceeded in Europe for nearly a thousand years.",
+    "wowFactor": "Aryabhata calculated pi to 4 decimal places in 499 CE and specifically noted it was approximate — showing deeper mathematical wisdom than most who followed him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "To how many decimal places did Aryabhata calculate pi in 499 CE?",
+        "answer": "4 decimal places",
+        "distractors": [
+          "2 decimal places",
+          "6 decimal places",
+          "1 decimal place"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What value for π did Aryabhata calculate in 499 CE?",
+        "answer": "3.1416",
+        "distractors": [
+          "3.14",
+          "3.141592",
+          "3.1"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aryabhata noted his pi calculation was only approximate, showing advanced mathematical understanding.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aryabhata calculated ___ to four decimal places as 3.1416 in 499 CE.",
+        "answer": "pi",
+        "distractors": [
+          "gravity",
+          "the speed of light",
+          "Earth's radius"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aryabhata",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Indian mathematician writing on a palm leaf scroll, surrounded by geometric diagrams of circles and polygons, with the numeral 3.1416 prominently written in ancient script.",
+    "tags": [
+      "pi",
+      "mathematics",
+      "aryabhata",
+      "ancient india",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-aryabhata-sidereal-year",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Aryabhata calculated Earth's sidereal year as 365 days, 6 hours, 12 minutes, 30 seconds — error of only 3 minutes 20 seconds.",
+    "quizQuestion": "How close was Aryabhata's sidereal year calculation to the modern value?",
+    "correctAnswer": "3 minutes 20 seconds off",
+    "distractors": [
+      "1 hour off",
+      "1 day off",
+      "30 minutes off",
+      "10 minutes off",
+      "6 hours off",
+      "1 week off",
+      "12 hours off",
+      "5 minutes off"
+    ],
+    "acceptableAnswers": [
+      "3 minutes 20 seconds off",
+      "3 min 20 sec",
+      "about 3 minutes"
+    ],
+    "explanation": "Without telescopes, satellites, or modern instruments, Aryabhata calculated how long Earth takes to orbit the Sun and was off by only 3 minutes 20 seconds. The modern value is 365 days, 6 hours, 9 minutes, 10 seconds. This remarkable precision came from years of systematic astronomical observations and mathematical modeling.",
+    "wowFactor": "Using only naked-eye observations and math, Aryabhata calculated the length of a year to within 3 minutes — 1,500 years before modern instruments.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How precisely did Aryabhata calculate the sidereal year compared to the modern value?",
+        "answer": "Within 3 minutes 20 seconds",
+        "distractors": [
+          "Within 1 hour",
+          "Within 30 minutes",
+          "Within 1 day"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What astronomical period did Aryabhata calculate to within 3 minutes accuracy?",
+        "answer": "The sidereal year",
+        "distractors": [
+          "The lunar month",
+          "The sidereal day",
+          "The synodic year"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Aryabhata's year length calculation was accurate to within 4 minutes without any telescopes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aryabhata calculated the ___ year as 365 days, 6 hours, 12 minutes — only 3 minutes off.",
+        "answer": "sidereal",
+        "distractors": [
+          "lunar",
+          "solar",
+          "tropical"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aryabhata",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Indian observatory at night with a scholar tracking Earth's orbit around a bright sun on a stone tablet, with Sanskrit numerals in columns alongside a modern digital clock showing the same time.",
+    "tags": [
+      "sidereal year",
+      "aryabhata",
+      "ancient astronomy",
+      "earth orbit",
+      "precision"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-thomas-young-wave-light-double-slit",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Thomas Young's 1801 double-slit experiment proved light travels as waves, not particles as Newton had claimed.",
+    "quizQuestion": "What did Young's double-slit experiment prove about the nature of light?",
+    "correctAnswer": "Light travels as waves",
+    "distractors": [
+      "Light travels as particles",
+      "Light has no mass",
+      "Light bends around gravity",
+      "Light has color",
+      "Light moves in straight lines",
+      "Light is electromagnetic",
+      "Light has infinite speed",
+      "Light can be polarized"
+    ],
+    "acceptableAnswers": [
+      "light travels as waves",
+      "light is a wave",
+      "wave nature of light"
+    ],
+    "explanation": "When Young shone light through two narrow slits, it produced an interference pattern of bright and dark bands on a screen — only possible if light behaves as a wave. This directly contradicted Newton's corpuscular (particle) theory of light. A century later, quantum mechanics revealed light is actually both — the wave-particle duality.",
+    "wowFactor": "Young proved Newton wrong about light with a cardboard, two slits, and sunlight — one of the most elegant experiments in the history of physics.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Thomas Young's double-slit experiment demonstrate?",
+        "answer": "Light travels as waves",
+        "distractors": [
+          "Light is made of particles",
+          "Light bends in gravity",
+          "Light has no mass"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose theory of light as particles did Young's experiment disprove?",
+        "answer": "Isaac Newton",
+        "distractors": [
+          "René Descartes",
+          "Christiaan Huygens",
+          "Robert Hooke"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Young's double-slit experiment produced an interference pattern proving light behaves as a wave.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Young's double-slit experiment created an ___ pattern that proved light travels as waves.",
+        "answer": "interference",
+        "distractors": [
+          "absorption",
+          "diffraction",
+          "reflection"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thomas_Young_(scientist)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Light beams passing through two narrow slits in a dark board and projecting a pattern of alternating bright and dark bands on a white screen, with wave diagrams overlaid showing interference.",
+    "tags": [
+      "wave theory",
+      "double slit",
+      "interference",
+      "light",
+      "young"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-thomas-young-color-vision",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Thomas Young proposed in 1802 that human eyes detect color using three types of receptors — red, green, and violet.",
+    "quizQuestion": "How many types of color receptors did Thomas Young propose human eyes have?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "Two",
+      "Four",
+      "Five",
+      "Six",
+      "Seven",
+      "One",
+      "Eight",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "three",
+      "3"
+    ],
+    "explanation": "Young proposed the trichromatic theory of color vision — that the eye uses three color receptors (which we now call cones) sensitive to red, green, and violet/blue light. All other colors are perceived as combinations of these three signals. This Young-Helmholtz theory forms the basis of modern color science and explains why TVs and monitors use RGB pixels.",
+    "wowFactor": "Young figured out the three-color system of human vision in 1802 — the same RGB system your phone screen uses right now.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many color receptors did Young propose in his trichromatic vision theory?",
+        "answer": "Three",
+        "distractors": [
+          "Two",
+          "Four",
+          "Seven"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What modern technology is directly based on Young's trichromatic color theory?",
+        "answer": "RGB screens (TV/monitors)",
+        "distractors": [
+          "Telescopes",
+          "Cameras",
+          "Microscopes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Young's trichromatic color theory proposed that all colors are combinations of red, green, and violet light.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Young proposed eyes use ___ types of color receptors — the basis of modern RGB technology.",
+        "answer": "three",
+        "distractors": [
+          "two",
+          "four",
+          "seven"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thomas_Young_(scientist)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a human eye with three glowing cone cells highlighted in red, green, and blue/violet, with overlapping color circles showing how all colors can be made from the three primary ones.",
+    "tags": [
+      "color vision",
+      "trichromatic",
+      "RGB",
+      "young",
+      "eyes",
+      "light"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-thomas-young-rosetta-decipherment",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Thomas Young made the first partial decipherment of Egyptian hieroglyphs using the Rosetta Stone in 1814.",
+    "quizQuestion": "Who made the first partial decipherment of Egyptian hieroglyphs in 1814?",
+    "correctAnswer": "Thomas Young",
+    "distractors": [
+      "Jean-François Champollion",
+      "Napoleon Bonaparte",
+      "Giovanni Belzoni",
+      "Athanasius Kircher",
+      "Henry Rawlinson",
+      "Ippolito Rosellini",
+      "Edward Hincks",
+      "Georg Zoëga"
+    ],
+    "acceptableAnswers": [
+      "thomas young",
+      "young"
+    ],
+    "explanation": "Young identified that some hieroglyphs in cartouches represented sounds (phonetics) rather than concepts — cracking open the first door to decipherment. Jean-François Champollion later completed the full decipherment in 1822, often getting more credit. Young's astronomical and physics contributions are even more remarkable given he was simultaneously working on ancient languages.",
+    "wowFactor": "Thomas Young cracked the first code in hieroglyphics AND proved the wave nature of light — possibly history's most diversely brilliant scientist.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ancient writing system did Thomas Young partially decipher in 1814?",
+        "answer": "Egyptian hieroglyphs",
+        "distractors": [
+          "Sumerian cuneiform",
+          "Linear B",
+          "Ancient Chinese"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who completed the full decipherment of hieroglyphs after Young's partial work?",
+        "answer": "Jean-François Champollion",
+        "distractors": [
+          "Napoleon Bonaparte",
+          "Henry Rawlinson",
+          "Edward Hincks"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Thomas Young decoded hieroglyphs using the Rosetta Stone before Champollion completed the full decipherment.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Thomas Young partially deciphered Egyptian ___ in 1814 using the Rosetta Stone.",
+        "answer": "hieroglyphs",
+        "distractors": [
+          "cuneiform",
+          "pictographs",
+          "Linear B"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thomas_Young_(scientist)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scholar leaning over a large stone slab covered in Egyptian hieroglyphs, holding a candle and a notebook, with phonetic alphabet letters sketched next to the carved symbols.",
+    "tags": [
+      "hieroglyphs",
+      "rosetta stone",
+      "young",
+      "egypt",
+      "polymath"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hipparchus-star-catalog",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Hipparchus created the first comprehensive star catalog around 129 BCE, listing positions and brightnesses of about 850 stars.",
+    "quizQuestion": "Who created the first comprehensive star catalog around 129 BCE?",
+    "correctAnswer": "Hipparchus",
+    "distractors": [
+      "Ptolemy",
+      "Eratosthenes",
+      "Aristarchus",
+      "Tycho Brahe",
+      "Ulugh Beg",
+      "Al-Sufi",
+      "Al-Battani",
+      "Timocharis"
+    ],
+    "acceptableAnswers": [
+      "hipparchus"
+    ],
+    "explanation": "Hipparchus compiled observations of roughly 850 stars, recording their positions and grouping them by brightness using the first stellar magnitude scale — a system still used today, though refined. This catalog was later expanded by Ptolemy into the Almagest. The catalog may have been motivated by Hipparchus observing a 'new star' (nova) and wanting a baseline to detect future changes.",
+    "wowFactor": "Hipparchus invented the star brightness scale we still use today, and may have been motivated by spotting a nova — the first astronomer to catalog stars to detect when something new appeared.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many stars did Hipparchus catalog in his 129 BCE star catalog?",
+        "answer": "About 850 stars",
+        "distractors": [
+          "About 200 stars",
+          "About 5,000 stars",
+          "About 100 stars"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What major star catalog was later built on Hipparchus's work?",
+        "answer": "Ptolemy's Almagest",
+        "distractors": [
+          "Ulugh Beg's Zij-i-Sultani",
+          "Tycho's star catalog",
+          "The Hipparcos Space Catalog"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Hipparchus created the first stellar magnitude scale for measuring star brightness.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hipparchus cataloged the positions and ___ of 850 stars around 129 BCE.",
+        "answer": "brightnesses",
+        "distractors": [
+          "distances",
+          "colors",
+          "temperatures"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hipparchus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Greek astronomer on a hilltop observatory at night, scribing star positions onto a papyrus scroll with a stylus, with numbered stars marked across the night sky behind him.",
+    "tags": [
+      "star catalog",
+      "hipparchus",
+      "ancient astronomy",
+      "stellar magnitude",
+      "greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hipparchus-precession-discovery",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Hipparchus discovered the precession of Earth's equinoxes around 127 BCE, estimating the cycle at about 36,000 years.",
+    "quizQuestion": "Who discovered precession of Earth's equinoxes around 127 BCE?",
+    "correctAnswer": "Hipparchus",
+    "distractors": [
+      "Ptolemy",
+      "Eratosthenes",
+      "Aristarchus",
+      "Thales",
+      "Anaximander",
+      "Archimedes",
+      "Apollonius",
+      "Geminus"
+    ],
+    "acceptableAnswers": [
+      "hipparchus"
+    ],
+    "explanation": "By comparing his own star observations to records made 150 years earlier by Timocharis, Hipparchus noticed the entire sky had slowly shifted. He correctly identified this as a slow wobble of Earth's rotation axis — precession — with a period he estimated at 36,000 years. The actual period is about 25,772 years. This means the North Star changes over millennia — it was Thuban in Aryabhata's time.",
+    "wowFactor": "Hipparchus discovered Earth slowly wobbles like a spinning top — a 26,000-year cycle — by comparing star positions recorded 150 years apart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Hipparchus discover by comparing star positions recorded 150 years apart?",
+        "answer": "Precession of equinoxes",
+        "distractors": [
+          "Stellar parallax",
+          "Earth's rotation",
+          "Orbital eccentricity"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the slow wobble of Earth's rotation axis called?",
+        "answer": "Precession of equinoxes",
+        "distractors": [
+          "Nutation",
+          "Axial tilt",
+          "Orbital resonance"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Hipparchus discovered precession by comparing star positions from his time to records made 150 years earlier.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hipparchus discovered that Earth's rotation axis slowly ___, a process taking about 26,000 years.",
+        "answer": "precesses",
+        "distractors": [
+          "wobbles randomly",
+          "reverses",
+          "accelerates"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hipparchus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth shown as a spinning top slowly tracing a large circle with its tilted axis, with a sequence of different North Stars marked along the circle — Polaris, Thuban, Vega — labeled across thousands of years.",
+    "tags": [
+      "precession",
+      "equinoxes",
+      "hipparchus",
+      "earth wobble",
+      "ancient astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hipparchus-moon-distance",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Hipparchus estimated the Moon's distance as 59-67 Earth radii — the actual value is 60.3 Earth radii.",
+    "quizQuestion": "How accurately did Hipparchus estimate the Moon's distance in Earth radii?",
+    "correctAnswer": "Within 2 Earth radii",
+    "distractors": [
+      "Off by 100 radii",
+      "Off by 20 radii",
+      "Off by 50 radii",
+      "Off by 5 radii",
+      "Off by 200 radii",
+      "Off by 10 radii",
+      "Off by 30 radii",
+      "Off by 500 radii"
+    ],
+    "acceptableAnswers": [
+      "within 2 earth radii",
+      "very accurate",
+      "within 2 radii"
+    ],
+    "explanation": "Using trigonometry and observations of a solar eclipse (which was total in one location but partial in another), Hipparchus calculated the Moon's distance as 59-67 Earth radii. The correct answer is 60.3 Earth radii — a stunning achievement from 127 BCE using only naked-eye geometry. He also estimated the Moon's diameter within about 5% accuracy.",
+    "wowFactor": "Hipparchus calculated the Moon's distance using only shadows, angles, and trigonometry — and landed within 2 Earth radii of the correct answer.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What range did Hipparchus estimate for the Moon's distance in Earth radii?",
+        "answer": "59-67 Earth radii",
+        "distractors": [
+          "30-40 Earth radii",
+          "100-120 Earth radii",
+          "200-250 Earth radii"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How did Hipparchus measure the Moon's distance without modern instruments?",
+        "answer": "Using eclipse geometry and trigonometry",
+        "distractors": [
+          "By timing moonrise",
+          "By stellar parallax",
+          "By lunar period"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Hipparchus's estimate of the Moon's distance (59-67 Earth radii) is close to the true value of 60.3.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hipparchus estimated the Moon is 59-67 Earth ___ away — the true value is 60.3.",
+        "answer": "radii",
+        "distractors": [
+          "diameters",
+          "circumferences",
+          "light seconds"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hipparchus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A geometric diagram showing the Sun, Earth, and Moon with angular lines radiating from each, with numbers and ratios written beside them, all on a papyrus scroll in an ancient Greek setting.",
+    "tags": [
+      "moon distance",
+      "hipparchus",
+      "trigonometry",
+      "ancient astronomy",
+      "eclipse"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-hipparchus-magnitude-scale",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Hipparchus invented the stellar magnitude scale around 127 BCE, ranking stars from magnitude 1 (brightest) to 6 (faintest visible).",
+    "quizQuestion": "Who invented the stellar magnitude scale around 127 BCE?",
+    "correctAnswer": "Hipparchus",
+    "distractors": [
+      "Ptolemy",
+      "Tycho Brahe",
+      "Al-Sufi",
+      "Johann Bayer",
+      "Giovanni Battista Hodierna",
+      "Ulugh Beg",
+      "Eratosthenes",
+      "Aristarchus"
+    ],
+    "acceptableAnswers": [
+      "hipparchus"
+    ],
+    "explanation": "Hipparchus assigned numbers to stars based on brightness: 1st magnitude for the brightest, 6th for the faintest visible to the naked eye. This six-step system was formalized mathematically by Norman Pogson in 1856, who defined each step as a factor of 2.512 in brightness (so magnitude 1 is exactly 100 times brighter than magnitude 6). The same scale — extended — is used by astronomers today.",
+    "wowFactor": "The star brightness numbers astronomers use today were invented by Hipparchus in 127 BCE — unchanged for over 2,100 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What number did Hipparchus assign to the brightest visible stars in his magnitude scale?",
+        "answer": "Magnitude 1",
+        "distractors": [
+          "Magnitude 6",
+          "Magnitude 0",
+          "Magnitude 10"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who formalized Hipparchus's magnitude scale mathematically in 1856?",
+        "answer": "Norman Pogson",
+        "distractors": [
+          "Tycho Brahe",
+          "Johann Bayer",
+          "Al-Sufi"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In Hipparchus's magnitude scale, lower numbers mean brighter stars.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hipparchus ranked stars from ___ 1 (brightest) to 6 (faintest visible to the naked eye).",
+        "answer": "magnitude",
+        "distractors": [
+          "brightness",
+          "category",
+          "class"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hipparchus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A night sky with six groups of stars labeled 1 through 6, the first group blazing brilliantly and each successive group growing dimmer, with an ancient Greek astronomer pointing to a scroll showing the numbered system.",
+    "tags": [
+      "stellar magnitude",
+      "star brightness",
+      "hipparchus",
+      "ancient astronomy",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-ulugh-beg-samarkand-observatory",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Ulugh Beg built one of the largest observatories of the medieval world in Samarkand around 1420 CE.",
+    "quizQuestion": "Where did Ulugh Beg build his famous medieval astronomical observatory?",
+    "correctAnswer": "Samarkand",
+    "distractors": [
+      "Baghdad",
+      "Cairo",
+      "Istanbul",
+      "Tabriz",
+      "Isfahan",
+      "Delhi",
+      "Bukhara",
+      "Cordoba"
+    ],
+    "acceptableAnswers": [
+      "samarkand",
+      "samarkand, uzbekistan"
+    ],
+    "explanation": "Ulugh Beg — the grandson of Tamerlane — constructed a three-story observatory in Samarkand (in modern-day Uzbekistan) featuring a massive 40-meter sextant built into the bedrock. This giant instrument allowed extremely precise measurements of star positions. Tragically, the observatory was demolished after Ulugh Beg's assassination by his own son in 1449.",
+    "wowFactor": "A medieval sultan built a 40-meter sextant into a hill to measure the stars — and it was so precise its results held for 200 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which city did Ulugh Beg build his famous 15th-century observatory?",
+        "answer": "Samarkand",
+        "distractors": [
+          "Baghdad",
+          "Cairo",
+          "Istanbul"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What medieval sultan built one of the world's largest pre-modern observatories?",
+        "answer": "Ulugh Beg",
+        "distractors": [
+          "Tamerlane",
+          "Al-Battani",
+          "Al-Biruni"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ulugh Beg's Samarkand observatory featured a 40-meter sextant built into the bedrock.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ulugh Beg built a massive observatory in ___, featuring a 40-meter sextant carved into bedrock.",
+        "answer": "Samarkand",
+        "distractors": [
+          "Baghdad",
+          "Istanbul",
+          "Delhi"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulugh_Beg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grand domed medieval Islamic observatory on a hillside, with a massive curved stone sextant carved into the earth below it, astronomers peering through sighting instruments at a clear starry sky.",
+    "tags": [
+      "samarkand",
+      "observatory",
+      "ulugh beg",
+      "medieval astronomy",
+      "islamic golden age"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-ulugh-beg-star-catalog-zij",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Ulugh Beg compiled the Zij-i-Sultani catalog of 1,018 stars with unprecedented positional accuracy for the 15th century.",
+    "quizQuestion": "What was the name of Ulugh Beg's famous 15th-century star catalog?",
+    "correctAnswer": "Zij-i-Sultani",
+    "distractors": [
+      "Almagest",
+      "Zij al-Kabir",
+      "Kitab al-Manazir",
+      "Al-Qanun",
+      "Book of Fixed Stars",
+      "Zij al-Mumtahan",
+      "Hakemite Tables",
+      "Toledan Tables"
+    ],
+    "acceptableAnswers": [
+      "zij-i-sultani",
+      "zij i sultani",
+      "sultani catalog"
+    ],
+    "explanation": "The Zij-i-Sultani, completed around 1437, recorded 1,018 stars — expanding on Ptolemy's Almagest which had 1,022 stars but was 1,300 years outdated. Using his giant sextant, Ulugh Beg achieved angular accuracy within about 1 arcminute. European astronomers used his catalog for over a century before Tycho Brahe's more precise surveys in the 1580s.",
+    "wowFactor": "Ulugh Beg's star catalog was so accurate it remained the best star reference in Europe for 150 years — written by a sultan, not a dedicated astronomer.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of Ulugh Beg's 15th-century star catalog?",
+        "answer": "Zij-i-Sultani",
+        "distractors": [
+          "Almagest",
+          "Book of Fixed Stars",
+          "Toledan Tables"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose star catalog superseded Ulugh Beg's Zij-i-Sultani in precision?",
+        "answer": "Tycho Brahe",
+        "distractors": [
+          "Hipparchus",
+          "Ptolemy",
+          "Copernicus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ulugh Beg's Zij-i-Sultani catalog recorded star positions with accuracy within about 1 arcminute.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ulugh Beg's ___ catalog listed 1,018 stars with 15th-century record accuracy.",
+        "answer": "Zij-i-Sultani",
+        "distractors": [
+          "Almagest",
+          "Hakemite Tables",
+          "Toledan Tables"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulugh_Beg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ornate Islamic manuscript page covered in star charts and Arabic numerals, with a star map showing 1,000+ labeled dots, illuminated in gold and blue ink on parchment.",
+    "tags": [
+      "star catalog",
+      "zij-i-sultani",
+      "ulugh beg",
+      "islamic astronomy",
+      "medieval"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-ulugh-beg-sidereal-year",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Ulugh Beg calculated the sidereal year as 365 days, 6 hours, 10 minutes, 8 seconds — off by only 58 seconds from the modern value.",
+    "quizQuestion": "How close was Ulugh Beg's sidereal year measurement to the modern value?",
+    "correctAnswer": "Within 1 minute",
+    "distractors": [
+      "Within 1 hour",
+      "Within 10 minutes",
+      "Within 1 day",
+      "Within 30 minutes",
+      "Within 5 minutes",
+      "Within 6 hours",
+      "Within 2 days",
+      "Within 15 minutes"
+    ],
+    "acceptableAnswers": [
+      "within 1 minute",
+      "58 seconds",
+      "within a minute"
+    ],
+    "explanation": "Using his giant Samarkand sextant, Ulugh Beg measured the sidereal year (the time for Earth to orbit the Sun relative to stars) as 365d 6h 10m 8s. The modern value is 365d 6h 9m 10s. His error of 58 seconds is extraordinary for 15th-century instrumentation. This calculation matched Aryabhata's accuracy from nearly 1,000 years before.",
+    "wowFactor": "Ulugh Beg measured the length of a year to within 58 seconds in 1437 — using only a curved stone trench in a hillside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How accurately did Ulugh Beg calculate the sidereal year?",
+        "answer": "Within 58 seconds",
+        "distractors": [
+          "Within 10 minutes",
+          "Within 1 hour",
+          "Within 30 minutes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What astronomical instrument gave Ulugh Beg such precise year measurements?",
+        "answer": "A giant sextant in bedrock",
+        "distractors": [
+          "A water clock",
+          "An astrolabe",
+          "A telescope"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ulugh Beg's sidereal year calculation was accurate to within 1 minute of the modern value.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ulugh Beg's year calculation was only 58 ___ off from the modern accepted value.",
+        "answer": "seconds",
+        "distractors": [
+          "minutes",
+          "hours",
+          "days"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulugh_Beg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cutaway diagram of a stone hillside with a curved sextant channel carved through it, sunlight tracking along the curved surface at precise angles, with an astronomer marking time with a sand hourglass.",
+    "tags": [
+      "sidereal year",
+      "ulugh beg",
+      "samarkand",
+      "precision",
+      "medieval astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "space-ulugh-beg-assassination",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "astronauts_history",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "astronauts_history",
+    "categoryL3": "",
+    "statement": "Ulugh Beg was assassinated in 1449 by his own son Abd al-Latif, ending his reign and scientific program.",
+    "quizQuestion": "Who ordered the assassination of the astronomer-sultan Ulugh Beg in 1449?",
+    "correctAnswer": "His son Abd al-Latif",
+    "distractors": [
+      "His brother Shah Rukh",
+      "A religious council",
+      "Rival Timurid princes",
+      "Ottoman invaders",
+      "Chinese diplomats",
+      "Persian rebels",
+      "His general Shaibani",
+      "A court conspiracy"
+    ],
+    "acceptableAnswers": [
+      "his son abd al-latif",
+      "abd al-latif",
+      "his own son"
+    ],
+    "explanation": "After his father Sultan Shah Rukh died, Ulugh Beg was briefly the Timurid ruler but faced intense religious opposition to his scientific pursuits. His own son Abd al-Latif conspired with religious hardliners and had Ulugh Beg beheaded on a hajj pilgrimage in 1449. The observatory was shortly demolished. Ulugh Beg's skull was found in 1941, still wearing ceremonial robes — confirming he had been killed.",
+    "wowFactor": "The greatest astronomer of his era was beheaded by his own son — and his observatory was destroyed — because religious conservatives opposed his science.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who had Ulugh Beg assassinated in 1449?",
+        "answer": "His son Abd al-Latif",
+        "distractors": [
+          "Ottoman invaders",
+          "Religious rebels",
+          "Persian rivals"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What happened to Ulugh Beg's Samarkand observatory after his death?",
+        "answer": "It was demolished",
+        "distractors": [
+          "It was converted to a mosque",
+          "It was abandoned",
+          "It was given to Ottoman astronomers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Ulugh Beg was killed by religious opponents who also destroyed his famous observatory.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ulugh Beg was assassinated in 1449, and his observatory was subsequently ___.",
+        "answer": "demolished",
+        "distractors": [
+          "preserved",
+          "converted",
+          "expanded"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulugh_Beg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Historical violence — assassination of a ruler",
+    "visualDescription": "A medieval Islamic observatory shown with crumbling walls and rubble, its great sextant cracked, while the ruins of a grand city wall are visible in the background under a stormy sky.",
+    "tags": [
+      "ulugh beg",
+      "assassination",
+      "samarkand",
+      "timurid",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

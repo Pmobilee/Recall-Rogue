@@ -361,6 +361,7 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 - Heavy Strike (2 AP) limited to max 3 per pool
 - Quicken (+1 AP) limited to max 2 per pool
 - No duplicate mechanics in the same drawn hand (reroll on draw)
+- Starter deck mechanics are simplified: attack cards default to Strike, shield cards to Block, with only 1–2 advanced mechanics (Multi-Hit, Thorns) sprinkled in. Complex mechanics are earned through card rewards.
 
 ### Modifier Stacking Order
 
@@ -874,7 +875,7 @@ Each act uses a scrollable vertical map with branching paths, similar to Slay th
 - 15 rows per act, with 3–5 nodes per row
 - Paths branch and merge using a non-crossing edge rule (STS-style)
 - Row 0: always 3 combat nodes (start options)
-- Row 12: forced elite row (all nodes are elite/mini-boss)
+- 3–5 elite rooms distributed randomly across rows 5–12 (never before row 5)
 - Row 13: pre-boss row (rest or shop only)
 - Row 14: single boss node (all paths converge)
 
@@ -897,12 +898,14 @@ Each act uses a scrollable vertical map with branching paths, similar to Slay th
 - After clearing a node, only directly connected next-row nodes are selectable
 - Boss defeated → special event → retreat-or-delve checkpoint
 - Retreat → hub; Delve → new act map generated for the next segment
+- Guaranteed 3–5 elite nodes per act, with `ELITE_MIN_ROW = 4` (row index, = 5th row). Excess elites are demoted to combat; too few are promoted from combat.
 
 **Player interaction:**
 1. After `onArchetypeSelected()`, an ActMap is generated and the `dungeonMap` screen appears
 2. Player taps a node to navigate to it (combat/rest/shop/mystery/etc.)
 3. After the encounter reward screen, player returns to the dungeon map
-4. Locked nodes (not reachable from current position) are visually dimmed
+4. Locked nodes (future, not yet reachable) are shown at 70% opacity — visible but clearly not selectable
+5. Visited nodes (already completed) are shown at 25% opacity with grayscale filter
 
 ### Card Upgrade System (Rest Sites & Post-Mini-Boss)
 
@@ -952,6 +955,12 @@ This creates STS-style card scaling: early runs feel tight, but depth 6+ upgrade
 ### Deck Building Strategy
 
 **Starter Deck Size:** Runs begin with a lean deck of ~15 cards (down from 20). This creates meaningful choice around each reward and prevents the hand from becoming too bloated.
+
+**Starter Deck Composition (Slay the Spire Model):** The starter deck is deliberately simple — mostly basic Strike (attack, 8 dmg) and Block (shield, 6 block) cards, following the Slay the Spire philosophy of starting simple and building complexity through card rewards. Of the ~15 starter cards:
+- ~6 attack cards: mostly Strike, with 1 Multi-Hit for variety
+- ~5 shield cards: mostly Block, with 1 Thorns for variety
+- ~4 utility/buff/debuff cards: retain their assigned mechanics
+Complex mechanics (Execute, Piercing, Fortify, Parry, Overheal, etc.) are only available as **card rewards after combat encounters**, not in the starter deck. This is enforced by `simplifyStarterMechanics()` in `encounterBridge.ts`.
 
 **Deck Evolution:** Players grow their deck after each encounter victory by choosing a card TYPE to add. Additionally, players can visit Shop rooms to:
 - **Buy cards** with gold currency (add specific cards to deck)
@@ -1224,16 +1233,15 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 
 ### Player Modes
 
+All players play on Normal difficulty. Difficulty selection is currently disabled in Settings.
+
 | Internal ID | Display Name | Timer | Wrong Penalty | Enemy Dmg | Reward Multiplier |
 |-------------|-------------|-------|--------------|-----------|-------------------|
-| relaxed | Relaxed | None | 50% effect | -30% | 1.00x |
 | normal | Normal | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
 
-**Relaxed Mode forced for new players:** Run 1 automatically uses Relaxed Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, both modes unlock. A startup migration converts legacy localStorage values (`explorer`, `standard`, `scholar`) to the current mode names.
+*Note: Relaxed mode (no timer, reduced penalties) exists in the codebase but is hidden from the UI. `STORY_MODE_FORCED_RUNS` is set to 0 and all forced-difficulty code defaults to Normal.*
 
-**Difficulty unlock popup:** When the player completes their first run (`runsCompleted === 1`), the RunEndScreen displays a modal popup after a 1.5-second delay. The popup congratulates the player, explains the two difficulty modes (Relaxed / Normal), and lets them choose. Normal is pre-selected and marked as "Recommended". The selection is saved to `difficultyMode` in `cardPreferences.ts`. Players can always change their difficulty later in Settings.
-
-**Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Both Relaxed and Normal modes earn standard rewards (1.00x multiplier).
+**Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Normal mode earns standard rewards (1.00x multiplier).
 
 ### Slow Reader Option
 

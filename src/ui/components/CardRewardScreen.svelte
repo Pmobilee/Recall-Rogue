@@ -440,20 +440,20 @@
     inset: 0;
     overflow-y: auto;
     z-index: 220;
-    padding: calc(24px + var(--safe-top)) 16px 18px;
+    padding: calc(calc(24px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     color: #f4f5f7;
     background:
       radial-gradient(1200px 500px at 50% -90px, rgba(252, 230, 173, 0.12), transparent 68%),
       linear-gradient(180deg, #080b13 0%, #0d1422 48%, #05080f 100%);
     display: grid;
-    gap: 14px;
+    gap: calc(14px * var(--layout-scale, 1));
     justify-items: center;
     align-content: center;
   }
 
   .reward-screen.card-phase {
     align-content: center;
-    padding-top: calc(12px + var(--safe-top));
+    padding-top: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-top));
   }
 
   .overlay-bg {
@@ -478,8 +478,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    padding-top: min(8vh, 56px);
+    gap: calc(16px * var(--layout-scale, 1));
+    padding-top: min(8vh, calc(56px * var(--layout-scale, 1)));
     padding-bottom: var(--safe-top);
     opacity: 0;
     transform: scale(0.95);
@@ -492,24 +492,24 @@
   }
 
   .step-icon {
-    font-size: 86px;
+    font-size: calc(86px * var(--layout-scale, 1));
     line-height: 1;
     text-shadow:
-      -3px 0 #000,
-      3px 0 #000,
-      0 -3px #000,
-      0 3px #000,
-      -3px -3px #000,
-      3px 3px #000,
-      3px -3px #000,
-      -3px 3px #000,
+      calc(-3px * var(--layout-scale, 1)) 0 #000,
+      calc(3px * var(--layout-scale, 1)) 0 #000,
+      0 calc(-3px * var(--layout-scale, 1)) #000,
+      0 calc(3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000,
+      calc(3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000,
+      calc(3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000,
       0 0 20px rgba(255, 200, 50, 0.45);
     animation: rewardBob 2200ms ease-in-out infinite;
   }
 
   .step-icon-action {
-    width: 164px;
-    height: 164px;
+    width: calc(164px * var(--layout-scale, 1));
+    height: calc(164px * var(--layout-scale, 1));
     border: 4px solid #000;
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(34, 50, 69, 0.92), rgba(13, 20, 30, 0.96));
@@ -525,8 +525,8 @@
   }
 
   .step-icon-img {
-    width: 92px;
-    height: 92px;
+    width: calc(92px * var(--layout-scale, 1));
+    height: calc(92px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -535,7 +535,7 @@
   }
 
   .step-icon-fallback {
-    font-size: 72px;
+    font-size: calc(72px * var(--layout-scale, 1));
     line-height: 1;
   }
 
@@ -559,51 +559,51 @@
 
   .step-title {
     font-family: var(--font-pixel);
-    font-size: 22px;
+    font-size: calc(22px * var(--layout-scale, 1));
     font-weight: 900;
     color: #f8d779;
     text-shadow:
-      -3px 0 #000, 3px 0 #000, 0 -3px #000, 0 3px #000,
-      -3px -3px #000, 3px 3px #000, 3px -3px #000, -3px 3px #000,
+      calc(-3px * var(--layout-scale, 1)) 0 #000, calc(3px * var(--layout-scale, 1)) 0 #000, 0 calc(-3px * var(--layout-scale, 1)) #000, 0 calc(3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(-3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000,
       0 4px 12px rgba(0, 0, 0, 0.6);
     margin: 0;
   }
 
   .step-value {
     font-family: var(--font-pixel);
-    font-size: 36px;
+    font-size: calc(36px * var(--layout-scale, 1));
     font-weight: 900;
-    margin: 8px 0;
+    margin: calc(8px * var(--layout-scale, 1)) 0;
     text-shadow:
-      -3px 0 #000, 3px 0 #000, 0 -3px #000, 0 3px #000,
-      -3px -3px #000, 3px 3px #000, 3px -3px #000, -3px 3px #000;
+      calc(-3px * var(--layout-scale, 1)) 0 #000, calc(3px * var(--layout-scale, 1)) 0 #000, 0 calc(-3px * var(--layout-scale, 1)) #000, 0 calc(3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(-3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000;
   }
 
   .gold-value {
     color: #ffd700;
     text-shadow:
-      -3px 0 #000, 3px 0 #000, 0 -3px #000, 0 3px #000,
-      -3px -3px #000, 3px 3px #000, 3px -3px #000, -3px 3px #000,
+      calc(-3px * var(--layout-scale, 1)) 0 #000, calc(3px * var(--layout-scale, 1)) 0 #000, 0 calc(-3px * var(--layout-scale, 1)) #000, 0 calc(3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(-3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000,
       0 0 20px rgba(255, 215, 0, 0.5);
   }
 
   .heal-value {
     color: #4ade80;
     text-shadow:
-      -3px 0 #000, 3px 0 #000, 0 -3px #000, 0 3px #000,
-      -3px -3px #000, 3px 3px #000, 3px -3px #000, -3px 3px #000,
+      calc(-3px * var(--layout-scale, 1)) 0 #000, calc(3px * var(--layout-scale, 1)) 0 #000, 0 calc(-3px * var(--layout-scale, 1)) #000, 0 calc(3px * var(--layout-scale, 1)) #000,
+      calc(-3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000, calc(3px * var(--layout-scale, 1)) calc(-3px * var(--layout-scale, 1)) #000, calc(-3px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) #000,
       0 0 20px rgba(74, 222, 128, 0.5);
   }
 
   .step-bonus {
-    font-size: 21px;
+    font-size: calc(21px * var(--layout-scale, 1));
     color: #fbbf24;
     font-weight: 700;
     text-shadow:
-      -1px 0 #000,
-      1px 0 #000,
-      0 -1px #000,
-      0 1px #000;
+      calc(-1px * var(--layout-scale, 1)) 0 #000,
+      calc(1px * var(--layout-scale, 1)) 0 #000,
+      0 calc(-1px * var(--layout-scale, 1)) #000,
+      0 calc(1px * var(--layout-scale, 1)) #000;
   }
 
   @keyframes rewardBob {
@@ -625,10 +625,10 @@
 
   .spotlight-cone {
     position: absolute;
-    top: -160px;
+    top: calc(-160px * var(--layout-scale, 1));
     left: 50%;
     width: min(780px, 92vw);
-    height: 620px;
+    height: calc(620px * var(--layout-scale, 1));
     transform: translateX(-50%);
     pointer-events: none;
     background: radial-gradient(ellipse at top, rgba(255, 244, 208, 0.28) 0%, rgba(255, 222, 143, 0.1) 36%, rgba(0, 0, 0, 0) 74%);
@@ -639,12 +639,12 @@
     position: relative;
     width: min(920px, 100%);
     border-radius: 18px;
-    padding: 16px 16px 14px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     border: 1px solid rgba(255, 244, 214, 0.24);
     background: linear-gradient(180deg, rgba(20, 27, 37, 0.9), rgba(11, 17, 26, 0.94));
     box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
     display: grid;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .biome-cave-stone {
@@ -684,7 +684,7 @@
 
   .altar-header h1 {
     margin: 0;
-    font-size: 30px;
+    font-size: calc(30px * var(--layout-scale, 1));
     font-weight: 900;
     letter-spacing: 0.6px;
     color: #f8d779;
@@ -692,15 +692,15 @@
   }
 
   .altar-header p {
-    margin: 4px 0 0;
+    margin: calc(4px * var(--layout-scale, 1)) 0 0;
     color: #c8d0dc;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
   }
 
   .altar-surface {
     position: relative;
     border-radius: 14px;
-    padding: 18px 14px 12px;
+    padding: calc(18px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: linear-gradient(145deg, var(--surface-a), var(--surface-b));
     border: 1px solid rgba(255, 255, 255, 0.15);
     overflow: hidden;
@@ -729,10 +729,10 @@
 
   .altar-options {
     position: relative;
-    min-height: 168px;
+    min-height: calc(168px * var(--layout-scale, 1));
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     align-items: end;
   }
 
@@ -740,8 +740,8 @@
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    min-height: 146px;
-    padding: 10px 10px 8px;
+    min-height: calc(146px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     color: #fff;
     background:
       linear-gradient(rgba(17, 24, 34, 0.82), rgba(12, 19, 28, 0.92)),
@@ -750,7 +750,7 @@
     display: grid;
     justify-items: center;
     text-align: center;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
     transition: transform 140ms ease, opacity 140ms ease, filter 140ms ease, box-shadow 140ms ease;
     animation: iconBob 2.6s ease-in-out infinite;
     cursor: pointer;
@@ -808,20 +808,20 @@
 
   .icon-label {
     font-weight: 800;
-    font-size: 15px;
+    font-size: calc(15px * var(--layout-scale, 1));
     letter-spacing: 0.25px;
   }
 
   .altar-trinkets {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-top: 8px;
+    gap: calc(12px * var(--layout-scale, 1));
+    margin-top: calc(8px * var(--layout-scale, 1));
     opacity: 0.82;
   }
 
   .trinket {
-    font-size: 19px;
+    font-size: calc(19px * var(--layout-scale, 1));
     filter: drop-shadow(0 0 10px color-mix(in srgb, var(--trinket-glow) 48%, transparent));
     animation: trinketPulse 2.8s ease-in-out infinite;
   }
@@ -838,14 +838,14 @@
     border-radius: 12px;
     border: 1px solid rgba(189, 205, 224, 0.25);
     background: rgba(10, 16, 25, 0.82);
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     display: grid;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .inspect-kicker {
     color: #9fb2c8;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     letter-spacing: 0.5px;
     text-transform: uppercase;
     font-weight: 700;
@@ -853,7 +853,7 @@
 
   .inspect-panel h2 {
     margin: 0;
-    font-size: 21px;
+    font-size: calc(21px * var(--layout-scale, 1));
     color: #ffde8f;
   }
 
@@ -862,8 +862,8 @@
     background: rgba(40, 80, 120, 0.5);
     border: 1px solid rgba(100, 160, 220, 0.4);
     border-radius: 6px;
-    padding: 2px 8px;
-    font-size: 12px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #9ec8ff;
     font-weight: 700;
     letter-spacing: 0.3px;
@@ -872,14 +872,14 @@
   .inspect-summary {
     margin: 0;
     color: #c8d2df;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
   }
 
   .inspect-meta {
     display: flex;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     flex-wrap: wrap;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #9ec8ff;
     font-weight: 700;
   }
@@ -888,23 +888,23 @@
     background: rgba(40, 58, 80, 0.5);
     border: 1px solid rgba(135, 171, 206, 0.32);
     border-radius: 999px;
-    padding: 4px 8px;
+    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
   }
 
   .actions {
     width: min(920px, 100%);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     align-self: end;
   }
 
   .accept,
   .skip {
-    height: 52px;
+    height: calc(52px * var(--layout-scale, 1));
     border-radius: 10px;
     border: none;
-    font-size: 15px;
+    font-size: calc(15px * var(--layout-scale, 1));
     font-weight: 800;
     letter-spacing: 0.3px;
   }
@@ -947,21 +947,21 @@
     background: #1f2937;
     border: 1px solid #475569;
     border-radius: 12px;
-    padding: 20px 24px;
-    max-width: 280px;
+    padding: calc(20px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    max-width: calc(280px * var(--layout-scale, 1));
     text-align: center;
   }
 
   .skip-confirm-box p {
     color: #f8fafc;
-    font-size: 15px;
-    margin: 0 0 16px;
+    font-size: calc(15px * var(--layout-scale, 1));
+    margin: 0 0 calc(16px * var(--layout-scale, 1));
     line-height: 1.4;
   }
 
   .skip-confirm-buttons {
     display: flex;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .skip-confirm-btn {
@@ -970,7 +970,7 @@
     border: none;
     border-radius: 8px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     cursor: pointer;
     font-family: inherit;
   }
@@ -1137,40 +1137,40 @@
 
   @media (max-width: 700px) {
     .reward-screen {
-      padding: calc(14px + var(--safe-top)) 12px 12px;
-      gap: 10px;
+      padding: calc(calc(14px * var(--layout-scale, 1)) + var(--safe-top)) calc(12px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+      gap: calc(10px * var(--layout-scale, 1));
     }
 
     .altar-header h1 {
-      font-size: 24px;
+      font-size: calc(24px * var(--layout-scale, 1));
       margin: 0;
     }
 
     .altar-header p {
-      font-size: 12px;
-      margin: 2px 0 0;
+      font-size: calc(12px * var(--layout-scale, 1));
+      margin: calc(2px * var(--layout-scale, 1)) 0 0;
     }
 
     .altar-shell {
-      padding: 12px 12px 10px;
-      gap: 10px;
+      padding: calc(12px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+      gap: calc(10px * var(--layout-scale, 1));
       border-radius: 14px;
     }
 
     .altar-surface {
-      padding: 12px 10px 8px;
+      padding: calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
       border-radius: 10px;
     }
 
     .altar-options {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       min-height: auto;
-      gap: 8px;
+      gap: calc(8px * var(--layout-scale, 1));
     }
 
     .altar-option {
-      min-height: 85px;
-      padding: 6px 4px 4px;
+      min-height: calc(85px * var(--layout-scale, 1));
+      padding: calc(6px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
       border-radius: 10px;
       animation-duration: 2.3s;
     }
@@ -1189,55 +1189,55 @@
     }
 
     .icon-label {
-      font-size: 11px;
+      font-size: calc(11px * var(--layout-scale, 1));
       font-weight: 700;
       letter-spacing: 0.2px;
     }
 
     .inspect-panel {
-      padding: 10px;
-      gap: 6px;
+      padding: calc(10px * var(--layout-scale, 1));
+      gap: calc(6px * var(--layout-scale, 1));
       border-radius: 10px;
     }
 
     .inspect-kicker {
-      font-size: 10px;
+      font-size: calc(10px * var(--layout-scale, 1));
       letter-spacing: 0.4px;
     }
 
     .inspect-panel h2 {
-      font-size: 18px;
+      font-size: calc(18px * var(--layout-scale, 1));
       margin: 0;
     }
 
     .inspect-mechanic-badge {
-      font-size: 11px;
-      padding: 2px 6px;
+      font-size: calc(11px * var(--layout-scale, 1));
+      padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     }
 
     .inspect-summary {
-      font-size: 13px;
+      font-size: calc(13px * var(--layout-scale, 1));
       line-height: 1.3;
       margin: 0;
     }
 
     .inspect-meta {
-      font-size: 11px;
-      gap: 6px;
+      font-size: calc(11px * var(--layout-scale, 1));
+      gap: calc(6px * var(--layout-scale, 1));
     }
 
     .inspect-meta span {
-      padding: 3px 6px;
+      padding: calc(3px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     }
 
     .actions {
-      gap: 6px;
+      gap: calc(6px * var(--layout-scale, 1));
     }
 
     .accept,
     .skip {
       height: 48px;
-      font-size: 14px;
+      font-size: calc(14px * var(--layout-scale, 1));
       border-radius: 8px;
     }
   }

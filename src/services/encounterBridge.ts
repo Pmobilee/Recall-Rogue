@@ -31,6 +31,7 @@ import { updateBounties } from './bountyManager';
 import { juiceManager } from './juiceManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
+import { MECHANIC_BY_ID } from '../data/mechanics';
 import { analyticsService } from './analyticsService';
 import { isSubscriber } from './subscriptionService';
 import {
@@ -147,6 +148,56 @@ export function hydrateEncounterSnapshot(snapshot?: EncounterSnapshot | null): v
   }
   activeDeck = snapshot.activeDeck ? cloneDeck(snapshot.activeDeck) : null
   activeRunPool = (snapshot.activeRunPool ?? []).map(cloneCard)
+}
+
+/** Simplify starter deck: mostly basic Strike/Block, with a few advanced sprinkled in. */
+function simplifyStarterMechanics(deck: Card[]): Card[] {
+  // Step 1: Reset all attack/shield cards to basics
+  const result = deck.map(card => {
+    if (card.cardType === 'attack') {
+      const m = MECHANIC_BY_ID['strike'];
+      return { ...card, mechanicId: m.id, mechanicName: m.name, baseEffectValue: m.baseValue, originalBaseEffectValue: m.baseValue, apCost: m.apCost };
+    }
+    if (card.cardType === 'shield') {
+      const m = MECHANIC_BY_ID['block'];
+      return { ...card, mechanicId: m.id, mechanicName: m.name, baseEffectValue: m.baseValue, originalBaseEffectValue: m.baseValue, apCost: m.apCost };
+    }
+    return card;
+  });
+
+  // Step 2: Upgrade 2-3 random cards to advanced mechanics
+  const attacks = result.filter(c => c.cardType === 'attack');
+  const shields = result.filter(c => c.cardType === 'shield');
+
+  // Upgrade 1 attack to multi_hit
+  const multiHit = MECHANIC_BY_ID['multi_hit'];
+  if (multiHit && attacks.length >= 2) {
+    const idx = Math.floor(Math.random() * attacks.length);
+    const card = attacks[idx];
+    Object.assign(card, {
+      mechanicId: multiHit.id,
+      mechanicName: multiHit.name,
+      baseEffectValue: multiHit.baseValue,
+      originalBaseEffectValue: multiHit.baseValue,
+      apCost: multiHit.apCost,
+    });
+  }
+
+  // Upgrade 1 shield to thorns
+  const thorns = MECHANIC_BY_ID['thorns'];
+  if (thorns && shields.length >= 2) {
+    const idx = Math.floor(Math.random() * shields.length);
+    const card = shields[idx];
+    Object.assign(card, {
+      mechanicId: thorns.id,
+      mechanicName: thorns.name,
+      baseEffectValue: thorns.baseValue,
+      originalBaseEffectValue: thorns.baseValue,
+      apCost: thorns.apCost,
+    });
+  }
+
+  return result;
 }
 
 function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[] {
@@ -329,7 +380,9 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       console.warn('[encounterBridge] Empty run pool — cannot start encounter');
       return false;
     }
-    const starterDeck = buildStarterDeckFromRunPool(activeRunPool, run.starterDeckSize);
+    const starterDeck = simplifyStarterMechanics(
+      buildStarterDeckFromRunPool(activeRunPool, run.starterDeckSize)
+    );
     activeDeck = createDeck(starterDeck);
   }
 

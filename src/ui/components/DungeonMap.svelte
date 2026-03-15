@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import type { ActMap, MapNode } from '../../services/mapGenerator'
   import MapNodeComponent from './MapNode.svelte'
+  import { BASE_WIDTH } from '../../data/layout'
 
   // =========================================================
   // Props
@@ -17,7 +18,22 @@
   let { map, playerHp, playerMaxHp, onNodeSelect }: Props = $props()
 
   // =========================================================
-  // Constants
+  // Layout scale helper
+  // =========================================================
+
+  /**
+   * Read the CSS `--layout-scale` custom property set on :root by the
+   * responsive layout system. Falls back to 1 during SSR or if the
+   * property is not yet set.
+   */
+  function getLayoutScale(): number {
+    if (typeof window === 'undefined') return 1
+    const val = getComputedStyle(document.documentElement).getPropertyValue('--layout-scale')
+    return parseFloat(val) || 1
+  }
+
+  // =========================================================
+  // Constants (base values — designed for BASE_WIDTH = 390px)
   // =========================================================
 
   const SEGMENT_NAMES: Record<1 | 2 | 3 | 4, string> = {
@@ -27,12 +43,12 @@
     4: 'The Archive',
   }
 
-  /** Total height of the scrollable map canvas in pixels. */
-  const TOTAL_MAP_HEIGHT = 1350
-  /** Horizontal padding so edge nodes don't clip. */
-  const H_PADDING = 28
-  /** Vertical padding so the top/bottom nodes don't clip the canvas edges. */
-  const V_PADDING = 44
+  /** Total height of the scrollable map canvas in pixels (base, unscaled). */
+  const BASE_MAP_HEIGHT = 1350
+  /** Horizontal padding so edge nodes don't clip (base, unscaled). */
+  const BASE_H_PADDING = 28
+  /** Vertical padding so the top/bottom nodes don't clip the canvas edges (base, unscaled). */
+  const BASE_V_PADDING = 44
   /** Max container width for tablet/desktop — keep it mobile-feeling. */
   const MAX_WIDTH = 500
 
@@ -41,7 +57,15 @@
   // =========================================================
 
   let scrollContainer = $state<HTMLDivElement | undefined>(undefined)
-  let containerWidth  = $state(Math.min(typeof window !== 'undefined' ? window.innerWidth : 390, MAX_WIDTH))
+  let containerWidth  = $state(Math.min(typeof window !== 'undefined' ? window.innerWidth : BASE_WIDTH, MAX_WIDTH))
+
+  /** Current layout scale factor, read once on mount and updated on resize. */
+  let layoutScale = $state(1)
+
+  /** Scaled map constants derived from layoutScale. */
+  let TOTAL_MAP_HEIGHT = $derived(BASE_MAP_HEIGHT * layoutScale)
+  let H_PADDING = $derived(BASE_H_PADDING * layoutScale)
+  let V_PADDING = $derived(BASE_V_PADDING * layoutScale)
 
   /** Segment name derived from act segment number. */
   let segmentName = $derived(SEGMENT_NAMES[map.segment])
@@ -150,9 +174,14 @@
   // =========================================================
 
   onMount(() => {
+    // Capture initial layout scale
+    layoutScale = getLayoutScale()
+
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         containerWidth = Math.min(entry.contentRect.width, MAX_WIDTH)
+        // Re-read scale whenever the container resizes (viewport change)
+        layoutScale = getLayoutScale()
       }
     })
     if (scrollContainer) observer.observe(scrollContainer)
@@ -251,12 +280,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     pointer-events: none; /* allow touch-through to map */
   }
 
   .hud-title {
-    font-size: 20px;
+    font-size: calc(20px * var(--layout-scale, 1));
     color: #f1f5f9;
     margin: 0;
     letter-spacing: 0.5px;
@@ -265,16 +294,16 @@
   }
 
   .hp-bar-container {
-    width: min(340px, 88%);
+    width: min(calc(340px * var(--layout-scale, 1)), 88%);
     position: relative;
     pointer-events: none;
   }
 
   .hp-bar-bg {
     width: 100%;
-    height: 14px;
+    height: calc(14px * var(--layout-scale, 1));
     background: #1a2235;
-    border-radius: 7px;
+    border-radius: calc(7px * var(--layout-scale, 1));
     overflow: hidden;
     border: 1px solid #2a3448;
   }
@@ -282,7 +311,7 @@
   .hp-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #C0392B, #27AE60);
-    border-radius: 7px;
+    border-radius: calc(7px * var(--layout-scale, 1));
     transition: width 0.3s ease;
   }
 
@@ -291,7 +320,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     color: #e6edf3;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
@@ -384,7 +413,7 @@
     pointer-events: none;
     /* Offset upward slightly so the available row sits near the middle of
        the viewport rather than exactly at the centre edge. */
-    transform: translateY(-120px);
+    transform: translateY(calc(-120px * var(--layout-scale, 1)));
   }
 
   /* =========================================================

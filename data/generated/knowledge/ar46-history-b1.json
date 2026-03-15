@@ -1,0 +1,2082 @@
+[
+  {
+    "id": "history-sparta-agoge",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "Spartan boys entered the brutal agoge military training program at age 7, sleeping on reeds and enduring beatings to build toughness.",
+    "quizQuestion": "At what age did Spartan boys begin military training?",
+    "correctAnswer": "Age 7",
+    "distractors": [
+      "Age 5",
+      "Age 10",
+      "Age 12",
+      "Age 14",
+      "Age 6",
+      "Age 9",
+      "Age 15",
+      "Age 8"
+    ],
+    "acceptableAnswers": ["7", "age 7", "seven"],
+    "explanation": "The agoge was Sparta's rigorous state-run education and military training program. Boys left home at 7, lived in barracks, were deliberately underfed, and trained in combat, endurance, and loyalty to the state. Graduates who survived became full Spartan citizen-soldiers.",
+    "wowFactor": "Spartan 7-year-olds were deliberately starved and beaten — not as punishment, but as standard curriculum.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what age did Spartan boys enter military training?",
+        "answer": "Age 7",
+        "distractors": ["Age 10", "Age 12", "Age 5"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Spartan agoge training program began at what age?",
+        "answer": "7",
+        "distractors": ["10", "12", "5"]
+      },
+      {
+        "type": "true_false",
+        "question": "Spartan boys began military training at age 7. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Spartan boys entered the ___ military training program at age 7.",
+        "answer": "agoge",
+        "distractors": ["phalanx", "krypteia", "gymnasium"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Agoge",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References child military training and corporal punishment in ancient context",
+    "visualDescription": "Young Spartan boys in simple tunics training with wooden swords in a dusty courtyard, older warrior instructors watching sternly, pixel art style",
+    "tags": ["sparta", "ancient_greece", "military", "education", "agoge"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-sparta-thermopylae",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "At the Battle of Thermopylae in 480 BC, 300 Spartans held off a Persian army of possibly 100,000 for three days.",
+    "quizQuestion": "How many Spartans fought at Thermopylae against Persia?",
+    "correctAnswer": "300",
+    "distractors": [
+      "500",
+      "1,000",
+      "150",
+      "700",
+      "200",
+      "400",
+      "250",
+      "600"
+    ],
+    "acceptableAnswers": ["300", "three hundred"],
+    "explanation": "In 480 BC, King Leonidas led 300 Spartan warriors (plus thousands of Greek allies) to defend the narrow pass of Thermopylae against Xerxes I of Persia. The Spartans held for three days before being betrayed and surrounded. Their sacrifice became a legendary symbol of courage against impossible odds.",
+    "wowFactor": "300 Spartans held an entire Persian empire's army at bay for three days in history's most famous last stand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Spartans defended Thermopylae in 480 BC?",
+        "answer": "300",
+        "distractors": ["500", "1,000", "150"]
+      },
+      {
+        "type": "reverse",
+        "question": "The 300 Spartans at Thermopylae were led by which king?",
+        "answer": "Leonidas",
+        "distractors": ["Agamemnon", "Pericles", "Lysander"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Battle of Thermopylae was fought in 480 BC. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "King ___ led 300 Spartans at the Battle of Thermopylae.",
+        "answer": "Leonidas",
+        "distractors": ["Cleomenes", "Pausanias", "Agesilaus"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Thermopylae",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "300 Spartan warriors in red cloaks and bronze armor holding a narrow mountain pass against a vast Persian army, arrows darkening the sky, pixel art style",
+    "tags": ["sparta", "ancient_greece", "thermopylae", "leonidas", "persia"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-sparta-women",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "Spartan women had far more rights than other Greek women — they could own property, wrestle, and divorce their husbands.",
+    "quizQuestion": "What unusual right did Spartan women have unlike other Greeks?",
+    "correctAnswer": "Own property",
+    "distractors": [
+      "Vote in elections",
+      "Lead armies",
+      "Serve as priests",
+      "Attend Olympics",
+      "Rule as queens",
+      "Trade overseas",
+      "Join the Senate",
+      "Command ships"
+    ],
+    "acceptableAnswers": ["own property", "property rights", "property ownership"],
+    "explanation": "While Athenian women had almost no legal rights, Spartan women could own and inherit property, received physical education, competed in athletics, and could divorce their husbands. Since Spartan men were often away at war, women managed household finances and estates, giving them unusual social power.",
+    "wowFactor": "Spartan women could own land, get divorced, and wrestle — rights that most Western women wouldn't gain for 2,000 more years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What legal right did Spartan women uniquely possess?",
+        "answer": "Own property",
+        "distractors": ["Vote in elections", "Lead armies", "Attend Olympics"]
+      },
+      {
+        "type": "reverse",
+        "question": "Spartan women's property rights set them apart from women of which rival city?",
+        "answer": "Athens",
+        "distractors": ["Corinth", "Thebes", "Argos"]
+      },
+      {
+        "type": "true_false",
+        "question": "Spartan women could legally own property unlike most Greek women. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Unlike Athenian women, Spartan women could ___ property.",
+        "answer": "own",
+        "distractors": ["trade", "inherit only from", "borrow against"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Women_in_ancient_Sparta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Spartan woman in athletic garb managing a scroll of property deeds outside a stone estate, other women training in the background, pixel art style",
+    "tags": ["sparta", "ancient_greece", "women", "rights", "social_history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-al-biruni-india",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "islamic_golden_age",
+    "statement": "Al-Biruni spent 13 years in India after Mahmud of Ghazni's conquests, learning Sanskrit and writing the first scientific study of Indian culture.",
+    "quizQuestion": "How many years did Al-Biruni spend studying India?",
+    "correctAnswer": "13 years",
+    "distractors": [
+      "5 years",
+      "20 years",
+      "7 years",
+      "25 years",
+      "10 years",
+      "30 years",
+      "3 years",
+      "15 years"
+    ],
+    "acceptableAnswers": ["13 years", "13", "thirteen years", "thirteen"],
+    "explanation": "After accompanying Mahmud of Ghazni's invasions of India around 1017, Al-Biruni spent about 13 years mastering Sanskrit and studying Hindu religion, philosophy, science, and culture. His resulting work 'Kitab ul-Hind' (Book of India) is one of the first examples of comparative anthropology in history.",
+    "wowFactor": "Al-Biruni learned Sanskrit from scratch and wrote a 1,000-year-ahead-of-its-time comparative anthropology of India.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Al-Biruni spend in India studying its culture?",
+        "answer": "13 years",
+        "distractors": ["5 years", "20 years", "7 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Al-Biruni's book 'Kitab ul-Hind' was a study of which country?",
+        "answer": "India",
+        "distractors": ["Persia", "China", "Egypt"]
+      },
+      {
+        "type": "true_false",
+        "question": "Al-Biruni learned Sanskrit to study Indian culture firsthand. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Al-Biruni's masterwork on India was called Kitab ul-___.",
+        "answer": "Hind",
+        "distractors": ["Islam", "Ilm", "Alam"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Al-Biruni",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scholarly Persian man in a turban surrounded by Sanskrit scrolls and astronomical instruments in a stone library, pixel art style",
+    "tags": ["al-biruni", "islamic_golden_age", "scholarship", "india", "medieval"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-al-biruni-earth",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "islamic_golden_age",
+    "statement": "Al-Biruni calculated Earth's circumference to within 1% of the correct value in the 11th century using trigonometry from a mountain.",
+    "quizQuestion": "What did Al-Biruni calculate to near-perfect accuracy from a mountain?",
+    "correctAnswer": "Earth's circumference",
+    "distractors": [
+      "Earth's age",
+      "Sun's distance",
+      "Moon's size",
+      "Earth's weight",
+      "Nile's length",
+      "Ocean's depth",
+      "Sky's height",
+      "Earth's tilt"
+    ],
+    "acceptableAnswers": ["earth's circumference", "circumference of earth", "earth circumference"],
+    "explanation": "Al-Biruni developed an ingenious trigonometric method: he measured the dip angle of the horizon from a mountain peak and used the mountain's height to calculate Earth's radius. His result was approximately 6,339.6 km — within 1% of the modern accepted value of 6,356 km at the poles.",
+    "wowFactor": "Al-Biruni calculated Earth's circumference almost perfectly in 1020 AD — using just a mountain, a protractor, and math.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What planetary measurement did Al-Biruni calculate using a mountain?",
+        "answer": "Earth's circumference",
+        "distractors": ["Earth's age", "Sun's distance", "Moon's size"]
+      },
+      {
+        "type": "reverse",
+        "question": "Al-Biruni's mountain-based calculation was accurate to within what percentage?",
+        "answer": "1%",
+        "distractors": ["5%", "10%", "15%"]
+      },
+      {
+        "type": "true_false",
+        "question": "Al-Biruni calculated Earth's circumference accurately using trigonometry. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Al-Biruni used ___ from a mountain peak to calculate Earth's size.",
+        "answer": "trigonometry",
+        "distractors": ["astronomy", "geometry", "alchemy"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Al-Biruni",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A medieval Persian scholar on a mountain summit measuring the horizon angle with a geometric instrument, a globe diagram sketched on parchment beside him, pixel art style",
+    "tags": ["al-biruni", "science", "medieval", "earth", "islamic_golden_age"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-palmyra-zenobia",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "Queen Zenobia of Palmyra conquered Egypt and challenged Rome itself, ruling a breakaway empire in the 3rd century AD.",
+    "quizQuestion": "Which queen of Palmyra challenged the Roman Empire?",
+    "correctAnswer": "Zenobia",
+    "distractors": [
+      "Cleopatra",
+      "Boudica",
+      "Tomyris",
+      "Dido",
+      "Nefertiti",
+      "Artemisia",
+      "Sheba",
+      "Hatshepsut"
+    ],
+    "acceptableAnswers": ["zenobia", "queen zenobia"],
+    "explanation": "Queen Zenobia ruled Palmyra after her husband's death in 268 AD. She launched bold military campaigns, seizing Roman Egypt and Anatolia, and declared herself and her son rulers of the Palmyrene Empire — directly challenging Rome. Emperor Aurelian finally defeated her in 272 AD and brought her to Rome.",
+    "wowFactor": "Palmyra's warrior queen conquered Egypt and defied Rome — she was captured only because the entire empire mobilized against her.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of Palmyra's queen who defied Rome?",
+        "answer": "Zenobia",
+        "distractors": ["Cleopatra", "Boudica", "Tomyris"]
+      },
+      {
+        "type": "reverse",
+        "question": "Zenobia of Palmyra conquered which Roman province in 270 AD?",
+        "answer": "Egypt",
+        "distractors": ["Gaul", "Britain", "Spain"]
+      },
+      {
+        "type": "true_false",
+        "question": "Zenobia of Palmyra declared herself ruler of a breakaway empire challenging Rome. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Queen Zenobia was defeated and captured by Roman Emperor ___.",
+        "answer": "Aurelian",
+        "distractors": ["Diocletian", "Constantine", "Trajan"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zenobia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A warrior queen in gilded armor riding a horse through grand desert city gates with Roman eagle standards visible in the distance, pixel art style",
+    "tags": ["palmyra", "zenobia", "ancient_rome", "queen", "ancient_near_east"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-palmyra-silk-road",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "Palmyra sat at the crossroads of Silk Road trade, growing rich as a caravan city connecting Rome to Persia and China.",
+    "quizQuestion": "What trade route made Palmyra extraordinarily wealthy?",
+    "correctAnswer": "Silk Road",
+    "distractors": [
+      "Amber Route",
+      "Spice Route",
+      "Incense Road",
+      "Roman Road",
+      "Persian Highway",
+      "Nile Route",
+      "Salt Road",
+      "Mediterranean Way"
+    ],
+    "acceptableAnswers": ["silk road", "the silk road"],
+    "explanation": "Palmyra flourished as a vital Silk Road hub from the 1st to 3rd centuries AD. Its location in the Syrian desert made it a necessary stop for caravans carrying silk, spices, and luxury goods between the Roman Empire and Persia. The city's wealth is evident in its stunning colonnaded streets and monumental architecture.",
+    "wowFactor": "Palmyra became one of the ancient world's richest cities simply by being in the right spot on the right road.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ancient trade route made Palmyra wealthy?",
+        "answer": "Silk Road",
+        "distractors": ["Amber Route", "Spice Route", "Incense Road"]
+      },
+      {
+        "type": "reverse",
+        "question": "Palmyra connected Rome to which eastern empire via trade?",
+        "answer": "Persia",
+        "distractors": ["China", "India", "Egypt"]
+      },
+      {
+        "type": "true_false",
+        "question": "Palmyra was an important Silk Road trading city in the Syrian desert. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Palmyra was called a ___ city because merchants rested there on long journeys.",
+        "answer": "caravan",
+        "distractors": ["desert", "gateway", "fortress"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmyra",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grand desert city with colonnaded stone avenues lined with statues, silk-laden camel caravans passing under a Roman arch, pixel art style",
+    "tags": ["palmyra", "silk_road", "trade", "ancient_near_east", "caravan"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-trojan-war-wooden-horse",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "The Greeks ended a 10-year siege of Troy by hiding soldiers inside a giant wooden horse presented as a gift to the Trojans.",
+    "quizQuestion": "What trick did the Greeks use to finally enter Troy?",
+    "correctAnswer": "Wooden horse",
+    "distractors": [
+      "Bribed guards",
+      "Fake surrender",
+      "Tunnel under walls",
+      "Disguised merchants",
+      "Flooding the city",
+      "Poison water supply",
+      "Catapult assault",
+      "Fire ships"
+    ],
+    "acceptableAnswers": ["wooden horse", "trojan horse", "the wooden horse"],
+    "explanation": "After nearly a decade of siege, the Greek hero Odysseus devised a plan: build a massive wooden horse, hide elite warriors inside, and leave it as a supposed religious offering. The Trojans dragged it inside their walls. That night the Greeks slipped out and opened Troy's gates, ending the war.",
+    "wowFactor": "The most famous military deception in history — an entire army hid inside a gift horse, and it actually worked.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What deceptive gift let Greeks enter Troy's walls?",
+        "answer": "Wooden horse",
+        "distractors": ["Bribed guards", "Fake surrender", "Tunnel assault"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Trojan Horse plan was devised by which Greek hero?",
+        "answer": "Odysseus",
+        "distractors": ["Achilles", "Ajax", "Agamemnon"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Greeks hid soldiers inside a wooden horse to sneak into Troy. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Greeks presented a large wooden ___ as a fake religious offering to Troy.",
+        "answer": "horse",
+        "distractors": ["bull", "chariot", "ship"]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trojan_Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive wooden horse on wheels being pulled through ornate city gates by celebrating Trojan citizens, Greek soldiers hidden inside visible through a crack, pixel art style",
+    "tags": ["trojan_war", "troy", "odysseus", "ancient_greece", "military_strategy"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-trojan-war-helen",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "The Trojan War was mythologically started when Paris of Troy abducted or eloped with Helen, wife of Spartan King Menelaus.",
+    "quizQuestion": "Who was the Trojan War supposedly fought over?",
+    "correctAnswer": "Helen of Troy",
+    "distractors": [
+      "Cassandra of Troy",
+      "Penelope of Ithaca",
+      "Andromache",
+      "Hecuba of Troy",
+      "Aphrodite",
+      "Clytemnestra",
+      "Briseis",
+      "Circe"
+    ],
+    "acceptableAnswers": ["helen", "helen of troy", "helen of sparta"],
+    "explanation": "According to Greek mythology, Helen was the most beautiful woman in the world, married to Spartan King Menelaus. When Trojan prince Paris took her to Troy (whether by abduction or elopement varies by source), Menelaus assembled a coalition of Greek kings to retrieve her, launching the decade-long Trojan War.",
+    "wowFactor": "The face that launched a thousand ships — the entire Trojan War myth hinges on a single woman's departure from Greece.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who did mythological accounts say caused the Trojan War?",
+        "answer": "Helen of Troy",
+        "distractors": ["Cassandra", "Penelope", "Andromache"]
+      },
+      {
+        "type": "reverse",
+        "question": "Helen of Troy was originally the wife of which Spartan king?",
+        "answer": "Menelaus",
+        "distractors": ["Agamemnon", "Odysseus", "Achilles"]
+      },
+      {
+        "type": "true_false",
+        "question": "Helen's abduction by Paris of Troy supposedly sparked the Trojan War. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Helen was called 'the face that launched a thousand ___.'",
+        "answer": "ships",
+        "distractors": ["swords", "arrows", "armies"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Helen_of_Troy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A radiant woman in flowing Greek robes standing on the walls of Troy watching Greek warships fill the horizon, pixel art style",
+    "tags": ["trojan_war", "helen", "troy", "mythology", "ancient_greece"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-trojan-war-achilles-heel",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "Achilles, the greatest Greek warrior at Troy, was invulnerable everywhere except his heel — where an arrow from Paris finally killed him.",
+    "quizQuestion": "Where was Achilles' only vulnerability?",
+    "correctAnswer": "His heel",
+    "distractors": [
+      "His neck",
+      "His wrist",
+      "His eye",
+      "His shoulder",
+      "His knee",
+      "His ankle",
+      "His throat",
+      "His back"
+    ],
+    "acceptableAnswers": ["heel", "his heel", "the heel"],
+    "explanation": "According to legend, Achilles' mother Thetis dipped him in the River Styx as a baby to make him invulnerable, but held him by the heel — leaving it unprotected. At Troy, the god Apollo guided Paris's arrow to strike Achilles' heel, killing the otherwise unstoppable hero. Today 'Achilles heel' means anyone's critical weakness.",
+    "wowFactor": "The phrase 'Achilles heel' for a fatal weakness comes from this 3,000-year-old myth — one of language's most durable legacies.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Achilles' only vulnerable spot in Greek myth?",
+        "answer": "His heel",
+        "distractors": ["His neck", "His wrist", "His eye"]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose arrow killed Achilles by striking his heel at Troy?",
+        "answer": "Paris",
+        "distractors": ["Hector", "Priam", "Aeneas"]
+      },
+      {
+        "type": "true_false",
+        "question": "Achilles was made invulnerable by being dipped in the River Styx as a baby. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Achilles' mother held him by the ___ when dipping him in the Styx.",
+        "answer": "heel",
+        "distractors": ["ankle", "foot", "toe"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Achilles%27_heel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A heroic Greek warrior in golden armor striding through battle, a glowing arrow aimed at the back of his unarmored heel, pixel art style",
+    "tags": ["trojan_war", "achilles", "mythology", "ancient_greece", "language"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-akhenaten-monotheism",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Pharaoh Akhenaten banned all Egyptian gods except Aten the sun disk, making Egypt briefly monotheistic around 1353 BC.",
+    "quizQuestion": "Which pharaoh made Egypt briefly worship only one god?",
+    "correctAnswer": "Akhenaten",
+    "distractors": [
+      "Ramesses II",
+      "Tutankhamun",
+      "Thutmose III",
+      "Amenhotep II",
+      "Seti I",
+      "Horemheb",
+      "Hatshepsut",
+      "Khufu"
+    ],
+    "acceptableAnswers": ["akhenaten", "amenhotep iv"],
+    "explanation": "Pharaoh Amenhotep IV renamed himself Akhenaten ('Servant of Aten') and launched a religious revolution: he closed temples of all traditional gods, erased their names from monuments, and declared Aten the sole deity. This is considered the world's first recorded attempt at state monotheism. After his death, Egypt quickly reverted to polytheism.",
+    "wowFactor": "Akhenaten invented state monotheism 1,300 years before Christianity — and Egypt abandoned it almost immediately after he died.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which pharaoh attempted to make Egypt monotheistic around 1350 BC?",
+        "answer": "Akhenaten",
+        "distractors": ["Ramesses II", "Tutankhamun", "Thutmose III"]
+      },
+      {
+        "type": "reverse",
+        "question": "Akhenaten declared only which sun god should be worshipped?",
+        "answer": "Aten",
+        "distractors": ["Ra", "Amun", "Osiris"]
+      },
+      {
+        "type": "true_false",
+        "question": "Akhenaten is credited with the world's first recorded attempt at state monotheism. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Akhenaten banned all gods except ___, the sun disk deity.",
+        "answer": "Aten",
+        "distractors": ["Ra", "Amun", "Horus"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akhenaten",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses religious change; appropriate as historical fact",
+    "visualDescription": "An elongated pharaoh with unusual features raising his hands to a blazing sun disk, priests chiseling out other gods' names from temple walls behind him, pixel art style",
+    "tags": ["akhenaten", "ancient_egypt", "religion", "monotheism", "pharaoh"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-akhenaten-amarna",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Akhenaten built an entirely new capital city called Akhetaten (modern Amarna) in the desert to escape the old gods' priests.",
+    "quizQuestion": "What new capital did Akhenaten build to escape old priests?",
+    "correctAnswer": "Akhetaten",
+    "distractors": [
+      "Memphis",
+      "Thebes",
+      "Heliopolis",
+      "Alexandria",
+      "Luxor",
+      "Karnak",
+      "Abydos",
+      "Avaris"
+    ],
+    "acceptableAnswers": ["akhetaten", "amarna", "tell el-amarna"],
+    "explanation": "To break the power of Amun's priests and establish his new religion, Akhenaten built a brand-new city from scratch on virgin desert ground — Akhetaten (Horizon of Aten), known today as Amarna. Within a year of his death, it was abandoned, and his name was struck from official records. His successors called him 'the criminal of Akhetaten.'",
+    "wowFactor": "Akhenaten built an entire city from scratch just to escape rival priests — and it was completely abandoned within a decade of his death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What city did Akhenaten build as his new religious capital?",
+        "answer": "Akhetaten",
+        "distractors": ["Memphis", "Thebes", "Heliopolis"]
+      },
+      {
+        "type": "reverse",
+        "question": "The ancient city of Akhetaten is known by what modern name?",
+        "answer": "Amarna",
+        "distractors": ["Luxor", "Karnak", "Abydos"]
+      },
+      {
+        "type": "true_false",
+        "question": "Akhenaten's capital city Akhetaten was abandoned shortly after his death. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After Akhenaten's death, his successors called him 'the criminal of ___.'",
+        "answer": "Akhetaten",
+        "distractors": ["Egypt", "Thebes", "Aten"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amarna",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gleaming new white-stone city rising from bare desert cliffs, workers constructing grand temples to the sun disk while the pharaoh watches from a golden chariot, pixel art style",
+    "tags": ["akhenaten", "amarna", "ancient_egypt", "religion", "architecture"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-nefertiti-bust",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "The famous bust of Nefertiti, carved around 1345 BC, was discovered in 1912 and is now one of the world's most recognizable ancient artworks.",
+    "quizQuestion": "In what year was Nefertiti's famous bust discovered?",
+    "correctAnswer": "1912",
+    "distractors": [
+      "1922",
+      "1899",
+      "1934",
+      "1885",
+      "1905",
+      "1945",
+      "1867",
+      "1876"
+    ],
+    "acceptableAnswers": ["1912"],
+    "explanation": "German archaeologist Ludwig Borchardt unearthed the painted limestone bust of Nefertiti at Amarna in 1912. He allegedly concealed its true value during export — it ended up in Berlin's Neues Museum. Egypt has repeatedly requested its return. The bust is considered one of the finest examples of ancient Egyptian art.",
+    "wowFactor": "Nefertiti's bust was smuggled out of Egypt in 1912 and Egypt has been demanding it back for over 100 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When was Nefertiti's famous bust discovered by archaeologists?",
+        "answer": "1912",
+        "distractors": ["1922", "1899", "1934"]
+      },
+      {
+        "type": "reverse",
+        "question": "Nefertiti's bust is currently housed in which city's museum?",
+        "answer": "Berlin",
+        "distractors": ["Cairo", "London", "Paris"]
+      },
+      {
+        "type": "true_false",
+        "question": "Nefertiti's famous bust was discovered in 1912 at the site of Amarna. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nefertiti's bust was found by German archaeologist Ludwig ___.",
+        "answer": "Borchardt",
+        "distractors": ["Schliemann", "Carter", "Petrie"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nefertiti_bust",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The iconic painted limestone bust with the tall blue crown and perfect symmetrical features displayed in a museum case, archaeologists nearby with dusty excavation equipment, pixel art style",
+    "tags": ["nefertiti", "ancient_egypt", "archaeology", "art", "museum"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-nefertiti-power",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Nefertiti is depicted smiting enemies in royal poses normally reserved for pharaohs, suggesting she may have co-ruled Egypt with Akhenaten.",
+    "quizQuestion": "What unusual depiction of Nefertiti suggests she co-ruled Egypt?",
+    "correctAnswer": "Smiting enemies",
+    "distractors": [
+      "Commanding armies",
+      "Wearing pharaoh crown",
+      "Holding royal scepter",
+      "Seated on throne",
+      "Leading ceremonies",
+      "Holding ankh symbol",
+      "Riding war chariot",
+      "Offering to gods"
+    ],
+    "acceptableAnswers": ["smiting enemies", "smiting pose", "warrior pose"],
+    "explanation": "Wall carvings at Amarna show Nefertiti in the traditional 'smiting pose' — arm raised to strike a kneeling enemy — a posture exclusively used by pharaohs in Egyptian art. Some scholars believe she ruled as co-pharaoh under the name Neferneferuaten or even as the pharaoh Smenkhkare after Akhenaten's death.",
+    "wowFactor": "Nefertiti might have actually been pharaoh — hidden in plain sight under a male name for over 3,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Nefertiti was carved in which pose normally reserved for pharaohs only?",
+        "answer": "Smiting enemies",
+        "distractors": ["Wearing pharaoh crown", "Seated on throne", "Holding royal scepter"]
+      },
+      {
+        "type": "reverse",
+        "question": "Some scholars believe Nefertiti ruled as pharaoh under the name Neferneferuaten or which other name?",
+        "answer": "Smenkhkare",
+        "distractors": ["Horemheb", "Ay", "Thutmose"]
+      },
+      {
+        "type": "true_false",
+        "question": "Nefertiti is depicted smiting enemies — a pose exclusively used by pharaohs. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Some scholars believe Nefertiti ruled as co-___ alongside Akhenaten.",
+        "answer": "pharaoh",
+        "distractors": ["priestess", "regent", "advisor"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nefertiti",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A powerful Egyptian queen in pharaoh regalia striking a dramatic pose on a throne room wall carving, other courtiers bowing around her, pixel art style",
+    "tags": ["nefertiti", "ancient_egypt", "pharaoh", "women", "power"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-phoenicia-alphabet",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The Phoenicians invented the alphabet around 1050 BC — 22 letters that became the ancestor of Greek, Latin, and all modern Western alphabets.",
+    "quizQuestion": "How many letters did the original Phoenician alphabet have?",
+    "correctAnswer": "22 letters",
+    "distractors": [
+      "26 letters",
+      "18 letters",
+      "30 letters",
+      "24 letters",
+      "16 letters",
+      "28 letters",
+      "20 letters",
+      "32 letters"
+    ],
+    "acceptableAnswers": ["22", "22 letters", "twenty-two"],
+    "explanation": "The Phoenician alphabet, developed around 1050 BC, had 22 consonantal letters and no vowels. It was the first widely-used alphabet and spread rapidly through Mediterranean trade networks. The Greeks adopted it and added vowels, creating the basis for Latin, and eventually all European alphabets. Every letter you're reading now traces back to Phoenicia.",
+    "wowFactor": "Every alphabet used in Europe, the Americas, and beyond ultimately descends from 22 letters invented by Phoenician merchants 3,000 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many letters were in the original Phoenician alphabet?",
+        "answer": "22 letters",
+        "distractors": ["26 letters", "18 letters", "24 letters"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Phoenician alphabet was the ancestor of which civilization's writing?",
+        "answer": "Greek",
+        "distractors": ["Egyptian", "Sumerian", "Persian"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Phoenician alphabet had no vowels — only consonants. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Phoenician alphabet was adopted by the ___ who then added vowels.",
+        "answer": "Greeks",
+        "distractors": ["Romans", "Persians", "Egyptians"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stone tablets engraved with angular Phoenician letters beside a Mediterranean trading ship, merchants pointing at the script, pixel art style",
+    "tags": ["phoenicia", "alphabet", "writing", "ancient_near_east", "language"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-phoenicia-purple",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "Phoenicians were famous for Tyrian purple dye, extracted from sea snails — it took 12,000 snails to make 1.4 grams of dye, making it worth more than gold.",
+    "quizQuestion": "How many snails were needed to make 1.4g of Tyrian purple dye?",
+    "correctAnswer": "12,000 snails",
+    "distractors": [
+      "1,000 snails",
+      "5,000 snails",
+      "50,000 snails",
+      "100 snails",
+      "25,000 snails",
+      "3,000 snails",
+      "8,000 snails",
+      "500 snails"
+    ],
+    "acceptableAnswers": ["12,000", "12000", "twelve thousand"],
+    "explanation": "Tyrian purple was extracted from the glands of murex sea snails. The dye was extraordinarily expensive to produce — 12,000 snails yielded just 1.4 grams, making it more valuable than gold by weight. It became the color of royalty across the ancient world. 'Phoenicia' itself likely derives from the Greek word for purple.",
+    "wowFactor": "Phoenician purple dye cost more than gold per gram — it took 12,000 sea snails to fill a single thimble.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many snails produced just 1.4 grams of Tyrian purple dye?",
+        "answer": "12,000 snails",
+        "distractors": ["5,000 snails", "50,000 snails", "1,000 snails"]
+      },
+      {
+        "type": "reverse",
+        "question": "Tyrian purple dye was so expensive it was worth more than what precious material?",
+        "answer": "Gold",
+        "distractors": ["Silver", "Silk", "Ivory"]
+      },
+      {
+        "type": "true_false",
+        "question": "The name 'Phoenicia' likely derives from the Greek word for purple. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tyrian purple was extracted from the glands of ___ sea snails.",
+        "answer": "murex",
+        "distractors": ["oyster", "clam", "conch"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tyrian_purple",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Piles of murex snail shells beside steaming vats of brilliant purple dye, Phoenician traders displaying purple-robed garments to wealthy Mediterranean buyers, pixel art style",
+    "tags": ["phoenicia", "purple_dye", "trade", "ancient_near_east", "luxury"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-inquisition-start",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "medieval_europe",
+    "statement": "The Medieval Inquisition was established in 1184 by Pope Lucius III to combat the Cathar heresy spreading through southern France.",
+    "quizQuestion": "What heresy prompted the founding of the Medieval Inquisition?",
+    "correctAnswer": "Catharism",
+    "distractors": [
+      "Lutheranism",
+      "Waldensianism",
+      "Arianism",
+      "Donatism",
+      "Albigensianism",
+      "Bogomilism",
+      "Nestorianism",
+      "Pelagianism"
+    ],
+    "acceptableAnswers": ["catharism", "cathar heresy", "cathars"],
+    "explanation": "Pope Lucius III established the first Inquisition in 1184 through the decree Ad abolendam, targeting Catharism — a dualist religious movement that rejected the physical world as evil and had spread widely through Languedoc (southern France) and northern Italy. Later the Spanish Inquisition (1478) became far more notorious.",
+    "wowFactor": "The Inquisition started specifically to fight a religion that believed the entire material world was created by the devil.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which heresy caused Pope Lucius III to found the Inquisition in 1184?",
+        "answer": "Catharism",
+        "distractors": ["Lutheranism", "Arianism", "Waldensianism"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Medieval Inquisition was established in what year by Pope Lucius III?",
+        "answer": "1184",
+        "distractors": ["1215", "1096", "1054"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Spanish Inquisition in 1478 was separate from the original Medieval Inquisition of 1184. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Catharism spread through southern ___ and northern Italy before the Inquisition targeted it.",
+        "answer": "France",
+        "distractors": ["Spain", "Germany", "England"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Medieval_Inquisition",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Historical religious persecution; presented as objective history",
+    "visualDescription": "Robed inquisitors with scrolls questioning kneeling villagers in a stone medieval courthouse, torches flickering on stone walls, pixel art style",
+    "tags": ["inquisition", "medieval", "cathars", "church", "heresy"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-inquisition-spanish",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "medieval_europe",
+    "statement": "The Spanish Inquisition, founded in 1478, executed between 3,000–5,000 people over 350 years — far fewer than popular myth suggests.",
+    "quizQuestion": "Approximately how many people did the Spanish Inquisition execute?",
+    "correctAnswer": "3,000–5,000",
+    "distractors": [
+      "500,000",
+      "50,000",
+      "100,000",
+      "1,000,000",
+      "10,000",
+      "1,000",
+      "200,000",
+      "25,000"
+    ],
+    "acceptableAnswers": ["3000-5000", "3,000 to 5,000", "around 5000", "3000 to 5000"],
+    "explanation": "Modern historians estimate the Spanish Inquisition executed between 3,000 and 5,000 people in its 350-year existence — a tragic toll, but far below the millions often claimed in popular culture. Most cases resulted in lighter penalties. The myth of mass executions was largely Protestant propaganda spread during the 'Black Legend' campaign against Spain.",
+    "wowFactor": "The 'terrifying' Spanish Inquisition executed far fewer people than many single battles of the era — most cases ended in penance, not death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many people did the Spanish Inquisition actually execute over 350 years?",
+        "answer": "3,000–5,000",
+        "distractors": ["100,000", "500,000", "10,000"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Spanish Inquisition was founded in what year?",
+        "answer": "1478",
+        "distractors": ["1184", "1492", "1517"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Spanish Inquisition's death toll was exaggerated by Protestant propaganda called the 'Black Legend.' True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The myth of Inquisition mass killings was largely spread as ___ propaganda against Spain.",
+        "answer": "Protestant",
+        "distractors": ["Ottoman", "French", "English"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spanish_Inquisition",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Historical religious persecution; counters common misconceptions",
+    "visualDescription": "A medieval court scene with robed officials reviewing scrolls, a defendant standing before them in a stone chamber, pixel art style",
+    "tags": ["inquisition", "spanish_inquisition", "medieval", "church", "history_myths"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-macedonia-philip-ii",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_greece",
+    "statement": "Philip II of Macedon invented the sarissa — an 18-foot pike — and the oblique phalanx tactic that made Macedonia unstoppable in battle.",
+    "quizQuestion": "How long was the Macedonian sarissa pike invented by Philip II?",
+    "correctAnswer": "18 feet",
+    "distractors": [
+      "8 feet",
+      "12 feet",
+      "25 feet",
+      "6 feet",
+      "10 feet",
+      "20 feet",
+      "15 feet",
+      "30 feet"
+    ],
+    "acceptableAnswers": ["18 feet", "18ft", "5.5 meters", "about 18 feet"],
+    "explanation": "Philip II of Macedon (Alexander's father) transformed his army by equipping infantry with the sarissa — a pike roughly 18 feet (5.5 meters) long, longer than any contemporary weapon. Combined with his oblique phalanx tactics, where stronger troops attacked diagonally to flank enemies, Macedonia became the dominant military power in Greece before Alexander's conquests.",
+    "wowFactor": "Alexander the Great's father invented the real secret weapon — an 18-foot pike so long the second rank could stab enemies the front rank hadn't even reached yet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long was the Macedonian sarissa pike?",
+        "answer": "18 feet",
+        "distractors": ["8 feet", "12 feet", "25 feet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Philip II of Macedon was the father of which famous conqueror?",
+        "answer": "Alexander the Great",
+        "distractors": ["Julius Caesar", "Pyrrhus", "Hannibal"]
+      },
+      {
+        "type": "true_false",
+        "question": "Philip II of Macedon invented the sarissa pike that made Macedonian armies dominant. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Philip II equipped his infantry with the sarissa, an 18-foot ___.",
+        "answer": "pike",
+        "distractors": ["sword", "spear", "lance"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sarissa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Macedonian infantry in tight formation holding enormous gleaming pikes that dwarf the soldiers, facing a stunned enemy line, pixel art style",
+    "tags": ["macedonia", "philip_ii", "military", "ancient_greece", "tactics"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-ramesses-ii-battle-of-kadesh",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Ramesses II fought the Battle of Kadesh (1274 BC) against the Hittites — it produced the world's oldest surviving peace treaty.",
+    "quizQuestion": "What battle led to the world's oldest surviving peace treaty?",
+    "correctAnswer": "Battle of Kadesh",
+    "distractors": [
+      "Battle of Megiddo",
+      "Battle of Marathon",
+      "Battle of Carchemish",
+      "Battle of Gaugamela",
+      "Battle of Troy",
+      "Battle of Thermopylae",
+      "Battle of Actium",
+      "Battle of Zama"
+    ],
+    "acceptableAnswers": ["battle of kadesh", "kadesh", "battle of qadesh"],
+    "explanation": "In 1274 BC, Ramesses II led Egypt against the Hittite Empire under Muwatalli II at Kadesh in Syria — the largest chariot battle in ancient history. Neither side decisively won, but about 16 years later both sides signed the Egyptian–Hittite peace treaty, the world's oldest surviving international peace agreement. Copies survive in both Luxor and Istanbul.",
+    "wowFactor": "The world's oldest peace treaty was signed after a battle neither side actually won — both armies went home claiming victory.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which battle between Egypt and the Hittites produced the oldest peace treaty?",
+        "answer": "Battle of Kadesh",
+        "distractors": ["Battle of Megiddo", "Battle of Marathon", "Battle of Carchemish"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Battle of Kadesh in 1274 BC was the largest ancient battle involving what weapon?",
+        "answer": "Chariots",
+        "distractors": ["Elephants", "Catapults", "Warships"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Egyptian-Hittite peace treaty after Kadesh is the world's oldest surviving international agreement. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramesses II fought the Hittite king ___ at the Battle of Kadesh.",
+        "answer": "Muwatalli II",
+        "distractors": ["Suppiluliuma", "Hattusili III", "Tudhaliya IV"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Massive chariot formations clashing on a dusty Syrian plain, Egyptian and Hittite warriors in elaborate armor fighting across a churned battlefield, pixel art style",
+    "tags": ["ramesses_ii", "ancient_egypt", "hittites", "battle_of_kadesh", "diplomacy"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-ramesses-ii-longevity",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Ramesses II reigned for 66 years and fathered over 100 children — his death at around age 90 caused a succession crisis.",
+    "quizQuestion": "How many years did Ramesses II reign as pharaoh?",
+    "correctAnswer": "66 years",
+    "distractors": [
+      "30 years",
+      "45 years",
+      "55 years",
+      "20 years",
+      "70 years",
+      "40 years",
+      "80 years",
+      "25 years"
+    ],
+    "acceptableAnswers": ["66 years", "66", "sixty-six years"],
+    "explanation": "Ramesses II ruled Egypt from approximately 1279 to 1213 BC — about 66 years, one of the longest reigns in ancient history. He fathered approximately 100 children with his many wives and concubines. He outlived at least 12 of his eldest sons before dying around age 90. When he died, Egypt had been ruled by the same pharaoh for so long that most people had never known another.",
+    "wowFactor": "Ramesses II lived so long that he outlived 12 of his own sons who were supposed to succeed him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Ramesses II reign as pharaoh of Egypt?",
+        "answer": "66 years",
+        "distractors": ["30 years", "45 years", "55 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ramesses II fathered approximately how many children?",
+        "answer": "Over 100",
+        "distractors": ["Over 20", "Over 50", "Over 200"]
+      },
+      {
+        "type": "true_false",
+        "question": "Ramesses II outlived at least 12 of his eldest sons during his reign. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramesses II died at approximately age ___, after a 66-year reign.",
+        "answer": "90",
+        "distractors": ["60", "70", "80"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramesses_II",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elderly but commanding pharaoh in full regalia seated on a golden throne, younger courtiers and children filling a vast palace hall, pixel art style",
+    "tags": ["ramesses_ii", "ancient_egypt", "pharaoh", "longevity", "dynasty"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-etruscans-rome-influence",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_rome",
+    "statement": "The Etruscans taught Rome the arch, gladiatorial combat, chariot racing, and the toga — Rome's civilization was largely built on Etruscan foundations.",
+    "quizQuestion": "Which architectural feature did the Etruscans teach the Romans to build?",
+    "correctAnswer": "The arch",
+    "distractors": [
+      "The dome",
+      "The column",
+      "The aqueduct",
+      "The vault",
+      "The pyramid",
+      "The forum",
+      "The amphitheater",
+      "The basilica"
+    ],
+    "acceptableAnswers": ["the arch", "arch", "arches"],
+    "explanation": "The Etruscans, who dominated central Italy before Rome's rise, were Rome's cultural parents. They introduced the arch and vault (foundations of Roman engineering), gladiatorial games, chariot racing, the toga, the fasces symbol, augury (reading omens), and even the practice of draining marshes. The first three kings of Rome (after its legendary founder Romulus) were Etruscan.",
+    "wowFactor": "Three of Rome's seven founding kings were Etruscan — Rome didn't conquer Etruscan culture, it inherited it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which key architectural innovation did Etruscans give to Roman civilization?",
+        "answer": "The arch",
+        "distractors": ["The dome", "The column", "The aqueduct"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Etruscans introduced gladiatorial combat to which civilization?",
+        "answer": "Rome",
+        "distractors": ["Greece", "Carthage", "Persia"]
+      },
+      {
+        "type": "true_false",
+        "question": "Three of Rome's early kings were Etruscan, not Roman. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Etruscans gave Rome the arch, toga, chariot racing, and ___ combat.",
+        "answer": "gladiatorial",
+        "distractors": ["naval", "Olympic", "wrestling"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Etruscan_civilization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Etruscan artisans in colorful tunics demonstrating arch construction techniques to attentive Roman apprentices in a hillside city, pixel art style",
+    "tags": ["etruscans", "ancient_rome", "architecture", "civilization", "influence"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-western-roman-empire-fall",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_rome",
+    "statement": "The Western Roman Empire officially fell in 476 AD when Germanic leader Odoacer deposed the last emperor, the teenager Romulus Augustulus.",
+    "quizQuestion": "Who was the last emperor of the Western Roman Empire?",
+    "correctAnswer": "Romulus Augustulus",
+    "distractors": [
+      "Honorius",
+      "Valentinian III",
+      "Julius Nepos",
+      "Glycerius",
+      "Libius Severus",
+      "Avitus",
+      "Majorian",
+      "Anthemius"
+    ],
+    "acceptableAnswers": ["romulus augustulus", "romulus augustus", "augustulus"],
+    "explanation": "In 476 AD, the Germanic chieftain Odoacer overthrew the 16-year-old emperor Romulus Augustulus, sending his regalia to the Eastern Emperor Zeno in Constantinople. This event is traditionally used as the 'fall of Rome' and the end of classical antiquity. Ironically, the last Roman emperor shared his name with Rome's legendary founder.",
+    "wowFactor": "The last Roman Emperor was a teenager named Romulus — the same name as Rome's legendary founder — like history's cruelest joke.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of the last Western Roman Emperor deposed in 476 AD?",
+        "answer": "Romulus Augustulus",
+        "distractors": ["Honorius", "Valentinian III", "Julius Nepos"]
+      },
+      {
+        "type": "reverse",
+        "question": "Germanic chieftain Odoacer deposed the last Western Roman Emperor in what year?",
+        "answer": "476 AD",
+        "distractors": ["410 AD", "455 AD", "500 AD"]
+      },
+      {
+        "type": "true_false",
+        "question": "The last Western Roman Emperor, Romulus Augustulus, was a teenager when deposed. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Western Roman Empire was split from the Eastern Empire in ___.",
+        "answer": "395 AD",
+        "distractors": ["330 AD", "410 AD", "284 AD"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A young emperor in oversized golden armor sitting on a crumbling throne, a Germanic warrior in rough furs holding out his hand for the imperial regalia, pixel art style",
+    "tags": ["western_roman_empire", "fall_of_rome", "romulus_augustulus", "ancient_rome", "odoacer"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-babylonia-hanging-gardens",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The Hanging Gardens of Babylon were one of the Seven Wonders of the Ancient World, yet no archaeological evidence of them has ever been found.",
+    "quizQuestion": "What's unique about the Hanging Gardens compared to other Seven Wonders?",
+    "correctAnswer": "No proof they existed",
+    "distractors": [
+      "They were destroyed by fire",
+      "They were built underground",
+      "They were made of gold",
+      "They were never completed",
+      "They were built by slaves",
+      "They were moved twice",
+      "They were submerged",
+      "They were made of glass"
+    ],
+    "acceptableAnswers": ["no proof they existed", "no archaeological evidence", "may not have existed", "possibly mythical"],
+    "explanation": "The Hanging Gardens of Babylon are described in classical sources as a spectacular terraced garden built in ancient Babylon (modern Iraq). However, unlike every other Seven Wonder, no Babylonian texts mention them, and archaeologists have found no physical trace. Some scholars believe they may have actually been in Nineveh, or may be entirely legendary.",
+    "wowFactor": "The Hanging Gardens are the only Wonder of the Ancient World that may never have actually existed — every other Wonder has physical evidence.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes the Hanging Gardens unique among Seven Wonders?",
+        "answer": "No proof they existed",
+        "distractors": ["Destroyed by fire", "Built underground", "Made of gold"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Hanging Gardens of Babylon were supposedly located in which modern country?",
+        "answer": "Iraq",
+        "distractors": ["Iran", "Syria", "Turkey"]
+      },
+      {
+        "type": "true_false",
+        "question": "No ancient Babylonian text actually mentions the Hanging Gardens. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Some scholars think the Hanging Gardens were actually located in ___, not Babylon.",
+        "answer": "Nineveh",
+        "distractors": ["Ur", "Nippur", "Persepolis"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hanging_Gardens_of_Babylon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lush tiered garden of exotic trees and waterfalls cascading from a massive zigguarat structure, with question marks floating above, pixel art style",
+    "tags": ["babylonia", "hanging_gardens", "seven_wonders", "ancient_near_east", "mystery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-babylonia-hammurabi-code",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The Code of Hammurabi (c. 1754 BC) was one of the earliest written legal codes, containing 282 laws covering everything from wages to divorce.",
+    "quizQuestion": "How many laws were in Hammurabi's famous legal code?",
+    "correctAnswer": "282 laws",
+    "distractors": [
+      "10 laws",
+      "100 laws",
+      "500 laws",
+      "50 laws",
+      "1,000 laws",
+      "150 laws",
+      "75 laws",
+      "400 laws"
+    ],
+    "acceptableAnswers": ["282", "282 laws", "two hundred eighty-two"],
+    "explanation": "Hammurabi, king of Babylon circa 1792–1750 BC, inscribed 282 laws on an 8-foot black diorite stele. The code covered contracts, property, wages, marriage, divorce, and criminal punishment. It's famous for 'an eye for an eye' principles, though the actual laws were far more nuanced — different punishments applied depending on social class.",
+    "wowFactor": "The 'eye for an eye' concept is 4,000 years old — but Hammurabi's actual code applied different punishments depending on whether you were rich or poor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many laws did Hammurabi's ancient legal code contain?",
+        "answer": "282 laws",
+        "distractors": ["10 laws", "100 laws", "500 laws"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hammurabi's legal code was inscribed on a stele made of what material?",
+        "answer": "Black diorite",
+        "distractors": ["Marble", "Limestone", "Bronze"]
+      },
+      {
+        "type": "true_false",
+        "question": "Hammurabi's Code applied different punishments depending on the accused's social class. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hammurabi's Code is dated to approximately ___ BC.",
+        "answer": "1754",
+        "distractors": ["2500", "1000", "3000"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Code_of_Hammurabi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tall black stone pillar covered in cuneiform text with a relief carving of a king receiving the law from a seated god, pixel art style",
+    "tags": ["babylonia", "hammurabi", "law", "ancient_near_east", "history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-parthian-empire-rome",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The Parthian Empire defeated Rome at the Battle of Carrhae (53 BC), killing Roman general Crassus and capturing his legionary eagle standards.",
+    "quizQuestion": "Which Roman general was killed by Parthia at the Battle of Carrhae?",
+    "correctAnswer": "Crassus",
+    "distractors": [
+      "Julius Caesar",
+      "Mark Antony",
+      "Pompey",
+      "Scipio",
+      "Lucullus",
+      "Brutus",
+      "Cassius",
+      "Sulla"
+    ],
+    "acceptableAnswers": ["crassus", "marcus crassus"],
+    "explanation": "Marcus Licinius Crassus, the richest man in Rome and one of the First Triumvirate, led 40,000 Roman troops against Parthia in 53 BC seeking military glory. The Parthians annihilated the Roman force at Carrhae using their horse archers' devastating 'Parthian shot' tactic — shooting backwards while fleeing. Crassus was killed during a treacherous parley, ending his political ambitions permanently.",
+    "wowFactor": "Rome's richest man invaded Parthia for military glory, got ambushed by cavalry that shot backwards while retreating, and had molten gold poured into his mouth after death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Roman leader was killed at the Parthian Battle of Carrhae in 53 BC?",
+        "answer": "Crassus",
+        "distractors": ["Julius Caesar", "Mark Antony", "Pompey"]
+      },
+      {
+        "type": "reverse",
+        "question": "The 'Parthian shot' tactic involved cavalry shooting arrows while doing what?",
+        "answer": "Retreating",
+        "distractors": ["Charging", "Encircling", "Dismounting"]
+      },
+      {
+        "type": "true_false",
+        "question": "Crassus was a member of the Roman First Triumvirate alongside Caesar and Pompey. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Parthian cavalry won at Carrhae using the ___ shot tactic, firing arrows while appearing to flee.",
+        "answer": "Parthian",
+        "distractors": ["mounted", "backward", "retreat"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Carrhae",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References violent death in historical context",
+    "visualDescription": "Parthian horse archers wheeling away from Roman legions while firing arrows backwards over their shoulders, Roman soldiers with shields crumbling under the barrage, pixel art style",
+    "tags": ["parthian_empire", "ancient_rome", "battle_of_carrhae", "crassus", "military"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-farabi-second-teacher",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "islamic_golden_age",
+    "statement": "Al-Farabi was called 'the Second Teacher' — second only to Aristotle — for his work reconciling Greek philosophy with Islamic thought.",
+    "quizQuestion": "Who was called 'the Second Teacher' after Aristotle?",
+    "correctAnswer": "Al-Farabi",
+    "distractors": [
+      "Avicenna",
+      "Averroes",
+      "Al-Kindi",
+      "Al-Ghazali",
+      "Al-Biruni",
+      "Ibn Rushd",
+      "Al-Razi",
+      "Al-Haytham"
+    ],
+    "acceptableAnswers": ["al-farabi", "farabi", "abu nasr al-farabi"],
+    "explanation": "Abu Nasr Al-Farabi (c. 872–950 AD) earned the title 'the Second Teacher' (Aristotle being the First) because of his encyclopedic commentaries on Aristotle and his efforts to synthesize Greek philosophy with Islamic jurisprudence and Neoplatonism. His political philosophy in 'The Virtuous City' was deeply influenced by Plato's Republic.",
+    "wowFactor": "Medieval Islamic philosophers ranked Al-Farabi second only to Aristotle himself — calling him 'The Second Teacher' for 1,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Islamic philosopher was known as 'the Second Teacher' after Aristotle?",
+        "answer": "Al-Farabi",
+        "distractors": ["Avicenna", "Averroes", "Al-Kindi"]
+      },
+      {
+        "type": "reverse",
+        "question": "Al-Farabi's book 'The Virtuous City' was influenced by which ancient Greek work?",
+        "answer": "Plato's Republic",
+        "distractors": ["Aristotle's Politics", "Homer's Iliad", "Euclid's Elements"]
+      },
+      {
+        "type": "true_false",
+        "question": "Al-Farabi was called 'the Second Teacher,' with Aristotle being the First. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Al-Farabi tried to reconcile ___ philosophy with Islamic thought.",
+        "answer": "Greek",
+        "distractors": ["Persian", "Indian", "Egyptian"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Al-Farabi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A turbaned scholar surrounded by Greek and Arabic manuscripts in a candlelit library, comparing Aristotle's works with Islamic texts, pixel art style",
+    "tags": ["farabi", "islamic_golden_age", "philosophy", "medieval", "scholarship"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-nebuchadnezzar-jerusalem",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "Nebuchadnezzar II destroyed Solomon's Temple in Jerusalem in 586 BC and exiled the Jewish population to Babylon — the Babylonian Captivity.",
+    "quizQuestion": "Which Babylonian king destroyed Solomon's Temple in 586 BC?",
+    "correctAnswer": "Nebuchadnezzar II",
+    "distractors": [
+      "Hammurabi",
+      "Cyrus the Great",
+      "Sargon II",
+      "Tiglath-Pileser",
+      "Sennacherib",
+      "Ashurbanipal",
+      "Nabopolassar",
+      "Belshazzar"
+    ],
+    "acceptableAnswers": ["nebuchadnezzar ii", "nebuchadnezzar", "nebuchadrezzar"],
+    "explanation": "Nebuchadnezzar II, king of Babylon (605–562 BC), conquered Jerusalem twice. In 586 BC he destroyed the First Temple (Solomon's Temple) and exiled thousands of Jews to Babylon — the event known as the Babylonian Captivity. This exile profoundly shaped Jewish religious identity and the writing of the Hebrew Bible. Cyrus the Great later ended the exile in 539 BC.",
+    "wowFactor": "Nebuchadnezzar's destruction of Jerusalem so shaped Judaism that many books of the Bible were written or edited during the exile he caused.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who destroyed Solomon's Temple and exiled the Jews to Babylon?",
+        "answer": "Nebuchadnezzar II",
+        "distractors": ["Hammurabi", "Cyrus the Great", "Sennacherib"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Babylonian Captivity of the Jews began in what year?",
+        "answer": "586 BC",
+        "distractors": ["722 BC", "539 BC", "612 BC"]
+      },
+      {
+        "type": "true_false",
+        "question": "Cyrus the Great later freed the Jews from their Babylonian exile. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nebuchadnezzar II destroyed the ___ Temple, also known as Solomon's Temple.",
+        "answer": "First",
+        "distractors": ["Second", "Great", "Sacred"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nebuchadnezzar_II",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious history; presented objectively",
+    "visualDescription": "Babylonian soldiers in ornate armor watching a great temple collapse in flames, exiled civilians carrying belongings in a long column across the desert, pixel art style",
+    "tags": ["nebuchadnezzar", "babylonia", "jerusalem", "ancient_near_east", "exile"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-scythians-golden-art",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The nomadic Scythians were master goldsmiths who buried their warriors with stunning gold jewelry, weapons, and even their horses.",
+    "quizQuestion": "What were Scythian warriors famously buried with, besides weapons?",
+    "correctAnswer": "Their horses",
+    "distractors": [
+      "Their ships",
+      "Their slaves",
+      "Their chariots",
+      "Their cattle",
+      "Their wives",
+      "Their temples",
+      "Their camels",
+      "Their libraries"
+    ],
+    "acceptableAnswers": ["their horses", "horses", "horse burials"],
+    "explanation": "Scythian burial mounds (kurgans) have yielded spectacular gold artifacts — intricate animal-style jewelry, cups, and weapons. Wealthy warriors were buried with their horses, weapons, food, and sometimes retainers. The famous 'animal style' Scythian art, depicting intertwined animals, influenced art from China to Europe. Their kurgan burials are found from Ukraine to Siberia.",
+    "wowFactor": "Scythian nomads who had no permanent cities created some of antiquity's most breathtaking gold artwork — buried in the ground for 2,500 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Scythian warriors were buried alongside what animals?",
+        "answer": "Their horses",
+        "distractors": ["Their cattle", "Their dogs", "Their camels"]
+      },
+      {
+        "type": "reverse",
+        "question": "Scythian burial mounds are called by what name?",
+        "answer": "Kurgans",
+        "distractors": ["Tumuli", "Barrows", "Cairns"]
+      },
+      {
+        "type": "true_false",
+        "question": "Scythian burial mounds have been found from Ukraine all the way to Siberia. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Scythian art is characterized by the distinctive ___ style, showing intertwined animals.",
+        "answer": "animal",
+        "distractors": ["geometric", "abstract", "religious"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scythians",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Scythian warrior's burial mound being excavated to reveal gleaming golden artifacts and a horse skeleton beside the warrior's remains, pixel art style",
+    "tags": ["scythians", "ancient_near_east", "nomads", "gold", "burials"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-diocletian-tetrarchy",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_rome",
+    "statement": "Emperor Diocletian solved Rome's crisis of imperial succession by creating the Tetrarchy — rule by four emperors simultaneously.",
+    "quizQuestion": "What system of rule did Diocletian create with four emperors?",
+    "correctAnswer": "Tetrarchy",
+    "distractors": [
+      "Triumvirate",
+      "Consulship",
+      "Senate rule",
+      "Dyarchy",
+      "Principate",
+      "Dominate",
+      "Oligarchy",
+      "Dual monarchy"
+    ],
+    "acceptableAnswers": ["tetrarchy", "the tetrarchy"],
+    "explanation": "Emperor Diocletian (284–305 AD) ended the Crisis of the Third Century by dividing imperial power among four rulers: two senior Augusti and two junior Caesars, each governing a different part of the empire. The Tetrarchy stabilized Rome after 50 years of chaos with 26 emperors in 50 years. Diocletian also voluntarily abdicated in 305 AD — one of the few Roman emperors to retire.",
+    "wowFactor": "Diocletian was so fed up with being emperor that he voluntarily retired to grow cabbages — and when begged to return, he refused.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What system of four-emperor rule did Diocletian establish?",
+        "answer": "Tetrarchy",
+        "distractors": ["Triumvirate", "Consulship", "Dyarchy"]
+      },
+      {
+        "type": "reverse",
+        "question": "Diocletian famously did what unusual thing in 305 AD that few emperors did?",
+        "answer": "Abdicated voluntarily",
+        "distractors": ["Converted to Christianity", "Moved the capital", "Conquered Britain"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Tetrarchy divided Roman rule among four emperors — two senior and two junior. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Before Diocletian's reforms, Rome had ___ emperors in just 50 years during the Crisis of the Third Century.",
+        "answer": "26",
+        "distractors": ["10", "50", "15"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tetrarchy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Four emperors in matching purple robes with raised swords standing at four compass points around a map of the Roman Empire, pixel art style",
+    "tags": ["diocletian", "ancient_rome", "tetrarchy", "imperial_history", "politics"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-hatshepsut-pharaoh",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_egypt",
+    "statement": "Hatshepsut was ancient Egypt's most successful female pharaoh, ruling for 22 years while dressed in male pharaoh regalia including a false beard.",
+    "quizQuestion": "How long did Hatshepsut rule ancient Egypt as pharaoh?",
+    "correctAnswer": "22 years",
+    "distractors": [
+      "5 years",
+      "10 years",
+      "30 years",
+      "15 years",
+      "40 years",
+      "8 years",
+      "50 years",
+      "3 years"
+    ],
+    "acceptableAnswers": ["22 years", "22", "twenty-two years"],
+    "explanation": "Hatshepsut reigned as pharaoh from approximately 1478 to 1458 BC — about 22 years. Initially ruling as regent for her stepson Thutmose III, she declared herself pharaoh and was depicted in statues and reliefs wearing the traditional male pharaoh's kilt, crown, and false beard. She led successful trade expeditions to Punt (modern Somalia) and oversaw major building projects.",
+    "wowFactor": "Hatshepsut ruled Egypt as pharaoh for 22 years by literally wearing a ceremonial false beard — and Egypt thrived under her.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many years did Hatshepsut successfully rule as Egypt's pharaoh?",
+        "answer": "22 years",
+        "distractors": ["5 years", "10 years", "30 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hatshepsut served as regent for which pharaoh before declaring herself ruler?",
+        "answer": "Thutmose III",
+        "distractors": ["Thutmose II", "Amenhotep II", "Ramesses I"]
+      },
+      {
+        "type": "true_false",
+        "question": "Hatshepsut was depicted in official art wearing a false beard like male pharaohs. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hatshepsut sent famous trade expeditions to the land of ___, modern Somalia.",
+        "answer": "Punt",
+        "distractors": ["Nubia", "Kush", "Canaan"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hatshepsut",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A proud pharaoh in traditional male regalia including false beard and double crown sitting on a golden throne flanked by advisors, subtle female features visible, pixel art style",
+    "tags": ["hatshepsut", "ancient_egypt", "pharaoh", "women", "18th_dynasty"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "history-seleucid-empire-alexander",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_civilizations",
+    "categoryL1": "History",
+    "categoryL2": "ancient_civilizations",
+    "categoryL3": "ancient_near_east",
+    "statement": "The Seleucid Empire was founded by Seleucus I after Alexander the Great's death and stretched from Turkey to Pakistan for 250 years.",
+    "quizQuestion": "Who founded the Seleucid Empire after Alexander the Great's death?",
+    "correctAnswer": "Seleucus I",
+    "distractors": [
+      "Ptolemy I",
+      "Antigonus I",
+      "Lysimachus",
+      "Cassander",
+      "Perdiccas",
+      "Eumenes",
+      "Antipater",
+      "Demetrius I"
+    ],
+    "acceptableAnswers": ["seleucus i", "seleucus", "seleucus nicator"],
+    "explanation": "When Alexander the Great died in 323 BC without a clear successor, his generals (Diadochi) fought wars of succession for decades. Seleucus I Nicator emerged as ruler of Babylon in 312 BC and built the largest of the successor states — the Seleucid Empire — stretching from modern Turkey to Afghanistan/Pakistan. It was a multicultural Hellenistic state that spread Greek culture across the Near East.",
+    "wowFactor": "The Seleucid Empire was so large it stretched from Turkey to Pakistan — and it was just one piece of Alexander's divided empire.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who founded the Seleucid Empire after Alexander the Great died?",
+        "answer": "Seleucus I",
+        "distractors": ["Ptolemy I", "Antigonus I", "Lysimachus"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Seleucid Empire's eastern border reached as far as modern which country?",
+        "answer": "Pakistan",
+        "distractors": ["India", "China", "Arabia"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Seleucid Empire was one of the successor states created after Alexander the Great's death. True or False?",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alexander's generals who fought over his empire were called the ___.",
+        "answer": "Diadochi",
+        "distractors": ["Satraps", "Archons", "Strategos"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Seleucid_Empire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Hellenistic general in Greek armor surveying an enormous map stretching from Mediterranean shores to the Hindu Kush mountains, pixel art style",
+    "tags": ["seleucid_empire", "alexander_the_great", "hellenistic", "ancient_near_east", "empire"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

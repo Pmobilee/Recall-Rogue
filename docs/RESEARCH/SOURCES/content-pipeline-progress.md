@@ -46,18 +46,18 @@ Any agent continuing this work MUST:
 
 | Domain | Status | Fact Count | Target | Seed File | Entities Curated | Notes |
 |--------|--------|------------|--------|-----------|-----------------|-------|
-| Animals & Wildlife | ⚠️ Ad-hoc only | 294 | 2,000 | — | ✅ 600 | Biology routing fix: 677 eligible, 600 selected with subcategory quotas |
-| History | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 1,616 eligible from Vital Articles L4 |
-| Space & Astronomy | ⬜ Not Started | 0 | 2,000 | — | ⚠️ 22 | Thin — only 22 from Vital Articles. Supplement in progress |
-| General Knowledge | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 2,615 eligible from Vital Articles L4 |
-| Natural Sciences | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 1,643 eligible from Vital Articles L4 |
-| Art & Architecture | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 1,343 eligible from Vital Articles L4 |
-| Mythology & Folklore | ⬜ Not Started | 0 | 2,000 | — | ⚠️ 26 | Thin — only 26 from Vital Articles. Supplement in progress |
-| Human Body & Health | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 817 eligible (Biology routing split animals/plants out) |
-| Food & World Cuisine | ⬜ Not Started | 0 | 2,000 | — | ❌ 0 | No food entities in Vital Articles L4. Full supplement needed |
-| Geography (knowledge) | ⬜ Not Started | 0 | 2,000 | — | ✅ 600 | 1,230 eligible from Vital Articles L4 |
+| Animals & Wildlife | 🟡 In Progress | 214 | 2,000 | `knowledge-animals_wildlife.json` | ✅ 600 | AR-43 batch: +25 from 10 entities (7 valid, 3 skipped: maize/virus/bacteria) |
+| History | 🟡 In Progress | 202 | 2,000 | `knowledge-history.json` | ✅ 600 | AR-43 batch: +30 from 10 entities |
+| Space & Astronomy | 🟡 In Progress | 176 | 2,000 | `knowledge-space_astronomy.json` | ⚠️ 83 | AR-43 batch: +25 from 8 entities (2 skipped: Bolt/Melanchthon) |
+| General Knowledge | 🟡 In Progress | 204 | 2,000 | `knowledge-general_knowledge.json` | ✅ 600 | AR-43 batch: +25 from 10 entities |
+| Natural Sciences | 🟡 In Progress | 172 | 2,000 | `knowledge-natural_sciences.json` | ✅ 600 | AR-43 batch: +27 from 10 entities |
+| Art & Architecture | 🟡 In Progress | 187 | 2,000 | `knowledge-art_architecture.json` | ✅ 600 | AR-43 batch: +27 from 9 entities (1 skipped: Putin) |
+| Mythology & Folklore | 🟡 In Progress | 205 | 2,000 | `knowledge-mythology_folklore.json` | ⚠️ 232 | AR-43 batch: +24 from 10 entities |
+| Human Body & Health | 🟡 In Progress | 193 | 2,000 | `knowledge-human_body_health.json` | ✅ 600 | AR-43 batch: +22 from 7 entities (3 skipped: tree/flower/Chekhov) |
+| Food & World Cuisine | 🟡 In Progress | 196 | 2,000 | `knowledge-food_cuisine.json` | ✅ 332 | AR-43 batch: +21 from 10 entities |
+| Geography (knowledge) | 🟡 In Progress | 208 | 2,000 | `knowledge-geography.json` | ✅ 600 | AR-43 batch: +29 from 10 entities |
 
-**Total knowledge facts: 294 (ad-hoc) / 20,000 target**
+**Total knowledge facts: 1,957 / 20,000 target** (AR-43: +255 from 10-entity parallel batch across all domains)
 
 ---
 
@@ -203,8 +203,9 @@ To add more facts to an existing domain:
 | Issue | Severity | Affected Scope | Proposed Fix |
 |-------|----------|---------------|--------------|
 | form[0].meanings[0] not always primary meaning | Medium | ~5-10% of Chinese words | Sonnet review pass to pick best primary meaning |
-| Long semicolon-separated answers (e.g. "certificate; papers; credentials; document; ID") | Low | Words with many synonyms | Truncate to first 1-2 meanings for correctAnswer, keep full list in explanation |
+| Long semicolon-separated answers | ✅ FIXED (AR-45) | Was: words with many synonyms | normalize-vocab-answers.mjs takes first meaning before `;` |
 | POS abbreviations (v, a, n, g) not user-friendly | Low | All vocab facts | Add POS expansion mapping in vocab-to-facts-v2.mjs |
-| Cognate answer-in-question | Low | ~2,939 European vocab facts | Expected for cognates (accident→accident). Not a real quality issue — these ARE the easiest words |
-| Korean definitions are explanatory | Low | ~30% of Korean vocab | NIKL defs are explanatory phrases rather than concise translations. E.g. "The state of having a difficult time..." instead of "poverty" |
-| French definitions sometimes verbose | Low | ~10% of French vocab | EN Wiktionary includes parenthetical qualifiers. E.g. "a river (a large, winding stream that flows...)" |
+| Cognate answer-in-question | ✅ FLAGGED (AR-45) | 8,279 European vocab facts | Flagged with `cognate: true` field. Runtime service aware. |
+| Korean definitions are explanatory | ✅ FIXED (AR-45) | Was: ~90% of Korean vocab | 8,245 NIKL definitions rewritten to concise 1-3 word translations via Haiku batch. Median 59→10 chars. |
+| French/German/etc verbose definitions | ✅ FIXED (AR-45) | Was: 26-34% of EU vocab | Parentheticals stripped, answers capped at 45 chars. 21,887 facts normalized. |
+| Answer length exploit (guess by longest/shortest) | ✅ FIXED (AR-45) | All 8 languages | Runtime vocabDistractorService now filters by answer length ±2.5x. Audit: 1/80 issues (from 24/80). |

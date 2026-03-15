@@ -1,0 +1,1791 @@
+[
+  {
+    "id": "food-pasteurization-louis-pasteur",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Louis Pasteur invented pasteurization in 1864 to prevent wine and beer from spoiling, not originally for milk.",
+    "quizQuestion": "What beverage did Pasteur first develop pasteurization for?",
+    "correctAnswer": "Wine and beer",
+    "distractors": [
+      "Milk",
+      "Juice",
+      "Water",
+      "Cider",
+      "Vinegar",
+      "Broth",
+      "Tea",
+      "Cheese"
+    ],
+    "acceptableAnswers": [
+      "Wine and beer",
+      "Beer and wine",
+      "Wine",
+      "Beer"
+    ],
+    "explanation": "Louis Pasteur developed pasteurization in 1864 at the request of Emperor Napoleon III to solve the problem of French wines souring during transport. It was only later applied to milk to combat tuberculosis and other pathogens.",
+    "wowFactor": "Pasteurization was invented to save French wine, not milk — Napoleon III commissioned it to protect his country's wine industry.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What year did Pasteur invent pasteurization?",
+        "answer": "1864",
+        "distractors": ["1823", "1901", "1776", "1950"]
+      },
+      {
+        "type": "reverse",
+        "question": "Pasteurization was invented to prevent spoilage in which industry?",
+        "answer": "Wine and beer",
+        "distractors": ["Dairy industry", "Meat industry", "Bread industry"]
+      },
+      {
+        "type": "true_false",
+        "question": "Pasteurization was originally invented to prevent milk from spoiling.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Louis Pasteur invented pasteurization in ___ at the request of Emperor Napoleon III.",
+        "answer": "1864",
+        "distractors": ["1823", "1901", "1889"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century French laboratory with glass wine bottles being heated in water baths, a bearded scientist in a white coat examining a microscope.",
+    "tags": ["pasteurization", "food science", "Louis Pasteur", "wine", "history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-pasteurization-temperature",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Standard pasteurization heats milk to 72°C (161°F) for just 15 seconds to kill harmful bacteria.",
+    "quizQuestion": "How long is milk heated during standard pasteurization?",
+    "correctAnswer": "15 seconds",
+    "distractors": [
+      "5 minutes",
+      "1 minute",
+      "30 minutes",
+      "2 hours",
+      "45 seconds",
+      "10 minutes",
+      "1 hour",
+      "3 seconds"
+    ],
+    "acceptableAnswers": [
+      "15 seconds",
+      "fifteen seconds"
+    ],
+    "explanation": "The HTST (High Temperature Short Time) method heats milk to 72°C for exactly 15 seconds. This brief heat exposure kills dangerous pathogens like Salmonella and Listeria while preserving most flavor and nutrients.",
+    "wowFactor": "Just 15 seconds of heat is enough to make milk safe — bacteria are killed almost instantly at the right temperature.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what temperature is milk heated during HTST pasteurization?",
+        "answer": "72°C (161°F)",
+        "distractors": ["100°C", "50°C", "85°C", "37°C"]
+      },
+      {
+        "type": "true_false",
+        "question": "Standard pasteurization heats milk for at least 30 minutes.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "HTST pasteurization heats milk to 72°C for ___ seconds to kill pathogens.",
+        "answer": "15",
+        "distractors": ["30", "60", "5"]
+      },
+      {
+        "type": "reverse",
+        "question": "HTST stands for High Temperature Short Time — how short is the time?",
+        "answer": "15 seconds",
+        "distractors": ["30 seconds", "1 minute", "5 seconds"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stainless steel dairy processing plant with milk flowing through heated pipes, digital temperature displays showing 72 degrees.",
+    "tags": ["pasteurization", "food science", "milk", "temperature", "bacteria"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-pasteurization-raw-milk-debate",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Raw unpasteurized milk is illegal to sell in many countries because it can carry tuberculosis, Salmonella, and E. coli.",
+    "quizQuestion": "Which deadly disease can raw milk transmit that pasteurization prevents?",
+    "correctAnswer": "Tuberculosis",
+    "distractors": [
+      "Malaria",
+      "Cholera",
+      "Typhoid fever",
+      "Scurvy",
+      "Rabies",
+      "Measles",
+      "Smallpox",
+      "Influenza"
+    ],
+    "acceptableAnswers": [
+      "Tuberculosis",
+      "TB",
+      "bovine tuberculosis"
+    ],
+    "explanation": "Before pasteurization became widespread in the early 20th century, milk was a major vector for bovine tuberculosis, which killed thousands annually. Raw milk can also carry Salmonella, E. coli O157:H7, and Listeria.",
+    "wowFactor": "Before pasteurization, drinking milk could give you tuberculosis — it was one of the deadliest beverages in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is raw unpasteurized milk banned in many countries?",
+        "answer": "It can carry dangerous bacteria",
+        "distractors": ["It tastes bad", "It spoils too fast", "It has fewer nutrients"]
+      },
+      {
+        "type": "true_false",
+        "question": "Raw milk can transmit tuberculosis to humans who drink it.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Raw milk can carry bovine ___, which infected thousands before pasteurization.",
+        "answer": "tuberculosis",
+        "distractors": ["malaria", "cholera", "influenza"]
+      },
+      {
+        "type": "reverse",
+        "question": "Pasteurization was made mandatory in the 20th century primarily to prevent which milk-borne disease?",
+        "answer": "Tuberculosis",
+        "distractors": ["Scurvy", "Typhoid", "Malaria"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions disease",
+    "visualDescription": "A historical black-and-white scene of milk bottles on a doorstep beside a public health poster warning about tuberculosis.",
+    "tags": ["pasteurization", "food safety", "tuberculosis", "raw milk", "public health"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-preservation-salt-ancient",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Salt was so valuable as a food preservative in ancient Rome that soldiers were sometimes paid in salt — giving us the word 'salary'.",
+    "quizQuestion": "What English word for pay comes from the Latin word for salt?",
+    "correctAnswer": "Salary",
+    "distractors": [
+      "Wage",
+      "Stipend",
+      "Bonus",
+      "Income",
+      "Pension",
+      "Allowance",
+      "Tribute",
+      "Dividend"
+    ],
+    "acceptableAnswers": [
+      "Salary",
+      "salary"
+    ],
+    "explanation": "The Latin word 'salarium' referred to payments made to Roman soldiers for salt or for buying salt. Salt was extraordinarily valuable as the primary food preservative before refrigeration, enabling armies to carry preserved meat on long campaigns.",
+    "wowFactor": "Your paycheck is literally named after salt — Romans paid soldiers in salt because it was that valuable for food preservation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why was salt so valuable in ancient Rome it was used as payment?",
+        "answer": "It preserved food",
+        "distractors": ["It flavored food", "It was rare to mine", "It had medical uses"]
+      },
+      {
+        "type": "reverse",
+        "question": "The word 'salary' derives from the Latin word for which mineral?",
+        "answer": "Salt",
+        "distractors": ["Gold", "Iron", "Silver"]
+      },
+      {
+        "type": "true_false",
+        "question": "Roman soldiers were sometimes paid with salt, which is why we say 'salary'.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'salary' comes from 'salarium', the Latin word for ___.",
+        "answer": "salt",
+        "distractors": ["silver", "gold", "bread"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Salt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman soldier in armor accepting a pouch of white salt crystals from a commander, with salted fish and meat hanging on racks behind them.",
+    "tags": ["salt", "food preservation", "Roman history", "etymology", "salary"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-preservation-canning-napoleon",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Napoleon Bonaparte offered a prize of 12,000 francs in 1795 to whoever could invent a reliable way to preserve food for his armies.",
+    "quizQuestion": "Who offered a prize that led to the invention of canning?",
+    "correctAnswer": "Napoleon Bonaparte",
+    "distractors": [
+      "Thomas Jefferson",
+      "Queen Victoria",
+      "Julius Caesar",
+      "Benjamin Franklin",
+      "Isaac Newton",
+      "King Louis XVI",
+      "Duke of Wellington",
+      "Alexander the Great"
+    ],
+    "acceptableAnswers": [
+      "Napoleon Bonaparte",
+      "Napoleon",
+      "Bonaparte"
+    ],
+    "explanation": "Napoleon famously said 'an army marches on its stomach' and offered 12,000 francs to anyone who could preserve food for soldiers. Nicolas Appert won by inventing bottled food preservation in 1810, which led directly to modern canning.",
+    "wowFactor": "Every canned food in your pantry exists because Napoleon needed to feed his conquering armies — he literally commissioned the invention.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What food preservation method did Napoleon's prize contest inspire?",
+        "answer": "Canning",
+        "distractors": ["Freezing", "Drying", "Smoking"]
+      },
+      {
+        "type": "reverse",
+        "question": "Nicolas Appert won Napoleon's 12,000-franc prize by inventing what?",
+        "answer": "Bottled food preservation",
+        "distractors": ["Refrigeration", "Salting meat", "Drying vegetables"]
+      },
+      {
+        "type": "true_false",
+        "question": "Napoleon offered a cash prize that led directly to the invention of food canning.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Napoleon offered ___ francs to whoever could invent reliable food preservation for armies.",
+        "answer": "12,000",
+        "distractors": ["1,000", "50,000", "5,000"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 8,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Canning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Napoleon in his trademark bicorne hat inspecting rows of glass bottles filled with preserved vegetables and meat in a 19th-century French kitchen.",
+    "tags": ["food preservation", "canning", "Napoleon", "history", "invention"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-preservation-honey-eternal",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible — honey never spoils due to its low moisture and acidity.",
+    "quizQuestion": "Why does honey never spoil and last thousands of years?",
+    "correctAnswer": "Low moisture and acidity",
+    "distractors": [
+      "High sugar content alone",
+      "Beeswax coating preserves it",
+      "Bee enzymes sterilize it",
+      "Natural antibiotics in pollen",
+      "High temperature when made",
+      "Unique crystalline structure",
+      "Bees add preservative chemicals",
+      "It contains natural alcohol"
+    ],
+    "acceptableAnswers": [
+      "Low moisture and acidity",
+      "Low water content and acidic pH",
+      "It's acidic and low in water"
+    ],
+    "explanation": "Honey's combination of very low water content (around 17%), acidic pH (3.2–4.5), and hydrogen peroxide produced by glucose oxidase creates an environment where bacteria and microorganisms cannot survive. Archaeologists found edible honey in Egyptian tombs dating back 3,000 years.",
+    "wowFactor": "Ancient Egyptians ate honey buried in tombs for 3,000 years — it was perfectly preserved and still tasted sweet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old was the honey found still edible in Egyptian tombs?",
+        "answer": "3,000 years",
+        "distractors": ["500 years", "100 years", "10,000 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Honey's eternal shelf life is due to its low moisture content and what other property?",
+        "answer": "Acidity",
+        "distractors": ["High sugar", "Temperature", "Wax coating"]
+      },
+      {
+        "type": "true_false",
+        "question": "Honey found in Egyptian tombs 3,000 years old is still edible.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Honey never spoils because of its low ___ content and acidic pH.",
+        "answer": "moisture",
+        "distractors": ["sugar", "protein", "enzyme"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": 8,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Honey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An archaeologist carefully opening a golden jar in a torchlit Egyptian tomb, revealing perfectly preserved amber honey that glows in the light.",
+    "tags": ["honey", "food preservation", "Egypt", "archaeology", "eternal shelf life"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-vitamin-a-night-blindness",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Ancient Egyptians treated night blindness by having patients eat liver — unknowingly prescribing Vitamin A 3,500 years before it was discovered.",
+    "quizQuestion": "Ancient Egyptians cured night blindness by having patients eat what food?",
+    "correctAnswer": "Liver",
+    "distractors": [
+      "Carrots",
+      "Fish",
+      "Eggs",
+      "Honey",
+      "Figs",
+      "Garlic",
+      "Onions",
+      "Lentils"
+    ],
+    "acceptableAnswers": [
+      "Liver",
+      "animal liver",
+      "beef liver"
+    ],
+    "explanation": "The Ebers Papyrus (circa 1550 BCE) describes treating night blindness by squeezing liver juice into the eyes or eating liver. Liver is extraordinarily rich in Vitamin A (retinol), which is essential for producing rhodopsin, the light-sensitive pigment in the eye's rod cells.",
+    "wowFactor": "Egyptian doctors prescribed eating liver for night blindness 3,500 years ago — they accidentally discovered Vitamin A therapy millennia before science caught up.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What vitamin in liver cures the night blindness Egyptians treated with it?",
+        "answer": "Vitamin A",
+        "distractors": ["Vitamin C", "Vitamin D", "Vitamin B12"]
+      },
+      {
+        "type": "reverse",
+        "question": "Vitamin A deficiency causes which specific vision problem?",
+        "answer": "Night blindness",
+        "distractors": ["Color blindness", "Nearsightedness", "Cataracts"]
+      },
+      {
+        "type": "true_false",
+        "question": "Ancient Egyptians unknowingly treated Vitamin A deficiency by prescribing liver.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Liver is extremely high in Vitamin ___, essential for vision in dim light.",
+        "answer": "A",
+        "distractors": ["C", "D", "B12"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 8,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vitamin_A",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Egyptian physician holding a piece of liver toward a patient who cannot see in the darkness of a dimly lit stone chamber.",
+    "tags": ["vitamin A", "night blindness", "Egypt", "ancient medicine", "liver"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-vitamin-a-polar-bear-liver",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Polar bear liver contains so much Vitamin A that eating just one portion can kill a human — Arctic explorers learned this the hard way.",
+    "quizQuestion": "What organ of a polar bear contains a lethal dose of Vitamin A for humans?",
+    "correctAnswer": "Liver",
+    "distractors": [
+      "Heart",
+      "Kidney",
+      "Brain",
+      "Stomach",
+      "Spleen",
+      "Lungs",
+      "Pancreas",
+      "Intestines"
+    ],
+    "acceptableAnswers": [
+      "Liver",
+      "the liver"
+    ],
+    "explanation": "Polar bear liver contains 30,000 IU of Vitamin A per gram — far exceeding the lethal dose for humans. Several early Arctic and Antarctic explorers died or suffered hypervitaminosis A after eating polar bear or husky dog liver. Symptoms include skin peeling, hair loss, severe headaches, and death.",
+    "wowFactor": "You can die from eating too much Vitamin A — polar bear liver contains a lethal dose in a single serving.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What condition results from eating too much Vitamin A?",
+        "answer": "Hypervitaminosis A",
+        "distractors": ["Scurvy", "Rickets", "Pellagra"]
+      },
+      {
+        "type": "reverse",
+        "question": "Arctic explorers sometimes died after eating polar bear liver due to overdose of what?",
+        "answer": "Vitamin A",
+        "distractors": ["Vitamin D", "Mercury", "Protein"]
+      },
+      {
+        "type": "true_false",
+        "question": "Polar bear liver contains enough Vitamin A to be lethal to humans.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polar bear liver has 30,000 IU of Vitamin ___ per gram — a lethal dose for humans.",
+        "answer": "A",
+        "distractors": ["D", "C", "K"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": 9,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vitamin_A_toxicity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions death",
+    "visualDescription": "An Arctic explorer in heavy furs collapsing in the snow near a slain polar bear, with an open field notebook warning 'do not eat liver'.",
+    "tags": ["vitamin A", "polar bear", "toxicity", "Arctic exploration", "food danger"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-protein-hair-nails-composition",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Human hair and nails are made almost entirely of a protein called keratin — the same protein found in rhinoceros horns and bird feathers.",
+    "quizQuestion": "What protein makes up human hair, nails, and rhinoceros horns?",
+    "correctAnswer": "Keratin",
+    "distractors": [
+      "Collagen",
+      "Elastin",
+      "Actin",
+      "Myosin",
+      "Fibrin",
+      "Casein",
+      "Albumin",
+      "Gluten"
+    ],
+    "acceptableAnswers": [
+      "Keratin",
+      "keratin protein"
+    ],
+    "explanation": "Keratin is a structural fibrous protein that forms hair, nails, skin's outer layer, rhinoceros horns, bird feathers, turtle shells, and hooves. It's one of the toughest biological materials, highly resistant to mechanical and chemical damage.",
+    "wowFactor": "Your fingernails are made of the exact same protein as a rhino's horn — keratin is nature's universal armor material.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Rhinoceros horns are made of the same protein as human fingernails — what is it?",
+        "answer": "Keratin",
+        "distractors": ["Collagen", "Bone", "Ivory"]
+      },
+      {
+        "type": "reverse",
+        "question": "Keratin forms which of these body parts?",
+        "answer": "Hair and nails",
+        "distractors": ["Bones and teeth", "Muscles and tendons", "Blood and plasma"]
+      },
+      {
+        "type": "true_false",
+        "question": "Rhinoceros horns are made of the same protein as human hair.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human hair, nails, and rhinoceros horns are all made of a protein called ___.",
+        "answer": "keratin",
+        "distractors": ["collagen", "elastin", "myosin"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Keratin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split illustration showing a human hand with nails on one side and a rhinoceros horn on the other, connected by a molecular protein diagram.",
+    "tags": ["protein", "keratin", "hair", "nails", "rhinoceros", "biology"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-carbohydrate-brain-fuel",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "The human brain consumes about 120 grams of glucose (carbohydrates) per day — roughly 20% of the body's total energy despite being only 2% of body weight.",
+    "quizQuestion": "What percentage of your body's energy does the brain consume daily?",
+    "correctAnswer": "20%",
+    "distractors": [
+      "5%",
+      "10%",
+      "35%",
+      "50%",
+      "2%",
+      "15%",
+      "60%",
+      "8%"
+    ],
+    "acceptableAnswers": [
+      "20%",
+      "twenty percent",
+      "about 20%"
+    ],
+    "explanation": "The human brain weighs about 1.4 kg (3 lbs) — roughly 2% of body weight — but consumes approximately 20% of the body's total glucose supply. The brain's neurons rely almost exclusively on glucose for energy and cannot efficiently burn fat or protein.",
+    "wowFactor": "Your brain is a tiny energy hog — it's 2% of your weight but burns 20% of your calories just to think.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many grams of glucose does the human brain consume daily?",
+        "answer": "120 grams",
+        "distractors": ["50 grams", "500 grams", "20 grams"]
+      },
+      {
+        "type": "reverse",
+        "question": "The brain is only 2% of body weight but uses what percentage of glucose?",
+        "answer": "20%",
+        "distractors": ["5%", "50%", "10%"]
+      },
+      {
+        "type": "true_false",
+        "question": "The human brain can efficiently run on fat instead of glucose (carbohydrates).",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The brain uses about ___ of the body's total glucose supply despite being just 2% of weight.",
+        "answer": "20%",
+        "distractors": ["5%", "50%", "10%"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 5,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carbohydrate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing human brain surrounded by small sugar molecule icons, with a percentage chart showing 20% of the body's energy flowing to it.",
+    "tags": ["carbohydrates", "glucose", "brain", "energy", "nutrition"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-tea-second-most-consumed",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Tea is the second most consumed beverage in the world after water, with approximately 3 billion cups drunk every day globally.",
+    "quizQuestion": "How many cups of tea are consumed worldwide every single day?",
+    "correctAnswer": "3 billion cups",
+    "distractors": [
+      "100 million cups",
+      "500 million cups",
+      "1 billion cups",
+      "10 billion cups",
+      "50 million cups",
+      "5 billion cups",
+      "200 million cups",
+      "750 million cups"
+    ],
+    "acceptableAnswers": [
+      "3 billion cups",
+      "3 billion",
+      "about 3 billion"
+    ],
+    "explanation": "Tea is consumed in virtually every country on Earth, with approximately 3 billion cups drunk daily. China, India, and Kenya are the top producers, while China and India are the largest consumers. Only water is drunk more widely.",
+    "wowFactor": "Three billion cups of tea are consumed every single day — that's nearly one cup for every person on Earth, daily.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the world's second most consumed beverage after water?",
+        "answer": "Tea",
+        "distractors": ["Coffee", "Milk", "Juice"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which countries are the world's largest tea producers?",
+        "answer": "China, India, and Kenya",
+        "distractors": ["UK, Japan, Russia", "Brazil, Colombia, Ethiopia", "USA, France, Germany"]
+      },
+      {
+        "type": "true_false",
+        "question": "Tea is the world's most consumed beverage.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tea is the second most consumed beverage after ___, with 3 billion cups daily.",
+        "answer": "water",
+        "distractors": ["coffee", "juice", "milk"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": 5,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tea",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map with glowing dots showing tea consumption, with cups being lifted simultaneously across Asia, Britain, and the Middle East.",
+    "tags": ["tea", "beverages", "global consumption", "world records"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-tea-discovery-emperor-shen-nong",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "According to Chinese legend, tea was discovered in 2737 BCE when leaves fell into Emperor Shen Nong's boiling water — making it over 4,700 years old.",
+    "quizQuestion": "According to legend, who accidentally discovered tea in ancient China?",
+    "correctAnswer": "Emperor Shen Nong",
+    "distractors": [
+      "Emperor Qin Shi Huang",
+      "Confucius",
+      "Emperor Wu of Han",
+      "Marco Polo",
+      "Lao Tzu",
+      "Genghis Khan",
+      "Buddha",
+      "Emperor Xuanzong"
+    ],
+    "acceptableAnswers": [
+      "Emperor Shen Nong",
+      "Shen Nong",
+      "Shennong"
+    ],
+    "explanation": "Chinese legend holds that Emperor Shen Nong discovered tea in 2737 BCE when leaves from a wild tea tree blew into his pot of boiling water. Shen Nong was a mythical ruler credited with teaching agriculture and herbal medicine to humanity.",
+    "wowFactor": "Tea has a 4,700-year origin story — an emperor's accidental cup of leaf-infused water became the world's most beloved beverage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to Chinese legend, how was tea accidentally discovered?",
+        "answer": "Leaves fell into boiling water",
+        "distractors": ["Someone ate raw leaves", "A monk brewed it for medicine", "A traveler found it in the forest"]
+      },
+      {
+        "type": "reverse",
+        "question": "In what approximate year BCE was tea legendarily discovered in China?",
+        "answer": "2737 BCE",
+        "distractors": ["500 BCE", "1000 BCE", "100 BCE"]
+      },
+      {
+        "type": "true_false",
+        "question": "Tea has been drunk for over 4,000 years according to Chinese legend.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chinese legend says Emperor ___ Nong discovered tea when leaves fell into his boiling water.",
+        "answer": "Shen",
+        "distractors": ["Han", "Qin", "Ming"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tea",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Chinese emperor in flowing robes sitting beneath a tea tree, watching in surprise as leaves drift into his steaming bronze water cauldron.",
+    "tags": ["tea", "China", "history", "Shen Nong", "legend"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-sake-brewing-process",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Sake is brewed through a unique 'multiple parallel fermentation' where starch is converted to sugar and sugar to alcohol simultaneously in the same tank.",
+    "quizQuestion": "What makes sake's fermentation process unique compared to wine or beer?",
+    "correctAnswer": "Starch and sugar ferment simultaneously",
+    "distractors": [
+      "It uses wild yeast only",
+      "It ferments at freezing temperature",
+      "It requires saltwater",
+      "It ferments for over 10 years",
+      "It uses no yeast at all",
+      "It requires constant stirring",
+      "It ferments only in spring",
+      "It uses a different fungus than mold"
+    ],
+    "acceptableAnswers": [
+      "Starch and sugar ferment simultaneously",
+      "Multiple parallel fermentation",
+      "Starch converts to sugar while fermenting"
+    ],
+    "explanation": "Sake brewing uses Aspergillus oryzae mold (koji) to break rice starch into sugars, while yeast simultaneously converts those sugars into alcohol — both processes happening in the same vessel at the same time. This 'multiple parallel fermentation' is unique in the world of alcoholic beverages.",
+    "wowFactor": "Sake's brewing process is unlike any other alcohol — it performs two completely different chemical reactions in the same tank simultaneously.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mold is essential to sake brewing, converting starch to sugar?",
+        "answer": "Aspergillus oryzae",
+        "distractors": ["Penicillium", "Saccharomyces", "Rhizopus"]
+      },
+      {
+        "type": "reverse",
+        "question": "Sake is made from fermented rice — what is the Japanese term for the mold used?",
+        "answer": "Koji",
+        "distractors": ["Miso", "Koji-kin", "Tofu-mold"]
+      },
+      {
+        "type": "true_false",
+        "question": "Sake is made by fermenting grapes, similar to wine.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sake's unique '___ parallel fermentation' converts starch to sugar and sugar to alcohol simultaneously.",
+        "answer": "multiple",
+        "distractors": ["double", "triple", "single"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "adult",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Alcohol content",
+    "visualDescription": "A Japanese sake brewery with large cedar fermentation vats, a brewer in white checking the progress of white rice covered in green mold cultures.",
+    "tags": ["sake", "fermentation", "Japan", "rice wine", "brewing science"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-whiskey-angels-share",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Whiskey loses 2–4% of its volume per year to evaporation while aging in barrels — distillers poetically call this loss 'the angels' share'.",
+    "quizQuestion": "What do distillers call the whiskey that evaporates from barrels each year?",
+    "correctAnswer": "The angels' share",
+    "distractors": [
+      "The devil's cut",
+      "The spirit loss",
+      "The barrel tax",
+      "The heavenly pour",
+      "The ghost portion",
+      "The oak toll",
+      "The evaporation fee",
+      "The distiller's tithe"
+    ],
+    "acceptableAnswers": [
+      "The angels' share",
+      "Angels' share",
+      "Angel's share"
+    ],
+    "explanation": "As whiskey ages in porous oak barrels, alcohol and water slowly evaporate through the wood — typically 2–4% per year in Scotland, up to 10% in hot climates like Kentucky. Distillers romantically dubbed this evaporation 'the angels' share.' A 12-year Scotch loses roughly 25% of its volume before bottling.",
+    "wowFactor": "A 12-year-old whiskey loses about a quarter of itself to the air — the evaporated portion is poetically given to angels.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of whiskey evaporates per year during barrel aging?",
+        "answer": "2–4%",
+        "distractors": ["20%", "0.1%", "50%"]
+      },
+      {
+        "type": "reverse",
+        "question": "By the time a 12-year Scotch is bottled, approximately how much has evaporated?",
+        "answer": "About 25%",
+        "distractors": ["1%", "75%", "10%"]
+      },
+      {
+        "type": "true_false",
+        "question": "Whiskey barrels are hermetically sealed, preventing any evaporation during aging.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The whiskey that evaporates from barrels during aging is called the '___' share.'",
+        "answer": "angels'",
+        "distractors": ["devil's", "ghost's", "spirit's"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "adult",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Angel%27s_share",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Alcohol content",
+    "visualDescription": "A Scottish whiskey warehouse with rows of oak barrels, a faint golden mist rising from each barrel as if being carried away by invisible spirits.",
+    "tags": ["whiskey", "angels share", "barrel aging", "evaporation", "distilling"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-rum-sugarcane-origins",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Rum was first distilled in Barbados in the 1620s from molasses — the dark syrupy waste product left after refining sugarcane into white sugar.",
+    "quizQuestion": "Rum is made from molasses — what is molasses a byproduct of?",
+    "correctAnswer": "Refining sugarcane",
+    "distractors": [
+      "Fermenting grapes",
+      "Brewing beer",
+      "Distilling whiskey",
+      "Processing corn",
+      "Fermenting barley",
+      "Boiling maple sap",
+      "Processing beets",
+      "Fermenting apples"
+    ],
+    "acceptableAnswers": [
+      "Refining sugarcane",
+      "Sugar production",
+      "Sugarcane refining",
+      "Making white sugar"
+    ],
+    "explanation": "When sugarcane juice is processed into white sugar crystals, a thick dark syrup called molasses is left behind. Caribbean plantation owners discovered in the 1620s that this 'waste' product could be fermented and distilled into a potent spirit — rum. It became one of the most traded commodities in the Atlantic triangle trade.",
+    "wowFactor": "Rum was born from a sugar factory's garbage — plantation workers turned molasses waste into the drink that fueled the age of pirates.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was rum first distilled in the 1620s?",
+        "answer": "Barbados",
+        "distractors": ["Jamaica", "Cuba", "Puerto Rico"]
+      },
+      {
+        "type": "reverse",
+        "question": "Molasses — the raw ingredient for rum — is left over from making what?",
+        "answer": "White sugar",
+        "distractors": ["Wine", "Beer", "Vinegar"]
+      },
+      {
+        "type": "true_false",
+        "question": "Rum is made by fermenting and distilling molasses, a sugarcane byproduct.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rum was first distilled in ___ in the 1620s from sugarcane molasses.",
+        "answer": "Barbados",
+        "distractors": ["Jamaica", "Cuba", "Haiti"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "adult",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Alcohol content",
+    "visualDescription": "A 17th-century Caribbean sugar plantation with workers feeding sugarcane into a press, dark molasses dripping into barrels beside a copper still.",
+    "tags": ["rum", "molasses", "sugarcane", "Barbados", "Caribbean history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-gin-juniper-plague",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Gin was originally invented as a medicine in 17th-century Netherlands, sold in pharmacies to treat kidney problems and the bubonic plague.",
+    "quizQuestion": "What disease was gin originally sold in pharmacies to treat?",
+    "correctAnswer": "Bubonic plague",
+    "distractors": [
+      "Scurvy",
+      "Malaria",
+      "Cholera",
+      "Typhoid",
+      "Smallpox",
+      "Yellow fever",
+      "Dysentery",
+      "Tuberculosis"
+    ],
+    "acceptableAnswers": [
+      "Bubonic plague",
+      "The plague",
+      "Black Death",
+      "plague"
+    ],
+    "explanation": "Dutch physician Franciscus Sylvius created 'genever' (gin) in the 1600s by infusing grain alcohol with juniper berries, believed to have medicinal properties. It was sold in Dutch pharmacies to treat kidney ailments, gout, and bubonic plague. British soldiers encountered it during the Thirty Years' War and brought it back to England, where it became enormously popular.",
+    "wowFactor": "Gin was a pharmacy medicine — Dutch doctors sold it to plague victims before British soldiers turned it into history's most fashionable cocktail ingredient.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented gin in the 1600s by infusing juniper into grain alcohol?",
+        "answer": "Dutch physician Franciscus Sylvius",
+        "distractors": ["English brewer James Cribb", "French chemist Henri Beaumont", "Scottish distiller Angus Campbell"]
+      },
+      {
+        "type": "reverse",
+        "question": "Gin gets its distinctive flavor from which berry?",
+        "answer": "Juniper",
+        "distractors": ["Elderberry", "Blackcurrant", "Blueberry"]
+      },
+      {
+        "type": "true_false",
+        "question": "Gin was originally invented as a recreational drink in 17th-century England.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gin was invented in the Netherlands using ___ berries, thought to treat plague.",
+        "answer": "juniper",
+        "distractors": ["elderberry", "blackcurrant", "rosehip"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Alcohol content, mentions plague",
+    "visualDescription": "A 17th-century Dutch apothecary shop with juniper branches hanging from the ceiling, a pharmacist ladling liquid into a small bottle labeled 'genever'.",
+    "tags": ["gin", "juniper", "Netherlands", "medicine", "history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-kombucha-scoby-immortal",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Kombucha is brewed using a SCOBY — a Symbiotic Culture of Bacteria and Yeast — that can live indefinitely if kept fed with tea and sugar.",
+    "quizQuestion": "What does SCOBY stand for in kombucha brewing?",
+    "correctAnswer": "Symbiotic Culture of Bacteria and Yeast",
+    "distractors": [
+      "Sweet Cultured Organic Brewing Yeast",
+      "Special Colony of Bacteria and Yeast",
+      "Starter Culture of Bacteria Yield",
+      "Slow Culture of Bacteria and Yeast",
+      "Symbiotic Colony of Brewing Yeast",
+      "Standard Culture of Bacteria Yeasts",
+      "Single Culture of Balanced Yeast",
+      "Symbiotic Cultured Organic Base Yeast"
+    ],
+    "acceptableAnswers": [
+      "Symbiotic Culture of Bacteria and Yeast"
+    ],
+    "explanation": "A SCOBY is a living community of multiple bacteria and yeast species that work together to ferment sweet tea into kombucha. The bacteria produce cellulose forming the rubbery 'mother' disc, while yeast ferments sugars into alcohol, which bacteria then convert to organic acids. A well-cared-for SCOBY can theoretically live forever, with brewers passing 'mother' cultures down for generations.",
+    "wowFactor": "A SCOBY is essentially a living creature you keep as a pet — brewers pass their kombucha cultures down for generations like family heirlooms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the rubbery disc used to brew kombucha called?",
+        "answer": "SCOBY",
+        "distractors": ["Starter", "Koji", "Yeast cake"]
+      },
+      {
+        "type": "reverse",
+        "question": "A SCOBY that is fed sweet tea regularly can survive for how long?",
+        "answer": "Indefinitely",
+        "distractors": ["1 month", "1 year", "10 years"]
+      },
+      {
+        "type": "true_false",
+        "question": "SCOBY stands for Symbiotic Culture of Bacteria and Yeast.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kombucha is brewed using a SCOBY — a Symbiotic Culture of ___ and Yeast.",
+        "answer": "Bacteria",
+        "distractors": ["Mold", "Enzymes", "Proteins"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kombucha",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glass jar of golden kombucha with a translucent rubbery SCOBY floating on top, surrounded by tea leaves and a sugar jar on a wooden kitchen counter.",
+    "tags": ["kombucha", "SCOBY", "fermentation", "probiotics", "brewing"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-yogurt-discovery-accident",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Yogurt was likely discovered by accident 8,000 years ago when nomads stored milk in pouches made from animal stomachs containing natural bacteria.",
+    "quizQuestion": "How was yogurt likely discovered by ancient nomads?",
+    "correctAnswer": "Milk stored in animal stomach pouches fermented naturally",
+    "distractors": [
+      "A scribe intentionally curdled milk with vinegar",
+      "Priests added dried herbs to ferment milk",
+      "Milk left in clay pots absorbed wild yeast",
+      "Hunters boiled milk with fruit and it curdled",
+      "Farmers added honey to milk to preserve it",
+      "Travelers left milk in the sun for a week",
+      "Cheese makers discovered a thinner ferment",
+      "Children playing mixed milk with mud bacteria"
+    ],
+    "acceptableAnswers": [
+      "Milk stored in animal stomach pouches fermented naturally",
+      "Animal stomach pouches contained bacteria that fermented milk",
+      "Natural bacteria in stomach pouches fermented milk"
+    ],
+    "explanation": "Nomadic herders in the Middle East carried milk in pouches made from ruminant stomachs. These stomachs naturally contain bacteria and rennet that curdle and ferment milk, accidentally creating the first yogurt. Evidence of yogurt consumption dates to around 6000–5000 BCE in present-day Turkey and Bulgaria.",
+    "wowFactor": "Yogurt was born in a stomach bag — nomads accidentally turned milk into a superfood by storing it in animal intestines.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many years ago was yogurt first consumed?",
+        "answer": "8,000 years ago",
+        "distractors": ["100 years ago", "500 years ago", "2,000 years ago"]
+      },
+      {
+        "type": "reverse",
+        "question": "What bacteria are responsible for fermenting milk into yogurt?",
+        "answer": "Lactobacillus",
+        "distractors": ["E. coli", "Salmonella", "Aspergillus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Yogurt was intentionally invented by an ancient dairy scientist.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nomads accidentally created yogurt by storing milk in pouches made from ___ stomachs.",
+        "answer": "animal",
+        "distractors": ["clay", "wooden", "leather"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yogurt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient nomads on horseback crossing a desert, with animal skin pouches tied to their saddles dripping with thickened white yogurt.",
+    "tags": ["yogurt", "fermentation", "history", "ancient food", "accidental discovery"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-sourdough-oldest-living-starter",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Some sourdough starters in use today are over 100 years old, with families passing living cultures of wild yeast and bacteria down through generations.",
+    "quizQuestion": "What is the name for the living culture used to leaven sourdough bread?",
+    "correctAnswer": "Starter",
+    "distractors": [
+      "SCOBY",
+      "Koji",
+      "Mother",
+      "Biga",
+      "Poolish",
+      "Levain only",
+      "Sponge",
+      "Yeast packet"
+    ],
+    "acceptableAnswers": [
+      "Starter",
+      "sourdough starter",
+      "levain"
+    ],
+    "explanation": "A sourdough starter is a fermented mixture of flour and water containing wild yeast and lactic acid bacteria. Unlike commercial yeast, a starter is a living ecosystem that must be regularly fed. The oldest known starters in continuous use are over 150 years old; the wild yeast strains they contain can't be commercially reproduced.",
+    "wowFactor": "Some sourdough starters are family heirlooms over 150 years old — the exact same living yeast organisms have been baking bread across multiple generations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes sourdough bread rise instead of commercial yeast?",
+        "answer": "Wild yeast in a fermented starter",
+        "distractors": ["Baking powder", "Chemical leavening", "Steam expansion"]
+      },
+      {
+        "type": "reverse",
+        "question": "The oldest sourdough starters in continuous use are approximately how old?",
+        "answer": "Over 150 years",
+        "distractors": ["5 years", "50 years", "1,000 years"]
+      },
+      {
+        "type": "true_false",
+        "question": "Sourdough starters are living cultures of wild yeast and bacteria that can last generations.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sourdough is leavened by a living ___ of flour and water containing wild yeast.",
+        "answer": "starter",
+        "distractors": ["packet", "pill", "powder"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sourdough",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A baker's hands pulling a bubbling jar of sourdough starter from a shelf, with a handwritten label showing the year 1870 and a family name.",
+    "tags": ["sourdough", "bread", "fermentation", "wild yeast", "food history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-kimchi-probiotic-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "There are over 200 varieties of kimchi in Korea, and it was added to UNESCO's Intangible Cultural Heritage list in 2015.",
+    "quizQuestion": "Approximately how many varieties of kimchi exist in Korean cuisine?",
+    "correctAnswer": "Over 200",
+    "distractors": [
+      "Just 3",
+      "About 15",
+      "Exactly 50",
+      "About 500",
+      "Over 1,000",
+      "Just 1 traditional recipe",
+      "About 30",
+      "Around 75"
+    ],
+    "acceptableAnswers": [
+      "Over 200",
+      "200+",
+      "more than 200"
+    ],
+    "explanation": "While cabbage kimchi (baechu-kimchi) is most famous, Korean cuisine has over 200 documented kimchi varieties using radishes, cucumbers, mustard greens, and even oysters. Kimchi-making (kimjang) was inscribed on UNESCO's Intangible Cultural Heritage list in 2015, recognizing it as a cornerstone of Korean cultural identity.",
+    "wowFactor": "Kimchi isn't just one food — Korea has over 200 different kinds, and making it together is an officially protected piece of human cultural heritage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What UNESCO recognition did kimchi-making (kimjang) receive in 2015?",
+        "answer": "Intangible Cultural Heritage",
+        "distractors": ["World Food Prize", "Cultural Food Monument", "Global Cuisine Award"]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the most well-known variety of kimchi made from?",
+        "answer": "Napa cabbage",
+        "distractors": ["Radish", "Cucumber", "Spinach"]
+      },
+      {
+        "type": "true_false",
+        "question": "There is only one traditional recipe for kimchi in Korean cuisine.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kimchi was added to UNESCO's Intangible Cultural Heritage list in ___.",
+        "answer": "2015",
+        "distractors": ["1999", "2010", "2020"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kimchi",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Korean kitchen with dozens of clay onggi pots filled with different colorful kimchi varieties lining the walls, a grandmother teaching children to pack cabbage.",
+    "tags": ["kimchi", "Korea", "fermentation", "UNESCO", "cultural heritage"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-miso-aging-umami",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Miso can be aged anywhere from a few weeks to over three years — longer-aged red miso has a much stronger, saltier flavor than young white miso.",
+    "quizQuestion": "What gives miso its distinctive savory 'umami' flavor?",
+    "correctAnswer": "Fermentation by Aspergillus oryzae",
+    "distractors": [
+      "Adding soy sauce during production",
+      "Roasting soybeans before fermenting",
+      "Long-term salting without fermentation",
+      "Adding dried seaweed during aging",
+      "Chemical flavoring added after fermentation",
+      "Mixing with fish sauce before packaging",
+      "A high-salt brining process only",
+      "Koji mold producing lactic acid only"
+    ],
+    "acceptableAnswers": [
+      "Fermentation by Aspergillus oryzae",
+      "Koji fermentation",
+      "Aspergillus oryzae mold"
+    ],
+    "explanation": "Miso is made by fermenting soybeans (and often rice or barley) with Aspergillus oryzae mold (koji) and salt. The mold produces enzymes that break proteins into amino acids — particularly glutamate — which creates the deep savory umami taste. White miso (shiro) ferments 5–60 days; dark red miso (akamiso) may age 3+ years.",
+    "wowFactor": "Miso aged for 3 years in wooden barrels develops more complexity than most wines — the same mold used in sake transforms soybeans into a paste worth hundreds per kilogram.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which type of miso is aged longer — white miso or red miso?",
+        "answer": "Red miso",
+        "distractors": ["White miso", "They age the same", "Yellow miso"]
+      },
+      {
+        "type": "reverse",
+        "question": "What mold is used to ferment both miso and sake?",
+        "answer": "Aspergillus oryzae",
+        "distractors": ["Saccharomyces cerevisiae", "Penicillium roqueforti", "Lactobacillus acidophilus"]
+      },
+      {
+        "type": "true_false",
+        "question": "White miso and red miso are made with different base ingredients.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Miso gets its umami flavor from glutamate produced during ___ fermentation.",
+        "answer": "koji",
+        "distractors": ["salt", "vinegar", "yeast"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Miso",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese fermentation cellar with rows of wooden barrels at different ages, a master tasting white miso beside a dark red barrel labeled three years.",
+    "tags": ["miso", "fermentation", "Japan", "umami", "koji"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-sauerkraut-sailors-scurvy",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Captain James Cook brought 60 barrels of sauerkraut on his 1772 voyage around the world, using it to prevent scurvy among his crew — none died of it.",
+    "quizQuestion": "What disease did Captain Cook prevent using sauerkraut on his 1772 voyage?",
+    "correctAnswer": "Scurvy",
+    "distractors": [
+      "Rickets",
+      "Cholera",
+      "Typhoid",
+      "Malaria",
+      "Tuberculosis",
+      "Beriberi",
+      "Dysentery",
+      "Yellow fever"
+    ],
+    "acceptableAnswers": [
+      "Scurvy",
+      "vitamin C deficiency"
+    ],
+    "explanation": "Scurvy, caused by Vitamin C deficiency, killed an estimated 2 million sailors between 1500 and 1800. Captain James Cook brought 60 barrels of sauerkraut on his second voyage (1772–1775) and credited it with keeping his crew healthy. Sauerkraut retains high Vitamin C due to fermentation. He received a Royal Society medal for solving the scurvy problem.",
+    "wowFactor": "Sauerkraut saved more sailors' lives than any medical treatment — Captain Cook used fermented cabbage to conquer a disease that had killed millions at sea.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many barrels of sauerkraut did Captain Cook bring on his 1772 voyage?",
+        "answer": "60 barrels",
+        "distractors": ["5 barrels", "200 barrels", "1 barrel"]
+      },
+      {
+        "type": "reverse",
+        "question": "Scurvy is caused by a deficiency of which vitamin found in sauerkraut?",
+        "answer": "Vitamin C",
+        "distractors": ["Vitamin A", "Vitamin D", "Vitamin B12"]
+      },
+      {
+        "type": "true_false",
+        "question": "Captain James Cook used sauerkraut to prevent scurvy on his sea voyages.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sauerkraut prevented ___ on Cook's voyages by providing Vitamin C through fermented cabbage.",
+        "answer": "scurvy",
+        "distractors": ["cholera", "malaria", "rickets"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 8,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sauerkraut",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Captain James Cook on the deck of his wooden sailing ship, supervising sailors opening barrels of pale sauerkraut with the ocean stretching in all directions.",
+    "tags": ["sauerkraut", "Captain Cook", "scurvy", "Vitamin C", "naval history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-cake-birthday-candles-germany",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "The tradition of birthday candles on cake began in 18th-century Germany, where a large cake with candles matching the child's age was called Kinderfeste.",
+    "quizQuestion": "In which country did the birthday cake candle tradition originate?",
+    "correctAnswer": "Germany",
+    "distractors": [
+      "France",
+      "England",
+      "Ancient Egypt",
+      "Greece",
+      "Italy",
+      "USA",
+      "Austria",
+      "Netherlands"
+    ],
+    "acceptableAnswers": [
+      "Germany",
+      "18th-century Germany"
+    ],
+    "explanation": "The German Kinderfeste (children's festival) tradition in the 18th century involved a large cake with one candle for each year of age plus one 'light of life' candle. The candles were kept burning all day and blown out after dinner. This tradition was recorded as early as 1746 at a birthday celebration for Count Ludwig von Zinzendorf.",
+    "wowFactor": "Birthday candles have a 300-year origin story — a German tradition meant the candles burning all day represented the child's remaining life force.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the German 18th-century birthday cake tradition called?",
+        "answer": "Kinderfeste",
+        "distractors": ["Geburtstagskuchen", "Kerzenfest", "Lebenskuchen"]
+      },
+      {
+        "type": "reverse",
+        "question": "In the original German Kinderfeste, why was an extra candle added beyond the child's age?",
+        "answer": "It represented the 'light of life'",
+        "distractors": ["For good luck", "To represent the birthday year", "For a wish to come true"]
+      },
+      {
+        "type": "true_false",
+        "question": "The birthday candle tradition originated in ancient Greece or Egypt.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The German birthday cake tradition 'Kinderfeste' was recorded as early as ___.",
+        "answer": "1746",
+        "distractors": ["1800", "1500", "1900"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Birthday_cake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An 18th-century German parlor with a large round cake covered in lit candles, surrounded by children in period clothing and a beaming father.",
+    "tags": ["cake", "birthday candles", "Germany", "Kinderfeste", "food tradition"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-cookie-fortune-china-myth",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Fortune cookies were invented in early 20th-century California — they are not a Chinese tradition and were virtually unknown in China until the 1990s.",
+    "quizQuestion": "Where were fortune cookies actually invented despite being associated with Chinese food?",
+    "correctAnswer": "California, USA",
+    "distractors": [
+      "Shanghai, China",
+      "Tokyo, Japan",
+      "Hong Kong",
+      "Beijing, China",
+      "San Francisco Chinatown",
+      "Taiwan",
+      "Korea",
+      "Vietnam"
+    ],
+    "acceptableAnswers": [
+      "California, USA",
+      "California",
+      "San Francisco",
+      "USA"
+    ],
+    "explanation": "Fortune cookies were invented by Japanese immigrants in California around 1907–1914, not by Chinese immigrants. Both Makoto Hagiwara (Japanese Tea Garden in San Francisco) and David Jung (Chinese-American baker in Los Angeles) have been credited. Fortune cookies arrived in China only when an American company exported them in the 1990s — locals called them 'American cookies'.",
+    "wowFactor": "Fortune cookies are actually Japanese-American, not Chinese — when they were exported to China in the 1990s, locals had never seen them before.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nationality likely invented fortune cookies in early 20th-century California?",
+        "answer": "Japanese",
+        "distractors": ["Chinese", "American", "Korean"]
+      },
+      {
+        "type": "reverse",
+        "question": "What did Chinese people call fortune cookies when they first saw them in the 1990s?",
+        "answer": "American cookies",
+        "distractors": ["Strange sweets", "Western fortune cakes", "Imported treats"]
+      },
+      {
+        "type": "true_false",
+        "question": "Fortune cookies have been a traditional part of Chinese cuisine for centuries.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fortune cookies were invented in ___ around 1907–1914 by Japanese immigrants.",
+        "answer": "California",
+        "distractors": ["China", "New York", "Hawaii"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 7,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fortune_cookie",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese-American bakery in early 1900s San Francisco folding fortune cookies beside a tray of papers with printed fortunes, while a Chinese restaurant sign hangs across the street.",
+    "tags": ["fortune cookies", "California", "Japanese-American", "food myths", "history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-baklava-ottoman-empire",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Baklava was so important in the Ottoman Empire that sultans gave free baklava to the Janissary soldiers every 15th of Ramadan as a symbol of loyalty.",
+    "quizQuestion": "The Ottoman sultans gave free baklava to which elite soldiers during Ramadan?",
+    "correctAnswer": "Janissaries",
+    "distractors": [
+      "Sipahis",
+      "Mamluks",
+      "Nizami-Cedid",
+      "Seljuk cavalry",
+      "Ottoman marines",
+      "Persian immortals",
+      "Byzantine guards",
+      "Cossack allies"
+    ],
+    "acceptableAnswers": [
+      "Janissaries",
+      "Janissary soldiers",
+      "the Janissaries"
+    ],
+    "explanation": "The Baklava Procession (Baklava Alayı) was an annual Ottoman ceremony where the sultan sent 40 trays of baklava to the Janissary barracks on the 15th night of Ramadan. Soldiers paraded the trays through the streets as a display of the sultan's generosity and the army's loyalty. The tradition lasted from the 15th century until the Janissaries were abolished in 1826.",
+    "wowFactor": "Ottoman sultans literally had a 'Baklava Procession' ceremony — distributing dessert to elite soldiers was a formal act of political power for 400 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the annual Ottoman ceremony of giving baklava to soldiers called?",
+        "answer": "Baklava Alayı",
+        "distractors": ["Ramadan Feast", "Sultan's Gift", "Tatlı Procession"]
+      },
+      {
+        "type": "reverse",
+        "question": "On which date during Ramadan did Ottoman sultans traditionally give baklava to soldiers?",
+        "answer": "The 15th night",
+        "distractors": ["The first night", "The last night", "Eid al-Fitr"]
+      },
+      {
+        "type": "true_false",
+        "question": "Ottoman sultans gave baklava to elite Janissary soldiers every year during Ramadan.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 'Baklava Alayı' ceremony ended in 1826 when the ___ were abolished.",
+        "answer": "Janissaries",
+        "distractors": ["Ottoman Empire", "sultans", "Sipahis"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": 8,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baklava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elaborate Ottoman procession with soldiers in colorful uniforms carrying golden trays stacked high with gleaming honey-soaked baklava through Constantinople streets.",
+    "tags": ["baklava", "Ottoman Empire", "Janissaries", "Ramadan", "food history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "food-tiramisu-invention-dispute",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Tiramisu was invented in the 1960s in Treviso, Italy, but its exact origin is disputed between two restaurants both claiming to have created it first.",
+    "quizQuestion": "In which Italian city was tiramisu invented in the 1960s?",
+    "correctAnswer": "Treviso",
+    "distractors": [
+      "Rome",
+      "Venice",
+      "Milan",
+      "Florence",
+      "Bologna",
+      "Naples",
+      "Turin",
+      "Verona"
+    ],
+    "acceptableAnswers": [
+      "Treviso",
+      "Treviso, Italy"
+    ],
+    "explanation": "Tiramisu's invention is disputed between Le Beccherie restaurant in Treviso (claiming chef Loly Linguanotto created it in 1969) and a restaurant in Friuli claiming an earlier date. The name 'tiramisù' means 'pick me up' or 'lift me up' in Italian, likely referencing the energizing effects of espresso and sugar. It is now one of Italy's most popular exported desserts.",
+    "wowFactor": "Tiramisu means 'pick me up' in Italian — it was only invented in the 1960s yet became one of the most beloved desserts on Earth in just decades.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the Italian word 'tiramisù' mean in English?",
+        "answer": "Pick me up",
+        "distractors": ["Sweet cloud", "Coffee dream", "Creamy night"]
+      },
+      {
+        "type": "reverse",
+        "question": "What restaurant in Treviso claims to have invented tiramisu in 1969?",
+        "answer": "Le Beccherie",
+        "distractors": ["Da Fiore", "Cipriani", "Ristorante Quadri"]
+      },
+      {
+        "type": "true_false",
+        "question": "Tiramisu is an ancient Italian dessert with origins in medieval times.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tiramisu, meaning '___ me up', was invented in the 1960s in Treviso, Italy.",
+        "answer": "pick",
+        "distractors": ["lift", "wake", "cheer"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": 6,
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tiramisu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A classic tiramisu in a glass dish with layers of mascarpone and espresso-soaked ladyfingers dusted with cocoa powder, set in a rustic Italian trattoria.",
+    "tags": ["tiramisu", "Italy", "dessert", "Treviso", "food history"],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

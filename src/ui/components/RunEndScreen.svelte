@@ -210,7 +210,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
+    padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     z-index: 200;
     position: relative;
   }
@@ -231,55 +231,55 @@
   }
 
   .header {
-    font-size: 24px;
+    font-size: calc(24px * var(--layout-scale, 1));
     font-weight: 800;
-    margin-bottom: 32px;
+    margin-bottom: calc(32px * var(--layout-scale, 1));
     text-align: center;
     letter-spacing: 2px;
   }
 
   .stats-list {
     width: 100%;
-    max-width: 300px;
+    max-width: calc(300px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: calc(12px * var(--layout-scale, 1));
+    margin-bottom: calc(40px * var(--layout-scale, 1));
   }
 
   .stat-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: #161B22;
     border-radius: 8px;
   }
 
   .stat-label {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     color: #8B949E;
   }
 
   .stat-value {
-    font-size: 16px;
+    font-size: calc(16px * var(--layout-scale, 1));
     color: #E6EDF3;
     font-weight: 700;
   }
 
   .btn-row {
     display: flex;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .btn {
-    min-width: 120px;
+    min-width: calc(120px * var(--layout-scale, 1));
     height: 48px;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: calc(16px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.1s;
@@ -308,18 +308,18 @@
     background: rgba(241, 196, 15, 0.08);
     border: 1px solid rgba(241, 196, 15, 0.4);
     border-radius: 8px;
-    padding: 8px 10px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     display: grid;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .bounty-list strong {
     color: #f4d35e;
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
   }
 
   .bounty-item {
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #e7f0ff;
   }
 

@@ -75,11 +75,11 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: 18px 16px 96px;
+    padding: calc(18px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
     background: linear-gradient(180deg, #0a1220 0%, #101a2b 100%);
     color: #e2e8f0;
     display: grid;
-    gap: 14px;
+    gap: calc(14px * var(--layout-scale, 1));
   }
 
   .header {
@@ -100,28 +100,28 @@
     border: 1px solid #475569;
     background: #1e293b;
     color: #dbeafe;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
   }
 
   .hero {
     border: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 14px;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     display: flex;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     align-items: center;
     background: rgba(15, 23, 42, 0.78);
   }
 
   .avatar {
-    width: 56px;
-    height: 56px;
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     border-radius: 50%;
     display: grid;
     place-items: center;
     background: rgba(30, 64, 175, 0.35);
-    font-size: 28px;
+    font-size: calc(28px * var(--layout-scale, 1));
   }
 
   .hero h3 {
@@ -130,7 +130,7 @@
   }
 
   .hero p {
-    margin: 2px 0 0;
+    margin: calc(2px * var(--layout-scale, 1)) 0 0;
     font-size: calc(12px * var(--text-scale, 1));
     color: #93c5fd;
   }
@@ -138,16 +138,16 @@
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .stat {
     border-radius: 12px;
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.76);
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
     display: grid;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .stat span {
@@ -164,11 +164,11 @@
     border-radius: 12px;
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.76);
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
   }
 
   .domain-runs h4 {
-    margin: 0 0 8px;
+    margin: 0 0 calc(8px * var(--layout-scale, 1));
     color: #93c5fd;
     font-size: calc(12px * var(--text-scale, 1));
     letter-spacing: 0.4px;
@@ -178,14 +178,14 @@
   .domain-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .domain-item {
     border-radius: 8px;
     border: 1px solid rgba(148, 163, 184, 0.2);
     background: rgba(2, 6, 23, 0.48);
-    padding: 8px;
+    padding: calc(8px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: space-between;
